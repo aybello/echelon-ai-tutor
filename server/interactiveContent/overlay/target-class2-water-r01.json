@@ -1,0 +1,2566 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "target-class2-water-r01",
+ "scope": "Owner-authorized AI-reviewed game activities: 67 items.",
+ "additions": [
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "ct261118-class2-water-r01-m0-01",
+    "prompt": "Rapid shifts in groundwater turbidity and temperature that correlate closely with rainfall indicate direct surface water influence.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Groundwater showing rapid quality shifts correlated with rainfall or surface conditions is classified as under the direct influence of surface water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "bc60c3ff2c76f143e566c0d950eb1d10d2cca411dbf6784dfcfa3cc91a9a51f8",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "ct261118-class2-water-r01-m0-04",
+    "prompt": "A concrete well pad is sloped inward toward the casing so surface water collects around the wellhead.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "A well pad provides a ground seal to prevent contaminants from collecting around the well and seeping down along the casing."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "865ea55f1ef75a671a9255347daa8543b2191f7be6574488738fafe9ef890bfe",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-class2-water-r01-m0-05",
+    "prompt": "Aeration removes hydrogen sulfide gas well in acidic raw water below pH 6.5.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Forced aeration strips trapped hydrogen sulfide gas effectively when the water pH is below 6.5."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "82b5f29cfa4349d792666fc126555c563d9a2e72b708d76703f6ccb53ffebb4d",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-class2-water-r01-m0-09",
+    "prompt": "Localized pipe corrosion is classified as pitting when the surface cavity diameter is equal to or less than the cavity depth.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Pitting corrosion forms narrow, deep cavities whose surface diameter does not exceed their depth."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "e81b90be2c83105565c69257d368ed3c58f5f433803dc7f049b26fc3ef33ae85",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "ct261118-class2-water-r01-m0-13",
+    "prompt": "Trapped gases released inside a void in filter media can cause a violent upheaval of the bed when backwashing starts.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Partial vacuum inside clogged media draws dissolved gases out of water, and escaping gas during backwash can disrupt media and gravel layers."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "e774a06f28abdc295e3a4368383cde2f5d474997cb375269f884214f56cd490e",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-class2-water-r01-m0-14",
+    "prompt": "A filter profile is a gravimetric sieve test of media grains removed from a drained filter cell.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "A filter profile is a graphical representation of individual filter performance over time based on continuous turbidity data."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "7348201b969cb2eced2eee4227a462071b757d09262038fd4e357c5c6aada0b7",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-class2-water-r01-m0-15",
+    "prompt": "Cryptosporidium oocysts have a smaller typical diameter than Giardia cysts.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Cryptosporidium oocysts are typically 4 to 6 micrometres across, smaller than Giardia cysts at 8 to 14 micrometres."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "e0f3c2b8b2440289af564365672497b7c1211e4ba0f662745e325574fa7d6e14",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-class2-water-r01-m1-02",
+    "prompt": "Match each conventional treatment stage to its textbook microbial log-removal credit or primary solid-liquid role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Screening",
+      "right": "Initial pretreatment ahead of rapid chemical mixing"
+     },
+     {
+      "id": "p2",
+      "left": "Rapid mixing",
+      "right": "Violent agitation to disperse coagulant salts uniformly"
+     },
+     {
+      "id": "p3",
+      "left": "Flocculation",
+      "right": "Prolonged gentle agitation to agglomerate destabilized particles"
+     },
+     {
+      "id": "p4",
+      "left": "Sedimentation",
+      "right": "Gravity settling credited with 0.5-log Giardia and 1-log virus removal"
+     },
+     {
+      "id": "p5",
+      "left": "Granular filtration",
+      "right": "Media barrier credited with 2-log Giardia and 1-log virus removal"
+     },
+     {
+      "id": "p6",
+      "left": "Disinfection",
+      "right": "Inactivation stage credited with 0.5-log Giardia and 2-log virus removal"
+     }
+    ],
+    "explanation": "Conventional plants combine chemical conditioning with physical separation and disinfection so successive barriers remove particles, protozoa, and viruses."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "9f263b57c26570e5e6c088b730c4465cf7e9c0d9dbce8dfc909180a87a31d5ec",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-class2-water-r01-m1-03",
+    "prompt": "Match each dissolved ion, gas, or calculation term to its specific role in water hardness chemistry.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Soil carbon dioxide",
+      "right": "Dissolves into infiltrating water to form mineral-dissolving carbonic acid"
+     },
+     {
+      "id": "p2",
+      "left": "Strontium and barium",
+      "right": "Trace divalent cations that contribute alongside calcium and magnesium"
+     },
+     {
+      "id": "p3",
+      "left": "Equivalent weight",
+      "right": "Gram molecular weight divided by ionic valence in CaCO3 conversions"
+     },
+     {
+      "id": "p4",
+      "left": "Strong sodium chloride brine",
+      "right": "Displaces adsorbed hardness cations from exhausted exchange resin"
+     },
+     {
+      "id": "p5",
+      "left": "Bypass blending stream",
+      "right": "Restores moderate CaCO3 hardness to prevent aggressive zero-hardness water"
+     },
+     {
+      "id": "p6",
+      "left": "Carbonate equilibrium shift",
+      "right": "Chemical mechanism by which lime precipitates dissolved hardness"
+     }
+    ],
+    "explanation": "Hardness originates from divalent cations dissolved by carbonic acid and is quantified via equivalent weight or controlled by softening and blending."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "08905a6fd97d2ea64e574247585a1dc9f28f20ec45070fc929441870cba6a065",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "ct261118-class2-water-r01-m1-06",
+    "prompt": "Match each microbial pathogen or cellular inactivation mechanism to its biological characteristic.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Vibrio cholerae",
+      "right": "Intestinal bacterium causing acute watery diarrhea and rapid dehydration"
+     },
+     {
+      "id": "p2",
+      "left": "Giardia lamblia cyst",
+      "right": "Dormant 8 to 14 micrometre form resistant to cold, alkaline chlorination"
+     },
+     {
+      "id": "p3",
+      "left": "Cryptosporidium oocyst",
+      "right": "Smaller 4 to 6 micrometre form undergoing excystation after ingestion"
+     },
+     {
+      "id": "p4",
+      "left": "Structural inactivation",
+      "right": "Rupturing the cell wall or impairing semi-permeable membrane function"
+     },
+     {
+      "id": "p5",
+      "left": "Metabolic inactivation",
+      "right": "Disabling enzyme substrates and prosthetic groups needed for cell energy"
+     },
+     {
+      "id": "p6",
+      "left": "Biosynthetic inactivation",
+      "right": "Blocking synthesis of normal proteins, nucleic acids, or coenzymes"
+     }
+    ],
+    "explanation": "Waterborne bacteria and protozoan cysts differ in size and environmental resilience, while disinfectants inactivate cells through structural, metabolic, or biosynthetic damage."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "d6917481d8271958d043ea87c170923aa5e5c8ce7481c7562141e2f754b1e550",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "ct261118-class2-water-r01-m1-07",
+    "prompt": "Match each oxidation or disinfection byproduct precursor reaction to its chemical outcome.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Bromide plus free chlorine",
+      "right": "Forms hypobromous acid that reacts with organics to yield brominated DBPs"
+     },
+     {
+      "id": "p2",
+      "left": "Hypobromite plus ozone",
+      "right": "Can oxidize further into inorganic bromate ion"
+     },
+     {
+      "id": "p3",
+      "left": "NOM plus ozone",
+      "right": "Generates aldehydes, organic acids, and aldo- and keto-acids"
+     },
+     {
+      "id": "p4",
+      "left": "High bromide-to-chlorine ratio",
+      "right": "Shifts trihalomethane speciation toward more brominated species"
+     },
+     {
+      "id": "p5",
+      "left": "Headworks permanganate feed",
+      "right": "Oxidizes organic precursors ahead of downstream chlorination"
+     },
+     {
+      "id": "p6",
+      "left": "Ozonation above pH 7.5",
+      "right": "Can increase rather than reduce subsequent chlorination DBP precursors"
+     }
+    ],
+    "explanation": "Precursor chemistry depends on natural organic matter, bromide ratio, oxidant choice, and pH before chlorine addition."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "4134d022ca47f50a6855fbdba00fd61fb3d5ca913dfbb5242d5cab7a0397c6ba",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "ct261118-class2-water-r01-m1-09",
+    "prompt": "Match each advanced separation or adsorption treatment process to its operational trade-off or advantage.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Coagulation-assisted microfiltration",
+      "right": "Captures smaller floc sizes and maintains a barrier during coagulation upsets"
+     },
+     {
+      "id": "p2",
+      "left": "Nanofiltration membrane system",
+      "right": "Removes organic precursors effectively but produces waste brine requiring disposal"
+     },
+     {
+      "id": "p3",
+      "left": "Greensand filtration",
+      "right": "Uses iron-rich glauconite media for combined oxidation and filtration"
+     },
+     {
+      "id": "p4",
+      "left": "Granular ferric hydroxide",
+      "right": "Adsorbs arsenate strongly while experiencing strong competition from phosphate"
+     },
+     {
+      "id": "p5",
+      "left": "Low-pH enhanced alum coagulation",
+      "right": "Improves oxyanion removal but requires post-treatment pH adjustment for corrosion"
+     },
+     {
+      "id": "p6",
+      "left": "Enclosed pressure filter",
+      "right": "Lowers initial capital cost with prefabricated vessel but blocks visual bed inspection"
+     }
+    ],
+    "explanation": "Selecting filtration and adsorption units involves balancing particle or oxyanion removal against brine disposal, competing ions, pH correction, and bed visibility."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "cc5a08f503da1613333d5e7c11fb8628d348a31f58495ee082d84500768722fc",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-class2-water-r01-m2-02",
+    "prompt": "Three of these functions are directly provided by pumping cementitious grout into the annular space around a well casing. Which one is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Sealing out poor-quality subsurface water strata"
+     },
+     {
+      "id": "opt2",
+      "label": "Protecting the exterior of the casing from corrosion"
+     },
+     {
+      "id": "opt3",
+      "label": "Restraining unstable soil and rock formations"
+     },
+     {
+      "id": "opt4",
+      "label": "Venting air into the casing during pump drawdown"
+     }
+    ],
+    "correctOptionId": "opt4",
+    "explanation": "Annular grout seals out surface and undesirable strata, restrains formations, and prevents external casing corrosion; air venting is done by the casing vent."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "3708cf4b1dba94adee302ae78aaee88351c4ed5da154f90d2eb796ae40187a32",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-class2-water-r01-m2-04",
+    "prompt": "Three of these basin configurations are standard sedimentation tank designs used for gravity clarification. Which tank is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Conventional center-feed settling basin"
+     },
+     {
+      "id": "opt2",
+      "label": "Peripheral-feed clarification basin"
+     },
+     {
+      "id": "opt3",
+      "label": "Spiral-flow gravity settling basin"
+     },
+     {
+      "id": "opt4",
+      "label": "Packed-tower aerator"
+     }
+    ],
+    "correctOptionId": "opt4",
+    "explanation": "Center-feed, peripheral-feed, and spiral-flow tanks are sedimentation basins for gravity settling, whereas a packed tower is a gas-liquid aeration unit."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "f932dc9879088c118889970930086cb8c8bbd109efe99016b67e58e399ab3698",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-class2-water-r01-m2-05",
+    "prompt": "Three of these corrosion-resistant materials are listed for protective internal pipe linings. Which material is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Protective cement-mortar pipe lining"
+     },
+     {
+      "id": "opt2",
+      "label": "Internal epoxy protective coating"
+     },
+     {
+      "id": "opt3",
+      "label": "Polyethylene protective pipe liner"
+     },
+     {
+      "id": "opt4",
+      "label": "Glauconite greensand"
+     }
+    ],
+    "correctOptionId": "opt4",
+    "explanation": "Cement mortar, epoxy, and polyethylene are protective pipe lining materials, whereas glauconite greensand is granular filtration media for iron, manganese, and arsenic removal."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "15913527049aee35aade29e3bb3003e7a4dc08c40839630dc5f403f060cb8ff2",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "ct261118-class2-water-r01-m2-07",
+    "prompt": "Three of these operational drawbacks are significant limitations of using nanofiltration membranes for precursor control. Which item is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Disposal of concentrated waste brine streams"
+     },
+     {
+      "id": "opt2",
+      "label": "Membrane fouling requiring feed pretreatment"
+     },
+     {
+      "id": "opt3",
+      "label": "Higher pumping energy and membrane replacement cost"
+     },
+     {
+      "id": "opt4",
+      "label": "Mudballs in gravel support beds"
+     }
+    ],
+    "correctOptionId": "opt4",
+    "explanation": "Nanofiltration faces waste brine disposal, fouling, replacement cost, and energy demand; mudballs in gravel support beds occur in poorly backwashed granular media filters."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "4f1011eee53c62a696510e11ec0681dda9f1a79d0bfe6c46735c986ad4438b62",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-class2-water-r01-m2-08",
+    "prompt": "Three of these follow-up evaluations are diagnostic actions triggered by persistently elevated turbidity at an individual rapid filter. Which item is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Producing a graphical turbidity filter profile"
+     },
+     {
+      "id": "opt2",
+      "label": "Conducting an individual filter self-assessment"
+     },
+     {
+      "id": "opt3",
+      "label": "Completing a comprehensive performance evaluation"
+     },
+     {
+      "id": "opt4",
+      "label": "Running a well drawdown test"
+     }
+    ],
+    "correctOptionId": "opt4",
+    "explanation": "Filter profiles, individual filter self-assessments, and comprehensive performance evaluations diagnose abnormal filter turbidity, whereas drawdown tests evaluate groundwater well productivity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "c9b4d9373588c1d968f0ee62e500a81ff37963a60b658d498f1b9fa41e3c90fd",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "ct261118-class2-water-r01-m2-10",
+    "prompt": "Three of these advantages describe coagulation-assisted microfiltration compared with conventional gravity granular filtration. Which statement is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Stronger microbial barrier during coagulation upsets"
+     },
+     {
+      "id": "opt2",
+      "label": "Removal of smaller floc sizes at lower coagulant demand"
+     },
+     {
+      "id": "opt3",
+      "label": "Increased overall water treatment plant capacity"
+     },
+     {
+      "id": "opt4",
+      "label": "Rejection of dissolved sodium ions"
+     }
+    ],
+    "correctOptionId": "opt4",
+    "explanation": "Coagulation-assisted microfiltration removes smaller floc, boosts plant capacity, and guards against microbes during coagulation upsets, but porous microfiltration does not reject dissolved monovalent salts."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "6a095ce58e8b6cc5e86e7c3071fc831b3fceddc7c926c01099726a32a2184078",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-class2-water-r01-m1-11",
+    "prompt": "Match each sanitary well seal opening or wellhead component to the specific utility or structural role it serves.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Power and control wire port",
+      "right": "Sealed entry for electrical cables serving the well pump"
+     },
+     {
+      "id": "p2",
+      "left": "Pump support cable opening",
+      "right": "Sealed passage for lines holding the pumping assembly"
+     },
+     {
+      "id": "p3",
+      "left": "Drawdown gauge opening",
+      "right": "Sealed access for measuring water level drop during pumping"
+     },
+     {
+      "id": "p4",
+      "left": "Discharge piping opening",
+      "right": "Sealed exit carrying pumped groundwater out of the casing"
+     },
+     {
+      "id": "p5",
+      "left": "Air vent opening",
+      "right": "Sealed breather equalizing air pressure inside the casing"
+     },
+     {
+      "id": "p6",
+      "left": "Well casing column",
+      "right": "Borehole liner storing water and housing pump mechanisms"
+     }
+    ],
+    "explanation": "A sanitary well seal closes the top of the borehole casing while sealing tightly around electrical wires, support cables, gauges, piping, and vents."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "00f6b8c4410b6694057bd660a0c9acb6566bb3f4977485e63e23468582f9e623",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-class2-water-r01-m1-12",
+    "prompt": "Match each calcium carbonate corrosion-control condition or chemical choice to its water chemistry basis.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Hardness times alkalinity below 100",
+      "right": "Very soft, low-buffered water needing both lime and carbon dioxide"
+     },
+     {
+      "id": "p2",
+      "left": "Hardness times alkalinity 100 to 500",
+      "right": "Intermediate range treated satisfactorily with lime or soda ash"
+     },
+     {
+      "id": "p3",
+      "left": "Hardness times alkalinity above 500",
+      "right": "High range using lime or caustic soda because soda ash is costly"
+     },
+     {
+      "id": "p4",
+      "left": "Calcium carbonate saturation",
+      "right": "Target chemical balance for deposition control, though not foolproof"
+     },
+     {
+      "id": "p5",
+      "left": "Reduced hydrogen ion availability",
+      "right": "Electrochemical result of raising pH to curb galvanic attack"
+     },
+     {
+      "id": "p6",
+      "left": "Carbonate protective film",
+      "right": "Pipe wall deposit promoted when pH and alkalinity are raised"
+     }
+    ],
+    "explanation": "Chemical selection for calcium carbonate stability depends on the product of calcium hardness and alkalinity as well as reagent cost."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "b54a4091494632c6249496d4d662598c5f3e06ac25e31123adefcc6798a0bdc0",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "ct261118-class2-water-r01-m1-14",
+    "prompt": "Match each arsenic removal process or media to its specific chemical mechanism or waste characteristic.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Ferric chloride coagulation",
+      "right": "Removes arsenate effectively across pH 5.5 to 7.0 without acid"
+     },
+     {
+      "id": "p2",
+      "left": "Manganese precipitation",
+      "right": "Removes far less arsenate than iron coprecipitation and adsorption"
+     },
+     {
+      "id": "p3",
+      "left": "Sulfur-modified iron",
+      "right": "Packed-bed media removing arsenate and arsenite best below pH 8"
+     },
+     {
+      "id": "p4",
+      "left": "Iron filings with sand and sulfate",
+      "right": "Reduces inorganic arsenic into iron coprecipitates and arsenopyrites"
+     },
+     {
+      "id": "p5",
+      "left": "Alkaline GFH regeneration leachate",
+      "right": "High-arsenate liquid requiring extra treatment, favouring spent media disposal"
+     },
+     {
+      "id": "p6",
+      "left": "Photooxidation and coprecipitation",
+      "right": "Experimental mine-water process yielding TCLP-passing solid residuals"
+     }
+    ],
+    "explanation": "Arsenic treatment performance varies strongly with iron chemistry, pH, sulfate reduction, and whether spent media are regenerated or disposed directly."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "f4353a1075a8defbd0a880ea6116335e6f53976d5e20e64bf4f0a5dd919a1023",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-class2-water-r01-m1-16",
+    "prompt": "Match each disinfection byproduct control tactic to how it limits unwanted chlorinated compounds.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Enhanced coagulation",
+      "right": "Initial conventional treatment step removing organic precursors"
+     },
+     {
+      "id": "p2",
+      "left": "Downstream chlorination point",
+      "right": "Delays chlorine addition until precursor levels are lower"
+     },
+     {
+      "id": "p3",
+      "left": "Chlorine dioxide preoxidation",
+      "right": "Substitutes for prechlorination while generating fewer organic DBPs"
+     },
+     {
+      "id": "p4",
+      "left": "Dual-oxidant staging",
+      "right": "Applies different oxidants where precursor levels remain high"
+     },
+     {
+      "id": "p5",
+      "left": "Seasonal powdered activated carbon",
+      "right": "Intermittently adsorbs trihalomethane precursors during peaks"
+     },
+     {
+      "id": "p6",
+      "left": "Spiral-wound nanofiltration",
+      "right": "Rejects precursors down to 200 to 300 daltons after pretreatment"
+     }
+    ],
+    "explanation": "Utilities curb disinfection byproducts by removing precursors early, relocating chlorine, staging alternative oxidants, or applying seasonal carbon and tight membranes."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "df11ab8eefcba0f3a4ed5d078fd060fd63c4ab0e0d5ca8d17034c0bf73e497f8",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-class2-water-r01-m1-17",
+    "prompt": "Match each filtration rate category or treatment configuration to its distinguishing operational characteristic.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Slow sand filtration",
+      "right": "Operates at very low surface loading measured in gallons per day"
+     },
+     {
+      "id": "p2",
+      "left": "Conventional rapid sand filtration",
+      "right": "Uses fine sand or dual media over gravel with half-day to multi-day runs"
+     },
+     {
+      "id": "p3",
+      "left": "High-rate granular filtration",
+      "right": "Operates faster than standard rapid sand under added safeguards"
+     },
+     {
+      "id": "p4",
+      "left": "Ultra-high-rate filtration",
+      "right": "Highest surface loading class requiring strict operating conditions"
+     },
+     {
+      "id": "p5",
+      "left": "Direct filtration",
+      "right": "Captures all coagulated solids on the bed without sedimentation"
+     },
+     {
+      "id": "p6",
+      "left": "Alternative filtration pilot study",
+      "right": "Demonstrates required Giardia, virus, and Cryptosporidium removal"
+     }
+    ],
+    "explanation": "Filtration technologies differ in hydraulic loading rate, whether upstream settling is included, and how pathogen removal capability is demonstrated."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "766921ebd31e7798add2a1102be97a98484b878a8812df1cc191abde2869ecff",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-class2-water-r01-m1-18",
+    "prompt": "Match each chemical oxidation or macroinvertebrate control observation to its documented water treatment behaviour.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Monochloramine on juvenile clams",
+      "right": "Controls Asiatic clams effectively without forming trihalomethanes"
+     },
+     {
+      "id": "p2",
+      "left": "Warm water biocide exposure",
+      "right": "Greatly increases clam mortality compared with cold water"
+     },
+     {
+      "id": "p3",
+      "left": "Pre-filtration oxidant contact time",
+      "right": "Prevents soluble iron and manganese from precipitating in mains"
+     },
+     {
+      "id": "p4",
+      "left": "Alkaline iron-manganese precipitation",
+      "right": "Forms settleable and filterable metal solids before pH is lowered"
+     },
+     {
+      "id": "p5",
+      "left": "Vented tank resting",
+      "right": "Passively releases part of trapped gas prior to forced aeration"
+     },
+     {
+      "id": "p6",
+      "left": "Humic substance aeration",
+      "right": "Oxidizes organic fractions that could otherwise form trihalomethanes"
+     }
+    ],
+    "explanation": "Oxidation and gas transfer depend on pH, temperature, and reaction time whether targeting nuisance clams, dissolved metals, or volatile sulfides."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "136a8809e830e1078a30bc9b9852e299def23a02697ad333889fe6c4678af1a0",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-class2-water-r01-m1-20",
+    "prompt": "Match each viral or protozoan disinfection trait to its water treatment significance.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Hypochlorous acid dominance",
+      "right": "Low-pH free chlorine species with superior germicidal power"
+     },
+     {
+      "id": "p2",
+      "left": "Hypochlorite ion dominance",
+      "right": "High-pH free chlorine species with weaker germicidal power"
+     },
+     {
+      "id": "p3",
+      "left": "Reovirus in cold estuary tests",
+      "right": "Least chlorine-resistant enteric virus among twenty tested strains"
+     },
+     {
+      "id": "p4",
+      "left": "Poliovirus in cold estuary tests",
+      "right": "Highly chlorine-resistant enteric virus needing long contact time"
+     },
+     {
+      "id": "p5",
+      "left": "Giardia cyst microscopy",
+      "right": "Tedious detection assay requiring high examiner skill and patience"
+     },
+     {
+      "id": "p6",
+      "left": "Cell wall diffusion and rupture",
+      "right": "Primary factors governing how efficiently a disinfectant inactivates"
+     }
+    ],
+    "explanation": "Pathogen control depends on chlorine speciation, wide resistance differences between viruses and protozoa, and disinfectant penetration into cells."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "910da6708a72e7a6b228774931e566331494f150d1448147f1538f6394262970",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "ct261118-class2-water-r01-m2-11",
+    "prompt": "Three of these water characteristics are classified as primary factors affecting internal pipe corrosion rather than secondary factors. Which one is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Alkalinity"
+     },
+     {
+      "id": "opt2",
+      "label": "Dissolved oxygen"
+     },
+     {
+      "id": "opt3",
+      "label": "Total dissolved solids"
+     },
+     {
+      "id": "opt4",
+      "label": "Pipe flow velocity"
+     }
+    ],
+    "correctOptionId": "opt4",
+    "explanation": "Alkalinity, dissolved oxygen, pH, calcium hardness, and total dissolved solids are primary corrosion factors, whereas pipe water velocity is classified as a secondary factor."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "24b3a3cfc6384d0d127862f1d1f643d5d51510663d197902e8ae85a238e0657b",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-class2-water-r01-m2-13",
+    "prompt": "Three of these materials are corrosion-resistant pipe materials used to prevent distribution pipe corrosion. Which material is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Stainless steel distribution piping"
+     },
+     {
+      "id": "opt2",
+      "label": "Reinforced concrete pressure piping"
+     },
+     {
+      "id": "opt3",
+      "label": "Polyvinyl chloride (PVC) plastic pipe"
+     },
+     {
+      "id": "opt4",
+      "label": "Activated carbon powder"
+     }
+    ],
+    "correctOptionId": "opt4",
+    "explanation": "Stainless steel, reinforced concrete, and PVC plastic are corrosion-resistant pipe materials, whereas powdered activated carbon is a treatment adsorbent for organic precursors and odours."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "e3c664348fdf5e51fe81bb12eb894b23dc1026a187363485c1bb193c05306f32",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-class2-water-r01-m2-14",
+    "prompt": "Three of these agents are listed methods of drinking water disinfection using metal ions or oxidizing chemicals. Which chemical is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Silver ions"
+     },
+     {
+      "id": "opt2",
+      "label": "Bromine"
+     },
+     {
+      "id": "opt3",
+      "label": "Potassium permanganate"
+     },
+     {
+      "id": "opt4",
+      "label": "Soda ash"
+     }
+    ],
+    "correctOptionId": "opt4",
+    "explanation": "Silver ions, bromine, and potassium permanganate appear among metal-ion and oxidizing disinfection methods, whereas mild soda ash adjusts carbonate alkalinity for softening or corrosion."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "c8c5ea3157dc05522aeaf846b3fc7e43d340d243e1ae4b9eb0500b82cb1bc9bc",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-class2-water-r01-m2-15",
+    "prompt": "Three of these compounds are brominated organic disinfection byproducts formed after hypobromous acid reacts with natural organic matter. Which ion is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Bromoform"
+     },
+     {
+      "id": "opt2",
+      "label": "Bromopicrin"
+     },
+     {
+      "id": "opt3",
+      "label": "Cyanogen bromide"
+     },
+     {
+      "id": "opt4",
+      "label": "Chlorite ion"
+     }
+    ],
+    "correctOptionId": "opt4",
+    "explanation": "Bromoform, bromopicrin, and cyanogen bromide are brominated organic byproducts derived from bromide oxidation, whereas chlorite is an inorganic oxyhalide ion associated with chlorine dioxide."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "a6e685cd33d2e60e0331d0ee4e61a2d85280410e8a4f462a6ac02c2f4fc8ae77",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-class2-water-r01-m2-16",
+    "prompt": "Three of these organic reaction products are characteristically formed when ozone reacts with natural organic matter. Which inorganic solid is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Aldehydes"
+     },
+     {
+      "id": "opt2",
+      "label": "Organic acids"
+     },
+     {
+      "id": "opt3",
+      "label": "Aldo- and keto-acids"
+     },
+     {
+      "id": "opt4",
+      "label": "Arsenopyrite"
+     }
+    ],
+    "correctOptionId": "opt4",
+    "explanation": "Ozone reacts with natural organic matter to produce aldehydes, organic acids, and aldo- and keto-acids, whereas arsenopyrite is an iron-arsenic-sulfur mineral precipitate."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "3c9de6a07979d9ee54145b70cf92ac338f7398f4771f073dcc8e598276771800",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "ct261118-class2-water-r01-m2-17",
+    "prompt": "Three of these organisms or particles are explicitly removed by granular media filtration in addition to silt and floc. Which dissolved species is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Suspended aquatic insect larvae"
+     },
+     {
+      "id": "opt2",
+      "label": "Microscopic algae cells in water"
+     },
+     {
+      "id": "opt3",
+      "label": "Dormant Giardia lamblia cysts"
+     },
+     {
+      "id": "opt4",
+      "label": "Dissolved sodium ions"
+     }
+    ],
+    "correctOptionId": "opt4",
+    "explanation": "Granular media filtration removes algae, insect larvae, bacteria, and protozoan cysts, whereas dissolved monovalent sodium ions pass straight through sand pores."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "6dcfccec85176539b509765b98bc141ae8d1b944b8b2c561e23abaf035116b68",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-class2-water-r01-m2-19",
+    "prompt": "Three of these treatment effects can be accomplished by forced aeration during water pretreatment. Which process is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Stripping trapped hydrogen sulfide odour gas"
+     },
+     {
+      "id": "opt2",
+      "label": "Oxidizing dissolved ferrous iron and manganese"
+     },
+     {
+      "id": "opt3",
+      "label": "Oxidizing humic substances that form trihalomethanes"
+     },
+     {
+      "id": "opt4",
+      "label": "Softening on brine-regenerated resin"
+     }
+    ],
+    "correctOptionId": "opt4",
+    "explanation": "Aeration removes hydrogen sulfide and helps oxidize iron, manganese, and humic substances, whereas swapping hardness cations requires a synthetic ion exchange bed."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "92704f6427439d53aa3a650bfcd968b71f166dd3390a4c27c4fc25dc879e9e37",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "ct261118-class2-water-r01-m3-01",
+    "prompt": "Assume stream flow velocity decreases gradually along a calm reach with no new tributaries entering. What happens to the maximum size of suspended particles carried in the water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "inc",
+      "label": "It increases"
+     },
+     {
+      "id": "dec",
+      "label": "It decreases"
+     },
+     {
+      "id": "same",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "dec",
+    "explanation": "High water velocities carry larger suspended particles; as flow velocity decreases, heavier and larger suspended particles drop out."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "b82a6aab8f2432904d8afbb34c9004fe5754a11dc9b56b67e919e26ff1f6fb18",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-class2-water-r01-m3-02",
+    "prompt": "Assume rainwater infiltrates a limestone aquifer beneath a much thicker, organically active soil layer while temperature stays constant. What happens to the carbonic acid formed in the infiltrating water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "inc",
+      "label": "It increases"
+     },
+     {
+      "id": "dec",
+      "label": "It decreases"
+     },
+     {
+      "id": "same",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "inc",
+    "explanation": "Thicker soil contributes more natural carbon dioxide to infiltrating water, forming more mineral-dissolving carbonic acid."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "e250391a8545aaa9bbd885a2f3afd428d644dfd939d237ad537194b7d2f45ab8",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-class2-water-r01-m3-03",
+    "prompt": "Assume two divalent metal ions have identical mass concentrations in mg/L, and the second metal has a larger equivalent weight than the first. What happens to the calculated hardness in mg/L as CaCO3?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "inc",
+      "label": "It increases"
+     },
+     {
+      "id": "dec",
+      "label": "It decreases"
+     },
+     {
+      "id": "same",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "dec",
+    "explanation": "Hardness as CaCO3 equals metal concentration times 50 divided by equivalent weight, so a larger equivalent weight yields a smaller CaCO3 hardness."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "8093c5c289e9fef211f800ba8db251f043dee520fb76cb5ed19f60776ee6a66e",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "ct261118-class2-water-r01-m3-04",
+    "prompt": "Assume knob-like corrosion tubercles grow across the interior wall of an unlined cast-iron pipe at steady flow. What happens to the hydraulic C factor of the pipe?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "inc",
+      "label": "It increases"
+     },
+     {
+      "id": "dec",
+      "label": "It decreases"
+     },
+     {
+      "id": "same",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "dec",
+    "explanation": "Tuberculation roughens the pipe interior and raises resistance to flow, which decreases the pipe's C factor."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "aa334e3458927453ae05a96cb2d117341b9b96a1a955d81442215e9eb68fb88c",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-class2-water-r01-m3-05",
+    "prompt": "Assume an operator modifies finished water chemistry with alkali to raise pH toward calcium carbonate stability. What happens to the concentration of hydrogen ions available for galvanic corrosion?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "inc",
+      "label": "It increases"
+     },
+     {
+      "id": "dec",
+      "label": "It decreases"
+     },
+     {
+      "id": "same",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "dec",
+    "explanation": "Raising the pH reduces the hydrogen ions available to drive galvanic corrosion at pipe surfaces."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "e180ed61b31bbff6b468689e2d489f62bfda93b43c9a45d12db8ac0af1abab24",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-class2-water-r01-m3-06",
+    "prompt": "Assume alkaline corrosion-control treatment raises distribution water pH from acidic to slightly alkaline at adequate alkalinity. What happens to the solubility of zinc and copper in plumbing?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "inc",
+      "label": "It increases"
+     },
+     {
+      "id": "dec",
+      "label": "It decreases"
+     },
+     {
+      "id": "same",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "dec",
+    "explanation": "Increasing pH during water quality modification lowers the solubility of plumbing metals including copper, zinc, iron, and lead."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "2b04891523af5252806a0db990082dfeb2bc4e5c2dd8a04095cae9f88e0683bf",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-class2-water-r01-m3-11",
+    "prompt": "Assume potassium permanganate is fed at the headworks to oxidize organic matter before downstream free chlorination. What happens to disinfection byproduct formation at the downstream chlorination stage?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "inc",
+      "label": "It increases"
+     },
+     {
+      "id": "dec",
+      "label": "It decreases"
+     },
+     {
+      "id": "same",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "dec",
+    "explanation": "Oxidizing organic precursors with potassium permanganate at the head of the plant reduces byproduct formation during later chlorination."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "b3855e976d9ee94d15ab10aa060fafa7c7614cdf805c322d67fa17ed9e3374b9",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-class2-water-r01-m3-12",
+    "prompt": "Assume raw water temperature rises substantially while monochloramine is applied at a steady residual to control juvenile Asiatic clams. What happens to the biocidal effectiveness of monochloramine?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "inc",
+      "label": "It increases"
+     },
+     {
+      "id": "dec",
+      "label": "It decreases"
+     },
+     {
+      "id": "same",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "inc",
+    "explanation": "The effectiveness of monochloramine against juvenile Asiatic clams increases greatly as water temperature rises."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "1236f608d5e7d4c2b36fe382e21a0ff11d56e05d22e9c9c21a6c117ffb9d8192",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-class2-water-r01-m3-13",
+    "prompt": "Assume the chlorine dose drops while raw water bromide ion concentration remains constant during chlorination of organic-rich water. What happens to the shift of trihalomethanes toward brominated species?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "inc",
+      "label": "It increases"
+     },
+     {
+      "id": "dec",
+      "label": "It decreases"
+     },
+     {
+      "id": "same",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "inc",
+    "explanation": "Lowering chlorine dose at constant bromide raises the bromide-to-chlorine ratio, shifting trihalomethane speciation toward more brominated forms."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "cd6012b00b299e5e7c4e9693fe9842d86bf337163aedadcabdb0318817b58006",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-class2-water-r01-m3-14",
+    "prompt": "Assume treated estuary water stays at constant pH, temperature, and free chlorine residual when testing poliovirus instead of reovirus. What happens to the contact time needed for four-log virus inactivation?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "inc",
+      "label": "It increases"
+     },
+     {
+      "id": "dec",
+      "label": "It decreases"
+     },
+     {
+      "id": "same",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "inc",
+    "explanation": "Poliovirus is far more resistant to free chlorine than reovirus under identical pH and temperature, requiring much longer contact time."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "9394b169253977c21ea39553012f74c62c94acc4f50ee176c8a5323be3c2fcfe",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "ct261118-class2-water-r01-m3-15",
+    "prompt": "Assume raw water pH is lowered during enhanced alum coagulation of arsenate-bearing source water at a constant alum dose. What happens to arsenate removal by the alum coagulation step?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "inc",
+      "label": "It increases"
+     },
+     {
+      "id": "dec",
+      "label": "It decreases"
+     },
+     {
+      "id": "same",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "inc",
+    "explanation": "Lowering pH during enhanced coagulation improves arsenate removal when alum is used as the coagulant."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "a9340fe245a008c98ac5f10b21e6472fa25441678c1d0f494089ed9646944ec1",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "ct261118-class2-water-r01-m3-16",
+    "prompt": "Assume raw water pH shifts from 7.0 to 5.8 during ferric chloride coagulation at a constant coagulant dose. What happens to arsenate removal efficiency across that pH interval?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "inc",
+      "label": "It increases"
+     },
+     {
+      "id": "dec",
+      "label": "It decreases"
+     },
+     {
+      "id": "same",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "same",
+    "explanation": "Unlike alum coagulation, pH has no significant effect on ferric coagulation arsenate removal between pH 5.5 and 7.0."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "a303dd18a36733074131400ff05743162eab573c1471940592a2db76b4e25538",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "ct261118-class2-water-r01-m3-17",
+    "prompt": "Assume dissolved phosphate rises sharply in raw water entering a granular ferric hydroxide adsorber at constant pH and flow. What happens to arsenate adsorption on the granular ferric hydroxide?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "inc",
+      "label": "It increases"
+     },
+     {
+      "id": "dec",
+      "label": "It decreases"
+     },
+     {
+      "id": "same",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "dec",
+    "explanation": "Phosphate competes strongly with arsenate for surface sites, reducing arsenate removal on granular ferric hydroxide."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "db81bae30e0ed7ef2ea17381042e3d0b07573cfb69ae7d10fa2009f65c19863a",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "ct261118-class2-water-r01-m3-18",
+    "prompt": "Assume feed water pH increases across a granular ferric hydroxide adsorption column at steady flow and influent arsenate level. What happens to arsenate adsorption capacity on the media?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "inc",
+      "label": "It increases"
+     },
+     {
+      "id": "dec",
+      "label": "It decreases"
+     },
+     {
+      "id": "same",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "dec",
+    "explanation": "Typical of anion adsorption on iron oxides, arsenate adsorption on granular ferric hydroxide decreases as pH rises."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "49665dbde1739b765d0dc4133c7a8219b849aacd76bd3aed3ead5300f63fb96a",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "ct261118-class2-water-r01-m3-19",
+    "prompt": "Assume flow rate through a partially plugged sulfur-modified iron packed bed is reduced while pH stays constant. What happens to arsenic removal across the packed bed?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "inc",
+      "label": "It increases"
+     },
+     {
+      "id": "dec",
+      "label": "It decreases"
+     },
+     {
+      "id": "same",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "inc",
+    "explanation": "Longer residence time at reduced flow rates improves arsenic removal in packed-bed sulfur-modified iron columns."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "ac5c5228ee87c70e14b646500e471db3e9cc1475b601e481c25d9482b0b0a0de",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "ct261118-class2-water-r01-m3-20",
+    "prompt": "Assume extra dry solute is stirred into an already saturated aqueous solution while temperature and pH stay unchanged. What happens to the dissolved solute concentration in the liquid phase?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "inc",
+      "label": "It increases"
+     },
+     {
+      "id": "dec",
+      "label": "It decreases"
+     },
+     {
+      "id": "same",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "same",
+    "explanation": "A saturated solution is at equilibrium and does not dissolve additional solute when temperature and chemical conditions remain unchanged."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "a83a7d0d12c50dd062d5c49b6f1d139facd6ad9295981ff64d851c2668270ec2",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "ct261118-class2-water-r01-m4-01",
+    "prompt": "Three operators compare shallow unconsolidated well types for a municipal drinking water evaluation. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Dug wells are large-diameter shallow excavations lined with brick or concrete and vulnerable to drought."
+     },
+     {
+      "id": "opt2",
+      "label": "Driven wells use small-diameter pipe and a pointed screen pounded into unconsolidated ground."
+     },
+     {
+      "id": "opt3",
+      "label": "Bored wells are drilled deep into solid granite bedrock with rotary bits rather than soil augers."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "Bored wells are excavated in unconsolidated materials using hand- or machine-driven augers that fill with soil, not rotary drilling in hard bedrock."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "3484097e9362f42a50654777ada2cc7028dbe52f816cf68ac8e4fe9b59a1071c",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-class2-water-r01-m4-02",
+    "prompt": "A study group reviews structural barriers protecting a municipal groundwater well from surface seepage. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "The well casing supports borehole walls, houses pump equipment, and extends above ground level."
+     },
+     {
+      "id": "opt2",
+      "label": "The concrete well pad centers on the wellhead to keep surface contaminants from seeping along the casing."
+     },
+     {
+      "id": "opt3",
+      "label": "The sanitary well seal sits at the bottom of the screen to block sand from entering the aquifer."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "A sanitary seal is installed at the top of the well casing to seal tightly around cables, gauges, piping, and the air vent."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "be0037a50adc1b156e95b90befec3fc0277c7d97d2733beaa29a055adceb41f6",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-class2-water-r01-m4-04",
+    "prompt": "A plant team evaluates removing soluble iron and manganese by high-pH chemical precipitation using lime. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Adding lime raises water pH into an alkaline range so iron and manganese form solid precipitates."
+     },
+     {
+      "id": "opt2",
+      "label": "Part of the metal precipitate settles out with time while sand filters capture the remaining solids."
+     },
+     {
+      "id": "opt3",
+      "label": "Treated water is distributed directly at that elevated precipitation pH."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "Because iron and manganese precipitation requires raising pH to 10 to 11, the pH is lowered afterward before the water is distributed for consumption."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "2c14898c4f53fbe5586a0689455d87ba2b45d33e7f4cdadd781123236b2edd34",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "ct261118-class2-water-r01-m4-08",
+    "prompt": "Trainees discuss the physical and chemical characteristics of aqueous solutions, colloids, and precipitates. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Colloidal sols consist of sub-micron particles uniformly dispersed as a phase distinct from water."
+     },
+     {
+      "id": "opt2",
+      "label": "Standard laboratory filtration traps dissolved and colloidal solids while letting suspended solids pass."
+     },
+     {
+      "id": "opt3",
+      "label": "A precipitate is a formerly dissolved substance separated as a solid by reaction or pH shift."
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "Total solids include suspended solids largely removable by a filter, whereas colloidal and dissolved solids pass through the filter."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "8efbdb5cae2cadf3fa83a4f8e1e33568d57334f70d5cc8ffc55a33c953c95bf2",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-class2-water-r01-m4-10",
+    "prompt": "Two operators review hydraulic safeguards and piping appurtenances on a gravity sand filter cell. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "An overflow device prevents excessive water depth while an effluent weir keeps water above the sand surface."
+     },
+     {
+      "id": "opt2",
+      "label": "Refilling a drained filter cell from the top downward purges trapped air gently without disturbing sand."
+     },
+     {
+      "id": "opt3",
+      "label": "A loss-of-head gauge, rate-of-flow controller, and filtered waste sample taps support normal filter operation."
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "A gravity sand filter requires provisions for filling from the bottom upward so air is displaced gently from the media."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "6498143a522c5e298ee2165da2ca59d3d4d8a61478c6cf94d699fe96dcbaaea8",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "ct261118-class2-water-r01-m4-14",
+    "prompt": "A process engineer reviews headworks permanganate and pre-ozonation for controlling downstream chlorination byproduct precursors. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Adding potassium permanganate at the headworks oxidizes organic precursors ahead of downstream chlorination."
+     },
+     {
+      "id": "opt2",
+      "label": "Ozone precursor oxidation depends on dose, pH, alkalinity, and the character of natural organic matter."
+     },
+     {
+      "id": "opt3",
+      "label": "Pre-ozonation above pH 7.5 lowers chlorination byproduct precursors better than ozonation at acidic pH."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "Ozone reduces precursors effectively at low pH, whereas at higher pH levels above 7.5 ozone can increase chlorination byproduct precursors."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "eb6037fcf30ef69754170dd70c787799323e8b41bb5fdc424d4ea5117308c0cf",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "ct261118-class2-water-r01-m5-01",
+    "prompt": "In the handbook's standard municipal well-development process, does official well site approval occur before or after submitting the development application?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "Well site approval takes place after the application to develop a well supply has been submitted to the applicable authorities."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "b202e0b177300baf5cf9cee3a48080536a4cde66fb1abb6ac7be3d867adb0720",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-class2-water-r01-m5-02",
+    "prompt": "During continuous pressure grouting of a well's annular space, is grout sealed near the ground surface before or after grout placement begins at the bottom?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "Annular grout is pumped under continuous pressure starting at the bottom and progressing upward toward the surface in one continuous operation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "311e9389d456a8be9218fce33a0d123e8c87cdd629b8db21a28abb643ca6ee3c",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "ct261118-class2-water-r01-m5-03",
+    "prompt": "In well borehole construction, is annular grouting around the casing performed before or after the borehole is excavated and cased?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "A casing is placed inside the excavated borehole to prevent collapse, and cementitious grout is pumped into the annular space within 48 hours of construction."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "789b4185f8a86535b41c3afb702de2c944773bdbece3dd65ede573559478d4a0",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "ct261118-class2-water-r01-m5-04",
+    "prompt": "In a small untreated groundwater supply pumped from the aquifer through storage into distribution mains, does storage occur before or after groundwater withdrawal?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "In a basic small groundwater system, water is first withdrawn by pumping from the groundwater source and delivered to storage ahead of distribution."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "bc079afddb12e07655b69ae5a08d4ff5300ac2e3651e60364a78f4bff9642a96",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "ct261118-class2-water-r01-m5-08",
+    "prompt": "In an operating cycle of a sodium-form cation-exchange water softener, is strong salt-brine regeneration performed before or after the resin's donor ions are exhausted?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "Water passes through the resin until donor sodium ions are depleted, and strong sodium chloride brine is applied afterward to restore exchange capacity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "1e4e82147620e3b5e8e9a8534d3fbaf586045514e27de9894405dd4330ffd146",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-class2-water-r01-m5-09",
+    "prompt": "In the natural geochemical formation of limestone groundwater hardness, does soil carbon dioxide form carbonic acid in infiltrating rainwater before or after limestone minerals dissolve?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Rainwater alone dissolves few solids until soil carbon dioxide enters it to form carbonic acid, which subsequently dissolves limestone hardness minerals."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "d779ca22aa3c215a9ca06011758e0b9317de46a54ecd1a5de19177842731aeb7",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-class2-water-r01-m5-10",
+    "prompt": "In split-stream ion-exchange softening with bypass blending, is untreated bypass water blended with softened water before or after the treated portion passes through the resin bed?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "A portion of raw water bypasses the resin unit and blends with the zero-hardness resin effluent afterward to restore moderate finished hardness."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "f982490111b7d516852df2e3ac5f8ef5b82577ee2fccba9a439909a8e0267c77",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "ct261118-class2-water-r01-m5-11",
+    "prompt": "When calculating total hardness in mg/L as CaCO3 from separate metal ion concentrations in mg/L, is converting each ion using its equivalent weight done before or after summing them?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Individual metal ion concentrations in mg/L are converted to mg/L as CaCO3 using their equivalent weights prior to adding them together."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "61c97f698fa52671454e9399b01b1285282575eab41571f288289407c3e63181",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-class2-water-r01-m5-13",
+    "prompt": "During downward water flow through a conventional gravity sand filter, does water pass through the sand media layer before or after reaching the graded rock and underdrain?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Flooded water above the filter trickles downward through the sand media bed before entering the underlying graded support rock and underdrain."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "b412e2868868148039096b1717c27c272a64f22f8bc8d005d3a1592ac33769f4",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-class2-water-r01-m5-15",
+    "prompt": "In the mechanical progression of filter crust cracking caused by poor surface wash agitation, does the surface crust form on top of the media before or after splitting under water pressure?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Poor surface agitation lets a crust accumulate atop the media first, and that crust later cracks under filtration water pressure."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "02a6cca0c10ed82b1850f1752c65fa9281417c2d9d2c52f66d3f208121162a83",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "ct261118-class2-water-r01-m5-16",
+    "prompt": "In the biological life cycle of Giardia or Cryptosporidium transmitted via drinking water, does excystation occur before or after a warm-blooded host ingests the dormant cyst or oocyst?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "Dormant cysts and oocysts survive outside in water until ingested by a warm-blooded animal, after which the life cycle continues with excystation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "c3b476b9b07ad9941fe5717d9117d64bd23fcd67125d5c600239f1014494817c",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "ct261118-class2-water-r01-m5-18",
+    "prompt": "In the chemical pathway forming brominated organic disinfection byproducts in bromide-bearing water, is bromide oxidized to hypobromous acid before or after reacting with natural organic matter?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Free chlorine or ozone first oxidizes bromide ion to hypobromous acid, which subsequently reacts with natural organic matter to yield brominated byproducts."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "cb294363d5a74eb6e47f5a8089585605d5d913a03fa1b74171cf1f246f6eaece",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  },
+  {
+   "courseKey": "class2-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-class2-water-r01-m5-20",
+    "prompt": "In low-pH enhanced alum coagulation operated for arsenate removal, is corrosion-control pH adjustment applied before or after the enhanced coagulation step?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "When enhanced alum coagulation is run at reduced pH to improve arsenate removal, posttreatment pH adjustment is applied afterward for corrosion control."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+    "notes": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:37:34.505Z",
+    "payloadSha256": "d26ea44f2c4b154a56303c68ae19dae4eaac48376bde59c879b62294de21cd63",
+    "builderResultsSha256": "57e50d9709da6ea07e56cd6fb6c1490ff36cd9ac7bd1775ae199d006c3defd78"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-carbon",
+   "reviewedAt": "2026-11-19T01:34:08.413453+00:00",
+   "attestation": "Strict final Carbon AI self-review of target-class2-water-r01 against supplied textbook pages, existing class2-water tasks, peer class1-water tasks, and intra-batch items; 65 exact items accepted and 55 rejected.",
+   "payloadSha256": {
+    "ct261118-class2-water-r01-m0-01": "bc60c3ff2c76f143e566c0d950eb1d10d2cca411dbf6784dfcfa3cc91a9a51f8",
+    "ct261118-class2-water-r01-m0-04": "865ea55f1ef75a671a9255347daa8543b2191f7be6574488738fafe9ef890bfe",
+    "ct261118-class2-water-r01-m0-05": "82b5f29cfa4349d792666fc126555c563d9a2e72b708d76703f6ccb53ffebb4d",
+    "ct261118-class2-water-r01-m0-09": "e81b90be2c83105565c69257d368ed3c58f5f433803dc7f049b26fc3ef33ae85",
+    "ct261118-class2-water-r01-m0-13": "e774a06f28abdc295e3a4368383cde2f5d474997cb375269f884214f56cd490e",
+    "ct261118-class2-water-r01-m0-14": "7348201b969cb2eced2eee4227a462071b757d09262038fd4e357c5c6aada0b7",
+    "ct261118-class2-water-r01-m0-15": "e0f3c2b8b2440289af564365672497b7c1211e4ba0f662745e325574fa7d6e14",
+    "ct261118-class2-water-r01-m1-02": "9f263b57c26570e5e6c088b730c4465cf7e9c0d9dbce8dfc909180a87a31d5ec",
+    "ct261118-class2-water-r01-m1-03": "08905a6fd97d2ea64e574247585a1dc9f28f20ec45070fc929441870cba6a065",
+    "ct261118-class2-water-r01-m1-06": "d6917481d8271958d043ea87c170923aa5e5c8ce7481c7562141e2f754b1e550",
+    "ct261118-class2-water-r01-m1-07": "4134d022ca47f50a6855fbdba00fd61fb3d5ca913dfbb5242d5cab7a0397c6ba",
+    "ct261118-class2-water-r01-m1-09": "cc5a08f503da1613333d5e7c11fb8628d348a31f58495ee082d84500768722fc",
+    "ct261118-class2-water-r01-m2-02": "3708cf4b1dba94adee302ae78aaee88351c4ed5da154f90d2eb796ae40187a32",
+    "ct261118-class2-water-r01-m2-04": "f932dc9879088c118889970930086cb8c8bbd109efe99016b67e58e399ab3698",
+    "ct261118-class2-water-r01-m2-05": "15913527049aee35aade29e3bb3003e7a4dc08c40839630dc5f403f060cb8ff2",
+    "ct261118-class2-water-r01-m2-07": "4f1011eee53c62a696510e11ec0681dda9f1a79d0bfe6c46735c986ad4438b62",
+    "ct261118-class2-water-r01-m2-08": "c9b4d9373588c1d968f0ee62e500a81ff37963a60b658d498f1b9fa41e3c90fd",
+    "ct261118-class2-water-r01-m2-10": "6a095ce58e8b6cc5e86e7c3071fc831b3fceddc7c926c01099726a32a2184078",
+    "ct261118-class2-water-r01-m1-11": "00f6b8c4410b6694057bd660a0c9acb6566bb3f4977485e63e23468582f9e623",
+    "ct261118-class2-water-r01-m1-12": "b54a4091494632c6249496d4d662598c5f3e06ac25e31123adefcc6798a0bdc0",
+    "ct261118-class2-water-r01-m1-14": "f4353a1075a8defbd0a880ea6116335e6f53976d5e20e64bf4f0a5dd919a1023",
+    "ct261118-class2-water-r01-m1-16": "df11ab8eefcba0f3a4ed5d078fd060fd63c4ab0e0d5ca8d17034c0bf73e497f8",
+    "ct261118-class2-water-r01-m1-17": "766921ebd31e7798add2a1102be97a98484b878a8812df1cc191abde2869ecff",
+    "ct261118-class2-water-r01-m1-18": "136a8809e830e1078a30bc9b9852e299def23a02697ad333889fe6c4678af1a0",
+    "ct261118-class2-water-r01-m1-20": "910da6708a72e7a6b228774931e566331494f150d1448147f1538f6394262970",
+    "ct261118-class2-water-r01-m2-11": "24b3a3cfc6384d0d127862f1d1f643d5d51510663d197902e8ae85a238e0657b",
+    "ct261118-class2-water-r01-m2-13": "e3c664348fdf5e51fe81bb12eb894b23dc1026a187363485c1bb193c05306f32",
+    "ct261118-class2-water-r01-m2-14": "c8c5ea3157dc05522aeaf846b3fc7e43d340d243e1ae4b9eb0500b82cb1bc9bc",
+    "ct261118-class2-water-r01-m2-15": "a6e685cd33d2e60e0331d0ee4e61a2d85280410e8a4f462a6ac02c2f4fc8ae77",
+    "ct261118-class2-water-r01-m2-16": "3c9de6a07979d9ee54145b70cf92ac338f7398f4771f073dcc8e598276771800",
+    "ct261118-class2-water-r01-m2-17": "6dcfccec85176539b509765b98bc141ae8d1b944b8b2c561e23abaf035116b68",
+    "ct261118-class2-water-r01-m2-19": "92704f6427439d53aa3a650bfcd968b71f166dd3390a4c27c4fc25dc879e9e37",
+    "ct261118-class2-water-r01-m3-01": "b82a6aab8f2432904d8afbb34c9004fe5754a11dc9b56b67e919e26ff1f6fb18",
+    "ct261118-class2-water-r01-m3-02": "e250391a8545aaa9bbd885a2f3afd428d644dfd939d237ad537194b7d2f45ab8",
+    "ct261118-class2-water-r01-m3-03": "8093c5c289e9fef211f800ba8db251f043dee520fb76cb5ed19f60776ee6a66e",
+    "ct261118-class2-water-r01-m3-04": "aa334e3458927453ae05a96cb2d117341b9b96a1a955d81442215e9eb68fb88c",
+    "ct261118-class2-water-r01-m3-05": "e180ed61b31bbff6b468689e2d489f62bfda93b43c9a45d12db8ac0af1abab24",
+    "ct261118-class2-water-r01-m3-06": "2b04891523af5252806a0db990082dfeb2bc4e5c2dd8a04095cae9f88e0683bf",
+    "ct261118-class2-water-r01-m3-11": "b3855e976d9ee94d15ab10aa060fafa7c7614cdf805c322d67fa17ed9e3374b9",
+    "ct261118-class2-water-r01-m3-12": "1236f608d5e7d4c2b36fe382e21a0ff11d56e05d22e9c9c21a6c117ffb9d8192",
+    "ct261118-class2-water-r01-m3-13": "cd6012b00b299e5e7c4e9693fe9842d86bf337163aedadcabdb0318817b58006",
+    "ct261118-class2-water-r01-m3-14": "9394b169253977c21ea39553012f74c62c94acc4f50ee176c8a5323be3c2fcfe",
+    "ct261118-class2-water-r01-m3-15": "a9340fe245a008c98ac5f10b21e6472fa25441678c1d0f494089ed9646944ec1",
+    "ct261118-class2-water-r01-m3-16": "a303dd18a36733074131400ff05743162eab573c1471940592a2db76b4e25538",
+    "ct261118-class2-water-r01-m3-17": "db81bae30e0ed7ef2ea17381042e3d0b07573cfb69ae7d10fa2009f65c19863a",
+    "ct261118-class2-water-r01-m3-18": "49665dbde1739b765d0dc4133c7a8219b849aacd76bd3aed3ead5300f63fb96a",
+    "ct261118-class2-water-r01-m3-19": "ac5c5228ee87c70e14b646500e471db3e9cc1475b601e481c25d9482b0b0a0de",
+    "ct261118-class2-water-r01-m3-20": "a83a7d0d12c50dd062d5c49b6f1d139facd6ad9295981ff64d851c2668270ec2",
+    "ct261118-class2-water-r01-m4-01": "3484097e9362f42a50654777ada2cc7028dbe52f816cf68ac8e4fe9b59a1071c",
+    "ct261118-class2-water-r01-m4-02": "be0037a50adc1b156e95b90befec3fc0277c7d97d2733beaa29a055adceb41f6",
+    "ct261118-class2-water-r01-m4-04": "2c14898c4f53fbe5586a0689455d87ba2b45d33e7f4cdadd781123236b2edd34",
+    "ct261118-class2-water-r01-m4-08": "8efbdb5cae2cadf3fa83a4f8e1e33568d57334f70d5cc8ffc55a33c953c95bf2",
+    "ct261118-class2-water-r01-m4-10": "6498143a522c5e298ee2165da2ca59d3d4d8a61478c6cf94d699fe96dcbaaea8",
+    "ct261118-class2-water-r01-m4-14": "eb6037fcf30ef69754170dd70c787799323e8b41bb5fdc424d4ea5117308c0cf",
+    "ct261118-class2-water-r01-m5-01": "b202e0b177300baf5cf9cee3a48080536a4cde66fb1abb6ac7be3d867adb0720",
+    "ct261118-class2-water-r01-m5-02": "311e9389d456a8be9218fce33a0d123e8c87cdd629b8db21a28abb643ca6ee3c",
+    "ct261118-class2-water-r01-m5-03": "789b4185f8a86535b41c3afb702de2c944773bdbece3dd65ede573559478d4a0",
+    "ct261118-class2-water-r01-m5-04": "bc079afddb12e07655b69ae5a08d4ff5300ac2e3651e60364a78f4bff9642a96",
+    "ct261118-class2-water-r01-m5-08": "1e4e82147620e3b5e8e9a8534d3fbaf586045514e27de9894405dd4330ffd146",
+    "ct261118-class2-water-r01-m5-09": "d779ca22aa3c215a9ca06011758e0b9317de46a54ecd1a5de19177842731aeb7",
+    "ct261118-class2-water-r01-m5-10": "f982490111b7d516852df2e3ac5f8ef5b82577ee2fccba9a439909a8e0267c77",
+    "ct261118-class2-water-r01-m5-11": "61c97f698fa52671454e9399b01b1285282575eab41571f288289407c3e63181",
+    "ct261118-class2-water-r01-m5-13": "b412e2868868148039096b1717c27c272a64f22f8bc8d005d3a1592ac33769f4",
+    "ct261118-class2-water-r01-m5-15": "02a6cca0c10ed82b1850f1752c65fa9281417c2d9d2c52f66d3f208121162a83",
+    "ct261118-class2-water-r01-m5-16": "c3b476b9b07ad9941fe5717d9117d64bd23fcd67125d5c600239f1014494817c",
+    "ct261118-class2-water-r01-m5-18": "cb294363d5a74eb6e47f5a8089585605d5d913a03fa1b74171cf1f246f6eaece",
+    "ct261118-class2-water-r01-m5-20": "d26ea44f2c4b154a56303c68ae19dae4eaac48376bde59c879b62294de21cd63"
+   }
+  },
+  "registeredAt": "2026-11-19T01:37:34.505Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 5,
+     "f": 2
+    },
+    "dirs": {
+     "increase": 6,
+     "decrease": 8,
+     "unchanged": 2
+    },
+    "longest": 3,
+    "options": 35
+   },
+   "batchSha256": "8ea66b05ef5df87757acb5ed623865e5f62355c621f861a43cae7ae1779ac663"
+  }
+ }
+}

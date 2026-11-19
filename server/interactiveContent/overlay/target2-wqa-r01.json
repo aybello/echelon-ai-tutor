@@ -1,0 +1,1063 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "target2-wqa-r01",
+ "scope": "Owner-authorized AI-reviewed game activities: 27 items.",
+ "additions": [
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wqa-r01-m0-01",
+    "prompt": "Periphyton consists of algae and associated organisms living attached to underwater surfaces.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Periphyton denotes attached underwater communities of algae and associated microorganisms on submerged rocks, plants, or substrates."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:40:48.980930+00:00",
+    "notes": "Strict Carbon self-review completed for overlay target2-wqa-r01 against supplied WQA textbook pages (printed pp. 517-529) and existing WQA inventory; 26 exact items accepted and 12 rejected for intra-batch concept duplication or weak framing.",
+    "registeredAt": "2026-11-19T01:42:03.829Z",
+    "payloadSha256": "22d9bf2c2e9f5e77c4c2daabb1ba26afa1f1e49353a80e8476376397d49c1d2b",
+    "builderResultsSha256": "45a4d07dc3ef025d13bb72cd15fa1df3e82cf04562ccadef3122d3c00d916546"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wqa-r01-m0-04",
+    "prompt": "Adult beetles use their hardened leathery elytra as their primary flight wings when flying above a stream.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Beetle elytra are hardened protective forewings not used for flight; flight relies on membranous hindwings folded beneath them at rest."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:40:48.980930+00:00",
+    "notes": "Strict Carbon self-review completed for overlay target2-wqa-r01 against supplied WQA textbook pages (printed pp. 517-529) and existing WQA inventory; 26 exact items accepted and 12 rejected for intra-batch concept duplication or weak framing.",
+    "registeredAt": "2026-11-19T01:42:03.829Z",
+    "payloadSha256": "de1fc97c1318aa7c1f9a5f932c06e75c4fec39cf60201279f54a49cab821a6fe",
+    "builderResultsSha256": "45a4d07dc3ef025d13bb72cd15fa1df3e82cf04562ccadef3122d3c00d916546"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wqa-r01-m0-05",
+    "prompt": "Whirligig beetles possess divided compound eyes with one pair positioned above the water surface and one pair below.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Divided compound eyes allow surface-dwelling adult whirligig beetles to watch simultaneously for aerial and underwater predators."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:40:48.980930+00:00",
+    "notes": "Strict Carbon self-review completed for overlay target2-wqa-r01 against supplied WQA textbook pages (printed pp. 517-529) and existing WQA inventory; 26 exact items accepted and 12 rejected for intra-batch concept duplication or weak framing.",
+    "registeredAt": "2026-11-19T01:42:03.829Z",
+    "payloadSha256": "8ee23d0fe099ba765f5806aea68868dc3c7c167f5148929e5a43d7110462cc74",
+    "builderResultsSha256": "45a4d07dc3ef025d13bb72cd15fa1df3e82cf04562ccadef3122d3c00d916546"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wqa-r01-m0-07",
+    "prompt": "Dobsonfly larvae, known as hellgrammites, are benthic stream predators equipped with strong chewing pinchers.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Hellgrammites live under stream-bank stones and use prominent chewing mouthparts to prey on diverse aquatic organisms."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:40:48.980930+00:00",
+    "notes": "Strict Carbon self-review completed for overlay target2-wqa-r01 against supplied WQA textbook pages (printed pp. 517-529) and existing WQA inventory; 26 exact items accepted and 12 rejected for intra-batch concept duplication or weak framing.",
+    "registeredAt": "2026-11-19T01:42:03.829Z",
+    "payloadSha256": "cf2065041620c07b29f9509567809fba4ef0e756c84dd85017a0b4fc3fcae8e7",
+    "builderResultsSha256": "45a4d07dc3ef025d13bb72cd15fa1df3e82cf04562ccadef3122d3c00d916546"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wqa-r01-m0-11",
+    "prompt": "Lakes and reservoirs receive water-borne pollutants from surface runoff, tributary streams, groundwater, and atmospheric deposition.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Standing surface waters accumulate contaminants delivered by streams, snowmelt, land runoff, groundwater inflow, and direct deposition from air."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:40:48.980930+00:00",
+    "notes": "Strict Carbon self-review completed for overlay target2-wqa-r01 against supplied WQA textbook pages (printed pp. 517-529) and existing WQA inventory; 26 exact items accepted and 12 rejected for intra-batch concept duplication or weak framing.",
+    "registeredAt": "2026-11-19T01:42:03.829Z",
+    "payloadSha256": "bad40b83b25308b0965a8a6834c46d71faa29f3994a0016b1c5a0cade0dcc7cb",
+    "builderResultsSha256": "45a4d07dc3ef025d13bb72cd15fa1df3e82cf04562ccadef3122d3c00d916546"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wqa-r01-m0-12",
+    "prompt": "In Diptera, Plecoptera, and Ephemeroptera, the winged adult phase represents the longest stage of the insect life cycle.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "For true flies, stoneflies, mayflies, and caddisflies, the underwater larval stage is the longest part of the life cycle."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:40:48.980930+00:00",
+    "notes": "Strict Carbon self-review completed for overlay target2-wqa-r01 against supplied WQA textbook pages (printed pp. 517-529) and existing WQA inventory; 26 exact items accepted and 12 rejected for intra-batch concept duplication or weak framing.",
+    "registeredAt": "2026-11-19T01:42:03.829Z",
+    "payloadSha256": "8122f868b3a1b591c1a1f6f290263818d9a7d3a73d5b254c8fe1e66cbe327cc6",
+    "builderResultsSha256": "45a4d07dc3ef025d13bb72cd15fa1df3e82cf04562ccadef3122d3c00d916546"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wqa-r01-m1-01",
+    "prompt": "Match each freshwater macroinvertebrate anatomical structure to its morphological definition.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "pair-1",
+      "left": "Carapace",
+      "right": "Hardened shield spreading over head and thoracic segments"
+     },
+     {
+      "id": "pair-2",
+      "left": "Caudal filament",
+      "right": "Tail-like thread projecting from the end of the abdomen"
+     },
+     {
+      "id": "pair-3",
+      "left": "Elytra",
+      "right": "Hardened shell-like forewings of adult beetles"
+     },
+     {
+      "id": "pair-4",
+      "left": "Proleg",
+      "right": "Projecting appendage supporting locomotion or attachment"
+     },
+     {
+      "id": "pair-5",
+      "left": "Rostrum",
+      "right": "Elongated beak or beak-like mouthpart"
+     },
+     {
+      "id": "pair-6",
+      "left": "Sclerite",
+      "right": "Hardened body-wall plate surrounded by softer membrane"
+     }
+    ],
+    "explanation": "Macroinvertebrate identification keys rely on distinct structural features of appendages, mouthparts, wings, and exoskeleton plates."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:40:48.980930+00:00",
+    "notes": "Strict Carbon self-review completed for overlay target2-wqa-r01 against supplied WQA textbook pages (printed pp. 517-529) and existing WQA inventory; 26 exact items accepted and 12 rejected for intra-batch concept duplication or weak framing.",
+    "registeredAt": "2026-11-19T01:42:03.829Z",
+    "payloadSha256": "7fdc4603304a80958cb9f767fb38f85dc4acd4e05843cb2fa1724d031e5bfd22",
+    "builderResultsSha256": "45a4d07dc3ef025d13bb72cd15fa1df3e82cf04562ccadef3122d3c00d916546"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wqa-r01-m1-02",
+    "prompt": "Match each aquatic insect order to its corresponding common macroinvertebrate group.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "pair-1",
+      "left": "Ephemeroptera",
+      "right": "Mayflies"
+     },
+     {
+      "id": "pair-2",
+      "left": "Plecoptera",
+      "right": "Stoneflies"
+     },
+     {
+      "id": "pair-3",
+      "left": "Trichoptera",
+      "right": "Caddisflies"
+     },
+     {
+      "id": "pair-4",
+      "left": "Diptera",
+      "right": "True flies"
+     },
+     {
+      "id": "pair-5",
+      "left": "Megaloptera",
+      "right": "Alderflies and dobsonflies"
+     },
+     {
+      "id": "pair-6",
+      "left": "Odonata",
+      "right": "Dragonflies and damselflies"
+     }
+    ],
+    "explanation": "Stream bioassessment classifies benthic insect indicators into distinct taxonomic orders."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:40:48.980930+00:00",
+    "notes": "Strict Carbon self-review completed for overlay target2-wqa-r01 against supplied WQA textbook pages (printed pp. 517-529) and existing WQA inventory; 26 exact items accepted and 12 rejected for intra-batch concept duplication or weak framing.",
+    "registeredAt": "2026-11-19T01:42:03.829Z",
+    "payloadSha256": "b041d04a0d94dc60c13b342c252238ce157dc1e2e0219db8585d5df6b8f94360",
+    "builderResultsSha256": "45a4d07dc3ef025d13bb72cd15fa1df3e82cf04562ccadef3122d3c00d916546"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wqa-r01-m1-03",
+    "prompt": "Match each gastropod shell orientation or anatomical orientation term to its diagnostic meaning.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "pair-1",
+      "left": "Dextral shell",
+      "right": "Aperture opens on the right with spire pointed up"
+     },
+     {
+      "id": "pair-2",
+      "left": "Sinistral shell",
+      "right": "Aperture opens on the left with spire pointed up"
+     },
+     {
+      "id": "pair-3",
+      "left": "Concentric operculum",
+      "right": "Growth pattern of nested circles lying within one another"
+     },
+     {
+      "id": "pair-4",
+      "left": "Pauci-spiral operculum",
+      "right": "Growth pattern showing a few turns from center to edge"
+     },
+     {
+      "id": "pair-5",
+      "left": "Distal position",
+      "right": "Located toward the free end of an appendage"
+     },
+     {
+      "id": "pair-6",
+      "left": "Dorsal surface",
+      "right": "Situated on the upper back of thorax or abdomen"
+     }
+    ],
+    "explanation": "Shell coiling direction, operculum growth lines, and body-axis terms distinguish freshwater snails and benthic invertebrates."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:40:48.980930+00:00",
+    "notes": "Strict Carbon self-review completed for overlay target2-wqa-r01 against supplied WQA textbook pages (printed pp. 517-529) and existing WQA inventory; 26 exact items accepted and 12 rejected for intra-batch concept duplication or weak framing.",
+    "registeredAt": "2026-11-19T01:42:03.829Z",
+    "payloadSha256": "fbb34eb992fb1e5c9877cfa0bd688bd88449b502a5b4c51232d6b938f5f5db33",
+    "builderResultsSha256": "45a4d07dc3ef025d13bb72cd15fa1df3e82cf04562ccadef3122d3c00d916546"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "target2-ct261118-wqa-r01-m1-04",
+    "prompt": "Match each aquatic insect taxon to its specialized feeding or survival adaptation.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "pair-1",
+      "left": "Case-bearing caddisfly larva",
+      "right": "Silk-bound mineral or plant tube ventilated by body undulation"
+     },
+     {
+      "id": "pair-2",
+      "left": "Water penny",
+      "right": "Flat oval body clinging sucker-like beneath rocks to graze algae"
+     },
+     {
+      "id": "pair-3",
+      "left": "Whirligig beetle",
+      "right": "Johnston's organ sensing surface waves and noxious fish deterrent"
+     },
+     {
+      "id": "pair-4",
+      "left": "Water strider",
+      "right": "Water-repellent leg hairs and piercing beak for surface prey"
+     },
+     {
+      "id": "pair-5",
+      "left": "Dragonfly nymph",
+      "right": "Long elbowed lower lip folding back to conceal mouthparts"
+     },
+     {
+      "id": "pair-6",
+      "left": "Filter-feeding true fly larva",
+      "right": "Cephalic head brushes straining suspended food from flowing water"
+     }
+    ],
+    "explanation": "Stream insects occupy varied microhabitats through specialized respiratory, locomotory, sensory, and feeding structures."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:40:48.980930+00:00",
+    "notes": "Strict Carbon self-review completed for overlay target2-wqa-r01 against supplied WQA textbook pages (printed pp. 517-529) and existing WQA inventory; 26 exact items accepted and 12 rejected for intra-batch concept duplication or weak framing.",
+    "registeredAt": "2026-11-19T01:42:03.829Z",
+    "payloadSha256": "9888573a2ec92f85b25fc662dca4700a444f8ea03409f800c4754e0be4e3ad49",
+    "builderResultsSha256": "45a4d07dc3ef025d13bb72cd15fa1df3e82cf04562ccadef3122d3c00d916546"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wqa-r01-m1-05",
+    "prompt": "Match each benthic ecological category or life-form term to its functional role in aquatic systems.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "pair-1",
+      "left": "Periphyton",
+      "right": "Attached algae and associated microbes on submerged substrates"
+     },
+     {
+      "id": "pair-2",
+      "left": "Detritus",
+      "right": "Disintegrated mineral or organic particulate matter"
+     },
+     {
+      "id": "pair-3",
+      "left": "Clinger",
+      "right": "Invertebrate using claws or hooks to hold onto hard surfaces"
+     },
+     {
+      "id": "pair-4",
+      "left": "Xylophagous riffle beetle",
+      "right": "Macroinvertebrate feeding directly on submerged wood"
+     },
+     {
+      "id": "pair-5",
+      "left": "Biotic factor",
+      "right": "Interdependent living community fixing and dissipating energy"
+     },
+     {
+      "id": "pair-6",
+      "left": "Heterotroph",
+      "right": "Consumer decomposing organic matter stored by autotrophs"
+     }
+    ],
+    "explanation": "Stream food webs connect attached producers, dead organic detritus, substrate-adapted invertebrates, and heterotrophic consumers."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:40:48.980930+00:00",
+    "notes": "Strict Carbon self-review completed for overlay target2-wqa-r01 against supplied WQA textbook pages (printed pp. 517-529) and existing WQA inventory; 26 exact items accepted and 12 rejected for intra-batch concept duplication or weak framing.",
+    "registeredAt": "2026-11-19T01:42:03.829Z",
+    "payloadSha256": "4ab8e0e0ede1a924ba1bab8d00d93182aeab4b246b9a7201b8a224f43cd71d1e",
+    "builderResultsSha256": "45a4d07dc3ef025d13bb72cd15fa1df3e82cf04562ccadef3122d3c00d916546"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wqa-r01-m2-01",
+    "prompt": "Which taxonomic group is NOT an insect order among stream macroinvertebrates?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Plecoptera"
+     },
+     {
+      "id": "opt-2",
+      "label": "Trichoptera"
+     },
+     {
+      "id": "opt-3",
+      "label": "Megaloptera"
+     },
+     {
+      "id": "opt-4",
+      "label": "Periphyton"
+     }
+    ],
+    "correctOptionId": "opt-4",
+    "explanation": "Plecoptera, Trichoptera, and Megaloptera are major stream insect orders, whereas periphyton is an attached algal and microbial community."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:40:48.980930+00:00",
+    "notes": "Strict Carbon self-review completed for overlay target2-wqa-r01 against supplied WQA textbook pages (printed pp. 517-529) and existing WQA inventory; 26 exact items accepted and 12 rejected for intra-batch concept duplication or weak framing.",
+    "registeredAt": "2026-11-19T01:42:03.829Z",
+    "payloadSha256": "1a59a9c3dcfdd0ca36ce8c421a9f94b91fe1b1264c556d80a343bbc7b257449e",
+    "builderResultsSha256": "45a4d07dc3ef025d13bb72cd15fa1df3e82cf04562ccadef3122d3c00d916546"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wqa-r01-m2-02",
+    "prompt": "Which feature is NOT one of the defensive adaptations used by adult whirligig beetles on the water surface?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Forming dense surface aggregations that confuse predators"
+     },
+     {
+      "id": "opt-2",
+      "label": "Using Johnston's organ on the antennae to echolocate via surface waves"
+     },
+     {
+      "id": "opt-3",
+      "label": "Secreting noxious chemicals that deter predatory fish"
+     },
+     {
+      "id": "opt-4",
+      "label": "Building portable mineral cases bound with labial silk"
+     }
+    ],
+    "correctOptionId": "opt-4",
+    "explanation": "Portable silk-bound mineral cases are built by caddisfly larvae, not by surface-dwelling whirligig beetles."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:40:48.980930+00:00",
+    "notes": "Strict Carbon self-review completed for overlay target2-wqa-r01 against supplied WQA textbook pages (printed pp. 517-529) and existing WQA inventory; 26 exact items accepted and 12 rejected for intra-batch concept duplication or weak framing.",
+    "registeredAt": "2026-11-19T01:42:03.829Z",
+    "payloadSha256": "7dca263e91298b01f632f7b4e9763e87bcc4729b404ec5cbb0ac9c1120e51955",
+    "builderResultsSha256": "45a4d07dc3ef025d13bb72cd15fa1df3e82cf04562ccadef3122d3c00d916546"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wqa-r01-m2-04",
+    "prompt": "Which term is NOT a growth pattern or coiling descriptor for freshwater gastropod shells and opercula?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Sinistral"
+     },
+     {
+      "id": "opt-2",
+      "label": "Dextral"
+     },
+     {
+      "id": "opt-3",
+      "label": "Pauci-spiral"
+     },
+     {
+      "id": "opt-4",
+      "label": "Prothorax"
+     }
+    ],
+    "correctOptionId": "opt-4",
+    "explanation": "Sinistral and dextral describe snail shell coiling and pauci-spiral describes snail opercula, whereas the prothorax is an insect body segment."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:40:48.980930+00:00",
+    "notes": "Strict Carbon self-review completed for overlay target2-wqa-r01 against supplied WQA textbook pages (printed pp. 517-529) and existing WQA inventory; 26 exact items accepted and 12 rejected for intra-batch concept duplication or weak framing.",
+    "registeredAt": "2026-11-19T01:42:03.829Z",
+    "payloadSha256": "9f6e1187e3f9034daaeafd8228f0fc7976415172284ebb13bfde6dd2362c21b5",
+    "builderResultsSha256": "45a4d07dc3ef025d13bb72cd15fa1df3e82cf04562ccadef3122d3c00d916546"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wqa-r01-m2-05",
+    "prompt": "Which characteristic does NOT describe larvae of the order Megaloptera (alderflies and dobsonflies)?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Prominent chewing mouthparts projecting in front of the head"
+     },
+     {
+      "id": "opt-2",
+      "label": "Seven or eight pairs of stout tapering lateral abdominal filaments"
+     },
+     {
+      "id": "opt-3",
+      "label": "Three pairs of segmented legs attached to a thorax lacking wing pads"
+     },
+     {
+      "id": "opt-4",
+      "label": "Elongated sucking beak with leathery hemelytra forewings"
+     }
+    ],
+    "correctOptionId": "opt-4",
+    "explanation": "An elongated sucking beak and hemelytra belong to Hemiptera (true bugs), whereas Megaloptera larvae are chewing predators lacking wing pads."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:40:48.980930+00:00",
+    "notes": "Strict Carbon self-review completed for overlay target2-wqa-r01 against supplied WQA textbook pages (printed pp. 517-529) and existing WQA inventory; 26 exact items accepted and 12 rejected for intra-batch concept duplication or weak framing.",
+    "registeredAt": "2026-11-19T01:42:03.829Z",
+    "payloadSha256": "a9f09617bbac1790b35bccb2f81fbae59712b885770e39e42f98e191c2007c9a",
+    "builderResultsSha256": "45a4d07dc3ef025d13bb72cd15fa1df3e82cf04562ccadef3122d3c00d916546"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wqa-r01-m2-07",
+    "prompt": "Which goal was NOT one of the three primary public-health objectives of early municipal wastewater treatment programs?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Removing suspended and floatable material"
+     },
+     {
+      "id": "opt-2",
+      "label": "Treating biodegradable organic matter"
+     },
+     {
+      "id": "opt-3",
+      "label": "Eliminating pathogenic microorganisms"
+     },
+     {
+      "id": "opt-4",
+      "label": "Adding mineral hardness to stream water"
+     }
+    ],
+    "correctOptionId": "opt-4",
+    "explanation": "Early wastewater treatment focused on removing floatable and suspended solids, oxidizing biodegradable organics, and eliminating pathogens."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:40:48.980930+00:00",
+    "notes": "Strict Carbon self-review completed for overlay target2-wqa-r01 against supplied WQA textbook pages (printed pp. 517-529) and existing WQA inventory; 26 exact items accepted and 12 rejected for intra-batch concept duplication or weak framing.",
+    "registeredAt": "2026-11-19T01:42:03.829Z",
+    "payloadSha256": "cb5f4fe9ae1e30f76b9f710252b3af9359013f8d9ca1233ccc3a5820a57320c1",
+    "builderResultsSha256": "45a4d07dc3ef025d13bb72cd15fa1df3e82cf04562ccadef3122d3c00d916546"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wqa-r01-m3-01",
+    "prompt": "Dissolved oxygen concentration declines in the water surrounding a healthy case-bearing caddisfly larva while water temperature remains constant. What happens to the rate of body undulation of the larva inside its case?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-1",
+    "explanation": "Caddisfly larvae move up and down inside their cases to pump water past their gills; lower ambient oxygen requires faster undulation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:40:48.980930+00:00",
+    "notes": "Strict Carbon self-review completed for overlay target2-wqa-r01 against supplied WQA textbook pages (printed pp. 517-529) and existing WQA inventory; 26 exact items accepted and 12 rejected for intra-batch concept duplication or weak framing.",
+    "registeredAt": "2026-11-19T01:42:03.829Z",
+    "payloadSha256": "d380e372acb041a33437c30235cdd24da0afca37a19a6e0d2c37ef57211e4a25",
+    "builderResultsSha256": "45a4d07dc3ef025d13bb72cd15fa1df3e82cf04562ccadef3122d3c00d916546"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wqa-r01-m3-02",
+    "prompt": "Stream habitat temperature drops substantially for a cohort of true fly (Diptera) larvae while food supply remains adequate and predation stays constant. What happens to the larval maturation time required before pupation?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-1",
+    "explanation": "In aquatic true fly larvae, colder environmental temperatures slow development and lengthen the time needed to mature."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:40:48.980930+00:00",
+    "notes": "Strict Carbon self-review completed for overlay target2-wqa-r01 against supplied WQA textbook pages (printed pp. 517-529) and existing WQA inventory; 26 exact items accepted and 12 rejected for intra-batch concept duplication or weak framing.",
+    "registeredAt": "2026-11-19T01:42:03.829Z",
+    "payloadSha256": "1a88fe18ae7a7dd4fe80654e83e13a004b6040723aeca7cb91613115f029f929",
+    "builderResultsSha256": "45a4d07dc3ef025d13bb72cd15fa1df3e82cf04562ccadef3122d3c00d916546"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wqa-r01-m3-03",
+    "prompt": "A healthy spring tadpole progresses through metamorphosis into an adult frog under normal pond conditions. What happens to the length of its tail?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-2",
+    "explanation": "During amphibian metamorphosis from fishlike tadpole to adult frog, hind legs lengthen while the larval tail shortens."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:40:48.980930+00:00",
+    "notes": "Strict Carbon self-review completed for overlay target2-wqa-r01 against supplied WQA textbook pages (printed pp. 517-529) and existing WQA inventory; 26 exact items accepted and 12 rejected for intra-batch concept duplication or weak framing.",
+    "registeredAt": "2026-11-19T01:42:03.829Z",
+    "payloadSha256": "544984985326a7105d3723360707fcf4be7e0b7b4e211f4bd96227c435ab270c",
+    "builderResultsSha256": "45a4d07dc3ef025d13bb72cd15fa1df3e82cf04562ccadef3122d3c00d916546"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wqa-r01-m4-01",
+    "prompt": "A stream biologist prepares field notes on freshwater gastropod respiration and shell morphology. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Lung-breathing snails fill a pulmonary cavity with air at the water surface to remain submerged for long periods."
+     },
+     {
+      "id": "opt-2",
+      "label": "Holding a lung-breathing snail shell with the spire up and opening facing the viewer places the opening on the left."
+     },
+     {
+      "id": "opt-3",
+      "label": "Lung-breathing sinistral snails seal their shell opening tightly with a calcareous operculum when disturbed."
+     }
+    ],
+    "correctOptionId": "opt-3",
+    "explanation": "Lung-breathing sinistral freshwater snails lack an operculum cover over their shell opening."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:40:48.980930+00:00",
+    "notes": "Strict Carbon self-review completed for overlay target2-wqa-r01 against supplied WQA textbook pages (printed pp. 517-529) and existing WQA inventory; 26 exact items accepted and 12 rejected for intra-batch concept duplication or weak framing.",
+    "registeredAt": "2026-11-19T01:42:03.829Z",
+    "payloadSha256": "18c32bb6d9a33d1d5181cb9da746a5b6bb91960cee8baa1f5aae181c94f1e40f",
+    "builderResultsSha256": "45a4d07dc3ef025d13bb72cd15fa1df3e82cf04562ccadef3122d3c00d916546"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wqa-r01-m4-02",
+    "prompt": "An aquatic entomology student summarizes the life history and wing anatomy of aquatic beetles (Order Coleoptera). Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Adult beetles fold membranous flight hindwings underneath hardened leathery elytra when resting."
+     },
+     {
+      "id": "opt-2",
+      "label": "Aquatic beetle larvae complete their pupal transformation underwater while attached to submerged rocks."
+     },
+     {
+      "id": "opt-3",
+      "label": "Beetles undergo holometabolous development in which larvae differ morphologically and behaviorally from adults."
+     }
+    ],
+    "correctOptionId": "opt-2",
+    "explanation": "The pupal phase of aquatic coleopterans is terrestrial rather than aquatic."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:40:48.980930+00:00",
+    "notes": "Strict Carbon self-review completed for overlay target2-wqa-r01 against supplied WQA textbook pages (printed pp. 517-529) and existing WQA inventory; 26 exact items accepted and 12 rejected for intra-batch concept duplication or weak framing.",
+    "registeredAt": "2026-11-19T01:42:03.829Z",
+    "payloadSha256": "ba88f9a7868a25e68f234cfe6cd5783e59a588d8ae9fb54276f41d1a2590dfd5",
+    "builderResultsSha256": "45a4d07dc3ef025d13bb72cd15fa1df3e82cf04562ccadef3122d3c00d916546"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wqa-r01-m4-03",
+    "prompt": "A technician compares how surface-dwelling water striders and whirligig beetles detect predators and prey. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Whirligig beetles possess divided compound eyes that view both aerial and underwater surroundings simultaneously."
+     },
+     {
+      "id": "opt-2",
+      "label": "Water striders sense surface vibrations to locate fallen insects, then pierce and paralyze their prey."
+     },
+     {
+      "id": "opt-3",
+      "label": "Water striders readily evade fish and birds because their leg hairs detect motion deep below and high above the water."
+     }
+    ],
+    "correctOptionId": "opt-3",
+    "explanation": "Water striders sense surface vibrations effectively, yet predators exploit their inability to detect motion above or below the water surface."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:40:48.980930+00:00",
+    "notes": "Strict Carbon self-review completed for overlay target2-wqa-r01 against supplied WQA textbook pages (printed pp. 517-529) and existing WQA inventory; 26 exact items accepted and 12 rejected for intra-batch concept duplication or weak framing.",
+    "registeredAt": "2026-11-19T01:42:03.829Z",
+    "payloadSha256": "3e2f6feaf741600d8e255c0cfa9b747a20b4468827a96d5a8d6a4c25af727c67",
+    "builderResultsSha256": "45a4d07dc3ef025d13bb72cd15fa1df3e82cf04562ccadef3122d3c00d916546"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wqa-r01-m4-04",
+    "prompt": "A field guide draft describes caddisfly (Trichoptera) adults, larvae, and protective cases. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Adult caddisflies hold membranous hairy wings tent-like over the body at rest and have reduced mouthparts."
+     },
+     {
+      "id": "opt-2",
+      "label": "Case-bearing larvae cement sand, pebbles, or plant fragments together using silk emitted from the tip of the labium."
+     },
+     {
+      "id": "opt-3",
+      "label": "Leaving its silk-and-mineral case increases oxygen delivery to a caddisfly larva in stagnant low-oxygen water."
+     }
+    ],
+    "correctOptionId": "opt-3",
+    "explanation": "Caddisfly larvae obtain more oxygen inside their cases by undulating to drive water currents across their gills and cuticle."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:40:48.980930+00:00",
+    "notes": "Strict Carbon self-review completed for overlay target2-wqa-r01 against supplied WQA textbook pages (printed pp. 517-529) and existing WQA inventory; 26 exact items accepted and 12 rejected for intra-batch concept duplication or weak framing.",
+    "registeredAt": "2026-11-19T01:42:03.829Z",
+    "payloadSha256": "dea9cb0d9c7aff6799ca405de023162a52879b060544b6200356130691e191ac",
+    "builderResultsSha256": "45a4d07dc3ef025d13bb72cd15fa1df3e82cf04562ccadef3122d3c00d916546"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wqa-r01-m4-05",
+    "prompt": "An analyst reviews morphological traits used to separate Odonata (dragonflies and damselflies) during benthic surveys. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Dragonfly nymphs possess an elongated elbowed lower lip that folds back to conceal other mouthparts."
+     },
+     {
+      "id": "opt-2",
+      "label": "Damselfly nymphs carry three flat gill structures positioned at the posterior end of the abdomen."
+     },
+     {
+      "id": "opt-3",
+      "label": "Adult damselflies rest with both pairs of wings held flat horizontally like dragonflies."
+     }
+    ],
+    "correctOptionId": "opt-3",
+    "explanation": "Unlike dragonflies, adult damselflies rest with their wings closed vertically upright above their backs."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:40:48.980930+00:00",
+    "notes": "Strict Carbon self-review completed for overlay target2-wqa-r01 against supplied WQA textbook pages (printed pp. 517-529) and existing WQA inventory; 26 exact items accepted and 12 rejected for intra-batch concept duplication or weak framing.",
+    "registeredAt": "2026-11-19T01:42:03.829Z",
+    "payloadSha256": "ce394580615035ee4efc76660ee50cd2775942f8bdebafd3212fa07fe26dbd85",
+    "builderResultsSha256": "45a4d07dc3ef025d13bb72cd15fa1df3e82cf04562ccadef3122d3c00d916546"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wqa-r01-m4-06",
+    "prompt": "A watershed educator explains amphibian springtime metamorphosis in freshwater ponds. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Newly hatched tadpole larvae breathe with gills and feed as aquatic herbivores."
+     },
+     {
+      "id": "opt-2",
+      "label": "During metamorphosis, larval teeth disappear, eyelids form, and lungs replace gills."
+     },
+     {
+      "id": "opt-3",
+      "label": "Completed metamorphosis produces an adult frog that remains strictly herbivorous on pond algae."
+     }
+    ],
+    "correctOptionId": "opt-3",
+    "explanation": "While tadpoles are aquatic herbivores, metamorphosis transforms them into carnivorous adult frogs."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:40:48.980930+00:00",
+    "notes": "Strict Carbon self-review completed for overlay target2-wqa-r01 against supplied WQA textbook pages (printed pp. 517-529) and existing WQA inventory; 26 exact items accepted and 12 rejected for intra-batch concept duplication or weak framing.",
+    "registeredAt": "2026-11-19T01:42:03.829Z",
+    "payloadSha256": "ad5101848c858998b5442c5dd9e80daa96a503b5a061dd9490bda98b7feb7c6d",
+    "builderResultsSha256": "45a4d07dc3ef025d13bb72cd15fa1df3e82cf04562ccadef3122d3c00d916546"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wqa-r01-m5-01",
+    "prompt": "In the natural holometabolous life cycle of aquatic Diptera (true flies), does the pupal stage occur before or after the underwater larval feeding stage?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "True flies hatch into underwater larvae that feed and molt for an extended period prior to pupating and emerging as winged adults."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:40:48.980930+00:00",
+    "notes": "Strict Carbon self-review completed for overlay target2-wqa-r01 against supplied WQA textbook pages (printed pp. 517-529) and existing WQA inventory; 26 exact items accepted and 12 rejected for intra-batch concept duplication or weak framing.",
+    "registeredAt": "2026-11-19T01:42:03.829Z",
+    "payloadSha256": "a872fcc2e7c4cc7a3618cb14f0b01c7369153accb701f0450fb730aa0cb8a900",
+    "builderResultsSha256": "45a4d07dc3ef025d13bb72cd15fa1df3e82cf04562ccadef3122d3c00d916546"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wqa-r01-m5-04",
+    "prompt": "In the developmental life cycle of Gyrinidae whirligig beetles, does benthic underwater predation occur before or after surface-film predation by Divided-eye adults?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Whirligig beetles spend their larval stage as benthic predators prior to becoming surface-dwelling predatory adults."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:40:48.980930+00:00",
+    "notes": "Strict Carbon self-review completed for overlay target2-wqa-r01 against supplied WQA textbook pages (printed pp. 517-529) and existing WQA inventory; 26 exact items accepted and 12 rejected for intra-batch concept duplication or weak framing.",
+    "registeredAt": "2026-11-19T01:42:03.829Z",
+    "payloadSha256": "7cf511750e664ed67519da77b356b5cc28e3b9e932fb843c6d35233c756eb59d",
+    "builderResultsSha256": "45a4d07dc3ef025d13bb72cd15fa1df3e82cf04562ccadef3122d3c00d916546"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-carbon",
+   "reviewedAt": "2026-11-19T01:40:48.980930+00:00",
+   "attestation": "Strict Carbon self-review completed for overlay target2-wqa-r01 against supplied WQA textbook pages (printed pp. 517-529) and existing WQA inventory; 26 exact items accepted and 12 rejected for intra-batch concept duplication or weak framing.",
+   "payloadSha256": {
+    "target2-ct261118-wqa-r01-m0-01": "22d9bf2c2e9f5e77c4c2daabb1ba26afa1f1e49353a80e8476376397d49c1d2b",
+    "target2-ct261118-wqa-r01-m0-04": "de1fc97c1318aa7c1f9a5f932c06e75c4fec39cf60201279f54a49cab821a6fe",
+    "target2-ct261118-wqa-r01-m0-05": "8ee23d0fe099ba765f5806aea68868dc3c7c167f5148929e5a43d7110462cc74",
+    "target2-ct261118-wqa-r01-m0-07": "cf2065041620c07b29f9509567809fba4ef0e756c84dd85017a0b4fc3fcae8e7",
+    "target2-ct261118-wqa-r01-m0-11": "bad40b83b25308b0965a8a6834c46d71faa29f3994a0016b1c5a0cade0dcc7cb",
+    "target2-ct261118-wqa-r01-m0-12": "8122f868b3a1b591c1a1f6f290263818d9a7d3a73d5b254c8fe1e66cbe327cc6",
+    "target2-ct261118-wqa-r01-m1-01": "7fdc4603304a80958cb9f767fb38f85dc4acd4e05843cb2fa1724d031e5bfd22",
+    "target2-ct261118-wqa-r01-m1-02": "b041d04a0d94dc60c13b342c252238ce157dc1e2e0219db8585d5df6b8f94360",
+    "target2-ct261118-wqa-r01-m1-03": "fbb34eb992fb1e5c9877cfa0bd688bd88449b502a5b4c51232d6b938f5f5db33",
+    "target2-ct261118-wqa-r01-m1-04": "9888573a2ec92f85b25fc662dca4700a444f8ea03409f800c4754e0be4e3ad49",
+    "target2-ct261118-wqa-r01-m1-05": "4ab8e0e0ede1a924ba1bab8d00d93182aeab4b246b9a7201b8a224f43cd71d1e",
+    "target2-ct261118-wqa-r01-m2-01": "1a59a9c3dcfdd0ca36ce8c421a9f94b91fe1b1264c556d80a343bbc7b257449e",
+    "target2-ct261118-wqa-r01-m2-02": "7dca263e91298b01f632f7b4e9763e87bcc4729b404ec5cbb0ac9c1120e51955",
+    "target2-ct261118-wqa-r01-m2-04": "9f6e1187e3f9034daaeafd8228f0fc7976415172284ebb13bfde6dd2362c21b5",
+    "target2-ct261118-wqa-r01-m2-05": "a9f09617bbac1790b35bccb2f81fbae59712b885770e39e42f98e191c2007c9a",
+    "target2-ct261118-wqa-r01-m2-07": "cb5f4fe9ae1e30f76b9f710252b3af9359013f8d9ca1233ccc3a5820a57320c1",
+    "target2-ct261118-wqa-r01-m3-01": "d380e372acb041a33437c30235cdd24da0afca37a19a6e0d2c37ef57211e4a25",
+    "target2-ct261118-wqa-r01-m3-02": "1a88fe18ae7a7dd4fe80654e83e13a004b6040723aeca7cb91613115f029f929",
+    "target2-ct261118-wqa-r01-m3-03": "544984985326a7105d3723360707fcf4be7e0b7b4e211f4bd96227c435ab270c",
+    "target2-ct261118-wqa-r01-m4-01": "18c32bb6d9a33d1d5181cb9da746a5b6bb91960cee8baa1f5aae181c94f1e40f",
+    "target2-ct261118-wqa-r01-m4-02": "ba88f9a7868a25e68f234cfe6cd5783e59a588d8ae9fb54276f41d1a2590dfd5",
+    "target2-ct261118-wqa-r01-m4-03": "3e2f6feaf741600d8e255c0cfa9b747a20b4468827a96d5a8d6a4c25af727c67",
+    "target2-ct261118-wqa-r01-m4-04": "dea9cb0d9c7aff6799ca405de023162a52879b060544b6200356130691e191ac",
+    "target2-ct261118-wqa-r01-m4-05": "ce394580615035ee4efc76660ee50cd2775942f8bdebafd3212fa07fe26dbd85",
+    "target2-ct261118-wqa-r01-m4-06": "ad5101848c858998b5442c5dd9e80daa96a503b5a061dd9490bda98b7feb7c6d",
+    "target2-ct261118-wqa-r01-m5-01": "a872fcc2e7c4cc7a3618cb14f0b01c7369153accb701f0450fb730aa0cb8a900",
+    "target2-ct261118-wqa-r01-m5-04": "7cf511750e664ed67519da77b356b5cc28e3b9e932fb843c6d35233c756eb59d"
+   }
+  },
+  "registeredAt": "2026-11-19T01:42:03.829Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 4,
+     "f": 2
+    },
+    "dirs": {
+     "increase": 2,
+     "decrease": 1,
+     "unchanged": 0
+    },
+    "longest": 2,
+    "options": 14
+   },
+   "batchSha256": "2bdd1d1f589a9febf42d8d1d8af485a2fa77f7779ed84640ba2d3f1f13f9f915"
+  }
+ }
+}

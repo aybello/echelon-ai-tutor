@@ -1,0 +1,1211 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "target2-wpi-class1-wastewater-r01",
+ "scope": "Owner-authorized AI-reviewed game activities: 36 items.",
+ "additions": [
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wpi-class1-wastewater-r01-m0-01",
+    "prompt": "Carbonaceous biochemical oxygen demand represents the oxygen demand linked to carbonaceous material in wastewater.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "CBOD5 specifically measures the biochemical oxygen demand exerted by carbonaceous organic material rather than nitrogenous compounds."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:56:58.624795+00:00",
+    "notes": "Strict Carbon final AI self-review of target2-wpi-class1-wastewater-r01 against supplied textbook pages (printed pp. 683-691, 700-703), WPI Class I Wastewater scope, existing inventory collisions, and intra-batch overlap; accepted 36 of 48 exact unmodified payloads and rejected 12.",
+    "registeredAt": "2026-11-19T01:58:51.437Z",
+    "payloadSha256": "e9f64f08be98c859a2987324c83ed118148fbbd4738e45594b0b4e829d6ded12",
+    "builderResultsSha256": "c5be02f6b2d48b363e538699668ba7f4b60e628bf6c5123b03afac51b75b772c"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wpi-class1-wastewater-r01-m0-02",
+    "prompt": "A buffer is a substance or solution that triggers rapid shifts in wastewater pH.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "A buffer resists changes in pH rather than causing rapid pH swings."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:56:58.624795+00:00",
+    "notes": "Strict Carbon final AI self-review of target2-wpi-class1-wastewater-r01 against supplied textbook pages (printed pp. 683-691, 700-703), WPI Class I Wastewater scope, existing inventory collisions, and intra-batch overlap; accepted 36 of 48 exact unmodified payloads and rejected 12.",
+    "registeredAt": "2026-11-19T01:58:51.437Z",
+    "payloadSha256": "c09ea869c9f5e3c3ab6164ee98aa0c5379c35591b86b72d6e671ea0456897619",
+    "builderResultsSha256": "c5be02f6b2d48b363e538699668ba7f4b60e628bf6c5123b03afac51b75b772c"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wpi-class1-wastewater-r01-m0-03",
+    "prompt": "Mixed liquor volatile suspended solids indicates the organic fraction within mixed liquor suspended solids.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "MLVSS represents the concentration of organic matter contained in the mixed liquor suspended solids."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:56:58.624795+00:00",
+    "notes": "Strict Carbon final AI self-review of target2-wpi-class1-wastewater-r01 against supplied textbook pages (printed pp. 683-691, 700-703), WPI Class I Wastewater scope, existing inventory collisions, and intra-batch overlap; accepted 36 of 48 exact unmodified payloads and rejected 12.",
+    "registeredAt": "2026-11-19T01:58:51.437Z",
+    "payloadSha256": "ef744b571f5041d46690ffe1c7193be37cf9ab2e5acf62c568a7fd8224db129d",
+    "builderResultsSha256": "c5be02f6b2d48b363e538699668ba7f4b60e628bf6c5123b03afac51b75b772c"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wpi-class1-wastewater-r01-m0-04",
+    "prompt": "A flume is a clarifier mechanism built to skim floating scum from settling tanks.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "A flume is an open-channel device used to measure wastewater flow rate, not a skimming mechanism."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:56:58.624795+00:00",
+    "notes": "Strict Carbon final AI self-review of target2-wpi-class1-wastewater-r01 against supplied textbook pages (printed pp. 683-691, 700-703), WPI Class I Wastewater scope, existing inventory collisions, and intra-batch overlap; accepted 36 of 48 exact unmodified payloads and rejected 12.",
+    "registeredAt": "2026-11-19T01:58:51.437Z",
+    "payloadSha256": "e45e3e084a5d1027fdbea4a5afdec2c935568d3c319750947043d3d3b1c82279",
+    "builderResultsSha256": "c5be02f6b2d48b363e538699668ba7f4b60e628bf6c5123b03afac51b75b772c"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class1-wastewater-r01-m0-05",
+    "prompt": "Pump station discharge lines within a gravity collection network operate under pressure as force mains.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Even inside an overall gravity system, pressurized discharge pipes leaving a pump station function as force mains."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:56:58.624795+00:00",
+    "notes": "Strict Carbon final AI self-review of target2-wpi-class1-wastewater-r01 against supplied textbook pages (printed pp. 683-691, 700-703), WPI Class I Wastewater scope, existing inventory collisions, and intra-batch overlap; accepted 36 of 48 exact unmodified payloads and rejected 12.",
+    "registeredAt": "2026-11-19T01:58:51.437Z",
+    "payloadSha256": "5e5cb472bb1d385a5139aba71db2e6893090672a7420058778e0b0bab0ca0a9a",
+    "builderResultsSha256": "c5be02f6b2d48b363e538699668ba7f4b60e628bf6c5123b03afac51b75b772c"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class1-wastewater-r01-m0-06",
+    "prompt": "In a pneumatic pumping station, the influent valve stays wide open while compressed air pushes wastewater out.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "When the wet well reaches its set level, the influent valve closes before pressurized air forces the wastewater into the discharge line."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:56:58.624795+00:00",
+    "notes": "Strict Carbon final AI self-review of target2-wpi-class1-wastewater-r01 against supplied textbook pages (printed pp. 683-691, 700-703), WPI Class I Wastewater scope, existing inventory collisions, and intra-batch overlap; accepted 36 of 48 exact unmodified payloads and rejected 12.",
+    "registeredAt": "2026-11-19T01:58:51.437Z",
+    "payloadSha256": "ed03e8a04fcacd431eb560ad0ed3a0caf915160b6011ec306c0fec2c290352d2",
+    "builderResultsSha256": "c5be02f6b2d48b363e538699668ba7f4b60e628bf6c5123b03afac51b75b772c"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class1-wastewater-r01-m0-07",
+    "prompt": "Calculating the sludge volume index requires both the 30-minute settled sludge volume and mixed liquor suspended solids results.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "SVI evaluates activated sludge settling quality by combining SSV30 and MLSS test values."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:56:58.624795+00:00",
+    "notes": "Strict Carbon final AI self-review of target2-wpi-class1-wastewater-r01 against supplied textbook pages (printed pp. 683-691, 700-703), WPI Class I Wastewater scope, existing inventory collisions, and intra-batch overlap; accepted 36 of 48 exact unmodified payloads and rejected 12.",
+    "registeredAt": "2026-11-19T01:58:51.437Z",
+    "payloadSha256": "4cfd16575d5dd127a2cadce20adff26c915364351f78c23dcbc6ed7979908e8a",
+    "builderResultsSha256": "c5be02f6b2d48b363e538699668ba7f4b60e628bf6c5123b03afac51b75b772c"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wpi-class1-wastewater-r01-m0-09",
+    "prompt": "Wastewater treatment plants speed up natural stream purification processes inside a controlled facility.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Treatment plants apply natural self-purification mechanisms in a controlled setting rather than over miles of river."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:56:58.624795+00:00",
+    "notes": "Strict Carbon final AI self-review of target2-wpi-class1-wastewater-r01 against supplied textbook pages (printed pp. 683-691, 700-703), WPI Class I Wastewater scope, existing inventory collisions, and intra-batch overlap; accepted 36 of 48 exact unmodified payloads and rejected 12.",
+    "registeredAt": "2026-11-19T01:58:51.437Z",
+    "payloadSha256": "971a0716683eee220e951301974abe7abccdfe5c03b04fa99b36b4c55fbbbf5c",
+    "builderResultsSha256": "c5be02f6b2d48b363e538699668ba7f4b60e628bf6c5123b03afac51b75b772c"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wpi-class1-wastewater-r01-m0-10",
+    "prompt": "A separate storm sewer is built to transport domestic sanitary sewage mixed with industrial process waste.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "A separate storm sewer carries surface runoff such as street debris, road salt, and grit without sanitary waste."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:56:58.624795+00:00",
+    "notes": "Strict Carbon final AI self-review of target2-wpi-class1-wastewater-r01 against supplied textbook pages (printed pp. 683-691, 700-703), WPI Class I Wastewater scope, existing inventory collisions, and intra-batch overlap; accepted 36 of 48 exact unmodified payloads and rejected 12.",
+    "registeredAt": "2026-11-19T01:58:51.437Z",
+    "payloadSha256": "b821468c520eee28ac8368b2af44e188f40dfeb05629a55a16049d90b4cd531a",
+    "builderResultsSha256": "c5be02f6b2d48b363e538699668ba7f4b60e628bf6c5123b03afac51b75b772c"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class1-wastewater-r01-m0-11",
+    "prompt": "A plugged sludge withdrawal line can lead to unusually high primary sludge solids concentrations.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "When withdrawal is restricted by a plugged line or pump fault, solids compact longer and become overly concentrated."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:56:58.624795+00:00",
+    "notes": "Strict Carbon final AI self-review of target2-wpi-class1-wastewater-r01 against supplied textbook pages (printed pp. 683-691, 700-703), WPI Class I Wastewater scope, existing inventory collisions, and intra-batch overlap; accepted 36 of 48 exact unmodified payloads and rejected 12.",
+    "registeredAt": "2026-11-19T01:58:51.437Z",
+    "payloadSha256": "482214fb2a235e908ce8e948389062ea856fd502d4e302a313a94559ebf03a63",
+    "builderResultsSha256": "c5be02f6b2d48b363e538699668ba7f4b60e628bf6c5123b03afac51b75b772c"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class1-wastewater-r01-m0-12",
+    "prompt": "Aerobic secondary decomposition eliminates biological solids so downstream settling or filtration is unneeded.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Aerobic biological treatment grows new microorganisms and stable solids, so downstream solids separation is still needed."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:56:58.624795+00:00",
+    "notes": "Strict Carbon final AI self-review of target2-wpi-class1-wastewater-r01 against supplied textbook pages (printed pp. 683-691, 700-703), WPI Class I Wastewater scope, existing inventory collisions, and intra-batch overlap; accepted 36 of 48 exact unmodified payloads and rejected 12.",
+    "registeredAt": "2026-11-19T01:58:51.437Z",
+    "payloadSha256": "0e150cadabc539073282a9417d0923e359aafa5ca0c56767cf8741340a9f0865",
+    "builderResultsSha256": "c5be02f6b2d48b363e538699668ba7f4b60e628bf6c5123b03afac51b75b772c"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wpi-class1-wastewater-r01-m0-13",
+    "prompt": "In a stabilization pond, both incoming wastewater solids and biologically produced solids settle toward the bottom.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Settleable influent matter and biomass created by pond biological activity accumulate on the pond floor over time."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:56:58.624795+00:00",
+    "notes": "Strict Carbon final AI self-review of target2-wpi-class1-wastewater-r01 against supplied textbook pages (printed pp. 683-691, 700-703), WPI Class I Wastewater scope, existing inventory collisions, and intra-batch overlap; accepted 36 of 48 exact unmodified payloads and rejected 12.",
+    "registeredAt": "2026-11-19T01:58:51.437Z",
+    "payloadSha256": "c33845d02fe8a3a47aa4921ce06de7803af2eb0413a0590a2531408978891211",
+    "builderResultsSha256": "c5be02f6b2d48b363e538699668ba7f4b60e628bf6c5123b03afac51b75b772c"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class1-wastewater-r01-m0-14",
+    "prompt": "Nitrogenous oxygen demand measures the oxygen consumed to oxidize carbonaceous sugars without nitrogen conversion.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "NOD measures the oxygen required to biologically oxidize nitrogen compounds under specified time and temperature conditions."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:56:58.624795+00:00",
+    "notes": "Strict Carbon final AI self-review of target2-wpi-class1-wastewater-r01 against supplied textbook pages (printed pp. 683-691, 700-703), WPI Class I Wastewater scope, existing inventory collisions, and intra-batch overlap; accepted 36 of 48 exact unmodified payloads and rejected 12.",
+    "registeredAt": "2026-11-19T01:58:51.437Z",
+    "payloadSha256": "a73b196e1d83aa6cdf06bdb6aca0d0461c5b71641c077893c2c5994f939bdeb3",
+    "builderResultsSha256": "c5be02f6b2d48b363e538699668ba7f4b60e628bf6c5123b03afac51b75b772c"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wpi-class1-wastewater-r01-m1-01",
+    "prompt": "Match each wastewater oxygen-demand or solids parameter to its exact process definition.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "CBOD5",
+      "right": "Biochemical oxygen demand linked to carbonaceous matter"
+     },
+     {
+      "id": "p2",
+      "left": "NOD",
+      "right": "Oxygen needed to biologically oxidize nitrogen compounds"
+     },
+     {
+      "id": "p3",
+      "left": "COD",
+      "right": "Chemically oxidizable material present in wastewater"
+     },
+     {
+      "id": "p4",
+      "left": "MLVSS",
+      "right": "Organic matter concentration within mixed liquor solids"
+     },
+     {
+      "id": "p5",
+      "left": "WASS",
+      "right": "Suspended solids concentration in wasted activated sludge"
+     },
+     {
+      "id": "p6",
+      "left": "Floc",
+      "right": "Joined particles forming larger clusters that settle better"
+     }
+    ],
+    "explanation": "Oxygen-demand tests separate carbonaceous, nitrogenous, and chemical oxidation, while solids terms track active, wasted, and flocculated biomass."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:56:58.624795+00:00",
+    "notes": "Strict Carbon final AI self-review of target2-wpi-class1-wastewater-r01 against supplied textbook pages (printed pp. 683-691, 700-703), WPI Class I Wastewater scope, existing inventory collisions, and intra-batch overlap; accepted 36 of 48 exact unmodified payloads and rejected 12.",
+    "registeredAt": "2026-11-19T01:58:51.437Z",
+    "payloadSha256": "b2c938091ae47ac3ec10217736ebc7345864e01aa71d9ce2091784647d6f1720",
+    "builderResultsSha256": "c5be02f6b2d48b363e538699668ba7f4b60e628bf6c5123b03afac51b75b772c"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wpi-class1-wastewater-r01-m1-02",
+    "prompt": "Match each collection or headworks component to its defining physical function.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Flume",
+      "right": "Measures open-channel wastewater flow rate"
+     },
+     {
+      "id": "p2",
+      "left": "Force main",
+      "right": "Conveys pumped wastewater under pressure without pipe slope"
+     },
+     {
+      "id": "p3",
+      "left": "Wet well station",
+      "right": "Single chamber holding wastewater with a submersible pump"
+     },
+     {
+      "id": "p4",
+      "left": "Pneumatic ejector",
+      "right": "Uses compressed air after closing an inlet valve"
+     },
+     {
+      "id": "p5",
+      "left": "Storm sewer",
+      "right": "Carries street runoff, salt, and grit without sanitary waste"
+     },
+     {
+      "id": "p6",
+      "left": "Preliminary treatment",
+      "right": "Removes trash and grit early to protect downstream machinery"
+     }
+    ],
+    "explanation": "Collection pipes, pumping stations, flow meters, and headworks units each handle a distinct hydraulic or equipment-protection task."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:56:58.624795+00:00",
+    "notes": "Strict Carbon final AI self-review of target2-wpi-class1-wastewater-r01 against supplied textbook pages (printed pp. 683-691, 700-703), WPI Class I Wastewater scope, existing inventory collisions, and intra-batch overlap; accepted 36 of 48 exact unmodified payloads and rejected 12.",
+    "registeredAt": "2026-11-19T01:58:51.437Z",
+    "payloadSha256": "2456929d62158b68f3108075e73ce5494bd58ee99040cede151573df2f3a46dc",
+    "builderResultsSha256": "c5be02f6b2d48b363e538699668ba7f4b60e628bf6c5123b03afac51b75b772c"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class1-wastewater-r01-m1-03",
+    "prompt": "Match each wastewater constituent or stream category to its distinguishing makeup.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Grit",
+      "right": "Sand, gravel, eggshells, and metal filings"
+     },
+     {
+      "id": "p2",
+      "left": "Nutrients",
+      "right": "Nitrogen, phosphorus, iron, and trace metals supporting life"
+     },
+     {
+      "id": "p3",
+      "left": "Buffer",
+      "right": "Solution or substance that resists changes in pH"
+     },
+     {
+      "id": "p4",
+      "left": "Digester supernatant",
+      "right": "Amber-colored liquid layer resting above settled sludge"
+     },
+     {
+      "id": "p5",
+      "left": "Primary effluent",
+      "right": "Cloudy gray flow retaining dissolved food and nutrients"
+     },
+     {
+      "id": "p6",
+      "left": "Organic compounds",
+      "right": "Materials built from carbon, hydrogen, oxygen, sulfur, and nitrogen"
+     }
+    ],
+    "explanation": "Distinguishing inorganic grit, chemical buffers, nutrients, organics, and intermediate liquid streams helps diagnose unit performance."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:56:58.624795+00:00",
+    "notes": "Strict Carbon final AI self-review of target2-wpi-class1-wastewater-r01 against supplied textbook pages (printed pp. 683-691, 700-703), WPI Class I Wastewater scope, existing inventory collisions, and intra-batch overlap; accepted 36 of 48 exact unmodified payloads and rejected 12.",
+    "registeredAt": "2026-11-19T01:58:51.437Z",
+    "payloadSha256": "09b2f42e1d6530af58497199867f82e9d74d54ca3544a438ed5d8769506a41bd",
+    "builderResultsSha256": "c5be02f6b2d48b363e538699668ba7f4b60e628bf6c5123b03afac51b75b772c"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wpi-class1-wastewater-r01-m3-01",
+    "prompt": "In a unit process receiving a constant influent contaminant concentration, a process upset causes the effluent contaminant concentration to rise while influent conditions remain unchanged. What happens to the percent removal efficiency of that unit?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "Percent removal equals influent minus effluent divided by influent; a higher effluent concentration at steady influent lowers removal efficiency."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:56:58.624795+00:00",
+    "notes": "Strict Carbon final AI self-review of target2-wpi-class1-wastewater-r01 against supplied textbook pages (printed pp. 683-691, 700-703), WPI Class I Wastewater scope, existing inventory collisions, and intra-batch overlap; accepted 36 of 48 exact unmodified payloads and rejected 12.",
+    "registeredAt": "2026-11-19T01:58:51.437Z",
+    "payloadSha256": "3d2e6f1c41a044c95e22dd1962c071dfb70feb5bc53706fef4ae84b1aa66ca64",
+    "builderResultsSha256": "c5be02f6b2d48b363e538699668ba7f4b60e628bf6c5123b03afac51b75b772c"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wpi-class1-wastewater-r01-m3-03",
+    "prompt": "A circular clarifier operates with a fixed surface area, and the daily flow rate entering the clarifier increases while active tank area is unchanged. What happens to the surface overflow rate?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt1",
+    "explanation": "Surface overflow rate equals flow divided by surface area, so increasing flow over the same area raises the overflow rate."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:56:58.624795+00:00",
+    "notes": "Strict Carbon final AI self-review of target2-wpi-class1-wastewater-r01 against supplied textbook pages (printed pp. 683-691, 700-703), WPI Class I Wastewater scope, existing inventory collisions, and intra-batch overlap; accepted 36 of 48 exact unmodified payloads and rejected 12.",
+    "registeredAt": "2026-11-19T01:58:51.437Z",
+    "payloadSha256": "789392a59ece91c4cc3286389d52cf4cee0eb6d439c4c3098d33b143a7ef2c69",
+    "builderResultsSha256": "c5be02f6b2d48b363e538699668ba7f4b60e628bf6c5123b03afac51b75b772c"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class1-wastewater-r01-m3-05",
+    "prompt": "In a Mixed Liquor sample, the 30-minute settled sludge volume rises while the mixed liquor suspended solids concentration remains unchanged. What happens to the sludge volume index?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt1",
+    "explanation": "SVI increases when the same mass of suspended solids occupies a larger settled volume after 30 minutes."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:56:58.624795+00:00",
+    "notes": "Strict Carbon final AI self-review of target2-wpi-class1-wastewater-r01 against supplied textbook pages (printed pp. 683-691, 700-703), WPI Class I Wastewater scope, existing inventory collisions, and intra-batch overlap; accepted 36 of 48 exact unmodified payloads and rejected 12.",
+    "registeredAt": "2026-11-19T01:58:51.437Z",
+    "payloadSha256": "27125f4f28cd422b9fc223311ecc7ec4c1ad6ebca0bb9194188242b8c61061be",
+    "builderResultsSha256": "c5be02f6b2d48b363e538699668ba7f4b60e628bf6c5123b03afac51b75b772c"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class1-wastewater-r01-m3-06",
+    "prompt": "A primary clarifier experiences a partially plugged sludge withdrawal line that lengthens sludge retention on the tank floor without causing washout. What happens to the primary sludge solids concentration?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt1",
+    "explanation": "Restricted withdrawal and excessive sludge retention time allow settled material to compact further, producing overly high primary sludge solids concentration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:56:58.624795+00:00",
+    "notes": "Strict Carbon final AI self-review of target2-wpi-class1-wastewater-r01 against supplied textbook pages (printed pp. 683-691, 700-703), WPI Class I Wastewater scope, existing inventory collisions, and intra-batch overlap; accepted 36 of 48 exact unmodified payloads and rejected 12.",
+    "registeredAt": "2026-11-19T01:58:51.437Z",
+    "payloadSha256": "417802d37f1ad4ba8f6f9dc4aa4ff68dce06aea30a39e2425d8a611262ae8984",
+    "builderResultsSha256": "c5be02f6b2d48b363e538699668ba7f4b60e628bf6c5123b03afac51b75b772c"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wpi-class1-wastewater-r01-m3-07",
+    "prompt": "Fine particles in a clarifier collide and join together into larger floc clusters while water temperature and flow stay constant. What happens to the settling ability of those solids?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt1",
+    "explanation": "Floc formation joins small particles into larger aggregates that settle better in quiescent water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:56:58.624795+00:00",
+    "notes": "Strict Carbon final AI self-review of target2-wpi-class1-wastewater-r01 against supplied textbook pages (printed pp. 683-691, 700-703), WPI Class I Wastewater scope, existing inventory collisions, and intra-batch overlap; accepted 36 of 48 exact unmodified payloads and rejected 12.",
+    "registeredAt": "2026-11-19T01:58:51.437Z",
+    "payloadSha256": "3ffc920e2983449a72cc27888697931eb75184b5ecb3686bc044fa7f3cb853d3",
+    "builderResultsSha256": "c5be02f6b2d48b363e538699668ba7f4b60e628bf6c5123b03afac51b75b772c"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class1-wastewater-r01-m3-09",
+    "prompt": "Trash and heavy inorganic grit are removed in headworks units instead of entering downstream treatment tanks. What happens to the usable tank space preserved in downstream treatment units?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt1",
+    "explanation": "Capturing debris and grit at the beginning of the plant prevents inert accumulation downstream and saves valuable tank space."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:56:58.624795+00:00",
+    "notes": "Strict Carbon final AI self-review of target2-wpi-class1-wastewater-r01 against supplied textbook pages (printed pp. 683-691, 700-703), WPI Class I Wastewater scope, existing inventory collisions, and intra-batch overlap; accepted 36 of 48 exact unmodified payloads and rejected 12.",
+    "registeredAt": "2026-11-19T01:58:51.437Z",
+    "payloadSha256": "8cfb5676d7f2147e329711c552b81c201d0b49b237c68beed4ab94a58a8dde60",
+    "builderResultsSha256": "c5be02f6b2d48b363e538699668ba7f4b60e628bf6c5123b03afac51b75b772c"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class1-wastewater-r01-m3-10",
+    "prompt": "In a pumped sludge line operating at constant daily run time and constant percent total solids, the volatile fraction of the solids rises. What happens to the daily mass of volatile solids pumped?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt1",
+    "explanation": "Daily volatile solids mass is proportional to flow, total solids fraction, and volatile fraction, so a higher volatile fraction increases volatile mass."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:56:58.624795+00:00",
+    "notes": "Strict Carbon final AI self-review of target2-wpi-class1-wastewater-r01 against supplied textbook pages (printed pp. 683-691, 700-703), WPI Class I Wastewater scope, existing inventory collisions, and intra-batch overlap; accepted 36 of 48 exact unmodified payloads and rejected 12.",
+    "registeredAt": "2026-11-19T01:58:51.437Z",
+    "payloadSha256": "ae6b34c1c28a82f40c4ee4c339c9551663b5cf35c7cc7d926e19461d7492b82f",
+    "builderResultsSha256": "c5be02f6b2d48b363e538699668ba7f4b60e628bf6c5123b03afac51b75b772c"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wpi-class1-wastewater-r01-m4-01",
+    "prompt": "An operator trainee summarizes pneumatic wastewater pumping stations. Which statement contains the flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "A wet well collects incoming wastewater until it reaches a set level."
+     },
+     {
+      "id": "opt2",
+      "label": "An inlet valve closes before compressed air pressurizes the chamber."
+     },
+     {
+      "id": "opt3",
+      "label": "Gravity pipe slope alone pushes flow through the discharge force main."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "Pneumatic stations use pressurized air to push wastewater into the system after closing the influent valve, rather than relying on gravity slope."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:56:58.624795+00:00",
+    "notes": "Strict Carbon final AI self-review of target2-wpi-class1-wastewater-r01 against supplied textbook pages (printed pp. 683-691, 700-703), WPI Class I Wastewater scope, existing inventory collisions, and intra-batch overlap; accepted 36 of 48 exact unmodified payloads and rejected 12.",
+    "registeredAt": "2026-11-19T01:58:51.437Z",
+    "payloadSha256": "a7cbe8595323992ee81c33aaf7a7369ebe93903d21038eb5399275818b034c45",
+    "builderResultsSha256": "c5be02f6b2d48b363e538699668ba7f4b60e628bf6c5123b03afac51b75b772c"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wpi-class1-wastewater-r01-m4-02",
+    "prompt": "Three statements describe primary clarifier effluent leaving sedimentation basins. Which one is incorrect?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Large debris, grit, and many settleable solids have already been removed."
+     },
+     {
+      "id": "opt2",
+      "label": "The liquid is typically cloudy, gray, and rich in dissolved food."
+     },
+     {
+      "id": "opt3",
+      "label": "Soluble nutrients have been stripped out so biological units are unneeded."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "Primary effluent remains cloudy and still carries substantial dissolved food and nutrients that require secondary biological treatment."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:56:58.624795+00:00",
+    "notes": "Strict Carbon final AI self-review of target2-wpi-class1-wastewater-r01 against supplied textbook pages (printed pp. 683-691, 700-703), WPI Class I Wastewater scope, existing inventory collisions, and intra-batch overlap; accepted 36 of 48 exact unmodified payloads and rejected 12.",
+    "registeredAt": "2026-11-19T01:58:51.437Z",
+    "payloadSha256": "fc82ee35ba56f1102fec3433ca1822a1bd90d6f24909301cd7ecaba339ec6c19",
+    "builderResultsSha256": "c5be02f6b2d48b363e538699668ba7f4b60e628bf6c5123b03afac51b75b772c"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class1-wastewater-r01-m4-03",
+    "prompt": "Review these causes of overly high primary sludge solids concentrations. Which claim is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Excessive grit and compacted solids in the hopper can thicken the draw."
+     },
+     {
+      "id": "opt2",
+      "label": "A plugged withdrawal line or faulty sludge pump can raise solids levels."
+     },
+     {
+      "id": "opt3",
+      "label": "Shortening sludge retention time in the hopper causes extreme compaction."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "Overly high primary sludge solids concentrations result from sludge retention time being too long, not from shortening retention time."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:56:58.624795+00:00",
+    "notes": "Strict Carbon final AI self-review of target2-wpi-class1-wastewater-r01 against supplied textbook pages (printed pp. 683-691, 700-703), WPI Class I Wastewater scope, existing inventory collisions, and intra-batch overlap; accepted 36 of 48 exact unmodified payloads and rejected 12.",
+    "registeredAt": "2026-11-19T01:58:51.437Z",
+    "payloadSha256": "aa2953a23f09abe6dd5bc7d056a38771cc85970b168101891c87d4e980fc4fd8",
+    "builderResultsSha256": "c5be02f6b2d48b363e538699668ba7f4b60e628bf6c5123b03afac51b75b772c"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class1-wastewater-r01-m4-04",
+    "prompt": "Three notes compare oxygen-demand measurements in wastewater laboratories. Tap the flawed note.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "CBOD5 reflects biochemical oxygen demand from carbonaceous material."
+     },
+     {
+      "id": "opt2",
+      "label": "NOD measures oxygen used to biologically oxidize nitrogen compounds."
+     },
+     {
+      "id": "opt3",
+      "label": "COD measures living protozoa counts without oxidizing chemical matter."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "Chemical oxygen demand measures the amount of chemically oxidizable materials in wastewater, not microscopic organism counts."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:56:58.624795+00:00",
+    "notes": "Strict Carbon final AI self-review of target2-wpi-class1-wastewater-r01 against supplied textbook pages (printed pp. 683-691, 700-703), WPI Class I Wastewater scope, existing inventory collisions, and intra-batch overlap; accepted 36 of 48 exact unmodified payloads and rejected 12.",
+    "registeredAt": "2026-11-19T01:58:51.437Z",
+    "payloadSha256": "06c628492e6b4394603953475a9829b8bfc876a0e6441ba2d8cb02fe7cf7a86d",
+    "builderResultsSha256": "c5be02f6b2d48b363e538699668ba7f4b60e628bf6c5123b03afac51b75b772c"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wpi-class1-wastewater-r01-m4-06",
+    "prompt": "Examine these descriptions of separate storm sewers and combined sewers. Which statement is wrong?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Combined sewers carry sanitary sewage and stormwater in a single pipe."
+     },
+     {
+      "id": "opt2",
+      "label": "Separate storm sewers carry street debris, road salt, and surface runoff."
+     },
+     {
+      "id": "opt3",
+      "label": "Separate storm sewers are built to transport domestic household sewage."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "Separate storm sewers carry rainfall and snowmelt runoff without sanitary or household waste."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:56:58.624795+00:00",
+    "notes": "Strict Carbon final AI self-review of target2-wpi-class1-wastewater-r01 against supplied textbook pages (printed pp. 683-691, 700-703), WPI Class I Wastewater scope, existing inventory collisions, and intra-batch overlap; accepted 36 of 48 exact unmodified payloads and rejected 12.",
+    "registeredAt": "2026-11-19T01:58:51.437Z",
+    "payloadSha256": "9566998f5060419bc7d363102d959cae7f100e190c992c09f5c3ad2e4e46ebe0",
+    "builderResultsSha256": "c5be02f6b2d48b363e538699668ba7f4b60e628bf6c5123b03afac51b75b772c"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class1-wastewater-r01-m4-07",
+    "prompt": "Three statements describe preliminary treatment and bar-screen screenings. Identify the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Preliminary units remove trash and grit to protect downstream equipment."
+     },
+     {
+      "id": "opt2",
+      "label": "Removed screenings can go to a landfill, an incinerator, or a grinder."
+     },
+     {
+      "id": "opt3",
+      "label": "Preliminary screening is designed to strip dissolved ammonia from water."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "Preliminary processes target coarse debris and heavy inorganic solids to prevent clogs and wear, not dissolved ammonia."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:56:58.624795+00:00",
+    "notes": "Strict Carbon final AI self-review of target2-wpi-class1-wastewater-r01 against supplied textbook pages (printed pp. 683-691, 700-703), WPI Class I Wastewater scope, existing inventory collisions, and intra-batch overlap; accepted 36 of 48 exact unmodified payloads and rejected 12.",
+    "registeredAt": "2026-11-19T01:58:51.437Z",
+    "payloadSha256": "ec03e92641740ca35572c46ef50b737c3cdc61bdd8564099742d3f621c6cb2f9",
+    "builderResultsSha256": "c5be02f6b2d48b363e538699668ba7f4b60e628bf6c5123b03afac51b75b772c"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wpi-class1-wastewater-r01-m4-09",
+    "prompt": "Three trainees explain wet well and force main collection facilities. Which explanation is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "A single-compartment wet well often uses a submersible centrifugal pump."
+     },
+     {
+      "id": "opt2",
+      "label": "Force mains convey wastewater under pressure without needing pipe slope."
+     },
+     {
+      "id": "opt3",
+      "label": "Pump station discharge lines in gravity networks flow at atmospheric pressure."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "Pump station discharge pipes operate under pump pressure and are classified as force mains even inside gravity sewer networks."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:56:58.624795+00:00",
+    "notes": "Strict Carbon final AI self-review of target2-wpi-class1-wastewater-r01 against supplied textbook pages (printed pp. 683-691, 700-703), WPI Class I Wastewater scope, existing inventory collisions, and intra-batch overlap; accepted 36 of 48 exact unmodified payloads and rejected 12.",
+    "registeredAt": "2026-11-19T01:58:51.437Z",
+    "payloadSha256": "57299eb050ddbd36cab10db6772303659f57f84920c4942ea7ef34a20b040745",
+    "builderResultsSha256": "c5be02f6b2d48b363e538699668ba7f4b60e628bf6c5123b03afac51b75b772c"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class1-wastewater-r01-m4-10",
+    "prompt": "Compare these definitions of activated sludge control terms. Which definition is wrong?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "SVI combines 30-minute settled sludge volume with MLSS concentration."
+     },
+     {
+      "id": "opt2",
+      "label": "F/M compares available BOD5 or COD food to mixed liquor volatile solids."
+     },
+     {
+      "id": "opt3",
+      "label": "MLVSS measures the heavy sand and metal filings inside mixed liquor."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "MLVSS measures the organic fraction of mixed liquor suspended solids, whereas heavy sand and metal filings are inorganic grit."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:56:58.624795+00:00",
+    "notes": "Strict Carbon final AI self-review of target2-wpi-class1-wastewater-r01 against supplied textbook pages (printed pp. 683-691, 700-703), WPI Class I Wastewater scope, existing inventory collisions, and intra-batch overlap; accepted 36 of 48 exact unmodified payloads and rejected 12.",
+    "registeredAt": "2026-11-19T01:58:51.437Z",
+    "payloadSha256": "b325cac1d254fe65589d70f09acf9c174864617ea3a40fda8cc7a3b69a7f20b0",
+    "builderResultsSha256": "c5be02f6b2d48b363e538699668ba7f4b60e628bf6c5123b03afac51b75b772c"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wpi-class1-wastewater-r01-m5-01",
+    "prompt": "In a pneumatic wastewater pumping station's ejection cycle, does closing the automatic influent valve happen before or after pressurizing the wet well with air?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "When wastewater reaches the preset level, the influent valve closes first so compressed air can pressurize the tank and push flow outward."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:56:58.624795+00:00",
+    "notes": "Strict Carbon final AI self-review of target2-wpi-class1-wastewater-r01 against supplied textbook pages (printed pp. 683-691, 700-703), WPI Class I Wastewater scope, existing inventory collisions, and intra-batch overlap; accepted 36 of 48 exact unmodified payloads and rejected 12.",
+    "registeredAt": "2026-11-19T01:58:51.437Z",
+    "payloadSha256": "4289052b799622b4681ba12cfe16c5cdcad64232bf2d7e6c75a31cacdd797fc8",
+    "builderResultsSha256": "c5be02f6b2d48b363e538699668ba7f4b60e628bf6c5123b03afac51b75b772c"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wpi-class1-wastewater-r01-m5-04",
+    "prompt": "Along the incoming wastewater path of a conventional municipal plant with headworks and primary clarifiers, does grit removal occur before or after primary settling?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Preliminary screening and degritting remove debris and heavy grit ahead of primary sedimentation basins."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:56:58.624795+00:00",
+    "notes": "Strict Carbon final AI self-review of target2-wpi-class1-wastewater-r01 against supplied textbook pages (printed pp. 683-691, 700-703), WPI Class I Wastewater scope, existing inventory collisions, and intra-batch overlap; accepted 36 of 48 exact unmodified payloads and rejected 12.",
+    "registeredAt": "2026-11-19T01:58:51.437Z",
+    "payloadSha256": "9db75fc173fadd7dea8133b5b136fb8ebf3c833e3284fd8831e2704027507d13",
+    "builderResultsSha256": "c5be02f6b2d48b363e538699668ba7f4b60e628bf6c5123b03afac51b75b772c"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class1-wastewater-r01-m5-06",
+    "prompt": "In determining the Sludge Volume Index of an activated sludge sample, does running the 30-minute settleability and MLSS lab tests come before or after computing the SVI value?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Calculating SVI requires obtaining both the 30-minute settled sludge volume and the MLSS concentration first."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:56:58.624795+00:00",
+    "notes": "Strict Carbon final AI self-review of target2-wpi-class1-wastewater-r01 against supplied textbook pages (printed pp. 683-691, 700-703), WPI Class I Wastewater scope, existing inventory collisions, and intra-batch overlap; accepted 36 of 48 exact unmodified payloads and rejected 12.",
+    "registeredAt": "2026-11-19T01:58:51.437Z",
+    "payloadSha256": "a01ab750618dff9d3453f671e6b1976851653db84985cb6459ac50dd0ad893ef",
+    "builderResultsSha256": "c5be02f6b2d48b363e538699668ba7f4b60e628bf6c5123b03afac51b75b772c"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wpi-class1-wastewater-r01-m5-07",
+    "prompt": "In managing screenings at a mechanically cleaned bar screen, does landfilling or incinerating the screenings take place before or after capturing them on the bars?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "Trash is intercepted by the bar screen during preliminary treatment prior to disposal by landfilling or incineration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:56:58.624795+00:00",
+    "notes": "Strict Carbon final AI self-review of target2-wpi-class1-wastewater-r01 against supplied textbook pages (printed pp. 683-691, 700-703), WPI Class I Wastewater scope, existing inventory collisions, and intra-batch overlap; accepted 36 of 48 exact unmodified payloads and rejected 12.",
+    "registeredAt": "2026-11-19T01:58:51.437Z",
+    "payloadSha256": "6904d1cf95eb7770585d3b8eb3a813e3a9860d98484495d644c7a30861f308ad",
+    "builderResultsSha256": "c5be02f6b2d48b363e538699668ba7f4b60e628bf6c5123b03afac51b75b772c"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wpi-class1-wastewater-r01-m5-08",
+    "prompt": "In wastewater flocculation and clarification, does fine solids joining together into larger floc particles occur before or after improved gravity settling of those clusters?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Fine solids join together into larger floc particles first so that they settle better in the clarifier."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:56:58.624795+00:00",
+    "notes": "Strict Carbon final AI self-review of target2-wpi-class1-wastewater-r01 against supplied textbook pages (printed pp. 683-691, 700-703), WPI Class I Wastewater scope, existing inventory collisions, and intra-batch overlap; accepted 36 of 48 exact unmodified payloads and rejected 12.",
+    "registeredAt": "2026-11-19T01:58:51.437Z",
+    "payloadSha256": "d9d730cf2a6cc87f889d8556c40a412027c444efbad8fba6f71a6565ccd38250",
+    "builderResultsSha256": "c5be02f6b2d48b363e538699668ba7f4b60e628bf6c5123b03afac51b75b772c"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-carbon",
+   "reviewedAt": "2026-11-19T01:56:58.624795+00:00",
+   "attestation": "Strict Carbon final AI self-review of target2-wpi-class1-wastewater-r01 against supplied textbook pages (printed pp. 683-691, 700-703), WPI Class I Wastewater scope, existing inventory collisions, and intra-batch overlap; accepted 36 of 48 exact unmodified payloads and rejected 12.",
+   "payloadSha256": {
+    "target2-ct261118-wpi-class1-wastewater-r01-m0-01": "e9f64f08be98c859a2987324c83ed118148fbbd4738e45594b0b4e829d6ded12",
+    "target2-ct261118-wpi-class1-wastewater-r01-m0-02": "c09ea869c9f5e3c3ab6164ee98aa0c5379c35591b86b72d6e671ea0456897619",
+    "target2-ct261118-wpi-class1-wastewater-r01-m0-03": "ef744b571f5041d46690ffe1c7193be37cf9ab2e5acf62c568a7fd8224db129d",
+    "target2-ct261118-wpi-class1-wastewater-r01-m0-04": "e45e3e084a5d1027fdbea4a5afdec2c935568d3c319750947043d3d3b1c82279",
+    "target2-ct261118-wpi-class1-wastewater-r01-m0-05": "5e5cb472bb1d385a5139aba71db2e6893090672a7420058778e0b0bab0ca0a9a",
+    "target2-ct261118-wpi-class1-wastewater-r01-m0-06": "ed03e8a04fcacd431eb560ad0ed3a0caf915160b6011ec306c0fec2c290352d2",
+    "target2-ct261118-wpi-class1-wastewater-r01-m0-07": "4cfd16575d5dd127a2cadce20adff26c915364351f78c23dcbc6ed7979908e8a",
+    "target2-ct261118-wpi-class1-wastewater-r01-m0-09": "971a0716683eee220e951301974abe7abccdfe5c03b04fa99b36b4c55fbbbf5c",
+    "target2-ct261118-wpi-class1-wastewater-r01-m0-10": "b821468c520eee28ac8368b2af44e188f40dfeb05629a55a16049d90b4cd531a",
+    "target2-ct261118-wpi-class1-wastewater-r01-m0-11": "482214fb2a235e908ce8e948389062ea856fd502d4e302a313a94559ebf03a63",
+    "target2-ct261118-wpi-class1-wastewater-r01-m0-12": "0e150cadabc539073282a9417d0923e359aafa5ca0c56767cf8741340a9f0865",
+    "target2-ct261118-wpi-class1-wastewater-r01-m0-13": "c33845d02fe8a3a47aa4921ce06de7803af2eb0413a0590a2531408978891211",
+    "target2-ct261118-wpi-class1-wastewater-r01-m0-14": "a73b196e1d83aa6cdf06bdb6aca0d0461c5b71641c077893c2c5994f939bdeb3",
+    "target2-ct261118-wpi-class1-wastewater-r01-m1-01": "b2c938091ae47ac3ec10217736ebc7345864e01aa71d9ce2091784647d6f1720",
+    "target2-ct261118-wpi-class1-wastewater-r01-m1-02": "2456929d62158b68f3108075e73ce5494bd58ee99040cede151573df2f3a46dc",
+    "target2-ct261118-wpi-class1-wastewater-r01-m1-03": "09b2f42e1d6530af58497199867f82e9d74d54ca3544a438ed5d8769506a41bd",
+    "target2-ct261118-wpi-class1-wastewater-r01-m3-01": "3d2e6f1c41a044c95e22dd1962c071dfb70feb5bc53706fef4ae84b1aa66ca64",
+    "target2-ct261118-wpi-class1-wastewater-r01-m3-03": "789392a59ece91c4cc3286389d52cf4cee0eb6d439c4c3098d33b143a7ef2c69",
+    "target2-ct261118-wpi-class1-wastewater-r01-m3-05": "27125f4f28cd422b9fc223311ecc7ec4c1ad6ebca0bb9194188242b8c61061be",
+    "target2-ct261118-wpi-class1-wastewater-r01-m3-06": "417802d37f1ad4ba8f6f9dc4aa4ff68dce06aea30a39e2425d8a611262ae8984",
+    "target2-ct261118-wpi-class1-wastewater-r01-m3-07": "3ffc920e2983449a72cc27888697931eb75184b5ecb3686bc044fa7f3cb853d3",
+    "target2-ct261118-wpi-class1-wastewater-r01-m3-09": "8cfb5676d7f2147e329711c552b81c201d0b49b237c68beed4ab94a58a8dde60",
+    "target2-ct261118-wpi-class1-wastewater-r01-m3-10": "ae6b34c1c28a82f40c4ee4c339c9551663b5cf35c7cc7d926e19461d7492b82f",
+    "target2-ct261118-wpi-class1-wastewater-r01-m4-01": "a7cbe8595323992ee81c33aaf7a7369ebe93903d21038eb5399275818b034c45",
+    "target2-ct261118-wpi-class1-wastewater-r01-m4-02": "fc82ee35ba56f1102fec3433ca1822a1bd90d6f24909301cd7ecaba339ec6c19",
+    "target2-ct261118-wpi-class1-wastewater-r01-m4-03": "aa2953a23f09abe6dd5bc7d056a38771cc85970b168101891c87d4e980fc4fd8",
+    "target2-ct261118-wpi-class1-wastewater-r01-m4-04": "06c628492e6b4394603953475a9829b8bfc876a0e6441ba2d8cb02fe7cf7a86d",
+    "target2-ct261118-wpi-class1-wastewater-r01-m4-06": "9566998f5060419bc7d363102d959cae7f100e190c992c09f5c3ad2e4e46ebe0",
+    "target2-ct261118-wpi-class1-wastewater-r01-m4-07": "ec03e92641740ca35572c46ef50b737c3cdc61bdd8564099742d3f621c6cb2f9",
+    "target2-ct261118-wpi-class1-wastewater-r01-m4-09": "57299eb050ddbd36cab10db6772303659f57f84920c4942ea7ef34a20b040745",
+    "target2-ct261118-wpi-class1-wastewater-r01-m4-10": "b325cac1d254fe65589d70f09acf9c174864617ea3a40fda8cc7a3b69a7f20b0",
+    "target2-ct261118-wpi-class1-wastewater-r01-m5-01": "4289052b799622b4681ba12cfe16c5cdcad64232bf2d7e6c75a31cacdd797fc8",
+    "target2-ct261118-wpi-class1-wastewater-r01-m5-04": "9db75fc173fadd7dea8133b5b136fb8ebf3c833e3284fd8831e2704027507d13",
+    "target2-ct261118-wpi-class1-wastewater-r01-m5-06": "a01ab750618dff9d3453f671e6b1976851653db84985cb6459ac50dd0ad893ef",
+    "target2-ct261118-wpi-class1-wastewater-r01-m5-07": "6904d1cf95eb7770585d3b8eb3a813e3a9860d98484495d644c7a30861f308ad",
+    "target2-ct261118-wpi-class1-wastewater-r01-m5-08": "d9d730cf2a6cc87f889d8556c40a412027c444efbad8fba6f71a6565ccd38250"
+   }
+  },
+  "registeredAt": "2026-11-19T01:58:51.437Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 7,
+     "f": 6
+    },
+    "dirs": {
+     "increase": 6,
+     "decrease": 1,
+     "unchanged": 0
+    },
+    "longest": 6,
+    "options": 15
+   },
+   "batchSha256": "4cb45b163e39089d3d85e9e0a1fc05ce3b1b0614067b774a0ee51e2d14916dc4"
+  }
+ }
+}

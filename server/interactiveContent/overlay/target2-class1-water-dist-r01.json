@@ -1,0 +1,1243 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "target2-class1-water-dist-r01",
+ "scope": "Owner-authorized AI-reviewed game activities: 35 items.",
+ "additions": [
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class1-water-dist-r01-m0-01",
+    "prompt": "Differential pressure flowmeters measure pipe flow by creating a pressure difference across a restriction.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "A flow restriction changes fluid velocity, producing a differential pressure that relates directly to volumetric flow rate."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:44:42.474355+00:00",
+    "notes": "Strict Carbon self-review completed against supplied source pages, Class 1 Water Distribution and Supply scope, existing collision candidates, and intra-batch overlap; 35 exact items accepted and 13 rejected.",
+    "registeredAt": "2026-11-19T01:46:18.724Z",
+    "payloadSha256": "7cae7ca282bdb904a9008b895b619e911d681dea0767448d86c59baf1e42e7a3",
+    "builderResultsSha256": "5a4f3bc62e1020c1f88ff8a9a9497db73c2e9c6e748c2c05d111956835f5492f"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class1-water-dist-r01-m0-04",
+    "prompt": "Velocity flowmeters are primarily suited for slurries with heavy grit rather than clean water.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Velocity meters are designed for clean fluids and work particularly well at intermediate flow rates in clean water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:44:42.474355+00:00",
+    "notes": "Strict Carbon self-review completed against supplied source pages, Class 1 Water Distribution and Supply scope, existing collision candidates, and intra-batch overlap; 35 exact items accepted and 13 rejected.",
+    "registeredAt": "2026-11-19T01:46:18.724Z",
+    "payloadSha256": "77c9ea3f0acfb4e4819b3e9912d5a3aac207996ca423ea5e3ef196f55ff2963a",
+    "builderResultsSha256": "5a4f3bc62e1020c1f88ff8a9a9497db73c2e9c6e748c2c05d111956835f5492f"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-water-dist-r01-m0-05",
+    "prompt": "In a single-suction centrifugal pump, the thrust bearing sits nearest the motor and farthest from the impeller.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "The thrust bearing is positioned nearest the motor to absorb major axial shaft thrust opposite the discharge direction."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:44:42.474355+00:00",
+    "notes": "Strict Carbon self-review completed against supplied source pages, Class 1 Water Distribution and Supply scope, existing collision candidates, and intra-batch overlap; 35 exact items accepted and 13 rejected.",
+    "registeredAt": "2026-11-19T01:46:18.724Z",
+    "payloadSha256": "e6de6ce6c4bc13b8a8ccd2093bd655509cb63ae9f7ea74a178fe33ba92a48cd1",
+    "builderResultsSha256": "5a4f3bc62e1020c1f88ff8a9a9497db73c2e9c6e748c2c05d111956835f5492f"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class1-water-dist-r01-m0-07",
+    "prompt": "A mechanical seal uses a spring to hold a rotating element and a stationary element together.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Spring force keeps the rotating and stationary sealing faces pressed together to seal the shaft opening."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:44:42.474355+00:00",
+    "notes": "Strict Carbon self-review completed against supplied source pages, Class 1 Water Distribution and Supply scope, existing collision candidates, and intra-batch overlap; 35 exact items accepted and 13 rejected.",
+    "registeredAt": "2026-11-19T01:46:18.724Z",
+    "payloadSha256": "5a43788f2dced5af31bc759a53b0286ba333c31b3d06ac779dade90cfd43f5d0",
+    "builderResultsSha256": "5a4f3bc62e1020c1f88ff8a9a9497db73c2e9c6e748c2c05d111956835f5492f"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class1-water-dist-r01-m0-08",
+    "prompt": "Reciprocating pumps require less floor space and fewer moving parts than centrifugal pumps of comparable capacity.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Centrifugal pumps use rotary motion with a single rotating element, needing fewer moving parts and less installation space."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:44:42.474355+00:00",
+    "notes": "Strict Carbon self-review completed against supplied source pages, Class 1 Water Distribution and Supply scope, existing collision candidates, and intra-batch overlap; 35 exact items accepted and 13 rejected.",
+    "registeredAt": "2026-11-19T01:46:18.724Z",
+    "payloadSha256": "841ecd4f55b25d83797bf3c9a6336da825f152dde295df04988f9bf25eb2fbee",
+    "builderResultsSha256": "5a4f3bc62e1020c1f88ff8a9a9497db73c2e9c6e748c2c05d111956835f5492f"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class1-water-dist-r01-m0-09",
+    "prompt": "A standard non-self-priming centrifugal pump fails to draw water to its impeller if the casing and impeller lack water.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Without special priming features, a centrifugal pump loses pumping ability when water drains from its casing."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:44:42.474355+00:00",
+    "notes": "Strict Carbon self-review completed against supplied source pages, Class 1 Water Distribution and Supply scope, existing collision candidates, and intra-batch overlap; 35 exact items accepted and 13 rejected.",
+    "registeredAt": "2026-11-19T01:46:18.724Z",
+    "payloadSha256": "4ce3cb6572173601a143976824ce42bc627986f4b71d4df4c5e522f4601abc91",
+    "builderResultsSha256": "5a4f3bc62e1020c1f88ff8a9a9497db73c2e9c6e748c2c05d111956835f5492f"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-water-dist-r01-m0-10",
+    "prompt": "A centrifugal pump running backward makes a loud grinding noise that distinguishes reverse rotation from forward operation.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "A centrifugal pump running in reverse can look and sound as though it is operating normally, making reverse rotation hard to spot."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:44:42.474355+00:00",
+    "notes": "Strict Carbon self-review completed against supplied source pages, Class 1 Water Distribution and Supply scope, existing collision candidates, and intra-batch overlap; 35 exact items accepted and 13 rejected.",
+    "registeredAt": "2026-11-19T01:46:18.724Z",
+    "payloadSha256": "91ee30d758296dbeef7954a2d0ca590289885af654fc15b9528543c1c6883440",
+    "builderResultsSha256": "5a4f3bc62e1020c1f88ff8a9a9497db73c2e9c6e748c2c05d111956835f5492f"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-water-dist-r01-m0-13",
+    "prompt": "Installing multiple pressure switches with staggered set points on a pneumatic airline enables sequential operation of several pumps.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Slightly different pressure switch settings on a bubbler airline activate additional pumps in sequence as tank or well depth changes."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:44:42.474355+00:00",
+    "notes": "Strict Carbon self-review completed against supplied source pages, Class 1 Water Distribution and Supply scope, existing collision candidates, and intra-batch overlap; 35 exact items accepted and 13 rejected.",
+    "registeredAt": "2026-11-19T01:46:18.724Z",
+    "payloadSha256": "38fb03c047888841c5f567ddde92079aebff5484e173517cbbd1bd408e375275",
+    "builderResultsSha256": "5a4f3bc62e1020c1f88ff8a9a9497db73c2e9c6e748c2c05d111956835f5492f"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class1-water-dist-r01-m0-14",
+    "prompt": "When a pump and motor share a single common shaft without a coupling, the bearings sit inside the suction piping.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Close-coupled units built on a common shaft without a coupling typically house the bearings as part of the motor assembly."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:44:42.474355+00:00",
+    "notes": "Strict Carbon self-review completed against supplied source pages, Class 1 Water Distribution and Supply scope, existing collision candidates, and intra-batch overlap; 35 exact items accepted and 13 rejected.",
+    "registeredAt": "2026-11-19T01:46:18.724Z",
+    "payloadSha256": "c0a4736e04eb216c8b5bd2633be2c13fd433e5857362da55132519d4339622da",
+    "builderResultsSha256": "5a4f3bc62e1020c1f88ff8a9a9497db73c2e9c6e748c2c05d111956835f5492f"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-water-dist-r01-m1-01",
+    "prompt": "Match each flowmeter element or design to its hydraulic characteristic.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Venturi flowmeter",
+      "right": "Relatively small permanent head loss related to throat-to-inlet ratio"
+     },
+     {
+      "id": "p2",
+      "left": "Concentric orifice plate",
+      "right": "Sharp restriction impaired over time by dirt buildup"
+     },
+     {
+      "id": "p3",
+      "left": "Eccentric or segmental orifice",
+      "right": "Modified bore shape that passes dirty fluids with lower accuracy"
+     },
+     {
+      "id": "p4",
+      "left": "Flow nozzle",
+      "right": "Smooth entry and sharp exit that handles abrasive fluids"
+     },
+     {
+      "id": "p5",
+      "left": "Time-of-flight transceiver",
+      "right": "Acoustic unit whose penetration drops at high particle levels"
+     },
+     {
+      "id": "p6",
+      "left": "Clean-water velocity meter",
+      "right": "Suited to intermediate flow rates in clean fluids"
+     }
+    ],
+    "explanation": "Differential pressure and velocity meters differ in geometry, head loss, and tolerance for suspended solids."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:44:42.474355+00:00",
+    "notes": "Strict Carbon self-review completed against supplied source pages, Class 1 Water Distribution and Supply scope, existing collision candidates, and intra-batch overlap; 35 exact items accepted and 13 rejected.",
+    "registeredAt": "2026-11-19T01:46:18.724Z",
+    "payloadSha256": "2c3af4888b19320d49a2a7373b6aac548c2d7b136e1b485a50e01f5a3f15fa90",
+    "builderResultsSha256": "5a4f3bc62e1020c1f88ff8a9a9497db73c2e9c6e748c2c05d111956835f5492f"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class1-water-dist-r01-m1-03",
+    "prompt": "Match each centrifugal pump structural or bearing component to its mechanical role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Base plate",
+      "right": "Foundation frame supporting the pump and drive unit"
+     },
+     {
+      "id": "p2",
+      "left": "Radial line bearing",
+      "right": "Bearing closest to the pump taking up-and-down stresses"
+     },
+     {
+      "id": "p3",
+      "left": "Thrust bearing",
+      "right": "Bearing nearest the motor absorbing axial shaft load"
+     },
+     {
+      "id": "p4",
+      "left": "Mechanical seal spring",
+      "right": "Supplies force holding stationary and rotating faces together"
+     },
+     {
+      "id": "p5",
+      "left": "Seal cage",
+      "right": "Introduces water, oil, or grease onto the shaft between packing"
+     },
+     {
+      "id": "p6",
+      "left": "Pump shaft",
+      "right": "Rigid steel rod transmitting motor energy to the impeller"
+     }
+    ],
+    "explanation": "Bearings, foundations, shafts, and seal assemblies manage mechanical loads and shaft sealing in a centrifugal pump."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:44:42.474355+00:00",
+    "notes": "Strict Carbon self-review completed against supplied source pages, Class 1 Water Distribution and Supply scope, existing collision candidates, and intra-batch overlap; 35 exact items accepted and 13 rejected.",
+    "registeredAt": "2026-11-19T01:46:18.724Z",
+    "payloadSha256": "4c6a35812d1c3b193f8e84a78f604e23f0249c9feba736f7cf60f05469f265c4",
+    "builderResultsSha256": "5a4f3bc62e1020c1f88ff8a9a9497db73c2e9c6e748c2c05d111956835f5492f"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-water-dist-r01-m1-04",
+    "prompt": "Match each pump control or station configuration component to its operating principle.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Bubbler air compressor",
+      "right": "Supplies air to force bubbles from a submerged tube"
+     },
+     {
+      "id": "p2",
+      "left": "Submerged bubbler tube",
+      "right": "Senses clearwell or well depth via hydrostatic backpressure"
+     },
+     {
+      "id": "p3",
+      "left": "Staggered pressure switches",
+      "right": "Start and stop multiple pumps in sequence as level changes"
+     },
+     {
+      "id": "p4",
+      "left": "Float control",
+      "right": "Simplest mechanical level control for a centrifugal pump"
+     },
+     {
+      "id": "p5",
+      "left": "Extended-shaft wet-pit unit",
+      "right": "Submerged pump driven by a motor kept above water"
+     },
+     {
+      "id": "p6",
+      "left": "Speed-adjusting drive gear",
+      "right": "External equipment needed to vary centrifugal impeller speed"
+     }
+    ],
+    "explanation": "Level controls and station layouts adapt centrifugal pumps to well, clearwell, and wet-pit installations."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:44:42.474355+00:00",
+    "notes": "Strict Carbon self-review completed against supplied source pages, Class 1 Water Distribution and Supply scope, existing collision candidates, and intra-batch overlap; 35 exact items accepted and 13 rejected.",
+    "registeredAt": "2026-11-19T01:46:18.724Z",
+    "payloadSha256": "06f2f34e712f50338b512a58577535dea78e5d194bddd3e6e22486121c1705e8",
+    "builderResultsSha256": "5a4f3bc62e1020c1f88ff8a9a9497db73c2e9c6e748c2c05d111956835f5492f"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class1-water-dist-r01-m2-01",
+    "prompt": "Which item is NOT one of the three standard orifice plate bore geometries?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Concentric"
+     },
+     {
+      "id": "b",
+      "label": "Eccentric"
+     },
+     {
+      "id": "c",
+      "label": "Segmental"
+     },
+     {
+      "id": "d",
+      "label": "Lantern"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Concentric, eccentric, and segmental are orifice plate designs, whereas a lantern ring is a pump stuffing-box part."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:44:42.474355+00:00",
+    "notes": "Strict Carbon self-review completed against supplied source pages, Class 1 Water Distribution and Supply scope, existing collision candidates, and intra-batch overlap; 35 exact items accepted and 13 rejected.",
+    "registeredAt": "2026-11-19T01:46:18.724Z",
+    "payloadSha256": "5783b6d6822f340fd582cdeb0a6a89a19a241ed5999cbcdddbabcddc2d01ea58",
+    "builderResultsSha256": "5a4f3bc62e1020c1f88ff8a9a9497db73c2e9c6e748c2c05d111956835f5492f"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-water-dist-r01-m2-02",
+    "prompt": "Which item is NOT a differential pressure flowmeter primary element?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Venturi tube"
+     },
+     {
+      "id": "b",
+      "label": "Orifice plate"
+     },
+     {
+      "id": "c",
+      "label": "Flow nozzle"
+     },
+     {
+      "id": "d",
+      "label": "Bubbler tube"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Venturi tubes, orifice plates, and flow nozzles measure pipe flow by differential pressure; a bubbler tube senses tank or well depth."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:44:42.474355+00:00",
+    "notes": "Strict Carbon self-review completed against supplied source pages, Class 1 Water Distribution and Supply scope, existing collision candidates, and intra-batch overlap; 35 exact items accepted and 13 rejected.",
+    "registeredAt": "2026-11-19T01:46:18.724Z",
+    "payloadSha256": "97b9b28656389c321a2c25132d9b35f78ffa96e92e66b8d6300eeec0d90847a3",
+    "builderResultsSha256": "5a4f3bc62e1020c1f88ff8a9a9497db73c2e9c6e748c2c05d111956835f5492f"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class1-water-dist-r01-m2-03",
+    "prompt": "Which item is NOT one of the common bearing types used to support a centrifugal pump shaft?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Sleeve bearing"
+     },
+     {
+      "id": "b",
+      "label": "Roller bearing"
+     },
+     {
+      "id": "c",
+      "label": "Ball bearing"
+     },
+     {
+      "id": "d",
+      "label": "Segmental bearing"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Pump bearings are commonly sleeve, roller, or ball types; segmental describes a solids-passing orifice plate."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:44:42.474355+00:00",
+    "notes": "Strict Carbon self-review completed against supplied source pages, Class 1 Water Distribution and Supply scope, existing collision candidates, and intra-batch overlap; 35 exact items accepted and 13 rejected.",
+    "registeredAt": "2026-11-19T01:46:18.724Z",
+    "payloadSha256": "126f7d369908f0efd124dc1bd79ed3f69992fec5c22586465e38a3dc3778edbd",
+    "builderResultsSha256": "5a4f3bc62e1020c1f88ff8a9a9497db73c2e9c6e748c2c05d111956835f5492f"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-water-dist-r01-m2-04",
+    "prompt": "Which item is NOT one of the three core elements of a pump mechanical seal?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Stationary element"
+     },
+     {
+      "id": "b",
+      "label": "Rotating element"
+     },
+     {
+      "id": "c",
+      "label": "Compression spring"
+     },
+     {
+      "id": "d",
+      "label": "Packing gland"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "A mechanical seal uses stationary and rotating elements held by a spring, whereas a packing gland compresses soft packing."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:44:42.474355+00:00",
+    "notes": "Strict Carbon self-review completed against supplied source pages, Class 1 Water Distribution and Supply scope, existing collision candidates, and intra-batch overlap; 35 exact items accepted and 13 rejected.",
+    "registeredAt": "2026-11-19T01:46:18.724Z",
+    "payloadSha256": "97f5956328c53450946f503d1cb22077e6e97b1dcf1443ff78a342efedf9dfca",
+    "builderResultsSha256": "5a4f3bc62e1020c1f88ff8a9a9497db73c2e9c6e748c2c05d111956835f5492f"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-water-dist-r01-m2-05",
+    "prompt": "Which item is NOT a stated advantage of centrifugal pumps over reciprocating pumps?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Small installation space"
+     },
+     {
+      "id": "b",
+      "label": "Fewer moving parts"
+     },
+     {
+      "id": "c",
+      "label": "Wide choice of casing materials"
+     },
+     {
+      "id": "d",
+      "label": "Inherent dry self-priming"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Centrifugal pumps are compact, versatile, and have few moving parts, but they cannot draw water when the casing is dry without priming aids."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:44:42.474355+00:00",
+    "notes": "Strict Carbon self-review completed against supplied source pages, Class 1 Water Distribution and Supply scope, existing collision candidates, and intra-batch overlap; 35 exact items accepted and 13 rejected.",
+    "registeredAt": "2026-11-19T01:46:18.724Z",
+    "payloadSha256": "2a49640caa8ce43e822f5c76b0226fb4fde9f0359ddf7be8f649a8083dd5b099",
+    "builderResultsSha256": "5a4f3bc62e1020c1f88ff8a9a9497db73c2e9c6e748c2c05d111956835f5492f"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-water-dist-r01-m2-06",
+    "prompt": "Which item is NOT a standard component of a pneumatic bubbler pump control system?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Air compressor"
+     },
+     {
+      "id": "b",
+      "label": "Submerged bubbler tube"
+     },
+     {
+      "id": "c",
+      "label": "Pressure-sensitive switches"
+     },
+     {
+      "id": "d",
+      "label": "Venturi throat"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "A pneumatic bubbler system uses a compressor, submerged tube, pressure switches, and a relief valve, not a Venturi throat."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:44:42.474355+00:00",
+    "notes": "Strict Carbon self-review completed against supplied source pages, Class 1 Water Distribution and Supply scope, existing collision candidates, and intra-batch overlap; 35 exact items accepted and 13 rejected.",
+    "registeredAt": "2026-11-19T01:46:18.724Z",
+    "payloadSha256": "a2a33533b6137b1e8bc7fb14c063b08823ec4880ab9fc7b2636c06963b236f24",
+    "builderResultsSha256": "5a4f3bc62e1020c1f88ff8a9a9497db73c2e9c6e748c2c05d111956835f5492f"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class1-water-dist-r01-m2-08",
+    "prompt": "Which factor is NOT a hydraulic or fluid criterion used when selecting a pipe flowmeter?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Range of flow variation"
+     },
+     {
+      "id": "b",
+      "label": "Allowable meter head loss"
+     },
+     {
+      "id": "c",
+      "label": "Presence of suspended solids or bubbles"
+     },
+     {
+      "id": "d",
+      "label": "Pump base plate length"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Flow range, head loss, and fluid cleanliness guide flowmeter selection, whereas pump base plate length is a pump mounting detail."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:44:42.474355+00:00",
+    "notes": "Strict Carbon self-review completed against supplied source pages, Class 1 Water Distribution and Supply scope, existing collision candidates, and intra-batch overlap; 35 exact items accepted and 13 rejected.",
+    "registeredAt": "2026-11-19T01:46:18.724Z",
+    "payloadSha256": "9491fd496993ba6472818a670ea5d286339d88c1f9c8bcad9bd7d4df213d2ba6",
+    "builderResultsSha256": "5a4f3bc62e1020c1f88ff8a9a9497db73c2e9c6e748c2c05d111956835f5492f"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-water-dist-r01-m3-01",
+    "prompt": "In a pipe fitted with a time-of-flight ultrasonic flowmeter, suspended particle concentration rises sharply while flow rate stays constant. What happens to the measurement error?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Higher particle concentrations block acoustic penetration across the pipe, increasing error in a time-of-flight ultrasonic meter."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:44:42.474355+00:00",
+    "notes": "Strict Carbon self-review completed against supplied source pages, Class 1 Water Distribution and Supply scope, existing collision candidates, and intra-batch overlap; 35 exact items accepted and 13 rejected.",
+    "registeredAt": "2026-11-19T01:46:18.724Z",
+    "payloadSha256": "0bf072e71fb4e93e2d0feee8f047abc9348706ede04ef672b28b25e4cd1c2d50",
+    "builderResultsSha256": "5a4f3bc62e1020c1f88ff8a9a9497db73c2e9c6e748c2c05d111956835f5492f"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-water-dist-r01-m3-02",
+    "prompt": "In a clearwell equipped with a bubbler tube level control system, the water depth increases while air supply remains active. What happens to the air pressure required to release a bubble from the bottom of the tube?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Greater water depth raises hydrostatic liquid pressure at the submerged tube tip, requiring higher air pressure to release a bubble."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:44:42.474355+00:00",
+    "notes": "Strict Carbon self-review completed against supplied source pages, Class 1 Water Distribution and Supply scope, existing collision candidates, and intra-batch overlap; 35 exact items accepted and 13 rejected.",
+    "registeredAt": "2026-11-19T01:46:18.724Z",
+    "payloadSha256": "89c1f690d0b90d8fd02217a9ec9726176731a34a1dd5add5901431ddf2742094",
+    "builderResultsSha256": "5a4f3bc62e1020c1f88ff8a9a9497db73c2e9c6e748c2c05d111956835f5492f"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-water-dist-r01-m3-05",
+    "prompt": "As water moves out from a spinning centrifugal impeller into the expanding discharge passage, its velocity decreases without energy loss. What happens to the pressure head of the water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Inside the pump casing, slowing the high-velocity water converts kinetic energy into additional pressure head."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:44:42.474355+00:00",
+    "notes": "Strict Carbon self-review completed against supplied source pages, Class 1 Water Distribution and Supply scope, existing collision candidates, and intra-batch overlap; 35 exact items accepted and 13 rejected.",
+    "registeredAt": "2026-11-19T01:46:18.724Z",
+    "payloadSha256": "9cd364665d0fe25ade9d69eeafc2088dfcc6d657e4711592a5e7538244278010",
+    "builderResultsSha256": "5a4f3bc62e1020c1f88ff8a9a9497db73c2e9c6e748c2c05d111956835f5492f"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-water-dist-r01-m3-06",
+    "prompt": "In a straight full pipe at constant volumetric flow rate, an orifice plate is replaced by a flow nozzle of matching bore and line size. What happens to the permanent pressure loss across the meter?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "For the same line size and flow rate, a flow nozzle develops a lower differential pressure and lower total permanent pressure loss than an orifice."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:44:42.474355+00:00",
+    "notes": "Strict Carbon self-review completed against supplied source pages, Class 1 Water Distribution and Supply scope, existing collision candidates, and intra-batch overlap; 35 exact items accepted and 13 rejected.",
+    "registeredAt": "2026-11-19T01:46:18.724Z",
+    "payloadSha256": "7ea482f1b26fa64bc46d969e866adb0c5c83bade9d2091368d931afcb7f08c7e",
+    "builderResultsSha256": "5a4f3bc62e1020c1f88ff8a9a9497db73c2e9c6e748c2c05d111956835f5492f"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class1-water-dist-r01-m3-07",
+    "prompt": "Lubricant is introduced through a lantern ring onto a rotating pump shaft between packing rings. What happens to the friction between the packing and the rotating shaft?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The lantern ring distributes water, oil, or grease onto the shaft surface, reducing rubbing friction against the compressed packing."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:44:42.474355+00:00",
+    "notes": "Strict Carbon self-review completed against supplied source pages, Class 1 Water Distribution and Supply scope, existing collision candidates, and intra-batch overlap; 35 exact items accepted and 13 rejected.",
+    "registeredAt": "2026-11-19T01:46:18.724Z",
+    "payloadSha256": "fca86fd3d747a93b79546063e774ccf8f45ffa04ba78d1c4b5d6c54304552931",
+    "builderResultsSha256": "5a4f3bc62e1020c1f88ff8a9a9497db73c2e9c6e748c2c05d111956835f5492f"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-water-dist-r01-m3-08",
+    "prompt": "A concentric orifice plate remains in service in water carrying settleable dirt and solids at a steady flow rate. What happens to the dirt buildup at the upstream face of the plate?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Suspended dirt accumulates behind the rim of a concentric orifice plate, eventually impairing measurement performance."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:44:42.474355+00:00",
+    "notes": "Strict Carbon self-review completed against supplied source pages, Class 1 Water Distribution and Supply scope, existing collision candidates, and intra-batch overlap; 35 exact items accepted and 13 rejected.",
+    "registeredAt": "2026-11-19T01:46:18.724Z",
+    "payloadSha256": "2dfface7eb104aa8d418c70454a91685338116a07dab8ece0054625f16113bb4",
+    "builderResultsSha256": "5a4f3bc62e1020c1f88ff8a9a9497db73c2e9c6e748c2c05d111956835f5492f"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-water-dist-r01-m3-09",
+    "prompt": "Using external speed-increasing drive equipment on a centrifugal pump operating against a fixed system curve, the impeller rotational speed is raised. What happens to the discharge capacity of the pump?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Centrifugal pump discharge capacity is directly related to impeller speed, so increasing speed raises pump output."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:44:42.474355+00:00",
+    "notes": "Strict Carbon self-review completed against supplied source pages, Class 1 Water Distribution and Supply scope, existing collision candidates, and intra-batch overlap; 35 exact items accepted and 13 rejected.",
+    "registeredAt": "2026-11-19T01:46:18.724Z",
+    "payloadSha256": "5f1df8865f863668b1812893674eac4ac6cfc8af378f7bb963aa23a85821d2ba",
+    "builderResultsSha256": "5a4f3bc62e1020c1f88ff8a9a9497db73c2e9c6e748c2c05d111956835f5492f"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-water-dist-r01-m4-02",
+    "prompt": "Three statements describe bearings in a single-suction centrifugal pump with a separate coupled motor. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Bearings reduce shaft friction and include sleeve, roller, and ball designs."
+     },
+     {
+      "id": "b",
+      "label": "The radial line bearing sits closest to the pump and absorbs up-and-down stresses."
+     },
+     {
+      "id": "c",
+      "label": "The thrust bearing sits closest to the impeller and carries radial weight instead of axial thrust."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "In a single-suction pump, the thrust bearing sits nearest the motor, farthest from the impeller, and takes major axial shaft thrust."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:44:42.474355+00:00",
+    "notes": "Strict Carbon self-review completed against supplied source pages, Class 1 Water Distribution and Supply scope, existing collision candidates, and intra-batch overlap; 35 exact items accepted and 13 rejected.",
+    "registeredAt": "2026-11-19T01:46:18.724Z",
+    "payloadSha256": "8219fb9116dbe51e0541f73fee82138592c980a094067d32416c7c69884cd247",
+    "builderResultsSha256": "5a4f3bc62e1020c1f88ff8a9a9497db73c2e9c6e748c2c05d111956835f5492f"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-water-dist-r01-m4-05",
+    "prompt": "Three statements describe centrifugal pump stuffing-box and shaft-seal components. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Packing rings around the shaft help stop air from leaking into the pump casing."
+     },
+     {
+      "id": "b",
+      "label": "A lantern ring between packing rings lets water, oil, or grease lubricate the shaft surface."
+     },
+     {
+      "id": "c",
+      "label": "A packing gland uses a spring-loaded rotating carbon face rather than compressing packing around the shaft."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "A packing gland is a metal follower that compresses packing evenly around the shaft; rotating spring-loaded faces belong to a mechanical seal."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:44:42.474355+00:00",
+    "notes": "Strict Carbon self-review completed against supplied source pages, Class 1 Water Distribution and Supply scope, existing collision candidates, and intra-batch overlap; 35 exact items accepted and 13 rejected.",
+    "registeredAt": "2026-11-19T01:46:18.724Z",
+    "payloadSha256": "8d1d488997d6006434a0c6c3c75a20c41c3044763dc37e172056de117d709d8b",
+    "builderResultsSha256": "5a4f3bc62e1020c1f88ff8a9a9497db73c2e9c6e748c2c05d111956835f5492f"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-water-dist-r01-m4-07",
+    "prompt": "Three statements describe centrifugal pump construction and speed adjustment. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Pump parts exposed to corrosive or abrasive fluids can be built from or coated with resistant materials."
+     },
+     {
+      "id": "b",
+      "label": "Impeller speed in a standard fixed-drive centrifugal pump is easily varied without external gears or special drives."
+     },
+     {
+      "id": "c",
+      "label": "Wet-pit installations can place a submerged pump below water with an above-water motor linked by an extended shaft."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Centrifugal pump speed generally cannot be adjusted without additional equipment such as speed-changing gears or special drive units."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:44:42.474355+00:00",
+    "notes": "Strict Carbon self-review completed against supplied source pages, Class 1 Water Distribution and Supply scope, existing collision candidates, and intra-batch overlap; 35 exact items accepted and 13 rejected.",
+    "registeredAt": "2026-11-19T01:46:18.724Z",
+    "payloadSha256": "d9aab9e91793cab95b9bf5feede9a27fc57796d80e8bab62d4fea9acc60b4876",
+    "builderResultsSha256": "5a4f3bc62e1020c1f88ff8a9a9497db73c2e9c6e748c2c05d111956835f5492f"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-water-dist-r01-m5-01",
+    "prompt": "Along the fluid path through a standard flow nozzle meter tube, is the smooth curved entry located before or after the sharp exit?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Water enters a flow nozzle through its smooth curved entry section before leaving at the sharp exit."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:44:42.474355+00:00",
+    "notes": "Strict Carbon self-review completed against supplied source pages, Class 1 Water Distribution and Supply scope, existing collision candidates, and intra-batch overlap; 35 exact items accepted and 13 rejected.",
+    "registeredAt": "2026-11-19T01:46:18.724Z",
+    "payloadSha256": "d42533ef3364734adf1aa4b467ad0db8bcd04100cba2e175b98795cce6f1bced",
+    "builderResultsSha256": "5a4f3bc62e1020c1f88ff8a9a9497db73c2e9c6e748c2c05d111956835f5492f"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-water-dist-r01-m5-02",
+    "prompt": "In a differential pressure flowmetering loop with a signal conditioner, does developing differential pressure across the pipe restriction occur before or after translating that signal into a flow reading?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The primary restriction first creates a velocity change and differential pressure, which the meter instrumentation translates into flow."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:44:42.474355+00:00",
+    "notes": "Strict Carbon self-review completed against supplied source pages, Class 1 Water Distribution and Supply scope, existing collision candidates, and intra-batch overlap; 35 exact items accepted and 13 rejected.",
+    "registeredAt": "2026-11-19T01:46:18.724Z",
+    "payloadSha256": "38a0811c3237a37df34b1c75142e698952107e68206f770ebea57633d9ecde72",
+    "builderResultsSha256": "5a4f3bc62e1020c1f88ff8a9a9497db73c2e9c6e748c2c05d111956835f5492f"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class1-water-dist-r01-m5-03",
+    "prompt": "In the normal priming and startup sequence of a non-self-priming centrifugal pump, is filling the pump casing and impeller with water before or after gradually opening the discharge valve?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "A centrifugal pump casing and impeller need to be filled with water and started against a closed discharge valve before gradually opening that valve."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:44:42.474355+00:00",
+    "notes": "Strict Carbon self-review completed against supplied source pages, Class 1 Water Distribution and Supply scope, existing collision candidates, and intra-batch overlap; 35 exact items accepted and 13 rejected.",
+    "registeredAt": "2026-11-19T01:46:18.724Z",
+    "payloadSha256": "3bee144380a566642bc6f57f5349419661d0f8aa04b537a48d181bcc212094ed",
+    "builderResultsSha256": "5a4f3bc62e1020c1f88ff8a9a9497db73c2e9c6e748c2c05d111956835f5492f"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-water-dist-r01-m5-04",
+    "prompt": "Along the shaft of a single-suction coupled centrifugal pump moving from the impeller toward the drive motor, is the radial line bearing positioned before or after the thrust bearing?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The radial bearing sits closest to the pump impeller, whereas the thrust bearing sits farthest from the impeller and nearest the motor."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:44:42.474355+00:00",
+    "notes": "Strict Carbon self-review completed against supplied source pages, Class 1 Water Distribution and Supply scope, existing collision candidates, and intra-batch overlap; 35 exact items accepted and 13 rejected.",
+    "registeredAt": "2026-11-19T01:46:18.724Z",
+    "payloadSha256": "c71367eb7d8a31937e875ca92ff245c76607d7bb50cca0f5196c454e0dcbc274",
+    "builderResultsSha256": "5a4f3bc62e1020c1f88ff8a9a9497db73c2e9c6e748c2c05d111956835f5492f"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-water-dist-r01-m5-05",
+    "prompt": "In the causal action of a pneumatic bubbler pump starter as well water rises, does building hydrostatic backpressure at the submerged tube tip happen before or after the airline pressure switch activates the pump starter?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Liquid depth first sets the air pressure required to release bubbles in the airline, and that pressure activates the pressure switch and starter."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:44:42.474355+00:00",
+    "notes": "Strict Carbon self-review completed against supplied source pages, Class 1 Water Distribution and Supply scope, existing collision candidates, and intra-batch overlap; 35 exact items accepted and 13 rejected.",
+    "registeredAt": "2026-11-19T01:46:18.724Z",
+    "payloadSha256": "98406f7c7f6803e3bd0ccbb8cf620e0a90db6fdb89378b2d5beae59915345247",
+    "builderResultsSha256": "5a4f3bc62e1020c1f88ff8a9a9497db73c2e9c6e748c2c05d111956835f5492f"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-water-dist-r01-m5-06",
+    "prompt": "Along the hydraulic path of a centrifugal pump drawing from an open reservoir, is overcoming suction-line entrance loss before or after converting excess velocity into discharge pressure head?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Water experiences entrance and suction-line losses on its way to the impeller eye before slowing in the discharge passage to build pressure head."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:44:42.474355+00:00",
+    "notes": "Strict Carbon self-review completed against supplied source pages, Class 1 Water Distribution and Supply scope, existing collision candidates, and intra-batch overlap; 35 exact items accepted and 13 rejected.",
+    "registeredAt": "2026-11-19T01:46:18.724Z",
+    "payloadSha256": "7484cf907085a0bef302728d2fc360b5653b28777e266c34f66d99bdc12dd058",
+    "builderResultsSha256": "5a4f3bc62e1020c1f88ff8a9a9497db73c2e9c6e748c2c05d111956835f5492f"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-carbon",
+   "reviewedAt": "2026-11-19T01:44:42.474355+00:00",
+   "attestation": "Strict Carbon self-review completed against supplied source pages, Class 1 Water Distribution and Supply scope, existing collision candidates, and intra-batch overlap; 35 exact items accepted and 13 rejected.",
+   "payloadSha256": {
+    "target2-ct261118-class1-water-dist-r01-m0-01": "7cae7ca282bdb904a9008b895b619e911d681dea0767448d86c59baf1e42e7a3",
+    "target2-ct261118-class1-water-dist-r01-m0-04": "77c9ea3f0acfb4e4819b3e9912d5a3aac207996ca423ea5e3ef196f55ff2963a",
+    "target2-ct261118-class1-water-dist-r01-m0-05": "e6de6ce6c4bc13b8a8ccd2093bd655509cb63ae9f7ea74a178fe33ba92a48cd1",
+    "target2-ct261118-class1-water-dist-r01-m0-07": "5a43788f2dced5af31bc759a53b0286ba333c31b3d06ac779dade90cfd43f5d0",
+    "target2-ct261118-class1-water-dist-r01-m0-08": "841ecd4f55b25d83797bf3c9a6336da825f152dde295df04988f9bf25eb2fbee",
+    "target2-ct261118-class1-water-dist-r01-m0-09": "4ce3cb6572173601a143976824ce42bc627986f4b71d4df4c5e522f4601abc91",
+    "target2-ct261118-class1-water-dist-r01-m0-10": "91ee30d758296dbeef7954a2d0ca590289885af654fc15b9528543c1c6883440",
+    "target2-ct261118-class1-water-dist-r01-m0-13": "38fb03c047888841c5f567ddde92079aebff5484e173517cbbd1bd408e375275",
+    "target2-ct261118-class1-water-dist-r01-m0-14": "c0a4736e04eb216c8b5bd2633be2c13fd433e5857362da55132519d4339622da",
+    "target2-ct261118-class1-water-dist-r01-m1-01": "2c3af4888b19320d49a2a7373b6aac548c2d7b136e1b485a50e01f5a3f15fa90",
+    "target2-ct261118-class1-water-dist-r01-m1-03": "4c6a35812d1c3b193f8e84a78f604e23f0249c9feba736f7cf60f05469f265c4",
+    "target2-ct261118-class1-water-dist-r01-m1-04": "06f2f34e712f50338b512a58577535dea78e5d194bddd3e6e22486121c1705e8",
+    "target2-ct261118-class1-water-dist-r01-m2-01": "5783b6d6822f340fd582cdeb0a6a89a19a241ed5999cbcdddbabcddc2d01ea58",
+    "target2-ct261118-class1-water-dist-r01-m2-02": "97b9b28656389c321a2c25132d9b35f78ffa96e92e66b8d6300eeec0d90847a3",
+    "target2-ct261118-class1-water-dist-r01-m2-03": "126f7d369908f0efd124dc1bd79ed3f69992fec5c22586465e38a3dc3778edbd",
+    "target2-ct261118-class1-water-dist-r01-m2-04": "97f5956328c53450946f503d1cb22077e6e97b1dcf1443ff78a342efedf9dfca",
+    "target2-ct261118-class1-water-dist-r01-m2-05": "2a49640caa8ce43e822f5c76b0226fb4fde9f0359ddf7be8f649a8083dd5b099",
+    "target2-ct261118-class1-water-dist-r01-m2-06": "a2a33533b6137b1e8bc7fb14c063b08823ec4880ab9fc7b2636c06963b236f24",
+    "target2-ct261118-class1-water-dist-r01-m2-08": "9491fd496993ba6472818a670ea5d286339d88c1f9c8bcad9bd7d4df213d2ba6",
+    "target2-ct261118-class1-water-dist-r01-m3-01": "0bf072e71fb4e93e2d0feee8f047abc9348706ede04ef672b28b25e4cd1c2d50",
+    "target2-ct261118-class1-water-dist-r01-m3-02": "89c1f690d0b90d8fd02217a9ec9726176731a34a1dd5add5901431ddf2742094",
+    "target2-ct261118-class1-water-dist-r01-m3-05": "9cd364665d0fe25ade9d69eeafc2088dfcc6d657e4711592a5e7538244278010",
+    "target2-ct261118-class1-water-dist-r01-m3-06": "7ea482f1b26fa64bc46d969e866adb0c5c83bade9d2091368d931afcb7f08c7e",
+    "target2-ct261118-class1-water-dist-r01-m3-07": "fca86fd3d747a93b79546063e774ccf8f45ffa04ba78d1c4b5d6c54304552931",
+    "target2-ct261118-class1-water-dist-r01-m3-08": "2dfface7eb104aa8d418c70454a91685338116a07dab8ece0054625f16113bb4",
+    "target2-ct261118-class1-water-dist-r01-m3-09": "5f1df8865f863668b1812893674eac4ac6cfc8af378f7bb963aa23a85821d2ba",
+    "target2-ct261118-class1-water-dist-r01-m4-02": "8219fb9116dbe51e0541f73fee82138592c980a094067d32416c7c69884cd247",
+    "target2-ct261118-class1-water-dist-r01-m4-05": "8d1d488997d6006434a0c6c3c75a20c41c3044763dc37e172056de117d709d8b",
+    "target2-ct261118-class1-water-dist-r01-m4-07": "d9aab9e91793cab95b9bf5feede9a27fc57796d80e8bab62d4fea9acc60b4876",
+    "target2-ct261118-class1-water-dist-r01-m5-01": "d42533ef3364734adf1aa4b467ad0db8bcd04100cba2e175b98795cce6f1bced",
+    "target2-ct261118-class1-water-dist-r01-m5-02": "38a0811c3237a37df34b1c75142e698952107e68206f770ebea57633d9ecde72",
+    "target2-ct261118-class1-water-dist-r01-m5-03": "3bee144380a566642bc6f57f5349419661d0f8aa04b537a48d181bcc212094ed",
+    "target2-ct261118-class1-water-dist-r01-m5-04": "c71367eb7d8a31937e875ca92ff245c76607d7bb50cca0f5196c454e0dcbc274",
+    "target2-ct261118-class1-water-dist-r01-m5-05": "98406f7c7f6803e3bd0ccbb8cf620e0a90db6fdb89378b2d5beae59915345247",
+    "target2-ct261118-class1-water-dist-r01-m5-06": "7484cf907085a0bef302728d2fc360b5653b28777e266c34f66d99bdc12dd058"
+   }
+  },
+  "registeredAt": "2026-11-19T01:46:18.724Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 5,
+     "f": 4
+    },
+    "dirs": {
+     "increase": 5,
+     "decrease": 2,
+     "unchanged": 0
+    },
+    "longest": 4,
+    "options": 17
+   },
+   "batchSha256": "e35f17dc264e90dd0d897a0d77f4311164147aff8dd2b43b74a2136daec9408e"
+  }
+ }
+}

@@ -22,7 +22,9 @@ describe("bounded external overlay runtime", () => {
     expect(engine.diagnostics()).toMatchObject({ diskReads: 0, overlayDiskReads: 0, overlayCachedCourses: 0, overlayCachedBytes: 0 });
   });
   it("preserves explicit registration order and descriptor exact bytes", () => {
-    expect(overlayDescriptors).toHaveLength(179);
+    // Reviewed additions append to the immutable original registration, not replace it.
+    expect(overlayDescriptors.length).toBeGreaterThanOrEqual(179);
+    expect(createHash("sha256").update(JSON.stringify(overlayDescriptors.slice(0, 179))).digest("hex")).toBe("14833f5d260161f7e9dd7531fe0405cea2c63c2c46685c892ca14e55078f547e");
     for (const entry of overlayDescriptors) expect(readOverlayDocument(resolveOverlayRoot(), entry)).toBeDefined();
   });
   it("reuses a compiled course and evicts courses before decoded budget or count overflow", () => {

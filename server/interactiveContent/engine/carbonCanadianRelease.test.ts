@@ -7,7 +7,7 @@ import { verifyReceipt } from "./reviewReceipt";
 import { getCourseByKey } from "../../../shared/courseRegistry";
 import { interactiveModes } from "../../../shared/interactiveSessions";
 
-const ids = ["target-class1-water-r01", "target-wqa-r01"];
+const ids = ["target-class1-water-r01", "target-wqa-r01", "target-wpi-class2-water-coll-r01", "target-class2-water-r01"];
 const docs = committedOverlayDocuments() as ContentOverlay[];
 const end = docs.findIndex(d => d.overlayId === ids.at(-1)) + 1;
 const historical = docs.slice(0, end);
@@ -16,10 +16,10 @@ const prior = historical.filter(d => !ids.includes(d.overlayId));
 const engine = new InteractiveContentEngine(undefined, historical);
 const before = new InteractiveContentEngine(undefined, prior);
 
-describe("first Carbon Canadian additions", () => {
+describe("pinned Carbon Canadian additions", () => {
   it("registers the exact additive batches with genuine exact-payload receipts", () => {
     expect(released.map(d => d.overlayId)).toEqual(ids);
-    expect(released.map(d => d.additions.length)).toEqual([9, 56]);
+    expect(released.map(d => d.additions.length)).toEqual([9, 56, 44, 67]);
     expect(released.flatMap(d => d.replacements)).toEqual([]);
     expect(() => compileOverlays(historical)).not.toThrow();
     for (const doc of released) {
@@ -32,7 +32,7 @@ describe("first Carbon Canadian additions", () => {
       for (const a of doc.additions) expect(["ontario", "western"]).toContain(getCourseByKey(a.courseKey)!.examFamily);
     }
   });
-  it.each(["class1-water", "wqa"])("adds only the reviewed playable deltas for %s, preserving original examples", courseKey => {
+  it.each(["class1-water", "wqa", "wpi-class2-water-coll", "class2-water"])("adds only the reviewed playable deltas for %s, preserving original examples", courseKey => {
     const catalog = engine.getCatalog(courseKey, true);
     const old = before.getCatalog(courseKey, true);
     const manifest = (engine as any).manifest(courseKey);
