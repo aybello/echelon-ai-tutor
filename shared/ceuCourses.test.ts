@@ -2,8 +2,8 @@ import { describe, expect, it } from "vitest";
 import { CEU_COURSES, plannedCourseMinutes } from "./ceuCourses";
 describe("CEU public catalogue", () => {
   it("has seventeen courses and interest codes that fit the existing waitlist field", () => {
-    expect(CEU_COURSES).toHaveLength(17);
-    expect(new Set(CEU_COURSES.map(c => c.interestCode)).size).toBe(17);
+    expect(CEU_COURSES).toHaveLength(19);
+    expect(new Set(CEU_COURSES.map(c => c.interestCode)).size).toBe(19);
     for (const c of CEU_COURSES) {
       expect(c.interestCode.length).toBeLessThanOrEqual(32);
       expect(plannedCourseMinutes(c)).toBe(c.plannedContactHours * 60);

@@ -3,6 +3,7 @@ import { resolve } from "node:path";
 const root = resolve(import.meta.dirname, "../..");
 const order = [
   "basic-safety", "basic-hydraulics", "basic-math",
+  "water-treatment-concepts", "wastewater-treatment-concepts",
   "chlorination-principles",
   "basic-instrumentation",
   "water-distribution-overview",
@@ -21,6 +22,7 @@ const order = [
 ];
 const codes = [
   "ceu-basic-safety", "ceu-basic-hydraulics", "ceu-basic-math",
+  "ceu-water-treatment-concepts", "ceu-wastewater-concepts",
   "ceu-chlorination-principles",
   "ceu-basic-instrumentation",
   "ceu-water-distribution-overview",
@@ -68,7 +70,7 @@ const covers = {
   "ceu-supervisor-essentials": { src: "/manus-storage/ceu-supervisor-essentials-cover_37bf426d.jpg", alt: "Supervisor Essentials for Water and Wastewater Operators: illustrative operator training scene" },
 
 };
-const foundations = new Set(["ceu-basic-safety", "ceu-basic-hydraulics", "ceu-basic-math", "ceu-chlorination-principles", "ceu-basic-instrumentation", "ceu-water-distribution-overview", "ceu-supervisor-essentials"]);
+const foundations = new Set(["ceu-water-treatment-concepts", "ceu-basic-safety", "ceu-basic-hydraulics", "ceu-basic-math", "ceu-chlorination-principles", "ceu-basic-instrumentation", "ceu-water-distribution-overview", "ceu-supervisor-essentials"]);
 const data = curricula.map((c, i) => ({
   key: c.key,
   interestCode: codes[i],

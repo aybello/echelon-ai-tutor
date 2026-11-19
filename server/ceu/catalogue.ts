@@ -16,8 +16,10 @@ import type { CeuCurriculum } from "../../shared/ceuLearning";
 import safety from "./courses/ceu-basic-safety.json" with { type: "json" };
 import hydraulics from "./courses/ceu-basic-hydraulics.json" with { type: "json" };
 import math from "./courses/ceu-basic-math.json" with { type: "json" };
+import waterConcepts from "./courses/ceu-water-treatment-concepts.json" with { type: "json" };
+import wastewaterConcepts from "./courses/ceu-wastewater-treatment-concepts.json" with { type: "json" };
 export const ceuCurricula = [
-  safety, hydraulics, math, new0, new1, new2, new3,
+  safety, hydraulics, math, waterConcepts, wastewaterConcepts, new0, new1, new2, new3,
   c0,
   c1,
   c2,

@@ -1026,5 +1026,113 @@
     ],
     "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. Wastewater-only courses are not Director approved for drinking-water renewal. Use current facility procedures and applicable requirements for operational decisions.",
     "ctaLabel": "Request course and review updates"
+  },
+  {
+    "key": "ceu-water-treatment-concepts",
+    "interestCode": "ceu-water-treatment-concepts",
+    "title": "Water Treatment Concepts for Operators",
+    "shortTitle": "Water Treatment Concepts",
+    "stream": "drinking_water",
+    "group": "foundations",
+    "regionLabel": "Operator foundations",
+    "approvalStatus": "not_submitted",
+    "statusLabel": "Not submitted for approval",
+    "statusDescription": "Educational foundation course. Not submitted for regulatory approval in any jurisdiction.",
+    "plannedContactHours": 4,
+    "audience": "Operators, trainees and supervisors who run or support a conventional surface water or groundwater treatment plant and want a clear foundation before a process-control course.",
+    "outcomes": [
+      "Describe the main sources of raw water and the quality concerns each usually brings.",
+      "Explain why fine particles need a coagulant and what the coagulant does to them.",
+      "Explain how granular filters remove particles and how head loss and breakthrough show a filter's condition.",
+      "Choose a monitoring set for a conventional plant and read its trends."
+    ],
+    "modules": [
+      {
+        "number": 1,
+        "title": "Source water and the treatment train",
+        "durationMinutes": 60,
+        "summary": "Describe the main sources of raw water and the quality concerns each usually brings. Explain the treatment train and why each barrier is placed where it is."
+      },
+      {
+        "number": 2,
+        "title": "Coagulation, flocculation and sedimentation",
+        "durationMinutes": 60,
+        "summary": "Explain why fine particles need a coagulant and what the coagulant does to them. Relate rapid mixing, flocculation and sedimentation to what the operator sees and measures."
+      },
+      {
+        "number": 3,
+        "title": "Filtration and disinfection basics",
+        "durationMinutes": 60,
+        "summary": "Explain how granular filters remove particles and how head loss and breakthrough show a filter's condition. Explain how a disinfectant residual and contact time work together, and where the residual is checked."
+      },
+      {
+        "number": 4,
+        "title": "Monitoring, records and troubleshooting",
+        "durationMinutes": 60,
+        "summary": "Choose a monitoring set for a conventional plant and read its trends. Keep records that can be trusted and escalate a suspected process failure with the evidence."
+      }
+    ],
+    "completionRequirements": [
+      "Complete all 4 modules at your own pace. Your place is saved as you move through the slides.",
+      "Use the optional quick checks to practise; they do not affect your final grade.",
+      "Score at least 80% on the final exam. Review your results and retry if needed.",
+      "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional."
+    ],
+    "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. This foundation course has not been submitted for approval in any jurisdiction. Use current facility procedures and applicable requirements for operational decisions.",
+    "ctaLabel": "Request course and review updates"
+  },
+  {
+    "key": "ceu-wastewater-treatment-concepts",
+    "interestCode": "ceu-wastewater-concepts",
+    "title": "Wastewater Treatment Concepts for Operators",
+    "shortTitle": "Wastewater Treatment Concepts",
+    "stream": "drinking_water",
+    "group": "applied",
+    "regionLabel": "Ontario drinking water",
+    "approvalStatus": "director_approval_required",
+    "statusLabel": "Director approval required",
+    "statusDescription": "Pilot curriculum. Director approval is required before advertising approved drinking-water CEUs.",
+    "plannedContactHours": 4,
+    "audience": "Operators, trainees and supervisors who run or support a conventional municipal wastewater treatment plant and want a clear foundation before a process-control course.",
+    "outcomes": [
+      "Describe what arrives at a wastewater plant and how the main measures of strength are used.",
+      "Explain what screens and grit removal protect and how operators keep them working.",
+      "Explain how microbes in the aeration tank use organic matter and oxygen to treat wastewater.",
+      "Describe how effluent is disinfected, why residual chlorine is removed when chlorine is used, and what dissolved oxygen tells the operator."
+    ],
+    "modules": [
+      {
+        "number": 1,
+        "title": "Wastewater characteristics and the treatment train",
+        "durationMinutes": 60,
+        "summary": "Describe what arrives at a wastewater plant and how the main measures of strength are used. Explain how flow changes and the start of the treatment train affect what the plant must handle."
+      },
+      {
+        "number": 2,
+        "title": "Preliminary and primary treatment",
+        "durationMinutes": 60,
+        "summary": "Explain what screens and grit removal protect and how operators keep them working. Describe what a primary clarifier removes and how removal efficiency and sludge show its condition."
+      },
+      {
+        "number": 3,
+        "title": "Biological treatment basics: activated sludge",
+        "durationMinutes": 60,
+        "summary": "Explain how microbes in the aeration tank use organic matter and oxygen to treat wastewater. Describe how the secondary clarifier, return sludge and waste sludge keep the process in balance."
+      },
+      {
+        "number": 4,
+        "title": "Effluent disinfection, monitoring and records",
+        "durationMinutes": 60,
+        "summary": "Describe how effluent is disinfected, why residual chlorine is removed when chlorine is used, and what dissolved oxygen tells the operator. Keep monitoring records that show trends and escalate a process problem with the evidence."
+      }
+    ],
+    "completionRequirements": [
+      "Complete all 4 modules at your own pace. Your place is saved as you move through the slides.",
+      "Use the optional quick checks to practise; they do not affect your final grade.",
+      "Score at least 80% on the final exam. Review your results and retry if needed.",
+      "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional."
+    ],
+    "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. Director approval is required before approved drinking-water CEUs can be offered. Use current facility procedures and applicable requirements for operational decisions.",
+    "ctaLabel": "Request course and review updates"
   }
 ]
