@@ -33,6 +33,7 @@ export function useAssessmentActivity(tracking: AssessmentActivityCapability | n
   config.current = { tracking, actorKey };
   const actor = useRef(actorKey);
   const retiredCapabilities = useRef(new Set<string>());
+  const actorCapabilities = useRef(new Set<string>());
   const current = useRef<State | null>(null);
   const lifecycle = useRef(0);
   const mounted = useRef(true);
@@ -46,6 +47,8 @@ export function useAssessmentActivity(tracking: AssessmentActivityCapability | n
     const { tracking: supplied, actorKey: activeActor } = config.current;
     const old = current.current;
     if (actor.current !== activeActor) {
+      for (const cap of actorCapabilities.current) retiredCapabilities.current.add(cap);
+      actorCapabilities.current.clear();
       if (old) {
         retiredCapabilities.current.add(old.outbox.capability.capability);
         old.stopped = true; old.outbox.queue = [];
@@ -73,6 +76,7 @@ export function useAssessmentActivity(tracking: AssessmentActivityCapability | n
     const existing = current.current;
     if (existing && existing.outbox.actorKey === activeActor && existing.outbox.capability.capability === cap.capability && existing.outbox.capability.sessionId === cap.sessionId) return existing;
     if (existing) existing.stopped = true;
+    actorCapabilities.current.add(cap.capability);
     const scope = { actorKey: activeActor, capability: cap };
     const loaded = loadAssessmentActivityOutbox(sessionStore(), scope);
     const next: State = {
