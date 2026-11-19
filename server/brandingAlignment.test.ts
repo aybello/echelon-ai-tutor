@@ -82,10 +82,10 @@ describe("bounded company positioning alignment", () => {
   });
 
   it("labels fixed OIT tool links honestly and preserves water-specific study resources", () => {
-    expect(landing).toMatch(/title="Practice with explanations"[^\n]*Water OIT preview[^\n]*href="\/quiz"/);
-    expect(landing).toMatch(/title="Rehearse the exam"[^\n]*Water OIT timed mock preview[^\n]*href="\/oit-mock"/);
+    expect(landing).toMatch(/href="\/courses\/oit\/interactive"[^\n]*Explore Water OIT games/);
+    expect(landing).toContain('href="/quiz" className="homepage-preview-path"');
     expect(landing).not.toContain("same course context carried through each study mode");
-    expect(landing).toContain("Choose your course for its available tools");
+    expect(landing).toContain("Tools vary by course");
     expect(landing).toContain("Clear, practical study guides for water and wastewater operators.");
     expect(home.bodyHtml).toContain("Echelon Process Guides");
     expect(home.bodyHtml).toContain("water treatment, distribution systems, wastewater treatment");
@@ -96,10 +96,10 @@ describe("bounded company positioning alignment", () => {
   it("uses the canonical four-organization list without inventing a paid-customer claim", () => {
     expect(customers).toHaveLength(4);
     expect(customers.map(organization => organization.name)).toContain("City of Peterborough");
-    expect(landing).toContain('import { customers } from "@/lib/trustedOrganizations"');
-    expect(landing).toContain("customers.map((organization)");
-    expect(landing).toContain("{organization.name}");
-    expect(landing).toContain("Used by operators at");
+    const strip = readFileSync("client/src/components/TrustedOrganizations.tsx", "utf8");
+    expect(landing.match(/<TrustedOrganizations \/>/g)).toHaveLength(1);
+    expect(strip).toContain("Used by operators and teams at");
+    expect(strip).toContain("customers.map");
     expect(landing).not.toMatch(/paying customers|paid customers|paying municipalities/i);
   });
 

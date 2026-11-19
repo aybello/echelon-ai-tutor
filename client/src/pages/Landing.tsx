@@ -1,30 +1,26 @@
 import { Link, useSearch } from "wouter";
-import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import {
   ArrowRight,
   BookOpen,
-  Calculator,
   Check,
   ChevronRight,
   ClipboardCheck,
   Gamepad2,
   GraduationCap,
-  MapPin,
   MessageSquareText,
   Play,
 } from "lucide-react";
 import LandingNav from "@/components/LandingNav";
 import { ECHELON_LOGO_URL } from "@/components/SiteNav";
 import CoursePathHero from "@/components/CoursePathHero";
-import StepSolution from "@/components/StepSolution";
-import CourseFinder from "@/components/CourseFinder";
+import HomepageProductDemo from "@/components/HomepageProductDemo";
+import HomepageCourseDiscovery from "@/components/HomepageCourseDiscovery";
 import TrustedOrganizations from "@/components/TrustedOrganizations";
 import NationalWaitlistModal from "@/components/NationalWaitlistModal";
-import ProvinceBanner from "@/components/ProvinceBanner";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { useStructuredData } from "@/hooks/useStructuredData";
 import { landingPageSchemas } from "@/lib/structuredData";
-import { customers } from "@/lib/trustedOrganizations";
 import { trpc } from "@/lib/trpc";
 import { getAnonymousAnalyticsId } from "@/lib/anonymousAnalytics";
 import { getMarketingAttribution } from "@/lib/marketingAnalytics";
@@ -58,45 +54,6 @@ function PreviewChoice({ onClose }: { onClose: () => void }) {
         </Link>
       </div>
     </div>
-  );
-}
-
-function StudyWorkspacePreview() {
-  return (
-    <aside className="homepage-workspace" aria-label="Example worked solution from the study tools">
-      <div className="homepage-workspace-topbar">
-        <div className="homepage-workspace-product"><img className="homepage-workspace-logo" src={ECHELON_LOGO_URL} alt="" /><span>Echelon Institute</span></div>
-        <span className="homepage-preview-badge">Example</span>
-      </div>
-      <div className="homepage-workspace-body">
-        <span className="homepage-workspace-eyebrow">Worked calculation · Water Class I</span>
-        <h2>Practice. Learn. Improve.</h2>
-        <div className="homepage-example-question">
-          <span>Flow rate conversion</span>
-          <p>A plant treats 25 L/s. What is the daily flow in m³/d?</p>
-          <strong>Answer: 2,160 m³/d</strong>
-        </div>
-        <StepSolution
-          steps={[
-            { l: "Relationship", c: "Q (m³/d) = Q (L/s) × 86.4" },
-            { l: "Substitution", c: "Q = 25 × 86.4" },
-            { l: "Result", c: "2,160 m³/d" },
-          ]}
-          tip="1 L/s = 86.4 m³/d."
-        />
-        <Link href="/formulas" className="homepage-example-link">Explore the formula library <ArrowRight size={15} aria-hidden="true" /></Link>
-      </div>
-    </aside>
-  );
-}
-
-function ToolCard({ icon, title, description, href }: { icon: ReactNode; title: string; description: string; href: string }) {
-  return (
-    <Link href={href} className="homepage-tool-card">
-      <span className="homepage-tool-icon">{icon}</span>
-      <span><strong>{title}</strong><small>{description}</small></span>
-      <ArrowRight size={17} aria-hidden="true" />
-    </Link>
   );
 }
 
@@ -207,13 +164,12 @@ export default function Landing() {
   });
   useStructuredData(landingPageSchemas);
 
-  const { province: storedProvince, showPrompt, setProvince, dismiss } = useProvince();
+  const { province: storedProvince } = useProvince();
   const search = useSearch();
   const routeProvince = new URLSearchParams(search).get("province")?.toLowerCase();
   const province: ProvinceId | null = routeProvince === "on" || routeProvince === "bc" || routeProvince === "ab" || routeProvince === "sk" || routeProvince === "mb" || routeProvince === "ns" ? routeProvince : storedProvince;
   const { isAuthenticated } = useAuth();
   const dashboardMe = trpc.dashboardAuth.me.useQuery(undefined, { retry: false, staleTime: 5 * 60 * 1000 });
-  const updateProvinceMutation = trpc.auth.updateProvince.useMutation();
   const trackCourseSelection = trpc.funnelAnalytics.track.useMutation();
   const isSignedIn = isAuthenticated || !!dashboardMe.data?.email;
   const [showOitPreviewChoice, setShowOitPreviewChoice] = useState(false);
@@ -233,11 +189,6 @@ export default function Landing() {
     if (!target) return;
     requestAnimationFrame(() => target.scrollIntoView({ block: "start" }));
   }, []);
-
-  const handleProvinceSelect = (id: ProvinceId) => {
-    setProvince(id);
-    if (isAuthenticated) updateProvinceMutation.mutate({ province: id });
-  };
 
   const closePreviewChoice = () => {
     setShowOitPreviewChoice(false);
@@ -265,64 +216,86 @@ export default function Landing() {
         currentPath="/"
         rightSlot={<a className="homepage-get-started" href="#find-course">Get started <ArrowRight size={14} aria-hidden="true" /></a>}
       />
-      {showPrompt && <ProvinceBanner onSelect={handleProvinceSelect} onDismiss={dismiss} />}
-
       <main>
         <section className="homepage-hero" aria-labelledby="homepage-hero-title">
           <div className="homepage-hero-copy">
             <CoursePathHero>
-              <div className="homepage-customer-proof">
-                <span>Used by operators at</span>
-                <div className="homepage-customer-names">{customers.map((organization) => <strong key={organization.slug}>{organization.name}</strong>)}</div>
-              </div>
               <div className="homepage-hero-actions">
                 <a className="homepage-primary-button" href="#find-course">Find your course <ArrowRight size={18} aria-hidden="true" /></a>
-                <Link href="/teams" className="homepage-secondary-button">Explore team plans <ArrowRight size={17} aria-hidden="true" /></Link>
-                <button ref={previewTriggerRef} type="button" className="homepage-preview-button" aria-expanded={showOitPreviewChoice} aria-controls="oit-preview-choice" onClick={() => setShowOitPreviewChoice((value) => !value)}>
-                  <Play size={14} fill="currentColor" aria-hidden="true" /> Try 15 free questions (OIT)
-                </button>
+                <Link href="/teams" className="homepage-secondary-button">Train your team <ArrowRight size={17} aria-hidden="true" /></Link>
               </div>
-              <p className="homepage-hero-note">Choose your province, system and level. No account required to start the OIT free preview.</p>
-              <p className="homepage-preview-inclusions">For new learners, the free OIT preview includes 15 practice questions, 50 flashcards, 30 mock questions and 3 AI Tutor messages.</p>
-              {showOitPreviewChoice && <PreviewChoice onClose={closePreviewChoice} />}
+              <p className="homepage-hero-note">For your next exam. For the skills beyond it.</p>
             </CoursePathHero>
           </div>
           <div className="homepage-hero-visual">
-            <StudyWorkspacePreview />
+            <HomepageProductDemo />
           </div>
         </section>
 
         <TrustedOrganizations />
 
+        <section id="courses" className="homepage-finder-section" aria-label="Find your certification course">
+          <span id="find-course" className="homepage-anchor-target" aria-hidden="true" />
+          <HomepageCourseDiscovery initialProvince={province} onCourseSelected={recordCourseBrowse} />
+          <div className="homepage-preview-entry">
+            <button ref={previewTriggerRef} type="button" className="homepage-preview-button" aria-expanded={showOitPreviewChoice} aria-controls="oit-preview-choice" onClick={() => setShowOitPreviewChoice((value) => !value)}>
+              <Play size={14} fill="currentColor" aria-hidden="true" /> New to the field? Try a free OIT preview
+            </button>
+            {showOitPreviewChoice && <>
+              <PreviewChoice onClose={closePreviewChoice} />
+              <p className="homepage-preview-inclusions">For new learners, the free OIT preview includes 15 practice questions, 50 flashcards, 30 mock questions and 3 AI Tutor messages. No account required to start.</p>
+            </>}
+          </div>
+          <button type="button" className="homepage-waitlist-link" onClick={() => setNationalWaitlistOpen(true)}>Need a course path that is not listed? Join the update list <ArrowRight size={15} aria-hidden="true" /></button>
+        </section>
+
         <section id="tools" className="homepage-section homepage-tools-section" aria-labelledby="homepage-tools-title">
           <div className="homepage-section-heading homepage-section-heading-left">
             <span className="homepage-kicker">More than a question bank</span>
             <h2 id="homepage-tools-title">Learn it. Practise it. Put it to the test.</h2>
-            <p>Ask the AI tutor to explain a difficult concept. Practise with games, flashcards and questions, then test yourself under exam conditions. Keep developing your skills with self-paced continuing education. Choose your course for its available tools.</p>
+            <p>One learning journey, from the concept that will not click to the question you can work through on your own.</p>
           </div>
-          <div className="homepage-tool-grid">
-            <ToolCard icon={<MessageSquareText size={21} aria-hidden="true" />} title="AI tutor: get unstuck" description="Ask follow-up questions and work through concepts and calculations. Try the tutor in Water OIT practice." href="/quiz" />
-            <ToolCard icon={<Gamepad2 size={21} aria-hidden="true" />} title="Interactive learning games" description="Match processes, spot mistakes and practise cause and effect. Explore the Water OIT games." href="/courses/oit/interactive" />
-            <ToolCard icon={<BookOpen size={21} aria-hidden="true" />} title="Practice with explanations" description="Understand why an answer is right, not just whether you got it right. Try the Water OIT preview." href="/quiz" />
-            <ToolCard icon={<Calculator size={21} aria-hidden="true" />} title="Work through the maths" description="Follow worked examples and keep the formulas behind the answer in reach." href="/formulas" />
-            <ToolCard icon={<ClipboardCheck size={21} aria-hidden="true" />} title="Rehearse the exam" description="Practise pacing and review your results. Start with the Water OIT timed mock preview." href="/oit-mock" />
-            <ToolCard icon={<GraduationCap size={21} aria-hidden="true" />} title="Continuing education courses" description={`${CEU_COURSES.length} self-paced operator courses with lessons, saved progress and final assessments. Explore non-credit pilot learning beyond exam prep.`} href="/continuing-education" />
+          <div className="homepage-learning-stages">
+            <article className="homepage-learning-stage">
+              <div className="homepage-stage-top"><MessageSquareText size={24} aria-hidden="true" /><span>01 / Understand</span></div>
+              <h3>Get past the part that stops you.</h3>
+              <p>Ask the AI tutor follow-up questions. Break down calculations with worked solutions, then revisit the concepts in study notes and flashcards.</p>
+              <ul><li>AI explanations you can question</li><li>Step-by-step calculation support</li><li>Study notes, formulas and flashcards</li></ul>
+              <a href="#find-course" className="homepage-text-link">Find your learning workspace <ArrowRight size={16} aria-hidden="true" /></a>
+            </article>
+            <article className="homepage-learning-stage homepage-learning-stage-featured">
+              <div className="homepage-stage-top"><Gamepad2 size={24} aria-hidden="true" /><span>02 / Practise by doing</span></div>
+              <h3>Do more than read the answer.</h3>
+              <p>Match processes, find the flaw and work through cause and effect. Interactive learning games turn concepts into decisions you make yourself.</p>
+              <ul><li>Six active-revision game modes</li><li>Feedback that explains the answer</li><li>Deeper calculation and process challenges</li></ul>
+              <Link href="/courses/oit/interactive" className="homepage-text-link">Explore Water OIT games <ArrowRight size={16} aria-hidden="true" /></Link>
+            </article>
+            <article className="homepage-learning-stage">
+              <div className="homepage-stage-top"><ClipboardCheck size={24} aria-hidden="true" /><span>03 / Rehearse the exam</span></div>
+              <h3>Find the gaps before exam day.</h3>
+              <p>Practise with explanations, work against the clock in timed mock exams and use your results to decide what to study next.</p>
+              <ul><li>Course-specific practice questions</li><li>Timed mock exams and review</li><li>Results and progress tracking</li></ul>
+              <a href="#find-course" className="homepage-text-link">Choose your exam preparation <ArrowRight size={16} aria-hidden="true" /></a>
+            </article>
           </div>
-          <p className="homepage-hero-note">Six game modes turn revision into active practice. Water OIT and Ontario Class 1 Water also include five deeper games, from Calculation Ladder to Exam Escape Room. Flashcards, study notes and progress tools are available through your course workspace. Continuing education courses are non-credit pilots; no approved CEUs, accreditation or regulatory recognition are awarded.</p>
+          <p className="homepage-availability-note">Tools vary by course. Water OIT and Ontario Class 1 Water also include five deeper games, from Calculation Ladder to Exam Escape Room. Ontario 309A offers free practice and mock exams, not interactive games.</p>
         </section>
 
-        <section className="homepage-proof-strip" aria-label="Echelon platform facts">
-          <div><strong>AI tutoring</strong><span>explanations you can ask questions about</span></div>
-          <div><strong>Interactive practice</strong><span>learn by solving, not just reading</span></div>
-          <div><strong>Canada + U.S.</strong><span>course-specific certification preparation</span></div>
-          <div><strong>Continuing education</strong><span>{CEU_COURSES.length} self-paced non-credit pilot courses</span></div>
-        </section>
-
-        <section id="courses" className="homepage-finder-section" aria-label="Find your certification course">
-          <span id="find-course" className="homepage-anchor-target" aria-hidden="true" />
-          <div className="homepage-finder-intro"><span className="homepage-kicker"><MapPin size={14} aria-hidden="true" /> Course matching</span><p>Start with the exact route that fits where you write your exam.</p></div>
-          <CourseFinder initialProvince={province} onCourseSelected={recordCourseBrowse} />
-          <button type="button" className="homepage-waitlist-link" onClick={() => setNationalWaitlistOpen(true)}>Need a course path that is not listed? Join the update list <ArrowRight size={15} aria-hidden="true" /></button>
+        <section id="continuing-education" className="homepage-section homepage-education" aria-labelledby="homepage-education-title">
+          <div className="homepage-education-copy">
+            <span className="homepage-kicker"><GraduationCap size={17} aria-hidden="true" /> Continuing education</span>
+            <h2 id="homepage-education-title">Your learning does not end at the exam.</h2>
+            <p>{CEU_COURSES.length} self-paced operator courses. Build your understanding with structured lessons, saved progress and final assessments.</p>
+            <Link href="/continuing-education" className="homepage-primary-button">Browse {CEU_COURSES.length} courses <ArrowRight size={17} aria-hidden="true" /></Link>
+            <p className="homepage-education-disclosure">Available now as non-credit pilot courses. No approved CEUs, accreditation or regulatory recognition are awarded.</p>
+          </div>
+          <div className="homepage-education-subjects" aria-label="Examples from the continuing education catalogue">
+            {CEU_COURSES.filter(course => ["ceu-basic-hydraulics", "ceu-chlorination-principles", "ceu-supervisor-essentials"].includes(course.key)).map(course => (
+              <Link key={course.key} href={`/continuing-education/${course.key}`} className="homepage-education-course">
+                <BookOpen size={21} aria-hidden="true" /><span><small>Self-paced operator learning</small><strong>{course.shortTitle}</strong><span>Lessons · Saved progress · Final assessment</span></span><ArrowRight size={18} aria-hidden="true" />
+              </Link>
+            ))}
+          </div>
         </section>
 
         <section id="teams" className="homepage-team-section" aria-labelledby="homepage-team-title">
@@ -330,11 +303,11 @@ export default function Landing() {
             <span className="homepage-kicker">For utilities and employers</span>
             <h2 id="homepage-team-title">See who is practising. Know where to support them.</h2>
             <p>Give each operator a structured path to their next exam. Review individual assessment sessions, results and topic gaps so training conversations start with evidence, not guesswork.</p>
-            <Link href="/teams" className="homepage-primary-button">Explore team training <ArrowRight size={17} aria-hidden="true" /></Link>
+            <div className="homepage-employer-actions"><Link href="/teams" className="homepage-primary-button">Explore team training <ArrowRight size={17} aria-hidden="true" /></Link><a href="mailto:abello@echeloninstitute.ca?subject=Employer%20training%20enquiry" className="homepage-text-link">Enquire about team training <ArrowRight size={16} aria-hidden="true" /></a></div>
           </div>
           <div className="homepage-team-preview" aria-label="Illustrative team training overview">
             <div><span>Team training overview</span><small>Illustrative preview</small></div>
-            <dl><div><dt>Participation</dt><dd>Assessment activity</dd></div><div><dt>Performance</dt><dd>Results by learner</dd></div><div><dt>Support</dt><dd>Topic gaps</dd></div></dl>
+            <dl><div><dt>Organize</dt><dd>Assign operator licences</dd></div><div><dt>Follow</dt><dd>Individual assessment activity</dd></div><div><dt>Support</dt><dd>Results and topic gaps</dd></div></dl>
             <p><Check size={15} aria-hidden="true" /> Follow each assigned operator's preparation in one place.</p>
           </div>
         </section>
