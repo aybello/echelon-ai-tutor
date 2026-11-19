@@ -1,0 +1,1052 @@
+{
+  "key": "ceu-wastewater-treatment-concepts",
+  "version": "2026-11-19.1",
+  "title": "Wastewater Treatment Concepts for Operators",
+  "shortTitle": "Wastewater Treatment Concepts",
+  "stream": "drinking_water",
+  "audience": "Operators, trainees and supervisors who run or support a conventional municipal wastewater treatment plant and want a clear foundation before a process-control course.",
+  "prerequisites": "Basic arithmetic. Basic Math is helpful but not required. Jurisdiction-neutral: no regulatory limits are stated in this course.",
+  "introduction": "Build the foundation for a municipal wastewater plant: what arrives in the sewer, how preliminary and primary treatment protect the process, how activated sludge treats the organic load, how effluent is disinfected and monitored, and which numbers tell an operator that the process is working. Each module has worked scenarios, quick checks that explain the reasoning behind each answer, and a short written assignment. The course gives general principles. Plant-specific limits and procedures come from your own plant and regulator.",
+  "plannedMinutes": 200,
+  "delivery": "Self-paced lessons, quick checks, a graded final exam and a non-credit certificate. Duration is being validated; no contact-hour award is made.",
+  "sources": [
+    {
+      "id": "wi-sw-guide",
+      "title": "Wisconsin DNR Operator Certification: Surface Water Study Guide (Subclass S)",
+      "url": "https://dnr.wisconsin.gov/sites/default/files/topic/OpCert/DWSGSurfaceWater.pdf",
+      "section": "Chapter 4, Section 4.2 Calculations: detention time, chlorine feed rate and related treatment calculations",
+      "jurisdiction": "Wisconsin, US state certification agency; verify your own certifying agency reference list",
+      "accessed": "2026-11-16"
+    },
+    {
+      "id": "ca-t-range",
+      "title": "California State Water Resources Control Board: Expected Range of Knowledge for Drinking Water Treatment Exam",
+      "url": "https://www.waterboards.ca.gov/drinking_water/certlic/occupations/documents/opcert/2016/treat_range_of_know.pdf",
+      "section": "Calculation items: flow rates, volume in a storage facility, detention time and unit conversions such as gpm to MGD",
+      "jurisdiction": "California, US state certification agency; verify your own certifying agency reference list",
+      "accessed": "2026-11-16"
+    }
+  ],
+  "modules": [
+    {
+      "id": "characteristics-and-train",
+      "title": "Wastewater characteristics and the treatment train",
+      "objectives": [
+        "Describe what arrives at a wastewater plant and how the main measures of strength are used.",
+        "Explain how flow changes and the start of the treatment train affect what the plant must handle."
+      ],
+      "lesson": "### What arrives at the plant\n\nDomestic wastewater is more than 99 percent water. The rest is dissolved and suspended material from homes, businesses and industry, plus whatever runs into the sewers from streets and roofs. The plant's job is to take that material out of the water in stages, so that the effluent leaving the plant does not harm the receiving water. Understanding the influent is the first step, because every process after it is sized and run for the load it receives.\n\n### Strength and the main measures\n\nThe strength of wastewater describes how much pollution it carries. Biochemical oxygen demand (BOD) measures the oxygen that microbes use to break down organic matter in a sample over a set time. Total suspended solids (TSS) measure the particles that a filter retains. Nutrients such as nitrogen and phosphorus are measured separately because they matter for biological treatment and for the receiving water. A plant that reports strength in several measures can see what kind of load it is dealing with, not only how much.\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 260\" role=\"img\" aria-label=\"Bar chart: in dry weather flow is lower and strength higher; in storm flow is higher and strength lower, with a similar load\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\">\n<title>Dilution: the storm raises the flow and lowers the strength, so the load can stay about the same.</title>\n<text x=\"110\" y=\"24\" text-anchor=\"middle\" font-weight=\"bold\">Dry weather</text><text x=\"290\" y=\"24\" text-anchor=\"middle\" font-weight=\"bold\">Storm</text><rect x=\"40\" y=\"60\" width=\"50\" height=\"140\" fill=\"#2c6e9a\"/><rect x=\"100\" y=\"110\" width=\"50\" height=\"90\" fill=\"#9fb0bf\"/><rect x=\"220\" y=\"90\" width=\"50\" height=\"110\" fill=\"#2c6e9a\"/><rect x=\"280\" y=\"60\" width=\"50\" height=\"140\" fill=\"#9fb0bf\"/><text x=\"65\" y=\"216\" text-anchor=\"middle\" font-size=\"11\">Flow</text><text x=\"125\" y=\"216\" text-anchor=\"middle\" font-size=\"11\">Strength</text><text x=\"245\" y=\"216\" text-anchor=\"middle\" font-size=\"11\">Flow</text><text x=\"305\" y=\"216\" text-anchor=\"middle\" font-size=\"11\">Strength</text><text x=\"195\" y=\"250\" text-anchor=\"middle\" fill=\"#6b7a8c\">Illustrative, relative units. Flow and strength trade off, so the load stays about the same.</text>\n</svg>\n<figcaption>Dilution: the storm raises the flow and lowers the strength, so the load can stay about the same.</figcaption>\n</figure>\n\n### Flow changes and why they matter\n\nWastewater flow changes through the day, with peaks in the morning and evening. Rain changes it more. Infiltration and inflow are groundwater and stormwater that enter the collection system through cracks, joints and connections. They raise the flow and dilute the wastewater, so the concentration of pollutants falls even though the total load may rise. Peak flows can exceed the hydraulic capacity of a unit and carry solids over if the plant is not prepared for them.\n\n### Where the treatment train starts\n\nA typical train begins with preliminary treatment: screens to remove rags and debris, and grit chambers to remove sand and gravel. These steps protect pumps and equipment downstream. Primary clarifiers then settle the heavier solids, which become primary sludge. Biological treatment, usually an activated sludge process, follows, and disinfection and effluent handling come at the end. Each step depends on the one before it, so changes at the start of the train affect everything after.\n\n### What operators watch first\n\nOperators watch flow, influent BOD and TSS, and the condition of the screens and grit removal at the start of the plant. A rising flow with steady strength suggests dilution. A falling flow with rising strength can suggest a blockage or a sewer problem upstream. Trends across several days tell more than any single sample.",
+      "evidence": "### Fictional scenario: Pinecrest Plant after the storm\n\nPinecrest Wastewater Plant is a fictional plant. After a night of heavy rain, the influent flow doubled and the BOD of the influent fell by about a third. The screens caught more debris than usual, and the grit chamber collected a large amount of sand. The operator asks what the rain has done to the load and what needs watching over the next two days.",
+      "assignment": "Write a one-page note for Pinecrest's supervisor. Explain why the influent BOD fell while the total load may have stayed about the same. Describe the effect of the extra debris and grit on the screens and the grit chamber. List the measurements you would track over the next two days, with the reason for each. Name anything you could not tell from the scenario.",
+      "rubric": [
+        "Explains dilution and the difference between concentration and load.",
+        "Describes the effect of debris and grit on the preliminary treatment.",
+        "Lists measurements with a reason for tracking each one.",
+        "Names unanswered questions instead of guessing."
+      ],
+      "facilitatorGuide": "Ask learners to say the difference between a concentration and a load, using the BOD example. Check that they link the extra grit and debris to the preliminary equipment, not the biology. Strong answers talk about trends over several days. Watch for learners who treat a falling BOD as an improvement in treatment; the change came from the influent, not the process.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 20,
+          "instruction": "Study the lesson and sketch the wastewater treatment train, writing what each step removes."
+        },
+        {
+          "kind": "reading",
+          "minutes": 10,
+          "instruction": "Read your plant's influent records and note one day when flow and strength moved in different directions."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 12,
+          "instruction": "Work through the Pinecrest scenario and list the first three measurements you would take."
+        },
+        {
+          "kind": "assignment",
+          "minutes": 8,
+          "instruction": "Complete the module assignment against the rubric."
+        }
+      ],
+      "sourceIds": [
+        "wi-sw-guide",
+        "ca-t-range"
+      ],
+      "checks": [
+        {
+          "id": "ceu-wastewater-treatment-concepts-characteristics-and-train-c1",
+          "objective": "characteristics",
+          "prompt": "What makes up most of raw domestic wastewater?",
+          "choices": [
+            "Water, with a small fraction of dissolved and suspended solids",
+            "Mainly sand and grit washed off the streets",
+            "Mainly oil that floats on the surface of the sewer",
+            "Mainly treated effluent returned from the plant"
+          ],
+          "correctIndex": 0,
+          "explanation": "Domestic wastewater is more than 99 percent water; the rest is dissolved and suspended material."
+        },
+        {
+          "id": "ceu-wastewater-treatment-concepts-characteristics-and-train-c2",
+          "objective": "characteristics",
+          "prompt": "What does BOD measure?",
+          "choices": [
+            "The total mass of suspended solids in a sample",
+            "The oxygen microbes use to break down organic matter in a sample",
+            "The chlorine concentration in the effluent",
+            "The hardness of the water in a sample"
+          ],
+          "correctIndex": 1,
+          "explanation": "BOD measures the oxygen demand of the biodegradable organic matter in a sample over a set time."
+        },
+        {
+          "id": "ceu-wastewater-treatment-concepts-characteristics-and-train-c3",
+          "objective": "characteristics",
+          "prompt": "What is infiltration and inflow?",
+          "choices": [
+            "Air bubbles pumped into the aeration tank",
+            "Chemicals added during primary treatment",
+            "Groundwater and stormwater that enter the collection system and raise the flow",
+            "Sludge returned from the clarifier to the head of the plant"
+          ],
+          "correctIndex": 2,
+          "explanation": "Infiltration and inflow add water to the sewer, which raises the flow and dilutes the wastewater."
+        },
+        {
+          "id": "ceu-wastewater-treatment-concepts-characteristics-and-train-c4",
+          "objective": "flow",
+          "prompt": "Why does a storm often lower the concentration of influent wastewater?",
+          "choices": [
+            "Storm water adds more organic matter than sewage does",
+            "Storms stop the pumps from running at all",
+            "Rain increases the BOD of the influent by itself",
+            "Extra flow dilutes the wastewater, so pollutant concentrations fall"
+          ],
+          "correctIndex": 3,
+          "explanation": "Dilution lowers the concentration even when the total load stays about the same."
+        },
+        {
+          "id": "ceu-wastewater-treatment-concepts-characteristics-and-train-c5",
+          "objective": "train",
+          "prompt": "Why is preliminary treatment placed first in the train?",
+          "choices": [
+            "To remove rags, grit and debris that could damage or clog equipment downstream",
+            "To add oxygen to the wastewater before biology",
+            "To disinfect the influent before any other step",
+            "To thicken the sludge for disposal"
+          ],
+          "correctIndex": 0,
+          "explanation": "Screens and grit removal protect the pumps and equipment that follow."
+        },
+        {
+          "id": "ceu-wastewater-treatment-concepts-characteristics-and-train-c6",
+          "objective": "monitoring",
+          "prompt": "Which set of measures gives a first picture of influent strength and load?",
+          "choices": [
+            "Only the pump run hours",
+            "BOD, total suspended solids and flow",
+            "Only the colour of the wastewater",
+            "Only the chlorine residual in the effluent"
+          ],
+          "correctIndex": 1,
+          "explanation": "Flow with BOD and TSS gives both the concentration and the load the plant must treat."
+        }
+      ]
+    },
+    {
+      "id": "preliminary-and-primary",
+      "title": "Preliminary and primary treatment",
+      "objectives": [
+        "Explain what screens and grit removal protect and how operators keep them working.",
+        "Describe what a primary clarifier removes and how removal efficiency and sludge show its condition."
+      ],
+      "lesson": "### Screens and what they catch\n\nScreens are the first defence at a wastewater plant. Bar screens catch rags, plastics, wipes and large debris before they reach the pumps. Rags are the main hazard: they wrap around impellers, block channels and build up in tanks. Fine screens catch smaller solids that bar screens miss. A screen that is not cleaned on schedule loses capacity, the upstream level rises, and the debris can carry through to equipment that was not designed for it.\n\n### Grit removal and velocity\n\nGrit is sand, gravel and other heavy inorganic material. It is abrasive, so it wears pumps and valves, and it settles in tanks where it reduces volume and capacity. Grit chambers work by slowing the flow to a controlled velocity. At that velocity the grit settles while the lighter organic matter stays suspended and passes on. If the velocity is too fast, grit carries over. If it is too slow, organic matter settles with the grit and the removal is poor.\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 205\" role=\"img\" aria-label=\"Cross-section of a primary clarifier: influent in, effluent over the weir, scum at the surface, scraper and sludge hopper at the bottom\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\">\n<title>A primary clarifier: settleable solids drop to the hopper; the clear water leaves over the weir.</title>\n<rect x=\"60\" y=\"30\" width=\"240\" height=\"90\" fill=\"#e3edf8\" stroke=\"#6b7a8c\" stroke-width=\"2\"/><path d=\"M60 120L120 170H240L300 120\" fill=\"#c9d5e0\" stroke=\"#6b7a8c\" stroke-width=\"2\"/><path d=\"M20 60H60\" stroke=\"#1d2d40\" stroke-width=\"3\"/><path d=\"M50 54L60 60L50 66Z\" fill=\"#1d2d40\"/><path d=\"M300 60H340V112\" stroke=\"#1d2d40\" stroke-width=\"3\"/><path d=\"M140 120H240\" stroke=\"#2c6e9a\" stroke-width=\"2\" stroke-dasharray=\"5 4\"/><path d=\"M180 150V160\" stroke=\"#1d2d40\" stroke-width=\"2\"/><text x=\"10\" y=\"50\" font-size=\"11\">Influent</text><text x=\"345\" y=\"50\" font-size=\"11\">Effluent over weir</text><text x=\"195\" y=\"22\" text-anchor=\"middle\" font-size=\"11\">Scum skimmed at surface</text><text x=\"195\" y=\"138\" text-anchor=\"middle\" font-size=\"11\">Scraper arm moves sludge</text><text x=\"195\" y=\"190\" text-anchor=\"middle\" font-size=\"11\">Primary sludge to hopper</text>\n</svg>\n<figcaption>A primary clarifier: settleable solids drop to the hopper; the clear water leaves over the weir.</figcaption>\n</figure>\n\n### Primary clarifiers and settling\n\nPrimary clarifiers are large tanks where the flow slows enough for settleable solids to fall to the bottom. Scrapers move the settled solids to a hopper, and floating material such as grease is skimmed from the surface. Primary clarifiers remove a useful share of the suspended solids and some of the BOD that is attached to them. They do not remove dissolved material, and they do not disinfect the water.\n\n### Primary sludge and what it carries\n\nThe settled material is primary sludge. It carries organic and inorganic solids from the influent, and it is removed regularly because it can become septic if it stays in the tank. Septic sludge produces odour and gas, and it can float to the surface and carry solids over the weirs. A clarifier that is not desludged on schedule loses removal and gives the operator a problem downstream.\n\n### Watching removal efficiency\n\nRemoval efficiency is the percentage of a pollutant removed between the inlet and outlet of a unit. It is calculated from paired samples taken at the same time. Operators watch removal across the primary clarifier over days, not hours, because a single pair of samples can be misleading. A drop in removal can point to hydraulic overload, a sludge problem, a change in the influent or a fault in the scrapers.",
+      "evidence": "### Fictional scenario: Ridgeway's primary clarifier\n\nRidgeway Plant is a fictional plant with two primary clarifiers. Over three weeks the effluent TSS from the primary clarifiers rose, the removal efficiency fell, and the operators found more rags on the bar screen. The scraper on clarifier 2 has been slow to move sludge since a motor repair. The superintendent wants to know whether the screens, the clarifiers or the influent are the cause.",
+      "assignment": "Write a one-page note for Ridgeway's superintendent. Explain how the rags on the bar screen could affect the clarifiers and the pumps. Describe what the removal efficiency and effluent TSS trend would look like if the slow scraper were the main cause. Say which measurement would separate a scraper problem from an influent problem, and why. Name the checks you would make before recommending any repair.",
+      "rubric": [
+        "Connects the rags to the pumps, the screens and the downstream equipment.",
+        "Explains how a slow scraper shows up in removal and effluent TSS.",
+        "Identifies a measurement that separates equipment from influent causes.",
+        "Lists the checks before a repair is recommended."
+      ],
+      "facilitatorGuide": "Ask learners to explain the difference between a bar screen and a fine screen, and why the rags matter. Check that they separate a sludge problem from a flow problem. Strong answers use paired samples and trends. Watch for learners who call removal efficiency a single number that does not change; it moves with flow, sludge and the influent.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 20,
+          "instruction": "Study the lesson and sketch a primary clarifier, marking the inlet, outlet, sludge hopper and scraper."
+        },
+        {
+          "kind": "reading",
+          "minutes": 10,
+          "instruction": "Read your plant's screen or grit log and note one day when cleaning or removal changed."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 12,
+          "instruction": "Work through the Ridgeway scenario and list the paired samples you would take."
+        },
+        {
+          "kind": "assignment",
+          "minutes": 8,
+          "instruction": "Complete the module assignment against the rubric."
+        }
+      ],
+      "sourceIds": [
+        "wi-sw-guide",
+        "ca-t-range"
+      ],
+      "checks": [
+        {
+          "id": "ceu-wastewater-treatment-concepts-preliminary-and-primary-c1",
+          "objective": "screening",
+          "prompt": "Why is removing rags and debris at the screens important?",
+          "choices": [
+            "It adds oxygen to the wastewater before biology",
+            "It protects pumps and stops rags from wrapping equipment",
+            "It increases the BOD of the influent for treatment",
+            "It raises the pH of the influent to neutral"
+          ],
+          "correctIndex": 1,
+          "explanation": "Rags wrap around impellers and block channels, so screens protect the equipment downstream."
+        },
+        {
+          "id": "ceu-wastewater-treatment-concepts-preliminary-and-primary-c2",
+          "objective": "grit",
+          "prompt": "What condition does a grit chamber need to work?",
+          "choices": [
+            "A fast velocity that keeps all solids suspended",
+            "No flow at all, so the grit can dry out",
+            "A controlled, slow velocity that lets grit settle while organic matter stays suspended",
+            "A high velocity that carries grit to the clarifier"
+          ],
+          "correctIndex": 2,
+          "explanation": "Controlled velocity lets heavy grit settle while the lighter organic matter passes on."
+        },
+        {
+          "id": "ceu-wastewater-treatment-concepts-preliminary-and-primary-c3",
+          "objective": "clarifier",
+          "prompt": "What does a primary clarifier mainly remove?",
+          "choices": [
+            "Dissolved oxygen and nitrogen gas",
+            "Dissolved salts from the water",
+            "Bacteria that are fully inactivated",
+            "Settleable solids and some floating material"
+          ],
+          "correctIndex": 3,
+          "explanation": "Primary clarifiers settle the solids and skim some floating material; they do not remove dissolved material."
+        },
+        {
+          "id": "ceu-wastewater-treatment-concepts-preliminary-and-primary-c4",
+          "objective": "removal",
+          "prompt": "What is removal efficiency?",
+          "choices": [
+            "The percentage of a pollutant removed between the inlet and outlet of a unit",
+            "The number of hours a unit runs in a day",
+            "The electrical power used per cubic metre treated",
+            "The speed of the sludge pump in revolutions"
+          ],
+          "correctIndex": 0,
+          "explanation": "Removal efficiency compares inlet and outlet values for the same pollutant."
+        },
+        {
+          "id": "ceu-wastewater-treatment-concepts-preliminary-and-primary-c5",
+          "objective": "sludge",
+          "prompt": "What does primary sludge contain?",
+          "choices": [
+            "Only dissolved salts from the influent",
+            "Settled organic and inorganic solids from the influent",
+            "Only the grease skimmed off the surface",
+            "Only bacteria grown in the aeration tank"
+          ],
+          "correctIndex": 1,
+          "explanation": "Primary sludge is the settleable solids from the influent, both organic and inorganic."
+        },
+        {
+          "id": "ceu-wastewater-treatment-concepts-preliminary-and-primary-c6",
+          "objective": "removal",
+          "prompt": "Why track removal across the primary clarifier over time?",
+          "choices": [
+            "Removal is always the same from day to day",
+            "Removal depends only on the time of day",
+            "A change in removal can show a process problem, a sewer change or a flow change",
+            "Removal does not change with flow"
+          ],
+          "correctIndex": 2,
+          "explanation": "Trends in removal show when something has changed in the process, the sewer or the flow."
+        }
+      ]
+    },
+    {
+      "id": "activated-sludge-basics",
+      "title": "Biological treatment basics: activated sludge",
+      "objectives": [
+        "Explain how microbes in the aeration tank use organic matter and oxygen to treat wastewater.",
+        "Describe how the secondary clarifier, return sludge and waste sludge keep the process in balance."
+      ],
+      "lesson": "### What the microbes do\n\nBiological treatment works by letting microbes do the job that settling cannot. In an activated sludge process, a population of bacteria and other microbes grows in the aeration tank. They use the dissolved and fine organic matter in the wastewater as food, and as they feed they convert it into new cells, carbon dioxide and water. The biomass is the working part of the process, and its health decides how much of the organic load is removed.\n\n### The aeration tank and oxygen\n\nAerobic microbes need dissolved oxygen to break down organic matter. Oxygen is supplied by blowers feeding diffusers, or by mechanical surface aerators, and it has to be enough for the organic load at that moment. Aeration also keeps the mixed liquor suspended, so the microbes stay in contact with the food. A tank that runs low on oxygen slows the biology, and the effluent quality falls behind the load.\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 260\" role=\"img\" aria-label=\"Activated sludge loop: influent to the aeration tank, to the secondary clarifier, effluent out, sludge returned to the tank and waste sludge removed\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\">\n<title>The activated sludge loop: the clarifier returns biomass to the tank and wastes the excess.</title>\n<rect x=\"60\" y=\"90\" width=\"120\" height=\"60\" rx=\"4\" fill=\"#e3edf8\" stroke=\"#6b7a8c\" stroke-width=\"2\"/><text x=\"120\" y=\"126\" text-anchor=\"middle\" font-weight=\"bold\">Aeration tank</text><rect x=\"230\" y=\"90\" width=\"120\" height=\"60\" rx=\"4\" fill=\"#e3edf8\" stroke=\"#6b7a8c\" stroke-width=\"2\"/><text x=\"290\" y=\"118\" text-anchor=\"middle\" font-weight=\"bold\">Secondary</text><text x=\"290\" y=\"136\" text-anchor=\"middle\" font-weight=\"bold\">clarifier</text><path d=\"M10 120H56\" stroke=\"#1d2d40\" stroke-width=\"2\"/><path d=\"M50 114L58 120L50 126Z\" fill=\"#1d2d40\"/><text x=\"10\" y=\"110\" font-size=\"11\">Influent</text><path d=\"M184 120H226\" stroke=\"#1d2d40\" stroke-width=\"2\"/><path d=\"M220 114L228 120L220 126Z\" fill=\"#1d2d40\"/><path d=\"M350 120H380\" stroke=\"#1d2d40\" stroke-width=\"2\"/><text x=\"360\" y=\"110\" font-size=\"11\">Effluent</text><path d=\"M290 150V200H120V154\" fill=\"none\" stroke=\"#2c6e9a\" stroke-width=\"2\"/><path d=\"M114 158L120 150L126 158Z\" fill=\"#2c6e9a\"/><text x=\"205\" y=\"218\" text-anchor=\"middle\" fill=\"#2c6e9a\">Return activated sludge (RAS) back to the tank</text><path d=\"M260 200V240\" stroke=\"#1d2d40\" stroke-width=\"2\"/><path d=\"M254 234L260 242L266 234Z\" fill=\"#1d2d40\"/><text x=\"270\" y=\"250\" font-size=\"11\">Waste activated sludge (WAS)</text>\n</svg>\n<figcaption>The activated sludge loop: the clarifier returns biomass to the tank and wastes the excess.</figcaption>\n</figure>\n\n### Mixed liquor and the secondary clarifier\n\nThe mixture of wastewater and biomass in the aeration tank is the mixed liquor. Its suspended solids, called mixed liquor suspended solids or MLSS, show how much biomass the tank holds. The mixed liquor flows to the secondary clarifier, where the biomass settles and separates from the treated water. The clear water leaves over the weir, and the settled biomass is pulled back for reuse or removed as waste.\n\n### Return and waste activated sludge\n\nReturn activated sludge (RAS) is settled biomass pumped back to the head of the aeration tank, so that the microbe population stays high enough to do the work. Waste activated sludge (WAS) is the biomass removed from the system. Wasting controls how much biomass the process holds and how long the solids stay in the system, which is the solids retention time. The return rate and the waste rate are adjusted together, because changing one moves the other.\n\n### Sludge settleability and what the operator sees\n\nA healthy biomass settles quickly and leaves clear water above the blanket. Poor settleability shows up as cloudy effluent, a rising blanket or foam. Causes include a change in the microbe population, low oxygen, a sudden shift in the load or a toxic input. The operator checks the blanket depth, the appearance of the mixed liquor, the dissolved oxygen and the trend of MLSS before deciding what has changed.",
+      "evidence": "### Fictional scenario: Harbour Point's aeration tank\n\nHarbour Point Plant is a fictional activated sludge plant. Over four days the dissolved oxygen in aeration tank 2 fell from a normal level to a low one, the mixed liquor became frothy, and the secondary clarifier effluent turned cloudy. A blower has been running at lower output since a maintenance task, and the plant's flow has risen after a holiday weekend.",
+      "assignment": "Write a one-page note for Harbour Point's supervisor. Explain how the low dissolved oxygen, the frothy mixed liquor and the cloudy effluent could be connected. Describe what the secondary clarifier blanket depth and the MLSS trend would show. Propose a short sequence of checks before changing the return or waste rate, and say why that order matters.",
+      "rubric": [
+        "Connects dissolved oxygen, the microbes and the effluent quality.",
+        "Explains what blanket depth and MLSS trends would show.",
+        "Proposes a sensible order of checks before changing the sludge rates.",
+        "Explains why return and waste rates are adjusted together."
+      ],
+      "facilitatorGuide": "Ask learners to explain why an aerobic process needs oxygen and what happens to the microbes when it does not get enough. Check that they link cloudy effluent to clarifier performance and not only to the aeration tank. Strong answers do the oxygen check before the sludge rates. Watch for learners who increase wasting to fix every problem; more wasting does not restore oxygen.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 20,
+          "instruction": "Study the lesson and draw the activated sludge loop, labelling the aeration tank, clarifier, RAS and WAS."
+        },
+        {
+          "kind": "reading",
+          "minutes": 10,
+          "instruction": "Read your plant's MLSS and dissolved oxygen records and note one trend you could explain."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 12,
+          "instruction": "Work through the Harbour Point scenario and write the order of checks you would make."
+        },
+        {
+          "kind": "assignment",
+          "minutes": 8,
+          "instruction": "Complete the module assignment against the rubric."
+        }
+      ],
+      "sourceIds": [
+        "wi-sw-guide",
+        "ca-t-range"
+      ],
+      "checks": [
+        {
+          "id": "ceu-wastewater-treatment-concepts-activated-sludge-basics-c1",
+          "objective": "biology",
+          "prompt": "What role do microbes play in an activated sludge process?",
+          "choices": [
+            "They remove grit from the flow",
+            "They settle the solids by gravity in the clarifier",
+            "They use organic matter as food and convert it to new cells and gases",
+            "They disinfect the effluent with chlorine"
+          ],
+          "correctIndex": 2,
+          "explanation": "The microbes consume the organic matter, so their activity removes the organic load."
+        },
+        {
+          "id": "ceu-wastewater-treatment-concepts-activated-sludge-basics-c2",
+          "objective": "aeration",
+          "prompt": "Why does an aeration tank need dissolved oxygen?",
+          "choices": [
+            "Oxygen settles the solids in the tank",
+            "Oxygen removes grit from the influent",
+            "Oxygen replaces disinfection in the effluent",
+            "Aerobic microbes need oxygen to break down the organic matter"
+          ],
+          "correctIndex": 3,
+          "explanation": "Aerobic microbes depend on dissolved oxygen, so a shortage slows the biological breakdown."
+        },
+        {
+          "id": "ceu-wastewater-treatment-concepts-activated-sludge-basics-c3",
+          "objective": "mlss",
+          "prompt": "What does mixed liquor suspended solids (MLSS) describe?",
+          "choices": [
+            "The concentration of microbial solids suspended in the aeration tank",
+            "The solids removed as primary sludge",
+            "The grit collected in the grit chamber",
+            "The solids in the final effluent"
+          ],
+          "correctIndex": 0,
+          "explanation": "MLSS is the suspended solid concentration in the aeration tank, which shows how much biomass it holds."
+        },
+        {
+          "id": "ceu-wastewater-treatment-concepts-activated-sludge-basics-c4",
+          "objective": "clarifier",
+          "prompt": "What does a secondary clarifier do?",
+          "choices": [
+            "Removes grit from the influent before biology",
+            "Separates the biomass from the treated water so it can be returned or wasted",
+            "Adds chlorine to the effluent",
+            "Digests the sludge to reduce its volume"
+          ],
+          "correctIndex": 1,
+          "explanation": "The secondary clarifier separates the biomass from the water, which then goes back or out as waste."
+        },
+        {
+          "id": "ceu-wastewater-treatment-concepts-activated-sludge-basics-c5",
+          "objective": "sludge",
+          "prompt": "What is return activated sludge (RAS)?",
+          "choices": [
+            "Primary sludge pumped to the digester",
+            "Treated effluent returned to the river",
+            "Settled biomass pumped back to the aeration tank to keep the microbe population up",
+            "Grit returned to the head of the plant"
+          ],
+          "correctIndex": 2,
+          "explanation": "RAS keeps the biomass in the aeration tank at a level that can do the work."
+        },
+        {
+          "id": "ceu-wastewater-treatment-concepts-activated-sludge-basics-c6",
+          "objective": "sludge",
+          "prompt": "Why is waste activated sludge (WAS) removed?",
+          "choices": [
+            "To add food to the aeration tank",
+            "To lower the dissolved oxygen in the tank",
+            "To disinfect the solids before disposal",
+            "To control the amount of biomass in the system and its age"
+          ],
+          "correctIndex": 3,
+          "explanation": "Wasting controls the biomass inventory, which sets the solids retention time."
+        }
+      ]
+    },
+    {
+      "id": "effluent-monitoring-records",
+      "title": "Effluent disinfection, monitoring and records",
+      "objectives": [
+        "Describe how effluent is disinfected, why residual chlorine is removed when chlorine is used, and what dissolved oxygen tells the operator.",
+        "Keep monitoring records that show trends and escalate a process problem with the evidence."
+      ],
+      "lesson": "### Disinfection of the effluent\n\nEffluent can carry pathogens from the sewage, so many plants disinfect it before discharge. The common methods are chlorine, ultraviolet (UV) light and ozone. Each works differently. Chlorine leaves a residual that continues to act, UV inactivates microbes with light energy and leaves no chemical residual, and ozone is a strong oxidant that breaks down quickly. The method is chosen for the plant, the receiving water and the operating costs, and the operator needs to know which method is in use.\n\n### Dechlorination when chlorine is used\n\nResidual chlorine can harm aquatic life in the receiving water, so plants that use chlorine often remove it before discharge. Dechlorination uses a chemical that reacts with the residual, and the dose has to match the residual that is actually present. Too little leaves residual chlorine in the outfall. Too much adds a demand that the plant should not be creating. The operator checks the residual before and after the dechlorination step.\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 300 184\" role=\"img\" aria-label=\"Vertical flow: secondary effluent, disinfection, dechlorination if chlorine is used, outfall\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\">\n<title>From secondary effluent to the outfall</title>\n<rect x=\"50\" y=\"10\" width=\"200\" height=\"30\" rx=\"4\" fill=\"#e3edf8\" stroke=\"#6b7a8c\" stroke-width=\"2\"/>\n<text x=\"150\" y=\"30\" text-anchor=\"middle\" fill=\"#1d2d40\">Secondary effluent</text>\n<path d=\"M150 40V48\" stroke=\"#1d2d40\" stroke-width=\"2\"/>\n<path d=\"M145 46L150 52L155 46Z\" fill=\"#1d2d40\"/>\n<rect x=\"50\" y=\"52\" width=\"200\" height=\"30\" rx=\"4\" fill=\"#e3edf8\" stroke=\"#6b7a8c\" stroke-width=\"2\"/>\n<text x=\"150\" y=\"72\" text-anchor=\"middle\" fill=\"#1d2d40\">Disinfection (chlorine or UV)</text>\n<path d=\"M150 82V90\" stroke=\"#1d2d40\" stroke-width=\"2\"/>\n<path d=\"M145 88L150 94L155 88Z\" fill=\"#1d2d40\"/>\n<rect x=\"50\" y=\"94\" width=\"200\" height=\"30\" rx=\"4\" fill=\"#e3edf8\" stroke=\"#6b7a8c\" stroke-width=\"2\"/>\n<text x=\"150\" y=\"114\" text-anchor=\"middle\" fill=\"#1d2d40\">Dechlorination (if chlorine is used)</text>\n<path d=\"M150 124V132\" stroke=\"#1d2d40\" stroke-width=\"2\"/>\n<path d=\"M145 130L150 136L155 130Z\" fill=\"#1d2d40\"/>\n<rect x=\"50\" y=\"136\" width=\"200\" height=\"30\" rx=\"4\" fill=\"#e3edf8\" stroke=\"#6b7a8c\" stroke-width=\"2\"/>\n<text x=\"150\" y=\"156\" text-anchor=\"middle\" fill=\"#1d2d40\">Outfall to receiving water</text>\n</svg>\n<figcaption>From secondary effluent to the outfall.</figcaption>\n</figure>\n\n### Effluent quality and what is measured\n\nThe effluent is measured for the same kinds of things as the influent, plus the measures that matter to the receiving water. BOD and TSS show the remaining organic load and solids. Dissolved oxygen in the effluent matters because low oxygen in the receiving water can stress aquatic life. A grab sample shows quality at one moment, while a composite sample shows the average over a period. Choosing the right sample type is part of getting a useful result.\n\n### Records and trends\n\nMonitoring records show trends, support decisions and provide evidence when a problem is investigated. A useful record is dated and complete, and it shows what was measured, what was changed and what the operator observed. A trend that rises slowly over a week is often the first sign of a process problem, which is why the effluent record is read over time and not only against a single result.\n\n### Escalating a process problem\n\nEscalate when the trend suggests that a barrier is failing, not only after a result is out of range. The escalation should include the trend, the readings with their times, the actions already taken and the support needed. A slow rise in effluent TSS with rising influent load points to the clarifiers or the biomass. A falling dissolved oxygen in the aeration tank points to the aeration system and the load it is carrying.",
+      "evidence": "### Fictional scenario: Lowmere Outfall\n\nLowmere Plant is a fictional plant that discharges chlorine-disinfected effluent to a river. Over one week the effluent TSS rose slowly, the dissolved oxygen in the outfall sample dropped, and the chlorine residual before dechlorination was higher than usual. The dechlorination dose has not been changed since a supplier switch. The supervisor asks for a note on what the trends mean.",
+      "assignment": "Write a one-page note for Lowmere's supervisor. Explain what the rising effluent TSS and the falling outfall dissolved oxygen could indicate. Describe how the higher residual before dechlorination could affect the outfall, and what check comes first. Give a short escalation summary with the trend, the actions already taken and the support you need. Show one correction to a record line in the note, in the trusted-record way.",
+      "rubric": [
+        "Connects the effluent trends to the clarifiers, the biomass or the aeration.",
+        "Explains why dechlorination must match the residual present.",
+        "Gives an escalation with the trend, actions taken and support needed.",
+        "Shows a record correction in the trusted-record way."
+      ],
+      "facilitatorGuide": "Ask learners to say what a grab sample and a composite sample each show. Check that they explain why residual chlorine is removed before discharge, and why too much dechlorinant is also a problem. Strong escalations are short and specific. Watch for learners who treat a single result as a trend, or who wait for the next monthly report before acting.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 20,
+          "instruction": "Study the lesson and list the effluent measures, writing why each one matters to the receiving water."
+        },
+        {
+          "kind": "reading",
+          "minutes": 10,
+          "instruction": "Read your plant's effluent records and note one trend you have seen over a week."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 12,
+          "instruction": "Work through the Lowmere scenario and list the checks you would make before escalating."
+        },
+        {
+          "kind": "final_assessment",
+          "minutes": 8,
+          "instruction": "Sit the final assessment for this course after the last module."
+        }
+      ],
+      "sourceIds": [
+        "wi-sw-guide",
+        "ca-t-range"
+      ],
+      "checks": [
+        {
+          "id": "ceu-wastewater-treatment-concepts-effluent-monitoring-records-c1",
+          "objective": "disinfection",
+          "prompt": "Why is wastewater effluent often disinfected before discharge?",
+          "choices": [
+            "To add oxygen for the aquatic life",
+            "To remove all of the BOD from the effluent",
+            "To raise the temperature of the effluent",
+            "To reduce the pathogens released to the receiving water"
+          ],
+          "correctIndex": 3,
+          "explanation": "Disinfection reduces the microbes that the effluent would otherwise release to the receiving water."
+        },
+        {
+          "id": "ceu-wastewater-treatment-concepts-effluent-monitoring-records-c2",
+          "objective": "dechlorination",
+          "prompt": "Why might an effluent need dechlorination after chlorine disinfection?",
+          "choices": [
+            "Residual chlorine can harm aquatic life, so it is removed before discharge",
+            "Chlorine residual improves the taste of the effluent",
+            "Chlorine increases the BOD of the effluent",
+            "Dechlorination adds more chlorine to the water"
+          ],
+          "correctIndex": 0,
+          "explanation": "Residual chlorine can harm aquatic life, so the plant removes it before the water is discharged."
+        },
+        {
+          "id": "ceu-wastewater-treatment-concepts-effluent-monitoring-records-c3",
+          "objective": "disinfection",
+          "prompt": "What does ultraviolet (UV) disinfection do?",
+          "choices": [
+            "It adds a chlorine residual that lasts through the outfall",
+            "It inactivates microbes using light energy and leaves no chemical residual",
+            "It removes dissolved salts from the effluent",
+            "It settles the solids in the clarifier"
+          ],
+          "correctIndex": 1,
+          "explanation": "UV inactivates microbes with light energy, so it leaves no chemical residual in the effluent."
+        },
+        {
+          "id": "ceu-wastewater-treatment-concepts-effluent-monitoring-records-c4",
+          "objective": "effluent",
+          "prompt": "Why does dissolved oxygen in the effluent matter?",
+          "choices": [
+            "Dissolved oxygen in the effluent adds to the BOD load",
+            "Dissolved oxygen replaces the need for disinfection",
+            "Low dissolved oxygen in the receiving water can stress aquatic life",
+            "Dissolved oxygen raises the chlorine demand of the effluent"
+          ],
+          "correctIndex": 2,
+          "explanation": "The oxygen in the receiving water supports aquatic life, so low dissolved oxygen is a concern."
+        },
+        {
+          "id": "ceu-wastewater-treatment-concepts-effluent-monitoring-records-c5",
+          "objective": "monitoring",
+          "prompt": "What does a grab sample represent?",
+          "choices": [
+            "The average quality over an entire week",
+            "The quality of the sludge in the digester",
+            "The flow through the plant over a day",
+            "The water quality at one moment in time"
+          ],
+          "correctIndex": 3,
+          "explanation": "A grab sample is a single sample taken at one time, so it shows quality at that moment."
+        },
+        {
+          "id": "ceu-wastewater-treatment-concepts-effluent-monitoring-records-c6",
+          "objective": "records",
+          "prompt": "Why keep records of effluent quality and process readings?",
+          "choices": [
+            "They show trends, support decisions and provide evidence when a problem is investigated",
+            "They are only needed for the annual budget",
+            "They replace the need for operator checks",
+            "They are only a formality for the file"
+          ],
+          "correctIndex": 0,
+          "explanation": "Records are useful because they show what changed and when, which supports decisions and investigations."
+        }
+      ]
+    }
+  ],
+  "finalAssessment": [
+    {
+      "id": "ceu-wastewater-treatment-concepts-characteristics-and-train-f1",
+      "objective": "characteristics",
+      "prompt": "A plant receives influent with much lower strength than usual after heavy rain. What is the most likely cause?",
+      "choices": [
+        "Dilution by extra flow entering the collection system",
+        "Higher sludge return from the clarifier, which lowers the influent strength over the day",
+        "A broken aeration blower in the tank that stops the biology from using organic matter",
+        "Increased chlorine feed to the effluent, which removes organic matter from the flow"
+      ],
+      "correctIndex": 0,
+      "explanation": "Extra stormwater and infiltration dilute the sewage, which lowers the concentration measured at the plant."
+    },
+    {
+      "id": "ceu-wastewater-treatment-concepts-characteristics-and-train-f2",
+      "objective": "characteristics",
+      "prompt": "Which measure is commonly used to report the organic strength of wastewater?",
+      "choices": [
+        "Chlorine residual left in the effluent after the disinfection contact time",
+        "Biochemical oxygen demand (BOD)",
+        "Turbidity in NTU measured on the final effluent at the outlet channel",
+        "Dissolved hardness of the water as calcium and magnesium carbonate"
+      ],
+      "correctIndex": 1,
+      "explanation": "BOD is the standard organic strength measure. The other choices describe other properties."
+    },
+    {
+      "id": "ceu-wastewater-treatment-concepts-characteristics-and-train-f3",
+      "objective": "flow",
+      "prompt": "Why do peak flows matter for a treatment plant?",
+      "choices": [
+        "They always raise the strength of the influent by the same amount as the flow",
+        "They affect only the pumps and not the tanks, clarifiers or the biology at all",
+        "They can exceed unit capacity and carry solids over if they are not managed",
+        "They have no effect on settling in the clarifiers, which keep working at the same rate"
+      ],
+      "correctIndex": 2,
+      "explanation": "Flows above design capacity can push solids out of clarifiers and overload other units."
+    },
+    {
+      "id": "ceu-wastewater-treatment-concepts-characteristics-and-train-f4",
+      "objective": "train",
+      "prompt": "What is grit, and why is it removed early in the train?",
+      "choices": [
+        "Organic matter that feeds the biology in the aeration tank and should be kept",
+        "Dissolved salts that pass through every treatment step without being removed",
+        "Treated water used to clean the screens and channels before the next flush",
+        "Heavy sand and gravel that would wear equipment and settle in tanks"
+      ],
+      "correctIndex": 3,
+      "explanation": "Grit is heavy and abrasive, so removing it early protects pumps and prevents deposits in tanks."
+    },
+    {
+      "id": "ceu-wastewater-treatment-concepts-characteristics-and-train-f5",
+      "objective": "train",
+      "prompt": "Where does primary sludge come from?",
+      "choices": [
+        "Solids that settle out in the primary clarifiers",
+        "Foam skimmed from the aeration tank surface",
+        "Chlorine residual that precipitates in the effluent",
+        "Water returned from the secondary clarifier"
+      ],
+      "correctIndex": 0,
+      "explanation": "Primary sludge is the settleable solids collected from the primary clarifiers."
+    },
+    {
+      "id": "ceu-wastewater-treatment-concepts-preliminary-and-primary-f1",
+      "objective": "screening",
+      "prompt": "Rags reach the pumps and wrap around the impeller. What is the most likely cause?",
+      "choices": [
+        "The primary clarifier was overloaded with sludge from the previous storm event",
+        "Screens were not cleaned, or the screen spacing let rags through",
+        "The grit chamber was built too deep for the flow it was given to treat",
+        "The aeration blower was running slowly because the motor had lost its speed"
+      ],
+      "correctIndex": 1,
+      "explanation": "Uncleaned or wide-spaced screens let rags through to the pumps, which is a screening failure."
+    },
+    {
+      "id": "ceu-wastewater-treatment-concepts-preliminary-and-primary-f2",
+      "objective": "grit",
+      "prompt": "Grit is building up in an aeration tank. What is the likely cause?",
+      "choices": [
+        "The aeration blower is too strong for the tank and mixes grit into the biology",
+        "The primary clarifier is removing too much BOD and passing the grit to the tank",
+        "Grit removal is not working, so heavy solids pass into the biology",
+        "The secondary clarifier is returning too much sludge that carries grit back in"
+      ],
+      "correctIndex": 2,
+      "explanation": "Grit that is not removed upstream settles in the aeration tank and reduces its volume."
+    },
+    {
+      "id": "ceu-wastewater-treatment-concepts-preliminary-and-primary-f3",
+      "objective": "clarifier",
+      "prompt": "A primary clarifier shows high effluent TSS after a storm. What is the most likely cause?",
+      "choices": [
+        "Low influent flow carrying too little solids to the clarifier from the sewer",
+        "The clarifier is too clean to settle solids because the surface has no scum",
+        "The chlorine feed has stopped and the solids rise in the clarifier tank",
+        "Hydraulic overload is carrying solids over the weirs"
+      ],
+      "correctIndex": 3,
+      "explanation": "A storm can push the flow above the clarifier's capacity, and solids then leave over the weirs."
+    },
+    {
+      "id": "ceu-wastewater-treatment-concepts-preliminary-and-primary-f4",
+      "objective": "removal",
+      "prompt": "Removal across the primary clarifier falls to a low level. What should the operator check first?",
+      "choices": [
+        "Flow, sludge removal frequency and the solids in the influent",
+        "The colour of the effluent in the outfall channel after the weir overflow point",
+        "The paint coating on the pump motor housing in the pump room near the inlet",
+        "The number of operators on the day shift and their current training records"
+      ],
+      "correctIndex": 0,
+      "explanation": "Flow, sludge removal and influent solids are the first checks, because each can reduce removal."
+    },
+    {
+      "id": "ceu-wastewater-treatment-concepts-preliminary-and-primary-f5",
+      "objective": "sludge",
+      "prompt": "Why must primary sludge be removed regularly?",
+      "choices": [
+        "Sludge must be removed to add oxygen to the water before it enters biology",
+        "Settled sludge can become septic and cause odour, gas or floating solids",
+        "Sludge is removed only to measure its pH for the plant's routine checks and records",
+        "Sludge removal stops all biological treatment in the aeration tank entirely"
+      ],
+      "correctIndex": 1,
+      "explanation": "Sludge that stays too long in the clarifier becomes septic and can float, which loses removal."
+    },
+    {
+      "id": "ceu-wastewater-treatment-concepts-activated-sludge-basics-f1",
+      "objective": "biology",
+      "prompt": "A tank's dissolved oxygen drops and the microbes slow down. What is the most likely cause?",
+      "choices": [
+        "The primary clarifier is removing too many solids, so the tank gets less food",
+        "The screen spacing is too wide and lets large debris reach the aeration tank",
+        "Oxygen supply is too low for the organic load, perhaps from a blower problem",
+        "The chlorine residual in the effluent is too high and is inhibiting the tank's microbes"
+      ],
+      "correctIndex": 2,
+      "explanation": "A blower or diffuser problem that cuts oxygen supply will drop the dissolved oxygen and slow the microbes."
+    },
+    {
+      "id": "ceu-wastewater-treatment-concepts-activated-sludge-basics-f2",
+      "objective": "mlss",
+      "prompt": "What happens if MLSS in the aeration tank rises well above its normal range without more oxygen?",
+      "choices": [
+        "The effluent becomes clearer as the solids rise and more light reaches the outfall channel",
+        "The grit chamber stops working because the rising solids block the grit channel entirely",
+        "The effluent BOD falls to zero because the microbes take up every organic molecule in the tank",
+        "Oxygen demand rises, so dissolved oxygen can fall and the process becomes oxygen-limited"
+      ],
+      "correctIndex": 3,
+      "explanation": "More biomass needs more oxygen, so without more supply the process becomes oxygen-limited."
+    },
+    {
+      "id": "ceu-wastewater-treatment-concepts-activated-sludge-basics-f3",
+      "objective": "clarifier",
+      "prompt": "The secondary clarifier's effluent is cloudy with solids after a flow surge. What is the most likely cause?",
+      "choices": [
+        "Solids are carried over because the clarifier is overloaded or the blanket is too high",
+        "The grit chamber was not cleaned that morning, so grit and fine sand reached the clarifier inlet",
+        "The screens let too many rags through, and the rags now cover the clarifier weir overflow",
+        "The effluent chlorine residual is too low, which is a sign that the clarifier has failed to settle"
+      ],
+      "correctIndex": 0,
+      "explanation": "A flow surge can overload the clarifier or push the blanket up, and solids then leave with the effluent."
+    },
+    {
+      "id": "ceu-wastewater-treatment-concepts-activated-sludge-basics-f4",
+      "objective": "sludge",
+      "prompt": "Which control keeps the amount of biomass in the system steady?",
+      "choices": [
+        "Changing only the screen cleaning frequency, which controls the biomass in the tank",
+        "Adjusting the waste activated sludge rate and the return rate together",
+        "Changing only the grit removal velocity, which sets the biomass in the aeration tank",
+        "Changing only the chlorine feed rate to the effluent, which sets the biomass directly"
+      ],
+      "correctIndex": 1,
+      "explanation": "Return and waste rates control the biomass inventory, and they are adjusted together to keep it steady."
+    },
+    {
+      "id": "ceu-wastewater-treatment-concepts-activated-sludge-basics-f5",
+      "objective": "settleability",
+      "prompt": "What does poor sludge settleability most often indicate to an operator?",
+      "choices": [
+        "A need to increase the grit removal rate at the head of the plant to fix the settling problem",
+        "A sign that the influent is free of solids and so needs no further primary treatment at all",
+        "A change in the microbial population or operating conditions that needs investigating",
+        "A fault in the chlorine feed pump only, with no change in the biomass or the operating conditions"
+      ],
+      "correctIndex": 2,
+      "explanation": "Poor settling is a symptom of a change in the biomass or its conditions, and the cause must be found."
+    },
+    {
+      "id": "ceu-wastewater-treatment-concepts-effluent-monitoring-records-f1",
+      "objective": "disinfection",
+      "prompt": "A UV system's output is lower than the design and the effluent has more microbes. What should the operator check first?",
+      "choices": [
+        "The sludge pump's motor temperature only, read at the start of each shift for records",
+        "The chlorine feed rate to the clarifier, which has no effect on UV output at all",
+        "The grit chamber's cleaning log, kept on the same sheet as the screen records",
+        "Lamp condition, UV transmittance and the effluent flow through the channel"
+      ],
+      "correctIndex": 3,
+      "explanation": "Lamp condition, transmittance and flow through the channel decide how much UV energy reaches the microbes."
+    },
+    {
+      "id": "ceu-wastewater-treatment-concepts-effluent-monitoring-records-f2",
+      "objective": "dechlorination",
+      "prompt": "Chlorine is used as the disinfectant. Which step is needed before discharge to the receiving water?",
+      "choices": [
+        "Dechlorination, to remove residual chlorine that can harm aquatic life",
+        "Adding more chlorine to raise the residual in the effluent before it leaves the plant",
+        "Heating the effluent to speed the chlorine decay in the outfall channel",
+        "Adding grit to the effluent to absorb the chlorine before it reaches the river"
+      ],
+      "correctIndex": 0,
+      "explanation": "Dechlorination removes the residual that could harm aquatic life before the water is discharged."
+    },
+    {
+      "id": "ceu-wastewater-treatment-concepts-effluent-monitoring-records-f3",
+      "objective": "effluent",
+      "prompt": "The effluent BOD rises after a plant upset. What is a likely cause?",
+      "choices": [
+        "A faster grit chamber velocity that carries more grit into the aeration tank",
+        "Biomass lost in the secondary clarifier, so organic matter carries over",
+        "A stronger chlorine residual in the effluent that inhibits the microbes in the tank",
+        "A higher screen cleaning frequency that removes more debris from the influent flow"
+      ],
+      "correctIndex": 1,
+      "explanation": "Biomass that leaves the clarifier carries organic matter with it, which raises the effluent BOD."
+    },
+    {
+      "id": "ceu-wastewater-treatment-concepts-effluent-monitoring-records-f4",
+      "objective": "monitoring",
+      "prompt": "Effluent TSS has risen slowly over a week. What is the best response?",
+      "choices": [
+        "Wait for the next monthly report to see whether the trend changes before any action is taken at all",
+        "Ignore it because each single reading is still within the normal range shown on the record sheet",
+        "Investigate the trend and check the clarifiers and the biomass before it becomes a limit problem",
+        "Change the sampling time so that the trend is missed in the weekly summary report that the supervisor reads"
+      ],
+      "correctIndex": 2,
+      "explanation": "A slow rise is a trend that should be investigated before it becomes a failure."
+    },
+    {
+      "id": "ceu-wastewater-treatment-concepts-effluent-monitoring-records-f5",
+      "objective": "records",
+      "prompt": "Which record is most useful when a process problem is being investigated?",
+      "choices": [
+        "A list of the names of the staff on shift and their hours worked over the week",
+        "The invoice for the last chemical delivery, kept with the supplier's contact details",
+        "A copy of the plant's certificate hung on the wall in the office and the lobby",
+        "A dated log of readings, changes made, and the operator's observations"
+      ],
+      "correctIndex": 3,
+      "explanation": "A dated log with readings, changes and observations is the evidence an investigation needs."
+    }
+  ],
+  "alternateFinalAssessment": [
+    {
+      "id": "ceu-wastewater-treatment-concepts-characteristics-and-train-a1",
+      "objective": "characteristics",
+      "prompt": "What does TSS measure?",
+      "choices": [
+        "Total soluble salts, the dissolved mineral content of the water and its hardness",
+        "A treatment stage score used to rate the plant each year for the regulator's report",
+        "Total suspended solids, the mass of particles retained on a filter",
+        "The time since the last sample was collected at the inlet of the plant each day"
+      ],
+      "correctIndex": 2,
+      "explanation": "TSS is the mass of particles a filter retains, so it measures suspended solids."
+    },
+    {
+      "id": "ceu-wastewater-treatment-concepts-characteristics-and-train-a2",
+      "objective": "flow",
+      "prompt": "Why is wastewater flow measured at the plant?",
+      "choices": [
+        "To set the price of sewer charges only for the billing cycle in the municipality",
+        "To measure the colour of the effluent as it leaves the outfall channel",
+        "To estimate the temperature of the influent entering the plant at the inlet",
+        "To size treatment units and to calculate loads and removals"
+      ],
+      "correctIndex": 3,
+      "explanation": "Flow is needed to size units and to turn concentrations into loads and removals."
+    },
+    {
+      "id": "ceu-wastewater-treatment-concepts-characteristics-and-train-a3",
+      "objective": "flow",
+      "prompt": "What should operators suspect when clean water enters the collection system through cracks or manholes?",
+      "choices": [
+        "Inflow or infiltration that raises the flow and dilutes the wastewater",
+        "Fresh water pumped from the plant clearwell back into the sewer during the night",
+        "Treated effluent returned from the outfall for irrigation of the nearby fields",
+        "Sludge pumped from the digester into the collection system by mistake during a transfer"
+      ],
+      "correctIndex": 0,
+      "explanation": "Cracks, manholes and illegal connections let clean water in, which is inflow and infiltration."
+    },
+    {
+      "id": "ceu-wastewater-treatment-concepts-characteristics-and-train-a4",
+      "objective": "train",
+      "prompt": "What is the main purpose of a grit chamber?",
+      "choices": [
+        "To remove dissolved oxygen from the influent before it reaches the aeration tank",
+        "To settle sand and gravel out of the flow before it reaches equipment",
+        "To add phosphorus to the water before the biology in the aeration tank",
+        "To thicken the sludge for disposal at the end of the whole treatment train"
+      ],
+      "correctIndex": 1,
+      "explanation": "A grit chamber slows the flow so that heavy grit settles while the lighter organic matter stays in the flow."
+    },
+    {
+      "id": "ceu-wastewater-treatment-concepts-characteristics-and-train-a5",
+      "objective": "train",
+      "prompt": "Why is an aeration tank needed in an activated sludge process?",
+      "choices": [
+        "To settle the solids by gravity in the tank before the clarifier takes over",
+        "To remove grit from the influent before it reaches the tank and the pumps",
+        "To supply oxygen for microbes that break down organic matter",
+        "To disinfect the effluent with chlorine before the water leaves the plant"
+      ],
+      "correctIndex": 2,
+      "explanation": "Aeration supplies the oxygen the microbes need to break down the organic matter."
+    },
+    {
+      "id": "ceu-wastewater-treatment-concepts-preliminary-and-primary-a1",
+      "objective": "screening",
+      "prompt": "What is a fine screen used for?",
+      "choices": [
+        "Adding chemicals to the influent for coagulation",
+        "Measuring the flow through the plant",
+        "Thickening the primary sludge for disposal",
+        "Removing smaller solids that bar screens miss"
+      ],
+      "correctIndex": 3,
+      "explanation": "Fine screens catch the smaller solids that pass the coarser bar screens."
+    },
+    {
+      "id": "ceu-wastewater-treatment-concepts-preliminary-and-primary-a2",
+      "objective": "grit",
+      "prompt": "Why is grit removed before the aeration tank?",
+      "choices": [
+        "Grit is abrasive and would wear equipment and settle in the tank",
+        "Grit provides the food for the microbes in the tank and so should be kept in",
+        "Grit raises the dissolved oxygen in the tank and helps the aeration work well",
+        "Grit prevents sludge from forming in the clarifier by keeping the flow clean"
+      ],
+      "correctIndex": 0,
+      "explanation": "Grit wears equipment and settles in tanks, so removing it early protects the process."
+    },
+    {
+      "id": "ceu-wastewater-treatment-concepts-preliminary-and-primary-a3",
+      "objective": "clarifier",
+      "prompt": "What is a weir in a clarifier?",
+      "choices": [
+        "A pump that removes the settled sludge from the bottom of the clarifier tank",
+        "The outlet edge over which clarified water flows to the next step",
+        "A screen that catches rags and debris at the inlet of the clarifier channel",
+        "A tank that stores chlorine solution for feeding into the outlet channel"
+      ],
+      "correctIndex": 1,
+      "explanation": "The weir is the outlet edge that sets the water level and carries clarified water to the next step."
+    },
+    {
+      "id": "ceu-wastewater-treatment-concepts-preliminary-and-primary-a4",
+      "objective": "removal",
+      "prompt": "Which pair of measurements is most useful for judging removal across a primary clarifier?",
+      "choices": [
+        "Two effluent samples taken hours apart from the same outlet on the same day",
+        "The depth of the sludge blanket only, read once a week from the top",
+        "Influent and effluent TSS or BOD, taken at the same time",
+        "Flow rate and pump hours only, recorded on the plant's daily summary sheet"
+      ],
+      "correctIndex": 2,
+      "explanation": "Paired influent and effluent samples taken together give a true removal figure."
+    },
+    {
+      "id": "ceu-wastewater-treatment-concepts-preliminary-and-primary-a5",
+      "objective": "sludge",
+      "prompt": "What is septic sludge?",
+      "choices": [
+        "Sludge that has been disinfected and stored in a clean tank for later use",
+        "Sludge that is free of organic matter and has been dried completely in the sun",
+        "Sludge that is dried on a bed in the sun for disposal to the landfill site",
+        "Sludge that has gone anaerobic and may produce odour and gas"
+      ],
+      "correctIndex": 3,
+      "explanation": "Septic sludge has gone anaerobic, which produces odour and gas and can cause the sludge to float."
+    },
+    {
+      "id": "ceu-wastewater-treatment-concepts-activated-sludge-basics-a1",
+      "objective": "biology",
+      "prompt": "What is a common product of aerobic microbial breakdown?",
+      "choices": [
+        "Carbon dioxide and new biomass",
+        "Chlorine gas and hydrogen released from the reaction in the aeration tank",
+        "Grit and sand that settle out in the bottom of the aeration tank",
+        "Dissolved salts only, left behind in the water after treatment is finished"
+      ],
+      "correctIndex": 0,
+      "explanation": "Aerobic breakdown produces carbon dioxide and new cells, which is why biomass grows as the organic matter is used."
+    },
+    {
+      "id": "ceu-wastewater-treatment-concepts-activated-sludge-basics-a2",
+      "objective": "aeration",
+      "prompt": "Why are diffusers or surface aerators used in the aeration tank?",
+      "choices": [
+        "To remove grit from the water before it reaches the secondary clarifier downstream",
+        "To transfer oxygen into the mixed liquor and keep the solids suspended",
+        "To heat the tank so that the microbes react faster during the cold season",
+        "To pump the settled sludge to the digester for thickening and stabilisation"
+      ],
+      "correctIndex": 1,
+      "explanation": "Aeration supplies oxygen and keeps the mixed liquor mixed, so the microbes stay in contact with the food."
+    },
+    {
+      "id": "ceu-wastewater-treatment-concepts-activated-sludge-basics-a3",
+      "objective": "mlss",
+      "prompt": "Why measure MLSS regularly?",
+      "choices": [
+        "It sets the price of the sludge disposal contract that the plant signs each year",
+        "It measures the grit removal efficiency at the head of the plant each shift",
+        "It shows the biomass in the tank, which affects oxygen demand and settling",
+        "It shows how much chlorine is in the effluent at the outlet channel each day"
+      ],
+      "correctIndex": 2,
+      "explanation": "MLSS tells the operator how much biomass is in the tank, which drives oxygen demand and settling."
+    },
+    {
+      "id": "ceu-wastewater-treatment-concepts-activated-sludge-basics-a4",
+      "objective": "clarifier",
+      "prompt": "What is the sludge blanket in a secondary clarifier?",
+      "choices": [
+        "A layer of oil that floats above the effluent weir and must be skimmed off each shift",
+        "A scum layer of grit on the surface of the tank that is removed by hand each day",
+        "A layer of chlorine solution at the bottom of the tank for the disinfection step",
+        "The layer of settled biomass whose depth must be watched to avoid carry-over"
+      ],
+      "correctIndex": 3,
+      "explanation": "The blanket is the settled biomass, and if it rises too high solids are carried over with the effluent."
+    },
+    {
+      "id": "ceu-wastewater-treatment-concepts-activated-sludge-basics-a5",
+      "objective": "sludge",
+      "prompt": "What does increasing waste activated sludge (WAS) do to the solids retention time?",
+      "choices": [
+        "It shortens the solids retention time",
+        "It lengthens the solids retention time",
+        "It has no effect on the solids retention time",
+        "It sets the influent flow rate"
+      ],
+      "correctIndex": 0,
+      "explanation": "Removing more biomass shortens the time the solids stay in the system."
+    },
+    {
+      "id": "ceu-wastewater-treatment-concepts-effluent-monitoring-records-a1",
+      "objective": "disinfection",
+      "prompt": "What is a common chemical disinfectant for effluent?",
+      "choices": [
+        "Sodium chloride used for brine",
+        "Chlorine",
+        "Activated carbon used for odour control",
+        "Lime slurry used for pH adjustment"
+      ],
+      "correctIndex": 1,
+      "explanation": "Chlorine is a common chemical disinfectant. The other choices are not used mainly to disinfect."
+    },
+    {
+      "id": "ceu-wastewater-treatment-concepts-effluent-monitoring-records-a2",
+      "objective": "dechlorination",
+      "prompt": "What is a dechlorination agent commonly used for?",
+      "choices": [
+        "Adding chlorine to the sludge for stabilisation",
+        "Increasing the BOD of the effluent for the outfall",
+        "Neutralising residual chlorine before effluent discharge",
+        "Removing dissolved salts from the effluent before discharge"
+      ],
+      "correctIndex": 2,
+      "explanation": "Dechlorination agents neutralise the residual so that it does not reach the receiving water."
+    },
+    {
+      "id": "ceu-wastewater-treatment-concepts-effluent-monitoring-records-a3",
+      "objective": "disinfection",
+      "prompt": "Why does UV disinfection need clean, clear water to work well?",
+      "choices": [
+        "Particles increase the UV output of the lamps and so improve the inactivation rate",
+        "Colour adds a chlorine residual to the water, and so it helps the UV process work well",
+        "Clean water has no effect on UV disinfection at all, so the water can be dirty",
+        "Particles and colour can shield microbes from the light, reducing inactivation"
+      ],
+      "correctIndex": 3,
+      "explanation": "Particles and colour block UV light, so less of it reaches the microbes."
+    },
+    {
+      "id": "ceu-wastewater-treatment-concepts-effluent-monitoring-records-a4",
+      "objective": "effluent",
+      "prompt": "What does a dissolved oxygen trend in the receiving water indicate?",
+      "choices": [
+        "Whether the discharge is adding oxygen demand that stresses aquatic life",
+        "The price of the discharge permit that the plant pays each year to the regulator",
+        "The age of the outfall pipe and the material used when it was first laid down",
+        "The efficiency of the grit chamber at the head of the plant during the shift"
+      ],
+      "correctIndex": 0,
+      "explanation": "A falling dissolved oxygen trend downstream can show that the discharge is adding oxygen demand."
+    },
+    {
+      "id": "ceu-wastewater-treatment-concepts-effluent-monitoring-records-a5",
+      "objective": "records",
+      "prompt": "What makes a monitoring record useful to an operator?",
+      "choices": [
+        "It is written only at the end of the month from memory, once the readings are forgotten",
+        "It is dated and complete, and it shows what was measured and what was done",
+        "It shows only the best results for the year, so that the plant looks good on paper",
+        "It is kept in the supervisor's office and not on the plant, so it is harder to change"
+      ],
+      "correctIndex": 1,
+      "explanation": "A useful record is dated, complete and shows what was measured and what was done."
+    }
+  ]
+}
