@@ -1,0 +1,2262 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-wpi-class2-wastewater-r02",
+ "scope": "Owner-authorized AI-reviewed game activities: 65 items.",
+ "additions": [
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m0-01",
+    "prompt": "A water molecule that loses a hydrogen ion during self-ionization becomes a negatively charged hydroxide ion.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Losing a positively charged hydrogen ion leaves the remaining water fragment with a negative charge, forming a hydroxide ion."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "42fbdd8c4afb9c69aed8a91e3d0fd20b866219eedcaf828639521b0d1efddaaa",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m0-02",
+    "prompt": "Inorganic substances are chemical compounds derived from plant or animal matter with a carbon structure.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Inorganic substances are of mineral origin, whereas organic substances are derived from plant or animal matter with a carbon structure."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "ba68ab993e23ba740e4faa19748fcbc8b19d1d79ca9cdd0d5a7757cbb64e0c51",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m0-03",
+    "prompt": "The atomic weight of an element equals the total number of protons and neutrons in its nucleus.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Because electrons have negligible mass, atomic weight is determined by the sum of protons and neutrons in the nucleus."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "4b4b024e7a20c78da6c185499b91ae20c0ed180903065f07e5fe5050d45cf124",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m0-04",
+    "prompt": "Bromine and iodine have chemical properties that are unrelated to those of chlorine.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Bromine and iodine share similar chemical properties with chlorine because they belong to the same chemical family."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "60dc1af4befb4a28b5358d85f63251667ecd4a8150675649dccbb61e9343a0c5",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m0-05",
+    "prompt": "True color in water is caused by dissolved chemicals that remain after a sample is filtered.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Filtration removes suspended and colloidal particles that cause apparent color, leaving behind true color from dissolved chemicals."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "f9e235290f9171e61e5e49a5418c1da2c92123124ad54acf40f2a92b567bf792",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m0-06",
+    "prompt": "Carbon dioxide released by microorganisms has no effect on water pH or alkalinity.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Dissolved carbon dioxide plays an important role in regulating both pH and alkalinity in water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "ac735395f421b438fc6b390d0b3257c678a5c851a2f8eee9fcd4fefbf2b18b3e",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m0-07",
+    "prompt": "When an acid and a base neutralize each other, the compound formed besides water is called a salt.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Acid-base neutralization produces water and an ionic compound classified as a salt."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "25d18fdf0338a9656e5814808963df7459486ea13ff60bd2d75523d3d16c87e6",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m0-08",
+    "prompt": "Adding alum to water during a coagulation test raises the pH value.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Alum is acidic, so adding more alum lowers the pH value unless an alkali such as lime is added."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "0e11a8aee84b1f834dc1ff3e01815f9d6a23957d90889c69c2f2d2d5b1c2417c",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m0-09",
+    "prompt": "Seawater has a higher specific conductance than distilled water because of its dissolved salts.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Dissolved salts release ions that carry electric current, giving seawater much higher specific conductance than distilled water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "96ee45cd19851d1d52f09ab73387f34347bda4a1fe146fc4c5bbb9b7cc9325bd",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m0-10",
+    "prompt": "Aluminum sulfate is most effective as a coagulant when water pH is above 9.0.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Aluminum sulfate (alum) is most effective as a coagulant within a pH range of 5.0 to 7.5."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "3f9ca2fc7abd6a619bddff16115d2a9244d2dfc0ca3853173247c36fdb3e9255",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m0-11",
+    "prompt": "Oxidants such as potassium permanganate are effective against earthy or musty odors from algae.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Chemical oxidants like potassium permanganate oxidize nonvolatile metabolic products from actinomycetes and blue-green algae."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "8aa8a5c46aa48533ae40396b330e4de168c5613ca8c062386ca02449b3117c82",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m0-12",
+    "prompt": "Increasing water temperature and flow velocity slows down the corrosion of iron and steel pipes.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Higher water temperature and flow velocity significantly increase the corrosive tendencies of water on iron and steel."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "f6003e2a2f5316847ce5305c001ed27cbb1045f66796d5b8af5eda29207b2707",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m0-13",
+    "prompt": "High total dissolved solids in a distribution system increase conductivity during corrosion control.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "High TDS raises electrical conductivity, which increases ionization during corrosion control, though it may also promote protective coatings."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "9f4276fd4a6ffd85634943c75b82bc000c1356614b3af8f9fd21d2f5bdaba04e",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m0-14",
+    "prompt": "Chemical oxygen demand measures less total oxygen depletion than biochemical oxygen demand.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "COD is a more complete measurement of total oxygen depletion because it oxidizes both biodegradable and nonbiodegradable organics."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "8f4c95e275a89a0e60f56f52004ecc5e421b5558a6fef260e6bd9ab33386fc71",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m0-15",
+    "prompt": "Water pH, redox environment, and mineral oxidation state influence the solubility of trace metals.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Trace metal solubility in surface waters is controlled by pH, redox conditions, mineral oxidation state, and adsorbing surfaces."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "2f55a2db2261cc7a170b77a0e95082927271cb3d56a2f12191d6f8509a0cb81e",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m1-01",
+    "prompt": "Distinguish each atomic or chemical reaction term by its role in basic water chemistry.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Nucleus",
+      "right": "Central core containing protons and neutrons"
+     },
+     {
+      "id": "p2",
+      "left": "Atomic weight",
+      "right": "Sum of protons and neutrons in an atom"
+     },
+     {
+      "id": "p3",
+      "left": "Chemical formula",
+      "right": "Notation showing element symbols and atom counts"
+     },
+     {
+      "id": "p4",
+      "left": "Chemical equation",
+      "right": "Depiction of reacting molecules and resulting products"
+     },
+     {
+      "id": "p5",
+      "left": "Electron activity",
+      "right": "Mechanism driving chemical reactions without nuclear change"
+     },
+     {
+      "id": "p6",
+      "left": "Negligible electron mass",
+      "right": "Reason atom weight equals nuclear weight"
+     }
+    ],
+    "explanation": "Atomic structure and chemical notation explain how elements combine and react through electron interactions."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "569c0b1f62c54992fb158c35f91c989d2013e0de850603c7b1b439e3ad416ab1",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m1-02",
+    "prompt": "Distinguish each dissolved gas or color constituent by its behavior in water.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Dissolved oxygen",
+      "right": "Free oxygen gas breathed by fish and zooplankton"
+     },
+     {
+      "id": "p2",
+      "left": "Carbon dioxide",
+      "right": "Microbial respiration gas affecting pH and alkalinity"
+     },
+     {
+      "id": "p3",
+      "left": "Apparent color",
+      "right": "Color from colloidal iron or suspended tannins"
+     },
+     {
+      "id": "p4",
+      "left": "True color",
+      "right": "Color from dissolved organics remaining after filtration"
+     },
+     {
+      "id": "p5",
+      "left": "Hydrogen sulfide",
+      "right": "Dissolved gas contributing to septic wastewater odors"
+     },
+     {
+      "id": "p6",
+      "left": "Water molecule oxygen",
+      "right": "Bound oxygen atom unavailable for fish respiration"
+     }
+    ],
+    "explanation": "Separating dissolved gases from bound atoms and true color from apparent color clarifies water quality testing."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "ceb8020f0ae8da98d5fd0fe4756a469c3286f4696b9fac5aa2b42ea8d03e9a7d",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m1-03",
+    "prompt": "Distinguish each pH, alkalinity, or conductance factor by its effect on water quality.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Bicarbonates",
+      "right": "Major alkalinity component from carbon dioxide on soil"
+     },
+     {
+      "id": "p2",
+      "left": "Alkalinity",
+      "right": "Capacity of water to accept protons and neutralize acid"
+     },
+     {
+      "id": "p3",
+      "left": "Distilled water",
+      "right": "Pure water with very low specific conductance"
+     },
+     {
+      "id": "p4",
+      "left": "Rainwater",
+      "right": "Precipitation picking up gases and dust to raise conductance"
+     },
+     {
+      "id": "p5",
+      "left": "Seawater",
+      "right": "Saline water with high conductance and slightly basic pH"
+     },
+     {
+      "id": "p6",
+      "left": "Mine drainage",
+      "right": "Strongly acidic discharge with very low pH"
+     }
+    ],
+    "explanation": "Alkalinity, pH, and specific conductance reflect dissolved minerals, gases, and acid-base balance."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "8d6737e4940d249868ffaadedd08de4331093f10c02d8deec32e73746333349f",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m1-04",
+    "prompt": "Distinguish each wastewater odor source by the facility area where it originates.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Septic wastewater",
+      "right": "Flow containing hydrogen sulfide and odorous compounds"
+     },
+     {
+      "id": "p2",
+      "left": "Primary settling scum",
+      "right": "Floating material accumulating on clarifier surfaces"
+     },
+     {
+      "id": "p3",
+      "left": "Screenings and grit",
+      "right": "Unwanted headworks solids removed from raw flow"
+     },
+     {
+      "id": "p4",
+      "left": "Waste gas burner",
+      "right": "Combustion unit operating below optimum temperature"
+     },
+     {
+      "id": "p5",
+      "left": "Biosolids thickening tank",
+      "right": "Solids concentration unit releasing foul off-gas"
+     },
+     {
+      "id": "p6",
+      "left": "Drying beds",
+      "right": "Open basins holding digested biosolids for dewatering"
+     }
+    ],
+    "explanation": "Identifying where odors originate across headworks, primary, and solids units guides targeted odor control."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "d15b69cde42a5703e2e3f4baeb3f944671d43c714e8fb7f2aa5bc0adc249b832",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m1-07",
+    "prompt": "Distinguish each organic matter effect or test by its impact on water systems.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Refractory organics",
+      "right": "Woody compounds like lignin and cellulose resisting decay"
+     },
+     {
+      "id": "p2",
+      "left": "Benzene",
+      "right": "Ring-structured petroleum compound resisting biodegradation"
+     },
+     {
+      "id": "p3",
+      "left": "Biodegradable organics",
+      "right": "Matter broken down by microbes for energy and growth"
+     },
+     {
+      "id": "p4",
+      "left": "Chemical oxygen demand",
+      "right": "Total oxygen depletion including nonbiodegradable matter"
+     },
+     {
+      "id": "p5",
+      "left": "Halogenated compounds",
+      "right": "Byproducts formed when chlorine reacts with organics"
+     },
+     {
+      "id": "p6",
+      "left": "Synthetic organics",
+      "right": "Manufactured chemicals such as fuels, dyes, and pesticides"
+     }
+    ],
+    "explanation": "Organic compounds differ in biodegradability, oxygen demand, and reactivity with disinfectants."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "710ffd4c198baf220155ea66bf153920ae134e4dfcdcd91a14079b4b305964da",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m1-08",
+    "prompt": "Distinguish each heavy metal or nitrogen term by its environmental behavior.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Nonessential heavy metals",
+      "right": "Trace metals such as cadmium, mercury, and lead"
+     },
+     {
+      "id": "p2",
+      "left": "Particulate metals",
+      "right": "Metals bound in hydroxides, sulfides, or clay"
+     },
+     {
+      "id": "p3",
+      "left": "Soluble metal complexes",
+      "right": "Dissolved metal ions or organometallic chelates"
+     },
+     {
+      "id": "p4",
+      "left": "Nitrate",
+      "right": "Oxidized nitrogen form from sewage or fertilizer runoff"
+     },
+     {
+      "id": "p5",
+      "left": "Nitrite",
+      "right": "Reduced nitrogen species displacing oxygen in blood"
+     },
+     {
+      "id": "p6",
+      "left": "Blue-green algae",
+      "right": "Organisms fixing atmospheric nitrogen into water"
+     }
+    ],
+    "explanation": "Trace metals partition between particulate and dissolved phases, while nitrogen shifts between nitrate and nitrite."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "d01072139bdafbd5896f303291d87e37fec1079640eb4c20c8d34a18aa7a700d",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m1-09",
+    "prompt": "Distinguish each coagulation or corrosion term by its chemical function.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Aluminum sulfate",
+      "right": "Acidic metal salt coagulant lowering water pH"
+     },
+     {
+      "id": "p2",
+      "left": "Ferric chloride",
+      "right": "Iron coagulant effective down to pH 4.5"
+     },
+     {
+      "id": "p3",
+      "left": "Lime",
+      "right": "Alkali chemical raising pH during coagulation"
+     },
+     {
+      "id": "p4",
+      "left": "Polymer aid",
+      "right": "Bridging chemical helping small floc settle faster"
+     },
+     {
+      "id": "p5",
+      "left": "Mineral scale",
+      "right": "Deposit reducing pipe capacity and heat transfer"
+     },
+     {
+      "id": "p6",
+      "left": "Metal corrosion",
+      "right": "Oxidation of unprotected iron and steel surfaces"
+     }
+    ],
+    "explanation": "Coagulants, pH adjusters, scale, and corrosion all depend on water chemistry and pH balance."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "15dea099036a143d30273b2cd3ff8f64943b5a760ebd8093ce69f137f77005dd",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m1-10",
+    "prompt": "Distinguish each solids fraction or TDS effect by its laboratory and system behavior.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Total solids",
+      "right": "All suspended and dissolved matter left after evaporation"
+     },
+     {
+      "id": "p2",
+      "left": "Suspended solids",
+      "right": "Particles retained on a standard laboratory filter"
+     },
+     {
+      "id": "p3",
+      "left": "Total dissolved solids",
+      "right": "Residue left after evaporating filtered water"
+     },
+     {
+      "id": "p4",
+      "left": "Nonpolar undissolved solids",
+      "right": "Large particles such as silt that resist dissolving"
+     },
+     {
+      "id": "p5",
+      "left": "High TDS conductivity",
+      "right": "Increased ionization during corrosion control efforts"
+     },
+     {
+      "id": "p6",
+      "left": "High TDS coating",
+      "right": "Greater likelihood of forming a protective pipe layer"
+     }
+    ],
+    "explanation": "Solids are separated by filtration and evaporation, and dissolved solids influence both conductivity and pipe scaling."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "8c78afba93d8c8290f0078b9e1ec4b527ceeef1c1ecd58d31a422d1a5e076246",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m2-01",
+    "prompt": "Three of these are physical methods used for wastewater odor control; which one is a chemical oxidation method?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Activated carbon adsorption"
+     },
+     {
+      "id": "b",
+      "label": "Containment covers"
+     },
+     {
+      "id": "c",
+      "label": "Buffer zones"
+     },
+     {
+      "id": "d",
+      "label": "Potassium permanganate"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Potassium permanganate destroys odors by chemical oxidation, whereas activated carbon, covers, and buffer zones are physical control methods."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "e5e12a4dceac08dc8e7b17d31306f8a8c099a730e562cb4eaa2a5c4288c6f02a",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m3-01",
+    "prompt": "A water molecule gains a hydrogen ion during the self-ionization of water at constant temperature. What happens to the net electrical charge of that molecule?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Gaining a positively charged hydrogen ion turns a neutral water molecule into a positively charged hydronium ion."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "51123f9369fc8e0d41eb03abb89a556353ee5ce650e017df24bf6165f6b5e8c6",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m3-02",
+    "prompt": "A rigid metal block is moved from a narrow tray onto a flat table at constant temperature and pressure. What happens to the volume of the metal block?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Solids maintain both a definite shape and a definite volume at a given temperature and pressure."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "f1410d205c5d290b987fc399f3a6128138c84edb268af922beb27f508f1a6aab",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m3-03",
+    "prompt": "In a jar test, an operator adds more lime alkali to water while acidic inputs remain unchanged. What happens to the pH value of the water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Lime is an alkali, so adding more lime raises the pH value of the water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "9b0e618fb0b22c197fc97cc49cd16fee02988489df5bef1b9538ca733294655a",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m3-04",
+    "prompt": "Rainwater falls through clean air and then dissolves airborne gases and dust before reaching a collector. What happens to the specific conductance of the rainwater?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Dissolved gases and dust add ions to the water, increasing its ability to conduct electric current."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "b5323abbbb044521bd37b0545452972a550cedf0268b9a709b1bf25d448768a8",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m3-05",
+    "prompt": "Mineral scale builds up inside a steel water pipeline while pump pressure remains unchanged. What happens to the flow capacity of the pipeline?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Excessive mineral scaling narrows the internal pipe diameter and reduces pipeline flow capacity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "921fca47304991e42ff7f3fe4a15901eec8dc01ae05283ece64453225068d4f0",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m3-07",
+    "prompt": "In a water-distribution pipe, both water temperature and flow velocity decrease while dissolved oxygen stays constant. What happens to the rate of iron corrosion?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Because higher temperature and flow accelerate corrosion, lowering both slows the corrosion rate."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "31587b5cdd8cc38ec025b385c5d4773f0aeb61e5e5c7de8790235bbfabf2c600",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m3-08",
+    "prompt": "A wastewater sample with high total dissolved solids is compared with a low-TDS sample during corrosion control. What happens to the electrical conductivity of the high-TDS water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Higher total dissolved solids provide more dissolved ions, increasing electrical conductivity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "84fed47d552d92eab91dc8310aefb547d6845fdf78da3fe1a90ef20e5fb5bafc",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m3-09",
+    "prompt": "A surface water containing dissolved trace heavy metals experiences a drop in pH without new metal inputs. What happens to the solubility of those trace metals?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Trace metal solubility is strongly controlled by pH, and more acidic conditions increase metal solubility."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "c90562cb7939d44d6241ff76b195a6f7ce1059094fc16ac46960939d482ed3df",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m3-10",
+    "prompt": "Dissolved minerals are added to a water sample before it is passed through a laboratory filter and the filtrate is evaporated to dryness. What happens to the measured total dissolved solids?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Dissolved minerals pass through the filter with the water and remain as residue after evaporation, increasing the measured total dissolved solids."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "b67ac27f48fb48dad68ac404f3034cb5fb0495a848e38089f8376383acc9df91",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m3-11",
+    "prompt": "In a coagulation basin, small colloidal particles are agglomerated into larger rounded masses at constant water temperature. What happens to the settling velocity of the particles?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Agglomerating small particles into larger rounded masses increases their size and settling velocity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "a4d39551ca007afac5c485e3f2868cb9b49e9b098d54da5c161bed210021e737",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m3-12",
+    "prompt": "A sample of water containing biodegradable organics is inoculated with active microbes and incubated in the dark. What happens to the dissolved oxygen concentration in the bottle?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Microorganisms consume dissolved oxygen as they break down biodegradable organic matter."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "64d330dab666cc5c6230e0f75b2ae10c66dd92a993959310898438db1c2b741c",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m3-14",
+    "prompt": "In a sodium-cycle ion-exchange softener, hard water passes through a bed of fresh synthetic organic resin at steady flow. What happens to the calcium and magnesium concentration in the treated effluent?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The resin captures calcium and magnesium ions in exchange for sodium, lowering effluent hardness."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "e1c8488042c7c467a8c2013547e8f7c6b3d9d3918eb9981077e725df0a0c0b3e",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m3-15",
+    "prompt": "Copper sulfate is applied to a surface impoundment experiencing heavy algal growth. What happens to the algae population in the impoundment?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Copper sulfate is an inorganic salt used in water operations to kill algae."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "8a17043aff5c3b0351d046611124f687de6080213dbb2b93adac807492da08f4",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m4-01",
+    "prompt": "Three trainees review the states of matter in water and wastewater operations. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "A solid keeps both a definite shape and a definite volume at a given temperature."
+     },
+     {
+      "id": "b",
+      "label": "A liquid maintains a constant volume while changing shape to fit its container."
+     },
+     {
+      "id": "c",
+      "label": "A gas keeps a fixed volume even when transferred into a larger container."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Gases have no fixed shape or volume and expand or compress to fill containers of different sizes."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "b13955d26abdb8e6b753821be36bf080764badda1a7249e175c38d2def99ac2c",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m4-02",
+    "prompt": "A study group discusses atomic structure and chemical reactions. Which statement is incorrect?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Protons carry a positive charge while neutrons carry no electrical charge."
+     },
+     {
+      "id": "b",
+      "label": "Chemical reactions between molecules rearrange atomic nuclei into new elements."
+     },
+     {
+      "id": "c",
+      "label": "Negatively charged electrons orbit the nucleus and balance the positive charge."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Chemical reactions involve planetary electrons, with no changes occurring in the atomic nuclei."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "e29e14f1dee76a0c4101e5ce07f2e8f49fe2e03b0e11578e51cd70d697b99681",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m4-03",
+    "prompt": "Three operators review dissolved oxygen and other gases in natural waters. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Fish and zooplankton breathe dissolved oxygen rather than oxygen bound in water molecules."
+     },
+     {
+      "id": "b",
+      "label": "Carbon dioxide released by microbes influences water pH and alkalinity."
+     },
+     {
+      "id": "c",
+      "label": "Oxygen is the main gas capable of dissolving in natural surface waters."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Other gases such as carbon dioxide, hydrogen sulfide, and nitrogen can also dissolve in water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "eea01a6b786108a6429fb2897be1fd22389f2c9c670ca574b2894372a0fdf037",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m4-04",
+    "prompt": "A review card covers apparent color and true color in water testing. Which statement is wrong?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Apparent color often results from colloidal suspensions such as iron and tannins."
+     },
+     {
+      "id": "b",
+      "label": "True color is caused by dissolved chemicals and remains after filtering the sample."
+     },
+     {
+      "id": "c",
+      "label": "Filtering a water sample removes true color while leaving apparent color behind."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Filtering removes suspended and colloidal particles that cause apparent color, leaving true color in the filtrate."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "5a95f1b586c7561451d408de1ba3acfe16c2cdfca7d0d18defedae090e1eaf73",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m4-05",
+    "prompt": "Three trainees compare salts, acids, and bases in water chemistry. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Neutralizing an acid with a base forms water and a compound called a salt."
+     },
+     {
+      "id": "b",
+      "label": "Copper sulfate is a salt used in water operations to kill algae."
+     },
+     {
+      "id": "c",
+      "label": "Salts make up one of the smallest groups of inorganic chemical compounds."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Salts constitute by far the largest group of inorganic compounds."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "6b3424be4d184eaf100d7f40963f3d00ba0b2084478e0c1db8e0c99d88d8ed53",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m4-06",
+    "prompt": "Operators review pH control during chemical coagulation. Which statement is incorrect?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Adding more alum lowers the pH value during a coagulation test."
+     },
+     {
+      "id": "b",
+      "label": "Adding more lime raises the pH value during a coagulation test."
+     },
+     {
+      "id": "c",
+      "label": "Once good floc forms, operators should let the pH drift freely."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "When good floc forms, the pH should be determined and maintained at that value until raw water changes."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "e6a8093f8f315a3c88255834ce1ddb07c9584d3fc041a269b71b9486faef7718",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m4-07",
+    "prompt": "A class reviews specific conductance and dissolved solids. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Specific conductance measures the ability of water to carry an electrical current."
+     },
+     {
+      "id": "b",
+      "label": "Distilled water has a higher specific conductance than rainwater."
+     },
+     {
+      "id": "c",
+      "label": "Seawater has a high specific conductance because of its dissolved salt."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Rainwater picks up airborne gases and dust, giving it higher specific conductance than distilled water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "5047c3407b613a0fcd2231e00e6c371ff1784cbf70ffd23881391d01dc93e9d4",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m4-08",
+    "prompt": "Three operators discuss wastewater odor sources and controls. Which statement is wrong?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Septic wastewater containing hydrogen sulfide is a primary source of odors."
+     },
+     {
+      "id": "b",
+      "label": "Sodium hydroxide is used in scrubbing towers when hydrogen sulfide is high."
+     },
+     {
+      "id": "c",
+      "label": "Waste gas burners eliminate odors best when run below optimum temperature."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Waste gas-burning operations become a primary odor source when operated below optimum temperatures."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "d0285e12de19aa681975b87a2e0cdde0299104fe8d3b4487f6b0c68ebab6c4b3",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m4-09",
+    "prompt": "A study group reviews chemical coagulation principles. Which statement is incorrect?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Alum is most effective between pH values of 5.0 and 7.5."
+     },
+     {
+      "id": "b",
+      "label": "Polymer is sometimes added with alum to help small floc settle faster."
+     },
+     {
+      "id": "c",
+      "label": "Normal sedimentation easily removes colloidal particles without chemical coagulation."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Colloidal particles are difficult to clarify by normal sedimentation and require chemical coagulation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "79527d94b82706e910171d722256a06233e47161d5535fc79dec3f6ea5f50a74",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m4-10",
+    "prompt": "Three trainees review ion-exchange water softening. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Synthetic organic resins provide a large number of sodium exchange sites."
+     },
+     {
+      "id": "b",
+      "label": "Hardness breakthrough occurs when active exchange sites are used up."
+     },
+     {
+      "id": "c",
+      "label": "Greensand is a liquid polymer added ahead of a sedimentation basin."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Greensand is a granular glauconite-bearing mineral medium used in ion-exchange beds, not a liquid polymer."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "3ed9fbef0956a00bee993b7b87a70417c4d7f19b73e80dabcd1dbc233243c933",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m4-11",
+    "prompt": "A review sheet covers mineral scale and metal corrosion. Which statement is wrong?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Excessive mineral scaling reduces pipeline capacity and boiler heat transfer."
+     },
+     {
+      "id": "b",
+      "label": "Corrosion of iron and steel produces rust on unprotected metal surfaces."
+     },
+     {
+      "id": "c",
+      "label": "Lower water temperature and slower flow significantly increase metal corrosion."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Corrosive tendencies of water increase significantly when water temperature and flow increase."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "b76a67ac58d8bc7c6210041e65b5267a161efd7a6e5709424294015e67fb9ebc",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m4-12",
+    "prompt": "Three operators discuss organic matter in water and wastewater. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Organic matter can cause color formation and oxygen depletion in streams."
+     },
+     {
+      "id": "b",
+      "label": "Woody plant constituents such as lignin and cellulose are readily biodegradable."
+     },
+     {
+      "id": "c",
+      "label": "Chlorine reacting with organic matter can form halogenated compounds."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Lignin, cellulose, tannins, and phenols are refractory organics that resist biological degradation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "a52577ae19a07323c1decf68048e6c2cab611b6b01a3ba45b2c56e2bd23584b3",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m4-13",
+    "prompt": "A lab team reviews total dissolved solids (TDS) testing. Which statement is incorrect?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Suspended solids stay on the filter while dissolved solids pass through."
+     },
+     {
+      "id": "b",
+      "label": "Evaporating the filtered water leaves total dissolved solids as residue."
+     },
+     {
+      "id": "c",
+      "label": "Total dissolved solids consist of inorganic minerals without organic matter."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Dissolved solids may be either organic or inorganic, including decay products of vegetation and organic gases."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "cf712db1326193049ccddc1d257ab8631649dab4e465d9fcf686f2dc355eaaa3",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m4-14",
+    "prompt": "Three trainees review heavy metals in surface waters. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Heavy metals exist in colloidal, particulate, and dissolved phases."
+     },
+     {
+      "id": "b",
+      "label": "Particulate metals can be bound in hydroxides or adsorbed to clay."
+     },
+     {
+      "id": "c",
+      "label": "Heavy metals in surface waters occur mainly in high dissolved concentrations."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Dissolved concentrations of heavy metals in surface waters are generally low compared with particulate and colloidal phases."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "e1934216c243e2983c5f61d18724dea75e30b59e6a24b01595b17e77d02bb353",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m4-15",
+    "prompt": "A study group reviews nitrogen forms and health effects. Which statement is wrong?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Nitrate in water can indicate sewage contamination or fertilizer runoff."
+     },
+     {
+      "id": "b",
+      "label": "Nitrate directly replaces oxygen in an infant bloodstream without conversion."
+     },
+     {
+      "id": "c",
+      "label": "Blue-green algae can obtain nitrogen directly from the atmosphere."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Intestinal bacteria convert nitrate to toxic nitrite, which then displaces oxygen in the bloodstream."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "9ea95486eb70a104f90210e4096fc955e16b973192f289d9452be92624df77ca",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m5-01",
+    "prompt": "In the self-ionization of water, does one water molecule lose a hydrogen ion before or after a hydroxide ion is formed?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "A water molecule must lose a hydrogen ion first to become a negatively charged hydroxide ion."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "b579ba01c4d87f324028fa348be84ce49fb23e13f4ec73320c9f04d93f3b4a1e",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m5-02",
+    "prompt": "In a laboratory suspended solids test, does filtering the water sample occur before or after weighing the dried residue retained on the filter?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The sample is filtered first so the retained solids can be dried and weighed."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "c8ceaa09b7fbaf3b7d956cdb5f2f05bd90e1c2ecbb8808320321170e2988f053",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m5-03",
+    "prompt": "In distinguishing true color from apparent color in a water laboratory, does filtering out colloidal particles occur before or after measuring true color?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Filtering removes colloidal particles causing apparent color first, leaving true color to be measured."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "9dbd72240279d73f04374410ab3b978da8d163b2c031c01999cac386fa0cb903",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m5-04",
+    "prompt": "In a jar test for chemical coagulation, does adding alum to adjust pH occur before or after forming and observing the floc?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Alum is added first to adjust pH and destabilize particles so floc can form and be observed."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "a23b82c9a753fcd075de5057d5f2a2fe1b8c883c94543790bc860d050a71788b",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m5-06",
+    "prompt": "In chemical odor scrubbing of foul plant air, does odorous gas enter the scrubbing tower before or after contacting the chemical scrubbing solution?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Foul air must enter the scrubbing tower first so it can pass through and react with the scrubbing solution."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "42b293cc284a68cd7574b14b8f937e1910630dcbb66eda52de3351bf5ef375b9",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m5-08",
+    "prompt": "In a chemical coagulation basin using alum and polymer, does adding coagulant chemicals occur before or after larger floc settles in sedimentation?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Coagulants and polymer are added first to agglomerate fine particles so they can settle during sedimentation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "2a3289d073308233cda0ff50d89c3a1b4cc0cb9493eaad851cb60d7647782a19",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m5-09",
+    "prompt": "In aerobic microbial metabolism of biodegradable organics, does breaking complex organics into simpler compounds occur before or after microbes use the released energy for reproduction?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Microbes break down complex organics first to release energy, which they then use for growth and reproduction."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "13805bf7658e533306490ef6827cbb078a566ba332b4953b6cf3ae534da20e4b",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m5-10",
+    "prompt": "In infant methemoglobinemia from nitrate-contaminated water, does nitrite displacing oxygen in the bloodstream occur before or after intestinal bacteria convert nitrate to nitrite?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "Intestinal bacteria must convert nitrate to nitrite first before nitrite enters the bloodstream and displaces oxygen."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "26fa3307329e227f7b3f465f3e7e07f7cb8496860bec6f050e147ba9fb4ecc0d",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m5-11",
+    "prompt": "In natural rainwater chemistry, does water vapor condense in the atmosphere before or after picking up airborne gases and dust while falling?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Water vapor condenses into raindrops first and dissolves airborne gases and dust as it falls."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "d85d0d3d4080637c81f46e46a641349ad346726211a4d4ea5bd2ba7e16250930",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m5-12",
+    "prompt": "In a sodium-cycle ion-exchange vessel, does softened water collect in the effluent vessel before or after passing through the granular exchange bed?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "Water passes through the exchange bed first to swap hardness ions for sodium before collecting in the effluent vessel."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "d7d717f968817a7cda43144d5ae8261319a58dc9eea21f22740401a00dbc74df",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m5-13",
+    "prompt": "In chlorine disinfection of water containing dissolved organics, does adding chlorine occur before or after halogenated compounds form?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Chlorine must be added to the organic-bearing water first for halogenated compounds to form."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "16b4391212b68e2e732a954e1ca2b5464086b705b197935a599a83bc3a41f6fb",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m5-14",
+    "prompt": "In an unlined steel water pipe, does oxidation of the metal surface occur before or after rust forms?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Unprotected iron or steel must oxidize first to form rust."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "07ca365186dbf54a1e39d4979657d64967eee10fa5a8d5218ddfacddbdf19392",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r02-m5-15",
+    "prompt": "In a simple conductivity demonstration, does adding salt to distilled water occur before or after the water conducts enough current to light a bulb?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Salt must dissolve into the distilled water first to release ions that conduct electric current."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+    "notes": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+    "registeredAt": "2026-11-19T03:05:43.509Z",
+    "payloadSha256": "26d57db0a3c9088176053f88e1fefa0dc33d9fd96c4147aa13dea81afaeecd68",
+    "builderResultsSha256": "e1e52efc1b7937fdd14ad3e28330341b362c05101a5684bb3c7b673366906a9a"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T03:04:26.896550+00:00",
+   "attestation": "Strict Hydrogen self-review of 71 authored items for wpi-class2-wastewater against supplied source pages (506-519) and collision candidates; 65 accepted, 6 rejected for same-course same-mode duplication/paraphrase.",
+   "payloadSha256": {
+    "targeth-ht261118-wpi-class2-wastewater-r02-m0-01": "42fbdd8c4afb9c69aed8a91e3d0fd20b866219eedcaf828639521b0d1efddaaa",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m0-02": "ba68ab993e23ba740e4faa19748fcbc8b19d1d79ca9cdd0d5a7757cbb64e0c51",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m0-03": "4b4b024e7a20c78da6c185499b91ae20c0ed180903065f07e5fe5050d45cf124",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m0-04": "60dc1af4befb4a28b5358d85f63251667ecd4a8150675649dccbb61e9343a0c5",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m0-05": "f9e235290f9171e61e5e49a5418c1da2c92123124ad54acf40f2a92b567bf792",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m0-06": "ac735395f421b438fc6b390d0b3257c678a5c851a2f8eee9fcd4fefbf2b18b3e",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m0-07": "25d18fdf0338a9656e5814808963df7459486ea13ff60bd2d75523d3d16c87e6",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m0-08": "0e11a8aee84b1f834dc1ff3e01815f9d6a23957d90889c69c2f2d2d5b1c2417c",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m0-09": "96ee45cd19851d1d52f09ab73387f34347bda4a1fe146fc4c5bbb9b7cc9325bd",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m0-10": "3f9ca2fc7abd6a619bddff16115d2a9244d2dfc0ca3853173247c36fdb3e9255",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m0-11": "8aa8a5c46aa48533ae40396b330e4de168c5613ca8c062386ca02449b3117c82",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m0-12": "f6003e2a2f5316847ce5305c001ed27cbb1045f66796d5b8af5eda29207b2707",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m0-13": "9f4276fd4a6ffd85634943c75b82bc000c1356614b3af8f9fd21d2f5bdaba04e",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m0-14": "8f4c95e275a89a0e60f56f52004ecc5e421b5558a6fef260e6bd9ab33386fc71",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m0-15": "2f55a2db2261cc7a170b77a0e95082927271cb3d56a2f12191d6f8509a0cb81e",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m1-01": "569c0b1f62c54992fb158c35f91c989d2013e0de850603c7b1b439e3ad416ab1",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m1-02": "ceb8020f0ae8da98d5fd0fe4756a469c3286f4696b9fac5aa2b42ea8d03e9a7d",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m1-03": "8d6737e4940d249868ffaadedd08de4331093f10c02d8deec32e73746333349f",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m1-04": "d15b69cde42a5703e2e3f4baeb3f944671d43c714e8fb7f2aa5bc0adc249b832",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m1-07": "710ffd4c198baf220155ea66bf153920ae134e4dfcdcd91a14079b4b305964da",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m1-08": "d01072139bdafbd5896f303291d87e37fec1079640eb4c20c8d34a18aa7a700d",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m1-09": "15dea099036a143d30273b2cd3ff8f64943b5a760ebd8093ce69f137f77005dd",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m1-10": "8c78afba93d8c8290f0078b9e1ec4b527ceeef1c1ecd58d31a422d1a5e076246",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m2-01": "e5e12a4dceac08dc8e7b17d31306f8a8c099a730e562cb4eaa2a5c4288c6f02a",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m3-01": "51123f9369fc8e0d41eb03abb89a556353ee5ce650e017df24bf6165f6b5e8c6",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m3-02": "f1410d205c5d290b987fc399f3a6128138c84edb268af922beb27f508f1a6aab",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m3-03": "9b0e618fb0b22c197fc97cc49cd16fee02988489df5bef1b9538ca733294655a",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m3-04": "b5323abbbb044521bd37b0545452972a550cedf0268b9a709b1bf25d448768a8",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m3-05": "921fca47304991e42ff7f3fe4a15901eec8dc01ae05283ece64453225068d4f0",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m3-07": "31587b5cdd8cc38ec025b385c5d4773f0aeb61e5e5c7de8790235bbfabf2c600",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m3-08": "84fed47d552d92eab91dc8310aefb547d6845fdf78da3fe1a90ef20e5fb5bafc",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m3-09": "c90562cb7939d44d6241ff76b195a6f7ce1059094fc16ac46960939d482ed3df",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m3-10": "b67ac27f48fb48dad68ac404f3034cb5fb0495a848e38089f8376383acc9df91",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m3-11": "a4d39551ca007afac5c485e3f2868cb9b49e9b098d54da5c161bed210021e737",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m3-12": "64d330dab666cc5c6230e0f75b2ae10c66dd92a993959310898438db1c2b741c",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m3-14": "e1c8488042c7c467a8c2013547e8f7c6b3d9d3918eb9981077e725df0a0c0b3e",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m3-15": "8a17043aff5c3b0351d046611124f687de6080213dbb2b93adac807492da08f4",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m4-01": "b13955d26abdb8e6b753821be36bf080764badda1a7249e175c38d2def99ac2c",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m4-02": "e29e14f1dee76a0c4101e5ce07f2e8f49fe2e03b0e11578e51cd70d697b99681",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m4-03": "eea01a6b786108a6429fb2897be1fd22389f2c9c670ca574b2894372a0fdf037",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m4-04": "5a95f1b586c7561451d408de1ba3acfe16c2cdfca7d0d18defedae090e1eaf73",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m4-05": "6b3424be4d184eaf100d7f40963f3d00ba0b2084478e0c1db8e0c99d88d8ed53",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m4-06": "e6a8093f8f315a3c88255834ce1ddb07c9584d3fc041a269b71b9486faef7718",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m4-07": "5047c3407b613a0fcd2231e00e6c371ff1784cbf70ffd23881391d01dc93e9d4",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m4-08": "d0285e12de19aa681975b87a2e0cdde0299104fe8d3b4487f6b0c68ebab6c4b3",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m4-09": "79527d94b82706e910171d722256a06233e47161d5535fc79dec3f6ea5f50a74",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m4-10": "3ed9fbef0956a00bee993b7b87a70417c4d7f19b73e80dabcd1dbc233243c933",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m4-11": "b76a67ac58d8bc7c6210041e65b5267a161efd7a6e5709424294015e67fb9ebc",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m4-12": "a52577ae19a07323c1decf68048e6c2cab611b6b01a3ba45b2c56e2bd23584b3",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m4-13": "cf712db1326193049ccddc1d257ab8631649dab4e465d9fcf686f2dc355eaaa3",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m4-14": "e1934216c243e2983c5f61d18724dea75e30b59e6a24b01595b17e77d02bb353",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m4-15": "9ea95486eb70a104f90210e4096fc955e16b973192f289d9452be92624df77ca",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m5-01": "b579ba01c4d87f324028fa348be84ce49fb23e13f4ec73320c9f04d93f3b4a1e",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m5-02": "c8ceaa09b7fbaf3b7d956cdb5f2f05bd90e1c2ecbb8808320321170e2988f053",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m5-03": "9dbd72240279d73f04374410ab3b978da8d163b2c031c01999cac386fa0cb903",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m5-04": "a23b82c9a753fcd075de5057d5f2a2fe1b8c883c94543790bc860d050a71788b",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m5-06": "42b293cc284a68cd7574b14b8f937e1910630dcbb66eda52de3351bf5ef375b9",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m5-08": "2a3289d073308233cda0ff50d89c3a1b4cc0cb9493eaad851cb60d7647782a19",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m5-09": "13805bf7658e533306490ef6827cbb078a566ba332b4953b6cf3ae534da20e4b",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m5-10": "26fa3307329e227f7b3f465f3e7e07f7cb8496860bec6f050e147ba9fb4ecc0d",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m5-11": "d85d0d3d4080637c81f46e46a641349ad346726211a4d4ea5bd2ba7e16250930",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m5-12": "d7d717f968817a7cda43144d5ae8261319a58dc9eea21f22740401a00dbc74df",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m5-13": "16b4391212b68e2e732a954e1ca2b5464086b705b197935a599a83bc3a41f6fb",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m5-14": "07ca365186dbf54a1e39d4979657d64967eee10fa5a8d5218ddfacddbdf19392",
+    "targeth-ht261118-wpi-class2-wastewater-r02-m5-15": "26d57db0a3c9088176053f88e1fefa0dc33d9fd96c4147aa13dea81afaeecd68"
+   }
+  },
+  "registeredAt": "2026-11-19T03:05:43.509Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 8,
+     "f": 7
+    },
+    "dirs": {
+     "increase": 7,
+     "decrease": 5,
+     "unchanged": 1
+    },
+    "longest": 8,
+    "options": 29
+   },
+   "batchSha256": "251df336ed9df67d6a0d681b2f46e9549eee998254a8cdcc85628c4a6be8c47b"
+  }
+ }
+}

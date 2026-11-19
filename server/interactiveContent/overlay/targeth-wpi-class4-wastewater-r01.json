@@ -1,0 +1,818 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-wpi-class4-wastewater-r01",
+ "scope": "Owner-authorized AI-reviewed game activities: 17 items.",
+ "additions": [
+  {
+   "courseKey": "wpi-class4-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-wastewater-r01-m0-01",
+    "prompt": "In a wastewater slime habitat, tubificid worm populations tend to decrease when water temperatures increase.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Temperature fluctuations directly affect tubificid worm growth and survival, causing their population to decrease as temperatures rise."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:47:26.091705+00:00",
+    "notes": "Strict AI self-review of 17 authored items for wpi-class4-wastewater against provided source pages and collision candidates; 17 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:47:51.550Z",
+    "payloadSha256": "cdf26fcc57fcdc5921e44d004550b7619c73fd88f0c0a7328518b478fd3e96e1",
+    "builderResultsSha256": "c0cb1a2563ae65fa3ee5b977846f47799bb1b832fe55606ea2768f7294cbf698"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-wastewater-r01-m0-02",
+    "prompt": "A bacterial cell's plasma membrane lies outside the rigid cell wall and accounts for most of the cell's dry weight.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "The plasma membrane is surrounded externally by the cell wall and makes up about 10 to 20 percent of bacterial dry weight."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:47:26.091705+00:00",
+    "notes": "Strict AI self-review of 17 authored items for wpi-class4-wastewater against provided source pages and collision candidates; 17 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:47:51.550Z",
+    "payloadSha256": "6da169ba091e60f9dd3ec6ce2eb459f4d4a6a3b5573a08b1833dd7a52f6a3a01",
+    "builderResultsSha256": "c0cb1a2563ae65fa3ee5b977846f47799bb1b832fe55606ea2768f7294cbf698"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-wastewater-r01-m0-03",
+    "prompt": "After a person swallows a Giardia lamblia cyst, stomach acid and digestive enzymes liberate the trophozoite in the small intestine.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Stomach acid and digestive enzymes trigger excystation, releasing the active trophozoite stage to establish in the small intestine."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:47:26.091705+00:00",
+    "notes": "Strict AI self-review of 17 authored items for wpi-class4-wastewater against provided source pages and collision candidates; 17 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:47:51.550Z",
+    "payloadSha256": "ca5fa83285e518f310474dadadf669face67db01675ccbc29d480c3e9f360579",
+    "builderResultsSha256": "c0cb1a2563ae65fa3ee5b977846f47799bb1b832fe55606ea2768f7294cbf698"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-wastewater-r01-m1-01",
+    "prompt": "Match each environmental requirement for aerobic microbial oxidation in wastewater to its biological role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Dissolved oxygen",
+      "right": "Electron acceptor required for aerobic respiration"
+     },
+     {
+      "id": "p2",
+      "left": "Organic matter",
+      "right": "Carbon food source oxidized by microbes"
+     },
+     {
+      "id": "p3",
+      "left": "Sufficient water",
+      "right": "Medium supporting cellular reactions and transport"
+     },
+     {
+      "id": "p4",
+      "left": "Nitrogen and phosphorus",
+      "right": "Nutrients needed to oxidize available carbon"
+     },
+     {
+      "id": "p5",
+      "left": "pH 6.5 to 9.0",
+      "right": "Favorable acid-base range for microbial activity"
+     },
+     {
+      "id": "p6",
+      "left": "Lack of toxic materials",
+      "right": "Prevents inhibition or death of treatment microbes"
+     }
+    ],
+    "explanation": "Aerobic biological oxidation depends on oxygen, organic food, water, nutrients, proper pH, and absence of toxins."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:47:26.091705+00:00",
+    "notes": "Strict AI self-review of 17 authored items for wpi-class4-wastewater against provided source pages and collision candidates; 17 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:47:51.550Z",
+    "payloadSha256": "e1d7d93877932fd487745211705bf33c8402aa70fcf2e867a7dd79a7fc0aaee3",
+    "builderResultsSha256": "c0cb1a2563ae65fa3ee5b977846f47799bb1b832fe55606ea2768f7294cbf698"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-wastewater-r01-m1-02",
+    "prompt": "Match each bacterial cell component to its composition or dry-weight proportion.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Cell wall",
+      "right": "Rigid layer comprising 20 to 40 percent of dry weight"
+     },
+     {
+      "id": "p2",
+      "left": "Plasma membrane",
+      "right": "Lipoprotein barrier 7 to 8 nm thick"
+     },
+     {
+      "id": "p3",
+      "left": "Ribosomes",
+      "right": "RNA bodies comprising about 40 percent of dry weight"
+     },
+     {
+      "id": "p4",
+      "left": "Nucleoid",
+      "right": "Single long double-stranded DNA region"
+     },
+     {
+      "id": "p5",
+      "left": "Macrocapsule",
+      "right": "Organized gelatinous coat visible by light microscopy"
+     },
+     {
+      "id": "p6",
+      "left": "Inclusions",
+      "right": "Cytoplasmic storage granules"
+     }
+    ],
+    "explanation": "Bacterial structures differ in chemical makeup, thickness, and proportion of total cell dry weight."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:47:26.091705+00:00",
+    "notes": "Strict AI self-review of 17 authored items for wpi-class4-wastewater against provided source pages and collision candidates; 17 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:47:51.550Z",
+    "payloadSha256": "dce3e1bac3b9dc2f58284da8fcba4a4b46109db3484eec68ceb77af482a31f69",
+    "builderResultsSha256": "c0cb1a2563ae65fa3ee5b977846f47799bb1b832fe55606ea2768f7294cbf698"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-wastewater-r01-m1-03",
+    "prompt": "Match each water or wastewater microbial group to its distinguishing morphological or ecological trait.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Bacteria",
+      "right": "Single-celled microbes with rigid cell walls"
+     },
+     {
+      "id": "p2",
+      "left": "Simple algae",
+      "right": "Chlorophyll-bearing plants converting inorganics to organics"
+     },
+     {
+      "id": "p3",
+      "left": "Fungi",
+      "right": "Multicellular filamentous or yeast-like decomposers"
+     },
+     {
+      "id": "p4",
+      "left": "Nematodes",
+      "right": "Nonsegmented cylindrical worms with tapered ends"
+     },
+     {
+      "id": "p5",
+      "left": "Rotifers",
+      "right": "Microscopic multicellular animals such as Philodina"
+     },
+     {
+      "id": "p6",
+      "left": "Protozoa",
+      "right": "Single-celled organisms including flagellates and ciliates"
+     }
+    ],
+    "explanation": "Each microbial group occupies a distinct structural and ecological niche in water and wastewater systems."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:47:26.091705+00:00",
+    "notes": "Strict AI self-review of 17 authored items for wpi-class4-wastewater against provided source pages and collision candidates; 17 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:47:51.550Z",
+    "payloadSha256": "62ce46ef9a4d25d1f24357af243b7b282cb6d371eb3a78b153e8e9a4f99e0bb0",
+    "builderResultsSha256": "c0cb1a2563ae65fa3ee5b977846f47799bb1b832fe55606ea2768f7294cbf698"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-wastewater-r01-m1-04",
+    "prompt": "Match each taxonomic rank in Linnaeus's hierarchy to its relative position.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Kingdom",
+      "right": "Largest and most inclusive biological category"
+     },
+     {
+      "id": "p2",
+      "left": "Phylum",
+      "right": "Major division directly below kingdom"
+     },
+     {
+      "id": "p3",
+      "left": "Class",
+      "right": "Grouping between phylum and order"
+     },
+     {
+      "id": "p4",
+      "left": "Order",
+      "right": "Grouping broader than family"
+     },
+     {
+      "id": "p5",
+      "left": "Family",
+      "right": "Grouping directly above genus"
+     },
+     {
+      "id": "p6",
+      "left": "Genus and species",
+      "right": "Two-word Latin binomial name"
+     }
+    ],
+    "explanation": "Linnaean taxonomy arranges organisms from the broadest kingdom down to the specific genus and species."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:47:26.091705+00:00",
+    "notes": "Strict AI self-review of 17 authored items for wpi-class4-wastewater against provided source pages and collision candidates; 17 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:47:51.550Z",
+    "payloadSha256": "3babb750e80e469c0dcfc0dc8cb4da4a6eb49ed378c177ed833152001e535382",
+    "builderResultsSha256": "c0cb1a2563ae65fa3ee5b977846f47799bb1b832fe55606ea2768f7294cbf698"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-wastewater-r01-m1-05",
+    "prompt": "Match each Giardia lamblia life-cycle or transmission feature to its biological role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Cyst",
+      "right": "Ingested transmission stage in contaminated water"
+     },
+     {
+      "id": "p2",
+      "left": "Stomach acid and enzymes",
+      "right": "Trigger liberation of the intestinal stage"
+     },
+     {
+      "id": "p3",
+      "left": "Trophozoite",
+      "right": "Active intestinal stage causing dysfunction"
+     },
+     {
+      "id": "p4",
+      "left": "Binary fission",
+      "right": "Division occurring about every 12 hours"
+     },
+     {
+      "id": "p5",
+      "left": "Small intestine",
+      "right": "Site where trophozoites become established"
+     },
+     {
+      "id": "p6",
+      "left": "Experimental infective dose",
+      "right": "Minimum of 10 cysts shown to infect humans"
+     }
+    ],
+    "explanation": "Giardia alternates between an environmental cyst and a rapidly dividing intestinal trophozoite."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:47:26.091705+00:00",
+    "notes": "Strict AI self-review of 17 authored items for wpi-class4-wastewater against provided source pages and collision candidates; 17 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:47:51.550Z",
+    "payloadSha256": "702afbf3b75c4b885ee4acb6b4f0a175bb80838603dd97cfe890a0bd23a17b36",
+    "builderResultsSha256": "c0cb1a2563ae65fa3ee5b977846f47799bb1b832fe55606ea2768f7294cbf698"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-wastewater-r01-m1-06",
+    "prompt": "Match each waterborne pathogen or indicator organism to its scientific identity.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Escherichia coli",
+      "right": "Coliform bacterium"
+     },
+     {
+      "id": "p2",
+      "left": "Salmonella typhi",
+      "right": "Typhoid bacillus"
+     },
+     {
+      "id": "p3",
+      "left": "Giardia lamblia",
+      "right": "Flagellated protozoan"
+     },
+     {
+      "id": "p4",
+      "left": "Entamoeba histolytica",
+      "right": "Amoebic protozoan pathogen"
+     },
+     {
+      "id": "p5",
+      "left": "Vibrio cholerae",
+      "right": "Bacterial agent of cholera"
+     },
+     {
+      "id": "p6",
+      "left": "Cryptosporidium",
+      "right": "Waterborne protozoan oocyst pathogen"
+     }
+    ],
+    "explanation": "Operators track specific bacterial and protozoan pathogens alongside coliform indicators."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:47:26.091705+00:00",
+    "notes": "Strict AI self-review of 17 authored items for wpi-class4-wastewater against provided source pages and collision candidates; 17 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:47:51.550Z",
+    "payloadSha256": "40eef9d7420068391869a7ffb9a5e8a34e74b89777c319fa4d0c25603752e09b",
+    "builderResultsSha256": "c0cb1a2563ae65fa3ee5b977846f47799bb1b832fe55606ea2768f7294cbf698"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-wastewater-r01-m1-07",
+    "prompt": "Match each microbiological differentiation or microscopy approach to its basis.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Higher-organism differentiation",
+      "right": "Based almost entirely on morphological differences"
+     },
+     {
+      "id": "p2",
+      "left": "Small bacterial group differentiation",
+      "right": "Based almost entirely on chemical differences"
+     },
+     {
+      "id": "p3",
+      "left": "Single-celled microbe identification",
+      "right": "Uses physiological, cultural, and chemical traits"
+     },
+     {
+      "id": "p4",
+      "left": "Ordinary light microscopy",
+      "right": "Detects thicker bacterial macrocapsules"
+     },
+     {
+      "id": "p5",
+      "left": "Electron microscopy",
+      "right": "Required to detect thin microcapsules"
+     },
+     {
+      "id": "p6",
+      "left": "Binomial nomenclature",
+      "right": "Italicized Latin genus and species"
+     }
+    ],
+    "explanation": "Microscopic organisms require chemical, physiological, and specialized microscopy methods for reliable differentiation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:47:26.091705+00:00",
+    "notes": "Strict AI self-review of 17 authored items for wpi-class4-wastewater against provided source pages and collision candidates; 17 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:47:51.550Z",
+    "payloadSha256": "ff40f866fa771d51899e188db3a679d429a7b2e52a394280b2241f50546aa1f8",
+    "builderResultsSha256": "c0cb1a2563ae65fa3ee5b977846f47799bb1b832fe55606ea2768f7294cbf698"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-wastewater-r01-m1-08",
+    "prompt": "Match each aquatic or treatment-basin condition to its microbiological effect.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Rainy-period ground washing",
+      "right": "Highest bacterial numbers in a good-quality river"
+     },
+     {
+      "id": "p2",
+      "left": "Dry-weather low flow",
+      "right": "Highest bacterial numbers in a polluted stream"
+     },
+     {
+      "id": "p3",
+      "left": "Inorganic N and P enrichment",
+      "right": "Eutrophication and premature lake aging"
+     },
+     {
+      "id": "p4",
+      "left": "Algal growth on basin walls",
+      "right": "Plugged intakes, screens, and odors"
+     },
+     {
+      "id": "p5",
+      "left": "Biosolids composting",
+      "right": "Process where fungi play a critical role"
+     },
+     {
+      "id": "p6",
+      "left": "Rising slime temperature",
+      "right": "Decreased tubificid worm population"
+     }
+    ],
+    "explanation": "Hydrology, nutrient enrichment, and temperature strongly govern microbial populations in streams and basins."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:47:26.091705+00:00",
+    "notes": "Strict AI self-review of 17 authored items for wpi-class4-wastewater against provided source pages and collision candidates; 17 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:47:51.550Z",
+    "payloadSha256": "32fcb1d725e9b641ec4437c7c6469912bdc788089aede566cb1f9b93f40b13fa",
+    "builderResultsSha256": "c0cb1a2563ae65fa3ee5b977846f47799bb1b832fe55606ea2768f7294cbf698"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-wastewater-r01-m1-09",
+    "prompt": "Match each key microbiology term to its precise definition.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Bacteriology",
+      "right": "Science and study of bacteria"
+     },
+     {
+      "id": "p2",
+      "left": "Anaerobic",
+      "right": "Able to live and grow without free oxygen"
+     },
+     {
+      "id": "p3",
+      "left": "Autotrophic",
+      "right": "Producing food from inorganic substances"
+     },
+     {
+      "id": "p4",
+      "left": "Algal bloom",
+      "right": "Sudden spurt of algal growth harming water quality"
+     },
+     {
+      "id": "p5",
+      "left": "Eutrophication",
+      "right": "Nutrient enrichment causing excessive algae growth"
+     },
+     {
+      "id": "p6",
+      "left": "Saprophyte",
+      "right": "Fungus growing on dead organic matter"
+     }
+    ],
+    "explanation": "Accurate terminology distinguishes metabolic modes, nutrient enrichment, and microbial feeding strategies."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:47:26.091705+00:00",
+    "notes": "Strict AI self-review of 17 authored items for wpi-class4-wastewater against provided source pages and collision candidates; 17 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:47:51.550Z",
+    "payloadSha256": "8a0674d19fc9bcbaa653455aed4eaa991116efe6fd1a7dacefeb1262e2c46df0",
+    "builderResultsSha256": "c0cb1a2563ae65fa3ee5b977846f47799bb1b832fe55606ea2768f7294cbf698"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-wastewater-r01-m1-10",
+    "prompt": "Match each bacterial surface or motility structure to its specific function.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Rigid cell wall",
+      "right": "Protects protoplast from osmotic lysis"
+     },
+     {
+      "id": "p2",
+      "left": "Cell wall permeability",
+      "right": "Excludes large molecules and regulates ion intake"
+     },
+     {
+      "id": "p3",
+      "left": "Flagella",
+      "right": "Enable cells to flee harmful areas"
+     },
+     {
+      "id": "p4",
+      "left": "Cell wall support",
+      "right": "Provides solid anchor for flagella"
+     },
+     {
+      "id": "p5",
+      "left": "Capsule",
+      "right": "Organized gelatinous accumulation on cell wall"
+     },
+     {
+      "id": "p6",
+      "left": "Slime layer",
+      "right": "Unorganized water secretion loosely attached to wall"
+     }
+    ],
+    "explanation": "Bacterial surface layers regulate permeability, prevent osmotic bursting, and support motility."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:47:26.091705+00:00",
+    "notes": "Strict AI self-review of 17 authored items for wpi-class4-wastewater against provided source pages and collision candidates; 17 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:47:51.550Z",
+    "payloadSha256": "66ae4e5d843bf3648f718d84a482356aedacd13ca2ddc032e2ac8a137d047580",
+    "builderResultsSha256": "c0cb1a2563ae65fa3ee5b977846f47799bb1b832fe55606ea2768f7294cbf698"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-wastewater-r01-m3-01",
+    "prompt": "In a wastewater treatment slime habitat, the water temperature rises steadily while organic loading and dissolved oxygen remain constant. What happens to the tubificid worm population?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "Temperature fluctuations directly affect tubificid worms, and their population decreases when water temperatures increase."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:47:26.091705+00:00",
+    "notes": "Strict AI self-review of 17 authored items for wpi-class4-wastewater against provided source pages and collision candidates; 17 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:47:51.550Z",
+    "payloadSha256": "bd2be3fca49b98e702cdb05df0b93956a72fe50c0c80a9a91dbd21e9cb5bf74d",
+    "builderResultsSha256": "c0cb1a2563ae65fa3ee5b977846f47799bb1b832fe55606ea2768f7294cbf698"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-wastewater-r01-m3-02",
+    "prompt": "A Giardia lamblia trophozoite establishes itself in the small intestine and divides by binary fission every 12 hours without host immune clearance. What happens to the number of parasites in the intestine over 10 days?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt1",
+    "explanation": "Binary fission every 12 hours multiplies a single cyst's progeny to over one million parasites in 10 days."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:47:26.091705+00:00",
+    "notes": "Strict AI self-review of 17 authored items for wpi-class4-wastewater against provided source pages and collision candidates; 17 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:47:51.550Z",
+    "payloadSha256": "7e91e2752c593808f1da42067de28f62849c6f704876aa009a4915a4be32fa7a",
+    "builderResultsSha256": "c0cb1a2563ae65fa3ee5b977846f47799bb1b832fe55606ea2768f7294cbf698"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-wastewater-r01-m3-03",
+    "prompt": "A bacterial cell's rigid cell wall is damaged so it can no longer protect the delicate protoplast in a dilute, low-solute water environment. What happens to the risk of osmotic bursting of the cell?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt1",
+    "explanation": "The rigid cell wall protects the protoplast from osmotic lysis; losing that protection increases bursting risk."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:47:26.091705+00:00",
+    "notes": "Strict AI self-review of 17 authored items for wpi-class4-wastewater against provided source pages and collision candidates; 17 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:47:51.550Z",
+    "payloadSha256": "af3dbac218c5b14c6d518ad853dd89e7978ceed8989723e812e8cacd0312e999",
+    "builderResultsSha256": "c0cb1a2563ae65fa3ee5b977846f47799bb1b832fe55606ea2768f7294cbf698"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-wastewater-r01-m3-04",
+    "prompt": "Aerobic heterotrophic bacteria in a treatment basin have ample oxygen, organic carbon, water, and nutrients at pH 7.2, when a toxic industrial chemical enters the basin. What happens to the rate of microbial oxidation of organic matter?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "Lack of toxic materials is required for aerobic microbial oxidation; introducing a toxin inhibits and reduces oxidation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:47:26.091705+00:00",
+    "notes": "Strict AI self-review of 17 authored items for wpi-class4-wastewater against provided source pages and collision candidates; 17 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:47:51.550Z",
+    "payloadSha256": "17771ee9a3475793678d791a6b242219c546b9a65bfa1f1c26dca64026f5e35e",
+    "builderResultsSha256": "c0cb1a2563ae65fa3ee5b977846f47799bb1b832fe55606ea2768f7294cbf698"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T02:47:26.091705+00:00",
+   "attestation": "Strict AI self-review of 17 authored items for wpi-class4-wastewater against provided source pages and collision candidates; 17 accepted, 0 rejected.",
+   "payloadSha256": {
+    "targeth-ht261118-wpi-class4-wastewater-r01-m0-01": "cdf26fcc57fcdc5921e44d004550b7619c73fd88f0c0a7328518b478fd3e96e1",
+    "targeth-ht261118-wpi-class4-wastewater-r01-m0-02": "6da169ba091e60f9dd3ec6ce2eb459f4d4a6a3b5573a08b1833dd7a52f6a3a01",
+    "targeth-ht261118-wpi-class4-wastewater-r01-m0-03": "ca5fa83285e518f310474dadadf669face67db01675ccbc29d480c3e9f360579",
+    "targeth-ht261118-wpi-class4-wastewater-r01-m1-01": "e1d7d93877932fd487745211705bf33c8402aa70fcf2e867a7dd79a7fc0aaee3",
+    "targeth-ht261118-wpi-class4-wastewater-r01-m1-02": "dce3e1bac3b9dc2f58284da8fcba4a4b46109db3484eec68ceb77af482a31f69",
+    "targeth-ht261118-wpi-class4-wastewater-r01-m1-03": "62ce46ef9a4d25d1f24357af243b7b282cb6d371eb3a78b153e8e9a4f99e0bb0",
+    "targeth-ht261118-wpi-class4-wastewater-r01-m1-04": "3babb750e80e469c0dcfc0dc8cb4da4a6eb49ed378c177ed833152001e535382",
+    "targeth-ht261118-wpi-class4-wastewater-r01-m1-05": "702afbf3b75c4b885ee4acb6b4f0a175bb80838603dd97cfe890a0bd23a17b36",
+    "targeth-ht261118-wpi-class4-wastewater-r01-m1-06": "40eef9d7420068391869a7ffb9a5e8a34e74b89777c319fa4d0c25603752e09b",
+    "targeth-ht261118-wpi-class4-wastewater-r01-m1-07": "ff40f866fa771d51899e188db3a679d429a7b2e52a394280b2241f50546aa1f8",
+    "targeth-ht261118-wpi-class4-wastewater-r01-m1-08": "32fcb1d725e9b641ec4437c7c6469912bdc788089aede566cb1f9b93f40b13fa",
+    "targeth-ht261118-wpi-class4-wastewater-r01-m1-09": "8a0674d19fc9bcbaa653455aed4eaa991116efe6fd1a7dacefeb1262e2c46df0",
+    "targeth-ht261118-wpi-class4-wastewater-r01-m1-10": "66ae4e5d843bf3648f718d84a482356aedacd13ca2ddc032e2ac8a137d047580",
+    "targeth-ht261118-wpi-class4-wastewater-r01-m3-01": "bd2be3fca49b98e702cdb05df0b93956a72fe50c0c80a9a91dbd21e9cb5bf74d",
+    "targeth-ht261118-wpi-class4-wastewater-r01-m3-02": "7e91e2752c593808f1da42067de28f62849c6f704876aa009a4915a4be32fa7a",
+    "targeth-ht261118-wpi-class4-wastewater-r01-m3-03": "af3dbac218c5b14c6d518ad853dd89e7978ceed8989723e812e8cacd0312e999",
+    "targeth-ht261118-wpi-class4-wastewater-r01-m3-04": "17771ee9a3475793678d791a6b242219c546b9a65bfa1f1c26dca64026f5e35e"
+   }
+  },
+  "registeredAt": "2026-11-19T02:47:51.550Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 2,
+     "f": 1
+    },
+    "dirs": {
+     "increase": 2,
+     "decrease": 2,
+     "unchanged": 0
+    },
+    "longest": 0,
+    "options": 4
+   },
+   "batchSha256": "8a0b6c916008d4c5b4b9e1ace688ca6bd8fcd0956ca54d0fe51830c8acde0c50"
+  }
+ }
+}

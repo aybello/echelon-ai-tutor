@@ -1,0 +1,2454 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-wpi-class2-water-dist-r05",
+ "scope": "Owner-authorized AI-reviewed game activities: 70 items.",
+ "additions": [
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m0-01",
+    "prompt": "In equivalent-pipe analysis for series networks, the chosen constant C factor and diameter can vary from one end of the equivalent pipe to the other.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "The equivalent pipe maintains the same C factor and diameter throughout its entire length."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "b3f4d0cb640677bffa93226610776cc66bcb93b3180f96c9fe70de10b3c12ce9",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m0-02",
+    "prompt": "Open-channel flow includes water moving through natural waterways, canals, culverts, flumes, and gravity-flow pipes.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Open channels expose part of the water to the atmosphere and flow under gravity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "bc98f308f025f3a0c2b1e234520f58bedcbb9c26e202496ebc3d2314ff482216",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m0-03",
+    "prompt": "In open-channel flow with constant water depth, pressure acts as the primary driving force.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "In open-channel flow, there is no pressure driving force; velocity head is its natural energy."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "21b52c3cd68aa00a7d2136805980c79c0ffeef9ad8ed554b24c3212e222852c5",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m0-04",
+    "prompt": "For a circular gravity conduit flowing either full or half full, the hydraulic radius equals one-fourth of the diameter.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Both full and half-full circular conduits have a hydraulic radius of D/4."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "f891c8007672b96a3517fcba2b25042691b36c499366b153083016cd2e367430",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m0-05",
+    "prompt": "Hydraulic depth is calculated by dividing the cross-sectional flow area by the wetted perimeter.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Hydraulic depth divides flow area by surface width, whereas hydraulic radius divides by wetted perimeter."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "2c5f4db0d12c980a00b4beb39f5c8a4d7226f63056306215b65cc4d65bc2d0a9",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m0-06",
+    "prompt": "In uniform open-channel flow, the slope of the energy line parallels both the water surface and the channel bottom.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Under uniform flow conditions, the energy line, water surface, and channel bottom share the same slope."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "8ea9a99a3173380523beb86bf9d9e3785d8c19ecdf4e5465160bc279c596d97b",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m0-07",
+    "prompt": "Using Q = A x V with measured flow depth and channel dimensions provides a rough estimate suitable for preliminary fieldwork.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "This simple continuity estimate gives a ballpark flow rate for preliminary fieldwork, though not routine measurement."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "cbef7dbb0c42f9baacffdad1e61d6b150f76588d8a1b271cc0fb52b438edc443",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m0-08",
+    "prompt": "Differential pressure flowmeters operate by creating a pressure difference across a pipe restriction that relates to flow rate.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "A restriction changes fluid velocity and develops a differential pressure proportional to flow."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "16a939514f6a6e1f95194bc06d0726a77ab25671bb1a6090c9a55c91c0fde030",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m0-09",
+    "prompt": "Eccentric and segmental orifice plates typically provide higher measurement accuracy than concentric orifice plates in clean water.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Eccentric and segmental plates handle dirty water better, but their measurements are typically less accurate than concentric plates."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "ad53b2e27da4132f7f744d87c4b56dbd7219e214f10238e240bccc8e438ae017",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m0-10",
+    "prompt": "A Venturi flowmeter generally produces a permanent head loss between 3% and 10% of the differential pressure.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Venturi meters recover pressure well, keeping permanent head loss to 3% to 10% of differential."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "95a752c155099de9d9084bdafcf1a46502d9ccf6394cf5c8f47e83281f35b99e",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m0-11",
+    "prompt": "Flow nozzles are less dimensionally stable than orifice plates at high temperatures and velocities.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Flow nozzles are more rigid and dimensionally stable at high temperatures and velocities, making them common in steam service."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "37ea8e27554d2478fe73990b7ef866c0cd85df0ac5f34d09b06ba93497604a00",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m0-12",
+    "prompt": "In a time-of-flight ultrasonic flowmeter, higher suspended particle concentrations increase measurement error.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "More particles reduce ultrasonic signal penetration, increasing measurement error."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "31755a28c7987d78ed836963cd506c7a3d8a905cd0750bf5d5b349cb67459e35",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m0-13",
+    "prompt": "Velocity meters are poorly suited for measuring intermediate flow rates in clean water.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Velocity meters are applicable to clean fluids and well suited for intermediate clean-water flow rates."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "d97aa83ede1359b90d0aa4deb9a81a2b10660390194e058b8b8a8b1e02fd5b3e",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m0-14",
+    "prompt": "When calculating NPSHA for suction lift from an open reservoir, vapor pressure of the water at its temperature is subtracted.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Vapor pressure, suction lift height, entrance loss, and friction loss reduce available suction head."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "994b951c836c2a7c078d94554b725164938bcfff73c250f526714cc4fcbca58d",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m0-15",
+    "prompt": "For the same line size and flow rate, a flow nozzle develops a higher differential pressure than an orifice plate.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "For the same line size and flow rate, a flow nozzle develops a lower differential pressure than an orifice."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "e41d2ba60a8675566a1f6f6fb83914455776c38f2625617e413f6dd36786a870",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m1-01",
+    "prompt": "Distinguish each open-channel parameter by its geometric or hydraulic definition.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Hydraulic radius",
+      "right": "Flow area divided by wetted perimeter"
+     },
+     {
+      "id": "p2",
+      "left": "Hydraulic depth",
+      "right": "Flow area divided by surface width"
+     },
+     {
+      "id": "p3",
+      "left": "Energy line slope",
+      "right": "Head loss divided by channel length"
+     },
+     {
+      "id": "p4",
+      "left": "Full or half-full circle rH",
+      "right": "One-fourth of pipe diameter"
+     },
+     {
+      "id": "p5",
+      "left": "Velocity head",
+      "right": "Natural energy in open-channel flow"
+     },
+     {
+      "id": "p6",
+      "left": "Manning's n",
+      "right": "Channel roughness coefficient"
+     }
+    ],
+    "explanation": "Open-channel equations rely on area, wetted perimeter, surface width, slope, and roughness."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "c13c24b83774d0be315cef679d223352994dcb5f96f2425924e3b4fcd6968268",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m1-02",
+    "prompt": "Distinguish each differential pressure primary element by its hydraulic characteristic.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Concentric orifice plate",
+      "right": "Impaired by dirt buildup in wastewater"
+     },
+     {
+      "id": "p2",
+      "left": "Eccentric orifice plate",
+      "right": "Handles settleable solids better than concentric"
+     },
+     {
+      "id": "p3",
+      "left": "Venturi flowmeter",
+      "right": "Low permanent head loss of 3 to 10%"
+     },
+     {
+      "id": "p4",
+      "left": "Flow nozzle",
+      "right": "Smooth entry and sharp exit for steam"
+     },
+     {
+      "id": "p5",
+      "left": "Beta ratio",
+      "right": "Throat diameter to inlet diameter ratio"
+     },
+     {
+      "id": "p6",
+      "left": "Orifice bore ratio",
+      "right": "Governs permanent friction pressure loss"
+     }
+    ],
+    "explanation": "Each primary element balances accuracy, solids handling, rigidity, and permanent head loss differently."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "1ca8277a2788d6f4b07e4f7a3a2aaed272efc18670be700796525918fb30369d",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m1-03",
+    "prompt": "Distinguish each NPSHA variable for an open-reservoir suction lift by its physical meaning.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Pa",
+      "right": "Absolute atmospheric pressure on water surface"
+     },
+     {
+      "id": "p2",
+      "left": "h",
+      "right": "Vertical lift from water surface to pump centerline"
+     },
+     {
+      "id": "p3",
+      "left": "Pv",
+      "right": "Absolute vapor pressure at water temperature"
+     },
+     {
+      "id": "p4",
+      "left": "he",
+      "right": "Suction pipe entrance head loss"
+     },
+     {
+      "id": "p5",
+      "left": "hf",
+      "right": "Suction line friction head loss"
+     },
+     {
+      "id": "p6",
+      "left": "NPSHA",
+      "right": "Net positive suction head available"
+     }
+    ],
+    "explanation": "NPSHA equals atmospheric head minus static lift, vapor pressure head, entrance loss, and friction loss."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "0caa84168d7758cbdeb8ea641215e2692af4767e7750d4079076bac0f7b295f9",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m1-04",
+    "prompt": "Distinguish each flowmeter selection factor by what it evaluates.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Fluid phase",
+      "right": "Liquid or gas being measured"
+     },
+     {
+      "id": "p2",
+      "left": "Conduit type",
+      "right": "Closed pipe or open channel"
+     },
+     {
+      "id": "p3",
+      "left": "Flow variation",
+      "right": "Range between minimum and maximum flow"
+     },
+     {
+      "id": "p4",
+      "left": "Fluid cleanliness",
+      "right": "Presence of suspended solids or air bubbles"
+     },
+     {
+      "id": "p5",
+      "left": "Allowable head loss",
+      "right": "Permissible permanent pressure drop"
+     },
+     {
+      "id": "p6",
+      "left": "Corrosiveness",
+      "right": "Chemical compatibility with meter materials"
+     }
+    ],
+    "explanation": "Selecting a flowmeter requires matching fluid properties, hydraulic conditions, and accuracy needs."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "210f13445ba865a7d2cd0b2a95ceb2ce23d300bde4f04f11db0133c5e8867e25",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m1-05",
+    "prompt": "Distinguish each ultrasonic penetration condition by its suspended-particle effect.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Full penetration",
+      "right": "Clean water with minimal signal loss"
+     },
+     {
+      "id": "p2",
+      "left": "Partial penetration",
+      "right": "Moderate particles attenuating acoustic signal"
+     },
+     {
+      "id": "p3",
+      "left": "Poor penetration",
+      "right": "High particle load causing major error"
+     },
+     {
+      "id": "p4",
+      "left": "Time-of-flight meter",
+      "right": "Ultrasonic meter sensitive to particle count"
+     },
+     {
+      "id": "p5",
+      "left": "Velocity meter",
+      "right": "Suited for intermediate clean-water flows"
+     },
+     {
+      "id": "p6",
+      "left": "Signal conditioner",
+      "right": "Processes meter voltage into flow output"
+     }
+    ],
+    "explanation": "Suspended particles scatter ultrasonic waves, reducing penetration and increasing measurement error."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "2fb9245703bd3e1875061a7a6ca0f211d5eff3d65c2b2b149423ebb40a0d6b47",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m1-06",
+    "prompt": "Distinguish each Manning's formula variable by its role in open-channel discharge.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Q",
+      "right": "Channel discharge capacity in ft3/sec"
+     },
+     {
+      "id": "p2",
+      "left": "1.5",
+      "right": "Empirical constant in US units"
+     },
+     {
+      "id": "p3",
+      "left": "n",
+      "right": "Channel wall roughness coefficient"
+     },
+     {
+      "id": "p4",
+      "left": "A",
+      "right": "Cross-sectional flow area in ft2"
+     },
+     {
+      "id": "p5",
+      "left": "R",
+      "right": "Hydraulic radius of the channel in ft"
+     },
+     {
+      "id": "p6",
+      "left": "s",
+      "right": "Dimensionless channel bottom slope"
+     }
+    ],
+    "explanation": "Manning's equation relates open-channel discharge to roughness, area, hydraulic radius, and slope."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "b601440fe4ca23eb8d05c099c9d7ac8af54656e1f61c5c5a5cf9d31ad0199e14",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m1-07",
+    "prompt": "Distinguish each series-pipe network concept by its analytical purpose.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Junction points",
+      "right": "Locations where energy conservation applies"
+     },
+     {
+      "id": "p2",
+      "left": "Cumulative head loss",
+      "right": "Sum of losses across series sections"
+     },
+     {
+      "id": "p3",
+      "left": "Equivalent pipe",
+      "right": "Single constant-diameter pipe matching actual loss"
+     },
+     {
+      "id": "p4",
+      "left": "Equivalent length",
+      "right": "Length yielding correct flow for given head loss"
+     },
+     {
+      "id": "p5",
+      "left": "Constant C factor",
+      "right": "Roughness maintained along equivalent pipe"
+     },
+     {
+      "id": "p6",
+      "left": "Simultaneous equations",
+      "right": "General method for complex pipe networks"
+     }
+    ],
+    "explanation": "Equivalent-pipe theory simplifies series pipes of varying sizes into one uniform pipe."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "8b469a3d6c8774cc6663868f6eb743e414d14bc23260ceeff1066bdb1e16671e",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m1-08",
+    "prompt": "Distinguish each flow-measurement accuracy requirement by its operational purpose.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Flowmeter calibration",
+      "right": "Verifies primary device reading accuracy"
+     },
+     {
+      "id": "p2",
+      "left": "Standards compliance",
+      "right": "Ensures proper installation geometry"
+     },
+     {
+      "id": "p3",
+      "left": "Transmitter calibration",
+      "right": "Keeps secondary electronic signals accurate"
+     },
+     {
+      "id": "p4",
+      "left": "Q = A x v",
+      "right": "Relates area and velocity to volumetric flow"
+     },
+     {
+      "id": "p5",
+      "left": "Preliminary fieldwork",
+      "right": "Ballpark flow estimate using depth and width"
+     },
+     {
+      "id": "p6",
+      "left": "Process matching",
+      "right": "Aligns plant flow with distribution demand"
+     }
+    ],
+    "explanation": "Optimum accuracy requires proper installation, periodic transmitter calibration, and matching meter type to application."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "0d84063098d4d94d8977f4b699a9637be1b0a790ad14ef01795a7fb05e4ab21d",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m1-09",
+    "prompt": "Distinguish each Venturi and nozzle performance metric by its typical value or behavior.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Venturi accuracy",
+      "right": "Plus or minus 1% over 10:1 range"
+     },
+     {
+      "id": "p2",
+      "left": "Venturi head loss",
+      "right": "3 to 10% of differential pressure"
+     },
+     {
+      "id": "p3",
+      "left": "Nozzle head loss",
+      "right": "10 to 20% of differential pressure"
+     },
+     {
+      "id": "p4",
+      "left": "Nozzle rigidity",
+      "right": "Dimensionally stable at high temperatures"
+     },
+     {
+      "id": "p5",
+      "left": "Nozzle differential",
+      "right": "Lower than orifice at same flow"
+     },
+     {
+      "id": "p6",
+      "left": "Nozzle solids handling",
+      "right": "Better than orifice for abrasive fluids"
+     }
+    ],
+    "explanation": "Venturi meters minimize head loss, while nozzles offer rigidity and lower total loss than orifices."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "725737d8bfe10639576531955711f1ad6389f904a7ec88abe2ad9ceb44800f8c",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m1-10",
+    "prompt": "Distinguish each open-channel conduit type by its physical description.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Open-flow channel",
+      "right": "Exposes part of water to atmosphere"
+     },
+     {
+      "id": "p2",
+      "left": "Gravity pipe",
+      "right": "Partially full pipe without pressure"
+     },
+     {
+      "id": "p3",
+      "left": "Flume",
+      "right": "Engineered open channel for flow measurement"
+     },
+     {
+      "id": "p4",
+      "left": "Culvert",
+      "right": "Covered channel carrying water under a road"
+     },
+     {
+      "id": "p5",
+      "left": "Canal",
+      "right": "Artificial open waterway for conveyance"
+     },
+     {
+      "id": "p6",
+      "left": "Wetted perimeter",
+      "right": "Channel boundary in contact with water"
+     }
+    ],
+    "explanation": "All open channels convey water under gravity with a free surface exposed to atmospheric pressure."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "ba0c616712eed568b814de17203b9127f18837a290ade4f478db015532054884",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m3-01",
+    "prompt": "In an open channel with constant cross-sectional flow area, hydraulic radius, and bottom slope, lining the channel reduces Manning's roughness coefficient n. What happens to the channel discharge capacity?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt1",
+    "explanation": "In Manning's formula, discharge is inversely proportional to n, so lower roughness increases discharge."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "688f92b7097b3b77ad34a2fdd2477e150201aeef4f4c0a3d33e32bd8563a620d",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m3-02",
+    "prompt": "In an open channel with constant cross-sectional flow area, the wetted perimeter decreases as the channel shape becomes more compact. What happens to the hydraulic radius?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt1",
+    "explanation": "Hydraulic radius equals area divided by wetted perimeter; a smaller wetted perimeter increases hydraulic radius."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "081fe4b6e8982be9c8a8fa82d592cc2e84647e9a64d447220895a2798bc8fb54",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m3-03",
+    "prompt": "In an open channel with a fixed fluid surface width, water depth rises so the cross-sectional flow area increases. What happens to the hydraulic depth?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt1",
+    "explanation": "Hydraulic depth equals flow area divided by surface width; larger area at fixed width increases hydraulic depth."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "bae8e0261fe341b12ae873d332526b1bef8ab5dda4fdc161a9e5866685bed8ac",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m3-04",
+    "prompt": "In a uniform open channel, head loss per unit length increases while channel length stays constant. What happens to the slope of the energy line?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt1",
+    "explanation": "Slope equals head loss divided by length, so greater head loss over the same length increases slope."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "dda50da74c00f35f9afc5c5b06718a6780943174740ee1d98f4d2b8c2aecc1e8",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m3-05",
+    "prompt": "A centrifugal pump lifts water from an open reservoir at constant atmospheric pressure, suction losses, and reservoir level, while the water temperature rises and increases vapor pressure. What happens to the net positive suction head available?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "Higher water temperature raises vapor pressure, which is subtracted in NPSHA, reducing available suction head."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "ac880bd939e21c0f5bdbfb98e3538c8a6bec3ecf1f859feb974d06938c0f8cf8",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m3-06",
+    "prompt": "A centrifugal pump operates under suction lift from an open reservoir at constant atmospheric pressure, water temperature, and suction losses, while the reservoir water level rises toward the pump centerline. What happens to the net positive suction head available?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt1",
+    "explanation": "A higher reservoir level reduces the vertical suction lift h, increasing NPSHA."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "1e445cf1eac128bd5a27bc244c37224601bbb375d36cf415a03bcee6ac3b51b2",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m3-07",
+    "prompt": "In a clean-water pipe at a constant flow rate and line size, an orifice plate is replaced by a flow nozzle. What happens to the differential pressure developed?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "For the same line size and flow rate, a flow nozzle develops a lower differential pressure than an orifice."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "3710e47986e3f5b698fcda8ef4652a997a121060cd3db4916987c51bd1e8e9bb",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m3-08",
+    "prompt": "In a pipe carrying clean water at a constant flow rate, a flow nozzle is replaced by a Venturi flowmeter of the same differential pressure. What happens to the permanent head loss?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "A Venturi meter loses 3 to 10% of differential pressure, compared with 10 to 20% for a nozzle."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "b8aacb8be2c1034cdf49f17d022f7e42638e5293d685ddab8a5d10a974b99fa4",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m3-09",
+    "prompt": "In a pipe with a time-of-flight ultrasonic flowmeter, suspended solids are filtered out so particle concentration drops to nearly zero at constant flow. What happens to the ultrasonic signal penetration?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt1",
+    "explanation": "Fewer suspended particles mean less acoustic scattering, so ultrasonic signal penetration increases."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "b114254fcb7e1282287181fbc6c093bcef09e23c3f7b683ff15972f30b9c1224",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m3-10",
+    "prompt": "In an open channel with constant roughness coefficient n, hydraulic radius, and bottom slope, the cross-sectional flow area increases. What happens to the channel discharge capacity?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt1",
+    "explanation": "In Manning's formula, discharge is directly proportional to cross-sectional flow area A."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "00dff8d9248fac1a8aee1264e985ce59efe145eb357271d8e75ba2ad018a2937",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m3-11",
+    "prompt": "In a pipe with a differential pressure flowmeter, the flow rate increases while pipe cross-sectional area stays constant. What happens to the average fluid velocity?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt1",
+    "explanation": "From Q = A x v, increasing volumetric flow rate at constant area increases average velocity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "68283ae963232d4128f55c860b28df3251d0ccbeff1b098c93920c77174ea67e",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m3-12",
+    "prompt": "In a series-pipe network with constant flow rate, a third pipe section is added in series with two existing pipes. What happens to the total head loss?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt1",
+    "explanation": "Head losses in series pipes are cumulative, so adding another section increases total head loss."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "13b6b3bc3ea1e9ed601a309088d368139a6746e1e69835309b6ef7327b06b95c",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m3-13",
+    "prompt": "In a circular gravity conduit flowing full, the hydraulic radius is compared with the same conduit flowing half full. What happens to the hydraulic radius?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "For a circular channel flowing either full or half full, the hydraulic radius is D/4."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "b048cffc66430f13d531aed0469337619c2383bdde176ebd5c1aa78e7a131ed7",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m3-14",
+    "prompt": "In a pipe carrying clean water, a flow nozzle is painted a different color on the outside without changing its bore, entry, or flow rate. What happens to the differential pressure?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "Exterior paint color does not affect internal geometry, velocity, or differential pressure."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "0589218deb8038d3d8fcf977210a060ff6d27a37a3fcd35ddf161f5db96a6a50",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m3-15",
+    "prompt": "In a Venturi flowmeter at constant flow rate, the ratio of throat diameter to inlet diameter increases toward 1.0, reducing the constriction. What happens to the permanent head loss?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "A wider throat relative to the inlet creates less restriction and lower permanent head loss."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "70b0be50be10bab331deca427d6becfd0e822b44980a70df147da5858950d598",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m4-01",
+    "prompt": "Which statement about equivalent-pipe theory is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "An equivalent pipe replaces series pipes of varying sizes with one uniform pipe."
+     },
+     {
+      "id": "opt2",
+      "label": "The equivalent pipe uses a varying diameter to match each original section."
+     },
+     {
+      "id": "opt3",
+      "label": "The equivalent pipe produces the same head loss at the given flow rate."
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "An equivalent pipe maintains a constant diameter and constant C factor throughout its length."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "90a75c5359f042c8e59b589ad83e76965b96892d6b2995ec5e023fb04526cd4c",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m4-02",
+    "prompt": "Which statement about open-channel flow characteristics is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Open channels expose part of the flowing water to atmospheric pressure."
+     },
+     {
+      "id": "opt2",
+      "label": "Velocity head represents the natural energy of water in open channels."
+     },
+     {
+      "id": "opt3",
+      "label": "High static pressure drives water through open channels at constant depth."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "Open-channel flow has no pressure driving force; gravity and velocity head govern movement."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "d1f4e49e464d70c119ceb517af2f4e917813b58a105f22fe11f6bc09cbd72697",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m4-03",
+    "prompt": "Which statement about hydraulic radius and hydraulic depth is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Hydraulic radius divides the cross-sectional flow area by the wetted perimeter."
+     },
+     {
+      "id": "opt2",
+      "label": "Hydraulic depth divides the cross-sectional flow area by the surface width."
+     },
+     {
+      "id": "opt3",
+      "label": "A circular pipe flowing half full has twice the hydraulic radius of a full pipe."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "A circular channel flowing either full or half full has a hydraulic radius of D/4."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "b45f327c25983bdbcb400f2fc7726f641c839c416befc501e7639896dbf6640a",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m4-04",
+    "prompt": "Which statement about Manning's formula in open channels is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Manning's formula uses hydraulic radius to handle noncircular flow cross-sections."
+     },
+     {
+      "id": "opt2",
+      "label": "Higher channel roughness coefficient n increases calculated discharge capacity."
+     },
+     {
+      "id": "opt3",
+      "label": "Steeper channel bottom slope increases the calculated discharge capacity."
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "Roughness n is in the denominator of Manning's formula, so higher roughness decreases discharge."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "3b4be5e3e04513f23e0c7cc649cf36e1af54e7b2b2b1954b4d377b7e0c4a0175",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m4-05",
+    "prompt": "Which statement about preliminary open-channel flow estimation is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Measuring flow depth helps compute cross-sectional area when channel dimensions are known."
+     },
+     {
+      "id": "opt2",
+      "label": "Multiplying flow area by velocity gives a ballpark discharge estimate for fieldwork."
+     },
+     {
+      "id": "opt3",
+      "label": "This simple depth-and-velocity estimate replaces routine calibrated flow measurements."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "The Q = A x V ballpark method is useful for preliminary fieldwork but is not suitable for routine measurements."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "0b4dae1e81f3218c51a27811f9ad810a9a1f6b98d5c06d1690722643013e1269",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m4-06",
+    "prompt": "Which statement about differential pressure flowmeters is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "They develop a differential pressure across a restriction related to flow rate."
+     },
+     {
+      "id": "opt2",
+      "label": "Optimum accuracy requires proper installation and periodic transmitter calibration."
+     },
+     {
+      "id": "opt3",
+      "label": "They operate without changing fluid velocity across the primary restriction."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "Differential pressure across the restriction results directly from the change in fluid velocity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "beb4567bc510f699f42f23fbf9373c296c7b7dbbd98d68af1add2ca545351311",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m4-07",
+    "prompt": "Which statement about orifice plates is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Concentric orifice plates can suffer impaired performance from dirt buildup in wastewater."
+     },
+     {
+      "id": "opt2",
+      "label": "Eccentric and segmental plates handle dirty water better than concentric plates."
+     },
+     {
+      "id": "opt3",
+      "label": "Eccentric orifice plates typically achieve higher accuracy than concentric plates."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "Eccentric and segmental plates are typically less accurate than concentric orifice plates."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "67eda5b628f879609dd9c967ca6bf58e67608ad8bf8e5da415a26e4bc56e231e",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m4-08",
+    "prompt": "Which statement about Venturi flowmeters is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Venturi meters typically achieve plus or minus 1% accuracy over a 10:1 flow range."
+     },
+     {
+      "id": "opt2",
+      "label": "Permanent head loss across a Venturi meter ranges from 3% to 10% of differential."
+     },
+     {
+      "id": "opt3",
+      "label": "Venturi meters create higher permanent head loss than standard orifice plates."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "Venturi meters have relatively small permanent head loss compared with orifice plates."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "1fbff7efb1060f0c676ebef75d29818334e004789aada2eaa31e4208b735473e",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m4-09",
+    "prompt": "Which statement about flow nozzles is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Flow nozzles feature a smooth entry and sharp exit that handle abrasive fluids well."
+     },
+     {
+      "id": "opt2",
+      "label": "Flow nozzles are dimensionally stable at high temperatures and velocities in steam service."
+     },
+     {
+      "id": "opt3",
+      "label": "Flow nozzles produce higher differential pressure than orifices at the same flow."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "At the same line size and flow rate, a flow nozzle develops lower differential pressure than an orifice."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "8447dcf2aee4c4b09baecae1b90da0e7463f84453843f2ffddad98df15beaaaf",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m4-10",
+    "prompt": "Which statement about time-of-flight ultrasonic flowmeters is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Clean water allows full ultrasonic signal penetration across the pipe."
+     },
+     {
+      "id": "opt2",
+      "label": "Higher suspended particle concentrations increase measurement error."
+     },
+     {
+      "id": "opt3",
+      "label": "Suspended particles improve acoustic penetration and reduce meter error."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "More particles cause poor penetration and greater measurement error in time-of-flight ultrasonic meters."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "3e0ac2019c56f9d767ca059fd5d515109cde962695ad3cb255a911f23f25a98e",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m4-11",
+    "prompt": "Which statement about velocity meters is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Velocity meters are applicable to clean fluids."
+     },
+     {
+      "id": "opt2",
+      "label": "Velocity meters are well suited for intermediate clean-water flow rates."
+     },
+     {
+      "id": "opt3",
+      "label": "Velocity meters are restricted to metal-bodied designs with no plastic options."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "Velocity meters are available in a wide variety of materials, including plastic."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "09cb4b61b65d65842098c5fb28978368b93df79032a3dbcd213eeef0493bd0a6",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m4-12",
+    "prompt": "Which statement about NPSHA for suction lift from an open reservoir is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Atmospheric pressure pushing on the reservoir surface adds to available suction head."
+     },
+     {
+      "id": "opt2",
+      "label": "Suction line friction losses and entrance losses reduce available suction head."
+     },
+     {
+      "id": "opt3",
+      "label": "Higher water vapor pressure increases the net positive suction head available."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "Water vapor pressure is subtracted in NPSHA, so higher vapor pressure reduces available suction head."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "3a2608548e2ce871a110845858c0496e61ed183b520f9c4abea422741692fc4a",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m4-13",
+    "prompt": "Which statement about flowmeter selection criteria is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Selection considers whether the fluid is a liquid or gas in a pipe or channel."
+     },
+     {
+      "id": "opt2",
+      "label": "Selection evaluates suspended solids, air bubbles, corrosiveness, and allowable head loss."
+     },
+     {
+      "id": "opt3",
+      "label": "Post-installation service availability has no bearing on selecting a flowmeter."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "Available regional meter types and post-installation service are explicit selection criteria."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "cfb720d55b18abc05ef83b140cc3a94a59df8b43bfa6ad6d8c66346081c3bbca",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m4-14",
+    "prompt": "Which statement about uniform open-channel slope is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "In uniform flow, the energy line slope parallels the water surface."
+     },
+     {
+      "id": "opt2",
+      "label": "In uniform flow, the energy line slope parallels the channel bottom."
+     },
+     {
+      "id": "opt3",
+      "label": "Slope is calculated by dividing channel length by head loss."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "Slope equals head loss divided by channel length (hL / L)."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "7833d3fb60640e5cef6da9d1ee97046d570fee6e3441407b72aca89d3473be16",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m4-15",
+    "prompt": "Which statement about series pipe networks is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Friction loss evaluation applies energy conservation principles at junction points."
+     },
+     {
+      "id": "opt2",
+      "label": "Head losses across individual pipes connected in series are cumulative."
+     },
+     {
+      "id": "opt3",
+      "label": "The Hazen-Williams roughness coefficient depends on fluid velocity rather than pipe roughness."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "The Hazen-Williams friction coefficient depends on the roughness of the pipe."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "fecf254ace17383a14da40d31254cf8b626499654c05e37f652e22ee24ea0662",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m5-01",
+    "prompt": "When using the equivalent-pipe method for pipes in series, does computing total cumulative head loss occur before or after determining the equivalent pipe length?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Total head loss across the series sections is needed first to find the equivalent length."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "b2a0acd4b230f14d7f71c94565f3404dc3d71b1b203b54c52d7111955dddc97a",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m5-02",
+    "prompt": "In calculating open-channel hydraulic radius, does measuring flow area and wetted perimeter occur before or after dividing area by wetted perimeter?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Both area and wetted perimeter must be determined before computing their ratio."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "6a6e98bd953c47d1bbb16603cdd9f7d02a28fdeffb92cd6909cabf0110b31e55",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m5-03",
+    "prompt": "In calculating open-channel hydraulic depth, does measuring the channel surface width occur before or after dividing flow area by surface width?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Surface width and flow area must be known before dividing to find hydraulic depth."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "05e6e1ba07e97f8a00440b318492951f05f53b6911ddd2b1562d73cca37fb36a",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m5-04",
+    "prompt": "In determining open-channel energy slope, does finding head loss over a channel reach occur before or after dividing head loss by channel length?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Head loss and length are determined first so slope can be calculated as hL/L."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "19c82523f1ea33b89e15e544b3e586d50395be31306a1d80bcf1e3ef5408ce62",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m5-05",
+    "prompt": "In preliminary open-channel fieldwork using Q = A x V, does computing cross-sectional flow area from depth occur before or after estimating volumetric discharge?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Flow area must be computed from depth and channel dimensions before multiplying by velocity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "453683804fa622e1ea151126c42178e9620216c79efd93fef5815b85e8c1854f",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m5-06",
+    "prompt": "In selecting a flowmeter for a water system, does evaluating fluid cleanliness and flow range occur before or after choosing a specific meter type?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Fluid and hydraulic conditions are evaluated first to select a suitable flowmeter."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "b793e29a911f715db277d8bef41104b47f32467b318ef5d115a84ee2f362bdb1",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m5-07",
+    "prompt": "In a differential pressure flowmeter, does fluid velocity changing across the restriction occur before or after the instrumentation translates differential pressure into flow volume?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Velocity changes across the restriction create the differential pressure that instrumentation converts to flow."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "74c36914f463c31c171e5cfef0086f9b7bc17ceb951cc8094c2291b48e4301d2",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m5-08",
+    "prompt": "In maintaining a differential pressure flowmeter, does installing it according to standards occur before or after achieving optimum measurement accuracy?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Proper installation and calibration are prerequisites for optimum measurement accuracy."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "971492ff8f51b60a96658fd04ff61f2e2e5198fd2798ec4f34fc96f7c8931967",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m5-09",
+    "prompt": "In a concentric orifice plate carrying wastewater, does dirt buildup at the plate occur before or after measurement performance becomes impaired?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Dirt accumulation at the upstream face of the concentric plate impairs its performance."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "e56549cd7a41c1cee8eaddbc8c6521bc63af9e94f8b18ba63122ede8467568ea",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m5-10",
+    "prompt": "In a time-of-flight ultrasonic flowmeter, does suspended particle concentration rising sharply occur before or after acoustic signal penetration degrades?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Increased particle concentration scatters the signal, degrading penetration and increasing error."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "94cd2f218cd5cd3289926bb38a999b19f55af0648acdd9a9dcb120a73956d596",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m5-11",
+    "prompt": "In calculating NPSHA for suction lift from an open reservoir, does subtracting vapor pressure and suction losses occur before or after obtaining the net available suction head?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Vapor pressure, static lift, entrance loss, and friction loss are subtracted from atmospheric head to find NPSHA."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "f9f124377c3e0e63f062c4cebf46dc7f7375fd9077b6a8bd05175d292e016643",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m5-12",
+    "prompt": "In a treatment plant flow-control loop, does measuring distribution system demand occur before or after matching treatment process flow rates to demand?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Distribution system use must be known so treatment flow rates can be controlled to match it."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "5c17710040ed23d7618688fc79e10f8d9832749742ac8080afe161f809abd475",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m5-13",
+    "prompt": "In a flow nozzle, does fluid entering the smooth inlet occur before or after exiting the sharp outlet?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Flow nozzles have a smooth entry followed by a sharp exit."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "6a683686904370b19313d6efb300a3523253c6ae5329ea3ab0341cfa1a172d14",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m5-14",
+    "prompt": "In an electronic flowmeter loop, does the meter generating a voltage signal occur before or after the signal conditioner processes it?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The primary meter outputs voltage to the signal conditioner for processing."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "620cec607877c110a4ee5369b62b9003ec4f7bfe2e09706c9358848aff5c235b",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r05-m5-15",
+    "prompt": "When applying Manning's formula to an open channel, does computing hydraulic radius from area and wetted perimeter occur before or after solving for discharge capacity?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Hydraulic radius is an input to Manning's equation and must be found before computing discharge."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+    "notes": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:54:03.942Z",
+    "payloadSha256": "02c57bb04dd35f3a3649bb0a6c175e99c07fed2526a6922eba0827dc0b75ac0d",
+    "builderResultsSha256": "68af10b33f84afc8cd55cb0942fe0e2d7516985f2d4c16f7d812ab0606e052ca"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T03:52:12.279386+00:00",
+   "attestation": "Strict final AI self-review of 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r05); 70 accepted, 0 rejected.",
+   "payloadSha256": {
+    "targeth-ht261118-wpi-class2-water-dist-r05-m0-01": "b3f4d0cb640677bffa93226610776cc66bcb93b3180f96c9fe70de10b3c12ce9",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m0-02": "bc98f308f025f3a0c2b1e234520f58bedcbb9c26e202496ebc3d2314ff482216",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m0-03": "21b52c3cd68aa00a7d2136805980c79c0ffeef9ad8ed554b24c3212e222852c5",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m0-04": "f891c8007672b96a3517fcba2b25042691b36c499366b153083016cd2e367430",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m0-05": "2c5f4db0d12c980a00b4beb39f5c8a4d7226f63056306215b65cc4d65bc2d0a9",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m0-06": "8ea9a99a3173380523beb86bf9d9e3785d8c19ecdf4e5465160bc279c596d97b",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m0-07": "cbef7dbb0c42f9baacffdad1e61d6b150f76588d8a1b271cc0fb52b438edc443",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m0-08": "16a939514f6a6e1f95194bc06d0726a77ab25671bb1a6090c9a55c91c0fde030",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m0-09": "ad53b2e27da4132f7f744d87c4b56dbd7219e214f10238e240bccc8e438ae017",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m0-10": "95a752c155099de9d9084bdafcf1a46502d9ccf6394cf5c8f47e83281f35b99e",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m0-11": "37ea8e27554d2478fe73990b7ef866c0cd85df0ac5f34d09b06ba93497604a00",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m0-12": "31755a28c7987d78ed836963cd506c7a3d8a905cd0750bf5d5b349cb67459e35",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m0-13": "d97aa83ede1359b90d0aa4deb9a81a2b10660390194e058b8b8a8b1e02fd5b3e",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m0-14": "994b951c836c2a7c078d94554b725164938bcfff73c250f526714cc4fcbca58d",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m0-15": "e41d2ba60a8675566a1f6f6fb83914455776c38f2625617e413f6dd36786a870",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m1-01": "c13c24b83774d0be315cef679d223352994dcb5f96f2425924e3b4fcd6968268",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m1-02": "1ca8277a2788d6f4b07e4f7a3a2aaed272efc18670be700796525918fb30369d",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m1-03": "0caa84168d7758cbdeb8ea641215e2692af4767e7750d4079076bac0f7b295f9",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m1-04": "210f13445ba865a7d2cd0b2a95ceb2ce23d300bde4f04f11db0133c5e8867e25",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m1-05": "2fb9245703bd3e1875061a7a6ca0f211d5eff3d65c2b2b149423ebb40a0d6b47",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m1-06": "b601440fe4ca23eb8d05c099c9d7ac8af54656e1f61c5c5a5cf9d31ad0199e14",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m1-07": "8b469a3d6c8774cc6663868f6eb743e414d14bc23260ceeff1066bdb1e16671e",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m1-08": "0d84063098d4d94d8977f4b699a9637be1b0a790ad14ef01795a7fb05e4ab21d",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m1-09": "725737d8bfe10639576531955711f1ad6389f904a7ec88abe2ad9ceb44800f8c",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m1-10": "ba0c616712eed568b814de17203b9127f18837a290ade4f478db015532054884",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m3-01": "688f92b7097b3b77ad34a2fdd2477e150201aeef4f4c0a3d33e32bd8563a620d",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m3-02": "081fe4b6e8982be9c8a8fa82d592cc2e84647e9a64d447220895a2798bc8fb54",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m3-03": "bae8e0261fe341b12ae873d332526b1bef8ab5dda4fdc161a9e5866685bed8ac",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m3-04": "dda50da74c00f35f9afc5c5b06718a6780943174740ee1d98f4d2b8c2aecc1e8",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m3-05": "ac880bd939e21c0f5bdbfb98e3538c8a6bec3ecf1f859feb974d06938c0f8cf8",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m3-06": "1e445cf1eac128bd5a27bc244c37224601bbb375d36cf415a03bcee6ac3b51b2",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m3-07": "3710e47986e3f5b698fcda8ef4652a997a121060cd3db4916987c51bd1e8e9bb",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m3-08": "b8aacb8be2c1034cdf49f17d022f7e42638e5293d685ddab8a5d10a974b99fa4",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m3-09": "b114254fcb7e1282287181fbc6c093bcef09e23c3f7b683ff15972f30b9c1224",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m3-10": "00dff8d9248fac1a8aee1264e985ce59efe145eb357271d8e75ba2ad018a2937",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m3-11": "68283ae963232d4128f55c860b28df3251d0ccbeff1b098c93920c77174ea67e",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m3-12": "13b6b3bc3ea1e9ed601a309088d368139a6746e1e69835309b6ef7327b06b95c",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m3-13": "b048cffc66430f13d531aed0469337619c2383bdde176ebd5c1aa78e7a131ed7",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m3-14": "0589218deb8038d3d8fcf977210a060ff6d27a37a3fcd35ddf161f5db96a6a50",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m3-15": "70b0be50be10bab331deca427d6becfd0e822b44980a70df147da5858950d598",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m4-01": "90a75c5359f042c8e59b589ad83e76965b96892d6b2995ec5e023fb04526cd4c",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m4-02": "d1f4e49e464d70c119ceb517af2f4e917813b58a105f22fe11f6bc09cbd72697",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m4-03": "b45f327c25983bdbcb400f2fc7726f641c839c416befc501e7639896dbf6640a",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m4-04": "3b4be5e3e04513f23e0c7cc649cf36e1af54e7b2b2b1954b4d377b7e0c4a0175",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m4-05": "0b4dae1e81f3218c51a27811f9ad810a9a1f6b98d5c06d1690722643013e1269",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m4-06": "beb4567bc510f699f42f23fbf9373c296c7b7dbbd98d68af1add2ca545351311",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m4-07": "67eda5b628f879609dd9c967ca6bf58e67608ad8bf8e5da415a26e4bc56e231e",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m4-08": "1fbff7efb1060f0c676ebef75d29818334e004789aada2eaa31e4208b735473e",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m4-09": "8447dcf2aee4c4b09baecae1b90da0e7463f84453843f2ffddad98df15beaaaf",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m4-10": "3e0ac2019c56f9d767ca059fd5d515109cde962695ad3cb255a911f23f25a98e",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m4-11": "09cb4b61b65d65842098c5fb28978368b93df79032a3dbcd213eeef0493bd0a6",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m4-12": "3a2608548e2ce871a110845858c0496e61ed183b520f9c4abea422741692fc4a",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m4-13": "cfb720d55b18abc05ef83b140cc3a94a59df8b43bfa6ad6d8c66346081c3bbca",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m4-14": "7833d3fb60640e5cef6da9d1ee97046d570fee6e3441407b72aca89d3473be16",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m4-15": "fecf254ace17383a14da40d31254cf8b626499654c05e37f652e22ee24ea0662",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m5-01": "b2a0acd4b230f14d7f71c94565f3404dc3d71b1b203b54c52d7111955dddc97a",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m5-02": "6a6e98bd953c47d1bbb16603cdd9f7d02a28fdeffb92cd6909cabf0110b31e55",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m5-03": "05e6e1ba07e97f8a00440b318492951f05f53b6911ddd2b1562d73cca37fb36a",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m5-04": "19c82523f1ea33b89e15e544b3e586d50395be31306a1d80bcf1e3ef5408ce62",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m5-05": "453683804fa622e1ea151126c42178e9620216c79efd93fef5815b85e8c1854f",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m5-06": "b793e29a911f715db277d8bef41104b47f32467b318ef5d115a84ee2f362bdb1",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m5-07": "74c36914f463c31c171e5cfef0086f9b7bc17ceb951cc8094c2291b48e4301d2",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m5-08": "971492ff8f51b60a96658fd04ff61f2e2e5198fd2798ec4f34fc96f7c8931967",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m5-09": "e56549cd7a41c1cee8eaddbc8c6521bc63af9e94f8b18ba63122ede8467568ea",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m5-10": "94cd2f218cd5cd3289926bb38a999b19f55af0648acdd9a9dcb120a73956d596",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m5-11": "f9f124377c3e0e63f062c4cebf46dc7f7375fd9077b6a8bd05175d292e016643",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m5-12": "5c17710040ed23d7618688fc79e10f8d9832749742ac8080afe161f809abd475",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m5-13": "6a683686904370b19313d6efb300a3523253c6ae5329ea3ab0341cfa1a172d14",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m5-14": "620cec607877c110a4ee5369b62b9003ec4f7bfe2e09706c9358848aff5c235b",
+    "targeth-ht261118-wpi-class2-water-dist-r05-m5-15": "02c57bb04dd35f3a3649bb0a6c175e99c07fed2526a6922eba0827dc0b75ac0d"
+   }
+  },
+  "registeredAt": "2026-11-19T03:54:03.942Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 8,
+     "f": 7
+    },
+    "dirs": {
+     "increase": 9,
+     "decrease": 4,
+     "unchanged": 2
+    },
+    "longest": 7,
+    "options": 30
+   },
+   "batchSha256": "6fda585c2d426e5ee46bc1e10bc4d6b7921d0f6d222db89584681511e6248c07"
+  }
+ }
+}

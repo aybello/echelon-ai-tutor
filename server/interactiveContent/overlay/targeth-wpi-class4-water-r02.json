@@ -1,0 +1,1384 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-wpi-class4-water-r02",
+ "scope": "Owner-authorized AI-reviewed game activities: 33 items.",
+ "additions": [
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r02-m0-01",
+    "prompt": "Giardia trophozoites divide by binary fission at roughly 12-hour intervals once established in the small intestine.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Giardia trophozoites reproduce rapidly by binary fission at roughly 12-hour intervals in the small intestine."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:29.411990+00:00",
+    "notes": "Strict Hydrogen self-review of 34 wpi-class4-water items against supplied source pages and collision candidates: 33 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:08:07.900Z",
+    "payloadSha256": "bad480d845d7aa828382ae15fdca1407b3858fb2d349a70e201be219e2ba92cc",
+    "builderResultsSha256": "b4bbd3d97ef7d00fc0c8c0e5fb627bbd179726cc7cf8d1dc5877929bce7a098a"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r02-m0-02",
+    "prompt": "Cyclospora oocysts excreted in human feces are immediately infectious and require no environmental maturation time.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Excreted Cyclospora oocysts are not immediately infectious and require days to weeks to sporulate."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:29.411990+00:00",
+    "notes": "Strict Hydrogen self-review of 34 wpi-class4-water items against supplied source pages and collision candidates: 33 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:08:07.900Z",
+    "payloadSha256": "613e673da7312fe8386b1453aa1aa3ec3fcac1e1656483b3e91dd045c3a60991",
+    "builderResultsSha256": "b4bbd3d97ef7d00fc0c8c0e5fb627bbd179726cc7cf8d1dc5877929bce7a098a"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r02-m0-03",
+    "prompt": "Ammonia nitrogen in water exerts both a biochemical oxygen demand and a chlorine demand.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "High ammonia nitrogen in effluents is undesirable because it exerts both BOD and chlorine demand."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:29.411990+00:00",
+    "notes": "Strict Hydrogen self-review of 34 wpi-class4-water items against supplied source pages and collision candidates: 33 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:08:07.900Z",
+    "payloadSha256": "b04f9f169d50218f71d9cf86649402cd175d9cfe5f3556a806924037a71811c7",
+    "builderResultsSha256": "b4bbd3d97ef7d00fc0c8c0e5fb627bbd179726cc7cf8d1dc5877929bce7a098a"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r02-m0-04",
+    "prompt": "The phosphorus cycle includes a major atmospheric gas phase similar to the carbon and nitrogen cycles.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Unlike carbon and nitrogen, phosphorus is found primarily in sedimentary rock rather than an atmospheric gas reservoir."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:29.411990+00:00",
+    "notes": "Strict Hydrogen self-review of 34 wpi-class4-water items against supplied source pages and collision candidates: 33 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:08:07.900Z",
+    "payloadSha256": "0f1f96cb5b25e2cd41cdb5d5455d762e7ef14c15036e09ac5d088012d2f625b2",
+    "builderResultsSha256": "b4bbd3d97ef7d00fc0c8c0e5fb627bbd179726cc7cf8d1dc5877929bce7a098a"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r02-m0-05",
+    "prompt": "Heterotrophic anaerobic bacteria can liberate sulfur from organic proteins in the form of hydrogen sulfide.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Many heterotrophic anaerobic bacteria break down plant or animal proteins and release sulfur as hydrogen sulfide."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:29.411990+00:00",
+    "notes": "Strict Hydrogen self-review of 34 wpi-class4-water items against supplied source pages and collision candidates: 33 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:08:07.900Z",
+    "payloadSha256": "db7c77d5fea02704f35afb6c17fdd7b6d0e3c8dae4933bdce8c4ae1c298d67d0",
+    "builderResultsSha256": "b4bbd3d97ef7d00fc0c8c0e5fb627bbd179726cc7cf8d1dc5877929bce7a098a"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r02-m0-06",
+    "prompt": "Standard turbidity and coliform tests reliably predict the presence or absence of Cryptosporidium oocysts in raw water.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "No routine water quality indicators reliably predict the occurrence of Cryptosporidium oocysts or cryptosporidiosis."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:29.411990+00:00",
+    "notes": "Strict Hydrogen self-review of 34 wpi-class4-water items against supplied source pages and collision candidates: 33 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:08:07.900Z",
+    "payloadSha256": "379997f7b5090b5e9a54c2cd075d63ca0f7997ecc856fa6c6a2450fc6f1e63fd",
+    "builderResultsSha256": "b4bbd3d97ef7d00fc0c8c0e5fb627bbd179726cc7cf8d1dc5877929bce7a098a"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r02-m1-01",
+    "prompt": "Distinguish key biological features of Giardia lamblia transmission and survival.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Trophozoite",
+      "right": "Active intestinal stage dividing by binary fission"
+     },
+     {
+      "id": "p2",
+      "left": "Dormant cyst",
+      "right": "Hardy environmental stage surviving cold water"
+     },
+     {
+      "id": "p3",
+      "left": "Stomach acid",
+      "right": "Triggers liberation of trophozoite after ingestion"
+     },
+     {
+      "id": "p4",
+      "left": "Boiling water",
+      "right": "Inactivates Giardia cysts instantaneously"
+     },
+     {
+      "id": "p5",
+      "left": "Routine chlorination",
+      "right": "Often ineffective against Giardia cysts alone"
+     },
+     {
+      "id": "p6",
+      "left": "Untreated sewage",
+      "right": "Primary source introducing cysts into surface streams"
+     }
+    ],
+    "explanation": "Giardia alternates between a hardy cyst and an active trophozoite, requiring physical removal or boiling."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:29.411990+00:00",
+    "notes": "Strict Hydrogen self-review of 34 wpi-class4-water items against supplied source pages and collision candidates: 33 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:08:07.900Z",
+    "payloadSha256": "f25b6ba1a31c2e5a1412d138c7365c4de609077df89ad75ae4e5174666e921b8",
+    "builderResultsSha256": "b4bbd3d97ef7d00fc0c8c0e5fb627bbd179726cc7cf8d1dc5877929bce7a098a"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r02-m1-02",
+    "prompt": "Contrast Cryptosporidium parvum host susceptibility, detection, and transmission factors.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Neonate mammals",
+      "right": "Primary animal hosts developing heavy C. parvum infections"
+     },
+     {
+      "id": "p2",
+      "left": "Human hosts",
+      "right": "Susceptible to serious infection at any age"
+     },
+     {
+      "id": "p3",
+      "left": "Heavy rainfall runoff",
+      "right": "Increases oocyst prevalence in surface water supplies"
+     },
+     {
+      "id": "p4",
+      "left": "Filter sample recovery",
+      "right": "Unreliable step in current oocyst detection methods"
+     },
+     {
+      "id": "p5",
+      "left": "Microscope examination",
+      "right": "Confirms oocyst viability and species identity"
+     },
+     {
+      "id": "p6",
+      "left": "Immunocompromised patients",
+      "right": "Risk life-threatening, prolonged cryptosporidiosis"
+     }
+    ],
+    "explanation": "Cryptosporidium oocysts enter surface waters via runoff and pose severe risks to immunocompromised individuals."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:29.411990+00:00",
+    "notes": "Strict Hydrogen self-review of 34 wpi-class4-water items against supplied source pages and collision candidates: 33 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:08:07.900Z",
+    "payloadSha256": "66e9772955e753089cb17ee6313a42401bedb831b4a92c989e3a8221c25597f8",
+    "builderResultsSha256": "b4bbd3d97ef7d00fc0c8c0e5fb627bbd179726cc7cf8d1dc5877929bce7a098a"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r02-m1-03",
+    "prompt": "Differentiate nitrogen cycle transformations across atmospheric, soil, and treatment environments.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Nitrogen fixation",
+      "right": "Converts atmospheric nitrogen gas into usable nitrate"
+     },
+     {
+      "id": "p2",
+      "left": "Symbiotic root bacteria",
+      "right": "Fix nitrogen inside swellings on pea roots"
+     },
+     {
+      "id": "p3",
+      "left": "Urea hydrolysis",
+      "right": "Transforms wastewater urea into ammonia nitrogen"
+     },
+     {
+      "id": "p4",
+      "left": "Nitrification",
+      "right": "Biological oxidation of ammonia to nitrate using oxygen"
+     },
+     {
+      "id": "p5",
+      "left": "Denitrification",
+      "right": "Biological conversion of nitrate into nitrogen gas"
+     },
+     {
+      "id": "p6",
+      "left": "Ammonia nitrogen",
+      "right": "Exerts both oxygen demand and chlorine demand"
+     }
+    ],
+    "explanation": "Nitrogen cycles through fixation, ammonia formation, aerobic nitrification, and anoxic denitrification."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:29.411990+00:00",
+    "notes": "Strict Hydrogen self-review of 34 wpi-class4-water items against supplied source pages and collision candidates: 33 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:08:07.900Z",
+    "payloadSha256": "0229d203a107d78d73c978e388e0d1d9a8e19b2ef06ce6b50a69203c47f4fe97",
+    "builderResultsSha256": "b4bbd3d97ef7d00fc0c8c0e5fb627bbd179726cc7cf8d1dc5877929bce7a098a"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r02-m1-04",
+    "prompt": "Classify biogeochemical cycles by their primary reservoirs and biological pathways.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Carbon cycle",
+      "right": "Exchanges carbon dioxide via respiration and combustion"
+     },
+     {
+      "id": "p2",
+      "left": "Fossil fuels",
+      "right": "Buried plant and animal carbon storing ancient energy"
+     },
+     {
+      "id": "p3",
+      "left": "Phosphorus cycle",
+      "right": "Originates from eroding sedimentary rock deposits"
+     },
+     {
+      "id": "p4",
+      "left": "Guano deposits",
+      "right": "Bird excreta returning phosphorus to land and water"
+     },
+     {
+      "id": "p5",
+      "left": "Sulfur cycle",
+      "right": "Anaerobic heterotrophs releasing hydrogen sulfide from proteins"
+     },
+     {
+      "id": "p6",
+      "left": "Nitrogen cycle",
+      "right": "Bridges atmospheric gas reservoirs and biological communities"
+     }
+    ],
+    "explanation": "Carbon, nitrogen, sulfur, and phosphorus each follow distinct atmospheric, terrestrial, or sedimentary pathways."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:29.411990+00:00",
+    "notes": "Strict Hydrogen self-review of 34 wpi-class4-water items against supplied source pages and collision candidates: 33 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:08:07.900Z",
+    "payloadSha256": "94d173b20403655c680088f6f3a0f9b51d2d6557af3e47ce7449a6dc60191cf6",
+    "builderResultsSha256": "b4bbd3d97ef7d00fc0c8c0e5fb627bbd179726cc7cf8d1dc5877929bce7a098a"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r02-m1-05",
+    "prompt": "Distinguish anaerobic digestion inputs, products, and bacterial growth phases.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Volatile acids",
+      "right": "Intermediate organic acids fed to anaerobic bacteria"
+     },
+     {
+      "id": "p2",
+      "left": "Methane",
+      "right": "Gaseous energy end product of anaerobic stabilization"
+     },
+     {
+      "id": "p3",
+      "left": "Stable solids",
+      "right": "Digested residual solids resisting further decay"
+     },
+     {
+      "id": "p4",
+      "left": "Log growth",
+      "right": "Phase of rapid, uninhibited bacterial multiplication"
+     },
+     {
+      "id": "p5",
+      "left": "Declining growth",
+      "right": "Phase where substrate limitation slows reproduction"
+     },
+     {
+      "id": "p6",
+      "left": "Endogenous respiration",
+      "right": "Phase where microbes consume their own cellular mass"
+     }
+    ],
+    "explanation": "Anaerobic bacteria convert volatile acids into methane and stable solids across distinct growth phases."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:29.411990+00:00",
+    "notes": "Strict Hydrogen self-review of 34 wpi-class4-water items against supplied source pages and collision candidates: 33 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:08:07.900Z",
+    "payloadSha256": "fd946e1cbf78a34c93c8ec643fa67ed8e478596b1e01a84faa5f0303c333725f",
+    "builderResultsSha256": "b4bbd3d97ef7d00fc0c8c0e5fb627bbd179726cc7cf8d1dc5877929bce7a098a"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r02-m1-06",
+    "prompt": "Compare waterborne protozoan parasites by life cycle and transmission traits.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Giardia lamblia",
+      "right": "Flagellated parasite with cyst and trophozoite stages"
+     },
+     {
+      "id": "p2",
+      "left": "Cryptosporidium parvum",
+      "right": "Coccidian parasite completing its cycle in vertebrate intestines"
+     },
+     {
+      "id": "p3",
+      "left": "Cyclospora",
+      "right": "Excreted oocyst requiring days to weeks to sporulate"
+     },
+     {
+      "id": "p4",
+      "left": "Sporulation",
+      "right": "Maturation process making Cyclospora oocysts infectious"
+     },
+     {
+      "id": "p5",
+      "left": "Excystation",
+      "right": "Release of active parasite inside the host gut"
+     },
+     {
+      "id": "p6",
+      "left": "Fecal-oral route",
+      "right": "Primary pathway transferring cysts from host to host"
+     }
+    ],
+    "explanation": "Waterborne protozoa differ in whether their excreted cysts or oocysts are immediately infectious."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:29.411990+00:00",
+    "notes": "Strict Hydrogen self-review of 34 wpi-class4-water items against supplied source pages and collision candidates: 33 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:08:07.900Z",
+    "payloadSha256": "2337d84a8723e27a510cf969f7b6ff291e450987af3ec748e01879b47d18a51b",
+    "builderResultsSha256": "b4bbd3d97ef7d00fc0c8c0e5fb627bbd179726cc7cf8d1dc5877929bce7a098a"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r02-m1-07",
+    "prompt": "Connect waterborne outbreak causes to specific treatment or system failures.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Unfiltered surface water",
+      "right": "Leaves cysts and oocysts in finished supply"
+     },
+     {
+      "id": "p2",
+      "left": "Defective filter media",
+      "right": "Allows Giardia cysts to pass through treatment"
+     },
+     {
+      "id": "p3",
+      "left": "Inadequate pretreatment",
+      "right": "Reduces filter efficiency against protozoan cysts"
+     },
+     {
+      "id": "p4",
+      "left": "Accidental cross-connection",
+      "right": "Introduces sewage directly into potable water mains"
+     },
+     {
+      "id": "p5",
+      "left": "Overloaded sewage plant",
+      "right": "Discharges elevated oocyst loads into receiving streams"
+     },
+     {
+      "id": "p6",
+      "left": "Failed roof-tank pump",
+      "right": "Linked to localized tap water Cyclospora contamination"
+     }
+    ],
+    "explanation": "Waterborne outbreaks occur when source contamination combines with filtration, pretreatment, or distribution failures."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:29.411990+00:00",
+    "notes": "Strict Hydrogen self-review of 34 wpi-class4-water items against supplied source pages and collision candidates: 33 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:08:07.900Z",
+    "payloadSha256": "a4f08dc13f9f4228d608727002bda9fc3056cb0bcd80eef6af9057d704c82208",
+    "builderResultsSha256": "b4bbd3d97ef7d00fc0c8c0e5fb627bbd179726cc7cf8d1dc5877929bce7a098a"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r02-m1-08",
+    "prompt": "Contrast microbial ecology principles in natural waters and engineered biological treatment.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Natural decomposition",
+      "right": "Baseline process modeled by biological wastewater treatment"
+     },
+     {
+      "id": "p2",
+      "left": "Environmental control",
+      "right": "Engineered adjustment speeding up waste decomposition"
+     },
+     {
+      "id": "p3",
+      "left": "Aerobic process",
+      "right": "Uses free elemental oxygen to oxidize organics"
+     },
+     {
+      "id": "p4",
+      "left": "Limiting nutrients",
+      "right": "Nitrogen and phosphorus restricting algal or microbial productivity"
+     },
+     {
+      "id": "p5",
+      "left": "Summer algal blanket",
+      "right": "Profuse surface growth driven by warmth and light"
+     },
+     {
+      "id": "p6",
+      "left": "Tubificid worm decline",
+      "right": "Population drop triggered by rising water temperature"
+     }
+    ],
+    "explanation": "Engineered biological treatment accelerates natural decomposition by controlling oxygen, nutrients, and temperature."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:29.411990+00:00",
+    "notes": "Strict Hydrogen self-review of 34 wpi-class4-water items against supplied source pages and collision candidates: 33 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:08:07.900Z",
+    "payloadSha256": "ba6f3cf2eb7cdf9752fff2043540d9fed4a4e6063440ef8d6de697bbf81a3e56",
+    "builderResultsSha256": "b4bbd3d97ef7d00fc0c8c0e5fb627bbd179726cc7cf8d1dc5877929bce7a098a"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r02-m1-09",
+    "prompt": "Differentiate Giardia infection risk factors and non-municipal transmission pathways.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Daycare centers",
+      "right": "High transmission among diapered children and staff"
+     },
+     {
+      "id": "p2",
+      "left": "Backcountry hikers",
+      "right": "Exposed by drinking untreated stream or lake water"
+     },
+     {
+      "id": "p3",
+      "left": "International travelers",
+      "right": "Risk exposure in regions with inadequate sanitation"
+     },
+     {
+      "id": "p4",
+      "left": "Beavers",
+      "right": "Wildlife often blamed but typically victims of sewage"
+     },
+     {
+      "id": "p5",
+      "left": "Cabin toilets",
+      "right": "Direct stream discharges introducing human cysts"
+     },
+     {
+      "id": "p6",
+      "left": "Minimum infective dose",
+      "right": "Ten cysts shown to infect humans experimentally"
+     }
+    ],
+    "explanation": "Giardia spreads through daycare contact, untreated backcountry water, and human sewage discharges."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:29.411990+00:00",
+    "notes": "Strict Hydrogen self-review of 34 wpi-class4-water items against supplied source pages and collision candidates: 33 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:08:07.900Z",
+    "payloadSha256": "658eaf3756be3dda045383bde63c2d4fbd8381a2a188c0250efa266ba7fe4ba8",
+    "builderResultsSha256": "b4bbd3d97ef7d00fc0c8c0e5fb627bbd179726cc7cf8d1dc5877929bce7a098a"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r02-m1-10",
+    "prompt": "Relate raw water source characteristics to required drinking water treatment complexity.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Protected groundwater",
+      "right": "May require disinfection alone for microbial safety"
+     },
+     {
+      "id": "p2",
+      "left": "Surface water supply",
+      "right": "Requires multi-stage clarification, filtration, and disinfection"
+     },
+     {
+      "id": "p3",
+      "left": "Aesthetic quality",
+      "right": "Finished water free of turbidity, color, and odor"
+     },
+     {
+      "id": "p4",
+      "left": "Non-disinfection units",
+      "right": "Remove particles but do not target pathogen destruction"
+     },
+     {
+      "id": "p5",
+      "left": "Prechlorination",
+      "right": "Early oxidant addition at the head of treatment"
+     },
+     {
+      "id": "p6",
+      "left": "Water softening",
+      "right": "Unit process targeting hardness rather than pathogens"
+     }
+    ],
+    "explanation": "Surface waters need multi-stage treatment, whereas protected groundwater may need only disinfection."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:29.411990+00:00",
+    "notes": "Strict Hydrogen self-review of 34 wpi-class4-water items against supplied source pages and collision candidates: 33 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:08:07.900Z",
+    "payloadSha256": "f4fa97dba6a202d74b6db2a429705921465ca53267fedf378ee0df056e4b4d18",
+    "builderResultsSha256": "b4bbd3d97ef7d00fc0c8c0e5fb627bbd179726cc7cf8d1dc5877929bce7a098a"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r02-m3-01",
+    "prompt": "Assume a single Giardia trophozoite establishes in a human small intestine and divides by binary fission every 12 hours without immune clearance. What happens to the intestinal parasite population over 10 days?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-1",
+    "explanation": "Binary fission every 12 hours doubles the population repeatedly, exceeding one million parasites in 10 days."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:29.411990+00:00",
+    "notes": "Strict Hydrogen self-review of 34 wpi-class4-water items against supplied source pages and collision candidates: 33 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:08:07.900Z",
+    "payloadSha256": "7634f857200f97c5be92697fab7e7d2535f331a96af98c4e7ad44e2a781dc36d",
+    "builderResultsSha256": "b4bbd3d97ef7d00fc0c8c0e5fb627bbd179726cc7cf8d1dc5877929bce7a098a"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r02-m3-02",
+    "prompt": "Assume raw surface water containing Giardia cysts is heated to a rolling boil at 100 degrees Celsius. What happens to the viability of the Giardia cysts?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-2",
+    "explanation": "Giardia cysts are killed instantaneously when water is boiled at 100 degrees Celsius."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:29.411990+00:00",
+    "notes": "Strict Hydrogen self-review of 34 wpi-class4-water items against supplied source pages and collision candidates: 33 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:08:07.900Z",
+    "payloadSha256": "2718b95ae67d7686f90b2989d8af6745c05dc2569eab72079f56497e7f1e6d30",
+    "builderResultsSha256": "b4bbd3d97ef7d00fc0c8c0e5fb627bbd179726cc7cf8d1dc5877929bce7a098a"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r02-m3-03",
+    "prompt": "Assume heavy rainfall washes wild and domestic animal wastes from the land into a surface water supply. What happens to the prevalence of Cryptosporidium oocysts in the raw water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-1",
+    "explanation": "Heavy rains increase land runoff of animal wastes, raising Cryptosporidium oocyst prevalence in surface water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:29.411990+00:00",
+    "notes": "Strict Hydrogen self-review of 34 wpi-class4-water items against supplied source pages and collision candidates: 33 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:08:07.900Z",
+    "payloadSha256": "18d33fbd57566450ff420879b6a35e97511550a1e3b389ff7be4c4ac965fcac6",
+    "builderResultsSha256": "b4bbd3d97ef7d00fc0c8c0e5fb627bbd179726cc7cf8d1dc5877929bce7a098a"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r02-m3-04",
+    "prompt": "Assume freshly excreted Cyclospora oocysts are held in a moist, warm environment for several weeks to sporulate. What happens to the infectivity of the oocysts?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-1",
+    "explanation": "Cyclospora oocysts are non-infectious when excreted and become infectious after sporulating over days to weeks."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:29.411990+00:00",
+    "notes": "Strict Hydrogen self-review of 34 wpi-class4-water items against supplied source pages and collision candidates: 33 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:08:07.900Z",
+    "payloadSha256": "b00f982ac4d7cd570c3ce4e48938e342b17fd55ddb09403cbf35a174353bed1f",
+    "builderResultsSha256": "b4bbd3d97ef7d00fc0c8c0e5fb627bbd179726cc7cf8d1dc5877929bce7a098a"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r02-m3-05",
+    "prompt": "Assume biological nitrification converts ammonia nitrogen into nitrate in an aerated wastewater treatment basin. What happens to the ammonia nitrogen concentration in the water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-2",
+    "explanation": "Nitrification biologically oxidizes ammonia nitrogen into nitrates, reducing the ammonia concentration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:29.411990+00:00",
+    "notes": "Strict Hydrogen self-review of 34 wpi-class4-water items against supplied source pages and collision candidates: 33 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:08:07.900Z",
+    "payloadSha256": "126ee6e4eb55dab7eb684153fabdd44150e5f1b5ea1eaf9878b6775a368f1524",
+    "builderResultsSha256": "b4bbd3d97ef7d00fc0c8c0e5fb627bbd179726cc7cf8d1dc5877929bce7a098a"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r02-m3-06",
+    "prompt": "Assume biological denitrification converts nitrate into nitrogen gas that escapes to the atmosphere. What happens to the total nitrogen concentration remaining in the water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-2",
+    "explanation": "Denitrification converts dissolved nitrate into nitrogen gas that vents to the atmosphere, lowering water nitrogen."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:29.411990+00:00",
+    "notes": "Strict Hydrogen self-review of 34 wpi-class4-water items against supplied source pages and collision candidates: 33 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:08:07.900Z",
+    "payloadSha256": "92d71f57acc96e7960a2b0aefea81fa9d7735442a37cb5655582689367307114",
+    "builderResultsSha256": "b4bbd3d97ef7d00fc0c8c0e5fb627bbd179726cc7cf8d1dc5877929bce7a098a"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r02-m3-08",
+    "prompt": "Assume fossil fuel combustion releases large amounts of stored carbon into the atmosphere while green-belt removal capacity declines. What happens to the atmospheric carbon dioxide concentration?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-1",
+    "explanation": "Burning fossil fuels adds carbon dioxide faster than declining green belts can remove it, raising atmospheric levels."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:29.411990+00:00",
+    "notes": "Strict Hydrogen self-review of 34 wpi-class4-water items against supplied source pages and collision candidates: 33 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:08:07.900Z",
+    "payloadSha256": "8df035f63c40d54cdf2d1d24a98624118991fa7dfe6df6177a17d20dd32a8a62",
+    "builderResultsSha256": "b4bbd3d97ef7d00fc0c8c0e5fb627bbd179726cc7cf8d1dc5877929bce7a098a"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r02-m3-09",
+    "prompt": "Assume a wastewater operator adjusts temperature, pH, and dissolved oxygen to match the optimum growth range of treatment microorganisms. What happens to the rate of organic waste decomposition?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-1",
+    "explanation": "Controlling the environment for optimum microbial growth speeds up the decomposition of wastes."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:29.411990+00:00",
+    "notes": "Strict Hydrogen self-review of 34 wpi-class4-water items against supplied source pages and collision candidates: 33 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:08:07.900Z",
+    "payloadSha256": "0ebafb75780957066434e4515824b77ccddbf97934c37f6edec61e54d0251270",
+    "builderResultsSha256": "b4bbd3d97ef7d00fc0c8c0e5fb627bbd179726cc7cf8d1dc5877929bce7a098a"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r02-m3-10",
+    "prompt": "Assume a protected groundwater well is pumped without any change in aquifer recharge or wellhead protection, and no surface water enters. What happens to the number of unit treatment processes required for safe drinking water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-3",
+    "explanation": "With unchanged source protection and no surface-water influence, the required treatment train remains unchanged."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:29.411990+00:00",
+    "notes": "Strict Hydrogen self-review of 34 wpi-class4-water items against supplied source pages and collision candidates: 33 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:08:07.900Z",
+    "payloadSha256": "53e95b55eb4289653b829fc31388aa713ee6a623061950fc1c87adf3076429ba",
+    "builderResultsSha256": "b4bbd3d97ef7d00fc0c8c0e5fb627bbd179726cc7cf8d1dc5877929bce7a098a"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r02-m4-01",
+    "prompt": "An operator reviews Giardia lamblia biology and waterborne transmission. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Stomach acid and digestive enzymes liberate the active trophozoite after a cyst is swallowed."
+     },
+     {
+      "id": "opt-2",
+      "label": "Giardia cysts are killed instantaneously when contaminated water is brought to a boil."
+     },
+     {
+      "id": "opt-3",
+      "label": "Routine municipal chlorine doses consistently eliminate Giardia cysts in cold surface water."
+     }
+    ],
+    "correctOptionId": "opt-3",
+    "explanation": "Routine municipal chlorine doses are not consistently effective against Giardia cysts, especially in cold water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:29.411990+00:00",
+    "notes": "Strict Hydrogen self-review of 34 wpi-class4-water items against supplied source pages and collision candidates: 33 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:08:07.900Z",
+    "payloadSha256": "37ee9f345ada2d7cf852696f5f0549494dcf952439fe3c9de6f39722863c836e",
+    "builderResultsSha256": "b4bbd3d97ef7d00fc0c8c0e5fb627bbd179726cc7cf8d1dc5877929bce7a098a"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r02-m4-02",
+    "prompt": "A biologist reviews Cryptosporidium parvum host patterns and detection. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Heavy rains washing animal wastes into streams increase oocyst prevalence in surface water."
+     },
+     {
+      "id": "opt-2",
+      "label": "Standard coliform bacteria tests reliably predict when Cryptosporidium oocysts are present."
+     },
+     {
+      "id": "opt-3",
+      "label": "Humans can be seriously infected by Cryptosporidium parvum at various ages."
+     }
+    ],
+    "correctOptionId": "opt-2",
+    "explanation": "No routine water quality indicators, including coliform tests, reliably predict Cryptosporidium occurrence."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:29.411990+00:00",
+    "notes": "Strict Hydrogen self-review of 34 wpi-class4-water items against supplied source pages and collision candidates: 33 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:08:07.900Z",
+    "payloadSha256": "562d35faed80471f51071c8347c8372417d615a5888340a14245878ecd64f723",
+    "builderResultsSha256": "b4bbd3d97ef7d00fc0c8c0e5fb627bbd179726cc7cf8d1dc5877929bce7a098a"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r02-m4-03",
+    "prompt": "A specialist reviews Cyclospora transmission and biology. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Freshly excreted Cyclospora oocysts require days to weeks to sporulate before becoming infectious."
+     },
+     {
+      "id": "opt-2",
+      "label": "Direct person-to-person transmission of Cyclospora is unlikely because oocysts need maturation time."
+     },
+     {
+      "id": "opt-3",
+      "label": "Cyclospora organisms are routinely grown in standard laboratory tissue cultures for rapid testing."
+     }
+    ],
+    "correctOptionId": "opt-3",
+    "explanation": "Cyclospora organisms have not been successfully grown in tissue cultures or laboratory animal models."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:29.411990+00:00",
+    "notes": "Strict Hydrogen self-review of 34 wpi-class4-water items against supplied source pages and collision candidates: 33 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:08:07.900Z",
+    "payloadSha256": "c299bb08a764571fac456a4680bcad9d15c131368dff2053456657b42be6db97",
+    "builderResultsSha256": "b4bbd3d97ef7d00fc0c8c0e5fb627bbd179726cc7cf8d1dc5877929bce7a098a"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r02-m4-04",
+    "prompt": "An operator reviews nitrogen transformations in wastewater and natural waters. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Urea in wastewater transforms into ammonia nitrogen, which exerts oxygen and chlorine demand."
+     },
+     {
+      "id": "opt-2",
+      "label": "Nitrification is an anaerobic process that converts nitrate directly into nitrogen gas."
+     },
+     {
+      "id": "opt-3",
+      "label": "Symbiotic bacteria in pea root swellings convert atmospheric nitrogen gas into usable nitrates."
+     }
+    ],
+    "correctOptionId": "opt-2",
+    "explanation": "Nitrification uses oxygen to convert ammonia to nitrate; denitrification converts nitrate into nitrogen gas."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:29.411990+00:00",
+    "notes": "Strict Hydrogen self-review of 34 wpi-class4-water items against supplied source pages and collision candidates: 33 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:08:07.900Z",
+    "payloadSha256": "29242c2c2a86b85562e052de10dee516eafd4ab62bfbf9ce939b6490b3aa9b2d",
+    "builderResultsSha256": "b4bbd3d97ef7d00fc0c8c0e5fb627bbd179726cc7cf8d1dc5877929bce7a098a"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r02-m4-05",
+    "prompt": "A chemist reviews the phosphorus and sulfur cycles in aquatic systems. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Eroding sedimentary rock deposits serve as a primary natural source of phosphorus."
+     },
+     {
+      "id": "opt-2",
+      "label": "Heterotrophic anaerobic bacteria can liberate sulfur from proteins as hydrogen sulfide."
+     },
+     {
+      "id": "opt-3",
+      "label": "Phosphorus enters aquatic ecosystems primarily by dissolving directly from atmospheric phosphorus gas."
+     }
+    ],
+    "correctOptionId": "opt-3",
+    "explanation": "Phosphorus originates from eroding sedimentary rock rather than an atmospheric gas phase."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:29.411990+00:00",
+    "notes": "Strict Hydrogen self-review of 34 wpi-class4-water items against supplied source pages and collision candidates: 33 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:08:07.900Z",
+    "payloadSha256": "50a3313be7f2ad4c73a8d7e7534c05d547d1e0422787231d4d653c3740d10434",
+    "builderResultsSha256": "b4bbd3d97ef7d00fc0c8c0e5fb627bbd179726cc7cf8d1dc5877929bce7a098a"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r02-m4-06",
+    "prompt": "A microbiologist reviews anaerobic digestion and bacterial growth phases. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Anaerobic bacteria convert volatile acids and nutrients into methane and stable solids."
+     },
+     {
+      "id": "opt-2",
+      "label": "During endogenous respiration, bacteria multiply at their fastest possible log growth rate."
+     },
+     {
+      "id": "opt-3",
+      "label": "Biological wastewater treatment speeds up waste decomposition by controlling the microbial environment."
+     }
+    ],
+    "correctOptionId": "opt-2",
+    "explanation": "Endogenous respiration occurs after log growth and declining growth, when microbes consume their own cellular mass."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:29.411990+00:00",
+    "notes": "Strict Hydrogen self-review of 34 wpi-class4-water items against supplied source pages and collision candidates: 33 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:08:07.900Z",
+    "payloadSha256": "54fda0444434fd2f7cf087e6929f1b88336eddfb5cd7d1939a18ec56f3b65bbe",
+    "builderResultsSha256": "b4bbd3d97ef7d00fc0c8c0e5fb627bbd179726cc7cf8d1dc5877929bce7a098a"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r02-m4-07",
+    "prompt": "A water quality analyst reviews non-municipal sources of Giardia infection. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Daycare centers with diapered children frequently experience person-to-person Giardia transmission."
+     },
+     {
+      "id": "opt-2",
+      "label": "Beavers are the primary biological inventors that introduce Giardia into pristine watersheds."
+     },
+     {
+      "id": "opt-3",
+      "label": "Hikers drinking untreated stream water face elevated risk of contracting giardiasis."
+     }
+    ],
+    "correctOptionId": "opt-2",
+    "explanation": "Beavers are usually victims of Giardia rather than the original source, which is often human sewage."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:29.411990+00:00",
+    "notes": "Strict Hydrogen self-review of 34 wpi-class4-water items against supplied source pages and collision candidates: 33 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:08:07.900Z",
+    "payloadSha256": "5276ea6c672e0886effbe9ae438f8ee5d9b7ea12ba3f264a5cda428d6b162a34",
+    "builderResultsSha256": "b4bbd3d97ef7d00fc0c8c0e5fb627bbd179726cc7cf8d1dc5877929bce7a098a"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r02-m4-08",
+    "prompt": "An operator reviews carbon cycling and atmospheric balance. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Cellular respiration in living organisms returns carbon dioxide to the atmosphere."
+     },
+     {
+      "id": "opt-2",
+      "label": "Burning fossil fuels releases stored carbon that combines with oxygen to form carbon dioxide."
+     },
+     {
+      "id": "opt-3",
+      "label": "Atmospheric carbon dioxide allows Earth's heat to radiate freely out into space."
+     }
+    ],
+    "correctOptionId": "opt-3",
+    "explanation": "Atmospheric carbon dioxide acts as a heat screen that prevents Earth's heat from radiating freely into space."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:29.411990+00:00",
+    "notes": "Strict Hydrogen self-review of 34 wpi-class4-water items against supplied source pages and collision candidates: 33 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:08:07.900Z",
+    "payloadSha256": "6b1750b78d197b098c3c45c4c0754dcedefa801cea445aee76ad6806a00044a9",
+    "builderResultsSha256": "b4bbd3d97ef7d00fc0c8c0e5fb627bbd179726cc7cf8d1dc5877929bce7a098a"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T03:07:29.411990+00:00",
+   "attestation": "Strict Hydrogen self-review of 34 wpi-class4-water items against supplied source pages and collision candidates: 33 accepted, 1 rejected.",
+   "payloadSha256": {
+    "targeth-ht261118-wpi-class4-water-r02-m0-01": "bad480d845d7aa828382ae15fdca1407b3858fb2d349a70e201be219e2ba92cc",
+    "targeth-ht261118-wpi-class4-water-r02-m0-02": "613e673da7312fe8386b1453aa1aa3ec3fcac1e1656483b3e91dd045c3a60991",
+    "targeth-ht261118-wpi-class4-water-r02-m0-03": "b04f9f169d50218f71d9cf86649402cd175d9cfe5f3556a806924037a71811c7",
+    "targeth-ht261118-wpi-class4-water-r02-m0-04": "0f1f96cb5b25e2cd41cdb5d5455d762e7ef14c15036e09ac5d088012d2f625b2",
+    "targeth-ht261118-wpi-class4-water-r02-m0-05": "db7c77d5fea02704f35afb6c17fdd7b6d0e3c8dae4933bdce8c4ae1c298d67d0",
+    "targeth-ht261118-wpi-class4-water-r02-m0-06": "379997f7b5090b5e9a54c2cd075d63ca0f7997ecc856fa6c6a2450fc6f1e63fd",
+    "targeth-ht261118-wpi-class4-water-r02-m1-01": "f25b6ba1a31c2e5a1412d138c7365c4de609077df89ad75ae4e5174666e921b8",
+    "targeth-ht261118-wpi-class4-water-r02-m1-02": "66e9772955e753089cb17ee6313a42401bedb831b4a92c989e3a8221c25597f8",
+    "targeth-ht261118-wpi-class4-water-r02-m1-03": "0229d203a107d78d73c978e388e0d1d9a8e19b2ef06ce6b50a69203c47f4fe97",
+    "targeth-ht261118-wpi-class4-water-r02-m1-04": "94d173b20403655c680088f6f3a0f9b51d2d6557af3e47ce7449a6dc60191cf6",
+    "targeth-ht261118-wpi-class4-water-r02-m1-05": "fd946e1cbf78a34c93c8ec643fa67ed8e478596b1e01a84faa5f0303c333725f",
+    "targeth-ht261118-wpi-class4-water-r02-m1-06": "2337d84a8723e27a510cf969f7b6ff291e450987af3ec748e01879b47d18a51b",
+    "targeth-ht261118-wpi-class4-water-r02-m1-07": "a4f08dc13f9f4228d608727002bda9fc3056cb0bcd80eef6af9057d704c82208",
+    "targeth-ht261118-wpi-class4-water-r02-m1-08": "ba6f3cf2eb7cdf9752fff2043540d9fed4a4e6063440ef8d6de697bbf81a3e56",
+    "targeth-ht261118-wpi-class4-water-r02-m1-09": "658eaf3756be3dda045383bde63c2d4fbd8381a2a188c0250efa266ba7fe4ba8",
+    "targeth-ht261118-wpi-class4-water-r02-m1-10": "f4fa97dba6a202d74b6db2a429705921465ca53267fedf378ee0df056e4b4d18",
+    "targeth-ht261118-wpi-class4-water-r02-m3-01": "7634f857200f97c5be92697fab7e7d2535f331a96af98c4e7ad44e2a781dc36d",
+    "targeth-ht261118-wpi-class4-water-r02-m3-02": "2718b95ae67d7686f90b2989d8af6745c05dc2569eab72079f56497e7f1e6d30",
+    "targeth-ht261118-wpi-class4-water-r02-m3-03": "18d33fbd57566450ff420879b6a35e97511550a1e3b389ff7be4c4ac965fcac6",
+    "targeth-ht261118-wpi-class4-water-r02-m3-04": "b00f982ac4d7cd570c3ce4e48938e342b17fd55ddb09403cbf35a174353bed1f",
+    "targeth-ht261118-wpi-class4-water-r02-m3-05": "126ee6e4eb55dab7eb684153fabdd44150e5f1b5ea1eaf9878b6775a368f1524",
+    "targeth-ht261118-wpi-class4-water-r02-m3-06": "92d71f57acc96e7960a2b0aefea81fa9d7735442a37cb5655582689367307114",
+    "targeth-ht261118-wpi-class4-water-r02-m3-08": "8df035f63c40d54cdf2d1d24a98624118991fa7dfe6df6177a17d20dd32a8a62",
+    "targeth-ht261118-wpi-class4-water-r02-m3-09": "0ebafb75780957066434e4515824b77ccddbf97934c37f6edec61e54d0251270",
+    "targeth-ht261118-wpi-class4-water-r02-m3-10": "53e95b55eb4289653b829fc31388aa713ee6a623061950fc1c87adf3076429ba",
+    "targeth-ht261118-wpi-class4-water-r02-m4-01": "37ee9f345ada2d7cf852696f5f0549494dcf952439fe3c9de6f39722863c836e",
+    "targeth-ht261118-wpi-class4-water-r02-m4-02": "562d35faed80471f51071c8347c8372417d615a5888340a14245878ecd64f723",
+    "targeth-ht261118-wpi-class4-water-r02-m4-03": "c299bb08a764571fac456a4680bcad9d15c131368dff2053456657b42be6db97",
+    "targeth-ht261118-wpi-class4-water-r02-m4-04": "29242c2c2a86b85562e052de10dee516eafd4ab62bfbf9ce939b6490b3aa9b2d",
+    "targeth-ht261118-wpi-class4-water-r02-m4-05": "50a3313be7f2ad4c73a8d7e7534c05d547d1e0422787231d4d653c3740d10434",
+    "targeth-ht261118-wpi-class4-water-r02-m4-06": "54fda0444434fd2f7cf087e6929f1b88336eddfb5cd7d1939a18ec56f3b65bbe",
+    "targeth-ht261118-wpi-class4-water-r02-m4-07": "5276ea6c672e0886effbe9ae438f8ee5d9b7ea12ba3f264a5cda428d6b162a34",
+    "targeth-ht261118-wpi-class4-water-r02-m4-08": "6b1750b78d197b098c3c45c4c0754dcedefa801cea445aee76ad6806a00044a9"
+   }
+  },
+  "registeredAt": "2026-11-19T03:08:07.900Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 3,
+     "f": 3
+    },
+    "dirs": {
+     "increase": 5,
+     "decrease": 3,
+     "unchanged": 1
+    },
+    "longest": 3,
+    "options": 17
+   },
+   "batchSha256": "c4eecf9fd322da94e288490285338844614dc3d923be5b385b384a9d2b5d4012"
+  }
+ }
+}

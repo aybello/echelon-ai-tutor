@@ -1,0 +1,2378 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-wpi-class3-water-coll-r04",
+ "scope": "Owner-authorized AI-reviewed game activities: 68 items.",
+ "additions": [
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m0-01",
+    "prompt": "Eccentric or segmental orifice plates are used in wastewater applications because dirt buildup impairs concentric orifice plates.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Solids accumulate at concentric orifice plates in dirty water, so eccentric or segmental plates are used instead."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "c9007e31b4af59dc6410fd53f9807933b6f1a197597595b0fb7526e0ec98bce9",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m0-02",
+    "prompt": "For the same line size and flow rate, a flow nozzle produces a higher total pressure loss than an orifice plate.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "For the same line size and flow rate, a flow nozzle has lower differential and total pressure loss than an orifice."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "ab063e70a11e80de70a2412124d9bbef94d342f2c8910207a1a3f2cd1a072ebb",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m0-03",
+    "prompt": "A Venturi flowmeter has a relatively small head loss, ranging from 3 to 10 percent of the differential pressure.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Venturi meters recover pressure well, keeping head loss between 3 and 10 percent of the differential."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "1d5ad484285b3e11e7652154115ae631412d67789233ac6344a1bbe6e2a0abe5",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m0-04",
+    "prompt": "Increasing suspended particle concentration in a pipe improves the accuracy of a time-of-flight ultrasonic flowmeter.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "More suspended particles scatter the ultrasonic beam, reducing penetration and increasing measurement error."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "6e2ccc548925da226b91685724cf480c176d162c6668e333842b55f6563dce49",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m0-05",
+    "prompt": "Velocity meters are well suited for measuring intermediate flow rates on clean water.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Velocity meters apply to clean fluids and are particularly suited for intermediate clean-water flow rates."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "4bb0281c50512f72309973ad7cd398284b2b8d2f70b479379560bd42bb794c69",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m0-06",
+    "prompt": "In a single-suction centrifugal pump, the thrust bearing is the bearing located closest to the impeller.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "The thrust bearing is located nearest the motor, farthest from the impeller; the radial bearing is closest to the pump."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "eeaaf3a4913119c0c627a11fdd1fa28ecd0aded1b5e9af7397b415c71a580233",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m0-07",
+    "prompt": "A mechanical seal uses a spring to hold a stationary element and a rotating element together.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "A mechanical seal consists of a stationary element, a rotating element, and a spring holding them together."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "261162bfaf1b4443e3c23d9613cc55c9721c9b50e10fc09fec0ecf37890c5d6a",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m0-08",
+    "prompt": "A packing gland is a flexible ring of material placed around the shaft to seal the casing opening.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Packing is the sealing material around the shaft; the packing gland is the metal assembly that compresses it."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "9ed81621b7158aa03d665f60963ef2f639d57324781da04e8284a820300bddb8",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m0-09",
+    "prompt": "Centrifugal pumps require less installation space than other pump types for most pumping capacities.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Compact rotary design gives centrifugal pumps much smaller space requirements than other pump types."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "0b5fd93f8ddf2eba343833551f2a3d999c8b98b4f522a2be7e1241b05470e337",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m0-10",
+    "prompt": "A centrifugal pump can draw water up to its impeller even when the pump casing is empty of water.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "A standard centrifugal pump needs its casing and impeller filled with water to draw liquid."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "998c641c1842ae254c461fcd25f12ebf1e51574582d6833b24deea6519e07e1d",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m0-11",
+    "prompt": "A centrifugal pump running in reverse can sound and appear as though it is operating normally.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Reverse rotation in a centrifugal pump can look and sound normal, making it hard to detect."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "6e9848646675fba06f57af83c8392c3d259f87c555f0e4e0e620118631557914",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m0-12",
+    "prompt": "Adjusting the impeller speed of a centrifugal pump is simple without speed-changing gears or special drive units.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Centrifugal pump speed is difficult to adjust without speed-reducing or speed-increasing gears or special drives."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "b68a96c01531a9c898b7feb3657ac0faaf4df69b5aba8618e51cf202abec66c0",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m0-13",
+    "prompt": "Differential pressure flowmeters measure flow by developing a pressure difference across a pipe restriction.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Differential pressure meters relate the pressure drop across a restriction to the volumetric flow rate."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "a1171b7d7d8de315dc6db1c96335088885b112540e4b3aeae63bcb2fa1284904",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m0-14",
+    "prompt": "Velocity meters are restricted to metal piping because plastic versions are unavailable.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Velocity meters are available in a wide variety of materials, including plastic."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "c7195f00d2bca5b1081e59e05274445b7280ea1a450ea7259b40522c856fa26d",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m0-15",
+    "prompt": "Underground wet-well/dry-well pump stations use non-clog pumps to add head so gravity can move wastewater onward.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Underground stations collect sewage in a wet well and pump it up so gravity carries it to the next point."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "d88d0892ce18fc274eddd9b411b18f0e61617d04725b0154ec2b4108a1680151",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m1-01",
+    "prompt": "Distinguish differential pressure flowmeter types by their hydraulic characteristics.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Concentric orifice",
+      "right": "Impaired by dirt buildup in wastewater"
+     },
+     {
+      "id": "p2",
+      "left": "Eccentric orifice",
+      "right": "Off-center bore suited for dirty water"
+     },
+     {
+      "id": "p3",
+      "left": "Segmental orifice",
+      "right": "Partial-circle opening for solids-bearing flow"
+     },
+     {
+      "id": "p4",
+      "left": "Venturi meter",
+      "right": "Low head loss of 3 to 10 percent of differential"
+     },
+     {
+      "id": "p5",
+      "left": "Flow nozzle",
+      "right": "Smooth entry and sharp exit, rigid in steam service"
+     },
+     {
+      "id": "p6",
+      "left": "Pipe restriction",
+      "right": "Develops pressure difference related to flow rate"
+     }
+    ],
+    "explanation": "Each differential pressure meter geometry balances solids handling, head loss, and rigidity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "8859401fe937f03f4ee00fcdc68bbd9ae08448f86a18611663e17a0330f28a5a",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m1-02",
+    "prompt": "Distinguish centrifugal pump bearings and shaft components by their mechanical roles.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Base plate",
+      "right": "Foundation frame supporting pump and drive unit"
+     },
+     {
+      "id": "p2",
+      "left": "Radial bearing",
+      "right": "Bearing closest to pump taking up-and-down stresses"
+     },
+     {
+      "id": "p3",
+      "left": "Thrust bearing",
+      "right": "Bearing near motor taking axial shaft thrust"
+     },
+     {
+      "id": "p4",
+      "left": "Pump shaft",
+      "right": "Rigid steel rod transmitting motor energy to impeller"
+     },
+     {
+      "id": "p5",
+      "left": "Stuffing box",
+      "right": "Rear casing assembly holding packing and lantern ring"
+     },
+     {
+      "id": "p6",
+      "left": "Lantern ring",
+      "right": "Seal cage feeding lubricant onto rotating shaft"
+     }
+    ],
+    "explanation": "Pump bearings, shaft, and stuffing box components each support alignment, power transfer, or sealing."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "7a4e02cad334e4c9ebb38167ef9ca71708eccd219ce5372959815f56ddc4a545",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m1-03",
+    "prompt": "Distinguish centrifugal pump sealing parts by their specific functions.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Packing",
+      "right": "Material around shaft preventing air leakage into casing"
+     },
+     {
+      "id": "p2",
+      "left": "Packing gland",
+      "right": "Metal assembly applying even pressure to packing"
+     },
+     {
+      "id": "p3",
+      "left": "Mechanical seal",
+      "right": "Stationary and rotating elements held by a spring"
+     },
+     {
+      "id": "p4",
+      "left": "Seal spring",
+      "right": "Supplies force to hold mechanical seal faces together"
+     },
+     {
+      "id": "p5",
+      "left": "Shaft seals",
+      "right": "Devices stopping air leakage around the shaft"
+     },
+     {
+      "id": "p6",
+      "left": "Seal lubricant",
+      "right": "Water, oil, or grease reducing packing-shaft friction"
+     }
+    ],
+    "explanation": "Sealing assemblies prevent air entry while controlling friction along the rotating pump shaft."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "7dc705959cce4cfe655825543d08ee9b7da213dbaa62c14203b8fc328e007393",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m1-04",
+    "prompt": "Distinguish NPSHA equation terms for open-reservoir suction lift by what each represents.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Pa",
+      "right": "Absolute atmospheric pressure on water surface"
+     },
+     {
+      "id": "p2",
+      "left": "h",
+      "right": "Liquid column height from surface to suction nozzle"
+     },
+     {
+      "id": "p3",
+      "left": "Pv",
+      "right": "Absolute vapor pressure of water at its temperature"
+     },
+     {
+      "id": "p4",
+      "left": "he",
+      "right": "Suction entrance head loss in feet absolute"
+     },
+     {
+      "id": "p5",
+      "left": "hf",
+      "right": "Suction line friction head loss in feet absolute"
+     },
+     {
+      "id": "p6",
+      "left": "Open reservoir",
+      "right": "Suction source exposed to atmospheric gas pressure"
+     }
+    ],
+    "explanation": "NPSHA balances atmospheric pressure against static lift, vapor pressure, entrance loss, and friction loss."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "747c2066d023350932782c0bda42edfb27f342bec335be3da5ff8ab04bb8cc2d",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m1-05",
+    "prompt": "Match each centrifugal pump design feature or operating condition to its effect.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Single rotating element",
+      "right": "Allows simple casing in varied corrosion-resistant materials"
+     },
+     {
+      "id": "p2",
+      "left": "Abrasion-resistant coating",
+      "right": "Protects internal parts when pumping gritty fluids"
+     },
+     {
+      "id": "p3",
+      "left": "Rotary motion",
+      "right": "Reduces maintenance via fewer moving parts"
+     },
+     {
+      "id": "p4",
+      "left": "Small space requirement",
+      "right": "Needs less installation area than other pump types"
+     },
+     {
+      "id": "p5",
+      "left": "Empty casing",
+      "right": "Stops pumping because impeller cannot draw water dry"
+     },
+     {
+      "id": "p6",
+      "left": "Closed-valve startup",
+      "right": "Normal start condition before gradually opening discharge"
+     }
+    ],
+    "explanation": "Centrifugal pumps offer compact, simple construction but require priming and proper startup valving."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "89f119f417e7bc79e3eaeae57dc74476fc5198a609d35cb680724b80dc12ea87",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m1-06",
+    "prompt": "Distinguish lift-station pump configurations by how they handle wastewater.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Submersible wet-pit pump",
+      "right": "Pump and motor submerged directly in the wet well"
+     },
+     {
+      "id": "p2",
+      "left": "Extended-shaft wet-pit pump",
+      "right": "Submerged pump driven by motor above water level"
+     },
+     {
+      "id": "p3",
+      "left": "Wet-well/dry-well station",
+      "right": "Underground facility with separate wet and dry chambers"
+     },
+     {
+      "id": "p4",
+      "left": "Non-clog pump",
+      "right": "Passes raw wastewater solids in lift stations"
+     },
+     {
+      "id": "p5",
+      "left": "Added discharge head",
+      "right": "Lifts flow so gravity carries it to next station"
+     },
+     {
+      "id": "p6",
+      "left": "Recycle pump",
+      "right": "Transfers cleaner process liquids without heavy solids"
+     }
+    ],
+    "explanation": "Station layout and pump type depend on submergence, solids content, and required discharge head."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "24a7671b5577ab4d83d2aff14aafb92ae05685843524fc3e4de6701daaeff0b4",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m1-07",
+    "prompt": "Distinguish flowmeter selection factors by the fluid and hydraulic conditions they evaluate.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Fluid phase",
+      "right": "Whether liquid or gas flow is being measured"
+     },
+     {
+      "id": "p2",
+      "left": "Conduit type",
+      "right": "Whether flow occurs in a pipe or open channel"
+     },
+     {
+      "id": "p3",
+      "left": "Flow magnitude",
+      "right": "Overall size and range of flow variation"
+     },
+     {
+      "id": "p4",
+      "left": "Solids or air content",
+      "right": "Whether liquid is clean or carries particles and bubbles"
+     },
+     {
+      "id": "p5",
+      "left": "Allowable head loss",
+      "right": "Maximum pressure drop tolerated across the meter"
+     },
+     {
+      "id": "p6",
+      "left": "Corrosiveness",
+      "right": "Chemical aggressiveness of the flowing fluid"
+     }
+    ],
+    "explanation": "Selecting a flowmeter requires matching device design to fluid phase, conduit, solids, and head loss."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "e43ecca08ae8affe537509ca25d536dfce15f757cc7b20b31451a9d92eb0c200",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m1-08",
+    "prompt": "Distinguish time-of-flight ultrasonic flowmeter beam states by particle concentration effects.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Full penetration",
+      "right": "Clean beam path across pipe with minimal scattering"
+     },
+     {
+      "id": "p2",
+      "left": "Partial penetration",
+      "right": "Moderate particles attenuate part of acoustic signal"
+     },
+     {
+      "id": "p3",
+      "left": "Poor penetration",
+      "right": "Dense particles block beam across the flow stream"
+     },
+     {
+      "id": "p4",
+      "left": "High particle concentration",
+      "right": "Causes greater ultrasonic flow measurement error"
+     },
+     {
+      "id": "p5",
+      "left": "Transceiver",
+      "right": "Sends and receives acoustic pulses across the pipe"
+     },
+     {
+      "id": "p6",
+      "left": "Time-of-flight principle",
+      "right": "Measures acoustic travel time across flowing fluid"
+     }
+    ],
+    "explanation": "Time-of-flight ultrasonic meters lose accuracy as suspended particles scatter the acoustic beam."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "f13169320e2705f157792d3b8de8eacb7923e1e3674596c88736f7f601a1d7fd",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m1-09",
+    "prompt": "Distinguish flow measurement methods by their accuracy and suitability.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Q = A x V field estimate",
+      "right": "Preliminary ballpark check, unsuited for routine use"
+     },
+     {
+      "id": "p2",
+      "left": "Venturi 10:1 range",
+      "right": "Achieves plus or minus 1 percent accuracy"
+     },
+     {
+      "id": "p3",
+      "left": "Flow nozzle in steam",
+      "right": "Rigidly holds dimensions at high temperatures"
+     },
+     {
+      "id": "p4",
+      "left": "Velocity meter",
+      "right": "Well suited for intermediate clean-water flow rates"
+     },
+     {
+      "id": "p5",
+      "left": "Periodic calibration",
+      "right": "Maintains optimum accuracy of transmitting instruments"
+     },
+     {
+      "id": "p6",
+      "left": "Process flow control",
+      "right": "Matches treatment rate to system demand"
+     }
+    ],
+    "explanation": "Different flow measurement approaches serve preliminary estimates, clean water, or high-accuracy metering."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "655c2ead0e6a3f1a6917821ec16340e7568a3be6621aa2babf8d0260466787cb",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m1-10",
+    "prompt": "Distinguish centrifugal pump energy and speed-control concepts by their physical effects.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Volute velocity drop",
+      "right": "Converts excess kinetic energy into pressure head"
+     },
+     {
+      "id": "p2",
+      "left": "Pressure head",
+      "right": "Supplies energy to move water through discharge piping"
+     },
+     {
+      "id": "p3",
+      "left": "Brake horsepower",
+      "right": "Power supplied to pump for optimal performance"
+     },
+     {
+      "id": "p4",
+      "left": "Reverse rotation",
+      "right": "Sounds normal while pumping backward"
+     },
+     {
+      "id": "p5",
+      "left": "Speed-reducing gear",
+      "right": "Additional equipment needed to adjust impeller speed"
+     },
+     {
+      "id": "p6",
+      "left": "Discharge valve throttling",
+      "right": "Primary output adjustment besides changing impeller speed"
+     }
+    ],
+    "explanation": "Volute conversion, horsepower input, and speed or valve adjustments govern centrifugal pump delivery."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "bd33ab039e5e5da9dfa204338d551da156c4ad53dd19f98c16ba47fb839bec7e",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m3-01",
+    "prompt": "A wastewater line switches from a concentric orifice plate to an eccentric orifice plate to reduce dirt buildup at the plate. What happens to the impairment caused by solids accumulation?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "Eccentric orifice plates allow solids to pass more easily than concentric plates, reducing dirt-buildup impairment."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "afcb19d30fe9c295ebcd71683db65b0c7aabec4c282590125c22a664ed11edc7",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m3-02",
+    "prompt": "A Venturi flowmeter replaces an orifice plate for the same line size and flow rate. What happens to the permanent head loss across the meter?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "A Venturi meter has a relatively small head loss of 3 to 10 percent of differential, lower than an orifice."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "507cce6e4746c2ac8261c42b0fb0a68750a4954b1e5c9093aeffa583cd70f507",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m3-03",
+    "prompt": "Suspended particle concentration decreases in a pipe monitored by a time-of-flight ultrasonic flowmeter while alignment stays constant. What happens to the acoustic beam penetration?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt1",
+    "explanation": "Fewer suspended particles scatter less acoustic energy, so ultrasonic beam penetration across the pipe increases."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "d4def03cc904f0da0043e0be5175f6394a6f590d05e141a02f79e4ec32e389f4",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m3-04",
+    "prompt": "Suspended particle concentration decreases in a pipe monitored by a time-of-flight ultrasonic flowmeter while alignment stays constant. What happens to the flow measurement error?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "More particles cause greater error in time-of-flight ultrasonic meters, so fewer particles reduce measurement error."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "3c785f47b2a6e8be218fcfbfdaea32b23ddc4048d5e66ae8866e0911aa7d402e",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m3-05",
+    "prompt": "In an open-reservoir suction lift system, the water level rises closer to the pump suction nozzle while atmospheric pressure, temperature, and suction losses stay constant. What happens to the net positive suction head available?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt1",
+    "explanation": "A higher water surface reduces the vertical suction lift height h, leaving more net positive suction head available."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "8a1b05497768d7a2065ae71be0a137e3c223c6ac9ec031eb8107bc117746b915",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m3-06",
+    "prompt": "In an open-reservoir suction lift system, the water temperature drops, lowering the vapor pressure of water while atmospheric pressure, static lift, and suction losses stay constant. What happens to the net positive suction head available?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt1",
+    "explanation": "Lower vapor pressure Pv subtracts less from atmospheric pressure, increasing net positive suction head available."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "c48d255fd533734f103c5c98a6ba35e7a6bea6e8d74a179772a0af904617e11f",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m3-07",
+    "prompt": "A packing gland is loosened slightly on a centrifugal pump stuffing box while shaft speed stays constant. What happens to the compression applied to the packing?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "The packing gland applies pressure to compress the packing, so loosening it reduces packing compression."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "c50fd74366b949ffefba0b6e045963778ba6c64960871056b3537c8e5663e294",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m3-08",
+    "prompt": "A centrifugal pump's internal parts are coated with an abrasion-resistant material before pumping gritty wastewater. What happens to the rate of abrasive wear on those parts?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "Protective abrasion-resistant coatings shield exposed internal pump parts and reduce wear from abrasive fluids."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "c3b618a77f7ae00bf0aacb27e114b0ec1e62aca7743f0ae73ddc5154cf4fcee9",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m3-09",
+    "prompt": "A centrifugal pump is started with its discharge valve closed, and the valve remains closed. What happens to the discharge flow rate?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "With the discharge valve kept closed, no water leaves through the discharge line, so flow stays at zero."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "24ab3cf542167bcf731bf037e4499fcfa02f9034b745d1c109c1514c6608dc26",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m3-10",
+    "prompt": "A centrifugal pump's impeller speed is reduced using a speed-reducing gear unit while system head conditions remain constant. What happens to the pump's discharge capacity?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "Pump speed is directly related to discharge capacity, so reducing impeller speed decreases discharge."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "ec80d75cc5b62b68873ec257f108f8bbb84d9261f370e3e1c85495e9942b334b",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m3-11",
+    "prompt": "Volumetric flow rate increases through a pipe of constant cross-sectional area. What happens to the average fluid velocity?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt1",
+    "explanation": "From Q = A x v, when cross-sectional area A is fixed, a higher flow rate Q means higher velocity v."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "fcf7a796ce3c1575c3482d02cc342609c4526a0a016969fa5772f3e03df61707",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m3-12",
+    "prompt": "A flow nozzle is installed in high-temperature steam service instead of a thin orifice plate. What happens to the dimensional stability of the metering element?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt1",
+    "explanation": "Flow nozzles have greater rigidity, making them dimensionally more stable at high temperatures and velocities."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "0584f322a1631fa9478e31658a2a0e5f999dd8b3b68c01f7f07601a19af0317c",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m3-13",
+    "prompt": "A lantern ring is removed from a packed stuffing box without changing gland compression, stopping lubricant feed to the shaft. What happens to friction between the packing and the rotating shaft?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt1",
+    "explanation": "The lantern ring introduces lubricant onto the shaft to reduce friction, so removing it increases friction."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "85d05bf8e0417eebba48822ffba67ceec8fece221226f76421492091cfb9f5fd",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m3-14",
+    "prompt": "An underground wet-well/dry-well lift station adds head to incoming wastewater so it discharges into a higher collector manhole. What happens to the gravity flow potential downstream of the manhole?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt1",
+    "explanation": "Pumping wastewater upward adds sufficient head for gravity to move the flow onward to the plant or next station."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "02169bd1956150765ce51ebd2729f0112639a18ffdbcc4c190337788b9091c3f",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m3-15",
+    "prompt": "A differential pressure flowmeter and its transmitting instruments are periodically calibrated according to standards. What happens to the measurement accuracy of the meter?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt1",
+    "explanation": "Proper installation and periodic calibration of the meter and transmitters maintain optimum measurement accuracy."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "da7a3acb7c4c62fbced174d079274149a8a0cc0164d943671eb4761d6be25727",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m4-01",
+    "prompt": "An operator reviews differential pressure flowmeter principles. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Differential pressure flowmeters measure flow by developing a pressure difference across a restriction."
+     },
+     {
+      "id": "opt2",
+      "label": "Differential pressure flowmeters measure flow by keeping fluid velocity constant across a restriction."
+     },
+     {
+      "id": "opt3",
+      "label": "Meter instrumentation translates the measured differential pressure into a volumetric flow rate."
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "Differential pressure results from a change in flow velocities across the restriction, not constant velocity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "4c8b08d397c09db2139cab7ad2966a194d4ba5cdc666ab496654155ed5e4befa",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m4-02",
+    "prompt": "A technician compares orifice plates and flow nozzles. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Eccentric or segmental orifice plates handle dirty water better than concentric orifice plates."
+     },
+     {
+      "id": "opt2",
+      "label": "A flow nozzle creates higher total pressure loss than an orifice at equal flow."
+     },
+     {
+      "id": "opt3",
+      "label": "Flow nozzles are rigid and dimensionally stable at high steam temperatures and velocities."
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "For the same line size and flow rate, a flow nozzle has lower total pressure loss than an orifice."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "74d151ea1bb506497078ad2b3b3b194e4bb940739728b778b878e3c85f05d6b2",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m4-03",
+    "prompt": "An engineer reviews Venturi flowmeter performance. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "A Venturi flowmeter achieves roughly plus or minus one percent accuracy over a ten-to-one range."
+     },
+     {
+      "id": "opt2",
+      "label": "A Venturi flowmeter produces a large permanent head loss exceeding half of the differential."
+     },
+     {
+      "id": "opt3",
+      "label": "Venturi head loss depends on the beta ratio of throat diameter to inlet diameter."
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "Venturi head loss is relatively small, ranging from 3 to 10 percent of the differential pressure."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "b59e99219c243bcdef966855bf7e466a4b21b1a39aaa6e3bd9e1a4a8cdcc6fd3",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m4-04",
+    "prompt": "A crew checks time-of-flight ultrasonic flowmeter behavior. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Clean liquid allows full ultrasonic beam penetration between transceivers across the pipe."
+     },
+     {
+      "id": "opt2",
+      "label": "Higher particle concentrations improve beam penetration and cut error."
+     },
+     {
+      "id": "opt3",
+      "label": "Heavy particle concentrations can cause poor penetration and larger flow errors."
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "More suspended particles scatter the ultrasonic beam, reducing penetration and increasing error."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "e97936ff55b805a11700c3c1ae3cef4fe621d8c79e9548f98909f66cab7bb2d0",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m4-05",
+    "prompt": "An operator reviews velocity meter applications. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Velocity meters are applicable to clean fluids across many pipe materials."
+     },
+     {
+      "id": "opt2",
+      "label": "Velocity meters are designed for heavy sludge and high-solids flow."
+     },
+     {
+      "id": "opt3",
+      "label": "Velocity meters are well suited for intermediate flow rates on clean water."
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "Velocity meters are applicable to clean fluids and clean water, not heavy sludge."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "7a0aa8e03b719427034c91c55a3e89f130a1decb460b9f0cf9c6cc40078e01a9",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m4-06",
+    "prompt": "A technician reviews NPSHA for suction lift from an open reservoir. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Atmospheric pressure against the reservoir surface contributes positively to available suction head."
+     },
+     {
+      "id": "opt2",
+      "label": "Higher water vapor pressure at warmer temperatures increases net positive suction head available."
+     },
+     {
+      "id": "opt3",
+      "label": "Entrance losses and suction pipe friction losses reduce net positive suction head available."
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "Vapor pressure Pv is subtracted in NPSHA, so higher vapor pressure decreases NPSHA."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "0ad7259cc4df20369517a20f54827d12bb3be63eb82133cfde032d18f8c56970",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m4-07",
+    "prompt": "A mechanic reviews centrifugal pump bearings. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Bearings reduce friction and allow the pump shaft to rotate easily."
+     },
+     {
+      "id": "opt2",
+      "label": "In a single-suction pump, the radial bearing sits farthest from the impeller."
+     },
+     {
+      "id": "opt3",
+      "label": "The thrust bearing takes up major axial shaft thrust opposite the discharge direction."
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "In a single-suction pump, the radial bearing is closest to the pump, while the thrust bearing is near the motor."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "6c1ebee386f6140a78d63eb70496f32a107e62380a426448dcf3927f84341538",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m4-08",
+    "prompt": "An operator checks centrifugal pump stuffing box parts. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "The stuffing box is located around the shaft at the rear of the casing."
+     },
+     {
+      "id": "opt2",
+      "label": "The packing gland is a soft braided material wrapped around the shaft."
+     },
+     {
+      "id": "opt3",
+      "label": "A lantern ring sits between packing rings to introduce lubricant onto the shaft."
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "Packing is the sealing material; the packing gland is the metal assembly that compresses the packing."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "c4eb77ae0cbe700c72867c038c2d24a5d0daaa409b29fb811635996109ce7694",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m4-09",
+    "prompt": "A crew reviews mechanical seals and pump shafts. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "A mechanical seal uses a spring to hold stationary and rotating elements together."
+     },
+     {
+      "id": "opt2",
+      "label": "A mechanical seal uses two rotating elements without a spring."
+     },
+     {
+      "id": "opt3",
+      "label": "The pump shaft is a rigid steel rod transmitting energy from motor to impeller."
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "A mechanical seal has one stationary element, one rotating element, and a spring holding them together."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "be9bdfb6408269fd7aff70c3ba5f5b4a71b42f366dda3500c1b46acb3b45b27a",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m4-10",
+    "prompt": "An operator reviews centrifugal pump priming. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "A standard centrifugal pump is normally started with its discharge valve closed."
+     },
+     {
+      "id": "opt2",
+      "label": "A standard centrifugal pump can draw water up to the impeller with an empty casing."
+     },
+     {
+      "id": "opt3",
+      "label": "If water drains from the casing, a non-self-priming centrifugal pump stops pumping."
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "A centrifugal pump cannot draw water to the impeller unless the casing and impeller are filled with water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "d22f1f1ee56057d14366b3c6f085d5ff5391e8bf971bb959daa9e2cd08c4fded",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m4-11",
+    "prompt": "A technician reviews centrifugal pump advantages. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Centrifugal pumps use rotary motion, reducing maintenance compared with reciprocating pumps."
+     },
+     {
+      "id": "opt2",
+      "label": "Centrifugal pumps require more installation space and more moving parts than reciprocating pumps."
+     },
+     {
+      "id": "opt3",
+      "label": "Exposed centrifugal pump parts can be built from corrosion-resistant or abrasion-resistant materials."
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "Centrifugal pumps require much less installation space and fewer moving parts than reciprocating pumps."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "94ea3e70bf2c06ed0cfac16edca802e026babf82cf0fc8a08beada6081687bec",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m4-12",
+    "prompt": "An operator checks centrifugal pump rotation and speed control. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Adjusting centrifugal pump speed requires speed-changing gears or special drive units."
+     },
+     {
+      "id": "opt2",
+      "label": "A pump running backward makes a loud grinding noise that reveals it."
+     },
+     {
+      "id": "opt3",
+      "label": "Discharge valve throttling or impeller speed adjustment can change centrifugal pump output."
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "A centrifugal pump running in reverse appears and sounds like it is operating normally."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "76bc7c2610c35763878a7db3550ed60a05246a67e821b866c32e7d02b2bc42bc",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m4-13",
+    "prompt": "A supervisor reviews underground lift station designs. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Underground wet-well/dry-well stations collect wastewater in a separate wet well."
+     },
+     {
+      "id": "opt2",
+      "label": "Wet-well/dry-well stations rely on gravity alone without adding head."
+     },
+     {
+      "id": "opt3",
+      "label": "Non-clog pumps in underground stations lift wastewater to a collector line or manhole."
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "Underground stations use pumps to add sufficient head so gravity can move wastewater onward."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "0a76a30463c738a2ab8ea50b1bbfebdf9aa8d8ae160420a5ebcfe9f355a7a80b",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m5-01",
+    "prompt": "In a differential pressure flowmeter, does fluid pass through the pipe restriction before or after the meter instrumentation translates the differential pressure into volumetric flow?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The restriction first creates a velocity change and differential pressure, which the instrumentation then converts to flow."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "1f2081332657279aecbe3476e4762400d193a2b506d9a4cd387c05671236378f",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m5-02",
+    "prompt": "When selecting a flowmeter using Kawamura's criteria, is determining whether the fluid is liquid or gas done before or after choosing a specific meter model?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Evaluating fluid phase, conduit type, and flow conditions comes before selecting the flow measurement device."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "99af693f2ac80faa1e882231c809b09c4d5960dda2e4ccde014b261b3743e7b1",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m5-03",
+    "prompt": "In maintaining optimum accuracy of a differential pressure flowmeter, is periodic instrument calibration performed before or after the meter is installed in the pipeline?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "After proper installation, periodic calibration of the transmitting instruments maintains optimum accuracy."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "f9651ff25b826e02f807d76cfb21bf97524fe5a6ce064a5547186f50b6aa87c4",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m5-04",
+    "prompt": "In a time-of-flight ultrasonic flowmeter, does the acoustic pulse travel across the fluid stream before or after the transceiver receives the signal to compute flow?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The acoustic pulse must cross the fluid stream before the receiving transceiver detects it."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "74b6e013943889bc60ad9f5ec4536067ffa731c30598fcb2ae77627636cf933f",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m5-05",
+    "prompt": "In a motor-driven centrifugal pump, does the impeller receive mechanical energy before or after the rigid steel shaft transmits it from the motor?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "The rigid steel shaft transmits mechanical energy from the motor to the impeller."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "aabd3684371d537e04b38c612667fa29ab6929d6bce42a0b94b7eba2c416430d",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m5-06",
+    "prompt": "In a centrifugal pump volute, does pressure head drive water into the discharge piping before or after excess kinetic energy converts to pressure head?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "As velocity drops in the volute, excess kinetic energy converts to pressure head that moves water into discharge piping."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "eb577a2d509887ad8f5690c0b83f1cf255bce72cbe7ffc5069caac01b5606b9e",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m5-07",
+    "prompt": "In starting a non-self-priming centrifugal pump, is the discharge valve gradually opened before or after the pump is started with the valve closed?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "A centrifugal pump is normally started with the discharge valve closed, and the valve is gradually opened afterward."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "18f2c4a9dd059c36de923a5b0c8f1d94a1110f7d3e2367be4ebb5b273bdca49f",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m5-08",
+    "prompt": "In constructing a centrifugal pump for abrasive service, is the protective abrasion-resistant coating applied to internal parts before or after the pump is placed into abrasive fluid service?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Internal parts are coated with protective material during construction before pumping abrasive fluids."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "50a87e741c83120c34b40c79348260343be1d6843888ca6020e18aea9151a42d",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m5-09",
+    "prompt": "In an underground wet-well/dry-well lift station, does wastewater enter the separate wet well before or after non-clog pumps discharge it upward to a collector manhole?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Wastewater collects in the separate wet well before non-clog pumps lift it to a collector manhole."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "23d4d26515171184218429d9f200b7eecff503f5ed560d36105fe0dd8171459c",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m5-10",
+    "prompt": "In an underground wet-well/dry-well lift station, does gravity move wastewater onward to the plant before or after the non-clog pump adds head?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "The pump adds sufficient head first so gravity can move the wastewater to the plant or next station."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "ce5e62239185b392c04c8555353fd734a9e8af4552922bfa7988026643a050fb",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m5-11",
+    "prompt": "In preliminary open-channel fieldwork using Q = A x V, is measuring the channel flow depth done before or after computing the cross-sectional flow area?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Flow depth is measured first so cross-sectional area can be computed from known channel dimensions."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "db32d9f1f861f84cc652c070c9884db70e6d3923b13490b779c0c06a50b7d24f",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m5-12",
+    "prompt": "In assembling a packed stuffing box, is packing material placed around the pump shaft before or after the packing gland compresses it?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Packing is placed around the shaft inside the stuffing box before the gland applies even compression."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "1a6b9c0fabcc31ff9c88474859e41d67c30fe774fb59f7bd335d0861b0da3a66",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m5-13",
+    "prompt": "In assembling a mechanical seal, is the spring positioned to press the stationary and rotating elements together before or after the seal operates to stop air leakage?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The spring must hold the stationary and rotating elements together so the seal can prevent air leakage."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "7bfab869b83908126cad1d9f3b5deb3e176b0f0bd318da7e351d5d8d9502fd60",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m5-14",
+    "prompt": "In an orifice-plate differential pressure meter, does wastewater encounter the upstream face of the plate before or after passing through the orifice bore?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Flow approaches the upstream face of the plate before passing through the orifice bore."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "1721df75ff0c7e098817212bd8f3ea64ae040db507a816d75d0348c220c8026c",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r04-m5-15",
+    "prompt": "In adjusting a centrifugal pump's output using a speed-reducing gear unit, is the gear unit engaged to change impeller speed before or after the discharge capacity changes?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Pump speed is directly related to discharge capacity, so changing impeller speed alters the discharge."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+    "notes": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:42:11.425Z",
+    "payloadSha256": "9ebe81bc37f1f0f39eafeb8d4800c6d91a579aea077cfce895b110bfa666e27b",
+    "builderResultsSha256": "01f325d1b1dbeba14038a81590c307565d5f022a88d285e15ff7e4b9d060da9f"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T03:40:53.193433+00:00",
+   "attestation": "Strict final AI self-review of 68 native game payloads in targeth-wpi-class3-water-coll-r04 against provided source pages and closest collision candidates; 68 accepted, 0 rejected.",
+   "payloadSha256": {
+    "targeth-ht261118-wpi-class3-water-coll-r04-m0-01": "c9007e31b4af59dc6410fd53f9807933b6f1a197597595b0fb7526e0ec98bce9",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m0-02": "ab063e70a11e80de70a2412124d9bbef94d342f2c8910207a1a3f2cd1a072ebb",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m0-03": "1d5ad484285b3e11e7652154115ae631412d67789233ac6344a1bbe6e2a0abe5",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m0-04": "6e2ccc548925da226b91685724cf480c176d162c6668e333842b55f6563dce49",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m0-05": "4bb0281c50512f72309973ad7cd398284b2b8d2f70b479379560bd42bb794c69",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m0-06": "eeaaf3a4913119c0c627a11fdd1fa28ecd0aded1b5e9af7397b415c71a580233",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m0-07": "261162bfaf1b4443e3c23d9613cc55c9721c9b50e10fc09fec0ecf37890c5d6a",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m0-08": "9ed81621b7158aa03d665f60963ef2f639d57324781da04e8284a820300bddb8",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m0-09": "0b5fd93f8ddf2eba343833551f2a3d999c8b98b4f522a2be7e1241b05470e337",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m0-10": "998c641c1842ae254c461fcd25f12ebf1e51574582d6833b24deea6519e07e1d",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m0-11": "6e9848646675fba06f57af83c8392c3d259f87c555f0e4e0e620118631557914",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m0-12": "b68a96c01531a9c898b7feb3657ac0faaf4df69b5aba8618e51cf202abec66c0",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m0-13": "a1171b7d7d8de315dc6db1c96335088885b112540e4b3aeae63bcb2fa1284904",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m0-14": "c7195f00d2bca5b1081e59e05274445b7280ea1a450ea7259b40522c856fa26d",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m0-15": "d88d0892ce18fc274eddd9b411b18f0e61617d04725b0154ec2b4108a1680151",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m1-01": "8859401fe937f03f4ee00fcdc68bbd9ae08448f86a18611663e17a0330f28a5a",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m1-02": "7a4e02cad334e4c9ebb38167ef9ca71708eccd219ce5372959815f56ddc4a545",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m1-03": "7dc705959cce4cfe655825543d08ee9b7da213dbaa62c14203b8fc328e007393",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m1-04": "747c2066d023350932782c0bda42edfb27f342bec335be3da5ff8ab04bb8cc2d",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m1-05": "89f119f417e7bc79e3eaeae57dc74476fc5198a609d35cb680724b80dc12ea87",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m1-06": "24a7671b5577ab4d83d2aff14aafb92ae05685843524fc3e4de6701daaeff0b4",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m1-07": "e43ecca08ae8affe537509ca25d536dfce15f757cc7b20b31451a9d92eb0c200",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m1-08": "f13169320e2705f157792d3b8de8eacb7923e1e3674596c88736f7f601a1d7fd",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m1-09": "655c2ead0e6a3f1a6917821ec16340e7568a3be6621aa2babf8d0260466787cb",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m1-10": "bd33ab039e5e5da9dfa204338d551da156c4ad53dd19f98c16ba47fb839bec7e",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m3-01": "afcb19d30fe9c295ebcd71683db65b0c7aabec4c282590125c22a664ed11edc7",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m3-02": "507cce6e4746c2ac8261c42b0fb0a68750a4954b1e5c9093aeffa583cd70f507",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m3-03": "d4def03cc904f0da0043e0be5175f6394a6f590d05e141a02f79e4ec32e389f4",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m3-04": "3c785f47b2a6e8be218fcfbfdaea32b23ddc4048d5e66ae8866e0911aa7d402e",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m3-05": "8a1b05497768d7a2065ae71be0a137e3c223c6ac9ec031eb8107bc117746b915",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m3-06": "c48d255fd533734f103c5c98a6ba35e7a6bea6e8d74a179772a0af904617e11f",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m3-07": "c50fd74366b949ffefba0b6e045963778ba6c64960871056b3537c8e5663e294",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m3-08": "c3b618a77f7ae00bf0aacb27e114b0ec1e62aca7743f0ae73ddc5154cf4fcee9",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m3-09": "24ab3cf542167bcf731bf037e4499fcfa02f9034b745d1c109c1514c6608dc26",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m3-10": "ec80d75cc5b62b68873ec257f108f8bbb84d9261f370e3e1c85495e9942b334b",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m3-11": "fcf7a796ce3c1575c3482d02cc342609c4526a0a016969fa5772f3e03df61707",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m3-12": "0584f322a1631fa9478e31658a2a0e5f999dd8b3b68c01f7f07601a19af0317c",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m3-13": "85d05bf8e0417eebba48822ffba67ceec8fece221226f76421492091cfb9f5fd",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m3-14": "02169bd1956150765ce51ebd2729f0112639a18ffdbcc4c190337788b9091c3f",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m3-15": "da7a3acb7c4c62fbced174d079274149a8a0cc0164d943671eb4761d6be25727",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m4-01": "4c8b08d397c09db2139cab7ad2966a194d4ba5cdc666ab496654155ed5e4befa",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m4-02": "74d151ea1bb506497078ad2b3b3b194e4bb940739728b778b878e3c85f05d6b2",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m4-03": "b59e99219c243bcdef966855bf7e466a4b21b1a39aaa6e3bd9e1a4a8cdcc6fd3",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m4-04": "e97936ff55b805a11700c3c1ae3cef4fe621d8c79e9548f98909f66cab7bb2d0",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m4-05": "7a0aa8e03b719427034c91c55a3e89f130a1decb460b9f0cf9c6cc40078e01a9",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m4-06": "0ad7259cc4df20369517a20f54827d12bb3be63eb82133cfde032d18f8c56970",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m4-07": "6c1ebee386f6140a78d63eb70496f32a107e62380a426448dcf3927f84341538",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m4-08": "c4eb77ae0cbe700c72867c038c2d24a5d0daaa409b29fb811635996109ce7694",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m4-09": "be9bdfb6408269fd7aff70c3ba5f5b4a71b42f366dda3500c1b46acb3b45b27a",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m4-10": "d22f1f1ee56057d14366b3c6f085d5ff5391e8bf971bb959daa9e2cd08c4fded",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m4-11": "94ea3e70bf2c06ed0cfac16edca802e026babf82cf0fc8a08beada6081687bec",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m4-12": "76bc7c2610c35763878a7db3550ed60a05246a67e821b866c32e7d02b2bc42bc",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m4-13": "0a76a30463c738a2ab8ea50b1bbfebdf9aa8d8ae160420a5ebcfe9f355a7a80b",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m5-01": "1f2081332657279aecbe3476e4762400d193a2b506d9a4cd387c05671236378f",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m5-02": "99af693f2ac80faa1e882231c809b09c4d5960dda2e4ccde014b261b3743e7b1",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m5-03": "f9651ff25b826e02f807d76cfb21bf97524fe5a6ce064a5547186f50b6aa87c4",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m5-04": "74b6e013943889bc60ad9f5ec4536067ffa731c30598fcb2ae77627636cf933f",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m5-05": "aabd3684371d537e04b38c612667fa29ab6929d6bce42a0b94b7eba2c416430d",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m5-06": "eb577a2d509887ad8f5690c0b83f1cf255bce72cbe7ffc5069caac01b5606b9e",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m5-07": "18f2c4a9dd059c36de923a5b0c8f1d94a1110f7d3e2367be4ebb5b273bdca49f",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m5-08": "50a87e741c83120c34b40c79348260343be1d6843888ca6020e18aea9151a42d",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m5-09": "23d4d26515171184218429d9f200b7eecff503f5ed560d36105fe0dd8171459c",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m5-10": "ce5e62239185b392c04c8555353fd734a9e8af4552922bfa7988026643a050fb",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m5-11": "db32d9f1f861f84cc652c070c9884db70e6d3923b13490b779c0c06a50b7d24f",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m5-12": "1a6b9c0fabcc31ff9c88474859e41d67c30fe774fb59f7bd335d0861b0da3a66",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m5-13": "7bfab869b83908126cad1d9f3b5deb3e176b0f0bd318da7e351d5d8d9502fd60",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m5-14": "1721df75ff0c7e098817212bd8f3ea64ae040db507a816d75d0348c220c8026c",
+    "targeth-ht261118-wpi-class3-water-coll-r04-m5-15": "9ebe81bc37f1f0f39eafeb8d4800c6d91a579aea077cfce895b110bfa666e27b"
+   }
+  },
+  "registeredAt": "2026-11-19T03:42:11.425Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 8,
+     "f": 7
+    },
+    "dirs": {
+     "increase": 8,
+     "decrease": 6,
+     "unchanged": 1
+    },
+    "longest": 2,
+    "options": 28
+   },
+   "batchSha256": "8951b55a32463b2b112f4618aa16c15dc7c44d863e9165621ae4c51993039d07"
+  }
+ }
+}

@@ -1,0 +1,539 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-wpi-class4-water-coll-r04",
+ "scope": "Owner-authorized AI-reviewed game activities: 9 items.",
+ "additions": [
+  {
+   "courseKey": "wpi-class4-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-coll-r04-m1-01",
+    "prompt": "Match each pipe sizing or wall-thickness standard to its dimensional rule.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "ASME B36.10M",
+      "right": "Dimensional standard for welded and seamless wrought steel pipe"
+     },
+     {
+      "id": "p2",
+      "left": "ASME B36.19M",
+      "right": "Dimensional standard for stainless steel pipe"
+     },
+     {
+      "id": "p3",
+      "left": "Schedule number",
+      "right": "Modern designation system allowing varied pipe wall thicknesses"
+     },
+     {
+      "id": "p4",
+      "left": "STD, XS, and XXS",
+      "right": "Original fixed wall-thickness classes allowing no variation"
+     },
+     {
+      "id": "p5",
+      "left": "12-inch nominal pipe",
+      "right": "Has an actual outside diameter larger than 12 inches"
+     },
+     {
+      "id": "p6",
+      "left": "14-inch or larger pipe",
+      "right": "Has an actual outside diameter equal to its nominal size"
+     }
+    ],
+    "explanation": "Pipe standards define outside diameter tolerances for fittings, while schedule numbers specify wall thickness and resulting inside diameter."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:45:03.826432+00:00",
+    "notes": "Strict Hydrogen self-review of 10 speed-match items in targeth-wpi-class4-water-coll-r04 against supplied source pages and closest collision candidates; 9 accepted, 1 rejected for same-mode duplication.",
+    "registeredAt": "2026-11-19T03:45:27.332Z",
+    "payloadSha256": "4f727c31c9f8e3a25eed411fb3a678bb99747b36fa66770be19f2e8ecb8e739c",
+    "builderResultsSha256": "a7f83e4a890e6915d3f80bfdcf4a616756626d224a646e9d2046f1bee644d8d5"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-coll-r04-m1-02",
+    "prompt": "Match each plant piping classification or rating basis to its functional distinction.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Process lines",
+      "right": "Convey wastewater or sludge through unit operations like digestion"
+     },
+     {
+      "id": "p2",
+      "left": "Service lines",
+      "right": "Carry water, steam, compressed air, or gas for general plant use"
+     },
+     {
+      "id": "p3",
+      "left": "ASTM ratings",
+      "right": "Standards used to determine minimum pipe size and wall thickness"
+     },
+     {
+      "id": "p4",
+      "left": "Manufacturers' ratings",
+      "right": "Proprietary pressure-temperature limits for specific fittings or joints"
+     },
+     {
+      "id": "p5",
+      "left": "Sludge digestion",
+      "right": "Unit process converting bulky raw sludge into inert, dewaterable material"
+     },
+     {
+      "id": "p6",
+      "left": "Compressed air line",
+      "right": "Utility service line driving pneumatic tools and equipment"
+     }
+    ],
+    "explanation": "Plant piping is divided into process lines for treatment operations and service lines for utilities, governed by ASTM or manufacturer ratings."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:45:03.826432+00:00",
+    "notes": "Strict Hydrogen self-review of 10 speed-match items in targeth-wpi-class4-water-coll-r04 against supplied source pages and closest collision candidates; 9 accepted, 1 rejected for same-mode duplication.",
+    "registeredAt": "2026-11-19T03:45:27.332Z",
+    "payloadSha256": "0b1e574542a0a5a7acba0be3ec03618124187b0e9c1a20004859edb9bfd1eed0",
+    "builderResultsSha256": "a7f83e4a890e6915d3f80bfdcf4a616756626d224a646e9d2046f1bee644d8d5"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-coll-r04-m1-03",
+    "prompt": "Match each metallurgical property or heat-treatment concept to its piping significance.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Metallurgy",
+      "right": "Science of extracting, combining, treating, and processing metals"
+     },
+     {
+      "id": "p2",
+      "left": "Ductility",
+      "right": "Ability of a metal to be fashioned into a new form without breaking"
+     },
+     {
+      "id": "p3",
+      "left": "Annealing",
+      "right": "Gradual cooling after heating to make steel softer and less brittle"
+     },
+     {
+      "id": "p4",
+      "left": "Nonferrous metal",
+      "right": "Metallic material such as brass that contains no iron"
+     },
+     {
+      "id": "p5",
+      "left": "Schedule suffix S",
+      "right": "Letter added after a schedule number to identify stainless steel"
+     },
+     {
+      "id": "p6",
+      "left": "Thermal expansion",
+      "right": "Temperature-driven dimensional change affecting metallic piping"
+     }
+    ],
+    "explanation": "Understanding metal composition, ductility, and heat treatments such as annealing helps operators maintain reliable metallic conveyance systems."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:45:03.826432+00:00",
+    "notes": "Strict Hydrogen self-review of 10 speed-match items in targeth-wpi-class4-water-coll-r04 against supplied source pages and closest collision candidates; 9 accepted, 1 rejected for same-mode duplication.",
+    "registeredAt": "2026-11-19T03:45:27.332Z",
+    "payloadSha256": "4c1ed8b2468dd8d38e851358e99c1071b446d88751142efd67eb84be8d1a5361",
+    "builderResultsSha256": "a7f83e4a890e6915d3f80bfdcf4a616756626d224a646e9d2046f1bee644d8d5"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-coll-r04-m1-04",
+    "prompt": "Match each iron pipe characteristic or thermal-control device to its mechanical role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Gray cast iron",
+      "right": "Strong, heavy pipe susceptible to electrolysis in acid or alkali soils"
+     },
+     {
+      "id": "p2",
+      "left": "Ductile iron",
+      "right": "Pipe with spheroidal graphite, higher flexural strength, and lighter weight"
+     },
+     {
+      "id": "p3",
+      "left": "Anchors and guides",
+      "right": "Hardware used to control thermal expansion along rigid pipe runs"
+     },
+     {
+      "id": "p4",
+      "left": "Expansion joints and loops",
+      "right": "Flexible fittings absorbing movement where expansion cannot be restrained"
+     },
+     {
+      "id": "p5",
+      "left": "Electrolysis corrosion",
+      "right": "Metal degradation when cast iron contacts wet acidic or alkaline soil"
+     },
+     {
+      "id": "p6",
+      "left": "Spheroidal graphite",
+      "right": "Nodular carbon structure giving ductile iron greater carrying capacity"
+     }
+    ],
+    "explanation": "Ductile iron improves on cast iron through nodular graphite, while anchors, guides, and expansion joints prevent thermal overstressing."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:45:03.826432+00:00",
+    "notes": "Strict Hydrogen self-review of 10 speed-match items in targeth-wpi-class4-water-coll-r04 against supplied source pages and closest collision candidates; 9 accepted, 1 rejected for same-mode duplication.",
+    "registeredAt": "2026-11-19T03:45:27.332Z",
+    "payloadSha256": "a7e0feebab376b9691dadd7e7ff672f35a84120964e71609770ff46c75b44f02",
+    "builderResultsSha256": "a7f83e4a890e6915d3f80bfdcf4a616756626d224a646e9d2046f1bee644d8d5"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-coll-r04-m1-05",
+    "prompt": "Match each nitrogen-cycle or wastewater nitrogen transformation to its biological role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Nitrogen fixation",
+      "right": "Conversion of atmospheric nitrogen gas into usable nitrates by bacteria"
+     },
+     {
+      "id": "p2",
+      "left": "Symbiotic root bacteria",
+      "right": "Microorganisms in pea roots that supply nitrates to the host plant"
+     },
+     {
+      "id": "p3",
+      "left": "Urea",
+      "right": "Primary form of nitrogen entering wastewater treatment systems"
+     },
+     {
+      "id": "p4",
+      "left": "Nitrification",
+      "right": "Aerobic biological process converting ammonia into nitrates"
+     },
+     {
+      "id": "p5",
+      "left": "Denitrification",
+      "right": "Biological process converting nitrate into nitrogen gas lost to air"
+     },
+     {
+      "id": "p6",
+      "left": "Ammonia nitrogen",
+      "right": "Compound in effluent that exerts both BOD and chlorine demand"
+     }
+    ],
+    "explanation": "Wastewater treatment uses nitrification and denitrification to remove ammonia nitrogen, which otherwise exerts oxygen and chlorine demand."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:45:03.826432+00:00",
+    "notes": "Strict Hydrogen self-review of 10 speed-match items in targeth-wpi-class4-water-coll-r04 against supplied source pages and closest collision candidates; 9 accepted, 1 rejected for same-mode duplication.",
+    "registeredAt": "2026-11-19T03:45:27.332Z",
+    "payloadSha256": "53bb86940495b3951ca0cd4277a469e80caddd3529d0eec288e85a5cca318fe2",
+    "builderResultsSha256": "a7f83e4a890e6915d3f80bfdcf4a616756626d224a646e9d2046f1bee644d8d5"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-coll-r04-m1-06",
+    "prompt": "Match each carbon-cycle component to its role in atmospheric heat balance.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Cellular respiration",
+      "right": "Biological process returning carbon dioxide from living organisms to air"
+     },
+     {
+      "id": "p2",
+      "left": "Fossil fuels",
+      "right": "Buried plant and animal carbon transformed into coal, oil, and gas"
+     },
+     {
+      "id": "p3",
+      "left": "Atmospheric CO2",
+      "right": "Gas acting as a heat screen that limits Earth's heat radiation to space"
+     },
+     {
+      "id": "p4",
+      "left": "Green-belt capacity",
+      "right": "Vegetative carbon removal system offsetting atmospheric CO2 increases"
+     },
+     {
+      "id": "p5",
+      "left": "Combustion",
+      "right": "Oxidation of stored fossil carbon with oxygen to form carbon dioxide"
+     },
+     {
+      "id": "p6",
+      "left": "Global warming",
+      "right": "Climatic shift driven by massive increases in atmospheric carbon dioxide"
+     }
+    ],
+    "explanation": "Respiration and fossil fuel combustion release carbon dioxide, which screens outgoing heat and alters climate balance when green-belt removal declines."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:45:03.826432+00:00",
+    "notes": "Strict Hydrogen self-review of 10 speed-match items in targeth-wpi-class4-water-coll-r04 against supplied source pages and closest collision candidates; 9 accepted, 1 rejected for same-mode duplication.",
+    "registeredAt": "2026-11-19T03:45:27.332Z",
+    "payloadSha256": "721449d8567e79b08c1de40b9a8a34f4e3341a0180d0b3a6c92ee4ad9d6a7d9d",
+    "builderResultsSha256": "a7f83e4a890e6915d3f80bfdcf4a616756626d224a646e9d2046f1bee644d8d5"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-coll-r04-m1-07",
+    "prompt": "Match each phosphorus or sulfur-cycle element to its environmental pathway.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Sedimentary rock",
+      "right": "Primary geological reservoir gradually eroding to supply phosphorus"
+     },
+     {
+      "id": "p2",
+      "left": "Guano deposits",
+      "right": "Bird excreta returning marine phosphorus to land ecosystems"
+     },
+     {
+      "id": "p3",
+      "left": "Deep ocean sediments",
+      "right": "Sink where a large amount of eroded phosphorus accumulates"
+     },
+     {
+      "id": "p4",
+      "left": "Heterotrophic anaerobes",
+      "right": "Bacteria that liberate sulfur from plant proteins as hydrogen sulfide"
+     },
+     {
+      "id": "p5",
+      "left": "Hydrogen sulfide",
+      "right": "Gas released during anaerobic breakdown of sulfur-bearing proteins"
+     },
+     {
+      "id": "p6",
+      "left": "Surface algae blanket",
+      "right": "Profuse summer growth triggered by excess nutrients, light, and warmth"
+     }
+    ],
+    "explanation": "Phosphorus cycles through rock erosion, biological waste, and sediments, while anaerobic bacteria release hydrogen sulfide from sulfur-bearing proteins."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:45:03.826432+00:00",
+    "notes": "Strict Hydrogen self-review of 10 speed-match items in targeth-wpi-class4-water-coll-r04 against supplied source pages and closest collision candidates; 9 accepted, 1 rejected for same-mode duplication.",
+    "registeredAt": "2026-11-19T03:45:27.332Z",
+    "payloadSha256": "58d25c13284e7e67cd6c73480304226ae9432fd30e9151d812bc42c09662f3f9",
+    "builderResultsSha256": "a7f83e4a890e6915d3f80bfdcf4a616756626d224a646e9d2046f1bee644d8d5"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-coll-r04-m1-08",
+    "prompt": "Match each anaerobic digestion component or microbial growth phase to its characteristic.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Volatile acids",
+      "right": "Organic intermediates broken down by anaerobic bacteria"
+     },
+     {
+      "id": "p2",
+      "left": "Methane",
+      "right": "Gaseous end product generated during anaerobic waste stabilization"
+     },
+     {
+      "id": "p3",
+      "left": "Settleable solids",
+      "right": "Separated solid fraction produced alongside stable solids in digestion"
+     },
+     {
+      "id": "p4",
+      "left": "Log growth phase",
+      "right": "Period of rapid microbial multiplication when food is abundant"
+     },
+     {
+      "id": "p5",
+      "left": "Declining growth phase",
+      "right": "Period when microbial reproduction slows as nutrients become limiting"
+     },
+     {
+      "id": "p6",
+      "left": "Endogenous respiration",
+      "right": "Phase where microorganisms consume internal reserves as food runs out"
+     }
+    ],
+    "explanation": "Anaerobic bacteria convert volatile acids and nutrients into stable solids and methane while progressing through distinct microbial growth phases."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:45:03.826432+00:00",
+    "notes": "Strict Hydrogen self-review of 10 speed-match items in targeth-wpi-class4-water-coll-r04 against supplied source pages and closest collision candidates; 9 accepted, 1 rejected for same-mode duplication.",
+    "registeredAt": "2026-11-19T03:45:27.332Z",
+    "payloadSha256": "be8012b2cbc7d3a903067910ed4cb96054c35c57bcc504f69fe853ad85dc73e0",
+    "builderResultsSha256": "a7f83e4a890e6915d3f80bfdcf4a616756626d224a646e9d2046f1bee644d8d5"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-coll-r04-m1-09",
+    "prompt": "Match each Cyclospora transmission stage or biological treatment concept to its role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Unsporulated oocyst",
+      "right": "Non-infectious stage excreted in feces by an infected person"
+     },
+     {
+      "id": "p2",
+      "left": "Sporulation",
+      "right": "Environmental maturation taking days to weeks to make oocysts infectious"
+     },
+     {
+      "id": "p3",
+      "left": "Indirect transmission",
+      "right": "Infection via water or produce contaminated after oocysts mature"
+     },
+     {
+      "id": "p4",
+      "left": "Beneficial microbiology",
+      "right": "Applied science using natural processes to destroy wastewater pollutants"
+     },
+     {
+      "id": "p5",
+      "left": "Optimum growth environment",
+      "right": "Controlled conditions that speed up biological waste decomposition"
+     },
+     {
+      "id": "p6",
+      "left": "Aerobic process",
+      "right": "Treatment using free, elemental oxygen to degrade organic matter"
+     }
+    ],
+    "explanation": "Cyclospora requires environmental sporulation before becoming infectious, whereas wastewater treatment harnesses controlled microbial environments to degrade pollutants."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:45:03.826432+00:00",
+    "notes": "Strict Hydrogen self-review of 10 speed-match items in targeth-wpi-class4-water-coll-r04 against supplied source pages and closest collision candidates; 9 accepted, 1 rejected for same-mode duplication.",
+    "registeredAt": "2026-11-19T03:45:27.332Z",
+    "payloadSha256": "6d5b1a9568e79bc1e81e4caa4dfe5b497790b31cb2b77d8329c62f09119f42f8",
+    "builderResultsSha256": "a7f83e4a890e6915d3f80bfdcf4a616756626d224a646e9d2046f1bee644d8d5"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T03:45:03.826432+00:00",
+   "attestation": "Strict Hydrogen self-review of 10 speed-match items in targeth-wpi-class4-water-coll-r04 against supplied source pages and closest collision candidates; 9 accepted, 1 rejected for same-mode duplication.",
+   "payloadSha256": {
+    "targeth-ht261118-wpi-class4-water-coll-r04-m1-01": "4f727c31c9f8e3a25eed411fb3a678bb99747b36fa66770be19f2e8ecb8e739c",
+    "targeth-ht261118-wpi-class4-water-coll-r04-m1-02": "0b1e574542a0a5a7acba0be3ec03618124187b0e9c1a20004859edb9bfd1eed0",
+    "targeth-ht261118-wpi-class4-water-coll-r04-m1-03": "4c1ed8b2468dd8d38e851358e99c1071b446d88751142efd67eb84be8d1a5361",
+    "targeth-ht261118-wpi-class4-water-coll-r04-m1-04": "a7e0feebab376b9691dadd7e7ff672f35a84120964e71609770ff46c75b44f02",
+    "targeth-ht261118-wpi-class4-water-coll-r04-m1-05": "53bb86940495b3951ca0cd4277a469e80caddd3529d0eec288e85a5cca318fe2",
+    "targeth-ht261118-wpi-class4-water-coll-r04-m1-06": "721449d8567e79b08c1de40b9a8a34f4e3341a0180d0b3a6c92ee4ad9d6a7d9d",
+    "targeth-ht261118-wpi-class4-water-coll-r04-m1-07": "58d25c13284e7e67cd6c73480304226ae9432fd30e9151d812bc42c09662f3f9",
+    "targeth-ht261118-wpi-class4-water-coll-r04-m1-08": "be8012b2cbc7d3a903067910ed4cb96054c35c57bcc504f69fe853ad85dc73e0",
+    "targeth-ht261118-wpi-class4-water-coll-r04-m1-09": "6d5b1a9568e79bc1e81e4caa4dfe5b497790b31cb2b77d8329c62f09119f42f8"
+   }
+  },
+  "registeredAt": "2026-11-19T03:45:27.332Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 0,
+     "f": 0
+    },
+    "dirs": {
+     "increase": 0,
+     "decrease": 0,
+     "unchanged": 0
+    },
+    "longest": 0,
+    "options": 0
+   },
+   "batchSha256": "5f6bcfa4d40d9097f4caffad397b25e7b46de36d13986eff7e96e7575eff0852"
+  }
+ }
+}

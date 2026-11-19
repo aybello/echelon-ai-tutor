@@ -1,0 +1,3084 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-wqa-r03",
+ "scope": "Owner-authorized AI-reviewed game activities: 85 items.",
+ "additions": [
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m0-01",
+    "prompt": "In a stream pool, firmer gravel and sand substrates with rooted plants support a wider variety of organisms than bare mud or bedrock.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Firmer sediments and rooted plants create diverse microhabitats that support more aquatic species than uniform mud or bedrock."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "53a87802eba54717072f27d834819154f0d0f2ee33988647dcb57de589d08c26",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m0-02",
+    "prompt": "Standard plankton nets capture most nanoplankton because nanoplankton range from 5 to 60 micrometers in size.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Most nanoplankton pass through the pores of a standard sampling net and require special fine-mesh nets."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "e6605df166c3f5eca58cde39bb70a9874c38a83010505f35bc0ecdf75e6bd7b5",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m0-03",
+    "prompt": "Surface-water drinking systems typically require more frequent water quality testing than small systems drawing from deep wells.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Surface waters are more exposed to environmental changes and contamination, requiring frequent testing compared to deep-well systems."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "660d203cfa262827a805940cb685d846516ebee43aea9cffadbce8071b95edec",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m0-04",
+    "prompt": "If a water sample for pH is analyzed in a laboratory after 2 hours, dissolved carbon dioxide from air shifts the pH toward 7.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Atmospheric carbon dioxide dissolves into unsealed samples over time, shifting the pH toward neutral."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "7863f51f8bace27ed6573e881ac5e228dc5e23d299c0a78428c7346f1be147ab",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m0-05",
+    "prompt": "A nephelometric turbidity meter directly measures the total mass of suspended solids present in a water sample.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Turbidity measures light scattered by suspended particles rather than the direct mass of suspended solids."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "9e1b39f76af401d5fd73cf15a3f1b336d46699598c128c115ecf43cda5bf946d",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m0-06",
+    "prompt": "When lowering a Secchi disk into a stream, facing directly into the sun helps block surface glare.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Keeping your back to the sun reduces surface glare so the vanishing point of the disk is easier to see."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "4bf61c64afc14c6722918a9905606b162e2b128302b5eedc3f2edd065435275a",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m0-07",
+    "prompt": "In the ascorbic acid method for total orthophosphate, an unfiltered sample measures both dissolved and suspended orthophosphate.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Because the sample is not filtered, the ascorbic acid procedure captures both dissolved and suspended orthophosphate."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "abafb519334b8558b9d61c71f96d67b39d2da1befa65c5588e2c5c062fb90cc1",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m0-08",
+    "prompt": "Conventional potable water treatment plants effectively remove high nitrate concentrations through standard coagulation and filtration.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Conventional potable water treatment plants do not remove nitrate, so high concentrations are controlled at the source."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "1af7161fd899159547af59575f115792c189e2410dac3e37668c3ac065729212",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m0-09",
+    "prompt": "In the cadmium reduction nitrate test, a spectrophotometer is preferred over a color wheel when nitrate is below 1 mg/L.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Visual color matching below 1 mg/L is subjective, so a spectrophotometer provides more reliable readings."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "04214b70626837a54daad0e889650e5796b732aac4322bac81cda5ff119bd2c4",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m0-10",
+    "prompt": "Total solids in a water sample equal the sum of filterable dissolved solids and nonfilterable suspended solids.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Total solids represent both the dissolved fraction that passes through a filter and the suspended fraction retained by it."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "8f8894b567e074fe2dcf8480c6bc9403f9221f2f568ea3e5d2d460a0962595c6",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m0-11",
+    "prompt": "A desiccator is used during total solids testing to add moisture to dried beakers before weighing.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "A desiccator absorbs moisture so water condensation does not bias the weight of the dried beaker."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "7cc675434efd4d306539bf48a13724740d12e79e1071a4b00c05ca01b8f4930a",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m0-12",
+    "prompt": "Samples tested for nitrate using an ion-selective electrode should be brought to room temperature for accurate readings.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Nitrate electrodes require samples at room temperature, whereas color comparators can be used at varying temperatures."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "ff1cc31910521a871c3298eee50930ba0ff398b3916c19f42eecb25566c8387b",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m0-13",
+    "prompt": "In the Winkler dissolved oxygen test, thiosulfate is added first to oxidize divalent manganese into basic hydroxides.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Dissolved oxygen oxidizes divalent manganese first; thiosulfate is used later to titrate the liberated iodine."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "fb13691e603cf638c677922e1f7b0a12470e2498e1a8854307d3e47384934858",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m0-14",
+    "prompt": "A homemade coffee-can sediment dredge should be lowered with trapped air inside so it floats upright.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "The dredge is inverted underwater first to fill with water and remove trapped air before lowering."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "fe08faf0b0f57682a8b12f3c3e1bc3c5ae92f9b4b1b82d3597895c87a1bcb4ea",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m0-15",
+    "prompt": "Formazin is a colloidal substance used to prepare permanent calibration standards for turbidimeters.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Modern turbidimeters are calibrated with permanent turbidity standards made from formazin."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "8f50b7b6984714b49feb7cf8879726f0317e22342778524ff2bbb4ea5ec9d30b",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m1-01",
+    "prompt": "Match each aquatic sampling device to its primary field application.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "pair-1",
+      "left": "Surber sampler",
+      "right": "Dislodges benthic organisms inside a framed riffle area"
+     },
+     {
+      "id": "pair-2",
+      "left": "D-frame dip net",
+      "right": "Sweeps over shallow stream vegetation"
+     },
+     {
+      "id": "pair-3",
+      "left": "Coffee-can dredge",
+      "right": "Collects bottom sediment in deep slow-moving water"
+     },
+     {
+      "id": "pair-4",
+      "left": "Plankton net",
+      "right": "Filters drifting microscopic organisms from the water column"
+     },
+     {
+      "id": "pair-5",
+      "left": "Secchi disk",
+      "right": "Measures water clarity by visual vanishing depth"
+     },
+     {
+      "id": "pair-6",
+      "left": "Transparency tube",
+      "right": "Measures clarity by pouring water over a bottom pattern"
+     }
+    ],
+    "explanation": "Each field device is designed for a specific habitat depth, substrate, or optical clarity measurement."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "5b183c83db00e924021590f4ef5b6ce0863ae12f284b3f93c6e9ee8037d34507",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m1-02",
+    "prompt": "Match each plankton size class or tow method to its defining characteristic.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "pair-1",
+      "left": "Nanoplankton",
+      "right": "5 to 60 micrometers, passing through standard nets"
+     },
+     {
+      "id": "pair-2",
+      "left": "Microplankton",
+      "right": "Up to 2 millimeters, captured by fine-mesh cloth nets"
+     },
+     {
+      "id": "pair-3",
+      "left": "Macroplankton",
+      "right": "Visible to the naked eye, up to several meters"
+     },
+     {
+      "id": "pair-4",
+      "left": "Horizontal tow",
+      "right": "Samples plankton at a single selected depth"
+     },
+     {
+      "id": "pair-5",
+      "left": "Vertical tow",
+      "right": "Samples plankton through the vertical water column"
+     },
+     {
+      "id": "pair-6",
+      "left": "Low-speed centrifuge",
+      "right": "Concentrates low-density plankton samples for counting"
+     }
+    ],
+    "explanation": "Plankton size classes and towing methods determine how drifting organisms are captured and concentrated."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "3caf98b5d7963d27d2be79b446a4bcb25c87671794738846e0a3f9f29ea0771e",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m1-03",
+    "prompt": "Match each phosphorus form or analytical concept to its chemical description.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "pair-1",
+      "left": "Elemental phosphorus",
+      "right": "Pure form rarely found free in nature"
+     },
+     {
+      "id": "pair-2",
+      "left": "Organic phosphate",
+      "right": "Phosphate associated with carbon-based tissue"
+     },
+     {
+      "id": "pair-3",
+      "left": "Inorganic phosphate",
+      "right": "Plant-available form not bound to organic matter"
+     },
+     {
+      "id": "pair-4",
+      "left": "Condensed phosphate",
+      "right": "Complex inorganic polyphosphate measured as acid hydrolyzable"
+     },
+     {
+      "id": "pair-5",
+      "left": "Ascorbic acid method",
+      "right": "Forms a blue compound proportional to orthophosphate"
+     },
+     {
+      "id": "pair-6",
+      "left": "Acid-washed labware",
+      "right": "Dedicated containers preventing phosphorus cross-contamination"
+     }
+    ],
+    "explanation": "Distinguishing phosphorus forms and dedicated labware prevents analytical interference in low-level testing."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "aa4e93da2eac5f8868f9b338a887e99e918f4cd827a070dcf367b267db546a28",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m1-04",
+    "prompt": "Match each nitrate analytical step or instrument to its specific role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "pair-1",
+      "left": "Cadmium particles",
+      "right": "Reduce nitrate in the sample to nitrite"
+     },
+     {
+      "id": "pair-2",
+      "left": "543-nanometer light",
+      "right": "Wavelength used to measure red color absorbance"
+     },
+     {
+      "id": "pair-3",
+      "left": "Standard curve",
+      "right": "Plots absorbance of known concentrations against value"
+     },
+     {
+      "id": "pair-4",
+      "left": "Color wheel",
+      "right": "Visual comparator suited for nitrate above 1 mg/L"
+     },
+     {
+      "id": "pair-5",
+      "left": "Nitrate electrode",
+      "right": "Reads millivolts on room-temperature samples"
+     },
+     {
+      "id": "pair-6",
+      "left": "Eutrophication",
+      "right": "Accelerated plant growth from excess nitrate and phosphorus"
+     }
+    ],
+    "explanation": "Cadmium reduction and ion-selective electrodes require distinct calibration and temperature controls."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "cb4084382169b7bfb692b03a40a49d2caaffd68d759d7a9f186fb4ecadfb6d64",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m1-05",
+    "prompt": "Match each solids testing term or factor to its role in gravimetric analysis.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "pair-1",
+      "left": "Total solids",
+      "right": "Residue remaining after evaporation and drying at 103 °C"
+     },
+     {
+      "id": "pair-2",
+      "left": "Suspended solids",
+      "right": "Nonfilterable residue retained on a filter"
+     },
+     {
+      "id": "pair-3",
+      "left": "Dissolved solids",
+      "right": "Filterable residue passing through a filter"
+     },
+     {
+      "id": "pair-4",
+      "left": "Analytical balance",
+      "right": "Weighs dried residue down to 0.0001 gram"
+     },
+     {
+      "id": "pair-5",
+      "left": "Desiccator",
+      "right": "Sealed glass container preventing moisture condensation"
+     },
+     {
+      "id": "pair-6",
+      "left": "Constant weight",
+      "right": "Repeated drying check ensuring complete water removal"
+     }
+    ],
+    "explanation": "Gravimetric solids testing relies on precise drying, moisture exclusion, and high-sensitivity weighing."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "eed98f8d61275ad78e09b3eba9874f65d25cd88193f53b99430f9156aeb20d89",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m1-06",
+    "prompt": "Match each turbidity concept or particle size to its physical meaning.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "pair-1",
+      "left": "Turbidity",
+      "right": "Decrease in light passage caused by suspended particles"
+     },
+     {
+      "id": "pair-2",
+      "left": "Clay particles",
+      "right": "Fine suspended material around 0.004 mm"
+     },
+     {
+      "id": "pair-3",
+      "left": "Sand particles",
+      "right": "Coarse suspended material around 1.0 mm"
+     },
+     {
+      "id": "pair-4",
+      "left": "Nephelometer",
+      "right": "Measures light scattered at right angles in NTU"
+     },
+     {
+      "id": "pair-5",
+      "left": "Formazin",
+      "right": "Colloidal substance used for permanent turbidity standards"
+     },
+     {
+      "id": "pair-6",
+      "left": "Heat absorption",
+      "right": "Mechanism by which suspended particles warm water"
+     }
+    ],
+    "explanation": "Turbidity depends on particle size and light scattering, which also influences water temperature."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "7511b0fc37ed49c22bf33da71088049f25745ea60d9b4357e799d1e313a627ee",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m1-07",
+    "prompt": "Match each Winkler dissolved oxygen step or meter calibration step to its chemical or physical action.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "pair-1",
+      "left": "Divalent manganese",
+      "right": "Oxidized by dissolved oxygen to higher hydroxides"
+     },
+     {
+      "id": "pair-2",
+      "left": "Acidification with iodide",
+      "right": "Reverts manganese and liberates equivalent iodine"
+     },
+     {
+      "id": "pair-3",
+      "left": "Thiosulfate titration",
+      "right": "Quantifies liberated iodine proportional to DO"
+     },
+     {
+      "id": "pair-4",
+      "left": "Air temperature",
+      "right": "Reference used to find DO saturation for calibration"
+     },
+     {
+      "id": "pair-5",
+      "left": "Saturation adjustment",
+      "right": "Sets electronic DO meter before field readings"
+     },
+     {
+      "id": "pair-6",
+      "left": "Field notebook",
+      "right": "Records water temperature and DO measurements"
+     }
+    ],
+    "explanation": "Both chemical titration and electronic meters rely on stoichiometric reactions or saturation calibration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "fba1c769380ff854365b82b8f1a1c73243bf8e354eaccb64f9d42d2e281fe61a",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m1-08",
+    "prompt": "Match each drinking water monitoring goal or pH property to its analytical significance.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "pair-1",
+      "left": "Public health goal",
+      "right": "Ensures tap water poses no danger to consumers"
+     },
+     {
+      "id": "pair-2",
+      "left": "Aesthetic goal",
+      "right": "Ensures water at the tap is pleasing"
+     },
+     {
+      "id": "pair-3",
+      "left": "Compliance goal",
+      "right": "Verifies adherence to applicable regulations"
+     },
+     {
+      "id": "pair-4",
+      "left": "pH definition",
+      "right": "Negative log of hydrogen ion concentration"
+     },
+     {
+      "id": "pair-5",
+      "left": "Two-hour pH limit",
+      "right": "Prevents air carbon dioxide from shifting pH"
+     },
+     {
+      "id": "pair-6",
+      "left": "pH meter",
+      "right": "Laboratory-quality electrode for high accuracy"
+     }
+    ],
+    "explanation": "Drinking water monitoring balances health, aesthetics, and compliance using timely, accurate measurements."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "43b85ca343a8efae468d1c6e4bb9fd66b3860eced4bc742cfd1e9855fefcdedb",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m1-09",
+    "prompt": "Match each nitrogen form or stream substrate condition to its ecological effect.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "pair-1",
+      "left": "Ammonia (NH3)",
+      "right": "Reduced nitrogen form naturally low in surface water"
+     },
+     {
+      "id": "pair-2",
+      "left": "Nitrate (NO3)",
+      "right": "Oxidized nitrogen form driving plant growth"
+     },
+     {
+      "id": "pair-3",
+      "left": "Nitrite (NO2)",
+      "right": "Intermediate nitrogen form produced during cadmium reduction"
+     },
+     {
+      "id": "pair-4",
+      "left": "Hypoxia",
+      "right": "Low dissolved oxygen resulting from excess nutrients"
+     },
+     {
+      "id": "pair-5",
+      "left": "Firm gravel pool",
+      "right": "Supports wider organism variety than bare mud"
+     },
+     {
+      "id": "pair-6",
+      "left": "Uniform bedrock pool",
+      "right": "Supports fewer organism types due to low variety"
+     }
+    ],
+    "explanation": "Nitrogen species and physical substrate diversity both shape aquatic ecosystem health."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "ae1155e660056e0e095c4a4877221ade6e7968269c418f0f2d258a45eccd14cf",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m1-10",
+    "prompt": "Match each post-sampling or pre-sampling quality control item to its purpose.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "pair-1",
+      "left": "Site name and date",
+      "right": "Legible identifiers required on every field sheet"
+     },
+     {
+      "id": "pair-2",
+      "left": "Tightly closed jars",
+      "right": "Checked before leaving the stream location"
+     },
+     {
+      "id": "pair-3",
+      "left": "Rinsed equipment",
+      "right": "Prevents cross-contamination between sampling sites"
+     },
+     {
+      "id": "pair-4",
+      "left": "Reference collection",
+      "right": "Alcohol-preserved vials used for field identification"
+     },
+     {
+      "id": "pair-5",
+      "left": "Same flow comparison",
+      "right": "Ensures valid turbidity trends over time"
+     },
+     {
+      "id": "pair-6",
+      "left": "Dedicated phosphate bottles",
+      "right": "Eliminates reagent residue from other tests"
+     }
+    ],
+    "explanation": "Consistent quality control practices protect sample integrity and data comparability."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "2cf58b2c98c9b7543f6c793e9d0cd18eb96f4a890725d0b0b9d53faa7b4d3c11",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m2-01",
+    "prompt": "Which item is NOT one of the three fundamental size categories of plankton?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Nanoplankton"
+     },
+     {
+      "id": "opt-2",
+      "label": "Microplankton"
+     },
+     {
+      "id": "opt-3",
+      "label": "Macroplankton"
+     },
+     {
+      "id": "opt-4",
+      "label": "Periphyton"
+     }
+    ],
+    "correctOptionId": "opt-4",
+    "explanation": "Periphyton consists of attached organisms on substrates, whereas nanoplankton, microplankton, and macroplankton are drifting plankton size classes."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "708d91dbcfbad78305d66402a29133029ccdadd3a1d3a26f1e23359124ffa507",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m2-02",
+    "prompt": "Which towing method is NOT used to collect plankton samples with a plankton net?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Horizontal tow"
+     },
+     {
+      "id": "opt-2",
+      "label": "Vertical tow"
+     },
+     {
+      "id": "opt-3",
+      "label": "Oblique tow"
+     },
+     {
+      "id": "opt-4",
+      "label": "Kick-net tow"
+     }
+    ],
+    "correctOptionId": "opt-4",
+    "explanation": "Plankton nets use horizontal, vertical, or oblique tows; kick nets are stationary riffle samplers."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "8358b58a2c5b9ffeb4f5814ebeb8118feb080b3d1c97f41b6e3c2e1a4d13bc27",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m2-03",
+    "prompt": "Which item is NOT one of the three core criteria for drinking water quality monitoring?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Protecting public health"
+     },
+     {
+      "id": "opt-2",
+      "label": "Ensuring aesthetic quality"
+     },
+     {
+      "id": "opt-3",
+      "label": "Regulatory compliance"
+     },
+     {
+      "id": "opt-4",
+      "label": "Maximizing mineral hardness"
+     }
+    ],
+    "correctOptionId": "opt-4",
+    "explanation": "Drinking water monitoring focuses on public health, aesthetics, and regulatory compliance, not maximizing hardness."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "57092958e2eb7e5405c5a0d9a17d883f45cbb7e0b6887b0f9a684422a81245fc",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m2-04",
+    "prompt": "Which water property is NOT directly related to pH in water quality analysis?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Corrosivity"
+     },
+     {
+      "id": "opt-2",
+      "label": "Contaminant solubility"
+     },
+     {
+      "id": "opt-3",
+      "label": "Water conductance"
+     },
+     {
+      "id": "opt-4",
+      "label": "Secchi vanishing depth"
+     }
+    ],
+    "correctOptionId": "opt-4",
+    "explanation": "pH relates to corrosivity, solubility, and conductance, whereas Secchi depth measures optical clarity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "268bcc4c3a4e0586a904e3ff20199f5ea4808e2117ce2e1654392254a2b925fe",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m2-05",
+    "prompt": "Which effect is NOT caused by elevated turbidity in a stream?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Increased heat absorption"
+     },
+     {
+      "id": "opt-2",
+      "label": "Reduced light penetration"
+     },
+     {
+      "id": "opt-3",
+      "label": "Clogged fish gills"
+     },
+     {
+      "id": "opt-4",
+      "label": "Elevated photosynthetic oxygen"
+     }
+    ],
+    "correctOptionId": "opt-4",
+    "explanation": "High turbidity reduces light penetration, which lowers photosynthesis and dissolved oxygen rather than raising it."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "8c42c8940c46e05296445df02e1c514cb51f3bb750efe0a3297daf307b2afc2f",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m2-06",
+    "prompt": "Which material is NOT a standard component of the ascorbic acid orthophosphate test?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Ascorbic acid"
+     },
+     {
+      "id": "opt-2",
+      "label": "Ammonium molybdate"
+     },
+     {
+      "id": "opt-3",
+      "label": "Acid-washed labware"
+     },
+     {
+      "id": "opt-4",
+      "label": "Cadmium particles"
+     }
+    ],
+    "correctOptionId": "opt-4",
+    "explanation": "Cadmium particles are used in the nitrate reduction test, not the ascorbic acid orthophosphate test."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "5c7b624e14b7af7f1e8311fc6d24c1adc3eaa4e414dbb1f11bcac7f97c3d54b3",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m2-07",
+    "prompt": "Which nitrogen species is NOT part of the primary terrestrial and aquatic nitrogen forms measured in water?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Ammonia (NH3)"
+     },
+     {
+      "id": "opt-2",
+      "label": "Nitrates (NO3)"
+     },
+     {
+      "id": "opt-3",
+      "label": "Nitrites (NO2)"
+     },
+     {
+      "id": "opt-4",
+      "label": "Orthophosphate (PO4)"
+     }
+    ],
+    "correctOptionId": "opt-4",
+    "explanation": "Orthophosphate is a phosphorus compound, whereas ammonia, nitrates, and nitrites are nitrogen forms."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "a5935a481c3a44bf6939cdc87db84b8148b24a5d4a3ecfc4e4e9f60b3be01494",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m2-08",
+    "prompt": "Which factor is NOT listed as a source of error in gravimetric total solids testing?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Drying temperature"
+     },
+     {
+      "id": "opt-2",
+      "label": "Desiccator condition"
+     },
+     {
+      "id": "opt-3",
+      "label": "Failure to reach constant weight"
+     },
+     {
+      "id": "opt-4",
+      "label": "Formazin standard age"
+     }
+    ],
+    "correctOptionId": "opt-4",
+    "explanation": "Formazin standards are used for turbidity calibration, not gravimetric total solids testing."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "30d74f93998d21248f2a0083f75f77010f6258e0c62776d7206a1db747aaf0fa",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m2-09",
+    "prompt": "Which instrument is NOT used to measure water clarity or turbidity?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Nephelometer"
+     },
+     {
+      "id": "opt-2",
+      "label": "Secchi disk"
+     },
+     {
+      "id": "opt-3",
+      "label": "Transparency tube"
+     },
+     {
+      "id": "opt-4",
+      "label": "Analytical balance"
+     }
+    ],
+    "correctOptionId": "opt-4",
+    "explanation": "An analytical balance weighs dried solids residue, whereas the other three measure optical clarity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "909e4f86be1e438ef21062ad0e4b2b9ef43549fe52ef0a8dba6d60260c678101",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m2-10",
+    "prompt": "Which source is NOT a common contributor of total solids to surface waters?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Soil erosion"
+     },
+     {
+      "id": "opt-2",
+      "label": "Road runoff"
+     },
+     {
+      "id": "opt-3",
+      "label": "Industrial discharges"
+     },
+     {
+      "id": "opt-4",
+      "label": "Desiccant crystals"
+     }
+    ],
+    "correctOptionId": "opt-4",
+    "explanation": "Desiccant crystals are laboratory drying agents, not environmental sources of total solids."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "0a5b8b49f484db3898139750dde375c39c6a094a8050f7efd88820b166849c45",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m2-11",
+    "prompt": "Which container material is NOT recommended for orthophosphate sample collection?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "High-density polyethylene"
+     },
+     {
+      "id": "opt-2",
+      "label": "Polypropylene"
+     },
+     {
+      "id": "opt-3",
+      "label": "Sterile plastic Whirl-Pak bags"
+     },
+     {
+      "id": "opt-4",
+      "label": "Shared unwashed glass jars"
+     }
+    ],
+    "correctOptionId": "opt-4",
+    "explanation": "Orthophosphate containers must be dedicated and acid-washed to prevent contamination from prior tests."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "51075cf7f6754e772fbb7af31bb7d80ebff0e2ee734223ed71b0ed24e41f8b31",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m2-12",
+    "prompt": "Which field measurement device is NOT designed to collect bottom sediment or benthic organisms?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Surber sampler"
+     },
+     {
+      "id": "opt-2",
+      "label": "D-frame aquatic dip net"
+     },
+     {
+      "id": "opt-3",
+      "label": "Coffee-can dredge"
+     },
+     {
+      "id": "opt-4",
+      "label": "Color comparator"
+     }
+    ],
+    "correctOptionId": "opt-4",
+    "explanation": "A color comparator measures chemical concentrations visually, not physical bottom sediments or organisms."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "09b37d4b1aabf3ccc61f3982eabf50da0df62abfdad0a8f1e909e9373ded3486",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m2-13",
+    "prompt": "Which phosphorus form is NOT recommended for routine field analysis due to hazardous reagents and boiling?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Total orthophosphate"
+     },
+     {
+      "id": "opt-2",
+      "label": "Acid-hydrolyzable phosphate"
+     },
+     {
+      "id": "opt-3",
+      "label": "Condensed polyphosphate"
+     },
+     {
+      "id": "opt-4",
+      "label": "Organic phosphate"
+     }
+    ],
+    "correctOptionId": "opt-1",
+    "explanation": "Total orthophosphate is the only form recommended for field analysis; other forms require laboratory pretreatment."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "1296cf737071ddb6abb90f2fbab31449fa8bca599fab5a4c083372180b39e929",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m2-14",
+    "prompt": "Which action is NOT part of calibrating a portable electronic dissolved oxygen meter?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Determining air temperature"
+     },
+     {
+      "id": "opt-2",
+      "label": "Finding DO saturation for that temperature"
+     },
+     {
+      "id": "opt-3",
+      "label": "Adjusting meter to the saturation value"
+     },
+     {
+      "id": "opt-4",
+      "label": "Evaporating the sample at 103 °C"
+     }
+    ],
+    "correctOptionId": "opt-4",
+    "explanation": "Evaporating at 103 °C is part of total solids testing, not DO meter calibration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "7f9f0056924e431f3a5a683285c8cd443112eb7832ae895fd0cab325f674178a",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m2-15",
+    "prompt": "Which characteristic is NOT true of a Secchi disk?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Measures stream visibility"
+     },
+     {
+      "id": "opt-2",
+      "label": "Lowered until it disappears"
+     },
+     {
+      "id": "opt-3",
+      "label": "Marked with a clothespin on the line"
+     },
+     {
+      "id": "opt-4",
+      "label": "Measures light at 90 degrees electronically"
+     }
+    ],
+    "correctOptionId": "opt-4",
+    "explanation": "A nephelometer measures scattered light electronically at 90 degrees; a Secchi disk is visual."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "bda0482f8b49b1c02b0593299ac9380d9e9e6bf30ea8ca8f9caee8899f6d5e6b",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m3-01",
+    "prompt": "An unsealed water sample with an initial pH of 8.5 sits open to laboratory air for several hours while temperature remains constant, allowing carbon dioxide to dissolve into the water. What happens to the pH of the sample?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-2",
+    "explanation": "Dissolved carbon dioxide moves the pH toward 7, so a sample at pH 8.5 decreases."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "5e9fa35d4bb9f3e698928b4bd8f1c19a15d77eea2b424a59a27590f753e66192",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m3-02",
+    "prompt": "Suspended particle concentration in a sunlit stream rises substantially while air temperature and flow remain constant, causing particles to absorb more solar heat. What happens to the water temperature?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-1",
+    "explanation": "Suspended particles absorb more heat from sunlight, which raises the water temperature."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "0446c8777bc554cd94b9f43fe9c0dd1959f72d436e3f8b9bdd8a7bb8d5d25576",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m3-03",
+    "prompt": "Turbidity in a shallow vegetated stream increases sharply while solar intensity and nutrient levels remain constant, blocking light penetration to submerged aquatic plants. What happens to photosynthetic oxygen production?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-2",
+    "explanation": "Reduced light penetration slows aquatic plant photosynthesis, decreasing oxygen production."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "960133de9d8b66436f3ffb84bdcb81de375785b3e126c91e8938aac40c782db7",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m3-04",
+    "prompt": "A modest amount of inorganic phosphorus enters a phosphorus-limited freshwater stream under favorable sunlight and temperature conditions. What happens to aquatic plant and algal growth?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-1",
+    "explanation": "Because phosphorus is typically the limiting nutrient, adding it accelerates plant and algal growth."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "c79dcab9c78f5a95e73bd77b817f846046cddd78ee8f6bbd58e3079159561bfa",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m3-05",
+    "prompt": "In the ascorbic acid orthophosphate test, the concentration of orthophosphate in a water sample increases while reagent volumes remain constant. What happens to the intensity of the blue color formed?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-1",
+    "explanation": "Higher orthophosphate concentrations react with the reagent to produce a more intense blue color."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "e5f7c21f930c03e934918fe14bee8b631ab1caa260c60b8c6656a06135672ef3",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m3-06",
+    "prompt": "In the cadmium reduction nitrate test, the original nitrate concentration in a sample increases while all reagent additions remain constant. What happens to the red color intensity measured at 543 nm?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-1",
+    "explanation": "The red color intensity is directly proportional to the original nitrate concentration in the sample."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "f68b15651862477ac6952aad98c77d084a59b52a9e46562ea96f261009741acf",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m3-07",
+    "prompt": "A dried total solids beaker is left outside a desiccator in humid laboratory air before weighing, allowing moisture to condense on the glass. What happens to the measured weight of the beaker?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-1",
+    "explanation": "Condensing water adds extra mass to the beaker, biasing the measured weight upward."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "82af3d4d15f530179b5eb1302a167347cd90a9e31abdcd6a5063e5fca2680f5d",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m3-08",
+    "prompt": "A stream transitions from a clear mountain reach (1 NTU) to a turbid river reach while sunlight and depth remain constant. What happens to the Secchi disk vanishing depth?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-2",
+    "explanation": "Higher turbidity reduces water clarity, causing the Secchi disk to disappear at a shallower depth."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "fe663df9101e99468ec8af575c0bc56bcc25344c31bf9f812c6c12a5edffcf58",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m3-09",
+    "prompt": "Excess nitrates and phosphorus enter a slow-moving stream, triggering a massive algal bloom followed by decomposition. What happens to the dissolved oxygen concentration?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-2",
+    "explanation": "Excess nutrients accelerate eutrophication, which leads to hypoxia (low dissolved oxygen)."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "8e2d35a4e1ec6f90cc966e79373615cf2a8449067edfc87802afa38ab3cc3256",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m3-10",
+    "prompt": "A water sample has constant suspended solids, but its dissolved solids concentration increases while sample volume remains fixed. What happens to the total solids concentration?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-1",
+    "explanation": "Total solids equal suspended solids plus dissolved solids, so increasing dissolved solids raises total solids."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "4adaa2ec0e3a9aa7bc1d13606625ffe1bca384f40c7b23b1bc7c40b77c096694",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m3-11",
+    "prompt": "In a transparency tube test, water clarity improves substantially between two sampling dates while the tube dimensions remain constant. What happens to the water column height needed to hide the bottom pattern?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-1",
+    "explanation": "Clearer water allows light to travel farther, requiring a taller water column before the pattern disappears."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "fee5ab45a6c895500657284487f3c9ebaca9e5003f18621f32d65df34fdc298a",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m3-12",
+    "prompt": "A plankton net with a standard mesh size is replaced with a special fine-mesh net while towing speed and volume remain constant. What happens to the capture of larger nanoplankton?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-1",
+    "explanation": "Special fine-mesh nets retain larger nanoplankton that would otherwise pass through standard net pores."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "eeb6530d57bf97708f1c8a0bf8a0595c2293ae9e8ca71bf2583fccff1db9f0e2",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m3-13",
+    "prompt": "In the Winkler dissolved oxygen test, the original dissolved oxygen concentration in the stream sample is higher while reagent volumes remain in excess. What happens to the amount of iodine liberated upon acidification?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-1",
+    "explanation": "The amount of iodine liberated is stoichiometrically equivalent to the original dissolved oxygen content."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "5e7c483225391eb4ae70470511cef477561ec7efd20dbebb0bf4b24065a00781",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m3-14",
+    "prompt": "A stream watershed experiences increased soil erosion without erosion control practices while stream flow remains constant. What happens to the total solids concentration in the stream?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-1",
+    "explanation": "Soil erosion contributes particulate matter to runoff, increasing total solids in the stream."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "a951c7a72790779cbc9e47e4fcf10bb9c787e682de1522752207ddf96aac6f5e",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m3-15",
+    "prompt": "A sample of turbid water is placed in a nephelometer, and the concentration of light-scattering clay particles doubles while lamp intensity stays constant. What happens to the NTU reading?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-1",
+    "explanation": "More suspended clay particles scatter more light at right angles, raising the NTU reading."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "cc96b0926a3403c9e71da77f46b079c2cb7f2b7b9e13186be6217c046b45b841",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m4-01",
+    "prompt": "A trainee summarizes plankton size classes and sampling methods. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Plankton include both plant phytoplankton and animal zooplankton forms."
+     },
+     {
+      "id": "opt-2",
+      "label": "Standard plankton nets easily capture 5-micrometer nanoplankton."
+     },
+     {
+      "id": "opt-3",
+      "label": "Low-density plankton samples can be concentrated with a low-speed centrifuge."
+     }
+    ],
+    "correctOptionId": "opt-2",
+    "explanation": "Most nanoplankton (5 to 60 micrometers) pass through standard net pores and require special fine-mesh nets."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "3cba6a1117727bec1817774b3780ed3322608bf1444ab77e42f4920e6dcbed6f",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m4-02",
+    "prompt": "A technician explains pH measurement and sample holding. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "pH measures the negative log of hydrogen ion concentration."
+     },
+     {
+      "id": "opt-2",
+      "label": "pH relates to water corrosivity, conductance, and contaminant solubility."
+     },
+     {
+      "id": "opt-3",
+      "label": "Lab pH samples can sit open for 24 hours without changing."
+     }
+    ],
+    "correctOptionId": "opt-3",
+    "explanation": "Lab pH should be measured within 2 hours because carbon dioxide from air dissolves and shifts pH toward 7."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "64e2f2cd4709c53aaed24d0f0fcaeb52d80a9531e986df6089f2b7bbd9da2c9f",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m4-03",
+    "prompt": "A student describes turbidity and Secchi disk measurements. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Turbidity measures how suspended particles scatter light in water."
+     },
+     {
+      "id": "opt-2",
+      "label": "Turbidity directly measures the mass of suspended solids and sedimentation rate."
+     },
+     {
+      "id": "opt-3",
+      "label": "Turbidity trends over time should be compared at the same flow."
+     }
+    ],
+    "correctOptionId": "opt-2",
+    "explanation": "Turbidity measures scattered light, not the direct mass of suspended solids or sedimentation rate."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "9408734faa83b4d170f1d91e2c4ae5b2e325df3c2348e665b1277e75bea12020",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m4-04",
+    "prompt": "An analyst reviews orthophosphate field sampling and labware rules. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Orthophosphate containers should be dedicated and acid-washed."
+     },
+     {
+      "id": "opt-2",
+      "label": "Total orthophosphate is suitable for field analysis using ascorbic acid."
+     },
+     {
+      "id": "opt-3",
+      "label": "Condensed polyphosphates are best analyzed in the field by boiling."
+     }
+    ],
+    "correctOptionId": "opt-3",
+    "explanation": "Other phosphorus forms require hazardous reagents and boiling, so they should be handled in a laboratory."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "b13b29f4b03228e055348b3fd4a7502820ef190df7ca9dfa7e9f65b9d0aacff1",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m4-05",
+    "prompt": "A trainee summarizes nitrate sources and treatment options. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Excess nitrates and phosphorus can accelerate eutrophication and hypoxia."
+     },
+     {
+      "id": "opt-2",
+      "label": "Conventional potable water treatment plants reliably remove high nitrate."
+     },
+     {
+      "id": "opt-3",
+      "label": "Fertilized cropland and septic systems are common nitrate sources."
+     }
+    ],
+    "correctOptionId": "opt-2",
+    "explanation": "Conventional potable water treatment plants cannot remove nitrate; high levels are controlled at the source."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "311a13660db233c56a1ce8708559f060cbc03551cd11559fa970e7c3e53c3dae",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m4-06",
+    "prompt": "A technician compares nitrate measurement instruments. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Color wheels are appropriate when nitrate exceeds 1 mg/L."
+     },
+     {
+      "id": "opt-2",
+      "label": "Spectrophotometers measure cadmium-reduced red color at 543 nanometers."
+     },
+     {
+      "id": "opt-3",
+      "label": "Nitrate electrodes give accurate readings without bringing samples to room temperature."
+     }
+    ],
+    "correctOptionId": "opt-3",
+    "explanation": "Samples tested with a nitrate electrode should be at room temperature, unlike color comparators."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "d0bb0fa8d9b57ad898a2f77da993ae9d2c1f53fce91a0d399c7c6e75e8720225",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m4-07",
+    "prompt": "A student explains gravimetric total solids testing. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Total solids equal suspended solids plus dissolved solids."
+     },
+     {
+      "id": "opt-2",
+      "label": "Total solids are dried at 103 °C and weighed on an analytical balance."
+     },
+     {
+      "id": "opt-3",
+      "label": "Total solids testing is routinely performed in the field with a pocket meter."
+     }
+    ],
+    "correctOptionId": "opt-3",
+    "explanation": "Total solids require oven drying, a desiccator, and a 0.0001-g analytical balance in a laboratory."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "c5ecb26a6193f1d0bf1b2a5ab679939bada7293e9bba5563e509ec2ccc34b7c2",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m4-08",
+    "prompt": "A field crew calibrates and uses a portable dissolved oxygen meter. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "The DO meter is calibrated prior to field use."
+     },
+     {
+      "id": "opt-2",
+      "label": "Calibration uses air temperature and the corresponding DO saturation value."
+     },
+     {
+      "id": "opt-3",
+      "label": "Portable DO meters are calibrated using formazin colloidal standards."
+     }
+    ],
+    "correctOptionId": "opt-3",
+    "explanation": "Formazin standards calibrate turbidimeters; DO meters are calibrated using air temperature and DO saturation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "72a78eab9ffc4484de0a6e3162f00b803cc9c1aed4623503d968921cb86f4d97",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m4-09",
+    "prompt": "A sampler describes how to use a homemade coffee-can sediment dredge. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Invert the can underwater first so no air remains trapped inside."
+     },
+     {
+      "id": "opt-2",
+      "label": "Lower the dredge quickly to bury the open end in bottom sediment."
+     },
+     {
+      "id": "opt-3",
+      "label": "Trap a pocket of air inside the can to cushion the descent."
+     }
+    ],
+    "correctOptionId": "opt-3",
+    "explanation": "The can is inverted underwater to remove trapped air before lowering it to the bottom."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "fb40cd237e6405db3d9f814b921b3a3aeaedeef45262e0e012158488bbf662df",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m4-10",
+    "prompt": "A biologist explains how to take a Secchi disk reading from a boat. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Keep your back to the sun to block surface glare."
+     },
+     {
+      "id": "opt-2",
+      "label": "Lower the disk until it disappears, then raise it until it reappears."
+     },
+     {
+      "id": "opt-3",
+      "label": "Face directly into the sun to illuminate the white disk."
+     }
+    ],
+    "correctOptionId": "opt-3",
+    "explanation": "Facing away from the sun blocks glare so the vanishing point is accurately observed."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "46dfa9535a172b7455fd2a5c3f29e5a561946f69aaba595ae599de9668e5165e",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m4-11",
+    "prompt": "A student summarizes drinking water monitoring frequency. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Monitoring helps ensure water is safe, aesthetically pleasing, and compliant."
+     },
+     {
+      "id": "opt-2",
+      "label": "Surface-water systems test water quality frequently."
+     },
+     {
+      "id": "opt-3",
+      "label": "Deep-well systems require more frequent testing than surface-water systems."
+     }
+    ],
+    "correctOptionId": "opt-3",
+    "explanation": "Small systems using good-quality deep wells conduct occasional monitoring, whereas surface-water systems test frequently."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "cc2abb1661a91372704a1003a16ee155d7174977e09621d07da21d0927869ab6",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m4-12",
+    "prompt": "A chemist describes the Winkler dissolved oxygen titration. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Dissolved oxygen oxidizes divalent manganese to higher-valence hydroxides."
+     },
+     {
+      "id": "opt-2",
+      "label": "Acidification with iodide liberates iodine equivalent to original DO."
+     },
+     {
+      "id": "opt-3",
+      "label": "Thiosulfate is added before manganese to fix the oxygen."
+     }
+    ],
+    "correctOptionId": "opt-3",
+    "explanation": "Manganese is added first to react with DO; thiosulfate titrates the liberated iodine at the end."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "047eb308c25b6288f11efa97b573e17dd8cf24ed3c6ba40618c1f4c9ad94332d",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m4-13",
+    "prompt": "A trainee describes stream pool substrate quality. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Pools with gravel, sand, and rooted plants support diverse organisms."
+     },
+     {
+      "id": "opt-2",
+      "label": "Pools with one uniform substrate type support fewer organism types."
+     },
+     {
+      "id": "opt-3",
+      "label": "Bare bedrock pools without plants support the widest variety of organisms."
+     }
+    ],
+    "correctOptionId": "opt-3",
+    "explanation": "Pools dominated by mud or bedrock without plants support fewer organisms than firmer, vegetated substrates."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "53ac709c24889449f1674a22333661fd0b936e231966adafb82f4103d34c09fa",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m4-14",
+    "prompt": "An analyst reviews precautions for total solids testing. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Beakers are stored in a desiccator to prevent moisture condensation."
+     },
+     {
+      "id": "opt-2",
+      "label": "Drying temperature and drying time affect test accuracy."
+     },
+     {
+      "id": "opt-3",
+      "label": "Weighing before reaching constant weight improves precision."
+     }
+    ],
+    "correctOptionId": "opt-3",
+    "explanation": "Failure to achieve constant weight prior to calculating results is a common source of error."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "6cf10b5558f201d3f7ae47f66f3b89cb5072919554185043bcb28cd81bd67e68",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m4-15",
+    "prompt": "A student explains how turbidity affects aquatic life. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Suspended particles absorb heat and raise water temperature."
+     },
+     {
+      "id": "opt-2",
+      "label": "Suspended materials can clog fish gills and lower disease resistance."
+     },
+     {
+      "id": "opt-3",
+      "label": "Higher turbidity increases light penetration and boosts plant photosynthesis."
+     }
+    ],
+    "correctOptionId": "opt-3",
+    "explanation": "Higher turbidity reduces light penetration, which slows photosynthesis and lowers dissolved oxygen."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "586b727d322086479766ba39b67f908c2b946620869a7fb7fdde2600824568e4",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m5-01",
+    "prompt": "In the electronic dissolved oxygen meter field procedure, is calibrating the meter to the saturation value performed before or after recording stream DO measurements?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The DO meter must be calibrated using air temperature and saturation DO prior to taking field readings."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "520c783623a4c01ce91bdea9aad999c687982b18e632e43e8f8feadee184d6c3",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m5-02",
+    "prompt": "In the homemade coffee-can sediment dredge procedure, is inverting the can underwater to remove trapped air performed before or after lowering the dredge to the stream bottom?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The can is inverted underwater to fill with water and remove air prior to lowering it."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "23185871266829b03d532917e9d98ed190993b52b4d2f044defa009e3203650d",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m5-03",
+    "prompt": "In the plankton net sampling procedure, is rinsing the sides of the net to dislodge collected plankton performed before or after towing the net through the water?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "After towing and removing the net from the stream, the sides are rinsed to dislodge plankton."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "97a04296486ff68f1190da085ba3daf5e911ff363434c318a1d2f03f9323b682",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m5-04",
+    "prompt": "In the Secchi disk measurement procedure, is attaching a clothespin to the line at the water surface performed before or after finding the exact vanishing point?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "The clothespin is attached to mark the line once the exact vanishing point is determined."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "01a8a48c026b897027a6c84db274a623385e1646dab436df80f39312e30ad18f",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m5-05",
+    "prompt": "In the cadmium reduction nitrate method, is developing the standard calibration curve performed before or after running field samples on the spectrophotometer?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The supervisor creates the standard curve before each sampling run so absorbance converts to concentration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "92cb919de5ce8da8217a5b6226643aa07bc246362615dd5b160b5545644c3b55",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m5-06",
+    "prompt": "In the cadmium reduction nitrate reaction, does conversion of nitrate to nitrite by cadmium particles occur before or after formation of the red color?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Cadmium reduces nitrate to nitrite first, and the nitrite reacts with another reagent to form red color."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "92c0cc4e1a7e502154be60b9aafe6e9adbea4b06610667c8f5b9c520b9ae9099",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m5-07",
+    "prompt": "In the gravimetric total solids procedure, is weighing the empty beaker performed before or after evaporating the water sample in an oven?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The empty beaker is weighed first so the residue weight can be found by difference."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "c4c735ebe3963d12eba14091f76d6a8a6553c39277f1de46eaf0972ca7deaa81",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m5-08",
+    "prompt": "In the gravimetric total solids procedure, is achieving constant weight of the dried beaker performed before or after calculating the final solids concentration?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Constant weight must be achieved prior to calculating results to avoid moisture bias."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "eb0cf74f51a1fc5296621f0e1177b372bf4444d51bc1197c661e95eeec14bb97",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m5-09",
+    "prompt": "In the Winkler dissolved oxygen titration, does acidification in the presence of iodide occur before or after titrating the liberated iodine with thiosulfate?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Acidification with iodide liberates iodine first, which is then quantified by thiosulfate titration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "f369a287b53c6c46e2dcc0ebe9b09f560cc9ff6681dfedc962c0e88f83972db1",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m5-10",
+    "prompt": "In the Surber sampler riffle procedure, is dislodging bottom sediment enclosed by the frame performed before or after transferring caught organisms to a counting vessel?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Sediment is dislodged into the downstream net first, and organisms are transferred afterward for counting."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "477ceb6cb4c0e1d4af35c263013ad79f70eff004553347399eaf73dccd83b150",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m5-11",
+    "prompt": "In the laboratory orthophosphate preparation, is acid-washing dedicated labware performed before or after using it to hold orthophosphate samples?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Dedicated labware is acid-washed beforehand to eliminate phosphorus contamination."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "c22e4e8a90dc5f4ee7143353cb96fdf9d1ce7364aeaeb6a2925d768414b84d40",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m5-12",
+    "prompt": "In the transparency tube clarity test, does pouring water into the tube occur before or after the dark bottom pattern disappears from view?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Water is poured into the tube until the dark pattern painted on the bottom disappears."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "8fddc3679f3f068d5dc9d23b3684c79a9d85052573db6e8a4a291d5cd0d0058d",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m5-13",
+    "prompt": "In the post-sampling stream routine, is rinsing all sampling equipment and devices performed before or after leaving the stream location?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Equipment is collected and rinsed properly before leaving the stream site."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "0138a7999d7336f77d0b04b6bb929ce42fb752e73ccb2001f684276cefc87ead",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m5-14",
+    "prompt": "In the low-density plankton analysis procedure, is concentrating the sample with a low-speed centrifuge performed before or after counting organisms under a compound microscope?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Low-density samples are concentrated first so a definite volume can be counted under the microscope."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "3ebbed8ca23c3c11699707dc8c6c61c0a11d0bc523ef8dfffc01c8074341f266",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r03-m5-15",
+    "prompt": "In the Secchi disk procedure, is raising the disk until it just reappears performed before or after lowering it one-third of a meter past disappearance?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "After disappearing, the disk is lowered one-third of a meter and slowly raised until it reappears."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+    "notes": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:13:25.636Z",
+    "payloadSha256": "a91a4b2094f67b3a3ef335ba53544b0577f389919b39dae07b550b323c83da85",
+    "builderResultsSha256": "31bce22f841d7d5cee86b8f772dc2573f3f9ad2a88cb91c249bac6d9aad01b93"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T03:12:15.830327+00:00",
+   "attestation": "Strict final AI self-review of 85 authored wqa items against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+   "payloadSha256": {
+    "targeth-ht261118-wqa-r03-m0-01": "53a87802eba54717072f27d834819154f0d0f2ee33988647dcb57de589d08c26",
+    "targeth-ht261118-wqa-r03-m0-02": "e6605df166c3f5eca58cde39bb70a9874c38a83010505f35bc0ecdf75e6bd7b5",
+    "targeth-ht261118-wqa-r03-m0-03": "660d203cfa262827a805940cb685d846516ebee43aea9cffadbce8071b95edec",
+    "targeth-ht261118-wqa-r03-m0-04": "7863f51f8bace27ed6573e881ac5e228dc5e23d299c0a78428c7346f1be147ab",
+    "targeth-ht261118-wqa-r03-m0-05": "9e1b39f76af401d5fd73cf15a3f1b336d46699598c128c115ecf43cda5bf946d",
+    "targeth-ht261118-wqa-r03-m0-06": "4bf61c64afc14c6722918a9905606b162e2b128302b5eedc3f2edd065435275a",
+    "targeth-ht261118-wqa-r03-m0-07": "abafb519334b8558b9d61c71f96d67b39d2da1befa65c5588e2c5c062fb90cc1",
+    "targeth-ht261118-wqa-r03-m0-08": "1af7161fd899159547af59575f115792c189e2410dac3e37668c3ac065729212",
+    "targeth-ht261118-wqa-r03-m0-09": "04214b70626837a54daad0e889650e5796b732aac4322bac81cda5ff119bd2c4",
+    "targeth-ht261118-wqa-r03-m0-10": "8f8894b567e074fe2dcf8480c6bc9403f9221f2f568ea3e5d2d460a0962595c6",
+    "targeth-ht261118-wqa-r03-m0-11": "7cc675434efd4d306539bf48a13724740d12e79e1071a4b00c05ca01b8f4930a",
+    "targeth-ht261118-wqa-r03-m0-12": "ff1cc31910521a871c3298eee50930ba0ff398b3916c19f42eecb25566c8387b",
+    "targeth-ht261118-wqa-r03-m0-13": "fb13691e603cf638c677922e1f7b0a12470e2498e1a8854307d3e47384934858",
+    "targeth-ht261118-wqa-r03-m0-14": "fe08faf0b0f57682a8b12f3c3e1bc3c5ae92f9b4b1b82d3597895c87a1bcb4ea",
+    "targeth-ht261118-wqa-r03-m0-15": "8f50b7b6984714b49feb7cf8879726f0317e22342778524ff2bbb4ea5ec9d30b",
+    "targeth-ht261118-wqa-r03-m1-01": "5b183c83db00e924021590f4ef5b6ce0863ae12f284b3f93c6e9ee8037d34507",
+    "targeth-ht261118-wqa-r03-m1-02": "3caf98b5d7963d27d2be79b446a4bcb25c87671794738846e0a3f9f29ea0771e",
+    "targeth-ht261118-wqa-r03-m1-03": "aa4e93da2eac5f8868f9b338a887e99e918f4cd827a070dcf367b267db546a28",
+    "targeth-ht261118-wqa-r03-m1-04": "cb4084382169b7bfb692b03a40a49d2caaffd68d759d7a9f186fb4ecadfb6d64",
+    "targeth-ht261118-wqa-r03-m1-05": "eed98f8d61275ad78e09b3eba9874f65d25cd88193f53b99430f9156aeb20d89",
+    "targeth-ht261118-wqa-r03-m1-06": "7511b0fc37ed49c22bf33da71088049f25745ea60d9b4357e799d1e313a627ee",
+    "targeth-ht261118-wqa-r03-m1-07": "fba1c769380ff854365b82b8f1a1c73243bf8e354eaccb64f9d42d2e281fe61a",
+    "targeth-ht261118-wqa-r03-m1-08": "43b85ca343a8efae468d1c6e4bb9fd66b3860eced4bc742cfd1e9855fefcdedb",
+    "targeth-ht261118-wqa-r03-m1-09": "ae1155e660056e0e095c4a4877221ade6e7968269c418f0f2d258a45eccd14cf",
+    "targeth-ht261118-wqa-r03-m1-10": "2cf58b2c98c9b7543f6c793e9d0cd18eb96f4a890725d0b0b9d53faa7b4d3c11",
+    "targeth-ht261118-wqa-r03-m2-01": "708d91dbcfbad78305d66402a29133029ccdadd3a1d3a26f1e23359124ffa507",
+    "targeth-ht261118-wqa-r03-m2-02": "8358b58a2c5b9ffeb4f5814ebeb8118feb080b3d1c97f41b6e3c2e1a4d13bc27",
+    "targeth-ht261118-wqa-r03-m2-03": "57092958e2eb7e5405c5a0d9a17d883f45cbb7e0b6887b0f9a684422a81245fc",
+    "targeth-ht261118-wqa-r03-m2-04": "268bcc4c3a4e0586a904e3ff20199f5ea4808e2117ce2e1654392254a2b925fe",
+    "targeth-ht261118-wqa-r03-m2-05": "8c42c8940c46e05296445df02e1c514cb51f3bb750efe0a3297daf307b2afc2f",
+    "targeth-ht261118-wqa-r03-m2-06": "5c7b624e14b7af7f1e8311fc6d24c1adc3eaa4e414dbb1f11bcac7f97c3d54b3",
+    "targeth-ht261118-wqa-r03-m2-07": "a5935a481c3a44bf6939cdc87db84b8148b24a5d4a3ecfc4e4e9f60b3be01494",
+    "targeth-ht261118-wqa-r03-m2-08": "30d74f93998d21248f2a0083f75f77010f6258e0c62776d7206a1db747aaf0fa",
+    "targeth-ht261118-wqa-r03-m2-09": "909e4f86be1e438ef21062ad0e4b2b9ef43549fe52ef0a8dba6d60260c678101",
+    "targeth-ht261118-wqa-r03-m2-10": "0a5b8b49f484db3898139750dde375c39c6a094a8050f7efd88820b166849c45",
+    "targeth-ht261118-wqa-r03-m2-11": "51075cf7f6754e772fbb7af31bb7d80ebff0e2ee734223ed71b0ed24e41f8b31",
+    "targeth-ht261118-wqa-r03-m2-12": "09b37d4b1aabf3ccc61f3982eabf50da0df62abfdad0a8f1e909e9373ded3486",
+    "targeth-ht261118-wqa-r03-m2-13": "1296cf737071ddb6abb90f2fbab31449fa8bca599fab5a4c083372180b39e929",
+    "targeth-ht261118-wqa-r03-m2-14": "7f9f0056924e431f3a5a683285c8cd443112eb7832ae895fd0cab325f674178a",
+    "targeth-ht261118-wqa-r03-m2-15": "bda0482f8b49b1c02b0593299ac9380d9e9e6bf30ea8ca8f9caee8899f6d5e6b",
+    "targeth-ht261118-wqa-r03-m3-01": "5e9fa35d4bb9f3e698928b4bd8f1c19a15d77eea2b424a59a27590f753e66192",
+    "targeth-ht261118-wqa-r03-m3-02": "0446c8777bc554cd94b9f43fe9c0dd1959f72d436e3f8b9bdd8a7bb8d5d25576",
+    "targeth-ht261118-wqa-r03-m3-03": "960133de9d8b66436f3ffb84bdcb81de375785b3e126c91e8938aac40c782db7",
+    "targeth-ht261118-wqa-r03-m3-04": "c79dcab9c78f5a95e73bd77b817f846046cddd78ee8f6bbd58e3079159561bfa",
+    "targeth-ht261118-wqa-r03-m3-05": "e5f7c21f930c03e934918fe14bee8b631ab1caa260c60b8c6656a06135672ef3",
+    "targeth-ht261118-wqa-r03-m3-06": "f68b15651862477ac6952aad98c77d084a59b52a9e46562ea96f261009741acf",
+    "targeth-ht261118-wqa-r03-m3-07": "82af3d4d15f530179b5eb1302a167347cd90a9e31abdcd6a5063e5fca2680f5d",
+    "targeth-ht261118-wqa-r03-m3-08": "fe663df9101e99468ec8af575c0bc56bcc25344c31bf9f812c6c12a5edffcf58",
+    "targeth-ht261118-wqa-r03-m3-09": "8e2d35a4e1ec6f90cc966e79373615cf2a8449067edfc87802afa38ab3cc3256",
+    "targeth-ht261118-wqa-r03-m3-10": "4adaa2ec0e3a9aa7bc1d13606625ffe1bca384f40c7b23b1bc7c40b77c096694",
+    "targeth-ht261118-wqa-r03-m3-11": "fee5ab45a6c895500657284487f3c9ebaca9e5003f18621f32d65df34fdc298a",
+    "targeth-ht261118-wqa-r03-m3-12": "eeb6530d57bf97708f1c8a0bf8a0595c2293ae9e8ca71bf2583fccff1db9f0e2",
+    "targeth-ht261118-wqa-r03-m3-13": "5e7c483225391eb4ae70470511cef477561ec7efd20dbebb0bf4b24065a00781",
+    "targeth-ht261118-wqa-r03-m3-14": "a951c7a72790779cbc9e47e4fcf10bb9c787e682de1522752207ddf96aac6f5e",
+    "targeth-ht261118-wqa-r03-m3-15": "cc96b0926a3403c9e71da77f46b079c2cb7f2b7b9e13186be6217c046b45b841",
+    "targeth-ht261118-wqa-r03-m4-01": "3cba6a1117727bec1817774b3780ed3322608bf1444ab77e42f4920e6dcbed6f",
+    "targeth-ht261118-wqa-r03-m4-02": "64e2f2cd4709c53aaed24d0f0fcaeb52d80a9531e986df6089f2b7bbd9da2c9f",
+    "targeth-ht261118-wqa-r03-m4-03": "9408734faa83b4d170f1d91e2c4ae5b2e325df3c2348e665b1277e75bea12020",
+    "targeth-ht261118-wqa-r03-m4-04": "b13b29f4b03228e055348b3fd4a7502820ef190df7ca9dfa7e9f65b9d0aacff1",
+    "targeth-ht261118-wqa-r03-m4-05": "311a13660db233c56a1ce8708559f060cbc03551cd11559fa970e7c3e53c3dae",
+    "targeth-ht261118-wqa-r03-m4-06": "d0bb0fa8d9b57ad898a2f77da993ae9d2c1f53fce91a0d399c7c6e75e8720225",
+    "targeth-ht261118-wqa-r03-m4-07": "c5ecb26a6193f1d0bf1b2a5ab679939bada7293e9bba5563e509ec2ccc34b7c2",
+    "targeth-ht261118-wqa-r03-m4-08": "72a78eab9ffc4484de0a6e3162f00b803cc9c1aed4623503d968921cb86f4d97",
+    "targeth-ht261118-wqa-r03-m4-09": "fb40cd237e6405db3d9f814b921b3a3aeaedeef45262e0e012158488bbf662df",
+    "targeth-ht261118-wqa-r03-m4-10": "46dfa9535a172b7455fd2a5c3f29e5a561946f69aaba595ae599de9668e5165e",
+    "targeth-ht261118-wqa-r03-m4-11": "cc2abb1661a91372704a1003a16ee155d7174977e09621d07da21d0927869ab6",
+    "targeth-ht261118-wqa-r03-m4-12": "047eb308c25b6288f11efa97b573e17dd8cf24ed3c6ba40618c1f4c9ad94332d",
+    "targeth-ht261118-wqa-r03-m4-13": "53ac709c24889449f1674a22333661fd0b936e231966adafb82f4103d34c09fa",
+    "targeth-ht261118-wqa-r03-m4-14": "6cf10b5558f201d3f7ae47f66f3b89cb5072919554185043bcb28cd81bd67e68",
+    "targeth-ht261118-wqa-r03-m4-15": "586b727d322086479766ba39b67f908c2b946620869a7fb7fdde2600824568e4",
+    "targeth-ht261118-wqa-r03-m5-01": "520c783623a4c01ce91bdea9aad999c687982b18e632e43e8f8feadee184d6c3",
+    "targeth-ht261118-wqa-r03-m5-02": "23185871266829b03d532917e9d98ed190993b52b4d2f044defa009e3203650d",
+    "targeth-ht261118-wqa-r03-m5-03": "97a04296486ff68f1190da085ba3daf5e911ff363434c318a1d2f03f9323b682",
+    "targeth-ht261118-wqa-r03-m5-04": "01a8a48c026b897027a6c84db274a623385e1646dab436df80f39312e30ad18f",
+    "targeth-ht261118-wqa-r03-m5-05": "92cb919de5ce8da8217a5b6226643aa07bc246362615dd5b160b5545644c3b55",
+    "targeth-ht261118-wqa-r03-m5-06": "92c0cc4e1a7e502154be60b9aafe6e9adbea4b06610667c8f5b9c520b9ae9099",
+    "targeth-ht261118-wqa-r03-m5-07": "c4c735ebe3963d12eba14091f76d6a8a6553c39277f1de46eaf0972ca7deaa81",
+    "targeth-ht261118-wqa-r03-m5-08": "eb0cf74f51a1fc5296621f0e1177b372bf4444d51bc1197c661e95eeec14bb97",
+    "targeth-ht261118-wqa-r03-m5-09": "f369a287b53c6c46e2dcc0ebe9b09f560cc9ff6681dfedc962c0e88f83972db1",
+    "targeth-ht261118-wqa-r03-m5-10": "477ceb6cb4c0e1d4af35c263013ad79f70eff004553347399eaf73dccd83b150",
+    "targeth-ht261118-wqa-r03-m5-11": "c22e4e8a90dc5f4ee7143353cb96fdf9d1ce7364aeaeb6a2925d768414b84d40",
+    "targeth-ht261118-wqa-r03-m5-12": "8fddc3679f3f068d5dc9d23b3684c79a9d85052573db6e8a4a291d5cd0d0058d",
+    "targeth-ht261118-wqa-r03-m5-13": "0138a7999d7336f77d0b04b6bb929ce42fb752e73ccb2001f684276cefc87ead",
+    "targeth-ht261118-wqa-r03-m5-14": "3ebbed8ca23c3c11699707dc8c6c61c0a11d0bc523ef8dfffc01c8074341f266",
+    "targeth-ht261118-wqa-r03-m5-15": "a91a4b2094f67b3a3ef335ba53544b0577f389919b39dae07b550b323c83da85"
+   }
+  },
+  "registeredAt": "2026-11-19T03:13:25.636Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 8,
+     "f": 7
+    },
+    "dirs": {
+     "increase": 11,
+     "decrease": 4,
+     "unchanged": 0
+    },
+    "longest": 12,
+    "options": 45
+   },
+   "batchSha256": "16a2f657cbed96b9cc50da9178576de58d66cd093b8765678aadd43865eeb17d"
+  }
+ }
+}

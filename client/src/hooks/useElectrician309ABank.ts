@@ -96,7 +96,9 @@ export function useElectrician309ABank() {
     try { return localStorage.getItem("echelon_access_token") ?? undefined; } catch { return undefined; }
   }, []);
   const query = trpc.electricianReview.get309ABetaPractice.useQuery({ accessToken }, {
-    staleTime: 1000 * 60 * 5,
+    staleTime: 0,
+    gcTime: 0,
+    refetchOnMount: "always",
     retry: 4,
     retryDelay: 5000,
   });
@@ -104,6 +106,7 @@ export function useElectrician309ABank() {
   const questions = useMemo<DBQuestion[]>(() => (query.data?.questions ?? []).map((question) => ({
     id: question.id,
     attemptToken: question.attemptToken,
+    activityTracking: question.activityTracking,
     module: ELECTRICIAN_309A_MODULE_LABELS[question.module] ?? question.module,
     difficulty: question.difficulty,
     question: question.question,

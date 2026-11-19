@@ -1,0 +1,2454 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-wpi-class2-water-dist-r06",
+ "scope": "Owner-authorized AI-reviewed game activities: 70 items.",
+ "additions": [
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m0-01",
+    "prompt": "In a single-suction centrifugal pump, the thrust bearing is located nearest the motor and farthest from the impeller.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "In a single-suction centrifugal pump, the thrust bearing sits nearest the motor to absorb axial shaft thrust."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "bd44c46ba5341e3099b8bb1eedcea568036d68041f1260f3cb6ac09722d1ec77",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m0-02",
+    "prompt": "A centrifugal pump running in reverse produces a loud grinding noise that makes reverse rotation obvious right away.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "A centrifugal pump running backward often appears and sounds normal, making reverse rotation difficult to detect."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "f6999bf44362c738382a31f35e5213ffa44a69b605837872eec2dbc59fbf4a9a",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m0-03",
+    "prompt": "Centrifugal pumps require less installation space for most pumping capacities than other pump types.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Compact rotary construction gives centrifugal pumps smaller space requirements than other pump types at most capacities."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "901f4d42d83f3c85943b37fadf26873766f1151b7ac2cde39be3b0344cb03a89",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m0-04",
+    "prompt": "In a centrifugal pump with a common shaft shared by the pump and motor, the bearings are separate from the motor assembly.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "When a pump and motor share a common shaft without a coupling, the bearings are part of the motor assembly."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "2117f2bda6ef66ae5ad32e13b733b69cfe979f55ebf16e39f48935186f5ee0c2",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m0-05",
+    "prompt": "In a centrifugal pump, the packing gland applies even pressure to compress packing tightly around the shaft.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "The packing gland is a metal assembly that applies even pressure to compress packing around the pump shaft."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "9efb218339c289f25ffbf758dbcdd4f8ae252f96f212d13a84e63aca5908ea21",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m0-06",
+    "prompt": "Because centrifugal pumps use reciprocating motion, they have more moving parts than positive displacement pumps.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Centrifugal pumps use rotary rather than reciprocating motion, which reduces both space and moving parts."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "38067d0a248a594b44da84eb65a0437e6e8f17036d39d7e009f5c77c7498b037",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m0-07",
+    "prompt": "A lantern ring is placed between packing rings in the stuffing box to deliver lubricant onto the shaft surface.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "The lantern ring, or seal cage, introduces water, oil, or grease onto the shaft to reduce packing friction."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "92a020a8a66b4f94b88ffbc77861e9f39d39d1ebf20a5471841658946d7e62bc",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m0-08",
+    "prompt": "Centrifugal pumps under 500 hp typically come equipped with seismic pickups and x-y vibration probes at each bearing.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Pumps under 500 hp often have pressure gauges and temperature indicators, while 1000 hp units use seismic pickups and x-y probes."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "2937d27dc194531602a22ef8354f5fe451e649357e49d38360b0582aafd561d3",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m0-09",
+    "prompt": "In a pneumatic bubbler control system, multiple pressure switches with different set points can activate several pumps in sequence.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Adding pressure switches with slightly different pressure settings allows a bubbler system to stage multiple pumps."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "63c47d416547d086f5859ed66994750125c94c69a4b00c0e020ed377137e82d8",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m0-10",
+    "prompt": "A recessed-impeller centrifugal pump transfers energy more efficiently than a conventional close-clearance centrifugal pump.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Reduced direct contact between the liquid and a recessed impeller makes energy transfer less efficient."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "c47e07b73630e3d30c61110cfad1506a9c2850f53224bd17d2e0514825b95dba",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m0-11",
+    "prompt": "Vertical turbine pumps are adaptable to motor, engine, or turbine drives.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Vertical turbine pumps feature simple construction and can be driven by electric motors, engines, or turbines."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "52865c230173b0efdee3955e4a5d6b7f70d617673ab82d96664564fa10771583",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m0-12",
+    "prompt": "Because vertical turbine pumps handle heavy solids with low wear, they are widely used for raw sludge pumping.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Large amounts of solids seriously increase turbine pump maintenance, limiting their use mainly to service water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "e1d599d3e4db80eb99679d934020897f8b7b8d6fb6356a34a12f78f01dc17885",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m0-13",
+    "prompt": "Piping system design accounts for potential pipe failure at basin connections caused by subsidence of a massive structure.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Conveyance design considers structural subsidence at basin connections so pipe joints do not fail under settlement."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "31198bd94a8798e758b3cf1821830ae8d349c1d5306ff4377343869ff2dcf6fe",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m0-14",
+    "prompt": "Direct measurement of shaft vibration is unnecessary on machines with stiff bearing supports because bearing-cap readings match shaft vibration.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "On machines with stiff bearing supports, bearing-cap measurements represent only a fraction of actual shaft vibration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "76014761d5da5dccae59889f5818f447bf125a477242c78888e2cece28d1ebd5",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m0-15",
+    "prompt": "In a centrifugal pump discharge passage, decreasing water velocity converts excess energy into additional pressure head.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "As discharge velocity decreases, excess kinetic energy converts into pressure head to move water through discharge piping."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "6134043afe614039d8d35fdfc92c5c2420e2ea72a05f452fd40c2f00614d07ff",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m1-01",
+    "prompt": "Distinguish each centrifugal pump mechanical component by its structural or sealing role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Base plate",
+      "right": "Foundation supporting pump and drive unit"
+     },
+     {
+      "id": "p2",
+      "left": "Radial bearing",
+      "right": "Closest to pump; handles up-and-down stresses"
+     },
+     {
+      "id": "p3",
+      "left": "Thrust bearing",
+      "right": "Nearest motor; absorbs axial shaft thrust"
+     },
+     {
+      "id": "p4",
+      "left": "Stuffing box",
+      "right": "Rear casing assembly holding packing"
+     },
+     {
+      "id": "p5",
+      "left": "Lantern ring",
+      "right": "Delivers lubricant between packing rings"
+     },
+     {
+      "id": "p6",
+      "left": "Packing gland",
+      "right": "Compresses packing evenly around shaft"
+     }
+    ],
+    "explanation": "Each centrifugal pump component performs a distinct support, alignment, or shaft-sealing function."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "71ff980d554c2942549f7c50951551bc009552adc1956e38725715b393ea8aeb",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m1-02",
+    "prompt": "Distinguish each centrifugal pump advantage or limitation by its operational impact.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Rotary motion",
+      "right": "Reduces moving parts and maintenance"
+     },
+     {
+      "id": "p2",
+      "left": "Small space requirement",
+      "right": "Fits tighter footprints than other pumps"
+     },
+     {
+      "id": "p3",
+      "left": "Corrosion-resistant casing",
+      "right": "Protects exposed parts from corrosive fluids"
+     },
+     {
+      "id": "p4",
+      "left": "Abrasion-resistant coating",
+      "right": "Reduces wear from abrasive liquids"
+     },
+     {
+      "id": "p5",
+      "left": "Closed-valve start",
+      "right": "Needed when priming non-self-priming units"
+     },
+     {
+      "id": "p6",
+      "left": "Reverse rotation",
+      "right": "Sounds normal despite running backward"
+     }
+    ],
+    "explanation": "Centrifugal pumps offer compact rotary design and material flexibility but require priming and rotation checks."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "9623bec84b3dc9fbdedf7c7d789e190b6ef3cf253ae4f0f7fd15c5d0d8f2f33a",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m1-03",
+    "prompt": "Distinguish each pump control or monitoring device by its sensing function.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Float control",
+      "right": "Simplest mechanical level switch"
+     },
+     {
+      "id": "p2",
+      "left": "Bubbler tube",
+      "right": "Measures depth via air bubble pressure"
+     },
+     {
+      "id": "p3",
+      "left": "Pressure switch",
+      "right": "Triggers pump starter at set air pressure"
+     },
+     {
+      "id": "p4",
+      "left": "Stepped-speed controller",
+      "right": "Raises motor speed in preset steps"
+     },
+     {
+      "id": "p5",
+      "left": "RTD sensor",
+      "right": "Compact detector for bearing temperature"
+     },
+     {
+      "id": "p6",
+      "left": "Dial thermometer",
+      "right": "Monitors oil thrown from bearings"
+     }
+    ],
+    "explanation": "Level controls stage pump operation, while temperature sensors protect bearings from overheating."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "da85944e63779969e96b04d2386bf82261e13223ecb0849af3089c3f58c19f5d",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m1-04",
+    "prompt": "Distinguish each large-pump vibration monitoring component by its placement or function.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Seismic pickup",
+      "right": "Mounted on pump outboard housing"
+     },
+     {
+      "id": "p2",
+      "left": "Proximator probe",
+      "right": "Measures x-y vibration at journal bearings"
+     },
+     {
+      "id": "p3",
+      "left": "Key phasor",
+      "right": "Works with proximator via coaxial cable"
+     },
+     {
+      "id": "p4",
+      "left": "Bearing-cap sensor",
+      "right": "Reads fraction of shaft motion on stiff mounts"
+     },
+     {
+      "id": "p5",
+      "left": "Shaft vibration sensor",
+      "right": "Preferred directly on stiff bearing supports"
+     },
+     {
+      "id": "p6",
+      "left": "Under-500-hp instrumentation",
+      "right": "Typically pressure gauges and temperature indicators"
+     }
+    ],
+    "explanation": "Large pumps over 1000 hp use specialized vibration probes, whereas smaller pumps use basic gauges."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "77aa78f32031abfef1cb3887e78d7304c3c79814929ec8f772c831066462ec90",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m1-05",
+    "prompt": "Distinguish each pump configuration by its installation or hydraulic characteristic.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Wet-pit submersible pump",
+      "right": "Pump and motor submerged in wet well"
+     },
+     {
+      "id": "p2",
+      "left": "Extended-shaft wet-pit pump",
+      "right": "Pump submerged while motor stays above water"
+     },
+     {
+      "id": "p3",
+      "left": "Wet-well/dry-well station",
+      "right": "Underground facility with separate wet well"
+     },
+     {
+      "id": "p4",
+      "left": "Recessed-impeller pump",
+      "right": "Passes large objects with lower efficiency"
+     },
+     {
+      "id": "p5",
+      "left": "Vertical turbine pump",
+      "right": "Stacked impeller-bowls for high head"
+     },
+     {
+      "id": "p6",
+      "left": "Common-shaft pump",
+      "right": "Bearings built into motor assembly"
+     }
+    ],
+    "explanation": "Pump configurations vary by motor placement, impeller geometry, and well structure."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "1ad0c520649303b3a7af0443439828ad184dfbe00281f574864443828b7a6c82",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m1-06",
+    "prompt": "Distinguish each vertical turbine pump characteristic by whether it is an advantage or limitation.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Stacked impeller-bowl assemblies",
+      "right": "Advantage: increases head production"
+     },
+     {
+      "id": "p2",
+      "left": "Multiple drive options",
+      "right": "Advantage: motor, engine, or turbine drive"
+     },
+     {
+      "id": "p3",
+      "left": "Low operating noise",
+      "right": "Advantage: quiet operation"
+     },
+     {
+      "id": "p4",
+      "left": "Simple construction",
+      "right": "Advantage: straightforward mechanical layout"
+     },
+     {
+      "id": "p5",
+      "left": "High initial and repair cost",
+      "right": "Limitation: expensive purchase and overhaul"
+     },
+     {
+      "id": "p6",
+      "left": "Sensitivity to heavy solids",
+      "right": "Limitation: solids sharply raise maintenance"
+     }
+    ],
+    "explanation": "Vertical turbine pumps excel at high-head clean service water but cost more and dislike solids."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "e60b901659ffc493b5ce6b44687df33fc99c370582557b9d9660e762943d2d27",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m1-07",
+    "prompt": "Distinguish each conveyance system design load or hazard by its physical source.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Internal pressure",
+      "right": "Fluid force inside closed pipe"
+     },
+     {
+      "id": "p2",
+      "left": "Earth and traffic loads",
+      "right": "External weight from soil and vehicles"
+     },
+     {
+      "id": "p3",
+      "left": "Corrosion and abrasion",
+      "right": "Chemical and particle wear on pipe walls"
+     },
+     {
+      "id": "p4",
+      "left": "Thermal expansion",
+      "right": "Length change in exposed pipelines"
+     },
+     {
+      "id": "p5",
+      "left": "Structure subsidence",
+      "right": "Settlement stress at basin connections"
+     },
+     {
+      "id": "p6",
+      "left": "Pipe material leaching",
+      "right": "Potential adverse effect on consumer health"
+     }
+    ],
+    "explanation": "Conveyance design balances internal hydraulic forces, external soil loads, and water-quality protection."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "b118aa586b59db9bb1cb17322b8a2881e7ce6f3d28b1b5b18be5c410295e45ef",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m1-08",
+    "prompt": "Distinguish each centrifugal pump shaft and seal term by its mechanical action.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Shaft",
+      "right": "Transmits motor energy to impeller"
+     },
+     {
+      "id": "p2",
+      "left": "Packing",
+      "right": "Rings sealing shaft opening against air"
+     },
+     {
+      "id": "p3",
+      "left": "Mechanical seal",
+      "right": "Spring-held stationary and rotating faces"
+     },
+     {
+      "id": "p4",
+      "left": "Gland",
+      "right": "Metal follower compressing packing"
+     },
+     {
+      "id": "p5",
+      "left": "Lantern ring",
+      "right": "Distributes lubricant onto shaft surface"
+     },
+     {
+      "id": "p6",
+      "left": "Bearings",
+      "right": "Reduce friction for smooth shaft rotation"
+     }
+    ],
+    "explanation": "Shafts transmit power while bearings reduce friction and seals prevent air leakage."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "881e1c2d3adb6b2aed213ae691c2e928a5258e410557ee58c245df82d1745c0e",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m1-09",
+    "prompt": "Distinguish each bubbler tube control component by its role in level sensing.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Air compressor",
+      "right": "Supplies pressurized air to the tube"
+     },
+     {
+      "id": "p2",
+      "left": "Submerged tube",
+      "right": "Extends into well or clearwell"
+     },
+     {
+      "id": "p3",
+      "left": "Liquid depth",
+      "right": "Sets backpressure needed to release bubble"
+     },
+     {
+      "id": "p4",
+      "left": "Pressure relief valve",
+      "right": "Protects airline from excess pressure"
+     },
+     {
+      "id": "p5",
+      "left": "Lead pressure switch",
+      "right": "Starts first pump at lower set point"
+     },
+     {
+      "id": "p6",
+      "left": "Lag pressure switch",
+      "right": "Starts additional pump at higher set point"
+     }
+    ],
+    "explanation": "Bubbler systems convert liquid head into air pressure to sequence one or more pumps."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "1f09fdf2c4a868166bf15c7e47608ee7be32d7ec1a707e776739a29d982cae57",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m1-10",
+    "prompt": "Distinguish each recessed-impeller pump trait by its hydraulic or maintenance effect.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Reduced liquid contact",
+      "right": "Causes less efficient energy transfer"
+     },
+     {
+      "id": "p2",
+      "left": "Higher power cost",
+      "right": "Results from lower hydraulic efficiency"
+     },
+     {
+      "id": "p3",
+      "left": "Low to moderate capacity",
+      "right": "Application range limited by efficiency"
+     },
+     {
+      "id": "p4",
+      "left": "Passage of large objects",
+      "right": "Reduces clogging inside the pump"
+     },
+     {
+      "id": "p5",
+      "left": "Downstream obstruction risk",
+      "right": "Passed solids may lodge further along"
+     },
+     {
+      "id": "p6",
+      "left": "Matched piping and valving",
+      "right": "Must pass objects as large as pump discharge"
+     }
+    ],
+    "explanation": "Recessed-impeller pumps trade hydraulic efficiency for the ability to pass large solids."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "0c5537b0f9774c78daa753139d4e21b93073c07a98b0d5b989ae1fac20793089",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m3-01",
+    "prompt": "In a centrifugal pump discharge passage, water velocity decreases as the passage widens, ignoring friction. What happens to the pressure head?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "As water velocity decreases in the discharge passage, excess kinetic energy converts into additional pressure head."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "7f234805e77b4c0d1f71923803a572876ed9d9963f6d5bcf5934ca333463a503",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m3-02",
+    "prompt": "A centrifugal pump is replaced by a reciprocating pump of the same capacity. What happens to the number of moving parts?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Centrifugal pumps use rotary motion with fewer moving parts than reciprocating designs."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "094d190098c3c647453d1d8873e9c366b5308e02225a0f809d58b15192a23c22",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m3-03",
+    "prompt": "A submersible pump is moved from a dry well with a suction pipe to a submerged position below the liquid surface in a wet well. What happens to the likelihood of suction air leaks?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Submerging the pump below the liquid surface makes suction air leaks and loss of prime less likely."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "dcdad57711561ca837b0b7d469df4d41d52f63195843f239bdde3d866993404e",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m3-04",
+    "prompt": "In a wet-well/dry-well pump station, a submersible pump is installed directly in the wet well instead of constructing a separate dry well. What happens to the facility construction cost?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Eliminating a separate dry well and large structure reduces construction and operation costs."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "f4aecaa287918fd9df53869f83d35e04ad21347cb129e6f750d1531d9762f258",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m3-05",
+    "prompt": "A pump with a 1200 hp motor is installed in place of a 300 hp pump in a station. What happens to the complexity of the protective vibration instrumentation typically installed?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Pumps 1000 hp and larger typically use seismic pickups, proximators, and key phasors rather than just basic gauges."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "459b3a0da670c51b07e43cc5593939865f52c1e6acdf217e26a085260c5138c3",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m3-06",
+    "prompt": "In a vertical turbine pump, one of the stacked impeller-bowl assemblies is removed while operating at constant speed. What happens to the discharge head produced?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Vertical turbine head is built by stacking impeller-bowl assemblies, so removing a stage reduces discharge head."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "1c47b006a1cc14c42290db1958b0cee2e894337d2bbccd6fd7d869cf5fcae881",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m3-07",
+    "prompt": "A centrifugal pump's packing gland is loosened so it applies less compression to the packing around the shaft under suction lift. What happens to the friction between the packing and the shaft?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Loosening the packing gland reduces compression on the packing rings, decreasing friction against the rotating shaft."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "135f21e2d4607f9bf6456cbab545590185b014fa9b33f9e2e954b894bdc43ff6",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m3-08",
+    "prompt": "In a pneumatic bubbler tube system, the air compressor pressure is held steady while the water depth above the tube tip increases. What happens to the ease of releasing a bubble from the tube bottom?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Greater liquid depth creates higher hydrostatic pressure at the tube tip, making it harder to release a bubble."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "c671be9a08852dae9de997446f4841488314b8c4c446bb456fc372b15014ba92",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m3-09",
+    "prompt": "A conventional close-clearance centrifugal pump is replaced by a recessed-impeller pump in a line carrying large solids. What happens to the likelihood of objects clogging inside the pump?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Recessed-impeller pumps allow objects that would clog a conventional centrifugal pump to pass through."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "260a658eac682735daadd2de63797a9794f5c93abeb345ec27e8f0aa959b8803",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m3-10",
+    "prompt": "In a centrifugal pump with a mechanical seal, the spring tension holding the stationary and rotating elements together is lost. What happens to the seal's ability to prevent leakage?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "A mechanical seal relies on spring force to hold its stationary and rotating elements tightly together."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "4baf7a6acac769b9c547a7fb8d821e22426aa19c3d52a6d49784cab4306a5f7e",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m3-11",
+    "prompt": "A centrifugal pump is started with its discharge valve fully open instead of closed, while the casing is filled with water. What happens to the initial starting load on the motor?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Centrifugal pumps are normally started with the discharge valve closed to minimize starting load, then gradually opened."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "1f72bb4bdefc06b5663ebe4dd2c5ed0265eb88b27391631be951007e483fc011",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m3-12",
+    "prompt": "In a centrifugal pump, bearing-cap vibration is measured on a machine with very stiff bearing supports instead of measuring shaft vibration directly. What happens to the measured vibration amplitude compared with actual shaft vibration?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "On machines with stiff bearing supports, bearing-cap measurements capture only a fraction of actual shaft vibration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "1920821856d56caa4665129411276b245cf04fc15d749adec5bcfd6496bb986a",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m3-13",
+    "prompt": "A water main is laid in a trench with proper bedding and backfill instead of uneven rocky support. What happens to the risk of pipe failure from earth loads?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Appropriate pipe support, bedding, and backfill distribute earth and traffic loads evenly, reducing failure risk."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "99e26981762d87add41f6e75983242e8a35a7d393ab240c6bad2d7b114762bd9",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m3-14",
+    "prompt": "A centrifugal pump is operated with its casing and impeller filled with water, and then its exterior casing is cleaned without changing any internal parts or piping. What happens to the pump's discharge capacity?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Cleaning the exterior casing does not alter impeller speed, internal geometry, or system head."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "4722843a5c47775face6baea5d5d0ab3ae002d8b5ec85e2e43693a861eaeb904",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m3-15",
+    "prompt": "In a single-suction centrifugal pump, a new thrust bearing is installed nearest the motor to replace a worn thrust bearing. What happens to the shaft's ability to take up axial thrust?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The thrust bearing nearest the motor takes up the major axial thrust of the shaft opposite the discharge direction."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "d0839a61c64f97b8f5b16ab947d5253032638410292fc8bdb1ac4bc373145ac7",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m4-01",
+    "prompt": "Which statement about centrifugal pump bearings is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Radial bearings sit closest to the pump and handle up-and-down stresses."
+     },
+     {
+      "id": "b",
+      "label": "Thrust bearings sit nearest the motor and absorb axial shaft thrust."
+     },
+     {
+      "id": "c",
+      "label": "Common-shaft pumps keep their bearings mounted in a separate pump frame."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "When pump and motor share a common shaft without a coupling, the bearings are part of the motor assembly."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "8f394a0b7d475564cb9bdc606c1ca35f102cfe3f542db770a61d3b61ac9a681c",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m4-02",
+    "prompt": "Which statement about centrifugal pump shaft sealing is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "A packing gland applies even pressure to compress packing around the shaft."
+     },
+     {
+      "id": "b",
+      "label": "A lantern ring delivers lubricant between packing rings to reduce shaft friction."
+     },
+     {
+      "id": "c",
+      "label": "A mechanical seal relies on loose fiber rings to drip water for cooling."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "A mechanical seal uses a spring to hold stationary and rotating elements together, unlike fiber packing rings."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "bb3696c07595bf2ec88742933e0d089458f19914e9ec032dde751de74f9f4195",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m4-03",
+    "prompt": "Which statement about centrifugal pump advantages is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Centrifugal pumps use rotary motion, which reduces moving parts and maintenance."
+     },
+     {
+      "id": "b",
+      "label": "Centrifugal pumps require less installation space than other pump types."
+     },
+     {
+      "id": "c",
+      "label": "Centrifugal pumps use reciprocating pistons to handle corrosive fluids."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Centrifugal pumps employ rotary motion rather than reciprocating motion, using a single rotating impeller."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "4c5bb6d605c1ddb74606d1a99afb6b37e59a5340572c66236bf2b568c020a6af",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m4-04",
+    "prompt": "Which statement about centrifugal pump priming and rotation is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "A non-self-priming centrifugal pump needs water in its casing to draw water."
+     },
+     {
+      "id": "b",
+      "label": "A centrifugal pump is normally started with its discharge valve closed."
+     },
+     {
+      "id": "c",
+      "label": "A centrifugal pump running backward produces loud knocking that is easy to hear."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "A centrifugal pump running in reverse often appears and sounds normal, making reverse rotation hard to spot."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "97b56fc4848c58055eff8758d2b448f4e701c489a6ff4e496ab8445fe6670a18",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m4-05",
+    "prompt": "Which statement about wet-pit submersible pumps is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Locating the pump below the liquid surface reduces the chance of losing prime."
+     },
+     {
+      "id": "b",
+      "label": "Submersible installations eliminate the need to build a separate dry well."
+     },
+     {
+      "id": "c",
+      "label": "Submersible pumps require initial priming before each automatic start cycle."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Because a submersible pump sits below the liquid surface, it does not require initial priming."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "6ec84686d6e1888681b108f4d607c8a4cee7e41a17f830a6a2598238b79e0bce",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m4-06",
+    "prompt": "Which statement about pneumatic bubbler tube controls is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "A bubbler system measures water depth by the air pressure needed to release a bubble."
+     },
+     {
+      "id": "b",
+      "label": "Multiple pressure switches can activate several pumps in sequence as level rises."
+     },
+     {
+      "id": "c",
+      "label": "Increasing water depth above the tube tip lowers the air pressure needed to bubble."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Greater liquid depth creates higher hydrostatic pressure, so more air pressure is needed to release a bubble."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "c1b8b7ed31a7344fd1d6d939c6926414d41294ed7b6707c2db917ee51671d551",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m4-07",
+    "prompt": "Which statement about motor controllers and instrumentation is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Stepped-speed controllers can increase motor speed in steps as water level rises."
+     },
+     {
+      "id": "b",
+      "label": "Pumps under 500 hp often use pressure gauges and temperature indicators."
+     },
+     {
+      "id": "c",
+      "label": "Small pumps under 500 hp routinely include x-y vibration probes at each bearing."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Proximators with x-y vibration probes are typically used on large pumps of 1000 hp and above."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "47b37ee4c7e70f9d2274fc8512008e9978e3760fcfc9d2d90c2b83c85f3d9b00",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m4-08",
+    "prompt": "Which statement about vibration and temperature monitoring is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "RTDs offer flexibility because their small size fits near the measuring point."
+     },
+     {
+      "id": "b",
+      "label": "Dial thermometers can monitor oil thrown from pump or motor bearings."
+     },
+     {
+      "id": "c",
+      "label": "Bearing-cap sensors read higher vibration than direct shaft sensors on stiff supports."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "On machines with stiff bearing supports, bearing-cap measurements are only a fraction of actual shaft vibration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "dcda6dc25603b6dce0f0a930e84299ea3861ba71af85a32705e2fbb5bae6fef6",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m4-09",
+    "prompt": "Which statement about recessed-impeller pumps is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Reduced liquid contact with the impeller lowers energy transfer efficiency."
+     },
+     {
+      "id": "b",
+      "label": "Recessed-impeller pumps allow large objects to pass without clogging the pump."
+     },
+     {
+      "id": "c",
+      "label": "Recessed-impeller pumps are designed for high-capacity, low-power-cost service."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Lower efficiency gives recessed-impeller pumps higher power costs and limits them to low or moderate capacities."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "c465d31e6fc8aba4fc8af5e5da6d93074a7cf487e382e862f9b5847b247fa5d9",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m4-10",
+    "prompt": "Which statement about vertical turbine pumps is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Adding impeller-bowl assemblies increases the head a turbine pump produces."
+     },
+     {
+      "id": "b",
+      "label": "Vertical turbine pumps can be driven by electric motors, engines, or turbines."
+     },
+     {
+      "id": "c",
+      "label": "Vertical turbine pumps have low initial cost and handle heavy solids easily."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Vertical turbine pumps have high initial and repair costs, and heavy solids seriously increase maintenance."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "ab08302ece9a1df3dddf7dd710f465cf331bc780230c38411af3b71093d4532e",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m4-11",
+    "prompt": "Which statement about conveyance system design is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Pipe strength is designed to resist internal water pressure as well as earth and traffic loads."
+     },
+     {
+      "id": "b",
+      "label": "Exposed pipelines are designed to accommodate thermal expansion and contraction."
+     },
+     {
+      "id": "c",
+      "label": "Pipe composition has no effect on consumer health once water leaves the plant."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Conveyance design requires that pipe composition not give rise to adverse effects on consumer health."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "51c91197c3b4dc567f529bca822c7aaab9c24105c65eae5fcdb5d9bba9da708e",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m4-12",
+    "prompt": "Which statement about underground wet-well/dry-well pump stations is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Wastes are collected in a separate wet well before being pumped upward."
+     },
+     {
+      "id": "b",
+      "label": "These stations typically use non-clog pumps to lift flow into a collector line."
+     },
+     {
+      "id": "c",
+      "label": "The pump adds pressure so water flows backward into the wet well by gravity."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "The pump adds head so gravity can move the flow forward to the plant or next pump station."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "7f1bf0a9b9e81af7c6c7362f92d91c267df9c1e87e61c96aae438d1c6508a266",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m4-13",
+    "prompt": "Which statement about centrifugal pump speed adjustment is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Pump speed is directly related to the discharge capacity of a centrifugal pump."
+     },
+     {
+      "id": "b",
+      "label": "Changing pump speed typically requires speed-changing gears or special drive units."
+     },
+     {
+      "id": "c",
+      "label": "Centrifugal pump delivery can be adjusted easily by changing internal stroke length."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Centrifugal pumps are rotary machines without stroke length, and speed adjustment requires gears or special drives."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "92771d20fea17f833b814ba646607c77aa83ba0f8e18b22a2bc2bb2e7a80134d",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m4-14",
+    "prompt": "Which statement about centrifugal pump casing and shaft parts is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "The base plate serves as the foundation and usually supports the drive unit."
+     },
+     {
+      "id": "b",
+      "label": "The stuffing box sits around the shaft at the rear of the casing."
+     },
+     {
+      "id": "c",
+      "label": "The shaft transmits hydraulic energy from the impeller back to the motor."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "The rigid steel shaft transmits mechanical energy from the motor to the pump impeller."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "4ec4bcf6fe9175927a011935d5fe1b1084e5923f2376803e2d912efde52af6d1",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m4-15",
+    "prompt": "Which statement about conveyance system history and goals is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Water conveyance systems move water from the source to treatment and to users."
+     },
+     {
+      "id": "b",
+      "label": "Wastewater conveyance systems move used water from users to treatment and the environment."
+     },
+     {
+      "id": "c",
+      "label": "Modern conveyance networks consist of pipes without valves or other components."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "A conveyance or piping system is a complete network of pipes, valves, and other components."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "e0c0df4987fe7bbb5c321d47bc5d72650e455b8673967471721af55760cf795e",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m5-01",
+    "prompt": "In transmitting mechanical power in a coupled centrifugal pump, does the motor rotating the steel shaft occur before or after the impeller imparts energy to the water?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The rigid steel shaft transmits energy from the motor to the impeller, which then moves the water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "ceef4e88899a3ff51fcc6fc677f8b8da48a8a67470c76e8f4fa3bc5164d8133e",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m5-02",
+    "prompt": "In a centrifugal pump discharge passage, does converting excess velocity into additional pressure head occur before or after the water leaves the impeller?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "After water leaves the impeller and slows in the discharge passage, excess velocity converts to pressure head."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "de5862bacbb24c95c8d650783cdbabd5b976cfac6f6cadcd4b5981bd5cb003e0",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m5-03",
+    "prompt": "In starting a non-self-priming centrifugal pump, does closing the discharge valve occur before or after gradually opening it to its operating position?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "A centrifugal pump is normally started with the discharge valve closed, which is gradually opened afterward."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "eeda8338513fd67728144c74c5c5fc5d518a3ffd12660eb5bdfcfcb0770155c6",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m5-04",
+    "prompt": "In a pneumatic bubbler tube control system, does the airline pressure switch activating the pump starter occur before or after air pressure builds to match the liquid depth?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "Air pressure builds to overcome the liquid depth at the tube tip, triggering the airline pressure switch."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "50213a8cdff694e3c6c624572a4b01ed7b4f1bcdd2dc3de1d93cfcd44abca625",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m5-05",
+    "prompt": "In an underground wet-well/dry-well pump station, does collecting flow in the wet well occur before or after pumping it upward into the discharge collector line?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Flow is collected in the separate wet well first and then pumped upward into the collector line."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "b679d95bc705ba90dad173da7000812be566fa6a762bc8033e0dcd33328a5a0e",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m5-06",
+    "prompt": "In a stepped-speed motor controller responding to rising wet-well depth, does the sensor detecting increased water depth occur before or after the controller steps up motor speed?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The level sensor detects rising water depth first, prompting the controller to step up motor speed."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "f30b437c76f7909e86c0dded237b1bfdb355cbfafce1ff4ae352cc79d053163c",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m5-07",
+    "prompt": "In a recessed-impeller pump handling solids-bearing water, does material passing through the pump occur before or after it could cause an obstruction in downstream piping?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Objects pass through the recessed-impeller pump first and can lodge in less accessible downstream piping afterward."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "adada3c1807d331e6f65ea88b6989a6adbe98bfbc6c7b584ac8fc0752d8370ef",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m5-08",
+    "prompt": "In a water conveyance system, does transporting raw water from the source to the treatment facility occur before or after distributing treated water to users?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Water conveyance moves water from the source to treatment first, and from treatment to users afterward."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "a759600f172559ca5c9ec25ac1d57e0a2c7466aac0310aed217e9bda2e6f1f25",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m5-09",
+    "prompt": "In a wastewater conveyance system, does conveying wastewater from users to the treatment facility occur before or after releasing treated effluent to the environment?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Wastewater is conveyed from users to treatment first, before treated water is discharged to the environment."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "81269af32b30aa7d26c5a28134903d4ffaf42869746d0987a3854b2723d2b091",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m5-10",
+    "prompt": "In assembling a centrifugal pump stuffing box, does placing the packing rings and lantern ring around the shaft occur before or after tightening the packing gland?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Packing and the lantern ring are placed in the stuffing box before the gland compresses them."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "0b56cf8bea37a17231c203de82c84a914c231c63fd84ab2b83038ab40283fa54",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m5-11",
+    "prompt": "In a centrifugal pump with a mechanical seal, does compressing the spring occur before or after the stationary and rotating seal faces are held together?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The spring supplies the mechanical force that holds the stationary and rotating seal elements together."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "cde0acca0c9a0818a3ca93d3b04a2303e1c7affe85ad438de31440aa721cf189",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m5-12",
+    "prompt": "In a bubbler tube control system as water level falls, does the level dropping to the low set point occur before or after the pressure switch shuts off the pump?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "As the water level drops to the low set point, reduced air pressure triggers the switch to shut off the pump."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "9cba5526ff0811332a1d4bcf4ba5a9b4eebeb475339337cf2e10c4ec9283a5e1",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m5-13",
+    "prompt": "In a vertical turbine pump with stacked bowls, does water entering the lowest impeller-bowl assembly occur before or after it passes through the upper discharge bowls?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Water enters the bottom impeller-bowl stage first and gains head as it moves upward through stacked bowls."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "75be341747ef5173d78ac90645269cfaa45880c4dd0dcb9983d81765687f4e20",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m5-14",
+    "prompt": "In a centrifugal pump operating at constant flow, does water entering the pump casing occur before or after the discharge passage converts velocity into pressure head?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Water enters the casing and impeller first, and excess velocity converts to pressure head in the discharge passage."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "eecf27202fff293ed64b628782015f821dd6465c987c9592335f9541c854e42b",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r06-m5-15",
+    "prompt": "In a water-cooled bearing jacket monitored by a temperature detector, does a cooling water supply failure occur before or after the temperature detector warns of rising bearing temperature?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "A cooling water supply failure causes bearing temperature to rise, which the temperature detector warns against."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+    "notes": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+    "registeredAt": "2026-11-19T04:26:21.147Z",
+    "payloadSha256": "93faeeef0dd5ba855d153a4bd1f1ac2d19ad33d42d2d3a3f5a1de7d26e41d1f7",
+    "builderResultsSha256": "6032f7e48190305788aeeda2a8f69c089a8ef1e8ad2b735f5c33064e80f3b640"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T04:23:51.174323+00:00",
+   "attestation": "Self-reviewed all 70 authored items for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r06) against supplied source pages and collision candidates; accepted 70 items and rejected 0 items.",
+   "payloadSha256": {
+    "targeth-ht261118-wpi-class2-water-dist-r06-m0-01": "bd44c46ba5341e3099b8bb1eedcea568036d68041f1260f3cb6ac09722d1ec77",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m0-02": "f6999bf44362c738382a31f35e5213ffa44a69b605837872eec2dbc59fbf4a9a",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m0-03": "901f4d42d83f3c85943b37fadf26873766f1151b7ac2cde39be3b0344cb03a89",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m0-04": "2117f2bda6ef66ae5ad32e13b733b69cfe979f55ebf16e39f48935186f5ee0c2",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m0-05": "9efb218339c289f25ffbf758dbcdd4f8ae252f96f212d13a84e63aca5908ea21",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m0-06": "38067d0a248a594b44da84eb65a0437e6e8f17036d39d7e009f5c77c7498b037",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m0-07": "92a020a8a66b4f94b88ffbc77861e9f39d39d1ebf20a5471841658946d7e62bc",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m0-08": "2937d27dc194531602a22ef8354f5fe451e649357e49d38360b0582aafd561d3",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m0-09": "63c47d416547d086f5859ed66994750125c94c69a4b00c0e020ed377137e82d8",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m0-10": "c47e07b73630e3d30c61110cfad1506a9c2850f53224bd17d2e0514825b95dba",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m0-11": "52865c230173b0efdee3955e4a5d6b7f70d617673ab82d96664564fa10771583",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m0-12": "e1d599d3e4db80eb99679d934020897f8b7b8d6fb6356a34a12f78f01dc17885",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m0-13": "31198bd94a8798e758b3cf1821830ae8d349c1d5306ff4377343869ff2dcf6fe",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m0-14": "76014761d5da5dccae59889f5818f447bf125a477242c78888e2cece28d1ebd5",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m0-15": "6134043afe614039d8d35fdfc92c5c2420e2ea72a05f452fd40c2f00614d07ff",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m1-01": "71ff980d554c2942549f7c50951551bc009552adc1956e38725715b393ea8aeb",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m1-02": "9623bec84b3dc9fbdedf7c7d789e190b6ef3cf253ae4f0f7fd15c5d0d8f2f33a",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m1-03": "da85944e63779969e96b04d2386bf82261e13223ecb0849af3089c3f58c19f5d",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m1-04": "77aa78f32031abfef1cb3887e78d7304c3c79814929ec8f772c831066462ec90",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m1-05": "1ad0c520649303b3a7af0443439828ad184dfbe00281f574864443828b7a6c82",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m1-06": "e60b901659ffc493b5ce6b44687df33fc99c370582557b9d9660e762943d2d27",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m1-07": "b118aa586b59db9bb1cb17322b8a2881e7ce6f3d28b1b5b18be5c410295e45ef",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m1-08": "881e1c2d3adb6b2aed213ae691c2e928a5258e410557ee58c245df82d1745c0e",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m1-09": "1f09fdf2c4a868166bf15c7e47608ee7be32d7ec1a707e776739a29d982cae57",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m1-10": "0c5537b0f9774c78daa753139d4e21b93073c07a98b0d5b989ae1fac20793089",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m3-01": "7f234805e77b4c0d1f71923803a572876ed9d9963f6d5bcf5934ca333463a503",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m3-02": "094d190098c3c647453d1d8873e9c366b5308e02225a0f809d58b15192a23c22",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m3-03": "dcdad57711561ca837b0b7d469df4d41d52f63195843f239bdde3d866993404e",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m3-04": "f4aecaa287918fd9df53869f83d35e04ad21347cb129e6f750d1531d9762f258",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m3-05": "459b3a0da670c51b07e43cc5593939865f52c1e6acdf217e26a085260c5138c3",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m3-06": "1c47b006a1cc14c42290db1958b0cee2e894337d2bbccd6fd7d869cf5fcae881",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m3-07": "135f21e2d4607f9bf6456cbab545590185b014fa9b33f9e2e954b894bdc43ff6",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m3-08": "c671be9a08852dae9de997446f4841488314b8c4c446bb456fc372b15014ba92",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m3-09": "260a658eac682735daadd2de63797a9794f5c93abeb345ec27e8f0aa959b8803",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m3-10": "4baf7a6acac769b9c547a7fb8d821e22426aa19c3d52a6d49784cab4306a5f7e",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m3-11": "1f72bb4bdefc06b5663ebe4dd2c5ed0265eb88b27391631be951007e483fc011",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m3-12": "1920821856d56caa4665129411276b245cf04fc15d749adec5bcfd6496bb986a",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m3-13": "99e26981762d87add41f6e75983242e8a35a7d393ab240c6bad2d7b114762bd9",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m3-14": "4722843a5c47775face6baea5d5d0ab3ae002d8b5ec85e2e43693a861eaeb904",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m3-15": "d0839a61c64f97b8f5b16ab947d5253032638410292fc8bdb1ac4bc373145ac7",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m4-01": "8f394a0b7d475564cb9bdc606c1ca35f102cfe3f542db770a61d3b61ac9a681c",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m4-02": "bb3696c07595bf2ec88742933e0d089458f19914e9ec032dde751de74f9f4195",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m4-03": "4c5bb6d605c1ddb74606d1a99afb6b37e59a5340572c66236bf2b568c020a6af",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m4-04": "97b56fc4848c58055eff8758d2b448f4e701c489a6ff4e496ab8445fe6670a18",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m4-05": "6ec84686d6e1888681b108f4d607c8a4cee7e41a17f830a6a2598238b79e0bce",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m4-06": "c1b8b7ed31a7344fd1d6d939c6926414d41294ed7b6707c2db917ee51671d551",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m4-07": "47b37ee4c7e70f9d2274fc8512008e9978e3760fcfc9d2d90c2b83c85f3d9b00",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m4-08": "dcda6dc25603b6dce0f0a930e84299ea3861ba71af85a32705e2fbb5bae6fef6",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m4-09": "c465d31e6fc8aba4fc8af5e5da6d93074a7cf487e382e862f9b5847b247fa5d9",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m4-10": "ab08302ece9a1df3dddf7dd710f465cf331bc780230c38411af3b71093d4532e",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m4-11": "51c91197c3b4dc567f529bca822c7aaab9c24105c65eae5fcdb5d9bba9da708e",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m4-12": "7f1bf0a9b9e81af7c6c7362f92d91c267df9c1e87e61c96aae438d1c6508a266",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m4-13": "92771d20fea17f833b814ba646607c77aa83ba0f8e18b22a2bc2bb2e7a80134d",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m4-14": "4ec4bcf6fe9175927a011935d5fe1b1084e5923f2376803e2d912efde52af6d1",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m4-15": "e0c0df4987fe7bbb5c321d47bc5d72650e455b8673967471721af55760cf795e",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m5-01": "ceef4e88899a3ff51fcc6fc677f8b8da48a8a67470c76e8f4fa3bc5164d8133e",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m5-02": "de5862bacbb24c95c8d650783cdbabd5b976cfac6f6cadcd4b5981bd5cb003e0",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m5-03": "eeda8338513fd67728144c74c5c5fc5d518a3ffd12660eb5bdfcfcb0770155c6",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m5-04": "50213a8cdff694e3c6c624572a4b01ed7b4f1bcdd2dc3de1d93cfcd44abca625",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m5-05": "b679d95bc705ba90dad173da7000812be566fa6a762bc8033e0dcd33328a5a0e",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m5-06": "f30b437c76f7909e86c0dded237b1bfdb355cbfafce1ff4ae352cc79d053163c",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m5-07": "adada3c1807d331e6f65ea88b6989a6adbe98bfbc6c7b584ac8fc0752d8370ef",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m5-08": "a759600f172559ca5c9ec25ac1d57e0a2c7466aac0310aed217e9bda2e6f1f25",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m5-09": "81269af32b30aa7d26c5a28134903d4ffaf42869746d0987a3854b2723d2b091",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m5-10": "0b56cf8bea37a17231c203de82c84a914c231c63fd84ab2b83038ab40283fa54",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m5-11": "cde0acca0c9a0818a3ca93d3b04a2303e1c7affe85ad438de31440aa721cf189",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m5-12": "9cba5526ff0811332a1d4bcf4ba5a9b4eebeb475339337cf2e10c4ec9283a5e1",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m5-13": "75be341747ef5173d78ac90645269cfaa45880c4dd0dcb9983d81765687f4e20",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m5-14": "eecf27202fff293ed64b628782015f821dd6465c987c9592335f9541c854e42b",
+    "targeth-ht261118-wpi-class2-water-dist-r06-m5-15": "93faeeef0dd5ba855d153a4bd1f1ac2d19ad33d42d2d3a3f5a1de7d26e41d1f7"
+   }
+  },
+  "registeredAt": "2026-11-19T04:26:21.147Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 8,
+     "f": 7
+    },
+    "dirs": {
+     "increase": 5,
+     "decrease": 9,
+     "unchanged": 1
+    },
+    "longest": 6,
+    "options": 30
+   },
+   "batchSha256": "907c31c0cb45a4f5475a88029fb0bd47478748c10d482c41ecddfe50bcdff053"
+  }
+ }
+}

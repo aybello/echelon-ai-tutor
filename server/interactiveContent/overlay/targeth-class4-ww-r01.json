@@ -1,0 +1,625 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-class4-ww-r01",
+ "scope": "Owner-authorized AI-reviewed game activities: 12 items.",
+ "additions": [
+  {
+   "courseKey": "class4-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-ww-r01-m0-01",
+    "prompt": "Anoxygenic photosynthetic bacteria in a pond anaerobic zone oxidize hydrogen sulfide without generating dissolved oxygen.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Strict anaerobes performing anoxygenic photosynthesis convert reduced sulfur compounds such as hydrogen sulfide into elemental sulfur in the complete absence of oxygen."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:47:38.254099+00:00",
+    "notes": "Strict Hydrogen self-review of 13 targeth-class4-ww-r01 items against supplied source pages and collision candidates; 12 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T02:48:04.241Z",
+    "payloadSha256": "f8b9d2984484d9e549766cb397149734bb10c2e35e603209430fcd3e79790c60",
+    "builderResultsSha256": "5ce6483454427262e794a15941c3d22ee066af713c0d13d26c4a98f1c0537356"
+   }
+  },
+  {
+   "courseKey": "class4-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class4-ww-r01-m0-02",
+    "prompt": "Diurnal flow variation in a municipal wastewater plant refers to multi-year changes in groundwater infiltration.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Diurnal flow variation describes daily fluctuations in wastewater flow, which can range from 50 to 200 percent of average daily flow."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:47:38.254099+00:00",
+    "notes": "Strict Hydrogen self-review of 13 targeth-class4-ww-r01 items against supplied source pages and collision candidates; 12 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T02:48:04.241Z",
+    "payloadSha256": "d008154217a2666b9feec62b2a004e2e45a26339a8a8f115a5a3392a5214c96a",
+    "builderResultsSha256": "5ce6483454427262e794a15941c3d22ee066af713c0d13d26c4a98f1c0537356"
+   }
+  },
+  {
+   "courseKey": "class4-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-ww-r01-m1-01",
+    "prompt": "Match each wastewater collection stream to its defining composition.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Industrial wastewater",
+      "right": "Manufacturing wastes treated independently when safer or more economical"
+     },
+     {
+      "id": "p2",
+      "left": "Combined wastewater",
+      "right": "Sanitary sewage and stormwater transported together in one pipe"
+     },
+     {
+      "id": "p3",
+      "left": "Separate stormwater",
+      "right": "Surface runoff carrying street debris, road salt, and grit"
+     },
+     {
+      "id": "p4",
+      "left": "Diurnal flow variation",
+      "right": "Daily flow swings between 50 and 200 percent of average"
+     },
+     {
+      "id": "p5",
+      "left": "Domestic wastewater",
+      "right": "Household and commercial sanitary flows without industrial slugs"
+     },
+     {
+      "id": "p6",
+      "left": "Infiltration",
+      "right": "Groundwater entering collection pipes and raising baseline plant flow"
+     }
+    ],
+    "explanation": "Collection systems carry distinct waste streams and experience daily diurnal swings alongside groundwater infiltration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:47:38.254099+00:00",
+    "notes": "Strict Hydrogen self-review of 13 targeth-class4-ww-r01 items against supplied source pages and collision candidates; 12 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T02:48:04.241Z",
+    "payloadSha256": "7e393b9aea2189ab6c9092ac1bdcbb3d409e7fd7367490d2de236e0e38a1e1c7",
+    "builderResultsSha256": "5ce6483454427262e794a15941c3d22ee066af713c0d13d26c4a98f1c0537356"
+   }
+  },
+  {
+   "courseKey": "class4-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-ww-r01-m1-02",
+    "prompt": "Match each preliminary treatment unit or practice to its mechanical protection role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Bar screening",
+      "right": "Captures large rags and debris that jam downstream pumps"
+     },
+     {
+      "id": "p2",
+      "left": "Grit removal",
+      "right": "Separates abrasive sand to prevent excessive wear on machinery"
+     },
+     {
+      "id": "p3",
+      "left": "Shredding",
+      "right": "Cuts coarse solids into smaller pieces to pass through equipment"
+     },
+     {
+      "id": "p4",
+      "left": "Preaeration",
+      "right": "Adds air early to freshen septic sewage and aid grease separation"
+     },
+     {
+      "id": "p5",
+      "left": "Flow equalization",
+      "right": "Dampens peak hydraulic surges ahead of downstream treatment units"
+     },
+     {
+      "id": "p6",
+      "left": "Chemical addition",
+      "right": "Conditions incoming wastewater for odor control or improved settling"
+     }
+    ],
+    "explanation": "Preliminary treatment processes protect downstream machinery from clogs, jams, and wear while saving tank space."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:47:38.254099+00:00",
+    "notes": "Strict Hydrogen self-review of 13 targeth-class4-ww-r01 items against supplied source pages and collision candidates; 12 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T02:48:04.241Z",
+    "payloadSha256": "001d9ff9ff27e793445da7f4e624ae309dcc5f27a32246525b14a6d606ca65b7",
+    "builderResultsSha256": "5ce6483454427262e794a15941c3d22ee066af713c0d13d26c4a98f1c0537356"
+   }
+  },
+  {
+   "courseKey": "class4-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-ww-r01-m1-03",
+    "prompt": "Match each primary clarifier sludge-solids symptom to its operational cause.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Excessive grit accumulation",
+      "right": "Heavy inorganic material compacts on the clarifier floor"
+     },
+     {
+      "id": "p2",
+      "left": "Plugged withdrawal line",
+      "right": "Restricts sludge removal and concentrates solids in the hopper"
+     },
+     {
+      "id": "p3",
+      "left": "Long sludge retention time",
+      "right": "Allows settled solids to compact further before pumping"
+     },
+     {
+      "id": "p4",
+      "left": "Primary pump malfunction",
+      "right": "Fails to withdraw sludge at the required rate"
+     },
+     {
+      "id": "p5",
+      "left": "Increased influent loadings",
+      "right": "Delivers more settleable solids per day to the basin"
+     },
+     {
+      "id": "p6",
+      "left": "Primary effluent cloudiness",
+      "right": "Dissolved food and nutrients remaining after settling"
+     }
+    ],
+    "explanation": "High primary sludge solids concentrations stem from extended floor retention, equipment restrictions, or heavy solids loading."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:47:38.254099+00:00",
+    "notes": "Strict Hydrogen self-review of 13 targeth-class4-ww-r01 items against supplied source pages and collision candidates; 12 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T02:48:04.241Z",
+    "payloadSha256": "9cea46c41e1f0da41623ea2445e75a633375a901349871b506253b3fb02868d1",
+    "builderResultsSha256": "5ce6483454427262e794a15941c3d22ee066af713c0d13d26c4a98f1c0537356"
+   }
+  },
+  {
+   "courseKey": "class4-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-ww-r01-m1-04",
+    "prompt": "Match each secondary treatment category to its biological mechanism.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Fixed-film system",
+      "right": "Biomass slime attached to media contacts passing wastewater"
+     },
+     {
+      "id": "p2",
+      "left": "Suspended-growth system",
+      "right": "Microorganisms remain mixed throughout the liquid volume"
+     },
+     {
+      "id": "p3",
+      "left": "Aerobic decomposition",
+      "right": "Produces carbon dioxide, stable solids, and new organisms"
+     },
+     {
+      "id": "p4",
+      "left": "Secondary settling tank",
+      "right": "Removes biological solids produced during organic breakdown"
+     },
+     {
+      "id": "p5",
+      "left": "Stabilization pond",
+      "right": "Uses natural biological and climatic factors to treat waste"
+     },
+     {
+      "id": "p6",
+      "left": "Trickling filter",
+      "right": "Fixed-film process included in secondary treatment definitions"
+     }
+    ],
+    "explanation": "Secondary treatment relies on attached or suspended biomass to decompose organics aerobically, followed by solids separation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:47:38.254099+00:00",
+    "notes": "Strict Hydrogen self-review of 13 targeth-class4-ww-r01 items against supplied source pages and collision candidates; 12 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T02:48:04.241Z",
+    "payloadSha256": "c3c1a3bbc72a610bb7bc5901e1c5f0a4f9dd06f07a201f60502fe3886651d742",
+    "builderResultsSha256": "5ce6483454427262e794a15941c3d22ee066af713c0d13d26c4a98f1c0537356"
+   }
+  },
+  {
+   "courseKey": "class4-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-ww-r01-m1-05",
+    "prompt": "Match each wastewater pond type to its characteristic process.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Aerobic pond",
+      "right": "Maintains dissolved oxygen throughout the entire water depth"
+     },
+     {
+      "id": "p2",
+      "left": "Anaerobic pond",
+      "right": "Produces hydrogen sulfide and odorous compounds without oxygen"
+     },
+     {
+      "id": "p3",
+      "left": "Polishing pond",
+      "right": "Provides 1 to 3 days detention for final BOD5 and solids removal"
+     },
+     {
+      "id": "p4",
+      "left": "Mechanically aerated pond",
+      "right": "Uses diffused or surface aeration to supplement natural oxygen"
+     },
+     {
+      "id": "p5",
+      "left": "Recirculated anaerobic pond",
+      "right": "Returns downstream water to reduce surface sulfide odors"
+     },
+     {
+      "id": "p6",
+      "left": "Facultative pond",
+      "right": "Combines an aerobic upper layer with an anaerobic bottom zone"
+     }
+    ],
+    "explanation": "Pond classifications reflect their oxygen regime, detention time, and whether mechanical aeration or recirculation is applied."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:47:38.254099+00:00",
+    "notes": "Strict Hydrogen self-review of 13 targeth-class4-ww-r01 items against supplied source pages and collision candidates; 12 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T02:48:04.241Z",
+    "payloadSha256": "9b54045b458d7401bb8c627e4c64e101ac2eccc0624d4c7137cd67ed157a4d2e",
+    "builderResultsSha256": "5ce6483454427262e794a15941c3d22ee066af713c0d13d26c4a98f1c0537356"
+   }
+  },
+  {
+   "courseKey": "class4-ww",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class4-ww-r01-m1-06",
+    "prompt": "Match each pond organism group to its ecological function.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Purple sulfur bacteria",
+      "right": "Oxidize odorous sulfide to elemental sulfur or sulfate"
+     },
+     {
+      "id": "p2",
+      "left": "Oxygenic algae",
+      "right": "Produce dissolved oxygen through sunlight-driven photosynthesis"
+     },
+     {
+      "id": "p3",
+      "left": "Aerobic bacteria",
+      "right": "Consume organic matter using oxygen supplied by algae"
+     },
+     {
+      "id": "p4",
+      "left": "Planktonic Cladocera",
+      "right": "Invertebrate fauna that feed on suspended pond material"
+     },
+     {
+      "id": "p5",
+      "left": "Benthic Chironomidae",
+      "right": "Bottom-dwelling invertebrates aiding organic stabilization"
+     },
+     {
+      "id": "p6",
+      "left": "Cyanobacteria",
+      "right": "Photosynthetic microbes converting carbon dioxide into organic matter"
+     }
+    ],
+    "explanation": "Pond ecology depends on interactions among photosynthetic producers, aerobic decomposers, sulfide-oxidizing bacteria, and grazing invertebrates."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:47:38.254099+00:00",
+    "notes": "Strict Hydrogen self-review of 13 targeth-class4-ww-r01 items against supplied source pages and collision candidates; 12 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T02:48:04.241Z",
+    "payloadSha256": "6b64303174f9e6aa0c9cb9d9048a8a2a4a315fbf7e6a8efce0ac15ab3c4ab481",
+    "builderResultsSha256": "5ce6483454427262e794a15941c3d22ee066af713c0d13d26c4a98f1c0537356"
+   }
+  },
+  {
+   "courseKey": "class4-ww",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class4-ww-r01-m1-07",
+    "prompt": "Match each pond photosynthetic or metabolic process to its chemical outcome.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Oxygenic photosynthesis",
+      "right": "Converts carbon dioxide to organic compounds and releases oxygen"
+     },
+     {
+      "id": "p2",
+      "left": "Anoxygenic photosynthesis",
+      "right": "Oxidizes reduced sulfur compounds without producing oxygen"
+     },
+     {
+      "id": "p3",
+      "left": "Strict anaerobe metabolism",
+      "right": "Functions only in the complete absence of dissolved oxygen"
+     },
+     {
+      "id": "p4",
+      "left": "Algal cell synthesis",
+      "right": "Generates new organic suspended solids that add turbidity"
+     },
+     {
+      "id": "p5",
+      "left": "Bacterial mineralization",
+      "right": "Breaks down complex organic waste into simpler compounds"
+     },
+     {
+      "id": "p6",
+      "left": "Respiration",
+      "right": "Consumes oxygen to release energy from organic substrates"
+     }
+    ],
+    "explanation": "Oxygenic and anoxygenic pathways differ in oxygen production, electron donors, and their effects on pond solids."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:47:38.254099+00:00",
+    "notes": "Strict Hydrogen self-review of 13 targeth-class4-ww-r01 items against supplied source pages and collision candidates; 12 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T02:48:04.241Z",
+    "payloadSha256": "006b329d872748374aac53efe8a933811162d05d15289afd6447edbe8c34fc8b",
+    "builderResultsSha256": "5ce6483454427262e794a15941c3d22ee066af713c0d13d26c4a98f1c0537356"
+   }
+  },
+  {
+   "courseKey": "class4-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-ww-r01-m1-08",
+    "prompt": "Match each nitrogen transformation in a treatment pond to its pathway.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Influent organic nitrogen",
+      "right": "Enters the pond bound within particulate and dissolved matter"
+     },
+     {
+      "id": "p2",
+      "left": "Photosynthetic oxidation",
+      "right": "Converts organic nitrogen forms under sunlit algal activity"
+     },
+     {
+      "id": "p3",
+      "left": "Mechanical oxidation",
+      "right": "Supplies air to drive ammonia conversion in aerated cells"
+     },
+     {
+      "id": "p4",
+      "left": "Nitrite formation",
+      "right": "Intermediate nitrogen compound produced during ammonia oxidation"
+     },
+     {
+      "id": "p5",
+      "left": "Nitrate formation",
+      "right": "Oxidized nitrogen form leaving in the pond effluent"
+     },
+     {
+      "id": "p6",
+      "left": "Ammonia nitrogen",
+      "right": "Reduced inorganic nitrogen available for biological oxidation"
+     }
+    ],
+    "explanation": "Nitrogen in treatment ponds shifts from organic and ammonia forms through nitrite to nitrate via photosynthetic or mechanical oxidation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:47:38.254099+00:00",
+    "notes": "Strict Hydrogen self-review of 13 targeth-class4-ww-r01 items against supplied source pages and collision candidates; 12 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T02:48:04.241Z",
+    "payloadSha256": "faeef8278c61cd1ed0c78ce52b91b369ad596122fd7c568d230ef8161188cb83",
+    "builderResultsSha256": "5ce6483454427262e794a15941c3d22ee066af713c0d13d26c4a98f1c0537356"
+   }
+  },
+  {
+   "courseKey": "class4-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-ww-r01-m1-10",
+    "prompt": "Match each stabilization pond long-term process to its operational effect.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Influent solids settling",
+      "right": "Deposits heavy incoming particles onto the pond bottom"
+     },
+     {
+      "id": "p2",
+      "left": "Biological solids settling",
+      "right": "Adds dead biomass and algal cells to the bottom sludge"
+     },
+     {
+      "id": "p3",
+      "left": "Reduced detention time",
+      "right": "Results from decades of sludge accumulation shrinking volume"
+     },
+     {
+      "id": "p4",
+      "left": "Pond cleaning",
+      "right": "Restores hydraulic capacity after 20 to 30 years of sludge buildup"
+     },
+     {
+      "id": "p5",
+      "left": "Pathogen inactivation",
+      "right": "Transforms viable disease organisms into unviable forms"
+     },
+     {
+      "id": "p6",
+      "left": "Aerobic surface decomposition",
+      "right": "Uses dissolved oxygen and nutrients to stabilize organics"
+     }
+    ],
+    "explanation": "Over decades, settled influent and biological solids reduce pond detention time and performance until cleaning is required."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:47:38.254099+00:00",
+    "notes": "Strict Hydrogen self-review of 13 targeth-class4-ww-r01 items against supplied source pages and collision candidates; 12 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T02:48:04.241Z",
+    "payloadSha256": "f687bc8ade7340854877480e7e029d78fdffd01c58a0dc39d52863b4fd75aaa6",
+    "builderResultsSha256": "5ce6483454427262e794a15941c3d22ee066af713c0d13d26c4a98f1c0537356"
+   }
+  },
+  {
+   "courseKey": "class4-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-ww-r01-m3-01",
+    "prompt": "A polishing pond receiving secondary effluent is operated at a shallower depth and longer detention time than its design range during warm, sunny weather. What happens to the algal suspended solids concentration in the pond?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Excessive detention time or too shallow a depth promotes algae growth, which increases the suspended solids concentration in the polishing pond."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:47:38.254099+00:00",
+    "notes": "Strict Hydrogen self-review of 13 targeth-class4-ww-r01 items against supplied source pages and collision candidates; 12 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T02:48:04.241Z",
+    "payloadSha256": "b5c779e60ed95c2133613ea8ea560ab575728d862786c5129b552eda43a0174c",
+    "builderResultsSha256": "5ce6483454427262e794a15941c3d22ee066af713c0d13d26c4a98f1c0537356"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T02:47:38.254099+00:00",
+   "attestation": "Strict Hydrogen self-review of 13 targeth-class4-ww-r01 items against supplied source pages and collision candidates; 12 accepted, 1 rejected.",
+   "payloadSha256": {
+    "targeth-ht261118-class4-ww-r01-m0-01": "f8b9d2984484d9e549766cb397149734bb10c2e35e603209430fcd3e79790c60",
+    "targeth-ht261118-class4-ww-r01-m0-02": "d008154217a2666b9feec62b2a004e2e45a26339a8a8f115a5a3392a5214c96a",
+    "targeth-ht261118-class4-ww-r01-m1-01": "7e393b9aea2189ab6c9092ac1bdcbb3d409e7fd7367490d2de236e0e38a1e1c7",
+    "targeth-ht261118-class4-ww-r01-m1-02": "001d9ff9ff27e793445da7f4e624ae309dcc5f27a32246525b14a6d606ca65b7",
+    "targeth-ht261118-class4-ww-r01-m1-03": "9cea46c41e1f0da41623ea2445e75a633375a901349871b506253b3fb02868d1",
+    "targeth-ht261118-class4-ww-r01-m1-04": "c3c1a3bbc72a610bb7bc5901e1c5f0a4f9dd06f07a201f60502fe3886651d742",
+    "targeth-ht261118-class4-ww-r01-m1-05": "9b54045b458d7401bb8c627e4c64e101ac2eccc0624d4c7137cd67ed157a4d2e",
+    "targeth-ht261118-class4-ww-r01-m1-06": "6b64303174f9e6aa0c9cb9d9048a8a2a4a315fbf7e6a8efce0ac15ab3c4ab481",
+    "targeth-ht261118-class4-ww-r01-m1-07": "006b329d872748374aac53efe8a933811162d05d15289afd6447edbe8c34fc8b",
+    "targeth-ht261118-class4-ww-r01-m1-08": "faeef8278c61cd1ed0c78ce52b91b369ad596122fd7c568d230ef8161188cb83",
+    "targeth-ht261118-class4-ww-r01-m1-10": "f687bc8ade7340854877480e7e029d78fdffd01c58a0dc39d52863b4fd75aaa6",
+    "targeth-ht261118-class4-ww-r01-m3-01": "b5c779e60ed95c2133613ea8ea560ab575728d862786c5129b552eda43a0174c"
+   }
+  },
+  "registeredAt": "2026-11-19T02:48:04.241Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 1,
+     "f": 1
+    },
+    "dirs": {
+     "increase": 1,
+     "decrease": 0,
+     "unchanged": 0
+    },
+    "longest": 0,
+    "options": 1
+   },
+   "batchSha256": "86e60c48dd63ee7212f42ccf3abf3a20c781dc35f5914d697272b198b2bae8b4"
+  }
+ }
+}

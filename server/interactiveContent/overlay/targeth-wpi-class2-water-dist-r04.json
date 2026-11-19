@@ -1,0 +1,2454 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-wpi-class2-water-dist-r04",
+ "scope": "Owner-authorized AI-reviewed game activities: 70 items.",
+ "additions": [
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m0-01",
+    "prompt": "In a hydraulic system, energy head in feet of water is equivalent to foot-pounds per pound of water.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Hydraulic energy is conveniently expressed as head in feet of water, which equals foot-pounds per pound of water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "27096bf931c04ec6e702c8abc507197b94167226def3c793cd29aecd00ece6d1",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m0-02",
+    "prompt": "Atmospheric air pressure at high mountain elevations is greater than at sea level because the overlying air blanket is thicker.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Atmospheric pressure decreases at higher elevations because the overlying blanket of air is thinner."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "84b6b35dac5b0c14b42fb673d0b1b760c1f8a318e51b3422157652ed1c190f72",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m0-03",
+    "prompt": "As water moves through a rough-walled pipe, head loss reduces the pressure available to push water up a piezometer.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Pressure energy is consumed overcoming interior pipe roughness, leaving less pressure to raise water in a piezometer."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "ad41879ab28d00d7d11e4a1dc7fe5ee0e56d2429873881639bb8a04cd792230b",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m0-04",
+    "prompt": "In a horizontal pipeline, elevation heads at two points along the pipe double in Bernoulli's equation.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Because the pipe is horizontal, the elevation heads are equal and cancel out of Bernoulli's equation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "23c69ccfedab8a07c0dac6e02cef31f2cd410488f99865b5b490b5016655cadc",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m0-05",
+    "prompt": "In an unconfined aquifer, a higher rate of natural groundwater movement toward a pumped well produces a sharper cone of depression.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "A high rate of water movement toward the well produces a shallow cone that stabilizes, whereas a low rate produces a sharp cone."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "52f81dffaa2c1c7e0a66059855b9c8776bdfbad60e9507c3bf40c01988e434e3",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m0-06",
+    "prompt": "A sudden drop in a well's specific capacity can point to pump malfunction or plugging of the well screen.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "A drop in specific capacity indicates serious issues such as pump malfunction or screen plugging."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "1063b1d6216befd07301d7b474988e884878724c9a4732cc152061a6641c298b",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m0-07",
+    "prompt": "In wet well operations, the suction line is submerged below the water surface to prevent entrained air from entering the pump.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Adequate submergence keeps air entrained by active water movement from entering the pump intake."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "8fa762c21816321bbef2a91fbc31cc051027b2beb629f9e8310d0728d3b76ea8",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m0-08",
+    "prompt": "Laminar flow is typical of normal distribution pipe flow because water velocities in mains are very high.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Turbulent flow is typical of normal pipe flow; laminar flow occurs at very low velocities such as in groundwater."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "c26447ddec4965f9f5a27e7b77903896c24d870ce59e31f7eb35a83003611284",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m0-09",
+    "prompt": "For water flowing in an open channel, the hydraulic grade line sits far below the profile of the water surface.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "In an open channel, the hydraulic grade line coincides with the profile of the water surface."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "b2df1809f400e6e088b40fe46632f84825d5b1dcf661e597f95aff03ff09dac6",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m0-10",
+    "prompt": "In open-channel analysis, specific energy is the sum of pressure head and velocity head.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Specific energy (E) equals the pressure head (y) plus the velocity head (V squared over 2g)."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "55283d330ba2b2d7110b6ac0716ed2c771a44ec8d56ee0375617d781ade60dee",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m0-11",
+    "prompt": "Nonuniform flow occurs when depth, cross-sectional area, and velocity remain constant from section to section.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Constant depth, area, and velocity describe uniform flow; nonuniform flow has changing section properties."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "191b2aa1ea0c164dd4db40a32074e6141a36299c13198b3f4df4008293071a27",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m0-12",
+    "prompt": "When two pipes of different sizes are connected in series, head losses through the individual sections are cumulative.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "In series piping, total head loss is the sum of the losses through each connected pipe section."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "6d15a6d85b21745f68648ada4886f161e83267e58dfb860b3464bd89afbe3798",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m0-13",
+    "prompt": "At low pH, hypochlorous acid predominates over the hypochlorite ion, giving free chlorine higher germicidal efficiency.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Hypochlorous acid is a much stronger germicide than the hypochlorite ion and predominates at low pH."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "a7d65c3b25c17c9c8f493e9e115b77be7b42f2d3ff924cc3b6408834a2be4764",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m0-14",
+    "prompt": "Under identical free-chlorine conditions, poliovirus is less resistant to inactivation than reovirus.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Poliovirus was the most resistant enteric virus tested, requiring over 60 minutes compared with 2.7 minutes for reovirus."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "98f0f0e201f9af2e586b6a900f3a5d6bd792b00da2fc525580b3f50bb57526f3",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m0-15",
+    "prompt": "Lime softening removes calcium and magnesium hardness by shifting the carbonate equilibrium.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Lime softening shifts the carbonate equilibrium so dissolved calcium and magnesium hardness precipitate out."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "25e488ea8af2e1908ca7f23d94fa4d6d9c9d1c2e2eeaeab51e0c28436f44ed7b",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m1-01",
+    "prompt": "Distinguish each hydraulic energy term by its physical definition.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Elevation head",
+      "right": "Potential energy due to vertical position"
+     },
+     {
+      "id": "p2",
+      "left": "Pressure head",
+      "right": "Potential energy due to fluid pressure"
+     },
+     {
+      "id": "p3",
+      "left": "Velocity head",
+      "right": "Kinetic energy due to fluid motion"
+     },
+     {
+      "id": "p4",
+      "left": "Energy head",
+      "right": "Foot-pounds of energy per pound of water"
+     },
+     {
+      "id": "p5",
+      "left": "Specific energy",
+      "right": "Sum of pressure head and velocity head"
+     },
+     {
+      "id": "p6",
+      "left": "Energy grade line",
+      "right": "Total energy of flow relative to a datum"
+     }
+    ],
+    "explanation": "Hydraulic energy consists of elevation, pressure, and velocity heads, which combine into total energy and specific energy."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "e63fd67d9dc57688d46b90a6fb996c4d2391eb44eec66172fdbccfafa82fcdf4",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m1-02",
+    "prompt": "Distinguish each groundwater well hydraulic term by its meaning.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Drawdown",
+      "right": "Drop between static and pumping water levels"
+     },
+     {
+      "id": "p2",
+      "left": "Cone of depression",
+      "right": "Inverted cone shape of the pumped water surface"
+     },
+     {
+      "id": "p3",
+      "left": "Zone of influence",
+      "right": "Outermost area affected by well drawdown"
+     },
+     {
+      "id": "p4",
+      "left": "Sharp cone",
+      "right": "Shape when aquifer inflow is low relative to pumping"
+     },
+     {
+      "id": "p5",
+      "left": "Shallow cone",
+      "right": "Shape when aquifer inflow is high relative to pumping"
+     },
+     {
+      "id": "p6",
+      "left": "Specific capacity drop",
+      "right": "Sign of screen plugging or pump malfunction"
+     }
+    ],
+    "explanation": "Pumping a well creates drawdown and a cone of depression whose shape depends on aquifer inflow versus pumping rate."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "1078cc49143d7e0e4c85ca6b2f1e319be505243ae8b2b264682d3babdb2e73b5",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m1-03",
+    "prompt": "Distinguish each open-channel flow classification by its hydraulic behavior.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Laminar flow",
+      "right": "Parallel streamlines with no friction loss"
+     },
+     {
+      "id": "p2",
+      "left": "Turbulent flow",
+      "right": "Haphazard particle mixing causing pressure loss"
+     },
+     {
+      "id": "p3",
+      "left": "Steady flow",
+      "right": "Constant discharge at any cross-section"
+     },
+     {
+      "id": "p4",
+      "left": "Uniform flow",
+      "right": "Constant depth and area from section to section"
+     },
+     {
+      "id": "p5",
+      "left": "Nonuniform flow",
+      "right": "Changing slope, area, and velocity between sections"
+     },
+     {
+      "id": "p6",
+      "left": "Varied flow",
+      "right": "Flow depth changes along the channel length"
+     }
+    ],
+    "explanation": "Flow classifications separate streamline behavior, discharge steadiness, and whether cross-sectional depth or area changes."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "0d9e4f29ec3ef11e3c00f0177111a53fa4a2cd24b57a90e4d1b3d1bd81888909",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m1-04",
+    "prompt": "Distinguish each open-channel feature by its flow profile.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Sluice gate",
+      "right": "Control structure regulating channel flow"
+     },
+     {
+      "id": "p2",
+      "left": "Hydraulic jump",
+      "right": "Abrupt rise in water depth"
+     },
+     {
+      "id": "p3",
+      "left": "Hydraulic drop",
+      "right": "Rapidly falling water surface profile"
+     },
+     {
+      "id": "p4",
+      "left": "Flow over a weir",
+      "right": "Discharge passing over a crest"
+     },
+     {
+      "id": "p5",
+      "left": "Rapidly varied flow",
+      "right": "Depth changes abruptly over a short distance"
+     },
+     {
+      "id": "p6",
+      "left": "Gradually varied flow",
+      "right": "Depth changes slowly along the channel"
+     }
+    ],
+    "explanation": "Open-channel profiles distinguish between gradual depth changes and abrupt transitions such as jumps, drops, and weirs."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "349bafe108df2dfe2c8f60b37712b1596c2f2a32eedcd676365b6b80442a00cd",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m1-05",
+    "prompt": "Distinguish each pipe network concept by its hydraulic role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Pipes in series",
+      "right": "Different-sized pipes joined end to end"
+     },
+     {
+      "id": "p2",
+      "left": "Pipes in parallel",
+      "right": "Multiple paths sharing flow between junctions"
+     },
+     {
+      "id": "p3",
+      "left": "Cumulative head loss",
+      "right": "Sum of losses across series pipe sections"
+     },
+     {
+      "id": "p4",
+      "left": "Equivalent pipe",
+      "right": "Single constant-diameter pipe matching system head loss"
+     },
+     {
+      "id": "p5",
+      "left": "Hazen-Williams equation",
+      "right": "Formula using a roughness coefficient C"
+     },
+     {
+      "id": "p6",
+      "left": "Energy conservation",
+      "right": "Principle applied at network junction points"
+     }
+    ],
+    "explanation": "Series and parallel pipe networks are analyzed using energy conservation, Hazen-Williams roughness, and equivalent-pipe simplification."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "b88dd7061a5c9328d1930345e91f93c89295294444a1ea57bef3e955cc2b3eac",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m1-06",
+    "prompt": "Distinguish each chlorine disinfection factor by its effect on pathogen inactivation.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Low pH",
+      "right": "Increases hypochlorous acid fraction"
+     },
+     {
+      "id": "p2",
+      "left": "High water temperature",
+      "right": "Increases pathogen inactivation efficiency"
+     },
+     {
+      "id": "p3",
+      "left": "Long contact time",
+      "right": "Allows greater pathogen die-off"
+     },
+     {
+      "id": "p4",
+      "left": "Good mixing",
+      "right": "Improves contact between chlorine and microbes"
+     },
+     {
+      "id": "p5",
+      "left": "High turbidity",
+      "right": "Reduces disinfection efficiency"
+     },
+     {
+      "id": "p6",
+      "left": "Interfering substances",
+      "right": "Consume chlorine and lower inactivation"
+     }
+    ],
+    "explanation": "Free chlorine inactivation improves with low pH, warmer water, longer contact, good mixing, and low turbidity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "961796ab1c1837cd9a374ddad9c21b92170678d898eedd85e283d75684932fa4",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m1-07",
+    "prompt": "Distinguish each arsenic removal process by its mechanism or medium.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Greensand filtration",
+      "right": "Oxidation filtration using glauconite"
+     },
+     {
+      "id": "p2",
+      "left": "Coagulation-assisted microfiltration",
+      "right": "Membrane barrier capturing smaller floc"
+     },
+     {
+      "id": "p3",
+      "left": "Enhanced alum coagulation",
+      "right": "Improved arsenic removal at lowered pH"
+     },
+     {
+      "id": "p4",
+      "left": "Ferric chloride coagulation",
+      "right": "Effective arsenic removal without acid addition"
+     },
+     {
+      "id": "p5",
+      "left": "Manganese precipitation",
+      "right": "Relatively ineffective compared with iron removal"
+     },
+     {
+      "id": "p6",
+      "left": "Posttreatment pH adjustment",
+      "right": "Corrosion control after low-pH coagulation"
+     }
+    ],
+    "explanation": "Arsenic removal technologies include greensand oxidation filtration, coagulation-assisted microfiltration, and pH-adjusted coagulation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "d73e1c61c48a88aa51e568c7d4a4dff05c201b0b2447e7f3c619ff4f3ad48136",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m1-08",
+    "prompt": "Distinguish each coagulation-assisted microfiltration feature by its operational effect.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Microfiltration membrane",
+      "right": "Separates particulates, turbidity, and microbes"
+     },
+     {
+      "id": "p2",
+      "left": "Smaller floc capture",
+      "right": "Reduces required coagulant dosage"
+     },
+     {
+      "id": "p3",
+      "left": "Upset barrier",
+      "right": "Blocks microbes during coagulation upsets"
+     },
+     {
+      "id": "p4",
+      "left": "Plant capacity",
+      "right": "Increases compared with conventional gravity filters"
+     },
+     {
+      "id": "p5",
+      "left": "Lime softening",
+      "right": "Shifts carbonate equilibrium to remove hardness"
+     },
+     {
+      "id": "p6",
+      "left": "Calcium and magnesium",
+      "right": "Primary dissolved compounds causing hardness"
+     }
+    ],
+    "explanation": "Coagulation-assisted microfiltration captures smaller floc with less coagulant, provides a microbial barrier, and increases capacity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "64d296f5128843c3a8fb4e4c94d80059a33cb20904d7fa4a63d531922a6819fc",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m1-09",
+    "prompt": "Distinguish each hydraulic grade and pressure concept by its definition.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Piezometric surface",
+      "right": "Level water rises to in a piezometer"
+     },
+     {
+      "id": "p2",
+      "left": "Head loss",
+      "right": "Pressure consumed moving water over rough walls"
+     },
+     {
+      "id": "p3",
+      "left": "Hydraulic grade line",
+      "right": "Line connecting piezometric levels along a conduit"
+     },
+     {
+      "id": "p4",
+      "left": "Open-channel HGL",
+      "right": "Coincides with the water surface profile"
+     },
+     {
+      "id": "p5",
+      "left": "Slope",
+      "right": "Head loss per foot of channel"
+     },
+     {
+      "id": "p6",
+      "left": "Sea-level air pressure",
+      "right": "Atmospheric blanket weight of 14.7 psi"
+     }
+    ],
+    "explanation": "Piezometric levels track pressure head along a conduit, while head loss and slope quantify energy consumed by friction."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "8a22339f33b5490d2dcd28032654be8dd2ea8456ff6c4ecf9c21c8da510aab42",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m1-10",
+    "prompt": "Distinguish each chlorine species or virus study finding by its disinfection characteristic.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Hypochlorous acid (HOCl)",
+      "right": "High-efficiency germicide dominating at low pH"
+     },
+     {
+      "id": "p2",
+      "left": "Hypochlorite ion (OCl-)",
+      "right": "Weaker germicide dominating at high pH"
+     },
+     {
+      "id": "p3",
+      "left": "Reovirus",
+      "right": "Least resistant enteric virus at 2.7 minutes"
+     },
+     {
+      "id": "p4",
+      "left": "Poliovirus",
+      "right": "Most resistant enteric virus at over 60 minutes"
+     },
+     {
+      "id": "p5",
+      "left": "4-log removal",
+      "right": "99.99% pathogen inactivation target"
+     },
+     {
+      "id": "p6",
+      "left": "pH and temperature",
+      "right": "Two environmental factors with greatest impact"
+     }
+    ],
+    "explanation": "Chlorine germicidal efficiency depends on pH-controlled HOCl/OCl- balance and varies widely across enteric viruses."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "54accb835d1fc9c21f693b8defac4f4eed13bef4b24ae060c91221d1722f7ade",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m3-01",
+    "prompt": "Water flows steadily from a larger-diameter pipe into a smaller-diameter pipe with no water added or lost. What happens to the water velocity?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "By the continuity equation, a smaller cross-sectional area at constant flow requires higher velocity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "ee7b5c8a675156cea11f6f61d22579d86edbf450a4ca4a77163f0d2bfc149af6",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m3-02",
+    "prompt": "Water flows through a rough-walled horizontal pipe at a constant rate. What happens to the piezometric water height as water moves downstream?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Pressure is consumed overcoming interior pipe roughness, so less pressure head remains to push water up a downstream piezometer."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "222d3ab6b5f26fb56f4a3f38c0a63bf75deeb4dd15713b67f18fb65c7eacac8a",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m3-03",
+    "prompt": "In an unconfined aquifer, the pumping rate of a well is increased while aquifer properties remain unchanged. What happens to the drawdown in the well?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Higher pumping rates pull the pumping water level further below the static water level, increasing drawdown."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "d08961b01ce670ebfc52fa349124b4b515eca9aa14da940bb200dc66ca803fdc",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m3-04",
+    "prompt": "A well screen becomes partially plugged with mineral deposits while the pumping rate is held constant. What happens to the specific capacity of the well?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Screen plugging restricts inflow, increasing drawdown for the same yield and lowering specific capacity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "1e6f3675d8b51fb0483c6be1c8bd664e63fb369086ab4de40b12d18fa2b0172e",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m3-05",
+    "prompt": "In a wet well, the water level drops closer to the pump suction intake, reducing submergence. What happens to the risk of air entrainment?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Insufficient submergence allows air entrained by active surface movement to enter the pump suction."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "1d78d959b8c6ed225e24f1cb5e7347470eed7ef094753c1d7f7f839a1d873463",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m3-06",
+    "prompt": "In an open channel at constant depth, the average flow velocity increases. What happens to the specific energy of the flow?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Specific energy is the sum of pressure head (depth) and velocity head, so higher velocity raises specific energy."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "95ede1d1100489a299065398c0e6fbd65fc8a31e41f06d89a0d8973b7bacfdf7",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m3-07",
+    "prompt": "Two pipes of different diameters are connected in series at a constant flow rate. What happens to the total head loss compared with either pipe alone?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Head losses in series pipes are cumulative, so total head loss exceeds that of either pipe alone."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "2f7bbf45a47be03a8d666c0544c6cc2ad5f615cc4377880239dd53b4945b56aa",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m3-08",
+    "prompt": "In a free-chlorine disinfection system at constant residual, temperature, and contact time, the water pH decreases. What happens to the fraction of hypochlorous acid?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Lower pH shifts the chlorine equilibrium toward hypochlorous acid (HOCl), which is a stronger germicide."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "ae659395f85b2c692749f7371e06550b4d567de497401669895ab719b6220594",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m3-09",
+    "prompt": "In a free-chlorine disinfection system at constant residual, pH, and contact time, the water temperature rises. What happens to the pathogen inactivation efficiency?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Higher water temperatures accelerate chemical disinfection reactions and increase pathogen inactivation efficiency."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "b90a17bc6b1fea6fe6e842a08939f74643a4db68153af56051e26d35843f12bd",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m3-10",
+    "prompt": "In a free-chlorine disinfection system at constant residual, pH, and temperature, suspended turbidity rises. What happens to the pathogen inactivation efficiency?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Higher turbidity interferes with chlorine contact and reduces pathogen inactivation efficiency."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "9c97c327e150818ebd54b0a8f641dabd3c017aa26bc9884c2a07c19a3e2087a9",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m3-11",
+    "prompt": "In a water treatment plant, conventional gravity filtration is replaced by coagulation-assisted microfiltration. What happens to the required coagulant dose?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Microfiltration captures smaller floc sizes, so smaller amounts of coagulants are required."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "67e121c1411ecf51d3265a3d8d218b6c95eddd467f7069889d0b830d412040ec",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m3-12",
+    "prompt": "During alum coagulation for arsenic removal at constant alum dose, the operating pH is lowered into the enhanced coagulation range. What happens to the arsenic removal efficiency?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Lowering pH during enhanced alum coagulation improves arsenic removal efficiency."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "77611c82e3348d435c53ecbd4c9283d0bbdef1f1cbb434c006b8b09eba25c2e9",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m3-13",
+    "prompt": "A water facility is located at sea level rather than on a high mountain plateau. What happens to the ambient atmospheric pressure?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "At sea level, the thicker overlying blanket of air exerts greater atmospheric pressure (14.7 psi)."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "f20911b0cc3fa4a5f145ad6f28ec474dc7f04241a80d24afdcfe375cafcedad8",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m3-14",
+    "prompt": "Flow in a pipe transitions from laminar streamlines to turbulent mixing at the same flow rate. What happens to the friction head loss?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Turbulent flow involves haphazard particle mixing that causes pressure losses, whereas ideal laminar flow has no friction loss."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "dbf427cecbe7d00c52a5a190589f5937b6fc85f79208f59a2220878c534b64cc",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m3-15",
+    "prompt": "In a horizontal pipeline with constant diameter and steady flow, elevation head is compared at two points. What happens to the elevation head?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "In a horizontal pipeline, elevation heads at both points are equal and cancel out in Bernoulli's equation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "ad6c31c9761e789be0350b369771ab7f6dc7ff210a47f53587164ff8bdb668f1",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m4-01",
+    "prompt": "Which statement about hydraulic energy head is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Hydraulic systems involve potential energy from elevation and pressure."
+     },
+     {
+      "id": "b",
+      "label": "Kinetic energy in flowing water is associated with its velocity."
+     },
+     {
+      "id": "c",
+      "label": "Energy head in feet of water equals pounds per square foot."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Energy head in feet of water is equivalent to foot-pounds per pound of water, not pounds per square foot."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "638c733a2465fe8cd256e74fa58bfb190a403d4fc68efd1f9de5170ea3c9f5b4",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m4-02",
+    "prompt": "Which statement about atmospheric air pressure is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "At sea level, the overlying air blanket exerts 14.7 psi."
+     },
+     {
+      "id": "b",
+      "label": "Atmospheric pressure rises as elevation increases above sea level."
+     },
+     {
+      "id": "c",
+      "label": "The weight of air on a square inch varies with air thickness."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Atmospheric pressure decreases at higher elevations because the overlying blanket of air becomes thinner."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "726462f0fde5a81ab015c8d5b87e229605f6badc7d70d5005aa2fd11cf7c82f9",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m4-03",
+    "prompt": "Which statement about piezometers and head loss is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Rough interior pipe surfaces consume pressure as water flows."
+     },
+     {
+      "id": "b",
+      "label": "Head loss leaves less pressure to push water up a piezometer."
+     },
+     {
+      "id": "c",
+      "label": "Piezometric levels rise higher downstream along a rough horizontal pipe."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Because head loss consumes pressure along a rough pipe, piezometric levels drop rather than rise downstream."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "c509ce017f4ed8aead79a1480165964f9b1a76d8e86faf83d93582e5fc2445a4",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m4-04",
+    "prompt": "Which statement about groundwater well drawdown is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Drawdown is the distance between static and pumping water levels."
+     },
+     {
+      "id": "b",
+      "label": "In unconfined aquifers, pumping forms an inverted cone of depression."
+     },
+     {
+      "id": "c",
+      "label": "A high inflow rate toward the well produces a sharp, growing cone."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "A high inflow rate toward the well produces a shallow cone that stabilizes, whereas a low rate produces a sharp cone."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "c74e0ad51498ea9a69c6af417e3d4962618875c25d3db0b4f15e422d8b6c53e8",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m4-05",
+    "prompt": "Which statement about wet well hydraulics is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "A slight surface depression forms at the pump intake during operation."
+     },
+     {
+      "id": "b",
+      "label": "Keeping the suction line shallow helps prevent air from entering."
+     },
+     {
+      "id": "c",
+      "label": "Variable-speed pumps are commonly used when wet well inflow varies."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The suction line must be submerged far enough below the surface so entrained air does not enter the pump."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "58c49d763e5a4dfbf5bf761d1ab853b77ee715310a32fed1eb73ec1d4eaca7d3",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m4-06",
+    "prompt": "Which statement about laminar and turbulent flow is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Laminar flow moves along straight, parallel streamlines."
+     },
+     {
+      "id": "b",
+      "label": "Turbulent flow involves haphazard particle mixing across the pipe."
+     },
+     {
+      "id": "c",
+      "label": "Laminar flow is typical of normal distribution pipe flow."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Turbulent flow is typical of normal pipe flow; laminar flow is typical of very low-velocity groundwater flow."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "6fc784483e09c44bd1883ec730a072011e4890176844a4b392506a9d7b85bd80",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m4-07",
+    "prompt": "Which statement about the hydraulic grade line is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "The hydraulic grade line connects piezometric levels along a conduit."
+     },
+     {
+      "id": "b",
+      "label": "It provides a measure of the pressure head available at various points."
+     },
+     {
+      "id": "c",
+      "label": "In an open channel, it sits well above the water surface profile."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "When water flows in an open channel, the hydraulic grade line coincides with the profile of the water surface."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "d7e1de7a2a157c6db30ce55d5166ad8092e1ea112aedb866d5535cdeb6b6e217",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m4-08",
+    "prompt": "Which statement about open-channel flow terms is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Steady flow means the discharge rate is constant at a cross-section."
+     },
+     {
+      "id": "b",
+      "label": "Uniform flow has substantially constant depth and area between sections."
+     },
+     {
+      "id": "c",
+      "label": "Varied flow means the depth remains constant along the channel."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Flow in a channel is varied if the depth of flow changes along the length of the channel."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "0396d093daa44e304d105bbddf9ea2b59b27f94e2198abf823de3d5af83e41ab",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m4-09",
+    "prompt": "Which statement about pipes in series is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Head losses across pipes connected in series are cumulative."
+     },
+     {
+      "id": "b",
+      "label": "An equivalent pipe matches the head loss of the actual series system."
+     },
+     {
+      "id": "c",
+      "label": "An equivalent pipe changes diameter at each section to match the original."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "An equivalent pipe uses one constant diameter and C factor maintained all the way through to the end."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "4a0bfd7775f407c1eb69ce7af67eb10935a4d7228bc31a168d46b94e383f9250",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m4-10",
+    "prompt": "Which statement about free-chlorine disinfection factors is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Pathogen inactivation improves with higher chlorine residuals and longer contact."
+     },
+     {
+      "id": "b",
+      "label": "Hypochlorous acid is a stronger germicide than the hypochlorite ion."
+     },
+     {
+      "id": "c",
+      "label": "High pH and cold water provide the highest pathogen inactivation."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Highest inactivation is achieved with low pH (more HOCl) and high water temperature, not high pH and cold water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "cb2f444e033bdf2cf92831ae800e8e80d1dac4115d0e914711b0263bef954a04",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m4-11",
+    "prompt": "Which statement about enteric virus resistance to free chlorine is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Enteric viruses vary widely in their resistance to free chlorine."
+     },
+     {
+      "id": "b",
+      "label": "Reovirus required 2.7 minutes for 4-log inactivation in estuary water."
+     },
+     {
+      "id": "c",
+      "label": "Poliovirus was the least resistant virus tested under those conditions."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Poliovirus was the most resistant virus tested, requiring more than 60 minutes for 4-log inactivation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "f9ce32458b0a9b127948d4e6e701ee04d6266e6adb4d71c5e6b8c4c2cee127f1",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m4-12",
+    "prompt": "Which statement about arsenic removal by oxidation filtration is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Greensand filtration uses glauconite as its active iron-rich material."
+     },
+     {
+      "id": "b",
+      "label": "Substantial arsenic removal has been achieved using greensand filtration."
+     },
+     {
+      "id": "c",
+      "label": "Manganese precipitation removes arsenic more effectively than iron removal."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Arsenic removal during manganese precipitation is relatively ineffective compared with iron removal."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "0a16d098d13e40f432940f2d0bc73014e192380c460ad84a17238f94ef5e42e4",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m4-13",
+    "prompt": "Which statement about coagulation-assisted microfiltration is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Microfiltration captures smaller floc sizes than conventional gravity filters."
+     },
+     {
+      "id": "b",
+      "label": "It provides a stronger microbial barrier during coagulation upsets."
+     },
+     {
+      "id": "c",
+      "label": "It requires larger coagulant doses than conventional gravity filtration."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Because microfiltration removes smaller floc sizes, smaller amounts of coagulants are required."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "07c5c721310c5e91fd99d59cb0c1493d192dac5d17a73b4277beac39f10f06ec",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m4-14",
+    "prompt": "Which statement about enhanced coagulation for arsenic removal is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Lowering pH during enhanced coagulation improves arsenic removal by alum."
+     },
+     {
+      "id": "b",
+      "label": "Ferric coagulation shows little pH sensitivity between pH 5.5 and 7.0."
+     },
+     {
+      "id": "c",
+      "label": "Low-pH operation eliminates the need for posttreatment corrosion control."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Posttreatment pH adjustment may be required for corrosion control when coagulation operates at a low pH."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "223e8dd121f2e37d55b5682556bb42af9bb5ed86b30477c884af5358b3e1de0e",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m4-15",
+    "prompt": "Which statement about lime softening is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Water hardness is predominantly caused by dissolved calcium and magnesium."
+     },
+     {
+      "id": "b",
+      "label": "Lime softening shifts the carbonate equilibrium to remove hardness."
+     },
+     {
+      "id": "c",
+      "label": "Lime softening removes hardness by oxidizing dissolved iron and manganese."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Lime softening removes calcium and magnesium hardness by shifting the carbonate equilibrium, not by oxidizing iron and manganese."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "348c62d9fdd328a4f9030d6c5921a557f9ae0c96845f991eeb0e2789b4875a55",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m5-01",
+    "prompt": "When pumping begins in an unconfined aquifer well, does the water level drop to form drawdown before or after water reaches the static water level again?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Drawdown occurs as soon as pumping begins, lowering the water level below the static level."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "02659138b1a8965291295d7b97c73235f2e093ba6870ce63afe93622d434dc1f",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m5-02",
+    "prompt": "Along a pressurized pipeline with two piezometers in the direction of flow, is the lower piezometric water surface observed before or after the water overcomes interior pipe roughness between the taps?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "Friction against the rough pipe wall consumes pressure, so the lower piezometric level appears downstream after head loss."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "3973fac605616d7eec7fd061325f6b4fece342ee49ce6fbfac14cfbc31dd7e96",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m5-03",
+    "prompt": "In a conventional treatment train using low-pH enhanced coagulation, is the low-pH coagulation step before or after posttreatment pH adjustment for corrosion control?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Coagulation operates at low pH first, and posttreatment pH adjustment follows for distribution corrosion control."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "3f22a68d3257d70744662fe58c84a55a69cb073d8e3a9bf27591f45d4b66ab8f",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m5-04",
+    "prompt": "In lime softening, does shifting the carbonate equilibrium occur before or after calcium and magnesium hardness precipitates?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Adding lime shifts the carbonate equilibrium first, causing calcium and magnesium hardness to precipitate out."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "ddadfb652e4c7fa9f1f1e8a01a50731f8f1512c016706c6912f0f901641072a4",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m5-05",
+    "prompt": "In a free-chlorine virus inactivation test at pH 7.8 and 2 degrees Celsius, does achieving 4-log inactivation of poliovirus occur before or after achieving 4-log inactivation of reovirus?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "Reovirus reached 4-log inactivation in 2.7 minutes, whereas poliovirus required more than 60 minutes."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "f4bf2f609a3056f867c85b6e085ec0fbffb58ff0607266e256214ed620898bd1",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m5-06",
+    "prompt": "In applying the continuity equation to a pipe contraction, does measuring the upstream area and velocity occur before or after solving for the downstream velocity?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Upstream area and velocity must be known first to solve for the downstream velocity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "92fcf65b0e326d6a5fad098604b7d57ead3e36c7f5e87098595c9a455f441039",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m5-07",
+    "prompt": "When using the equivalent-pipe method for pipes in series, does determining the equivalent length occur before or after selecting a constant C factor and diameter?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "A constant C factor and diameter are chosen first, and then the equivalent length is calculated to match head loss."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "1e3e0bde190d44394ed7a16f3560feab95ee25053d03002177ea7f660d2668b7",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m5-08",
+    "prompt": "In coagulation-assisted microfiltration, does adding coagulant to form floc occur before or after the water passes through the microfiltration membrane?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Coagulant forms floc first so the microfiltration membrane can separate the particulates and microbes."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "41f0ae597ec5ba4e3c3b54a175a546f856a596e3d864ab04424eaa5dfd053270",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m5-09",
+    "prompt": "When a well pump is started, does the cone of depression begin forming before or after the zone of influence stabilizes?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The cone of depression begins forming as soon as pumping starts and grows until inflow and pumping stabilize."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "a92af9487d3cf64ffe53be549fa8964490f0ef1a71ed7f1aa51f7bb379a6a845",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m5-10",
+    "prompt": "In an open-channel specific energy calculation, does determining pressure head and velocity head occur before or after summing them for specific energy?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Pressure head and velocity head are determined first and then summed to obtain specific energy."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "a74e7e6adc253f1ef67230954790a3cba9e863f3296a4e750c81a85242260712",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m5-11",
+    "prompt": "In free-chlorine disinfection, does lowering the water pH occur before or after hypochlorous acid becomes the dominant chlorine species?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Lowering the pH shifts the equilibrium so hypochlorous acid (HOCl) predominates over the hypochlorite ion."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "fbb74ffd974dff9cedbc24300c7c7cdab01d521f98c496e322764ac2d57dcb98",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m5-12",
+    "prompt": "In open-channel flow over a weir, does water approach the weir crest before or after experiencing the hydraulic drop?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Water approaches the weir crest first and then experiences a hydraulic drop as it spills over."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "a375d57dca738376e4d7350471ff1e76c33b05373bc6ddb5c95f37b12aadb4ff",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m5-13",
+    "prompt": "In a wet well, does the water level falling below adequate submergence occur before or after air is entrained into the pump suction?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Insufficient submergence occurs first, allowing entrained surface air to enter the pump intake."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "08ee6e7ef27c31e5a9d60157f31488e6843d302540fc61ed9890c5aafa711aa1",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m5-14",
+    "prompt": "In greensand filtration for arsenic removal, does raw water contact the glauconite medium before or after exiting as treated filtrate?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Water must pass through and contact the active glauconite medium before exiting as treated filtrate."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "7e84ae4ecb31af53a58f0fd8ce71864a03c71d46ff55beb11af7fc805705655d",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r04-m5-15",
+    "prompt": "In simplifying Bernoulli's equation for a horizontal pipe, does confirming equal elevation heads occur before or after canceling zA and zB?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Confirming that zA equals zB in a horizontal pipe allows the elevation heads to be canceled."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+    "notes": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+    "registeredAt": "2026-11-19T03:35:55.806Z",
+    "payloadSha256": "8cea5d5f8df222dfc797736c49d074e8524015b16311a7723d817c7cba366ff2",
+    "builderResultsSha256": "eae00e125049876a63fde018e64b7c29c7fcaa017d793157931cd71aaa28f67e"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T03:34:30.829324+00:00",
+   "attestation": "Strict self-review completed by gemini-4-hydrogen against supplied source pages, course level (wpi-class2-water-dist), and collision candidates: 70 of 70 items accepted.",
+   "payloadSha256": {
+    "targeth-ht261118-wpi-class2-water-dist-r04-m0-01": "27096bf931c04ec6e702c8abc507197b94167226def3c793cd29aecd00ece6d1",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m0-02": "84b6b35dac5b0c14b42fb673d0b1b760c1f8a318e51b3422157652ed1c190f72",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m0-03": "ad41879ab28d00d7d11e4a1dc7fe5ee0e56d2429873881639bb8a04cd792230b",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m0-04": "23c69ccfedab8a07c0dac6e02cef31f2cd410488f99865b5b490b5016655cadc",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m0-05": "52f81dffaa2c1c7e0a66059855b9c8776bdfbad60e9507c3bf40c01988e434e3",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m0-06": "1063b1d6216befd07301d7b474988e884878724c9a4732cc152061a6641c298b",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m0-07": "8fa762c21816321bbef2a91fbc31cc051027b2beb629f9e8310d0728d3b76ea8",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m0-08": "c26447ddec4965f9f5a27e7b77903896c24d870ce59e31f7eb35a83003611284",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m0-09": "b2df1809f400e6e088b40fe46632f84825d5b1dcf661e597f95aff03ff09dac6",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m0-10": "55283d330ba2b2d7110b6ac0716ed2c771a44ec8d56ee0375617d781ade60dee",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m0-11": "191b2aa1ea0c164dd4db40a32074e6141a36299c13198b3f4df4008293071a27",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m0-12": "6d15a6d85b21745f68648ada4886f161e83267e58dfb860b3464bd89afbe3798",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m0-13": "a7d65c3b25c17c9c8f493e9e115b77be7b42f2d3ff924cc3b6408834a2be4764",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m0-14": "98f0f0e201f9af2e586b6a900f3a5d6bd792b00da2fc525580b3f50bb57526f3",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m0-15": "25e488ea8af2e1908ca7f23d94fa4d6d9c9d1c2e2eeaeab51e0c28436f44ed7b",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m1-01": "e63fd67d9dc57688d46b90a6fb996c4d2391eb44eec66172fdbccfafa82fcdf4",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m1-02": "1078cc49143d7e0e4c85ca6b2f1e319be505243ae8b2b264682d3babdb2e73b5",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m1-03": "0d9e4f29ec3ef11e3c00f0177111a53fa4a2cd24b57a90e4d1b3d1bd81888909",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m1-04": "349bafe108df2dfe2c8f60b37712b1596c2f2a32eedcd676365b6b80442a00cd",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m1-05": "b88dd7061a5c9328d1930345e91f93c89295294444a1ea57bef3e955cc2b3eac",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m1-06": "961796ab1c1837cd9a374ddad9c21b92170678d898eedd85e283d75684932fa4",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m1-07": "d73e1c61c48a88aa51e568c7d4a4dff05c201b0b2447e7f3c619ff4f3ad48136",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m1-08": "64d296f5128843c3a8fb4e4c94d80059a33cb20904d7fa4a63d531922a6819fc",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m1-09": "8a22339f33b5490d2dcd28032654be8dd2ea8456ff6c4ecf9c21c8da510aab42",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m1-10": "54accb835d1fc9c21f693b8defac4f4eed13bef4b24ae060c91221d1722f7ade",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m3-01": "ee7b5c8a675156cea11f6f61d22579d86edbf450a4ca4a77163f0d2bfc149af6",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m3-02": "222d3ab6b5f26fb56f4a3f38c0a63bf75deeb4dd15713b67f18fb65c7eacac8a",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m3-03": "d08961b01ce670ebfc52fa349124b4b515eca9aa14da940bb200dc66ca803fdc",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m3-04": "1e6f3675d8b51fb0483c6be1c8bd664e63fb369086ab4de40b12d18fa2b0172e",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m3-05": "1d78d959b8c6ed225e24f1cb5e7347470eed7ef094753c1d7f7f839a1d873463",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m3-06": "95ede1d1100489a299065398c0e6fbd65fc8a31e41f06d89a0d8973b7bacfdf7",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m3-07": "2f7bbf45a47be03a8d666c0544c6cc2ad5f615cc4377880239dd53b4945b56aa",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m3-08": "ae659395f85b2c692749f7371e06550b4d567de497401669895ab719b6220594",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m3-09": "b90a17bc6b1fea6fe6e842a08939f74643a4db68153af56051e26d35843f12bd",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m3-10": "9c97c327e150818ebd54b0a8f641dabd3c017aa26bc9884c2a07c19a3e2087a9",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m3-11": "67e121c1411ecf51d3265a3d8d218b6c95eddd467f7069889d0b830d412040ec",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m3-12": "77611c82e3348d435c53ecbd4c9283d0bbdef1f1cbb434c006b8b09eba25c2e9",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m3-13": "f20911b0cc3fa4a5f145ad6f28ec474dc7f04241a80d24afdcfe375cafcedad8",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m3-14": "dbf427cecbe7d00c52a5a190589f5937b6fc85f79208f59a2220878c534b64cc",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m3-15": "ad6c31c9761e789be0350b369771ab7f6dc7ff210a47f53587164ff8bdb668f1",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m4-01": "638c733a2465fe8cd256e74fa58bfb190a403d4fc68efd1f9de5170ea3c9f5b4",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m4-02": "726462f0fde5a81ab015c8d5b87e229605f6badc7d70d5005aa2fd11cf7c82f9",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m4-03": "c509ce017f4ed8aead79a1480165964f9b1a76d8e86faf83d93582e5fc2445a4",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m4-04": "c74e0ad51498ea9a69c6af417e3d4962618875c25d3db0b4f15e422d8b6c53e8",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m4-05": "58c49d763e5a4dfbf5bf761d1ab853b77ee715310a32fed1eb73ec1d4eaca7d3",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m4-06": "6fc784483e09c44bd1883ec730a072011e4890176844a4b392506a9d7b85bd80",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m4-07": "d7e1de7a2a157c6db30ce55d5166ad8092e1ea112aedb866d5535cdeb6b6e217",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m4-08": "0396d093daa44e304d105bbddf9ea2b59b27f94e2198abf823de3d5af83e41ab",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m4-09": "4a0bfd7775f407c1eb69ce7af67eb10935a4d7228bc31a168d46b94e383f9250",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m4-10": "cb2f444e033bdf2cf92831ae800e8e80d1dac4115d0e914711b0263bef954a04",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m4-11": "f9ce32458b0a9b127948d4e6e701ee04d6266e6adb4d71c5e6b8c4c2cee127f1",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m4-12": "0a16d098d13e40f432940f2d0bc73014e192380c460ad84a17238f94ef5e42e4",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m4-13": "07c5c721310c5e91fd99d59cb0c1493d192dac5d17a73b4277beac39f10f06ec",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m4-14": "223e8dd121f2e37d55b5682556bb42af9bb5ed86b30477c884af5358b3e1de0e",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m4-15": "348c62d9fdd328a4f9030d6c5921a557f9ae0c96845f991eeb0e2789b4875a55",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m5-01": "02659138b1a8965291295d7b97c73235f2e093ba6870ce63afe93622d434dc1f",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m5-02": "3973fac605616d7eec7fd061325f6b4fece342ee49ce6fbfac14cfbc31dd7e96",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m5-03": "3f22a68d3257d70744662fe58c84a55a69cb073d8e3a9bf27591f45d4b66ab8f",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m5-04": "ddadfb652e4c7fa9f1f1e8a01a50731f8f1512c016706c6912f0f901641072a4",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m5-05": "f4bf2f609a3056f867c85b6e085ec0fbffb58ff0607266e256214ed620898bd1",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m5-06": "92fcf65b0e326d6a5fad098604b7d57ead3e36c7f5e87098595c9a455f441039",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m5-07": "1e3e0bde190d44394ed7a16f3560feab95ee25053d03002177ea7f660d2668b7",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m5-08": "41f0ae597ec5ba4e3c3b54a175a546f856a596e3d864ab04424eaa5dfd053270",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m5-09": "a92af9487d3cf64ffe53be549fa8964490f0ef1a71ed7f1aa51f7bb379a6a845",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m5-10": "a74e7e6adc253f1ef67230954790a3cba9e863f3296a4e750c81a85242260712",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m5-11": "fbb74ffd974dff9cedbc24300c7c7cdab01d521f98c496e322764ac2d57dcb98",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m5-12": "a375d57dca738376e4d7350471ff1e76c33b05373bc6ddb5c95f37b12aadb4ff",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m5-13": "08ee6e7ef27c31e5a9d60157f31488e6843d302540fc61ed9890c5aafa711aa1",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m5-14": "7e84ae4ecb31af53a58f0fd8ce71864a03c71d46ff55beb11af7fc805705655d",
+    "targeth-ht261118-wpi-class2-water-dist-r04-m5-15": "8cea5d5f8df222dfc797736c49d074e8524015b16311a7723d817c7cba366ff2"
+   }
+  },
+  "registeredAt": "2026-11-19T03:35:55.806Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 8,
+     "f": 7
+    },
+    "dirs": {
+     "increase": 10,
+     "decrease": 4,
+     "unchanged": 1
+    },
+    "longest": 8,
+    "options": 30
+   },
+   "batchSha256": "4408028a8f5dfbde2e1b912ba195cafa742618be549b910ede8d479b98318c38"
+  }
+ }
+}

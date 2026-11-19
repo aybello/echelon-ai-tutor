@@ -125,7 +125,9 @@ export function reduceAssessmentActivityBatch(state: AssessmentActivityState, it
       duplicates++;
       continue;
     }
-    const terminalReview = next.status === "completed" && ["item_presented", "hint_opened", "explanation_opened", "resumed"].includes(event.action);
+    // Back-review is observational even after a failed/abandoned practice page.
+    // Neither terminal status can accept answers, retries or a new completion.
+    const terminalReview = (next.status === "completed" || next.status === "abandoned") && ["item_presented", "hint_opened", "explanation_opened", "resumed"].includes(event.action);
     if ((next.status !== "active" && !terminalReview) || event.sequence !== next.lastSequence + 1 || next.eventCount >= assessmentActivityLimits.events || !validEventForManifest(event, items)) throw new Error("Invalid observed event transition");
     if (event.action === "completed" || event.action === "abandoned") next.status = event.action;
     next.lastSequence = event.sequence;

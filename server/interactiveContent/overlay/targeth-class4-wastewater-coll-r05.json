@@ -1,0 +1,594 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-class4-wastewater-coll-r05",
+ "scope": "Owner-authorized AI-reviewed game activities: 10 items.",
+ "additions": [
+  {
+   "courseKey": "class4-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class4-wastewater-coll-r05-m1-01",
+    "prompt": "Distinguish each differential-pressure flowmeter geometry from its hydraulic or solids-handling characteristic.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Concentric orifice plate",
+      "right": "Centered bore impaired by dirt buildup in wastewater"
+     },
+     {
+      "id": "p2",
+      "left": "Eccentric orifice plate",
+      "right": "Offset bore reducing solids accumulation at the plate"
+     },
+     {
+      "id": "p3",
+      "left": "Segmental orifice plate",
+      "right": "Partial-circle opening suited for dirty liquid streams"
+     },
+     {
+      "id": "p4",
+      "left": "Venturi flowmeter",
+      "right": "Gradual throat recovery with 3 to 10 percent head loss"
+     },
+     {
+      "id": "p5",
+      "left": "Flow nozzle",
+      "right": "Smooth entry and sharp exit handling abrasive fluids well"
+     },
+     {
+      "id": "p6",
+      "left": "Beta ratio",
+      "right": "Throat-to-inlet diameter ratio governing differential pressure"
+     }
+    ],
+    "explanation": "Differential-pressure meters trade off solids-handling capability, permanent head loss, and accuracy based on their internal constriction geometry."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:09:09.639777+00:00",
+    "notes": "Strict AI self-review of 10 authored speed-match items for class4-wastewater-coll against provided source pages and collision candidates; 10 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:10:24.641Z",
+    "payloadSha256": "a8b0f70ccfe8f5ab97263d7e14acba961af45c8a4658393b0e68bd03929a0ad4",
+    "builderResultsSha256": "49d010b60e790d2355a4b628f7fe879d29e425fbb8a562f5596a628effd3c837"
+   }
+  },
+  {
+   "courseKey": "class4-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-wastewater-coll-r05-m1-02",
+    "prompt": "Distinguish each Manning open-channel formula variable from its physical role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Discharge capacity Q",
+      "right": "Volumetric flow rate carried in cubic feet per second"
+     },
+     {
+      "id": "p2",
+      "left": "Roughness coefficient n",
+      "right": "Dimensionless factor representing channel wall friction"
+     },
+     {
+      "id": "p3",
+      "left": "Cross-sectional area A",
+      "right": "Wetted flow area perpendicular to the channel axis"
+     },
+     {
+      "id": "p4",
+      "left": "Hydraulic radius R",
+      "right": "Ratio of wetted flow area to wetted perimeter"
+     },
+     {
+      "id": "p5",
+      "left": "Channel bottom slope s",
+      "right": "Dimensionless grade driving gravity flow along the channel"
+     },
+     {
+      "id": "p6",
+      "left": "Uniform flow energy line",
+      "right": "Parallels both the water surface and channel bottom"
+     }
+    ],
+    "explanation": "Manning's formula relates open-channel discharge capacity to wall roughness, flow area, hydraulic radius, and bottom slope."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:09:09.639777+00:00",
+    "notes": "Strict AI self-review of 10 authored speed-match items for class4-wastewater-coll against provided source pages and collision candidates; 10 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:10:24.641Z",
+    "payloadSha256": "e7101c39afdb029105d5bad565e971e849b4e67b892e87d070b9a2030e287048",
+    "builderResultsSha256": "49d010b60e790d2355a4b628f7fe879d29e425fbb8a562f5596a628effd3c837"
+   }
+  },
+  {
+   "courseKey": "class4-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class4-wastewater-coll-r05-m1-03",
+    "prompt": "Distinguish each open-reservoir suction lift term from its effect on available NPSH.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Atmospheric pressure Pa",
+      "right": "Surface gas pressure pushing liquid toward the suction"
+     },
+     {
+      "id": "p2",
+      "left": "Static lift height h",
+      "right": "Vertical column weight between surface and pump nozzle"
+     },
+     {
+      "id": "p3",
+      "left": "Vapor pressure Pv",
+      "right": "Temperature-dependent boiling pressure reducing available head"
+     },
+     {
+      "id": "p4",
+      "left": "Entrance loss he",
+      "right": "Head dissipated as liquid enters the suction pipe"
+     },
+     {
+      "id": "p5",
+      "left": "Suction friction loss hf",
+      "right": "Head lost along the suction piping walls"
+     },
+     {
+      "id": "p6",
+      "left": "Net positive suction head",
+      "right": "Total absolute suction energy above liquid vapor pressure"
+     }
+    ],
+    "explanation": "Available NPSH in a suction lift system equals atmospheric pressure minus static lift, vapor pressure, entrance loss, and friction loss."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:09:09.639777+00:00",
+    "notes": "Strict AI self-review of 10 authored speed-match items for class4-wastewater-coll against provided source pages and collision candidates; 10 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:10:24.641Z",
+    "payloadSha256": "af8ab93e5e36f0306d54d1c3bc63f943ceaa67d226b42937764d463447762fe7",
+    "builderResultsSha256": "49d010b60e790d2355a4b628f7fe879d29e425fbb8a562f5596a628effd3c837"
+   }
+  },
+  {
+   "courseKey": "class4-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-wastewater-coll-r05-m1-04",
+    "prompt": "Distinguish each flowmeter selection factor from the system condition it evaluates.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Fluid phase",
+      "right": "Whether the stream being metered is liquid or gas"
+     },
+     {
+      "id": "p2",
+      "left": "Conduit type",
+      "right": "Whether flow occurs in a full pipe or open channel"
+     },
+     {
+      "id": "p3",
+      "left": "Suspended solids or air",
+      "right": "Presence of particulates or bubbles affecting sensor accuracy"
+     },
+     {
+      "id": "p4",
+      "left": "Allowable head loss",
+      "right": "Maximum permanent pressure drop the system can tolerate"
+     },
+     {
+      "id": "p5",
+      "left": "Flow variation range",
+      "right": "Span between minimum and peak expected discharge rates"
+     },
+     {
+      "id": "p6",
+      "left": "Fluid corrosiveness",
+      "right": "Chemical aggressiveness requiring compatible wetted materials"
+     }
+    ],
+    "explanation": "Selecting a flowmeter requires matching device capabilities to fluid phase, conduit geometry, solids content, head loss limits, and flow range."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:09:09.639777+00:00",
+    "notes": "Strict AI self-review of 10 authored speed-match items for class4-wastewater-coll against provided source pages and collision candidates; 10 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:10:24.641Z",
+    "payloadSha256": "d14ca9b3029ebe4c40e5caa44e35f2f4b0a7b11eda1fe1123bb7920ec9ffb874",
+    "builderResultsSha256": "49d010b60e790d2355a4b628f7fe879d29e425fbb8a562f5596a628effd3c837"
+   }
+  },
+  {
+   "courseKey": "class4-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-wastewater-coll-r05-m1-05",
+    "prompt": "Distinguish each open-channel hydraulic parameter from its governing physical relationship.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Atmospheric exposure",
+      "right": "Free water surface with no external pressure driving flow"
+     },
+     {
+      "id": "p2",
+      "left": "Velocity head",
+      "right": "Only natural kinetic energy term in open-channel flow"
+     },
+     {
+      "id": "p3",
+      "left": "Circular full or half-full",
+      "right": "Geometry where hydraulic radius equals one-fourth diameter"
+     },
+     {
+      "id": "p4",
+      "left": "Hydraulic depth",
+      "right": "Ratio of cross-sectional flow area to surface width"
+     },
+     {
+      "id": "p5",
+      "left": "Channel slope",
+      "right": "Ratio of head loss to horizontal channel length"
+     },
+     {
+      "id": "p6",
+      "left": "Minimum channel velocity",
+      "right": "Speed needed to prevent flow from theoretically stopping"
+     }
+    ],
+    "explanation": "Open-channel hydraulics rely on gravity, velocity head, hydraulic depth, and hydraulic radius rather than pressurized conduit driving forces."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:09:09.639777+00:00",
+    "notes": "Strict AI self-review of 10 authored speed-match items for class4-wastewater-coll against provided source pages and collision candidates; 10 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:10:24.641Z",
+    "payloadSha256": "b497da2fd2312c3c00b67b24457ee2b5ae2f7df0759e35a16638b7ddaff0aae9",
+    "builderResultsSha256": "49d010b60e790d2355a4b628f7fe879d29e425fbb8a562f5596a628effd3c837"
+   }
+  },
+  {
+   "courseKey": "class4-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-wastewater-coll-r05-m1-06",
+    "prompt": "Distinguish each ultrasonic or velocity flowmeter factor from its measurement effect.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Full beam penetration",
+      "right": "Clean fluid condition allowing strong acoustic signal transit"
+     },
+     {
+      "id": "p2",
+      "left": "Partial beam penetration",
+      "right": "Moderate particle load weakening the acoustic pulse"
+     },
+     {
+      "id": "p3",
+      "left": "Poor beam penetration",
+      "right": "High suspended solids causing severe measurement error"
+     },
+     {
+      "id": "p4",
+      "left": "Transceiver",
+      "right": "Device transmitting and receiving ultrasonic pulses across flow"
+     },
+     {
+      "id": "p5",
+      "left": "Signal conditioner",
+      "right": "Electronics processing raw sensor output into flow readings"
+     },
+     {
+      "id": "p6",
+      "left": "Clean-fluid velocity meter",
+      "right": "Instrument suited for intermediate rates on particle-free water"
+     }
+    ],
+    "explanation": "Time-of-flight ultrasonic meters require adequate acoustic penetration, as higher suspended particle concentrations scatter pulses and increase error."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:09:09.639777+00:00",
+    "notes": "Strict AI self-review of 10 authored speed-match items for class4-wastewater-coll against provided source pages and collision candidates; 10 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:10:24.641Z",
+    "payloadSha256": "76476de8d52f26b8c4062164f38c205905b60355186e1a373df5c6bbf4ae7bbd",
+    "builderResultsSha256": "49d010b60e790d2355a4b628f7fe879d29e425fbb8a562f5596a628effd3c837"
+   }
+  },
+  {
+   "courseKey": "class4-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class4-wastewater-coll-r05-m1-07",
+    "prompt": "Distinguish each compound pipe analysis concept from its calculation rule.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Junction energy conservation",
+      "right": "Basis for balancing friction losses at network nodes"
+     },
+     {
+      "id": "p2",
+      "left": "Cumulative series head loss",
+      "right": "Sum of individual losses across connected pipe segments"
+     },
+     {
+      "id": "p3",
+      "left": "Varying-diameter series",
+      "right": "Configuration where individual pipe slopes are initially unknown"
+     },
+     {
+      "id": "p4",
+      "left": "Equivalent pipe diameter",
+      "right": "Constant size maintained along the simplified model pipe"
+     },
+     {
+      "id": "p5",
+      "left": "Equivalent pipe C factor",
+      "right": "Constant roughness coefficient assumed throughout the model"
+     },
+     {
+      "id": "p6",
+      "left": "Equivalent pipe length",
+      "right": "Computed length matching actual system head loss at given flow"
+     }
+    ],
+    "explanation": "Equivalent pipe theory replaces varying-diameter series pipes with one constant-diameter, constant-roughness pipe of a length yielding identical head loss."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:09:09.639777+00:00",
+    "notes": "Strict AI self-review of 10 authored speed-match items for class4-wastewater-coll against provided source pages and collision candidates; 10 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:10:24.641Z",
+    "payloadSha256": "441d13f03eba66aeeba9955f8a19f470e55f9f8cf434e65e1b1c200e353ccc11",
+    "builderResultsSha256": "49d010b60e790d2355a4b628f7fe879d29e425fbb8a562f5596a628effd3c837"
+   }
+  },
+  {
+   "courseKey": "class4-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class4-wastewater-coll-r05-m1-08",
+    "prompt": "Distinguish each flow-measurement purpose or field method from its engineering application.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Preliminary field estimate",
+      "right": "Computing area from measured depth and multiplying by velocity"
+     },
+     {
+      "id": "p2",
+      "left": "Routine plant measurement",
+      "right": "Continuous tracking unsuitable for rough depth-velocity estimates"
+     },
+     {
+      "id": "p3",
+      "left": "Process flow matching",
+      "right": "Controlling treatment rates to match system demand"
+     },
+     {
+      "id": "p4",
+      "left": "Cross-sectional area",
+      "right": "Product of known channel width and measured flow depth"
+     },
+     {
+      "id": "p5",
+      "left": "Continuity discharge",
+      "right": "Volumetric rate obtained by multiplying area by average velocity"
+     },
+     {
+      "id": "p6",
+      "left": "Gravity conduit examples",
+      "right": "Canals, culverts, flumes, and partially full pipes"
+     }
+    ],
+    "explanation": "Measuring depth and velocity provides a quick ballpark discharge estimate in preliminary fieldwork, whereas routine operations require dedicated metering."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:09:09.639777+00:00",
+    "notes": "Strict AI self-review of 10 authored speed-match items for class4-wastewater-coll against provided source pages and collision candidates; 10 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:10:24.641Z",
+    "payloadSha256": "ff00de9d6d1b4629e5399d160e4ef2cc17a6b06c9a2a0a7b167483a3fedc4d2b",
+    "builderResultsSha256": "49d010b60e790d2355a4b628f7fe879d29e425fbb8a562f5596a628effd3c837"
+   }
+  },
+  {
+   "courseKey": "class4-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-wastewater-coll-r05-m1-09",
+    "prompt": "Distinguish each differential-pressure metering principle from its accuracy or hydraulic basis.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Pipe constriction",
+      "right": "Creates velocity change that generates measurable pressure drop"
+     },
+     {
+      "id": "p2",
+      "left": "Set flow-volume relation",
+      "right": "Allows instrumentation to translate pressure difference into flow"
+     },
+     {
+      "id": "p3",
+      "left": "Meter calibration",
+      "right": "Periodic adjustment preserving optimum measurement accuracy"
+     },
+     {
+      "id": "p4",
+      "left": "Code-compliant installation",
+      "right": "Proper mounting required to avoid disturbed velocity profiles"
+     },
+     {
+      "id": "p5",
+      "left": "Transmitter calibration",
+      "right": "Routine verification of secondary readout electronics"
+     },
+     {
+      "id": "p6",
+      "left": "Volumetric continuity",
+      "right": "Flow rate equals cross-sectional area times average velocity"
+     }
+    ],
+    "explanation": "Differential-pressure meters convert velocity-induced pressure drops into flow rates, maintaining accuracy through code-compliant installation and periodic calibration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:09:09.639777+00:00",
+    "notes": "Strict AI self-review of 10 authored speed-match items for class4-wastewater-coll against provided source pages and collision candidates; 10 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:10:24.641Z",
+    "payloadSha256": "68bdfc45baae6b05e1ccf802e66310d5f3f35ef264df3c4722f35f07f865e9a7",
+    "builderResultsSha256": "49d010b60e790d2355a4b628f7fe879d29e425fbb8a562f5596a628effd3c837"
+   }
+  },
+  {
+   "courseKey": "class4-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class4-wastewater-coll-r05-m1-10",
+    "prompt": "Distinguish each closed-pipe differential meter feature from its performance trade-off.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Orifice bore-to-pipe ratio",
+      "right": "Governs permanent friction head loss across an orifice plate"
+     },
+     {
+      "id": "p2",
+      "left": "Eccentricity in dirty water",
+      "right": "Prevents solids from damming behind an orifice plate"
+     },
+     {
+      "id": "p3",
+      "left": "Venturi 10:1 flow range",
+      "right": "Wide turndown maintaining plus or minus one percent accuracy"
+     },
+     {
+      "id": "p4",
+      "left": "Nozzle dimensional stability",
+      "right": "Rigidity suited for high-temperature and high-velocity service"
+     },
+     {
+      "id": "p5",
+      "left": "Nozzle differential pressure",
+      "right": "Lower than an orifice at the same line size and flow"
+     },
+     {
+      "id": "p6",
+      "left": "Nozzle permanent pressure loss",
+      "right": "Ranges from 10 to 20 percent of the differential"
+     }
+    ],
+    "explanation": "Orifice plates, Venturi tubes, and flow nozzles differ in turndown accuracy, permanent head loss, rigidity, and resistance to solids buildup."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:09:09.639777+00:00",
+    "notes": "Strict AI self-review of 10 authored speed-match items for class4-wastewater-coll against provided source pages and collision candidates; 10 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:10:24.641Z",
+    "payloadSha256": "a98912013eace55daef52c3fa9998196c6d042ca39c33be4169a4b778bab012b",
+    "builderResultsSha256": "49d010b60e790d2355a4b628f7fe879d29e425fbb8a562f5596a628effd3c837"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T04:09:09.639777+00:00",
+   "attestation": "Strict AI self-review of 10 authored speed-match items for class4-wastewater-coll against provided source pages and collision candidates; 10 accepted, 0 rejected.",
+   "payloadSha256": {
+    "targeth-ht261118-class4-wastewater-coll-r05-m1-01": "a8b0f70ccfe8f5ab97263d7e14acba961af45c8a4658393b0e68bd03929a0ad4",
+    "targeth-ht261118-class4-wastewater-coll-r05-m1-02": "e7101c39afdb029105d5bad565e971e849b4e67b892e87d070b9a2030e287048",
+    "targeth-ht261118-class4-wastewater-coll-r05-m1-03": "af8ab93e5e36f0306d54d1c3bc63f943ceaa67d226b42937764d463447762fe7",
+    "targeth-ht261118-class4-wastewater-coll-r05-m1-04": "d14ca9b3029ebe4c40e5caa44e35f2f4b0a7b11eda1fe1123bb7920ec9ffb874",
+    "targeth-ht261118-class4-wastewater-coll-r05-m1-05": "b497da2fd2312c3c00b67b24457ee2b5ae2f7df0759e35a16638b7ddaff0aae9",
+    "targeth-ht261118-class4-wastewater-coll-r05-m1-06": "76476de8d52f26b8c4062164f38c205905b60355186e1a373df5c6bbf4ae7bbd",
+    "targeth-ht261118-class4-wastewater-coll-r05-m1-07": "441d13f03eba66aeeba9955f8a19f470e55f9f8cf434e65e1b1c200e353ccc11",
+    "targeth-ht261118-class4-wastewater-coll-r05-m1-08": "ff00de9d6d1b4629e5399d160e4ef2cc17a6b06c9a2a0a7b167483a3fedc4d2b",
+    "targeth-ht261118-class4-wastewater-coll-r05-m1-09": "68bdfc45baae6b05e1ccf802e66310d5f3f35ef264df3c4722f35f07f865e9a7",
+    "targeth-ht261118-class4-wastewater-coll-r05-m1-10": "a98912013eace55daef52c3fa9998196c6d042ca39c33be4169a4b778bab012b"
+   }
+  },
+  "registeredAt": "2026-11-19T04:10:24.641Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 0,
+     "f": 0
+    },
+    "dirs": {
+     "increase": 0,
+     "decrease": 0,
+     "unchanged": 0
+    },
+    "longest": 0,
+    "options": 0
+   },
+   "batchSha256": "48ce3e28d8713b246cf05e9bc3b7e4f2e5cc1e93b2251330396d688a0549d243"
+  }
+ }
+}

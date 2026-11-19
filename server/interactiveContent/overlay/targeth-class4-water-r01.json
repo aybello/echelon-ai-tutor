@@ -1,0 +1,1528 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-class4-water-r01",
+ "scope": "Owner-authorized AI-reviewed game activities: 39 items.",
+ "additions": [
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r01-m0-01",
+    "prompt": "Bromine-containing organic byproducts formed from hypobromous acid and natural organic matter include bromoform, brominated acetic acids, and cyanogen bromide.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Hypobromous acid reacts with natural organic matter to form bromoform, brominated acetic acids, and cyanogen bromide."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:57.177899+00:00",
+    "notes": "Strict Hydrogen self-review of class4-water r01 draft against supplied source pages, evidence, and collision candidates; 39 items accepted and 3 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:46:52.962Z",
+    "payloadSha256": "36ff196a70d67b0fad4403a7c1b2f9b1450c633831aa160f990eae79871ea06f",
+    "builderResultsSha256": "905fe0c8bc2651e5b4d37297a370aec4e03d42e5fbf3df0060f4aa62c01d7e33"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r01-m0-02",
+    "prompt": "Researchers have already identified nearly 100 percent of bromide ions incorporated into organic disinfection byproducts.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Only about one-third of the bromide ions incorporated into organic disinfection byproducts have been identified."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:57.177899+00:00",
+    "notes": "Strict Hydrogen self-review of class4-water r01 draft against supplied source pages, evidence, and collision candidates; 39 items accepted and 3 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:46:52.962Z",
+    "payloadSha256": "a98c22b87c8bf60f8328d2fbba629b5b985198c7c160de7fa9298a1fae8edabe",
+    "builderResultsSha256": "905fe0c8bc2651e5b4d37297a370aec4e03d42e5fbf3df0060f4aa62c01d7e33"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r01-m0-03",
+    "prompt": "Using spiral-wound nanofiltration membranes of 200 to 300 daltons can control brominated trihalomethane formation, though pretreatment is needed.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Spiral-wound nanofiltration membranes of 200 to 300 daltons effectively control brominated trihalomethanes when paired with pretreatment."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:57.177899+00:00",
+    "notes": "Strict Hydrogen self-review of class4-water r01 draft against supplied source pages, evidence, and collision candidates; 39 items accepted and 3 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:46:52.962Z",
+    "payloadSha256": "f4bb3ddd23f6aaae97a69d47945f3c9ecf5d0a5c9c328c1a63c435dae4660b94",
+    "builderResultsSha256": "905fe0c8bc2651e5b4d37297a370aec4e03d42e5fbf3df0060f4aa62c01d7e33"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r01-m0-04",
+    "prompt": "Chlorine gas requires no special treatment or response programs because its hazards are minimal in water plants.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Hazards associated with chlorine gas require special treatment and response programs."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:57.177899+00:00",
+    "notes": "Strict Hydrogen self-review of class4-water r01 draft against supplied source pages, evidence, and collision candidates; 39 items accepted and 3 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:46:52.962Z",
+    "payloadSha256": "68ec099900c7742e222a969b240ac88270d79c361417cc80cc59f803c9c6b027",
+    "builderResultsSha256": "905fe0c8bc2651e5b4d37297a370aec4e03d42e5fbf3df0060f4aa62c01d7e33"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r01-m0-05",
+    "prompt": "Among the environmental factors affecting chlorine disinfection, pH and water temperature have the greatest impact on pathogen inactivation.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Of the environmental factors influencing chlorine disinfection, pH and temperature have the greatest impact."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:57.177899+00:00",
+    "notes": "Strict Hydrogen self-review of class4-water r01 draft against supplied source pages, evidence, and collision candidates; 39 items accepted and 3 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:46:52.962Z",
+    "payloadSha256": "f8da099a7bf5a7a301d1089b918cdff009226920494d52d2cf2979e7d1271a3e",
+    "builderResultsSha256": "905fe0c8bc2651e5b4d37297a370aec4e03d42e5fbf3df0060f4aa62c01d7e33"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r01-m0-07",
+    "prompt": "Greensand filtration is an oxidation-filtration technology using glauconite, a green, iron-rich, clay-like material, to remove arsenic.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Greensand filtration is an oxidation-filtration process whose active material is iron-rich glauconite."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:57.177899+00:00",
+    "notes": "Strict Hydrogen self-review of class4-water r01 draft against supplied source pages, evidence, and collision candidates; 39 items accepted and 3 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:46:52.962Z",
+    "payloadSha256": "6969a4747f64e4ca23740682fe01f811d48dfe891c0bad238dc1814ff9b0f138",
+    "builderResultsSha256": "905fe0c8bc2651e5b4d37297a370aec4e03d42e5fbf3df0060f4aa62c01d7e33"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r01-m0-08",
+    "prompt": "Ferric chloride coagulation requires acid addition to reach 96 percent arsenate removal at a 10 mg/L dose.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Ferric chloride achieved 96 percent arsenate removal at 10 mg/L with no acid addition."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:57.177899+00:00",
+    "notes": "Strict Hydrogen self-review of class4-water r01 draft against supplied source pages, evidence, and collision candidates; 39 items accepted and 3 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:46:52.962Z",
+    "payloadSha256": "26aa18228db2daba8343cc083bca90ed79c27f78ad14bf04d8fe8c278fbe3869",
+    "builderResultsSha256": "905fe0c8bc2651e5b4d37297a370aec4e03d42e5fbf3df0060f4aa62c01d7e33"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r01-m0-09",
+    "prompt": "In granular ferric hydroxide adsorbers, sulfate competition on arsenate adsorption is relatively weak compared with phosphate competition.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Sulfate competition on granular ferric hydroxide is weak, whereas phosphate competes strongly with arsenate."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:57.177899+00:00",
+    "notes": "Strict Hydrogen self-review of class4-water r01 draft against supplied source pages, evidence, and collision candidates; 39 items accepted and 3 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:46:52.962Z",
+    "payloadSha256": "dd74156f74c330a3f44497319485435ee0efc5ecc2d9a809b806cf5afbd549cc",
+    "builderResultsSha256": "905fe0c8bc2651e5b4d37297a370aec4e03d42e5fbf3df0060f4aa62c01d7e33"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r01-m0-10",
+    "prompt": "Granular ferric hydroxide outperforms activated alumina for arsenate removal at low pH values below 7.6, while alumina leads at high pH.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Granular ferric hydroxide outperforms activated alumina at high pH values, while performance below pH 7.6 is comparable."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:57.177899+00:00",
+    "notes": "Strict Hydrogen self-review of class4-water r01 draft against supplied source pages, evidence, and collision candidates; 39 items accepted and 3 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:46:52.962Z",
+    "payloadSha256": "6b1e19d9bfb7d84e6b1f9da73b69a69caaeef8bd421940763b9bea0ac0208c20",
+    "builderResultsSha256": "905fe0c8bc2651e5b4d37297a370aec4e03d42e5fbf3df0060f4aa62c01d7e33"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r01-m0-11",
+    "prompt": "In a sand and iron filings filter bed, sulfate is introduced to encourage the precipitation of arsenopyrites.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Sulfate is added in sand and iron filings beds to promote arsenopyrite precipitation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:57.177899+00:00",
+    "notes": "Strict Hydrogen self-review of class4-water r01 draft against supplied source pages, evidence, and collision candidates; 39 items accepted and 3 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:46:52.962Z",
+    "payloadSha256": "bc89ff3aca1f6c9abc4c3d70e255ff972474e991b5d9b68f51c772a6ccb2618d",
+    "builderResultsSha256": "905fe0c8bc2651e5b4d37297a370aec4e03d42e5fbf3df0060f4aa62c01d7e33"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r01-m0-12",
+    "prompt": "Water and alcohol are immiscible liquids that separate into distinct layers when mixed together.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Water and alcohol are miscible liquids that disperse uniformly in all proportions."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:57.177899+00:00",
+    "notes": "Strict Hydrogen self-review of class4-water r01 draft against supplied source pages, evidence, and collision candidates; 39 items accepted and 3 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:46:52.962Z",
+    "payloadSha256": "fb97711acdc7efd55e61b02e590cb77b93b339a3e3661bc05e900a410bbc97b2",
+    "builderResultsSha256": "905fe0c8bc2651e5b4d37297a370aec4e03d42e5fbf3df0060f4aa62c01d7e33"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r01-m0-15",
+    "prompt": "An electron has negligible mass, less than 0.02 percent of a proton's mass, so atomic weight is practically the weight of the nucleus.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Electrons have negligible mass compared with protons and neutrons, so atomic weight is practically the nucleus weight."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:57.177899+00:00",
+    "notes": "Strict Hydrogen self-review of class4-water r01 draft against supplied source pages, evidence, and collision candidates; 39 items accepted and 3 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:46:52.962Z",
+    "payloadSha256": "68f4446fdf91ddb4f29303d94652b1033f9b8151fc1eb3833860bf98b2e0a706",
+    "builderResultsSha256": "905fe0c8bc2651e5b4d37297a370aec4e03d42e5fbf3df0060f4aa62c01d7e33"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r01-m1-01",
+    "prompt": "Match each disinfection byproduct or precursor term to its chemical role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Natural organic matter",
+      "right": "Principal precursor of organic disinfection byproducts"
+     },
+     {
+      "id": "p2",
+      "left": "Bromide ion",
+      "right": "Oxidized to hypobromous acid by ozone or chlorine"
+     },
+     {
+      "id": "p3",
+      "left": "Bromate ion",
+      "right": "Formed when ozone reacts with hypobromite ion"
+     },
+     {
+      "id": "p4",
+      "left": "Bromoform",
+      "right": "Brominated trihalomethane formed from hypobromous acid"
+     },
+     {
+      "id": "p5",
+      "left": "Aldehydes and keto-acids",
+      "right": "Organic products formed when ozone oxidizes NOM"
+     },
+     {
+      "id": "p6",
+      "left": "Humic substances",
+      "right": "Hydrophobic fraction of natural organic matter"
+     }
+    ],
+    "explanation": "Natural organic matter and bromide ion drive chlorinated and brominated disinfection byproduct pathways."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:57.177899+00:00",
+    "notes": "Strict Hydrogen self-review of class4-water r01 draft against supplied source pages, evidence, and collision candidates; 39 items accepted and 3 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:46:52.962Z",
+    "payloadSha256": "51c0f9fe20e024770c57573ac6eda7d12734ec9cd74b5bb9edc3100004a1b6d3",
+    "builderResultsSha256": "905fe0c8bc2651e5b4d37297a370aec4e03d42e5fbf3df0060f4aa62c01d7e33"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r01-m1-02",
+    "prompt": "Match each membrane or byproduct control concept to its operational feature.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Enhanced coagulation",
+      "right": "Initial treatment step to remove organic precursors"
+     },
+     {
+      "id": "p2",
+      "left": "Spiral-wound nanofiltration",
+      "right": "200 to 300 dalton membrane controlling brominated THMs"
+     },
+     {
+      "id": "p3",
+      "left": "Waste brine disposal",
+      "right": "Major limitation of membrane treatment systems"
+     },
+     {
+      "id": "p4",
+      "left": "Powdered activated carbon",
+      "right": "Seasonal adsorbent for trihalomethane precursor reduction"
+     },
+     {
+      "id": "p5",
+      "left": "Moving chlorination point",
+      "right": "Relocates disinfectant feed to lower TTHM formation"
+     },
+     {
+      "id": "p6",
+      "left": "Dual-oxidant strategy",
+      "right": "Applies two oxidants at separate points to limit byproducts"
+     }
+    ],
+    "explanation": "Precursor removal, membrane barriers, and oxidant placement strategies help limit disinfection byproducts."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:57.177899+00:00",
+    "notes": "Strict Hydrogen self-review of class4-water r01 draft against supplied source pages, evidence, and collision candidates; 39 items accepted and 3 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:46:52.962Z",
+    "payloadSha256": "23a289a0eb0b39f3b388db246c64ef527cd99e608879a5ff62b8345c3b90876b",
+    "builderResultsSha256": "905fe0c8bc2651e5b4d37297a370aec4e03d42e5fbf3df0060f4aa62c01d7e33"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r01-m1-03",
+    "prompt": "Match each secondary role of chlorine oxidation to its treatment purpose.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Taste and odor control",
+      "right": "Oxidizes compounds causing off-flavours"
+     },
+     {
+      "id": "p2",
+      "left": "Algal growth prevention",
+      "right": "Controls biological blooms in treatment units"
+     },
+     {
+      "id": "p3",
+      "left": "Clear filter media",
+      "right": "Helps keep granular filter beds clean"
+     },
+     {
+      "id": "p4",
+      "left": "Iron and manganese removal",
+      "right": "Oxidizes dissolved metals for filtration"
+     },
+     {
+      "id": "p5",
+      "left": "Hydrogen sulfide destruction",
+      "right": "Eliminates rotten-egg odour gas"
+     },
+     {
+      "id": "p6",
+      "left": "Pipeline capacity preservation",
+      "right": "Controls slime growth in distribution mains"
+     }
+    ],
+    "explanation": "Beyond disinfection, chlorine's oxidizing power supports taste, odour, metal, media, and slime control."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:57.177899+00:00",
+    "notes": "Strict Hydrogen self-review of class4-water r01 draft against supplied source pages, evidence, and collision candidates; 39 items accepted and 3 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:46:52.962Z",
+    "payloadSha256": "43e6da8ccb244cfca22fbc12f905372a534591f1211f19e138ca230ebae4ce65",
+    "builderResultsSha256": "905fe0c8bc2651e5b4d37297a370aec4e03d42e5fbf3df0060f4aa62c01d7e33"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r01-m1-04",
+    "prompt": "Match each chlorine disinfection factor to its documented effect on inactivation.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "High chlorine residual",
+      "right": "Increases pathogen inactivation rate"
+     },
+     {
+      "id": "p2",
+      "left": "Long contact time",
+      "right": "Provides greater CT for microbial kill"
+     },
+     {
+      "id": "p3",
+      "left": "Low water pH",
+      "right": "Favours germicidal hypochlorous acid"
+     },
+     {
+      "id": "p4",
+      "left": "Low turbidity",
+      "right": "Reduces particle shielding of microbes"
+     },
+     {
+      "id": "p5",
+      "left": "High water temperature",
+      "right": "Speeds up chemical inactivation"
+     },
+     {
+      "id": "p6",
+      "left": "Reovirus in estuary tests",
+      "right": "Least chlorine-resistant enteric virus studied"
+     }
+    ],
+    "explanation": "Chlorine inactivation improves with higher residual, longer contact time, warmer water, lower pH, and low turbidity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:57.177899+00:00",
+    "notes": "Strict Hydrogen self-review of class4-water r01 draft against supplied source pages, evidence, and collision candidates; 39 items accepted and 3 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:46:52.962Z",
+    "payloadSha256": "2cad38410fa8a041bc36e921d9c333d7e8b826144c6fe8d91c3ee7a182e65357",
+    "builderResultsSha256": "905fe0c8bc2651e5b4d37297a370aec4e03d42e5fbf3df0060f4aa62c01d7e33"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r01-m1-05",
+    "prompt": "Match each arsenic removal technology to its process characteristic.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Greensand filtration",
+      "right": "Oxidation filtration using iron-rich glauconite"
+     },
+     {
+      "id": "p2",
+      "left": "Manganese precipitation",
+      "right": "Relatively ineffective for arsenic compared with iron"
+     },
+     {
+      "id": "p3",
+      "left": "Coagulation-assisted microfiltration",
+      "right": "Captures smaller floc sizes with less coagulant"
+     },
+     {
+      "id": "p4",
+      "left": "Ferric chloride coagulation",
+      "right": "Achieves high arsenate removal without acid addition"
+     },
+     {
+      "id": "p5",
+      "left": "Alum coagulation for arsenic",
+      "right": "Requires pH reduction for high arsenate removal"
+     },
+     {
+      "id": "p6",
+      "left": "Lime softening",
+      "right": "Shifts carbonate equilibrium to precipitate hardness"
+     }
+    ],
+    "explanation": "Arsenic removal processes vary in coagulant pH sensitivity, media composition, and floc capture mechanisms."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:57.177899+00:00",
+    "notes": "Strict Hydrogen self-review of class4-water r01 draft against supplied source pages, evidence, and collision candidates; 39 items accepted and 3 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:46:52.962Z",
+    "payloadSha256": "fc4c877423c13d00aeb739e866945ba711fb2acde96b9fb79c93773c77871522",
+    "builderResultsSha256": "905fe0c8bc2651e5b4d37297a370aec4e03d42e5fbf3df0060f4aa62c01d7e33"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r01-m1-06",
+    "prompt": "Match each iron-based arsenic media or residual to its behaviour.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Sulfur-modified iron",
+      "right": "Packed-bed media most economical below pH 8"
+     },
+     {
+      "id": "p2",
+      "left": "Granular ferric hydroxide",
+      "right": "Adsorption media strongly inhibited by phosphate"
+     },
+     {
+      "id": "p3",
+      "left": "Alkaline GFH leaching",
+      "right": "Generates high-arsenate liquid waste needing treatment"
+     },
+     {
+      "id": "p4",
+      "left": "Sand and iron filings",
+      "right": "Reduces inorganic arsenic to coprecipitates and arsenopyrites"
+     },
+     {
+      "id": "p5",
+      "left": "Sulfate in iron-filings bed",
+      "right": "Encourages precipitation of arsenopyrite solids"
+     },
+     {
+      "id": "p6",
+      "left": "Photooxidation coprecipitation",
+      "right": "Experimental method producing TCLP-passing residuals"
+     }
+    ],
+    "explanation": "Iron-based arsenic media differ in pH economics, competing ions, and residual waste handling."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:57.177899+00:00",
+    "notes": "Strict Hydrogen self-review of class4-water r01 draft against supplied source pages, evidence, and collision candidates; 39 items accepted and 3 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:46:52.962Z",
+    "payloadSha256": "a7f84bbe844cb28fb138db9072429dec3cd60efd8dd0569e015b7f2f1ed302dd",
+    "builderResultsSha256": "905fe0c8bc2651e5b4d37297a370aec4e03d42e5fbf3df0060f4aa62c01d7e33"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r01-m1-07",
+    "prompt": "Match each solution or solids term to its scientific definition.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Miscible liquids",
+      "right": "Substances dispersing uniformly in all proportions"
+     },
+     {
+      "id": "p2",
+      "left": "Saturated solution",
+      "right": "State unable to dissolve additional solute"
+     },
+     {
+      "id": "p3",
+      "left": "Colloidal solids",
+      "right": "Sub-micron particles forming a distinct solid phase"
+     },
+     {
+      "id": "p4",
+      "left": "Total solids",
+      "right": "Sum of suspended, colloidal, and dissolved solids"
+     },
+     {
+      "id": "p5",
+      "left": "Turbidity",
+      "right": "Light scattering and absorption by suspended matter"
+     },
+     {
+      "id": "p6",
+      "left": "Precipitate",
+      "right": "Solid separating from solution due to reaction or pH shift"
+     }
+    ],
+    "explanation": "Distinguishing dissolved, colloidal, and suspended phases is fundamental to water chemistry and treatment."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:57.177899+00:00",
+    "notes": "Strict Hydrogen self-review of class4-water r01 draft against supplied source pages, evidence, and collision candidates; 39 items accepted and 3 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:46:52.962Z",
+    "payloadSha256": "300cf9e8976d46599b4bb3fb2dd8f8c4759fe410418f569ff982a83edf281c09",
+    "builderResultsSha256": "905fe0c8bc2651e5b4d37297a370aec4e03d42e5fbf3df0060f4aa62c01d7e33"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r01-m1-08",
+    "prompt": "Match each chemical classification or ion term to its description.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Cation",
+      "right": "Positively charged ion such as dissolved sodium"
+     },
+     {
+      "id": "p2",
+      "left": "Anion",
+      "right": "Negatively charged ion such as dissolved chloride"
+     },
+     {
+      "id": "p3",
+      "left": "Hydroxide ion",
+      "right": "Negatively charged ion formed when water loses a proton"
+     },
+     {
+      "id": "p4",
+      "left": "Hydronium ion",
+      "right": "Positively charged ion formed when water gains a proton"
+     },
+     {
+      "id": "p5",
+      "left": "Organic substance",
+      "right": "Carbon-based compound of animal or vegetable origin"
+     },
+     {
+      "id": "p6",
+      "left": "Inorganic substance",
+      "right": "Chemical substance of mineral origin"
+     }
+    ],
+    "explanation": "Ions carry positive or negative charges, while organic and inorganic classifications reflect carbon-based versus mineral origins."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:57.177899+00:00",
+    "notes": "Strict Hydrogen self-review of class4-water r01 draft against supplied source pages, evidence, and collision candidates; 39 items accepted and 3 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:46:52.962Z",
+    "payloadSha256": "ba209a3110778a158d996f06aa8246e5320d8a452b436e68d30ebda1e5155997",
+    "builderResultsSha256": "905fe0c8bc2651e5b4d37297a370aec4e03d42e5fbf3df0060f4aa62c01d7e33"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r01-m1-09",
+    "prompt": "Match each physical state of matter to its macroscopic behaviour.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Solid state",
+      "right": "Retains fixed shape and definite volume"
+     },
+     {
+      "id": "p2",
+      "left": "Liquid state",
+      "right": "Maintains constant volume while taking container shape"
+     },
+     {
+      "id": "p3",
+      "left": "Gas state",
+      "right": "Expands or compresses to fill any container"
+     },
+     {
+      "id": "p4",
+      "left": "Liquid particles",
+      "right": "Move freely over one another while sticking together"
+     },
+     {
+      "id": "p5",
+      "left": "Gas particles",
+      "right": "Move freely without sticking together"
+     },
+     {
+      "id": "p6",
+      "left": "Water on Earth",
+      "right": "Occurs naturally in solid, liquid, and gas states"
+     }
+    ],
+    "explanation": "Solids, liquids, and gases differ in particle cohesion, shape retention, and compressibility."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:57.177899+00:00",
+    "notes": "Strict Hydrogen self-review of class4-water r01 draft against supplied source pages, evidence, and collision candidates; 39 items accepted and 3 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:46:52.962Z",
+    "payloadSha256": "eba92abb8f8bef084f2d256dffb7d588243cb0bfe725e22d5c193f95bdd2fe23",
+    "builderResultsSha256": "905fe0c8bc2651e5b4d37297a370aec4e03d42e5fbf3df0060f4aa62c01d7e33"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r01-m1-10",
+    "prompt": "Match each atomic component or element property to its scientific fact.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Proton",
+      "right": "Positively charged particle in the atomic nucleus"
+     },
+     {
+      "id": "p2",
+      "left": "Neutron",
+      "right": "Uncharged nuclear particle contributing to atomic weight"
+     },
+     {
+      "id": "p3",
+      "left": "Electron",
+      "right": "Negligible-mass particle orbiting the nucleus"
+     },
+     {
+      "id": "p4",
+      "left": "Atomic weight",
+      "right": "Total number of protons and neutrons in the nucleus"
+     },
+     {
+      "id": "p5",
+      "left": "Chemical reaction",
+      "right": "Involves orbiting electrons without changing the nucleus"
+     },
+     {
+      "id": "p6",
+      "left": "Bromine and iodine",
+      "right": "Elements sharing similar chemical properties with chlorine"
+     }
+    ],
+    "explanation": "Atomic nuclei determine mass, while orbiting electrons govern chemical reactions and periodic properties."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:57.177899+00:00",
+    "notes": "Strict Hydrogen self-review of class4-water r01 draft against supplied source pages, evidence, and collision candidates; 39 items accepted and 3 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:46:52.962Z",
+    "payloadSha256": "df50a420ec6e87ff4f8753441258bcfc9fca6412a18773babb5f27273b0be21c",
+    "builderResultsSha256": "905fe0c8bc2651e5b4d37297a370aec4e03d42e5fbf3df0060f4aa62c01d7e33"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r01-m3-01",
+    "prompt": "Assume a water treatment plant switches from alum to ferric chloride at a 10 mg/L coagulant dose without adding acid for arsenate removal. What happens to the arsenate removal efficiency?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Ferric chloride achieved 96 percent arsenate removal at 10 mg/L without acid, whereas alum could not reach 90 percent without lowering pH."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:57.177899+00:00",
+    "notes": "Strict Hydrogen self-review of class4-water r01 draft against supplied source pages, evidence, and collision candidates; 39 items accepted and 3 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:46:52.962Z",
+    "payloadSha256": "215ac04cd6eb8634d0561579514f46cc58d3d53d3d98831f77eaf2965e9c2afc",
+    "builderResultsSha256": "905fe0c8bc2651e5b4d37297a370aec4e03d42e5fbf3df0060f4aa62c01d7e33"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r01-m3-02",
+    "prompt": "Assume source water containing natural organic matter and bromide ion is ozonated instead of left unoxidized, forming hypobromite ion. What happens to the bromate ion concentration?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Ozone oxidizes bromide to hypobromous acid/hypobromite ion and can react further with hypobromite ion to form bromate ion."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:57.177899+00:00",
+    "notes": "Strict Hydrogen self-review of class4-water r01 draft against supplied source pages, evidence, and collision candidates; 39 items accepted and 3 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:46:52.962Z",
+    "payloadSha256": "e321dfdeb24a86d47a964a8a0e19a963d6aa49cee6ed92a85596e94209e90f56",
+    "builderResultsSha256": "905fe0c8bc2651e5b4d37297a370aec4e03d42e5fbf3df0060f4aa62c01d7e33"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r01-m4-01",
+    "prompt": "A utility reviews brominated disinfection byproduct formation in bromide-rich water. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Ozone or free chlorine can oxidize bromide ion to hypobromous acid."
+     },
+     {
+      "id": "o2",
+      "label": "Hypobromous acid reacts with natural organic matter to form bromoform."
+     },
+     {
+      "id": "o3",
+      "label": "Bromate ion forms when free chlorine reacts directly with hypobromite ion."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Bromate ion forms when ozone reacts with hypobromite ion, not from free chlorine."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:57.177899+00:00",
+    "notes": "Strict Hydrogen self-review of class4-water r01 draft against supplied source pages, evidence, and collision candidates; 39 items accepted and 3 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:46:52.962Z",
+    "payloadSha256": "3620b166385381fb69eb2a419bece3c362a935c204a0fc63fbb2b82758080ff0",
+    "builderResultsSha256": "905fe0c8bc2651e5b4d37297a370aec4e03d42e5fbf3df0060f4aa62c01d7e33"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r01-m4-02",
+    "prompt": "Engineers evaluate nanofiltration for controlling disinfection byproduct precursors. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Spiral-wound nanofiltration membranes of 200 to 300 daltons control brominated THMs."
+     },
+     {
+      "id": "o2",
+      "label": "Nanofiltration membranes operate effectively on raw surface water without pretreatment."
+     },
+     {
+      "id": "o3",
+      "label": "Waste brine disposal and membrane fouling are significant limitations of membrane use."
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Pretreatment of the feed water is necessary for spiral-wound nanofiltration membranes."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:57.177899+00:00",
+    "notes": "Strict Hydrogen self-review of class4-water r01 draft against supplied source pages, evidence, and collision candidates; 39 items accepted and 3 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:46:52.962Z",
+    "payloadSha256": "2e32228682f92e65525db500589dba851ab2a679987547967cd8f4538a32b354",
+    "builderResultsSha256": "905fe0c8bc2651e5b4d37297a370aec4e03d42e5fbf3df0060f4aa62c01d7e33"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r01-m4-03",
+    "prompt": "Operators review alternative disinfection methods and their limitations. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Boiling water for 5 to 10 minutes is practical for small household quantities."
+     },
+     {
+      "id": "o2",
+      "label": "Ultraviolet light is rapidly absorbed, limiting it to nonturbid waters near the lamp."
+     },
+     {
+      "id": "o3",
+      "label": "Extreme pH adjustment disinfects water between pH 5.0 and pH 9.0."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Disinfection by pH adjustment requires extreme pH levels under 3.0 or over 11.0."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:57.177899+00:00",
+    "notes": "Strict Hydrogen self-review of class4-water r01 draft against supplied source pages, evidence, and collision candidates; 39 items accepted and 3 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:46:52.962Z",
+    "payloadSha256": "c221f1c9961b33a93da106b3a44465c78b8648705dd9ad0675a156e98be3c3fa",
+    "builderResultsSha256": "905fe0c8bc2651e5b4d37297a370aec4e03d42e5fbf3df0060f4aa62c01d7e33"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r01-m4-04",
+    "prompt": "A team reviews enteric virus inactivation by free chlorine in cold estuary water. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "At pH 7.8 and 2 degrees Celsius, reovirus was the least resistant virus tested."
+     },
+     {
+      "id": "o2",
+      "label": "At pH 7.8 and 2 degrees Celsius, poliovirus required less than 3 minutes for 4-log removal."
+     },
+     {
+      "id": "o3",
+      "label": "Across 20 enteric viruses tested, 4-log inactivation CT ranged from 1.4 to over 30 mg·min/L."
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Poliovirus was the most resistant virus tested and required more than 60 minutes for 4-log inactivation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:57.177899+00:00",
+    "notes": "Strict Hydrogen self-review of class4-water r01 draft against supplied source pages, evidence, and collision candidates; 39 items accepted and 3 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:46:52.962Z",
+    "payloadSha256": "204e41659761068bdaf687c03c7a36d1fb2ef1ed024b7070bbef41640778e3cc",
+    "builderResultsSha256": "905fe0c8bc2651e5b4d37297a370aec4e03d42e5fbf3df0060f4aa62c01d7e33"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r01-m4-05",
+    "prompt": "A groundwater utility compares arsenic removal technologies. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Manganese precipitation removes arsenic more effectively than iron precipitation."
+     },
+     {
+      "id": "o2",
+      "label": "Greensand filtration uses glauconite, a green, iron-rich, clay-like material."
+     },
+     {
+      "id": "o3",
+      "label": "Arsenic removal technologies fall into prescriptive, adsorption, ion exchange, and membrane groups."
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Arsenic removal during manganese precipitation is relatively ineffective compared with iron precipitation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:57.177899+00:00",
+    "notes": "Strict Hydrogen self-review of class4-water r01 draft against supplied source pages, evidence, and collision candidates; 39 items accepted and 3 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:46:52.962Z",
+    "payloadSha256": "2e444c2f1c64dc750198b96cb9f131a6eaf312edb58ee9f61d206f95c74b62e0",
+    "builderResultsSha256": "905fe0c8bc2651e5b4d37297a370aec4e03d42e5fbf3df0060f4aa62c01d7e33"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r01-m4-06",
+    "prompt": "A plant compares coagulation-assisted microfiltration with conventional gravity filtration. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Microfiltration provides a more effective microorganism barrier during coagulation upsets."
+     },
+     {
+      "id": "o2",
+      "label": "Coagulation-assisted microfiltration captures smaller floc sizes using less coagulant."
+     },
+     {
+      "id": "o3",
+      "label": "Coagulation-assisted microfiltration reduces total plant capacity compared with gravity filters."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Coagulation-assisted microfiltration increases total plant capacity compared with conventional gravity filtration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:57.177899+00:00",
+    "notes": "Strict Hydrogen self-review of class4-water r01 draft against supplied source pages, evidence, and collision candidates; 39 items accepted and 3 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:46:52.962Z",
+    "payloadSha256": "1fe264c2fe250e3b3a8d7c6f54daa50e91f87cd6901d41c5d8545673c23d8e13",
+    "builderResultsSha256": "905fe0c8bc2651e5b4d37297a370aec4e03d42e5fbf3df0060f4aa62c01d7e33"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r01-m4-07",
+    "prompt": "Operators review granular ferric hydroxide adsorption for arsenate removal. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Phosphate competes strongly with arsenate and reduces removal on granular ferric hydroxide."
+     },
+     {
+      "id": "o2",
+      "label": "Sulfate competes more strongly than phosphate for arsenate sites on ferric hydroxide."
+     },
+     {
+      "id": "o3",
+      "label": "Arsenate adsorption on granular ferric hydroxide decreases as pH increases."
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Sulfate competition on granular ferric hydroxide is weak, whereas phosphate competes strongly."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:57.177899+00:00",
+    "notes": "Strict Hydrogen self-review of class4-water r01 draft against supplied source pages, evidence, and collision candidates; 39 items accepted and 3 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:46:52.962Z",
+    "payloadSha256": "11a09cbbbc676774a7d0f0f3c1c6bde92883729f429e0b8f7a8f7d2a88b6b59a",
+    "builderResultsSha256": "905fe0c8bc2651e5b4d37297a370aec4e03d42e5fbf3df0060f4aa62c01d7e33"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r01-m4-08",
+    "prompt": "A study group reviews residuals from granular ferric hydroxide and iron-filings processes. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Alkaline leaching of spent ferric hydroxide creates high-arsenate liquid waste needing treatment."
+     },
+     {
+      "id": "o2",
+      "label": "Direct disposal of spent granular ferric hydroxide is favored over chemical regeneration."
+     },
+     {
+      "id": "o3",
+      "label": "Sulfate is excluded from iron-filings beds because it blocks arsenopyrite precipitation."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Sulfate is introduced in sand and iron-filings beds specifically to encourage arsenopyrite precipitation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:57.177899+00:00",
+    "notes": "Strict Hydrogen self-review of class4-water r01 draft against supplied source pages, evidence, and collision candidates; 39 items accepted and 3 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:46:52.962Z",
+    "payloadSha256": "77803b806aa08b790fbb0d05dd18425bb29a1a585572280e63dab02be0364400",
+    "builderResultsSha256": "905fe0c8bc2651e5b4d37297a370aec4e03d42e5fbf3df0060f4aa62c01d7e33"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r01-m4-09",
+    "prompt": "Students review miscibility and chemical testing concepts. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Bulk physical measurements include volume, temperature, melting point, and mass."
+     },
+     {
+      "id": "o2",
+      "label": "Water and liquid mercury are miscible liquids that blend uniformly in various proportions."
+     },
+     {
+      "id": "o3",
+      "label": "Compositional chemical analyses determine how much of a substance is present."
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Water and liquid mercury are immiscible liquids that do not blend uniformly."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:57.177899+00:00",
+    "notes": "Strict Hydrogen self-review of class4-water r01 draft against supplied source pages, evidence, and collision candidates; 39 items accepted and 3 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:46:52.962Z",
+    "payloadSha256": "fbd2e8ddcc65776317210fa66eb86e423f78f418caeace792159a38ac6dbdbc3",
+    "builderResultsSha256": "905fe0c8bc2651e5b4d37297a370aec4e03d42e5fbf3df0060f4aa62c01d7e33"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r01-m4-10",
+    "prompt": "An instructor reviews solids classifications and solution terms. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Colloidal solids are less than 1 micron in diameter and form a distinct solid phase."
+     },
+     {
+      "id": "o2",
+      "label": "Total solids include suspended solids while excluding colloidal and dissolved solids."
+     },
+     {
+      "id": "o3",
+      "label": "A saturated solution is in a physical state where it dissolves no more solute."
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Total solids include suspended solids as well as colloidal and dissolved solids."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:57.177899+00:00",
+    "notes": "Strict Hydrogen self-review of class4-water r01 draft against supplied source pages, evidence, and collision candidates; 39 items accepted and 3 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:46:52.962Z",
+    "payloadSha256": "96d2280abf1d24c568a4b009fe4ec2e1d21f2903317c07212916540c930757a1",
+    "builderResultsSha256": "905fe0c8bc2651e5b4d37297a370aec4e03d42e5fbf3df0060f4aa62c01d7e33"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r01-m4-11",
+    "prompt": "A class reviews water self-ionization and organic versus inorganic matter. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "In water self-ionization, the molecule losing a hydrogen ion becomes a hydronium ion."
+     },
+     {
+      "id": "o2",
+      "label": "Organic substances are carbon-based compounds of animal or vegetable origin."
+     },
+     {
+      "id": "o3",
+      "label": "Inorganic substances are chemical substances of mineral origin."
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "The water molecule losing a hydrogen ion becomes a negatively charged hydroxide ion."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:57.177899+00:00",
+    "notes": "Strict Hydrogen self-review of class4-water r01 draft against supplied source pages, evidence, and collision candidates; 39 items accepted and 3 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:46:52.962Z",
+    "payloadSha256": "665b5d606328f7c2ebcff728a4199d6ff2e20eca3837ae826ef5b553a96adc36",
+    "builderResultsSha256": "905fe0c8bc2651e5b4d37297a370aec4e03d42e5fbf3df0060f4aa62c01d7e33"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r01-m4-12",
+    "prompt": "Students compare the three physical states of matter. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Solids retain a definite shape and volume at a given temperature and pressure."
+     },
+     {
+      "id": "o2",
+      "label": "Liquids maintain a constant volume while taking the shape of their container."
+     },
+     {
+      "id": "o3",
+      "label": "Gases maintain a fixed volume that resists compression in closed vessels."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Gases have no fixed shape and can be expanded or compressed to fill containers."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:57.177899+00:00",
+    "notes": "Strict Hydrogen self-review of class4-water r01 draft against supplied source pages, evidence, and collision candidates; 39 items accepted and 3 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:46:52.962Z",
+    "payloadSha256": "69da51070615564c3e6582520e0113be89143b83c38c5f4bd6b9892cc3899ef5",
+    "builderResultsSha256": "905fe0c8bc2651e5b4d37297a370aec4e03d42e5fbf3df0060f4aa62c01d7e33"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r01-m4-13",
+    "prompt": "A study group reviews atomic structure and atomic weight. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Atomic weight equals the total number of protons and neutrons in the nucleus."
+     },
+     {
+      "id": "o2",
+      "label": "Neutrons are uncharged nuclear particles, while protons carry a positive charge."
+     },
+     {
+      "id": "o3",
+      "label": "Electrons contribute roughly half of an atom's total weight."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Electrons have negligible mass, less than 0.02 percent of a proton's mass."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:57.177899+00:00",
+    "notes": "Strict Hydrogen self-review of class4-water r01 draft against supplied source pages, evidence, and collision candidates; 39 items accepted and 3 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:46:52.962Z",
+    "payloadSha256": "5c53272c7361362642f2bc586c2c28c76ad411f20bcfe7b3596323980d82dfc5",
+    "builderResultsSha256": "905fe0c8bc2651e5b4d37297a370aec4e03d42e5fbf3df0060f4aa62c01d7e33"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r01-m4-14",
+    "prompt": "Operators review secondary treatment uses of chlorine. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Chlorine helps maintain clear filter media and controls pipeline slime growth."
+     },
+     {
+      "id": "o2",
+      "label": "Chlorine can oxidize iron and manganese and destroy hydrogen sulfide."
+     },
+     {
+      "id": "o3",
+      "label": "High chlorine doses prevent taste and odor problems in finished water."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "High chlorine doses can cause taste and odor problems in drinking water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:57.177899+00:00",
+    "notes": "Strict Hydrogen self-review of class4-water r01 draft against supplied source pages, evidence, and collision candidates; 39 items accepted and 3 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:46:52.962Z",
+    "payloadSha256": "52beebe81052146d69067fd609d1e56d18a45d7cff9b21b35f81c31911a872f3",
+    "builderResultsSha256": "905fe0c8bc2651e5b4d37297a370aec4e03d42e5fbf3df0060f4aa62c01d7e33"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r01-m4-15",
+    "prompt": "Engineers review pH effects in enhanced coagulation for arsenate removal. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Lowering pH during enhanced coagulation improves arsenate removal by alum."
+     },
+     {
+      "id": "o2",
+      "label": "Ferric coagulation shows large swings in arsenate removal between pH 5.5 and 7.0."
+     },
+     {
+      "id": "o3",
+      "label": "Posttreatment pH adjustment may be needed for corrosion control after low-pH coagulation."
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "With ferric coagulation, pH does not have a significant effect on arsenate removal between 5.5 and 7.0."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:57.177899+00:00",
+    "notes": "Strict Hydrogen self-review of class4-water r01 draft against supplied source pages, evidence, and collision candidates; 39 items accepted and 3 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:46:52.962Z",
+    "payloadSha256": "a0611bce4f5eb1efbb677452e34dc1f3bb6f9b5e94cb5dc648125f56db1be92b",
+    "builderResultsSha256": "905fe0c8bc2651e5b4d37297a370aec4e03d42e5fbf3df0060f4aa62c01d7e33"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T02:45:57.177899+00:00",
+   "attestation": "Strict Hydrogen self-review of class4-water r01 draft against supplied source pages, evidence, and collision candidates; 39 items accepted and 3 same-mode paraphrases rejected.",
+   "payloadSha256": {
+    "targeth-ht261118-class4-water-r01-m0-01": "36ff196a70d67b0fad4403a7c1b2f9b1450c633831aa160f990eae79871ea06f",
+    "targeth-ht261118-class4-water-r01-m0-02": "a98c22b87c8bf60f8328d2fbba629b5b985198c7c160de7fa9298a1fae8edabe",
+    "targeth-ht261118-class4-water-r01-m0-03": "f4bb3ddd23f6aaae97a69d47945f3c9ecf5d0a5c9c328c1a63c435dae4660b94",
+    "targeth-ht261118-class4-water-r01-m0-04": "68ec099900c7742e222a969b240ac88270d79c361417cc80cc59f803c9c6b027",
+    "targeth-ht261118-class4-water-r01-m0-05": "f8da099a7bf5a7a301d1089b918cdff009226920494d52d2cf2979e7d1271a3e",
+    "targeth-ht261118-class4-water-r01-m0-07": "6969a4747f64e4ca23740682fe01f811d48dfe891c0bad238dc1814ff9b0f138",
+    "targeth-ht261118-class4-water-r01-m0-08": "26aa18228db2daba8343cc083bca90ed79c27f78ad14bf04d8fe8c278fbe3869",
+    "targeth-ht261118-class4-water-r01-m0-09": "dd74156f74c330a3f44497319485435ee0efc5ecc2d9a809b806cf5afbd549cc",
+    "targeth-ht261118-class4-water-r01-m0-10": "6b1e19d9bfb7d84e6b1f9da73b69a69caaeef8bd421940763b9bea0ac0208c20",
+    "targeth-ht261118-class4-water-r01-m0-11": "bc89ff3aca1f6c9abc4c3d70e255ff972474e991b5d9b68f51c772a6ccb2618d",
+    "targeth-ht261118-class4-water-r01-m0-12": "fb97711acdc7efd55e61b02e590cb77b93b339a3e3661bc05e900a410bbc97b2",
+    "targeth-ht261118-class4-water-r01-m0-15": "68f4446fdf91ddb4f29303d94652b1033f9b8151fc1eb3833860bf98b2e0a706",
+    "targeth-ht261118-class4-water-r01-m1-01": "51c0f9fe20e024770c57573ac6eda7d12734ec9cd74b5bb9edc3100004a1b6d3",
+    "targeth-ht261118-class4-water-r01-m1-02": "23a289a0eb0b39f3b388db246c64ef527cd99e608879a5ff62b8345c3b90876b",
+    "targeth-ht261118-class4-water-r01-m1-03": "43e6da8ccb244cfca22fbc12f905372a534591f1211f19e138ca230ebae4ce65",
+    "targeth-ht261118-class4-water-r01-m1-04": "2cad38410fa8a041bc36e921d9c333d7e8b826144c6fe8d91c3ee7a182e65357",
+    "targeth-ht261118-class4-water-r01-m1-05": "fc4c877423c13d00aeb739e866945ba711fb2acde96b9fb79c93773c77871522",
+    "targeth-ht261118-class4-water-r01-m1-06": "a7f84bbe844cb28fb138db9072429dec3cd60efd8dd0569e015b7f2f1ed302dd",
+    "targeth-ht261118-class4-water-r01-m1-07": "300cf9e8976d46599b4bb3fb2dd8f8c4759fe410418f569ff982a83edf281c09",
+    "targeth-ht261118-class4-water-r01-m1-08": "ba209a3110778a158d996f06aa8246e5320d8a452b436e68d30ebda1e5155997",
+    "targeth-ht261118-class4-water-r01-m1-09": "eba92abb8f8bef084f2d256dffb7d588243cb0bfe725e22d5c193f95bdd2fe23",
+    "targeth-ht261118-class4-water-r01-m1-10": "df50a420ec6e87ff4f8753441258bcfc9fca6412a18773babb5f27273b0be21c",
+    "targeth-ht261118-class4-water-r01-m3-01": "215ac04cd6eb8634d0561579514f46cc58d3d53d3d98831f77eaf2965e9c2afc",
+    "targeth-ht261118-class4-water-r01-m3-02": "e321dfdeb24a86d47a964a8a0e19a963d6aa49cee6ed92a85596e94209e90f56",
+    "targeth-ht261118-class4-water-r01-m4-01": "3620b166385381fb69eb2a419bece3c362a935c204a0fc63fbb2b82758080ff0",
+    "targeth-ht261118-class4-water-r01-m4-02": "2e32228682f92e65525db500589dba851ab2a679987547967cd8f4538a32b354",
+    "targeth-ht261118-class4-water-r01-m4-03": "c221f1c9961b33a93da106b3a44465c78b8648705dd9ad0675a156e98be3c3fa",
+    "targeth-ht261118-class4-water-r01-m4-04": "204e41659761068bdaf687c03c7a36d1fb2ef1ed024b7070bbef41640778e3cc",
+    "targeth-ht261118-class4-water-r01-m4-05": "2e444c2f1c64dc750198b96cb9f131a6eaf312edb58ee9f61d206f95c74b62e0",
+    "targeth-ht261118-class4-water-r01-m4-06": "1fe264c2fe250e3b3a8d7c6f54daa50e91f87cd6901d41c5d8545673c23d8e13",
+    "targeth-ht261118-class4-water-r01-m4-07": "11a09cbbbc676774a7d0f0f3c1c6bde92883729f429e0b8f7a8f7d2a88b6b59a",
+    "targeth-ht261118-class4-water-r01-m4-08": "77803b806aa08b790fbb0d05dd18425bb29a1a585572280e63dab02be0364400",
+    "targeth-ht261118-class4-water-r01-m4-09": "fbd2e8ddcc65776317210fa66eb86e423f78f418caeace792159a38ac6dbdbc3",
+    "targeth-ht261118-class4-water-r01-m4-10": "96d2280abf1d24c568a4b009fe4ec2e1d21f2903317c07212916540c930757a1",
+    "targeth-ht261118-class4-water-r01-m4-11": "665b5d606328f7c2ebcff728a4199d6ff2e20eca3837ae826ef5b553a96adc36",
+    "targeth-ht261118-class4-water-r01-m4-12": "69da51070615564c3e6582520e0113be89143b83c38c5f4bd6b9892cc3899ef5",
+    "targeth-ht261118-class4-water-r01-m4-13": "5c53272c7361362642f2bc586c2c28c76ad411f20bcfe7b3596323980d82dfc5",
+    "targeth-ht261118-class4-water-r01-m4-14": "52beebe81052146d69067fd609d1e56d18a45d7cff9b21b35f81c31911a872f3",
+    "targeth-ht261118-class4-water-r01-m4-15": "a0611bce4f5eb1efbb677452e34dc1f3bb6f9b5e94cb5dc648125f56db1be92b"
+   }
+  },
+  "registeredAt": "2026-11-19T02:46:52.962Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 7,
+     "f": 5
+    },
+    "dirs": {
+     "increase": 2,
+     "decrease": 0,
+     "unchanged": 0
+    },
+    "longest": 6,
+    "options": 17
+   },
+   "batchSha256": "ab6c2dc79c67553336c9cb3f4ac68faa39f9fa41f57e8babf879aeafbbfaca72"
+  }
+ }
+}

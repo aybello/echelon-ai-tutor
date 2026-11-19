@@ -1,0 +1,1924 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "target2-class1-ww-r02",
+ "scope": "Owner-authorized AI-reviewed game activities: 54 items.",
+ "additions": [
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m0-01",
+    "prompt": "In a rotary trickling filter distributor, the reaction force of wastewater leaving the arm orifices drives the rotation of the arms.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Hydraulic reaction from water discharging through the distributor orifices rotates a conventional rotary distributor above the media."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "7bfaa8af9ca3d455f8532781416afa1fa9a799bcaee27c2c4a4837ccbabc130e",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m0-04",
+    "prompt": "Staging two trickling filters in series feeds the effluent of the first filter as the influent to the second filter.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Series staging passes treated flow from the first filter into the next unit to achieve further organic removal."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "37121ff5a4a57a87f387d8080a54b5fe3c1b5a1d04cf69bd8d7a47c82ff2c747",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m0-05",
+    "prompt": "White chalky slime on rotating biological contactor disks points to active nitrification under normal conditions.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "White chalky growth indicates high sulfur or sulfide levels in the influent, whereas reddish or golden brown slime indicates nitrification."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "52efbfac1ecd4c3a33e8d71b5e2744caaccd797dd5872e99130da2aaeb30e9c2",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m0-06",
+    "prompt": "Protective covers over rotating biological contactors help prevent biomass loss caused by wind, precipitation, sunlight, and temperature swings.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Enclosing RBC stages shields the attached biofilm from severe weather variations, though the housing restricts visual access."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "7acdd6270a8cc6f105a861b45e80bd9a753c964990c2a15bde3811a2e3bad992",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m0-07",
+    "prompt": "Carbonaceous biochemical oxygen demand measures the oxygen required to biologically oxidize nitrogen compounds.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "CBOD5 measures oxygen demand from carbonaceous organic matter; nitrogenous oxygen demand reflects biological oxidation of nitrogen compounds."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "6c5b930b9fcdff281a826c1be7bf776038acaf530eef1b00d46545a46959f2ab",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m0-08",
+    "prompt": "A flume in a wastewater treatment plant is a hydraulic device used to measure flow rate.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Flumes shape open-channel flow so water depth corresponds predictably to wastewater flow rate."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "3630debcfea28847fd8fed9977c9e580eea4d64ef48e2ad191e3d28782a2a9f6",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m0-09",
+    "prompt": "In an anaerobic digester, the supernatant is the dense layer of inorganic grit resting on the tank floor.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Digester supernatant is the amber-colored liquid layer separating above the settled sludge mass."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "88cb4e9150e45da1cb0b79759f180d2f5fec05a64df81d46e798cd2eae532bf5",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m0-10",
+    "prompt": "A chemical buffer in wastewater resists shifts in pH when acidic or basic substances enter the flow.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Buffers neutralize added acids or bases, helping stabilize the pH needed by treatment microorganisms."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "c2c17e86c1056045694a88c4715f6c2317dadbe48df40f45d5c61f2aee509f3b",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m0-11",
+    "prompt": "Diurnal flow variation means plant influent flow remains steady from hour to hour across a dry day.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Diurnal variation describes the daily rise and fall of wastewater flow rates driven by community water use."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "369045015adc4a165697d97b5cee97b00fb0a76178416ebca6cd68ac9772e81b",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m0-12",
+    "prompt": "Force main collection lines rely on downward pipe slope rather than pump pressure to maintain flow velocity.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Force mains convey pumped wastewater under pressure, allowing desired velocities without relying on gravity pipe slope."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "bc3fd34ec4027750a69afdd86df9d09a71b7f606f581609086009c846fd4b628",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m0-14",
+    "prompt": "The food-to-microorganism ratio compares incoming COD or BOD5 to the mass of inorganic sand in the grit chamber.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "The F/M ratio relates available organic food (BOD5 or COD) to the mixed liquor volatile suspended solids in aeration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "8ce59fa23c708f29a16e3015c09af274e4329f4f473c6092f1c194512dcef339",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m1-01",
+    "prompt": "Match each oxygen-demand or solids parameter to the specific wastewater fraction it quantifies.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "CBOD5",
+      "right": "Biochemical oxygen demand from carbonaceous material"
+     },
+     {
+      "id": "p2",
+      "left": "NOD",
+      "right": "Oxygen needed to biologically oxidize nitrogen compounds"
+     },
+     {
+      "id": "p3",
+      "left": "COD",
+      "right": "Chemically oxidizable material in wastewater"
+     },
+     {
+      "id": "p4",
+      "left": "MLVSS",
+      "right": "Organic matter concentration within mixed liquor solids"
+     },
+     {
+      "id": "p5",
+      "left": "WASS",
+      "right": "Suspended solids concentration in wasted activated sludge"
+     },
+     {
+      "id": "p6",
+      "left": "Floc",
+      "right": "Joined solid clusters that settle more readily"
+     }
+    ],
+    "explanation": "Each analytical or process term isolates a distinct oxygen-consuming or particulate fraction in biological treatment."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "d45b3cedcfcd1d32354773ac28f15aa82645d46cfc803f1f139f628440e10167",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m1-02",
+    "prompt": "Match each trickling filter distribution or flow feature to its hydraulic function.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Rotary distributor orifices",
+      "right": "Discharge jets whose reaction force turns the arms"
+     },
+     {
+      "id": "p2",
+      "left": "Spreader plates below orifices",
+      "right": "Shape emerging water into fan-like spray patterns"
+     },
+     {
+      "id": "p3",
+      "left": "Fixed-nozzle distributor",
+      "right": "Stationary spray heads covering set media zones"
+     },
+     {
+      "id": "p4",
+      "left": "Filter staging",
+      "right": "Feeding one filter's effluent into a second filter in series"
+     },
+     {
+      "id": "p5",
+      "left": "Partially filled underdrains",
+      "right": "Carry effluent away while preserving air passage"
+     },
+     {
+      "id": "p6",
+      "left": "Effluent channel",
+      "right": "Conveys filter discharge to the secondary settling tank"
+     }
+    ],
+    "explanation": "Trickling filter hydraulics balance uniform surface wetting, airflow through underdrains, and series or settling conveyance."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "1acee8a35cf09aac9f7aa4aa099d89a86caa4fe83b5d1bc9634b65e6186202ee",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m1-03",
+    "prompt": "Match each collection or headworks component to its operational principle.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Force main",
+      "right": "Conveys pumped wastewater under pressure without needing pipe slope"
+     },
+     {
+      "id": "p2",
+      "left": "Single-compartment wet well",
+      "right": "Collects flow around a submersible centrifugal pump"
+     },
+     {
+      "id": "p3",
+      "left": "Pneumatic ejector tank",
+      "right": "Closes an inlet valve and uses air pressure to push sewage out"
+     },
+     {
+      "id": "p4",
+      "left": "Storm sewer",
+      "right": "Separate pipe network carrying rain and snowmelt runoff"
+     },
+     {
+      "id": "p5",
+      "left": "Combined wastewater",
+      "right": "Sanitary sewage and stormwater carried together in one system"
+     },
+     {
+      "id": "p6",
+      "left": "Flume",
+      "right": "Channel structure used to measure wastewater flow rate"
+     }
+    ],
+    "explanation": "Collection and headworks systems differ in whether flow moves by gravity, pump pressure, air displacement, or separate drainage."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "86bcb091dda10da6faa8cf9d3b0aaedbd4d6351ad032190894c43d176682abec",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m1-04",
+    "prompt": "Match each wastewater constituent or stream to its defining scientific role or origin.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Chemical buffer",
+      "right": "Resists pH shifts in solution"
+     },
+     {
+      "id": "p2",
+      "left": "Grit",
+      "right": "Heavy inorganic sand, gravel, eggshells, or metal filings"
+     },
+     {
+      "id": "p3",
+      "left": "Nutrients",
+      "right": "Nitrogen, phosphorus, iron, and trace metals supporting growth"
+     },
+     {
+      "id": "p4",
+      "left": "Digester supernatant",
+      "right": "Amber liquid layer separated above settled digester sludge"
+     },
+     {
+      "id": "p5",
+      "left": "Biosolids",
+      "right": "Treated sludge product suitable for beneficial reuse"
+     },
+     {
+      "id": "p6",
+      "left": "Infiltration",
+      "right": "Water entering sewers through pipe cracks, joints, or breaks"
+     }
+    ],
+    "explanation": "Distinguishing inorganic grit, dissolved buffers, growth nutrients, and separated liquid streams supports sound process control."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "b5136fdaa218ea0fdfbd102f6facf866517aac5a972395ad169c25f80c4fecdd",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m2-01",
+    "prompt": "Which element is NOT one of the five primary chemical elements making up organic matter in wastewater?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Carbon"
+     },
+     {
+      "id": "b",
+      "label": "Nitrogen"
+     },
+     {
+      "id": "c",
+      "label": "Sulfur"
+     },
+     {
+      "id": "d",
+      "label": "Gravel"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Organic compounds consist of carbon, hydrogen, oxygen, sulfur, and nitrogen, whereas gravel is heavy inorganic grit."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "967509b97f7b87096e4b9b1711a4977ec40440741599d5406f661b82725d38f3",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m2-02",
+    "prompt": "Which item is NOT one of the fundamental environmental protection purposes of a municipal wastewater treatment plant?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Protecting public health and water supplies"
+     },
+     {
+      "id": "b",
+      "label": "Protecting aquatic life in receiving waters"
+     },
+     {
+      "id": "c",
+      "label": "Preserving adjacent lands and water uses"
+     },
+     {
+      "id": "d",
+      "label": "Generating road salt for storm sewers"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Treatment plants protect public health, water supplies, aquatic life, water uses, and adjacent lands; road salt is a stormwater contaminant."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "c18612222cfec9ec253eaa0f3fcfd81f1e4a6a0edaff0a6cc4b50cc698f0f14f",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m2-03",
+    "prompt": "Which option is NOT one of the three standard disposal or handling pathways for bar-screen screenings?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Hauling to landfill disposal"
+     },
+     {
+      "id": "b",
+      "label": "Thermal incineration"
+     },
+     {
+      "id": "c",
+      "label": "Grinding for return to the wastewater flow"
+     },
+     {
+      "id": "d",
+      "label": "Dissolving in a digester supernatant draw-off"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Screenings are disposed of by landfilling, incineration, or grinding and returning to the flow, not dissolved in supernatant."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "66e0abacdd3dee9a8da04ca55837b89226ef26501d40ebb258ce822431808100",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m2-04",
+    "prompt": "Three of these measure oxygen demand in wastewater; which one measures buffering against pH change instead?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Carbonaceous biochemical oxygen demand"
+     },
+     {
+      "id": "b",
+      "label": "Chemical oxygen demand"
+     },
+     {
+      "id": "c",
+      "label": "Nitrogenous oxygen demand"
+     },
+     {
+      "id": "d",
+      "label": "Alkalinity"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "CBOD5, COD, and NOD quantify oxygen demand, whereas alkalinity reflects buffering resistance to pH changes."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "ae8695f266b20daa65de4aaf19db415338077379b7c4f28c2e5de7e6ad24e6d1",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m2-05",
+    "prompt": "Three of these biological processes are grouped together as more temperature-sensitive and removing less BOD than the fourth. Which one is the exception?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Stabilization ponds"
+     },
+     {
+      "id": "b",
+      "label": "Trickling filters"
+     },
+     {
+      "id": "c",
+      "label": "Rotating biological contactors"
+     },
+     {
+      "id": "d",
+      "label": "Activated sludge systems"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Ponds, trickling filters, and RBCs are more temperature-sensitive and remove less BOD than suspended-growth activated sludge systems."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "e989f443b203bec156f541ab7127c9a4ed0e2b51f9ce32e3910eb2e5df68039a",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m2-06",
+    "prompt": "Which observation on a rotating biological contactor indicates abnormal influent chemistry or shock rather than healthy biological operation?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Steady rotation of the shaft and media"
+     },
+     {
+      "id": "b",
+      "label": "Gray shaggy slime on early stages"
+     },
+     {
+      "id": "c",
+      "label": "Reddish or golden brown shaggy slime during nitrification"
+     },
+     {
+      "id": "d",
+      "label": "Bare media with no visible slime growth"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Lack of visible slime points to a severe pH or temperature upset, whereas gray or golden-brown shaggy films reflect normal growth."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "076dddfb0321d50f7f4d1462667c5dd69939249cec9fbb1b6c0899f04b9e002e",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m2-07",
+    "prompt": "Which material is typical of separate urban stormwater runoff rather than domestic human body wastes?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Road salt washed from streets"
+     },
+     {
+      "id": "b",
+      "label": "Pathogenic enteric viruses"
+     },
+     {
+      "id": "c",
+      "label": "Human fecal bacteria"
+     },
+     {
+      "id": "d",
+      "label": "Solid and liquid animal discharges"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Separate stormwater systems carry street debris, road salt, and grit rather than concentrated human sanitary discharges."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "31345b085d011ae90ce46e3ac86b83524d030dd775810eaa6ad478b6cd9962c2",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m2-08",
+    "prompt": "Which calculation input belongs to the food-to-microorganism ratio rather than the sludge volume index?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "30-minute settled sludge volume"
+     },
+     {
+      "id": "b",
+      "label": "Mixed liquor suspended solids concentration"
+     },
+     {
+      "id": "c",
+      "label": "Influent BOD5 or COD mass available"
+     },
+     {
+      "id": "d",
+      "label": "Settling cylinder test result"
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "SVI uses SSV30 and MLSS to evaluate settling quality, while available BOD5 or COD is the food input for F/M."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "d0b7af4303bd013e15a9ec60120bf54d75f492bfb6341cda3ec7017d8fef90e0",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m2-09",
+    "prompt": "Which feature belongs to a pneumatic pumping station rather than a single-compartment submersible wet well station?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Pressurized air pushing sewage out after an inlet valve closes"
+     },
+     {
+      "id": "b",
+      "label": "Submersible centrifugal pump sitting in the collected wastewater"
+     },
+     {
+      "id": "c",
+      "label": "Single wet compartment collecting incoming sewage"
+     },
+     {
+      "id": "d",
+      "label": "Weatherproof motor housing or controls above the wet well"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Pneumatic stations seal the inlet valve and inject compressed air to eject sewage, whereas submersible wet wells use a submerged centrifugal pump."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "e1048b538019db808e98e075e887269c695d8053d281542d8c1a4029acc45637",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m2-10",
+    "prompt": "Which item is a trace or major growth nutrient for wastewater microorganisms rather than a hydraulic flow-control device?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Phosphorus"
+     },
+     {
+      "id": "b",
+      "label": "Flow-measuring flume"
+     },
+     {
+      "id": "c",
+      "label": "Automatic wet-well inlet valve"
+     },
+     {
+      "id": "d",
+      "label": "RBC stage baffle"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Phosphorus (along with nitrogen, iron, and trace metals) is an essential biological nutrient, while the other three control or measure flow."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "3847f5dc732852320f2d344087c94f9e0f6d7ca007159ea2af463c6b409dbdcc",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m3-01",
+    "prompt": "Wastewater depth in a trickling filter's underdrains rises until the drains run nearly full of liquid while ambient air temperature stays constant. What happens to the natural airflow into the filter media?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Underdrains need open headspace above the liquid to ventilate the bed; filling them blocks air passage into the media."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "676c2e11fbe51561fc5af4b0246106491957b14a850b51552f4f39905226313c",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m3-02",
+    "prompt": "A plant adds a second trickling filter in series so the first filter's effluent feeds the second filter under steady incoming load and temperature. What happens to the overall BOD5 removal across the filter train?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Staging trickling filters in series exposes the wastewater to additional fixed-film contact, removing extra BOD5 and COD."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "eae34e8d765963d1c7a61eff5dcee7ac675d552d2e0f441aa0dfdff0f57e2c7c",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m3-03",
+    "prompt": "Influent sulfide and sulfur concentrations to a rotating biological contactor rise sharply while temperature and rotation speed remain steady. What happens to the amount of white chalky slime on the disks?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "High influent sulfur or sulfide promotes sulfur-oxidizing bacteria that form a characteristic white, chalky film on RBC media."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "df260c4eead127f3b7887e3c6040a45ca5a864c015750aefcfe4540defe2bf79",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m3-04",
+    "prompt": "An uncovered rotating biological contactor is enclosed inside a tight protective housing with a small inspection door. What happens to the operator's direct visual access to the full media assembly?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "While covers protect biofilm from weather, enclosing the unit restricts access and limits observation to what is visible through the door."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "ddaa7eb8a69016bede7a3fe35a3002fafc40d4e97dd168ed23c9ab6565e0f15d",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m3-05",
+    "prompt": "Process conditions in a rotating biological contactor shift from normal steady operation to an abnormal upset while staffing resources permit. What happens to the recommended process-control sampling and testing frequency?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "RBC testing frequency can remain low during normal operation but increases during abnormal conditions to track and diagnose upsets."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "8510ed8df91fd538d9a7d9f55882abc04071e24bd45b6bef7bff07a9d4c2270e",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m3-06",
+    "prompt": "In an activated sludge basin with constant mixed liquor volatile suspended solids, the incoming carbonaceous BOD5 mass load rises. What happens to the food-to-microorganism ratio?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "F/M equals available BOD5 or COD divided by MLVSS mass; raising incoming food at fixed biomass raises F/M."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "ff97d28280eb03f8491105e5c3b85321525a0c00c654091ea9c30025fb9b57de",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m3-07",
+    "prompt": "Liquid depth in a rotating biological contactor tank is raised while disk diameter and shaft height remain fixed. What happens to the submergence fraction of the media disks?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Raising the tank liquid level immerses a larger portion of the fixed-height disks in the wastewater."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "78a382fc5a1b31351ce94fe423677357ee41e13539eeadf46aa97dd7ba33d317",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m3-08",
+    "prompt": "In a hydraulically driven rotary trickling filter distributor with unobstructed orifices, the flow rate pumped through the distributor arms drops sharply. What happens to the hydraulic reaction force driving arm rotation?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Because the force of water leaving the orifices drives a rotary distributor, lower jet flow reduces the driving reaction force."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "bb7a346bfdcb638064a12d6c2de6d024247d100536a422a6d72dd47ae14ff84d",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m3-09",
+    "prompt": "Aging gravity sewer pipes develop new open joint gaps and structural cracks below the groundwater table while weather stays dry. What happens to groundwater infiltration entering the collection system?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Infiltration is extraneous groundwater entering sewers through pipe cracks, joints, or breaks; more submerged openings admit more water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "76236e2fd50dd5a1af2b591ec342d5e3c38ab05b35daf52b1128f6764165307e",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m3-10",
+    "prompt": "Well-buffered wastewater receives a small acidic addition alongside unbuffered water receiving the identical acid addition at the same initial pH. Compared with the unbuffered water, what happens to the pH drop in the buffered wastewater?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "A buffer resists changes in pH, neutralizing added acid so the resulting pH shift is smaller than in unbuffered water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "0db45a89694482ea52e7f874be745a41013a39a46eb143b194fc228b61fd27d7",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m3-12",
+    "prompt": "Screenings removed at a mechanically cleaned bar screen are ground and returned directly to the channel instead of being hauled to a landfill. What happens to the mass of chopped solids carried downstream in the plant flow?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Grinding and returning screenings puts the shredded solids back into the wastewater stream rather than removing them from the plant."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "025b763a96c8d279c6318aa8c825518c44c497e085df421263da3c0e07d0b480",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m4-02",
+    "prompt": "Review these statements comparing secondary settling tanks after trickling filters with primary settling tanks. Which statement is wrong?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "The secondary settling tank receives trickling filter flow via an effluent channel to separate sloughed biofilm."
+     },
+     {
+      "id": "b",
+      "label": "Secondary settling tanks use shorter detention times than primary tanks because sloughed slime is heavier than grit."
+     },
+     {
+      "id": "c",
+      "label": "Basic tank construction and operation resemble primary clarifiers while accommodating slower-settling biological solids."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Secondary settling tanks provide longer detention times because sloughed biofilm materials are lighter and settle more slowly."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "cba3a0f9ac90e23cf0f282b1657f16e6a61c89bd421e344e71b7ea6c145beaee",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m4-03",
+    "prompt": "Three operators interpret visual observations on a rotating biological contactor. Tap the incorrect interpretation.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Reddish brown or golden brown shaggy slime indicates normal biological growth during nitrification."
+     },
+     {
+      "id": "b",
+      "label": "Very dark brown shaggy slime containing worms points to a freshly seeded young biofilm."
+     },
+     {
+      "id": "c",
+      "label": "Stationary disks with zero rotation point to mechanical drive trouble or excessive slime buildup."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Very dark brown shaggy growth with worms indicates a very old slime, not a freshly seeded young biofilm."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "a37063bbb47378a1872437eda8d6b646832a09f57a6829ef7ddbc1c6ea8ee8e7",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m4-04",
+    "prompt": "Examine these calculations and design facts for rotating biological contactors. Which statement contains a flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Total media area of an RBC train equals the sum of the surface areas of the individual stages in series."
+     },
+     {
+      "id": "b",
+      "label": "Operators routinely measure RBC media area in the field with a tape measure rather than using manufacturer data."
+     },
+     {
+      "id": "c",
+      "label": "Soluble BOD concentration and total media area are used together when evaluating RBC organic loading."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Physical field measurement of convoluted RBC disk area is impractical, so plant design or manufacturer specifications supply stage areas."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "4ba478e51e79dd499859152b745795cd971812e5cad22512097c032abcd3e916",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m4-05",
+    "prompt": "Three statements compare ponds, trickling filters, and RBCs against activated sludge systems. Tap the flawed claim.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Ponds, trickling filters, and RBCs are generally more sensitive to cold temperatures than activated sludge."
+     },
+     {
+      "id": "b",
+      "label": "Trickling filters generally cost less to construct initially than activated sludge basins of comparable duty."
+     },
+     {
+      "id": "c",
+      "label": "Activated sludge systems generally achieve higher BOD removal while costing more to operate than trickling filters."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Trickling filters and similar fixed-film systems generally cost more to build than activated sludge systems, though activated sludge costs more to run."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "81d8587d0a16311a88904d0162a5f4b73236c19b51a41e5492b000b4e9be5fa9",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m4-06",
+    "prompt": "Review these definitions of oxygen-demand tests in wastewater analysis. Which statement is wrong?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Carbonaceous BOD5 measures the biochemical oxygen demand exerted by carbonaceous organic matter."
+     },
+     {
+      "id": "b",
+      "label": "Nitrogenous oxygen demand measures the oxygen required to biologically oxidize nitrogen compounds."
+     },
+     {
+      "id": "c",
+      "label": "Chemical oxygen demand measures biological oxygen uptake by nitrifiers while ignoring chemically oxidizable organics."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "COD measures chemically oxidizable materials in wastewater through a chemical reaction rather than biological nitrifier uptake."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "78e8b8f6778ef82512e012ae848c7376489a0d0535b7214b5dedcd6deb0a967b",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m4-07",
+    "prompt": "A trainee checks the unit-process percent removal formula using influent and effluent concentrations. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Subtracting effluent concentration from influent concentration gives the concentration removed across the unit."
+     },
+     {
+      "id": "b",
+      "label": "Dividing the concentration removed by the effluent concentration and multiplying by 100 gives percent removal."
+     },
+     {
+      "id": "c",
+      "label": "The same concentration-based efficiency formula applies to primary units and secondary treatment units."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Percent removal divides (influent minus effluent concentration) by the influent concentration, not the effluent concentration, before multiplying by 100."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "6d2e647234244c02e403f15935800f6eac6f7b6530a731e053eee3506acf2eb2",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m4-08",
+    "prompt": "Three study notes describe pneumatic and submersible wet-well pumping stations. Which note has a flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "In a single-compartment wet-well station, a submersible centrifugal pump sits directly in the collected wastewater."
+     },
+     {
+      "id": "b",
+      "label": "In a pneumatic station, an automatic valve closes the influent line before air pressure pushes sewage out."
+     },
+     {
+      "id": "c",
+      "label": "Force main discharge pipes from gravity-system lift stations carry wastewater at atmospheric pressure using pipe slope."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Pump station discharge lines in gravity networks operate under pressure and are classified as force mains."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "a22d771b4b8ddebc982bd57b5e00623e4482ceb1be04c01c3b58888eedac1684",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m4-09",
+    "prompt": "Compare these descriptions of human sanitary wastes, industrial wastes, and stormwater systems. Tap the wrong statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Human and animal wastes pose a major health hazard because they carry abundant bacteria and viruses."
+     },
+     {
+      "id": "b",
+      "label": "Combined wastewater systems keep sanitary sewage in one pipe and carry street runoff in a separate storm pipe."
+     },
+     {
+      "id": "c",
+      "label": "Separate storm sewers carry rain and snowmelt runoff along with street debris, road salt, and grit."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Combined wastewater systems transport both sanitary wastewater and community stormwater runoff together in a single pipe network."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "2bb1ccafa726b32ff2caca258fbeebb7dea28dbea7680f32de91003ca83350ff",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m4-10",
+    "prompt": "Three trainees describe the purpose and scope of preliminary wastewater treatment. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Preliminary units remove trash and heavy grit that cause clogs, jams, or abrasive wear in machinery."
+     },
+     {
+      "id": "b",
+      "label": "Removing coarse debris at the headworks preserves usable volume in downstream treatment tanks."
+     },
+     {
+      "id": "c",
+      "label": "Preliminary treatment relies on biological oxidation of dissolved organics rather than screening or flow equalization."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Preliminary treatment uses physical and hydraulic steps like screening, grit removal, flow measurement, and equalization rather than dissolved BOD oxidation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "7341f46a65f7bb09926e01602579392781c6c407f3a69f2e4c34c12706fc63f2",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m5-01",
+    "prompt": "In a conventional trickling filter plant where filter discharge flows through an effluent channel to a secondary settling tank, does the wastewater enter the effluent channel before or after entering the secondary settling tank?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Wastewater leaves the trickling filter underdrains into the effluent channel, which conveys the flow into the secondary settling tank."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "807724e50518947e13059db63309ebac28e63209655c3659a175f291d084372b",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m5-02",
+    "prompt": "In a two-stage trickling filter system operated in series without bypass, does wastewater pass through the second-stage filter media before or after passing through the first-stage filter media?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "Series staging uses the effluent leaving the first trickling filter as the influent feeding the second filter."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "5997b951b084b122aea4d093bb5ab777aaa5f025afbebec5ac89a6e992efdd83",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m5-03",
+    "prompt": "In a conventional rotating biological contactor train with a secondary settling tank, does gravity settling of sloughed solids in the settling tank happen before or after biological sloughing detaches from the rotating disks?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "Excess biofilm sloughs off the rotating media disks in the contactor tank and settles afterward in the downstream secondary settling tank."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "4160cc13e5d78a1bf6b0a3f233d80146275de967e97bff3b0f3bd6dde6dc6778",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m5-04",
+    "prompt": "In a rotary trickling filter distributor equipped with spreader plates beneath the arm orifices, does wastewater exit the arm orifice before or after striking the spreader plate?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Wastewater discharges through the orifice opening in the distributor arm and strikes the small plate mounted beneath it to fan out over the media."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "5a23b948c1ee9faecd2d54d6b0fef09c52a209e6e340ebd8107487357d435a51",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m5-05",
+    "prompt": "In a pneumatic pumping station operating through its normal fill-and-eject cycle, does wastewater reach the predetermined high level in the wet well before or after the automatic influent valve closes?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Incoming sewage fills the wet well to the preset trigger level, which activates the control system to close the influent valve prior to air pressurization."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "2f8ee13e69bf1ee4df4623fb0b08a9b62c05ae6667df4f3b9d91c8b40d649323",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m5-07",
+    "prompt": "Along a force main collection system that gathers sewage at a central wet well and pumps it to a distant treatment plant, does wastewater enter the central collection point before or after travelling under pressure through the force main?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Wastewater collects at the central pumping point first and is pumped from there under pressure through the force main toward the plant."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "43fe7a9a75f4549df9b712ece6659865ece2fb0464943ab3833f2ddc06649c2c",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m5-08",
+    "prompt": "When evaluating the organic loading rate on a multi-stage rotating biological contactor train from individual stage dimensions, is summing the individual stage areas to find total train media area done before or after dividing the daily soluble BOD load by total train area?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Individual stage surface areas are summed first to obtain the total train media area used as the denominator in the RBC loading rate."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "62506f4f559f1f7d63bae330831ace6c31c2147fc5ba6e34dd099081e20db3e9",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m5-09",
+    "prompt": "In a community water and wastewater cycle, does municipal water supply serve households and businesses before or after entering the sanitary collection system as spent wastewater?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Wastewater is the community's water supply after domestic and commercial uses have added contaminants and discharged it to the sewers."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "151dc2ae7aefd1bf4d473795f41400d4e1ce6304112ce8c9026cec03ee065b75",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class1-ww-r02-m5-10",
+    "prompt": "In a trickling filter system with effluent recirculation to the filter inlet, does recirculated flow pass through the recirculation pump before or after mixing with incoming filter influent ahead of the distributor?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Recirculation pumps lift a portion of downstream effluent back to the head of the filter so it mixes with incoming wastewater ahead of distribution."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+    "registeredAt": "2026-11-19T02:16:31.799Z",
+    "payloadSha256": "12dcd9ab56860502501ff6b993ff3c5fc78bf4c2a90109551715b786ac2f93c5",
+    "builderResultsSha256": "75d171e749d581809580f4f7d26295451a9c85e6882dc70dde92bffd156ef1e9"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-carbon",
+   "reviewedAt": "2026-11-19T02:14:34.268266+00:00",
+   "attestation": "Strict final Carbon self-review completed against supplied textbook source pages, builder checks, and collision candidates for class1-ww overlay target2-class1-ww-r02: 55 exact items accepted and 6 items rejected for intra-batch redundancy, existing-item overlap, trivial sequencing, or text defects.",
+   "payloadSha256": {
+    "target2-ct261118-class1-ww-r02-m0-01": "7bfaa8af9ca3d455f8532781416afa1fa9a799bcaee27c2c4a4837ccbabc130e",
+    "target2-ct261118-class1-ww-r02-m0-04": "37121ff5a4a57a87f387d8080a54b5fe3c1b5a1d04cf69bd8d7a47c82ff2c747",
+    "target2-ct261118-class1-ww-r02-m0-05": "52efbfac1ecd4c3a33e8d71b5e2744caaccd797dd5872e99130da2aaeb30e9c2",
+    "target2-ct261118-class1-ww-r02-m0-06": "7acdd6270a8cc6f105a861b45e80bd9a753c964990c2a15bde3811a2e3bad992",
+    "target2-ct261118-class1-ww-r02-m0-07": "6c5b930b9fcdff281a826c1be7bf776038acaf530eef1b00d46545a46959f2ab",
+    "target2-ct261118-class1-ww-r02-m0-08": "3630debcfea28847fd8fed9977c9e580eea4d64ef48e2ad191e3d28782a2a9f6",
+    "target2-ct261118-class1-ww-r02-m0-09": "88cb4e9150e45da1cb0b79759f180d2f5fec05a64df81d46e798cd2eae532bf5",
+    "target2-ct261118-class1-ww-r02-m0-10": "c2c17e86c1056045694a88c4715f6c2317dadbe48df40f45d5c61f2aee509f3b",
+    "target2-ct261118-class1-ww-r02-m0-11": "369045015adc4a165697d97b5cee97b00fb0a76178416ebca6cd68ac9772e81b",
+    "target2-ct261118-class1-ww-r02-m0-12": "bc3fd34ec4027750a69afdd86df9d09a71b7f606f581609086009c846fd4b628",
+    "target2-ct261118-class1-ww-r02-m0-14": "8ce59fa23c708f29a16e3015c09af274e4329f4f473c6092f1c194512dcef339",
+    "target2-ct261118-class1-ww-r02-m1-01": "d45b3cedcfcd1d32354773ac28f15aa82645d46cfc803f1f139f628440e10167",
+    "target2-ct261118-class1-ww-r02-m1-02": "1acee8a35cf09aac9f7aa4aa099d89a86caa4fe83b5d1bc9634b65e6186202ee",
+    "target2-ct261118-class1-ww-r02-m1-03": "86bcb091dda10da6faa8cf9d3b0aaedbd4d6351ad032190894c43d176682abec",
+    "target2-ct261118-class1-ww-r02-m1-04": "b5136fdaa218ea0fdfbd102f6facf866517aac5a972395ad169c25f80c4fecdd",
+    "target2-ct261118-class1-ww-r02-m2-01": "967509b97f7b87096e4b9b1711a4977ec40440741599d5406f661b82725d38f3",
+    "target2-ct261118-class1-ww-r02-m2-02": "c18612222cfec9ec253eaa0f3fcfd81f1e4a6a0edaff0a6cc4b50cc698f0f14f",
+    "target2-ct261118-class1-ww-r02-m2-03": "66e0abacdd3dee9a8da04ca55837b89226ef26501d40ebb258ce822431808100",
+    "target2-ct261118-class1-ww-r02-m2-04": "ae8695f266b20daa65de4aaf19db415338077379b7c4f28c2e5de7e6ad24e6d1",
+    "target2-ct261118-class1-ww-r02-m2-05": "e989f443b203bec156f541ab7127c9a4ed0e2b51f9ce32e3910eb2e5df68039a",
+    "target2-ct261118-class1-ww-r02-m2-06": "076dddfb0321d50f7f4d1462667c5dd69939249cec9fbb1b6c0899f04b9e002e",
+    "target2-ct261118-class1-ww-r02-m2-07": "31345b085d011ae90ce46e3ac86b83524d030dd775810eaa6ad478b6cd9962c2",
+    "target2-ct261118-class1-ww-r02-m2-08": "d0b7af4303bd013e15a9ec60120bf54d75f492bfb6341cda3ec7017d8fef90e0",
+    "target2-ct261118-class1-ww-r02-m2-09": "e1048b538019db808e98e075e887269c695d8053d281542d8c1a4029acc45637",
+    "target2-ct261118-class1-ww-r02-m2-10": "3847f5dc732852320f2d344087c94f9e0f6d7ca007159ea2af463c6b409dbdcc",
+    "target2-ct261118-class1-ww-r02-m3-01": "676c2e11fbe51561fc5af4b0246106491957b14a850b51552f4f39905226313c",
+    "target2-ct261118-class1-ww-r02-m3-02": "eae34e8d765963d1c7a61eff5dcee7ac675d552d2e0f441aa0dfdff0f57e2c7c",
+    "target2-ct261118-class1-ww-r02-m3-03": "df260c4eead127f3b7887e3c6040a45ca5a864c015750aefcfe4540defe2bf79",
+    "target2-ct261118-class1-ww-r02-m3-04": "ddaa7eb8a69016bede7a3fe35a3002fafc40d4e97dd168ed23c9ab6565e0f15d",
+    "target2-ct261118-class1-ww-r02-m3-05": "8510ed8df91fd538d9a7d9f55882abc04071e24bd45b6bef7bff07a9d4c2270e",
+    "target2-ct261118-class1-ww-r02-m3-06": "ff97d28280eb03f8491105e5c3b85321525a0c00c654091ea9c30025fb9b57de",
+    "target2-ct261118-class1-ww-r02-m3-07": "78a382fc5a1b31351ce94fe423677357ee41e13539eeadf46aa97dd7ba33d317",
+    "target2-ct261118-class1-ww-r02-m3-08": "bb7a346bfdcb638064a12d6c2de6d024247d100536a422a6d72dd47ae14ff84d",
+    "target2-ct261118-class1-ww-r02-m3-09": "76236e2fd50dd5a1af2b591ec342d5e3c38ab05b35daf52b1128f6764165307e",
+    "target2-ct261118-class1-ww-r02-m3-10": "0db45a89694482ea52e7f874be745a41013a39a46eb143b194fc228b61fd27d7",
+    "target2-ct261118-class1-ww-r02-m3-12": "025b763a96c8d279c6318aa8c825518c44c497e085df421263da3c0e07d0b480",
+    "target2-ct261118-class1-ww-r02-m4-02": "cba3a0f9ac90e23cf0f282b1657f16e6a61c89bd421e344e71b7ea6c145beaee",
+    "target2-ct261118-class1-ww-r02-m4-03": "a37063bbb47378a1872437eda8d6b646832a09f57a6829ef7ddbc1c6ea8ee8e7",
+    "target2-ct261118-class1-ww-r02-m4-04": "4ba478e51e79dd499859152b745795cd971812e5cad22512097c032abcd3e916",
+    "target2-ct261118-class1-ww-r02-m4-05": "81d8587d0a16311a88904d0162a5f4b73236c19b51a41e5492b000b4e9be5fa9",
+    "target2-ct261118-class1-ww-r02-m4-06": "78e8b8f6778ef82512e012ae848c7376489a0d0535b7214b5dedcd6deb0a967b",
+    "target2-ct261118-class1-ww-r02-m4-07": "6d2e647234244c02e403f15935800f6eac6f7b6530a731e053eee3506acf2eb2",
+    "target2-ct261118-class1-ww-r02-m4-08": "a22d771b4b8ddebc982bd57b5e00623e4482ceb1be04c01c3b58888eedac1684",
+    "target2-ct261118-class1-ww-r02-m4-09": "2bb1ccafa726b32ff2caca258fbeebb7dea28dbea7680f32de91003ca83350ff",
+    "target2-ct261118-class1-ww-r02-m4-10": "7341f46a65f7bb09926e01602579392781c6c407f3a69f2e4c34c12706fc63f2",
+    "target2-ct261118-class1-ww-r02-m5-01": "807724e50518947e13059db63309ebac28e63209655c3659a175f291d084372b",
+    "target2-ct261118-class1-ww-r02-m5-02": "5997b951b084b122aea4d093bb5ab777aaa5f025afbebec5ac89a6e992efdd83",
+    "target2-ct261118-class1-ww-r02-m5-03": "4160cc13e5d78a1bf6b0a3f233d80146275de967e97bff3b0f3bd6dde6dc6778",
+    "target2-ct261118-class1-ww-r02-m5-04": "5a23b948c1ee9faecd2d54d6b0fef09c52a209e6e340ebd8107487357d435a51",
+    "target2-ct261118-class1-ww-r02-m5-05": "2f8ee13e69bf1ee4df4623fb0b08a9b62c05ae6667df4f3b9d91c8b40d649323",
+    "target2-ct261118-class1-ww-r02-m5-07": "43fe7a9a75f4549df9b712ece6659865ece2fb0464943ab3833f2ddc06649c2c",
+    "target2-ct261118-class1-ww-r02-m5-08": "62506f4f559f1f7d63bae330831ace6c31c2147fc5ba6e34dd099081e20db3e9",
+    "target2-ct261118-class1-ww-r02-m5-09": "151dc2ae7aefd1bf4d473795f41400d4e1ce6304112ce8c9026cec03ee065b75",
+    "target2-ct261118-class1-ww-r02-m5-10": "12dcd9ab56860502501ff6b993ff3c5fc78bf4c2a90109551715b786ac2f93c5"
+   }
+  },
+  "registeredAt": "2026-11-19T02:16:31.799Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 5,
+     "f": 6
+    },
+    "dirs": {
+     "increase": 7,
+     "decrease": 4,
+     "unchanged": 0
+    },
+    "longest": 6,
+    "options": 30
+   },
+   "batchSha256": "8db5895dd2c70f4794a7837a4b7c2ab99cd2fc5c4114facd98fd97aeaf8c6be6"
+  }
+ }
+}

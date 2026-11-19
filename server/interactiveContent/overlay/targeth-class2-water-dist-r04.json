@@ -1,0 +1,2454 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-class2-water-dist-r04",
+ "scope": "Owner-authorized AI-reviewed game activities: 70 items.",
+ "additions": [
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m0-01",
+    "prompt": "In a spring-loaded ball vacuum breaker, a partial vacuum pulls the ball off its seat so air can enter the pipe.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "A partial vacuum sucks the ball down into the retainer tube against the spring, letting air enter to break the vacuum."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "675c6dfbb4b56d692d846cbb7f422d62618fc0b48f3386cd74acd72afe122273",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m0-02",
+    "prompt": "Liquid mercury and liquid water are miscible and disperse uniformly into each other when mixed.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Liquid mercury and water are immiscible liquids, meaning they do not mix uniformly together."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "f478a6dbf38878765c4e66f0774fff054d7531d7e27e708f6dafac09f85c0720",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m0-03",
+    "prompt": "Colloidal solids are fine particles smaller than 1 micron that pass through a standard laboratory suspended-solids filter.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Colloidal particles are less than 1 micron in diameter and pass through standard suspended-solids filters."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "5a3712a1e18677086a94116e9ac0737f4a96f10cfec0313d13eb9c7211b29948",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m0-04",
+    "prompt": "When table salt dissolves in water, sodium forms a negatively charged anion and chloride forms a positively charged cation.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Sodium forms a positively charged cation, while chloride forms a negatively charged anion."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "b293f2c135931c9d71522d91e2524b346fce4942be0b5b0f3cc0651f0a7b04f2",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m0-05",
+    "prompt": "One part per million (ppm) of a substance in water is approximately equal to one milligram per liter (mg/L).",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Because 1 kg of water solution has a volume near 1 liter, 1 ppm is approximately equal to 1 mg/L."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "c55eb11f9f9dcd430f2cf078435fee7044b9d4124d62b350ea9e6919ad860c61",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m0-06",
+    "prompt": "Gases have a fixed volume and resist compression when placed into smaller containers.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Gases have no fixed shape or volume and can expand or compress to fill different container sizes."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "72394e6f0eba7bdc0699d9880156c39eec28410385a69726db14b3f1e6bbec38",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m0-07",
+    "prompt": "Chemical reactions between atoms or molecules involve the orbiting electrons rather than changes to the atomic nuclei.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Chemists focus on planetary electrons because chemical reactions involve electron activity without changing the nucleus."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "351725a8e3c57a2946c79537e7437a2b6a6107f0b0bf8194cd6f13c4be0aff51",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m0-08",
+    "prompt": "In water, true color is caused by large suspended silt particles that settle rapidly without filtration.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "True color comes from dissolved chemicals, often organics, whereas apparent color comes from suspended or colloidal matter."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "96860a1dac2c7d86e25ddd7f6ad572293c0ebc8f90b81a1c84792b64d454a682",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m0-09",
+    "prompt": "Fish and aquatic organisms breathe dissolved oxygen gas rather than the oxygen atoms bound inside water molecules.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Aquatic organisms depend on dissolved oxygen (DO) in water, not the oxygen chemically bound in H2O."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "cf19e65567a13b8b4e0b691b3c103b8159df37912a63658d17153d4b49d721be",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m0-10",
+    "prompt": "Copper sulfate is an acid-base neutralization salt used in waterworks operations to control algae growth.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Copper sulfate is a common salt used in waterworks operations to kill algae."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "eceabfb3abbf2b6602f5b94eaf49dc5446bd809e93e0eb7979093273893d5fd5",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m0-11",
+    "prompt": "Seawater has a lower specific conductance than distilled water because dissolved salts block electrical current.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Dissolved salts release ions that carry electrical current, giving seawater a much higher specific conductance than distilled water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "ec16d85d3e24a0f1eac3a22b3bb0e8cf101b466b8dd7a57873456474072d683d",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m0-12",
+    "prompt": "Alkalinity is a measure of the capacity of water to accept protons and neutralize an acid.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Alkalinity is defined as the capacity of water to accept protons or neutralize acids."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "f79d6448b4ee9a5ad5b3b69eeae8d69094796986a145c8472aa5dddc1f7a383e",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m0-13",
+    "prompt": "Water hardness primarily represents the total concentration of dissolved sodium and chloride ions.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Hardness represents the total concentration of calcium and magnesium ions, typically reported as calcium carbonate."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "21d70c08500c13db5691fec63cdafb6c6c60f84d0e707e53bb2fceacd57f2c4c",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m0-14",
+    "prompt": "Alum coagulation is generally most effective within a pH range of 5.0 to 7.5.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Aluminum sulfate (alum) works best between pH 5.0 and 7.5, whereas ferric chloride can work down to pH 4.5."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "488ae300a9a3805db281d9bb545894acdd8d92b1ed2f78d2b7a90052e2964708",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m0-15",
+    "prompt": "In a water sample, an electron has roughly the same mass as a proton in the atomic nucleus.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "An electron has negligible mass, less than 0.02% of the mass of a proton."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "1b277a77b760cb6e881bc393ca7e29f354a42053045d0bd2abdabcbe5e17bb74",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m1-01",
+    "prompt": "Distinguish each solution and solids term by its physical definition in water chemistry.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Solvent",
+      "right": "Component of a solution that does the dissolving"
+     },
+     {
+      "id": "p2",
+      "left": "Solute",
+      "right": "Component dissolved by the solvent"
+     },
+     {
+      "id": "p3",
+      "left": "Saturated solution",
+      "right": "State where no more solute can dissolve"
+     },
+     {
+      "id": "p4",
+      "left": "Precipitate",
+      "right": "Solid separated from solution by reaction or pH shift"
+     },
+     {
+      "id": "p5",
+      "left": "Colloidal solids",
+      "right": "Dispersed particles under 1 micron passing filters"
+     },
+     {
+      "id": "p6",
+      "left": "Total solids",
+      "right": "Combined suspended, colloidal, and dissolved solids"
+     }
+    ],
+    "explanation": "These definitions separate the dissolving medium, dissolved substance, saturation limit, and particle size classes."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "c5446aa57d15f70953c0adc663d5d9b1e81baf1a08ab9e169639cc620679abf5",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m1-02",
+    "prompt": "Distinguish each atomic or ionic particle by its electrical charge and location.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Proton",
+      "right": "Positively charged particle in the nucleus"
+     },
+     {
+      "id": "p2",
+      "left": "Neutron",
+      "right": "Neutral particle in the nucleus"
+     },
+     {
+      "id": "p3",
+      "left": "Electron",
+      "right": "Negatively charged particle orbiting the nucleus"
+     },
+     {
+      "id": "p4",
+      "left": "Cation",
+      "right": "Positively charged ion formed in solution"
+     },
+     {
+      "id": "p5",
+      "left": "Anion",
+      "right": "Negatively charged ion formed in solution"
+     },
+     {
+      "id": "p6",
+      "left": "Hydronium ion",
+      "right": "Positive ion formed when water gains a hydrogen ion"
+     }
+    ],
+    "explanation": "Subatomic particles form the atom, while ions carry net positive or negative charges in water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "9023c508462bad6b72ed9c1f61d85a576bfc94ff64111eb0aa86e43568a19fb6",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m1-03",
+    "prompt": "Distinguish each state of matter or miscibility pair by its physical behavior.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Solid",
+      "right": "Maintains both definite shape and definite volume"
+     },
+     {
+      "id": "p2",
+      "left": "Liquid",
+      "right": "Maintains constant volume but takes container shape"
+     },
+     {
+      "id": "p3",
+      "left": "Gas",
+      "right": "Has no fixed shape and expands or compresses"
+     },
+     {
+      "id": "p4",
+      "left": "Water and alcohol",
+      "right": "Liquids that are completely miscible in all proportions"
+     },
+     {
+      "id": "p5",
+      "left": "Water and mercury",
+      "right": "Immiscible liquids that do not mix uniformly"
+     },
+     {
+      "id": "p6",
+      "left": "All gases",
+      "right": "Completely miscible with one another"
+     }
+    ],
+    "explanation": "Matter states differ in shape and volume stability, while miscibility describes uniform mixing."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "af777d484be605d3616a3504318de3341d6ed7b27dcaac6d7dfcd224e26a875e",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m1-04",
+    "prompt": "Distinguish each water quality parameter by the chemical or physical property it measures.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Turbidity",
+      "right": "Scattering and absorption of light by suspended matter"
+     },
+     {
+      "id": "p2",
+      "left": "Apparent color",
+      "right": "Color caused by colloidal or suspended substances"
+     },
+     {
+      "id": "p3",
+      "left": "True color",
+      "right": "Color from dissolved chemicals remaining after filtration"
+     },
+     {
+      "id": "p4",
+      "left": "Specific conductance",
+      "right": "Ability of water to conduct an electrical current"
+     },
+     {
+      "id": "p5",
+      "left": "Alkalinity",
+      "right": "Capacity of water to neutralize an acid"
+     },
+     {
+      "id": "p6",
+      "left": "Hardness",
+      "right": "Total concentration of calcium and magnesium ions"
+     }
+    ],
+    "explanation": "Each parameter targets a distinct optical, electrical, acid-neutralizing, or mineral property of water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "989d182e874f33eb4aba1d9e2a226c896a528fdd23d389129d1d43b991d7eb80",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m1-05",
+    "prompt": "Distinguish each dissolved gas by its role or behavior in natural water.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Dissolved oxygen",
+      "right": "Gas breathed by fish and zooplankton"
+     },
+     {
+      "id": "p2",
+      "left": "Carbon dioxide",
+      "right": "Gas released by microbes that affects pH and alkalinity"
+     },
+     {
+      "id": "p3",
+      "left": "Hydrogen sulfide",
+      "right": "Odorous gas from septic wastewater"
+     },
+     {
+      "id": "p4",
+      "left": "Nitrogen",
+      "right": "Atmospheric gas that can dissolve in water"
+     },
+     {
+      "id": "p5",
+      "left": "Water-bound oxygen",
+      "right": "Atom inside H2O unavailable for fish respiration"
+     },
+     {
+      "id": "p6",
+      "left": "Scrubbing tower",
+      "right": "Unit passing odorous gases through chemical solutions"
+     }
+    ],
+    "explanation": "Dissolved gases behave independently from chemically bound atoms in water molecules."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "1eb6781596cb991b2324db81d71360a3a2018f889d64650fd3fef70421f3fed2",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m1-06",
+    "prompt": "Distinguish each coagulation or odor-control chemical by its treatment role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Alum",
+      "right": "Metallic salt coagulant effective at pH 5.0 to 7.5"
+     },
+     {
+      "id": "p2",
+      "left": "Ferric chloride",
+      "right": "Metallic salt coagulant effective down to pH 4.5"
+     },
+     {
+      "id": "p3",
+      "left": "Polymer",
+      "right": "Aid added with alum to form faster-settling floc"
+     },
+     {
+      "id": "p4",
+      "left": "Lime",
+      "right": "Alkali added to raise water pH"
+     },
+     {
+      "id": "p5",
+      "left": "Sodium hydroxide",
+      "right": "Chemical used in scrubbing when hydrogen sulfide is high"
+     },
+     {
+      "id": "p6",
+      "left": "Potassium permanganate",
+      "right": "Chemical oxidant used for odor scrubbing and oxidation"
+     }
+    ],
+    "explanation": "Coagulants, pH adjusters, and oxidants serve distinct roles in conditioning water and controlling odors."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "5ccc3d4e94291df9172e75c0ca3768b992a69e237e70ef16a50bab25bf7a38ef",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m1-07",
+    "prompt": "Distinguish each vacuum breaker or thermometer component by its mechanical function.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Ball",
+      "right": "Moving part held against a seat by a spring"
+     },
+     {
+      "id": "p2",
+      "left": "Retainer tube",
+      "right": "Housing inside piping that guides the vacuum breaker ball"
+     },
+     {
+      "id": "p3",
+      "left": "Spring",
+      "right": "Component that returns the ball to seal the system"
+     },
+     {
+      "id": "p4",
+      "left": "Capillary tube",
+      "right": "Narrow tube in an industrial thermometer"
+     },
+     {
+      "id": "p5",
+      "left": "Bulb",
+      "right": "Sensing end of an industrial thermometer"
+     },
+     {
+      "id": "p6",
+      "left": "Scale",
+      "right": "Graduated display read by the thermometer pointer"
+     }
+    ],
+    "explanation": "Vacuum breakers use a spring-loaded ball to break siphons, whereas industrial thermometers use a bulb, capillary, and scale."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "9f4ad82c71278e702785e7fe488270c22994a60877b25df1ce0dd7eed2de52c7",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m1-08",
+    "prompt": "Distinguish each chemical classification or measurement unit by what it represents.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Organic substance",
+      "right": "Carbon-based compound of animal or vegetable origin"
+     },
+     {
+      "id": "p2",
+      "left": "Inorganic substance",
+      "right": "Chemical substance of mineral origin"
+     },
+     {
+      "id": "p3",
+      "left": "Salt",
+      "right": "Compound other than water from acid-base neutralization"
+     },
+     {
+      "id": "p4",
+      "left": "Parts per million",
+      "right": "Mass concentration unit approximately equal to mg/L"
+     },
+     {
+      "id": "p5",
+      "left": "Atomic weight",
+      "right": "Total number of protons and neutrons in an atom"
+     },
+     {
+      "id": "p6",
+      "left": "Subscript",
+      "right": "Number in a formula showing atoms per molecule"
+     }
+    ],
+    "explanation": "Chemical classifications and units distinguish origin, reaction products, atomic mass, and concentration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "4a4bbdc5190c02e1522e5e806a2435d1b24a1124ab0dc85236433a7734304429",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m1-09",
+    "prompt": "Distinguish each water source or condition by its characteristic pH or conductance behavior.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Distilled water",
+      "right": "Pure water with very low specific conductance"
+     },
+     {
+      "id": "p2",
+      "left": "Rainwater",
+      "right": "Conductance raised by dissolved airborne dust and gases"
+     },
+     {
+      "id": "p3",
+      "left": "Seawater",
+      "right": "Slightly basic water with high specific conductance"
+     },
+     {
+      "id": "p4",
+      "left": "Coal mine drainage",
+      "right": "Very acidic water near pH 2"
+     },
+     {
+      "id": "p5",
+      "left": "Neutral water",
+      "right": "Reference condition at pH 7"
+     },
+     {
+      "id": "p6",
+      "left": "Saline beaker",
+      "right": "Conducts electric current so an attached bulb lights"
+     }
+    ],
+    "explanation": "Dissolved ions and pollutants strongly influence both pH and electrical conductance."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "e4cdaf5bbf8fbaf149a33101d95484833fbd15b2da2ab98f82aaa7aca77fae27",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m1-10",
+    "prompt": "Distinguish each chemical testing or odor-control approach by its method.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Bulk physical test",
+      "right": "Measures volume, temperature, or mass with an instrument"
+     },
+     {
+      "id": "p2",
+      "left": "Chemical property test",
+      "right": "Determines how much of a substance is present"
+     },
+     {
+      "id": "p3",
+      "left": "Physical odor control",
+      "right": "Uses dilution, fresh air, or activated carbon"
+     },
+     {
+      "id": "p4",
+      "left": "Chemical oxidation",
+      "right": "Uses chlorine, ozone, or peroxide to destroy odors"
+     },
+     {
+      "id": "p5",
+      "left": "Suspended solids test",
+      "right": "Separates filterable particles from water"
+     },
+     {
+      "id": "p6",
+      "left": "Evaporation test",
+      "right": "Removes water to leave total solids behind"
+     }
+    ],
+    "explanation": "Testing and odor-control methods are grouped by whether they rely on physical separation or chemical reaction."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "2d47a22a21ec3dd74ac4c7a7015c6c0bf5e136d08edc24a00ea00392491b5cd5",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m3-01",
+    "prompt": "A vacuum develops in a water pipe protected by a spring-loaded ball vacuum breaker, pulling the ball down into the retainer tube. What happens to the air flow into the pipe?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Pulling the ball off its seat opens the path so air flows into the system to break the vacuum."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "58bddf7912c8d1dbf475915599dc79bff21b60f6ff603c1853249346933a719d",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m3-02",
+    "prompt": "Liquid water at constant temperature and pressure is poured from a narrow cylinder into a wide pan. What happens to the volume of the liquid water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Liquids change shape to fit their container but maintain a definite, constant volume at a given temperature and pressure."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "e4bfc521b57d8df355f382dbe6b8a107cd1b9369b421e001f657838340bb9ba5",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m3-03",
+    "prompt": "More table salt is added to a beaker of distilled water at constant temperature until saturation is reached, and then additional solid salt is stirred in. What happens to the dissolved salt concentration?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Once a solution is saturated, it cannot dissolve any more solute at that temperature and pressure."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "b30700df330a46575e536ae8fa75e86dabb78cc90da684f15a413ad6c6f9265d",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m3-04",
+    "prompt": "Suspended silt is added to a clear water sample while dissolved mineral levels remain unchanged. What happens to the turbidity of the water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Suspended matter scatters and absorbs light rays, which directly increases turbidity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "e3536f53c4b0e6243a39c8feb399991881d4bcb46fdd23cb91ae858529c3953b",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m3-05",
+    "prompt": "A water sample with apparent color from suspended iron particles is passed through a standard laboratory filter. What happens to the apparent color of the filtrate?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Filtering removes suspended particles responsible for apparent color, leaving only true color from dissolved chemicals."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "6215bfeb0e8f0b72a6b2877b434f75cd94aa4d3080a5d1a0ea58474662426af8",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m3-06",
+    "prompt": "In a coagulation jar test at constant temperature, the alum dose is increased without adding any alkali. What happens to the pH of the water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Alum acts as an acid in water, so adding more alum lowers the pH value."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "04d6b5ac6c64ced067e964bb299fbb29376a5ab45297c39910210b811ed35188",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m3-07",
+    "prompt": "In a coagulation jar test at constant temperature, more lime is added while the alum dose remains unchanged. What happens to the pH of the water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Lime is an alkali, so adding more lime raises the pH value."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "d24a5651da04c5a4175c9785ea7b4712f22fba289fab90d709b9966c8334156e",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m3-08",
+    "prompt": "Table salt is dissolved into a beaker of pure distilled water at constant temperature. What happens to the specific conductance of the water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Dissolved salt releases charged ions that allow the water to conduct electrical current."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "370f196dffe94e9c5cb15d75a12b0654e6b15af25d9fbff1bb60663b21c54cd8",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m3-09",
+    "prompt": "During chemical coagulation, fine dispersed particles agglomerate into larger rounded floc masses of the same density. What happens to the settling velocity of those particle masses?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Agglomerating particles into larger masses increases their size and therefore their settling velocity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "d19e792fef5d278c65896302583abe8ac7f08cb4bd33130c9ac0e0c3983d0af7",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m3-10",
+    "prompt": "A water molecule gains a hydrogen ion during the self-ionization of water. What happens to the net electrical charge of that molecule?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Gaining a positively charged hydrogen ion turns the neutral water molecule into a positively charged hydronium ion."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "820d257974dc358fe45a14f6a4fbc7c11e550b61bc7f005b4390a1a77c27fd4d",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m3-11",
+    "prompt": "Dissolved calcium and magnesium ion concentrations rise in a groundwater supply at constant temperature. What happens to the total hardness of the water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Hardness represents the total concentration of dissolved calcium and magnesium ions."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "2c46d470eef6888a7aed442620a8eb8e8e07a8572e0087a02609aab58733fffa",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m3-12",
+    "prompt": "Bicarbonate ion concentration increases in a raw water supply through soil mineral dissolution. What happens to the alkalinity of the water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Bicarbonates are major contributors to alkalinity, increasing the water's capacity to neutralize acid."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "66cdcb187af8e916db4e73cd3ba33ef2ca83e60e9188f78d31318dd70771468c",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m3-13",
+    "prompt": "A river's pH remains steady at its normal value of 5.5 with no pollution or mineral changes occurring. What happens to the river's pH?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "With no pollution or mineral changes affecting the water, the river maintains its normal pH."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "23324109896461ffb31ea9d1cbbec80e9d8e098a7be8c61d38ebafe3fdb4a9ab",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m3-14",
+    "prompt": "Aeration is used to strip dissolved hydrogen sulfide gas from a water supply at constant temperature. What happens to the dissolved hydrogen sulfide concentration?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Aeration physically strips dissolved odorous gases such as hydrogen sulfide out of the water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "0079d92eab125816a3fcecf2cf6a13d2a35c1c43aeccaac64cb3400277e1225c",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m3-15",
+    "prompt": "A raw water sample containing dissolved true color and zero suspended particles is passed through a standard solids filter. What happens to the true color of the filtrate?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "True color is caused by dissolved chemicals that pass through a standard solids filter."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "99258124f0524a168c6be0497eb0d7e243d805fc7f22f24ccf331ad6469f1337",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m4-01",
+    "prompt": "Review these three statements about how a spring-loaded ball vacuum breaker operates, and tap the flawed one.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "A partial vacuum pulls the ball into the retainer tube against the spring."
+     },
+     {
+      "id": "b",
+      "label": "Air enters the piping through the open port to break the vacuum."
+     },
+     {
+      "id": "c",
+      "label": "The spring pulls the ball deeper into the tube to block incoming air."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "After the vacuum is broken, the spring returns the ball against its seat to seal the system again."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "70d11b97bacc72af59d9dc76c1f01a9eaf890d6a786e7c374d196e1b2a7ab35d",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m4-02",
+    "prompt": "Three statements describe miscibility and solubility in water. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Water and alcohol are miscible and disperse uniformly into each other."
+     },
+     {
+      "id": "b",
+      "label": "Liquid mercury and water are miscible and form one uniform layer."
+     },
+     {
+      "id": "c",
+      "label": "Gases mix uniformly with one another when combined."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Water and liquid mercury are immiscible liquids that do not mix uniformly."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "90042bf29b64567562ff35753cd5c05cf410549aeaeb8bdc07d9ae71b4337c43",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m4-03",
+    "prompt": "Three statements describe solids and solutions in water. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "A saturated solution holds as much dissolved solute as it can at that condition."
+     },
+     {
+      "id": "b",
+      "label": "Colloidal solids are larger than 100 microns and settle out immediately."
+     },
+     {
+      "id": "c",
+      "label": "Total solids include suspended, colloidal, and dissolved solids."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Colloidal solids are smaller than 1 micron in diameter and remain dispersed rather than settling immediately."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "506db9fdcaced873d224390894eefda0a913216da32883da8d5e64e5212e4fc6",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m4-04",
+    "prompt": "Three statements describe ions and water self-ionization. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "A water molecule that loses a hydrogen ion becomes a hydroxide ion."
+     },
+     {
+      "id": "b",
+      "label": "A water molecule that gains a hydrogen ion becomes a hydronium ion."
+     },
+     {
+      "id": "c",
+      "label": "A cation is a negatively charged ion formed when salt dissolves."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "A cation is a positively charged ion, whereas an anion is negatively charged."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "ecf53679fa2423db44ee40475d101e1b8e324c2cafea241c29a1b7feb89b11de",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m4-05",
+    "prompt": "Three statements describe the physical states of matter. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Solids keep both a definite shape and a definite volume."
+     },
+     {
+      "id": "b",
+      "label": "Liquids keep a definite volume while taking the shape of their container."
+     },
+     {
+      "id": "c",
+      "label": "Gases keep a fixed volume and resist expanding into larger spaces."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Gases have no fixed volume and expand or compress to fill containers of different sizes."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "2bdf094c89564a47018c0e89db3876c59154c74fe6f4c000f1122af314157d4c",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m4-06",
+    "prompt": "Three statements describe basic atomic structure. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Protons carry a positive electrical charge inside the atomic nucleus."
+     },
+     {
+      "id": "b",
+      "label": "Neutrons carry no electrical charge inside the atomic nucleus."
+     },
+     {
+      "id": "c",
+      "label": "Electrons carry a positive charge and hold most of the atom's mass."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Electrons are negatively charged and have negligible mass compared with protons and neutrons."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "cc0b05981271140b8a622a9db186aac0a54755d7aa9388dbee6bb6c2b89a4120",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m4-07",
+    "prompt": "Three statements describe color and turbidity in water. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Turbidity results from suspended matter scattering and absorbing light."
+     },
+     {
+      "id": "b",
+      "label": "Apparent color is caused by suspended or colloidal matter."
+     },
+     {
+      "id": "c",
+      "label": "True color is removed by passing water through a standard filter."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "True color comes from dissolved chemicals that pass through a filter, whereas apparent color is removed by filtration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "a30320c9402b40e4bfebdcf866aeef5340d44a173cdedfb6dfcc032dc4ba435b",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m4-08",
+    "prompt": "Three statements describe dissolved gases in natural water. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Fish rely on dissolved oxygen gas rather than the oxygen atom in H2O."
+     },
+     {
+      "id": "b",
+      "label": "Dissolved carbon dioxide plays a role in water pH and alkalinity."
+     },
+     {
+      "id": "c",
+      "label": "Oxygen is the main gas that dissolves in water, while nitrogen stays insoluble."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "In addition to oxygen, gases such as carbon dioxide, hydrogen sulfide, and nitrogen can dissolve in water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "d9818f81c944e5c6449635fe7d5d19a40e7b3a4ce5337b6b3bd9d3d11380aaa6",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m4-09",
+    "prompt": "Three statements describe salts and sulfates in water. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Salts form when acids and bases chemically neutralize each other."
+     },
+     {
+      "id": "b",
+      "label": "Copper sulfate is used in waterworks operations to kill algae."
+     },
+     {
+      "id": "c",
+      "label": "People acclimated to high-sulfate water report more laxative effects than newcomers."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Newcomers to high-sulfate water are more likely to report laxative effects, whereas acclimated residents often report none."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "5952ce44a67bd765bac88abf127b6d0e8c80ae5493472bb5725ddf2069361381",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m4-10",
+    "prompt": "Three statements describe pH in natural and treated water. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Adding alum during coagulation lowers the pH of the water."
+     },
+     {
+      "id": "b",
+      "label": "Adding lime during treatment raises the pH of the water."
+     },
+     {
+      "id": "c",
+      "label": "Coal mine drainage at pH 2 is ten times more acidic than neutral water at pH 7."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Because pH is a logarithmic scale, pH 2 is 100,000 times more acidic than neutral water at pH 7."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "80cc54fa85bcd7922f1b527fa89e89a301743ac10db3a901d592444a91f9827f",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m4-11",
+    "prompt": "Three statements describe specific conductance in water. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Specific conductance measures the ability of water to conduct electric current."
+     },
+     {
+      "id": "b",
+      "label": "Distilled water has a higher specific conductance than seawater."
+     },
+     {
+      "id": "c",
+      "label": "Rainwater often has higher conductance than distilled water due to dissolved dust."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Seawater contains high dissolved salts and has much higher specific conductance than pure distilled water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "a55753a668f61b732ed95c2c96967c31546d287445e281c20c8c8f0bca57107f",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m4-12",
+    "prompt": "Three statements describe alkalinity and hardness. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Alkalinity measures the capacity of water to neutralize an acid."
+     },
+     {
+      "id": "b",
+      "label": "Bicarbonates are major contributors to alkalinity in natural water."
+     },
+     {
+      "id": "c",
+      "label": "Hardness represents the total concentration of dissolved sodium and potassium ions."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Hardness represents the total concentration of calcium and magnesium ions, reported as calcium carbonate."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "86bbd99270ca1374aab936f47e6a10f9fbd056c52d1a7583a1483def284f18ba",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m4-13",
+    "prompt": "Review these three statements about chemical coagulation in water treatment, and tap the flawed one.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Coagulation helps remove turbidity, color, and bacteria from water."
+     },
+     {
+      "id": "b",
+      "label": "Ferric chloride is effective as a coagulant down to a pH of 4.5."
+     },
+     {
+      "id": "c",
+      "label": "Alum coagulation is most effective above pH 9.5."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Alum is most effective between pH 5.0 and 7.5, not above pH 9.5."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "ea6a783edceec0cf0a5fbe886a1729549fe7fbb8da0246bbe7bd78ae1b1e6542",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m4-14",
+    "prompt": "Three statements describe odor control in water and wastewater operations. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Physical odor control includes dilution, fresh air, and activated carbon."
+     },
+     {
+      "id": "b",
+      "label": "Chemical oxidation uses oxidants such as chlorine, ozone, or potassium permanganate."
+     },
+     {
+      "id": "c",
+      "label": "Chemical scrubbing towers remove odors by freezing the gas stream."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Scrubbing towers pass odorous gases through chemical scrubbing solutions such as chlorine, permanganate, or sodium hydroxide."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "2abfa8e7ff1525bffc4253441b5a39b6a256836b1ca9818ff56108685ec3ff4b",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m4-15",
+    "prompt": "Three statements describe chemical testing and formulas. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Bulk physical property tests measure traits such as volume, temperature, or mass."
+     },
+     {
+      "id": "b",
+      "label": "A subscript in a chemical formula shows the number of atoms in a molecule."
+     },
+     {
+      "id": "c",
+      "label": "One part per million in water is equal to one thousand milligrams per liter."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "One part per million (ppm) in water is approximately equal to 1 mg/L, not 1,000 mg/L."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "880b2b33149ed492f62f3ea780dfce6d39d126080b76cb304749109ff7cd7406",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m5-01",
+    "prompt": "In a spring-loaded ball vacuum breaker during a pipeline vacuum, does the ball being pulled down into the retainer tube occur before or after outside air enters to break the vacuum?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The partial vacuum first pulls the ball down into the retainer tube, which opens the path for air to enter."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "8cc9b1b9a3538469209f9137f194b91e020a4f0266d55996c4ebb5974e02e026",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m5-02",
+    "prompt": "In a spring-loaded ball vacuum breaker, does the spring returning the ball to seal against its seat occur before or after the vacuum pulls the ball down into the retainer tube?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "First the vacuum pulls the ball down and air enters; afterward the spring returns the ball to its seat."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "3cf6c581489d18d4e96c14a971aea09bb05f05d9a4802c85a7a4409b28c59511",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m5-03",
+    "prompt": "In the self-ionization of water, does one water molecule gaining a hydrogen ion occur before or after it becomes a positively charged hydronium ion?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "A neutral water molecule must gain a hydrogen ion to form a positively charged hydronium ion."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "c596d70c6f54e0131a171151c97ee93ff1a8c61eed6df9f94cd2dbfe73969314",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m5-04",
+    "prompt": "In a laboratory test distinguishing true color from apparent color, does filtering the water sample occur before or after observing the true color of the filtrate?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Filtering removes suspended apparent color first so that true color from dissolved chemicals can be observed."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "3db0cbc8a9e9cb6eddf1f2100ff4e671bfc1df03dfc90a76c5277977b06d4bc4",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m5-05",
+    "prompt": "In an acid-base neutralization reaction, does mixing an acid and a base occur before or after a salt forms?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Acids and bases must chemically interact and neutralize each other to form a salt."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "259f742fb859fc1bd3d1b289d971f78be13048f00077ea21ca4f743d7ca07c1e",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m5-06",
+    "prompt": "In a total solids laboratory determination, does evaporating the water from the sample occur before or after weighing the remaining total solids?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Water is removed by evaporation so that the suspended and dissolved solids remaining behind can be measured."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "a5f9849be3e05c57d828d56936e9ee945c1a0a33fda13a24237cbb3a5fb0e7a7",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m5-07",
+    "prompt": "In a chemical coagulation jar test, does adding alum to the water occur before or after the pH value drops?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Adding alum (an acid) causes the pH value of the water to lower."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "6e559673b08488bfd1e1bef863b8265df18ab98b085c4ed0827e6e9e4d481dd4",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m5-08",
+    "prompt": "In water treatment pH adjustment, does adding lime to the water occur before or after the pH value rises?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Adding lime (an alkali) causes the pH value of the water to rise."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "c1d45fbd256f612fd1814a3ca757b4a31096a37a01465daf189371dc154856b5",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m5-09",
+    "prompt": "In a coagulation-flocculation process, does forming larger rounded floc masses occur before or after the particles settle more rapidly?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Agglomerating fine particles into larger masses increases their size, which causes faster settling."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "4db95009bbc0dbf2e0e9884e489964d0cf29dbf1e1ab7f77338a8fb93c6d03af",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m5-10",
+    "prompt": "In a saline conductivity demonstration, does table salt dissolving into water occur before or after free ions carry electric current?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Salt must dissolve in water to release charged ions that conduct electric current."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "7f87e3d6671bf6fb8e2f72fd05bac63449e4bead5b6cf52454f8ce8f949ee77c",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m5-11",
+    "prompt": "In chemical scrubbing for odor control, does passing odorous gases through a scrubbing tower occur before or after the chemical solution removes the odors?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Odorous gases are passed through the scrubbing tower so the chemical solution can remove the odors."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "b7d9097fee7776ac1770ce6ef116582fbeb1a8e6dabe41082becbc3136fabc26",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m5-12",
+    "prompt": "In a suspended-solids laboratory test, does passing the sample through a filter occur before or after colloidal solids appear in the filtrate?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "During filtration, suspended solids are retained while colloidal and dissolved solids pass through into the filtrate."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "1be04c38b94c5f560be6e7991c39373db5150afc50001a62166604bf61a1f6cd",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m5-13",
+    "prompt": "In a bulk physical property measurement, does calibrating the instrument occur before or after recording the sample measurement?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "An instrument is calibrated first so it can accurately perform the bulk physical property test."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "0306dd00859fe192c29260b50f01dc2ca92aab0026a1a0a053e9e66285346d6d",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m5-14",
+    "prompt": "In a backsiphonage event, does a partial vacuum developing in the supply line occur before or after nonpotable liquid is pulled backward?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Backsiphonage happens when a partial vacuum in the supply line pulls nonpotable liquid backward."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "221d22ea83720f8596be1381f6acdca24613b65af6f52d295ea8495897381990",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r04-m5-15",
+    "prompt": "In a coagulation test, does forming a good floc occur before or after determining and maintaining that optimal pH value?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Once a good floc is formed in the test, the operator determines and maintains that pH value."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+    "notes": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+    "registeredAt": "2026-11-19T03:39:38.145Z",
+    "payloadSha256": "a12ae7475fc01a1b0dedddcec09f7af6ef87888b1738bda2dbb6758deae13c04",
+    "builderResultsSha256": "97eb88dabee0534f26eb8f9e5314fdb425f3e56a16595bb4edde4a555a2f4875"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T03:38:19.796477+00:00",
+   "attestation": "Strict Hydrogen self-review of 70/70 accepted items in overlay targeth-class2-water-dist-r04 for class2-water-dist against supplied source pages and collision candidates.",
+   "payloadSha256": {
+    "targeth-ht261118-class2-water-dist-r04-m0-01": "675c6dfbb4b56d692d846cbb7f422d62618fc0b48f3386cd74acd72afe122273",
+    "targeth-ht261118-class2-water-dist-r04-m0-02": "f478a6dbf38878765c4e66f0774fff054d7531d7e27e708f6dafac09f85c0720",
+    "targeth-ht261118-class2-water-dist-r04-m0-03": "5a3712a1e18677086a94116e9ac0737f4a96f10cfec0313d13eb9c7211b29948",
+    "targeth-ht261118-class2-water-dist-r04-m0-04": "b293f2c135931c9d71522d91e2524b346fce4942be0b5b0f3cc0651f0a7b04f2",
+    "targeth-ht261118-class2-water-dist-r04-m0-05": "c55eb11f9f9dcd430f2cf078435fee7044b9d4124d62b350ea9e6919ad860c61",
+    "targeth-ht261118-class2-water-dist-r04-m0-06": "72394e6f0eba7bdc0699d9880156c39eec28410385a69726db14b3f1e6bbec38",
+    "targeth-ht261118-class2-water-dist-r04-m0-07": "351725a8e3c57a2946c79537e7437a2b6a6107f0b0bf8194cd6f13c4be0aff51",
+    "targeth-ht261118-class2-water-dist-r04-m0-08": "96860a1dac2c7d86e25ddd7f6ad572293c0ebc8f90b81a1c84792b64d454a682",
+    "targeth-ht261118-class2-water-dist-r04-m0-09": "cf19e65567a13b8b4e0b691b3c103b8159df37912a63658d17153d4b49d721be",
+    "targeth-ht261118-class2-water-dist-r04-m0-10": "eceabfb3abbf2b6602f5b94eaf49dc5446bd809e93e0eb7979093273893d5fd5",
+    "targeth-ht261118-class2-water-dist-r04-m0-11": "ec16d85d3e24a0f1eac3a22b3bb0e8cf101b466b8dd7a57873456474072d683d",
+    "targeth-ht261118-class2-water-dist-r04-m0-12": "f79d6448b4ee9a5ad5b3b69eeae8d69094796986a145c8472aa5dddc1f7a383e",
+    "targeth-ht261118-class2-water-dist-r04-m0-13": "21d70c08500c13db5691fec63cdafb6c6c60f84d0e707e53bb2fceacd57f2c4c",
+    "targeth-ht261118-class2-water-dist-r04-m0-14": "488ae300a9a3805db281d9bb545894acdd8d92b1ed2f78d2b7a90052e2964708",
+    "targeth-ht261118-class2-water-dist-r04-m0-15": "1b277a77b760cb6e881bc393ca7e29f354a42053045d0bd2abdabcbe5e17bb74",
+    "targeth-ht261118-class2-water-dist-r04-m1-01": "c5446aa57d15f70953c0adc663d5d9b1e81baf1a08ab9e169639cc620679abf5",
+    "targeth-ht261118-class2-water-dist-r04-m1-02": "9023c508462bad6b72ed9c1f61d85a576bfc94ff64111eb0aa86e43568a19fb6",
+    "targeth-ht261118-class2-water-dist-r04-m1-03": "af777d484be605d3616a3504318de3341d6ed7b27dcaac6d7dfcd224e26a875e",
+    "targeth-ht261118-class2-water-dist-r04-m1-04": "989d182e874f33eb4aba1d9e2a226c896a528fdd23d389129d1d43b991d7eb80",
+    "targeth-ht261118-class2-water-dist-r04-m1-05": "1eb6781596cb991b2324db81d71360a3a2018f889d64650fd3fef70421f3fed2",
+    "targeth-ht261118-class2-water-dist-r04-m1-06": "5ccc3d4e94291df9172e75c0ca3768b992a69e237e70ef16a50bab25bf7a38ef",
+    "targeth-ht261118-class2-water-dist-r04-m1-07": "9f4ad82c71278e702785e7fe488270c22994a60877b25df1ce0dd7eed2de52c7",
+    "targeth-ht261118-class2-water-dist-r04-m1-08": "4a4bbdc5190c02e1522e5e806a2435d1b24a1124ab0dc85236433a7734304429",
+    "targeth-ht261118-class2-water-dist-r04-m1-09": "e4cdaf5bbf8fbaf149a33101d95484833fbd15b2da2ab98f82aaa7aca77fae27",
+    "targeth-ht261118-class2-water-dist-r04-m1-10": "2d47a22a21ec3dd74ac4c7a7015c6c0bf5e136d08edc24a00ea00392491b5cd5",
+    "targeth-ht261118-class2-water-dist-r04-m3-01": "58bddf7912c8d1dbf475915599dc79bff21b60f6ff603c1853249346933a719d",
+    "targeth-ht261118-class2-water-dist-r04-m3-02": "e4bfc521b57d8df355f382dbe6b8a107cd1b9369b421e001f657838340bb9ba5",
+    "targeth-ht261118-class2-water-dist-r04-m3-03": "b30700df330a46575e536ae8fa75e86dabb78cc90da684f15a413ad6c6f9265d",
+    "targeth-ht261118-class2-water-dist-r04-m3-04": "e3536f53c4b0e6243a39c8feb399991881d4bcb46fdd23cb91ae858529c3953b",
+    "targeth-ht261118-class2-water-dist-r04-m3-05": "6215bfeb0e8f0b72a6b2877b434f75cd94aa4d3080a5d1a0ea58474662426af8",
+    "targeth-ht261118-class2-water-dist-r04-m3-06": "04d6b5ac6c64ced067e964bb299fbb29376a5ab45297c39910210b811ed35188",
+    "targeth-ht261118-class2-water-dist-r04-m3-07": "d24a5651da04c5a4175c9785ea7b4712f22fba289fab90d709b9966c8334156e",
+    "targeth-ht261118-class2-water-dist-r04-m3-08": "370f196dffe94e9c5cb15d75a12b0654e6b15af25d9fbff1bb60663b21c54cd8",
+    "targeth-ht261118-class2-water-dist-r04-m3-09": "d19e792fef5d278c65896302583abe8ac7f08cb4bd33130c9ac0e0c3983d0af7",
+    "targeth-ht261118-class2-water-dist-r04-m3-10": "820d257974dc358fe45a14f6a4fbc7c11e550b61bc7f005b4390a1a77c27fd4d",
+    "targeth-ht261118-class2-water-dist-r04-m3-11": "2c46d470eef6888a7aed442620a8eb8e8e07a8572e0087a02609aab58733fffa",
+    "targeth-ht261118-class2-water-dist-r04-m3-12": "66cdcb187af8e916db4e73cd3ba33ef2ca83e60e9188f78d31318dd70771468c",
+    "targeth-ht261118-class2-water-dist-r04-m3-13": "23324109896461ffb31ea9d1cbbec80e9d8e098a7be8c61d38ebafe3fdb4a9ab",
+    "targeth-ht261118-class2-water-dist-r04-m3-14": "0079d92eab125816a3fcecf2cf6a13d2a35c1c43aeccaac64cb3400277e1225c",
+    "targeth-ht261118-class2-water-dist-r04-m3-15": "99258124f0524a168c6be0497eb0d7e243d805fc7f22f24ccf331ad6469f1337",
+    "targeth-ht261118-class2-water-dist-r04-m4-01": "70d11b97bacc72af59d9dc76c1f01a9eaf890d6a786e7c374d196e1b2a7ab35d",
+    "targeth-ht261118-class2-water-dist-r04-m4-02": "90042bf29b64567562ff35753cd5c05cf410549aeaeb8bdc07d9ae71b4337c43",
+    "targeth-ht261118-class2-water-dist-r04-m4-03": "506db9fdcaced873d224390894eefda0a913216da32883da8d5e64e5212e4fc6",
+    "targeth-ht261118-class2-water-dist-r04-m4-04": "ecf53679fa2423db44ee40475d101e1b8e324c2cafea241c29a1b7feb89b11de",
+    "targeth-ht261118-class2-water-dist-r04-m4-05": "2bdf094c89564a47018c0e89db3876c59154c74fe6f4c000f1122af314157d4c",
+    "targeth-ht261118-class2-water-dist-r04-m4-06": "cc0b05981271140b8a622a9db186aac0a54755d7aa9388dbee6bb6c2b89a4120",
+    "targeth-ht261118-class2-water-dist-r04-m4-07": "a30320c9402b40e4bfebdcf866aeef5340d44a173cdedfb6dfcc032dc4ba435b",
+    "targeth-ht261118-class2-water-dist-r04-m4-08": "d9818f81c944e5c6449635fe7d5d19a40e7b3a4ce5337b6b3bd9d3d11380aaa6",
+    "targeth-ht261118-class2-water-dist-r04-m4-09": "5952ce44a67bd765bac88abf127b6d0e8c80ae5493472bb5725ddf2069361381",
+    "targeth-ht261118-class2-water-dist-r04-m4-10": "80cc54fa85bcd7922f1b527fa89e89a301743ac10db3a901d592444a91f9827f",
+    "targeth-ht261118-class2-water-dist-r04-m4-11": "a55753a668f61b732ed95c2c96967c31546d287445e281c20c8c8f0bca57107f",
+    "targeth-ht261118-class2-water-dist-r04-m4-12": "86bbd99270ca1374aab936f47e6a10f9fbd056c52d1a7583a1483def284f18ba",
+    "targeth-ht261118-class2-water-dist-r04-m4-13": "ea6a783edceec0cf0a5fbe886a1729549fe7fbb8da0246bbe7bd78ae1b1e6542",
+    "targeth-ht261118-class2-water-dist-r04-m4-14": "2abfa8e7ff1525bffc4253441b5a39b6a256836b1ca9818ff56108685ec3ff4b",
+    "targeth-ht261118-class2-water-dist-r04-m4-15": "880b2b33149ed492f62f3ea780dfce6d39d126080b76cb304749109ff7cd7406",
+    "targeth-ht261118-class2-water-dist-r04-m5-01": "8cc9b1b9a3538469209f9137f194b91e020a4f0266d55996c4ebb5974e02e026",
+    "targeth-ht261118-class2-water-dist-r04-m5-02": "3cf6c581489d18d4e96c14a971aea09bb05f05d9a4802c85a7a4409b28c59511",
+    "targeth-ht261118-class2-water-dist-r04-m5-03": "c596d70c6f54e0131a171151c97ee93ff1a8c61eed6df9f94cd2dbfe73969314",
+    "targeth-ht261118-class2-water-dist-r04-m5-04": "3db0cbc8a9e9cb6eddf1f2100ff4e671bfc1df03dfc90a76c5277977b06d4bc4",
+    "targeth-ht261118-class2-water-dist-r04-m5-05": "259f742fb859fc1bd3d1b289d971f78be13048f00077ea21ca4f743d7ca07c1e",
+    "targeth-ht261118-class2-water-dist-r04-m5-06": "a5f9849be3e05c57d828d56936e9ee945c1a0a33fda13a24237cbb3a5fb0e7a7",
+    "targeth-ht261118-class2-water-dist-r04-m5-07": "6e559673b08488bfd1e1bef863b8265df18ab98b085c4ed0827e6e9e4d481dd4",
+    "targeth-ht261118-class2-water-dist-r04-m5-08": "c1d45fbd256f612fd1814a3ca757b4a31096a37a01465daf189371dc154856b5",
+    "targeth-ht261118-class2-water-dist-r04-m5-09": "4db95009bbc0dbf2e0e9884e489964d0cf29dbf1e1ab7f77338a8fb93c6d03af",
+    "targeth-ht261118-class2-water-dist-r04-m5-10": "7f87e3d6671bf6fb8e2f72fd05bac63449e4bead5b6cf52454f8ce8f949ee77c",
+    "targeth-ht261118-class2-water-dist-r04-m5-11": "b7d9097fee7776ac1770ce6ef116582fbeb1a8e6dabe41082becbc3136fabc26",
+    "targeth-ht261118-class2-water-dist-r04-m5-12": "1be04c38b94c5f560be6e7991c39373db5150afc50001a62166604bf61a1f6cd",
+    "targeth-ht261118-class2-water-dist-r04-m5-13": "0306dd00859fe192c29260b50f01dc2ca92aab0026a1a0a053e9e66285346d6d",
+    "targeth-ht261118-class2-water-dist-r04-m5-14": "221d22ea83720f8596be1381f6acdca24613b65af6f52d295ea8495897381990",
+    "targeth-ht261118-class2-water-dist-r04-m5-15": "a12ae7475fc01a1b0dedddcec09f7af6ef87888b1738bda2dbb6758deae13c04"
+   }
+  },
+  "registeredAt": "2026-11-19T03:39:38.145Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 8,
+     "f": 7
+    },
+    "dirs": {
+     "increase": 8,
+     "decrease": 3,
+     "unchanged": 4
+    },
+    "longest": 8,
+    "options": 30
+   },
+   "batchSha256": "5181ce11343fe3c4082321d93ad240eb5d046f5c7382d8eccfb9b9087466bf0a"
+  }
+ }
+}

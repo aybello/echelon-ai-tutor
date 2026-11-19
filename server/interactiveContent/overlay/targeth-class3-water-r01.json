@@ -1,0 +1,2662 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-class3-water-r01",
+ "scope": "Owner-authorized AI-reviewed game activities: 68 items.",
+ "additions": [
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m0-01",
+    "prompt": "Forced aeration removes about 85 percent of hydrogen sulfide from water when the pH is below 6.5.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Aeration strips trapped hydrogen sulfide gas effectively when water pH stays below 6.5."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "94589c288d9e2d2d8a47899ade3d814bf239a370f7ef6ccabf57cf4df4c3825c",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m0-02",
+    "prompt": "Rested water in a vented tank strips hydrogen sulfide faster than forced aeration.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Passive resting in a vented tank removes some gas, but forced aeration is usually needed for effective stripping."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "21c1f2155f46358b4f634dd1cbf489012cfdcdd9634615d5a9ed65a7a9f883f1",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m0-03",
+    "prompt": "Chemical feeder calibration is affected when solution strength changes in a liquid feed tank.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Changing solution strength alters the mass of chemical delivered per unit volume, requiring recalibration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "558050020c39e948ca19a4ae2a1658d44f61dec3f4d5f71e57d7e26f58257557",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m0-04",
+    "prompt": "Dry chemical feeder calibration stays accurate after a belt change without retesting.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Mechanical changes such as a belt change alter dry feeder delivery and require recalibration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "597034cae660c2d8705e6028bdee01d56d2336394d6e2f6c8787d8938cf01028",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m0-05",
+    "prompt": "High-pH precipitation of iron and manganese requires raising pH to 10 or 11 before lowering it for consumption.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Iron and manganese precipitate at pH 10 to 11, so pH is later lowered to 8.5 or below."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "48176f53b417911991e6552ecb85c98e58129ebb1d38f3615e87a8d1ae1d6c5a",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m0-06",
+    "prompt": "Sodium-form ion exchange resin removes calcium and magnesium while leaving soluble iron untouched.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Ion exchange softeners also adsorb and remove soluble iron and manganese alongside hardness ions."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "25f804f060632420f5e65292c54405b8ea89acf581bab2433936a4b3bdecc2d5",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m0-07",
+    "prompt": "Rainwater dissolves limestone minerals more readily after absorbing carbon dioxide from soil to form carbonic acid.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Soil carbon dioxide forms carbonic acid in infiltrating rainwater, which dissolves limestone and creates groundwater hardness."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "06e5946138ac6f26c589621565dff2f01a0b3b62d548c05a9c6c46d7e324b27a",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m0-08",
+    "prompt": "Blending untreated bypass water with softened water prevents finished water from becoming overly corrosive.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Zero-hardness water is very corrosive, so bypass blending targets roughly 50 to 75 mg/L as CaCO3."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "cb9c9e5e482328a47f9f9275b37b201d1e47f9d2b891a2886c4d2f1d7bd3a358",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m0-09",
+    "prompt": "Water velocity inside pipes is classified as a primary factor affecting internal corrosion.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Velocity, temperature, and carbon dioxide are secondary corrosion factors; pH, alkalinity, calcium, dissolved oxygen, and TDS are primary."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "9a9ad91989184b5ebc4ac7fda6728d50a0cdf2d0f5f1c55d15272c0a9eae40b0",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m0-10",
+    "prompt": "Cryptosporidium oocysts are typically smaller than Giardia cysts, measuring about 4 to 6 micrometers.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Cryptosporidium oocysts measure about 4 to 6 micrometers, whereas Giardia cysts are 8 to 14 micrometers."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "0a156adf1a9b8b5f32752058b248787ed24b6e04ccfe14a82aaa1914392e2327",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m0-11",
+    "prompt": "Pre-ozonation above pH 7.5 consistently lowers chlorination disinfection byproduct precursors.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Above pH 7.5, pre-ozonation can actually increase chlorination byproduct precursors rather than reduce them."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "f665d86698f7666f8327e0fb3c0d4e9cb0568fbf0fb49750eb00eac024414526",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m0-12",
+    "prompt": "Monochloramine with excess ammonia controls juvenile Asiatic clams more effectively at 30 degrees Celsius than cold temperatures.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Biocide toxicity to Asiatic clams increases with temperature; monochloramine with excess ammonia works best at 30 degrees Celsius."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "9826c0b9f0b45446d70bb7a79772c2ba9dc208270d9587d93fcbb5678e6241ca",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m0-13",
+    "prompt": "A solution feeder's calibration stays valid when pump stroke length is adjusted.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Changing pump stroke length or frequency alters feed rate and requires recalibrating the solution feeder."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "c37333de7e5bc8d38d84f562268489d06db2fdb2ee5d3a398eac136e341b2dbe",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m0-14",
+    "prompt": "Pathogen inactivation by disinfectants can involve disrupting cell walls, blocking energy metabolism, or halting biosynthesis.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Disinfectants inactivate pathogens by attacking cell structure, interfering with energy-yielding enzymes, or preventing protein and nucleic acid synthesis."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "64a88fb34ee5523c737aa1e5afd51071fb1b1dfc38a4a76081f71327f237e144",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m1-01",
+    "prompt": "Distinguish between primary and secondary internal pipe corrosion factors and their roles.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "pH",
+      "right": "Primary factor governing acidity and protective scale stability"
+     },
+     {
+      "id": "p2",
+      "left": "Alkalinity",
+      "right": "Primary factor providing buffering capacity"
+     },
+     {
+      "id": "p3",
+      "left": "Dissolved oxygen",
+      "right": "Primary factor driving metallic oxidation"
+     },
+     {
+      "id": "p4",
+      "left": "Total dissolved solids",
+      "right": "Primary factor increasing water conductivity"
+     },
+     {
+      "id": "p5",
+      "left": "Water velocity",
+      "right": "Secondary physical factor affecting pipe wall shear"
+     },
+     {
+      "id": "p6",
+      "left": "Temperature",
+      "right": "Secondary factor altering reaction rates"
+     }
+    ],
+    "explanation": "Primary corrosion factors include pH, alkalinity, calcium hardness, dissolved oxygen, and TDS; secondary factors include temperature, velocity, and CO2."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "1bb14ca4830685dc8a8418fd7d094a89d54e4340cc7cf2472514ae8464b42c86",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m1-02",
+    "prompt": "Distinguish each chemical feeder calibration variable by whether it affects solution or dry feeders.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Solution strength",
+      "right": "Liquid concentration variable altering metering pump output"
+     },
+     {
+      "id": "p2",
+      "left": "Stroke length",
+      "right": "Mechanical pump adjustment changing liquid delivery"
+     },
+     {
+      "id": "p3",
+      "left": "Stroke frequency",
+      "right": "Pump speed setting changing liquid delivery"
+     },
+     {
+      "id": "p4",
+      "left": "Chemical purity",
+      "right": "Dry product quality variable altering active mass fed"
+     },
+     {
+      "id": "p5",
+      "left": "Belt change",
+      "right": "Mechanical dry feeder repair requiring recalibration"
+     },
+     {
+      "id": "p6",
+      "left": "Treated water flow",
+      "right": "Plant hydraulic rate affecting both feeder types"
+     }
+    ],
+    "explanation": "Solution feeders depend on strength and pump stroke settings, dry feeders on purity and belts, and both on plant flow."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "748dae187055bc36f7a653249b75b1490c55b7a83f4dad8ecdbd7d1f40fb5c20",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m1-03",
+    "prompt": "Distinguish the three primary mechanisms of chemical pathogen inactivation.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Cell wall oxidation",
+      "right": "Destroys or impairs cellular structural organization"
+     },
+     {
+      "id": "p2",
+      "left": "Membrane impairment",
+      "right": "Disrupts semi-permeable barrier function"
+     },
+     {
+      "id": "p3",
+      "left": "Enzyme prosthetic attack",
+      "right": "Interferes with energy-yielding metabolism"
+     },
+     {
+      "id": "p4",
+      "left": "Protein synthesis block",
+      "right": "Interferes with biosynthesis and growth"
+     },
+     {
+      "id": "p5",
+      "left": "Nucleic acid disruption",
+      "right": "Prevents normal genetic replication and growth"
+     },
+     {
+      "id": "p6",
+      "left": "Intracellular diffusion",
+      "right": "Enables disinfectant to reach internal cellular targets"
+     }
+    ],
+    "explanation": "Disinfectants inactivate pathogens by damaging cell structure, blocking energy metabolism, or halting biosynthesis."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "4674aede2e82348eb786f2d1d9782104452343f823eb697bfad4237c1cd1b5a6",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m1-04",
+    "prompt": "Distinguish between Giardia cysts and Cryptosporidium oocysts by size and treatment traits.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Giardia cyst size",
+      "right": "8 to 14 micrometers in diameter"
+     },
+     {
+      "id": "p2",
+      "left": "Cryptosporidium oocyst size",
+      "right": "4 to 6 micrometers in diameter"
+     },
+     {
+      "id": "p3",
+      "left": "Excystation",
+      "right": "Active stage triggered after ingestion by warm-blooded host"
+     },
+     {
+      "id": "p4",
+      "left": "High pH and cold water",
+      "right": "Conditions where Giardia resists chlorine disinfection"
+     },
+     {
+      "id": "p5",
+      "left": "Granular media or DE",
+      "right": "Filtration methods that physically remove cysts"
+     },
+     {
+      "id": "p6",
+      "left": "Dormant cyst state",
+      "right": "Resilient environmental survival form"
+     }
+    ],
+    "explanation": "Giardia cysts (8-14 um) and Cryptosporidium oocysts (4-6 um) are resilient dormant forms removed by filtration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "5698af954290b3ab5f4f933b0f2040eeb7d43eab3192ed38ff687f67c9b62ebd",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m1-05",
+    "prompt": "Distinguish iron and manganese removal processes by their chemical or physical mechanism.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "High-pH precipitation",
+      "right": "Raises pH to 10-11 with lime before settling and filtration"
+     },
+     {
+      "id": "p2",
+      "left": "Post-precipitation pH drop",
+      "right": "Lowers pH to 8.5 or below for potable use"
+     },
+     {
+      "id": "p3",
+      "left": "Pre-filter oxidation",
+      "right": "Converts soluble metals to filterable precipitates before media"
+     },
+     {
+      "id": "p4",
+      "left": "Insufficient oxidation time",
+      "right": "Causes precipitates to form inside distribution mains"
+     },
+     {
+      "id": "p5",
+      "left": "Ion exchange",
+      "right": "Adsorbs soluble iron and manganese onto resin"
+     },
+     {
+      "id": "p6",
+      "left": "Salt brine regeneration",
+      "right": "Restores exhausted resin using sodium chloride"
+     }
+    ],
+    "explanation": "Iron and manganese are removed by high-pH precipitation, oxidation ahead of filters, or ion exchange."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "264072e4b8e0042e36b64f3a925ac34c368d5fd9c744bf820fe2f8dbadd230c8",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m1-06",
+    "prompt": "Distinguish hardness ions, formation chemistry, and softening control concepts.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Calcium and magnesium",
+      "right": "Primary divalent metallic ions causing hardness"
+     },
+     {
+      "id": "p2",
+      "left": "Soil carbon dioxide",
+      "right": "Forms carbonic acid in rainwater to dissolve limestone"
+     },
+     {
+      "id": "p3",
+      "left": "Equivalent weight",
+      "right": "Gram molecular weight divided by valence"
+     },
+     {
+      "id": "p4",
+      "left": "Bypass blending",
+      "right": "Mixes untreated water to prevent corrosive zero-hardness effluent"
+     },
+     {
+      "id": "p5",
+      "left": "Sodium-form resin",
+      "right": "Releases sodium ions that can affect salt-restricted diets"
+     },
+     {
+      "id": "p6",
+      "left": "Strontium and barium",
+      "right": "Minor divalent metallic ions contributing to hardness"
+     }
+    ],
+    "explanation": "Hardness comes from divalent ions dissolved by carbonic acid and is managed via equivalent-weight math and bypass blending."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "4704f1ec8070a1d9c12f145984a49f12e42f8f493a8629cadbee1098de8f7bdc",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m1-07",
+    "prompt": "Distinguish pre-oxidation strategies for disinfection byproduct and nuisance clam control.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Potassium permanganate",
+      "right": "Oxidizes organic precursors at headworks to cut downstream DBPs"
+     },
+     {
+      "id": "p2",
+      "left": "Pre-ozonation at low pH",
+      "right": "Reduces chlorination byproduct precursors"
+     },
+     {
+      "id": "p3",
+      "left": "Pre-ozonation above pH 7.5",
+      "right": "Can increase chlorination byproduct precursors"
+     },
+     {
+      "id": "p4",
+      "left": "Monochloramine",
+      "right": "Controls juvenile Asiatic clams without forming THMs"
+     },
+     {
+      "id": "p5",
+      "left": "Cold water (12 to 15 C)",
+      "right": "Conditions where low chlorine gives minimal clam mortality"
+     },
+     {
+      "id": "p6",
+      "left": "Zebra mussel",
+      "right": "Invasive species introduced to Lake St. Clair in 1988"
+     }
+    ],
+    "explanation": "Pre-oxidants like permanganate and ozone affect DBP precursors differently by pH, while monochloramine controls clams."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "38b2892dfe9c3cfc8a047d4c45f805e9f8ad673fa431214aeb0cfe53ed687d39",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m1-08",
+    "prompt": "Distinguish pipe corrosion manifestations and plumbing metal contaminants.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Tuberculation",
+      "right": "Knob-like corrosion mounds that lower pipe C factor"
+     },
+     {
+      "id": "p2",
+      "left": "Pitting",
+      "right": "Localized cavity with surface diameter at or below depth"
+     },
+     {
+      "id": "p3",
+      "left": "Lead",
+      "right": "Plumbing metal whose leaching is curbed by alkaline balance"
+     },
+     {
+      "id": "p4",
+      "left": "Copper",
+      "right": "Plumbing metal with a nonenforceable health goal of 1.3 mg/L"
+     },
+     {
+      "id": "p5",
+      "left": "Cadmium",
+      "right": "Toxic contaminant found as an impurity in zinc"
+     },
+     {
+      "id": "p6",
+      "left": "Alkaline chemical balance",
+      "right": "Condition achieved with lime or caustic to protect pipes"
+     }
+    ],
+    "explanation": "Corrosion causes tuberculation, pitting, and leaching of lead, copper, and zinc-associated cadmium."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "ad49d07d385c9b85f854fed43a73601d7a58212437d1e042819cdc901a16eac9",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m1-09",
+    "prompt": "Distinguish pretreatment aeration functions and chemical feed control modes.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Forced aeration",
+      "right": "Removes about 85 percent of hydrogen sulfide below pH 6.5"
+     },
+     {
+      "id": "p2",
+      "left": "Vented tank resting",
+      "right": "Passive method that drives off only part of trapped gas"
+     },
+     {
+      "id": "p3",
+      "left": "Humic substance oxidation",
+      "right": "Secondary aeration benefit that reduces THM precursors"
+     },
+     {
+      "id": "p4",
+      "left": "Flow-paced feeder",
+      "right": "Adjusts chemical feed automatically to match water flow"
+     },
+     {
+      "id": "p5",
+      "left": "Manual feeder",
+      "right": "Requires operator adjustment when flow or quality shifts"
+     },
+     {
+      "id": "p6",
+      "left": "Small groundwater system",
+      "right": "Facility where pretreatment may be the only treatment used"
+     }
+    ],
+    "explanation": "Aeration strips gases and oxidizes organics, while feeders operate manually or paced to plant flow."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "0a1f6d44033c8d499d58bed9715d8e970754f842a1b9b093ecd514f392fe7d62",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m1-10",
+    "prompt": "Distinguish dry feeder calibration equipment from solution feeder calibration concepts.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Weighing pan and balance",
+      "right": "Measures mass of dry chemical delivered during timed test"
+     },
+     {
+      "id": "p2",
+      "left": "Stopwatch",
+      "right": "Times dry or liquid collection intervals"
+     },
+     {
+      "id": "p3",
+      "left": "Graph paper and straight edge",
+      "right": "Plots dosage against feeder percentage setting"
+     },
+     {
+      "id": "p4",
+      "left": "100 percent pump setting",
+      "right": "Leaves no headroom to increase chemical dosage"
+     },
+     {
+      "id": "p5",
+      "left": "Doubling solution strength",
+      "right": "Moves target dosage near 50 percent pump setting"
+     },
+     {
+      "id": "p6",
+      "left": "Annual calibration",
+      "right": "Minimum frequency required for chemical feeders"
+     }
+    ],
+    "explanation": "Dry calibration weighs timed output, while solution calibration plots dosage versus setting and maintains operating headroom."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "c89512c157f36e8e6641a3062b51e7516533bfebe32318dbd700a853df816a03",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m2-01",
+    "prompt": "Three of these factors directly alter the calibration curve of a liquid solution metering pump. Which dry-feeder factor is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Solution strength"
+     },
+     {
+      "id": "b",
+      "label": "Pump stroke length"
+     },
+     {
+      "id": "c",
+      "label": "Dry chemical belt change"
+     },
+     {
+      "id": "d",
+      "label": "Pump stroke frequency"
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Belt changes affect dry chemical feeders, whereas solution strength, stroke length, and stroke frequency govern solution metering pumps."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "dba2c742d68ccd5160ba45899e171e1ffb161b1cc736e334327495b604891668",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m2-02",
+    "prompt": "Three of these divalent metallic ions contribute to total water hardness. Which monovalent ion is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Calcium"
+     },
+     {
+      "id": "b",
+      "label": "Magnesium"
+     },
+     {
+      "id": "c",
+      "label": "Sodium"
+     },
+     {
+      "id": "d",
+      "label": "Strontium"
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Calcium, magnesium, and strontium are divalent hardness ions; monovalent sodium is exchanged for them during softening."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "24caa07530d876d80d6dfcfa4d94ecf6481c12aa589ac6768b7d04bba31b6fd7",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m2-03",
+    "prompt": "Three of these water quality variables are classified as primary factors affecting internal pipe corrosion. Which secondary factor is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Alkalinity"
+     },
+     {
+      "id": "b",
+      "label": "Dissolved oxygen"
+     },
+     {
+      "id": "c",
+      "label": "Water velocity"
+     },
+     {
+      "id": "d",
+      "label": "Total dissolved solids"
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Water velocity is a secondary corrosion factor; alkalinity, dissolved oxygen, and TDS are primary factors."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "5fae67d12680cd4ae991cd65d09ac03f9b798a6aabdcf01ccf037c2d2b397116",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m2-04",
+    "prompt": "Three of these mechanisms are primary ways disinfectants inactivate pathogens. Which physical separation process is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Cell wall destruction"
+     },
+     {
+      "id": "b",
+      "label": "Enzyme metabolism interference"
+     },
+     {
+      "id": "c",
+      "label": "Biosynthesis inhibition"
+     },
+     {
+      "id": "d",
+      "label": "Granular media straining"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Granular media straining is physical filtration, whereas the other three are chemical pathogen inactivation mechanisms."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "6b37a358c0c2951c51490bb9481c8b142198d1fa60707520ae62488a4a536743",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m2-05",
+    "prompt": "Three of these variables govern whether pre-ozonation reduces or increases chlorination byproduct precursors. Which physical filter parameter is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Ozone dose"
+     },
+     {
+      "id": "b",
+      "label": "Water pH"
+     },
+     {
+      "id": "c",
+      "label": "Filter media depth"
+     },
+     {
+      "id": "d",
+      "label": "Nature of organic material"
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Pre-ozonation effects on DBP precursors depend on dose, pH, alkalinity, and organic character, not filter media depth."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "8613318fabb2f1830c58c1b8c827c78753b25edacdb0a8b1be668362fa9d0877",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m2-06",
+    "prompt": "Three of these tools are required in the dry chemical feeder calibration procedure. Which liquid-handling item is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Weighing pan"
+     },
+     {
+      "id": "b",
+      "label": "Balance"
+     },
+     {
+      "id": "c",
+      "label": "Stopwatch"
+     },
+     {
+      "id": "d",
+      "label": "Graduated cylinder"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Dry feeder calibration uses a weighing pan, balance, and stopwatch; a graduated cylinder is for liquid feeders."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "e91fe450697915f5f35bf8e513fa6439d302d780bdf82e23a594f442b5e669e1",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m2-07",
+    "prompt": "Three of these pretreatment benefits are achieved by aerating raw groundwater. Which softening step is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Hydrogen sulfide stripping"
+     },
+     {
+      "id": "b",
+      "label": "Iron and manganese oxidation"
+     },
+     {
+      "id": "c",
+      "label": "Humic substance oxidation"
+     },
+     {
+      "id": "d",
+      "label": "Sodium-chloride resin regeneration"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Aeration strips gases and oxidizes metals and humic substances, whereas salt brine regeneration restores ion-exchange resin."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "14535fda3ebdaa2ed885b3b915179421844a2a70a451c99cd2edda18c2eef4a6",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m2-08",
+    "prompt": "Three of these toxic or regulated metals are associated with plumbing corrosion or zinc impurities. Which hardness ion is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Lead"
+     },
+     {
+      "id": "b",
+      "label": "Copper"
+     },
+     {
+      "id": "c",
+      "label": "Cadmium"
+     },
+     {
+      "id": "d",
+      "label": "Calcium"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Lead, copper, and cadmium are plumbing corrosion contaminants, whereas calcium is a major hardness ion."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "a572ff5d84a9e14e6a62700b9530c9c267d77d5376c4fe6a7d84aa079fe6da52",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m2-09",
+    "prompt": "Three of these methods are used to remove iron and manganese from drinking water. Which biological test is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "High-pH lime precipitation"
+     },
+     {
+      "id": "b",
+      "label": "Oxidation before filtration"
+     },
+     {
+      "id": "c",
+      "label": "Ion exchange"
+     },
+     {
+      "id": "d",
+      "label": "Microscopic cyst enumeration"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Precipitation, oxidation, and ion exchange remove iron and manganese; microscopic enumeration assays Giardia cysts."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "1ff323a7d3ca8cd0ff5fe173066708444bf05f34965d8a889be5ad2facc54b6c",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m2-10",
+    "prompt": "Three of these filtration technologies effectively remove 8 to 14 micrometer Giardia cysts. Which chemical process is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Diatomaceous earth filtration"
+     },
+     {
+      "id": "b",
+      "label": "Granular media filtration"
+     },
+     {
+      "id": "c",
+      "label": "Membrane filtration"
+     },
+     {
+      "id": "d",
+      "label": "Sodium-form ion exchange"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "DE, granular media, and membranes physically remove Giardia cysts; ion exchange softens water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "17adbb77928ddfbc1c1eed565fa4f40deab9100047abfb9a88629b43ab152e48",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m2-11",
+    "prompt": "Three of these biocides were evaluated in Asiatic clam control studies. Which non-oxidizing coagulant is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Total residual chlorine"
+     },
+     {
+      "id": "b",
+      "label": "Monochloramine"
+     },
+     {
+      "id": "c",
+      "label": "Bromine"
+     },
+     {
+      "id": "d",
+      "label": "Aluminum sulfate"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Chlorine, monochloramine, and bromine were tested for Asiatic clam control; aluminum sulfate is a coagulant."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "fea60a4e48709215714bd73f17a943e5898682dac8693269386f8a31d15fc532",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m2-12",
+    "prompt": "Three of these conditions are classified as secondary factors affecting internal pipe corrosion. Which primary factor is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Temperature"
+     },
+     {
+      "id": "b",
+      "label": "Water velocity"
+     },
+     {
+      "id": "c",
+      "label": "Carbon dioxide"
+     },
+     {
+      "id": "d",
+      "label": "Calcium hardness"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Calcium hardness is a primary corrosion factor, while temperature, velocity, and carbon dioxide are secondary factors."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "928b0cc9b29a807eae97fc9c4787475560512228dcdeade09a4216c1682ac599",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m2-13",
+    "prompt": "Three of these traits describe Cryptosporidium oocysts. Which trait describes Giardia cysts instead?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Protozoan life stage"
+     },
+     {
+      "id": "b",
+      "label": "Resilient in adverse environments"
+     },
+     {
+      "id": "c",
+      "label": "8 to 14 micrometers in diameter"
+     },
+     {
+      "id": "d",
+      "label": "4 to 6 micrometers in diameter"
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Cryptosporidium oocysts are 4 to 6 micrometers, whereas Giardia cysts are larger at 8 to 14 micrometers."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "9f2a7b48cc1074b068fb570773ff8e84f4af85c5d1e6b2576f987d9f40cd5e56",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m2-14",
+    "prompt": "Three of these events trigger recalibration of a chemical feeder. Which routine record-keeping item is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Chemical purity change"
+     },
+     {
+      "id": "b",
+      "label": "Feeder maintenance"
+     },
+     {
+      "id": "c",
+      "label": "Treated water flow change"
+     },
+     {
+      "id": "d",
+      "label": "Completed shift log review"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Purity changes, maintenance, and flow changes require feeder recalibration; reviewing a shift log does not."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "ecb7d1370f458d904ad51d4de72bc9125e47d3f9d64aab615b68c2b101ce8b99",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m2-15",
+    "prompt": "Three of these steps occur during John Snow's 1854 Broad Street cholera investigation. Which modern treatment step is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Mapping case locations"
+     },
+     {
+      "id": "b",
+      "label": "Linking deaths to the pump"
+     },
+     {
+      "id": "c",
+      "label": "Removing the pump handle"
+     },
+     {
+      "id": "d",
+      "label": "Applying monochloramine residual"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Snow mapped cases, linked them to the pump, and removed the handle; monochloramine disinfection came much later."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "a1909f28b213a2a9b9aa0cc3438d2afae86ef4794f7c755473d97d5b31a68b3c",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m3-01",
+    "prompt": "Assume raw groundwater containing hydrogen sulfide is shifted from passive resting in a vented tank to forced aeration while pH stays below 6.5. What happens to the hydrogen sulfide concentration in the water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Forced aeration strips about 85 percent of hydrogen sulfide below pH 6.5, lowering its concentration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "fde884403ecbb4a1cb311bb7ac9db90df5f2931da016baf51be292ddf4f1f1f5",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m3-02",
+    "prompt": "Assume a chemical solution tank's strength is doubled from 0.5 percent to 1 percent while the metering pump setting and plant flow stay constant. What happens to the chemical dosage delivered to the water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Doubling solution strength at a fixed pump setting and flow doubles the chemical mass delivered, increasing the dosage."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "12f08a4f3220bdd20428e4ae63cfb0d284f198f65d713050fca0fd1c83fe8636",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m3-03",
+    "prompt": "Assume lime is added to iron- and manganese-bearing water until pH reaches 10.5 ahead of settling and sand filtration. What happens to the dissolved iron and manganese concentration?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Raising pH to 10 to 11 precipitates iron and manganese as solids that settle or filter out."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "47003aa79bebc83498b3b41ef2f59790358eda77613d7b562ff4fa1c8be77f9d",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m3-04",
+    "prompt": "Assume an oxidant is fed too close to a filter so oxidation finishes in the distribution system instead of ahead of the media. What happens to insoluble iron and manganese precipitates in the distribution mains?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Incomplete oxidation before filtration causes precipitates to form downstream, increasing deposits in distribution mains."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "097d592d8b5b81a38eb80b4b8b89a9e3ab447934db0b1465e232e54fe8c1adf6",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m3-05",
+    "prompt": "Assume infiltrating rainwater passes through thicker soil containing more carbon dioxide before contacting limestone bedrock. What happens to the mineral hardness of the resulting groundwater?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "More soil carbon dioxide forms more carbonic acid, dissolving more limestone and increasing groundwater hardness."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "5c94a6fff483da711258cd262a45c6d2779dd87ecdb1265bd5922eb8f0e3d583",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m3-06",
+    "prompt": "Assume zero-hardness ion-exchange effluent is blended with untreated bypass water to reach 60 mg/L as CaCO3. What happens to the corrosiveness of the finished water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Zero-hardness water is very corrosive; blending back hardness to 50-75 mg/L as CaCO3 reduces corrosiveness."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "77b3f049104b369ec1841af5c96e2e687216c04fc755d2b402189b4320060f89",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m3-07",
+    "prompt": "Assume lime or sodium hydroxide is added to acidic distribution water to achieve a slightly alkaline chemical balance. What happens to lead leaching from customer plumbing?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Maintaining a slightly alkaline balance prevents water from corroding plumbing and reduces lead leaching."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "c3b33402bb528625d2fd637391f03814f7b69f24081c09663ee7d2a4f862f040",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m3-08",
+    "prompt": "Assume tuberculation mounds grow along the interior wall of a cast-iron water main at steady flow. What happens to the pipe's resistance to water flow?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Knob-like tuberculation mounds roughen the pipe interior, increasing resistance to flow and lowering the C factor."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "55fb295593ebad3b245b357b9f89e18bf6bd8703f7b01aa6c8e63e4f2124d03d",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m3-09",
+    "prompt": "Assume potassium permanganate is fed at the head of a treatment plant to oxidize organic precursors before downstream chlorination. What happens to disinfection byproduct formation at the downstream chlorination stage?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Oxidizing organic precursors at the headworks with potassium permanganate reduces byproduct formation during downstream chlorination."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "8467e2eb11bdeb7ac51f3e829084ab0b183304d5248bc8a5f4a3d6defedf54e4",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m3-10",
+    "prompt": "Assume pre-ozonation is applied to water at pH 8.0 ahead of chlorination while ozone dose and organic character stay constant. What happens to chlorination byproduct precursor levels?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "At higher pH above 7.5, pre-ozonation can increase the amount of chlorination byproduct precursors."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "e58cb2296825c855069d22096ff1370962652eaa8722d861146fcbbd48159bb9",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m3-11",
+    "prompt": "Assume water temperature drops from 25 degrees Celsius to 12 degrees Celsius while total residual chlorine stays at 0.30 mg/L for Asiatic clam control. What happens to Asiatic clam mortality?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Low-level chlorination controls clams at 20 to 25 degrees Celsius but has minimal effect at 12 to 15 degrees Celsius."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "b9f79ce628329c9023be15241327a04011a359a72f51f01f97ee99b1fb006560",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m3-12",
+    "prompt": "Assume raw water containing Giardia cysts passes through a properly operated diatomaceous earth filter. What happens to the Giardia cyst concentration in the filtered water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Giardia cysts are 8 to 14 micrometers and are effectively removed by diatomaceous earth, granular media, or membrane filtration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "f13dea1da0ea44f01fd5ae0d86254fa1e0d1140e8d4c368ca586319ffc38a9ef",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m3-14",
+    "prompt": "Assume an exhausted sodium-form ion exchange resin bed is regenerated with strong sodium chloride brine. What happens to the hardness-removal capacity of the resin?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Sodium ions from the brine replace adsorbed hardness ions and restore the resin's ion exchange capacity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "f77310621abb3cd100d6a8c3fb65d6f64230475bee51ce341d4f87c8d5491be2",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m3-15",
+    "prompt": "Assume a disinfectant's ability to diffuse through a bacterial cell wall improves while contact time and concentration stay constant. What happens to pathogen inactivation efficiency?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Disinfection efficiency depends on the disinfectant's ability to oxidize the cell wall and diffuse inside to disrupt cellular activity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "a2066c2f5203c95acf6ac800005bcc68aa576cd20f2748df0a8ddcababa4befd",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m4-01",
+    "prompt": "An operator reviews aeration pretreatment notes for hydrogen sulfide removal. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Forced aeration removes about 85 percent of sulfides below pH 6.5."
+     },
+     {
+      "id": "b",
+      "label": "Allowing water to rest in a vented tank removes more gas than forced aeration."
+     },
+     {
+      "id": "c",
+      "label": "Aeration can also oxidize iron, manganese, and humic substances."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Passive resting in a vented tank removes some gas, but forced aeration is usually required for higher removal."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "4031c3449e55c26bdf6bb13aba5f7a609d8770d573463a83f2bc9dd2a194afef",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m4-02",
+    "prompt": "A technician checks chemical feeder calibration requirements after plant maintenance. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Chemical feeders should be calibrated at least annually."
+     },
+     {
+      "id": "b",
+      "label": "Dry feeder calibration stays valid after a belt replacement."
+     },
+     {
+      "id": "c",
+      "label": "Solution feeder calibration changes when solution strength is altered."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Mechanical changes such as a belt change on a dry feeder alter feed rate and require recalibration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "28ef18c01bbb46ecde509171d0c57cd56b1fa5fb943cb6dad5da1c0343cef6dd",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m4-03",
+    "prompt": "An operator evaluates high-pH precipitation for iron and manganese removal. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Lime raises water pH to 10 or 11 to precipitate iron and manganese."
+     },
+     {
+      "id": "b",
+      "label": "Sand filters capture precipitates that do not settle out."
+     },
+     {
+      "id": "c",
+      "label": "Water at pH 10.5 is ready for direct customer consumption."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "After precipitation at pH 10 to 11, the pH must be lowered to 8.5 or below for potable use."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "080bf3bdac607322112bb51eaeefc6d21f2ff6360899d443a79198733518bc66",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m4-04",
+    "prompt": "A treatment team reviews oxidation and ion exchange for iron and manganese control. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Sufficient contact time is needed between oxidation and filtration."
+     },
+     {
+      "id": "b",
+      "label": "Incomplete oxidation before filters forms precipitates in distribution mains."
+     },
+     {
+      "id": "c",
+      "label": "Ion exchange resin removes hardness but leaves soluble iron unchanged."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Ion exchange softeners adsorb soluble iron and manganese in addition to calcium and magnesium."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "e38b7a17b91f341d46a9a77dc2337bc82d5f14f2e395481c42cbe70f3d4a89ff",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m4-05",
+    "prompt": "A trainee summarizes groundwater hardness formation and calculation. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Soil carbon dioxide forms carbonic acid that dissolves limestone."
+     },
+     {
+      "id": "b",
+      "label": "Calcium and magnesium concentrations are summed directly before equivalent-weight conversion."
+     },
+     {
+      "id": "c",
+      "label": "Groundwaters are generally harder than surface waters."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Each metal ion concentration must be converted to mg/L as CaCO3 using its equivalent weight before summing."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "37326165a0ca23f355338be414743451f8b781288ad76cd204d88ab1b04887b1",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m4-06",
+    "prompt": "An operator reviews ion-exchange softening bypass blending practices. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Zero-hardness finished water tends to be very corrosive."
+     },
+     {
+      "id": "b",
+      "label": "Bypassing part of the flow produces a blended hardness near 50 to 75 mg/L as CaCO3."
+     },
+     {
+      "id": "c",
+      "label": "Sodium-form ion exchange lowers the sodium concentration in softened water."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Sodium-form ion exchange adds sodium to the water, which can affect people on salt-restricted diets."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "deb789c1d06181be01eb8aebf099d6a8b113ba2807bbae949b9cd186d735fc14",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m4-07",
+    "prompt": "A corrosion specialist classifies water quality factors affecting internal pipe corrosion. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Primary factors include pH, alkalinity, calcium, dissolved oxygen, and TDS."
+     },
+     {
+      "id": "b",
+      "label": "Secondary factors include temperature, pipe velocity, and carbon dioxide."
+     },
+     {
+      "id": "c",
+      "label": "Dissolved oxygen is classified as a secondary physical corrosion factor."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Dissolved oxygen is a primary factor affecting corrosion, not a secondary factor."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "3de737fdffacd2bedc90b8df0bd2bbc88e34a7f217194b8bfc665d612c7cc4bc",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m4-08",
+    "prompt": "A utility reviews plumbing metal contaminants linked to corrosion. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Alkaline chemical balance helps keep lead from leaching out of plumbing."
+     },
+     {
+      "id": "b",
+      "label": "Cadmium in tap samples can originate as an impurity in zinc."
+     },
+     {
+      "id": "c",
+      "label": "Tuberculation mounds smooth pipe interiors and raise the C factor."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Tuberculation mounds roughen pipe interiors, increasing flow resistance and decreasing the C factor."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "54823c54f0c782a0c6b097751abf7ce7d0311a9341433722ca139a64991a2e22",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m4-09",
+    "prompt": "A student compares Giardia cysts and Cryptosporidium oocysts. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Giardia cysts measure about 8 to 14 micrometers and resist chlorine in cold, high-pH water."
+     },
+     {
+      "id": "b",
+      "label": "Cryptosporidium oocysts are larger than Giardia cysts, measuring 15 to 20 micrometers."
+     },
+     {
+      "id": "c",
+      "label": "Both protozoa continue their life cycle with excystation after host ingestion."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Cryptosporidium oocysts are smaller than Giardia cysts, typically measuring 4 to 6 micrometers."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "be25baee70d7aa6971bf45a4a73c481906e3fcc7b325a910bbf1e6c7a33b8158",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m4-10",
+    "prompt": "An operator reviews how chemical disinfectants inactivate waterborne pathogens. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Disinfectants can oxidize or rupture the microbial cell wall."
+     },
+     {
+      "id": "b",
+      "label": "Disinfectants can diffuse into cells and disable energy-yielding enzymes."
+     },
+     {
+      "id": "c",
+      "label": "Disinfectants stimulate protein and nucleic acid synthesis to exhaust the cell."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Disinfectants interfere with biosynthesis by preventing normal protein and nucleic acid synthesis, not stimulating it."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "2c0cdf30cd8bb127e7333b9fac7ce26930e8124af948bb76f64b7071570b1f16",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m4-11",
+    "prompt": "A plant evaluates pre-oxidation options for disinfection byproduct control. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Potassium permanganate at the headworks oxidizes organic precursors before chlorination."
+     },
+     {
+      "id": "b",
+      "label": "Pre-ozonation above pH 7.5 reduces chlorination byproduct precursors."
+     },
+     {
+      "id": "c",
+      "label": "Ozone precursor effects depend on dose, pH, alkalinity, and organic character."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "At pH levels above 7.5, pre-ozonation may actually increase chlorination byproduct precursors."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "03c7d52816aa432a379688d6d2f0a2cd0a2ae84b68372a3ca127019690090c5f",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m4-12",
+    "prompt": "A biologist reviews biocide studies for controlling juvenile Asiatic clams. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Monochloramine controls juvenile clams without forming excessive trihalomethanes."
+     },
+     {
+      "id": "b",
+      "label": "Low-level chlorination is most effective at 12 to 15 degrees Celsius."
+     },
+     {
+      "id": "c",
+      "label": "Biocide toxicity to Asiatic clams depends strongly on water temperature."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Low-level chlorination controlled clams at 20 to 25 degrees Celsius but had minimal effect at 12 to 15 degrees Celsius."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "b5f11f3b612f082f7e84d4543cf59ccf842d75f80b36994f98de309260275deb",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m4-13",
+    "prompt": "An operator checks solution feeder settings using a calibration chart. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Operating at 100 percent setting leaves no room to increase dosage."
+     },
+     {
+      "id": "b",
+      "label": "Doubling solution strength allows the target dose near a 50 percent setting."
+     },
+     {
+      "id": "c",
+      "label": "Operating at 100 percent setting gives equal room to raise or lower dosage."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "At 100 percent setting, dosage can be decreased but cannot be increased without raising solution strength."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "b8a59850daa394b71ef61cb3120363fb09cc37ccdb4d45cec1544e8d22878b3a",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m4-14",
+    "prompt": "A student reviews Dr. John Snow's 1854 London cholera investigation. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Snow mapped cholera cases and found most deaths near the Broad Street pump."
+     },
+     {
+      "id": "b",
+      "label": "Snow used germ theory and antibiotics to identify the cholera bacterium."
+     },
+     {
+      "id": "c",
+      "label": "Removing the Broad Street pump handle ended the local outbreak."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Snow lacked germ theory and antibiotics; he traced the outbreak by mapping cases and removing the pump handle."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "e9431723bffbf38369a1c8ffdcf4e211fbd0925de4e6ca76923985e81fe70b9e",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r01-m4-15",
+    "prompt": "An operator reviews pretreatment roles in small groundwater systems. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Pretreatment may be located adjacent to the source before the main plant."
+     },
+     {
+      "id": "b",
+      "label": "Small groundwater systems can use pretreatment without downstream treatment."
+     },
+     {
+      "id": "c",
+      "label": "Small groundwater systems require full conventional coagulation and sedimentation."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Small groundwater systems often use minimal treatment such as pumping, storage, disinfection, or pretreatment alone."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T02:41:10.393Z",
+    "payloadSha256": "19cfe2309aa1d8082b62eaeffd9c6d527896d10e24889b4ec03de4e39ef5d133",
+    "builderResultsSha256": "15fee158b1fb72c9329d06fb485ac5e2e004f0a69f01015cf245f419d58351bd"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T02:40:14.260361+00:00",
+   "attestation": "Strict Hydrogen self-review of targeth-class3-water-r01 against supplied source pages and collision candidates: 68 accepted, 2 rejected for same-mode paraphrase.",
+   "payloadSha256": {
+    "targeth-ht261118-class3-water-r01-m0-01": "94589c288d9e2d2d8a47899ade3d814bf239a370f7ef6ccabf57cf4df4c3825c",
+    "targeth-ht261118-class3-water-r01-m0-02": "21c1f2155f46358b4f634dd1cbf489012cfdcdd9634615d5a9ed65a7a9f883f1",
+    "targeth-ht261118-class3-water-r01-m0-03": "558050020c39e948ca19a4ae2a1658d44f61dec3f4d5f71e57d7e26f58257557",
+    "targeth-ht261118-class3-water-r01-m0-04": "597034cae660c2d8705e6028bdee01d56d2336394d6e2f6c8787d8938cf01028",
+    "targeth-ht261118-class3-water-r01-m0-05": "48176f53b417911991e6552ecb85c98e58129ebb1d38f3615e87a8d1ae1d6c5a",
+    "targeth-ht261118-class3-water-r01-m0-06": "25f804f060632420f5e65292c54405b8ea89acf581bab2433936a4b3bdecc2d5",
+    "targeth-ht261118-class3-water-r01-m0-07": "06e5946138ac6f26c589621565dff2f01a0b3b62d548c05a9c6c46d7e324b27a",
+    "targeth-ht261118-class3-water-r01-m0-08": "cb9c9e5e482328a47f9f9275b37b201d1e47f9d2b891a2886c4d2f1d7bd3a358",
+    "targeth-ht261118-class3-water-r01-m0-09": "9a9ad91989184b5ebc4ac7fda6728d50a0cdf2d0f5f1c55d15272c0a9eae40b0",
+    "targeth-ht261118-class3-water-r01-m0-10": "0a156adf1a9b8b5f32752058b248787ed24b6e04ccfe14a82aaa1914392e2327",
+    "targeth-ht261118-class3-water-r01-m0-11": "f665d86698f7666f8327e0fb3c0d4e9cb0568fbf0fb49750eb00eac024414526",
+    "targeth-ht261118-class3-water-r01-m0-12": "9826c0b9f0b45446d70bb7a79772c2ba9dc208270d9587d93fcbb5678e6241ca",
+    "targeth-ht261118-class3-water-r01-m0-13": "c37333de7e5bc8d38d84f562268489d06db2fdb2ee5d3a398eac136e341b2dbe",
+    "targeth-ht261118-class3-water-r01-m0-14": "64a88fb34ee5523c737aa1e5afd51071fb1b1dfc38a4a76081f71327f237e144",
+    "targeth-ht261118-class3-water-r01-m1-01": "1bb14ca4830685dc8a8418fd7d094a89d54e4340cc7cf2472514ae8464b42c86",
+    "targeth-ht261118-class3-water-r01-m1-02": "748dae187055bc36f7a653249b75b1490c55b7a83f4dad8ecdbd7d1f40fb5c20",
+    "targeth-ht261118-class3-water-r01-m1-03": "4674aede2e82348eb786f2d1d9782104452343f823eb697bfad4237c1cd1b5a6",
+    "targeth-ht261118-class3-water-r01-m1-04": "5698af954290b3ab5f4f933b0f2040eeb7d43eab3192ed38ff687f67c9b62ebd",
+    "targeth-ht261118-class3-water-r01-m1-05": "264072e4b8e0042e36b64f3a925ac34c368d5fd9c744bf820fe2f8dbadd230c8",
+    "targeth-ht261118-class3-water-r01-m1-06": "4704f1ec8070a1d9c12f145984a49f12e42f8f493a8629cadbee1098de8f7bdc",
+    "targeth-ht261118-class3-water-r01-m1-07": "38b2892dfe9c3cfc8a047d4c45f805e9f8ad673fa431214aeb0cfe53ed687d39",
+    "targeth-ht261118-class3-water-r01-m1-08": "ad49d07d385c9b85f854fed43a73601d7a58212437d1e042819cdc901a16eac9",
+    "targeth-ht261118-class3-water-r01-m1-09": "0a1f6d44033c8d499d58bed9715d8e970754f842a1b9b093ecd514f392fe7d62",
+    "targeth-ht261118-class3-water-r01-m1-10": "c89512c157f36e8e6641a3062b51e7516533bfebe32318dbd700a853df816a03",
+    "targeth-ht261118-class3-water-r01-m2-01": "dba2c742d68ccd5160ba45899e171e1ffb161b1cc736e334327495b604891668",
+    "targeth-ht261118-class3-water-r01-m2-02": "24caa07530d876d80d6dfcfa4d94ecf6481c12aa589ac6768b7d04bba31b6fd7",
+    "targeth-ht261118-class3-water-r01-m2-03": "5fae67d12680cd4ae991cd65d09ac03f9b798a6aabdcf01ccf037c2d2b397116",
+    "targeth-ht261118-class3-water-r01-m2-04": "6b37a358c0c2951c51490bb9481c8b142198d1fa60707520ae62488a4a536743",
+    "targeth-ht261118-class3-water-r01-m2-05": "8613318fabb2f1830c58c1b8c827c78753b25edacdb0a8b1be668362fa9d0877",
+    "targeth-ht261118-class3-water-r01-m2-06": "e91fe450697915f5f35bf8e513fa6439d302d780bdf82e23a594f442b5e669e1",
+    "targeth-ht261118-class3-water-r01-m2-07": "14535fda3ebdaa2ed885b3b915179421844a2a70a451c99cd2edda18c2eef4a6",
+    "targeth-ht261118-class3-water-r01-m2-08": "a572ff5d84a9e14e6a62700b9530c9c267d77d5376c4fe6a7d84aa079fe6da52",
+    "targeth-ht261118-class3-water-r01-m2-09": "1ff323a7d3ca8cd0ff5fe173066708444bf05f34965d8a889be5ad2facc54b6c",
+    "targeth-ht261118-class3-water-r01-m2-10": "17adbb77928ddfbc1c1eed565fa4f40deab9100047abfb9a88629b43ab152e48",
+    "targeth-ht261118-class3-water-r01-m2-11": "fea60a4e48709215714bd73f17a943e5898682dac8693269386f8a31d15fc532",
+    "targeth-ht261118-class3-water-r01-m2-12": "928b0cc9b29a807eae97fc9c4787475560512228dcdeade09a4216c1682ac599",
+    "targeth-ht261118-class3-water-r01-m2-13": "9f2a7b48cc1074b068fb570773ff8e84f4af85c5d1e6b2576f987d9f40cd5e56",
+    "targeth-ht261118-class3-water-r01-m2-14": "ecb7d1370f458d904ad51d4de72bc9125e47d3f9d64aab615b68c2b101ce8b99",
+    "targeth-ht261118-class3-water-r01-m2-15": "a1909f28b213a2a9b9aa0cc3438d2afae86ef4794f7c755473d97d5b31a68b3c",
+    "targeth-ht261118-class3-water-r01-m3-01": "fde884403ecbb4a1cb311bb7ac9db90df5f2931da016baf51be292ddf4f1f1f5",
+    "targeth-ht261118-class3-water-r01-m3-02": "12f08a4f3220bdd20428e4ae63cfb0d284f198f65d713050fca0fd1c83fe8636",
+    "targeth-ht261118-class3-water-r01-m3-03": "47003aa79bebc83498b3b41ef2f59790358eda77613d7b562ff4fa1c8be77f9d",
+    "targeth-ht261118-class3-water-r01-m3-04": "097d592d8b5b81a38eb80b4b8b89a9e3ab447934db0b1465e232e54fe8c1adf6",
+    "targeth-ht261118-class3-water-r01-m3-05": "5c94a6fff483da711258cd262a45c6d2779dd87ecdb1265bd5922eb8f0e3d583",
+    "targeth-ht261118-class3-water-r01-m3-06": "77b3f049104b369ec1841af5c96e2e687216c04fc755d2b402189b4320060f89",
+    "targeth-ht261118-class3-water-r01-m3-07": "c3b33402bb528625d2fd637391f03814f7b69f24081c09663ee7d2a4f862f040",
+    "targeth-ht261118-class3-water-r01-m3-08": "55fb295593ebad3b245b357b9f89e18bf6bd8703f7b01aa6c8e63e4f2124d03d",
+    "targeth-ht261118-class3-water-r01-m3-09": "8467e2eb11bdeb7ac51f3e829084ab0b183304d5248bc8a5f4a3d6defedf54e4",
+    "targeth-ht261118-class3-water-r01-m3-10": "e58cb2296825c855069d22096ff1370962652eaa8722d861146fcbbd48159bb9",
+    "targeth-ht261118-class3-water-r01-m3-11": "b9f79ce628329c9023be15241327a04011a359a72f51f01f97ee99b1fb006560",
+    "targeth-ht261118-class3-water-r01-m3-12": "f13dea1da0ea44f01fd5ae0d86254fa1e0d1140e8d4c368ca586319ffc38a9ef",
+    "targeth-ht261118-class3-water-r01-m3-14": "f77310621abb3cd100d6a8c3fb65d6f64230475bee51ce341d4f87c8d5491be2",
+    "targeth-ht261118-class3-water-r01-m3-15": "a2066c2f5203c95acf6ac800005bcc68aa576cd20f2748df0a8ddcababa4befd",
+    "targeth-ht261118-class3-water-r01-m4-01": "4031c3449e55c26bdf6bb13aba5f7a609d8770d573463a83f2bc9dd2a194afef",
+    "targeth-ht261118-class3-water-r01-m4-02": "28ef18c01bbb46ecde509171d0c57cd56b1fa5fb943cb6dad5da1c0343cef6dd",
+    "targeth-ht261118-class3-water-r01-m4-03": "080bf3bdac607322112bb51eaeefc6d21f2ff6360899d443a79198733518bc66",
+    "targeth-ht261118-class3-water-r01-m4-04": "e38b7a17b91f341d46a9a77dc2337bc82d5f14f2e395481c42cbe70f3d4a89ff",
+    "targeth-ht261118-class3-water-r01-m4-05": "37326165a0ca23f355338be414743451f8b781288ad76cd204d88ab1b04887b1",
+    "targeth-ht261118-class3-water-r01-m4-06": "deb789c1d06181be01eb8aebf099d6a8b113ba2807bbae949b9cd186d735fc14",
+    "targeth-ht261118-class3-water-r01-m4-07": "3de737fdffacd2bedc90b8df0bd2bbc88e34a7f217194b8bfc665d612c7cc4bc",
+    "targeth-ht261118-class3-water-r01-m4-08": "54823c54f0c782a0c6b097751abf7ce7d0311a9341433722ca139a64991a2e22",
+    "targeth-ht261118-class3-water-r01-m4-09": "be25baee70d7aa6971bf45a4a73c481906e3fcc7b325a910bbf1e6c7a33b8158",
+    "targeth-ht261118-class3-water-r01-m4-10": "2c0cdf30cd8bb127e7333b9fac7ce26930e8124af948bb76f64b7071570b1f16",
+    "targeth-ht261118-class3-water-r01-m4-11": "03c7d52816aa432a379688d6d2f0a2cd0a2ae84b68372a3ca127019690090c5f",
+    "targeth-ht261118-class3-water-r01-m4-12": "b5f11f3b612f082f7e84d4543cf59ccf842d75f80b36994f98de309260275deb",
+    "targeth-ht261118-class3-water-r01-m4-13": "b8a59850daa394b71ef61cb3120363fb09cc37ccdb4d45cec1544e8d22878b3a",
+    "targeth-ht261118-class3-water-r01-m4-14": "e9431723bffbf38369a1c8ffdcf4e211fbd0925de4e6ca76923985e81fe70b9e",
+    "targeth-ht261118-class3-water-r01-m4-15": "19cfe2309aa1d8082b62eaeffd9c6d527896d10e24889b4ec03de4e39ef5d133"
+   }
+  },
+  "registeredAt": "2026-11-19T02:41:10.393Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 8,
+     "f": 6
+    },
+    "dirs": {
+     "increase": 7,
+     "decrease": 7,
+     "unchanged": 0
+    },
+    "longest": 12,
+    "options": 44
+   },
+   "batchSha256": "3755431191f41e8d5a351e8e4478f9021fe90491f1c04cc12191e0fb60837e80"
+  }
+ }
+}

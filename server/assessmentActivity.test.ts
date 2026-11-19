@@ -117,6 +117,19 @@ describe("assessment activity immutable reducer", () => {
     expect(reduceAssessmentActivityBatch(done.next, items, [completed], [{ eventId: completed.eventId, payloadHash: assessmentActivityEventHash(completed) }]).duplicates).toBe(1);
   });
   it("abandoned cannot be reopened", () => expect(() => reduceAssessmentActivityBatch({ ...initial, status: "abandoned" }, items, [event()], [])).toThrow());
+  it("drains abandoned-page Back review without reopening or inventing a completion", () => {
+    const abandoned = { ...initial, status: "abandoned" as const };
+    const presented = event({ action: "item_presented", chosenAnswer: undefined, observedCorrect: undefined });
+    const explanation = event({ sequence: 3, action: "explanation_opened", chosenAnswer: undefined, observedCorrect: undefined });
+    const review = reduceAssessmentActivityBatch(abandoned, items, [presented, explanation], []);
+    expect(review.accepted).toEqual([presented, explanation]);
+    expect(review.next).toEqual({ status: "abandoned", lastSequence: 3, eventCount: 3 });
+    expect(reduceAssessmentActivityBatch(review.next, items, [presented, explanation], [presented, explanation].map(value => ({ eventId: value.eventId, payloadHash: assessmentActivityEventHash(value) }))).duplicates).toBe(2);
+    for (const action of ["answer_submitted", "retry", "completed", "abandoned"] as const) {
+      const value = action === "answer_submitted" ? event({ sequence: 4 }) : event({ sequence: 4, action, itemId: action === "retry" ? "q1" : undefined, chosenAnswer: undefined, observedCorrect: undefined });
+      expect(() => reduceAssessmentActivityBatch(review.next, items, [value], [])).toThrow("Invalid observed event transition");
+    }
+  });
   it("caps durable event count at 3000", () => expect(() => reduceAssessmentActivityBatch({ ...initial, lastSequence: 3000, eventCount: 3000 }, items, [event({ sequence: 3001 })], [])).toThrow());
   it("hashes exact optional boolean distinctions and ignores object key ordering", () => {
     const value = event();

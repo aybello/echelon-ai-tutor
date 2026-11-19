@@ -1,0 +1,594 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-wpi-class4-water-coll-r05",
+ "scope": "Owner-authorized AI-reviewed game activities: 10 items.",
+ "additions": [
+  {
+   "courseKey": "wpi-class4-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-coll-r05-m1-01",
+    "prompt": "Match each screwed or threaded joint characteristic to its piping application or limitation.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Pipe size range",
+      "right": "1/8 inch up to 8 inches for ferrous or nonferrous pipe"
+     },
+     {
+      "id": "p2",
+      "left": "Coupling threads",
+      "right": "Cut on the inside surface of most couplings"
+     },
+     {
+      "id": "p3",
+      "left": "Leakage integrity",
+      "right": "High at low pressure and temperature without vibration"
+     },
+     {
+      "id": "p4",
+      "left": "Galvanized pipe use",
+      "right": "Domestic water and drainage applications"
+     },
+     {
+      "id": "p5",
+      "left": "Maintenance advantage",
+      "right": "Easy disassembly and reassembly for process changes"
+     },
+     {
+      "id": "p6",
+      "left": "Service suitability",
+      "right": "Low-cost, noncritical systems like industrial cooling"
+     }
+    ],
+    "explanation": "Screwed joints suit smaller, low-pressure, noncritical lines where easy disassembly is helpful and vibration is absent."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:08:01.872068+00:00",
+    "notes": "Strict Hydrogen self-review of 10 speed-match items in targeth-wpi-class4-water-coll-r05 against supplied source pages and collision candidates; 10 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:08:47.056Z",
+    "payloadSha256": "76d52bebdf4dfe344833dd9bca084ca71692dd1d81e579bf2877833df66d5c3e",
+    "builderResultsSha256": "8fb44e5fe79f5ee83d1fd844148c6a2b7bdda4f4fc6e1d7fa68147507ee72344"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-coll-r05-m1-02",
+    "prompt": "Match each physical or hydraulic characteristic to its distinction between tubing and piping.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Tubing wall thickness",
+      "right": "Generally much thinner than piping with close tolerances"
+     },
+     {
+      "id": "p2",
+      "left": "Tubing diameter sizing",
+      "right": "Expressed in even inches or fractions of I.D. or O.D."
+     },
+     {
+      "id": "p3",
+      "left": "Tubing inner surface",
+      "right": "Smoother wall that reduces turbulent flow energy loss"
+     },
+     {
+      "id": "p4",
+      "left": "Threaded pipe wall",
+      "right": "Weakened wherever screw threads are cut into it"
+     },
+     {
+      "id": "p5",
+      "left": "Flexible metal tubing",
+      "right": "Absorbs vibration and shock on dynamic machinery"
+     },
+     {
+      "id": "p6",
+      "left": "Rigid metal piping",
+      "right": "Impractical on vibrating engines and air compressors"
+     }
+    ],
+    "explanation": "Tubing has thinner, smoother walls and resists dynamic vibration better than rigid, threaded iron piping."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:08:01.872068+00:00",
+    "notes": "Strict Hydrogen self-review of 10 speed-match items in targeth-wpi-class4-water-coll-r05 against supplied source pages and collision candidates; 10 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:08:47.056Z",
+    "payloadSha256": "25a7e3082097df5c99d5787b8ea027982aabf7ea76b69425e094a6e2127b4005",
+    "builderResultsSha256": "8fb44e5fe79f5ee83d1fd844148c6a2b7bdda4f4fc6e1d7fa68147507ee72344"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-coll-r05-m1-03",
+    "prompt": "Match each tubing-connection tool or material to its specific preparation or joining function.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Tube cutter",
+      "right": "Cuts metal or nonmetallic tubing to required length"
+     },
+     {
+      "id": "p2",
+      "left": "Burring tool",
+      "right": "Removes internal burrs after cutting tubing"
+     },
+     {
+      "id": "p3",
+      "left": "Soldering flux",
+      "right": "Prevents or inhibits oxide formation during heating"
+     },
+     {
+      "id": "p4",
+      "left": "Sleeve fitting",
+      "right": "Joins two tubing ends inserted from opposite sides"
+     },
+     {
+      "id": "p5",
+      "left": "Presetting tool",
+      "right": "Used to prepare flareless compression fittings"
+     },
+     {
+      "id": "p6",
+      "left": "Flaring tool",
+      "right": "Shapes tubing ends for flared compression connections"
+     }
+    ],
+    "explanation": "Proper tubing joints rely on clean cutting, deburring, fluxing, and matching compression or sleeve-soldering tools."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:08:01.872068+00:00",
+    "notes": "Strict Hydrogen self-review of 10 speed-match items in targeth-wpi-class4-water-coll-r05 against supplied source pages and collision candidates; 10 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:08:47.056Z",
+    "payloadSha256": "607ffd53832bedb126191bf15df79a01b21035b7912706249f0f2e3047eb8b58",
+    "builderResultsSha256": "8fb44e5fe79f5ee83d1fd844148c6a2b7bdda4f4fc6e1d7fa68147507ee72344"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-coll-r05-m1-04",
+    "prompt": "Match each capillary soldering step or indicator to its thermal or mechanical role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Initial heating target",
+      "right": "Tubing immediately adjacent to the fitting"
+     },
+     {
+      "id": "p2",
+      "left": "Secondary heating target",
+      "right": "Fitting body heated after the adjacent tubing"
+     },
+     {
+      "id": "p3",
+      "left": "Flux spreading",
+      "right": "Indicates the joint is ready for initial solder"
+     },
+     {
+      "id": "p4",
+      "left": "Tinning",
+      "right": "Adding solder so heat draws it into the gap"
+     },
+     {
+      "id": "p5",
+      "left": "Even heat application",
+      "right": "Ensures uniform capillary penetration around the tubing"
+     },
+     {
+      "id": "p6",
+      "left": "Continuous solder line",
+      "right": "Appears at the fitting edge when fully penetrated"
+     }
+    ],
+    "explanation": "Evenly heating the tubing then fitting draws solder by capillary action until a continuous ring forms."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:08:01.872068+00:00",
+    "notes": "Strict Hydrogen self-review of 10 speed-match items in targeth-wpi-class4-water-coll-r05 against supplied source pages and collision candidates; 10 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:08:47.056Z",
+    "payloadSha256": "9300b6d66c97ab63aeff7aa4dfed051e149aeb34106d97d7601644a8a569c7b5",
+    "builderResultsSha256": "8fb44e5fe79f5ee83d1fd844148c6a2b7bdda4f4fc6e1d7fa68147507ee72344"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-coll-r05-m1-05",
+    "prompt": "Match each tubing fabrication step or alloy type to its plant conveyance application.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "First extrusion die",
+      "right": "Produces larger tubing sizes and wall thicknesses"
+     },
+     {
+      "id": "p2",
+      "left": "Second drawing die",
+      "right": "Reworks extruded tubing for thinner walls and close tolerances"
+     },
+     {
+      "id": "p3",
+      "left": "Steel tubing",
+      "right": "Used in high-pressure hydraulic systems"
+     },
+     {
+      "id": "p4",
+      "left": "Stainless steel tubing",
+      "right": "Selected for many plant chemical systems"
+     },
+     {
+      "id": "p5",
+      "left": "Aluminum tubing",
+      "right": "Serves as raceways or containers for electrical wires"
+     },
+     {
+      "id": "p6",
+      "left": "Heavy-duty tubing",
+      "right": "Carries gas, oxygen, steam, and oil underground"
+     }
+    ],
+    "explanation": "Tubing is extruded and drawn to size, with alloys selected for hydraulic pressure, chemicals, or electrical raceways."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:08:01.872068+00:00",
+    "notes": "Strict Hydrogen self-review of 10 speed-match items in targeth-wpi-class4-water-coll-r05 against supplied source pages and collision candidates; 10 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:08:47.056Z",
+    "payloadSha256": "cfc4fad7972b0f3fc279c7c5dcec51369eadf11d39ccde956a62b0b70d7a989f",
+    "builderResultsSha256": "8fb44e5fe79f5ee83d1fd844148c6a2b7bdda4f4fc6e1d7fa68147507ee72344"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-coll-r05-m1-06",
+    "prompt": "Match each industrial hose layer or rating rule to its structural or safety function.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Working pressure limit",
+      "right": "Typically limited to 25 percent of burst pressure"
+     },
+     {
+      "id": "p2",
+      "left": "Inner tube or lining",
+      "right": "Rubber-type or synthetic plastic layer contacting fluid"
+     },
+     {
+      "id": "p3",
+      "left": "Braided carcass",
+      "right": "Structural layer surrounding the inner tube for strength"
+     },
+     {
+      "id": "p4",
+      "left": "Outer cover",
+      "right": "Protective exterior layer over the hose carcass"
+     },
+     {
+      "id": "p5",
+      "left": "Vertical braiding",
+      "right": "Reinforces the hose against specific pressure demands"
+     },
+     {
+      "id": "p6",
+      "left": "Standards and codes",
+      "right": "Safety measures specifying working pressures and sizes"
+     }
+    ],
+    "explanation": "Modern hoses combine an inner lining, braided carcass, and outer cover rated at one-fourth of burst pressure."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:08:01.872068+00:00",
+    "notes": "Strict Hydrogen self-review of 10 speed-match items in targeth-wpi-class4-water-coll-r05 against supplied source pages and collision candidates; 10 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:08:47.056Z",
+    "payloadSha256": "9b370dca625a71173f96a7e51f37267c2f6ca7f41330d6e6ca482bb0b14f471f",
+    "builderResultsSha256": "8fb44e5fe79f5ee83d1fd844148c6a2b7bdda4f4fc6e1d7fa68147507ee72344"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-coll-r05-m1-07",
+    "prompt": "Match each specialty hose material to its temperature, chemical, or collection-system duty.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Teflon hose",
+      "right": "Handles corrosive fluids from -55 C to 230 C"
+     },
+     {
+      "id": "p2",
+      "left": "Braided metal sheath",
+      "right": "Protects Teflon hose against external abrasion and pressure"
+     },
+     {
+      "id": "p3",
+      "left": "Small-diameter nylon hose",
+      "right": "Supplies compressed air to small pneumatic tools"
+     },
+     {
+      "id": "p4",
+      "left": "Neoprene-coated cotton duck",
+      "right": "Large manhole ventilation hose for light-duty use"
+     },
+     {
+      "id": "p5",
+      "left": "Neoprene-coated glass fabric",
+      "right": "Large ventilation hose for portable heaters and hot fumes"
+     },
+     {
+      "id": "p6",
+      "left": "Camel hose",
+      "right": "Flexible hose used to clean interceptors and pump excavations"
+     }
+    ],
+    "explanation": "Hose materials are matched to chemical resistance, temperature extremes, pneumatic air delivery, or manhole ventilation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:08:01.872068+00:00",
+    "notes": "Strict Hydrogen self-review of 10 speed-match items in targeth-wpi-class4-water-coll-r05 against supplied source pages and collision candidates; 10 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:08:47.056Z",
+    "payloadSha256": "6f01c336846cc80294e569d46d17a56a0679cfb13802a8dbfd80b393b05cbd6f",
+    "builderResultsSha256": "8fb44e5fe79f5ee83d1fd844148c6a2b7bdda4f4fc6e1d7fa68147507ee72344"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-coll-r05-m1-08",
+    "prompt": "Match each hose coupling type or rule to its operational characteristic.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Quick-disconnect coupling",
+      "right": "Permits rapid hose changes on compressed-air lines"
+     },
+     {
+      "id": "p2",
+      "left": "Self-closing connector",
+      "right": "Allows disconnection without first releasing line pressure"
+     },
+     {
+      "id": "p3",
+      "left": "Non-self-closing coupling",
+      "right": "Requires releasing line pressure before breaking connection"
+     },
+     {
+      "id": "p4",
+      "left": "Reusable coupling",
+      "right": "Can be detached and reinstalled on another hose section"
+     },
+     {
+      "id": "p5",
+      "left": "Permanent coupling",
+      "right": "Fixed to the hose end for the life of the assembly"
+     },
+     {
+      "id": "p6",
+      "left": "Chemical routing restriction",
+      "right": "Quick-connects avoided where highly corrosive materials flow"
+     }
+    ],
+    "explanation": "Hose couplings vary by reusability and quick-disconnect capability, with pressure release required unless self-closing."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:08:01.872068+00:00",
+    "notes": "Strict Hydrogen self-review of 10 speed-match items in targeth-wpi-class4-water-coll-r05 against supplied source pages and collision candidates; 10 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:08:47.056Z",
+    "payloadSha256": "dbd614ba92fb047c24a49801a687a9cc5d16a4bbbffaa543a96208492782a51e",
+    "builderResultsSha256": "8fb44e5fe79f5ee83d1fd844148c6a2b7bdda4f4fc6e1d7fa68147507ee72344"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-coll-r05-m1-09",
+    "prompt": "Match each maintenance or conveyance task to why flexible hose outperforms rigid piping.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Jackhammer air supply",
+      "right": "Hose dampens intense tool vibration that breaks rigid pipe"
+     },
+     {
+      "id": "p2",
+      "left": "Forklift hydraulic line",
+      "right": "Hose bends with moving mast where rigid pipe fails"
+     },
+     {
+      "id": "p3",
+      "left": "Interceptor cleaning",
+      "right": "Flexible camel hose navigates bends in collection lines"
+     },
+     {
+      "id": "p4",
+      "left": "Excavation dewatering",
+      "right": "Hose easily reaches into broken-line repair trenches"
+     },
+     {
+      "id": "p5",
+      "left": "Rigid piping limitation",
+      "right": "Cannot withstand dynamic vibration or tight bending"
+     },
+     {
+      "id": "p6",
+      "left": "Tubing vibration limit",
+      "right": "Less flexible than hose for high-amplitude tool shock"
+     }
+    ],
+    "explanation": "Industrial hose absorbs vibration and bends around obstacles where rigid piping or tubing would fail."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:08:01.872068+00:00",
+    "notes": "Strict Hydrogen self-review of 10 speed-match items in targeth-wpi-class4-water-coll-r05 against supplied source pages and collision candidates; 10 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:08:47.056Z",
+    "payloadSha256": "0eb9d8862b9a1ce6dc98799b4467f8014e7a42a6354fad471c52c5e835e1d69a",
+    "builderResultsSha256": "8fb44e5fe79f5ee83d1fd844148c6a2b7bdda4f4fc6e1d7fa68147507ee72344"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-coll-r05-m1-10",
+    "prompt": "Match each conveyance classification or system complexity term to its engineering distinction.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "End-use classification",
+      "right": "Determines whether a tubular product is pipe or tube"
+     },
+     {
+      "id": "p2",
+      "left": "Simple conveyance system",
+      "right": "Consists of a few components like valves and fittings"
+     },
+     {
+      "id": "p3",
+      "left": "Complex chemical system",
+      "right": "Uses varied components to measure, control, and condition"
+     },
+     {
+      "id": "p4",
+      "left": "Piping wall thickness",
+      "right": "Generally thicker than tubing for the same nominal size"
+     },
+     {
+      "id": "p5",
+      "left": "Tubing wall tolerance",
+      "right": "Held very closely because walls are thinner"
+     },
+     {
+      "id": "p6",
+      "left": "Fittings and valves",
+      "right": "Components that control, direct, and condition conveyed fluids"
+     }
+    ],
+    "explanation": "End use distinguishes pipe from tube, while system complexity determines the required valves, fittings, and conditioning devices."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:08:01.872068+00:00",
+    "notes": "Strict Hydrogen self-review of 10 speed-match items in targeth-wpi-class4-water-coll-r05 against supplied source pages and collision candidates; 10 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:08:47.056Z",
+    "payloadSha256": "1390c46420cf27955a2b0376ca5b1b8b55fca371d90496724d2b9a594381b0c5",
+    "builderResultsSha256": "8fb44e5fe79f5ee83d1fd844148c6a2b7bdda4f4fc6e1d7fa68147507ee72344"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T04:08:01.872068+00:00",
+   "attestation": "Strict Hydrogen self-review of 10 speed-match items in targeth-wpi-class4-water-coll-r05 against supplied source pages and collision candidates; 10 accepted, 0 rejected.",
+   "payloadSha256": {
+    "targeth-ht261118-wpi-class4-water-coll-r05-m1-01": "76d52bebdf4dfe344833dd9bca084ca71692dd1d81e579bf2877833df66d5c3e",
+    "targeth-ht261118-wpi-class4-water-coll-r05-m1-02": "25a7e3082097df5c99d5787b8ea027982aabf7ea76b69425e094a6e2127b4005",
+    "targeth-ht261118-wpi-class4-water-coll-r05-m1-03": "607ffd53832bedb126191bf15df79a01b21035b7912706249f0f2e3047eb8b58",
+    "targeth-ht261118-wpi-class4-water-coll-r05-m1-04": "9300b6d66c97ab63aeff7aa4dfed051e149aeb34106d97d7601644a8a569c7b5",
+    "targeth-ht261118-wpi-class4-water-coll-r05-m1-05": "cfc4fad7972b0f3fc279c7c5dcec51369eadf11d39ccde956a62b0b70d7a989f",
+    "targeth-ht261118-wpi-class4-water-coll-r05-m1-06": "9b370dca625a71173f96a7e51f37267c2f6ca7f41330d6e6ca482bb0b14f471f",
+    "targeth-ht261118-wpi-class4-water-coll-r05-m1-07": "6f01c336846cc80294e569d46d17a56a0679cfb13802a8dbfd80b393b05cbd6f",
+    "targeth-ht261118-wpi-class4-water-coll-r05-m1-08": "dbd614ba92fb047c24a49801a687a9cc5d16a4bbbffaa543a96208492782a51e",
+    "targeth-ht261118-wpi-class4-water-coll-r05-m1-09": "0eb9d8862b9a1ce6dc98799b4467f8014e7a42a6354fad471c52c5e835e1d69a",
+    "targeth-ht261118-wpi-class4-water-coll-r05-m1-10": "1390c46420cf27955a2b0376ca5b1b8b55fca371d90496724d2b9a594381b0c5"
+   }
+  },
+  "registeredAt": "2026-11-19T04:08:47.056Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 0,
+     "f": 0
+    },
+    "dirs": {
+     "increase": 0,
+     "decrease": 0,
+     "unchanged": 0
+    },
+    "longest": 0,
+    "options": 0
+   },
+   "batchSha256": "eb0bb0a12e4f3021f372c89f33f4f3c315049b4ba16805e685390a93d5c1ffa8"
+  }
+ }
+}

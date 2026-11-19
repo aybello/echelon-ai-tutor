@@ -1,0 +1,539 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-class4-ww-r03",
+ "scope": "Owner-authorized AI-reviewed game activities: 9 items.",
+ "additions": [
+  {
+   "courseKey": "class4-ww",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class4-ww-r03-m1-01",
+    "prompt": "Match each Bucklin Point DO/blower control feature to its operational mechanism.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Direct air flow control",
+      "right": "Modifies drop leg air flow and blower flow as DO varies"
+     },
+     {
+      "id": "p2",
+      "left": "Most open valve logic",
+      "right": "Keeps at least one valve at maximum position"
+     },
+     {
+      "id": "p3",
+      "left": "Eliminating pressure setpoint",
+      "right": "Minimizes system pressure with less control complexity"
+     },
+     {
+      "id": "p4",
+      "left": "Consistent IMLR DO control",
+      "right": "Prevents inhibition of denitrification in the anoxic zone"
+     },
+     {
+      "id": "p5",
+      "left": "Reduced DO excursions",
+      "right": "Holds dissolved oxygen within 0.50 ppm of setpoint"
+     },
+     {
+      "id": "p6",
+      "left": "Automated aeration response",
+      "right": "Removes need for manual operator control to meet compliance"
+     }
+    ],
+    "explanation": "Direct airflow control with most-open-valve logic stabilizes dissolved oxygen, lowers blower pressure, and protects anoxic denitrification."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:29:47.284718+00:00",
+    "notes": "Strict AI self-review of 9 speed-match items for class4-ww (targeth-class4-ww-r03); all 9 items accepted after verifying factual support against supplied source pages and novelty against closest collision candidates.",
+    "registeredAt": "2026-11-19T03:30:12.502Z",
+    "payloadSha256": "ca06321d0094b1dff67f9f1d1e3ac2dbf0bede635625d86cafd4033518a2641f",
+    "builderResultsSha256": "5a8eb9dfc7ddd11ac273056b52931f863bcc3b20fc1940f8ad0a351915fd2406"
+   }
+  },
+  {
+   "courseKey": "class4-ww",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class4-ww-r03-m1-02",
+    "prompt": "Match each activated sludge solids control adjustment to its process relationship.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Decreasing waste sludge rate",
+      "right": "Increases mixed liquor total suspended solids"
+     },
+     {
+      "id": "p2",
+      "left": "Increasing MCRT",
+      "right": "Raises mixed liquor total suspended solids concentration"
+     },
+     {
+      "id": "p3",
+      "left": "Reducing aeration tanks in service",
+      "right": "Requires decreasing MCRT to hold MLTSS steady"
+     },
+     {
+      "id": "p4",
+      "left": "Determining MLSS concentration",
+      "right": "Required before calculating sludge age or SVI"
+     },
+     {
+      "id": "p5",
+      "left": "Gould sludge age assumption",
+      "right": "Treats influent solids as the source of aeration MLTSS"
+     },
+     {
+      "id": "p6",
+      "left": "Continuous RAS return",
+      "right": "Maintains active biomass in the aeration basin"
+     }
+    ],
+    "explanation": "MLTSS, MCRT, and waste rates are linked; changing tankage in service requires adjusting MCRT to keep solids concentrations steady."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:29:47.284718+00:00",
+    "notes": "Strict AI self-review of 9 speed-match items for class4-ww (targeth-class4-ww-r03); all 9 items accepted after verifying factual support against supplied source pages and novelty against closest collision candidates.",
+    "registeredAt": "2026-11-19T03:30:12.502Z",
+    "payloadSha256": "190d51699fdc1dc573ea9698acb529960e597db8832df3f9c47527177dfafb82",
+    "builderResultsSha256": "5a8eb9dfc7ddd11ac273056b52931f863bcc3b20fc1940f8ad0a351915fd2406"
+   }
+  },
+  {
+   "courseKey": "class4-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-ww-r03-m1-03",
+    "prompt": "Match each aeration tank visual or odor indicator to its process meaning.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Light chocolate brown color",
+      "right": "Well-operated activated sludge process"
+     },
+     {
+      "id": "p2",
+      "left": "Dark brown with earthy odor",
+      "right": "Old sludge with high solids concentration"
+     },
+     {
+      "id": "p3",
+      "left": "Black color with rotten egg odor",
+      "right": "Septic conditions from low dissolved oxygen"
+     },
+     {
+      "id": "p4",
+      "left": "Uniform clarifier flow pattern",
+      "right": "Normal hydraulic distribution in final settling"
+     },
+     {
+      "id": "p5",
+      "left": "Very clear clarifier effluent",
+      "right": "Low solids carryover from proper settling"
+     },
+     {
+      "id": "p6",
+      "left": "Subjective visual observations",
+      "right": "Require consistent training for reliable recording"
+     }
+    ],
+    "explanation": "Color, odor, and clarity provide rapid qualitative clues about sludge age, oxygen supply, and clarifier performance."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:29:47.284718+00:00",
+    "notes": "Strict AI self-review of 9 speed-match items for class4-ww (targeth-class4-ww-r03); all 9 items accepted after verifying factual support against supplied source pages and novelty against closest collision candidates.",
+    "registeredAt": "2026-11-19T03:30:12.502Z",
+    "payloadSha256": "e2e15233c26d2d09b4b32d3eb61bf83bd0b5607feeaf4e9209b6e17a8683345e",
+    "builderResultsSha256": "5a8eb9dfc7ddd11ac273056b52931f863bcc3b20fc1940f8ad0a351915fd2406"
+   }
+  },
+  {
+   "courseKey": "class4-ww",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class4-ww-r03-m1-04",
+    "prompt": "Match each aeration influent or diagnostic test finding to its process implication.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Influent pH above 9.0",
+      "right": "Indicates potential toxicity from industrial waste"
+     },
+     {
+      "id": "p2",
+      "left": "Influent pH below 6.5",
+      "right": "Signals loss of flocculating organisms or acid storm flow"
+     },
+     {
+      "id": "p3",
+      "left": "Lower effluent pH",
+      "right": "Can result from alkalinity consumption during nitrification"
+     },
+     {
+      "id": "p4",
+      "left": "Rising solids under 1 hour",
+      "right": "Indicates a settling or process problem"
+     },
+     {
+      "id": "p5",
+      "left": "Diluted settleability compaction",
+      "right": "Distinguishes old sludge from bulking sludge"
+     },
+     {
+      "id": "p6",
+      "left": "Centrifuge solids test",
+      "right": "Gives a quick aerator solids check affected by sludge quality"
+     }
+    ],
+    "explanation": "pH shifts, rapid rising solids, and diluted settleability tests help separate toxicity, nitrification alkalinity loss, old sludge, and bulking."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:29:47.284718+00:00",
+    "notes": "Strict AI self-review of 9 speed-match items for class4-ww (targeth-class4-ww-r03); all 9 items accepted after verifying factual support against supplied source pages and novelty against closest collision candidates.",
+    "registeredAt": "2026-11-19T03:30:12.502Z",
+    "payloadSha256": "2c4f4514f34b80cd052052dcc2822eae6b058ab274fbb40cb078a5ad6674a664",
+    "builderResultsSha256": "5a8eb9dfc7ddd11ac273056b52931f863bcc3b20fc1940f8ad0a351915fd2406"
+   }
+  },
+  {
+   "courseKey": "class4-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-ww-r03-m1-05",
+    "prompt": "Match each activated sludge microorganism group to its ecological role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Protozoa as secondary feeders",
+      "right": "Crop dispersed bacteria to produce clear effluent"
+     },
+     {
+      "id": "p2",
+      "left": "Free-swimming ciliates",
+      "right": "Decline as mature floc growth retards their movement"
+     },
+     {
+      "id": "p3",
+      "left": "Crawlers and stalked ciliates",
+      "right": "Add weight to floc particles to aid settling removal"
+     },
+     {
+      "id": "p4",
+      "left": "Rotifers",
+      "right": "Higher life forms associated with clean, unpolluted waters"
+     },
+     {
+      "id": "p5",
+      "left": "Balanced ciliates and rotifers",
+      "right": "Indicate a stable, properly settling mixed liquor"
+     },
+     {
+      "id": "p6",
+      "left": "Saprobity system classification",
+      "right": "Relates aeration basin phases to stream self-purification"
+     }
+    ],
+    "explanation": "Microbial succession from free swimmers to stalked ciliates and rotifers reflects floc maturity, oxygen availability, and effluent clarity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:29:47.284718+00:00",
+    "notes": "Strict AI self-review of 9 speed-match items for class4-ww (targeth-class4-ww-r03); all 9 items accepted after verifying factual support against supplied source pages and novelty against closest collision candidates.",
+    "registeredAt": "2026-11-19T03:30:12.502Z",
+    "payloadSha256": "e20df567bc2d09fb190342b5dfab6fc10792bbfc7532dde3306bff5f7cc08147",
+    "builderResultsSha256": "5a8eb9dfc7ddd11ac273056b52931f863bcc3b20fc1940f8ad0a351915fd2406"
+   }
+  },
+  {
+   "courseKey": "class4-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-ww-r03-m1-06",
+    "prompt": "Match each settleability or sludge blanket observation to its process condition.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Crisp edge with clear supernatant",
+      "right": "Normal operation with blanket settling"
+     },
+     {
+      "id": "p2",
+      "left": "Discrete particles with fuzzy edge",
+      "right": "Old or overoxidized activated sludge"
+     },
+     {
+      "id": "p3",
+      "left": "Rising blanket depth at steady load",
+      "right": "Reflects increased system solids or lower return rate"
+     },
+     {
+      "id": "p4",
+      "left": "Sludge blanket trend",
+      "right": "Indicates sludge quality over time in the final clarifier"
+     },
+     {
+      "id": "p5",
+      "left": "Daily RAS flow testing",
+      "right": "Required for mass balance and blanket control"
+     },
+     {
+      "id": "p6",
+      "left": "Constant MLVSS wasting control",
+      "right": "Maintains a target volatile solids concentration in aeration"
+     }
+    ],
+    "explanation": "Settleability interface sharpness and clarifier blanket trends guide return and waste activated sludge adjustments."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:29:47.284718+00:00",
+    "notes": "Strict AI self-review of 9 speed-match items for class4-ww (targeth-class4-ww-r03); all 9 items accepted after verifying factual support against supplied source pages and novelty against closest collision candidates.",
+    "registeredAt": "2026-11-19T03:30:12.502Z",
+    "payloadSha256": "0c75d3d5669fbdc6214fa0c2c5e79459ffd859692fe6a181ffce81aa08803064",
+    "builderResultsSha256": "5a8eb9dfc7ddd11ac273056b52931f863bcc3b20fc1940f8ad0a351915fd2406"
+   }
+  },
+  {
+   "courseKey": "class4-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-ww-r03-m1-07",
+    "prompt": "Match each aeration rate condition to its direct operational consequence.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Excessive aeration shear",
+      "right": "Causes breakup of activated sludge floc"
+     },
+     {
+      "id": "p2",
+      "left": "Over-aeration energy use",
+      "right": "Wastes power and increases operating cost"
+     },
+     {
+      "id": "p3",
+      "left": "High aeration rising solids",
+      "right": "Lifts sludge solids in the tank"
+     },
+     {
+      "id": "p4",
+      "left": "Insufficient aeration DO",
+      "right": "Creates septic conditions in the aeration tank"
+     },
+     {
+      "id": "p5",
+      "left": "Low aeration nitrification",
+      "right": "Causes loss of ammonia oxidation"
+     },
+     {
+      "id": "p6",
+      "left": "Inadequate oxygen supply",
+      "right": "Results in poor overall biological performance"
+     }
+    ],
+    "explanation": "Both over-aeration and under-aeration degrade performance, either by shearing floc and wasting energy or by causing septicity and lost nitrification."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:29:47.284718+00:00",
+    "notes": "Strict AI self-review of 9 speed-match items for class4-ww (targeth-class4-ww-r03); all 9 items accepted after verifying factual support against supplied source pages and novelty against closest collision candidates.",
+    "registeredAt": "2026-11-19T03:30:12.502Z",
+    "payloadSha256": "59b94d6b50a858fd9deb5d1628d91356cc59ac91d99eaeb1a5489dd08969a0f8",
+    "builderResultsSha256": "5a8eb9dfc7ddd11ac273056b52931f863bcc3b20fc1940f8ad0a351915fd2406"
+   }
+  },
+  {
+   "courseKey": "class4-ww",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class4-ww-r03-m1-08",
+    "prompt": "Match each SVI trend and sludge behavior to its corresponding process adjustment.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Increasing SVI value",
+      "right": "Indicates less dense, younger, or bulking sludge"
+     },
+     {
+      "id": "p2",
+      "left": "Slower settling and less compaction",
+      "right": "Calls for decreasing waste and increasing return rate"
+     },
+     {
+      "id": "p3",
+      "left": "Decreasing SVI value",
+      "right": "Indicates denser, older sludge that settles faster"
+     },
+     {
+      "id": "p4",
+      "left": "Faster settling and more compaction",
+      "right": "Calls for increasing waste and decreasing return rate"
+     },
+     {
+      "id": "p5",
+      "left": "Constant SVI value",
+      "right": "Indicates stable sludge requiring no process changes"
+     },
+     {
+      "id": "p6",
+      "left": "SSV60 notation",
+      "right": "Reports settled sludge volume measured at 60 minutes"
+     }
+    ],
+    "explanation": "SVI trends track sludge density and settling speed, guiding whether to raise or lower wasting and return rates."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:29:47.284718+00:00",
+    "notes": "Strict AI self-review of 9 speed-match items for class4-ww (targeth-class4-ww-r03); all 9 items accepted after verifying factual support against supplied source pages and novelty against closest collision candidates.",
+    "registeredAt": "2026-11-19T03:30:12.502Z",
+    "payloadSha256": "03507a17ee4a26d4403e497f58e91ce4bb4f74f7857b23afb8ff01c780087e60",
+    "builderResultsSha256": "5a8eb9dfc7ddd11ac273056b52931f863bcc3b20fc1940f8ad0a351915fd2406"
+   }
+  },
+  {
+   "courseKey": "class4-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-ww-r03-m1-10",
+    "prompt": "Match each activated sludge process condition to its solids or testing implication.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Settled sludge concentration",
+      "right": "Settled sludge volume in mL divided by sample volume in L"
+     },
+     {
+      "id": "p2",
+      "left": "Aeration hydraulic overload",
+      "right": "Drives solids loss from the secondary system"
+     },
+     {
+      "id": "p3",
+      "left": "Low aerator MLSS levels",
+      "right": "Contributes to poor treatment and solids instability"
+     },
+     {
+      "id": "p4",
+      "left": "Organic overloading of aeration",
+      "right": "Strains oxygen supply and solids separation"
+     },
+     {
+      "id": "p5",
+      "left": "Excessive sludge blanket depth",
+      "right": "Causes solids washout over the clarifier weir"
+     },
+     {
+      "id": "p6",
+      "left": "Daily aeration tank observation",
+      "right": "Tracks foam, mixing uniformity, and mixed liquor color"
+     }
+    ],
+    "explanation": "Hydraulic and organic overloads, low MLSS, and deep blankets destabilize solids retention, making routine settleability and visual checks essential."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:29:47.284718+00:00",
+    "notes": "Strict AI self-review of 9 speed-match items for class4-ww (targeth-class4-ww-r03); all 9 items accepted after verifying factual support against supplied source pages and novelty against closest collision candidates.",
+    "registeredAt": "2026-11-19T03:30:12.502Z",
+    "payloadSha256": "564ead677037452cb0a964ab9a13d13f598ea9021aaac05d3d3994ab27c6b850",
+    "builderResultsSha256": "5a8eb9dfc7ddd11ac273056b52931f863bcc3b20fc1940f8ad0a351915fd2406"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T03:29:47.284718+00:00",
+   "attestation": "Strict AI self-review of 9 speed-match items for class4-ww (targeth-class4-ww-r03); all 9 items accepted after verifying factual support against supplied source pages and novelty against closest collision candidates.",
+   "payloadSha256": {
+    "targeth-ht261118-class4-ww-r03-m1-01": "ca06321d0094b1dff67f9f1d1e3ac2dbf0bede635625d86cafd4033518a2641f",
+    "targeth-ht261118-class4-ww-r03-m1-02": "190d51699fdc1dc573ea9698acb529960e597db8832df3f9c47527177dfafb82",
+    "targeth-ht261118-class4-ww-r03-m1-03": "e2e15233c26d2d09b4b32d3eb61bf83bd0b5607feeaf4e9209b6e17a8683345e",
+    "targeth-ht261118-class4-ww-r03-m1-04": "2c4f4514f34b80cd052052dcc2822eae6b058ab274fbb40cb078a5ad6674a664",
+    "targeth-ht261118-class4-ww-r03-m1-05": "e20df567bc2d09fb190342b5dfab6fc10792bbfc7532dde3306bff5f7cc08147",
+    "targeth-ht261118-class4-ww-r03-m1-06": "0c75d3d5669fbdc6214fa0c2c5e79459ffd859692fe6a181ffce81aa08803064",
+    "targeth-ht261118-class4-ww-r03-m1-07": "59b94d6b50a858fd9deb5d1628d91356cc59ac91d99eaeb1a5489dd08969a0f8",
+    "targeth-ht261118-class4-ww-r03-m1-08": "03507a17ee4a26d4403e497f58e91ce4bb4f74f7857b23afb8ff01c780087e60",
+    "targeth-ht261118-class4-ww-r03-m1-10": "564ead677037452cb0a964ab9a13d13f598ea9021aaac05d3d3994ab27c6b850"
+   }
+  },
+  "registeredAt": "2026-11-19T03:30:12.502Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 0,
+     "f": 0
+    },
+    "dirs": {
+     "increase": 0,
+     "decrease": 0,
+     "unchanged": 0
+    },
+    "longest": 0,
+    "options": 0
+   },
+   "batchSha256": "e8b9ceb5fbb04c116b70baaff9613835bde9e2060eb142d43d79c242b8fe396b"
+  }
+ }
+}

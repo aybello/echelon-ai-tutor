@@ -1,0 +1,2430 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-wpi-class3-water-dist-r01",
+ "scope": "Owner-authorized AI-reviewed game activities: 69 items.",
+ "additions": [
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m0-01",
+    "prompt": "In water conveyance systems, flanged joints are typically avoided for buried pipelines because they lack the flexibility to accommodate ground movement.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Flanged joints are rigid and normally reserved for exposed locations such as treatment plants and pumping stations."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "10f5ab7f04e813d27608ef303e41a1d9ccf94ba354ca07db1bdbc42928ebf83c",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m0-02",
+    "prompt": "During soldering or brazing of metallic pipe joints, the parent metal melts and blends together with the filler alloy.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "In brazing and soldering, the parent metal does not melt; capillary action draws the molten filler into the joint."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "3e26bbf5902fd1db89ffdf66dcbafee9cb2d3672dc44f64e1582e440d48b3678",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m0-03",
+    "prompt": "Vitrified clay pipe is manufactured with a kiln-treated glazed surface that resists corrosion in nonpressurized gravity applications.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Kiln firing produces a glass-like, watertight surface that makes vitrified clay highly corrosion resistant for gravity lines."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "32ecf730dd41d2e65efcc29d54db44eec4af0e4bbd336f6a663f51545137338c",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m0-04",
+    "prompt": "Unglazed clay pipe can be buried directly in wet, contaminated soil without protective measures because its porous wall resists groundwater.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Unlike vitrified clay, unglazed clay pipe lacks a glazed barrier and requires protection against soil contaminants and ground moisture."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "5614df57f1b26ecae8a5aefee139430d21283fab2605f21c726f34528449cb0c",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m0-05",
+    "prompt": "The structural strength of thermoplastic PVC piping decreases as the temperature of the conveyed fluid rises.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "PVC is a thermoplastic with a limited temperature range, and its mechanical strength drops as fluid temperature increases."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "4d80249916bc49aeb629659d4904fc2e75cf744adbc4e6a0fac18cb0e4994f36",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m0-06",
+    "prompt": "In a piping system, a double-line diagram uses simple schematic symbols rather than a pictorial view of pipe walls and joints.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "A single-line diagram uses schematic symbols, whereas a double-line diagram provides a pictorial view of pipes, joints, and valves."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "fbfbda1956b96eda098ef53ac20f4e362e1022de7f03cac430cb6bc1b479603f",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m0-07",
+    "prompt": "Gauge pressure measures the amount by which total absolute pressure exceeds the surrounding ambient atmospheric pressure.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Gauge pressure is the pressure reading above ambient atmospheric pressure."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "204ff819a50c67b080115379ab35f9cef558d18268fddcf8ee1fd4ebc5d90cd8",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m0-08",
+    "prompt": "Backsiphonage occurs when downstream nonpotable pressure rises above the potable distribution system pressure.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Backsiphonage occurs when distribution system pressure drops below atmospheric pressure, creating a partial vacuum that draws contamination in."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "a7405cc58793028cddc8e158bb0e933ea50bc1eab9581864436673d123c6f9aa",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m0-09",
+    "prompt": "In a properly welded metallic pipe joint, the finished weld is as strong as the parent pipe wall itself.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Welding melts and blends the metal sections into one continuous piece with strength matching the parent pipe."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "486e5b0e5b834d4b1a49be49a2ef70e3a03f7bf1a59582b77a207d7618de9e9e",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m0-10",
+    "prompt": "Undamaged asbestos-cement pipe readily releases friable airborne fibers when touched by hand while dry.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Asbestos in undamaged A-C pipe is nonfriable; fibers are released when the matrix is cut, ground, or sanded."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "e924065976bac85e23708a3b4f44600ab1ccdde02f564c32b20131c200498057",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m0-12",
+    "prompt": "In pipe conveyance terminology, the term nonferrous describes cast-iron alloys that contain high amounts of carbon and silicon.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Nonferrous refers to materials that do not contain iron, whereas cast iron is a high carbon-silicon-iron alloy."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "6621f77c08a0a61fd1d21f91b59d6a209265022b552c673113999a27e02bdd45",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m0-13",
+    "prompt": "Thermal insulation on a cold-water pipe reduces heat transfer from warmer surrounding air into the conveyed water.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Heat naturally moves from warmer to cooler surfaces, so insulation helps keep cold conveyed fluid cold."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "74c5b6366f7b5e4e301b128fef032f5e8abacf54902844cb68903f4eff7ee3d8",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m0-14",
+    "prompt": "Calcium carbonate scale in hypochlorite dilution lines forms fastest in calm, laminar straight pipe runs rather than turbulent valves.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Calcium carbonate scale deposition is greatest in areas of turbulence such as pumps and valves."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "c4e56738e2f3718698ae003606f2921dfa6b15459dc1f18e277d0ae4be8c0857",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m0-15",
+    "prompt": "Most valves take their names from the internal element that controls the passageway, with exceptions such as check and relief valves.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Valves are generally named for their internal control element, except functional types like check, relief, and reducing valves."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "60aad923fea700fa5161a1e6fea638b31a7a6f7f35b42359658ef12aa82dff82",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m1-01",
+    "prompt": "Match each piping glossary term to its physical or mechanical definition.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Bourdon tube",
+      "right": "Semicircular elliptical-section tube that senses pressure"
+     },
+     {
+      "id": "p2",
+      "left": "Bellows gauge",
+      "right": "Flexible accordion-like element used to measure pressure"
+     },
+     {
+      "id": "p3",
+      "left": "Carcass",
+      "right": "Reinforcement layers between a hose's inner tube and outer cover"
+     },
+     {
+      "id": "p4",
+      "left": "Mandrel",
+      "right": "Central spindle around which material is shaped"
+     },
+     {
+      "id": "p5",
+      "left": "Ply",
+      "right": "One of several thin sheets or layers of material"
+     },
+     {
+      "id": "p6",
+      "left": "Neoprene",
+      "right": "Synthetic material resistant to oil, weathering, and chemicals"
+     }
+    ],
+    "explanation": "Each component or material serves a distinct mechanical sensing, structural, or protective role in piping."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "078fc5f90e0314c234af44685934c95ac3661919e3ebc24a65a703590138ea9e",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m1-02",
+    "prompt": "Match each metallic joining or material term to its metallurgical behavior.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Welding",
+      "right": "Melts and blends parent metal sections into one piece"
+     },
+     {
+      "id": "p2",
+      "left": "Brazing",
+      "right": "Joins metals with nonferrous alloy without melting parent metal"
+     },
+     {
+      "id": "p3",
+      "left": "Capillary action",
+      "right": "Draws molten filler into a clean, fluxed hot joint"
+     },
+     {
+      "id": "p4",
+      "left": "Flux",
+      "right": "Coating that prevents oxides from forming during heating"
+     },
+     {
+      "id": "p5",
+      "left": "Nonferrous",
+      "right": "Metal or alloy that contains no iron"
+     },
+     {
+      "id": "p6",
+      "left": "Bimetallic",
+      "right": "Component constructed from two different types of metal"
+     }
+    ],
+    "explanation": "Joining methods differ in whether parent metal melts and how filler alloys bond."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "c3d45933ca4639e6c64bfacc75dd0abd8a5caa3d7ef38ba5e7eecd4c77b23e7f",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m1-03",
+    "prompt": "Match each nonmetallic pipe material to its structural or chemical characteristic.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Vitrified clay",
+      "right": "Kiln-fired glazed surface that resists corrosion in gravity lines"
+     },
+     {
+      "id": "p2",
+      "left": "Unglazed clay",
+      "right": "Nonglassy clay requiring protection from soil moisture"
+     },
+     {
+      "id": "p3",
+      "left": "Prestressed concrete",
+      "right": "Concrete compressed by tensioned wire for high pressure"
+     },
+     {
+      "id": "p4",
+      "left": "Asbestos-cement",
+      "right": "Nonfriable matrix when intact that releases fibers if cut"
+     },
+     {
+      "id": "p5",
+      "left": "Extruded PVC",
+      "right": "Inert thermoplastic limited to lower temperatures and pressures"
+     },
+     {
+      "id": "p6",
+      "left": "Reinforced concrete",
+      "right": "Concrete strengthened with embedded steel rods or bars"
+     }
+    ],
+    "explanation": "Nonmetallic pipes vary widely in pressure rating, corrosion resistance, and handling behavior."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "d24b2ce8887f53a909df7ed404b89ca72f60b11f6752393e31e5a495d062a047",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m1-04",
+    "prompt": "Match each fluid or hydraulic property to its scientific definition.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Fluid",
+      "right": "Any liquid or gas substance that flows"
+     },
+     {
+      "id": "p2",
+      "left": "Viscosity",
+      "right": "Resistance of a liquid to flowing"
+     },
+     {
+      "id": "p3",
+      "left": "Laminar flow",
+      "right": "Fluid movement arranged in thin, smooth layers"
+     },
+     {
+      "id": "p4",
+      "left": "Gauge pressure",
+      "right": "Pressure exceeding ambient atmospheric pressure"
+     },
+     {
+      "id": "p5",
+      "left": "Water hammer",
+      "right": "Concussion against pipe walls from sudden flow stoppage"
+     },
+     {
+      "id": "p6",
+      "left": "Backsiphonage",
+      "right": "Reverse flow driven by subatmospheric supply pressure"
+     }
+    ],
+    "explanation": "Fluid properties and pressure states govern how water behaves inside conveyance mains."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "2b711b365f88d4c7d14a6515944f02dfeb52e287a15ac6e81d843ff2f2bd049a",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m1-05",
+    "prompt": "Match each valve type or naming rule to its mechanical description.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Butterfly valve",
+      "right": "Rotating disk aligns parallel to pipe axis when open"
+     },
+     {
+      "id": "p2",
+      "left": "Globe valve",
+      "right": "Round ball-like shell housing a horizontal disk"
+     },
+     {
+      "id": "p3",
+      "left": "Check valve",
+      "right": "Opens with forward flow and closes on flow reversal"
+     },
+     {
+      "id": "p4",
+      "left": "Pressure-regulating valve",
+      "right": "Horizontal-disk valve that automatically reduces water pressure"
+     },
+     {
+      "id": "p5",
+      "left": "Vacuum breaker",
+      "right": "Mechanical device admitting air to break a partial vacuum"
+     },
+     {
+      "id": "p6",
+      "left": "Valve naming exception",
+      "right": "Check, relief, or reducing valves named by function"
+     }
+    ],
+    "explanation": "Valves are classified by their internal closure element or their automatic hydraulic function."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "56d312a31e40065032d2f777cea6b502587f164c1e1668c012a8f2a5c67d8507",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m1-06",
+    "prompt": "Match each piping design consideration to the physical stress it addresses.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Internal pressure",
+      "right": "Outward hydraulic force exerted by conveyed water"
+     },
+     {
+      "id": "p2",
+      "left": "Earth and traffic loads",
+      "right": "External weight from backfill and surface vehicles"
+     },
+     {
+      "id": "p3",
+      "left": "Expansion and contraction",
+      "right": "Thermal length changes in exposed pipelines"
+     },
+     {
+      "id": "p4",
+      "left": "Basin subsidence",
+      "right": "Differential settling at connections to massive structures"
+     },
+     {
+      "id": "p5",
+      "left": "Corrosion and abrasion",
+      "right": "Chemical attack and mechanical wear on pipe walls"
+     },
+     {
+      "id": "p6",
+      "left": "Bedding and backfill",
+      "right": "Soil support conditions placed around buried pipe"
+     }
+    ],
+    "explanation": "Piping design accounts for internal hydraulic forces, external loads, and environmental degradation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "3f4f65f13f202b749221762428b02d174885a23cad6c33fd0cc5ac3265ccf64e",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m1-07",
+    "prompt": "Match each hypochlorite scaling factor to its role in calcium carbonate deposition.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Sodium hydroxide",
+      "right": "Raises hypochlorite pH to extend shelf life"
+     },
+     {
+      "id": "p2",
+      "left": "High mixture pH",
+      "right": "Shifts diluted water above pH 9.0"
+     },
+     {
+      "id": "p3",
+      "left": "Dissolved carbon dioxide",
+      "right": "Reacts with calcium under high pH to form scale"
+     },
+     {
+      "id": "p4",
+      "left": "Calcium carbonate",
+      "right": "Mineral deposit that constricts feed pipe diameter"
+     },
+     {
+      "id": "p5",
+      "left": "Turbulent valves",
+      "right": "Locations where scale deposition is greatest"
+     },
+     {
+      "id": "p6",
+      "left": "Dilution water hardness",
+      "right": "Supplies calcium ions that drive scale formation"
+     }
+    ],
+    "explanation": "High pH from caustic hypochlorite reacts with hardness and CO2 to deposit scale in turbulent fittings."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "444b095aeb71d6091fc5b61225e92fb8c948a2056d16e0e187232776a539c0af",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m1-08",
+    "prompt": "Match each piping diagram or classification term to its meaning.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Single-line diagram",
+      "right": "Schematic using symbols for piping components"
+     },
+     {
+      "id": "p2",
+      "left": "Double-line diagram",
+      "right": "Pictorial view showing pipe walls, joints, and valves"
+     },
+     {
+      "id": "p3",
+      "left": "Conveyance system",
+      "right": "Complete network of pipes, valves, and fittings"
+     },
+     {
+      "id": "p4",
+      "left": "Nominal pipe size",
+      "right": "Standard thickness and size specification with tolerances"
+     },
+     {
+      "id": "p5",
+      "left": "Joint",
+      "right": "Connection between two pipe lengths or a pipe and fitting"
+     },
+     {
+      "id": "p6",
+      "left": "Cast iron",
+      "right": "Family of high carbon-silicon-iron casting alloys"
+     }
+    ],
+    "explanation": "Standardized drawings and terminology allow operators to trace and maintain conveyance networks."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "5b4ac127bc39794a6b335c03c30a77c1a489ff016d4aab8560af842a25106c48",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m1-09",
+    "prompt": "Match each historical or modern conveyance approach to its defining feature.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Roman aqueducts",
+      "right": "Long-distance open channels and arches"
+     },
+     {
+      "id": "p2",
+      "left": "Medieval English practice",
+      "right": "Long runs of closed pipes from source to user"
+     },
+     {
+      "id": "p3",
+      "left": "Ancient local distribution",
+      "right": "Lead or earthenware pipes fed by aqueducts"
+     },
+     {
+      "id": "p4",
+      "left": "Modern treatment conveyance",
+      "right": "Closed, leak-proof network of pipes and valves"
+     },
+     {
+      "id": "p5",
+      "left": "Open stone channels",
+      "right": "Gravity conduits used for centuries without pressure"
+     },
+     {
+      "id": "p6",
+      "left": "Flanged plant piping",
+      "right": "Exposed bolted joints used where rigidity is needed"
+     }
+    ],
+    "explanation": "Water conveyance evolved from open gravity channels to closed, leak-proof pressurized networks."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "7ff1b5f3a693db59133e9f8c318ace6dd1f96dbd250882534801c4599687b527",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m1-10",
+    "prompt": "Match each thermal or protective piping measure to its physical purpose.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Cold-pipe insulation",
+      "right": "Slows heat gain from warmer surrounding air"
+     },
+     {
+      "id": "p2",
+      "left": "Hot-pipe insulation",
+      "right": "Prevents conveyed fluid from cooling in transit"
+     },
+     {
+      "id": "p3",
+      "left": "Underground pipe wrap",
+      "right": "Shields buried metal from soil water and chemicals"
+     },
+     {
+      "id": "p4",
+      "left": "Raised-face flange",
+      "right": "Flange style that must mate with another raised face"
+     },
+     {
+      "id": "p5",
+      "left": "Wye and tee fittings",
+      "right": "Proper branch connections that prevent unsealed breaks"
+     },
+     {
+      "id": "p6",
+      "left": "Strainers and filters",
+      "right": "Remove solids before they damage downstream valves"
+     }
+    ],
+    "explanation": "Protective wraps, insulation, and proper fittings preserve pipe integrity and fluid quality."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "6d807054b452e7800de1856a09e7e4e607acad78ea70695e7ef62bd15a444f0a",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m3-01",
+    "prompt": "Water temperature rises inside a thermoplastic PVC distribution pipe while operating pressure remains constant. What happens to the strength of the PVC pipe?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "The mechanical strength of thermoplastic PVC piping decreases as the temperature of the conveyed fluid increases."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "de1f0584c74a8c290055fbd2670896834575340a4c70df17eb88ca94b01afb4b",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m3-02",
+    "prompt": "A massive concrete treatment basin settles downward while an attached rigid pipe has no flexible joint at the wall connection. What happens to the mechanical stress at the connection point?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt1",
+    "explanation": "Subsidence of a massive structure places bending and shear stress on rigid pipe connections."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "f33ea811a032899f9fe64e7c5673420eed9e4d708c9e22b70979d685348c862f",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m3-03",
+    "prompt": "Sodium hydroxide is added to a sodium hypochlorite solution to raise its pH while storage temperature remains constant. What happens to the shelf life of the hypochlorite?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt1",
+    "explanation": "Excess caustic (sodium hydroxide) raises pH to stabilize chlorine in solution and extend shelf life."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "1ed0c893d1d7ec493f819c145a7b38cbf23b22ac6c335fe82ab6891c99d8c968",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m3-04",
+    "prompt": "Flowing water in a pressurized main is stopped suddenly by rapid valve closure. What happens to the surge pressure against the pipe walls?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt1",
+    "explanation": "Sudden stoppage of moving water creates water hammer, raising concussion pressure against the pipe walls."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "b5cc0b1c47cd5ab46167882f7e5420ecd781dfbec1b3770a2227cfe340960f5e",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m3-05",
+    "prompt": "High-pH sodium hypochlorite solution is diluted with hard water containing dissolved calcium and carbon dioxide, raising the mixture pH above 9.0. What happens to the rate of calcium carbonate scale deposition?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt1",
+    "explanation": "Above pH 9.0, calcium in dilution water reacts with dissolved CO2 to precipitate calcium carbonate scale."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "12f2562a6c116832ddf62a7780ccd07c3dbb04988626865da65daa372a37b16b",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m3-06",
+    "prompt": "An inline strainer is placed upstream of a control valve on a line carrying suspended grit. What happens to the amount of abrasive solids reaching the valve internals?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "Filters and strainers trap solid particles before they can reach and damage downstream valves and equipment."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "09d51647ca653b536f25741d58c36fb79af4b1703adb00e568ec14e663daf67b",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m3-07",
+    "prompt": "Ambient atmospheric pressure drops at a higher elevation while the total absolute pressure inside a water main stays constant. What happens to the gauge pressure reading on the main?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt1",
+    "explanation": "Gauge pressure equals absolute pressure minus atmospheric pressure, so lower atmospheric pressure yields a higher gauge reading."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "00b9f5c69ae8923b3c019d6557d335f420bed9b8cb0113f8176950a6b2944cae",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m3-08",
+    "prompt": "A butterfly valve disk rotates from perpendicular to parallel with the pipe axis. What happens to the open flow area through the valve?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt1",
+    "explanation": "In the full open position, the butterfly disk aligns parallel to the pipe axis, maximizing the flow area."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "d0608f7f8562e0b9babf1c7f65b7dff22e703e50f6d2e6b54fa4bed4d3960b5d",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m3-09",
+    "prompt": "A buried metallic pipe is wrapped with an appropriate insulating and protective material in moist, chemical-rich soil. What happens to the rate of external soil corrosion?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "Protective insulating wraps shield underground piping from rusting and corrosion caused by soil water and chemicals."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "67d2e137b701afed21dffd20e2e284d3b3a99f6bd33a7559e51277bd78be7b65",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m3-10",
+    "prompt": "A liquid's viscosity rises while pipe diameter and pressure drop remain constant. What happens to the liquid's resistance to flow?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt1",
+    "explanation": "Viscosity is defined as a liquid's thickness or resistance to flow."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "08ee4b1701176257fd5cf296c0c01cb0ee11d8d011e78ccc260cf329e4740854",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m3-11",
+    "prompt": "In a nonpressurized gravity drain line, unglazed clay pipe is replaced with vitrified clay pipe having a kiln-glazed interior. What happens to the pipe's resistance to corrosion?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt1",
+    "explanation": "Vitrified clay pipe has a glass-like kiln-fired surface that is extremely corrosion proof."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "5f67a36fc21910cd8f78048f8fa2087fe7e1cba252a3066b7327e628b81998e2",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m3-12",
+    "prompt": "A mechanical vacuum breaker admits atmospheric air into a piping system experiencing a partial vacuum. What happens to the driving force for backsiphonage?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "Admitting atmospheric air relieves the partial vacuum, eliminating the siphoning action that drives backsiphonage."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "bb723e93de34eb65dc0ea670e49be5203790e95632439ed1b2805ba1b60bd0c8",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m3-13",
+    "prompt": "A hot-water plant pipe is covered with thermal insulation of appropriate thickness while fluid temperature and room temperature stay constant. What happens to the rate of heat loss from the pipe?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "Thermal insulation slows heat transfer from a warm pipe to cooler surrounding air."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "f8285dd164f4acc3dab17222229b89bc7bc4746d19398c1b17d37eb0193fd321",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m3-14",
+    "prompt": "Two clean, fluxed copper pipe ends are heated and joined with solder that melts below the melting point of copper. What happens to the solid state of the parent copper metal during joining?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "In soldering and brazing, the parent metal remains solid and does not melt."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "788a20939565ed9dbbf338217c16ecffe73673a628bbea1b76ac649589c6e8eb",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m3-15",
+    "prompt": "Flowing water in a distribution main reverses direction against an approved check valve. What happens to the reverse flow rate past the seated valve?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "An approved check valve closes positively upon flow reversal to block reverse flow."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "e8c63be90e12d2afa4ca9c0910623f3d83008675eb16556b28206dbccf0cde8e",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m4-01",
+    "prompt": "Which statement about flanged pipe joints is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Flanged joints are widely used inside treatment plants where rigidity and easy disassembly are needed."
+     },
+     {
+      "id": "opt2",
+      "label": "Flanged joints are the standard choice for buried mains because they flex easily with ground movement."
+     },
+     {
+      "id": "opt3",
+      "label": "A flange with a raised face should be mated to another raised-face flange rather than a plain face."
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "Flanged joints lack flexibility for ground movement and are normally avoided in buried pipelines."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "1c773e5c5c2c4c2272520a6294f010bfd3d8c49e9184854104912300227e20b8",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m4-02",
+    "prompt": "Which statement about soldering and brazing is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Cleaning the joint and applying flux helps prevent oxides from forming during heating."
+     },
+     {
+      "id": "opt2",
+      "label": "Capillary action draws the molten filler alloy into the heated space between the parts."
+     },
+     {
+      "id": "opt3",
+      "label": "The parent metal melts and blends together with the filler rod to form the joint."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "The parent metal does not melt in brazed or soldered construction; that occurs in welding."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "681fc2ff5fc28f10b53f864c6a9676e18289bccd8541bbb02d6a505e65ea97fa",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m4-03",
+    "prompt": "Which statement about clay piping is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Vitrified clay pipe is kiln-treated to produce a glazed, watertight, corrosion-resistant surface."
+     },
+     {
+      "id": "opt2",
+      "label": "Unglazed clay pipe can be buried directly in wet soil without protection from contaminants."
+     },
+     {
+      "id": "opt3",
+      "label": "Clay pipe is used in nonpressurized systems where liquid flow depends on gravity."
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "Unglazed clay pipe requires protection against soil contaminants and ground moisture."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "90e49bd514653af225d83ff8a38a7e20eca418b325527865b420245b077f6a41",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m4-04",
+    "prompt": "Which statement about PVC pressure piping is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "PVC is extruded under heat and pressure into a thermoplastic that resists many corrosives."
+     },
+     {
+      "id": "opt2",
+      "label": "PVC is commonly used for cold drinking water because it is nontoxic and odorless."
+     },
+     {
+      "id": "opt3",
+      "label": "The structural strength of PVC piping increases as the conveyed fluid temperature rises."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "The strength of plastic piping decreases as the temperature of the conveyed material increases."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "f5f698da73294800929072a41f188fca86c2b21e8c2a6ceec041de97ca6b867b",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m4-05",
+    "prompt": "Which statement about asbestos-cement pipe is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Undamaged asbestos-cement pipe is nonfriable and poses little inhalation hazard while intact."
+     },
+     {
+      "id": "opt2",
+      "label": "Dry cutting or grinding asbestos-cement pipe can release airborne fibers from the matrix."
+     },
+     {
+      "id": "opt3",
+      "label": "Intact asbestos-cement pipe readily crumbles into powder under light hand pressure when dry."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "Undamaged A-C pipe is nonfriable and does not readily crumble into powder by hand pressure."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "2331cc799b381d0d621bb8c98b4a1171997d9a49d149c0e7e1280db22f081768",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m4-06",
+    "prompt": "Which statement about hypochlorite scaling is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Sodium hydroxide is added to hypochlorite to raise pH and extend its shelf life."
+     },
+     {
+      "id": "opt2",
+      "label": "Calcium in dilution water reacts with dissolved carbon dioxide to form calcium carbonate."
+     },
+     {
+      "id": "opt3",
+      "label": "Scale buildup is lightest in turbulent zones such as valves and pump chambers."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "Calcium carbonate scale deposition is greatest in areas of turbulence such as pumps and valves."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "f19060260cc1b52cdbf1a714c3c8d2efeae5fbe494ee3692c6e1c803417aff66",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m4-07",
+    "prompt": "Which statement about piping diagrams is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "A single-line diagram uses schematic symbols to represent pipes, valves, and fittings."
+     },
+     {
+      "id": "opt2",
+      "label": "A double-line diagram provides a pictorial view of pipe walls, joints, and valve bodies."
+     },
+     {
+      "id": "opt3",
+      "label": "A single-line diagram shows a detailed pictorial cross-section of a pipe wall."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "Single-line diagrams use schematic symbols; double-line diagrams provide the pictorial view."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "65ad175db01a35fa0b137753bdd13ad361d334ab6950da33eae7014d5f34ce62",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m4-08",
+    "prompt": "Which statement about fluid definitions in conveyance is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "In piping engineering, the term fluid includes both liquids and gases that flow."
+     },
+     {
+      "id": "opt2",
+      "label": "Viscosity describes the thickness or resistance to flow of a conveyed liquid."
+     },
+     {
+      "id": "opt3",
+      "label": "In piping terminology, gases such as air and nitrogen are excluded from fluids."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "A fluid is any substance that flows, which includes both liquids and gases."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "74def27f7b267777a4175fa2d4f45b354b0a0e678de9d0c6fd9abc71d7deebd6",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m4-09",
+    "prompt": "Which statement about prestressed concrete pipe is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Prestressed concrete pipe is manufactured with a permanent built-in compression force."
+     },
+     {
+      "id": "opt2",
+      "label": "Tensioned steel wire is wound around the core to resist high internal pressures."
+     },
+     {
+      "id": "opt3",
+      "label": "Prestressing places the concrete wall in permanent tension before water pressure arrives."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "Prestressing compresses the concrete wall to reduce or eliminate tensile forces under pressure."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "c44c748b9e79a977d4c5ddf184e83d5be477eab7f01f18f2ae2116c850349cc3",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m4-10",
+    "prompt": "Which statement about thermal insulation on pipes is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Insulation thickness is selected according to the specific temperature application."
+     },
+     {
+      "id": "opt2",
+      "label": "Under normal conditions, heat flows from a colder pipe into warmer room air."
+     },
+     {
+      "id": "opt3",
+      "label": "Protective wraps also shield underground metal piping from soil water and chemicals."
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "Under normal conditions, heat passes from a warmer surface to a cooler one."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "bb1adc4d94b5734708a39ba662fe3bb8a1daae58d0778807ad9354d9787807b6",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m4-11",
+    "prompt": "Which statement about valve naming and operation is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Most valves are named after the internal element that controls the passageway."
+     },
+     {
+      "id": "opt2",
+      "label": "A butterfly valve disk sits parallel to the pipe axis in the full open position."
+     },
+     {
+      "id": "opt3",
+      "label": "Check valves and relief valves are named after their internal disk geometry."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "Check, quick-opening, regulating, relief, and reducing valves are exceptions named for function rather than internal element."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "543a8ee8ce99276b4a3782af47eada5d90ce300f3b7cf5ed443926a4b1340ac2",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m4-12",
+    "prompt": "Which statement about welded metallic joints is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Welding heats metal sections until they melt and blend into one continuous piece."
+     },
+     {
+      "id": "opt2",
+      "label": "Welded joints are preferred for applications involving high pressures and temperatures."
+     },
+     {
+      "id": "opt3",
+      "label": "A properly welded joint is typically much weaker than the parent pipe wall."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "When properly welded, a joint is as strong as the piping itself."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "0fcd4205ee32e80ba57fe8a25a7e0888c0ee68a830fc7feae5638406071a93c5",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m4-13",
+    "prompt": "Which statement about backsiphonage and vacuum breakers is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Backsiphonage occurs when distribution pressure falls below ambient atmospheric pressure."
+     },
+     {
+      "id": "opt2",
+      "label": "A vacuum breaker admits air into the line to break a partial vacuum."
+     },
+     {
+      "id": "opt3",
+      "label": "A vacuum breaker seals the pipe tighter to trap the partial vacuum inside."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "A vacuum breaker allows air into the piping system to break the partial vacuum and prevent backsiphonage."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "9105fae637f8df8305ee7103a7b4e7a1bfc2426251d628f869d4413eb24b12c7",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m4-14",
+    "prompt": "Which statement about cast iron and nonferrous metals is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Cast iron includes high carbon-silicon-iron alloys such as gray and ductile iron."
+     },
+     {
+      "id": "opt2",
+      "label": "Nonferrous metals are alloys that contain iron as their primary base element."
+     },
+     {
+      "id": "opt3",
+      "label": "Bimetallic components are constructed from two different types of metal."
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "Nonferrous means a material that does not contain iron."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "e81f5c0b3f226a1673a35bb60ab73e57e0bd320d02b4f1be0069404412e42f00",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m4-15",
+    "prompt": "Which statement about piping design loads is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Pipe strength should resist internal pressure, handling, and earth or traffic loads."
+     },
+     {
+      "id": "opt2",
+      "label": "Subsidence of a massive basin can stress rigid pipe connections at the wall."
+     },
+     {
+      "id": "opt3",
+      "label": "Buried pipelines are unaffected by soil conditions, bedding, or traffic loads."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "Buried piping design must account for earth and traffic loads as well as proper bedding and backfill."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "55881f9fba45e660395ef3faa82524971db89ae1012d16156f56495818ef070d",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m5-01",
+    "prompt": "In the soldering or brazing of a metallic pipe joint, does cleaning the joint and applying flux occur before or after capillary action draws the molten filler into the joint?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The joint is cleaned and coated with flux to prevent oxides before heating and capillary drawing of the filler."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "4e70ec3c84f700ae1600a9b6d20dbd5625289c82a196bc3ecc9cfe45e7a2aedd",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m5-02",
+    "prompt": "In the formation of calcium carbonate scale inside a hypochlorite dilution line, does raising the mixture pH above 9.0 occur before or after calcium carbonate precipitates onto turbulent valve surfaces?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "High pH from caustic hypochlorite drives the reaction between calcium and dissolved CO2 that forms calcium carbonate scale."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "13376dcc0b323ec2507e34b8af152390582c921112b989bb33c5b1805d51a46e",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m5-03",
+    "prompt": "In manufacturing vitrified clay pipe, does firing the clay in a kiln occur before or after forming the glazed, watertight surface?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Vitrified clay is treated in a kiln to produce its glazed, watertight surface."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "d321de836181bad6a2a06982f9873a615102cc0e56e356a7041afb01e852b6a6",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m5-04",
+    "prompt": "In the welded joining of two metallic pipe sections, does melting and blending the metal edges occur before or after the joint cools into one continuous piece?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Metal sections are heated until they melt and blend together, then solidify into one continuous piece."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "1d7aef313de85e30a5da123c2a32fbf03851e955f7f09647e292571b77545319",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m5-05",
+    "prompt": "In the extrusion of PVC pipe, does forcing the polymer through a die under heat and pressure occur before or after joining pipe sections in the field?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "PVC pipe is extruded into a thermoplastic during manufacturing before sections are joined in the field."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "bd49cd1e66f7107e7a88af615b67f95316e4281c3e78859bac9d4a6d95ca6c1a",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m5-06",
+    "prompt": "In the manufacture of prestressed concrete pipe, does winding tensioned steel wire around the core occur before or after applying the outer concrete coating?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Steel wire is wound tightly to prestress the core and is then covered with an outer coating of concrete."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "04ed3a3888c022aa560f8a39a609527217343a9efa6576a087dca852dbd1bf02",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m5-07",
+    "prompt": "In a piping system protected by an inline strainer ahead of a control valve, does fluid pass through the valve disk before or after passing through the strainer?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "Strainers are placed upstream so fluid passes through them before reaching and potentially damaging downstream valves."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "d572f597b47f57286ce3fa4a69f8e38f4df5ec20650a2cecf033822f88c2d3ad",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m5-08",
+    "prompt": "In a backsiphonage event on a cross-connected water line, does distribution pressure dropping below atmospheric pressure occur before or after nonpotable liquid is drawn into the main?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Subatmospheric pressure creates the partial vacuum that draws contamination into the potable system."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "94c1751211e82c06af19daad74bc015d7e7e13ae2130207470a8ae7fb7f946e9",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m5-09",
+    "prompt": "In the operation of a check valve during a flow reversal, does forward flow pressure opening the valve occur before or after reverse flow seats it closed?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "A check valve opens in the direction of normal flow and closes when flow reverses."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "97f6fed85dfa5f90b24e757fffed28dcea0eae700316a62236217a78fc1cdc55",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m5-10",
+    "prompt": "In the occurrence of water hammer in a pipeline, does the sudden stoppage of flow occur before or after the concussion wave strikes the pipe walls?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Water hammer is the concussion against pipe walls caused by a sudden change or stoppage of flow."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "d34cc803db01d46a8f1ff3b4e01260e1d99ce111f1fb23917152463f2d01f0d4",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m5-11",
+    "prompt": "In the repair of damaged asbestos-cement pipe, does disturbing or cutting the dry matrix occur before or after friable fibers can become airborne?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Nonfriable asbestos in A-C pipe must be disturbed by cutting, grinding, or sanding before friable fibers are released."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "3c04329f7225f1b99a32cbcbb03dea3ae6939b291a605cb3c34005c27bcd661b",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m5-12",
+    "prompt": "In the lifecycle of a buried conveyance main, does placing proper bedding and backfill occur before or after the pipe resists earth and traffic loads in service?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Appropriate bedding and backfill are placed during installation to support the pipe against earth and traffic loads."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "431ee27305a50677ee5242046cad39bf91ae7b94ce280ff167c3681a4775c69b",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m5-13",
+    "prompt": "In the opening of a butterfly valve from its closed position, does rotating the disk shaft occur before or after the disk aligns parallel to the pipe axis?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The butterfly valve disk rotates on its shaft until it reaches the full open position parallel to the pipe axis."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "0422fe18ac8ab33553daeb2f383ff50999ad2b83af0eb4a1e5ced9dcfffa73b0",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m5-14",
+    "prompt": "In the connection of a massive concrete basin to a buried pipe, does differential subsidence of the basin occur before or after structural stress develops at the rigid pipe connection?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Subsidence of the massive structure creates the movement that stresses the rigid pipe-to-basin connection."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "8d13051cecbf571f29b66428ada0a11082b0ed1a072aac6dfc6dcfc34ec70baf",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-dist-r01-m5-15",
+    "prompt": "In the construction of a reinforced flexible hose, does forming the inner tube and reinforcing carcass occur before or after applying the outer protective cover?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The carcass forms the reinforcement layers positioned between the inner tube and the outer cover."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+    "notes": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:43:12.108Z",
+    "payloadSha256": "0a5882f9e4e02f11a9ec5192602131460afea0bf42081f7ba31d0d1f4c0627f6",
+    "builderResultsSha256": "600949349181f63f12d31d5811254f3b8fcdfb2583509e87f1db9340ee0256a5"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T02:42:04.466958+00:00",
+   "attestation": "Strict AI self-review of 69 authored native game payloads for wpi-class3-water-dist; 69 accepted, 0 rejected.",
+   "payloadSha256": {
+    "targeth-ht261118-wpi-class3-water-dist-r01-m0-01": "10f5ab7f04e813d27608ef303e41a1d9ccf94ba354ca07db1bdbc42928ebf83c",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m0-02": "3e26bbf5902fd1db89ffdf66dcbafee9cb2d3672dc44f64e1582e440d48b3678",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m0-03": "32ecf730dd41d2e65efcc29d54db44eec4af0e4bbd336f6a663f51545137338c",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m0-04": "5614df57f1b26ecae8a5aefee139430d21283fab2605f21c726f34528449cb0c",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m0-05": "4d80249916bc49aeb629659d4904fc2e75cf744adbc4e6a0fac18cb0e4994f36",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m0-06": "fbfbda1956b96eda098ef53ac20f4e362e1022de7f03cac430cb6bc1b479603f",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m0-07": "204ff819a50c67b080115379ab35f9cef558d18268fddcf8ee1fd4ebc5d90cd8",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m0-08": "a7405cc58793028cddc8e158bb0e933ea50bc1eab9581864436673d123c6f9aa",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m0-09": "486e5b0e5b834d4b1a49be49a2ef70e3a03f7bf1a59582b77a207d7618de9e9e",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m0-10": "e924065976bac85e23708a3b4f44600ab1ccdde02f564c32b20131c200498057",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m0-12": "6621f77c08a0a61fd1d21f91b59d6a209265022b552c673113999a27e02bdd45",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m0-13": "74c5b6366f7b5e4e301b128fef032f5e8abacf54902844cb68903f4eff7ee3d8",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m0-14": "c4e56738e2f3718698ae003606f2921dfa6b15459dc1f18e277d0ae4be8c0857",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m0-15": "60aad923fea700fa5161a1e6fea638b31a7a6f7f35b42359658ef12aa82dff82",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m1-01": "078fc5f90e0314c234af44685934c95ac3661919e3ebc24a65a703590138ea9e",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m1-02": "c3d45933ca4639e6c64bfacc75dd0abd8a5caa3d7ef38ba5e7eecd4c77b23e7f",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m1-03": "d24b2ce8887f53a909df7ed404b89ca72f60b11f6752393e31e5a495d062a047",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m1-04": "2b711b365f88d4c7d14a6515944f02dfeb52e287a15ac6e81d843ff2f2bd049a",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m1-05": "56d312a31e40065032d2f777cea6b502587f164c1e1668c012a8f2a5c67d8507",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m1-06": "3f4f65f13f202b749221762428b02d174885a23cad6c33fd0cc5ac3265ccf64e",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m1-07": "444b095aeb71d6091fc5b61225e92fb8c948a2056d16e0e187232776a539c0af",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m1-08": "5b4ac127bc39794a6b335c03c30a77c1a489ff016d4aab8560af842a25106c48",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m1-09": "7ff1b5f3a693db59133e9f8c318ace6dd1f96dbd250882534801c4599687b527",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m1-10": "6d807054b452e7800de1856a09e7e4e607acad78ea70695e7ef62bd15a444f0a",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m3-01": "de1f0584c74a8c290055fbd2670896834575340a4c70df17eb88ca94b01afb4b",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m3-02": "f33ea811a032899f9fe64e7c5673420eed9e4d708c9e22b70979d685348c862f",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m3-03": "1ed0c893d1d7ec493f819c145a7b38cbf23b22ac6c335fe82ab6891c99d8c968",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m3-04": "b5cc0b1c47cd5ab46167882f7e5420ecd781dfbec1b3770a2227cfe340960f5e",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m3-05": "12f2562a6c116832ddf62a7780ccd07c3dbb04988626865da65daa372a37b16b",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m3-06": "09d51647ca653b536f25741d58c36fb79af4b1703adb00e568ec14e663daf67b",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m3-07": "00b9f5c69ae8923b3c019d6557d335f420bed9b8cb0113f8176950a6b2944cae",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m3-08": "d0608f7f8562e0b9babf1c7f65b7dff22e703e50f6d2e6b54fa4bed4d3960b5d",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m3-09": "67d2e137b701afed21dffd20e2e284d3b3a99f6bd33a7559e51277bd78be7b65",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m3-10": "08ee4b1701176257fd5cf296c0c01cb0ee11d8d011e78ccc260cf329e4740854",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m3-11": "5f67a36fc21910cd8f78048f8fa2087fe7e1cba252a3066b7327e628b81998e2",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m3-12": "bb723e93de34eb65dc0ea670e49be5203790e95632439ed1b2805ba1b60bd0c8",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m3-13": "f8285dd164f4acc3dab17222229b89bc7bc4746d19398c1b17d37eb0193fd321",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m3-14": "788a20939565ed9dbbf338217c16ecffe73673a628bbea1b76ac649589c6e8eb",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m3-15": "e8c63be90e12d2afa4ca9c0910623f3d83008675eb16556b28206dbccf0cde8e",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m4-01": "1c773e5c5c2c4c2272520a6294f010bfd3d8c49e9184854104912300227e20b8",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m4-02": "681fc2ff5fc28f10b53f864c6a9676e18289bccd8541bbb02d6a505e65ea97fa",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m4-03": "90e49bd514653af225d83ff8a38a7e20eca418b325527865b420245b077f6a41",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m4-04": "f5f698da73294800929072a41f188fca86c2b21e8c2a6ceec041de97ca6b867b",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m4-05": "2331cc799b381d0d621bb8c98b4a1171997d9a49d149c0e7e1280db22f081768",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m4-06": "f19060260cc1b52cdbf1a714c3c8d2efeae5fbe494ee3692c6e1c803417aff66",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m4-07": "65ad175db01a35fa0b137753bdd13ad361d334ab6950da33eae7014d5f34ce62",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m4-08": "74def27f7b267777a4175fa2d4f45b354b0a0e678de9d0c6fd9abc71d7deebd6",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m4-09": "c44c748b9e79a977d4c5ddf184e83d5be477eab7f01f18f2ae2116c850349cc3",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m4-10": "bb1adc4d94b5734708a39ba662fe3bb8a1daae58d0778807ad9354d9787807b6",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m4-11": "543a8ee8ce99276b4a3782af47eada5d90ce300f3b7cf5ed443926a4b1340ac2",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m4-12": "0fcd4205ee32e80ba57fe8a25a7e0888c0ee68a830fc7feae5638406071a93c5",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m4-13": "9105fae637f8df8305ee7103a7b4e7a1bfc2426251d628f869d4413eb24b12c7",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m4-14": "e81f5c0b3f226a1673a35bb60ab73e57e0bd320d02b4f1be0069404412e42f00",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m4-15": "55881f9fba45e660395ef3faa82524971db89ae1012d16156f56495818ef070d",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m5-01": "4e70ec3c84f700ae1600a9b6d20dbd5625289c82a196bc3ecc9cfe45e7a2aedd",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m5-02": "13376dcc0b323ec2507e34b8af152390582c921112b989bb33c5b1805d51a46e",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m5-03": "d321de836181bad6a2a06982f9873a615102cc0e56e356a7041afb01e852b6a6",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m5-04": "1d7aef313de85e30a5da123c2a32fbf03851e955f7f09647e292571b77545319",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m5-05": "bd49cd1e66f7107e7a88af615b67f95316e4281c3e78859bac9d4a6d95ca6c1a",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m5-06": "04ed3a3888c022aa560f8a39a609527217343a9efa6576a087dca852dbd1bf02",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m5-07": "d572f597b47f57286ce3fa4a69f8e38f4df5ec20650a2cecf033822f88c2d3ad",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m5-08": "94c1751211e82c06af19daad74bc015d7e7e13ae2130207470a8ae7fb7f946e9",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m5-09": "97f6fed85dfa5f90b24e757fffed28dcea0eae700316a62236217a78fc1cdc55",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m5-10": "d34cc803db01d46a8f1ff3b4e01260e1d99ce111f1fb23917152463f2d01f0d4",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m5-11": "3c04329f7225f1b99a32cbcbb03dea3ae6939b291a605cb3c34005c27bcd661b",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m5-12": "431ee27305a50677ee5242046cad39bf91ae7b94ce280ff167c3681a4775c69b",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m5-13": "0422fe18ac8ab33553daeb2f383ff50999ad2b83af0eb4a1e5ced9dcfffa73b0",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m5-14": "8d13051cecbf571f29b66428ada0a11082b0ed1a072aac6dfc6dcfc34ec70baf",
+    "targeth-ht261118-wpi-class3-water-dist-r01-m5-15": "0a5882f9e4e02f11a9ec5192602131460afea0bf42081f7ba31d0d1f4c0627f6"
+   }
+  },
+  "registeredAt": "2026-11-19T02:43:12.108Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 7,
+     "f": 7
+    },
+    "dirs": {
+     "increase": 8,
+     "decrease": 6,
+     "unchanged": 1
+    },
+    "longest": 3,
+    "options": 30
+   },
+   "batchSha256": "2abd0db3f0ed2e6c82912a9137feb537122478dc0c3b0b2702c45b0dd3cd2f87"
+  }
+ }
+}

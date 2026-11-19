@@ -1,0 +1,2094 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-wpi-class3-water-r04",
+ "scope": "Owner-authorized AI-reviewed game activities: 55 items.",
+ "additions": [
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m0-01",
+    "prompt": "Cryptosporidium parvum can cause serious infection in humans throughout their lives, whereas most other mammals mainly develop poor infections as adults.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Humans can be seriously infected at any life stage, while in most other mammals C. parvum primarily infects neonates."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "35c094fdcc629c950f8ab65f1c4778ac5d773c68139aeb084ae18846ea0dfc3f",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m0-02",
+    "prompt": "Standard laboratory methods easily recover Cryptosporidium oocysts from water sample filters with high reliability.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Recovering oocysts trapped on water sample filters is difficult, and current sampling and detection methods are unreliable."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "6a26ffa7cd8f837fdf81fdc433197609b801298a58caea7bc53901d7588d7927",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m0-03",
+    "prompt": "In individuals with normal immune systems, cryptosporidiosis symptoms typically resolve within one to two weeks without antiparasitic medication.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Healthy immune systems usually clear the infection in one to two weeks, so treatment focuses on fluids and rest."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "c8c660929bbc73d37917c2d40c99e3a28275c2ed7503f7d588a3fdb892242870",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m0-04",
+    "prompt": "Coliform bacteria counts reliably predict the exact concentration of Cryptosporidium oocysts in a surface water supply.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "No water quality indicator, including coliform bacteria or turbidity, reliably predicts the occurrence of cryptosporidiosis."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "7e405ee87be11bad13a8911556609a96a5eee0fd25708849c88a2bcfea5d5512",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m0-05",
+    "prompt": "Biological wastewater treatment processes are modeled on natural microbial decomposition, with environmental conditions controlled for optimum growth.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Controlling the microbial environment speeds up natural decomposition of wastes in biological treatment."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "154b0e9d1d6f2a0127546c7f7fd23eb55345d677d6739decbdad4f870acac2c0",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m0-06",
+    "prompt": "Cyclospora oocysts excreted in human feces are immediately infectious to another person through direct contact.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Excreted Cyclospora oocysts are not immediately infectious and require days to weeks in the environment to sporulate."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "919d9db712bf1d1c25e4e3cf5fad3c33667d5c5771788697dd318d3e1502e64b",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m0-07",
+    "prompt": "Symbiotic bacteria in the root nodules of plants such as peas convert atmospheric nitrogen gas into nitrates usable by the plant.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Nitrogen-fixing bacteria in legume root nodules convert atmospheric nitrogen into plant-usable nitrates."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "637c3e1eace6a6b5e463ee756c6a47f39ebeea7f960776e18965f8debe0ded36",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m0-08",
+    "prompt": "Unlike carbon and nitrogen, phosphorus is primarily stored in the atmosphere and enters ecosystems mainly through lightning fixation.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Phosphorus is stored in sedimentary rock and enters ecosystems through gradual erosion, not atmospheric fixation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "69545c81767f842ceda057554804296524f7231df140ad545335a2dd47a79e9c",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m0-09",
+    "prompt": "Ammonia in wastewater effluent is undesirable partly because it exerts both a biochemical oxygen demand and a chlorine demand.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "High ammonia levels consume dissolved oxygen and chlorine, making biological nitrification important."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "222c3ccfcc39649fe1ec4e3579f8c6f18cc738c893672081c90384fd311c5107",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m0-10",
+    "prompt": "Granular media filtration removes dissolved salts and submicron colloids with the same efficiency as coarse suspended sand.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Filtration is effective for suspended solids, but colloids and dissolved solids can pass through."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "ada118233556aac34b69d0198a11748aad27c932a58be869621cbb836d63efac",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m0-11",
+    "prompt": "Calcium and magnesium ions in hard water react with soap to form an insoluble precipitate commonly known as soap scum.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Hardness is defined by multivalent metal ions reacting with soap to form a precipitate."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "b1bf93cd1df12fd586995c445c356e2e6a0afa66d57d86dfb01ba140dd76b63f",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m0-12",
+    "prompt": "Noncarbonate hardness is chemically identical to alkalinity and excludes anions such as chlorides and nitrates.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Carbonate hardness equals alkalinity, whereas noncarbonate hardness includes nitrates and chlorides."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "e202724a4dc2ffa6460cb79268b206671b5e71092eac93eb018774f3562cd700",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m0-13",
+    "prompt": "Hard water containing magnesium sulfates can produce a laxative effect in consumers who are not accustomed to it.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "High hardness, particularly with magnesium sulfates, can cause a laxative effect in new consumers."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "a8e08269320631ce8e87a62dfbbf2c74d625ca08b56fad29ad97e6ba58a37306",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m0-14",
+    "prompt": "In aerobic environments, microbial decomposition of biodegradable organics yields stable and acceptable end products.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Aerobic oxidation is efficient and produces stable, acceptable compounds."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "8293c66991db23d0146d0b3a5515507e4b5aef9eee0e8c8086f8d4ba2f4eb247",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m0-15",
+    "prompt": "Anaerobic decomposition of dissolved organics is more efficient than aerobic oxidation and produces odor-free end products.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Anaerobic decomposition is less efficient and yields unstable, objectionable end products."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "bd37814660758eb59c3929fbf1bbf69e3d146daabaccab341ec761d3d984ab21",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m1-01",
+    "prompt": "Match each Cryptosporidium host or detection concept to its description.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Neonate mammals",
+      "right": "Primary animal age group infected by C. parvum"
+     },
+     {
+      "id": "p2",
+      "left": "Human hosts",
+      "right": "Can be seriously infected at any age"
+     },
+     {
+      "id": "p3",
+      "left": "Previous exposure",
+      "right": "Provides full or partial immunity to challenge"
+     },
+     {
+      "id": "p4",
+      "left": "Apicomplexa",
+      "right": "Coccidian protozoan phylum living in vertebrate intestines"
+     },
+     {
+      "id": "p5",
+      "left": "Filter recovery",
+      "right": "Difficult step in water sample oocyst detection"
+     },
+     {
+      "id": "p6",
+      "left": "Microscopic exam",
+      "right": "Checks whether a recovered oocyst is alive"
+     }
+    ],
+    "explanation": "Cryptosporidium host susceptibility varies by species and prior exposure, while oocyst detection remains technically challenging."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "2d00aabfba3489d43d11443c70a9a85b691badedd97a65ebc42818c9a234928c",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m1-02",
+    "prompt": "Match each cryptosporidiosis health or prevention factor to its role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Normal immune system",
+      "right": "Clears infection in one to two weeks"
+     },
+     {
+      "id": "p2",
+      "left": "Suppressed immunity",
+      "right": "Risk of prolonged, life-threatening illness"
+     },
+     {
+      "id": "p3",
+      "left": "Fluids and rest",
+      "right": "Recommended supportive care for diarrheal illness"
+     },
+     {
+      "id": "p4",
+      "left": "Boiling for 1 minute",
+      "right": "Public advisory during waterborne outbreaks"
+     },
+     {
+      "id": "p5",
+      "left": "Handwashing",
+      "right": "Key hygiene step after toilet or diaper changes"
+     },
+     {
+      "id": "p6",
+      "left": "Turbidity and coliforms",
+      "right": "Monitored indicators that cannot reliably predict oocysts"
+     }
+    ],
+    "explanation": "Cryptosporidiosis severity depends on host immunity, and prevention relies on hygiene and boiling contaminated water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "56ed89567d50338370f93de795ccb0ab3ba63666557edf45538b195f2e22e051",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m1-03",
+    "prompt": "Match each Cyclospora or biological process term to its meaning.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Sporulation",
+      "right": "Days-to-weeks maturation making oocysts infectious"
+     },
+     {
+      "id": "p2",
+      "left": "Direct person-to-person spread",
+      "right": "Unlikely for Cyclospora due to unsporulated oocysts"
+     },
+     {
+      "id": "p3",
+      "left": "Fresh produce",
+      "right": "Food vehicle linked to indirect Cyclospora outbreaks"
+     },
+     {
+      "id": "p4",
+      "left": "Tissue culture",
+      "right": "Laboratory growth method not yet achieved for Cyclospora"
+     },
+     {
+      "id": "p5",
+      "left": "Optimum growth control",
+      "right": "Core principle of biological wastewater treatment"
+     },
+     {
+      "id": "p6",
+      "left": "Aerobic process",
+      "right": "Microbial breakdown using free elemental oxygen"
+     }
+    ],
+    "explanation": "Cyclospora requires environmental sporulation before becoming infectious, whereas engineered biological treatment controls conditions for microbial growth."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "4fbe14cc72a7f851b35e677d1c53469b88f34efcc19f61d674a6e068931e2324",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m1-04",
+    "prompt": "Match each carbon or nitrogen cycle component to its function.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Cellular respiration",
+      "right": "Releases carbon dioxide back to the atmosphere"
+     },
+     {
+      "id": "p2",
+      "left": "Fossil fuels",
+      "right": "Buried organic carbon releasing CO2 when burned"
+     },
+     {
+      "id": "p3",
+      "left": "Atmospheric CO2",
+      "right": "Acts as a heat screen trapping Earth's radiation"
+     },
+     {
+      "id": "p4",
+      "left": "Nitrogen fixation",
+      "right": "Converts atmospheric nitrogen gas into nitrates"
+     },
+     {
+      "id": "p5",
+      "left": "Legume root nodules",
+      "right": "Host symbiotic bacteria that fix nitrogen"
+     },
+     {
+      "id": "p6",
+      "left": "Lightning",
+      "right": "Natural physical process that fixes atmospheric nitrogen"
+     }
+    ],
+    "explanation": "Carbon and nitrogen cycles link atmospheric gases, living organisms, and soil or water reservoirs."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "af52f179403f0acff9b7dc62be25ffc75617384659de21927eb16358368e7a80",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m1-05",
+    "prompt": "Match each nutrient or wastewater nitrogen process to its description.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Urea",
+      "right": "Wastewater nitrogen form converted to ammonia"
+     },
+     {
+      "id": "p2",
+      "left": "Nitrification",
+      "right": "Aerobic biological conversion of ammonia to nitrate"
+     },
+     {
+      "id": "p3",
+      "left": "Denitrification",
+      "right": "Biological conversion of nitrate to nitrogen gas"
+     },
+     {
+      "id": "p4",
+      "left": "Sedimentary rock",
+      "right": "Primary natural reservoir of phosphorus"
+     },
+     {
+      "id": "p5",
+      "left": "Guano deposits",
+      "right": "Bird excreta returning phosphorus to land"
+     },
+     {
+      "id": "p6",
+      "left": "Limiting factors",
+      "right": "Role of nitrogen and phosphorus in productivity"
+     }
+    ],
+    "explanation": "Nitrogen and phosphorus cycle through wastewater and ecosystems, controlling biological productivity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "770c3e337f7397e084f659d5318567a454ff9842cb511dcb3dce6fde63530a54",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m1-06",
+    "prompt": "Match each water supply or pollution concept to its water-quality role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Groundwater",
+      "right": "Primary drinking water source for most Americans"
+     },
+     {
+      "id": "p2",
+      "left": "Lakes and reservoirs",
+      "right": "Receive pollutants from runoff, snowmelt, and air"
+     },
+     {
+      "id": "p3",
+      "left": "Floods",
+      "right": "Natural events causing local, temporary pollution"
+     },
+     {
+      "id": "p4",
+      "left": "Early wastewater goals",
+      "right": "Remove suspended solids, organics, and pathogens"
+     },
+     {
+      "id": "p5",
+      "left": "Excess aquatic weeds",
+      "right": "Visible sign of surface water pollution"
+     },
+     {
+      "id": "p6",
+      "left": "Water reuse",
+      "right": "Necessary practice when freshwater supply is limited"
+     }
+    ],
+    "explanation": "Surface and groundwater supplies face varied pollution inputs, requiring ongoing treatment and reuse."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "6216cc4591ba6977ca58176d82733d1dab1d5d26c65b3f27f02c54bd2564714b",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m1-07",
+    "prompt": "Match each suspended-solids characteristic to its treatment significance.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Stream bank erosion",
+      "right": "Source of inorganic sand, silt, and clay"
+     },
+     {
+      "id": "p2",
+      "left": "Detritus and biosolids",
+      "right": "Organic fraction of suspended solids"
+     },
+     {
+      "id": "p3",
+      "left": "Adsorption sites",
+      "right": "Surfaces shielding attached microbes from chlorine"
+     },
+     {
+      "id": "p4",
+      "left": "Biological degradation",
+      "right": "Breakdown of solids creating objectionable byproducts"
+     },
+     {
+      "id": "p5",
+      "left": "Filtration",
+      "right": "Most effective water treatment step for solids removal"
+     },
+     {
+      "id": "p6",
+      "left": "Colloids",
+      "right": "Fine solids not fully removed by filtration alone"
+     }
+    ],
+    "explanation": "Suspended solids shield pathogens and degrade water quality, making filtration essential."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "d1647849a42cf908fc05deeca5661d0070064646e4f4294379c4bf1f69fcd10a",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m1-08",
+    "prompt": "Match each hardness or alkalinity property to its water-system effect.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Alkalinity",
+      "right": "Buffers aquatic life against rapid pH shifts"
+     },
+     {
+      "id": "p2",
+      "left": "Carbonate hardness",
+      "right": "Temporary hardness equal to alkalinity"
+     },
+     {
+      "id": "p3",
+      "left": "Noncarbonate hardness",
+      "right": "Permanent hardness including chlorides and nitrates"
+     },
+     {
+      "id": "p4",
+      "left": "Boiler scaling",
+      "right": "Calcium carbonate and magnesium hydroxide deposit"
+     },
+     {
+      "id": "p5",
+      "left": "Magnesium sulfate",
+      "right": "Hardness salt linked to laxative effects"
+     },
+     {
+      "id": "p6",
+      "left": "Hard water benefit",
+      "right": "Reduces toxicity of lead oxide from lead pipes"
+     }
+    ],
+    "explanation": "Alkalinity and hardness govern pH buffering, pipe scaling, and metal toxicity in water systems."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "ce0d9f8289063152ed316b3488bebbf07322813c845ce82f890ace3d45c8df11",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m1-09",
+    "prompt": "Match each metal or toxicity factor to its environmental behavior.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Calcium and magnesium",
+      "right": "Nontoxic hardness ions from limestone dissolution"
+     },
+     {
+      "id": "p2",
+      "left": "Hard water",
+      "right": "Reduces biological toxicity of dissolved toxic metals"
+     },
+     {
+      "id": "p3",
+      "left": "Soft acidic water",
+      "right": "Increases toxicity of a given metal concentration"
+     },
+     {
+      "id": "p4",
+      "left": "Cumulative toxins",
+      "right": "Arsenic, cadmium, lead, and mercury in food chains"
+     },
+     {
+      "id": "p5",
+      "left": "Nontoxic trace metals",
+      "right": "Cause taste problems before reaching toxic levels"
+     },
+     {
+      "id": "p6",
+      "left": "Barium and chromium",
+      "right": "Toxic metals harmful even in small quantities"
+     }
+    ],
+    "explanation": "Water hardness and acidity strongly influence metal toxicity, while cumulative toxins concentrate in food chains."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "7cc205a2ce063c9ead1c31ddeb28534c62e1915eb28971336d44708e7dcbc2ab",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m1-10",
+    "prompt": "Match each organic decomposition term to its chemical or biological meaning.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Biodegradable organics",
+      "right": "Alcohols, starches, fats, and proteins microbes use"
+     },
+     {
+      "id": "p2",
+      "left": "Oxidation",
+      "right": "Adding oxygen or removing hydrogen from organics"
+     },
+     {
+      "id": "p3",
+      "left": "Reduction",
+      "right": "Adding hydrogen or removing oxygen from organics"
+     },
+     {
+      "id": "p4",
+      "left": "Aerobic decomposition",
+      "right": "Efficient breakdown yielding stable end products"
+     },
+     {
+      "id": "p5",
+      "left": "Anaerobic decomposition",
+      "right": "Oxygen-absent breakdown yielding objectionable products"
+     },
+     {
+      "id": "p6",
+      "left": "Biochemical oxygen demand",
+      "right": "Measure of oxygen-consuming organics in water"
+     }
+    ],
+    "explanation": "Microbial utilization of biodegradable organics depends on oxygen availability and redox reactions."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "2686936ef4b722e41e16d4a40431f4cf32e665765a7a64c66352d442a5f86e69",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m3-01",
+    "prompt": "Assume a human host has previous exposure to Cryptosporidium parvum and is challenged again, compared with an unexposed host. What happens to the host's immunity to challenge infection?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Previous exposure to Cryptosporidium parvum results in either full or partial immunity to subsequent challenge infections."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "baaeb3d0d2277a67cb6d27120b849ac00ef257384904e4e15523baaf1baf3db2",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m3-02",
+    "prompt": "Assume a patient's immune system is severely suppressed during a Cryptosporidium parvum infection. What happens to the duration of the diarrheal illness?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "In immunosuppressed individuals, the infection is not cleared in one to two weeks and can continue indefinitely."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "bbd41beee59ab43514376482ac3d0fb92c84ff855e7a59608adbdc4aca0568fe",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m3-03",
+    "prompt": "Assume freshly excreted Cyclospora oocysts sit in a moist, warm environment for days to weeks after contaminating produce. What happens to the infectivity of those oocysts?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Fresh Cyclospora oocysts are not infectious until they sporulate over days to weeks under suitable conditions."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "850dd6e40cbff84686a5cc69d259d5ce2ff89653ed50773ddeaac9952bbc38c3",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m3-04",
+    "prompt": "Assume atmospheric carbon dioxide concentration rises substantially while Earth's outgoing heat radiation is trapped. What happens to the warming of the lower atmosphere?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Carbon dioxide acts as a heat screen, so massive increases trap more heat and increase global warming."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "938ae5ffd6632082fea0bbc6e0d29fc2b52adff50d029718f0105a7d7aaa657c",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m3-05",
+    "prompt": "Assume a wastewater plant applies biological nitrification to convert ammonia nitrogen into nitrate. What happens to the chlorine demand of the effluent?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Ammonia exerts a chlorine demand, so converting ammonia to nitrate reduces the effluent's chlorine demand."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "0eba3b448061571855bf85f8f476b3dce6fdc3d070a34c7cd1aafe55e0bfabc4",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m3-06",
+    "prompt": "Assume biological denitrification converts nitrate into nitrogen gas in a treatment tank. What happens to the dissolved nitrate concentration in the water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Denitrification converts dissolved nitrate into nitrogen gas, which escapes to the atmosphere."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "514c38f8d7b453dcc7681389faaa02eb5095790090e491f17e07a9ec0d3625e5",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m3-07",
+    "prompt": "Assume warm summer temperatures and high sunlight coincide with high nutrient levels in a lake. What happens to the rate of algal growth?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "High light levels and warm summer temperatures favor rapid algal growth when nutrients are present."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "bba9bd87dd4abe06aa5b7b7d31a4c436cfbd03227d7d30285315feb3e08030db",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m3-08",
+    "prompt": "Assume excess aquatic weeds and decomposing organics increase in a lake. What happens to the dissolved oxygen available for fish?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Pollutants and decaying organic matter consume dissolved oxygen, reducing availability for fish."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "6a7d545121a4dbfb7b35795a8ff28ccff59382aaf2bb625bb763318144cf0c2e",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m3-09",
+    "prompt": "Assume soil erosion and stream bank scour increase during a storm. What happens to the concentration of suspended solids in the stream?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Soil particles from land surfaces and sand, silt, and clay from bank scour raise suspended solids."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "749f1782b6d78173be7672e6eda7b3b76178bd51f30c37fd8eeca106094c5b7f",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m3-10",
+    "prompt": "Assume a natural water has high alkalinity and receives a small acid addition. What happens to the magnitude of rapid pH change compared with low-alkalinity water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Alkalinity buffers water against rapid pH changes, reducing the pH shift from small acid additions."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "f7add7c1d243e92e1d5a6e76031162d015e668ff1411f10b7142949408a823e5",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m3-11",
+    "prompt": "Assume a consumer switches from soft water to hard water containing high magnesium sulfate. What happens to the likelihood of a laxative effect?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Hard water, especially with magnesium sulfates, can produce a laxative effect in new consumers."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "8dde3f2f417dce1162627308c791281a5a61d2539a432b107d48c08f4007b634",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m3-12",
+    "prompt": "Assume carbonate-hard water is heated in a boiler without scale control. What happens to the heat-transfer efficiency of the boiler?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Heating carbonate-hard water precipitates rock-hard scale that insulates surfaces and reduces boiler efficiency."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "5170187494a7c5f9507274d2f2ba5dd852bcfc7234b49c892bd31564fd94df29",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m3-13",
+    "prompt": "Assume water hardness increases due to higher calcium and magnesium while a trace toxic metal concentration stays constant. What happens to the toxicity of that trace metal?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Organisms absorb nontoxic calcium and magnesium more readily, which reduces the toxicity of dissolved toxic metals."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "7d74a998b3db066104355f6548f2f14775e8806bc6300691188ecd792c3b4942",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m3-14",
+    "prompt": "Assume an aerobic biological system loses its dissolved oxygen supply and becomes anaerobic. What happens to the efficiency of organic matter oxidation?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Aerobic oxidation is far more efficient than anaerobic decomposition, so losing oxygen decreases efficiency."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "38f3c7f40d86526e86c90cdab6d50473bf369a984ab578ef530b3fa30d054bce",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m3-15",
+    "prompt": "Assume a treatment plant removes suspended solids by filtration while dissolved calcium and magnesium ions remain unchanged. What happens to the water's total hardness?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Hardness comes from dissolved multivalent metal ions, which pass through standard filtration unchanged."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "ddf2b15ca4924081f8f6d3b4e5599938b261681a1bdb23b49961a41a93b08840",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m4-01",
+    "prompt": "A class reviews Cryptosporidium detection and host patterns. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Oocysts are more prevalent in surface waters after heavy rains wash animal wastes from the land."
+     },
+     {
+      "id": "b",
+      "label": "Recovering Cryptosporidium oocysts from water sample filters is a simple, reliable step."
+     },
+     {
+      "id": "c",
+      "label": "Previous exposure to Cryptosporidium parvum can give humans full or partial immunity to challenge."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Recovering oocysts trapped on sample filters is difficult, and current detection methods are unreliable."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "c3eea8b3de3b9f579d34364b3989cc9987c39c407f8caa8fde809112d95227eb",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m4-02",
+    "prompt": "An operator reviews cryptosporidiosis prevention and treatment. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "People with normal immune systems usually recover in one to two weeks with fluids and extra rest."
+     },
+     {
+      "id": "b",
+      "label": "Specific antiparasitic medications provide a safe, rapid cure for most cryptosporidiosis cases."
+     },
+     {
+      "id": "c",
+      "label": "Boiling drinking water for one minute kills oocysts during community-wide waterborne outbreaks."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "No safe and effective specific antiparasitic cure for cryptosporidiosis currently exists."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "08b3f775a8b5309d4d11d46bfe1286a1ccf35d0c76aa55be4715bc9b4dcf3f45",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m4-03",
+    "prompt": "Students review Cyclospora transmission in water and food. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Cyclospora oocysts excreted in feces require days to weeks to sporulate and become infectious."
+     },
+     {
+      "id": "b",
+      "label": "Outbreaks of Cyclospora have been linked to contaminated drinking water and fresh produce."
+     },
+     {
+      "id": "c",
+      "label": "Cyclospora organisms are routinely grown in tissue cultures to confirm waterborne outbreaks."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Cyclospora organisms have not yet been grown in tissue cultures or laboratory animal models."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "20017bc8509ede4b7c57483d2b4638b71801e61db66f5d16e2258f8ce86bfb0d",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m4-04",
+    "prompt": "A class reviews the carbon cycle and fossil fuels. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Burning fossil fuels combines stored carbon with oxygen to release carbon dioxide into the air."
+     },
+     {
+      "id": "b",
+      "label": "Atmospheric carbon dioxide acts as a heat screen by trapping Earth's outgoing heat radiation."
+     },
+     {
+      "id": "c",
+      "label": "Decreasing green-belt removal capacity helps balance rising fossil-fuel emissions."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Decreasing green-belt removal capacity worsens the imbalance as fossil-fuel carbon dioxide emissions rise."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "b2485e6ea9d0c0a2327ecc8502adbc91f035a897ecadabe1a49731a167755e12",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m4-05",
+    "prompt": "An operator reviews nitrogen fixation in soil and plants. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Symbiotic bacteria in pea root nodules convert atmospheric nitrogen gas into usable nitrates."
+     },
+     {
+      "id": "b",
+      "label": "Lightning is a natural physical process capable of fixing atmospheric nitrogen."
+     },
+     {
+      "id": "c",
+      "label": "Nitrogen-fixing bacteria in root nodules harm the host plant by stripping away its nitrates."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Nitrogen-fixing bacteria form a symbiotic relationship where both the bacteria and the host plant benefit."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "fff0f116ff6a7a8da9c1ba5e8e294914d3b6b65e5887e4a7f961fbcc22b411b3",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m4-06",
+    "prompt": "Students review wastewater nitrogen and phosphorus control. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Urea in wastewater transforms into ammonia nitrogen, which exerts BOD and chlorine demand."
+     },
+     {
+      "id": "b",
+      "label": "Nitrification is a biological process that adds oxygen to convert ammonia into nitrates."
+     },
+     {
+      "id": "c",
+      "label": "Phosphorus is scarcer in wastewater than nitrogen and is harder to control."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Nitrogen is found in smaller quantities in wastewater and is more difficult to control than phosphorus."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "e595cdd32b115e32ba5f081096c0d4f4d590c8b3783c88a2ea1d6c643f27fc86",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m4-07",
+    "prompt": "A class reviews the phosphorus cycle. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Phosphorus enters ecosystems through the gradual erosion of sedimentary rock deposits."
+     },
+     {
+      "id": "b",
+      "label": "Fish-eating birds help return marine phosphorus to land through guano deposits."
+     },
+     {
+      "id": "c",
+      "label": "The phosphorus cycle relies mainly on atmospheric gas reservoirs."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Unlike nitrogen and carbon, phosphorus is stored in sedimentary rock rather than atmospheric gas."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "4a45d4b4f73ead3709388f2e88a53ae8adc6b14285b2fd856f551dca57e6c106",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m4-08",
+    "prompt": "An operator reviews early wastewater regulatory goals. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Early wastewater programs aimed to remove suspended and floatable material from discharges."
+     },
+     {
+      "id": "b",
+      "label": "Early regulatory efforts focused on treating biodegradable organics and eliminating pathogens."
+     },
+     {
+      "id": "c",
+      "label": "Early wastewater regulations ignored public health and focused on desalting river water."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Preliminary regulatory efforts focused on protecting public health by removing solids, organics, and pathogens."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "d375d353dbfe9227258c659b0e92239e572afc3dd2b13b4eb143eb4cff884676",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m4-09",
+    "prompt": "A class reviews suspended solids in water treatment. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Suspended solids can include both organic detritus and inorganic sand, silt, or clay."
+     },
+     {
+      "id": "b",
+      "label": "Suspended solids provide adsorption sites that shield attached microbes from chlorine."
+     },
+     {
+      "id": "c",
+      "label": "Granular filtration removes colloids and dissolved solids as easily as silt."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "While filtration effectively removes suspended solids, colloids and dissolved solids can pass through."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "d1730becedf8abe0ed54e86ffbb1e39b3569e0d911465a3b0dbf3375e303dfd9",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m4-10",
+    "prompt": "Students review alkalinity in natural water. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Alkalinity protects fish and aquatic life by buffering against rapid pH changes."
+     },
+     {
+      "id": "b",
+      "label": "Alkalinity levels influence the efficiency of water treatment processes such as coagulation."
+     },
+     {
+      "id": "c",
+      "label": "Highly alkaline water poses a severe acute toxicity threat to human health."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Highly alkaline water is unpalatable, but this condition has little known significance for human health."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "c7c7a25d50d0bbe2db4fbd8ac755399c4ee51354cdec52bbfdeae48c48cc6f79",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m4-11",
+    "prompt": "An operator reviews carbonate and noncarbonate hardness. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Hardness is caused by multivalent metal ions, primarily calcium and magnesium in freshwater."
+     },
+     {
+      "id": "b",
+      "label": "Carbonate hardness is temporary hardness and is equal to the water's alkalinity."
+     },
+     {
+      "id": "c",
+      "label": "Noncarbonate hardness is temporary hardness that precipitates as soon as water is boiled."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Carbonate hardness is temporary, whereas noncarbonate hardness is permanent and includes chlorides and nitrates."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "5f1fdf5b54ce7b9814cc7e694d234e309f316599514770da3eab645d7f951830",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m4-12",
+    "prompt": "A class reviews hard water advantages and disadvantages. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Hard water reduces the toxicity of poisoning by lead oxide from lead pipelines."
+     },
+     {
+      "id": "b",
+      "label": "Heating carbonate-hard water forms scale that clogs hot water pipes and boilers."
+     },
+     {
+      "id": "c",
+      "label": "Hard water is suspected of increasing cardiovascular disease."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Soft waters, rather than hard waters, are suspected to be associated with cardiovascular diseases."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "935d00023eb2bda0b54638a64cfc9ae51344665feb36ddae790fc67d77f2fedf",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m4-13",
+    "prompt": "An operator reviews toxic metals in natural water. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Arsenic, cadmium, lead, and mercury are cumulative toxins concentrated by the food chain."
+     },
+     {
+      "id": "b",
+      "label": "Nontoxic trace metals generally cause taste problems well before reaching toxic levels."
+     },
+     {
+      "id": "c",
+      "label": "A toxic metal is more harmful in hard water than in soft, acidic water."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Hard water reduces toxic metal toxicity, whereas soft, acidic water increases it."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "e621ae34a7931613084a9b648fee685c3e09cf9c13c59fbffc301a5e91b0bb90",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m4-14",
+    "prompt": "A class reviews biodegradable organics in water. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Biodegradable organics include alcohols, acids, starches, fats, proteins, and aldehydes."
+     },
+     {
+      "id": "b",
+      "label": "Some biodegradable organics can cause color, taste, and odor problems in water."
+     },
+     {
+      "id": "c",
+      "label": "Biodegradable organics resist microbial breakdown in natural water."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Biodegradable organics are utilized by naturally occurring microorganisms within a reasonable length of time."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "ea696e133d1cb872ba6ccb473ff438fd4fb5e14536178877d6df9c239f8c30b1",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-r04-m4-15",
+    "prompt": "Students review oxidation and reduction of organics. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Oxidation adds oxygen to or deletes hydrogen from elements of an organic molecule."
+     },
+     {
+      "id": "b",
+      "label": "Reduction adds hydrogen to or deletes oxygen from elements of an organic molecule."
+     },
+     {
+      "id": "c",
+      "label": "Anaerobic decomposition yields stable, odor-free end products."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Oxygen-absent anaerobic decomposition results in unstable and objectionable end products."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+    "notes": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:40:08.231Z",
+    "payloadSha256": "db66047baf5c291f6dfba61f314027e468405a3fa36a6a98cccc10d75c6ea5ae",
+    "builderResultsSha256": "588e2bb49e2efaad26ea3fd63bb499a388b5a2484a8ce521cde02765b59a350e"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T03:39:02.852304+00:00",
+   "attestation": "Self-reviewed all 55 wpi-class3-water items in overlay targeth-wpi-class3-water-r04 against supplied source pages, scientific accuracy, and novelty; 55 accepted, 0 rejected.",
+   "payloadSha256": {
+    "targeth-ht261118-wpi-class3-water-r04-m0-01": "35c094fdcc629c950f8ab65f1c4778ac5d773c68139aeb084ae18846ea0dfc3f",
+    "targeth-ht261118-wpi-class3-water-r04-m0-02": "6a26ffa7cd8f837fdf81fdc433197609b801298a58caea7bc53901d7588d7927",
+    "targeth-ht261118-wpi-class3-water-r04-m0-03": "c8c660929bbc73d37917c2d40c99e3a28275c2ed7503f7d588a3fdb892242870",
+    "targeth-ht261118-wpi-class3-water-r04-m0-04": "7e405ee87be11bad13a8911556609a96a5eee0fd25708849c88a2bcfea5d5512",
+    "targeth-ht261118-wpi-class3-water-r04-m0-05": "154b0e9d1d6f2a0127546c7f7fd23eb55345d677d6739decbdad4f870acac2c0",
+    "targeth-ht261118-wpi-class3-water-r04-m0-06": "919d9db712bf1d1c25e4e3cf5fad3c33667d5c5771788697dd318d3e1502e64b",
+    "targeth-ht261118-wpi-class3-water-r04-m0-07": "637c3e1eace6a6b5e463ee756c6a47f39ebeea7f960776e18965f8debe0ded36",
+    "targeth-ht261118-wpi-class3-water-r04-m0-08": "69545c81767f842ceda057554804296524f7231df140ad545335a2dd47a79e9c",
+    "targeth-ht261118-wpi-class3-water-r04-m0-09": "222c3ccfcc39649fe1ec4e3579f8c6f18cc738c893672081c90384fd311c5107",
+    "targeth-ht261118-wpi-class3-water-r04-m0-10": "ada118233556aac34b69d0198a11748aad27c932a58be869621cbb836d63efac",
+    "targeth-ht261118-wpi-class3-water-r04-m0-11": "b1bf93cd1df12fd586995c445c356e2e6a0afa66d57d86dfb01ba140dd76b63f",
+    "targeth-ht261118-wpi-class3-water-r04-m0-12": "e202724a4dc2ffa6460cb79268b206671b5e71092eac93eb018774f3562cd700",
+    "targeth-ht261118-wpi-class3-water-r04-m0-13": "a8e08269320631ce8e87a62dfbbf2c74d625ca08b56fad29ad97e6ba58a37306",
+    "targeth-ht261118-wpi-class3-water-r04-m0-14": "8293c66991db23d0146d0b3a5515507e4b5aef9eee0e8c8086f8d4ba2f4eb247",
+    "targeth-ht261118-wpi-class3-water-r04-m0-15": "bd37814660758eb59c3929fbf1bbf69e3d146daabaccab341ec761d3d984ab21",
+    "targeth-ht261118-wpi-class3-water-r04-m1-01": "2d00aabfba3489d43d11443c70a9a85b691badedd97a65ebc42818c9a234928c",
+    "targeth-ht261118-wpi-class3-water-r04-m1-02": "56ed89567d50338370f93de795ccb0ab3ba63666557edf45538b195f2e22e051",
+    "targeth-ht261118-wpi-class3-water-r04-m1-03": "4fbe14cc72a7f851b35e677d1c53469b88f34efcc19f61d674a6e068931e2324",
+    "targeth-ht261118-wpi-class3-water-r04-m1-04": "af52f179403f0acff9b7dc62be25ffc75617384659de21927eb16358368e7a80",
+    "targeth-ht261118-wpi-class3-water-r04-m1-05": "770c3e337f7397e084f659d5318567a454ff9842cb511dcb3dce6fde63530a54",
+    "targeth-ht261118-wpi-class3-water-r04-m1-06": "6216cc4591ba6977ca58176d82733d1dab1d5d26c65b3f27f02c54bd2564714b",
+    "targeth-ht261118-wpi-class3-water-r04-m1-07": "d1647849a42cf908fc05deeca5661d0070064646e4f4294379c4bf1f69fcd10a",
+    "targeth-ht261118-wpi-class3-water-r04-m1-08": "ce0d9f8289063152ed316b3488bebbf07322813c845ce82f890ace3d45c8df11",
+    "targeth-ht261118-wpi-class3-water-r04-m1-09": "7cc205a2ce063c9ead1c31ddeb28534c62e1915eb28971336d44708e7dcbc2ab",
+    "targeth-ht261118-wpi-class3-water-r04-m1-10": "2686936ef4b722e41e16d4a40431f4cf32e665765a7a64c66352d442a5f86e69",
+    "targeth-ht261118-wpi-class3-water-r04-m3-01": "baaeb3d0d2277a67cb6d27120b849ac00ef257384904e4e15523baaf1baf3db2",
+    "targeth-ht261118-wpi-class3-water-r04-m3-02": "bbd41beee59ab43514376482ac3d0fb92c84ff855e7a59608adbdc4aca0568fe",
+    "targeth-ht261118-wpi-class3-water-r04-m3-03": "850dd6e40cbff84686a5cc69d259d5ce2ff89653ed50773ddeaac9952bbc38c3",
+    "targeth-ht261118-wpi-class3-water-r04-m3-04": "938ae5ffd6632082fea0bbc6e0d29fc2b52adff50d029718f0105a7d7aaa657c",
+    "targeth-ht261118-wpi-class3-water-r04-m3-05": "0eba3b448061571855bf85f8f476b3dce6fdc3d070a34c7cd1aafe55e0bfabc4",
+    "targeth-ht261118-wpi-class3-water-r04-m3-06": "514c38f8d7b453dcc7681389faaa02eb5095790090e491f17e07a9ec0d3625e5",
+    "targeth-ht261118-wpi-class3-water-r04-m3-07": "bba9bd87dd4abe06aa5b7b7d31a4c436cfbd03227d7d30285315feb3e08030db",
+    "targeth-ht261118-wpi-class3-water-r04-m3-08": "6a7d545121a4dbfb7b35795a8ff28ccff59382aaf2bb625bb763318144cf0c2e",
+    "targeth-ht261118-wpi-class3-water-r04-m3-09": "749f1782b6d78173be7672e6eda7b3b76178bd51f30c37fd8eeca106094c5b7f",
+    "targeth-ht261118-wpi-class3-water-r04-m3-10": "f7add7c1d243e92e1d5a6e76031162d015e668ff1411f10b7142949408a823e5",
+    "targeth-ht261118-wpi-class3-water-r04-m3-11": "8dde3f2f417dce1162627308c791281a5a61d2539a432b107d48c08f4007b634",
+    "targeth-ht261118-wpi-class3-water-r04-m3-12": "5170187494a7c5f9507274d2f2ba5dd852bcfc7234b49c892bd31564fd94df29",
+    "targeth-ht261118-wpi-class3-water-r04-m3-13": "7d74a998b3db066104355f6548f2f14775e8806bc6300691188ecd792c3b4942",
+    "targeth-ht261118-wpi-class3-water-r04-m3-14": "38f3c7f40d86526e86c90cdab6d50473bf369a984ab578ef530b3fa30d054bce",
+    "targeth-ht261118-wpi-class3-water-r04-m3-15": "ddf2b15ca4924081f8f6d3b4e5599938b261681a1bdb23b49961a41a93b08840",
+    "targeth-ht261118-wpi-class3-water-r04-m4-01": "c3eea8b3de3b9f579d34364b3989cc9987c39c407f8caa8fde809112d95227eb",
+    "targeth-ht261118-wpi-class3-water-r04-m4-02": "08b3f775a8b5309d4d11d46bfe1286a1ccf35d0c76aa55be4715bc9b4dcf3f45",
+    "targeth-ht261118-wpi-class3-water-r04-m4-03": "20017bc8509ede4b7c57483d2b4638b71801e61db66f5d16e2258f8ce86bfb0d",
+    "targeth-ht261118-wpi-class3-water-r04-m4-04": "b2485e6ea9d0c0a2327ecc8502adbc91f035a897ecadabe1a49731a167755e12",
+    "targeth-ht261118-wpi-class3-water-r04-m4-05": "fff0f116ff6a7a8da9c1ba5e8e294914d3b6b65e5887e4a7f961fbcc22b411b3",
+    "targeth-ht261118-wpi-class3-water-r04-m4-06": "e595cdd32b115e32ba5f081096c0d4f4d590c8b3783c88a2ea1d6c643f27fc86",
+    "targeth-ht261118-wpi-class3-water-r04-m4-07": "4a45d4b4f73ead3709388f2e88a53ae8adc6b14285b2fd856f551dca57e6c106",
+    "targeth-ht261118-wpi-class3-water-r04-m4-08": "d375d353dbfe9227258c659b0e92239e572afc3dd2b13b4eb143eb4cff884676",
+    "targeth-ht261118-wpi-class3-water-r04-m4-09": "d1730becedf8abe0ed54e86ffbb1e39b3569e0d911465a3b0dbf3375e303dfd9",
+    "targeth-ht261118-wpi-class3-water-r04-m4-10": "c7c7a25d50d0bbe2db4fbd8ac755399c4ee51354cdec52bbfdeae48c48cc6f79",
+    "targeth-ht261118-wpi-class3-water-r04-m4-11": "5f1fdf5b54ce7b9814cc7e694d234e309f316599514770da3eab645d7f951830",
+    "targeth-ht261118-wpi-class3-water-r04-m4-12": "935d00023eb2bda0b54638a64cfc9ae51344665feb36ddae790fc67d77f2fedf",
+    "targeth-ht261118-wpi-class3-water-r04-m4-13": "e621ae34a7931613084a9b648fee685c3e09cf9c13c59fbffc301a5e91b0bb90",
+    "targeth-ht261118-wpi-class3-water-r04-m4-14": "ea696e133d1cb872ba6ccb473ff438fd4fb5e14536178877d6df9c239f8c30b1",
+    "targeth-ht261118-wpi-class3-water-r04-m4-15": "db66047baf5c291f6dfba61f314027e468405a3fa36a6a98cccc10d75c6ea5ae"
+   }
+  },
+  "registeredAt": "2026-11-19T03:40:08.231Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 8,
+     "f": 7
+    },
+    "dirs": {
+     "increase": 7,
+     "decrease": 7,
+     "unchanged": 1
+    },
+    "longest": 1,
+    "options": 30
+   },
+   "batchSha256": "7f3ad5fa525fb60b249c5f673f24ca77341dcf9c367ebe621c1495d6c37f89ba"
+  }
+ }
+}

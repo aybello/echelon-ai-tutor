@@ -1,0 +1,2454 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-class2-water-dist-r06",
+ "scope": "Owner-authorized AI-reviewed game activities: 70 items.",
+ "additions": [
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m0-01",
+    "prompt": "Cast iron pipe can experience corrosion due to electrolysis when it contacts acid or alkali soils.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Electrolysis corrosion in acid or alkali soils is a known disadvantage of cast iron pipe."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "061d9409b9055f5eb0caafa78651a7845671bde2b02c9cfd8305cd3c589f987d",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m0-02",
+    "prompt": "Ductile iron pipe has flaked graphite, which makes it heavier than cast iron pipe of the same external diameter.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Ductile iron has spheroidal or nodular graphite and is lighter than cast iron."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "4d386f1ea4895cb2c76f9b353216095868e9926e182b40e824d98c66c681487c",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m0-03",
+    "prompt": "Annealing steel pipe involves heating the metal and letting it cool gradually to make it softer and less brittle.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Annealing is a common heat treatment used to relieve stress and reduce brittleness in steel."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "7bc6f5faaff9eb6116966b709df3a7e842e3f25ce2ac1511d315045a07b8f0fb",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m0-04",
+    "prompt": "For nominal pipe sizes 14 inches and greater, the actual outside diameter is smaller than the nominal size.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "A pipe 14 inches or greater in diameter has an actual outside diameter equal to its nominal size."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "4d2a8deaa22faf0f88768497fec1e136dec9428bbd98c344e048a95ed72151c7",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m0-05",
+    "prompt": "Screwed or threaded joints are suited for low-pressure domestic water lines where vibration is absent.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Threaded joints offer high leakage integrity at low pressure and temperature without vibration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "ccc300bcee3dfb4a9531f0629b5828c418e2fa352fc3d443dca082a070468b76",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m0-06",
+    "prompt": "Cutting external threads into a metal pipe wall increases the structural strength of the pipe at the joint.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Threading cuts into the pipe wall and weakens the pipe at the threaded section."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "165718c4d7c9c34f62233527da8fa36da53e1130a73e32434f95cfac1734f8df",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m0-07",
+    "prompt": "Flexible metal tubing absorbs vibration and shock on equipment like air compressors, reducing wear on fittings.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Flexible tubing absorbs vibration and shock, resulting in less wear and tear on attached fittings."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "16213363cb8590f0df8a05b7602bafca68aac7d2156e7a2a58e169f5dc7d664a",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m0-08",
+    "prompt": "In a soldered copper tubing joint, the fitting is heated first and the tubing next to it is heated last.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "During soldering, the tubing next to the fitting is heated first, then the fitting itself."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "267a6c6a29d7100ae4b05db9aba9210fcf3e0ec407f7cd54b7f4ed6b04fac0d1",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m0-09",
+    "prompt": "Process lines in a treatment plant carry fluids for unit operations such as sludge digestion, whereas service lines carry utilities like water, steam, and compressed air.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Unit process piping is classified as process lines, while utility piping for water, steam, air, and gas is classified as service lines."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "18df3047c2dfdca66ea94e139f6b33947d8952e2cc2ea4eca178e323942b1c2a",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m0-10",
+    "prompt": "Nonferrous metals such as brass contain iron as their primary structural element.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Nonferrous metals, unlike ferrous metals, do not contain iron."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "3fee1ecf9da40887649b631b54165aac026b412258a730683d6c36153f6193f3",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m0-11",
+    "prompt": "Chloride ions pass through conventional waste treatment largely unchanged, so elevated chloride can indicate waste disposal.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Conventional treatment does not remove chloride significantly, making high chloride an indicator of waste disposal."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "5da23e34c6d8cc7de87417f5cde8da74b9122f6db08152e93974e5da484c2892",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m0-12",
+    "prompt": "Pathogenic bacteria, viruses, and protozoa are native to aquatic systems and multiply without an animal host.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Pathogens are not native to aquatic systems and usually require an animal host to grow and reproduce."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "893423c82a51ee83e575d0e2f21d17781732753856376351672df74732ccce0b",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m0-13",
+    "prompt": "Sulfate in wastewater can be reduced biologically to sulfide, which combines with hydrogen to form corrosive hydrogen sulfide.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Biological sulfate reduction produces sulfide, which forms hydrogen sulfide that corrodes interceptor pipes."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "a160e55ece32c9bca871ab9ac07abff7d31182e73a5b73ed290785fa7cf67366",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m0-14",
+    "prompt": "Autotrophic bacteria obtain their carbon from dead vegetation and sewage rather than from carbon dioxide in the air.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Autotrophs use carbon dioxide from the air, whereas heterotrophs use organic compounds."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "918177538dc8f1281f7010b60f8a3efc165113cd4f4cfced31c7e5d5dd6a86fe",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m0-15",
+    "prompt": "Pipe hangers and supports are part of a piping system to prevent overstressing of pressure-containing components.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Piping includes hangers and supports to prevent overpressurization and overstressing of components."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "fa6325c61b3d42dbddaeec69ca12a62cef450d7c73758769aee6eb55ebecf0b8",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m1-01",
+    "prompt": "Distinguish metallic pipe and tubing characteristics by material or surface property.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Cast iron",
+      "right": "Flaked graphite prone to electrolysis in acid soils"
+     },
+     {
+      "id": "p2",
+      "left": "Ductile iron",
+      "right": "Spheroidal graphite with higher flexural strength"
+     },
+     {
+      "id": "p3",
+      "left": "Annealing",
+      "right": "Gradual cooling after heating to reduce brittleness"
+     },
+     {
+      "id": "p4",
+      "left": "Brass",
+      "right": "Nonferrous metal alloy containing no iron"
+     },
+     {
+      "id": "p5",
+      "left": "Stainless steel pipe",
+      "right": "Identified by an S after the schedule number"
+     },
+     {
+      "id": "p6",
+      "left": "Metal tubing",
+      "right": "Smoother inner wall that reduces turbulent flow"
+     }
+    ],
+    "explanation": "Metallic piping materials differ in graphite structure, alloy content, heat treatment, and surface smoothness."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "8067158531421288216a8fd21fe748d0f3d76d103a50d0fa07c08810b8d4ba0f",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m1-02",
+    "prompt": "Distinguish pipe wall, sizing, and rating standards by their engineering basis.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Schedule number",
+      "right": "Standardized designation for pipe wall thickness"
+     },
+     {
+      "id": "p2",
+      "left": "STD, XS, XXS",
+      "right": "Original wall thickness classes with no variation"
+     },
+     {
+      "id": "p3",
+      "left": "Pipe 14 in. or larger",
+      "right": "Actual outside diameter equals nominal size"
+     },
+     {
+      "id": "p4",
+      "left": "ASTM ratings",
+      "right": "Published codes setting minimum size and wall thickness"
+     },
+     {
+      "id": "p5",
+      "left": "Manufacturers' ratings",
+      "right": "Proprietary pressure-temperature limits for joints"
+     },
+     {
+      "id": "p6",
+      "left": "Pipe hangers",
+      "right": "Supports preventing overstressing of pressure components"
+     }
+    ],
+    "explanation": "Pipe sizing and rating systems standardize outside diameters, wall thicknesses, and pressure-temperature limits."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "86f468e0f35c6ff463e4270a247196dd5ed8ff046fdafe7dd50e4b6eb356b35a",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m1-03",
+    "prompt": "Distinguish piping system lines and thermal-control hardware by their function.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Process lines",
+      "right": "Pipes serving unit operations like sludge digestion"
+     },
+     {
+      "id": "p2",
+      "left": "Service lines",
+      "right": "Utility pipes carrying water, steam, or compressed air"
+     },
+     {
+      "id": "p3",
+      "left": "Expansion joints",
+      "right": "Fittings providing flexibility for thermal length changes"
+     },
+     {
+      "id": "p4",
+      "left": "Anchors and guides",
+      "right": "Hardware controlling where thermal expansion occurs"
+     },
+     {
+      "id": "p5",
+      "left": "Screwed joints",
+      "right": "Threaded connections suited for low-pressure, low-vibration lines"
+     },
+     {
+      "id": "p6",
+      "left": "Flexible tubing",
+      "right": "Conduit absorbing shock and vibration on compressors"
+     }
+    ],
+    "explanation": "Plant piping separates process and utility roles while using anchors, expansion joints, and flexible tubing to manage stress."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "ec33c371a35ce10ebe86dc0a250073ffd669d2b2a89f87158b55a4169a37ef33",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m1-04",
+    "prompt": "Distinguish tubing connection tools and soldering steps by their role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Soldering flux",
+      "right": "Prevents oxide formation while heating copper"
+     },
+     {
+      "id": "p2",
+      "left": "Tinning",
+      "right": "Adding solder as flux begins to spread"
+     },
+     {
+      "id": "p3",
+      "left": "Sleeve",
+      "right": "Fitting receiving two tubing ends from opposite sides"
+     },
+     {
+      "id": "p4",
+      "left": "Flaring tool",
+      "right": "Shapes tubing ends for flared mechanical connections"
+     },
+     {
+      "id": "p5",
+      "left": "Burring tool",
+      "right": "Removes rough edges after cutting tubing"
+     },
+     {
+      "id": "p6",
+      "left": "Even heating",
+      "right": "Produces a continuous line of solder around the joint"
+     }
+    ],
+    "explanation": "Proper tubing connections rely on clean preparation, flux to prevent oxidation, and even heating."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "fc551e878fef2ef72ae8000052480d1ca3a0e0e56af0a7a74926c1ff2bef4b49",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m1-05",
+    "prompt": "Distinguish inorganic water constituents and their effects in water systems.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Bicarbonate ions",
+      "right": "Primary chemical cause of alkalinity in water"
+     },
+     {
+      "id": "p2",
+      "left": "Chloride",
+      "right": "Unchanged by conventional treatment, indicating waste discharge"
+     },
+     {
+      "id": "p3",
+      "left": "Phosphorus",
+      "right": "Nutrient whose reduction helps control lake eutrophication"
+     },
+     {
+      "id": "p4",
+      "left": "Sulfate",
+      "right": "Ion biologically reduced to sulfide in anaerobic pipes"
+     },
+     {
+      "id": "p5",
+      "left": "Hydrogen sulfide",
+      "right": "Corrosive gas formed from sulfide and hydrogen"
+     },
+     {
+      "id": "p6",
+      "left": "Heavy metals",
+      "right": "Priority pollutants toxic to treatment microorganisms"
+     }
+    ],
+    "explanation": "Inorganic ions govern buffering, eutrophication, anaerobic pipe corrosion, and biological treatment toxicity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "d3592bb4a7b8d1c8a12ab01cf50f5c5f5232df1379481b03fa94ca092463ab0d",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m1-06",
+    "prompt": "Distinguish microbial groups and nutritional modes in water systems.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Pathogens",
+      "right": "Disease-causing organisms requiring an animal host"
+     },
+     {
+      "id": "p2",
+      "left": "Autotrophs",
+      "right": "Bacteria obtaining carbon from carbon dioxide in air"
+     },
+     {
+      "id": "p3",
+      "left": "Heterotrophs",
+      "right": "Bacteria obtaining carbon from organic matter"
+     },
+     {
+      "id": "p4",
+      "left": "Photosynthetic bacteria",
+      "right": "Organisms deriving energy from sunlight"
+     },
+     {
+      "id": "p5",
+      "left": "Chemosynthetic bacteria",
+      "right": "Organisms deriving energy from chemical reactions"
+     },
+     {
+      "id": "p6",
+      "left": "Binary fission",
+      "right": "Method by which single-celled bacteria multiply"
+     }
+    ],
+    "explanation": "Microorganisms in water are classified by their carbon source, energy source, host dependence, and reproduction."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "506b7bf485d8fb89cbd2cff08cb1a49ce86948a70d70a9586ae08ca61cb767e3",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m1-07",
+    "prompt": "Distinguish pipe jointing and wall-strength concepts by their mechanical impact.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Threading pipe",
+      "right": "Weakens the pipe wall by cutting into it"
+     },
+     {
+      "id": "p2",
+      "left": "Soldering",
+      "right": "Joins tubing without cutting threads into the wall"
+     },
+     {
+      "id": "p3",
+      "left": "Brazing",
+      "right": "Joins tubing at higher temperature than soldering"
+     },
+     {
+      "id": "p4",
+      "left": "Welding",
+      "right": "Joins metal by melting edges together"
+     },
+     {
+      "id": "p5",
+      "left": "Compression connection",
+      "right": "Joins tubing by pressing joint sections together"
+     },
+     {
+      "id": "p6",
+      "left": "Capillary draw",
+      "right": "Pulls molten solder into the sleeve gap"
+     }
+    ],
+    "explanation": "Different joining methods affect pipe wall strength and rely on either mechanical compression or thermal fusion."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "ddd37df41ff10bd9f9e2f1e74b050c402fe85d2ac5975b7baea49049f78eeccc",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m1-08",
+    "prompt": "Distinguish factors affecting piping systems and water quality by their mechanism.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Water hammer",
+      "right": "Pressure surge stress common to piping systems"
+     },
+     {
+      "id": "p2",
+      "left": "Air binding",
+      "right": "Trapped air interfering with piping flow"
+     },
+     {
+      "id": "p3",
+      "left": "Electrolysis",
+      "right": "Corrosion of cast iron in acid or alkali soils"
+     },
+     {
+      "id": "p4",
+      "left": "Synthetic detergents",
+      "right": "Lower surface tension and reduce oxygen uptake"
+     },
+     {
+      "id": "p5",
+      "left": "Anaerobic digestion",
+      "right": "Process requiring alkalinity above pH 6.2"
+     },
+     {
+      "id": "p6",
+      "left": "Geologic formations",
+      "right": "Natural source of dissolved carbonates and bicarbonates"
+     }
+    ],
+    "explanation": "Both physical hydraulic stresses and chemical water constituents affect piping integrity and treatment processes."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "b5b0e8d512932b228195cd11e0dd84e987833d331bc3a88558b5e469e6532ed3",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m1-09",
+    "prompt": "Distinguish nonferrous and ferrous piping materials by their properties.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Cast iron",
+      "right": "Heavy ferrous pipe with long service life"
+     },
+     {
+      "id": "p2",
+      "left": "Ductile iron",
+      "right": "Lighter ferrous pipe with greater carrying capacity"
+     },
+     {
+      "id": "p3",
+      "left": "Polyethylene",
+      "right": "Nonferrous plastic material used in piping"
+     },
+     {
+      "id": "p4",
+      "left": "Polyurethane",
+      "right": "Nonferrous synthetic material used in piping"
+     },
+     {
+      "id": "p5",
+      "left": "Galvanized pipe",
+      "right": "Ferrous pipe commonly joined with screwed couplings"
+     },
+     {
+      "id": "p6",
+      "left": "Thin-wall tubing",
+      "right": "Measured to close tolerances in even inches or fractions"
+     }
+    ],
+    "explanation": "Piping materials span heavy ferrous irons, galvanized steel, and nonferrous plastics or thin-wall tubing."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "672c9c7af874f1e531554e8dc2a7f0356c61bdd974a396fe4314ca8fa984db12",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m1-10",
+    "prompt": "Distinguish waterborne pathogen categories and toxicity effects.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Bacteria",
+      "right": "Single-celled microscopic organisms shaped like rods"
+     },
+     {
+      "id": "p2",
+      "left": "Viruses",
+      "right": "Waterborne pathogens smaller than bacteria"
+     },
+     {
+      "id": "p3",
+      "left": "Protozoa",
+      "right": "Single-celled animal-like waterborne pathogens"
+     },
+     {
+      "id": "p4",
+      "left": "Helminths",
+      "right": "Parasitic worms transmitted through water"
+     },
+     {
+      "id": "p5",
+      "left": "Copper and chromium",
+      "right": "Toxic inorganic metals that halt biological treatment"
+     },
+     {
+      "id": "p6",
+      "left": "Eutrophication",
+      "right": "Water quality change driven by excess nutrients"
+     }
+    ],
+    "explanation": "Waterborne pathogens include four distinct biological groups, while toxic metals and nutrients disrupt aquatic and treatment systems."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "500443fc00b73a90f16114d62383c3de5ca2cfc401f1280c0faea6cf250300a8",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m3-01",
+    "prompt": "A 12-inch nominal steel pipe is specified with a higher schedule number while its nominal size remains 12 inches. What happens to the pipe's wall thickness?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Higher schedule numbers designate thicker pipe walls for a given nominal pipe size."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "9f776e0f49b89ab84baad8d07bbd923b54293d9764a0dc95dcd1ca7ed5c8a71f",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m3-02",
+    "prompt": "A stainless steel pipe is annealed by heating and then cooling gradually. What happens to the brittleness of the metal?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Annealing relieves internal stress and makes steel softer and less brittle."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "540f4ecaf2b0cbd00ecfac983de0db3e8027255e32f05c90cc482cee4483ef35",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m3-03",
+    "prompt": "A long, rigid metallic pipeline without expansion joints experiences a large temperature drop. What happens to the length of the pipe?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Metals contract when cooled, reducing the overall length of the pipeline."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "49313bf5f85a109312f256b6a9031da6270ee2b8065be3ab5eb048bc3643740e",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m3-04",
+    "prompt": "A rigid iron pipe connected to a vibrating air compressor is replaced with flexible metal tubing of the same inside diameter. What happens to the shock transmitted to the fittings?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Flexible tubing absorbs vibration and shock, reducing stress on attached fittings."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "5fd511bd8651c21d7f40b3310edc98f1f0a71b47137c998dafe4218f3276002a",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m3-05",
+    "prompt": "A cast iron main is replaced with a ductile iron main of the same external diameter and length. What happens to the weight of the pipe?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Ductile iron pipe is lighter in weight than cast iron pipe of the same external diameter."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "ea023a9da6f3e74281a516bfa4294d66cb70f5ac57adfb8144202d43e36fb5a8",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m3-06",
+    "prompt": "A 16-inch nominal steel pipe is specified with a higher schedule number while its nominal size stays 16 inches. What happens to the inside diameter of the pipe?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "With outside diameter fixed at 16 inches, a thicker wall schedule reduces the inside diameter."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "d628a2bb18e0a9315adfd90546b6e8b4db501f77e871486b1e3c7183238abf90",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m3-07",
+    "prompt": "Phosphorus inputs to a lake receiving wastewater effluent are reduced. What happens to the rate of eutrophication?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Reducing phosphorus inputs limits nutrient enrichment and controls eutrophication in receiving lakes."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "8b2733d3e014cd36415b650cd3e59840948238a28d02cb85ffde187d39d27864",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m3-08",
+    "prompt": "Conventional wastewater treatment is applied to a waste stream containing dissolved chloride. What happens to the chloride concentration?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Conventional waste treatment methods do not remove chloride to any significant extent."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "4e75d03a7d3537554ce6828946222443f8ac3742c8d9ce0be253187ddedc5913",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m3-09",
+    "prompt": "Alkalinity in an anaerobic digester rises from 800 mg/L to 2,500 mg/L as calcium carbonate. What happens to the water's ability to resist pH drops from added acid?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Alkalinity is a measure of buffering capacity, so higher alkalinity increases resistance to pH drops."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "b4754d8a907a22428058ed88c6caca89a1ad783ce4aa444e826cd63675b33da9",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m3-10",
+    "prompt": "Synthetic detergents are added to aeration tank water at a constant air supply rate. What happens to the surface tension of the water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Detergents lower the surface or interfacial tension of water and increase its wetting ability."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "87db795c349ca71b4687b7365193f12d3ad139dbc52d1e0e07e76f7f12393d54",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m3-11",
+    "prompt": "A copper tubing joint is heated without applying soldering flux to the cleaned surfaces. What happens to oxide formation on the heated copper?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Flux inhibits oxide formation during heating; without flux, oxides form more readily on hot copper."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "1b371ff35a51316f915d9877852659c5d858d714ea4619aeaca1c82ee992af9a",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m3-12",
+    "prompt": "A metal pipe is joined by welding rather than cutting external threads into the pipe wall. What happens to the remaining wall thickness at the joint?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Welding joins the metal without cutting threads into the wall, preserving full wall thickness."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "6698050e85c17fea4ced895c89f9dac484cc35a9fece691bfa3192b6c3a3bdfe",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m3-13",
+    "prompt": "Heavy metals such as copper and chromium enter an active biological treatment basin. What happens to the biological treatment activity?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Toxic heavy metals kill off microorganisms required for biological treatment, reducing or stopping treatment activity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "1143b5f992e9b52badcb62492ad6647735843b51b344ecd63e68e39423f177a9",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m3-14",
+    "prompt": "A 14-inch nominal steel pipe is specified with a heavier schedule number while keeping nominal size at 14 inches. What happens to the actual outside diameter?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "For pipes 14 inches and larger, actual outside diameter equals nominal size regardless of wall schedule."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "284caf4c1007e3d38a5a9385829fe9b51dc1b44bb1192fcdaae95ae1d3f20c65",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m3-15",
+    "prompt": "A rough-walled iron pipe is replaced by smooth-walled metal tubing of the same internal diameter at the same flow rate. What happens to the energy wasted by turbulent flow?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Smoother inner walls in tubing reduce turbulent flow and decrease wasted energy."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "e85940f712f6d6f57ad2e468f506d969cca5ee44865c9fce531666cc32ab266d",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m4-01",
+    "prompt": "Three statements describe pipe sizing and schedule numbers. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Pipes 14 inches or larger have an actual outside diameter equal to the nominal size."
+     },
+     {
+      "id": "o2",
+      "label": "Schedule numbers provide greater variation in wall thickness than STD, XS, and XXS designations."
+     },
+     {
+      "id": "o3",
+      "label": "For a 12-inch nominal pipe, the actual outside diameter is smaller than 12 inches."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "A 12-inch nominal pipe has an actual outside diameter of 12.750 inches, which is larger than 12 inches."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "75705e14ac6c703232af32ea22768e7bed3c49b0001324b08c1b43debadb75ee",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m4-02",
+    "prompt": "Three statements describe process lines and service lines. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Process lines carry fluids directly involved in unit operations such as sludge digestion."
+     },
+     {
+      "id": "o2",
+      "label": "Service lines carry utility fluids including water, steam, compressed air, and gas."
+     },
+     {
+      "id": "o3",
+      "label": "Service lines are designed to carry raw sludge between primary and secondary digesters."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Pipes serving unit operations like sludge digestion are process lines, not service lines."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "3b7a28b9c0677b12a3fb715f5eeef40f91f052903d05be3a3b35a4d02b99f64f",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m4-03",
+    "prompt": "Identify the inaccurate statement about cast iron and ductile iron piping materials.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Ductile iron has spheroidal graphite that gives it high flexural strength and lighter weight."
+     },
+     {
+      "id": "o2",
+      "label": "Cast iron pipe can suffer corrosion from electrolysis in acid and alkali soils."
+     },
+     {
+      "id": "o3",
+      "label": "Cast iron pipe provides greater carrying capacity than ductile iron of equal outside diameter."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Ductile iron pipe has greater carrying capacity than cast iron for the same external diameter."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "d11e54269ab3352834561dea34b1d1443050bc2bd7493aa33285234aa8619a5a",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m4-04",
+    "prompt": "Three statements describe thermal expansion in piping. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Thermal expansion in rigid pipelines can cause joint leakage and excessive loads on appurtenances."
+     },
+     {
+      "id": "o2",
+      "label": "Anchors, guides, and snubbers help control where thermal expansion occurs along a pipe run."
+     },
+     {
+      "id": "o3",
+      "label": "Expansion joints are used to lock rigid pipe lengths together so they stop expanding."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Expansion joints provide flexibility to absorb thermal movement rather than locking pipes rigid."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "20de4aea1656511c0401cfdfe4f1569a6d2cf43722b5f763c79f2d35f59ce17b",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m4-05",
+    "prompt": "Three statements describe screwed or threaded joints. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Screwed joints are commonly used on smaller-diameter, low-pressure galvanized water lines."
+     },
+     {
+      "id": "o2",
+      "label": "Screwed joints maintain high leakage integrity when subjected to heavy mechanical vibration."
+     },
+     {
+      "id": "o3",
+      "label": "Screwed couplings are easy to disassemble and reassemble when maintenance is needed."
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Screwed joints have high leakage integrity at low pressure and temperature where vibration is not encountered."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "fdda02aecaf50bd327caeb80922186d3430519c205d1e9307e5af64e634cf9bb",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m4-06",
+    "prompt": "Three statements describe tubing versus piping. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Tubing walls are generally much thinner than piping walls, so wall thickness tolerance is critical."
+     },
+     {
+      "id": "o2",
+      "label": "Flexible metal tubing absorbs vibration and reduces wear on fittings attached to compressors."
+     },
+     {
+      "id": "o3",
+      "label": "Tubing is joined by cutting deep external threads into the wall more often than piping."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Tubing is typically connected by soldering, brazing, or welding rather than by threaded joints."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "6ef77932922721deea9c33596fcb7a78889f4df3a5905c24214c8db3d0b06447",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m4-07",
+    "prompt": "Identify the incorrect statement about preparing and soldering copper tubing joints.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Soldering flux is applied to cleaned metal surfaces to inhibit oxide formation during heating."
+     },
+     {
+      "id": "o2",
+      "label": "Heat is applied evenly around the tubing so a continuous line of solder forms at the joint."
+     },
+     {
+      "id": "o3",
+      "label": "The fitting is heated first, and solder is added before applying flux to the tubing."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Flux is applied before heating, and the tubing next to the fitting is heated first."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "aa90c75523891cd606754114e465768ca59ba2e51358a2e52294c36045229464",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m4-08",
+    "prompt": "Three statements describe metallurgy and heat treatment. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Annealing heats steel and cools it gradually to make the metal softer and less brittle."
+     },
+     {
+      "id": "o2",
+      "label": "Stainless steel pipe is identified by placing an S after the schedule number."
+     },
+     {
+      "id": "o3",
+      "label": "Nonferrous metals such as brass contain iron as their main structural component."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Nonferrous metals, unlike ferrous metals, do not contain iron."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "c12bdce740971356760fe1438505993a5009a16b01be4ce0836766ac5f9affa1",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m4-09",
+    "prompt": "Three statements describe alkalinity in water and wastewater. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Alkalinity measures the buffering capacity of water to resist pH drops from added acids."
+     },
+     {
+      "id": "o2",
+      "label": "Alkalinity is mainly caused by hydroxyl and bicarbonate ions dissolved from soil and rock."
+     },
+     {
+      "id": "o3",
+      "label": "Anaerobic digestion operates best when alkalinity drops low enough to push pH below 6.2."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Anaerobic digestion requires sufficient alkalinity so that pH does not drop below 6.2."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "7dc9ff67dd57c79226972d0ad57fb8425618078131869a36df06563729bfc751",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m4-10",
+    "prompt": "Three statements describe chloride and detergents in wastewater. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Conventional waste treatment removes chloride in large quantities before effluent is discharged."
+     },
+     {
+      "id": "o2",
+      "label": "Elevated chloride levels can indicate that a water body is receiving waste disposal."
+     },
+     {
+      "id": "o3",
+      "label": "Detergents lower the surface tension of water and can reduce oxygen uptake in treatment."
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Conventional methods of waste treatment do not remove chloride to any significant extent."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "7150c0106fa380c379322c8145734748e23fe3d76173a4de734925d29ba574b4",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m4-11",
+    "prompt": "Three statements describe sulfur and heavy metals in wastewater. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Sulfate can be reduced biologically to sulfide, forming corrosive hydrogen sulfide gas."
+     },
+     {
+      "id": "o2",
+      "label": "Heavy metals such as copper and chromium can kill microorganisms and stop biological treatment."
+     },
+     {
+      "id": "o3",
+      "label": "Hydrogen sulfide in interceptor systems forms a protective coating that prevents pipe corrosion."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Hydrogen sulfide in interceptor systems causes severe corrosion to pipes and appurtenances."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "276bd64bb6f5f35871318f2ff1118ed321277551c8a8045dc92be8ad9fbf5d7f",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m4-12",
+    "prompt": "Three statements describe waterborne pathogens. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Waterborne pathogens include species of bacteria, viruses, protozoa, and parasitic worms."
+     },
+     {
+      "id": "o2",
+      "label": "Pathogens are native to aquatic systems and reproduce freely without an animal host."
+     },
+     {
+      "id": "o3",
+      "label": "Natural water systems can transport pathogens from animal hosts to human consumers."
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Pathogens are not native to aquatic systems and usually require an animal host for growth."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "9bfc4740c6f668384ce16c00a58c41abacdb01f96a2dd24dcf803e2e16eb4f42",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m4-13",
+    "prompt": "Three statements describe bacterial nutrition and growth. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Single-celled bacteria multiply by splitting in two through a process called binary fission."
+     },
+     {
+      "id": "o2",
+      "label": "Autotrophic bacteria obtain their carbon from dead vegetation and sewage rather than air."
+     },
+     {
+      "id": "o3",
+      "label": "Chemosynthetic bacteria derive their energy from chemical reactions rather than sunlight."
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Autotrophs obtain carbon from carbon dioxide in the air, while heterotrophs use organic compounds."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "2889d1353a69e8e1a8189dc1d7af374a44c9346c09493a552f94c97c64c621d0",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m4-14",
+    "prompt": "Three statements describe pipe ratings and standards. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "ASTM standards are used to determine minimum pipe size and wall thickness for an application."
+     },
+     {
+      "id": "o2",
+      "label": "Manufacturers assign pressure-temperature ratings for proprietary pipe, fitting, and joint designs."
+     },
+     {
+      "id": "o3",
+      "label": "Manufacturers' ratings are optional guidelines that may be ignored during system design."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Manufacturer pressure-temperature ratings and limitations must be adhered to in piping design."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "f0a124ff69ad3c68959230e59b6e9d1dcd3b19545a2bc3b396e18010bae4091a",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m4-15",
+    "prompt": "Three statements describe piping system considerations. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Pipe hangers and supports help prevent overstressing of pressure-containing components."
+     },
+     {
+      "id": "o2",
+      "label": "Operators working with metal piping consider temperature changes, corrosion, and water hammer."
+     },
+     {
+      "id": "o3",
+      "label": "Impurities in the line and shifting supports have no effect on metal piping integrity."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Impurities in the line and shifting pipe supports are key considerations for metal piping."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "fcc42ece054dde5cac52b1ed45940f2db3b01dc07a3db45fc0e053492c82a9b9",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m5-01",
+    "prompt": "In soldering a copper tubing joint, does applying soldering flux to the metal surfaces occur before or after adding solder for tinning?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Flux is applied to cleaned surfaces before heating and adding solder."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "c1f906886930f8e3ce0448daf8ccca654b64a13d105532b45b5d7ed997e0197c",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m5-02",
+    "prompt": "In soldering a copper tubing joint, does heating the tubing next to the fitting occur before or after seeing a continuous line of solder around the joint?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The tubing is heated first so capillary action draws solder in to form a continuous ring."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "2c2989597befd842331b6b4856e643f9a733124caf90074c3f82c4504589b0c5",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m5-03",
+    "prompt": "In annealing steel pipe, does cooling the metal gradually occur before or after heating the steel?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "Annealing consists of heating the metal first and permitting it to cool gradually."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "e2ecf606d5d6cb52e2d2705b6cd7a86d228f2d711f2d25829ed68efcc33cf59f",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m5-04",
+    "prompt": "In the biological sulfur cycle in interceptor pipes, does hydrogen sulfide forming from sulfide and hydrogen occur before or after sulfate is biologically reduced to sulfide?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "Sulfate is reduced biologically to sulfide first, which can combine with hydrogen to form hydrogen sulfide."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "1437860087f83ca3badd94ff17d26de4ef2b465563f886f53fea56f468c56fca",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m5-05",
+    "prompt": "In lake eutrophication driven by wastewater effluent, does reducing phosphorus inputs occur before or after controlling eutrophication?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Reducing phosphorus inputs to receiving waters is the action taken to control eutrophication."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "630b7424db31af6abade3c29ad1cefb432c610977a2fdba02064523292f5cc99",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m5-06",
+    "prompt": "In bacterial reproduction by binary fission, does a single cell splitting in two occur before or after two daughter cells exist?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "A single bacterial cell splits in two to produce two separate cells."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "9bcfea7c9e9299b44a3eef159cab9bee16651bb11591da596da4cacb5c65b39d",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m5-07",
+    "prompt": "In anaerobic digestion, does alkalinity dropping below the buffering threshold occur before or after pH falling below 6.2?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Insufficient alkalinity reduces buffering capacity, allowing pH to drop below 6.2."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "5d1c19bf55dc3b297dbfdae83ed836f3eb067a59348586cac1953d43e0ce9d52",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m5-08",
+    "prompt": "In a soldered copper tubing joint, does fitting the two tubing ends snugly into the sleeve occur before or after heating the fitting on and off?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Tubing ends are fitted snugly into the sleeve before heating the joint."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "236019a88be85acfa68d95be84f9bfbf01b3b9325b9c2d2134abbaaa85ce6ea0",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m5-09",
+    "prompt": "In cutting and preparing metal tubing for a soldered joint, does removing burrs with a burring tool occur before or after cutting the tubing with a tube cutter?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "A burring tool is used after cutting the tubing to smooth the cut edge."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "964b0ebaf331b4f580fafcc2886181fcd4068989348b1e8e94e89351395f1bb9",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m5-10",
+    "prompt": "In a piping system exposed to temperature swings, does thermal expansion of the metal occur before or after joint leakage from unrestrained movement?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Thermal expansion of rigid piping creates strain that can lead to joint leakage."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "9e42100db73f2e1a7b9285358d1ee077a721768aa5261c5b6f0ee5de78f54c07",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m5-11",
+    "prompt": "In heavy-metal toxicity during biological wastewater treatment, does the treatment process stopping occur before or after toxic metals kill off the microorganisms?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "Toxic inorganic metals kill off treatment microorganisms, which then stops the biological process."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "11e693cb9ef858b1a2cdb6774f491cc5723b80d675099bbeaa5afb83554de5da",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m5-12",
+    "prompt": "In natural water acquiring alkalinity, does water dissolving carbonate and bicarbonate minerals from soil occur before or after the water gains acid-buffering capacity?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Dissolving carbonates and bicarbonates from soil and geologic formations gives water its alkalinity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "8708041827cba9fbc0d72c869b02091ecb75a2a07118a946d4efc33e6b09864f",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m5-13",
+    "prompt": "In threading a metal pipe for a screwed joint, does cutting threads into the pipe wall occur before or after weakening the wall at the joint?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Cutting threads removes wall material, which weakens the pipe at the threaded section."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "8b04b5e5b3e7bd9cff441aa84064df82e1e7045005c00d843efdcd6ef2f587a8",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m5-14",
+    "prompt": "In cast iron pipe corrosion in acid or alkali soils, does electrolysis occurring at the pipe surface occur before or after metal deterioration?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Electrolysis from contact with acid or alkali soils drives the corrosion of cast iron."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "eeb8c7fdd717d5b2a89d02c8c8918e6e66364d41da0ef08d88a0b963f829a811",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  },
+  {
+   "courseKey": "class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-water-dist-r06-m5-15",
+    "prompt": "In using flexible metal tubing on a vibrating air compressor, does the tubing absorbing vibration occur before or after reducing wear on the attached fittings?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Flexible tubing absorbs vibration and shock, resulting in less wear on fittings."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+    "notes": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:12.822Z",
+    "payloadSha256": "a627396d3eb9ad4403064fc39dccf0fa9517b281b91c1aa3136fda7a657708df",
+    "builderResultsSha256": "f65d853d44477e9a2b948fb28353af08337bada1298a5de2bba4a92fc3786350"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T04:25:24.837832+00:00",
+   "attestation": "Strict final AI self-review completed for 70 authored native game payloads in class2-water-dist (r06) against supplied source pages, evidence, and collision candidates; 70 accepted, 0 rejected.",
+   "payloadSha256": {
+    "targeth-ht261118-class2-water-dist-r06-m0-01": "061d9409b9055f5eb0caafa78651a7845671bde2b02c9cfd8305cd3c589f987d",
+    "targeth-ht261118-class2-water-dist-r06-m0-02": "4d386f1ea4895cb2c76f9b353216095868e9926e182b40e824d98c66c681487c",
+    "targeth-ht261118-class2-water-dist-r06-m0-03": "7bc6f5faaff9eb6116966b709df3a7e842e3f25ce2ac1511d315045a07b8f0fb",
+    "targeth-ht261118-class2-water-dist-r06-m0-04": "4d2a8deaa22faf0f88768497fec1e136dec9428bbd98c344e048a95ed72151c7",
+    "targeth-ht261118-class2-water-dist-r06-m0-05": "ccc300bcee3dfb4a9531f0629b5828c418e2fa352fc3d443dca082a070468b76",
+    "targeth-ht261118-class2-water-dist-r06-m0-06": "165718c4d7c9c34f62233527da8fa36da53e1130a73e32434f95cfac1734f8df",
+    "targeth-ht261118-class2-water-dist-r06-m0-07": "16213363cb8590f0df8a05b7602bafca68aac7d2156e7a2a58e169f5dc7d664a",
+    "targeth-ht261118-class2-water-dist-r06-m0-08": "267a6c6a29d7100ae4b05db9aba9210fcf3e0ec407f7cd54b7f4ed6b04fac0d1",
+    "targeth-ht261118-class2-water-dist-r06-m0-09": "18df3047c2dfdca66ea94e139f6b33947d8952e2cc2ea4eca178e323942b1c2a",
+    "targeth-ht261118-class2-water-dist-r06-m0-10": "3fee1ecf9da40887649b631b54165aac026b412258a730683d6c36153f6193f3",
+    "targeth-ht261118-class2-water-dist-r06-m0-11": "5da23e34c6d8cc7de87417f5cde8da74b9122f6db08152e93974e5da484c2892",
+    "targeth-ht261118-class2-water-dist-r06-m0-12": "893423c82a51ee83e575d0e2f21d17781732753856376351672df74732ccce0b",
+    "targeth-ht261118-class2-water-dist-r06-m0-13": "a160e55ece32c9bca871ab9ac07abff7d31182e73a5b73ed290785fa7cf67366",
+    "targeth-ht261118-class2-water-dist-r06-m0-14": "918177538dc8f1281f7010b60f8a3efc165113cd4f4cfced31c7e5d5dd6a86fe",
+    "targeth-ht261118-class2-water-dist-r06-m0-15": "fa6325c61b3d42dbddaeec69ca12a62cef450d7c73758769aee6eb55ebecf0b8",
+    "targeth-ht261118-class2-water-dist-r06-m1-01": "8067158531421288216a8fd21fe748d0f3d76d103a50d0fa07c08810b8d4ba0f",
+    "targeth-ht261118-class2-water-dist-r06-m1-02": "86f468e0f35c6ff463e4270a247196dd5ed8ff046fdafe7dd50e4b6eb356b35a",
+    "targeth-ht261118-class2-water-dist-r06-m1-03": "ec33c371a35ce10ebe86dc0a250073ffd669d2b2a89f87158b55a4169a37ef33",
+    "targeth-ht261118-class2-water-dist-r06-m1-04": "fc551e878fef2ef72ae8000052480d1ca3a0e0e56af0a7a74926c1ff2bef4b49",
+    "targeth-ht261118-class2-water-dist-r06-m1-05": "d3592bb4a7b8d1c8a12ab01cf50f5c5f5232df1379481b03fa94ca092463ab0d",
+    "targeth-ht261118-class2-water-dist-r06-m1-06": "506b7bf485d8fb89cbd2cff08cb1a49ce86948a70d70a9586ae08ca61cb767e3",
+    "targeth-ht261118-class2-water-dist-r06-m1-07": "ddd37df41ff10bd9f9e2f1e74b050c402fe85d2ac5975b7baea49049f78eeccc",
+    "targeth-ht261118-class2-water-dist-r06-m1-08": "b5b0e8d512932b228195cd11e0dd84e987833d331bc3a88558b5e469e6532ed3",
+    "targeth-ht261118-class2-water-dist-r06-m1-09": "672c9c7af874f1e531554e8dc2a7f0356c61bdd974a396fe4314ca8fa984db12",
+    "targeth-ht261118-class2-water-dist-r06-m1-10": "500443fc00b73a90f16114d62383c3de5ca2cfc401f1280c0faea6cf250300a8",
+    "targeth-ht261118-class2-water-dist-r06-m3-01": "9f776e0f49b89ab84baad8d07bbd923b54293d9764a0dc95dcd1ca7ed5c8a71f",
+    "targeth-ht261118-class2-water-dist-r06-m3-02": "540f4ecaf2b0cbd00ecfac983de0db3e8027255e32f05c90cc482cee4483ef35",
+    "targeth-ht261118-class2-water-dist-r06-m3-03": "49313bf5f85a109312f256b6a9031da6270ee2b8065be3ab5eb048bc3643740e",
+    "targeth-ht261118-class2-water-dist-r06-m3-04": "5fd511bd8651c21d7f40b3310edc98f1f0a71b47137c998dafe4218f3276002a",
+    "targeth-ht261118-class2-water-dist-r06-m3-05": "ea023a9da6f3e74281a516bfa4294d66cb70f5ac57adfb8144202d43e36fb5a8",
+    "targeth-ht261118-class2-water-dist-r06-m3-06": "d628a2bb18e0a9315adfd90546b6e8b4db501f77e871486b1e3c7183238abf90",
+    "targeth-ht261118-class2-water-dist-r06-m3-07": "8b2733d3e014cd36415b650cd3e59840948238a28d02cb85ffde187d39d27864",
+    "targeth-ht261118-class2-water-dist-r06-m3-08": "4e75d03a7d3537554ce6828946222443f8ac3742c8d9ce0be253187ddedc5913",
+    "targeth-ht261118-class2-water-dist-r06-m3-09": "b4754d8a907a22428058ed88c6caca89a1ad783ce4aa444e826cd63675b33da9",
+    "targeth-ht261118-class2-water-dist-r06-m3-10": "87db795c349ca71b4687b7365193f12d3ad139dbc52d1e0e07e76f7f12393d54",
+    "targeth-ht261118-class2-water-dist-r06-m3-11": "1b371ff35a51316f915d9877852659c5d858d714ea4619aeaca1c82ee992af9a",
+    "targeth-ht261118-class2-water-dist-r06-m3-12": "6698050e85c17fea4ced895c89f9dac484cc35a9fece691bfa3192b6c3a3bdfe",
+    "targeth-ht261118-class2-water-dist-r06-m3-13": "1143b5f992e9b52badcb62492ad6647735843b51b344ecd63e68e39423f177a9",
+    "targeth-ht261118-class2-water-dist-r06-m3-14": "284caf4c1007e3d38a5a9385829fe9b51dc1b44bb1192fcdaae95ae1d3f20c65",
+    "targeth-ht261118-class2-water-dist-r06-m3-15": "e85940f712f6d6f57ad2e468f506d969cca5ee44865c9fce531666cc32ab266d",
+    "targeth-ht261118-class2-water-dist-r06-m4-01": "75705e14ac6c703232af32ea22768e7bed3c49b0001324b08c1b43debadb75ee",
+    "targeth-ht261118-class2-water-dist-r06-m4-02": "3b7a28b9c0677b12a3fb715f5eeef40f91f052903d05be3a3b35a4d02b99f64f",
+    "targeth-ht261118-class2-water-dist-r06-m4-03": "d11e54269ab3352834561dea34b1d1443050bc2bd7493aa33285234aa8619a5a",
+    "targeth-ht261118-class2-water-dist-r06-m4-04": "20de4aea1656511c0401cfdfe4f1569a6d2cf43722b5f763c79f2d35f59ce17b",
+    "targeth-ht261118-class2-water-dist-r06-m4-05": "fdda02aecaf50bd327caeb80922186d3430519c205d1e9307e5af64e634cf9bb",
+    "targeth-ht261118-class2-water-dist-r06-m4-06": "6ef77932922721deea9c33596fcb7a78889f4df3a5905c24214c8db3d0b06447",
+    "targeth-ht261118-class2-water-dist-r06-m4-07": "aa90c75523891cd606754114e465768ca59ba2e51358a2e52294c36045229464",
+    "targeth-ht261118-class2-water-dist-r06-m4-08": "c12bdce740971356760fe1438505993a5009a16b01be4ce0836766ac5f9affa1",
+    "targeth-ht261118-class2-water-dist-r06-m4-09": "7dc9ff67dd57c79226972d0ad57fb8425618078131869a36df06563729bfc751",
+    "targeth-ht261118-class2-water-dist-r06-m4-10": "7150c0106fa380c379322c8145734748e23fe3d76173a4de734925d29ba574b4",
+    "targeth-ht261118-class2-water-dist-r06-m4-11": "276bd64bb6f5f35871318f2ff1118ed321277551c8a8045dc92be8ad9fbf5d7f",
+    "targeth-ht261118-class2-water-dist-r06-m4-12": "9bfc4740c6f668384ce16c00a58c41abacdb01f96a2dd24dcf803e2e16eb4f42",
+    "targeth-ht261118-class2-water-dist-r06-m4-13": "2889d1353a69e8e1a8189dc1d7af374a44c9346c09493a552f94c97c64c621d0",
+    "targeth-ht261118-class2-water-dist-r06-m4-14": "f0a124ff69ad3c68959230e59b6e9d1dcd3b19545a2bc3b396e18010bae4091a",
+    "targeth-ht261118-class2-water-dist-r06-m4-15": "fcc42ece054dde5cac52b1ed45940f2db3b01dc07a3db45fc0e053492c82a9b9",
+    "targeth-ht261118-class2-water-dist-r06-m5-01": "c1f906886930f8e3ce0448daf8ccca654b64a13d105532b45b5d7ed997e0197c",
+    "targeth-ht261118-class2-water-dist-r06-m5-02": "2c2989597befd842331b6b4856e643f9a733124caf90074c3f82c4504589b0c5",
+    "targeth-ht261118-class2-water-dist-r06-m5-03": "e2ecf606d5d6cb52e2d2705b6cd7a86d228f2d711f2d25829ed68efcc33cf59f",
+    "targeth-ht261118-class2-water-dist-r06-m5-04": "1437860087f83ca3badd94ff17d26de4ef2b465563f886f53fea56f468c56fca",
+    "targeth-ht261118-class2-water-dist-r06-m5-05": "630b7424db31af6abade3c29ad1cefb432c610977a2fdba02064523292f5cc99",
+    "targeth-ht261118-class2-water-dist-r06-m5-06": "9bcfea7c9e9299b44a3eef159cab9bee16651bb11591da596da4cacb5c65b39d",
+    "targeth-ht261118-class2-water-dist-r06-m5-07": "5d1c19bf55dc3b297dbfdae83ed836f3eb067a59348586cac1953d43e0ce9d52",
+    "targeth-ht261118-class2-water-dist-r06-m5-08": "236019a88be85acfa68d95be84f9bfbf01b3b9325b9c2d2134abbaaa85ce6ea0",
+    "targeth-ht261118-class2-water-dist-r06-m5-09": "964b0ebaf331b4f580fafcc2886181fcd4068989348b1e8e94e89351395f1bb9",
+    "targeth-ht261118-class2-water-dist-r06-m5-10": "9e42100db73f2e1a7b9285358d1ee077a721768aa5261c5b6f0ee5de78f54c07",
+    "targeth-ht261118-class2-water-dist-r06-m5-11": "11e693cb9ef858b1a2cdb6774f491cc5723b80d675099bbeaa5afb83554de5da",
+    "targeth-ht261118-class2-water-dist-r06-m5-12": "8708041827cba9fbc0d72c869b02091ecb75a2a07118a946d4efc33e6b09864f",
+    "targeth-ht261118-class2-water-dist-r06-m5-13": "8b04b5e5b3e7bd9cff441aa84064df82e1e7045005c00d843efdcd6ef2f587a8",
+    "targeth-ht261118-class2-water-dist-r06-m5-14": "eeb8c7fdd717d5b2a89d02c8c8918e6e66364d41da0ef08d88a0b963f829a811",
+    "targeth-ht261118-class2-water-dist-r06-m5-15": "a627396d3eb9ad4403064fc39dccf0fa9517b281b91c1aa3136fda7a657708df"
+   }
+  },
+  "registeredAt": "2026-11-19T04:27:12.822Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 8,
+     "f": 7
+    },
+    "dirs": {
+     "increase": 3,
+     "decrease": 9,
+     "unchanged": 3
+    },
+    "longest": 7,
+    "options": 30
+   },
+   "batchSha256": "8d936b68f3ca2cf2e7e88cfdafc5d844c33fdc034a7b1ac903e76e0c44217384"
+  }
+ }
+}

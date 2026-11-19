@@ -1,0 +1,1377 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-wpi-class1-water-dist-r06",
+ "scope": "Owner-authorized AI-reviewed game activities: 39 items.",
+ "additions": [
+  {
+   "courseKey": "wpi-class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-water-dist-r06-m0-01",
+    "prompt": "Actuators and positioners on automated valves generally need more frequent servicing than the valve bodies.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Actuators and positioners have moving linkages, seals, and power connections that generally need more frequent servicing than the valve body."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:17:18.720403+00:00",
+    "notes": "Strict Hydrogen self-review of all 39 authored items for wpi-class1-water-dist against supplied source pages, collision candidates, and internal draft novelty; 39 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:18:47.592Z",
+    "payloadSha256": "9bad28b2cd3edb42be460e9359244249c0a79a7664c95a753a61dac5d4b53fcd",
+    "builderResultsSha256": "f98eeb7d6967e5e53760183e3c70699c9894211a2f49ed5fa9ae93c39202a665"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-water-dist-r06-m0-02",
+    "prompt": "A reducing coupling is used to connect two pipes that have the same outside diameter.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "A reducing coupling joins pipes of different sizes, whereas a standard union or coupling joins pipes of the same size."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:17:18.720403+00:00",
+    "notes": "Strict Hydrogen self-review of all 39 authored items for wpi-class1-water-dist against supplied source pages, collision candidates, and internal draft novelty; 39 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:18:47.592Z",
+    "payloadSha256": "fc0e4c9f5a695224f6ac0e630d1c1473e94ba9d81b14f053a317377a40b49e82",
+    "builderResultsSha256": "f98eeb7d6967e5e53760183e3c70699c9894211a2f49ed5fa9ae93c39202a665"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-water-dist-r06-m0-03",
+    "prompt": "In a spring-loaded pressure gauge, a spring returns the indicator pointer to zero when system pressure drops to zero.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "The internal spring resists fluid pressure and pulls the sensing element and pointer back to zero when pressure is removed."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:17:18.720403+00:00",
+    "notes": "Strict Hydrogen self-review of all 39 authored items for wpi-class1-water-dist against supplied source pages, collision candidates, and internal draft novelty; 39 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:18:47.592Z",
+    "payloadSha256": "540bd74dc1518972434af54e0b70ef19fdba85af21c6c0fc583a06e60173d688",
+    "builderResultsSha256": "f98eeb7d6967e5e53760183e3c70699c9894211a2f49ed5fa9ae93c39202a665"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-water-dist-r06-m0-04",
+    "prompt": "Spring-loaded pressure gauges are designed to provide laboratory-grade precision for exact calibration work.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Spring-loaded gauges are not extremely accurate, though they are adequate for routine readings where high precision is unnecessary."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:17:18.720403+00:00",
+    "notes": "Strict Hydrogen self-review of all 39 authored items for wpi-class1-water-dist against supplied source pages, collision candidates, and internal draft novelty; 39 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:18:47.592Z",
+    "payloadSha256": "b426f9e89c9dc8106ce4cb1e4ee91ba7d9395ba64e7b29b9a9615ccaa15fb500",
+    "builderResultsSha256": "f98eeb7d6967e5e53760183e3c70699c9894211a2f49ed5fa9ae93c39202a665"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-water-dist-r06-m0-05",
+    "prompt": "In a Bourdon tube pressure gauge, fluid enters a coiled tube that flexes as pressure changes.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "A Bourdon tube is a coiled sensing element that moves slightly under internal fluid pressure to drive the gauge pointer."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:17:18.720403+00:00",
+    "notes": "Strict Hydrogen self-review of all 39 authored items for wpi-class1-water-dist against supplied source pages, collision candidates, and internal draft novelty; 39 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:18:47.592Z",
+    "payloadSha256": "46047f43d4564bf3209834ec60eb8e80bac6951250fd7ad2980330254eb4b32b",
+    "builderResultsSha256": "f98eeb7d6967e5e53760183e3c70699c9894211a2f49ed5fa9ae93c39202a665"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-water-dist-r06-m0-06",
+    "prompt": "Acoustic inspection of a steam trap relies on observing color changes on heat-sensitive bands.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Heat bands are a thermal inspection method; acoustic inspection uses listening devices such as stethoscopes or ultrasonic instruments."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:17:18.720403+00:00",
+    "notes": "Strict Hydrogen self-review of all 39 authored items for wpi-class1-water-dist against supplied source pages, collision candidates, and internal draft novelty; 39 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:18:47.592Z",
+    "payloadSha256": "70b3d612d4c053e2a3332d47229b24e97c258cdba870f07453e55f64bb5f344c",
+    "builderResultsSha256": "f98eeb7d6967e5e53760183e3c70699c9894211a2f49ed5fa9ae93c39202a665"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-water-dist-r06-m0-07",
+    "prompt": "Laminar flow is characterized by smooth, parallel streamlines moving without cross-mixing.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Laminar or streamline flow occurs when fluid particles move in smooth, parallel layers."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:17:18.720403+00:00",
+    "notes": "Strict Hydrogen self-review of all 39 authored items for wpi-class1-water-dist against supplied source pages, collision candidates, and internal draft novelty; 39 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:18:47.592Z",
+    "payloadSha256": "9636ac13ae77ca725157f83806ee647438625ffe90d0341e8a49ae44b12dfe4c",
+    "builderResultsSha256": "f98eeb7d6967e5e53760183e3c70699c9894211a2f49ed5fa9ae93c39202a665"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-water-dist-r06-m0-08",
+    "prompt": "Hydraulic energy in a piping system consists of potential energy due to elevation and velocity, plus kinetic energy due to pressure.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Elevation and pressure represent potential energy, while velocity represents kinetic energy."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:17:18.720403+00:00",
+    "notes": "Strict Hydrogen self-review of all 39 authored items for wpi-class1-water-dist against supplied source pages, collision candidates, and internal draft novelty; 39 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:18:47.592Z",
+    "payloadSha256": "f0f7f5e6dc6defb942590fe0469a6b796d70876f3dd2b26af6a7a031e969dcc0",
+    "builderResultsSha256": "f98eeb7d6967e5e53760183e3c70699c9894211a2f49ed5fa9ae93c39202a665"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-water-dist-r06-m0-09",
+    "prompt": "A cubic foot of water weighs approximately 62.4 pounds.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Water has a standard density of about 62.4 lb/ft3, which is used to calculate hydrostatic pressure."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:17:18.720403+00:00",
+    "notes": "Strict Hydrogen self-review of all 39 authored items for wpi-class1-water-dist against supplied source pages, collision candidates, and internal draft novelty; 39 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:18:47.592Z",
+    "payloadSha256": "10aa8d95554d68904c490dcbb085af3bfefade8cca8b9c5fbf027e5cb64377b7",
+    "builderResultsSha256": "f98eeb7d6967e5e53760183e3c70699c9894211a2f49ed5fa9ae93c39202a665"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-water-dist-r06-m0-10",
+    "prompt": "The primary application of traps in plant piping is removing suspended sand from cold-water distribution mains.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Traps are primarily used in steam systems to remove unwanted air and condensate, whereas strainers collect solids."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:17:18.720403+00:00",
+    "notes": "Strict Hydrogen self-review of all 39 authored items for wpi-class1-water-dist against supplied source pages, collision candidates, and internal draft novelty; 39 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:18:47.592Z",
+    "payloadSha256": "ac721c708b5095f92df1331dc453bc08232cd691c06cf9f828b31b99138d26b0",
+    "builderResultsSha256": "f98eeb7d6967e5e53760183e3c70699c9894211a2f49ed5fa9ae93c39202a665"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-water-dist-r06-m1-01",
+    "prompt": "Distinguish each pipe fitting or valve by its geometric or flow-control role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Cross",
+      "right": "Four-way fitting joining four pipe ends"
+     },
+     {
+      "id": "p2",
+      "left": "Reducing coupling",
+      "right": "Joins two pipes of different diameters"
+     },
+     {
+      "id": "p3",
+      "left": "Y-fitting",
+      "right": "Splits or combines flow at an acute angle"
+     },
+     {
+      "id": "p4",
+      "left": "Union",
+      "right": "Allows a pipe joint to be disconnected without cutting"
+     },
+     {
+      "id": "p5",
+      "left": "Plug",
+      "right": "Closes off the end of a threaded fitting"
+     },
+     {
+      "id": "p6",
+      "left": "Gate valve",
+      "right": "Uses a sliding gate for full-open or full-closed service"
+     }
+    ],
+    "explanation": "Each fitting and valve serves a distinct geometric connection or shutoff purpose in conveyance piping."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:17:18.720403+00:00",
+    "notes": "Strict Hydrogen self-review of all 39 authored items for wpi-class1-water-dist against supplied source pages, collision candidates, and internal draft novelty; 39 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:18:47.592Z",
+    "payloadSha256": "e9710b122d6cda8a86b66ab1e2c2a491bcd8f0c8627d2440c9e6110b730fdca9",
+    "builderResultsSha256": "f98eeb7d6967e5e53760183e3c70699c9894211a2f49ed5fa9ae93c39202a665"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-water-dist-r06-m1-02",
+    "prompt": "Distinguish each pressure-gauge or trap-inspection component by its physical mechanism.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Bourdon tube",
+      "right": "Coiled tube that flexes under internal fluid pressure"
+     },
+     {
+      "id": "p2",
+      "left": "Gear-lever mechanism",
+      "right": "Transfers sensing-element motion to the indicator arrow"
+     },
+     {
+      "id": "p3",
+      "left": "Return spring",
+      "right": "Resists pressure and brings the pointer back to zero"
+     },
+     {
+      "id": "p4",
+      "left": "Heat band",
+      "right": "Changes color as trap temperature increases"
+     },
+     {
+      "id": "p5",
+      "left": "Heat stick",
+      "right": "Melts at a specific temperature during thermal checks"
+     },
+     {
+      "id": "p6",
+      "left": "Ultrasonic detector",
+      "right": "Senses high-frequency sound from trap operation"
+     }
+    ],
+    "explanation": "Gauges rely on mechanical deflection and linkage, while trap testing uses thermal or acoustic indicators."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:17:18.720403+00:00",
+    "notes": "Strict Hydrogen self-review of all 39 authored items for wpi-class1-water-dist against supplied source pages, collision candidates, and internal draft novelty; 39 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:18:47.592Z",
+    "payloadSha256": "2c4c83a94e9a8a02f69149c6f5f08f08091a55aa1fa1a49e8c17070b94225e0a",
+    "builderResultsSha256": "f98eeb7d6967e5e53760183e3c70699c9894211a2f49ed5fa9ae93c39202a665"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-water-dist-r06-m1-03",
+    "prompt": "Distinguish each hydraulic or actuator term by its physical definition.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Elevation head",
+      "right": "Potential energy due to vertical position"
+     },
+     {
+      "id": "p2",
+      "left": "Pressure head",
+      "right": "Potential energy due to fluid pressure"
+     },
+     {
+      "id": "p3",
+      "left": "Velocity head",
+      "right": "Kinetic energy due to fluid motion"
+     },
+     {
+      "id": "p4",
+      "left": "Laminar flow",
+      "right": "Smooth, parallel streamlines"
+     },
+     {
+      "id": "p5",
+      "left": "Strainer sump",
+      "right": "Bottom chamber where trapped solids settle"
+     },
+     {
+      "id": "p6",
+      "left": "Fail-safe spring",
+      "right": "Returns an actuator to its safe position on pressure loss"
+     }
+    ],
+    "explanation": "Hydraulic energy divides into potential and kinetic forms, while strainers and actuators use mechanical features."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:17:18.720403+00:00",
+    "notes": "Strict Hydrogen self-review of all 39 authored items for wpi-class1-water-dist against supplied source pages, collision candidates, and internal draft novelty; 39 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:18:47.592Z",
+    "payloadSha256": "bd5be63449efc93f6f28c7860431c123dfbcfe3e138b26fe43da4c24789d80e9",
+    "builderResultsSha256": "f98eeb7d6967e5e53760183e3c70699c9894211a2f49ed5fa9ae93c39202a665"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-water-dist-r06-m2-01",
+    "prompt": "Three of these are pressure-sensing surfaces used inside mechanical pressure gauges. Which one is a pipe fitting?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Diaphragm"
+     },
+     {
+      "id": "o2",
+      "label": "Bellows"
+     },
+     {
+      "id": "o3",
+      "label": "Coiled tube"
+     },
+     {
+      "id": "o4",
+      "label": "Y-fitting"
+     }
+    ],
+    "correctOptionId": "o4",
+    "explanation": "A Y-fitting connects piping, whereas diaphragms, bellows, and coiled tubes flex under pressure inside gauges."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:17:18.720403+00:00",
+    "notes": "Strict Hydrogen self-review of all 39 authored items for wpi-class1-water-dist against supplied source pages, collision candidates, and internal draft novelty; 39 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:18:47.592Z",
+    "payloadSha256": "dcedd2f2d88f1747a1a673a9d03356306b555255ea35c8a2da7acbfc630bb419",
+    "builderResultsSha256": "f98eeb7d6967e5e53760183e3c70699c9894211a2f49ed5fa9ae93c39202a665"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-water-dist-r06-m2-02",
+    "prompt": "Three of these are thermal inspection tools used to check steam traps. Which one is an acoustic tool?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Infrared thermometer"
+     },
+     {
+      "id": "o2",
+      "label": "Heat band"
+     },
+     {
+      "id": "o3",
+      "label": "Heat stick"
+     },
+     {
+      "id": "o4",
+      "label": "Medical stethoscope"
+     }
+    ],
+    "correctOptionId": "o4",
+    "explanation": "A medical stethoscope listens to trap sound, whereas infrared, heat bands, and heat sticks detect temperature."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:17:18.720403+00:00",
+    "notes": "Strict Hydrogen self-review of all 39 authored items for wpi-class1-water-dist against supplied source pages, collision candidates, and internal draft novelty; 39 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:18:47.592Z",
+    "payloadSha256": "f975da157bdf943caeabe3be35e63e8972ea63c7b7e3f3a57040ff58d0f1d0a3",
+    "builderResultsSha256": "f98eeb7d6967e5e53760183e3c70699c9894211a2f49ed5fa9ae93c39202a665"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-water-dist-r06-m2-03",
+    "prompt": "Three of these are units used to express volumetric flow rate. Which one is a unit of energy?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Gallons per minute (gpm)"
+     },
+     {
+      "id": "o2",
+      "label": "Cubic feet per second (cfs)"
+     },
+     {
+      "id": "o3",
+      "label": "Million gallons per day (MGD)"
+     },
+     {
+      "id": "o4",
+      "label": "Foot-pounds (ft-lb)"
+     }
+    ],
+    "correctOptionId": "o4",
+    "explanation": "Foot-pounds measure mechanical energy, while gpm, cfs, and MGD measure volumetric flow rate."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:17:18.720403+00:00",
+    "notes": "Strict Hydrogen self-review of all 39 authored items for wpi-class1-water-dist against supplied source pages, collision candidates, and internal draft novelty; 39 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:18:47.592Z",
+    "payloadSha256": "6c87d7becde5f990b680e34883cf3547b2255eaa08d2205be0705b6ebe6649a4",
+    "builderResultsSha256": "f98eeb7d6967e5e53760183e3c70699c9894211a2f49ed5fa9ae93c39202a665"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-water-dist-r06-m2-04",
+    "prompt": "Three of these are forms of mechanical energy in a hydraulic system. Which one is a fluid property?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Elevation energy"
+     },
+     {
+      "id": "o2",
+      "label": "Pressure energy"
+     },
+     {
+      "id": "o3",
+      "label": "Velocity energy"
+     },
+     {
+      "id": "o4",
+      "label": "Fluid density"
+     }
+    ],
+    "correctOptionId": "o4",
+    "explanation": "Fluid density is a physical property of the water, whereas elevation, pressure, and velocity are energy forms."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:17:18.720403+00:00",
+    "notes": "Strict Hydrogen self-review of all 39 authored items for wpi-class1-water-dist against supplied source pages, collision candidates, and internal draft novelty; 39 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:18:47.592Z",
+    "payloadSha256": "9e53f22449fa01d4bac3568d47b18ac24ec90ca1738d02ffebf0932e5aad28b0",
+    "builderResultsSha256": "f98eeb7d6967e5e53760183e3c70699c9894211a2f49ed5fa9ae93c39202a665"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-water-dist-r06-m2-05",
+    "prompt": "Three of these are reasons to maintain proper air pressure in a compressed-air system. Which one is a type of pipe fitting?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Safe operation"
+     },
+     {
+      "id": "o2",
+      "label": "Efficient operation"
+     },
+     {
+      "id": "o3",
+      "label": "Equipment protection"
+     },
+     {
+      "id": "o4",
+      "label": "Reducing coupling"
+     }
+    ],
+    "correctOptionId": "o4",
+    "explanation": "A reducing coupling is a pipe fitting, not a reason for maintaining compressed-air system pressure."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:17:18.720403+00:00",
+    "notes": "Strict Hydrogen self-review of all 39 authored items for wpi-class1-water-dist against supplied source pages, collision candidates, and internal draft novelty; 39 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:18:47.592Z",
+    "payloadSha256": "674138b405fd6ae3f68a50846c28c2e060d248748b4397b06120dbdaef53d9f3",
+    "builderResultsSha256": "f98eeb7d6967e5e53760183e3c70699c9894211a2f49ed5fa9ae93c39202a665"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-water-dist-r06-m2-06",
+    "prompt": "Three of these are components of a pneumatic valve actuator assembly. Which one is a strainer cleaning feature?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Cylinder"
+     },
+     {
+      "id": "o2",
+      "label": "Piston"
+     },
+     {
+      "id": "o3",
+      "label": "Piston rod"
+     },
+     {
+      "id": "o4",
+      "label": "Blowout plug"
+     }
+    ],
+    "correctOptionId": "o4",
+    "explanation": "A blowout plug is removed from a strainer end cap to flush solids, not part of a valve actuator."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:17:18.720403+00:00",
+    "notes": "Strict Hydrogen self-review of all 39 authored items for wpi-class1-water-dist against supplied source pages, collision candidates, and internal draft novelty; 39 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:18:47.592Z",
+    "payloadSha256": "e26e7a780bbd7d52a96fea2b87e2d0d04870e42496ee1d2a3840ab6fd25004b8",
+    "builderResultsSha256": "f98eeb7d6967e5e53760183e3c70699c9894211a2f49ed5fa9ae93c39202a665"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-water-dist-r06-m3-01",
+    "prompt": "An open water tank is filled with water of constant density, and the vertical depth of water above the bottom increases. What happens to the hydrostatic pressure at the tank bottom?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Hydrostatic pressure equals fluid density times vertical depth, so greater depth produces higher bottom pressure."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:17:18.720403+00:00",
+    "notes": "Strict Hydrogen self-review of all 39 authored items for wpi-class1-water-dist against supplied source pages, collision candidates, and internal draft novelty; 39 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:18:47.592Z",
+    "payloadSha256": "1bc1b7a781a06be21bafaf543b63142f316b12dab2ee9d3a60a18313608487e8",
+    "builderResultsSha256": "f98eeb7d6967e5e53760183e3c70699c9894211a2f49ed5fa9ae93c39202a665"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-water-dist-r06-m3-02",
+    "prompt": "A horizontal pipe carries steady water flow from a wide section into a narrower section without any leaks. What happens to the average water velocity?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "By the continuity equation, steady flow through a smaller cross-sectional area requires a higher average velocity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:17:18.720403+00:00",
+    "notes": "Strict Hydrogen self-review of all 39 authored items for wpi-class1-water-dist against supplied source pages, collision candidates, and internal draft novelty; 39 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:18:47.592Z",
+    "payloadSha256": "e5cfa5626725e97282b2d59842d18322a3d28178581f50da1530a31270efccd9",
+    "builderResultsSha256": "f98eeb7d6967e5e53760183e3c70699c9894211a2f49ed5fa9ae93c39202a665"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-water-dist-r06-m3-03",
+    "prompt": "In a spring-operated pressure gauge, the fluid pressure acting on the internal sensing element drops to zero while the spring remains intact. What happens to the indicator pointer reading?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "With no fluid pressure pushing against the element, the spring returns the indicator pointer down to zero."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:17:18.720403+00:00",
+    "notes": "Strict Hydrogen self-review of all 39 authored items for wpi-class1-water-dist against supplied source pages, collision candidates, and internal draft novelty; 39 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:18:47.592Z",
+    "payloadSha256": "68c8c194de120f3fa5ff25d8160a7556cb5d43c5d79f4b0a35cdd7c86e5b185b",
+    "builderResultsSha256": "f98eeb7d6967e5e53760183e3c70699c9894211a2f49ed5fa9ae93c39202a665"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-water-dist-r06-m3-04",
+    "prompt": "A steam trap fails in the open mode under normal boiler operation, raising backpressure in the condensate return system. What happens to the discharge capacity of downstream traps?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "High backpressure in the condensate system reduces the discharge capacity of traps operating beyond their rating."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:17:18.720403+00:00",
+    "notes": "Strict Hydrogen self-review of all 39 authored items for wpi-class1-water-dist against supplied source pages, collision candidates, and internal draft novelty; 39 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:18:47.592Z",
+    "payloadSha256": "7d700a8adde749a46b941759c09c1ecc84e1d7d4ed7fe926f9f0ef698eaad1f6",
+    "builderResultsSha256": "f98eeb7d6967e5e53760183e3c70699c9894211a2f49ed5fa9ae93c39202a665"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-water-dist-r06-m3-05",
+    "prompt": "A pipeline strainer's blowout plug is removed while the line remains pressurized, flushing trapped solids out of the sump. What happens to the amount of solids left in the sump?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Line pressure blows the collected solids out through the open blowout connection, reducing solids in the sump."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:17:18.720403+00:00",
+    "notes": "Strict Hydrogen self-review of all 39 authored items for wpi-class1-water-dist against supplied source pages, collision candidates, and internal draft novelty; 39 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:18:47.592Z",
+    "payloadSha256": "a7291d03b8aaa1ce92dd353a60b018c724925d420d1e33fafe62c458249f8bb8",
+    "builderResultsSha256": "f98eeb7d6967e5e53760183e3c70699c9894211a2f49ed5fa9ae93c39202a665"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-water-dist-r06-m3-06",
+    "prompt": "Two open vessels hold water of the same density to the exact same vertical depth, but the second vessel has twice the surface area. What happens to the hydrostatic pressure at the bottom?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Hydrostatic pressure at a given depth depends on water density and vertical height, not total volume or vessel width."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:17:18.720403+00:00",
+    "notes": "Strict Hydrogen self-review of all 39 authored items for wpi-class1-water-dist against supplied source pages, collision candidates, and internal draft novelty; 39 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:18:47.592Z",
+    "payloadSha256": "05598279f993ded1b80d43415f7549b035818f24f0da0e1e0aaee4d7808a6cdf",
+    "builderResultsSha256": "f98eeb7d6967e5e53760183e3c70699c9894211a2f49ed5fa9ae93c39202a665"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-water-dist-r06-m3-07",
+    "prompt": "A spring-loaded pneumatic valve actuator loses air supply pressure while its fail-safe spring functions normally. What happens to the valve's distance from its safe position?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "When air pressure fails, the fail-safe spring moves the valve toward its safe position, reducing the distance."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:17:18.720403+00:00",
+    "notes": "Strict Hydrogen self-review of all 39 authored items for wpi-class1-water-dist against supplied source pages, collision candidates, and internal draft novelty; 39 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:18:47.592Z",
+    "payloadSha256": "0642049abd0b4b76e5f1964a283dd2640264c87c05cbf215ec6139279b99c6b7",
+    "builderResultsSha256": "f98eeb7d6967e5e53760183e3c70699c9894211a2f49ed5fa9ae93c39202a665"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-water-dist-r06-m3-08",
+    "prompt": "A water main carries a steady flow rate, and the operator converts the recorded flow from cubic feet per second to million gallons per day. What happens to the actual physical flow in the pipe?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Converting between cfs and MGD changes only the measurement units, not the physical volume of water flowing."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:17:18.720403+00:00",
+    "notes": "Strict Hydrogen self-review of all 39 authored items for wpi-class1-water-dist against supplied source pages, collision candidates, and internal draft novelty; 39 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:18:47.592Z",
+    "payloadSha256": "f9b4d7030c58e7cae63b3f7fe6958caa5057c9d191a1b7ffb8dd3ef43b9fa45d",
+    "builderResultsSha256": "f98eeb7d6967e5e53760183e3c70699c9894211a2f49ed5fa9ae93c39202a665"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-water-dist-r06-m4-01",
+    "prompt": "Which statement about spring-operated pressure gauges is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Fluid pressure pushes against a flexible surface inside the gauge."
+     },
+     {
+      "id": "o2",
+      "label": "A gear-lever mechanism transfers movement to the indicator arrow."
+     },
+     {
+      "id": "o3",
+      "label": "Spring-loaded gauges provide high-precision laboratory readings."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Spring-loaded gauges are not extremely accurate, though they work well when high precision is unnecessary."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:17:18.720403+00:00",
+    "notes": "Strict Hydrogen self-review of all 39 authored items for wpi-class1-water-dist against supplied source pages, collision candidates, and internal draft novelty; 39 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:18:47.592Z",
+    "payloadSha256": "54f6419ec3f6ec45d45c248eb88e2d60d22b37ace1d42dafaa251668a6894413",
+    "builderResultsSha256": "f98eeb7d6967e5e53760183e3c70699c9894211a2f49ed5fa9ae93c39202a665"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-water-dist-r06-m4-02",
+    "prompt": "Which statement about pneumatic and hydraulic valve operators is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Both use a piston inside a cylinder linked to the valve stem."
+     },
+     {
+      "id": "o2",
+      "label": "Valves themselves usually require more maintenance than their operators."
+     },
+     {
+      "id": "o3",
+      "label": "Spring-loaded models return the valve to a safe position on pressure loss."
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Valve operators and positioners typically require more maintenance than the valves they control."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:17:18.720403+00:00",
+    "notes": "Strict Hydrogen self-review of all 39 authored items for wpi-class1-water-dist against supplied source pages, collision candidates, and internal draft novelty; 39 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:18:47.592Z",
+    "payloadSha256": "ac74c40c1a60d5a5d6ab8023bfd0402ac661ca0177f7e17b6a913e6c3d648da9",
+    "builderResultsSha256": "f98eeb7d6967e5e53760183e3c70699c9894211a2f49ed5fa9ae93c39202a665"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-water-dist-r06-m4-03",
+    "prompt": "Which statement about steam trap maintenance and testing is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Traps operate under varying pressure and temperature conditions."
+     },
+     {
+      "id": "o2",
+      "label": "Most trap failures occur in the open mode, raising backpressure."
+     },
+     {
+      "id": "o3",
+      "label": "Acoustic testing relies on heat bands that change color with temperature."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Heat bands are a thermal inspection method; acoustic testing uses listening devices like stethoscopes or ultrasonic instruments."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:17:18.720403+00:00",
+    "notes": "Strict Hydrogen self-review of all 39 authored items for wpi-class1-water-dist against supplied source pages, collision candidates, and internal draft novelty; 39 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:18:47.592Z",
+    "payloadSha256": "08baf8d51f4262d1823a70b06af650b3fa816e61a450a63cf01f122711aca77a",
+    "builderResultsSha256": "f98eeb7d6967e5e53760183e3c70699c9894211a2f49ed5fa9ae93c39202a665"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-water-dist-r06-m4-04",
+    "prompt": "Which statement about hydrostatic pressure in open vessels is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Pressure at the bottom depends on the vertical depth of water."
+     },
+     {
+      "id": "o2",
+      "label": "A wider tank holds more volume and therefore creates higher bottom pressure."
+     },
+     {
+      "id": "o3",
+      "label": "Water density is approximately 62.4 pounds per cubic foot."
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Bottom pressure depends on fluid density and vertical depth, not the total volume or width of the vessel."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:17:18.720403+00:00",
+    "notes": "Strict Hydrogen self-review of all 39 authored items for wpi-class1-water-dist against supplied source pages, collision candidates, and internal draft novelty; 39 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:18:47.592Z",
+    "payloadSha256": "0b285ba937888ccc8b5bd905971e7dd985deefa96227f3c44267066820e1db6d",
+    "builderResultsSha256": "f98eeb7d6967e5e53760183e3c70699c9894211a2f49ed5fa9ae93c39202a665"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-water-dist-r06-m4-05",
+    "prompt": "Which statement about mechanical energy forms in hydraulic piping is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Energy head in feet of water equals foot-pounds per pound of water."
+     },
+     {
+      "id": "o2",
+      "label": "Elevation and pressure are forms of potential energy."
+     },
+     {
+      "id": "o3",
+      "label": "Velocity head represents potential energy stored in stationary water."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Velocity head represents kinetic energy due to fluid motion, not potential energy."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:17:18.720403+00:00",
+    "notes": "Strict Hydrogen self-review of all 39 authored items for wpi-class1-water-dist against supplied source pages, collision candidates, and internal draft novelty; 39 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:18:47.592Z",
+    "payloadSha256": "d2285af279a02fbe7e78ff93120e4380885bf179d8dade79a4e659347593ae46",
+    "builderResultsSha256": "f98eeb7d6967e5e53760183e3c70699c9894211a2f49ed5fa9ae93c39202a665"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-water-dist-r06-m4-06",
+    "prompt": "Which statement about pipeline strainers is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "The bottom of the strainer acts as a sump where solids collect."
+     },
+     {
+      "id": "o2",
+      "label": "A blowout connection in the end cap allows flushing of the strainer."
+     },
+     {
+      "id": "o3",
+      "label": "Strainers are used primarily to remove air from steam lines."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Traps remove unwanted air and condensate from steam lines, whereas strainers collect solid particles."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:17:18.720403+00:00",
+    "notes": "Strict Hydrogen self-review of all 39 authored items for wpi-class1-water-dist against supplied source pages, collision candidates, and internal draft novelty; 39 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:18:47.592Z",
+    "payloadSha256": "65b51696cb92653f0b4ab10c47f4dee2fadf2c16da493bce3cf4a1801be1c583",
+    "builderResultsSha256": "f98eeb7d6967e5e53760183e3c70699c9894211a2f49ed5fa9ae93c39202a665"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-water-dist-r06-m5-01",
+    "prompt": "In the mechanical operation of a spring-operated pressure gauge, does fluid pressing against the flexible sensing surface occur before or after the gear-lever mechanism moves the indicator arrow?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Fluid pressure must first flex the sensing surface so that the mechanical linkage can move the pointer."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:17:18.720403+00:00",
+    "notes": "Strict Hydrogen self-review of all 39 authored items for wpi-class1-water-dist against supplied source pages, collision candidates, and internal draft novelty; 39 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:18:47.592Z",
+    "payloadSha256": "d6bb1a6c0091d7570afff8d5183e909060ac4d81aa63e32f780343fa8e6ea28c",
+    "builderResultsSha256": "f98eeb7d6967e5e53760183e3c70699c9894211a2f49ed5fa9ae93c39202a665"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-water-dist-r06-m5-02",
+    "prompt": "In a spring-loaded fail-safe pneumatic valve actuator, does losing air supply pressure occur before or after the spring returns the valve to its safe position?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The loss of air pressure triggers the spring to move the valve back to its safe position."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:17:18.720403+00:00",
+    "notes": "Strict Hydrogen self-review of all 39 authored items for wpi-class1-water-dist against supplied source pages, collision candidates, and internal draft novelty; 39 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:18:47.592Z",
+    "payloadSha256": "8d7f4e46cfe001e1aed6279ed489242d1bb451dff5487db914c6b79d162eeb4e",
+    "builderResultsSha256": "f98eeb7d6967e5e53760183e3c70699c9894211a2f49ed5fa9ae93c39202a665"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-water-dist-r06-m5-03",
+    "prompt": "When clearing solids from a pipeline strainer sump using its end-cap blowout port, does opening the blowout plug occur before or after system pressure flushes the debris?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The blowout plug must be removed first so line pressure can flush solids out of the sump."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:17:18.720403+00:00",
+    "notes": "Strict Hydrogen self-review of all 39 authored items for wpi-class1-water-dist against supplied source pages, collision candidates, and internal draft novelty; 39 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:18:47.592Z",
+    "payloadSha256": "f6a896a9cf735280816633e20e91bb087366c940d8715fbd1b2f2b7f833a7d50",
+    "builderResultsSha256": "f98eeb7d6967e5e53760183e3c70699c9894211a2f49ed5fa9ae93c39202a665"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-water-dist-r06-m5-04",
+    "prompt": "When a steam trap fails in the open mode, does reduced discharge capacity in downstream traps occur before or after high backpressure develops in the condensate system?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "The open-mode failure creates high backpressure first, which then reduces the discharge capacity of other traps."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:17:18.720403+00:00",
+    "notes": "Strict Hydrogen self-review of all 39 authored items for wpi-class1-water-dist against supplied source pages, collision candidates, and internal draft novelty; 39 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:18:47.592Z",
+    "payloadSha256": "e8668ef01601d9d66e6d4a71b0ec7be0ae669ffd22ccea28936cd036c6d5a1bc",
+    "builderResultsSha256": "f98eeb7d6967e5e53760183e3c70699c9894211a2f49ed5fa9ae93c39202a665"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-water-dist-r06-m5-05",
+    "prompt": "In converting a measured flow rate from cubic feet per second to million gallons per day, does recording the flow in cubic feet per second occur before or after applying the conversion factor?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The flow rate is recorded in cfs first and then multiplied by the appropriate conversion factor to obtain MGD."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:17:18.720403+00:00",
+    "notes": "Strict Hydrogen self-review of all 39 authored items for wpi-class1-water-dist against supplied source pages, collision candidates, and internal draft novelty; 39 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:18:47.592Z",
+    "payloadSha256": "b66b5911d9efdb054f0c10fb2b6dd14d5bac6ce6691909531efc7f9ff6f1d0ee",
+    "builderResultsSha256": "f98eeb7d6967e5e53760183e3c70699c9894211a2f49ed5fa9ae93c39202a665"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-water-dist-r06-m5-06",
+    "prompt": "In a pneumatic valve actuator, does the piston rod turning the valve stem occur before or after the piston moves inside the cylinder?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "Air pressure moves the piston inside the cylinder first, which drives the linked piston rod to turn the valve stem."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:17:18.720403+00:00",
+    "notes": "Strict Hydrogen self-review of all 39 authored items for wpi-class1-water-dist against supplied source pages, collision candidates, and internal draft novelty; 39 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:18:47.592Z",
+    "payloadSha256": "f271e07a669db8600e04764f87c89f4b8bae50ee925a1680b5e610f4e9b4907e",
+    "builderResultsSha256": "f98eeb7d6967e5e53760183e3c70699c9894211a2f49ed5fa9ae93c39202a665"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T04:17:18.720403+00:00",
+   "attestation": "Strict Hydrogen self-review of all 39 authored items for wpi-class1-water-dist against supplied source pages, collision candidates, and internal draft novelty; 39 accepted, 0 rejected.",
+   "payloadSha256": {
+    "targeth-ht261118-wpi-class1-water-dist-r06-m0-01": "9bad28b2cd3edb42be460e9359244249c0a79a7664c95a753a61dac5d4b53fcd",
+    "targeth-ht261118-wpi-class1-water-dist-r06-m0-02": "fc0e4c9f5a695224f6ac0e630d1c1473e94ba9d81b14f053a317377a40b49e82",
+    "targeth-ht261118-wpi-class1-water-dist-r06-m0-03": "540bd74dc1518972434af54e0b70ef19fdba85af21c6c0fc583a06e60173d688",
+    "targeth-ht261118-wpi-class1-water-dist-r06-m0-04": "b426f9e89c9dc8106ce4cb1e4ee91ba7d9395ba64e7b29b9a9615ccaa15fb500",
+    "targeth-ht261118-wpi-class1-water-dist-r06-m0-05": "46047f43d4564bf3209834ec60eb8e80bac6951250fd7ad2980330254eb4b32b",
+    "targeth-ht261118-wpi-class1-water-dist-r06-m0-06": "70b3d612d4c053e2a3332d47229b24e97c258cdba870f07453e55f64bb5f344c",
+    "targeth-ht261118-wpi-class1-water-dist-r06-m0-07": "9636ac13ae77ca725157f83806ee647438625ffe90d0341e8a49ae44b12dfe4c",
+    "targeth-ht261118-wpi-class1-water-dist-r06-m0-08": "f0f7f5e6dc6defb942590fe0469a6b796d70876f3dd2b26af6a7a031e969dcc0",
+    "targeth-ht261118-wpi-class1-water-dist-r06-m0-09": "10aa8d95554d68904c490dcbb085af3bfefade8cca8b9c5fbf027e5cb64377b7",
+    "targeth-ht261118-wpi-class1-water-dist-r06-m0-10": "ac721c708b5095f92df1331dc453bc08232cd691c06cf9f828b31b99138d26b0",
+    "targeth-ht261118-wpi-class1-water-dist-r06-m1-01": "e9710b122d6cda8a86b66ab1e2c2a491bcd8f0c8627d2440c9e6110b730fdca9",
+    "targeth-ht261118-wpi-class1-water-dist-r06-m1-02": "2c4c83a94e9a8a02f69149c6f5f08f08091a55aa1fa1a49e8c17070b94225e0a",
+    "targeth-ht261118-wpi-class1-water-dist-r06-m1-03": "bd5be63449efc93f6f28c7860431c123dfbcfe3e138b26fe43da4c24789d80e9",
+    "targeth-ht261118-wpi-class1-water-dist-r06-m2-01": "dcedd2f2d88f1747a1a673a9d03356306b555255ea35c8a2da7acbfc630bb419",
+    "targeth-ht261118-wpi-class1-water-dist-r06-m2-02": "f975da157bdf943caeabe3be35e63e8972ea63c7b7e3f3a57040ff58d0f1d0a3",
+    "targeth-ht261118-wpi-class1-water-dist-r06-m2-03": "6c87d7becde5f990b680e34883cf3547b2255eaa08d2205be0705b6ebe6649a4",
+    "targeth-ht261118-wpi-class1-water-dist-r06-m2-04": "9e53f22449fa01d4bac3568d47b18ac24ec90ca1738d02ffebf0932e5aad28b0",
+    "targeth-ht261118-wpi-class1-water-dist-r06-m2-05": "674138b405fd6ae3f68a50846c28c2e060d248748b4397b06120dbdaef53d9f3",
+    "targeth-ht261118-wpi-class1-water-dist-r06-m2-06": "e26e7a780bbd7d52a96fea2b87e2d0d04870e42496ee1d2a3840ab6fd25004b8",
+    "targeth-ht261118-wpi-class1-water-dist-r06-m3-01": "1bc1b7a781a06be21bafaf543b63142f316b12dab2ee9d3a60a18313608487e8",
+    "targeth-ht261118-wpi-class1-water-dist-r06-m3-02": "e5cfa5626725e97282b2d59842d18322a3d28178581f50da1530a31270efccd9",
+    "targeth-ht261118-wpi-class1-water-dist-r06-m3-03": "68c8c194de120f3fa5ff25d8160a7556cb5d43c5d79f4b0a35cdd7c86e5b185b",
+    "targeth-ht261118-wpi-class1-water-dist-r06-m3-04": "7d700a8adde749a46b941759c09c1ecc84e1d7d4ed7fe926f9f0ef698eaad1f6",
+    "targeth-ht261118-wpi-class1-water-dist-r06-m3-05": "a7291d03b8aaa1ce92dd353a60b018c724925d420d1e33fafe62c458249f8bb8",
+    "targeth-ht261118-wpi-class1-water-dist-r06-m3-06": "05598279f993ded1b80d43415f7549b035818f24f0da0e1e0aaee4d7808a6cdf",
+    "targeth-ht261118-wpi-class1-water-dist-r06-m3-07": "0642049abd0b4b76e5f1964a283dd2640264c87c05cbf215ec6139279b99c6b7",
+    "targeth-ht261118-wpi-class1-water-dist-r06-m3-08": "f9b4d7030c58e7cae63b3f7fe6958caa5057c9d191a1b7ffb8dd3ef43b9fa45d",
+    "targeth-ht261118-wpi-class1-water-dist-r06-m4-01": "54f6419ec3f6ec45d45c248eb88e2d60d22b37ace1d42dafaa251668a6894413",
+    "targeth-ht261118-wpi-class1-water-dist-r06-m4-02": "ac74c40c1a60d5a5d6ab8023bfd0402ac661ca0177f7e17b6a913e6c3d648da9",
+    "targeth-ht261118-wpi-class1-water-dist-r06-m4-03": "08baf8d51f4262d1823a70b06af650b3fa816e61a450a63cf01f122711aca77a",
+    "targeth-ht261118-wpi-class1-water-dist-r06-m4-04": "0b285ba937888ccc8b5bd905971e7dd985deefa96227f3c44267066820e1db6d",
+    "targeth-ht261118-wpi-class1-water-dist-r06-m4-05": "d2285af279a02fbe7e78ff93120e4380885bf179d8dade79a4e659347593ae46",
+    "targeth-ht261118-wpi-class1-water-dist-r06-m4-06": "65b51696cb92653f0b4ab10c47f4dee2fadf2c16da493bce3cf4a1801be1c583",
+    "targeth-ht261118-wpi-class1-water-dist-r06-m5-01": "d6bb1a6c0091d7570afff8d5183e909060ac4d81aa63e32f780343fa8e6ea28c",
+    "targeth-ht261118-wpi-class1-water-dist-r06-m5-02": "8d7f4e46cfe001e1aed6279ed489242d1bb451dff5487db914c6b79d162eeb4e",
+    "targeth-ht261118-wpi-class1-water-dist-r06-m5-03": "f6a896a9cf735280816633e20e91bb087366c940d8715fbd1b2f2b7f833a7d50",
+    "targeth-ht261118-wpi-class1-water-dist-r06-m5-04": "e8668ef01601d9d66e6d4a71b0ec7be0ae669ffd22ccea28936cd036c6d5a1bc",
+    "targeth-ht261118-wpi-class1-water-dist-r06-m5-05": "b66b5911d9efdb054f0c10fb2b6dd14d5bac6ce6691909531efc7f9ff6f1d0ee",
+    "targeth-ht261118-wpi-class1-water-dist-r06-m5-06": "f271e07a669db8600e04764f87c89f4b8bae50ee925a1680b5e610f4e9b4907e"
+   }
+  },
+  "registeredAt": "2026-11-19T04:18:47.592Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 5,
+     "f": 5
+    },
+    "dirs": {
+     "increase": 2,
+     "decrease": 4,
+     "unchanged": 2
+    },
+    "longest": 6,
+    "options": 20
+   },
+   "batchSha256": "e8bebbe759f2db7be8f4f7274e1742ed92cf0ef9fdceb83a2ac3e2f209fcf209"
+  }
+ }
+}

@@ -1630,5 +1630,1069 @@ export const OVERLAY_DESCRIPTORS = [
     "courses": [
       "wpi-class4-water-coll"
     ]
+  },
+  {
+    "file": "target2-class4-water-r01.json",
+    "sha256": "97781b21de443b01dc9b3311be8ef9b08516a4e1977b3c815fedad9c1da63891",
+    "bytes": 79398,
+    "courses": [
+      "class4-water"
+    ]
+  },
+  {
+    "file": "target2-wpi-class4-water-dist-r01.json",
+    "sha256": "58539072e4c7f4a814569afc38ad273263f33867b5440ee6e18cb4437d9be282",
+    "bytes": 33802,
+    "courses": [
+      "wpi-class4-water-dist"
+    ]
+  },
+  {
+    "file": "target2-wpi-class4-wastewater-r01.json",
+    "sha256": "e739b9b5e70a613144bb3b48680505ae9b5299ed3374c9efbd6324861bfd2863",
+    "bytes": 35123,
+    "courses": [
+      "wpi-class4-wastewater"
+    ]
+  },
+  {
+    "file": "target2-class4-water-dist-r01.json",
+    "sha256": "ae721ea24d12f3eb877d955099e3bd87c2f04f457e68549f12b1d1f01f14f4a2",
+    "bytes": 25601,
+    "courses": [
+      "class4-water-dist"
+    ]
+  },
+  {
+    "file": "target2-class4-ww-r01.json",
+    "sha256": "b5488c0f46f0bf1a629d4686c07e738b336de35cf3cb629605d6df9e95dda00f",
+    "bytes": 23750,
+    "courses": [
+      "class4-ww"
+    ]
+  },
+  {
+    "file": "target2-wqa-r02.json",
+    "sha256": "bcda600da3c001c7f5dc4bd26a5672c1b2897386cf1ff07ba67d6276a50c106f",
+    "bytes": 52165,
+    "courses": [
+      "wqa"
+    ]
+  },
+  {
+    "file": "target2-class1-water-r02.json",
+    "sha256": "febda41c78bfc8507b7c117761f5f286d79c814c6dced148ed3f7f206d1fb82e",
+    "bytes": 60643,
+    "courses": [
+      "class1-water"
+    ]
+  },
+  {
+    "file": "target2-class2-wastewater-coll-r02.json",
+    "sha256": "28f03e3c051d25305cb0fd9cf5567e0310276e6e3cf0016f59e9e421d1a33e9c",
+    "bytes": 5148,
+    "courses": [
+      "class2-wastewater-coll"
+    ]
+  },
+  {
+    "file": "target2-wpi-class1-water-coll-r02.json",
+    "sha256": "037d5cd0724d510c0e3305404ca18ca47c3b038820a617167d7a5f98e4eb52e0",
+    "bytes": 83161,
+    "courses": [
+      "wpi-class1-water-coll"
+    ]
+  },
+  {
+    "file": "target2-class1-water-dist-r02.json",
+    "sha256": "1d88f6aab9bf0c7a2e478be482d675bf7af10bfe250adb65c7e22225434ba681",
+    "bytes": 73027,
+    "courses": [
+      "class1-water-dist"
+    ]
+  },
+  {
+    "file": "target2-class1-ww-r02.json",
+    "sha256": "7b304013ea4bff7298bb46d7614c982d75ed87c90124844263a60033cd4e459f",
+    "bytes": 91285,
+    "courses": [
+      "class1-ww"
+    ]
+  },
+  {
+    "file": "target2-wpi-class2-water-coll-r02.json",
+    "sha256": "4d6a481854eb1c52795af689591f49d747e945e2244993998677bb60ee889536",
+    "bytes": 59518,
+    "courses": [
+      "wpi-class2-water-coll"
+    ]
+  },
+  {
+    "file": "target2-wpi-class3-water-coll-r02.json",
+    "sha256": "4975fdd4e1b9a7e92a059d4ffc3de7c18bb46ee1978ca0d1af40ebabac223aa8",
+    "bytes": 36143,
+    "courses": [
+      "wpi-class3-water-coll"
+    ]
+  },
+  {
+    "file": "target2-wpi-class2-wastewater-r02.json",
+    "sha256": "0a3075c4449b7e267067db0e71d0804964c363fa6d1be8bd54c710c12ffcc333",
+    "bytes": 84201,
+    "courses": [
+      "wpi-class2-wastewater"
+    ]
+  },
+  {
+    "file": "target2-class3-water-r02.json",
+    "sha256": "93878bcf7ad0784a888a1bbfb49a9aa38c6d8263a05148e4700677a36253db40",
+    "bytes": 72957,
+    "courses": [
+      "class3-water"
+    ]
+  },
+  {
+    "file": "target2-class3-wastewater-coll-r02.json",
+    "sha256": "78e59a3504c8f5534ef5a4af4193528807ed3e2fb95c1316fe8d5ff606daad9a",
+    "bytes": 57765,
+    "courses": [
+      "class3-wastewater-coll"
+    ]
+  },
+  {
+    "file": "target2-wpi-class3-water-dist-r02.json",
+    "sha256": "0255b66959eed74f1b9b99b6c50fca895ea7465974bbd0ef1a6ce844d7c8e7a7",
+    "bytes": 59676,
+    "courses": [
+      "wpi-class3-water-dist"
+    ]
+  },
+  {
+    "file": "target2-class3-water-dist-r02.json",
+    "sha256": "4129a90d0aab75d3e40c47b538dbc1e08dd5411468a022bae51e1d16ea0ca4bc",
+    "bytes": 57122,
+    "courses": [
+      "class3-water-dist"
+    ]
+  },
+  {
+    "file": "target2-class3-ww-r02.json",
+    "sha256": "bfbc48cf90848dd8fd41391bb552da925ad2261ed920538dbdfc1842f8657d12",
+    "bytes": 99615,
+    "courses": [
+      "class3-ww"
+    ]
+  },
+  {
+    "file": "targeth-class1-wastewater-coll-r01.json",
+    "sha256": "970ffea96713675e6b481b7ae6dafe2392531b845df917f6b07b065c6acc3754",
+    "bytes": 61006,
+    "courses": [
+      "class1-wastewater-coll"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class1-water-coll-r01.json",
+    "sha256": "2228c8e44327c7ba3aad5eaaa41b81dd8d6f959783258b15485a37fbc5042963",
+    "bytes": 127452,
+    "courses": [
+      "wpi-class1-water-coll"
+    ]
+  },
+  {
+    "file": "targeth-class1-ww-r01.json",
+    "sha256": "f2da5c6632abf3fd1e12a3b7bebb2084296d5706e5ef9cffd0ed469a0ec593cc",
+    "bytes": 125577,
+    "courses": [
+      "class1-ww"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class2-water-dist-r01.json",
+    "sha256": "aaf2dda37b294e21cb1b45f16938393c4b79e9ed9e5bb84c84e7308d3b6aeb0c",
+    "bytes": 126292,
+    "courses": [
+      "wpi-class2-water-dist"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class2-water-r01.json",
+    "sha256": "190a98770d86c05961cfe753aabfee1e5287a3b0c3a395cce0390689dad423ab",
+    "bytes": 121066,
+    "courses": [
+      "wpi-class2-water"
+    ]
+  },
+  {
+    "file": "targeth-class3-water-r01.json",
+    "sha256": "b28ef20fcb1374f671f00b7abc11e528cb77250e666407fe300ca50c82c64e27",
+    "bytes": 107541,
+    "courses": [
+      "class3-water"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class3-water-coll-r01.json",
+    "sha256": "5512899021d078decf6d150fefadceb20339397f0f4511ba32d6b9be264f42b8",
+    "bytes": 110681,
+    "courses": [
+      "wpi-class3-water-coll"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class2-wastewater-r01.json",
+    "sha256": "1579cb8b78b918540f190a2cea07c4f839e1105e3440a5f6c9bcf3e2c95932ee",
+    "bytes": 91013,
+    "courses": [
+      "wpi-class2-wastewater"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class3-water-dist-r01.json",
+    "sha256": "400e9b41e412329d25e37a800350837f17de4e1238deaf2ec549097d8221dae8",
+    "bytes": 102728,
+    "courses": [
+      "wpi-class3-water-dist"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class1-wastewater-r01.json",
+    "sha256": "6f6e6519e95e5151dc84017d7d9597f9be982575a1923ed057b7c6d327c18b05",
+    "bytes": 96913,
+    "courses": [
+      "wpi-class1-wastewater"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class3-wastewater-r01.json",
+    "sha256": "7b65fdeee1b1f591ec9887abc4eb577f828aadc2b88de2c3389287b9bc3c6ae8",
+    "bytes": 108085,
+    "courses": [
+      "wpi-class3-wastewater"
+    ]
+  },
+  {
+    "file": "targeth-class3-water-dist-r01.json",
+    "sha256": "725a9e2f021138f574ab30df2809acf5d4308271bb3f1a11cbc642b0d639452a",
+    "bytes": 93264,
+    "courses": [
+      "class3-water-dist"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class1-water-r01.json",
+    "sha256": "5c1e0fc2328a0289aab57215facc074c3021f31c145fc8c840cc74b4bd3f0171",
+    "bytes": 87509,
+    "courses": [
+      "wpi-class1-water"
+    ]
+  },
+  {
+    "file": "targeth-class3-ww-r01.json",
+    "sha256": "d5cb168da493e2e1fe4c012ca61aaad0726b503614c4eeb39cae6fd9b2f15f54",
+    "bytes": 95341,
+    "courses": [
+      "class3-ww"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class4-water-r01.json",
+    "sha256": "06f5b90d7dd1990e09f7d7631e979fc5596aaed4ad267f25362ba70205ed20df",
+    "bytes": 73989,
+    "courses": [
+      "wpi-class4-water"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class4-water-coll-r01.json",
+    "sha256": "e477e0507083bfd91a79e4bf49040b9068b6f20e650cf7fc0cf93462ef1b2c07",
+    "bytes": 79952,
+    "courses": [
+      "wpi-class4-water-coll"
+    ]
+  },
+  {
+    "file": "targeth-class4-water-r01.json",
+    "sha256": "f1e1a30349cdd7eaddf4a6cb0fd83319c32fb17299a0324531481d1484dbcaba",
+    "bytes": 64071,
+    "courses": [
+      "class4-water"
+    ]
+  },
+  {
+    "file": "targeth-class4-wastewater-coll-r01.json",
+    "sha256": "df666a2a30095200152da418e5cb2d75e757c1c40a1479ef91aab1161defb9fe",
+    "bytes": 57375,
+    "courses": [
+      "class4-wastewater-coll"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class4-water-dist-r01.json",
+    "sha256": "3cc50f82994d0860427caa51c5c313900632c41a9cdd0b72ee325c0c9e994c3a",
+    "bytes": 50176,
+    "courses": [
+      "wpi-class4-water-dist"
+    ]
+  },
+  {
+    "file": "targeth-class4-water-dist-r01.json",
+    "sha256": "ff83329b597a7f3c2ad8cf99523849f4ca2c733eb88cee9e25a1e512613fd406",
+    "bytes": 43322,
+    "courses": [
+      "class4-water-dist"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class4-wastewater-r01.json",
+    "sha256": "ab6b9d74ac10ab7dd99ad7008e95d010bdd012c2d5c3f377fae73a975b2ad437",
+    "bytes": 30875,
+    "courses": [
+      "wpi-class4-wastewater"
+    ]
+  },
+  {
+    "file": "targeth-class4-ww-r01.json",
+    "sha256": "1d762439c44743506a217a0e96c713f9edea361bb7060e544943ce44df3b2880",
+    "bytes": 23747,
+    "courses": [
+      "class4-ww"
+    ]
+  },
+  {
+    "file": "targeth-wqa-r02.json",
+    "sha256": "57059334ff62b76f3f748b4ebf57a2a3fecc7d639bfc98eaa587f67e69b8ea0b",
+    "bytes": 51120,
+    "courses": [
+      "wqa"
+    ]
+  },
+  {
+    "file": "targeth-class1-water-r02.json",
+    "sha256": "f04eed87565fd85b0ef7b9ac5be61cdb897848b4dc1ebb24387289a09d7d33f9",
+    "bytes": 128708,
+    "courses": [
+      "class1-water"
+    ]
+  },
+  {
+    "file": "targeth-class1-wastewater-coll-r02.json",
+    "sha256": "64f45377fb2b4741b2dfa64bf5213afa8af34ab3d2379c2f4aaebe1d0c0a0f06",
+    "bytes": 127400,
+    "courses": [
+      "class1-wastewater-coll"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class2-water-dist-r02.json",
+    "sha256": "f5549e8a873393f16e6ec2a233d28cac8957fdd0e75e9ab2b9c12aa19bdb9506",
+    "bytes": 109023,
+    "courses": [
+      "wpi-class2-water-dist"
+    ]
+  },
+  {
+    "file": "targeth-class2-water-dist-r02.json",
+    "sha256": "8362b12491c277b6ff96c06f3431e6e8d3aff6203168a272f740488d3e20fd29",
+    "bytes": 113290,
+    "courses": [
+      "class2-water-dist"
+    ]
+  },
+  {
+    "file": "targeth-class2-ww-r02.json",
+    "sha256": "c3223e4c18a1819a80264a9a6e6c73aaee0d97aaa56b2339c29c63d5ded6ebd3",
+    "bytes": 129999,
+    "courses": [
+      "class2-ww"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class3-water-r02.json",
+    "sha256": "8f3d213d319dcea60648213750475583746c38538918624040260c0eca92cdf2",
+    "bytes": 109558,
+    "courses": [
+      "wpi-class3-water"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class1-wastewater-r02.json",
+    "sha256": "f3a669f35d389ecc23cf8446f1371ebd31f76b3d5ef4f9796d2de3898bc1509c",
+    "bytes": 96841,
+    "courses": [
+      "wpi-class1-wastewater"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class2-wastewater-r02.json",
+    "sha256": "fae8d15c4ae6b5a4312ad57d4b81f46f994e72d48098e18de879fb054c97431a",
+    "bytes": 102224,
+    "courses": [
+      "wpi-class2-wastewater"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class3-wastewater-r02.json",
+    "sha256": "5346e0a93c146d9736560114f7577ad7ea7fbe8e779a0a4aef3f220b134a6b77",
+    "bytes": 87674,
+    "courses": [
+      "wpi-class3-wastewater"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class4-water-coll-r02.json",
+    "sha256": "6689afd727d8348ffac66c322942c1178abec387776cdc86bc13aa3a288b4430",
+    "bytes": 44867,
+    "courses": [
+      "wpi-class4-water-coll"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class4-water-r02.json",
+    "sha256": "67da68ac0cd35c2a4f86f7b74bf8a8d08dd08c7627533e1a2bfa9febf933ef76",
+    "bytes": 55637,
+    "courses": [
+      "wpi-class4-water"
+    ]
+  },
+  {
+    "file": "targeth-class4-water-r02.json",
+    "sha256": "47a262397ffb726f01801cd7c89bee938b07b49f268c0d28c33039e4dd77d397",
+    "bytes": 30437,
+    "courses": [
+      "class4-water"
+    ]
+  },
+  {
+    "file": "targeth-class4-water-dist-r02.json",
+    "sha256": "a12ef3de015d7de795e8c18311390e03b738df8b8a7c7347f9f14a793967186e",
+    "bytes": 29132,
+    "courses": [
+      "class4-water-dist"
+    ]
+  },
+  {
+    "file": "targeth-class4-wastewater-coll-r02.json",
+    "sha256": "c4d0315e52afffce1b6f5a020a336979420a99220895b78da193722806f68617",
+    "bytes": 40475,
+    "courses": [
+      "class4-wastewater-coll"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class4-wastewater-r02.json",
+    "sha256": "1733009c43d5eb4a0137308502c53051155ed7f9d17523ccfc63d99b828aea28",
+    "bytes": 22198,
+    "courses": [
+      "wpi-class4-wastewater"
+    ]
+  },
+  {
+    "file": "targeth-class4-ww-r02.json",
+    "sha256": "e9e87674cdcf16e539c3e43679453dd9f431507b2b47f73973e0844dff9faf68",
+    "bytes": 22014,
+    "courses": [
+      "class4-ww"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class4-water-dist-r02.json",
+    "sha256": "75e7317093c0e30dec5fe382b009fac165b8077bfbf0e4807c8368afb97dcb70",
+    "bytes": 45762,
+    "courses": [
+      "wpi-class4-water-dist"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class1-water-dist-r03.json",
+    "sha256": "32fbd7538d4c99bd30a201cb5e41ada9417a70ff1b40ed9a1b7726d1ce0d2893",
+    "bytes": 86356,
+    "courses": [
+      "wpi-class1-water-dist"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class1-water-coll-r03.json",
+    "sha256": "c1f8e43bfe090fb10ee01ad667d0a67aaba92f9c7ca51cdf940a446cf02c04d8",
+    "bytes": 87631,
+    "courses": [
+      "wpi-class1-water-coll"
+    ]
+  },
+  {
+    "file": "targeth-wqa-r03.json",
+    "sha256": "64b9d60cfcfafed71c9e37d2bcd6b102031205290faee45448c7a1e14d922665",
+    "bytes": 125018,
+    "courses": [
+      "wqa"
+    ]
+  },
+  {
+    "file": "targeth-class1-water-r03.json",
+    "sha256": "82a30e26042c77ac7c3ca57933e2d08d952d96b9fff2718efaa349fcbc1d7e89",
+    "bytes": 128774,
+    "courses": [
+      "class1-water"
+    ]
+  },
+  {
+    "file": "targeth-class1-water-dist-r03.json",
+    "sha256": "c4317a0c6d4c48b1bfc1ac03a8f8aaea7c76eef9b695fe865f85b767c1ebd2f2",
+    "bytes": 128299,
+    "courses": [
+      "class1-water-dist"
+    ]
+  },
+  {
+    "file": "targeth-class2-wastewater-coll-r03.json",
+    "sha256": "98366b1e4276a8bb218406f724fad3914fe5dc52d2196a1566874ee8c66c66bc",
+    "bytes": 125432,
+    "courses": [
+      "class2-wastewater-coll"
+    ]
+  },
+  {
+    "file": "targeth-class1-ww-r03.json",
+    "sha256": "d15b5f456f44efd8835d3b01906dd5872b22e39227a4b31b3e05bcfb10cea9e0",
+    "bytes": 127092,
+    "courses": [
+      "class1-ww"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class2-water-coll-r03.json",
+    "sha256": "2f11e68d54fcb4be556d26aee2fa01c81712525e76edd6cd6034f713380f99ce",
+    "bytes": 64497,
+    "courses": [
+      "wpi-class2-water-coll"
+    ]
+  },
+  {
+    "file": "targeth-class2-water-r03.json",
+    "sha256": "bcb2641504745e309161fcf539976eba76cb6acb41baba89b9a4ceaca30aa8cb",
+    "bytes": 129399,
+    "courses": [
+      "class2-water"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class3-water-r03.json",
+    "sha256": "c82879e976bde3288dd974aaa11050a5b1718ce0a262336a3ae56b74c2baddac",
+    "bytes": 87747,
+    "courses": [
+      "wpi-class3-water"
+    ]
+  },
+  {
+    "file": "targeth-class2-water-dist-r03.json",
+    "sha256": "8365f7caa34775273c7eeb791c06d2e36cd38bd5c5f92e7387f63ade95376853",
+    "bytes": 103235,
+    "courses": [
+      "class2-water-dist"
+    ]
+  },
+  {
+    "file": "targeth-class3-water-r03.json",
+    "sha256": "084d2de6a9f00b3d549bbaa9cefebc8ca4fb25fb0648756c6151f84240dd0c2f",
+    "bytes": 89127,
+    "courses": [
+      "class3-water"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class3-water-coll-r03.json",
+    "sha256": "3e057cae1608082e5908fcfd35308fb92f57ae48c4d2af902bb00b8d7b6b335a",
+    "bytes": 110857,
+    "courses": [
+      "wpi-class3-water-coll"
+    ]
+  },
+  {
+    "file": "targeth-class3-wastewater-coll-r03.json",
+    "sha256": "8de26aac59d795492d4167fbb3e82ab3334feea1314394a7825a5800294d909e",
+    "bytes": 120313,
+    "courses": [
+      "class3-wastewater-coll"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class4-water-r03.json",
+    "sha256": "9969b1938db4e18d06ce51fda1cd7aee26612a39f55bbb3ab062b0cd115b13ce",
+    "bytes": 23200,
+    "courses": [
+      "wpi-class4-water"
+    ]
+  },
+  {
+    "file": "targeth-class3-water-dist-r03.json",
+    "sha256": "1bba4a88d69be50ac2f81f0eb5b82f1ed76d888f5dee2bcbc39a35f3809e001a",
+    "bytes": 102835,
+    "courses": [
+      "class3-water-dist"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class4-water-coll-r03.json",
+    "sha256": "70cafd0812a346f3af91dfa13bf4f14e275259742558306d3e42c0c4bb252e19",
+    "bytes": 22221,
+    "courses": [
+      "wpi-class4-water-coll"
+    ]
+  },
+  {
+    "file": "targeth-class3-ww-r03.json",
+    "sha256": "b7913cd58251ac56bea79af5fe05b0bcc032ac4dcc328ade1df3e27787dbe2b0",
+    "bytes": 68409,
+    "courses": [
+      "class3-ww"
+    ]
+  },
+  {
+    "file": "targeth-class4-water-r03.json",
+    "sha256": "a2db4572bdd0720357ce92554dff57d75ce60be5f89135f861b2240c6c7b0d77",
+    "bytes": 21509,
+    "courses": [
+      "class4-water"
+    ]
+  },
+  {
+    "file": "targeth-class4-wastewater-coll-r03.json",
+    "sha256": "5e97c12cf029edb5acb2437dea426a4825061fccf6e37010fa010e484417e249",
+    "bytes": 15273,
+    "courses": [
+      "class4-wastewater-coll"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class4-wastewater-r03.json",
+    "sha256": "2b2c2a621b076f7f2a434921aea86935b0a2da280e2f75386365db5c39617bd8",
+    "bytes": 21761,
+    "courses": [
+      "wpi-class4-wastewater"
+    ]
+  },
+  {
+    "file": "targeth-class4-water-dist-r03.json",
+    "sha256": "17703a6e75f96e067ad27c85f2dbe4a7eb324563496b83a491e83f0b9d32ae0f",
+    "bytes": 22419,
+    "courses": [
+      "class4-water-dist"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class4-water-dist-r03.json",
+    "sha256": "3a72ea3d210d03560fd335e227c8eebe88e4fb096ceb49ee9c218d3970c66715",
+    "bytes": 25345,
+    "courses": [
+      "wpi-class4-water-dist"
+    ]
+  },
+  {
+    "file": "targeth-class4-ww-r03.json",
+    "sha256": "6d664d2beb7ea8708afb426cd992cff1b2739b3ce0359eee9915f6387be4b7e7",
+    "bytes": 20294,
+    "courses": [
+      "class4-ww"
+    ]
+  },
+  {
+    "file": "targeth-wqa-r04.json",
+    "sha256": "a2546b2f58769b8c54e2e6392dae95e0839baaeae72fb072095a377eaaffc375",
+    "bytes": 129465,
+    "courses": [
+      "wqa"
+    ]
+  },
+  {
+    "file": "targeth-class1-water-dist-r04.json",
+    "sha256": "0087a631304f4ac1cb3dab0c2ade019ff82ae9275cbf529411b2c040f25c4b1e",
+    "bytes": 127147,
+    "courses": [
+      "class1-water-dist"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class2-water-dist-r04.json",
+    "sha256": "d2a6aa64d5cc07c7eaf5472d497c8291838494c1fac174d02294c5a7488fbb26",
+    "bytes": 106495,
+    "courses": [
+      "wpi-class2-water-dist"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class2-water-coll-r04.json",
+    "sha256": "c6c0ebb0ddcfbb416db6d92924ed006cbae0a319ad2b17e2aca68e24335048bf",
+    "bytes": 122605,
+    "courses": [
+      "wpi-class2-water-coll"
+    ]
+  },
+  {
+    "file": "targeth-class2-water-r04.json",
+    "sha256": "c1f5c9f8085e86d04e422de41ab03a53d0886b5266d21f65f289a048176e2a4b",
+    "bytes": 123421,
+    "courses": [
+      "class2-water"
+    ]
+  },
+  {
+    "file": "targeth-class2-water-dist-r04.json",
+    "sha256": "73b328f61036442411e1ae4913bd1ba8b232512504b9dd2db43803529dc566eb",
+    "bytes": 105411,
+    "courses": [
+      "class2-water-dist"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class3-water-r04.json",
+    "sha256": "40b6ba405f65b2548bfcce07ed6c1e8c337bcd2788d98a795ffac9b8faef0ed4",
+    "bytes": 87715,
+    "courses": [
+      "wpi-class3-water"
+    ]
+  },
+  {
+    "file": "targeth-class3-water-r04.json",
+    "sha256": "11a555dd8cde281edbfdad9e2bb85119dea129a34a0cc90908b290bcd344f95a",
+    "bytes": 85897,
+    "courses": [
+      "class3-water"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class3-water-coll-r04.json",
+    "sha256": "9c7ddb22fe4aa43941f36a694997617ba499802d081d2bb37c02e46db4ba573b",
+    "bytes": 105969,
+    "courses": [
+      "wpi-class3-water-coll"
+    ]
+  },
+  {
+    "file": "targeth-class3-water-dist-r04.json",
+    "sha256": "8fcf2bfb0bf3aba266c2f06c266ce34718fcc640b948bc34811a9b61879fdb8b",
+    "bytes": 30832,
+    "courses": [
+      "class3-water-dist"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class3-water-dist-r04.json",
+    "sha256": "cf72cf37596fc6b39463144894819b77d2195311c28060da9ba0dee6a1606b26",
+    "bytes": 108915,
+    "courses": [
+      "wpi-class3-water-dist"
+    ]
+  },
+  {
+    "file": "targeth-class3-ww-r04.json",
+    "sha256": "698b75d4b4043c5872fc853d950b0ca226f9fdf98fb7e3eb9cd4406d5149f8ff",
+    "bytes": 52679,
+    "courses": [
+      "class3-ww"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class4-water-r04.json",
+    "sha256": "f28a7de3fe74f6ab7c59c5f6c9bce84805a826ffe6fb0440e39005102959e380",
+    "bytes": 22472,
+    "courses": [
+      "wpi-class4-water"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class4-water-coll-r04.json",
+    "sha256": "6d03c2429ca2aa92a51bb943623744756f76b910a4c576b71b10eb66396d2c2e",
+    "bytes": 21028,
+    "courses": [
+      "wpi-class4-water-coll"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class4-water-dist-r04.json",
+    "sha256": "ee8c33d21aa939bd55ef4ea828e87728d5ce58a9d334a394e5a04abe8e3b515e",
+    "bytes": 22151,
+    "courses": [
+      "wpi-class4-water-dist"
+    ]
+  },
+  {
+    "file": "targeth-class4-wastewater-coll-r04.json",
+    "sha256": "f1661fcca9b4d494940e15331c72f98c7e0f6b53941ee62d45169ee2765e1cbc",
+    "bytes": 21814,
+    "courses": [
+      "class4-wastewater-coll"
+    ]
+  },
+  {
+    "file": "targeth-class4-water-dist-r04.json",
+    "sha256": "92750eacd864daac1857cb5105f16067ad66d15a80f6a4b1c024daad0976922a",
+    "bytes": 22609,
+    "courses": [
+      "class4-water-dist"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class4-wastewater-r04.json",
+    "sha256": "d454bb1034744a7f14b1e8cde5fb358e3f50f09d9f6d49b36e7faa358faaef25",
+    "bytes": 20078,
+    "courses": [
+      "wpi-class4-wastewater"
+    ]
+  },
+  {
+    "file": "targeth-class4-ww-r04.json",
+    "sha256": "33b811b78ca9ddbe9522d50aa903c3878bb0b7c765b6350a023cbec0cba27899",
+    "bytes": 17675,
+    "courses": [
+      "class4-ww"
+    ]
+  },
+  {
+    "file": "targeth-class1-wastewater-coll-r05.json",
+    "sha256": "b449e74be4c1907088d0a629be86c891b7b8be4a14019f8e71ca239536a0b44e",
+    "bytes": 47354,
+    "courses": [
+      "class1-wastewater-coll"
+    ]
+  },
+  {
+    "file": "targeth-wqa-r05.json",
+    "sha256": "01d7dfe93d8d54bc21a17b840bd3482423c0f8ef8c37d7a5992c7ef96736d8e0",
+    "bytes": 68076,
+    "courses": [
+      "wqa"
+    ]
+  },
+  {
+    "file": "targeth-class1-water-r05.json",
+    "sha256": "280d2b77885794e2b681456774122f5a4291d279e84865296d958e3495e6d903",
+    "bytes": 125473,
+    "courses": [
+      "class1-water"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class1-water-coll-r05.json",
+    "sha256": "6aa268a189bcb8e2e65aa887d479b275b513957d2b613e4d9ef018fd47064a46",
+    "bytes": 126370,
+    "courses": [
+      "wpi-class1-water-coll"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class2-water-dist-r05.json",
+    "sha256": "b23552a87000c623efc7bbb5d415ab616b8c3fd00e3b6eb14c6412d7b2eeecd5",
+    "bytes": 105483,
+    "courses": [
+      "wpi-class2-water-dist"
+    ]
+  },
+  {
+    "file": "targeth-class2-wastewater-coll-r05.json",
+    "sha256": "40b94b2de2d504016f62ef2afbdbe5caab535ded5bf82070f5956ffe1a2bd72a",
+    "bytes": 125800,
+    "courses": [
+      "class2-wastewater-coll"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class3-water-r05.json",
+    "sha256": "afcc96fc7a176c4c59d6697d1d1130a5c9ba015a28461a7f8c82ae33dc8cdf5d",
+    "bytes": 79587,
+    "courses": [
+      "wpi-class3-water"
+    ]
+  },
+  {
+    "file": "targeth-class3-water-r05.json",
+    "sha256": "4dbdc2a3522a62b462962019ac8bb23988a9f83c6cfb92c31d64ef0073b59bc2",
+    "bytes": 75982,
+    "courses": [
+      "class3-water"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class3-water-coll-r05.json",
+    "sha256": "d3c9278cb5ce16999cfe56d60df4c5c4d34ce6dca7f34893643e6c188bb64b83",
+    "bytes": 73725,
+    "courses": [
+      "wpi-class3-water-coll"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class3-water-dist-r05.json",
+    "sha256": "172106c1a930f4e86dce3b8489d8c67ae4fc22e3e1c832e91acb1a12be98374e",
+    "bytes": 104016,
+    "courses": [
+      "wpi-class3-water-dist"
+    ]
+  },
+  {
+    "file": "targeth-class3-ww-r05.json",
+    "sha256": "2a20ef3cdc952d822d2b5065af34c0c770863af5d7ca62ffade900f7d64e488f",
+    "bytes": 21828,
+    "courses": [
+      "class3-ww"
+    ]
+  },
+  {
+    "file": "targeth-class3-water-dist-r05.json",
+    "sha256": "afeb1b8ed141391fdb952cb9bf0ee11474c22a7b5cce41e9854fb2930baf3656",
+    "bytes": 70690,
+    "courses": [
+      "class3-water-dist"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class4-water-coll-r05.json",
+    "sha256": "17a6c6938969bd6616dcb653ddd7138ff7d5a1dbec5b2700593c457e08280c32",
+    "bytes": 21930,
+    "courses": [
+      "wpi-class4-water-coll"
+    ]
+  },
+  {
+    "file": "targeth-class4-water-r05.json",
+    "sha256": "fe7ab5ae1fdba28df716cb703f33c39829f4c4ae9ec3e970706610b14041d9c8",
+    "bytes": 21494,
+    "courses": [
+      "class4-water"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class1-water-r05.json",
+    "sha256": "97fbeb420c98ef057a8805b98f543c235578dfaf888133d93dfb81e162370048",
+    "bytes": 72554,
+    "courses": [
+      "wpi-class1-water"
+    ]
+  },
+  {
+    "file": "targeth-class4-wastewater-coll-r05.json",
+    "sha256": "3a05f1b5920f4cab8dec876619ad106fa5a4abb7a59eac7e2a789dc6a812c061",
+    "bytes": 22614,
+    "courses": [
+      "class4-wastewater-coll"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class4-water-dist-r05.json",
+    "sha256": "0915abcb1d5270ad708400d88e52740818620586f7dd4813e89a43141ca0f147",
+    "bytes": 20383,
+    "courses": [
+      "wpi-class4-water-dist"
+    ]
+  },
+  {
+    "file": "targeth-class4-water-dist-r05.json",
+    "sha256": "9cdc45324ba0e535435637c8b8127be1a55615d0faac367509d84bee34685fe4",
+    "bytes": 20458,
+    "courses": [
+      "class4-water-dist"
+    ]
+  },
+  {
+    "file": "targeth-class4-ww-r05.json",
+    "sha256": "df5062fc5093a060d14cb9ce6a6fbda36317f88c6e180460efc07dde494b6f02",
+    "bytes": 21635,
+    "courses": [
+      "class4-ww"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class4-wastewater-r05.json",
+    "sha256": "96f0493e5bf33fc29dd0d89b6de43ad74d6bbb548a2a574b3c26555be8742307",
+    "bytes": 22678,
+    "courses": [
+      "wpi-class4-wastewater"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class1-water-dist-r06.json",
+    "sha256": "f80a8b98c031e7a204bb11cd493efb9f8ac5402368c89ab8586ae6d27844ce99",
+    "bytes": 59662,
+    "courses": [
+      "wpi-class1-water-dist"
+    ]
+  },
+  {
+    "file": "targeth-class1-water-r06.json",
+    "sha256": "827a30c8ba359ed9f59722a15accfbe05ba502e0a1a39c9a44345b623ef06954",
+    "bytes": 129523,
+    "courses": [
+      "class1-water"
+    ]
+  },
+  {
+    "file": "targeth-class1-ww-r06.json",
+    "sha256": "c5bcb7af29c5e68aaf088065d980fd668864c8ff365eca35ce2875f02ecb16f2",
+    "bytes": 124107,
+    "courses": [
+      "class1-ww"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class2-water-dist-r06.json",
+    "sha256": "dbbe8dab344459f741ddee6e008aae6572a722764c09b36bd5951b471b3c0e18",
+    "bytes": 109379,
+    "courses": [
+      "wpi-class2-water-dist"
+    ]
+  },
+  {
+    "file": "targeth-class2-water-dist-r06.json",
+    "sha256": "82df9d9da8e0faf989a5c9ed0dd201352f9210b9703e257741b898268d33c7d0",
+    "bytes": 107963,
+    "courses": [
+      "class2-water-dist"
+    ]
+  },
+  {
+    "file": "targeth-class2-ww-r06.json",
+    "sha256": "d475644f4b7e6c519cd54781f03f41b1ad7c13cd1755db97bbca33b841fd6b88",
+    "bytes": 115262,
+    "courses": [
+      "class2-ww"
+    ]
+  },
+  {
+    "file": "targeth-class3-water-r06.json",
+    "sha256": "7997c107274d08ed9b027b1a79d5114303e197710d6b8769ebfe4d53a02339f3",
+    "bytes": 56195,
+    "courses": [
+      "class3-water"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class3-water-coll-r06.json",
+    "sha256": "56644fef52a45ad368f2564c9092eaf3103eef08a0df7a3502bd4938539c5392",
+    "bytes": 26535,
+    "courses": [
+      "wpi-class3-water-coll"
+    ]
+  },
+  {
+    "file": "targeth-class3-wastewater-coll-r06.json",
+    "sha256": "00cfda2c279d35bfef2c83c5c2b789ca642078ab0d511fb39a36abd761501177",
+    "bytes": 107612,
+    "courses": [
+      "class3-wastewater-coll"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class3-water-dist-r06.json",
+    "sha256": "9a4c4a81d4090b152a9361580fb2448345905e417e149ea662297d2110d310b3",
+    "bytes": 64186,
+    "courses": [
+      "wpi-class3-water-dist"
+    ]
+  },
+  {
+    "file": "targeth-wpi-class2-wastewater-r06.json",
+    "sha256": "92bc91698be56746aea24ce24c87aae0ff1a96d465bba623c7af6a9ad21d3788",
+    "bytes": 105228,
+    "courses": [
+      "wpi-class2-wastewater"
+    ]
   }
 ] as const;

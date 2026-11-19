@@ -1,0 +1,594 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-class4-water-dist-r04",
+ "scope": "Owner-authorized AI-reviewed game activities: 10 items.",
+ "additions": [
+  {
+   "courseKey": "class4-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class4-water-dist-r04-m1-01",
+    "prompt": "Match each physical state of matter or chemical class to its defining property.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Solid",
+      "right": "Maintains a definite shape and volume at fixed temperature and pressure"
+     },
+     {
+      "id": "p2",
+      "left": "Liquid",
+      "right": "Maintains a constant volume while taking the shape of its container"
+     },
+     {
+      "id": "p3",
+      "left": "Gas",
+      "right": "Has no fixed shape and expands or compresses to fill any container"
+     },
+     {
+      "id": "p4",
+      "left": "Organic substance",
+      "right": "Carbon-based compound of animal or vegetable origin"
+     },
+     {
+      "id": "p5",
+      "left": "Inorganic substance",
+      "right": "Chemical compound of mineral origin"
+     },
+     {
+      "id": "p6",
+      "left": "Self-ionization of water",
+      "right": "Hydrogen ion transfer between two water molecules forming hydroxide and hydronium"
+     }
+    ],
+    "explanation": "States of matter differ by shape and volume stability, while substances are grouped by carbon versus mineral origin."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:45:59.510959+00:00",
+    "notes": "Strict final AI self-review of all 10 speed-match items in targeth-class4-water-dist-r04 against supplied source pages 505-518 and closest collision candidates; 10 of 10 accepted.",
+    "registeredAt": "2026-11-19T03:46:28.795Z",
+    "payloadSha256": "99a7e96a45122039de6dc4b0838e11f15e82d221e7438c1b232a119471c9587d",
+    "builderResultsSha256": "03c83ed40325c92c950eaa098b7ad269671e9fd159d37164261186a5ad276352"
+   }
+  },
+  {
+   "courseKey": "class4-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class4-water-dist-r04-m1-02",
+    "prompt": "Match each atomic structure component or formula term to its physical role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Proton",
+      "right": "Positively charged particle in the atomic nucleus"
+     },
+     {
+      "id": "p2",
+      "left": "Neutron",
+      "right": "Electrically neutral particle in the atomic nucleus"
+     },
+     {
+      "id": "p3",
+      "left": "Electron",
+      "right": "Negatively charged particle orbiting the nucleus with negligible mass"
+     },
+     {
+      "id": "p4",
+      "left": "Atomic weight",
+      "right": "Total number of protons and neutrons in an atom's nucleus"
+     },
+     {
+      "id": "p5",
+      "left": "Chemical reaction",
+      "right": "Involves only orbiting electrons with no change to atomic nuclei"
+     },
+     {
+      "id": "p6",
+      "left": "Formula subscript",
+      "right": "Indicates the number of atoms of an element in a molecule"
+     }
+    ],
+    "explanation": "Protons and neutrons form the nucleus and determine atomic weight, while electrons govern chemical reactions."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:45:59.510959+00:00",
+    "notes": "Strict final AI self-review of all 10 speed-match items in targeth-class4-water-dist-r04 against supplied source pages 505-518 and closest collision candidates; 10 of 10 accepted.",
+    "registeredAt": "2026-11-19T03:46:28.795Z",
+    "payloadSha256": "59ded76806f031c194b408f20fc2aeb5de4ce1d66a6968d5ee3b97a58ed4ee81",
+    "builderResultsSha256": "03c83ed40325c92c950eaa098b7ad269671e9fd159d37164261186a5ad276352"
+   }
+  },
+  {
+   "courseKey": "class4-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-water-dist-r04-m1-03",
+    "prompt": "Match each water color, solids, or dissolved gas concept to its scientific distinction.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Apparent color",
+      "right": "Color caused by colloidal suspensions such as iron"
+     },
+     {
+      "id": "p2",
+      "left": "True color",
+      "right": "Color from dissolved chemicals that remains after sample filtration"
+     },
+     {
+      "id": "p3",
+      "left": "Dissolved oxygen",
+      "right": "Free oxygen molecules in water breathed by fish and zooplankton"
+     },
+     {
+      "id": "p4",
+      "left": "Dissolved carbon dioxide",
+      "right": "Gas released by microorganisms that affects pH and alkalinity"
+     },
+     {
+      "id": "p5",
+      "left": "Inorganic solids",
+      "right": "Nonpolar materials such as silt and clay from riverbanks"
+     },
+     {
+      "id": "p6",
+      "left": "Organic solids",
+      "right": "Plant fibers and microorganisms dispersed in water"
+     }
+    ],
+    "explanation": "Filtration separates apparent color from true color, while dissolved gases like oxygen and carbon dioxide support aquatic life and buffer chemistry."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:45:59.510959+00:00",
+    "notes": "Strict final AI self-review of all 10 speed-match items in targeth-class4-water-dist-r04 against supplied source pages 505-518 and closest collision candidates; 10 of 10 accepted.",
+    "registeredAt": "2026-11-19T03:46:28.795Z",
+    "payloadSha256": "df0a362c1bbec6d1492dee0ee6085617ebe3b1929072207a07f92edf1de7293e",
+    "builderResultsSha256": "03c83ed40325c92c950eaa098b7ad269671e9fd159d37164261186a5ad276352"
+   }
+  },
+  {
+   "courseKey": "class4-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-water-dist-r04-m1-04",
+    "prompt": "Match each salt chemistry or sulfate exposure concept to its water quality effect.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Neutralization salt",
+      "right": "Inorganic compound other than water formed when an acid and base react"
+     },
+     {
+      "id": "p2",
+      "left": "Copper sulfate",
+      "right": "Salt intentionally added in waterworks to kill algae"
+     },
+     {
+      "id": "p3",
+      "left": "High natural sulfate",
+      "right": "Associated with laxative effects in unacclimated consumers"
+     },
+     {
+      "id": "p4",
+      "left": "Magnesium sulfate",
+      "right": "Sulfate form more likely than sodium sulfate to cause a laxative effect"
+     },
+     {
+      "id": "p5",
+      "left": "Consumer acclimation",
+      "right": "Explains why residents in high-sulfate areas report fewer laxative effects"
+     },
+     {
+      "id": "p6",
+      "left": "Inorganic compound group",
+      "right": "Largest category of inorganic substances, represented by salts"
+     }
+    ],
+    "explanation": "Salts form from acid-base neutralization; copper sulfate controls algae, whereas natural sulfates can cause laxative effects in new consumers."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:45:59.510959+00:00",
+    "notes": "Strict final AI self-review of all 10 speed-match items in targeth-class4-water-dist-r04 against supplied source pages 505-518 and closest collision candidates; 10 of 10 accepted.",
+    "registeredAt": "2026-11-19T03:46:28.795Z",
+    "payloadSha256": "24f46c614415bb4acedf8b3422568e93e0235b01750f8069daf33ed0da7fc0b9",
+    "builderResultsSha256": "03c83ed40325c92c950eaa098b7ad269671e9fd159d37164261186a5ad276352"
+   }
+  },
+  {
+   "courseKey": "class4-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-water-dist-r04-m1-05",
+    "prompt": "Match each pH-related water condition or chemical addition to its pH outcome.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Adding alum",
+      "right": "Lowers water pH because it acts as an acid"
+     },
+     {
+      "id": "p2",
+      "left": "Adding lime",
+      "right": "Raises water pH because it acts as an alkali"
+     },
+     {
+      "id": "p3",
+      "left": "Abandoned coal mine drainage",
+      "right": "Produces extremely acidic water with pH near 2"
+     },
+     {
+      "id": "p4",
+      "left": "Seawater",
+      "right": "Slightly more basic with a higher pH than most natural freshwater"
+     },
+     {
+      "id": "p5",
+      "left": "Optimal floc pH",
+      "right": "Target pH value maintained until raw water quality changes"
+     },
+     {
+      "id": "p6",
+      "left": "Hydrogen ion test",
+      "right": "Measurement used to determine pH for coagulation and corrosion control"
+     }
+    ],
+    "explanation": "Coagulants like alum lower pH while alkalis like lime raise it; operators track hydrogen ion concentration to maintain optimal floc."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:45:59.510959+00:00",
+    "notes": "Strict final AI self-review of all 10 speed-match items in targeth-class4-water-dist-r04 against supplied source pages 505-518 and closest collision candidates; 10 of 10 accepted.",
+    "registeredAt": "2026-11-19T03:46:28.795Z",
+    "payloadSha256": "5d3b40dce22128ce631ea9d76c970f75b6f5f9b32d1e1d67b53802446b49335d",
+    "builderResultsSha256": "03c83ed40325c92c950eaa098b7ad269671e9fd159d37164261186a5ad276352"
+   }
+  },
+  {
+   "courseKey": "class4-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-water-dist-r04-m1-06",
+    "prompt": "Match each alkalinity, conductance, or hardness parameter to its chemical basis.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Alkalinity",
+      "right": "Capacity of water to accept protons and neutralize an acid"
+     },
+     {
+      "id": "p2",
+      "left": "Bicarbonates",
+      "right": "Major alkalinity component formed by carbon dioxide acting on soil"
+     },
+     {
+      "id": "p3",
+      "left": "Specific conductance",
+      "right": "Ability of water to conduct electrical current based on dissolved solids"
+     },
+     {
+      "id": "p4",
+      "left": "Distilled water",
+      "right": "Exhibits very low specific conductance due to minimal dissolved ions"
+     },
+     {
+      "id": "p5",
+      "left": "Rainwater conductance",
+      "right": "Higher than distilled water because it dissolves airborne gases and dust"
+     },
+     {
+      "id": "p6",
+      "left": "Total hardness",
+      "right": "Concentration of dissolved calcium and magnesium ions reported as calcium carbonate"
+     }
+    ],
+    "explanation": "Alkalinity buffers acid using bicarbonates, specific conductance reflects dissolved ions, and hardness measures calcium and magnesium."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:45:59.510959+00:00",
+    "notes": "Strict final AI self-review of all 10 speed-match items in targeth-class4-water-dist-r04 against supplied source pages 505-518 and closest collision candidates; 10 of 10 accepted.",
+    "registeredAt": "2026-11-19T03:46:28.795Z",
+    "payloadSha256": "cb50420fabd2876f979eb007dd8f98c1c92a5762680a39ea01dd9fdf14714b80",
+    "builderResultsSha256": "03c83ed40325c92c950eaa098b7ad269671e9fd159d37164261186a5ad276352"
+   }
+  },
+  {
+   "courseKey": "class4-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-water-dist-r04-m1-07",
+    "prompt": "Match each coagulation or odor-control method to its treatment mechanism.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Alum coagulant",
+      "right": "Most effective between pH 5.0 and 7.5 for particle agglomeration"
+     },
+     {
+      "id": "p2",
+      "left": "Ferric chloride",
+      "right": "Metallic salt coagulant effective down to pH 4.5"
+     },
+     {
+      "id": "p3",
+      "left": "Polymer addition",
+      "right": "Helps form small floc together for faster settling"
+     },
+     {
+      "id": "p4",
+      "left": "Scrubbing tower",
+      "right": "Passes odorous gases through chemical solutions like chlorine or permanganate"
+     },
+     {
+      "id": "p5",
+      "left": "Activated carbon",
+      "right": "Physical odor control method using adsorption"
+     },
+     {
+      "id": "p6",
+      "left": "Chemical oxidation",
+      "right": "Uses chlorine, ozone, hydrogen peroxide, or permanganate to destroy odors"
+     }
+    ],
+    "explanation": "Coagulants agglomerate fine particles within specific pH ranges, while odor control relies on physical adsorption or chemical oxidation and scrubbing."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:45:59.510959+00:00",
+    "notes": "Strict final AI self-review of all 10 speed-match items in targeth-class4-water-dist-r04 against supplied source pages 505-518 and closest collision candidates; 10 of 10 accepted.",
+    "registeredAt": "2026-11-19T03:46:28.795Z",
+    "payloadSha256": "ad9370d51ae57092670ce2f976439b4faa7a95272276c841943cd3ba0a06a081",
+    "builderResultsSha256": "03c83ed40325c92c950eaa098b7ad269671e9fd159d37164261186a5ad276352"
+   }
+  },
+  {
+   "courseKey": "class4-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class4-water-dist-r04-m1-08",
+    "prompt": "Match each taste, odor, or ion-exchange softening concept to its process role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Actinomycetes and blue-green algae",
+      "right": "Produce nonvolatile metabolic products causing earthy or musty odors"
+     },
+     {
+      "id": "p2",
+      "left": "Aeration",
+      "right": "Uses oxygen to strip tastes and odors from dissolved gases and volatiles"
+     },
+     {
+      "id": "p3",
+      "left": "Ion-exchange softening",
+      "right": "Replaces calcium and magnesium ions with nonhardness sodium ions"
+     },
+     {
+      "id": "p4",
+      "left": "Synthetic organic resin",
+      "right": "BB-sized spherical media providing a high number of exchange sites"
+     },
+     {
+      "id": "p5",
+      "left": "Greensand",
+      "right": "Natural granular exchange medium colored by glauconite grains"
+     },
+     {
+      "id": "p6",
+      "left": "Breakthrough",
+      "right": "Condition when all exchange sites are used and hardness appears in effluent"
+     }
+    ],
+    "explanation": "Oxidants and aeration address biological or volatile odors, whereas ion-exchange resins swap hardness ions for sodium until breakthrough."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:45:59.510959+00:00",
+    "notes": "Strict final AI self-review of all 10 speed-match items in targeth-class4-water-dist-r04 against supplied source pages 505-518 and closest collision candidates; 10 of 10 accepted.",
+    "registeredAt": "2026-11-19T03:46:28.795Z",
+    "payloadSha256": "15b12f1970daca26eb0b4ebdd4dfe93a92c0fceaffe2d56baf25cb616a64f05d",
+    "builderResultsSha256": "03c83ed40325c92c950eaa098b7ad269671e9fd159d37164261186a5ad276352"
+   }
+  },
+  {
+   "courseKey": "class4-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class4-water-dist-r04-m1-09",
+    "prompt": "Match each scaling, corrosion, or organic chemical concept to its system impact.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Excessive scaling",
+      "right": "Reduces pipeline capacity and boiler heat transfer efficiency"
+     },
+     {
+      "id": "p2",
+      "left": "Corrosion",
+      "right": "Oxidation of unprotected metal surfaces such as iron forming rust"
+     },
+     {
+      "id": "p3",
+      "left": "Higher temperature and flow",
+      "right": "Significantly increases the corrosive tendencies of water on metal"
+     },
+     {
+      "id": "p4",
+      "left": "Amphoteric water behavior",
+      "right": "Ability of water to act as both an acid and a base"
+     },
+     {
+      "id": "p5",
+      "left": "Natural organic decay",
+      "right": "Releases organics that typically pose fewer health risks than synthetic ones"
+     },
+     {
+      "id": "p6",
+      "left": "Chlorine plus organic matter",
+      "right": "Forms halogenated compounds during water disinfection"
+     }
+    ],
+    "explanation": "Uncontrolled scale restricts flow while corrosion oxidizes iron; organic matter also interferes with treatment and forms halogenated compounds with chlorine."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:45:59.510959+00:00",
+    "notes": "Strict final AI self-review of all 10 speed-match items in targeth-class4-water-dist-r04 against supplied source pages 505-518 and closest collision candidates; 10 of 10 accepted.",
+    "registeredAt": "2026-11-19T03:46:28.795Z",
+    "payloadSha256": "1236a532556a028e162887f20489c1abc86293c824b906d9036ef88d9df9ba58",
+    "builderResultsSha256": "03c83ed40325c92c950eaa098b7ad269671e9fd159d37164261186a5ad276352"
+   }
+  },
+  {
+   "courseKey": "class4-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class4-water-dist-r04-m1-10",
+    "prompt": "Match each organic biodegradability, oxygen demand, or TDS term to its analytical meaning.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Biochemical oxygen demand",
+      "right": "Increases as microbes break down greater amounts of biodegradable organics"
+     },
+     {
+      "id": "p2",
+      "left": "Refractory organics",
+      "right": "Woody plant constituents like tannin and phenols that resist biodegradation"
+     },
+     {
+      "id": "p3",
+      "left": "Benzene",
+      "right": "Ringed-structure petroleum compound that is essentially nonbiodegradable"
+     },
+     {
+      "id": "p4",
+      "left": "Chemical oxygen demand",
+      "right": "Measures total oxygen depletion including nonbiodegradable chemical reactions"
+     },
+     {
+      "id": "p5",
+      "left": "Total dissolved solids",
+      "right": "Residue left after evaporating a filtered water sample"
+     },
+     {
+      "id": "p6",
+      "left": "High TDS in distribution",
+      "right": "Increases conductivity while also raising the likelihood of a protective pipe coating"
+     }
+    ],
+    "explanation": "BOD tracks biodegradable organics, COD captures total oxygen depletion, and TDS measures dissolved residue that affects conductivity and pipe coatings."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:45:59.510959+00:00",
+    "notes": "Strict final AI self-review of all 10 speed-match items in targeth-class4-water-dist-r04 against supplied source pages 505-518 and closest collision candidates; 10 of 10 accepted.",
+    "registeredAt": "2026-11-19T03:46:28.795Z",
+    "payloadSha256": "ae7c567041e7b360fc07dd2f3d51d078b291295aebab3e80a76aed9c56ad1493",
+    "builderResultsSha256": "03c83ed40325c92c950eaa098b7ad269671e9fd159d37164261186a5ad276352"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T03:45:59.510959+00:00",
+   "attestation": "Strict final AI self-review of all 10 speed-match items in targeth-class4-water-dist-r04 against supplied source pages 505-518 and closest collision candidates; 10 of 10 accepted.",
+   "payloadSha256": {
+    "targeth-ht261118-class4-water-dist-r04-m1-01": "99a7e96a45122039de6dc4b0838e11f15e82d221e7438c1b232a119471c9587d",
+    "targeth-ht261118-class4-water-dist-r04-m1-02": "59ded76806f031c194b408f20fc2aeb5de4ce1d66a6968d5ee3b97a58ed4ee81",
+    "targeth-ht261118-class4-water-dist-r04-m1-03": "df0a362c1bbec6d1492dee0ee6085617ebe3b1929072207a07f92edf1de7293e",
+    "targeth-ht261118-class4-water-dist-r04-m1-04": "24f46c614415bb4acedf8b3422568e93e0235b01750f8069daf33ed0da7fc0b9",
+    "targeth-ht261118-class4-water-dist-r04-m1-05": "5d3b40dce22128ce631ea9d76c970f75b6f5f9b32d1e1d67b53802446b49335d",
+    "targeth-ht261118-class4-water-dist-r04-m1-06": "cb50420fabd2876f979eb007dd8f98c1c92a5762680a39ea01dd9fdf14714b80",
+    "targeth-ht261118-class4-water-dist-r04-m1-07": "ad9370d51ae57092670ce2f976439b4faa7a95272276c841943cd3ba0a06a081",
+    "targeth-ht261118-class4-water-dist-r04-m1-08": "15b12f1970daca26eb0b4ebdd4dfe93a92c0fceaffe2d56baf25cb616a64f05d",
+    "targeth-ht261118-class4-water-dist-r04-m1-09": "1236a532556a028e162887f20489c1abc86293c824b906d9036ef88d9df9ba58",
+    "targeth-ht261118-class4-water-dist-r04-m1-10": "ae7c567041e7b360fc07dd2f3d51d078b291295aebab3e80a76aed9c56ad1493"
+   }
+  },
+  "registeredAt": "2026-11-19T03:46:28.795Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 0,
+     "f": 0
+    },
+    "dirs": {
+     "increase": 0,
+     "decrease": 0,
+     "unchanged": 0
+    },
+    "longest": 0,
+    "options": 0
+   },
+   "batchSha256": "35ca03746bb02512c8d1c7d5aff4a34ec84659cc57bf7c6c2ac30f3578d67819"
+  }
+ }
+}

@@ -1,0 +1,1698 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-wqa-r05",
+ "scope": "Owner-authorized AI-reviewed game activities: 47 items.",
+ "additions": [
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m0-01",
+    "prompt": "Water and liquid mercury are miscible liquids that disperse uniformly into a single homogeneous mixture.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Water and liquid mercury are immiscible liquids and do not mix uniformly."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "d791c21e0ab9f927a965cba8c25797d9d1f30aaf3f52bc078b8bc29f74cb50fd",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m0-02",
+    "prompt": "A solution reaches saturation when the solvent can dissolve additional solute at the same temperature.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "A saturated solution is the state in which a solution will no longer dissolve more solute."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "61a56f730020fbc0d39cabf7693d7978fca46d8ac0a48da9b7836ff399c11756",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m0-03",
+    "prompt": "Colloidal solids consist of particles smaller than one micron that pass through a standard filter.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Colloidal particles are less than 1 micron in diameter and pass through a filter."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "e0fc88f06077a33ab32125445ac82c3719b89715b6c909685b965da3d5a0e5ae",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m0-04",
+    "prompt": "When sodium chloride dissolves in water, chloride forms a positively charged cation.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Sodium forms a positively charged cation, while chloride forms a negatively charged anion."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "c4da48735f5913900676ec9bc22b5b4f47c2b22d1286f8c915eab09acfb06257",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m0-05",
+    "prompt": "During the self-ionization of water, a water molecule that loses a hydrogen ion becomes a hydroxide ion.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Losing a hydrogen ion leaves a negatively charged hydroxide ion, while gaining one forms a hydronium ion."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "0271151b87408690c88b063b7cdaad8e4fdc44afb1bf99a662dd589a03427d00",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m0-06",
+    "prompt": "Liquid water maintains a definite volume at a given temperature and pressure while taking the shape of its container.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Liquids have a definite volume at a given temperature and pressure, but their shape conforms to the container."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "aa1c73803456804b448be28fc338295118f11890595f8739aa201252db71e3a5",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m0-07",
+    "prompt": "Chemical reactions between atoms or molecules involve changes in the atomic nuclei rather than the electrons.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Chemical reactions between atoms or molecules involve planetary electrons, with no changes in the nuclei."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "e639d1053edc9c9c6224af0ec0f2778f42d450f70eb26743a9cb5313e3e82f11",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m0-08",
+    "prompt": "Summing the protons and neutrons in an atom's nucleus gives the element's atomic weight.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Atomic weight is the sum of protons and neutrons in the nucleus of an atom."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "f9ae4d6bb04ba3dfe44484c0a03e3b1e4e88f1a26d5d1ec36f3a6e76eb1fb1f5",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m0-09",
+    "prompt": "Bromine shares similar chemical properties with chlorine because both elements belong to the same chemical family.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Bromine (atomic number 35) has chemical properties similar to chlorine (atomic number 17)."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "624d951401054fef8f1790ade5909193c8cbde05acf90a33fa624caf922e0d69",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m0-11",
+    "prompt": "When an acid and a base neutralize each other, a salt is formed alongside water.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Neutralization of an acid and a base produces water and an ionic compound called a salt."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "f072c5b1d04c21fcc169fed65e012cf37bec7e59badad5fb8ba18ac441ee002f",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m0-12",
+    "prompt": "Adding alum during coagulation raises the pH value of the water.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Alum is acidic and lowers the pH value, whereas adding lime raises the pH."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "19e326eafb3fa6cc15753ae5b22f697d8e16fe4869745c3dde211a825794c948",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m0-13",
+    "prompt": "Rainwater typically has a higher specific conductance than distilled water because it dissolves airborne gases and dust.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Airborne gases and dust dissolved in rainwater increase its dissolved ions and specific conductance."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "90e3461131442ea586a194132748b4121f02dc9ce12d9afca8421d96af05ce8c",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m0-14",
+    "prompt": "Copper sulfate is added to waterworks operations primarily to increase dissolved oxygen levels.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Copper sulfate is a salt used in waterworks operations to kill algae in water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "566bdbd675eb72c2423ba72be9f3fabc66fe06404aa99ca7931648e01cf1492a",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m0-15",
+    "prompt": "Water occurs naturally on Earth in solid, liquid, and gaseous physical states.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Water is the common substance that occurs naturally on Earth as solid, liquid, and gas."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "cb76f5a97b7df9425c8d158474c7c77c6538f5e2e093c02c9734989d75d0f744",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m1-01",
+    "prompt": "Distinguish each solution and mixture term by its physical chemistry definition.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "pair-1",
+      "left": "Miscible",
+      "right": "Capable of mixing uniformly in all proportions"
+     },
+     {
+      "id": "pair-2",
+      "left": "Immiscible",
+      "right": "Liquids such as water and mercury that do not mix"
+     },
+     {
+      "id": "pair-3",
+      "left": "Solvent",
+      "right": "Component of a solution that does the dissolving"
+     },
+     {
+      "id": "pair-4",
+      "left": "Solute",
+      "right": "Component of a solution dissolved by the solvent"
+     },
+     {
+      "id": "pair-5",
+      "left": "Saturated solution",
+      "right": "State where no additional solute will dissolve"
+     },
+     {
+      "id": "pair-6",
+      "left": "Colloidal",
+      "right": "Fine dispersion with particles under one micron"
+     }
+    ],
+    "explanation": "Solution terms distinguish the dissolving medium, dissolved substance, saturation limit, and particle dispersion."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "6631607f5647e6c88900da7bc0cfef490bdeb363b3e02d0383c0bccca2b5fd15",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m1-02",
+    "prompt": "Distinguish each ion and water self-ionization term by its electrical charge or chemical origin.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "pair-1",
+      "left": "Cation",
+      "right": "Positively charged ion such as sodium"
+     },
+     {
+      "id": "pair-2",
+      "left": "Anion",
+      "right": "Negatively charged ion such as chloride"
+     },
+     {
+      "id": "pair-3",
+      "left": "Hydroxide ion",
+      "right": "Water molecule that lost a hydrogen ion"
+     },
+     {
+      "id": "pair-4",
+      "left": "Hydronium ion",
+      "right": "Water molecule that gained a hydrogen ion"
+     },
+     {
+      "id": "pair-5",
+      "left": "Organic",
+      "right": "Carbon-based substance of animal or vegetable origin"
+     },
+     {
+      "id": "pair-6",
+      "left": "Inorganic",
+      "right": "Chemical substance of mineral origin"
+     }
+    ],
+    "explanation": "Ions carry positive or negative charges, while organic and inorganic substances differ by carbon versus mineral origin."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "eb0bb5dc62759ca20539c3e10af25567740ca180b5b84c3f3a6cbe284ce90e6c",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m1-03",
+    "prompt": "Distinguish each atomic and molecular concept by its structural role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "pair-1",
+      "left": "Atomic weight",
+      "right": "Total protons and neutrons in an atom's nucleus"
+     },
+     {
+      "id": "pair-2",
+      "left": "Planetary electrons",
+      "right": "Particles involved in chemical reactions"
+     },
+     {
+      "id": "pair-3",
+      "left": "O2 formula",
+      "right": "Molecule consisting of two oxygen atoms"
+     },
+     {
+      "id": "pair-4",
+      "left": "H2O formula",
+      "right": "Water molecule with two hydrogens and one oxygen"
+     },
+     {
+      "id": "pair-5",
+      "left": "Solid state",
+      "right": "Keeps both definite shape and definite volume"
+     },
+     {
+      "id": "pair-6",
+      "left": "Liquid state",
+      "right": "Maintains constant volume while fitting container shape"
+     }
+    ],
+    "explanation": "Atomic structure governs chemical bonding, while molecular formulas and states of matter describe composition and physical form."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "340b51dd1ff3231c30559190facac345c3d3cfdb55cf39d5c45b454e19433a9c",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m1-04",
+    "prompt": "Distinguish each water color, solids, and dissolved oxygen concept by its analytical meaning.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "pair-1",
+      "left": "True color",
+      "right": "Dissolved chemicals remaining after sample filtration"
+     },
+     {
+      "id": "pair-2",
+      "left": "Apparent color",
+      "right": "Colloidal suspensions such as iron or tannin"
+     },
+     {
+      "id": "pair-3",
+      "left": "Undissolved solids",
+      "right": "Nonpolar particles such as silt that resist dissolving"
+     },
+     {
+      "id": "pair-4",
+      "left": "Total solids",
+      "right": "Suspended and dissolved residue left after evaporation"
+     },
+     {
+      "id": "pair-5",
+      "left": "Dissolved oxygen",
+      "right": "Free oxygen molecules breathed by fish and zooplankton"
+     },
+     {
+      "id": "pair-6",
+      "left": "Bound oxygen in H2O",
+      "right": "Oxygen atom chemically locked inside water molecules"
+     }
+    ],
+    "explanation": "Filtration separates apparent from true color, evaporation measures total solids, and aquatic life requires dissolved oxygen."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "b0d39195a5b9b519d7b9eb6cc948f62a040da9c1ef9c8e1593548eada220ff7b",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m1-05",
+    "prompt": "Distinguish each pH, salt, and specific conductance concept by its water quality role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "pair-1",
+      "left": "Salt formation",
+      "right": "Compound produced when an acid neutralizes a base"
+     },
+     {
+      "id": "pair-2",
+      "left": "Copper sulfate",
+      "right": "Salt added in waterworks to kill algae"
+     },
+     {
+      "id": "pair-3",
+      "left": "Alum addition",
+      "right": "Acidic coagulant that lowers water pH"
+     },
+     {
+      "id": "pair-4",
+      "left": "Lime addition",
+      "right": "Alkaline chemical that raises water pH"
+     },
+     {
+      "id": "pair-5",
+      "left": "Distilled water",
+      "right": "Pure water with very low specific conductance"
+     },
+     {
+      "id": "pair-6",
+      "left": "Seawater",
+      "right": "Saline water with very high specific conductance"
+     }
+    ],
+    "explanation": "Neutralization forms salts, coagulants and alkalis shift pH, and dissolved salts control electrical conductivity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "3cba8e3dc3796fa4d73802ffe063261c763954dbdd1c7974a9a86ce058693e44",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m1-06",
+    "prompt": "Distinguish each chemical testing and concentration concept by its measurement basis.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "pair-1",
+      "left": "Bulk physical test",
+      "right": "Measures properties like volume, temperature, or mass"
+     },
+     {
+      "id": "pair-2",
+      "left": "Chemical property test",
+      "right": "Determines how much of a constituent is present"
+     },
+     {
+      "id": "pair-3",
+      "left": "Parts per million",
+      "right": "Mass of substance divided by mass of solution"
+     },
+     {
+      "id": "pair-4",
+      "left": "Calcium carbonate",
+      "right": "Dissolves into calcium cations and carbonate anions"
+     },
+     {
+      "id": "pair-5",
+      "left": "Mine-drainage water",
+      "right": "Extremely acidic discharge near pH 2"
+     },
+     {
+      "id": "pair-6",
+      "left": "Philodina",
+      "right": "Common rotifer found in freshwater"
+     }
+    ],
+    "explanation": "Analytical testing separates physical measurements from chemical concentrations, ionization, and biological indicators."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "a969fc3e14bc0620b4412f020ec6ef946b04e554412316ec14db2e408f4644c9",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m2-01",
+    "prompt": "Which pair of substances is NOT completely miscible?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Oxygen gas and nitrogen gas"
+     },
+     {
+      "id": "b",
+      "label": "Water and ethyl alcohol"
+     },
+     {
+      "id": "c",
+      "label": "Water and liquid mercury"
+     },
+     {
+      "id": "d",
+      "label": "Carbon dioxide gas and air"
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Water and liquid mercury are immiscible liquids, whereas gases and water-alcohol mixtures are miscible."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "94aa144e7a1eaa4c536e9db6fb9be6f29c0612e13a0bbefd31fa2ef8b06a4b3c",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m2-02",
+    "prompt": "Which measurement is a bulk physical property test rather than a chemical constituent concentration test?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Sample temperature"
+     },
+     {
+      "id": "b",
+      "label": "Fluoride ion level"
+     },
+     {
+      "id": "c",
+      "label": "Dissolved oxygen level"
+     },
+     {
+      "id": "d",
+      "label": "Chloride ion level"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Temperature is a bulk physical property, whereas fluoride, dissolved oxygen, and chloride measure chemical constituents."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "8cd60a869b6188ab820e4cd32f710c55c8e7a87aadf3bd0ae7c24d9e35fb37e2",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m2-03",
+    "prompt": "Which particle is positively charged?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Chloride ion"
+     },
+     {
+      "id": "b",
+      "label": "Hydroxide ion"
+     },
+     {
+      "id": "c",
+      "label": "Carbonate ion"
+     },
+     {
+      "id": "d",
+      "label": "Hydronium ion"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Hydronium is a positively charged cation; chloride, hydroxide, and carbonate are negatively charged anions."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "38cf3ba195f853cc371fce50b34139c9ee816b098847403be168d86c737d6c33",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m2-04",
+    "prompt": "Which subatomic particle is NOT located in the atomic nucleus?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Proton"
+     },
+     {
+      "id": "b",
+      "label": "Neutron"
+     },
+     {
+      "id": "c",
+      "label": "Electron"
+     },
+     {
+      "id": "d",
+      "label": "Atomic nucleon"
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Electrons orbit around the nucleus, whereas protons and neutrons reside inside the nucleus."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "58474baf7b01980660d2554b3610bbbdd390fc40f23ca902d0f82729f54a1f79",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m2-05",
+    "prompt": "Which water sample would have the lowest specific conductance?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Distilled water"
+     },
+     {
+      "id": "b",
+      "label": "Rainwater"
+     },
+     {
+      "id": "c",
+      "label": "Seawater"
+     },
+     {
+      "id": "d",
+      "label": "Saline well water"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Distilled water lacks dissolved ions and has very low specific conductance compared to rainwater or saline waters."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "3ba02fb0119faee381a47d9d0a442de70a5cfc14ecbe46b3dc9c1871467b1ecc",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m2-06",
+    "prompt": "Which solids fraction is largely removable by standard filtration?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Suspended solids"
+     },
+     {
+      "id": "b",
+      "label": "Colloidal solids"
+     },
+     {
+      "id": "c",
+      "label": "Dissolved salts"
+     },
+     {
+      "id": "d",
+      "label": "Dissolved organics"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Suspended solids are retained by a filter, whereas colloidal and dissolved solids pass through."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "0eff17066dab3ddc08d647210f28205cc828f7a496a42c98e2ee69d019e1a70c",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m2-07",
+    "prompt": "Which chemical is added to raise pH rather than lower it during water treatment?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Lime"
+     },
+     {
+      "id": "b",
+      "label": "Alum"
+     },
+     {
+      "id": "c",
+      "label": "Sulfuric acid"
+     },
+     {
+      "id": "d",
+      "label": "Coal mine drainage"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Lime is an alkali that raises pH, whereas alum, sulfuric acid, and mine drainage are acidic."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "37180882395b1e383d4dfd5ee0c41d2a46c3b878e8777d5babe0324773d2e6b0",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m2-08",
+    "prompt": "Which organism is a freshwater rotifer rather than a chemical parameter?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Philodina"
+     },
+     {
+      "id": "b",
+      "label": "Copper sulfate"
+     },
+     {
+      "id": "c",
+      "label": "Sodium fluoride"
+     },
+     {
+      "id": "d",
+      "label": "Calcium carbonate"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Philodina is a common freshwater rotifer, whereas the other options are chemical compounds."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "d880db433c85868855f27f831b91504efba635f11fcd7977e4b5ac2fe34c47c7",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m3-01",
+    "prompt": "In a water treatment coagulation test, more alum is added to the sample while temperature and other chemicals stay constant. What happens to the pH of the water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Alum is acidic, so adding more alum lowers the pH value of the water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "5ebc43ee8257e69fa5da9470a45e4146d2dff14f24aa19e9a13ab4384c7421aa",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m3-02",
+    "prompt": "During a coagulation jar test, more lime is added to the water while temperature and alum dose remain constant. What happens to the pH of the water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Lime is an alkali, so adding more lime raises the pH value of the water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "5b87df62fefc8f6d1505238c7fa1d08126e47822a927f540e7ed06e3f40eee4d",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m3-03",
+    "prompt": "Table salt dissolves into a beaker of distilled water while water temperature remains constant. What happens to the specific conductance of the water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Dissolved salt releases ions into solution, increasing the water's ability to conduct electrical current."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "71dec9e8f32b6ae81af411ec01223a65ae27310312a8324c69d80ff49fe4f0b2",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m3-04",
+    "prompt": "A water sample containing apparent color from suspended iron is passed through a standard laboratory filter while dissolved organics stay constant. What happens to the apparent color of the filtrate?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Filtration removes the suspended particles responsible for apparent color, leaving only true color from dissolved chemicals."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "8cd6b2c74c8b823d87abfdcbc67da15c9e803942a42aa458608b72d34cc04165",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m3-05",
+    "prompt": "A water sample already at its saturation limit for a solute has additional solid solute stirred in at constant temperature. What happens to the dissolved concentration of that solute?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "In a saturated solution at constant temperature, the solvent will no longer dissolve additional solute."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "8bd9712214b15bd7f50d735f33a3efc104f50134a6d91fd08334cccd6d0627ec",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m3-06",
+    "prompt": "Rainwater falls through air containing airborne gases and dust before collection. Compared to pure distilled water, what happens to the specific conductance of the rainwater?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Dissolving airborne gases and dust adds dissolved material, giving rainwater higher specific conductance than distilled water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "2d061ab61365c0b066af64cfa0f3429e7b346abbe7076edd6f21fe6d5e9fdb17",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m3-07",
+    "prompt": "A small stream receives acidic drainage from an abandoned coal mine while stream flow and temperature remain constant. What happens to the pH of the stream?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Mine-drainage water is very acidic (around pH 2), which lowers the pH of the receiving stream."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "1455771b2de4b648a65e804554c46e445e873afbdf5d8e39aaa6e0feb962bfe8",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m3-08",
+    "prompt": "Liquid water is poured from a tall cylindrical glass into a wide shallow bowl at constant temperature and pressure. What happens to the volume of the liquid water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Liquids change shape to fit their container but maintain a constant volume at a given temperature and pressure."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "6d89af72c134c6c1d1bea6654d71cf33f3a52583ff74005715b41a28b7838aa8",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m4-01",
+    "prompt": "A trainee summarizes miscibility and solution concepts. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Two gases brought into contact disperse uniformly into a homogeneous mixture."
+     },
+     {
+      "id": "b",
+      "label": "Water and liquid mercury mix uniformly to form a single liquid phase."
+     },
+     {
+      "id": "c",
+      "label": "A saturated solution will not dissolve additional solute at the same temperature."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Water and liquid mercury are immiscible liquids and do not mix uniformly."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "91a88bd698b81e5d89b93297f4eed4237ac17d2a5e85008d2a686e5504fb7fc7",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m4-02",
+    "prompt": "An analyst reviews ions and the self-ionization of water. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "A water molecule that loses a hydrogen ion becomes a negatively charged hydroxide ion."
+     },
+     {
+      "id": "b",
+      "label": "A water molecule that gains a hydrogen ion becomes a positively charged hydronium ion."
+     },
+     {
+      "id": "c",
+      "label": "When table salt dissolves in water, chloride forms a positively charged cation."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Sodium forms a positively charged cation, while chloride forms a negatively charged anion."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "7b566b84d0bac9ee7ff2c47460c2e9b9e5430ceb53c802d04c1ef9dd9f3fbe4b",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m4-03",
+    "prompt": "A student summarizes atomic structure and chemical reactions. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Atomic weight equals the total number of protons and neutrons in the nucleus."
+     },
+     {
+      "id": "b",
+      "label": "Chemical reactions between atoms involve changes inside the atomic nuclei."
+     },
+     {
+      "id": "c",
+      "label": "Bromine and chlorine share similar chemical properties."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Chemical reactions involve planetary electrons, with no changes in the atomic nuclei."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "72b3035fa7d2089284621ddc80407945bb13a5d2577b591d02fdc90f998b884e",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m4-04",
+    "prompt": "A technician explains solids fractions and water color. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Colloidal solids are smaller than one micron and pass through a standard filter."
+     },
+     {
+      "id": "b",
+      "label": "True color is caused by suspended particles trapped by standard filtration."
+     },
+     {
+      "id": "c",
+      "label": "Total solids include the suspended and dissolved residue left after evaporation."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "True color is caused by dissolved chemicals; suspended particles cause apparent color."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "d7b1d89b8020dc7fd1e3085da5052c01aae20bd9cebbb6f25b16d8910acd135b",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m4-05",
+    "prompt": "A water quality student summarizes pH control and specific conductance. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Adding alum during coagulation lowers the pH value of the water."
+     },
+     {
+      "id": "b",
+      "label": "Distilled water has a higher specific conductance than seawater."
+     },
+     {
+      "id": "c",
+      "label": "Neutralizing an acid with a base produces a salt and water."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Distilled water has very low specific conductance, whereas seawater has high specific conductance from dissolved salts."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "053f23123f111cc703efd2b68da01547b48e5628483e3f73f178e6bb8192f82a",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m4-06",
+    "prompt": "A trainee describes states of matter and dissolved oxygen. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Solids keep both a definite shape and a definite volume at a given temperature."
+     },
+     {
+      "id": "b",
+      "label": "Liquids maintain a constant volume while taking the shape of their container."
+     },
+     {
+      "id": "c",
+      "label": "Fish and zooplankton breathe the oxygen atom bound inside H2O molecules."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Aquatic organisms breathe dissolved oxygen gas, not the oxygen atom chemically bound in water molecules."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "7922666a7b406785e0de250a9e19e04bb9024a28b43caa9155e6611474f8b88e",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m5-01",
+    "prompt": "In the self-ionization of water, does a hydrogen ion transfer between two water molecules before or after hydroxide and hydronium ions are formed?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "A hydrogen ion must transfer from one water molecule to another to form hydroxide and hydronium ions."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "17647bd78a41c9c84b214771b0defce27fb9399ad3dd52a26eff6445dcdf3ee5",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m5-02",
+    "prompt": "When preparing a salt by neutralization, does the chemical reaction between an acid and a base occur before or after the salt compound is formed?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "A salt is the product formed when an acid and a base chemically neutralize each other."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "d0d33e0218ea9a5eb7bb09d4554d3425a1064e1e483062d4cd3f645355e193d5",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m5-03",
+    "prompt": "When distinguishing true color from apparent color in a water sample, does filtration of the sample occur before or after measuring true color?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Filtering the sample removes suspended apparent color so that true color from dissolved chemicals can be observed."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "4f043fcc516e199f325a6e40d913edf52ecab70a4c82ed5075f7c4cb9bf2210b",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m5-04",
+    "prompt": "When solid sodium chloride dissolves in water, does adding the salt crystal to water occur before or after sodium cations and chloride anions disperse in solution?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Solid sodium chloride must be added to water before it dissociates into sodium and chloride ions."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "d88f95337e8f1d467e03afc6974a76dac0c7b6b0baab0d2420f6168561f78ea7",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r05-m5-05",
+    "prompt": "In a coagulation jar test, does adding alum to the water occur before or after the resulting pH decrease?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Alum is acidic, so adding alum to the water causes the pH value to drop."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+    "notes": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+    "registeredAt": "2026-11-19T03:49:31.536Z",
+    "payloadSha256": "e1906eae217539d67a5ffbb5ccec40aae2821a37ae59c418b706e9f96d6b44f1",
+    "builderResultsSha256": "a7813bdb941f191a381c5ae9c0ed000ce1a4d87be6ce2bb42e543b98a4a92f06"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T03:48:37.585173+00:00",
+   "attestation": "Strict Hydrogen self-review of 48 authored WQA items against supplied source pages and collision candidates; 47 accepted, 1 rejected for same-mode paraphrase.",
+   "payloadSha256": {
+    "targeth-ht261118-wqa-r05-m0-01": "d791c21e0ab9f927a965cba8c25797d9d1f30aaf3f52bc078b8bc29f74cb50fd",
+    "targeth-ht261118-wqa-r05-m0-02": "61a56f730020fbc0d39cabf7693d7978fca46d8ac0a48da9b7836ff399c11756",
+    "targeth-ht261118-wqa-r05-m0-03": "e0fc88f06077a33ab32125445ac82c3719b89715b6c909685b965da3d5a0e5ae",
+    "targeth-ht261118-wqa-r05-m0-04": "c4da48735f5913900676ec9bc22b5b4f47c2b22d1286f8c915eab09acfb06257",
+    "targeth-ht261118-wqa-r05-m0-05": "0271151b87408690c88b063b7cdaad8e4fdc44afb1bf99a662dd589a03427d00",
+    "targeth-ht261118-wqa-r05-m0-06": "aa1c73803456804b448be28fc338295118f11890595f8739aa201252db71e3a5",
+    "targeth-ht261118-wqa-r05-m0-07": "e639d1053edc9c9c6224af0ec0f2778f42d450f70eb26743a9cb5313e3e82f11",
+    "targeth-ht261118-wqa-r05-m0-08": "f9ae4d6bb04ba3dfe44484c0a03e3b1e4e88f1a26d5d1ec36f3a6e76eb1fb1f5",
+    "targeth-ht261118-wqa-r05-m0-09": "624d951401054fef8f1790ade5909193c8cbde05acf90a33fa624caf922e0d69",
+    "targeth-ht261118-wqa-r05-m0-11": "f072c5b1d04c21fcc169fed65e012cf37bec7e59badad5fb8ba18ac441ee002f",
+    "targeth-ht261118-wqa-r05-m0-12": "19e326eafb3fa6cc15753ae5b22f697d8e16fe4869745c3dde211a825794c948",
+    "targeth-ht261118-wqa-r05-m0-13": "90e3461131442ea586a194132748b4121f02dc9ce12d9afca8421d96af05ce8c",
+    "targeth-ht261118-wqa-r05-m0-14": "566bdbd675eb72c2423ba72be9f3fabc66fe06404aa99ca7931648e01cf1492a",
+    "targeth-ht261118-wqa-r05-m0-15": "cb76f5a97b7df9425c8d158474c7c77c6538f5e2e093c02c9734989d75d0f744",
+    "targeth-ht261118-wqa-r05-m1-01": "6631607f5647e6c88900da7bc0cfef490bdeb363b3e02d0383c0bccca2b5fd15",
+    "targeth-ht261118-wqa-r05-m1-02": "eb0bb5dc62759ca20539c3e10af25567740ca180b5b84c3f3a6cbe284ce90e6c",
+    "targeth-ht261118-wqa-r05-m1-03": "340b51dd1ff3231c30559190facac345c3d3cfdb55cf39d5c45b454e19433a9c",
+    "targeth-ht261118-wqa-r05-m1-04": "b0d39195a5b9b519d7b9eb6cc948f62a040da9c1ef9c8e1593548eada220ff7b",
+    "targeth-ht261118-wqa-r05-m1-05": "3cba8e3dc3796fa4d73802ffe063261c763954dbdd1c7974a9a86ce058693e44",
+    "targeth-ht261118-wqa-r05-m1-06": "a969fc3e14bc0620b4412f020ec6ef946b04e554412316ec14db2e408f4644c9",
+    "targeth-ht261118-wqa-r05-m2-01": "94aa144e7a1eaa4c536e9db6fb9be6f29c0612e13a0bbefd31fa2ef8b06a4b3c",
+    "targeth-ht261118-wqa-r05-m2-02": "8cd60a869b6188ab820e4cd32f710c55c8e7a87aadf3bd0ae7c24d9e35fb37e2",
+    "targeth-ht261118-wqa-r05-m2-03": "38cf3ba195f853cc371fce50b34139c9ee816b098847403be168d86c737d6c33",
+    "targeth-ht261118-wqa-r05-m2-04": "58474baf7b01980660d2554b3610bbbdd390fc40f23ca902d0f82729f54a1f79",
+    "targeth-ht261118-wqa-r05-m2-05": "3ba02fb0119faee381a47d9d0a442de70a5cfc14ecbe46b3dc9c1871467b1ecc",
+    "targeth-ht261118-wqa-r05-m2-06": "0eff17066dab3ddc08d647210f28205cc828f7a496a42c98e2ee69d019e1a70c",
+    "targeth-ht261118-wqa-r05-m2-07": "37180882395b1e383d4dfd5ee0c41d2a46c3b878e8777d5babe0324773d2e6b0",
+    "targeth-ht261118-wqa-r05-m2-08": "d880db433c85868855f27f831b91504efba635f11fcd7977e4b5ac2fe34c47c7",
+    "targeth-ht261118-wqa-r05-m3-01": "5ebc43ee8257e69fa5da9470a45e4146d2dff14f24aa19e9a13ab4384c7421aa",
+    "targeth-ht261118-wqa-r05-m3-02": "5b87df62fefc8f6d1505238c7fa1d08126e47822a927f540e7ed06e3f40eee4d",
+    "targeth-ht261118-wqa-r05-m3-03": "71dec9e8f32b6ae81af411ec01223a65ae27310312a8324c69d80ff49fe4f0b2",
+    "targeth-ht261118-wqa-r05-m3-04": "8cd6b2c74c8b823d87abfdcbc67da15c9e803942a42aa458608b72d34cc04165",
+    "targeth-ht261118-wqa-r05-m3-05": "8bd9712214b15bd7f50d735f33a3efc104f50134a6d91fd08334cccd6d0627ec",
+    "targeth-ht261118-wqa-r05-m3-06": "2d061ab61365c0b066af64cfa0f3429e7b346abbe7076edd6f21fe6d5e9fdb17",
+    "targeth-ht261118-wqa-r05-m3-07": "1455771b2de4b648a65e804554c46e445e873afbdf5d8e39aaa6e0feb962bfe8",
+    "targeth-ht261118-wqa-r05-m3-08": "6d89af72c134c6c1d1bea6654d71cf33f3a52583ff74005715b41a28b7838aa8",
+    "targeth-ht261118-wqa-r05-m4-01": "91a88bd698b81e5d89b93297f4eed4237ac17d2a5e85008d2a686e5504fb7fc7",
+    "targeth-ht261118-wqa-r05-m4-02": "7b566b84d0bac9ee7ff2c47460c2e9b9e5430ceb53c802d04c1ef9dd9f3fbe4b",
+    "targeth-ht261118-wqa-r05-m4-03": "72b3035fa7d2089284621ddc80407945bb13a5d2577b591d02fdc90f998b884e",
+    "targeth-ht261118-wqa-r05-m4-04": "d7b1d89b8020dc7fd1e3085da5052c01aae20bd9cebbb6f25b16d8910acd135b",
+    "targeth-ht261118-wqa-r05-m4-05": "053f23123f111cc703efd2b68da01547b48e5628483e3f73f178e6bb8192f82a",
+    "targeth-ht261118-wqa-r05-m4-06": "7922666a7b406785e0de250a9e19e04bb9024a28b43caa9155e6611474f8b88e",
+    "targeth-ht261118-wqa-r05-m5-01": "17647bd78a41c9c84b214771b0defce27fb9399ad3dd52a26eff6445dcdf3ee5",
+    "targeth-ht261118-wqa-r05-m5-02": "d0d33e0218ea9a5eb7bb09d4554d3425a1064e1e483062d4cd3f645355e193d5",
+    "targeth-ht261118-wqa-r05-m5-03": "4f043fcc516e199f325a6e40d913edf52ecab70a4c82ed5075f7c4cb9bf2210b",
+    "targeth-ht261118-wqa-r05-m5-04": "d88f95337e8f1d467e03afc6974a76dac0c7b6b0baab0d2420f6168561f78ea7",
+    "targeth-ht261118-wqa-r05-m5-05": "e1906eae217539d67a5ffbb5ccec40aae2821a37ae59c418b706e9f96d6b44f1"
+   }
+  },
+  "registeredAt": "2026-11-19T03:49:31.536Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 8,
+     "f": 6
+    },
+    "dirs": {
+     "increase": 3,
+     "decrease": 3,
+     "unchanged": 2
+    },
+    "longest": 4,
+    "options": 22
+   },
+   "batchSha256": "13a80890a7ebaeb2dbeabbdd5a2f65272b91d8bfdabd00bad1f288a7a431c8f1"
+  }
+ }
+}

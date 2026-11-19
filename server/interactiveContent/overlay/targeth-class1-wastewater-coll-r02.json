@@ -1,0 +1,3022 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-class1-wastewater-coll-r02",
+ "scope": "Owner-authorized AI-reviewed game activities: 83 items.",
+ "additions": [
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m0-01",
+    "prompt": "Biological wastewater treatment speeds up waste decomposition by controlling the environment for optimum microbial growth.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Controlling the environment to support optimum growth of microorganisms accelerates the biological decomposition of wastewater wastes."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "fd0259c9dda739848ee86e351a8226335f252a3ffbea1f0f38c0e888f247a411",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m0-03",
+    "prompt": "Heterotrophic anaerobic bacteria can liberate sulfur from proteins as hydrogen sulfide.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "In anaerobic conditions, heterotrophic bacteria break down sulfur-containing proteins and release hydrogen sulfide gas."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "fd4e8327b2ed49a4ea962bf6d16f5cc4c4e0ca9c324ca4b320d004980f0ddb94",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m0-04",
+    "prompt": "Nitrification is an anaerobic process that converts nitrate into nitrogen gas.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Nitrification adds oxygen to convert ammonia to nitrates; denitrification converts nitrate into nitrogen gas."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "3eff7e173c18080ccbcdd432b07fe3094884815374d00b57ff9d4b8fc682c903",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m0-05",
+    "prompt": "Nitrogen and phosphorus are both considered limiting factors for productivity in receiving waters.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Both nitrogen and phosphorus limit biological productivity; excess amounts in discharges can spur heavy algae growth."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "65dd1d0f80ca850f1874f10c4ceec6a6787a410d5408ad37d3ebb915b3d486a1",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m0-06",
+    "prompt": "A 14-inch nominal diameter steel pipe has an actual outside diameter equal to 14 inches.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Pipes 14 inches or greater in nominal diameter have an actual outside diameter equal to the nominal size."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "661cc03212c74b36fbe1aac2a928ff2c423d1de51f08b35495608359e7c86ac3",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m0-07",
+    "prompt": "Service lines in a plant carry raw sludge between digestion tanks.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Process lines carry unit process fluids like raw sludge; service lines carry water, steam, compressed air, and gas."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "1ba59534b9df9c1674aa09966316c7f899ba6ea202fc7e4cfb3154a73f8a7c0f",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m0-08",
+    "prompt": "Annealing steel piping makes the metal harder and more brittle.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Annealing heats steel and cools it gradually to relieve stress, making it softer and less brittle."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "d4097be8bbd63eedfb1e34a53c1812eebf6580ad7e12c91433f45dbcd7533e60",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m0-09",
+    "prompt": "Ductile iron pipe has spheroidal graphite, giving it higher flexural strength than gray cast iron.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Ball-shaped graphite in ductile iron provides higher flexural strength and lighter weight than flaked graphite in cast iron."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "f123ac2098992750f068d07d250423ae502144c6bec93ec2192f4ef30d53b1b2",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m0-10",
+    "prompt": "Gray cast iron pipe resists electrolysis corrosion in acidic or alkaline soils.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Gray cast iron pipe can suffer corrosion due to electrolysis when exposed to acidic or alkaline soils."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "7b1b96b7379aaa58aa78c4ad46e41a25c9e527c5dc9133e14735ec425d917cc4",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m0-11",
+    "prompt": "Screwed or threaded joints are commonly used on smaller diameter, low-pressure piping.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Threaded joints suit smaller pipes up to 8 inches in low-pressure, low-vibration applications."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "874be0d47d9188b0c181cf15d028004554ea65f49c09b2874a9bc88243198678",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m0-12",
+    "prompt": "Expansion joints, loops, or bends help rigid pipelines absorb thermal expansion.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Where anchors and guides do not control thermal movement, bends, loops, or expansion joints provide needed flexibility."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "2b6f9b9b416bb3964e6c4eb8fd9fd286403e6a17d2ee96dcfe6728620078b220",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m0-13",
+    "prompt": "Nonferrous metals such as brass contain iron as their main structural element.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Nonferrous metals do not contain iron; brass is a common nonferrous metal used in piping."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "120a5ca98da2c29ec8c437bc06004298b7f17bb98b06a194c2416609d687adb3",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m0-14",
+    "prompt": "Symbiotic bacteria in pea plant roots convert atmospheric nitrogen gas into nitrates.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Nitrogen-fixing bacteria living in root nodules convert atmospheric nitrogen gas into nitrates usable by plants."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "23531ab5b1f7e9dc37cb0486712ba7f8b0008302abf648e511b522dcc367bbb4",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m0-15",
+    "prompt": "High ammonia quantities in wastewater effluent reduce oxygen demand in receiving streams.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Ammonia exerts both a biochemical oxygen demand and a chlorine demand, making high effluent levels undesirable."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "b921342b2337e3c5db347d45b12446d19e444cf6f540e0039ef708e49b9376e0",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m1-01",
+    "prompt": "Match each microbiological nutrient cycle process to its chemical transformation.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Nitrogen fixation",
+      "right": "Converts atmospheric nitrogen gas into nitrates"
+     },
+     {
+      "id": "p2",
+      "left": "Nitrification",
+      "right": "Adds oxygen to convert ammonia to nitrates"
+     },
+     {
+      "id": "p3",
+      "left": "Denitrification",
+      "right": "Converts nitrate into nitrogen gas"
+     },
+     {
+      "id": "p4",
+      "left": "Cellular respiration",
+      "right": "Releases carbon dioxide back to the atmosphere"
+     },
+     {
+      "id": "p5",
+      "left": "Anaerobic protein breakdown",
+      "right": "Liberates sulfur as hydrogen sulfide"
+     },
+     {
+      "id": "p6",
+      "left": "Urea transformation",
+      "right": "Forms ammonia nitrogen during treatment"
+     }
+    ],
+    "explanation": "Each biological process drives a specific chemical step in the carbon, nitrogen, or sulfur cycle."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "e7150b6579587de52c9983ca50d915f61fed4ec6d0f6781fb95c9b0987495f89",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m1-02",
+    "prompt": "Match each piping material or treatment term to its metallurgical property.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Cast iron",
+      "right": "Flaked graphite with high strength but heavy weight"
+     },
+     {
+      "id": "p2",
+      "left": "Ductile iron",
+      "right": "Spheroidal graphite with higher flexural strength"
+     },
+     {
+      "id": "p3",
+      "left": "Annealing",
+      "right": "Gradual cooling that makes steel softer and less brittle"
+     },
+     {
+      "id": "p4",
+      "left": "Nonferrous metal",
+      "right": "Piping alloy such as brass that contains no iron"
+     },
+     {
+      "id": "p5",
+      "left": "Stainless steel schedule",
+      "right": "Identified by the letter S after the number"
+     },
+     {
+      "id": "p6",
+      "left": "Ductility",
+      "right": "Ability to be fashioned into a new form without breaking"
+     }
+    ],
+    "explanation": "Metallurgical structure and heat treatment determine strength, corrosion resistance, and workability."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "e11d18c119ac6b8e2dd96d7a594a7f51ae31d762402f1a084155f0fdb3f35c1c",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m1-03",
+    "prompt": "Match each plant piping classification or standard to its engineering role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Process line",
+      "right": "Carries raw sludge in a digestion operation"
+     },
+     {
+      "id": "p2",
+      "left": "Service line",
+      "right": "Carries compressed air, steam, or utility water"
+     },
+     {
+      "id": "p3",
+      "left": "ASTM ratings",
+      "right": "Standards for minimum pipe size and wall thickness"
+     },
+     {
+      "id": "p4",
+      "left": "Manufacturer ratings",
+      "right": "Pressure-temperature limits for proprietary designs"
+     },
+     {
+      "id": "p5",
+      "left": "Pipe hangers and supports",
+      "right": "Prevent overstressing of pressure-containing parts"
+     },
+     {
+      "id": "p6",
+      "left": "Piping system",
+      "right": "Pipe sections joined with valves, fittings, and supports"
+     }
+    ],
+    "explanation": "Plant piping is classified by fluid service and governed by dimensional and pressure standards."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "c6bdf3f778da34376bfd7e00ddaddf8085c90752f4fc7168985db183c39e048b",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m1-04",
+    "prompt": "Match each pipe wall or joint specification to its dimensional rule.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "12-inch nominal pipe",
+      "right": "Actual outside diameter is slightly larger than 12 inches"
+     },
+     {
+      "id": "p2",
+      "left": "14-inch nominal pipe",
+      "right": "Actual outside diameter equals 14 inches"
+     },
+     {
+      "id": "p3",
+      "left": "Schedule number",
+      "right": "Specifies pipe wall thickness"
+     },
+     {
+      "id": "p4",
+      "left": "STD, XS, XXS",
+      "right": "Original wall-thickness designations with limited variation"
+     },
+     {
+      "id": "p5",
+      "left": "Screwed joint",
+      "right": "Threaded connection for small, low-pressure lines"
+     },
+     {
+      "id": "p6",
+      "left": "Outside diameter tolerance",
+      "right": "Maintained so pipes fit standard fittings"
+     }
+    ],
+    "explanation": "Standardized outside diameters and schedule numbers ensure fittings match across pipe sizes."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "94da4ca5709eba31445706b1d8e36b852df112a5a42cfdb1f24edff43780952d",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m1-05",
+    "prompt": "Match each thermal expansion control or piping hazard to its mechanical effect.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Temperature rise",
+      "right": "Causes rigid metallic pipe to expand"
+     },
+     {
+      "id": "p2",
+      "left": "Expansion loop or bend",
+      "right": "Provides flexibility to absorb thermal movement"
+     },
+     {
+      "id": "p3",
+      "left": "Anchors and guides",
+      "right": "Control where thermal expansion occurs"
+     },
+     {
+      "id": "p4",
+      "left": "Uncontrolled expansion",
+      "right": "Causes joint leakage and anchor overstress"
+     },
+     {
+      "id": "p5",
+      "left": "Electrolysis in acid soil",
+      "right": "Corrodes unprotected gray cast iron pipe"
+     },
+     {
+      "id": "p6",
+      "left": "Vibration on threaded joints",
+      "right": "Reduces leakage integrity of screwed connections"
+     }
+    ],
+    "explanation": "Piping design accounts for thermal movement, soil chemistry, and vibration to prevent leaks."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "26081c40a270de8ed4ea4f1e262a46f50d3a7423f708d107d1b4a39a2b8870f1",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m1-06",
+    "prompt": "Match each phosphorus or carbon cycle reservoir to its role in nature.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Sedimentary rock",
+      "right": "Gradually erodes to supply phosphorus to ecosystems"
+     },
+     {
+      "id": "p2",
+      "left": "Deep ocean sediments",
+      "right": "Receive a large share of eroded phosphorus"
+     },
+     {
+      "id": "p3",
+      "left": "Guano deposits",
+      "right": "Return organic phosphorus to land via bird excreta"
+     },
+     {
+      "id": "p4",
+      "left": "Fossil fuels",
+      "right": "Buried plant and animal carbon burned to form carbon dioxide"
+     },
+     {
+      "id": "p5",
+      "left": "Atmospheric carbon dioxide",
+      "right": "Acts as a heat screen retaining Earth's warmth"
+     },
+     {
+      "id": "p6",
+      "left": "Decomposing tissue",
+      "right": "Returns organic phosphorus to water and soil"
+     }
+    ],
+    "explanation": "Carbon and phosphorus move through distinct geological and biological reservoirs."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "0be04e18c42a84ff04ff0f9d17afce03175da10e5fe461516e4e6b90e5dc69da",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m1-07",
+    "prompt": "Match each Cyclospora transmission factor to its biological characteristic.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Freshly excreted oocyst",
+      "right": "Not yet infectious upon leaving the host"
+     },
+     {
+      "id": "p2",
+      "left": "Sporulation",
+      "right": "Requires days to weeks in the environment"
+     },
+     {
+      "id": "p3",
+      "left": "Direct person-to-person spread",
+      "right": "Unlikely because oocysts need time to mature"
+     },
+     {
+      "id": "p4",
+      "left": "Indirect transmission",
+      "right": "Occurs via contaminated water or fresh produce"
+     },
+     {
+      "id": "p5",
+      "left": "Storage tank failure",
+      "right": "Contaminated tap water in a documented outbreak"
+     },
+     {
+      "id": "p6",
+      "left": "Laboratory culture",
+      "right": "Not yet achieved for Cyclospora organisms"
+     }
+    ],
+    "explanation": "Cyclospora oocysts must sporulate outside the host before they can cause infection."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "8520648a2549a60dcaea20a26fcf108abf88026487b6bfda2ce031c9f5676407",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m1-08",
+    "prompt": "Match each biological treatment principle to its operational meaning.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Optimum growth control",
+      "right": "Speeds up the decomposition of organic wastes"
+     },
+     {
+      "id": "p2",
+      "left": "Aerobic process",
+      "right": "Uses free, elemental oxygen to degrade waste"
+     },
+     {
+      "id": "p3",
+      "left": "Anaerobic bacteria",
+      "right": "Produce volatile acids and methane without free oxygen"
+     },
+     {
+      "id": "p4",
+      "left": "Log growth phase",
+      "right": "Rapid bacterial multiplication when food is plentiful"
+     },
+     {
+      "id": "p5",
+      "left": "Endogenous respiration",
+      "right": "Declining growth stage as food becomes scarce"
+     },
+     {
+      "id": "p6",
+      "left": "Natural model",
+      "right": "Basis for all biological wastewater treatment processes"
+     }
+    ],
+    "explanation": "Biological treatment speeds up natural microbial decomposition by controlling oxygen and growth conditions."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "77162cfb0cb690d923f3036413b53ebe0fbfd9f46b9fd5241550b9424940ce2f",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m1-09",
+    "prompt": "Match each metallic pipe consideration to the system issue it describes.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Water hammer",
+      "right": "Pressure shock wave inside a pipeline"
+     },
+     {
+      "id": "p2",
+      "left": "Air binding",
+      "right": "Trapped air restricting flow in a line"
+     },
+     {
+      "id": "p3",
+      "left": "Shifting pipe supports",
+      "right": "Causes misalignment and mechanical stress"
+     },
+     {
+      "id": "p4",
+      "left": "Impurities in the line",
+      "right": "Can foul or corrode interior pipe surfaces"
+     },
+     {
+      "id": "p5",
+      "left": "Corrosion effects",
+      "right": "Gradual chemical or electrolytic loss of metal"
+     },
+     {
+      "id": "p6",
+      "left": "Temperature changes",
+      "right": "Drive expansion and contraction along pipe runs"
+     }
+    ],
+    "explanation": "Operators monitor physical, hydraulic, and chemical stresses that affect metallic piping."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "a251a81eb7cf76f38f9a0a5a6e92a4230c7b0394f9925efa2c7722b70baf6a1c",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m1-10",
+    "prompt": "Match each screwed-joint feature to its application detail.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Pipe size range",
+      "right": "Used on diameters from 1/8 inch up to 8 inches"
+     },
+     {
+      "id": "p2",
+      "left": "Coupling threads",
+      "right": "Cut on the inside surface of most couplings"
+     },
+     {
+      "id": "p3",
+      "left": "Galvanized pipe",
+      "right": "Commonly joined with screwed fittings for drainage"
+     },
+     {
+      "id": "p4",
+      "left": "Maintenance advantage",
+      "right": "Easy to disassemble and reassemble"
+     },
+     {
+      "id": "p5",
+      "left": "Pressure suitability",
+      "right": "High leakage integrity at low pressure and temperature"
+     },
+     {
+      "id": "p6",
+      "left": "Typical service",
+      "right": "Domestic water, cooling, and fire protection lines"
+     }
+    ],
+    "explanation": "Screwed joints offer simple assembly and disassembly for small, low-pressure piping."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "db2ee41bd372e88f86c205b27e1712d0e3cb42b4f88e94ba3e6267dc6196f804",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m2-01",
+    "prompt": "Three of these are biological nitrogen cycle processes. Which one is a sulfur-releasing anaerobic reaction?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Nitrogen fixation"
+     },
+     {
+      "id": "b",
+      "label": "Nitrification"
+     },
+     {
+      "id": "c",
+      "label": "Denitrification"
+     },
+     {
+      "id": "d",
+      "label": "Hydrogen sulfide liberation"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Hydrogen sulfide liberation releases sulfur from proteins, whereas the other three transform nitrogen compounds."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "b044cf5fda8576e8ca23114724621596371831235422322d321133ee45cc9910",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m2-02",
+    "prompt": "Three of these fluids are carried by plant service lines. Which one is carried by a unit process line?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Compressed air"
+     },
+     {
+      "id": "b",
+      "label": "Steam"
+     },
+     {
+      "id": "c",
+      "label": "Raw sludge"
+     },
+     {
+      "id": "d",
+      "label": "Utility water"
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Raw sludge is a treatment process fluid carried in process lines, not a general plant utility."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "38086bc67c2c9ea80b1dcce2dfdfd81c9829b79aca9214c1059d32002b260f94",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m2-03",
+    "prompt": "Three of these are original pipe wall-thickness designations. Which one is a stainless steel schedule suffix?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "STD"
+     },
+     {
+      "id": "b",
+      "label": "XS"
+     },
+     {
+      "id": "c",
+      "label": "XXS"
+     },
+     {
+      "id": "d",
+      "label": "S"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "The letter S after a schedule number identifies stainless steel piping, while STD, XS, and XXS are wall-thickness classes."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "c6b55bbeb53fbf45652cff4301e1e66c03cdc0bd2428536c81c03b9a911b7e05",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m2-04",
+    "prompt": "Three of these are ferrous metals used in piping. Which one is a nonferrous metal?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Cast iron"
+     },
+     {
+      "id": "b",
+      "label": "Ductile iron"
+     },
+     {
+      "id": "c",
+      "label": "Stainless steel"
+     },
+     {
+      "id": "d",
+      "label": "Brass"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Brass is a nonferrous metal that contains no iron, unlike cast iron, ductile iron, and stainless steel."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "f290d6cffc09a5c9c86c94802e62a737d3028aee6727b4b048f99353b3f87f05",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m2-05",
+    "prompt": "Three of these devices provide flexibility or control for thermal expansion in rigid piping. Which one is a pressure shock?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Expansion joint"
+     },
+     {
+      "id": "b",
+      "label": "Pipe loop"
+     },
+     {
+      "id": "c",
+      "label": "Anchor and guide"
+     },
+     {
+      "id": "d",
+      "label": "Water hammer"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Water hammer is a hydraulic pressure shock, whereas the others manage thermal expansion."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "861d7138a76c7e60053831ad8713b45f856a8312a5c2ba3ec981e080b60e1903",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m2-06",
+    "prompt": "Three of these are fossil fuels that store buried carbon. Which one is a nutrient-rich bird deposit in the phosphorus cycle?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Coal"
+     },
+     {
+      "id": "b",
+      "label": "Oil"
+     },
+     {
+      "id": "c",
+      "label": "Natural gas"
+     },
+     {
+      "id": "d",
+      "label": "Guano"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Guano deposits return organic phosphorus to land, while coal, oil, and natural gas are carbon-rich fossil fuels."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "28e8d4a690ec5bbad7404a245178aae73708216dbf68d2012effcca33f30fca5",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m2-07",
+    "prompt": "Three of these are phases of bacterial growth in biological treatment. Which one is a protozoan maturation step?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Log growth"
+     },
+     {
+      "id": "b",
+      "label": "Declining growth"
+     },
+     {
+      "id": "c",
+      "label": "Endogenous respiration"
+     },
+     {
+      "id": "d",
+      "label": "Sporulation"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Sporulation is the environmental maturation of Cyclospora oocysts, not a bacterial growth phase."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "79e07ce12739bd09a057c7695f7c796356ed985b1878ca2faf384c9197ca0989",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m2-08",
+    "prompt": "Three of these are typical applications for screwed or threaded pipe joints. Which one is a large-diameter pipe class?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Domestic water"
+     },
+     {
+      "id": "b",
+      "label": "Industrial cooling"
+     },
+     {
+      "id": "c",
+      "label": "Fire protection"
+     },
+     {
+      "id": "d",
+      "label": "14-inch steel main"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Screwed joints are used on smaller pipes up to 8 inches, not 14-inch mains."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "6b62f49961ee3af54f67888bc37fd4909d58d63f88c53149d86bde603ebcd3d5",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m2-09",
+    "prompt": "Three of these are nonferrous polymer materials used for piping. Which one is a heat treatment for steel?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Polyethylene"
+     },
+     {
+      "id": "b",
+      "label": "Polybutylene"
+     },
+     {
+      "id": "c",
+      "label": "Polyurethane"
+     },
+     {
+      "id": "d",
+      "label": "Annealing"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Annealing is a steel heat-treatment process, whereas the others are nonferrous plastic piping materials."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "3f58e35d79bdc1f2d7d64bb38c065a2b1b9fad4233709e9320cfc1324ab2a79f",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m2-10",
+    "prompt": "Three of these are outputs of anaerobic bacteria in wastewater treatment. Which one is an input gas used by aerobic organisms?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Volatile acids"
+     },
+     {
+      "id": "b",
+      "label": "Methane"
+     },
+     {
+      "id": "c",
+      "label": "Stable solids"
+     },
+     {
+      "id": "d",
+      "label": "Free elemental oxygen"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Aerobic organisms use free elemental oxygen, whereas anaerobic bacteria produce volatile acids, methane, and stable solids."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "a37a216d9754bb7f8fd1067b24981381069304c76d59b46dfa69cc53e66e7d21",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m2-11",
+    "prompt": "Three of these are sources of engineering ratings or standards for piping. Which one is a soil corrosion mechanism?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "ASME B36.10M"
+     },
+     {
+      "id": "b",
+      "label": "ASTM standards"
+     },
+     {
+      "id": "c",
+      "label": "Manufacturer pressure-temperature ratings"
+     },
+     {
+      "id": "d",
+      "label": "Electrolysis in acid soil"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Electrolysis in acid soil is a corrosion process, while the other three are piping standards and ratings."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "67521edd82b7caf4b057a818d126fa14b944cc27f158f011b95eaf9fde115f66",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m2-12",
+    "prompt": "Three of these are components joined together to form a complete piping system. Which one is a microbial parasite?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Valves"
+     },
+     {
+      "id": "b",
+      "label": "Fittings"
+     },
+     {
+      "id": "c",
+      "label": "Pipe hangers"
+     },
+     {
+      "id": "d",
+      "label": "Cyclospora"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Cyclospora is a waterborne protozoan parasite, whereas valves, fittings, and hangers are piping components."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "36b4140b2bb0c472f2906dbd5c1420d2487ade41f69f37d4ee0da72d5853179c",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m2-13",
+    "prompt": "Three of these are problems caused by uncontrolled thermal expansion in rigid piping. Which one is a benefit of ductile iron?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Joint leakage"
+     },
+     {
+      "id": "b",
+      "label": "Anchor overstress"
+     },
+     {
+      "id": "c",
+      "label": "Piping failure"
+     },
+     {
+      "id": "d",
+      "label": "High flexural strength"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "High flexural strength is a material advantage of ductile iron, not a thermal expansion failure."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "ba5eef3b57b164c0271eb754c331bac759d9031f1b6fa92c288974e58cc0f68b",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m2-14",
+    "prompt": "Three of these are ways phosphorus moves through the natural phosphorus cycle. Which one is a nitrogen-fixing plant example?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Erosion of sedimentary rock"
+     },
+     {
+      "id": "b",
+      "label": "Deposition in ocean sediments"
+     },
+     {
+      "id": "c",
+      "label": "Decomposition of animal tissue"
+     },
+     {
+      "id": "d",
+      "label": "Pea root nodules"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Pea root nodules host nitrogen-fixing bacteria in the nitrogen cycle, not the phosphorus cycle."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "262dc5b8e17b234b69d99a675d1ceef0606a84bc5b072a0edc6662b38b9b1636",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m2-15",
+    "prompt": "Three of these are common considerations for metal piping systems. Which one is an atmospheric heat-trapping gas?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Corrosion"
+     },
+     {
+      "id": "b",
+      "label": "Shifting pipe supports"
+     },
+     {
+      "id": "c",
+      "label": "Line impurities"
+     },
+     {
+      "id": "d",
+      "label": "Carbon dioxide"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Carbon dioxide is an atmospheric gas in the carbon cycle, whereas the others are metal piping considerations."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "7cacb1cdf7bd26ac8896d931f17670028f12cb8a22a6339e0d1c872a96cea019",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m3-01",
+    "prompt": "Aerobic microorganisms in a treatment basin receive an adequate supply of free, elemental oxygen while organic waste is present. What happens to the rate of organic waste decomposition?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Controlling the microbial environment with adequate oxygen speeds up the biological decomposition of organic waste."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "e2728df3089e011039fd785e4430ff0c269f9f3cdd3285029a8ffce4dfa05744",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m3-02",
+    "prompt": "Wastewater effluent containing high quantities of ammonia nitrogen is discharged into a receiving stream. What happens to the oxygen demand in the stream?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Ammonia nitrogen exerts a biochemical oxygen demand, so higher ammonia discharges raise oxygen demand."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "c09b0ff2ef7808040298f8d766d2864c7d75d660844ec60c87f4b631fc42e0df",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m3-04",
+    "prompt": "Heterotrophic anaerobic bacteria break down sulfur-containing proteins in stagnant wastewater. What happens to the amount of hydrogen sulfide liberated?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Anaerobic bacteria liberate sulfur from proteins as hydrogen sulfide gas."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "9a6d4a449d52ea3625c82ae831a8653c487e86c11b6698d2d1d4f3f2290835ad",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m3-05",
+    "prompt": "More fossil fuels are burned while green-belt removal capacity declines. What happens to the concentration of carbon dioxide in the atmosphere?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Burning fossil fuels releases stored carbon as carbon dioxide, raising atmospheric levels when removal capacity drops."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "54a1a8056604a31b8d964f0a8a31f64f2da547c3f18afb800ceb1aadd4b45f2a",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m3-06",
+    "prompt": "A 16-inch nominal diameter steel pipe is specified with a higher schedule number while keeping its outside diameter fixed. What happens to the pipe wall thickness?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "A higher schedule number specifies a thicker pipe wall while the outside diameter remains fixed."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "f7edcdd73020542d657bdbc150e9b91e4a16689cdbd44b425b41a98120df5f49",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m3-07",
+    "prompt": "Hardened steel piping is heated and then cooled gradually during annealing. What happens to the brittleness of the steel?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Annealing relieves internal stress by gradual cooling, making steel softer and less brittle."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "b7b430d2b4434ae67e4cd414eebdbcc11a28edc1399380d4135783daa32752ec",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m3-08",
+    "prompt": "Unprotected gray cast iron pipe is buried in wet soil with strong acidic properties. What happens to the rate of exterior pipe corrosion?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Acidic or alkaline soils promote electrolysis, increasing exterior corrosion on unprotected cast iron pipe."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "27adb00a2cbec29c5778740ea50fa9a525bc2d58e7bf67cec84a969a07c3eeb0",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m3-09",
+    "prompt": "Expansion loops and expansion joints are added to a long, rigid metallic pipeline exposed to temperature swings. What happens to the mechanical strain on pipe anchors?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Expansion loops and joints provide flexibility that absorbs thermal movement and reduces strain on anchors."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "335a31b24f511b288af39c4d2b4583e300e574278a92295445f03223fd93b034",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m3-10",
+    "prompt": "A low-pressure screwed pipe joint is subjected to continuous mechanical vibration. What happens to the leakage integrity of the joint?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Screwed joints maintain high leakage integrity at low pressure only where vibration is not encountered."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "6ef09ac451a179efdb2ef5adafd818a4a99a97f362d170b0b2b2ab270cf12782",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m3-11",
+    "prompt": "Pea plants with symbiotic root bacteria are plowed back into the soil after the growing season. What happens to the nitrogen content of the soil?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Plowing nitrogen-fixing plants back into the soil adds fixed nitrates and improves soil nitrogen content."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "bf4f8ca19e9ca6034aa6758844a019ddc36cff9cc2a24ea2bf6c50df89d3c987",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m3-12",
+    "prompt": "Mining and fertilizer production accelerate while runoff washes fertilizer into waterways. What happens to the rate of phosphorus loss from land?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Human mining and fertilizer runoff hasten the rate at which phosphorus is washed away and lost."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "26625794d911459c884b4a7c0997498e18756346cc67292d9c5213f98dc57ee7",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m3-13",
+    "prompt": "Ductile iron pipe replaces gray cast iron pipe of the same external diameter. What happens to the flexural strength of the pipe?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Spheroidal graphite in ductile iron gives it higher flexural strength than gray cast iron."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "8f91c97b50fc0588980d0747334004a67816597d098ab0bacd8fa8c5344b4985",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m3-14",
+    "prompt": "Proper pipe hangers and supports are installed along a pressurized plant piping run. What happens to the overstressing of pressure-containing components?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Pipe hangers and supports carry mechanical loads and prevent overstressing of pressure-containing components."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "ee49b914a4af6b696346188e7957693dd9abafceec9865089104e8faa5af2ad9",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m3-15",
+    "prompt": "A 14-inch steel pipe is manufactured within ASME B36.10M dimensional tolerances. What happens to its ability to accommodate standard fittings?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Maintaining outside diameter within standard tolerances ensures the pipe fits standard fittings properly."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "35ff7e7d6c3f7cada9c24f659954b40fab5dfb50992870cab469d9a53f6b511d",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m4-01",
+    "prompt": "A trainee summarizes biological wastewater treatment principles. Which statement contains a factual flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Biological treatment speeds waste decomposition by controlling microbial growth."
+     },
+     {
+      "id": "b",
+      "label": "Aerobic treatment processes rely on organisms using free elemental oxygen."
+     },
+     {
+      "id": "c",
+      "label": "Anaerobic bacteria require high dissolved oxygen to produce methane gas."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Anaerobic bacteria operate without free oxygen; they produce volatile acids and methane in oxygen-free environments."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "9dc78778a54779bad53b8605277763bbc2cf957483350753aa957c0f4217e114",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m4-02",
+    "prompt": "An operator reviews nitrogen and phosphorus in wastewater. Which statement contains a factual flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Nitrification adds oxygen to convert ammonia nitrogen into nitrates."
+     },
+     {
+      "id": "b",
+      "label": "Denitrification converts nitrate into nitrogen gas lost to the air."
+     },
+     {
+      "id": "c",
+      "label": "Ammonia in effluent reduces chlorine demand and oxygen demand."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Ammonia exerts both a biochemical oxygen demand and a chlorine demand, making high levels undesirable."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "d1717c0cc64379d6e238ec1008e3053b24950d1391f296a24a8d1fbd66645a4a",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m4-03",
+    "prompt": "A student reviews Cyclospora transmission facts. Which statement contains a factual flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Cyclospora oocysts need days to weeks outside the host to sporulate."
+     },
+     {
+      "id": "b",
+      "label": "Direct person-to-person spread is unlikely right after oocysts are excreted."
+     },
+     {
+      "id": "c",
+      "label": "Cyclospora is routinely grown in standard laboratory tissue cultures."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Cyclospora organisms have not yet been grown in tissue cultures or laboratory animal models."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "15f0dd98041c5a36865139d4bb57e71bf139ef76c7fc711d287bed5601564739",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m4-04",
+    "prompt": "A trainee summarizes pipe size and wall thickness rules. Which statement contains a factual flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Pipes 14 inches or larger have an actual outside diameter equal to nominal size."
+     },
+     {
+      "id": "b",
+      "label": "A 12-inch nominal pipe has an actual outside diameter slightly larger than 12 inches."
+     },
+     {
+      "id": "c",
+      "label": "Increasing the schedule number makes the pipe wall thinner for a fixed outside diameter."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "A higher schedule number specifies a thicker pipe wall, which reduces the inside diameter."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "2ee07b2ed020823daa583cf6922e3b603215ca8eb44474767aa181b8ddb9cc9e",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m4-05",
+    "prompt": "An operator reviews plant process lines versus service lines. Which statement contains a factual flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Process lines carry raw sludge inside a digestion operation."
+     },
+     {
+      "id": "b",
+      "label": "Service lines carry water, steam, compressed air, and gas."
+     },
+     {
+      "id": "c",
+      "label": "Service lines are defined as pipes carrying primary treatment sludge."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Sludge lines are process lines; service lines carry utility fluids like water, steam, and compressed air."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "d5ca29d86d97a1d997112cee735e8c8c5f2cf771915b6d62da5d030cea4296c2",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m4-06",
+    "prompt": "A trainee summarizes cast iron and ductile iron pipe. Which statement contains a factual flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Ductile iron contains spheroidal graphite rather than flaked graphite."
+     },
+     {
+      "id": "b",
+      "label": "Gray cast iron can corrode by electrolysis in acidic or alkaline soils."
+     },
+     {
+      "id": "c",
+      "label": "Gray cast iron is lighter and has greater carrying capacity than ductile iron."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Ductile iron is lighter than cast iron and has greater carrying capacity for the same external diameter."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "0b6703ef22bcc1b85b0e410e964df9582806cba99b14500179635ab068063b5a",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m4-07",
+    "prompt": "An operator reviews steel heat treatment and nonferrous metals. Which statement contains a factual flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Annealing heats steel and cools it gradually to reduce brittleness."
+     },
+     {
+      "id": "b",
+      "label": "Brass is a common nonferrous metal used in piping systems."
+     },
+     {
+      "id": "c",
+      "label": "Nonferrous metals contain iron as their primary structural ingredient."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Nonferrous metals do not contain iron; ferrous metals are the ones based on iron."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "76548061f226234d548a86b339a669753cb7672690d5b098de215b7c3deb200a",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m4-08",
+    "prompt": "A trainee summarizes thermal expansion in rigid piping. Which statement contains a factual flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Metals expand and contract according to temperature variations."
+     },
+     {
+      "id": "b",
+      "label": "Bends, loops, and expansion joints provide flexibility for thermal movement."
+     },
+     {
+      "id": "c",
+      "label": "Rigid pipelines without flexibility experience less strain during temperature rises."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Without adequate flexibility, thermal expansion causes considerable strain, joint leakage, and anchor overstress."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "6db623e4518a5995523cc71554a576bac13333767827a4555581832aa25ff7dd",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m4-09",
+    "prompt": "An operator reviews screwed or threaded pipe joints. Which statement contains a factual flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Threaded joints are commonly used on pipe diameters from 1/8 inch to 8 inches."
+     },
+     {
+      "id": "b",
+      "label": "Screwed fittings are easy to disassemble and reassemble for maintenance."
+     },
+     {
+      "id": "c",
+      "label": "Screwed joints are preferred for high-pressure mains with heavy vibration."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Screwed joints suit low-pressure, noncritical applications where vibration is not encountered."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "fb4d6dbd1553fd2c38d6db28c839668c0b99a83c93521c56c1a4f62ad01851fd",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m4-10",
+    "prompt": "A student reviews the carbon and phosphorus cycles. Which statement contains a factual flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Cellular respiration returns carbon dioxide to the atmosphere."
+     },
+     {
+      "id": "b",
+      "label": "Eroding sedimentary rock gradually supplies phosphorus to ecosystems."
+     },
+     {
+      "id": "c",
+      "label": "Phosphorus cycles primarily as a gas in the Earth's atmosphere."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Unlike carbon and nitrogen, phosphorus is found in sedimentary rock and does not cycle as an atmospheric gas."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "67fc7f71fe35b07e58fe2d75fdac5a5fbd505185336f0d409edb011383bac565",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m4-11",
+    "prompt": "A trainee reviews piping standards and ratings. Which statement contains a factual flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "ASTM standards help determine minimum pipe size and wall thickness."
+     },
+     {
+      "id": "b",
+      "label": "Manufacturers assign pressure-temperature ratings for proprietary pipe designs."
+     },
+     {
+      "id": "c",
+      "label": "Pipe outside diameters vary freely without tolerances for fittings."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Pipe outside diameters are held within specific tolerances so they accommodate standard fittings."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "1c38fe00870ce7dae5c16d07f353aa7e920ad066f4a7e95e987fbca63f688299",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m4-12",
+    "prompt": "An operator summarizes pipe versus piping in conveyance systems. Which statement contains a factual flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "A pipe is a round-section tube conforming to dimensional standards."
+     },
+     {
+      "id": "b",
+      "label": "Piping includes pipe sections joined with valves, fittings, and hangers."
+     },
+     {
+      "id": "c",
+      "label": "Pipe hangers are optional and have no effect on component stress."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Pipe hangers and supports are necessary to prevent overstressing of pressure-containing components."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "22b47a576b42b6f20d1c9febdaf9666bfe026efc667c4f9b91d86d431d49b849",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m4-13",
+    "prompt": "A student reviews nitrogen fixation in nature. Which statement contains a factual flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Certain soil bacteria convert atmospheric nitrogen gas into nitrates."
+     },
+     {
+      "id": "b",
+      "label": "Symbiotic bacteria live in small swellings along pea plant roots."
+     },
+     {
+      "id": "c",
+      "label": "Nitrogen fixation converts nitrates into atmospheric carbon dioxide."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Nitrogen fixation converts atmospheric nitrogen gas into nitrates, not into carbon dioxide."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "6192cd0683e8ad21fcdcc4d9beab145c493cf44a21f117faec5c1ade3733d39a",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m4-14",
+    "prompt": "An operator reviews stainless steel and wall-thickness designations. Which statement contains a factual flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "An S after a schedule number identifies stainless steel piping."
+     },
+     {
+      "id": "b",
+      "label": "STD, XS, and XXS are original pipe wall-thickness designations."
+     },
+     {
+      "id": "c",
+      "label": "STD, XS, and XXS provide unlimited wall-thickness variations."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Original STD, XS, and XXS designations allowed limited variation, which led to modern schedule numbers."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "5a2df890cab074e50eb06ee7f5dc4d0b197f6abb24520d3ba0db29035e5219cf",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m4-15",
+    "prompt": "A trainee summarizes sulfur and algae in water systems. Which statement contains a factual flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Plants incorporate sulfur into proteins that organisms later consume."
+     },
+     {
+      "id": "b",
+      "label": "Excess nutrients in summer can cause algae to blanket a water surface."
+     },
+     {
+      "id": "c",
+      "label": "Aerobic bacteria liberate hydrogen sulfide from proteins in well-oxygenated water."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Heterotrophic anaerobic bacteria, not aerobic bacteria, liberate hydrogen sulfide from proteins."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "7d50b97d7ed0cf2ed462cdb34fd0ea96bd76c816b52a6dbcd197bbd561acea19",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m5-01",
+    "prompt": "In biological nitrogen removal, does nitrification of ammonia to nitrate occur before or after denitrification of nitrate to nitrogen gas?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Nitrification converts ammonia to nitrate first, and denitrification then converts nitrate to nitrogen gas."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "b5aad2ee8d1ca410856ea1d1a65c1d27552511e3b6c3fecbf5101ad490467ffd",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m5-02",
+    "prompt": "In the nitrogen cycle, does transformation of urea into ammonia nitrogen occur before or after nitrification converts ammonia to nitrate?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Urea is transformed into ammonia nitrogen before nitrifying bacteria oxidize ammonia to nitrate."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "27df4d0a0b959291d14169f33113c4df8ff8aee930b0a4e826cae041aea5970b",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m5-03",
+    "prompt": "In soil nitrogen fixation by bacteria, does conversion of atmospheric nitrogen to ammonia occur before or after conversion to nitrate?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Soil bacteria fix atmospheric nitrogen to ammonia, then to nitrite, and finally to nitrate."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "59322eb3bf83b9c0a998acf67437d6ab0f7362dcad8dc762d5401df6a9afbcb6",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m5-04",
+    "prompt": "In the Cyclospora transmission cycle, does sporulation of oocysts in the environment occur before or after they become infectious to a new host?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Excreted Cyclospora oocysts must sporulate over days to weeks before they become infectious."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "40018f24fea1be47aaa47d71406626ba650bc0067fdf3f67d6b0f7641740e16d",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m5-05",
+    "prompt": "In the bacterial growth curve, does the log growth phase occur before or after endogenous respiration?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Bacteria multiply rapidly during log growth before entering declining growth and endogenous respiration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "b296a8f4b93397dbd3f638daa15bd495d841b6c243435c8e6f230efc701b8af5",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m5-06",
+    "prompt": "In the phosphorus cycle, does erosion of sedimentary rock occur before or after phosphorus reaches shallow or deep ocean sediments?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Sedimentary rock erodes first, releasing phosphorus that later settles into ocean sediments."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "1ff02721734841597e1eded306da438608654272f9497d7104d7892ce8893293",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m5-07",
+    "prompt": "In the anaerobic breakdown of sulfur-bearing proteins, does plant incorporation of sulfur into proteins occur before or after heterotrophic bacteria liberate hydrogen sulfide?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Plants incorporate sulfur as proteins first; anaerobic bacteria later liberate hydrogen sulfide from those proteins."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "f50bb9781cb7eb69bc43e7f826bae478260b9760bb1eafe9bd51eb935ad41207",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m5-08",
+    "prompt": "In fossil fuel combustion, does burial of dead plant and animal carbon occur before or after burning releases carbon dioxide to the atmosphere?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Buried organic matter transforms into fossil fuels long before combustion releases carbon dioxide."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "14d28143084b79dd1e7c73b34d8f1de94106fce1a957972b3121a388cd57060a",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m5-09",
+    "prompt": "In wastewater sludge digestion, does raw sludge enter the process lines before or after it is converted into inert, dewaterable material?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Raw sludge enters the digestion process before being stabilized into inert material."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "a2132fe676e4c5ac5cc5aec62ce062295c9053e1a20ffeaa8264f66ae448057a",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m5-10",
+    "prompt": "In the annealing heat treatment of steel pipe, does gradual cooling occur before or after heating the metal?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "Steel is heated first and then cooled gradually to relieve stress and reduce brittleness."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "c49a1874b87c6c4c0eb579b2e39fa411e13afe1ab5b4fd4e7167d23f1c698df5",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m5-11",
+    "prompt": "In exterior corrosion of unprotected gray cast iron pipe, does contact with acidic or alkaline soil occur before or after electrolysis corrodes the metal?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Contact with acidic or alkaline soil initiates the electrolysis that corrodes the pipe."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "22936be0916ca8beb3967f17b23e9cc94c6260b09dabe26fb912c7fa7c1ae130",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m5-12",
+    "prompt": "In a rigid metallic pipeline without expansion joints, does a temperature rise occur before or after thermal expansion stresses the anchors?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "A temperature rise causes thermal expansion, which then places strain on anchors and joints."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "716492cec6d72442c4ed44e7aca3f820be759011d235d0dff8e5b26f4085d817",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m5-13",
+    "prompt": "In assembling a plant piping system, are ASTM standards consulted to select wall thickness before or after pipe sections are joined with valves and hangers?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "ASTM standards and ratings are used during design to select pipe size and thickness before installation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "64652ff8ad965d37e024f845fc037ef16874dc8f4b05ee5071183cc7405109b3",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m5-14",
+    "prompt": "In agricultural nitrogen enrichment, do symbiotic bacteria in pea roots fix nitrogen before or after the plants are plowed into the soil?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Symbiotic bacteria fix nitrogen in the roots during the growing season before the plants are plowed back into the soil."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "b20960e91d0cacf2d6e84951b4eecde3079baf0607a8d5e88b2edf08f7b9f2d4",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r02-m5-15",
+    "prompt": "In the carbon cycle, does cellular respiration by living organisms occur before or after carbon dioxide is returned to the atmosphere?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Cellular respiration breaks down organic matter and releases carbon dioxide back into the atmosphere."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+    "notes": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+    "registeredAt": "2026-11-19T02:57:34.035Z",
+    "payloadSha256": "62a23945eb9814c939d45f4326eadfb4c24ad36b2cc1401969bb209b1a740079",
+    "builderResultsSha256": "585c039604ea7226c277ac0238a3c05b69f563c8af1272021aa3dc811580990c"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T02:50:18.511285+00:00",
+   "attestation": "Strict Hydrogen self-review of 85 native class1-wastewater-coll items against supplied source pages and collision candidates; 83 accepted, 2 rejected for same-mode overlap.",
+   "payloadSha256": {
+    "targeth-ht261118-class1-wastewater-coll-r02-m0-01": "fd0259c9dda739848ee86e351a8226335f252a3ffbea1f0f38c0e888f247a411",
+    "targeth-ht261118-class1-wastewater-coll-r02-m0-03": "fd4e8327b2ed49a4ea962bf6d16f5cc4c4e0ca9c324ca4b320d004980f0ddb94",
+    "targeth-ht261118-class1-wastewater-coll-r02-m0-04": "3eff7e173c18080ccbcdd432b07fe3094884815374d00b57ff9d4b8fc682c903",
+    "targeth-ht261118-class1-wastewater-coll-r02-m0-05": "65dd1d0f80ca850f1874f10c4ceec6a6787a410d5408ad37d3ebb915b3d486a1",
+    "targeth-ht261118-class1-wastewater-coll-r02-m0-06": "661cc03212c74b36fbe1aac2a928ff2c423d1de51f08b35495608359e7c86ac3",
+    "targeth-ht261118-class1-wastewater-coll-r02-m0-07": "1ba59534b9df9c1674aa09966316c7f899ba6ea202fc7e4cfb3154a73f8a7c0f",
+    "targeth-ht261118-class1-wastewater-coll-r02-m0-08": "d4097be8bbd63eedfb1e34a53c1812eebf6580ad7e12c91433f45dbcd7533e60",
+    "targeth-ht261118-class1-wastewater-coll-r02-m0-09": "f123ac2098992750f068d07d250423ae502144c6bec93ec2192f4ef30d53b1b2",
+    "targeth-ht261118-class1-wastewater-coll-r02-m0-10": "7b1b96b7379aaa58aa78c4ad46e41a25c9e527c5dc9133e14735ec425d917cc4",
+    "targeth-ht261118-class1-wastewater-coll-r02-m0-11": "874be0d47d9188b0c181cf15d028004554ea65f49c09b2874a9bc88243198678",
+    "targeth-ht261118-class1-wastewater-coll-r02-m0-12": "2b6f9b9b416bb3964e6c4eb8fd9fd286403e6a17d2ee96dcfe6728620078b220",
+    "targeth-ht261118-class1-wastewater-coll-r02-m0-13": "120a5ca98da2c29ec8c437bc06004298b7f17bb98b06a194c2416609d687adb3",
+    "targeth-ht261118-class1-wastewater-coll-r02-m0-14": "23531ab5b1f7e9dc37cb0486712ba7f8b0008302abf648e511b522dcc367bbb4",
+    "targeth-ht261118-class1-wastewater-coll-r02-m0-15": "b921342b2337e3c5db347d45b12446d19e444cf6f540e0039ef708e49b9376e0",
+    "targeth-ht261118-class1-wastewater-coll-r02-m1-01": "e7150b6579587de52c9983ca50d915f61fed4ec6d0f6781fb95c9b0987495f89",
+    "targeth-ht261118-class1-wastewater-coll-r02-m1-02": "e11d18c119ac6b8e2dd96d7a594a7f51ae31d762402f1a084155f0fdb3f35c1c",
+    "targeth-ht261118-class1-wastewater-coll-r02-m1-03": "c6bdf3f778da34376bfd7e00ddaddf8085c90752f4fc7168985db183c39e048b",
+    "targeth-ht261118-class1-wastewater-coll-r02-m1-04": "94da4ca5709eba31445706b1d8e36b852df112a5a42cfdb1f24edff43780952d",
+    "targeth-ht261118-class1-wastewater-coll-r02-m1-05": "26081c40a270de8ed4ea4f1e262a46f50d3a7423f708d107d1b4a39a2b8870f1",
+    "targeth-ht261118-class1-wastewater-coll-r02-m1-06": "0be04e18c42a84ff04ff0f9d17afce03175da10e5fe461516e4e6b90e5dc69da",
+    "targeth-ht261118-class1-wastewater-coll-r02-m1-07": "8520648a2549a60dcaea20a26fcf108abf88026487b6bfda2ce031c9f5676407",
+    "targeth-ht261118-class1-wastewater-coll-r02-m1-08": "77162cfb0cb690d923f3036413b53ebe0fbfd9f46b9fd5241550b9424940ce2f",
+    "targeth-ht261118-class1-wastewater-coll-r02-m1-09": "a251a81eb7cf76f38f9a0a5a6e92a4230c7b0394f9925efa2c7722b70baf6a1c",
+    "targeth-ht261118-class1-wastewater-coll-r02-m1-10": "db2ee41bd372e88f86c205b27e1712d0e3cb42b4f88e94ba3e6267dc6196f804",
+    "targeth-ht261118-class1-wastewater-coll-r02-m2-01": "b044cf5fda8576e8ca23114724621596371831235422322d321133ee45cc9910",
+    "targeth-ht261118-class1-wastewater-coll-r02-m2-02": "38086bc67c2c9ea80b1dcce2dfdfd81c9829b79aca9214c1059d32002b260f94",
+    "targeth-ht261118-class1-wastewater-coll-r02-m2-03": "c6b55bbeb53fbf45652cff4301e1e66c03cdc0bd2428536c81c03b9a911b7e05",
+    "targeth-ht261118-class1-wastewater-coll-r02-m2-04": "f290d6cffc09a5c9c86c94802e62a737d3028aee6727b4b048f99353b3f87f05",
+    "targeth-ht261118-class1-wastewater-coll-r02-m2-05": "861d7138a76c7e60053831ad8713b45f856a8312a5c2ba3ec981e080b60e1903",
+    "targeth-ht261118-class1-wastewater-coll-r02-m2-06": "28e8d4a690ec5bbad7404a245178aae73708216dbf68d2012effcca33f30fca5",
+    "targeth-ht261118-class1-wastewater-coll-r02-m2-07": "79e07ce12739bd09a057c7695f7c796356ed985b1878ca2faf384c9197ca0989",
+    "targeth-ht261118-class1-wastewater-coll-r02-m2-08": "6b62f49961ee3af54f67888bc37fd4909d58d63f88c53149d86bde603ebcd3d5",
+    "targeth-ht261118-class1-wastewater-coll-r02-m2-09": "3f58e35d79bdc1f2d7d64bb38c065a2b1b9fad4233709e9320cfc1324ab2a79f",
+    "targeth-ht261118-class1-wastewater-coll-r02-m2-10": "a37a216d9754bb7f8fd1067b24981381069304c76d59b46dfa69cc53e66e7d21",
+    "targeth-ht261118-class1-wastewater-coll-r02-m2-11": "67521edd82b7caf4b057a818d126fa14b944cc27f158f011b95eaf9fde115f66",
+    "targeth-ht261118-class1-wastewater-coll-r02-m2-12": "36b4140b2bb0c472f2906dbd5c1420d2487ade41f69f37d4ee0da72d5853179c",
+    "targeth-ht261118-class1-wastewater-coll-r02-m2-13": "ba5eef3b57b164c0271eb754c331bac759d9031f1b6fa92c288974e58cc0f68b",
+    "targeth-ht261118-class1-wastewater-coll-r02-m2-14": "262dc5b8e17b234b69d99a675d1ceef0606a84bc5b072a0edc6662b38b9b1636",
+    "targeth-ht261118-class1-wastewater-coll-r02-m2-15": "7cacb1cdf7bd26ac8896d931f17670028f12cb8a22a6339e0d1c872a96cea019",
+    "targeth-ht261118-class1-wastewater-coll-r02-m3-01": "e2728df3089e011039fd785e4430ff0c269f9f3cdd3285029a8ffce4dfa05744",
+    "targeth-ht261118-class1-wastewater-coll-r02-m3-02": "c09b0ff2ef7808040298f8d766d2864c7d75d660844ec60c87f4b631fc42e0df",
+    "targeth-ht261118-class1-wastewater-coll-r02-m3-04": "9a6d4a449d52ea3625c82ae831a8653c487e86c11b6698d2d1d4f3f2290835ad",
+    "targeth-ht261118-class1-wastewater-coll-r02-m3-05": "54a1a8056604a31b8d964f0a8a31f64f2da547c3f18afb800ceb1aadd4b45f2a",
+    "targeth-ht261118-class1-wastewater-coll-r02-m3-06": "f7edcdd73020542d657bdbc150e9b91e4a16689cdbd44b425b41a98120df5f49",
+    "targeth-ht261118-class1-wastewater-coll-r02-m3-07": "b7b430d2b4434ae67e4cd414eebdbcc11a28edc1399380d4135783daa32752ec",
+    "targeth-ht261118-class1-wastewater-coll-r02-m3-08": "27adb00a2cbec29c5778740ea50fa9a525bc2d58e7bf67cec84a969a07c3eeb0",
+    "targeth-ht261118-class1-wastewater-coll-r02-m3-09": "335a31b24f511b288af39c4d2b4583e300e574278a92295445f03223fd93b034",
+    "targeth-ht261118-class1-wastewater-coll-r02-m3-10": "6ef09ac451a179efdb2ef5adafd818a4a99a97f362d170b0b2b2ab270cf12782",
+    "targeth-ht261118-class1-wastewater-coll-r02-m3-11": "bf4f8ca19e9ca6034aa6758844a019ddc36cff9cc2a24ea2bf6c50df89d3c987",
+    "targeth-ht261118-class1-wastewater-coll-r02-m3-12": "26625794d911459c884b4a7c0997498e18756346cc67292d9c5213f98dc57ee7",
+    "targeth-ht261118-class1-wastewater-coll-r02-m3-13": "8f91c97b50fc0588980d0747334004a67816597d098ab0bacd8fa8c5344b4985",
+    "targeth-ht261118-class1-wastewater-coll-r02-m3-14": "ee49b914a4af6b696346188e7957693dd9abafceec9865089104e8faa5af2ad9",
+    "targeth-ht261118-class1-wastewater-coll-r02-m3-15": "35ff7e7d6c3f7cada9c24f659954b40fab5dfb50992870cab469d9a53f6b511d",
+    "targeth-ht261118-class1-wastewater-coll-r02-m4-01": "9dc78778a54779bad53b8605277763bbc2cf957483350753aa957c0f4217e114",
+    "targeth-ht261118-class1-wastewater-coll-r02-m4-02": "d1717c0cc64379d6e238ec1008e3053b24950d1391f296a24a8d1fbd66645a4a",
+    "targeth-ht261118-class1-wastewater-coll-r02-m4-03": "15f0dd98041c5a36865139d4bb57e71bf139ef76c7fc711d287bed5601564739",
+    "targeth-ht261118-class1-wastewater-coll-r02-m4-04": "2ee07b2ed020823daa583cf6922e3b603215ca8eb44474767aa181b8ddb9cc9e",
+    "targeth-ht261118-class1-wastewater-coll-r02-m4-05": "d5ca29d86d97a1d997112cee735e8c8c5f2cf771915b6d62da5d030cea4296c2",
+    "targeth-ht261118-class1-wastewater-coll-r02-m4-06": "0b6703ef22bcc1b85b0e410e964df9582806cba99b14500179635ab068063b5a",
+    "targeth-ht261118-class1-wastewater-coll-r02-m4-07": "76548061f226234d548a86b339a669753cb7672690d5b098de215b7c3deb200a",
+    "targeth-ht261118-class1-wastewater-coll-r02-m4-08": "6db623e4518a5995523cc71554a576bac13333767827a4555581832aa25ff7dd",
+    "targeth-ht261118-class1-wastewater-coll-r02-m4-09": "fb4d6dbd1553fd2c38d6db28c839668c0b99a83c93521c56c1a4f62ad01851fd",
+    "targeth-ht261118-class1-wastewater-coll-r02-m4-10": "67fc7f71fe35b07e58fe2d75fdac5a5fbd505185336f0d409edb011383bac565",
+    "targeth-ht261118-class1-wastewater-coll-r02-m4-11": "1c38fe00870ce7dae5c16d07f353aa7e920ad066f4a7e95e987fbca63f688299",
+    "targeth-ht261118-class1-wastewater-coll-r02-m4-12": "22b47a576b42b6f20d1c9febdaf9666bfe026efc667c4f9b91d86d431d49b849",
+    "targeth-ht261118-class1-wastewater-coll-r02-m4-13": "6192cd0683e8ad21fcdcc4d9beab145c493cf44a21f117faec5c1ade3733d39a",
+    "targeth-ht261118-class1-wastewater-coll-r02-m4-14": "5a2df890cab074e50eb06ee7f5dc4d0b197f6abb24520d3ba0db29035e5219cf",
+    "targeth-ht261118-class1-wastewater-coll-r02-m4-15": "7d50b97d7ed0cf2ed462cdb34fd0ea96bd76c816b52a6dbcd197bbd561acea19",
+    "targeth-ht261118-class1-wastewater-coll-r02-m5-01": "b5aad2ee8d1ca410856ea1d1a65c1d27552511e3b6c3fecbf5101ad490467ffd",
+    "targeth-ht261118-class1-wastewater-coll-r02-m5-02": "27df4d0a0b959291d14169f33113c4df8ff8aee930b0a4e826cae041aea5970b",
+    "targeth-ht261118-class1-wastewater-coll-r02-m5-03": "59322eb3bf83b9c0a998acf67437d6ab0f7362dcad8dc762d5401df6a9afbcb6",
+    "targeth-ht261118-class1-wastewater-coll-r02-m5-04": "40018f24fea1be47aaa47d71406626ba650bc0067fdf3f67d6b0f7641740e16d",
+    "targeth-ht261118-class1-wastewater-coll-r02-m5-05": "b296a8f4b93397dbd3f638daa15bd495d841b6c243435c8e6f230efc701b8af5",
+    "targeth-ht261118-class1-wastewater-coll-r02-m5-06": "1ff02721734841597e1eded306da438608654272f9497d7104d7892ce8893293",
+    "targeth-ht261118-class1-wastewater-coll-r02-m5-07": "f50bb9781cb7eb69bc43e7f826bae478260b9760bb1eafe9bd51eb935ad41207",
+    "targeth-ht261118-class1-wastewater-coll-r02-m5-08": "14d28143084b79dd1e7c73b34d8f1de94106fce1a957972b3121a388cd57060a",
+    "targeth-ht261118-class1-wastewater-coll-r02-m5-09": "a2132fe676e4c5ac5cc5aec62ce062295c9053e1a20ffeaa8264f66ae448057a",
+    "targeth-ht261118-class1-wastewater-coll-r02-m5-10": "c49a1874b87c6c4c0eb579b2e39fa411e13afe1ab5b4fd4e7167d23f1c698df5",
+    "targeth-ht261118-class1-wastewater-coll-r02-m5-11": "22936be0916ca8beb3967f17b23e9cc94c6260b09dabe26fb912c7fa7c1ae130",
+    "targeth-ht261118-class1-wastewater-coll-r02-m5-12": "716492cec6d72442c4ed44e7aca3f820be759011d235d0dff8e5b26f4085d817",
+    "targeth-ht261118-class1-wastewater-coll-r02-m5-13": "64652ff8ad965d37e024f845fc037ef16874dc8f4b05ee5071183cc7405109b3",
+    "targeth-ht261118-class1-wastewater-coll-r02-m5-14": "b20960e91d0cacf2d6e84951b4eecde3079baf0607a8d5e88b2edf08f7b9f2d4",
+    "targeth-ht261118-class1-wastewater-coll-r02-m5-15": "62a23945eb9814c939d45f4326eadfb4c24ad36b2cc1401969bb209b1a740079"
+   }
+  },
+  "registeredAt": "2026-11-19T02:57:34.035Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 8,
+     "f": 6
+    },
+    "dirs": {
+     "increase": 10,
+     "decrease": 4,
+     "unchanged": 0
+    },
+    "longest": 10,
+    "options": 44
+   },
+   "batchSha256": "404b4ab2bf3dabb810dcaded7ad1d3f6ed192de6e26c764853f2c2280c27aaaf"
+  }
+ }
+}

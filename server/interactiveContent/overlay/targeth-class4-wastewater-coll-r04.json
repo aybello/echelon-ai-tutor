@@ -1,0 +1,594 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-class4-wastewater-coll-r04",
+ "scope": "Owner-authorized AI-reviewed game activities: 10 items.",
+ "additions": [
+  {
+   "courseKey": "class4-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-wastewater-coll-r04-m1-01",
+    "prompt": "Distinguish each hydraulic energy form or unit from its physical meaning.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Kinetic energy",
+      "right": "Energy associated with fluid velocity"
+     },
+     {
+      "id": "p2",
+      "left": "Elevation potential energy",
+      "right": "Energy due to fluid height above a datum"
+     },
+     {
+      "id": "p3",
+      "left": "Pressure potential energy",
+      "right": "Energy stored as fluid pressure"
+     },
+     {
+      "id": "p4",
+      "left": "Foot-pounds",
+      "right": "Standard unit for measuring mechanical energy"
+     },
+     {
+      "id": "p5",
+      "left": "Energy head",
+      "right": "Foot-pounds of energy per pound of water"
+     },
+     {
+      "id": "p6",
+      "left": "Continuity equation",
+      "right": "Product of area and velocity stays constant"
+     }
+    ],
+    "explanation": "Hydraulic systems involve kinetic and potential energy forms expressed in foot-pounds or feet of water head, while continuity conserves flow rate."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:45:41.340366+00:00",
+    "notes": "Reviewed all 10 speed-match items in targeth-class4-wastewater-coll-r04 against provided source pages, evidence, and closest collision candidates; accepted all 10 items.",
+    "registeredAt": "2026-11-19T03:46:14.942Z",
+    "payloadSha256": "9085a246ca984312efa7ae0c24b48a9b46d1c7f775268a8e1b4d385dcc176fae",
+    "builderResultsSha256": "a5cdb89b77e8b7e44721d2a6bc84e7163ccdb880a37b1d8d2f7e34ea40cda4b7"
+   }
+  },
+  {
+   "courseKey": "class4-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-wastewater-coll-r04-m1-02",
+    "prompt": "Distinguish each open-channel flow classification from its hydraulic behavior.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Laminar flow",
+      "right": "Fluid particles move in parallel layers without friction loss"
+     },
+     {
+      "id": "p2",
+      "left": "Turbulent flow",
+      "right": "Particles move haphazardly and cause pressure losses"
+     },
+     {
+      "id": "p3",
+      "left": "Steady flow",
+      "right": "Discharge rate at a cross-section remains constant"
+     },
+     {
+      "id": "p4",
+      "left": "Uniform flow",
+      "right": "Depth and area stay constant between sections"
+     },
+     {
+      "id": "p5",
+      "left": "Nonuniform flow",
+      "right": "Velocity and area change, such as in a Venturi"
+     },
+     {
+      "id": "p6",
+      "left": "Varied flow",
+      "right": "Flow depth changes along the channel length"
+     }
+    ],
+    "explanation": "Flow classifications describe whether particle paths are parallel or turbulent, and whether discharge, area, or depth change along a channel."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:45:41.340366+00:00",
+    "notes": "Reviewed all 10 speed-match items in targeth-class4-wastewater-coll-r04 against provided source pages, evidence, and closest collision candidates; accepted all 10 items.",
+    "registeredAt": "2026-11-19T03:46:14.942Z",
+    "payloadSha256": "22f01f53832c8028e51024f881d58bccf9db9ed5c2dba315ca7765b4c1ef7d0a",
+    "builderResultsSha256": "a5cdb89b77e8b7e44721d2a6bc84e7163ccdb880a37b1d8d2f7e34ea40cda4b7"
+   }
+  },
+  {
+   "courseKey": "class4-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-wastewater-coll-r04-m1-03",
+    "prompt": "Distinguish each hydraulic grade or energy concept from its physical representation.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Hydraulic grade line",
+      "right": "Line connecting piezometer water levels along a pipe"
+     },
+     {
+      "id": "p2",
+      "left": "Open-channel HGL",
+      "right": "Coincides directly with the free water surface profile"
+     },
+     {
+      "id": "p3",
+      "left": "Specific energy",
+      "right": "Sum of pressure head and velocity head"
+     },
+     {
+      "id": "p4",
+      "left": "Slope or gradient",
+      "right": "Head loss per foot of open channel"
+     },
+     {
+      "id": "p5",
+      "left": "Friction head loss",
+      "right": "Pressure used up overcoming rough interior pipe walls"
+     },
+     {
+      "id": "p6",
+      "left": "Velocity head",
+      "right": "Kinetic energy term expressed as v squared over 2g"
+     }
+    ],
+    "explanation": "Energy and grade lines track pressure head, velocity head, and friction losses along pipes and open channels."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:45:41.340366+00:00",
+    "notes": "Reviewed all 10 speed-match items in targeth-class4-wastewater-coll-r04 against provided source pages, evidence, and closest collision candidates; accepted all 10 items.",
+    "registeredAt": "2026-11-19T03:46:14.942Z",
+    "payloadSha256": "78523ab07ccf484ed4bb5ac1c6a55861c35af50adb325e559594c29761c595eb",
+    "builderResultsSha256": "a5cdb89b77e8b7e44721d2a6bc84e7163ccdb880a37b1d8d2f7e34ea40cda4b7"
+   }
+  },
+  {
+   "courseKey": "class4-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-wastewater-coll-r04-m1-04",
+    "prompt": "Distinguish each groundwater or wet-well hydraulic term from its operational meaning.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Drawdown",
+      "right": "Vertical drop from static level to pumping level"
+     },
+     {
+      "id": "p2",
+      "left": "Cone of depression",
+      "right": "Inverted funnel shape of the water surface around a well"
+     },
+     {
+      "id": "p3",
+      "left": "Zone of influence",
+      "right": "Distance from pump shaft to outermost drawdown edge"
+     },
+     {
+      "id": "p4",
+      "left": "Specific capacity drop",
+      "right": "Indicator of pump malfunction or screen plugging"
+     },
+     {
+      "id": "p5",
+      "left": "Suction line submergence",
+      "right": "Depth needed to prevent air entrainment at intake"
+     },
+     {
+      "id": "p6",
+      "left": "Variable speed pumping",
+      "right": "Controls wet well level when inflow fluctuates"
+     }
+    ],
+    "explanation": "Well and wet-well hydraulics share drawdown behavior, where adequate submergence prevents air entrainment and specific capacity tracks performance."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:45:41.340366+00:00",
+    "notes": "Reviewed all 10 speed-match items in targeth-class4-wastewater-coll-r04 against provided source pages, evidence, and closest collision candidates; accepted all 10 items.",
+    "registeredAt": "2026-11-19T03:46:14.942Z",
+    "payloadSha256": "43526197193934e859ca5603bae3fbec13733b65b408f85c2f9f23c2a93d4fa8",
+    "builderResultsSha256": "a5cdb89b77e8b7e44721d2a6bc84e7163ccdb880a37b1d8d2f7e34ea40cda4b7"
+   }
+  },
+  {
+   "courseKey": "class4-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class4-wastewater-coll-r04-m1-05",
+    "prompt": "Distinguish each compound pipe network principle from its hydraulic rule.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Pipes in series",
+      "right": "Cumulative head losses sum between bonding points"
+     },
+     {
+      "id": "p2",
+      "left": "Equivalent pipe theory",
+      "right": "Single constant-diameter pipe matching actual system head loss"
+     },
+     {
+      "id": "p3",
+      "left": "Equivalent pipe length",
+      "right": "Length yielding the correct flow for given head loss"
+     },
+     {
+      "id": "p4",
+      "left": "Hazen-Williams equation",
+      "right": "Friction formula using a roughness coefficient C factor"
+     },
+     {
+      "id": "p5",
+      "left": "Pipes in parallel",
+      "right": "Flow splits across multiple branches between junctions"
+     },
+     {
+      "id": "p6",
+      "left": "Energy conservation",
+      "right": "Basis for evaluating friction losses at flow junctions"
+     }
+    ],
+    "explanation": "Compound pipe networks use energy conservation, Hazen-Williams friction coefficients, and equivalent pipe lengths to simplify series and parallel head-loss analysis."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:45:41.340366+00:00",
+    "notes": "Reviewed all 10 speed-match items in targeth-class4-wastewater-coll-r04 against provided source pages, evidence, and closest collision candidates; accepted all 10 items.",
+    "registeredAt": "2026-11-19T03:46:14.942Z",
+    "payloadSha256": "918531eea0b27ff14aa1d7fdd38f1602277759b03640f2df9d68998f074ec98d",
+    "builderResultsSha256": "a5cdb89b77e8b7e44721d2a6bc84e7163ccdb880a37b1d8d2f7e34ea40cda4b7"
+   }
+  },
+  {
+   "courseKey": "class4-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-wastewater-coll-r04-m1-06",
+    "prompt": "Distinguish each open-channel structure or transition from its flow regime.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Hydraulic jump",
+      "right": "Abrupt depth increase classified as rapidly varied flow"
+     },
+     {
+      "id": "p2",
+      "left": "Hydraulic drop",
+      "right": "Sudden depth decrease classified as rapidly varied flow"
+     },
+     {
+      "id": "p3",
+      "left": "Sluice gate",
+      "right": "Structure creating rapidly varied flow underneath"
+     },
+     {
+      "id": "p4",
+      "left": "Flow over a weir",
+      "right": "Discharge transition with rapidly varied depth"
+     },
+     {
+      "id": "p5",
+      "left": "Gradually varied flow",
+      "right": "Depth changes slowly over a long channel reach"
+     },
+     {
+      "id": "p6",
+      "left": "Rapidly varied flow",
+      "right": "Depth changes abruptly over a short distance"
+     }
+    ],
+    "explanation": "Open-channel structures such as sluice gates and weirs create rapidly varied flow transitions, whereas gradual depth changes occur over longer reaches."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:45:41.340366+00:00",
+    "notes": "Reviewed all 10 speed-match items in targeth-class4-wastewater-coll-r04 against provided source pages, evidence, and closest collision candidates; accepted all 10 items.",
+    "registeredAt": "2026-11-19T03:46:14.942Z",
+    "payloadSha256": "7c2b2084d8403ded42b4becca9f883962a2eda964a6f25162fc7a33b77807f1e",
+    "builderResultsSha256": "a5cdb89b77e8b7e44721d2a6bc84e7163ccdb880a37b1d8d2f7e34ea40cda4b7"
+   }
+  },
+  {
+   "courseKey": "class4-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class4-wastewater-coll-r04-m1-07",
+    "prompt": "Distinguish each hydrostatic or discharge unit from its measurement role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Hydrostatic vessel pressure",
+      "right": "Determined by water weight and depth, not volume"
+     },
+     {
+      "id": "p2",
+      "left": "Gallons per day",
+      "right": "Daily volumetric flow unit for smaller systems"
+     },
+     {
+      "id": "p3",
+      "left": "Gallons per minute",
+      "right": "Minute-based volumetric flow rate unit"
+     },
+     {
+      "id": "p4",
+      "left": "Cubic feet per second",
+      "right": "Standard engineering discharge unit for velocity calculations"
+     },
+     {
+      "id": "p5",
+      "left": "Million gallons per day",
+      "right": "Large-scale flow unit for treatment plants"
+     },
+     {
+      "id": "p6",
+      "left": "Streamline flow",
+      "right": "Idealized parallel-layer motion with zero turbulence"
+     }
+    ],
+    "explanation": "Hydrostatic pressure depends on depth rather than total volume, while discharge rates are expressed in gpd, gpm, cfs, or MGD."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:45:41.340366+00:00",
+    "notes": "Reviewed all 10 speed-match items in targeth-class4-wastewater-coll-r04 against provided source pages, evidence, and closest collision candidates; accepted all 10 items.",
+    "registeredAt": "2026-11-19T03:46:14.942Z",
+    "payloadSha256": "77ab7394c421f0168dd2ed9a249a8dc57ce188e2d46ff7433f8e602dbe05e977",
+    "builderResultsSha256": "a5cdb89b77e8b7e44721d2a6bc84e7163ccdb880a37b1d8d2f7e34ea40cda4b7"
+   }
+  },
+  {
+   "courseKey": "class4-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class4-wastewater-coll-r04-m1-08",
+    "prompt": "Distinguish each Bernoulli horizontal-pipe assumption from its mathematical effect.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Horizontal pipeline",
+      "right": "Elevation at point A equals elevation at point B"
+     },
+     {
+      "id": "p2",
+      "left": "Equal elevation heads",
+      "right": "Terms zA and zB cancel from both sides"
+     },
+     {
+      "id": "p3",
+      "left": "Uniform pipe diameter",
+      "right": "Cross-sectional area remains constant along the run"
+     },
+     {
+      "id": "p4",
+      "left": "Constant flow rate",
+      "right": "Velocity remains unchanged in a uniform horizontal pipe"
+     },
+     {
+      "id": "p5",
+      "left": "Frictionless idealization",
+      "right": "Total energy remains equal between two points"
+     },
+     {
+      "id": "p6",
+      "left": "Piezometer height",
+      "right": "Measures remaining pressure head after friction losses"
+     }
+    ],
+    "explanation": "In a horizontal pipeline, equal elevation heads cancel in Bernoulli's equation, leaving pressure and velocity heads to account for energy."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:45:41.340366+00:00",
+    "notes": "Reviewed all 10 speed-match items in targeth-class4-wastewater-coll-r04 against provided source pages, evidence, and closest collision candidates; accepted all 10 items.",
+    "registeredAt": "2026-11-19T03:46:14.942Z",
+    "payloadSha256": "b3e6308658b0ed5fbca94599505a426828566f5d6c87c11055f8c1c649268f44",
+    "builderResultsSha256": "a5cdb89b77e8b7e44721d2a6bc84e7163ccdb880a37b1d8d2f7e34ea40cda4b7"
+   }
+  },
+  {
+   "courseKey": "class4-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-wastewater-coll-r04-m1-09",
+    "prompt": "Distinguish each wet-well pumping strategy from its operational condition.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "On/off mode",
+      "right": "Intermittent pumping used when inflow varies"
+     },
+     {
+      "id": "p2",
+      "left": "Combined pump operation",
+      "right": "Multiple units running together for high flows"
+     },
+     {
+      "id": "p3",
+      "left": "Single pump operation",
+      "right": "One unit handling normal dry-weather inflow"
+     },
+     {
+      "id": "p4",
+      "left": "Intake drawdown",
+      "right": "Slight surface depression right at the suction pipe"
+     },
+     {
+      "id": "p5",
+      "left": "Free water at entrance",
+      "right": "Ensures continuous liquid supply to the pump"
+     },
+     {
+      "id": "p6",
+      "left": "Air entrainment risk",
+      "right": "Occurs when suction submergence is too shallow"
+     }
+    ],
+    "explanation": "Wet-well stations use single, combined, or on/off pumping to handle varying inflows while maintaining enough submergence to prevent air entrainment."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:45:41.340366+00:00",
+    "notes": "Reviewed all 10 speed-match items in targeth-class4-wastewater-coll-r04 against provided source pages, evidence, and closest collision candidates; accepted all 10 items.",
+    "registeredAt": "2026-11-19T03:46:14.942Z",
+    "payloadSha256": "e8af9fadd9ffb34722fd9a41dd3d58bb0f207b037c34b3340484ba14f7b1d044",
+    "builderResultsSha256": "a5cdb89b77e8b7e44721d2a6bc84e7163ccdb880a37b1d8d2f7e34ea40cda4b7"
+   }
+  },
+  {
+   "courseKey": "class4-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-wastewater-coll-r04-m1-10",
+    "prompt": "Distinguish each continuity and friction-loss factor from its hydraulic effect.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Area reduction",
+      "right": "Increases fluid velocity under steady flow"
+     },
+     {
+      "id": "p2",
+      "left": "Rough pipe interior",
+      "right": "Consumes pressure energy as friction head loss"
+     },
+     {
+      "id": "p3",
+      "left": "Piezometer drop",
+      "right": "Shows pressure head lost along the pipeline"
+     },
+     {
+      "id": "p4",
+      "left": "Major head loss",
+      "right": "Pressure decrease along the rough pipe wall"
+     },
+     {
+      "id": "p5",
+      "left": "Constant discharge",
+      "right": "Maintained across changing pipe cross-sections"
+     },
+     {
+      "id": "p6",
+      "left": "Velocity increase",
+      "right": "Raises kinetic energy head downstream"
+     }
+    ],
+    "explanation": "Continuity dictates that reducing pipe area increases velocity and kinetic energy head, while rough walls cause major friction head loss."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:45:41.340366+00:00",
+    "notes": "Reviewed all 10 speed-match items in targeth-class4-wastewater-coll-r04 against provided source pages, evidence, and closest collision candidates; accepted all 10 items.",
+    "registeredAt": "2026-11-19T03:46:14.942Z",
+    "payloadSha256": "ee38a84cdc5ef2ef2999d47cf8d804a61a9160189394751a5cce930fb769194d",
+    "builderResultsSha256": "a5cdb89b77e8b7e44721d2a6bc84e7163ccdb880a37b1d8d2f7e34ea40cda4b7"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T03:45:41.340366+00:00",
+   "attestation": "Reviewed all 10 speed-match items in targeth-class4-wastewater-coll-r04 against provided source pages, evidence, and closest collision candidates; accepted all 10 items.",
+   "payloadSha256": {
+    "targeth-ht261118-class4-wastewater-coll-r04-m1-01": "9085a246ca984312efa7ae0c24b48a9b46d1c7f775268a8e1b4d385dcc176fae",
+    "targeth-ht261118-class4-wastewater-coll-r04-m1-02": "22f01f53832c8028e51024f881d58bccf9db9ed5c2dba315ca7765b4c1ef7d0a",
+    "targeth-ht261118-class4-wastewater-coll-r04-m1-03": "78523ab07ccf484ed4bb5ac1c6a55861c35af50adb325e559594c29761c595eb",
+    "targeth-ht261118-class4-wastewater-coll-r04-m1-04": "43526197193934e859ca5603bae3fbec13733b65b408f85c2f9f23c2a93d4fa8",
+    "targeth-ht261118-class4-wastewater-coll-r04-m1-05": "918531eea0b27ff14aa1d7fdd38f1602277759b03640f2df9d68998f074ec98d",
+    "targeth-ht261118-class4-wastewater-coll-r04-m1-06": "7c2b2084d8403ded42b4becca9f883962a2eda964a6f25162fc7a33b77807f1e",
+    "targeth-ht261118-class4-wastewater-coll-r04-m1-07": "77ab7394c421f0168dd2ed9a249a8dc57ce188e2d46ff7433f8e602dbe05e977",
+    "targeth-ht261118-class4-wastewater-coll-r04-m1-08": "b3e6308658b0ed5fbca94599505a426828566f5d6c87c11055f8c1c649268f44",
+    "targeth-ht261118-class4-wastewater-coll-r04-m1-09": "e8af9fadd9ffb34722fd9a41dd3d58bb0f207b037c34b3340484ba14f7b1d044",
+    "targeth-ht261118-class4-wastewater-coll-r04-m1-10": "ee38a84cdc5ef2ef2999d47cf8d804a61a9160189394751a5cce930fb769194d"
+   }
+  },
+  "registeredAt": "2026-11-19T03:46:14.942Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 0,
+     "f": 0
+    },
+    "dirs": {
+     "increase": 0,
+     "decrease": 0,
+     "unchanged": 0
+    },
+    "longest": 0,
+    "options": 0
+   },
+   "batchSha256": "b0ff9454e8b2beb0a7f01ebce68b666338362f104c63905af14f432db8b66e3d"
+  }
+ }
+}

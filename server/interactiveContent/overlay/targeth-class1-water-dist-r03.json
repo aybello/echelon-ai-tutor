@@ -1,0 +1,3060 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-class1-water-dist-r03",
+ "scope": "Owner-authorized AI-reviewed game activities: 84 items.",
+ "additions": [
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m0-01",
+    "prompt": "Thermal insulation on cold-water piping helps slow heat transfer from warmer surrounding air into the water.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Heat normally moves from a warmer surface to a cooler one, so insulation helps keep cold fluid cold."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "7601105a06fcd16655f415328fe472d7498de8453bd5846dabcdfcab0d80486b",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m0-02",
+    "prompt": "Flanged pipe joints are commonly buried underground because they flex easily with soil movement.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Flanged joints lack flexibility for ground movement and are mainly used in exposed plant or station locations."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "d3bda588e98fe8bf2cd7298289456aae4d884d2218b6c5839c63be866c3d822d",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m0-03",
+    "prompt": "During brazing or soldering, the parent metal pipes melt and blend together with the filler.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "In brazing and soldering, capillary action draws molten filler into the joint while the parent metal stays solid."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "1750e4d5eafe99dabddaea9993f26e3613dc46b35b37bdc36fe9b13b4cf6d196",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m0-04",
+    "prompt": "Vitrified clay pipe has a glass-like surface that resists corrosion in nonpressurized gravity drains.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Vitrified clay pipe is glass-like and extremely corrosion-proof for gravity wastewater and drain applications."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "4d2e0c507ea3c238000672a55b39578ee34db3944a215c212bbc298d5da2669f",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m0-05",
+    "prompt": "Prestressed concrete pipe is built with internal compression by winding tensioned steel wire around its core.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Tightly wound steel wire places the concrete core in permanent compression to handle heavy loads and pressure."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "2cbe6b8aeb999dc58274351b1eb0ada2adee0478ea9721039e363e12947c1fa7",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m0-06",
+    "prompt": "PVC pipe becomes stronger as the temperature of the water it carries increases.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "The strength of plastic piping decreases as the temperature of the conveyed fluid increases."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "e57c1dc79fd60b9253d33133184c5081b90ed3c61b9d19e2a6e22b8c7e3c8090",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m0-07",
+    "prompt": "A butterfly valve creates more flow turbulence when fully open than a gate valve because its disk remains in the flow path.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Even when parallel to flow, the butterfly disk stays in the fluid path and causes higher resistance."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "289041cb75bddfde1d24c96a4db6d6f2d06406018d1aeaff26c2bc0f62b48e8d",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m0-08",
+    "prompt": "Check valves are also known as nonreturn or reflux valves because they prevent reverse flow.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Forward flow pushes the check valve open, while reverse flow pushes it closed."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "abe554bf57fd02064379e58e755aeed7ad953a4413ec2be8ea433acd07de1320",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m0-10",
+    "prompt": "Liquid water and liquid mercury are miscible and mix uniformly with one another.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Water and mercury are immiscible liquids, whereas water and alcohol are completely miscible."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "cfa1595e0ff7b62c8946d5ffd36a51ff2753cf295b80c4882591d9e0937fae48",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m0-11",
+    "prompt": "When table salt dissolves in water, sodium forms positively charged cations and chloride forms negatively charged anions.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Dissolved salts separate into positively charged cations and negatively charged anions."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "6a04d4966a59fdd69aadbd813992313656090161f397634526057e3155da2c67",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m0-12",
+    "prompt": "In dilute water solutions, a concentration of one part per million is approximately equal to one milligram per liter.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Because 1 kg of water solution has a volume near 1 liter, 1 ppm is approximately 1 mg/L."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "f5faba8f95139a97146826d852371149cc89b9979f0214b67b5f8b627f84efd9",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m0-13",
+    "prompt": "Colloidal solids in water are larger than suspended solids and are easily removed by a standard filter.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Colloidal solids are under 1 micron in diameter and pass through a standard filter."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "d51b83eee6c79a3cc9a3cc4d226a7442acf255971d1c14a5a6589dc7b5d0e3c6",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m0-14",
+    "prompt": "Liquids maintain a fixed shape regardless of the container holding them.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Liquids maintain a constant volume at a given temperature and pressure, but change shape to fit their container."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "ef6dd808c415bc999289c896d9f7c1794c1375a79e388fef53872aef746bec16",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m0-15",
+    "prompt": "Gases have no fixed shape and can expand or compress to fill containers of different sizes.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Gas particles move freely without sticking together, so gases fill any container shape or volume."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "b6f4873a3ede51314509b04dc15bf68da87fd076e27b40d0003c4ef0db15d014",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m1-01",
+    "prompt": "Match each pipe joint or joining method to its physical characteristic.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Flanged joint",
+      "right": "Rigid bolted connection used mainly in exposed stations"
+     },
+     {
+      "id": "p2",
+      "left": "Welded joint",
+      "right": "Melts and blends metal edges into one continuous piece"
+     },
+     {
+      "id": "p3",
+      "left": "Brazed or soldered joint",
+      "right": "Draws molten filler by capillary action without melting parent metal"
+     },
+     {
+      "id": "p4",
+      "left": "Flux",
+      "right": "Coating applied to cleaned metal to prevent oxide formation"
+     },
+     {
+      "id": "p5",
+      "left": "Raised-face flange",
+      "right": "Flange style that should not be bolted to a plain-face flange"
+     },
+     {
+      "id": "p6",
+      "left": "Rubber gasket joint",
+      "right": "Flexible seal used to join nonreinforced concrete pipe sections"
+     }
+    ],
+    "explanation": "Each joining method suits specific pressures, exposure conditions, and pipe materials."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "3d6f2be5ee1e87a199a9b43b51b78f5a5bd0293119a4bebe371fb22c7eacca4b",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m1-02",
+    "prompt": "Match each nonmetallic pipe material to its structural or chemical property.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Vitrified clay pipe",
+      "right": "Glass-like gravity pipe with high corrosion resistance"
+     },
+     {
+      "id": "p2",
+      "left": "Unglazed clay pipe",
+      "right": "Nonglassy clay pipe needing protection from ground moisture"
+     },
+     {
+      "id": "p3",
+      "left": "Prestressed concrete pipe",
+      "right": "Concrete core wound with tensioned steel wire for high pressure"
+     },
+     {
+      "id": "p4",
+      "left": "PVC pipe",
+      "right": "Extruded thermoplastic that resists most acids and corrosives"
+     },
+     {
+      "id": "p5",
+      "left": "Asbestos-cement pipe",
+      "right": "Nonfriable when intact, but releases fibers if cut dry"
+     },
+     {
+      "id": "p6",
+      "left": "Nonreinforced concrete pipe",
+      "right": "Concrete pipe limited to low-pressure gravity applications"
+     }
+    ],
+    "explanation": "Nonmetallic pipes vary widely in pressure rating, corrosion resistance, and handling needs."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "618fc5600358e388c793d31e57e8a11e636972a6cdbb9dacd7ee1fa14b330757",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m1-03",
+    "prompt": "Match each valve type or component to its operating principle.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Butterfly valve",
+      "right": "Rotating disk stays in the flow path when fully open"
+     },
+     {
+      "id": "p2",
+      "left": "Check valve",
+      "right": "Opens with forward flow and closes against reverse flow"
+     },
+     {
+      "id": "p3",
+      "left": "Quick-opening valve",
+      "right": "Uses a lever for rapid on/off action at deluge showers"
+     },
+     {
+      "id": "p4",
+      "left": "Diaphragm valve",
+      "right": "Glandless valve using a flexible elastomeric closing member"
+     },
+     {
+      "id": "p5",
+      "left": "Ball vacuum breaker",
+      "right": "Spring-held ball unseats under vacuum to admit air"
+     },
+     {
+      "id": "p6",
+      "left": "Retainer tube",
+      "right": "Housing that guides the ball inside a vacuum breaker"
+     }
+    ],
+    "explanation": "Valves control flow direction, throttling, rapid shutoff, or vacuum relief using distinct internal elements."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "d6ca54c5286efb51664db46000e051b97907335ad1571dc4b52c66a2be6c798e",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m1-04",
+    "prompt": "Match each solution or solid-phase term to its chemical definition.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Solvent",
+      "right": "Component of a solution that does the dissolving"
+     },
+     {
+      "id": "p2",
+      "left": "Solute",
+      "right": "Substance that is dissolved by the solvent"
+     },
+     {
+      "id": "p3",
+      "left": "Saturated solution",
+      "right": "State where no more solute can dissolve"
+     },
+     {
+      "id": "p4",
+      "left": "Miscible",
+      "right": "Capable of mixing uniformly in all proportions"
+     },
+     {
+      "id": "p5",
+      "left": "Precipitate",
+      "right": "Solid separated from solution by a chemical or pH change"
+     },
+     {
+      "id": "p6",
+      "left": "Colloidal solids",
+      "right": "Uniformly dispersed particles under 1 micron that pass filters"
+     }
+    ],
+    "explanation": "Distinguishing dissolved, colloidal, and precipitated phases helps operators interpret water quality."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "154d143f6e2b291b94536e720449489093abcd73f3a29c1b5252c031dfa8a5f8",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m1-05",
+    "prompt": "Match each water chemistry or matter term to its fundamental description.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Cation",
+      "right": "Positively charged ion such as sodium"
+     },
+     {
+      "id": "p2",
+      "left": "Anion",
+      "right": "Negatively charged ion such as chloride"
+     },
+     {
+      "id": "p3",
+      "left": "Organic",
+      "right": "Carbon-based substance of animal or vegetable origin"
+     },
+     {
+      "id": "p4",
+      "left": "Inorganic",
+      "right": "Chemical substance of mineral origin"
+     },
+     {
+      "id": "p5",
+      "left": "Solid",
+      "right": "State of matter with definite shape and volume"
+     },
+     {
+      "id": "p6",
+      "left": "Gas",
+      "right": "State of matter with no fixed shape or volume"
+     }
+    ],
+    "explanation": "Core chemistry terms classify ions, compound origins, and physical states of matter."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "d7fa8469d3a8ced4665bb0265214823bfec7499232d1d962947d1605744c9f87",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m1-06",
+    "prompt": "Match each physical or chemical water property to what it measures or describes.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Turbidity",
+      "right": "Scattering and absorption of light by suspended matter"
+     },
+     {
+      "id": "p2",
+      "left": "Total solids",
+      "right": "Combined suspended, colloidal, and dissolved solids"
+     },
+     {
+      "id": "p3",
+      "left": "Mass concentration (ppm)",
+      "right": "Mass of substance divided by mass of solution"
+     },
+     {
+      "id": "p4",
+      "left": "Self-ionization of water",
+      "right": "Water molecules forming hydronium and hydroxide ions"
+     },
+     {
+      "id": "p5",
+      "left": "Hydronium ion",
+      "right": "Positively charged ion formed when water gains a hydrogen ion"
+     },
+     {
+      "id": "p6",
+      "left": "Hydroxide ion",
+      "right": "Negatively charged ion formed when water loses a hydrogen ion"
+     }
+    ],
+    "explanation": "Understanding solids, concentration units, and water ionization underpins routine water testing."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "09c48a406b2629992573604651ec295277048787851df9ad340fd3cf1aac37c5",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m1-07",
+    "prompt": "Match each pipe insulation or protection function to its physical role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Hot-pipe insulation",
+      "right": "Prevents hot fluid from cooling during transport"
+     },
+     {
+      "id": "p2",
+      "left": "Cold-pipe insulation",
+      "right": "Keeps cold fluid from warming in warmer surroundings"
+     },
+     {
+      "id": "p3",
+      "left": "Underground pipe insulation",
+      "right": "Protects buried metal pipe from soil water and chemicals"
+     },
+     {
+      "id": "p4",
+      "left": "Heat transfer direction",
+      "right": "Moves naturally from a warmer surface to a cooler one"
+     },
+     {
+      "id": "p5",
+      "left": "Pipe roll stand",
+      "right": "Adjustable support carrying horizontal piping"
+     },
+     {
+      "id": "p6",
+      "left": "Anchor chair",
+      "right": "Structural support that fixes pipe position"
+     }
+    ],
+    "explanation": "Insulation controls heat flow and soil corrosion, while pipe supports carry and restrain piping."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "d5e05a19b5076b3663bf216b3fe8cf76b7a28cdbc9515338544b3b76622e11d8",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m1-08",
+    "prompt": "Match each pipe material limitation or failure mode to its cause.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Flange joint burial",
+      "right": "Avoided because rigid flanges cannot handle ground movement"
+     },
+     {
+      "id": "p2",
+      "left": "PVC temperature rise",
+      "right": "Reduces the structural strength of plastic pipe"
+     },
+     {
+      "id": "p3",
+      "left": "Dry cutting A-C pipe",
+      "right": "Separates bound asbestos and releases airborne fibers"
+     },
+     {
+      "id": "p4",
+      "left": "Breaking sewer pipe for taps",
+      "right": "Creates poorly sealed joints that allow infiltration"
+     },
+     {
+      "id": "p5",
+      "left": "Exposed unglazed clay",
+      "right": "Vulnerable to soil contaminants and ground moisture"
+     },
+     {
+      "id": "p6",
+      "left": "Butterfly valve turbulence",
+      "right": "Caused by the open disk remaining in the flow path"
+     }
+    ],
+    "explanation": "Recognizing material limits helps prevent structural failures, infiltration, and safety hazards."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "021792427479235807f53b0d6690e90a97ecbc7e9d6628a9eeb693d1ca1d6622",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m1-09",
+    "prompt": "Match each chemical testing or solubility example to its category.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Bulk physical test",
+      "right": "Measures volume, temperature, or mass with a calibrated instrument"
+     },
+     {
+      "id": "p2",
+      "left": "Chemical property analysis",
+      "right": "Determines how much of a specific substance is present"
+     },
+     {
+      "id": "p3",
+      "left": "All gases",
+      "right": "Completely miscible with one another"
+     },
+     {
+      "id": "p4",
+      "left": "Water and alcohol",
+      "right": "Completely miscible liquids"
+     },
+     {
+      "id": "p5",
+      "left": "Water and mercury",
+      "right": "Immiscible liquids that do not mix"
+     },
+     {
+      "id": "p6",
+      "left": "Liquid state",
+      "right": "Constant volume that takes the shape of its container"
+     }
+    ],
+    "explanation": "Basic chemistry distinguishes physical measurements from chemical analyses and miscible from immiscible mixtures."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "7ca168ce61a6f72568a65e8b2275ae1e31b46372c754a59ab87076a235ab993f",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m1-10",
+    "prompt": "Match each valve naming rule or exception to its description.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Most valves",
+      "right": "Named after the internal element controlling the passageway"
+     },
+     {
+      "id": "p2",
+      "left": "Check valve",
+      "right": "Named for its function of stopping reverse flow"
+     },
+     {
+      "id": "p3",
+      "left": "Quick-opening valve",
+      "right": "Named for its rapid lever-operated on/off action"
+     },
+     {
+      "id": "p4",
+      "left": "Relief valve",
+      "right": "Named for releasing excess pressure"
+     },
+     {
+      "id": "p5",
+      "left": "Reducing valve",
+      "right": "Named for lowering downstream pressure"
+     },
+     {
+      "id": "p6",
+      "left": "Regulating valve",
+      "right": "Named for maintaining a controlled flow or pressure"
+     }
+    ],
+    "explanation": "Most valves are named for their internal closure element, with five common function-based exceptions."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "5347013f47020bdc9fc6adde1f2c1e77525b8905d56f5ce277133f96483a9e98",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m2-01",
+    "prompt": "Three of these are nonmetallic pipe materials. Which one is a metal?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Vitrified clay"
+     },
+     {
+      "id": "b",
+      "label": "Prestressed concrete"
+     },
+     {
+      "id": "c",
+      "label": "PVC"
+     },
+     {
+      "id": "d",
+      "label": "Copper"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Copper is a metallic piping material, whereas vitrified clay, concrete, and PVC are nonmetallic."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "78f7c3ca1d6479928bb4e77e148b9a5e4f31ec7df71c32a07ef1046614a146ea",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m2-02",
+    "prompt": "Three of these are methods used to join plastic pipe. Which one melts parent metal edges together?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Solvent welding"
+     },
+     {
+      "id": "b",
+      "label": "Fusion welding"
+     },
+     {
+      "id": "c",
+      "label": "Threading"
+     },
+     {
+      "id": "d",
+      "label": "Arc welding"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Arc welding melts metal pipe edges, while solvent welding, fusion welding, and threading join plastic pipe."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "9a9c10e39da52a47a29dc818db7315c6c382aa5e85dd9f7bf6d3464e9e22aa80",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m2-03",
+    "prompt": "Three of these valves are named for their function rather than their internal closure element. Which one is named for its internal element?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Check valve"
+     },
+     {
+      "id": "b",
+      "label": "Relief valve"
+     },
+     {
+      "id": "c",
+      "label": "Regulating valve"
+     },
+     {
+      "id": "d",
+      "label": "Butterfly valve"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "A butterfly valve is named for its rotating disk element, while check, relief, and regulating valves are function-named."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "22c19833af129dbf3074688a1b2a3a529cdeaf8802668491406eacbb6444ad51",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m2-04",
+    "prompt": "Three of these are bulk physical properties measured by calibrating an instrument. Which one requires a chemical property analysis?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Volume"
+     },
+     {
+      "id": "b",
+      "label": "Sample temperature"
+     },
+     {
+      "id": "c",
+      "label": "Mass"
+     },
+     {
+      "id": "d",
+      "label": "Chloride level"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Volume, temperature, and mass are bulk physical properties, whereas chloride level determines how much of a substance is present."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "30c8812e54d5231a82fc0fd8133e8c410a08bba9b68ceed4d297057786022bc0",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m2-05",
+    "prompt": "Three of these pairs are completely miscible. Which pair is immiscible?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Water and alcohol"
+     },
+     {
+      "id": "b",
+      "label": "Nitrogen and oxygen"
+     },
+     {
+      "id": "c",
+      "label": "Air and carbon dioxide"
+     },
+     {
+      "id": "d",
+      "label": "Water and mercury"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "All gases and water-alcohol mixtures are completely miscible, whereas liquid water and mercury are immiscible."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "c226ada9a32b579d4656da4efb8b2d46d7ac78617ab6a267b9b53e5e5411ff1d",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m2-06",
+    "prompt": "Three of these are positively charged ions (cations). Which one is a negatively charged ion (anion)?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Sodium ion"
+     },
+     {
+      "id": "b",
+      "label": "Hydronium ion"
+     },
+     {
+      "id": "c",
+      "label": "Calcium ion"
+     },
+     {
+      "id": "d",
+      "label": "Hydroxide ion"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Hydroxide is negatively charged (an anion), whereas sodium, hydronium, and calcium are positively charged cations."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "970aaad1603dde786d36017869dab9d99176b0b9f3139f89d41cf8b937a64e68",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m2-07",
+    "prompt": "Three of these are physical states of matter. Which one is a solid-liquid dispersion?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Solid state"
+     },
+     {
+      "id": "b",
+      "label": "Liquid state"
+     },
+     {
+      "id": "c",
+      "label": "Gas"
+     },
+     {
+      "id": "d",
+      "label": "Colloid"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Solid, liquid, and gas are the three physical states of matter, while a colloid is a fine dispersion."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "9cc5f58918859678117c17f87ce2deb73304eaa0044ecc66612d79d7f73e0a06",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m2-08",
+    "prompt": "Three of these are forms of concrete pipe. Which one is a clay pipe?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Nonreinforced concrete"
+     },
+     {
+      "id": "b",
+      "label": "Reinforced cylinder"
+     },
+     {
+      "id": "c",
+      "label": "Prestressed concrete"
+     },
+     {
+      "id": "d",
+      "label": "Vitrified pipe"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Vitrified pipe is kiln-fired clay, whereas the other three are forms of concrete pipe."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "4e6036c810f00ae7d013c7c5d6d53542057407a11fe6ee82bb88764798c9a265",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m2-09",
+    "prompt": "Three of these are parts of a spring-loaded ball vacuum breaker. Which one belongs to an industrial thermometer?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Ball retainer tube"
+     },
+     {
+      "id": "b",
+      "label": "Spring"
+     },
+     {
+      "id": "c",
+      "label": "Ball"
+     },
+     {
+      "id": "d",
+      "label": "Capillary tube"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "A capillary tube is part of an industrial thermometer, while the ball, spring, and retainer tube form the vacuum breaker."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "1a9b58f91f8ee0574a39196b0e7baa574c5562f86d721240dbfa9accd64ee78f",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m2-10",
+    "prompt": "Three of these are components of total solids in water. Which one is a measure of light scattering?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Suspended solids"
+     },
+     {
+      "id": "b",
+      "label": "Colloidal solids"
+     },
+     {
+      "id": "c",
+      "label": "Dissolved solids"
+     },
+     {
+      "id": "d",
+      "label": "Turbidity"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Total solids include suspended, colloidal, and dissolved solids; turbidity is the optical scattering and absorption of light."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "f0ad4479fac5b5461addb4d3808ef91016ca7d35b7d1e39a35ca9c58a7b3c311",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m2-11",
+    "prompt": "Three of these are advantages of flanged joints in exposed stations. Which one is a limitation?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Ease of assembly"
+     },
+     {
+      "id": "b",
+      "label": "Ease of disassembly for maintenance"
+     },
+     {
+      "id": "c",
+      "label": "Rigidity and tightness"
+     },
+     {
+      "id": "d",
+      "label": "Poor ground flexibility"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Lack of flexibility is why flanged joints are not normally buried, whereas the other three are station advantages."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "a4650b67b275ac053588d29fc0fbe9701120d28c806243e19a79bf3d940432ed",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m2-12",
+    "prompt": "Three of these are common applications for quick-opening valves. Which one is a standard use for vitrified clay pipe?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Deluge showers"
+     },
+     {
+      "id": "b",
+      "label": "Emergency eyewash stations"
+     },
+     {
+      "id": "c",
+      "label": "Emergency alarm horn air supply"
+     },
+     {
+      "id": "d",
+      "label": "Gravity wastewater drains"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Vitrified clay pipe is used for gravity drains, while quick-opening valves serve emergency showers, eyewashes, and alarm horns."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "4bb38a0371ad989fc5db39ca53a3694d44fb88e1e2dd2f24d477d4846a5f92b2",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m2-13",
+    "prompt": "Three of these are concentration units used in water chemistry. Which one is a particle-size unit?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Parts per million (ppm)"
+     },
+     {
+      "id": "b",
+      "label": "Milligrams per liter (mg/L)"
+     },
+     {
+      "id": "c",
+      "label": "Parts per billion (ppb)"
+     },
+     {
+      "id": "d",
+      "label": "Micron"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "A micron measures particle diameter (such as colloids under 1 micron), whereas ppm, mg/L, and ppb measure concentration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "22ae6275eb05e2ad2d7468fbf0263b9c12280ec6064415ceb8f53ab87bf1a129",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m2-14",
+    "prompt": "Three of these are reasons PVC is used for cold drinking water. Which one is a limitation of PVC?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Nontoxic material"
+     },
+     {
+      "id": "b",
+      "label": "No taste or odor imparted"
+     },
+     {
+      "id": "c",
+      "label": "Inert to most corrosives"
+     },
+     {
+      "id": "d",
+      "label": "Low-pressure capability"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Low-pressure capability and limited temperature range are PVC limitations, whereas the others are benefits."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "ce133e11faaed20b1f0d0e30931a5f95459ce136b46757801dd579a3c4d1ea8b",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m2-15",
+    "prompt": "Three of these are properties of a liquid at constant temperature and pressure. Which one describes a gas?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Maintains a constant volume"
+     },
+     {
+      "id": "b",
+      "label": "Takes the shape of its container"
+     },
+     {
+      "id": "c",
+      "label": "Particles stick together while moving freely"
+     },
+     {
+      "id": "d",
+      "label": "Expands to fill any container volume"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Gases expand or compress to fill any container volume, whereas liquids maintain a constant volume."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "366d4c8d4a97d0ce7127a608512c7342b494be2f9203d3086dab524e8c42f8ba",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m3-01",
+    "prompt": "The temperature of water carried inside a PVC pipe increases substantially while operating pressure stays constant. What happens to the strength of the PVC pipe?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The strength of plastic piping decreases as the temperature of the conveyed fluid increases."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "b85b1bb059816dc6e756677cc665ded9365b98b50a409a67bb7f6d0b4518ea4d",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m3-02",
+    "prompt": "A gate valve in a straight water main is replaced by a butterfly valve of the same nominal size at constant flow rate, leaving a disk in the open flow path. What happens to the flow resistance across the valve?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Because the butterfly disk stays in the fluid path when open, it creates more turbulence and resistance than a gate valve."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "aa360b6342c2601dd09f6f1359aeffe2f05ccda032461bda9b0105564560d22b",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m3-03",
+    "prompt": "In a piping system with a spring-loaded ball vacuum breaker, line pressure drops below atmospheric pressure and creates a partial vacuum. What happens to the air flow entering the piping?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The vacuum pulls the ball down against the spring, opening the port so air flows into the system."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "8d5888baafbbbe8f0477ef6f43eb670ae420b068f1da25803a9c8441bc426396",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m3-04",
+    "prompt": "A small amount of table salt is dissolved in pure water at constant temperature, forming sodium and chloride ions. What happens to the concentration of positively charged cations in the water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Dissolving table salt releases positively charged sodium cations into the water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "0a7e0e92206cc29341f43aea29f7f3029e453630aebb0999c6a597bc8403c9a5",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m3-05",
+    "prompt": "Suspended silt enters a clear water sample while dissolved mineral levels remain unchanged. What happens to the scattering and absorption of light in the sample?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Suspended matter causes turbidity, which increases the scattering and absorption of light rays."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "44b02ff98db40ed4e7a332affb9886fe32179c6933c419191acb877fcf8fea05",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m3-06",
+    "prompt": "Liquid water is poured from a tall narrow glass into a wide shallow bowl at constant temperature and pressure. What happens to the volume of the liquid water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Liquids change shape to fit their container but maintain a constant volume at a given temperature and pressure."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "32fa649e63833e461b3040e2ee54680f4050da3ee81e890eeffe2c5240daec75",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m3-07",
+    "prompt": "A nonpressurized wastewater line is built with vitrified clay pipe instead of unglazed clay pipe in moist, chemical-rich soil. What happens to the pipe's resistance to corrosion?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Vitrified clay pipe has a glass-like surface that is extremely corrosion-proof compared with unglazed clay."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "0bacadc1b6764fb2ac0e8f11a99d9617dedb5f4dbb432e727d8e5d0e991aca72",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m3-08",
+    "prompt": "A crew cuts a dry asbestos-cement pipe with a power saw instead of using wet methods. What happens to the release of airborne asbestos fibers?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Cutting or grinding dry A-C pipe separates nonfriable asbestos from its bond and releases airborne fibers."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "61bf8b78217ba4b836ee2240dcea0dd6666cad9c5a48c794e08112877590e21d",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m3-09",
+    "prompt": "Two clean copper pipe ends are coated with flux before heating for soldering. What happens to oxide formation on the heated metal surface?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Flux prevents oxides from forming on the cleaned metal during heating so solder can wet the joint."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "d7f07b6b17eb40d2b92d712be74a4b2e7d490e075f6aa435a9bd0f32fdb125ce",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m3-10",
+    "prompt": "A hot-water pipe in a cool room is wrapped with appropriate thermal insulation while fluid and room temperatures stay constant. What happens to the rate of heat loss from the pipe?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Insulation slows heat transfer from the hot fluid to the cooler room air."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "0af44140ab7bd0f4b5a6a579c218d81d717524f3124e9f0cf9bb8a5d60cd8135",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m3-11",
+    "prompt": "Extra solid salt is stirred into an already saturated salt solution at constant temperature and pressure. What happens to the dissolved salt concentration?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "A saturated solution cannot dissolve any more solute at that temperature and pressure."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "bbebfe2b0c502b2c531abb062ab78104d923b6b85df989644d6861d0c02a2169",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m3-12",
+    "prompt": "A chemical reaction causes a dissolved mineral to form a solid precipitate in a closed vessel. What happens to the mass of that mineral remaining dissolved in the water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Precipitation separates the substance out of solution as a solid, reducing the dissolved mass."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "db74843fc70ad00e03c9833525c8a6ded815e86182f1d1a89f7d328f7bb3d8db",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m3-13",
+    "prompt": "A butterfly valve disk rotates from closed (perpendicular) to fully open (parallel to the pipe axis). What happens to the open flow area through the valve?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Rotating the disk parallel to the pipe axis opens the passageway to its maximum flow area."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "c9cffb7f4d6a2ece76a3f832ab6ff21cc5d8eb70fea43f7a145e07f710428559",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m3-14",
+    "prompt": "A buried metal pipe is wrapped with protective insulating material in moist, chemical-rich soil. What happens to the rate of external soil corrosion?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Insulating materials protect underground piping against rusting and corrosion from soil water and chemicals."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "3fe529aa3966c8cd60155f2e8d7acf79968693c468f399f66a0e06f1c7e59824",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m3-15",
+    "prompt": "A gas sample is transferred from a small rigid cylinder into a larger empty tank at constant temperature. What happens to the volume occupied by the gas?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Gases have no fixed volume and expand to fill the entire volume of the larger container."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "052bd2770337ab452360eaf84c95f71e40342830c55b63e5002a42364c752ec6",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m4-01",
+    "prompt": "Three statements describe flanged pipe joints. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Flanged joints are widely used inside stations for easy assembly and disassembly."
+     },
+     {
+      "id": "b",
+      "label": "Flanged joints are commonly buried underground because they flex with soil movement."
+     },
+     {
+      "id": "c",
+      "label": "A raised-face flange should not be bolted directly to a plain-face flange."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Flanged joints lack flexibility for ground movement and are normally avoided for buried pipelines."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "44f6d5e6b4319edd080edda579c470ef076d415761e0376d776ae5689bb02f79",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m4-02",
+    "prompt": "Three statements describe welding, brazing, and soldering. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Welding heats metal edges until they melt and blend into one continuous piece."
+     },
+     {
+      "id": "b",
+      "label": "Brazing and soldering melt the parent pipe metal to fuse the joint."
+     },
+     {
+      "id": "c",
+      "label": "Flux is applied to cleaned metal before heating to prevent oxide formation."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "In brazing and soldering, capillary action draws molten filler into the joint while the parent metal stays solid."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "83b28f1a4e72d707c1108ba3428b8ce7adaeea004ecc8bd0cfb4457927a8d573",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m4-03",
+    "prompt": "Three statements describe clay and concrete pipe. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Vitrified clay pipe has a glass-like surface that resists corrosion in gravity drains."
+     },
+     {
+      "id": "b",
+      "label": "Unglazed clay pipe can be buried directly without protection from ground moisture."
+     },
+     {
+      "id": "c",
+      "label": "Prestressed concrete pipe uses tensioned steel wire to build in compression."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Unglazed clay pipe requires protection against soil contaminants and ground moisture."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "304b6e7754692e7a66aeea1d7a191aa8c3ef6c3ee3e45c05a5cf86d54d8b2e00",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m4-04",
+    "prompt": "Three statements describe PVC pipe properties. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "PVC is commonly used for cold drinking water because it is nontoxic."
+     },
+     {
+      "id": "b",
+      "label": "PVC pipe gains structural strength as the conveyed water temperature rises."
+     },
+     {
+      "id": "c",
+      "label": "PVC is nearly inert when exposed to most acids and corrosives."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The strength of plastic piping decreases as the temperature of the conveyed fluid increases."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "190bcabdad6496194c1306297c261eb9cdbd45ee1fea196647103740d1bf3a7a",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m4-05",
+    "prompt": "Three statements describe butterfly valves. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "When fully open, the butterfly disk aligns parallel to the pipe axis."
+     },
+     {
+      "id": "b",
+      "label": "A butterfly valve creates less flow resistance than a gate valve when open."
+     },
+     {
+      "id": "c",
+      "label": "Butterfly valves are compact and can control flow in either direction."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Because the disk stays in the flow path, a butterfly valve creates more turbulence and resistance than a gate valve."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "f5a1bffca2ac2a5f85c086e34b09bbd24dfd4af2ef5c396f8d8232fbf9aa4c02",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m4-06",
+    "prompt": "Three statements describe check and quick-opening valves. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Forward flow pressure pushes a check valve element to an open position."
+     },
+     {
+      "id": "b",
+      "label": "Quick-opening valves use a threaded stem for slow, gradual throttling."
+     },
+     {
+      "id": "c",
+      "label": "Diaphragm valves are glandless and use a flexible elastomeric disk."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Quick-opening valves use a lever in place of a threaded stem for rapid on/off action."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "c1b7f20a5fca3ce5be61e692a97936f2e420b8f756ba6d1b3460a37fd297b332",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m4-07",
+    "prompt": "Three statements describe a spring-loaded ball vacuum breaker. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Under normal pressure, the spring holds the ball against its seat."
+     },
+     {
+      "id": "b",
+      "label": "When a vacuum forms, the ball is pulled down so air can enter."
+     },
+     {
+      "id": "c",
+      "label": "Air entering the line increases the vacuum and speeds up backsiphonage."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Admitting air into the line breaks the vacuum and prevents backsiphonage."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "8668ac4970c6b4d46fd02578b88d9d0d223f17f844b40b53f65b21efabc8b06d",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m4-08",
+    "prompt": "Three statements describe miscibility and solubility. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Water and alcohol are miscible and mix uniformly."
+     },
+     {
+      "id": "b",
+      "label": "Water and liquid mercury are miscible and mix uniformly."
+     },
+     {
+      "id": "c",
+      "label": "Gases are miscible with one another."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Water and liquid mercury are immiscible liquids that do not mix uniformly."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "20a644352968ace0300082323832911ad75a0e0bd43393dd9e111afbda2f0660",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m4-09",
+    "prompt": "Three statements describe ions in water. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Sodium chloride forms charged particles when dissolved in water."
+     },
+     {
+      "id": "b",
+      "label": "A cation is a negatively charged ion such as chloride."
+     },
+     {
+      "id": "c",
+      "label": "Self-ionization of water produces hydronium and hydroxide ions."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "A cation is positively charged (like sodium), whereas an anion is negatively charged (like chloride)."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "001189ef5d29fcb3671aa797c8089306ed0cd33268252d0f83b771b8773d08f5",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m4-10",
+    "prompt": "Three statements describe solids and turbidity in water. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Colloidal solids are smaller than one micron and pass through a filter."
+     },
+     {
+      "id": "b",
+      "label": "Turbidity is caused by suspended matter scattering and absorbing light."
+     },
+     {
+      "id": "c",
+      "label": "A saturated solution readily dissolves additional solute at the same temperature."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "A saturated solution is in the physical state where it will no longer dissolve more solute."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "4528dacf4d8181e4dbfa81ac80c4d930f5dd4c0c673f60be584f7c6e0e049d00",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m4-11",
+    "prompt": "Three statements describe the three physical states of matter. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Solids keep both a definite shape and a definite volume."
+     },
+     {
+      "id": "b",
+      "label": "Liquids keep a definite shape regardless of their container."
+     },
+     {
+      "id": "c",
+      "label": "Gases expand or compress to fill containers of different sizes."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Liquids maintain a constant volume but change shape to fit their container."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "2241f7f1c5d132b4359fe959fa18b06ea9a15231cce63ec2b3139ca2d0de8a5a",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m4-12",
+    "prompt": "Three statements describe asbestos-cement (A-C) pipe. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Undamaged A-C pipe contains nonfriable asbestos bound in cement."
+     },
+     {
+      "id": "b",
+      "label": "Cutting or grinding dry A-C pipe can release airborne asbestos fibers."
+     },
+     {
+      "id": "c",
+      "label": "Dry power sawing is preferred over wet cutting for A-C pipe repairs."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Wet methods are used to suppress airborne fibers, while dry cutting releases friable asbestos."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "652f91de4785c6d1186e6ea6b9583e06b383ee188f8c9db323917c602a1c20ee",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m4-13",
+    "prompt": "Three statements describe pipe insulation. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Heat passes naturally from a warmer surface to a cooler surface."
+     },
+     {
+      "id": "b",
+      "label": "Insulation on cold-water pipes helps keep the fluid cold."
+     },
+     {
+      "id": "c",
+      "label": "Insulating materials speed up soil corrosion on buried metal pipes."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Insulating materials are used to protect underground piping against rusting and corrosion from soil water and chemicals."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "64379d10621ff826474fe2f0da864d8f2e3ca3e2ccd28d1fc5530e408941ed87",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m4-14",
+    "prompt": "Three statements describe chemical testing and concentration. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Bulk physical tests measure properties such as volume, temperature, or mass."
+     },
+     {
+      "id": "b",
+      "label": "In dilute water solutions, 1 ppm is approximately equal to 1 mg/L."
+     },
+     {
+      "id": "c",
+      "label": "Organic chemicals are defined as substances of mineral origin."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Organic substances are carbon-based from animal or vegetable origin, while inorganic substances are of mineral origin."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "1c9f55fd684a5e2bee6b610f24e226e3e42a4d2ff1f6159886d383e34bf308dd",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m4-15",
+    "prompt": "Three statements describe sewer pipe connections. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Wyes and tees should be used when joining sections of wastewater piping."
+     },
+     {
+      "id": "b",
+      "label": "Breaking into clay pipe for new taps often causes major infiltration."
+     },
+     {
+      "id": "c",
+      "label": "Breaking into a clay main creates a tighter seal than a factory tee."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Breaking into pipe for new connections is seldom properly sealed and can be a major source of infiltration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "10a1bb58f02b502afba0af7b4b24346b3ef7ebb349e44049b90b9b8fccb82bc3",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m5-01",
+    "prompt": "In soldering or brazing a copper pipe joint, does cleaning the metal with emery cloth occur before or after applying flux?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The joint is cleaned with emery cloth first and coated with flux afterward to prevent oxides from forming."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "bc6505c64a9bd2dab76811ca585ae7f67aa25c9c1a27ceb91f87c2deddf38c57",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m5-02",
+    "prompt": "In soldering or brazing a metallic pipe joint, does heating the joint occur before or after capillary action draws molten filler into the joint?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The clean, fluxed joint is heated first so that capillary action can draw the molten solder or brazing rod in."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "6618107036ca11e3624707d722dd03a8d43224c7f053a9b2d9e9c97629abd6c3",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m5-03",
+    "prompt": "In manufacturing prestressed concrete pipe, does winding tensioned steel wire around the core occur before or after applying the outer concrete coating?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Tensioned steel wire is wound tightly around the core first and covered with an outer concrete coating afterward."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "72812b4ce95d967799def4146281570a2d9f8574d290ac8cf6bf2d413356d863",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m5-04",
+    "prompt": "In a welded metal pipe joint, does heating the metal edges to their melting point occur before or after the joint cools into one continuous piece?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Metal edges must melt and blend together first before cooling into a single continuous joint."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "b1ac7b4a305fcc6a78c10a54ec83a60cd811832cda0bef360bcba271a646dea3",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m5-05",
+    "prompt": "In closing a butterfly valve from its fully open position, does rotating the disk shaft occur before or after the disk seals against the rubber gasket?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The shaft rotates the disk from parallel to perpendicular first so its edge can seal against the gasket."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "cfb285c8313359ef1ace58db24ac6b28994faedad35bdbc35f56b2ceac1d5b26",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m5-06",
+    "prompt": "In a spring-loaded ball vacuum breaker during a vacuum event, does air entering the line occur before or after the ball is pulled down against the spring?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "The vacuum first pulls the ball down into the retainer tube, and air enters afterward to break the vacuum."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "15769fce26fbd4ba7996476e3c4d3d20011696e77a814df737a19af7cdeb1f72",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m5-07",
+    "prompt": "In a spring-loaded ball vacuum breaker after a vacuum is broken, does the spring returning the ball to its seat occur before or after air enters to fill the vacuum?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "Air enters to break the vacuum first, and the spring then returns the ball to seal the system."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "e1b0a7f9b9e631507a506d189ba58f13ebd77b7c388b8adf669832850c6d6b34",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m5-08",
+    "prompt": "In performing a bulk physical measurement with an instrument, does calibrating the instrument occur before or after measuring the sample?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "An instrument must be calibrated first to perform an accurate bulk physical measurement."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "f95550807db526b9ab27fa7ec243cdaab9367310626f617e3575218e886c74b1",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m5-09",
+    "prompt": "In forming a solid precipitate from a dissolved mineral, does dissolving the substance in water occur before or after a pH change separates the solid?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "A precipitate is a dissolved substance that separates from solution afterward due to a chemical or pH change."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "b6ce93f24335168fcbb8309092ce72187cb8289c1286d2689e9117cd91b546fd",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m5-10",
+    "prompt": "In producing PVC pipe, does extruding the polymer through a die under heat and pressure occur before or after joining pipe sections in the field?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "PVC pipe is extruded into cylindrical sections at the factory before sections are joined in the field."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "3f1d00fbe0540d6cd71579330ab1631670d273aa9a7ff06c37bf67cd1bcbac72",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m5-11",
+    "prompt": "In a check valve during normal forward flow, does forward fluid pressure pushing the valve open occur before or after reverse flow seats it closed?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Forward flow opens the check valve first; if flow reverses later, reverse pressure pushes it closed."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "3bbb2c61fa1353ac687bac290df9e4c8419f7ad02d7bb8fabb1e37fc52307d98",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m5-12",
+    "prompt": "In adding table salt gradually to pure water at constant temperature, does forming an unsaturated solution occur before or after reaching a saturated solution?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The water is unsaturated while it can still dissolve more salt, and reaches saturation afterward."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "9d7bc3d6a1e74d2a847b045babc21f7012b99e969e2096c0d230c4c472a78c00",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m5-13",
+    "prompt": "In repairing damaged asbestos-cement pipe, does disturbing or cutting the dry pipe matrix occur before or after friable fibers can become airborne?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Asbestos in intact A-C pipe is nonfriable; cutting or grinding it first separates fibers that can become airborne."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "b2c2b4b555c1a4f70563b8078e0953ba78244c00c3234200396aa829bb175eac",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m5-14",
+    "prompt": "In the self-ionization of water, does one water molecule losing a hydrogen ion occur before or after it becomes a negatively charged hydroxide ion?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "A water molecule becomes a hydroxide ion as a result of losing a hydrogen ion."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "5a37f71c9a145e129e57afaba0326761bbf897bd1dbfec61bc7efa140c9a9ef7",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-dist-r03-m5-15",
+    "prompt": "In opening a butterfly valve from its closed position, does rotating the disk shaft occur before or after the disk aligns parallel to the pipe axis?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Rotating the shaft turns the disk from its closed position until it aligns parallel to the pipe axis."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+    "notes": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T03:16:48.308Z",
+    "payloadSha256": "c62be547758fa8f233307ef5603ca22c3de3129da792ac3d3d30bfb75540b8cf",
+    "builderResultsSha256": "dff2c85add4da8e3bbcf1723d7504a484fa06a62fd47903ae494cbb09b254cce"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T03:15:04.847017+00:00",
+   "attestation": "Strict AI self-review of 85 authored native game payloads for class1-water-dist against supplied source pages, builder checks, and collision candidates: 84 accepted, 1 rejected.",
+   "payloadSha256": {
+    "targeth-ht261118-class1-water-dist-r03-m0-01": "7601105a06fcd16655f415328fe472d7498de8453bd5846dabcdfcab0d80486b",
+    "targeth-ht261118-class1-water-dist-r03-m0-02": "d3bda588e98fe8bf2cd7298289456aae4d884d2218b6c5839c63be866c3d822d",
+    "targeth-ht261118-class1-water-dist-r03-m0-03": "1750e4d5eafe99dabddaea9993f26e3613dc46b35b37bdc36fe9b13b4cf6d196",
+    "targeth-ht261118-class1-water-dist-r03-m0-04": "4d2e0c507ea3c238000672a55b39578ee34db3944a215c212bbc298d5da2669f",
+    "targeth-ht261118-class1-water-dist-r03-m0-05": "2cbe6b8aeb999dc58274351b1eb0ada2adee0478ea9721039e363e12947c1fa7",
+    "targeth-ht261118-class1-water-dist-r03-m0-06": "e57c1dc79fd60b9253d33133184c5081b90ed3c61b9d19e2a6e22b8c7e3c8090",
+    "targeth-ht261118-class1-water-dist-r03-m0-07": "289041cb75bddfde1d24c96a4db6d6f2d06406018d1aeaff26c2bc0f62b48e8d",
+    "targeth-ht261118-class1-water-dist-r03-m0-08": "abe554bf57fd02064379e58e755aeed7ad953a4413ec2be8ea433acd07de1320",
+    "targeth-ht261118-class1-water-dist-r03-m0-10": "cfa1595e0ff7b62c8946d5ffd36a51ff2753cf295b80c4882591d9e0937fae48",
+    "targeth-ht261118-class1-water-dist-r03-m0-11": "6a04d4966a59fdd69aadbd813992313656090161f397634526057e3155da2c67",
+    "targeth-ht261118-class1-water-dist-r03-m0-12": "f5faba8f95139a97146826d852371149cc89b9979f0214b67b5f8b627f84efd9",
+    "targeth-ht261118-class1-water-dist-r03-m0-13": "d51b83eee6c79a3cc9a3cc4d226a7442acf255971d1c14a5a6589dc7b5d0e3c6",
+    "targeth-ht261118-class1-water-dist-r03-m0-14": "ef6dd808c415bc999289c896d9f7c1794c1375a79e388fef53872aef746bec16",
+    "targeth-ht261118-class1-water-dist-r03-m0-15": "b6f4873a3ede51314509b04dc15bf68da87fd076e27b40d0003c4ef0db15d014",
+    "targeth-ht261118-class1-water-dist-r03-m1-01": "3d6f2be5ee1e87a199a9b43b51b78f5a5bd0293119a4bebe371fb22c7eacca4b",
+    "targeth-ht261118-class1-water-dist-r03-m1-02": "618fc5600358e388c793d31e57e8a11e636972a6cdbb9dacd7ee1fa14b330757",
+    "targeth-ht261118-class1-water-dist-r03-m1-03": "d6ca54c5286efb51664db46000e051b97907335ad1571dc4b52c66a2be6c798e",
+    "targeth-ht261118-class1-water-dist-r03-m1-04": "154d143f6e2b291b94536e720449489093abcd73f3a29c1b5252c031dfa8a5f8",
+    "targeth-ht261118-class1-water-dist-r03-m1-05": "d7fa8469d3a8ced4665bb0265214823bfec7499232d1d962947d1605744c9f87",
+    "targeth-ht261118-class1-water-dist-r03-m1-06": "09c48a406b2629992573604651ec295277048787851df9ad340fd3cf1aac37c5",
+    "targeth-ht261118-class1-water-dist-r03-m1-07": "d5e05a19b5076b3663bf216b3fe8cf76b7a28cdbc9515338544b3b76622e11d8",
+    "targeth-ht261118-class1-water-dist-r03-m1-08": "021792427479235807f53b0d6690e90a97ecbc7e9d6628a9eeb693d1ca1d6622",
+    "targeth-ht261118-class1-water-dist-r03-m1-09": "7ca168ce61a6f72568a65e8b2275ae1e31b46372c754a59ab87076a235ab993f",
+    "targeth-ht261118-class1-water-dist-r03-m1-10": "5347013f47020bdc9fc6adde1f2c1e77525b8905d56f5ce277133f96483a9e98",
+    "targeth-ht261118-class1-water-dist-r03-m2-01": "78f7c3ca1d6479928bb4e77e148b9a5e4f31ec7df71c32a07ef1046614a146ea",
+    "targeth-ht261118-class1-water-dist-r03-m2-02": "9a9c10e39da52a47a29dc818db7315c6c382aa5e85dd9f7bf6d3464e9e22aa80",
+    "targeth-ht261118-class1-water-dist-r03-m2-03": "22c19833af129dbf3074688a1b2a3a529cdeaf8802668491406eacbb6444ad51",
+    "targeth-ht261118-class1-water-dist-r03-m2-04": "30c8812e54d5231a82fc0fd8133e8c410a08bba9b68ceed4d297057786022bc0",
+    "targeth-ht261118-class1-water-dist-r03-m2-05": "c226ada9a32b579d4656da4efb8b2d46d7ac78617ab6a267b9b53e5e5411ff1d",
+    "targeth-ht261118-class1-water-dist-r03-m2-06": "970aaad1603dde786d36017869dab9d99176b0b9f3139f89d41cf8b937a64e68",
+    "targeth-ht261118-class1-water-dist-r03-m2-07": "9cc5f58918859678117c17f87ce2deb73304eaa0044ecc66612d79d7f73e0a06",
+    "targeth-ht261118-class1-water-dist-r03-m2-08": "4e6036c810f00ae7d013c7c5d6d53542057407a11fe6ee82bb88764798c9a265",
+    "targeth-ht261118-class1-water-dist-r03-m2-09": "1a9b58f91f8ee0574a39196b0e7baa574c5562f86d721240dbfa9accd64ee78f",
+    "targeth-ht261118-class1-water-dist-r03-m2-10": "f0ad4479fac5b5461addb4d3808ef91016ca7d35b7d1e39a35ca9c58a7b3c311",
+    "targeth-ht261118-class1-water-dist-r03-m2-11": "a4650b67b275ac053588d29fc0fbe9701120d28c806243e19a79bf3d940432ed",
+    "targeth-ht261118-class1-water-dist-r03-m2-12": "4bb38a0371ad989fc5db39ca53a3694d44fb88e1e2dd2f24d477d4846a5f92b2",
+    "targeth-ht261118-class1-water-dist-r03-m2-13": "22ae6275eb05e2ad2d7468fbf0263b9c12280ec6064415ceb8f53ab87bf1a129",
+    "targeth-ht261118-class1-water-dist-r03-m2-14": "ce133e11faaed20b1f0d0e30931a5f95459ce136b46757801dd579a3c4d1ea8b",
+    "targeth-ht261118-class1-water-dist-r03-m2-15": "366d4c8d4a97d0ce7127a608512c7342b494be2f9203d3086dab524e8c42f8ba",
+    "targeth-ht261118-class1-water-dist-r03-m3-01": "b85b1bb059816dc6e756677cc665ded9365b98b50a409a67bb7f6d0b4518ea4d",
+    "targeth-ht261118-class1-water-dist-r03-m3-02": "aa360b6342c2601dd09f6f1359aeffe2f05ccda032461bda9b0105564560d22b",
+    "targeth-ht261118-class1-water-dist-r03-m3-03": "8d5888baafbbbe8f0477ef6f43eb670ae420b068f1da25803a9c8441bc426396",
+    "targeth-ht261118-class1-water-dist-r03-m3-04": "0a7e0e92206cc29341f43aea29f7f3029e453630aebb0999c6a597bc8403c9a5",
+    "targeth-ht261118-class1-water-dist-r03-m3-05": "44b02ff98db40ed4e7a332affb9886fe32179c6933c419191acb877fcf8fea05",
+    "targeth-ht261118-class1-water-dist-r03-m3-06": "32fa649e63833e461b3040e2ee54680f4050da3ee81e890eeffe2c5240daec75",
+    "targeth-ht261118-class1-water-dist-r03-m3-07": "0bacadc1b6764fb2ac0e8f11a99d9617dedb5f4dbb432e727d8e5d0e991aca72",
+    "targeth-ht261118-class1-water-dist-r03-m3-08": "61bf8b78217ba4b836ee2240dcea0dd6666cad9c5a48c794e08112877590e21d",
+    "targeth-ht261118-class1-water-dist-r03-m3-09": "d7f07b6b17eb40d2b92d712be74a4b2e7d490e075f6aa435a9bd0f32fdb125ce",
+    "targeth-ht261118-class1-water-dist-r03-m3-10": "0af44140ab7bd0f4b5a6a579c218d81d717524f3124e9f0cf9bb8a5d60cd8135",
+    "targeth-ht261118-class1-water-dist-r03-m3-11": "bbebfe2b0c502b2c531abb062ab78104d923b6b85df989644d6861d0c02a2169",
+    "targeth-ht261118-class1-water-dist-r03-m3-12": "db74843fc70ad00e03c9833525c8a6ded815e86182f1d1a89f7d328f7bb3d8db",
+    "targeth-ht261118-class1-water-dist-r03-m3-13": "c9cffb7f4d6a2ece76a3f832ab6ff21cc5d8eb70fea43f7a145e07f710428559",
+    "targeth-ht261118-class1-water-dist-r03-m3-14": "3fe529aa3966c8cd60155f2e8d7acf79968693c468f399f66a0e06f1c7e59824",
+    "targeth-ht261118-class1-water-dist-r03-m3-15": "052bd2770337ab452360eaf84c95f71e40342830c55b63e5002a42364c752ec6",
+    "targeth-ht261118-class1-water-dist-r03-m4-01": "44f6d5e6b4319edd080edda579c470ef076d415761e0376d776ae5689bb02f79",
+    "targeth-ht261118-class1-water-dist-r03-m4-02": "83b28f1a4e72d707c1108ba3428b8ce7adaeea004ecc8bd0cfb4457927a8d573",
+    "targeth-ht261118-class1-water-dist-r03-m4-03": "304b6e7754692e7a66aeea1d7a191aa8c3ef6c3ee3e45c05a5cf86d54d8b2e00",
+    "targeth-ht261118-class1-water-dist-r03-m4-04": "190bcabdad6496194c1306297c261eb9cdbd45ee1fea196647103740d1bf3a7a",
+    "targeth-ht261118-class1-water-dist-r03-m4-05": "f5a1bffca2ac2a5f85c086e34b09bbd24dfd4af2ef5c396f8d8232fbf9aa4c02",
+    "targeth-ht261118-class1-water-dist-r03-m4-06": "c1b7f20a5fca3ce5be61e692a97936f2e420b8f756ba6d1b3460a37fd297b332",
+    "targeth-ht261118-class1-water-dist-r03-m4-07": "8668ac4970c6b4d46fd02578b88d9d0d223f17f844b40b53f65b21efabc8b06d",
+    "targeth-ht261118-class1-water-dist-r03-m4-08": "20a644352968ace0300082323832911ad75a0e0bd43393dd9e111afbda2f0660",
+    "targeth-ht261118-class1-water-dist-r03-m4-09": "001189ef5d29fcb3671aa797c8089306ed0cd33268252d0f83b771b8773d08f5",
+    "targeth-ht261118-class1-water-dist-r03-m4-10": "4528dacf4d8181e4dbfa81ac80c4d930f5dd4c0c673f60be584f7c6e0e049d00",
+    "targeth-ht261118-class1-water-dist-r03-m4-11": "2241f7f1c5d132b4359fe959fa18b06ea9a15231cce63ec2b3139ca2d0de8a5a",
+    "targeth-ht261118-class1-water-dist-r03-m4-12": "652f91de4785c6d1186e6ea6b9583e06b383ee188f8c9db323917c602a1c20ee",
+    "targeth-ht261118-class1-water-dist-r03-m4-13": "64379d10621ff826474fe2f0da864d8f2e3ca3e2ccd28d1fc5530e408941ed87",
+    "targeth-ht261118-class1-water-dist-r03-m4-14": "1c9f55fd684a5e2bee6b610f24e226e3e42a4d2ff1f6159886d383e34bf308dd",
+    "targeth-ht261118-class1-water-dist-r03-m4-15": "10a1bb58f02b502afba0af7b4b24346b3ef7ebb349e44049b90b9b8fccb82bc3",
+    "targeth-ht261118-class1-water-dist-r03-m5-01": "bc6505c64a9bd2dab76811ca585ae7f67aa25c9c1a27ceb91f87c2deddf38c57",
+    "targeth-ht261118-class1-water-dist-r03-m5-02": "6618107036ca11e3624707d722dd03a8d43224c7f053a9b2d9e9c97629abd6c3",
+    "targeth-ht261118-class1-water-dist-r03-m5-03": "72812b4ce95d967799def4146281570a2d9f8574d290ac8cf6bf2d413356d863",
+    "targeth-ht261118-class1-water-dist-r03-m5-04": "b1ac7b4a305fcc6a78c10a54ec83a60cd811832cda0bef360bcba271a646dea3",
+    "targeth-ht261118-class1-water-dist-r03-m5-05": "cfb285c8313359ef1ace58db24ac6b28994faedad35bdbc35f56b2ceac1d5b26",
+    "targeth-ht261118-class1-water-dist-r03-m5-06": "15769fce26fbd4ba7996476e3c4d3d20011696e77a814df737a19af7cdeb1f72",
+    "targeth-ht261118-class1-water-dist-r03-m5-07": "e1b0a7f9b9e631507a506d189ba58f13ebd77b7c388b8adf669832850c6d6b34",
+    "targeth-ht261118-class1-water-dist-r03-m5-08": "f95550807db526b9ab27fa7ec243cdaab9367310626f617e3575218e886c74b1",
+    "targeth-ht261118-class1-water-dist-r03-m5-09": "b6ce93f24335168fcbb8309092ce72187cb8289c1286d2689e9117cd91b546fd",
+    "targeth-ht261118-class1-water-dist-r03-m5-10": "3f1d00fbe0540d6cd71579330ab1631670d273aa9a7ff06c37bf67cd1bcbac72",
+    "targeth-ht261118-class1-water-dist-r03-m5-11": "3bbb2c61fa1353ac687bac290df9e4c8419f7ad02d7bb8fabb1e37fc52307d98",
+    "targeth-ht261118-class1-water-dist-r03-m5-12": "9d7bc3d6a1e74d2a847b045babc21f7012b99e969e2096c0d230c4c472a78c00",
+    "targeth-ht261118-class1-water-dist-r03-m5-13": "b2c2b4b555c1a4f70563b8078e0953ba78244c00c3234200396aa829bb175eac",
+    "targeth-ht261118-class1-water-dist-r03-m5-14": "5a37f71c9a145e129e57afaba0326761bbf897bd1dbfec61bc7efa140c9a9ef7",
+    "targeth-ht261118-class1-water-dist-r03-m5-15": "c62be547758fa8f233307ef5603ca22c3de3129da792ac3d3d30bfb75540b8cf"
+   }
+  },
+  "registeredAt": "2026-11-19T03:16:48.308Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 8,
+     "f": 6
+    },
+    "dirs": {
+     "increase": 8,
+     "decrease": 5,
+     "unchanged": 2
+    },
+    "longest": 10,
+    "options": 45
+   },
+   "batchSha256": "bb5a81863dd71411148f13162390036430b32fdf6230350448075fa1040185d9"
+  }
+ }
+}

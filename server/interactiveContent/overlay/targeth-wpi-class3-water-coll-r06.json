@@ -1,0 +1,666 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-wpi-class3-water-coll-r06",
+ "scope": "Owner-authorized AI-reviewed game activities: 13 items.",
+ "additions": [
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r06-m1-01",
+    "prompt": "Distinguish metallic pipe jointing methods by their thermal and mechanical bonding mechanisms.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Flanged joint",
+      "right": "Bolted connection used in exposed stations for easy disassembly"
+     },
+     {
+      "id": "p2",
+      "left": "Welded joint",
+      "right": "Heats metal ends until they melt and blend into one piece"
+     },
+     {
+      "id": "p3",
+      "left": "Brazed or soldered joint",
+      "right": "Draws melted filler into a hot joint by capillary action"
+     },
+     {
+      "id": "p4",
+      "left": "Emery cloth cleaning",
+      "right": "Prepares metallic surfaces before fluxing for soldering"
+     },
+     {
+      "id": "p5",
+      "left": "Soldering flux",
+      "right": "Prevents oxide formation on heated joint surfaces"
+     },
+     {
+      "id": "p6",
+      "left": "Raised-face flange",
+      "right": "Flange face type that should not mate with a plain face"
+     }
+    ],
+    "explanation": "Metallic joints rely on mechanical bolting, parent-metal fusion, or capillary filler flow depending on temperature, pressure, and disassembly needs."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:27:43.312387+00:00",
+    "notes": "Strict self-review of 13 authored items for wpi-class3-water-coll (10 speed-match, 3 before-after) against provided source pages and collision candidates; 13 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:28:57.878Z",
+    "payloadSha256": "5f559a29c039e8834209ee15341877b6ba946e9cf6347e8f42e56abba62de1c9",
+    "builderResultsSha256": "dd1a33b1234414f879c87abf86bfa53e97cfe3713556195c5943742c5a74935b"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r06-m1-02",
+    "prompt": "Distinguish nonmetallic clay and concrete pipe types by their construction and service.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Vitrified clay pipe",
+      "right": "Glass-like corrosion-proof pipe for gravity wastewater flow"
+     },
+     {
+      "id": "p2",
+      "left": "Unglazed clay pipe",
+      "right": "Nonglassy clay requiring protection from soil contaminants"
+     },
+     {
+      "id": "p3",
+      "left": "Factory wye or tee",
+      "right": "Manufactured branch fitting preventing makeshift wall breaks"
+     },
+     {
+      "id": "p4",
+      "left": "Nonreinforced concrete pipe",
+      "right": "Low-pressure concrete pipe often joined with rubber gaskets"
+     },
+     {
+      "id": "p5",
+      "left": "Reinforced concrete pipe",
+      "right": "Concrete pipe strengthened with steel for heavier loads"
+     },
+     {
+      "id": "p6",
+      "left": "Prestressed concrete pipe",
+      "right": "High-pressure concrete pipe with built-in compression"
+     }
+    ],
+    "explanation": "Clay and concrete pipes vary in glazing, reinforcement, and jointing to match gravity or pressurized wastewater service."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:27:43.312387+00:00",
+    "notes": "Strict self-review of 13 authored items for wpi-class3-water-coll (10 speed-match, 3 before-after) against provided source pages and collision candidates; 13 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:28:57.878Z",
+    "payloadSha256": "a1a7062dc19ea718650895b052cf85280a7d4236e555081c68e8b2c1e2d0fd68",
+    "builderResultsSha256": "dd1a33b1234414f879c87abf86bfa53e97cfe3713556195c5943742c5a74935b"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r06-m1-03",
+    "prompt": "Distinguish asbestos-cement pipe properties and repair concepts by their fiber-release risk.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Undamaged dry A-C pipe",
+      "right": "Nonfriable matrix that cannot be crumbled by hand pressure"
+     },
+     {
+      "id": "p2",
+      "left": "Friable asbestos",
+      "right": "Degraded material capable of releasing inhalable airborne fibers"
+     },
+     {
+      "id": "p3",
+      "left": "Dry cutting or grinding",
+      "right": "Disturbs the cement bond and releases airborne fibers"
+     },
+     {
+      "id": "p4",
+      "left": "Saddle clamp repair",
+      "right": "Girdling mechanism used over a replaced pipe section"
+     },
+     {
+      "id": "p5",
+      "left": "Bell-and-spigot concrete joint",
+      "right": "Joint type used on concrete cylinder pipe up to 30 inches"
+     },
+     {
+      "id": "p6",
+      "left": "Tongue-and-groove joint",
+      "right": "Joint type used exclusively on concrete pipe above 30 inches"
+     }
+    ],
+    "explanation": "Intact A-C pipe is nonfriable, whereas mechanical disturbance releases airborne fibers, requiring non-disturbing repair methods."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:27:43.312387+00:00",
+    "notes": "Strict self-review of 13 authored items for wpi-class3-water-coll (10 speed-match, 3 before-after) against provided source pages and collision candidates; 13 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:28:57.878Z",
+    "payloadSha256": "ce998b68a5c8642d9da572093ef39bffe941e0f29a164795dd73eba93cd3260f",
+    "builderResultsSha256": "dd1a33b1234414f879c87abf86bfa53e97cfe3713556195c5943742c5a74935b"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r06-m1-04",
+    "prompt": "Distinguish thermoplastic PVC pipe properties and joining methods by their physical limits.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "PVC extrusion",
+      "right": "Forces polymer through a shaping die under heat and pressure"
+     },
+     {
+      "id": "p2",
+      "left": "Chemical inertness",
+      "right": "Resists most acids, fuels, and corrosives in service"
+     },
+     {
+      "id": "p3",
+      "left": "Temperature limitation",
+      "right": "Pipe wall strength decreases as fluid temperature rises"
+     },
+     {
+      "id": "p4",
+      "left": "Low-pressure rating",
+      "right": "Typically suited for 75 to 100 psi service"
+     },
+     {
+      "id": "p5",
+      "left": "Solvent welding",
+      "right": "Joins plastic pipe sections chemically without melting"
+     },
+     {
+      "id": "p6",
+      "left": "Rotational wet cutting",
+      "right": "Controlled cutting method used on A-C pipe to limit dust"
+     }
+    ],
+    "explanation": "Extruded PVC resists corrosion well, but its mechanical strength drops as conveyed fluid temperature increases."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:27:43.312387+00:00",
+    "notes": "Strict self-review of 13 authored items for wpi-class3-water-coll (10 speed-match, 3 before-after) against provided source pages and collision candidates; 13 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:28:57.878Z",
+    "payloadSha256": "bef322d69ccd08a2ad5c2ea3a9a7563b54b65cc579c042e1e0405aae0cb78c15",
+    "builderResultsSha256": "dd1a33b1234414f879c87abf86bfa53e97cfe3713556195c5943742c5a74935b"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r06-m1-05",
+    "prompt": "Distinguish valve types by their internal closing elements and flow-control roles.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Butterfly valve",
+      "right": "Rotating disk aligns parallel to flow when fully open"
+     },
+     {
+      "id": "p2",
+      "left": "Check valve",
+      "right": "Flow pressure opens element and reverse flow closes it"
+     },
+     {
+      "id": "p3",
+      "left": "Quick-opening valve",
+      "right": "Lever-operated valve for emergency showers and eyewashes"
+     },
+     {
+      "id": "p4",
+      "left": "Diaphragm valve",
+      "right": "Glandless valve using a flexible elastomeric disk"
+     },
+     {
+      "id": "p5",
+      "left": "Rubber seat gasket",
+      "right": "Sealing ring against which a closed butterfly disk presses"
+     },
+     {
+      "id": "p6",
+      "left": "Wafer butterfly design",
+      "right": "Compact valve body fitted directly between pipeline flanges"
+     }
+    ],
+    "explanation": "Valves differ in how their internal disks or diaphragms move to throttle, isolate, or prevent reverse flow."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:27:43.312387+00:00",
+    "notes": "Strict self-review of 13 authored items for wpi-class3-water-coll (10 speed-match, 3 before-after) against provided source pages and collision candidates; 13 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:28:57.878Z",
+    "payloadSha256": "b6903cfb687b24c1d461aed7786a9acb50c72bee0fd91bac22c1b326f2d7fe3a",
+    "builderResultsSha256": "dd1a33b1234414f879c87abf86bfa53e97cfe3713556195c5943742c5a74935b"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r06-m1-06",
+    "prompt": "Distinguish pipeline vacuum-breaker and thermometer components by their physical function.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Partial vacuum",
+      "right": "Sub-atmospheric pressure that can pull nonpotable liquid backward"
+     },
+     {
+      "id": "p2",
+      "left": "Backsiphonage",
+      "right": "Reverse flow of contaminants across an unprotected cross-connection"
+     },
+     {
+      "id": "p3",
+      "left": "Spring-loaded ball",
+      "right": "Closes against the seat under normal positive line pressure"
+     },
+     {
+      "id": "p4",
+      "left": "Retainer tube",
+      "right": "Houses the ball as vacuum pulls it down to admit air"
+     },
+     {
+      "id": "p5",
+      "left": "Outside air entry",
+      "right": "Breaks the pipeline vacuum between cross-connection and source"
+     },
+     {
+      "id": "p6",
+      "left": "Industrial thermometer bulb",
+      "right": "Senses fluid temperature and transmits it via capillary tube"
+     }
+    ],
+    "explanation": "A spring-loaded ball vacuum breaker admits outside air during partial vacuum to prevent backsiphonage across cross-connections."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:27:43.312387+00:00",
+    "notes": "Strict self-review of 13 authored items for wpi-class3-water-coll (10 speed-match, 3 before-after) against provided source pages and collision candidates; 13 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:28:57.878Z",
+    "payloadSha256": "37426406c95d648724e6411ff69a2dbf9c8ff399ff0efac7fd5daf25d9591fb4",
+    "builderResultsSha256": "dd1a33b1234414f879c87abf86bfa53e97cfe3713556195c5943742c5a74935b"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r06-m1-07",
+    "prompt": "Distinguish pipe insulation and support hardware by their thermal and mechanical roles.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Hot-fluid insulation",
+      "right": "Reduces heat loss from warm fluid to cooler surroundings"
+     },
+     {
+      "id": "p2",
+      "left": "Cold-fluid insulation",
+      "right": "Limits heat gain from warm room air into chilled fluid"
+     },
+     {
+      "id": "p3",
+      "left": "Underground insulating wrap",
+      "right": "Protects buried metal pipe from soil water and chemicals"
+     },
+     {
+      "id": "p4",
+      "left": "Adjustable pipe roll stand",
+      "right": "Supports pipe weight while allowing axial thermal movement"
+     },
+     {
+      "id": "p5",
+      "left": "Anchor chair",
+      "right": "Fixes a pipeline point to control where expansion occurs"
+     },
+     {
+      "id": "p6",
+      "left": "Adjustable swivel pipe roll",
+      "right": "Hangs and supports overhead piping with vertical adjustment"
+     }
+    ],
+    "explanation": "Insulation controls heat transfer and soil corrosion, while pipe stands, chairs, and rolls support weight and thermal movement."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:27:43.312387+00:00",
+    "notes": "Strict self-review of 13 authored items for wpi-class3-water-coll (10 speed-match, 3 before-after) against provided source pages and collision candidates; 13 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:28:57.878Z",
+    "payloadSha256": "4907c3987d5716af193433c03bc3afbc45256a69b64d8d7ac90caa1d150fd7ca",
+    "builderResultsSha256": "dd1a33b1234414f879c87abf86bfa53e97cfe3713556195c5943742c5a74935b"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r06-m1-08",
+    "prompt": "Distinguish biological wastewater treatment requirements by their role in microbial growth.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Dissolved oxygen",
+      "right": "Electron acceptor required by aerobic treatment microorganisms"
+     },
+     {
+      "id": "p2",
+      "left": "Organic matter",
+      "right": "Carbon-based food source degraded by wastewater microbes"
+     },
+     {
+      "id": "p3",
+      "left": "Nitrogen and phosphorus",
+      "right": "Essential nutrients needed to oxidize available carbon"
+     },
+     {
+      "id": "p4",
+      "left": "Proper pH range",
+      "right": "Acidity or alkalinity window supporting microbial activity"
+     },
+     {
+      "id": "p5",
+      "left": "Absence of toxic materials",
+      "right": "Prevents inhibition or death of treatment microorganisms"
+     },
+     {
+      "id": "p6",
+      "left": "Bacteriology",
+      "right": "Branch of microbiology focused on studying bacteria"
+     }
+    ],
+    "explanation": "Aerobic biological treatment requires oxygen, organic food, nutrients, suitable pH, and freedom from toxic substances."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:27:43.312387+00:00",
+    "notes": "Strict self-review of 13 authored items for wpi-class3-water-coll (10 speed-match, 3 before-after) against provided source pages and collision candidates; 13 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:28:57.878Z",
+    "payloadSha256": "408ebb0d7c578263593ad5e41fd70d644e7465d79228ac16fa6003cc910cc7c2",
+    "builderResultsSha256": "dd1a33b1234414f879c87abf86bfa53e97cfe3713556195c5943742c5a74935b"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r06-m1-09",
+    "prompt": "Distinguish wastewater microbiology terms by their metabolic and ecological definitions.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Freshwater algae",
+      "right": "Chlorophyll-containing plants converting inorganic matter to organic"
+     },
+     {
+      "id": "p2",
+      "left": "Algal bloom",
+      "right": "Sudden spurt of algal growth indicating water chemistry shifts"
+     },
+     {
+      "id": "p3",
+      "left": "Anaerobic",
+      "right": "Capable of living and growing without free oxygen"
+     },
+     {
+      "id": "p4",
+      "left": "Autotrophic organisms",
+      "right": "Organisms that produce their own food from inorganic substances"
+     },
+     {
+      "id": "p5",
+      "left": "Bacteria",
+      "right": "Single-celled organisms with rigid walls that degrade waste"
+     },
+     {
+      "id": "p6",
+      "left": "Waterborne pathogens",
+      "right": "Disease-causing microorganisms transmitted through water"
+     }
+    ],
+    "explanation": "Microorganisms in water and wastewater differ in oxygen needs, food sources, and potential to cause disease."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:27:43.312387+00:00",
+    "notes": "Strict self-review of 13 authored items for wpi-class3-water-coll (10 speed-match, 3 before-after) against provided source pages and collision candidates; 13 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:28:57.878Z",
+    "payloadSha256": "ba683f6275a0ba056080db0f0dc6cbde48ed1805a1229d43a7e3fa922520621a",
+    "builderResultsSha256": "dd1a33b1234414f879c87abf86bfa53e97cfe3713556195c5943742c5a74935b"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r06-m1-10",
+    "prompt": "Distinguish primordial Earth experiment components and microbial roles by their scientific significance.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Ammonia, methane, hydrogen",
+      "right": "Gases used in Stanley Miller's primordial atmosphere test"
+     },
+     {
+      "id": "p2",
+      "left": "Electrical discharge",
+      "right": "Energy source applied to vapor in Miller's apparatus"
+     },
+     {
+      "id": "p3",
+      "left": "Amino acids",
+      "right": "Protein building blocks formed in Miller's seawater"
+     },
+     {
+      "id": "p4",
+      "left": "Waterworks microbiology",
+      "right": "Focuses on controlling pathogens to protect consumers"
+     },
+     {
+      "id": "p5",
+      "left": "Wastewater microbiology",
+      "right": "Harnesses microorganisms to degrade organic waste"
+     },
+     {
+      "id": "p6",
+      "left": "Microscope",
+      "right": "Instrument required to observe microorganisms too small for the eye"
+     }
+    ],
+    "explanation": "Miller showed basic organic building blocks can form abiotically, while operators manage microbes for treatment and pathogen control."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:27:43.312387+00:00",
+    "notes": "Strict self-review of 13 authored items for wpi-class3-water-coll (10 speed-match, 3 before-after) against provided source pages and collision candidates; 13 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:28:57.878Z",
+    "payloadSha256": "09803599a56f29f37464d9bea6fd46c532753fcfeeab105070b7228ababb82bb",
+    "builderResultsSha256": "dd1a33b1234414f879c87abf86bfa53e97cfe3713556195c5943742c5a74935b"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r06-m5-01",
+    "prompt": "In the capillary soldering of a metallic pipe joint, is the joint cleaned with emery cloth before or after melted solder is drawn into the joint?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The joint is cleaned with emery cloth and coated with flux first so oxides do not block capillary flow when solder is drawn in."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:27:43.312387+00:00",
+    "notes": "Strict self-review of 13 authored items for wpi-class3-water-coll (10 speed-match, 3 before-after) against provided source pages and collision candidates; 13 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:28:57.878Z",
+    "payloadSha256": "b6ff008c4139a98fc6b1005ef73b926c2c30cb6df995c7bb6596269a8714aed4",
+    "builderResultsSha256": "dd1a33b1234414f879c87abf86bfa53e97cfe3713556195c5943742c5a74935b"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r06-m5-02",
+    "prompt": "In installing a nonreinforced concrete gravity sewer, are rubber gaskets fitted at the pipe joints before or after wastewater is conveyed through the completed line?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Rubber gaskets are installed at the joints during pipe assembly to seal the line before wastewater is conveyed through it."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:27:43.312387+00:00",
+    "notes": "Strict self-review of 13 authored items for wpi-class3-water-coll (10 speed-match, 3 before-after) against provided source pages and collision candidates; 13 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:28:57.878Z",
+    "payloadSha256": "abb1f9d6c00bc76ee42e6efa72d1d256480e10aeb2d287903a595f8385583666",
+    "builderResultsSha256": "dd1a33b1234414f879c87abf86bfa53e97cfe3713556195c5943742c5a74935b"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-water-coll-r06-m5-03",
+    "prompt": "In protecting a buried metallic pipeline from soil moisture and chemicals, is the underground insulating wrap applied to the pipe before or after the pipe is exposed to wet trench backfill?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Insulating wrap is applied to the metallic pipe before burial so it shields the metal from water and chemicals in the soil."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:27:43.312387+00:00",
+    "notes": "Strict self-review of 13 authored items for wpi-class3-water-coll (10 speed-match, 3 before-after) against provided source pages and collision candidates; 13 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:28:57.878Z",
+    "payloadSha256": "d02c078b3ced7ddb6cee96c21cbfdc47a082ac002215032c711fdb73366374c6",
+    "builderResultsSha256": "dd1a33b1234414f879c87abf86bfa53e97cfe3713556195c5943742c5a74935b"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T04:27:43.312387+00:00",
+   "attestation": "Strict self-review of 13 authored items for wpi-class3-water-coll (10 speed-match, 3 before-after) against provided source pages and collision candidates; 13 accepted, 0 rejected.",
+   "payloadSha256": {
+    "targeth-ht261118-wpi-class3-water-coll-r06-m1-01": "5f559a29c039e8834209ee15341877b6ba946e9cf6347e8f42e56abba62de1c9",
+    "targeth-ht261118-wpi-class3-water-coll-r06-m1-02": "a1a7062dc19ea718650895b052cf85280a7d4236e555081c68e8b2c1e2d0fd68",
+    "targeth-ht261118-wpi-class3-water-coll-r06-m1-03": "ce998b68a5c8642d9da572093ef39bffe941e0f29a164795dd73eba93cd3260f",
+    "targeth-ht261118-wpi-class3-water-coll-r06-m1-04": "bef322d69ccd08a2ad5c2ea3a9a7563b54b65cc579c042e1e0405aae0cb78c15",
+    "targeth-ht261118-wpi-class3-water-coll-r06-m1-05": "b6903cfb687b24c1d461aed7786a9acb50c72bee0fd91bac22c1b326f2d7fe3a",
+    "targeth-ht261118-wpi-class3-water-coll-r06-m1-06": "37426406c95d648724e6411ff69a2dbf9c8ff399ff0efac7fd5daf25d9591fb4",
+    "targeth-ht261118-wpi-class3-water-coll-r06-m1-07": "4907c3987d5716af193433c03bc3afbc45256a69b64d8d7ac90caa1d150fd7ca",
+    "targeth-ht261118-wpi-class3-water-coll-r06-m1-08": "408ebb0d7c578263593ad5e41fd70d644e7465d79228ac16fa6003cc910cc7c2",
+    "targeth-ht261118-wpi-class3-water-coll-r06-m1-09": "ba683f6275a0ba056080db0f0dc6cbde48ed1805a1229d43a7e3fa922520621a",
+    "targeth-ht261118-wpi-class3-water-coll-r06-m1-10": "09803599a56f29f37464d9bea6fd46c532753fcfeeab105070b7228ababb82bb",
+    "targeth-ht261118-wpi-class3-water-coll-r06-m5-01": "b6ff008c4139a98fc6b1005ef73b926c2c30cb6df995c7bb6596269a8714aed4",
+    "targeth-ht261118-wpi-class3-water-coll-r06-m5-02": "abb1f9d6c00bc76ee42e6efa72d1d256480e10aeb2d287903a595f8385583666",
+    "targeth-ht261118-wpi-class3-water-coll-r06-m5-03": "d02c078b3ced7ddb6cee96c21cbfdc47a082ac002215032c711fdb73366374c6"
+   }
+  },
+  "registeredAt": "2026-11-19T04:28:57.878Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 0,
+     "f": 0
+    },
+    "dirs": {
+     "increase": 0,
+     "decrease": 0,
+     "unchanged": 0
+    },
+    "longest": 0,
+    "options": 0
+   },
+   "batchSha256": "95489cab406c4c3cf85355d5c1f2fb4bd86824027bb354673589f2974673e1cd"
+  }
+ }
+}

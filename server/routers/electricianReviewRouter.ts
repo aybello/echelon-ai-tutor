@@ -1,4 +1,6 @@
 import { practiceIdentity, attachPracticeReceipts } from "../practiceQuestionReceipt";
+import { issueAssessmentActivity } from "../assessmentActivity";
+import { assessmentActivityLimits, type AssessmentActivityCapability } from "../../shared/assessmentActivity";
 import { router, adminProcedure, publicProcedure } from "../_core/trpc";
 import { z } from "zod";
 import { TRPCError } from "@trpc/server";
@@ -74,6 +76,8 @@ export const electricianReviewRouter = router({
    * Imported draft material stays invisible until the release controls below are set.
    */
   get309ABetaPractice: publicProcedure.input(z.object({ accessToken: z.string().max(8192).optional() }).optional()).query(async ({ ctx, input }) => {
+    // Receipts and observation capabilities are actor-bound, never shared cache data.
+    ctx.res.setHeader("Cache-Control", "private, no-store");
     const db = await getDb();
     if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
 
@@ -128,7 +132,26 @@ export const electricianReviewRouter = router({
         return [];
       }
     });
-    const { owner } = await practiceIdentity(ctx, input?.accessToken);
-    return { questions: await attachPracticeReceipts(questions, "electrician-309a", owner, false), total: questions.length };
+    const actor = await practiceIdentity(ctx, input?.accessToken);
+    const delivered: Array<(typeof questions)[number] & { attemptToken: string; activityTracking?: AssessmentActivityCapability }> =
+      await attachPracticeReceipts(questions, "electrician-309a", actor.owner, false);
+    for (let offset = 0; offset < delivered.length; offset += assessmentActivityLimits.items) {
+      const chunk = delivered.slice(offset, offset + assessmentActivityLimits.items);
+      try {
+        // 309A is not team-assignable. Use the verified receipt identity, with
+        // learner-only attribution and original indexes used by useQuizSession.
+        const tracking = await issueAssessmentActivity(actor.context, {
+          courseKey: "electrician-309a", mode: "practice", timed: null,
+          items: chunk.map(question => ({
+            id: String(question.id), prompt: question.question,
+            topic: question.topic ?? question.taskCode,
+            options: question.options.map((text, index) => ({ id: String(index), text })),
+            steps: [],
+          })),
+        });
+        if (tracking.tracking) for (const question of chunk) question.activityTracking = tracking;
+      } catch { /* Supplemental observations must never block beta practice. */ }
+    }
+    return { questions: delivered, total: questions.length };
   }),
 });

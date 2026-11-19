@@ -1,0 +1,594 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-wpi-class4-water-r04",
+ "scope": "Owner-authorized AI-reviewed game activities: 10 items.",
+ "additions": [
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r04-m1-01",
+    "prompt": "Distinguish surface water intake screening components by their debris-removal mechanism.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Vertical steel bar screen",
+      "right": "Excludes large floating objects using 1 to 3 inch openings"
+     },
+     {
+      "id": "p2",
+      "left": "Trash rack rake",
+      "right": "Clears accumulated debris from coarse vertical bars"
+     },
+     {
+      "id": "p3",
+      "left": "Fine 3/8-inch screen",
+      "right": "Captures leaves, twigs, and small fish passing the bar rack"
+     },
+     {
+      "id": "p4",
+      "left": "Traveling wire-mesh trays",
+      "right": "Retain suspended solids as raw water flows through"
+     },
+     {
+      "id": "p5",
+      "left": "Drive chains and sprockets",
+      "right": "Lift loaded mesh trays into the upper head enclosure"
+     },
+     {
+      "id": "p6",
+      "left": "Head enclosure water sprays",
+      "right": "Wash retained debris off the raised mesh trays"
+     }
+    ],
+    "explanation": "Intake screening progresses from coarse bar racks that block large objects to fine screens and traveling mesh trays that protect downstream pumps, valves, and piping."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:46.790473+00:00",
+    "notes": "Strict Hydrogen self-review of 10 speed-match items in targeth-wpi-class4-water-r04 against supplied source pages, evidence, and collision candidates; 10 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:45:14.218Z",
+    "payloadSha256": "2c2c0f386a8249aa83f547c93aa7fc5950ab381b51c3b038c99fbaa6974602d9",
+    "builderResultsSha256": "d3cfa04331375524d7581366cd802b1d52a1fde2cdfefd041050f95207231eb1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r04-m1-02",
+    "prompt": "Relate wellhead and borehole structural components to their protective functions.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Borehole",
+      "right": "Excavated vertical opening penetrating into the aquifer"
+     },
+     {
+      "id": "p2",
+      "left": "Well casing",
+      "right": "Prevents wall collapse and houses pump mechanisms"
+     },
+     {
+      "id": "p3",
+      "left": "Cementitious grout",
+      "right": "Seals out undesirable strata and protects casing from corrosion"
+     },
+     {
+      "id": "p4",
+      "left": "Concrete well pad",
+      "right": "Prevents surface contaminants from pooling and seeping along casing"
+     },
+     {
+      "id": "p5",
+      "left": "Sanitary seal",
+      "right": "Closes the top of the casing around pipes and wires"
+     },
+     {
+      "id": "p6",
+      "left": "Casing extension above grade",
+      "right": "Elevates the wellhead opening above ground surface runoff"
+     }
+    ],
+    "explanation": "Each structural element of a municipal well isolates the aquifer from surface runoff, unstable formations, and undesirable subsurface water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:46.790473+00:00",
+    "notes": "Strict Hydrogen self-review of 10 speed-match items in targeth-wpi-class4-water-r04 against supplied source pages, evidence, and collision candidates; 10 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:45:14.218Z",
+    "payloadSha256": "5779898351ec791aa63bcac4e8d4924ccb88f3f199abfdaff8da89d4a2450648",
+    "builderResultsSha256": "d3cfa04331375524d7581366cd802b1d52a1fde2cdfefd041050f95207231eb1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r04-m1-03",
+    "prompt": "Classify diagnostic indicators used to identify groundwater under the direct influence of surface water.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Rapid turbidity shift",
+      "right": "Signals suspended particulates entering from surface runoff"
+     },
+     {
+      "id": "p2",
+      "left": "Rapid temperature shift",
+      "right": "Reflects fast thermal exchange with surface water"
+     },
+     {
+      "id": "p3",
+      "left": "Rapid pH shift",
+      "right": "Indicates quick chemical mixing from precipitation events"
+     },
+     {
+      "id": "p4",
+      "left": "Rainfall correlation",
+      "right": "Links raw-water quality swings directly to storm events"
+     },
+     {
+      "id": "p5",
+      "left": "Giardia and viruses",
+      "right": "Pathogens introduced when surface water infiltrates a well"
+     },
+     {
+      "id": "p6",
+      "left": "Surface indicator organisms",
+      "right": "Biological markers confirming surface-water intrusion"
+     }
+    ],
+    "explanation": "Groundwater influenced by surface water exhibits rapid physical, chemical, and biological shifts tied to rainfall and surface infiltration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:46.790473+00:00",
+    "notes": "Strict Hydrogen self-review of 10 speed-match items in targeth-wpi-class4-water-r04 against supplied source pages, evidence, and collision candidates; 10 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:45:14.218Z",
+    "payloadSha256": "ebc86281a1d694bdd988bf38a86e5d511ff74e028964a23f97ada7030015a302",
+    "builderResultsSha256": "d3cfa04331375524d7581366cd802b1d52a1fde2cdfefd041050f95207231eb1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r04-m1-04",
+    "prompt": "Distinguish surface water supply classifications by their physical setting.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Overland flow",
+      "right": "Runoff not yet collected into a definite stream channel"
+     },
+     {
+      "id": "p2",
+      "left": "Manmade impoundment",
+      "right": "Artificial lake created by damming a stream or river"
+     },
+     {
+      "id": "p3",
+      "left": "Precipitation-sensitive spring",
+      "right": "Natural outflow whose level or quantity shifts with rainfall"
+     },
+     {
+      "id": "p4",
+      "left": "Stream-adjacent well",
+      "right": "Well drilled directly next to or within a river channel"
+     },
+     {
+      "id": "p5",
+      "left": "Rain catchment",
+      "right": "System collecting precipitation directly from surfaces"
+     },
+     {
+      "id": "p6",
+      "left": "Muskeg and tundra ponds",
+      "right": "Shallow northern surface water bodies open to the atmosphere"
+     }
+    ],
+    "explanation": "Surface water supplies encompass any water open to the atmosphere, including overland runoff, impoundments, and shallow wells or springs tied to precipitation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:46.790473+00:00",
+    "notes": "Strict Hydrogen self-review of 10 speed-match items in targeth-wpi-class4-water-r04 against supplied source pages, evidence, and collision candidates; 10 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:45:14.218Z",
+    "payloadSha256": "0eb11c8c43a3ddb775aeba5c806df5ff9a094a92a95388f9ec25db293b1bd6a3",
+    "builderResultsSha256": "d3cfa04331375524d7581366cd802b1d52a1fde2cdfefd041050f95207231eb1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r04-m1-05",
+    "prompt": "Relate watershed hydrology components to their role in surface water systems.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Physical configuration",
+      "right": "Topography and slope shaping how runoff gathers"
+     },
+     {
+      "id": "p2",
+      "left": "Watershed geology",
+      "right": "Underlying rock controlling infiltration and mineral content"
+     },
+     {
+      "id": "p3",
+      "left": "Watershed soils",
+      "right": "Surface layer governing water absorption and erosion"
+     },
+     {
+      "id": "p4",
+      "left": "Watershed vegetation",
+      "right": "Plant cover moderating runoff speed and soil loss"
+     },
+     {
+      "id": "p5",
+      "left": "Tributary inflow",
+      "right": "Side streams adding volume along a river's seaward path"
+     },
+     {
+      "id": "p6",
+      "left": "Direct overland entry",
+      "right": "Gradual river growth occurring between major tributaries"
+     }
+    ],
+    "explanation": "Surface water hydrology examines how watershed topography, geology, soils, vegetation, and tributary inflows govern river quantity and quality."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:46.790473+00:00",
+    "notes": "Strict Hydrogen self-review of 10 speed-match items in targeth-wpi-class4-water-r04 against supplied source pages, evidence, and collision candidates; 10 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:45:14.218Z",
+    "payloadSha256": "508fa31b007022ff3128bc1583fe3cff6dcb2e44cc8e0205024783986dec6b00",
+    "builderResultsSha256": "d3cfa04331375524d7581366cd802b1d52a1fde2cdfefd041050f95207231eb1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r04-m1-06",
+    "prompt": "Distinguish shallow well types by their construction method and physical limitations.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Dug well excavation",
+      "right": "Constructed by hand or unspecialized equipment"
+     },
+     {
+      "id": "p2",
+      "left": "Dug well lining",
+      "right": "Typically cased with concrete or brick"
+     },
+     {
+      "id": "p3",
+      "left": "Dug well vulnerability",
+      "right": "Prone to failure from drought or heavy pumpage"
+     },
+     {
+      "id": "p4",
+      "left": "Driven well screen",
+      "right": "Pointed tip slightly wider than the attached pipe casing"
+     },
+     {
+      "id": "p5",
+      "left": "Driven well installation",
+      "right": "Pounded into unconsolidated strata using a drop hammer"
+     },
+     {
+      "id": "p6",
+      "left": "Bored well construction",
+      "right": "Excavated with hand or machine augers that fill with soil"
+     }
+    ],
+    "explanation": "Dug, driven, and bored wells are shallow unconsolidated-material designs that differ in excavation method and susceptibility to contamination or drought."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:46.790473+00:00",
+    "notes": "Strict Hydrogen self-review of 10 speed-match items in targeth-wpi-class4-water-r04 against supplied source pages, evidence, and collision candidates; 10 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:45:14.218Z",
+    "payloadSha256": "c6582e32993425578b002847b8d4501edbaa1e0db94536873688bbdbed4c2067",
+    "builderResultsSha256": "d3cfa04331375524d7581366cd802b1d52a1fde2cdfefd041050f95207231eb1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r04-m1-07",
+    "prompt": "Connect wellhead sealing details and sanitary seal openings to their specific functions.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Power and control wire port",
+      "right": "Sealed passage delivering electricity to downhole motors"
+     },
+     {
+      "id": "p2",
+      "left": "Drawdown gauge opening",
+      "right": "Sealed access for measuring pumping water level"
+     },
+     {
+      "id": "p3",
+      "left": "Discharge piping opening",
+      "right": "Sealed port carrying pumped groundwater out of the casing"
+     },
+     {
+      "id": "p4",
+      "left": "Sanitary seal air vent",
+      "right": "Allows pressure equalization while blocking contaminants"
+     },
+     {
+      "id": "p5",
+      "left": "Bottom-up continuous grouting",
+      "right": "Fills the annular space upward in one uninterrupted operation"
+     },
+     {
+      "id": "p6",
+      "left": "Pump support cable port",
+      "right": "Sealed opening suspending the submersible pump assembly"
+     }
+    ],
+    "explanation": "A sanitary seal accommodates essential mechanical, electrical, and monitoring penetrations while maintaining a tight barrier at the top of the well casing."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:46.790473+00:00",
+    "notes": "Strict Hydrogen self-review of 10 speed-match items in targeth-wpi-class4-water-r04 against supplied source pages, evidence, and collision candidates; 10 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:45:14.218Z",
+    "payloadSha256": "e17f4c798e9bcad7d2d9174fc7f612c73a9983c9cf076f7905b3f2550ae46983",
+    "builderResultsSha256": "d3cfa04331375524d7581366cd802b1d52a1fde2cdfefd041050f95207231eb1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r04-m1-08",
+    "prompt": "Contrast drinking water quality categories and waterborne pathogen groups.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Primary contaminant standards",
+      "right": "Established based on public health considerations"
+     },
+     {
+      "id": "p2",
+      "left": "Secondary contaminant standards",
+      "right": "Established based on taste, odor, and appearance"
+     },
+     {
+      "id": "p3",
+      "left": "Waterborne bacteria",
+      "right": "Single-celled microorganisms capable of causing disease"
+     },
+     {
+      "id": "p4",
+      "left": "Waterborne protozoa",
+      "right": "Single-celled parasites such as Giardia and Cryptosporidium"
+     },
+     {
+      "id": "p5",
+      "left": "Microbial spores",
+      "right": "Dormant, resistant survival structures of certain organisms"
+     },
+     {
+      "id": "p6",
+      "left": "Waterborne viruses",
+      "right": "Submicroscopic infectious agents requiring host cells"
+     }
+    ],
+    "explanation": "Drinking water quality separates health-based primary criteria from aesthetic secondary criteria while targeting bacteria, protozoa, spores, and viruses."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:46.790473+00:00",
+    "notes": "Strict Hydrogen self-review of 10 speed-match items in targeth-wpi-class4-water-r04 against supplied source pages, evidence, and collision candidates; 10 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:45:14.218Z",
+    "payloadSha256": "8917218260698b415f0d8dc8369b7f2a3f5aa34de62894e474a4be208ecfd4fb",
+    "builderResultsSha256": "d3cfa04331375524d7581366cd802b1d52a1fde2cdfefd041050f95207231eb1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r04-m1-09",
+    "prompt": "Distinguish hydrologic cycle pathways linking precipitation to groundwater and surface water.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Evapotranspiration",
+      "right": "Combined water vapor release from plants and inland waters"
+     },
+     {
+      "id": "p2",
+      "left": "Surface infiltration",
+      "right": "Entry of falling precipitation into the land surface"
+     },
+     {
+      "id": "p3",
+      "left": "Downward percolation",
+      "right": "Gravity-driven movement of water through soil to aquifers"
+     },
+     {
+      "id": "p4",
+      "left": "Surface runoff",
+      "right": "Precipitation flowing overland toward streams and rivers"
+     },
+     {
+      "id": "p5",
+      "left": "Groundwater recharge area",
+      "right": "Land surface supplying water to an underlying aquifer"
+     },
+     {
+      "id": "p6",
+      "left": "Watershed divide",
+      "right": "Topographic boundary separating adjacent drainage basins"
+     }
+    ],
+    "explanation": "Precipitation partitions into evapotranspiration, overland runoff into watersheds, and infiltration that percolates downward into groundwater aquifers."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:46.790473+00:00",
+    "notes": "Strict Hydrogen self-review of 10 speed-match items in targeth-wpi-class4-water-r04 against supplied source pages, evidence, and collision candidates; 10 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:45:14.218Z",
+    "payloadSha256": "e5c3c23ec0af9211dedda68391ee21a4d1add3d2f24929bf25c2faf8c58c5f88",
+    "builderResultsSha256": "d3cfa04331375524d7581366cd802b1d52a1fde2cdfefd041050f95207231eb1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r04-m1-10",
+    "prompt": "Contrast small water system characteristics with broader municipal treatment operations.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Small system source reliance",
+      "right": "Usually depends on groundwater rather than surface water"
+     },
+     {
+      "id": "p2",
+      "left": "Small system process count",
+      "right": "Employs fewer unit treatment processes overall"
+     },
+     {
+      "id": "p3",
+      "left": "Small system cost barrier",
+      "right": "Finds sophisticated processes too expensive to install and run"
+     },
+     {
+      "id": "p4",
+      "left": "Small system staffing",
+      "right": "Operates with limited staff for complex unit processes"
+     },
+     {
+      "id": "p5",
+      "left": "Modern water quality goal",
+      "right": "Defined as safe and healthy to drink"
+     },
+     {
+      "id": "p6",
+      "left": "Operator core requirement",
+      "right": "Combines theoretical principles with experience and attention to detail"
+     }
+    ],
+    "explanation": "Small systems typically rely on groundwater and fewer unit processes due to cost and staffing limits, while all plants depend on skilled operators."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:46.790473+00:00",
+    "notes": "Strict Hydrogen self-review of 10 speed-match items in targeth-wpi-class4-water-r04 against supplied source pages, evidence, and collision candidates; 10 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:45:14.218Z",
+    "payloadSha256": "08c45e6aeb70245adf7ad5aa46abf04f68b3ff5b5a37df79a03f0d8e72f0503e",
+    "builderResultsSha256": "d3cfa04331375524d7581366cd802b1d52a1fde2cdfefd041050f95207231eb1"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T03:44:46.790473+00:00",
+   "attestation": "Strict Hydrogen self-review of 10 speed-match items in targeth-wpi-class4-water-r04 against supplied source pages, evidence, and collision candidates; 10 accepted, 0 rejected.",
+   "payloadSha256": {
+    "targeth-ht261118-wpi-class4-water-r04-m1-01": "2c2c0f386a8249aa83f547c93aa7fc5950ab381b51c3b038c99fbaa6974602d9",
+    "targeth-ht261118-wpi-class4-water-r04-m1-02": "5779898351ec791aa63bcac4e8d4924ccb88f3f199abfdaff8da89d4a2450648",
+    "targeth-ht261118-wpi-class4-water-r04-m1-03": "ebc86281a1d694bdd988bf38a86e5d511ff74e028964a23f97ada7030015a302",
+    "targeth-ht261118-wpi-class4-water-r04-m1-04": "0eb11c8c43a3ddb775aeba5c806df5ff9a094a92a95388f9ec25db293b1bd6a3",
+    "targeth-ht261118-wpi-class4-water-r04-m1-05": "508fa31b007022ff3128bc1583fe3cff6dcb2e44cc8e0205024783986dec6b00",
+    "targeth-ht261118-wpi-class4-water-r04-m1-06": "c6582e32993425578b002847b8d4501edbaa1e0db94536873688bbdbed4c2067",
+    "targeth-ht261118-wpi-class4-water-r04-m1-07": "e17f4c798e9bcad7d2d9174fc7f612c73a9983c9cf076f7905b3f2550ae46983",
+    "targeth-ht261118-wpi-class4-water-r04-m1-08": "8917218260698b415f0d8dc8369b7f2a3f5aa34de62894e474a4be208ecfd4fb",
+    "targeth-ht261118-wpi-class4-water-r04-m1-09": "e5c3c23ec0af9211dedda68391ee21a4d1add3d2f24929bf25c2faf8c58c5f88",
+    "targeth-ht261118-wpi-class4-water-r04-m1-10": "08c45e6aeb70245adf7ad5aa46abf04f68b3ff5b5a37df79a03f0d8e72f0503e"
+   }
+  },
+  "registeredAt": "2026-11-19T03:45:14.218Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 0,
+     "f": 0
+    },
+    "dirs": {
+     "increase": 0,
+     "decrease": 0,
+     "unchanged": 0
+    },
+    "longest": 0,
+    "options": 0
+   },
+   "batchSha256": "deb9735aaed5df2185b2ce01752785b9a988ebe618dd9f9b8f6c3c4b6ee6ae9b"
+  }
+ }
+}

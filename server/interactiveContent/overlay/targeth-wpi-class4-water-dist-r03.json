@@ -1,0 +1,642 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-wpi-class4-water-dist-r03",
+ "scope": "Owner-authorized AI-reviewed game activities: 12 items.",
+ "additions": [
+  {
+   "courseKey": "wpi-class4-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-dist-r03-m1-01",
+    "prompt": "Distinguish each centrifugal pump mechanical component by its structural or sealing function.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Radial line bearing",
+      "right": "Supports vertical shaft loads closest to the pump"
+     },
+     {
+      "id": "p2",
+      "left": "Thrust bearing",
+      "right": "Absorbs major axial shaft forces nearest the motor"
+     },
+     {
+      "id": "p3",
+      "left": "Packing gland",
+      "right": "Compresses packing evenly around the rotating shaft"
+     },
+     {
+      "id": "p4",
+      "left": "Lantern ring",
+      "right": "Distributes lubricant between packing rings on the shaft"
+     },
+     {
+      "id": "p5",
+      "left": "Mechanical seal",
+      "right": "Holds stationary and rotating faces together with a spring"
+     },
+     {
+      "id": "p6",
+      "left": "Stuffing box",
+      "right": "Houses packing and lantern ring at the casing rear"
+     }
+    ],
+    "explanation": "Centrifugal pumps rely on distinct bearings for radial and axial loads and specialized stuffing box components to seal the shaft."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:29:00.030433+00:00",
+    "notes": "Strict final AI self-review of 12 authored native game payloads for wpi-class4-water-dist against supplied source pages, evidence, and collision candidates; 12 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:29:58.469Z",
+    "payloadSha256": "f1113197387d82e88c3dbddc5d068e78381561592c5d86ce838eb57ebe291e11",
+    "builderResultsSha256": "76fc6d0fb3752a08e32157a5c65bc7b48455f696eef64a318332da47e3fd8280"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-dist-r03-m1-02",
+    "prompt": "Distinguish each differential pressure flowmeter type or feature by its hydraulic behavior.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Concentric orifice plate",
+      "right": "Suffers impaired accuracy when dirt builds up upstream"
+     },
+     {
+      "id": "p2",
+      "left": "Eccentric orifice plate",
+      "right": "Accommodates dirty water better than a centered bore"
+     },
+     {
+      "id": "p3",
+      "left": "Venturi flowmeter",
+      "right": "Produces small permanent head loss of 3 to 10 percent"
+     },
+     {
+      "id": "p4",
+      "left": "Flow nozzle",
+      "right": "Features a smooth entry and sharp exit for abrasive fluids"
+     },
+     {
+      "id": "p5",
+      "left": "Nozzle steam service",
+      "right": "Uses rigid construction for stability at high temperatures"
+     },
+     {
+      "id": "p6",
+      "left": "Beta ratio",
+      "right": "Relates throat diameter to inlet pipe diameter"
+     }
+    ],
+    "explanation": "Different primary elements trade off head loss, solids handling, and dimensional stability depending on their geometry."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:29:00.030433+00:00",
+    "notes": "Strict final AI self-review of 12 authored native game payloads for wpi-class4-water-dist against supplied source pages, evidence, and collision candidates; 12 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:29:58.469Z",
+    "payloadSha256": "b8a10858ddb4c21748a54f440174202caeb96e1d33fda30e0f64f332421ef45d",
+    "builderResultsSha256": "76fc6d0fb3752a08e32157a5c65bc7b48455f696eef64a318332da47e3fd8280"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-dist-r03-m1-03",
+    "prompt": "Distinguish each net positive suction head available (NPSHA) variable by its physical meaning.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Pa (atmospheric pressure)",
+      "right": "Absolute pressure of gases pushing on the water surface"
+     },
+     {
+      "id": "p2",
+      "left": "h (static suction lift)",
+      "right": "Vertical liquid column from water surface to pump centerline"
+     },
+     {
+      "id": "p3",
+      "left": "Pv (vapor pressure)",
+      "right": "Absolute pressure at which water vaporizes at given temperature"
+     },
+     {
+      "id": "p4",
+      "left": "he (entrance loss)",
+      "right": "Head lost as water enters the suction pipe inlet"
+     },
+     {
+      "id": "p5",
+      "left": "hf (friction loss)",
+      "right": "Head lost to resistance along the suction piping"
+     },
+     {
+      "id": "p6",
+      "left": "NPSHA",
+      "right": "Net positive suction head available at the pump inlet"
+     }
+    ],
+    "explanation": "NPSHA accounts for atmospheric pressure pushing water into the suction line minus lift, vapor pressure, entrance loss, and friction loss."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:29:00.030433+00:00",
+    "notes": "Strict final AI self-review of 12 authored native game payloads for wpi-class4-water-dist against supplied source pages, evidence, and collision candidates; 12 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:29:58.469Z",
+    "payloadSha256": "8b8bf2b6b8aee411c32f932ff626d5df0854d85181a5f1fbd2d54c8903fc25ce",
+    "builderResultsSha256": "76fc6d0fb3752a08e32157a5c65bc7b48455f696eef64a318332da47e3fd8280"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-dist-r03-m1-04",
+    "prompt": "Distinguish each centrifugal pump design trait by its operational advantage.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Simple rotating element",
+      "right": "Allows construction in many sizes and configurations"
+     },
+     {
+      "id": "p2",
+      "left": "Lead-lined wetted parts",
+      "right": "Resists attack when pumping highly corrosive fluids"
+     },
+     {
+      "id": "p3",
+      "left": "Abrasion-resistant coating",
+      "right": "Protects internal surfaces from gritty or abrasive liquids"
+     },
+     {
+      "id": "p4",
+      "left": "Constant-speed drive match",
+      "right": "Avoids expensive speed reducers for steady conditions"
+     },
+     {
+      "id": "p5",
+      "left": "Compact footprint",
+      "right": "Requires less installation space than other pump types"
+     },
+     {
+      "id": "p6",
+      "left": "Rotary motion",
+      "right": "Reduces maintenance by using fewer moving parts"
+     }
+    ],
+    "explanation": "Centrifugal pumps are widely used because their simple rotary design adapts to diverse materials, compact spaces, and low-maintenance operation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:29:00.030433+00:00",
+    "notes": "Strict final AI self-review of 12 authored native game payloads for wpi-class4-water-dist against supplied source pages, evidence, and collision candidates; 12 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:29:58.469Z",
+    "payloadSha256": "f91983ca8e9025eff5a40f311fe484b2da7f486117ab9d062c3a58b901ccefd8",
+    "builderResultsSha256": "76fc6d0fb3752a08e32157a5c65bc7b48455f696eef64a318332da47e3fd8280"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-dist-r03-m1-05",
+    "prompt": "Distinguish each centrifugal pump limitation or station configuration by its operating characteristic.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Reverse rotation",
+      "right": "Sounds and appears normal despite running backward"
+     },
+     {
+      "id": "p2",
+      "left": "Fixed-speed impeller",
+      "right": "Requires gears or special drives to adjust output speed"
+     },
+     {
+      "id": "p3",
+      "left": "Submersible wet-pit pump",
+      "right": "Operates with both pump and motor below liquid level"
+     },
+     {
+      "id": "p4",
+      "left": "Extended-shaft wet-pit pump",
+      "right": "Keeps the motor dry above water while pump stays submerged"
+     },
+     {
+      "id": "p5",
+      "left": "Underground wet-well/dry-well",
+      "right": "Adds head so gravity carries flow to the next station"
+     },
+     {
+      "id": "p6",
+      "left": "Closed-valve startup",
+      "right": "Prevents priming loss before gradually opening discharge"
+     }
+    ],
+    "explanation": "Centrifugal pump installations vary in motor placement and priming needs, and operators must watch for reverse rotation and speed limits."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:29:00.030433+00:00",
+    "notes": "Strict final AI self-review of 12 authored native game payloads for wpi-class4-water-dist against supplied source pages, evidence, and collision candidates; 12 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:29:58.469Z",
+    "payloadSha256": "fbfef5fbaf9d606ddd7727809171e1bcc0364f409f10120ea0cb6eaeb7f52b05",
+    "builderResultsSha256": "76fc6d0fb3752a08e32157a5c65bc7b48455f696eef64a318332da47e3fd8280"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-dist-r03-m1-06",
+    "prompt": "Distinguish each pneumatic bubbler control component by its role in pump staging.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Air compressor",
+      "right": "Supplies continuous air pressure to the submerged tube"
+     },
+     {
+      "id": "p2",
+      "left": "Submerged bubbler tube",
+      "right": "Senses liquid depth via backpressure at its bottom tip"
+     },
+     {
+      "id": "p3",
+      "left": "Airline pressure switch",
+      "right": "Activates the pump starter at a preset air pressure"
+     },
+     {
+      "id": "p4",
+      "left": "Staged pressure switches",
+      "right": "Bring additional pumps online as water level rises"
+     },
+     {
+      "id": "p5",
+      "left": "Pressure relief valve",
+      "right": "Protects the pneumatic control line from overpressure"
+     },
+     {
+      "id": "p6",
+      "left": "Float control system",
+      "right": "Uses a buoyant mechanism as the simplest pump controller"
+     }
+    ],
+    "explanation": "Bubbler systems convert water depth into air pressure to trigger staged pump switches, while float systems offer simpler mechanical control."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:29:00.030433+00:00",
+    "notes": "Strict final AI self-review of 12 authored native game payloads for wpi-class4-water-dist against supplied source pages, evidence, and collision candidates; 12 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:29:58.469Z",
+    "payloadSha256": "68e72f732c3df7cc8e872b3b650db784e303646e31896ef6610dc019b57e6fe9",
+    "builderResultsSha256": "76fc6d0fb3752a08e32157a5c65bc7b48455f696eef64a318332da47e3fd8280"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-dist-r03-m1-07",
+    "prompt": "Distinguish each flowmeter selection factor by the system condition it addresses.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Regional meter availability",
+      "right": "Determines which meter models can be sourced locally"
+     },
+     {
+      "id": "p2",
+      "left": "Post-installation service",
+      "right": "Ensures local technical support after meter startup"
+     },
+     {
+      "id": "p3",
+      "left": "Accuracy requirement",
+      "right": "Sets the acceptable measurement tolerance for the application"
+     },
+     {
+      "id": "p4",
+      "left": "Magnitude of flow rate",
+      "right": "Identifies the nominal capacity the meter must handle"
+     },
+     {
+      "id": "p5",
+      "left": "Standards and codes",
+      "right": "Guides proper installation for optimum meter accuracy"
+     },
+     {
+      "id": "p6",
+      "left": "Periodic calibration",
+      "right": "Maintains long-term accuracy of transmitting instruments"
+     }
+    ],
+    "explanation": "Selecting and maintaining a flowmeter requires evaluating capacity, accuracy, local support, code-compliant installation, and periodic calibration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:29:00.030433+00:00",
+    "notes": "Strict final AI self-review of 12 authored native game payloads for wpi-class4-water-dist against supplied source pages, evidence, and collision candidates; 12 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:29:58.469Z",
+    "payloadSha256": "517e859107a05d404a3c5aa5bb202996991c8f1ddc39d3347eabff1a1f6b158d",
+    "builderResultsSha256": "76fc6d0fb3752a08e32157a5c65bc7b48455f696eef64a318332da47e3fd8280"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-dist-r03-m1-08",
+    "prompt": "Distinguish each ultrasonic or velocity flowmeter concept by its measurement behavior.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Time-of-flight ultrasonic",
+      "right": "Measures flow using acoustic signals across the pipe"
+     },
+     {
+      "id": "p2",
+      "left": "Full signal penetration",
+      "right": "Occurs when clean fluid allows unimpeded acoustic travel"
+     },
+     {
+      "id": "p3",
+      "left": "High particle concentration",
+      "right": "Causes poor signal penetration and greater meter error"
+     },
+     {
+      "id": "p4",
+      "left": "Velocity meter application",
+      "right": "Suited for intermediate flow rates in clean water"
+     },
+     {
+      "id": "p5",
+      "left": "Plastic meter housing",
+      "right": "Offers a corrosion-resistant material option for velocity meters"
+     },
+     {
+      "id": "p6",
+      "left": "Signal conditioner",
+      "right": "Processes raw voltage into a usable meter output"
+     }
+    ],
+    "explanation": "Ultrasonic and velocity meters perform best in clean water, as suspended particles scatter acoustic signals and increase measurement error."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:29:00.030433+00:00",
+    "notes": "Strict final AI self-review of 12 authored native game payloads for wpi-class4-water-dist against supplied source pages, evidence, and collision candidates; 12 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:29:58.469Z",
+    "payloadSha256": "4f31bc3d39e1fa1d9f8049c8937893d2bf613a644faabebe33d003c4560cda18",
+    "builderResultsSha256": "76fc6d0fb3752a08e32157a5c65bc7b48455f696eef64a318332da47e3fd8280"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-dist-r03-m1-09",
+    "prompt": "Distinguish each hydraulic or mechanical condition in a centrifugal pump by its physical effect.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Expanding discharge passage",
+      "right": "Reduces water velocity to build discharge pressure head"
+     },
+     {
+      "id": "p2",
+      "left": "Pressure head gain",
+      "right": "Supplies energy to push water through discharge piping"
+     },
+     {
+      "id": "p3",
+      "left": "Brake horsepower curve",
+      "right": "Shows power input needed for optimal pump performance"
+     },
+     {
+      "id": "p4",
+      "left": "Air-filled casing",
+      "right": "Prevents a non-self-priming pump from drawing water"
+     },
+     {
+      "id": "p5",
+      "left": "Common shaft construction",
+      "right": "Places pump and motor bearings inside the motor assembly"
+     },
+     {
+      "id": "p6",
+      "left": "Base plate",
+      "right": "Supports both the pump and its drive unit"
+     }
+    ],
+    "explanation": "Centrifugal pumps convert velocity into pressure head in the discharge passage, require water-filled casings to prime, and rely on proper shaft support."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:29:00.030433+00:00",
+    "notes": "Strict final AI self-review of 12 authored native game payloads for wpi-class4-water-dist against supplied source pages, evidence, and collision candidates; 12 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:29:58.469Z",
+    "payloadSha256": "589c60ba0bc58847a2411046798744a5b51d4f8764417f6e567aeacbd946ae08",
+    "builderResultsSha256": "76fc6d0fb3752a08e32157a5c65bc7b48455f696eef64a318332da47e3fd8280"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-dist-r03-m1-10",
+    "prompt": "Distinguish each differential pressure metering principle by its physical relationship.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Pipe restriction",
+      "right": "Creates a velocity change that produces differential pressure"
+     },
+     {
+      "id": "p2",
+      "left": "Q = A x v",
+      "right": "Relates volumetric flow rate to area and average velocity"
+     },
+     {
+      "id": "p3",
+      "left": "Meter instrumentation",
+      "right": "Translates differential pressure into a flow volume"
+     },
+     {
+      "id": "p4",
+      "left": "Permanent pressure loss",
+      "right": "Results from friction as a function of bore-to-pipe ratio"
+     },
+     {
+      "id": "p5",
+      "left": "Segmental orifice plate",
+      "right": "Handles suspended solids better than a concentric plate"
+     },
+     {
+      "id": "p6",
+      "left": "10:1 flow range",
+      "right": "Span over which a Venturi maintains plus or minus 1 percent accuracy"
+     }
+    ],
+    "explanation": "Differential pressure meters use a constriction to relate velocity changes to flow rate, with geometry dictating permanent head loss and solids tolerance."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:29:00.030433+00:00",
+    "notes": "Strict final AI self-review of 12 authored native game payloads for wpi-class4-water-dist against supplied source pages, evidence, and collision candidates; 12 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:29:58.469Z",
+    "payloadSha256": "b556f56038ec12f77cc9a3d917bd902f34162ebd3dd749e1f78e8cc7ba8165fa",
+    "builderResultsSha256": "76fc6d0fb3752a08e32157a5c65bc7b48455f696eef64a318332da47e3fd8280"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-dist-r03-m5-01",
+    "prompt": "In a pneumatic bubbler tube level control system, does air compressor pressure overcoming the liquid depth at the submerged tube bottom occur before or after a bubble is released from the tube?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Air pressure must first match and overcome the hydrostatic pressure of the liquid depth before a bubble can escape from the bottom of the submerged tube."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:29:00.030433+00:00",
+    "notes": "Strict final AI self-review of 12 authored native game payloads for wpi-class4-water-dist against supplied source pages, evidence, and collision candidates; 12 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:29:58.469Z",
+    "payloadSha256": "b1e25f98f1e896454f860010391f49d61bc1e0d649715f70fa7876cd44b323dc",
+    "builderResultsSha256": "76fc6d0fb3752a08e32157a5c65bc7b48455f696eef64a318332da47e3fd8280"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-dist-r03-m5-02",
+    "prompt": "When a non-self-priming centrifugal pump drains while stopped, does refilling the pump casing and impeller with water occur before or after the pump can resume discharging water?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "A non-self-priming centrifugal pump cannot draw water to its impeller with air in the casing, so refilling with water must happen before discharge resumes."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:29:00.030433+00:00",
+    "notes": "Strict final AI self-review of 12 authored native game payloads for wpi-class4-water-dist against supplied source pages, evidence, and collision candidates; 12 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:29:58.469Z",
+    "payloadSha256": "053943374487f8fd2c2310e9a05551daf105dc7a1195dbbc7abbc47f2de6de3b",
+    "builderResultsSha256": "76fc6d0fb3752a08e32157a5c65bc7b48455f696eef64a318332da47e3fd8280"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T03:29:00.030433+00:00",
+   "attestation": "Strict final AI self-review of 12 authored native game payloads for wpi-class4-water-dist against supplied source pages, evidence, and collision candidates; 12 accepted, 0 rejected.",
+   "payloadSha256": {
+    "targeth-ht261118-wpi-class4-water-dist-r03-m1-01": "f1113197387d82e88c3dbddc5d068e78381561592c5d86ce838eb57ebe291e11",
+    "targeth-ht261118-wpi-class4-water-dist-r03-m1-02": "b8a10858ddb4c21748a54f440174202caeb96e1d33fda30e0f64f332421ef45d",
+    "targeth-ht261118-wpi-class4-water-dist-r03-m1-03": "8b8bf2b6b8aee411c32f932ff626d5df0854d85181a5f1fbd2d54c8903fc25ce",
+    "targeth-ht261118-wpi-class4-water-dist-r03-m1-04": "f91983ca8e9025eff5a40f311fe484b2da7f486117ab9d062c3a58b901ccefd8",
+    "targeth-ht261118-wpi-class4-water-dist-r03-m1-05": "fbfef5fbaf9d606ddd7727809171e1bcc0364f409f10120ea0cb6eaeb7f52b05",
+    "targeth-ht261118-wpi-class4-water-dist-r03-m1-06": "68e72f732c3df7cc8e872b3b650db784e303646e31896ef6610dc019b57e6fe9",
+    "targeth-ht261118-wpi-class4-water-dist-r03-m1-07": "517e859107a05d404a3c5aa5bb202996991c8f1ddc39d3347eabff1a1f6b158d",
+    "targeth-ht261118-wpi-class4-water-dist-r03-m1-08": "4f31bc3d39e1fa1d9f8049c8937893d2bf613a644faabebe33d003c4560cda18",
+    "targeth-ht261118-wpi-class4-water-dist-r03-m1-09": "589c60ba0bc58847a2411046798744a5b51d4f8764417f6e567aeacbd946ae08",
+    "targeth-ht261118-wpi-class4-water-dist-r03-m1-10": "b556f56038ec12f77cc9a3d917bd902f34162ebd3dd749e1f78e8cc7ba8165fa",
+    "targeth-ht261118-wpi-class4-water-dist-r03-m5-01": "b1e25f98f1e896454f860010391f49d61bc1e0d649715f70fa7876cd44b323dc",
+    "targeth-ht261118-wpi-class4-water-dist-r03-m5-02": "053943374487f8fd2c2310e9a05551daf105dc7a1195dbbc7abbc47f2de6de3b"
+   }
+  },
+  "registeredAt": "2026-11-19T03:29:58.469Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 0,
+     "f": 0
+    },
+    "dirs": {
+     "increase": 0,
+     "decrease": 0,
+     "unchanged": 0
+    },
+    "longest": 0,
+    "options": 0
+   },
+   "batchSha256": "41c1500af1db7f83997c4910b646946237e3e1f7dcf4d3cbd86d4bc2c82e4be6"
+  }
+ }
+}

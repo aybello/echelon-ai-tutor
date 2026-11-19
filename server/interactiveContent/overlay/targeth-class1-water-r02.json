@@ -1,0 +1,3084 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-class1-water-r02",
+ "scope": "Owner-authorized AI-reviewed game activities: 85 items.",
+ "additions": [
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m0-01",
+    "prompt": "Surface water includes water flowing in streams and rivers as well as water stored in natural or artificial lakes.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Surface water refers to water open to the atmosphere, including streams, rivers, and natural or artificial lakes."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "8816901ab0d3fadd6c4c3591ac25668502f9da0c5718c721af86b54e05c84c51",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m0-02",
+    "prompt": "A watershed is the underground rock layer that stores groundwater beneath an impermeable clay cap.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "A watershed is the land drainage basin from which surface water flows into a stream or river."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "62b0f53ed04495148b97e95f764022d8123ad72eb6c84b01016bdd8759b137b5",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m0-03",
+    "prompt": "Traveling intake screens use wire mesh trays that lift retained solids into a head enclosure for spray washing.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Drive chains and sprockets raise the wire mesh trays into a head enclosure where water sprays remove debris."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "cffddce620dee5f04824ba90c6069eeb30b474ab94be632589aea64f1b172499",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m0-04",
+    "prompt": "Surface water supplies are easy to shield from contamination and rarely need treatment before distribution.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Surface water supplies are difficult to protect from contamination and require treatment."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "7d36cae13e3fb0cec4f00cc1064fbfcac5aba25781f1a5db363dae77b92eaef8",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m0-05",
+    "prompt": "Primary maximum contaminant levels are based on health considerations, whereas secondary levels address aesthetic qualities.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Primary standards protect health, while secondary standards address taste, odor, and appearance."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "4c6bbb6ea18d90a029e17df46125b9da954f618ec775a07c18500c31032b1559",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m0-06",
+    "prompt": "Rapid shifts in turbidity, temperature, and pH after rainfall help identify groundwater under the direct influence of surface water.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Significant, rapid quality shifts correlated with rainfall indicate surface water influence on a groundwater source."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "bc3cc1e9f28d25638644026ce09c375edb7b208e6318b8a1aa38aff7fcedb9d4",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m0-07",
+    "prompt": "Bored wells are typically constructed in hard bedrock using heavy percussion drilling rigs.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Bored wells are constructed in unconsolidated materials using hand or machine-driven augers."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "2476b902e2cf723593180af14104cc17307d2bdd6b4ec1a72a1b641bcca83661",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m0-08",
+    "prompt": "Grouting the annular space around a well casing helps protect the casing from external corrosion.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Grout seals out undesirable strata water, restrains unstable formations, and protects the casing from external corrosion."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "2782f6977f85da517ac67b910ec6bec0f3cd573fa97e17eafc21b31ae0407d9c",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m0-09",
+    "prompt": "A sanitary seal at the top of a well casing is designed to leave an open gap for surface runoff to drain.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "A sanitary seal closes the top of the casing tightly around wires, piping, and vents to prevent contamination."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "b78c67f75c11b08ea7a97fda20e16f609a151cd1646d2156f8a3c09b7e256c02",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m0-10",
+    "prompt": "Small water systems often use fewer treatment unit processes because they frequently rely on groundwater.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Small systems commonly use groundwater and lack the scale for many sophisticated surface treatment processes."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "5f3e935643479c216376481930ee02ea80d87f19e8dc349a8a3125e343e0f515",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m0-11",
+    "prompt": "Cryptosporidium oocysts are larger than Giardia cysts, making them easier to strain out.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Cryptosporidium oocysts are smaller (4 to 6 micrometers) than Giardia cysts (8 to 14 micrometers)."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "9dd54a326dcc4a8af0b2721b147099c4c6ff6ed9cc73577828b4455cc11a137c",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m0-12",
+    "prompt": "Giardia cysts are relatively resistant to chlorine, especially at higher pH and low water temperatures.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Cold water and higher pH reduce chlorine effectiveness against dormant Giardia cysts."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "4a2a9f3a84a27e585235bfc367087ab14dd0f7704d2870c851d7891297bea31f",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m0-13",
+    "prompt": "Pathogen inactivation by chemical disinfectants involves attacking cell walls, metabolic enzymes, or biosynthesis.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Disinfectants inactivate pathogens by impairing cell structure, interfering with energy metabolism, or blocking protein and nucleic acid synthesis."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "2d6aa21ca23d24a9e2c1a45945368ef5438007a6a5adffc2f4a73b086bf4b5a9",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m0-14",
+    "prompt": "Dr. John Snow traced the 1854 London cholera outbreak by culturing bacteria in a modern laboratory.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Before germ theory was understood, Snow mapped cholera cases around the Broad Street pump to identify the source."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "30737f799a4794f3315f989528dde97a255561e7ed6df3d5f86c794fa804410d",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m0-15",
+    "prompt": "Infiltration of surface water into a groundwater supply has no effect on viral or organic contamination.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Surface water infiltration into groundwater can introduce Giardia, viruses, turbidity, and organic material."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "8b0985283a6c68aabee5da308de4c951c07a3df94b8d643b46173c030415e0de",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m1-01",
+    "prompt": "Match each surface water hydrology term to its physical description.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Surface water",
+      "right": "Water open to the atmosphere from runoff"
+     },
+     {
+      "id": "p2",
+      "left": "Watershed",
+      "right": "Drainage basin feeding a stream or river"
+     },
+     {
+      "id": "p3",
+      "left": "Recharge area",
+      "right": "Land area where water enters an aquifer"
+     },
+     {
+      "id": "p4",
+      "left": "Overland flow",
+      "right": "Runoff not yet in a definite channel"
+     },
+     {
+      "id": "p5",
+      "left": "Tributary",
+      "right": "Stream adding flow to a larger river"
+     },
+     {
+      "id": "p6",
+      "left": "Hydrology",
+      "right": "Science of water movement and quality factors"
+     }
+    ],
+    "explanation": "Hydrology connects watersheds, overland flow, and tributaries to surface water quantity and quality."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "05894ebb5ebb713e7c85f5f71f502016ddcfb54bb586ecfc9151256277e65a96",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m1-02",
+    "prompt": "Match each intake screening component to its mechanical function.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Coarse bar screen",
+      "right": "Vertical steel bars excluding large objects"
+     },
+     {
+      "id": "p2",
+      "left": "Trash rack rake",
+      "right": "Removes accumulated debris from bar screens"
+     },
+     {
+      "id": "p3",
+      "left": "Fine screen",
+      "right": "Removes leaves, twigs, and small fish"
+     },
+     {
+      "id": "p4",
+      "left": "Wire mesh trays",
+      "right": "Retain solids on a traveling screen"
+     },
+     {
+      "id": "p5",
+      "left": "Drive chains",
+      "right": "Lift screen trays into the head enclosure"
+     },
+     {
+      "id": "p6",
+      "left": "Water sprays",
+      "right": "Wash debris off raised traveling trays"
+     }
+    ],
+    "explanation": "Intake screens protect downstream pumps, valves, and piping by removing debris in stages."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "478bac801a1f863453c2ab5bb4d460aa89db3e27015e0b5fcd71dd62c689e130",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m1-03",
+    "prompt": "Match each shallow well construction type to its excavation method.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Dug well",
+      "right": "Excavated by hand or unspecialized equipment"
+     },
+     {
+      "id": "p2",
+      "left": "Driven well",
+      "right": "Pointed screen pounded with a drop hammer"
+     },
+     {
+      "id": "p3",
+      "left": "Bored well",
+      "right": "Constructed using hand or machine augers"
+     },
+     {
+      "id": "p4",
+      "left": "Brick or concrete lining",
+      "right": "Typical casing material for dug wells"
+     },
+     {
+      "id": "p5",
+      "left": "Unconsolidated strata",
+      "right": "Loose formations suited for driven wells"
+     },
+     {
+      "id": "p6",
+      "left": "Vertical drilled well",
+      "right": "Standard method for municipal groundwater"
+     }
+    ],
+    "explanation": "Shallow dug, driven, and bored wells differ in construction and are generally unsuitable for public supplies."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "3411fa2869ade3fcc8790439a4e59020cd643c2f9b5d8f10c0566195da10993c",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m1-04",
+    "prompt": "Match each wellhead component to its protective or structural role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Well casing",
+      "right": "Prevents borehole collapse and stores water"
+     },
+     {
+      "id": "p2",
+      "left": "Cement grout",
+      "right": "Seals annular space against strata water"
+     },
+     {
+      "id": "p3",
+      "left": "Concrete well pad",
+      "right": "Prevents surface pooling around the casing"
+     },
+     {
+      "id": "p4",
+      "left": "Sanitary seal",
+      "right": "Closes top of casing around pipes and wires"
+     },
+     {
+      "id": "p5",
+      "left": "Borehole",
+      "right": "Drilled or excavated hole into the aquifer"
+     },
+     {
+      "id": "p6",
+      "left": "Annular space",
+      "right": "Gap between borehole wall and well casing"
+     }
+    ],
+    "explanation": "Each wellhead component works to keep the borehole open and block surface or subsurface contamination."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "fbd7a62e3b20782aff57de87fea1c2de590f05d1f8258f40bc30e1c386f87ce4",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m1-05",
+    "prompt": "Match each protozoan pathogen feature to its water treatment implication.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Giardia cyst",
+      "right": "8 to 14 micrometer dormant stage"
+     },
+     {
+      "id": "p2",
+      "left": "Cryptosporidium oocyst",
+      "right": "4 to 6 micrometer resilient stage"
+     },
+     {
+      "id": "p3",
+      "left": "Excystation",
+      "right": "Activation inside a warm-blooded host"
+     },
+     {
+      "id": "p4",
+      "left": "Granular media filtration",
+      "right": "Physical barrier removing protozoan cysts"
+     },
+     {
+      "id": "p5",
+      "left": "Cold, high-pH water",
+      "right": "Condition where Giardia resists chlorine"
+     },
+     {
+      "id": "p6",
+      "left": "Microscopic assay",
+      "right": "Tedious method required to detect cysts"
+     }
+    ],
+    "explanation": "Giardia and Cryptosporidium form chlorine-resistant stages that require effective filtration barriers."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "380100d8570bbb1450e5ea23de1a6ad65cf1291df611080b794705ec8837b751",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m1-06",
+    "prompt": "Match each disinfection mechanism or factor to how it inactivates pathogens.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Cell wall attack",
+      "right": "Impairs cellular structural organization"
+     },
+     {
+      "id": "p2",
+      "left": "Metabolic interference",
+      "right": "Disables energy-yielding enzyme groups"
+     },
+     {
+      "id": "p3",
+      "left": "Biosynthesis block",
+      "right": "Halts protein and nucleic acid creation"
+     },
+     {
+      "id": "p4",
+      "left": "Cell wall oxidation",
+      "right": "Primary factor controlling disinfection efficiency"
+     },
+     {
+      "id": "p5",
+      "left": "Intracellular diffusion",
+      "right": "Allows disinfectant to reach internal enzymes"
+     },
+     {
+      "id": "p6",
+      "left": "Membrane impairment",
+      "right": "Disrupts semi-permeable cell boundaries"
+     }
+    ],
+    "explanation": "Chemical disinfectants inactivate microorganisms by breaching cell walls and disrupting internal metabolism or growth."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "4b8ec51bf3d057d7fce8e29af965c94e288877099b139c49adb739189b0c6993",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m1-07",
+    "prompt": "Match each drinking water quality category to its primary focus.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Primary standard",
+      "right": "Based on human health considerations"
+     },
+     {
+      "id": "p2",
+      "left": "Secondary standard",
+      "right": "Based on taste, odor, and appearance"
+     },
+     {
+      "id": "p3",
+      "left": "Pathogens",
+      "right": "Disease-causing bacteria, protozoa, and viruses"
+     },
+     {
+      "id": "p4",
+      "left": "Turbidity",
+      "right": "Cloudiness monitored to assess filtration"
+     },
+     {
+      "id": "p5",
+      "left": "Disinfection byproducts",
+      "right": "Compounds controlled alongside pathogen removal"
+     },
+     {
+      "id": "p6",
+      "left": "Chemical monitoring",
+      "right": "Prevents inorganic and organic contamination"
+     }
+    ],
+    "explanation": "Water quality programs balance pathogen control, chemical safety, and aesthetic acceptability."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "4439602278cd9632ac1d1f520ee26aa627032533dc3550184fc2694220ba3f78",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m1-08",
+    "prompt": "Match each groundwater and surface-influence concept to its meaning.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Infiltration",
+      "right": "Precipitation entering the land surface"
+     },
+     {
+      "id": "p2",
+      "left": "Percolation",
+      "right": "Downward movement through soil by gravity"
+     },
+     {
+      "id": "p3",
+      "left": "Aquifer",
+      "right": "Saturated underground layer storing water"
+     },
+     {
+      "id": "p4",
+      "left": "Unconfined aquifer",
+      "right": "Aquifer without an overlying confining layer"
+     },
+     {
+      "id": "p5",
+      "left": "Confined aquifer",
+      "right": "Aquifer bounded by impermeable layers"
+     },
+     {
+      "id": "p6",
+      "left": "Surface-influenced well",
+      "right": "Groundwater showing rapid rain-linked shifts"
+     }
+    ],
+    "explanation": "Groundwater forms by infiltration and percolation into aquifers, which may be influenced by surface water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "e525411ddcf3eb08624237ec44c898d8441d2189e5266c1876095f92a61a5eb1",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m1-09",
+    "prompt": "Match each historical cholera investigation element to its role in 1854 London.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Dr. John Snow",
+      "right": "Traced cholera transmission to drinking water"
+     },
+     {
+      "id": "p2",
+      "left": "Spot map",
+      "right": "Plotted where cholera victims lived and worked"
+     },
+     {
+      "id": "p3",
+      "left": "Broad Street pump",
+      "right": "Communal well linked to clustered deaths"
+     },
+     {
+      "id": "p4",
+      "left": "Pump handle removal",
+      "right": "Action that ended the local epidemic"
+     },
+     {
+      "id": "p5",
+      "left": "Non-users of pump",
+      "right": "Residents who remained healthy"
+     },
+     {
+      "id": "p6",
+      "left": "Methodical linkage",
+      "right": "Correlated cases before germ theory existed"
+     }
+    ],
+    "explanation": "John Snow's mapping and pump-handle removal established the link between contaminated water and cholera."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "ffaa77345bdf490a92679b7033b22849bd41dbc3c76746624b35826a6f7fa1b8",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m1-10",
+    "prompt": "Match each small-system or operator principle to its operational significance.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Small water systems",
+      "right": "Often rely on groundwater with fewer processes"
+     },
+     {
+      "id": "p2",
+      "left": "Operator certification",
+      "right": "Demonstrates knowledge of treatment principles"
+     },
+     {
+      "id": "p3",
+      "left": "Attention to detail",
+      "right": "Essential alongside formal plant design"
+     },
+     {
+      "id": "p4",
+      "left": "Safe and healthy",
+      "right": "Modern description of potable water quality"
+     },
+     {
+      "id": "p5",
+      "left": "Unit processes",
+      "right": "Individual treatment steps in a plant"
+     },
+     {
+      "id": "p6",
+      "left": "Protocol implementation",
+      "right": "Turns written procedures into real protection"
+     }
+    ],
+    "explanation": "Effective waterworks operation combines scientific understanding, operator skill, and consistent execution."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "b5d9450074c826739bba3d6c749a4e599646e2b3aa928df9043e89aa3cf6c728",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m2-01",
+    "prompt": "Three of these are types of aquifers or groundwater sources described in the handbook. Which surface-water intake device is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Unconfined aquifer"
+     },
+     {
+      "id": "o2",
+      "label": "Confined aquifer"
+     },
+     {
+      "id": "o3",
+      "label": "Natural spring"
+     },
+     {
+      "id": "o4",
+      "label": "Traveling screen"
+     }
+    ],
+    "correctOptionId": "o4",
+    "explanation": "Unconfined aquifers, confined aquifers, and springs are groundwater sources, whereas a traveling screen is a surface intake device."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "5a7a6715785dc575f7350ee14c240e2597aa6c7559df123ad4a225a69c1d2d2f",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m2-02",
+    "prompt": "Three of these are structural components of a vertical municipal well. Which surface hydrology term is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Well casing"
+     },
+     {
+      "id": "o2",
+      "label": "Annular cement grout"
+     },
+     {
+      "id": "o3",
+      "label": "Sanitary seal"
+     },
+     {
+      "id": "o4",
+      "label": "Watershed divide"
+     }
+    ],
+    "correctOptionId": "o4",
+    "explanation": "Casing, grout, and sanitary seals are physical well components, whereas a watershed divide is a surface drainage boundary."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "de4b555ba99fd1da6c976ab78a32a9cb886c9a41c107cc3610893e698d99223c",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m2-03",
+    "prompt": "Three of these are shallow well types constructed in unconsolidated materials. Which surface-water source is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Dug well"
+     },
+     {
+      "id": "o2",
+      "label": "Shallow driven well"
+     },
+     {
+      "id": "o3",
+      "label": "Bored well"
+     },
+     {
+      "id": "o4",
+      "label": "Surface reservoir"
+     }
+    ],
+    "correctOptionId": "o4",
+    "explanation": "Dug, driven, and bored wells are shallow groundwater excavations, while a surface reservoir is an open impoundment."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "0c5551265b79f003ecc481c458fb81822c968fc4d4d5f38c122629c626fe04ec",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m2-04",
+    "prompt": "Three of these are pathogen groups that water treatment must remove or inactivate. Which aesthetic parameter is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Bacteria"
+     },
+     {
+      "id": "o2",
+      "label": "Protozoa"
+     },
+     {
+      "id": "o3",
+      "label": "Viruses"
+     },
+     {
+      "id": "o4",
+      "label": "Color"
+     }
+    ],
+    "correctOptionId": "o4",
+    "explanation": "Bacteria, protozoa, and viruses are disease-causing pathogens, whereas color is an aesthetic water quality characteristic."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "721860e096921c928c64b1cf5f781f699f173f95a3786b8889bcdd325f87e1df",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m2-05",
+    "prompt": "Three of these are primary mechanisms by which chemical disinfectants inactivate pathogens. Which physical screening action is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Cell wall destruction"
+     },
+     {
+      "id": "o2",
+      "label": "Metabolic enzyme interference"
+     },
+     {
+      "id": "o3",
+      "label": "Biosynthesis inhibition"
+     },
+     {
+      "id": "o4",
+      "label": "Coarse bar raking"
+     }
+    ],
+    "correctOptionId": "o4",
+    "explanation": "Cell wall attack, enzyme interference, and biosynthesis blocking are disinfection mechanisms, while bar raking removes large intake debris."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "68318e2bae481cf25b4e1eb2233abafd9d8eb9276f232451ef70c1b1c66c63ee",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m2-06",
+    "prompt": "Three of these are surface water sources discussed in Chapter 18. Which underground formation is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Streams and rivers"
+     },
+     {
+      "id": "o2",
+      "label": "Manmade impoundments"
+     },
+     {
+      "id": "o3",
+      "label": "Rain catchments"
+     },
+     {
+      "id": "o4",
+      "label": "Confined aquifers"
+     }
+    ],
+    "correctOptionId": "o4",
+    "explanation": "Streams, impoundments, and rain catchments are surface water sources, whereas confined aquifers are subsurface groundwater formations."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "1a6776919343328754de09bbd3957e2a9580c485e4cbff4fe3e8c4765dc68cb2",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m2-07",
+    "prompt": "Three of these are water quality characteristics monitored for rapid rainfall-linked shifts to detect surface-water influence on a well. Which well-construction item is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Turbidity"
+     },
+     {
+      "id": "o2",
+      "label": "Temperature"
+     },
+     {
+      "id": "o3",
+      "label": "pH"
+     },
+     {
+      "id": "o4",
+      "label": "Drop hammer"
+     }
+    ],
+    "correctOptionId": "o4",
+    "explanation": "Turbidity, temperature, and pH are water quality indicators of surface influence, while a drop hammer is a well-driving tool."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "456d098a379607af66bedd0d8a803ebc14f3850e7371616c03c8fd20a95d9e89",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m2-08",
+    "prompt": "Three of these are filtration methods capable of removing 8 to 14 micrometer Giardia cysts. Which chemical addition step is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Diatomaceous earth filtration"
+     },
+     {
+      "id": "o2",
+      "label": "Granular media filtration"
+     },
+     {
+      "id": "o3",
+      "label": "Membrane filtration"
+     },
+     {
+      "id": "o4",
+      "label": "Coagulant rapid mixing"
+     }
+    ],
+    "correctOptionId": "o4",
+    "explanation": "Diatomaceous earth, granular media, and membranes physically filter cysts, whereas rapid mixing disperses coagulant chemicals."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "c43fca953cbd1314f6e2be44714837bb99472d32387354f502e6f5381b33dfb8",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m2-09",
+    "prompt": "Three of these are openings built into a sanitary well seal at the top of a casing. Which surface-water structure is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Power wire opening"
+     },
+     {
+      "id": "o2",
+      "label": "Discharge piping opening"
+     },
+     {
+      "id": "o3",
+      "label": "Air vent opening"
+     },
+     {
+      "id": "o4",
+      "label": "Trash rack rake"
+     }
+    ],
+    "correctOptionId": "o4",
+    "explanation": "Power wires, discharge piping, and air vents pass through a sanitary seal, whereas a trash rack rake cleans intake bar screens."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "a5c9db66526e088a8d545a06f6580ff02f2ade357222cd378271579bad128604",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m2-10",
+    "prompt": "Three of these are disinfection byproducts regulated under the Stage 1 D/DBP Rule. Which protozoan pathogen is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Total trihalomethanes"
+     },
+     {
+      "id": "o2",
+      "label": "Haloacetic acids"
+     },
+     {
+      "id": "o3",
+      "label": "Chlorite"
+     },
+     {
+      "id": "o4",
+      "label": "Cryptosporidium"
+     }
+    ],
+    "correctOptionId": "o4",
+    "explanation": "Trihalomethanes, haloacetic acids, and chlorite are chemical disinfection byproducts, whereas Cryptosporidium is a biological protozoan pathogen."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "918edf555aebfb3121ac25234788ba87c1f7985ba64faa0fa4155744df2c9eba",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m2-11",
+    "prompt": "Three of these are contaminants that surface water infiltration can introduce into a groundwater supply. Which protective structure is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Giardia cysts"
+     },
+     {
+      "id": "o2",
+      "label": "Viruses"
+     },
+     {
+      "id": "o3",
+      "label": "Organic material"
+     },
+     {
+      "id": "o4",
+      "label": "Well pad"
+     }
+    ],
+    "correctOptionId": "o4",
+    "explanation": "Giardia, viruses, and organic material are contaminants, whereas a concrete well pad is a protective surface seal."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "9ab02dcac653ac78532c1591fab5e06a6530378a2bca76b210c8d266f9126c46",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m2-12",
+    "prompt": "Three of these are components of watershed hydrology. Which mechanical pump part is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Soils"
+     },
+     {
+      "id": "o2",
+      "label": "Vegetation"
+     },
+     {
+      "id": "o3",
+      "label": "Geology"
+     },
+     {
+      "id": "o4",
+      "label": "Pump shaft"
+     }
+    ],
+    "correctOptionId": "o4",
+    "explanation": "Soils, vegetation, and geology are natural watershed hydrology components, while a pump shaft is mechanical well equipment."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "f73412de8857544c69f5e431e811f351a32ceb27861f1ca61c7478d28dcdf6fe",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m2-13",
+    "prompt": "Three of these are functions of pumping cementitious grout into the annular space of a well. Which item is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Sealing out surface pollution"
+     },
+     {
+      "id": "o2",
+      "label": "Protecting casing from corrosion"
+     },
+     {
+      "id": "o3",
+      "label": "Restraining unstable soil"
+     },
+     {
+      "id": "o4",
+      "label": "Spraying debris off screens"
+     }
+    ],
+    "correctOptionId": "o4",
+    "explanation": "Grout seals out pollution, protects against corrosion, and stabilizes soil; spraying debris is a traveling screen function."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "65340584617d699f97e714b6d076b1cd04d5718c5c90f18844eddc8beb97258f",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m2-14",
+    "prompt": "Three of these are aesthetic considerations associated with secondary drinking water standards. Which health-related item is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Taste"
+     },
+     {
+      "id": "o2",
+      "label": "Odor"
+     },
+     {
+      "id": "o3",
+      "label": "Color and appearance"
+     },
+     {
+      "id": "o4",
+      "label": "Pathogen control"
+     }
+    ],
+    "correctOptionId": "o4",
+    "explanation": "Taste, odor, and appearance are aesthetic qualities, whereas pathogen control is a primary health-protection requirement."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "de406221e6697e79cf40bcb19e6bb3d942fc5d11eaf08d6d31964bb288417563",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m2-15",
+    "prompt": "Three of these are materials or equipment used in constructing a dug well. Which modern disinfection concept is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Hand excavation"
+     },
+     {
+      "id": "o2",
+      "label": "Brick lining"
+     },
+     {
+      "id": "o3",
+      "label": "Concrete casing"
+     },
+     {
+      "id": "o4",
+      "label": "Cell wall oxidation"
+     }
+    ],
+    "correctOptionId": "o4",
+    "explanation": "Hand excavation, brick lining, and concrete casing relate to dug wells, whereas cell wall oxidation is a disinfection mechanism."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "372c248156c559acc165e04bca0cabc13a355563696228c445ed58cffe0085fa",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m3-01",
+    "prompt": "Assume a river receives additional tributaries and direct overland runoff along its seaward course with no diversions. What happens to the river's total flow?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Each tributary and overland runoff contribution adds water volume, increasing the river's flow downstream."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "93eed56f135b5a4418983563779b83b45b1ea417c385f006f28c9afa858cfcb9",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m3-02",
+    "prompt": "Assume a coarse vertical bar screen with 2-inch openings is placed at a river intake. What happens to the passage of large floating logs into the intake?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Coarse bar screens physically block large objects, decreasing their entry into intake pumps and piping."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "e9b675d46bbb58da72ec6aa62460893ae7c283b9bc4784214cc29249020b2054",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m3-03",
+    "prompt": "Assume a steel well casing is surrounded by continuous cementitious grout in corrosive soil. What happens to external corrosion of the casing?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Grouting seals the annular space and protects the well casing from external corrosion."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "1c85282e57af13424ae0720f92d020621d60359d53b7b36a932cb59db56ad42a",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m3-04",
+    "prompt": "Assume a reinforced concrete well pad is built and graded around a wellhead casing. What happens to surface water seeping down along the outside of the casing?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "A concrete well pad provides a ground seal that prevents contaminants from pooling and seeping down the casing."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "688e4fa4d1d48e420fcbba412546485608d745079a6db88610fd41b66647aee9",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m3-05",
+    "prompt": "Assume surface water containing Giardia and organic matter infiltrates a shallow unconfined well. What happens to the pathogen risk in the raw well water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Surface water infiltration can introduce Giardia, viruses, and organic material, increasing raw water pathogen risk."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "e5e4be9c27a35b728d88b007713eda115f72abdc2e81dc43536e8b439f534d0d",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m3-06",
+    "prompt": "Assume water temperature drops and pH rises during chlorination of water containing Giardia cysts. What happens to the resistance of Giardia cysts to chlorine?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Giardia cysts are especially resistant to chlorine at higher pH and lower water temperatures."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "c30466175be0156a03b42a59d11290b5e672ad71f674e489b2e2a70728e33dba",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m3-07",
+    "prompt": "Assume a chemical disinfectant's ability to diffuse into a bacterial cell and disrupt enzymes improves at constant contact time. What happens to pathogen inactivation efficiency?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Greater diffusion into the cell to interfere with cellular activity increases disinfection efficiency."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "3d98e8469be45ead95ea41f91122610f478069a406e12716481699290d6bd80d",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m3-08",
+    "prompt": "Assume a small community switches from a turbid surface river to a protected deep groundwater well. What happens to the number of treatment unit processes typically needed?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Small systems relying on protected groundwater typically require fewer treatment unit processes than surface water plants."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "6a887b02e680fafe3d470747ae2ae6e9e0265e7b93d9e14911ad7c985983f03b",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m3-09",
+    "prompt": "Assume a sanitary seal is properly tightened around all wires and pipes at the top of a well casing. What happens to contaminant entry through the casing top?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "A sanitary seal tightly closes openings at the top of the casing to prevent contamination."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "be82c58f165cfdc7fdc4e191633c38a530d9525416dae44904378edcd0e6835e",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m3-10",
+    "prompt": "Assume a 3/8-inch fine screen is added downstream of a coarse bar rack at a river intake. What happens to the amount of leaves and twigs reaching the intake pumps?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "A 3/8-inch fine screen removes leaves, twigs, and small fish that pass through a coarse bar rack."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "b7ccdf08c49fe41e0bd4a61fa0198324b53c5eb87851c3358535f2726a06caf0",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m3-11",
+    "prompt": "Assume raw water containing Giardia cysts passes through a properly operated granular media filter. What happens to the concentration of Giardia cysts in the filtered water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Giardia cysts are 8 to 14 micrometers and are effectively removed by granular media filtration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "6bb074dcd9975600ca236e7b0402dff19ff9082c54fc3826e10bda6aad9568d4",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m3-12",
+    "prompt": "Assume a shallow dug well experiences prolonged drought and heavy pumping while recharge stops. What happens to the risk of well failure from water depletion?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Shallow dug wells are prone to failure during drought or heavy pumpage."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "1300b531933c991a273de852a443eab0ba6ff7a3dd12f3c9b294597030ac18dd",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m3-13",
+    "prompt": "Assume a traveling intake screen collects more debris on its wire-mesh trays while intermittent drive controls are active. What happens to the frequency of screen travel?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Traveling screen operation is intermittent and controlled by the amount of accumulated debris."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "8edc185e49f4fc6ef7324a203d977c1bc7c188c8653ae902455b3ab188e6ef78",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m3-14",
+    "prompt": "Assume a coarse bar screen removes branches from river water before treatment. What happens to the dissolved mineral concentration in the water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Mechanical screening removes large physical debris and does not alter dissolved mineral concentrations."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "d36c796b0e5131d7c7db88311e572228edef6967f0dedfa4d30bf2b12d4d1a14",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m3-15",
+    "prompt": "Assume a disinfectant prevents bacterial synthesis of normal proteins and nucleic acids while other conditions stay constant. What happens to the viable bacterial population?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Blocking biosynthesis and growth is a primary mechanism of pathogen inactivation, reducing viable bacteria."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "b0c4d9a26fd5bb95e8d6fa0758d21ee261ef9dbf7fbc308d7216d81a861ed59b",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m4-01",
+    "prompt": "Three statements describe surface water hydrology. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "A watershed is the drainage basin from which surface water flows to a stream."
+     },
+     {
+      "id": "o2",
+      "label": "Tributaries and overland flow increase a river's discharge as it moves seaward."
+     },
+     {
+      "id": "o3",
+      "label": "Surface water is shielded from the atmosphere by clay layers."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Surface water is open to the atmosphere; confined groundwater lies beneath impermeable layers."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "b8abe64f77c03f59d40cb9142e5fdf06ea72fee644299bddb35cb41b6f7cbbff",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m4-02",
+    "prompt": "Three statements describe surface water intake screens. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Coarse vertical bar screens exclude large objects to protect intake pumps and piping."
+     },
+     {
+      "id": "o2",
+      "label": "Fine screens with 3/8-inch openings capture leaves, twigs, and small fish."
+     },
+     {
+      "id": "o3",
+      "label": "Traveling screens dissolve suspended solids chemically."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Traveling screens mechanically retain solids on wire-mesh trays and wash them off with water sprays."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "68f3a385d2ad328253b127641acfc2996bc761208e49b6334a6027679ac8c3cc",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m4-03",
+    "prompt": "Three statements describe groundwater aquifers. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Precipitation infiltrates soil and percolates downward by gravity to form groundwater."
+     },
+     {
+      "id": "o2",
+      "label": "Groundwater is stored underground in saturated layers called aquifers."
+     },
+     {
+      "id": "o3",
+      "label": "Inland lakes hold far more freshwater than underground aquifers."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Overall, more freshwater exists as groundwater than as surface water, including the Great Lakes."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "729e87a8063cae36183fc63b93c2dad54d0ad4d5f5aec58e46ae91b397b84683",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m4-04",
+    "prompt": "Three statements describe groundwater under the direct influence of surface water. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Surface water infiltration can introduce Giardia, viruses, and organic matter into a well."
+     },
+     {
+      "id": "o2",
+      "label": "Rapid shifts in turbidity, temperature, and pH after rain suggest surface influence."
+     },
+     {
+      "id": "o3",
+      "label": "Surface-influenced groundwater needs no disinfection."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Groundwater under the direct influence of surface water requires disinfection and treatment like surface water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "4790e03b0fa6fe9b97a70a91ea423cc2412f70b9ba869febece5e2bbbf74f62a",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m4-05",
+    "prompt": "Three statements describe shallow well construction. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Dug wells are wide, shallow excavations often lined with concrete or brick."
+     },
+     {
+      "id": "o2",
+      "label": "Driven wells use a pointed screen pounded into unconsolidated strata."
+     },
+     {
+      "id": "o3",
+      "label": "Shallow dug wells are preferred for large municipal utilities."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Dug wells are prone to drought failure and contamination and are generally unacceptable for public supplies."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "ccdcfabc00809c788ac6dbaaddaf69ce43a5f3d7760eb1d0dbb9891b1a8ce169",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m4-06",
+    "prompt": "Three statements describe well casing and grouting. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "A well casing prevents borehole walls from collapsing and houses pump components."
+     },
+     {
+      "id": "o2",
+      "label": "Cementitious grout seals the annular space to block undesirable strata water."
+     },
+     {
+      "id": "o3",
+      "label": "Grout is poured loosely at the top of the casing so water can drain downward."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Grout is pumped under continuous pressure from the bottom upward in one continuous operation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "3182a34579db792c576d2172d2f334fd54e52a4d33b19cf4e415a20ebe93e3e6",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m4-07",
+    "prompt": "Three statements describe wellhead protection components. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "A reinforced concrete well pad prevents contaminants from pooling around the casing."
+     },
+     {
+      "id": "o2",
+      "label": "A sanitary seal closes the top of the casing around wires and discharge piping."
+     },
+     {
+      "id": "o3",
+      "label": "Well casings are cut flush below grade so surface runoff can enter freely."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Well casings extend above grade to help prevent surface water and contaminants from entering."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "d45eac811f09506284b379d877b51e216f6797978ca5d257fc667b0a1ed6209a",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m4-08",
+    "prompt": "Three statements describe Giardia and Cryptosporidium. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Giardia cysts are 8 to 14 micrometers and can be removed by granular media filtration."
+     },
+     {
+      "id": "o2",
+      "label": "Cryptosporidium oocysts are smaller than Giardia cysts, typically 4 to 6 micrometers."
+     },
+     {
+      "id": "o3",
+      "label": "Simple, rapid colorimetric tests reliably enumerate Giardia cysts in water samples."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "No simple, reliable assay exists for Giardia cysts; microscopic detection is tedious and requires skill."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "d958465fc43275141248954cb1456ccbb909a3ddfe880a87b99d8669610c78c0",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m4-09",
+    "prompt": "Three statements describe pathogen inactivation mechanisms. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Disinfectants can destroy or impair cellular structural organization and membranes."
+     },
+     {
+      "id": "o2",
+      "label": "Disinfectants can interfere with energy-yielding metabolism by disabling enzyme groups."
+     },
+     {
+      "id": "o3",
+      "label": "Disinfectants stimulate protein and nucleic acid synthesis to exhaust pathogen energy."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Disinfectants prevent biosynthesis and growth by blocking synthesis of normal proteins, nucleic acids, or cell walls."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "6d8c619cbcf5e3dc658790b052ac7acdbaa3040ffd6c7346c759853468d740e3",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m4-10",
+    "prompt": "Three statements describe Dr. John Snow's 1854 cholera investigation. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Snow mapped where cholera victims lived and worked to locate the outbreak center."
+     },
+     {
+      "id": "o2",
+      "label": "Removing the Broad Street pump handle ended the local cholera epidemic."
+     },
+     {
+      "id": "o3",
+      "label": "Snow proved his theory by dosing the communal well with sodium hypochlorite."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Snow ended the outbreak by having the Broad Street pump handle removed, not by chlorinating the well."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "17f94190ded0f81e51d9069ec8cc9f7e011af83ad1ef83acaab47dc7e2fdd575",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m4-11",
+    "prompt": "Three statements describe drinking water standards. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Primary maximum contaminant levels are established to protect human health."
+     },
+     {
+      "id": "o2",
+      "label": "Secondary standards address aesthetic qualities such as taste, odor, and appearance."
+     },
+     {
+      "id": "o3",
+      "label": "Secondary standards regulate acute waterborne pathogens like bacteria and viruses."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Pathogens are regulated under primary health-based standards, whereas secondary standards cover aesthetics."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "1a816992ce5a47fb1703ff0d134f12fba6e6e5064effed85b7a19eb5c476a0b5",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m4-12",
+    "prompt": "Three statements describe waterworks operations. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Operators need a basic understanding of scientific principles behind unit processes."
+     },
+     {
+      "id": "o2",
+      "label": "Attention to detail and operator experience are vital alongside plant design."
+     },
+     {
+      "id": "o3",
+      "label": "Written treatment protocols protect water quality without being actively implemented."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Protocols are hollow words on paper without proper, active implementation by qualified operators."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "f4666ee9181418a1935e7932ee799253ad1af41b94b437e1ee6a5e24db0381a9",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m4-13",
+    "prompt": "Three statements describe small water systems. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Small systems often use fewer unit treatment processes than large surface plants."
+     },
+     {
+      "id": "o2",
+      "label": "Many small systems rely on groundwater as their primary water source."
+     },
+     {
+      "id": "o3",
+      "label": "Small systems install complex advanced processes because they have large operating staffs."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Small systems often have limited operating staff and budgets, making sophisticated processes impractical."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "37af3ab2d4f0937636dbf8f64af02343aaf5b03d74fea9d37ec75650caa92d1e",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m4-14",
+    "prompt": "Three statements describe bored and driven wells. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Bored wells are excavated using hand or machine-driven augers."
+     },
+     {
+      "id": "o2",
+      "label": "Driven wells are pounded into unconsolidated water-bearing strata."
+     },
+     {
+      "id": "o3",
+      "label": "Driven wells are excavated in solid granite using rotary diamond bits."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Driven wells use a pointed screen pounded into unconsolidated materials, not solid bedrock."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "3ec69dbb81d98653172401108c81fda1d883de405673b9a2d8961ec48ece0f43",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m4-15",
+    "prompt": "Three statements describe protozoan life cycles in water. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Dormant Giardia cysts can survive harsh environmental conditions in cold water."
+     },
+     {
+      "id": "o2",
+      "label": "Excystation occurs after a warm-blooded host ingests the dormant cyst or oocyst."
+     },
+     {
+      "id": "o3",
+      "label": "Cryptosporidium oocysts are inactivated immediately upon entering cool surface water."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Cryptosporidium oocysts are resilient and can survive adverse conditions until ingested by a host."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "f7fce48b7f91be0b7e97fe0afe58aba207621a8a470959d76f8d4e7c28a3fa57",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m5-01",
+    "prompt": "In natural groundwater recharge from rainfall, does surface infiltration occur before or after downward percolation through soil?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Precipitation first infiltrates the land surface and then percolates downward through soil under gravity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "a4ca66f7328997d9144be6138e66062b87382464a38ba798cb8e9e7809511693",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m5-02",
+    "prompt": "In a dual-stage surface-water intake with a coarse bar screen and a 3/8-inch fine screen, does water pass through the fine screen before or after the coarse bar screen?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "Coarse bar screens exclude large objects first, and fine screens remove smaller leaves and twigs downstream."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "807ec85fa9f348b3be979de5834587766e07782402237cce0c0216e8e1031826",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m5-03",
+    "prompt": "In a traveling intake screen cycle, does debris retention on the wire-mesh trays occur before or after water sprays wash the trays in the head enclosure?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Wire-mesh trays retain solids in the flow first, and drive chains lift them to the head enclosure for spray washing."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "ab3dd1521cdc1086845d07f68da1f331f10f2b893b6279064a7b0f95038a9ad1",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m5-04",
+    "prompt": "In the municipal well-development sequence described in Chapter 18, does submitting the development application occur before or after official well site approval?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The standard sequence begins with submitting an application, which is followed by well site approval."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "afc59f2d50a31039933e0e8e53565939e3850acc4bcd04223a0e7eeb1f4b34e4",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m5-05",
+    "prompt": "In continuous pressure grouting of a well's annular space, does grout placement at the bottom of the space occur before or after grout reaches the ground surface?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Grout is pumped under continuous pressure starting at the bottom and progressing upward."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "9214833dd6e71d9e559115cc65672673a64000704a53c189c5bd728584211b59",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m5-06",
+    "prompt": "In a conventional surface-water treatment train, does the pretreatment stage occur before or after coagulant addition?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Raw water passes through the pretreatment stage ahead of coagulant addition."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "9b31e6ae351d673c67d9fa9a52e78ebd58b0b5256d69e803270a8980d92e26a4",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m5-07",
+    "prompt": "In the biological life cycle of Giardia, does host ingestion of the dormant cyst occur before or after excystation?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Dormant cysts remain inactive until ingested by a warm-blooded animal, after which excystation occurs."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "66197dbb6be95aa5669745e080a9c4bb37bc761bb8265adc5099fbd7b3d020aa",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m5-08",
+    "prompt": "In chemical pathogen inactivation, does interference with internal metabolic enzymes occur before or after the disinfectant diffuses into the cell?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "The disinfectant must diffuse into the cell before it can interfere with intracellular enzyme activity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "60eef0f6d5b98c07b348a76ab4f262d3e289609778cd6f00df9fc7745e40f5c6",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m5-09",
+    "prompt": "In John Snow's 1854 cholera investigation, did removing the Broad Street pump handle occur before or after mapping the cholera cases?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "Snow first mapped the cholera cases to identify the pump as the source, and had the handle removed afterward."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "10c662b10dc5a9a37a3af079510f91ab377c1e1aff583a8912322e335b0851eb",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m5-10",
+    "prompt": "In a municipal groundwater supply using a vertical well, does penetrating the aquifer with a borehole occur before or after pumping water to the surface?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The vertical borehole must penetrate the aquifer before groundwater can be pumped to the surface."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "4504299cfd8c82f2a45084f7e6c73f8545608296b00d4b565837e295fb46badd",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m5-11",
+    "prompt": "In the natural runoff pathway feeding a river, does flow in a definite stream channel occur before or after overland flow across the land surface?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "Overland flow is runoff that has not yet reached a definite stream channel."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "1777cd89d9cb57fc5557754c35f587f479849b4709b2a9cf893c115211fbf6d4",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m5-12",
+    "prompt": "In a municipal water system, are treatment unit processes applied to raw source water before or after distribution to customers?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Treatment unit processes treat raw source water before it is distributed to customers."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "600e48da64beeb8bd4ea1233a20345087782282c9d2c1e92ab963828ae611a00",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m5-13",
+    "prompt": "In a driven well installation, does pounding the pointed well screen into unconsolidated strata occur before or after pumping water from the well?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The pointed screen and pipe are driven down to the water-bearing strata before water can be pumped."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "a8f6d499fa8665cd73d21d5eaaf2e20e6275e321e3254d8d2fcf36aa58a050d4",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m5-14",
+    "prompt": "In the Cryptosporidium life cycle, does excystation occur before or after a warm-blooded animal ingests the oocyst?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "Cryptosporidium oocysts remain dormant until ingested by a warm-blooded animal, where excystation continues the cycle."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "14e4bc71276aba3d5bb33405213a4963d7cd55ea7b94f6442949e55c455b0d3b",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-water-r02-m5-15",
+    "prompt": "In a bored well excavation, does augering soil from the borehole occur before or after installing the well casing?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Augers excavate the borehole in unconsolidated materials before the casing is placed inside."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+    "notes": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T02:51:26.464Z",
+    "payloadSha256": "905f4d1150719d22d910a68ae0d2b435dcb4780c31a5dc327f18022e1e923dbb",
+    "builderResultsSha256": "2a45ce3f6067334f0a39814798587fe2d063fb948b2578187a04746854e84cdf"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T02:50:17.981860+00:00",
+   "attestation": "Strict Hydrogen self-review of all 85 authored items in targeth-class1-water-r02 against supplied source pages, evidence, and collision candidates; 85 accepted, 0 rejected.",
+   "payloadSha256": {
+    "targeth-ht261118-class1-water-r02-m0-01": "8816901ab0d3fadd6c4c3591ac25668502f9da0c5718c721af86b54e05c84c51",
+    "targeth-ht261118-class1-water-r02-m0-02": "62b0f53ed04495148b97e95f764022d8123ad72eb6c84b01016bdd8759b137b5",
+    "targeth-ht261118-class1-water-r02-m0-03": "cffddce620dee5f04824ba90c6069eeb30b474ab94be632589aea64f1b172499",
+    "targeth-ht261118-class1-water-r02-m0-04": "7d36cae13e3fb0cec4f00cc1064fbfcac5aba25781f1a5db363dae77b92eaef8",
+    "targeth-ht261118-class1-water-r02-m0-05": "4c6bbb6ea18d90a029e17df46125b9da954f618ec775a07c18500c31032b1559",
+    "targeth-ht261118-class1-water-r02-m0-06": "bc3cc1e9f28d25638644026ce09c375edb7b208e6318b8a1aa38aff7fcedb9d4",
+    "targeth-ht261118-class1-water-r02-m0-07": "2476b902e2cf723593180af14104cc17307d2bdd6b4ec1a72a1b641bcca83661",
+    "targeth-ht261118-class1-water-r02-m0-08": "2782f6977f85da517ac67b910ec6bec0f3cd573fa97e17eafc21b31ae0407d9c",
+    "targeth-ht261118-class1-water-r02-m0-09": "b78c67f75c11b08ea7a97fda20e16f609a151cd1646d2156f8a3c09b7e256c02",
+    "targeth-ht261118-class1-water-r02-m0-10": "5f3e935643479c216376481930ee02ea80d87f19e8dc349a8a3125e343e0f515",
+    "targeth-ht261118-class1-water-r02-m0-11": "9dd54a326dcc4a8af0b2721b147099c4c6ff6ed9cc73577828b4455cc11a137c",
+    "targeth-ht261118-class1-water-r02-m0-12": "4a2a9f3a84a27e585235bfc367087ab14dd0f7704d2870c851d7891297bea31f",
+    "targeth-ht261118-class1-water-r02-m0-13": "2d6aa21ca23d24a9e2c1a45945368ef5438007a6a5adffc2f4a73b086bf4b5a9",
+    "targeth-ht261118-class1-water-r02-m0-14": "30737f799a4794f3315f989528dde97a255561e7ed6df3d5f86c794fa804410d",
+    "targeth-ht261118-class1-water-r02-m0-15": "8b0985283a6c68aabee5da308de4c951c07a3df94b8d643b46173c030415e0de",
+    "targeth-ht261118-class1-water-r02-m1-01": "05894ebb5ebb713e7c85f5f71f502016ddcfb54bb586ecfc9151256277e65a96",
+    "targeth-ht261118-class1-water-r02-m1-02": "478bac801a1f863453c2ab5bb4d460aa89db3e27015e0b5fcd71dd62c689e130",
+    "targeth-ht261118-class1-water-r02-m1-03": "3411fa2869ade3fcc8790439a4e59020cd643c2f9b5d8f10c0566195da10993c",
+    "targeth-ht261118-class1-water-r02-m1-04": "fbd7a62e3b20782aff57de87fea1c2de590f05d1f8258f40bc30e1c386f87ce4",
+    "targeth-ht261118-class1-water-r02-m1-05": "380100d8570bbb1450e5ea23de1a6ad65cf1291df611080b794705ec8837b751",
+    "targeth-ht261118-class1-water-r02-m1-06": "4b8ec51bf3d057d7fce8e29af965c94e288877099b139c49adb739189b0c6993",
+    "targeth-ht261118-class1-water-r02-m1-07": "4439602278cd9632ac1d1f520ee26aa627032533dc3550184fc2694220ba3f78",
+    "targeth-ht261118-class1-water-r02-m1-08": "e525411ddcf3eb08624237ec44c898d8441d2189e5266c1876095f92a61a5eb1",
+    "targeth-ht261118-class1-water-r02-m1-09": "ffaa77345bdf490a92679b7033b22849bd41dbc3c76746624b35826a6f7fa1b8",
+    "targeth-ht261118-class1-water-r02-m1-10": "b5d9450074c826739bba3d6c749a4e599646e2b3aa928df9043e89aa3cf6c728",
+    "targeth-ht261118-class1-water-r02-m2-01": "5a7a6715785dc575f7350ee14c240e2597aa6c7559df123ad4a225a69c1d2d2f",
+    "targeth-ht261118-class1-water-r02-m2-02": "de4b555ba99fd1da6c976ab78a32a9cb886c9a41c107cc3610893e698d99223c",
+    "targeth-ht261118-class1-water-r02-m2-03": "0c5551265b79f003ecc481c458fb81822c968fc4d4d5f38c122629c626fe04ec",
+    "targeth-ht261118-class1-water-r02-m2-04": "721860e096921c928c64b1cf5f781f699f173f95a3786b8889bcdd325f87e1df",
+    "targeth-ht261118-class1-water-r02-m2-05": "68318e2bae481cf25b4e1eb2233abafd9d8eb9276f232451ef70c1b1c66c63ee",
+    "targeth-ht261118-class1-water-r02-m2-06": "1a6776919343328754de09bbd3957e2a9580c485e4cbff4fe3e8c4765dc68cb2",
+    "targeth-ht261118-class1-water-r02-m2-07": "456d098a379607af66bedd0d8a803ebc14f3850e7371616c03c8fd20a95d9e89",
+    "targeth-ht261118-class1-water-r02-m2-08": "c43fca953cbd1314f6e2be44714837bb99472d32387354f502e6f5381b33dfb8",
+    "targeth-ht261118-class1-water-r02-m2-09": "a5c9db66526e088a8d545a06f6580ff02f2ade357222cd378271579bad128604",
+    "targeth-ht261118-class1-water-r02-m2-10": "918edf555aebfb3121ac25234788ba87c1f7985ba64faa0fa4155744df2c9eba",
+    "targeth-ht261118-class1-water-r02-m2-11": "9ab02dcac653ac78532c1591fab5e06a6530378a2bca76b210c8d266f9126c46",
+    "targeth-ht261118-class1-water-r02-m2-12": "f73412de8857544c69f5e431e811f351a32ceb27861f1ca61c7478d28dcdf6fe",
+    "targeth-ht261118-class1-water-r02-m2-13": "65340584617d699f97e714b6d076b1cd04d5718c5c90f18844eddc8beb97258f",
+    "targeth-ht261118-class1-water-r02-m2-14": "de406221e6697e79cf40bcb19e6bb3d942fc5d11eaf08d6d31964bb288417563",
+    "targeth-ht261118-class1-water-r02-m2-15": "372c248156c559acc165e04bca0cabc13a355563696228c445ed58cffe0085fa",
+    "targeth-ht261118-class1-water-r02-m3-01": "93eed56f135b5a4418983563779b83b45b1ea417c385f006f28c9afa858cfcb9",
+    "targeth-ht261118-class1-water-r02-m3-02": "e9b675d46bbb58da72ec6aa62460893ae7c283b9bc4784214cc29249020b2054",
+    "targeth-ht261118-class1-water-r02-m3-03": "1c85282e57af13424ae0720f92d020621d60359d53b7b36a932cb59db56ad42a",
+    "targeth-ht261118-class1-water-r02-m3-04": "688e4fa4d1d48e420fcbba412546485608d745079a6db88610fd41b66647aee9",
+    "targeth-ht261118-class1-water-r02-m3-05": "e5e4be9c27a35b728d88b007713eda115f72abdc2e81dc43536e8b439f534d0d",
+    "targeth-ht261118-class1-water-r02-m3-06": "c30466175be0156a03b42a59d11290b5e672ad71f674e489b2e2a70728e33dba",
+    "targeth-ht261118-class1-water-r02-m3-07": "3d98e8469be45ead95ea41f91122610f478069a406e12716481699290d6bd80d",
+    "targeth-ht261118-class1-water-r02-m3-08": "6a887b02e680fafe3d470747ae2ae6e9e0265e7b93d9e14911ad7c985983f03b",
+    "targeth-ht261118-class1-water-r02-m3-09": "be82c58f165cfdc7fdc4e191633c38a530d9525416dae44904378edcd0e6835e",
+    "targeth-ht261118-class1-water-r02-m3-10": "b7ccdf08c49fe41e0bd4a61fa0198324b53c5eb87851c3358535f2726a06caf0",
+    "targeth-ht261118-class1-water-r02-m3-11": "6bb074dcd9975600ca236e7b0402dff19ff9082c54fc3826e10bda6aad9568d4",
+    "targeth-ht261118-class1-water-r02-m3-12": "1300b531933c991a273de852a443eab0ba6ff7a3dd12f3c9b294597030ac18dd",
+    "targeth-ht261118-class1-water-r02-m3-13": "8edc185e49f4fc6ef7324a203d977c1bc7c188c8653ae902455b3ab188e6ef78",
+    "targeth-ht261118-class1-water-r02-m3-14": "d36c796b0e5131d7c7db88311e572228edef6967f0dedfa4d30bf2b12d4d1a14",
+    "targeth-ht261118-class1-water-r02-m3-15": "b0c4d9a26fd5bb95e8d6fa0758d21ee261ef9dbf7fbc308d7216d81a861ed59b",
+    "targeth-ht261118-class1-water-r02-m4-01": "b8abe64f77c03f59d40cb9142e5fdf06ea72fee644299bddb35cb41b6f7cbbff",
+    "targeth-ht261118-class1-water-r02-m4-02": "68f3a385d2ad328253b127641acfc2996bc761208e49b6334a6027679ac8c3cc",
+    "targeth-ht261118-class1-water-r02-m4-03": "729e87a8063cae36183fc63b93c2dad54d0ad4d5f5aec58e46ae91b397b84683",
+    "targeth-ht261118-class1-water-r02-m4-04": "4790e03b0fa6fe9b97a70a91ea423cc2412f70b9ba869febece5e2bbbf74f62a",
+    "targeth-ht261118-class1-water-r02-m4-05": "ccdcfabc00809c788ac6dbaaddaf69ce43a5f3d7760eb1d0dbb9891b1a8ce169",
+    "targeth-ht261118-class1-water-r02-m4-06": "3182a34579db792c576d2172d2f334fd54e52a4d33b19cf4e415a20ebe93e3e6",
+    "targeth-ht261118-class1-water-r02-m4-07": "d45eac811f09506284b379d877b51e216f6797978ca5d257fc667b0a1ed6209a",
+    "targeth-ht261118-class1-water-r02-m4-08": "d958465fc43275141248954cb1456ccbb909a3ddfe880a87b99d8669610c78c0",
+    "targeth-ht261118-class1-water-r02-m4-09": "6d8c619cbcf5e3dc658790b052ac7acdbaa3040ffd6c7346c759853468d740e3",
+    "targeth-ht261118-class1-water-r02-m4-10": "17f94190ded0f81e51d9069ec8cc9f7e011af83ad1ef83acaab47dc7e2fdd575",
+    "targeth-ht261118-class1-water-r02-m4-11": "1a816992ce5a47fb1703ff0d134f12fba6e6e5064effed85b7a19eb5c476a0b5",
+    "targeth-ht261118-class1-water-r02-m4-12": "f4666ee9181418a1935e7932ee799253ad1af41b94b437e1ee6a5e24db0381a9",
+    "targeth-ht261118-class1-water-r02-m4-13": "37af3ab2d4f0937636dbf8f64af02343aaf5b03d74fea9d37ec75650caa92d1e",
+    "targeth-ht261118-class1-water-r02-m4-14": "3ec69dbb81d98653172401108c81fda1d883de405673b9a2d8961ec48ece0f43",
+    "targeth-ht261118-class1-water-r02-m4-15": "f7fce48b7f91be0b7e97fe0afe58aba207621a8a470959d76f8d4e7c28a3fa57",
+    "targeth-ht261118-class1-water-r02-m5-01": "a4ca66f7328997d9144be6138e66062b87382464a38ba798cb8e9e7809511693",
+    "targeth-ht261118-class1-water-r02-m5-02": "807ec85fa9f348b3be979de5834587766e07782402237cce0c0216e8e1031826",
+    "targeth-ht261118-class1-water-r02-m5-03": "ab3dd1521cdc1086845d07f68da1f331f10f2b893b6279064a7b0f95038a9ad1",
+    "targeth-ht261118-class1-water-r02-m5-04": "afc59f2d50a31039933e0e8e53565939e3850acc4bcd04223a0e7eeb1f4b34e4",
+    "targeth-ht261118-class1-water-r02-m5-05": "9214833dd6e71d9e559115cc65672673a64000704a53c189c5bd728584211b59",
+    "targeth-ht261118-class1-water-r02-m5-06": "9b31e6ae351d673c67d9fa9a52e78ebd58b0b5256d69e803270a8980d92e26a4",
+    "targeth-ht261118-class1-water-r02-m5-07": "66197dbb6be95aa5669745e080a9c4bb37bc761bb8265adc5099fbd7b3d020aa",
+    "targeth-ht261118-class1-water-r02-m5-08": "60eef0f6d5b98c07b348a76ab4f262d3e289609778cd6f00df9fc7745e40f5c6",
+    "targeth-ht261118-class1-water-r02-m5-09": "10c662b10dc5a9a37a3af079510f91ab377c1e1aff583a8912322e335b0851eb",
+    "targeth-ht261118-class1-water-r02-m5-10": "4504299cfd8c82f2a45084f7e6c73f8545608296b00d4b565837e295fb46badd",
+    "targeth-ht261118-class1-water-r02-m5-11": "1777cd89d9cb57fc5557754c35f587f479849b4709b2a9cf893c115211fbf6d4",
+    "targeth-ht261118-class1-water-r02-m5-12": "600e48da64beeb8bd4ea1233a20345087782282c9d2c1e92ab963828ae611a00",
+    "targeth-ht261118-class1-water-r02-m5-13": "a8f6d499fa8665cd73d21d5eaaf2e20e6275e321e3254d8d2fcf36aa58a050d4",
+    "targeth-ht261118-class1-water-r02-m5-14": "14e4bc71276aba3d5bb33405213a4963d7cd55ea7b94f6442949e55c455b0d3b",
+    "targeth-ht261118-class1-water-r02-m5-15": "905f4d1150719d22d910a68ae0d2b435dcb4780c31a5dc327f18022e1e923dbb"
+   }
+  },
+  "registeredAt": "2026-11-19T02:51:26.464Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 8,
+     "f": 7
+    },
+    "dirs": {
+     "increase": 6,
+     "decrease": 8,
+     "unchanged": 1
+    },
+    "longest": 8,
+    "options": 45
+   },
+   "batchSha256": "3be64a960c1053298166ee5f9af185c5d10c013acc1e2a4fb2311917264c8035"
+  }
+ }
+}

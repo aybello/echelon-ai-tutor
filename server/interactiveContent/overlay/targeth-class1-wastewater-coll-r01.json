@@ -1,0 +1,1411 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-class1-wastewater-coll-r01",
+ "scope": "Owner-authorized AI-reviewed game activities: 41 items.",
+ "additions": [
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r01-m0-01",
+    "prompt": "Tubificid worms in wastewater slimes serve as indicators of changes in wastewater strength and composition.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Tubificid worms respond to shifts in wastewater strength and composition, making them useful biological indicators."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:33:38.656536+00:00",
+    "notes": "Self-reviewed all 41 items in targeth-class1-wastewater-coll-r01 against supplied source pages (pp. 477-488) and closest collision candidates; accepted all 41 items.",
+    "registeredAt": "2026-11-19T02:34:32.439Z",
+    "payloadSha256": "89b28a7f01ea1e44125397a8228a03fc6f799fbd740b55e3a00fa87cd43c60b4",
+    "builderResultsSha256": "09dc1d77ebb44eaa9a85f5d059ba3ff8a8fc166407fb6256078e4fb001a73bc1"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r01-m0-02",
+    "prompt": "When water temperatures rise, the population of tubificid worms in wastewater slimes increases.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Tubificid worm populations decrease when water temperatures increase."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:33:38.656536+00:00",
+    "notes": "Self-reviewed all 41 items in targeth-class1-wastewater-coll-r01 against supplied source pages (pp. 477-488) and closest collision candidates; accepted all 41 items.",
+    "registeredAt": "2026-11-19T02:34:32.439Z",
+    "payloadSha256": "fcabd7c5d411ff3e30f34a24c6fa0f03250189cfee6ea26b21d54c8f34d101c8",
+    "builderResultsSha256": "09dc1d77ebb44eaa9a85f5d059ba3ff8a8fc166407fb6256078e4fb001a73bc1"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r01-m0-03",
+    "prompt": "Heavy algal growth in treatment basins can plug intakes and screens and cause taste and odor problems.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Algae grow on basin walls, plug intakes and screens, and release chemicals that create tastes and odors."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:33:38.656536+00:00",
+    "notes": "Self-reviewed all 41 items in targeth-class1-wastewater-coll-r01 against supplied source pages (pp. 477-488) and closest collision candidates; accepted all 41 items.",
+    "registeredAt": "2026-11-19T02:34:32.439Z",
+    "payloadSha256": "dc9771f2ad4d8419ba8101d4fe19f45b3ef3decc502631d7fa0cc391d000a1ed",
+    "builderResultsSha256": "09dc1d77ebb44eaa9a85f5d059ba3ff8a8fc166407fb6256078e4fb001a73bc1"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r01-m0-04",
+    "prompt": "Fungi are the primary organisms responsible for removing dissolved nutrients in conventional activated sludge.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Fungi are of minor importance in water and wastewater operations except for biosolids composting."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:33:38.656536+00:00",
+    "notes": "Self-reviewed all 41 items in targeth-class1-wastewater-coll-r01 against supplied source pages (pp. 477-488) and closest collision candidates; accepted all 41 items.",
+    "registeredAt": "2026-11-19T02:34:32.439Z",
+    "payloadSha256": "3240adf5481b545982131cd534fea351ca9236898390c384b1622579ef32df9d",
+    "builderResultsSha256": "09dc1d77ebb44eaa9a85f5d059ba3ff8a8fc166407fb6256078e4fb001a73bc1"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r01-m0-05",
+    "prompt": "Microscopic nematodes in biological slimes have cylindrical bodies covered by a cuticle.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Nematodes are microscopic, nonsegmented worms with cylindrical bodies covered by a cuticle."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:33:38.656536+00:00",
+    "notes": "Self-reviewed all 41 items in targeth-class1-wastewater-coll-r01 against supplied source pages (pp. 477-488) and closest collision candidates; accepted all 41 items.",
+    "registeredAt": "2026-11-19T02:34:32.439Z",
+    "payloadSha256": "ba48647e1c1cb954b11959260f28ba80daed5fdee449a4dc98bc180dcf6d2578",
+    "builderResultsSha256": "09dc1d77ebb44eaa9a85f5d059ba3ff8a8fc166407fb6256078e4fb001a73bc1"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r01-m0-06",
+    "prompt": "Boiling contaminated water at 100 degrees Celsius kills Giardia cysts instantaneously.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Giardia cysts are killed instantaneously when water is boiled at 100 degrees Celsius."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:33:38.656536+00:00",
+    "notes": "Self-reviewed all 41 items in targeth-class1-wastewater-coll-r01 against supplied source pages (pp. 477-488) and closest collision candidates; accepted all 41 items.",
+    "registeredAt": "2026-11-19T02:34:32.439Z",
+    "payloadSha256": "1c46acb20ccbeb19a14ea9f08c54a7ab81dcf71f399a4190c50d047590572341",
+    "builderResultsSha256": "09dc1d77ebb44eaa9a85f5d059ba3ff8a8fc166407fb6256078e4fb001a73bc1"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r01-m0-07",
+    "prompt": "Routine municipal chlorination doses are ineffective at killing Giardia cysts in water.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "The amount of chlorine used routinely in municipal water treatment is not effective against Giardia cysts."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:33:38.656536+00:00",
+    "notes": "Self-reviewed all 41 items in targeth-class1-wastewater-coll-r01 against supplied source pages (pp. 477-488) and closest collision candidates; accepted all 41 items.",
+    "registeredAt": "2026-11-19T02:34:32.439Z",
+    "payloadSha256": "85a3f4fd7e16cc8cf7d79b466fe67a41c503a346c3cde05cbc009673a3f59f70",
+    "builderResultsSha256": "09dc1d77ebb44eaa9a85f5d059ba3ff8a8fc166407fb6256078e4fb001a73bc1"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r01-m0-08",
+    "prompt": "Giardia trophozoites divide by binary fission in the small intestine at roughly 12-hour intervals.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Once established in the small intestine, Giardia trophozoites divide by binary fission at roughly 12-hour intervals."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:33:38.656536+00:00",
+    "notes": "Self-reviewed all 41 items in targeth-class1-wastewater-coll-r01 against supplied source pages (pp. 477-488) and closest collision candidates; accepted all 41 items.",
+    "registeredAt": "2026-11-19T02:34:32.439Z",
+    "payloadSha256": "db13a173151b86424aaa8ae0cfc536d600db65465c0a5a9ac0aada470e38603e",
+    "builderResultsSha256": "09dc1d77ebb44eaa9a85f5d059ba3ff8a8fc166407fb6256078e4fb001a73bc1"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r01-m0-09",
+    "prompt": "Cryptosporidium is a multicellular worm that lives in the organic mud of trickling filters.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Cryptosporidium is a single-celled protozoan parasite that develops in the intestines of animals and people."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:33:38.656536+00:00",
+    "notes": "Self-reviewed all 41 items in targeth-class1-wastewater-coll-r01 against supplied source pages (pp. 477-488) and closest collision candidates; accepted all 41 items.",
+    "registeredAt": "2026-11-19T02:34:32.439Z",
+    "payloadSha256": "4060c18223bdbe9dd162a79ddc160fd7e8e943ba725cf182a8a94ef0446229ce",
+    "builderResultsSha256": "09dc1d77ebb44eaa9a85f5d059ba3ff8a8fc166407fb6256078e4fb001a73bc1"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r01-m0-10",
+    "prompt": "Direct person-to-person transmission of Cyclospora is likely immediately after oocysts are excreted.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Freshly excreted Cyclospora oocysts are not infectious and require days to weeks to sporulate."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:33:38.656536+00:00",
+    "notes": "Self-reviewed all 41 items in targeth-class1-wastewater-coll-r01 against supplied source pages (pp. 477-488) and closest collision candidates; accepted all 41 items.",
+    "registeredAt": "2026-11-19T02:34:32.439Z",
+    "payloadSha256": "c2c1027f1458ec79797bd74ff8ea475e3fd5a16174292cf9c6c2eb876c0aaf1a",
+    "builderResultsSha256": "09dc1d77ebb44eaa9a85f5d059ba3ff8a8fc166407fb6256078e4fb001a73bc1"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r01-m0-11",
+    "prompt": "Aerobic wastewater treatment processes rely on organisms that use free, elemental oxygen.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "In aerobic treatment, microorganisms use free, elemental oxygen to break down organic matter."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:33:38.656536+00:00",
+    "notes": "Self-reviewed all 41 items in targeth-class1-wastewater-coll-r01 against supplied source pages (pp. 477-488) and closest collision candidates; accepted all 41 items.",
+    "registeredAt": "2026-11-19T02:34:32.439Z",
+    "payloadSha256": "56bd254bbff6671cb1408f7a1e330ba983e532c80d4ad95cfcfff941f0e46680",
+    "builderResultsSha256": "09dc1d77ebb44eaa9a85f5d059ba3ff8a8fc166407fb6256078e4fb001a73bc1"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r01-m0-12",
+    "prompt": "Turbidity measurements reliably predict whether Cryptosporidium oocysts are present in water.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "No water quality indicators can reliably predict the occurrence of cryptosporidiosis."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:33:38.656536+00:00",
+    "notes": "Self-reviewed all 41 items in targeth-class1-wastewater-coll-r01 against supplied source pages (pp. 477-488) and closest collision candidates; accepted all 41 items.",
+    "registeredAt": "2026-11-19T02:34:32.439Z",
+    "payloadSha256": "a79b75b93cf3fba5b2cb9b214ff1427ee13c210740c2824bd3c8b56f08f03045",
+    "builderResultsSha256": "09dc1d77ebb44eaa9a85f5d059ba3ff8a8fc166407fb6256078e4fb001a73bc1"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r01-m0-13",
+    "prompt": "In a much-polluted stream with a constant influx of pollutants, bacterial numbers are lowest during low-flow periods.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "A much-polluted stream shows its highest bacterial numbers during low flows because pollutants are less diluted."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:33:38.656536+00:00",
+    "notes": "Self-reviewed all 41 items in targeth-class1-wastewater-coll-r01 against supplied source pages (pp. 477-488) and closest collision candidates; accepted all 41 items.",
+    "registeredAt": "2026-11-19T02:34:32.439Z",
+    "payloadSha256": "9ad9c2734ee293938f978666345839df3e45fee4ab14f5fc831afafb9c8271a5",
+    "builderResultsSha256": "09dc1d77ebb44eaa9a85f5d059ba3ff8a8fc166407fb6256078e4fb001a73bc1"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r01-m0-14",
+    "prompt": "Most people infected with Giardia during waterborne outbreaks report high fever and severe vomiting as primary symptoms.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "People in waterborne Giardia outbreaks have not commonly reported vomiting and fever; diarrhea and cramps are typical."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:33:38.656536+00:00",
+    "notes": "Self-reviewed all 41 items in targeth-class1-wastewater-coll-r01 against supplied source pages (pp. 477-488) and closest collision candidates; accepted all 41 items.",
+    "registeredAt": "2026-11-19T02:34:32.439Z",
+    "payloadSha256": "4bb4bd6f353a66b311b3f3c51e2fb5eea6ff0c38aa26ad7e8cd5cb8aa33724a0",
+    "builderResultsSha256": "09dc1d77ebb44eaa9a85f5d059ba3ff8a8fc166407fb6256078e4fb001a73bc1"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r01-m1-01",
+    "prompt": "Match each protozoan or worm characteristic to the organism it describes.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Giardia lamblia",
+      "right": "Flagellated protozoan with cyst and trophozoite stages"
+     },
+     {
+      "id": "p2",
+      "left": "Cryptosporidium",
+      "right": "Single-celled coccidian protozoan shed as oocysts"
+     },
+     {
+      "id": "p3",
+      "left": "Cyclospora",
+      "right": "Protozoan whose oocysts must sporulate outside the host"
+     },
+     {
+      "id": "p4",
+      "left": "Tubificid worms",
+      "right": "Worms indicating changes in wastewater strength"
+     },
+     {
+      "id": "p5",
+      "left": "Nematodes",
+      "right": "Cylindrical, nonsegmented worms with a cuticle"
+     },
+     {
+      "id": "p6",
+      "left": "Philodina",
+      "right": "Common rotifer genus"
+     }
+    ],
+    "explanation": "Each organism has distinct structural or life-cycle traits used in water and wastewater microbiology."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:33:38.656536+00:00",
+    "notes": "Self-reviewed all 41 items in targeth-class1-wastewater-coll-r01 against supplied source pages (pp. 477-488) and closest collision candidates; accepted all 41 items.",
+    "registeredAt": "2026-11-19T02:34:32.439Z",
+    "payloadSha256": "a6b278f56a04a1a61bcb6e5e8a408ff1ccdcb76c12e1e4dc0ef2eb2de8870ba9",
+    "builderResultsSha256": "09dc1d77ebb44eaa9a85f5d059ba3ff8a8fc166407fb6256078e4fb001a73bc1"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r01-m1-02",
+    "prompt": "Match each waterborne disease or survival factor to its microbiological detail.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Giardiasis",
+      "right": "Intestinal illness with diarrhea, cramps, and bloating"
+     },
+     {
+      "id": "p2",
+      "left": "Cryptosporidiosis",
+      "right": "Severe diarrheal disease in immunocompromised patients"
+     },
+     {
+      "id": "p3",
+      "left": "Binary fission",
+      "right": "Division of Giardia trophozoites every 12 hours"
+     },
+     {
+      "id": "p4",
+      "left": "Sporulation",
+      "right": "Maturation of Cyclospora oocysts over days to weeks"
+     },
+     {
+      "id": "p5",
+      "left": "Boiling at 100°C",
+      "right": "Kills Giardia cysts instantaneously"
+     },
+     {
+      "id": "p6",
+      "left": "Cold water at 4°C",
+      "right": "Allows Giardia cysts to survive at least 2 months"
+     }
+    ],
+    "explanation": "Understanding parasite life cycles and thermal survival helps prevent waterborne outbreaks."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:33:38.656536+00:00",
+    "notes": "Self-reviewed all 41 items in targeth-class1-wastewater-coll-r01 against supplied source pages (pp. 477-488) and closest collision candidates; accepted all 41 items.",
+    "registeredAt": "2026-11-19T02:34:32.439Z",
+    "payloadSha256": "2b72a55c5c80a4d741015464c47ede373b03a89caac1d2d0623f91b4b1cd3d7a",
+    "builderResultsSha256": "09dc1d77ebb44eaa9a85f5d059ba3ff8a8fc166407fb6256078e4fb001a73bc1"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r01-m1-03",
+    "prompt": "Match each microbiological nuisance or process in water and wastewater to its effect.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Eutrophication",
+      "right": "Nutrient enrichment causing premature aging of a lake"
+     },
+     {
+      "id": "p2",
+      "left": "Filamentous algae",
+      "right": "Breaks loose and washes ashore as noxious mats"
+     },
+     {
+      "id": "p3",
+      "left": "Aquatic fungi",
+      "right": "Grow as parasites on living hosts or saprophytes on dead matter"
+     },
+     {
+      "id": "p4",
+      "left": "Aerobic process",
+      "right": "Uses free, elemental oxygen to degrade waste"
+     },
+     {
+      "id": "p5",
+      "left": "Biological treatment",
+      "right": "Speeds waste decomposition by controlling microbial environment"
+     },
+     {
+      "id": "p6",
+      "left": "Fecal contamination",
+      "right": "Primary route for bacterial pathogens entering water supplies"
+     }
+    ],
+    "explanation": "Microorganisms can cause operational nuisances or be harnessed for beneficial waste decomposition."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:33:38.656536+00:00",
+    "notes": "Self-reviewed all 41 items in targeth-class1-wastewater-coll-r01 against supplied source pages (pp. 477-488) and closest collision candidates; accepted all 41 items.",
+    "registeredAt": "2026-11-19T02:34:32.439Z",
+    "payloadSha256": "bd201804118b62f7c7293662f534f2442aeebcba765f1235a80d4ef8f5c137cd",
+    "builderResultsSha256": "09dc1d77ebb44eaa9a85f5d059ba3ff8a8fc166407fb6256078e4fb001a73bc1"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r01-m2-01",
+    "prompt": "Three of these are intestinal symptoms of giardiasis. Which one is a water quality parameter?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Diarrhea"
+     },
+     {
+      "id": "b",
+      "label": "Abdominal cramps"
+     },
+     {
+      "id": "c",
+      "label": "Bloating"
+     },
+     {
+      "id": "d",
+      "label": "Turbidity"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Turbidity measures water cloudiness, whereas diarrhea, cramps, and bloating are symptoms of giardiasis."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:33:38.656536+00:00",
+    "notes": "Self-reviewed all 41 items in targeth-class1-wastewater-coll-r01 against supplied source pages (pp. 477-488) and closest collision candidates; accepted all 41 items.",
+    "registeredAt": "2026-11-19T02:34:32.439Z",
+    "payloadSha256": "f118e43f888e24914512c3bf897c4b63aaf33880fe8302c717a4bd72fd51051e",
+    "builderResultsSha256": "09dc1d77ebb44eaa9a85f5d059ba3ff8a8fc166407fb6256078e4fb001a73bc1"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r01-m2-02",
+    "prompt": "Three of these are protozoan parasites transmitted through water. Which one is a multicellular worm?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Giardia"
+     },
+     {
+      "id": "b",
+      "label": "Cryptosporidium"
+     },
+     {
+      "id": "c",
+      "label": "Cyclospora"
+     },
+     {
+      "id": "d",
+      "label": "Tubificid worm"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Tubificid worms are multicellular worms, while Giardia, Cryptosporidium, and Cyclospora are protozoan parasites."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:33:38.656536+00:00",
+    "notes": "Self-reviewed all 41 items in targeth-class1-wastewater-coll-r01 against supplied source pages (pp. 477-488) and closest collision candidates; accepted all 41 items.",
+    "registeredAt": "2026-11-19T02:34:32.439Z",
+    "payloadSha256": "f3d80e6aeeabe0ab5a1bc4e4819b251f258e5223d6f624bcbfbb217426d75fab",
+    "builderResultsSha256": "09dc1d77ebb44eaa9a85f5d059ba3ff8a8fc166407fb6256078e4fb001a73bc1"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r01-m2-03",
+    "prompt": "Three of these are worm groups found in organic mud or biological slimes. Which one is a flagellated protozoan?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Nematodes"
+     },
+     {
+      "id": "b",
+      "label": "Flatworms"
+     },
+     {
+      "id": "c",
+      "label": "Tubificid worms"
+     },
+     {
+      "id": "d",
+      "label": "Giardia lamblia"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Giardia lamblia is a single-celled flagellated protozoan, whereas the others are worms."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:33:38.656536+00:00",
+    "notes": "Self-reviewed all 41 items in targeth-class1-wastewater-coll-r01 against supplied source pages (pp. 477-488) and closest collision candidates; accepted all 41 items.",
+    "registeredAt": "2026-11-19T02:34:32.439Z",
+    "payloadSha256": "bfb1bc5f06062db5cb1d6e60d44f74cc7558c02b6a17257c7b86d6d98147702e",
+    "builderResultsSha256": "09dc1d77ebb44eaa9a85f5d059ba3ff8a8fc166407fb6256078e4fb001a73bc1"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r01-m2-04",
+    "prompt": "Three of these are water treatment unit processes. Which one is a natural lake aging process?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Coagulation-flocculation"
+     },
+     {
+      "id": "b",
+      "label": "Filtration"
+     },
+     {
+      "id": "c",
+      "label": "Disinfection"
+     },
+     {
+      "id": "d",
+      "label": "Eutrophication"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Eutrophication is nutrient enrichment causing premature lake aging, not a treatment unit process."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:33:38.656536+00:00",
+    "notes": "Self-reviewed all 41 items in targeth-class1-wastewater-coll-r01 against supplied source pages (pp. 477-488) and closest collision candidates; accepted all 41 items.",
+    "registeredAt": "2026-11-19T02:34:32.439Z",
+    "payloadSha256": "0933aa0d657a3e028a06a7e9545b74b0646895d03e5b0aaad5242459edaf13fb",
+    "builderResultsSha256": "09dc1d77ebb44eaa9a85f5d059ba3ff8a8fc166407fb6256078e4fb001a73bc1"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r01-m2-05",
+    "prompt": "Three of these are routes of Giardia transmission. Which one is a method used to kill Giardia cysts?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Drinking fecally contaminated water"
+     },
+     {
+      "id": "b",
+      "label": "Hand-to-mouth transfer from surfaces"
+     },
+     {
+      "id": "c",
+      "label": "Eating fecally contaminated food"
+     },
+     {
+      "id": "d",
+      "label": "Boiling water at 100°C"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Boiling water at 100°C instantaneously kills Giardia cysts rather than transmitting them."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:33:38.656536+00:00",
+    "notes": "Self-reviewed all 41 items in targeth-class1-wastewater-coll-r01 against supplied source pages (pp. 477-488) and closest collision candidates; accepted all 41 items.",
+    "registeredAt": "2026-11-19T02:34:32.439Z",
+    "payloadSha256": "b37768ae44c1b4032c68b18b79349e4046ee49e4bb31f279daeb014d15748e8c",
+    "builderResultsSha256": "09dc1d77ebb44eaa9a85f5d059ba3ff8a8fc166407fb6256078e4fb001a73bc1"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r01-m2-06",
+    "prompt": "Three of these are operational problems caused by algae in treatment plants. Which one is a beneficial role of fungi?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Plugging intakes and screens"
+     },
+     {
+      "id": "b",
+      "label": "Growing on basin walls"
+     },
+     {
+      "id": "c",
+      "label": "Releasing taste and odor chemicals"
+     },
+     {
+      "id": "d",
+      "label": "Biosolids composting"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Fungi are critical in biosolids composting, whereas the other three are nuisances caused by algae."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:33:38.656536+00:00",
+    "notes": "Self-reviewed all 41 items in targeth-class1-wastewater-coll-r01 against supplied source pages (pp. 477-488) and closest collision candidates; accepted all 41 items.",
+    "registeredAt": "2026-11-19T02:34:32.439Z",
+    "payloadSha256": "2cc1b90604842ba0ab5f205208ba229e99e97493da549400cfa5ca881f4e99b0",
+    "builderResultsSha256": "09dc1d77ebb44eaa9a85f5d059ba3ff8a8fc166407fb6256078e4fb001a73bc1"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r01-m3-01",
+    "prompt": "Water temperature in a wastewater biological slime rises significantly while other conditions remain constant. What happens to the tubificid worm population?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Tubificid worm populations decrease when water temperatures increase."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:33:38.656536+00:00",
+    "notes": "Self-reviewed all 41 items in targeth-class1-wastewater-coll-r01 against supplied source pages (pp. 477-488) and closest collision candidates; accepted all 41 items.",
+    "registeredAt": "2026-11-19T02:34:32.439Z",
+    "payloadSha256": "82b843a51b380ef96577ca92d2bfc586eedc9bf1e3694bf1de95f0e258d461f3",
+    "builderResultsSha256": "09dc1d77ebb44eaa9a85f5d059ba3ff8a8fc166407fb6256078e4fb001a73bc1"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r01-m3-02",
+    "prompt": "A community boils drinking water at 100°C for one minute during a Cryptosporidium outbreak. What happens to the number of viable Cryptosporidium oocysts?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Boiling drinking water for 1 minute kills Cryptosporidium oocysts, reducing viable numbers."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:33:38.656536+00:00",
+    "notes": "Self-reviewed all 41 items in targeth-class1-wastewater-coll-r01 against supplied source pages (pp. 477-488) and closest collision candidates; accepted all 41 items.",
+    "registeredAt": "2026-11-19T02:34:32.439Z",
+    "payloadSha256": "4932a752533d07afe9a1a66bd15dd7d50d343e3cfd0b48543657eae3d98e7cca",
+    "builderResultsSha256": "09dc1d77ebb44eaa9a85f5d059ba3ff8a8fc166407fb6256078e4fb001a73bc1"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r01-m3-03",
+    "prompt": "Heavy rains wash wild and domestic animal wastes from the land into a surface water body. What happens to the prevalence of Cryptosporidium oocysts in the surface water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Oocysts become more prevalent in surface waters when heavy rains increase runoff of animal wastes."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:33:38.656536+00:00",
+    "notes": "Self-reviewed all 41 items in targeth-class1-wastewater-coll-r01 against supplied source pages (pp. 477-488) and closest collision candidates; accepted all 41 items.",
+    "registeredAt": "2026-11-19T02:34:32.439Z",
+    "payloadSha256": "c2efc98d308030ef131f43c19774fc1efc7fe0830c4c33da78d20d6f5fdfd600",
+    "builderResultsSha256": "09dc1d77ebb44eaa9a85f5d059ba3ff8a8fc166407fb6256078e4fb001a73bc1"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r01-m3-04",
+    "prompt": "A person swallows a single Giardia cyst, and trophozoites divide by binary fission every 12 hours in the small intestine. What happens to the number of Giardia parasites in the intestine over 10 days?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Binary fission every 12 hours multiplies a single cyst into more than 1 million parasites in 10 days."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:33:38.656536+00:00",
+    "notes": "Self-reviewed all 41 items in targeth-class1-wastewater-coll-r01 against supplied source pages (pp. 477-488) and closest collision candidates; accepted all 41 items.",
+    "registeredAt": "2026-11-19T02:34:32.439Z",
+    "payloadSha256": "6f71bfbbdc93be9f7ae5af6f001ed5f2a4468b429491b0afb1da4fe52dd7c152",
+    "builderResultsSha256": "09dc1d77ebb44eaa9a85f5d059ba3ff8a8fc166407fb6256078e4fb001a73bc1"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r01-m3-05",
+    "prompt": "A lake receives continuous discharges of inorganic phosphorus and nitrogen under sunlit conditions. What happens to the rate of premature aging of the water body?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Nutrient enrichment drives eutrophication, causing excessive algae growth and premature aging of the water body."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:33:38.656536+00:00",
+    "notes": "Self-reviewed all 41 items in targeth-class1-wastewater-coll-r01 against supplied source pages (pp. 477-488) and closest collision candidates; accepted all 41 items.",
+    "registeredAt": "2026-11-19T02:34:32.439Z",
+    "payloadSha256": "a4356e98b882073e5f1573745a7f899df19247ec48b0e6500de6d55f8575b580",
+    "builderResultsSha256": "09dc1d77ebb44eaa9a85f5d059ba3ff8a8fc166407fb6256078e4fb001a73bc1"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r01-m3-06",
+    "prompt": "Freshly excreted Cyclospora oocysts remain in a moist environment for two weeks under favorable conditions. What happens to the infectivity of those oocysts?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Cyclospora oocysts sporulate over days to weeks in the environment, becoming infectious."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:33:38.656536+00:00",
+    "notes": "Self-reviewed all 41 items in targeth-class1-wastewater-coll-r01 against supplied source pages (pp. 477-488) and closest collision candidates; accepted all 41 items.",
+    "registeredAt": "2026-11-19T02:34:32.439Z",
+    "payloadSha256": "5f12fa13fd02befd2b9fd03af536654b1f4c4427955d3550ac2ded25a81bf741",
+    "builderResultsSha256": "09dc1d77ebb44eaa9a85f5d059ba3ff8a8fc166407fb6256078e4fb001a73bc1"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r01-m3-07",
+    "prompt": "A surface water supply is treated with routine municipal chlorination and no filtration while Giardia cysts are present. What happens to the viability of most Giardia cysts?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Routine municipal chlorination levels are not effective against Giardia cysts, so most remain viable."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:33:38.656536+00:00",
+    "notes": "Self-reviewed all 41 items in targeth-class1-wastewater-coll-r01 against supplied source pages (pp. 477-488) and closest collision candidates; accepted all 41 items.",
+    "registeredAt": "2026-11-19T02:34:32.439Z",
+    "payloadSha256": "e523e454016894c33240d29f6f05aea3cf2023a4862d99a67702a659ddba7471",
+    "builderResultsSha256": "09dc1d77ebb44eaa9a85f5d059ba3ff8a8fc166407fb6256078e4fb001a73bc1"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r01-m4-01",
+    "prompt": "A trainee summarizes how algae affect water and wastewater systems. Which statement contains a factual flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Algae are aquatic plants classified by color, such as green and blue-green algae."
+     },
+     {
+      "id": "b",
+      "label": "Heavy algal growth can plug treatment plant intakes and screens."
+     },
+     {
+      "id": "c",
+      "label": "Algae are pathogenic organisms that directly cause intestinal disease in operators."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Algae are not pathogenic, though they cause operational nuisances like plugging intakes and creating odors."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:33:38.656536+00:00",
+    "notes": "Self-reviewed all 41 items in targeth-class1-wastewater-coll-r01 against supplied source pages (pp. 477-488) and closest collision candidates; accepted all 41 items.",
+    "registeredAt": "2026-11-19T02:34:32.439Z",
+    "payloadSha256": "8696d189f206e5461865575f11e38befba54fcf420179555158ba9b984b3278b",
+    "builderResultsSha256": "09dc1d77ebb44eaa9a85f5d059ba3ff8a8fc166407fb6256078e4fb001a73bc1"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r01-m4-02",
+    "prompt": "An operator reviews facts about Giardia lamblia survival and disinfection. Which statement contains a factual flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Giardia cysts can survive in cold water at four degrees Celsius for two months."
+     },
+     {
+      "id": "b",
+      "label": "Boiling contaminated water at one hundred degrees Celsius kills Giardia cysts instantaneously."
+     },
+     {
+      "id": "c",
+      "label": "Routine municipal chlorination doses reliably kill Giardia cysts in raw water."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Routine municipal chlorination is not effective against Giardia cysts."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:33:38.656536+00:00",
+    "notes": "Self-reviewed all 41 items in targeth-class1-wastewater-coll-r01 against supplied source pages (pp. 477-488) and closest collision candidates; accepted all 41 items.",
+    "registeredAt": "2026-11-19T02:34:32.439Z",
+    "payloadSha256": "6b41879d0b71229ab1d52495d23a893b95fc37f54d88fdc93bd8fef3e0c1b993",
+    "builderResultsSha256": "09dc1d77ebb44eaa9a85f5d059ba3ff8a8fc166407fb6256078e4fb001a73bc1"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r01-m4-03",
+    "prompt": "A student writes notes on nematodes and tubificid worms in wastewater. Which statement contains a factual flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Microscopic nematodes have cylindrical, nonsegmented bodies covered by a cuticle."
+     },
+     {
+      "id": "b",
+      "label": "Tubificid worms indicate changes in wastewater strength and composition."
+     },
+     {
+      "id": "c",
+      "label": "Tubificid worm populations increase rapidly when water temperatures rise."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Tubificid worm populations decrease when water temperatures increase."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:33:38.656536+00:00",
+    "notes": "Self-reviewed all 41 items in targeth-class1-wastewater-coll-r01 against supplied source pages (pp. 477-488) and closest collision candidates; accepted all 41 items.",
+    "registeredAt": "2026-11-19T02:34:32.439Z",
+    "payloadSha256": "d7c8c5822765f15e33022c86ebaeecdf9c00224bcfa958777b8fe52b0082cb08",
+    "builderResultsSha256": "09dc1d77ebb44eaa9a85f5d059ba3ff8a8fc166407fb6256078e4fb001a73bc1"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r01-m4-04",
+    "prompt": "A trainee summarizes Cryptosporidium biology and detection. Which statement contains a factual flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Cryptosporidium is a single-celled protozoan parasite that lives in animal and human intestines."
+     },
+     {
+      "id": "b",
+      "label": "Heavy rain runoff can increase the prevalence of Cryptosporidium oocysts in surface waters."
+     },
+     {
+      "id": "c",
+      "label": "Standard coliform bacteria tests reliably predict when Cryptosporidium oocysts are present."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "No water quality indicators, including coliforms, reliably predict Cryptosporidium occurrence."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:33:38.656536+00:00",
+    "notes": "Self-reviewed all 41 items in targeth-class1-wastewater-coll-r01 against supplied source pages (pp. 477-488) and closest collision candidates; accepted all 41 items.",
+    "registeredAt": "2026-11-19T02:34:32.439Z",
+    "payloadSha256": "72364be93aeb36b96308e65ccc67e2ba785b7f02113d9ef1119b1e0386ee021a",
+    "builderResultsSha256": "09dc1d77ebb44eaa9a85f5d059ba3ff8a8fc166407fb6256078e4fb001a73bc1"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r01-m4-05",
+    "prompt": "An operator reviews Cyclospora transmission. Which statement contains a factual flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Cyclospora oocysts excreted in feces require days to weeks to sporulate before becoming infectious."
+     },
+     {
+      "id": "b",
+      "label": "Indirect transmission of Cyclospora can occur through contaminated water or fresh produce."
+     },
+     {
+      "id": "c",
+      "label": "Freshly excreted Cyclospora oocysts are immediately infectious to anyone nearby."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Freshly excreted Cyclospora oocysts are not infectious until they sporulate over days to weeks."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:33:38.656536+00:00",
+    "notes": "Self-reviewed all 41 items in targeth-class1-wastewater-coll-r01 against supplied source pages (pp. 477-488) and closest collision candidates; accepted all 41 items.",
+    "registeredAt": "2026-11-19T02:34:32.439Z",
+    "payloadSha256": "7505b7c33934202fcc8bbe7ec88c076fc68082737d486fe62937e0990c4a1f83",
+    "builderResultsSha256": "09dc1d77ebb44eaa9a85f5d059ba3ff8a8fc166407fb6256078e4fb001a73bc1"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r01-m4-06",
+    "prompt": "A student summarizes fungi in water and wastewater operations. Which statement contains a factual flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Aquatic fungi can grow as saprophytes on dead plants and animals."
+     },
+     {
+      "id": "b",
+      "label": "Fungi are critical microorganisms in the biosolids composting process."
+     },
+     {
+      "id": "c",
+      "label": "Fungi are the primary organisms responsible for disinfecting drinking water."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Fungi do not disinfect drinking water; they are minor in water operations except biosolids composting."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:33:38.656536+00:00",
+    "notes": "Self-reviewed all 41 items in targeth-class1-wastewater-coll-r01 against supplied source pages (pp. 477-488) and closest collision candidates; accepted all 41 items.",
+    "registeredAt": "2026-11-19T02:34:32.439Z",
+    "payloadSha256": "af81d3d5de435818d484719ed5b36fdaa4c8e827bdf22f83bead112250213284",
+    "builderResultsSha256": "09dc1d77ebb44eaa9a85f5d059ba3ff8a8fc166407fb6256078e4fb001a73bc1"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r01-m5-01",
+    "prompt": "In the conventional water treatment train described for surface water, does coagulation-flocculation occur before or after filtration?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Coagulation-flocculation is listed ahead of filtration in the conventional water treatment train."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:33:38.656536+00:00",
+    "notes": "Self-reviewed all 41 items in targeth-class1-wastewater-coll-r01 against supplied source pages (pp. 477-488) and closest collision candidates; accepted all 41 items.",
+    "registeredAt": "2026-11-19T02:34:32.439Z",
+    "payloadSha256": "ed3f6ee3b6045d7df6b21fe918b41b302ffa2a16334b40065c19a7a40fc6c77a",
+    "builderResultsSha256": "09dc1d77ebb44eaa9a85f5d059ba3ff8a8fc166407fb6256078e4fb001a73bc1"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r01-m5-02",
+    "prompt": "In the conventional water treatment train described for surface water, does disinfection occur before or after filtration?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "Disinfection is the final step after filtration in the conventional water treatment train."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:33:38.656536+00:00",
+    "notes": "Self-reviewed all 41 items in targeth-class1-wastewater-coll-r01 against supplied source pages (pp. 477-488) and closest collision candidates; accepted all 41 items.",
+    "registeredAt": "2026-11-19T02:34:32.439Z",
+    "payloadSha256": "660e044b5c7cdced19729579daf7a9a93ce32aae7c4650e342ba02ab658bac71",
+    "builderResultsSha256": "09dc1d77ebb44eaa9a85f5d059ba3ff8a8fc166407fb6256078e4fb001a73bc1"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r01-m5-03",
+    "prompt": "In the Cyclospora life cycle outside the host, are oocysts excreted in feces before or after they sporulate to become infectious?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Cyclospora oocysts are excreted in a noninfectious state and sporulate days to weeks later."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:33:38.656536+00:00",
+    "notes": "Self-reviewed all 41 items in targeth-class1-wastewater-coll-r01 against supplied source pages (pp. 477-488) and closest collision candidates; accepted all 41 items.",
+    "registeredAt": "2026-11-19T02:34:32.439Z",
+    "payloadSha256": "9e27334ea54db8f8bc9d010498712084465db0c553a90a4b6769eeec9a7138a5",
+    "builderResultsSha256": "09dc1d77ebb44eaa9a85f5d059ba3ff8a8fc166407fb6256078e4fb001a73bc1"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r01-m5-04",
+    "prompt": "In a waterborne Giardia outbreak caused by contaminated surface water, does the failure of filtration or disinfection occur before or after cysts reach consumers?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "A waterborne outbreak requires cysts in source water and treatment failure before contaminated water reaches consumers."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:33:38.656536+00:00",
+    "notes": "Self-reviewed all 41 items in targeth-class1-wastewater-coll-r01 against supplied source pages (pp. 477-488) and closest collision candidates; accepted all 41 items.",
+    "registeredAt": "2026-11-19T02:34:32.439Z",
+    "payloadSha256": "6e0ced4ba833d23819f6c46401cc400d66dacb485da3df675013b3d7cc415e29",
+    "builderResultsSha256": "09dc1d77ebb44eaa9a85f5d059ba3ff8a8fc166407fb6256078e4fb001a73bc1"
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class1-wastewater-coll-r01-m5-05",
+    "prompt": "In the eutrophication of a pond, does excessive algae growth occur before or after enrichment of the water with phosphorus and nitrogen?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "Enrichment with inorganic phosphorus and nitrogen drives excessive algae growth."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:33:38.656536+00:00",
+    "notes": "Self-reviewed all 41 items in targeth-class1-wastewater-coll-r01 against supplied source pages (pp. 477-488) and closest collision candidates; accepted all 41 items.",
+    "registeredAt": "2026-11-19T02:34:32.439Z",
+    "payloadSha256": "16c585db5a1dedf8e738c2cc619b23f61bf29af2fb1b04dfea45f0c832dff9e1",
+    "builderResultsSha256": "09dc1d77ebb44eaa9a85f5d059ba3ff8a8fc166407fb6256078e4fb001a73bc1"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T02:33:38.656536+00:00",
+   "attestation": "Self-reviewed all 41 items in targeth-class1-wastewater-coll-r01 against supplied source pages (pp. 477-488) and closest collision candidates; accepted all 41 items.",
+   "payloadSha256": {
+    "targeth-ht261118-class1-wastewater-coll-r01-m0-01": "89b28a7f01ea1e44125397a8228a03fc6f799fbd740b55e3a00fa87cd43c60b4",
+    "targeth-ht261118-class1-wastewater-coll-r01-m0-02": "fcabd7c5d411ff3e30f34a24c6fa0f03250189cfee6ea26b21d54c8f34d101c8",
+    "targeth-ht261118-class1-wastewater-coll-r01-m0-03": "dc9771f2ad4d8419ba8101d4fe19f45b3ef3decc502631d7fa0cc391d000a1ed",
+    "targeth-ht261118-class1-wastewater-coll-r01-m0-04": "3240adf5481b545982131cd534fea351ca9236898390c384b1622579ef32df9d",
+    "targeth-ht261118-class1-wastewater-coll-r01-m0-05": "ba48647e1c1cb954b11959260f28ba80daed5fdee449a4dc98bc180dcf6d2578",
+    "targeth-ht261118-class1-wastewater-coll-r01-m0-06": "1c46acb20ccbeb19a14ea9f08c54a7ab81dcf71f399a4190c50d047590572341",
+    "targeth-ht261118-class1-wastewater-coll-r01-m0-07": "85a3f4fd7e16cc8cf7d79b466fe67a41c503a346c3cde05cbc009673a3f59f70",
+    "targeth-ht261118-class1-wastewater-coll-r01-m0-08": "db13a173151b86424aaa8ae0cfc536d600db65465c0a5a9ac0aada470e38603e",
+    "targeth-ht261118-class1-wastewater-coll-r01-m0-09": "4060c18223bdbe9dd162a79ddc160fd7e8e943ba725cf182a8a94ef0446229ce",
+    "targeth-ht261118-class1-wastewater-coll-r01-m0-10": "c2c1027f1458ec79797bd74ff8ea475e3fd5a16174292cf9c6c2eb876c0aaf1a",
+    "targeth-ht261118-class1-wastewater-coll-r01-m0-11": "56bd254bbff6671cb1408f7a1e330ba983e532c80d4ad95cfcfff941f0e46680",
+    "targeth-ht261118-class1-wastewater-coll-r01-m0-12": "a79b75b93cf3fba5b2cb9b214ff1427ee13c210740c2824bd3c8b56f08f03045",
+    "targeth-ht261118-class1-wastewater-coll-r01-m0-13": "9ad9c2734ee293938f978666345839df3e45fee4ab14f5fc831afafb9c8271a5",
+    "targeth-ht261118-class1-wastewater-coll-r01-m0-14": "4bb4bd6f353a66b311b3f3c51e2fb5eea6ff0c38aa26ad7e8cd5cb8aa33724a0",
+    "targeth-ht261118-class1-wastewater-coll-r01-m1-01": "a6b278f56a04a1a61bcb6e5e8a408ff1ccdcb76c12e1e4dc0ef2eb2de8870ba9",
+    "targeth-ht261118-class1-wastewater-coll-r01-m1-02": "2b72a55c5c80a4d741015464c47ede373b03a89caac1d2d0623f91b4b1cd3d7a",
+    "targeth-ht261118-class1-wastewater-coll-r01-m1-03": "bd201804118b62f7c7293662f534f2442aeebcba765f1235a80d4ef8f5c137cd",
+    "targeth-ht261118-class1-wastewater-coll-r01-m2-01": "f118e43f888e24914512c3bf897c4b63aaf33880fe8302c717a4bd72fd51051e",
+    "targeth-ht261118-class1-wastewater-coll-r01-m2-02": "f3d80e6aeeabe0ab5a1bc4e4819b251f258e5223d6f624bcbfbb217426d75fab",
+    "targeth-ht261118-class1-wastewater-coll-r01-m2-03": "bfb1bc5f06062db5cb1d6e60d44f74cc7558c02b6a17257c7b86d6d98147702e",
+    "targeth-ht261118-class1-wastewater-coll-r01-m2-04": "0933aa0d657a3e028a06a7e9545b74b0646895d03e5b0aaad5242459edaf13fb",
+    "targeth-ht261118-class1-wastewater-coll-r01-m2-05": "b37768ae44c1b4032c68b18b79349e4046ee49e4bb31f279daeb014d15748e8c",
+    "targeth-ht261118-class1-wastewater-coll-r01-m2-06": "2cc1b90604842ba0ab5f205208ba229e99e97493da549400cfa5ca881f4e99b0",
+    "targeth-ht261118-class1-wastewater-coll-r01-m3-01": "82b843a51b380ef96577ca92d2bfc586eedc9bf1e3694bf1de95f0e258d461f3",
+    "targeth-ht261118-class1-wastewater-coll-r01-m3-02": "4932a752533d07afe9a1a66bd15dd7d50d343e3cfd0b48543657eae3d98e7cca",
+    "targeth-ht261118-class1-wastewater-coll-r01-m3-03": "c2efc98d308030ef131f43c19774fc1efc7fe0830c4c33da78d20d6f5fdfd600",
+    "targeth-ht261118-class1-wastewater-coll-r01-m3-04": "6f71bfbbdc93be9f7ae5af6f001ed5f2a4468b429491b0afb1da4fe52dd7c152",
+    "targeth-ht261118-class1-wastewater-coll-r01-m3-05": "a4356e98b882073e5f1573745a7f899df19247ec48b0e6500de6d55f8575b580",
+    "targeth-ht261118-class1-wastewater-coll-r01-m3-06": "5f12fa13fd02befd2b9fd03af536654b1f4c4427955d3550ac2ded25a81bf741",
+    "targeth-ht261118-class1-wastewater-coll-r01-m3-07": "e523e454016894c33240d29f6f05aea3cf2023a4862d99a67702a659ddba7471",
+    "targeth-ht261118-class1-wastewater-coll-r01-m4-01": "8696d189f206e5461865575f11e38befba54fcf420179555158ba9b984b3278b",
+    "targeth-ht261118-class1-wastewater-coll-r01-m4-02": "6b41879d0b71229ab1d52495d23a893b95fc37f54d88fdc93bd8fef3e0c1b993",
+    "targeth-ht261118-class1-wastewater-coll-r01-m4-03": "d7c8c5822765f15e33022c86ebaeecdf9c00224bcfa958777b8fe52b0082cb08",
+    "targeth-ht261118-class1-wastewater-coll-r01-m4-04": "72364be93aeb36b96308e65ccc67e2ba785b7f02113d9ef1119b1e0386ee021a",
+    "targeth-ht261118-class1-wastewater-coll-r01-m4-05": "7505b7c33934202fcc8bbe7ec88c076fc68082737d486fe62937e0990c4a1f83",
+    "targeth-ht261118-class1-wastewater-coll-r01-m4-06": "af81d3d5de435818d484719ed5b36fdaa4c8e827bdf22f83bead112250213284",
+    "targeth-ht261118-class1-wastewater-coll-r01-m5-01": "ed3f6ee3b6045d7df6b21fe918b41b302ffa2a16334b40065c19a7a40fc6c77a",
+    "targeth-ht261118-class1-wastewater-coll-r01-m5-02": "660e044b5c7cdced19729579daf7a9a93ce32aae7c4650e342ba02ab658bac71",
+    "targeth-ht261118-class1-wastewater-coll-r01-m5-03": "9e27334ea54db8f8bc9d010498712084465db0c553a90a4b6769eeec9a7138a5",
+    "targeth-ht261118-class1-wastewater-coll-r01-m5-04": "6e0ced4ba833d23819f6c46401cc400d66dacb485da3df675013b3d7cc415e29",
+    "targeth-ht261118-class1-wastewater-coll-r01-m5-05": "16c585db5a1dedf8e738c2cc619b23f61bf29af2fb1b04dfea45f0c832dff9e1"
+   }
+  },
+  "registeredAt": "2026-11-19T02:34:32.439Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 7,
+     "f": 7
+    },
+    "dirs": {
+     "increase": 4,
+     "decrease": 2,
+     "unchanged": 1
+    },
+    "longest": 4,
+    "options": 19
+   },
+   "batchSha256": "45ba917175b7e2c5ce77558c8e6cd4d409f875d5aa69b2efdc982a71956c33ca"
+  }
+ }
+}
