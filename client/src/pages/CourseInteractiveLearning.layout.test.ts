@@ -30,7 +30,16 @@ beforeAll(async () => {
       builder.onLoad({ filter: /.*/, namespace: "fixture" }, args => ({ loader: "js", resolveDir: process.cwd(), contents: {
         wouter: `import React from 'react'; export const useRoute=()=>[true,{courseKey:'oit'}]; export const useSearch=()=>''; export const Link=({children,...props})=>React.createElement('a',props,children);`,
         "@/hooks/usePageMeta": `export const usePageMeta=()=>{};`,
-        "@/lib/trpc": `const p=path=>({_def:()=>({path})}); export const trpc={useUtils:()=>({client:{interactive:{getCatalog:{mutate:async()=>({courseKey:"oit",available:true,locked:false,version:"synthetic-layout",modes:window.__content.examples.map(example=>({mode:example.mode,totalCount:1,topics:[],difficulties:[]}))})},startSession:{mutate:async input=>({courseKey:"oit",available:true,locked:false,version:"synthetic-layout",sessionId:"synthetic-layout-session",mode:input.mode,totalAvailableCount:1,examples:window.__content.examples.filter(example=>example.mode===input.mode),filters:{topicId:null,difficulty:null,requestedSize:input.sessionSize}})}}}}),auth:{me:p(['auth','me'])},dashboardAuth:{me:p(['dashboardAuth','me'])},stripe:{checkAccess:p(['stripe','checkAccess'])},access:{auditMyEntitlements:p(['access','auditMyEntitlements'])}};`,
+        "@/lib/trpc": `import {useMutation,useQuery} from '@tanstack/react-query';
+          import {getQueryKey} from '@trpc/react-query';
+          // Classic-only fixtures explicitly opt out of supplemental tracking.
+          Object.defineProperty(window.navigator,"doNotTrack",{configurable:true,value:"1"});
+          const p=path=>({_def:()=>({path})});
+          const anonymousIdentity=path=>{const endpoint=p(path);endpoint.useQuery=(input,options)=>useQuery({...options,queryKey:getQueryKey(endpoint,input,'query'),queryFn:async()=>null});return endpoint;};
+          const unavailableActivity={useMutation:options=>useMutation({...options,mutationFn:async()=>({tracking:false})})};
+          export const trpc={assessmentActivity:{record:unavailableActivity,resume:unavailableActivity},useUtils:()=>({client:{
+            deepGames:{getCatalog:{mutate:async({courseKey})=>({courseKey,available:false,version:null,modes:[],authoredTaskCount:0,missionCount:0})},startSession:{mutate:async()=>{throw new Error('Deep sessions are outside this classic harness');}}},
+            interactive:{getProgress:{mutate:async()=>({stored:false,today:{answered:0,correct:0,goal:20},streakDays:0,dueCount:0,modes:[]})},getCatalog:{mutate:async()=>({courseKey:"oit",available:true,locked:false,version:"synthetic-layout",modes:window.__content.examples.map(example=>({mode:example.mode,totalCount:1,topics:[],difficulties:[]}))})},startSession:{mutate:async input=>({courseKey:"oit",available:true,locked:false,version:"synthetic-layout",sessionId:"synthetic-layout-session",mode:input.mode,totalAvailableCount:1,examples:window.__content.examples.filter(example=>example.mode===input.mode),filters:{topicId:null,difficulty:null,requestedSize:input.sessionSize}})}}}}),auth:{me:anonymousIdentity(['auth','me'])},dashboardAuth:{me:anonymousIdentity(['dashboardAuth','me'])},stripe:{checkAccess:p(['stripe','checkAccess'])},access:{auditMyEntitlements:p(['access','auditMyEntitlements'])}};`,
       }[args.path]! }));
     } }],
   });

@@ -51,8 +51,10 @@ beforeAll(async () => {
             `,
             "@/hooks/usePageMeta": `export const usePageMeta = () => {};`,
             "@/lib/trpc": `
-              import { useQuery } from '@tanstack/react-query';
+              import { useMutation, useQuery } from '@tanstack/react-query';
               import { getQueryKey } from '@trpc/react-query';
+              // Classic-only fixtures explicitly opt out of supplemental tracking.
+              Object.defineProperty(window.navigator,"doNotTrack",{configurable:true,value:"1"});
               import { createTRPCClient, httpBatchLink } from '@trpc/client';
               import superjson from 'superjson';
               const httpClient = createTRPCClient({links:[httpBatchLink({
@@ -66,16 +68,25 @@ beforeAll(async () => {
                 },
               })]});
               const procedure = path => ({_def:()=>({path})});
+              const anonymousIdentity = path => {
+                const endpoint = procedure(path);
+                endpoint.useQuery = (input, options) => useQuery({
+                  ...options, queryKey:getQueryKey(endpoint,input,'query'), queryFn:async()=>null,
+                });
+                return endpoint;
+              };
               const questions = procedure(['quiz','getQuestions']);
               questions.useQuery = (input, options) => useQuery({
                 ...options, retry:false,
                 queryKey:getQueryKey(questions,input,'query'),
                 queryFn:({signal})=>window.__query(input,signal),
               });
+              const unavailableActivity = { useMutation: options => useMutation({ ...options, mutationFn:async()=>({tracking:false}) }) };
               export const trpc = {
-                useUtils:() => ({ client: { interactive: { getContent: { mutate: () => { window.__legacyCalls.push("getContent"); throw new Error("Legacy content RPC is forbidden"); } }, getCatalog: { mutate: (input, options) => window.__useHttpTransport ? httpClient.interactive.getCatalog.mutate(input, options) : window.__catalogQuery(input, options.signal) }, startSession: { mutate: (input, options) => window.__useHttpTransport ? httpClient.interactive.startSession.mutate(input, options) : window.__sessionQuery(input, options.signal) } }, quiz: { getInteractiveQuestions: { mutate: () => { window.__legacyCalls.push("quiz"); throw new Error("Legacy RPC is forbidden"); } } } } }),
-                quiz:{getQuestions:questions}, auth:{me:procedure(['auth','me'])},
-                dashboardAuth:{me:procedure(['dashboardAuth','me'])},
+                useUtils:() => ({ client: { deepGames: { getCatalog: { mutate: async ({courseKey}) => ({courseKey,available:false,version:null,modes:[],authoredTaskCount:0,missionCount:0}) }, startSession: { mutate: async () => { throw new Error("Deep sessions are outside this classic harness"); } } }, interactive: { getProgress: { mutate: async () => ({stored:false,today:{answered:0,correct:0,goal:20},streakDays:0,dueCount:0,modes:[]}) }, getContent: { mutate: () => { window.__legacyCalls.push("getContent"); throw new Error("Legacy content RPC is forbidden"); } }, getCatalog: { mutate: (input, options) => window.__useHttpTransport ? httpClient.interactive.getCatalog.mutate(input, options) : window.__catalogQuery(input, options.signal) }, startSession: { mutate: (input, options) => window.__useHttpTransport ? httpClient.interactive.startSession.mutate(input, options) : window.__sessionQuery(input, options.signal) } }, quiz: { getInteractiveQuestions: { mutate: () => { window.__legacyCalls.push("quiz"); throw new Error("Legacy RPC is forbidden"); } } } } }),
+                assessmentActivity:{record:unavailableActivity,resume:unavailableActivity},
+                quiz:{getQuestions:questions}, auth:{me:anonymousIdentity(['auth','me'])},
+                dashboardAuth:{me:anonymousIdentity(['dashboardAuth','me'])},
                 stripe:{checkAccess:procedure(['stripe','checkAccess'])},
                 access:{auditMyEntitlements:procedure(['access','auditMyEntitlements'])},
               };

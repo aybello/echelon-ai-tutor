@@ -27,14 +27,20 @@ beforeAll(async () => {
           export const useRoute=()=>[true,{courseKey:'oit'}];export const useSearch=()=>'';
           export const Link=({children,...props})=>React.createElement('a',props,children);`,
         "@/hooks/usePageMeta": `export const usePageMeta=()=>{};`,
-        "@/lib/trpc": `const p=path=>({_def:()=>({path})});
-          export const trpc={useUtils:()=>({client:{interactive:{
+        "@/lib/trpc": `import {useMutation,useQuery} from '@tanstack/react-query';
+          import {getQueryKey} from '@trpc/react-query';
+          const p=path=>({_def:()=>({path})});
+          const anonymousIdentity=path=>{const endpoint=p(path);endpoint.useQuery=(input,options)=>useQuery({...options,queryKey:getQueryKey(endpoint,input,'query'),queryFn:async()=>null});return endpoint;};
+          const unavailableActivity={useMutation:options=>useMutation({...options,mutationFn:async()=>({tracking:false})})};
+          export const trpc={assessmentActivity:{record:unavailableActivity,resume:unavailableActivity},useUtils:()=>({client:{
+            deepGames:{getCatalog:{mutate:async({courseKey})=>({courseKey,available:false,version:null,modes:[],authoredTaskCount:0,missionCount:0})},startSession:{mutate:async()=>{throw new Error('Deep sessions are outside this classic harness');}}},
+            interactive:{
             getCatalog:{mutate:async()=>window.__catalog()},
             startSession:{mutate:async input=>{window.__sessionInputs.push(input);return window.__session(input);}},
             getProgress:{mutate:async()=>window.__getProgress()},
             trackActivity:{mutate:async input=>{window.__activity.push(input);return {accepted:true};}},
             recordResults:{mutate:async input=>{window.__recorded.push(input);return window.__record(input);}}
-          }}}),auth:{me:p(['auth','me'])},dashboardAuth:{me:p(['dashboardAuth','me'])},
+          }}}),auth:{me:anonymousIdentity(['auth','me'])},dashboardAuth:{me:anonymousIdentity(['dashboardAuth','me'])},
           stripe:{checkAccess:p(['stripe','checkAccess'])},access:{auditMyEntitlements:p(['access','auditMyEntitlements'])}};`,
       }[args.path]! }));
     } }],

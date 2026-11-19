@@ -15,7 +15,11 @@ const docs = committedOverlayDocuments() as ContentOverlay[];
 const ids = counts.passed.map(b => b.id);
 const released = docs.filter(d => ids.includes(d.overlayId));
 const prior = docs.slice(0, counts.priorOverlayIds.length);
-const engine = new InteractiveContentEngine(undefined, docs);
+// Historical publication checks bind its exact prefix, not later reviewed waves.
+// The current complete registry still passes compileOverlays below and the newer
+// content release regressions verify those later additions independently.
+const publication = docs.slice(0, counts.priorOverlayIds.length + ids.length);
+const engine = new InteractiveContentEngine(undefined, publication);
 const before = new InteractiveContentEngine(undefined, prior);
 const sha = (bytes: Buffer) => createHash("sha256").update(bytes).digest("hex");
 // Preserve the byte-equivalent original 129-ID baseline alongside the exact new hold.
@@ -29,7 +33,7 @@ const pool = (e: InteractiveContentEngine, course: string) => {
 describe("pinned 77-table Western Claude publication", () => {
   it("appends only individually passing tables after the exact prior registry", () => {
     expect(prior.map(d => d.overlayId)).toEqual(counts.priorOverlayIds);
-    expect(docs.slice(prior.length).map(d => d.overlayId)).toEqual(ids);
+    expect(publication.slice(prior.length).map(d => d.overlayId)).toEqual(ids);
     expect(released.flatMap(d => d.additions)).toHaveLength(counts.added);
     expect(released.flatMap(d => d.replacements)).toEqual([]);
     expect(counts.passedTables + counts.heldTables).toBe(counts.tables);

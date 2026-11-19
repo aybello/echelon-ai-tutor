@@ -33,11 +33,26 @@ beforeAll(async () => {
           export const useRoute=()=>[true,{courseKey:useSyncExternalStore(subscribe,snapshot).course}];
           export const useSearch=()=>'';export const Link=({children,...props})=>React.createElement('a',props,children);`,
         "@/hooks/usePageMeta": `export const usePageMeta=()=>{};`,
-        "@/lib/trpc": `const p=path=>({_def:()=>({path})});
-          export const trpc={useUtils:()=>({client:{interactive:{
+        "@/lib/trpc": `import {useMutation,useQuery,useQueryClient} from '@tanstack/react-query';
+          import {getQueryKey} from '@trpc/react-query';
+          // Classic-only fixtures explicitly opt out of supplemental tracking.
+          Object.defineProperty(window.navigator,"doNotTrack",{configurable:true,value:"1"});
+          const p=path=>({_def:()=>({path})});
+          const anonymousIdentity=path=>{const endpoint=p(path);const anonymous=async()=>null;endpoint.useQuery=(input,options)=>{
+            const client=useQueryClient();const queryKey=getQueryKey(endpoint,input,'query');
+            const active=client.getQueryCache().find({queryKey,exact:true});
+            // A synchronous fetch notification can rerender this observer before
+            // fetchQuery invokes its queryFn. Keep that controlled cookie request.
+            return useQuery({...options,queryKey,queryFn:active?.state.fetchStatus==='fetching'?active.options.queryFn:anonymous});
+          };return endpoint;};
+          const unavailableActivity={useMutation:options=>useMutation({...options,mutationFn:async()=>({tracking:false})})};
+          export const trpc={assessmentActivity:{record:unavailableActivity,resume:unavailableActivity},useUtils:()=>({client:{
+            deepGames:{getCatalog:{mutate:async({courseKey})=>({courseKey,available:false,version:null,modes:[],authoredTaskCount:0,missionCount:0})},startSession:{mutate:async()=>{throw new Error('Deep sessions are outside this classic harness');}}},
+            interactive:{
+            getProgress:{mutate:async()=>({stored:false,today:{answered:0,correct:0,goal:20},streakDays:0,dueCount:0,modes:[]})},
             getCatalog:{mutate:(input,options)=>window.__request('catalog',input,options.signal)},
             startSession:{mutate:(input,options)=>window.__request('session',input,options.signal)}
-          }}}),auth:{me:p(['auth','me'])},dashboardAuth:{me:p(['dashboardAuth','me'])},
+          }}}),auth:{me:anonymousIdentity(['auth','me'])},dashboardAuth:{me:anonymousIdentity(['dashboardAuth','me'])},
           stripe:{checkAccess:p(['stripe','checkAccess'])},access:{auditMyEntitlements:p(['access','auditMyEntitlements'])}};`,
       }[args.path]! }));
     } }],
