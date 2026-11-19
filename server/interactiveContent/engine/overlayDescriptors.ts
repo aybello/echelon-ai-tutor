@@ -1470,5 +1470,21 @@ export const OVERLAY_DESCRIPTORS = [
     "courses": [
       "wpi-class4-water"
     ]
+  },
+  {
+    "file": "target-class1-water-r01.json",
+    "sha256": "90f862f13cf253978360a61a0bb27fbc6d99a82e8d20edee919c8510b7469216",
+    "bytes": 14850,
+    "courses": [
+      "class1-water"
+    ]
+  },
+  {
+    "file": "target-wqa-r01.json",
+    "sha256": "c7ae8cdaf84cee034e8e2f128558f54957345d1aa5e8e25c34ee00460a51b94a",
+    "bytes": 97959,
+    "courses": [
+      "wqa"
+    ]
   }
 ] as const;
