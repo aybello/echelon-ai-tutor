@@ -1,0 +1,904 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "og-wqa-102",
+ "scope": "Owner-authorized AI-reviewed game activities: 30 items.",
+ "additions": [
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-wqa-b102-rapid-swipe-0001",
+    "prompt": "Under Ontario Regulation 170/03, a chlorinating system keeps its free chlorine residual at not less than 0.05 mg/L.",
+    "correctAnswer": true,
+    "explanation": "O. Reg. 170/03, Sched. 1, s. 1-2 (2) 4 (i): applies where the system chlorinates and does not chloramine, at all times and locations in the distribution system.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "model": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T05:57:02.677Z",
+    "notes": "Regulatory items in this batch were checked against the Ontario texts the owner uploaded on 2026-11-19: O. Reg. 170/03 (last amendment O. Reg. 269/22) sections 1-2 (2) 4 (i), 4 (ii) and 5, and Schedule 6 sections 6-1.1, 6-2, 6-3 and 6-4; O. Reg. 169/03 (last amendment O. Reg. 457/16) was checked for scope only; the Protocol of Accepted Drinking Water Testing Methods, Version 2.0 (May 2010), section 1 (Introduction), printed page 3; and the Practices for the Collection and Handling of Drinking Water Samples (ontario.ca, updated January 6, 2026), labelled as guidance. Each quoted phrase was matched to the source text. The review was done by the authoring session and is not independent of the author. No second AI reviewer and no human technical reviewer has checked this batch. Registration is not a provider-authenticated review record.",
+    "registeredAt": "2026-11-19T05:57:32.059Z",
+    "payloadSha256": "24c331a5e13446ff500dfe04489efe8efb8b1ed49bdbd7542ab668416eb1d718",
+    "builderResultsSha256": "7d7ceb5f88725a4fb39a27451a3f0c3524c9688354894a3139a848e9ddd43883"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-wqa-b102-rapid-swipe-0002",
+    "prompt": "Under Ontario Regulation 170/03, a chloraminating system keeps its combined chlorine residual at not less than 0.25 mg/L.",
+    "correctAnswer": true,
+    "explanation": "O. Reg. 170/03, Sched. 1, s. 1-2 (2) 4 (ii): the combined chlorine residual minimum for a system that provides chloramination.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "model": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T05:57:02.677Z",
+    "notes": "Regulatory items in this batch were checked against the Ontario texts the owner uploaded on 2026-11-19: O. Reg. 170/03 (last amendment O. Reg. 269/22) sections 1-2 (2) 4 (i), 4 (ii) and 5, and Schedule 6 sections 6-1.1, 6-2, 6-3 and 6-4; O. Reg. 169/03 (last amendment O. Reg. 457/16) was checked for scope only; the Protocol of Accepted Drinking Water Testing Methods, Version 2.0 (May 2010), section 1 (Introduction), printed page 3; and the Practices for the Collection and Handling of Drinking Water Samples (ontario.ca, updated January 6, 2026), labelled as guidance. Each quoted phrase was matched to the source text. The review was done by the authoring session and is not independent of the author. No second AI reviewer and no human technical reviewer has checked this batch. Registration is not a provider-authenticated review record.",
+    "registeredAt": "2026-11-19T05:57:32.059Z",
+    "payloadSha256": "91156652589ac15218ff5c864f35f38cebe138c80382abb6c18fe964b5eaf04f",
+    "builderResultsSha256": "7d7ceb5f88725a4fb39a27451a3f0c3524c9688354894a3139a848e9ddd43883"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-wqa-b102-rapid-swipe-0003",
+    "prompt": "Under Ontario Regulation 170/03, adjustments to water treatment equipment may be made by an operator who is not certified.",
+    "correctAnswer": false,
+    "explanation": "O. Reg. 170/03, Sched. 1, s. 1-2 (2) 5: adjustments are carried out only by certified operators or emergency substitute operators.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "model": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T05:57:02.677Z",
+    "notes": "Regulatory items in this batch were checked against the Ontario texts the owner uploaded on 2026-11-19: O. Reg. 170/03 (last amendment O. Reg. 269/22) sections 1-2 (2) 4 (i), 4 (ii) and 5, and Schedule 6 sections 6-1.1, 6-2, 6-3 and 6-4; O. Reg. 169/03 (last amendment O. Reg. 457/16) was checked for scope only; the Protocol of Accepted Drinking Water Testing Methods, Version 2.0 (May 2010), section 1 (Introduction), printed page 3; and the Practices for the Collection and Handling of Drinking Water Samples (ontario.ca, updated January 6, 2026), labelled as guidance. Each quoted phrase was matched to the source text. The review was done by the authoring session and is not independent of the author. No second AI reviewer and no human technical reviewer has checked this batch. Registration is not a provider-authenticated review record.",
+    "registeredAt": "2026-11-19T05:57:32.059Z",
+    "payloadSha256": "3ba1603cddbd9cfbd784876a0c65e22ba4c319adf927fe0631e7a2ed6cb82d9c",
+    "builderResultsSha256": "7d7ceb5f88725a4fb39a27451a3f0c3524c9688354894a3139a848e9ddd43883"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-wqa-b102-rapid-swipe-0004",
+    "prompt": "A free chlorine residual of 0.03 mg/L meets the minimum for a chlorinating system under Ontario Regulation 170/03.",
+    "correctAnswer": false,
+    "explanation": "The minimum is 0.05 mg/L (O. Reg. 170/03, Sched. 1, s. 1-2 (2) 4 (i)), so 0.03 mg/L is below it.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "model": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T05:57:02.677Z",
+    "notes": "Regulatory items in this batch were checked against the Ontario texts the owner uploaded on 2026-11-19: O. Reg. 170/03 (last amendment O. Reg. 269/22) sections 1-2 (2) 4 (i), 4 (ii) and 5, and Schedule 6 sections 6-1.1, 6-2, 6-3 and 6-4; O. Reg. 169/03 (last amendment O. Reg. 457/16) was checked for scope only; the Protocol of Accepted Drinking Water Testing Methods, Version 2.0 (May 2010), section 1 (Introduction), printed page 3; and the Practices for the Collection and Handling of Drinking Water Samples (ontario.ca, updated January 6, 2026), labelled as guidance. Each quoted phrase was matched to the source text. The review was done by the authoring session and is not independent of the author. No second AI reviewer and no human technical reviewer has checked this batch. Registration is not a provider-authenticated review record.",
+    "registeredAt": "2026-11-19T05:57:32.059Z",
+    "payloadSha256": "d4d0f9ae33c03c217598079be22c784a30c5ee179dfa8a7682dc654466e95f3d",
+    "builderResultsSha256": "7d7ceb5f88725a4fb39a27451a3f0c3524c9688354894a3139a848e9ddd43883"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-wqa-b102-rapid-swipe-0005",
+    "prompt": "Samples for distribution testing are taken from the point at which water enters the distribution system, unless otherwise specified.",
+    "correctAnswer": true,
+    "explanation": "O. Reg. 170/03, Sched. 6, s. 6-2: the point of entry to the distribution system or the plumbing connected to it.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "model": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T05:57:02.677Z",
+    "notes": "Regulatory items in this batch were checked against the Ontario texts the owner uploaded on 2026-11-19: O. Reg. 170/03 (last amendment O. Reg. 269/22) sections 1-2 (2) 4 (i), 4 (ii) and 5, and Schedule 6 sections 6-1.1, 6-2, 6-3 and 6-4; O. Reg. 169/03 (last amendment O. Reg. 457/16) was checked for scope only; the Protocol of Accepted Drinking Water Testing Methods, Version 2.0 (May 2010), section 1 (Introduction), printed page 3; and the Practices for the Collection and Handling of Drinking Water Samples (ontario.ca, updated January 6, 2026), labelled as guidance. Each quoted phrase was matched to the source text. The review was done by the authoring session and is not independent of the author. No second AI reviewer and no human technical reviewer has checked this batch. Registration is not a provider-authenticated review record.",
+    "registeredAt": "2026-11-19T05:57:32.059Z",
+    "payloadSha256": "fa20998badec2437a7c630153d55500c075f3d7ee4c82a6f14a9e2e659d5d4aa",
+    "builderResultsSha256": "7d7ceb5f88725a4fb39a27451a3f0c3524c9688354894a3139a848e9ddd43883"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-wqa-b102-rapid-swipe-0006",
+    "prompt": "When a microbiological sample is taken and tested, a free chlorine residual sample is taken at the same time and location and tested immediately.",
+    "correctAnswer": true,
+    "explanation": "O. Reg. 170/03, Sched. 6, s. 6-3 (1): the residual sample is for systems that chlorinate and do not chloramine; combined chlorine applies to systems that chloramine.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "model": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T05:57:02.677Z",
+    "notes": "Regulatory items in this batch were checked against the Ontario texts the owner uploaded on 2026-11-19: O. Reg. 170/03 (last amendment O. Reg. 269/22) sections 1-2 (2) 4 (i), 4 (ii) and 5, and Schedule 6 sections 6-1.1, 6-2, 6-3 and 6-4; O. Reg. 169/03 (last amendment O. Reg. 457/16) was checked for scope only; the Protocol of Accepted Drinking Water Testing Methods, Version 2.0 (May 2010), section 1 (Introduction), printed page 3; and the Practices for the Collection and Handling of Drinking Water Samples (ontario.ca, updated January 6, 2026), labelled as guidance. Each quoted phrase was matched to the source text. The review was done by the authoring session and is not independent of the author. No second AI reviewer and no human technical reviewer has checked this batch. Registration is not a provider-authenticated review record.",
+    "registeredAt": "2026-11-19T05:57:32.059Z",
+    "payloadSha256": "6c85890fb8e57000db4becbeba8fba2622d8ffdb7dcfc6709b2eddbde4928a92",
+    "builderResultsSha256": "7d7ceb5f88725a4fb39a27451a3f0c3524c9688354894a3139a848e9ddd43883"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-wqa-b102-rapid-swipe-0007",
+    "prompt": "Schedule 6 requires a chlorine residual test alongside raw-water microbiological samples.",
+    "correctAnswer": false,
+    "explanation": "The opposite is true: s. 6-3 (2) excludes raw-water samples from the residual companion requirement.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "model": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T05:57:02.677Z",
+    "notes": "Regulatory items in this batch were checked against the Ontario texts the owner uploaded on 2026-11-19: O. Reg. 170/03 (last amendment O. Reg. 269/22) sections 1-2 (2) 4 (i), 4 (ii) and 5, and Schedule 6 sections 6-1.1, 6-2, 6-3 and 6-4; O. Reg. 169/03 (last amendment O. Reg. 457/16) was checked for scope only; the Protocol of Accepted Drinking Water Testing Methods, Version 2.0 (May 2010), section 1 (Introduction), printed page 3; and the Practices for the Collection and Handling of Drinking Water Samples (ontario.ca, updated January 6, 2026), labelled as guidance. Each quoted phrase was matched to the source text. The review was done by the authoring session and is not independent of the author. No second AI reviewer and no human technical reviewer has checked this batch. Registration is not a provider-authenticated review record.",
+    "registeredAt": "2026-11-19T05:57:32.059Z",
+    "payloadSha256": "881f9a553c9c3960c826bbc613688f487e2b9a8b0b7ebec82bc9d906e8ea437d",
+    "builderResultsSha256": "7d7ceb5f88725a4fb39a27451a3f0c3524c9688354894a3139a848e9ddd43883"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-wqa-b102-rapid-swipe-0008",
+    "prompt": "A microbiological sample from the distribution system needs no companion chlorine residual sample.",
+    "correctAnswer": false,
+    "explanation": "O. Reg. 170/03, Sched. 6, s. 6-3 (1) requires a companion residual sample for distribution microbiological samples.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "model": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T05:57:02.677Z",
+    "notes": "Regulatory items in this batch were checked against the Ontario texts the owner uploaded on 2026-11-19: O. Reg. 170/03 (last amendment O. Reg. 269/22) sections 1-2 (2) 4 (i), 4 (ii) and 5, and Schedule 6 sections 6-1.1, 6-2, 6-3 and 6-4; O. Reg. 169/03 (last amendment O. Reg. 457/16) was checked for scope only; the Protocol of Accepted Drinking Water Testing Methods, Version 2.0 (May 2010), section 1 (Introduction), printed page 3; and the Practices for the Collection and Handling of Drinking Water Samples (ontario.ca, updated January 6, 2026), labelled as guidance. Each quoted phrase was matched to the source text. The review was done by the authoring session and is not independent of the author. No second AI reviewer and no human technical reviewer has checked this batch. Registration is not a provider-authenticated review record.",
+    "registeredAt": "2026-11-19T05:57:32.059Z",
+    "payloadSha256": "f44e9ac21f5892d180a4a34ee5329216dd6c28385340cae47ee43c4b2afffdd1",
+    "builderResultsSha256": "7d7ceb5f88725a4fb39a27451a3f0c3524c9688354894a3139a848e9ddd43883"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-wqa-b102-rapid-swipe-0009",
+    "prompt": "Under Schedule 6, samples are taken as grab samples unless continuous monitoring or authorized in-line microbiological equipment is used.",
+    "correctAnswer": true,
+    "explanation": "O. Reg. 170/03, Sched. 6, s. 6-4 (1).",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "model": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T05:57:02.677Z",
+    "notes": "Regulatory items in this batch were checked against the Ontario texts the owner uploaded on 2026-11-19: O. Reg. 170/03 (last amendment O. Reg. 269/22) sections 1-2 (2) 4 (i), 4 (ii) and 5, and Schedule 6 sections 6-1.1, 6-2, 6-3 and 6-4; O. Reg. 169/03 (last amendment O. Reg. 457/16) was checked for scope only; the Protocol of Accepted Drinking Water Testing Methods, Version 2.0 (May 2010), section 1 (Introduction), printed page 3; and the Practices for the Collection and Handling of Drinking Water Samples (ontario.ca, updated January 6, 2026), labelled as guidance. Each quoted phrase was matched to the source text. The review was done by the authoring session and is not independent of the author. No second AI reviewer and no human technical reviewer has checked this batch. Registration is not a provider-authenticated review record.",
+    "registeredAt": "2026-11-19T05:57:32.059Z",
+    "payloadSha256": "a77f0ec60c308e1001ac2a8b2713d7a19f71f6c6fbdb9b74931c7688369970e1",
+    "builderResultsSha256": "7d7ceb5f88725a4fb39a27451a3f0c3524c9688354894a3139a848e9ddd43883"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-wqa-b102-rapid-swipe-0010",
+    "prompt": "Continuous monitoring may be used under Schedule 6 for free chlorine residual and fluoride, among other listed parameters.",
+    "correctAnswer": true,
+    "explanation": "O. Reg. 170/03, Sched. 6, s. 6-4 (2): the listed parameters are turbidity, fluoride, free chlorine residual, and free and total chlorine residual for combined residual.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "model": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T05:57:02.677Z",
+    "notes": "Regulatory items in this batch were checked against the Ontario texts the owner uploaded on 2026-11-19: O. Reg. 170/03 (last amendment O. Reg. 269/22) sections 1-2 (2) 4 (i), 4 (ii) and 5, and Schedule 6 sections 6-1.1, 6-2, 6-3 and 6-4; O. Reg. 169/03 (last amendment O. Reg. 457/16) was checked for scope only; the Protocol of Accepted Drinking Water Testing Methods, Version 2.0 (May 2010), section 1 (Introduction), printed page 3; and the Practices for the Collection and Handling of Drinking Water Samples (ontario.ca, updated January 6, 2026), labelled as guidance. Each quoted phrase was matched to the source text. The review was done by the authoring session and is not independent of the author. No second AI reviewer and no human technical reviewer has checked this batch. Registration is not a provider-authenticated review record.",
+    "registeredAt": "2026-11-19T05:57:32.059Z",
+    "payloadSha256": "f2c87b622825640f0e1f52e5d837ba3bda07bfaf448db8775463882b21924e61",
+    "builderResultsSha256": "7d7ceb5f88725a4fb39a27451a3f0c3524c9688354894a3139a848e9ddd43883"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-wqa-b102-rapid-swipe-0011",
+    "prompt": "Continuous monitoring is permitted under Schedule 6 for E. coli counts.",
+    "correctAnswer": false,
+    "explanation": "O. Reg. 170/03, Sched. 6, s. 6-4 (2) lists turbidity, fluoride and chlorine residuals only; E. coli is not in the list.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "model": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T05:57:02.677Z",
+    "notes": "Regulatory items in this batch were checked against the Ontario texts the owner uploaded on 2026-11-19: O. Reg. 170/03 (last amendment O. Reg. 269/22) sections 1-2 (2) 4 (i), 4 (ii) and 5, and Schedule 6 sections 6-1.1, 6-2, 6-3 and 6-4; O. Reg. 169/03 (last amendment O. Reg. 457/16) was checked for scope only; the Protocol of Accepted Drinking Water Testing Methods, Version 2.0 (May 2010), section 1 (Introduction), printed page 3; and the Practices for the Collection and Handling of Drinking Water Samples (ontario.ca, updated January 6, 2026), labelled as guidance. Each quoted phrase was matched to the source text. The review was done by the authoring session and is not independent of the author. No second AI reviewer and no human technical reviewer has checked this batch. Registration is not a provider-authenticated review record.",
+    "registeredAt": "2026-11-19T05:57:32.059Z",
+    "payloadSha256": "289437baad32657c8f8f7b04fd62896949e53e1ecaee24b515c3078ddbf32463",
+    "builderResultsSha256": "7d7ceb5f88725a4fb39a27451a3f0c3524c9688354894a3139a848e9ddd43883"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-wqa-b102-rapid-swipe-0012",
+    "prompt": "In-line microbiological equipment needs no equivalence to an accredited test method.",
+    "correctAnswer": false,
+    "explanation": "O. Reg. 170/03, Sched. 6, s. 6-4 (3): it may be used only if the Director is of the opinion that its method is equivalent to an accredited method.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "model": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T05:57:02.677Z",
+    "notes": "Regulatory items in this batch were checked against the Ontario texts the owner uploaded on 2026-11-19: O. Reg. 170/03 (last amendment O. Reg. 269/22) sections 1-2 (2) 4 (i), 4 (ii) and 5, and Schedule 6 sections 6-1.1, 6-2, 6-3 and 6-4; O. Reg. 169/03 (last amendment O. Reg. 457/16) was checked for scope only; the Protocol of Accepted Drinking Water Testing Methods, Version 2.0 (May 2010), section 1 (Introduction), printed page 3; and the Practices for the Collection and Handling of Drinking Water Samples (ontario.ca, updated January 6, 2026), labelled as guidance. Each quoted phrase was matched to the source text. The review was done by the authoring session and is not independent of the author. No second AI reviewer and no human technical reviewer has checked this batch. Registration is not a provider-authenticated review record.",
+    "registeredAt": "2026-11-19T05:57:32.059Z",
+    "payloadSha256": "7bc6ef80fe44156e5c93aa6b409f8de9d8c9d6211fabfc3ef875095813652185",
+    "builderResultsSha256": "7d7ceb5f88725a4fb39a27451a3f0c3524c9688354894a3139a848e9ddd43883"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-wqa-b102-rapid-swipe-0013",
+    "prompt": "In-line microbiological equipment can be used when the Director judges its method equivalent to an accredited method.",
+    "correctAnswer": true,
+    "explanation": "O. Reg. 170/03, Sched. 6, s. 6-4 (3).",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "model": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T05:57:02.677Z",
+    "notes": "Regulatory items in this batch were checked against the Ontario texts the owner uploaded on 2026-11-19: O. Reg. 170/03 (last amendment O. Reg. 269/22) sections 1-2 (2) 4 (i), 4 (ii) and 5, and Schedule 6 sections 6-1.1, 6-2, 6-3 and 6-4; O. Reg. 169/03 (last amendment O. Reg. 457/16) was checked for scope only; the Protocol of Accepted Drinking Water Testing Methods, Version 2.0 (May 2010), section 1 (Introduction), printed page 3; and the Practices for the Collection and Handling of Drinking Water Samples (ontario.ca, updated January 6, 2026), labelled as guidance. Each quoted phrase was matched to the source text. The review was done by the authoring session and is not independent of the author. No second AI reviewer and no human technical reviewer has checked this batch. Registration is not a provider-authenticated review record.",
+    "registeredAt": "2026-11-19T05:57:32.059Z",
+    "payloadSha256": "58d4a2b8304984f5552a66fae0ff6dbc4728541e50b60e39bbe3bd3f6f9d3952",
+    "builderResultsSha256": "7d7ceb5f88725a4fb39a27451a3f0c3524c9688354894a3139a848e9ddd43883"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-wqa-b102-rapid-swipe-0014",
+    "prompt": "Schedule 6 sets sampling frequencies from weekly to six-monthly.",
+    "correctAnswer": false,
+    "explanation": "Schedule 6 sets sampling frequencies from weekly to every 60 months (O. Reg. 170/03, Sched. 6, s. 6-1.1 (1) to (7)); a six-month frequency is not listed.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "model": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T05:57:02.677Z",
+    "notes": "Regulatory items in this batch were checked against the Ontario texts the owner uploaded on 2026-11-19: O. Reg. 170/03 (last amendment O. Reg. 269/22) sections 1-2 (2) 4 (i), 4 (ii) and 5, and Schedule 6 sections 6-1.1, 6-2, 6-3 and 6-4; O. Reg. 169/03 (last amendment O. Reg. 457/16) was checked for scope only; the Protocol of Accepted Drinking Water Testing Methods, Version 2.0 (May 2010), section 1 (Introduction), printed page 3; and the Practices for the Collection and Handling of Drinking Water Samples (ontario.ca, updated January 6, 2026), labelled as guidance. Each quoted phrase was matched to the source text. The review was done by the authoring session and is not independent of the author. No second AI reviewer and no human technical reviewer has checked this batch. Registration is not a provider-authenticated review record.",
+    "registeredAt": "2026-11-19T05:57:32.059Z",
+    "payloadSha256": "1c76a92ea2f477a1cb264839569be9394be7041952553aca7e67fdfc5df8fc66",
+    "builderResultsSha256": "7d7ceb5f88725a4fb39a27451a3f0c3524c9688354894a3139a848e9ddd43883"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-wqa-b102-rapid-swipe-0015",
+    "prompt": "Under the Safe Drinking Water Act, 2002, licensed Ontario laboratories and eligible out-of-province laboratories may conduct tests on drinking water samples.",
+    "correctAnswer": true,
+    "explanation": "Protocol of Accepted Drinking Water Testing Methods, Version 2.0 (May 2010), section 1 (Introduction), page 3.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "model": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T05:57:02.677Z",
+    "notes": "Regulatory items in this batch were checked against the Ontario texts the owner uploaded on 2026-11-19: O. Reg. 170/03 (last amendment O. Reg. 269/22) sections 1-2 (2) 4 (i), 4 (ii) and 5, and Schedule 6 sections 6-1.1, 6-2, 6-3 and 6-4; O. Reg. 169/03 (last amendment O. Reg. 457/16) was checked for scope only; the Protocol of Accepted Drinking Water Testing Methods, Version 2.0 (May 2010), section 1 (Introduction), printed page 3; and the Practices for the Collection and Handling of Drinking Water Samples (ontario.ca, updated January 6, 2026), labelled as guidance. Each quoted phrase was matched to the source text. The review was done by the authoring session and is not independent of the author. No second AI reviewer and no human technical reviewer has checked this batch. Registration is not a provider-authenticated review record.",
+    "registeredAt": "2026-11-19T05:57:32.059Z",
+    "payloadSha256": "53b76772885653f7eb4e5870ea7ae79880009592bcada94b9d1dddae56e2fcf4",
+    "builderResultsSha256": "7d7ceb5f88725a4fb39a27451a3f0c3524c9688354894a3139a848e9ddd43883"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-wqa-b102-rapid-swipe-0016",
+    "prompt": "A drinking water laboratory needs accreditation for the selected method, or Director authorization, to run a test.",
+    "correctAnswer": true,
+    "explanation": "Protocol, section 1 (Introduction): accreditation by SCC, CALA or an equivalent body, or authorization by the Director.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "model": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T05:57:02.677Z",
+    "notes": "Regulatory items in this batch were checked against the Ontario texts the owner uploaded on 2026-11-19: O. Reg. 170/03 (last amendment O. Reg. 269/22) sections 1-2 (2) 4 (i), 4 (ii) and 5, and Schedule 6 sections 6-1.1, 6-2, 6-3 and 6-4; O. Reg. 169/03 (last amendment O. Reg. 457/16) was checked for scope only; the Protocol of Accepted Drinking Water Testing Methods, Version 2.0 (May 2010), section 1 (Introduction), printed page 3; and the Practices for the Collection and Handling of Drinking Water Samples (ontario.ca, updated January 6, 2026), labelled as guidance. Each quoted phrase was matched to the source text. The review was done by the authoring session and is not independent of the author. No second AI reviewer and no human technical reviewer has checked this batch. Registration is not a provider-authenticated review record.",
+    "registeredAt": "2026-11-19T05:57:32.059Z",
+    "payloadSha256": "dec302c7c6c0f1716e4870f4a95dec3d94b981d4bb66de6af4e35f6daa3fc8cc",
+    "builderResultsSha256": "7d7ceb5f88725a4fb39a27451a3f0c3524c9688354894a3139a848e9ddd43883"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-wqa-b102-rapid-swipe-0017",
+    "prompt": "A laboratory may run drinking water tests without validating its methods, if the method is accredited.",
+    "correctAnswer": false,
+    "explanation": "Protocol, section 1: the laboratory must also use validated methods and show that it meets or exceeds the reporting detection limit.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "model": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T05:57:02.677Z",
+    "notes": "Regulatory items in this batch were checked against the Ontario texts the owner uploaded on 2026-11-19: O. Reg. 170/03 (last amendment O. Reg. 269/22) sections 1-2 (2) 4 (i), 4 (ii) and 5, and Schedule 6 sections 6-1.1, 6-2, 6-3 and 6-4; O. Reg. 169/03 (last amendment O. Reg. 457/16) was checked for scope only; the Protocol of Accepted Drinking Water Testing Methods, Version 2.0 (May 2010), section 1 (Introduction), printed page 3; and the Practices for the Collection and Handling of Drinking Water Samples (ontario.ca, updated January 6, 2026), labelled as guidance. Each quoted phrase was matched to the source text. The review was done by the authoring session and is not independent of the author. No second AI reviewer and no human technical reviewer has checked this batch. Registration is not a provider-authenticated review record.",
+    "registeredAt": "2026-11-19T05:57:32.059Z",
+    "payloadSha256": "8a8220b6a902040975bff191ccaa46000bd89db9a16c893406a281f14f2d0e68",
+    "builderResultsSha256": "7d7ceb5f88725a4fb39a27451a3f0c3524c9688354894a3139a848e9ddd43883"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-wqa-b102-rapid-swipe-0018",
+    "prompt": "Drinking water samples shall not be filtered in the field.",
+    "correctAnswer": true,
+    "explanation": "Practices for the Collection and Handling of Drinking Water Samples (ontario.ca, updated January 6, 2026): guidance, not regulation.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "model": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T05:57:02.677Z",
+    "notes": "Regulatory items in this batch were checked against the Ontario texts the owner uploaded on 2026-11-19: O. Reg. 170/03 (last amendment O. Reg. 269/22) sections 1-2 (2) 4 (i), 4 (ii) and 5, and Schedule 6 sections 6-1.1, 6-2, 6-3 and 6-4; O. Reg. 169/03 (last amendment O. Reg. 457/16) was checked for scope only; the Protocol of Accepted Drinking Water Testing Methods, Version 2.0 (May 2010), section 1 (Introduction), printed page 3; and the Practices for the Collection and Handling of Drinking Water Samples (ontario.ca, updated January 6, 2026), labelled as guidance. Each quoted phrase was matched to the source text. The review was done by the authoring session and is not independent of the author. No second AI reviewer and no human technical reviewer has checked this batch. Registration is not a provider-authenticated review record.",
+    "registeredAt": "2026-11-19T05:57:32.059Z",
+    "payloadSha256": "c11022a8f95415fd87a0be07e964ee660df866ea6c777cb0de46c90ac0924caa",
+    "builderResultsSha256": "7d7ceb5f88725a4fb39a27451a3f0c3524c9688354894a3139a848e9ddd43883"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-wqa-b102-rapid-swipe-0019",
+    "prompt": "Microbiological sample bottles contain a dechlorinating agent to neutralise residual chlorine in the sample.",
+    "correctAnswer": true,
+    "explanation": "Practices for the Collection and Handling of Drinking Water Samples (ontario.ca, updated January 6, 2026): guidance, not regulation.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "model": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T05:57:02.677Z",
+    "notes": "Regulatory items in this batch were checked against the Ontario texts the owner uploaded on 2026-11-19: O. Reg. 170/03 (last amendment O. Reg. 269/22) sections 1-2 (2) 4 (i), 4 (ii) and 5, and Schedule 6 sections 6-1.1, 6-2, 6-3 and 6-4; O. Reg. 169/03 (last amendment O. Reg. 457/16) was checked for scope only; the Protocol of Accepted Drinking Water Testing Methods, Version 2.0 (May 2010), section 1 (Introduction), printed page 3; and the Practices for the Collection and Handling of Drinking Water Samples (ontario.ca, updated January 6, 2026), labelled as guidance. Each quoted phrase was matched to the source text. The review was done by the authoring session and is not independent of the author. No second AI reviewer and no human technical reviewer has checked this batch. Registration is not a provider-authenticated review record.",
+    "registeredAt": "2026-11-19T05:57:32.059Z",
+    "payloadSha256": "0d69cc4cff6b6728c516bdc1bf7e337a779d4091072b3b9108d4422569c357d9",
+    "builderResultsSha256": "7d7ceb5f88725a4fb39a27451a3f0c3524c9688354894a3139a848e9ddd43883"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-wqa-b102-rapid-swipe-0020",
+    "prompt": "Preservatives are interchangeable, so a sample can use whichever preservative is at hand.",
+    "correctAnswer": false,
+    "explanation": "Practices (updated January 6, 2026): preservatives are not interchangeable and the laboratory provides the right one.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "model": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T05:57:02.677Z",
+    "notes": "Regulatory items in this batch were checked against the Ontario texts the owner uploaded on 2026-11-19: O. Reg. 170/03 (last amendment O. Reg. 269/22) sections 1-2 (2) 4 (i), 4 (ii) and 5, and Schedule 6 sections 6-1.1, 6-2, 6-3 and 6-4; O. Reg. 169/03 (last amendment O. Reg. 457/16) was checked for scope only; the Protocol of Accepted Drinking Water Testing Methods, Version 2.0 (May 2010), section 1 (Introduction), printed page 3; and the Practices for the Collection and Handling of Drinking Water Samples (ontario.ca, updated January 6, 2026), labelled as guidance. Each quoted phrase was matched to the source text. The review was done by the authoring session and is not independent of the author. No second AI reviewer and no human technical reviewer has checked this batch. Registration is not a provider-authenticated review record.",
+    "registeredAt": "2026-11-19T05:57:32.059Z",
+    "payloadSha256": "b1a9f8b74bd7af99455bd0f733d6c6fe99a29ec881de6df3cb09544d03060df9",
+    "builderResultsSha256": "7d7ceb5f88725a4fb39a27451a3f0c3524c9688354894a3139a848e9ddd43883"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-wqa-b102-cause-effect-0021",
+    "prompt": "A chlorinating system's free chlorine residual falls to 0.03 mg/L at a far-end tap. What happens to compliance with the 0.05 mg/L minimum?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It increases"
+     },
+     {
+      "id": "option-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "option-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "O. Reg. 170/03, Sched. 1, s. 1-2 (2) 4 (i): the residual must not be less than 0.05 mg/L at all locations.",
+    "mode": "cause-effect"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "model": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T05:57:02.677Z",
+    "notes": "Regulatory items in this batch were checked against the Ontario texts the owner uploaded on 2026-11-19: O. Reg. 170/03 (last amendment O. Reg. 269/22) sections 1-2 (2) 4 (i), 4 (ii) and 5, and Schedule 6 sections 6-1.1, 6-2, 6-3 and 6-4; O. Reg. 169/03 (last amendment O. Reg. 457/16) was checked for scope only; the Protocol of Accepted Drinking Water Testing Methods, Version 2.0 (May 2010), section 1 (Introduction), printed page 3; and the Practices for the Collection and Handling of Drinking Water Samples (ontario.ca, updated January 6, 2026), labelled as guidance. Each quoted phrase was matched to the source text. The review was done by the authoring session and is not independent of the author. No second AI reviewer and no human technical reviewer has checked this batch. Registration is not a provider-authenticated review record.",
+    "registeredAt": "2026-11-19T05:57:32.059Z",
+    "payloadSha256": "32ad96af2e9a881d15e3a6a23d9a196d9eb94e5d9db819ef6e86085b14a6ceff",
+    "builderResultsSha256": "7d7ceb5f88725a4fb39a27451a3f0c3524c9688354894a3139a848e9ddd43883"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-wqa-b102-cause-effect-0022",
+    "prompt": "A chloraminating system's combined chlorine residual falls to 0.20 mg/L. What happens to compliance with the 0.25 mg/L minimum?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It increases"
+     },
+     {
+      "id": "option-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "option-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "O. Reg. 170/03, Sched. 1, s. 1-2 (2) 4 (ii).",
+    "mode": "cause-effect"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "model": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T05:57:02.677Z",
+    "notes": "Regulatory items in this batch were checked against the Ontario texts the owner uploaded on 2026-11-19: O. Reg. 170/03 (last amendment O. Reg. 269/22) sections 1-2 (2) 4 (i), 4 (ii) and 5, and Schedule 6 sections 6-1.1, 6-2, 6-3 and 6-4; O. Reg. 169/03 (last amendment O. Reg. 457/16) was checked for scope only; the Protocol of Accepted Drinking Water Testing Methods, Version 2.0 (May 2010), section 1 (Introduction), printed page 3; and the Practices for the Collection and Handling of Drinking Water Samples (ontario.ca, updated January 6, 2026), labelled as guidance. Each quoted phrase was matched to the source text. The review was done by the authoring session and is not independent of the author. No second AI reviewer and no human technical reviewer has checked this batch. Registration is not a provider-authenticated review record.",
+    "registeredAt": "2026-11-19T05:57:32.059Z",
+    "payloadSha256": "f328e174604862db3dc4750043f8d7698e736c5c1638849dce7cc31098979838",
+    "builderResultsSha256": "7d7ceb5f88725a4fb39a27451a3f0c3524c9688354894a3139a848e9ddd43883"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-wqa-b102-cause-effect-0023",
+    "prompt": "An operator who is not certified adjusts water treatment equipment. What happens to the regulatory standing of the adjustment?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It increases"
+     },
+     {
+      "id": "option-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "option-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "O. Reg. 170/03, Sched. 1, s. 1-2 (2) 5: only certified or emergency substitute operators may make adjustments.",
+    "mode": "cause-effect"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "model": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T05:57:02.677Z",
+    "notes": "Regulatory items in this batch were checked against the Ontario texts the owner uploaded on 2026-11-19: O. Reg. 170/03 (last amendment O. Reg. 269/22) sections 1-2 (2) 4 (i), 4 (ii) and 5, and Schedule 6 sections 6-1.1, 6-2, 6-3 and 6-4; O. Reg. 169/03 (last amendment O. Reg. 457/16) was checked for scope only; the Protocol of Accepted Drinking Water Testing Methods, Version 2.0 (May 2010), section 1 (Introduction), printed page 3; and the Practices for the Collection and Handling of Drinking Water Samples (ontario.ca, updated January 6, 2026), labelled as guidance. Each quoted phrase was matched to the source text. The review was done by the authoring session and is not independent of the author. No second AI reviewer and no human technical reviewer has checked this batch. Registration is not a provider-authenticated review record.",
+    "registeredAt": "2026-11-19T05:57:32.059Z",
+    "payloadSha256": "1b586e1c628db4bf15e9f6af5b590b1c6a16980ff49c04e5a1aace66b60c5247",
+    "builderResultsSha256": "7d7ceb5f88725a4fb39a27451a3f0c3524c9688354894a3139a848e9ddd43883"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-wqa-b102-cause-effect-0024",
+    "prompt": "A chlorine residual is not tested with a distribution microbiological sample. What happens to the regulatory compliance of the sampling?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It increases"
+     },
+     {
+      "id": "option-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "option-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "O. Reg. 170/03, Sched. 6, s. 6-3 (1) requires the companion residual sample.",
+    "mode": "cause-effect"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "model": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T05:57:02.677Z",
+    "notes": "Regulatory items in this batch were checked against the Ontario texts the owner uploaded on 2026-11-19: O. Reg. 170/03 (last amendment O. Reg. 269/22) sections 1-2 (2) 4 (i), 4 (ii) and 5, and Schedule 6 sections 6-1.1, 6-2, 6-3 and 6-4; O. Reg. 169/03 (last amendment O. Reg. 457/16) was checked for scope only; the Protocol of Accepted Drinking Water Testing Methods, Version 2.0 (May 2010), section 1 (Introduction), printed page 3; and the Practices for the Collection and Handling of Drinking Water Samples (ontario.ca, updated January 6, 2026), labelled as guidance. Each quoted phrase was matched to the source text. The review was done by the authoring session and is not independent of the author. No second AI reviewer and no human technical reviewer has checked this batch. Registration is not a provider-authenticated review record.",
+    "registeredAt": "2026-11-19T05:57:32.059Z",
+    "payloadSha256": "5083d1dd130110a7dfdc53a5782cd3d9c01e31940ca2d5036f34eea626b72119",
+    "builderResultsSha256": "7d7ceb5f88725a4fb39a27451a3f0c3524c9688354894a3139a848e9ddd43883"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-wqa-b102-cause-effect-0025",
+    "prompt": "An in-line microbiological analyser is used without an accredited-equivalent method. What happens to the regulatory standing of its results?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It increases"
+     },
+     {
+      "id": "option-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "option-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "O. Reg. 170/03, Sched. 6, s. 6-4 (3).",
+    "mode": "cause-effect"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "model": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T05:57:02.677Z",
+    "notes": "Regulatory items in this batch were checked against the Ontario texts the owner uploaded on 2026-11-19: O. Reg. 170/03 (last amendment O. Reg. 269/22) sections 1-2 (2) 4 (i), 4 (ii) and 5, and Schedule 6 sections 6-1.1, 6-2, 6-3 and 6-4; O. Reg. 169/03 (last amendment O. Reg. 457/16) was checked for scope only; the Protocol of Accepted Drinking Water Testing Methods, Version 2.0 (May 2010), section 1 (Introduction), printed page 3; and the Practices for the Collection and Handling of Drinking Water Samples (ontario.ca, updated January 6, 2026), labelled as guidance. Each quoted phrase was matched to the source text. The review was done by the authoring session and is not independent of the author. No second AI reviewer and no human technical reviewer has checked this batch. Registration is not a provider-authenticated review record.",
+    "registeredAt": "2026-11-19T05:57:32.059Z",
+    "payloadSha256": "95dc1a8ddcbbe3ddab3aecae5c665959bbe186e980ded680f9ad1377b5a4adec",
+    "builderResultsSha256": "7d7ceb5f88725a4fb39a27451a3f0c3524c9688354894a3139a848e9ddd43883"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-wqa-b102-cause-effect-0026",
+    "prompt": "A distribution sample is taken from a point before the water enters the distribution system. What happens to the regulatory compliance of the sampling point?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It increases"
+     },
+     {
+      "id": "option-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "option-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "O. Reg. 170/03, Sched. 6, s. 6-2 sets the point of entry as the sampling point, unless otherwise specified.",
+    "mode": "cause-effect"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "model": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T05:57:02.677Z",
+    "notes": "Regulatory items in this batch were checked against the Ontario texts the owner uploaded on 2026-11-19: O. Reg. 170/03 (last amendment O. Reg. 269/22) sections 1-2 (2) 4 (i), 4 (ii) and 5, and Schedule 6 sections 6-1.1, 6-2, 6-3 and 6-4; O. Reg. 169/03 (last amendment O. Reg. 457/16) was checked for scope only; the Protocol of Accepted Drinking Water Testing Methods, Version 2.0 (May 2010), section 1 (Introduction), printed page 3; and the Practices for the Collection and Handling of Drinking Water Samples (ontario.ca, updated January 6, 2026), labelled as guidance. Each quoted phrase was matched to the source text. The review was done by the authoring session and is not independent of the author. No second AI reviewer and no human technical reviewer has checked this batch. Registration is not a provider-authenticated review record.",
+    "registeredAt": "2026-11-19T05:57:32.059Z",
+    "payloadSha256": "2933db215a9a8805e6ce5a26f4f3959d6335a5c3236d4dbed2cf5a792a10e612",
+    "builderResultsSha256": "7d7ceb5f88725a4fb39a27451a3f0c3524c9688354894a3139a848e9ddd43883"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-wqa-b102-tap-the-flaw-0027",
+    "prompt": "Tap the flawed statement about chlorine residual minimums.",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "A combined chlorine residual of 0.25 mg/L meets the chloramination minimum under O. Reg. 170/03, Sched. 1, s. 1-2 (2) 4 (ii)."
+     },
+     {
+      "id": "option-2",
+      "label": "A free chlorine residual of 0.05 mg/L meets the minimum where the system chlorinates and does not chloramine, under O. Reg. 170/03, Sched. 1, s. 1-2 (2) 4 (i)."
+     },
+     {
+      "id": "option-3",
+      "label": "A combined residual of 0.05 mg/L meets the chloramination minimum."
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "The chloramination minimum is 0.25 mg/L (s. 1-2 (2) 4 (ii)); 0.05 mg/L is the chlorination minimum.",
+    "mode": "tap-the-flaw"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "model": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T05:57:02.677Z",
+    "notes": "Regulatory items in this batch were checked against the Ontario texts the owner uploaded on 2026-11-19: O. Reg. 170/03 (last amendment O. Reg. 269/22) sections 1-2 (2) 4 (i), 4 (ii) and 5, and Schedule 6 sections 6-1.1, 6-2, 6-3 and 6-4; O. Reg. 169/03 (last amendment O. Reg. 457/16) was checked for scope only; the Protocol of Accepted Drinking Water Testing Methods, Version 2.0 (May 2010), section 1 (Introduction), printed page 3; and the Practices for the Collection and Handling of Drinking Water Samples (ontario.ca, updated January 6, 2026), labelled as guidance. Each quoted phrase was matched to the source text. The review was done by the authoring session and is not independent of the author. No second AI reviewer and no human technical reviewer has checked this batch. Registration is not a provider-authenticated review record.",
+    "registeredAt": "2026-11-19T05:57:32.059Z",
+    "payloadSha256": "4744301408e41fdd4db1e7b97ac168e3b2436ef62e9527be8fbee25244a4540e",
+    "builderResultsSha256": "7d7ceb5f88725a4fb39a27451a3f0c3524c9688354894a3139a848e9ddd43883"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-wqa-b102-tap-the-flaw-0028",
+    "prompt": "Tap the flawed statement about sampling location.",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Distribution samples are taken from the point at which water enters the distribution system, unless otherwise specified (O. Reg. 170/03, Sched. 6, s. 6-2)."
+     },
+     {
+      "id": "option-2",
+      "label": "Raw-water samples are excluded from the companion chlorine residual requirement (O. Reg. 170/03, Sched. 6, s. 6-3 (2))."
+     },
+     {
+      "id": "option-3",
+      "label": "Distribution samples are taken at the raw-water intake."
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "The raw-water intake is not the distribution sampling point (s. 6-2).",
+    "mode": "tap-the-flaw"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "model": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T05:57:02.677Z",
+    "notes": "Regulatory items in this batch were checked against the Ontario texts the owner uploaded on 2026-11-19: O. Reg. 170/03 (last amendment O. Reg. 269/22) sections 1-2 (2) 4 (i), 4 (ii) and 5, and Schedule 6 sections 6-1.1, 6-2, 6-3 and 6-4; O. Reg. 169/03 (last amendment O. Reg. 457/16) was checked for scope only; the Protocol of Accepted Drinking Water Testing Methods, Version 2.0 (May 2010), section 1 (Introduction), printed page 3; and the Practices for the Collection and Handling of Drinking Water Samples (ontario.ca, updated January 6, 2026), labelled as guidance. Each quoted phrase was matched to the source text. The review was done by the authoring session and is not independent of the author. No second AI reviewer and no human technical reviewer has checked this batch. Registration is not a provider-authenticated review record.",
+    "registeredAt": "2026-11-19T05:57:32.059Z",
+    "payloadSha256": "c31a9c85e3a9f11a7b69c1d72d5436808163a351a98acb361d1b7252ac10e55e",
+    "builderResultsSha256": "7d7ceb5f88725a4fb39a27451a3f0c3524c9688354894a3139a848e9ddd43883"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-wqa-b102-tap-the-flaw-0029",
+    "prompt": "Tap the flawed statement about in-line microbiological equipment.",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Continuous monitoring can be used under Schedule 6 for free chlorine residual (O. Reg. 170/03, Sched. 6, s. 6-4 (2))."
+     },
+     {
+      "id": "option-2",
+      "label": "In-line equipment needs no equivalence to an accredited test method."
+     },
+     {
+      "id": "option-3",
+      "label": "In-line microbiological equipment can be used when the Director judges its method equivalent to an accredited method (O. Reg. 170/03, Sched. 6, s. 6-4 (3))."
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "The Director's equivalence judgement applies to in-line microbiological equipment (s. 6-4 (3)).",
+    "mode": "tap-the-flaw"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "model": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T05:57:02.677Z",
+    "notes": "Regulatory items in this batch were checked against the Ontario texts the owner uploaded on 2026-11-19: O. Reg. 170/03 (last amendment O. Reg. 269/22) sections 1-2 (2) 4 (i), 4 (ii) and 5, and Schedule 6 sections 6-1.1, 6-2, 6-3 and 6-4; O. Reg. 169/03 (last amendment O. Reg. 457/16) was checked for scope only; the Protocol of Accepted Drinking Water Testing Methods, Version 2.0 (May 2010), section 1 (Introduction), printed page 3; and the Practices for the Collection and Handling of Drinking Water Samples (ontario.ca, updated January 6, 2026), labelled as guidance. Each quoted phrase was matched to the source text. The review was done by the authoring session and is not independent of the author. No second AI reviewer and no human technical reviewer has checked this batch. Registration is not a provider-authenticated review record.",
+    "registeredAt": "2026-11-19T05:57:32.059Z",
+    "payloadSha256": "3c658a46f34716dbdc70ea7916a83eef1c515136fb9bad25b42497df736aa38b",
+    "builderResultsSha256": "7d7ceb5f88725a4fb39a27451a3f0c3524c9688354894a3139a848e9ddd43883"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-wqa-b102-tap-the-flaw-0030",
+    "prompt": "Tap the flawed statement about drinking water laboratories.",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "A validated method is checked to show it meets the reporting detection limit (Protocol, Version 2.0, section 1)."
+     },
+     {
+      "id": "option-2",
+      "label": "A test may use an unvalidated method once the lab is accredited."
+     },
+     {
+      "id": "option-3",
+      "label": "A laboratory needs accreditation for the selected method, or Director authorization, to run a test (Protocol, Version 2.0, section 1)."
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "The protocol requires validation as well as accreditation.",
+    "mode": "tap-the-flaw"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "model": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T05:57:02.677Z",
+    "notes": "Regulatory items in this batch were checked against the Ontario texts the owner uploaded on 2026-11-19: O. Reg. 170/03 (last amendment O. Reg. 269/22) sections 1-2 (2) 4 (i), 4 (ii) and 5, and Schedule 6 sections 6-1.1, 6-2, 6-3 and 6-4; O. Reg. 169/03 (last amendment O. Reg. 457/16) was checked for scope only; the Protocol of Accepted Drinking Water Testing Methods, Version 2.0 (May 2010), section 1 (Introduction), printed page 3; and the Practices for the Collection and Handling of Drinking Water Samples (ontario.ca, updated January 6, 2026), labelled as guidance. Each quoted phrase was matched to the source text. The review was done by the authoring session and is not independent of the author. No second AI reviewer and no human technical reviewer has checked this batch. Registration is not a provider-authenticated review record.",
+    "registeredAt": "2026-11-19T05:57:32.059Z",
+    "payloadSha256": "0e0517f67f1686a8f300cc74e54d3d8ffb15631f41912bc5d06ae0fa60c2541e",
+    "builderResultsSha256": "7d7ceb5f88725a4fb39a27451a3f0c3524c9688354894a3139a848e9ddd43883"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "Claude session author and source checker (exact model not recorded; not independent of the author)",
+   "reviewedAt": "2026-11-19T05:57:02.677Z",
+   "attestation": "Regulatory items in this batch were checked against the Ontario texts the owner uploaded on 2026-11-19: O. Reg. 170/03 (last amendment O. Reg. 269/22) sections 1-2 (2) 4 (i), 4 (ii) and 5, and Schedule 6 sections 6-1.1, 6-2, 6-3 and 6-4; O. Reg. 169/03 (last amendment O. Reg. 457/16) was checked for scope only; the Protocol of Accepted Drinking Water Testing Methods, Version 2.0 (May 2010), section 1 (Introduction), printed page 3; and the Practices for the Collection and Handling of Drinking Water Samples (ontario.ca, updated January 6, 2026), labelled as guidance. Each quoted phrase was matched to the source text. The review was done by the authoring session and is not independent of the author. No second AI reviewer and no human technical reviewer has checked this batch. Registration is not a provider-authenticated review record.",
+   "payloadSha256": {
+    "og-wqa-b102-rapid-swipe-0001": "24c331a5e13446ff500dfe04489efe8efb8b1ed49bdbd7542ab668416eb1d718",
+    "og-wqa-b102-rapid-swipe-0002": "91156652589ac15218ff5c864f35f38cebe138c80382abb6c18fe964b5eaf04f",
+    "og-wqa-b102-rapid-swipe-0003": "3ba1603cddbd9cfbd784876a0c65e22ba4c319adf927fe0631e7a2ed6cb82d9c",
+    "og-wqa-b102-rapid-swipe-0004": "d4d0f9ae33c03c217598079be22c784a30c5ee179dfa8a7682dc654466e95f3d",
+    "og-wqa-b102-rapid-swipe-0005": "fa20998badec2437a7c630153d55500c075f3d7ee4c82a6f14a9e2e659d5d4aa",
+    "og-wqa-b102-rapid-swipe-0006": "6c85890fb8e57000db4becbeba8fba2622d8ffdb7dcfc6709b2eddbde4928a92",
+    "og-wqa-b102-rapid-swipe-0007": "881f9a553c9c3960c826bbc613688f487e2b9a8b0b7ebec82bc9d906e8ea437d",
+    "og-wqa-b102-rapid-swipe-0008": "f44e9ac21f5892d180a4a34ee5329216dd6c28385340cae47ee43c4b2afffdd1",
+    "og-wqa-b102-rapid-swipe-0009": "a77f0ec60c308e1001ac2a8b2713d7a19f71f6c6fbdb9b74931c7688369970e1",
+    "og-wqa-b102-rapid-swipe-0010": "f2c87b622825640f0e1f52e5d837ba3bda07bfaf448db8775463882b21924e61",
+    "og-wqa-b102-rapid-swipe-0011": "289437baad32657c8f8f7b04fd62896949e53e1ecaee24b515c3078ddbf32463",
+    "og-wqa-b102-rapid-swipe-0012": "7bc6ef80fe44156e5c93aa6b409f8de9d8c9d6211fabfc3ef875095813652185",
+    "og-wqa-b102-rapid-swipe-0013": "58d4a2b8304984f5552a66fae0ff6dbc4728541e50b60e39bbe3bd3f6f9d3952",
+    "og-wqa-b102-rapid-swipe-0014": "1c76a92ea2f477a1cb264839569be9394be7041952553aca7e67fdfc5df8fc66",
+    "og-wqa-b102-rapid-swipe-0015": "53b76772885653f7eb4e5870ea7ae79880009592bcada94b9d1dddae56e2fcf4",
+    "og-wqa-b102-rapid-swipe-0016": "dec302c7c6c0f1716e4870f4a95dec3d94b981d4bb66de6af4e35f6daa3fc8cc",
+    "og-wqa-b102-rapid-swipe-0017": "8a8220b6a902040975bff191ccaa46000bd89db9a16c893406a281f14f2d0e68",
+    "og-wqa-b102-rapid-swipe-0018": "c11022a8f95415fd87a0be07e964ee660df866ea6c777cb0de46c90ac0924caa",
+    "og-wqa-b102-rapid-swipe-0019": "0d69cc4cff6b6728c516bdc1bf7e337a779d4091072b3b9108d4422569c357d9",
+    "og-wqa-b102-rapid-swipe-0020": "b1a9f8b74bd7af99455bd0f733d6c6fe99a29ec881de6df3cb09544d03060df9",
+    "og-wqa-b102-cause-effect-0021": "32ad96af2e9a881d15e3a6a23d9a196d9eb94e5d9db819ef6e86085b14a6ceff",
+    "og-wqa-b102-cause-effect-0022": "f328e174604862db3dc4750043f8d7698e736c5c1638849dce7cc31098979838",
+    "og-wqa-b102-cause-effect-0023": "1b586e1c628db4bf15e9f6af5b590b1c6a16980ff49c04e5a1aace66b60c5247",
+    "og-wqa-b102-cause-effect-0024": "5083d1dd130110a7dfdc53a5782cd3d9c01e31940ca2d5036f34eea626b72119",
+    "og-wqa-b102-cause-effect-0025": "95dc1a8ddcbbe3ddab3aecae5c665959bbe186e980ded680f9ad1377b5a4adec",
+    "og-wqa-b102-cause-effect-0026": "2933db215a9a8805e6ce5a26f4f3959d6335a5c3236d4dbed2cf5a792a10e612",
+    "og-wqa-b102-tap-the-flaw-0027": "4744301408e41fdd4db1e7b97ac168e3b2436ef62e9527be8fbee25244a4540e",
+    "og-wqa-b102-tap-the-flaw-0028": "c31a9c85e3a9f11a7b69c1d72d5436808163a351a98acb361d1b7252ac10e55e",
+    "og-wqa-b102-tap-the-flaw-0029": "3c658a46f34716dbdc70ea7916a83eef1c515136fb9bad25b42497df736aa38b",
+    "og-wqa-b102-tap-the-flaw-0030": "0e0517f67f1686a8f300cc74e54d3d8ffb15631f41912bc5d06ae0fa60c2541e"
+   }
+  },
+  "registeredAt": "2026-11-19T05:57:32.059Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 11,
+     "f": 9
+    },
+    "dirs": {
+     "increase": 0,
+     "decrease": 6,
+     "unchanged": 0
+    },
+    "longest": 0,
+    "options": 10
+   },
+   "batchSha256": "4a07c8611d6e49317e493f7b9fa557f204c2be050963f3db4e78f0b775c6567c"
+  }
+ }
+}

@@ -2694,5 +2694,37 @@ export const OVERLAY_DESCRIPTORS = [
     "courses": [
       "wpi-class2-wastewater"
     ]
+  },
+  {
+    "file": "2026-11-19-wqa-batch-101.json",
+    "sha256": "42b62820a64e6981106dc6d8593f0f0131dc26dd747b879ec0748f199c168d33",
+    "bytes": 443380,
+    "courses": [
+      "wqa"
+    ]
+  },
+  {
+    "file": "2026-11-19-wqa-batch-102.json",
+    "sha256": "61c0ce97b5f1ccf5511d9c69b7dd8429d7d4256dbdd71101669fb7cabc3e9f8d",
+    "bytes": 66550,
+    "courses": [
+      "wqa"
+    ]
+  },
+  {
+    "file": "2026-11-19-wqa-batch-103.json",
+    "sha256": "4f28068cd766b9253ec2b0e4430c059a068c1450908dfad3967c543ab1dea941",
+    "bytes": 299508,
+    "courses": [
+      "wqa"
+    ]
+  },
+  {
+    "file": "2026-11-19-wqa-batch-104.json",
+    "sha256": "8dbde4cae752238ba6c5d3bb4075c4fc7986208cbbb6413b759b7caddcd6411f",
+    "bytes": 402359,
+    "courses": [
+      "wqa"
+    ]
   }
 ] as const;
