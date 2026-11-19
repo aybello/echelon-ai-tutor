@@ -649,8 +649,12 @@ export default function QuizShell({
   const formulaLink = current.formulaLink
     ?? (formulaLinks && current.module ? formulaLinks[current.module] : undefined);
 
+  const showSessionRail = !(tutorOpen && renderAITutor) && !gate && (
+    missedCount > 0 || (history as Array<{ module?: string }>).some(answer => answer.module?.trim())
+  );
+
   return (
-    <div className={`practice-page practice-screen learning-redesign${tutorOpen && renderAITutor ? " has-tutor" : ""}`} style={{ background: "#F4F7FB", fontFamily: "'Sora', sans-serif", overscrollBehavior: "none" }}>
+    <div className={`practice-page practice-screen learning-redesign${tutorOpen && renderAITutor ? " has-tutor" : ""}${showSessionRail ? " has-session-rail" : ""}`} style={{ background: "#F4F7FB", fontFamily: "'Sora', sans-serif", overscrollBehavior: "none" }}>
       <style>{`
         @keyframes fadeUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
         @keyframes shake  { 0%,100%{transform:translateX(0)} 20%,60%{transform:translateX(-6px)} 40%,80%{transform:translateX(6px)} }
@@ -726,7 +730,6 @@ export default function QuizShell({
             <span className="workspace-eyebrow">{courseLabel}</span>
             <h1>{courseTitle}</h1>
             {displaySubtitle && <p>{displaySubtitle}</p>}
-            {interactiveHref && <Link href={interactiveHref} className="practice-interactive-link">🎮 Play games</Link>}
           </div></div>
           <div className="practice-session-stats" aria-live="polite">
             <span><strong>{confirmed ? history.length : history.length + 1}{sessionSize ? ` / ${sessionSize}` : ""}</strong> questions</span>
@@ -756,17 +759,6 @@ export default function QuizShell({
         </div>
       </section>
 
-       {/* ── Progress bar ── */}
-      {sessionSize && (
-        <div style={{ height: 3, background: "rgba(0,0,0,0.08)" }}>
-          <div style={{
-            height: "100%",
-            width: `${progress}%`,
-            background: headerGradient,
-            transition: "width 0.4s ease",
-          }} />
-        </div>
-      )}
       {/* ── Timed mode bar ── */}
       {timedSeconds > 0 && !confirmed && (
         <div style={{ position: "relative", height: 4, background: "rgba(0,0,0,0.08)" }}>
@@ -1198,7 +1190,7 @@ export default function QuizShell({
           <div className="practice-tutor-slot">{renderAITutor(dismissTutor)}</div>
         </TutorPanelPlacement.Provider>
       )}
-      {!(tutorOpen && renderAITutor) && !gate && (
+      {showSessionRail && (
         <PracticeSessionRail history={history as Array<{ module?: string; correct?: boolean }>} missedCount={missedCount} />
       )}
 
