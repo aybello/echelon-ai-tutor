@@ -23,6 +23,7 @@ import ProvinceBanner from "@/components/ProvinceBanner";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { useStructuredData } from "@/hooks/useStructuredData";
 import { landingPageSchemas } from "@/lib/structuredData";
+import { customers } from "@/lib/trustedOrganizations";
 import { trpc } from "@/lib/trpc";
 import { getAnonymousAnalyticsId } from "@/lib/anonymousAnalytics";
 import { getMarketingAttribution } from "@/lib/marketingAnalytics";
@@ -30,7 +31,6 @@ import { useProvince, type ProvinceId } from "@/hooks/useProvince";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { INDIVIDUAL_REFUND_SUMMARY, REFUND_CONTACT_EMAIL } from "@shared/refundPolicy";
 import type { ExamFamily } from "@shared/courseRegistry";
-import { useGeoRegion } from "@/hooks/useGeoRegion";
 import "./Landing.css";
 
 function PreviewChoice({ onClose }: { onClose: () => void }) {
@@ -197,13 +197,10 @@ function ContactSection() {
 }
 
 export default function Landing() {
-  const { isUS } = useGeoRegion();
   usePageMeta({
-    title: "Water & Wastewater Operator Exam Prep",
-    description: isUS
-      ? "Exam preparation for US water and wastewater operators. Practice questions, worked calculations, timed mock exams and study tools."
-      : "Water and wastewater operator exam preparation. Start with 15 free questions and choose the certification path that fits your province and level.",
-    keywords: "water operator exam prep, OIT exam, wastewater certification, operator practice questions, WPI exam prep, water quality analyst, ABC certification",
+    title: "AI-Powered Exam Prep for Skilled Trades",
+    description: "AI-powered exam prep for the skilled-trades workforce, starting with water and wastewater. Canadian courses and supported US preparation, plus free Ontario 309A practice and mock exams.",
+    keywords: "skilled trades exam prep, AI-powered exam prep, Ontario 309A electrician, water operator exam prep, OIT exam, wastewater certification, operator practice questions, WPI exam prep, water quality analyst, ABC certification",
     path: "/",
   });
   useStructuredData(landingPageSchemas);
@@ -274,7 +271,7 @@ export default function Landing() {
             <CoursePathHero>
               <div className="homepage-customer-proof">
                 <span>Used by operators at</span>
-                <div className="homepage-customer-names"><strong>Utilities Kingston</strong><strong>City of Winnipeg</strong><strong>City of Quinte West</strong></div>
+                <div className="homepage-customer-names">{customers.map((organization) => <strong key={organization.slug}>{organization.name}</strong>)}</div>
               </div>
               <div className="homepage-hero-actions">
                 <a className="homepage-primary-button" href="#find-course">Find your course <ArrowRight size={18} aria-hidden="true" /></a>
@@ -299,12 +296,12 @@ export default function Landing() {
           <div className="homepage-section-heading homepage-section-heading-left">
             <span className="homepage-kicker">A better way to prep</span>
             <h2 id="homepage-tools-title">A better way to prepare.</h2>
-            <p>Work through questions, calculations and exam conditions with the same course context carried through each study mode.</p>
+            <p>Explore Water OIT practice and mock previews, plus water and wastewater study resources. For other courses, choose your course below to open its study tools.</p>
           </div>
           <div className="homepage-tool-grid">
-            <ToolCard icon={<BookOpen size={21} aria-hidden="true" />} title="Practice questions" description="Review course-specific questions and explanations." href="/quiz" />
+            <ToolCard icon={<BookOpen size={21} aria-hidden="true" />} title="Water OIT practice preview" description="Try Ontario Water OIT questions and explanations." href="/quiz" />
             <ToolCard icon={<Calculator size={21} aria-hidden="true" />} title="Formula library" description="Keep core operator calculations in reach." href="/formulas" />
-            <ToolCard icon={<ClipboardCheck size={21} aria-hidden="true" />} title="Mock exams" description="Build confidence under timed conditions." href="/oit-mock" />
+            <ToolCard icon={<ClipboardCheck size={21} aria-hidden="true" />} title="Water OIT mock preview" description="Explore the Ontario Water OIT timed mock exam." href="/oit-mock" />
             <ToolCard icon={<MessageSquareText size={21} aria-hidden="true" />} title="Study guides" description="Connect concepts to process and equipment." href="/guides" />
           </div>
         </section>
@@ -340,8 +337,8 @@ export default function Landing() {
         <section id="faq" className="homepage-section homepage-faq-section" aria-labelledby="homepage-faq-title">
           <div className="homepage-section-heading"><span className="homepage-kicker">Before you start</span><h2 id="homepage-faq-title">A few useful answers.</h2></div>
           <div className="homepage-faq-list">
-            <FaqItem question="Can I try a course before I buy?" answer="Yes. Start from the homepage to try a free practice preview before you decide on course access." />
-            <FaqItem question="How does course access work?" answer="Individuals purchase a twelve-month Exam Pass for one selected certification course after successful payment. Teams have separate access options for assigned operators." />
+            <FaqItem question="Can I try a course before I buy?" answer="Yes. Paid operator courses include a free practice preview without an account or credit card. Ontario 309A practice and mock exams are free." />
+            <FaqItem question="How does course access work?" answer="For paid operator courses, an Individual Exam Pass provides 12 months of access to one selected course from successful payment, or access can come through an assigned team licence. Ontario 309A practice and mock exams are free." />
             <FaqItem question="Do the questions match the real exam?" answer="The question banks are designed around relevant exam blueprints and reviewed through Echelon's content-quality process. Echelon is an independent preparation provider; confirm current requirements with your certifying authority." />
             <FaqItem question="What is included in a course?" answer="Course inclusions and question totals vary. The pricing page lists the current question count, access term and study tools before checkout." />
             <FaqItem question="Can I get a refund?" answer={`${INDIVIDUAL_REFUND_SUMMARY} Email ${REFUND_CONTACT_EMAIL} with your purchase email and Stripe receipt.`} />
@@ -354,7 +351,7 @@ export default function Landing() {
 
       <footer className="homepage-footer">
         <div className="homepage-footer-main">
-          <div className="homepage-footer-brand"><img className="homepage-footer-logo" src={ECHELON_LOGO_URL} alt="Echelon Institute logo" /><div><strong>Echelon Institute</strong><p>Operator certification preparation for water and wastewater professionals.</p></div></div>
+          <div className="homepage-footer-brand"><img className="homepage-footer-logo" src={ECHELON_LOGO_URL} alt="Echelon Institute logo" /><div><strong>Echelon Institute</strong><p>AI-powered exam preparation for the skilled-trades workforce, starting with water and wastewater.</p></div></div>
           <div className="homepage-footer-links">
             <div><strong>Explore</strong><Link href="/#find-course">Find your course</Link><Link href="/guides">Study guides</Link><Link href="/formulas">Formula library</Link></div>
             <div><strong>Teams</strong><Link href="/teams">Team training</Link><Link href="/partnerships">Partnerships</Link><Link href="/jobs">Jobs</Link></div>

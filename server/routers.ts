@@ -387,7 +387,7 @@ export const appRouter = router({
           const offer = resolveQuizGateOffer(input.productKey);
           const courseLabel = course?.displayName ?? offer.productName ?? "your course";
           const site = "https://echeloninstitute.ca";
-          const courseUrl = `${site}/pricing?course=${encodeURIComponent(input.productKey)}`;
+          const courseUrl = course ? `${site}${course.quizPath}` : undefined;
           await sendPreviewStudyPlanEmail({
             email,
             courseLabel,
@@ -396,7 +396,7 @@ export const appRouter = router({
             total: input.total,
             weakTopics: input.weakTopics,
             courseUrl,
-            offerUrl: courseUrl,
+            offerUrl: `${site}/pricing?course=${encodeURIComponent(input.productKey)}`,
             priceLabel: offer.priceLabel ?? "available on the pricing page",
             stage: input.stage,
           });

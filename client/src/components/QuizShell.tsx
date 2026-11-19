@@ -25,7 +25,7 @@ import FeedbackModal from "@/components/FeedbackModal";
 import { shouldShowReviewPrompt, GOOGLE_REVIEW_URL, markReviewPromptShown, markAsReviewed } from "@/lib/reviewFunnel";
 import { Link, useSearch } from "wouter";
 import PracticeSessionRail from "@/components/PracticeSessionRail";
-import { buildPricingHref } from "@shared/funnelNavigation";
+import { buildPricingHref, funnelProvince } from "@shared/funnelNavigation";
 import { readUSStudyContext, withUSStudyContext } from "@shared/usStudyContext";
 import { resolveCourseKey } from "@shared/courseRegistry";
 import { trpc } from "@/lib/trpc";
@@ -34,7 +34,7 @@ import QuizSkeleton from "@/components/QuizSkeleton";
 import PracticeSaveStatus, { useVerifiedPracticeSaveScope } from "@/components/PracticeSaveStatus";
 import PracticeOptions from "@/components/PracticeOptions";
 import { getPracticeGuidePath } from "@/lib/practiceResources";
-import { getCourseInteractiveHref } from "@/lib/courseNavigation";
+import { getCourseInteractiveHref, getCourseWorkspaceTabs } from "@/lib/courseNavigation";
 import NextStepCard from "@/components/NextStepCard";
 import StudyNotesTopics from "@/components/StudyNotesTopics";
 import PreviewStudyPlanPrompt from "@/components/PreviewStudyPlanPrompt";
@@ -64,6 +64,24 @@ export interface QuizQuestion {
 }
 
 export type AnyQuizQuestion = QuizQuestion & { [key: string]: unknown };
+
+/** Only the current course's registered formula sheet can recover its origin. */
+function questionFormulaHref(path: string | undefined, courseKey: string | undefined, search: string): string | undefined {
+  const course = resolveCourseKey(courseKey ?? "");
+  if (!path || !course?.isActive) return path;
+  const workspaceHref = getCourseWorkspaceTabs(course).find(tab => tab.kind === "formulas")?.href;
+  if (!workspaceHref) return path;
+  let url: URL;
+  try { url = new URL(path, "https://echelon.invalid"); } catch { return path; }
+  const workspaceUrl = new URL(workspaceHref, "https://echelon.invalid");
+  if (url.origin !== workspaceUrl.origin || url.pathname !== workspaceUrl.pathname) return path;
+  url.searchParams.set("course", course.courseKey);
+  // An explicit destination jurisdiction wins; otherwise carry validated study context.
+  const contextSearch = url.searchParams.has("province") || url.searchParams.has("country") ? url.search : search;
+  const province = funnelProvince(new URLSearchParams(contextSearch).get("province"));
+  if (province && !url.searchParams.has("province")) url.searchParams.set("province", province);
+  return withUSStudyContext(`${url.pathname}${url.search}${url.hash}`, course.courseKey, contextSearch);
+}
 
 export interface ModuleConfig {
   name: string;
@@ -646,8 +664,11 @@ export default function QuizShell({
   const moduleIcon = moduleConfig?.icon ?? "📚";
 
   // Formula link for current question
-  const formulaLink = current.formulaLink
-    ?? (formulaLinks && current.module ? formulaLinks[current.module] : undefined);
+  const formulaLink = questionFormulaHref(
+    current.formulaLink ?? (formulaLinks && current.module ? formulaLinks[current.module] : undefined),
+    canonicalCourse?.courseKey,
+    search,
+  );
 
   const showSessionRail = !(tutorOpen && renderAITutor) && !gate && (
     missedCount > 0 || (history as Array<{ module?: string }>).some(answer => answer.module?.trim())

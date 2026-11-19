@@ -21,8 +21,8 @@ export interface LeadFollowUpEmailPayload {
   /** 1 = first follow-up (day 3), 2 = final follow-up (day 10). */
   stage: 1 | 2;
   courseLabel: string;
-  /** Absolute URL back into the course quiz the lead was practising. */
-  courseUrl: string;
+  /** Absolute quiz URL when the course resolves; otherwise use the offer fallback. */
+  courseUrl?: string;
   /** Absolute URL to the pricing page for the matching Exam Pass. */
   offerUrl: string;
   priceLabel?: string;
@@ -57,9 +57,10 @@ function escapeHtml(value: string): string {
 export function buildLeadFollowUpCopy(payload: {
   stage: 1 | 2;
   courseLabel: string;
+  courseUrl?: string;
   priceLabel?: string;
 }): { subject: string; paragraphs: string[]; cta: string } {
-  const { stage, courseLabel, priceLabel } = payload;
+  const { stage, courseLabel, courseUrl, priceLabel } = payload;
 
   if (stage === 1) {
     return {
@@ -67,9 +68,11 @@ export function buildLeadFollowUpCopy(payload: {
       paragraphs: [
         `A few days ago you practised ${courseLabel} questions on Echelon Institute. Checking in: how is the studying going?`,
         `Most people who pass certification exams do it with short, regular practice rather than long cram sessions. Even ten questions today keeps the material fresh.`,
-        `Your free preview questions are still there whenever you want them.`,
+        courseUrl
+          ? `Your free preview questions are still there whenever you want them.`
+          : `You can view the available course access options whenever you are ready.`,
       ],
-      cta: "Pick up where you left off",
+      cta: courseUrl ? "Keep practising" : "View course access",
     };
   }
 
@@ -78,9 +81,11 @@ export function buildLeadFollowUpCopy(payload: {
     paragraphs: [
       `This is the last note from us about your ${courseLabel} practice, so we wanted to make it count.`,
       `If your exam is coming up, the full Exam Pass gives you the complete question bank, a timed mock exam built to the real blueprint, and the AI Tutor on every question${priceLabel ? ` for ${priceLabel}` : ""} with 12 months of access.`,
-      `If the timing is not right, no problem. We will not email you about this again, and your free preview stays available whenever you need it.`,
+      courseUrl
+        ? `If the timing is not right, no problem. We will not email you about this again, and your free preview stays available whenever you need it.`
+        : `If the timing is not right, no problem. We will not email you about this again.`,
     ],
-    cta: "See the full Exam Pass",
+    cta: courseUrl ? "See the full Exam Pass" : "View course access",
   };
 }
 
@@ -95,8 +100,8 @@ export async function sendLeadFollowUpEmail(
     throw new Error("SMTP not configured for lead follow-ups");
   }
 
-  const copy = buildLeadFollowUpCopy({ stage, courseLabel, priceLabel });
-  const ctaUrl = stage === 1 ? courseUrl : offerUrl;
+  const copy = buildLeadFollowUpCopy({ stage, courseLabel, courseUrl, priceLabel });
+  const ctaUrl = stage === 1 ? courseUrl ?? offerUrl : offerUrl;
   const safeCourse = escapeHtml(courseLabel);
 
   const textBody = [

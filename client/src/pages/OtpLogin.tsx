@@ -1,15 +1,15 @@
 /**
- * /login/otp — Email OTP (6-digit code) login for org operators.
+ * /login/otp — Inbox-verified email sign-in for purchasers and team members.
  *
  * Step 1: Enter email → request code
- * Step 2: Enter 6-digit code → verify → redirect to /quiz or /team
+ * Step 2: Enter 6-digit code → verify → requested page, /account, or /team
  */
 
 import { useState, useRef, useEffect, useLayoutEffect } from "react";
-import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
 import LandingNav from "@/components/LandingNav";
 import { notifyIdentityChange } from "@shared/identityChange";
+import { otpSuccessDestination, sanitizeAccountNext } from "./accountAccess";
 
 const LOGO_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
@@ -23,9 +23,7 @@ export default function OtpLogin() {
   const nextParam = (() => {
     if (typeof window === "undefined") return "";
     const raw = new URLSearchParams(window.location.search).get("next") ?? "";
-    // Accept only relative paths starting with / but not // (protocol-relative)
-    // and not containing : (absolute URL or data: URI)
-    return /^\/[^/]/.test(raw) && !/^\/\//.test(raw) && !raw.includes(":") ? raw : "";
+    return sanitizeAccountNext(raw);
   })();
 
   const [email, setEmail] = useState(() => {
@@ -94,8 +92,7 @@ export default function OtpLogin() {
         notifyIdentityChange();
         setIsManager(!!data.isManager);
         setStep("success");
-        const redirectPath = data.isManager ? "/team" : "/quiz";
-        const finalPath = nextParam || redirectPath;
+        const finalPath = otpSuccessDestination(nextParam, !!data.isManager);
         // A hard navigation makes the newly issued HttpOnly session cookie the
         // source of truth for the next page. A client-side route transition can
         // reuse an earlier anonymous dashboardAuth.me result and incorrectly
@@ -176,6 +173,13 @@ export default function OtpLogin() {
     verifyOtp.mutate({ email, code: fullCode });
   }
 
+  const successDestination = otpSuccessDestination(nextParam, isManager);
+  const successLabel = successDestination.startsWith("/team")
+    ? "Go to Team Dashboard →"
+    : successDestination.startsWith("/account")
+      ? "Go to My Account →"
+      : "Continue →";
+
   const cardStyle: React.CSSProperties = {
     background: "#fff",
     borderRadius: 20,
@@ -240,7 +244,7 @@ export default function OtpLogin() {
               Sign In with a Code
             </h1>
             <p style={{ color: "#64748B", fontSize: 14, lineHeight: 1.6, margin: "0 0 28px" }}>
-              Enter your work email and we'll send you a 6-digit code to sign in instantly.
+              Enter the email used at checkout or invited by your team. If it matches an eligible account, we'll email a six-digit sign-in code. Verify the code to protect your course access.
             </p>
             <form onSubmit={handleEmailSubmit}>
               <input
@@ -297,10 +301,13 @@ export default function OtpLogin() {
               Check Your Email
             </h1>
             <p style={{ color: "#64748B", fontSize: 14, lineHeight: 1.6, margin: "0 0 6px" }}>
-              We sent a 6-digit code to
+              Check your inbox for a six-digit sign-in code. Email entered:
             </p>
             <p style={{ color: "#0F172A", fontSize: 15, fontWeight: 700, margin: "0 0 28px" }}>
               {email}
+            </p>
+            <p style={{ color: "#64748B", fontSize: 13, lineHeight: 1.6, margin: "0 0 20px" }}>
+              If no code arrives, confirm you used your checkout or team-invitation email, or <a href="mailto:abello@echeloninstitute.ca" style={{ color: "#1D4ED8" }}>contact support</a>.
             </p>
             <form onSubmit={handleCodeSubmit}>
               {/* 6-digit code input boxes */}
@@ -434,13 +441,11 @@ export default function OtpLogin() {
               You're signed in!
             </h1>
             <p style={{ color: "#64748B", fontSize: 14, lineHeight: 1.6, margin: "0 0 20px" }}>
-              Welcome back, <strong>{email}</strong>. Redirecting to your {isManager ? "team dashboard" : "courses"}…
+              Welcome back, <strong>{email}</strong>. {nextParam ? "Continuing to your requested page" : isManager ? "Opening your team dashboard" : "Opening your account and current course access"}…
             </p>
-            <Link href={nextParam || (isManager ? "/team" : "/quiz")}>
-              <button style={btnStyle}>
-                {isManager ? "Go to Team Dashboard →" : "Go to Practice Quiz →"}
-              </button>
-            </Link>
+            <a href={successDestination} style={{ ...btnStyle, textDecoration: "none", boxSizing: "border-box" }}>
+              {successLabel}
+            </a>
           </div>
         )}
 

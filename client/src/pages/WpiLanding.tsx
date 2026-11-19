@@ -25,7 +25,7 @@ const PROVINCES = [
 type ClassEntry = {
   label: string;
   code: string;
-  questions: number;
+  questions?: number;
   price: string;
   color: string;
   quizHref: string;
@@ -143,7 +143,7 @@ const TRACKS: Track[] = [
         topics: ["Complex system operations & SCADA", "Advanced pump station engineering", "System hydraulic modelling", "Advanced maintenance management", "Leadership, safety & regulatory management"],
       },
       {
-        label: "Class IV", code: "WPI-C4", questions: 504, price: "CA$299", color: "#7F1D1D",
+        label: "Class IV", code: "WPI-C4", price: "CA$299", color: "#7F1D1D",
         quizHref: "/wpi-class4-water-coll", badge: "Class IV preparation",
         topics: ["System planning & capital improvement", "Advanced engineering & design", "Utility management & leadership", "Advanced regulatory & environmental management", "Emerging technologies & innovation"],
       },
@@ -382,12 +382,12 @@ export default function WpiLanding() {
                       }}>
                         {cls.code}
                       </span>
-                      <span style={{
+                      {cls.questions !== undefined && <span style={{
                         fontSize: 11, fontWeight: 700, color: cls.color,
                         background: cls.color + "12", padding: "3px 8px", borderRadius: 20, whiteSpace: "nowrap" as const,
                       }}>
                         📝 {cls.questions} Q
-                      </span>
+                      </span>}
                     </div>
 
                     {/* Class label + badge */}

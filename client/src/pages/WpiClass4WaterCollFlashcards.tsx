@@ -6,8 +6,8 @@ import FlashcardErrorBoundary from "@/components/FlashcardErrorBoundary";
 import { usePageMeta } from "@/hooks/usePageMeta";
 export default function WpiClass4WaterCollFlashcards() {
   usePageMeta({
-    title: "WPI Class 4 Water Collection Flashcards",
-    description: "Flashcards for WPI Class 4 Water Collection operator certification exam. Practice with hundreds of questions aligned to Canadian provincial standards.",
+    title: "WPI Class 4 Wastewater Collection Flashcards",
+    description: "Flashcards for WPI Class 4 Wastewater Collection operator certification exam. Practice with hundreds of questions aligned to Canadian provincial standards.",
     noindex: true
   });
 
@@ -17,7 +17,7 @@ export default function WpiClass4WaterCollFlashcards() {
   if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
 
   return (
-    <FlashcardErrorBoundary examName="WPI Class IV Water Collection" backPath="/wpi-class4-water-coll">
+    <FlashcardErrorBoundary examName="WPI Class IV Wastewater Collection" backPath="/wpi-class4-water-coll">
       <PurchaseGate
         examType="wpi-class4-water-coll"
         productKey="wpi-class4-water-coll"
@@ -26,7 +26,7 @@ export default function WpiClass4WaterCollFlashcards() {
       >
         <FlashcardShell
           questions={questions as unknown as FlashcardQuestion[]}
-          examName="WPI Class IV Water Collection"
+          examName="WPI Class IV Wastewater Collection"
           examType="wpi-class4-water-coll"
           backPath="/wpi-class4-water-coll"
           modules={modules as unknown as string[]}

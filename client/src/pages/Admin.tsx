@@ -1,4 +1,4 @@
-import AdminLearnerActivity from "@/components/AdminLearnerActivity";
+import AdminLearnerActivity, { useLearnerActivityRefresh } from "@/components/AdminLearnerActivity";
 import AdminGamesActivity from "@/components/AdminGamesActivity";
 import PurchaseEmailDelivery from "@/components/PurchaseEmailDelivery";
 // ADMIN DASHBOARD — /admin
@@ -382,6 +382,7 @@ export default function Admin() {
   const dismissFeedback = trpc.admin.dismissFeedback.useMutation({
     onSuccess: () => { utils.admin.getFeedback.invalidate(); utils.admin.stats.invalidate(); },
   });
+  const learnerRefresh = useLearnerActivityRefresh();
 
   const selectSection = (section: Tab) => {
     setActiveTab(section);
@@ -389,6 +390,10 @@ export default function Admin() {
   };
 
   const refreshActiveSection = () => {
+    if (activeTab === "learners") {
+      void learnerRefresh.refresh();
+      return;
+    }
     stats.refetch();
     if (activeTab === "insights") {
       kpisQ.refetch();
@@ -710,7 +715,7 @@ export default function Admin() {
               <h1 style={{ fontSize: "clamp(24px, 2vw, 28px)", fontWeight: 800, margin: "5px 0 6px" }}>{activeSection?.label}</h1>
               <p style={{ fontSize: 14, color: "#526779", margin: 0 }}>{activeDescription[activeTab]}</p>
             </div>
-            <button className="admin-btn admin-refresh-button" onClick={refreshActiveSection}>Refresh</button>
+            <button className="admin-btn admin-refresh-button" onClick={refreshActiveSection} disabled={activeTab === "learners" && learnerRefresh.isRefreshing}>{activeTab === "learners" && learnerRefresh.isRefreshing ? "Refreshing…" : "Refresh"}</button>
           </div>
         )}
 

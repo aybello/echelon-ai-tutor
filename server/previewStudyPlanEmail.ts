@@ -23,8 +23,8 @@ export interface PreviewStudyPlanEmailPayload {
   total: number;
   /** Modules the learner missed at least one question in, strongest first. */
   weakTopics: string[];
-  /** Absolute URL back into the course the learner was practising. */
-  courseUrl: string;
+  /** Absolute quiz URL when the course resolves; otherwise use the offer fallback. */
+  courseUrl?: string;
   /** Absolute URL to the matching Exam Pass. */
   offerUrl: string;
   priceLabel: string;
@@ -122,6 +122,8 @@ export async function sendPreviewStudyPlanEmail(
   const steps = buildStudyPlanSteps({ score, weakTopics, courseLabel });
   const safeCourse = escapeHtml(courseLabel);
   const inPreview = stage === "in_preview";
+  const practiceCta = courseUrl ? "Keep practising" : "View course access";
+  const practiceUrl = courseUrl ?? offerUrl;
   const resultLabel = inPreview ? "YOUR RESULT SO FAR" : "YOUR PREVIEW RESULT";
   const subheading = inPreview
     ? "Built from the questions you have answered so far."
@@ -141,7 +143,7 @@ export async function sendPreviewStudyPlanEmail(
     `Your plan:`,
     ...steps.map((step, index) => `${index + 1}. ${step}`),
     ``,
-    `Keep practising: ${courseUrl}`,
+    `${practiceCta}: ${practiceUrl}`,
     `Full access to ${courseLabel} is ${priceLabel} for 12 months: ${offerUrl}`,
     ``,
     `This preview is a study diagnostic, not a prediction of your official exam result.`,
@@ -173,7 +175,7 @@ export async function sendPreviewStudyPlanEmail(
             ${steps.map(step => `<li style="font-size: 14px; line-height: 1.6; margin-bottom: 10px;">${escapeHtml(step)}</li>`).join("")}
           </ol>
           <div style="text-align: center; margin-bottom: 18px;">
-            <a href="${courseUrl}" style="display: inline-block; background: linear-gradient(135deg, #1D4ED8, #0EA5E9); color: #fff; text-decoration: none; padding: 13px 26px; border-radius: 10px; font-size: 15px; font-weight: 800;">Keep practising</a>
+            <a href="${practiceUrl}" style="display: inline-block; background: linear-gradient(135deg, #1D4ED8, #0EA5E9); color: #fff; text-decoration: none; padding: 13px 26px; border-radius: 10px; font-size: 15px; font-weight: 800;">${practiceCta}</a>
           </div>
           <p style="margin: 0 0 18px; font-size: 13px; color: #475569; text-align: center; line-height: 1.6;">
             When you are ready for the full question bank, timed mock exam and AI Tutor on every question,

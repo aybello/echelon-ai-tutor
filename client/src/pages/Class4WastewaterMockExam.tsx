@@ -44,7 +44,7 @@ export default function Class4WastewaterMockExam() {
       practiceLabel="Class 4 Wastewater Practice"
       showProvinceSelector={true}
       currentPath="/class4-ww-mock"
-      infoLine={`${totalQuestions} questions · Ontario (MECP) · BC (EOCP Level IV) · Alberta (AWWOA Class IV)`}
+      infoLine={`${totalQuestions} questions · Ontario Class 4 Wastewater Treatment`}
       stream="wastewater"
     />
   );

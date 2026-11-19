@@ -5,9 +5,10 @@
 // Design: Teal/green brand, mirrors FormulasWpiClass1.tsx structure
 
 import { useState } from "react";
-import { Link } from "wouter";
+import { Link, useSearch } from "wouter";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import SiteNav from "@/components/SiteNav";
+import { getFormulaStudyLinks } from "@/lib/courseNavigation";
 
 // ── TYPES ────────────────────────────────────────────────────────────────────
 interface Formula {
@@ -501,6 +502,7 @@ const QUICK_REF = [
 
 // ── COMPONENT ────────────────────────────────────────────────────────────────
 export default function FormulasWpiClass2() {
+  const study = getFormulaStudyLinks("/formulas-wpi-class2", useSearch());
   usePageMeta({
     title: "WPI Class II Water Treatment Formula Sheet | Echelon Institute",
     description:
@@ -568,7 +570,7 @@ export default function FormulasWpiClass2() {
           Advanced formulas for ozone & UV disinfection, membrane filtration, hydraulics, coagulation, sludge management, and pumping. Aligned with WPI Class II Need-to-Know Criteria.
         </p>
         <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap" }}>
-          <Link href="/wpi-class2-water">
+          <Link href={study.practiceHref}>
             <button style={{
               background: "#FFFFFF",
               color: "#0C4A6E",
@@ -580,10 +582,10 @@ export default function FormulasWpiClass2() {
               cursor: "pointer",
               fontFamily: "inherit",
             }}>
-              🌊 Class II Practice →
+              {study.practiceLabel}
             </button>
           </Link>
-          <Link href="/wpi-class2-water-mock">
+          <Link href={study.mockHref}>
             <button style={{
               background: "rgba(255,255,255,0.12)",
               color: "#FFFFFF",
@@ -595,7 +597,7 @@ export default function FormulasWpiClass2() {
               cursor: "pointer",
               fontFamily: "inherit",
             }}>
-              📋 Class II Mock Exam →
+              {study.mockLabel}
             </button>
           </Link>
           <Link href="/formulas-wpi-class1">

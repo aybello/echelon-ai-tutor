@@ -53,11 +53,22 @@ describe("U.S. catalogue source-backed coverage notes", () => {
       expect(html.match(new RegExp(`data-course-key="${key}"`, "g"))).toHaveLength(1);
       for (const tool of ["practice", "mock", "flashcards"]) expect(html).toContain(`/us/${tool}/${key}?country=US&amp;state=PA`);
     }
-    expect(html).toContain("full Pennsylvania course-pass sales are not available yet".replace("full", "Full"));
+    expect(html).toContain("Full course-pass sales for this course are not available yet");
+    expect(html).toContain("State-specific practice · free preview");
     expect(html).toContain("Not an official exam blueprint");
     expect(html).not.toContain("data-course-key=\"us-class1-water\"");
   });
   it("never offers Pennsylvania banks for Texas or an invalid state", () => {
     for (const query of ["state=TX", "state=unknown"]) expect(renderCourses(query)).not.toContain("data-course-key=\"pa-");
   });
+});
+
+it("describes Florida's dedicated distribution preview without Pennsylvania copy", () => {
+  const html = renderCourses("state=FL&stream=water-distribution");
+  expect(html).toContain('data-course-key="fl-water-distribution-l3"');
+  expect(html).toContain("Florida Water Distribution Level 3");
+  expect(html).toContain("State-specific practice · free preview");
+  expect(html).toContain("Full course-pass sales for this course are not available yet");
+  expect(html).not.toContain("Pennsylvania-specific");
+  expect(html).not.toContain("Full Pennsylvania");
 });

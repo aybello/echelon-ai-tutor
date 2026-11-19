@@ -10,134 +10,9 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 import LandingNav from "@/components/LandingNav";
 import PurchaseExamDatePrompt from "@/components/PurchaseExamDatePrompt";
 import { adsMeasurement } from "@/lib/googleAds";
+import { purchasedCourseNavigation } from "./accountAccess";
 
 const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
-
-// Map product keys to quiz/mock exam paths
-// First entry is the primary path (used for auto-redirect)
-const PRODUCT_PATHS: Record<string, { label: string; path: string }[]> = {
-  oit: [
-    { label: "OIT Practice Quiz", path: "/quiz" },
-    { label: "OIT Mock Exam", path: "/oit-mock" },
-  ],
-  "oit-ww": [
-    { label: "OIT Wastewater Practice Quiz", path: "/oit-ww" },
-    { label: "OIT Wastewater Mock Exam", path: "/oit-ww-mock" },
-  ],
-  "class1-water": [
-    { label: "Class 1 Water Practice Quiz", path: "/class1-water" },
-    { label: "Class 1 Water Mock Exam", path: "/class1-water-mock" },
-  ],
-  "class1-ww": [
-    { label: "Class 1 Wastewater Practice Quiz", path: "/class1-ww" },
-    { label: "Class 1 Wastewater Mock Exam", path: "/class1-ww-mock" },
-  ],
-  "class2-water": [
-    { label: "Class 2 Water Practice Quiz", path: "/class2-water" },
-    { label: "Class 2 Water Mock Exam", path: "/class2-water-mock" },
-  ],
-  "class2-ww": [
-    { label: "Class 2 Wastewater Practice Quiz", path: "/class2-ww" },
-    { label: "Class 2 Wastewater Mock Exam", path: "/class2-ww-mock" },
-  ],
-  "class3-water": [
-    { label: "Class 3 Water Practice Quiz", path: "/class3-water" },
-    { label: "Class 3 Water Mock Exam", path: "/class3-water-mock" },
-  ],
-  "class3-ww": [
-    { label: "Class 3 Wastewater Practice Quiz", path: "/class3-ww" },
-    { label: "Class 3 Wastewater Mock Exam", path: "/class3-ww-mock" },
-  ],
-  "class4-water": [
-    { label: "Class 4 Water Practice Quiz", path: "/class4-water" },
-    { label: "Class 4 Water Mock Exam", path: "/class4-water-mock" },
-  ],
-  "class4-ww": [
-    { label: "Class 4 Wastewater Practice Quiz", path: "/class4-ww" },
-    { label: "Class 4 Wastewater Mock Exam", path: "/class4-ww-mock" },
-  ],
-  wqa: [
-    { label: "WQA Practice Quiz", path: "/wqa" },
-    { label: "WQA Mock Exam", path: "/wqa-mock" },
-  ],
-  "wpi-class1-water": [
-    { label: "WPI Class 1 Water Practice Quiz", path: "/wpi-class1-water" },
-    { label: "WPI Class 1 Water Mock Exam", path: "/wpi-class1-water-mock" },
-  ],
-  "us-class1-water": [
-    { label: "US Class I Water Treatment Practice Quiz", path: "/us-class1-water" },
-    { label: "US Class I Water Treatment Mock Exam", path: "/us-class1-water-mock" },
-  ],
-  "us-class1-water-dist": [
-    { label: "US Class I Water Distribution Practice Quiz", path: "/us-class1-water-dist" },
-    { label: "US Class I Water Distribution Mock Exam", path: "/us-class1-water-dist-mock" },
-  ],
-  "us-texas-class-d-water": [
-    { label: "Texas Class D Water Practice Quiz", path: "/us-texas-class-d-water" },
-    { label: "Texas Class D Water Mock Exam", path: "/us-texas-class-d-water-mock" },
-  ],
-  "wpi-class2-water": [
-    { label: "WPI Class 2 Water Practice Quiz", path: "/wpi-class2-water" },
-    { label: "WPI Class 2 Water Mock Exam", path: "/wpi-class2-water-mock" },
-  ],
-  "wpi-class3-water": [
-    { label: "WPI Class 3 Water Practice Quiz", path: "/wpi-class3-water" },
-    { label: "WPI Class 3 Water Mock Exam", path: "/wpi-class3-water-mock" },
-  ],
-  "wpi-class4-water": [
-    { label: "WPI Class 4 Water Practice Quiz", path: "/wpi-class4-water" },
-    { label: "WPI Class 4 Water Mock Exam", path: "/wpi-class4-water-mock" },
-  ],
-  "wpi-class1-wastewater": [
-    { label: "WPI Class 1 Wastewater Practice Quiz", path: "/wpi-class1-wastewater" },
-    { label: "WPI Class 1 Wastewater Mock Exam", path: "/wpi-class1-wastewater-mock" },
-  ],
-  "wpi-class2-wastewater": [
-    { label: "WPI Class 2 Wastewater Practice Quiz", path: "/wpi-class2-wastewater" },
-    { label: "WPI Class 2 Wastewater Mock Exam", path: "/wpi-class2-wastewater-mock" },
-  ],
-  "wpi-class3-wastewater": [
-    { label: "WPI Class 3 Wastewater Practice Quiz", path: "/wpi-class3-wastewater" },
-    { label: "WPI Class 3 Wastewater Mock Exam", path: "/wpi-class3-wastewater-mock" },
-  ],
-  "wpi-class4-wastewater": [
-    { label: "WPI Class 4 Wastewater Practice Quiz", path: "/wpi-class4-wastewater" },
-    { label: "WPI Class 4 Wastewater Mock Exam", path: "/wpi-class4-wastewater-mock" },
-  ],
-  "wpi-class1-water-dist": [
-    { label: "WPI Class 1 Distribution Practice Quiz", path: "/wpi-class1-water-dist" },
-    { label: "WPI Class 1 Distribution Mock Exam", path: "/wpi-class1-water-dist-mock" },
-  ],
-  "wpi-class2-water-dist": [
-    { label: "WPI Class 2 Distribution Practice Quiz", path: "/wpi-class2-water-dist" },
-    { label: "WPI Class 2 Distribution Mock Exam", path: "/wpi-class2-water-dist-mock" },
-  ],
-  "wpi-class3-water-dist": [
-    { label: "WPI Class 3 Distribution Practice Quiz", path: "/wpi-class3-water-dist" },
-    { label: "WPI Class 3 Distribution Mock Exam", path: "/wpi-class3-water-dist-mock" },
-  ],
-  "wpi-class4-water-dist": [
-    { label: "WPI Class 4 Distribution Practice Quiz", path: "/wpi-class4-water-dist" },
-    { label: "WPI Class 4 Distribution Mock Exam", path: "/wpi-class4-water-dist-mock" },
-  ],
-  "wpi-class1-water-coll": [
-    { label: "WPI Class 1 Collection Practice Quiz", path: "/wpi-class1-water-coll" },
-    { label: "WPI Class 1 Collection Mock Exam", path: "/wpi-class1-water-coll-mock" },
-  ],
-  "wpi-class2-water-coll": [
-    { label: "WPI Class 2 Collection Practice Quiz", path: "/wpi-class2-water-coll" },
-    { label: "WPI Class 2 Collection Mock Exam", path: "/wpi-class2-water-coll-mock" },
-  ],
-  "wpi-class3-water-coll": [
-    { label: "WPI Class 3 Collection Practice Quiz", path: "/wpi-class3-water-coll" },
-    { label: "WPI Class 3 Collection Mock Exam", path: "/wpi-class3-water-coll-mock" },
-  ],
-  "wpi-class4-water-coll": [
-    { label: "WPI Class 4 Collection Practice Quiz", path: "/wpi-class4-water-coll" },
-    { label: "WPI Class 4 Collection Mock Exam", path: "/wpi-class4-water-coll-mock" },
-  ],
-};
-
 
 export default function PurchaseSuccess() {
   usePageMeta({
@@ -148,7 +23,6 @@ export default function PurchaseSuccess() {
 
   const params = new URLSearchParams(window.location.search);
   const sessionId = params.get("session_id") ?? "";
-  const requestedProductKey = params.get("product") ?? "";
 
   const [email, setEmail] = useState<string>("");
   const [requiresSignIn, setRequiresSignIn] = useState(true);
@@ -157,7 +31,7 @@ export default function PurchaseSuccess() {
   const [referralSource, setReferralSource] = useState("");
   const [referralSubmitted, setReferralSubmitted] = useState(false);
   const [stripeSessionId, setStripeSessionId] = useState("");
-  const [purchasedProductKey, setPurchasedProductKey] = useState(requestedProductKey);
+  const [purchasedProductKey, setPurchasedProductKey] = useState("");
   const [accessExpiresAt, setAccessExpiresAt] = useState<Date | null>(null);
   const [fulfillmentPending, setFulfillmentPending] = useState(false);
   const [fulfillmentAttempts, setFulfillmentAttempts] = useState(0);
@@ -230,6 +104,8 @@ export default function PurchaseSuccess() {
       {verifySession.isPending ? "Checking access…" : "Check access again"}
     </button>
   );
+  const purchasedCourse = verified ? purchasedCourseNavigation(purchasedProductKey) : null;
+  const courseLinks = purchasedCourse?.links ?? [{ label: "View current access in My Account", path: "/account" }];
 
   return (
     <div
@@ -328,12 +204,12 @@ export default function PurchaseSuccess() {
             {fulfillmentPending && waitingForRetry && <div style={{ margin: "16px 0" }}>{retryButton}</div>}
 
             {requiresSignIn && !fulfillmentPending && <p style={{ color: "#334155", fontSize: 14 }}>
-              Sign in with the email used at checkout to open your course. Your payment is recorded; you do not need to purchase again.
+              Sign in with the email used at checkout and verify the six-digit inbox code to open your course. This protects your paid access. Your payment is recorded; you do not need to purchase again.
             </p>}
             {/* Access email reminder */}
             {email && (
               <div style={{ background: "#FFF7ED", border: "1.5px solid #FED7AA", borderRadius: 10, padding: "12px 16px", marginBottom: 16, textAlign: "left" }}>
-                <p style={{ margin: 0, fontSize: 12, fontWeight: 700, color: "#C2410C" }}>Save this email - it's your access key</p>
+                <p style={{ margin: 0, fontSize: 12, fontWeight: 700, color: "#C2410C" }}>Use this checkout email when signing in</p>
                 <p style={{ margin: "4px 0 0", fontSize: 13, color: "#78350F" }}>Your access is tied to: <strong>{email}</strong></p>
               </div>
             )}
@@ -353,16 +229,14 @@ export default function PurchaseSuccess() {
                 Your Courses
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                {[purchasedProductKey].filter(Boolean).map(pk => {
-                  const courseLinks = PRODUCT_PATHS[pk] ?? [{ label: pk, path: "/quiz" }];
-                  return courseLinks.map(link => (
+                {courseLinks.map(link => (
                     <Link key={link.path} href={requiresSignIn ? `/login/otp?next=${encodeURIComponent(link.path)}` : link.path}>
                       <div
                         style={{
                           padding: "10px 14px",
-                          background: pk === purchasedProductKey ? "#DCFCE7" : "#fff",
+                          background: "#DCFCE7",
                           borderRadius: 8,
-                          border: pk === purchasedProductKey ? "1.5px solid #86EFAC" : "1px solid #BBF7D0",
+                          border: "1.5px solid #86EFAC",
                           fontSize: 13,
                           fontWeight: 600,
                           color: "#0F172A",
@@ -373,12 +247,12 @@ export default function PurchaseSuccess() {
                         }}
                       >
                         {requiresSignIn ? `Sign in — ${link.label}` : link.label}
-                        {pk === purchasedProductKey && <span style={{ fontSize: 10, background: "#16A34A", color: "#fff", padding: "2px 6px", borderRadius: 4, fontWeight: 700 }}>NEW</span>}
+                        {purchasedCourse && <span style={{ fontSize: 10, background: "#16A34A", color: "#fff", padding: "2px 6px", borderRadius: 4, fontWeight: 700 }}>NEW</span>}
                         <span style={{ color: "#16A34A" }}>→</span>
                       </div>
                     </Link>
-                  ));
-                })}
+                ))}
+                {!purchasedCourse && <p style={{ color: "#475569", fontSize: 13, margin: "8px 0 0" }}>Open your account to view current access, or contact support if your purchased course is missing.</p>}
               </div>
             </div>}
 
@@ -440,8 +314,8 @@ export default function PurchaseSuccess() {
             </div>
 
             <div style={{ marginTop: 24, display: "flex", gap: 12, justifyContent: "center" }}>
-              {!fulfillmentPending && purchasedProductKey && PRODUCT_PATHS[purchasedProductKey] && (
-                <Link href={`/activate/${encodeURIComponent(purchasedProductKey)}`}>
+              {!fulfillmentPending && purchasedCourse && (
+                <Link href={`/activate/${encodeURIComponent(purchasedCourse.courseKey)}`}>
                   <button
                     style={{
                       padding: "9px 20px", borderRadius: 8, border: "none",

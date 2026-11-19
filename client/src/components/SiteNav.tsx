@@ -7,10 +7,11 @@ import {
 } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
-import { getActiveWorkspaceTab, getCourseForPath, getCourseWorkspaceTabs, getMobileWorkspaceTabs } from "@/lib/courseNavigation";
+import { getActiveWorkspaceTab, getCourseForPath, getCourseWorkspaceTabs, getMobileWorkspaceTabs, isSharedFormulaPath } from "@/lib/courseNavigation";
 import { buildPricingHref, courseProvinceHref, signInHref } from "@shared/funnelNavigation";
 import { resolveCourseKey } from "@shared/courseRegistry";
 import { readUSStudyContext, usCatalogueHref } from "@shared/usStudyContext";
+import { statePracticeBank } from "@shared/pennsylvaniaBanks";
 
 export const ECHELON_LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
 
@@ -155,22 +156,29 @@ export default function SiteNav({
   const dashboardMe = trpc.dashboardAuth.me.useQuery(undefined, { retry: false, staleTime: 5 * 60 * 1000 });
   const search = useSearch();
   const progressCourseKey = currentPath.split("?")[0] === "/dashboard" ? new URLSearchParams(search).get("course") : null;
-  const course = getCourseForPath(currentPath) ?? (progressCourseKey ? resolveCourseKey(progressCourseKey) : undefined);
+  const course = getCourseForPath(currentPath, search) ?? (progressCourseKey ? resolveCourseKey(progressCourseKey) : undefined);
+  const sharedFormula = !course && isSharedFormulaPath(currentPath);
   const learningMode = variant === "learning" || (variant === "auto" && !!course);
   const isSignedIn = authenticatedOverride ?? (isAuthenticated || !!dashboardMe.data?.email);
   const destination = `${currentPath.split("?")[0]}${search ? `?${search}` : ""}`;
   const accountHref = isSignedIn ? "/account" : signInHref(destination);
   const courseProvince = new URLSearchParams(search).get("province");
   const usContext = readUSStudyContext(search);
-  // /teams is employer purchasing; /team contains manager workspaces. Keep
-  // learner account, activation and course routes on their individual funnel.
-  const isEmployerRoute = ["/teams", "/team"].some((href) => isPathActive(currentPath, href));
+  // Course Pass claiming is employer-funded access, not an individual plan sale.
+  // Personal account, activation and normal course routes retain their own navigation.
+  const isEmployerRoute = ["/teams", "/team", "/course-pass/claim"].some((href) => isPathActive(currentPath, href));
   // A dedicated US course is always a US context. A shared WPI course only
   // counts as US when the learner actually carries US study context, so a
   // Canadian learner never sees US framing.
   const isDedicatedUSCourse = course?.examFamily === "us-wpi" || course?.examFamily === "us-state";
   const isSharedUSCourse = course?.examFamily === "western" && usContext.isUS;
   const isUSCourse = isDedicatedUSCourse || isSharedUSCourse;
+  const stateBank = course ? statePracticeBank(course.courseKey) : undefined;
+  const stateCourseBadge = stateBank
+    ? `${stateBank.stateName} / ${stateBank.label.slice(stateBank.stateName.length).trim()}`
+    : course?.courseKey === "us-texas-class-d-water"
+      ? `Texas / ${course.displayName.replace(/^Texas /, "")}`
+      : course?.displayName;
   const dashboardHref = course ? courseProvinceHref(`/dashboard?course=${encodeURIComponent(course.courseKey)}`, course.courseKey, courseProvince, search) : "/dashboard";
   const pricingHref = course ? buildPricingHref(course.courseKey, courseProvince, search) : "/pricing";
   const workspaceTabs = course ? getCourseWorkspaceTabs(course).map(tab => ({ ...tab, href: courseProvinceHref(tab.href, course.courseKey, courseProvince, search) })) : [];
@@ -238,7 +246,7 @@ export default function SiteNav({
             {course.courseKey === "electrician-309a" ? <Zap size={16} aria-hidden="true" /> : <FlaskConical size={16} aria-hidden="true" />}
             <span>{course.shortName}</span>
             <small>{isDedicatedUSCourse
-              ? course.examFamily === "us-state" ? "Texas / Class D Water" : `${usContext.state?.name ?? "United States"} / US Class I`
+              ? course.examFamily === "us-state" ? stateCourseBadge : `${usContext.state?.name ?? "United States"} / US Class I`
               : isSharedUSCourse
                 ? `${usContext.state?.name ?? "US"} / Shared WPI`
                 : course.examFamily === "western" ? "WPI / Western Canada" : "Ontario"}</small>
@@ -292,6 +300,16 @@ export default function SiteNav({
               </div>
             )}
           </nav>
+        </div>
+      )}
+
+      {sharedFormula && (
+        <div className="echelon-course-bar">
+          <div className="echelon-course-identity">
+            <Sigma size={16} aria-hidden="true" />
+            <span>Shared formula resource</span>
+            <small>Open Formulas from your course to see its study tools.</small>
+          </div>
         </div>
       )}
 

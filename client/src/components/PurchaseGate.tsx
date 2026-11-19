@@ -76,7 +76,7 @@ function isSubscriptionCovered(examType: string): boolean {
 
 const DEFAULT_FEATURES: Record<string, string[]> = {
   "wqa": [
-    "Timed WQA mock exam (100 questions, 2 hrs)",
+    "Timed WQA mock exam (100 questions, 3 hours)",
     "WQA formula sheet (30+ formulas)",
     "AI Tutor explanations on every question",
   ],
@@ -96,7 +96,7 @@ const DEFAULT_FEATURES: Record<string, string[]> = {
     "AI Tutor explanations on every question",
   ],
   "class4-ww": [
-    "Timed Class 4 WW mock exam (100 questions, 2 hrs)",
+    "Timed Class 4 WW mock exam (100 questions, 3 hours)",
     "Class 4 WW formula sheet (30+ formulas)",
     "AI Tutor explanations on every question",
   ],

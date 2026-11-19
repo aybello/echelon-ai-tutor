@@ -5,9 +5,10 @@
 // Design: Teal/blue brand, mirrors FormulasWater1.tsx structure
 
 import { useState } from "react";
-import { Link } from "wouter";
+import { Link, useSearch } from "wouter";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import SiteNav from "@/components/SiteNav";
+import { getFormulaStudyLinks } from "@/lib/courseNavigation";
 
 // ── TYPES ────────────────────────────────────────────────────────────────────
 interface Formula {
@@ -506,6 +507,7 @@ const CATEGORIES: FormulaCategory[] = [
 
 // ── COMPONENT ────────────────────────────────────────────────────────────────
 export default function FormulasWpiClass1() {
+  const study = getFormulaStudyLinks("/formulas-wpi-class1", useSearch());
   usePageMeta({
     title: "WPI Class I Water Treatment Formulas — Echelon Institute",
     description:
@@ -561,21 +563,21 @@ export default function FormulasWpiClass1() {
           aligned with WPI Need-to-Know Criteria.
         </p>
         <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-          <Link href="/wpi-class1-water">
+          <Link href={study.practiceHref}>
             <button style={{
               padding: "10px 22px", borderRadius: 9,
               background: "linear-gradient(135deg, #0E7490, #1D4ED8)",
               color: "#fff", border: "none", fontSize: 13, fontWeight: 700,
               cursor: "pointer", fontFamily: "inherit",
-            }}>Practice Quiz →</button>
+            }}>{study.practiceLabel}</button>
           </Link>
-          <Link href="/wpi-class1-water-mock">
+          <Link href={study.mockHref}>
             <button style={{
               padding: "10px 22px", borderRadius: 9,
               background: "rgba(255,255,255,0.1)",
               color: "#fff", border: "1px solid rgba(255,255,255,0.2)", fontSize: 13, fontWeight: 700,
               cursor: "pointer", fontFamily: "inherit",
-            }}>Mock Exam →</button>
+            }}>{study.mockLabel}</button>
           </Link>
         </div>
       </div>
@@ -817,24 +819,24 @@ export default function FormulasWpiClass1() {
 
         {/* Navigation links */}
         <div style={{ marginTop: 32, display: "flex", gap: 12, flexWrap: "wrap" }}>
-          <Link href="/wpi-class1-water">
+          <Link href={study.practiceHref}>
             <button style={{
               padding: "11px 22px", borderRadius: 9,
               background: "linear-gradient(135deg, #0E7490, #1D4ED8)",
               color: "#fff", border: "none", fontSize: 13, fontWeight: 700,
               cursor: "pointer", fontFamily: "inherit",
             }}>
-              🌊 WPI Class I Practice Quiz →
+              {study.practiceLabel}
             </button>
           </Link>
-          <Link href="/wpi-class1-water-mock">
+          <Link href={study.mockHref}>
             <button style={{
               padding: "11px 22px", borderRadius: 9,
               background: "#fff", color: "#0F172A",
               border: "1.5px solid #E2E8F0", fontSize: 13, fontWeight: 700,
               cursor: "pointer", fontFamily: "inherit",
             }}>
-              📋 WPI Class I Mock Exam →
+              {study.mockLabel}
             </button>
           </Link>
           <Link href="/pricing">

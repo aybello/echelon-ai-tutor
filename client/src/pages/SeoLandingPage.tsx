@@ -1,4 +1,4 @@
-import { Link, Redirect, useRoute } from "wouter";
+import { Link, Redirect, useRoute, useSearch } from "wouter";
 import {
   ArrowRight,
   BookOpenCheck,
@@ -10,6 +10,8 @@ import {
 import SiteNav from "@/components/SiteNav";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { useStructuredData } from "@/hooks/useStructuredData";
+import { resolveCourseKey } from "@shared/courseRegistry";
+import { buildPricingHref } from "@shared/funnelNavigation";
 import {
   SITE_URL,
   formatCad,
@@ -238,6 +240,14 @@ function RegionPage({ page }: { page: RegionSeoPage }) {
 }
 
 function CoursePage({ course }: { course: CourseSeoPage }) {
+  const pricingContext = new URLSearchParams(useSearch());
+  const family = resolveCourseKey(course.courseKey)?.examFamily;
+  if (family === "us-wpi" || family === "us-state") pricingContext.set("country", "US");
+  const pricingHref = buildPricingHref(
+    course.courseKey,
+    family === "ontario" ? "ON" : pricingContext.get("province"),
+    pricingContext.toString(),
+  );
   usePageMeta({
     title: course.title,
     description: course.description,
@@ -272,7 +282,7 @@ function CoursePage({ course }: { course: CourseSeoPage }) {
           price: (course.priceCAD / 100).toFixed(0),
           priceCurrency: "CAD",
           availability: "https://schema.org/InStock",
-          url: `${SITE_URL}/pricing`,
+          url: `${SITE_URL}${pricingHref}`,
         },
       },
       {
@@ -348,7 +358,7 @@ function CoursePage({ course }: { course: CourseSeoPage }) {
                   Start the free preview <ArrowRight size={17} />
                 </Link>
                 <Link
-                  href="/pricing"
+                  href={pricingHref}
                   className="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-5 py-3 font-bold text-slate-900"
                 >
                   View Exam Pass pricing

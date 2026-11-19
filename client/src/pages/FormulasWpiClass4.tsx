@@ -2,9 +2,10 @@
 // Chief Operator Level: Advanced Process Control, Plant Management, Regulatory Compliance
 
 import { useState } from "react";
-import { Link } from "wouter";
+import { Link, useSearch } from "wouter";
 import SiteNav from "@/components/SiteNav";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { getFormulaStudyLinks } from "@/lib/courseNavigation";
 
 interface FormulaEntry {
   name: string;
@@ -354,6 +355,7 @@ const CATEGORIES: FormulaCategory[] = [
 ];
 
 export default function FormulasWpiClass4() {
+  const study = getFormulaStudyLinks("/formulas-wpi-class4", useSearch());
   usePageMeta({
     title: "WPI Class 4 Water Formulas",
     description: "Essential formulas and calculations for WPI Class 4 Water operator certification exam. Quick reference formula sheet.",
@@ -535,8 +537,8 @@ export default function FormulasWpiClass4() {
       {/* Footer nav */}
       <div style={{ background: "#0f172a", borderTop: "1px solid #1e293b", padding: "24px", textAlign: "center" }}>
         <div style={{ display: "flex", justifyContent: "center", gap: 16, flexWrap: "wrap" }}>
-          <Link href="/wpi-class4-water" style={{ color: "#60a5fa", textDecoration: "none", fontSize: 14 }}>📝 Class IV Practice Quiz</Link>
-          <Link href="/wpi-class4-water-mock" style={{ color: "#60a5fa", textDecoration: "none", fontSize: 14 }}>🎯 Class IV Mock Exam</Link>
+          <Link href={study.practiceHref} style={{ color: "#60a5fa", textDecoration: "none", fontSize: 14 }}>{study.practiceLabel}</Link>
+          <Link href={study.mockHref} style={{ color: "#60a5fa", textDecoration: "none", fontSize: 14 }}>{study.mockLabel}</Link>
           <Link href="/formulas-wpi-class3" style={{ color: "#94a3b8", textDecoration: "none", fontSize: 14 }}>← Class III Formulas</Link>
           <Link href="/wpi" style={{ color: "#94a3b8", textDecoration: "none", fontSize: 14 }}>🌊 WPI Hub</Link>
         </div>

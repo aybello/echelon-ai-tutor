@@ -1910,7 +1910,7 @@ export default function Pricing() {
             },
             {
               q: "How do I access my passes after purchase?",
-              a: "After checkout, you'll receive a Stripe receipt to your email. Visit echeloninstitute.ca/account and enter your purchase email to restore access on any device. You can also request a magic sign-in link from that page."
+              a: "After checkout, you'll receive a Stripe receipt to your email. Visit echeloninstitute.ca/account and enter your purchase email to restore access on any device. Enter the six-digit verification code sent to your purchase email to sign in on that device."
             },
             {
               q: "Can I use Echelon on my phone or tablet?",

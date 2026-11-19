@@ -813,6 +813,7 @@ export async function sendTeamEnrollmentEmail(
 ): Promise<void> {
   const { email, orgName, managerEmail, loginUrl, courseName, unsubscribeUrl } = payload;
   const courseLabel = courseName ?? "All-Access (all certification levels)";
+  const privacyNote = `Authorized managers at ${orgName} can review your assigned-course activity, platform-recorded study time, and session dates, activities, topics, and durations. Managers do not receive the text of private AI Tutor conversations or individual answer content.`;
 
   let transporter: Transporter;
   if (ENV.smtpHost && ENV.smtpUser && ENV.smtpPass) {
@@ -850,7 +851,7 @@ export async function sendTeamEnrollmentEmail(
       ``,
       `Use this email address (${email}) to sign in. You'll receive a one-time code — no password needed.`,
       ``,
-      `Your progress, scores, and exam readiness are tracked on your personal dashboard. Your manager at ${orgName} can see an overview of team readiness but cannot see your individual question responses.`,
+      `Your progress, scores, and exam readiness are tracked on your personal dashboard. ${privacyNote}`,
       ``,
       `Questions? Reply to this email or reach us at abello@echeloninstitute.ca`,
       ``,
@@ -902,7 +903,7 @@ export async function sendTeamEnrollmentEmail(
                 <td style="vertical-align:top;width:50%;padding-right:12px;">
                   <ul style="margin:0;padding-left:18px;">
                     <li style="font-size:13px;color:#475569;margin-bottom:8px;line-height:1.5;">400+ practice questions per exam level</li>
-                    <li style="font-size:13px;color:#475569;margin-bottom:8px;line-height:1.5;">Timed mock exams (100 questions, 2 hrs)</li>
+                    <li style="font-size:13px;color:#475569;margin-bottom:8px;line-height:1.5;">Timed mock exams with course-specific formats and timers</li>
                     <li style="font-size:13px;color:#475569;margin-bottom:8px;line-height:1.5;">AI Tutor — step-by-step explanations</li>
                     <li style="font-size:13px;color:#475569;line-height:1.5;">Flashcard spaced-repetition system</li>
                   </ul>
@@ -921,7 +922,7 @@ export async function sendTeamEnrollmentEmail(
             <!-- Privacy note -->
             <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;padding:14px 18px;margin-bottom:28px;">
               <p style="margin:0;font-size:13px;color:#475569;line-height:1.6;">
-                <strong style="color:#0F172A;">Your privacy:</strong> Your manager at ${orgName} can see team-level readiness metrics (overall accuracy, activity, exam dates) but cannot see your individual question responses or session details.
+                <strong style="color:#0F172A;">Your privacy:</strong> ${privacyNote}
               </p>
             </div>
 

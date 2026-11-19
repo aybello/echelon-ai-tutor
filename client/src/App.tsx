@@ -259,6 +259,15 @@ function PageLoader() {
   );
 }
 
+/** Legacy stream URLs keep their exact course origin on the shared formula sheet. */
+function LegacyFormulaRedirect({ to, courseKey }: { to: string; courseKey: string }) {
+  const search = useSearch();
+  const params = new URLSearchParams(search);
+  params.set("course", courseKey);
+  const hash = typeof window === "undefined" ? "" : window.location.hash;
+  return <Redirect to={`${to}?${params}${hash}`} />;
+}
+
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
@@ -366,14 +375,14 @@ function Router() {
         <Route path={"/formulas-wpi-class4-ww"} component={FormulasWpiClass4Ww} />
         <Route path={"/formulas-wqa"} component={FormulasWQA} />
         {/* WPI dist/coll formula redirects */}
-        <Route path={"/formulas-wpi-class1-dist"}>{() => <Redirect to="/formulas-wpi-class1" />}</Route>
-        <Route path={"/formulas-wpi-class2-dist"}>{() => <Redirect to="/formulas-wpi-class2" />}</Route>
-        <Route path={"/formulas-wpi-class3-dist"}>{() => <Redirect to="/formulas-wpi-class3" />}</Route>
-        <Route path={"/formulas-wpi-class4-dist"}>{() => <Redirect to="/formulas-wpi-class4" />}</Route>
-        <Route path={"/formulas-wpi-class1-coll"}>{() => <Redirect to="/formulas-wpi-class1-ww" />}</Route>
-        <Route path={"/formulas-wpi-class2-coll"}>{() => <Redirect to="/formulas-wpi-class2-ww" />}</Route>
-        <Route path={"/formulas-wpi-class3-coll"}>{() => <Redirect to="/formulas-wpi-class3-ww" />}</Route>
-        <Route path={"/formulas-wpi-class4-coll"}>{() => <Redirect to="/formulas-wpi-class4-ww" />}</Route>
+        <Route path={"/formulas-wpi-class1-dist"}>{() => <LegacyFormulaRedirect to="/formulas-wpi-class1" courseKey="wpi-class1-water-dist" />}</Route>
+        <Route path={"/formulas-wpi-class2-dist"}>{() => <LegacyFormulaRedirect to="/formulas-wpi-class2" courseKey="wpi-class2-water-dist" />}</Route>
+        <Route path={"/formulas-wpi-class3-dist"}>{() => <LegacyFormulaRedirect to="/formulas-wpi-class3" courseKey="wpi-class3-water-dist" />}</Route>
+        <Route path={"/formulas-wpi-class4-dist"}>{() => <LegacyFormulaRedirect to="/formulas-wpi-class4" courseKey="wpi-class4-water-dist" />}</Route>
+        <Route path={"/formulas-wpi-class1-coll"}>{() => <LegacyFormulaRedirect to="/formulas-wpi-class1-ww" courseKey="wpi-class1-water-coll" />}</Route>
+        <Route path={"/formulas-wpi-class2-coll"}>{() => <LegacyFormulaRedirect to="/formulas-wpi-class2-ww" courseKey="wpi-class2-water-coll" />}</Route>
+        <Route path={"/formulas-wpi-class3-coll"}>{() => <LegacyFormulaRedirect to="/formulas-wpi-class3-ww" courseKey="wpi-class3-water-coll" />}</Route>
+        <Route path={"/formulas-wpi-class4-coll"}>{() => <LegacyFormulaRedirect to="/formulas-wpi-class4-ww" courseKey="wpi-class4-water-coll" />}</Route>
         {/* Flashcard routes */}
         <Route path={"/oit-water-flashcards"} component={OITWaterFlashcards} />
         <Route path={"/oit-ww-flashcards"} component={OITWastewaterFlashcards} />
