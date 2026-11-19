@@ -7,8 +7,8 @@
   "audience": "Operators, trainees and supervisors who run or support a conventional surface water or groundwater treatment plant and want a clear foundation before a process-control course.",
   "prerequisites": "Basic arithmetic. Basic Math is helpful but not required. Jurisdiction-neutral: no regulatory limits are stated in this course.",
   "introduction": "Build the foundation for a conventional treatment plant: where the raw water comes from, how the treatment train is ordered, what coagulation, flocculation and sedimentation do, how filters and disinfectant residuals work, and which numbers tell an operator that the process is working. Each module has worked scenarios, quick checks that explain the reasoning behind each answer, and a short written assignment. The course gives general principles. Plant-specific limits and procedures come from your own plant and regulator.",
-  "plannedMinutes": 200,
-  "delivery": "Self-paced lessons, quick checks, a graded final exam and a non-credit certificate. Duration is being validated; no contact-hour award is made.",
+  "plannedMinutes": 240,
+  "delivery": "Self-paced lessons, optional quick checks, a graded final exam and a non-credit certificate. Duration is being validated; no contact-hour award is made.",
   "sources": [
     {
       "id": "wi-sw-guide",
@@ -48,17 +48,17 @@
       "activities": [
         {
           "kind": "lesson",
-          "minutes": 20,
+          "minutes": 25,
           "instruction": "Study the lesson and reproduce the treatment train from memory, writing each barrier and what it removes."
         },
         {
           "kind": "reading",
-          "minutes": 10,
+          "minutes": 12,
           "instruction": "Read your plant's raw water description and note one change in the source that you have seen."
         },
         {
           "kind": "exercise",
-          "minutes": 12,
+          "minutes": 15,
           "instruction": "Work through the Brookmere scenario and list the first three indicators you would check."
         },
         {
@@ -74,7 +74,6 @@
       "checks": [
         {
           "id": "ceu-water-treatment-concepts-source-and-train-c1",
-          "objective": "source-water",
           "prompt": "Which source is most likely to show rapid turbidity changes after heavy rain?",
           "choices": [
             "A river intake",
@@ -83,11 +82,11 @@
             "A protected spring with a long residence time"
           ],
           "correctIndex": 0,
-          "explanation": "Rivers collect runoff directly, so turbidity can rise within hours of heavy rain. Deep and sealed sources buffer that change."
+          "explanation": "Rivers collect runoff directly, so turbidity can rise within hours of heavy rain. Deep and sealed sources buffer that change.",
+          "objective": "source-and-train"
         },
         {
           "id": "ceu-water-treatment-concepts-source-and-train-c2",
-          "objective": "source-water",
           "prompt": "Which quality concern is most typical of groundwater?",
           "choices": [
             "Large numbers of suspended algae",
@@ -96,11 +95,11 @@
             "Oocysts carried in fresh runoff"
           ],
           "correctIndex": 1,
-          "explanation": "Groundwater often carries dissolved metals because minerals dissolve as water moves through the ground. Algae and silt are typical of surface water."
+          "explanation": "Groundwater often carries dissolved metals because minerals dissolve as water moves through the ground. Algae and silt are typical of surface water.",
+          "objective": "source-and-train"
         },
         {
           "id": "ceu-water-treatment-concepts-source-and-train-c3",
-          "objective": "source-water",
           "prompt": "What does it mean when groundwater is under the influence of surface water?",
           "choices": [
             "It is always free of microbes",
@@ -109,11 +108,11 @@
             "It has no seasonal changes"
           ],
           "correctIndex": 2,
-          "explanation": "Groundwater under the influence of surface water can carry surface risks, so its source must be checked rather than assumed."
+          "explanation": "Groundwater under the influence of surface water can carry surface risks, so its source must be checked rather than assumed.",
+          "objective": "source-and-train"
         },
         {
           "id": "ceu-water-treatment-concepts-source-and-train-c4",
-          "objective": "treatment-train",
           "prompt": "What is the multiple-barrier approach?",
           "choices": [
             "Using two chemicals in one tank",
@@ -122,11 +121,11 @@
             "Several treatment steps, each able to reduce risk, so one weak step is backed up"
           ],
           "correctIndex": 3,
-          "explanation": "Each step removes or inactivates part of the risk, so a weak step is backed up by the next one."
+          "explanation": "Each step removes or inactivates part of the risk, so a weak step is backed up by the next one.",
+          "objective": "source-and-train"
         },
         {
           "id": "ceu-water-treatment-concepts-source-and-train-c5",
-          "objective": "treatment-train",
           "prompt": "Why is coagulation placed before sedimentation?",
           "choices": [
             "Coagulation makes small particles clump so they can settle",
@@ -135,11 +134,11 @@
             "Sedimentation must come before any chemical is added"
           ],
           "correctIndex": 0,
-          "explanation": "Settling works on clumped particles. Coagulation is what makes the small particles clump."
+          "explanation": "Settling works on clumped particles. Coagulation is what makes the small particles clump.",
+          "objective": "source-and-train"
         },
         {
           "id": "ceu-water-treatment-concepts-source-and-train-c6",
-          "objective": "treatment-train",
           "prompt": "Why is disinfection usually placed after particle removal?",
           "choices": [
             "Particles neutralise chlorine in the pipe",
@@ -148,7 +147,8 @@
             "Disinfectant reacts with the filter media"
           ],
           "correctIndex": 1,
-          "explanation": "Particles can protect microbes from the disinfectant, so removing them first helps disinfection work."
+          "explanation": "Particles can protect microbes from the disinfectant, so removing them first helps disinfection work.",
+          "objective": "source-and-train"
         }
       ]
     },
@@ -172,17 +172,17 @@
       "activities": [
         {
           "kind": "lesson",
-          "minutes": 20,
+          "minutes": 25,
           "instruction": "Study the lesson and draw the three mixing stages, writing what each stage does to the particles."
         },
         {
           "kind": "reading",
-          "minutes": 10,
+          "minutes": 12,
           "instruction": "Read your plant's coagulant and mixing records and note one operating change you could explain."
         },
         {
           "kind": "exercise",
-          "minutes": 12,
+          "minutes": 15,
           "instruction": "Work through the Carrow Creek scenario and sketch the jar test you would run."
         },
         {
@@ -198,7 +198,6 @@
       "checks": [
         {
           "id": "ceu-water-treatment-concepts-coagulation-sedimentation-c1",
-          "objective": "coagulation",
           "prompt": "Why do fine particles in raw water stay suspended for a long time?",
           "choices": [
             "They are too heavy to float",
@@ -207,11 +206,11 @@
             "Sunlight removes them from the surface"
           ],
           "correctIndex": 1,
-          "explanation": "Similar charges repel the particles, so they do not collide and grow into floc."
+          "explanation": "Similar charges repel the particles, so they do not collide and grow into floc.",
+          "objective": "coagulation-sedimentation"
         },
         {
           "id": "ceu-water-treatment-concepts-coagulation-sedimentation-c2",
-          "objective": "coagulation",
           "prompt": "What is the main job of a coagulant?",
           "choices": [
             "To kill microbes in the water",
@@ -220,11 +219,11 @@
             "To remove dissolved oxygen"
           ],
           "correctIndex": 2,
-          "explanation": "A coagulant reduces the repulsion between particles, which lets them join together."
+          "explanation": "A coagulant reduces the repulsion between particles, which lets them join together.",
+          "objective": "coagulation-sedimentation"
         },
         {
           "id": "ceu-water-treatment-concepts-coagulation-sedimentation-c3",
-          "objective": "coagulation",
           "prompt": "Why does rapid mixing use high energy for a short time?",
           "choices": [
             "To grow large floc in a single step",
@@ -233,11 +232,11 @@
             "To disperse the coagulant quickly through the water"
           ],
           "correctIndex": 3,
-          "explanation": "Rapid mixing spreads the coagulant evenly before it reacts with the particles."
+          "explanation": "Rapid mixing spreads the coagulant evenly before it reacts with the particles.",
+          "objective": "coagulation-sedimentation"
         },
         {
           "id": "ceu-water-treatment-concepts-coagulation-sedimentation-c4",
-          "objective": "coagulation",
           "prompt": "What happens if the flocculation mixing is too fast?",
           "choices": [
             "Floc can break apart and fail to grow",
@@ -246,11 +245,11 @@
             "Alkalinity rises sharply"
           ],
           "correctIndex": 0,
-          "explanation": "Too much shear breaks the floc, so it cannot grow large enough to settle well."
+          "explanation": "Too much shear breaks the floc, so it cannot grow large enough to settle well.",
+          "objective": "coagulation-sedimentation"
         },
         {
           "id": "ceu-water-treatment-concepts-coagulation-sedimentation-c5",
-          "objective": "sedimentation",
           "prompt": "What does the overflow rate describe in a sedimentation basin?",
           "choices": [
             "The time water spends in the basin only",
@@ -259,11 +258,11 @@
             "The number of basins in service"
           ],
           "correctIndex": 1,
-          "explanation": "Overflow rate is flow divided by surface area, so it shows how quickly water rises through the basin."
+          "explanation": "Overflow rate is flow divided by surface area, so it shows how quickly water rises through the basin.",
+          "objective": "coagulation-sedimentation"
         },
         {
           "id": "ceu-water-treatment-concepts-coagulation-sedimentation-c6",
-          "objective": "jar-test",
           "prompt": "What does a jar test help an operator decide?",
           "choices": [
             "The age of the filter media",
@@ -272,7 +271,8 @@
             "The number of operators on shift"
           ],
           "correctIndex": 2,
-          "explanation": "The jar test compares doses under the same mixing and shows which dose gives good floc and clear water."
+          "explanation": "The jar test compares doses under the same mixing and shows which dose gives good floc and clear water.",
+          "objective": "coagulation-sedimentation"
         }
       ]
     },
@@ -296,17 +296,17 @@
       "activities": [
         {
           "kind": "lesson",
-          "minutes": 20,
+          "minutes": 25,
           "instruction": "Study the lesson and sketch a dual-media filter, labelling the media and the direction of flow during filtering and backwash."
         },
         {
           "kind": "reading",
-          "minutes": 10,
+          "minutes": 12,
           "instruction": "Read your plant's filter log and note one run-to-waste or restart event you can explain."
         },
         {
           "kind": "exercise",
-          "minutes": 12,
+          "minutes": 15,
           "instruction": "Work through the Lakeshore Terrace scenario and list the restart criteria you would apply."
         },
         {
@@ -322,7 +322,6 @@
       "checks": [
         {
           "id": "ceu-water-treatment-concepts-filtration-disinfection-c1",
-          "objective": "filtration",
           "prompt": "What does granular media filtration mainly remove?",
           "choices": [
             "Dissolved hardness minerals",
@@ -331,11 +330,11 @@
             "Free chlorine residual"
           ],
           "correctIndex": 2,
-          "explanation": "Granular filters trap the particles and floc left after settling, along with many attached microbes."
+          "explanation": "Granular filters trap the particles and floc left after settling, along with many attached microbes.",
+          "objective": "filtration-disinfection"
         },
         {
           "id": "ceu-water-treatment-concepts-filtration-disinfection-c2",
-          "objective": "filtration",
           "prompt": "What is head loss in a filter?",
           "choices": [
             "The speed of the backwash pump",
@@ -344,11 +343,11 @@
             "The pressure drop across the filter as particles collect in the media"
           ],
           "correctIndex": 3,
-          "explanation": "Head loss rises as the media collects solids, so it shows how loaded the filter is."
+          "explanation": "Head loss rises as the media collects solids, so it shows how loaded the filter is.",
+          "objective": "filtration-disinfection"
         },
         {
           "id": "ceu-water-treatment-concepts-filtration-disinfection-c3",
-          "objective": "filtration",
           "prompt": "What is breakthrough?",
           "choices": [
             "Particles pass through the media and filter effluent turbidity rises",
@@ -357,11 +356,11 @@
             "A chlorine residual that falls to zero"
           ],
           "correctIndex": 0,
-          "explanation": "Breakthrough is when particles get through the bed, which shows up as higher effluent turbidity."
+          "explanation": "Breakthrough is when particles get through the bed, which shows up as higher effluent turbidity.",
+          "objective": "filtration-disinfection"
         },
         {
           "id": "ceu-water-treatment-concepts-filtration-disinfection-c4",
-          "objective": "filtration",
           "prompt": "What does a backwash do?",
           "choices": [
             "Adds coagulant to the filter",
@@ -370,11 +369,11 @@
             "Removes dissolved minerals"
           ],
           "correctIndex": 1,
-          "explanation": "Backwash reverses the flow so the media expands and the trapped solids leave the filter."
+          "explanation": "Backwash reverses the flow so the media expands and the trapped solids leave the filter.",
+          "objective": "filtration-disinfection"
         },
         {
           "id": "ceu-water-treatment-concepts-filtration-disinfection-c5",
-          "objective": "disinfection",
           "prompt": "What is a free chlorine residual?",
           "choices": [
             "Chlorine bound only to ammonia",
@@ -383,11 +382,11 @@
             "Chlorine held in the gas cylinder"
           ],
           "correctIndex": 2,
-          "explanation": "The free residual is what is left available to disinfect after the demand has been satisfied."
+          "explanation": "The free residual is what is left available to disinfect after the demand has been satisfied.",
+          "objective": "filtration-disinfection"
         },
         {
           "id": "ceu-water-treatment-concepts-filtration-disinfection-c6",
-          "objective": "disinfection",
           "prompt": "Why is contact time important in disinfection?",
           "choices": [
             "Contact time increases turbidity",
@@ -396,7 +395,8 @@
             "The disinfectant needs time in contact with microbes to inactivate them"
           ],
           "correctIndex": 3,
-          "explanation": "Inactivation depends on residual and time together, so a short contact time reduces disinfection."
+          "explanation": "Inactivation depends on residual and time together, so a short contact time reduces disinfection.",
+          "objective": "filtration-disinfection"
         }
       ]
     },
@@ -420,17 +420,17 @@
       "activities": [
         {
           "kind": "lesson",
-          "minutes": 20,
+          "minutes": 25,
           "instruction": "Study the lesson and draw a simple trend chart for raw turbidity and filter effluent turbidity, with the times marked."
         },
         {
           "kind": "reading",
-          "minutes": 10,
+          "minutes": 12,
           "instruction": "Read your plant's shift log and note one trend you could have escalated earlier."
         },
         {
           "kind": "exercise",
-          "minutes": 12,
+          "minutes": 15,
           "instruction": "Work through the Northfield scenario and list the three checks you would do before you escalate."
         },
         {
@@ -446,7 +446,6 @@
       "checks": [
         {
           "id": "ceu-water-treatment-concepts-monitoring-records-troubleshooting-c1",
-          "objective": "monitoring",
           "prompt": "Why do operators track trends rather than single readings?",
           "choices": [
             "A single reading is always wrong",
@@ -455,11 +454,11 @@
             "A trend shows the direction and speed of change, which a single reading cannot"
           ],
           "correctIndex": 3,
-          "explanation": "A trend shows whether a value is rising, falling or steady, which a single reading cannot show."
+          "explanation": "A trend shows whether a value is rising, falling or steady, which a single reading cannot show.",
+          "objective": "monitoring-records-troubleshooting"
         },
         {
           "id": "ceu-water-treatment-concepts-monitoring-records-troubleshooting-c2",
-          "objective": "monitoring",
           "prompt": "Which measurement is a direct check on filter performance?",
           "choices": [
             "Filter effluent turbidity",
@@ -468,11 +467,11 @@
             "Chemical storage level"
           ],
           "correctIndex": 0,
-          "explanation": "Filter effluent turbidity shows how much particulate matter is getting through the filter."
+          "explanation": "Filter effluent turbidity shows how much particulate matter is getting through the filter.",
+          "objective": "monitoring-records-troubleshooting"
         },
         {
           "id": "ceu-water-treatment-concepts-monitoring-records-troubleshooting-c3",
-          "objective": "records",
           "prompt": "What makes a plant record trustworthy?",
           "choices": [
             "It is written from memory at the end of the week",
@@ -481,11 +480,11 @@
             "It is kept on a scrap sheet"
           ],
           "correctIndex": 1,
-          "explanation": "A trusted record shows what was measured, when, by whom, and it is not changed to fit expectations."
+          "explanation": "A trusted record shows what was measured, when, by whom, and it is not changed to fit expectations.",
+          "objective": "monitoring-records-troubleshooting"
         },
         {
           "id": "ceu-water-treatment-concepts-monitoring-records-troubleshooting-c4",
-          "objective": "troubleshooting",
           "prompt": "Raw turbidity rises while the coagulant dose stays the same. What does this most likely mean?",
           "choices": [
             "The filters have gone out of service",
@@ -494,11 +493,11 @@
             "The pump has lost its prime"
           ],
           "correctIndex": 2,
-          "explanation": "A changed raw water quality can mean the existing dose is no longer right, which a jar test can check."
+          "explanation": "A changed raw water quality can mean the existing dose is no longer right, which a jar test can check.",
+          "objective": "monitoring-records-troubleshooting"
         },
         {
           "id": "ceu-water-treatment-concepts-monitoring-records-troubleshooting-c5",
-          "objective": "troubleshooting",
           "prompt": "Which symptom most suggests a problem in the sedimentation basin?",
           "choices": [
             "A drop in clearwell pressure",
@@ -507,11 +506,11 @@
             "Floc carried over to the filters, seen as rising filter loading"
           ],
           "correctIndex": 3,
-          "explanation": "Floc that escapes the basin reaches the filters and shows up as faster loading and higher effluent turbidity."
+          "explanation": "Floc that escapes the basin reaches the filters and shows up as faster loading and higher effluent turbidity.",
+          "objective": "monitoring-records-troubleshooting"
         },
         {
           "id": "ceu-water-treatment-concepts-monitoring-records-troubleshooting-c6",
-          "objective": "escalation",
           "prompt": "When should an operator escalate a suspected process failure?",
           "choices": [
             "As soon as the readings suggest a barrier is not working, with the trend and actions taken",
@@ -520,7 +519,8 @@
             "Only if the equipment has to be shut down"
           ],
           "correctIndex": 0,
-          "explanation": "Early escalation with the evidence lets the supervisor act before the problem reaches the distribution system."
+          "explanation": "Early escalation with the evidence lets the supervisor act before the problem reaches the distribution system.",
+          "objective": "monitoring-records-troubleshooting"
         }
       ]
     }
@@ -528,7 +528,6 @@
   "finalAssessment": [
     {
       "id": "ceu-water-treatment-concepts-source-and-train-f1",
-      "objective": "source-water",
       "prompt": "A plant draws from a river. Which change is most likely after several days of heavy rain?",
       "choices": [
         "Turbidity and colour rise",
@@ -537,11 +536,11 @@
         "Dissolved oxygen becomes unmeasurable"
       ],
       "correctIndex": 0,
-      "explanation": "Runoff carries sediment and organic colour into the river, so turbidity and colour rise together."
+      "explanation": "Runoff carries sediment and organic colour into the river, so turbidity and colour rise together.",
+      "objective": "source-and-train"
     },
     {
       "id": "ceu-water-treatment-concepts-source-and-train-f2",
-      "objective": "source-water",
       "prompt": "Which quality issue is most typical of a deep well?",
       "choices": [
         "Cryptosporidium carried by storm runoff",
@@ -550,37 +549,37 @@
         "Visible silt after a storm"
       ],
       "correctIndex": 1,
-      "explanation": "Deep wells often carry dissolved minerals such as hardness and iron, and these do not come from storm runoff."
+      "explanation": "Deep wells often carry dissolved minerals such as hardness and iron, and these do not come from storm runoff.",
+      "objective": "source-and-train"
     },
     {
       "id": "ceu-water-treatment-concepts-source-and-train-f3",
-      "objective": "source-water",
       "prompt": "Why is source water protection valuable?",
       "choices": [
         "It removes the need for any treatment at the plant, so filters and disinfection can be retired",
         "It replaces the disinfection step, so no residual is needed anywhere downstream of the plant",
         "It reduces what enters the plant, which is usually cheaper than removing it later",
-        "It makes filters unnecessary because the water arrives already clear and safe to drink"
+        "It is only needed for groundwater"
       ],
       "correctIndex": 2,
-      "explanation": "Keeping contaminants out of the source costs less than removing them later, but it does not replace treatment."
+      "explanation": "Keeping contaminants out of the source costs less than removing them later, but it does not replace treatment.",
+      "objective": "source-and-train"
     },
     {
       "id": "ceu-water-treatment-concepts-source-and-train-f4",
-      "objective": "treatment-train",
       "prompt": "In a conventional surface water train, what usually comes directly after sedimentation?",
       "choices": [
-        "Raw water intake",
+        "Clearwell",
         "Chemical storage",
         "Clearwell storage",
         "Filtration"
       ],
       "correctIndex": 3,
-      "explanation": "Sedimentation removes most settleable floc, and filtration removes the remaining particles before disinfection."
+      "explanation": "Sedimentation removes most settleable floc, and filtration removes the remaining particles before disinfection.",
+      "objective": "source-and-train"
     },
     {
       "id": "ceu-water-treatment-concepts-source-and-train-f5",
-      "objective": "treatment-train",
       "prompt": "Why does the order of steps in a train matter?",
       "choices": [
         "Each step prepares the water for the next, so a wrong order shifts the load",
@@ -589,208 +588,208 @@
         "Order has no effect on later steps, because each step works on its own water"
       ],
       "correctIndex": 0,
-      "explanation": "Each step changes what the next step receives, so moving a step changes the whole train."
+      "explanation": "Each step changes what the next step receives, so moving a step changes the whole train.",
+      "objective": "source-and-train"
     },
     {
       "id": "ceu-water-treatment-concepts-coagulation-sedimentation-f1",
-      "objective": "coagulation",
       "prompt": "Which coagulant is commonly used at operator level to remove particles?",
       "choices": [
         "Sodium chloride, the common table salt used for brine",
         "Aluminum sulfate (alum)",
         "Sodium bicarbonate, often used to raise alkalinity",
-        "Activated carbon, used mainly for taste and odour"
+        "Chlorine"
       ],
       "correctIndex": 1,
-      "explanation": "Alum is a common coagulant. The other choices are not used mainly to make particles clump."
+      "explanation": "Alum is a common coagulant. The other choices are not used mainly to make particles clump.",
+      "objective": "coagulation-sedimentation"
     },
     {
       "id": "ceu-water-treatment-concepts-coagulation-sedimentation-f2",
-      "objective": "coagulation",
       "prompt": "Why does alkalinity matter when alum is dosed?",
       "choices": [
         "Alkalinity adds free chlorine to the water, which changes the disinfectant demand of the plant",
         "Alkalinity has no effect on coagulation, because alum does not react with the water chemistry",
         "Alum consumes alkalinity, so low alkalinity can drop the pH outside the effective range",
-        "High alkalinity can prevent floc from forming in the rapid mix and the flocculation stages"
+        "Alkalinity adds chlorine"
       ],
       "correctIndex": 2,
-      "explanation": "Alum uses up alkalinity as it reacts, and the pH can fall outside the range where coagulation works well."
+      "explanation": "Alum uses up alkalinity as it reacts, and the pH can fall outside the range where coagulation works well.",
+      "objective": "coagulation-sedimentation"
     },
     {
       "id": "ceu-water-treatment-concepts-coagulation-sedimentation-f3",
-      "objective": "coagulation",
       "prompt": "A plant's rapid mix is too weak. What is the most likely result?",
       "choices": [
         "Floc becomes too large to settle and carries over into the filters",
         "Filter head loss drops because less solids reach the media at all",
-        "Disinfectant demand falls because the coagulant has been used up",
+        "Filters clog at once",
         "The coagulant is poorly dispersed, so coagulation is uneven"
       ],
       "correctIndex": 3,
-      "explanation": "Weak mixing leaves the coagulant unevenly spread, so some particles are missed and the floc is patchy."
+      "explanation": "Weak mixing leaves the coagulant unevenly spread, so some particles are missed and the floc is patchy.",
+      "objective": "coagulation-sedimentation"
     },
     {
       "id": "ceu-water-treatment-concepts-coagulation-sedimentation-f4",
-      "objective": "flocculation",
       "prompt": "Which description best matches the purpose of flocculation?",
       "choices": [
         "Gentle mixing that lets small particles join into larger floc",
         "High-energy mixing that disperses the chemical through the water quickly",
         "Chlorine addition to kill microbes before the water reaches the filters",
-        "Pumping the water up to the clearwell for storage and later use"
+        "Pumping to storage"
       ],
       "correctIndex": 0,
-      "explanation": "Flocculation is slow, gentle mixing that gives destabilised particles time to collide and grow."
+      "explanation": "Flocculation is slow, gentle mixing that gives destabilised particles time to collide and grow.",
+      "objective": "coagulation-sedimentation"
     },
     {
       "id": "ceu-water-treatment-concepts-coagulation-sedimentation-f5",
-      "objective": "sedimentation",
       "prompt": "A settling basin has short-circuiting. What does that mean?",
       "choices": [
         "Sludge is removed too slowly from the bottom of the basin for the design",
         "Water takes a shorter path through the basin than designed",
-        "The basin has two outlet pumps running at the same time for the flow",
+        "Two outlet pumps",
         "The chemical feed runs continuously at a constant rate through the day"
       ],
       "correctIndex": 1,
-      "explanation": "Short-circuiting lets water and floc bypass most of the basin, which can carry floc on to the filters."
+      "explanation": "Short-circuiting lets water and floc bypass most of the basin, which can carry floc on to the filters.",
+      "objective": "coagulation-sedimentation"
     },
     {
       "id": "ceu-water-treatment-concepts-filtration-disinfection-f1",
-      "objective": "filtration",
       "prompt": "A filter's effluent turbidity rises steadily and its head loss is high. What is the most likely cause?",
       "choices": [
         "The clearwell level is too high, so the filter cannot drain to its design level",
         "The disinfectant residual is too high and is blocking flow through the media bed",
         "The media is loaded with solids and the filter is near the end of its run",
-        "The backwash pump is oversized for the filter and draws in air during the run"
+        "Clearwell is too high"
       ],
       "correctIndex": 2,
-      "explanation": "High head loss with rising effluent turbidity points to a loaded bed approaching breakthrough."
+      "explanation": "High head loss with rising effluent turbidity points to a loaded bed approaching breakthrough.",
+      "objective": "filtration-disinfection"
     },
     {
       "id": "ceu-water-treatment-concepts-filtration-disinfection-f2",
-      "objective": "filtration",
       "prompt": "Why is a filter run to waste after backwash?",
       "choices": [
-        "To add chlorine to the media so that the bed is disinfected before normal service begins",
+        "To test the pump",
         "To raise the head loss so that the filter run length can be measured accurately against the design",
         "To test the backwash pump motor and confirm that it can run at the full design flow for a long period",
         "To discard water that may still carry backwash solids before normal service resumes"
       ],
       "correctIndex": 3,
-      "explanation": "The first water after backwash can carry residual solids, so it is wasted until the filter is ready."
+      "explanation": "The first water after backwash can carry residual solids, so it is wasted until the filter is ready.",
+      "objective": "filtration-disinfection"
     },
     {
       "id": "ceu-water-treatment-concepts-filtration-disinfection-f3",
-      "objective": "filtration",
       "prompt": "Which arrangement describes a dual-media filter in which the grain size changes with depth?",
       "choices": [
         "Coarser anthracite on top of finer sand",
-        "Finer sand on top of coarser gravel in a layered bed of uniform depth",
+        "Gravel only",
         "A single layer of fine clay placed over a bed of coarse stone and gravel",
         "Gravel only with no media, so the water flows straight through the underdrain"
       ],
       "correctIndex": 0,
-      "explanation": "Dual-media beds place coarser anthracite above finer sand, so the water meets larger grains first."
+      "explanation": "Dual-media beds place coarser anthracite above finer sand, so the water meets larger grains first.",
+      "objective": "filtration-disinfection"
     },
     {
       "id": "ceu-water-treatment-concepts-filtration-disinfection-f4",
-      "objective": "disinfection",
       "prompt": "A clearwell's free residual falls sharply in summer. Which factor most likely contributed?",
       "choices": [
         "Lower temperature increased the residual and so reduced the water age in the tank",
         "Higher temperature and longer water age increased chlorine demand and decay",
-        "The clearwell depth decreased, so the contact time per litre became much shorter",
+        "Lower temperature",
         "Filter runs got shorter, so more particles reached the clearwell and the chlorine demand fell"
       ],
       "correctIndex": 1,
-      "explanation": "Warm water and longer water age speed chlorine decay, so the residual falls faster."
+      "explanation": "Warm water and longer water age speed chlorine decay, so the residual falls faster.",
+      "objective": "filtration-disinfection"
     },
     {
       "id": "ceu-water-treatment-concepts-filtration-disinfection-f5",
-      "objective": "disinfection",
       "prompt": "What is CT in simple terms?",
       "choices": [
         "The toxicity of chlorine to people, measured in the lab at the outlet",
-        "A count of the tanks and basins that are in service at one time",
+        "Chlorine toxicity",
         "A product of disinfectant concentration and contact time",
         "The time between backwashes, measured in hours on the filter log"
       ],
       "correctIndex": 2,
-      "explanation": "CT combines the disinfectant concentration with the contact time it gets, which is why both matter."
+      "explanation": "CT combines the disinfectant concentration with the contact time it gets, which is why both matter.",
+      "objective": "filtration-disinfection"
     },
     {
       "id": "ceu-water-treatment-concepts-monitoring-records-troubleshooting-f1",
-      "objective": "monitoring",
       "prompt": "Which set of measurements best describes a useful monitoring set for a conventional plant?",
       "choices": [
         "Only the clearwell level, read once a day, which tells the operator nothing else about the process",
         "Customer complaints alone, collected through the billing system each month and reviewed at year end",
-        "Chemical invoice amounts, reviewed each month by the finance office and the purchasing team",
+        "Only the clearwell level",
         "Raw turbidity, pH, coagulant dose, filter effluent turbidity and end-of-train residual"
       ],
       "correctIndex": 3,
-      "explanation": "This set covers the raw water, the chemical treatment, the filter performance and the disinfection outcome."
+      "explanation": "This set covers the raw water, the chemical treatment, the filter performance and the disinfection outcome.",
+      "objective": "monitoring-records-troubleshooting"
     },
     {
       "id": "ceu-water-treatment-concepts-monitoring-records-troubleshooting-f2",
-      "objective": "monitoring",
       "prompt": "A pH trend falls steadily after alum dosing. What should the operator consider?",
       "choices": [
         "Alkalinity may be used up, so the pH may move outside the coagulation range",
         "The filters are plugging with solids, so the head loss rises and the run length falls quickly",
         "The chlorine residual will rise steadily as the pH falls below neutral in the clearwell",
-        "The sludge pump is running too fast for the basin's sludge blanket depth and volume"
+        "Filters are plugging"
       ],
       "correctIndex": 0,
-      "explanation": "Alum consumes alkalinity, so a falling pH can mean coagulation is moving out of its effective range."
+      "explanation": "Alum consumes alkalinity, so a falling pH can mean coagulation is moving out of its effective range.",
+      "objective": "monitoring-records-troubleshooting"
     },
     {
       "id": "ceu-water-treatment-concepts-monitoring-records-troubleshooting-f3",
-      "objective": "records",
       "prompt": "A reading was entered wrong. What is the correct record practice?",
       "choices": [
-        "Erase the entry carefully and write the right value in the same space on the sheet so it looks clean",
+        "Erase and rewrite it",
         "Correct it with a single line, the reason, initials and date, keeping the original visible",
         "Delete the whole sheet and rewrite the entire page from the start of the shift record in neat handwriting",
         "Enter the right value on another sheet only and leave the wrong entry standing on the original sheet"
       ],
       "correctIndex": 1,
-      "explanation": "The original stays visible and the correction is traceable, which is the standard for a trusted record."
+      "explanation": "The original stays visible and the correction is traceable, which is the standard for a trusted record.",
+      "objective": "monitoring-records-troubleshooting"
     },
     {
       "id": "ceu-water-treatment-concepts-monitoring-records-troubleshooting-f4",
-      "objective": "troubleshooting",
       "prompt": "A filter's effluent turbidity is acceptable but its run is short. What should be checked?",
       "choices": [
         "The clearwell chlorine residual only, because disinfection controls the filter run length",
-        "Customer billing data for the month, since complaints can shorten filter runs",
+        "Billing data",
         "The head loss pattern, backwash effectiveness and the raw water load",
         "The chemical delivery schedule and the supplier's price list for the coming quarter"
       ],
       "correctIndex": 2,
-      "explanation": "Short runs with good effluent point to head loss, backwash and load, not to disinfection or billing."
+      "explanation": "Short runs with good effluent point to head loss, backwash and load, not to disinfection or billing.",
+      "objective": "monitoring-records-troubleshooting"
     },
     {
       "id": "ceu-water-treatment-concepts-monitoring-records-troubleshooting-f5",
-      "objective": "escalation",
       "prompt": "A trend shows a sustained shift that the operator cannot explain. What is the best next step?",
       "choices": [
-        "Wait a week and see whether the trend corrects itself before taking any action at all",
+        "Wait it out",
         "Change the monitoring frequency so that the trend is less visible in the daily summary",
         "Average the readings over the whole shift, drop the outliers and move on to the next task on the list",
         "Record the trend and actions taken, then escalate to the supervisor with the data"
       ],
       "correctIndex": 3,
-      "explanation": "A sustained unexplained shift needs escalation with the evidence, not delay or a change that hides the trend."
+      "explanation": "A sustained unexplained shift needs escalation with the evidence, not delay or a change that hides the trend.",
+      "objective": "monitoring-records-troubleshooting"
     }
   ],
   "alternateFinalAssessment": [
     {
       "id": "ceu-water-treatment-concepts-source-and-train-a1",
-      "objective": "source-water",
       "prompt": "Which source is least likely to show rapid turbidity changes?",
       "choices": [
         "A shallow river intake",
@@ -799,24 +798,24 @@
         "A reservoir after storm inflow"
       ],
       "correctIndex": 2,
-      "explanation": "A deep, protected aquifer buffers the surface changes that drive turbidity in the other sources."
+      "explanation": "A deep, protected aquifer buffers the surface changes that drive turbidity in the other sources.",
+      "objective": "source-and-train"
     },
     {
       "id": "ceu-water-treatment-concepts-source-and-train-a2",
-      "objective": "source-water",
       "prompt": "Which description best matches surface water?",
       "choices": [
         "Water sealed from the surface with a steady temperature and no change from season to season",
         "Water that carries no organic matter and so never needs coagulation or filtration",
-        "Water that is always hard and clear, with no change in quality through the year",
+        "Water sealed from the surface",
         "Water exposed to air and runoff, with quality that can change quickly"
       ],
       "correctIndex": 3,
-      "explanation": "Surface water is exposed to runoff and air, so its quality can change quickly."
+      "explanation": "Surface water is exposed to runoff and air, so its quality can change quickly.",
+      "objective": "source-and-train"
     },
     {
       "id": "ceu-water-treatment-concepts-source-and-train-a3",
-      "objective": "source-water",
       "prompt": "What is the main advantage of a well compared with a river intake?",
       "choices": [
         "It often has lower turbidity",
@@ -825,24 +824,24 @@
         "It requires no disinfection"
       ],
       "correctIndex": 0,
-      "explanation": "Wells are often filtered by the ground, so they usually have lower turbidity. They can still carry minerals and microbes."
+      "explanation": "Wells are often filtered by the ground, so they usually have lower turbidity. They can still carry minerals and microbes.",
+      "objective": "source-and-train"
     },
     {
       "id": "ceu-water-treatment-concepts-source-and-train-a4",
-      "objective": "treatment-train",
       "prompt": "Which steps together remove most suspended particles before filtration?",
       "choices": [
         "Disinfection with free chlorine applied at the end of the train",
         "Coagulation followed by sedimentation",
-        "Clearwell storage of finished water in the reservoir",
+        "Fluoridation",
         "Fluoridation of the finished water after the clearwell"
       ],
       "correctIndex": 1,
-      "explanation": "Coagulation makes particles clump and sedimentation removes the clumps, so most particles are gone before filtration."
+      "explanation": "Coagulation makes particles clump and sedimentation removes the clumps, so most particles are gone before filtration.",
+      "objective": "source-and-train"
     },
     {
       "id": "ceu-water-treatment-concepts-source-and-train-a5",
-      "objective": "treatment-train",
       "prompt": "Which step usually comes last in a surface water train before the clearwell?",
       "choices": [
         "Screening",
@@ -851,11 +850,11 @@
         "Source intake"
       ],
       "correctIndex": 2,
-      "explanation": "Disinfection is usually applied after filtration, just before water goes into storage."
+      "explanation": "Disinfection is usually applied after filtration, just before water goes into storage.",
+      "objective": "source-and-train"
     },
     {
       "id": "ceu-water-treatment-concepts-coagulation-sedimentation-a1",
-      "objective": "coagulation",
       "prompt": "Which pair describes a common coagulant and its family?",
       "choices": [
         "Chlorine gas and a disinfectant",
@@ -864,63 +863,63 @@
         "Ferric chloride and an iron salt"
       ],
       "correctIndex": 3,
-      "explanation": "Ferric chloride is an iron salt used as a coagulant. The other pairs are not coagulants."
+      "explanation": "Ferric chloride is an iron salt used as a coagulant. The other pairs are not coagulants.",
+      "objective": "coagulation-sedimentation"
     },
     {
       "id": "ceu-water-treatment-concepts-coagulation-sedimentation-a2",
-      "objective": "coagulation",
       "prompt": "What does a sweep-floc mechanism rely on?",
       "choices": [
         "Metal hydroxide precipitates that trap particles as they form",
         "Chlorine that binds directly to the particles and makes them sink to the bottom",
         "Ultraviolet light breaking particles apart so they settle more quickly in the basin",
-        "Filters that catch the clumps before they reach the sedimentation basin at all"
+        "Chlorine that binds to flocs"
       ],
       "correctIndex": 0,
-      "explanation": "In sweep floc, the precipitates form a web that traps particles as they settle out."
+      "explanation": "In sweep floc, the precipitates form a web that traps particles as they settle out.",
+      "objective": "coagulation-sedimentation"
     },
     {
       "id": "ceu-water-treatment-concepts-coagulation-sedimentation-a3",
-      "objective": "coagulation",
       "prompt": "What is a typical result of too much coagulant?",
       "choices": [
-        "Lower sludge production because the particles are removed before they settle",
+        "Lower sludge production",
         "Poor settling, restabilised particles, and more sludge",
         "Faster settling as a rule, because the floc becomes heavier and denser in the basin",
         "Less need for filtration, since the basin removes almost everything in one step"
       ],
       "correctIndex": 1,
-      "explanation": "Excess coagulant can restabilise particles and add sludge, so settling can get worse."
+      "explanation": "Excess coagulant can restabilise particles and add sludge, so settling can get worse.",
+      "objective": "coagulation-sedimentation"
     },
     {
       "id": "ceu-water-treatment-concepts-coagulation-sedimentation-a4",
-      "objective": "flocculation",
       "prompt": "Why are tapered flocculation stages used in some plants?",
       "choices": [
         "To increase the chlorine residual in the water as it moves through the stages",
-        "To heat the water so that the coagulant dissolves more readily in the basin",
+        "To heat the water",
         "To reduce mixing energy as floc grows, so it is not broken",
         "To remove taste and odour compounds before the water reaches the sedimentation basin"
       ],
       "correctIndex": 2,
-      "explanation": "Tapered stages lower the mixing energy as the floc gets bigger, which protects the floc from breaking."
+      "explanation": "Tapered stages lower the mixing energy as the floc gets bigger, which protects the floc from breaking.",
+      "objective": "coagulation-sedimentation"
     },
     {
       "id": "ceu-water-treatment-concepts-coagulation-sedimentation-a5",
-      "objective": "sedimentation",
       "prompt": "What does a sludge blanket indicate in a clarifier?",
       "choices": [
         "A layer of oil that floats on the surface of the basin and must be skimmed off",
         "The depth of the filter media in the filter beds, measured from the top surface",
-        "A layer of chlorine gas that rises from the basin's outlet channel and weir",
+        "A layer of oil",
         "A layer of settled solids that water passes through"
       ],
       "correctIndex": 3,
-      "explanation": "A sludge blanket is a layer of settled solids. If it rises too high, floc can be carried over the weirs."
+      "explanation": "A sludge blanket is a layer of settled solids. If it rises too high, floc can be carried over the weirs.",
+      "objective": "coagulation-sedimentation"
     },
     {
       "id": "ceu-water-treatment-concepts-filtration-disinfection-a1",
-      "objective": "filtration",
       "prompt": "Which media is commonly used in a granular filter?",
       "choices": [
         "Anthracite and sand",
@@ -929,124 +928,125 @@
         "Ion-exchange beads"
       ],
       "correctIndex": 0,
-      "explanation": "Anthracite and sand are common granular media. The other items are not filter media in a typical plant."
+      "explanation": "Anthracite and sand are common granular media. The other items are not filter media in a typical plant.",
+      "objective": "filtration-disinfection"
     },
     {
       "id": "ceu-water-treatment-concepts-filtration-disinfection-a2",
-      "objective": "filtration",
       "prompt": "What is the main purpose of a filter's underdrain?",
       "choices": [
         "To add chemicals to the water as it passes through the filter media bed",
         "To collect filtered water and support the media evenly",
         "To measure the turbidity of the water leaving the filter at the outlet",
-        "To dewater the sludge so that it can be hauled away as a solid cake"
+        "To measure turbidity"
       ],
       "correctIndex": 1,
-      "explanation": "The underdrain collects filtered water and supports the media, and it also distributes the backwash flow."
+      "explanation": "The underdrain collects filtered water and supports the media, and it also distributes the backwash flow.",
+      "objective": "filtration-disinfection"
     },
     {
       "id": "ceu-water-treatment-concepts-filtration-disinfection-a3",
-      "objective": "filtration",
       "prompt": "Why do operators watch the turbidity of each filter?",
       "choices": [
         "To set the chlorine dose for the whole plant and the clearwell at once",
         "To set the sludge removal rate on the sedimentation basin for each shift",
         "To detect breakthrough and check filter performance",
-        "To determine the pump speed for the high-service pumps at the outlet"
+        "To set the pump speed"
       ],
       "correctIndex": 2,
-      "explanation": "Filter turbidity is the direct check that the filter is removing particles and that breakthrough has not started."
+      "explanation": "Filter turbidity is the direct check that the filter is removing particles and that breakthrough has not started.",
+      "objective": "filtration-disinfection"
     },
     {
       "id": "ceu-water-treatment-concepts-filtration-disinfection-a4",
-      "objective": "disinfection",
       "prompt": "What is chlorine demand?",
       "choices": [
         "The chlorine already present in the supply as a residual in the distribution system",
-        "The chlorine stored in the pipes of the distribution system during low demand",
+        "The feed rate of the pump",
         "The feed rate of the chlorine pump, measured in pounds per day at the feed point",
         "The chlorine used up by reactions before a residual remains"
       ],
       "correctIndex": 3,
-      "explanation": "Demand is the chlorine that is consumed by reactions, so it has to be supplied before a residual can form."
+      "explanation": "Demand is the chlorine that is consumed by reactions, so it has to be supplied before a residual can form.",
+      "objective": "filtration-disinfection"
     },
     {
       "id": "ceu-water-treatment-concepts-filtration-disinfection-a5",
-      "objective": "disinfection",
       "prompt": "Why is the residual measured at the end of the train?",
       "choices": [
         "It shows how much disinfection capacity reaches the distribution system",
-        "It shows the filter run time and the head loss pattern across the filter bed",
+        "It replaces turbidity checks",
         "It sets the coagulant dose used in the rapid mix and the flocculation stages",
         "It replaces turbidity monitoring at the filter outlet so that turbidity is not needed"
       ],
       "correctIndex": 0,
-      "explanation": "The end-of-train residual shows what is left to protect the water as it moves into the system."
+      "explanation": "The end-of-train residual shows what is left to protect the water as it moves into the system.",
+      "objective": "filtration-disinfection"
     },
     {
       "id": "ceu-water-treatment-concepts-monitoring-records-troubleshooting-a1",
-      "objective": "monitoring",
       "prompt": "Why measure raw water temperature?",
       "choices": [
         "It sets the chlorine demand directly, so the residual can be read from it",
         "It affects coagulation and settling and can change the best dose",
-        "It determines the filter media size needed for the design flow rate",
+        "It sets chlorine demand",
         "It replaces pH measurement, since temperature gives the same information"
       ],
       "correctIndex": 1,
-      "explanation": "Temperature changes how coagulation and settling behave, which can change the dose that works best."
+      "explanation": "Temperature changes how coagulation and settling behave, which can change the dose that works best.",
+      "objective": "monitoring-records-troubleshooting"
     },
     {
       "id": "ceu-water-treatment-concepts-monitoring-records-troubleshooting-a2",
-      "objective": "monitoring",
       "prompt": "What does a control chart show?",
       "choices": [
-        "The price of the chemicals used at the plant over the past twelve months",
+        "The price of chemicals",
         "The layout of the plant, with each process and piece of equipment labelled",
         "Results over time against set limits, showing trends and shifts",
         "The age and training history of the operators on each shift at the plant"
       ],
       "correctIndex": 2,
-      "explanation": "A control chart plots results over time so that trends and shifts show before a limit is crossed."
+      "explanation": "A control chart plots results over time so that trends and shifts show before a limit is crossed.",
+      "objective": "monitoring-records-troubleshooting"
     },
     {
       "id": "ceu-water-treatment-concepts-monitoring-records-troubleshooting-a3",
-      "objective": "records",
       "prompt": "What should a shift log include?",
       "choices": [
         "Only the weather conditions for the shift, recorded at the start of each day",
         "Only the final readings taken just before the shift handover to the next operator",
-        "Only the names of the customers who called the plant during the shift",
+        "Only the weather",
         "Events, readings, actions taken and the operator's name"
       ],
       "correctIndex": 3,
-      "explanation": "A useful shift log records what happened, what was measured, what was done and who did it."
+      "explanation": "A useful shift log records what happened, what was measured, what was done and who did it.",
+      "objective": "monitoring-records-troubleshooting"
     },
     {
       "id": "ceu-water-treatment-concepts-monitoring-records-troubleshooting-a4",
-      "objective": "troubleshooting",
       "prompt": "The clearwell residual falls and the water age is high. What is a likely cause?",
       "choices": [
         "Low demand and long residence time let the residual decay",
         "High demand and short residence time, which keeps the water fresh in the tank",
         "Low temperature and high demand, which slows the decay of the residual in the tank",
-        "A blocked filter underdrain that stops filtered water reaching the clearwell"
+        "A blocked underdrain"
       ],
       "correctIndex": 0,
-      "explanation": "Long residence time at low demand gives the residual time to decay, so the residual falls."
+      "explanation": "Long residence time at low demand gives the residual time to decay, so the residual falls.",
+      "objective": "monitoring-records-troubleshooting"
     },
     {
       "id": "ceu-water-treatment-concepts-monitoring-records-troubleshooting-a5",
-      "objective": "escalation",
       "prompt": "Which information makes an escalation most useful?",
       "choices": [
         "A general feeling that something is wrong with the process at the plant",
         "The readings, the trend, what has already been done and what is needed",
         "Only the name of the equipment involved and the make of its control panel",
-        "A request for a meeting next week to discuss the problem with the team"
+        "A general feeling"
       ],
       "correctIndex": 1,
-      "explanation": "A useful escalation gives the evidence, the actions already taken and the support needed."
+      "explanation": "A useful escalation gives the evidence, the actions already taken and the support needed.",
+      "objective": "monitoring-records-troubleshooting"
     }
   ]
 }
