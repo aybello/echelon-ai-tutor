@@ -24,6 +24,8 @@ import { getTutorFailureMessage, isTutorDismissKey } from "@/lib/tutorInteractio
 import { useLearningActivitySession } from "@/hooks/useLearningActivitySession";
 import { TutorGuideMark } from "@/components/TutorGuideMark";
 import { readTutorStudyLocale } from "@shared/usStudyContext";
+import { useAssessmentActivity } from "@/hooks/useAssessmentActivity";
+import type { AssessmentActivityCapability } from "@shared/assessmentActivity";
 
 // ─── Inline AI Tutor for review mode ─────────────────────────────────────────
 
@@ -463,6 +465,22 @@ export default function MockExamShell({
   const recoveryKey = `echelon.mock.v1:${productKeyProp}:${user?.email ?? storedEmailForAccess ?? "guest"}`;
   const recoveryLoaded = useRef<string | null>(null);
 
+  // Browser access email is a draft namespace, never a verified learner identity.
+  const activityActorKey = user ? `user:${user.id}` : `local:${storedEmailForAccess ?? "guest"}`;
+  const currentActorRef = useRef(activityActorKey);
+  currentActorRef.current = activityActorKey;
+  const [activityTracking, setActivityTracking] = useState<AssessmentActivityCapability | null>(null);
+  const [trackingActorKey, setTrackingActorKey] = useState("");
+  const [trackingBankKey, setTrackingBankKey] = useState("");
+  const [activityRestored, setActivityRestored] = useState(false);
+  const [activityCompleted, setActivityCompleted] = useState(false);
+  const timeoutObservedRef = useRef<string | null>(null);
+  const { observe: observeActivity, retry: retryActivity, saveError: activitySaveError } = useAssessmentActivity(
+    !authLoading && trackingActorKey === activityActorKey && activityTracking?.tracking ? activityTracking : null,
+    activityActorKey,
+  );
+  const activityItemId = (question: ExamQuestion) => `${trackingBankKey}:${question.id}`;
+
   const [examState, setExamState] = useState<ExamState>(
     streamOptions && streamOptions.length > 0 ? "stream-select" : "intro"
   );
@@ -486,7 +504,8 @@ export default function MockExamShell({
     unscoredQuestionNums: number[];
   } | null>(null);
   const submitMock = trpc.exam.submitMock.useMutation({
-    onSuccess: result => {
+    onSuccess: (result, submitted) => {
+      if (submitted.sessionId !== sessionId || submitted.sessionToken !== sessionToken || trackingActorKey !== currentActorRef.current) return;
       const reviewByQuestion = new Map(result.review.map(item => [item.questionNum, item]));
       setQuestions(previous => previous.map(question => {
         const review = reviewByQuestion.get(question.id);
@@ -503,8 +522,19 @@ export default function MockExamShell({
       setReviewToken(result.reviewToken);
       resultSavedRef.current = true;
       setSaveStatus(result.persisted ? "saved" : "guest");
+      // Entering results or timer expiry is not completion. Only this final
+      // server acknowledgement finishes the supplemental assessment session.
+      if (!activityCompleted) {
+        observeActivity({ action: "completed" });
+        setActivityCompleted(true);
+      }
     },
-    onError: error => { resultSavedRef.current = false; setSaveError(error.message); setSaveStatus("error"); },
+    onError: (error, submitted) => {
+      if (submitted.sessionId !== sessionId || submitted.sessionToken !== sessionToken || trackingActorKey !== currentActorRef.current) return;
+      resultSavedRef.current = false;
+      setSaveError(error.message);
+      setSaveStatus("error");
+    },
   });
   const answered = answers.filter(a => a.selected !== null).length;
   const showPreviewGate =
@@ -518,12 +548,18 @@ export default function MockExamShell({
     startingRef.current = true;
     try {
       const issued = await startMock.mutateAsync({ courseKey: productKey, accessToken: storedAccessTokenForAccess });
+      if (currentActorRef.current !== activityActorKey) return;
       if (showProvinceSelector) {
         try { localStorage.setItem("echelon_province", selectedProvince); } catch {}
       }
       setSessionId(issued.sessionId);
       setSessionToken(issued.token);
       setSessionExamType(issued.examType);
+      setActivityTracking(issued.activityTracking?.tracking ? issued.activityTracking : null);
+      setTrackingActorKey(activityActorKey);
+      setTrackingBankKey(resolveCourseKey(productKey)?.questionBankKey ?? "");
+      setActivityRestored(false);
+      setActivityCompleted(false);
       setReviewToken(undefined);
       setPreviewSession(issued.preview);
       setLegacyDraft(false);
@@ -544,7 +580,7 @@ export default function MockExamShell({
     } catch (error) {
       toast.error(error instanceof Error ? error.message : "Could not start the exam. Please try again.");
     } finally { startingRef.current = false; }
-  }, [productKey, storedAccessTokenForAccess, showProvinceSelector, selectedProvince, startMock.mutateAsync]);
+  }, [productKey, storedAccessTokenForAccess, showProvinceSelector, selectedProvince, startMock.mutateAsync, activityActorKey]);
 
   const handleSubmit = useCallback(() => {
     if (timerRef.current) clearInterval(timerRef.current);
@@ -555,8 +591,18 @@ export default function MockExamShell({
   // Restore only this tab's exam for the same course and learner. No new
   // questions are selected and the wall-clock deadline survives a refresh.
   useEffect(() => {
-    if (authLoading || recoveryLoaded.current === recoveryKey) return;
-    recoveryLoaded.current = recoveryKey;
+    const identityRecoveryKey = `${recoveryKey}:${activityActorKey}`;
+    if (authLoading || recoveryLoaded.current === identityRecoveryKey) return;
+    if (recoveryLoaded.current !== null) {
+      // Never carry an in-memory exam or pending activity into another actor.
+      setActivityTracking(null);
+      setQuestions([]);
+      setAnswers([]);
+      setScoredResult(null);
+      setSessionToken("");
+      setExamState(streamOptions?.length ? "stream-select" : "intro");
+    }
+    recoveryLoaded.current = identityRecoveryKey;
     try {
       const raw = sessionStorage.getItem(recoveryKey);
       if (!raw) return;
@@ -573,6 +619,20 @@ export default function MockExamShell({
       if (streamOptions?.length && !restoredStream) return;
       const legacy = saved.version === 1;
       if (!legacy && (typeof saved.sessionToken !== "string" || !saved.sessionToken || typeof saved.sessionExamType !== "string")) return;
+      if (saved.trackingActorKey && saved.trackingActorKey !== activityActorKey) return;
+      // Old drafts have no observation history. Do not issue a replacement or
+      // replay their saved selections as imaginary first answers.
+      const tracking = saved.activityTracking;
+      const canRestoreTracking = !legacy && saved.trackingActorKey === activityActorKey
+        && tracking?.tracking === true && typeof tracking.capability === "string"
+        && typeof tracking.sessionId === "string" && Number.isInteger(tracking.nextSequence)
+        && typeof saved.trackingBankKey === "string"
+        && saved.trackingBankKey === resolveCourseKey(saved.streamKey ?? productKeyProp)?.questionBankKey;
+      setActivityTracking(canRestoreTracking ? tracking : null);
+      setTrackingActorKey(activityActorKey);
+      setTrackingBankKey(canRestoreTracking ? saved.trackingBankKey : "");
+      setActivityRestored(canRestoreTracking && saved.activityCompleted !== true);
+      setActivityCompleted(saved.activityCompleted === true);
       setLegacyDraft(legacy);
       setSessionToken(saved.sessionToken ?? "");
       setSessionExamType(saved.sessionExamType ?? "");
@@ -594,20 +654,32 @@ export default function MockExamShell({
       setSaveStatus(legacy ? "guest" : "idle");
       toast.info(legacy ? "Your previous answers are available for review. Start a new exam to save a new result." : "Your exam has been restored.");
     } catch { /* Storage may be unavailable or an old draft invalid. */ }
-  }, [recoveryKey, streamOptions, authLoading]);
+  }, [recoveryKey, streamOptions, authLoading, activityActorKey, productKeyProp]);
 
   useEffect(() => {
-    if (authLoading || recoveryLoaded.current !== recoveryKey || !["active", "results"].includes(examState) || !questions.length) return;
+    if (authLoading || recoveryLoaded.current !== `${recoveryKey}:${activityActorKey}` || trackingActorKey !== activityActorKey || !["active", "results"].includes(examState) || !questions.length) return;
     try {
       sessionStorage.setItem(recoveryKey, JSON.stringify({
         version: legacyDraft ? 1 : 2, updatedAt: Date.now(), sessionId, sessionToken, sessionExamType, reviewToken, previewSession, questions, answers, currentIdx, flagged,
+        activityTracking, trackingActorKey, trackingBankKey, activityCompleted,
         examState, timeLeft: finalTimeRef.current, deadline: deadlineRef.current, streamKey: selectedStream?.productKey,
         saved: saveStatus === "saved",
       }));
     } catch { /* Saving to the server remains available if local storage is full. */ }
   // The deadline is fixed. Timer ticks require no storage writes; answers,
   // navigation, flags and save status are persisted immediately for refresh.
-  }, [recoveryKey, sessionId, sessionToken, sessionExamType, reviewToken, previewSession, legacyDraft, questions, answers, currentIdx, flagged, examState, selectedStream, saveStatus, authLoading]);
+  }, [recoveryKey, sessionId, sessionToken, sessionExamType, reviewToken, previewSession, legacyDraft, questions, answers, currentIdx, flagged, examState, selectedStream, saveStatus, authLoading, activityTracking, trackingActorKey, trackingBankKey, activityCompleted, activityActorKey]);
+
+  useEffect(() => {
+    if (!activityRestored || !activityTracking || trackingActorKey !== activityActorKey || authLoading) return;
+    observeActivity({ action: "resumed" });
+    setActivityRestored(false);
+  }, [activityRestored, activityTracking, trackingActorKey, activityActorKey, authLoading, observeActivity]);
+
+  useEffect(() => {
+    if (examState !== "active" || showPreviewGate || activityCompleted || !questions[currentIdx] || !trackingBankKey) return;
+    observeActivity({ action: "item_presented", itemId: `${trackingBankKey}:${questions[currentIdx].id}` });
+  }, [examState, currentIdx, sessionId, trackingBankKey, showPreviewGate, activityCompleted, observeActivity]);
 
   useEffect(() => {
     if (examState !== "active" || showPreviewGate) return;
@@ -615,6 +687,10 @@ export default function MockExamShell({
       const remaining = Math.max(0, Math.ceil(((deadlineRef.current ?? Date.now()) - Date.now()) / 1000));
       setTimeLeft(remaining);
       if (remaining === 0) {
+        if (timeoutObservedRef.current !== sessionId && questions[currentIdx] && trackingBankKey) {
+          timeoutObservedRef.current = sessionId;
+          observeActivity({ action: "timed_out", itemId: `${trackingBankKey}:${questions[currentIdx].id}` });
+        }
         if (timerRef.current) clearInterval(timerRef.current);
         finalTimeRef.current = 0;
         setExamState("results");
@@ -623,7 +699,7 @@ export default function MockExamShell({
     tick();
     timerRef.current = setInterval(tick, 1000);
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
-  }, [examState, showPreviewGate]);
+  }, [examState, showPreviewGate, sessionId, currentIdx, trackingBankKey, observeActivity]);
 
   const results = useMemo(() => {
     if (examState !== "results" || questions.length === 0) return null;
@@ -925,6 +1001,9 @@ export default function MockExamShell({
             {saveStatus === "error" && <><span>{saveError || "Your result could not be saved."} Your answers are kept in this tab. </span>
               <button onClick={saveResult}>Retry saving result</button></>}
           </div>
+          {activitySaveError && <p role="status" style={{ color: "#92400E", fontSize: 12 }}>
+            Some learning activity has not saved. Your exam result is separate. <button onClick={() => void retryActivity()}>Retry activity save</button>
+          </p>}
           {/* Score hero */}
           <div style={{
             background: passed
@@ -1028,7 +1107,12 @@ export default function MockExamShell({
                     )}
                     <div style={{ fontSize: 12, color: "#059669", fontWeight: 600, marginBottom: q.explanation ? 4 : 0 }}>✓ {q.options[q.correct!].replace(/^[A-Da-d][.):]\s*/, "")}</div>
                     {q.explanation && (
-                      <div style={{ fontSize: 12, color: "#64748B", lineHeight: 1.5, whiteSpace: "pre-line", marginBottom: 4 }}>{q.explanation}</div>
+                      <details onToggle={event => {
+                        if (event.currentTarget.open) observeActivity({ action: "explanation_opened", itemId: activityItemId(q) });
+                      }} style={{ fontSize: 12, color: "#64748B", lineHeight: 1.5, marginBottom: 4 }}>
+                        <summary style={{ cursor: "pointer", fontWeight: 600 }}>Show explanation</summary>
+                        <div style={{ whiteSpace: "pre-line" }}>{q.explanation}</div>
+                      </details>
                     )}
                     {(!isCorrect || wasSkipped) && (
                       <ReviewAITutor q={q} userAnswerIdx={wasSkipped ? null : (a.selected ?? null)} examType={productKey} sessionToken={sessionToken} reviewToken={reviewToken} />
@@ -1164,6 +1248,9 @@ export default function MockExamShell({
         </div>
       </div>
 
+      {activitySaveError && <p role="status" style={{ maxWidth: 1100, margin: "12px auto", padding: "0 20px", color: "#92400E", fontSize: 12 }}>
+        Some learning activity has not saved. You can keep answering. <button onClick={() => void retryActivity()}>Retry activity save</button>
+      </p>}
       <div className="mes-active-grid" style={{ maxWidth: 1100, margin: "0 auto", padding: "24px 20px 80px", display: "grid", gridTemplateColumns: "1fr 220px", gap: 20, alignItems: "start" }}>
         {/* Question card */}
         <div className="mes-question-card" style={{ background: "#fff", borderRadius: 16, padding: "28px 28px 24px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
@@ -1188,7 +1275,13 @@ export default function MockExamShell({
                   key={i}
                   className="mes-option-btn"
                   aria-pressed={isSelected}
-                  onClick={() => setAnswers(prev => prev.map((a, idx) => idx === currentIdx ? { ...a, selected: i } : a))}
+                  onClick={() => {
+                    if (isSelected || showPreviewGate) return;
+                    // The alias is the original bank option index, not its shuffled
+                    // display letter. Revisions remain observations, never scored retries.
+                    observeActivity({ action: answers[currentIdx]?.selected == null ? "answer_submitted" : "selection_changed", itemId: activityItemId(currentQ), chosenAnswer: String(i) });
+                    setAnswers(prev => prev.map((a, idx) => idx === currentIdx ? { ...a, selected: i } : a));
+                  }}
                   style={{
                     padding: "14px 18px", borderRadius: 12, textAlign: "left",
                     border: `2px solid ${isSelected ? accentColor : "#E2E8F0"}`,

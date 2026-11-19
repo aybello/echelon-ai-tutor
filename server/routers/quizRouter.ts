@@ -1,4 +1,6 @@
 import { readCourseLearnerProfile, readOverallLearnerActivity } from "../courseLearnerProfile";
+import { issueAssessmentActivity } from "../assessmentActivity";
+import type { AssessmentActivityIssue } from "../../shared/assessmentActivity";
 import { latestPracticeAttemptValue } from "../practiceReviewEligibility";
 import { practiceOperationHash, savePracticeAttempt } from "../practiceAttemptStore";
 import { resolveAttemptAttribution, validateIssuedAttribution } from "../teams/attemptAttribution";
@@ -210,7 +212,16 @@ const questionWorkingSetInput = z.object({
   bankKey: z.string().min(1).max(64),
   accessToken: z.string().optional(),
   previewSurface: z.enum(["practice", "flashcards", "mock"]).optional(),
+  activityTimed: z.boolean().optional(),
 });
+
+/** Exact server-delivered choices; worked solutions are display-only, not learner steps. */
+export function practiceActivityItems(delivered: { id: number; question: string; options: string[]; topic?: string; module: string }[]): AssessmentActivityIssue["items"] {
+  return delivered.map(question => ({
+    id: String(question.id), prompt: question.question, topic: question.topic ?? question.module,
+    options: question.options.map((text, index) => ({ id: String(index), text })), steps: [],
+  }));
+}
 
 // One resolver preserves the exact entitlement, sampling, projection, and receipt
 // behavior for the legacy query and allowed interactive POST requests.
@@ -284,7 +295,11 @@ async function questionWorkingSet({ input, ctx }: {
   const issuedIdentity = await resolveLearningIdentity(actor.context);
   const attribution = hasAccess ? await resolveAttemptAttribution(issuedIdentity, course.courseKey) : undefined;
   const attemptToken = await issuePracticeReceipt(course.questionBankKey, parsed.map(q => q.id), actor.owner, !hasAccess, attribution);
-  return { questions: parsed.map(q => ({ ...q, attemptToken })), locked: !hasAccess, total, trialLimit: previewLimit };
+  // Flashcards, mock metadata and interactive fallback are not practice assessments.
+  const activityTracking = !privilegedInteractiveAccess && (input.previewSurface ?? "practice") === "practice"
+    ? await issueAssessmentActivity(ctx, { courseKey: course.courseKey, mode: "practice", timed: input.activityTimed ?? null, items: practiceActivityItems(parsed) }, attribution)
+    : { tracking: false as const };
+  return { questions: parsed.map(q => ({ ...q, attemptToken, activityTracking })), activityTracking, locked: !hasAccess, total, trialLimit: previewLimit };
 }
 
 export const quizRouter = router({
@@ -315,6 +330,7 @@ export const quizRouter = router({
       difficulty: z.enum(["all", "easy", "medium", "hard"]).default("all"),
       reviewMode: z.enum(["standard", "missed", "bookmarked", "low-confidence"]).default("standard"),
       accessToken: z.string().optional(),
+      activityTimed: z.boolean().optional(),
     }))
     .query(async ({ input, ctx }) => {
       const db = await getDb();
@@ -376,7 +392,8 @@ export const quizRouter = router({
       const issuedIdentity = await resolveLearningIdentity(actor.context);
       const attribution = hasAccess ? await resolveAttemptAttribution(issuedIdentity, course.courseKey) : undefined;
       const attemptToken = await issuePracticeReceipt(course.questionBankKey, parsed.map(q => q.id), actor.owner, !hasAccess, attribution);
-      return { questions: parsed.map(q => ({ ...q, attemptToken })), locked: !hasAccess, total: Number(counts.total), hasMore: rows.length === input.limit, topicUnavailable };
+      const activityTracking = await issueAssessmentActivity(ctx, { courseKey: course.courseKey, mode: "practice", timed: input.activityTimed ?? null, items: practiceActivityItems(parsed) }, attribution);
+      return { questions: parsed.map(q => ({ ...q, attemptToken, activityTracking })), activityTracking, locked: !hasAccess, total: Number(counts.total), hasMore: rows.length === input.limit, topicUnavailable };
     }),
 
   /**

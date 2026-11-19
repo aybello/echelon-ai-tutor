@@ -1,6 +1,11 @@
 import { issueGameCapability, recordGameActivity } from "../gameAnalytics";
 import { gameActivityInputSchema } from "../../shared/gameAnalytics";
 import { createHmac } from "node:crypto";
+import { z } from "zod";
+import { assessmentActivityAllowed, issueAssessmentActivity } from "../assessmentActivity";
+import { resolveVerifiedIdentity } from "../_core/accessService";
+import { PERSONAL_ATTRIBUTION, resolveAttemptAttribution } from "../teams/attemptAttribution";
+import type { AssessmentActivityIssue } from "../../shared/assessmentActivity";
 import { ENV } from "../_core/env";
 import { TRPCError } from "@trpc/server";
 import { getCourseByKey } from "../../shared/courseRegistry";
@@ -9,10 +14,42 @@ import {
   interactiveStartSessionInputSchema, interactiveSessionResponseSchema,
   interactiveProgressInputSchema, interactiveProgressResponseSchema,
   interactiveRecordResultsInputSchema, interactiveRecordResultsResponseSchema,
+  type InteractiveSessionResponse,
 } from "../../shared/interactiveSessions";
 import { acceptLocalDate, dueItemIds, learnerKeyFrom, readProgress, saveResults } from "../interactiveProgress";
 import { publicProcedure, router } from "../_core/trpc";
 import { getInteractiveContentEngine } from "../interactiveContent/engine/loader";
+
+const activityTrackingSchema = z.union([
+  z.object({ tracking: z.literal(true), sessionId: z.string().uuid(), capability: z.string().min(1).max(2048), nextSequence: z.number().int().min(2), expiresAt: z.string(), source: z.literal("observed") }).strict(),
+  z.object({ tracking: z.literal(false), recorded: z.literal(false), source: z.literal("observed") }).strict(),
+]);
+const trackedSessionResponseSchema = interactiveSessionResponseSchema.extend({ activityTracking: activityTrackingSchema.optional() });
+
+/** Stable aliases refer to original issued positions, never shuffled visual positions.
+ * Pair steps name the left item; their choices name each issued right item.
+ * No answer keys enter this supplemental snapshot or employer attribution.
+ */
+export function gameAssessmentIssue(session: InteractiveSessionResponse): AssessmentActivityIssue {
+  return {
+    courseKey: session.courseKey, mode: session.mode, timed: null, sourceSessionId: session.sessionId,
+    items: session.examples.map(item => {
+      const base = { id: item.id, title: `${session.mode} · content version ${session.version ?? "unavailable"}`, prompt: [item.prompt, item.instruction, "assumptions" in item ? item.assumptions : undefined].filter(Boolean).join("\n"), options: [] as { id: string; text: string }[], steps: [] as { id: string; label: string; options: { id: string; text: string }[] }[] };
+      if (item.mode === "speed-match") {
+        base.steps = item.pairs.map((pair, index) => ({ id: `pair:${index}`, label: pair.left, options: item.pairs.map((right, rightIndex) => ({ id: String(rightIndex), text: right.right })) }));
+      } else if ("effects" in item) {
+        base.steps = item.effects.map((effect, index) => ({ id: `effect:${index}`, label: effect.parameter, options: [
+          { id: "increase", text: "Increases" }, { id: "decrease", text: "Decreases" }, { id: "unchanged", text: "Unchanged" }, { id: "depends", text: "Depends" },
+        ] }));
+      } else if (item.mode === "rapid-swipe") base.options = [{ id: "no", text: "No" }, { id: "yes", text: "Yes" }];
+      else if (item.mode === "before-after") base.options = "options" in item
+        ? item.options.map((text, index) => ({ id: String(index), text }))
+        : [{ id: "before", text: "Before" }, { id: "after", text: "After" }];
+      else base.options = item.options.map((option, index) => ({ id: String(index), text: option.label }));
+      return base;
+    }),
+  };
+}
 
 const noStoreProcedure = publicProcedure.use(({ ctx, next }) => {
   // Runs before validation or content reads, including errors.
@@ -53,7 +90,7 @@ export const interactiveRouter = router({
     try { return getInteractiveContentEngine().getCatalog(course.courseKey, FULL_PUBLIC_GAME_ACCESS); }
     catch { return unavailable(); }
   }),
-  startSession: noStoreProcedure.input(interactiveStartSessionInputSchema).output(interactiveSessionResponseSchema).mutation(async ({ input, ctx }) => {
+  startSession: noStoreProcedure.input(interactiveStartSessionInputSchema).output(trackedSessionResponseSchema).mutation(async ({ input, ctx }) => {
     const course = canonicalCourse(input.courseKey);
     // Replay: due items for a signed-in learner go first. Any storage problem falls back to the normal random sample.
     let preferIds: string[] = [];
@@ -64,7 +101,27 @@ export const interactiveRouter = router({
     try {
       const session = getInteractiveContentEngine().startSession(input, FULL_PUBLIC_GAME_ACCESS, preferIds);
       const analyticsCapability = issueGameCapability(session, ctx, input.analyticsVisitorId);
-      return { ...session, ...(analyticsCapability ? { analyticsCapability } : {}) };
+      // Timer is a local choice made after delivery, so timing remains unknown rather than guessed.
+      let activityTracking: Awaited<ReturnType<typeof issueAssessmentActivity>> = { tracking: false, recorded: false, source: "observed" };
+      if (session.available && session.examples.length) {
+        try {
+          // Consent precedes attribution reads; public play never requires an entitlement.
+          if (assessmentActivityAllowed(ctx)) {
+            let attribution = { ...PERSONAL_ATTRIBUTION };
+            const identity = resolveVerifiedIdentity(ctx);
+            if (identity.type !== "anonymous") {
+              try {
+                attribution = await resolveAttemptAttribution({
+                  userId: identity.type === "oauth" ? identity.userId : null,
+                  studentEmail: identity.email,
+                }, session.courseKey);
+              } catch { /* Attribution failures retain learner-only tracking. */ }
+            }
+            activityTracking = await issueAssessmentActivity(ctx, gameAssessmentIssue(session), attribution);
+          }
+        } catch { /* Learning must remain available. */ }
+      }
+      return { ...session, ...(analyticsCapability ? { analyticsCapability } : {}), activityTracking };
     }
     catch { return unavailable(); }
   }),

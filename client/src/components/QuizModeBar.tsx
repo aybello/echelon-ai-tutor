@@ -4,7 +4,7 @@ import { toast } from "sonner";
  * Inspired by PocketPrep: icon cards in a horizontal row, not a floating pill bar.
  * Pass the return value of <QuizModeBar ... /> into QuizShell's `headerExtra` prop.
  */
-import { useState } from "react";
+import { useMemo } from "react";
 import { trpc } from "@/lib/trpc";
 import { enqueuePracticeSave, removePendingPracticeSave, type PendingPracticeSave } from "@/lib/practiceSaveOutbox";
 import { notifyPracticeSave, useVerifiedPracticeSaveScope } from "./PracticeSaveStatus";
@@ -183,15 +183,14 @@ export default function QuizModeBar({
 }
 
 // ─── Attempt Logger ───────────────────────────────────────────────────────────
-export function useAttemptLogger(examType: string, quizMode: QuizMode = "standard") {
+export function useAttemptLogger(examType: string, quizMode: QuizMode = "standard", roundKey: string | number = 0) {
   // A lost acknowledgement is ambiguous. Persist exact input and UUID before
   // the first send; recovery is an explicit action, never an automatic replay.
   const logAttempt = trpc.quiz.logAttempt.useMutation({ retry: false });
   const scope = useVerifiedPracticeSaveScope(examType);
-  // Issue Q: generate a stable UUID for this quiz session so all attempts
-  // from the same session share a sessionId. Initialized once per hook mount
-  // (i.e. once per quiz page load) and never changes during the session.
-  const [sessionId] = useState(() => crypto.randomUUID());
+  const actorKey = scope ? JSON.stringify(scope) : "unverified";
+  // New rounds and changed verified actors must never reuse a prior run UUID.
+  const sessionId = useMemo(() => crypto.randomUUID(), [examType, quizMode, roundKey, actorKey]);
 
   return function log(params: {
     questionId: number;
@@ -225,7 +224,7 @@ export function useAttemptLogger(examType: string, quizMode: QuizMode = "standar
       bankKey: params.bankKey ?? examType, quizMode, sessionId, confidence,
       bookmarked: params.bookmarked ?? false,
     };
-    void logAttempt.mutateAsync(request).then(result => {
+    return logAttempt.mutateAsync(request).then(result => {
         if (item && result.success) {
           let removed = !durable;
           if (durable) { try { removed = removePendingPracticeSave(window.localStorage, item.operationId); } catch { /* retain warning */ } }
@@ -234,9 +233,11 @@ export function useAttemptLogger(examType: string, quizMode: QuizMode = "standar
           if (item) notifyPracticeSave(item.scope, durable ? "Save not confirmed. The original answer is retained locally for explicit retry." : "Save not confirmed, and browser recovery storage is unavailable. Keep this page open.", item.operationId, !durable);
           toast.error("Answer save not confirmed. Local session score may differ from saved progress.");
         }
+        return result.success === true;
       }).catch(() => {
         if (item) notifyPracticeSave(item.scope, durable ? "Save not confirmed. The original attempt is retained locally; no automatic retry was made." : "Save not confirmed, and browser recovery storage is unavailable. Keep this page open.", item.operationId, !durable);
         toast.error("Answer save not confirmed. No automatic retry was made.");
+        return false;
       });
   };
 }

@@ -1,4 +1,5 @@
 import { readLearnerActivity, searchLearners } from "../adminLearnerActivity";
+import { adminAssessmentScope, learnerAssessmentDetailInput, readAssessmentDetails, readAssessmentSessions } from "../assessmentActivityRead";
 import { readGameActivity } from "../gameAnalytics";
 import { validateApprovalSteps } from "../questionApproval";
 import { TRPCError } from "@trpc/server";
@@ -68,6 +69,8 @@ const learnerSelection = z.union([
 export const adminRouter = router({
   learnerSearch: adminProcedure.input(z.object({ query: z.string().trim().min(3).max(320) }).strict()).query(({ input }) => searchLearners(input.query)),
   learnerActivity: adminProcedure.input(z.object({ learner: learnerSelection, days: z.union([z.literal(7), z.literal(30)]) }).strict()).query(({ input }) => readLearnerActivity(input.learner, input.days)),
+  learnerAssessments: adminProcedure.input(z.object({ learner: learnerSelection, days: z.union([z.literal(7), z.literal(30)]) }).strict()).query(({ input }) => readAssessmentSessions(adminAssessmentScope(input.learner), input.days)),
+  learnerAssessmentDetails: adminProcedure.input(learnerAssessmentDetailInput.extend({ learner: learnerSelection }).strict()).query(({ input }) => readAssessmentDetails(adminAssessmentScope(input.learner), input)),
   gameActivity: adminProcedure.input(z.object({ days: z.union([z.literal(7), z.literal(30)]) }).strict()).query(({ input }) => readGameActivity(input.days)),
   getCeuKpis: adminProcedure.query(async () => {
     const db = await getDb();

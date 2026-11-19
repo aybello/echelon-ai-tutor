@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { trpc } from "@/lib/trpc";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { useAssessmentActivity } from "@/hooks/useAssessmentActivity";
 import { toast } from "sonner";
 import { useAuth } from "@/_core/hooks/useAuth";
 import {
@@ -72,14 +73,23 @@ function ActivationFlow({ auth, oauth }: {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<number, number>>({});
   const [diagnosticSessionId, setDiagnosticSessionId] = useState<string>(() => crypto.randomUUID());
+  // Fresh delivery on mount/restart: never reuse a cached capability's sequence
+  // cursor or turn saved local answers into fictional earlier observations.
+  const [diagnosticDeliveryId, setDiagnosticDeliveryId] = useState<string>(() => crypto.randomUUID());
   const [draftReadyKey, setDraftReadyKey] = useState<string | null>(null);
   const [draftSaved, setDraftSaved] = useState(true);
   const [resumedDraft, setResumedDraft] = useState(false);
   const restoredDraftKeyRef = useRef<string | null>(null);
+  const presentedRef = useRef<string | null>(null);
+  const resumeObservedRef = useRef<string | null>(null);
 
   const questions = trpc.activation.diagnosticQuestions.useQuery(
-    { courseKey },
-    { enabled: step === "diagnostic" && !!courseKey, retry: false },
+    { courseKey, deliveryId: diagnosticDeliveryId },
+    { enabled: step === "diagnostic" && !!courseKey, retry: false, staleTime: Infinity, refetchOnWindowFocus: false, refetchOnReconnect: false },
+  );
+  const activity = useAssessmentActivity(
+    questions.data?.activityTracking?.tracking ? questions.data.activityTracking : null,
+    resolveDiagnosticDraftIdentity(oauth.user?.id, auth.data?.email) ?? "anonymous",
   );
   const saveProfile = trpc.activation.saveProfile.useMutation({
     onSuccess: () => {
@@ -89,7 +99,10 @@ function ActivationFlow({ auth, oauth }: {
     onError: error => toast.error(error.message),
   });
   const submitDiagnostic = trpc.activation.submitDiagnostic.useMutation({
-    onSuccess: () => {
+    onSuccess: (data, submitted) => {
+      // A previous baseline can be returned by canonical replay protection.
+      // Only this run's actual acknowledged finish is a completion observation.
+      activity.observe({ action: data.sessionId === submitted.sessionId ? "completed" : "abandoned" });
       const scope = diagnosticDraftScope;
       if (scope) clearDiagnosticDraft(draftStorage, scope, diagnosticSessionId);
       if (verifiedLegacyScope) clearDiagnosticDraft(draftStorage, verifiedLegacyScope, diagnosticSessionId);
@@ -172,6 +185,21 @@ function ActivationFlow({ auth, oauth }: {
   const result = submitDiagnostic.data ?? status.data?.diagnostic ?? null;
   const currentQuestion = questions.data?.questions[questionIndex];
   const currentAnswer = currentQuestion ? answers[currentQuestion.id] : undefined;
+  const activitySessionId = questions.data?.activityTracking?.tracking ? questions.data.activityTracking.sessionId : null;
+  useEffect(() => {
+    if (step !== "diagnostic" || diagnosticCompleted || !currentQuestion || !diagnosticDraftKey || draftReadyKey !== diagnosticDraftKey || !activitySessionId) return;
+    if (resumedDraft && resumeObservedRef.current !== activitySessionId) {
+      resumeObservedRef.current = activitySessionId;
+      // This is a real browser resume in a NEW observed segment. Saved answers
+      // are not replayed as first answers, and earlier time remains unknown.
+      activity.observe({ action: "resumed" });
+    }
+    const presentation = `${activitySessionId}:${currentQuestion.id}`;
+    if (presentedRef.current !== presentation) {
+      presentedRef.current = presentation;
+      activity.observe({ action: "item_presented", itemId: String(currentQuestion.id) });
+    }
+  }, [step, diagnosticCompleted, currentQuestion, diagnosticDraftKey, draftReadyKey, activitySessionId, resumedDraft, activity.observe]);
   const activeStep = step === "profile" ? 0 : step === "diagnostic" ? 1 : step === "result" ? 2 : 0;
   const todayPlanHref = useMemo(() => {
     const quizPath = status.data?.course.quizPath ?? "/dashboard";
@@ -187,6 +215,14 @@ function ActivationFlow({ auth, oauth }: {
       sessionMinutes,
       confidence,
     });
+  };
+
+  const selectDiagnosticAnswer = (index: number) => {
+    if (!currentQuestion || diagnosticCompleted || submitDiagnostic.isPending || currentAnswer === index) return;
+    // Option clicks are observed selections/revisions, not verified correctness
+    // or scored learning retries. Original option indices match issued aliases.
+    activity.observe({ action: "answer_submitted", itemId: String(currentQuestion.id), chosenAnswer: String(index) });
+    setAnswers(previous => ({ ...previous, [currentQuestion.id]: index }));
   };
 
   const finishDiagnostic = () => {
@@ -205,11 +241,13 @@ function ActivationFlow({ auth, oauth }: {
 
   const restartDiagnostic = () => {
     if (diagnosticCompleted) return;
+    activity.observe({ action: "abandoned" });
     if (verifiedLegacyScope) clearDiagnosticDraft(draftStorage, verifiedLegacyScope, diagnosticSessionId);
     if (diagnosticDraftScope) clearDiagnosticDraft(draftStorage, diagnosticDraftScope, diagnosticSessionId);
     setAnswers({});
     setQuestionIndex(0);
     setDiagnosticSessionId(crypto.randomUUID());
+    setDiagnosticDeliveryId(crypto.randomUUID());
     setResumedDraft(false);
   };
 
@@ -328,6 +366,7 @@ function ActivationFlow({ auth, oauth }: {
             <CardContent className="p-6 sm:p-8">
               {resumedDraft && <div role="status" className="mb-4 text-sm text-blue-800">Resumed your diagnostic on this browser. <button type="button" disabled={submitDiagnostic.isPending} onClick={restartDiagnostic} className="underline">Restart diagnostic</button></div>}
               <p className="mb-4 text-xs text-slate-500">{draftSaved ? "Unfinished answers are saved on this browser only, not across devices." : "Unfinished answers could not be saved on this browser. This session may have ended in another tab, or storage is unavailable. Keep this page open; leaving or refreshing may lose this tab's work."}</p>
+              {activitySessionId && <p className="mb-4 text-xs text-slate-500">With activity tracking enabled, question views and answer selections are recorded separately from your final baseline. Earlier browser-only work is not reconstructed.</p>}
               {questions.isLoading ? (
                 <div className="flex min-h-72 items-center justify-center"><Loader2 className="h-8 w-8 animate-spin text-blue-700" /></div>
               ) : questions.error ? (
@@ -338,7 +377,7 @@ function ActivationFlow({ auth, oauth }: {
                   <h3 className="text-lg font-extrabold leading-8 text-slate-950 sm:text-xl">{currentQuestion.question}</h3>
                   <div className="mt-6 space-y-3">
                     {currentQuestion.options.map((option, index) => (
-                      <button key={index} type="button" onClick={() => setAnswers(previous => ({ ...previous, [currentQuestion.id]: index }))} className={`flex w-full items-start gap-3 rounded-xl border p-4 text-left transition ${currentAnswer === index ? "border-blue-700 bg-blue-50 ring-2 ring-blue-100" : "border-slate-200 bg-white hover:border-blue-300 hover:bg-slate-50"}`}>
+                      <button key={index} type="button" disabled={submitDiagnostic.isPending} onClick={() => selectDiagnosticAnswer(index)} className={`flex w-full items-start gap-3 rounded-xl border p-4 text-left transition ${currentAnswer === index ? "border-blue-700 bg-blue-50 ring-2 ring-blue-100" : "border-slate-200 bg-white hover:border-blue-300 hover:bg-slate-50"}`}>
                         <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-xs font-black ${currentAnswer === index ? "bg-blue-700 text-white" : "bg-slate-100 text-slate-600"}`}>{String.fromCharCode(65 + index)}</span>
                         <span className="pt-0.5 text-sm font-semibold leading-6 text-slate-800">{option}</span>
                       </button>
@@ -410,6 +449,12 @@ function ActivationFlow({ auth, oauth }: {
               <p className="text-xs leading-5 text-slate-500">{result.calibrationNote}</p>
               <Button asChild variant="outline"><Link href={`/dashboard?course=${encodeURIComponent(courseKey)}`}>Open My Study Plan</Link></Button>
             </div>
+          </div>
+        )}
+        {activity.saveError && (
+          <div role="status" className="mt-4 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
+            Some observed activity has not been saved. Your baseline scoring is unaffected.{" "}
+            <button type="button" onClick={() => void activity.retry()} className="font-semibold underline">Retry activity save</button>
           </div>
         )}
       </main>

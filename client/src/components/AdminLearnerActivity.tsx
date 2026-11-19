@@ -2,6 +2,7 @@ import { useState } from "react";
 import { trpc } from "@/lib/trpc";
 import { getCourseByKey } from "@shared/courseRegistry";
 import { LEARNER_ACTIVITY_COVERAGE, type LearnerOption } from "@shared/learnerActivity";
+import LearnerAssessmentDetails from "./LearnerAssessmentDetails";
 
 export default function AdminLearnerActivity() {
   const [draft, setDraft] = useState("");
@@ -53,6 +54,7 @@ export default function AdminLearnerActivity() {
         </ol>}
         <button type="button" className={button} disabled={activity.isFetching} onClick={() => void activity.refetch()}>{activity.isFetching ? "Refreshing…" : "Refresh learner activity"}</button>
       </>}
+      <LearnerAssessmentDetails key={`${selected.key}:${days}`} target={{ kind: "admin", learner: selected.selection }} days={days} />
     </div>}
   </section>;
 }

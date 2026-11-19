@@ -6,6 +6,7 @@ import { attemptCourseFilter, attemptIdentityFilter, flexActivityFilter } from "
  */
 import { z } from "zod";
 import { TRPCError } from "@trpc/server";
+import { flexAssessmentScope, learnerAssessmentDetailInput, readAssessmentDetails, readAssessmentSessions } from "../assessmentActivityRead";
 import { publicProcedure, router } from "../_core/trpc";
 import { stripe } from "../stripe/stripe";
 import { ENV } from "../_core/env";
@@ -132,6 +133,14 @@ function requireVerifiedOperator(
 
 // ── Router ───────────────────────────────────────────────────────────────────
 export const teamFlexRouter = router({
+  learnerAssessments: publicProcedure.input(z.object({ orgId: z.number().int().positive(), licenceId: z.number().int().positive(), days: z.union([z.literal(7), z.literal(30)]) }).strict()).query(async ({ ctx, input }) => {
+    await requireManagerOfOrg(ctx, input.orgId);
+    return readAssessmentSessions(await flexAssessmentScope(input.orgId, input.licenceId), input.days);
+  }),
+  learnerAssessmentDetails: publicProcedure.input(learnerAssessmentDetailInput.extend({ orgId: z.number().int().positive(), licenceId: z.number().int().positive() }).strict()).query(async ({ ctx, input }) => {
+    await requireManagerOfOrg(ctx, input.orgId);
+    return readAssessmentDetails(await flexAssessmentScope(input.orgId, input.licenceId), input);
+  }),
   checkoutIdentity: publicProcedure.query(({ ctx }) => ({ managerEmail: managerEmailForContext(ctx) || null })),
   // ─── Pricing info (public, no auth needed) ─────────────────────────────────
   getFlexPricing: publicProcedure

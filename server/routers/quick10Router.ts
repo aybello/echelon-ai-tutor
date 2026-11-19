@@ -26,9 +26,10 @@ import { learnerVisibleQuestionFilter } from "../questionGovernance";
 import { issuePracticeReceipt, practiceIdentity } from "../practiceQuestionReceipt";
 import { resolveAttemptAttribution } from "../teams/attemptAttribution";
 import { pickQuick10, type Quick10History } from "../quick10Selection";
+import { issueAssessmentActivity } from "../assessmentActivity";
 import {
   buildPreviewSample, learnerQuestionColumns, OIT_PREVIEW_CALC_MINIMUMS, parseLearnerQuestions,
-  previewLimitForRequest, previewRowsForBank, quizRouter,
+  previewLimitForRequest, previewRowsForBank, practiceActivityItems, quizRouter,
 } from "./quizRouter";
 
 const HISTORY_ROW_LIMIT = 20_000;
@@ -64,6 +65,7 @@ export const quick10Router = router({
     .input(z.object({
       courseKey: z.string().min(1).max(64).optional(),
       accessToken: z.string().max(8192).optional(),
+      questionCount: z.union([z.literal(1), z.literal(10)]).default(10),
     }).optional())
     .mutation(async ({ ctx, input }) => {
       const db = await getDb();
@@ -112,15 +114,17 @@ export const quick10Router = router({
         }
       }
 
-      const picks = pickQuick10(parsed.map(q => ({ questionNum: q.id, module: q.module, q })), history);
+      const picks = pickQuick10(parsed.map(q => ({ questionNum: q.id, module: q.module, q })), history).slice(0, input?.questionCount ?? 10);
       const attribution = hasAccess ? await resolveAttemptAttribution(issued, course.courseKey) : undefined;
       const attemptToken = await issuePracticeReceipt(course.questionBankKey, picks.map(p => p.question.q.id), actor.owner, !hasAccess, attribution);
+      const activityTracking = await issueAssessmentActivity(ctx, { courseKey: course.courseKey, mode: "quick10", timed: false, items: practiceActivityItems(picks.map(p => p.question.q)) }, attribution);
 
       return {
         courseKey: course.courseKey,
         courseName: course.displayName,
         locked: !hasAccess,
         attemptToken,
+        activityTracking,
         // Deliberately no correctIndex, explanation, steps or tip: those come back from quick10.answer.
         questions: picks.map(({ question }) => {
           const { id, module, topic, difficulty, cognitiveLevel, isCalc, question: text, options } = question.q;

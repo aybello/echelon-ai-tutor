@@ -1,4 +1,5 @@
 import { resolveAttemptAttribution, validateIssuedAttribution } from "./teams/attemptAttribution";
+import { issueAssessmentActivity } from "./assessmentActivity";
 import { persistedPartnershipInquiry } from "./partnershipInquiry";
 import { municipalProcurementRouter } from "./municipalProcurement";
 import { partnershipInquirySchema } from "../shared/partnershipInquiry";
@@ -55,6 +56,7 @@ import { electricianReviewRouter } from "./routers/electricianReviewRouter";
 import { ceuRouter } from "./routers/ceuRouter";
 import { trainingRouter } from "./routers/trainingRouter";
 import { interactiveRouter } from "./routers/interactiveRouter";
+import { assessmentActivityRouter } from "./routers/assessmentActivityRouter";
 import { sendContactEmail } from "./email";
 import { trackEvent } from "./analytics";
 import { resolveCourseKey } from "../shared/courseRegistry";
@@ -168,6 +170,7 @@ export const appRouter = router({
   flashcard: flashcardRouter,
   quiz: quizRouter,
   interactive: interactiveRouter,
+  assessmentActivity: assessmentActivityRouter,
   dashboard: dashboardRouter,
   quick10: quick10Router,
   magicLink: magicLinkRouter,
@@ -505,11 +508,24 @@ export const appRouter = router({
             isCalc: question.isCalc === true,
           })),
         });
+        const deliveredQuestions = selected.map(activeMockQuestion);
+        // Supplemental observations use only the exact display-safe delivery.
+        // No answer keys, worked steps, tips, or scoring classification are disclosed.
+        const activityTracking = await issueAssessmentActivity(ctx, {
+          courseKey: spec.courseKey, mode: "mock", timed: true,
+          sourceSessionId: issued.manifest.sessionId,
+          items: deliveredQuestions.map(question => ({
+            id: `${spec.bankKey}:${question.id}`, prompt: question.question,
+            topic: question.module,
+            options: question.options.map((text, index) => ({ id: String(index), text })),
+            steps: [],
+          })),
+        }, attribution);
         return {
           sessionId: issued.manifest.sessionId, token: issued.token,
           deadline: issued.manifest.deadline, duration: spec.duration,
           examType: spec.examType, preview,
-          questions: selected.map(activeMockQuestion),
+          questions: deliveredQuestions, activityTracking,
         };
       }),
 
@@ -521,16 +537,17 @@ export const appRouter = router({
         calcOnly: z.boolean().optional(), // filter to only Math Practice sessions
       }))
       .query(async ({ input, ctx }) => {
+        const { userId, studentEmail } = await resolveLearningIdentity(ctx);
+        // Guest results remain in the same-tab draft/result UI. A bare exam
+        // UUID is not authorization to read a verified learner's saved rows.
+        if (!userId && !studentEmail) return [];
         const db = await getDb();
         if (!db) return [];
 
-        const { userId, studentEmail } = await resolveLearningIdentity(ctx);
-        const identityCondition = userId || studentEmail
-          ? or(
-              userId ? eq(examResults.userId, userId) : undefined,
-              studentEmail ? eq(examResults.studentEmail, studentEmail) : undefined,
-            )!
-          : eq(examResults.sessionId, input.sessionId);
+        const identityCondition = or(
+          userId ? eq(examResults.userId, userId) : undefined,
+          studentEmail ? eq(examResults.studentEmail, studentEmail) : undefined,
+        )!;
 
         const conditions = [
           identityCondition,

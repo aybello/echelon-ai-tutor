@@ -472,7 +472,7 @@ export default function QuizShell({
         fired = true;
         if (timerRef.current) clearInterval(timerRef.current);
         onTimeUp?.();
-        toast.warning("\u23f1\ufe0f Time's up!", { description: "The question was auto-submitted.", duration: 3000 });
+        toast.warning("\u23f1\ufe0f Time's up!", { description: "Your selected answer was submitted, or the unanswered question counted as incorrect locally.", duration: 3000 });
       }
     }, 1000);
     return () => { if (timerRef.current) clearInterval(timerRef.current); };

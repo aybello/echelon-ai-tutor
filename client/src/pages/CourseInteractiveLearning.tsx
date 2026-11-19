@@ -1,10 +1,12 @@
 import { createGameReporter, gameAnalyticsVisitor } from "@/lib/gameAnalytics";
 import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { flushSync } from "react-dom";
+import { z } from "zod";
 import { onlineManager, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getQueryKey } from "@trpc/react-query";
 import { Link, useRoute, useSearch } from "wouter";
 import { DRILL_MODES, InteractiveDrill, type DrillMode, type DrillResult } from "@/components/InteractiveDrill";
+import { useAssessmentActivity } from "@/hooks/useAssessmentActivity";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { LOGOUT_EVENT_KEY } from "@/lib/logout";
 import { trpc } from "@/lib/trpc";
@@ -20,6 +22,13 @@ import {
 import { withUSStudyContext } from "@shared/usStudyContext";
 import "./InteractiveLearning.css";
 import "./CourseInteractiveLearning.css";
+
+// Keep the existing strict content wire boundary, recognizing only this additive
+// server-issued capability. It contains no browser-authored snapshot or identity.
+const trackedSessionResponseSchema = interactiveSessionResponseSchema.extend({ activityTracking: z.union([
+  z.object({ tracking: z.literal(true), sessionId: z.string().uuid(), capability: z.string().min(1).max(2048), nextSequence: z.number().int().min(2), expiresAt: z.string(), source: z.literal("observed") }).strict(),
+  z.object({ tracking: z.literal(false), recorded: z.literal(false), source: z.literal("observed") }).strict(),
+]).optional() });
 
 /** Keep only supported study context; never carry arbitrary query parameters. */
 function quizHref(course: CourseEntry, search: string): string {
@@ -150,7 +159,7 @@ function CoursePractice({ course }: { course: CourseEntry }) {
         const version = interactiveSessionResponseSchema.shape.version.safeParse((raw as { version: unknown }).version);
         if (version.success && version.data !== catalog?.version) throw new PracticeVersionMismatch("Practice release changed");
       }
-      const data = interactiveSessionResponseSchema.parse(raw);
+      const data = trackedSessionResponseSchema.parse(raw);
       if (data.courseKey !== course.courseKey || data.mode !== mode ||
           data.available !== catalog?.available || data.locked !== catalog?.locked ||
           data.filters.topicId !== (input.topicId ?? null) || data.filters.difficulty !== (input.difficulty ?? null) ||
@@ -294,6 +303,10 @@ function CoursePractice({ course }: { course: CourseEntry }) {
   const session = catalogReady && !missingFilter && Boolean(catalog?.available && catalogMode?.totalCount) &&
     !sessionQuery.isError && sessionQuery.fetchStatus === "idle" && !sessionQuery.isPending
     ? sessionQuery.data : undefined;
+  // Authority refresh unmounts the old game and retires its queue, even when a
+  // cookie sign-in changes identity without changing the local access token.
+  const activity = useAssessmentActivity(session?.activityTracking?.tracking ? session.activityTracking : null,
+    `${course.courseKey}:${authority.revision}`);
   useEffect(() => {
     if (!session || !focusNextRound.current) return;
     const heading = sessionElement.current?.querySelector<HTMLElement>(".interactive-drill__content h2");
@@ -324,7 +337,7 @@ function CoursePractice({ course }: { course: CourseEntry }) {
   } else {
     const drillKey = JSON.stringify([course.courseKey, authority.revision, session.version, session.mode, session.filters,
       locked ? 30 : timerSeconds, roundRevision, session.sessionId, sessionQuery.dataUpdatedAt]);
-    status = <div style={{ whiteSpace: "pre-line" }}><InteractiveDrill key={drillKey} examples={session.examples} selectedMode={mode} hideModeNavigation timerSeconds={locked ? 30 : timerSeconds} onNewRound={locked ? undefined : newRound} onResult={progress ? recordResult : undefined} onPlay={reportPlay} saveNote={progress ? saveNote : undefined} /></div>;
+    status = <div style={{ whiteSpace: "pre-line" }}><InteractiveDrill key={drillKey} examples={session.examples} selectedMode={mode} hideModeNavigation timerSeconds={locked ? 30 : timerSeconds} onNewRound={locked ? undefined : newRound} onResult={progress ? recordResult : undefined} onPlay={reportPlay} onActivity={activity.observe} saveNote={progress ? saveNote : undefined} /></div>;
   }
 
   return (
@@ -357,6 +370,8 @@ function CoursePractice({ course }: { course: CourseEntry }) {
         </div>}
         {catalog?.locked && <p className="course-interactive__preview">You’re practising with the available free preview. Course access determines which activities are available.</p>}
         {session && <p className="course-interactive__inventory">{session.examples.length} in this round · {session.totalAvailableCount} available with these filters · {replay && progress ? "replaying items due for review · " : ""}{saveNote}</p>}
+        {session?.activityTracking?.tracking && <p className="course-interactive__inventory" role="status">Optional learning activity records choices, retries and explanations shown, not verified scores or reading time. Anonymous play remains unnamed.</p>}
+        {activity.saveError && <p className="course-interactive__inventory" role="alert">Learning activity could not be confirmed saved. Your game score is unchanged. <button type="button" className="interactive-drill__secondary" onClick={() => void activity.retry()}>Retry activity save</button></p>}
         {status}
         <details className="course-interactive__settings-panel" open={settingsOpen} onToggle={event => setSettingsOpen(event.currentTarget.open)}>
           <summary>Round settings <small>{catalog?.locked ? "1 preview example" : `Up to ${sessionSize} activities`}</small></summary>
@@ -411,7 +426,7 @@ export default function CourseInteractiveLearning() {
           {course ? <details className="course-interactive__details">
             <summary>Practice details</summary>
             <p className="interactive-learning__description">All published game exercises are free to practise. No account or course purchase is required for these games.</p>
-            <p className="interactive-learning__note">If you are not signed in, your answers stay on this page and are not saved. When saved progress is available, signed-in learners can save results so due items can come back for review. The status below confirms whether answers were saved. Game results do not count toward quiz history or your readiness score. Switching activities or rechecking access resets your current round. Returning to this tab rechecks access and resets your round.</p>
+            <p className="interactive-learning__note">When optional learning activity recording is enabled, choices, retries and explanations shown may be recorded separately from saved game progress; anonymous play remains unnamed. When saved progress is available, signed-in learners can save results so due items can come back for review. The status below confirms whether game results were saved, and activity-save failures are shown separately. Game results and observed activity do not count toward quiz history or your readiness score. Switching activities or rechecking access resets your current round. Returning to this tab rechecks access and resets your round; this is not a saved-run resume.</p>
             <p>Exam practice, not operating instructions or regulatory advice.</p>
           </details> : <p className="interactive-learning__description">This course could not be found or is not currently active.</p>}
         </section>

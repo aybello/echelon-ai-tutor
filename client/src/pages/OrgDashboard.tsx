@@ -81,6 +81,7 @@ import { FlexLicencePanel } from "@/components/FlexLicencePanel";
 import "@/components/StudyWorkspace.css";
 import { filterRosterMembers, getOperatorStudyStage } from "@/lib/managerRoster";
 import { FlexProgressDashboard } from "@/components/FlexProgressDashboard";
+import LearnerAssessmentDetails, { FlexLearnerDrilldowns } from "@/components/LearnerAssessmentDetails";
 import ExamOutcomesPanel from "@/components/ExamOutcomesPanel";
 import { safeSupervisorCsvCell, supervisorNextAction } from "@shared/supervisorActionPlan";
 
@@ -201,6 +202,7 @@ export default function OrgDashboard() {
   const utils = trpc.useUtils();
 
   const [selectedOrgId, setSelectedOrgId] = useState<number | undefined>();
+  const [assessmentMember, setAssessmentMember] = useState<{ orgId: number; memberId: number; label: string } | null>(null);
   const organizationQuery = trpc.org.listManagedOrganizations.useQuery(undefined, { retry: false });
   const orgInput = { orgId: selectedOrgId };
   const orgChooser = organizationQuery.data && organizationQuery.data.length > 1 ? (
@@ -1131,6 +1133,12 @@ export default function OrgDashboard() {
 
         <section className="team-outcomes-report" data-view-active={managerView === "reports"}>
         {overview.orgId && <FlexProgressDashboard orgId={overview.orgId} />}
+        {overview.orgId && <FlexLearnerDrilldowns key={overview.orgId} orgId={overview.orgId} />}
+        {assessmentMember?.orgId === overview.orgId && <div className="mt-4">
+          <h3 className="font-semibold text-slate-800">Recorded learner activity · {assessmentMember.label}</h3>
+          <button type="button" className="workspace-text-link text-sm" onClick={() => setAssessmentMember(null)}>Close learner details</button>
+          <LearnerAssessmentDetails key={`${assessmentMember.orgId}:${assessmentMember.memberId}`} target={{ kind: "annual", orgId: assessmentMember.orgId, memberId: assessmentMember.memberId }} />
+        </div>}
         <div className="team-print-header">
           <div className="text-xs font-semibold uppercase tracking-[0.14em] text-blue-700">Echelon Institute</div>
           <h1 className="text-2xl font-bold text-slate-900 mt-1">{overview.orgName} — Learning Outcomes Report</h1>
@@ -1363,6 +1371,7 @@ export default function OrgDashboard() {
                           <td className="px-4 py-3">
                             <div className="font-medium text-slate-800">{op.name ?? op.email.split("@")[0]}</div>
                             <div className="text-xs text-slate-400">{op.email}</div>
+                            <button type="button" className="workspace-text-link text-xs mt-1" onClick={() => setAssessmentMember({ orgId: overview.orgId, memberId: op.id, label: op.name ?? op.email })}>View recorded learner actions</button>
                           </td>
                           <td className="px-4 py-3 text-xs text-slate-500">
                             {op.courseKey ? courseKeyToLabel(op.courseKey, overview.province) : "All Access"}

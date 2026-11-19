@@ -1709,3 +1709,55 @@ export const interactiveDailyActivity = mysqlTable("interactive_daily_activity",
 }, table => [
   uniqueIndex("ida_learner_day_unique").on(table.learnerKey, table.activityDate),
 ]);
+
+import { bigint } from "drizzle-orm/mysql-core";
+/** Supplemental observations; user, verified-email and anonymous namespaces never merge. */
+export const assessmentActivitySessions = mysqlTable("assessment_activity_sessions", {
+  sessionId: varchar("sessionId", { length: 36 }).primaryKey(),
+  actorHash: varchar("actorHash", { length: 64 }).notNull(),
+  identityKind: mysqlEnum("identityKind", ["user", "verified-email", "anonymous"]).notNull(),
+  userId: int("userId"),
+  emailHash: varchar("emailHash", { length: 64 }),
+  orgId: int("orgId"),
+  organizationMemberId: int("organizationMemberId"),
+  flexLicenceId: int("flexLicenceId"),
+  courseKey: varchar("courseKey", { length: 64 }).notNull(),
+  mode: varchar("mode", { length: 32 }).notNull(),
+  source: varchar("source", { length: 16 }).notNull().default("observed"),
+  sourceSessionId: varchar("sourceSessionId", { length: 80 }),
+  status: mysqlEnum("status", ["active", "completed", "abandoned"]).notNull().default("active"),
+  timed: boolean("timed"),
+  itemCount: int("itemCount").notNull(),
+  issuedItemsJson: mediumtext("issuedItemsJson").notNull(),
+  manifestHash: varchar("manifestHash", { length: 64 }).notNull(),
+  startedAt: bigint("startedAt", { mode: "number" }).notNull(),
+  lastObservedAt: bigint("lastObservedAt", { mode: "number" }).notNull(),
+  endedAt: bigint("endedAt", { mode: "number" }),
+  expiresAt: bigint("expiresAt", { mode: "number" }).notNull(),
+  activeSeconds: int("activeSeconds"), // NULL until reliable heartbeat exists; never wall-clock.
+  lastSequence: int("lastSequence").notNull().default(1),
+  eventCount: int("eventCount").notNull().default(1),
+}, table => [
+  index("aas_actor_started_idx").on(table.actorHash, table.startedAt),
+  index("aas_user_started_idx").on(table.userId, table.startedAt),
+  index("aas_email_started_idx").on(table.emailHash, table.startedAt),
+  index("aas_org_started_idx").on(table.orgId, table.startedAt),
+]);
+/** Insert-only events. UUID and monotonic sequence uniqueness are session-scoped. */
+export const assessmentActivityEvents = mysqlTable("assessment_activity_events", {
+  id: int("id").autoincrement().primaryKey(),
+  sessionId: varchar("sessionId", { length: 36 }).notNull(),
+  eventId: varchar("eventId", { length: 36 }).notNull(),
+  sequence: int("sequence").notNull(),
+  action: varchar("action", { length: 32 }).notNull(),
+  itemId: varchar("itemId", { length: 80 }),
+  stepId: varchar("stepId", { length: 80 }),
+  chosenAnswer: varchar("chosenAnswer", { length: 80 }),
+  observedCorrect: boolean("observedCorrect"),
+  source: varchar("source", { length: 16 }).notNull().default("observed"),
+  payloadHash: varchar("payloadHash", { length: 64 }).notNull(),
+  occurredAt: bigint("occurredAt", { mode: "number" }).notNull(),
+}, table => [
+  uniqueIndex("aae_session_event_unique").on(table.sessionId, table.eventId),
+  uniqueIndex("aae_session_sequence_unique").on(table.sessionId, table.sequence),
+]);

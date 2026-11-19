@@ -15,6 +15,7 @@
 
 import { z } from "zod";
 import { TRPCError } from "@trpc/server";
+import { annualAssessmentScope, learnerAssessmentDetailInput, readAssessmentDetails, readAssessmentSessions } from "../assessmentActivityRead";
 import { and, count, desc, eq, gte, inArray, lt, sql } from "drizzle-orm";
 import { randomBytes } from "crypto";
 import { publicProcedure, router } from "../_core/trpc";
@@ -1649,6 +1650,14 @@ export const orgIntelRouter = router({
   /**
    * getOperatorReadiness — per-operator readiness scores for the progress table.
    */
+  learnerAssessments: teamProcedure.input(z.object({ orgId: z.number().int().positive().optional(), memberId: z.number().int().positive(), days: z.union([z.literal(7), z.literal(30)]) }).strict()).query(async ({ ctx, input }) => {
+    const { orgId } = await resolveOrgManager(ctx);
+    return readAssessmentSessions(await annualAssessmentScope(orgId, input.memberId), input.days);
+  }),
+  learnerAssessmentDetails: teamProcedure.input(learnerAssessmentDetailInput.extend({ orgId: z.number().int().positive().optional(), memberId: z.number().int().positive() }).strict()).query(async ({ ctx, input }) => {
+    const { orgId } = await resolveOrgManager(ctx);
+    return readAssessmentDetails(await annualAssessmentScope(orgId, input.memberId), input);
+  }),
   getOperatorReadiness: teamProcedure.query(async ({ ctx }) => {
     const { orgId } = await resolveOrgManager(ctx);
     const db = await getDb();

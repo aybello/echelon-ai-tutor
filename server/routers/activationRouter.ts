@@ -23,6 +23,8 @@ import { trackEvent } from "../analytics";
 import { getDb } from "../db";
 import { learnerVisibleQuestionFilter } from "../questionGovernance";
 import { recordDiagnosticActivity } from "../learnerActivity";
+import { issueAssessmentActivity } from "../assessmentActivity";
+import { PERSONAL_ATTRIBUTION, resolveAttemptAttribution } from "../teams/attemptAttribution";
 
 type Identity = Awaited<ReturnType<typeof resolveLearningIdentity>>;
 
@@ -170,7 +172,8 @@ export const activationRouter = router({
     }),
 
   diagnosticQuestions: publicProcedure
-    .input(z.object({ courseKey: z.string().min(1).max(64) }))
+    // An opaque delivery key separates query caches/restarts, not actor or attempt authority.
+    .input(z.object({ courseKey: z.string().min(1).max(64), deliveryId: z.string().uuid().optional() }))
     .query(async ({ ctx, input }) => {
       const course = await resolveCourseForRequest(ctx, input.courseKey);
       const identity = await resolveLearningIdentity(ctx, course.courseKey);
@@ -215,7 +218,31 @@ export const activationRouter = router({
           orgId: identity.orgId,
         });
       }
-      return { courseKey: course.courseKey, courseName: course.displayName, questions: selected, total: selected.length };
+      // LearningIdentity intentionally omits Flex IDs. Read the existing unique,
+      // conservative authority again for tracking only; never rewrite entitlements
+      // or attribute a changed/ambiguous employer decision to this delivery.
+      let attribution = { ...PERSONAL_ATTRIBUTION };
+      try {
+        const resolved = await resolveAttemptAttribution(identity, course.courseKey);
+        if (resolved.orgId === identity.orgId && resolved.organizationMemberId === identity.organizationMemberId) {
+          attribution = resolved;
+        }
+      } catch { /* Supplemental attribution failures leave this run personal. */ }
+      const mode = attribution.orgId && attribution.organizationMemberId ? "team-diagnostic" as const
+        : attribution.orgId && attribution.flexLicenceId ? "flex-diagnostic" as const : "diagnostic" as const;
+      const activityTracking = await issueAssessmentActivity(ctx, {
+        courseKey: course.courseKey,
+        mode,
+        timed: false,
+        items: selected.map(question => ({
+          id: String(question.id),
+          prompt: question.question,
+          topic: question.module,
+          options: question.options.map((text, index) => ({ id: String(index), text })),
+          steps: [],
+        })),
+      }, attribution);
+      return { courseKey: course.courseKey, courseName: course.displayName, questions: selected, total: selected.length, activityTracking };
     }),
 
   submitDiagnostic: publicProcedure

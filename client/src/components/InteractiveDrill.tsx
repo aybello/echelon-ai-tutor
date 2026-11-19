@@ -1,4 +1,5 @@
 import type { GamePlayEvent } from "@shared/gameAnalytics";
+import type { AssessmentActivityEvent } from "@shared/assessmentActivity";
 import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 import type { PointerEvent } from "react";
 import { CAUSE_EFFECT_DIRECTION_LABELS, causeEffectDirections, scoreCauseEffect, type CauseEffectDirection, type CauseEffectEffect } from "@shared/interactiveCauseEffect";
@@ -103,9 +104,13 @@ export interface InteractiveDrillProps {
   onResult?: (result: DrillResult) => void;
   /** Course-game engagement only; independent of signed-in saved progress. */
   onPlay?: (event: GamePlayEvent) => void;
+  /** Supplemental observed actions; omitted for the unassigned introductory demo. */
+  onActivity?: (event: DrillActivity) => void;
   /** Replaces the "Practice · not saved" pill text, for example when results are being saved. */
   saveNote?: string;
 }
+
+export type DrillActivity = Pick<AssessmentActivityEvent, "action"> & Partial<Pick<AssessmentActivityEvent, "itemId" | "stepId" | "chosenAnswer" | "observedCorrect">>;
 
 /** One finished activity. For speed match, correct means every pair was matched without a wrong pick. */
 export interface DrillResult { exampleId: string; mode: DrillMode; correct: boolean }
@@ -193,12 +198,14 @@ interface ActivityProps {
   onNewRound?: () => void;
   onStartRound: () => void;
   onResult?: (result: DrillResult) => void;
+  onActivity?: (event: DrillActivity) => void;
+  onFinished?: () => void;
   saveNote?: string;
   timerSeconds: 30 | 60 | 90 | null;
   focusHeadingIfRequested: (heading: HTMLHeadingElement | null) => void;
 }
 
-function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewRound, onStartRound, onResult, saveNote, timerSeconds, focusHeadingIfRequested }: ActivityProps) {
+function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewRound, onStartRound, onResult, onActivity, onFinished, saveNote, timerSeconds, focusHeadingIfRequested }: ActivityProps) {
   const titleId = useId();
   const instructionId = useId();
   const [feedback, setFeedback] = useState<Feedback | null>(null);
@@ -216,6 +223,22 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewR
   const focusFeedback = useRef(false);
   const swipeStart = useRef<{ id: number; x: number; y: number; element: HTMLDivElement } | null>(null);
   const valid = isValidExample(example);
+
+  useEffect(() => {
+    let mounted = true;
+    // Parent's capability hook initializes after child effects. StrictMode's
+    // discarded mount must not manufacture another presentation.
+    queueMicrotask(() => { if (mounted && valid) onActivity?.({ action: "item_presented", itemId: example.id }); });
+    return () => { mounted = false; };
+  }, []);
+  useEffect(() => {
+    // Automatic worked feedback is shown, not evidence it was read. Pair-match
+    // nudges are not explanations; only the actual final explanation qualifies.
+    if (answered && feedback && (example.mode !== "speed-match" || example.explanation)) {
+      onActivity?.({ action: "explanation_opened", itemId: example.id });
+    }
+    if (answered) onFinished?.();
+  }, [answered]);
 
   useLayoutEffect(() => {
     focusHeadingIfRequested(headingRef.current);
@@ -242,13 +265,14 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewR
     }
   };
 
-  const answer = (correct: boolean, correctLabel: string, explanation: string, pickedKey?: string) => {
+  const answer = (correct: boolean, correctLabel: string, explanation: string, pickedKey?: string, answerAlias = pickedKey) => {
     if (answeredRef.current) return;
     answeredRef.current = true;
     focusFeedback.current = true;
     clearSwipe();
     setPicked(pickedKey ?? null);
     setOutcome(correct ? "correct" : "incorrect");
+    if (answerAlias !== undefined) onActivity?.({ action: "answer_submitted", itemId: example.id, chosenAnswer: answerAlias, observedCorrect: correct });
     onResult?.({ exampleId: example.id, mode: example.mode, correct });
     setFeedback({
       correct,
@@ -263,6 +287,7 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewR
     const score = scoreCauseEffect(example.effects, directions);
     answeredRef.current = true;
     focusFeedback.current = true;
+    example.effects.forEach((effect, effectIndex) => onActivity?.({ action: "step_answer", itemId: example.id, stepId: `effect:${effectIndex}`, chosenAnswer: directions[effect.id], observedCorrect: directions[effect.id] === effect.direction }));
     setOutcome(score.correct ? "correct" : "incorrect");
     onResult?.({ exampleId: example.id, mode: example.mode, correct: score.correct });
     setEffectResults(Object.fromEntries(score.results.map(result => [result.id, result.correct])));
@@ -325,6 +350,9 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewR
       return;
     }
     setSelected(null);
+    const leftId = side === "left" ? pairId : selected.pairId;
+    const rightId = side === "right" ? pairId : selected.pairId;
+    onActivity?.({ action: "step_answer", itemId: example.id, stepId: `pair:${example.pairs.findIndex(pair => pair.id === leftId)}`, chosenAnswer: String(example.pairs.findIndex(pair => pair.id === rightId)), observedCorrect: leftId === rightId });
     if (selected.pairId !== pairId) {
       wrongPairs.current += 1;
       setFeedback({ correct: false, text: "Those do not match. Try another pair." });
@@ -410,7 +438,7 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewR
               <button key={choice} type="button" data-state={choiceState(normalizeLabel(choice), normalizeLabel(example.correctAnswer))} disabled={answered} onClick={() => {
                 const correct = normalizeLabel(choice) === normalizeLabel(example.correctAnswer);
                 const correctLabel = (example.options ?? ["Before", "After"]).find(label => normalizeLabel(label) === normalizeLabel(example.correctAnswer)) ?? "";
-                answer(correct, correctLabel, example.explanation, normalizeLabel(choice));
+                answer(correct, correctLabel, example.explanation, normalizeLabel(choice), example.options ? String(example.options.indexOf(choice)) : normalizeLabel(choice));
               }}>{choice}</button>
             ))}
           </div>
@@ -425,7 +453,11 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewR
                 </p>
                 <div className="interactive-drill__options interactive-drill__options--directions">
                   {causeEffectDirections.map(direction => (
-                    <button key={direction} type="button" data-state={effectResults ? (direction === effect.direction ? "correct" : directions[effect.id] === direction ? "wrong" : undefined) : undefined} disabled={answered} aria-pressed={directions[effect.id] === direction} className={directions[effect.id] === direction ? "is-selected" : ""} onClick={() => setDirections(previous => ({ ...previous, [effect.id]: direction }))}>
+                    <button key={direction} type="button" data-state={effectResults ? (direction === effect.direction ? "correct" : directions[effect.id] === direction ? "wrong" : undefined) : undefined} disabled={answered} aria-pressed={directions[effect.id] === direction} className={directions[effect.id] === direction ? "is-selected" : ""} onClick={() => {
+                      if (answeredRef.current) return;
+                      onActivity?.({ action: "selection_changed", itemId: example.id, stepId: `effect:${example.effects.findIndex(item => item.id === effect.id)}`, chosenAnswer: direction });
+                      setDirections(previous => ({ ...previous, [effect.id]: direction }));
+                    }}>
                       <span aria-hidden="true">{DIRECTION_SYMBOLS[direction]} </span>{CAUSE_EFFECT_DIRECTION_LABELS[direction]}
                     </button>
                   ))}
@@ -437,7 +469,7 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewR
         ) : (
           <div className="interactive-drill__options" aria-describedby={instructionId}>
             {shuffleChoices(example.options, example.mode, example.id).map(option => (
-              <button key={option.id} type="button" data-state={choiceState(option.id, example.correctOptionId)} disabled={answered} onClick={() => answer(option.id === example.correctOptionId, example.options.find(item => item.id === example.correctOptionId)?.label ?? "", example.explanation, option.id)}>{option.label}</button>
+              <button key={option.id} type="button" data-state={choiceState(option.id, example.correctOptionId)} disabled={answered} onClick={() => answer(option.id === example.correctOptionId, example.options.find(item => item.id === example.correctOptionId)?.label ?? "", example.explanation, option.id, String(example.options.findIndex(item => item.id === option.id)))}>{option.label}</button>
             ))}
           </div>
         )}
@@ -447,7 +479,10 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewR
         <div className="interactive-drill__controls">
           <button type="button" className="interactive-drill__secondary" disabled={index === 0} onClick={onPrevious}>Previous</button>
           {index + 1 < count ? (
-            <button type="button" className="interactive-drill__primary" title={!answered ? "Continue without answering this activity" : undefined} onClick={onNext}>Next activity →</button>
+            <button type="button" className="interactive-drill__primary" title={!answered ? "Continue without answering this activity" : undefined} onClick={() => {
+              if (!answeredRef.current && !answered) onActivity?.({ action: "item_skipped", itemId: example.id });
+              onNext();
+            }}>Next activity →</button>
           ) : (
             <button type="button" className="interactive-drill__primary" onClick={onNewRound ?? onRestart}>{onNewRound ? "Next round →" : "Start again"}</button>
           )}
@@ -459,7 +494,7 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewR
 
 type RoundAnswer = { example: RapidSwipeExample; choice: boolean; correct: boolean };
 /** Timed rounds never invent material: they cycle through the supplied statements. */
-function RapidSwipeRound({ examples, onExit, timerSeconds, onResult, onComplete, saveNote }: { examples: readonly RapidSwipeExample[]; onExit: () => void; timerSeconds: 30 | 60 | 90; onResult?: (result: DrillResult) => void; onComplete?: () => void; saveNote?: string }) {
+function RapidSwipeRound({ examples, onExit, timerSeconds, onResult, onComplete, onActivity, saveNote }: { examples: readonly RapidSwipeExample[]; onExit: () => void; timerSeconds: 30 | 60 | 90; onResult?: (result: DrillResult) => void; onComplete?: () => void; onActivity?: (event: DrillActivity) => void; saveNote?: string }) {
   type Phase = "answer" | "feedback" | "finished";
   const [phase, setPhase] = useState<Phase>("answer");
   const [remaining, setRemaining] = useState<number>(timerSeconds);
@@ -477,6 +512,18 @@ function RapidSwipeRound({ examples, onExit, timerSeconds, onResult, onComplete,
   const titleId = useId();
   const swipeStart = useRef<{ id: number; x: number; y: number; element: HTMLDivElement } | null>(null);
   const current = phase === "feedback" && lastAnswer ? lastAnswer.example : examples[answers.length % examples.length];
+  const currentItem = useRef(current.id);
+  currentItem.current = current.id;
+
+  useEffect(() => {
+    let mounted = true;
+    queueMicrotask(() => {
+      if (!mounted) return;
+      if (phase === "answer") onActivity?.({ action: "item_presented", itemId: current.id });
+      else if (phase === "feedback" && lastAnswer) onActivity?.({ action: "explanation_opened", itemId: lastAnswer.example.id });
+    });
+    return () => { mounted = false; };
+  }, [phase, answers.length]);
 
   const clearSwipe = () => {
     const start = swipeStart.current;
@@ -498,11 +545,12 @@ function RapidSwipeRound({ examples, onExit, timerSeconds, onResult, onComplete,
     setRemaining(Math.ceil(state.left / 1000));
     return state.left;
   };
-  const finish = () => {
+  const finish = (timedOut = false) => {
     if (clock.current.phase === "finished") return;
     clock.current.phase = "finished";
     clock.current.started = null;
     clearSwipe();
+    if (timedOut) onActivity?.({ action: "timed_out", itemId: currentItem.current });
     setPhase("finished");
     onComplete?.();
   };
@@ -514,13 +562,13 @@ function RapidSwipeRound({ examples, onExit, timerSeconds, onResult, onComplete,
   }, [phase]);
   useEffect(() => {
     const tick = () => {
-      if (clock.current.phase === "answer" && settleClock() <= 0) finish();
+      if (clock.current.phase === "answer" && settleClock() <= 0) finish(true);
     };
     const onVisibilityChange = () => {
       const state = clock.current;
       if (state.phase !== "answer") return;
       if (document.hidden) {
-        if (settleClock() <= 0) { finish(); return; }
+        if (settleClock() <= 0) { finish(true); return; }
         state.started = null;
         clearSwipe();
       } else if (state.started === null) {
@@ -539,11 +587,12 @@ function RapidSwipeRound({ examples, onExit, timerSeconds, onResult, onComplete,
   const choose = (choice: boolean) => {
     const state = clock.current;
     if (state.phase !== "answer" || document.hidden || state.started === null) return;
-    if (settleClock() <= 0) { finish(); return; }
+    if (settleClock() <= 0) { finish(true); return; }
     state.phase = "feedback";
     state.started = null;
     clearSwipe();
     const correct = choice === current.correctAnswer;
+    onActivity?.({ action: "answer_submitted", itemId: current.id, chosenAnswer: choice ? "yes" : "no", observedCorrect: correct });
     onResult?.({ exampleId: current.id, mode: "rapid-swipe", correct });
     const result = { example: current, choice, correct };
     const nextStreak = correct ? streak + 1 : 0;
@@ -651,7 +700,7 @@ function RapidSwipeRound({ examples, onExit, timerSeconds, onResult, onComplete,
 }
 
 /** A local-only practice UI. Switching activities resets their temporary state. */
-export function InteractiveDrill({ examples, className, selectedMode, onModeChange, availableModes: suppliedModes, hideModeNavigation = false, timerSeconds = 30, onNewRound, onResult, onPlay, saveNote }: InteractiveDrillProps) {
+export function InteractiveDrill({ examples, className, selectedMode, onModeChange, availableModes: suppliedModes, hideModeNavigation = false, timerSeconds = 30, onNewRound, onResult, onPlay, onActivity, saveNote }: InteractiveDrillProps) {
   const availableModes = DRILL_MODES.filter(mode => suppliedModes ? suppliedModes.includes(mode.id) : examples.some(example => example.mode === mode.id));
   const [requestedMode, setRequestedMode] = useState<DrillMode | null>(null);
   const [requestedIndex, setRequestedIndex] = useState(0);
@@ -659,6 +708,29 @@ export function InteractiveDrill({ examples, className, selectedMode, onModeChan
   const [round, setRound] = useState(false);
   const headingFocusRequested = useRef(false);
   const play = useRef({ round: 0, timed: false, sequence: 0, answered: new Set<string>(), completed: false });
+  const activityState = useRef({ started: false, completed: false, answered: new Set<string>(), steps: new Set<string>() });
+  const activity = (event: DrillActivity) => {
+    const state = activityState.current;
+    if (state.completed) return;
+    if (!state.started) { state.started = true; onActivity?.({ action: "started" }); }
+    if (event.action === "answer_submitted" && event.itemId) {
+      if (state.answered.has(event.itemId)) onActivity?.({ action: "retry", itemId: event.itemId });
+      state.answered.add(event.itemId);
+    } else if (event.action === "step_answer" && event.itemId && event.stepId) {
+      const key = `${event.itemId}/${event.stepId}`;
+      if (state.steps.has(key)) onActivity?.({ action: "retry", itemId: event.itemId, stepId: event.stepId });
+      state.steps.add(key);
+    }
+    onActivity?.(event);
+  };
+  const finishActivity = () => {
+    if (activityState.current.completed) return;
+    activityState.current.completed = true;
+    onActivity?.({ action: "completed" });
+  };
+  const finishUntimedItem = () => {
+    if (!play.current.timed && modeExamples.every(item => play.current.answered.has(item.id))) finishActivity();
+  };
   const resetPlay = (timed: boolean) => {
     play.current = { round: play.current.round + 1, timed, sequence: 0, answered: new Set(), completed: false };
   };
@@ -717,9 +789,9 @@ export function InteractiveDrill({ examples, className, selectedMode, onModeChan
             ))}
           </nav>}
           {!example ? <p className="interactive-drill__empty" role="status">No practice activities are available yet.</p> : round && activeMode?.id === "rapid-swipe" && timerSeconds !== null ? (
-            <RapidSwipeRound key={JSON.stringify([modeExamples, timerSeconds])} timerSeconds={timerSeconds} onResult={result} onComplete={completePlay} saveNote={saveNote} examples={modeExamples.filter((item): item is RapidSwipeExample => item.mode === "rapid-swipe")} onExit={() => { resetPlay(false); setRound(false); changeIndex(0); }} />
+            <RapidSwipeRound key={JSON.stringify([modeExamples, timerSeconds])} timerSeconds={timerSeconds} onResult={result} onActivity={activity} onComplete={() => { completePlay(); finishActivity(); }} saveNote={saveNote} examples={modeExamples.filter((item): item is RapidSwipeExample => item.mode === "rapid-swipe")} onExit={() => { resetPlay(false); setRound(false); changeIndex(0); }} />
           ) : (
-            <Activity key={`${selectedMode ?? activeMode?.id}-${example.id}-${attempt}-${timerSeconds}`} timerSeconds={timerSeconds} example={example} index={index} count={modeExamples.length} onPrevious={() => changeIndex(index - 1)} onNext={() => changeIndex(index + 1)} onRestart={() => { resetPlay(false); changeIndex(0); }} onNewRound={onNewRound} onResult={result} saveNote={saveNote} onStartRound={() => { resetPlay(true); setRound(true); }} focusHeadingIfRequested={focusHeadingIfRequested} />
+            <Activity key={`${selectedMode ?? activeMode?.id}-${example.id}-${attempt}-${timerSeconds}`} timerSeconds={timerSeconds} example={example} index={index} count={modeExamples.length} onPrevious={() => changeIndex(index - 1)} onNext={() => changeIndex(index + 1)} onRestart={() => { resetPlay(false); changeIndex(0); }} onNewRound={onNewRound} onResult={result} onActivity={activity} onFinished={finishUntimedItem} saveNote={saveNote} onStartRound={() => { resetPlay(true); setRound(true); }} focusHeadingIfRequested={focusHeadingIfRequested} />
           )}
         </div>
     </div>

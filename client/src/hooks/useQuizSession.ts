@@ -28,6 +28,9 @@ import { DEFAULT_QUIZ_SETTINGS, type QuizSettings } from "@/components/QuizSetti
 import type { DBQuestion } from "@/hooks/useQuestionBank";
 import { PracticeQueue } from "@/lib/practiceQueue";
 import { useLearningActivitySession } from "@/hooks/useLearningActivitySession";
+import { useAssessmentActivity } from "@/hooks/useAssessmentActivity";
+import { useVerifiedPracticeSaveScope } from "@/components/PracticeSaveStatus";
+import { assessmentActivityActions, type AssessmentActivityCapability } from "@shared/assessmentActivity";
 
 // ─── Constants ───────────────────────────────────────────────────────────────
 // Default/fallback session size; actual size comes from quizSettings.sessionSize
@@ -61,7 +64,7 @@ export interface HistoryEntry {
   difficulty?: string;
   correct?: boolean;
   confidence: number | null;
-  selectedOption: number;
+  selectedOption: number | null;
   questionObj: DBQuestion;
 }
 
@@ -156,14 +159,14 @@ function shuffle<T>(arr: T[]): T[] {
 /** Build the single canonical client-side record for a submitted answer. */
 export function createHistoryEntry(
   question: DBQuestion,
-  selectedOption: number,
+  selectedOption: number | null,
   confidence: number | null,
 ): HistoryEntry {
   return {
     questionId: question.id,
     module: question.module,
     difficulty: question.difficulty ?? undefined,
-    correct: selectedOption === (question.correctIndex ?? 0),
+    correct: selectedOption !== null && selectedOption === (question.correctIndex ?? 0),
     confidence,
     selectedOption,
     questionObj: question,
@@ -372,6 +375,50 @@ export function useQuizSession({
   const [quizSettings, setQuizSettings] =
     useState<QuizSettings>(DEFAULT_QUIZ_SETTINGS);
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [activityTracking, setActivityTracking] = useState<AssessmentActivityCapability | null>(null);
+  const actorScope = useVerifiedPracticeSaveScope(examType);
+  const actorKey = actorScope ? JSON.stringify(actorScope) : "unverified";
+  const { observe, retry: retryActivity } = useAssessmentActivity(activityTracking, actorKey);
+  const previousActor = useRef(actorKey);
+  useEffect(() => {
+    if (previousActor.current === actorKey) return;
+    previousActor.current = actorKey;
+    setHistory([]);
+    setUsedIds(new Set());
+    clearForwardNavigation();
+    setActivityTracking(null);
+  }, [actorKey, clearForwardNavigation]);
+  const questionTracking = (current as (DBQuestion & { activityTracking?: AssessmentActivityCapability }) | null)?.activityTracking;
+  const ownsActivityItem = Boolean(activityTracking && questionTracking?.tracking && questionTracking.capability === activityTracking.capability);
+  const presentationRef = useRef("");
+  const startedActivityRef = useRef("");
+  useEffect(() => {
+    if (!current || !ownsActivityItem) return;
+    if (startedActivityRef.current !== activityTracking?.sessionId) {
+      startedActivityRef.current = activityTracking?.sessionId ?? "";
+      observe({ action: "started" });
+    }
+    const key = `${activityTracking?.sessionId}:${current.id}`;
+    if (presentationRef.current === key) return;
+    presentationRef.current = key;
+    observe({ action: "item_presented", itemId: String(current.id) });
+  }, [activityTracking, current, ownsActivityItem, observe]);
+  // An explanation is displayed automatically, not proof it was read or requested.
+  const explanationRef = useRef("");
+  useEffect(() => {
+    if (!current || !confirmed || !ownsActivityItem || !current.explanation) return;
+    const key = `${activityTracking?.sessionId}:${current.id}`;
+    if (explanationRef.current === key) return;
+    explanationRef.current = key;
+    observe({ action: "explanation_opened", itemId: String(current.id) });
+  }, [activityTracking, confirmed, current, ownsActivityItem, observe]);
+  const setShowStepsObserved: React.Dispatch<React.SetStateAction<boolean>> = useCallback(value => {
+    const next = typeof value === "function" ? value(showSteps) : value;
+    if (next && !showSteps && confirmed && current?.steps?.length && ownsActivityItem) {
+      observe({ action: "explanation_opened", itemId: String(current.id) });
+    }
+    setShowSteps(next);
+  }, [confirmed, current, ownsActivityItem, observe, showSteps]);
   const analyticsMutation = trpc.funnelAnalytics.track.useMutation();
   const analyticsStartedRef = useRef(false);
   const analyticsCompletedRef = useRef(false);
@@ -401,7 +448,6 @@ export function useQuizSession({
 
   // ── Missed-questions data ──────────────────────────────────────────────────
   const [missedIds, setMissedIds] = useState<number[]>([]);
-  const logAttemptFn = useAttemptLogger(examType, quizMode);
   const { data: missedData, refetch: refetchMissed } =
     trpc.quiz.getMissedQuestions.useQuery(
       { examType, limit: 50 },
@@ -490,9 +536,14 @@ export function useQuizSession({
   // ── Set selected (only when not confirmed) ─────────────────────────────────
   const setSelected = useCallback(
     (idx: number | null) => {
-      if (!confirmed) setSelectedState(idx);
+      if (!confirmed) {
+        if (idx !== null && idx !== selected && current && ownsActivityItem && (assessmentActivityActions as readonly string[]).includes("selection_changed")) {
+          observe({ action: "selection_changed" as typeof assessmentActivityActions[number], itemId: String(current.id), chosenAnswer: String(idx) });
+        }
+        setSelectedState(idx);
+      }
     },
-    [confirmed],
+    [confirmed, selected, current, ownsActivityItem, observe],
   );
 
   const setConfidence = useCallback(
@@ -531,8 +582,19 @@ export function useQuizSession({
     difficulty: quizSettings.difficulty,
     quizMode,
     revision,
+    actorKey,
+    timed: quizSettings.timedMode,
     accessToken: storedAccessTokenForAccess ?? null,
-  }), [examType, selectedModule, selectedTopic, calcOnly, quizSettings.difficulty, quizMode, revision, storedAccessTokenForAccess]);
+  }), [examType, selectedModule, selectedTopic, calcOnly, quizSettings.difficulty, quizSettings.timedMode, quizMode, revision, actorKey, storedAccessTokenForAccess]);
+  const logAttemptFn = useAttemptLogger(examType, quizMode, practiceQueueScope);
+  const acknowledgedAnswers = useRef(new Map<string, boolean>());
+  const roundScopeRef = useRef(practiceQueueScope);
+  roundScopeRef.current = practiceQueueScope;
+  const observeAcknowledgedFinish = useCallback(() => {
+    if (ownsActivityItem && history.length > 0 && history.every(entry => entry.selectedOption !== null && acknowledgedAnswers.current.get(`${practiceQueueScope}:${entry.questionId}`) === true)) {
+      observe({ action: "completed" });
+    }
+  }, [history, ownsActivityItem, practiceQueueScope, observe]);
   const practiceQueueGenerationRef = useRef(0);
   const practiceQueueGeneration = useMemo(() => {
     practiceQueueGenerationRef.current += 1;
@@ -543,7 +605,7 @@ export function useQuizSession({
   const queue = useMemo(() => freeCourse ? null : new PracticeQueue<DBQuestion>(async excludeIds => {
     const page = await withPracticeQuestionTimeout(fetchRef.current({ bankKey: examType, module: selectedModule ?? undefined, topic: selectedTopic ?? undefined, calcOnly,
       difficulty: quizSettings.difficulty, reviewMode: quizMode === "quick10" ? "standard" : quizMode,
-      excludeIds, limit: 50, accessToken: storedAccessTokenForAccess }));
+      excludeIds, limit: Math.min(sessionSize, 50), activityTimed: quizSettings.timedMode, accessToken: storedAccessTokenForAccess }));
     if (!shouldApplyPracticePageResult(practiceQueueGeneration, activePracticeQueueGeneration.current)) {
       return page;
     }
@@ -568,6 +630,10 @@ export function useQuizSession({
     [freeCourse, examType, selectedModule, selectedTopic, calcOnly, quizSettings.difficulty, quizMode, revision, storedAccessTokenForAccess, practiceQueueGeneration]);
   const activeQueue = useRef(queue);
   activeQueue.current = queue;
+  const retireActivity = useCallback(() => {
+    if (activityTracking) observe({ action: "abandoned" });
+    setActivityTracking(null);
+  }, [activityTracking, observe]);
   // A delayed answer belongs to its original queue and mounted session only.
   useEffect(() => cancelTimedAdvance, [queue, cancelTimedAdvance]);
   const fetching = useRef<PracticeQueue<DBQuestion> | null>(null);
@@ -581,6 +647,8 @@ export function useQuizSession({
       if (!shouldApplyPracticeQueueResult(queue, activeQueue.current)) return;
       setAvailableQuestionCount(queue.total);
       setCurrent(next);
+      const nextTracking = (next as (DBQuestion & { activityTracking?: AssessmentActivityCapability }) | null)?.activityTracking;
+      setActivityTracking(nextTracking?.tracking ? nextTracking : null);
       clearUI();
       if (next) clearForwardNavigation();
       setQuestionStatus(next ? undefined : "empty");
@@ -595,6 +663,8 @@ export function useQuizSession({
   requestNextRef.current = requestNext;
   useEffect(() => {
     if (!queue) return;
+    setActivityTracking(null);
+    setCurrent(null);
     clearForwardNavigation();
     activeQueue.current = queue;
     setInitialized(true);
@@ -628,6 +698,7 @@ export function useQuizSession({
 
     const entry = createHistoryEntry(current, selected, confidence);
 
+    if (ownsActivityItem) observe({ action: "answer_submitted", itemId: String(current.id), chosenAnswer: String(selected), observedCorrect: isCorrect });
     const updatedHistory = [...history, entry];
     setHistory(updatedHistory);
     setUsedIds((s) => new Set([...Array.from(s), current.id]));
@@ -639,13 +710,14 @@ export function useQuizSession({
       ? (confidence <= 4 ? (confidence >= 3 ? 3 : 1) : confidence <= 33 ? 1 : confidence <= 66 ? 2 : 3)
       : null;
     // Log attempt to backend
-    logAttemptFn({
+    const submittedScope = practiceQueueScope;
+    void logAttemptFn({
       questionId: current.id,
       attemptToken: current.attemptToken,
       selectedIndex: selected ?? 0,
       bankKey: examType,
       confidenceLevel: confLevel,
-    });
+    }).then(saved => { if (roundScopeRef.current === submittedScope) acknowledgedAnswers.current.set(`${submittedScope}:${current.id}`, saved); });
 
     // Refetch missed questions if wrong
     if (!isCorrect) setTimeout(() => refetchMissed(), 500);
@@ -682,6 +754,9 @@ export function useQuizSession({
     quizMode,
     sessionSize,
     trackQuizCompleted,
+    ownsActivityItem,
+    observe,
+    practiceQueueScope,
   ]);
 
   // ── Next question (step 2: advance to next question) ───────────────────────
@@ -690,6 +765,7 @@ export function useQuizSession({
     cancelTimedAdvance();
     const forwardSnapshot = forwardNavigationRef.current.pop();
     if (forwardSnapshot) {
+      if (ownsActivityItem) observe({ action: "resumed" });
       setCurrent(forwardSnapshot.question);
       setSelectedState(forwardSnapshot.selected);
       setConfidenceState(forwardSnapshot.confidence);
@@ -702,6 +778,7 @@ export function useQuizSession({
     }
     // Quick 10 stop: end session cleanly at 10 (never paywalled)
     if (quizMode === "quick10" && history.length >= 10) {
+      observeAcknowledgedFinish();
       trackQuizCompleted(history, "session_limit");
       setCurrent(null);
       return;
@@ -710,6 +787,7 @@ export function useQuizSession({
     // Free (locked) users are capped at the free preview in every mode except
     // quick10 (which self-limits at 10). sessionSize is clamped to 15 for them.
     if (!trialUnlocked && quizMode !== "quick10" && history.length >= sessionSize) {
+      observeAcknowledgedFinish();
       trackQuizCompleted(history, "preview_gate");
       setTrialDone(true);
       return;
@@ -719,6 +797,7 @@ export function useQuizSession({
     // showing the Session Complete screen. Missed-review is intentionally
     // exempt — it runs until the missed pool is exhausted.
     if (trialUnlocked && quizMode === "standard" && history.length >= sessionSize) {
+      observeAcknowledgedFinish();
       trackQuizCompleted(history, "session_limit");
       setCurrent(null);
       return;
@@ -748,7 +827,7 @@ export function useQuizSession({
     setCurrent(next);
     clearUI();
     clearForwardNavigation();
-  }, [history, pool, allQuestions, selectedModule, calcOnly, trialUnlocked, quizMode, sessionSize, clearUI, trackQuizCompleted, queue, requestNext, cancelTimedAdvance, clearForwardNavigation]);
+  }, [history, pool, allQuestions, selectedModule, calcOnly, trialUnlocked, quizMode, sessionSize, clearUI, trackQuizCompleted, queue, requestNext, cancelTimedAdvance, clearForwardNavigation, observeAcknowledgedFinish, ownsActivityItem, observe]);
 
   // ── Back (view an earlier delivered question without changing saved answers) ─
   const goBack = useCallback(() => {
@@ -779,6 +858,8 @@ export function useQuizSession({
 
   // ── Reset session ──────────────────────────────────────────────────────────
   const resetSession = useCallback(() => {
+    if (activityTracking) observe({ action: "abandoned" });
+    setActivityTracking(null);
     resetAnalyticsTracking();
     clearForwardNavigation();
     setHistory([]);
@@ -799,12 +880,14 @@ export function useQuizSession({
       const filtered = newPool.filter((q) => q.difficulty === quizSettings.difficulty);
       if (filtered.length > 0) newPool = filtered;
     }
+    setRevision(v => v + 1);
     setCurrent(pickRandom(newPool.length > 0 ? newPool : allQuestions));
-  }, [allQuestions, selectedModule, calcOnly, quizSettings.difficulty, clearUI, resetAnalyticsTracking, queue, clearForwardNavigation]);
+  }, [allQuestions, selectedModule, calcOnly, quizSettings.difficulty, clearUI, resetAnalyticsTracking, queue, clearForwardNavigation, activityTracking, observe]);
 
   // ── Mode change ────────────────────────────────────────────────────────────
   const handleModeChange = useCallback(
     (mode: QuizMode) => {
+      retireActivity();
       setQuizMode(mode);
       resetAnalyticsTracking();
       clearForwardNavigation();
@@ -828,12 +911,13 @@ export function useQuizSession({
         setCurrent(pickRandom(allQuestions));
       }
     },
-    [missedData, allQuestions, clearUI, resetAnalyticsTracking, queue, clearForwardNavigation],
+    [missedData, allQuestions, clearUI, resetAnalyticsTracking, queue, clearForwardNavigation, retireActivity],
   );
 
   // ── Settings apply ─────────────────────────────────────────────────────────
   const handleSettingsApply = useCallback(
     (settings: QuizSettings) => {
+      retireActivity();
       setQuizSettings(settings);
       resetAnalyticsTracking();
       clearForwardNavigation();
@@ -854,7 +938,7 @@ export function useQuizSession({
       }
       setCurrent(pickRandom(newPool.length > 0 ? newPool : allQuestions));
     },
-    [allQuestions, selectedModule, calcOnly, clearUI, resetAnalyticsTracking, queue, clearForwardNavigation],
+    [allQuestions, selectedModule, calcOnly, clearUI, resetAnalyticsTracking, queue, clearForwardNavigation, retireActivity],
   );
 
   // ── Calc-only toggle ───────────────────────────────────────────────────────
@@ -875,6 +959,7 @@ export function useQuizSession({
       setNoCalcQuestions(true);
       return;
     }
+    retireActivity();
     setNoCalcQuestions(false);
     resetAnalyticsTracking();
     setCalcOnly(next);
@@ -884,7 +969,7 @@ export function useQuizSession({
     clearUI();
     if (queue) return;
     setCurrent(pickRandom(filtered));
-  }, [practiceFiltersEnabled, calcOnly, allQuestions, selectedModule, clearUI, resetAnalyticsTracking, queue, clearForwardNavigation]);
+  }, [practiceFiltersEnabled, calcOnly, allQuestions, selectedModule, clearUI, resetAnalyticsTracking, queue, clearForwardNavigation, retireActivity]);
 
   // ── Module change ──────────────────────────────────────────────────────────
   const handleModuleChange = useCallback(
@@ -895,6 +980,7 @@ export function useQuizSession({
         });
         return;
       }
+      retireActivity();
       cancelTimedAdvance();
       clearForwardNavigation();
       setSelectedTopic(null);
@@ -908,7 +994,7 @@ export function useQuizSession({
         clearUI();
       }
     },
-    [practiceFiltersEnabled, allQuestions, usedIds, calcOnly, clearUI, queue, cancelTimedAdvance, clearForwardNavigation],
+    [practiceFiltersEnabled, allQuestions, usedIds, calcOnly, clearUI, queue, cancelTimedAdvance, clearForwardNavigation, retireActivity],
   );
 
   // Keep the latest-value refs in sync after every render (handleNext is defined
@@ -927,8 +1013,7 @@ export function useQuizSession({
     // answer but not confirmed before the timer expired, honour that pick.
     const latestSelected = selectedRef.current;
     const latestConfidence = confidenceRef.current;
-    const effectiveSelected = latestSelected ?? (correctIdx === 0 ? 1 : 0);
-    const isCorrect = effectiveSelected === correctIdx;
+    const effectiveSelected = latestSelected;
     const effectiveConfidence = latestConfidence ?? 50;
 
     const entry = createHistoryEntry(current, effectiveSelected, effectiveConfidence);
@@ -939,13 +1024,19 @@ export function useQuizSession({
     const confLevel = latestConfidence != null
       ? (latestConfidence <= 4 ? (latestConfidence >= 3 ? 3 : 1) : latestConfidence <= 33 ? 1 : latestConfidence <= 66 ? 2 : 3)
       : null;
-    logAttemptFn({
+    // Unanswered timeouts remain local incorrect outcomes, never invented choices.
+    if (effectiveSelected !== null) {
+      if (ownsActivityItem) observe({ action: "answer_submitted", itemId: String(current.id), chosenAnswer: String(effectiveSelected), observedCorrect: effectiveSelected === correctIdx });
+      logAttemptFn({
       questionId: current.id,
       attemptToken: current.attemptToken,
       selectedIndex: effectiveSelected,
       bankKey: examType,
       confidenceLevel: confLevel,
-    });
+      });
+    } else if (ownsActivityItem && (assessmentActivityActions as readonly string[]).includes("timed_out")) {
+      observe({ action: "timed_out" as typeof assessmentActivityActions[number], itemId: String(current.id) });
+    }
     setSelectedState(effectiveSelected);
     setConfidenceState(effectiveConfidence);
     setConfirmed(true);
@@ -957,10 +1048,11 @@ export function useQuizSession({
       timedAdvanceRef.current = null;
       handleNextRef.current();
     }, 800);
-  }, [confirmed, current, logAttemptFn, cancelTimedAdvance]);
+  }, [confirmed, current, logAttemptFn, cancelTimedAdvance, ownsActivityItem, observe, examType]);
 
   // ── Gate unlocked handler ──────────────────────────────────────────────────
   const handleGateUnlocked = useCallback(() => {
+    if (ownsActivityItem) observe({ action: "resumed" });
     setTrialUnlocked();
     setTrialUnlockedState(true);
     setTrialDone(false);
@@ -990,7 +1082,7 @@ export function useQuizSession({
     trialDone,
     trialUnlocked,
     missedCount,
-    questionStatus, questionError, retryQuestions: requestNext,
+    questionStatus, questionError, retryQuestions: () => { void retryActivity(); void requestNext(); },
     availableQuestionCount: freeCourse ? allQuestions.length : availableQuestionCount,
 
     // Derived
@@ -1011,7 +1103,7 @@ export function useQuizSession({
     handleGateUnlocked,
     setSelected,
     setConfidence,
-    setShowSteps,
+    setShowSteps: setShowStepsObserved,
     setTutorOpen,
     setSettingsOpen,
 

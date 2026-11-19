@@ -533,6 +533,23 @@
         "interactive_item_progress",
         "interactive_daily_activity"
       ]
+    },
+    {
+      "version": 83,
+      "tag": "0083_assessment_activity",
+      "file": "drizzle/0083_assessment_activity.sql",
+      "sha256": "d65a0baf0443f0d8bc279673a222b0ed3b05e59b9abbbb5d260463c1103533ae",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "assessment_activity_sessions",
+          "assessment_activity_events"
+        ]
+      },
+      "verifierAllowMissingTables": [
+        "assessment_activity_sessions",
+        "assessment_activity_events"
+      ]
     }
   ]
 }
