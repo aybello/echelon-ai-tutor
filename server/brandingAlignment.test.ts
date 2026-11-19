@@ -82,10 +82,10 @@ describe("bounded company positioning alignment", () => {
   });
 
   it("labels fixed OIT tool links honestly and preserves water-specific study resources", () => {
-    expect(landing).toMatch(/title="Water OIT practice preview"[^\n]*href="\/quiz"/);
-    expect(landing).toMatch(/title="Water OIT mock preview"[^\n]*href="\/oit-mock"/);
+    expect(landing).toMatch(/title="Practice with explanations"[^\n]*Water OIT preview[^\n]*href="\/quiz"/);
+    expect(landing).toMatch(/title="Rehearse the exam"[^\n]*Water OIT timed mock preview[^\n]*href="\/oit-mock"/);
     expect(landing).not.toContain("same course context carried through each study mode");
-    expect(landing).toContain("For other courses, choose your course below");
+    expect(landing).toContain("Choose your course for its available tools");
     expect(landing).toContain("Clear, practical study guides for water and wastewater operators.");
     expect(home.bodyHtml).toContain("Echelon Process Guides");
     expect(home.bodyHtml).toContain("water treatment, distribution systems, wastewater treatment");

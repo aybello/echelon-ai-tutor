@@ -27,8 +27,9 @@ describe("approved blue homepage presentation", () => {
     expect(landing).toContain("<StepSolution");
     expect(landing).toContain('href="/formulas" className="homepage-example-link"');
     expect(landing).not.toContain("echelon-blue-hero_b6e705fa.webp");
-    expect(hero).toContain("Be ready for");
-    expect(hero).toContain("Practice questions, worked calculations and timed mock exams");
+    expect(hero).toContain("Understand the material.");
+    expect(hero).toContain("Be ready for the exam.");
+    expect(hero).toContain("AI tutoring, learning games and exam preparation");
     expect(css).toContain("--home-teal: #1757B8");
     expect(css).toContain("--home-canvas: #F4F8FD");
     expect(css).toMatch(/@media \(max-width: 820px\)\s*\{(?:(?!\n\})[\s\S])*?\.homepage-hero\s*\{[^}]*grid-template-columns:\s*1fr/);

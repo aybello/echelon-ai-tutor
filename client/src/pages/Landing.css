@@ -152,7 +152,7 @@
 .homepage-section-heading h2, .homepage-contact-copy h2, .homepage-team-content h2 { margin: 0; color: var(--home-navy); font-size: clamp(30px, 4vw, 48px); letter-spacing: -.052em; line-height: 1.12; }
 .homepage-section-heading p, .homepage-contact-copy > p, .homepage-team-content > p { margin: 16px 0 0; color: var(--home-muted); font-size: 17px; line-height: 1.6; }
 .homepage-tools-section { padding-top: 78px; }
-.homepage-tool-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 34px; }
+.homepage-tool-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 34px; }
 .homepage-tool-card { min-height: 158px; display: grid; grid-template-columns: auto 1fr auto; align-items: start; gap: 12px; padding: 20px; border: 1px solid var(--home-border); border-radius: 6px; background: #fff; color: var(--home-ink); text-decoration: none; transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease; }
 .homepage-tool-card:hover { border-color: #83AEE0; box-shadow: 0 12px 26px rgba(16,37,63,.06); transform: translateY(-1px); }
 .homepage-tool-icon { width: 35px; height: 35px; display: inline-grid; place-items: center; border-radius: 5px; background: var(--home-teal-soft); color: var(--home-teal); }

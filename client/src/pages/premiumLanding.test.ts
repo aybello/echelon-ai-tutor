@@ -11,12 +11,22 @@ describe("premium homepage contracts", () => {
   it("positions the platform for skilled trades without overstating course coverage", () => {
     const hero = read("client/src/components/CoursePathHero.tsx");
     const nav = read("client/src/components/SiteNav.tsx");
-    expect(hero).toContain("Exam prep for skilled trades");
+    expect(hero).toContain("AI-powered exam prep for skilled trades");
     expect(nav).toContain("Exam prep for skilled trades");
-    expect(hero).not.toContain("AI-powered exam prep for skilled trades");
-    expect(nav).not.toContain("AI-powered exam prep for skilled trades");
-    expect(hero).toContain("water and wastewater certification across Canada and the United States");
+    expect(hero).toContain("Understand the material.");
+    expect(hero).toContain("AI tutoring, learning games and exam preparation");
+    expect(hero).toContain("across Canada and the United States, starting with water and wastewater");
     expect(nav).not.toContain('"Operator certification prep"');
+  });
+
+  it("sells the learning journey and employer visibility with accurate pilot scope", () => {
+    for (const benefit of ["More than a question bank", "AI tutor: get unstuck", "Interactive learning games", "Practice with explanations", "Work through the maths", "Rehearse the exam", "progress tracking", "individual assessment sessions, results and topic gaps"]) {
+      expect(landing).toContain(benefit);
+    }
+    expect(landing).toContain("Water OIT and Ontario Class 1 Water also include five deeper games");
+    expect(landing).toContain("Ontario 309A currently offers free practice and mock exams");
+    expect(landing).toContain('href="/courses/oit/interactive"');
+    expect(landing).not.toContain("guaranteed pass");
   });
 
   it("uses the shared worked solution with an example from the formula library", () => {
@@ -40,9 +50,12 @@ describe("premium homepage contracts", () => {
   });
 
   it("preserves named proof and all existing homepage sections", () => {
-    for (const text of ["Used by operators at", "Utilities Kingston", "City of Winnipeg", 'id="courses"', 'id="tools"', 'id="teams"', 'id="faq"', "<BlogPreviewSection />", "<ContactSection />"]) {
+    for (const text of ["Used by operators at", "customers.map((organization)", "{organization.name}", 'id="courses"', 'id="tools"', 'id="teams"', 'id="faq"', "<BlogPreviewSection />", "<ContactSection />"]) {
       expect(landing).toContain(text);
     }
+    const organizations = read("client/src/lib/trustedOrganizations.json");
+    expect(organizations).toContain("Utilities Kingston");
+    expect(organizations).toContain("City of Winnipeg");
     expect(css).toContain(".homepage-workspace .practice-solution");
     expect(css).toContain("@media (max-width: 640px)");
   });

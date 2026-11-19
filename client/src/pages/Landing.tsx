@@ -7,6 +7,7 @@ import {
   Check,
   ChevronRight,
   ClipboardCheck,
+  Gamepad2,
   GraduationCap,
   MapPin,
   MessageSquareText,
@@ -294,23 +295,26 @@ export default function Landing() {
 
         <section id="tools" className="homepage-section homepage-tools-section" aria-labelledby="homepage-tools-title">
           <div className="homepage-section-heading homepage-section-heading-left">
-            <span className="homepage-kicker">A better way to prep</span>
-            <h2 id="homepage-tools-title">A better way to prepare.</h2>
-            <p>Explore Water OIT practice and mock previews, plus water and wastewater study resources. For other courses, choose your course below to open its study tools.</p>
+            <span className="homepage-kicker">More than a question bank</span>
+            <h2 id="homepage-tools-title">Learn it. Practise it. Put it to the test.</h2>
+            <p>Ask the AI tutor to explain a difficult concept. Work through a calculation. Practise with games, flashcards and questions, then test yourself under exam conditions and see where to focus next. Choose your course for its available tools.</p>
           </div>
           <div className="homepage-tool-grid">
-            <ToolCard icon={<BookOpen size={21} aria-hidden="true" />} title="Water OIT practice preview" description="Try Ontario Water OIT questions and explanations." href="/quiz" />
-            <ToolCard icon={<Calculator size={21} aria-hidden="true" />} title="Formula library" description="Keep core operator calculations in reach." href="/formulas" />
-            <ToolCard icon={<ClipboardCheck size={21} aria-hidden="true" />} title="Water OIT mock preview" description="Explore the Ontario Water OIT timed mock exam." href="/oit-mock" />
-            <ToolCard icon={<MessageSquareText size={21} aria-hidden="true" />} title="Study guides" description="Connect concepts to process and equipment." href="/guides" />
+            <ToolCard icon={<MessageSquareText size={21} aria-hidden="true" />} title="AI tutor: get unstuck" description="Ask follow-up questions and work through concepts and calculations. Try the tutor in Water OIT practice." href="/quiz" />
+            <ToolCard icon={<Gamepad2 size={21} aria-hidden="true" />} title="Interactive learning games" description="Match processes, spot mistakes and practise cause and effect. Explore the Water OIT games." href="/courses/oit/interactive" />
+            <ToolCard icon={<BookOpen size={21} aria-hidden="true" />} title="Practice with explanations" description="Understand why an answer is right, not just whether you got it right. Try the Water OIT preview." href="/quiz" />
+            <ToolCard icon={<Calculator size={21} aria-hidden="true" />} title="Work through the maths" description="Follow worked examples and keep the formulas behind the answer in reach." href="/formulas" />
+            <ToolCard icon={<ClipboardCheck size={21} aria-hidden="true" />} title="Rehearse the exam" description="Practise pacing and review your results. Start with the Water OIT timed mock preview." href="/oit-mock" />
+            <ToolCard icon={<GraduationCap size={21} aria-hidden="true" />} title="Build your understanding" description="Use study guides to connect technical concepts to processes and equipment." href="/guides" />
           </div>
+          <p className="homepage-hero-note">Six game modes turn revision into active practice. Water OIT and Ontario Class 1 Water also include five deeper games, from Calculation Ladder to Exam Escape Room. Flashcards, study notes and progress tools are available through your course workspace.</p>
         </section>
 
         <section className="homepage-proof-strip" aria-label="Echelon platform facts">
-          <div><strong>Course-specific</strong><span>certification preparation</span></div>
-          <div><strong>15</strong><span>free OIT questions for new learners</span></div>
-          <div><strong>Canada + U.S.</strong><span>study contexts supported</span></div>
-          <div><strong>Practice to mock</strong><span>one study workspace</span></div>
+          <div><strong>AI tutoring</strong><span>explanations you can ask questions about</span></div>
+          <div><strong>Interactive practice</strong><span>learn by solving, not just reading</span></div>
+          <div><strong>Canada + U.S.</strong><span>course-specific certification preparation</span></div>
+          <div><strong>Progress tracking</strong><span>see strengths and topics to revisit</span></div>
         </section>
 
         <section id="courses" className="homepage-finder-section" aria-label="Find your certification course">
@@ -323,14 +327,14 @@ export default function Landing() {
         <section id="teams" className="homepage-team-section" aria-labelledby="homepage-team-title">
           <div className="homepage-team-content">
             <span className="homepage-kicker">For utilities and employers</span>
-            <h2 id="homepage-team-title">Keep operator learning visible without making training harder to manage.</h2>
-            <p>Teams can give operators structured preparation while managers have a clear view of assigned learning and readiness.</p>
+            <h2 id="homepage-team-title">See who is practising. Know where to support them.</h2>
+            <p>Give each operator a structured path to their next exam. Review individual assessment sessions, results and topic gaps so training conversations start with evidence, not guesswork.</p>
             <Link href="/teams" className="homepage-primary-button">Explore team training <ArrowRight size={17} aria-hidden="true" /></Link>
           </div>
           <div className="homepage-team-preview" aria-label="Illustrative team training overview">
             <div><span>Team training overview</span><small>Illustrative preview</small></div>
-            <dl><div><dt>Learning</dt><dd>Assigned courses</dd></div><div><dt>Preparation</dt><dd>Study plans</dd></div><div><dt>Visibility</dt><dd>Readiness</dd></div></dl>
-            <p><Check size={15} aria-hidden="true" /> Course-specific learning paths for each assigned operator.</p>
+            <dl><div><dt>Participation</dt><dd>Assessment activity</dd></div><div><dt>Performance</dt><dd>Results by learner</dd></div><div><dt>Support</dt><dd>Topic gaps</dd></div></dl>
+            <p><Check size={15} aria-hidden="true" /> Follow each assigned operator's preparation in one place.</p>
           </div>
         </section>
 
@@ -340,7 +344,7 @@ export default function Landing() {
             <FaqItem question="Can I try a course before I buy?" answer="Yes. Paid operator courses include a free practice preview without an account or credit card. Ontario 309A practice and mock exams are free." />
             <FaqItem question="How does course access work?" answer="For paid operator courses, an Individual Exam Pass provides 12 months of access to one selected course from successful payment, or access can come through an assigned team licence. Ontario 309A practice and mock exams are free." />
             <FaqItem question="Do the questions match the real exam?" answer="The question banks are designed around relevant exam blueprints and reviewed through Echelon's content-quality process. Echelon is an independent preparation provider; confirm current requirements with your certifying authority." />
-            <FaqItem question="What is included in a course?" answer="Course inclusions and question totals vary. The pricing page lists the current question count, access term and study tools before checkout." />
+            <FaqItem question="What is included in a course?" answer="Echelon brings together practice questions with explanations, AI tutoring, timed mock exams, flashcards, study notes, formulas and progress tracking. Interactive games add another way to practise. Open your course to see its available tools; Ontario 309A currently offers free practice and mock exams. The pricing page confirms paid-course inclusions and access before checkout." />
             <FaqItem question="Can I get a refund?" answer={`${INDIVIDUAL_REFUND_SUMMARY} Email ${REFUND_CONTACT_EMAIL} with your purchase email and Stripe receipt.`} />
           </div>
         </section>
