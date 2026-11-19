@@ -18,7 +18,7 @@ const faq = read("pages/FAQ.tsx");
 // browser, entitlement calls, timers, database, or network services are involved.
 function sourceFunction(source: string, name: string, bindings: Record<string, unknown>) {
   const ast = ts.createSourceFile("integration.tsx", source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
-  const node = ast.statements.find(statement => ts.isFunctionDeclaration(statement) && statement.name?.text === name);
+  const node = ast.statements.find(statement => ts.isFunctionDeclaration(statement) && statement.name?.text === name && statement.body);
   if (!node) throw new Error(`Missing integration function: ${name}`);
   const compiled = ts.transpileModule(`${node.getText(ast)}\nreturn ${name};`, {
     compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.ESNext, jsx: ts.JsxEmit.React },
