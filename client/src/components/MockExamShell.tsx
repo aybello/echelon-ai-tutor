@@ -30,6 +30,8 @@ import { useAssessmentActivity } from "@/hooks/useAssessmentActivity";
 import type { AssessmentActivityCapability } from "@shared/assessmentActivity";
 
 /** Match the optional CTA to the active stream's registered sheet, never a label. */
+function mockFormulaHref(path: string, courseKey: string, search: string): string;
+function mockFormulaHref(path: undefined, courseKey: string, search: string): undefined;
 function mockFormulaHref(path: string | undefined, courseKey: string, search: string): string | undefined {
   const course = resolveCourseKey(courseKey);
   if (!path || !course?.isActive) return path;
