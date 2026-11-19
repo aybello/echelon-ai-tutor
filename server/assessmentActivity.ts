@@ -10,6 +10,7 @@ import {
   type AssessmentActivityItem, type AssessmentActivityNotRecorded, type AssessmentActivityRecordInput,
   type AssessmentActivityRecordResult, type AssessmentActivityResumeInput, type AssessmentActivityResumeResult,
 } from "../shared/assessmentActivity";
+import { parseNumericAlias } from "../shared/deepGameNumeric";
 import { resolveVerifiedIdentity } from "./_core/accessService";
 import type { TrpcContext } from "./_core/context";
 import { ENV } from "./_core/env";
@@ -108,6 +109,10 @@ function validEventForManifest(event: AssessmentActivityEvent, items: Assessment
   if (event.action === "answer_submitted" && step) return false;
   if (event.action === "selection_changed") return event.observedCorrect == null && event.chosenAnswer != null && (step?.options ?? item.options).some(option => option.id === event.chosenAnswer);
   if (!answer) return event.chosenAnswer == null && event.observedCorrect == null;
+  if (event.action === "step_answer" && step?.response?.kind === "numeric") {
+    const numeric = parseNumericAlias(event.chosenAnswer);
+    return numeric !== null && step.response.unitOptions.some(unit => unit.id === numeric.unitId);
+  }
   return event.chosenAnswer != null && (step?.options ?? item.options).some(option => option.id === event.chosenAnswer);
 }
 

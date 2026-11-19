@@ -9,6 +9,9 @@ import { DRILL_MODES, InteractiveDrill, type DrillMode, type DrillResult } from 
 import { useVerifiedPracticeSaveScope } from "@/components/PracticeSaveStatus";
 import { useAssessmentActivity } from "@/hooks/useAssessmentActivity";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { useDeepGameSession } from "@/hooks/useDeepGameSession";
+import { DeepGameRunner } from "@/components/deepGames/DeepGameRunner";
+import type { DeepGameMode } from "@shared/deepGames";
 import { LOGOUT_EVENT_KEY } from "@/lib/logout";
 import { trpc } from "@/lib/trpc";
 import { getCourseByKey, type CourseEntry } from "@shared/courseRegistry";
@@ -64,6 +67,20 @@ function isIdentityStorageHint(event: StorageEvent): boolean {
 
 class PracticeVersionMismatch extends Error {}
 
+type PracticeSelection = { family: "classic"; mode: DrillMode } | { family: "deep"; mode: DeepGameMode };
+const PRACTICE_GROUPS = [
+  { title: "Quick practice", classic: ["rapid-swipe", "speed-match", "odd-one-out", "before-after"], deep: [] },
+  { title: "Build understanding", classic: ["cause-effect", "tap-the-flaw"], deep: ["calculation-ladder", "build-process", "find-calculation-error", "evidence-detective"] },
+  { title: "Challenge", classic: [], deep: ["exam-escape-room"] },
+] as const;
+const DEEP_DESCRIPTIONS: Record<DeepGameMode, string> = {
+  "calculation-ladder": "Work through formula, units and result.",
+  "build-process": "Put a stated process in order.",
+  "find-calculation-error": "Find the first wrong working line.",
+  "evidence-detective": "Weigh observations and investigate a clue.",
+  "exam-escape-room": "Complete a connected practice mission.",
+};
+
 /** The learner's own calendar day, so a late-night session counts for the day they are in. */
 function localDateString(): string {
   const now = new Date();
@@ -80,7 +97,9 @@ function CoursePractice({ course }: { course: CourseEntry }) {
   const transport = useRef(client);
   transport.current = client;
   const [authority, setAuthority] = useState(() => ({ accessToken: readAccessToken(), revision: 0 }));
-  const [mode, setMode] = useState<DrillMode>("rapid-swipe");
+  const [selection, setSelection] = useState<PracticeSelection>({ family: "classic", mode: "rapid-swipe" });
+  // A deep selection never widens the original strict six-mode wire contract.
+  const mode: DrillMode = selection.family === "classic" ? selection.mode : "rapid-swipe";
   const [topicId, setTopicId] = useState("");
   const [difficulty, setDifficulty] = useState<InteractiveDifficulty | "">("");
   const [sessionSize, setSessionSize] = useState<10 | 20 | 30 | 50>(20);
@@ -115,6 +134,15 @@ function CoursePractice({ course }: { course: CourseEntry }) {
   );
   const online = useSyncExternalStore(listener => onlineManager.subscribe(listener), () => onlineManager.isOnline(), () => true);
   const tokenMatches = readAccessToken() === authority.accessToken;
+  // A fetch is not a sign-out. Only settled verified identity changes retire an actor.
+  const identitySettled = [getQueryKey(trpc.auth.me, undefined, "query"), getQueryKey(trpc.dashboardAuth.me, undefined, "query")]
+    .every(key => {
+      const state = queryClient.getQueryState(key);
+      return state?.status === "success" && state.fetchStatus === "idle";
+    });
+  if (identitySettled) stableActor.current = actorScope ? JSON.stringify(actorScope) : "anonymous";
+  const deep = useDeepGameSession({ courseKey: course.courseKey, mode: selection.family === "deep" ? selection.mode : null,
+    authority, actorScope: stableActor.current, ready: tokenMatches && !authBusy && online && identitySettled });
   const catalogKey = [...prefix, "catalog", authority.accessToken, authority.revision] as const;
   const catalogQuery = useQuery({
     queryKey: catalogKey,
@@ -150,7 +178,7 @@ function CoursePractice({ course }: { course: CourseEntry }) {
     ...(!locked && difficulty ? { difficulty } : {}),
     ...(!locked && replay ? { focus: "review" as const } : {}),
   };
-  const sessionKey = [...prefix, "session", authority.accessToken, authority.revision, catalog?.version ?? null,
+  const sessionKey = [...prefix, "session", selection.family, authority.accessToken, authority.revision, catalog?.version ?? null,
     mode, input.topicId ?? null, input.difficulty ?? null, input.sessionSize, locked ? 30 : timerSeconds, roundRevision, replay] as const;
   const sessionQuery = useQuery({
     queryKey: sessionKey,
@@ -171,7 +199,7 @@ function CoursePractice({ course }: { course: CourseEntry }) {
           data.examples.length > (data.locked ? 1 : input.sessionSize) || data.examples.length > data.totalAvailableCount) throw new Error("Invalid practice session");
       return data;
     },
-    enabled: Boolean(catalog?.available && catalogMode && catalogMode.totalCount > 0 && !missingFilter),
+    enabled: selection.family === "classic" && Boolean(catalog?.available && catalogMode && catalogMode.totalCount > 0 && !missingFilter),
     staleTime: 0, gcTime: 0, refetchOnMount: "always", refetchOnWindowFocus: false,
     refetchOnReconnect: false, retry: false,
   });
@@ -262,11 +290,11 @@ function CoursePractice({ course }: { course: CourseEntry }) {
   }, [refreshQueries]);
 
   useEffect(() => {
-    if (catalogReady && sessionQuery.error instanceof PracticeVersionMismatch && !retriedMismatch.current) {
+    if (selection.family === "classic" && catalogReady && sessionQuery.error instanceof PracticeVersionMismatch && !retriedMismatch.current) {
       retriedMismatch.current = true;
       refreshQueries();
     }
-  }, [catalogReady, refreshQueries, sessionQuery.error]);
+  }, [selection.family, catalogReady, refreshQueries, sessionQuery.error]);
 
   useEffect(() => {
     const unsubscribe = queryClient.getQueryCache().subscribe(event => {
@@ -300,24 +328,23 @@ function CoursePractice({ course }: { course: CourseEntry }) {
   const changeSession = (change: () => void) => {
     retriedMismatch.current = false;
     void queryClient.cancelQueries({ queryKey: [...prefix, "session"] });
+    deep.clearSessions();
     flushSync(() => { change(); setRoundRevision(previous => previous + 1); });
+    queryClient.removeQueries({ queryKey: [...prefix, "session"], predicate: query => query.getObserversCount() === 0 });
   };
   const newRound = () => { focusNextRound.current = true; changeSession(() => {}); };
-  const session = catalogReady && !missingFilter && Boolean(catalog?.available && catalogMode?.totalCount) &&
+  const session = selection.family === "classic" && catalogReady && !missingFilter && Boolean(catalog?.available && catalogMode?.totalCount) &&
     !sessionQuery.isError && sessionQuery.fetchStatus === "idle" && !sessionQuery.isPending
     ? sessionQuery.data : undefined;
-  // A fetch is not a sign-out. Preserve the verified namespace while authority
-  // refreshes; only a settled identity change retires that actor's outbox.
-  // Anonymous observations retain their original server-bound capability and
-  // are never moved into a subsequently verified learner's namespace.
-  const identitySettled = [getQueryKey(trpc.auth.me, undefined, "query"), getQueryKey(trpc.dashboardAuth.me, undefined, "query")]
-    .every(key => {
-      const state = queryClient.getQueryState(key);
-      return state?.status === "success" && state.fetchStatus === "idle";
-    });
-  if (identitySettled) stableActor.current = actorScope ? JSON.stringify(actorScope) : "anonymous";
-  const activity = useAssessmentActivity(identitySettled && session?.activityTracking?.tracking ? session.activityTracking : null,
-    stableActor.current);
+  const selectedSession = selection.family === "classic" ? session : deep.session;
+  const activity = useAssessmentActivity(identitySettled && tokenMatches && !authBusy && selectedSession?.activityTracking?.tracking ? selectedSession.activityTracking : null, stableActor.current);
+  const activityScope = JSON.stringify([stableActor.current, authority.revision, selection.family, selectedSession?.sessionId, identitySettled, tokenMatches, authBusy]);
+  const activeActivityScope = useRef(activityScope);
+  activeActivityScope.current = activityScope;
+  const observeActivity = useCallback((event: Parameters<typeof activity.observe>[0]) => {
+    if (!identitySettled || !tokenMatches || authBusy || activeActivityScope.current !== activityScope) return;
+    activity.observe(event);
+  }, [activity.observe, activityScope, identitySettled, tokenMatches, authBusy]);
   useEffect(() => {
     if (!session || !focusNextRound.current) return;
     const heading = sessionElement.current?.querySelector<HTMLElement>(".interactive-drill__content h2");
@@ -329,7 +356,21 @@ function CoursePractice({ course }: { course: CourseEntry }) {
     await transport.current.interactive.trackActivity.mutate({ capability: session.analyticsCapability, visitorId, ...event });
   }), [analyticsVisitorId, session]);
   let status: React.ReactNode;
-  if (!online || catalogQuery.fetchStatus === "paused" || sessionQuery.fetchStatus === "paused") {
+  if (selection.family === "deep") {
+    if (!online || deep.catalogQuery.fetchStatus === "paused" || deep.sessionQuery.fetchStatus === "paused") {
+      status = <div className="course-interactive__status" role="alert"><p>Practice activities are unavailable while offline. Check your connection and try again.</p><button type="button" onClick={deep.refresh}>Try again</button></div>;
+    } else if (deep.catalogQuery.isError || deep.sessionQuery.isError) {
+      status = <div className="course-interactive__status" role="alert"><p>We couldn’t load this practice round. Please try again.</p><button type="button" onClick={deep.refresh}>Try again</button></div>;
+    } else if (!deep.catalog || !identitySettled || authBusy) {
+      status = <p className="course-interactive__status course-interactive__loading" role="status"><span className="course-interactive__spinner" aria-hidden="true" />Loading practice activities…</p>;
+    } else if (!deep.catalog.available || !deep.catalog.modes.some(entry => entry.mode === selection.mode && entry.count > 0)) {
+      status = <p className="course-interactive__status" role="status">This activity is no longer published for this course. Choose another practice mode.</p>;
+    } else if (!deep.session) {
+      status = <p className="course-interactive__status course-interactive__loading" role="status"><span className="course-interactive__spinner" aria-hidden="true" />Loading your practice round…</p>;
+    } else {
+      status = <DeepGameRunner key={JSON.stringify([authority.revision, stableActor.current, deep.session.version, deep.session.sessionId, deep.roundRevision])} session={deep.session} onActivity={observeActivity} onNewRound={deep.newRound} />;
+    }
+  } else if (!online || catalogQuery.fetchStatus === "paused" || sessionQuery.fetchStatus === "paused") {
     status = <div className="course-interactive__status" role="alert"><p>Practice activities are unavailable while offline. Check your connection and try again.</p><button type="button" onClick={refresh}>Try again</button></div>;
   } else if (catalogQuery.isError || (catalogReady && !missingFilter && sessionQuery.isError)) {
     status = <div className="course-interactive__status" role="alert"><p>We couldn’t load practice activities. Please try again.</p><button type="button" onClick={refresh}>Try again</button></div>;
@@ -348,27 +389,47 @@ function CoursePractice({ course }: { course: CourseEntry }) {
   } else {
     const drillKey = JSON.stringify([course.courseKey, authority.revision, session.version, session.mode, session.filters,
       locked ? 30 : timerSeconds, roundRevision, session.sessionId, sessionQuery.dataUpdatedAt]);
-    status = <div style={{ whiteSpace: "pre-line" }}><InteractiveDrill key={drillKey} examples={session.examples} selectedMode={mode} hideModeNavigation timerSeconds={locked ? 30 : timerSeconds} onNewRound={locked ? undefined : newRound} onRenewDelivery={newRound} onResult={progress ? recordResult : undefined} onPlay={reportPlay} onActivity={activity.observe} saveNote={progress ? saveNote : undefined} /></div>;
+    status = <div style={{ whiteSpace: "pre-line" }}><InteractiveDrill key={drillKey} examples={session.examples} selectedMode={mode} hideModeNavigation timerSeconds={locked ? 30 : timerSeconds} onNewRound={locked ? undefined : newRound} onRenewDelivery={newRound} onResult={progress ? recordResult : undefined} onPlay={reportPlay} onActivity={observeActivity} saveNote={progress ? saveNote : undefined} /></div>;
   }
 
   return (
     <div className="course-interactive__workspace interactive-drill">
       <div className="course-interactive__controls">
         <nav className="interactive-drill__nav" aria-label="Choose a practice mode">
-          {DRILL_MODES.map(item => {
-            const count = catalog?.modes.find(entry => entry.mode === item.id)?.totalCount;
-            return <button type="button" key={item.id} className={mode === item.id ? "is-active" : ""} aria-current={mode === item.id ? "true" : undefined}
-              onClick={() => changeSession(() => { setMode(item.id); setTopicId(""); setDifficulty(""); setReplay(false); })}>
-              <span>{item.label}</span><small>{item.description}</small>
-              <span className="course-interactive__count">{catalog ? `${count ?? 0} published` : "Published count unavailable"}</span>
-            </button>;
+          {PRACTICE_GROUPS.map(group => {
+            const classicChoices = DRILL_MODES.filter(item => group.classic.some(id => id === item.id));
+            const deepChoices = deep.catalog?.modes.filter(item => item.count > 0 && group.deep.some(id => id === item.mode)) ?? [];
+            if (!classicChoices.length && !deepChoices.length) return null;
+            return <div key={group.title} className="course-interactive__mode-group" role="group" aria-label={group.title}>
+              <h2>{group.title}</h2>
+              {classicChoices.map(item => {
+                const count = catalog?.modes.find(entry => entry.mode === item.id)?.totalCount;
+                const active = selection.family === "classic" && selection.mode === item.id;
+                return <button type="button" key={item.id} className={active ? "is-active" : ""} aria-current={active ? "true" : undefined}
+                  onClick={() => changeSession(() => { setSelection({ family: "classic", mode: item.id }); setTopicId(""); setDifficulty(""); setReplay(false); })}>
+                  <span>{item.label}</span><small>{item.description}</small>
+                  <span className="course-interactive__count">{catalog ? `${count ?? 0} published` : "Published count unavailable"}</span>
+                </button>;
+              })}
+              {deepChoices.map(item => {
+                const active = selection.family === "deep" && selection.mode === item.mode;
+                return <button type="button" key={item.mode} className={active ? "is-active" : ""} aria-current={active ? "true" : undefined}
+                  onClick={() => changeSession(() => setSelection({ family: "deep", mode: item.mode }))}>
+                  <span>{item.title}</span><small>{DEEP_DESCRIPTIONS[item.mode]}</small>
+                  <span className="course-interactive__count">{item.count} published{item.mode === "exam-escape-room" ? " missions" : ""}</span>
+                </button>;
+              })}
+            </div>;
           })}
         </nav>
-        <button type="button" className="interactive-drill__primary course-interactive__new-round" disabled={!catalog?.available || !online || authBusy || !catalogMode?.totalCount || Boolean(missingFilter) || sessionQuery.fetchStatus !== "idle"} onClick={newRound}>{catalog?.locked ? "Replay preview" : "New round"}</button>
+        {deep.catalogQuery.isError && <p className="course-interactive__inventory" role="status">Additional practice modes couldn’t be checked. <button type="button" className="interactive-drill__secondary" onClick={deep.refresh}>Retry</button></p>}
+        {selection.family === "classic"
+          ? <button type="button" className="interactive-drill__primary course-interactive__new-round" disabled={!catalog?.available || !online || authBusy || !catalogMode?.totalCount || Boolean(missingFilter) || sessionQuery.fetchStatus !== "idle"} onClick={newRound}>{catalog?.locked ? "Replay preview" : "New round"}</button>
+          : <button type="button" className="interactive-drill__primary course-interactive__new-round" disabled={!deep.session || !online || authBusy || !identitySettled} onClick={deep.newRound}>New round</button>}
       </div>
       <div className="course-interactive__session" ref={sessionElement}>
-        <div className="course-interactive__session-heading"><span>{DRILL_MODES.find(item => item.id === mode)?.label}</span><small>{catalog?.locked ? "Free preview" : "Free practice"}</small></div>
-        {progress && <div className="course-interactive__progress" role="status" aria-label="Your saved progress">
+        <div className="course-interactive__session-heading"><span>{selection.family === "classic" ? DRILL_MODES.find(item => item.id === mode)?.label : deep.catalog?.modes.find(item => item.mode === selection.mode)?.title ?? "Practice round"}</span><small>{selection.family === "classic" && catalog?.locked ? "Free preview" : "Free practice"}</small></div>
+        {selection.family === "classic" && progress && <div className="course-interactive__progress" role="status" aria-label="Your saved progress">
           <div className="course-interactive__goal">
             <span>Today {Math.min(progress.today.answered, progress.today.goal)} of {progress.today.goal}</span>
             <span className="course-interactive__goal-bar" aria-hidden="true"><span style={{ width: `${Math.min(100, (progress.today.answered / progress.today.goal) * 100)}%` }} /></span>
@@ -379,12 +440,14 @@ function CoursePractice({ course }: { course: CourseEntry }) {
             ? <button type="button" className="interactive-drill__secondary" onClick={() => changeSession(() => setReplay(false))}>Back to mixed practice</button>
             : progress.dueCount > 0 && <button type="button" className="interactive-drill__secondary" onClick={() => changeSession(() => setReplay(true))}>Review missed</button>}
         </div>}
-        {catalog?.locked && <p className="course-interactive__preview">You’re practising with the available free preview. Course access determines which activities are available.</p>}
+        {selection.family === "classic" && catalog?.locked && <p className="course-interactive__preview">You’re practising with the available free preview. Course access determines which activities are available.</p>}
         {session && <p className="course-interactive__inventory">{session.examples.length} in this round · {session.totalAvailableCount} available with these filters · {replay && progress ? "replaying items due for review · " : ""}{saveNote}</p>}
-        {session?.activityTracking?.tracking && <p className="course-interactive__inventory" role="status">Optional learning activity records choices, retries and explanations shown, not verified scores or reading time. Anonymous play remains unnamed.</p>}
+        {selection.family === "deep" && deep.session && <p className="course-interactive__inventory">{deep.session.tasks.length} {deep.session.mode === "exam-escape-room" ? "stages in this mission" : "activities in this round"}. In-session practice score only; these games do not add to saved six-game progress, streaks or due review. Leaving or refreshing resets this run.</p>}
+        {selectedSession?.activityTracking?.tracking && <p className="course-interactive__inventory" role="status">Optional learning activity records choices, retries and explanations shown, not verified scores or reading time. Anonymous play remains unnamed.</p>}
+        {selection.family === "deep" && deep.session && !deep.session.activityTracking?.tracking && <p className="course-interactive__inventory" role="status">Learning activity recording is unavailable for this round. You can still practise; your score stays in this session only.</p>}
         {activity.saveError && <p className="course-interactive__inventory" role="alert">Learning activity could not be confirmed saved. Your game score is unchanged. <button type="button" className="interactive-drill__secondary" onClick={() => void activity.retry()}>Retry activity save</button></p>}
         {status}
-        <details className="course-interactive__settings-panel" open={settingsOpen} onToggle={event => setSettingsOpen(event.currentTarget.open)}>
+        {selection.family === "classic" && <details className="course-interactive__settings-panel" open={settingsOpen} onToggle={event => setSettingsOpen(event.currentTarget.open)}>
           <summary>Round settings <small>{catalog?.locked ? "1 preview example" : `Up to ${sessionSize} activities`}</small></summary>
         <fieldset className="course-interactive__settings" disabled={locked || !catalog?.available} aria-describedby="course-session-settings-note">
           <legend>Round settings</legend>
@@ -406,7 +469,7 @@ function CoursePractice({ course }: { course: CourseEntry }) {
           </select>{!locked && mode !== "rapid-swipe" && <small>Rapid Swipe only</small>}</label>
         </fieldset>
         <p id="course-session-settings-note" className="course-interactive__settings-note">{catalog?.locked ? "Free preview: one fixed example per mode. Round settings require course access." : "Available settings apply immediately. Rounds use only published activities, so smaller banks may contain fewer than your selected size."}{" "}{saveNote}{saveState === "unsaved" ? ". Some answers could not be confirmed saved; they will not be retried automatically." : "."}</p>
-        </details>
+        </details>}
       </div>
     </div>
   );
@@ -437,7 +500,7 @@ export default function CourseInteractiveLearning() {
           {course ? <details className="course-interactive__details">
             <summary>Practice details</summary>
             <p className="interactive-learning__description">All published game exercises are free to practise. No account or course purchase is required for these games.</p>
-            <p className="interactive-learning__note">When optional learning activity recording is enabled, choices, retries and explanations shown may be recorded separately from saved game progress; anonymous play remains unnamed. When saved progress is available, signed-in learners can save results so due items can come back for review. The status below confirms whether game results were saved, and activity-save failures are shown separately. Game results and observed activity do not count toward quiz history or your readiness score. Switching activities or rechecking access resets your current round. Returning to this tab rechecks access and resets your round; this is not a saved-run resume.</p>
+            <p className="interactive-learning__note">When optional learning activity recording is enabled, choices, retries and explanations shown may be recorded separately from saved game progress; anonymous play remains unnamed. Saved game progress and due review apply only to the original six games when available. New deeper-game scores stay in the current session; optional observed activity is not a saved-run resume. The status below confirms whether game results were saved, and activity-save failures are shown separately. Game results and observed activity do not count toward quiz history or your readiness score. Switching activities or rechecking access resets your current round. Returning to this tab rechecks access and resets your round; this is not a saved-run resume.</p>
             <p>Exam practice, not operating instructions or regulatory advice.</p>
           </details> : <p className="interactive-learning__description">This course could not be found or is not currently active.</p>}
         </section>

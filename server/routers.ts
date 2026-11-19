@@ -56,6 +56,7 @@ import { electricianReviewRouter } from "./routers/electricianReviewRouter";
 import { ceuRouter } from "./routers/ceuRouter";
 import { trainingRouter } from "./routers/trainingRouter";
 import { interactiveRouter } from "./routers/interactiveRouter";
+import { deepGamesRouter } from "./routers/deepGamesRouter";
 import { assessmentActivityRouter } from "./routers/assessmentActivityRouter";
 import { sendContactEmail } from "./email";
 import { trackEvent } from "./analytics";
@@ -170,6 +171,7 @@ export const appRouter = router({
   flashcard: flashcardRouter,
   quiz: quizRouter,
   interactive: interactiveRouter,
+  deepGames: deepGamesRouter,
   assessmentActivity: assessmentActivityRouter,
   dashboard: dashboardRouter,
   quick10: quick10Router,

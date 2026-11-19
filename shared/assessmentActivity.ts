@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { deepNumericObservationDescriptorSchema } from "./deepGameNumeric";
 
 /** Supplemental observations, not assessment scores, readiness, entitlement, or OJT time. */
 export const assessmentActivityModes = [
@@ -16,7 +17,7 @@ export const assessmentActivityLimits = { items: 150, steps: 24, batch: 25, even
 const id = z.string().regex(/^[a-zA-Z0-9][a-zA-Z0-9_.:-]{0,79}$/);
 const option = z.object({ id, text: z.string().trim().min(1).max(300) }).strict();
 const choices = z.array(option).max(24).refine(values => new Set(values.map(value => value.id)).size === values.length, "Duplicate option IDs");
-const step = z.object({ id, label: z.string().trim().min(1).max(300), options: choices.default([]) }).strict();
+const step = z.object({ id, label: z.string().trim().min(1).max(300), options: choices.default([]), response: deepNumericObservationDescriptorSchema.optional() }).strict();
 /** Only server delivery builders may supply these snapshots. Never accept client-authored prompts or names. */
 export const assessmentActivityItemSchema = z.object({
   id, title: z.string().trim().min(1).max(2000).optional(), prompt: z.string().trim().min(1).max(2000),

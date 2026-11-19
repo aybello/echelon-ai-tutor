@@ -214,3 +214,21 @@
 .course-interactive__goal-bar span { display: block; height: 100%; background: #1f9d6b; border-radius: 9px; transition: width 200ms ease; }
 .course-interactive__progress button { min-height: 36px; margin-left: auto; padding: 4px 14px; }
 @media (prefers-reduced-motion: reduce) { .course-interactive__goal-bar span { transition: none; } }
+
+/* Additive practice families use the same buttons, palette and compact workspace. */
+.course-interactive__mode-group { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.course-interactive__mode-group h2 { margin: 4px 4px 0; color: #000; font: 800 14px/1.35 Manrope, sans-serif; }
+.course-interactive__mode-group button { width: 100%; text-wrap: pretty; }
+.course-interactive__loading { display: flex; align-items: center; gap: 10px; }
+.course-interactive__spinner { flex: 0 0 18px; height: 18px; border: 2px solid #cbdff2; border-top-color: #1757b8; border-radius: 50%; animation: course-practice-spin 800ms linear infinite; }
+@keyframes course-practice-spin { to { transform: rotate(360deg); } }
+@media (max-width: 699px) {
+  .course-interactive__controls .interactive-drill__nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+  .course-interactive__mode-group { min-width: 0; }
+}
+@media (max-width: 479px) {
+  .course-interactive__controls .interactive-drill__nav { grid-template-columns: 1fr; }
+  .course-interactive__mode-group { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .course-interactive__mode-group h2 { grid-column: 1 / -1; }
+}
+@media (prefers-reduced-motion: reduce) { .course-interactive__spinner { animation: none; } }

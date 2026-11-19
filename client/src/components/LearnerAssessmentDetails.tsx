@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { trpc } from "@/lib/trpc";
 import { getCourseByKey } from "@shared/courseRegistry";
+import { parseNumericAlias } from "@shared/deepGameNumeric";
 import { LEARNER_ASSESSMENT_COVERAGE, type LearnerAssessmentTarget, type LearnerAssessmentFeed, type LearnerAssessmentDetail } from "@shared/learnerActivity";
 
 const queryOptions = { retry: false as const, staleTime: 0 };
@@ -22,6 +23,9 @@ function AssessmentPage({ target, sessionId, days }: { target: LearnerAssessment
           const item = data.items?.find(value => value.id === event.itemId);
           const step = item?.steps.find(value => value.id === event.stepId);
           const answer = (step?.options ?? item?.options)?.find(value => value.id === event.chosenAnswer);
+          const numeric = step?.response?.kind === "numeric" ? parseNumericAlias(event.chosenAnswer) : null;
+          const numericUnit = numeric && step?.response?.unitOptions.find(unit => unit.id === numeric.unitId);
+          const responseText = numeric && numericUnit ? `${numeric.value} ${numericUnit.label}` : answer?.text;
           return <li key={event.sequence} className="border-t border-slate-200 pt-3">
             <div><strong>{event.action.replaceAll("_", " ")}</strong>{event.firstRecordedAnswer && " · First recorded submitted answer"} · <time dateTime={event.occurredAt}>{new Date(event.occurredAt).toLocaleString()}</time></div>
             <div className="text-xs text-slate-500">Source: observed · Sequence {event.sequence}</div>
@@ -29,7 +33,7 @@ function AssessmentPage({ target, sessionId, days }: { target: LearnerAssessment
               {!!item.options.length && <ul className="list-disc pl-5">{item.options.map(option => <li key={option.id}>{option.id}: {option.text}</li>)}</ul>}
             </div>}
             {step && <div>Issued step: {step.label}<ul className="list-disc pl-5">{step.options.map(option => <li key={option.id}>{option.id}: {option.text}</li>)}</ul></div>}
-            {event.chosenAnswer !== null && <div>Recorded response: {answer?.text ?? "Issued response text unavailable"} <span className="text-xs text-slate-500">(alias {event.chosenAnswer})</span></div>}
+            {event.chosenAnswer !== null && <div>Recorded response: {responseText ?? "Issued response text unavailable"} <span className="text-xs text-slate-500">(alias {event.chosenAnswer})</span></div>}
             {event.observedCorrect !== null && <div>Observed outcome: {event.observedCorrect ? "correct" : "incorrect"} · not server-verified</div>}
           </li>;
         })}

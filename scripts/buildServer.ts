@@ -191,6 +191,21 @@ if (
       },
       logLevel: "info",
     });
+    // Separate private data modules: the server registry uses a fixed native
+    // runtime import map, never a static import into the main server bundle.
+    // Missing reviewed entrypoints fail the build rather than becoming placeholders.
+    rmSync(resolve("dist/deep-game-content"), { recursive: true, force: true });
+    await build({
+      entryPoints: {
+        oit: "server/deepGames/content/oit.ts",
+        "class1-water": "server/deepGames/content/class1-water.ts",
+      },
+      platform: "node",
+      bundle: true,
+      format: "esm",
+      outdir: "dist/deep-game-content",
+      logLevel: "info",
+    });
     // Private answers stay adjacent to the server, never in dist/public or public.
     rmSync(resolve("dist/interactive-content"), { recursive: true, force: true });
     cpSync(interactiveArtifacts.outputDir, resolve("dist/interactive-content"), { recursive: true });

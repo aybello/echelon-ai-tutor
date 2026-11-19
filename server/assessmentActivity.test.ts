@@ -108,6 +108,19 @@ describe("assessment activity immutable reducer", () => {
   it("accepts only issued step-choice IDs", () => {
     expect(reduceAssessmentActivityBatch(initial, items, [event({ action: "step_answer", stepId: "s1", chosenAnswer: "f1" })], []).accepted).toHaveLength(1);
   });
+  it("preserves numeric first responses and retries only for issued numeric steps", () => {
+    const numericItems = assessmentActivityIssueSchema.parse({ ...issue, items: [{ ...issue.items[0], steps: [{ id: "result", label: "Calculated volume", response: { kind: "numeric", unitOptions: [{ id: "L", label: "litres" }] } }] }] }).items;
+    const first = event({ action: "step_answer", stepId: "result", chosenAnswer: "n:12.50:L", observedCorrect: false });
+    const retry = event({ sequence: 3, action: "retry", stepId: "result", chosenAnswer: undefined, observedCorrect: undefined });
+    const second = event({ sequence: 4, action: "step_answer", stepId: "result", chosenAnswer: "n:15.00:L", observedCorrect: true });
+    expect(reduceAssessmentActivityBatch(initial, numericItems, [first, retry, second], []).accepted).toEqual([first, retry, second]);
+    for (const chosenAnswer of ["n:12.5:m3", "n:1e3:L", "n:NaN:L", "n:1+2:L", "n:01:L", "n:12.5:L:extra"]) {
+      expect(() => reduceAssessmentActivityBatch(initial, numericItems, [{ ...first, chosenAnswer }], [])).toThrow();
+    }
+    expect(() => reduceAssessmentActivityBatch(initial, items, [{ ...first, stepId: "s1" }], [])).toThrow();
+    expect(() => reduceAssessmentActivityBatch(initial, numericItems, [{ ...first, action: "answer_submitted", stepId: undefined }], [])).toThrow();
+    expect(assessmentActivityIssueSchema.safeParse({ ...issue, items: [{ ...issue.items[0], steps: [{ id: "result", label: "Result", response: { kind: "numeric", unitOptions: [{ id: "L", label: "litres" }], expected: "15" } }] }] }).success).toBe(false);
+  });
   it("completion is terminal but exact duplicate completion remains idempotent", () => {
     const completed = event({ action: "completed", itemId: undefined, chosenAnswer: undefined, observedCorrect: undefined });
     const done = reduceAssessmentActivityBatch(initial, items, [completed], []);
