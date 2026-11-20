@@ -1,10 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowRight, CheckCircle2, XCircle } from "lucide-react";
 import { Link, useLocation, useSearch } from "wouter";
+import AITutor from "@/components/AITutor";
 import NextStepCard from "@/components/NextStepCard";
 import QuizGate from "@/components/QuizGate";
 import SiteNav from "@/components/SiteNav";
 import StepSolution from "@/components/StepSolution";
+import { TutorPanelPlacement } from "@/components/TutorPanelPlacement";
 import "@/components/StudyWorkspace.css";
 import "@/components/PracticeWorkspace.css";
 import "@/components/QuizPage.css";
@@ -16,6 +18,7 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 import { quick10Href } from "@/lib/nextStepHref";
 import { readAccessToken } from "@/lib/readAccessToken";
 import { trpc } from "@/lib/trpc";
+import type { Question } from "@/lib/questionTypes";
 import { getCourseByKey } from "@shared/courseRegistry";
 
 type Phase = "loading" | "asking" | "checking" | "revealed" | "done" | "empty" | "error";
@@ -59,6 +62,8 @@ export default function Quick10() {
   const [message, setMessage] = useState("");
   const [round, setRound] = useState(0);
   const [pendingAnswer, setPendingAnswer] = useState<PendingQuick10Answer | null>(null);
+  const [tutorContext, setTutorContext] = useState<string | null>(null);
+  const tutorDeepLink = useRef(params.get("panel") === "tutor");
   const pendingRef = useRef<PendingQuick10Answer | null>(null);
   const sessionId = useRef<string>(crypto.randomUUID());
   const generation = useRef(0);
@@ -73,6 +78,7 @@ export default function Quick10() {
     const requestGeneration = ++generation.current;
     const requestActor = actorKey;
     setSession(null); setPhase("loading"); setMessage(""); setReveal(null); setIndex(0); setResults([]);
+    setTutorContext(null);
     setPendingAnswer(null); pendingRef.current = null; busy.current = false;
     sessionId.current = crypto.randomUUID();
     try {
@@ -99,6 +105,37 @@ export default function Quick10() {
   useEffect(() => { if (phase === "revealed") nextButton.current?.focus(); }, [phase]);
 
   const current = session?.questions[index];
+  // Include the request scope so a course/actor transition hides the old panel
+  // immediately, even before the replacement session effect starts.
+  const tutorContextKey = session && current && ["asking", "checking", "revealed"].includes(phase)
+    ? JSON.stringify([requestedCourse, sessionLength, round, actorKey, sessionId.current, session.courseKey, current.id])
+    : null;
+  const tutorOpen = tutorContextKey !== null && tutorContext === tutorContextKey;
+  const dismissTutor = useCallback(() => {
+    setTutorContext(null);
+    tutorDeepLink.current = false;
+    try {
+      const url = new URL(window.location.href);
+      if (url.searchParams.get("panel") === "tutor") {
+        url.searchParams.delete("panel");
+        window.history.replaceState({}, "", `${url.pathname}${url.search}${url.hash}`);
+      }
+    } catch {
+      // Local dismissal still works if browser history is unavailable.
+    }
+  }, []);
+  useEffect(() => {
+    if (!tutorDeepLink.current || !tutorContextKey || phase !== "asking") return;
+    // Consume the entry deep link once; subsequent questions/sessions stay closed.
+    tutorDeepLink.current = false;
+    setTutorContext(tutorContextKey);
+  }, [tutorContextKey, phase]);
+  const tutorQuestion: Partial<Question> | null = current ? {
+    id: current.id, module: current.module, q: current.question,
+    options: current.options, isCalc: current.isCalc,
+    // Quick10 deliberately receives no answer key until the save is confirmed.
+    ...(reveal ? { correct: reveal.correctIndex, explanation: reveal.explanation, steps: reveal.steps, tip: reveal.tip } : {}),
+  } : null;
   const presentation = useRef("");
   const activityStarted = useRef("");
   useEffect(() => {
@@ -156,6 +193,7 @@ export default function Quick10() {
 
   function next() {
     if (!session || phase !== "revealed" || !reveal || pendingRef.current) return;
+    dismissTutor();
     setReveal(null);
     if (index + 1 >= session.questions.length) {
       // Explicit finish after every canonical answer acknowledgement, never cleanup.
@@ -171,7 +209,7 @@ export default function Quick10() {
   // SiteNav resolves course tabs from registered study paths, not /quick-10.
   const navigationCourse = course ?? getCourseByKey(requestedCourse ?? courses.data?.currentCourseKey ?? "");
   return (
-    <div className="practice-page practice-screen learning-redesign quick10-page">
+    <div className={`practice-page practice-screen learning-redesign quick10-page${tutorOpen ? " has-tutor" : ""}`}>
       <SiteNav currentPath={navigationCourse?.quizPath ?? "/quick-10"} variant="learning" />
       <main className="practice-screen-main">
         <header className="practice-header" aria-label="Practice session">
@@ -238,6 +276,11 @@ export default function Quick10() {
                 </button>;
               })}
             </div>
+            <div className="practice-resource-actions quick10-tutor-actions">
+              <button type="button" className="quick10-tutor-trigger" aria-expanded={tutorOpen}
+                aria-controls={tutorOpen ? "quick10-tutor" : undefined}
+                onClick={() => setTutorContext(tutorContextKey)}>Ask AI Tutor</button>
+            </div>
             {phase === "checking" && <p role="status" className="mt-4 text-sm text-muted-foreground">Checking your answer…</p>}
             {message && phase === "asking" && <p role="alert" className="mt-4 text-sm text-destructive">{message}</p>}
             {pendingAnswer && phase === "asking" && <button type="button" onClick={() => void choose(pendingAnswer.selectedIndex)} className="mt-3 min-h-11 rounded-lg border border-border px-4 text-sm font-semibold">Retry original answer {LETTERS[pendingAnswer.selectedIndex]}</button>}
@@ -262,6 +305,18 @@ export default function Quick10() {
         </section>}
         </div>
       </main>
+      {tutorOpen && session && tutorQuestion && (
+        <TutorPanelPlacement.Provider value="workspace">
+          <div id="quick10-tutor" className="practice-tutor-slot">
+            <AITutor key={tutorContextKey}
+              // AITutor's legacy bank type requires answer fields. Do not invent
+              // them for an unanswered Quick10 question; the runtime supports omissions.
+              question={tutorQuestion as Question}
+              userAnswer={reveal?.picked ?? pendingAnswer?.selectedIndex ?? null}
+              history={[]} patternMode={false} onClose={dismissTutor} examType={session.courseKey} />
+          </div>
+        </TutorPanelPlacement.Provider>
+      )}
     </div>
   );
 }

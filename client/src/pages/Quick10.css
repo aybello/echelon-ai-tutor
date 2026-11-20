@@ -64,6 +64,18 @@
 .quick10-page .qs-option.is-correct { background: #dcfce7; border-color: #86efac; color: #15803d; font-weight: 700; }
 .quick10-page .qs-option.is-incorrect { background: #fee2e2; border-color: #fca5a5; color: #b91c1c; }
 .quick10-page .qs-option.is-muted { opacity: .7; }
+.quick10-page .quick10-tutor-actions { display: flex; flex-wrap: wrap; }
+.quick10-page .quick10-tutor-trigger {
+  border: 1px solid #cbd6e4;
+  border-radius: 8px;
+  background: #fff;
+  color: var(--lr-teal, #1757b8);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+.quick10-page .quick10-tutor-trigger:hover,
+.quick10-page .quick10-tutor-trigger[aria-expanded="true"] { background: #eff6ff; border-color: #93c5fd; }
 .quick10-page .quick10-primary { background: var(--lr-teal, #1757b8); color: #fff; }
 .quick10-page .quick10-primary:hover { background: #134a9e; }
 .quick10-page .quick10-state-card {
