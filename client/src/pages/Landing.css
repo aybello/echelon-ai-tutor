@@ -24,6 +24,23 @@
 .echelon-homepage a { color: inherit; }
 .echelon-homepage :focus-visible { outline: 3px solid var(--home-teal); outline-offset: 3px; }
 
+/* Genuine learner feedback, without invented ratings or profile images. */
+.homepage-reviews { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: stretch; }
+.homepage-reviews .homepage-section-heading { grid-column: 1 / -1; margin: 0 0 8px; }
+.homepage-review-card { margin: 0; padding: clamp(22px, 3vw, 36px); border: 1px solid var(--home-border); border-radius: 8px; background: #fff; box-shadow: var(--home-shadow); }
+.homepage-review-card > svg { color: var(--home-teal); }
+.homepage-review-card blockquote { margin: 14px 0 24px; }
+.homepage-review-card blockquote p { color: var(--home-ink); font-size: 18px; line-height: 1.6; }
+.homepage-review-card blockquote p + p { margin-top: 12px; font-size: 17px; }
+.homepage-review-card figcaption { display: grid; gap: 5px; border-top: 1px solid var(--home-border); padding-top: 18px; }
+.homepage-review-card figcaption strong { font-size: 16px; }
+.homepage-review-card figcaption span { font-size: 14px; }
+.homepage-review-card figcaption small { margin-top: 5px; color: #42556c; font-size: 12px; line-height: 1.5; }
+.homepage-reviews > .homepage-text-link { grid-column: 1 / -1; justify-self: start; }
+@media (max-width: 760px) {
+  .homepage-reviews { grid-template-columns: minmax(0, 1fr); }
+}
+
 /* Shared header, intentionally scoped to the redesigned home route. */
 .echelon-homepage + * { font-family: inherit; }
 .echelon-homepage .echelon-site-header { color: var(--home-navy); font-family: "Source Sans 3", system-ui, sans-serif; }

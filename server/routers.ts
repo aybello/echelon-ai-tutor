@@ -898,7 +898,7 @@ export const appRouter = router({
           rating: z.number().int().min(1).max(5),
           comment: z.string().max(1000).optional(),
           email: z.string().email().optional(), // for guest users
-          feedbackType: z.enum(["quiz_gate", "session_complete", "mock_exam", "first_high_score"]),
+          feedbackType: z.enum(["quiz_gate", "session_complete", "mock_exam", "first_high_score", "dashboard", "quick10"]),
           province: z.string().max(32).optional(),
         })
       )
@@ -908,7 +908,7 @@ export const appRouter = router({
         const userId = ctx.user?.id ?? null;
         await db.insert(userFeedback).values({
           userId,
-          email: input.email ?? ctx.user?.email ?? null,
+          email: ctx.studentEmail ?? ctx.user?.email ?? input.email ?? null,
           examType: input.examType,
           rating: input.rating,
           comment: input.comment ?? null,

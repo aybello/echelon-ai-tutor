@@ -589,8 +589,8 @@ export default function QuizShell({
             </p>
             {canonicalCourse?.courseKey && <NextStepCard courseKey={canonicalCourse.courseKey} className="mb-4 text-left" forceDocumentNavigation />}
             {interactiveHref && <Link href={interactiveHref} className="practice-interactive-link">🎮 Play games</Link>}
-            {/* Google Review prompt — shown when user scores 70%+ AND review prompt budget allows */}
-            {pct >= 70 && shouldShowReviewPrompt() && (
+            {/* Every learner can share an honest review, independent of quiz score. */}
+            {shouldShowReviewPrompt() && (
               <a
                 href={GOOGLE_REVIEW_URL}
                 target="_blank"
@@ -616,7 +616,7 @@ export default function QuizShell({
                 }}
               >
                 <span style={{ fontSize: 18 }}>⭐</span>
-                Enjoying Echelon? Leave us a Google Review
+                Share your experience on Google
               </a>
             )}
             <div className="qs-session-btns" style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>

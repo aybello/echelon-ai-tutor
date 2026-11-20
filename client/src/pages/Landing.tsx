@@ -17,6 +17,7 @@ import CoursePathHero from "@/components/CoursePathHero";
 import HomepageProductDemo from "@/components/HomepageProductDemo";
 import HomepageCourseDiscovery from "@/components/HomepageCourseDiscovery";
 import TrustedOrganizations from "@/components/TrustedOrganizations";
+import LearnerReviews from "@/components/LearnerReviews";
 import NationalWaitlistModal from "@/components/NationalWaitlistModal";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { useStructuredData } from "@/hooks/useStructuredData";
@@ -287,6 +288,8 @@ export default function Landing() {
           </div>
           <p className="homepage-availability-note">Tools vary by course. Water OIT and Ontario Class 1 Water also include five deeper games, from Calculation Ladder to Exam Escape Room. Ontario 309A offers free practice and mock exams, not interactive games.</p>
         </section>
+
+        <LearnerReviews />
 
         <section id="continuing-education" className="homepage-section homepage-education" aria-labelledby="homepage-education-title">
           <div className="homepage-education-copy">

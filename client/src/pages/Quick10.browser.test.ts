@@ -32,10 +32,12 @@ beforeAll(async () => {
         export const useLocation=()=>[location.pathname,go];
       ` : args.path==='@/lib/trpc' ? `
         window.saves=[];window.starts=[];window.nextQueries=[];window.tutorRenders=[];window.tutorMounts=0;
+        window.feedbackSaves=[];
         const courses=[{courseKey:'class1-water',shortName:'Water',displayName:'Water'},{courseKey:'class2-water',shortName:'Water II',displayName:'Water II'}];
         export const trpc={quick10:{courses:{useQuery:()=>({data:{courses:window.noCourses?[]:courses,currentCourseKey:window.noCourses?'electrician-309a':'class1-water'}})},
           start:{useMutation:()=>({mutateAsync:async input=>{window.starts.push(input);return {courseKey:input.courseKey||'class1-water',courseName:'Synthetic water',locked:false,attemptToken:'synthetic-receipt',questions:Array.from({length:input.questionCount},(_,i)=>({id:i+1,module:'Safety',isCalc:false,question:'Synthetic question '+(i+1),options:['Synthetic correct','Synthetic wrong']}))}}})},
           answer:{useMutation:()=>({mutateAsync:async input=>{window.saves.push(input);if(window.holdAnswer)await new Promise(resolve=>{window.releaseAnswer=resolve});if(window.failFirstAnswer&&window.saves.length===1)throw Error('Synthetic offline');return {saved:!window.unsavedAnswer,correct:input.selectedIndex===0,correctIndex:0,explanation:'Synthetic saved explanation',steps:[{l:'Given',c:'Synthetic worked step'}],tip:'Synthetic saved tip'}}})}},
+          feedback:{submit:{useMutation:options=>({isPending:false,mutate:input=>{window.feedbackSaves.push(input);if(window.failFeedback)options.onError();else options.onSuccess({success:true})}})}},
           dashboard:{nextStep:{useQuery:(input,options)=>{window.nextQueries.push({input,options});return {data:{step:{message:'Continue with missed questions',buttonLabel:'Retry mistakes',action:{type:'missed-questions'}}}}}}}};
       ` : args.path==='@/components/AITutor' ? `
         import React,{useContext,useState} from 'react';
@@ -86,6 +88,7 @@ describe('Quick 10 synthetic browser interactions',()=>{
       expect(await page.locator('.practice-page.practice-screen.learning-redesign > .echelon-site-header').count()).toBe(1);
       expect(await page.locator('.practice-screen-main .practice-header .practice-header-inner').count()).toBe(1);
       expect(await page.locator('.practice-content .qs-question-card .qs-option').count()).toBe(2);
+      expect(await page.getByRole('button',{name:'Leave a review'}).count()).toBe(0);
       expect(await page.getByRole('navigation',{name:'Echelon navigation'}).count()).toBe(1);
       await page.getByRole('combobox').selectOption('class2-water');
       await expect.poll(()=>page.evaluate(()=>(window as any).starts.at(-1).courseKey)).toBe('class2-water');
@@ -100,6 +103,23 @@ describe('Quick 10 synthetic browser interactions',()=>{
       }
       await page.getByText('10 of 10',{exact:true}).waitFor();
       expect(await page.evaluate(()=>(window as any).saves.length)).toBe(10);
+      await page.getByRole('button',{name:'Leave a review'}).click();
+      await page.getByRole('dialog',{name:'Share your experience'}).waitFor();
+      const google=page.getByRole('link',{name:/Write a Google review/});
+      expect(await google.getAttribute('href')).toBe('https://g.page/r/CWsjBbkUlS8rEBM/review');
+      await page.getByRole('button',{name:'1 star: Poor',exact:true}).click();
+      expect(await google.count()).toBe(1);
+      await page.getByRole('textbox',{name:/Tell us more/}).fill('Synthetic review, never sent to production');
+      await page.evaluate(()=>{(window as any).failFeedback=true});
+      await page.getByRole('button',{name:'Send private feedback'}).click();
+      await page.getByRole('alert').waitFor();
+      expect(await page.getByRole('textbox',{name:/Tell us more/}).inputValue()).toBe('Synthetic review, never sent to production');
+      await page.evaluate(()=>{(window as any).failFeedback=false});
+      await page.getByRole('button',{name:'Retry saving feedback'}).click();
+      await page.getByText(/Your feedback has been saved privately/).waitFor();
+      expect(await page.evaluate(()=>(window as any).feedbackSaves.at(-1))).toMatchObject({examType:'class2-water',feedbackType:'quick10',rating:1});
+      await page.getByRole('button',{name:'Done',exact:true}).click();
+      expect(await page.getByRole('dialog').count()).toBe(0);
       await page.getByRole('link',{name:/Retry mistakes/}).click();
       expect(new URL(page.url()).pathname).toBe('/class2-water');
       expect(new URL(page.url()).searchParams.get('mode')).toBe('missed');
