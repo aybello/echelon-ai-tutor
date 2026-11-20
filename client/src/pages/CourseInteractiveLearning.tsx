@@ -2,6 +2,7 @@ import { createGameReporter, gameAnalyticsVisitor } from "@/lib/gameAnalytics";
 import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { flushSync } from "react-dom";
 import { z } from "zod";
+import { ArrowLeftRight, ArrowUpDown, Calculator, Check, ChevronDown, CircleHelp, DoorOpen, GitBranch, Layers, ListOrdered, Search, SearchCheck, Zap } from "lucide-react";
 import { onlineManager, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getQueryKey } from "@trpc/react-query";
 import { Link, useRoute, useSearch } from "wouter";
@@ -81,6 +82,20 @@ const DEEP_DESCRIPTIONS: Record<DeepGameMode, string> = {
   "exam-escape-room": "Complete a connected practice mission.",
 };
 
+const PRACTICE_ICONS = {
+  "rapid-swipe": Zap,
+  "speed-match": ArrowLeftRight,
+  "odd-one-out": Layers,
+  "before-after": ArrowUpDown,
+  "cause-effect": GitBranch,
+  "tap-the-flaw": SearchCheck,
+  "calculation-ladder": Calculator,
+  "build-process": ListOrdered,
+  "find-calculation-error": CircleHelp,
+  "evidence-detective": Search,
+  "exam-escape-room": DoorOpen,
+} satisfies Record<DrillMode | DeepGameMode, typeof Zap>;
+
 /** The learner's own calendar day, so a late-night session counts for the day they are in. */
 function localDateString(): string {
   const now = new Date();
@@ -114,6 +129,8 @@ function CoursePractice({ course }: { course: CourseEntry }) {
   const failedSave = useRef(false);
   const [saveState, setSaveState] = useState<"ready" | "pending" | "saved" | "unsaved">("ready");
   const flushTimer = useRef<number | undefined>(undefined);
+  const [chooserOpen, setChooserOpen] = useState(() => typeof window !== "undefined" && window.matchMedia("(min-width: 700px)").matches);
+  const chooserSummary = useRef<HTMLElement>(null);
   const [settingsOpen, setSettingsOpen] = useState(() => typeof window !== "undefined" && window.matchMedia("(min-width: 700px)").matches);
   const sessionElement = useRef<HTMLDivElement>(null);
   const focusNextRound = useRef(false);
@@ -392,9 +409,26 @@ function CoursePractice({ course }: { course: CourseEntry }) {
     status = <div style={{ whiteSpace: "pre-line" }}><InteractiveDrill key={drillKey} examples={session.examples} selectedMode={mode} hideModeNavigation timerSeconds={locked ? 30 : timerSeconds} onNewRound={locked ? undefined : newRound} onRenewDelivery={newRound} onResult={progress ? recordResult : undefined} onPlay={reportPlay} onActivity={observeActivity} saveNote={progress ? saveNote : undefined} /></div>;
   }
 
+  const selectedTitle = selection.family === "classic"
+    ? DRILL_MODES.find(item => item.id === mode)?.label
+    : deep.catalog?.modes.find(item => item.mode === selection.mode)?.title ?? "Practice round";
+  const SelectedIcon = PRACTICE_ICONS[selection.mode];
+  const closeMobileChooser = () => {
+    if (window.matchMedia("(max-width: 699px)").matches) {
+      setChooserOpen(false);
+      chooserSummary.current?.focus();
+    }
+  };
+
   return (
     <div className="course-interactive__workspace interactive-drill">
       <div className="course-interactive__controls">
+        <details className="course-interactive__chooser" open={chooserOpen} onToggle={event => setChooserOpen(event.currentTarget.open)}>
+          <summary ref={chooserSummary}>
+            <SelectedIcon className="course-interactive__chooser-icon" size={20} aria-hidden="true" />
+            <span className="course-interactive__chooser-heading"><strong>Practice modes</strong><span>{selectedTitle}</span></span>
+            <span className="course-interactive__chooser-action">{chooserOpen ? "Hide" : "Change"}<ChevronDown size={16} aria-hidden="true" /></span>
+          </summary>
         <nav className="interactive-drill__nav" aria-label="Choose a practice mode">
           {PRACTICE_GROUPS.map(group => {
             const classicChoices = DRILL_MODES.filter(item => group.classic.some(id => id === item.id));
@@ -405,30 +439,37 @@ function CoursePractice({ course }: { course: CourseEntry }) {
               {classicChoices.map(item => {
                 const count = catalog?.modes.find(entry => entry.mode === item.id)?.totalCount;
                 const active = selection.family === "classic" && selection.mode === item.id;
+                const Icon = PRACTICE_ICONS[item.id];
                 return <button type="button" key={item.id} className={active ? "is-active" : ""} aria-current={active ? "true" : undefined}
-                  onClick={() => changeSession(() => { setSelection({ family: "classic", mode: item.id }); setTopicId(""); setDifficulty(""); setReplay(false); })}>
-                  <span>{item.label}</span><small>{item.description}</small>
-                  <span className="course-interactive__count">{catalog ? `${count ?? 0} published` : "Published count unavailable"}</span>
+                  onClick={() => { changeSession(() => { setSelection({ family: "classic", mode: item.id }); setTopicId(""); setDifficulty(""); setReplay(false); }); closeMobileChooser(); }}>
+                  <Icon className="course-interactive__mode-icon" size={18} aria-hidden="true" />
+                  <span className="course-interactive__mode-copy"><span className="course-interactive__mode-title">{item.label}</span><small>{item.description}</small><span className="course-interactive__count">{catalog ? `${count ?? 0} published` : "Published count unavailable"}</span></span>
+                  {active && <Check className="course-interactive__mode-check" size={16} aria-hidden="true" />}
                 </button>;
               })}
               {deepChoices.map(item => {
                 const active = selection.family === "deep" && selection.mode === item.mode;
+                const Icon = PRACTICE_ICONS[item.mode];
                 return <button type="button" key={item.mode} className={active ? "is-active" : ""} aria-current={active ? "true" : undefined}
-                  onClick={() => changeSession(() => setSelection({ family: "deep", mode: item.mode }))}>
-                  <span>{item.title}</span><small>{DEEP_DESCRIPTIONS[item.mode]}</small>
-                  <span className="course-interactive__count">{item.count} published{item.mode === "exam-escape-room" ? " missions" : ""}</span>
+                  onClick={() => { changeSession(() => setSelection({ family: "deep", mode: item.mode })); closeMobileChooser(); }}>
+                  <Icon className="course-interactive__mode-icon" size={18} aria-hidden="true" />
+                  <span className="course-interactive__mode-copy"><span className="course-interactive__mode-title">{item.title}</span><small>{DEEP_DESCRIPTIONS[item.mode]}</small><span className="course-interactive__count">{item.count} published{item.mode === "exam-escape-room" ? " missions" : ""}</span></span>
+                  {active && <Check className="course-interactive__mode-check" size={16} aria-hidden="true" />}
                 </button>;
               })}
             </div>;
           })}
         </nav>
+        </details>
         {deep.catalogQuery.isError && <p className="course-interactive__inventory" role="status">Additional practice modes couldn’t be checked. <button type="button" className="interactive-drill__secondary" onClick={deep.refresh}>Retry</button></p>}
+      </div>
+      <div className="course-interactive__session" ref={sessionElement}>
+        <div className="course-interactive__session-toolbar">
+          <div className="course-interactive__session-heading"><span>{selectedTitle}</span><small>{selection.family === "classic" && catalog?.locked ? "Free preview" : "Free practice"}</small></div>
         {selection.family === "classic"
           ? <button type="button" className="interactive-drill__primary course-interactive__new-round" disabled={!catalog?.available || !online || authBusy || !catalogMode?.totalCount || Boolean(missingFilter) || sessionQuery.fetchStatus !== "idle"} onClick={newRound}>{catalog?.locked ? "Replay preview" : "New round"}</button>
           : <button type="button" className="interactive-drill__primary course-interactive__new-round" disabled={!deep.session || !online || authBusy || !identitySettled} onClick={deep.newRound}>New round</button>}
-      </div>
-      <div className="course-interactive__session" ref={sessionElement}>
-        <div className="course-interactive__session-heading"><span>{selection.family === "classic" ? DRILL_MODES.find(item => item.id === mode)?.label : deep.catalog?.modes.find(item => item.mode === selection.mode)?.title ?? "Practice round"}</span><small>{selection.family === "classic" && catalog?.locked ? "Free preview" : "Free practice"}</small></div>
+        </div>
         {selection.family === "classic" && progress && <div className="course-interactive__progress" role="status" aria-label="Your saved progress">
           <div className="course-interactive__goal">
             <span>Today {Math.min(progress.today.answered, progress.today.goal)} of {progress.today.goal}</span>

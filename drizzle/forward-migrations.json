@@ -550,6 +550,21 @@
         "assessment_activity_sessions",
         "assessment_activity_events"
       ]
+    },
+    {
+      "version": 84,
+      "tag": "0084_feature_requests",
+      "file": "drizzle/0084_feature_requests.sql",
+      "sha256": "396c632b998ef0093da17a3d667a474b0c713287ebd50e9b36988dfc10c6d1ad",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "feature_requests"
+        ]
+      },
+      "verifierAllowMissingTables": [
+        "feature_requests"
+      ]
     }
   ]
 }

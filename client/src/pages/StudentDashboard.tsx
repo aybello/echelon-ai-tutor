@@ -14,6 +14,7 @@ import StudyHomeCard from "@/components/StudyHomeCard";
 import Quick10Button from "@/components/Quick10Button";
 import { isQuick10Eligible, quick10Href } from "@/lib/nextStepHref";
 import { ReviewButton } from "@/components/FeedbackModal";
+import { SuggestionButton } from "@/components/FeatureSuggestion";
 import GamesCard from "@/components/GamesCard";
 import { TutorGuideMark } from "@/components/TutorGuideMark";
 import "@/components/StudyWorkspace.css";
@@ -360,6 +361,7 @@ export default function StudentDashboard() {
           </div>
           <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
             <ReviewButton examType={selectedCourseKey ?? focusCourse?.courseKey ?? "general"} />
+            <SuggestionButton courseKey={selectedCourseKey ?? focusCourse?.courseKey ?? "general"} />
             <a href="/account" style={{
               background: "#fff", border: "1px solid #E2E8F0", borderRadius: 8,
               padding: "7px 14px", color: "#475569", fontSize: 13, fontWeight: 600, cursor: "pointer",

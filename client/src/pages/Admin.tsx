@@ -1,5 +1,6 @@
 import AdminLearnerActivity, { useLearnerActivityRefresh } from "@/components/AdminLearnerActivity";
 import AdminGamesActivity from "@/components/AdminGamesActivity";
+import AdminFeatureRequests from "@/components/AdminFeatureRequests";
 import PurchaseEmailDelivery from "@/components/PurchaseEmailDelivery";
 // ADMIN DASHBOARD — /admin
 // Gated to role === 'admin'. Shows trial emails, waitlist signups, and error reports.
@@ -215,6 +216,7 @@ export default function Admin() {
   const [leadFilter, setLeadFilter] = useState<LeadTriageFilter>("actionable");
   const [reviewFilter, setReviewFilter] = useState<ReviewStatus>("unreviewed");
   const [reviewBank, setReviewBank] = useState("");
+  const [feedbackView, setFeedbackView] = useState<"ratings" | "requests">("ratings");
   const [feedbackPage, setFeedbackPage] = useState(1);
   const [feedbackRating, setFeedbackRating] = useState<"all" | "low">("all");
   const [reviewPage, setReviewPage] = useState(1);
@@ -1696,7 +1698,9 @@ export default function Admin() {
         )}
 
         {/* -- FEEDBACK TAB -- */}
-        {activeTab === "feedback" && (
+        {activeTab === "feedback" && (<>
+          <div role="group" aria-label="Feedback type" style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 16 }}><button type="button" className="admin-btn" aria-pressed={feedbackView === "ratings"} onClick={() => setFeedbackView("ratings")}>Ratings & reviews</button><button type="button" className="admin-btn" aria-pressed={feedbackView === "requests"} onClick={() => setFeedbackView("requests")}>Feature requests</button></div>
+          {feedbackView === "requests" ? <AdminFeatureRequests /> : (
           <div style={{ background: "#F8FAFC", borderRadius: 16, overflow: "hidden", border: "1px solid rgba(0,0,0,0.07)" }}>
             <div style={{ padding: "16px 20px", borderBottom: "1px solid rgba(0,0,0,0.07)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
               <div style={{ fontSize: 13, fontWeight: 700 }}>
@@ -1753,7 +1757,7 @@ export default function Admin() {
                               {EXAM_TYPE_LABELS[row.examType] ?? row.examType}
                             </span>
                             <span style={{ padding: "3px 10px", borderRadius: 100, background: row.feedbackType === "quiz_gate" ? "#FEF9C3" : "#DBEAFE", color: row.feedbackType === "quiz_gate" ? "#A16207" : "#1D4ED8", fontSize: 10, fontWeight: 700 }}>
-                              {row.feedbackType === "quiz_gate" ? "Trial Gate" : "Session End"}
+                              {{ quiz_gate: "Trial Gate", session_complete: "Session End", dashboard: "Dashboard", quick10: "Quick 10", mock_exam: "Mock Exam", first_high_score: "Practice Milestone" }[row.feedbackType] ?? row.feedbackType}
                             </span>
                             <span style={{ fontSize: 10, color: "#475569" }}>{formatDate(row.createdAt)}</span>
                           </div>
@@ -1786,7 +1790,8 @@ export default function Admin() {
               <button type="button" className="admin-btn" disabled={feedbackQ.isFetching || !!feedbackQ.error || feedbackQ.data?.length !== 200 || feedbackPage >= 1_000_000} onClick={() => setFeedbackPage(page => page + 1)}>Next</button>
             </nav>
           </div>
-        )}
+          )}
+        </>)}
 
         {/* -- QUESTION GOVERNANCE TAB -- */}
         {activeTab === "questions" && (

@@ -5,6 +5,7 @@ import AITutor from "@/components/AITutor";
 import NextStepCard from "@/components/NextStepCard";
 import QuizGate from "@/components/QuizGate";
 import { ReviewButton } from "@/components/FeedbackModal";
+import { SuggestionInvitation } from "@/components/FeatureSuggestion";
 import SiteNav from "@/components/SiteNav";
 import StepSolution from "@/components/StepSolution";
 import { TutorPanelPlacement } from "@/components/TutorPanelPlacement";
@@ -304,6 +305,7 @@ export default function Quick10() {
               <Link href="/dashboard" className="inline-flex min-h-11 items-center rounded-lg border border-border px-4 text-sm font-semibold">Back to dashboard</Link>
             </div></>}
           <div className="mt-5"><ReviewButton examType={session.courseKey} feedbackType="quick10" /></div>
+          <SuggestionInvitation courseKey={session.courseKey} source="quick10" />
         </section>}
         </div>
       </main>

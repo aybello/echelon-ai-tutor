@@ -32,9 +32,9 @@ beforeAll(async () => {
         export const useLocation=()=>[location.pathname,go];
       ` : args.path==='@/lib/trpc' ? `
         window.saves=[];window.starts=[];window.nextQueries=[];window.tutorRenders=[];window.tutorMounts=0;
-        window.feedbackSaves=[];
+        window.feedbackSaves=[];window.suggestionSaves=[];
         const courses=[{courseKey:'class1-water',shortName:'Water',displayName:'Water'},{courseKey:'class2-water',shortName:'Water II',displayName:'Water II'}];
-        export const trpc={quick10:{courses:{useQuery:()=>({data:{courses:window.noCourses?[]:courses,currentCourseKey:window.noCourses?'electrician-309a':'class1-water'}})},
+        export const trpc={auth:{me:{useQuery:()=>({data:null})}},dashboardAuth:{me:{useQuery:()=>({data:{email:'synthetic@example.test'}})}},featureRequests:{submit:{useMutation:options=>({isPending:false,mutate:input=>{window.suggestionSaves.push(input);if(window.failSuggestion)options.onError();else options.onSuccess({success:true})}})}},quick10:{courses:{useQuery:()=>({data:{courses:window.noCourses?[]:courses,currentCourseKey:window.noCourses?'electrician-309a':'class1-water'}})},
           start:{useMutation:()=>({mutateAsync:async input=>{window.starts.push(input);return {courseKey:input.courseKey||'class1-water',courseName:'Synthetic water',locked:false,attemptToken:'synthetic-receipt',questions:Array.from({length:input.questionCount},(_,i)=>({id:i+1,module:'Safety',isCalc:false,question:'Synthetic question '+(i+1),options:['Synthetic correct','Synthetic wrong']}))}}})},
           answer:{useMutation:()=>({mutateAsync:async input=>{window.saves.push(input);if(window.holdAnswer)await new Promise(resolve=>{window.releaseAnswer=resolve});if(window.failFirstAnswer&&window.saves.length===1)throw Error('Synthetic offline');return {saved:!window.unsavedAnswer,correct:input.selectedIndex===0,correctIndex:0,explanation:'Synthetic saved explanation',steps:[{l:'Given',c:'Synthetic worked step'}],tip:'Synthetic saved tip'}}})}},
           feedback:{submit:{useMutation:options=>({isPending:false,mutate:input=>{window.feedbackSaves.push(input);if(window.failFeedback)options.onError();else options.onSuccess({success:true})}})}},
@@ -120,6 +120,19 @@ describe('Quick 10 synthetic browser interactions',()=>{
       expect(await page.evaluate(()=>(window as any).feedbackSaves.at(-1))).toMatchObject({examType:'class2-water',feedbackType:'quick10',rating:1});
       await page.getByRole('button',{name:'Done',exact:true}).click();
       expect(await page.getByRole('dialog').count()).toBe(0);
+      await page.getByRole('button',{name:'Suggest an improvement',exact:true}).click();
+      await page.getByRole('dialog',{name:'Suggest an improvement',exact:true}).waitFor();
+      await page.getByRole('textbox',{name:'What should we add or improve?'}).fill('Synthetic suggestion, not a real submission');
+      await page.evaluate(()=>{(window as any).failSuggestion=true});
+      await page.getByRole('button',{name:'Send suggestion',exact:true}).click();
+      await page.getByRole('alert').waitFor();
+      expect(await page.getByRole('textbox',{name:'What should we add or improve?'}).inputValue()).toContain('Synthetic suggestion');
+      await page.evaluate(()=>{(window as any).failSuggestion=false});
+      await page.getByRole('button',{name:'Retry saving suggestion',exact:true}).click();
+      await page.getByText(/Your suggestion has been saved privately/).waitFor();
+      expect(await page.evaluate(()=>(window as any).suggestionSaves.at(-1))).toMatchObject({courseKey:'class2-water',source:'quick10',pagePath:'/quick-10',followUpAllowed:false});
+      await page.getByRole('button',{name:'Done',exact:true}).click();
+      expect(await page.getByRole('complementary',{name:'Help improve Echelon'}).count()).toBe(0);
       await page.getByRole('link',{name:/Retry mistakes/}).click();
       expect(new URL(page.url()).pathname).toBe('/class2-water');
       expect(new URL(page.url()).searchParams.get('mode')).toBe('missed');
