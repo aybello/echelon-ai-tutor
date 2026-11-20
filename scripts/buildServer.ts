@@ -1,3 +1,4 @@
+import { DEEP_CONTENT_COURSES } from "../server/deepGames/registry";
 import { execFileSync } from "node:child_process";
 import { cpSync, existsSync, mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
@@ -196,10 +197,7 @@ if (
     // Missing reviewed entrypoints fail the build rather than becoming placeholders.
     rmSync(resolve("dist/deep-game-content"), { recursive: true, force: true });
     await build({
-      entryPoints: {
-        oit: "server/deepGames/content/oit.ts",
-        "class1-water": "server/deepGames/content/class1-water.ts",
-      },
+      entryPoints: Object.fromEntries(DEEP_CONTENT_COURSES.map(key => [key, `server/deepGames/content/${key}.ts`])),
       platform: "node",
       bundle: true,
       format: "esm",

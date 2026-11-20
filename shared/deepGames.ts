@@ -8,8 +8,14 @@ export const deepGameModes = ["calculation-ladder", "build-process", "find-calcu
 export const deepGameModeSchema = z.enum(deepGameModes);
 export type DeepGameMode = z.infer<typeof deepGameModeSchema>;
 export type TaskMode = Exclude<DeepGameMode, "exam-escape-room">;
-export const deepPilotCourseKeySchema = z.enum(["oit", "class1-water"]);
-export const deepGameLimits = { tasks: 200, missions: 20, missionTasks: 4, sessionTasks: 10, options: 8, packageBytes: 1_048_576, sessionBytes: 131_072 } as const;
+/** Course key to task level. A key here is only playable once its content module ships (see server registry). */
+export const deepCourseLevels = {
+  "oit": "oit", "class1-water": "class1", "class2-water": "class2", "class3-water": "class3", "class4-water": "class4",
+  "wpi-class1-water": "wpi-class1", "wpi-class2-water": "wpi-class2", "wpi-class3-water": "wpi-class3", "wpi-class4-water": "wpi-class4",
+} as const;
+export type DeepCourseKey = keyof typeof deepCourseLevels;
+export const deepPilotCourseKeySchema = z.enum(Object.keys(deepCourseLevels) as [DeepCourseKey, ...DeepCourseKey[]]);
+export const deepGameLimits = { tasks: 800, missions: 200, missionTasks: 4, sessionTasks: 10, options: 8, packageBytes: 8_388_608, sessionBytes: 131_072 } as const;
 export const deepSafeIdSchema = z.string().regex(/^[a-zA-Z0-9][a-zA-Z0-9_.:-]{0,79}$/);
 const version = z.string().regex(/^[a-zA-Z0-9][a-zA-Z0-9_.-]{0,79}$/);
 const text = (max: number) => z.string().min(1).max(max).refine(value => value.trim().length > 0, "Blank text");
@@ -44,7 +50,7 @@ export type NumericStep = z.infer<typeof deepNumericStepSchema>;
 
 const taskBase = {
   id: deepSafeIdSchema, revision: version, prompt, topicId: deepSafeIdSchema,
-  level: z.enum(["oit", "class1"]), assumptions: prompt,
+  level: z.enum(["oit", "class1", "class2", "class3", "class4", "wpi-class1", "wpi-class2", "wpi-class3", "wpi-class4"]), assumptions: prompt,
 };
 export const deepLadderTaskSchema = z.object({
   ...taskBase, mode: z.literal("calculation-ladder"),
@@ -88,7 +94,7 @@ export type EscapeMission = z.infer<typeof deepEscapeMissionSchema>;
 
 const packageCore = {
   courseKey: deepPilotCourseKeySchema, version,
-  tasks: z.array(deepTaskSchema).min(1).max(200), missions: z.array(deepEscapeMissionSchema).max(20),
+  tasks: z.array(deepTaskSchema).min(1).max(deepGameLimits.tasks), missions: z.array(deepEscapeMissionSchema).max(deepGameLimits.missions),
 };
 const sha256 = z.string().regex(/^[a-f0-9]{64}$/);
 const taskReceipt = z.object({ taskId: deepSafeIdSchema, revision: version, sha256, sourceIds: z.array(deepSafeIdSchema).min(1).max(12) }).strict();
@@ -102,13 +108,13 @@ export const deepCoursePackageSchema = z.object({
   sources: z.array(z.object({ id: deepSafeIdSchema, title: text(300), locator: text(2000), note: text(2000).optional() }).strict()).min(1).max(100),
   publication: z.object({
     published: z.literal(true), reviewedBy: text(200), reviewedAt: z.string().datetime({ offset: true }), packageSha256: sha256,
-    taskReceipts: z.array(taskReceipt).min(1).max(200), missionReceipts: z.array(missionReceipt).max(20),
+    taskReceipts: z.array(taskReceipt).min(1).max(deepGameLimits.tasks), missionReceipts: z.array(missionReceipt).max(deepGameLimits.missions),
   }).strict(),
 }).strict().superRefine((data, ctx) => {
   const invalid = (message: string) => ctx.addIssue({ code: "custom", message });
   if (!unique(data.tasks.map(task => task.id)) || !unique(data.missions.map(mission => mission.id))) invalid("Duplicate authored IDs");
   if (data.missions.some(mission => data.tasks.some(task => task.id === mission.id))) invalid("Task and mission IDs must be distinct");
-  const expectedLevel = data.courseKey === "oit" ? "oit" : "class1";
+  const expectedLevel = deepCourseLevels[data.courseKey];
   if (data.tasks.some(task => task.level !== expectedLevel)) invalid("Task level does not match explicit pilot course");
   for (const mission of data.missions) for (const ref of mission.tasks)
     if (!data.tasks.some(task => task.id === ref.taskId && task.revision === ref.revision)) invalid("Mission reference missing or revised");
@@ -138,8 +144,8 @@ export const deepCatalogInputSchema = z.object({ courseKey: requestedCourseKey }
 export const deepStartInputSchema = z.object({ courseKey: requestedCourseKey, mode: deepGameModeSchema, sessionSize: z.number().int().min(1).max(10), version: version.optional() }).strict();
 export const deepCatalogResponseSchema = z.object({
   courseKey: requestedCourseKey, version: version.nullable(), available: z.boolean(),
-  modes: z.array(z.object({ mode: deepGameModeSchema, title: text(100), count: z.number().int().min(1).max(200) }).strict()).max(5),
-  authoredTaskCount: z.number().int().min(0).max(200), missionCount: z.number().int().min(0).max(20),
+  modes: z.array(z.object({ mode: deepGameModeSchema, title: text(100), count: z.number().int().min(1).max(deepGameLimits.tasks) }).strict()).max(5),
+  authoredTaskCount: z.number().int().min(0).max(deepGameLimits.tasks), missionCount: z.number().int().min(0).max(deepGameLimits.missions),
 }).strict().superRefine((catalog, ctx) => {
   const invalid = () => ctx.addIssue({ code: "custom", message: "Inconsistent catalog availability/counts" });
   if (!unique(catalog.modes.map(mode => mode.mode))) invalid();
@@ -168,7 +174,7 @@ export const deepSessionResponseSchema = z.object({
 }).strict().superRefine((session, ctx) => {
   const invalid = (message: string) => ctx.addIssue({ code: "custom", message });
   if (!unique(session.tasks.map(task => task.id))) invalid("Duplicate session occurrence IDs");
-  const expectedLevel = session.courseKey === "oit" ? "oit" : "class1";
+  const expectedLevel = deepCourseLevels[session.courseKey];
   if (session.tasks.some(item => item.task.level !== expectedLevel)) invalid("Session course/level mismatch");
   if (session.mode === "exam-escape-room") {
     if (!session.mission || session.tasks.length !== session.mission.tasks.length) invalid("One expanded mission required");

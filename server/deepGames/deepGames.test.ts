@@ -5,6 +5,7 @@ import {
   canonicalDeepPayload, deepGameModes, deepSessionResponseSchema,
   type DeepCoursePackage, type DeepTask, type DeepSessionResponse,
 } from "../../shared/deepGames";
+import { deepGameLimits } from "../../shared/deepGames";
 import { assessmentActivityIssueSchema } from "../../shared/assessmentActivity";
 import { DEEP_REVIEW_AUTHORITY, deepJsonBytes, deepPayloadSha256, validateDeepCoursePackage, validateDeepSessionResponse } from "./schema";
 import { createDeepCourseRegistry, deepContentModuleUrls, isDeepCourseSupported } from "./registry";
@@ -132,9 +133,10 @@ describe("deep publication integrity (private synthetic fixtures)", () => {
     expect(() => validateDeepCoursePackage(process)).toThrow();
   });
   it("enforces package bytes using actual UTF-8, not JavaScript string length", () => {
-    const data = fixture(); data.sources = Array.from({ length: 100 }, (_, index) => ({ id: `source-${index}`, title: "表".repeat(300), locator: "表".repeat(2000), note: "表".repeat(2000) }));
-    expect(JSON.stringify(data).length).toBeLessThan(1_048_576);
-    expect(deepJsonBytes(data)).toBeGreaterThan(1_048_576);
+    // Three UTF-8 bytes per character: short in JavaScript length, over the byte limit. The byte check runs before parsing.
+    const data = { filler: "表".repeat(Math.ceil(deepGameLimits.packageBytes / 3) + 1000) };
+    expect(JSON.stringify(data).length).toBeLessThan(deepGameLimits.packageBytes);
+    expect(deepJsonBytes(data)).toBeGreaterThan(deepGameLimits.packageBytes);
     expect(() => validateDeepCoursePackage(data)).toThrow("byte limit");
   });
   it("rejects tracking text overflow rather than truncating visible authored assumptions", () => {

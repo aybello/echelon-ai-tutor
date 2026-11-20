@@ -8,6 +8,9 @@ import { deepAssessmentIssue } from "./tracking";
 export { deepCoursePackageSchema } from "../../shared/deepGames";
 export const DEEP_REVIEW_MODEL = "gemini-4-hydrogen";
 export const DEEP_REVIEW_AUTHORITY = `owner-authorized-ai-review:${DEEP_REVIEW_MODEL}`;
+/** Models whose real review may be attributed on a package. Never record a model that did not review the content. */
+export const DEEP_REVIEW_MODELS = [DEEP_REVIEW_MODEL, "gpt-6.2-sol"] as const;
+export const DEEP_REVIEW_AUTHORITIES: readonly string[] = DEEP_REVIEW_MODELS.map(model => `owner-authorized-ai-review:${model}`);
 
 /** Integrity check of a server-authored review attestation, not an external signature or live model call. */
 export function deepPayloadSha256(value: unknown): string {
@@ -37,7 +40,7 @@ export function validateDeepCoursePackage(value: unknown, expectedCourseKey?: st
   if (deepJsonBytes(value) >= deepGameLimits.packageBytes) throw new Error("Deep package byte limit exceeded");
   const data = deepCoursePackageSchema.parse(value);
   if (expectedCourseKey !== undefined && data.courseKey !== expectedCourseKey) throw new Error("Deep course mismatch");
-  if (data.publication.reviewedBy !== DEEP_REVIEW_AUTHORITY) throw new Error("Deep review authority mismatch");
+  if (!DEEP_REVIEW_AUTHORITIES.includes(data.publication.reviewedBy)) throw new Error("Deep review authority mismatch");
   const core = { courseKey: data.courseKey, version: data.version, tasks: data.tasks, missions: data.missions };
   if (deepPayloadSha256(core) !== data.publication.packageSha256) throw new Error("Deep package hash mismatch");
   for (const task of data.tasks) {
