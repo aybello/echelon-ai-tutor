@@ -4,6 +4,7 @@ import { runInNewContext } from "node:vm";
 const stubs = vi.hoisted(() => ({
   exchange: vi.fn(), userInfo: vi.fn(), session: vi.fn(), upsert: vi.fn(),
 }));
+vi.mock("../learnerSignIn", () => ({ recordLearnerSignIn: vi.fn() }));
 vi.mock("../db", () => ({ upsertUser: stubs.upsert }));
 vi.mock("./sdk", () => ({ sdk: { exchangeCodeForToken: stubs.exchange, getUserInfo: stubs.userInfo, createSessionToken: stubs.session } }));
 vi.mock("./cookies", () => ({ getSessionCookieOptions: () => ({ path: "/" }) }));

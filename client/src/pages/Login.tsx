@@ -1,6 +1,7 @@
 // Echelon Institute — Login Page
 // Email OTP flow: enter email → receive 6-digit code → verify → redirect to dashboard
 
+import { SIGN_IN_NOTICE } from "@shared/learnerActivity";
 import { useState, useRef, useEffect } from "react";
 import { useLocation } from "wouter";
 import { trpc } from "@/lib/trpc";
@@ -168,6 +169,7 @@ export default function Login() {
               </p>
             </div>
 
+            <p style={{ fontSize: 13, color: "#475569", marginBottom: 16 }}>{SIGN_IN_NOTICE} <a href="/privacy">Privacy policy</a></p>
             <form onSubmit={handleEmailSubmit}>
               <div style={{ marginBottom: 16 }}>
                 <label style={{ display: "block", fontSize: 13, fontWeight: 600, color: "#374151", marginBottom: 6 }}>

@@ -565,6 +565,21 @@
       "verifierAllowMissingTables": [
         "feature_requests"
       ]
+    },
+    {
+      "version": 85,
+      "tag": "0085_account_sign_ins",
+      "file": "drizzle/0085_account_sign_ins.sql",
+      "sha256": "081c80b16bf13f678abdfe485a8a69238dfc778d9d3e9f74a5e66498194f95d6",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "account_sign_ins"
+        ]
+      },
+      "verifierAllowMissingTables": [
+        "account_sign_ins"
+      ]
     }
   ]
 }

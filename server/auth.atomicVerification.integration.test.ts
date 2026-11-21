@@ -3,7 +3,7 @@ import mysql from "mysql2/promise";
 import { drizzle, type MySql2Database } from "drizzle-orm/mysql2";
 import { eq, inArray } from "drizzle-orm";
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
-import { dashboardOtps, emailOtpCodes, magicLinks } from "../drizzle/schema";
+import { accountSignIns, dashboardOtps, emailOtpCodes, magicLinks } from "../drizzle/schema";
 import type { TrpcContext } from "./_core/context";
 import { ECHELON_SESSION_COOKIE, readVerifiedEmailFromRequest } from "./_core/emailSession";
 import { verifySubscriptionToken } from "./_core/subscriptionToken";
@@ -96,6 +96,7 @@ async function seedLink(email: string, overrides: Partial<typeof magicLinks.$inf
 }
 async function cleanFixtures() {
   if (!state.db || !fixtureEmails.length) return;
+  await state.db.delete(accountSignIns).where(inArray(accountSignIns.verifiedEmail, fixtureEmails));
   for (const table of [emailOtpCodes, dashboardOtps, magicLinks]) {
     await state.db.delete(table).where(inArray(table.email, fixtureEmails));
   }
@@ -163,6 +164,8 @@ describe.skipIf(!enabled)("EC-04 disposable-database router concurrency", () => 
       const results = await Promise.all(Array.from({ length: 12 }, () => verify(kind, email.toUpperCase(), code)));
       const winners = results.filter(r => r.success);
       expect(winners).toHaveLength(1);
+      const visits = await state.db!.select().from(accountSignIns).where(eq(accountSignIns.verifiedEmail, email));
+      expect(visits.map(row => row.method)).toEqual([kind === "emailOtp" ? "email_otp" : "dashboard_otp"]);
       expect(results.reduce((n, r) => n + vi.mocked(r.ctx.res.cookie).mock.calls.length, 0)).toBe(1);
       await assertSession(winners[0].ctx, email);
       const result = winners[0].result!;
@@ -291,6 +294,8 @@ describe.skipIf(!enabled)("EC-04 disposable-database router concurrency", () => 
       const contexts = Array.from({ length: 12 }, context);
       const results = await Promise.all(contexts.map(ctx => magicLinkRouter.createCaller(ctx).consumeMagicLink({ token })));
       expect(results.filter(r => r.valid)).toHaveLength(1);
+      const visits = await state.db!.select().from(accountSignIns).where(eq(accountSignIns.verifiedEmail, email));
+      expect(visits.map(row => row.method)).toEqual(["legacy_magic_link"]);
       expect(contexts.reduce((n, ctx) => n + vi.mocked(ctx.res.cookie).mock.calls.length, 0)).toBe(1);
       const index = results.findIndex(r => r.valid);
       await assertSession(contexts[index], email);

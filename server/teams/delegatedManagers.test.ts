@@ -114,7 +114,7 @@ describe("delegated discovery and login (fully mocked)", () => {
     expect(state.otp).toHaveBeenCalledWith(expect.objectContaining({ email: delegate }));
     // Claim concurrency has separate regression coverage; the real verifier rechecks live entitlements here.
     expect(await emailOtpRouter.createCaller(ctx(null)).verifyOtp({ email: delegate, code: "123456" })).toMatchObject({ valid: true, isManager: true, examTypes: [], accessToken: "" });
-    expect(state.session).toHaveBeenCalledWith(expect.anything(), delegate); expect(state.token).not.toHaveBeenCalled();
+    expect(state.session).toHaveBeenCalledWith(expect.anything(), delegate, undefined, expect.any(Function)); expect(state.token).not.toHaveBeenCalled();
     expect(rows(subscriptions)).toEqual([]); expect(rows(organizationTermUsage)).toEqual([]);
   });
   it.each(["manager", "operator", "unknown"])("never trusts legacy/nonmanager role %s", async role => {

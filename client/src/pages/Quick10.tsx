@@ -65,6 +65,7 @@ export default function Quick10() {
   const [round, setRound] = useState(0);
   const [pendingAnswer, setPendingAnswer] = useState<PendingQuick10Answer | null>(null);
   const [tutorContext, setTutorContext] = useState<string | null>(null);
+  const closeTutor = useRef<(() => Promise<boolean>) | null>(null);
   const tutorDeepLink = useRef(params.get("panel") === "tutor");
   const pendingRef = useRef<PendingQuick10Answer | null>(null);
   const sessionId = useRef<string>(crypto.randomUUID());
@@ -114,7 +115,7 @@ export default function Quick10() {
     : null;
   const tutorOpen = tutorContextKey !== null && tutorContext === tutorContextKey;
   const dismissTutor = useCallback(() => {
-    setTutorContext(null);
+    setTutorContext(previous => previous === tutorContextKey ? null : previous);
     tutorDeepLink.current = false;
     try {
       const url = new URL(window.location.href);
@@ -125,7 +126,7 @@ export default function Quick10() {
     } catch {
       // Local dismissal still works if browser history is unavailable.
     }
-  }, []);
+  }, [tutorContextKey]);
   useEffect(() => {
     if (!tutorDeepLink.current || !tutorContextKey || phase !== "asking") return;
     // Consume the entry deep link once; subsequent questions/sessions stay closed.
@@ -193,9 +194,14 @@ export default function Quick10() {
     }
   }
 
-  function next() {
+  async function next() {
     if (!session || phase !== "revealed" || !reveal || pendingRef.current) return;
-    dismissTutor();
+    const requestGeneration = generation.current;
+    if (tutorOpen && closeTutor.current) {
+      if (!await closeTutor.current() || generation.current !== requestGeneration || activeActor.current !== actorKey) return;
+    } else {
+      dismissTutor();
+    }
     setReveal(null);
     if (index + 1 >= session.questions.length) {
       // Explicit finish after every canonical answer acknowledgement, never cleanup.
@@ -312,7 +318,7 @@ export default function Quick10() {
       {tutorOpen && session && tutorQuestion && (
         <TutorPanelPlacement.Provider value="workspace">
           <div id="quick10-tutor" className="practice-tutor-slot">
-            <AITutor key={tutorContextKey}
+            <AITutor key={tutorContextKey} closeRef={closeTutor}
               // AITutor's legacy bank type requires answer fields. Do not invent
               // them for an unanswered Quick10 question; the runtime supports omissions.
               question={tutorQuestion as Question}

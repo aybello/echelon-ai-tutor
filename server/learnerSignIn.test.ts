@@ -1,13 +1,13 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import type { TrpcContext } from "./_core/context";
 const state = vi.hoisted(() => ({
-  persist: vi.fn(), verify: vi.fn(), magic: vi.fn(), cookie: vi.fn(), entitlements: vi.fn(),
+  access: vi.fn(), persist: vi.fn(), verify: vi.fn(), magic: vi.fn(), cookie: vi.fn(), entitlements: vi.fn(),
   exchange: vi.fn(), info: vi.fn(), session: vi.fn(), upsert: vi.fn(), lookup: vi.fn(), track: vi.fn(),
 }));
 vi.mock("./analytics", () => ({ persistAnalyticsEvent: state.persist, trackEvent: state.track }));
-vi.mock("./db", () => ({ getDb: async () => ({}), upsertUser: state.upsert, getUserByOpenId: state.lookup }));
+vi.mock("./db", () => ({ getDb: async () => ({ insert: () => ({ values: state.access }) }), upsertUser: state.upsert, getUserByOpenId: state.lookup }));
 vi.mock("./auth/atomicVerification", () => ({ verifyAndConsumeOtp: state.verify, consumeMagicLinkAtomically: state.magic }));
-vi.mock("./_core/emailSession", () => ({ issueVerifiedEmailSessionCookie: state.cookie, readVerifiedEmailFromRequest: vi.fn(), ECHELON_SESSION_COOKIE: "fixture" }));
+vi.mock("./_core/emailSession", () => ({ issueVerifiedEmailSessionCookie: async (_res: unknown, _email: string, _age: unknown, beforeIssue: () => Promise<void>) => { await beforeIssue(); state.cookie(); }, readVerifiedEmailFromRequest: vi.fn(), ECHELON_SESSION_COOKIE: "fixture" }));
 vi.mock("./_core/access", () => ({ normalizeEmail: (email: string) => email.trim().toLowerCase(), resolveEntitlementsByEmail: state.entitlements }));
 vi.mock("./_core/subscriptionToken", () => ({ issueSubscriptionToken: async () => "fixture-only" }));
 vi.mock("./_core/sdk", () => ({ sdk: { exchangeCodeForToken: state.exchange, getUserInfo: state.info, createSessionToken: state.session } }));
@@ -40,22 +40,25 @@ async function oauth(query: Record<string, string> = { code: "code", state: "sta
   return res;
 }
 describe("genuine successful sign-ins", () => {
-  it.each(["email", "dashboard", "magic"])("records one %s login after successful session issuance using only verified identity", async kind => {
+  it.each(["email", "dashboard", "magic"])("records one %s access entry before issuing a session using only verified identity", async kind => {
     const ctx = context();
     if (kind === "email") await emailOtpRouter.createCaller(ctx).verifyOtp({ email: " VERIFIED@example.test ".trim(), code: "123456" });
     if (kind === "dashboard") await dashboardAuthRouter.createCaller(ctx).verifyOtp({ email: "verified@example.test", code: "123456" });
     if (kind === "magic") await magicLinkRouter.createCaller(ctx).consumeMagicLink({ token: "not-stored" });
     expect(state.persist).toHaveBeenCalledOnce();
     expect(state.persist.mock.calls[0][0]).toEqual({ event: "login", ts: expect.any(String), userId: null, email: "verified@example.test", extra: { method: kind === "email" ? "email_otp" : kind === "dashboard" ? "dashboard_otp" : "legacy_magic_link", activityVersion: 1 } });
-    expect(state.cookie.mock.invocationCallOrder[0]).toBeLessThan(state.persist.mock.invocationCallOrder[0]);
+    expect(state.access).toHaveBeenCalledOnce();
+    expect(state.access.mock.invocationCallOrder[0]).toBeLessThan(state.cookie.mock.invocationCallOrder[0]);
   });
   it("records OAuth using the provider account ID association, not a matched email", async () => {
     await oauth();
     expect(state.lookup).toHaveBeenCalledWith("provider-verified-id");
     expect(state.persist).toHaveBeenCalledOnce();
     expect(state.persist.mock.calls[0][0]).toMatchObject({ userId: "17", email: null, extra: { method: "oauth" } });
-    expect(JSON.stringify(state.persist.mock.calls)).not.toContain("not-stored");
-    expect(state.cookie.mock.invocationCallOrder[0]).toBeLessThan(state.persist.mock.invocationCallOrder[0]);
+    expect(state.access).toHaveBeenCalledWith({ userId: 17, verifiedEmail: null, method: "oauth", signedInAt: expect.any(Date) });
+    expect(JSON.stringify(state.access.mock.calls)).not.toContain("not-stored");
+    expect(state.access).toHaveBeenCalledOnce();
+    expect(state.access.mock.invocationCallOrder[0]).toBeLessThan(state.cookie.mock.invocationCallOrder[0]);
   });
   it.each(["email", "dashboard", "magic", "oauth"])("does not record failed or already-consumed %s auth", async kind => {
     state.verify.mockResolvedValue({ valid: false, reason: "expired" });
@@ -64,19 +67,23 @@ describe("genuine successful sign-ins", () => {
     if (kind === "dashboard") await expect(dashboardAuthRouter.createCaller(context()).verifyOtp({ email: "verified@example.test", code: "123456" })).rejects.toThrow();
     if (kind === "magic") await magicLinkRouter.createCaller(context()).consumeMagicLink({ token: "used" });
     if (kind === "oauth") await oauth({});
+    expect(state.access).not.toHaveBeenCalled();
     expect(state.persist).not.toHaveBeenCalled();
   });
-  it("does not record when session establishment fails", async () => {
-    state.cookie.mockRejectedValue(new Error("fixture"));
+  it("withholds the session when the access log is unavailable", async () => {
+    state.access.mockRejectedValue(new Error("unavailable"));
     await expect(emailOtpRouter.createCaller(context()).verifyOtp({ email: "verified@example.test", code: "123456" })).rejects.toThrow();
+    expect(state.cookie).not.toHaveBeenCalled();
     expect(state.persist).not.toHaveBeenCalled();
   });
   it("routine me hydration never records a login", async () => {
     await dashboardAuthRouter.createCaller(context()).me();
+    expect(state.access).not.toHaveBeenCalled();
     expect(state.persist).not.toHaveBeenCalled();
   });
-  it.each([{}, { "x-echelon-activity": "denied" }, { "x-echelon-activity": "allowed", dnt: "1" }, { "x-echelon-activity": "allowed", "sec-gpc": "1" }])("privacy preferences fail closed: %j", async headers => {
+  it.each([{}, { "x-echelon-activity": "denied" }, { "x-echelon-activity": "allowed", dnt: "1" }, { "x-echelon-activity": "allowed", "sec-gpc": "1" }])("keeps an access record with optional analytics disabled: %j", async headers => {
     await recordLearnerSignIn({ headers }, { email: "verified@example.test" }, "email_otp");
+    expect(state.access).toHaveBeenCalledWith({ userId: null, verifiedEmail: "verified@example.test", method: "email_otp", signedInAt: expect.any(Date) });
     expect(state.persist).not.toHaveBeenCalled();
   });
   it("OAuth cookie cannot override a server privacy header", async () => {

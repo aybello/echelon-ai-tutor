@@ -2,7 +2,7 @@
 // Design: Slide-in right panel with gradient header, chat bubbles, quick prompts
 // Philosophy: Professional SaaS — Clean Dark-Accent
 
-import { useState, useRef, useEffect, useCallback, useContext } from "react";
+import { useState, useRef, useEffect, useCallback, useContext, useImperativeHandle, type Ref } from "react";
 import { Question, HistoryEntry } from "@/lib/questionTypes";
 import { trpc } from "@/lib/trpc";
 import { getTutorFailureMessage, isTutorAllowanceMessage, isTutorDismissKey, isTutorPurchasePrompt, withoutTutorErrors } from "@/lib/tutorInteraction";
@@ -22,6 +22,7 @@ interface Props {
   history: HistoryEntry[];
   patternMode: boolean;
   onClose: () => void;
+  closeRef?: Ref<() => Promise<boolean>>;
   examType: string; // canonical course key for server-owned tutor context
 }
 
@@ -31,6 +32,7 @@ export default function AITutor({
   history,
   patternMode,
   onClose,
+  closeRef,
   examType,
 }: Props) {
   const placement = useContext(TutorPanelPlacement);
@@ -39,7 +41,15 @@ export default function AITutor({
   const saveSessionMutation = trpc.tutor.saveSession.useMutation();
   // Support both OAuth and verified email session users for session saving
   const emailSessionQuery = trpc.dashboardAuth.me.useQuery(undefined, { retry: false, staleTime: 5 * 60 * 1000 });
-  const hasSession = !!emailSessionQuery.data?.email;
+  const account = trpc.auth.me.useQuery(undefined, { retry: false });
+  const hasSession = !!(emailSessionQuery.data?.email || account.data?.id);
+  const saving = useRef(false);
+  const mounted = useRef(true);
+  useEffect(() => {
+    mounted.current = true;
+    return () => { mounted.current = false; };
+  }, []);
+  const [saveNotice, setSaveNotice] = useState("");
   // Normalise field names — Ontario uses `correct`, WPI uses `correctAnswer`
   const correctIdx: number | undefined =
     (question as any)?.correctIndex ?? (question as any)?.correctAnswer ?? (question as any)?.correct ?? undefined;
@@ -79,7 +89,7 @@ export default function AITutor({
     }
   }, [messages]);
 
-  const handleClose = useCallback(() => {
+  const dismiss = useCallback(() => {
     // A tutor opened by the ?panel=tutor deep link must remove that parameter
     // as well as close local state, otherwise later workspace state changes can
     // silently reopen it.
@@ -93,16 +103,40 @@ export default function AITutor({
       // The local close action is still safe if browser history is unavailable.
     }
 
-    if (hasSession && examType && messages.some((message) => message.role === "user")) {
-      saveSessionMutation.mutate({
-        examType,
-        messages: messages.filter((message) => message.role === "user" || message.role === "assistant"),
-        sessionStartMs,
-        accessToken,
-      });
-    }
     onClose();
-  }, [accessToken, examType, hasSession, messages, onClose, saveSessionMutation, sessionStartMs]);
+  }, [onClose]);
+
+  const handleClose = useCallback(async (): Promise<boolean> => {
+    if (saving.current) return false;
+    if (messages.some(message => message.role === "user")) {
+      if (loading || (!hasSession && (account.isLoading || emailSessionQuery.isLoading))) {
+        setSaveNotice("The tutor is still loading. Try again in a moment.");
+        return false;
+      }
+      if (!hasSession && (account.isError || emailSessionQuery.isError)) {
+        setSaveNotice("Your sign-in could not be checked. Your conversation is still here.");
+        void account.refetch();
+        void emailSessionQuery.refetch();
+        return false;
+      }
+      if (hasSession) {
+        saving.current = true;
+        setSaveNotice("");
+        try {
+          const result = await saveSessionMutation.mutateAsync({ examType, messages, sessionStartMs, accessToken });
+          if (!result.saved) throw new Error("Session save was not confirmed");
+        } catch {
+          saving.current = false;
+          setSaveNotice("Your conversation is still here. Try closing again to save it.");
+          return false;
+        }
+      }
+    }
+    if (!mounted.current) return false;
+    dismiss();
+    return true;
+  }, [accessToken, account, dismiss, emailSessionQuery, examType, hasSession, loading, messages, saveSessionMutation, sessionStartMs]);
+  useImperativeHandle(closeRef, () => handleClose, [handleClose]);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -155,7 +189,7 @@ export default function AITutor({
     userMsg: string,
     priorMessages: { role: "user" | "assistant"; content: string }[] = messages,
   ) => {
-    if (!userMsg.trim() || loading) return;
+    if (!userMsg.trim() || loading || saving.current) return;
     setInput("");
     const newMessages = [
       ...priorMessages,
@@ -223,6 +257,10 @@ export default function AITutor({
       className={`ai-tutor-panel ai-tutor-panel--${placement} learning-redesign`}
       aria-label="AI Tutor"
     >
+      {saveSessionMutation.isPending && <p role="status">Saving your tutor conversation…</p>}
+      {saveNotice && <div role="status" className="p-3 text-sm">
+        {saveNotice} <button type="button" className="underline" onClick={dismiss}>Close without saving</button>
+      </div>}
       {/* Header */}
       <div
         style={{

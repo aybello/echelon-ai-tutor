@@ -1,4 +1,5 @@
 import { readLearnerActivity, searchLearners } from "../adminLearnerActivity";
+import { listSignInPeople, listSignIns } from "../adminSignInDirectory";
 import { adminAssessmentScope, learnerAssessmentDetailInput, readAssessmentDetails, readAssessmentSessions } from "../assessmentActivityRead";
 import { readGameActivity } from "../gameAnalytics";
 import { validateApprovalSteps } from "../questionApproval";
@@ -66,11 +67,17 @@ const learnerSelection = z.union([
   z.object({ userId: z.number().int().positive() }).strict(),
   z.object({ email: z.string().trim().toLowerCase().email().max(320) }).strict(),
 ]);
+const eventId = z.number().int().positive().max(2147483647);
+const through = z.number().int().nonnegative().max(8640000000000000).optional();
 export const adminRouter = router({
+  signInPeople: adminProcedure.input(z.object({ cursor: z.object({ snapshot: eventId, before: eventId }).strict().optional() }).strict())
+    .query(({ input }) => listSignInPeople(input.cursor)),
+  signInHistory: adminProcedure.input(z.object({ learner: learnerSelection, before: eventId.optional() }).strict())
+    .query(({ input }) => listSignIns(input.learner, input.before)),
   learnerSearch: adminProcedure.input(z.object({ query: z.string().trim().min(3).max(320) }).strict()).query(({ input }) => searchLearners(input.query)),
-  learnerActivity: adminProcedure.input(z.object({ learner: learnerSelection, days: z.union([z.literal(7), z.literal(30)]) }).strict()).query(({ input }) => readLearnerActivity(input.learner, input.days)),
-  learnerAssessments: adminProcedure.input(z.object({ learner: learnerSelection, days: z.union([z.literal(7), z.literal(30)]) }).strict()).query(({ input }) => readAssessmentSessions(adminAssessmentScope(input.learner), input.days)),
-  learnerAssessmentDetails: adminProcedure.input(learnerAssessmentDetailInput.extend({ learner: learnerSelection }).strict()).query(({ input }) => readAssessmentDetails(adminAssessmentScope(input.learner), input)),
+  learnerActivity: adminProcedure.input(z.object({ learner: learnerSelection, days: z.union([z.literal(7), z.literal(30)]), through }).strict()).query(({ input }) => readLearnerActivity(input.learner, input.days, input.through)),
+  learnerAssessments: adminProcedure.input(z.object({ learner: learnerSelection, days: z.union([z.literal(7), z.literal(30)]), through }).strict()).query(({ input }) => readAssessmentSessions(adminAssessmentScope(input.learner), input.days, input.through)),
+  learnerAssessmentDetails: adminProcedure.input(learnerAssessmentDetailInput.extend({ learner: learnerSelection, through }).strict()).query(({ input }) => readAssessmentDetails(adminAssessmentScope(input.learner), input, input.through)),
   gameActivity: adminProcedure.input(z.object({ days: z.union([z.literal(7), z.literal(30)]) }).strict()).query(({ input }) => readGameActivity(input.days)),
   getCeuKpis: adminProcedure.query(async () => {
     const db = await getDb();

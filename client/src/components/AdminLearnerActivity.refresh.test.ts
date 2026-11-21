@@ -26,7 +26,7 @@ vi.mock("@/lib/trpc", () => {
     useQuery: () => ({ data: h.data[name], isLoading: false, isError: h.error, isFetching: false, refetch: vi.fn() }),
   });
   return { trpc: { useUtils: () => h.utils, admin: {
-    learnerSearch: endpoint("learnerSearch"), learnerActivity: endpoint("learnerActivity"),
+    signInPeople: endpoint("signInPeople"), signInHistory: endpoint("signInHistory"), learnerSearch: endpoint("learnerSearch"), learnerActivity: endpoint("learnerActivity"),
     learnerAssessments: endpoint("learnerAssessments"), learnerAssessmentDetails: endpoint("learnerAssessmentDetails"),
   } } };
 });
@@ -34,7 +34,7 @@ import { trpc } from "@/lib/trpc";
 import AdminLearnerActivity, { refreshLearnerActivityQueries } from "./AdminLearnerActivity";
 
 const learner = { key: "email:fixture@example.test", selection: { email: "fixture@example.test" }, name: null, email: "fixture@example.test" };
-const procedures = ["learnerSearch", "learnerActivity", "learnerAssessments", "learnerAssessmentDetails"] as const;
+const procedures = ["learnerSearch", "learnerActivity", "learnerAssessments", "learnerAssessmentDetails", "signInPeople", "signInHistory"] as const;
 let client: QueryClient;
 let cleanups: (() => void)[];
 function observe(name: typeof procedures[number], input: any, enabled = true, subscribed = true) {
@@ -82,6 +82,7 @@ describe("bounded learner-view manual refresh", () => {
       observe("learnerAssessments", { learner: { userId: 99 }, days: 7 }, true, false),
       observe("learnerAssessmentDetails", { learner: learner.selection, days: 7, sessionId: "session-fixture", cursor: 0 }, true, false),
     ];
+    current.push(observe("signInPeople", {}), observe("signInHistory", { learner: learner.selection }));
     button(render()).props.onClick();
     for (const query of current) expect(query.queryFn).toHaveBeenCalledTimes(1);
     // onClick deliberately discards its promise; await the same in-flight refresh.

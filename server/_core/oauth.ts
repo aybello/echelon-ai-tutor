@@ -44,9 +44,8 @@ export function registerOAuthRoutes(app: Express) {
       });
 
       const cookieOptions = getSessionCookieOptions(req);
-      res.cookie(COOKIE_NAME, sessionToken, { ...cookieOptions, maxAge: ONE_YEAR_MS });
-
       await recordLearnerSignIn(req, { openId: userInfo.openId }, "oauth");
+      res.cookie(COOKIE_NAME, sessionToken, { ...cookieOptions, maxAge: ONE_YEAR_MS });
       // Redirect to a small HTML page that reads the return path from sessionStorage
       // and navigates there, falling back to homepage
       res.send(`<!DOCTYPE html>

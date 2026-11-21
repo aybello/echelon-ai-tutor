@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { eq, inArray } from "drizzle-orm";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
-import { changelog, contactSubmissions, trialEmails } from "../drizzle/schema";
+import { accountSignIns, changelog, contactSubmissions, trialEmails, users } from "../drizzle/schema";
 import { assertAuditIntegrationDatabaseTarget } from "./auditIntegrationGuard";
 import { getDb } from "./db";
 import { router } from "./_core/trpc";
@@ -52,6 +52,46 @@ suite("isolated admin, changelog and procurement lifecycle", () => {
       await expect(caller(role).changelog.create({ date: "October 2026", title: "No write", body: "No write" })).rejects.toBeDefined();
       await expect(caller(role).admin.getLeadCapture({ limit: 10 })).rejects.toBeDefined();
       await expect(caller(role).admin.setContactFollowUpStatus({ id: 1, status: "closed" })).rejects.toBeDefined();
+    }
+  });
+  it("pages every sign-in identity and visit across concurrent new sign-ins", async () => {
+    const admin = caller("admin").admin;
+    const addresses = Array.from({ length: 30 }, (_, index) => `directory-${tag}-${index}@example.test`);
+    const address = addresses[0];
+    const [{ id: accountId }] = await db.insert(users).values({ openId: tag, name: "Directory account", email: address }).$returningId();
+    try {
+      await db.insert(accountSignIns).values(addresses.map(verifiedEmail => ({ verifiedEmail, method: "email_otp" as const })));
+      await db.insert(accountSignIns).values(Array.from({ length: 26 }, () => ({ verifiedEmail: address, method: "dashboard_otp" as const })));
+      await db.insert(accountSignIns).values({ userId: accountId, method: "oauth" });
+      const first = await admin.signInPeople({});
+      expect(first.items).toHaveLength(25);
+      expect(first.items.find(row => row.learner.key === `user:${accountId}`)).toMatchObject({ count: 1, learner: { name: "Directory account", email: address } });
+      expect(first.items.find(row => row.learner.key === `email:${address}`)).toMatchObject({ count: 27, method: "Dashboard OTP", learner: { name: null } });
+
+      // This person was near the end of the original directory, then signed in again.
+      await db.insert(accountSignIns).values({ verifiedEmail: addresses[1], method: "legacy_magic_link" });
+      const keys = first.items.map(row => row.learner.key);
+      let cursor = first.next;
+      while (cursor && !keys.includes(`email:${addresses[1]}`)) {
+        const page = await admin.signInPeople({ cursor });
+        keys.push(...page.items.map(row => row.learner.key));
+        cursor = page.next;
+      }
+      for (const verifiedEmail of addresses) expect(keys).toContain(`email:${verifiedEmail}`);
+      expect(new Set(keys).size).toBe(keys.length);
+
+      const visits = await admin.signInHistory({ learner: { email: address } });
+      expect(visits.items).toHaveLength(25);
+      const older = await admin.signInHistory({ learner: { email: address }, before: visits.next! });
+      expect(older.items.map(row => row.method)).toEqual(["Dashboard OTP", "Email OTP"]);
+      expect(older.next).toBeNull();
+      expect(new Set([...visits.items, ...older.items].map(row => row.id)).size).toBe(27);
+      const oauth = await admin.signInHistory({ learner: { userId: accountId } });
+      expect(oauth.items.map(row => row.method)).toEqual(["OAuth"]);
+    } finally {
+      await db.delete(accountSignIns).where(inArray(accountSignIns.verifiedEmail, addresses));
+      await db.delete(accountSignIns).where(eq(accountSignIns.userId, accountId));
+      await db.delete(users).where(eq(users.id, accountId));
     }
   });
   it("creates, edits, hides, republishes, orders and deletes a stored release", async () => {

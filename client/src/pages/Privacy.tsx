@@ -25,7 +25,7 @@ export default function Privacy() {
           <h1 style={{ fontSize: 30, fontWeight: 900, color: "#0F172A", margin: "0 0 10px", letterSpacing: "-0.02em" }}>
             Privacy & Security
           </h1>
-          <p style={{ fontSize: 14, color: "#94A3B8", margin: 0 }}>Last updated: October 14, 2026</p>
+          <p style={{ fontSize: 14, color: "#94A3B8", margin: 0 }}>Last updated: November 21, 2026</p>
         </div>
 
         <LegalSection title="1. Who We Are">
@@ -86,7 +86,7 @@ export default function Privacy() {
         </LegalSection>
 
         <LegalSection title="8. Cookies and Analytics Storage">
-          <p>Authorized Echelon administrators can review recorded learning activity and successful sign-in dates and methods to support learners and operate the service. New internal sign-in reporting stores a server-derived account ID or one-way verified-email hash, method and timestamp, not passwords, codes, tokens, IP addresses, browsing history or tutor conversation text. It respects existing measurement refusals, Do Not Track and Global Privacy Control. Historical sign-ins may be incomplete; recorded study time is not total time online. This reporting is not sent to advertising or public analytics services.</p>
+          <p>Echelon records each successful sign-in in a private account-access log. Authorized Echelon administrators can see the account name or verified email address, sign-in time and method, and the learning records attributable to that sign-in identity. The access log operates even when optional measurement is off. Optional learning analytics continue to respect measurement preferences, Do Not Track and Global Privacy Control. The access log is separate from advertising and public analytics. Older sign-in history may be incomplete.</p>
           <p>Echelon uses cookies to maintain your session after signing in. First-party product reporting also stores a persistent pseudonymous browser identifier in local storage; the server hashes this identifier before storing events. Acquisition categories are stored for the browser session. You can clear cookies and local storage from your browser settings; the <a href="/account" style={{ color: "#3B82F6" }}>Account page</a> also provides sign-out controls.</p>
           <p>Our existing public analytics receives only allowlisted page paths and categories, with dynamic values replaced by route templates. It does not receive query strings, fragments, referrers, personal page titles or arbitrary event fields. Authentication, invitation, claim, activation, purchase-confirmation and private learner pages are excluded from page reporting.</p>
           <p>Google Ads measurement starts automatically on approved public pages and for verified purchases, without an on-page permission prompt. It measures which ads lead to visits and purchases. Our Google consent defaults permit advertising cookies and ad-click attribution in Canada except Quebec, and in the United States. All other regions, including the EEA, UK and Switzerland, and Quebec retain denied advertising-storage and advertising-user-data defaults. Google may send limited cookieless signals in those regions; no cookie permission is inferred from browsing or from this page's measurement switch.</p>

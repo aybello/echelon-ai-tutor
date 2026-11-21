@@ -86,9 +86,9 @@ export function parseIssuedAssessmentItems(value: string) {
     return parsed.success ? parsed.data : null;
   } catch { return null; }
 }
-export async function readAssessmentSessions(scope: AssessmentReadScope, days: 7 | 30): Promise<LearnerAssessmentFeed> {
+export async function readAssessmentSessions(scope: AssessmentReadScope, days: 7 | 30, through = Date.now()): Promise<LearnerAssessmentFeed> {
   const db = await database();
-  const window = assessmentReadPredicate(scope, days);
+  const window = assessmentReadPredicate(scope, days, Math.min(Date.now(), through));
   const rows = await db.select({ sessionId: sessions.sessionId, courseKey: sessions.courseKey, mode: sessions.mode, timed: sessions.timed, status: sessions.status, startedAt: sessions.startedAt, lastObservedAt: sessions.lastObservedAt, itemCount: sessions.itemCount }).from(sessions)
     .where(window.predicate).orderBy(desc(sessions.lastObservedAt), asc(sessions.sessionId)).limit(LIMIT + 1);
   const visible = rows.slice(0, LIMIT);
@@ -104,9 +104,9 @@ export async function readAssessmentSessions(scope: AssessmentReadScope, days: 7
       answers: count("answer_submitted"), retries: count("retry"), steps: count("step_answer"), hints: count("hint_opened"), explanations: count("explanation_opened"), resumes: count("resumed"), activeSeconds: null };
   }), partial: rows.length > LIMIT, since: new Date(window.since).toISOString(), until: new Date(window.until).toISOString(), access: scope.access };
 }
-export async function readAssessmentDetails(scope: AssessmentReadScope, input: z.infer<typeof learnerAssessmentDetailInput>): Promise<LearnerAssessmentDetail> {
+export async function readAssessmentDetails(scope: AssessmentReadScope, input: z.infer<typeof learnerAssessmentDetailInput>, through = Date.now()): Promise<LearnerAssessmentDetail> {
   const db = await database();
-  const window = assessmentReadPredicate(scope, input.days);
+  const window = assessmentReadPredicate(scope, input.days, Math.min(Date.now(), through));
   const [session] = await db.select({ sessionId: sessions.sessionId, issuedItemsJson: sessions.issuedItemsJson, manifestHash: sessions.manifestHash }).from(sessions).where(and(window.predicate, eq(sessions.sessionId, input.sessionId))).limit(1);
   if (!session) throw notFound();
   // Reapply scope to the joined session for every event page, including arbitrary UUIDs/cursors.
