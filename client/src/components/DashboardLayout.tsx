@@ -19,7 +19,6 @@ import {
   SidebarTrigger,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { SIGN_IN_NOTICE } from "@shared/learnerActivity";
 import { getLoginUrl } from "@/const";
 import { useIsMobile } from "@/hooks/useMobile";
 import { LayoutDashboard, LogOut, PanelLeft, Users, ShieldCheck } from "lucide-react";
@@ -66,7 +65,7 @@ export default function DashboardLayout({
               Sign in to continue
             </h1>
             <p className="text-sm text-muted-foreground text-center max-w-sm">
-              {SIGN_IN_NOTICE} <a href="/privacy" className="underline">Privacy policy</a>
+              Access to this dashboard requires authentication. Continue to launch the login flow.
             </p>
           </div>
           <Button

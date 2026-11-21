@@ -5,7 +5,6 @@
  * Step 2: Enter 6-digit code → verify → requested page, /account, or /team
  */
 
-import { SIGN_IN_NOTICE } from "@shared/learnerActivity";
 import { useState, useRef, useEffect, useLayoutEffect } from "react";
 import { trpc } from "@/lib/trpc";
 import LandingNav from "@/components/LandingNav";
@@ -247,7 +246,6 @@ export default function OtpLogin() {
             <p style={{ color: "#64748B", fontSize: 14, lineHeight: 1.6, margin: "0 0 28px" }}>
               Enter the email used at checkout or invited by your team. If it matches an eligible account, we'll email a six-digit sign-in code. Verify the code to protect your course access.
             </p>
-            <p style={{ fontSize: 13, color: "#475569", marginBottom: 16 }}>{SIGN_IN_NOTICE} <a href="/privacy">Privacy policy</a></p>
             <form onSubmit={handleEmailSubmit}>
               <input
                 aria-label="Email address"

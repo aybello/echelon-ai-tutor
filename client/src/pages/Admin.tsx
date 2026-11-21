@@ -8,7 +8,6 @@ import PurchaseEmailDelivery from "@/components/PurchaseEmailDelivery";
 import { useEffect, useRef, useState } from "react";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { trpc } from "@/lib/trpc";
-import { SIGN_IN_NOTICE } from "@shared/learnerActivity";
 import { getLoginUrl } from "@/const";
 import { Link } from "wouter";
 import { usePageMeta } from "@/hooks/usePageMeta";
@@ -545,7 +544,6 @@ export default function Admin() {
         <div className="admin-auth-card" style={{ textAlign: "center" }}>
           <ShieldCheck size={42} strokeWidth={1.6} style={{ color: "#173A4C", marginBottom: 16 }} aria-hidden="true" />
           <div style={{ color: "#1E293B", fontSize: 18, fontWeight: 700, marginBottom: 8 }}>Sign in required</div>
-          <p style={{ maxWidth: 380, fontSize: 14 }}>{SIGN_IN_NOTICE} <a href="/privacy">Privacy policy</a></p>
           <button type="button" onClick={() => { window.location.href = getLoginUrl(); }} style={{ background: "transparent", border: 0, color: "#38BDF8", cursor: "pointer", fontFamily: "inherit", fontSize: 14, padding: 8 }}>Sign in</button>
         </div>
       </div>

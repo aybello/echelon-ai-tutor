@@ -1,6 +1,5 @@
 // Account.tsx — Restore Access / My Passes
 // Design: Light theme — white cards, #F1F5F9 background, slate text (matches site)
-import { SIGN_IN_NOTICE } from "@shared/learnerActivity";
 import { useState, useEffect } from "react";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { Link, useSearch } from "wouter";
@@ -354,7 +353,6 @@ export default function Account() {
         {/* Email form — only shown when not signed in */}
         {!isAnyAuthenticated && (
         <div className="account-card" style={{ padding: 28, marginBottom: 24 }}>
-            <p style={{ fontSize: 13, color: "#475569", marginBottom: 16 }}>{SIGN_IN_NOTICE} <a href="/privacy">Privacy policy</a></p>
           <form onSubmit={handleSubmit}>
             <label htmlFor="restore-email" style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 8, letterSpacing: "0.02em" }}>
               Checkout or team-invitation email address

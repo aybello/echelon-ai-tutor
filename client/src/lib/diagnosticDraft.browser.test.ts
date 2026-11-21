@@ -36,6 +36,7 @@ beforeAll(async () => {
             const questions = {questions:Array.from({length:15},(_,i)=>({id:i+1,module:'Safety',question:'Synthetic question '+(i+1),options:['Option A','Option B','Option C','Option D']}))};
             const idleMutation = () => ({isPending:false,mutate(){throw Error('Unexpected mutation in isolated diagnostic fixture');}});
             export const trpc = {
+              assessmentActivity:{record:{useMutation:idleMutation},resume:{useMutation:idleMutation}},
               dashboardAuth:{me:{useQuery:()=>({data:null,isLoading:false})}},
               activation:{
                 status:{useQuery:()=>({data:status,isLoading:false,refetch(){}})},

@@ -209,7 +209,7 @@ async function settled(page: Page) {
     .poll(
       async () => {
         const s = await state(page);
-        return Boolean(s.id && s.scope?.identity === "user:101");
+        return Boolean(s.id && s.scope?.identity === "user:101" && s.actor === JSON.stringify(s.scope) && s.mounts > 0);
       },
       { timeout: 2000 }
     )

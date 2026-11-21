@@ -65,7 +65,9 @@ beforeAll(async () => {
             export const useSearch=()=>location.search;
             export const Link=({href,children,...props})=><a href={href} {...props} onClick={event=>{event.preventDefault();history.pushState({},'',href)}}>{children}</a>;
           ` };
+          if (args.path === "@/components/FeatureSuggestion") return { contents: 'export const SuggestionInvitation=()=>null;' };
           if (args.path === "@/lib/courseNavigation") return { contents: `
+            export const getCourseWorkspaceTabs=()=>[];
             export const getCourseInteractiveHref=(courseKey,search='')=>{
               if (!courseKey || courseKey==='electrician-309a') return undefined;
               const province=new URLSearchParams(search).get('province')?.toUpperCase();
@@ -110,7 +112,7 @@ beforeAll(async () => {
               toggleBookmark:{useMutation:options=>({isPending:false,mutate:input=>{const context=options.onMutate?.(input);let resolve,reject;const promise=new Promise((yes,no)=>{resolve=yes;reject=no});window.mutations.push({input,resolve,reject});promise.then(data=>options.onSuccess(data,input,context),error=>options.onError?.(error,input,context));}})}
             }};
           `, resolveDir: process.cwd() };
-          return { contents: `export default function Stub(){return null}; export const TutorPanelPlacement={Provider:({children})=>children}; export const readUSStudyContext=()=>({isUS:false}); export const withUSStudyContext=x=>x; export const resolveCourseKey=value=>value?{courseKey:value,examFamily:'western'}:null; export const resolveStudyNotesTopics=()=>({initialTopic:null}); export const shouldShowReviewPrompt=()=>false; export const GOOGLE_REVIEW_URL=''; export const markReviewPromptShown=()=>{}; export const markAsReviewed=()=>{}; export const getPracticeGuidePath=()=>null; export const buildPricingHref=()=>'/pricing'; export const class1OptionOrder=(_e,_i,n)=>Array.from({length:n},(_,i)=>i); export const class1DisplayLetter=()=> 'A';` };
+          return { contents: `export default function Stub(){return null}; export const TutorPanelPlacement={Provider:({children})=>children}; export const readUSStudyContext=()=>({isUS:false}); export const withUSStudyContext=x=>x; export const resolveCourseKey=value=>value?{courseKey:value,examFamily:'western'}:null; export const resolveStudyNotesTopics=()=>({initialTopic:null}); export const shouldShowReviewPrompt=()=>false; export const GOOGLE_REVIEW_URL=''; export const markReviewPromptShown=()=>{}; export const markAsReviewed=()=>{}; export const getPracticeGuidePath=()=>null; export const buildPricingHref=()=>'/pricing'; export const funnelProvince=()=>undefined; export const class1OptionOrder=(_e,_i,n)=>Array.from({length:n},(_,i)=>i); export const class1DisplayLetter=()=> 'A';` };
         });
       },
     }],

@@ -47,6 +47,7 @@ beforeAll(async () => {
               const status = {status:'completed', profile:{sessionMinutes:25,weeklyQuestionGoal:39,studyDaysPerWeek:3}, diagnostic, course:{displayName:'Synthetic OIT',quizPath:'/quiz'}};
               const idleMutation = () => ({isPending:false,mutate(){throw Error('Unexpected mutation in isolated result fixture');}});
               export const trpc = {
+                assessmentActivity:{record:{useMutation:idleMutation},resume:{useMutation:idleMutation}},
                 dashboardAuth:{me:{useQuery:()=>({data:null,isLoading:false})}},
                 activation:{
                   status:{useQuery:()=>({data:status,isLoading:false,refetch(){}})},
