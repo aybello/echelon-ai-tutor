@@ -360,11 +360,12 @@ test(`${COURSE_NAME}: invitation, activation, mock recovery and manager reportin
 async function setPracticeOptionsOpen(page: Page, open: boolean) {
   await expect(page.getByTestId("practice-question")).toBeVisible();
   const options = page.locator("details.practice-options");
-  const isOpen = await options.evaluate(element => (element as HTMLDetailsElement).open);
-  if (isOpen !== open) {
-    await options.locator("summary").click();
-  }
-  await expect(options).toHaveJSProperty("open", open);
+  // Loading a different question set can replace the panel during a click.
+  const toggle = page.locator(`details.practice-options${open ? ":not([open])" : "[open]"} > summary`);
+  await expect(async () => {
+    if (await toggle.isVisible()) await toggle.click({ timeout: 1000 });
+    await expect(options).toHaveJSProperty("open", open, { timeout: 1000 });
+  }).toPass({ timeout: 20000 });
 }
 
 // Automated answers and course changes can consume a full API window in seconds.
