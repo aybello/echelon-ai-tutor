@@ -28,6 +28,7 @@ beforeAll(async () => {
       Object.defineProperty(navigator,'doNotTrack',{value:'1',configurable:true});
       window.attempts=[]; window.scopes=[]; window.mounts=0; window.unmounts=0;
       window.activityCalls=[]; window.renders=[];
+      window.questionActors=new Map();
       const client = new QueryClient({defaultOptions:{queries:{retry:false,refetchOnWindowFocus:false,gcTime:Infinity}}});
       const authKey=getQueryKey(trpc.auth.me,undefined,'query');
       const emailKey=getQueryKey(trpc.dashboardAuth.me,undefined,'query');
@@ -35,9 +36,16 @@ beforeAll(async () => {
       client.setQueryData(emailKey,null);
       const rpc=trpc.createClient({links:[()=>({op})=>observable(observer=>{
         let active=true;
+        const requestActor=window.actor;
         fetch('/fixture/'+op.path,{method:'POST',body:JSON.stringify(op.input??null)})
           .then(async response=>{if(!response.ok)throw new Error('Synthetic auth failure');return response.json()})
-          .then(data=>{if(active){observer.next({result:{data}});observer.complete()}},error=>{if(active)observer.error(error)});
+          .then(data=>{
+            if(!active)return;
+            if(op.path==='quiz.getRandomQuestions'){
+              for(const question of data.questions)window.questionActors.set(question.id,requestActor);
+            }
+            observer.next({result:{data}});observer.complete();
+          },error=>{if(active)observer.error(error)});
         return ()=>{active=false};
       })]});
       window.refetchAuth=()=>client.refetchQueries({queryKey:authKey,exact:true});
@@ -195,6 +203,7 @@ async function state(page: Page) {
     return {
       id: w.session?.current?.id ?? null,
       actor: w.actor,
+      questionActor: w.questionActors.get(w.session?.current?.id),
       scope: w.strictScope,
       history: w.session?.history.length,
       selected: w.session?.selected,
@@ -204,12 +213,14 @@ async function state(page: Page) {
     };
   });
 }
-async function settled(page: Page) {
+async function settled(page: Page, userId = 101) {
   await expect
     .poll(
       async () => {
         const s = await state(page);
-        return Boolean(s.id && s.scope?.identity === "user:101" && s.actor === JSON.stringify(s.scope) && s.mounts > 0);
+        // An identity can settle one render before its replacement question arrives.
+        return Boolean(s.id && s.scope?.identity === `user:${userId}` &&
+          s.actor === JSON.stringify(s.scope) && s.questionActor === s.actor && s.mounts > 0);
       },
       { timeout: 2000 }
     )
@@ -306,6 +317,7 @@ describe("quiz actor identity versus strict save verification", () => {
         })
         .toBe(true);
       expect(fixture.questions).toBeGreaterThan(requests);
+      await settled(page, 202);
       await answer(page);
       const second = await state(page);
       const secondRequests = fixture.questions;
