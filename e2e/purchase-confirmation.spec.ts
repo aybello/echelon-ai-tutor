@@ -39,16 +39,16 @@ async function openConfirmation(page: Page, productKey = "oit") {
 }
 
 const dedicatedUsProducts = [
-  { productKey: "us-class1-water", label: "US Class I Water Treatment Practice Quiz", path: "/us-class1-water" },
-  { productKey: "us-class1-water-dist", label: "US Class I Water Distribution Practice Quiz", path: "/us-class1-water-dist" },
-  { productKey: "us-texas-class-d-water", label: "Texas Class D Water Practice Quiz", path: "/us-texas-class-d-water" },
+  { productKey: "us-class1-water", label: "US Class I Water Treatment", path: "/us-class1-water" },
+  { productKey: "us-class1-water-dist", label: "US Class I Water Distribution", path: "/us-class1-water-dist" },
+  { productKey: "us-texas-class-d-water", label: "Texas Class D Water", path: "/us-texas-class-d-water" },
 ];
 
 for (const product of dedicatedUsProducts) {
   test(`a completed ${product.productKey} purchase opens its own study path`, async ({ page }) => {
     await mockConfirmation(page, () => ({ ...ready, productKey: product.productKey }));
     await openConfirmation(page, product.productKey);
-    await expect(page.getByRole("link", { name: `Sign in — ${product.label}` }))
+    await expect(page.getByRole("link", { name: `Sign in — ${product.label} — Practice Quiz` }))
       .toHaveAttribute("href", `/login/otp?next=${encodeURIComponent(product.path)}`);
     await expect(page.getByRole("button", { name: "Continue to Study Setup" })).toBeVisible();
   });
@@ -75,7 +75,7 @@ for (const width of [1280, 390]) {
     await expect(page.getByRole("status")).toContainText("do not need to purchase again");
     await page.getByRole("button", { name: "Check access again" }).click();
     await page.clock.runFor(1000);
-    await expect(page.getByRole("link", { name: /Sign in — OIT Practice Quiz/ })).toHaveAttribute("href", "/login/otp?next=%2Fquiz");
+    await expect(page.getByRole("link", { name: /Sign in — OIT — Water Treatment — Practice Quiz/ })).toHaveAttribute("href", "/login/otp?next=%2Fquiz");
     await expect(page.getByRole("button", { name: "Continue to Study Setup" })).toBeVisible();
     await page.clock.runFor(20_000);
     expect(calls()).toBe(7);

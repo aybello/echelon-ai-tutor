@@ -155,6 +155,10 @@ test(`${COURSE_NAME}: invitation, activation, mock recovery and manager reportin
     await expect(operatorPage.getByText("Recording active study time.", { exact: true })).toBeVisible();
     await operatorPage.waitForTimeout(1500);
     await operatorPage.goto(claimUrl!);
+    const passPicker = operatorPage.getByRole("combobox", { name: "Choose a Course Pass" });
+    const activePass = passPicker.getByRole("option", { name: new RegExp(`^${COURSE_NAME} .*active`) });
+    await expect(activePass).toHaveCount(1);
+    await passPicker.selectOption({ label: await activePass.innerText() });
     const db = await mysql.createConnection(process.env.DATABASE_URL!);
     try {
       await expect.poll(async () => {
