@@ -15,9 +15,10 @@ describe("Nova Scotia saved province", () => {
   it("selects the WPI family and scoped finder from either province banner", () => {
     expect(PROVINCE_LIST.find(item => item.id === "ns")?.track).toBe("wpi");
     const landing = readFileSync(new URL("../pages/Landing.tsx", import.meta.url), "utf8");
-    expect(landing).toContain("const handleProvinceSelect = (id: ProvinceId)");
-    expect(landing).toContain("setProvince(id)");
-    expect(landing).toContain("<CourseFinder initialProvince={province}");
+    expect(landing).toMatch(/value !== "ns"\) return;\s*setProvince\(value\)/);
+    expect(landing).toContain("<HomepageCourseDiscovery initialProvince={province} onProvinceSelected={handleProvinceSelect}");
+    const discovery = readFileSync(new URL("../components/HomepageCourseDiscovery.tsx", import.meta.url), "utf8");
+    expect(discovery).toContain("<CourseFinder initialProvince={initialProvince} onProvinceSelected={onProvinceSelected}");
     expect(landing).toContain('id="find-course"');
     const wpi = readFileSync(new URL("../pages/WpiLanding.tsx", import.meta.url), "utf8");
     expect(wpi).toContain('if (id === "ns") navigate("/?province=NS#find-course")');

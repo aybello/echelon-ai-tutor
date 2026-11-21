@@ -7,6 +7,7 @@ import {
   assessmentActivityIdentitySchema, assessmentActivityIssueSchema, assessmentActivityLimits,
   assessmentActivityModeSchema, assessmentActivityRecordInputSchema, assessmentActivityResumeInputSchema,
   type AssessmentActivityCapability, type AssessmentActivityEvent, type AssessmentActivityIssue,
+  UNRECORDED_ASSESSMENT_ACTIVITY as NOT_RECORDED,
   type AssessmentActivityItem, type AssessmentActivityNotRecorded, type AssessmentActivityRecordInput,
   type AssessmentActivityRecordResult, type AssessmentActivityResumeInput, type AssessmentActivityResumeResult,
 } from "../shared/assessmentActivity";
@@ -17,7 +18,6 @@ import { ENV } from "./_core/env";
 import { getDb } from "./db";
 import { validateIssuedAttribution } from "./teams/attemptAttribution";
 
-const NOT_RECORDED: AssessmentActivityNotRecorded = { tracking: false, recorded: false, source: "observed" };
 const TTL_MS = 6 * 60 * 60 * 1000;
 const digest = (value: string) => createHash("sha256").update(value).digest("hex");
 const sameHash = (left: string, right: string) => /^[a-f0-9]{64}$/.test(left) && /^[a-f0-9]{64}$/.test(right)

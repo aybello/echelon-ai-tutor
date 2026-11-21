@@ -78,9 +78,9 @@ export default function AdminLearnerActivity() {
       </ul>
     </div>}
     <p style={{ fontSize: 13, lineHeight: 1.6 }}>{LEARNER_ACTIVITY_COVERAGE}</p>
-    {!selected ? <p>Select a learner to see recorded activity.</p> : <div>
-      <h3 key={selected.key} ref={focusSelection} tabIndex={-1}>{selected.name ?? selected.email ?? "Account learner"}</h3>
-      <AdminSignInHistory key={selected.key} learner={selected.selection} onVisit={showVisit} />
+    {!selected ? <p>Select a learner to see recorded activity.</p> : <div key={selected.key}>
+      <h3 ref={focusSelection} tabIndex={-1}>{selected.name ?? selected.email ?? "Account learner"}</h3>
+      <AdminSignInHistory learner={selected.selection} onVisit={showVisit} />
       <label htmlFor="learner-window">History window </label>
       <select id="learner-window" value={days} onChange={event => setDays(Number(event.target.value) as 7 | 30)}><option value={7}>7 days</option><option value={30}>30 days</option></select>
       <label className="ml-3">Ending on <input type="date" value={calendarDate(new Date(through ?? Date.now()))} max={calendarDate(new Date())}

@@ -51,6 +51,7 @@ export type AssessmentActivityCapability = {
   expiresAt: string; source: "observed";
 };
 export type AssessmentActivityNotRecorded = { tracking: false; recorded: false; source: "observed" };
+export const UNRECORDED_ASSESSMENT_ACTIVITY: AssessmentActivityNotRecorded = { tracking: false, recorded: false, source: "observed" };
 export type AssessmentActivityRecordResult = AssessmentActivityNotRecorded | {
   tracking: true; recorded: true; accepted: number; duplicates: number; nextSequence: number;
   status: z.infer<typeof assessmentActivityStatusSchema>; source: "observed";

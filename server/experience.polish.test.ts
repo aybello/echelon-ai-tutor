@@ -27,8 +27,9 @@ describe("post-purchase continuation", () => {
     expect(purchaseSuccessSource).toContain(
       "setPurchasedProductKey(data.paid ? data.productKey"
     );
+    expect(purchaseSuccessSource).toContain("verified ? purchasedCourseNavigation(purchasedProductKey) : null");
     expect(purchaseSuccessSource).toContain(
-      "href={`/activate/${encodeURIComponent(purchasedProductKey)}`}"
+      "href={`/activate/${encodeURIComponent(purchasedCourse.courseKey)}`}"
     );
     expect(purchaseSuccessSource).not.toContain("/account?next=");
   });

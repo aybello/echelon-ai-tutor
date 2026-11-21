@@ -202,6 +202,13 @@ describe("forward-only migration safety", () => {
         standaloneApply: { tables: ["interactive_item_progress", "interactive_daily_activity"] },
         verifierAllowMissingTables: ["interactive_item_progress", "interactive_daily_activity"],
       }),
+      ...([
+        [83, "0083_assessment_activity", ["assessment_activity_sessions", "assessment_activity_events"]],
+        [84, "0084_feature_requests", ["feature_requests"]],
+        [85, "0085_account_sign_ins", ["account_sign_ins"]],
+      ] as const).map(([version, tag, tables]) => expect.objectContaining({
+        version, tag, proposedOnly: true, standaloneApply: { tables }, verifierAllowMissingTables: tables,
+      })),
     ]);
     const baseline = await loadSchemaContract(manifest.baseline.contract);
     const baselineRaw = await readFile(
@@ -952,7 +959,7 @@ describe("forward-only migration safety", () => {
 
     expect(
       planForwardMigrations(manifest, rows).map(migration => migration.version)
-    ).toEqual([59, 60, 61, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82]);
+    ).toEqual([59, 60, 61, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85]);
   });
 });
 
