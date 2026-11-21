@@ -2696,14 +2696,6 @@ export const OVERLAY_DESCRIPTORS = [
     ]
   },
   {
-    "file": "2026-11-19-wqa-batch-101.json",
-    "sha256": "42b62820a64e6981106dc6d8593f0f0131dc26dd747b879ec0748f199c168d33",
-    "bytes": 443380,
-    "courses": [
-      "wqa"
-    ]
-  },
-  {
     "file": "2026-11-19-wqa-batch-102.json",
     "sha256": "61c0ce97b5f1ccf5511d9c69b7dd8429d7d4256dbdd71101669fb7cabc3e9f8d",
     "bytes": 66550,
@@ -2712,17 +2704,25 @@ export const OVERLAY_DESCRIPTORS = [
     ]
   },
   {
+    "file": "2026-11-19-wqa-batch-101.json",
+    "sha256": "07eb39524073e1f2df7264a637d80feabb1e0d0dad4c881eb5f51c6c048b9353",
+    "bytes": 480106,
+    "courses": [
+      "wqa"
+    ]
+  },
+  {
     "file": "2026-11-19-wqa-batch-103.json",
-    "sha256": "4f28068cd766b9253ec2b0e4430c059a068c1450908dfad3967c543ab1dea941",
-    "bytes": 299508,
+    "sha256": "ca40215e96f243596e1bdad26bde92437a463a5f79fc19edd4cbf465187f6683",
+    "bytes": 292438,
     "courses": [
       "wqa"
     ]
   },
   {
     "file": "2026-11-19-wqa-batch-104.json",
-    "sha256": "8dbde4cae752238ba6c5d3bb4075c4fc7986208cbbb6413b759b7caddcd6411f",
-    "bytes": 402359,
+    "sha256": "1ada867e3ee198f4114b5dcb2ecc4671cc7494269dff11c67de3057b426709b5",
+    "bytes": 399497,
     "courses": [
       "wqa"
     ]
