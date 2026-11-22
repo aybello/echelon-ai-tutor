@@ -8545,36 +8545,6 @@
    "id": "spellman-handbook",
    "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
    "locator": "Advanced wastewater process control chapters (activated sludge control, nutrient removal, digestion, solids processing)"
-  },
-  {
-   "id": "epa-municipal-wastewater",
-   "title": "US EPA, Municipal Wastewater resources",
-   "locator": "https://www.epa.gov/npdes/municipal-wastewater"
-  },
-  {
-   "id": "epa-process-control",
-   "title": "US EPA, Process Control and nutrient removal guidance for municipal wastewater",
-   "locator": "Advanced activated sludge and nutrient removal process control background"
-  },
-  {
-   "id": "owwco-exam-prep",
-   "title": "OWWCO, Exam preparation resources",
-   "locator": "https://owwco.ca/preparing-for-your-exam/"
-  },
-  {
-   "id": "wpi-ntk-2025",
-   "title": "WPI, 2025 Need-to-Know Criteria, Wastewater Treatment Class III",
-   "locator": "https://gowpi.org/services/2025-need-to-know-criteria/"
-  },
-  {
-   "id": "ont-reg-129-04",
-   "title": "Ontario Regulation 129/04, Licensing of Sewage Works Operators",
-   "locator": "https://www.ontario.ca/laws/regulation/04129"
-  },
-  {
-   "id": "ccohs-safety",
-   "title": "CCOHS, OSH Answers (confined spaces, hydrogen sulfide, lockout)",
-   "locator": "https://www.ccohs.ca/oshanswers/"
   }
  ],
  "publication": {

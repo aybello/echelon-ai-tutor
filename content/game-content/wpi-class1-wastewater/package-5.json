@@ -6545,31 +6545,6 @@
    "id": "spellman-handbook",
    "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
    "locator": "Wastewater treatment operations chapters (preliminary, primary, biological treatment, solids)"
-  },
-  {
-   "id": "wpi-ntk-2025",
-   "title": "WPI, 2025 Need-to-Know Criteria, Wastewater Treatment Class I",
-   "locator": "https://gowpi.org/services/2025-need-to-know-criteria/"
-  },
-  {
-   "id": "ccme-strategy",
-   "title": "CCME, Canada-wide Strategy for the Management of Municipal Wastewater Effluent, 2009",
-   "locator": "National effluent quality context for Canadian municipal wastewater"
-  },
-  {
-   "id": "wser",
-   "title": "Government of Canada, Wastewater Systems Effluent Regulations (Fisheries Act)",
-   "locator": "Federal effluent requirements, general reference"
-  },
-  {
-   "id": "epa-ww-primer",
-   "title": "US EPA, wastewater treatment primer material",
-   "locator": "Treatment process background (not Canadian law)"
-  },
-  {
-   "id": "ccohs-safety",
-   "title": "CCOHS, OSH Answers (chemical safety, confined spaces, lockout)",
-   "locator": "https://www.ccohs.ca/oshanswers/"
   }
  ],
  "publication": {

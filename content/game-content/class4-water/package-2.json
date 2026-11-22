@@ -3933,41 +3933,6 @@
    "id": "spellman-handbook",
    "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
    "locator": "Advanced water treatment management, process evaluation and optimization chapters"
-  },
-  {
-   "id": "epa-membrane-uv",
-   "title": "US EPA, Membrane Filtration Guidance Manual and UV Disinfection Guidance Manual",
-   "locator": "Membrane and UV background (not Ontario law)"
-  },
-  {
-   "id": "epa-swtr",
-   "title": "US EPA, Surface Water Treatment Rule guidance",
-   "locator": "Filtration and disinfection context (background, not Ontario law)"
-  },
-  {
-   "id": "owwco-exam-prep",
-   "title": "OWWCO, Exam preparation resources",
-   "locator": "https://owwco.ca/preparing-for-your-exam/"
-  },
-  {
-   "id": "wpi-ntk-2025",
-   "title": "WPI, 2025 Need-to-Know Criteria, Water Treatment Class IV",
-   "locator": "https://gowpi.org/services/2025-need-to-know-criteria/"
-  },
-  {
-   "id": "ont-reg-170-03",
-   "title": "Ontario Regulation 170/03, Drinking Water Systems",
-   "locator": "https://www.ontario.ca/laws/regulation/03170"
-  },
-  {
-   "id": "ont-dwqms",
-   "title": "Ontario Drinking Water Quality Management Standard",
-   "locator": "Quality management system leadership and management review for municipal residential drinking water systems"
-  },
-  {
-   "id": "ccohs-safety",
-   "title": "CCOHS, OSH Answers (chemical safety, confined spaces, lockout)",
-   "locator": "https://www.ccohs.ca/oshanswers/"
   }
  ],
  "publication": {

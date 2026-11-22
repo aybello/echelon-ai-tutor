@@ -3305,31 +3305,6 @@
    "id": "spellman-handbook",
    "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
    "locator": "Distribution operations chapters (water loss, pressure management, asset care)"
-  },
-  {
-   "id": "wpi-ntk-2025",
-   "title": "WPI, 2025 Need-to-Know Criteria, Water Distribution Class IV",
-   "locator": "https://gowpi.org/services/2025-need-to-know-criteria/"
-  },
-  {
-   "id": "gcdwq",
-   "title": "Health Canada, Guidelines for Canadian Drinking Water Quality",
-   "locator": "Federal guideline values and distribution water quality context"
-  },
-  {
-   "id": "awwa-water-loss",
-   "title": "AWWA, water loss control guidance (M36 family)",
-   "locator": "Water audit and loss control background (not Canadian law)"
-  },
-  {
-   "id": "awwa-asset",
-   "title": "AWWA, asset management guidance for water utilities",
-   "locator": "Asset management background (not Canadian law)"
-  },
-  {
-   "id": "ccohs-safety",
-   "title": "CCOHS, OSH Answers (chemical safety, confined spaces, lockout)",
-   "locator": "https://www.ccohs.ca/oshanswers/"
   }
  ],
  "publication": {

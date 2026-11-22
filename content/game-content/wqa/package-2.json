@@ -4285,36 +4285,6 @@
    "id": "spellman-handbook",
    "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
    "locator": "Laboratory analysis, sampling and water quality chapters"
-  },
-  {
-   "id": "owwco-exam-prep",
-   "title": "OWWCO, Exam preparation resources",
-   "locator": "https://owwco.ca/preparing-for-your-exam/"
-  },
-  {
-   "id": "ont-reg-169-03",
-   "title": "Ontario Regulation 169/03, Ontario Drinking Water Quality Standards",
-   "locator": "https://www.ontario.ca/laws/regulation/03169"
-  },
-  {
-   "id": "ont-reg-170-03",
-   "title": "Ontario Regulation 170/03, Drinking Water Systems",
-   "locator": "https://www.ontario.ca/laws/regulation/03170"
-  },
-  {
-   "id": "ont-reg-128-04",
-   "title": "Ontario Regulation 128/04, Certification of Drinking Water System Operators and Water Quality Analysts",
-   "locator": "https://www.ontario.ca/laws/regulation/04128"
-  },
-  {
-   "id": "epa-lab-qa",
-   "title": "US EPA, Drinking water laboratory quality assurance guidance",
-   "locator": "Laboratory quality control background (not Ontario law)"
-  },
-  {
-   "id": "ccohs-safety",
-   "title": "CCOHS, OSH Answers (laboratory safety, chemical handling)",
-   "locator": "https://www.ccohs.ca/oshanswers/"
   }
  ],
  "publication": {

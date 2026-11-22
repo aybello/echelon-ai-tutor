@@ -4165,36 +4165,6 @@
    "id": "spellman-handbook",
    "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
    "locator": "Water treatment operations chapters (coagulation, sedimentation, filtration, disinfection, softening)"
-  },
-  {
-   "id": "epa-swtr",
-   "title": "US EPA, Surface Water Treatment Rule guidance and turbidity guidance",
-   "locator": "Filtration and disinfection context (background, not Ontario law)"
-  },
-  {
-   "id": "epa-small-systems",
-   "title": "US EPA, Small Drinking Water Systems Handbook",
-   "locator": "Treatment and distribution operation background"
-  },
-  {
-   "id": "owwco-exam-prep",
-   "title": "OWWCO, Exam preparation resources",
-   "locator": "https://owwco.ca/preparing-for-your-exam/"
-  },
-  {
-   "id": "wpi-ntk-2025",
-   "title": "WPI, 2025 Need-to-Know Criteria, Water Treatment Class II",
-   "locator": "https://gowpi.org/services/2025-need-to-know-criteria/"
-  },
-  {
-   "id": "ont-reg-170-03",
-   "title": "Ontario Regulation 170/03, Drinking Water Systems",
-   "locator": "https://www.ontario.ca/laws/regulation/03170"
-  },
-  {
-   "id": "ccohs-safety",
-   "title": "CCOHS, OSH Answers (chemical safety, confined spaces, lockout)",
-   "locator": "https://www.ccohs.ca/oshanswers/"
   }
  ],
  "publication": {

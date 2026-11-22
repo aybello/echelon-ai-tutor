@@ -3445,31 +3445,6 @@
    "id": "spellman-handbook",
    "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
    "locator": "Water treatment operations chapters (CT and disinfection, chemical feed, softening, filtration performance)"
-  },
-  {
-   "id": "wpi-ntk-2025",
-   "title": "WPI, 2025 Need-to-Know Criteria, Water Treatment Class II",
-   "locator": "https://gowpi.org/services/2025-need-to-know-criteria/"
-  },
-  {
-   "id": "gcdwq",
-   "title": "Health Canada, Guidelines for Canadian Drinking Water Quality",
-   "locator": "Federal guideline values and treatment context for Canadian drinking water"
-  },
-  {
-   "id": "epa-small-systems",
-   "title": "US EPA, Small Drinking Water Systems Handbook",
-   "locator": "Small system treatment operation background"
-  },
-  {
-   "id": "epa-swtr",
-   "title": "US EPA, Surface Water Treatment Rule guidance",
-   "locator": "Filtration and disinfection context (background, not Canadian law)"
-  },
-  {
-   "id": "ccohs-safety",
-   "title": "CCOHS, OSH Answers (chemical safety, confined spaces, lockout)",
-   "locator": "https://www.ccohs.ca/oshanswers/"
   }
  ],
  "publication": {

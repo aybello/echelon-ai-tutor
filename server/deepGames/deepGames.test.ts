@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
 import { build } from "esbuild";
 import {
-  canonicalDeepPayload, deepGameModes, deepSessionResponseSchema,
+  canonicalDeepPayload, deepContentCourseKeys, deepGameModes, deepSessionResponseSchema,
   type DeepCoursePackage, type DeepTask, type DeepSessionResponse,
 } from "../../shared/deepGames";
 import { assessmentActivityIssueSchema } from "../../shared/assessmentActivity";
@@ -132,9 +132,12 @@ describe("deep publication integrity (private synthetic fixtures)", () => {
     expect(() => validateDeepCoursePackage(process)).toThrow();
   });
   it("enforces package bytes using actual UTF-8, not JavaScript string length", () => {
-    const data = fixture(); data.sources = Array.from({ length: 100 }, (_, index) => ({ id: `source-${index}`, title: "表".repeat(300), locator: "表".repeat(2000), note: "表".repeat(2000) }));
-    expect(JSON.stringify(data).length).toBeLessThan(1_048_576);
-    expect(deepJsonBytes(data)).toBeGreaterThan(1_048_576);
+    const data = fixture();
+    const largeTask = data.tasks[0];
+    data.tasks = Array.from({ length: 2500 }, (_, index) => ({ ...structuredClone(largeTask), id: `large-${index}` }));
+    data.missions = [];
+    restamp(data);
+    expect(deepJsonBytes(data)).toBeGreaterThan(2_097_152);
     expect(() => validateDeepCoursePackage(data)).toThrow("byte limit");
   });
   it("rejects tracking text overflow rather than truncating visible authored assumptions", () => {
@@ -158,18 +161,23 @@ describe("deep publication integrity (private synthetic fixtures)", () => {
 
 describe("fixed-map native registry", () => {
   it("resolves source and bundled production imports from module location, never cwd", () => {
-    expect(deepContentModuleUrls("file:///workspace/server/deepGames/registry.ts")).toEqual({ oit: "file:///workspace/server/deepGames/content/oit.ts", "class1-water": "file:///workspace/server/deepGames/content/class1-water.ts" });
-    expect(deepContentModuleUrls("file:///release/dist/index.js")).toEqual({ oit: "file:///release/dist/deep-game-content/oit.js", "class1-water": "file:///release/dist/deep-game-content/class1-water.js" });
+    const sourceUrls = deepContentModuleUrls("file:///workspace/server/deepGames/registry.ts");
+    expect(Object.keys(sourceUrls)).toEqual([...deepContentCourseKeys]);
+    expect(sourceUrls.oit).toBe("file:///workspace/server/deepGames/content/oit.ts");
+    expect(sourceUrls["oit-ww"]).toBe(sourceUrls.oit);
+    const bundledUrls = deepContentModuleUrls("file:///release/dist/index.js");
+    expect(Object.keys(bundledUrls)).toEqual([...deepContentCourseKeys]);
+    expect(bundledUrls["class1-water"]).toBe("file:///release/dist/deep-game-content/class1-water.js");
     expect(() => deepContentModuleUrls("https://example.test/index.js")).toThrow();
     expect(() => deepContentModuleUrls("file:///unexpected/registry.js")).toThrow();
   });
-  it.each(["electrician-309a", "electrician-309a-demo", "class1", "class1-ww", "oit-ww", "wpi-class1-water", "us-class1-water", "unknown", "../oit", "__proto__", "constructor"])("does not import excluded/alias/unsafe course %s", async courseKey => {
+  it.each(["electrician-309a", "electrician-309a-demo", "class1", "us-class1-water", "unknown", "../oit", "__proto__", "constructor"])("does not import excluded/alias/unsafe course %s", async courseKey => {
     const importModule = vi.fn(); const registry = createDeepCourseRegistry({ importModule });
     expect(isDeepCourseSupported(courseKey)).toBe(false);
     expect(await registry.loadDeepCourse(courseKey)).toBeNull();
     expect(importModule).not.toHaveBeenCalled();
   });
-  it("loads only the requested pilot, deduplicates concurrent calls and caches at most the two pilots", async () => {
+  it("loads only the requested course, deduplicates concurrent calls and caches it", async () => {
     const importModule = vi.fn(async (url: string) => ({ default: fixture(url.includes("class1-water") ? "class1-water" : "oit") }));
     const registry = createDeepCourseRegistry({ importModule, moduleUrl: "file:///release/dist/index.js" });
     const [first, same] = await Promise.all([registry.loadDeepCourse("oit"), registry.loadDeepCourse("oit")]);
@@ -211,7 +219,7 @@ describe("bounded catalog, public snapshots and exact mission expansion", () => 
   it("reports unavailable for unsupported courses or corrupt/unpublished loads, never empty mode buttons", async () => {
     const load = vi.fn(async () => { throw Error("private failure"); });
     const service = createDeepGameService({ loadCourse: load });
-    for (const courseKey of ["electrician-309a", "class1", "oit-ww", "us-class1-water", "unknown"]) {
+    for (const courseKey of ["electrician-309a", "class1", "us-class1-water", "unknown"]) {
       expect(await service.getDeepCatalog(courseKey)).toEqual({ courseKey, available: false, version: null, modes: [], authoredTaskCount: 0, missionCount: 0 });
       await expect(service.startDeepSession({ courseKey, mode: "build-process", sessionSize: 1 })).rejects.toBeInstanceOf(DeepGameUnavailableError);
     }

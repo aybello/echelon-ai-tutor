@@ -6865,31 +6865,6 @@
    "id": "spellman-handbook",
    "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
    "locator": "Advanced water treatment chapters (membranes, UV, mass balances, residuals)"
-  },
-  {
-   "id": "wpi-ntk-2025",
-   "title": "WPI, 2025 Need-to-Know Criteria, Water Treatment Class III",
-   "locator": "https://gowpi.org/services/2025-need-to-know-criteria/"
-  },
-  {
-   "id": "gcdwq",
-   "title": "Health Canada, Guidelines for Canadian Drinking Water Quality",
-   "locator": "Federal guideline values and treatment context for Canadian drinking water"
-  },
-  {
-   "id": "epa-membrane",
-   "title": "US EPA, Membrane Filtration Guidance Manual",
-   "locator": "Membrane operation background (not Canadian law)"
-  },
-  {
-   "id": "epa-uv",
-   "title": "US EPA, Ultraviolet Disinfection Guidance Manual",
-   "locator": "UV disinfection background (not Canadian law)"
-  },
-  {
-   "id": "ccohs-safety",
-   "title": "CCOHS, OSH Answers (chemical safety, confined spaces, lockout)",
-   "locator": "https://www.ccohs.ca/oshanswers/"
   }
  ],
  "publication": {

@@ -3861,31 +3861,6 @@
    "id": "spellman-handbook",
    "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
    "locator": "Distribution operations chapters (pressure zones, storage, water loss, pumps)"
-  },
-  {
-   "id": "wpi-ntk-2025",
-   "title": "WPI, 2025 Need-to-Know Criteria, Water Distribution Class II",
-   "locator": "https://gowpi.org/services/2025-need-to-know-criteria/"
-  },
-  {
-   "id": "gcdwq",
-   "title": "Health Canada, Guidelines for Canadian Drinking Water Quality",
-   "locator": "Federal guideline values and distribution water quality context"
-  },
-  {
-   "id": "awwa-water-loss",
-   "title": "AWWA, water loss control guidance (M36 family)",
-   "locator": "Water audit and loss control background (not Canadian law)"
-  },
-  {
-   "id": "epa-distribution",
-   "title": "US EPA, distribution system guidance material",
-   "locator": "Distribution water quality background (not Canadian law)"
-  },
-  {
-   "id": "ccohs-safety",
-   "title": "CCOHS, OSH Answers (chemical safety, confined spaces, lockout)",
-   "locator": "https://www.ccohs.ca/oshanswers/"
   }
  ],
  "publication": {

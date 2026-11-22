@@ -3877,41 +3877,6 @@
    "id": "spellman-handbook",
    "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
    "locator": "Distribution system operation and maintenance chapters"
-  },
-  {
-   "id": "epa-small-systems",
-   "title": "US EPA, Small Drinking Water Systems Handbook",
-   "locator": "Distribution operation and maintenance background"
-  },
-  {
-   "id": "epa-cross-connection",
-   "title": "US EPA, Cross-Connection Control Manual",
-   "locator": "Backflow principles and device application"
-  },
-  {
-   "id": "epa-epanet",
-   "title": "US EPA, EPANET and manual",
-   "locator": "Distribution hydraulics, pumps, storage, pressure and water age concepts"
-  },
-  {
-   "id": "owwco-exam-prep",
-   "title": "OWWCO, Exam preparation resources",
-   "locator": "https://owwco.ca/preparing-for-your-exam/"
-  },
-  {
-   "id": "wpi-distribution-1",
-   "title": "WPI, Water Distribution Class I Need-to-Know Criteria",
-   "locator": "https://gowpi.org/services/2025-need-to-know-criteria/"
-  },
-  {
-   "id": "ont-reg-170-03",
-   "title": "Ontario Regulation 170/03, Drinking Water Systems",
-   "locator": "https://www.ontario.ca/laws/regulation/03170"
-  },
-  {
-   "id": "ccohs-safety",
-   "title": "CCOHS, OSH Answers (confined spaces, lockout, excavation awareness)",
-   "locator": "https://www.ccohs.ca/oshanswers/"
   }
  ],
  "publication": {
