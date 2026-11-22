@@ -502,7 +502,7 @@ describe("build release provenance", () => {
         put(checkout, path, readFileSync(path, "utf8"));
       }
       // Exercise the real compiler and frozen release, not a stubbed build path.
-      for (const path of ["shared", "scripts/content-engine", "server/interactiveContent"]) {
+      for (const path of ["shared", "scripts/content-engine", "server/interactiveContent", "server/deepGames/content"]) {
         cpSync(path, join(checkout, path), { recursive: true });
       }
       git(["init", "--quiet"]);
@@ -569,6 +569,9 @@ describe("build release provenance", () => {
         release: expected,
         releaseKind: "source-sha256",
       });
+      for (const course of ["oit", "class1-water"]) {
+        expect(statSync(join(exported, "dist/deep-game-content", course + ".js")).size).toBeGreaterThan(0);
+      }
       const manifestPath = join(exported, "dist/interactive-content-build-manifest.json");
       const privateManifest = JSON.parse(readFileSync(manifestPath, "utf8"));
       expect(privateManifest).toEqual({

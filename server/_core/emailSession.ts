@@ -38,6 +38,7 @@ export async function issueVerifiedEmailSessionCookie(
   res: Response,
   email: string,
   maxAgeMs: number = DEFAULT_SESSION_MAX_AGE_MS,
+  beforeIssue?: () => Promise<void>,
 ): Promise<void> {
   const normalized = normalizeEmail(email);
   if (!normalized) throw new Error("Email required to issue session cookie");
@@ -48,6 +49,7 @@ export async function issueVerifiedEmailSessionCookie(
     .setExpirationTime(Math.floor((Date.now() + maxAgeMs) / 1000))
     .sign(getSecret());
 
+  await beforeIssue?.();
   res.cookie(ECHELON_SESSION_COOKIE, token, {
     httpOnly: true,
     secure: ENV.isProduction,

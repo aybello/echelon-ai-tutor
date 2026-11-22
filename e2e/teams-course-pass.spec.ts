@@ -155,6 +155,10 @@ test(`${COURSE_NAME}: invitation, activation, mock recovery and manager reportin
     await expect(operatorPage.getByText("Recording active study time.", { exact: true })).toBeVisible();
     await operatorPage.waitForTimeout(1500);
     await operatorPage.goto(claimUrl!);
+    const passPicker = operatorPage.getByRole("combobox", { name: "Choose a Course Pass" });
+    const activePass = passPicker.getByRole("option", { name: new RegExp(`^${COURSE_NAME} .*active`) });
+    await expect(activePass).toHaveCount(1);
+    await passPicker.selectOption({ label: await activePass.innerText() });
     const db = await mysql.createConnection(process.env.DATABASE_URL!);
     try {
       await expect.poll(async () => {
@@ -353,19 +357,45 @@ test(`${COURSE_NAME}: invitation, activation, mock recovery and manager reportin
 
 }
 
+async function setPracticeOptionsOpen(page: Page, open: boolean) {
+  await expect(page.getByTestId("practice-question")).toBeVisible();
+  const options = page.locator("details.practice-options");
+  // Loading a different question set can replace the panel during a click.
+  const toggle = page.locator(`details.practice-options${open ? ":not([open])" : "[open]"} > summary`);
+  await expect(async () => {
+    if (await toggle.isVisible()) await toggle.click({ timeout: 1000 });
+    await expect(options).toHaveJSProperty("open", open, { timeout: 1000 });
+  }).toPass({ timeout: 20000 });
+}
+
+// Automated answers and course changes can consume a full API window in seconds.
+function observePracticeRequestBudget(page: Page) {
+  let remainingRequests = Infinity;
+  let resetsAt = 0;
+  page.on("response", response => {
+    const path = new URL(response.url()).pathname;
+    if (!path.startsWith("/api/trpc/") || !/(?:quiz|assessmentActivity|training)\./.test(path)) return;
+    const headers = response.headers();
+    const remaining = Number(headers["ratelimit-remaining"]);
+    const seconds = Number(headers["ratelimit-reset"]);
+    if (!Number.isFinite(remaining) || !Number.isFinite(seconds)) return;
+    remainingRequests = remaining;
+    resetsAt = Date.now() + seconds * 1000;
+  });
+  return async (requestsNeeded: number) => {
+    const wait = resetsAt - Date.now() + 250;
+    // The study recorder also sends a heartbeat every five seconds while the test waits.
+    const heartbeats = Math.ceil(wait / 5000);
+    if (wait > 0 && remainingRequests < requestsNeeded + heartbeats) await page.waitForTimeout(wait);
+  };
+}
+
 test("paid practice continues past 50 questions and loads saved review slices", async ({ page }) => {
-  test.setTimeout(180_000);
+  test.setTimeout(300_000);
   const db = await mysql.createConnection(process.env.DATABASE_URL!);
   const email = "practice-e2e-learner@echelon.test";
   const bankKey = "class3-water-dist";
-  let apiWindowEndsAt = 0;
-  page.on("response", response => {
-    if (!response.url().includes("/api/trpc/")) return;
-    const resetSeconds = Number(response.headers()["ratelimit-reset"]);
-    if (Number.isFinite(resetSeconds) && resetSeconds > 0) {
-      apiWindowEndsAt = Date.now() + resetSeconds * 1000;
-    }
-  });
+  const waitForBudget = observePracticeRequestBudget(page);
   try {
     await db.execute("INSERT INTO purchases (email, productKey, productName, amountCAD, stripeSessionId) VALUES (?, ?, 'Practice browser QA', 9900, 'cs_practice_browser_qa')", [email, bankKey]);
     // Reproduce metadata left behind by an import: the advertised topic no
@@ -386,17 +416,19 @@ test("paid practice continues past 50 questions and loads saved review slices", 
     await signInWithOtp(page, email, `/${bankKey}`);
     await page.waitForURL(`**/${bankKey}`);
     await expect(page.getByTestId("practice-question")).toBeVisible();
-    await page.locator(".practice-options summary").click();
+    await setPracticeOptionsOpen(page, true);
     const moduleFilter = page.getByRole("combobox", { name: "Module", exact: true });
     await expect(moduleFilter.getByRole("option", { name: "Retired module", exact: true })).toHaveCount(0);
     await expect(moduleFilter.getByRole("option", { name: "Rare module", exact: true })).toHaveCount(1);
     await moduleFilter.selectOption({ label: "Paging module" });
+    await setPracticeOptionsOpen(page, true);
     await page.getByRole("button", { name: /Quiz Settings/ }).click();
     await page.getByRole("button", { name: "50 Qs", exact: true }).click();
     await page.getByRole("button", { name: "Apply Settings →" }).click();
-    await page.locator(".practice-options summary").click();
+    await setPracticeOptionsOpen(page, false);
     const seen = new Set<string>();
     for (let i = 0; i < 52; i++) {
+      await waitForBudget(12);
       await expect(page.getByTestId("practice-question")).toBeVisible();
       const id = (await page.getByTestId("practice-question").getAttribute("data-question-id"))!;
       expect(seen.has(id)).toBe(false);
@@ -408,7 +440,8 @@ test("paid practice continues past 50 questions and loads saved review slices", 
       await page.getByRole("button", { name: "Next Question →", exact: true }).click();
       if (i === 49) {
         await expect(page.getByText("Session Complete!", { exact: true })).toBeVisible();
-        await page.getByRole("button", { name: "Skip feedback", exact: true }).click();
+        await page.getByRole("dialog", { name: "Share your experience" })
+          .getByRole("button", { name: "Not now", exact: true }).click();
         await page.getByRole("button", { name: /New Session/ }).click();
       }
     }
@@ -425,8 +458,7 @@ test("paid practice continues past 50 questions and loads saved review slices", 
     // Answering 52 questions at automation speed compresses a real study session
     // into seconds. Respect the server's advertised request window before the
     // next journey; keep the production limiter and every paging assertion intact.
-    const remainingWindow = apiWindowEndsAt - Date.now();
-    if (remainingWindow > 0) await page.waitForTimeout(remainingWindow + 250);
+    await waitForBudget(50);
     // These are outside the selected module and initial 50-item working set.
     for (const [mode, question] of [["bookmarked", "960081"], ["missed", "960082"], ["low-confidence", "960082"]]) {
       await page.goto(`/${bankKey}?mode=${mode}`);
@@ -448,6 +480,7 @@ test("paid practice continues past 50 questions and loads saved review slices", 
 });
 test("paid Water and OIT pages use current bank modules and keep filtering in the quiz", async ({ page }) => {
   test.setTimeout(180_000);
+  const waitForBudget = observePracticeRequestBudget(page);
   const db = await mysql.createConnection(process.env.DATABASE_URL!);
   const email = "water-modules-e2e@echelon.test";
   const courses = [
@@ -471,12 +504,14 @@ test("paid Water and OIT pages use current bank modules and keep filtering in th
     await signInWithOtp(page, email, "/class1-water");
     await page.waitForURL("**/class1-water");
     for (const [bankKey, path] of courses) {
+      await waitForBudget(40);
       await page.goto(path);
       await expect(page.getByTestId("practice-question")).toBeVisible();
-      await page.locator(".practice-options summary").click();
+      await setPracticeOptionsOpen(page, true);
       const filters = page.getByRole("combobox", { name: "Module", exact: true });
       await expect(filters.getByRole("option", { name: "Coagulation & Flocculation", exact: true })).toHaveCount(0);
       for (const [index, module] of modules.entries()) {
+        await setPracticeOptionsOpen(page, true);
         await filters.selectOption({ label: module });
         const question = page.getByTestId("practice-question");
         await expect(question).toContainText(`Module QA ${bankKey}`);
@@ -487,8 +522,9 @@ test("paid Water and OIT pages use current bank modules and keep filtering in th
         await expect(page.getByText("No questions are available for this practice selection.", { exact: true })).toHaveCount(0);
         expect(new URL(page.url()).pathname).toBe(path);
       }
+      await setPracticeOptionsOpen(page, true);
       await filters.selectOption("");
-      await page.locator(".practice-options summary").click();
+      await setPracticeOptionsOpen(page, false);
       await expect(page.getByTestId("practice-question")).toBeVisible();
     }
   } finally { await db.end(); }
@@ -503,7 +539,7 @@ test("checkout receipt asks a guest to verify email before opening the purchased
   await page.goto("/purchase-success?session_id=cs_synthetic_receipt");
   await expect(page.getByRole("heading", { name: "Payment Successful!" })).toBeVisible();
   await expect(page.getByText("you do not need to purchase again", { exact: false })).toBeVisible();
-  const link = page.getByRole("link", { name: /Sign in — OIT Practice Quiz/ });
+  const link = page.getByRole("link", { name: /Sign in — OIT — Water Treatment — Practice Quiz/ });
   await expect(link).toHaveAttribute("href", "/login/otp?next=%2Fquiz");
   expect(await page.evaluate(() => localStorage.getItem("echelon_access_token"))).toBeNull();
 });

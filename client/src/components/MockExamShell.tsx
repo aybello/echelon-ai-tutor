@@ -567,7 +567,7 @@ export default function MockExamShell({
     answered >= freeQuestionLimit;
 
   const startExam = useCallback(async () => {
-    if (startingRef.current) return;
+    if (authLoading || startingRef.current) return;
     startingRef.current = true;
     try {
       const issued = await startMock.mutateAsync({ courseKey: productKey, accessToken: storedAccessTokenForAccess });
@@ -603,7 +603,7 @@ export default function MockExamShell({
     } catch (error) {
       toast.error(error instanceof Error ? error.message : "Could not start the exam. Please try again.");
     } finally { startingRef.current = false; }
-  }, [productKey, storedAccessTokenForAccess, showProvinceSelector, selectedProvince, startMock.mutateAsync, activityActorKey]);
+  }, [authLoading, productKey, storedAccessTokenForAccess, showProvinceSelector, selectedProvince, startMock.mutateAsync, activityActorKey]);
 
   const handleSubmit = useCallback(() => {
     if (timerRef.current) clearInterval(timerRef.current);
@@ -982,7 +982,7 @@ export default function MockExamShell({
 
               <button
                 className="mes-start-button"
-                disabled={startMock.isPending}
+                disabled={authLoading || startMock.isPending}
                 onClick={() => startExam()}
                 style={{ width: "100%", padding: "14px 24px", borderRadius: 14, background: `linear-gradient(135deg, ${resolvedAccent}, ${resolvedAccent2})`, color: "#fff", fontWeight: 800, fontSize: 16, border: "none", cursor: "pointer", fontFamily: "inherit" }}
               >
@@ -1044,7 +1044,7 @@ export default function MockExamShell({
             {scoredResult && questions.length > scoredResult.total && <p>{questions.length - scoredResult.total} unscored practice items are excluded from your result and readiness history.</p>}
             <div className="mes-results-hero-btns" style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
               <button
-                disabled={startMock.isPending || saveStatus === "saving" || (saveStatus === "error" && !saveError.includes("expired"))}
+                disabled={authLoading || startMock.isPending || saveStatus === "saving" || (saveStatus === "error" && !saveError.includes("expired"))}
                 onClick={() => { resultSavedRef.current = false; startExam(); }}
                 style={{ padding: "12px 28px", borderRadius: 10, background: "rgba(255,255,255,0.2)", color: "#fff", border: "2px solid rgba(255,255,255,0.4)", fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
               >

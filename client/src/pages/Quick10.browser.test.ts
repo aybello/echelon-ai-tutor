@@ -23,7 +23,7 @@ beforeAll(async () => {
         : <Quick10/>);
     ` },
     plugins: [{ name: "synthetic-quick10", setup(builder) {
-      builder.onResolve({filter:/^wouter$|^@\/lib\/trpc$|^@\/hooks\/usePageMeta$|^@\/components\/(AITutor|QuizGate|SiteNav|PracticeSaveStatus)$|^@\/hooks\/useAssessmentActivity$/}, args=>({path:args.path,namespace:"fixture"}));
+      builder.onResolve({filter:/^wouter$|^@\/lib\/trpc$|^@\/hooks\/usePageMeta$|^streamdown$|^@\/components\/AIChatBox$|^@\/hooks\/useLearningActivitySession$|^@\/components\/(AITutor|QuizGate|SiteNav|PracticeSaveStatus)$|^@\/hooks\/useAssessmentActivity$/}, args=>({path:args.path,namespace:"fixture"}));
       builder.onLoad({filter:/.*/,namespace:"fixture"}, args=>({loader:"tsx",resolveDir:process.cwd(),contents: args.path==='wouter' ? `
         import React,{useState,useEffect} from 'react';
         const go=href=>{history.pushState({},'',href);dispatchEvent(new Event('popstate'))};
@@ -31,10 +31,13 @@ beforeAll(async () => {
         export function useSearch(){const [s,set]=useState(location.search);useEffect(()=>{const fn=()=>set(location.search);addEventListener('popstate',fn);return()=>removeEventListener('popstate',fn)},[]);return s}
         export const useLocation=()=>[location.pathname,go];
       ` : args.path==='@/lib/trpc' ? `
-        window.saves=[];window.starts=[];window.nextQueries=[];window.tutorRenders=[];window.tutorMounts=0;
+        window.tutorSaves=[];window.saves=[];window.starts=[];window.nextQueries=[];window.tutorRenders=[];window.tutorMounts=0;
         window.feedbackSaves=[];window.suggestionSaves=[];
         const courses=[{courseKey:'class1-water',shortName:'Water',displayName:'Water'},{courseKey:'class2-water',shortName:'Water II',displayName:'Water II'}];
-        export const trpc={auth:{me:{useQuery:()=>({data:null})}},dashboardAuth:{me:{useQuery:()=>({data:{email:'synthetic@example.test'}})}},featureRequests:{submit:{useMutation:options=>({isPending:false,mutate:input=>{window.suggestionSaves.push(input);if(window.failSuggestion)options.onError();else options.onSuccess({success:true})}})}},quick10:{courses:{useQuery:()=>({data:{courses:window.noCourses?[]:courses,currentCourseKey:window.noCourses?'electrician-309a':'class1-water'}})},
+        export const trpc={tutor:{
+          chat:{useMutation:()=>({mutateAsync:async()=>({reply:'Synthetic tutor reply'})})},
+          saveSession:{useMutation:()=>({mutateAsync:async input=>{window.tutorSaves.push(input);return {saved:!window.refuseTutorSave}}})}
+        },auth:{me:{useQuery:()=>({data:null})}},dashboardAuth:{me:{useQuery:()=>({data:{email:'synthetic@example.test'}})}},featureRequests:{submit:{useMutation:options=>({isPending:false,mutate:input=>{window.suggestionSaves.push(input);if(window.failSuggestion)options.onError();else options.onSuccess({success:true})}})}},quick10:{courses:{useQuery:()=>({data:{courses:window.noCourses?[]:courses,currentCourseKey:window.noCourses?'electrician-309a':'class1-water'}})},
           start:{useMutation:()=>({mutateAsync:async input=>{window.starts.push(input);return {courseKey:input.courseKey||'class1-water',courseName:'Synthetic water',locked:false,attemptToken:'synthetic-receipt',questions:Array.from({length:input.questionCount},(_,i)=>({id:i+1,module:'Safety',isCalc:false,question:'Synthetic question '+(i+1),options:['Synthetic correct','Synthetic wrong']}))}}})},
           answer:{useMutation:()=>({mutateAsync:async input=>{window.saves.push(input);if(window.holdAnswer)await new Promise(resolve=>{window.releaseAnswer=resolve});if(window.failFirstAnswer&&window.saves.length===1)throw Error('Synthetic offline');return {saved:!window.unsavedAnswer,correct:input.selectedIndex===0,correctIndex:0,explanation:'Synthetic saved explanation',steps:[{l:'Given',c:'Synthetic worked step'}],tip:'Synthetic saved tip'}}})}},
           feedback:{submit:{useMutation:options=>({isPending:false,mutate:input=>{window.feedbackSaves.push(input);if(window.failFeedback)options.onError();else options.onSuccess({success:true})}})}},
@@ -42,7 +45,11 @@ beforeAll(async () => {
       ` : args.path==='@/components/AITutor' ? `
         import React,{useContext,useState} from 'react';
         import {TutorPanelPlacement} from '@/components/TutorPanelPlacement';
-        export default function Tutor({onClose,...props}){
+        import RealTutor from './client/src/components/AITutor';
+        export default function Tutor(props){
+          return window.fixture==='tutor-save'?<RealTutor {...props}/>:<FixtureTutor {...props}/>;
+        }
+        function FixtureTutor({onClose,closeRef,...props}){
           const placement=useContext(TutorPanelPlacement);
           const [mount]=useState(()=>++window.tutorMounts);
           const [greeting]=useState(()=>props.examType+':'+props.question.id);
@@ -65,6 +72,9 @@ beforeAll(async () => {
             return {identity,courseKey};
           }
         `
+        : args.path==='streamdown' ? 'export const Streamdown=({children})=>children;'
+        : args.path==='@/components/AIChatBox' ? 'export const AI_TUTOR_MARKDOWN_PLUGINS={};'
+        : args.path==='@/hooks/useLearningActivitySession' ? 'export const useLearningActivitySession=()=>{};'
         : args.path==='@/hooks/useAssessmentActivity' ? 'export const useAssessmentActivity=()=>({observe:()=>{},retry:async()=>{},saveError:null});'
         : 'export const usePageMeta=()=>{};' }));
     }}],
@@ -228,6 +238,31 @@ describe('Quick 10 synthetic browser interactions',()=>{
       expect(JSON.parse(await page.getByTestId('tutor-context').innerText())).toMatchObject({userAnswer:1,question:{correct:0}});
     }finally{await page.close()}
   },30000);
+  it.each([
+    ["Next question", 10, "Synthetic question 2"],
+    ["See my result", 1, "1 of 1"],
+  ] as const)("saves the real tutor conversation before %s and retains it for retry", async (action, questions, nextText) => {
+    const page = await setup(390, "tutor-save", false, false, `?course=class1-water&questions=${questions}`);
+    try {
+      await page.getByRole("button", { name: /Synthetic correct/ }).click();
+      await page.getByText("Synthetic saved explanation", { exact: true }).waitFor();
+      await page.getByRole("button", { name: "Ask AI Tutor" }).click();
+      await page.getByRole("button", { name: "Give me a similar question" }).click();
+      await page.getByText("Synthetic tutor reply", { exact: true }).waitFor();
+      await page.evaluate(() => { (window as any).refuseTutorSave = true; });
+      await page.getByRole("button", { name: action }).click();
+      await page.getByText("Your conversation is still here.", { exact: false }).waitFor();
+      await page.getByText("Synthetic question 1", { exact: true }).waitFor();
+      await page.evaluate(() => { (window as any).refuseTutorSave = false; });
+      await page.getByRole("button", { name: action }).click();
+      await page.getByText(nextText, { exact: true }).waitFor();
+      const writes = await page.evaluate(() => (window as any).tutorSaves);
+      expect(writes).toHaveLength(2);
+      expect(writes[1]).toEqual(writes[0]);
+      expect(writes[1].messages.at(-1)).toEqual({ role: "assistant", content: "Synthetic tutor reply" });
+      expect(await page.getByRole("complementary", { name: "AI Tutor" }).count()).toBe(0);
+    } finally { await page.close(); }
+  }, 30000);
   it('closes and remounts without stale answers or conversation on next question, course, and actor transitions',async()=>{
     const page=await setup(1440);
     try{

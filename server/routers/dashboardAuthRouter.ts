@@ -164,9 +164,6 @@ export const dashboardAuthRouter = router({
         throw new Error("Code expired or not found. Please request a new code.");
       }
 
-      // Issue the shared verified Echelon session cookie (24 hours)
-      await issueVerifiedEmailSessionCookie(ctx.res, email);
-
       // Re-resolve live entitlements — do not use stale purchase/subscription queries.
       // This is the authoritative access check: a refunded or cancelled customer
       // who still has a valid OTP code will not receive course access here.
@@ -177,7 +174,7 @@ export const dashboardAuthRouter = router({
         ? await issueSubscriptionToken({ email, examTypes: entitlements.unlockedExamTypes })
         : null;
 
-      await recordLearnerSignIn(ctx.req, { email }, "dashboard_otp");
+      await issueVerifiedEmailSessionCookie(ctx.res, email, undefined, () => recordLearnerSignIn(ctx.req, { email }, "dashboard_otp"));
       return {
         success: true,
         email,

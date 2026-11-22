@@ -1158,6 +1158,18 @@ export const productAnalyticsEvents = mysqlTable("product_analytics_events", {
 export type ProductAnalyticsEvent = typeof productAnalyticsEvents.$inferSelect;
 export type InsertProductAnalyticsEvent = typeof productAnalyticsEvents.$inferInsert;
 
+/** Account access log. Each verified sign-in has one account ID or one verified email. */
+export const accountSignIns = mysqlTable("account_sign_ins", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId"),
+  verifiedEmail: varchar("verifiedEmail", { length: 320 }),
+  method: mysqlEnum("method", ["oauth", "email_otp", "dashboard_otp", "legacy_magic_link"]).notNull(),
+  signedInAt: timestamp("signedInAt").defaultNow().notNull(),
+}, table => [
+  index("signin_account_id_idx").on(table.userId, table.id),
+  index("signin_email_id_idx").on(table.verifiedEmail, table.id),
+]);
+
 /**
  * FIX 5 (P3): Bookmarks — per-user+question table so bookmark state persists across
  * multiple attempts of the same question. Keyed by (userId OR studentEmail) + bankKey + questionId.

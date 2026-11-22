@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { MySqlDialect } from "drizzle-orm/mysql-core";
-import { assessmentActivitySessions, diagnosticSessions, examResults, learningActivitySessions, productAnalyticsEvents, questionAttempts, users } from "../drizzle/schema";
+import { accountSignIns, aiChatSessions, assessmentActivitySessions, commandRunHistory, diagnosticSessions, examResults, learningActivitySessions, productAnalyticsEvents, questionAttempts, users } from "../drizzle/schema";
 const state = vi.hoisted(() => ({ getDb: vi.fn() }));
 vi.mock("./db", () => state);
 vi.mock("./_core/env", () => ({ ENV: { cookieSecret: "learner-discovery-test-only-secret" } }));
@@ -43,6 +43,8 @@ describe("admin learner activity", () => {
     expect(context).not.toContain("recordLearnerSignIn");
   });
   it.each([null, "user"] as const)("rejects %s, including email-cookie-only identity, before querying", async role => {
+    await expect(caller(role).signInPeople({})).rejects.toMatchObject({ code: "FORBIDDEN" });
+    await expect(caller(role).signInHistory({ learner: { userId: 1 } })).rejects.toMatchObject({ code: "FORBIDDEN" });
     await expect(caller(role).learnerSearch({ query: "alice" })).rejects.toMatchObject({ code: "FORBIDDEN" });
     await expect(caller(role).learnerSearch({ query: "alice@example.test" })).rejects.toMatchObject({ code: "FORBIDDEN" });
     await expect(caller(role).learnerActivity({ learner: { email: "alice@example.test" }, days: 7 })).rejects.toMatchObject({ code: "FORBIDDEN" });
@@ -71,6 +73,14 @@ describe("admin learner activity", () => {
     const emailQuery = dialect.sqlToQuery(queries[1].conditions as never);
     expect(emailQuery.sql).toContain('`userId` is null');
     expect(emailQuery.sql).toContain('`startedAt` >= ?');
+  });
+  it("finds a verified email with only an access log entry, even outside the learning window", async () => {
+    const queries = mockDatabase(new Map([[accountSignIns, [{ email: "signedonly@example.test" }]]]));
+    const result = await caller("admin").learnerSearch({ query: "signedonly" });
+    expect(result.learners.map(row => row.selection)).toEqual([{ email: "signedonly@example.test" }]);
+    const filter = dialect.sqlToQuery(queries.find(query => query.table === accountSignIns)!.conditions as never);
+    expect(filter.params).toEqual(["signedonly%"]);
+    expect(filter.sql).not.toContain("signedInAt");
   });
   it("discovers assessment-ledger-only verified emails with the issuance HMAC and the reader's bounded observed window", async () => {
     const queries = mockDatabase(new Map([[assessmentActivitySessions, [{ id: "session-fixture" }]]]));
@@ -117,7 +127,8 @@ describe("admin learner activity", () => {
   it("uses canonical mock/math scores, recorder active seconds and diagnostic completions without exposing raw identities/content", async () => {
     const at = new Date();
     const queries = mockDatabase(new Map<unknown, unknown[]>([
-      [productAnalyticsEvents, [{ id: 1, at, event: "login", metadata: '{"method":"email_otp","activityVersion":1,"token":"secret"}', course: null }, { id: 2, at, event: "ai_tutor_session_saved", metadata: '{"conversation":"secret"}', course: "oit" }]],
+      [productAnalyticsEvents, [{ id: 1, at, event: "login", metadata: '{"method":"email_otp","activityVersion":1,"token":"secret"}', course: null }]],
+      [aiChatSessions, [{ id: 2, at, course: "oit", messages: 3, summary: "secret" }]],
       [learningActivitySessions, [{ id: 3, at, startedAt: new Date(at.getTime() - 100_000), course: "oit", type: "quiz", seconds: 50, status: "completed", sessionKey: "secret" }]],
       [examResults, [{ id: 4, at, course: "oit", correct: 8, total: 10, calc: "no" }, { id: 5, at, course: "oit", correct: 4, total: 5, calc: "yes" }]],
       [diagnosticSessions, [{ id: 6, at, course: "oit", correct: 2, total: 3 }]],
@@ -126,6 +137,8 @@ describe("admin learner activity", () => {
     const result = await caller("admin").learnerActivity({ learner: { email: "alice@example.test" }, days: 30 });
     expect(result.items).toHaveLength(7);
     expect(result.recordedStudySeconds).toBe(50);
+    expect(result.items.find(item => item.kind === "tutor")?.detail).toBe("3 messages");
+    expect(queries.some(query => query.table === commandRunHistory)).toBe(false);
     expect(result.items.find(item => item.kind === "mock")).toMatchObject({ label: "Mock exam", correct: 8, total: 10 });
     expect(result.items.find(item => item.kind === "math")).toMatchObject({ label: "Math practice", correct: 4, total: 5 });
     expect(result.items.find(item => item.kind === "practice")).toMatchObject({ correct: 3, total: 4 });
@@ -149,6 +162,18 @@ describe("admin learner activity", () => {
       expect(compiled.sql).not.toContain("anonymousHash");
       expect(compiled.sql).not.toContain("studentEmail");
     }
+  });
+  it("shows account scenario results and tutor usage in a selected historical window", async () => {
+    const at = new Date("2025-01-15T16:23:00Z");
+    const through = Date.parse("2025-01-17T23:59:59Z");
+    mockDatabase(new Map<unknown, unknown[]>([
+      [commandRunHistory, [{ id: 3, at, score: 80, title: "Pump restart" }]],
+      [aiChatSessions, [{ id: 90, at, course: "oit", messages: 4 }]],
+    ]));
+    const feed = await caller("admin").learnerActivity({ learner: { userId: 9 }, days: 7, through });
+    expect(feed.until.getTime()).toBe(through);
+    expect(feed.since.getTime()).toBe(through - 7 * 86400000);
+    expect(feed.items.map(item => item.detail)).toEqual(["Pump restart · score 80", "4 messages"]);
   });
   it("sorts deterministically, flags truncation and invents neither session spans nor logout", () => {
     const since = new Date("2026-11-01"), until = new Date("2026-11-08");

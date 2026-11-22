@@ -5,10 +5,10 @@ import { parseNumericAlias } from "@shared/deepGameNumeric";
 import { LEARNER_ASSESSMENT_COVERAGE, type LearnerAssessmentTarget, type LearnerAssessmentFeed, type LearnerAssessmentDetail } from "@shared/learnerActivity";
 
 const queryOptions = { retry: false as const, staleTime: 0 };
-function AssessmentPage({ target, sessionId, days }: { target: LearnerAssessmentTarget; sessionId: string; days: 7 | 30 }) {
+function AssessmentPage({ target, sessionId, days, through }: { target: LearnerAssessmentTarget; sessionId: string; days: 7 | 30; through?: number }) {
   const [cursor, setCursor] = useState(0);
   const input = { sessionId, days, cursor };
-  const admin = trpc.admin.learnerAssessmentDetails.useQuery({ ...input, learner: target.kind === "admin" ? target.learner : { userId: 1 } }, { ...queryOptions, enabled: target.kind === "admin" });
+  const admin = trpc.admin.learnerAssessmentDetails.useQuery({ ...input, through, learner: target.kind === "admin" ? target.learner : { userId: 1 } }, { ...queryOptions, enabled: target.kind === "admin" });
   const annual = trpc.orgIntel.learnerAssessmentDetails.useQuery({ ...input, orgId: target.kind === "annual" ? target.orgId : undefined, memberId: target.kind === "annual" ? target.memberId : 1 }, { ...queryOptions, enabled: target.kind === "annual" });
   const flex = trpc.teamFlex.learnerAssessmentDetails.useQuery({ ...input, orgId: target.kind === "flex" ? target.orgId : 1, licenceId: target.kind === "flex" ? target.licenceId : 1 }, { ...queryOptions, enabled: target.kind === "flex" });
   const query = target.kind === "admin" ? admin : target.kind === "annual" ? annual : flex;
@@ -43,9 +43,9 @@ function AssessmentPage({ target, sessionId, days }: { target: LearnerAssessment
     </>}
   </div>;
 }
-export default function LearnerAssessmentDetails({ target, days = 30 }: { target: LearnerAssessmentTarget; days?: 7 | 30 }) {
+export default function LearnerAssessmentDetails({ target, days = 30, through }: { target: LearnerAssessmentTarget; days?: 7 | 30; through?: number }) {
   const [opened, setOpened] = useState<string | null>(null);
-  const admin = trpc.admin.learnerAssessments.useQuery({ learner: target.kind === "admin" ? target.learner : { userId: 1 }, days }, { ...queryOptions, enabled: target.kind === "admin" });
+  const admin = trpc.admin.learnerAssessments.useQuery({ learner: target.kind === "admin" ? target.learner : { userId: 1 }, days, through }, { ...queryOptions, enabled: target.kind === "admin" });
   const annual = trpc.orgIntel.learnerAssessments.useQuery({ orgId: target.kind === "annual" ? target.orgId : undefined, memberId: target.kind === "annual" ? target.memberId : 1, days }, { ...queryOptions, enabled: target.kind === "annual" });
   const flex = trpc.teamFlex.learnerAssessments.useQuery({ orgId: target.kind === "flex" ? target.orgId : 1, licenceId: target.kind === "flex" ? target.licenceId : 1, days }, { ...queryOptions, enabled: target.kind === "flex" });
   const query = target.kind === "admin" ? admin : target.kind === "annual" ? annual : flex;
@@ -65,7 +65,7 @@ export default function LearnerAssessmentDetails({ target, days = 30 }: { target
         <div>Recorded state: {session.status === "active" ? session.participated ? "Observed / unfinished" : "Issued / no participation recorded" : session.status} · Last observed {new Date(session.lastObservedAt).toLocaleString()}</div>
         <div className="text-xs text-slate-500">{session.itemCount} issued items · {session.answers} answer submissions · {session.retries} explicit retries · {session.steps} recorded step responses · {session.hints > 0 ? `${session.hints} hints opened` : "No hint use recorded; controls may not be offered"} · {session.explanations} explanations shown · {session.resumes} resumes</div>
         <button type="button" className="workspace-text-link mt-2" aria-expanded={opened === session.sessionId} onClick={() => setOpened(opened === session.sessionId ? null : session.sessionId)}>{opened === session.sessionId ? "Close recorded actions" : "View issued questions and recorded actions"}</button>
-        {opened === session.sessionId && <AssessmentPage key={`${JSON.stringify(target)}:${session.sessionId}:${days}`} target={target} sessionId={session.sessionId} days={days} />}
+        {opened === session.sessionId && <AssessmentPage key={`${JSON.stringify(target)}:${session.sessionId}:${days}`} target={target} sessionId={session.sessionId} days={days} through={through} />}
       </li>)}</ul>
     </>}
   </section>;

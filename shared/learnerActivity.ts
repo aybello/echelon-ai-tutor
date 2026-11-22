@@ -3,7 +3,7 @@ export type LearnerSelection = { userId: number } | { email: string };
 export type LearnerOption = { key: string; selection: LearnerSelection; name: string | null; email: string | null };
 export type LearnerActivityItem = {
   key: string; at: Date;
-  kind: "signin" | "study" | "practice" | "mock" | "math" | "diagnostic" | "tutor";
+  kind: "signin" | "study" | "practice" | "mock" | "math" | "diagnostic" | "tutor" | "command";
   label: string; course: string | null; detail: string;
   correct?: number; total?: number; activeSeconds?: number;
 };
@@ -34,4 +34,4 @@ export type LearnerAssessmentTarget = { kind: "admin"; learner: LearnerSelection
   | { kind: "annual"; orgId: number; memberId: number }
   | { kind: "flex"; orgId: number; licenceId: number };
 export const LEARNER_ASSESSMENT_COVERAGE = "Observed actions are not verified scores or exam-readiness evidence. First recorded answer means the first submitted answer in this ledger, not necessarily the learner’s first-ever choice. Retries and step outcomes remain observations. Explanations shown do not prove they were read. Earlier interaction history and reliable active assessment time are unavailable. Canonical saved results remain separate; no historical question text or first answers are reconstructed.";
-export const LEARNER_ACTIVITY_COVERAGE = "Sign-in tracking starts after this release; older history is incomplete. Privacy opt-outs and unrecorded activity are not shown. Account history uses recorded account IDs; email-only history is separate and does not establish an account name. Study tools are non-assessment. Study time covers recorded sessions started in the selected window, not total time online. No logout or session duration is inferred. New named assessment observations are separate from existing aggregate game reports; anonymous activity never inherits an account name.";
+export const LEARNER_ACTIVITY_COVERAGE = "The account-access log starts with this release and includes successful sign-ins even when optional measurement is off. Older records may be available through learner search. Account and email-only identities have separate histories. The timeline shows saved learning records and permitted observations. Study time covers recorded study sessions in the selected window.";

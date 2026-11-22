@@ -50,7 +50,7 @@ beforeAll(async () => {
               wouter: `export const useSearch=()=>location.search;export const useLocation=()=>[location.pathname,()=>{}];`,
               sonner: `export const toast=Object.assign(()=>{}, {error(){},warning(){}});`,
               "@/components/QuizGate": `export const setTrialUnlocked=()=>{};`,
-              "@/components/QuizModeBar": `export const useAttemptLogger=()=>input=>window.attempts.push(input);`,
+              "@/components/QuizModeBar": `export const useAttemptLogger=()=>async input=>{window.attempts.push(input);return true};`,
               "@/components/QuizSettingsDrawer": `export const DEFAULT_QUIZ_SETTINGS={sessionSize:15,difficulty:'all',timedMode:false,timedSeconds:60};`,
               "@/hooks/useLearningActivitySession": `export const useLearningActivitySession=()=>{};`,
               "@/lib/trpc": `
@@ -59,7 +59,10 @@ beforeAll(async () => {
               if(input.reviewMode==='missed')qs=qs.filter(q=>q.id===2);if(input.reviewMode==='bookmarked')qs=qs.filter(q=>q.id===3);
               return {questions:qs,total:qs.length,locked:window.access?.hasAccess!==true,hasMore:false};};
             const utils={client:{quiz:{getRandomQuestions:{query}}}};
-            export const trpc={useUtils:()=>utils,stripe:{checkAccess:{useQuery:()=>({data:window.access})}},
+            const idleActivity={useMutation:()=>({mutateAsync:async()=>{throw Error('Unexpected activity without an issued session')}})};
+            export const trpc={useUtils:()=>utils,auth:{me:{useQuery:()=>({data:null})}},
+              dashboardAuth:{me:{useQuery:()=>({data:{email:'practice@echelon.test'}})}},
+              assessmentActivity:{record:idleActivity,resume:idleActivity},stripe:{checkAccess:{useQuery:()=>({data:window.access})}},
               funnelAnalytics:{track:{useMutation:()=>({mutate(){}})}},quiz:{getMissedQuestions:{useQuery:()=>({data:{total:1,questionIds:[2]},refetch:()=>Promise.resolve()})}},
               dashboard:{bookmarkedQuestions:{useQuery:()=>({data:[{questionId:3}]})},lowConfidenceQuestions:{useQuery:()=>({data:[{questionId:4}]})}}};`,
             };
@@ -215,7 +218,7 @@ describe.each(courses)("%s timed answer-state lifecycle", (course, free) => {
         ).toEqual(history);
         expect(
           await page.evaluate(() => (window as any).attempts)
-        ).toHaveLength(1);
+        ).toHaveLength(0);
       } finally {
         await page.context().close();
       }
@@ -245,9 +248,9 @@ describe.each(courses)("%s timed answer-state lifecycle", (course, free) => {
       expect(
         await page.evaluate(() => (window as any).session.history)
       ).toHaveLength(2);
-      expect(await page.evaluate(() => (window as any).attempts)).toHaveLength(
-        2
-      );
+      expect(await page.evaluate(() => (window as any).attempts)).toMatchObject([
+        { questionId: firstQuestion, selectedIndex: 1 },
+      ]);
       await action(page, "handleNext");
       expect(await page.evaluate(() => (window as any).session.current.id)).toBe(
         timedQuestion
@@ -314,7 +317,7 @@ describe.each(courses)("%s timed answer-state lifecycle", (course, free) => {
         await page.evaluate(() => (window as any).session.current.id)
       ).toBe(current);
       expect(await page.evaluate(() => (window as any).attempts)).toHaveLength(
-        1
+        0
       );
       expect(
         await page.evaluate(() => (window as any).timedCallbackCount)

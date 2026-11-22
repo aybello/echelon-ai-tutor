@@ -46,14 +46,13 @@ describe("pinned Class 3–4 Claude publication", () => {
   it("preserves all protected prior payloads, declarations and exclusions byte-for-byte", () => {
     // PRs #247 and #251 authorize presentation-only stylesheet revisions, not content changes.
     // PR #265 adds optional CEU worked-solution and source-context presentation styles.
-    // PR #267 adds the authorized trust strip and compact Quinte West proof line;
-    // Landing.css changes only the customer-name separator from "and " to "· ".
+    // The homepage redesign and testimonial cards through 78ed73b updated Landing.css.
     // Keep the original publication fixture and every other protected hash unchanged.
     const protectedHashes = {
       ...counts.protectedHashes,
       "client/src/pages/admin.css": "008a798cf62d2d5582409e735f77d2513e3556fa140eed22206b47508cf8ec5e",
       "client/src/pages/ContinuingEducationCourse.css": "3c791788f370ec2f7fda4b2c87d0d89162dad5a76d717accacbcef1f4803ae87",
-      "client/src/pages/Landing.css": "3e0d055cf7ab32bc48e7b42fa78d77df3c973905eee4a6f9485dce52360f26e3",
+      "client/src/pages/Landing.css": "2f3992c022962044a49733a29c60cae7279dadb5a820b4e3870be5c99c7929bb",
     };
     for (const [path, hash] of Object.entries(protectedHashes)) expect(sha(path === "server/interactiveContent/engine/releaseExclusions.json" ? historicalExclusionBytes : historicalAuthoringBytes(path)), path).toBe(hash);
   });

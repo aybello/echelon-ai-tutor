@@ -27,6 +27,11 @@ export function previewResult(path: string, input: any): any {
   switch(path) {
     case "auth.me": return { id: 1, name: "Jordan Mercer", email: "jordan@example.test", role: window.location.hash.startsWith("#/admin") ? "admin" : "user", openId: "preview" };
     case "dashboardAuth.me": return { email: "jordan@example.test" };
+    case "admin.signInPeople": return { items: members.slice(0, 1).map(member => ({
+      learner: { key: `user:${member.id}`, selection: { userId: member.id }, name: member.name, email: member.email },
+      signInId: 1, count: 1, at: new Date(now), method: "OAuth",
+    })), next: null };
+    case "admin.signInHistory": return { items: input.learner.userId === 1 ? [{ id: 1, at: new Date(now), method: "OAuth" }] : [], next: null };
     case "access.auditMyEntitlements": return { isManager:false, accessibleCourses:[] };
     case "stripe.getMyPurchases": return { purchases:[], unlockedExamTypes:[] };
     case "stripe.getMySubscriptions": return { subscriptions:[], unlockedExamTypes:[] };
@@ -57,7 +62,8 @@ export function previewResult(path: string, input: any): any {
       teamPipeline:{ordersStarted:9, ordersPaid:2, ordersAwaitingPayment:6, ordersFollowedUp:1, valueAwaitingPaymentCAD:1074},
       outcomes:{passRate:null, passed:0, failed:0, averageReadinessPassed:null, averageReadinessFailed:null},
     };
-    case "admin.getPurchases": case "admin.getSubscriptions": case "admin.getTrialEmails": case "admin.getWaitlist": case "admin.getErrorReports": case "admin.getScoreHistory": case "admin.getFeedback": case "admin.listOrganizations": case "admin.getCustomerRecoveryEvidence": return [];
+    case "admin.getPurchases": case "admin.getSubscriptions": case "admin.getTrialEmails": case "admin.getWaitlist": case "admin.getErrorReports": case "admin.getScoreHistory": case "admin.getFeedback": case "admin.listOrganizations": return [];
+    case "admin.getCustomerRecoveryEvidence": return { items: [], total: 0, page: 1, totalPages: 1 };
     case "admin.getDataExplorerCatalog": return {datasets:[]};
     case "admin.getDataExplorerPage": return {dataset:{label:"Synthetic users",description:"Fictional preview only",tableName:"users",restrictedColumns:[]},rows:[], total:0, totalPages:1, generatedAt:now, columns:[], page:1, pageSize:50};
     case "stripe.checkAccess": return { hasAccess: true };

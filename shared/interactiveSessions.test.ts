@@ -119,9 +119,15 @@ describe("actual course-page session parser", () => {
         builder.onLoad({ filter: /.*/, namespace: "fixture" }, args => ({ loader: "js", contents: {
           wouter: `import React from 'react'; export const useRoute=()=>[true,{courseKey:'oit'}]; export const useSearch=()=>''; export const Link=({children,...props})=>React.createElement('a',props,children);`,
           "@/hooks/usePageMeta": `export const usePageMeta=()=>{};`,
-          "@/lib/trpc": `const p=path=>({_def:()=>({path})}); export const trpc={
-            useUtils:()=>({client:{interactive:{getCatalog:{mutate:()=>Promise.resolve(window.__catalog)},startSession:{mutate:()=>{window.__resolved++;return Promise.resolve(JSON.parse(JSON.stringify(window.__wire)));}}}}}),
-            auth:{me:p(['auth','me'])},dashboardAuth:{me:p(['dashboardAuth','me'])},stripe:{checkAccess:p(['stripe','checkAccess'])},access:{auditMyEntitlements:p(['access','auditMyEntitlements'])}};`,
+          "@/lib/trpc": `import {useQuery} from '@tanstack/react-query'; import {getQueryKey} from '@trpc/react-query';
+            const p=path=>({_def:()=>({path})});
+            const anonymous=path=>{const endpoint=p(path);endpoint.useQuery=(input,options)=>useQuery({...options,queryKey:getQueryKey(endpoint,input,'query'),queryFn:async()=>null});return endpoint};
+            const idleActivity={useMutation:()=>({mutateAsync:async()=>{throw Error('Unexpected observation without a capability')}})};
+            export const trpc={
+            assessmentActivity:{record:idleActivity,resume:idleActivity},
+            useUtils:()=>({client:{deepGames:{getCatalog:{mutate:async({courseKey})=>({courseKey,available:false,version:null,modes:[],authoredTaskCount:0,missionCount:0})}},
+              interactive:{getProgress:{mutate:async()=>({stored:false,today:{answered:0,correct:0,goal:20},streakDays:0,dueCount:0,modes:[]})},getCatalog:{mutate:()=>Promise.resolve(window.__catalog)},startSession:{mutate:()=>{window.__resolved++;return Promise.resolve(JSON.parse(JSON.stringify(window.__wire)));}}}}}),
+            auth:{me:anonymous(['auth','me'])},dashboardAuth:{me:anonymous(['dashboardAuth','me'])},stripe:{checkAccess:p(['stripe','checkAccess'])},access:{auditMyEntitlements:p(['access','auditMyEntitlements'])}};`,
         }[args.path]!, resolveDir: process.cwd() }));
       } }],
     });

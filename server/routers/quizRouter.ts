@@ -1,6 +1,6 @@
 import { readCourseLearnerProfile, readOverallLearnerActivity } from "../courseLearnerProfile";
 import { issueAssessmentActivity } from "../assessmentActivity";
-import type { AssessmentActivityIssue } from "../../shared/assessmentActivity";
+import { UNRECORDED_ASSESSMENT_ACTIVITY, type AssessmentActivityIssue } from "../../shared/assessmentActivity";
 import { latestPracticeAttemptValue } from "../practiceReviewEligibility";
 import { practiceOperationHash, savePracticeAttempt } from "../practiceAttemptStore";
 import { resolveAttemptAttribution, validateIssuedAttribution } from "../teams/attemptAttribution";
@@ -298,7 +298,7 @@ async function questionWorkingSet({ input, ctx }: {
   // Flashcards, mock metadata and interactive fallback are not practice assessments.
   const activityTracking = !privilegedInteractiveAccess && (input.previewSurface ?? "practice") === "practice"
     ? await issueAssessmentActivity(actor.context, { courseKey: course.courseKey, mode: "practice", timed: input.activityTimed ?? null, items: practiceActivityItems(parsed) }, attribution)
-    : { tracking: false as const };
+    : UNRECORDED_ASSESSMENT_ACTIVITY;
   return { questions: parsed.map(q => ({ ...q, attemptToken, activityTracking })), activityTracking, locked: !hasAccess, total, trialLimit: previewLimit };
 }
 

@@ -137,10 +137,9 @@ export const emailOtpRouter = router({
 
       const isManager = entitlements.isManager || await hasRecoverableTeamBilling(email);
       // Issue verified email session cookie (same as magic link flow)
-      await issueVerifiedEmailSessionCookie(ctx.res, email);
+      await issueVerifiedEmailSessionCookie(ctx.res, email, undefined, () => recordLearnerSignIn(ctx.req, { email }, "email_otp"));
 
       await trackEvent("otp_verified", { email });
-      await recordLearnerSignIn(ctx.req, { email }, "email_otp");
 
       return {
         valid: true as const,

@@ -104,10 +104,9 @@ export const magicLinkRouter = router({
       // Issue the shared verified Echelon email session cookie for ALL valid magic link consumes.
       // This is the unified session model: students, managers, and team operators all get the same
       // cookie after a valid magic link — no separate dashboard login required.
-      await issueVerifiedEmailSessionCookie(ctx.res, link.email);
+      await issueVerifiedEmailSessionCookie(ctx.res, link.email, undefined, () => recordLearnerSignIn(ctx.req, { email: link.email }, "legacy_magic_link"));
 
       await trackEvent("restore_access_completed", { email: link.email });
-      await recordLearnerSignIn(ctx.req, { email: link.email }, "legacy_magic_link");
       return {
         valid: true,
         email: link.email,
