@@ -1,0 +1,4942 @@
+{
+ "courseKey": "class1-wastewater-coll",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "c1wc-ladder80",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Infiltration into a sewer system totals 45 L/s over 15 km of sewer. Find the infiltration rate in L/s/km. Enter the exact unrounded number.",
+   "topicId": "infiltration-rates",
+   "level": "class1",
+   "assumptions": "Fictional system: total infiltration = 45 L/s, sewer length = 15 km, infiltration assumed uniform along the length.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Rate = Total infiltration * Sewer length"
+      },
+      {
+       "id": "opt-b",
+       "label": "Rate = Sewer length / Total infiltration"
+      },
+      {
+       "id": "opt-c",
+       "label": "Rate = Total infiltration / Sewer length"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Convert the length to hectares before dividing"
+      },
+      {
+       "id": "opt-b",
+       "label": "Flow in L/s divided by length in km gives L/s/km directly"
+      },
+      {
+       "id": "opt-c",
+       "label": "Convert the flow to m3/day before dividing by the length"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "45 / 15"
+      },
+      {
+       "id": "opt-b",
+       "label": "45 * 15"
+      },
+      {
+       "id": "opt-c",
+       "label": "15 / 45"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact infiltration rate in L/s/km.",
+    "unitOptions": [
+     {
+      "id": "L-s-km",
+      "label": "L/s/km"
+     },
+     {
+      "id": "m3-day-km",
+      "label": "m3/day/km",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "86400"
+      }
+     },
+     {
+      "id": "L",
+      "label": "L"
+     },
+     {
+      "id": "km",
+      "label": "km"
+     }
+    ],
+    "expected": "3",
+    "expectedUnitId": "L-s-km",
+    "absoluteTolerance": "0",
+    "explanation": "Rate = 45 / 15 = 3 L/s/km."
+   }
+  },
+  {
+   "id": "c1wc-ladder81",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Total dry weather flow at a station is 60 L/s, of which 12 L/s is infiltration. Find the infiltration as a percent of the total flow. Enter the exact unrounded number.",
+   "topicId": "infiltration-rates",
+   "level": "class1",
+   "assumptions": "Fictional station: total flow = 60 L/s, infiltration = 12 L/s.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Percent = Infiltration * Total flow / 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Percent = Infiltration / Total flow * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Percent = Total flow / Infiltration * 100"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Both flows are in L/s, so the ratio is dimensionless before multiplying by 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Convert the infiltration to m3 before dividing"
+      },
+      {
+       "id": "opt-c",
+       "label": "Convert the total flow to minutes before dividing"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "60 / 12 * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "12 * 60 / 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "12 / 60 * 100"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact infiltration percent.",
+    "unitOptions": [
+     {
+      "id": "percent",
+      "label": "percent"
+     },
+     {
+      "id": "fraction",
+      "label": "fraction",
+      "toExpected": {
+       "numerator": "100",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "L-s",
+      "label": "L/s"
+     },
+     {
+      "id": "m",
+      "label": "m"
+     }
+    ],
+    "expected": "20",
+    "expectedUnitId": "percent",
+    "absoluteTolerance": "0",
+    "explanation": "Percent = 12 / 60 * 100 = 20 percent."
+   }
+  },
+  {
+   "id": "c1wc-ladder82",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Infiltration into a sewer system totals 20 L/s over 8 km of sewer. Find the infiltration rate in L/s/km. Enter the exact unrounded number.",
+   "topicId": "infiltration-rates",
+   "level": "class1",
+   "assumptions": "Fictional system: total infiltration = 20 L/s, sewer length = 8 km, infiltration assumed uniform along the length.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Rate = Total infiltration / Sewer length"
+      },
+      {
+       "id": "opt-b",
+       "label": "Rate = Total infiltration * Sewer length"
+      },
+      {
+       "id": "opt-c",
+       "label": "Rate = Sewer length / Total infiltration"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Convert the flow to ML/day before dividing by the length"
+      },
+      {
+       "id": "opt-b",
+       "label": "Convert the length to hectares before dividing"
+      },
+      {
+       "id": "opt-c",
+       "label": "Flow in L/s divided by length in km gives L/s/km directly"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "8 / 20"
+      },
+      {
+       "id": "opt-b",
+       "label": "20 / 8"
+      },
+      {
+       "id": "opt-c",
+       "label": "20 * 8"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact infiltration rate in L/s/km.",
+    "unitOptions": [
+     {
+      "id": "L-s-km",
+      "label": "L/s/km"
+     },
+     {
+      "id": "m3-day-km",
+      "label": "m3/day/km",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "86400"
+      }
+     },
+     {
+      "id": "L",
+      "label": "L"
+     },
+     {
+      "id": "km",
+      "label": "km"
+     }
+    ],
+    "expected": "2.5",
+    "expectedUnitId": "L-s-km",
+    "absoluteTolerance": "0",
+    "explanation": "Rate = 20 / 8 = 2.5 L/s/km."
+   }
+  },
+  {
+   "id": "c1wc-ladder83",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Groundwater infiltration enters a sewer at a steady 5 L/s all day. Find the infiltration volume in m3/day. Enter the exact unrounded number.",
+   "topicId": "infiltration-rates",
+   "level": "class1",
+   "assumptions": "Fictional sewer: infiltration = 5 L/s steady for one day, 86400 s = 1 day, 1000 L = 1 m3.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Volume = Flow / Time"
+      },
+      {
+       "id": "opt-b",
+       "label": "Volume = Time / Flow"
+      },
+      {
+       "id": "opt-c",
+       "label": "Volume = Flow * Time"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Multiply by 3600 s/day and divide by 1000 L/m3"
+      },
+      {
+       "id": "opt-b",
+       "label": "Multiply by 86400 s/day and divide by 1000 L/m3"
+      },
+      {
+       "id": "opt-c",
+       "label": "Divide by 86400 s/day and multiply by 1000 L/m3"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "5 * 86400 / 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "5 / 86400 * 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "5 * 3600 / 1000"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact infiltration volume in m3/day.",
+    "unitOptions": [
+     {
+      "id": "m3-day",
+      "label": "m3/day"
+     },
+     {
+      "id": "L-s",
+      "label": "L/s",
+      "toExpected": {
+       "numerator": "86400",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "L",
+      "label": "L"
+     },
+     {
+      "id": "h",
+      "label": "h"
+     }
+    ],
+    "expected": "432",
+    "expectedUnitId": "m3-day",
+    "absoluteTolerance": "0",
+    "explanation": "Volume = 5 * 86400 = 432000 L/day, and 432000 / 1000 = 432 m3/day."
+   }
+  },
+  {
+   "id": "c1wc-ladder84",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Infiltration into a catchment totals 648 m3/day over an area of 216 hectares. Find the infiltration rate in m3/day/ha. Enter the exact unrounded number.",
+   "topicId": "infiltration-rates",
+   "level": "class1",
+   "assumptions": "Fictional catchment: total infiltration = 648 m3/day, area = 216 ha, infiltration assumed uniform over the area.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Rate = Catchment area / Total infiltration"
+      },
+      {
+       "id": "opt-b",
+       "label": "Rate = Total infiltration / Catchment area"
+      },
+      {
+       "id": "opt-c",
+       "label": "Rate = Total infiltration * Catchment area"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The total is already a daily volume, so dividing by ha gives m3/day/ha directly"
+      },
+      {
+       "id": "opt-b",
+       "label": "Convert the total to L/min before dividing by the area"
+      },
+      {
+       "id": "opt-c",
+       "label": "Convert the area to km before dividing"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "648 * 216"
+      },
+      {
+       "id": "opt-b",
+       "label": "216 / 648"
+      },
+      {
+       "id": "opt-c",
+       "label": "648 / 216"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact infiltration rate in m3/day/ha.",
+    "unitOptions": [
+     {
+      "id": "m3-day-ha",
+      "label": "m3/day/ha"
+     },
+     {
+      "id": "L-s-ha",
+      "label": "L/s/ha",
+      "toExpected": {
+       "numerator": "86400",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "ha",
+      "label": "ha"
+     }
+    ],
+    "expected": "3",
+    "expectedUnitId": "m3-day-ha",
+    "absoluteTolerance": "0",
+    "explanation": "Rate = 648 / 216 = 3 m3/day/ha."
+   }
+  },
+  {
+   "id": "c1wc-ladder85",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Minimum night flow in a district is 28 L/s. Legitimate night use is estimated at 8 L/s. Find the infiltration flow in L/s. Enter the exact unrounded number.",
+   "topicId": "infiltration-rates",
+   "level": "class1",
+   "assumptions": "Fictional district: minimum night flow = 28 L/s, legitimate night use = 8 L/s, the remainder is attributed to infiltration.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Infiltration = Minimum night flow - Legitimate night use"
+      },
+      {
+       "id": "opt-b",
+       "label": "Infiltration = Minimum night flow + Legitimate night use"
+      },
+      {
+       "id": "opt-c",
+       "label": "Infiltration = Minimum night flow * Legitimate night use"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Convert the night flow to m3 before subtracting"
+      },
+      {
+       "id": "opt-b",
+       "label": "Convert the legitimate use to hectares before subtracting"
+      },
+      {
+       "id": "opt-c",
+       "label": "Both flows are in L/s, so subtraction gives the infiltration in L/s directly"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "28 * 8"
+      },
+      {
+       "id": "opt-b",
+       "label": "28 - 8"
+      },
+      {
+       "id": "opt-c",
+       "label": "28 + 8"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact infiltration flow in L/s.",
+    "unitOptions": [
+     {
+      "id": "L-s",
+      "label": "L/s"
+     },
+     {
+      "id": "m3-h",
+      "label": "m3/h",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "3600"
+      }
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "min",
+      "label": "min"
+     }
+    ],
+    "expected": "20",
+    "expectedUnitId": "L-s",
+    "absoluteTolerance": "0",
+    "explanation": "Infiltration = 28 - 8 = 20 L/s."
+   }
+  },
+  {
+   "id": "c1wc-ladder86",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Infiltration in a subdivision totals 6000 L/day across 300 service connections. Find the infiltration per connection in L/day/connection. Enter the exact unrounded number.",
+   "topicId": "infiltration-rates",
+   "level": "class1",
+   "assumptions": "Fictional subdivision: total infiltration = 6000 L/day, connections = 300, infiltration assumed equal per connection.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Rate per connection = Total infiltration * Connections"
+      },
+      {
+       "id": "opt-b",
+       "label": "Rate per connection = Connections / Total infiltration"
+      },
+      {
+       "id": "opt-c",
+       "label": "Rate per connection = Total infiltration / Connections"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Convert the connections to hectares before dividing"
+      },
+      {
+       "id": "opt-b",
+       "label": "The total is already in L/day, so dividing by the connection count gives L/day/connection"
+      },
+      {
+       "id": "opt-c",
+       "label": "Convert the total to m3/s before dividing by the connections"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "6000 / 300"
+      },
+      {
+       "id": "opt-b",
+       "label": "6000 * 300"
+      },
+      {
+       "id": "opt-c",
+       "label": "300 / 6000"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact infiltration per connection in L/day/connection.",
+    "unitOptions": [
+     {
+      "id": "L-day-conn",
+      "label": "L/day/connection"
+     },
+     {
+      "id": "m3-day-conn",
+      "label": "m3/day/connection",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "L",
+      "label": "L"
+     },
+     {
+      "id": "min",
+      "label": "min"
+     }
+    ],
+    "expected": "20",
+    "expectedUnitId": "L-day-conn",
+    "absoluteTolerance": "0",
+    "explanation": "Rate = 6000 / 300 = 20 L/day/connection."
+   }
+  },
+  {
+   "id": "c1wc-ladder87",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A sewer has a given full flow capacity of 180 L/s and currently carries 135 L/s. Find the flow as a percent of capacity. Enter the exact unrounded number.",
+   "topicId": "percent-of-capacity",
+   "level": "class1",
+   "assumptions": "Fictional sewer: current flow = 135 L/s, full flow capacity = 180 L/s, capacity value given.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Percent of capacity = Current flow * Full flow / 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Percent of capacity = Current flow / Full flow * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Percent of capacity = Full flow / Current flow * 100"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Both flows are in L/s, so the ratio is dimensionless before multiplying by 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Convert the current flow to m3 before dividing"
+      },
+      {
+       "id": "opt-c",
+       "label": "Convert the full flow to minutes before dividing"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "180 / 135 * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "135 * 180 / 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "135 / 180 * 100"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact percent of capacity.",
+    "unitOptions": [
+     {
+      "id": "percent",
+      "label": "percent"
+     },
+     {
+      "id": "fraction",
+      "label": "fraction",
+      "toExpected": {
+       "numerator": "100",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "L-s",
+      "label": "L/s"
+     },
+     {
+      "id": "m",
+      "label": "m"
+     }
+    ],
+    "expected": "75",
+    "expectedUnitId": "percent",
+    "absoluteTolerance": "0",
+    "explanation": "Percent = 135 / 180 * 100 = 75 percent."
+   }
+  },
+  {
+   "id": "c1wc-ladder88",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A sewer has a given full flow capacity of 120 L/s and currently carries 96 L/s. Find the flow as a percent of capacity. Enter the exact unrounded number.",
+   "topicId": "percent-of-capacity",
+   "level": "class1",
+   "assumptions": "Fictional sewer: current flow = 96 L/s, full flow capacity = 120 L/s, capacity value given.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Percent of capacity = Current flow / Full flow * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Percent of capacity = Full flow / Current flow * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Percent of capacity = Current flow * Full flow / 100"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Convert the current flow to litres per day before dividing"
+      },
+      {
+       "id": "opt-b",
+       "label": "Convert the full flow to hectares before dividing"
+      },
+      {
+       "id": "opt-c",
+       "label": "Both flows are in L/s, so the ratio is dimensionless before multiplying by 100"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "96 * 120 / 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "96 / 120 * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "120 / 96 * 100"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact percent of capacity.",
+    "unitOptions": [
+     {
+      "id": "percent",
+      "label": "percent"
+     },
+     {
+      "id": "fraction",
+      "label": "fraction",
+      "toExpected": {
+       "numerator": "100",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "L-s",
+      "label": "L/s"
+     },
+     {
+      "id": "m",
+      "label": "m"
+     }
+    ],
+    "expected": "80",
+    "expectedUnitId": "percent",
+    "absoluteTolerance": "0",
+    "explanation": "Percent = 96 / 120 * 100 = 80 percent."
+   }
+  },
+  {
+   "id": "c1wc-ladder89",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A sewer has a given full flow capacity of 200 L/s and currently carries 45 L/s. Find the flow as a percent of capacity. Enter the exact unrounded number.",
+   "topicId": "percent-of-capacity",
+   "level": "class1",
+   "assumptions": "Fictional sewer: current flow = 45 L/s, full flow capacity = 200 L/s, capacity value given.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Percent of capacity = Full flow / Current flow * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Percent of capacity = Current flow * Full flow / 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Percent of capacity = Current flow / Full flow * 100"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Convert the full flow to seconds before dividing"
+      },
+      {
+       "id": "opt-b",
+       "label": "Both flows are in L/s, so the ratio is dimensionless before multiplying by 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Convert the current flow to kilograms before dividing"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "45 / 200 * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "200 / 45 * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "45 * 200 / 100"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact percent of capacity.",
+    "unitOptions": [
+     {
+      "id": "percent",
+      "label": "percent"
+     },
+     {
+      "id": "fraction",
+      "label": "fraction",
+      "toExpected": {
+       "numerator": "100",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "L-s",
+      "label": "L/s"
+     },
+     {
+      "id": "m",
+      "label": "m"
+     }
+    ],
+    "expected": "22.5",
+    "expectedUnitId": "percent",
+    "absoluteTolerance": "0",
+    "explanation": "Percent = 45 / 200 * 100 = 22.5 percent."
+   }
+  },
+  {
+   "id": "c1wc-ladder90",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A sewer has a given full flow capacity of 250 L/s and currently carries 175 L/s. Find the remaining capacity in L/s. Enter the exact unrounded number.",
+   "topicId": "percent-of-capacity",
+   "level": "class1",
+   "assumptions": "Fictional sewer: full flow capacity = 250 L/s, current flow = 175 L/s, capacity value given.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Remaining capacity = Full flow * Current flow"
+      },
+      {
+       "id": "opt-b",
+       "label": "Remaining capacity = Full flow - Current flow"
+      },
+      {
+       "id": "opt-c",
+       "label": "Remaining capacity = Full flow + Current flow"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Both flows are in L/s, so subtraction gives the remaining capacity in L/s directly"
+      },
+      {
+       "id": "opt-b",
+       "label": "Convert the full flow to m3 before subtracting"
+      },
+      {
+       "id": "opt-c",
+       "label": "Convert the current flow to hectares before subtracting"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "250 + 175"
+      },
+      {
+       "id": "opt-b",
+       "label": "250 * 175"
+      },
+      {
+       "id": "opt-c",
+       "label": "250 - 175"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact remaining capacity in L/s.",
+    "unitOptions": [
+     {
+      "id": "L-s",
+      "label": "L/s"
+     },
+     {
+      "id": "m3-h",
+      "label": "m3/h",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "3600"
+      }
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "min",
+      "label": "min"
+     }
+    ],
+    "expected": "75",
+    "expectedUnitId": "L-s",
+    "absoluteTolerance": "0",
+    "explanation": "Remaining capacity = 250 - 175 = 75 L/s."
+   }
+  },
+  {
+   "id": "c1wc-ladder91",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A sewer has a given full flow capacity of 90 L/s and currently carries 63 L/s. Find the flow as a percent of capacity. Enter the exact unrounded number.",
+   "topicId": "percent-of-capacity",
+   "level": "class1",
+   "assumptions": "Fictional sewer: current flow = 63 L/s, full flow capacity = 90 L/s, capacity value given.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Percent of capacity = Current flow / Full flow * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Percent of capacity = Full flow / Current flow * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Percent of capacity = Current flow * Full flow / 100"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Convert the current flow to m3/h by multiplying by 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Convert the full flow to days before dividing"
+      },
+      {
+       "id": "opt-c",
+       "label": "Both flows are in L/s, so the ratio is dimensionless before multiplying by 100"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "63 * 90 / 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "63 / 90 * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "90 / 63 * 100"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact percent of capacity.",
+    "unitOptions": [
+     {
+      "id": "percent",
+      "label": "percent"
+     },
+     {
+      "id": "fraction",
+      "label": "fraction",
+      "toExpected": {
+       "numerator": "100",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "L-s",
+      "label": "L/s"
+     },
+     {
+      "id": "m",
+      "label": "m"
+     }
+    ],
+    "expected": "70",
+    "expectedUnitId": "percent",
+    "absoluteTolerance": "0",
+    "explanation": "Percent = 63 / 90 * 100 = 70 percent."
+   }
+  },
+  {
+   "id": "c1wc-ladder92",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A sewer has a given full flow capacity of 280 L/s and currently carries 154 L/s. Find the flow as a percent of capacity. Enter the exact unrounded number.",
+   "topicId": "percent-of-capacity",
+   "level": "class1",
+   "assumptions": "Fictional sewer: current flow = 154 L/s, full flow capacity = 280 L/s, capacity value given.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Percent of capacity = Full flow / Current flow * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Percent of capacity = Current flow * Full flow / 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Percent of capacity = Current flow / Full flow * 100"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Convert the full flow to weeks before dividing"
+      },
+      {
+       "id": "opt-b",
+       "label": "Both flows are in L/s, so the ratio is dimensionless before multiplying by 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Convert the current flow to pascals before dividing"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "154 / 280 * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "280 / 154 * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "154 * 280 / 100"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact percent of capacity.",
+    "unitOptions": [
+     {
+      "id": "percent",
+      "label": "percent"
+     },
+     {
+      "id": "fraction",
+      "label": "fraction",
+      "toExpected": {
+       "numerator": "100",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "L-s",
+      "label": "L/s"
+     },
+     {
+      "id": "m",
+      "label": "m"
+     }
+    ],
+    "expected": "55",
+    "expectedUnitId": "percent",
+    "absoluteTolerance": "0",
+    "explanation": "Percent = 154 / 280 * 100 = 55 percent."
+   }
+  },
+  {
+   "id": "c1wc-ladder93",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A sewer has a given full flow capacity of 160 L/s. Find the flow in L/s when the sewer is at 85 percent of capacity. Enter the exact unrounded number.",
+   "topicId": "percent-of-capacity",
+   "level": "class1",
+   "assumptions": "Fictional sewer: full flow capacity = 160 L/s, operating point = 85 percent of capacity, capacity value given.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Flow = Percent of capacity / Full flow"
+      },
+      {
+       "id": "opt-b",
+       "label": "Flow = Percent of capacity * Full flow"
+      },
+      {
+       "id": "opt-c",
+       "label": "Flow = Full flow / Percent of capacity"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "85 percent is 85/100 = 0.85 as a decimal multiplier"
+      },
+      {
+       "id": "opt-b",
+       "label": "85 percent is 85 as a decimal multiplier"
+      },
+      {
+       "id": "opt-c",
+       "label": "85 percent is 8.5 as a decimal multiplier"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "160 * 85"
+      },
+      {
+       "id": "opt-b",
+       "label": "160 / 85"
+      },
+      {
+       "id": "opt-c",
+       "label": "160 * 85 / 100"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact flow in L/s.",
+    "unitOptions": [
+     {
+      "id": "L-s",
+      "label": "L/s"
+     },
+     {
+      "id": "m3-h",
+      "label": "m3/h",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "3600"
+      }
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "min",
+      "label": "min"
+     }
+    ],
+    "expected": "136",
+    "expectedUnitId": "L-s",
+    "absoluteTolerance": "0",
+    "explanation": "Flow = 160 * 0.85 = 136 L/s."
+   }
+  },
+  {
+   "id": "c1wc-ladder94",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A jetting crew cleans 450 m of sewer in 6 hours at a steady rate. Find the production rate in m/h. Enter the exact unrounded number.",
+   "topicId": "cleaning-production-rates",
+   "level": "class1",
+   "assumptions": "Fictional crew record: length cleaned = 450 m, time = 6 h, steady rate.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Production rate = Length cleaned / Time"
+      },
+      {
+       "id": "opt-b",
+       "label": "Production rate = Length cleaned * Time"
+      },
+      {
+       "id": "opt-c",
+       "label": "Production rate = Time / Length cleaned"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Convert the length to litres before dividing by the time"
+      },
+      {
+       "id": "opt-b",
+       "label": "Convert the time to hectares before dividing"
+      },
+      {
+       "id": "opt-c",
+       "label": "Length in m divided by time in h gives m/h directly"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "6 / 450"
+      },
+      {
+       "id": "opt-b",
+       "label": "450 / 6"
+      },
+      {
+       "id": "opt-c",
+       "label": "450 * 6"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact production rate in m/h.",
+    "unitOptions": [
+     {
+      "id": "m-h",
+      "label": "m/h"
+     },
+     {
+      "id": "m-min",
+      "label": "m/min",
+      "toExpected": {
+       "numerator": "60",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "L",
+      "label": "L"
+     }
+    ],
+    "expected": "75",
+    "expectedUnitId": "m-h",
+    "absoluteTolerance": "0",
+    "explanation": "Rate = 450 / 6 = 75 m/h."
+   }
+  },
+  {
+   "id": "c1wc-ladder95",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A CCTV crew inspects 1200 m of sewer in an 8 hour shift at a steady rate. Find the production rate in m/h. Enter the exact unrounded number.",
+   "topicId": "inspection-production-rates",
+   "level": "class1",
+   "assumptions": "Fictional crew record: length inspected = 1200 m, time = 8 h, steady rate.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Production rate = Length inspected * Time"
+      },
+      {
+       "id": "opt-b",
+       "label": "Production rate = Time / Length inspected"
+      },
+      {
+       "id": "opt-c",
+       "label": "Production rate = Length inspected / Time"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Convert the time to seconds and report the rate per second"
+      },
+      {
+       "id": "opt-b",
+       "label": "Length in m divided by time in h gives m/h directly"
+      },
+      {
+       "id": "opt-c",
+       "label": "Convert the length to kilograms before dividing by the time"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "1200 / 8"
+      },
+      {
+       "id": "opt-b",
+       "label": "1200 * 8"
+      },
+      {
+       "id": "opt-c",
+       "label": "8 / 1200"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact production rate in m/h.",
+    "unitOptions": [
+     {
+      "id": "m-h",
+      "label": "m/h"
+     },
+     {
+      "id": "m-min",
+      "label": "m/min",
+      "toExpected": {
+       "numerator": "60",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "L",
+      "label": "L"
+     }
+    ],
+    "expected": "150",
+    "expectedUnitId": "m-h",
+    "absoluteTolerance": "0",
+    "explanation": "Rate = 1200 / 8 = 150 m/h."
+   }
+  },
+  {
+   "id": "c1wc-ladder96",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A cleaning crew works at a steady production rate of 70 m/h. Find the time in hours to clean 1750 m of sewer. Enter the exact unrounded number.",
+   "topicId": "cleaning-production-rates",
+   "level": "class1",
+   "assumptions": "Fictional work plan: length = 1750 m, production rate = 70 m/h, steady rate.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Time = Production rate / Length"
+      },
+      {
+       "id": "opt-b",
+       "label": "Time = Length / Production rate"
+      },
+      {
+       "id": "opt-c",
+       "label": "Time = Length * Production rate"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Length in m divided by rate in m/h gives hours directly"
+      },
+      {
+       "id": "opt-b",
+       "label": "Convert the length to litres before dividing by the rate"
+      },
+      {
+       "id": "opt-c",
+       "label": "Convert the rate to L/s before dividing"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "1750 * 70"
+      },
+      {
+       "id": "opt-b",
+       "label": "70 / 1750"
+      },
+      {
+       "id": "opt-c",
+       "label": "1750 / 70"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact time in hours.",
+    "unitOptions": [
+     {
+      "id": "h",
+      "label": "h"
+     },
+     {
+      "id": "min",
+      "label": "min",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "60"
+      }
+     },
+     {
+      "id": "L",
+      "label": "L"
+     },
+     {
+      "id": "day",
+      "label": "day"
+     }
+    ],
+    "expected": "25",
+    "expectedUnitId": "h",
+    "absoluteTolerance": "0",
+    "explanation": "Time = 1750 / 70 = 25 h."
+   }
+  },
+  {
+   "id": "c1wc-ladder97",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A sewer is flushed at 40 L/s for 15 minutes. Find the flushing volume in m3. Enter the exact unrounded number.",
+   "topicId": "cleaning-production-rates",
+   "level": "class1",
+   "assumptions": "Fictional flushing operation: flow = 40 L/s, duration = 15 min, 60 s = 1 min, 1000 L = 1 m3.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Volume = Flow * Time"
+      },
+      {
+       "id": "opt-b",
+       "label": "Volume = Flow / Time"
+      },
+      {
+       "id": "opt-c",
+       "label": "Volume = Time / Flow"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Convert 15 min to 15 s and divide litres by 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Convert 40 L/s to 40 m3/s before multiplying"
+      },
+      {
+       "id": "opt-c",
+       "label": "Convert 15 min to 900 s and convert litres to m3 by dividing by 1000"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "40 * 900 * 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "40 * 900 / 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "40 * 15 / 1000"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact flushing volume in m3.",
+    "unitOptions": [
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "L",
+      "label": "L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "m2",
+      "label": "m2"
+     },
+     {
+      "id": "min",
+      "label": "min"
+     }
+    ],
+    "expected": "36",
+    "expectedUnitId": "m3",
+    "absoluteTolerance": "0",
+    "explanation": "Volume = 40 * 900 = 36000 L, and 36000 / 1000 = 36 m3."
+   }
+  },
+  {
+   "id": "c1wc-ladder98",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A CCTV program must inspect 4500 m of sewer and the crew completes 900 m per day. Find the number of days required. Enter the exact unrounded number.",
+   "topicId": "inspection-production-rates",
+   "level": "class1",
+   "assumptions": "Fictional program: total length = 4500 m, production = 900 m/day, steady rate.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Days = Total length * Daily production"
+      },
+      {
+       "id": "opt-b",
+       "label": "Days = Daily production / Total length"
+      },
+      {
+       "id": "opt-c",
+       "label": "Days = Total length / Daily production"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Convert the daily production to hectares before dividing"
+      },
+      {
+       "id": "opt-b",
+       "label": "Length in m divided by production in m/day gives days directly"
+      },
+      {
+       "id": "opt-c",
+       "label": "Convert the total length to litres before dividing"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "4500 / 900"
+      },
+      {
+       "id": "opt-b",
+       "label": "4500 * 900"
+      },
+      {
+       "id": "opt-c",
+       "label": "900 / 4500"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact number of days.",
+    "unitOptions": [
+     {
+      "id": "days",
+      "label": "days"
+     },
+     {
+      "id": "h",
+      "label": "h",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "24"
+      }
+     },
+     {
+      "id": "min",
+      "label": "min"
+     },
+     {
+      "id": "m",
+      "label": "m"
+     }
+    ],
+    "expected": "5",
+    "expectedUnitId": "days",
+    "absoluteTolerance": "0",
+    "explanation": "Days = 4500 / 900 = 5 days."
+   }
+  },
+  {
+   "id": "c1wc-ladder99",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A crew inspects 16 manholes in an 8 hour shift at a steady rate. Find the inspection rate in manholes/h. Enter the exact unrounded number.",
+   "topicId": "inspection-production-rates",
+   "level": "class1",
+   "assumptions": "Fictional crew record: manholes inspected = 16, time = 8 h, steady rate.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Inspection rate = Time / Manholes"
+      },
+      {
+       "id": "opt-b",
+       "label": "Inspection rate = Manholes / Time"
+      },
+      {
+       "id": "opt-c",
+       "label": "Inspection rate = Manholes * Time"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Count divided by time in h gives manholes/h directly"
+      },
+      {
+       "id": "opt-b",
+       "label": "Convert the manhole count to metres before dividing"
+      },
+      {
+       "id": "opt-c",
+       "label": "Convert the time to days and report the rate per day"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "16 * 8"
+      },
+      {
+       "id": "opt-b",
+       "label": "8 / 16"
+      },
+      {
+       "id": "opt-c",
+       "label": "16 / 8"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact inspection rate in manholes/h.",
+    "unitOptions": [
+     {
+      "id": "manholes-h",
+      "label": "manholes/h"
+     },
+     {
+      "id": "manholes-min",
+      "label": "manholes/min",
+      "toExpected": {
+       "numerator": "60",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "m",
+      "label": "m"
+     },
+     {
+      "id": "L",
+      "label": "L"
+     }
+    ],
+    "expected": "2",
+    "expectedUnitId": "manholes-h",
+    "absoluteTolerance": "0",
+    "explanation": "Rate = 16 / 8 = 2 manholes/h."
+   }
+  },
+  {
+   "id": "c1wc-error01",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this flow conversion for a trunk sewer flow check at Q = 12 L/s.",
+   "topicId": "flow-conversion",
+   "level": "class1",
+   "assumptions": "Fictional flow conversion: Q = 12 L/s, 1000 L = 1 m3, 3600 s = 1 h, 24 h = 1 day. Target units: m3/h, then m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Q = 12 L/s * 3600 s/h = 43200 L/h"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q = 43200 L/h * 1000 L/m3 = 43200000 m3/h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Q = 43200000 m3/h * 24 h/day = 1036800000 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Q = 43200 L/h / 1000 L/m3 = 43.2 m3/h",
+   "explanation": "Line 2 multiplied by 1000 instead of dividing by 1000 L/m3. The correct flow is 43.2 m3/h, which is 1036.8 m3/day."
+  },
+  {
+   "id": "c1wc-error02",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this flow conversion for a lift station inflow check at Q = 15 L/s.",
+   "topicId": "flow-conversion",
+   "level": "class1",
+   "assumptions": "Fictional flow conversion: Q = 15 L/s, 1000 L = 1 m3, 3600 s = 1 h, 24 h = 1 day. Target units: m3/h, then m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Q = 15 L/s * 3600 s/h = 54000 L/h"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q = 54000 L/h / 1000 L/m3 = 54 m3/h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Q = 54 m3/h * 3600 h/day = 194400 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Q = 54 m3/h * 24 h/day = 1296 m3/day",
+   "explanation": "Line 3 used 3600 as the hours per day. A day has 24 h, so the correct daily flow is 1296 m3/day."
+  },
+  {
+   "id": "c1wc-error03",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this flow conversion for a sanitary sewer flow check at Q = 25 L/s.",
+   "topicId": "flow-conversion",
+   "level": "class1",
+   "assumptions": "Fictional flow conversion: Q = 25 L/s, 1000 L = 1 m3, 3600 s = 1 h, 24 h = 1 day. Target units: m3/h, then m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Q = 25 L/s * 60 s/h = 1500 L/h"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q = 1500 L/h / 1000 L/m3 = 1.5 m3/h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Q = 1.5 m3/h * 24 h/day = 36 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Q = 25 L/s * 3600 s/h = 90000 L/h",
+   "explanation": "Line 1 used 60 s, which is one minute, instead of 3600 s in one hour. The correct flow is 90000 L/h, which is 90 m3/h and 2160 m3/day."
+  },
+  {
+   "id": "c1wc-error04",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this flow conversion for a pump station inflow check at Q = 8 L/s.",
+   "topicId": "flow-conversion",
+   "level": "class1",
+   "assumptions": "Fictional flow conversion: Q = 8 L/s, 1000 L = 1 m3, 3600 s = 1 h, 24 h = 1 day. Target units: m3/h, then m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Q = 8 L/s * 3600 s/h = 28800 L/h"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q = 28800 L/h * 1000 L/m3 = 28800000 m3/h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Q = 28800000 m3/h * 24 h/day = 691200000 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Q = 28800 L/h / 1000 L/m3 = 28.8 m3/h",
+   "explanation": "Line 2 multiplied by 1000 instead of dividing by 1000 L/m3. The correct flow is 28.8 m3/h, which is 691.2 m3/day."
+  },
+  {
+   "id": "c1wc-error05",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this flow conversion for a gravity sewer flow check at Q = 20 L/s.",
+   "topicId": "flow-conversion",
+   "level": "class1",
+   "assumptions": "Fictional flow conversion: Q = 20 L/s, 1000 L = 1 m3, 3600 s = 1 h, 24 h = 1 day. Target units: m3/h, then m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Q = 20 L/s * 3600 s/h = 72000 L/h"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q = 72000 L/h / 1000 L/m3 = 72 m3/h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Q = 72 m3/h * 3600 h/day = 259200 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Q = 72 m3/h * 24 h/day = 1728 m3/day",
+   "explanation": "Line 3 used 3600 as the hours per day. A day has 24 h, so the correct daily flow is 1728 m3/day."
+  },
+  {
+   "id": "c1wc-error06",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this daily flow conversion for an average sewer flow of 864 m3/day.",
+   "topicId": "flow-conversion",
+   "level": "class1",
+   "assumptions": "Fictional daily flow: 864 m3/day, 1000 L = 1 m3, 86400 s = 1 day. Target unit: L/s.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Q = 864 m3/day * 1000 L/m3 = 864000 L/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q = 864000 L/day / 8640 s/day = 100 L/s"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Q = 864000 L/day / 86400 s/day = 10 L/s",
+   "explanation": "Line 2 divided by 8640 instead of 86400 s/day, dropping a zero. The correct average flow is 10 L/s."
+  },
+  {
+   "id": "c1wc-error07",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this daily flow conversion for an average sewer flow of 1728 m3/day.",
+   "topicId": "flow-conversion",
+   "level": "class1",
+   "assumptions": "Fictional daily flow: 1728 m3/day, 1000 L = 1 m3, 86400 s = 1 day. Target unit: L/s.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Q = 1728 m3/day * 1000 L/m3 = 1728000 L/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q = 1728000 L/day / 3600 s/day = 480 L/s"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Q = 1728000 L/day / 86400 s/day = 20 L/s",
+   "explanation": "Line 2 divided a daily volume by 3600 s, which is one hour, not one day. The correct average flow is 20 L/s."
+  },
+  {
+   "id": "c1wc-error08",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this daily flow conversion for an average sewer flow of 432 m3/day.",
+   "topicId": "flow-conversion",
+   "level": "class1",
+   "assumptions": "Fictional daily flow: 432 m3/day, 1000 L = 1 m3, 86400 s = 1 day. Target unit: L/s.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Q = 432 m3/day / 1000 L/m3 = 0.432 L/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q = 0.432 L/day / 86400 s/day = 0.000005 L/s"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Q = 432 m3/day * 1000 L/m3 = 432000 L/day",
+   "explanation": "Line 1 divided by 1000 instead of multiplying, going from m3 to L the wrong way. The correct flow is 432000 L/day, which is 5 L/s."
+  },
+  {
+   "id": "c1wc-error09",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this flow conversion for a force main flow of 36 m3/h.",
+   "topicId": "flow-conversion",
+   "level": "class1",
+   "assumptions": "Fictional force main flow: 36 m3/h, 1000 L = 1 m3, 3600 s = 1 h. Target unit: L/s.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Q = 36 m3/h * 1000 L/m3 = 36000 L/h"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q = 36000 L/h / 360 s/h = 100 L/s"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Q = 36000 L/h / 3600 s/h = 10 L/s",
+   "explanation": "Line 2 divided by 360 instead of 3600 s/h. The correct flow is 10 L/s."
+  },
+  {
+   "id": "c1wc-error10",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this flow conversion for a force main flow of 54 m3/h.",
+   "topicId": "flow-conversion",
+   "level": "class1",
+   "assumptions": "Fictional force main flow: 54 m3/h, 1000 L = 1 m3, 3600 s = 1 h. Target unit: L/s.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Q = 54 m3/h * 1000 L/m3 = 54000 L/h"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q = 54000 L/h * 3600 s/h = 194400000 L/s"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Q = 54000 L/h / 3600 s/h = 15 L/s",
+   "explanation": "Line 2 multiplied by 3600 instead of dividing, so the units do not cancel to L/s. The correct flow is 15 L/s."
+  },
+  {
+   "id": "c1wc-error100",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this percent full calculation for a sewer at a flow monitoring site.",
+   "topicId": "percent-full",
+   "level": "class1",
+   "assumptions": "Fictional monitoring site: flow depth 0.3 m in a 0.75 m diameter sewer. Percent full by depth equals depth / diameter * 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Ratio = 0.3 m / 0.75 m = 0.4"
+    },
+    {
+     "id": "line2",
+     "label": "2. Percent = 0.4 / 100 = 0.004 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Percent = 0.4 * 100 = 40 percent",
+   "explanation": "Line 2 divided by 100 instead of multiplying by 100 to convert a ratio to a percent. The correct value is 40 percent."
+  },
+  {
+   "id": "c1wc-error11",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sewer slope calculation for the Maple Street sewer.",
+   "topicId": "sewer-slope",
+   "level": "class1",
+   "assumptions": "Fictional sewer reach on Maple Street: upstream invert 102.5 m, downstream invert 101 m, length 300 m. Slope percent equals decimal slope * 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Rise = 102.5 m - 101 m = 1.5 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Slope = 1.5 m / 300 m = 0.005"
+    },
+    {
+     "id": "line3",
+     "label": "3. Slope = 0.005 * 10 = 0.05 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Slope = 0.005 * 100 = 0.5 percent",
+   "explanation": "Line 3 multiplied the decimal slope by 10 instead of 100 to get percent. The slope is 0.005, which is 0.5 percent."
+  },
+  {
+   "id": "c1wc-error12",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sewer slope calculation for the King Street sewer.",
+   "topicId": "sewer-slope",
+   "level": "class1",
+   "assumptions": "Fictional sewer reach on King Street: upstream invert 98.4 m, downstream invert 96.9 m, length 250 m. Slope percent equals decimal slope * 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Rise = 98.4 m - 96.9 m = 1.5 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Slope = 1.5 m / 250 m = 0.006"
+    },
+    {
+     "id": "line3",
+     "label": "3. Slope = 0.006 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Slope = 0.006 * 100 = 0.6 percent",
+   "explanation": "Line 3 reported the decimal slope as if it were already a percent. Multiplying by 100 gives 0.6 percent."
+  },
+  {
+   "id": "c1wc-error13",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sewer slope calculation for the Elm Avenue sewer.",
+   "topicId": "sewer-slope",
+   "level": "class1",
+   "assumptions": "Fictional sewer reach on Elm Avenue: upstream invert 105.25 m, downstream invert 103.25 m, length 400 m. Slope percent equals decimal slope * 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Rise = 105.25 m - 103.25 m = 1 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Slope = 1 m / 400 m = 0.0025"
+    },
+    {
+     "id": "line3",
+     "label": "3. Slope = 0.0025 * 100 = 0.25 percent"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Rise = 105.25 m - 103.25 m = 2 m",
+   "explanation": "Line 1 subtracted the invert elevations incorrectly. The rise is 2 m, giving a slope of 0.005, or 0.5 percent."
+  },
+  {
+   "id": "c1wc-error14",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sewer slope calculation for the Cedar Road sewer.",
+   "topicId": "sewer-slope",
+   "level": "class1",
+   "assumptions": "Fictional sewer reach on Cedar Road: upstream invert 112.3 m, downstream invert 110.7 m, length 200 m. Slope percent equals decimal slope * 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Rise = 112.3 m - 110.7 m = 1.6 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Slope = 200 m / 1.6 m = 125"
+    },
+    {
+     "id": "line3",
+     "label": "3. Slope = 125 * 100 = 12500 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Slope = 1.6 m / 200 m = 0.008",
+   "explanation": "Line 2 divided run by rise instead of rise by run. The slope is 0.008, or 0.8 percent."
+  },
+  {
+   "id": "c1wc-error15",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sewer slope calculation for the Birch Lane sewer.",
+   "topicId": "sewer-slope",
+   "level": "class1",
+   "assumptions": "Fictional sewer reach on Birch Lane: upstream invert 95 m, downstream invert 93.2 m, length 300 m. Slope percent equals decimal slope * 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Rise = 95 m - 93.2 m = 1.8 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Slope = 1.8 m / 300 m = 0.006"
+    },
+    {
+     "id": "line3",
+     "label": "3. Slope = 0.006 * 10 = 0.06 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Slope = 0.006 * 100 = 0.6 percent",
+   "explanation": "Line 3 multiplied the decimal slope by 10 instead of 100 to get percent. The slope is 0.006, which is 0.6 percent."
+  },
+  {
+   "id": "c1wc-error16",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sewer slope calculation for the Queen Street sewer.",
+   "topicId": "sewer-slope",
+   "level": "class1",
+   "assumptions": "Fictional sewer reach on Queen Street: upstream invert 120.45 m, downstream invert 118.05 m, length 600 m. Slope percent equals decimal slope * 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Rise = 120.45 m - 118.05 m = 2.4 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Slope = 2.4 m / 600 m = 0.004"
+    },
+    {
+     "id": "line3",
+     "label": "3. Slope = 0.004 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Slope = 0.004 * 100 = 0.4 percent",
+   "explanation": "Line 3 reported the decimal slope as if it were already a percent. Multiplying by 100 gives 0.4 percent."
+  },
+  {
+   "id": "c1wc-error17",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sewer slope calculation for the Pine Crescent sewer.",
+   "topicId": "sewer-slope",
+   "level": "class1",
+   "assumptions": "Fictional sewer reach on Pine Crescent: upstream invert 76.8 m, downstream invert 75 m, length 450 m. Slope percent equals decimal slope * 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Rise = 76.8 m - 75 m = 0.9 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Slope = 0.9 m / 450 m = 0.002"
+    },
+    {
+     "id": "line3",
+     "label": "3. Slope = 0.002 * 100 = 0.2 percent"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Rise = 76.8 m - 75 m = 1.8 m",
+   "explanation": "Line 1 subtracted the invert elevations incorrectly. The rise is 1.8 m, giving a slope of 0.004, or 0.4 percent."
+  },
+  {
+   "id": "c1wc-error18",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sewer slope calculation for the Oak Drive sewer.",
+   "topicId": "sewer-slope",
+   "level": "class1",
+   "assumptions": "Fictional sewer reach on Oak Drive: upstream invert 101.2 m, downstream invert 99.2 m, length 250 m. Slope percent equals decimal slope * 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Rise = 101.2 m - 99.2 m = 2 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Slope = 250 m / 2 m = 125"
+    },
+    {
+     "id": "line3",
+     "label": "3. Slope = 125 * 100 = 12500 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Slope = 2 m / 250 m = 0.008",
+   "explanation": "Line 2 divided run by rise instead of rise by run. The slope is 0.008, or 0.8 percent."
+  },
+  {
+   "id": "c1wc-error19",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sewer slope calculation for the Spruce Court sewer.",
+   "topicId": "sewer-slope",
+   "level": "class1",
+   "assumptions": "Fictional sewer reach on Spruce Court: upstream invert 88.9 m, downstream invert 87.3 m, length 400 m. Slope percent equals decimal slope * 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Rise = 88.9 m - 87.3 m = 1.6 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Slope = 1.6 m / 400 m = 0.004"
+    },
+    {
+     "id": "line3",
+     "label": "3. Slope = 0.004 * 10 = 0.04 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Slope = 0.004 * 100 = 0.4 percent",
+   "explanation": "Line 3 multiplied the decimal slope by 10 instead of 100 to get percent. The slope is 0.004, which is 0.4 percent."
+  },
+  {
+   "id": "c1wc-error20",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sewer slope calculation for the Walnut Way sewer.",
+   "topicId": "sewer-slope",
+   "level": "class1",
+   "assumptions": "Fictional sewer reach on Walnut Way: upstream invert 107.6 m, downstream invert 105.1 m, length 500 m. Slope percent equals decimal slope * 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Rise = 107.6 m - 105.1 m = 2.5 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Slope = 2.5 m / 500 m = 0.005"
+    },
+    {
+     "id": "line3",
+     "label": "3. Slope = 0.005 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Slope = 0.005 * 100 = 0.5 percent",
+   "explanation": "Line 3 reported the decimal slope as if it were already a percent. Multiplying by 100 gives 0.5 percent."
+  },
+  {
+   "id": "c1wc-error21",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pipe volume calculation for a 0.2 m diameter sewer, 100 m long.",
+   "topicId": "pipe-volume",
+   "level": "class1",
+   "assumptions": "Fictional sewer reach: diameter 0.2 m, length 100 m, pi = 3.14, so the circular area factor is 3.14 / 4 = 0.785. 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. D^2 = 0.2 m * 0.2 m = 0.04 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 3.14 * 0.04 m2 = 0.1256 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Volume = 0.1256 m2 * 100 m = 12.56 m3"
+    },
+    {
+     "id": "line4",
+     "label": "4. Volume = 12.56 m3 * 1000 L/m3 = 12560 L"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Area = 0.785 * 0.04 m2 = 0.0314 m2",
+   "explanation": "Line 2 used 3.14 times D^2 and missed the divide by 4 in the circular area formula. The area is 0.0314 m2 and the volume is 3.14 m3, or 3140 L."
+  },
+  {
+   "id": "c1wc-error22",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pipe volume calculation for a 0.4 m diameter sewer, 50 m long.",
+   "topicId": "pipe-volume",
+   "level": "class1",
+   "assumptions": "Fictional sewer reach: diameter 0.4 m, length 50 m, pi = 3.14, so the circular area factor is 3.14 / 4 = 0.785. 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. D^2 = 0.4 m * 0.4 m = 0.16 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 0.785 * 0.16 m2 = 0.1256 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Volume = 0.1256 m2 * 50 m = 6.28 m3"
+    },
+    {
+     "id": "line4",
+     "label": "4. Volume = 6.28 m3 * 100 L/m3 = 628 L"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Volume = 6.28 m3 * 1000 L/m3 = 6280 L",
+   "explanation": "Line 4 used 100 L per m3 instead of 1000 L per m3. The volume is 6280 L."
+  },
+  {
+   "id": "c1wc-error23",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pipe volume calculation for a 0.6 m diameter sewer, 100 m long.",
+   "topicId": "pipe-volume",
+   "level": "class1",
+   "assumptions": "Fictional sewer reach: diameter 0.6 m, length 100 m, pi = 3.14, so the circular area factor is 3.14 / 4 = 0.785. 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. D^2 = 0.6 m * 0.6 m = 0.36 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 0.785 * 0.6 m = 0.471 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Volume = 0.471 m2 * 100 m = 47.1 m3"
+    },
+    {
+     "id": "line4",
+     "label": "4. Volume = 47.1 m3 * 1000 L/m3 = 47100 L"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Area = 0.785 * 0.36 m2 = 0.2826 m2",
+   "explanation": "Line 2 used the diameter itself instead of D^2 in the area formula. The area is 0.2826 m2 and the volume is 28.26 m3, or 28260 L."
+  },
+  {
+   "id": "c1wc-error24",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pipe volume calculation for a 0.8 m diameter sewer, 75 m long.",
+   "topicId": "pipe-volume",
+   "level": "class1",
+   "assumptions": "Fictional sewer reach: diameter 0.8 m, length 75 m, pi = 3.14, so the circular area factor is 3.14 / 4 = 0.785. 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. D^2 = 0.8 m * 0.8 m = 0.32 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 0.785 * 0.32 m2 = 0.2512 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Volume = 0.2512 m2 * 75 m = 18.84 m3"
+    },
+    {
+     "id": "line4",
+     "label": "4. Volume = 18.84 m3 * 1000 L/m3 = 18840 L"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. D^2 = 0.8 m * 0.8 m = 0.64 m2",
+   "explanation": "Line 1 squared the diameter incorrectly. D^2 is 0.64 m2, so the area is 0.5024 m2 and the volume is 37.68 m3, or 37680 L."
+  },
+  {
+   "id": "c1wc-error25",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pipe volume calculation for a 1 m diameter sewer, 80 m long.",
+   "topicId": "pipe-volume",
+   "level": "class1",
+   "assumptions": "Fictional sewer reach: diameter 1 m, length 80 m, pi = 3.14, so the circular area factor is 3.14 / 4 = 0.785. 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. D^2 = 1 m * 1 m = 1 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 3.14 * 1 m2 = 3.14 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Volume = 3.14 m2 * 80 m = 251.2 m3"
+    },
+    {
+     "id": "line4",
+     "label": "4. Volume = 251.2 m3 * 1000 L/m3 = 251200 L"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Area = 0.785 * 1 m2 = 0.785 m2",
+   "explanation": "Line 2 used 3.14 times D^2 and missed the divide by 4 in the circular area formula. The area is 0.785 m2 and the volume is 62.8 m3, or 62800 L."
+  },
+  {
+   "id": "c1wc-error26",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pipe volume calculation for a 1.2 m diameter sewer, 50 m long.",
+   "topicId": "pipe-volume",
+   "level": "class1",
+   "assumptions": "Fictional sewer reach: diameter 1.2 m, length 50 m, pi = 3.14, so the circular area factor is 3.14 / 4 = 0.785. 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. D^2 = 1.2 m * 1.2 m = 1.44 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 0.785 * 1.44 m2 = 1.1304 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Volume = 1.1304 m2 * 50 m = 56.52 m3"
+    },
+    {
+     "id": "line4",
+     "label": "4. Volume = 56.52 m3 * 100 L/m3 = 5652 L"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Volume = 56.52 m3 * 1000 L/m3 = 56520 L",
+   "explanation": "Line 4 used 100 L per m3 instead of 1000 L per m3. The volume is 56520 L."
+  },
+  {
+   "id": "c1wc-error27",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pipe volume calculation for a 0.4 m diameter sewer, 200 m long.",
+   "topicId": "pipe-volume",
+   "level": "class1",
+   "assumptions": "Fictional sewer reach: diameter 0.4 m, length 200 m, pi = 3.14, so the circular area factor is 3.14 / 4 = 0.785. 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. D^2 = 0.4 m * 0.4 m = 0.16 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 0.785 * 0.4 m = 0.314 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Volume = 0.314 m2 * 200 m = 62.8 m3"
+    },
+    {
+     "id": "line4",
+     "label": "4. Volume = 62.8 m3 * 1000 L/m3 = 62800 L"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Area = 0.785 * 0.16 m2 = 0.1256 m2",
+   "explanation": "Line 2 used the diameter itself instead of D^2 in the area formula. The area is 0.1256 m2 and the volume is 25.12 m3, or 25120 L."
+  },
+  {
+   "id": "c1wc-error28",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pipe volume calculation for a 0.6 m diameter sewer, 150 m long.",
+   "topicId": "pipe-volume",
+   "level": "class1",
+   "assumptions": "Fictional sewer reach: diameter 0.6 m, length 150 m, pi = 3.14, so the circular area factor is 3.14 / 4 = 0.785. 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. D^2 = 0.6 m * 0.6 m = 0.36 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 3.14 * 0.36 m2 = 1.1304 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Volume = 1.1304 m2 * 150 m = 169.56 m3"
+    },
+    {
+     "id": "line4",
+     "label": "4. Volume = 169.56 m3 * 1000 L/m3 = 169560 L"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Area = 0.785 * 0.36 m2 = 0.2826 m2",
+   "explanation": "Line 2 used 3.14 times D^2 and missed the divide by 4 in the circular area formula. The area is 0.2826 m2 and the volume is 42.39 m3, or 42390 L."
+  },
+  {
+   "id": "c1wc-error29",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pipe volume calculation for a 0.8 m diameter sewer, 100 m long.",
+   "topicId": "pipe-volume",
+   "level": "class1",
+   "assumptions": "Fictional sewer reach: diameter 0.8 m, length 100 m, pi = 3.14, so the circular area factor is 3.14 / 4 = 0.785. 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. D^2 = 0.8 m * 0.8 m = 0.64 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 0.785 * 0.64 m2 = 0.5024 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Volume = 0.5024 m2 * 100 m = 50.24 m3"
+    },
+    {
+     "id": "line4",
+     "label": "4. Volume = 50.24 m3 * 100 L/m3 = 5024 L"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Volume = 50.24 m3 * 1000 L/m3 = 50240 L",
+   "explanation": "Line 4 used 100 L per m3 instead of 1000 L per m3. The volume is 50240 L."
+  },
+  {
+   "id": "c1wc-error30",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pipe volume calculation for a 1 m diameter sewer, 200 m long.",
+   "topicId": "pipe-volume",
+   "level": "class1",
+   "assumptions": "Fictional sewer reach: diameter 1 m, length 200 m, pi = 3.14, so the circular area factor is 3.14 / 4 = 0.785. 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. D^2 = 1 m * 1 m = 0.5 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 0.785 * 0.5 m2 = 0.3925 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Volume = 0.3925 m2 * 200 m = 78.5 m3"
+    },
+    {
+     "id": "line4",
+     "label": "4. Volume = 78.5 m3 * 1000 L/m3 = 78500 L"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. D^2 = 1 m * 1 m = 1 m2",
+   "explanation": "Line 1 squared the diameter incorrectly. D^2 is 1 m2, so the area is 0.785 m2 and the volume is 157 m3, or 157000 L."
+  },
+  {
+   "id": "c1wc-error31",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pipe volume calculation for a 0.2 m diameter sewer, 250 m long.",
+   "topicId": "pipe-volume",
+   "level": "class1",
+   "assumptions": "Fictional sewer reach: diameter 0.2 m, length 250 m, pi = 3.14, so the circular area factor is 3.14 / 4 = 0.785. 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. D^2 = 0.2 m * 0.2 m = 0.04 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 0.785 * 0.2 m = 0.157 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Volume = 0.157 m2 * 250 m = 39.25 m3"
+    },
+    {
+     "id": "line4",
+     "label": "4. Volume = 39.25 m3 * 1000 L/m3 = 39250 L"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Area = 0.785 * 0.04 m2 = 0.0314 m2",
+   "explanation": "Line 2 used the diameter itself instead of D^2 in the area formula. The area is 0.0314 m2 and the volume is 7.85 m3, or 7850 L."
+  },
+  {
+   "id": "c1wc-error32",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pipe volume calculation for a 1.2 m diameter sewer, 25 m long.",
+   "topicId": "pipe-volume",
+   "level": "class1",
+   "assumptions": "Fictional sewer reach: diameter 1.2 m, length 25 m, pi = 3.14, so the circular area factor is 3.14 / 4 = 0.785. 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. D^2 = 1.2 m * 1.2 m = 1.44 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 3.14 * 1.44 m2 = 4.5216 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Volume = 4.5216 m2 * 25 m = 113.04 m3"
+    },
+    {
+     "id": "line4",
+     "label": "4. Volume = 113.04 m3 * 1000 L/m3 = 113040 L"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Area = 0.785 * 1.44 m2 = 1.1304 m2",
+   "explanation": "Line 2 used 3.14 times D^2 and missed the divide by 4 in the circular area formula. The area is 1.1304 m2 and the volume is 28.26 m3, or 28260 L."
+  },
+  {
+   "id": "c1wc-error33",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this velocity calculation for a 0.4 m diameter sewer carrying 157 L/s.",
+   "topicId": "pipe-velocity",
+   "level": "class1",
+   "assumptions": "Fictional sewer: diameter 0.4 m, Q = 157 L/s, pi = 3.14, area factor 0.785, 1000 L = 1 m3. Velocity equals Q / A with Q in m3/s.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Q = 157 L/s / 1000 L/m3 = 0.157 m3/s"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 0.785 * 0.16 m2 = 0.1256 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Velocity = 0.1256 m2 / 0.157 m3/s = 0.8 m/s"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Velocity = 0.157 m3/s / 0.1256 m2 = 1.25 m/s",
+   "explanation": "Line 3 divided area by flow instead of flow by area. Velocity is Q / A, giving 1.25 m/s."
+  },
+  {
+   "id": "c1wc-error34",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this velocity calculation for a 0.6 m diameter sewer carrying 282.6 L/s.",
+   "topicId": "pipe-velocity",
+   "level": "class1",
+   "assumptions": "Fictional sewer: diameter 0.6 m, Q = 282.6 L/s, pi = 3.14, area factor 0.785, 1000 L = 1 m3. Velocity equals Q / A with Q in m3/s.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Q = 282.6 L/s / 1000 L/m3 = 0.2826 m3/s"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 3.14 * 0.36 m2 = 1.1304 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Velocity = 0.2826 m3/s / 1.1304 m2 = 0.25 m/s"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Area = 0.785 * 0.36 m2 = 0.2826 m2",
+   "explanation": "Line 2 missed the divide by 4 in the circular area formula, using 3.14 instead of 0.785. The area is 0.2826 m2 and the velocity is 1 m/s."
+  },
+  {
+   "id": "c1wc-error35",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this velocity calculation for a 0.8 m diameter sewer carrying 251.2 L/s.",
+   "topicId": "pipe-velocity",
+   "level": "class1",
+   "assumptions": "Fictional sewer: diameter 0.8 m, Q = 251.2 L/s, pi = 3.14, area factor 0.785, 1000 L = 1 m3. Velocity equals Q / A with Q in m3/s.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Q = 251.2 L/s / 100 L/m3 = 2.512 m3/s"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 0.785 * 0.64 m2 = 0.5024 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Velocity = 2.512 m3/s / 0.5024 m2 = 5 m/s"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Q = 251.2 L/s / 1000 L/m3 = 0.2512 m3/s",
+   "explanation": "Line 1 divided by 100 instead of 1000 L/m3. The flow is 0.2512 m3/s and the velocity is 0.5 m/s."
+  },
+  {
+   "id": "c1wc-error36",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this velocity calculation for a 0.8 m diameter sewer carrying 628 L/s.",
+   "topicId": "pipe-velocity",
+   "level": "class1",
+   "assumptions": "Fictional sewer: diameter 0.8 m, Q = 628 L/s, pi = 3.14, area factor 0.785, 1000 L = 1 m3. Velocity equals Q / A with Q in m3/s.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Q = 628 L/s / 1000 L/m3 = 0.628 m3/s"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 0.785 * 0.64 m2 = 0.5024 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Velocity = 0.5024 m2 / 0.628 m3/s = 0.8 m/s"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Velocity = 0.628 m3/s / 0.5024 m2 = 1.25 m/s",
+   "explanation": "Line 3 divided area by flow instead of flow by area. Velocity is Q / A, giving 1.25 m/s."
+  },
+  {
+   "id": "c1wc-error37",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this velocity calculation for a 1 m diameter sewer carrying 628 L/s.",
+   "topicId": "pipe-velocity",
+   "level": "class1",
+   "assumptions": "Fictional sewer: diameter 1 m, Q = 628 L/s, pi = 3.14, area factor 0.785, 1000 L = 1 m3. Velocity equals Q / A with Q in m3/s.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Q = 628 L/s / 1000 L/m3 = 0.628 m3/s"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 3.14 * 1 m2 = 3.14 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Velocity = 0.628 m3/s / 3.14 m2 = 0.2 m/s"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Area = 0.785 * 1 m2 = 0.785 m2",
+   "explanation": "Line 2 missed the divide by 4 in the circular area formula, using 3.14 instead of 0.785. The area is 0.785 m2 and the velocity is 0.8 m/s."
+  },
+  {
+   "id": "c1wc-error38",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this velocity calculation for a 1 m diameter sewer carrying 785 L/s.",
+   "topicId": "pipe-velocity",
+   "level": "class1",
+   "assumptions": "Fictional sewer: diameter 1 m, Q = 785 L/s, pi = 3.14, area factor 0.785, 1000 L = 1 m3. Velocity equals Q / A with Q in m3/s.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Q = 785 L/s / 100 L/m3 = 7.85 m3/s"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 0.785 * 1 m2 = 0.785 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Velocity = 7.85 m3/s / 0.785 m2 = 10 m/s"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Q = 785 L/s / 1000 L/m3 = 0.785 m3/s",
+   "explanation": "Line 1 divided by 100 instead of 1000 L/m3. The flow is 0.785 m3/s and the velocity is 1 m/s."
+  },
+  {
+   "id": "c1wc-error39",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this velocity calculation for a 1 m diameter sewer carrying 1570 L/s.",
+   "topicId": "pipe-velocity",
+   "level": "class1",
+   "assumptions": "Fictional sewer: diameter 1 m, Q = 1570 L/s, pi = 3.14, area factor 0.785, 1000 L = 1 m3. Velocity equals Q / A with Q in m3/s.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Q = 1570 L/s / 1000 L/m3 = 1.57 m3/s"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 0.785 * 1 m2 = 0.785 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Velocity = 0.785 m2 / 1.57 m3/s = 0.5 m/s"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Velocity = 1.57 m3/s / 0.785 m2 = 2 m/s",
+   "explanation": "Line 3 divided area by flow instead of flow by area. Velocity is Q / A, giving 2 m/s."
+  },
+  {
+   "id": "c1wc-error40",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this velocity calculation for a 0.2 m diameter sewer carrying 47.1 L/s.",
+   "topicId": "pipe-velocity",
+   "level": "class1",
+   "assumptions": "Fictional sewer: diameter 0.2 m, Q = 47.1 L/s, pi = 3.14, area factor 0.785, 1000 L = 1 m3. Velocity equals Q / A with Q in m3/s.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Q = 47.1 L/s / 1000 L/m3 = 0.0471 m3/s"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 3.14 * 0.04 m2 = 0.1256 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Velocity = 0.0471 m3/s / 0.1256 m2 = 0.375 m/s"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Area = 0.785 * 0.04 m2 = 0.0314 m2",
+   "explanation": "Line 2 missed the divide by 4 in the circular area formula, using 3.14 instead of 0.785. The area is 0.0314 m2 and the velocity is 1.5 m/s."
+  },
+  {
+   "id": "c1wc-error41",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this velocity calculation for a 0.2 m diameter sewer carrying 78.5 L/s.",
+   "topicId": "pipe-velocity",
+   "level": "class1",
+   "assumptions": "Fictional sewer: diameter 0.2 m, Q = 78.5 L/s, pi = 3.14, area factor 0.785, 1000 L = 1 m3. Velocity equals Q / A with Q in m3/s.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Q = 78.5 L/s / 1000 L/m3 = 0.0785 m3/s"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 0.785 * 0.04 m2 = 0.0314 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Velocity = 0.0314 m2 / 0.0785 m3/s = 0.4 m/s"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Velocity = 0.0785 m3/s / 0.0314 m2 = 2.5 m/s",
+   "explanation": "Line 3 divided area by flow instead of flow by area. Velocity is Q / A, giving 2.5 m/s."
+  },
+  {
+   "id": "c1wc-error42",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this velocity calculation for a 1.2 m diameter sewer carrying 565.2 L/s.",
+   "topicId": "pipe-velocity",
+   "level": "class1",
+   "assumptions": "Fictional sewer: diameter 1.2 m, Q = 565.2 L/s, pi = 3.14, area factor 0.785, 1000 L = 1 m3. Velocity equals Q / A with Q in m3/s.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Q = 565.2 L/s / 100 L/m3 = 5.652 m3/s"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 0.785 * 1.44 m2 = 1.1304 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Velocity = 5.652 m3/s / 1.1304 m2 = 5 m/s"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Q = 565.2 L/s / 1000 L/m3 = 0.5652 m3/s",
+   "explanation": "Line 1 divided by 100 instead of 1000 L/m3. The flow is 0.5652 m3/s and the velocity is 0.5 m/s."
+  },
+  {
+   "id": "c1wc-error43",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this velocity calculation for a 1.2 m diameter sewer carrying 1413 L/s.",
+   "topicId": "pipe-velocity",
+   "level": "class1",
+   "assumptions": "Fictional sewer: diameter 1.2 m, Q = 1413 L/s, pi = 3.14, area factor 0.785, 1000 L = 1 m3. Velocity equals Q / A with Q in m3/s.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Q = 1413 L/s / 1000 L/m3 = 1.413 m3/s"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 3.14 * 1.44 m2 = 4.5216 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Velocity = 1.413 m3/s / 4.5216 m2 = 0.3125 m/s"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Area = 0.785 * 1.44 m2 = 1.1304 m2",
+   "explanation": "Line 2 missed the divide by 4 in the circular area formula, using 3.14 instead of 0.785. The area is 1.1304 m2 and the velocity is 1.25 m/s."
+  },
+  {
+   "id": "c1wc-error44",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this velocity calculation for a 0.6 m diameter sewer carrying 423.9 L/s.",
+   "topicId": "pipe-velocity",
+   "level": "class1",
+   "assumptions": "Fictional sewer: diameter 0.6 m, Q = 423.9 L/s, pi = 3.14, area factor 0.785, 1000 L = 1 m3. Velocity equals Q / A with Q in m3/s.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Q = 423.9 L/s / 100 L/m3 = 4.239 m3/s"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 0.785 * 0.36 m2 = 0.2826 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Velocity = 4.239 m3/s / 0.2826 m2 = 15 m/s"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Q = 423.9 L/s / 1000 L/m3 = 0.4239 m3/s",
+   "explanation": "Line 1 divided by 100 instead of 1000 L/m3. The flow is 0.4239 m3/s and the velocity is 1.5 m/s."
+  },
+  {
+   "id": "c1wc-error45",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this wet well fill time calculation for a lift station wet well.",
+   "topicId": "wet-well-fill-time",
+   "level": "class1",
+   "assumptions": "Fictional wet well: length 2 m, width 1.5 m, working depth 2 m, inflow 10 L/s with the pump off, 1000 L = 1 m3, 60 s = 1 min.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Volume = 2 m * 1.5 m * 2 m = 6 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Volume = 6 m3 / 1000 L/m3 = 0.006 L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Fill time = 0.006 L / 10 L/s = 0.0006 s"
+    },
+    {
+     "id": "line4",
+     "label": "4. Fill time = 0.0006 s / 60 s/min = 0.00001 min"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Volume = 6 m3 * 1000 L/m3 = 6000 L",
+   "explanation": "Line 2 divided by 1000 instead of multiplying to convert m3 to L. The volume is 6000 L and the fill time is 600 s, or 10 min."
+  },
+  {
+   "id": "c1wc-error46",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this wet well fill time calculation for a lift station wet well.",
+   "topicId": "wet-well-fill-time",
+   "level": "class1",
+   "assumptions": "Fictional wet well: length 3 m, width 2 m, working depth 1.5 m, inflow 15 L/s with the pump off, 1000 L = 1 m3, 60 s = 1 min.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Volume = 3 m * 2 m * 1.5 m = 9 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Volume = 9 m3 * 1000 L/m3 = 9000 L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Fill time = 9000 L / 15 L/s = 600 s"
+    },
+    {
+     "id": "line4",
+     "label": "4. Fill time = 600 s * 60 s/min = 36000 min"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Fill time = 600 s / 60 s/min = 10 min",
+   "explanation": "Line 4 multiplied by 60 instead of dividing to convert seconds to minutes. The fill time is 10 min."
+  },
+  {
+   "id": "c1wc-error47",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this wet well fill time calculation for a lift station wet well.",
+   "topicId": "wet-well-fill-time",
+   "level": "class1",
+   "assumptions": "Fictional wet well: length 3 m, width 2 m, working depth 2 m, inflow 20 L/s with the pump off, 1000 L = 1 m3, 60 s = 1 min.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Volume = 3 m * 2 m = 6 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Volume = 6 m3 * 1000 L/m3 = 6000 L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Fill time = 6000 L / 20 L/s = 300 s"
+    },
+    {
+     "id": "line4",
+     "label": "4. Fill time = 300 s / 60 s/min = 5 min"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Volume = 3 m * 2 m * 2 m = 12 m3",
+   "explanation": "Line 1 left out the working depth, so it found a surface area, not a volume. The volume is 12 m3 and the fill time is 600 s, or 10 min."
+  },
+  {
+   "id": "c1wc-error48",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this wet well fill time calculation for a lift station wet well.",
+   "topicId": "wet-well-fill-time",
+   "level": "class1",
+   "assumptions": "Fictional wet well: length 2 m, width 2 m, working depth 3 m, inflow 5 L/s with the pump off, 1000 L = 1 m3, 60 s = 1 min.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Volume = 2 m * 2 m * 3 m = 12 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Volume = 12 m3 * 1000 L/m3 = 12000 L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Fill time = 12000 L / 5 L/s = 240 s"
+    },
+    {
+     "id": "line4",
+     "label": "4. Fill time = 240 s / 60 s/min = 4 min"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Fill time = 12000 L / 5 L/s = 2400 s",
+   "explanation": "Line 3 divided the volume by the inflow incorrectly, dropping a factor of 10. The fill time is 2400 s, or 40 min."
+  },
+  {
+   "id": "c1wc-error49",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this wet well fill time calculation for a lift station wet well.",
+   "topicId": "wet-well-fill-time",
+   "level": "class1",
+   "assumptions": "Fictional wet well: length 3 m, width 2.5 m, working depth 2 m, inflow 25 L/s with the pump off, 1000 L = 1 m3, 60 s = 1 min.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Volume = 3 m * 2.5 m * 2 m = 15 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Volume = 15 m3 / 1000 L/m3 = 0.015 L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Fill time = 0.015 L / 25 L/s = 0.0006 s"
+    },
+    {
+     "id": "line4",
+     "label": "4. Fill time = 0.0006 s / 60 s/min = 0.00001 min"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Volume = 15 m3 * 1000 L/m3 = 15000 L",
+   "explanation": "Line 2 divided by 1000 instead of multiplying to convert m3 to L. The volume is 15000 L and the fill time is 600 s, or 10 min."
+  },
+  {
+   "id": "c1wc-error50",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this wet well fill time calculation for a lift station wet well.",
+   "topicId": "wet-well-fill-time",
+   "level": "class1",
+   "assumptions": "Fictional wet well: length 3 m, width 3 m, working depth 2 m, inflow 15 L/s with the pump off, 1000 L = 1 m3, 60 s = 1 min.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Volume = 3 m * 3 m * 2 m = 18 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Volume = 18 m3 * 1000 L/m3 = 18000 L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Fill time = 18000 L / 15 L/s = 1200 s"
+    },
+    {
+     "id": "line4",
+     "label": "4. Fill time = 1200 s * 60 s/min = 72000 min"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Fill time = 1200 s / 60 s/min = 20 min",
+   "explanation": "Line 4 multiplied by 60 instead of dividing to convert seconds to minutes. The fill time is 20 min."
+  },
+  {
+   "id": "c1wc-error51",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this wet well fill time calculation for a lift station wet well.",
+   "topicId": "wet-well-fill-time",
+   "level": "class1",
+   "assumptions": "Fictional wet well: length 1.8 m, width 1.5 m, working depth 2 m, inflow 9 L/s with the pump off, 1000 L = 1 m3, 60 s = 1 min.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Volume = 1.8 m * 1.5 m = 2.7 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Volume = 2.7 m3 * 1000 L/m3 = 2700 L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Fill time = 2700 L / 9 L/s = 300 s"
+    },
+    {
+     "id": "line4",
+     "label": "4. Fill time = 300 s / 60 s/min = 5 min"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Volume = 1.8 m * 1.5 m * 2 m = 5.4 m3",
+   "explanation": "Line 1 left out the working depth, so it found a surface area, not a volume. The volume is 5.4 m3 and the fill time is 600 s, or 10 min."
+  },
+  {
+   "id": "c1wc-error52",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this wet well fill time calculation for a lift station wet well.",
+   "topicId": "wet-well-fill-time",
+   "level": "class1",
+   "assumptions": "Fictional wet well: length 2 m, width 2.7 m, working depth 2 m, inflow 18 L/s with the pump off, 1000 L = 1 m3, 60 s = 1 min.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Volume = 2 m * 2.7 m * 2 m = 10.8 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Volume = 10.8 m3 * 1000 L/m3 = 10800 L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Fill time = 10800 L / 18 L/s = 60 s"
+    },
+    {
+     "id": "line4",
+     "label": "4. Fill time = 60 s / 60 s/min = 1 min"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Fill time = 10800 L / 18 L/s = 600 s",
+   "explanation": "Line 3 divided the volume by the inflow incorrectly, dropping a factor of 10. The fill time is 600 s, or 10 min."
+  },
+  {
+   "id": "c1wc-error53",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this wet well drawdown and pump cycle calculation.",
+   "topicId": "wet-well-drawdown",
+   "level": "class1",
+   "assumptions": "Fictional lift station: working volume 6000 L, inflow 10 L/s = 600 L/min, pump rate 30 L/s = 1800 L/min, 60 min = 1 h. The pump draws against continuing inflow.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Net drawdown rate = 1800 L/min + 600 L/min = 2400 L/min"
+    },
+    {
+     "id": "line2",
+     "label": "2. Drawdown time = 6000 L / 2400 L/min = 2.5 min"
+    },
+    {
+     "id": "line3",
+     "label": "3. Fill time = 6000 L / 600 L/min = 10 min"
+    },
+    {
+     "id": "line4",
+     "label": "4. Cycle time = 10 min + 2.5 min = 12.5 min"
+    },
+    {
+     "id": "line5",
+     "label": "5. Cycles per hour = 60 min/h / 12.5 min = 4.8"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Net drawdown rate = 1800 L/min - 600 L/min = 1200 L/min",
+   "explanation": "Line 1 added the inflow to the pump rate. Inflow works against the pump, so the net rate is 1200 L/min, the drawdown time is 5 min, and the station runs 4 cycles per hour."
+  },
+  {
+   "id": "c1wc-error54",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this wet well drawdown and pump cycle calculation.",
+   "topicId": "pump-cycles",
+   "level": "class1",
+   "assumptions": "Fictional lift station: working volume 9000 L, inflow 15 L/s = 900 L/min, pump rate 45 L/s = 2700 L/min, 60 min = 1 h. The pump draws against continuing inflow.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Net drawdown rate = 2700 L/min - 900 L/min = 1800 L/min"
+    },
+    {
+     "id": "line2",
+     "label": "2. Drawdown time = 9000 L / 1800 L/min = 5 min"
+    },
+    {
+     "id": "line3",
+     "label": "3. Fill time = 9000 L / 1800 L/min = 5 min"
+    },
+    {
+     "id": "line4",
+     "label": "4. Cycle time = 5 min + 5 min = 10 min"
+    },
+    {
+     "id": "line5",
+     "label": "5. Cycles per hour = 60 min/h / 10 min = 6"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Fill time = 9000 L / 900 L/min = 10 min",
+   "explanation": "Line 3 filled the well at the net drawdown rate. With the pump off, only the inflow fills the well, so the fill time is 10 min, the cycle is 15 min, and the station runs 4 cycles per hour."
+  },
+  {
+   "id": "c1wc-error55",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this wet well drawdown and pump cycle calculation.",
+   "topicId": "pump-cycles",
+   "level": "class1",
+   "assumptions": "Fictional lift station: working volume 6000 L, inflow 5 L/s = 300 L/min, pump rate 25 L/s = 1500 L/min, 60 min = 1 h. The pump draws against continuing inflow.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Net drawdown rate = 1500 L/min - 300 L/min = 1200 L/min"
+    },
+    {
+     "id": "line2",
+     "label": "2. Drawdown time = 6000 L / 1200 L/min = 5 min"
+    },
+    {
+     "id": "line3",
+     "label": "3. Fill time = 6000 L / 1200 L/min = 5 min"
+    },
+    {
+     "id": "line4",
+     "label": "4. Cycle time = 5 min + 5 min = 10 min"
+    },
+    {
+     "id": "line5",
+     "label": "5. Cycles per hour = 60 min/h / 10 min = 6"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Fill time = 6000 L / 300 L/min = 20 min",
+   "explanation": "Line 3 filled the well at the net drawdown rate. With the pump off, only the inflow fills the well, so the fill time is 20 min, the cycle is 25 min, and the station runs 2.4 cycles per hour."
+  },
+  {
+   "id": "c1wc-error56",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this wet well drawdown and pump cycle calculation.",
+   "topicId": "pump-cycles",
+   "level": "class1",
+   "assumptions": "Fictional lift station: working volume 15000 L, inflow 12.5 L/s = 750 L/min, pump rate 37.5 L/s = 2250 L/min, 60 min = 1 h. The pump draws against continuing inflow.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Net drawdown rate = 2250 L/min - 750 L/min = 1500 L/min"
+    },
+    {
+     "id": "line2",
+     "label": "2. Drawdown time = 15000 L / 1500 L/min = 10 min"
+    },
+    {
+     "id": "line3",
+     "label": "3. Fill time = 15000 L / 750 L/min = 20 min"
+    },
+    {
+     "id": "line4",
+     "label": "4. Cycle time = 20 min + 10 min = 30 min"
+    },
+    {
+     "id": "line5",
+     "label": "5. Cycles per hour = 30 min / 60 min/h = 0.5"
+    }
+   ],
+   "firstWrongLineId": "line5",
+   "correctedLine": "5. Cycles per hour = 60 min/h / 30 min = 2",
+   "explanation": "Line 5 divided the cycle time by 60 instead of dividing 60 by the cycle time. The station runs 2 cycles per hour."
+  },
+  {
+   "id": "c1wc-error57",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this wet well drawdown and pump cycle calculation.",
+   "topicId": "wet-well-drawdown",
+   "level": "class1",
+   "assumptions": "Fictional lift station: working volume 12000 L, inflow 10 L/s = 600 L/min, pump rate 30 L/s = 1800 L/min, 60 min = 1 h. The pump draws against continuing inflow.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Net drawdown rate = 1800 L/min + 600 L/min = 2400 L/min"
+    },
+    {
+     "id": "line2",
+     "label": "2. Drawdown time = 12000 L / 2400 L/min = 5 min"
+    },
+    {
+     "id": "line3",
+     "label": "3. Fill time = 12000 L / 600 L/min = 20 min"
+    },
+    {
+     "id": "line4",
+     "label": "4. Cycle time = 20 min + 5 min = 25 min"
+    },
+    {
+     "id": "line5",
+     "label": "5. Cycles per hour = 60 min/h / 25 min = 2.4"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Net drawdown rate = 1800 L/min - 600 L/min = 1200 L/min",
+   "explanation": "Line 1 added the inflow to the pump rate. Inflow works against the pump, so the net rate is 1200 L/min, the drawdown time is 10 min, and the station runs 2 cycles per hour."
+  },
+  {
+   "id": "c1wc-error58",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this wet well drawdown and pump cycle calculation.",
+   "topicId": "wet-well-drawdown",
+   "level": "class1",
+   "assumptions": "Fictional lift station: working volume 6000 L, inflow 10 L/s = 600 L/min, pump rate 20 L/s = 1200 L/min, 60 min = 1 h. The pump draws against continuing inflow.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Net drawdown rate = 1200 L/min - 600 L/min = 600 L/min"
+    },
+    {
+     "id": "line2",
+     "label": "2. Drawdown time = 6000 L / 1200 L/min = 5 min"
+    },
+    {
+     "id": "line3",
+     "label": "3. Fill time = 6000 L / 600 L/min = 10 min"
+    },
+    {
+     "id": "line4",
+     "label": "4. Cycle time = 10 min + 5 min = 15 min"
+    },
+    {
+     "id": "line5",
+     "label": "5. Cycles per hour = 60 min/h / 15 min = 4"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Drawdown time = 6000 L / 600 L/min = 10 min",
+   "explanation": "Line 2 used the full pump rate and ignored the inflow that keeps entering during drawdown. Using the net rate gives 10 min, a cycle of 20 min, and 3 cycles per hour."
+  },
+  {
+   "id": "c1wc-error59",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this wet well drawdown and pump cycle calculation.",
+   "topicId": "pump-cycles",
+   "level": "class1",
+   "assumptions": "Fictional lift station: working volume 15000 L, inflow 25 L/s = 1500 L/min, pump rate 75 L/s = 4500 L/min, 60 min = 1 h. The pump draws against continuing inflow.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Net drawdown rate = 4500 L/min - 1500 L/min = 3000 L/min"
+    },
+    {
+     "id": "line2",
+     "label": "2. Drawdown time = 15000 L / 3000 L/min = 5 min"
+    },
+    {
+     "id": "line3",
+     "label": "3. Fill time = 15000 L / 3000 L/min = 5 min"
+    },
+    {
+     "id": "line4",
+     "label": "4. Cycle time = 5 min + 5 min = 10 min"
+    },
+    {
+     "id": "line5",
+     "label": "5. Cycles per hour = 60 min/h / 10 min = 6"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Fill time = 15000 L / 1500 L/min = 10 min",
+   "explanation": "Line 3 filled the well at the net drawdown rate. With the pump off, only the inflow fills the well, so the fill time is 10 min, the cycle is 15 min, and the station runs 4 cycles per hour."
+  }
+ ],
+ "missions": [
+  {
+   "id": "c1wc-mission21",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 21: The Infiltration Rates Shift",
+   "tasks": [
+    {
+     "taskId": "c1wc-ladder80",
+     "revision": "r1",
+     "occurrenceId": "m21-t1"
+    },
+    {
+     "taskId": "c1wc-error01",
+     "revision": "r1",
+     "occurrenceId": "m21-t2"
+    }
+   ]
+  },
+  {
+   "id": "c1wc-mission22",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 22: The Flow Conversion Shift",
+   "tasks": [
+    {
+     "taskId": "c1wc-error02",
+     "revision": "r1",
+     "occurrenceId": "m22-t1"
+    },
+    {
+     "taskId": "c1wc-ladder81",
+     "revision": "r1",
+     "occurrenceId": "m22-t2"
+    },
+    {
+     "taskId": "c1wc-ladder82",
+     "revision": "r1",
+     "occurrenceId": "m22-t3"
+    }
+   ]
+  },
+  {
+   "id": "c1wc-mission23",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 23: The Infiltration Rates Shift",
+   "tasks": [
+    {
+     "taskId": "c1wc-ladder83",
+     "revision": "r1",
+     "occurrenceId": "m23-t1"
+    },
+    {
+     "taskId": "c1wc-error03",
+     "revision": "r1",
+     "occurrenceId": "m23-t2"
+    },
+    {
+     "taskId": "c1wc-ladder84",
+     "revision": "r1",
+     "occurrenceId": "m23-t3"
+    },
+    {
+     "taskId": "c1wc-ladder85",
+     "revision": "r1",
+     "occurrenceId": "m23-t4"
+    }
+   ]
+  },
+  {
+   "id": "c1wc-mission24",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 24: The Flow Conversion Shift",
+   "tasks": [
+    {
+     "taskId": "c1wc-error04",
+     "revision": "r1",
+     "occurrenceId": "m24-t1"
+    },
+    {
+     "taskId": "c1wc-ladder86",
+     "revision": "r1",
+     "occurrenceId": "m24-t2"
+    }
+   ]
+  },
+  {
+   "id": "c1wc-mission25",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 25: The Percent Of Capacity Shift",
+   "tasks": [
+    {
+     "taskId": "c1wc-ladder87",
+     "revision": "r1",
+     "occurrenceId": "m25-t1"
+    },
+    {
+     "taskId": "c1wc-error05",
+     "revision": "r1",
+     "occurrenceId": "m25-t2"
+    },
+    {
+     "taskId": "c1wc-ladder88",
+     "revision": "r1",
+     "occurrenceId": "m25-t3"
+    }
+   ]
+  },
+  {
+   "id": "c1wc-mission26",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 26: The Flow Conversion Shift",
+   "tasks": [
+    {
+     "taskId": "c1wc-error06",
+     "revision": "r1",
+     "occurrenceId": "m26-t1"
+    },
+    {
+     "taskId": "c1wc-ladder89",
+     "revision": "r1",
+     "occurrenceId": "m26-t2"
+    },
+    {
+     "taskId": "c1wc-ladder90",
+     "revision": "r1",
+     "occurrenceId": "m26-t3"
+    },
+    {
+     "taskId": "c1wc-ladder91",
+     "revision": "r1",
+     "occurrenceId": "m26-t4"
+    }
+   ]
+  },
+  {
+   "id": "c1wc-mission27",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 27: The Percent Of Capacity Shift",
+   "tasks": [
+    {
+     "taskId": "c1wc-ladder92",
+     "revision": "r1",
+     "occurrenceId": "m27-t1"
+    },
+    {
+     "taskId": "c1wc-error07",
+     "revision": "r1",
+     "occurrenceId": "m27-t2"
+    }
+   ]
+  },
+  {
+   "id": "c1wc-mission28",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 28: The Flow Conversion Shift",
+   "tasks": [
+    {
+     "taskId": "c1wc-error08",
+     "revision": "r1",
+     "occurrenceId": "m28-t1"
+    },
+    {
+     "taskId": "c1wc-ladder93",
+     "revision": "r1",
+     "occurrenceId": "m28-t2"
+    },
+    {
+     "taskId": "c1wc-ladder94",
+     "revision": "r1",
+     "occurrenceId": "m28-t3"
+    }
+   ]
+  },
+  {
+   "id": "c1wc-mission29",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 29: The Inspection Production Rates Shift",
+   "tasks": [
+    {
+     "taskId": "c1wc-ladder95",
+     "revision": "r1",
+     "occurrenceId": "m29-t1"
+    },
+    {
+     "taskId": "c1wc-error09",
+     "revision": "r1",
+     "occurrenceId": "m29-t2"
+    },
+    {
+     "taskId": "c1wc-ladder96",
+     "revision": "r1",
+     "occurrenceId": "m29-t3"
+    },
+    {
+     "taskId": "c1wc-ladder97",
+     "revision": "r1",
+     "occurrenceId": "m29-t4"
+    }
+   ]
+  },
+  {
+   "id": "c1wc-mission30",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 30: The Flow Conversion Shift",
+   "tasks": [
+    {
+     "taskId": "c1wc-error10",
+     "revision": "r1",
+     "occurrenceId": "m30-t1"
+    },
+    {
+     "taskId": "c1wc-ladder98",
+     "revision": "r1",
+     "occurrenceId": "m30-t2"
+    }
+   ]
+  },
+  {
+   "id": "c1wc-mission31",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 31: The Inspection Production Rates Shift",
+   "tasks": [
+    {
+     "taskId": "c1wc-ladder99",
+     "revision": "r1",
+     "occurrenceId": "m31-t1"
+    },
+    {
+     "taskId": "c1wc-error100",
+     "revision": "r1",
+     "occurrenceId": "m31-t2"
+    },
+    {
+     "taskId": "c1wc-ladder80",
+     "revision": "r1",
+     "occurrenceId": "m31-t3"
+    }
+   ]
+  },
+  {
+   "id": "c1wc-mission32",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 32: The Sewer Slope Shift",
+   "tasks": [
+    {
+     "taskId": "c1wc-error11",
+     "revision": "r1",
+     "occurrenceId": "m32-t1"
+    },
+    {
+     "taskId": "c1wc-ladder81",
+     "revision": "r1",
+     "occurrenceId": "m32-t2"
+    },
+    {
+     "taskId": "c1wc-ladder82",
+     "revision": "r1",
+     "occurrenceId": "m32-t3"
+    },
+    {
+     "taskId": "c1wc-ladder83",
+     "revision": "r1",
+     "occurrenceId": "m32-t4"
+    }
+   ]
+  },
+  {
+   "id": "c1wc-mission33",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 33: The Infiltration Rates Shift",
+   "tasks": [
+    {
+     "taskId": "c1wc-ladder84",
+     "revision": "r1",
+     "occurrenceId": "m33-t1"
+    },
+    {
+     "taskId": "c1wc-error12",
+     "revision": "r1",
+     "occurrenceId": "m33-t2"
+    }
+   ]
+  },
+  {
+   "id": "c1wc-mission34",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 34: The Sewer Slope Shift",
+   "tasks": [
+    {
+     "taskId": "c1wc-error13",
+     "revision": "r1",
+     "occurrenceId": "m34-t1"
+    },
+    {
+     "taskId": "c1wc-ladder85",
+     "revision": "r1",
+     "occurrenceId": "m34-t2"
+    },
+    {
+     "taskId": "c1wc-ladder86",
+     "revision": "r1",
+     "occurrenceId": "m34-t3"
+    }
+   ]
+  },
+  {
+   "id": "c1wc-mission35",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 35: The Percent Of Capacity Shift",
+   "tasks": [
+    {
+     "taskId": "c1wc-ladder87",
+     "revision": "r1",
+     "occurrenceId": "m35-t1"
+    },
+    {
+     "taskId": "c1wc-error14",
+     "revision": "r1",
+     "occurrenceId": "m35-t2"
+    },
+    {
+     "taskId": "c1wc-ladder88",
+     "revision": "r1",
+     "occurrenceId": "m35-t3"
+    },
+    {
+     "taskId": "c1wc-ladder89",
+     "revision": "r1",
+     "occurrenceId": "m35-t4"
+    }
+   ]
+  },
+  {
+   "id": "c1wc-mission36",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 36: The Sewer Slope Shift",
+   "tasks": [
+    {
+     "taskId": "c1wc-error15",
+     "revision": "r1",
+     "occurrenceId": "m36-t1"
+    },
+    {
+     "taskId": "c1wc-ladder90",
+     "revision": "r1",
+     "occurrenceId": "m36-t2"
+    }
+   ]
+  },
+  {
+   "id": "c1wc-mission37",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 37: The Percent Of Capacity Shift",
+   "tasks": [
+    {
+     "taskId": "c1wc-ladder91",
+     "revision": "r1",
+     "occurrenceId": "m37-t1"
+    },
+    {
+     "taskId": "c1wc-error16",
+     "revision": "r1",
+     "occurrenceId": "m37-t2"
+    },
+    {
+     "taskId": "c1wc-ladder92",
+     "revision": "r1",
+     "occurrenceId": "m37-t3"
+    }
+   ]
+  },
+  {
+   "id": "c1wc-mission38",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 38: The Sewer Slope Shift",
+   "tasks": [
+    {
+     "taskId": "c1wc-error17",
+     "revision": "r1",
+     "occurrenceId": "m38-t1"
+    },
+    {
+     "taskId": "c1wc-ladder93",
+     "revision": "r1",
+     "occurrenceId": "m38-t2"
+    },
+    {
+     "taskId": "c1wc-ladder94",
+     "revision": "r1",
+     "occurrenceId": "m38-t3"
+    },
+    {
+     "taskId": "c1wc-ladder95",
+     "revision": "r1",
+     "occurrenceId": "m38-t4"
+    }
+   ]
+  },
+  {
+   "id": "c1wc-mission39",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 39: The Cleaning Production Rates Shift",
+   "tasks": [
+    {
+     "taskId": "c1wc-ladder96",
+     "revision": "r1",
+     "occurrenceId": "m39-t1"
+    },
+    {
+     "taskId": "c1wc-error18",
+     "revision": "r1",
+     "occurrenceId": "m39-t2"
+    }
+   ]
+  },
+  {
+   "id": "c1wc-mission40",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 40: The Sewer Slope Shift",
+   "tasks": [
+    {
+     "taskId": "c1wc-error19",
+     "revision": "r1",
+     "occurrenceId": "m40-t1"
+    },
+    {
+     "taskId": "c1wc-ladder97",
+     "revision": "r1",
+     "occurrenceId": "m40-t2"
+    },
+    {
+     "taskId": "c1wc-ladder98",
+     "revision": "r1",
+     "occurrenceId": "m40-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Wastewater collection system operation and maintenance chapters"
+  },
+  {
+   "id": "epa-cmom",
+   "title": "US EPA, CMOM Guide for Collection Systems",
+   "locator": "Collection management, operation, maintenance, investigation and rehabilitation principles"
+  },
+  {
+   "id": "epa-alternative-collection",
+   "title": "US EPA, Alternative Wastewater Collection Systems Manual",
+   "locator": "Collection system design and operation background"
+  },
+  {
+   "id": "owwco-exam-prep",
+   "title": "OWWCO, Exam preparation resources",
+   "locator": "https://owwco.ca/preparing-for-your-exam/"
+  },
+  {
+   "id": "wpi-collection-1",
+   "title": "WPI, Wastewater Collection Class I Need-to-Know Criteria",
+   "locator": "https://gowpi.org/services/2025-need-to-know-criteria/"
+  },
+  {
+   "id": "ont-reg-129-04",
+   "title": "Ontario Regulation 129/04, Licensing of Sewage Works Operators",
+   "locator": "https://www.ontario.ca/laws/regulation/04129"
+  },
+  {
+   "id": "ccohs-safety",
+   "title": "CCOHS, OSH Answers (confined spaces, hydrogen sulfide, lockout)",
+   "locator": "https://www.ccohs.ca/oshanswers/"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "029dca87780c8ffc685a52b1ca66d64c252e53803be6f13bb366a6de5a057345",
+  "taskReceipts": [
+   {
+    "taskId": "c1wc-ladder80",
+    "revision": "r1",
+    "sha256": "3db22e7d24a69339f3f21c0a669e48561b5a2b48fa0198e4d59bd4fbc6a0354d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-ladder81",
+    "revision": "r1",
+    "sha256": "752bc74a2b430f073b1e359a18e0cf83a4291710fc0c260967e431ecf0696244",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-ladder82",
+    "revision": "r1",
+    "sha256": "fd5306f386eecd76b24f6b46c0400405adf13347cfd76d6ff375fed76c10fa7b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-ladder83",
+    "revision": "r1",
+    "sha256": "81e0909845cf3871592a17a99c9dfd59bf9a4b78fa90e6cc2629e6fc94ce50c4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-ladder84",
+    "revision": "r1",
+    "sha256": "5ea7b8b4ac514e164c31f2f88e878ec7a040dfdb02d90510f5e09b64634f0c33",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-ladder85",
+    "revision": "r1",
+    "sha256": "4d66b7c76fc13ef8cefde59a50cfe7054c9cd388fa45b027b5a620bb9114a99b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-ladder86",
+    "revision": "r1",
+    "sha256": "1c585ee59678a931e1776c298c04002f0af71504f54464f6b7230ae4c72308b0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-ladder87",
+    "revision": "r1",
+    "sha256": "87218a6a338ab2409bbed0f26de240ea1c226fa4855af9301087f4e89cfc10c1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-ladder88",
+    "revision": "r1",
+    "sha256": "0d8d807c9d10a73de7a7d8fb654c55981fa7e454b78aa8f72b32aad40c5dd3f7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-ladder89",
+    "revision": "r1",
+    "sha256": "0ef9705fe38514fb6e19a3aad0e3bc36c55926114bb80f931706fb3567796cff",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-ladder90",
+    "revision": "r1",
+    "sha256": "36df91b1fc9f3d565bf273c3f0967ad860aea69b2d956e1b10117b9324456fb7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-ladder91",
+    "revision": "r1",
+    "sha256": "c13ba9763f338f9a53b2a90b6979289401bef8de6e33b604c3c9cfb68d352670",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-ladder92",
+    "revision": "r1",
+    "sha256": "3aef220162c859106b5891123dc8d5ffd76166103419333237123b05a402631c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-ladder93",
+    "revision": "r1",
+    "sha256": "77f77840d6685fa239a2f241a3ab4dbe00862866de6acd672e664bedbeb0d9c9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-ladder94",
+    "revision": "r1",
+    "sha256": "34544336b4f0692452b62fbf7c45b7f9496cbdc672dbf42441f10e09180fda47",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-ladder95",
+    "revision": "r1",
+    "sha256": "c05fcedf983757afa801fc1606860f86c8102d8bee850c701fab7b10b3c55849",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-ladder96",
+    "revision": "r1",
+    "sha256": "075b07d8d55bd2630feec321fffe91fce32864ff7bee3e22b0f4b5ccd2184109",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-ladder97",
+    "revision": "r1",
+    "sha256": "1938b3d7eff83bf8b36f6f6f039e233a08443e32c05787c4bbca6d8e48b51aca",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-ladder98",
+    "revision": "r1",
+    "sha256": "f785aad22d020ab74224e69bf99048f4d7dd4595fedbdcbd502354e0440ad69c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-ladder99",
+    "revision": "r1",
+    "sha256": "7da4a20a50e69576de8ebdea3ac083398bc9b13a90987171468996ab7809b655",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error01",
+    "revision": "r1",
+    "sha256": "9aa5f0a92275f6716606899425a0ea67d5eb2f4644a0dd7f6f7300f0f1e3d0de",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error02",
+    "revision": "r1",
+    "sha256": "65aca9c7712ce06a8cb8d3826708fd0fb404d391cad6f3f875c906387eb883a1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error03",
+    "revision": "r1",
+    "sha256": "0a4aebf024d2eebb6380a81b161c80d7675558c7bd8a9cf7c0f62e5ccc4fdb0c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error04",
+    "revision": "r1",
+    "sha256": "1900f7359b2b8dba2885f5187fccd0d8ce9f105ac73053ad1b5c5b3f36d24aa3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error05",
+    "revision": "r1",
+    "sha256": "984887942448a52a06317cd0670d1c5318ef9891095990ff2166a910c3fbb656",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error06",
+    "revision": "r1",
+    "sha256": "26c0df6094068d918f4d65b46b906f796622b4fc780d552dff2f49abb3fb7d03",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error07",
+    "revision": "r1",
+    "sha256": "b932cf3d7dea23e188478449966fb647f55a345e1bd78568dd52eb010efc7eb6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error08",
+    "revision": "r1",
+    "sha256": "ad15c0c07590bb2075c22096a7bfd1e04a45c0c3eb6ce2ebd0b83a6414923d52",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error09",
+    "revision": "r1",
+    "sha256": "ea98a1f239ec81f29458fa924da8cac9589f6c1dcd4e6a3d56441f768cdebe2d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error10",
+    "revision": "r1",
+    "sha256": "71ab0426c2f5bc7f999e86630087ed4222dd381ff998961cb545dfd1f774f8ac",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error100",
+    "revision": "r1",
+    "sha256": "db62280988eaa297900469c7d8661d11ff5cf76023496b860d109f42202730b2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error11",
+    "revision": "r1",
+    "sha256": "e2da257310f1a0021f871840a0ca4ff8c59e56ee420bc4352fe8b0fa6219cb2c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error12",
+    "revision": "r1",
+    "sha256": "bd127538bdf244be962bac44fa7bdb30663505ef4c9c248961cc8cd77f96eafb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error13",
+    "revision": "r1",
+    "sha256": "c6647b23f5937427cc33aa7ac1f40ab916190b234ef0a23d4aca6c0bb3d6c2fe",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error14",
+    "revision": "r1",
+    "sha256": "aa620126308673e47f30089551fb782e63160bbd7e51aecadfcac5d2574ec707",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error15",
+    "revision": "r1",
+    "sha256": "ffbad6ea07ce047826e23148360369c705a68c1ac9696336f8d2db5685415e55",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error16",
+    "revision": "r1",
+    "sha256": "bf044ce3ecd355868714a04d0a4666abc2b325b9acb2f2702a817e31c81ee668",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error17",
+    "revision": "r1",
+    "sha256": "3573930877cea71f345a93d1f14faf558ef8983621f92057fbc0bb2fa05daecb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error18",
+    "revision": "r1",
+    "sha256": "56e9fdd64868e8e486b303cffeaf98b7d67d4797ff4d101f3ec57ac64327602b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error19",
+    "revision": "r1",
+    "sha256": "ab51f4b5f7913b0d766115265e9e3a57b53a387d60ab60bec79f456f5a8843fb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error20",
+    "revision": "r1",
+    "sha256": "e07efc03bf9ab4d7e9e10e2890bed3f787c722cfd2d10c682bd097d4874c9ba2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error21",
+    "revision": "r1",
+    "sha256": "c9552cbb01ec6f914f2a88c43a9e69c7b8e6879ae5bc45f0678fd7b94b783608",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error22",
+    "revision": "r1",
+    "sha256": "02958d72f365ad6bf3cf633f0f7753b2ef59402965b108a236ee4491e23b1335",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error23",
+    "revision": "r1",
+    "sha256": "2994e0c5e6015a74fad314a674d22fe11eebdd7c818bf674c80cff3c047f84a7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error24",
+    "revision": "r1",
+    "sha256": "2eed6e2662f370eaae3fe7dde6b367cf573d18a601240d24481df46a6ae9657d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error25",
+    "revision": "r1",
+    "sha256": "729efeb737591d45c36f3ba62e55b8a0e61eb2249cce691ea5eb46448f0ab380",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error26",
+    "revision": "r1",
+    "sha256": "358eb2bdcebfc5b6a71a5f882ff20b19e7844626506dd928a5495549ced8019e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error27",
+    "revision": "r1",
+    "sha256": "d7200f3d8fb23e9fe05137678d0bb604c187d48cca258931cb70815af5114387",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error28",
+    "revision": "r1",
+    "sha256": "e790316fa1150ccec093f9a7f73e7489b440554016765bf2869a42a22800b13d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error29",
+    "revision": "r1",
+    "sha256": "40a0db9f9d141f1916511cf1e9a64ce0fba857eaf73e8d338f504639f2fb3262",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error30",
+    "revision": "r1",
+    "sha256": "9c44c18c48fafd26285bcccb781511c6ec0e6ef74667cfc4b378d0b1b3b929f1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error31",
+    "revision": "r1",
+    "sha256": "ba10bcfcc08204fadedb00348fcba12b1ed2853eeca90a0b4c60fe8be1bf62ee",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error32",
+    "revision": "r1",
+    "sha256": "93dad63629d5739b5be19fa61c4396e47b1f3b521da769754323e7e8d3202e7e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error33",
+    "revision": "r1",
+    "sha256": "22f5a90b9c960a1b9f874159a8eec891478b930581c3b5d9db9788afe616acee",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error34",
+    "revision": "r1",
+    "sha256": "bb91d09d79215478b4e5c3b1ecb66762601cf706a28d8122bef3f8768af19cb0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error35",
+    "revision": "r1",
+    "sha256": "571664ca89e5d6406e599066eb69e475ad82bb59bcbee74a063e1f894b85b19d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error36",
+    "revision": "r1",
+    "sha256": "038b0194f32e3d5a698f42c033d40258c71f9ea3addc0aa6e5f7498d2bbc8b10",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error37",
+    "revision": "r1",
+    "sha256": "06c991778c2a11db83fd9e830ae95e11f12ccb677c18cd1df532a7d00599c4c0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error38",
+    "revision": "r1",
+    "sha256": "da71afc12d11217b5ff942af4740826369ad59498e2342642b5bb61427fdba7a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error39",
+    "revision": "r1",
+    "sha256": "b4332deefd9154137054aba93377d425e8f3788d17e6bfa52758d8056960455b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error40",
+    "revision": "r1",
+    "sha256": "1aab6b4ef68be0db5cdf243127f4bd1ac734d26b372d1159997e0009367db8cd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error41",
+    "revision": "r1",
+    "sha256": "eb771ec10cd75fdc48ebbb49fc0d20e85a2beb0736126147a7a0cbe4fae2e84f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error42",
+    "revision": "r1",
+    "sha256": "75c0e84dc05b60117e72a70ee0cf506032aba73394689102b8e566e6bf71101b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error43",
+    "revision": "r1",
+    "sha256": "b5dbf1f9171ec5ef63711eed997353253b71107b89e618f97f0460a1dd1c45c5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error44",
+    "revision": "r1",
+    "sha256": "ac62084e3de2ff1656441edf80743a3d01f08f2c0b7bdd34f0c57475c3986499",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error45",
+    "revision": "r1",
+    "sha256": "1d0858d965e6face09cd69c4770135012defbc99be56547b2408a419b7065259",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error46",
+    "revision": "r1",
+    "sha256": "c45cb35ab84138e5f44b93ae41f5566899e76ab64dddd5317cbdd388b0016fe8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error47",
+    "revision": "r1",
+    "sha256": "2d438e659c5dcc194a208a0825f7e0b68ec86465740e21ab64fe3f2c611e5d45",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error48",
+    "revision": "r1",
+    "sha256": "5bbbd5b334104626c6dc24dc6cdd81816f1f53959a5fea475a98b95e1d23b6ad",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error49",
+    "revision": "r1",
+    "sha256": "abc593670723ff58e92213cefd2b8f56aefc18b7db160d264fbb136288646fff",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error50",
+    "revision": "r1",
+    "sha256": "9e0c23ab309a27daab759749b5c16727fa0973804a5779ea7cd5c48bc8dbaa92",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error51",
+    "revision": "r1",
+    "sha256": "4b352954222730d193305e37936dd68b90e3af7c0a2711955e05db32e13e132c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error52",
+    "revision": "r1",
+    "sha256": "a7cdf120fd1c360d95b3e5822af25a6548e42230f589e10ff58105c11a816ee4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error53",
+    "revision": "r1",
+    "sha256": "de68ff898cc16d26cc0f1732afb0bf4d0667977224a12f6a16f8ceb0a7e123cb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error54",
+    "revision": "r1",
+    "sha256": "bf247cdd05ceed9bc62db319e71b255e90c62a68361eeb8cd59dbf5d7519725c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error55",
+    "revision": "r1",
+    "sha256": "fef2d692edaf9f6d15c09fda9e50b144935a0de7804eed1e82b6875f36025c7a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error56",
+    "revision": "r1",
+    "sha256": "2514f59b3bf939a2f19a016b3d7b309c693237e90fb5ec852f19d7673397f90d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error57",
+    "revision": "r1",
+    "sha256": "5e9a96048500cbd8cd1435073d6554967a625f5c2aae08b56a3cc8bcbf5ffe61",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error58",
+    "revision": "r1",
+    "sha256": "0a180edc2c1093898d0746d2e8d00dde69368db624317e1e3a6b93f7f76e3907",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wc-error59",
+    "revision": "r1",
+    "sha256": "c641a02759711c4321fc958c11867db0a1d301577cce7f2c132a34e15f2eb38d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "c1wc-mission21",
+    "revision": "r1",
+    "sha256": "3470f4501deb26f318b54ee70f4f94930b20bb6218c57b685dd58670bc0dfb5f"
+   },
+   {
+    "missionId": "c1wc-mission22",
+    "revision": "r1",
+    "sha256": "404d3742c36f5eb8a76efd29484eb587217c81da2a57448e6a42663c955637d0"
+   },
+   {
+    "missionId": "c1wc-mission23",
+    "revision": "r1",
+    "sha256": "8c18a64cf465b635b032cf18a1da72414c1b3bcf9ba274db15da092b2248dd84"
+   },
+   {
+    "missionId": "c1wc-mission24",
+    "revision": "r1",
+    "sha256": "0f71e9fe2d6d66fad28c8437b32fb3476ff7eb351f739b0be00c47aa14d51de4"
+   },
+   {
+    "missionId": "c1wc-mission25",
+    "revision": "r1",
+    "sha256": "8c4ee4b1b4fb0d0ba27f424ab154752c3642331919b37fb45b280ab9afe4b114"
+   },
+   {
+    "missionId": "c1wc-mission26",
+    "revision": "r1",
+    "sha256": "f0bb57a26c8b91771ca90eaec2b1f89370bae2975ff9a51a18f49e5572440047"
+   },
+   {
+    "missionId": "c1wc-mission27",
+    "revision": "r1",
+    "sha256": "dcefcb5d8dc9f21ddcab5f1b6a4f888990cc76d4fcd34a17fc365aa932806a7d"
+   },
+   {
+    "missionId": "c1wc-mission28",
+    "revision": "r1",
+    "sha256": "8c2f4ad57a7869399ce4216d3f37e12a0daa8c4bb2a4b6d61c5a7a85129a5665"
+   },
+   {
+    "missionId": "c1wc-mission29",
+    "revision": "r1",
+    "sha256": "f6ff0c6303b6b7aeeb126cd220e10fe6b5d076e69bc8d7389b4f6c0a5010edb1"
+   },
+   {
+    "missionId": "c1wc-mission30",
+    "revision": "r1",
+    "sha256": "5a559271704f3836ec4468d43c299ee5cbe6c2218580d4bf1bd9eadf984292e1"
+   },
+   {
+    "missionId": "c1wc-mission31",
+    "revision": "r1",
+    "sha256": "154f2aecb297652cbceacea91e37ce4136d57d17f66660a71c98c8321e269e5d"
+   },
+   {
+    "missionId": "c1wc-mission32",
+    "revision": "r1",
+    "sha256": "b83635dfb5fe510c7745035a757518a47f45074110a2eee297a35a0d70d243e5"
+   },
+   {
+    "missionId": "c1wc-mission33",
+    "revision": "r1",
+    "sha256": "eb226cd9a098bc18d472d6f572a2e8c17d718317cedb15bad928203e10f785df"
+   },
+   {
+    "missionId": "c1wc-mission34",
+    "revision": "r1",
+    "sha256": "76eafeae1cf392da688d12bfb323c0dcd338732e09568a64ec759bc24d48e87c"
+   },
+   {
+    "missionId": "c1wc-mission35",
+    "revision": "r1",
+    "sha256": "5542c9d482ed2d1e2e8a179f360ef19bb1e4596fe339057cff2a266e0f81f751"
+   },
+   {
+    "missionId": "c1wc-mission36",
+    "revision": "r1",
+    "sha256": "719fc147c9b24c1ff043f6712d374e679b92fb05d8ba5835b12b2b0c09c45a66"
+   },
+   {
+    "missionId": "c1wc-mission37",
+    "revision": "r1",
+    "sha256": "0883aaf322825929a2d5aac478b2a48e9289445b291a4dc9c138734edfcdbb0e"
+   },
+   {
+    "missionId": "c1wc-mission38",
+    "revision": "r1",
+    "sha256": "2d60cb0949883d6e187686ee0d5c2ceb647d502960ab38da91d0d4c24d757f80"
+   },
+   {
+    "missionId": "c1wc-mission39",
+    "revision": "r1",
+    "sha256": "476e680b06527ed3ec807235138d697293b84daf35ab9ce4b7111c32f1d862a3"
+   },
+   {
+    "missionId": "c1wc-mission40",
+    "revision": "r1",
+    "sha256": "9d7fb08f6f6a1438e8364711c597c33878c98ce6ca676a278f3d548ae9d497e6"
+   }
+  ]
+ }
+}

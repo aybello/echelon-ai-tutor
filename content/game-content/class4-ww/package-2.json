@@ -1,0 +1,4846 @@
+{
+ "courseKey": "class4-ww",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "c4ww-ladder80",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A capacity review sets a design flow of 9000 m3/day and a given surface overflow rate of 30 m/day for a secondary clarifier. Find the required clarifier surface area in m2. Enter the exact unrounded number.",
+   "topicId": "capacity-planning",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: design flow = 9000 m3/day, surface overflow rate = 30 m/day.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Required clarifier area (m2) = Design flow (m3/day) * Given surface overflow rate (m/day)"
+      },
+      {
+       "id": "opt-b",
+       "label": "Required clarifier area (m2) = Given surface overflow rate (m/day) / Design flow (m3/day)"
+      },
+      {
+       "id": "opt-c",
+       "label": "Required clarifier area (m2) = Design flow (m3/day) / Given surface overflow rate (m/day)"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Required clarifier area (m2) = Design flow (m3/day) / Given surface overflow rate (m/day)"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "m3/day divided by m/day gives m2, and the per day parts cancel"
+      },
+      {
+       "id": "opt-b",
+       "label": "m3/day times m/day gives m2"
+      },
+      {
+       "id": "opt-c",
+       "label": "m/day divided by m3/day gives m2"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: m3/day divided by m/day gives m2, and the per day parts cancel"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "9000 * 30 m2"
+      },
+      {
+       "id": "opt-b",
+       "label": "9000 / 30 m2"
+      },
+      {
+       "id": "opt-c",
+       "label": "30 / 9000 m2"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: 9000 / 30 m2"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact required clarifier surface area in m2.",
+    "unitOptions": [
+     {
+      "id": "m2",
+      "label": "m2"
+     },
+     {
+      "id": "ha",
+      "label": "ha",
+      "toExpected": {
+       "numerator": "10000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "m",
+      "label": "m"
+     }
+    ],
+    "expected": "300",
+    "expectedUnitId": "m2",
+    "absoluteTolerance": "0",
+    "explanation": "Area = 9000 / 30 = 300 m2."
+   }
+  },
+  {
+   "id": "c4ww-ladder81",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A capacity plan needs a detention time of 6 h at a design flow of 12000 m3/day. Find the required tank volume in m3. Enter the exact unrounded number.",
+   "topicId": "capacity-planning",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: design flow = 12000 m3/day, detention time = 6 h. One day has 24 h.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Required tank volume (m3) = Design flow (m3/day) * Detention time (h) / 24"
+      },
+      {
+       "id": "opt-b",
+       "label": "Required tank volume (m3) = Design flow (m3/day) * Detention time (h) * 24"
+      },
+      {
+       "id": "opt-c",
+       "label": "Required tank volume (m3) = Design flow (m3/day) / Detention time (h) / 24"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Required tank volume (m3) = Design flow (m3/day) * Detention time (h) / 24"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Multiplying the detention time by 24 converts hours to days"
+      },
+      {
+       "id": "opt-b",
+       "label": "Detention time in hours is divided by 24 to give days, so m3/day times days gives m3"
+      },
+      {
+       "id": "opt-c",
+       "label": "Dividing flow by detention time gives the tank volume in m3"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Detention time in hours is divided by 24 to give days, so m3/day times days gives m3"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "12000 * 6 * 24 m3"
+      },
+      {
+       "id": "opt-b",
+       "label": "12000 / 6 / 24 m3"
+      },
+      {
+       "id": "opt-c",
+       "label": "12000 * 6 / 24 m3"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: 12000 * 6 / 24 m3"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact required tank volume in m3.",
+    "unitOptions": [
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "L",
+      "label": "L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "ML",
+      "label": "ML",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "m3-day",
+      "label": "m3/day"
+     }
+    ],
+    "expected": "3000",
+    "expectedUnitId": "m3",
+    "absoluteTolerance": "0",
+    "explanation": "Volume = 12000 * 6 / 24 = 12000 * 0.25 = 3000 m3."
+   }
+  },
+  {
+   "id": "c4ww-ladder82",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A capacity plan needs a detention time of 4.8 h at a design flow of 10000 m3/day. Find the required tank volume in m3. Enter the exact unrounded number.",
+   "topicId": "capacity-planning",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: design flow = 10000 m3/day, detention time = 4.8 h. One day has 24 h.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Required tank volume (m3) = Design flow (m3/day) * Detention time (h) * 24"
+      },
+      {
+       "id": "opt-b",
+       "label": "Required tank volume (m3) = Design flow (m3/day) * Detention time (h) / 24"
+      },
+      {
+       "id": "opt-c",
+       "label": "Required tank volume (m3) = Design flow (m3/day) / Detention time (h) / 24"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Required tank volume (m3) = Design flow (m3/day) * Detention time (h) / 24"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Multiplying the detention time by 24 converts hours to days"
+      },
+      {
+       "id": "opt-b",
+       "label": "Dividing flow by detention time gives the tank volume in m3"
+      },
+      {
+       "id": "opt-c",
+       "label": "Detention time in hours is divided by 24 to give days, so m3/day times days gives m3"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Detention time in hours is divided by 24 to give days, so m3/day times days gives m3"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "10000 * 4.8 / 24 m3"
+      },
+      {
+       "id": "opt-b",
+       "label": "10000 * 4.8 * 24 m3"
+      },
+      {
+       "id": "opt-c",
+       "label": "10000 / 4.8 / 24 m3"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: 10000 * 4.8 / 24 m3"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact required tank volume in m3.",
+    "unitOptions": [
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "L",
+      "label": "L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "ML",
+      "label": "ML",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "m3-day",
+      "label": "m3/day"
+     }
+    ],
+    "expected": "2000",
+    "expectedUnitId": "m3",
+    "absoluteTolerance": "0",
+    "explanation": "Volume = 10000 * 4.8 / 24 = 10000 * 0.2 = 2000 m3."
+   }
+  },
+  {
+   "id": "c4ww-ladder83",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A capacity plan needs a detention time of 6 h at a design flow of 16000 m3/day. Find the required tank volume in m3. Enter the exact unrounded number.",
+   "topicId": "capacity-planning",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: design flow = 16000 m3/day, detention time = 6 h. One day has 24 h.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Required tank volume (m3) = Design flow (m3/day) * Detention time (h) * 24"
+      },
+      {
+       "id": "opt-b",
+       "label": "Required tank volume (m3) = Design flow (m3/day) / Detention time (h) / 24"
+      },
+      {
+       "id": "opt-c",
+       "label": "Required tank volume (m3) = Design flow (m3/day) * Detention time (h) / 24"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Required tank volume (m3) = Design flow (m3/day) * Detention time (h) / 24"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Detention time in hours is divided by 24 to give days, so m3/day times days gives m3"
+      },
+      {
+       "id": "opt-b",
+       "label": "Multiplying the detention time by 24 converts hours to days"
+      },
+      {
+       "id": "opt-c",
+       "label": "Dividing flow by detention time gives the tank volume in m3"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Detention time in hours is divided by 24 to give days, so m3/day times days gives m3"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "16000 * 6 * 24 m3"
+      },
+      {
+       "id": "opt-b",
+       "label": "16000 * 6 / 24 m3"
+      },
+      {
+       "id": "opt-c",
+       "label": "16000 / 6 / 24 m3"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: 16000 * 6 / 24 m3"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact required tank volume in m3.",
+    "unitOptions": [
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "L",
+      "label": "L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "ML",
+      "label": "ML",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "m3-day",
+      "label": "m3/day"
+     }
+    ],
+    "expected": "4000",
+    "expectedUnitId": "m3",
+    "absoluteTolerance": "0",
+    "explanation": "Volume = 16000 * 6 / 24 = 16000 * 0.25 = 4000 m3."
+   }
+  },
+  {
+   "id": "c4ww-ladder84",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A capacity plan needs a detention time of 9 h at a design flow of 8000 m3/day. Find the required tank volume in m3. Enter the exact unrounded number.",
+   "topicId": "capacity-planning",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: design flow = 8000 m3/day, detention time = 9 h. One day has 24 h.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Required tank volume (m3) = Design flow (m3/day) * Detention time (h) / 24"
+      },
+      {
+       "id": "opt-b",
+       "label": "Required tank volume (m3) = Design flow (m3/day) * Detention time (h) * 24"
+      },
+      {
+       "id": "opt-c",
+       "label": "Required tank volume (m3) = Design flow (m3/day) / Detention time (h) / 24"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Required tank volume (m3) = Design flow (m3/day) * Detention time (h) / 24"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Multiplying the detention time by 24 converts hours to days"
+      },
+      {
+       "id": "opt-b",
+       "label": "Detention time in hours is divided by 24 to give days, so m3/day times days gives m3"
+      },
+      {
+       "id": "opt-c",
+       "label": "Dividing flow by detention time gives the tank volume in m3"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Detention time in hours is divided by 24 to give days, so m3/day times days gives m3"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "8000 * 9 * 24 m3"
+      },
+      {
+       "id": "opt-b",
+       "label": "8000 / 9 / 24 m3"
+      },
+      {
+       "id": "opt-c",
+       "label": "8000 * 9 / 24 m3"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: 8000 * 9 / 24 m3"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact required tank volume in m3.",
+    "unitOptions": [
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "L",
+      "label": "L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "ML",
+      "label": "ML",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "m3-day",
+      "label": "m3/day"
+     }
+    ],
+    "expected": "3000",
+    "expectedUnitId": "m3",
+    "absoluteTolerance": "0",
+    "explanation": "Volume = 8000 * 9 / 24 = 8000 * 0.375 = 3000 m3."
+   }
+  },
+  {
+   "id": "c4ww-ladder85",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A compliance sampling program under the plant approval collects 3 effluent samples per week for 52 weeks. Find the total number of samples in the program year. Enter the exact unrounded number.",
+   "topicId": "compliance-sampling-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: sampling rate = 3 samples per week, period = 52 weeks. The program supports Ontario Regulation 129/04 licensed operation records.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Total samples = Samples per week / Weeks in the program period"
+      },
+      {
+       "id": "opt-b",
+       "label": "Total samples = Samples per week * Weeks in the program period"
+      },
+      {
+       "id": "opt-c",
+       "label": "Total samples = Samples per week + Weeks in the program period"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Total samples = Samples per week * Weeks in the program period"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Dividing samples per week by weeks gives the total count"
+      },
+      {
+       "id": "opt-b",
+       "label": "Adding the weekly rate to the weeks gives the total count"
+      },
+      {
+       "id": "opt-c",
+       "label": "Samples per week times weeks gives a plain count of samples"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Samples per week times weeks gives a plain count of samples"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "3 * 52 samples"
+      },
+      {
+       "id": "opt-b",
+       "label": "3 / 52 samples"
+      },
+      {
+       "id": "opt-c",
+       "label": "3 + 52 samples"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: 3 * 52 samples"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact total sample count for the program in samples.",
+    "unitOptions": [
+     {
+      "id": "samples",
+      "label": "samples"
+     },
+     {
+      "id": "dozen-samples",
+      "label": "dozen samples",
+      "toExpected": {
+       "numerator": "12",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "samples-day",
+      "label": "samples/day"
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     }
+    ],
+    "expected": "156",
+    "expectedUnitId": "samples",
+    "absoluteTolerance": "0",
+    "explanation": "Total = 3 * 52 = 156 samples."
+   }
+  },
+  {
+   "id": "c4ww-ladder86",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A compliance sampling program collects 2 quality assurance duplicate samples per week for 52 weeks. Find the total number of duplicate samples in the program year. Enter the exact unrounded number.",
+   "topicId": "compliance-sampling-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: duplicate rate = 2 samples per week, period = 52 weeks.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Total samples = Samples per week / Weeks in the program period"
+      },
+      {
+       "id": "opt-b",
+       "label": "Total samples = Samples per week + Weeks in the program period"
+      },
+      {
+       "id": "opt-c",
+       "label": "Total samples = Samples per week * Weeks in the program period"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Total samples = Samples per week * Weeks in the program period"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Samples per week times weeks gives a plain count of samples"
+      },
+      {
+       "id": "opt-b",
+       "label": "Dividing samples per week by weeks gives the total count"
+      },
+      {
+       "id": "opt-c",
+       "label": "Adding the weekly rate to the weeks gives the total count"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Samples per week times weeks gives a plain count of samples"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "2 / 52 samples"
+      },
+      {
+       "id": "opt-b",
+       "label": "2 * 52 samples"
+      },
+      {
+       "id": "opt-c",
+       "label": "2 + 52 samples"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: 2 * 52 samples"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact total sample count for the program in samples.",
+    "unitOptions": [
+     {
+      "id": "samples",
+      "label": "samples"
+     },
+     {
+      "id": "dozen-samples",
+      "label": "dozen samples",
+      "toExpected": {
+       "numerator": "12",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "samples-day",
+      "label": "samples/day"
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     }
+    ],
+    "expected": "104",
+    "expectedUnitId": "samples",
+    "absoluteTolerance": "0",
+    "explanation": "Total = 2 * 52 = 104 samples."
+   }
+  },
+  {
+   "id": "c4ww-ladder87",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A compliance sampling program collects 7 effluent composite samples per week for 52 weeks. Find the total number of composite samples in the program year. Enter the exact unrounded number.",
+   "topicId": "compliance-sampling-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: composite rate = 7 samples per week, period = 52 weeks.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Total samples = Samples per week * Weeks in the program period"
+      },
+      {
+       "id": "opt-b",
+       "label": "Total samples = Samples per week / Weeks in the program period"
+      },
+      {
+       "id": "opt-c",
+       "label": "Total samples = Samples per week + Weeks in the program period"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Total samples = Samples per week * Weeks in the program period"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Dividing samples per week by weeks gives the total count"
+      },
+      {
+       "id": "opt-b",
+       "label": "Samples per week times weeks gives a plain count of samples"
+      },
+      {
+       "id": "opt-c",
+       "label": "Adding the weekly rate to the weeks gives the total count"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Samples per week times weeks gives a plain count of samples"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "7 / 52 samples"
+      },
+      {
+       "id": "opt-b",
+       "label": "7 + 52 samples"
+      },
+      {
+       "id": "opt-c",
+       "label": "7 * 52 samples"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: 7 * 52 samples"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact total sample count for the program in samples.",
+    "unitOptions": [
+     {
+      "id": "samples",
+      "label": "samples"
+     },
+     {
+      "id": "dozen-samples",
+      "label": "dozen samples",
+      "toExpected": {
+       "numerator": "12",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "samples-day",
+      "label": "samples/day"
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     }
+    ],
+    "expected": "364",
+    "expectedUnitId": "samples",
+    "absoluteTolerance": "0",
+    "explanation": "Total = 7 * 52 = 364 samples."
+   }
+  },
+  {
+   "id": "c4ww-ladder88",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A compliance sampling program collects 5 influent samples per week for 52 weeks. Find the total number of influent samples in the program year. Enter the exact unrounded number.",
+   "topicId": "compliance-sampling-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: sampling rate = 5 samples per week, period = 52 weeks.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Total samples = Samples per week / Weeks in the program period"
+      },
+      {
+       "id": "opt-b",
+       "label": "Total samples = Samples per week * Weeks in the program period"
+      },
+      {
+       "id": "opt-c",
+       "label": "Total samples = Samples per week + Weeks in the program period"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Total samples = Samples per week * Weeks in the program period"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Dividing samples per week by weeks gives the total count"
+      },
+      {
+       "id": "opt-b",
+       "label": "Adding the weekly rate to the weeks gives the total count"
+      },
+      {
+       "id": "opt-c",
+       "label": "Samples per week times weeks gives a plain count of samples"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Samples per week times weeks gives a plain count of samples"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "5 * 52 samples"
+      },
+      {
+       "id": "opt-b",
+       "label": "5 / 52 samples"
+      },
+      {
+       "id": "opt-c",
+       "label": "5 + 52 samples"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: 5 * 52 samples"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact total sample count for the program in samples.",
+    "unitOptions": [
+     {
+      "id": "samples",
+      "label": "samples"
+     },
+     {
+      "id": "dozen-samples",
+      "label": "dozen samples",
+      "toExpected": {
+       "numerator": "12",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "samples-day",
+      "label": "samples/day"
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     }
+    ],
+    "expected": "260",
+    "expectedUnitId": "samples",
+    "absoluteTolerance": "0",
+    "explanation": "Total = 5 * 52 = 260 samples."
+   }
+  },
+  {
+   "id": "c4ww-ladder89",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A plant operates at 10000 m3/day with a return activated sludge rate of 60 percent of plant flow. Find the return activated sludge flow in m3/day. Enter the exact unrounded number.",
+   "topicId": "whole-plant-solids-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: plant flow = 10000 m3/day, return rate = 60 percent.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Return activated sludge flow (m3/day) = Plant flow (m3/day) / Return percent * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Return activated sludge flow (m3/day) = Plant flow (m3/day) * Return percent"
+      },
+      {
+       "id": "opt-c",
+       "label": "Return activated sludge flow (m3/day) = Plant flow (m3/day) * Return percent / 100"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Return activated sludge flow (m3/day) = Plant flow (m3/day) * Return percent / 100"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "A percent is used as percent divided by 100, so m3/day times a pure fraction gives m3/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "m3/day times the percent number itself, with no division by 100, gives m3/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "Dividing m3/day by the percent gives the return flow"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: A percent is used as percent divided by 100, so m3/day times a pure fraction gives m3/day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "10000 * 60 m3/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "10000 * 60 / 100 m3/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "10000 / 60 * 100 m3/day"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: 10000 * 60 / 100 m3/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact return activated sludge flow in m3/day.",
+    "unitOptions": [
+     {
+      "id": "m3-day",
+      "label": "m3/day"
+     },
+     {
+      "id": "ML-day",
+      "label": "ML/day",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "L-day",
+      "label": "L/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     }
+    ],
+    "expected": "6000",
+    "expectedUnitId": "m3-day",
+    "absoluteTolerance": "0",
+    "explanation": "RAS flow = 10000 * 60 / 100 = 6000 m3/day."
+   }
+  },
+  {
+   "id": "c4ww-ladder90",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A plant operates at 12000 m3/day with a return activated sludge rate of 75 percent of plant flow. Find the return activated sludge flow in m3/day. Enter the exact unrounded number.",
+   "topicId": "whole-plant-solids-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: plant flow = 12000 m3/day, return rate = 75 percent.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Return activated sludge flow (m3/day) = Plant flow (m3/day) * Return percent / 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Return activated sludge flow (m3/day) = Plant flow (m3/day) / Return percent * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Return activated sludge flow (m3/day) = Plant flow (m3/day) * Return percent"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Return activated sludge flow (m3/day) = Plant flow (m3/day) * Return percent / 100"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "m3/day times the percent number itself, with no division by 100, gives m3/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "A percent is used as percent divided by 100, so m3/day times a pure fraction gives m3/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "Dividing m3/day by the percent gives the return flow"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: A percent is used as percent divided by 100, so m3/day times a pure fraction gives m3/day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "12000 * 75 m3/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "12000 / 75 * 100 m3/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "12000 * 75 / 100 m3/day"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: 12000 * 75 / 100 m3/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact return activated sludge flow in m3/day.",
+    "unitOptions": [
+     {
+      "id": "m3-day",
+      "label": "m3/day"
+     },
+     {
+      "id": "ML-day",
+      "label": "ML/day",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "L-day",
+      "label": "L/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     }
+    ],
+    "expected": "9000",
+    "expectedUnitId": "m3-day",
+    "absoluteTolerance": "0",
+    "explanation": "RAS flow = 12000 * 75 / 100 = 9000 m3/day."
+   }
+  },
+  {
+   "id": "c4ww-ladder91",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A plant operates at 8000 m3/day with a return activated sludge rate of 50 percent of plant flow. Find the return activated sludge flow in m3/day. Enter the exact unrounded number.",
+   "topicId": "whole-plant-solids-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: plant flow = 8000 m3/day, return rate = 50 percent.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Return activated sludge flow (m3/day) = Plant flow (m3/day) / Return percent * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Return activated sludge flow (m3/day) = Plant flow (m3/day) * Return percent / 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Return activated sludge flow (m3/day) = Plant flow (m3/day) * Return percent"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Return activated sludge flow (m3/day) = Plant flow (m3/day) * Return percent / 100"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "m3/day times the percent number itself, with no division by 100, gives m3/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "Dividing m3/day by the percent gives the return flow"
+      },
+      {
+       "id": "opt-c",
+       "label": "A percent is used as percent divided by 100, so m3/day times a pure fraction gives m3/day"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: A percent is used as percent divided by 100, so m3/day times a pure fraction gives m3/day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "8000 * 50 / 100 m3/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "8000 * 50 m3/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "8000 / 50 * 100 m3/day"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: 8000 * 50 / 100 m3/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact return activated sludge flow in m3/day.",
+    "unitOptions": [
+     {
+      "id": "m3-day",
+      "label": "m3/day"
+     },
+     {
+      "id": "ML-day",
+      "label": "ML/day",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "L-day",
+      "label": "L/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     }
+    ],
+    "expected": "4000",
+    "expectedUnitId": "m3-day",
+    "absoluteTolerance": "0",
+    "explanation": "RAS flow = 8000 * 50 / 100 = 4000 m3/day."
+   }
+  },
+  {
+   "id": "c4ww-ladder92",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A plant operates at 20000 m3/day with a return activated sludge rate of 80 percent of plant flow. Find the return activated sludge flow in m3/day. Enter the exact unrounded number.",
+   "topicId": "whole-plant-solids-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: plant flow = 20000 m3/day, return rate = 80 percent.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Return activated sludge flow (m3/day) = Plant flow (m3/day) / Return percent * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Return activated sludge flow (m3/day) = Plant flow (m3/day) * Return percent"
+      },
+      {
+       "id": "opt-c",
+       "label": "Return activated sludge flow (m3/day) = Plant flow (m3/day) * Return percent / 100"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Return activated sludge flow (m3/day) = Plant flow (m3/day) * Return percent / 100"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "A percent is used as percent divided by 100, so m3/day times a pure fraction gives m3/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "m3/day times the percent number itself, with no division by 100, gives m3/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "Dividing m3/day by the percent gives the return flow"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: A percent is used as percent divided by 100, so m3/day times a pure fraction gives m3/day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "20000 * 80 m3/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "20000 * 80 / 100 m3/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "20000 / 80 * 100 m3/day"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: 20000 * 80 / 100 m3/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact return activated sludge flow in m3/day.",
+    "unitOptions": [
+     {
+      "id": "m3-day",
+      "label": "m3/day"
+     },
+     {
+      "id": "ML-day",
+      "label": "ML/day",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "L-day",
+      "label": "L/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     }
+    ],
+    "expected": "16000",
+    "expectedUnitId": "m3-day",
+    "absoluteTolerance": "0",
+    "explanation": "RAS flow = 20000 * 80 / 100 = 16000 m3/day."
+   }
+  },
+  {
+   "id": "c4ww-ladder93",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A plant scale wasting program removes 720 kg/day of solids in waste sludge at 6000 mg/L. Find the waste activated sludge flow in m3/day. Enter the exact unrounded number.",
+   "topicId": "whole-plant-solids-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: solids wasted = 720 kg/day, waste concentration = 6000 mg/L. Flow in m3/day equals kg/day divided by mg/L times 1000.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Waste sludge flow (m3/day) = Solids wasted (kg/day) / Waste concentration (mg/L) * 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Waste sludge flow (m3/day) = Waste concentration (mg/L) / Solids wasted (kg/day) * 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Waste sludge flow (m3/day) = Solids wasted (kg/day) * Waste concentration (mg/L) / 1000"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Waste sludge flow (m3/day) = Solids wasted (kg/day) / Waste concentration (mg/L) * 1000"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Multiplying the mass by the concentration gives the waste flow in m3/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "kg/day divided by mg/L, with mg/L equal to g/m3, needs the times 1000 factor to give m3/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "No factor of 1000 is needed when dividing kg/day by mg/L"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: kg/day divided by mg/L, with mg/L equal to g/m3, needs the times 1000 factor to give m3/day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "6000 / 720 * 1000 m3/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "720 * 6000 / 1000 m3/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "720 / 6000 * 1000 m3/day"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: 720 / 6000 * 1000 m3/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact waste activated sludge flow in m3/day.",
+    "unitOptions": [
+     {
+      "id": "m3-day",
+      "label": "m3/day"
+     },
+     {
+      "id": "ML-day",
+      "label": "ML/day",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "L-day",
+      "label": "L/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     }
+    ],
+    "expected": "120",
+    "expectedUnitId": "m3-day",
+    "absoluteTolerance": "0",
+    "explanation": "WAS flow = 720 / 6000 * 1000 = 0.12 * 1000 = 120 m3/day."
+   }
+  },
+  {
+   "id": "c4ww-ladder94",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A plant scale wasting program removes 450 kg/day of solids in waste sludge at 9000 mg/L. Find the waste activated sludge flow in m3/day. Enter the exact unrounded number.",
+   "topicId": "whole-plant-solids-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: solids wasted = 450 kg/day, waste concentration = 9000 mg/L. Flow in m3/day equals kg/day divided by mg/L times 1000.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Waste sludge flow (m3/day) = Waste concentration (mg/L) / Solids wasted (kg/day) * 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Waste sludge flow (m3/day) = Solids wasted (kg/day) / Waste concentration (mg/L) * 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Waste sludge flow (m3/day) = Solids wasted (kg/day) * Waste concentration (mg/L) / 1000"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Waste sludge flow (m3/day) = Solids wasted (kg/day) / Waste concentration (mg/L) * 1000"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Multiplying the mass by the concentration gives the waste flow in m3/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "No factor of 1000 is needed when dividing kg/day by mg/L"
+      },
+      {
+       "id": "opt-c",
+       "label": "kg/day divided by mg/L, with mg/L equal to g/m3, needs the times 1000 factor to give m3/day"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: kg/day divided by mg/L, with mg/L equal to g/m3, needs the times 1000 factor to give m3/day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "450 / 9000 * 1000 m3/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "9000 / 450 * 1000 m3/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "450 * 9000 / 1000 m3/day"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: 450 / 9000 * 1000 m3/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact waste activated sludge flow in m3/day.",
+    "unitOptions": [
+     {
+      "id": "m3-day",
+      "label": "m3/day"
+     },
+     {
+      "id": "ML-day",
+      "label": "ML/day",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "L-day",
+      "label": "L/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     }
+    ],
+    "expected": "50",
+    "expectedUnitId": "m3-day",
+    "absoluteTolerance": "0",
+    "explanation": "WAS flow = 450 / 9000 * 1000 = 0.05 * 1000 = 50 m3/day."
+   }
+  },
+  {
+   "id": "c4ww-ladder95",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A plant scale wasting program removes 600 kg/day of solids in waste sludge at 8000 mg/L. Find the waste activated sludge flow in m3/day. Enter the exact unrounded number.",
+   "topicId": "whole-plant-solids-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: solids wasted = 600 kg/day, waste concentration = 8000 mg/L. Flow in m3/day equals kg/day divided by mg/L times 1000.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Waste sludge flow (m3/day) = Waste concentration (mg/L) / Solids wasted (kg/day) * 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Waste sludge flow (m3/day) = Solids wasted (kg/day) * Waste concentration (mg/L) / 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Waste sludge flow (m3/day) = Solids wasted (kg/day) / Waste concentration (mg/L) * 1000"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Waste sludge flow (m3/day) = Solids wasted (kg/day) / Waste concentration (mg/L) * 1000"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "kg/day divided by mg/L, with mg/L equal to g/m3, needs the times 1000 factor to give m3/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "Multiplying the mass by the concentration gives the waste flow in m3/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "No factor of 1000 is needed when dividing kg/day by mg/L"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: kg/day divided by mg/L, with mg/L equal to g/m3, needs the times 1000 factor to give m3/day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "8000 / 600 * 1000 m3/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "600 / 8000 * 1000 m3/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "600 * 8000 / 1000 m3/day"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: 600 / 8000 * 1000 m3/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact waste activated sludge flow in m3/day.",
+    "unitOptions": [
+     {
+      "id": "m3-day",
+      "label": "m3/day"
+     },
+     {
+      "id": "ML-day",
+      "label": "ML/day",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "L-day",
+      "label": "L/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     }
+    ],
+    "expected": "75",
+    "expectedUnitId": "m3-day",
+    "absoluteTolerance": "0",
+    "explanation": "WAS flow = 600 / 8000 * 1000 = 0.075 * 1000 = 75 m3/day."
+   }
+  },
+  {
+   "id": "c4ww-ladder96",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A plant scale wasting program removes 1000 kg/day of solids in waste sludge at 10000 mg/L. Find the waste activated sludge flow in m3/day. Enter the exact unrounded number.",
+   "topicId": "whole-plant-solids-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: solids wasted = 1000 kg/day, waste concentration = 10000 mg/L. Flow in m3/day equals kg/day divided by mg/L times 1000.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Waste sludge flow (m3/day) = Solids wasted (kg/day) / Waste concentration (mg/L) * 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Waste sludge flow (m3/day) = Waste concentration (mg/L) / Solids wasted (kg/day) * 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Waste sludge flow (m3/day) = Solids wasted (kg/day) * Waste concentration (mg/L) / 1000"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Waste sludge flow (m3/day) = Solids wasted (kg/day) / Waste concentration (mg/L) * 1000"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Multiplying the mass by the concentration gives the waste flow in m3/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "kg/day divided by mg/L, with mg/L equal to g/m3, needs the times 1000 factor to give m3/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "No factor of 1000 is needed when dividing kg/day by mg/L"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: kg/day divided by mg/L, with mg/L equal to g/m3, needs the times 1000 factor to give m3/day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "10000 / 1000 * 1000 m3/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "1000 * 10000 / 1000 m3/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "1000 / 10000 * 1000 m3/day"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: 1000 / 10000 * 1000 m3/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact waste activated sludge flow in m3/day.",
+    "unitOptions": [
+     {
+      "id": "m3-day",
+      "label": "m3/day"
+     },
+     {
+      "id": "ML-day",
+      "label": "ML/day",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "L-day",
+      "label": "L/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     }
+    ],
+    "expected": "100",
+    "expectedUnitId": "m3-day",
+    "absoluteTolerance": "0",
+    "explanation": "WAS flow = 1000 / 10000 * 1000 = 0.1 * 1000 = 100 m3/day."
+   }
+  },
+  {
+   "id": "c4ww-ladder97",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "An equalization plan stores a surplus inflow of 250 m3/h for 6 h during a wet weather event. Find the equalization storage volume in m3. Enter the exact unrounded number.",
+   "topicId": "capacity-planning",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: surplus inflow = 250 m3/h, storage duration = 6 h.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Equalization storage (m3) = Surplus inflow rate (m3/h) / Storage duration (h)"
+      },
+      {
+       "id": "opt-b",
+       "label": "Equalization storage (m3) = Surplus inflow rate (m3/h) * Storage duration (h)"
+      },
+      {
+       "id": "opt-c",
+       "label": "Equalization storage (m3) = Surplus inflow rate (m3/h) + Storage duration (h)"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Equalization storage (m3) = Surplus inflow rate (m3/h) * Storage duration (h)"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Dividing m3/h by h gives m3"
+      },
+      {
+       "id": "opt-b",
+       "label": "Adding the duration to the rate gives m3"
+      },
+      {
+       "id": "opt-c",
+       "label": "m3/h times h gives m3, and the hour units cancel"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: m3/h times h gives m3, and the hour units cancel"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "250 * 6 m3"
+      },
+      {
+       "id": "opt-b",
+       "label": "250 / 6 m3"
+      },
+      {
+       "id": "opt-c",
+       "label": "250 + 6 m3"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: 250 * 6 m3"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact equalization storage volume in m3.",
+    "unitOptions": [
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "L",
+      "label": "L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "ML",
+      "label": "ML",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "m3-day",
+      "label": "m3/day"
+     }
+    ],
+    "expected": "1500",
+    "expectedUnitId": "m3",
+    "absoluteTolerance": "0",
+    "explanation": "Storage = 250 * 6 = 1500 m3."
+   }
+  },
+  {
+   "id": "c4ww-ladder98",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "An equalization plan stores a surplus inflow of 300 m3/h for 8 h during a wet weather event. Find the equalization storage volume in m3. Enter the exact unrounded number.",
+   "topicId": "capacity-planning",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: surplus inflow = 300 m3/h, storage duration = 8 h.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Equalization storage (m3) = Surplus inflow rate (m3/h) / Storage duration (h)"
+      },
+      {
+       "id": "opt-b",
+       "label": "Equalization storage (m3) = Surplus inflow rate (m3/h) + Storage duration (h)"
+      },
+      {
+       "id": "opt-c",
+       "label": "Equalization storage (m3) = Surplus inflow rate (m3/h) * Storage duration (h)"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Equalization storage (m3) = Surplus inflow rate (m3/h) * Storage duration (h)"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "m3/h times h gives m3, and the hour units cancel"
+      },
+      {
+       "id": "opt-b",
+       "label": "Dividing m3/h by h gives m3"
+      },
+      {
+       "id": "opt-c",
+       "label": "Adding the duration to the rate gives m3"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: m3/h times h gives m3, and the hour units cancel"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "300 / 8 m3"
+      },
+      {
+       "id": "opt-b",
+       "label": "300 * 8 m3"
+      },
+      {
+       "id": "opt-c",
+       "label": "300 + 8 m3"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: 300 * 8 m3"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact equalization storage volume in m3.",
+    "unitOptions": [
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "L",
+      "label": "L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "ML",
+      "label": "ML",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "m3-day",
+      "label": "m3/day"
+     }
+    ],
+    "expected": "2400",
+    "expectedUnitId": "m3",
+    "absoluteTolerance": "0",
+    "explanation": "Storage = 300 * 8 = 2400 m3."
+   }
+  },
+  {
+   "id": "c4ww-ladder99",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "An equalization plan stores a surplus inflow of 200 m3/h for 10 h during a wet weather event. Find the equalization storage volume in m3. Enter the exact unrounded number.",
+   "topicId": "capacity-planning",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: surplus inflow = 200 m3/h, storage duration = 10 h.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Equalization storage (m3) = Surplus inflow rate (m3/h) * Storage duration (h)"
+      },
+      {
+       "id": "opt-b",
+       "label": "Equalization storage (m3) = Surplus inflow rate (m3/h) / Storage duration (h)"
+      },
+      {
+       "id": "opt-c",
+       "label": "Equalization storage (m3) = Surplus inflow rate (m3/h) + Storage duration (h)"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Equalization storage (m3) = Surplus inflow rate (m3/h) * Storage duration (h)"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Dividing m3/h by h gives m3"
+      },
+      {
+       "id": "opt-b",
+       "label": "m3/h times h gives m3, and the hour units cancel"
+      },
+      {
+       "id": "opt-c",
+       "label": "Adding the duration to the rate gives m3"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: m3/h times h gives m3, and the hour units cancel"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "200 / 10 m3"
+      },
+      {
+       "id": "opt-b",
+       "label": "200 + 10 m3"
+      },
+      {
+       "id": "opt-c",
+       "label": "200 * 10 m3"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: 200 * 10 m3"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact equalization storage volume in m3.",
+    "unitOptions": [
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "L",
+      "label": "L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "ML",
+      "label": "ML",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "m3-day",
+      "label": "m3/day"
+     }
+    ],
+    "expected": "2000",
+    "expectedUnitId": "m3",
+    "absoluteTolerance": "0",
+    "explanation": "Storage = 200 * 10 = 2000 m3."
+   }
+  },
+  {
+   "id": "c4ww-error01",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant solids production calculation for primary solids = 1200 kg/d and secondary solids = 800 kg/d.",
+   "topicId": "whole-plant-solids-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant under Ontario Regulation 129/04: primary solids production = 1200 kg/d, secondary (biological) solids production = 800 kg/d. Total solids production is the sum of both streams. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total solids production = primary solids + secondary solids"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total solids production = 800 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Monthly production = 800 kg/d * 30 d = 24000 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Total solids production = 1200 kg/d + 800 kg/d = 2000 kg/d",
+   "explanation": "Line 2 omitted the primary solids stream of 1200 kg/d. Correct total is 2000 kg/d, so monthly production is 2000 * 30 = 60000 kg."
+  },
+  {
+   "id": "c4ww-error02",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant solids production calculation for primary solids = 1500 kg/d and secondary solids = 900 kg/d.",
+   "topicId": "whole-plant-solids-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant under Ontario Regulation 129/04: primary solids production = 1500 kg/d, secondary (biological) solids production = 900 kg/d. Total solids production is the sum of both streams. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total solids production = primary solids + secondary solids"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total solids production = 900 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Monthly production = 900 kg/d * 30 d = 27000 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Total solids production = 1500 kg/d + 900 kg/d = 2400 kg/d",
+   "explanation": "Line 2 omitted the primary solids stream of 1500 kg/d. Correct total is 2400 kg/d, so monthly production is 2400 * 30 = 72000 kg."
+  },
+  {
+   "id": "c4ww-error03",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant solids production calculation for primary solids = 1000 kg/d and secondary solids = 750 kg/d.",
+   "topicId": "whole-plant-solids-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant under Ontario Regulation 129/04: primary solids production = 1000 kg/d, secondary (biological) solids production = 750 kg/d. Total solids production is the sum of both streams. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total solids production = primary solids + secondary solids"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total solids production = 750 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Monthly production = 750 kg/d * 30 d = 22500 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Total solids production = 1000 kg/d + 750 kg/d = 1750 kg/d",
+   "explanation": "Line 2 omitted the primary solids stream of 1000 kg/d. Correct total is 1750 kg/d, so monthly production is 1750 * 30 = 52500 kg."
+  },
+  {
+   "id": "c4ww-error04",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant solids production calculation for primary solids = 1800 kg/d and secondary solids = 1200 kg/d.",
+   "topicId": "whole-plant-solids-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant under Ontario Regulation 129/04: primary solids production = 1800 kg/d, secondary (biological) solids production = 1200 kg/d. Total solids production is the sum of both streams. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total solids production = primary solids + secondary solids"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total solids production = 1200 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Monthly production = 1200 kg/d * 30 d = 36000 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Total solids production = 1800 kg/d + 1200 kg/d = 3000 kg/d",
+   "explanation": "Line 2 omitted the primary solids stream of 1800 kg/d. Correct total is 3000 kg/d, so monthly production is 3000 * 30 = 90000 kg."
+  },
+  {
+   "id": "c4ww-error05",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant solids production calculation for primary solids = 900 kg/d and secondary solids = 600 kg/d.",
+   "topicId": "whole-plant-solids-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant under Ontario Regulation 129/04: primary solids production = 900 kg/d, secondary (biological) solids production = 600 kg/d. Total solids production is the sum of both streams. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total solids production = primary solids + secondary solids"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total solids production = 600 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Monthly production = 600 kg/d * 30 d = 18000 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Total solids production = 900 kg/d + 600 kg/d = 1500 kg/d",
+   "explanation": "Line 2 omitted the primary solids stream of 900 kg/d. Correct total is 1500 kg/d, so monthly production is 1500 * 30 = 45000 kg."
+  },
+  {
+   "id": "c4ww-error06",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant solids production calculation for primary solids = 2000 kg/d and secondary solids = 1000 kg/d.",
+   "topicId": "whole-plant-solids-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant under Ontario Regulation 129/04: primary solids production = 2000 kg/d, secondary (biological) solids production = 1000 kg/d. Total solids production is the sum of both streams. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total solids production = primary solids + secondary solids"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total solids production = 1000 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Monthly production = 1000 kg/d * 30 d = 30000 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Total solids production = 2000 kg/d + 1000 kg/d = 3000 kg/d",
+   "explanation": "Line 2 omitted the primary solids stream of 2000 kg/d. Correct total is 3000 kg/d, so monthly production is 3000 * 30 = 90000 kg."
+  },
+  {
+   "id": "c4ww-error07",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant solids output balance for waste sludge = 700 kg/d, effluent solids = 100 kg/d and return activated sludge = 5000 kg/d.",
+   "topicId": "whole-plant-solids-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: solids leaving the plant boundary are waste sludge = 700 kg/d and effluent solids = 100 kg/d. Return activated sludge = 5000 kg/d is an internal recycle and does not leave the plant. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Solids leaving plant = waste sludge + effluent solids"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids leaving plant = 700 kg/d + 100 kg/d + 5000 kg/d = 5800 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Weekly solids leaving = 5800 kg/d * 7 d = 40600 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Solids leaving plant = 700 kg/d + 100 kg/d = 800 kg/d",
+   "explanation": "Line 2 double counted the return activated sludge, which is recycled inside the plant and never leaves. Correct total is 800 kg/d, so the weekly total is 800 * 7 = 5600 kg."
+  },
+  {
+   "id": "c4ww-error08",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant solids output balance for waste sludge = 800 kg/d, effluent solids = 120 kg/d and return activated sludge = 6000 kg/d.",
+   "topicId": "whole-plant-solids-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: solids leaving the plant boundary are waste sludge = 800 kg/d and effluent solids = 120 kg/d. Return activated sludge = 6000 kg/d is an internal recycle and does not leave the plant. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Solids leaving plant = waste sludge + effluent solids"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids leaving plant = 800 kg/d + 120 kg/d + 6000 kg/d = 6920 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Weekly solids leaving = 6920 kg/d * 7 d = 48440 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Solids leaving plant = 800 kg/d + 120 kg/d = 920 kg/d",
+   "explanation": "Line 2 double counted the return activated sludge, which is recycled inside the plant and never leaves. Correct total is 920 kg/d, so the weekly total is 920 * 7 = 6440 kg."
+  },
+  {
+   "id": "c4ww-error09",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant solids output balance for waste sludge = 600 kg/d, effluent solids = 80 kg/d and return activated sludge = 4000 kg/d.",
+   "topicId": "whole-plant-solids-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: solids leaving the plant boundary are waste sludge = 600 kg/d and effluent solids = 80 kg/d. Return activated sludge = 4000 kg/d is an internal recycle and does not leave the plant. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Solids leaving plant = waste sludge + effluent solids"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids leaving plant = 600 kg/d + 80 kg/d + 4000 kg/d = 4680 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Weekly solids leaving = 4680 kg/d * 7 d = 32760 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Solids leaving plant = 600 kg/d + 80 kg/d = 680 kg/d",
+   "explanation": "Line 2 double counted the return activated sludge, which is recycled inside the plant and never leaves. Correct total is 680 kg/d, so the weekly total is 680 * 7 = 4760 kg."
+  },
+  {
+   "id": "c4ww-error10",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant solids output balance for waste sludge = 900 kg/d, effluent solids = 150 kg/d and return activated sludge = 7500 kg/d.",
+   "topicId": "whole-plant-solids-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: solids leaving the plant boundary are waste sludge = 900 kg/d and effluent solids = 150 kg/d. Return activated sludge = 7500 kg/d is an internal recycle and does not leave the plant. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Solids leaving plant = waste sludge + effluent solids"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids leaving plant = 900 kg/d + 150 kg/d + 7500 kg/d = 8550 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Weekly solids leaving = 8550 kg/d * 7 d = 59850 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Solids leaving plant = 900 kg/d + 150 kg/d = 1050 kg/d",
+   "explanation": "Line 2 double counted the return activated sludge, which is recycled inside the plant and never leaves. Correct total is 1050 kg/d, so the weekly total is 1050 * 7 = 7350 kg."
+  },
+  {
+   "id": "c4ww-error100",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this capacity planning calculation for average day flow = 8000 m3/d and a peaking factor of 2.5.",
+   "topicId": "capacity-peaking-factor",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant capacity plan: average day flow = 8000 m3/d, given peaking factor = 2.5. Design peak flow is average flow times the peaking factor, applied once. Target unit: m3/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Design peak flow = average flow * peaking factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. Peak flow after factor = 8000 m3/d * 2.5 = 20000 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Design peak flow = 20000 m3/d * 2.5 = 50000 m3/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Design peak flow = 20000 m3/d",
+   "explanation": "Line 3 applied the peaking factor a second time, double counting the peak allowance. Correct design peak flow is 20000 m3/d with the factor applied once."
+  },
+  {
+   "id": "c4ww-error11",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant solids output balance for waste sludge = 750 kg/d, effluent solids = 90 kg/d and return activated sludge = 5000 kg/d.",
+   "topicId": "whole-plant-solids-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: solids leaving the plant boundary are waste sludge = 750 kg/d and effluent solids = 90 kg/d. Return activated sludge = 5000 kg/d is an internal recycle and does not leave the plant. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Solids leaving plant = waste sludge + effluent solids"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids leaving plant = 750 kg/d + 90 kg/d + 5000 kg/d = 5840 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Weekly solids leaving = 5840 kg/d * 7 d = 40880 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Solids leaving plant = 750 kg/d + 90 kg/d = 840 kg/d",
+   "explanation": "Line 2 double counted the return activated sludge, which is recycled inside the plant and never leaves. Correct total is 840 kg/d, so the weekly total is 840 * 7 = 5880 kg."
+  },
+  {
+   "id": "c4ww-error12",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant solids output balance for waste sludge = 1000 kg/d, effluent solids = 200 kg/d and return activated sludge = 8000 kg/d.",
+   "topicId": "whole-plant-solids-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: solids leaving the plant boundary are waste sludge = 1000 kg/d and effluent solids = 200 kg/d. Return activated sludge = 8000 kg/d is an internal recycle and does not leave the plant. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Solids leaving plant = waste sludge + effluent solids"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids leaving plant = 1000 kg/d + 200 kg/d + 8000 kg/d = 9200 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Weekly solids leaving = 9200 kg/d * 7 d = 64400 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Solids leaving plant = 1000 kg/d + 200 kg/d = 1200 kg/d",
+   "explanation": "Line 2 double counted the return activated sludge, which is recycled inside the plant and never leaves. Correct total is 1200 kg/d, so the weekly total is 1200 * 7 = 8400 kg."
+  },
+  {
+   "id": "c4ww-error13",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant influent load balance for raw influent solids load = 2000 kg/d and dewatering return liquor solids load = 300 kg/d.",
+   "topicId": "whole-plant-solids-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: raw influent solids load = 2000 kg/d, dewatering return liquor returned to the head of the plant adds 300 kg/d. Total load treated is the sum of both. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total load treated = raw influent load + return liquor load"
+    },
+    {
+     "id": "line2",
+     "label": "2. Raw influent load = 2000 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total load treated = 2000 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total load treated = 2000 kg/d + 300 kg/d = 2300 kg/d",
+   "explanation": "Line 3 omitted the return liquor load of 300 kg/d that comes back to the head of the plant. Correct total load treated is 2300 kg/d."
+  },
+  {
+   "id": "c4ww-error14",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant influent load balance for raw influent solids load = 2400 kg/d and dewatering return liquor solids load = 400 kg/d.",
+   "topicId": "whole-plant-solids-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: raw influent solids load = 2400 kg/d, dewatering return liquor returned to the head of the plant adds 400 kg/d. Total load treated is the sum of both. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total load treated = raw influent load + return liquor load"
+    },
+    {
+     "id": "line2",
+     "label": "2. Raw influent load = 2400 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total load treated = 2400 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total load treated = 2400 kg/d + 400 kg/d = 2800 kg/d",
+   "explanation": "Line 3 omitted the return liquor load of 400 kg/d that comes back to the head of the plant. Correct total load treated is 2800 kg/d."
+  },
+  {
+   "id": "c4ww-error15",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant influent load balance for raw influent solids load = 1800 kg/d and dewatering return liquor solids load = 200 kg/d.",
+   "topicId": "whole-plant-solids-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: raw influent solids load = 1800 kg/d, dewatering return liquor returned to the head of the plant adds 200 kg/d. Total load treated is the sum of both. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total load treated = raw influent load + return liquor load"
+    },
+    {
+     "id": "line2",
+     "label": "2. Raw influent load = 1800 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total load treated = 1800 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total load treated = 1800 kg/d + 200 kg/d = 2000 kg/d",
+   "explanation": "Line 3 omitted the return liquor load of 200 kg/d that comes back to the head of the plant. Correct total load treated is 2000 kg/d."
+  },
+  {
+   "id": "c4ww-error16",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant influent load balance for raw influent solids load = 3000 kg/d and dewatering return liquor solids load = 500 kg/d.",
+   "topicId": "whole-plant-solids-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: raw influent solids load = 3000 kg/d, dewatering return liquor returned to the head of the plant adds 500 kg/d. Total load treated is the sum of both. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total load treated = raw influent load + return liquor load"
+    },
+    {
+     "id": "line2",
+     "label": "2. Raw influent load = 3000 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total load treated = 3000 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total load treated = 3000 kg/d + 500 kg/d = 3500 kg/d",
+   "explanation": "Line 3 omitted the return liquor load of 500 kg/d that comes back to the head of the plant. Correct total load treated is 3500 kg/d."
+  },
+  {
+   "id": "c4ww-error17",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant influent load balance for raw influent solids load = 1600 kg/d and dewatering return liquor solids load = 240 kg/d.",
+   "topicId": "whole-plant-solids-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: raw influent solids load = 1600 kg/d, dewatering return liquor returned to the head of the plant adds 240 kg/d. Total load treated is the sum of both. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total load treated = raw influent load + return liquor load"
+    },
+    {
+     "id": "line2",
+     "label": "2. Raw influent load = 1600 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total load treated = 1600 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total load treated = 1600 kg/d + 240 kg/d = 1840 kg/d",
+   "explanation": "Line 3 omitted the return liquor load of 240 kg/d that comes back to the head of the plant. Correct total load treated is 1840 kg/d."
+  },
+  {
+   "id": "c4ww-error18",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant influent load balance for raw influent solids load = 2500 kg/d and dewatering return liquor solids load = 500 kg/d.",
+   "topicId": "whole-plant-solids-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: raw influent solids load = 2500 kg/d, dewatering return liquor returned to the head of the plant adds 500 kg/d. Total load treated is the sum of both. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total load treated = raw influent load + return liquor load"
+    },
+    {
+     "id": "line2",
+     "label": "2. Raw influent load = 2500 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total load treated = 2500 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total load treated = 2500 kg/d + 500 kg/d = 3000 kg/d",
+   "explanation": "Line 3 omitted the return liquor load of 500 kg/d that comes back to the head of the plant. Correct total load treated is 3000 kg/d."
+  },
+  {
+   "id": "c4ww-error19",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant nitrogen balance for nitrogen in = 500 kg/d, effluent nitrogen = 60 kg/d and sludge nitrogen = 90 kg/d.",
+   "topicId": "whole-plant-nitrogen-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: total nitrogen entering = 500 kg/d, nitrogen leaving in effluent = 60 kg/d, nitrogen leaving in sludge = 90 kg/d. Nitrogen denitrified to gas is the balance: in minus effluent minus sludge. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Denitrified N = N in - effluent N - sludge N"
+    },
+    {
+     "id": "line2",
+     "label": "2. Denitrified N = 500 kg/d - 60 kg/d = 440 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Share denitrified = 440 kg/d / 500 kg/d = 0.88"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Denitrified N = 500 kg/d - 60 kg/d - 90 kg/d = 350 kg/d",
+   "explanation": "Line 2 omitted the sludge nitrogen stream of 90 kg/d. Correct denitrified nitrogen is 350 kg/d, a share of 350 / 500 = 0.7 of the nitrogen in."
+  },
+  {
+   "id": "c4ww-error20",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant nitrogen balance for nitrogen in = 800 kg/d, effluent nitrogen = 100 kg/d and sludge nitrogen = 150 kg/d.",
+   "topicId": "whole-plant-nitrogen-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: total nitrogen entering = 800 kg/d, nitrogen leaving in effluent = 100 kg/d, nitrogen leaving in sludge = 150 kg/d. Nitrogen denitrified to gas is the balance: in minus effluent minus sludge. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Denitrified N = N in - effluent N - sludge N"
+    },
+    {
+     "id": "line2",
+     "label": "2. Denitrified N = 800 kg/d - 100 kg/d = 700 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Share denitrified = 700 kg/d / 800 kg/d = 0.875"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Denitrified N = 800 kg/d - 100 kg/d - 150 kg/d = 550 kg/d",
+   "explanation": "Line 2 omitted the sludge nitrogen stream of 150 kg/d. Correct denitrified nitrogen is 550 kg/d, a share of 550 / 800 = 0.6875 of the nitrogen in."
+  },
+  {
+   "id": "c4ww-error21",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant nitrogen balance for nitrogen in = 400 kg/d, effluent nitrogen = 40 kg/d and sludge nitrogen = 60 kg/d.",
+   "topicId": "whole-plant-nitrogen-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: total nitrogen entering = 400 kg/d, nitrogen leaving in effluent = 40 kg/d, nitrogen leaving in sludge = 60 kg/d. Nitrogen denitrified to gas is the balance: in minus effluent minus sludge. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Denitrified N = N in - effluent N - sludge N"
+    },
+    {
+     "id": "line2",
+     "label": "2. Denitrified N = 400 kg/d - 40 kg/d = 360 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Share denitrified = 360 kg/d / 400 kg/d = 0.9"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Denitrified N = 400 kg/d - 40 kg/d - 60 kg/d = 300 kg/d",
+   "explanation": "Line 2 omitted the sludge nitrogen stream of 60 kg/d. Correct denitrified nitrogen is 300 kg/d, a share of 300 / 400 = 0.75 of the nitrogen in."
+  },
+  {
+   "id": "c4ww-error22",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant nitrogen balance for nitrogen in = 1000 kg/d, effluent nitrogen = 120 kg/d and sludge nitrogen = 180 kg/d.",
+   "topicId": "whole-plant-nitrogen-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: total nitrogen entering = 1000 kg/d, nitrogen leaving in effluent = 120 kg/d, nitrogen leaving in sludge = 180 kg/d. Nitrogen denitrified to gas is the balance: in minus effluent minus sludge. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Denitrified N = N in - effluent N - sludge N"
+    },
+    {
+     "id": "line2",
+     "label": "2. Denitrified N = 1000 kg/d - 120 kg/d = 880 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Share denitrified = 880 kg/d / 1000 kg/d = 0.88"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Denitrified N = 1000 kg/d - 120 kg/d - 180 kg/d = 700 kg/d",
+   "explanation": "Line 2 omitted the sludge nitrogen stream of 180 kg/d. Correct denitrified nitrogen is 700 kg/d, a share of 700 / 1000 = 0.7 of the nitrogen in."
+  },
+  {
+   "id": "c4ww-error23",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant nitrogen balance for nitrogen in = 500 kg/d, effluent nitrogen = 50 kg/d and sludge nitrogen = 100 kg/d.",
+   "topicId": "whole-plant-nitrogen-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: total nitrogen entering = 500 kg/d, nitrogen leaving in effluent = 50 kg/d, nitrogen leaving in sludge = 100 kg/d. Nitrogen denitrified to gas is the balance: in minus effluent minus sludge. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Denitrified N = N in - effluent N - sludge N"
+    },
+    {
+     "id": "line2",
+     "label": "2. Denitrified N = 500 kg/d - 50 kg/d = 450 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Share denitrified = 450 kg/d / 500 kg/d = 0.9"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Denitrified N = 500 kg/d - 50 kg/d - 100 kg/d = 350 kg/d",
+   "explanation": "Line 2 omitted the sludge nitrogen stream of 100 kg/d. Correct denitrified nitrogen is 350 kg/d, a share of 350 / 500 = 0.7 of the nitrogen in."
+  },
+  {
+   "id": "c4ww-error24",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant nitrogen balance for nitrogen in = 800 kg/d, effluent nitrogen = 80 kg/d and sludge nitrogen = 120 kg/d.",
+   "topicId": "whole-plant-nitrogen-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: total nitrogen entering = 800 kg/d, nitrogen leaving in effluent = 80 kg/d, nitrogen leaving in sludge = 120 kg/d. Nitrogen denitrified to gas is the balance: in minus effluent minus sludge. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Denitrified N = N in - effluent N - sludge N"
+    },
+    {
+     "id": "line2",
+     "label": "2. Denitrified N = 800 kg/d - 80 kg/d = 720 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Share denitrified = 720 kg/d / 800 kg/d = 0.9"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Denitrified N = 800 kg/d - 80 kg/d - 120 kg/d = 600 kg/d",
+   "explanation": "Line 2 omitted the sludge nitrogen stream of 120 kg/d. Correct denitrified nitrogen is 600 kg/d, a share of 600 / 800 = 0.75 of the nitrogen in."
+  },
+  {
+   "id": "c4ww-error25",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant nitrogen balance for nitrogen in = 1000 kg/d, effluent nitrogen = 200 kg/d and sludge nitrogen = 100 kg/d.",
+   "topicId": "whole-plant-nitrogen-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: total nitrogen entering = 1000 kg/d, nitrogen leaving in effluent = 200 kg/d, nitrogen leaving in sludge = 100 kg/d. Nitrogen denitrified to gas is the balance: in minus effluent minus sludge. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Denitrified N = N in - effluent N - sludge N"
+    },
+    {
+     "id": "line2",
+     "label": "2. Denitrified N = 1000 kg/d - 200 kg/d = 800 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Share denitrified = 800 kg/d / 1000 kg/d = 0.8"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Denitrified N = 1000 kg/d - 200 kg/d - 100 kg/d = 700 kg/d",
+   "explanation": "Line 2 omitted the sludge nitrogen stream of 100 kg/d. Correct denitrified nitrogen is 700 kg/d, a share of 700 / 1000 = 0.7 of the nitrogen in."
+  },
+  {
+   "id": "c4ww-error26",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant nitrogen balance for nitrogen in = 400 kg/d, effluent nitrogen = 80 kg/d and sludge nitrogen = 40 kg/d.",
+   "topicId": "whole-plant-nitrogen-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: total nitrogen entering = 400 kg/d, nitrogen leaving in effluent = 80 kg/d, nitrogen leaving in sludge = 40 kg/d. Nitrogen denitrified to gas is the balance: in minus effluent minus sludge. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Denitrified N = N in - effluent N - sludge N"
+    },
+    {
+     "id": "line2",
+     "label": "2. Denitrified N = 400 kg/d - 80 kg/d = 320 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Share denitrified = 320 kg/d / 400 kg/d = 0.8"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Denitrified N = 400 kg/d - 80 kg/d - 40 kg/d = 280 kg/d",
+   "explanation": "Line 2 omitted the sludge nitrogen stream of 40 kg/d. Correct denitrified nitrogen is 280 kg/d, a share of 280 / 400 = 0.7 of the nitrogen in."
+  },
+  {
+   "id": "c4ww-error27",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant phosphorus balance for phosphorus in = 120 kg/d and effluent phosphorus = 12 kg/d.",
+   "topicId": "whole-plant-phosphorus-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: total phosphorus entering = 120 kg/d, phosphorus leaving in effluent = 12 kg/d. Phosphorus captured in sludge is the balance: in minus effluent. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Sludge P = P in - effluent P"
+    },
+    {
+     "id": "line2",
+     "label": "2. Sludge P = 120 kg/d + 12 kg/d = 132 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Weekly sludge P = 132 kg/d * 7 d = 924 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Sludge P = 120 kg/d - 12 kg/d = 108 kg/d",
+   "explanation": "Line 2 added the effluent phosphorus instead of subtracting it. Correct sludge phosphorus is 108 kg/d, so the weekly total is 108 * 7 = 756 kg."
+  },
+  {
+   "id": "c4ww-error28",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant phosphorus balance for phosphorus in = 150 kg/d and effluent phosphorus = 15 kg/d.",
+   "topicId": "whole-plant-phosphorus-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: total phosphorus entering = 150 kg/d, phosphorus leaving in effluent = 15 kg/d. Phosphorus captured in sludge is the balance: in minus effluent. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Sludge P = P in - effluent P"
+    },
+    {
+     "id": "line2",
+     "label": "2. Sludge P = 150 kg/d + 15 kg/d = 165 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Weekly sludge P = 165 kg/d * 7 d = 1155 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Sludge P = 150 kg/d - 15 kg/d = 135 kg/d",
+   "explanation": "Line 2 added the effluent phosphorus instead of subtracting it. Correct sludge phosphorus is 135 kg/d, so the weekly total is 135 * 7 = 945 kg."
+  },
+  {
+   "id": "c4ww-error29",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant phosphorus balance for phosphorus in = 100 kg/d and effluent phosphorus = 20 kg/d.",
+   "topicId": "whole-plant-phosphorus-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: total phosphorus entering = 100 kg/d, phosphorus leaving in effluent = 20 kg/d. Phosphorus captured in sludge is the balance: in minus effluent. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Sludge P = P in - effluent P"
+    },
+    {
+     "id": "line2",
+     "label": "2. Sludge P = 100 kg/d + 20 kg/d = 120 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Weekly sludge P = 120 kg/d * 7 d = 840 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Sludge P = 100 kg/d - 20 kg/d = 80 kg/d",
+   "explanation": "Line 2 added the effluent phosphorus instead of subtracting it. Correct sludge phosphorus is 80 kg/d, so the weekly total is 80 * 7 = 560 kg."
+  },
+  {
+   "id": "c4ww-error30",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant phosphorus balance for phosphorus in = 180 kg/d and effluent phosphorus = 18 kg/d.",
+   "topicId": "whole-plant-phosphorus-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: total phosphorus entering = 180 kg/d, phosphorus leaving in effluent = 18 kg/d. Phosphorus captured in sludge is the balance: in minus effluent. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Sludge P = P in - effluent P"
+    },
+    {
+     "id": "line2",
+     "label": "2. Sludge P = 180 kg/d + 18 kg/d = 198 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Weekly sludge P = 198 kg/d * 7 d = 1386 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Sludge P = 180 kg/d - 18 kg/d = 162 kg/d",
+   "explanation": "Line 2 added the effluent phosphorus instead of subtracting it. Correct sludge phosphorus is 162 kg/d, so the weekly total is 162 * 7 = 1134 kg."
+  },
+  {
+   "id": "c4ww-error31",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant phosphorus balance for phosphorus in = 140 kg/d and effluent phosphorus = 28 kg/d.",
+   "topicId": "whole-plant-phosphorus-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: total phosphorus entering = 140 kg/d, phosphorus leaving in effluent = 28 kg/d. Phosphorus captured in sludge is the balance: in minus effluent. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Sludge P = P in - effluent P"
+    },
+    {
+     "id": "line2",
+     "label": "2. Sludge P = 140 kg/d + 28 kg/d = 168 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Weekly sludge P = 168 kg/d * 7 d = 1176 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Sludge P = 140 kg/d - 28 kg/d = 112 kg/d",
+   "explanation": "Line 2 added the effluent phosphorus instead of subtracting it. Correct sludge phosphorus is 112 kg/d, so the weekly total is 112 * 7 = 784 kg."
+  },
+  {
+   "id": "c4ww-error32",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant phosphorus balance for phosphorus in = 200 kg/d and effluent phosphorus = 25 kg/d.",
+   "topicId": "whole-plant-phosphorus-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: total phosphorus entering = 200 kg/d, phosphorus leaving in effluent = 25 kg/d. Phosphorus captured in sludge is the balance: in minus effluent. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Sludge P = P in - effluent P"
+    },
+    {
+     "id": "line2",
+     "label": "2. Sludge P = 200 kg/d + 25 kg/d = 225 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Weekly sludge P = 225 kg/d * 7 d = 1575 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Sludge P = 200 kg/d - 25 kg/d = 175 kg/d",
+   "explanation": "Line 2 added the effluent phosphorus instead of subtracting it. Correct sludge phosphorus is 175 kg/d, so the weekly total is 175 * 7 = 1225 kg."
+  },
+  {
+   "id": "c4ww-error33",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant phosphorus balance for phosphorus in = 160 kg/d and effluent phosphorus = 16 kg/d.",
+   "topicId": "whole-plant-phosphorus-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: total phosphorus entering = 160 kg/d, phosphorus leaving in effluent = 16 kg/d. Phosphorus captured in sludge is the balance: in minus effluent. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Sludge P = P in - effluent P"
+    },
+    {
+     "id": "line2",
+     "label": "2. Sludge P = 160 kg/d + 16 kg/d = 176 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Weekly sludge P = 176 kg/d * 7 d = 1232 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Sludge P = 160 kg/d - 16 kg/d = 144 kg/d",
+   "explanation": "Line 2 added the effluent phosphorus instead of subtracting it. Correct sludge phosphorus is 144 kg/d, so the weekly total is 144 * 7 = 1008 kg."
+  },
+  {
+   "id": "c4ww-error34",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant phosphorus balance for phosphorus in = 90 kg/d and effluent phosphorus = 18 kg/d.",
+   "topicId": "whole-plant-phosphorus-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: total phosphorus entering = 90 kg/d, phosphorus leaving in effluent = 18 kg/d. Phosphorus captured in sludge is the balance: in minus effluent. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Sludge P = P in - effluent P"
+    },
+    {
+     "id": "line2",
+     "label": "2. Sludge P = 90 kg/d + 18 kg/d = 108 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Weekly sludge P = 108 kg/d * 7 d = 756 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Sludge P = 90 kg/d - 18 kg/d = 72 kg/d",
+   "explanation": "Line 2 added the effluent phosphorus instead of subtracting it. Correct sludge phosphorus is 72 kg/d, so the weekly total is 72 * 7 = 504 kg."
+  },
+  {
+   "id": "c4ww-error35",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this nitrification alkalinity calculation for influent ammonia load = 500 kg/d and effluent ammonia load = 50 kg/d.",
+   "topicId": "nitrification-alkalinity",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: influent ammonia nitrogen load = 500 kg/d, effluent ammonia nitrogen load = 50 kg/d. Ammonia oxidized is influent minus effluent. Alkalinity consumed is 7.14 kg as CaCO3 per kg of ammonia nitrogen oxidized. Target unit: kg/d as CaCO3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Ammonia oxidized = influent ammonia - effluent ammonia"
+    },
+    {
+     "id": "line2",
+     "label": "2. Ammonia oxidized = 500 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Alkalinity consumed = 500 kg/d * 7.14 = 3570 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Ammonia oxidized = 500 kg/d - 50 kg/d = 450 kg/d",
+   "explanation": "Line 2 used the full influent ammonia load instead of the ammonia actually oxidized. Correct oxidized load is 450 kg/d, so alkalinity consumed is 450 * 7.14 = 3213 kg/d."
+  },
+  {
+   "id": "c4ww-error36",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this nitrification alkalinity calculation for influent ammonia load = 600 kg/d and effluent ammonia load = 100 kg/d.",
+   "topicId": "nitrification-alkalinity",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: influent ammonia nitrogen load = 600 kg/d, effluent ammonia nitrogen load = 100 kg/d. Ammonia oxidized is influent minus effluent. Alkalinity consumed is 7.14 kg as CaCO3 per kg of ammonia nitrogen oxidized. Target unit: kg/d as CaCO3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Ammonia oxidized = influent ammonia - effluent ammonia"
+    },
+    {
+     "id": "line2",
+     "label": "2. Ammonia oxidized = 600 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Alkalinity consumed = 600 kg/d * 7.14 = 4284 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Ammonia oxidized = 600 kg/d - 100 kg/d = 500 kg/d",
+   "explanation": "Line 2 used the full influent ammonia load instead of the ammonia actually oxidized. Correct oxidized load is 500 kg/d, so alkalinity consumed is 500 * 7.14 = 3570 kg/d."
+  },
+  {
+   "id": "c4ww-error37",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this nitrification alkalinity calculation for influent ammonia load = 400 kg/d and effluent ammonia load = 40 kg/d.",
+   "topicId": "nitrification-alkalinity",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: influent ammonia nitrogen load = 400 kg/d, effluent ammonia nitrogen load = 40 kg/d. Ammonia oxidized is influent minus effluent. Alkalinity consumed is 7.14 kg as CaCO3 per kg of ammonia nitrogen oxidized. Target unit: kg/d as CaCO3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Ammonia oxidized = influent ammonia - effluent ammonia"
+    },
+    {
+     "id": "line2",
+     "label": "2. Ammonia oxidized = 400 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Alkalinity consumed = 400 kg/d * 7.14 = 2856 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Ammonia oxidized = 400 kg/d - 40 kg/d = 360 kg/d",
+   "explanation": "Line 2 used the full influent ammonia load instead of the ammonia actually oxidized. Correct oxidized load is 360 kg/d, so alkalinity consumed is 360 * 7.14 = 2570.4 kg/d."
+  },
+  {
+   "id": "c4ww-error38",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this nitrification alkalinity calculation for influent ammonia load = 700 kg/d and effluent ammonia load = 70 kg/d.",
+   "topicId": "nitrification-alkalinity",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: influent ammonia nitrogen load = 700 kg/d, effluent ammonia nitrogen load = 70 kg/d. Ammonia oxidized is influent minus effluent. Alkalinity consumed is 7.14 kg as CaCO3 per kg of ammonia nitrogen oxidized. Target unit: kg/d as CaCO3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Ammonia oxidized = influent ammonia - effluent ammonia"
+    },
+    {
+     "id": "line2",
+     "label": "2. Ammonia oxidized = 700 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Alkalinity consumed = 700 kg/d * 7.14 = 4998 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Ammonia oxidized = 700 kg/d - 70 kg/d = 630 kg/d",
+   "explanation": "Line 2 used the full influent ammonia load instead of the ammonia actually oxidized. Correct oxidized load is 630 kg/d, so alkalinity consumed is 630 * 7.14 = 4498.2 kg/d."
+  },
+  {
+   "id": "c4ww-error39",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this nitrification alkalinity calculation for influent ammonia load = 550 kg/d and effluent ammonia load = 50 kg/d.",
+   "topicId": "nitrification-alkalinity",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: influent ammonia nitrogen load = 550 kg/d, effluent ammonia nitrogen load = 50 kg/d. Ammonia oxidized is influent minus effluent. Alkalinity consumed is 7.14 kg as CaCO3 per kg of ammonia nitrogen oxidized. Target unit: kg/d as CaCO3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Ammonia oxidized = influent ammonia - effluent ammonia"
+    },
+    {
+     "id": "line2",
+     "label": "2. Ammonia oxidized = 550 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Alkalinity consumed = 550 kg/d * 7.14 = 3927 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Ammonia oxidized = 550 kg/d - 50 kg/d = 500 kg/d",
+   "explanation": "Line 2 used the full influent ammonia load instead of the ammonia actually oxidized. Correct oxidized load is 500 kg/d, so alkalinity consumed is 500 * 7.14 = 3570 kg/d."
+  },
+  {
+   "id": "c4ww-error40",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this nitrification alkalinity calculation for influent ammonia load = 800 kg/d and effluent ammonia load = 80 kg/d.",
+   "topicId": "nitrification-alkalinity",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: influent ammonia nitrogen load = 800 kg/d, effluent ammonia nitrogen load = 80 kg/d. Ammonia oxidized is influent minus effluent. Alkalinity consumed is 7.14 kg as CaCO3 per kg of ammonia nitrogen oxidized. Target unit: kg/d as CaCO3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Ammonia oxidized = influent ammonia - effluent ammonia"
+    },
+    {
+     "id": "line2",
+     "label": "2. Ammonia oxidized = 800 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Alkalinity consumed = 800 kg/d * 7.14 = 5712 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Ammonia oxidized = 800 kg/d - 80 kg/d = 720 kg/d",
+   "explanation": "Line 2 used the full influent ammonia load instead of the ammonia actually oxidized. Correct oxidized load is 720 kg/d, so alkalinity consumed is 720 * 7.14 = 5140.8 kg/d."
+  },
+  {
+   "id": "c4ww-error41",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this supplemental carbon dose calculation for total nitrogen load = 400 kg/d and effluent nitrogen load = 100 kg/d.",
+   "topicId": "carbon-dose",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: total nitrogen load = 400 kg/d, effluent nitrogen load = 100 kg/d. Nitrogen denitrified is total minus effluent. The carbon program ratio is 3 kg of carbon product per kg of nitrogen denitrified. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. N denitrified = total N - effluent N"
+    },
+    {
+     "id": "line2",
+     "label": "2. Carbon dose = 400 kg/d * 3 = 1200 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Carbon dose = (400 kg/d - 100 kg/d) * 3 = 900 kg/d",
+   "explanation": "Line 2 applied the ratio to the total nitrogen load instead of the nitrogen denitrified. Correct denitrified load is 300 kg/d, so the dose is 300 * 3 = 900 kg/d."
+  },
+  {
+   "id": "c4ww-error42",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this supplemental carbon dose calculation for total nitrogen load = 500 kg/d and effluent nitrogen load = 125 kg/d.",
+   "topicId": "carbon-dose",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: total nitrogen load = 500 kg/d, effluent nitrogen load = 125 kg/d. Nitrogen denitrified is total minus effluent. The carbon program ratio is 3 kg of carbon product per kg of nitrogen denitrified. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. N denitrified = total N - effluent N"
+    },
+    {
+     "id": "line2",
+     "label": "2. Carbon dose = 500 kg/d * 3 = 1500 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Carbon dose = (500 kg/d - 125 kg/d) * 3 = 1125 kg/d",
+   "explanation": "Line 2 applied the ratio to the total nitrogen load instead of the nitrogen denitrified. Correct denitrified load is 375 kg/d, so the dose is 375 * 3 = 1125 kg/d."
+  },
+  {
+   "id": "c4ww-error43",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this supplemental carbon dose calculation for total nitrogen load = 600 kg/d and effluent nitrogen load = 200 kg/d.",
+   "topicId": "carbon-dose",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: total nitrogen load = 600 kg/d, effluent nitrogen load = 200 kg/d. Nitrogen denitrified is total minus effluent. The carbon program ratio is 2.5 kg of carbon product per kg of nitrogen denitrified. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. N denitrified = total N - effluent N"
+    },
+    {
+     "id": "line2",
+     "label": "2. Carbon dose = 600 kg/d * 2.5 = 1500 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Carbon dose = (600 kg/d - 200 kg/d) * 2.5 = 1000 kg/d",
+   "explanation": "Line 2 applied the ratio to the total nitrogen load instead of the nitrogen denitrified. Correct denitrified load is 400 kg/d, so the dose is 400 * 2.5 = 1000 kg/d."
+  },
+  {
+   "id": "c4ww-error44",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this supplemental carbon dose calculation for total nitrogen load = 450 kg/d and effluent nitrogen load = 90 kg/d.",
+   "topicId": "carbon-dose",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: total nitrogen load = 450 kg/d, effluent nitrogen load = 90 kg/d. Nitrogen denitrified is total minus effluent. The carbon program ratio is 3 kg of carbon product per kg of nitrogen denitrified. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. N denitrified = total N - effluent N"
+    },
+    {
+     "id": "line2",
+     "label": "2. Carbon dose = 450 kg/d * 3 = 1350 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Carbon dose = (450 kg/d - 90 kg/d) * 3 = 1080 kg/d",
+   "explanation": "Line 2 applied the ratio to the total nitrogen load instead of the nitrogen denitrified. Correct denitrified load is 360 kg/d, so the dose is 360 * 3 = 1080 kg/d."
+  },
+  {
+   "id": "c4ww-error45",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this supplemental carbon dose calculation for total nitrogen load = 800 kg/d and effluent nitrogen load = 200 kg/d.",
+   "topicId": "carbon-dose",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: total nitrogen load = 800 kg/d, effluent nitrogen load = 200 kg/d. Nitrogen denitrified is total minus effluent. The carbon program ratio is 2.5 kg of carbon product per kg of nitrogen denitrified. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. N denitrified = total N - effluent N"
+    },
+    {
+     "id": "line2",
+     "label": "2. Carbon dose = 800 kg/d * 2.5 = 2000 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Carbon dose = (800 kg/d - 200 kg/d) * 2.5 = 1500 kg/d",
+   "explanation": "Line 2 applied the ratio to the total nitrogen load instead of the nitrogen denitrified. Correct denitrified load is 600 kg/d, so the dose is 600 * 2.5 = 1500 kg/d."
+  },
+  {
+   "id": "c4ww-error46",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this supplemental carbon dose calculation for total nitrogen load = 360 kg/d and effluent nitrogen load = 60 kg/d.",
+   "topicId": "carbon-dose",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: total nitrogen load = 360 kg/d, effluent nitrogen load = 60 kg/d. Nitrogen denitrified is total minus effluent. The carbon program ratio is 3 kg of carbon product per kg of nitrogen denitrified. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. N denitrified = total N - effluent N"
+    },
+    {
+     "id": "line2",
+     "label": "2. Carbon dose = 360 kg/d * 3 = 1080 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Carbon dose = (360 kg/d - 60 kg/d) * 3 = 900 kg/d",
+   "explanation": "Line 2 applied the ratio to the total nitrogen load instead of the nitrogen denitrified. Correct denitrified load is 300 kg/d, so the dose is 300 * 3 = 900 kg/d."
+  },
+  {
+   "id": "c4ww-error47",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this ferric dose calculation for phosphorus removed = 80 kg/d.",
+   "topicId": "chemical-phosphorus-dose",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: phosphorus removed chemically = 80 kg/d. The chemical program ratio is 2.5 kg of ferric product per kg of phosphorus removed. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Ferric dose = P removed * program ratio"
+    },
+    {
+     "id": "line2",
+     "label": "2. Ferric dose = 80 kg/d / 2.5 = 32 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Weekly ferric use = 32 kg/d * 7 d = 224 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Ferric dose = 80 kg/d * 2.5 = 200 kg/d",
+   "explanation": "Line 2 divided by the program ratio instead of multiplying. Correct ferric dose is 200 kg/d, so weekly use is 200 * 7 = 1400 kg."
+  },
+  {
+   "id": "c4ww-error48",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this ferric dose calculation for phosphorus removed = 100 kg/d.",
+   "topicId": "chemical-phosphorus-dose",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: phosphorus removed chemically = 100 kg/d. The chemical program ratio is 2.5 kg of ferric product per kg of phosphorus removed. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Ferric dose = P removed * program ratio"
+    },
+    {
+     "id": "line2",
+     "label": "2. Ferric dose = 100 kg/d / 2.5 = 40 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Weekly ferric use = 40 kg/d * 7 d = 280 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Ferric dose = 100 kg/d * 2.5 = 250 kg/d",
+   "explanation": "Line 2 divided by the program ratio instead of multiplying. Correct ferric dose is 250 kg/d, so weekly use is 250 * 7 = 1750 kg."
+  },
+  {
+   "id": "c4ww-error49",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this ferric dose calculation for phosphorus removed = 60 kg/d.",
+   "topicId": "chemical-phosphorus-dose",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: phosphorus removed chemically = 60 kg/d. The chemical program ratio is 2.5 kg of ferric product per kg of phosphorus removed. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Ferric dose = P removed * program ratio"
+    },
+    {
+     "id": "line2",
+     "label": "2. Ferric dose = 60 kg/d / 2.5 = 24 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Weekly ferric use = 24 kg/d * 7 d = 168 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Ferric dose = 60 kg/d * 2.5 = 150 kg/d",
+   "explanation": "Line 2 divided by the program ratio instead of multiplying. Correct ferric dose is 150 kg/d, so weekly use is 150 * 7 = 1050 kg."
+  },
+  {
+   "id": "c4ww-error50",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this ferric dose calculation for phosphorus removed = 120 kg/d.",
+   "topicId": "chemical-phosphorus-dose",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: phosphorus removed chemically = 120 kg/d. The chemical program ratio is 2 kg of ferric product per kg of phosphorus removed. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Ferric dose = P removed * program ratio"
+    },
+    {
+     "id": "line2",
+     "label": "2. Ferric dose = 120 kg/d / 2 = 60 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Weekly ferric use = 60 kg/d * 7 d = 420 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Ferric dose = 120 kg/d * 2 = 240 kg/d",
+   "explanation": "Line 2 divided by the program ratio instead of multiplying. Correct ferric dose is 240 kg/d, so weekly use is 240 * 7 = 1680 kg."
+  },
+  {
+   "id": "c4ww-error51",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this ferric dose calculation for phosphorus removed = 90 kg/d.",
+   "topicId": "chemical-phosphorus-dose",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: phosphorus removed chemically = 90 kg/d. The chemical program ratio is 2 kg of ferric product per kg of phosphorus removed. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Ferric dose = P removed * program ratio"
+    },
+    {
+     "id": "line2",
+     "label": "2. Ferric dose = 90 kg/d / 2 = 45 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Weekly ferric use = 45 kg/d * 7 d = 315 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Ferric dose = 90 kg/d * 2 = 180 kg/d",
+   "explanation": "Line 2 divided by the program ratio instead of multiplying. Correct ferric dose is 180 kg/d, so weekly use is 180 * 7 = 1260 kg."
+  },
+  {
+   "id": "c4ww-error52",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this ferric dose calculation for phosphorus removed = 150 kg/d.",
+   "topicId": "chemical-phosphorus-dose",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: phosphorus removed chemically = 150 kg/d. The chemical program ratio is 2 kg of ferric product per kg of phosphorus removed. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Ferric dose = P removed * program ratio"
+    },
+    {
+     "id": "line2",
+     "label": "2. Ferric dose = 150 kg/d / 2 = 75 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Weekly ferric use = 75 kg/d * 7 d = 525 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Ferric dose = 150 kg/d * 2 = 300 kg/d",
+   "explanation": "Line 2 divided by the program ratio instead of multiplying. Correct ferric dose is 300 kg/d, so weekly use is 300 * 7 = 2100 kg."
+  },
+  {
+   "id": "c4ww-error53",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this digester volatile solids destruction calculation for total solids in = 2000 kg/d and volatile solids in = 1500 kg/d.",
+   "topicId": "volatile-solids-destruction",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant digester: total solids in = 2000 kg/d, volatile solids in = 1500 kg/d, volatile solids reduction = 60 percent. Volatile solids destroyed is volatile solids in times the reduction fraction 0.6. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. VS destroyed = VS in * reduction fraction"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS destroyed = 2000 kg/d * 0.6 = 1200 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. VS destroyed = 1500 kg/d * 0.6 = 900 kg/d",
+   "explanation": "Line 2 applied the reduction to total solids in instead of volatile solids in. Correct volatile solids destroyed is 900 kg/d."
+  },
+  {
+   "id": "c4ww-error54",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this digester volatile solids destruction calculation for total solids in = 2400 kg/d and volatile solids in = 1800 kg/d.",
+   "topicId": "volatile-solids-destruction",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant digester: total solids in = 2400 kg/d, volatile solids in = 1800 kg/d, volatile solids reduction = 50 percent. Volatile solids destroyed is volatile solids in times the reduction fraction 0.5. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. VS destroyed = VS in * reduction fraction"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS destroyed = 2400 kg/d * 0.5 = 1200 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. VS destroyed = 1800 kg/d * 0.5 = 900 kg/d",
+   "explanation": "Line 2 applied the reduction to total solids in instead of volatile solids in. Correct volatile solids destroyed is 900 kg/d."
+  },
+  {
+   "id": "c4ww-error55",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this digester volatile solids destruction calculation for total solids in = 3000 kg/d and volatile solids in = 2100 kg/d.",
+   "topicId": "volatile-solids-destruction",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant digester: total solids in = 3000 kg/d, volatile solids in = 2100 kg/d, volatile solids reduction = 50 percent. Volatile solids destroyed is volatile solids in times the reduction fraction 0.5. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. VS destroyed = VS in * reduction fraction"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS destroyed = 3000 kg/d * 0.5 = 1500 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. VS destroyed = 2100 kg/d * 0.5 = 1050 kg/d",
+   "explanation": "Line 2 applied the reduction to total solids in instead of volatile solids in. Correct volatile solids destroyed is 1050 kg/d."
+  },
+  {
+   "id": "c4ww-error56",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this digester volatile solids destruction calculation for total solids in = 2500 kg/d and volatile solids in = 2000 kg/d.",
+   "topicId": "volatile-solids-destruction",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant digester: total solids in = 2500 kg/d, volatile solids in = 2000 kg/d, volatile solids reduction = 60 percent. Volatile solids destroyed is volatile solids in times the reduction fraction 0.6. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. VS destroyed = VS in * reduction fraction"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS destroyed = 2500 kg/d * 0.6 = 1500 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. VS destroyed = 2000 kg/d * 0.6 = 1200 kg/d",
+   "explanation": "Line 2 applied the reduction to total solids in instead of volatile solids in. Correct volatile solids destroyed is 1200 kg/d."
+  },
+  {
+   "id": "c4ww-error57",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this digester volatile solids destruction calculation for total solids in = 1800 kg/d and volatile solids in = 1350 kg/d.",
+   "topicId": "volatile-solids-destruction",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant digester: total solids in = 1800 kg/d, volatile solids in = 1350 kg/d, volatile solids reduction = 60 percent. Volatile solids destroyed is volatile solids in times the reduction fraction 0.6. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. VS destroyed = VS in * reduction fraction"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS destroyed = 1800 kg/d * 0.6 = 1080 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. VS destroyed = 1350 kg/d * 0.6 = 810 kg/d",
+   "explanation": "Line 2 applied the reduction to total solids in instead of volatile solids in. Correct volatile solids destroyed is 810 kg/d."
+  },
+  {
+   "id": "c4ww-error58",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biogas production calculation for volatile solids destroyed = 900 kg/d.",
+   "topicId": "biogas-production",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant digester: volatile solids destroyed = 900 kg/d. The given biogas yield is 0.9 m3 per kg of volatile solids destroyed. Target unit: m3/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Biogas = VS destroyed * yield"
+    },
+    {
+     "id": "line2",
+     "label": "2. Biogas = 900 kg/d * 0.09 m3/kg = 81 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Weekly biogas = 81 m3/d * 7 d = 567 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Biogas = 900 kg/d * 0.9 m3/kg = 810 m3/d",
+   "explanation": "Line 2 used a yield ten times too small. Correct biogas production is 810 m3/d, so weekly production is 810 * 7 = 5670 m3."
+  },
+  {
+   "id": "c4ww-error59",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biogas production calculation for volatile solids destroyed = 1000 kg/d.",
+   "topicId": "biogas-production",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant digester: volatile solids destroyed = 1000 kg/d. The given biogas yield is 0.8 m3 per kg of volatile solids destroyed. Target unit: m3/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Biogas = VS destroyed * yield"
+    },
+    {
+     "id": "line2",
+     "label": "2. Biogas = 1000 kg/d * 0.08 m3/kg = 80 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Weekly biogas = 80 m3/d * 7 d = 560 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Biogas = 1000 kg/d * 0.8 m3/kg = 800 m3/d",
+   "explanation": "Line 2 used a yield ten times too small. Correct biogas production is 800 m3/d, so weekly production is 800 * 7 = 5600 m3."
+  }
+ ],
+ "missions": [
+  {
+   "id": "c4ww-mission21",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 21: The Capacity Planning Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-ladder80",
+     "revision": "r1",
+     "occurrenceId": "m21-t1"
+    },
+    {
+     "taskId": "c4ww-error01",
+     "revision": "r1",
+     "occurrenceId": "m21-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission22",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 22: The Whole Plant Solids Balance Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-error02",
+     "revision": "r1",
+     "occurrenceId": "m22-t1"
+    },
+    {
+     "taskId": "c4ww-ladder81",
+     "revision": "r1",
+     "occurrenceId": "m22-t2"
+    },
+    {
+     "taskId": "c4ww-ladder82",
+     "revision": "r1",
+     "occurrenceId": "m22-t3"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission23",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 23: The Capacity Planning Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-ladder83",
+     "revision": "r1",
+     "occurrenceId": "m23-t1"
+    },
+    {
+     "taskId": "c4ww-error03",
+     "revision": "r1",
+     "occurrenceId": "m23-t2"
+    },
+    {
+     "taskId": "c4ww-ladder84",
+     "revision": "r1",
+     "occurrenceId": "m23-t3"
+    },
+    {
+     "taskId": "c4ww-ladder85",
+     "revision": "r1",
+     "occurrenceId": "m23-t4"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission24",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 24: The Whole Plant Solids Balance Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-error04",
+     "revision": "r1",
+     "occurrenceId": "m24-t1"
+    },
+    {
+     "taskId": "c4ww-ladder86",
+     "revision": "r1",
+     "occurrenceId": "m24-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission25",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 25: The Compliance Sampling Program Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-ladder87",
+     "revision": "r1",
+     "occurrenceId": "m25-t1"
+    },
+    {
+     "taskId": "c4ww-error05",
+     "revision": "r1",
+     "occurrenceId": "m25-t2"
+    },
+    {
+     "taskId": "c4ww-ladder88",
+     "revision": "r1",
+     "occurrenceId": "m25-t3"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission26",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 26: The Whole Plant Solids Balance Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-error06",
+     "revision": "r1",
+     "occurrenceId": "m26-t1"
+    },
+    {
+     "taskId": "c4ww-ladder89",
+     "revision": "r1",
+     "occurrenceId": "m26-t2"
+    },
+    {
+     "taskId": "c4ww-ladder90",
+     "revision": "r1",
+     "occurrenceId": "m26-t3"
+    },
+    {
+     "taskId": "c4ww-ladder91",
+     "revision": "r1",
+     "occurrenceId": "m26-t4"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission27",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 27: The Whole Plant Solids Balance Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-ladder92",
+     "revision": "r1",
+     "occurrenceId": "m27-t1"
+    },
+    {
+     "taskId": "c4ww-error07",
+     "revision": "r1",
+     "occurrenceId": "m27-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission28",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 28: The Whole Plant Solids Balance Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-error08",
+     "revision": "r1",
+     "occurrenceId": "m28-t1"
+    },
+    {
+     "taskId": "c4ww-ladder93",
+     "revision": "r1",
+     "occurrenceId": "m28-t2"
+    },
+    {
+     "taskId": "c4ww-ladder94",
+     "revision": "r1",
+     "occurrenceId": "m28-t3"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission29",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 29: The Whole Plant Solids Balance Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-ladder95",
+     "revision": "r1",
+     "occurrenceId": "m29-t1"
+    },
+    {
+     "taskId": "c4ww-error09",
+     "revision": "r1",
+     "occurrenceId": "m29-t2"
+    },
+    {
+     "taskId": "c4ww-ladder96",
+     "revision": "r1",
+     "occurrenceId": "m29-t3"
+    },
+    {
+     "taskId": "c4ww-ladder97",
+     "revision": "r1",
+     "occurrenceId": "m29-t4"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission30",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 30: The Whole Plant Solids Balance Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-error10",
+     "revision": "r1",
+     "occurrenceId": "m30-t1"
+    },
+    {
+     "taskId": "c4ww-ladder98",
+     "revision": "r1",
+     "occurrenceId": "m30-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission31",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 31: The Capacity Planning Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-ladder99",
+     "revision": "r1",
+     "occurrenceId": "m31-t1"
+    },
+    {
+     "taskId": "c4ww-error100",
+     "revision": "r1",
+     "occurrenceId": "m31-t2"
+    },
+    {
+     "taskId": "c4ww-ladder80",
+     "revision": "r1",
+     "occurrenceId": "m31-t3"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission32",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 32: The Whole Plant Solids Balance Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-error11",
+     "revision": "r1",
+     "occurrenceId": "m32-t1"
+    },
+    {
+     "taskId": "c4ww-ladder81",
+     "revision": "r1",
+     "occurrenceId": "m32-t2"
+    },
+    {
+     "taskId": "c4ww-ladder82",
+     "revision": "r1",
+     "occurrenceId": "m32-t3"
+    },
+    {
+     "taskId": "c4ww-ladder83",
+     "revision": "r1",
+     "occurrenceId": "m32-t4"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission33",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 33: The Capacity Planning Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-ladder84",
+     "revision": "r1",
+     "occurrenceId": "m33-t1"
+    },
+    {
+     "taskId": "c4ww-error12",
+     "revision": "r1",
+     "occurrenceId": "m33-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission34",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 34: The Whole Plant Solids Balance Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-error13",
+     "revision": "r1",
+     "occurrenceId": "m34-t1"
+    },
+    {
+     "taskId": "c4ww-ladder85",
+     "revision": "r1",
+     "occurrenceId": "m34-t2"
+    },
+    {
+     "taskId": "c4ww-ladder86",
+     "revision": "r1",
+     "occurrenceId": "m34-t3"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission35",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 35: The Compliance Sampling Program Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-ladder87",
+     "revision": "r1",
+     "occurrenceId": "m35-t1"
+    },
+    {
+     "taskId": "c4ww-error14",
+     "revision": "r1",
+     "occurrenceId": "m35-t2"
+    },
+    {
+     "taskId": "c4ww-ladder88",
+     "revision": "r1",
+     "occurrenceId": "m35-t3"
+    },
+    {
+     "taskId": "c4ww-ladder89",
+     "revision": "r1",
+     "occurrenceId": "m35-t4"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission36",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 36: The Whole Plant Solids Balance Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-error15",
+     "revision": "r1",
+     "occurrenceId": "m36-t1"
+    },
+    {
+     "taskId": "c4ww-ladder90",
+     "revision": "r1",
+     "occurrenceId": "m36-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission37",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 37: The Whole Plant Solids Balance Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-ladder91",
+     "revision": "r1",
+     "occurrenceId": "m37-t1"
+    },
+    {
+     "taskId": "c4ww-error16",
+     "revision": "r1",
+     "occurrenceId": "m37-t2"
+    },
+    {
+     "taskId": "c4ww-ladder92",
+     "revision": "r1",
+     "occurrenceId": "m37-t3"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission38",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 38: The Whole Plant Solids Balance Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-error17",
+     "revision": "r1",
+     "occurrenceId": "m38-t1"
+    },
+    {
+     "taskId": "c4ww-ladder93",
+     "revision": "r1",
+     "occurrenceId": "m38-t2"
+    },
+    {
+     "taskId": "c4ww-ladder94",
+     "revision": "r1",
+     "occurrenceId": "m38-t3"
+    },
+    {
+     "taskId": "c4ww-ladder95",
+     "revision": "r1",
+     "occurrenceId": "m38-t4"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission39",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 39: The Whole Plant Solids Balance Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-ladder96",
+     "revision": "r1",
+     "occurrenceId": "m39-t1"
+    },
+    {
+     "taskId": "c4ww-error18",
+     "revision": "r1",
+     "occurrenceId": "m39-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission40",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 40: The Whole Plant Nitrogen Balance Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-error19",
+     "revision": "r1",
+     "occurrenceId": "m40-t1"
+    },
+    {
+     "taskId": "c4ww-ladder97",
+     "revision": "r1",
+     "occurrenceId": "m40-t2"
+    },
+    {
+     "taskId": "c4ww-ladder98",
+     "revision": "r1",
+     "occurrenceId": "m40-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Advanced wastewater management, nutrient removal strategy, digestion and biosolids chapters"
+  },
+  {
+   "id": "epa-municipal-wastewater",
+   "title": "US EPA, Municipal Wastewater resources",
+   "locator": "https://www.epa.gov/npdes/municipal-wastewater"
+  },
+  {
+   "id": "epa-process-control",
+   "title": "US EPA, Process Control and nutrient removal guidance for municipal wastewater",
+   "locator": "Advanced nutrient removal strategy and whole plant optimization background"
+  },
+  {
+   "id": "owwco-exam-prep",
+   "title": "OWWCO, Exam preparation resources",
+   "locator": "https://owwco.ca/preparing-for-your-exam/"
+  },
+  {
+   "id": "wpi-ntk-2025",
+   "title": "WPI, 2025 Need-to-Know Criteria, Wastewater Treatment Class IV",
+   "locator": "https://gowpi.org/services/2025-need-to-know-criteria/"
+  },
+  {
+   "id": "ont-reg-129-04",
+   "title": "Ontario Regulation 129/04, Licensing of Sewage Works Operators",
+   "locator": "https://www.ontario.ca/laws/regulation/04129"
+  },
+  {
+   "id": "ccohs-safety",
+   "title": "CCOHS, OSH Answers (confined spaces, hydrogen sulfide, lockout)",
+   "locator": "https://www.ccohs.ca/oshanswers/"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "55b8037bc1998701d0218b179f86153cf70dde8390734884b52ef89d580cdf42",
+  "taskReceipts": [
+   {
+    "taskId": "c4ww-ladder80",
+    "revision": "r1",
+    "sha256": "a7c2c7aa6988213a5fb2176d51da84d9e2048220556cc800bbaf3da239576dcb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-ladder81",
+    "revision": "r1",
+    "sha256": "b9f171c8113920117f6cf7c371e5055378d34a473377f4c218ecee94a1c18371",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-ladder82",
+    "revision": "r1",
+    "sha256": "faf82ff7b4bc0550bf3b7a2fd6c669a8a43be7af3c2bea59388d4f52112e1261",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-ladder83",
+    "revision": "r1",
+    "sha256": "df04014a0b94b301387d75ef5357b46069d2b49f19a458e1d390ccffc65cb043",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-ladder84",
+    "revision": "r1",
+    "sha256": "0fbbf6f58695ebd3f97334ddb26b524aa72064ac5517ccd0673ac9975db1be23",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-ladder85",
+    "revision": "r1",
+    "sha256": "7074532ba770e220349aff80a8e3f9c7f9f77edb379a9d31bc69bbf88f1b78f3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-ladder86",
+    "revision": "r1",
+    "sha256": "c21321bd946f33d45988ad3b51fad5dd40c7ae921b3bc83adca33dc5de215a62",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-ladder87",
+    "revision": "r1",
+    "sha256": "2fa94d931fb7b23206e4170a09806df0b783a898294fd00112640743c508d536",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-ladder88",
+    "revision": "r1",
+    "sha256": "54b40148987ae9b7e22687e870fdb7edd2cbbecb328be50eada0795fba1d6571",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-ladder89",
+    "revision": "r1",
+    "sha256": "c708e668ca9a02cbac56b9be240cb3ff2fc4b137783b0d9ba78b817e928ed1f1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-ladder90",
+    "revision": "r1",
+    "sha256": "28b8c6f763f5800567edee00245840a4e9bd5c296e4f593645eaa2daf86a5eda",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-ladder91",
+    "revision": "r1",
+    "sha256": "3e2b385c682d48d053d11d4b422e0e7015da0ef32c6e758e1d6d399a3a0344fd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-ladder92",
+    "revision": "r1",
+    "sha256": "8f6e0bca7045e8702c68b002362d7b9d69cfec97cc6a5426692ab569df5294f6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-ladder93",
+    "revision": "r1",
+    "sha256": "f766d93526728e19a1fa4c3d3de4ef94bfb563b0139ca7ff6e4b33fcc4d9b089",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-ladder94",
+    "revision": "r1",
+    "sha256": "ccaabfb4524416a4d8916eec765bcbb9b08493cd69df0a6b13420f1a6f782fd6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-ladder95",
+    "revision": "r1",
+    "sha256": "f87b16fd2b7fff2f3882d7041d19ffa28de513179146f37c8a4ae0b726d466a0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-ladder96",
+    "revision": "r1",
+    "sha256": "a68d91cbd194b49c30e7f1e28eee85b6e7cce61c7c3fca41d083c703aef31df9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-ladder97",
+    "revision": "r1",
+    "sha256": "c1815acaa9490fadb4bba574b0c56aaf876be90611147576506030154642283d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-ladder98",
+    "revision": "r1",
+    "sha256": "e1c3756253a546c21ba16ecc366483be44b46623a63502c1ac8058d4dd3b1cf0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-ladder99",
+    "revision": "r1",
+    "sha256": "3ea2e7d7657e6f52dc32e7d2c709e8dc2e3e1260eee82abfc11de5afa7b8568b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error01",
+    "revision": "r1",
+    "sha256": "6e7d45f17ade4f139de2aceb171272f1272eec64f506530765b79c0f725cddff",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error02",
+    "revision": "r1",
+    "sha256": "1b35de49b4cf0adaa75783e0baad136f415cc10e3c713869a602e081beb97449",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error03",
+    "revision": "r1",
+    "sha256": "a2c127286ae0e97e60a5cefedc74ca823318f15d6764ae1abb35f66b8bd6f89a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error04",
+    "revision": "r1",
+    "sha256": "ca983f56eb4d645b5aab20e77bdd9404a7f7c120296eece63bb947d4d6a88930",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error05",
+    "revision": "r1",
+    "sha256": "155f4cb13cce525b6d8ddd47fa9de6736dd8c35d1155d586ffde345c4e11b869",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error06",
+    "revision": "r1",
+    "sha256": "aead6d4edcee86404237553dc09e827633478f20548597af6e6527676b4bf8e8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error07",
+    "revision": "r1",
+    "sha256": "b23e07e48a18fee45fecc877b5d899d687c9e9e238e03841474c183430bea215",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error08",
+    "revision": "r1",
+    "sha256": "c535ea9605ba789969ce6259a6dc887fcf55420581138a26c868aa850fb01970",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error09",
+    "revision": "r1",
+    "sha256": "9c51b2a43176a887088a99b8ea69190b6eb793e2d60c8c2d83e730c85ee59ca3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error10",
+    "revision": "r1",
+    "sha256": "876333bcf9660d70969c0319d29dc52cbf9915859f80325e1d0f8766e73fca07",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error100",
+    "revision": "r1",
+    "sha256": "ea15ac2274e35959ef5b146879eca09b4617e5c5ff646dc45faf698b226e8eec",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error11",
+    "revision": "r1",
+    "sha256": "f2f80d89c5ec434d39dbdb335f843cbfc96c525e9277cd491a94a2f636260bee",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error12",
+    "revision": "r1",
+    "sha256": "f823ecbb67ee26022da6f6295faadcaa3f8ff66759c4b26804511b247120ad35",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error13",
+    "revision": "r1",
+    "sha256": "0cb76ee0b44332b5a131c3b016ec8cc322204db1763c7acf2527ff2beb6ddf26",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error14",
+    "revision": "r1",
+    "sha256": "6d5eced8b7c35192edaf6366b146db30a7b7244db7d271767845011b8df4b73f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error15",
+    "revision": "r1",
+    "sha256": "5f179618d839b85fc4a155376e34adb5cd493922d5a203bd8ace5e22e0196a33",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error16",
+    "revision": "r1",
+    "sha256": "48eb964412d8136437cd075215855077c9920405a3f2a527882fa1599d6aaad9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error17",
+    "revision": "r1",
+    "sha256": "591e1e59264506caa52e857c4e61ca6296ceb57c51539b56d74c72ec3c291026",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error18",
+    "revision": "r1",
+    "sha256": "9a3fd389e007c48147dcfe80e7ace68107befaa014e72a238814b5d75540bb0d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error19",
+    "revision": "r1",
+    "sha256": "35a21ef88eb758e232d85bd8785b43ef498357527d40f4782a41b79d16d445b6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error20",
+    "revision": "r1",
+    "sha256": "ca0b503ece04d500827865f1b399152a9a192ad3d4752e24fbf15884129d6692",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error21",
+    "revision": "r1",
+    "sha256": "8208e1e73e27c89231a42c940840e4dc3f7e6551e24e40704040aaad709e0150",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error22",
+    "revision": "r1",
+    "sha256": "2dc1d657f73e170f8ab564c68968214ae6f3b8267a37b09f571d0ee0b7068211",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error23",
+    "revision": "r1",
+    "sha256": "a565bfe60a1b6f8e54194f0d72213e0711b178f42421cf7570790e7032f26614",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error24",
+    "revision": "r1",
+    "sha256": "6ddc50e0f3a4b513f7a4d927f55ae86fcd19ab0355c236a1f8515161cae1186f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error25",
+    "revision": "r1",
+    "sha256": "ace3ec32b2af1a1a81b113f0b99c3a8f45f4a8c9f96793b99cc7d3625c97be43",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error26",
+    "revision": "r1",
+    "sha256": "aa9dc370004f66246e052b3c869b8a19dedae2ab9c231cd96c3ee6770def3d52",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error27",
+    "revision": "r1",
+    "sha256": "8964f9404681a6bb5aaf03f017173fc00baed21ca1e07250b493177bf00f9ae1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error28",
+    "revision": "r1",
+    "sha256": "0087fabfcaa42bb6fbbe21477ad5d449702589cf6678fb03a776c6c2f397354b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error29",
+    "revision": "r1",
+    "sha256": "544ec7124af74ee06b7c3472234772e473037d4415c87645ed4b2dc906ff95f2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error30",
+    "revision": "r1",
+    "sha256": "489fd71aab4660186cdf66e50698e38f6a59526185b593e82dfb5557c3b30f19",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error31",
+    "revision": "r1",
+    "sha256": "fcfdc8ec17a79c846be1fa1db336031283ea9840182a7aaf425e3405195659ce",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error32",
+    "revision": "r1",
+    "sha256": "8aa66cffda4dbc94fab00d30ebf5def64fe438d4abfd3a91be547ab5f749b76c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error33",
+    "revision": "r1",
+    "sha256": "831b33fcbdaca5af017d6b90b3c41d942eb44bdf9021d80de59c950383137401",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error34",
+    "revision": "r1",
+    "sha256": "58d3358603903afdf5034c8d382fd6402a9421725a0e7ff056854e7ef8da82ae",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error35",
+    "revision": "r1",
+    "sha256": "2f941d09cd6fbf36ac54023b34a420de097542c2b9bb7c101985ca8a3db3132a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error36",
+    "revision": "r1",
+    "sha256": "bec3f737031da301c11f62d96b0df62387ae6d3459e7c8042c4a007d6b4ffab7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error37",
+    "revision": "r1",
+    "sha256": "6fad9fe269d8fdf16efb97f1a049513437fd712e317b2a02a7e5ef2827a2079a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error38",
+    "revision": "r1",
+    "sha256": "e692390b76b22dbb4a3fc405ed17fade5f3ba5e6fae35e38f0bdd97665efe026",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error39",
+    "revision": "r1",
+    "sha256": "57907874d9524c50fc4c4f10baa89e478c0cb7c6bdbc07152cc6758630e17cb8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error40",
+    "revision": "r1",
+    "sha256": "e3796e0656333c47ae52d5199e8b62835c6d5301b69f49428db8d44e67a2befd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error41",
+    "revision": "r1",
+    "sha256": "5b953efcb16f2604229ed663029547b13c26396aa98d960287d68462ccbf755d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error42",
+    "revision": "r1",
+    "sha256": "573ceb67c5eff287ba96aae7601487ad4d67361f5129c1bf6237c9964cecab15",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error43",
+    "revision": "r1",
+    "sha256": "e036a988ee8d917cf163bf981f7f287f616da7f8d1b93a38668d49f4e8e30bb7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error44",
+    "revision": "r1",
+    "sha256": "8358867b8bfca59120a20f1541d8caf5bcec1b38147bbc9447e4c3aaa9acaa7e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error45",
+    "revision": "r1",
+    "sha256": "29ee7f58d7e1a87cfe4a45c3b46b753c2286d016b99a5bb70caed4387559288a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error46",
+    "revision": "r1",
+    "sha256": "23ae9af90f3671707bb1f2a1c0bd9f1f4a8833192dad95ae9ab19b812f817a35",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error47",
+    "revision": "r1",
+    "sha256": "5f59e56a1ac08e03608226b744dab7ad85d85891511e27211916045bb1e5f585",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error48",
+    "revision": "r1",
+    "sha256": "0842134c39f01ed3d78823a8098264f7ce3954b6fac8fd1359c549517755cefe",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error49",
+    "revision": "r1",
+    "sha256": "9d1fa4a9b85a700a128d49331bcb06eee324878590b590a5485c53fa30800106",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error50",
+    "revision": "r1",
+    "sha256": "b61cef17f764faba4a46f492fc79acaa678b3e83a2d7eda33efa810a45a5ab0b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error51",
+    "revision": "r1",
+    "sha256": "ab550bcea91b34607f20ffa3e8bf8e44b715b99a2abcdab974b536e422abfc44",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error52",
+    "revision": "r1",
+    "sha256": "ac4ab7af67bcf77a0d86d952d7414d2957859c3c87f7f16f0ba77f05225045e4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error53",
+    "revision": "r1",
+    "sha256": "711edb1f72b9e95edf18def40e270acfc339c0e309ba7565431532c5758470fa",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error54",
+    "revision": "r1",
+    "sha256": "fae525ea9bd624131b042037d2092f2ad4eca98e379b0e9851cde8f8226b8e27",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error55",
+    "revision": "r1",
+    "sha256": "3f3b095b4cbbca5a0a4a40c26c0d0ca6e804355fb66e70ff9567755e97a65bdc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error56",
+    "revision": "r1",
+    "sha256": "4069a930ec807005ce120b4debd570c74ebc3bbb5546d0bf8b28801603eaa0fa",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error57",
+    "revision": "r1",
+    "sha256": "60f1ae226f45e4c9ae19361576cfae67b913a9f7c32d4b0d12db020dfd181f1d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error58",
+    "revision": "r1",
+    "sha256": "f3c9b4acd0d52576def2471046a107cfee344fa8be6d68997c3dc2dae703d45d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error59",
+    "revision": "r1",
+    "sha256": "65feb177955e6e89f011437ad186aebe15a472ac2c4889cdf23fe2e8a5568c12",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "c4ww-mission21",
+    "revision": "r1",
+    "sha256": "2ac8c64e8fd8317cfb48b4d22a3e103f5ce3085e8989010dc403f0ddaecb9add"
+   },
+   {
+    "missionId": "c4ww-mission22",
+    "revision": "r1",
+    "sha256": "004f2e426845596fc801e063b0f50f0c8ce19808fb9dbd904bcb769717fcc59a"
+   },
+   {
+    "missionId": "c4ww-mission23",
+    "revision": "r1",
+    "sha256": "f6165a23f9445be4ac04988fe91340282179b17faf448331c533e722d059081a"
+   },
+   {
+    "missionId": "c4ww-mission24",
+    "revision": "r1",
+    "sha256": "0037aab21ae99189423ed0f7250d3a66fecf61863f974aef89df66f12fed9cdc"
+   },
+   {
+    "missionId": "c4ww-mission25",
+    "revision": "r1",
+    "sha256": "e14c2703d9d5594de62543d7ea922829278f22d8cc29f3c13e31973cb0260cb3"
+   },
+   {
+    "missionId": "c4ww-mission26",
+    "revision": "r1",
+    "sha256": "71c0fd9390ed64f17de2a320c99c8f3a1d79b41b65217d39b1aeb1b328a49919"
+   },
+   {
+    "missionId": "c4ww-mission27",
+    "revision": "r1",
+    "sha256": "ace9e7957d9e02193ef867e6f06a2b272161d62df72ef1b588a749d219df44b6"
+   },
+   {
+    "missionId": "c4ww-mission28",
+    "revision": "r1",
+    "sha256": "c7cfbf28c3907e7f663daf7783adf2f0fbfe9b349f56ddc648612de58ff0c749"
+   },
+   {
+    "missionId": "c4ww-mission29",
+    "revision": "r1",
+    "sha256": "517ab6932ef361bbe7f16ad64ce87c73cb1b5db4d8d325f4733a7f242ce0bd1c"
+   },
+   {
+    "missionId": "c4ww-mission30",
+    "revision": "r1",
+    "sha256": "554923d286e5dd524240b6cf3f9b0044f83afaf3be109d2b4c3b41a4ad25611a"
+   },
+   {
+    "missionId": "c4ww-mission31",
+    "revision": "r1",
+    "sha256": "1aa79a1fd1b199255e498de694362adb98a855930f29a429b4ff636ee7059189"
+   },
+   {
+    "missionId": "c4ww-mission32",
+    "revision": "r1",
+    "sha256": "4e60c9e73089404b01f03df8a5b32ec0ead82ff93ad31a94f1d55ebb0784221b"
+   },
+   {
+    "missionId": "c4ww-mission33",
+    "revision": "r1",
+    "sha256": "ecb05e35ac2e07e54f5e82e459863f2830e51c5f17a88627788af30678ea0a76"
+   },
+   {
+    "missionId": "c4ww-mission34",
+    "revision": "r1",
+    "sha256": "ccd411138d82cb9a936912741c4985c1916888bf75e59d15eb419d6be1d1ca6a"
+   },
+   {
+    "missionId": "c4ww-mission35",
+    "revision": "r1",
+    "sha256": "a44264643b0a1931bcdfe00f2f499df5b9f9e6d5c5290366c2041301374191b6"
+   },
+   {
+    "missionId": "c4ww-mission36",
+    "revision": "r1",
+    "sha256": "7bb7db4ffda04aa58f9ffb53b0d9f60874252cb64d35d0a5575079de12154cb5"
+   },
+   {
+    "missionId": "c4ww-mission37",
+    "revision": "r1",
+    "sha256": "478fda07b6e47448fa64a828a88ae14cad6e88c4c8cea7707d37a916353cd5e0"
+   },
+   {
+    "missionId": "c4ww-mission38",
+    "revision": "r1",
+    "sha256": "a7120f3aa126da11ed94b69f249ff510c76e93e68ad719ff139c1b58ff049006"
+   },
+   {
+    "missionId": "c4ww-mission39",
+    "revision": "r1",
+    "sha256": "0e7a4f314ceddd5d2d92cb049c6b74570257e3bd7a91302767030c6acc8967b2"
+   },
+   {
+    "missionId": "c4ww-mission40",
+    "revision": "r1",
+    "sha256": "578f02d0896103e93eaf9ad2ddbc3967a6bd070e74d3d1be78cccc012338bfd2"
+   }
+  ]
+ }
+}

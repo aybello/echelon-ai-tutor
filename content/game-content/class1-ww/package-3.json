@@ -1,0 +1,4074 @@
+{
+ "courseKey": "class1-ww",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "c1ww-error60",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this food to microorganism calculation for BOD load = 600 kg/d, V = 1500 m3 and MLSS = 2000 mg/L.",
+   "topicId": "food-to-microorganism",
+   "level": "class1",
+   "assumptions": "Fictional aeration tank: BOD load = 600 kg/d, V = 1500 m3, MLSS = 2000 mg/L, 1000 g = 1 kg. Target: F/M per d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. MLSS mass = V * MLSS / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. MLSS mass = 1500 m3 * 2000 mg/L / 100 mg/kg factor = 30000 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. F/M = 600 kg/d / 30000 kg = 0.02 per d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. MLSS mass = 1500 m3 * 2000 mg/L / 1000 = 3000 kg",
+   "explanation": "Line 2 used the wrong conversion divisor. Correct MLSS mass is 3000 kg, so F/M is 600 / 3000 = 0.2 per d."
+  },
+  {
+   "id": "c1ww-error61",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sludge volume index calculation for settled volume = 150 mL/L and MLSS = 2500 mg/L.",
+   "topicId": "sludge-volume-index",
+   "level": "class1",
+   "assumptions": "Fictional settleability test: settled volume = 150 mL/L after 30 min, MLSS = 2500 mg/L. Target unit: mL/g.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SVI = Settled volume * 1000 / MLSS"
+    },
+    {
+     "id": "line2",
+     "label": "2. SVI = 150 mL/L * 100 / 2500 mg/L = 6 mL/g"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. SVI = 150 mL/L * 1000 / 2500 mg/L = 60 mL/g",
+   "explanation": "Line 2 multiplied by 100 instead of 1000. Correct SVI is 150 * 1000 / 2500 = 60 mL/g."
+  },
+  {
+   "id": "c1ww-error62",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sludge volume index calculation for settled volume = 120 mL/L and MLSS = 2000 mg/L.",
+   "topicId": "sludge-volume-index",
+   "level": "class1",
+   "assumptions": "Fictional settleability test: settled volume = 120 mL/L after 30 min, MLSS = 2000 mg/L. Target unit: mL/g.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SVI = Settled volume * 1000 / MLSS"
+    },
+    {
+     "id": "line2",
+     "label": "2. SVI = 120 mL/L * 1000 / 2000 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. SVI = 70 mL/g"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. SVI = 120 * 1000 / 2000 = 60 mL/g",
+   "explanation": "Line 3 computed incorrectly. 120 * 1000 / 2000 = 60 mL/g."
+  },
+  {
+   "id": "c1ww-error63",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sludge volume index calculation for settled volume = 180 mL/L and MLSS = 3000 mg/L.",
+   "topicId": "sludge-volume-index",
+   "level": "class1",
+   "assumptions": "Fictional settleability test: settled volume = 180 mL/L after 30 min, MLSS = 3000 mg/L. Target unit: mL/g.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SVI = Settled volume * 1000 / MLSS"
+    },
+    {
+     "id": "line2",
+     "label": "2. SVI = 180 mL/L * 100 / 3000 mg/L = 6 mL/g"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. SVI = 180 mL/L * 1000 / 3000 mg/L = 60 mL/g",
+   "explanation": "Line 2 multiplied by 100 instead of 1000. Correct SVI is 180 * 1000 / 3000 = 60 mL/g."
+  },
+  {
+   "id": "c1ww-error64",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sludge volume index calculation for settled volume = 100 mL/L and MLSS = 2500 mg/L.",
+   "topicId": "sludge-volume-index",
+   "level": "class1",
+   "assumptions": "Fictional settleability test: settled volume = 100 mL/L after 30 min, MLSS = 2500 mg/L. Target unit: mL/g.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SVI = Settled volume * 1000 / MLSS"
+    },
+    {
+     "id": "line2",
+     "label": "2. SVI = 100 mL/L * 1000 / 2500 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. SVI = 50 mL/g"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. SVI = 100 * 1000 / 2500 = 40 mL/g",
+   "explanation": "Line 3 computed incorrectly. 100 * 1000 / 2500 = 40 mL/g."
+  },
+  {
+   "id": "c1ww-error65",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sludge volume index calculation for settled volume = 200 mL/L and MLSS = 2500 mg/L.",
+   "topicId": "sludge-volume-index",
+   "level": "class1",
+   "assumptions": "Fictional settleability test: settled volume = 200 mL/L after 30 min, MLSS = 2500 mg/L. Target unit: mL/g.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SVI = Settled volume * 1000 / MLSS"
+    },
+    {
+     "id": "line2",
+     "label": "2. SVI = 200 mL/L * 100 / 2500 mg/L = 8 mL/g"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. SVI = 200 mL/L * 1000 / 2500 mg/L = 80 mL/g",
+   "explanation": "Line 2 multiplied by 100 instead of 1000. Correct SVI is 200 * 1000 / 2500 = 80 mL/g."
+  },
+  {
+   "id": "c1ww-error66",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sludge volume index calculation for settled volume = 90 mL/L and MLSS = 3000 mg/L.",
+   "topicId": "sludge-volume-index",
+   "level": "class1",
+   "assumptions": "Fictional settleability test: settled volume = 90 mL/L after 30 min, MLSS = 3000 mg/L. Target unit: mL/g.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SVI = Settled volume * 1000 / MLSS"
+    },
+    {
+     "id": "line2",
+     "label": "2. SVI = 90 mL/L * 1000 / 3000 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. SVI = 40 mL/g"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. SVI = 90 * 1000 / 3000 = 30 mL/g",
+   "explanation": "Line 3 computed incorrectly. 90 * 1000 / 3000 = 30 mL/g."
+  },
+  {
+   "id": "c1ww-error67",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sludge volume index calculation for settled volume = 140 mL/L and MLSS = 2000 mg/L.",
+   "topicId": "sludge-volume-index",
+   "level": "class1",
+   "assumptions": "Fictional settleability test: settled volume = 140 mL/L after 30 min, MLSS = 2000 mg/L. Target unit: mL/g.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SVI = Settled volume * 1000 / MLSS"
+    },
+    {
+     "id": "line2",
+     "label": "2. SVI = 140 mL/L * 100 / 2000 mg/L = 7 mL/g"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. SVI = 140 mL/L * 1000 / 2000 mg/L = 70 mL/g",
+   "explanation": "Line 2 multiplied by 100 instead of 1000. Correct SVI is 140 * 1000 / 2000 = 70 mL/g."
+  },
+  {
+   "id": "c1ww-error68",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sludge volume index calculation for settled volume = 160 mL/L and MLSS = 3200 mg/L.",
+   "topicId": "sludge-volume-index",
+   "level": "class1",
+   "assumptions": "Fictional settleability test: settled volume = 160 mL/L after 30 min, MLSS = 3200 mg/L. Target unit: mL/g.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SVI = Settled volume * 1000 / MLSS"
+    },
+    {
+     "id": "line2",
+     "label": "2. SVI = 160 mL/L * 1000 / 3200 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. SVI = 60 mL/g"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. SVI = 160 * 1000 / 3200 = 50 mL/g",
+   "explanation": "Line 3 computed incorrectly. 160 * 1000 / 3200 = 50 mL/g."
+  },
+  {
+   "id": "c1ww-error69",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sludge volume index calculation for settled volume = 110 mL/L and MLSS = 2200 mg/L.",
+   "topicId": "sludge-volume-index",
+   "level": "class1",
+   "assumptions": "Fictional settleability test: settled volume = 110 mL/L after 30 min, MLSS = 2200 mg/L. Target unit: mL/g.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SVI = Settled volume * 1000 / MLSS"
+    },
+    {
+     "id": "line2",
+     "label": "2. SVI = 110 mL/L * 100 / 2200 mg/L = 5 mL/g"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. SVI = 110 mL/L * 1000 / 2200 mg/L = 50 mL/g",
+   "explanation": "Line 2 multiplied by 100 instead of 1000. Correct SVI is 110 * 1000 / 2200 = 50 mL/g."
+  },
+  {
+   "id": "c1ww-error70",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sludge volume index calculation for settled volume = 175 mL/L and MLSS = 2500 mg/L.",
+   "topicId": "sludge-volume-index",
+   "level": "class1",
+   "assumptions": "Fictional settleability test: settled volume = 175 mL/L after 30 min, MLSS = 2500 mg/L. Target unit: mL/g.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SVI = Settled volume * 1000 / MLSS"
+    },
+    {
+     "id": "line2",
+     "label": "2. SVI = 175 mL/L * 1000 / 2500 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. SVI = 80 mL/g"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. SVI = 175 * 1000 / 2500 = 70 mL/g",
+   "explanation": "Line 3 computed incorrectly. 175 * 1000 / 2500 = 70 mL/g."
+  },
+  {
+   "id": "c1ww-error71",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this return activated sludge rate calculation for influent Q = 2000 m3/d and RAS flow = 1000 m3/d.",
+   "topicId": "return-sludge-rate",
+   "level": "class1",
+   "assumptions": "Fictional activated sludge plant: influent Q = 2000 m3/d, RAS flow = 1000 m3/d. Target: percent.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Return rate percent = RAS flow / Influent flow * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Return rate = 2000 m3/d / 1000 m3/d * 100 = 200 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Return rate = 1000 m3/d / 2000 m3/d * 100 = 50 percent",
+   "explanation": "Line 2 inverted the ratio. Return rate is RAS divided by influent flow, 1000 / 2000 * 100 = 50 percent."
+  },
+  {
+   "id": "c1ww-error72",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this return sludge setting calculation for influent Q = 2400 m3/d and target return rate = 50 percent.",
+   "topicId": "return-sludge-rate",
+   "level": "class1",
+   "assumptions": "Fictional activated sludge plant: influent Q = 2400 m3/d, target return rate = 50 percent. Target unit: m3/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Required RAS flow = Target percent / 100 * Influent flow"
+    },
+    {
+     "id": "line2",
+     "label": "2. Required RAS flow = 50 / 100 * 2400 m3/d = 1200 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Check: 1200 / 2400 * 100 = 50 percent, matches target"
+    },
+    {
+     "id": "line4",
+     "label": "4. Set RAS flow = 12000 m3/d"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Set RAS flow = 50 / 100 * 2400 = 1200 m3/d",
+   "explanation": "Line 4 ignored the correct result in line 2. The RAS flow that gives 50 percent is 1200 m3/d."
+  },
+  {
+   "id": "c1ww-error73",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this return activated sludge rate calculation for influent Q = 3000 m3/d and RAS flow = 1500 m3/d.",
+   "topicId": "return-sludge-rate",
+   "level": "class1",
+   "assumptions": "Fictional activated sludge plant: influent Q = 3000 m3/d, RAS flow = 1500 m3/d. Target: percent.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Return rate percent = RAS flow / Influent flow * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Return rate = 3000 m3/d / 1500 m3/d * 100 = 200 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Return rate = 1500 m3/d / 3000 m3/d * 100 = 50 percent",
+   "explanation": "Line 2 inverted the ratio. Return rate is RAS divided by influent flow, 1500 / 3000 * 100 = 50 percent."
+  },
+  {
+   "id": "c1ww-error74",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this return sludge setting calculation for influent Q = 2000 m3/d and target return rate = 25 percent.",
+   "topicId": "return-sludge-rate",
+   "level": "class1",
+   "assumptions": "Fictional activated sludge plant: influent Q = 2000 m3/d, target return rate = 25 percent. Target unit: m3/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Required RAS flow = Target percent / 100 * Influent flow"
+    },
+    {
+     "id": "line2",
+     "label": "2. Required RAS flow = 25 / 100 * 2000 m3/d = 500 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Check: 500 / 2000 * 100 = 25 percent, matches target"
+    },
+    {
+     "id": "line4",
+     "label": "4. Set RAS flow = 5000 m3/d"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Set RAS flow = 25 / 100 * 2000 = 500 m3/d",
+   "explanation": "Line 4 ignored the correct result in line 2. The RAS flow that gives 25 percent is 500 m3/d."
+  },
+  {
+   "id": "c1ww-error75",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this return activated sludge rate calculation for influent Q = 2500 m3/d and RAS flow = 1250 m3/d.",
+   "topicId": "return-sludge-rate",
+   "level": "class1",
+   "assumptions": "Fictional activated sludge plant: influent Q = 2500 m3/d, RAS flow = 1250 m3/d. Target: percent.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Return rate percent = RAS flow / Influent flow * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Return rate = 2500 m3/d / 1250 m3/d * 100 = 200 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Return rate = 1250 m3/d / 2500 m3/d * 100 = 50 percent",
+   "explanation": "Line 2 inverted the ratio. Return rate is RAS divided by influent flow, 1250 / 2500 * 100 = 50 percent."
+  },
+  {
+   "id": "c1ww-error76",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this return sludge setting calculation for influent Q = 1800 m3/d and target return rate = 50 percent.",
+   "topicId": "return-sludge-rate",
+   "level": "class1",
+   "assumptions": "Fictional activated sludge plant: influent Q = 1800 m3/d, target return rate = 50 percent. Target unit: m3/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Required RAS flow = Target percent / 100 * Influent flow"
+    },
+    {
+     "id": "line2",
+     "label": "2. Required RAS flow = 50 / 100 * 1800 m3/d = 900 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Check: 900 / 1800 * 100 = 50 percent, matches target"
+    },
+    {
+     "id": "line4",
+     "label": "4. Set RAS flow = 9000 m3/d"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Set RAS flow = 50 / 100 * 1800 = 900 m3/d",
+   "explanation": "Line 4 ignored the correct result in line 2. The RAS flow that gives 50 percent is 900 m3/d."
+  },
+  {
+   "id": "c1ww-error77",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this return activated sludge rate calculation for influent Q = 4000 m3/d and RAS flow = 1000 m3/d.",
+   "topicId": "return-sludge-rate",
+   "level": "class1",
+   "assumptions": "Fictional activated sludge plant: influent Q = 4000 m3/d, RAS flow = 1000 m3/d. Target: percent.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Return rate percent = RAS flow / Influent flow * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Return rate = 4000 m3/d / 1000 m3/d * 100 = 400 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Return rate = 1000 m3/d / 4000 m3/d * 100 = 25 percent",
+   "explanation": "Line 2 inverted the ratio. Return rate is RAS divided by influent flow, 1000 / 4000 * 100 = 25 percent."
+  },
+  {
+   "id": "c1ww-error78",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this return sludge setting calculation for influent Q = 1500 m3/d and target return rate = 50 percent.",
+   "topicId": "return-sludge-rate",
+   "level": "class1",
+   "assumptions": "Fictional activated sludge plant: influent Q = 1500 m3/d, target return rate = 50 percent. Target unit: m3/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Required RAS flow = Target percent / 100 * Influent flow"
+    },
+    {
+     "id": "line2",
+     "label": "2. Required RAS flow = 50 / 100 * 1500 m3/d = 750 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Check: 750 / 1500 * 100 = 50 percent, matches target"
+    },
+    {
+     "id": "line4",
+     "label": "4. Set RAS flow = 7500 m3/d"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Set RAS flow = 50 / 100 * 1500 = 750 m3/d",
+   "explanation": "Line 4 ignored the correct result in line 2. The RAS flow that gives 50 percent is 750 m3/d."
+  },
+  {
+   "id": "c1ww-error79",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this return activated sludge rate calculation for influent Q = 2800 m3/d and RAS flow = 700 m3/d.",
+   "topicId": "return-sludge-rate",
+   "level": "class1",
+   "assumptions": "Fictional activated sludge plant: influent Q = 2800 m3/d, RAS flow = 700 m3/d. Target: percent.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Return rate percent = RAS flow / Influent flow * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Return rate = 2800 m3/d / 700 m3/d * 100 = 400 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Return rate = 700 m3/d / 2800 m3/d * 100 = 25 percent",
+   "explanation": "Line 2 inverted the ratio. Return rate is RAS divided by influent flow, 700 / 2800 * 100 = 25 percent."
+  },
+  {
+   "id": "c1ww-error80",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this return sludge setting calculation for influent Q = 3200 m3/d and target return rate = 50 percent.",
+   "topicId": "return-sludge-rate",
+   "level": "class1",
+   "assumptions": "Fictional activated sludge plant: influent Q = 3200 m3/d, target return rate = 50 percent. Target unit: m3/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Required RAS flow = Target percent / 100 * Influent flow"
+    },
+    {
+     "id": "line2",
+     "label": "2. Required RAS flow = 50 / 100 * 3200 m3/d = 1600 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Check: 1600 / 3200 * 100 = 50 percent, matches target"
+    },
+    {
+     "id": "line4",
+     "label": "4. Set RAS flow = 16000 m3/d"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Set RAS flow = 50 / 100 * 3200 = 1600 m3/d",
+   "explanation": "Line 4 ignored the correct result in line 2. The RAS flow that gives 50 percent is 1600 m3/d."
+  },
+  {
+   "id": "c1ww-error81",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chlorine feed calculation for dose = 2 mg/L and Q = 5000 m3/d.",
+   "topicId": "chemical-feed-disinfection",
+   "level": "class1",
+   "assumptions": "Fictional effluent disinfection: chlorine dose = 2 mg/L, Q = 5000 m3/d, 1000 g = 1 kg. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Chlorine mass = Dose * Q / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Chlorine mass = 2 mg/L * 5000 m3/d / 100 mg factor = 100 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Chlorine mass = 2 mg/L * 5000 m3/d / 1000 = 10 kg/d",
+   "explanation": "Line 2 used the wrong divisor. Correct mass is 2 * 5000 / 1000 = 10 kg/d."
+  },
+  {
+   "id": "c1ww-error82",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this hypochlorite feed calculation for dose = 3 mg/L, Q = 4000 m3/d and solution strength = 100 g/L.",
+   "topicId": "chemical-feed-disinfection",
+   "level": "class1",
+   "assumptions": "Fictional disinfection feed: dose = 3 mg/L, Q = 4000 m3/d, solution strength = 100 g/L, 1000 g = 1 kg. Target unit: L/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Chlorine mass = 3 mg/L * 4000 m3/d / 1000 = 12 kg/d"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solution feed = Mass in g/d / Strength = 12000 g/d / 100 g/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solution feed = 240 L/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Solution feed = 12000 / 100 = 120 L/d",
+   "explanation": "Line 3 divided incorrectly. 12000 g/d / 100 g/L = 120 L/d."
+  },
+  {
+   "id": "c1ww-error83",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chlorine feed calculation for dose = 2.5 mg/L and Q = 4000 m3/d.",
+   "topicId": "chemical-feed-disinfection",
+   "level": "class1",
+   "assumptions": "Fictional effluent disinfection: chlorine dose = 2.5 mg/L, Q = 4000 m3/d, 1000 g = 1 kg. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Chlorine mass = Dose * Q / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Chlorine mass = 2.5 mg/L * 4000 m3/d / 100 mg factor = 100 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Chlorine mass = 2.5 mg/L * 4000 m3/d / 1000 = 10 kg/d",
+   "explanation": "Line 2 used the wrong divisor. Correct mass is 2.5 * 4000 / 1000 = 10 kg/d."
+  },
+  {
+   "id": "c1ww-error84",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this hypochlorite feed calculation for dose = 1.5 mg/L, Q = 6000 m3/d and solution strength = 100 g/L.",
+   "topicId": "chemical-feed-disinfection",
+   "level": "class1",
+   "assumptions": "Fictional disinfection feed: dose = 1.5 mg/L, Q = 6000 m3/d, solution strength = 100 g/L, 1000 g = 1 kg. Target unit: L/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Chlorine mass = 1.5 mg/L * 6000 m3/d / 1000 = 9 kg/d"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solution feed = Mass in g/d / Strength = 9000 g/d / 100 g/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solution feed = 180 L/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Solution feed = 9000 / 100 = 90 L/d",
+   "explanation": "Line 3 divided incorrectly. 9000 g/d / 100 g/L = 90 L/d."
+  },
+  {
+   "id": "c1ww-error85",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chlorine feed calculation for dose = 4 mg/L and Q = 2500 m3/d.",
+   "topicId": "chemical-feed-disinfection",
+   "level": "class1",
+   "assumptions": "Fictional effluent disinfection: chlorine dose = 4 mg/L, Q = 2500 m3/d, 1000 g = 1 kg. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Chlorine mass = Dose * Q / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Chlorine mass = 4 mg/L * 2500 m3/d / 100 mg factor = 100 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Chlorine mass = 4 mg/L * 2500 m3/d / 1000 = 10 kg/d",
+   "explanation": "Line 2 used the wrong divisor. Correct mass is 4 * 2500 / 1000 = 10 kg/d."
+  },
+  {
+   "id": "c1ww-error86",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this hypochlorite feed calculation for dose = 2 mg/L, Q = 3000 m3/d and solution strength = 100 g/L.",
+   "topicId": "chemical-feed-disinfection",
+   "level": "class1",
+   "assumptions": "Fictional disinfection feed: dose = 2 mg/L, Q = 3000 m3/d, solution strength = 100 g/L, 1000 g = 1 kg. Target unit: L/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Chlorine mass = 2 mg/L * 3000 m3/d / 1000 = 6 kg/d"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solution feed = Mass in g/d / Strength = 6000 g/d / 100 g/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solution feed = 120 L/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Solution feed = 6000 / 100 = 60 L/d",
+   "explanation": "Line 3 divided incorrectly. 6000 g/d / 100 g/L = 60 L/d."
+  },
+  {
+   "id": "c1ww-error87",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chlorine feed calculation for dose = 5 mg/L and Q = 2000 m3/d.",
+   "topicId": "chemical-feed-disinfection",
+   "level": "class1",
+   "assumptions": "Fictional effluent disinfection: chlorine dose = 5 mg/L, Q = 2000 m3/d, 1000 g = 1 kg. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Chlorine mass = Dose * Q / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Chlorine mass = 5 mg/L * 2000 m3/d / 100 mg factor = 100 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Chlorine mass = 5 mg/L * 2000 m3/d / 1000 = 10 kg/d",
+   "explanation": "Line 2 used the wrong divisor. Correct mass is 5 * 2000 / 1000 = 10 kg/d."
+  },
+  {
+   "id": "c1ww-error88",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this hypochlorite feed calculation for dose = 3 mg/L, Q = 5000 m3/d and solution strength = 100 g/L.",
+   "topicId": "chemical-feed-disinfection",
+   "level": "class1",
+   "assumptions": "Fictional disinfection feed: dose = 3 mg/L, Q = 5000 m3/d, solution strength = 100 g/L, 1000 g = 1 kg. Target unit: L/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Chlorine mass = 3 mg/L * 5000 m3/d / 1000 = 15 kg/d"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solution feed = Mass in g/d / Strength = 15000 g/d / 100 g/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solution feed = 300 L/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Solution feed = 15000 / 100 = 150 L/d",
+   "explanation": "Line 3 divided incorrectly. 15000 g/d / 100 g/L = 150 L/d."
+  },
+  {
+   "id": "c1ww-error89",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chlorine feed calculation for dose = 1 mg/L and Q = 8000 m3/d.",
+   "topicId": "chemical-feed-disinfection",
+   "level": "class1",
+   "assumptions": "Fictional effluent disinfection: chlorine dose = 1 mg/L, Q = 8000 m3/d, 1000 g = 1 kg. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Chlorine mass = Dose * Q / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Chlorine mass = 1 mg/L * 8000 m3/d / 100 mg factor = 80 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Chlorine mass = 1 mg/L * 8000 m3/d / 1000 = 8 kg/d",
+   "explanation": "Line 2 used the wrong divisor. Correct mass is 1 * 8000 / 1000 = 8 kg/d."
+  },
+  {
+   "id": "c1ww-error90",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this hypochlorite feed calculation for dose = 2.5 mg/L, Q = 6000 m3/d and solution strength = 100 g/L.",
+   "topicId": "chemical-feed-disinfection",
+   "level": "class1",
+   "assumptions": "Fictional disinfection feed: dose = 2.5 mg/L, Q = 6000 m3/d, solution strength = 100 g/L, 1000 g = 1 kg. Target unit: L/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Chlorine mass = 2.5 mg/L * 6000 m3/d / 1000 = 15 kg/d"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solution feed = Mass in g/d / Strength = 15000 g/d / 100 g/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solution feed = 300 L/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Solution feed = 15000 / 100 = 150 L/d",
+   "explanation": "Line 3 divided incorrectly. 15000 g/d / 100 g/L = 150 L/d."
+  },
+  {
+   "id": "c1ww-error91",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this wet well fill time calculation for V = 9 m3 and inflow = 25 L/s.",
+   "topicId": "wet-well-timing",
+   "level": "class1",
+   "assumptions": "Fictional wet well: usable volume = 9 m3, inflow = 25 L/s, 1000 L = 1 m3, 60 s = 1 min, pump off. Target unit: min.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Fill time = V / Q in"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q in = 25 L/s * 60 s/min / 100 L/m3 = 15 m3/min"
+    },
+    {
+     "id": "line3",
+     "label": "3. Fill time = 9 m3 / 15 m3/min = 0.6 min"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Q in = 25 L/s * 60 s/min / 1000 L/m3 = 1.5 m3/min",
+   "explanation": "Line 2 divided by 100 instead of 1000 L/m3. Correct inflow is 1.5 m3/min, giving a fill time of 6 min."
+  },
+  {
+   "id": "c1ww-error92",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this wet well fill time calculation for V = 12 m3 and inflow = 20 L/s.",
+   "topicId": "wet-well-timing",
+   "level": "class1",
+   "assumptions": "Fictional wet well: usable volume = 12 m3, inflow = 20 L/s, 1000 L = 1 m3, 60 s = 1 min, pump off. Target unit: min.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Fill time = V / Q in"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q in = 20 L/s * 60 s/min / 100 L/m3 = 12 m3/min"
+    },
+    {
+     "id": "line3",
+     "label": "3. Fill time = 12 m3 / 12 m3/min = 1 min"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Q in = 20 L/s * 60 s/min / 1000 L/m3 = 1.2 m3/min",
+   "explanation": "Line 2 divided by 100 instead of 1000 L/m3. Correct inflow is 1.2 m3/min, giving a fill time of 10 min."
+  },
+  {
+   "id": "c1ww-error93",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this wet well fill time calculation for V = 9 m3 and inflow = 15 L/s.",
+   "topicId": "wet-well-timing",
+   "level": "class1",
+   "assumptions": "Fictional wet well: usable volume = 9 m3, inflow = 15 L/s, 1000 L = 1 m3, 60 s = 1 min, pump off. Target unit: min.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Fill time = V / Q in"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q in = 15 L/s * 60 s/min / 100 L/m3 = 9 m3/min"
+    },
+    {
+     "id": "line3",
+     "label": "3. Fill time = 9 m3 / 9 m3/min = 1 min"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Q in = 15 L/s * 60 s/min / 1000 L/m3 = 0.9 m3/min",
+   "explanation": "Line 2 divided by 100 instead of 1000 L/m3. Correct inflow is 0.9 m3/min, giving a fill time of 10 min."
+  },
+  {
+   "id": "c1ww-error94",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pump run time calculation for V = 9 m3, pump rate = 2 m3/min and inflow = 0.5 m3/min.",
+   "topicId": "pump-run-time",
+   "level": "class1",
+   "assumptions": "Fictional wet well pump cycle: drawdown volume = 9 m3, pump rate = 2 m3/min, inflow = 0.5 m3/min. Target unit: min.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Net drawdown rate = Pump rate - Inflow rate"
+    },
+    {
+     "id": "line2",
+     "label": "2. Net rate = 2 m3/min - 0.5 m3/min = 1.5 m3/min"
+    },
+    {
+     "id": "line3",
+     "label": "3. Pump run time = V / Net rate = 9 m3 / 1.5 m3/min"
+    },
+    {
+     "id": "line4",
+     "label": "4. Pump run time = 3.6 min"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Pump run time = 9 / 1.5 = 6 min",
+   "explanation": "Line 4 computed incorrectly. 9 / 1.5 = 6 min."
+  },
+  {
+   "id": "c1ww-error95",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pump run time calculation for V = 12 m3, pump rate = 2.5 m3/min and inflow = 0.5 m3/min.",
+   "topicId": "pump-run-time",
+   "level": "class1",
+   "assumptions": "Fictional wet well pump cycle: drawdown volume = 12 m3, pump rate = 2.5 m3/min, inflow = 0.5 m3/min. Target unit: min.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Net drawdown rate = Pump rate - Inflow rate"
+    },
+    {
+     "id": "line2",
+     "label": "2. Net rate = 2.5 m3/min - 0.5 m3/min = 2 m3/min"
+    },
+    {
+     "id": "line3",
+     "label": "3. Pump run time = V / Net rate = 12 m3 / 2 m3/min"
+    },
+    {
+     "id": "line4",
+     "label": "4. Pump run time = 4 min"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Pump run time = 12 / 2 = 6 min",
+   "explanation": "Line 4 computed incorrectly. 12 / 2 = 6 min."
+  },
+  {
+   "id": "c1ww-error96",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pump run time calculation for V = 8 m3, pump rate = 1.5 m3/min and inflow = 0.5 m3/min.",
+   "topicId": "pump-run-time",
+   "level": "class1",
+   "assumptions": "Fictional wet well pump cycle: drawdown volume = 8 m3, pump rate = 1.5 m3/min, inflow = 0.5 m3/min. Target unit: min.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Net drawdown rate = Pump rate - Inflow rate"
+    },
+    {
+     "id": "line2",
+     "label": "2. Net rate = 1.5 m3/min - 0.5 m3/min = 1 m3/min"
+    },
+    {
+     "id": "line3",
+     "label": "3. Pump run time = V / Net rate = 8 m3 / 1 m3/min"
+    },
+    {
+     "id": "line4",
+     "label": "4. Pump run time = 4 min"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Pump run time = 8 / 1 = 8 min",
+   "explanation": "Line 4 computed incorrectly. 8 / 1 = 8 min."
+  },
+  {
+   "id": "c1ww-error97",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this flow conversion for Q = 25 L/s to m3/d.",
+   "topicId": "flow-conversion",
+   "level": "class1",
+   "assumptions": "Fictional flow conversion: Q = 25 L/s, 86400 s = 1 d, 1000 L = 1 m3. Target unit: m3/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Q in m3/d = Q in L/s * 86400 s/d / 1000 L/m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q = 25 L/s * 864 s/d / 1000 L/m3 = 21600 m3/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Q = 25 L/s * 86400 s/d / 1000 L/m3 = 2160 m3/d",
+   "explanation": "Line 2 used 864 s/d instead of 86400 s/d. Correct flow is 25 * 86400 / 1000 = 2160 m3/d."
+  },
+  {
+   "id": "c1ww-error98",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this flow conversion for Q = 50 L/s to m3/d.",
+   "topicId": "flow-conversion",
+   "level": "class1",
+   "assumptions": "Fictional flow conversion: Q = 50 L/s, 86400 s = 1 d, 1000 L = 1 m3. Target unit: m3/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Q in m3/d = Q in L/s * 86400 s/d / 1000 L/m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q = 50 L/s * 864 s/d / 1000 L/m3 = 43200 m3/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Q = 50 L/s * 86400 s/d / 1000 L/m3 = 4320 m3/d",
+   "explanation": "Line 2 used 864 s/d instead of 86400 s/d. Correct flow is 50 * 86400 / 1000 = 4320 m3/d."
+  },
+  {
+   "id": "c1ww-error99",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this composite sampling calculation for total volume = 2000 mL over 4 equal intervals.",
+   "topicId": "composite-sampling",
+   "level": "class1",
+   "assumptions": "Fictional composite sampler with equal intervals: total = 2000 mL, intervals = 4. Target unit: mL per interval.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Aliquot per interval = Total volume / Number of intervals"
+    },
+    {
+     "id": "line2",
+     "label": "2. Aliquot = 2000 mL / 4 intervals"
+    },
+    {
+     "id": "line3",
+     "label": "3. Aliquot = 333 mL per interval"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Aliquot = 2000 / 4 = 500 mL per interval",
+   "explanation": "Line 3 divided incorrectly. 2000 / 4 = 500 mL per interval."
+  },
+  {
+   "id": "c1ww-process01",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for starting up a fictional wastewater plant after an overnight shutdown.",
+   "topicId": "process-plant-startup",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: whole plant, from log review to normal operation.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Inspect screens, pumps, and blowers for readiness"
+    },
+    {
+     "id": "step-04",
+     "label": "Open the influent isolation gate gradually"
+    },
+    {
+     "id": "step-05",
+     "label": "Start preliminary and primary units as flow arrives"
+    },
+    {
+     "id": "step-06",
+     "label": "Start aeration blowers and return sludge pumps for the biological units"
+    },
+    {
+     "id": "step-07",
+     "label": "Verify flows, tank levels, and effluent quality before settling into normal operation"
+    },
+    {
+     "id": "step-01",
+     "label": "Review the shift log and check for outstanding alarms"
+    },
+    {
+     "id": "step-02",
+     "label": "Remove lockout devices by authorized staff and restore power to units"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06",
+    "step-07"
+   ],
+   "explanation": "Alarms and lockouts are cleared first, equipment is checked before flow is admitted, treatment units start in flow order, and verification confirms the plant is stable."
+  },
+  {
+   "id": "c1ww-process02",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a planned shutdown of one treatment unit for maintenance.",
+   "topicId": "process-planned-shutdown",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: one unit being isolated while the rest of the plant keeps treating flow.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Stop chemical feeds serving only the unit being isolated"
+    },
+    {
+     "id": "step-04",
+     "label": "Drain and flush the isolated unit"
+    },
+    {
+     "id": "step-05",
+     "label": "Apply lockout and tagout to the unit equipment"
+    },
+    {
+     "id": "step-06",
+     "label": "Test the atmosphere and confirm safe conditions if entry is required"
+    },
+    {
+     "id": "step-07",
+     "label": "Open the unit for maintenance work"
+    },
+    {
+     "id": "step-01",
+     "label": "Notify the supervisor and affected staff of the planned isolation"
+    },
+    {
+     "id": "step-02",
+     "label": "Divert influent flow to the remaining units or holding capacity"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06",
+    "step-07"
+   ],
+   "explanation": "Flow is diverted before the unit is emptied, lockout follows draining, atmospheric testing comes after isolation, and only then is the unit opened for work."
+  },
+  {
+   "id": "c1ww-process03",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for starting up an empty aeration basin for the first time.",
+   "topicId": "process-aeration-basin-startup",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: clean, empty aeration basin with installed diffusers, no mixed liquor yet.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Fill the basin with primary effluent until the diffusers are covered"
+    },
+    {
+     "id": "step-04",
+     "label": "Start the blower at low air output and check for an even bubble pattern"
+    },
+    {
+     "id": "step-05",
+     "label": "Add seed sludge from an operating unit or a delivered seed source"
+    },
+    {
+     "id": "step-06",
+     "label": "Begin influent feed at a low rate"
+    },
+    {
+     "id": "step-07",
+     "label": "Monitor dissolved oxygen and adjust air as the biomass establishes"
+    },
+    {
+     "id": "step-01",
+     "label": "Inspect the basin, diffusers, and air piping for damage or debris"
+    },
+    {
+     "id": "step-02",
+     "label": "Close the basin drain valve and open the inlet gate"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06",
+    "step-07"
+   ],
+   "explanation": "The basin is inspected dry, filled before air is applied so the diffuser pattern can be seen, seeded before regular feed, and monitored as loading begins."
+  },
+  {
+   "id": "c1ww-process04",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for returning a drained clarifier to service.",
+   "topicId": "process-clarifier-return-to-service",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: circular clarifier emptied for inspection, drive and scraper repaired.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Close the drain valve and confirm the sludge outlet line is open"
+    },
+    {
+     "id": "step-01",
+     "label": "Inspect the tank, drive, and scraper and remove all tools and debris"
+    },
+    {
+     "id": "step-06",
+     "label": "Check effluent clarity at the launder before full loading"
+    },
+    {
+     "id": "step-05",
+     "label": "Start sludge withdrawal on a timed cycle once a blanket begins to form"
+    },
+    {
+     "id": "step-04",
+     "label": "Start the scraper drive once the tank is filling"
+    },
+    {
+     "id": "step-03",
+     "label": "Open the inlet gate and begin filling the clarifier slowly"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Tools are out before filling, the drive starts as water enters, sludge withdrawal waits until a blanket exists, and clarity is confirmed last."
+  },
+  {
+   "id": "c1ww-process05",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for changing over from a running blower to the standby blower.",
+   "topicId": "process-blower-changeover",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: aeration air supply, one duty blower and one standby blower.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Start the standby blower and open its discharge to the air header"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm the standby blower is ready and its valves are lined up"
+    },
+    {
+     "id": "step-06",
+     "label": "Check basin dissolved oxygen and log the changeover"
+    },
+    {
+     "id": "step-05",
+     "label": "Close the discharge isolation valve on the stopped blower"
+    },
+    {
+     "id": "step-04",
+     "label": "Stop the unloaded blower"
+    },
+    {
+     "id": "step-03",
+     "label": "Unload the running blower as header pressure stabilizes"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Air supply is never interrupted: the standby machine is proven on the header before the duty machine is unloaded, stopped, and isolated."
+  },
+  {
+   "id": "c1ww-process06",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for restarting the plant after a utility power outage.",
+   "topicId": "process-power-outage-restart",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: power has just been restored after a two hour outage.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Restart the influent pumps one at a time"
+    },
+    {
+     "id": "step-04",
+     "label": "Restart the screens and grit equipment"
+    },
+    {
+     "id": "step-05",
+     "label": "Restart blowers and return sludge pumps"
+    },
+    {
+     "id": "step-06",
+     "label": "Check the clarifiers and the disinfection system"
+    },
+    {
+     "id": "step-07",
+     "label": "Log the outage, the restart times, and any abnormal findings"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm power is restored and review the alarm list"
+    },
+    {
+     "id": "step-02",
+     "label": "Inspect wet well levels and reset tripped equipment"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06",
+    "step-07"
+   ],
+   "explanation": "Power and alarms are assessed first, pumping is restored before downstream process equipment, and disinfection is verified before the event is documented."
+  },
+  {
+   "id": "c1ww-process07",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for taking one of two grit channels out of service for cleaning.",
+   "topicId": "process-grit-channel-isolation",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: twin grit channels, one stays in service.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Close the inlet gate on the channel being removed"
+    },
+    {
+     "id": "step-01",
+     "label": "Shift all flow to the channel that stays in service"
+    },
+    {
+     "id": "step-06",
+     "label": "Remove the lockout and refill the channel before returning it to standby"
+    },
+    {
+     "id": "step-05",
+     "label": "Remove the collected grit and wash the channel down"
+    },
+    {
+     "id": "step-04",
+     "label": "Apply lockout to the channel rake and drive equipment"
+    },
+    {
+     "id": "step-03",
+     "label": "Drain the isolated channel back to the wet well"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Flow is fully on the duty channel before isolation, draining precedes lockout and cleaning, and the channel is only refilled after lockout is cleared."
+  },
+  {
+   "id": "c1ww-process08",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for placing a newly installed process pump into service.",
+   "topicId": "process-new-pump-commissioning",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: new centrifugal pump, installation complete, not yet run on process liquid.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Prime the pump casing and open the suction valve fully"
+    },
+    {
+     "id": "step-04",
+     "label": "Start the pump with the discharge valve partly closed"
+    },
+    {
+     "id": "step-05",
+     "label": "Open the discharge valve gradually to the normal operating position"
+    },
+    {
+     "id": "step-06",
+     "label": "Check amps, vibration, seals, and piping for leaks under load"
+    },
+    {
+     "id": "step-07",
+     "label": "Record the baseline readings in the equipment log"
+    },
+    {
+     "id": "step-01",
+     "label": "Review the manufacturer instructions and the installation checklist"
+    },
+    {
+     "id": "step-02",
+     "label": "Check the coupling alignment and confirm correct motor rotation with a bump start"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06",
+    "step-07"
+   ],
+   "explanation": "Rotation is proven before priming, the pump starts against a partly closed discharge to limit load, and baseline readings are taken only under normal load."
+  },
+  {
+   "id": "c1ww-process09",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for hand raking a manual bar screen during a shift.",
+   "topicId": "process-manual-screen-raking",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: manually raked coarse screen in the headworks channel.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Slow or divert flow in the screen channel using the upstream gate"
+    },
+    {
+     "id": "step-01",
+     "label": "Put on gloves and eye protection and check the portable gas monitor reading"
+    },
+    {
+     "id": "step-06",
+     "label": "Restore normal flow through the channel and record the amount removed"
+    },
+    {
+     "id": "step-05",
+     "label": "Wash down the screen area and the rake"
+    },
+    {
+     "id": "step-04",
+     "label": "Transfer the screenings into the lined screenings container"
+    },
+    {
+     "id": "step-03",
+     "label": "Rake screenings from the bottom of the bars upward into the collection tray"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Protective equipment and gas checking come first, flow is controlled before raking, screenings are contained before washdown, and flow restoration is last."
+  },
+  {
+   "id": "c1ww-process10",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for starting a mechanical bar screen after maintenance.",
+   "topicId": "process-mechanical-screen-startup",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: mechanically raked screen with wash water and a screenings compactor.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Remove lockout devices and restore power to the screen panel"
+    },
+    {
+     "id": "step-01",
+     "label": "Inspect the screen, rake, and channel and confirm all tools are removed"
+    },
+    {
+     "id": "step-06",
+     "label": "Place the screen in automatic mode and verify level based starting"
+    },
+    {
+     "id": "step-05",
+     "label": "Start the screen drive and observe one full rake cycle"
+    },
+    {
+     "id": "step-04",
+     "label": "Start the screenings compactor"
+    },
+    {
+     "id": "step-03",
+     "label": "Open the wash water supply valve"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The channel is clear before power returns, wash water and the compactor must be ready before screenings are produced, and automatic control is last."
+  },
+  {
+   "id": "c1ww-process100",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a shift handover between two operators.",
+   "topicId": "process-shift-handover",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: outgoing day shift operator handing over to the night shift operator.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "List equipment out of service and any active lockouts"
+    },
+    {
+     "id": "step-01",
+     "label": "Review the shift log and the key process trends together"
+    },
+    {
+     "id": "step-06",
+     "label": "Both operators sign the handover record"
+    },
+    {
+     "id": "step-05",
+     "label": "Walk the incoming operator through any critical unit needing attention"
+    },
+    {
+     "id": "step-04",
+     "label": "Highlight active alarms, pending samples, and expected deliveries"
+    },
+    {
+     "id": "step-03",
+     "label": "Explain process changes made during the shift and why"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The log review frames the handover, lockouts and changes are covered before alarms and pending work, and signatures close the transfer of responsibility."
+  },
+  {
+   "id": "c1ww-process11",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for handling a full container of screenings through to disposal.",
+   "topicId": "process-screenings-handling",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: filled screenings container at the headworks.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Close and secure the container lid"
+    },
+    {
+     "id": "step-01",
+     "label": "Drain free liquid from the container back to the screen channel"
+    },
+    {
+     "id": "step-06",
+     "label": "Wash and return the empty container to the headworks"
+    },
+    {
+     "id": "step-05",
+     "label": "Arrange pickup by the approved disposal hauler"
+    },
+    {
+     "id": "step-04",
+     "label": "Record the container weight or volume in the solids log"
+    },
+    {
+     "id": "step-03",
+     "label": "Move the sealed container to the designated storage area"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Liquid drains back to the process before the container is sealed, records are made before pickup, and the washed container returns last."
+  },
+  {
+   "id": "c1ww-process12",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for starting an aerated grit tank.",
+   "topicId": "process-aerated-grit-startup",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: aerated grit tank with air blowers, a grit pump, and a grit classifier.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Start the air blower at a low setting"
+    },
+    {
+     "id": "step-01",
+     "label": "Open the tank inlet gate and admit flow"
+    },
+    {
+     "id": "step-06",
+     "label": "Check that the discharged grit looks clean and low in organics"
+    },
+    {
+     "id": "step-05",
+     "label": "Direct pumped grit to the classifier"
+    },
+    {
+     "id": "step-04",
+     "label": "Start the grit pump on its timed cycle"
+    },
+    {
+     "id": "step-03",
+     "label": "Adjust the air until a gentle rolling motion carries organics forward while grit settles"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Flow and air establish the rolling pattern before grit is pumped, and the quality of the washed grit is the final check."
+  },
+  {
+   "id": "c1ww-process13",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for running and then shutting down a grit classifier.",
+   "topicId": "process-grit-classifier-operation",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: screw type grit classifier receiving pumped grit slurry.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Start the grit pump feeding slurry to the classifier"
+    },
+    {
+     "id": "step-04",
+     "label": "Adjust wash water so grit discharges damp and organics return with the overflow"
+    },
+    {
+     "id": "step-05",
+     "label": "Stop the grit pump when the grit sump is emptied"
+    },
+    {
+     "id": "step-06",
+     "label": "Stop the screw after the last grit has cleared the trough"
+    },
+    {
+     "id": "step-07",
+     "label": "Close the wash water supply"
+    },
+    {
+     "id": "step-01",
+     "label": "Open the classifier wash water supply"
+    },
+    {
+     "id": "step-02",
+     "label": "Start the classifier screw drive"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06",
+    "step-07"
+   ],
+   "explanation": "Wash water and the screw run before slurry arrives so grit never packs the trough, and shutdown reverses the order so the screw clears before it stops."
+  },
+  {
+   "id": "c1ww-process14",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the operator response as flow through the screens rises sharply in a storm.",
+   "topicId": "process-screen-high-flow-response",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: mechanical screen plus a manual bypass screen, flows still rising.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Switch the mechanical screen to continuous high cycle operation"
+    },
+    {
+     "id": "step-01",
+     "label": "Watch the rising channel level trend on the control screen"
+    },
+    {
+     "id": "step-06",
+     "label": "Log the peak level and the actions taken once flow recedes"
+    },
+    {
+     "id": "step-05",
+     "label": "Notify the supervisor if the level approaches the bypass weir"
+    },
+    {
+     "id": "step-04",
+     "label": "Empty screenings containers before they can overflow"
+    },
+    {
+     "id": "step-03",
+     "label": "Rake the manual bypass screen to keep it ready"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Faster screening comes before container management, escalation happens before any bypass, and logging closes the event after flows fall."
+  },
+  {
+   "id": "c1ww-process15",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for checking horizontal velocity in a grit channel.",
+   "topicId": "process-grit-velocity-check",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: rectangular grit channel, target velocity near 0.3 m/s to settle grit and pass organics.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Measure the water depth and the channel width"
+    },
+    {
+     "id": "step-01",
+     "label": "Record the current plant flow from the influent meter"
+    },
+    {
+     "id": "step-06",
+     "label": "Adjust the channel gate or flow split and note the change in the log"
+    },
+    {
+     "id": "step-05",
+     "label": "Compare the result with the target velocity for grit settling"
+    },
+    {
+     "id": "step-04",
+     "label": "Calculate velocity as flow divided by cross sectional area"
+    },
+    {
+     "id": "step-03",
+     "label": "Calculate the wetted cross sectional area"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Velocity cannot be calculated until flow and area are known, comparison follows the calculation, and adjustment is the final step."
+  },
+  {
+   "id": "c1ww-process16",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a routine inspection of a vortex grit separator.",
+   "topicId": "process-vortex-grit-inspection",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: vortex grit tank in normal service, inspection from the deck only.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Observe the paddle rotation and the surface swirl pattern"
+    },
+    {
+     "id": "step-01",
+     "label": "Check the drive motor and gearbox for noise, heat, and oil level"
+    },
+    {
+     "id": "step-06",
+     "label": "Record the findings and any defects in the maintenance log"
+    },
+    {
+     "id": "step-05",
+     "label": "Flush the grit line with water after sampling"
+    },
+    {
+     "id": "step-04",
+     "label": "Open the sample port and inspect the pumped grit quality"
+    },
+    {
+     "id": "step-03",
+     "label": "Check the grit pump cycle by listening for its timed run"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The inspection follows the equipment from drive to grit discharge, the line is flushed after sampling, and recording is last."
+  },
+  {
+   "id": "c1ww-process17",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for starting a primary clarifier taken out of service last week.",
+   "topicId": "process-primary-clarifier-startup",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: empty primary clarifier with a sludge collection drive.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Close the drain valve and open the sludge withdrawal line"
+    },
+    {
+     "id": "step-01",
+     "label": "Inspect the drive, scrapers, and scum skimmer and clear all debris"
+    },
+    {
+     "id": "step-06",
+     "label": "Check effluent clarity and scum skimming once flow is steady"
+    },
+    {
+     "id": "step-05",
+     "label": "Set the sludge pump on a timed withdrawal cycle"
+    },
+    {
+     "id": "step-04",
+     "label": "Start the collector drive as the tank fills"
+    },
+    {
+     "id": "step-03",
+     "label": "Open the inlet gate and fill the clarifier"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The tank is inspected empty, filling precedes drive start in this procedure, withdrawal is set once sludge can accumulate, and clarity is checked at steady flow."
+  },
+  {
+   "id": "c1ww-process18",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for withdrawing sludge from a primary clarifier.",
+   "topicId": "process-primary-sludge-withdrawal",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: manual withdrawal through a telescoping valve to the thickener.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Line up the withdrawal valves from the clarifier to the thickener"
+    },
+    {
+     "id": "step-01",
+     "label": "Measure the sludge blanket depth with a core sampler"
+    },
+    {
+     "id": "step-06",
+     "label": "Record the withdrawal time and the new blanket depth"
+    },
+    {
+     "id": "step-05",
+     "label": "Close the valve when the draw off turns thin and watery"
+    },
+    {
+     "id": "step-04",
+     "label": "Watch the sludge at the sample port for density and colour"
+    },
+    {
+     "id": "step-03",
+     "label": "Open the withdrawal valve slowly and start the draw off"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Blanket depth decides whether to withdraw, density at the sample port decides when to stop, and the closing blanket check is recorded last."
+  },
+  {
+   "id": "c1ww-process19",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for clearing scum from a primary clarifier surface.",
+   "topicId": "process-primary-scum-removal",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: clarifier with a rotating scum skimmer and a scum pump.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Rotate the skimmer to push scum toward the scum box"
+    },
+    {
+     "id": "step-01",
+     "label": "Check that the scum baffle is in place and undamaged"
+    },
+    {
+     "id": "step-06",
+     "label": "Log the scum removal and the pit level"
+    },
+    {
+     "id": "step-05",
+     "label": "Flush the scum line clear with water"
+    },
+    {
+     "id": "step-04",
+     "label": "Start the scum pump and empty the scum pit"
+    },
+    {
+     "id": "step-03",
+     "label": "Flush the scum box with plant water to move solids into the trough"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Scum must reach the box before flushing helps, the pit is pumped before the line is flushed, and logging finishes the task."
+  },
+  {
+   "id": "c1ww-process20",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for taking a primary clarifier out of service for the season.",
+   "topicId": "process-primary-clarifier-shutdown",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: one of three primary clarifiers, the other two remain in service.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Close the inlet gate to the clarifier being removed"
+    },
+    {
+     "id": "step-01",
+     "label": "Shift the flow split so the other clarifiers take the full flow"
+    },
+    {
+     "id": "step-06",
+     "label": "Wash down the tank and leave it empty and secured"
+    },
+    {
+     "id": "step-05",
+     "label": "Stop the collector drive and apply lockout"
+    },
+    {
+     "id": "step-04",
+     "label": "Drain the supernatant back to the plant inlet"
+    },
+    {
+     "id": "step-03",
+     "label": "Withdraw the accumulated sludge blanket to the thickener"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Flow leaves first, sludge is removed before draining so it is not stranded, lockout follows the drive stop, and washdown is last."
+  },
+  {
+   "id": "c1ww-process21",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order an operator daily inspection round on a primary clarifier, following the walkway route.",
+   "topicId": "process-primary-daily-round",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: routine round, starting at the drive bridge and ending at the outlet end.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Check influent distribution and flow split at the inlet well"
+    },
+    {
+     "id": "step-01",
+     "label": "Check the drive unit for torque alarms, noise, and oil level at the bridge"
+    },
+    {
+     "id": "step-06",
+     "label": "Adjust the withdrawal cycle based on the blanket reading and record the round"
+    },
+    {
+     "id": "step-05",
+     "label": "Measure the sludge blanket depth near the outlet end"
+    },
+    {
+     "id": "step-04",
+     "label": "Check effluent clarity and launder cleanliness at the outlet"
+    },
+    {
+     "id": "step-03",
+     "label": "Observe the scum skimmer and baffle condition along the surface"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The round follows the physical route from drive to outlet, the blanket reading drives the withdrawal adjustment, and recording closes the round."
+  },
+  {
+   "id": "c1ww-process22",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the response to a primary clarifier sludge blanket found near the surface.",
+   "topicId": "process-primary-high-blanket-response",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: blanket measured within 0.5 m of the surface, effluent solids rising.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Check that the sludge pump and withdrawal line are operating"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm the blanket depth with a second core sample"
+    },
+    {
+     "id": "step-06",
+     "label": "Notify the supervisor and log the event if the blanket still does not fall"
+    },
+    {
+     "id": "step-05",
+     "label": "Reduce the flow split to this clarifier if the blanket stays high"
+    },
+    {
+     "id": "step-04",
+     "label": "Recheck the blanket depth after one withdrawal cycle"
+    },
+    {
+     "id": "step-03",
+     "label": "Increase the withdrawal rate or cycle duration"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The reading is confirmed before equipment checks, withdrawal is increased before flow is cut, and escalation follows a failed recheck."
+  },
+  {
+   "id": "c1ww-process23",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the response for a primary clarifier during a heavy rain flow surge.",
+   "topicId": "process-primary-storm-response",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: plant flow at twice the dry weather average and still rising.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Check scum baffles and skimmers more frequently during the surge"
+    },
+    {
+     "id": "step-04",
+     "label": "Monitor effluent suspended solids at the clarifier outlet"
+    },
+    {
+     "id": "step-05",
+     "label": "Restore the normal flow split and withdrawal cycle after the peak passes"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm the flow split is even across all clarifiers in service"
+    },
+    {
+     "id": "step-02",
+     "label": "Increase sludge withdrawal to keep blankets low ahead of the peak"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05"
+   ],
+   "explanation": "Even splitting and low blankets prepare the tanks before the peak arrives, monitoring runs through the surge, and normal settings return only after it passes."
+  },
+  {
+   "id": "c1ww-process24",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for starting a chemical feed to a primary clarifier for enhanced settling.",
+   "topicId": "process-primary-chemical-feed-start",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: alum feed system, dose already set by the supervisor from jar testing.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Check the chemical storage tank level and the feed line condition"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm the approved dose and the injection point with the supervisor"
+    },
+    {
+     "id": "step-06",
+     "label": "Monitor clarifier effluent quality and record the dose and tank level"
+    },
+    {
+     "id": "step-05",
+     "label": "Verify chemical is reaching the injection point"
+    },
+    {
+     "id": "step-04",
+     "label": "Set the pump stroke to deliver the approved dose"
+    },
+    {
+     "id": "step-03",
+     "label": "Start the chemical feed pump"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Authority and supply come before the pump starts, delivery is verified at the injection point, and effluent response is monitored last."
+  },
+  {
+   "id": "c1ww-process25",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for seeding a new aeration tank to start activated sludge treatment.",
+   "topicId": "process-as-seeding",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: new aeration tank filled with primary effluent, seed sludge available by tanker.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Mix and aerate the seeded contents for several hours without feed"
+    },
+    {
+     "id": "step-04",
+     "label": "Begin feeding primary effluent at a low rate"
+    },
+    {
+     "id": "step-05",
+     "label": "Measure dissolved oxygen, pH, and mixed liquor suspended solids"
+    },
+    {
+     "id": "step-06",
+     "label": "Hold wasting to a minimum while the solids inventory builds"
+    },
+    {
+     "id": "step-07",
+     "label": "Increase feed gradually as the settleability and clarity improve"
+    },
+    {
+     "id": "step-01",
+     "label": "Fill the tank with primary effluent and start aeration"
+    },
+    {
+     "id": "step-02",
+     "label": "Discharge the seed sludge tanker into the aeration tank"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06",
+    "step-07"
+   ],
+   "explanation": "Seeding follows filling and aeration, a mixing period precedes feeding, measurements guide the ramp up, and wasting is held while inventory builds."
+  },
+  {
+   "id": "c1ww-process26",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order an operator morning process check routine for an activated sludge plant.",
+   "topicId": "process-as-morning-checks",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: start of day shift, plant in normal operation.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Measure dissolved oxygen in the aeration basin with a handheld meter"
+    },
+    {
+     "id": "step-04",
+     "label": "Observe mixed liquor colour and foam on the basin surface"
+    },
+    {
+     "id": "step-05",
+     "label": "Collect a mixed liquor sample for settleability and solids testing"
+    },
+    {
+     "id": "step-06",
+     "label": "Adjust air or return sludge settings based on the results"
+    },
+    {
+     "id": "step-07",
+     "label": "Enter the observations and changes in the process log"
+    },
+    {
+     "id": "step-01",
+     "label": "Review overnight dissolved oxygen and flow trends on the control system"
+    },
+    {
+     "id": "step-02",
+     "label": "Check blower operation and air header pressure at the blower room"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06",
+    "step-07"
+   ],
+   "explanation": "Trends are reviewed before field checks, samples are taken before settings change, and adjustments are made only from the gathered results."
+  },
+  {
+   "id": "c1ww-process27",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for increasing the return activated sludge rate.",
+   "topicId": "process-ras-increase",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: secondary clarifier blanket rising, supervisor has approved a higher return rate.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Confirm the new target return rate as a percent of influent flow"
+    },
+    {
+     "id": "step-01",
+     "label": "Review the clarifier blanket depth and the mixed liquor solids results"
+    },
+    {
+     "id": "step-06",
+     "label": "Log the new return rate and the blanket readings"
+    },
+    {
+     "id": "step-05",
+     "label": "Remeasure the blanket depth before making any further change"
+    },
+    {
+     "id": "step-04",
+     "label": "Wait and observe the clarifier blanket response"
+    },
+    {
+     "id": "step-03",
+     "label": "Adjust the return pump speed or valve in one small step"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Data and the approved target come before the adjustment, one small step is proven by a blanket remeasurement before any further change."
+  },
+  {
+   "id": "c1ww-process28",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the response when aeration basin dissolved oxygen falls below the plant target.",
+   "topicId": "process-low-do-response",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: handheld reading of 0.8 mg/L against a target range of 1.5 to 2.5 mg/L.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Check blower operation, air valves, and header pressure"
+    },
+    {
+     "id": "step-01",
+     "label": "Verify the low reading with a second handheld meter or a recalibrated probe"
+    },
+    {
+     "id": "step-06",
+     "label": "Log the readings, the cause found, and the actions taken"
+    },
+    {
+     "id": "step-05",
+     "label": "Notify the supervisor and shift flow between basins if oxygen stays low"
+    },
+    {
+     "id": "step-04",
+     "label": "Check for a load surge by reviewing influent flow and recent discharges"
+    },
+    {
+     "id": "step-03",
+     "label": "Increase blower output or open air valves to the affected basin"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The reading is verified before equipment is blamed, air supply is corrected before load shifting, and escalation follows a failed correction."
+  },
+  {
+   "id": "c1ww-process29",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the response when aeration basin dissolved oxygen is well above target.",
+   "topicId": "process-high-do-response",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: sustained reading of 4.5 mg/L against a target range of 1.5 to 2.5 mg/L, wasting energy.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Reduce blower output in one step"
+    },
+    {
+     "id": "step-04",
+     "label": "Allow the basin to stabilize and recheck dissolved oxygen"
+    },
+    {
+     "id": "step-05",
+     "label": "Log the new blower setting and the stabilized oxygen reading"
+    },
+    {
+     "id": "step-01",
+     "label": "Verify the high reading against the online analyzer trend"
+    },
+    {
+     "id": "step-02",
+     "label": "Check air valve positions on the basin for a valve left open"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05"
+   ],
+   "explanation": "Verification and a valve check precede the output cut, and the basin must stabilize before the new reading is accepted and logged."
+  },
+  {
+   "id": "c1ww-process30",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the response to heavy brown foam building on an aeration basin.",
+   "topicId": "process-foam-response",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: thick dark brown foam covering much of the basin surface.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Check recent wasting records and sludge age information"
+    },
+    {
+     "id": "step-01",
+     "label": "Observe and describe the foam colour, thickness, and coverage"
+    },
+    {
+     "id": "step-06",
+     "label": "Record the foam condition and actions in the process log"
+    },
+    {
+     "id": "step-05",
+     "label": "Monitor the basin over the rest of the shift for foam returning"
+    },
+    {
+     "id": "step-04",
+     "label": "Adjust the wasting rate as directed by the process control plan"
+    },
+    {
+     "id": "step-03",
+     "label": "Break the foam down with a water spray from the basin walkway"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Identification and records come before spraying, wasting changes follow the plan rather than guesswork, and monitoring confirms the result."
+  },
+  {
+   "id": "c1ww-process31",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the operator steps when mixed liquor settling deteriorates and the clarifier blanket rises.",
+   "topicId": "process-bulking-response",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: suspected sludge bulking, supervisor to be informed with test results in hand.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Run the 30 minute settleability test"
+    },
+    {
+     "id": "step-01",
+     "label": "Collect a fresh mixed liquor sample from the basin outlet"
+    },
+    {
+     "id": "step-06",
+     "label": "Report the test results and observations to the supervisor"
+    },
+    {
+     "id": "step-05",
+     "label": "Increase the return sludge rate to protect the clarifier blanket"
+    },
+    {
+     "id": "step-04",
+     "label": "Check basin dissolved oxygen for a low oxygen cause"
+    },
+    {
+     "id": "step-03",
+     "label": "Obtain the mixed liquor solids result and calculate the sludge volume index"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Samples and index results are gathered before reporting, oxygen is checked as a likely cause, and return rate protects the blanket in the meantime."
+  },
+  {
+   "id": "c1ww-process32",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for changing a dissolved oxygen setpoint on the control system.",
+   "topicId": "process-do-setpoint-change",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: supervisor has approved raising the basin setpoint from 1.8 to 2.2 mg/L.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Confirm the blower output responds to the new setpoint"
+    },
+    {
+     "id": "step-04",
+     "label": "Watch the dissolved oxygen trend until it settles near the new target"
+    },
+    {
+     "id": "step-05",
+     "label": "Log the setpoint change, the time, and the reason"
+    },
+    {
+     "id": "step-01",
+     "label": "Review the recent dissolved oxygen trend with the supervisor"
+    },
+    {
+     "id": "step-02",
+     "label": "Enter the new setpoint value in the control system"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05"
+   ],
+   "explanation": "Approval and trend review precede the entry, blower response is confirmed, and the change is logged only after the trend settles."
+  },
+  {
+   "id": "c1ww-process33",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for changing the air intake filter on an aeration blower.",
+   "topicId": "process-blower-filter-change",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: positive displacement blower with a washable intake filter element.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Stop the duty blower and apply lockout to its starter"
+    },
+    {
+     "id": "step-01",
+     "label": "Place the standby blower in service and confirm air supply is stable"
+    },
+    {
+     "id": "step-06",
+     "label": "Return the blower to duty or standby as directed and log the work"
+    },
+    {
+     "id": "step-05",
+     "label": "Remove the lockout and start the blower to test it"
+    },
+    {
+     "id": "step-04",
+     "label": "Install the cleaned or replacement element and reseat the housing"
+    },
+    {
+     "id": "step-03",
+     "label": "Remove the intake filter element from its housing"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Air supply is secured on the standby machine before lockout, the element change happens under lockout, and a test run precedes return to service."
+  },
+  {
+   "id": "c1ww-process34",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for transferring mixed liquor between two aeration basins to balance solids.",
+   "topicId": "process-mlss-transfer",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: basin A solids high, basin B solids low, transfer pump available.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Line up the transfer pump suction from basin A and discharge to basin B"
+    },
+    {
+     "id": "step-01",
+     "label": "Measure mixed liquor solids in both basins"
+    },
+    {
+     "id": "step-06",
+     "label": "Close the transfer valves and log the estimated volume moved"
+    },
+    {
+     "id": "step-05",
+     "label": "Stop the pump when basin B reaches the target solids or level"
+    },
+    {
+     "id": "step-04",
+     "label": "Monitor levels in both basins during the transfer"
+    },
+    {
+     "id": "step-03",
+     "label": "Start the transfer pump at a low rate"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Both inventories are known before lining up, levels are watched during transfer, and valves close only after the pump stops."
+  },
+  {
+   "id": "c1ww-process35",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for taking one aeration basin out of service while the plant keeps running.",
+   "topicId": "process-basin-removal-from-service",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: one of three basins to be drained for diffuser repairs.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Close the inlet gate to the basin being removed"
+    },
+    {
+     "id": "step-01",
+     "label": "Shift influent feed and air supply to the remaining basins"
+    },
+    {
+     "id": "step-06",
+     "label": "Wash down the empty basin and secure it for the repair crew"
+    },
+    {
+     "id": "step-05",
+     "label": "Stop the basin air supply and apply lockout to its equipment"
+    },
+    {
+     "id": "step-04",
+     "label": "Drain the remaining liquid to the plant inlet"
+    },
+    {
+     "id": "step-03",
+     "label": "Transfer its mixed liquor to the operating basins"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The remaining basins take the load first, usable mixed liquor is saved by transfer before draining, and lockout precedes washdown."
+  },
+  {
+   "id": "c1ww-process36",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the cold weather operating adjustments for an activated sludge plant.",
+   "topicId": "process-cold-weather-as-operation",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: sustained cold weather, effluent ammonia beginning to climb.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Confirm the higher sludge age target with the supervisor"
+    },
+    {
+     "id": "step-01",
+     "label": "Review the mixed liquor temperature and ammonia trends"
+    },
+    {
+     "id": "step-06",
+     "label": "Log the adjustments and the trend results"
+    },
+    {
+     "id": "step-05",
+     "label": "Recheck ammonia and settleability after the change takes effect"
+    },
+    {
+     "id": "step-04",
+     "label": "Check heat tracing and insulation on exposed process lines"
+    },
+    {
+     "id": "step-03",
+     "label": "Reduce the wasting rate in one small step to build solids inventory"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Trends and an approved sludge age target come before the wasting cut, exposed lines are protected in parallel, and results are verified after."
+  },
+  {
+   "id": "c1ww-process37",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the process control steps for checking the food to microorganism ratio.",
+   "topicId": "process-fm-process-control",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: weekly process control check using lab results.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Obtain the mixed liquor volatile solids result for the aeration basin"
+    },
+    {
+     "id": "step-01",
+     "label": "Collect the influent flow and BOD results for the period"
+    },
+    {
+     "id": "step-06",
+     "label": "Adjust wasting or feed split as directed and record the calculation"
+    },
+    {
+     "id": "step-05",
+     "label": "Compare the ratio with the plant target range"
+    },
+    {
+     "id": "step-04",
+     "label": "Calculate the food to microorganism ratio from the load and the inventory"
+    },
+    {
+     "id": "step-03",
+     "label": "Note the aeration basin volume in service"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Load, inventory, and volume data are all required before the ratio can be calculated, comparison follows, and adjustment is the last step."
+  },
+  {
+   "id": "c1ww-process38",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for collecting a representative mixed liquor sample.",
+   "topicId": "process-aeration-tank-sampling",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: grab sample for solids and settleability testing.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Fill the container, cap it, and wipe the outside clean"
+    },
+    {
+     "id": "step-04",
+     "label": "Label the container with location, date, and time"
+    },
+    {
+     "id": "step-05",
+     "label": "Deliver the sample to the lab promptly and note it in the sample log"
+    },
+    {
+     "id": "step-01",
+     "label": "Rinse the sample container and dipper with mixed liquor"
+    },
+    {
+     "id": "step-02",
+     "label": "Collect the sample below the surface at the basin outlet area, away from the foam layer"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05"
+   ],
+   "explanation": "Rinsing prevents dilution error, the sample is taken below the foam for representativeness, and labelling and prompt delivery protect the result."
+  },
+  {
+   "id": "c1ww-process39",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for starting a trickling filter after a winter shutdown.",
+   "topicId": "process-trickling-filter-startup",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: rock media trickling filter with a rotary distributor and recirculation.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Open the filter inlet gate"
+    },
+    {
+     "id": "step-01",
+     "label": "Inspect the distributor arms, nozzles, and underdrains and clear debris"
+    },
+    {
+     "id": "step-06",
+     "label": "Monitor effluent quality as full feed is established"
+    },
+    {
+     "id": "step-05",
+     "label": "Check the underdrain outlet for free drainage"
+    },
+    {
+     "id": "step-04",
+     "label": "Verify the distributor rotates evenly under flow"
+    },
+    {
+     "id": "step-03",
+     "label": "Start the recirculation pump to wet the media gradually"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Debris is cleared dry, recirculation wets the media before full feed, rotation and drainage are verified, and effluent quality confirms startup."
+  }
+ ],
+ "missions": [
+  {
+   "id": "c1ww-mission41",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 41: The Food To Microorganism Shift",
+   "tasks": [
+    {
+     "taskId": "c1ww-error60",
+     "revision": "r1",
+     "occurrenceId": "m41-t1"
+    },
+    {
+     "taskId": "c1ww-process01",
+     "revision": "r1",
+     "occurrenceId": "m41-t2"
+    }
+   ]
+  },
+  {
+   "id": "c1ww-mission42",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 42: The Process Planned Shutdown Shift",
+   "tasks": [
+    {
+     "taskId": "c1ww-process02",
+     "revision": "r1",
+     "occurrenceId": "m42-t1"
+    },
+    {
+     "taskId": "c1ww-error61",
+     "revision": "r1",
+     "occurrenceId": "m42-t2"
+    },
+    {
+     "taskId": "c1ww-error62",
+     "revision": "r1",
+     "occurrenceId": "m42-t3"
+    }
+   ]
+  },
+  {
+   "id": "c1ww-mission43",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 43: The Sludge Volume Index Shift",
+   "tasks": [
+    {
+     "taskId": "c1ww-error63",
+     "revision": "r1",
+     "occurrenceId": "m43-t1"
+    },
+    {
+     "taskId": "c1ww-process03",
+     "revision": "r1",
+     "occurrenceId": "m43-t2"
+    },
+    {
+     "taskId": "c1ww-error64",
+     "revision": "r1",
+     "occurrenceId": "m43-t3"
+    },
+    {
+     "taskId": "c1ww-error65",
+     "revision": "r1",
+     "occurrenceId": "m43-t4"
+    }
+   ]
+  },
+  {
+   "id": "c1ww-mission44",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 44: The Process Clarifier Return To Service Shift",
+   "tasks": [
+    {
+     "taskId": "c1ww-process04",
+     "revision": "r1",
+     "occurrenceId": "m44-t1"
+    },
+    {
+     "taskId": "c1ww-error66",
+     "revision": "r1",
+     "occurrenceId": "m44-t2"
+    }
+   ]
+  },
+  {
+   "id": "c1ww-mission45",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 45: The Sludge Volume Index Shift",
+   "tasks": [
+    {
+     "taskId": "c1ww-error67",
+     "revision": "r1",
+     "occurrenceId": "m45-t1"
+    },
+    {
+     "taskId": "c1ww-process05",
+     "revision": "r1",
+     "occurrenceId": "m45-t2"
+    },
+    {
+     "taskId": "c1ww-error68",
+     "revision": "r1",
+     "occurrenceId": "m45-t3"
+    }
+   ]
+  },
+  {
+   "id": "c1ww-mission46",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 46: The Process Power Outage Restart Shift",
+   "tasks": [
+    {
+     "taskId": "c1ww-process06",
+     "revision": "r1",
+     "occurrenceId": "m46-t1"
+    },
+    {
+     "taskId": "c1ww-error69",
+     "revision": "r1",
+     "occurrenceId": "m46-t2"
+    },
+    {
+     "taskId": "c1ww-error70",
+     "revision": "r1",
+     "occurrenceId": "m46-t3"
+    },
+    {
+     "taskId": "c1ww-error71",
+     "revision": "r1",
+     "occurrenceId": "m46-t4"
+    }
+   ]
+  },
+  {
+   "id": "c1ww-mission47",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 47: The Return Sludge Rate Shift",
+   "tasks": [
+    {
+     "taskId": "c1ww-error72",
+     "revision": "r1",
+     "occurrenceId": "m47-t1"
+    },
+    {
+     "taskId": "c1ww-process07",
+     "revision": "r1",
+     "occurrenceId": "m47-t2"
+    }
+   ]
+  },
+  {
+   "id": "c1ww-mission48",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 48: The Process New Pump Commissioning Shift",
+   "tasks": [
+    {
+     "taskId": "c1ww-process08",
+     "revision": "r1",
+     "occurrenceId": "m48-t1"
+    },
+    {
+     "taskId": "c1ww-error73",
+     "revision": "r1",
+     "occurrenceId": "m48-t2"
+    },
+    {
+     "taskId": "c1ww-error74",
+     "revision": "r1",
+     "occurrenceId": "m48-t3"
+    }
+   ]
+  },
+  {
+   "id": "c1ww-mission49",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 49: The Return Sludge Rate Shift",
+   "tasks": [
+    {
+     "taskId": "c1ww-error75",
+     "revision": "r1",
+     "occurrenceId": "m49-t1"
+    },
+    {
+     "taskId": "c1ww-process09",
+     "revision": "r1",
+     "occurrenceId": "m49-t2"
+    },
+    {
+     "taskId": "c1ww-error76",
+     "revision": "r1",
+     "occurrenceId": "m49-t3"
+    },
+    {
+     "taskId": "c1ww-error77",
+     "revision": "r1",
+     "occurrenceId": "m49-t4"
+    }
+   ]
+  },
+  {
+   "id": "c1ww-mission50",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 50: The Process Mechanical Screen Startup Shift",
+   "tasks": [
+    {
+     "taskId": "c1ww-process10",
+     "revision": "r1",
+     "occurrenceId": "m50-t1"
+    },
+    {
+     "taskId": "c1ww-error78",
+     "revision": "r1",
+     "occurrenceId": "m50-t2"
+    }
+   ]
+  },
+  {
+   "id": "c1ww-mission51",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 51: The Return Sludge Rate Shift",
+   "tasks": [
+    {
+     "taskId": "c1ww-error79",
+     "revision": "r1",
+     "occurrenceId": "m51-t1"
+    },
+    {
+     "taskId": "c1ww-process100",
+     "revision": "r1",
+     "occurrenceId": "m51-t2"
+    },
+    {
+     "taskId": "c1ww-error80",
+     "revision": "r1",
+     "occurrenceId": "m51-t3"
+    }
+   ]
+  },
+  {
+   "id": "c1ww-mission52",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 52: The Process Screenings Handling Shift",
+   "tasks": [
+    {
+     "taskId": "c1ww-process11",
+     "revision": "r1",
+     "occurrenceId": "m52-t1"
+    },
+    {
+     "taskId": "c1ww-error81",
+     "revision": "r1",
+     "occurrenceId": "m52-t2"
+    },
+    {
+     "taskId": "c1ww-error82",
+     "revision": "r1",
+     "occurrenceId": "m52-t3"
+    },
+    {
+     "taskId": "c1ww-error83",
+     "revision": "r1",
+     "occurrenceId": "m52-t4"
+    }
+   ]
+  },
+  {
+   "id": "c1ww-mission53",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 53: The Chemical Feed Disinfection Shift",
+   "tasks": [
+    {
+     "taskId": "c1ww-error84",
+     "revision": "r1",
+     "occurrenceId": "m53-t1"
+    },
+    {
+     "taskId": "c1ww-process12",
+     "revision": "r1",
+     "occurrenceId": "m53-t2"
+    }
+   ]
+  },
+  {
+   "id": "c1ww-mission54",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 54: The Process Grit Classifier Operation Shift",
+   "tasks": [
+    {
+     "taskId": "c1ww-process13",
+     "revision": "r1",
+     "occurrenceId": "m54-t1"
+    },
+    {
+     "taskId": "c1ww-error85",
+     "revision": "r1",
+     "occurrenceId": "m54-t2"
+    },
+    {
+     "taskId": "c1ww-error86",
+     "revision": "r1",
+     "occurrenceId": "m54-t3"
+    }
+   ]
+  },
+  {
+   "id": "c1ww-mission55",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 55: The Chemical Feed Disinfection Shift",
+   "tasks": [
+    {
+     "taskId": "c1ww-error87",
+     "revision": "r1",
+     "occurrenceId": "m55-t1"
+    },
+    {
+     "taskId": "c1ww-process14",
+     "revision": "r1",
+     "occurrenceId": "m55-t2"
+    },
+    {
+     "taskId": "c1ww-error88",
+     "revision": "r1",
+     "occurrenceId": "m55-t3"
+    },
+    {
+     "taskId": "c1ww-error89",
+     "revision": "r1",
+     "occurrenceId": "m55-t4"
+    }
+   ]
+  },
+  {
+   "id": "c1ww-mission56",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 56: The Process Grit Velocity Check Shift",
+   "tasks": [
+    {
+     "taskId": "c1ww-process15",
+     "revision": "r1",
+     "occurrenceId": "m56-t1"
+    },
+    {
+     "taskId": "c1ww-error90",
+     "revision": "r1",
+     "occurrenceId": "m56-t2"
+    }
+   ]
+  },
+  {
+   "id": "c1ww-mission57",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 57: The Wet Well Timing Shift",
+   "tasks": [
+    {
+     "taskId": "c1ww-error91",
+     "revision": "r1",
+     "occurrenceId": "m57-t1"
+    },
+    {
+     "taskId": "c1ww-process16",
+     "revision": "r1",
+     "occurrenceId": "m57-t2"
+    },
+    {
+     "taskId": "c1ww-error92",
+     "revision": "r1",
+     "occurrenceId": "m57-t3"
+    }
+   ]
+  },
+  {
+   "id": "c1ww-mission58",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 58: The Process Primary Clarifier Startup Shift",
+   "tasks": [
+    {
+     "taskId": "c1ww-process17",
+     "revision": "r1",
+     "occurrenceId": "m58-t1"
+    },
+    {
+     "taskId": "c1ww-error93",
+     "revision": "r1",
+     "occurrenceId": "m58-t2"
+    },
+    {
+     "taskId": "c1ww-error94",
+     "revision": "r1",
+     "occurrenceId": "m58-t3"
+    },
+    {
+     "taskId": "c1ww-error95",
+     "revision": "r1",
+     "occurrenceId": "m58-t4"
+    }
+   ]
+  },
+  {
+   "id": "c1ww-mission59",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 59: The Pump Run Time Shift",
+   "tasks": [
+    {
+     "taskId": "c1ww-error96",
+     "revision": "r1",
+     "occurrenceId": "m59-t1"
+    },
+    {
+     "taskId": "c1ww-process18",
+     "revision": "r1",
+     "occurrenceId": "m59-t2"
+    }
+   ]
+  },
+  {
+   "id": "c1ww-mission60",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 60: The Process Primary Scum Removal Shift",
+   "tasks": [
+    {
+     "taskId": "c1ww-process19",
+     "revision": "r1",
+     "occurrenceId": "m60-t1"
+    },
+    {
+     "taskId": "c1ww-error97",
+     "revision": "r1",
+     "occurrenceId": "m60-t2"
+    },
+    {
+     "taskId": "c1ww-error98",
+     "revision": "r1",
+     "occurrenceId": "m60-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Wastewater treatment operations chapters (preliminary, primary, biological treatment, disinfection, solids handling)"
+  },
+  {
+   "id": "epa-municipal-wastewater",
+   "title": "US EPA, Municipal Wastewater resources",
+   "locator": "https://www.epa.gov/npdes/municipal-wastewater"
+  },
+  {
+   "id": "epa-startup-wwtp",
+   "title": "US EPA, Start-Up of Municipal Wastewater Treatment Facilities",
+   "locator": "US EPA municipal wastewater operator resources"
+  },
+  {
+   "id": "owwco-exam-prep",
+   "title": "OWWCO, Exam preparation resources",
+   "locator": "https://owwco.ca/preparing-for-your-exam/"
+  },
+  {
+   "id": "wpi-ntk-2025",
+   "title": "WPI, 2025 Need-to-Know Criteria, Wastewater Treatment Class I",
+   "locator": "https://gowpi.org/services/2025-need-to-know-criteria/"
+  },
+  {
+   "id": "ont-reg-129-04",
+   "title": "Ontario Regulation 129/04, Licensing of Sewage Works Operators",
+   "locator": "https://www.ontario.ca/laws/regulation/04129"
+  },
+  {
+   "id": "ccohs-safety",
+   "title": "CCOHS, OSH Answers (confined spaces, hydrogen sulfide, lockout)",
+   "locator": "https://www.ccohs.ca/oshanswers/"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "1e697ad8b7856176854f8dc8b955336a273f16ae4710a7f4ed041fb9a86bef67",
+  "taskReceipts": [
+   {
+    "taskId": "c1ww-error60",
+    "revision": "r1",
+    "sha256": "4dbe3212a1ec0ac53c347a47e99906fe407c08a3b733a273f87231f644b7ab0f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-error61",
+    "revision": "r1",
+    "sha256": "53544c399f015e9ad04af111744e0f306a201d9a0f94a593e0d062fdb86f7cac",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-error62",
+    "revision": "r1",
+    "sha256": "0a0a12339e2e0fd138a02e8936c88c9e1e4617b674991ebd74b023638678a669",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-error63",
+    "revision": "r1",
+    "sha256": "645ff0e600242e6ee2b4fb059d9577c8eaefff005c6d87da55a5ef96535ec5b8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-error64",
+    "revision": "r1",
+    "sha256": "7fa072215c2d7b25d288abbc9365b9b4bb7aa103fdc8dea7996eea158ee625ce",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-error65",
+    "revision": "r1",
+    "sha256": "fc7aee81fe94ef71dd8d488d4ff7cd372446493ceb297bdad49689a897678f17",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-error66",
+    "revision": "r1",
+    "sha256": "9e150e44edf889f02b18e105744af3c9b94648420c2ac788e5ab25e1146aab36",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-error67",
+    "revision": "r1",
+    "sha256": "3f2a22586b7a792b04d73d0800ef43c84714054024b8c003e1f33871f41188f8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-error68",
+    "revision": "r1",
+    "sha256": "f2d5912d09202a657ea1ac29e3e6286ed6954dd5e4a56c9f0c4a2a8c0d297c50",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-error69",
+    "revision": "r1",
+    "sha256": "2bb537f6b5c6bbacf75c441feea5f9d61c8f1cb2f88307388362fc3800f0a233",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-error70",
+    "revision": "r1",
+    "sha256": "556c4e65844cdba09affc0180b7009057bee06c4787a5aac04a486c410c8fd3e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-error71",
+    "revision": "r1",
+    "sha256": "cc325bb78afb81029c2c8bcc6a2d25668a3b6aa4bebc375da021f79d3e7a6932",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-error72",
+    "revision": "r1",
+    "sha256": "1fe294e4ce19cf9aa8337802abfc1af44f9d8bfaca0481e922e96fd89828e137",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-error73",
+    "revision": "r1",
+    "sha256": "c41881c05af1e32c3bed1ea8fe21b01d514fd54669f818395ea9e37ad3529501",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-error74",
+    "revision": "r1",
+    "sha256": "850b4d2faa2dcf4341ff0c365b75980581abe102ccf8504585ce48e22c7d4b4d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-error75",
+    "revision": "r1",
+    "sha256": "b7bb93bfc25c1fe0dfff046bb994a3daf145ca8106804a4478a3e62f39f90531",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-error76",
+    "revision": "r1",
+    "sha256": "32099c26436466a560424c7db409364a27a70c22ec85426490ec0f8fa2a7f2c7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-error77",
+    "revision": "r1",
+    "sha256": "94362530e1f172ff9b7393865f77fb23f9977ee19b5e2db5a2952135783e5f90",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-error78",
+    "revision": "r1",
+    "sha256": "b51c319b769a6d6686f19229bbbea995e6518eb7ed488d46cda4d8b55de2ea65",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-error79",
+    "revision": "r1",
+    "sha256": "5ee983d7ab6dd1a655a33dfbfac1216e2b78aee4656b841b613ad2d2aca79d27",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-error80",
+    "revision": "r1",
+    "sha256": "117139f8cb92310f61a862ef712dbd641e16011965417d5dfed5af9938b2a960",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-error81",
+    "revision": "r1",
+    "sha256": "ad6f6e714c2412df77d51a509999ec9f89849b1f3f73f6f2a27027c304abd71a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-error82",
+    "revision": "r1",
+    "sha256": "69232a6bbcb58d5b0868ed5dcf96c7f5b79f065311a8aac3bb7e5bf453879ddf",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-error83",
+    "revision": "r1",
+    "sha256": "fdaae5b522252855e173275a930a1f8947f8bcba1c308c5bc23bff789e22d52f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-error84",
+    "revision": "r1",
+    "sha256": "a33e6d355205f92e0c0f23f17de49d35df8671727540d512937d0f6ac6dc2ea8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-error85",
+    "revision": "r1",
+    "sha256": "20c8ecf834b5668861ac14d594a45549a8149e262286ff0d9cb8ae3eb18fa252",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-error86",
+    "revision": "r1",
+    "sha256": "bd67a1241221e57c2dce563bb524ea6bfab212572775f4f6700c65ae31e0ef23",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-error87",
+    "revision": "r1",
+    "sha256": "13b4fbd6097fe120bee738c27ca65fedd74e9387cfcae89f49d026a1611dc222",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-error88",
+    "revision": "r1",
+    "sha256": "43fd1bb809c5e74bf2f2a022da31e27966907b1c8d9a6bd1a937ee95aadba0e4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-error89",
+    "revision": "r1",
+    "sha256": "ce001ca26de9d0a99c68d7120901e9904d372aff4b328859773eb3d9cae9f474",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-error90",
+    "revision": "r1",
+    "sha256": "1f1dcf3dc9ef910634bdc70204728653941d1e8bb663ae93660d92f412d08b25",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-error91",
+    "revision": "r1",
+    "sha256": "e991ce585970251ce31272f19f615db677cc4cb0a86206d61b4566c7ff402222",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-error92",
+    "revision": "r1",
+    "sha256": "9ad5d01a50d752ef17ff61560ca92e48ab38126354a287133bf1b8da4ea35c7a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-error93",
+    "revision": "r1",
+    "sha256": "4ae5c8413c3d4edf15a6c5a71a0bb7061dcee4da6030babbe7c6c69308458453",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-error94",
+    "revision": "r1",
+    "sha256": "0152c77ddbb03ef1f0d594f71e884856a1f5fdc588e31cb0c9473d0ba6eda115",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-error95",
+    "revision": "r1",
+    "sha256": "ce599bd6955c2bd2e50d378c75c03ef543a5d759338ed58005753911d8446a21",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-error96",
+    "revision": "r1",
+    "sha256": "c758e6aada2fb8b98046911fbaa6d230e19c9f68809f1ba9e70bf2acab506fa3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-error97",
+    "revision": "r1",
+    "sha256": "be3d2282cf0b7040cda3f619d49e5445e35590f1c87acbd9a5652f2524cbc952",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-error98",
+    "revision": "r1",
+    "sha256": "ee534a633ba8537dbb867eb3d1f2691889207244d175808bf2ea3ae875c54974",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-error99",
+    "revision": "r1",
+    "sha256": "8fe8008a77015921f77bbb8a11581743cc2eb0044e13d058c4a782886da131d0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-process01",
+    "revision": "r1",
+    "sha256": "ab41ba3df6ca7f9f4408459ec44acba2211b1748fde74f98f7fd0c357e463ad5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-process02",
+    "revision": "r1",
+    "sha256": "ce550f79d80e1ae97c93fda907cf541fbb4e4bf391bb513a4143e0117afe76fd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-process03",
+    "revision": "r1",
+    "sha256": "9fb08d14aeec2b3734618430db22fc1cab3d4f3bc6526d2f082ba91cf995e527",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-process04",
+    "revision": "r1",
+    "sha256": "9811be96ce870a2ab395166b6057abfb06d64774ffb5f8536abbdc4fabf90d80",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-process05",
+    "revision": "r1",
+    "sha256": "f41b3fabd4f389576353d01fd38d662cedf7fd5250294942fa628fd56eb20ef0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-process06",
+    "revision": "r1",
+    "sha256": "daf91beeb74d1ab525cf992caf5bb18604f3114714117f93adf84429f72162f0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-process07",
+    "revision": "r1",
+    "sha256": "7dc1d80a21bfefd9b34cc64f42fe09c487a1f9f68b030ebd64fb60babfe4eebb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-process08",
+    "revision": "r1",
+    "sha256": "b8d8100d9c0546e3a43f1912579869643b42ac24a927e2e980d2f330b9dc42ee",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-process09",
+    "revision": "r1",
+    "sha256": "ec4f990da2eb57905844f80d37316f51f5d2d89e858a9eab3d3403c7ac678d88",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-process10",
+    "revision": "r1",
+    "sha256": "88e1de30f3f4072795afe9decd804d0d514271e8b6f4ef42f6523d5d3fb5f06d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-process100",
+    "revision": "r1",
+    "sha256": "6b57b9c71a2f4d15bc34fb7b8f9c7e503d4efe544430543c6f079149cc5d47d7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-process11",
+    "revision": "r1",
+    "sha256": "72f48c1883e8fcdb0696397d96a0805411ed875f20b42a17a7e7036d95eedcdb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-process12",
+    "revision": "r1",
+    "sha256": "73399f2c36fe87362b7ba76318d7c4816f97bafa3916de0d49634d86f5cce914",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-process13",
+    "revision": "r1",
+    "sha256": "234b06172496334c25dd39aea76a3490413c54c22d232c59e711d93fec1d1218",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-process14",
+    "revision": "r1",
+    "sha256": "18cc10db3c4ab0630ecf162f481984f35c2358415898173021001c117cb946df",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-process15",
+    "revision": "r1",
+    "sha256": "97068dc817b46c60710712b6d8e245763b0cd4e376dd056466226bc85b8dab0e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-process16",
+    "revision": "r1",
+    "sha256": "a679b049b0c245a74278004b241fadb884cb1bb39942bdbd58df75970e0ea246",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-process17",
+    "revision": "r1",
+    "sha256": "e6f697733b5f0aa5ff92f20e83ff8717053c32a7db1552d390c7a3ff66e1e237",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-process18",
+    "revision": "r1",
+    "sha256": "2db2e9418af406712dbbe3e02bb8e246e4117c5c48ce8f5ef7b091d8d2ca7576",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-process19",
+    "revision": "r1",
+    "sha256": "c250bb35b56052cf757890f068269b3e382f2bbdb3bcdafefc70447123ab7236",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-process20",
+    "revision": "r1",
+    "sha256": "b93f66d4a8b824a7d738009ac70f058bc7b75ca58c7adbd60618234bbef3f7da",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-process21",
+    "revision": "r1",
+    "sha256": "168ad1997b7284bd61c337fcfde15a0dc398fb8d6bab73f22d100caadaf722fd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-process22",
+    "revision": "r1",
+    "sha256": "0083ce80df985eb8273174ce0e12790cb78f9af53249bc9609802f3ba8295b87",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-process23",
+    "revision": "r1",
+    "sha256": "117474e18122c734e242814914e3bdb9cd003130b96bcaa2c67cdce7268df394",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-process24",
+    "revision": "r1",
+    "sha256": "a9fd9114e2dfb771999ee9d93ff93e610bc323c77232bdc53b16742d21191d86",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-process25",
+    "revision": "r1",
+    "sha256": "78b87b8c5001cc10f89bd631d94c1146fcd50b6b867dd429d5b52643982d7e85",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-process26",
+    "revision": "r1",
+    "sha256": "a719deca85caaec1b71e9670c28194d2da2064663c5a284b457e268dc699a7cd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-process27",
+    "revision": "r1",
+    "sha256": "e5940d54fc9bbbc6f0bd29c1a92ae2638eb0df48f7a3125ce3ca03981d96aeef",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-process28",
+    "revision": "r1",
+    "sha256": "dbd7b913dfe786754b7973230a18e0eaf46fcf3e66a5d5ad1f0c51a1b2f9035d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-process29",
+    "revision": "r1",
+    "sha256": "42f7358ece45adb8078ca469cbca7c413e64c5eda33478e7bd126960a76ee412",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-process30",
+    "revision": "r1",
+    "sha256": "115e39151001ee5725011f6ae1baae5abbd7d2f1baeb6ad9a8487489b2a071fc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-process31",
+    "revision": "r1",
+    "sha256": "de21410f3086a080051bc5122776740d24c84b86b81e0ac4977fa1230620bda5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-process32",
+    "revision": "r1",
+    "sha256": "401927884bcb51fec170d89c8cab531e23b2297e62434a8efe36c6edccde39d2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-process33",
+    "revision": "r1",
+    "sha256": "a9b00b4c70ff1b843b1e11534b853fc5aa74755fbcba8209a3b7d8964e64b176",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-process34",
+    "revision": "r1",
+    "sha256": "1bede022d36082ab0c4340bcae712d52a613bafcfb522b0838d40fda00cd33b6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-process35",
+    "revision": "r1",
+    "sha256": "19f3cde201cea607675fe43161cabe82eec7026be4e592ba954aec01f4410764",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-process36",
+    "revision": "r1",
+    "sha256": "ee885a0583fb2be709a772a87b52c19b8e5bbf8f764de6905090029bf26c5e5a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-process37",
+    "revision": "r1",
+    "sha256": "9f1b5e13f5e099dd3776c3ecd27a3f7b24a10730b7a12b56a896d77d0150c4be",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-process38",
+    "revision": "r1",
+    "sha256": "ce971fcc6bd7edb14355a916c36a2c05876dd8226f0a6b8852824d2de41bca72",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1ww-process39",
+    "revision": "r1",
+    "sha256": "cf49e26b4769a974a98fa811a216acac742faff9ef3ebc45cf4c63015768b377",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "c1ww-mission41",
+    "revision": "r1",
+    "sha256": "abd6b8a6ae2d419595b5d69e38cc5487fac352782f69b94e90d873ec6fb7a0f7"
+   },
+   {
+    "missionId": "c1ww-mission42",
+    "revision": "r1",
+    "sha256": "4b4ebfe194cb7161cae4f53174ed2f7bf3c03102ce3d6feadd55dcad36941871"
+   },
+   {
+    "missionId": "c1ww-mission43",
+    "revision": "r1",
+    "sha256": "a72fc968de06fc8657fdf243b106b16855d4b881d823c52e224306de7d23b077"
+   },
+   {
+    "missionId": "c1ww-mission44",
+    "revision": "r1",
+    "sha256": "8c781c42b70ccb5b60d97e35579185ac0627e774b7833eb02b854a37b157a287"
+   },
+   {
+    "missionId": "c1ww-mission45",
+    "revision": "r1",
+    "sha256": "a4f95d7892a514c46d18113f27301c5d80c68f53505c5989ee16aa83643fb294"
+   },
+   {
+    "missionId": "c1ww-mission46",
+    "revision": "r1",
+    "sha256": "fa321e3e150455d9954e53dd6ba1235887e520458a77251df81a5fc9ce281714"
+   },
+   {
+    "missionId": "c1ww-mission47",
+    "revision": "r1",
+    "sha256": "dab421607ff57440893c38e076efb442316064c2aeecb2b39673c11ab7b62feb"
+   },
+   {
+    "missionId": "c1ww-mission48",
+    "revision": "r1",
+    "sha256": "e06697a5fc1d0f4d57afd34965e2937d1e4c83bf688151254462b8ecf795dbac"
+   },
+   {
+    "missionId": "c1ww-mission49",
+    "revision": "r1",
+    "sha256": "f1fc47097c4f3d0ac8a5daff485b2e6640694a3595ea7867464e6ee214e07472"
+   },
+   {
+    "missionId": "c1ww-mission50",
+    "revision": "r1",
+    "sha256": "70ac6a99683f35f1a3c385d3ca24018bc57c71e8918a76f5a449136fd930ca2d"
+   },
+   {
+    "missionId": "c1ww-mission51",
+    "revision": "r1",
+    "sha256": "7b56ea9583df9e7c510b52ad1e90198120d566c02afc64117e9d66a3632ccbcb"
+   },
+   {
+    "missionId": "c1ww-mission52",
+    "revision": "r1",
+    "sha256": "d84dc7bab9e9bcf50870f735a94b9ff6892e1cc2dcac6aab99d91af7d459da1e"
+   },
+   {
+    "missionId": "c1ww-mission53",
+    "revision": "r1",
+    "sha256": "a76792dfd812ddc44fe47e554a5523cdb3b4044be4e2a1e5dc8a0ade34a90f90"
+   },
+   {
+    "missionId": "c1ww-mission54",
+    "revision": "r1",
+    "sha256": "01431a49e76cf49bdbc26da866184ac713c24242cb9a0d3e4e766317d5e5ec02"
+   },
+   {
+    "missionId": "c1ww-mission55",
+    "revision": "r1",
+    "sha256": "03507623d4368cebbe6ee7cdf0f9f785f0d22c7c7850373c225e0bb6f8bfc912"
+   },
+   {
+    "missionId": "c1ww-mission56",
+    "revision": "r1",
+    "sha256": "c1116c03f402568c6e6890fffc805101eb746961c67ae0f9b2350881db404e91"
+   },
+   {
+    "missionId": "c1ww-mission57",
+    "revision": "r1",
+    "sha256": "ea8f19732b290a9750c00c74de87773981143ce585bad335dfc6125d9b15f160"
+   },
+   {
+    "missionId": "c1ww-mission58",
+    "revision": "r1",
+    "sha256": "41f4585ac2569af1a76ba5aa0cd58c488ed314e1cd5884d1b5c5f73eec116547"
+   },
+   {
+    "missionId": "c1ww-mission59",
+    "revision": "r1",
+    "sha256": "ccf21400c70b8f7ecdc21cf23fb0b9c4c299ed4e5e89c0b2149b5c82d9877ebc"
+   },
+   {
+    "missionId": "c1ww-mission60",
+    "revision": "r1",
+    "sha256": "87450198da4fcfc3d076f0c864ffcdeb38e307e52662395a19f12fb0aec27207"
+   }
+  ]
+ }
+}

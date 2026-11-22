@@ -1,0 +1,4737 @@
+{
+ "courseKey": "wpi-class3-water-dist",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "wp3wd-ladder80",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A Lethbridge system recorded 36 main breaks in a year on a 240 km network. Find the break rate in breaks per 100 km. Enter the exact unrounded number.",
+   "topicId": "asset-renewal",
+   "level": "class1",
+   "assumptions": "Fictional system in western Canada: breaks = 36, network length = 240 km. Break rate equals breaks divided by length, times 100. Provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality frame the context in general terms.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Break rate = Breaks / Network length / 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Break rate = Breaks / Network length * 100 * 2"
+      },
+      {
+       "id": "opt-c",
+       "label": "Break rate = Breaks / Network length * 100"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Break rate = Breaks / Network length * 100"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Divide breaks by length in km, then multiply by 100 to get breaks per 100 km"
+      },
+      {
+       "id": "opt-b",
+       "label": "Multiply breaks by length and report per 100 km"
+      },
+      {
+       "id": "opt-c",
+       "label": "Convert the network length to kPa before dividing"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Divide breaks by length in km, then multiply by 100 to get breaks per 100 km"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Break rate = 36 * 240 * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Break rate = 36 / 240 * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Break rate = 36 / 240 / 100"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Break rate = 36 / 240 * 100"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact break rate in breaks per 100 km.",
+    "unitOptions": [
+     {
+      "id": "breaks-100km",
+      "label": "breaks per 100 km"
+     },
+     {
+      "id": "breaks-km",
+      "label": "breaks per km",
+      "toExpected": {
+       "numerator": "100",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     }
+    ],
+    "expected": "15",
+    "expectedUnitId": "breaks-100km",
+    "absoluteTolerance": "0",
+    "explanation": "Break rate = 36 / 240 * 100 = 15 breaks per 100 km."
+   }
+  },
+  {
+   "id": "wp3wd-ladder81",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A booster station in Calgary doses chlorine at 0.8 mg/L into 2500 m3 of water. Find the chlorine mass applied, in kg. Enter the exact unrounded number.",
+   "topicId": "booster-disinfection",
+   "level": "class1",
+   "assumptions": "Fictional system in western Canada: dose = 0.8 mg/L, volume = 2500 m3. Mass in kg equals dose times volume divided by 1000, since 1 mg/L over 1 m3 equals 1 g. Provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality frame the context in general terms.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Mass = Dose * Volume / 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Mass = Dose * Volume * 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Mass = Dose * Volume * 1000 * 2"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Mass = Dose * Volume / 1000"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Multiply dose by volume with no division and report kg"
+      },
+      {
+       "id": "opt-b",
+       "label": "Multiply dose in mg/L by volume in m3 and divide by 1000 to get kg, since 1 mg/L over 1 m3 equals 1 g"
+      },
+      {
+       "id": "opt-c",
+       "label": "Report the result in kPa"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Multiply dose in mg/L by volume in m3 and divide by 1000 to get kg, since 1 mg/L over 1 m3 equals 1 g"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Mass = 0.8 mg/L * 2500 m3 * 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Mass = 0.8 mg/L + 2500 m3 / 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Mass = 0.8 mg/L * 2500 m3 / 1000"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Mass = 0.8 mg/L * 2500 m3 / 1000"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact mass in kilograms (kg).",
+    "unitOptions": [
+     {
+      "id": "kg",
+      "label": "kg"
+     },
+     {
+      "id": "g",
+      "label": "g",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "L",
+      "label": "L"
+     }
+    ],
+    "expected": "2",
+    "expectedUnitId": "kg",
+    "absoluteTolerance": "0",
+    "explanation": "Mass = 0.8 * 2500 / 1000 = 2 kg."
+   }
+  },
+  {
+   "id": "wp3wd-ladder82",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A sample at an Edmonton booster station shows a free chlorine residual of 0.55 mg/L. The target residual is 0.9 mg/L. Find the booster dose increase needed, in mg/L. Enter the exact unrounded number.",
+   "topicId": "booster-disinfection",
+   "level": "class1",
+   "assumptions": "Fictional system in western Canada: target residual = 0.9 mg/L, measured residual = 0.55 mg/L. Dose increase equals target minus measured. Provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality frame the context in general terms.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Dose increase = Target residual + Measured residual"
+      },
+      {
+       "id": "opt-b",
+       "label": "Dose increase = Target residual - Measured residual"
+      },
+      {
+       "id": "opt-c",
+       "label": "Dose increase = Target residual - Measured residual * 2"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Dose increase = Target residual - Measured residual"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Convert the residuals to kPa before calculating"
+      },
+      {
+       "id": "opt-b",
+       "label": "Report the result in kg"
+      },
+      {
+       "id": "opt-c",
+       "label": "Work in mg/L throughout, so sums and differences stay in mg/L"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Work in mg/L throughout, so sums and differences stay in mg/L"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Dose increase = 0.9 mg/L - 0.55 mg/L"
+      },
+      {
+       "id": "opt-b",
+       "label": "Dose increase = 0.9 mg/L + 0.55 mg/L"
+      },
+      {
+       "id": "opt-c",
+       "label": "Dose increase = 0.9 mg/L / 0.55 mg/L"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Dose increase = 0.9 mg/L - 0.55 mg/L"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact concentration in milligrams per litre (mg/L).",
+    "unitOptions": [
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "g-L",
+      "label": "g/L",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "kPa",
+      "label": "kPa"
+     }
+    ],
+    "expected": "0.35",
+    "expectedUnitId": "mg-L",
+    "absoluteTolerance": "0",
+    "explanation": "Dose increase = 0.9 - 0.55 = 0.35 mg/L."
+   }
+  },
+  {
+   "id": "wp3wd-ladder83",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Water leaves a Winnipeg plant with a free chlorine residual of 1.1 mg/L. A given decay rate of 0.12 mg/L per day applies in the distribution system. Find the residual after 5 days, in mg/L. Enter the exact unrounded number.",
+   "topicId": "booster-disinfection",
+   "level": "class1",
+   "assumptions": "Fictional system in western Canada: initial residual = 1.1 mg/L, decay rate = 0.12 mg/L per day, time = 5 days. Residual equals initial minus decay rate times days. Provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality frame the context in general terms.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Residual = Initial residual + Decay rate * Days"
+      },
+      {
+       "id": "opt-b",
+       "label": "Residual = Initial residual - Decay rate / Days"
+      },
+      {
+       "id": "opt-c",
+       "label": "Residual = Initial residual - Decay rate * Days"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Residual = Initial residual - Decay rate * Days"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Work in mg/L throughout, so sums and differences stay in mg/L"
+      },
+      {
+       "id": "opt-b",
+       "label": "Convert the residuals to kPa before calculating"
+      },
+      {
+       "id": "opt-c",
+       "label": "Report the result in kg"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Work in mg/L throughout, so sums and differences stay in mg/L"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Residual = 1.1 + 0.12 * 5"
+      },
+      {
+       "id": "opt-b",
+       "label": "Residual = 1.1 - 0.12 * 5"
+      },
+      {
+       "id": "opt-c",
+       "label": "Residual = 1.1 - 0.12 / 5"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Residual = 1.1 - 0.12 * 5"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact concentration in milligrams per litre (mg/L).",
+    "unitOptions": [
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "g-L",
+      "label": "g/L",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "kPa",
+      "label": "kPa"
+     }
+    ],
+    "expected": "0.5",
+    "expectedUnitId": "mg-L",
+    "absoluteTolerance": "0",
+    "explanation": "Residual = 1.1 - 0.6 = 0.5 mg/L."
+   }
+  },
+  {
+   "id": "wp3wd-ladder84",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A booster station in Regina needs 3 kg of chlorine. The solution strength is given as 120 g per litre. Find the solution volume required, in litres. Enter the exact unrounded number.",
+   "topicId": "booster-disinfection",
+   "level": "class1",
+   "assumptions": "Fictional system in western Canada: chlorine mass = 3 kg = 3000 g, solution strength = 120 g/L. Volume equals mass in grams divided by strength. Provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality frame the context in general terms.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Volume = Mass in grams / Solution strength"
+      },
+      {
+       "id": "opt-b",
+       "label": "Volume = Mass in grams * Solution strength"
+      },
+      {
+       "id": "opt-c",
+       "label": "Volume = Mass in grams * Solution strength * 2"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Volume = Mass in grams / Solution strength"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Divide the mass in kg by the strength with no gram conversion"
+      },
+      {
+       "id": "opt-b",
+       "label": "Convert the mass to grams, then divide by the strength in g per litre to get litres"
+      },
+      {
+       "id": "opt-c",
+       "label": "Report the result in m3"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Convert the mass to grams, then divide by the strength in g per litre to get litres"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Volume = 3000 g * 120 g/L"
+      },
+      {
+       "id": "opt-b",
+       "label": "Volume = 3000 g - 120 g/L"
+      },
+      {
+       "id": "opt-c",
+       "label": "Volume = 3000 g / 120 g/L"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Volume = 3000 g / 120 g/L"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact volume in litres (L).",
+    "unitOptions": [
+     {
+      "id": "L",
+      "label": "L"
+     },
+     {
+      "id": "m3",
+      "label": "m3",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "kg",
+      "label": "kg"
+     }
+    ],
+    "expected": "25",
+    "expectedUnitId": "L",
+    "absoluteTolerance": "0",
+    "explanation": "Volume = 3000 / 120 = 25 L."
+   }
+  },
+  {
+   "id": "wp3wd-ladder85",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A booster station in Saskatoon treats a flow of 8500 m3 per day at a chlorine dose of 0.6 mg/L. Find the daily chlorine use, in kg per day. Enter the exact unrounded number.",
+   "topicId": "booster-disinfection",
+   "level": "class1",
+   "assumptions": "Fictional system in western Canada: flow = 8500 m3/d, dose = 0.6 mg/L. Daily mass in kg equals dose times flow divided by 1000. Provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality frame the context in general terms.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Daily use = Dose * Flow * 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Daily use = Dose * Flow / 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Daily use = Dose * Flow * 1000 * 2"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Daily use = Dose * Flow / 1000"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Multiply dose by volume with no division and report kg"
+      },
+      {
+       "id": "opt-b",
+       "label": "Report the result in kPa"
+      },
+      {
+       "id": "opt-c",
+       "label": "Multiply dose in mg/L by flow in m3 per day and divide by 1000 to get kg per day"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Multiply dose in mg/L by flow in m3 per day and divide by 1000 to get kg per day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Daily use = 0.6 mg/L * 8500 m3/d / 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Daily use = 0.6 mg/L * 8500 m3/d * 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Daily use = 0.6 mg/L + 8500 m3/d / 1000"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Daily use = 0.6 mg/L * 8500 m3/d / 1000"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact feed rate in kilograms per day (kg/d).",
+    "unitOptions": [
+     {
+      "id": "kg-d",
+      "label": "kg/d"
+     },
+     {
+      "id": "g-d",
+      "label": "g/d",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "L",
+      "label": "L"
+     }
+    ],
+    "expected": "5.1",
+    "expectedUnitId": "kg-d",
+    "absoluteTolerance": "0",
+    "explanation": "Daily use = 8500 * 0.6 / 1000 = 5.1 kg per day."
+   }
+  },
+  {
+   "id": "wp3wd-ladder86",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Water enters a Vancouver tank with a free chlorine residual of 0.95 mg/L. A given decay of 0.28 mg/L occurs during storage. Find the residual at the tank outlet, in mg/L. Enter the exact unrounded number.",
+   "topicId": "booster-disinfection",
+   "level": "class1",
+   "assumptions": "Fictional system in western Canada: inlet residual = 0.95 mg/L, storage decay = 0.28 mg/L. Outlet residual equals inlet residual minus decay. Provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality frame the context in general terms.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Outlet residual = Inlet residual + Storage decay"
+      },
+      {
+       "id": "opt-b",
+       "label": "Outlet residual = Inlet residual - Storage decay * 2"
+      },
+      {
+       "id": "opt-c",
+       "label": "Outlet residual = Inlet residual - Storage decay"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Outlet residual = Inlet residual - Storage decay"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Work in mg/L throughout, so sums and differences stay in mg/L"
+      },
+      {
+       "id": "opt-b",
+       "label": "Convert the residuals to kPa before calculating"
+      },
+      {
+       "id": "opt-c",
+       "label": "Report the result in kg"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Work in mg/L throughout, so sums and differences stay in mg/L"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Outlet residual = 0.95 mg/L + 0.28 mg/L"
+      },
+      {
+       "id": "opt-b",
+       "label": "Outlet residual = 0.95 mg/L - 0.28 mg/L"
+      },
+      {
+       "id": "opt-c",
+       "label": "Outlet residual = 0.95 mg/L / 0.28 mg/L"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Outlet residual = 0.95 mg/L - 0.28 mg/L"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact concentration in milligrams per litre (mg/L).",
+    "unitOptions": [
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "g-L",
+      "label": "g/L",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "kPa",
+      "label": "kPa"
+     }
+    ],
+    "expected": "0.67",
+    "expectedUnitId": "mg-L",
+    "absoluteTolerance": "0",
+    "explanation": "Outlet residual = 0.95 - 0.28 = 0.67 mg/L."
+   }
+  },
+  {
+   "id": "wp3wd-ladder87",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Operators in Victoria want to raise the residual in a 4000 m3 tank by 0.25 mg/L. Find the chlorine mass required, in kg. Enter the exact unrounded number.",
+   "topicId": "booster-disinfection",
+   "level": "class1",
+   "assumptions": "Fictional system in western Canada: volume = 4000 m3, residual increase = 0.25 mg/L. Mass in kg equals the increase times volume divided by 1000. Provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality frame the context in general terms.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Mass = Residual increase * Volume / 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Mass = Residual increase * Volume * 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Mass = Residual increase * Volume * 1000 * 2"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Mass = Residual increase * Volume / 1000"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Multiply dose by volume with no division and report kg"
+      },
+      {
+       "id": "opt-b",
+       "label": "Multiply dose in mg/L by volume in m3 and divide by 1000 to get kg, since 1 mg/L over 1 m3 equals 1 g"
+      },
+      {
+       "id": "opt-c",
+       "label": "Report the result in kPa"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Multiply dose in mg/L by volume in m3 and divide by 1000 to get kg, since 1 mg/L over 1 m3 equals 1 g"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Mass = 0.25 mg/L * 4000 m3 * 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Mass = 0.25 mg/L + 4000 m3 / 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Mass = 0.25 mg/L * 4000 m3 / 1000"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Mass = 0.25 mg/L * 4000 m3 / 1000"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact mass in kilograms (kg).",
+    "unitOptions": [
+     {
+      "id": "kg",
+      "label": "kg"
+     },
+     {
+      "id": "g",
+      "label": "g",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "L",
+      "label": "L"
+     }
+    ],
+    "expected": "1",
+    "expectedUnitId": "kg",
+    "absoluteTolerance": "0",
+    "explanation": "Mass = 0.25 * 4000 / 1000 = 1 kg."
+   }
+  },
+  {
+   "id": "wp3wd-ladder88",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "At a Kelowna booster station the chlorine demand is 0.7 mg/L and the target residual is 0.8 mg/L. Find the total chlorine dose to apply, in mg/L. Enter the exact unrounded number.",
+   "topicId": "booster-disinfection",
+   "level": "class1",
+   "assumptions": "Fictional system in western Canada: chlorine demand = 0.7 mg/L, target residual = 0.8 mg/L. Total dose equals demand plus target residual. Provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality frame the context in general terms.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Total dose = Chlorine demand - Target residual"
+      },
+      {
+       "id": "opt-b",
+       "label": "Total dose = Chlorine demand + Target residual"
+      },
+      {
+       "id": "opt-c",
+       "label": "Total dose = Chlorine demand + Target residual * 2"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Total dose = Chlorine demand + Target residual"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Convert the residuals to kPa before calculating"
+      },
+      {
+       "id": "opt-b",
+       "label": "Report the result in kg"
+      },
+      {
+       "id": "opt-c",
+       "label": "Work in mg/L throughout, so sums and differences stay in mg/L"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Work in mg/L throughout, so sums and differences stay in mg/L"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Total dose = 0.7 mg/L + 0.8 mg/L"
+      },
+      {
+       "id": "opt-b",
+       "label": "Total dose = 0.7 mg/L - 0.8 mg/L"
+      },
+      {
+       "id": "opt-c",
+       "label": "Total dose = 0.7 mg/L * 0.8 mg/L"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Total dose = 0.7 mg/L + 0.8 mg/L"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact concentration in milligrams per litre (mg/L).",
+    "unitOptions": [
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "g-L",
+      "label": "g/L",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "kPa",
+      "label": "kPa"
+     }
+    ],
+    "expected": "1.5",
+    "expectedUnitId": "mg-L",
+    "absoluteTolerance": "0",
+    "explanation": "Total dose = 0.7 + 0.8 = 1.5 mg/L."
+   }
+  },
+  {
+   "id": "wp3wd-ladder89",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A booster station in Red Deer holds 450 kg of chlorine in storage. Daily use is 15 kg per day. Find the days of supply on hand. Enter the exact unrounded number.",
+   "topicId": "booster-disinfection",
+   "level": "class1",
+   "assumptions": "Fictional system in western Canada: stock = 450 kg, daily use = 15 kg/d. Days of supply equal stock divided by daily use. Provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality frame the context in general terms.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Days of supply = Stock * Daily use"
+      },
+      {
+       "id": "opt-b",
+       "label": "Days of supply = Stock * Daily use * 2"
+      },
+      {
+       "id": "opt-c",
+       "label": "Days of supply = Stock / Daily use"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Days of supply = Stock / Daily use"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Divide the stock in kg by the use in kg per day to get days"
+      },
+      {
+       "id": "opt-b",
+       "label": "Multiply the stock by the daily use"
+      },
+      {
+       "id": "opt-c",
+       "label": "Report the result in kg"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Divide the stock in kg by the use in kg per day to get days"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Days of supply = 450 kg * 15 kg/d"
+      },
+      {
+       "id": "opt-b",
+       "label": "Days of supply = 450 kg / 15 kg/d"
+      },
+      {
+       "id": "opt-c",
+       "label": "Days of supply = 450 kg - 15 kg/d"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Days of supply = 450 kg / 15 kg/d"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact time in days.",
+    "unitOptions": [
+     {
+      "id": "days",
+      "label": "days"
+     },
+     {
+      "id": "h",
+      "label": "h",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "24"
+      }
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     }
+    ],
+    "expected": "30",
+    "expectedUnitId": "days",
+    "absoluteTolerance": "0",
+    "explanation": "Days of supply = 450 / 15 = 30 days."
+   }
+  },
+  {
+   "id": "wp3wd-ladder90",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A booster station in Lethbridge uses 4.2 kg of chlorine per day. Find the chlorine use over a 30 day month, in kg. Enter the exact unrounded number.",
+   "topicId": "booster-disinfection",
+   "level": "class1",
+   "assumptions": "Fictional system in western Canada: daily use = 4.2 kg/d, days = 30. Monthly use equals daily use times days. Provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality frame the context in general terms.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Monthly use = Daily use * Days"
+      },
+      {
+       "id": "opt-b",
+       "label": "Monthly use = Daily use / Days"
+      },
+      {
+       "id": "opt-c",
+       "label": "Monthly use = Daily use / Days * 2"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Monthly use = Daily use * Days"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Multiply dose by volume with no division and report kg"
+      },
+      {
+       "id": "opt-b",
+       "label": "Multiply dose in mg/L by volume in m3 and divide by 1000 to get kg, since 1 mg/L over 1 m3 equals 1 g"
+      },
+      {
+       "id": "opt-c",
+       "label": "Report the result in kPa"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Multiply dose in mg/L by volume in m3 and divide by 1000 to get kg, since 1 mg/L over 1 m3 equals 1 g"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Monthly use = 4.2 kg/d / 30 d"
+      },
+      {
+       "id": "opt-b",
+       "label": "Monthly use = 4.2 kg/d + 30 d"
+      },
+      {
+       "id": "opt-c",
+       "label": "Monthly use = 4.2 kg/d * 30 d"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Monthly use = 4.2 kg/d * 30 d"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact mass in kilograms (kg).",
+    "unitOptions": [
+     {
+      "id": "kg",
+      "label": "kg"
+     },
+     {
+      "id": "g",
+      "label": "g",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "L",
+      "label": "L"
+     }
+    ],
+    "expected": "126",
+    "expectedUnitId": "kg",
+    "absoluteTolerance": "0",
+    "explanation": "Monthly use = 4.2 * 30 = 126 kg."
+   }
+  },
+  {
+   "id": "wp3wd-ladder91",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A flushing standard in Calgary calls for three pipe volumes. One pipe volume of the main section is given as 14.5 m3. Find the total flushing volume, in m3. Enter the exact unrounded number.",
+   "topicId": "flushing-sampling",
+   "level": "class1",
+   "assumptions": "Fictional system in western Canada: pipe volume = 14.5 m3, number of volumes = 3. Total flushing volume equals pipe volume times 3. Provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality frame the context in general terms.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Flushing volume = Pipe volume / Number of volumes"
+      },
+      {
+       "id": "opt-b",
+       "label": "Flushing volume = Pipe volume * Number of volumes"
+      },
+      {
+       "id": "opt-c",
+       "label": "Flushing volume = Pipe volume * Number of volumes * 2"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Flushing volume = Pipe volume * Number of volumes"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Convert each volume to kPa before calculating"
+      },
+      {
+       "id": "opt-b",
+       "label": "Multiply the volumes together and report the result in metres"
+      },
+      {
+       "id": "opt-c",
+       "label": "Use volumes in m3 and the stated factors and conversions so the result is in m3"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Use volumes in m3 and the stated factors and conversions so the result is in m3"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Flushing volume = 14.5 m3 * 3"
+      },
+      {
+       "id": "opt-b",
+       "label": "Flushing volume = 14.5 m3 / 3"
+      },
+      {
+       "id": "opt-c",
+       "label": "Flushing volume = 14.5 m3 + 3"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Flushing volume = 14.5 m3 * 3"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact volume in cubic metres (m3).",
+    "unitOptions": [
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "L",
+      "label": "L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "kg",
+      "label": "kg"
+     }
+    ],
+    "expected": "43.5",
+    "expectedUnitId": "m3",
+    "absoluteTolerance": "0",
+    "explanation": "Flushing volume = 14.5 * 3 = 43.5 m3."
+   }
+  },
+  {
+   "id": "wp3wd-ladder92",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A main section in Edmonton has a given cross sectional area of 0.1256 m2 and a length of 450 m. Find the pipe volume, in m3. Enter the exact unrounded number.",
+   "topicId": "flushing-sampling",
+   "level": "class1",
+   "assumptions": "Fictional system in western Canada: cross sectional area = 0.1256 m2, length = 450 m. Pipe volume equals area times length. Provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality frame the context in general terms.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Pipe volume = Cross sectional area / Length"
+      },
+      {
+       "id": "opt-b",
+       "label": "Pipe volume = Cross sectional area * Length * 2"
+      },
+      {
+       "id": "opt-c",
+       "label": "Pipe volume = Cross sectional area * Length"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Pipe volume = Cross sectional area * Length"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Use volumes in m3 and the stated factors and conversions so the result is in m3"
+      },
+      {
+       "id": "opt-b",
+       "label": "Convert each volume to kPa before calculating"
+      },
+      {
+       "id": "opt-c",
+       "label": "Multiply the volumes together and report the result in metres"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Use volumes in m3 and the stated factors and conversions so the result is in m3"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Pipe volume = 0.1256 m2 / 450 m"
+      },
+      {
+       "id": "opt-b",
+       "label": "Pipe volume = 0.1256 m2 * 450 m"
+      },
+      {
+       "id": "opt-c",
+       "label": "Pipe volume = 0.1256 m2 + 450 m"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Pipe volume = 0.1256 m2 * 450 m"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact volume in cubic metres (m3).",
+    "unitOptions": [
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "L",
+      "label": "L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "kg",
+      "label": "kg"
+     }
+    ],
+    "expected": "56.52",
+    "expectedUnitId": "m3",
+    "absoluteTolerance": "0",
+    "explanation": "Pipe volume = 0.1256 * 450 = 56.52 m3."
+   }
+  },
+  {
+   "id": "wp3wd-ladder93",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A flushing flow in Winnipeg is 120 L/s through a main with a given cross sectional area of 0.08 m2. Find the flushing velocity, in m/s. Enter the exact unrounded number.",
+   "topicId": "flushing-sampling",
+   "level": "class1",
+   "assumptions": "Fictional system in western Canada: flow = 120 L/s = 0.12 m3/s, area = 0.08 m2. Velocity equals flow in m3/s divided by area. Provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality frame the context in general terms.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Velocity = Flow / 1000 / Area"
+      },
+      {
+       "id": "opt-b",
+       "label": "Velocity = Flow * 1000 * Area"
+      },
+      {
+       "id": "opt-c",
+       "label": "Velocity = Flow * 1000 * Area * 2"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Velocity = Flow / 1000 / Area"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Divide the flow in L/s by the area with no conversion"
+      },
+      {
+       "id": "opt-b",
+       "label": "Convert the flow from L/s to m3/s by dividing by 1000, then divide by the area in m2 to get m/s"
+      },
+      {
+       "id": "opt-c",
+       "label": "Report the result in kPa"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Convert the flow from L/s to m3/s by dividing by 1000, then divide by the area in m2 to get m/s"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Velocity = 120 * 1000 / 0.08"
+      },
+      {
+       "id": "opt-b",
+       "label": "Velocity = 120 + 1000 / 0.08"
+      },
+      {
+       "id": "opt-c",
+       "label": "Velocity = 120 / 1000 / 0.08"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Velocity = 120 / 1000 / 0.08"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact velocity in metres per second (m/s).",
+    "unitOptions": [
+     {
+      "id": "m-s",
+      "label": "m/s"
+     },
+     {
+      "id": "L-s",
+      "label": "L/s"
+     },
+     {
+      "id": "kPa",
+      "label": "kPa"
+     }
+    ],
+    "expected": "1.5",
+    "expectedUnitId": "m-s",
+    "absoluteTolerance": "0",
+    "explanation": "Velocity = 0.12 / 0.08 = 1.5 m/s."
+   }
+  },
+  {
+   "id": "wp3wd-ladder94",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A flushing operation in Regina must move 96 m3 of water at a flushing flow of 40 L/s. Find the flushing duration, in minutes. Enter the exact unrounded number.",
+   "topicId": "flushing-sampling",
+   "level": "class1",
+   "assumptions": "Fictional system in western Canada: volume = 96 m3 = 96000 L, flow = 40 L/s. Duration in minutes equals volume in litres divided by flow and by 60. Provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality frame the context in general terms.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Duration = Volume / 1000 / Flow / 60"
+      },
+      {
+       "id": "opt-b",
+       "label": "Duration = Volume * 1000 / Flow / 60"
+      },
+      {
+       "id": "opt-c",
+       "label": "Duration = Volume * 1000 / Flow / 60 * 2"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Duration = Volume * 1000 / Flow / 60"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Divide the volume in m3 by the flow with no conversions"
+      },
+      {
+       "id": "opt-b",
+       "label": "Report the result in m3"
+      },
+      {
+       "id": "opt-c",
+       "label": "Convert the volume to litres, divide by the flow in L/s to get seconds, then divide by 60 to get minutes"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Convert the volume to litres, divide by the flow in L/s to get seconds, then divide by 60 to get minutes"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Duration = 96 * 1000 / 40 / 60"
+      },
+      {
+       "id": "opt-b",
+       "label": "Duration = 96 * 1000 * 40 / 60"
+      },
+      {
+       "id": "opt-c",
+       "label": "Duration = 96 * 1000 + 40 / 60"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Duration = 96 * 1000 / 40 / 60"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact time in minutes (min).",
+    "unitOptions": [
+     {
+      "id": "min",
+      "label": "min"
+     },
+     {
+      "id": "s",
+      "label": "s",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "60"
+      }
+     },
+     {
+      "id": "h",
+      "label": "h",
+      "toExpected": {
+       "numerator": "60",
+       "denominator": "1"
+      }
+     }
+    ],
+    "expected": "40",
+    "expectedUnitId": "min",
+    "absoluteTolerance": "0",
+    "explanation": "Duration = 96000 / 2400 = 40 min."
+   }
+  },
+  {
+   "id": "wp3wd-ladder95",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A sampling program in Saskatoon covers 24 distribution sites. Each site is sampled once per week over a 4 week month. Find the number of samples collected in the month. Enter the exact unrounded number.",
+   "topicId": "flushing-sampling",
+   "level": "class1",
+   "assumptions": "Fictional system in western Canada: sites = 24, visits per site = 4. Total samples equal sites times visits per site. Provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality frame the context in general terms.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Total samples = Sites / Visits per site"
+      },
+      {
+       "id": "opt-b",
+       "label": "Total samples = Sites * Visits per site * 2"
+      },
+      {
+       "id": "opt-c",
+       "label": "Total samples = Sites * Visits per site"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Total samples = Sites * Visits per site"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Multiply the site count by the visit count so the result is a sample count"
+      },
+      {
+       "id": "opt-b",
+       "label": "Divide the sites by the visits instead of multiplying"
+      },
+      {
+       "id": "opt-c",
+       "label": "Report the result in m3"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Multiply the site count by the visit count so the result is a sample count"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Total samples = 24 / 4"
+      },
+      {
+       "id": "opt-b",
+       "label": "Total samples = 24 * 4"
+      },
+      {
+       "id": "opt-c",
+       "label": "Total samples = 24 + 4"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Total samples = 24 * 4"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact number of samples.",
+    "unitOptions": [
+     {
+      "id": "samples",
+      "label": "samples"
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "kPa",
+      "label": "kPa"
+     }
+    ],
+    "expected": "96",
+    "expectedUnitId": "samples",
+    "absoluteTolerance": "0",
+    "explanation": "Total samples = 24 * 4 = 96 samples."
+   }
+  },
+  {
+   "id": "wp3wd-ladder96",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A sampling program in Vancouver covers 36 sites sampled once per month. Find the number of samples collected in a 12 month year. Enter the exact unrounded number.",
+   "topicId": "flushing-sampling",
+   "level": "class1",
+   "assumptions": "Fictional system in western Canada: sites = 36, months = 12, one sample per site per month. Total samples equal sites times months. Provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality frame the context in general terms.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Total samples = Sites * Months"
+      },
+      {
+       "id": "opt-b",
+       "label": "Total samples = Sites / Months"
+      },
+      {
+       "id": "opt-c",
+       "label": "Total samples = Sites * Months * 2"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Total samples = Sites * Months"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Divide the sites by the visits instead of multiplying"
+      },
+      {
+       "id": "opt-b",
+       "label": "Multiply the site count by the visit count so the result is a sample count"
+      },
+      {
+       "id": "opt-c",
+       "label": "Report the result in m3"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Multiply the site count by the visit count so the result is a sample count"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Total samples = 36 / 12"
+      },
+      {
+       "id": "opt-b",
+       "label": "Total samples = 36 + 12"
+      },
+      {
+       "id": "opt-c",
+       "label": "Total samples = 36 * 12"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Total samples = 36 * 12"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact number of samples.",
+    "unitOptions": [
+     {
+      "id": "samples",
+      "label": "samples"
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "kPa",
+      "label": "kPa"
+     }
+    ],
+    "expected": "432",
+    "expectedUnitId": "samples",
+    "absoluteTolerance": "0",
+    "explanation": "Total samples = 36 * 12 = 432 samples."
+   }
+  },
+  {
+   "id": "wp3wd-ladder97",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A unidirectional flushing program in Victoria covers 6 zones. Each zone uses 185 m3 of flushing water. Find the total program volume, in m3. Enter the exact unrounded number.",
+   "topicId": "flushing-sampling",
+   "level": "class1",
+   "assumptions": "Fictional system in western Canada: zones = 6, volume per zone = 185 m3. Total volume equals zones times volume per zone. Provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality frame the context in general terms.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Total volume = Zones / Volume per zone"
+      },
+      {
+       "id": "opt-b",
+       "label": "Total volume = Zones * Volume per zone"
+      },
+      {
+       "id": "opt-c",
+       "label": "Total volume = Zones * Volume per zone * 2"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Total volume = Zones * Volume per zone"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Convert each volume to kPa before calculating"
+      },
+      {
+       "id": "opt-b",
+       "label": "Multiply the volumes together and report the result in metres"
+      },
+      {
+       "id": "opt-c",
+       "label": "Use volumes in m3 and the stated factors and conversions so the result is in m3"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Use volumes in m3 and the stated factors and conversions so the result is in m3"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Total volume = 6 * 185 m3"
+      },
+      {
+       "id": "opt-b",
+       "label": "Total volume = 6 / 185 m3"
+      },
+      {
+       "id": "opt-c",
+       "label": "Total volume = 6 + 185 m3"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Total volume = 6 * 185 m3"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact volume in cubic metres (m3).",
+    "unitOptions": [
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "L",
+      "label": "L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "kg",
+      "label": "kg"
+     }
+    ],
+    "expected": "1110",
+    "expectedUnitId": "m3",
+    "absoluteTolerance": "0",
+    "explanation": "Total volume = 6 * 185 = 1110 m3."
+   }
+  },
+  {
+   "id": "wp3wd-ladder98",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A hydrant flow test in Kelowna flows 65 L/s for 15 minutes. Find the volume discharged, in m3. Enter the exact unrounded number.",
+   "topicId": "flushing-sampling",
+   "level": "class1",
+   "assumptions": "Fictional system in western Canada: flow = 65 L/s, duration = 15 min = 900 s, 1000 L = 1 m3. Volume equals flow times seconds, divided by 1000. Provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality frame the context in general terms.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Volume = Flow / Minutes / 60 / 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Volume = Flow * Minutes * 60 / 1000 * 2"
+      },
+      {
+       "id": "opt-c",
+       "label": "Volume = Flow * Minutes * 60 / 1000"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Volume = Flow * Minutes * 60 / 1000"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Use volumes in m3 and the stated factors and conversions so the result is in m3"
+      },
+      {
+       "id": "opt-b",
+       "label": "Convert each volume to kPa before calculating"
+      },
+      {
+       "id": "opt-c",
+       "label": "Multiply the volumes together and report the result in metres"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Use volumes in m3 and the stated factors and conversions so the result is in m3"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Volume = 65 / 15 * 60 / 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Volume = 65 * 15 * 60 / 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Volume = 65 * 15 * 60 * 1000"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Volume = 65 * 15 * 60 / 1000"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact volume in cubic metres (m3).",
+    "unitOptions": [
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "L",
+      "label": "L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "kg",
+      "label": "kg"
+     }
+    ],
+    "expected": "58.5",
+    "expectedUnitId": "m3",
+    "absoluteTolerance": "0",
+    "explanation": "Volume = 65 * 15 * 60 / 1000 = 58.5 m3."
+   }
+  },
+  {
+   "id": "wp3wd-ladder99",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A dead end flushing program in Red Deer covers 8 dead ends. Each flush uses 12.5 m3. Find the total flushing volume, in m3. Enter the exact unrounded number.",
+   "topicId": "flushing-sampling",
+   "level": "class1",
+   "assumptions": "Fictional system in western Canada: dead ends = 8, volume per flush = 12.5 m3. Total volume equals dead ends times volume per flush. Provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality frame the context in general terms.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Total volume = Dead ends * Volume per flush"
+      },
+      {
+       "id": "opt-b",
+       "label": "Total volume = Dead ends / Volume per flush"
+      },
+      {
+       "id": "opt-c",
+       "label": "Total volume = Dead ends * Volume per flush * 2"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Total volume = Dead ends * Volume per flush"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Convert each volume to kPa before calculating"
+      },
+      {
+       "id": "opt-b",
+       "label": "Use volumes in m3 and the stated factors and conversions so the result is in m3"
+      },
+      {
+       "id": "opt-c",
+       "label": "Multiply the volumes together and report the result in metres"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Use volumes in m3 and the stated factors and conversions so the result is in m3"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Total volume = 8 / 12.5 m3"
+      },
+      {
+       "id": "opt-b",
+       "label": "Total volume = 8 + 12.5 m3"
+      },
+      {
+       "id": "opt-c",
+       "label": "Total volume = 8 * 12.5 m3"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Total volume = 8 * 12.5 m3"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact volume in cubic metres (m3).",
+    "unitOptions": [
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "L",
+      "label": "L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "kg",
+      "label": "kg"
+     }
+    ],
+    "expected": "100",
+    "expectedUnitId": "m3",
+    "absoluteTolerance": "0",
+    "explanation": "Total volume = 8 * 12.5 = 100 m3."
+   }
+  },
+  {
+   "id": "wp3wd-error01",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this annual water audit closure check for a multi zone system near Regina, Saskatchewan.",
+   "topicId": "water-audit-closure",
+   "level": "class1",
+   "assumptions": "Fictional audit day in m3 for a system near Regina, Saskatchewan: system input = 1000 m3, billed authorized = 820 m3, unbilled authorized = 30 m3, apparent losses = 25 m3, real losses = 125 m3. The audit closes when authorized consumption plus total losses equals system input.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Authorized consumption = 820 m3 + 30 m3 = 850 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total losses = 30 m3 + 125 m3 = 155 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Accounted water = 850 m3 + 155 m3 = 1005 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Total losses = 25 m3 + 125 m3 = 150 m3",
+   "explanation": "Line 2 used 30 m3 instead of the stated 25 m3 for apparent losses. The correct calculation is Total losses = 25 m3 + 125 m3 = 150 m3."
+  },
+  {
+   "id": "wp3wd-error02",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this water audit closure calculation for a large distribution system near Saskatoon, Saskatchewan.",
+   "topicId": "water-audit-closure",
+   "level": "class1",
+   "assumptions": "Fictional audit day in m3 for a system near Saskatoon, Saskatchewan: system input = 8000 m3, billed authorized = 6200 m3, unbilled authorized = 200 m3, apparent losses = 150 m3, real losses = 450 m3. Unaccounted water is system input minus accounted water, reported as a percent of system input.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Accounted water = 6200 m3 + 200 m3 + 150 m3 + 450 m3 = 7050 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Unaccounted water = 8000 m3 - 7050 m3 = 950 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Unaccounted share = 950 m3 / 8000 m3 * 100 = 11.875 percent"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Accounted water = 6200 m3 + 200 m3 + 150 m3 + 450 m3 = 7000 m3",
+   "explanation": "Line 1 arithmetic is wrong. The correct calculation is Accounted water = 6200 m3 + 200 m3 + 150 m3 + 450 m3 = 7000 m3."
+  },
+  {
+   "id": "wp3wd-error03",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this non revenue water closure calculation for a utility near Calgary, Alberta.",
+   "topicId": "water-audit-closure",
+   "level": "class1",
+   "assumptions": "Fictional daily totals for a utility near Calgary, Alberta: system input = 8000 m3, billed authorized consumption = 6000 m3. Non revenue water percent = (input - billed) / input * 100. The monthly figure uses 30 days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Non revenue water volume = 8000 m3 - 6000 m3 = 2000 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Non revenue water = 2000 m3 / 8000 m3 * 100 = 25 percent"
+    },
+    {
+     "id": "line3",
+     "label": "3. Monthly non revenue volume = 2000 m3/day * 30 days = 60500 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Monthly non revenue volume = 2000 m3/day * 30 days = 60000 m3",
+   "explanation": "Line 3 arithmetic is wrong. The correct calculation is Monthly non revenue volume = 2000 m3/day * 30 days = 60000 m3."
+  },
+  {
+   "id": "wp3wd-error04",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this annual water audit closure check for a multi zone system near Edmonton, Alberta.",
+   "topicId": "water-audit-closure",
+   "level": "class1",
+   "assumptions": "Fictional audit day in m3 for a system near Edmonton, Alberta: system input = 770 m3, billed authorized = 640 m3, unbilled authorized = 20 m3, apparent losses = 18 m3, real losses = 92 m3. The audit closes when authorized consumption plus total losses equals system input.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Authorized consumption = 640 m3 + 20 m3 = 660 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total losses = 18 m3 + 92 m3 = 115 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Accounted water = 660 m3 + 115 m3 = 775 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Total losses = 18 m3 + 92 m3 = 110 m3",
+   "explanation": "Line 2 arithmetic is wrong. The correct calculation is Total losses = 18 m3 + 92 m3 = 110 m3."
+  },
+  {
+   "id": "wp3wd-error05",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this water audit closure calculation for a large distribution system near Winnipeg, Manitoba.",
+   "topicId": "water-audit-closure",
+   "level": "class1",
+   "assumptions": "Fictional audit day in m3 for a system near Winnipeg, Manitoba: system input = 10000 m3, billed authorized = 7800 m3, unbilled authorized = 250 m3, apparent losses = 200 m3, real losses = 500 m3. Unaccounted water is system input minus accounted water, reported as a percent of system input.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Accounted water = 7800 m3 + 250 m3 + 200 m3 + 500 m3 = 8850 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Unaccounted water = 10000 m3 - 8850 m3 = 1150 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Unaccounted share = 1150 m3 / 10000 m3 * 100 = 11.5 percent"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Accounted water = 7800 m3 + 250 m3 + 200 m3 + 500 m3 = 8750 m3",
+   "explanation": "Line 1 arithmetic is wrong. The correct calculation is Accounted water = 7800 m3 + 250 m3 + 200 m3 + 500 m3 = 8750 m3."
+  },
+  {
+   "id": "wp3wd-error06",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this non revenue water closure calculation for a utility near Brandon, Manitoba.",
+   "topicId": "water-audit-closure",
+   "level": "class1",
+   "assumptions": "Fictional daily totals for a utility near Brandon, Manitoba: system input = 9500 m3, billed authorized consumption = 7600 m3. Non revenue water percent = (input - billed) / input * 100. The monthly figure uses 30 days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Non revenue water volume = 9500 m3 - 7600 m3 = 1900 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Non revenue water = 1900 m3 / 9500 m3 * 100 = 20 percent"
+    },
+    {
+     "id": "line3",
+     "label": "3. Monthly non revenue volume = 1900 m3/day * 30 days = 57250 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Monthly non revenue volume = 1900 m3/day * 30 days = 57000 m3",
+   "explanation": "Line 3 arithmetic is wrong. The correct calculation is Monthly non revenue volume = 1900 m3/day * 30 days = 57000 m3."
+  },
+  {
+   "id": "wp3wd-error07",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this annual water audit closure check for a multi zone system near Kelowna, British Columbia.",
+   "topicId": "water-audit-closure",
+   "level": "class1",
+   "assumptions": "Fictional audit day in m3 for a system near Kelowna, British Columbia: system input = 1550 m3, billed authorized = 1250 m3, unbilled authorized = 50 m3, apparent losses = 40 m3, real losses = 210 m3. The audit closes when authorized consumption plus total losses equals system input.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Authorized consumption = 1250 m3 + 50 m3 = 1300 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total losses = 40 m3 + 220 m3 = 260 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Accounted water = 1300 m3 + 260 m3 = 1560 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Total losses = 40 m3 + 210 m3 = 250 m3",
+   "explanation": "Line 2 used 220 m3 instead of the stated 210 m3 for real losses. The correct calculation is Total losses = 40 m3 + 210 m3 = 250 m3."
+  },
+  {
+   "id": "wp3wd-error08",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this water audit closure calculation for a large distribution system near Kamloops, British Columbia.",
+   "topicId": "water-audit-closure",
+   "level": "class1",
+   "assumptions": "Fictional audit day in m3 for a system near Kamloops, British Columbia: system input = 12000 m3, billed authorized = 9400 m3, unbilled authorized = 300 m3, apparent losses = 250 m3, real losses = 550 m3. Unaccounted water is system input minus accounted water, reported as a percent of system input.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Accounted water = 9400 m3 + 300 m3 + 250 m3 = 9950 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Unaccounted water = 12000 m3 - 9950 m3 = 2050 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Unaccounted share = 2050 m3 / 12000 m3 * 100"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Accounted water = 9400 m3 + 300 m3 + 250 m3 + 550 m3 = 10500 m3",
+   "explanation": "Line 1 omitted the real losses of 550 m3 from the accounted water. The correct calculation is Accounted water = 9400 m3 + 300 m3 + 250 m3 + 550 m3 = 10500 m3."
+  },
+  {
+   "id": "wp3wd-error09",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this non revenue water closure calculation for a utility near Prince George, British Columbia.",
+   "topicId": "water-audit-closure",
+   "level": "class1",
+   "assumptions": "Fictional daily totals for a utility near Prince George, British Columbia: system input = 12000 m3, billed authorized consumption = 9000 m3. Non revenue water percent = (input - billed) / input * 100. The monthly figure uses 30 days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Non revenue water volume = 12000 m3 - 9000 m3 = 3000 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Non revenue water = 3000 m3 / 12000 m3 * 100 = 25 percent"
+    },
+    {
+     "id": "line3",
+     "label": "3. Monthly non revenue volume = 3000 m3/day * 31 days = 93000 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Monthly non revenue volume = 3000 m3/day * 30 days = 90000 m3",
+   "explanation": "Line 3 used 31 days instead of the stated 30 days for days in the month. The correct calculation is Monthly non revenue volume = 3000 m3/day * 30 days = 90000 m3."
+  },
+  {
+   "id": "wp3wd-error10",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this annual water audit closure check for a multi zone system near Red Deer, Alberta.",
+   "topicId": "water-audit-closure",
+   "level": "class1",
+   "assumptions": "Fictional audit day in m3 for a system near Red Deer, Alberta: system input = 575 m3, billed authorized = 480 m3, unbilled authorized = 15 m3, apparent losses = 12 m3, real losses = 68 m3. The audit closes when authorized consumption plus total losses equals system input. The program context follows provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Authorized consumption = 480 m3 + 15 m3 = 495 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total losses = 12 m3 + 68 m3 = 85 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Accounted water = 495 m3 + 85 m3 = 580 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Total losses = 12 m3 + 68 m3 = 80 m3",
+   "explanation": "Line 2 arithmetic is wrong. The correct calculation is Total losses = 12 m3 + 68 m3 = 80 m3."
+  },
+  {
+   "id": "wp3wd-error100",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this renewal program quantity calculation for a system near Red Deer, Alberta.",
+   "topicId": "renewal-quantities",
+   "level": "class1",
+   "assumptions": "Fictional renewal program near Red Deer, Alberta: total mains length = 110 km, planned renewal share = 30 percent, given density = 44 service connections per km renewed and 5 valves per km renewed. The program context follows provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Length to renew = 110 km * 30 percent / 100 = 43 km"
+    },
+    {
+     "id": "line2",
+     "label": "2. Services to renew = 43 km * 44 services per km = 1892 services"
+    },
+    {
+     "id": "line3",
+     "label": "3. Valves to renew = 43 km * 5 valves per km = 215 valves"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Length to renew = 110 km * 30 percent / 100 = 33 km",
+   "explanation": "Line 1 arithmetic is wrong. The correct calculation is Length to renew = 110 km * 30 percent / 100 = 33 km."
+  },
+  {
+   "id": "wp3wd-error11",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this water audit closure calculation for a large distribution system near Lethbridge, Alberta.",
+   "topicId": "water-audit-closure",
+   "level": "class1",
+   "assumptions": "Fictional audit day in m3 for a system near Lethbridge, Alberta: system input = 6000 m3, billed authorized = 3950 m3, unbilled authorized = 150 m3, apparent losses = 120 m3, real losses = 280 m3. Unaccounted water is system input minus accounted water, reported as a percent of system input.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Accounted water = 4050 m3 + 150 m3 + 120 m3 + 280 m3 = 4600 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Unaccounted water = 6000 m3 - 4600 m3 = 1400 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Unaccounted share = 1400 m3 / 6000 m3 * 100"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Accounted water = 3950 m3 + 150 m3 + 120 m3 + 280 m3 = 4500 m3",
+   "explanation": "Line 1 used 4050 m3 instead of the stated 3950 m3 for billed authorized use. The correct calculation is Accounted water = 3950 m3 + 150 m3 + 120 m3 + 280 m3 = 4500 m3."
+  },
+  {
+   "id": "wp3wd-error12",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this non revenue water closure calculation for a utility near Moose Jaw, Saskatchewan.",
+   "topicId": "water-audit-closure",
+   "level": "class1",
+   "assumptions": "Fictional daily totals for a utility near Moose Jaw, Saskatchewan: system input = 6000 m3, billed authorized consumption = 4500 m3. Non revenue water percent = (input - billed) / input * 100. The monthly figure uses 30 days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Non revenue water volume = 6000 m3 - 4500 m3 = 1500 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Non revenue water = 1500 m3 / 6000 m3 * 100 = 25 percent"
+    },
+    {
+     "id": "line3",
+     "label": "3. Monthly non revenue volume = 1500 m3/day * 30 days = 45100 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Monthly non revenue volume = 1500 m3/day * 30 days = 45000 m3",
+   "explanation": "Line 3 arithmetic is wrong. The correct calculation is Monthly non revenue volume = 1500 m3/day * 30 days = 45000 m3."
+  },
+  {
+   "id": "wp3wd-error13",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this annual water audit closure check for a multi zone system near Medicine Hat, Alberta.",
+   "topicId": "water-audit-closure",
+   "level": "class1",
+   "assumptions": "Fictional audit day in m3 for a system near Medicine Hat, Alberta: system input = 1200 m3, billed authorized = 960 m3, unbilled authorized = 40 m3, apparent losses = 35 m3, real losses = 165 m3. The audit closes when authorized consumption plus total losses equals system input.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Authorized consumption = 960 m3 + 40 m3 = 1000 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total losses = 35 m3 + 165 m3 = 210 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Accounted water = 1000 m3 + 210 m3 = 1210 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Total losses = 35 m3 + 165 m3 = 200 m3",
+   "explanation": "Line 2 arithmetic is wrong. The correct calculation is Total losses = 35 m3 + 165 m3 = 200 m3."
+  },
+  {
+   "id": "wp3wd-error14",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this water audit closure calculation for a large distribution system near Grande Prairie, Alberta.",
+   "topicId": "water-audit-closure",
+   "level": "class1",
+   "assumptions": "Fictional audit day in m3 for a system near Grande Prairie, Alberta: system input = 15000 m3, billed authorized = 10700 m3, unbilled authorized = 400 m3, apparent losses = 300 m3, real losses = 600 m3. Unaccounted water is system input minus accounted water, reported as a percent of system input.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Accounted water = 10800 m3 + 400 m3 + 300 m3 + 600 m3 = 12100 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Unaccounted water = 15000 m3 - 12100 m3 = 2900 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Unaccounted share = 2900 m3 / 15000 m3 * 100"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Accounted water = 10700 m3 + 400 m3 + 300 m3 + 600 m3 = 12000 m3",
+   "explanation": "Line 1 used 10800 m3 instead of the stated 10700 m3 for billed authorized use. The correct calculation is Accounted water = 10700 m3 + 400 m3 + 300 m3 + 600 m3 = 12000 m3."
+  },
+  {
+   "id": "wp3wd-error15",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this non revenue water closure calculation for a utility near Cranbrook, British Columbia.",
+   "topicId": "water-audit-closure",
+   "level": "class1",
+   "assumptions": "Fictional daily totals for a utility near Cranbrook, British Columbia: system input = 15000 m3, billed authorized consumption = 12000 m3. Non revenue water percent = (input - billed) / input * 100. The monthly figure uses 30 days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Non revenue water volume = 15000 m3 - 12000 m3 = 3000 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Non revenue water = 3000 m3 / 15000 m3 * 100 = 20 percent"
+    },
+    {
+     "id": "line3",
+     "label": "3. Monthly non revenue volume = 3000 m3/day * 30 days = 90250 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Monthly non revenue volume = 3000 m3/day * 30 days = 90000 m3",
+   "explanation": "Line 3 arithmetic is wrong. The correct calculation is Monthly non revenue volume = 3000 m3/day * 30 days = 90000 m3."
+  },
+  {
+   "id": "wp3wd-error16",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this annual water audit closure check for a multi zone system near Swift Current, Saskatchewan.",
+   "topicId": "water-audit-closure",
+   "level": "class1",
+   "assumptions": "Fictional audit day in m3 for a system near Swift Current, Saskatchewan: system input = 1850 m3, billed authorized = 1500 m3, unbilled authorized = 60 m3, apparent losses = 45 m3, real losses = 245 m3. The audit closes when authorized consumption plus total losses equals system input.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Authorized consumption = 1500 m3 + 60 m3 = 1560 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total losses = 45 m3 + 245 m3 = 310 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Accounted water = 1560 m3 + 310 m3 = 1870 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Total losses = 45 m3 + 245 m3 = 290 m3",
+   "explanation": "Line 2 arithmetic is wrong. The correct calculation is Total losses = 45 m3 + 245 m3 = 290 m3."
+  },
+  {
+   "id": "wp3wd-error17",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this real loss rate calculation for a pressure district near Yorkton, Saskatchewan.",
+   "topicId": "real-loss-rates",
+   "level": "class1",
+   "assumptions": "Fictional district near Yorkton, Saskatchewan: real losses = 800 m3/day, service connections = 1600, 1000 L = 1 m3, and a year is taken as 365 days for the annual volume.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Real losses = 800 m3/day * 1000 L/m3 = 800000 L/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Real loss rate = 800000 L/day / 1600 connections = 500 L/connection/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual real losses = 800 m3/day * 365 days = 292100 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Annual real losses = 800 m3/day * 365 days = 292000 m3",
+   "explanation": "Line 3 arithmetic is wrong. The correct calculation is Annual real losses = 800 m3/day * 365 days = 292000 m3."
+  },
+  {
+   "id": "wp3wd-error18",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this real loss rate per kilometre calculation for a system near Prince Albert, Saskatchewan.",
+   "topicId": "real-loss-rates",
+   "level": "class1",
+   "assumptions": "Fictional system near Prince Albert, Saskatchewan: real losses = 1200 m3/day, length of mains = 24 km, 1000 L = 1 m3. The weekly volume uses 7 days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Real loss rate = 1200 m3/day / 24 km = 50 m3/km/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Real loss rate = 50 m3/km/day * 100 L/m3 = 5000 L/km/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Weekly real losses = 1200 m3/day * 7 days = 8400 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Real loss rate = 50 m3/km/day * 1000 L/m3 = 50000 L/km/day",
+   "explanation": "Line 2 used 100 L per m3 instead of the stated 1000 L per m3 for litre conversion factor. The correct calculation is Real loss rate = 50 m3/km/day * 1000 L/m3 = 50000 L/km/day."
+  },
+  {
+   "id": "wp3wd-error19",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this real loss calculation for a system scale audit near Fort McMurray, Alberta.",
+   "topicId": "real-loss-rates",
+   "level": "class1",
+   "assumptions": "Fictional daily balance near Fort McMurray, Alberta: system input = 5000 m3, authorized consumption = 3900 m3, apparent losses = 150 m3. Real losses = input - authorized - apparent. A year is taken as 365 days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Real losses = 5000 m3 - 3900 m3 - 150 m3 = 960 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Real loss share = 960 m3 / 5000 m3 * 100 = 19.2 percent"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual real losses = 960 m3/day * 365 days = 350400 m3"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Real losses = 5000 m3 - 3900 m3 - 150 m3 = 950 m3",
+   "explanation": "Line 1 arithmetic is wrong. The correct calculation is Real losses = 5000 m3 - 3900 m3 - 150 m3 = 950 m3."
+  },
+  {
+   "id": "wp3wd-error20",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this real loss rate calculation for a pressure district near Nanaimo, British Columbia.",
+   "topicId": "real-loss-rates",
+   "level": "class1",
+   "assumptions": "Fictional district near Nanaimo, British Columbia: real losses = 600 m3/day, service connections = 1200, 1000 L = 1 m3, and a year is taken as 365 days for the annual volume. The program context follows provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Real losses = 600 m3/day * 1000 L/m3 = 600000 L/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Real loss rate = 600000 L/day / 1200 connections = 500 L/connection/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual real losses = 600 m3/day * 365 days = 219500 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Annual real losses = 600 m3/day * 365 days = 219000 m3",
+   "explanation": "Line 3 arithmetic is wrong. The correct calculation is Annual real losses = 600 m3/day * 365 days = 219000 m3."
+  },
+  {
+   "id": "wp3wd-error21",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this real loss rate per kilometre calculation for a system near Victoria, British Columbia.",
+   "topicId": "real-loss-rates",
+   "level": "class1",
+   "assumptions": "Fictional system near Victoria, British Columbia: real losses = 1500 m3/day, length of mains = 30 km, 1000 L = 1 m3. The weekly volume uses 7 days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Real loss rate = 1500 m3/day / 30 km = 50 m3/km/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Real loss rate = 50 m3/km/day * 1000 L/m3 = 50100 L/km/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Weekly real losses = 1500 m3/day * 7 days = 10500 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Real loss rate = 50 m3/km/day * 1000 L/m3 = 50000 L/km/day",
+   "explanation": "Line 2 arithmetic is wrong. The correct calculation is Real loss rate = 50 m3/km/day * 1000 L/m3 = 50000 L/km/day."
+  },
+  {
+   "id": "wp3wd-error22",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this real loss calculation for a system scale audit near Chilliwack, British Columbia.",
+   "topicId": "real-loss-rates",
+   "level": "class1",
+   "assumptions": "Fictional daily balance near Chilliwack, British Columbia: system input = 8000 m3, authorized consumption = 6400 m3, apparent losses = 200 m3. Real losses = input - authorized - apparent. A year is taken as 365 days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Real losses = 8000 m3 - 6400 m3 - 200 m3 = 1450 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Real loss share = 1450 m3 / 8000 m3 * 100 = 18.125 percent"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual real losses = 1450 m3/day * 365 days = 529250 m3"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Real losses = 8000 m3 - 6400 m3 - 200 m3 = 1400 m3",
+   "explanation": "Line 1 arithmetic is wrong. The correct calculation is Real losses = 8000 m3 - 6400 m3 - 200 m3 = 1400 m3."
+  },
+  {
+   "id": "wp3wd-error23",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this real loss rate calculation for a pressure district near Vernon, British Columbia.",
+   "topicId": "real-loss-rates",
+   "level": "class1",
+   "assumptions": "Fictional district near Vernon, British Columbia: real losses = 750 m3/day, service connections = 1500, 1000 L = 1 m3, and a year is taken as 365 days for the annual volume.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Real losses = 750 m3/day * 1000 L/m3 = 750000 L/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Real loss rate = 750000 L/day / 1500 connections = 500 L/connection/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual real losses = 750 m3/day * 365 days = 274000 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Annual real losses = 750 m3/day * 365 days = 273750 m3",
+   "explanation": "Line 3 arithmetic is wrong. The correct calculation is Annual real losses = 750 m3/day * 365 days = 273750 m3."
+  },
+  {
+   "id": "wp3wd-error24",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this real loss rate per kilometre calculation for a system near Penticton, British Columbia.",
+   "topicId": "real-loss-rates",
+   "level": "class1",
+   "assumptions": "Fictional system near Penticton, British Columbia: real losses = 1800 m3/day, length of mains = 36 km, 1000 L = 1 m3. The weekly volume uses 7 days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Real loss rate = 1800 m3/day / 36 km = 50 m3/km/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Real loss rate = 50 m3/km/day * 1000 L/m3 = 50500 L/km/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Weekly real losses = 1800 m3/day * 7 days = 12600 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Real loss rate = 50 m3/km/day * 1000 L/m3 = 50000 L/km/day",
+   "explanation": "Line 2 arithmetic is wrong. The correct calculation is Real loss rate = 50 m3/km/day * 1000 L/m3 = 50000 L/km/day."
+  },
+  {
+   "id": "wp3wd-error25",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this real loss calculation for a system scale audit near Thompson, Manitoba.",
+   "topicId": "real-loss-rates",
+   "level": "class1",
+   "assumptions": "Fictional daily balance near Thompson, Manitoba: system input = 6000 m3, authorized consumption = 4700 m3, apparent losses = 100 m3. Real losses = input - authorized - apparent. A year is taken as 365 days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Real losses = 6000 m3 - 4700 m3 - 100 m3 = 1300 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Real loss share = 1300 m3 / 6000 m3 * 100"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual real losses = 1300 m3/day * 365 days = 474500 m3"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Real losses = 6000 m3 - 4700 m3 - 100 m3 = 1200 m3",
+   "explanation": "Line 1 arithmetic is wrong. The correct calculation is Real losses = 6000 m3 - 4700 m3 - 100 m3 = 1200 m3."
+  },
+  {
+   "id": "wp3wd-error26",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this real loss rate calculation for a pressure district near Airdrie, Alberta.",
+   "topicId": "real-loss-rates",
+   "level": "class1",
+   "assumptions": "Fictional district near Airdrie, Alberta: real losses = 900 m3/day, service connections = 1800, 1000 L = 1 m3, and a year is taken as 365 days for the annual volume.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Real losses = 900 m3/day * 1000 L/m3 = 900000 L/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Real loss rate = 900000 L/day / 1800 connections = 500 L/connection/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual real losses = 900 m3/day * 365 days = 328600 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Annual real losses = 900 m3/day * 365 days = 328500 m3",
+   "explanation": "Line 3 arithmetic is wrong. The correct calculation is Annual real losses = 900 m3/day * 365 days = 328500 m3."
+  },
+  {
+   "id": "wp3wd-error27",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this real loss rate per kilometre calculation for a system near Spruce Grove, Alberta.",
+   "topicId": "real-loss-rates",
+   "level": "class1",
+   "assumptions": "Fictional system near Spruce Grove, Alberta: real losses = 2000 m3/day, length of mains = 25 km, 1000 L = 1 m3. The weekly volume uses 7 days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Real loss rate = 2000 m3/day / 25 km = 80 m3/km/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Real loss rate = 80 m3/km/day * 100 L/m3 = 8000 L/km/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Weekly real losses = 2000 m3/day * 7 days = 14000 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Real loss rate = 80 m3/km/day * 1000 L/m3 = 80000 L/km/day",
+   "explanation": "Line 2 used 100 L per m3 instead of the stated 1000 L per m3 for litre conversion factor. The correct calculation is Real loss rate = 80 m3/km/day * 1000 L/m3 = 80000 L/km/day."
+  },
+  {
+   "id": "wp3wd-error28",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this real loss calculation for a system scale audit near Lloydminster, Alberta.",
+   "topicId": "real-loss-rates",
+   "level": "class1",
+   "assumptions": "Fictional daily balance near Lloydminster, Alberta: system input = 10000 m3, authorized consumption = 8100 m3, apparent losses = 400 m3. Real losses = input - authorized - apparent. A year is taken as 365 days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Real losses = 10000 m3 - 8200 m3 - 400 m3 = 1400 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Real loss share = 1400 m3 / 10000 m3 * 100 = 14 percent"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual real losses = 1400 m3/day * 365 days = 511000 m3"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Real losses = 10000 m3 - 8100 m3 - 400 m3 = 1500 m3",
+   "explanation": "Line 1 used 8200 m3 instead of the stated 8100 m3 for authorized consumption. The correct calculation is Real losses = 10000 m3 - 8100 m3 - 400 m3 = 1500 m3."
+  },
+  {
+   "id": "wp3wd-error29",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this real loss rate calculation for a pressure district near Whitehorse, Yukon.",
+   "topicId": "real-loss-rates",
+   "level": "class1",
+   "assumptions": "Fictional district near Whitehorse, Yukon: real losses = 1000 m3/day, service connections = 2500, 1000 L = 1 m3, and a year is taken as 365 days for the annual volume.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Real losses = 1000 m3/day * 1000 L/m3 = 1000000 L/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Real loss rate = 1000000 L/day / 2500 connections = 400 L/connection/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual real losses = 1000 m3/day * 365 days = 365500 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Annual real losses = 1000 m3/day * 365 days = 365000 m3",
+   "explanation": "Line 3 arithmetic is wrong. The correct calculation is Annual real losses = 1000 m3/day * 365 days = 365000 m3."
+  },
+  {
+   "id": "wp3wd-error30",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this real loss rate per kilometre calculation for a system near Yellowknife, Northwest Territories.",
+   "topicId": "real-loss-rates",
+   "level": "class1",
+   "assumptions": "Fictional system near Yellowknife, Northwest Territories: real losses = 1600 m3/day, length of mains = 20 km, 1000 L = 1 m3. The weekly volume uses 7 days. The program context follows provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Real loss rate = 1600 m3/day / 20 km = 80 m3/km/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Real loss rate = 80 m3/km/day * 1000 L/m3 = 80100 L/km/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Weekly real losses = 1600 m3/day * 7 days = 11200 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Real loss rate = 80 m3/km/day * 1000 L/m3 = 80000 L/km/day",
+   "explanation": "Line 2 arithmetic is wrong. The correct calculation is Real loss rate = 80 m3/km/day * 1000 L/m3 = 80000 L/km/day."
+  },
+  {
+   "id": "wp3wd-error31",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this real loss calculation for a system scale audit near Regina, Saskatchewan.",
+   "topicId": "real-loss-rates",
+   "level": "class1",
+   "assumptions": "Fictional daily balance near Regina, Saskatchewan: system input = 12000 m3, authorized consumption = 9600 m3, apparent losses = 600 m3. Real losses = input - authorized - apparent. A year is taken as 365 days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Real losses = 12000 m3 - 9600 m3 - 600 m3 = 2000 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Real loss share = 2000 m3 / 12000 m3 * 100"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual real losses = 2000 m3/day * 365 days = 730000 m3"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Real losses = 12000 m3 - 9600 m3 - 600 m3 = 1800 m3",
+   "explanation": "Line 1 arithmetic is wrong. The correct calculation is Real losses = 12000 m3 - 9600 m3 - 600 m3 = 1800 m3."
+  },
+  {
+   "id": "wp3wd-error32",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this real loss rate calculation for a pressure district near Saskatoon, Saskatchewan.",
+   "topicId": "real-loss-rates",
+   "level": "class1",
+   "assumptions": "Fictional district near Saskatoon, Saskatchewan: real losses = 840 m3/day, service connections = 2100, 1000 L = 1 m3, and a year is taken as 365 days for the annual volume.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Real losses = 840 m3/day * 1000 L/m3 = 840000 L/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Real loss rate = 840000 L/day / 2100 connections = 400 L/connection/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual real losses = 840 m3/day * 365 days = 306850 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Annual real losses = 840 m3/day * 365 days = 306600 m3",
+   "explanation": "Line 3 arithmetic is wrong. The correct calculation is Annual real losses = 840 m3/day * 365 days = 306600 m3."
+  },
+  {
+   "id": "wp3wd-error33",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this demand forecast for a growing system near Calgary, Alberta.",
+   "topicId": "demand-forecasting",
+   "level": "class1",
+   "assumptions": "Fictional forecast near Calgary, Alberta: current average day demand = 5200 m3/day, given growth = 120 m3/day added each year, forecast period = 5 years, 1000 m3 = 1 ML. Growth is applied as a simple yearly addition, as given.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total growth = 130 m3/day per year * 5 years = 650 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Forecast demand = 5200 m3/day + 650 m3/day = 5850 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Forecast demand = 5850 m3/day / 1000 = 5.85 ML/day"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Total growth = 120 m3/day per year * 5 years = 600 m3/day",
+   "explanation": "Line 1 used 130 m3/day instead of the stated 120 m3/day for yearly growth. The correct calculation is Total growth = 120 m3/day per year * 5 years = 600 m3/day."
+  },
+  {
+   "id": "wp3wd-error34",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this population based demand forecast for a system near Edmonton, Alberta.",
+   "topicId": "demand-forecasting",
+   "level": "class1",
+   "assumptions": "Fictional forecast near Edmonton, Alberta: forecast population = 12000, given per capita demand = 250 L/person/day, given maximum day peaking factor = 1.5, 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Average day demand = 12000 people * 250 L/person/day = 3000000 L/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Average day demand = 3000000 L/day / 1000 = 3000 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Maximum day demand = 3000 m3/day * 1.5 = 4600 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Maximum day demand = 3000 m3/day * 1.5 = 4500 m3/day",
+   "explanation": "Line 3 arithmetic is wrong. The correct calculation is Maximum day demand = 3000 m3/day * 1.5 = 4500 m3/day."
+  },
+  {
+   "id": "wp3wd-error35",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this growth forecast for a service area near Winnipeg, Manitoba.",
+   "topicId": "demand-forecasting",
+   "level": "class1",
+   "assumptions": "Fictional forecast near Winnipeg, Manitoba: current population = 20000, given growth over the planning period = 5 percent, given per capita demand = 250 L/person/day, 1000 L = 1 m3. The growth percent is applied once to the current population, as given.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Population increase = 20000 people * 5 percent / 100 = 1000 people"
+    },
+    {
+     "id": "line2",
+     "label": "2. Future population = 20000 people + 1000 people = 21250 people"
+    },
+    {
+     "id": "line3",
+     "label": "3. Future demand = 21250 people * 250 L/person/day / 1000 = 5312.5 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Future population = 20000 people + 1000 people = 21000 people",
+   "explanation": "Line 2 arithmetic is wrong. The correct calculation is Future population = 20000 people + 1000 people = 21000 people."
+  },
+  {
+   "id": "wp3wd-error36",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this demand forecast for a growing system near Brandon, Manitoba.",
+   "topicId": "demand-forecasting",
+   "level": "class1",
+   "assumptions": "Fictional forecast near Brandon, Manitoba: current average day demand = 6800 m3/day, given growth = 150 m3/day added each year, forecast period = 4 years, 1000 m3 = 1 ML. Growth is applied as a simple yearly addition, as given.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total growth = 150 m3/day per year * 4 years = 610 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Forecast demand = 6800 m3/day + 610 m3/day = 7410 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Forecast demand = 7410 m3/day / 1000 = 7.41 ML/day"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Total growth = 150 m3/day per year * 4 years = 600 m3/day",
+   "explanation": "Line 1 arithmetic is wrong. The correct calculation is Total growth = 150 m3/day per year * 4 years = 600 m3/day."
+  },
+  {
+   "id": "wp3wd-error37",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this population based demand forecast for a system near Kelowna, British Columbia.",
+   "topicId": "demand-forecasting",
+   "level": "class1",
+   "assumptions": "Fictional forecast near Kelowna, British Columbia: forecast population = 15000, given per capita demand = 240 L/person/day, given maximum day peaking factor = 1.5, 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Average day demand = 15000 people * 240 L/person/day = 3600000 L/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Average day demand = 3600000 L/day / 1000 = 3600 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Maximum day demand = 3600 m3/day * 1.5 = 5600 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Maximum day demand = 3600 m3/day * 1.5 = 5400 m3/day",
+   "explanation": "Line 3 arithmetic is wrong. The correct calculation is Maximum day demand = 3600 m3/day * 1.5 = 5400 m3/day."
+  },
+  {
+   "id": "wp3wd-error38",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this growth forecast for a service area near Kamloops, British Columbia.",
+   "topicId": "demand-forecasting",
+   "level": "class1",
+   "assumptions": "Fictional forecast near Kamloops, British Columbia: current population = 30000, given growth over the planning period = 4 percent, given per capita demand = 240 L/person/day, 1000 L = 1 m3. The growth percent is applied once to the current population, as given.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Population increase = 30000 people * 4 percent / 100 = 1200 people"
+    },
+    {
+     "id": "line2",
+     "label": "2. Future population = 30000 people + 1200 people = 31300 people"
+    },
+    {
+     "id": "line3",
+     "label": "3. Future demand = 31300 people * 240 L/person/day / 1000 = 7512 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Future population = 30000 people + 1200 people = 31200 people",
+   "explanation": "Line 2 arithmetic is wrong. The correct calculation is Future population = 30000 people + 1200 people = 31200 people."
+  },
+  {
+   "id": "wp3wd-error39",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this demand forecast for a growing system near Prince George, British Columbia.",
+   "topicId": "demand-forecasting",
+   "level": "class1",
+   "assumptions": "Fictional forecast near Prince George, British Columbia: current average day demand = 4500 m3/day, given growth = 90 m3/day added each year, forecast period = 6 years, 1000 m3 = 1 ML. Growth is applied as a simple yearly addition, as given.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total growth = 90 m3/day per year * 6 years = 550 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Forecast demand = 4500 m3/day + 550 m3/day = 5050 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Forecast demand = 5050 m3/day / 1000 = 5.05 ML/day"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Total growth = 90 m3/day per year * 6 years = 540 m3/day",
+   "explanation": "Line 1 arithmetic is wrong. The correct calculation is Total growth = 90 m3/day per year * 6 years = 540 m3/day."
+  },
+  {
+   "id": "wp3wd-error40",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this population based demand forecast for a system near Red Deer, Alberta.",
+   "topicId": "demand-forecasting",
+   "level": "class1",
+   "assumptions": "Fictional forecast near Red Deer, Alberta: forecast population = 20000, given per capita demand = 220 L/person/day, given maximum day peaking factor = 1.8, 1000 L = 1 m3. The program context follows provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Average day demand = 20000 people * 220 L/person/day = 4400000 L/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Average day demand = 4400000 L/day / 1000 = 4400 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Maximum day demand = 4400 m3/day * 2 = 8800 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Maximum day demand = 4400 m3/day * 1.8 = 7920 m3/day",
+   "explanation": "Line 3 used 2 instead of the stated 1.8 for maximum day peaking factor. The correct calculation is Maximum day demand = 4400 m3/day * 1.8 = 7920 m3/day."
+  },
+  {
+   "id": "wp3wd-error41",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this growth forecast for a service area near Lethbridge, Alberta.",
+   "topicId": "demand-forecasting",
+   "level": "class1",
+   "assumptions": "Fictional forecast near Lethbridge, Alberta: current population = 15000, given growth over the planning period = 6 percent, given per capita demand = 220 L/person/day, 1000 L = 1 m3. The growth percent is applied once to the current population, as given.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Population increase = 15000 people * 6 percent / 100 = 900 people"
+    },
+    {
+     "id": "line2",
+     "label": "2. Future population = 15000 people - 900 people = 14100 people"
+    },
+    {
+     "id": "line3",
+     "label": "3. Future demand = 14100 people * 220 L/person/day / 1000 = 3102 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Future population = 15000 people + 900 people = 15900 people",
+   "explanation": "Line 2 subtracted the population increase from line 1 instead of adding it. The correct calculation is Future population = 15000 people + 900 people = 15900 people."
+  },
+  {
+   "id": "wp3wd-error42",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this demand forecast for a growing system near Moose Jaw, Saskatchewan.",
+   "topicId": "demand-forecasting",
+   "level": "class1",
+   "assumptions": "Fictional forecast near Moose Jaw, Saskatchewan: current average day demand = 8100 m3/day, given growth = 200 m3/day added each year, forecast period = 3 years, 1000 m3 = 1 ML. Growth is applied as a simple yearly addition, as given.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total growth = 200 m3/day per year * 3 years = 620 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Forecast demand = 8100 m3/day + 620 m3/day = 8720 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Forecast demand = 8720 m3/day / 1000 = 8.72 ML/day"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Total growth = 200 m3/day per year * 3 years = 600 m3/day",
+   "explanation": "Line 1 arithmetic is wrong. The correct calculation is Total growth = 200 m3/day per year * 3 years = 600 m3/day."
+  },
+  {
+   "id": "wp3wd-error43",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this population based demand forecast for a system near Medicine Hat, Alberta.",
+   "topicId": "demand-forecasting",
+   "level": "class1",
+   "assumptions": "Fictional forecast near Medicine Hat, Alberta: forecast population = 8000, given per capita demand = 260 L/person/day, given maximum day peaking factor = 1.6, 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Average day demand = 8000 people * 260 L/person/day = 2080000 L/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Average day demand = 2080000 L/day / 1000 = 2080 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Maximum day demand = 2080 m3/day * 1.6 = 3428 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Maximum day demand = 2080 m3/day * 1.6 = 3328 m3/day",
+   "explanation": "Line 3 arithmetic is wrong. The correct calculation is Maximum day demand = 2080 m3/day * 1.6 = 3328 m3/day."
+  },
+  {
+   "id": "wp3wd-error44",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this growth forecast for a service area near Grande Prairie, Alberta.",
+   "topicId": "demand-forecasting",
+   "level": "class1",
+   "assumptions": "Fictional forecast near Grande Prairie, Alberta: current population = 40000, given growth over the planning period = 3 percent, given per capita demand = 200 L/person/day, 1000 L = 1 m3. The growth percent is applied once to the current population, as given.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Population increase = 40000 people * 3 percent / 100 = 1200 people"
+    },
+    {
+     "id": "line2",
+     "label": "2. Future population = 40000 people + 1200 people = 41450 people"
+    },
+    {
+     "id": "line3",
+     "label": "3. Future demand = 41450 people * 200 L/person/day / 1000 = 8290 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Future population = 40000 people + 1200 people = 41200 people",
+   "explanation": "Line 2 arithmetic is wrong. The correct calculation is Future population = 40000 people + 1200 people = 41200 people."
+  },
+  {
+   "id": "wp3wd-error45",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this demand forecast for a growing system near Cranbrook, British Columbia.",
+   "topicId": "demand-forecasting",
+   "level": "class1",
+   "assumptions": "Fictional forecast near Cranbrook, British Columbia: current average day demand = 3600 m3/day, given growth = 75 m3/day added each year, forecast period = 8 years, 1000 m3 = 1 ML. Growth is applied as a simple yearly addition, as given.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total growth = 75 m3/day per year * 9 years = 675 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Forecast demand = 3600 m3/day + 675 m3/day = 4275 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Forecast demand = 4275 m3/day / 1000 = 4.275 ML/day"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Total growth = 75 m3/day per year * 8 years = 600 m3/day",
+   "explanation": "Line 1 used 9 years instead of the stated 8 years for forecast period. The correct calculation is Total growth = 75 m3/day per year * 8 years = 600 m3/day."
+  },
+  {
+   "id": "wp3wd-error46",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this population based demand forecast for a system near Swift Current, Saskatchewan.",
+   "topicId": "demand-forecasting",
+   "level": "class1",
+   "assumptions": "Fictional forecast near Swift Current, Saskatchewan: forecast population = 25000, given per capita demand = 200 L/person/day, given maximum day peaking factor = 1.5, 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Average day demand = 25000 people * 200 L/person/day = 5000000 L/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Average day demand = 5000000 L/day / 1000 = 5000 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Maximum day demand = 5000 m3/day * 1.5 = 7700 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Maximum day demand = 5000 m3/day * 1.5 = 7500 m3/day",
+   "explanation": "Line 3 arithmetic is wrong. The correct calculation is Maximum day demand = 5000 m3/day * 1.5 = 7500 m3/day."
+  },
+  {
+   "id": "wp3wd-error47",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this growth forecast for a service area near Yorkton, Saskatchewan.",
+   "topicId": "demand-forecasting",
+   "level": "class1",
+   "assumptions": "Fictional forecast near Yorkton, Saskatchewan: current population = 25000, given growth over the planning period = 8 percent, given per capita demand = 260 L/person/day, 1000 L = 1 m3. The growth percent is applied once to the current population, as given.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Population increase = 25000 people * 8 percent / 100 = 2000 people"
+    },
+    {
+     "id": "line2",
+     "label": "2. Future population = 25000 people + 2000 people = 27100 people"
+    },
+    {
+     "id": "line3",
+     "label": "3. Future demand = 27100 people * 260 L/person/day / 1000 = 7046 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Future population = 25000 people + 2000 people = 27000 people",
+   "explanation": "Line 2 arithmetic is wrong. The correct calculation is Future population = 25000 people + 2000 people = 27000 people."
+  },
+  {
+   "id": "wp3wd-error48",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this demand forecast for a growing system near Prince Albert, Saskatchewan.",
+   "topicId": "demand-forecasting",
+   "level": "class1",
+   "assumptions": "Fictional forecast near Prince Albert, Saskatchewan: current average day demand = 5900 m3/day, given growth = 110 m3/day added each year, forecast period = 5 years, 1000 m3 = 1 ML. Growth is applied as a simple yearly addition, as given.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total growth = 110 m3/day per year * 5 years = 555 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Forecast demand = 5900 m3/day + 555 m3/day = 6455 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Forecast demand = 6455 m3/day / 1000 = 6.455 ML/day"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Total growth = 110 m3/day per year * 5 years = 550 m3/day",
+   "explanation": "Line 1 arithmetic is wrong. The correct calculation is Total growth = 110 m3/day per year * 5 years = 550 m3/day."
+  },
+  {
+   "id": "wp3wd-error49",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this capacity margin check for a multi zone system near Fort McMurray, Alberta.",
+   "topicId": "capacity-margin",
+   "level": "class1",
+   "assumptions": "Fictional capacity check near Fort McMurray, Alberta: rated system capacity = 15000 m3/day, maximum day demand = 12000 m3/day, given demand per new connection = 0.5 m3/day. Margin percent is measured against rated capacity.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Capacity margin = 15000 m3/day - 12000 m3/day = 3000 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Margin share = 3000 m3/day / 15000 m3/day * 100 = 25 percent"
+    },
+    {
+     "id": "line3",
+     "label": "3. Additional connections = 3000 m3/day / 0.5 m3/day per connection = 6000 connections"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Margin share = 3000 m3/day / 15000 m3/day * 100 = 20 percent",
+   "explanation": "Line 2 arithmetic is wrong. The correct calculation is Margin share = 3000 m3/day / 15000 m3/day * 100 = 20 percent."
+  },
+  {
+   "id": "wp3wd-error50",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this storage capacity margin check for a system near Nanaimo, British Columbia.",
+   "topicId": "capacity-margin",
+   "level": "class1",
+   "assumptions": "Fictional storage check near Nanaimo, British Columbia: usable storage = 8000 m3, required storage = 6000 m3, average day demand = 500 m3/day. Margin percent is measured against usable storage, and reserve days use the margin over average day demand. The program context follows provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Storage margin = 8000 m3 - 6000 m3 = 2200 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Margin share = 2200 m3 / 8000 m3 * 100 = 27.5 percent"
+    },
+    {
+     "id": "line3",
+     "label": "3. Extra reserve = 2200 m3 / 500 m3/day = 4.4 days"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Storage margin = 8000 m3 - 6000 m3 = 2000 m3",
+   "explanation": "Line 1 arithmetic is wrong. The correct calculation is Storage margin = 8000 m3 - 6000 m3 = 2000 m3."
+  },
+  {
+   "id": "wp3wd-error51",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this fire storage capacity check for a system near Victoria, British Columbia.",
+   "topicId": "capacity-margin",
+   "level": "class1",
+   "assumptions": "Fictional storage check near Victoria, British Columbia: given fire flow = 2500 L/min for 60 min, other required storage = 800 m3, tank capacity = 1200 m3, 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Fire storage = 2500 L/min * 60 min / 1000 = 150 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total required storage = 150 m3 + 800 m3 = 950 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Storage margin = 1200 m3 - 950 m3 = 260 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Storage margin = 1200 m3 - 950 m3 = 250 m3",
+   "explanation": "Line 3 arithmetic is wrong. The correct calculation is Storage margin = 1200 m3 - 950 m3 = 250 m3."
+  },
+  {
+   "id": "wp3wd-error52",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this capacity margin check for a multi zone system near Chilliwack, British Columbia.",
+   "topicId": "capacity-margin",
+   "level": "class1",
+   "assumptions": "Fictional capacity check near Chilliwack, British Columbia: rated system capacity = 12000 m3/day, maximum day demand = 9000 m3/day, given demand per new connection = 0.6 m3/day. Margin percent is measured against rated capacity.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Capacity margin = 12000 m3/day - 9000 m3/day = 3000 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Margin share = 3000 m3/day / 12000 m3/day * 100 = 30 percent"
+    },
+    {
+     "id": "line3",
+     "label": "3. Additional connections = 3000 m3/day / 0.6 m3/day per connection = 5000 connections"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Margin share = 3000 m3/day / 12000 m3/day * 100 = 25 percent",
+   "explanation": "Line 2 arithmetic is wrong. The correct calculation is Margin share = 3000 m3/day / 12000 m3/day * 100 = 25 percent."
+  },
+  {
+   "id": "wp3wd-error53",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this storage capacity margin check for a system near Vernon, British Columbia.",
+   "topicId": "capacity-margin",
+   "level": "class1",
+   "assumptions": "Fictional storage check near Vernon, British Columbia: usable storage = 10000 m3, required storage = 7500 m3, average day demand = 625 m3/day. Margin percent is measured against usable storage, and reserve days use the margin over average day demand.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Storage margin = 10000 m3 - 7600 m3 = 2400 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Margin share = 2400 m3 / 10000 m3 * 100 = 24 percent"
+    },
+    {
+     "id": "line3",
+     "label": "3. Extra reserve = 2400 m3 / 625 m3/day = 3.84 days"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Storage margin = 10000 m3 - 7500 m3 = 2500 m3",
+   "explanation": "Line 1 used 7600 m3 instead of the stated 7500 m3 for required storage. The correct calculation is Storage margin = 10000 m3 - 7500 m3 = 2500 m3."
+  },
+  {
+   "id": "wp3wd-error54",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this fire storage capacity check for a system near Penticton, British Columbia.",
+   "topicId": "capacity-margin",
+   "level": "class1",
+   "assumptions": "Fictional storage check near Penticton, British Columbia: given fire flow = 3000 L/min for 50 min, other required storage = 900 m3, tank capacity = 1300 m3, 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Fire storage = 3000 L/min * 50 min / 1000 = 150 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total required storage = 150 m3 + 900 m3 = 1050 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Storage margin = 1300 m3 + 1050 m3 = 2350 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Storage margin = 1300 m3 - 1050 m3 = 250 m3",
+   "explanation": "Line 3 added total required storage to tank capacity instead of subtracting it. The correct calculation is Storage margin = 1300 m3 - 1050 m3 = 250 m3."
+  },
+  {
+   "id": "wp3wd-error55",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this capacity margin check for a multi zone system near Thompson, Manitoba.",
+   "topicId": "capacity-margin",
+   "level": "class1",
+   "assumptions": "Fictional capacity check near Thompson, Manitoba: rated system capacity = 20000 m3/day, maximum day demand = 16000 m3/day, given demand per new connection = 0.8 m3/day. Margin percent is measured against rated capacity.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Capacity margin = 20000 m3/day - 16000 m3/day = 4000 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Margin share = 4000 m3/day / 16000 m3/day * 100 = 25 percent"
+    },
+    {
+     "id": "line3",
+     "label": "3. Additional connections = 4000 m3/day / 0.8 m3/day per connection = 5000 connections"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Margin share = 4000 m3/day / 20000 m3/day * 100 = 20 percent",
+   "explanation": "Line 2 divided by maximum day demand instead of rated capacity. The correct calculation is Margin share = 4000 m3/day / 20000 m3/day * 100 = 20 percent."
+  },
+  {
+   "id": "wp3wd-error56",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this storage capacity margin check for a system near Airdrie, Alberta.",
+   "topicId": "capacity-margin",
+   "level": "class1",
+   "assumptions": "Fictional storage check near Airdrie, Alberta: usable storage = 12000 m3, required storage = 9000 m3, average day demand = 750 m3/day. Margin percent is measured against usable storage, and reserve days use the margin over average day demand.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Storage margin = 12000 m3 - 9000 m3 = 3100 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Margin share = 3100 m3 / 12000 m3 * 100"
+    },
+    {
+     "id": "line3",
+     "label": "3. Extra reserve = 3100 m3 / 750 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Storage margin = 12000 m3 - 9000 m3 = 3000 m3",
+   "explanation": "Line 1 arithmetic is wrong. The correct calculation is Storage margin = 12000 m3 - 9000 m3 = 3000 m3."
+  },
+  {
+   "id": "wp3wd-error57",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this fire storage capacity check for a system near Spruce Grove, Alberta.",
+   "topicId": "capacity-margin",
+   "level": "class1",
+   "assumptions": "Fictional storage check near Spruce Grove, Alberta: given fire flow = 2000 L/min for 90 min, other required storage = 700 m3, tank capacity = 1100 m3, 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Fire storage = 2000 L/min * 90 min / 1000 = 180 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total required storage = 180 m3 + 700 m3 = 880 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Storage margin = 1100 m3 - 880 m3 = 240 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Storage margin = 1100 m3 - 880 m3 = 220 m3",
+   "explanation": "Line 3 arithmetic is wrong. The correct calculation is Storage margin = 1100 m3 - 880 m3 = 220 m3."
+  },
+  {
+   "id": "wp3wd-error58",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this capacity margin check for a multi zone system near Lloydminster, Alberta.",
+   "topicId": "capacity-margin",
+   "level": "class1",
+   "assumptions": "Fictional capacity check near Lloydminster, Alberta: rated system capacity = 9000 m3/day, maximum day demand = 6750 m3/day, given demand per new connection = 0.45 m3/day. Margin percent is measured against rated capacity.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Capacity margin = 9000 m3/day - 6750 m3/day = 2250 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Margin share = 2250 m3/day / 9000 m3/day * 10 = 2.5 percent"
+    },
+    {
+     "id": "line3",
+     "label": "3. Additional connections = 2250 m3/day / 0.45 m3/day per connection = 5000 connections"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Margin share = 2250 m3/day / 9000 m3/day * 100 = 25 percent",
+   "explanation": "Line 2 used 10 instead of the stated 100 for percent factor. The correct calculation is Margin share = 2250 m3/day / 9000 m3/day * 100 = 25 percent."
+  },
+  {
+   "id": "wp3wd-error59",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this storage capacity margin check for a system near Whitehorse, Yukon.",
+   "topicId": "capacity-margin",
+   "level": "class1",
+   "assumptions": "Fictional storage check near Whitehorse, Yukon: usable storage = 6000 m3, required storage = 4800 m3, average day demand = 400 m3/day. Margin percent is measured against usable storage, and reserve days use the margin over average day demand.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Storage margin = 6000 m3 - 4800 m3 = 1400 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Margin share = 1400 m3 / 6000 m3 * 100"
+    },
+    {
+     "id": "line3",
+     "label": "3. Extra reserve = 1400 m3 / 400 m3/day = 3.5 days"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Storage margin = 6000 m3 - 4800 m3 = 1200 m3",
+   "explanation": "Line 1 arithmetic is wrong. The correct calculation is Storage margin = 6000 m3 - 4800 m3 = 1200 m3."
+  }
+ ],
+ "missions": [
+  {
+   "id": "wp3wd-mission21",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 21: The Asset Renewal Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wd-ladder80",
+     "revision": "r1",
+     "occurrenceId": "m21-t1"
+    },
+    {
+     "taskId": "wp3wd-error01",
+     "revision": "r1",
+     "occurrenceId": "m21-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp3wd-mission22",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 22: The Water Audit Closure Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wd-error02",
+     "revision": "r1",
+     "occurrenceId": "m22-t1"
+    },
+    {
+     "taskId": "wp3wd-ladder81",
+     "revision": "r1",
+     "occurrenceId": "m22-t2"
+    },
+    {
+     "taskId": "wp3wd-ladder82",
+     "revision": "r1",
+     "occurrenceId": "m22-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp3wd-mission23",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 23: The Booster Disinfection Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wd-ladder83",
+     "revision": "r1",
+     "occurrenceId": "m23-t1"
+    },
+    {
+     "taskId": "wp3wd-error03",
+     "revision": "r1",
+     "occurrenceId": "m23-t2"
+    },
+    {
+     "taskId": "wp3wd-ladder84",
+     "revision": "r1",
+     "occurrenceId": "m23-t3"
+    },
+    {
+     "taskId": "wp3wd-ladder85",
+     "revision": "r1",
+     "occurrenceId": "m23-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp3wd-mission24",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 24: The Water Audit Closure Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wd-error04",
+     "revision": "r1",
+     "occurrenceId": "m24-t1"
+    },
+    {
+     "taskId": "wp3wd-ladder86",
+     "revision": "r1",
+     "occurrenceId": "m24-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp3wd-mission25",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 25: The Booster Disinfection Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wd-ladder87",
+     "revision": "r1",
+     "occurrenceId": "m25-t1"
+    },
+    {
+     "taskId": "wp3wd-error05",
+     "revision": "r1",
+     "occurrenceId": "m25-t2"
+    },
+    {
+     "taskId": "wp3wd-ladder88",
+     "revision": "r1",
+     "occurrenceId": "m25-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp3wd-mission26",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 26: The Water Audit Closure Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wd-error06",
+     "revision": "r1",
+     "occurrenceId": "m26-t1"
+    },
+    {
+     "taskId": "wp3wd-ladder89",
+     "revision": "r1",
+     "occurrenceId": "m26-t2"
+    },
+    {
+     "taskId": "wp3wd-ladder90",
+     "revision": "r1",
+     "occurrenceId": "m26-t3"
+    },
+    {
+     "taskId": "wp3wd-ladder91",
+     "revision": "r1",
+     "occurrenceId": "m26-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp3wd-mission27",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 27: The Flushing Sampling Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wd-ladder92",
+     "revision": "r1",
+     "occurrenceId": "m27-t1"
+    },
+    {
+     "taskId": "wp3wd-error07",
+     "revision": "r1",
+     "occurrenceId": "m27-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp3wd-mission28",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 28: The Water Audit Closure Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wd-error08",
+     "revision": "r1",
+     "occurrenceId": "m28-t1"
+    },
+    {
+     "taskId": "wp3wd-ladder93",
+     "revision": "r1",
+     "occurrenceId": "m28-t2"
+    },
+    {
+     "taskId": "wp3wd-ladder94",
+     "revision": "r1",
+     "occurrenceId": "m28-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp3wd-mission29",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 29: The Flushing Sampling Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wd-ladder95",
+     "revision": "r1",
+     "occurrenceId": "m29-t1"
+    },
+    {
+     "taskId": "wp3wd-error09",
+     "revision": "r1",
+     "occurrenceId": "m29-t2"
+    },
+    {
+     "taskId": "wp3wd-ladder96",
+     "revision": "r1",
+     "occurrenceId": "m29-t3"
+    },
+    {
+     "taskId": "wp3wd-ladder97",
+     "revision": "r1",
+     "occurrenceId": "m29-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp3wd-mission30",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 30: The Water Audit Closure Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wd-error10",
+     "revision": "r1",
+     "occurrenceId": "m30-t1"
+    },
+    {
+     "taskId": "wp3wd-ladder98",
+     "revision": "r1",
+     "occurrenceId": "m30-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp3wd-mission31",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 31: The Flushing Sampling Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wd-ladder99",
+     "revision": "r1",
+     "occurrenceId": "m31-t1"
+    },
+    {
+     "taskId": "wp3wd-error100",
+     "revision": "r1",
+     "occurrenceId": "m31-t2"
+    },
+    {
+     "taskId": "wp3wd-ladder80",
+     "revision": "r1",
+     "occurrenceId": "m31-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp3wd-mission32",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 32: The Water Audit Closure Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wd-error11",
+     "revision": "r1",
+     "occurrenceId": "m32-t1"
+    },
+    {
+     "taskId": "wp3wd-ladder81",
+     "revision": "r1",
+     "occurrenceId": "m32-t2"
+    },
+    {
+     "taskId": "wp3wd-ladder82",
+     "revision": "r1",
+     "occurrenceId": "m32-t3"
+    },
+    {
+     "taskId": "wp3wd-ladder83",
+     "revision": "r1",
+     "occurrenceId": "m32-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp3wd-mission33",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 33: The Booster Disinfection Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wd-ladder84",
+     "revision": "r1",
+     "occurrenceId": "m33-t1"
+    },
+    {
+     "taskId": "wp3wd-error12",
+     "revision": "r1",
+     "occurrenceId": "m33-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp3wd-mission34",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 34: The Water Audit Closure Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wd-error13",
+     "revision": "r1",
+     "occurrenceId": "m34-t1"
+    },
+    {
+     "taskId": "wp3wd-ladder85",
+     "revision": "r1",
+     "occurrenceId": "m34-t2"
+    },
+    {
+     "taskId": "wp3wd-ladder86",
+     "revision": "r1",
+     "occurrenceId": "m34-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp3wd-mission35",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 35: The Booster Disinfection Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wd-ladder87",
+     "revision": "r1",
+     "occurrenceId": "m35-t1"
+    },
+    {
+     "taskId": "wp3wd-error14",
+     "revision": "r1",
+     "occurrenceId": "m35-t2"
+    },
+    {
+     "taskId": "wp3wd-ladder88",
+     "revision": "r1",
+     "occurrenceId": "m35-t3"
+    },
+    {
+     "taskId": "wp3wd-ladder89",
+     "revision": "r1",
+     "occurrenceId": "m35-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp3wd-mission36",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 36: The Water Audit Closure Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wd-error15",
+     "revision": "r1",
+     "occurrenceId": "m36-t1"
+    },
+    {
+     "taskId": "wp3wd-ladder90",
+     "revision": "r1",
+     "occurrenceId": "m36-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp3wd-mission37",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 37: The Flushing Sampling Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wd-ladder91",
+     "revision": "r1",
+     "occurrenceId": "m37-t1"
+    },
+    {
+     "taskId": "wp3wd-error16",
+     "revision": "r1",
+     "occurrenceId": "m37-t2"
+    },
+    {
+     "taskId": "wp3wd-ladder92",
+     "revision": "r1",
+     "occurrenceId": "m37-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp3wd-mission38",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 38: The Real Loss Rates Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wd-error17",
+     "revision": "r1",
+     "occurrenceId": "m38-t1"
+    },
+    {
+     "taskId": "wp3wd-ladder93",
+     "revision": "r1",
+     "occurrenceId": "m38-t2"
+    },
+    {
+     "taskId": "wp3wd-ladder94",
+     "revision": "r1",
+     "occurrenceId": "m38-t3"
+    },
+    {
+     "taskId": "wp3wd-ladder95",
+     "revision": "r1",
+     "occurrenceId": "m38-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp3wd-mission39",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 39: The Flushing Sampling Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wd-ladder96",
+     "revision": "r1",
+     "occurrenceId": "m39-t1"
+    },
+    {
+     "taskId": "wp3wd-error18",
+     "revision": "r1",
+     "occurrenceId": "m39-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp3wd-mission40",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 40: The Real Loss Rates Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wd-error19",
+     "revision": "r1",
+     "occurrenceId": "m40-t1"
+    },
+    {
+     "taskId": "wp3wd-ladder97",
+     "revision": "r1",
+     "occurrenceId": "m40-t2"
+    },
+    {
+     "taskId": "wp3wd-ladder98",
+     "revision": "r1",
+     "occurrenceId": "m40-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Distribution operations chapters (water loss, pressure management, asset care)"
+  },
+  {
+   "id": "wpi-ntk-2025",
+   "title": "WPI, 2025 Need-to-Know Criteria, Water Distribution Class III",
+   "locator": "https://gowpi.org/services/2025-need-to-know-criteria/"
+  },
+  {
+   "id": "gcdwq",
+   "title": "Health Canada, Guidelines for Canadian Drinking Water Quality",
+   "locator": "Federal guideline values and distribution water quality context"
+  },
+  {
+   "id": "awwa-water-loss",
+   "title": "AWWA, water loss control guidance (M36 family)",
+   "locator": "Water audit and loss control background (not Canadian law)"
+  },
+  {
+   "id": "awwa-asset",
+   "title": "AWWA, asset management guidance for water utilities",
+   "locator": "Asset management background (not Canadian law)"
+  },
+  {
+   "id": "ccohs-safety",
+   "title": "CCOHS, OSH Answers (chemical safety, confined spaces, lockout)",
+   "locator": "https://www.ccohs.ca/oshanswers/"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "ee244a24fd9271b527310c661278fd8f2c62edfc5cd2f966f5a9ac130c5dd110",
+  "taskReceipts": [
+   {
+    "taskId": "wp3wd-ladder80",
+    "revision": "r1",
+    "sha256": "7b7ba43952e925e7c01ff2f8eb204125c63a259a99b59dccf66a7f09bc209ed0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-ladder81",
+    "revision": "r1",
+    "sha256": "a87e75b04cb9c75da635faa097b7bdeb54caf03f2a5d81e758f3ece6347819b7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-ladder82",
+    "revision": "r1",
+    "sha256": "218b12605a23ed5160b84581f3c4415c8724a72c1483f77dbbf13a236579022e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-ladder83",
+    "revision": "r1",
+    "sha256": "039199c4b7c8b46bde63fdf5a302c96b026e4d4b1c4c0bce44da9506e7e8eabb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-ladder84",
+    "revision": "r1",
+    "sha256": "ed88e9bfd6196db7a8d0f0c5686f0a4fdff7bf915f7639fd841e11adcbd24033",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-ladder85",
+    "revision": "r1",
+    "sha256": "2269eeb2200257a69b83f33557dcbd184ca0d736b5468730d8965efafe162a12",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-ladder86",
+    "revision": "r1",
+    "sha256": "52833a95b5d4443c5f57c6282bbc10a40e64c2b1dd9fdb7a5f25733e30a310cc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-ladder87",
+    "revision": "r1",
+    "sha256": "2926618f1736e7aefb3cf1fa837d5a5fe984fdcbcb31598b48862637c3ab9aab",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-ladder88",
+    "revision": "r1",
+    "sha256": "06550f6ba47b2d1ef3c2deeb40be70f434d4ebe7053472e798b17715f9fc75d2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-ladder89",
+    "revision": "r1",
+    "sha256": "49c68e1740ae721fab43efe8c06922c328154f9a9f13fe6fe18366ca290f8173",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-ladder90",
+    "revision": "r1",
+    "sha256": "b7415309542cfa6f10642d5f2da817cb6cd32f4a95bcde5d54e9ae55a718e454",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-ladder91",
+    "revision": "r1",
+    "sha256": "2b11affe2fe74a2b81f44a4aa3439a27ecbfd119f3e31115acffaca2574c6559",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-ladder92",
+    "revision": "r1",
+    "sha256": "c79a72fbdb4347c42b2ca4753e90847c53665e88d092a173e8e1175dcbea3151",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-ladder93",
+    "revision": "r1",
+    "sha256": "58e249273335f5a149025257470e2d2611e13ec84bf09855f580c2e70ab656cf",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-ladder94",
+    "revision": "r1",
+    "sha256": "a77e23edd758c5cc071300f285f9932d03a1cafef2018bded7e0153e58242ba6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-ladder95",
+    "revision": "r1",
+    "sha256": "2c7219ba0ab6a84ca0dfa93e0e03d2ff141e5fdc3840b6e065ac3f841874c20c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-ladder96",
+    "revision": "r1",
+    "sha256": "a19198d4085ff3c5288ca3a67c690305dcfa69eabd86fd528bb42121b82fab4c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-ladder97",
+    "revision": "r1",
+    "sha256": "7050050c917627e2995fd5914192e70b6bca27ddca3fec8c30fe00d4c323b50d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-ladder98",
+    "revision": "r1",
+    "sha256": "c7e7aee26bfc02b6e8d233a17ed7a0108e516c1756013082169479dfc460444c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-ladder99",
+    "revision": "r1",
+    "sha256": "bbe1d630ab288e257a7e796ce4e300653c0569d0dc93ef1c30d7d9f3e8e1b9c3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error01",
+    "revision": "r1",
+    "sha256": "11665c0f02c7d8349143ff7da295bf5d18b28cd90c6bcbbeb98c1761640573b8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error02",
+    "revision": "r1",
+    "sha256": "40ae596638e16ab472c36c6867bde6c886a1210c7ac0efda3e0f1df4c272de02",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error03",
+    "revision": "r1",
+    "sha256": "e5b2e94efe43a73feff845b61c8aaabf65c2d7170fc613e3913503a0a8c7cda3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error04",
+    "revision": "r1",
+    "sha256": "0efa7d49aa9d85080aa4df5268a41682ad5e611e6a6551310bf0707c26e2c460",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error05",
+    "revision": "r1",
+    "sha256": "06d8a4aa4377bd0c86f60d3a43c45b84403b762291c833477ce6cae20c43a1e6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error06",
+    "revision": "r1",
+    "sha256": "c4e7c3c2688c84a8414258e446f9c4f3e97d7fd33efa2a9c0733ffbbb5a03288",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error07",
+    "revision": "r1",
+    "sha256": "95854a8da1513bbba29a46de39cef4d0bf290c8cab24efaeb2b4253426ccc832",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error08",
+    "revision": "r1",
+    "sha256": "120bd9114352cdaf8ad981eaa8d1eecdc681fc27fc2e73bc0e20e6e7b519eefc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error09",
+    "revision": "r1",
+    "sha256": "e3377239baae342ae5109fc51d9737928cefc94f6dd1414884c41aa9f56c3a9d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error10",
+    "revision": "r1",
+    "sha256": "acc715665028bcf5484d5ec25ad026e919b54e1235c475447b6eae128b21903f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error100",
+    "revision": "r1",
+    "sha256": "25305f4d91f99cb653b0e624cb80fb09161ff65239a9f45cd12aeef64832d3d5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error11",
+    "revision": "r1",
+    "sha256": "3e991e6dd226463cf5d3e22e4227f5687cc4c4d90cc8b3469aadd171870b0959",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error12",
+    "revision": "r1",
+    "sha256": "e978805b7a35ec6baeb0e2fd80250d63bcb83597a1ba29ae1314a704190e1073",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error13",
+    "revision": "r1",
+    "sha256": "faf64e9669ce9b9df1e3caafa8daf0251638bbd46620a5ce94db4a1338f66870",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error14",
+    "revision": "r1",
+    "sha256": "c1c34335799712b27e923def90a441916b125941a714f223d3b1fcfc6b844b71",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error15",
+    "revision": "r1",
+    "sha256": "c429fdfe4888bd08596d578a5bc1c44cc20aaba8f3ee6fcb57a8a001734c7e75",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error16",
+    "revision": "r1",
+    "sha256": "6191e6b93e438be8c1d1f77487f202aab2bb1c5d246fdc51d235f1e906499c38",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error17",
+    "revision": "r1",
+    "sha256": "8e0e76c026b9263a559ff2ea8bd1ff9a6e91c3b7076a6a5d5af90c407ab0baa4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error18",
+    "revision": "r1",
+    "sha256": "999553dcfad1eee3a180840d39d4a428626c0ff859214befb75e834130071633",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error19",
+    "revision": "r1",
+    "sha256": "27f54ebe16d9949e72170c6589c2a452f08ca9478e17e4b5bf4fb6bda2bcd90f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error20",
+    "revision": "r1",
+    "sha256": "181547e0af211e180221b8f404e3e21d1385a5edfaf9a8584a509a87d33dfca7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error21",
+    "revision": "r1",
+    "sha256": "4c2d714105897046a7dbb95de74f2f7d705ed052e243d165df1db33644169468",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error22",
+    "revision": "r1",
+    "sha256": "816a52c29bb12c7f6084c7bea172637394a7498426fa350744dcbc361bdbe6c1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error23",
+    "revision": "r1",
+    "sha256": "4d37ea388a5a50563b350282928ef7417e94be18d84f3ff7e3a8b115f8e48614",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error24",
+    "revision": "r1",
+    "sha256": "dcc331ef80df2ad138a0ee10aed7830b43bd77960860510687d2fcdcaf7f2350",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error25",
+    "revision": "r1",
+    "sha256": "68485dbba0a846bfeb9fa810a2696ab9c3ba0630bdb47646b7543637a3abacb5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error26",
+    "revision": "r1",
+    "sha256": "9438ce3d008532e12444306a8f6201151a12ba48a257120723f41ca7a55b2b2a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error27",
+    "revision": "r1",
+    "sha256": "97aeb351914e14e50452dad29f44a008f114349ae1c82e3586b051443a9908dc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error28",
+    "revision": "r1",
+    "sha256": "64410c01c14ec5d8c1966516ceedbf3b0f73b50d771cc3d1ddf8a7d0d40fe617",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error29",
+    "revision": "r1",
+    "sha256": "a4df3363d4620910a9a9e6bc5ec9c3a18ea34bac0e0d08129cddf3fea67b733a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error30",
+    "revision": "r1",
+    "sha256": "a9dbbf6a0fd371f85b175f7de243d75fbcd6367c73cc02ea2fe4c463cebabf69",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error31",
+    "revision": "r1",
+    "sha256": "ab2a7edfc2fcbed3f3921f11eec7c6dd25f2c1b5871dbd464bed7dd5093beeee",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error32",
+    "revision": "r1",
+    "sha256": "4eca3b4e5dd7c08770f25afaf20177a64f1a28140bc8202148c3b7ef50a66fca",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error33",
+    "revision": "r1",
+    "sha256": "da3659915c4fa549d0fb5bb8b50cf7a8ac6e555246b744876d5269ea10d40034",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error34",
+    "revision": "r1",
+    "sha256": "90f61cdad12173d4fa92e47597a8c251b88ab141502b7d023b702e1bb2ad35b6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error35",
+    "revision": "r1",
+    "sha256": "e70354903f723fc8f6374613fb87f871db30aa7a3d46787c2c3150e60d8b570e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error36",
+    "revision": "r1",
+    "sha256": "c84301dd42c619d60b9a892baa019dc4558a729638d7862d07037458580644d3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error37",
+    "revision": "r1",
+    "sha256": "07511b5220abbd648dfddf335c0c81acfda6288887a27e0c2ef9ccd690d99d25",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error38",
+    "revision": "r1",
+    "sha256": "7e73877a4d01c4e49d5dd494a8c03702bbf056429671c4292146c3e75465a27b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error39",
+    "revision": "r1",
+    "sha256": "6ee36dfa600350beae320038282c424be5a8114428f236b3907d432920bfeb15",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error40",
+    "revision": "r1",
+    "sha256": "60622d8c29bb8b228c20bdf43c077beda7572df121d7393395418b03213d0d09",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error41",
+    "revision": "r1",
+    "sha256": "5a5be3bb9ca26c12e9f2c94bc91212d20424ebe7732d822c0a363efc8bf87c91",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error42",
+    "revision": "r1",
+    "sha256": "7764a077c752309524d24252972bd10982cb357cb1be597d579120a8a992a277",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error43",
+    "revision": "r1",
+    "sha256": "d0cc20c5bc5075f336068d1a4d2c2224ab55af9826ba93f6d78736d2546a28fa",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error44",
+    "revision": "r1",
+    "sha256": "445b937abaac732e8e343f9f5f7901e2100d7f4c3864fffb7b550b0b2d91125f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error45",
+    "revision": "r1",
+    "sha256": "ace2dc61021e2ae787be9a3cb78abc9d18621570fd180033d9d390df830225ca",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error46",
+    "revision": "r1",
+    "sha256": "876b896a620cc46ebe0edc439b329b7fb990bf293b869f6451bce3f216595d43",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error47",
+    "revision": "r1",
+    "sha256": "12ca4d3b85f58d2459b54d1b7b3aa174f774275457c0bae28f655142abb2247d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error48",
+    "revision": "r1",
+    "sha256": "a11f31d4384d300b39646b95d1d82aeee97bd42f5e1223f0ef2c14c122de2988",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error49",
+    "revision": "r1",
+    "sha256": "7dd03b32662f9ba12b819f4ca59e290fb6d883a6369f910fbb33ec2d4dadfd2d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error50",
+    "revision": "r1",
+    "sha256": "8f1bad7f45a0fd7b792ef541f9d2a9ad2afc73202cd4ad33cfbdd598c8fea516",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error51",
+    "revision": "r1",
+    "sha256": "2950ba423f95313461807da59308a3deaa5bce5144a1656b2efe58ad293ced9a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error52",
+    "revision": "r1",
+    "sha256": "2514bbd270a7c154b2450ad349593c4761531cdcbdfd82dd04ec5177cf2f5afa",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error53",
+    "revision": "r1",
+    "sha256": "b5b8fbde470c9f8202a84af91b7e6733fa6237de6ed9821fbaf95a3c7d92ad60",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error54",
+    "revision": "r1",
+    "sha256": "770aaa3d3a4e21bed1efab208b4e08ac307ffc7608c01ce70d32d82448be5344",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error55",
+    "revision": "r1",
+    "sha256": "a5c81fda9043870b08d4de1ec06e9780d6d2ff227f358dc7ab8c2e2e651f2fcf",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error56",
+    "revision": "r1",
+    "sha256": "6d45f1ab49cea3f83b7e4dfd394bd63e4ac366ba4f758556c654aefc9a62174b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error57",
+    "revision": "r1",
+    "sha256": "c4530dac9eb0810dd865c5605cbd6dd782d9543cba71edc4c81e4f57c19040c1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error58",
+    "revision": "r1",
+    "sha256": "7ed9a774a74d6bd6f6e44cd5a2161085e9025bda687fe5d1870fe28c4bc11322",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error59",
+    "revision": "r1",
+    "sha256": "ea3bb260ee199ee01237850cf542e99fa19c7852143b5191b1d5311b3854eee0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "wp3wd-mission21",
+    "revision": "r1",
+    "sha256": "4b288194c5b37a83c6c872c7a123ab5586ed096ad81edfdb5e7aae21b7345d26"
+   },
+   {
+    "missionId": "wp3wd-mission22",
+    "revision": "r1",
+    "sha256": "63eb2427ffed1ae60a0412caea9dc7882fa4cdc55f5410c3fdc0a6156fc3a1f4"
+   },
+   {
+    "missionId": "wp3wd-mission23",
+    "revision": "r1",
+    "sha256": "f6afcf789081000c809df8c2afd3e0a3079d8930de012ea220052495056fbb26"
+   },
+   {
+    "missionId": "wp3wd-mission24",
+    "revision": "r1",
+    "sha256": "c2cd3c8eeb214b4fe5f432f641c9f3f4275059f1d3d600df401a3278ff3304eb"
+   },
+   {
+    "missionId": "wp3wd-mission25",
+    "revision": "r1",
+    "sha256": "0bc00dabaafcd8b22d2e693e8b89a1cd7540314d17dcce29380c0957d3c65912"
+   },
+   {
+    "missionId": "wp3wd-mission26",
+    "revision": "r1",
+    "sha256": "e6ad0879a1cdd917f4bddcc2602830bca618f2b7b2a9712f370dafdb43c13d0d"
+   },
+   {
+    "missionId": "wp3wd-mission27",
+    "revision": "r1",
+    "sha256": "d61085ae7ab0f2125200f2df9551049eb6a5da79b89fb3737ac9ca6468ecbb1c"
+   },
+   {
+    "missionId": "wp3wd-mission28",
+    "revision": "r1",
+    "sha256": "4e9036f13c89457d59c329d1f7cfd9816518892116c15ad4585316309c367f09"
+   },
+   {
+    "missionId": "wp3wd-mission29",
+    "revision": "r1",
+    "sha256": "ba13d3dc774c64943fbbe311f587d0de807f62d90ab9e1c18c2867e261023d2a"
+   },
+   {
+    "missionId": "wp3wd-mission30",
+    "revision": "r1",
+    "sha256": "13265a4c18c6dbb9e1a60e77d0f503616c09f35baed4b2923bb76c840c8ae209"
+   },
+   {
+    "missionId": "wp3wd-mission31",
+    "revision": "r1",
+    "sha256": "6813872353de4563b82515e44683893f32c53bee8782a0b53a2b1b7d780e4475"
+   },
+   {
+    "missionId": "wp3wd-mission32",
+    "revision": "r1",
+    "sha256": "8fc95936e46872e6f1fc3201b781aa1798a60688ba9d41416a3e6d2a24d0c831"
+   },
+   {
+    "missionId": "wp3wd-mission33",
+    "revision": "r1",
+    "sha256": "a8934249dc276668366a0c831e64d4e61a48c07fa6fdec543a9b3f9c893282ed"
+   },
+   {
+    "missionId": "wp3wd-mission34",
+    "revision": "r1",
+    "sha256": "6bcd09ba1fa262d50e45894d88247342bae0c677f83a141e4df082af27285be5"
+   },
+   {
+    "missionId": "wp3wd-mission35",
+    "revision": "r1",
+    "sha256": "ce7b3e4de502b5b42a2c7c3ed1881a229402861dc80ea2546131b13b779a1b7e"
+   },
+   {
+    "missionId": "wp3wd-mission36",
+    "revision": "r1",
+    "sha256": "3a571d9da184fb12e06580b6f2b2dcb2b8ae5de0480c8eb59ba9f65fccaff2ac"
+   },
+   {
+    "missionId": "wp3wd-mission37",
+    "revision": "r1",
+    "sha256": "199e9158b55e54cc98f098af49ba337599215f0c8c076e7c65f330b82947c6e0"
+   },
+   {
+    "missionId": "wp3wd-mission38",
+    "revision": "r1",
+    "sha256": "5f5502f9413930aa4865029bacec9ea57f277d9e5c81e785bdfe209981be54ec"
+   },
+   {
+    "missionId": "wp3wd-mission39",
+    "revision": "r1",
+    "sha256": "e6a7a5bcb06ff81b2238b86e36f433992aeb0bdad7c316a140e641cb9bd81985"
+   },
+   {
+    "missionId": "wp3wd-mission40",
+    "revision": "r1",
+    "sha256": "1152f680d157356f690f74a47ced4d69bb1410c8de2a7dfea140fb0672d3387c"
+   }
+  ]
+ }
+}

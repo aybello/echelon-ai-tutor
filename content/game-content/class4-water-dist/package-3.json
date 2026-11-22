@@ -1,0 +1,3947 @@
+{
+ "courseKey": "class4-water-dist",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "c4wd-error60",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pump energy benchmark. The pump delivers 50 kW of water power at a wire to water efficiency of 50 percent and runs 16 h.",
+   "topicId": "pump-energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional Ontario booster pump: water power = 50 kW, wire to water efficiency = 0.5, run time = 16 h. Target unit: kW and kWh as noted.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Input power = 50 kW * 0.5 = 25 kW"
+    },
+    {
+     "id": "line2",
+     "label": "2. Energy = 25 kW * 16 h = 400 kWh"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Input power = 50 kW / 0.5 = 100 kW",
+   "explanation": "Line 1 multiplied by efficiency instead of dividing. Input power is water power divided by efficiency, 50 / 0.5 = 100 kW, so energy is 1600 kWh."
+  },
+  {
+   "id": "c4wd-error61",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pump energy benchmark. The pump delivers 36 kW of water power at a wire to water efficiency of 60 percent and runs 20 h.",
+   "topicId": "pump-energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional Ontario booster pump: water power = 36 kW, wire to water efficiency = 0.6, run time = 20 h. Target unit: kW and kWh as noted.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Input power = 36 kW * 0.6 = 21.6 kW"
+    },
+    {
+     "id": "line2",
+     "label": "2. Energy = 21.6 kW * 20 h = 432 kWh"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Input power = 36 kW / 0.6 = 60 kW",
+   "explanation": "Line 1 multiplied by efficiency instead of dividing. Input power is water power divided by efficiency, 36 / 0.6 = 60 kW, so energy is 1200 kWh."
+  },
+  {
+   "id": "c4wd-error62",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pump energy benchmark. The pump delivers 60 kW of water power at a wire to water efficiency of 75 percent and runs 12 h.",
+   "topicId": "pump-energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional Ontario booster pump: water power = 60 kW, wire to water efficiency = 0.75, run time = 12 h. Target unit: kWh.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Input power = 60 kW / 0.75 = 80 kW"
+    },
+    {
+     "id": "line2",
+     "label": "2. Energy = 80 kW * 12 h = 1040 kWh"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Energy = 80 kW * 12 h = 960 kWh",
+   "explanation": "Line 2 arithmetic is wrong. 80 kW * 12 h = 960 kWh."
+  },
+  {
+   "id": "c4wd-error63",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pump energy benchmark. The pump delivers 90 kW of water power at a wire to water efficiency of 75 percent and runs 10 h.",
+   "topicId": "pump-energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional Ontario booster pump: water power = 90 kW, wire to water efficiency = 0.75, run time = 10 h. Target unit: kWh.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Input power = 90 kW / 0.75 = 120 kW"
+    },
+    {
+     "id": "line2",
+     "label": "2. Energy = 120 kW * 10 h = 1320 kWh"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Energy = 120 kW * 10 h = 1200 kWh",
+   "explanation": "Line 2 arithmetic is wrong. 120 kW * 10 h = 1200 kWh."
+  },
+  {
+   "id": "c4wd-error64",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pump energy benchmark. The pump delivers 64 kW of water power at a wire to water efficiency of 80 percent and runs 7.5 h.",
+   "topicId": "pump-energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional Ontario booster pump: water power = 64 kW, wire to water efficiency = 0.8, run time = 7.5 h. Target unit: kWh.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Input power = 64 kW / 0.8 = 80 kW"
+    },
+    {
+     "id": "line2",
+     "label": "2. Energy = 80 kW * 7.5 h = 680 kWh"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Energy = 80 kW * 7.5 h = 600 kWh",
+   "explanation": "Line 2 arithmetic is wrong. 80 kW * 7.5 h = 600 kWh."
+  },
+  {
+   "id": "c4wd-error65",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pump energy benchmark. A station uses 1200 kWh to pump 3000 m3 in a day.",
+   "topicId": "pump-energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional Ontario pumping station: energy = 1200 kWh, volume pumped = 3000 m3. Target: specific energy in kWh per m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Volume in ML = 3000 m3 / 1000 = 3 ML"
+    },
+    {
+     "id": "line2",
+     "label": "2. Specific energy = 1200 kWh / 3000 m3 = 4 kWh per m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Specific energy = 1200 kWh / 3000 m3 = 0.4 kWh per m3",
+   "explanation": "Line 2 arithmetic is wrong. 1200 / 3000 = 0.4 kWh per m3."
+  },
+  {
+   "id": "c4wd-error66",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pump energy benchmark. A station uses 960 kWh to pump 2400 m3 in a day.",
+   "topicId": "pump-energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional Ontario pumping station: energy = 960 kWh, volume pumped = 2400 m3. Target: specific energy in kWh per m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Volume in ML = 2400 m3 / 1000 = 2.4 ML"
+    },
+    {
+     "id": "line2",
+     "label": "2. Specific energy = 960 kWh / 2400 m3 = 4 kWh per m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Specific energy = 960 kWh / 2400 m3 = 0.4 kWh per m3",
+   "explanation": "Line 2 arithmetic is wrong. 960 / 2400 = 0.4 kWh per m3."
+  },
+  {
+   "id": "c4wd-error67",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pump energy benchmark. A station uses 1500 kWh to pump 5000 m3 in a day.",
+   "topicId": "pump-energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional Ontario pumping station: energy = 1500 kWh, volume pumped = 5000 m3. Target: specific energy in kWh per m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Volume in ML = 5000 m3 / 1000 = 5 ML"
+    },
+    {
+     "id": "line2",
+     "label": "2. Specific energy = 1500 kWh / 5000 m3 = 3 kWh per m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Specific energy = 1500 kWh / 5000 m3 = 0.3 kWh per m3",
+   "explanation": "Line 2 arithmetic is wrong. 1500 / 5000 = 0.3 kWh per m3."
+  },
+  {
+   "id": "c4wd-error68",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pump efficiency benchmark. The pump draws 150 kW of input power and delivers 120 kW of water power.",
+   "topicId": "pump-energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional Ontario booster pump: input power = 150 kW, water power = 120 kW, run time = 6 h. Target: efficiency in percent.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Efficiency = 150 kW / 120 kW * 100 = 125 percent"
+    },
+    {
+     "id": "line2",
+     "label": "2. Energy = 150 kW * 6 h = 900 kWh"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Efficiency = 120 kW / 150 kW * 100 = 80 percent",
+   "explanation": "Line 1 inverted the efficiency ratio. Efficiency is output divided by input, 120 / 150 * 100 = 80 percent."
+  },
+  {
+   "id": "c4wd-error69",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pump efficiency benchmark. The pump draws 125 kW of input power and delivers 100 kW of water power.",
+   "topicId": "pump-energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional Ontario booster pump: input power = 125 kW, water power = 100 kW, run time = 9 h. Target: efficiency in percent.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Efficiency = 125 kW / 100 kW * 100 = 125 percent"
+    },
+    {
+     "id": "line2",
+     "label": "2. Energy = 125 kW * 9 h = 1125 kWh"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Efficiency = 100 kW / 125 kW * 100 = 80 percent",
+   "explanation": "Line 1 inverted the efficiency ratio. Efficiency is output divided by input, 100 / 125 * 100 = 80 percent."
+  },
+  {
+   "id": "c4wd-error70",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pump energy benchmark. The pump delivers 45 kW of water power at a wire to water efficiency of 90 percent, runs 8 h, and electricity costs $0.2 per kWh.",
+   "topicId": "pump-energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional Ontario booster pump: water power = 45 kW, efficiency = 0.9, run time = 8 h, rate = $0.2 per kWh. Target unit: dollars.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Input power = 45 kW / 0.9 = 50 kW"
+    },
+    {
+     "id": "line2",
+     "label": "2. Energy = 50 kW * 8 h = 400 kWh"
+    },
+    {
+     "id": "line3",
+     "label": "3. Cost = 400 kWh * $0.4 per kWh = $160"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Cost = 400 kWh * $0.2 per kWh = $80",
+   "explanation": "Line 3 used a rate of $0.4 per kWh instead of the given $0.2 per kWh. The cost is $80."
+  },
+  {
+   "id": "c4wd-error71",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pump energy benchmark. The pump delivers 72 kW of water power at a wire to water efficiency of 90 percent, runs 5 h, and electricity costs $0.2 per kWh.",
+   "topicId": "pump-energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional Ontario booster pump: water power = 72 kW, efficiency = 0.9, run time = 5 h, rate = $0.2 per kWh. Target unit: dollars.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Input power = 72 kW / 0.9 = 80 kW"
+    },
+    {
+     "id": "line2",
+     "label": "2. Energy = 80 kW * 5 h = 400 kWh"
+    },
+    {
+     "id": "line3",
+     "label": "3. Cost = 400 kWh * $0.4 per kWh = $160"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Cost = 400 kWh * $0.2 per kWh = $80",
+   "explanation": "Line 3 used a rate of $0.4 per kWh instead of the given $0.2 per kWh. The cost is $80."
+  },
+  {
+   "id": "c4wd-error72",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pump energy benchmark. The pump delivers 55 kW of water power at a wire to water efficiency of 55 percent, runs 10 h, and electricity costs $0.14 per kWh.",
+   "topicId": "pump-energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional Ontario booster pump: water power = 55 kW, efficiency = 0.55, run time = 10 h, rate = $0.14 per kWh. Target unit: dollars.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Input power = 55 kW / 0.55 = 100 kW"
+    },
+    {
+     "id": "line2",
+     "label": "2. Energy = 100 kW * 10 h = 1000 kWh"
+    },
+    {
+     "id": "line3",
+     "label": "3. Cost = 1000 kWh * $0.28 per kWh = $280"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Cost = 1000 kWh * $0.14 per kWh = $140",
+   "explanation": "Line 3 used a rate of $0.28 per kWh instead of the given $0.14 per kWh. The cost is $140."
+  },
+  {
+   "id": "c4wd-error73",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this booster disinfection calculation. A booster treats 2 ML, the target residual is 0.8 mg/L and the incoming residual is 0.4 mg/L. One ML at 1 mg/L needs 1 kg of chlorine.",
+   "topicId": "booster-disinfection-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario booster station: volume = 2 ML, target residual = 0.8 mg/L, incoming residual = 0.4 mg/L, 1 ML * 1 mg/L = 1 kg. Target unit: kg.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Required increase = 0.8 mg/L - 0.4 mg/L = 0.4 mg/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Chlorine mass = 2 ML * 0.8 mg/L = 1.6 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Chlorine mass = 2 ML * 0.4 mg/L = 0.8 kg",
+   "explanation": "Line 2 used the target residual instead of the required increase and ignored the incoming residual. The mass is 2 * 0.4 = 0.8 kg."
+  },
+  {
+   "id": "c4wd-error74",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this booster disinfection calculation. A booster treats 3 ML, the target residual is 1.2 mg/L and the incoming residual is 0.6 mg/L. One ML at 1 mg/L needs 1 kg of chlorine.",
+   "topicId": "booster-disinfection-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario booster station: volume = 3 ML, target residual = 1.2 mg/L, incoming residual = 0.6 mg/L, 1 ML * 1 mg/L = 1 kg. Target unit: kg.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Required increase = 1.2 mg/L - 0.6 mg/L = 0.6 mg/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Chlorine mass = 3 ML * 1.2 mg/L = 3.6 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Chlorine mass = 3 ML * 0.6 mg/L = 1.8 kg",
+   "explanation": "Line 2 used the target residual instead of the required increase and ignored the incoming residual. The mass is 3 * 0.6 = 1.8 kg."
+  },
+  {
+   "id": "c4wd-error75",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this booster disinfection calculation. A booster treats 1.5 ML, the target residual is 0.9 mg/L and the incoming residual is 0.3 mg/L. One ML at 1 mg/L needs 1 kg of chlorine.",
+   "topicId": "booster-disinfection-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario booster station: volume = 1.5 ML, target residual = 0.9 mg/L, incoming residual = 0.3 mg/L, 1 ML * 1 mg/L = 1 kg. Target unit: kg.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Required increase = 0.9 mg/L - 0.3 mg/L = 0.6 mg/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Chlorine mass = 1.5 ML * 0.9 mg/L = 1.35 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Chlorine mass = 1.5 ML * 0.6 mg/L = 0.9 kg",
+   "explanation": "Line 2 used the target residual instead of the required increase and ignored the incoming residual. The mass is 1.5 * 0.6 = 0.9 kg."
+  },
+  {
+   "id": "c4wd-error76",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this booster disinfection calculation. A booster treats 4 ML, the target residual is 1.6 mg/L and the incoming residual is 0.8 mg/L. One ML at 1 mg/L needs 1 kg of chlorine.",
+   "topicId": "booster-disinfection-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario booster station: volume = 4 ML, target residual = 1.6 mg/L, incoming residual = 0.8 mg/L, 1 ML * 1 mg/L = 1 kg. Target unit: kg.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Required increase = 1.6 mg/L - 0.8 mg/L = 0.8 mg/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Chlorine mass = 4 ML * 1.6 mg/L = 6.4 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Chlorine mass = 4 ML * 0.8 mg/L = 3.2 kg",
+   "explanation": "Line 2 used the target residual instead of the required increase and ignored the incoming residual. The mass is 4 * 0.8 = 3.2 kg."
+  },
+  {
+   "id": "c4wd-error77",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this booster disinfection calculation. A station needs 12 kg of chlorine and the solution contains 0.1 kg of chlorine per litre.",
+   "topicId": "booster-disinfection-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario booster station: chlorine needed = 12 kg, solution strength = 0.1 kg/L. Target unit: L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Solution volume = 12 kg * 0.1 kg/L = 1.2 L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Two fills = 1.2 L * 2 = 2.4 L"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Solution volume = 12 kg / 0.1 kg/L = 120 L",
+   "explanation": "Line 1 multiplied by solution strength instead of dividing. Solution volume is 12 / 0.1 = 120 L."
+  },
+  {
+   "id": "c4wd-error78",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this booster disinfection calculation. A station needs 20 kg of chlorine and the solution contains 0.2 kg of chlorine per litre.",
+   "topicId": "booster-disinfection-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario booster station: chlorine needed = 20 kg, solution strength = 0.2 kg/L. Target unit: L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Solution volume = 20 kg * 0.2 kg/L = 4 L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Two fills = 4 L * 2 = 8 L"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Solution volume = 20 kg / 0.2 kg/L = 100 L",
+   "explanation": "Line 1 multiplied by solution strength instead of dividing. Solution volume is 20 / 0.2 = 100 L."
+  },
+  {
+   "id": "c4wd-error79",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this booster disinfection calculation. A station needs 9 kg of chlorine and the solution contains 0.15 kg of chlorine per litre.",
+   "topicId": "booster-disinfection-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario booster station: chlorine needed = 9 kg, solution strength = 0.15 kg/L. Target unit: L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Solution volume = 9 kg * 0.15 kg/L = 1.35 L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Two fills = 1.35 L * 2 = 2.7 L"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Solution volume = 9 kg / 0.15 kg/L = 60 L",
+   "explanation": "Line 1 multiplied by solution strength instead of dividing. Solution volume is 9 / 0.15 = 60 L."
+  },
+  {
+   "id": "c4wd-error80",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this booster feed calculation. A booster uses 48 kg of chlorine per day, fed evenly over 24 h.",
+   "topicId": "booster-disinfection-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario booster station: daily chlorine use = 48 kg/day, fed evenly over 24 h. Target unit: kg/h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily use in kg = 48 kg/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Feed rate = 48 kg/day / 12 h/day = 4 kg/h"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Feed rate = 48 kg/day / 24 h/day = 2 kg/h",
+   "explanation": "Line 2 divided by 12 hours instead of 24. The feed rate is 48 / 24 = 2 kg/h."
+  },
+  {
+   "id": "c4wd-error81",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this booster feed calculation. A booster uses 72 kg of chlorine per day, fed evenly over 24 h.",
+   "topicId": "booster-disinfection-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario booster station: daily chlorine use = 72 kg/day, fed evenly over 24 h. Target unit: kg/h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily use in kg = 72 kg/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Feed rate = 72 kg/day / 12 h/day = 6 kg/h"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Feed rate = 72 kg/day / 24 h/day = 3 kg/h",
+   "explanation": "Line 2 divided by 12 hours instead of 24. The feed rate is 72 / 24 = 3 kg/h."
+  },
+  {
+   "id": "c4wd-error82",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this booster feed calculation. A booster uses 120 kg of chlorine per day, fed evenly over 24 h.",
+   "topicId": "booster-disinfection-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario booster station: daily chlorine use = 120 kg/day, fed evenly over 24 h. Target unit: kg/h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily use in kg = 120 kg/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Feed rate = 120 kg/day / 12 h/day = 10 kg/h"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Feed rate = 120 kg/day / 24 h/day = 5 kg/h",
+   "explanation": "Line 2 divided by 12 hours instead of 24. The feed rate is 120 / 24 = 5 kg/h."
+  },
+  {
+   "id": "c4wd-error83",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this booster program calculation. Each of 4 booster stations needs 6 kg of chlorine per day.",
+   "topicId": "booster-disinfection-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario booster program: stations = 4, chlorine per station = 6 kg/day. Target unit: kg/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Chlorine per station = 6 kg/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Program total = 6 kg/day * 3 stations = 18 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Program total = 6 kg/day * 4 stations = 24 kg/day",
+   "explanation": "Line 2 counted 3 stations instead of 4 and omitted one station. The total is 6 * 4 = 24 kg/day."
+  },
+  {
+   "id": "c4wd-error84",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this booster program calculation. Each of 5 booster stations needs 8 kg of chlorine per day.",
+   "topicId": "booster-disinfection-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario booster program: stations = 5, chlorine per station = 8 kg/day. Target unit: kg/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Chlorine per station = 8 kg/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Program total = 8 kg/day * 4 stations = 32 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Program total = 8 kg/day * 5 stations = 40 kg/day",
+   "explanation": "Line 2 counted 4 stations instead of 5 and omitted one station. The total is 8 * 5 = 40 kg/day."
+  },
+  {
+   "id": "c4wd-error85",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this booster supply calculation. A station holds 120 kg of chlorine and uses 8 kg per day.",
+   "topicId": "booster-disinfection-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario booster station: stock = 120 kg, daily use = 8 kg/day. Target: days of supply.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Days of supply = 120 kg / 8 kg/day = 20 days"
+    },
+    {
+     "id": "line2",
+     "label": "2. Supply in hours = 20 days * 24 h/day = 480 h"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Days of supply = 120 kg / 8 kg/day = 15 days",
+   "explanation": "Line 1 arithmetic is wrong. 120 / 8 = 15 days of supply."
+  },
+  {
+   "id": "c4wd-error86",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this booster supply calculation. A station holds 180 kg of chlorine and uses 12 kg per day.",
+   "topicId": "booster-disinfection-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario booster station: stock = 180 kg, daily use = 12 kg/day. Target: days of supply.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Days of supply = 180 kg / 12 kg/day = 20 days"
+    },
+    {
+     "id": "line2",
+     "label": "2. Supply in hours = 20 days * 24 h/day = 480 h"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Days of supply = 180 kg / 12 kg/day = 15 days",
+   "explanation": "Line 1 arithmetic is wrong. 180 / 12 = 15 days of supply."
+  },
+  {
+   "id": "c4wd-error87",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this mains renewal calculation. The network has 200 km of mains and the program renews 2 percent of the network per year.",
+   "topicId": "renewal-program-quantities",
+   "level": "class1",
+   "assumptions": "Fictional Ontario distribution system: network length = 200 km, renewal rate = 2 percent per year. Target unit: km per year.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Renewal length = 200 km * 0.2 = 40 km per year"
+    },
+    {
+     "id": "line2",
+     "label": "2. Two year length = 40 km per year * 2 years = 80 km"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Renewal length = 200 km * 0.02 = 4 km per year",
+   "explanation": "Line 1 used 0.2 for 2 percent instead of 0.02. The renewal length is 200 * 0.02 = 4 km per year."
+  },
+  {
+   "id": "c4wd-error88",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this mains renewal calculation. The network has 150 km of mains and the program renews 4 percent of the network per year.",
+   "topicId": "renewal-program-quantities",
+   "level": "class1",
+   "assumptions": "Fictional Ontario distribution system: network length = 150 km, renewal rate = 4 percent per year. Target unit: km per year.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Renewal length = 150 km * 0.4 = 60 km per year"
+    },
+    {
+     "id": "line2",
+     "label": "2. Two year length = 60 km per year * 2 years = 120 km"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Renewal length = 150 km * 0.04 = 6 km per year",
+   "explanation": "Line 1 used 0.4 for 4 percent instead of 0.04. The renewal length is 150 * 0.04 = 6 km per year."
+  },
+  {
+   "id": "c4wd-error89",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this mains renewal calculation. The network has 300 km of mains and the program renews 2 percent of the network per year.",
+   "topicId": "renewal-program-quantities",
+   "level": "class1",
+   "assumptions": "Fictional Ontario distribution system: network length = 300 km, renewal rate = 2 percent per year. Target unit: km per year.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Renewal length = 300 km * 0.2 = 60 km per year"
+    },
+    {
+     "id": "line2",
+     "label": "2. Two year length = 60 km per year * 2 years = 120 km"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Renewal length = 300 km * 0.02 = 6 km per year",
+   "explanation": "Line 1 used 0.2 for 2 percent instead of 0.02. The renewal length is 300 * 0.02 = 6 km per year."
+  },
+  {
+   "id": "c4wd-error90",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this mains renewal calculation. A backlog of 60 km is renewed at 4 km per year.",
+   "topicId": "renewal-program-quantities",
+   "level": "class1",
+   "assumptions": "Fictional Ontario renewal program: backlog = 60 km, renewal rate = 4 km/year. Target: years to complete.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Annual rate = 4 km per year"
+    },
+    {
+     "id": "line2",
+     "label": "2. Years to complete = 60 km / 4 km per year = 18 years"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Years to complete = 60 km / 4 km per year = 15 years",
+   "explanation": "Line 2 arithmetic is wrong. 60 / 4 = 15 years."
+  },
+  {
+   "id": "c4wd-error91",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this mains renewal calculation. A backlog of 90 km is renewed at 6 km per year.",
+   "topicId": "renewal-program-quantities",
+   "level": "class1",
+   "assumptions": "Fictional Ontario renewal program: backlog = 90 km, renewal rate = 6 km/year. Target: years to complete.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Annual rate = 6 km per year"
+    },
+    {
+     "id": "line2",
+     "label": "2. Years to complete = 90 km / 6 km per year = 18 years"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Years to complete = 90 km / 6 km per year = 15 years",
+   "explanation": "Line 2 arithmetic is wrong. 90 / 6 = 15 years."
+  },
+  {
+   "id": "c4wd-error92",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this mains renewal calculation. A backlog of 48 km is renewed at 8 km per year.",
+   "topicId": "renewal-program-quantities",
+   "level": "class1",
+   "assumptions": "Fictional Ontario renewal program: backlog = 48 km, renewal rate = 8 km/year. Target: years to complete.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Annual rate = 8 km per year"
+    },
+    {
+     "id": "line2",
+     "label": "2. Years to complete = 48 km / 8 km per year = 9 years"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Years to complete = 48 km / 8 km per year = 6 years",
+   "explanation": "Line 2 arithmetic is wrong. 48 / 8 = 6 years."
+  },
+  {
+   "id": "c4wd-error93",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this valve renewal calculation. A 12 km renewal reach needs a valve every 500 m.",
+   "topicId": "renewal-program-quantities",
+   "level": "class1",
+   "assumptions": "Fictional Ontario renewal reach: length = 12 km, valve spacing = 500 m, 1 km = 1000 m. Target: number of valves.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Reach length = 12 km * 1000 m/km = 12000 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Valves = 12000 m / 500 m = 48 valves"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Valves = 12000 m / 500 m = 24 valves",
+   "explanation": "Line 2 arithmetic is wrong. 12000 / 500 = 24 valves."
+  },
+  {
+   "id": "c4wd-error94",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this valve renewal calculation. A 9 km renewal reach needs a valve every 300 m.",
+   "topicId": "renewal-program-quantities",
+   "level": "class1",
+   "assumptions": "Fictional Ontario renewal reach: length = 9 km, valve spacing = 300 m, 1 km = 1000 m. Target: number of valves.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Reach length = 9 km * 1000 m/km = 9000 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Valves = 9000 m / 300 m = 60 valves"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Valves = 9000 m / 300 m = 30 valves",
+   "explanation": "Line 2 arithmetic is wrong. 9000 / 300 = 30 valves."
+  },
+  {
+   "id": "c4wd-error95",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this renewal program calculation. Section lengths are 1200 m, 800 m and 600 m.",
+   "topicId": "renewal-program-quantities",
+   "level": "class1",
+   "assumptions": "Fictional Ontario renewal program: section A = 1200 m, section B = 800 m, section C = 600 m. Target unit: m.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Sections A and B = 1200 m + 800 m = 2000 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Program total = 2000 m"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Program total = 2000 m + 600 m = 2600 m",
+   "explanation": "Line 2 omitted section C. The program total is 2000 + 600 = 2600 m."
+  },
+  {
+   "id": "c4wd-error96",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this renewal program calculation. Section lengths are 1500 m, 900 m and 400 m.",
+   "topicId": "renewal-program-quantities",
+   "level": "class1",
+   "assumptions": "Fictional Ontario renewal program: section A = 1500 m, section B = 900 m, section C = 400 m. Target unit: m.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Sections A and B = 1500 m + 900 m = 2400 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Program total = 2400 m"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Program total = 2400 m + 400 m = 2800 m",
+   "explanation": "Line 2 omitted section C. The program total is 2400 + 400 = 2800 m."
+  },
+  {
+   "id": "c4wd-error97",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this renewal program calculation. Section lengths are 2000 m, 1200 m and 800 m.",
+   "topicId": "renewal-program-quantities",
+   "level": "class1",
+   "assumptions": "Fictional Ontario renewal program: section A = 2000 m, section B = 1200 m, section C = 800 m. Target unit: m.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Sections A and B = 2000 m + 1200 m = 3200 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Program total = 3200 m"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Program total = 3200 m + 800 m = 4000 m",
+   "explanation": "Line 2 omitted section C. The program total is 3200 + 800 = 4000 m."
+  },
+  {
+   "id": "c4wd-error98",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this hydrant renewal calculation. A system has 240 hydrants on a 12 year renewal cycle, spread evenly.",
+   "topicId": "renewal-program-quantities",
+   "level": "class1",
+   "assumptions": "Fictional Ontario system: hydrants = 240, renewal cycle = 12 years, spread evenly. Target: hydrants per year.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Cycle length = 12 years"
+    },
+    {
+     "id": "line2",
+     "label": "2. Hydrants per year = 240 / 12 = 30 per year"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Hydrants per year = 240 / 12 = 20 per year",
+   "explanation": "Line 2 arithmetic is wrong. 240 / 12 = 20 hydrants per year."
+  },
+  {
+   "id": "c4wd-error99",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this hydrant renewal calculation. A system has 300 hydrants on a 15 year renewal cycle, spread evenly.",
+   "topicId": "renewal-program-quantities",
+   "level": "class1",
+   "assumptions": "Fictional Ontario system: hydrants = 300, renewal cycle = 15 years, spread evenly. Target: hydrants per year.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Cycle length = 15 years"
+    },
+    {
+     "id": "line2",
+     "label": "2. Hydrants per year = 300 / 15 = 30 per year"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Hydrants per year = 300 / 15 = 20 per year",
+   "explanation": "Line 2 arithmetic is wrong. 300 / 15 = 20 hydrants per year."
+  },
+  {
+   "id": "c4wd-process01",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the leadership steps for approving the annual distribution operating plan for the whole system.",
+   "topicId": "annual-operating-plan-approval",
+   "assumptions": "Fictional large Ontario municipal drinking water distribution system operating under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard. The overall responsible operator holds Class 4 distribution certification.",
+   "configuration": "Scope: one annual operating plan covering all zones, storage, pumping and field programs.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Compile last year performance, break, water quality and cost results for every program area"
+    },
+    {
+     "id": "s2",
+     "label": "Set the plan priorities with zone supervisors, water quality and finance staff"
+    },
+    {
+     "id": "s3",
+     "label": "Draft the operating plan with targets, owners and quarterly milestones for each program"
+    },
+    {
+     "id": "s4",
+     "label": "Review the draft against Drinking Water Quality Management Standard commitments and regulatory duties"
+    },
+    {
+     "id": "s5",
+     "label": "Present the plan to senior management for approval and record any changes directed"
+    },
+    {
+     "id": "s6",
+     "label": "Issue the approved plan to all supervisors and track milestones at quarterly reviews"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Priorities are built from measured results, not habit. The quality management check happens before approval so commitments are not approved that the operational plan cannot support, and quarterly tracking keeps an approved plan from becoming a shelf document."
+  },
+  {
+   "id": "c4wd-process02",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for setting system wide performance targets for the distribution utility.",
+   "topicId": "system-performance-target-setting",
+   "assumptions": "Fictional large Ontario municipal drinking water distribution system operating under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard. The overall responsible operator holds Class 4 distribution certification.",
+   "configuration": "Scope: annual targets for breaks, residuals, pressure, water loss, energy and customer service.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Select the performance indicators that matter most to customers, regulators and asset health"
+    },
+    {
+     "id": "s2",
+     "label": "Establish a verified baseline for each indicator from the last three years of records"
+    },
+    {
+     "id": "s3",
+     "label": "Benchmark the baselines against comparable Ontario utilities and published guidance"
+    },
+    {
+     "id": "s4",
+     "label": "Set a target and a stretch target for each indicator with the responsible supervisor"
+    },
+    {
+     "id": "s5",
+     "label": "Assign the data source, reporting frequency and owner for every indicator"
+    },
+    {
+     "id": "s6",
+     "label": "Review performance monthly and escalate any indicator trending off target for two periods"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Targets need a trusted baseline before ambition is added. Benchmarking keeps targets honest, ownership and reporting frequency make them manageable, and the escalation rule acts on trends before a year end miss is locked in."
+  },
+  {
+   "id": "c4wd-process03",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for preparing the annual distribution operations budget at utility scale.",
+   "topicId": "distribution-budget-preparation-leadership",
+   "assumptions": "Fictional large Ontario municipal drinking water distribution system operating under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard. The overall responsible operator holds Class 4 distribution certification.",
+   "configuration": "Scope: operating budget for labour, chemicals, energy, contractors, fleet and materials across all zones.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Collect cost actuals and variance explanations from every cost centre for the past year"
+    },
+    {
+     "id": "s2",
+     "label": "Forecast fixed costs, including labour, energy contracts and regulatory sampling, for the budget year"
+    },
+    {
+     "id": "s3",
+     "label": "Build program bids for flushing, valve work, leak detection and repairs with unit quantities"
+    },
+    {
+     "id": "s4",
+     "label": "Rank discretionary program bids by risk and service impact when funds are limited"
+    },
+    {
+     "id": "s5",
+     "label": "Present the budget to senior management with the service consequences of each funding level"
+    },
+    {
+     "id": "s6",
+     "label": "Load the approved budget into the financial system and issue spending limits to supervisors"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Actuals and variances explain where money really went before new money is requested. Program bids are quantified so cuts can be ranked by risk, and management sees service consequences rather than discovering them after a cut."
+  },
+  {
+   "id": "c4wd-process04",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for building a staffing and certification coverage plan for the distribution system.",
+   "topicId": "staffing-certification-coverage-plan",
+   "assumptions": "Fictional large Ontario municipal drinking water distribution system operating under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard. The overall responsible operator holds Class 4 distribution certification.",
+   "configuration": "Scope: operator coverage for all shifts, zones and standby duties for the coming year.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "List every position, required certificate class and current holder from the staffing roster"
+    },
+    {
+     "id": "s2",
+     "label": "Identify coverage gaps for vacations, training, standby and emergency call out"
+    },
+    {
+     "id": "s3",
+     "label": "Confirm which operators are progressing toward the next certificate class and their timelines"
+    },
+    {
+     "id": "s4",
+     "label": "Assign acting and backup coverage for the overall responsible operator and each supervisor role"
+    },
+    {
+     "id": "s5",
+     "label": "Schedule training and examination preparation so coverage is not lost during study periods"
+    },
+    {
+     "id": "s6",
+     "label": "Publish the coverage plan and review it whenever a resignation or long absence occurs"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The roster and certificate record show the real gaps before schedules are promised. Backup coverage for senior roles is assigned in advance, and the plan is a living document that changes with staffing, not once a year."
+  },
+  {
+   "id": "c4wd-process05",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for procuring a multi year contractor services agreement for distribution repairs.",
+   "topicId": "contractor-services-procurement-leadership",
+   "assumptions": "Fictional large Ontario municipal drinking water distribution system operating under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard. The overall responsible operator holds Class 4 distribution certification.",
+   "configuration": "Scope: a three year agreement for emergency repairs, valve work and restoration support.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Define the scope, response times and quality requirements from the last three years of work volumes"
+    },
+    {
+     "id": "s2",
+     "label": "Set contractor qualification requirements, including licensing, safety record and insurance"
+    },
+    {
+     "id": "s3",
+     "label": "Issue the competitive procurement with unit prices for the common repair tasks"
+    },
+    {
+     "id": "s4",
+     "label": "Evaluate bids on price, response capability, past performance and safety, not price alone"
+    },
+    {
+     "id": "s5",
+     "label": "Award the agreement and hold a start up meeting on standards, permits and reporting"
+    },
+    {
+     "id": "s6",
+     "label": "Monitor contractor performance quarterly against response and quality measures and act on shortfalls"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Scope and volumes come from real work history so unit prices are comparable. Evaluation weighs response and safety because the cheapest emergency contractor can be the most expensive failure, and quarterly monitoring enforces the agreement after award."
+  },
+  {
+   "id": "c4wd-process06",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for reviewing and resetting customer service standards for distribution complaints.",
+   "topicId": "customer-service-standard-review",
+   "assumptions": "Fictional large Ontario municipal drinking water distribution system operating under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard. The overall responsible operator holds Class 4 distribution certification.",
+   "configuration": "Scope: standards for pressure, discoloured water, leak and outage contacts across the system.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Analyse complaint volumes, response times and repeat contacts by type and area for the past year"
+    },
+    {
+     "id": "s2",
+     "label": "Compare current standards with the commitments published to customers"
+    },
+    {
+     "id": "s3",
+     "label": "Identify the complaint types where field response, not call handling, drives dissatisfaction"
+    },
+    {
+     "id": "s4",
+     "label": "Revise the standards with customer service and operations, setting realistic field response times"
+    },
+    {
+     "id": "s5",
+     "label": "Train call centre and field staff on the revised standards and the escalation route"
+    },
+    {
+     "id": "s6",
+     "label": "Report performance against the new standards to management every quarter"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Complaint data separates a call handling problem from a field capacity problem before standards are rewritten. Joint revision keeps promises the field can keep, and quarterly reporting proves whether the new standards changed outcomes."
+  },
+  {
+   "id": "c4wd-process07",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for implementing a work management system across distribution operations.",
+   "topicId": "work-management-system-implementation",
+   "assumptions": "Fictional large Ontario municipal drinking water distribution system operating under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard. The overall responsible operator holds Class 4 distribution certification.",
+   "configuration": "Scope: system wide rollout replacing paper work orders for all distribution programs.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Map the current work order, inspection and repair workflows with the supervisors who use them"
+    },
+    {
+     "id": "s2",
+     "label": "Configure asset, work type and priority codes to match the mapped workflows"
+    },
+    {
+     "id": "s3",
+     "label": "Load verified asset data and close or migrate open paper work before go live"
+    },
+    {
+     "id": "s4",
+     "label": "Pilot the system in one zone and fix workflow and data problems found there"
+    },
+    {
+     "id": "s5",
+     "label": "Train all crews and supervisors and set the date paper work orders stop being accepted"
+    },
+    {
+     "id": "s6",
+     "label": "Audit work order completion and data quality monthly for the first year"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Workflows are mapped with users first so the system fits the work instead of forcing work to fit software. A one zone pilot finds the data problems cheaply, and monthly audits protect data quality after the launch attention fades."
+  },
+  {
+   "id": "c4wd-process08",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for strengthening records control for distribution operations.",
+   "topicId": "distribution-records-control-program",
+   "assumptions": "Fictional large Ontario municipal drinking water distribution system operating under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard. The overall responsible operator holds Class 4 distribution certification.",
+   "configuration": "Scope: logbooks, sampling records, inspection reports and work records across all facilities.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Inventory every record type, its retention requirement and where it is currently kept"
+    },
+    {
+     "id": "s2",
+     "label": "Identify records that are incomplete, hard to retrieve or kept in duplicate conflicting versions"
+    },
+    {
+     "id": "s3",
+     "label": "Issue a records standard naming the official copy, format and retention period for each type"
+    },
+    {
+     "id": "s4",
+     "label": "Train supervisors to review and sign records on a set schedule rather than at audit time"
+    },
+    {
+     "id": "s5",
+     "label": "Test retrieval by requesting sample records from each facility under time pressure"
+    },
+    {
+     "id": "s6",
+     "label": "Report records readiness to management and close gaps before the next ministry inspection"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "An inventory exposes conflicting copies and retrieval failures that a policy alone never finds. Scheduled supervisory review replaces audit time panic, and a timed retrieval test proves the system works before an inspector tests it."
+  },
+  {
+   "id": "c4wd-process09",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for the annual review of the health and safety program for distribution crews.",
+   "topicId": "crew-safety-program-annual-review",
+   "assumptions": "Fictional large Ontario municipal drinking water distribution system operating under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard. The overall responsible operator holds Class 4 distribution certification.",
+   "configuration": "Scope: confined space, excavation, traffic control, chlorine handling and driving risks for all crews.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Compile incident, near miss and inspection results for distribution work over the past year"
+    },
+    {
+     "id": "s2",
+     "label": "Review the hazard assessments for the highest risk tasks with crew representatives"
+    },
+    {
+     "id": "s3",
+     "label": "Check training, permit and equipment inspection records for completeness"
+    },
+    {
+     "id": "s4",
+     "label": "Update procedures and training plans for the gaps and new hazards identified"
+    },
+    {
+     "id": "s5",
+     "label": "Present the review and the improvement actions to the joint health and safety committee"
+    },
+    {
+     "id": "s6",
+     "label": "Track the improvement actions to closure and report progress at each committee meeting"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Incident and near miss data show where the program failed in practice, and crew representatives keep hazard reviews grounded in field reality. Committee presentation and tracked actions turn an annual review into verified change."
+  },
+  {
+   "id": "c4wd-process10",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for launching a continuous improvement program for distribution operations.",
+   "topicId": "continuous-improvement-program-launch",
+   "assumptions": "Fictional large Ontario municipal drinking water distribution system operating under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard. The overall responsible operator holds Class 4 distribution certification.",
+   "configuration": "Scope: a utility wide program inviting crew led improvements to quality, cost and safety.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Collect improvement ideas and recurring frustrations from crews and supervisors across all zones"
+    },
+    {
+     "id": "s2",
+     "label": "Screen the ideas for safety, regulatory and water quality impact before any trial"
+    },
+    {
+     "id": "s3",
+     "label": "Select two or three low risk pilots with a named owner and a measurable outcome"
+    },
+    {
+     "id": "s4",
+     "label": "Run the pilots for a set period and compare results with the baseline measures"
+    },
+    {
+     "id": "s5",
+     "label": "Adopt the proven changes as standard procedure and update training and documents"
+    },
+    {
+     "id": "s6",
+     "label": "Recognize the crews involved and publish the results and savings to all staff"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Ideas come from the people who do the work, but screening protects safety and water quality before enthusiasm runs a trial. Measured pilots decide adoption, and publishing results keeps the next round of ideas coming."
+  },
+  {
+   "id": "c4wd-process100",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for succession planning for senior distribution roles.",
+   "topicId": "senior-role-succession-planning",
+   "assumptions": "Fictional large Ontario municipal drinking water distribution system operating under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard. The overall responsible operator holds Class 4 distribution certification.",
+   "configuration": "Scope: succession for the overall responsible operator, utility manager and zone supervisor roles.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Identify the senior roles where one departure would create a service or compliance risk"
+    },
+    {
+     "id": "s2",
+     "label": "List the certification, experience and knowledge each role truly requires"
+    },
+    {
+     "id": "s3",
+     "label": "Identify potential successors and assess their readiness honestly against the requirements"
+    },
+    {
+     "id": "s4",
+     "label": "Build development assignments, acting opportunities and mentoring for each successor"
+    },
+    {
+     "id": "s5",
+     "label": "Document the critical knowledge held by current role holders in procedures and records"
+    },
+    {
+     "id": "s6",
+     "label": "Review readiness yearly and report the remaining single point risks to senior management"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Risk roles are identified by consequence, not by seniority. Readiness is assessed honestly so development is real, acting opportunities test successors safely, and documenting knowledge reduces the risk while people develop."
+  },
+  {
+   "id": "c4wd-process11",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for reviewing the system wide chlorine residual strategy.",
+   "topicId": "system-residual-strategy-review",
+   "assumptions": "Fictional large Ontario municipal drinking water distribution system operating under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard. The overall responsible operator holds Class 4 distribution certification.",
+   "configuration": "Scope: residual targets from plant entry points to the farthest extremities of every zone.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Trend free chlorine residuals by zone, storage facility and extremity site for the past year"
+    },
+    {
+     "id": "s2",
+     "label": "Identify where low residuals cluster by season, water age and storage operation"
+    },
+    {
+     "id": "s3",
+     "label": "Compare entry point dosing, booster dosing and turnover practice against the findings"
+    },
+    {
+     "id": "s4",
+     "label": "Set zone residual targets and the operational changes needed to hold them"
+    },
+    {
+     "id": "s5",
+     "label": "Brief operators on the revised targets and the actions triggered at each threshold"
+    },
+    {
+     "id": "s6",
+     "label": "Review residual compliance monthly and adjust the strategy at the seasonal change points"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A year of trends separates seasonal patterns from local problems before targets move. Operational changes are matched to the cause in each zone, thresholds trigger defined actions, and seasonal reviews keep the strategy current."
+  },
+  {
+   "id": "c4wd-process12",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for approving a nitrification action plan for system storage.",
+   "topicId": "nitrification-action-plan-approval",
+   "assumptions": "Fictional large Ontario municipal drinking water distribution system operating under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard. The overall responsible operator holds Class 4 distribution certification.",
+   "configuration": "Scope: chloramine affected storage and downstream areas showing nitrite and falling residuals.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm nitrification indicators, including nitrite, ammonia trends and residual loss, at the affected facilities"
+    },
+    {
+     "id": "s2",
+     "label": "Rank the affected tanks and areas by severity and by population served"
+    },
+    {
+     "id": "s3",
+     "label": "Select the response for each facility, such as deep cycling, breakpoint action or temporary free chlorine operation, with water quality staff"
+    },
+    {
+     "id": "s4",
+     "label": "Set the sampling frequency and the exit criteria that show nitrification is controlled"
+    },
+    {
+     "id": "s5",
+     "label": "Notify affected area operators and customer service of the plan and expected taste changes"
+    },
+    {
+     "id": "s6",
+     "label": "Review indicator trends weekly until exit criteria are met, then restore normal operation gradually"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Indicators confirm nitrification before disruptive responses are ordered. Responses are chosen per facility with exit criteria set in advance, and gradual restoration avoids declaring victory on one good sample."
+  },
+  {
+   "id": "c4wd-process13",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for setting the dead end management strategy for the whole system.",
+   "topicId": "dead-end-management-strategy",
+   "assumptions": "Fictional large Ontario municipal drinking water distribution system operating under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard. The overall responsible operator holds Class 4 distribution certification.",
+   "configuration": "Scope: all dead end mains, including low use industrial spurs and seasonal services.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Inventory every dead end main with its length, use pattern and residual history"
+    },
+    {
+     "id": "s2",
+     "label": "Classify dead ends by water quality risk, from chronic low residual to no history of problems"
+    },
+    {
+     "id": "s3",
+     "label": "Assign each class a control, such as scheduled flushing, an automatic flusher or main looping at renewal"
+    },
+    {
+     "id": "s4",
+     "label": "Schedule the controls and record them in the work management system as recurring work"
+    },
+    {
+     "id": "s5",
+     "label": "Sample the chronic sites after control to confirm residuals recover and hold"
+    },
+    {
+     "id": "s6",
+     "label": "Review the inventory yearly and remove dead ends that looping or development has eliminated"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Risk classification stops the common failure of flushing every dead end equally while the worst ones still fail. Controls are matched to class, recurring work makes them happen without reminders, and sampling proves the control works."
+  },
+  {
+   "id": "c4wd-process14",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for designing the regulatory sampling program for a large system under Ontario Regulation 170/03.",
+   "topicId": "regulatory-sampling-program-design-class4",
+   "assumptions": "Fictional large Ontario municipal drinking water distribution system operating under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard. The overall responsible operator holds Class 4 distribution certification.",
+   "configuration": "Scope: microbiological, chemical, lead and disinfection byproduct sampling for a system serving over 100,000 people.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "List every sampling duty by parameter, frequency, location type and regulatory deadline"
+    },
+    {
+     "id": "s2",
+     "label": "Map sampling sites so every zone, storage facility and population area is represented as required"
+    },
+    {
+     "id": "s3",
+     "label": "Build the annual calendar spreading samples evenly so no week carries an impossible load"
+    },
+    {
+     "id": "s4",
+     "label": "Assign trained samplers and backup samplers for every scheduled week"
+    },
+    {
+     "id": "s5",
+     "label": "Set the chain of custody, transport and laboratory arrangements and confirm holding times can be met"
+    },
+    {
+     "id": "s6",
+     "label": "Audit the completed program quarterly against the regulation and correct any missed duty at once"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Duties are listed from the regulation first, then sites and calendar are built to satisfy them without bunching. Backup samplers and confirmed holding times protect the program from ordinary absences, and quarterly audits catch a miss while it can still be explained and corrected."
+  },
+  {
+   "id": "c4wd-process15",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the leadership steps after an adverse microbiological result is reported for the system.",
+   "topicId": "adverse-result-leadership-response",
+   "assumptions": "Fictional large Ontario municipal drinking water distribution system operating under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard. The overall responsible operator holds Class 4 distribution certification.",
+   "configuration": "Scope: one adverse result at a routine distribution sampling site, reported by the laboratory.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the result details, site and sampling record with the laboratory and the sampler"
+    },
+    {
+     "id": "s2",
+     "label": "Notify the local health unit and the ministry spill action centre as Ontario Regulation 170/03 requires"
+    },
+    {
+     "id": "s3",
+     "label": "Direct resampling at the original site, upstream and downstream sites, with residual checks"
+    },
+    {
+     "id": "s4",
+     "label": "Review recent work, breaks and pressure events near the site for a plausible cause"
+    },
+    {
+     "id": "s5",
+     "label": "Hold the required notices and any advisory decision with the medical officer of health based on resample results"
+    },
+    {
+     "id": "s6",
+     "label": "Complete the corrective action report and brief senior management on the outcome and lessons"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Confirmation and statutory notification come first and in parallel with resampling, because the regulation sets the clock. Cause review runs alongside resampling, advisory decisions rest with the medical officer of health, and the corrective report closes the event formally."
+  },
+  {
+   "id": "c4wd-process16",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for leading the community lead sampling program under the Ontario lead standard.",
+   "topicId": "lead-sampling-program-leadership",
+   "assumptions": "Fictional large Ontario municipal drinking water distribution system operating under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard. The overall responsible operator holds Class 4 distribution certification.",
+   "configuration": "Scope: plumbing and distribution lead sampling across residential areas of the system.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the sampling periods, site counts and point of use requirements for the program year"
+    },
+    {
+     "id": "s2",
+     "label": "Recruit and confirm volunteer premises spread across the older housing areas of the system"
+    },
+    {
+     "id": "s3",
+     "label": "Train samplers on the required standing time, flushing and sample handling for each sample type"
+    },
+    {
+     "id": "s4",
+     "label": "Track results against the lead standard as they arrive and flag any exceedance pattern by area"
+    },
+    {
+     "id": "s5",
+     "label": "Notify participating households of their results with the required information and advice"
+    },
+    {
+     "id": "s6",
+     "label": "Report the program results and any corrosion control referral to management and the health unit"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Site recruitment is the long lead item, so it starts before the sampling window opens. Results are tracked by area as they arrive so a pattern is seen early, and households and the health unit receive results through the required channels."
+  },
+  {
+   "id": "c4wd-process17",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for setting the disinfection byproduct monitoring strategy in distribution.",
+   "topicId": "disinfection-byproduct-strategy",
+   "assumptions": "Fictional large Ontario municipal drinking water distribution system operating under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard. The overall responsible operator holds Class 4 distribution certification.",
+   "configuration": "Scope: trihalomethane and haloacetic acid sampling at the highest residence time sites.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Identify the sampling sites with the longest water age in each zone from turnover and model data"
+    },
+    {
+     "id": "s2",
+     "label": "Schedule sampling in the quarters and conditions the regulation requires, including the warmest period"
+    },
+    {
+     "id": "s3",
+     "label": "Trend results by site over several years to separate seasonal peaks from a rising pattern"
+    },
+    {
+     "id": "s4",
+     "label": "Where results trend upward, evaluate operational options such as turnover, flushing and entry quality referral"
+    },
+    {
+     "id": "s5",
+     "label": "Implement the selected operational changes before the next high risk season"
+    },
+    {
+     "id": "s6",
+     "label": "Report the trend and actions in the annual water quality summary for the system"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Site selection follows water age because byproducts form with time. Multi year trending prevents overreacting to one warm summer, and operational changes are timed before the season that produces the highest results."
+  },
+  {
+   "id": "c4wd-process18",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for approving a system wide unidirectional flushing program design.",
+   "topicId": "unidirectional-flushing-program-design",
+   "assumptions": "Fictional large Ontario municipal drinking water distribution system operating under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard. The overall responsible operator holds Class 4 distribution certification.",
+   "configuration": "Scope: a multi year unidirectional flushing program covering every zone in sequence.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Divide the system into flushing zones that can be isolated and flushed from clean source outward"
+    },
+    {
+     "id": "s2",
+     "label": "Sequence the zones so the dirtiest and highest complaint areas are covered in the first year"
+    },
+    {
+     "id": "s3",
+     "label": "Set the target flushing velocity and the valve operation sequence for each zone"
+    },
+    {
+     "id": "s4",
+     "label": "Estimate water use, crew time and customer notice needs for the full program"
+    },
+    {
+     "id": "s5",
+     "label": "Approve the program and schedule with management, including the water loss accounting treatment"
+    },
+    {
+     "id": "s6",
+     "label": "Measure turbidity, residual and complaint results after each zone and adjust the next zone plan"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Zone design comes before sequencing because unidirectional flushing only works from a clean source through an isolated area. Velocity and valve order are set per zone, and results from each zone improve the design of the next."
+  },
+  {
+   "id": "c4wd-process19",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for evaluating a booster chlorination strategy for remote zones.",
+   "topicId": "booster-chlorination-strategy-evaluation",
+   "assumptions": "Fictional large Ontario municipal drinking water distribution system operating under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard. The overall responsible operator holds Class 4 distribution certification.",
+   "configuration": "Scope: a proposal to add booster disinfection at two storage facilities serving remote areas.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Document the residual shortfall in the remote zones and the flushing and turnover effort now used"
+    },
+    {
+     "id": "s2",
+     "label": "Assess the candidate facilities for space, power, chemical storage and operator access"
+    },
+    {
+     "id": "s3",
+     "label": "Evaluate risks, including byproduct formation, chemical handling and overfeed protection"
+    },
+    {
+     "id": "s4",
+     "label": "Pilot booster operation at one facility with enhanced residual and byproduct sampling"
+    },
+    {
+     "id": "s5",
+     "label": "Compare pilot residuals, byproducts and operating cost with the current practice"
+    },
+    {
+     "id": "s6",
+     "label": "Decide on system rollout, record the decision basis and set the operating targets if approved"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The case starts from a documented shortfall, not from equipment enthusiasm. A single facility pilot with byproduct sampling tests the real tradeoff, and the rollout decision is recorded with its evidence."
+  },
+  {
+   "id": "c4wd-process20",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for producing the annual water quality strategy report for senior management and council.",
+   "topicId": "annual-water-quality-strategy-report",
+   "assumptions": "Fictional large Ontario municipal drinking water distribution system operating under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard. The overall responsible operator holds Class 4 distribution certification.",
+   "configuration": "Scope: one annual report covering compliance, residuals, complaints and improvement programs.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Compile compliance results, adverse events and corrective actions for the reporting year"
+    },
+    {
+     "id": "s2",
+     "label": "Summarize residual, byproduct and lead program trends with the operational context"
+    },
+    {
+     "id": "s3",
+     "label": "Report complaint patterns and how operational programs responded to them"
+    },
+    {
+     "id": "s4",
+     "label": "State the water quality risks carried into the next year and the funded actions for each"
+    },
+    {
+     "id": "s5",
+     "label": "Present the report to senior management and council with the overall responsible operator available for questions"
+    },
+    {
+     "id": "s6",
+     "label": "Publish the report as required and file it with the system records"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Compliance results lead because they are the legal record. Trends and complaints give the context numbers alone lack, risks are stated with their funded actions, and the overall responsible operator fronts the questions the report raises."
+  },
+  {
+   "id": "c4wd-process21",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for leading the annual water loss audit for the whole system.",
+   "topicId": "annual-water-loss-audit-leadership",
+   "assumptions": "Fictional large Ontario municipal drinking water distribution system operating under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard. The overall responsible operator holds Class 4 distribution certification.",
+   "configuration": "Scope: a full water balance audit using system input, billed use and loss components.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the audit boundary, period and the master meter data, and have master meters verified"
+    },
+    {
+     "id": "s2",
+     "label": "Compile billed metered, billed unmetered and unbilled authorized volumes from billing records"
+    },
+    {
+     "id": "s3",
+     "label": "Estimate apparent losses from metering inaccuracy, billing gaps and unauthorized use with stated methods"
+    },
+    {
+     "id": "s4",
+     "label": "Calculate real losses as the balance remaining after authorized use and apparent losses"
+    },
+    {
+     "id": "s5",
+     "label": "Grade the reliability of each audit component and list the data improvements needed"
+    },
+    {
+     "id": "s6",
+     "label": "Present the audit, the loss levels and the reduction priorities to senior management"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "An audit built on unverified master meters is fiction, so meter verification comes first. Components are built in balance order, reliability grading is stated honestly, and management receives priorities, not just a percentage."
+  },
+  {
+   "id": "c4wd-process22",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for rolling out district metered areas across the system as a loss strategy.",
+   "topicId": "dma-rollout-strategy",
+   "assumptions": "Fictional large Ontario municipal drinking water distribution system operating under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard. The overall responsible operator holds Class 4 distribution certification.",
+   "configuration": "Scope: staged creation of district metered areas covering the whole network over three years.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Divide the network into candidate districts of manageable size using valves, geography and meter points"
+    },
+    {
+     "id": "s2",
+     "label": "Rank districts by break history, night flow suspicion and metering readiness"
+    },
+    {
+     "id": "s3",
+     "label": "Design the boundary, meters and data logging for the first districts and confirm boundary tightness"
+    },
+    {
+     "id": "s4",
+     "label": "Commission the first districts and establish their baseline night flows"
+    },
+    {
+     "id": "s5",
+     "label": "Use the first district results to refine the design and the rollout order for the rest"
+    },
+    {
+     "id": "s6",
+     "label": "Report district loss levels quarterly and move the worst districts into active leak work"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "District design and ranking precede construction so the worst and most measurable areas go first. Boundary tightness is proven before baselines are trusted, and early districts teach the rollout rather than repeating the same mistakes system wide."
+  },
+  {
+   "id": "c4wd-process23",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for setting up a minimum night flow analysis program.",
+   "topicId": "minimum-night-flow-program-setup",
+   "assumptions": "Fictional large Ontario municipal drinking water distribution system operating under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard. The overall responsible operator holds Class 4 distribution certification.",
+   "configuration": "Scope: routine night flow monitoring for all established district metered areas.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm each district boundary is tight and its inflow meter and logger are recording correctly"
+    },
+    {
+     "id": "s2",
+     "label": "Establish the legitimate night use allowance for each district from customer and meter data"
+    },
+    {
+     "id": "s3",
+     "label": "Set the night flow threshold for each district that triggers leak investigation"
+    },
+    {
+     "id": "s4",
+     "label": "Review night flow data weekly and rank districts by flow above the legitimate allowance"
+    },
+    {
+     "id": "s5",
+     "label": "Direct step testing or leak crews to the worst districts and record leaks found"
+    },
+    {
+     "id": "s6",
+     "label": "Recalculate district night flow after repairs to confirm the saving and reset the baseline"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Night flow only means something inside a tight, correctly metered boundary. Legitimate use is subtracted before leakage is claimed, thresholds trigger defined action, and post repair measurement proves the saving was real."
+  },
+  {
+   "id": "c4wd-process24",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for prioritizing the annual leak detection survey program.",
+   "topicId": "leak-detection-program-prioritization",
+   "assumptions": "Fictional large Ontario municipal drinking water distribution system operating under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard. The overall responsible operator holds Class 4 distribution certification.",
+   "configuration": "Scope: acoustic survey and correlation work allocated across zones for one year.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Rank areas by break history, night flow results, soil and age data and previous survey findings"
+    },
+    {
+     "id": "s2",
+     "label": "Allocate survey kilometres to the highest ranked areas within the crew and contractor capacity"
+    },
+    {
+     "id": "s3",
+     "label": "Schedule surveys in the quieter traffic and lower noise periods that suit each area"
+    },
+    {
+     "id": "s4",
+     "label": "Require found leaks to be marked, prioritized and handed to repair crews with a target date"
+    },
+    {
+     "id": "s5",
+     "label": "Track leaks found per kilometre surveyed and water saved by area"
+    },
+    {
+     "id": "s6",
+     "label": "Use the yield results to re rank areas for the next year program"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Survey effort follows evidence of loss, not a rotation that treats all streets equally. Found leaks are worthless without a repair handover and date, and yield per kilometre is the measure that improves next year allocation."
+  },
+  {
+   "id": "c4wd-process25",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for building an apparent loss reduction strategy focused on metering accuracy.",
+   "topicId": "apparent-loss-metering-strategy",
+   "assumptions": "Fictional large Ontario municipal drinking water distribution system operating under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard. The overall responsible operator holds Class 4 distribution certification.",
+   "configuration": "Scope: large meter testing, small meter changeout analysis and billing data review.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Analyse consumption and revenue by meter size, age and customer class from billing data"
+    },
+    {
+     "id": "s2",
+     "label": "Test a sample of large meters and estimate the revenue and volume error they represent"
+    },
+    {
+     "id": "s3",
+     "label": "Estimate small meter under registration from age based accuracy data and sample testing"
+    },
+    {
+     "id": "s4",
+     "label": "Rank the fixes, such as large meter repair, targeted changeout and billing corrections, by payback"
+    },
+    {
+     "id": "s5",
+     "label": "Implement the highest payback fixes and correct the billing processes that allowed the errors"
+    },
+    {
+     "id": "s6",
+     "label": "Re audit apparent losses after one year and report the recovered volume and revenue"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Billing data shows where to look before any meter is pulled. Large meters are tested first because a few large errors outweigh thousands of small ones, and process fixes stop the same errors returning after the hardware is fixed."
+  },
+  {
+   "id": "c4wd-process26",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for approving pressure management as a system leakage reduction measure.",
+   "topicId": "pressure-management-leakage-approval",
+   "assumptions": "Fictional large Ontario municipal drinking water distribution system operating under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard. The overall responsible operator holds Class 4 distribution certification.",
+   "configuration": "Scope: a utility scale proposal to lower excess pressure in the highest pressure districts.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Quantify excess pressure and leakage in the candidate districts from logger and night flow data"
+    },
+    {
+     "id": "s2",
+     "label": "Confirm the minimum pressure needed for customers and fire flow in each district"
+    },
+    {
+     "id": "s3",
+     "label": "Model the leakage and break frequency benefit expected at the proposed pressures"
+    },
+    {
+     "id": "s4",
+     "label": "Price the pressure control works and the ongoing maintenance obligation"
+    },
+    {
+     "id": "s5",
+     "label": "Approve a staged rollout starting with the district with the highest benefit and lowest risk"
+    },
+    {
+     "id": "s6",
+     "label": "Measure night flow and break frequency after each stage against the pre project baseline"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Excess pressure and leakage are quantified from field data before benefits are modelled. Fire flow and customer minimums set the floor, staging limits risk, and baselines fixed in advance let the claimed savings be audited."
+  },
+  {
+   "id": "c4wd-process27",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for setting and tracking real loss reduction targets.",
+   "topicId": "real-loss-target-tracking",
+   "assumptions": "Fictional large Ontario municipal drinking water distribution system operating under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard. The overall responsible operator holds Class 4 distribution certification.",
+   "configuration": "Scope: a three year real loss target with annual milestones for the whole system.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Establish the current real loss level from the validated annual water audit"
+    },
+    {
+     "id": "s2",
+     "label": "Estimate the economic level of leakage where further reduction costs more than the water saved"
+    },
+    {
+     "id": "s3",
+     "label": "Set the three year target between the current level and the economic level with annual milestones"
+    },
+    {
+     "id": "s4",
+     "label": "Assign the programs, including pressure, survey and renewal, that must deliver each milestone"
+    },
+    {
+     "id": "s5",
+     "label": "Track losses quarterly using production, night flow and repair data as leading indicators"
+    },
+    {
+     "id": "s6",
+     "label": "Report progress and corrective actions to senior management at each year end"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Targets are anchored to a validated audit and bounded by the economic level so the utility does not chase losses past the point of value. Programs are assigned to milestones, and leading indicators warn of a miss while the year can still be recovered."
+  },
+  {
+   "id": "c4wd-process28",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for reporting non revenue water to council in a defensible form.",
+   "topicId": "non-revenue-water-council-reporting",
+   "assumptions": "Fictional large Ontario municipal drinking water distribution system operating under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard. The overall responsible operator holds Class 4 distribution certification.",
+   "configuration": "Scope: an annual non revenue water report for a municipal council audience.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Reconcile the audit volumes with finance and production records so all parties use the same numbers"
+    },
+    {
+     "id": "s2",
+     "label": "Present non revenue water as component volumes, not only as a single percentage of supply"
+    },
+    {
+     "id": "s3",
+     "label": "Explain the value of each component, including the cost of real losses and the revenue effect of apparent losses"
+    },
+    {
+     "id": "s4",
+     "label": "State the funded reduction actions and the expected movement for the next year"
+    },
+    {
+     "id": "s5",
+     "label": "Brief council members on why percentage alone misleads when production volumes change"
+    },
+    {
+     "id": "s6",
+     "label": "File the report and the supporting audit with the utility records"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Reconciliation comes first because council will hear different numbers if finance and operations are not aligned. Components and values replace the single percentage that hides whether the problem is leakage, metering or unbilled use."
+  },
+  {
+   "id": "c4wd-process29",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for using main break data to find the drivers of system losses and cost.",
+   "topicId": "break-data-driver-analysis",
+   "assumptions": "Fictional large Ontario municipal drinking water distribution system operating under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard. The overall responsible operator holds Class 4 distribution certification.",
+   "configuration": "Scope: five years of break records analysed by material, age, pressure, soil and season.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Clean the break records, removing duplicates and confirming location, material and cause fields"
+    },
+    {
+     "id": "s2",
+     "label": "Analyse break rates by material, age band, diameter and pressure district"
+    },
+    {
+     "id": "s3",
+     "label": "Compare break timing with pressure transients, temperature drops and construction activity"
+    },
+    {
+     "id": "s4",
+     "label": "Identify the two or three drivers that explain most breaks and their operating areas"
+    },
+    {
+     "id": "s5",
+     "label": "Direct the responses, such as pressure control, renewal priority or frost procedures, at those drivers"
+    },
+    {
+     "id": "s6",
+     "label": "Repeat the analysis yearly and report whether the targeted drivers are improving"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Dirty records produce confident nonsense, so cleaning comes first. Rate analysis by asset group separates age effects from pressure effects, and responses are aimed at proven drivers rather than the most recent memorable break."
+  },
+  {
+   "id": "c4wd-process30",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for improving water audit data quality year over year.",
+   "topicId": "water-audit-data-quality-improvement",
+   "assumptions": "Fictional large Ontario municipal drinking water distribution system operating under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard. The overall responsible operator holds Class 4 distribution certification.",
+   "configuration": "Scope: a data improvement plan following a first audit with low reliability grades.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "List every audit input with its current reliability grade and the reason for the grade"
+    },
+    {
+     "id": "s2",
+     "label": "Rank the inputs by how much their uncertainty moves the final loss figures"
+    },
+    {
+     "id": "s3",
+     "label": "Fund the fixes for the highest impact inputs, such as master meter testing and billing extracts"
+    },
+    {
+     "id": "s4",
+     "label": "Assign each fix an owner and a completion date before the next audit"
+    },
+    {
+     "id": "s5",
+     "label": "Re grade the inputs at the next audit and confirm the uncertainty actually fell"
+    },
+    {
+     "id": "s6",
+     "label": "Report the audit confidence improvement alongside the loss results to management"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Improvement money follows uncertainty impact, not ease. Master meter and billing data usually dominate the error, owners and dates make the plan real, and re grading proves the next audit deserves more trust than the last."
+  },
+  {
+   "id": "c4wd-process31",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for reviewing pressure strategy across all zones of the system.",
+   "topicId": "system-pressure-strategy-review",
+   "assumptions": "Fictional large Ontario municipal drinking water distribution system operating under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard. The overall responsible operator holds Class 4 distribution certification.",
+   "configuration": "Scope: a system wide review of zone pressures against service, leakage and energy goals.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Compile pressure records, complaint history and leakage data for every zone"
+    },
+    {
+     "id": "s2",
+     "label": "Compare each zone pressure with the level its highest and most distant customers require"
+    },
+    {
+     "id": "s3",
+     "label": "Identify zones carrying excess pressure and zones at risk during peak and fire events"
+    },
+    {
+     "id": "s4",
+     "label": "Decide the target pressure band for each zone with operations and water loss staff"
+    },
+    {
+     "id": "s5",
+     "label": "Sequence the setpoint, valve and control changes needed to reach the target bands"
+    },
+    {
+     "id": "s6",
+     "label": "Monitor pressures, complaints and night flows after the changes and report the outcome"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Service need sets the floor for each zone before excess is declared. Leakage and complaint data show where pressure is costing money or service, and post change monitoring proves the new bands hold under real demand."
+  },
+  {
+   "id": "c4wd-process32",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for developing a storage capacity strategy for system growth.",
+   "topicId": "storage-capacity-growth-strategy",
+   "assumptions": "Fictional large Ontario municipal drinking water distribution system operating under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard. The overall responsible operator holds Class 4 distribution certification.",
+   "configuration": "Scope: a twenty year storage outlook covering growth areas, fire storage and equalization needs.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Compile current usable storage by zone and the storage standard the utility designs to"
+    },
+    {
+     "id": "s2",
+     "label": "Apply growth forecasts and peaking factors to project zone demands over the planning period"
+    },
+    {
+     "id": "s3",
+     "label": "Calculate the storage shortfall by zone and the year each shortfall appears"
+    },
+    {
+     "id": "s4",
+     "label": "Evaluate options for each shortfall, including new storage, zone changes and operational measures"
+    },
+    {
+     "id": "s5",
+     "label": "Stage the preferred projects in the capital plan with their trigger years"
+    },
+    {
+     "id": "s6",
+     "label": "Review the strategy whenever official growth forecasts or standards change"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Current usable storage, not nameplate volume, is the honest starting point. Shortfalls are dated by zone so projects are triggered by need, and the strategy is revisited when forecasts change rather than defended as written."
+  },
+  {
+   "id": "c4wd-process33",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for setting the system storage turnover and water age strategy.",
+   "topicId": "storage-turnover-water-age-strategy",
+   "assumptions": "Fictional large Ontario municipal drinking water distribution system operating under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard. The overall responsible operator holds Class 4 distribution certification.",
+   "configuration": "Scope: operating bands and cycling targets for all tanks and reservoirs.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Calculate current turnover and estimated water age for every storage facility"
+    },
+    {
+     "id": "s2",
+     "label": "Set a maximum target water age by season based on residual performance at extremities"
+    },
+    {
+     "id": "s3",
+     "label": "Revise operating bands and fill schedules facility by facility to meet the age targets"
+    },
+    {
+     "id": "s4",
+     "label": "Identify facilities that cannot meet targets by operation alone and flag them for mixing or capital review"
+    },
+    {
+     "id": "s5",
+     "label": "Brief operators on the new bands and the residual triggers for extra cycling"
+    },
+    {
+     "id": "s6",
+     "label": "Track age indicators and extremity residuals monthly and tighten bands where results require"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Age is calculated before bands are moved so the size of the problem is known per facility. Most facilities respond to operation, the few that cannot are honestly flagged for capital, and monthly tracking keeps bands from drifting back."
+  },
+  {
+   "id": "c4wd-process34",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for building the multi year storage inspection and rehabilitation strategy.",
+   "topicId": "storage-inspection-rehabilitation-strategy",
+   "assumptions": "Fictional large Ontario municipal drinking water distribution system operating under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard. The overall responsible operator holds Class 4 distribution certification.",
+   "configuration": "Scope: inspection, coating and structural rehabilitation planning for all storage assets.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Compile age, coating history and last inspection findings for every tank and reservoir"
+    },
+    {
+     "id": "s2",
+     "label": "Rank facilities by condition risk and by the consequence of an unplanned outage"
+    },
+    {
+     "id": "s3",
+     "label": "Schedule internal inspections so condition data stays current for the highest risk facilities"
+    },
+    {
+     "id": "s4",
+     "label": "Convert inspection findings into rehabilitation projects with scope and staging"
+    },
+    {
+     "id": "s5",
+     "label": "Place the projects in the capital plan in risk order with outage windows in low demand seasons"
+    },
+    {
+     "id": "s6",
+     "label": "Update the strategy after each inspection cycle with the new condition evidence"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Condition and consequence together set the order, because a poor coating in a sole source zone outranks a worse coating with backup storage. Inspection data feeds projects directly, and the strategy refreshes with evidence instead of aging on a shelf."
+  },
+  {
+   "id": "c4wd-process35",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for setting the pressure reducing valve program strategy.",
+   "topicId": "prv-program-strategy",
+   "assumptions": "Fictional large Ontario municipal drinking water distribution system operating under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard. The overall responsible operator holds Class 4 distribution certification.",
+   "configuration": "Scope: inventory, criticality and maintenance strategy for all pressure reducing valve stations.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Inventory every station with its area served, setting and maintenance history"
+    },
+    {
+     "id": "s2",
+     "label": "Rank stations by consequence of failure, including customer count and pressure risk"
+    },
+    {
+     "id": "s3",
+     "label": "Set inspection and overhaul intervals by criticality rather than one interval for all"
+    },
+    {
+     "id": "s4",
+     "label": "Identify stations needing telemetry or pressure logging from their failure consequences"
+    },
+    {
+     "id": "s5",
+     "label": "Fund the program in criticality order and schedule the first year work"
+    },
+    {
+     "id": "s6",
+     "label": "Review station failures yearly and adjust intervals and the telemetry list from the evidence"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "One interval for all stations wastes effort on low risk sites and under serves critical ones. Consequence ranking drives intervals, telemetry and funding, and failure reviews keep the ranking honest."
+  },
+  {
+   "id": "c4wd-process36",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for developing the fire flow capacity strategy for the system.",
+   "topicId": "fire-flow-capacity-strategy",
+   "assumptions": "Fictional large Ontario municipal drinking water distribution system operating under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard. The overall responsible operator holds Class 4 distribution certification.",
+   "configuration": "Scope: system wide fire flow adequacy for existing areas and new development.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Compile required fire flows by land use from the fire department and municipal standards"
+    },
+    {
+     "id": "s2",
+     "label": "Test or model available fire flow across the system and map the deficient areas"
+    },
+    {
+     "id": "s3",
+     "label": "Separate deficiencies caused by operations, such as valve position, from those caused by main capacity"
+    },
+    {
+     "id": "s4",
+     "label": "Correct the operational deficiencies at once and verify them by retest"
+    },
+    {
+     "id": "s5",
+     "label": "Place capacity deficiencies into the capital plan ranked by fire risk and development pressure"
+    },
+    {
+     "id": "s6",
+     "label": "Report system fire flow status to the fire department and management annually"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Required flows come from the fire service, not from engineering habit. Operational causes are fixed immediately because they are cheap and dangerous to leave, while capacity projects are ranked and reported so the residual risk is visible."
+  },
+  {
+   "id": "c4wd-process37",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for setting booster station strategy for peak demand and fire events.",
+   "topicId": "booster-station-peak-fire-strategy",
+   "assumptions": "Fictional large Ontario municipal drinking water distribution system operating under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard. The overall responsible operator holds Class 4 distribution certification.",
+   "configuration": "Scope: firm capacity, standby power and control strategy for all booster stations.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the firm capacity of each station with its largest pump out of service"
+    },
+    {
+     "id": "s2",
+     "label": "Compare firm capacity with peak hour demand plus the fire flow the station must support"
+    },
+    {
+     "id": "s3",
+     "label": "Identify stations short of firm capacity or without proven standby power"
+    },
+    {
+     "id": "s4",
+     "label": "Set the upgrade and standby power priorities and place them in the capital plan"
+    },
+    {
+     "id": "s5",
+     "label": "Prove each station under a witnessed full load and standby power test"
+    },
+    {
+     "id": "s6",
+     "label": "Record the tested capacities in the emergency plan so response decisions use real numbers"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Firm capacity with a pump out is the only capacity an emergency can count on. Gaps are priced into the capital plan, witnessed tests prove the paper numbers, and the emergency plan carries tested values rather than design claims."
+  },
+  {
+   "id": "c4wd-process38",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for strengthening storage facility security and resilience.",
+   "topicId": "storage-security-resilience-strategy",
+   "assumptions": "Fictional large Ontario municipal drinking water distribution system operating under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard. The overall responsible operator holds Class 4 distribution certification.",
+   "configuration": "Scope: physical security, access control and contamination protection for all storage sites.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Assess each facility for access points, hatch and vent security and intrusion detection"
+    },
+    {
+     "id": "s2",
+     "label": "Rank vulnerabilities by the population served and the ease of unauthorized access"
+    },
+    {
+     "id": "s3",
+     "label": "Install or repair locks, hatch alarms and vent screens in risk order"
+    },
+    {
+     "id": "s4",
+     "label": "Set an access log and key control standard for staff and contractors"
+    },
+    {
+     "id": "s5",
+     "label": "Include a security check in the routine facility inspection round"
+    },
+    {
+     "id": "s6",
+     "label": "Review any intrusion or vandalism event and update the assessment from what it reveals"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Assessment before hardware prevents spending on the most visible site instead of the most vulnerable one. Access control covers people as well as locks, and every real event updates the assessment because it tested the defences for free."
+  },
+  {
+   "id": "c4wd-process39",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for approving seasonal pressure settings for the whole system.",
+   "topicId": "seasonal-pressure-settings-approval",
+   "assumptions": "Fictional large Ontario municipal drinking water distribution system operating under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard. The overall responsible operator holds Class 4 distribution certification.",
+   "configuration": "Scope: summer and winter pressure bands for zones with strong seasonal demand swings.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Analyse seasonal demand, pressure and complaint patterns for the last two years"
+    },
+    {
+     "id": "s2",
+     "label": "Propose the seasonal bands for each zone with the dates they would apply"
+    },
+    {
+     "id": "s3",
+     "label": "Check the proposed bands against fire flow needs and the highest customers in each zone"
+    },
+    {
+     "id": "s4",
+     "label": "Approve the bands and load the change dates into the operating calendar"
+    },
+    {
+     "id": "s5",
+     "label": "Make the setpoint changes on the scheduled dates and verify critical point pressures"
+    },
+    {
+     "id": "s6",
+     "label": "Review complaints and pressures after each season and adjust the bands for the next year"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Two years of pattern data separate a real seasonal effect from one unusual summer. Fire flow and high customers bound the proposal, scheduled changes are verified in the field, and each season review improves the next."
+  }
+ ],
+ "missions": [
+  {
+   "id": "c4wd-mission41",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 41: The Pump Energy Benchmark Shift",
+   "tasks": [
+    {
+     "taskId": "c4wd-error60",
+     "revision": "r1",
+     "occurrenceId": "m41-t1"
+    },
+    {
+     "taskId": "c4wd-process01",
+     "revision": "r1",
+     "occurrenceId": "m41-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4wd-mission42",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 42: The System Performance Target Setting Shift",
+   "tasks": [
+    {
+     "taskId": "c4wd-process02",
+     "revision": "r1",
+     "occurrenceId": "m42-t1"
+    },
+    {
+     "taskId": "c4wd-error61",
+     "revision": "r1",
+     "occurrenceId": "m42-t2"
+    },
+    {
+     "taskId": "c4wd-error62",
+     "revision": "r1",
+     "occurrenceId": "m42-t3"
+    }
+   ]
+  },
+  {
+   "id": "c4wd-mission43",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 43: The Pump Energy Benchmark Shift",
+   "tasks": [
+    {
+     "taskId": "c4wd-error63",
+     "revision": "r1",
+     "occurrenceId": "m43-t1"
+    },
+    {
+     "taskId": "c4wd-process03",
+     "revision": "r1",
+     "occurrenceId": "m43-t2"
+    },
+    {
+     "taskId": "c4wd-error64",
+     "revision": "r1",
+     "occurrenceId": "m43-t3"
+    },
+    {
+     "taskId": "c4wd-error65",
+     "revision": "r1",
+     "occurrenceId": "m43-t4"
+    }
+   ]
+  },
+  {
+   "id": "c4wd-mission44",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 44: The Staffing Certification Coverage Plan Shift",
+   "tasks": [
+    {
+     "taskId": "c4wd-process04",
+     "revision": "r1",
+     "occurrenceId": "m44-t1"
+    },
+    {
+     "taskId": "c4wd-error66",
+     "revision": "r1",
+     "occurrenceId": "m44-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4wd-mission45",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 45: The Pump Energy Benchmark Shift",
+   "tasks": [
+    {
+     "taskId": "c4wd-error67",
+     "revision": "r1",
+     "occurrenceId": "m45-t1"
+    },
+    {
+     "taskId": "c4wd-process05",
+     "revision": "r1",
+     "occurrenceId": "m45-t2"
+    },
+    {
+     "taskId": "c4wd-error68",
+     "revision": "r1",
+     "occurrenceId": "m45-t3"
+    }
+   ]
+  },
+  {
+   "id": "c4wd-mission46",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 46: The Customer Service Standard Review Shift",
+   "tasks": [
+    {
+     "taskId": "c4wd-process06",
+     "revision": "r1",
+     "occurrenceId": "m46-t1"
+    },
+    {
+     "taskId": "c4wd-error69",
+     "revision": "r1",
+     "occurrenceId": "m46-t2"
+    },
+    {
+     "taskId": "c4wd-error70",
+     "revision": "r1",
+     "occurrenceId": "m46-t3"
+    },
+    {
+     "taskId": "c4wd-error71",
+     "revision": "r1",
+     "occurrenceId": "m46-t4"
+    }
+   ]
+  },
+  {
+   "id": "c4wd-mission47",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 47: The Pump Energy Benchmark Shift",
+   "tasks": [
+    {
+     "taskId": "c4wd-error72",
+     "revision": "r1",
+     "occurrenceId": "m47-t1"
+    },
+    {
+     "taskId": "c4wd-process07",
+     "revision": "r1",
+     "occurrenceId": "m47-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4wd-mission48",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 48: The Distribution Records Control Program Shift",
+   "tasks": [
+    {
+     "taskId": "c4wd-process08",
+     "revision": "r1",
+     "occurrenceId": "m48-t1"
+    },
+    {
+     "taskId": "c4wd-error73",
+     "revision": "r1",
+     "occurrenceId": "m48-t2"
+    },
+    {
+     "taskId": "c4wd-error74",
+     "revision": "r1",
+     "occurrenceId": "m48-t3"
+    }
+   ]
+  },
+  {
+   "id": "c4wd-mission49",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 49: The Booster Disinfection Program Shift",
+   "tasks": [
+    {
+     "taskId": "c4wd-error75",
+     "revision": "r1",
+     "occurrenceId": "m49-t1"
+    },
+    {
+     "taskId": "c4wd-process09",
+     "revision": "r1",
+     "occurrenceId": "m49-t2"
+    },
+    {
+     "taskId": "c4wd-error76",
+     "revision": "r1",
+     "occurrenceId": "m49-t3"
+    },
+    {
+     "taskId": "c4wd-error77",
+     "revision": "r1",
+     "occurrenceId": "m49-t4"
+    }
+   ]
+  },
+  {
+   "id": "c4wd-mission50",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 50: The Continuous Improvement Program Launch Shift",
+   "tasks": [
+    {
+     "taskId": "c4wd-process10",
+     "revision": "r1",
+     "occurrenceId": "m50-t1"
+    },
+    {
+     "taskId": "c4wd-error78",
+     "revision": "r1",
+     "occurrenceId": "m50-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4wd-mission51",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 51: The Booster Disinfection Program Shift",
+   "tasks": [
+    {
+     "taskId": "c4wd-error79",
+     "revision": "r1",
+     "occurrenceId": "m51-t1"
+    },
+    {
+     "taskId": "c4wd-process100",
+     "revision": "r1",
+     "occurrenceId": "m51-t2"
+    },
+    {
+     "taskId": "c4wd-error80",
+     "revision": "r1",
+     "occurrenceId": "m51-t3"
+    }
+   ]
+  },
+  {
+   "id": "c4wd-mission52",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 52: The System Residual Strategy Review Shift",
+   "tasks": [
+    {
+     "taskId": "c4wd-process11",
+     "revision": "r1",
+     "occurrenceId": "m52-t1"
+    },
+    {
+     "taskId": "c4wd-error81",
+     "revision": "r1",
+     "occurrenceId": "m52-t2"
+    },
+    {
+     "taskId": "c4wd-error82",
+     "revision": "r1",
+     "occurrenceId": "m52-t3"
+    },
+    {
+     "taskId": "c4wd-error83",
+     "revision": "r1",
+     "occurrenceId": "m52-t4"
+    }
+   ]
+  },
+  {
+   "id": "c4wd-mission53",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 53: The Booster Disinfection Program Shift",
+   "tasks": [
+    {
+     "taskId": "c4wd-error84",
+     "revision": "r1",
+     "occurrenceId": "m53-t1"
+    },
+    {
+     "taskId": "c4wd-process12",
+     "revision": "r1",
+     "occurrenceId": "m53-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4wd-mission54",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 54: The Dead End Management Strategy Shift",
+   "tasks": [
+    {
+     "taskId": "c4wd-process13",
+     "revision": "r1",
+     "occurrenceId": "m54-t1"
+    },
+    {
+     "taskId": "c4wd-error85",
+     "revision": "r1",
+     "occurrenceId": "m54-t2"
+    },
+    {
+     "taskId": "c4wd-error86",
+     "revision": "r1",
+     "occurrenceId": "m54-t3"
+    }
+   ]
+  },
+  {
+   "id": "c4wd-mission55",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 55: The Renewal Program Quantities Shift",
+   "tasks": [
+    {
+     "taskId": "c4wd-error87",
+     "revision": "r1",
+     "occurrenceId": "m55-t1"
+    },
+    {
+     "taskId": "c4wd-process14",
+     "revision": "r1",
+     "occurrenceId": "m55-t2"
+    },
+    {
+     "taskId": "c4wd-error88",
+     "revision": "r1",
+     "occurrenceId": "m55-t3"
+    },
+    {
+     "taskId": "c4wd-error89",
+     "revision": "r1",
+     "occurrenceId": "m55-t4"
+    }
+   ]
+  },
+  {
+   "id": "c4wd-mission56",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 56: The Adverse Result Leadership Response Shift",
+   "tasks": [
+    {
+     "taskId": "c4wd-process15",
+     "revision": "r1",
+     "occurrenceId": "m56-t1"
+    },
+    {
+     "taskId": "c4wd-error90",
+     "revision": "r1",
+     "occurrenceId": "m56-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4wd-mission57",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 57: The Renewal Program Quantities Shift",
+   "tasks": [
+    {
+     "taskId": "c4wd-error91",
+     "revision": "r1",
+     "occurrenceId": "m57-t1"
+    },
+    {
+     "taskId": "c4wd-process16",
+     "revision": "r1",
+     "occurrenceId": "m57-t2"
+    },
+    {
+     "taskId": "c4wd-error92",
+     "revision": "r1",
+     "occurrenceId": "m57-t3"
+    }
+   ]
+  },
+  {
+   "id": "c4wd-mission58",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 58: The Disinfection Byproduct Strategy Shift",
+   "tasks": [
+    {
+     "taskId": "c4wd-process17",
+     "revision": "r1",
+     "occurrenceId": "m58-t1"
+    },
+    {
+     "taskId": "c4wd-error93",
+     "revision": "r1",
+     "occurrenceId": "m58-t2"
+    },
+    {
+     "taskId": "c4wd-error94",
+     "revision": "r1",
+     "occurrenceId": "m58-t3"
+    },
+    {
+     "taskId": "c4wd-error95",
+     "revision": "r1",
+     "occurrenceId": "m58-t4"
+    }
+   ]
+  },
+  {
+   "id": "c4wd-mission59",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 59: The Renewal Program Quantities Shift",
+   "tasks": [
+    {
+     "taskId": "c4wd-error96",
+     "revision": "r1",
+     "occurrenceId": "m59-t1"
+    },
+    {
+     "taskId": "c4wd-process18",
+     "revision": "r1",
+     "occurrenceId": "m59-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4wd-mission60",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 60: The Booster Chlorination Strategy Evaluation Shift",
+   "tasks": [
+    {
+     "taskId": "c4wd-process19",
+     "revision": "r1",
+     "occurrenceId": "m60-t1"
+    },
+    {
+     "taskId": "c4wd-error97",
+     "revision": "r1",
+     "occurrenceId": "m60-t2"
+    },
+    {
+     "taskId": "c4wd-error98",
+     "revision": "r1",
+     "occurrenceId": "m60-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Distribution system management, water quality strategy, storage and asset chapters"
+  },
+  {
+   "id": "epa-small-systems",
+   "title": "US EPA, Small Drinking Water Systems Handbook",
+   "locator": "Distribution operation and maintenance background"
+  },
+  {
+   "id": "epa-cross-connection",
+   "title": "US EPA, Cross-Connection Control Manual",
+   "locator": "Backflow principles and program administration"
+  },
+  {
+   "id": "epa-epanet",
+   "title": "US EPA, EPANET and manual",
+   "locator": "Distribution hydraulics, pumps, storage, pressure and water age concepts"
+  },
+  {
+   "id": "owwco-exam-prep",
+   "title": "OWWCO, Exam preparation resources",
+   "locator": "https://owwco.ca/preparing-for-your-exam/"
+  },
+  {
+   "id": "wpi-distribution-4",
+   "title": "WPI, Water Distribution Class IV Need-to-Know Criteria",
+   "locator": "https://gowpi.org/services/2025-need-to-know-criteria/"
+  },
+  {
+   "id": "ont-reg-170-03",
+   "title": "Ontario Regulation 170/03, Drinking Water Systems",
+   "locator": "https://www.ontario.ca/laws/regulation/03170"
+  },
+  {
+   "id": "ccohs-safety",
+   "title": "CCOHS, OSH Answers (confined spaces, lockout, excavation awareness)",
+   "locator": "https://www.ccohs.ca/oshanswers/"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "ca41a93a5b16a78e9a93643b8ef2f0167fa9d8a516ecc762725b973b18fa2a7a",
+  "taskReceipts": [
+   {
+    "taskId": "c4wd-error60",
+    "revision": "r1",
+    "sha256": "7655d5748991df4ea269e4d64d2085a12d7d85392e7ec26e63950ebb10ef7494",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-error61",
+    "revision": "r1",
+    "sha256": "3c5cfb5e39ec482483a5251814275056c88ba50ae04c1771d871b3a15a112582",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-error62",
+    "revision": "r1",
+    "sha256": "93e5dd78d46a0c037d2b39e5b82d0d2531c30a7541d9b18872be26452bff6539",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-error63",
+    "revision": "r1",
+    "sha256": "92a432bc406d087343123d226c351b2028c93995ba4b1c5216d71eb0c07fdae5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-error64",
+    "revision": "r1",
+    "sha256": "13d441fc44b2345b25117e390991e307706366caf089f7aa0f6cde4d11508550",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-error65",
+    "revision": "r1",
+    "sha256": "d58603b7edb70f19860c7bb7d55d51f6d55dab0d7d29fcbe8a0d75e1ae0fefd6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-error66",
+    "revision": "r1",
+    "sha256": "852d6d6359e6a7501b0a936bb2668726ef60f0428494ccce1e792f3852ba9793",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-error67",
+    "revision": "r1",
+    "sha256": "e140324191e33361aa07e1126d855f96f5c7e7ba1fb259cdd14e6c7fa78ac7e9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-error68",
+    "revision": "r1",
+    "sha256": "f7eac2b5885ec132fa4011ea03a997433e54621518f3908f29e39e13eb768c26",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-error69",
+    "revision": "r1",
+    "sha256": "aaac898550d0f14123edde6a730b78bda095fdc785ea620e3793516a22aa5243",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-error70",
+    "revision": "r1",
+    "sha256": "93e77f7f46802b3f1df78e28c63357d2b96c3660d015ddc4f39254a731742e47",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-error71",
+    "revision": "r1",
+    "sha256": "fc560ddb4f1ffabf33fd2814d2d32050b295a9aefc9cc1b082ce34cc7df470eb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-error72",
+    "revision": "r1",
+    "sha256": "e15e3571c0983f6b1542aa88dbca1f008f499d4709aff99143f3ff9c6712d31f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-error73",
+    "revision": "r1",
+    "sha256": "17c7f8295b33d9f59bbd93c9d30f3387b1afe37321a0dc3746352d1b6ab0285b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-error74",
+    "revision": "r1",
+    "sha256": "c96edb57823fec079cf47c6ef2cfa6b73d3193eddfb806ce4fb526f7fe4bdd08",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-error75",
+    "revision": "r1",
+    "sha256": "8e0c0e5c2c9d1751f9ed270563560b5553135f4244df94b7cb346797077f8cc4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-error76",
+    "revision": "r1",
+    "sha256": "84fc10f0b9cbefc0ab81e543c369e02bc768dc234bdfe73675c0c5f6b5ef0208",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-error77",
+    "revision": "r1",
+    "sha256": "9b213f3d3b7b0ec1497f0e4a9c51bcbca125fa3a584e5177cc39f7cacf6dbecd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-error78",
+    "revision": "r1",
+    "sha256": "616f69881e947d85f64de9aa2515d99cf065063281df1c75052c9092992be7b3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-error79",
+    "revision": "r1",
+    "sha256": "d41b20896b4726e908e92d6db4ef63e615da57a394250b1157b4ecb4b3c75142",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-error80",
+    "revision": "r1",
+    "sha256": "5dc5949d0a11b323cd76461e55e0c26d0486264fe0b29159387bbbf40ceb9d3a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-error81",
+    "revision": "r1",
+    "sha256": "4b1e20901dd19f783da8b57b06dc09e641392d185fe02fe676200cb2ad2e291b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-error82",
+    "revision": "r1",
+    "sha256": "a48a012ae4f5f4d2a73e5244432a8e8c7203461d02663c464ea3f5f4ecea2388",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-error83",
+    "revision": "r1",
+    "sha256": "8656df6e22cc7b71dca54ad880689511c0d123d320265a001c57302a86854992",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-error84",
+    "revision": "r1",
+    "sha256": "748d1943d46b7204fa8bb5a48640550b342b94a052f78dc5df591a60ea8db059",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-error85",
+    "revision": "r1",
+    "sha256": "638b1e81db5e3cd21d91a3f32c6cd424b863958d9f80751609c712ed3191ad79",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-error86",
+    "revision": "r1",
+    "sha256": "4bfe4701c8961ba9821640b49fdd4febae01cb835af40560a48593153e565b4b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-error87",
+    "revision": "r1",
+    "sha256": "dd51a501a699ac3b9fdc7db069c4f1aa78118fdcbb1bc5242d344c48c06998cb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-error88",
+    "revision": "r1",
+    "sha256": "91a71bcf2da0a83958112e5233c38ac4992b8caed1a0c43b9f59a09b90a96615",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-error89",
+    "revision": "r1",
+    "sha256": "f225fbd26fde22a35a899d52448b545f48310a2eb3f65908385a97f568420930",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-error90",
+    "revision": "r1",
+    "sha256": "1618deece32732289fbb5446c0951f94dd90f435f912d5ff181bfcbabc88b5d6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-error91",
+    "revision": "r1",
+    "sha256": "df81a6759b4f2ba6d990b339b95e3997f73162f7c28efa2527e8c77d7984b033",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-error92",
+    "revision": "r1",
+    "sha256": "ee85a4989351e91f06f958012978acc2abb6dc92cf2b8419bc5f67f5e4da85e7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-error93",
+    "revision": "r1",
+    "sha256": "9ec88134e5fee3ce5b5ce54bd86a8e4475c2c16bd0978b2c731f0f67959c0508",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-error94",
+    "revision": "r1",
+    "sha256": "4e96eba41036d52b794438844dc4af2ceb6f5516f5b9d38f4fd5d3049a27fc89",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-error95",
+    "revision": "r1",
+    "sha256": "0c22907a339a9b9b38d996c14f7880d438ffa958a190738ead2bb17a4a3e33f9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-error96",
+    "revision": "r1",
+    "sha256": "cff20ce4404e499b8aadc0746ce8647b869022701deb1df8e3f9bb8cc2f4f76b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-error97",
+    "revision": "r1",
+    "sha256": "aaccb7077ebcfe911abd29bb4178bd80d4599b0205c4ff7df3ea79a5325caf9e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-error98",
+    "revision": "r1",
+    "sha256": "0fe147bc87771656e883aa7d21afe4f51789abe5dbfc1608bd6e66fdac0a979f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-error99",
+    "revision": "r1",
+    "sha256": "87b80b5248d0a334e57e7d0a246e126b04ccce7c3a0bccaac7fbc8a2a6e94197",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-process01",
+    "revision": "r1",
+    "sha256": "42b4e1e231be450b4de70095dcedb873a01678c5f13143119426d5a501b084e0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-process02",
+    "revision": "r1",
+    "sha256": "f891465ee2b664a32dc5dde28c894aadf712db1cef67d79b7226b7eef1301c51",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-process03",
+    "revision": "r1",
+    "sha256": "9cca8eff47cddd10fea4f6ca0e82daa70ba44e9853d484d1587926035bbc8d62",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-process04",
+    "revision": "r1",
+    "sha256": "9153030379ffb52fb2e2657b410e04d3490f9f5c41254e84d3ce8d4cbef3bc22",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-process05",
+    "revision": "r1",
+    "sha256": "feb1de20c0460b6522bd9c36dffde2d3ff95f04cfffbebd57f1b2059791270ae",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-process06",
+    "revision": "r1",
+    "sha256": "06186c9d4d5174c9d6388c54e49fa5f176afcbb951c945af396f5b82a961eeab",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-process07",
+    "revision": "r1",
+    "sha256": "0fa4162ceb6ac4655958e31d538848c93cfceb9bd33bb3040340fd7fc5cd4c48",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-process08",
+    "revision": "r1",
+    "sha256": "1687dea33a46f8b28f562ef33bb092aa4b375123902a92cfc7d6bf5cb8d9b47d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-process09",
+    "revision": "r1",
+    "sha256": "d6b3df752b15a16938966ba729dbee0494b85f6a3ef7424a57c0acfa44066cef",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-process10",
+    "revision": "r1",
+    "sha256": "73b23fe1085d9c494a564c245c78b6aeb35ac55a8a0184dfd7d1deae9fda0576",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-process100",
+    "revision": "r1",
+    "sha256": "537361d61c48b0d38b40a595712a7cebf32081e3e2fec689b7f1fcf4323803a5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-process11",
+    "revision": "r1",
+    "sha256": "1778ee35589487374a3ba64680eebc2d1315ebd14669ce89352e48e5a18d274d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-process12",
+    "revision": "r1",
+    "sha256": "77ef682976800ef8e3ae3c2b1bb7f6d31c64bca54bdb2d41aef9cd58a352c4df",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-process13",
+    "revision": "r1",
+    "sha256": "44bf86918f619c7718495009a53d6db1b483155020e5df84106cd5a6638930cc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-process14",
+    "revision": "r1",
+    "sha256": "70af03c30113d9ccbbf056f949dcb12d773c8c8599d525b5aa21b2669d01a7c2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-process15",
+    "revision": "r1",
+    "sha256": "18187c89f751ad6f584afdd03e4c812abe4daec27a5b88ca4deeae924ae968e0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-process16",
+    "revision": "r1",
+    "sha256": "d351b30881bb05a9dc6b83a7253f297d9e9680ef29eb61c90460e32ed1d77e89",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-process17",
+    "revision": "r1",
+    "sha256": "46dc96fc2ca6ab194f0652ac0045bd7b351ab522691b96883405cd3bf3bf67e2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-process18",
+    "revision": "r1",
+    "sha256": "3fe5c0c63c915cedddf3628ec3c41c5d8f1a55c4bd822810ae197e94c529440c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-process19",
+    "revision": "r1",
+    "sha256": "4d91f825c8c0a4009dff5c638748a85fb9ce59e8f31f1d99c3753788b2fbd287",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-process20",
+    "revision": "r1",
+    "sha256": "2f26455f2c4545f4bd101ebba998f97a292b69a01cccdd9430d1ce3072dd8a70",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-process21",
+    "revision": "r1",
+    "sha256": "b368ba17a248c4233508f8b713c1e6e5c1f41a79c2ee0afc850b2c597d0ac398",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-process22",
+    "revision": "r1",
+    "sha256": "691ed46cce562e5596cbeaae2ce024b2e22f9096a96597755e87c3003c2234f8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-process23",
+    "revision": "r1",
+    "sha256": "4d35207952744faabffb9b96bd8b1d2348ab96064d4d4336b10c5e4bfb79ecf6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-process24",
+    "revision": "r1",
+    "sha256": "f6ae9ab05ed714dfffce325d3529a3ced4ee6d968c05b0b9e25d43b23e167b4d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-process25",
+    "revision": "r1",
+    "sha256": "143f1575353c8b5b21f18a47b765ce6bb65694b3e6ea848c8a4312f93dac4fab",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-process26",
+    "revision": "r1",
+    "sha256": "972b630ec52739ff816d070824ea0c3a293ca305b3d15359aca84c7cd164ab79",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-process27",
+    "revision": "r1",
+    "sha256": "c98622b26cd7c4f4aa97655c28a7616fba624c0eff82c5fc97f4dd41d34967b4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-process28",
+    "revision": "r1",
+    "sha256": "02d06fc6a9d3735a3426d9478c9cc7df4a4e1284a83254035df2db774ace0638",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-process29",
+    "revision": "r1",
+    "sha256": "a54d8cd0e33db246d910e211203a0640927f82fd14d35da83342614f2cf197c7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-process30",
+    "revision": "r1",
+    "sha256": "6ef50b810cd2ea5833fc9babc5d299da3dfbd538fb0acca30c339369c5b19fcd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-process31",
+    "revision": "r1",
+    "sha256": "5c18a9484d8dbe3d91cc88f94052af7e7f4bcddd18964377347485b429a617f1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-process32",
+    "revision": "r1",
+    "sha256": "bd5c9b2bd7fb61e92d1e49c45e65e002810748b0db15db38f3aeba6db6370579",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-process33",
+    "revision": "r1",
+    "sha256": "2e71bb6bcfeb09e644d22c65e33e3f14936ca0a7324635b71db5475cd2fa1186",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-process34",
+    "revision": "r1",
+    "sha256": "a38a7283f8ab674b120df467b994bc2f9bb76d2fc9510af1c974b2d7ffc9b580",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-process35",
+    "revision": "r1",
+    "sha256": "8dbacbab4a5c65a76c90b38ecb42a10d158c871445e5d261c28b0610a3b6823a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-process36",
+    "revision": "r1",
+    "sha256": "584d4e2ff91d39c31d6e5b7fc96d03a815464560c7117bbdb721650e6309ef51",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-process37",
+    "revision": "r1",
+    "sha256": "6f93b9f66f230271717ae7d9f7d2d8973b1f4a4a6b59f4a8fe96ff2e76e1dbe2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-process38",
+    "revision": "r1",
+    "sha256": "d345e49e9ef8f91f500ce6d75fbd40c60875227ddef2679f45bfa515c0baa013",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wd-process39",
+    "revision": "r1",
+    "sha256": "25ffc77fcd3d69711493a8228f83f3d7ac27ea7d421194bd60fae72e2a1f2640",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "c4wd-mission41",
+    "revision": "r1",
+    "sha256": "e78a801d5f410eeb7cdc384b3489ea30c9539239c1747f6c5fa54e381654ddeb"
+   },
+   {
+    "missionId": "c4wd-mission42",
+    "revision": "r1",
+    "sha256": "ec1892d8a42f274f4bc84a00b035c153ced9f0c065543e79f70152bf303b6b43"
+   },
+   {
+    "missionId": "c4wd-mission43",
+    "revision": "r1",
+    "sha256": "983fa6b7082a89107adfedb6cba1876a68e6d78e198da4054eade5e9489a120d"
+   },
+   {
+    "missionId": "c4wd-mission44",
+    "revision": "r1",
+    "sha256": "6d92df962046ec4283194d63900248bf1ad4c10cfcf74d341a5439872dd7142d"
+   },
+   {
+    "missionId": "c4wd-mission45",
+    "revision": "r1",
+    "sha256": "53292bd398d5e14410269d19f367a5dcbf722857b9971c1dac0f7cc345138108"
+   },
+   {
+    "missionId": "c4wd-mission46",
+    "revision": "r1",
+    "sha256": "4713073d8fd018ec3712665c758b34c412fcee96d086100c318a660d4eebb65c"
+   },
+   {
+    "missionId": "c4wd-mission47",
+    "revision": "r1",
+    "sha256": "a6c3bd0c279e3808f244ce3e704a85c0e757a1b0cabf36c54fe0d84ce923686a"
+   },
+   {
+    "missionId": "c4wd-mission48",
+    "revision": "r1",
+    "sha256": "2a8e80c10a03a1b38ff3a5df689e6ce876f2e4604c4644c673510903817c135e"
+   },
+   {
+    "missionId": "c4wd-mission49",
+    "revision": "r1",
+    "sha256": "508b4a9232fb8d33e2549ccbe909ee8980e1ca5200b5f30135ee0a713ffe0cb2"
+   },
+   {
+    "missionId": "c4wd-mission50",
+    "revision": "r1",
+    "sha256": "1051926a6e549b4c6360e80ca0c9c16c86727b3f7c6fa09c0a8536935dd37c47"
+   },
+   {
+    "missionId": "c4wd-mission51",
+    "revision": "r1",
+    "sha256": "3e96f7b4e348394a855ab3f411b055a7bccfd6c9600fadd1046a75fca876a9aa"
+   },
+   {
+    "missionId": "c4wd-mission52",
+    "revision": "r1",
+    "sha256": "6de84bfb502cb5d9db9aeb1ddd90ad7c18dfaff357990215e045bf92e1244081"
+   },
+   {
+    "missionId": "c4wd-mission53",
+    "revision": "r1",
+    "sha256": "10fcf67d5dcd09155bb5f9fc52d04e30aab555f84c6e799b23ecabb181b0822f"
+   },
+   {
+    "missionId": "c4wd-mission54",
+    "revision": "r1",
+    "sha256": "acce2cbbefeb4e6697943d327f1b1ca381c96305f12fa1c22865f4db356d16b1"
+   },
+   {
+    "missionId": "c4wd-mission55",
+    "revision": "r1",
+    "sha256": "93f4b5f4a7c9d8d5c52fba21103025254c3a9f8eef5246eabb225decb9d311e4"
+   },
+   {
+    "missionId": "c4wd-mission56",
+    "revision": "r1",
+    "sha256": "6445a919f15d0ea40df8d746db16d5ae54193d5678e4d3fa2801dc96f2cb8fc6"
+   },
+   {
+    "missionId": "c4wd-mission57",
+    "revision": "r1",
+    "sha256": "6306dcc1baf4d4f0ab50c8b6db3719634d5527fd05e0cc33ad4349950075f16e"
+   },
+   {
+    "missionId": "c4wd-mission58",
+    "revision": "r1",
+    "sha256": "4a1351cbfe10b3971cdecb8fd77319ec4fc7a18b30c62564677e245299efd5de"
+   },
+   {
+    "missionId": "c4wd-mission59",
+    "revision": "r1",
+    "sha256": "e01c239cb8d148be02db4e1675633784e916b7111422ef3551d96565f03151dd"
+   },
+   {
+    "missionId": "c4wd-mission60",
+    "revision": "r1",
+    "sha256": "614a300d746d618b2b8e70bbbb1cb7edeb1bc70b31ec153b450b60845762f006"
+   }
+  ]
+ }
+}

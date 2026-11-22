@@ -1,0 +1,5053 @@
+{
+ "courseKey": "wpi-class1-water",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "wp1w-ladder80",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A chemical tote in Saskatchewan holds 55 kg of solution. The solution density is given as 1.1 kg/L. Find the solution volume in litres. Enter the exact unrounded number.",
+   "topicId": "chemical-feed-solution",
+   "level": "class1",
+   "assumptions": "Fictional tote: mass = 55 kg, density = 1.1 kg/L. Volume = mass / density.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Volume = Mass / Density"
+      },
+      {
+       "id": "opt-b",
+       "label": "Volume = Mass * Density"
+      },
+      {
+       "id": "opt-c",
+       "label": "Volume = Density / Mass"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Divide mass by density to get volume."
+    },
+    {
+     "id": "units",
+     "prompt": "Which units result?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "kg * (kg/L) gives L"
+      },
+      {
+       "id": "opt-b",
+       "label": "kg / (kg/L) gives L"
+      },
+      {
+       "id": "opt-c",
+       "label": "(kg/L) / kg gives L"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Kilograms cancel, leaving litres."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Volume = 55 * 1.1 L"
+      },
+      {
+       "id": "opt-b",
+       "label": "Volume = 1.1 / 55 L"
+      },
+      {
+       "id": "opt-c",
+       "label": "Volume = 55 / 1.1 L"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Apply mass over density."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact solution volume in litres (L).",
+    "unitOptions": [
+     {
+      "id": "L",
+      "label": "L"
+     },
+     {
+      "id": "m3",
+      "label": "m3",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "mL",
+      "label": "mL",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "kg",
+      "label": "kg"
+     }
+    ],
+    "expected": "50",
+    "expectedUnitId": "L",
+    "absoluteTolerance": "0",
+    "explanation": "Volume = 55 / 1.1 = 50 L."
+   }
+  },
+  {
+   "id": "wp1w-ladder81",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Raw water at a river water plant in Alberta has turbidity, in NTU of 8. Treated water has a value of 0.4 in the same units. Find the percent removal. Enter the exact unrounded number.",
+   "topicId": "percent-removal",
+   "level": "class1",
+   "assumptions": "Fictional plant: influent = 8, effluent = 0.4, same units. Percent removal = (in - out) / in * 100. The Guidelines for Canadian Drinking Water Quality are the general federal guideline reference.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Percent removal = (In - Out) / Out * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Percent removal = (In - Out) / In * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Percent removal = Out / In * 100"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Removal is the drop divided by the starting value, times 100."
+    },
+    {
+     "id": "units",
+     "prompt": "Which drop applies?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "0.4 - 8"
+      },
+      {
+       "id": "opt-b",
+       "label": "8 + 0.4"
+      },
+      {
+       "id": "opt-c",
+       "label": "8 - 0.4"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Subtract the effluent value from the influent value."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Percent = (8 - 0.4) / 8 * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Percent = (8 - 0.4) / 0.4 * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Percent = 0.4 / 8 * 100"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Divide the drop by the influent value."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact percent removal (%).",
+    "unitOptions": [
+     {
+      "id": "percent",
+      "label": "%"
+     },
+     {
+      "id": "fraction",
+      "label": "fraction",
+      "toExpected": {
+       "numerator": "100",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     }
+    ],
+    "expected": "95",
+    "expectedUnitId": "percent",
+    "absoluteTolerance": "0",
+    "explanation": "Percent = (8 - 0.4) / 8 * 100 = 95 %."
+   }
+  },
+  {
+   "id": "wp1w-ladder82",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Raw water at a lake water plant in Saskatchewan has turbidity, in NTU of 20. Treated water has a value of 2 in the same units. Find the percent removal. Enter the exact unrounded number.",
+   "topicId": "percent-removal",
+   "level": "class1",
+   "assumptions": "Fictional plant: influent = 20, effluent = 2, same units. Percent removal = (in - out) / in * 100. The Guidelines for Canadian Drinking Water Quality are the general federal guideline reference.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Percent removal = (In - Out) / Out * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Percent removal = Out / In * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Percent removal = (In - Out) / In * 100"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Removal is the drop divided by the starting value, times 100."
+    },
+    {
+     "id": "units",
+     "prompt": "Which drop applies?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "20 - 2"
+      },
+      {
+       "id": "opt-b",
+       "label": "2 - 20"
+      },
+      {
+       "id": "opt-c",
+       "label": "20 + 2"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Subtract the effluent value from the influent value."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Percent = (20 - 2) / 2 * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Percent = (20 - 2) / 20 * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Percent = 2 / 20 * 100"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Divide the drop by the influent value."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact percent removal (%).",
+    "unitOptions": [
+     {
+      "id": "percent",
+      "label": "%"
+     },
+     {
+      "id": "fraction",
+      "label": "fraction",
+      "toExpected": {
+       "numerator": "100",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     }
+    ],
+    "expected": "90",
+    "expectedUnitId": "percent",
+    "absoluteTolerance": "0",
+    "explanation": "Percent = (20 - 2) / 20 * 100 = 90 %."
+   }
+  },
+  {
+   "id": "wp1w-ladder83",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Raw water at a plant in Manitoba has true colour, in TCU of 50. Treated water has a value of 10 in the same units. Find the percent removal. Enter the exact unrounded number.",
+   "topicId": "percent-removal",
+   "level": "class1",
+   "assumptions": "Fictional plant: influent = 50, effluent = 10, same units. Percent removal = (in - out) / in * 100. The Guidelines for Canadian Drinking Water Quality are the general federal guideline reference.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Percent removal = (In - Out) / In * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Percent removal = (In - Out) / Out * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Percent removal = Out / In * 100"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Removal is the drop divided by the starting value, times 100."
+    },
+    {
+     "id": "units",
+     "prompt": "Which drop applies?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "10 - 50"
+      },
+      {
+       "id": "opt-b",
+       "label": "50 - 10"
+      },
+      {
+       "id": "opt-c",
+       "label": "50 + 10"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Subtract the effluent value from the influent value."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Percent = (50 - 10) / 10 * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Percent = 10 / 50 * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Percent = (50 - 10) / 50 * 100"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Divide the drop by the influent value."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact percent removal (%).",
+    "unitOptions": [
+     {
+      "id": "percent",
+      "label": "%"
+     },
+     {
+      "id": "fraction",
+      "label": "fraction",
+      "toExpected": {
+       "numerator": "100",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     }
+    ],
+    "expected": "80",
+    "expectedUnitId": "percent",
+    "absoluteTolerance": "0",
+    "explanation": "Percent = (50 - 10) / 50 * 100 = 80 %."
+   }
+  },
+  {
+   "id": "wp1w-ladder84",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Raw water at a groundwater plant in British Columbia has iron, in mg/L of 2.5. Treated water has a value of 0.5 in the same units. Find the percent removal. Enter the exact unrounded number.",
+   "topicId": "percent-removal",
+   "level": "class1",
+   "assumptions": "Fictional plant: influent = 2.5, effluent = 0.5, same units. Percent removal = (in - out) / in * 100. The Guidelines for Canadian Drinking Water Quality are the general federal guideline reference.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Percent removal = (In - Out) / Out * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Percent removal = (In - Out) / In * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Percent removal = Out / In * 100"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Removal is the drop divided by the starting value, times 100."
+    },
+    {
+     "id": "units",
+     "prompt": "Which drop applies?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "0.5 - 2.5"
+      },
+      {
+       "id": "opt-b",
+       "label": "2.5 + 0.5"
+      },
+      {
+       "id": "opt-c",
+       "label": "2.5 - 0.5"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Subtract the effluent value from the influent value."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Percent = (2.5 - 0.5) / 2.5 * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Percent = (2.5 - 0.5) / 0.5 * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Percent = 0.5 / 2.5 * 100"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Divide the drop by the influent value."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact percent removal (%).",
+    "unitOptions": [
+     {
+      "id": "percent",
+      "label": "%"
+     },
+     {
+      "id": "fraction",
+      "label": "fraction",
+      "toExpected": {
+       "numerator": "100",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     }
+    ],
+    "expected": "80",
+    "expectedUnitId": "percent",
+    "absoluteTolerance": "0",
+    "explanation": "Percent = (2.5 - 0.5) / 2.5 * 100 = 80 %."
+   }
+  },
+  {
+   "id": "wp1w-ladder85",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Raw water at a reservoir plant in Alberta has count of algae units per sample, as given counts of 200. Treated water has a value of 50 in the same units. Find the percent removal. Enter the exact unrounded number.",
+   "topicId": "percent-removal",
+   "level": "class1",
+   "assumptions": "Fictional plant: influent = 200, effluent = 50, same units. Percent removal = (in - out) / in * 100. The Guidelines for Canadian Drinking Water Quality are the general federal guideline reference.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Percent removal = (In - Out) / Out * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Percent removal = Out / In * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Percent removal = (In - Out) / In * 100"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Removal is the drop divided by the starting value, times 100."
+    },
+    {
+     "id": "units",
+     "prompt": "Which drop applies?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "200 - 50"
+      },
+      {
+       "id": "opt-b",
+       "label": "50 - 200"
+      },
+      {
+       "id": "opt-c",
+       "label": "200 + 50"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Subtract the effluent value from the influent value."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Percent = (200 - 50) / 50 * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Percent = (200 - 50) / 200 * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Percent = 50 / 200 * 100"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Divide the drop by the influent value."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact percent removal (%).",
+    "unitOptions": [
+     {
+      "id": "percent",
+      "label": "%"
+     },
+     {
+      "id": "fraction",
+      "label": "fraction",
+      "toExpected": {
+       "numerator": "100",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     }
+    ],
+    "expected": "75",
+    "expectedUnitId": "percent",
+    "absoluteTolerance": "0",
+    "explanation": "Percent = (200 - 50) / 200 * 100 = 75 %."
+   }
+  },
+  {
+   "id": "wp1w-ladder86",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Raw water at a plant in Saskatchewan has turbidity after sedimentation only, in NTU of 12. Treated water has a value of 3 in the same units. Find the percent removal. Enter the exact unrounded number.",
+   "topicId": "percent-removal",
+   "level": "class1",
+   "assumptions": "Fictional plant: influent = 12, effluent = 3, same units. Percent removal = (in - out) / in * 100. The Guidelines for Canadian Drinking Water Quality are the general federal guideline reference.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Percent removal = (In - Out) / In * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Percent removal = (In - Out) / Out * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Percent removal = Out / In * 100"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Removal is the drop divided by the starting value, times 100."
+    },
+    {
+     "id": "units",
+     "prompt": "Which drop applies?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "3 - 12"
+      },
+      {
+       "id": "opt-b",
+       "label": "12 - 3"
+      },
+      {
+       "id": "opt-c",
+       "label": "12 + 3"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Subtract the effluent value from the influent value."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Percent = (12 - 3) / 3 * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Percent = 3 / 12 * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Percent = (12 - 3) / 12 * 100"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Divide the drop by the influent value."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact percent removal (%).",
+    "unitOptions": [
+     {
+      "id": "percent",
+      "label": "%"
+     },
+     {
+      "id": "fraction",
+      "label": "fraction",
+      "toExpected": {
+       "numerator": "100",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     }
+    ],
+    "expected": "75",
+    "expectedUnitId": "percent",
+    "absoluteTolerance": "0",
+    "explanation": "Percent = (12 - 3) / 12 * 100 = 75 %."
+   }
+  },
+  {
+   "id": "wp1w-ladder87",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Raw water at a plant in Manitoba has turbidity after filtration, in NTU of 3. Treated water has a value of 0.15 in the same units. Find the percent removal. Enter the exact unrounded number.",
+   "topicId": "percent-removal",
+   "level": "class1",
+   "assumptions": "Fictional plant: influent = 3, effluent = 0.15, same units. Percent removal = (in - out) / in * 100. The Guidelines for Canadian Drinking Water Quality are the general federal guideline reference.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Percent removal = (In - Out) / Out * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Percent removal = (In - Out) / In * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Percent removal = Out / In * 100"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Removal is the drop divided by the starting value, times 100."
+    },
+    {
+     "id": "units",
+     "prompt": "Which drop applies?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "0.15 - 3"
+      },
+      {
+       "id": "opt-b",
+       "label": "3 + 0.15"
+      },
+      {
+       "id": "opt-c",
+       "label": "3 - 0.15"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Subtract the effluent value from the influent value."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Percent = (3 - 0.15) / 3 * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Percent = (3 - 0.15) / 0.15 * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Percent = 0.15 / 3 * 100"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Divide the drop by the influent value."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact percent removal (%).",
+    "unitOptions": [
+     {
+      "id": "percent",
+      "label": "%"
+     },
+     {
+      "id": "fraction",
+      "label": "fraction",
+      "toExpected": {
+       "numerator": "100",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     }
+    ],
+    "expected": "95",
+    "expectedUnitId": "percent",
+    "absoluteTolerance": "0",
+    "explanation": "Percent = (3 - 0.15) / 3 * 100 = 95 %."
+   }
+  },
+  {
+   "id": "wp1w-ladder88",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Raw water at a groundwater plant in Alberta has manganese, in mg/L of 1.2. Treated water has a value of 0.12 in the same units. Find the percent removal. Enter the exact unrounded number.",
+   "topicId": "percent-removal",
+   "level": "class1",
+   "assumptions": "Fictional plant: influent = 1.2, effluent = 0.12, same units. Percent removal = (in - out) / in * 100. The Guidelines for Canadian Drinking Water Quality are the general federal guideline reference.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Percent removal = (In - Out) / Out * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Percent removal = Out / In * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Percent removal = (In - Out) / In * 100"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Removal is the drop divided by the starting value, times 100."
+    },
+    {
+     "id": "units",
+     "prompt": "Which drop applies?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "1.2 - 0.12"
+      },
+      {
+       "id": "opt-b",
+       "label": "0.12 - 1.2"
+      },
+      {
+       "id": "opt-c",
+       "label": "1.2 + 0.12"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Subtract the effluent value from the influent value."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Percent = (1.2 - 0.12) / 0.12 * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Percent = (1.2 - 0.12) / 1.2 * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Percent = 0.12 / 1.2 * 100"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Divide the drop by the influent value."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact percent removal (%).",
+    "unitOptions": [
+     {
+      "id": "percent",
+      "label": "%"
+     },
+     {
+      "id": "fraction",
+      "label": "fraction",
+      "toExpected": {
+       "numerator": "100",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     }
+    ],
+    "expected": "90",
+    "expectedUnitId": "percent",
+    "absoluteTolerance": "0",
+    "explanation": "Percent = (1.2 - 0.12) / 1.2 * 100 = 90 %."
+   }
+  },
+  {
+   "id": "wp1w-ladder89",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Raw water at a plant in British Columbia has turbidity across the full plant, in NTU of 16. Treated water has a value of 0.8 in the same units. Find the percent removal. Enter the exact unrounded number.",
+   "topicId": "percent-removal",
+   "level": "class1",
+   "assumptions": "Fictional plant: influent = 16, effluent = 0.8, same units. Percent removal = (in - out) / in * 100. The Guidelines for Canadian Drinking Water Quality are the general federal guideline reference.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Percent removal = (In - Out) / In * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Percent removal = (In - Out) / Out * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Percent removal = Out / In * 100"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Removal is the drop divided by the starting value, times 100."
+    },
+    {
+     "id": "units",
+     "prompt": "Which drop applies?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "0.8 - 16"
+      },
+      {
+       "id": "opt-b",
+       "label": "16 - 0.8"
+      },
+      {
+       "id": "opt-c",
+       "label": "16 + 0.8"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Subtract the effluent value from the influent value."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Percent = (16 - 0.8) / 0.8 * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Percent = 0.8 / 16 * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Percent = (16 - 0.8) / 16 * 100"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Divide the drop by the influent value."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact percent removal (%).",
+    "unitOptions": [
+     {
+      "id": "percent",
+      "label": "%"
+     },
+     {
+      "id": "fraction",
+      "label": "fraction",
+      "toExpected": {
+       "numerator": "100",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     }
+    ],
+    "expected": "95",
+    "expectedUnitId": "percent",
+    "absoluteTolerance": "0",
+    "explanation": "Percent = (16 - 0.8) / 16 * 100 = 95 %."
+   }
+  },
+  {
+   "id": "wp1w-ladder90",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Raw water at a plant in Saskatchewan has suspended solids in filter influent versus effluent, in mg/L of 40. Treated water has a value of 4 in the same units. Find the percent removal. Enter the exact unrounded number.",
+   "topicId": "percent-removal",
+   "level": "class1",
+   "assumptions": "Fictional plant: influent = 40, effluent = 4, same units. Percent removal = (in - out) / in * 100. The Guidelines for Canadian Drinking Water Quality are the general federal guideline reference.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Percent removal = (In - Out) / Out * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Percent removal = (In - Out) / In * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Percent removal = Out / In * 100"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Removal is the drop divided by the starting value, times 100."
+    },
+    {
+     "id": "units",
+     "prompt": "Which drop applies?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "4 - 40"
+      },
+      {
+       "id": "opt-b",
+       "label": "40 + 4"
+      },
+      {
+       "id": "opt-c",
+       "label": "40 - 4"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Subtract the effluent value from the influent value."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Percent = (40 - 4) / 40 * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Percent = (40 - 4) / 4 * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Percent = 4 / 40 * 100"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Divide the drop by the influent value."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact percent removal (%).",
+    "unitOptions": [
+     {
+      "id": "percent",
+      "label": "%"
+     },
+     {
+      "id": "fraction",
+      "label": "fraction",
+      "toExpected": {
+       "numerator": "100",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     }
+    ],
+    "expected": "90",
+    "expectedUnitId": "percent",
+    "absoluteTolerance": "0",
+    "explanation": "Percent = (40 - 4) / 40 * 100 = 90 %."
+   }
+  },
+  {
+   "id": "wp1w-ladder91",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A pump at a plant in western Canada lifts water against a head of 10 m. Using the given factor 9.81 kPa per metre of head, find the pressure in kPa. Enter the exact unrounded number.",
+   "topicId": "pumps-head-pressure",
+   "level": "class1",
+   "assumptions": "Fictional pump: head = 10 m, given factor = 9.81 kPa per m of head. Pressure = head * 9.81.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Pressure = Head / 9.81 kPa/m"
+      },
+      {
+       "id": "opt-b",
+       "label": "Pressure = 9.81 / Head kPa/m"
+      },
+      {
+       "id": "opt-c",
+       "label": "Pressure = Head * 9.81 kPa/m"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Multiply head by the given pressure per metre."
+    },
+    {
+     "id": "units",
+     "prompt": "Which factor applies?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Multiply by 9.81"
+      },
+      {
+       "id": "opt-b",
+       "label": "Divide by 9.81"
+      },
+      {
+       "id": "opt-c",
+       "label": "Multiply by 1000"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Use the given factor directly."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Pressure = 10 / 9.81 kPa"
+      },
+      {
+       "id": "opt-b",
+       "label": "Pressure = 10 * 9.81 kPa"
+      },
+      {
+       "id": "opt-c",
+       "label": "Pressure = 9.81 / 10 kPa"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Apply head times the factor."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact pressure in kilopascals (kPa).",
+    "unitOptions": [
+     {
+      "id": "kPa",
+      "label": "kPa"
+     },
+     {
+      "id": "m",
+      "label": "m of head",
+      "toExpected": {
+       "numerator": "981",
+       "denominator": "100"
+      }
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     }
+    ],
+    "expected": "98.1",
+    "expectedUnitId": "kPa",
+    "absoluteTolerance": "0",
+    "explanation": "Pressure = 10 * 9.81 = 98.1 kPa."
+   }
+  },
+  {
+   "id": "wp1w-ladder92",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A pump at a plant in western Canada lifts water against a head of 20 m. Using the given factor 9.81 kPa per metre of head, find the pressure in kPa. Enter the exact unrounded number.",
+   "topicId": "pumps-head-pressure",
+   "level": "class1",
+   "assumptions": "Fictional pump: head = 20 m, given factor = 9.81 kPa per m of head. Pressure = head * 9.81.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Pressure = Head * 9.81 kPa/m"
+      },
+      {
+       "id": "opt-b",
+       "label": "Pressure = Head / 9.81 kPa/m"
+      },
+      {
+       "id": "opt-c",
+       "label": "Pressure = 9.81 / Head kPa/m"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Multiply head by the given pressure per metre."
+    },
+    {
+     "id": "units",
+     "prompt": "Which factor applies?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Divide by 9.81"
+      },
+      {
+       "id": "opt-b",
+       "label": "Multiply by 9.81"
+      },
+      {
+       "id": "opt-c",
+       "label": "Multiply by 1000"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Use the given factor directly."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Pressure = 20 / 9.81 kPa"
+      },
+      {
+       "id": "opt-b",
+       "label": "Pressure = 9.81 / 20 kPa"
+      },
+      {
+       "id": "opt-c",
+       "label": "Pressure = 20 * 9.81 kPa"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Apply head times the factor."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact pressure in kilopascals (kPa).",
+    "unitOptions": [
+     {
+      "id": "kPa",
+      "label": "kPa"
+     },
+     {
+      "id": "m",
+      "label": "m of head",
+      "toExpected": {
+       "numerator": "981",
+       "denominator": "100"
+      }
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     }
+    ],
+    "expected": "196.2",
+    "expectedUnitId": "kPa",
+    "absoluteTolerance": "0",
+    "explanation": "Pressure = 20 * 9.81 = 196.2 kPa."
+   }
+  },
+  {
+   "id": "wp1w-ladder93",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A pump at a plant in western Canada lifts water against a head of 15 m. Using the given factor 9.81 kPa per metre of head, find the pressure in kPa. Enter the exact unrounded number.",
+   "topicId": "pumps-head-pressure",
+   "level": "class1",
+   "assumptions": "Fictional pump: head = 15 m, given factor = 9.81 kPa per m of head. Pressure = head * 9.81.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Pressure = Head / 9.81 kPa/m"
+      },
+      {
+       "id": "opt-b",
+       "label": "Pressure = Head * 9.81 kPa/m"
+      },
+      {
+       "id": "opt-c",
+       "label": "Pressure = 9.81 / Head kPa/m"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Multiply head by the given pressure per metre."
+    },
+    {
+     "id": "units",
+     "prompt": "Which factor applies?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Divide by 9.81"
+      },
+      {
+       "id": "opt-b",
+       "label": "Multiply by 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Multiply by 9.81"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Use the given factor directly."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Pressure = 15 * 9.81 kPa"
+      },
+      {
+       "id": "opt-b",
+       "label": "Pressure = 15 / 9.81 kPa"
+      },
+      {
+       "id": "opt-c",
+       "label": "Pressure = 9.81 / 15 kPa"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Apply head times the factor."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact pressure in kilopascals (kPa).",
+    "unitOptions": [
+     {
+      "id": "kPa",
+      "label": "kPa"
+     },
+     {
+      "id": "m",
+      "label": "m of head",
+      "toExpected": {
+       "numerator": "981",
+       "denominator": "100"
+      }
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     }
+    ],
+    "expected": "147.15",
+    "expectedUnitId": "kPa",
+    "absoluteTolerance": "0",
+    "explanation": "Pressure = 15 * 9.81 = 147.15 kPa."
+   }
+  },
+  {
+   "id": "wp1w-ladder94",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A gauge at a plant in western Canada reads 98.1 kPa. Using the given factor 9.81 kPa per metre of head, find the head in metres. Enter the exact unrounded number.",
+   "topicId": "pumps-head-pressure",
+   "level": "class1",
+   "assumptions": "Fictional gauge: pressure = 98.1 kPa, given factor = 9.81 kPa per m of head. Head = pressure / 9.81.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Head = Pressure * 9.81 kPa/m"
+      },
+      {
+       "id": "opt-b",
+       "label": "Head = 9.81 / Pressure kPa/m"
+      },
+      {
+       "id": "opt-c",
+       "label": "Head = Pressure / 9.81 kPa/m"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Divide pressure by the given pressure per metre."
+    },
+    {
+     "id": "units",
+     "prompt": "Which factor applies?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Divide by 9.81"
+      },
+      {
+       "id": "opt-b",
+       "label": "Multiply by 9.81"
+      },
+      {
+       "id": "opt-c",
+       "label": "Divide by 1000"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Use the given factor directly."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Head = 98.1 * 9.81 m"
+      },
+      {
+       "id": "opt-b",
+       "label": "Head = 98.1 / 9.81 m"
+      },
+      {
+       "id": "opt-c",
+       "label": "Head = 9.81 / 98.1 m"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Apply pressure over the factor."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact head in metres (m).",
+    "unitOptions": [
+     {
+      "id": "m",
+      "label": "m"
+     },
+     {
+      "id": "cm",
+      "label": "cm",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "100"
+      }
+     },
+     {
+      "id": "kPa",
+      "label": "kPa"
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     }
+    ],
+    "expected": "10",
+    "expectedUnitId": "m",
+    "absoluteTolerance": "0",
+    "explanation": "Head = 98.1 / 9.81 = 10 m."
+   }
+  },
+  {
+   "id": "wp1w-ladder95",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A gauge at a plant in western Canada reads 196.2 kPa. Using the given factor 9.81 kPa per metre of head, find the head in metres. Enter the exact unrounded number.",
+   "topicId": "pumps-head-pressure",
+   "level": "class1",
+   "assumptions": "Fictional gauge: pressure = 196.2 kPa, given factor = 9.81 kPa per m of head. Head = pressure / 9.81.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Head = Pressure / 9.81 kPa/m"
+      },
+      {
+       "id": "opt-b",
+       "label": "Head = Pressure * 9.81 kPa/m"
+      },
+      {
+       "id": "opt-c",
+       "label": "Head = 9.81 / Pressure kPa/m"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Divide pressure by the given pressure per metre."
+    },
+    {
+     "id": "units",
+     "prompt": "Which factor applies?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Multiply by 9.81"
+      },
+      {
+       "id": "opt-b",
+       "label": "Divide by 9.81"
+      },
+      {
+       "id": "opt-c",
+       "label": "Divide by 1000"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Use the given factor directly."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Head = 196.2 * 9.81 m"
+      },
+      {
+       "id": "opt-b",
+       "label": "Head = 9.81 / 196.2 m"
+      },
+      {
+       "id": "opt-c",
+       "label": "Head = 196.2 / 9.81 m"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Apply pressure over the factor."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact head in metres (m).",
+    "unitOptions": [
+     {
+      "id": "m",
+      "label": "m"
+     },
+     {
+      "id": "cm",
+      "label": "cm",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "100"
+      }
+     },
+     {
+      "id": "kPa",
+      "label": "kPa"
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     }
+    ],
+    "expected": "20",
+    "expectedUnitId": "m",
+    "absoluteTolerance": "0",
+    "explanation": "Head = 196.2 / 9.81 = 20 m."
+   }
+  },
+  {
+   "id": "wp1w-ladder96",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A transfer pump in Alberta delivers 90 m3/h. Find the run time in hours to move 540 m3 of water. Enter the exact unrounded number.",
+   "topicId": "pumps-run-time",
+   "level": "class1",
+   "assumptions": "Fictional pump: rate = 90 m3/h, volume = 540 m3. Time = volume / rate.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Time = Rate / Volume"
+      },
+      {
+       "id": "opt-b",
+       "label": "Time = Volume / Rate"
+      },
+      {
+       "id": "opt-c",
+       "label": "Time = Volume * Rate"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Time equals volume divided by pumping rate."
+    },
+    {
+     "id": "units",
+     "prompt": "Which units result?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "m3 * (m3/h) gives h"
+      },
+      {
+       "id": "opt-b",
+       "label": "(m3/h) / m3 gives h"
+      },
+      {
+       "id": "opt-c",
+       "label": "m3 / (m3/h) gives h"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Cubic metres cancel, leaving hours."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Time = 540 / 90 h"
+      },
+      {
+       "id": "opt-b",
+       "label": "Time = 90 / 540 h"
+      },
+      {
+       "id": "opt-c",
+       "label": "Time = 540 * 90 h"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Divide volume by rate."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact run time in hours (h).",
+    "unitOptions": [
+     {
+      "id": "h",
+      "label": "h"
+     },
+     {
+      "id": "min",
+      "label": "min",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "60"
+      }
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "L-s",
+      "label": "L/s"
+     }
+    ],
+    "expected": "6",
+    "expectedUnitId": "h",
+    "absoluteTolerance": "0",
+    "explanation": "Time = 540 / 90 = 6 h."
+   }
+  },
+  {
+   "id": "wp1w-ladder97",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A pump in Saskatchewan delivers 1200 L/min. Find the time in hours to fill a 360 m3 tank. Enter the exact unrounded number.",
+   "topicId": "pumps-run-time",
+   "level": "class1",
+   "assumptions": "Fictional pump: rate = 1200 L/min, volume = 360 m3, 1000 L = 1 m3, 60 min = 1 h.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Time = Converted rate / Volume"
+      },
+      {
+       "id": "opt-b",
+       "label": "Time = Volume * Converted rate"
+      },
+      {
+       "id": "opt-c",
+       "label": "Time = Volume / Converted rate"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Convert the rate to m3/h first, then divide volume by rate."
+    },
+    {
+     "id": "units",
+     "prompt": "How is the rate converted to m3/h?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "1200 * 60 / 1000 = 72 m3/h"
+      },
+      {
+       "id": "opt-b",
+       "label": "1200 * 1000 / 60 m3/h"
+      },
+      {
+       "id": "opt-c",
+       "label": "1200 / 60 = 20 m3/h"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Multiply by minutes per hour and divide by litres per cubic metre."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Time = 72 / 360 h"
+      },
+      {
+       "id": "opt-b",
+       "label": "Time = 360 / 72 h"
+      },
+      {
+       "id": "opt-c",
+       "label": "Time = 360 / 1200 h"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Use the converted 72 m3/h rate."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact fill time in hours (h).",
+    "unitOptions": [
+     {
+      "id": "h",
+      "label": "h"
+     },
+     {
+      "id": "min",
+      "label": "min",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "60"
+      }
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "L-s",
+      "label": "L/s"
+     }
+    ],
+    "expected": "5",
+    "expectedUnitId": "h",
+    "absoluteTolerance": "0",
+    "explanation": "Rate = 72 m3/h. Time = 360 / 72 = 5 h."
+   }
+  },
+  {
+   "id": "wp1w-ladder98",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Water flows through a pipe section in Manitoba at 72 m3/h. The pipe cross sectional area is given as 0.02 m2. Find the velocity in m/s. Enter the exact unrounded number.",
+   "topicId": "pumps-velocity",
+   "level": "class1",
+   "assumptions": "Fictional pipe: Q = 72 m3/h, area = 0.02 m2, 3600 s = 1 h. Velocity = (Q / 3600) / area.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Velocity = (Q / 3600) / Area"
+      },
+      {
+       "id": "opt-b",
+       "label": "Velocity = (Q / 3600) * Area"
+      },
+      {
+       "id": "opt-c",
+       "label": "Velocity = Area / (Q / 3600)"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Convert flow to m3/s, then divide by area."
+    },
+    {
+     "id": "units",
+     "prompt": "What is the flow in m3/s?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "72 * 3600 m3/s"
+      },
+      {
+       "id": "opt-b",
+       "label": "72 / 3600 = 0.02 m3/s"
+      },
+      {
+       "id": "opt-c",
+       "label": "72 / 60 = 1.2 m3/s"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Divide by seconds per hour."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Velocity = (72 / 3600) * 0.02 m/s"
+      },
+      {
+       "id": "opt-b",
+       "label": "Velocity = 72 / 0.02 m/s"
+      },
+      {
+       "id": "opt-c",
+       "label": "Velocity = (72 / 3600) / 0.02 m/s"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Divide the m3/s flow by the area."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact velocity in metres per second (m/s).",
+    "unitOptions": [
+     {
+      "id": "m-s",
+      "label": "m/s"
+     },
+     {
+      "id": "km-h",
+      "label": "km/h",
+      "toExpected": {
+       "numerator": "5",
+       "denominator": "18"
+      }
+     },
+     {
+      "id": "m3-h",
+      "label": "m3/h"
+     },
+     {
+      "id": "L-s",
+      "label": "L/s"
+     }
+    ],
+    "expected": "1",
+    "expectedUnitId": "m-s",
+    "absoluteTolerance": "0",
+    "explanation": "Flow = 0.02 m3/s. Velocity = 0.02 / 0.02 = 1 m/s."
+   }
+  },
+  {
+   "id": "wp1w-ladder99",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Water flows through a force main section at a plant in British Columbia at 108 m3/h. The cross sectional area is given as 0.02 m2. Find the velocity in m/s. Enter the exact unrounded number.",
+   "topicId": "pumps-velocity",
+   "level": "class1",
+   "assumptions": "Fictional force main: Q = 108 m3/h, area = 0.02 m2, 3600 s = 1 h. Velocity = (Q / 3600) / area.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Velocity = (Q / 3600) * Area"
+      },
+      {
+       "id": "opt-b",
+       "label": "Velocity = (Q / 3600) / Area"
+      },
+      {
+       "id": "opt-c",
+       "label": "Velocity = Area / (Q / 3600)"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Convert flow to m3/s, then divide by area."
+    },
+    {
+     "id": "units",
+     "prompt": "What is the flow in m3/s?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "108 * 3600 m3/s"
+      },
+      {
+       "id": "opt-b",
+       "label": "108 / 60 = 1.8 m3/s"
+      },
+      {
+       "id": "opt-c",
+       "label": "108 / 3600 = 0.03 m3/s"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Divide by seconds per hour."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Velocity = (108 / 3600) / 0.02 m/s"
+      },
+      {
+       "id": "opt-b",
+       "label": "Velocity = (108 / 3600) * 0.02 m/s"
+      },
+      {
+       "id": "opt-c",
+       "label": "Velocity = 108 / 0.02 m/s"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Divide the m3/s flow by the area."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact velocity in metres per second (m/s).",
+    "unitOptions": [
+     {
+      "id": "m-s",
+      "label": "m/s"
+     },
+     {
+      "id": "km-h",
+      "label": "km/h",
+      "toExpected": {
+       "numerator": "5",
+       "denominator": "18"
+      }
+     },
+     {
+      "id": "m3-h",
+      "label": "m3/h"
+     },
+     {
+      "id": "L-s",
+      "label": "L/s"
+     }
+    ],
+    "expected": "1.5",
+    "expectedUnitId": "m-s",
+    "absoluteTolerance": "0",
+    "explanation": "Flow = 0.03 m3/s. Velocity = 0.03 / 0.02 = 1.5 m/s."
+   }
+  },
+  {
+   "id": "wp1w-error01",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this detention time calculation for a flocculation basin at a plant near Saskatoon, Saskatchewan, with V = 216 m3 and Q = 30 L/s.",
+   "topicId": "hydraulics-detention-time",
+   "level": "class1",
+   "assumptions": "Fictional basin: V = 216 m3, Q = 30 L/s, 1000 L = 1 m3, 3600 s = 1 h. Target unit: hours.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. HDT = V / Q"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q = 30 L/s * 60 s/min / 1000 L/m3 = 1.8 m3/h"
+    },
+    {
+     "id": "line3",
+     "label": "3. HDT = 216 m3 / 1.8 m3/h = 120 h"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 120 h"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Q = 30 L/s * 3600 s/h / 1000 L/m3 = 108 m3/h, so HDT = 216 / 108 = 2 h",
+   "explanation": "Line 2 used 60 seconds per minute instead of 3600 seconds per hour when converting the flow. The flow is 108 m3/h and the detention time is 2 h."
+  },
+  {
+   "id": "wp1w-error02",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this detention time calculation for a contact basin at a plant near Winnipeg, Manitoba, with V = 90 m3 and Q = 45 m3/h.",
+   "topicId": "hydraulics-detention-time",
+   "level": "class1",
+   "assumptions": "Fictional basin: V = 90 m3, Q = 45 m3/h. Target unit: hours.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. HDT = Q / V"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Q = 45 m3/h and V = 90 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. HDT = 45 m3/h / 90 m3 = 0.5 h"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 0.5 h"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. HDT = V / Q = 90 m3 / 45 m3/h = 2 h",
+   "explanation": "Line 1 uses the wrong formula. Detention time is volume divided by flow, giving 2 h."
+  },
+  {
+   "id": "wp1w-error03",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line for two identical parallel basins at a plant near Regina, Saskatchewan, each 60 m3, sharing total Q = 40 m3/h equally.",
+   "topicId": "hydraulics-detention-time",
+   "level": "class1",
+   "assumptions": "Fictional parallel basins: two units, volume = 60 m3 each, total Q = 40 m3/h split equally. Target unit: hours.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. HDT per basin = Volume per basin / Flow per basin"
+    },
+    {
+     "id": "line2",
+     "label": "2. Flow per basin = 40 m3/h / 2 = 20 m3/h"
+    },
+    {
+     "id": "line3",
+     "label": "3. HDT = 60 m3 / 40 m3/h = 1.5 h"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 1.5 h"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. HDT = 60 m3 / 20 m3/h = 3 h",
+   "explanation": "Line 3 used the total plant flow instead of the flow through one basin. Each basin receives 20 m3/h, so the detention time is 3 h."
+  },
+  {
+   "id": "wp1w-error04",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this detention time calculation for a basin at a plant near Kelowna, British Columbia, with V = 150 m3 and Q = 750 L/min.",
+   "topicId": "hydraulics-detention-time",
+   "level": "class1",
+   "assumptions": "Fictional basin: V = 150 m3, Q = 750 L/min, 1000 L = 1 m3. Target unit: minutes.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. HDT = V / Q"
+    },
+    {
+     "id": "line2",
+     "label": "2. Flow given as Q = 750 L/min"
+    },
+    {
+     "id": "line3",
+     "label": "3. HDT = 150 m3 / 750 L/min = 0.2 min"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 0.2 min"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Q = 750 L/min / 1000 L/m3 = 0.75 m3/min, so HDT = 150 / 0.75 = 200 min",
+   "explanation": "Line 3 forgot to convert litres to cubic metres. With Q = 0.75 m3/min, the detention time is 200 min."
+  },
+  {
+   "id": "wp1w-error05",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this detention time calculation for a circular tank at a plant near Calgary, Alberta, with diameter 8 m, depth 2.5 m, and Q = 31.4 m3/h.",
+   "topicId": "hydraulics-detention-time",
+   "level": "class1",
+   "assumptions": "Fictional circular tank: diameter = 8 m, radius = 4 m, depth = 2.5 m, Q = 31.4 m3/h, pi = 3.14. Target unit: hours.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. HDT = V / Q"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 3.14 * 4 m * 4 m = 50.24 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. V = 50.24 m2 * 2.5 m = 125.6 m3"
+    },
+    {
+     "id": "line4",
+     "label": "4. HDT = 125.6 m3 / 31.4 m3/h = 3.5 h"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. HDT = 125.6 m3 / 31.4 m3/h = 4 h",
+   "explanation": "Lines 1 to 3 are correct. Line 4 is an arithmetic slip: 125.6 / 31.4 = 4, not 3.5."
+  },
+  {
+   "id": "wp1w-error06",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this detention time calculation for a basin at a plant near Edmonton, Alberta, with V = 240 m3 and Q = 20 m3/h, reported in minutes.",
+   "topicId": "hydraulics-detention-time",
+   "level": "class1",
+   "assumptions": "Fictional basin: V = 240 m3, Q = 20 m3/h, 60 min = 1 h. Target unit: minutes.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. HDT = V / Q"
+    },
+    {
+     "id": "line2",
+     "label": "2. HDT = 240 m3 / 20 m3/h = 10 h"
+    },
+    {
+     "id": "line3",
+     "label": "3. HDT = 10 h * 60 min/h = 600 min"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 600 min"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. HDT = 240 m3 / 20 m3/h = 12 h, so HDT = 12 * 60 = 720 min",
+   "explanation": "Line 2 is an arithmetic slip: 240 / 20 = 12, not 10. The detention time is 12 h, which is 720 min."
+  },
+  {
+   "id": "wp1w-error07",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line for two 45 m3 basins in series at a plant near Brandon, Manitoba, each receiving the full Q = 15 m3/h.",
+   "topicId": "hydraulics-detention-time",
+   "level": "class1",
+   "assumptions": "Fictional series basins: two 45 m3 basins in series, full flow Q = 15 m3/h passes through both. Target unit: hours.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Single basin HDT = V / Q"
+    },
+    {
+     "id": "line2",
+     "label": "2. Single basin HDT = 45 m3 / 15 m3/h = 3 h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Series system HDT = 3 h (same as one basin, as in parallel flow)"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 3 h"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Series system HDT = 90 m3 / 15 m3/h = 6 h",
+   "explanation": "In series the full flow passes through both basins, so detention times add: 3 h + 3 h = 6 h. Treating them like parallel cells is wrong."
+  },
+  {
+   "id": "wp1w-error08",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this detention time calculation for a basin at a plant near Red Deer, Alberta, with V = 118.8 m3 and Q = 11 L/s.",
+   "topicId": "hydraulics-detention-time",
+   "level": "class1",
+   "assumptions": "Fictional basin: V = 118.8 m3, Q = 11 L/s, 1000 L = 1 m3, 3600 s = 1 h. Target unit: hours.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. HDT = V / Q"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q = 11 L/s * 3600 s/h / 1000 L/m3 = 39.6 m3/h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Round Q to 40 m3/h for the calculation"
+    },
+    {
+     "id": "line4",
+     "label": "4. HDT = 118.8 m3 / 40 m3/h = 2.97 h"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Keep Q = 39.6 m3/h, so HDT = 118.8 / 39.6 = 3 h",
+   "explanation": "Line 3 rounds 39.6 to 40 too early, which changes the answer. Using the unrounded flow gives exactly 3 h."
+  },
+  {
+   "id": "wp1w-error09",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this detention time calculation for a basin at a plant near Prince Albert, Saskatchewan, with V = 54 m3 and Q = 0.9 m3/min.",
+   "topicId": "hydraulics-detention-time",
+   "level": "class1",
+   "assumptions": "Fictional basin: V = 54 m3, Q = 0.9 m3/min. Target unit: minutes.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. HDT = V / Q"
+    },
+    {
+     "id": "line2",
+     "label": "2. Flow given as Q = 0.9 m3/min"
+    },
+    {
+     "id": "line3",
+     "label": "3. HDT = 54 m3 / 0.9 m3/min = 60 min"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 60 h"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Answer reported as 60 min",
+   "explanation": "Lines 1 to 3 are correct. Line 4 reports the result in the wrong unit: the detention time is 60 min, not 60 h."
+  },
+  {
+   "id": "wp1w-error10",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this detention time calculation for a rectangular basin at a plant near Lethbridge, Alberta, 6 m long, 4 m wide, 3 m deep, with Q = 24 m3/h.",
+   "topicId": "hydraulics-detention-time",
+   "level": "class1",
+   "assumptions": "Fictional rectangular basin: length = 6 m, width = 4 m, depth = 3 m, Q = 24 m3/h. Target unit: hours.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. HDT = V / Q, with V = Length * Width * Depth"
+    },
+    {
+     "id": "line2",
+     "label": "2. Base area = 6 m + 4 m = 10 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. V = 10 m2 * 3 m = 30 m3, so HDT = 30 / 24 = 1.25 h"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 1.25 h"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Base area = 6 m * 4 m = 24 m2, so V = 72 m3 and HDT = 72 / 24 = 3 h",
+   "explanation": "Line 2 added the length and width instead of multiplying them. The base area is 24 m2, the volume is 72 m3, and the detention time is 3 h."
+  },
+  {
+   "id": "wp1w-error100",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this manganese removal calculation at a plant near Regina, Saskatchewan, where raw manganese is 0.8 mg/L and treated manganese is 0.2 mg/L.",
+   "topicId": "percent-removal",
+   "level": "class1",
+   "assumptions": "Fictional results: influent manganese = 0.8 mg/L, effluent manganese = 0.2 mg/L. Target unit: percent.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent removal = (In - Out) / In * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Amount removed = 0.8 - 0.2 = 0.6 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent removal = 0.6 / 0.8 * 100"
+    },
+    {
+     "id": "line4",
+     "label": "4. Percent removal = 70 percent"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Percent removal = 0.6 / 0.8 * 100 = 75 percent",
+   "explanation": "Lines 1 to 3 are correct. Line 4 is an arithmetic slip: 0.6 / 0.8 * 100 = 75, not 70."
+  },
+  {
+   "id": "wp1w-error11",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this surface overflow rate calculation for a rectangular basin at a plant near Kamloops, British Columbia, 12 m by 5 m with Q = 240 m3/day.",
+   "topicId": "sedimentation-surface-overflow-rate",
+   "level": "class1",
+   "assumptions": "Fictional rectangular basin: length = 12 m, width = 5 m, Q = 240 m3/day. Target unit: m/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SOR = Q / Surface area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Surface area = 12 m * 5 m = 60 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. SOR = 240 m3/day / 60 m2"
+    },
+    {
+     "id": "line4",
+     "label": "4. SOR = 5 m/day"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. SOR = 240 m3/day / 60 m2 = 4 m/day",
+   "explanation": "Lines 1 to 3 are correct. Line 4 is an arithmetic slip: 240 / 60 = 4, not 5."
+  },
+  {
+   "id": "wp1w-error12",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this surface overflow rate calculation for a circular clarifier at a plant near Medicine Hat, Alberta, with diameter 14 m and Q = 769.3 m3/day.",
+   "topicId": "sedimentation-surface-overflow-rate",
+   "level": "class1",
+   "assumptions": "Fictional circular clarifier: diameter = 14 m, radius = 7 m, Q = 769.3 m3/day, pi = 3.14. Target unit: m/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SOR = Q / Surface area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Radius = 14 m / 2 = 7 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Surface area = 3.14 * 14 m * 14 m = 615.44 m2"
+    },
+    {
+     "id": "line4",
+     "label": "4. SOR = 769.3 m3/day / 615.44 m2 = 1.25 m/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Surface area = 3.14 * 7 m * 7 m = 153.86 m2, so SOR = 769.3 / 153.86 = 5 m/day",
+   "explanation": "Line 3 used the diameter 14 m instead of the radius 7 m in the area formula. The area is 153.86 m2 and the SOR is 5 m/day."
+  },
+  {
+   "id": "wp1w-error13",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this surface overflow rate calculation for a basin at a plant near Moose Jaw, Saskatchewan, with area 450 m2 and Q = 90 m3/h, reported per day.",
+   "topicId": "sedimentation-surface-overflow-rate",
+   "level": "class1",
+   "assumptions": "Fictional basin: surface area = 450 m2, Q = 90 m3/h, 24 h = 1 day. Target unit: m/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SOR = Daily flow / Surface area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Surface area given as 450 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. SOR = 90 m3/h / 450 m2 = 0.2 m/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 0.2 m/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Daily flow = 90 m3/h * 24 h/day = 2160 m3/day, so SOR = 2160 / 450 = 4.8 m/day",
+   "explanation": "Line 3 forgot to convert the hourly flow to a daily flow. The daily flow is 2160 m3/day, giving an SOR of 4.8 m/day."
+  },
+  {
+   "id": "wp1w-error14",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line for two identical parallel clarifiers at a plant near Grande Prairie, Alberta, each with area 50 m2, sharing total Q = 300 m3/h equally.",
+   "topicId": "sedimentation-surface-overflow-rate",
+   "level": "class1",
+   "assumptions": "Fictional parallel clarifiers: two units, area = 50 m2 each, total Q = 300 m3/h split equally. Target unit: m/h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SOR per clarifier = Flow per clarifier / Area per clarifier"
+    },
+    {
+     "id": "line2",
+     "label": "2. Flow per clarifier = 300 m3/h / 2 = 150 m3/h"
+    },
+    {
+     "id": "line3",
+     "label": "3. SOR = 300 m3/h / 50 m2 = 6 m/h"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 6 m/h"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. SOR = 150 m3/h / 50 m2 = 3 m/h",
+   "explanation": "Line 3 used the total plant flow instead of the flow through one clarifier. Each clarifier receives 150 m3/h, so the SOR is 3 m/h."
+  },
+  {
+   "id": "wp1w-error15",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this surface overflow rate calculation for a basin at a plant near Cranbrook, British Columbia, with area 80 m2 and Q = 160 m3/h.",
+   "topicId": "sedimentation-surface-overflow-rate",
+   "level": "class1",
+   "assumptions": "Fictional basin: surface area = 80 m2, Q = 160 m3/h. Target unit: m/h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SOR = Surface area / Q"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Area = 80 m2 and Q = 160 m3/h"
+    },
+    {
+     "id": "line3",
+     "label": "3. SOR = 80 m2 / 160 m3/h = 0.5 m/h"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 0.5 m/h"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. SOR = Q / Surface area = 160 m3/h / 80 m2 = 2 m/h",
+   "explanation": "Line 1 uses the wrong formula. Surface overflow rate is flow divided by surface area, giving 2 m/h."
+  },
+  {
+   "id": "wp1w-error16",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this surface overflow rate calculation for a circular clarifier at a plant near Yorkton, Saskatchewan, with diameter 10 m and Q = 392.5 m3/day.",
+   "topicId": "sedimentation-surface-overflow-rate",
+   "level": "class1",
+   "assumptions": "Fictional circular clarifier: diameter = 10 m, radius = 5 m, Q = 392.5 m3/day, pi = 3.14. Target unit: m/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SOR = Q / Surface area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Radius = 10 m / 2 = 5 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Surface area = 3.14 * 10 m = 31.4 m2"
+    },
+    {
+     "id": "line4",
+     "label": "4. SOR = 392.5 m3/day / 31.4 m2 = 12.5 m/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Surface area = 3.14 * 5 m * 5 m = 78.5 m2, so SOR = 392.5 / 78.5 = 5 m/day",
+   "explanation": "Line 3 used the circumference formula pi * d instead of the area formula pi * r squared. The area is 78.5 m2 and the SOR is 5 m/day."
+  },
+  {
+   "id": "wp1w-error17",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this filter loading calculation for a filter at a plant near Swift Current, Saskatchewan, with area 25 m2 and Q = 20 L/s.",
+   "topicId": "filtration-loading",
+   "level": "class1",
+   "assumptions": "Fictional filter: plan area = 25 m2, Q = 20 L/s, 1000 L = 1 m3, 3600 s = 1 h. Target unit: m/h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Loading rate = Q / Area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q = 20 L/s * 60 s/min / 1000 L/m3 = 1.2 m3/h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Loading rate = 1.2 m3/h / 25 m2 = 0.048 m/h"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 0.048 m/h"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Q = 20 L/s * 3600 s/h / 1000 L/m3 = 72 m3/h, so rate = 72 / 25 = 2.88 m/h",
+   "explanation": "Line 2 used 60 instead of 3600 seconds per hour, so the flow conversion is wrong. The flow is 72 m3/h and the loading rate is 2.88 m/h."
+  },
+  {
+   "id": "wp1w-error18",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this filter loading calculation for a circular filter at a plant near Thompson, Manitoba, with diameter 6 m and Q = 84.78 m3/h.",
+   "topicId": "filtration-loading",
+   "level": "class1",
+   "assumptions": "Fictional circular filter: diameter = 6 m, radius = 3 m, Q = 84.78 m3/h, pi = 3.14. Target unit: m/h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Loading rate = Q / Area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 3.14 * 6 m * 6 m = 113.04 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Loading rate = 84.78 m3/h / 113.04 m2 = 0.75 m/h"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 0.75 m/h"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Area = 3.14 * 3 m * 3 m = 28.26 m2, so rate = 84.78 / 28.26 = 3 m/h",
+   "explanation": "Line 2 used the diameter 6 m instead of the radius 3 m in the area formula. The area is 28.26 m2 and the loading rate is 3 m/h."
+  },
+  {
+   "id": "wp1w-error19",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this filter loading calculation for a filter at a plant near Vernon, British Columbia, 9 m by 4 m with Q = 180 m3/h.",
+   "topicId": "filtration-loading",
+   "level": "class1",
+   "assumptions": "Fictional filter: length = 9 m, width = 4 m, Q = 180 m3/h. Target unit: m/h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Loading rate = Q / Area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 9 m * 4 m = 36 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Loading rate = 180 m3/h / 36 m2"
+    },
+    {
+     "id": "line4",
+     "label": "4. Loading rate = 6 m/h"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Loading rate = 180 m3/h / 36 m2 = 5 m/h",
+   "explanation": "Lines 1 to 3 are correct. Line 4 is an arithmetic slip: 180 / 36 = 5, not 6."
+  },
+  {
+   "id": "wp1w-error20",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line for three identical parallel filters at a plant near Fort McMurray, Alberta, each with area 15 m2, sharing total Q = 135 m3/h equally.",
+   "topicId": "filtration-loading",
+   "level": "class1",
+   "assumptions": "Fictional parallel filters: three units, area = 15 m2 each, total Q = 135 m3/h split equally. Target unit: m/h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Flow per filter = 135 m3/h / 3 = 45 m3/h"
+    },
+    {
+     "id": "line2",
+     "label": "2. Loading rate per filter = 45 m3/h / 15 m2 = 3 m/h"
+    },
+    {
+     "id": "line3",
+     "label": "3. System loading rate = 3 m/h + 3 m/h + 3 m/h = 9 m/h"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 9 m/h"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. System loading rate = 135 m3/h / 45 m2 = 3 m/h",
+   "explanation": "Parallel filters do not add loading rates; each filter runs at 3 m/h and so does the combined system."
+  },
+  {
+   "id": "wp1w-error21",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this filter loading calculation for a filter at a plant near Saskatoon, Saskatchewan, with area 12 m2 and Q = 600 L/min, reported in m/h.",
+   "topicId": "filtration-loading",
+   "level": "class1",
+   "assumptions": "Fictional filter: plan area = 12 m2, Q = 600 L/min, 1000 L = 1 m3, 60 min = 1 h. Target unit: m/h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Loading rate = Q in m3/h / Area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area given as 12 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Loading rate = 600 L/min / 12 m2 = 50 m/h"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 50 m/h"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Q = 600 L/min * 60 min/h / 1000 L/m3 = 36 m3/h, so rate = 36 / 12 = 3 m/h",
+   "explanation": "Line 3 forgot to convert the flow from L/min to m3/h. The converted flow is 36 m3/h, giving a loading rate of 3 m/h."
+  },
+  {
+   "id": "wp1w-error22",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this filter loading calculation for a filter at a plant near Regina, Saskatchewan, with area 20 m2 and Q = 80 m3/h.",
+   "topicId": "filtration-loading",
+   "level": "class1",
+   "assumptions": "Fictional filter: plan area = 20 m2, Q = 80 m3/h. Target unit: m/h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Loading rate = Q * Area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Q = 80 m3/h and Area = 20 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Loading rate = 80 m3/h * 20 m2 = 1600 m/h"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 1600 m/h"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Loading rate = Q / Area = 80 m3/h / 20 m2 = 4 m/h",
+   "explanation": "Line 1 uses the wrong formula. Loading rate is flow divided by area, giving 4 m/h."
+  },
+  {
+   "id": "wp1w-error23",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this backwash volume calculation for a filter at a plant near Calgary, Alberta, with area 24 m2, backwash rate 0.5 m/min, and a 9 min backwash.",
+   "topicId": "filtration-backwash-volume",
+   "level": "class1",
+   "assumptions": "Fictional filter: plan area = 24 m2, backwash rate = 0.5 m/min, backwash time = 9 min. Target unit: m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Backwash volume = Rate * Area * Time"
+    },
+    {
+     "id": "line2",
+     "label": "2. Backwash flow = 0.5 m/min * 24 m2 = 12 m3/min"
+    },
+    {
+     "id": "line3",
+     "label": "3. Backwash volume = 12 m3"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 12 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Backwash volume = 12 m3/min * 9 min = 108 m3",
+   "explanation": "Line 3 used the backwash flow rate without multiplying by the 9 min backwash time. The volume is 108 m3."
+  },
+  {
+   "id": "wp1w-error24",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this backwash duration calculation for a filter at a plant near Edmonton, Alberta, with a required backwash volume of 84 m3 at a backwash flow of 14 m3/min.",
+   "topicId": "filtration-backwash-volume",
+   "level": "class1",
+   "assumptions": "Fictional filter: required backwash volume = 84 m3, backwash flow = 14 m3/min. Target unit: minutes.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Backwash time = Volume / Flow"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Volume = 84 m3 and Flow = 14 m3/min"
+    },
+    {
+     "id": "line3",
+     "label": "3. Backwash time = 14 m3/min / 84 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Backwash time = 84 m3 / 14 m3/min = 6 min",
+   "explanation": "Line 3 inverted the substitution. Time is volume divided by flow, giving 6 min."
+  },
+  {
+   "id": "wp1w-error25",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this backwash volume calculation for a filter at a plant near Winnipeg, Manitoba, with a backwash flow of 30 m3/h lasting 0.4 h.",
+   "topicId": "filtration-backwash-volume",
+   "level": "class1",
+   "assumptions": "Fictional filter: backwash flow = 30 m3/h, backwash duration = 0.4 h, which is 24 min. Target unit: m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Backwash volume = Flow * Time"
+    },
+    {
+     "id": "line2",
+     "label": "2. Duration restated as 24 min"
+    },
+    {
+     "id": "line3",
+     "label": "3. Backwash volume = 30 m3/h * 24 = 720 m3"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 720 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Backwash volume = 30 m3/h * 0.4 h = 12 m3",
+   "explanation": "Line 3 paired an hourly flow with a time in minutes without converting. Using 0.4 h gives a volume of 12 m3."
+  },
+  {
+   "id": "wp1w-error26",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this backwash volume calculation for a circular filter at a plant near Kelowna, British Columbia, with diameter 5 m, backwash rate 0.4 m/min, and a 10 min backwash.",
+   "topicId": "filtration-backwash-volume",
+   "level": "class1",
+   "assumptions": "Fictional circular filter: diameter = 5 m, radius = 2.5 m, backwash rate = 0.4 m/min, time = 10 min, pi = 3.14. Target unit: m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Backwash volume = Rate * Area * Time"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 3.14 * 5 m * 5 m = 78.5 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Backwash volume = 0.4 m/min * 78.5 m2 * 10 min = 314 m3"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 314 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Area = 3.14 * 2.5 m * 2.5 m = 19.625 m2, so volume = 0.4 * 19.625 * 10 = 78.5 m3",
+   "explanation": "Line 2 used the diameter 5 m instead of the radius 2.5 m in the area formula. The area is 19.625 m2 and the backwash volume is 78.5 m3."
+  },
+  {
+   "id": "wp1w-error27",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chlorine dose calculation for water at a plant near Red Deer, Alberta, where the demand is 1.6 mg/L and the target residual is 0.4 mg/L.",
+   "topicId": "disinfection-chlorine-dose",
+   "level": "class1",
+   "assumptions": "Fictional treated water: chlorine demand = 1.6 mg/L, target free residual = 0.4 mg/L. Target unit: mg/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dose = Demand + Target residual"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Demand = 1.6 mg/L and Residual = 0.4 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Dose = 1.6 mg/L - 0.4 mg/L = 1.2 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 1.2 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Dose = 1.6 mg/L + 0.4 mg/L = 2 mg/L",
+   "explanation": "Line 3 subtracted the residual instead of adding it. The dose must satisfy the demand and leave the target residual, so the dose is 2 mg/L."
+  },
+  {
+   "id": "wp1w-error28",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chlorine demand calculation for a sample at a plant near Brandon, Manitoba, where the applied dose is 3.2 mg/L and the measured residual is 0.7 mg/L.",
+   "topicId": "disinfection-chlorine-demand",
+   "level": "class1",
+   "assumptions": "Fictional sample: applied chlorine dose = 3.2 mg/L, measured free residual = 0.7 mg/L. Target unit: mg/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Demand = Dose - Residual"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Dose = 3.2 mg/L and Residual = 0.7 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Demand = 3.2 mg/L + 0.7 mg/L = 3.9 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 3.9 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Demand = 3.2 mg/L - 0.7 mg/L = 2.5 mg/L",
+   "explanation": "Line 3 added the residual instead of subtracting it. Demand is the portion of the dose consumed, which is 2.5 mg/L."
+  },
+  {
+   "id": "wp1w-error29",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chlorine residual calculation for water at a plant near Lethbridge, Alberta, where the dose is 2.8 mg/L and the demand is 1.9 mg/L.",
+   "topicId": "disinfection-chlorine-residual",
+   "level": "class1",
+   "assumptions": "Fictional treated water: applied dose = 2.8 mg/L, chlorine demand = 1.9 mg/L. Target unit: mg/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Residual = Dose + Demand"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Dose = 2.8 mg/L and Demand = 1.9 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Residual = 2.8 mg/L + 1.9 mg/L = 4.7 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 4.7 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Residual = Dose - Demand = 2.8 mg/L - 1.9 mg/L = 0.9 mg/L",
+   "explanation": "Line 1 uses the wrong formula. Residual is what remains after the demand is satisfied, giving 0.9 mg/L."
+  },
+  {
+   "id": "wp1w-error30",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this CT calculation for a contact tank at a plant near Saskatoon, Saskatchewan, where the residual is 0.8 mg/L, the dose is 2 mg/L, and the contact time is 25 min.",
+   "topicId": "disinfection-ct",
+   "level": "class1",
+   "assumptions": "Fictional contact tank: free chlorine residual = 0.8 mg/L, applied dose = 2 mg/L, contact time = 25 min. Target unit: mg min/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. CT = Residual * Contact time"
+    },
+    {
+     "id": "line2",
+     "label": "2. Chlorine value used, C = 2 mg/L (the applied dose)"
+    },
+    {
+     "id": "line3",
+     "label": "3. CT = 2 mg/L * 25 min = 50 mg min/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 50 mg min/L"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Chlorine value used, C = residual = 0.8 mg/L, so CT = 0.8 * 25 = 20 mg min/L",
+   "explanation": "Line 2 used the applied dose instead of the measured residual. CT is based on residual, giving 20 mg min/L."
+  },
+  {
+   "id": "wp1w-error31",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this CT calculation for a contact tank at a plant near Prince Albert, Saskatchewan, where the residual is 0.6 mg/L, the theoretical contact time is 50 min, and the baffling factor is 0.8.",
+   "topicId": "disinfection-ct",
+   "level": "class1",
+   "assumptions": "Fictional contact tank: free chlorine residual = 0.6 mg/L, theoretical detention time = 50 min, baffling factor = 0.8. Target unit: mg min/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. CT = Residual * Effective contact time"
+    },
+    {
+     "id": "line2",
+     "label": "2. Effective contact time = 50 min"
+    },
+    {
+     "id": "line3",
+     "label": "3. CT = 0.6 mg/L * 50 min = 30 mg min/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 30 mg min/L"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Effective contact time = 50 min * 0.8 = 40 min, so CT = 0.6 * 40 = 24 mg min/L",
+   "explanation": "Line 2 forgot to apply the baffling factor. The effective contact time is 40 min, giving a CT of 24 mg min/L."
+  },
+  {
+   "id": "wp1w-error32",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this CT calculation for a contact tank at a plant near Kamloops, British Columbia, where the residual is 1.5 mg/L and the contact time is 0.5 h.",
+   "topicId": "disinfection-ct",
+   "level": "class1",
+   "assumptions": "Fictional contact tank: free chlorine residual = 1.5 mg/L, contact time = 0.5 h, 60 min = 1 h. Target unit: mg min/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. CT = Residual * Contact time in min"
+    },
+    {
+     "id": "line2",
+     "label": "2. Contact time = 0.5 h / 60 min/h"
+    },
+    {
+     "id": "line3",
+     "label": "3. CT reported using the line 2 contact time"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Contact time = 0.5 h * 60 min/h = 30 min, so CT = 1.5 * 30 = 45 mg min/L",
+   "explanation": "Line 2 divided by 60 instead of multiplying by 60 min/h when converting hours to minutes. The contact time is 30 min and the CT is 45 mg min/L."
+  },
+  {
+   "id": "wp1w-error33",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chlorine mass calculation for a dose of 2.5 mg/L applied to 8000 L of water at a plant near Medicine Hat, Alberta.",
+   "topicId": "disinfection-chlorine-dose",
+   "level": "class1",
+   "assumptions": "Fictional batch chlorination: dose = 2.5 mg/L, water volume = 8000 L, 1000 mg = 1 g. Target unit: grams.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Chlorine mass = Dose * Volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Mass = 2.5 mg/L * 8000 L = 20000 mg"
+    },
+    {
+     "id": "line3",
+     "label": "3. Mass = 20000 mg / 1000 mg/g"
+    },
+    {
+     "id": "line4",
+     "label": "4. Mass = 25 g"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Mass = 20000 mg / 1000 mg/g = 20 g",
+   "explanation": "Lines 1 to 3 are correct. Line 4 is an arithmetic slip: 20000 / 1000 = 20, not 25."
+  },
+  {
+   "id": "wp1w-error34",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chlorine mass calculation for a dose of 2 mg/L at Q = 100 L/s over one day at a plant near Moose Jaw, Saskatchewan.",
+   "topicId": "disinfection-chlorine-dose",
+   "level": "class1",
+   "assumptions": "Fictional plant: chlorine dose = 2 mg/L, Q = 100 L/s, 86400 s = 1 day, 1000000 mg = 1 kg. Target unit: kg/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily mass = Dose * Daily volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily volume = 100 L/s * 86400 s/day = 8640000 L/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily mass = 2 mg/L * 8640000 L/day = 17280000 mg/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Daily mass = 17280000 mg/day / 100000 mg/kg = 172.8 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Daily mass = 17280000 mg/day / 1000000 mg/kg = 17.28 kg/day",
+   "explanation": "Line 4 converted milligrams to kilograms with the wrong divisor. The correct daily mass is 17.28 kg/day."
+  },
+  {
+   "id": "wp1w-error35",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this required residual calculation for a plant near Grande Prairie, Alberta, where the target CT is 30 mg min/L and the contact time is 20 min.",
+   "topicId": "disinfection-ct",
+   "level": "class1",
+   "assumptions": "Fictional contact tank: target CT = 30 mg min/L, contact time = 20 min. Target unit: mg/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Required residual C = CT / Contact time"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as CT = 30 mg min/L and Time = 20 min"
+    },
+    {
+     "id": "line3",
+     "label": "3. C = 30 mg min/L * 20 min = 600 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 600 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. C = 30 mg min/L / 20 min = 1.5 mg/L",
+   "explanation": "Line 3 multiplied instead of dividing. The required residual is the target CT divided by the contact time, giving 1.5 mg/L."
+  },
+  {
+   "id": "wp1w-error36",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chlorine residual calculation for water at a plant near Cranbrook, British Columbia, where the dose is 4.5 mg/L and the demand is 3.8 mg/L.",
+   "topicId": "disinfection-chlorine-residual",
+   "level": "class1",
+   "assumptions": "Fictional treated water: applied dose = 4.5 mg/L, chlorine demand = 3.8 mg/L. Target unit: mg/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Residual = Dose - Demand"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Dose = 4.5 mg/L and Demand = 3.8 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Residual = 4.5 mg/L - 3.8 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Residual = 0.8 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Residual = 4.5 mg/L - 3.8 mg/L = 0.7 mg/L",
+   "explanation": "Lines 1 to 3 are correct. Line 4 is an arithmetic slip: 4.5 - 3.8 = 0.7, not 0.8."
+  },
+  {
+   "id": "wp1w-error37",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this CT calculation for a contact tank at a plant near Yorkton, Saskatchewan, where the residual is 0.4 mg/L and the contact time is 90 min.",
+   "topicId": "disinfection-ct",
+   "level": "class1",
+   "assumptions": "Fictional contact tank: free chlorine residual = 0.4 mg/L, contact time = 90 min. Target unit: mg min/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. CT = Residual * Contact time"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Residual = 0.4 mg/L and Time = 90 min"
+    },
+    {
+     "id": "line3",
+     "label": "3. CT = 0.4 mg/L * 90 min = 32 mg min/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 32 mg min/L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. CT = 0.4 mg/L * 90 min = 36 mg min/L",
+   "explanation": "Line 3 is an arithmetic slip: 0.4 * 90 = 36, not 32."
+  },
+  {
+   "id": "wp1w-error38",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chlorine dose calculation for water at a plant near Swift Current, Saskatchewan, where the demand is 2.4 mg/L and the target residual is 0.6 mg/L.",
+   "topicId": "disinfection-chlorine-dose",
+   "level": "class1",
+   "assumptions": "Fictional treated water: chlorine demand = 2.4 mg/L, target free residual = 0.6 mg/L. Target unit: mg/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dose = Demand + Target residual"
+    },
+    {
+     "id": "line2",
+     "label": "2. Demand value used = 2.4 mg/L, target value used = 2.4 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Dose = 2.4 mg/L + 2.4 mg/L = 4.8 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 4.8 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Target residual = 0.6 mg/L, so dose = 2.4 + 0.6 = 3 mg/L",
+   "explanation": "Line 2 used the demand value twice and dropped the target residual of 0.6 mg/L. The dose is 3 mg/L."
+  },
+  {
+   "id": "wp1w-error39",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this alum mass calculation for a dose of 25 mg/L at Q = 40 L/s over one day at a plant near Thompson, Manitoba.",
+   "topicId": "chemical-feed-mass",
+   "level": "class1",
+   "assumptions": "Fictional plant: alum dose = 25 mg/L, Q = 40 L/s, 86400 s = 1 day, 1000000 mg = 1 kg. Target unit: kg/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily mass = Dose * Daily volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily volume = 40 L/s * 86400 s/day = 3456000 L/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily mass = 25 mg/L * 3456000 L/day = 86400000 mg/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Daily mass = 86400000 mg/day / 100000 mg/kg = 864 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Daily mass = 86400000 mg/day / 1000000 mg/kg = 86.4 kg/day",
+   "explanation": "Line 4 converted milligrams to kilograms with the wrong divisor. The correct daily mass is 86.4 kg/day."
+  },
+  {
+   "id": "wp1w-error40",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this soda ash mass calculation for a dose of 12 mg/L applied to 500 m3 of water at a plant near Vernon, British Columbia.",
+   "topicId": "chemical-feed-mass",
+   "level": "class1",
+   "assumptions": "Fictional plant: soda ash dose = 12 mg/L, water volume = 500 m3, 1000 L = 1 m3, 1000000 mg = 1 kg. Target unit: kg.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Mass = Dose * Volume in L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Volume given as 500 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Mass = 12 mg/L * 500 L = 6000 mg = 0.006 kg"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 0.006 kg"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Volume = 500 m3 * 1000 L/m3 = 500000 L, so mass = 12 * 500000 / 1000000 = 6 kg",
+   "explanation": "Line 3 forgot to convert cubic metres to litres. The volume is 500000 L, giving a soda ash mass of 6 kg."
+  },
+  {
+   "id": "wp1w-error41",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this feed pump rate calculation at a plant near Fort McMurray, Alberta, where the pump delivered 180 mL in 90 s.",
+   "topicId": "chemical-feed-rate",
+   "level": "class1",
+   "assumptions": "Fictional feed pump test: volume delivered = 180 mL in 90 s, 1000 mL = 1 L, 3600 s = 1 h. Target unit: L/h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Feed rate = Volume delivered / Time"
+    },
+    {
+     "id": "line2",
+     "label": "2. Delivery rate = 180 mL / 90 s = 2 mL/s"
+    },
+    {
+     "id": "line3",
+     "label": "3. Feed rate = 2 mL/s * 60 s/h / 1000 mL/L = 0.12 L/h"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 0.12 L/h"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Feed rate = 2 mL/s * 3600 s/h / 1000 mL/L = 7.2 L/h",
+   "explanation": "Line 3 used 60 instead of 3600 seconds per hour. The feed rate is 7.2 L/h."
+  },
+  {
+   "id": "wp1w-error42",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chemical mass calculation for a dose of 8 mg/L applied to 300000 L in one day at a plant near Saskatoon, Saskatchewan.",
+   "topicId": "chemical-feed-mass",
+   "level": "class1",
+   "assumptions": "Fictional plant: chemical dose = 8 mg/L, daily water volume = 300000 L/day, 1000000 mg = 1 kg. Target unit: kg/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily mass = Dose / Daily volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Dose = 8 mg/L and Volume = 300000 L/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily mass calculated with the line 1 formula"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Daily mass = Dose * Daily volume = 8 * 300000 / 1000000 = 2.4 kg/day",
+   "explanation": "Line 1 uses the wrong formula. Mass is dose multiplied by volume, giving 2.4 kg/day."
+  },
+  {
+   "id": "wp1w-error43",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this available chlorine calculation for a 10 percent weight per volume sodium hypochlorite solution at a plant near Regina, Saskatchewan.",
+   "topicId": "chemical-solution-strength",
+   "level": "class1",
+   "assumptions": "Fictional stock solution: strength = 10 percent w/v, meaning 10 g of available chlorine per 100 mL of solution. Target unit: g/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. A 10 percent w/v solution contains 10 g per 100 mL"
+    },
+    {
+     "id": "line2",
+     "label": "2. Volume basis restated as 100 mL of solution"
+    },
+    {
+     "id": "line3",
+     "label": "3. Strength = 10 g/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 10 g/L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Strength = 10 g per 100 mL * 10 = 100 g/L",
+   "explanation": "Line 3 used the percent number 10 directly as grams per litre. Since 100 mL scales to 1000 mL by a factor of 10, the strength is 100 g/L."
+  },
+  {
+   "id": "wp1w-error44",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this dilution calculation to prepare 400 L of a 5 percent solution from a 20 percent stock at a plant near Calgary, Alberta.",
+   "topicId": "chemical-dilution",
+   "level": "class1",
+   "assumptions": "Fictional dilution: stock strength C1 = 20 percent, target strength C2 = 5 percent, target volume V2 = 400 L. Target unit: L of stock.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Stock volume V1 = C2 * V2 / C1"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as C1 = 20 percent, C2 = 5 percent, V2 = 400 L"
+    },
+    {
+     "id": "line3",
+     "label": "3. V1 = 20 percent * 400 L / 5 percent = 1600 L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 1600 L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. V1 = 5 percent * 400 L / 20 percent = 100 L",
+   "explanation": "Line 3 inverted the two strengths in the substitution. The stock volume is 100 L."
+  },
+  {
+   "id": "wp1w-error45",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solution strength calculation where 40 g of chemical is dissolved and made up to 800 mL at a plant near Edmonton, Alberta.",
+   "topicId": "chemical-solution-strength",
+   "level": "class1",
+   "assumptions": "Fictional solution: solute mass = 40 g, final solution volume = 800 mL. Target unit: percent w/v.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent w/v = Solute g / Volume mL * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Solute = 40 g and Volume = 800 mL"
+    },
+    {
+     "id": "line3",
+     "label": "3. Strength = 40 / 800 = 0.05 percent"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 0.05 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Strength = 40 / 800 * 100 = 5 percent",
+   "explanation": "Line 3 forgot to multiply by 100 to express the ratio as a percent. The strength is 5 percent w/v."
+  },
+  {
+   "id": "wp1w-error46",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this dilution calculation where 5 L of a 40 mg/L stock is diluted to a final volume of 250 L at a plant near Winnipeg, Manitoba.",
+   "topicId": "chemical-dilution",
+   "level": "class1",
+   "assumptions": "Fictional dilution: stock volume = 5 L, stock concentration = 40 mg/L, final diluted volume = 250 L. Target unit: mg/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Final concentration = Stock mass / Final volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Stock mass = 5 L * 40 mg/L = 200 mg"
+    },
+    {
+     "id": "line3",
+     "label": "3. Final concentration = 200 mg / 5 L = 40 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 40 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Final concentration = 200 mg / 250 L = 0.8 mg/L",
+   "explanation": "Line 3 divided by the stock volume instead of the final diluted volume. The final concentration is 0.8 mg/L."
+  },
+  {
+   "id": "wp1w-error47",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in converting a solution strength of 4.5 g/L to mg/L at a plant near Kelowna, British Columbia.",
+   "topicId": "chemical-solution-strength",
+   "level": "class1",
+   "assumptions": "Fictional solution: strength = 4.5 g/L, 1000 mg = 1 g. Target unit: mg/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Conversion factor stated as 1000 mg = 1 g"
+    },
+    {
+     "id": "line2",
+     "label": "2. Strength given as 4.5 g/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Strength = 4.5 g/L / 1000 mg/g = 0.0045 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 0.0045 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Strength = 4.5 g/L * 1000 mg/g = 4500 mg/L",
+   "explanation": "Line 3 divided by 1000 instead of multiplying by 1000 mg/g. The strength is 4500 mg/L."
+  },
+  {
+   "id": "wp1w-error48",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this mixing calculation where 2 L of a 15 mg/L solution is mixed with 2 L of a 35 mg/L solution at a plant near Red Deer, Alberta.",
+   "topicId": "chemical-dilution",
+   "level": "class1",
+   "assumptions": "Fictional mixture: 2 L at 15 mg/L mixed with 2 L at 35 mg/L, total volume = 4 L. Target unit: mg/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Mixed concentration = Total mass / Total volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total mass = 15 mg/L * 2 L + 35 mg/L * 2 L = 100 mg"
+    },
+    {
+     "id": "line3",
+     "label": "3. Mixed concentration = 15 mg/L + 35 mg/L = 50 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 50 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Mixed concentration = 100 mg / 4 L = 25 mg/L",
+   "explanation": "Line 3 added the two concentrations instead of dividing the total mass by the total volume. The mixed concentration is 25 mg/L."
+  },
+  {
+   "id": "wp1w-error49",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this polymer mass calculation for a dose of 0.4 mg/L at Q = 50 m3/h at a plant near Brandon, Manitoba.",
+   "topicId": "chemical-feed-mass",
+   "level": "class1",
+   "assumptions": "Fictional plant: polymer dose = 0.4 mg/L, Q = 50 m3/h, 1000 L = 1 m3, 1000 mg = 1 g. Target unit: g/h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Mass per hour = Dose * Flow in L/h"
+    },
+    {
+     "id": "line2",
+     "label": "2. Flow = 50 m3/h * 1000 L/m3 = 50000 L/h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Mass per hour = 0.4 mg/L * 50000 L/h = 20000 mg/h"
+    },
+    {
+     "id": "line4",
+     "label": "4. Mass per hour = 20000 mg/h / 100 mg/g = 200 g/h"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Mass per hour = 20000 mg/h / 1000 mg/g = 20 g/h",
+   "explanation": "Line 4 converted milligrams to grams with the wrong divisor. The correct mass rate is 20 g/h."
+  },
+  {
+   "id": "wp1w-error50",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this lime mass calculation for a dose of 18 mg/L at Q = 25 L/s over one day at a plant near Lethbridge, Alberta.",
+   "topicId": "chemical-feed-mass",
+   "level": "class1",
+   "assumptions": "Fictional plant: lime dose = 18 mg/L, Q = 25 L/s, 86400 s = 1 day, 1000000 mg = 1 kg. Target unit: kg/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily mass = Dose * Daily volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily volume = 25 L/s * 86400 s/day = 2160000 L/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Round daily volume to 2000000 L/day for the calculation"
+    },
+    {
+     "id": "line4",
+     "label": "4. Daily mass = 18 mg/L * 2000000 L/day / 1000000 mg/kg = 36 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Keep daily volume = 2160000 L/day, so mass = 18 * 2160000 / 1000000 = 38.88 kg/day",
+   "explanation": "Line 3 rounds 2160000 to 2000000 too early, which changes the answer. Using the unrounded volume gives 38.88 kg/day."
+  },
+  {
+   "id": "wp1w-error51",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solution feed volume calculation at a plant near Kamloops, British Columbia, where 48 kg/day of chlorine is needed from a solution with strength 120 g/L.",
+   "topicId": "chemical-feed-rate",
+   "level": "class1",
+   "assumptions": "Fictional feed system: chlorine mass needed = 48 kg/day, solution strength = 120 g/L, 1000 g = 1 kg. Target unit: L/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Feed volume = Mass in g / Solution strength"
+    },
+    {
+     "id": "line2",
+     "label": "2. Mass restated as 4800 g"
+    },
+    {
+     "id": "line3",
+     "label": "3. Feed volume = 4800 g / 120 g/L = 40 L/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 40 L/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Mass = 48 kg * 1000 g/kg = 48000 g, so volume = 48000 / 120 = 400 L/day",
+   "explanation": "Line 2 converted kilograms to grams with the wrong factor. The mass is 48000 g, giving a feed volume of 400 L/day."
+  },
+  {
+   "id": "wp1w-error52",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solution strength calculation where 60 g of chemical is dissolved and made up to 2 L at a plant near Medicine Hat, Alberta.",
+   "topicId": "chemical-solution-strength",
+   "level": "class1",
+   "assumptions": "Fictional solution: solute mass = 60 g, final solution volume = 2 L = 2000 mL. Target unit: percent w/v.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent w/v = Solute g / Volume mL * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Solute = 60 g and Volume = 2000 mL"
+    },
+    {
+     "id": "line3",
+     "label": "3. Strength = 60 / 2 = 30 percent"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 30 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Strength = 60 / 2000 * 100 = 3 percent",
+   "explanation": "Line 3 divided by the volume in litres instead of millilitres and skipped the percent basis. The strength is 3 percent w/v."
+  },
+  {
+   "id": "wp1w-error53",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this rectangular tank volume calculation for a tank at a plant near Moose Jaw, Saskatchewan, 7 m long, 3 m wide, and 2.5 m deep.",
+   "topicId": "storage-tank-volume",
+   "level": "class1",
+   "assumptions": "Fictional rectangular tank: length = 7 m, width = 3 m, depth = 2.5 m. Target unit: m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Volume = Length * Width * Depth"
+    },
+    {
+     "id": "line2",
+     "label": "2. Base area = 7 m * 3 m = 21 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Volume = 21 m2 * 2.5 m = 50 m3"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 50 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Volume = 21 m2 * 2.5 m = 52.5 m3",
+   "explanation": "Line 3 is an arithmetic slip: 21 * 2.5 = 52.5, not 50."
+  },
+  {
+   "id": "wp1w-error54",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this circular tank volume calculation for a tank at a plant near Grande Prairie, Alberta, with diameter 12 m and depth 3 m.",
+   "topicId": "storage-tank-volume",
+   "level": "class1",
+   "assumptions": "Fictional circular tank: diameter = 12 m, radius = 6 m, depth = 3 m, pi = 3.14. Target unit: m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Volume = Area * Depth"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 3.14 * 12 m * 12 m = 452.16 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Volume = 452.16 m2 * 3 m = 1356.48 m3"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 1356.48 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Area = 3.14 * 6 m * 6 m = 113.04 m2, so volume = 113.04 * 3 = 339.12 m3",
+   "explanation": "Line 2 used the diameter 12 m instead of the radius 6 m in the area formula. The area is 113.04 m2 and the volume is 339.12 m3."
+  },
+  {
+   "id": "wp1w-error55",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this tank volume calculation for a rectangular tank at a plant near Cranbrook, British Columbia, 3 m by 2 m by 2 m, reported in litres.",
+   "topicId": "storage-tank-volume",
+   "level": "class1",
+   "assumptions": "Fictional rectangular tank: length = 3 m, width = 2 m, depth = 2 m, 1000 L = 1 m3. Target unit: L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Volume = Length * Width * Depth"
+    },
+    {
+     "id": "line2",
+     "label": "2. Volume = 3 m * 2 m * 2 m = 12 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Volume = 12 L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 12 L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Volume = 12 m3 * 1000 L/m3 = 12000 L",
+   "explanation": "Line 3 forgot to convert cubic metres to litres. The tank holds 12000 L."
+  },
+  {
+   "id": "wp1w-error56",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this circular tank volume calculation for a tank at a plant near Yorkton, Saskatchewan, with diameter 6 m and depth 4 m.",
+   "topicId": "storage-tank-volume",
+   "level": "class1",
+   "assumptions": "Fictional circular tank: diameter = 6 m, radius = 3 m, depth = 4 m, pi = 3.14. Target unit: m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Volume = Area * Depth"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 3.14 * 3 m * 3 m = 28.26 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Volume = 28.26 m2 * 4 m"
+    },
+    {
+     "id": "line4",
+     "label": "4. Volume = 103.04 m3"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Volume = 28.26 m2 * 4 m = 113.04 m3",
+   "explanation": "Lines 1 to 3 are correct. Line 4 is an arithmetic slip: 28.26 * 4 = 113.04, not 103.04."
+  },
+  {
+   "id": "wp1w-error57",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this usable storage volume calculation for a tank at a plant near Swift Current, Saskatchewan, with total volume 200 m3 and 10 percent unusable bottom volume.",
+   "topicId": "storage-tank-volume",
+   "level": "class1",
+   "assumptions": "Fictional tank: total volume = 200 m3, unusable bottom portion = 10 percent of total. Target unit: m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Usable volume = Total volume - Unusable volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Unusable volume = 200 m3 * 0.1 = 20 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Usable volume = 200 m3 + 20 m3 = 220 m3"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 220 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Usable volume = 200 m3 - 20 m3 = 180 m3",
+   "explanation": "Line 3 added the unusable volume instead of subtracting it. The usable volume is 180 m3."
+  },
+  {
+   "id": "wp1w-error58",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this days of storage calculation for a tank at a plant near Thompson, Manitoba, with volume 450 m3 and daily demand 150 m3/day.",
+   "topicId": "storage-tank-volume",
+   "level": "class1",
+   "assumptions": "Fictional tank: volume = 450 m3, daily demand = 150 m3/day. Target unit: days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Days of storage = Daily demand / Tank volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Demand = 150 m3/day and Volume = 450 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Days of storage calculated with the line 1 formula"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Days of storage = Tank volume / Daily demand = 450 / 150 = 3 days",
+   "explanation": "Line 1 uses the wrong formula. Days of storage is volume divided by daily demand, giving 3 days."
+  },
+  {
+   "id": "wp1w-error59",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this partial tank volume calculation for a tank at a plant near Vernon, British Columbia, with base area 40 m2, full depth 3 m, and current water depth 1.8 m.",
+   "topicId": "storage-tank-volume",
+   "level": "class1",
+   "assumptions": "Fictional tank: base area = 40 m2, full depth = 3 m, current water depth = 1.8 m. Target unit: m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Volume = Base area * Water depth"
+    },
+    {
+     "id": "line2",
+     "label": "2. Water depth used = 3 m (full tank depth)"
+    },
+    {
+     "id": "line3",
+     "label": "3. Volume = 40 m2 * 3 m = 120 m3"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 120 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Water depth = 1.8 m, so volume = 40 * 1.8 = 72 m3",
+   "explanation": "Line 2 used the full tank depth instead of the current water depth. The water volume is 72 m3."
+  }
+ ],
+ "missions": [
+  {
+   "id": "wp1w-mission21",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 21: The Chemical Feed Solution Shift",
+   "tasks": [
+    {
+     "taskId": "wp1w-ladder80",
+     "revision": "r1",
+     "occurrenceId": "m21-t1"
+    },
+    {
+     "taskId": "wp1w-error01",
+     "revision": "r1",
+     "occurrenceId": "m21-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp1w-mission22",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 22: The Hydraulics Detention Time Shift",
+   "tasks": [
+    {
+     "taskId": "wp1w-error02",
+     "revision": "r1",
+     "occurrenceId": "m22-t1"
+    },
+    {
+     "taskId": "wp1w-ladder81",
+     "revision": "r1",
+     "occurrenceId": "m22-t2"
+    },
+    {
+     "taskId": "wp1w-ladder82",
+     "revision": "r1",
+     "occurrenceId": "m22-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp1w-mission23",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 23: The Percent Removal Shift",
+   "tasks": [
+    {
+     "taskId": "wp1w-ladder83",
+     "revision": "r1",
+     "occurrenceId": "m23-t1"
+    },
+    {
+     "taskId": "wp1w-error03",
+     "revision": "r1",
+     "occurrenceId": "m23-t2"
+    },
+    {
+     "taskId": "wp1w-ladder84",
+     "revision": "r1",
+     "occurrenceId": "m23-t3"
+    },
+    {
+     "taskId": "wp1w-ladder85",
+     "revision": "r1",
+     "occurrenceId": "m23-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp1w-mission24",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 24: The Hydraulics Detention Time Shift",
+   "tasks": [
+    {
+     "taskId": "wp1w-error04",
+     "revision": "r1",
+     "occurrenceId": "m24-t1"
+    },
+    {
+     "taskId": "wp1w-ladder86",
+     "revision": "r1",
+     "occurrenceId": "m24-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp1w-mission25",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 25: The Percent Removal Shift",
+   "tasks": [
+    {
+     "taskId": "wp1w-ladder87",
+     "revision": "r1",
+     "occurrenceId": "m25-t1"
+    },
+    {
+     "taskId": "wp1w-error05",
+     "revision": "r1",
+     "occurrenceId": "m25-t2"
+    },
+    {
+     "taskId": "wp1w-ladder88",
+     "revision": "r1",
+     "occurrenceId": "m25-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp1w-mission26",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 26: The Hydraulics Detention Time Shift",
+   "tasks": [
+    {
+     "taskId": "wp1w-error06",
+     "revision": "r1",
+     "occurrenceId": "m26-t1"
+    },
+    {
+     "taskId": "wp1w-ladder89",
+     "revision": "r1",
+     "occurrenceId": "m26-t2"
+    },
+    {
+     "taskId": "wp1w-ladder90",
+     "revision": "r1",
+     "occurrenceId": "m26-t3"
+    },
+    {
+     "taskId": "wp1w-ladder91",
+     "revision": "r1",
+     "occurrenceId": "m26-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp1w-mission27",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 27: The Pumps Head Pressure Shift",
+   "tasks": [
+    {
+     "taskId": "wp1w-ladder92",
+     "revision": "r1",
+     "occurrenceId": "m27-t1"
+    },
+    {
+     "taskId": "wp1w-error07",
+     "revision": "r1",
+     "occurrenceId": "m27-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp1w-mission28",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 28: The Hydraulics Detention Time Shift",
+   "tasks": [
+    {
+     "taskId": "wp1w-error08",
+     "revision": "r1",
+     "occurrenceId": "m28-t1"
+    },
+    {
+     "taskId": "wp1w-ladder93",
+     "revision": "r1",
+     "occurrenceId": "m28-t2"
+    },
+    {
+     "taskId": "wp1w-ladder94",
+     "revision": "r1",
+     "occurrenceId": "m28-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp1w-mission29",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 29: The Pumps Head Pressure Shift",
+   "tasks": [
+    {
+     "taskId": "wp1w-ladder95",
+     "revision": "r1",
+     "occurrenceId": "m29-t1"
+    },
+    {
+     "taskId": "wp1w-error09",
+     "revision": "r1",
+     "occurrenceId": "m29-t2"
+    },
+    {
+     "taskId": "wp1w-ladder96",
+     "revision": "r1",
+     "occurrenceId": "m29-t3"
+    },
+    {
+     "taskId": "wp1w-ladder97",
+     "revision": "r1",
+     "occurrenceId": "m29-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp1w-mission30",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 30: The Hydraulics Detention Time Shift",
+   "tasks": [
+    {
+     "taskId": "wp1w-error10",
+     "revision": "r1",
+     "occurrenceId": "m30-t1"
+    },
+    {
+     "taskId": "wp1w-ladder98",
+     "revision": "r1",
+     "occurrenceId": "m30-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp1w-mission31",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 31: The Pumps Velocity Shift",
+   "tasks": [
+    {
+     "taskId": "wp1w-ladder99",
+     "revision": "r1",
+     "occurrenceId": "m31-t1"
+    },
+    {
+     "taskId": "wp1w-error100",
+     "revision": "r1",
+     "occurrenceId": "m31-t2"
+    },
+    {
+     "taskId": "wp1w-ladder80",
+     "revision": "r1",
+     "occurrenceId": "m31-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp1w-mission32",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 32: The Sedimentation Surface Overflow Rate Shift",
+   "tasks": [
+    {
+     "taskId": "wp1w-error11",
+     "revision": "r1",
+     "occurrenceId": "m32-t1"
+    },
+    {
+     "taskId": "wp1w-ladder81",
+     "revision": "r1",
+     "occurrenceId": "m32-t2"
+    },
+    {
+     "taskId": "wp1w-ladder82",
+     "revision": "r1",
+     "occurrenceId": "m32-t3"
+    },
+    {
+     "taskId": "wp1w-ladder83",
+     "revision": "r1",
+     "occurrenceId": "m32-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp1w-mission33",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 33: The Percent Removal Shift",
+   "tasks": [
+    {
+     "taskId": "wp1w-ladder84",
+     "revision": "r1",
+     "occurrenceId": "m33-t1"
+    },
+    {
+     "taskId": "wp1w-error12",
+     "revision": "r1",
+     "occurrenceId": "m33-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp1w-mission34",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 34: The Sedimentation Surface Overflow Rate Shift",
+   "tasks": [
+    {
+     "taskId": "wp1w-error13",
+     "revision": "r1",
+     "occurrenceId": "m34-t1"
+    },
+    {
+     "taskId": "wp1w-ladder85",
+     "revision": "r1",
+     "occurrenceId": "m34-t2"
+    },
+    {
+     "taskId": "wp1w-ladder86",
+     "revision": "r1",
+     "occurrenceId": "m34-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp1w-mission35",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 35: The Percent Removal Shift",
+   "tasks": [
+    {
+     "taskId": "wp1w-ladder87",
+     "revision": "r1",
+     "occurrenceId": "m35-t1"
+    },
+    {
+     "taskId": "wp1w-error14",
+     "revision": "r1",
+     "occurrenceId": "m35-t2"
+    },
+    {
+     "taskId": "wp1w-ladder88",
+     "revision": "r1",
+     "occurrenceId": "m35-t3"
+    },
+    {
+     "taskId": "wp1w-ladder89",
+     "revision": "r1",
+     "occurrenceId": "m35-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp1w-mission36",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 36: The Sedimentation Surface Overflow Rate Shift",
+   "tasks": [
+    {
+     "taskId": "wp1w-error15",
+     "revision": "r1",
+     "occurrenceId": "m36-t1"
+    },
+    {
+     "taskId": "wp1w-ladder90",
+     "revision": "r1",
+     "occurrenceId": "m36-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp1w-mission37",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 37: The Pumps Head Pressure Shift",
+   "tasks": [
+    {
+     "taskId": "wp1w-ladder91",
+     "revision": "r1",
+     "occurrenceId": "m37-t1"
+    },
+    {
+     "taskId": "wp1w-error16",
+     "revision": "r1",
+     "occurrenceId": "m37-t2"
+    },
+    {
+     "taskId": "wp1w-ladder92",
+     "revision": "r1",
+     "occurrenceId": "m37-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp1w-mission38",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 38: The Filtration Loading Shift",
+   "tasks": [
+    {
+     "taskId": "wp1w-error17",
+     "revision": "r1",
+     "occurrenceId": "m38-t1"
+    },
+    {
+     "taskId": "wp1w-ladder93",
+     "revision": "r1",
+     "occurrenceId": "m38-t2"
+    },
+    {
+     "taskId": "wp1w-ladder94",
+     "revision": "r1",
+     "occurrenceId": "m38-t3"
+    },
+    {
+     "taskId": "wp1w-ladder95",
+     "revision": "r1",
+     "occurrenceId": "m38-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp1w-mission39",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 39: The Pumps Run Time Shift",
+   "tasks": [
+    {
+     "taskId": "wp1w-ladder96",
+     "revision": "r1",
+     "occurrenceId": "m39-t1"
+    },
+    {
+     "taskId": "wp1w-error18",
+     "revision": "r1",
+     "occurrenceId": "m39-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp1w-mission40",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 40: The Filtration Loading Shift",
+   "tasks": [
+    {
+     "taskId": "wp1w-error19",
+     "revision": "r1",
+     "occurrenceId": "m40-t1"
+    },
+    {
+     "taskId": "wp1w-ladder97",
+     "revision": "r1",
+     "occurrenceId": "m40-t2"
+    },
+    {
+     "taskId": "wp1w-ladder98",
+     "revision": "r1",
+     "occurrenceId": "m40-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Basic water treatment operations chapters (coagulation, sedimentation, filtration, disinfection, chemistry)"
+  },
+  {
+   "id": "wpi-ntk-2025",
+   "title": "WPI, 2025 Need-to-Know Criteria, Water Treatment Class I",
+   "locator": "https://gowpi.org/services/2025-need-to-know-criteria/"
+  },
+  {
+   "id": "gcdwq",
+   "title": "Health Canada, Guidelines for Canadian Drinking Water Quality",
+   "locator": "Federal guideline values and treatment context for Canadian drinking water"
+  },
+  {
+   "id": "epa-small-systems",
+   "title": "US EPA, Small Drinking Water Systems Handbook",
+   "locator": "Small system treatment operation background"
+  },
+  {
+   "id": "epa-swtr",
+   "title": "US EPA, Surface Water Treatment Rule guidance",
+   "locator": "Filtration and disinfection context (background, not Canadian law)"
+  },
+  {
+   "id": "ccohs-safety",
+   "title": "CCOHS, OSH Answers (chemical safety, confined spaces, lockout)",
+   "locator": "https://www.ccohs.ca/oshanswers/"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "c8cc7459de4b7dfa573360add264504aea106190a36dd7324991018d50efc86b",
+  "taskReceipts": [
+   {
+    "taskId": "wp1w-ladder80",
+    "revision": "r1",
+    "sha256": "7f27456ff636100617814f033fa7dc4a487a04c7bf6fd021d8d7defc50a9298c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-ladder81",
+    "revision": "r1",
+    "sha256": "d6db51daefa53ba4b2e0b8dd3c7f32ed89b9fb6c5c28f0b6cd8aa95460468d79",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-ladder82",
+    "revision": "r1",
+    "sha256": "476546c16bc0c12b9c114989fb571594cc9664caa24b5ebc8af3c3c3d3ee6976",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-ladder83",
+    "revision": "r1",
+    "sha256": "d1d6b3abfa0804e62895e0df3dcf698e7e23ded1c853f76306e9d340994eceae",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-ladder84",
+    "revision": "r1",
+    "sha256": "c550a6c3e640ae4ac7562880f01705564afa07e3080798493b47da218eb26d88",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-ladder85",
+    "revision": "r1",
+    "sha256": "96e548bcab8083fa9f5debcb234e5822ca111406f10b4dbdeb09868418ac6f35",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-ladder86",
+    "revision": "r1",
+    "sha256": "ceda9124777128fa31e4c89b77270cc5d0a3f28ca27dea10a2249d8a9434680d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-ladder87",
+    "revision": "r1",
+    "sha256": "66173e60667ccfe9e11b352055f27191af3acfab79c5f347960297e9b2d3bfd0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-ladder88",
+    "revision": "r1",
+    "sha256": "3ee2f5e9d7ccd2d59e264f85ee148be9391ee863e0a8482d43ecd32555c7299c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-ladder89",
+    "revision": "r1",
+    "sha256": "40087f764fdac580c531fb3fc9f48bb0e283cd0dc3e30ff7fa1e353109388421",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-ladder90",
+    "revision": "r1",
+    "sha256": "4c34d93af4e85d03eeaba8593b8d579f81a37f82651d01ecac104184cfa54b08",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-ladder91",
+    "revision": "r1",
+    "sha256": "c0888d9641cfc26010e766bd718c52ad3d29a3d37eaf4c414faa1e38799647ae",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-ladder92",
+    "revision": "r1",
+    "sha256": "09e7f7f4da32fdf753438c8970505feee1784d284c31e98c6194f96a569050be",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-ladder93",
+    "revision": "r1",
+    "sha256": "7bfa757191efe5e635a7dbfa438b398dbe722e2bfbc930ecde32ced518e96471",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-ladder94",
+    "revision": "r1",
+    "sha256": "d4c7107f9957014856f31dda6fb56fb4c8293657acd9839df7e46810c50c2896",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-ladder95",
+    "revision": "r1",
+    "sha256": "ee8e59a740820b0ca034ae64dbffd1d8cf38c27fd3e6ab5962407cd26e2f8510",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-ladder96",
+    "revision": "r1",
+    "sha256": "4fc454ea3f5f23b4d5c7d93cba7db82d13e0017190c723b1bfed4ec266c33ac9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-ladder97",
+    "revision": "r1",
+    "sha256": "0c091ece654da09852926d4070a9adff907fe33178b4c8bf2d9c655b849f53b4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-ladder98",
+    "revision": "r1",
+    "sha256": "232551a948f04bcf46eee88dd1f995443615a3772315adb3ecb83345e4e7cfc1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-ladder99",
+    "revision": "r1",
+    "sha256": "efb2f9e4d0ea0641efa7d8ac2a8f08cdf954f33d30e826a36cbd205ed32b256b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error01",
+    "revision": "r1",
+    "sha256": "d5bd05a28c69d8bec5c108b102cb0a2d9421ecbd800d8c612803c7f0f589edd7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error02",
+    "revision": "r1",
+    "sha256": "6c37f17f4c366cb0c7d53213f7c9e1dcee9b95e24cfc923991be1b5d7be42aab",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error03",
+    "revision": "r1",
+    "sha256": "6fd6ce7d86234f1f50fcdb8d8a83f05fb92f566d0359f4942dd28995f3353fb4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error04",
+    "revision": "r1",
+    "sha256": "1d244708f5adcacac32c8c6b897ea9bafbf706b23c9d338ff910d8c0dc6db897",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error05",
+    "revision": "r1",
+    "sha256": "b0fbb50486afecd4fc4ce1c872e8265bb865696d862c664340aea241d59606df",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error06",
+    "revision": "r1",
+    "sha256": "c7e95197c3e7e107327d87af7f5273c3f2c585a6b65efe076a47e38c0e23e15b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error07",
+    "revision": "r1",
+    "sha256": "a313c9608a1849d729a12c01373c74782d77092512e7690a2c14d1ca13e58acd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error08",
+    "revision": "r1",
+    "sha256": "f83e2ab12ddd699fcc952f82f7891ffdc918f6f65eea9cd14712fb6ddd3f78e3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error09",
+    "revision": "r1",
+    "sha256": "cba769a0e6f14aaf5b4b6f5a9a91875022aea9e2ffe4ab1b6002eaed352eb522",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error10",
+    "revision": "r1",
+    "sha256": "2604a59279725df1e2069de1625f5d8200e8252129384531a49a979f637bc42f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error100",
+    "revision": "r1",
+    "sha256": "b3e74a09ffc871aa1305d90611d2fde0f63a7d51e9bc11998a3ec8593f21f9d0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error11",
+    "revision": "r1",
+    "sha256": "7df10375297bd134aa3d662872f9e37bf89e55215d5a3f068b8f5e4158562113",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error12",
+    "revision": "r1",
+    "sha256": "c41fb5cc0d9065b44245e7334f9bf8cce1e9b0557b65a6af096442d2f7e27d21",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error13",
+    "revision": "r1",
+    "sha256": "9ee6b587a378d3a9bcba7f6575a478b6efb724c303b0b50a6a7df49d5ad91a7a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error14",
+    "revision": "r1",
+    "sha256": "211703a2a7a23e422cf8c3ec6e592effd60a5676f7b705f458fcc711d0ebb60c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error15",
+    "revision": "r1",
+    "sha256": "eed4614d78d22f2eeac12af1d5c25378336a91b99687db17ed458531dc30424a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error16",
+    "revision": "r1",
+    "sha256": "dad55d4307cba1a04879fa733352848c755347449c2f133c3ac1401dd9162e28",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error17",
+    "revision": "r1",
+    "sha256": "b2353e57f253ca7df268fc6defbeddcf247df51c702c0d8e9e17b4344d866b45",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error18",
+    "revision": "r1",
+    "sha256": "bd458dda78d6beb4a3a0e598caae32eba82778a923fb9956b88bdb42e40191df",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error19",
+    "revision": "r1",
+    "sha256": "37579c167e0ddd9ca80f0161b137a5597f9358f223fd3ddababf102636939f3a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error20",
+    "revision": "r1",
+    "sha256": "027d2df43018600526f434b010eedb38a4ade92d4660337658e6754f7030a00f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error21",
+    "revision": "r1",
+    "sha256": "68e6c1c5d1105f70594723ca03d74d46a92fb82d912370ac15756f5fd674f6a5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error22",
+    "revision": "r1",
+    "sha256": "98dd7b8776abca66325af3a055fa6eab1b1426f506c3c53fbf439eff849ff9c4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error23",
+    "revision": "r1",
+    "sha256": "62f1701aaab31f8ceb7f691e9a36e47e4499e402d113827c4dfb78e25fb5afd2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error24",
+    "revision": "r1",
+    "sha256": "4c2f1d24026231c49d6b573f0bc93a20fe1efd003a13647cfa207a7ba5c50f2a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error25",
+    "revision": "r1",
+    "sha256": "b42a4a27461a99b4a5890ddd383f3c0407844004886670511b98d7cae9b7c3f5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error26",
+    "revision": "r1",
+    "sha256": "912aef16c02bedd5387b4ea0e5cd13adb9231c30857502c8c0d114b94ae00434",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error27",
+    "revision": "r1",
+    "sha256": "643480d20a42432b138ae01920b1c3a6235ff55a1247d2f40576a8753877026d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error28",
+    "revision": "r1",
+    "sha256": "966f3e3a016d5fd32a300f81cd71b6f2bd02e98f37929fbf10e016986d66f1a9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error29",
+    "revision": "r1",
+    "sha256": "879561b5a300edb4135154749dd67718b7b496197b78cd0c876d573f29bfbd1e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error30",
+    "revision": "r1",
+    "sha256": "a80f5172a617435bc174fcf7a418b211cf2b3da77f4d04d355947057514b48fc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error31",
+    "revision": "r1",
+    "sha256": "574c27c76a0cf05444e00d891d50697ef5c534e3f1b13fca1d9e54db73c5e47b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error32",
+    "revision": "r1",
+    "sha256": "ad59f986e4338cc6047c6ff0c38ac4337b4e4d8492a5b53c44a315d80b0466ec",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error33",
+    "revision": "r1",
+    "sha256": "6b19f0793d62d49e8611fb3d11c55d5aad34e94699fcda139ea21772ed4db3b4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error34",
+    "revision": "r1",
+    "sha256": "a217d622458da21add89e4e9da225d3d06f0f1fc14deab66d3632e1203da1ea3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error35",
+    "revision": "r1",
+    "sha256": "a57f56cd09857a720e5092053742ab12145d141320f58943144e29a6e8bd344a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error36",
+    "revision": "r1",
+    "sha256": "993365f77fe1aa2e293a5fcba23582b399ceed86acd2832268ce69f4fec1e1d0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error37",
+    "revision": "r1",
+    "sha256": "7692f8555901379012ab3576e5cb57ea7e402961fdb8880b3c34153ba5f3df9c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error38",
+    "revision": "r1",
+    "sha256": "34e53e3b2d5f25950f6b107e2dc4e265b23b84505f36b5ce6364fc53008d2b0c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error39",
+    "revision": "r1",
+    "sha256": "23805bd58e065e02c08bc550653d8288d7392ad436d71de594d464d1be246dd6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error40",
+    "revision": "r1",
+    "sha256": "741fc2ea67f473ae6728c105a9c455b7fccd0cd025aa28c72674b9e4922a0394",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error41",
+    "revision": "r1",
+    "sha256": "51a400622b780227eb74e9bc431d2233e365ae0a5d752242322b6dbcc125c619",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error42",
+    "revision": "r1",
+    "sha256": "3efec9012d4ff90551f6fa00db1a245ff4935b2a777ef9196ac08c49e8200181",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error43",
+    "revision": "r1",
+    "sha256": "2420fef7779ec2cfc9da82d3997efa3ddc72034551d4b236864bf6314eb95935",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error44",
+    "revision": "r1",
+    "sha256": "680448a1a67221db0d97d6e005c5de7362ef76c759fc2f56bb792f6ad1967cf4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error45",
+    "revision": "r1",
+    "sha256": "a3712898a895d6cb9459056e7c6304eaa336dbd3334c49adf3e96aebf36026c9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error46",
+    "revision": "r1",
+    "sha256": "de78615c6b4144e009e97445b2ee30f9d1063a34f0e5a8a662619dba270a3e50",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error47",
+    "revision": "r1",
+    "sha256": "a7e23693d06f6f7d44c497c0da2b6b70c80158aa3a50bfb9816b070f5ef10365",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error48",
+    "revision": "r1",
+    "sha256": "107d0fd2b7e4c4892ffad23573af8f86842bd3425bc6224500be1a0ca7d1fe81",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error49",
+    "revision": "r1",
+    "sha256": "57ec75a85493142f6e7611347044d701f33d2ce359d423bbc6deb5c88cb88ffb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error50",
+    "revision": "r1",
+    "sha256": "15b9a1bcb7e39ab25b409e9dfa4fb8c58d084780346b2ba3e260171b045d7fd1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error51",
+    "revision": "r1",
+    "sha256": "0bbe145ceaf53b87e1f3fcc44cc76187eb1a3227ec7aeed060021a5ffa310108",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error52",
+    "revision": "r1",
+    "sha256": "031fd7ee975d4e575f6711e7cd704733013de7f93e65cb7e605fe04ca8b7d907",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error53",
+    "revision": "r1",
+    "sha256": "392e502807b3fb0c110ab653ff74e7233ef85acbc2d0b9218b5dfd3ac871025c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error54",
+    "revision": "r1",
+    "sha256": "a91ed064aa8f40d789b1621e6b91faa386cd9b21b94d26736f873cee2c175bab",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error55",
+    "revision": "r1",
+    "sha256": "277c175b5685f9189ff5b147544d6380fee8d015f4f5538fcf16bf995c89f418",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error56",
+    "revision": "r1",
+    "sha256": "d6ccb1a1774b8b6379fb7e7fdaa31620c76e9ca38adb91a64fc2344b871f7202",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error57",
+    "revision": "r1",
+    "sha256": "d2454add4f70d737b6e1803c2531ff0ff9ea3b61f8f50802907d0451cbe13508",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error58",
+    "revision": "r1",
+    "sha256": "1c0e33e2ec2c729b8d533892cb74eb5899c5f364790c175a75d71e4febf31792",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1w-error59",
+    "revision": "r1",
+    "sha256": "27ef6c88bc9adc935d66e1ca2e1eeb7667600715164a4a019bb6be53f6b7ca1c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "wp1w-mission21",
+    "revision": "r1",
+    "sha256": "84317fd8c6c3488bbc83e70736172bfab22784734a0ca5818ba69b31ba4d334f"
+   },
+   {
+    "missionId": "wp1w-mission22",
+    "revision": "r1",
+    "sha256": "4c8ec995dae1bb99d7c34e2bd90cf4de3ff4704cc97b891a64d86cc031b316ac"
+   },
+   {
+    "missionId": "wp1w-mission23",
+    "revision": "r1",
+    "sha256": "1b559a323338b87994f5269cbb1c677769852674a7602354d0d04567731e7c1e"
+   },
+   {
+    "missionId": "wp1w-mission24",
+    "revision": "r1",
+    "sha256": "172683b4a4bb2b445a7277b890f27141bb2bb1dcb99947579356de328a29e0c8"
+   },
+   {
+    "missionId": "wp1w-mission25",
+    "revision": "r1",
+    "sha256": "958e2ab8036f9abd535efc952b212f02d28a634ed29a42648f91cd81fccf89b7"
+   },
+   {
+    "missionId": "wp1w-mission26",
+    "revision": "r1",
+    "sha256": "6acb4100747b783d667260996eb967ab1a79082152f45b5bbe4e6c7b392535f8"
+   },
+   {
+    "missionId": "wp1w-mission27",
+    "revision": "r1",
+    "sha256": "dd644efaccd472bc69995033ed0579f9cc49e9f3411d055b5cad7cc9d6cf6fe1"
+   },
+   {
+    "missionId": "wp1w-mission28",
+    "revision": "r1",
+    "sha256": "9103b7c98fb50749f377b19ebf316fe310188f50b095c24243329bcc1a57e7b6"
+   },
+   {
+    "missionId": "wp1w-mission29",
+    "revision": "r1",
+    "sha256": "bd310027d512af71d3ad876afd9ec2872bcef6b5c4b4025855b63e5ee59da5ce"
+   },
+   {
+    "missionId": "wp1w-mission30",
+    "revision": "r1",
+    "sha256": "c52058c7b8195a15f050297e43cf5745ebc83beac0e5271abd36cbbc1ff50358"
+   },
+   {
+    "missionId": "wp1w-mission31",
+    "revision": "r1",
+    "sha256": "dfcd3f9ef32b74fcee393ee7a25fa050ef2e9e05cb97af87789c6c49bd2e2706"
+   },
+   {
+    "missionId": "wp1w-mission32",
+    "revision": "r1",
+    "sha256": "ba589d3f98684758439f74dd611355dc68a4df595f49625ada7c3a5fd31c94a5"
+   },
+   {
+    "missionId": "wp1w-mission33",
+    "revision": "r1",
+    "sha256": "a2652175de44ace338bbddb9dc86087253307642b8df0ea501052942d02e15b6"
+   },
+   {
+    "missionId": "wp1w-mission34",
+    "revision": "r1",
+    "sha256": "8b725328404b79dfa589a434283977359d94546b6802d0b14ff46af0a4c2d834"
+   },
+   {
+    "missionId": "wp1w-mission35",
+    "revision": "r1",
+    "sha256": "f2d767e675db435fa28f229baed4532b04368ecaffd43d16b7c465a4f0814278"
+   },
+   {
+    "missionId": "wp1w-mission36",
+    "revision": "r1",
+    "sha256": "dddecb79bc6df7a86bc71c29215a7694c0c5a49a9b896c847a735ebd194e4080"
+   },
+   {
+    "missionId": "wp1w-mission37",
+    "revision": "r1",
+    "sha256": "691588dd53b4b565bee51f41813b3992ded239b559bda8f10e69a660a15f3f4f"
+   },
+   {
+    "missionId": "wp1w-mission38",
+    "revision": "r1",
+    "sha256": "4aff2525822fde80d04145ef7756611927e73e4979b32515c6345bddfa8f759c"
+   },
+   {
+    "missionId": "wp1w-mission39",
+    "revision": "r1",
+    "sha256": "ea83349c22f1aee253ba55adb9c646fb0569253d2ebf2cf41c17ff5facfa7d1c"
+   },
+   {
+    "missionId": "wp1w-mission40",
+    "revision": "r1",
+    "sha256": "25d6efc7d6ba69f49758bebc58cdaac8d402ffa1e8ca6014dd6db9d74898137a"
+   }
+  ]
+ }
+}

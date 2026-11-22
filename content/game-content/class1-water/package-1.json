@@ -1,0 +1,1194 @@
+{
+ "courseKey": "class1-water",
+ "version": "deep-20261119-v2",
+ "tasks": [
+  {
+   "id": "c1w-ladder01",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the theoretical detention time in hours for a basin with V = 72 m3 and Q = 10 L/s.",
+   "topicId": "hydraulics-detention-time",
+   "level": "class1",
+   "assumptions": "Fictional steady-state basin: V = 72 m3, Q = 10 L/s, 1000 L = 1 m3, 3600 s = 1 h. Ideal plug flow assumed.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for theoretical hydraulic detention time (HDT).",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "HDT = V / Q"
+      },
+      {
+       "id": "opt-b",
+       "label": "HDT = Q / V"
+      },
+      {
+       "id": "opt-c",
+       "label": "HDT = V * Q"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Detention time equals tank volume divided by volumetric flow rate (V / Q)."
+    },
+    {
+     "id": "units",
+     "prompt": "How should Q = 10 L/s be converted to m3/h?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Multiply by 3600 s/h and divide by 1000 L/m3"
+      },
+      {
+       "id": "opt-b",
+       "label": "Multiply by 1000 L/m3 and divide by 3600 s/h"
+      },
+      {
+       "id": "opt-c",
+       "label": "Divide by 3600 s/h and divide by 1000 L/m3"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "10 L/s * (3600 s/h) / (1000 L/m3) = 36 m3/h, matching volume in m3 and time in hours."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "HDT = 72 m3 / 36 m3/h"
+      },
+      {
+       "id": "opt-b",
+       "label": "HDT = 72 m3 / 10 L/s"
+      },
+      {
+       "id": "opt-c",
+       "label": "HDT = 36 m3/h / 72 m3"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Dividing 72 m3 by 36 m3/h cancels m3 and yields hours directly."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact theoretical detention time in hours (h).",
+    "unitOptions": [
+     {
+      "id": "h",
+      "label": "h"
+     },
+     {
+      "id": "m3-h",
+      "label": "m3/h"
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     }
+    ],
+    "expected": "2",
+    "expectedUnitId": "h",
+    "absoluteTolerance": "0",
+    "explanation": "Q = 10 L/s * 3600 s/h / 1000 L/m3 = 36 m3/h. HDT = 72 m3 / 36 m3/h = 2 h."
+   }
+  },
+  {
+   "id": "c1w-ladder02",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the hydraulic surface loading rate in m/h for a filter with Q = 12 L/s and plan area = 18 m2.",
+   "topicId": "filtration-loading",
+   "level": "class1",
+   "assumptions": "Fictional rapid sand filter: Q = 12 L/s, plan area = 18 m2, 1000 L = 1 m3, 3600 s = 1 h.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for filter hydraulic surface loading rate.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Loading rate = Q / Area"
+      },
+      {
+       "id": "opt-b",
+       "label": "Loading rate = Area / Q"
+      },
+      {
+       "id": "opt-c",
+       "label": "Loading rate = Q * Area"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Hydraulic surface loading rate is volumetric flow rate divided by filter plan area."
+    },
+    {
+     "id": "units",
+     "prompt": "What is Q = 12 L/s expressed in m3/h?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "43.2 m3/h"
+      },
+      {
+       "id": "opt-b",
+       "label": "0.432 m3/h"
+      },
+      {
+       "id": "opt-c",
+       "label": "432 m3/h"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "12 L/s * 3600 s/h / 1000 L/m3 = 43.2 m3/h."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for loading rate in m/h.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "(43.2 m3/h) / 18 m2"
+      },
+      {
+       "id": "opt-b",
+       "label": "18 m2 / (43.2 m3/h)"
+      },
+      {
+       "id": "opt-c",
+       "label": "(12 L/s) / 18 m2"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Dividing m3/h by m2 yields m/h."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact hydraulic surface loading rate in m/h.",
+    "unitOptions": [
+     {
+      "id": "m-h",
+      "label": "m/h"
+     },
+     {
+      "id": "m3-h",
+      "label": "m3/h"
+     },
+     {
+      "id": "m2",
+      "label": "m2"
+     }
+    ],
+    "expected": "2.4",
+    "expectedUnitId": "m-h",
+    "absoluteTolerance": "0",
+    "explanation": "Q = 43.2 m3/h. Loading rate = 43.2 m3/h / 18 m2 = 2.4 m/h."
+   }
+  },
+  {
+   "id": "c1w-ladder03",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Two identical 72 m3 cells operate in parallel, sharing total Q = 12 L/s equally. Find system detention time in minutes.",
+   "topicId": "hydraulics-parallel-detention",
+   "level": "class1",
+   "assumptions": "Fictional parallel cells: two 72 m3 cells (total V = 144 m3), total Q = 12 L/s split equally, 1000 L = 1 m3, 60 s = 1 min.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "How is theoretical detention time determined for identical parallel cells?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Total combined volume divided by total flow (or one cell volume divided by half the flow)"
+      },
+      {
+       "id": "opt-b",
+       "label": "Sum the detention times of both cells as if they were in series"
+      },
+      {
+       "id": "opt-c",
+       "label": "One cell volume divided by total flow"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "In parallel flow, water splits between cells, so total V / total Q equals single-cell V / cell Q."
+    },
+    {
+     "id": "units",
+     "prompt": "Convert total Q = 12 L/s to m3/min.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "0.72 m3/min"
+      },
+      {
+       "id": "opt-b",
+       "label": "7.2 m3/min"
+      },
+      {
+       "id": "opt-c",
+       "label": "720 m3/min"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "12 L/s * 60 s/min / 1000 L/m3 = 0.72 m3/min."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for parallel-system detention time in minutes.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "(2 * 72 m3) / 0.72 m3/min"
+      },
+      {
+       "id": "opt-b",
+       "label": "72 m3 / 0.72 m3/min"
+      },
+      {
+       "id": "opt-c",
+       "label": "0.72 m3/min / 144 m3"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Total volume is 144 m3 and total flow is 0.72 m3/min."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact theoretical detention time in minutes (min).",
+    "unitOptions": [
+     {
+      "id": "min",
+      "label": "min"
+     },
+     {
+      "id": "m3-min",
+      "label": "m3/min"
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     }
+    ],
+    "expected": "200",
+    "expectedUnitId": "min",
+    "absoluteTolerance": "0",
+    "explanation": "Total V = 144 m3; Q = 0.72 m3/min. HDT = 144 / 0.72 = 200 min."
+   }
+  },
+  {
+   "id": "c1w-ladder04",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Raw water has suspended solids of 7 mg/L at constant Q = 5 L/s. Find the incoming solids mass rate in kg/day.",
+   "topicId": "solids-mass-rate",
+   "level": "class1",
+   "assumptions": "Fictional raw water: TSS = 7 mg/L, Q = 5 L/s, 86400 s = 1 day, 1000000 mg = 1 kg. No chemical additions.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for solids mass rate.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Mass rate = Concentration * Flow rate"
+      },
+      {
+       "id": "opt-b",
+       "label": "Mass rate = Concentration / Flow rate"
+      },
+      {
+       "id": "opt-c",
+       "label": "Mass rate = Flow rate / Concentration"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Multiplying concentration (mg/L) by flow rate (L/s) gives mass per unit time (mg/s)."
+    },
+    {
+     "id": "units",
+     "prompt": "Which conversion factors convert mg/s to kg/day?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Multiply by 86400 s/day and divide by 1000000 mg/kg"
+      },
+      {
+       "id": "opt-b",
+       "label": "Multiply by 86400 s/day and divide by 1000 mg/kg"
+      },
+      {
+       "id": "opt-c",
+       "label": "Divide by 86400 s/day and multiply by 1000000 mg/kg"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "There are 86400 seconds in a day and 1000000 milligrams in a kilogram."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for solids mass rate in kg/day.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "(7 mg/L * 5 L/s * 86400 s/day) / 1000000 mg/kg"
+      },
+      {
+       "id": "opt-b",
+       "label": "(7 mg/L * 5 L/s * 3600 s/h) / 1000000 mg/kg"
+      },
+      {
+       "id": "opt-c",
+       "label": "(7 mg/L * 5 L/s * 86400 s/day) / 1000 mg/kg"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "7 * 5 = 35 mg/s; * 86400 = 3024000 mg/day; / 1000000 = 3.024 kg/day."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact incoming solids mass rate in kg/day.",
+    "unitOptions": [
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "mg-s",
+      "label": "mg/s"
+     },
+     {
+      "id": "L-day",
+      "label": "L/day"
+     }
+    ],
+    "expected": "3.024",
+    "expectedUnitId": "kg-day",
+    "absoluteTolerance": "0",
+    "explanation": "7 mg/L * 5 L/s * 86400 s/day / 1000000 mg/kg = 3.024 kg/day."
+   }
+  },
+  {
+   "id": "c1w-process01",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the pretreatment-to-flocculation stages for a fictional surface-water train.",
+   "topicId": "process-pretreatment-flocculation",
+   "level": "class1",
+   "assumptions": "Fictional surface-water plant: water enters from a river intake and is prepared for settling.",
+   "configuration": "Scope: river intake through flocculation basin outlet, before sedimentation.",
+   "cards": [
+    {
+     "id": "c-screen",
+     "label": "Screening (removes large debris)"
+    },
+    {
+     "id": "c-rapid",
+     "label": "Rapid Mixing (disperses coagulant)"
+    },
+    {
+     "id": "c-floc",
+     "label": "Flocculation (gentle agitation builds floc)"
+    }
+   ],
+   "correctOrder": [
+    "c-screen",
+    "c-rapid",
+    "c-floc"
+   ],
+   "explanation": "Screening protects downstream units from large debris, rapid mixing disperses coagulant, and gentle flocculation grows settleable floc."
+  },
+  {
+   "id": "c1w-process02",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the particle-removal segment from chemical dispersion through media filtration.",
+   "topicId": "process-particle-removal",
+   "level": "class1",
+   "assumptions": "Fictional conventional surface-water train after screening.",
+   "configuration": "Scope: coagulant addition point through filtered water outlet.",
+   "cards": [
+    {
+     "id": "c-mix",
+     "label": "Rapid Mixing (coagulant dispersion)"
+    },
+    {
+     "id": "c-floc",
+     "label": "Flocculation (particle agglomeration)"
+    },
+    {
+     "id": "c-sed",
+     "label": "Sedimentation (gravity settling)"
+    },
+    {
+     "id": "c-filt",
+     "label": "Filtration (granular media straining and adsorption)"
+    }
+   ],
+   "correctOrder": [
+    "c-mix",
+    "c-floc",
+    "c-sed",
+    "c-filt"
+   ],
+   "explanation": "Rapid mixing destabilizes particles, flocculation builds larger floc, sedimentation settles most solids by gravity, and filtration polishes remaining fine particles."
+  },
+  {
+   "id": "c1w-process03",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the settled-water path from clarification to finished water.",
+   "topicId": "process-settled-water",
+   "level": "class1",
+   "assumptions": "Fictional conventional plant: flocculated water enters the clarifier and leaves as disinfected finished water.",
+   "configuration": "Scope: sedimentation basin through final microbial inactivation.",
+   "cards": [
+    {
+     "id": "c-sed",
+     "label": "Sedimentation (clarification of floc)"
+    },
+    {
+     "id": "c-filt",
+     "label": "Rapid Sand Filtration (fine particle removal)"
+    },
+    {
+     "id": "c-dis",
+     "label": "Disinfection (microbial inactivation)"
+    }
+   ],
+   "correctOrder": [
+    "c-sed",
+    "c-filt",
+    "c-dis"
+   ],
+   "explanation": "Sedimentation removes settleable floc, filtration removes remaining fine solids, and disinfection provides final microbial inactivation."
+  },
+  {
+   "id": "c1w-process04",
+   "revision": "r2",
+   "mode": "build-process",
+   "prompt": "Order the five functional stages in this fictional conventional surface-water train.",
+   "topicId": "process-conventional-train",
+   "level": "class1",
+   "assumptions": "Fictional conventional surface-water plant treating river water.",
+   "configuration": "Scope: raw-water intake debris removal through granular media polishing.",
+   "cards": [
+    {
+     "id": "c-screen",
+     "label": "Screening (removes coarse river debris)"
+    },
+    {
+     "id": "c-coag",
+     "label": "Rapid Mixing (uniformly disperses coagulant)"
+    },
+    {
+     "id": "c-floc",
+     "label": "Flocculation (gentle stirring builds settleable floc)"
+    },
+    {
+     "id": "c-sed",
+     "label": "Sedimentation (gravity settling of floc)"
+    },
+    {
+     "id": "c-filt",
+     "label": "Filtration (granular media removes remaining fine solids)"
+    }
+   ],
+   "correctOrder": [
+    "c-screen",
+    "c-coag",
+    "c-floc",
+    "c-sed",
+    "c-filt"
+   ],
+   "explanation": "In this conventional train, screening removes coarse debris, rapid mixing disperses coagulant, flocculation grows floc, sedimentation settles floc by gravity, and filtration polishes remaining fine solids."
+  },
+  {
+   "id": "c1w-error01",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this detention time calculation for V = 90 m3 and Q = 15 L/s.",
+   "topicId": "hydraulics-detention-time",
+   "level": "class1",
+   "assumptions": "Fictional basin: V = 90 m3, Q = 15 L/s, 1000 L = 1 m3, 3600 s = 1 h. Target unit: hours.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. HDT = V / Q"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q = 15 L/s * 3600 s/h = 54000 L/h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Q = 54000 L/h * 1000 L/m3 = 54000000 m3/h"
+    },
+    {
+     "id": "line4",
+     "label": "4. HDT = 90 m3 / 54000000 m3/h = 0.00000167 h"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Q = 54000 L/h / 1000 L/m3 = 54 m3/h",
+   "explanation": "Line 3 multiplied by 1000 instead of dividing by 1000 L/m3. Correct flow is 54 m3/h, giving HDT = 90 m3 / 54 m3/h = 1.67 h."
+  },
+  {
+   "id": "c1w-error02",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this filter hydraulic loading calculation for Q = 10 L/s and Area = 12 m2.",
+   "topicId": "filtration-loading",
+   "level": "class1",
+   "assumptions": "Fictional filter: Q = 10 L/s, Area = 12 m2, 1000 L = 1 m3, 3600 s = 1 h. Target unit: m/h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Q = 10 L/s * 3600 s/h / 1000 L/m3 = 36 m3/h"
+    },
+    {
+     "id": "line2",
+     "label": "2. Loading rate = Area / Q"
+    },
+    {
+     "id": "line3",
+     "label": "3. Loading rate = 12 m2 / 36 m3/h"
+    },
+    {
+     "id": "line4",
+     "label": "4. Loading rate = 0.333 m/h"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Loading rate = Q / Area",
+   "explanation": "Line 2 inverted the formula. Hydraulic loading rate is Q / Area = 36 m3/h / 12 m2 = 3.0 m/h."
+  },
+  {
+   "id": "c1w-error03",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line for two identical 60 m3 parallel cells sharing total Q = 10 L/s equally.",
+   "topicId": "hydraulics-parallel-detention",
+   "level": "class1",
+   "assumptions": "Fictional parallel cells: two 60 m3 cells, total Q = 10 L/s, 1000 L = 1 m3, 60 s = 1 min. Target unit: min.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total Q = 10 L/s * 60 s/min / 1000 L/m3 = 0.6 m3/min"
+    },
+    {
+     "id": "line2",
+     "label": "2. Flow per cell = 0.6 m3/min / 2 = 0.3 m3/min"
+    },
+    {
+     "id": "line3",
+     "label": "3. Single cell HDT = 60 m3 / 0.3 m3/min = 200 min"
+    },
+    {
+     "id": "line4",
+     "label": "4. Parallel system HDT = 200 min + 200 min = 400 min"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Parallel system HDT = 120 m3 / 0.6 m3/min = 200 min",
+   "explanation": "Parallel cells do not add detention times; water spends 200 min in whichever cell it enters."
+  },
+  {
+   "id": "c1w-error04",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids mass rate calculation for TSS = 8 mg/L and Q = 4 L/s.",
+   "topicId": "solids-mass-rate",
+   "level": "class1",
+   "assumptions": "Fictional raw water: TSS = 8 mg/L, Q = 4 L/s, 86400 s = 1 day, 1000000 mg = 1 kg. Target unit: kg/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Mass rate = 8 mg/L * 4 L/s = 32 mg/s"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily mass = 32 mg/s * 86400 s/day = 2764800 mg/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Mass rate = 2764800 mg/day / 1000 mg/kg"
+    },
+    {
+     "id": "line4",
+     "label": "4. Mass rate = 2764.8 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Mass rate = 2764800 mg/day / 1000000 mg/kg",
+   "explanation": "Line 3 divided by 1000 instead of 1000000 mg/kg. Correct mass rate is 2.7648 kg/day."
+  },
+  {
+   "id": "c1w-evidence01",
+   "revision": "r2",
+   "mode": "evidence-detective",
+   "prompt": "Settled-water turbidity rose from 1.2 NTU to 2.1 NTU over 4 hours without a flow-rate change.",
+   "topicId": "sedimentation-troubleshooting",
+   "level": "class1",
+   "assumptions": "Fictional clarifier log: steady flow, inline turbidimeter uncertainty +/- 0.1 NTU, archived plant records available.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Inlet water temperature dropped 4 C while basin mid-depth stayed warmer."
+    },
+    {
+     "id": "ev2",
+     "label": "Effluent weir shows uneven flow streaks along one side."
+    },
+    {
+     "id": "ev3",
+     "label": "Raw-water turbidity remained steady at 14 NTU (+/- 0.5 NTU)."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Consistent with thermal stratification affecting settling and flow uniformity"
+     },
+     {
+      "id": "inf-b",
+      "label": "Raw-water turbidity spiked and overloaded the clarifier"
+     },
+     {
+      "id": "inf-c",
+      "label": "Effluent turbidimeter drift alone explains the 0.9 NTU rise"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "A 4 C inlet drop with warmer basin water and uneven weir streaks is consistent with thermal stratification affecting settling, though causation is not yet proven from these records alone. Raw turbidity was steady, and uneven weir streaks point beyond simple meter drift."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which archived fictional record best distinguishes thermal stratification from meter drift?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Independent benchtop grab turbidity and basin depth-temperature profile log"
+     },
+     {
+      "id": "nc-b",
+      "label": "Weekly raw-water pH log from the intake"
+     },
+     {
+      "id": "nc-c",
+      "label": "Monthly totalized plant flow summary"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Comparing an independent benchtop turbidity record with a depth-temperature profile tests both instrument agreement and thermal layering."
+   },
+   "clueText": {
+    "nc-a": "Benchtop turbidity reads 2.05 NTU (matching inline), and temperature varies 3.8 C from top to bottom.",
+    "nc-b": "Intake pH remained steady and does not distinguish thermal layering from meter drift.",
+    "nc-c": "Monthly totalized flow does not resolve a 4-hour temperature-linked turbidity shift."
+   }
+  },
+  {
+   "id": "c1w-evidence02",
+   "revision": "r2",
+   "mode": "evidence-detective",
+   "prompt": "A rapid sand filter shows headloss rising faster than usual while effluent turbidity remains 0.18 NTU.",
+   "topicId": "filtration-headloss",
+   "level": "class1",
+   "assumptions": "Fictional filter run: constant filtration rate, turbidimeter uncertainty +/- 0.02 NTU, archived filter records available.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Loss-of-head gauge increased 0.6 m in 6 hours (typical is 0.3 m in 6 hours)."
+    },
+    {
+     "id": "ev2",
+     "label": "Filter effluent turbidity held steady at 0.18 NTU (+/- 0.02 NTU)."
+    },
+    {
+     "id": "ev3",
+     "label": "Settled-water turbidity entering the filter rose from 1.5 NTU to 3.2 NTU."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the evidence?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Higher settled-water solids loading is consistent with faster pore clogging and headloss"
+     },
+     {
+      "id": "inf-b",
+      "label": "Filter media breakthrough is occurring into the effluent"
+     },
+     {
+      "id": "inf-c",
+      "label": "A sudden drop in filtration rate caused the headloss to double"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Higher influent turbidity alongside steady 0.18 NTU effluent turbidity supports particle capture and solids loading in the media, though it does not prove exact bed depth or rule out all other factors."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which archived fictional record best tests upper-media loading versus other causes?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived differential-headloss profile and settled-water particle trend"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived raw-water alkalinity log from the previous season"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived finished-water temperature log"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Reviewing archived differential-headloss and settled-water particle records tests whether solids loading in the upper media tracks the headloss rise."
+   },
+   "clueText": {
+    "nc-a": "Archived records show most headloss occurred in the top media layer while settled-water turbidity averaged 3.2 NTU.",
+    "nc-b": "Seasonal raw-water alkalinity does not diagnose current filter headloss.",
+    "nc-c": "Finished-water temperature alone does not explain a doubled headloss rate."
+   }
+  },
+  {
+   "id": "c1w-evidence03",
+   "revision": "r2",
+   "mode": "evidence-detective",
+   "prompt": "Raw-water color jumped from 12 CU to 38 CU after heavy rain.",
+   "topicId": "water-chemistry-color",
+   "level": "class1",
+   "assumptions": "Fictional raw-water lab log: spectrophotometer uncertainty +/- 2 CU, archived laboratory records available.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Unfiltered raw-water sample measured 38 CU."
+    },
+    {
+     "id": "ev2",
+     "label": "A 0.45-micron filtered aliquot of the same sample measured 14 CU."
+    },
+    {
+     "id": "ev3",
+     "label": "Raw-water turbidity increased from 4 NTU to 28 NTU after the rain."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the evidence?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Most of the color increase is consistent with apparent color from suspended solids"
+     },
+     {
+      "id": "inf-b",
+      "label": "The increase is entirely true dissolved color"
+     },
+     {
+      "id": "inf-c",
+      "label": "Spectrophotometer zero drift of 26 CU explains both readings"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Filtering the sample dropped color from 38 CU to 14 CU, which is consistent with apparent color from particulates rather than true dissolved color or a uniform zero offset."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which archived fictional laboratory record best confirms the role of runoff particulates?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived paired filtered/unfiltered color and TSS log for the same storm event"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived intake pump motor amperage log"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived clearwell level trend"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Pairing archived filtered/unfiltered color with TSS directly compares particulate mass against apparent color."
+   },
+   "clueText": {
+    "nc-a": "Archived lab records show TSS rose from 5 mg/L to 34 mg/L while filtered true color stayed near 14 CU.",
+    "nc-b": "Pump amperage does not distinguish apparent from true color.",
+    "nc-c": "Clearwell level does not measure raw-water particulate color."
+   }
+  },
+  {
+   "id": "c1w-evidence04",
+   "revision": "r2",
+   "mode": "evidence-detective",
+   "prompt": "Small pin-floc is carrying over the sedimentation weir despite normal clarifier flow.",
+   "topicId": "coagulation-flocculation",
+   "level": "class1",
+   "assumptions": "Fictional plant log: steady flow, archived flocculation and lab study records available.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Flocculation paddle speed was recently increased."
+    },
+    {
+     "id": "ev2",
+     "label": "Large floc forms in the first flocculation zone but breaks into fine pin-floc by the outlet."
+    },
+    {
+     "id": "ev3",
+     "label": "Raw-water pH and alkalinity remained within normal historical range."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Excessive flocculation agitation is consistent with shearing previously formed floc"
+     },
+     {
+      "id": "inf-b",
+      "label": "Raw-water pH shifted outside the historical coagulation range"
+     },
+     {
+      "id": "inf-c",
+      "label": "No particle destabilization occurred in the rapid mixer"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Floc forming initially and breaking into pin-floc after paddle speed increased is consistent with mechanical shear, though bounded observations do not rule out all other factors."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which archived fictional study best distinguishes floc shear from other causes?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived lab study comparing gentle versus high-speed flocculation agitation"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived finished-water chlorine residual log"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived filter backwash duration log"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "An archived study comparing agitation speeds directly evaluates whether gentler mixing preserves floc size."
+   },
+   "clueText": {
+    "nc-a": "The archived study shows gentle agitation preserved large settleable floc, whereas high-speed mixing produced pin-floc.",
+    "nc-b": "Chlorine residual records do not diagnose flocculation shear.",
+    "nc-c": "Backwash duration records do not test floc formation in the basin."
+   }
+  }
+ ],
+ "missions": [
+  {
+   "id": "c1w-mission01",
+   "revision": "r2",
+   "mode": "exam-escape-room",
+   "title": "Hydraulics and Detention Time Escape",
+   "tasks": [
+    {
+     "taskId": "c1w-ladder01",
+     "revision": "r1",
+     "occurrenceId": "m1-occ1"
+    },
+    {
+     "taskId": "c1w-error01",
+     "revision": "r1",
+     "occurrenceId": "m1-occ2"
+    },
+    {
+     "taskId": "c1w-ladder03",
+     "revision": "r1",
+     "occurrenceId": "m1-occ3"
+    },
+    {
+     "taskId": "c1w-evidence01",
+     "revision": "r2",
+     "occurrenceId": "m1-occ4"
+    }
+   ]
+  },
+  {
+   "id": "c1w-mission02",
+   "revision": "r2",
+   "mode": "exam-escape-room",
+   "title": "Filtration Loading and Particle Removal",
+   "tasks": [
+    {
+     "taskId": "c1w-process02",
+     "revision": "r1",
+     "occurrenceId": "m2-occ1"
+    },
+    {
+     "taskId": "c1w-ladder02",
+     "revision": "r1",
+     "occurrenceId": "m2-occ2"
+    },
+    {
+     "taskId": "c1w-error02",
+     "revision": "r1",
+     "occurrenceId": "m2-occ3"
+    },
+    {
+     "taskId": "c1w-evidence02",
+     "revision": "r2",
+     "occurrenceId": "m2-occ4"
+    }
+   ]
+  },
+  {
+   "id": "c1w-mission03",
+   "revision": "r2",
+   "mode": "exam-escape-room",
+   "title": "Solids, Color, and Flocculation Diagnostics",
+   "tasks": [
+    {
+     "taskId": "c1w-process01",
+     "revision": "r1",
+     "occurrenceId": "m3-occ1"
+    },
+    {
+     "taskId": "c1w-ladder04",
+     "revision": "r1",
+     "occurrenceId": "m3-occ2"
+    },
+    {
+     "taskId": "c1w-error04",
+     "revision": "r1",
+     "occurrenceId": "m3-occ3"
+    },
+    {
+     "taskId": "c1w-evidence03",
+     "revision": "r2",
+     "occurrenceId": "m3-occ4"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "hb-p182",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "PDF p. 182, printed p. 131, Section 6.4.8.1 Hydraulic Detention Time"
+  },
+  {
+   "id": "hb-p187",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "PDF p. 187, printed p. 136, Section 6.4.15 Filtration"
+  },
+  {
+   "id": "hb-p510",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "PDF p. 510, printed p. 459, Section 13.4.1 Solids and Color"
+  },
+  {
+   "id": "hb-p683",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "PDF p. 683, printed p. 632, Chapter 20 Coagulation and Conventional Treatment"
+  },
+  {
+   "id": "hb-p684",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "PDF p. 684, printed p. 633, Coagulation Mixing and Jar Testing"
+  },
+  {
+   "id": "hb-p685",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "PDF p. 685, printed p. 634, Section 20.8 Sedimentation and Section 20.9 Filtration"
+  },
+  {
+   "id": "hb-p686",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "PDF p. 686, printed p. 635, Filtration Mechanisms and Components"
+  },
+  {
+   "id": "hb-p687",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "PDF p. 687, printed p. 636, Rapid Sand Filtration Rates"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "owner-authorized-ai-review:gemini-4-hydrogen",
+  "reviewedAt": "2026-11-19T04:56:16.332019+00:00",
+  "packageSha256": "16a374575d848a08a5f25701ed3b665ada8f8fdca5b4943718b39955a02d0d53",
+  "taskReceipts": [
+   {
+    "taskId": "c1w-ladder01",
+    "revision": "r1",
+    "sha256": "5bd97ccfe9c8a20f7e901b81f025307b1f13c91f4a80099ccfc78528b4032068",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-ladder02",
+    "revision": "r1",
+    "sha256": "9a9329fb9406dab34a87496edab4f68ce6c0b4a839334ec6f7c058c9d77eafae",
+    "sourceIds": [
+     "hb-p187",
+     "hb-p687"
+    ]
+   },
+   {
+    "taskId": "c1w-ladder03",
+    "revision": "r1",
+    "sha256": "bd39e0a0e957ceb3823f7bed1842b99e65ecd0fb088c4b25c85460a9655acb94",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-ladder04",
+    "revision": "r1",
+    "sha256": "3897fa400daebb17771930762b4eb30cba37dbabbb0f6ffc033cf4cfa221eb27",
+    "sourceIds": [
+     "hb-p510"
+    ]
+   },
+   {
+    "taskId": "c1w-process01",
+    "revision": "r1",
+    "sha256": "90802eb7ad7fc3ea2e9d5daea32a15e519da279d9959dca451220cad8bf7ab01",
+    "sourceIds": [
+     "hb-p683",
+     "hb-p684"
+    ]
+   },
+   {
+    "taskId": "c1w-process02",
+    "revision": "r1",
+    "sha256": "e53adcbf89d1dc8482b07db852a7cacad98371d4619381ca243dd3d6dd258dde",
+    "sourceIds": [
+     "hb-p683",
+     "hb-p685"
+    ]
+   },
+   {
+    "taskId": "c1w-process03",
+    "revision": "r1",
+    "sha256": "717f5a4b8c5a95c4e93c0c1a5584dc182d309ff643d32553dded87f9168f79ff",
+    "sourceIds": [
+     "hb-p683",
+     "hb-p685"
+    ]
+   },
+   {
+    "taskId": "c1w-process04",
+    "revision": "r2",
+    "sha256": "301ebd301cbdfe8ebb54428d2c384c6d71214b344fbca1d9310832ab67323dba",
+    "sourceIds": [
+     "hb-p683",
+     "hb-p685"
+    ]
+   },
+   {
+    "taskId": "c1w-error01",
+    "revision": "r1",
+    "sha256": "025fbc6b35105a4227e7c44660b2ed605196ce538eedf696db8c607f850d13cb",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-error02",
+    "revision": "r1",
+    "sha256": "8f0fbdfb85b5fdcea6dd8499de94d466dd7b26984fce3a5bbde42763ce3ffb89",
+    "sourceIds": [
+     "hb-p187",
+     "hb-p687"
+    ]
+   },
+   {
+    "taskId": "c1w-error03",
+    "revision": "r1",
+    "sha256": "e91f57669a1ec8b4fbd26c47163d712e4cc5c1051749fcb731c01550b957dd68",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-error04",
+    "revision": "r1",
+    "sha256": "7976514f38d712c19ee62815db21903b1af1d22e09be63351d502a8db405bb25",
+    "sourceIds": [
+     "hb-p510"
+    ]
+   },
+   {
+    "taskId": "c1w-evidence01",
+    "revision": "r2",
+    "sha256": "8a906ccb8425381b1bcfcff90244ef6e3c5507d7652c0fb8007c875b8618fd38",
+    "sourceIds": [
+     "hb-p685"
+    ]
+   },
+   {
+    "taskId": "c1w-evidence02",
+    "revision": "r2",
+    "sha256": "987a29c0d8f0b140eb98e5542094c37e9da884121d9e9b540140a26d05cc7e43",
+    "sourceIds": [
+     "hb-p686",
+     "hb-p687"
+    ]
+   },
+   {
+    "taskId": "c1w-evidence03",
+    "revision": "r2",
+    "sha256": "625c0805c727c2412901c024084340a266d1f4f4353e3053e904037622725c8a",
+    "sourceIds": [
+     "hb-p510"
+    ]
+   },
+   {
+    "taskId": "c1w-evidence04",
+    "revision": "r2",
+    "sha256": "9f501ac4ffa3c0c721d704e3d9dea5775b1a14f374d1b44bba51a6f66891ea01",
+    "sourceIds": [
+     "hb-p684",
+     "hb-p685"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "c1w-mission01",
+    "revision": "r2",
+    "sha256": "848d8d459ddcef9cf22a506052a30928fc5365d9c589cef91c7226b8368edbbf"
+   },
+   {
+    "missionId": "c1w-mission02",
+    "revision": "r2",
+    "sha256": "e652474da29f8c347404fbeb605066137c01c836e05f98148fef13015a4e73db"
+   },
+   {
+    "missionId": "c1w-mission03",
+    "revision": "r2",
+    "sha256": "61e1b90f7c7fe27a79be8d5e5b7b99aba97a913fd28b19b3cd9e8888cfe07171"
+   }
+  ]
+ }
+}

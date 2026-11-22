@@ -1,0 +1,5469 @@
+{
+ "courseKey": "wpi-class2-wastewater",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "wp2ww-process40",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for preparing a centrifuge for a dewatering run.",
+   "topicId": "process-centrifuge-preparation",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: solid bowl centrifuge with polymer feed and a cake auger discharge.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "Inspect the bowl area, guards, and discharge chute and confirm all guards are fitted"
+    },
+    {
+     "id": "step-04",
+     "label": "Start polymer flow and confirm it reaches the feed pipe"
+    },
+    {
+     "id": "step-06",
+     "label": "Raise feed to the planned rate once cake discharge is steady and dry"
+    },
+    {
+     "id": "step-05",
+     "label": "Start sludge feed at a low rate and watch torque and vibration readings"
+    },
+    {
+     "id": "step-02",
+     "label": "Check lubricating oil level and cooling water supply"
+    },
+    {
+     "id": "step-03",
+     "label": "Start the centrifuge empty and bring it up to operating speed"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Guards and lubrication come before rotation, the machine reaches speed empty, and feed rises only after a steady discharge is proven."
+  },
+  {
+   "id": "wp2ww-process41",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for changing over a full dewatered cake container.",
+   "topicId": "process-cake-container-changeover",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: cake container under the press discharge is full during a run.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Move the full container to the storage pad and record its weight or volume"
+    },
+    {
+     "id": "step-01",
+     "label": "Stop the sludge and polymer feeds and let the press clear"
+    },
+    {
+     "id": "step-05",
+     "label": "Restart the conveyor, polymer, and sludge feeds in start up order"
+    },
+    {
+     "id": "step-06",
+     "label": "Log the changeover time and the container identification in the solids record"
+    },
+    {
+     "id": "step-02",
+     "label": "Stop the cake conveyor once the last cake has discharged"
+    },
+    {
+     "id": "step-04",
+     "label": "Place an empty container under the discharge and confirm alignment"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The press clears before it stops, the full container is recorded before it leaves, and restart follows the normal start up order."
+  },
+  {
+   "id": "wp2ww-process42",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a dewatering run using a screw press on digested sludge.",
+   "topicId": "process-screw-press-run",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: screw press dewatering digested sludge for hauling to the approved outlet.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Start the screw press and then the sludge feed at a low rate"
+    },
+    {
+     "id": "step-05",
+     "label": "Adjust feed and polymer by watching cake dryness and filtrate clarity"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm the digested sludge feed tank level and mix the tank contents"
+    },
+    {
+     "id": "step-03",
+     "label": "Start polymer feed and set the dose from the last successful run"
+    },
+    {
+     "id": "step-06",
+     "label": "Sample the cake for the run record and log feed volume and run time"
+    },
+    {
+     "id": "step-02",
+     "label": "Start the discharge conveyor and place the receiving container"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Feed is mixed and containment is ready before the press starts, dose starts from proven settings, and adjustments follow cake appearance."
+  },
+  {
+   "id": "wp2ww-process43",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for troubleshooting a belt press that is producing very wet cake.",
+   "topicId": "process-belt-press-wet-cake-troubleshoot",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: cake solids have fallen sharply, press settings unchanged since the last good run.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Reduce the sludge feed rate to give the press more drainage time"
+    },
+    {
+     "id": "step-01",
+     "label": "Sample the feed sludge and check whether its solids concentration has fallen"
+    },
+    {
+     "id": "step-02",
+     "label": "Check polymer supply, age, and delivery rate against the run sheet"
+    },
+    {
+     "id": "step-06",
+     "label": "Escalate to the supervisor with samples and records if cake is still wet"
+    },
+    {
+     "id": "step-03",
+     "label": "Inspect the belts for blinding and wash them if the spray pattern is poor"
+    },
+    {
+     "id": "step-05",
+     "label": "Resample the cake after the changes have had time to take effect"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Feed, polymer, and belt condition are checked in that order before rate is cut, and escalation carries evidence rather than opinion."
+  },
+  {
+   "id": "wp2ww-process44",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for preparing sludge drying beds for a new filling cycle.",
+   "topicId": "process-drying-bed-preparation",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: outdoor sand drying beds at a small western plant, summer season.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "Remove the dried sludge from the previous cycle to the storage area"
+    },
+    {
+     "id": "step-06",
+     "label": "Record the bed number, date, volume applied, and feed solids in the solids log"
+    },
+    {
+     "id": "step-05",
+     "label": "Open the filling valve in stages and spread sludge evenly across the bed"
+    },
+    {
+     "id": "step-04",
+     "label": "Level the sand surface and repair any cracked sidewalls"
+    },
+    {
+     "id": "step-03",
+     "label": "Check the underdrain outlet and confirm it is clear and draining to the plant inlet"
+    },
+    {
+     "id": "step-02",
+     "label": "Inspect the sand surface and replace or top up sand where it is thin or fouled"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Old sludge and bed repairs come before filling, the underdrain is proven clear first, and the record ties the bed to its load."
+  },
+  {
+   "id": "wp2ww-process45",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for deciding when a drying bed load is ready to remove.",
+   "topicId": "process-drying-bed-readiness-check",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: sludge has been on the bed for several weeks in dry weather.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Schedule removal and hauling while the bed is at its driest"
+    },
+    {
+     "id": "step-03",
+     "label": "Test the sample for solids content against the hauling requirement"
+    },
+    {
+     "id": "step-02",
+     "label": "Take a core sample through the full sludge depth"
+    },
+    {
+     "id": "step-04",
+     "label": "Check the weather forecast for rain that would rewet the sludge"
+    },
+    {
+     "id": "step-01",
+     "label": "Inspect the surface for cracking and separation from the bed walls"
+    },
+    {
+     "id": "step-06",
+     "label": "Record the removal date, mass hauled, and the outlet used in the solids log"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Appearance is confirmed by a solids test, weather is checked before scheduling, and the haul record closes the bed cycle."
+  },
+  {
+   "id": "wp2ww-process46",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a weekly dewatering equipment care round.",
+   "topicId": "process-dewatering-weekly-round",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: press room round covering the press, polymer system, pumps, and conveyors.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Run the press wash water and inspect spray nozzles for blockages"
+    },
+    {
+     "id": "step-02",
+     "label": "Check sludge feed pump operation, seals, and discharge pressure"
+    },
+    {
+     "id": "step-01",
+     "label": "Check polymer tank level, mixers, and day tank condition"
+    },
+    {
+     "id": "step-06",
+     "label": "Record findings and raise work orders for any defect in the maintenance log"
+    },
+    {
+     "id": "step-05",
+     "label": "Test the press room sump pump and high level alarm"
+    },
+    {
+     "id": "step-04",
+     "label": "Check conveyor belts, bearings, and cake discharge path for build up"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The round moves from chemical supply to discharge so a fault is found at its source, alarms are tested, and defects become work orders."
+  },
+  {
+   "id": "wp2ww-process47",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for starting a chlorine contact tank disinfection program at the beginning of the discharge season.",
+   "topicId": "process-chlorine-season-startup",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: seasonal discharge plant in western Canada preparing for its spring effluent release.",
+   "cards": [
+    {
+     "id": "step-06",
+     "label": "Adjust the dose to hold the target residual and record the seasonal start up"
+    },
+    {
+     "id": "step-05",
+     "label": "Sample effluent for residual and bacteriological testing through the first days of discharge"
+    },
+    {
+     "id": "step-02",
+     "label": "Confirm chlorine supply, feed pump operation, and spare parts are on hand"
+    },
+    {
+     "id": "step-04",
+     "label": "Start chlorine feed at the low end of the approved dose range"
+    },
+    {
+     "id": "step-03",
+     "label": "Fill and flush the contact tank and check for leaks or short circuit paths"
+    },
+    {
+     "id": "step-01",
+     "label": "Inspect the contact tank, baffles, and chlorine feed equipment after the off season"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Equipment and supply are proven before the tank is filled, feed starts low, and bacteriological results confirm the program before discharge settles in."
+  },
+  {
+   "id": "wp2ww-process48",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a routine chlorine residual control check on final effluent.",
+   "topicId": "process-residual-control-check",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: continuous effluent disinfection with a chlorine feed paced to flow.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Adjust the feed pump in one small step if the residual is outside the range"
+    },
+    {
+     "id": "step-05",
+     "label": "Resample after one contact time has passed to confirm the new residual"
+    },
+    {
+     "id": "step-01",
+     "label": "Collect an effluent sample at the residual sampling point after the contact tank"
+    },
+    {
+     "id": "step-02",
+     "label": "Measure total chlorine residual with the bench kit and record the result"
+    },
+    {
+     "id": "step-06",
+     "label": "Log the dose, flow, and both residuals in the disinfection record"
+    },
+    {
+     "id": "step-03",
+     "label": "Compare the residual with the target range and the recent effluent flow"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The residual is measured before any adjustment, one step is given a full contact time to take effect, and the confirming sample closes the check."
+  },
+  {
+   "id": "wp2ww-process49",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for changing an empty chlorine gas cylinder safely with a second operator present.",
+   "topicId": "process-chlorine-cylinder-change",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: one tonne style container is not used here, this is a small cylinder system with a vacuum regulator.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Close the cylinder valve and the feed line valve on the empty cylinder"
+    },
+    {
+     "id": "step-03",
+     "label": "Remove the vacuum regulator following the site procedure and cap the cylinder outlet"
+    },
+    {
+     "id": "step-01",
+     "label": "Put on the required protective equipment and confirm the emergency kit and ventilation are available"
+    },
+    {
+     "id": "step-04",
+     "label": "Move the empty cylinder to the storage area and secure the full cylinder in its place"
+    },
+    {
+     "id": "step-05",
+     "label": "Fit the regulator with a new gasket and test the connection for leaks with the approved method"
+    },
+    {
+     "id": "step-06",
+     "label": "Open the cylinder, restore feed, and confirm chlorine flow and residual response"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Protection and ventilation come before valves are touched, leak testing precedes feed restoration, and residual response proves the change worked."
+  },
+  {
+   "id": "wp2ww-process50",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for verifying ultraviolet disinfection performance during a weekly check.",
+   "topicId": "process-uv-weekly-verification",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: open channel ultraviolet system disinfecting final effluent.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "Record flow, lamp hours, and intensity readings from the control panel"
+    },
+    {
+     "id": "step-06",
+     "label": "Log the check, any lamp change, and the effluent results together"
+    },
+    {
+     "id": "step-02",
+     "label": "Wipe or confirm automatic cleaning of the quartz sleeves if the design requires it"
+    },
+    {
+     "id": "step-04",
+     "label": "Check effluent samples results for the week against the disinfection target"
+    },
+    {
+     "id": "step-05",
+     "label": "Clean or replace any lamp flagged by the panel alarms"
+    },
+    {
+     "id": "step-03",
+     "label": "Compare the panel intensity with a reference sensor check if one is provided"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Panel data is recorded before cleaning so fouling can be judged, effluent results are reviewed with the readings, and lamp work is logged with its evidence."
+  },
+  {
+   "id": "wp2ww-process51",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for responding when effluent bacteriological results exceed the target after disinfection.",
+   "topicId": "process-bacteriological-exceedance-response",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: laboratory reports a high bacteriological result on a routine effluent sample, discharge continues under provincial requirements.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Check chlorine residual records or ultraviolet intensity records for the sample period"
+    },
+    {
+     "id": "step-05",
+     "label": "Inspect the contact tank or ultraviolet channel for fouling, high flow, or bypass"
+    },
+    {
+     "id": "step-02",
+     "label": "Notify the supervisor promptly under the plant notification procedure"
+    },
+    {
+     "id": "step-03",
+     "label": "Resample the effluent at the same point using full sterile technique"
+    },
+    {
+     "id": "step-06",
+     "label": "Increase disinfection intensity as directed and track follow up results until they return to range"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm the result details, sample date, and sampling point with the laboratory"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The result is verified and the supervisor notified before field work, records are checked before equipment is blamed, and follow up sampling proves the correction."
+  },
+  {
+   "id": "wp2ww-process52",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for calibrating a chlorine feed pump by drawdown.",
+   "topicId": "process-chlorine-pump-calibration",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: diaphragm feed pump drawing from a graduated calibration column.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Calculate the delivered volume per hour from the drawdown and the time"
+    },
+    {
+     "id": "step-06",
+     "label": "Repeat the drawdown once to confirm the adjusted delivery and log both tests"
+    },
+    {
+     "id": "step-05",
+     "label": "Compare the delivery with the setpoint chart and adjust the stroke if needed"
+    },
+    {
+     "id": "step-03",
+     "label": "Run the pump for the timed test period and record the ending level"
+    },
+    {
+     "id": "step-01",
+     "label": "Line up the calibration column and fill it to the top mark from the supply tank"
+    },
+    {
+     "id": "step-02",
+     "label": "Record the starting level and start the pump at its normal stroke setting"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Delivery is measured before it is judged, adjustment follows the calculation, and a repeat test confirms the new setting."
+  },
+  {
+   "id": "wp2ww-process53",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for preparing a sodium hypochlorite day tank refill.",
+   "topicId": "process-hypochlorite-refill-routine",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: bulk hypochlorite delivery filling the storage tank that feeds the day tank.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Put on chemical protective equipment and confirm the eyewash station is working"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm the delivery paperwork matches the product and strength ordered"
+    },
+    {
+     "id": "step-04",
+     "label": "Connect the delivery hose and open valves in the order on the site procedure"
+    },
+    {
+     "id": "step-05",
+     "label": "Monitor the tank level during filling and stop at the planned level"
+    },
+    {
+     "id": "step-06",
+     "label": "Close valves, drain and disconnect the hose safely, and record the volume received"
+    },
+    {
+     "id": "step-03",
+     "label": "Check available tank capacity so the delivery cannot overfill the tank"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Paperwork and protection come before any connection, capacity is proven before filling starts, and level monitoring prevents overfill."
+  },
+  {
+   "id": "wp2ww-process54",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for taking a chlorine contact tank out of service for cleaning while disinfection continues.",
+   "topicId": "process-contact-tank-cleaning-changeover",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: twin contact tanks, one stays in service to maintain disinfection.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Shift all effluent flow to the tank staying in service and verify residual"
+    },
+    {
+     "id": "step-04",
+     "label": "Remove accumulated solids and wash the tank and baffles"
+    },
+    {
+     "id": "step-03",
+     "label": "Isolate and drain the tank being removed and apply lockout to its equipment"
+    },
+    {
+     "id": "step-06",
+     "label": "Refill the cleaned tank, return it to standby, and restore the normal flow split"
+    },
+    {
+     "id": "step-05",
+     "label": "Inspect baffles and walls and report any damage before refilling"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm the remaining tank can hold the required contact time at current flow"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Contact time in the remaining tank is proven before flow shifts, cleaning and inspection happen while the tank is empty, and normal splitting returns last."
+  },
+  {
+   "id": "wp2ww-process55",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a monthly disinfection system review.",
+   "topicId": "process-disinfection-monthly-review",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: supervisor and operator review dose, residuals, bacteriological results, and chemical use for the month.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Compile all bacteriological results and flag any result outside the target"
+    },
+    {
+     "id": "step-05",
+     "label": "Agree on dose range or maintenance changes for the next month"
+    },
+    {
+     "id": "step-04",
+     "label": "Identify days where residual or results drifted and match them to flow or quality events"
+    },
+    {
+     "id": "step-03",
+     "label": "Total chemical used and compare it with the volume treated"
+    },
+    {
+     "id": "step-06",
+     "label": "File the review with the monthly compliance summary"
+    },
+    {
+     "id": "step-01",
+     "label": "Compile daily dose, flow, and residual records for the month"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Dose, results, and chemical use are compiled before patterns are judged, drift days are matched to events, and agreed changes close the review."
+  },
+  {
+   "id": "wp2ww-process56",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for restoring disinfection after a chlorine feed failure is repaired.",
+   "topicId": "process-disinfection-restoration-after-failure",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: feed pump failed for several hours, repair is complete, effluent continued to flow.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Collect a bacteriological sample to verify disinfection has recovered"
+    },
+    {
+     "id": "step-05",
+     "label": "Notify the supervisor of the outage length and the recovery results for the compliance record"
+    },
+    {
+     "id": "step-06",
+     "label": "Increase residual checks for the next day to confirm stability"
+    },
+    {
+     "id": "step-03",
+     "label": "Sample effluent residual after one contact time and confirm it is in range"
+    },
+    {
+     "id": "step-02",
+     "label": "Restart chlorine feed at the approved dose for current flow"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm the repair and test the pump delivery by drawdown before returning it to service"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The pump is proven before it is trusted, residual recovery precedes bacteriological confirmation, and the outage is documented for the compliance record."
+  },
+  {
+   "id": "wp2ww-process57",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for setting up an aeration basin for nitrification after a cold period.",
+   "topicId": "process-nitrification-setup-routine",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: effluent ammonia has risen during cold weather, plant has aeration control and wasting control.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "Confirm ammonia rise with laboratory results and wastewater temperature records"
+    },
+    {
+     "id": "step-03",
+     "label": "Confirm dissolved oxygen is held in the upper part of the target range in all zones"
+    },
+    {
+     "id": "step-04",
+     "label": "Check alkalinity in the effluent to confirm buffering remains for nitrification"
+    },
+    {
+     "id": "step-02",
+     "label": "Raise the solids retention time target by reducing wasting in steps"
+    },
+    {
+     "id": "step-06",
+     "label": "Record the winter nitrification settings for reuse next season"
+    },
+    {
+     "id": "step-05",
+     "label": "Track ammonia daily and hold further wasting cuts once ammonia turns down"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Ammonia and temperature evidence comes first, inventory and oxygen are raised together, alkalinity is checked as the safeguard, and daily tracking shows the turn."
+  },
+  {
+   "id": "wp2ww-process58",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for creating an anoxic zone routine for denitrification in an existing basin.",
+   "topicId": "process-anoxic-zone-routine",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: first basin zone can be unaerated with mixing, supervisor has approved a trial.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Watch dissolved oxygen in the zone fall to near zero while later zones stay aerobic"
+    },
+    {
+     "id": "step-06",
+     "label": "Adjust zone air or recycle based on results and record the trial settings"
+    },
+    {
+     "id": "step-01",
+     "label": "Review effluent nitrate results to confirm denitrification is needed"
+    },
+    {
+     "id": "step-02",
+     "label": "Turn off air to the first zone and confirm mixers keep solids in suspension"
+    },
+    {
+     "id": "step-05",
+     "label": "Sample nitrate at the zone outlet and ammonia at the basin outlet through the trial"
+    },
+    {
+     "id": "step-03",
+     "label": "Confirm internal recycle or return flow brings nitrate into the anoxic zone"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Need is proven by nitrate results, the zone is made anoxic without settling, and paired nitrate and ammonia sampling judges whether the trial helps or harms."
+  },
+  {
+   "id": "wp2ww-process59",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for checking alkalinity consumption when nitrification is active.",
+   "topicId": "process-alkalinity-nitrification-check",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: operator awareness check using influent and effluent alkalinity and ammonia results supplied by the laboratory.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Estimate alkalinity consumed using the factor given on the process sheet"
+    },
+    {
+     "id": "step-03",
+     "label": "Compare consumed alkalinity with the alkalinity entering in the influent"
+    },
+    {
+     "id": "step-04",
+     "label": "Confirm the effluent still carries residual alkalinity above the plant minimum"
+    },
+    {
+     "id": "step-05",
+     "label": "Report any shortfall to the supervisor for a chemical feed decision"
+    },
+    {
+     "id": "step-06",
+     "label": "Trend the check weekly while nitrification is required"
+    },
+    {
+     "id": "step-01",
+     "label": "Collect the laboratory ammonia removed and alkalinity results for the same period"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Consumption is estimated from measured ammonia removal, the comparison with influent alkalinity shows the margin, and a shortfall is escalated before pH can fall."
+  },
+  {
+   "id": "wp2ww-process60",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a phosphorus awareness sampling round at a plant without chemical removal.",
+   "topicId": "process-phosphorus-awareness-round",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: seasonal phosphorus monitoring for information, no removal target in the current approval.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Note any pattern linked to load or season for the supervisor review"
+    },
+    {
+     "id": "step-03",
+     "label": "Record flows and any industrial deliveries on the sampling days"
+    },
+    {
+     "id": "step-04",
+     "label": "Plot influent and effluent phosphorus together when results return"
+    },
+    {
+     "id": "step-01",
+     "label": "Collect influent and effluent samples at the points on the monitoring plan"
+    },
+    {
+     "id": "step-06",
+     "label": "File the round with the seasonal monitoring summary"
+    },
+    {
+     "id": "step-02",
+     "label": "Preserve and deliver the samples within the holding time on the plan"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Paired influent and effluent samples with flow context give the pattern meaning, and plotting over the season is the purpose of the round."
+  },
+  {
+   "id": "wp2ww-process61",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for responding to filamentous growth linked to low food conditions in a nutrient limited period.",
+   "topicId": "process-low-food-filament-response",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: microscopy shows filament types associated with low food, settling is deteriorating.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Reduce wasting slightly to raise inventory if the supervisor approves"
+    },
+    {
+     "id": "step-02",
+     "label": "Review food to microorganism and solids retention time records for a low food pattern"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm the filament finding with a second microscopy examination"
+    },
+    {
+     "id": "step-06",
+     "label": "Record whether settling recovers and close the response in the process log"
+    },
+    {
+     "id": "step-03",
+     "label": "Check dissolved oxygen records to rule out low oxygen as the driver"
+    },
+    {
+     "id": "step-05",
+     "label": "Monitor settling tests and microscopy twice weekly during the response"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "A second examination confirms the finding before records are interpreted, oxygen is ruled out before food is blamed, and monitoring proves the response."
+  },
+  {
+   "id": "wp2ww-process62",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for preparing a basin for a temporary denitrification trial during high nitrate discharge.",
+   "topicId": "process-denitrification-trial-prep",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: two week trial, one train only, the second train stays in normal operation as a control.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Compare trial and control trains at the end of each week"
+    },
+    {
+     "id": "step-06",
+     "label": "Summarize the trial for the supervisor with a recommendation to adopt or stop"
+    },
+    {
+     "id": "step-04",
+     "label": "Collect daily nitrate and ammonia samples from both trains during the trial"
+    },
+    {
+     "id": "step-03",
+     "label": "Brief all shifts on the trial settings and the samples to collect"
+    },
+    {
+     "id": "step-02",
+     "label": "Set the trial train anoxic zone and recycle settings from the trial plan"
+    },
+    {
+     "id": "step-01",
+     "label": "Record baseline nitrate, ammonia, and effluent quality on both trains for several days"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "A baseline on both trains makes the comparison fair, the control train runs throughout, and the summary is based on paired evidence."
+  },
+  {
+   "id": "wp2ww-process63",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for checking for septicity driven nutrient release in a long force main discharge.",
+   "topicId": "process-septicity-nutrient-check",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: long force main discharges to the headworks, odour and ammonia spikes noted on pump cycles.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Resample on the new schedule to confirm the spikes have reduced"
+    },
+    {
+     "id": "step-01",
+     "label": "Note the times of force main pump cycles and the arrival of each slug at the headworks"
+    },
+    {
+     "id": "step-03",
+     "label": "Review pump run times and detention in the main for an unusually long hold"
+    },
+    {
+     "id": "step-04",
+     "label": "Shorten detention by adjusting pump scheduling if the supervisor approves"
+    },
+    {
+     "id": "step-06",
+     "label": "Log the pattern and the schedule change for future operators"
+    },
+    {
+     "id": "step-02",
+     "label": "Sample the arriving flow for odour, ammonia, and sulfide indication using site methods"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Sampling is timed to the arriving slug so the pattern can be seen, detention is the controllable cause, and resampling proves the schedule change helped."
+  },
+  {
+   "id": "wp2ww-process64",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a weekly nutrient dashboard update for the operations team.",
+   "topicId": "process-nutrient-dashboard-update",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: one page dashboard covering ammonia, nitrate, phosphorus, alkalinity, and temperature.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Flag any result trending toward the plant action level"
+    },
+    {
+     "id": "step-04",
+     "label": "Add the current wasting and aeration settings beside the results"
+    },
+    {
+     "id": "step-06",
+     "label": "Carry any flag into the weekly operations meeting agenda"
+    },
+    {
+     "id": "step-01",
+     "label": "Enter the week of laboratory nutrient results in date order"
+    },
+    {
+     "id": "step-05",
+     "label": "Post the dashboard at the control panel for all shifts"
+    },
+    {
+     "id": "step-02",
+     "label": "Add wastewater temperature and average flow for the same days"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Results gain meaning beside temperature, flow, and settings, flags are set from the completed picture, and the meeting receives the flags."
+  },
+  {
+   "id": "wp2ww-process65",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for investigating rising effluent ammonia over three days.",
+   "topicId": "process-ammonia-rise-investigation",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: effluent ammonia climbing but still below the limit in the plant approval, cold weather.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Review wastewater temperature, solids retention time, and recent wasting changes"
+    },
+    {
+     "id": "step-04",
+     "label": "Check alkalinity and pH for a buffering shortfall"
+    },
+    {
+     "id": "step-05",
+     "label": "Make one corrective change at a time as directed by the supervisor"
+    },
+    {
+     "id": "step-03",
+     "label": "Check dissolved oxygen profiles for a low zone in the aeration basin"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm the trend with the laboratory and check for a sampling or analysis issue"
+    },
+    {
+     "id": "step-06",
+     "label": "Sample ammonia daily until the trend reverses and record the cause found"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Analysis error is ruled out first, inventory, oxygen, and alkalinity are checked in order, and single changes let the cause be identified."
+  },
+  {
+   "id": "wp2ww-process66",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for balancing aeration between nitrification and energy use in mild weather.",
+   "topicId": "process-aeration-nutrient-energy-balance",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: spring warm up, ammonia is comfortably low and aeration energy use is high.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "Review ammonia results and confirm the margin below the action level"
+    },
+    {
+     "id": "step-02",
+     "label": "Reduce air to the zone with the highest dissolved oxygen in one small step"
+    },
+    {
+     "id": "step-03",
+     "label": "Watch ammonia and dissolved oxygen daily for several days after the step"
+    },
+    {
+     "id": "step-06",
+     "label": "Record the seasonal air settings that held ammonia and saved energy"
+    },
+    {
+     "id": "step-05",
+     "label": "Repeat small steps only while ammonia stays comfortably low"
+    },
+    {
+     "id": "step-04",
+     "label": "Hold or reverse the step if ammonia begins to climb"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Margin is proven before air is cut, steps are small and watched, and the proven settings are recorded for the next season."
+  },
+  {
+   "id": "wp2ww-process67",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for collecting a 24 hour composite influent sample for compliance reporting.",
+   "topicId": "process-composite-sampling-program",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: refrigerated automatic sampler at the influent, flow paced collection.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Retrieve the container at the end of the period and mix the composite thoroughly"
+    },
+    {
+     "id": "step-02",
+     "label": "Place a clean composite container and confirm refrigeration is working"
+    },
+    {
+     "id": "step-06",
+     "label": "Split the composite into laboratory containers, label them, and complete the custody form"
+    },
+    {
+     "id": "step-04",
+     "label": "Verify aliquots are being collected by checking the sampler counter mid period"
+    },
+    {
+     "id": "step-03",
+     "label": "Check the sampler intake line is submerged and free of debris at start up"
+    },
+    {
+     "id": "step-01",
+     "label": "Program the sampler for flow paced aliquots over the 24 hour period on the sampling plan"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Programming and a clean cold container come before collection, a mid period check catches failure early, and thorough mixing makes the splits representative."
+  },
+  {
+   "id": "wp2ww-process68",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for running a duplicate and spike quality control set with a batch of effluent samples.",
+   "topicId": "process-duplicate-spike-qc-set",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: laboratory quality control for a suspended solids and nutrient batch.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "Select the sample to duplicate and split it into two equal portions"
+    },
+    {
+     "id": "step-03",
+     "label": "Analyse the original, duplicate, and spiked portions in the same batch"
+    },
+    {
+     "id": "step-05",
+     "label": "Compare both values with the acceptance limits on the quality control chart"
+    },
+    {
+     "id": "step-02",
+     "label": "Prepare the spiked portion by adding the standard volume on the method sheet"
+    },
+    {
+     "id": "step-06",
+     "label": "Flag the batch and notify the supervisor if either value falls outside its limits"
+    },
+    {
+     "id": "step-04",
+     "label": "Calculate the duplicate agreement and the spike recovery from the results"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Duplicate and spike portions must run in the same batch as the samples they judge, calculations follow analysis, and out of limit values flag the whole batch."
+  },
+  {
+   "id": "wp2ww-process69",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for calibrating a bench pH meter before a day of testing.",
+   "topicId": "process-ph-meter-calibration-qc",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: two point calibration with standard buffers before effluent and process samples.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Verify with an independent check standard before testing samples"
+    },
+    {
+     "id": "step-06",
+     "label": "Log the calibration, buffers used, and check result in the calibration record"
+    },
+    {
+     "id": "step-01",
+     "label": "Rinse the electrode and check it for damage or coating"
+    },
+    {
+     "id": "step-04",
+     "label": "Check the slope or offset reading against the acceptance range on the meter sheet"
+    },
+    {
+     "id": "step-02",
+     "label": "Calibrate at the first buffer and record the reading once it is stable"
+    },
+    {
+     "id": "step-03",
+     "label": "Rinse and calibrate at the second buffer bracketing the expected sample range"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Bracketing buffers and a slope check make the calibration valid, an independent standard verifies it, and the log proves it happened."
+  },
+  {
+   "id": "wp2ww-process70",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for handling a sample that arrives at the laboratory past its holding time.",
+   "topicId": "process-holding-time-exceedance-handling",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: effluent sample for bacteriological testing delivered late by a courier delay.",
+   "cards": [
+    {
+     "id": "step-06",
+     "label": "Review the delivery routine to prevent a repeat and note the change"
+    },
+    {
+     "id": "step-02",
+     "label": "Compare the elapsed time with the holding time on the sampling plan"
+    },
+    {
+     "id": "step-05",
+     "label": "Collect a replacement sample at the next valid sampling opportunity"
+    },
+    {
+     "id": "step-04",
+     "label": "Reject the sample for compliance use and document the reason"
+    },
+    {
+     "id": "step-01",
+     "label": "Record the collection time, receipt time, and temperature on arrival"
+    },
+    {
+     "id": "step-03",
+     "label": "Notify the supervisor and the laboratory contact that the sample is compromised"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Times are documented before judgement, a compromised sample is rejected rather than reported, and a replacement plus a routine fix close the event."
+  },
+  {
+   "id": "wp2ww-process71",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for preparing sample bottles for a weekly sampling run.",
+   "topicId": "process-sample-bottle-preparation",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: bottles needed for influent, effluent, and process samples including preserved containers.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Select the correct container type and preservative for each analysis"
+    },
+    {
+     "id": "step-06",
+     "label": "Record any missing analysis in the log so it can be rescheduled"
+    },
+    {
+     "id": "step-03",
+     "label": "Label each bottle with location, analysis, date, and preservative before leaving the lab"
+    },
+    {
+     "id": "step-05",
+     "label": "Check bottle count against the plan at the vehicle before departure"
+    },
+    {
+     "id": "step-04",
+     "label": "Pack bottles in sampling order with the custody forms and field meters"
+    },
+    {
+     "id": "step-01",
+     "label": "List the analyses required from the weekly sampling plan"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The plan drives container choice, labels are completed before travel, and a count check at departure prevents a wasted trip."
+  },
+  {
+   "id": "wp2ww-process72",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for reviewing a laboratory report before the results are used for compliance.",
+   "topicId": "process-lab-report-review",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: monthly compliance report received from the contract laboratory.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Query any missing or flagged result with the laboratory in writing"
+    },
+    {
+     "id": "step-02",
+     "label": "Check collection dates, receipt dates, and holding times for each result"
+    },
+    {
+     "id": "step-03",
+     "label": "Review quality control flags, dilutions, and detection limits noted by the lab"
+    },
+    {
+     "id": "step-01",
+     "label": "Check that all scheduled samples and analyses appear on the report"
+    },
+    {
+     "id": "step-06",
+     "label": "File the reviewed report and carry flags into the compliance summary"
+    },
+    {
+     "id": "step-04",
+     "label": "Compare each result with the plant approval values and flag any exceedance at once"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Completeness and holding times are checked before values are trusted, exceedances are flagged immediately, and queries are documented before filing."
+  },
+  {
+   "id": "wp2ww-process73",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a chain of custody check when samples change hands.",
+   "topicId": "process-chain-of-custody-check",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: operator hands weekend samples to a courier for the contract laboratory.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Confirm each label matches its custody line for location, date, and analysis"
+    },
+    {
+     "id": "step-05",
+     "label": "Have the courier sign as receiver and keep the sampler copy"
+    },
+    {
+     "id": "step-04",
+     "label": "Sign and date the transfer section as the relinquishing sampler"
+    },
+    {
+     "id": "step-06",
+     "label": "File the copy and confirm laboratory receipt the next business day"
+    },
+    {
+     "id": "step-01",
+     "label": "List every container on the custody form and count the physical containers"
+    },
+    {
+     "id": "step-03",
+     "label": "Seal the cooler and record the seal number on the form"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Containers are counted against the form before sealing, signatures mark the transfer, and receipt confirmation closes the chain."
+  },
+  {
+   "id": "wp2ww-process74",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for investigating an unusually high blank result in a solids batch.",
+   "topicId": "process-blank-investigation-qc",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: method blank shows solids well above the usual near zero value.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Inspect filters, dishes, and glassware used for the batch for contamination"
+    },
+    {
+     "id": "step-05",
+     "label": "Rerun affected samples if the new blank is clean and samples remain within holding time"
+    },
+    {
+     "id": "step-01",
+     "label": "Hold the batch results and do not report them until the blank is explained"
+    },
+    {
+     "id": "step-03",
+     "label": "Review the balance and drying oven records for the batch day"
+    },
+    {
+     "id": "step-04",
+     "label": "Reprepare and rerun the blank with fresh materials"
+    },
+    {
+     "id": "step-06",
+     "label": "Document the cause and the rerun in the quality control log"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Results are held before any reporting, materials and equipment are checked in order, and reruns are justified by a clean blank."
+  },
+  {
+   "id": "wp2ww-process75",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for setting up a control chart for effluent suspended solids results.",
+   "topicId": "process-control-chart-setup",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: new chart to track weekly effluent solids against the plant action levels.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Draw the centre line and the warning and action lines on the chart"
+    },
+    {
+     "id": "step-06",
+     "label": "Plot each new result on its sampling day from now on"
+    },
+    {
+     "id": "step-05",
+     "label": "Post the chart and brief operators on what a warning or action breach requires"
+    },
+    {
+     "id": "step-02",
+     "label": "Calculate the average and the spread used for the chart limits on the lab sheet"
+    },
+    {
+     "id": "step-01",
+     "label": "Gather the last several months of weekly effluent solids results"
+    },
+    {
+     "id": "step-04",
+     "label": "Plot the historical results in date order to confirm the chart behaves sensibly"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Limits are calculated from history before lines are drawn, historical plotting tests the chart, and briefing ensures breaches trigger action."
+  },
+  {
+   "id": "wp2ww-process76",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for collecting a grab sample for dissolved oxygen sensitive testing at the effluent.",
+   "topicId": "process-grab-sample-sensitive-testing",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: effluent sample for biochemical oxygen demand seeding checks, air exposure must be avoided.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Label the bottle and place it in the cooler at once"
+    },
+    {
+     "id": "step-06",
+     "label": "Deliver to the laboratory bench within the time on the sampling plan"
+    },
+    {
+     "id": "step-05",
+     "label": "Record time, temperature, and weather at collection on the field sheet"
+    },
+    {
+     "id": "step-01",
+     "label": "Rinse the sample bottle with effluent at the sampling point"
+    },
+    {
+     "id": "step-02",
+     "label": "Fill the bottle by submerging it and capping it underwater or with no headspace as the method requires"
+    },
+    {
+     "id": "step-03",
+     "label": "Check the bottle for air bubbles and refill if any are present"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Filling without air contact protects the measurement, bubbles mean a refill, and prompt cold delivery preserves the sample."
+  },
+  {
+   "id": "wp2ww-process77",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for an annual laboratory method review with the contract laboratory.",
+   "topicId": "process-annual-lab-method-review",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: supervisor and lead operator meet the contract lab to review methods, limits, and turnaround.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Update the sampling plan and bottle list to match the agreement"
+    },
+    {
+     "id": "step-03",
+     "label": "Review detection limits against the approval values they must prove"
+    },
+    {
+     "id": "step-04",
+     "label": "Agree on method, reporting, and notification changes with the laboratory"
+    },
+    {
+     "id": "step-02",
+     "label": "List any new analyses required by the plant approval for the coming year"
+    },
+    {
+     "id": "step-01",
+     "label": "Compile the year of quality control flags, missed holding times, and late reports"
+    },
+    {
+     "id": "step-06",
+     "label": "File the review notes and brief all samplers on the changes"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The year of problems is compiled before the meeting, new requirements are listed, and the sampling plan is updated so the agreement takes effect."
+  },
+  {
+   "id": "wp2ww-process78",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for storing and rotating laboratory reagents so expired stock is never used.",
+   "topicId": "process-reagent-rotation-program",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: bench reagents for solids, chlorine, and nutrient testing in the plant laboratory.",
+   "cards": [
+    {
+     "id": "step-06",
+     "label": "Initial and date the rotation check in the laboratory housekeeping log"
+    },
+    {
+     "id": "step-03",
+     "label": "Remove and set aside any expired reagent for approved disposal"
+    },
+    {
+     "id": "step-05",
+     "label": "Order replacements for any reagent below minimum or expiring soon"
+    },
+    {
+     "id": "step-04",
+     "label": "Check the stock against the minimum levels for the next month of testing"
+    },
+    {
+     "id": "step-02",
+     "label": "Move the earliest expiring stock to the front of each shelf"
+    },
+    {
+     "id": "step-01",
+     "label": "Inventory all reagents and record expiry dates on the stock sheet"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Inventory comes before rotation, expired stock leaves the shelves before ordering, and the signed log proves the check."
+  },
+  {
+   "id": "wp2ww-process79",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for troubleshooting a secondary clarifier with solids rising over the weirs.",
+   "topicId": "process-clarifier-rising-solids-troubleshoot",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: solids loss over the effluent weirs on one clarifier, plant flow is normal.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Check return sludge flow and pump operation for that clarifier"
+    },
+    {
+     "id": "step-06",
+     "label": "Log the cause found and the action, and trend blanket depth until normal"
+    },
+    {
+     "id": "step-03",
+     "label": "Check mixed liquor concentration and recent wasting for an overload of solids"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm the loss visually and measure blanket depth in the affected clarifier"
+    },
+    {
+     "id": "step-04",
+     "label": "Increase return rate in one step and watch blanket response"
+    },
+    {
+     "id": "step-05",
+     "label": "Reduce flow to the clarifier if the blanket does not respond"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Blanket, return flow, and inventory are checked in order before rates change, flow reduction is the last resort, and trending confirms recovery."
+  },
+  {
+   "id": "wp2ww-process80",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for troubleshooting low dissolved oxygen in one aeration zone.",
+   "topicId": "process-low-do-zone-troubleshoot",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: one zone reads well below target while other zones are normal.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Inspect the air header and drop legs for a closed or partly closed valve"
+    },
+    {
+     "id": "step-06",
+     "label": "Recheck the zone profile and log the cause and correction"
+    },
+    {
+     "id": "step-01",
+     "label": "Verify the low reading with a portable meter at the same point"
+    },
+    {
+     "id": "step-03",
+     "label": "Check diffusers in the zone for fouling by observing the bubble pattern"
+    },
+    {
+     "id": "step-05",
+     "label": "Restore air by opening valves or scheduling diffuser cleaning as found"
+    },
+    {
+     "id": "step-04",
+     "label": "Review load records for a slug discharge reaching that zone"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The reading is verified before equipment is blamed, air delivery is checked before load, and a recheck proves the fix."
+  },
+  {
+   "id": "wp2ww-process81",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for troubleshooting a sudden rise in effluent turbidity after a storm.",
+   "topicId": "process-storm-turbidity-troubleshoot",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: effluent turbidity climbed during high flows and has not recovered a day later.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Measure current blanket depths and effluent solids on each clarifier"
+    },
+    {
+     "id": "step-06",
+     "label": "Write up the event with causes and recovery actions for the operations file"
+    },
+    {
+     "id": "step-05",
+     "label": "Increase effluent sampling until turbidity returns to its normal range"
+    },
+    {
+     "id": "step-01",
+     "label": "Review peak flow, clarifier blankets, and any bypass or overflow during the storm"
+    },
+    {
+     "id": "step-03",
+     "label": "Check return and waste pumps for a failure during the event"
+    },
+    {
+     "id": "step-04",
+     "label": "Restore normal wasting and return settings if they were changed for the storm"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Storm records explain the event before current measurements guide recovery, failed equipment is checked, and the write up preserves the lesson."
+  },
+  {
+   "id": "wp2ww-process82",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for troubleshooting repeated pump tripping at a sludge pump station.",
+   "topicId": "process-sludge-pump-tripping-troubleshoot",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: primary sludge pump trips on overload several times per shift.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Have maintenance check motor current and starter condition if lines are clear"
+    },
+    {
+     "id": "step-06",
+     "label": "Log the fault, the repair, and the observed run for the maintenance record"
+    },
+    {
+     "id": "step-03",
+     "label": "Check the discharge line and valves for a restriction building pressure"
+    },
+    {
+     "id": "step-01",
+     "label": "Record trip times and check for a pattern linked to the pumping cycle"
+    },
+    {
+     "id": "step-05",
+     "label": "Run the pump under observation after the found fault is cleared"
+    },
+    {
+     "id": "step-02",
+     "label": "Inspect the suction line and pump inlet for rags or grit blockage"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Trip patterns guide the search, blockages are checked before electrical faults, and an observed run proves the repair."
+  },
+  {
+   "id": "wp2ww-process83",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for troubleshooting poor settling that appears suddenly after good performance.",
+   "topicId": "process-sudden-poor-settling-troubleshoot",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: settling test deteriorated within two days, effluent still in range.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "Repeat the settling test on a fresh sample to confirm the change"
+    },
+    {
+     "id": "step-05",
+     "label": "Apply the supervisor directed control for the most likely cause"
+    },
+    {
+     "id": "step-06",
+     "label": "Run settling tests daily until performance returns to the normal band"
+    },
+    {
+     "id": "step-04",
+     "label": "Check for a toxic or high strength delivery in the collection system records"
+    },
+    {
+     "id": "step-03",
+     "label": "Review recent load, dissolved oxygen, and nutrient records for a shock or shortfall"
+    },
+    {
+     "id": "step-02",
+     "label": "Examine the sample microscopically for filament growth or dispersed floc"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Confirmation and microscopy come before record review, collection system causes are checked, and daily tests track the recovery."
+  },
+  {
+   "id": "wp2ww-process84",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for troubleshooting odour complaints near the headworks.",
+   "topicId": "process-headworks-odour-troubleshoot",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: neighbours report odour on warm evenings, headworks is the suspected source.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Increase container pickup frequency if age was the cause"
+    },
+    {
+     "id": "step-03",
+     "label": "Check incoming flow for septicity after long detention in the collection system"
+    },
+    {
+     "id": "step-02",
+     "label": "Inspect screenings and grit containers for age and covering"
+    },
+    {
+     "id": "step-04",
+     "label": "Wash down splashed areas and empty or cover containers found at fault"
+    },
+    {
+     "id": "step-01",
+     "label": "Log complaint times and compare them with wind direction and plant operations"
+    },
+    {
+     "id": "step-06",
+     "label": "Report findings and actions to the supervisor for the complaint file"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Complaint timing matched to operations points to the source, housekeeping faults are fixed first, and the file records the response."
+  },
+  {
+   "id": "wp2ww-process85",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for troubleshooting a disinfection residual that will not hold despite higher doses.",
+   "topicId": "process-residual-hold-troubleshoot",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: residual falls short of target even as chlorine dose is raised.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Check effluent ammonia and solids results for a higher chlorine demand"
+    },
+    {
+     "id": "step-01",
+     "label": "Verify the residual test with a fresh reagent and a second sample"
+    },
+    {
+     "id": "step-04",
+     "label": "Verify actual pump delivery by drawdown against the assumed delivery"
+    },
+    {
+     "id": "step-03",
+     "label": "Inspect the contact tank for short circuiting or heavy solids build up"
+    },
+    {
+     "id": "step-05",
+     "label": "Correct the found cause, such as cleaning the tank or repairing the pump"
+    },
+    {
+     "id": "step-06",
+     "label": "Confirm the residual holds at the normal dose over a full day of flows"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Test error is ruled out first, demand and hydraulics are checked before the pump, and a full day at normal dose proves the correction."
+  },
+  {
+   "id": "wp2ww-process86",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for troubleshooting high effluent solids from only one of two parallel trains.",
+   "topicId": "process-single-train-solids-troubleshoot",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: Train B effluent solids are double Train A at the same flow split.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "Sample both train effluents and clarifier blankets at the same time"
+    },
+    {
+     "id": "step-02",
+     "label": "Compare return rates, wasting, and air supply between the two trains"
+    },
+    {
+     "id": "step-06",
+     "label": "Log the difference found and keep paired sampling until results match"
+    },
+    {
+     "id": "step-03",
+     "label": "Inspect Train B clarifier drive, scrapers, and baffles for a mechanical fault"
+    },
+    {
+     "id": "step-04",
+     "label": "Correct any setting difference so both trains match"
+    },
+    {
+     "id": "step-05",
+     "label": "Resample both trains after one detention time at matched settings"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Paired sampling makes the comparison fair, settings are compared before mechanics, and resampling at matched settings isolates the cause."
+  },
+  {
+   "id": "wp2ww-process87",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for troubleshooting a noisy and vibrating aeration blower.",
+   "topicId": "process-blower-vibration-troubleshoot",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: one blower has developed noise and vibration over a week, a standby blower is available.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Isolate the faulty blower and apply lockout for inspection"
+    },
+    {
+     "id": "step-05",
+     "label": "Have maintenance inspect bearings, coupling, and lubrication as indicated"
+    },
+    {
+     "id": "step-06",
+     "label": "Return the blower to service only after a supervised test run is normal"
+    },
+    {
+     "id": "step-03",
+     "label": "Switch duty to the standby blower following the changeover procedure"
+    },
+    {
+     "id": "step-01",
+     "label": "Record vibration observations, bearing temperature, and air output for the duty blower"
+    },
+    {
+     "id": "step-02",
+     "label": "Check inlet filter and discharge valves for a restriction causing surging"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Operating data is captured before shutdown, restrictions are ruled out, the standby carries the load, and a test run gates the return."
+  },
+  {
+   "id": "wp2ww-process88",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for troubleshooting a rising trend in effluent biochemical oxygen demand.",
+   "topicId": "process-effluent-bod-trend-troubleshoot",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: effluent biochemical oxygen demand has risen for three consecutive weekly results.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "Confirm the trend is real by reviewing lab quality control for those batches"
+    },
+    {
+     "id": "step-03",
+     "label": "Review solids retention time, dissolved oxygen, and clarifier performance records"
+    },
+    {
+     "id": "step-02",
+     "label": "Review influent load over the same weeks for a matching rise"
+    },
+    {
+     "id": "step-04",
+     "label": "Inspect aeration and clarifier equipment for a developing fault"
+    },
+    {
+     "id": "step-06",
+     "label": "Track the next results closely and close the investigation when the trend reverses"
+    },
+    {
+     "id": "step-05",
+     "label": "Make the supervisor directed correction for the most supported cause"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Laboratory error is excluded first, load and process records are matched to the trend, and close tracking confirms the correction worked."
+  },
+  {
+   "id": "wp2ww-process89",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a supervisor weekly plant performance review.",
+   "topicId": "process-supervisor-weekly-review",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: supervisor reviews flows, effluent quality, process control, and staffing for the past week.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "Gather the week of flow, effluent, and process control summaries"
+    },
+    {
+     "id": "step-06",
+     "label": "Publish the review notes to all shifts and file them with the weekly report"
+    },
+    {
+     "id": "step-02",
+     "label": "Flag any approval value approached or exceeded and any equipment out of service"
+    },
+    {
+     "id": "step-05",
+     "label": "Assign corrective actions with owners and due dates"
+    },
+    {
+     "id": "step-04",
+     "label": "Confirm staffing and on call coverage for the next seven days"
+    },
+    {
+     "id": "step-03",
+     "label": "Review open work orders and confirm priorities for the coming week"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Data is gathered before flags are set, staffing is confirmed before actions are assigned, and published notes make the decisions visible to every shift."
+  },
+  {
+   "id": "wp2ww-process90",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for approving a process change trial proposed by an operator.",
+   "topicId": "process-process-trial-approval",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: operator proposes a two week trial of a different return sludge strategy.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Set the trial length, sampling, and the stop conditions in writing"
+    },
+    {
+     "id": "step-01",
+     "label": "Review the written proposal, its goal, and its success measures"
+    },
+    {
+     "id": "step-05",
+     "label": "Review trial data at the midpoint and stop or continue as planned"
+    },
+    {
+     "id": "step-06",
+     "label": "Decide at the end whether to adopt, extend, or abandon the change and record the decision"
+    },
+    {
+     "id": "step-02",
+     "label": "Check the trial cannot put any approval value at risk at current loadings"
+    },
+    {
+     "id": "step-04",
+     "label": "Brief all shifts on the trial settings and the data to record"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Risk is checked before approval, stop conditions protect compliance during the trial, and a recorded decision closes it either way."
+  },
+  {
+   "id": "wp2ww-process91",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for preparing for a provincial regulatory inspection of the plant.",
+   "topicId": "process-inspection-readiness-routine",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: inspection announced for the following week under provincial wastewater requirements.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Walk the plant and correct housekeeping and labelling issues found"
+    },
+    {
+     "id": "step-05",
+     "label": "Stage the records in inspection order in the office"
+    },
+    {
+     "id": "step-04",
+     "label": "Brief operators on inspection conduct and who answers which topic"
+    },
+    {
+     "id": "step-06",
+     "label": "Log the preparation and any gap that could not be closed before the visit"
+    },
+    {
+     "id": "step-01",
+     "label": "Gather approval documents, sampling records, and calibration records for the review period"
+    },
+    {
+     "id": "step-03",
+     "label": "Confirm all required samples are current and no result is outstanding"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Records are gathered before the walk so gaps guide the work, operators are briefed, and staging records in order lets the inspection run smoothly."
+  },
+  {
+   "id": "wp2ww-process92",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for onboarding a new Class 1 operator to Class 2 process control duties.",
+   "topicId": "process-operator-mentoring-routine",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: experienced Class 1 operator joining a Class 2 plant team.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Walk through the process control tests together until the operator performs them alone"
+    },
+    {
+     "id": "step-01",
+     "label": "Review the operator certifications, experience, and any training gaps with them"
+    },
+    {
+     "id": "step-02",
+     "label": "Pair the operator with a senior operator for the first rotation of shifts"
+    },
+    {
+     "id": "step-04",
+     "label": "Assign log and trending duties with senior review of the first entries"
+    },
+    {
+     "id": "step-06",
+     "label": "Record the completed orientation in the training file"
+    },
+    {
+     "id": "step-05",
+     "label": "Assess readiness and sign off each duty as it is demonstrated"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Gaps are identified before pairing, duties transfer only as they are demonstrated, and sign offs build the training record step by step."
+  },
+  {
+   "id": "wp2ww-process93",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for building the monthly compliance summary for management.",
+   "topicId": "process-monthly-compliance-summary",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: summary covers flows, effluent results, exceedances, and corrective actions for the month.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "Compile all effluent results and compare each with the plant approval values"
+    },
+    {
+     "id": "step-02",
+     "label": "List any exceedance with its date, cause, notification, and corrective action"
+    },
+    {
+     "id": "step-06",
+     "label": "Submit the summary through the channel required by the provincial requirements"
+    },
+    {
+     "id": "step-04",
+     "label": "Attach laboratory quality control exceptions that affect any reported result"
+    },
+    {
+     "id": "step-05",
+     "label": "Have the supervisor review the draft before it is finalized"
+    },
+    {
+     "id": "step-03",
+     "label": "Summarize flows, loadings, and any bypass or overflow event"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Results are compiled before exceedances are listed, quality exceptions travel with the results they affect, and supervisor review precedes submission."
+  },
+  {
+   "id": "wp2ww-process94",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for running a tabletop exercise for a major equipment failure.",
+   "topicId": "process-tabletop-failure-exercise",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: team exercise simulating loss of the main aeration blower during high flow.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "Present the failure scenario, current flows, and equipment available to the team"
+    },
+    {
+     "id": "step-02",
+     "label": "Have the team state their first actions in the order they would take them"
+    },
+    {
+     "id": "step-04",
+     "label": "Compare the team plan with the written emergency procedure and note gaps"
+    },
+    {
+     "id": "step-03",
+     "label": "Challenge the plan with a second development, such as a rising blanket"
+    },
+    {
+     "id": "step-06",
+     "label": "File the exercise record and the follow up actions with dates"
+    },
+    {
+     "id": "step-05",
+     "label": "Assign procedure updates or training for each gap found"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The scenario is set before actions are proposed, a second development tests the plan, and gaps become assigned updates rather than discussion only."
+  },
+  {
+   "id": "wp2ww-process95",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for preparing outdoor clarifier mechanisms for winter operation.",
+   "topicId": "process-clarifier-winter-preparation",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: outdoor secondary clarifiers at a prairie plant before freeze up.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Clear leaves and debris that would freeze into the surface ice"
+    },
+    {
+     "id": "step-05",
+     "label": "Set the winter skimming and ice management routine with all shifts"
+    },
+    {
+     "id": "step-04",
+     "label": "Confirm walkway lighting, handrails, and ice melt supplies are ready"
+    },
+    {
+     "id": "step-01",
+     "label": "Inspect drive units and add winter grade lubrication as the manual requires"
+    },
+    {
+     "id": "step-06",
+     "label": "Record the preparation in the seasonal checklist before the first freeze"
+    },
+    {
+     "id": "step-02",
+     "label": "Check and test heat tracing on water lines, valves, and launders"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Drives and heat tracing are proven before freeze up, debris is removed while it is still easy, and the routine is agreed before ice forms."
+  },
+  {
+   "id": "wp2ww-process96",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for managing ice build up on a clarifier surface during a cold snap.",
+   "topicId": "process-clarifier-ice-management",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: ice sheet forming on an outdoor clarifier, drive torque rising.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Monitor torque each shift while ice is present"
+    },
+    {
+     "id": "step-03",
+     "label": "Confirm scum baffles and skimmers are not frozen in place"
+    },
+    {
+     "id": "step-02",
+     "label": "Break and remove loose ice around the bridge and skimmer path from safe positions"
+    },
+    {
+     "id": "step-01",
+     "label": "Check drive torque and current against the normal winter range"
+    },
+    {
+     "id": "step-04",
+     "label": "Reduce ice formation by checking that heat traced lines are working"
+    },
+    {
+     "id": "step-06",
+     "label": "Log ice conditions and actions so the next shift starts informed"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Torque tells whether ice is a load problem, removal stays in safe areas, heat tracing is checked as the root control, and logging carries the picture forward."
+  },
+  {
+   "id": "wp2ww-process97",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for protecting an outdoor ultraviolet channel during freezing weather.",
+   "topicId": "process-uv-winter-protection",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: ultraviolet channel at a plant that discharges through winter in western Canada.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Record intensity and flow and compare them with mild weather performance"
+    },
+    {
+     "id": "step-03",
+     "label": "Inspect lamp racks for ice build up at the water line"
+    },
+    {
+     "id": "step-02",
+     "label": "Confirm heat tracing and the channel heater are operating"
+    },
+    {
+     "id": "step-06",
+     "label": "Note any lamp or sensor fault for repair before the coldest period"
+    },
+    {
+     "id": "step-01",
+     "label": "Check the channel cover and insulation are in place and undamaged"
+    },
+    {
+     "id": "step-05",
+     "label": "Clear ice from access points and walkways around the channel"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Covers and heating are checked before performance, intensity comparison shows whether cold is affecting disinfection, and faults are fixed before deep winter."
+  },
+  {
+   "id": "wp2ww-process98",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for winterizing a seasonal lagoon discharge line and valves.",
+   "topicId": "process-lagoon-line-winterizing",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: discharge season has ended at a facultative lagoon system, lines must survive winter.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "Drain the discharge line back to the lagoon or to the drain point provided"
+    },
+    {
+     "id": "step-06",
+     "label": "Record the winterizing in the seasonal log for spring start up reference"
+    },
+    {
+     "id": "step-04",
+     "label": "Check the outfall for ice or beaver blockage and clear it if safe to do so"
+    },
+    {
+     "id": "step-05",
+     "label": "Tag the line as winterized with the date on the valve wheel"
+    },
+    {
+     "id": "step-03",
+     "label": "Remove and store portable pumps and hoses in the heated building"
+    },
+    {
+     "id": "step-02",
+     "label": "Open and exercise each valve, then leave it in the position on the winter plan"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Draining comes before valve positioning so no water is trapped, portable equipment is stored warm, and the tag and log guide spring start up."
+  },
+  {
+   "id": "wp2ww-process99",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for responding to frozen sample lines on an automatic sampler in winter.",
+   "topicId": "process-sampler-frozen-line-response",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: refrigerated sampler at an unheated influent station, aliquots missed overnight.",
+   "cards": [
+    {
+     "id": "step-06",
+     "label": "Add insulation or heat tracing to prevent a repeat and log the event"
+    },
+    {
+     "id": "step-01",
+     "label": "Check the sampler log to find when aliquots stopped being collected"
+    },
+    {
+     "id": "step-03",
+     "label": "Thaw the line with warm water or the approved heat tape method, never open flame"
+    },
+    {
+     "id": "step-05",
+     "label": "Collect a manual grab composite for the missed period if the plan allows"
+    },
+    {
+     "id": "step-02",
+     "label": "Inspect the intake line for ice and confirm the strainer is not buried in ice"
+    },
+    {
+     "id": "step-04",
+     "label": "Run a manual sample cycle to confirm the line draws properly"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The stop time bounds the data gap, thawing uses safe methods only, a test cycle proves the fix, and prevention closes the event."
+  },
+  {
+   "id": "wp2ww-evidence01",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Effluent ammonia climbed over two cold weeks at a Saskatchewan activated sludge plant while aeration dissolved oxygen stayed on target.",
+   "topicId": "srt-process-control",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater plant case for Class 2 study. Readings are from the stated period unless a bench, paired train, or control check is noted. Provincial wastewater requirements, the federal Wastewater Systems Effluent Regulations, and the CCME Canada-wide Strategy apply in general terms.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Effluent ammonia rose from 1.2 mg/L to 9.5 mg/L over 14 days while basin temperature fell from 11 C to 7 C."
+    },
+    {
+     "id": "ev2",
+     "label": "Solids retention time calculates at 4 days from the wasting log, and wasting was held steady through the temperature fall."
+    },
+    {
+     "id": "ev3",
+     "label": "Dissolved oxygen held at 2.0 mg/L in both trains and blowers have spare capacity unused."
+    },
+    {
+     "id": "ev4",
+     "label": "A paired check shows Train B, run at a 9 day retention time on the same influent, still holds effluent ammonia near 1.5 mg/L."
+    },
+    {
+     "id": "ev5",
+     "label": "Influent ammonia load is unchanged from the prior month."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Dissolved oxygen is too low for nitrification in both trains"
+     },
+     {
+      "id": "inf-b",
+      "label": "Short solids retention time for cold water is washing out slow growing nitrifiers, and Train B at longer retention proves retention, not oxygen, is the limit"
+     },
+     {
+      "id": "inf-c",
+      "label": "A toxic discharge has killed the nitrifiers in both trains"
+     },
+     {
+      "id": "inf-d",
+      "label": "Influent ammonia load has doubled and overwhelmed the plant"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Only short retention fits all points. Oxygen is on target with spare blower capacity, influent load is unchanged, and a toxic event would hit both trains. Train B nitrifying at 9 days on the same influent isolates retention time in cold water as the limit."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Effluent chlorine residual log for the month"
+     },
+     {
+      "id": "nc-b",
+      "label": "Wasting log review and a retention time calculation for both trains over the cold period"
+     },
+     {
+      "id": "nc-c",
+      "label": "Primary clarifier blanket log for the week"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "Chlorine records do not test nitrifier retention.",
+    "nc-b": "The logs confirm 4 days on the affected train against 9 days on the nitrifying train through the same temperature fall.",
+    "nc-c": "Primary blanket records do not test aeration retention time."
+   }
+  },
+  {
+   "id": "wp2ww-evidence02",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Mixed liquor looks dark and thin, effluent suspended solids are rising, and the sludge settles fast but leaves a turbid supernatant after a wasting increase.",
+   "topicId": "srt-process-control",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater plant case for Class 2 study. Readings are from the stated period unless a bench, paired train, or control check is noted. Provincial wastewater requirements, the federal Wastewater Systems Effluent Regulations, and the CCME Canada-wide Strategy apply in general terms.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Waste activated sludge rate was doubled 6 days ago and mixed liquor suspended solids fell from 2400 mg/L to 1300 mg/L."
+    },
+    {
+     "id": "ev2",
+     "label": "Settled sludge volume after 30 minutes is low and the supernatant is cloudy with fine particles on a bench settle test."
+    },
+    {
+     "id": "ev3",
+     "label": "Effluent suspended solids rose from 12 mg/L to 34 mg/L in the same 6 days."
+    },
+    {
+     "id": "ev4",
+     "label": "Dissolved oxygen, influent flow, and influent strength are all at normal values, and the clarifier blanket is shallow."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Filamentous bulking is holding sludge in the clarifier blanket"
+     },
+     {
+      "id": "inf-b",
+      "label": "Hydraulic overload is washing solids over the clarifier weirs"
+     },
+     {
+      "id": "inf-c",
+      "label": "Over wasting has cut retention time and left young, poorly flocculated sludge that settles fast but sheds fine solids to the effluent"
+     },
+     {
+      "id": "inf-d",
+      "label": "A toxic load has deflocculated an otherwise normal age sludge"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "Bulking would raise settled volume and blanket depth, yet both are low and shallow. Flow is normal, so hydraulic washout is contradicted. The timing with doubled wasting, falling mixed liquor, and young sludge fines supports over wasting."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Grit hopper discharge log"
+     },
+     {
+      "id": "nc-b",
+      "label": "Digester gas production log"
+     },
+     {
+      "id": "nc-c",
+      "label": "Wasting rate log and mixed liquor trend for the 10 days around the change"
+     }
+    ],
+    "correctOptionId": "nc-c",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "Grit records do not test wasting rate.",
+    "nc-b": "Digester gas records do not test mixed liquor age.",
+    "nc-c": "The trend shows mixed liquor falling from the day wasting doubled, matching the rise in effluent solids."
+   }
+  },
+  {
+   "id": "wp2ww-evidence03",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "An Alberta plant holds excellent effluent quality but its sludge is old, oxygen demand in the basin is very low, and fine pin floc appears in the effluent.",
+   "topicId": "srt-process-control",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater plant case for Class 2 study. Readings are from the stated period unless a bench, paired train, or control check is noted. Provincial wastewater requirements, the federal Wastewater Systems Effluent Regulations, and the CCME Canada-wide Strategy apply in general terms.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Solids retention time calculates at 38 days and wasting has been minimal for two months."
+    },
+    {
+     "id": "ev2",
+     "label": "Food to microorganism ratio is very low at 0.04 kg BOD per kg mixed liquor per day on the lab summary."
+    },
+    {
+     "id": "ev3",
+     "label": "Effluent shows small dense pin sized floc particles while overall removal stays good."
+    },
+    {
+     "id": "ev4",
+     "label": "Microscopy shows sparse filaments, many free bacteria consumed, and signs of an old sludge with rotifers dominant."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Young sludge from over wasting is breaking into pin floc"
+     },
+     {
+      "id": "inf-b",
+      "label": "Filamentous organisms are fragmenting the floc"
+     },
+     {
+      "id": "inf-c",
+      "label": "High dissolved oxygen is shearing floc apart mechanically"
+     },
+     {
+      "id": "inf-d",
+      "label": "Excessively long retention time and very low food to microorganism ratio have starved the biomass into old sludge and pin floc"
+     }
+    ],
+    "correctOptionId": "inf-d",
+    "explanation": "Young sludge requires short retention, the opposite of the 38 day value. Filaments are sparse, not dominant. The very low food ratio, old sludge microscopy, and long retention together support starved old sludge."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Retention time and food to microorganism trend for the past two months"
+     },
+     {
+      "id": "nc-b",
+      "label": "Screenings mass log"
+     },
+     {
+      "id": "nc-c",
+      "label": "Effluent phosphorus log"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "The trend confirms retention climbing and food ratio falling over the same two months as pin floc appeared.",
+    "nc-b": "Screenings records do not test sludge age.",
+    "nc-c": "Phosphorus results do not test food ratio."
+   }
+  },
+  {
+   "id": "wp2ww-evidence04",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Nitrification was lost in one week in January in Manitoba even though no wasting change was made and loads are normal.",
+   "topicId": "srt-process-control",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater plant case for Class 2 study. Readings are from the stated period unless a bench, paired train, or control check is noted. Provincial wastewater requirements, the federal Wastewater Systems Effluent Regulations, and the CCME Canada-wide Strategy apply in general terms.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Effluent ammonia rose sharply in one week while the wasting log shows no change in rate."
+    },
+    {
+     "id": "ev2",
+     "label": "Mixed liquor suspended solids fell from 2600 mg/L to 1700 mg/L in the same week at unchanged wasting."
+    },
+    {
+     "id": "ev3",
+     "label": "Secondary clarifier blanket is deep and effluent suspended solids doubled, showing solids leaving over the weirs."
+    },
+    {
+     "id": "ev4",
+     "label": "Basin temperature is 8 C and dissolved oxygen is on target."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Solids are being lost over the clarifier weirs, so inventory and effective retention time fell even though the wasting rate never changed"
+     },
+     {
+      "id": "inf-b",
+      "label": "Operators secretly increased wasting off the log"
+     },
+     {
+      "id": "inf-c",
+      "label": "Cold temperature alone stopped nitrification in one week at unchanged inventory"
+     },
+     {
+      "id": "inf-d",
+      "label": "Blower failure cut oxygen and washed out nitrifiers"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Wasting is logged unchanged and oxygen is on target, so those causes are contradicted. Temperature fell gradually, not in one step. Falling mixed liquor with a deep blanket and doubled effluent solids shows inventory loss over the weirs cutting effective retention."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Influent flow annual summary"
+     },
+     {
+      "id": "nc-b",
+      "label": "Clarifier blanket and effluent solids log against the mixed liquor trend for the week"
+     },
+     {
+      "id": "nc-c",
+      "label": "Chlorine day tank level log"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "Annual flow totals cannot track a one week inventory loss.",
+    "nc-b": "The logs show blanket and effluent solids rising as mixed liquor fell, with wasting flat throughout.",
+    "nc-c": "Chlorine tank levels do not test clarifier solids loss."
+   }
+  },
+  {
+   "id": "wp2ww-evidence05",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "After a supervisor ordered wasting stopped for a full holiday week, the plant returned to rising blankets, low dissolved oxygen, and dark septic smelling sludge.",
+   "topicId": "srt-process-control",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater plant case for Class 2 study. Readings are from the stated period unless a bench, paired train, or control check is noted. Provincial wastewater requirements, the federal Wastewater Systems Effluent Regulations, and the CCME Canada-wide Strategy apply in general terms.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "No waste activated sludge was removed for 7 days and mixed liquor rose from 2500 mg/L to 3900 mg/L."
+    },
+    {
+     "id": "ev2",
+     "label": "Dissolved oxygen fell below 0.5 mg/L at unchanged blower output as inventory climbed."
+    },
+    {
+     "id": "ev3",
+     "label": "Clarifier blankets rose in both trains and return sludge smells septic on return."
+    },
+    {
+     "id": "ev4",
+     "label": "Influent flow and strength stayed normal through the holiday week."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "A holiday industrial discharge overloaded the plant organically"
+     },
+     {
+      "id": "inf-b",
+      "label": "A week with no wasting let inventory and sludge age climb until oxygen demand outran the blowers and blankets rose septic"
+     },
+     {
+      "id": "inf-c",
+      "label": "Blower failure during the holiday cut all aeration"
+     },
+     {
+      "id": "inf-d",
+      "label": "Return pumps failed and trapped sludge in the clarifiers"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Influent is normal, blowers ran at unchanged output, and return sludge is flowing and septic rather than trapped. Rising inventory at zero wasting with falling oxygen directly supports the no wasting explanation."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Bar screen differential log"
+     },
+     {
+      "id": "nc-b",
+      "label": "UV lamp run hour log"
+     },
+     {
+      "id": "nc-c",
+      "label": "Wasting log and mixed liquor trend across the holiday week"
+     }
+    ],
+    "correctOptionId": "nc-c",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "Screen differential does not test wasting.",
+    "nc-b": "Lamp hours do not test sludge inventory.",
+    "nc-c": "The record shows zero wasting for 7 days with mixed liquor climbing steadily to 3900 mg/L."
+   }
+  },
+  {
+   "id": "wp2ww-evidence06",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Two parallel trains in British Columbia take the same influent, yet only Train 1 nitrifies in winter. Operators suspect the influent splitter.",
+   "topicId": "srt-process-control",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater plant case for Class 2 study. Readings are from the stated period unless a bench, paired train, or control check is noted. Provincial wastewater requirements, the federal Wastewater Systems Effluent Regulations, and the CCME Canada-wide Strategy apply in general terms.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Flow split measures equal by a timed drawdown check on both trains."
+    },
+    {
+     "id": "ev2",
+     "label": "Train 1 retention time is 10 days and Train 2 retention time is 5 days from separate wasting logs."
+    },
+    {
+     "id": "ev3",
+     "label": "Train 1 effluent ammonia is 1.0 mg/L and Train 2 effluent ammonia is 8.0 mg/L at the same 7 C basin temperature."
+    },
+    {
+     "id": "ev4",
+     "label": "Dissolved oxygen is 2.0 mg/L in both trains and influent is a single combined sample."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The flow splitter is sending stronger sewage to Train 2"
+     },
+     {
+      "id": "inf-b",
+      "label": "Train 2 blowers are undersized for winter"
+     },
+     {
+      "id": "inf-c",
+      "label": "The retention time difference between trains, not the flow split, explains why only the longer retention train nitrifies in cold water"
+     },
+     {
+      "id": "inf-d",
+      "label": "A toxin is entering Train 2 only through the splitter"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "Flow split measures equal on a direct check and influent is one combined sample, so unequal feed is contradicted. Oxygen matches in both trains. Only the twofold retention difference tracks the ammonia difference."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Separate wasting logs and retention calculations for each train"
+     },
+     {
+      "id": "nc-b",
+      "label": "Combined influent BOD annual summary"
+     },
+     {
+      "id": "nc-c",
+      "label": "Effluent turbidity log"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "The calculations confirm 10 days against 5 days on equal flow and equal oxygen.",
+    "nc-b": "A combined annual summary cannot separate the trains.",
+    "nc-c": "Turbidity does not test nitrification retention."
+   }
+  },
+  {
+   "id": "wp2ww-evidence07",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A process control test series was run because effluent quality slipped while retention time on paper looked correct.",
+   "topicId": "srt-process-control",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater plant case for Class 2 study. Readings are from the stated period unless a bench, paired train, or control check is noted. Provincial wastewater requirements, the federal Wastewater Systems Effluent Regulations, and the CCME Canada-wide Strategy apply in general terms.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "The paper retention calculation used return sludge concentration in place of mixed liquor concentration in the inventory term."
+    },
+    {
+     "id": "ev2",
+     "label": "A direct inventory check using mixed liquor at 1800 mg/L and clarifier inventory gives a true retention time of 6 days, not the reported 11 days."
+    },
+    {
+     "id": "ev3",
+     "label": "Oxygen uptake rate on a bench test is high, consistent with a young sludge."
+    },
+    {
+     "id": "ev4",
+     "label": "Correcting the calculation input on a trial sheet brings reported and bench behaviour into agreement."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The bench oxygen test is faulty and the paper value is right"
+     },
+     {
+      "id": "inf-b",
+      "label": "Clarifier inventory should never be counted so the true value is even higher"
+     },
+     {
+      "id": "inf-c",
+      "label": "Wasting pumps are delivering twice their logged rate"
+     },
+     {
+      "id": "inf-d",
+      "label": "The reported retention time was overstated by a calculation error, and the plant has actually been running a young sludge at 6 days"
+     }
+    ],
+    "correctOptionId": "inf-d",
+    "explanation": "The direct inventory check and the high uptake rate agree with each other and disagree with the paper value, and fixing the single wrong input reconciles them. No pump discrepancy is recorded."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Grit classifier wash water log"
+     },
+     {
+      "id": "nc-b",
+      "label": "Recalculation sheet using mixed liquor concentration with the bench uptake result"
+     },
+     {
+      "id": "nc-c",
+      "label": "Scum baffle inspection record"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "Wash water records do not test retention math.",
+    "nc-b": "The recalculation gives 6 days, matching the young sludge behaviour on the bench test.",
+    "nc-c": "Baffle records do not test inventory calculations."
+   }
+  },
+  {
+   "id": "wp2ww-evidence08",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "In late fall a prairie plant kept its summer wasting rate as water cooled, and ammonia began a slow climb that aeration increases did not fix.",
+   "topicId": "srt-process-control",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater plant case for Class 2 study. Readings are from the stated period unless a bench, paired train, or control check is noted. Provincial wastewater requirements, the federal Wastewater Systems Effluent Regulations, and the CCME Canada-wide Strategy apply in general terms.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Basin temperature fell from 16 C to 9 C over five weeks while wasting rate stayed at the summer setting."
+    },
+    {
+     "id": "ev2",
+     "label": "Raising dissolved oxygen from 1.5 mg/L to 2.5 mg/L for a week did not lower effluent ammonia."
+    },
+    {
+     "id": "ev3",
+     "label": "Effluent ammonia rose from 0.8 mg/L to 5.5 mg/L over the same five weeks."
+    },
+    {
+     "id": "ev4",
+     "label": "Influent ammonia and flow are steady and no toxic discharge is recorded."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Retention time was never raised for cold water, so nitrifiers are slowly washing out and extra oxygen cannot replace missing inventory"
+     },
+     {
+      "id": "inf-b",
+      "label": "Oxygen was the true limit and the increase was simply too small to see"
+     },
+     {
+      "id": "inf-c",
+      "label": "A slow toxic leak is suppressing nitrifiers"
+     },
+     {
+      "id": "inf-d",
+      "label": "The ammonia analyser drifted high over five weeks"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "The oxygen trial at higher setpoint gave no response, which contradicts an oxygen limit. No toxin is recorded and the paired plant analyser check was not flagged. The slow climb tracking the temperature fall at fixed wasting supports washout."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Screenings bin weight log"
+     },
+     {
+      "id": "nc-b",
+      "label": "Digester temperature log"
+     },
+     {
+      "id": "nc-c",
+      "label": "Temperature trend with wasting rate and effluent ammonia for the five weeks"
+     }
+    ],
+    "correctOptionId": "nc-c",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "Screenings weights do not test nitrification.",
+    "nc-b": "Digester temperature does not test basin retention.",
+    "nc-c": "The trends show ammonia climbing as temperature fell, with wasting flat and the oxygen trial showing no effect."
+   }
+  },
+  {
+   "id": "wp2ww-evidence09",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Clarifier blankets are deep and sludge smells septic, yet mixed liquor is low and the wasting log shows heavy wasting all month.",
+   "topicId": "srt-process-control",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater plant case for Class 2 study. Readings are from the stated period unless a bench, paired train, or control check is noted. Provincial wastewater requirements, the federal Wastewater Systems Effluent Regulations, and the CCME Canada-wide Strategy apply in general terms.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Mixed liquor is 1400 mg/L and wasting has been heavy all month, so basin inventory is low."
+    },
+    {
+     "id": "ev2",
+     "label": "Return activated sludge rate is set at only 20 percent of influent flow, well below the posted control band."
+    },
+    {
+     "id": "ev3",
+     "label": "Blanket depth is 1.6 m and the blanket sludge smells septic and releases gas bubbles."
+    },
+    {
+     "id": "ev4",
+     "label": "Raising return rate on a one day trial dropped the blanket to 0.7 m at unchanged wasting."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Excessively long retention time has made old septic sludge"
+     },
+     {
+      "id": "inf-b",
+      "label": "Low return rate, not sludge age, is holding solids in the clarifier until they turn septic, while the basin itself runs low inventory"
+     },
+     {
+      "id": "inf-c",
+      "label": "Filamentous bulking is preventing the blanket from compacting"
+     },
+     {
+      "id": "inf-d",
+      "label": "Primary sludge carryover is filling the secondary blanket"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "The basin runs low inventory under heavy wasting, which contradicts old sludge. The trial return increase dropping the blanket at unchanged wasting directly isolates return rate as the control."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Return rate setting log and blanket depth record around the trial day"
+     },
+     {
+      "id": "nc-b",
+      "label": "Influent pH log"
+     },
+     {
+      "id": "nc-c",
+      "label": "Effluent chlorine log"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "The record shows blanket falling the same day return rate was raised, with wasting unchanged.",
+    "nc-b": "Influent pH does not test return rate.",
+    "nc-c": "Chlorine records do not test blanket control."
+   }
+  },
+  {
+   "id": "wp2ww-evidence10",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Effluent quality is good in summer but the same plant fails ammonia every winter, and each spring nitrification takes weeks to return.",
+   "topicId": "srt-process-control",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater plant case for Class 2 study. Readings are from the stated period unless a bench, paired train, or control check is noted. Provincial wastewater requirements, the federal Wastewater Systems Effluent Regulations, and the CCME Canada-wide Strategy apply in general terms.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Winter basin temperatures reach 6 C for about three months each year."
+    },
+    {
+     "id": "ev2",
+     "label": "Year round wasting targets a single retention time of 5 days in every season."
+    },
+    {
+     "id": "ev3",
+     "label": "Each spring, effluent ammonia recovers slowly over weeks rather than days after temperatures rise."
+    },
+    {
+     "id": "ev4",
+     "label": "Aeration capacity, influent load, and alkalinity are adequate in all seasons on the plant summary."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Winter blower capacity is the recurring seasonal limit"
+     },
+     {
+      "id": "inf-b",
+      "label": "Spring recovery is slow because influent load peaks each spring"
+     },
+     {
+      "id": "inf-c",
+      "label": "A fixed 5 day retention time is too short to hold nitrifiers through cold months, and the slow spring recovery reflects regrowing a washed out population"
+     },
+     {
+      "id": "inf-d",
+      "label": "Alkalinity runs out every winter and stops nitrification"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "Capacity, load, and alkalinity are all adequate year round on the summary, which contradicts those causes. The seasonal pattern plus slow regrowth after warming fits washout at a fixed short retention."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Annual screenings summary"
+     },
+     {
+      "id": "nc-b",
+      "label": "Seasonal retention target sheet with winter temperature and ammonia records"
+     },
+     {
+      "id": "nc-c",
+      "label": "Cake solids monthly summary"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "Screenings summaries do not test seasonal retention.",
+    "nc-b": "The records show the same 5 day target in all seasons with ammonia failing only in the cold months.",
+    "nc-c": "Cake summaries cover dewatering, not nitrification."
+   }
+  },
+  {
+   "id": "wp2ww-evidence100",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A sudden apparent drop in mixed liquor leads to a wasting change, but a duplicate sample reads at the original value.",
+   "topicId": "laboratory-qa",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater plant case for Class 2 study. Readings are from the stated period unless a bench, paired train, or control check is noted. Provincial wastewater requirements, the federal Wastewater Systems Effluent Regulations, and the CCME Canada-wide Strategy apply in general terms.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "First mixed liquor result reads 1500 mg/L against a trend near 2400 mg/L."
+    },
+    {
+     "id": "ev2",
+     "label": "Duplicate from the same well mixed sample reads 2350 mg/L, matching the trend."
+    },
+    {
+     "id": "ev3",
+     "label": "Review finds the first aliquot was taken from an unmixed settling sample bottle left standing for an hour."
+    },
+    {
+     "id": "ev4",
+     "label": "No wasting, flow, or clarifier change occurred that could drop inventory in one step."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The low result is a sampling aliquot error from an unmixed bottle, and the duplicate on the mixed sample confirms true inventory is unchanged"
+     },
+     {
+      "id": "inf-b",
+      "label": "Inventory truly crashed and recovered in a day"
+     },
+     {
+      "id": "inf-c",
+      "label": "Clarifier washout dropped inventory for one sample"
+     },
+     {
+      "id": "inf-d",
+      "label": "Balance error lowered the first result only"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "No process change could drop and restore inventory in a day, and balance checks pass. The standing bottle review plus duplicate isolates aliquot error."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Chlorine log"
+     },
+     {
+      "id": "nc-b",
+      "label": "Duplicate record with sample handling review"
+     },
+     {
+      "id": "nc-c",
+      "label": "Screenings log"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "Chlorine records do not test mixed liquor sampling.",
+    "nc-b": "The duplicate on the mixed sample read 2350 mg/L, matching the established trend.",
+    "nc-c": "Screenings records do not test aliquots."
+   }
+  },
+  {
+   "id": "wp2ww-evidence11",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A sudden rise in food to microorganism ratio and falling effluent quality followed a clarifier drive repair that returned a stored train to service.",
+   "topicId": "srt-process-control",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater plant case for Class 2 study. Readings are from the stated period unless a bench, paired train, or control check is noted. Provincial wastewater requirements, the federal Wastewater Systems Effluent Regulations, and the CCME Canada-wide Strategy apply in general terms.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "A second aeration train was returned to service empty after repair, halving mixed liquor concentration in the combined system."
+    },
+    {
+     "id": "ev2",
+     "label": "Food to microorganism ratio jumped from 0.25 to 0.55 kg per kg per day on the control sheet."
+    },
+    {
+     "id": "ev3",
+     "label": "Influent BOD load is unchanged and total flow is normal."
+    },
+    {
+     "id": "ev4",
+     "label": "Reseeding the returned train with mixed liquor from the running train on trial steadied effluent quality within days."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Influent BOD secretly doubled during the repair week"
+     },
+     {
+      "id": "inf-b",
+      "label": "The repaired drive is short circuiting the clarifier"
+     },
+     {
+      "id": "inf-c",
+      "label": "Wasting was doubled by mistake when the train returned"
+     },
+     {
+      "id": "inf-d",
+      "label": "Splitting the same load across a restarted empty train diluted inventory and spiked the food ratio until reseeding restored biomass"
+     }
+    ],
+    "correctOptionId": "inf-d",
+    "explanation": "Influent load is unchanged and wasting is not flagged. The reseeding trial restoring quality supports diluted inventory as the cause rather than a clarifier fault."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Bar screen rake cycle log"
+     },
+     {
+      "id": "nc-b",
+      "label": "Gas production log"
+     },
+     {
+      "id": "nc-c",
+      "label": "Train in service log with mixed liquor and food ratio trend around the restart"
+     }
+    ],
+    "correctOptionId": "nc-c",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "Rake cycles do not test food ratio.",
+    "nc-b": "Gas records cover digestion, not aeration inventory.",
+    "nc-c": "The trend shows the food ratio jumping the day the empty train returned and settling after reseeding."
+   }
+  },
+  {
+   "id": "wp2ww-evidence12",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Operators raised wasting to control a rising blanket, and within days the plant lost nitrification while the blanket stayed high.",
+   "topicId": "srt-process-control",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater plant case for Class 2 study. Readings are from the stated period unless a bench, paired train, or control check is noted. Provincial wastewater requirements, the federal Wastewater Systems Effluent Regulations, and the CCME Canada-wide Strategy apply in general terms.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Wasting was raised 50 percent and mixed liquor fell from 2800 mg/L to 1900 mg/L in four days."
+    },
+    {
+     "id": "ev2",
+     "label": "Effluent ammonia rose from 1.0 mg/L to 7.0 mg/L in the same four days at 9 C."
+    },
+    {
+     "id": "ev3",
+     "label": "Blanket depth stayed high and microscopy shows abundant filamentous organisms bridging the floc."
+    },
+    {
+     "id": "ev4",
+     "label": "Dissolved oxygen and influent load are normal."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The blanket is filamentous bulking, and raising wasting only washed out nitrifiers without fixing the bulking blanket"
+     },
+     {
+      "id": "inf-b",
+      "label": "The blanket was simple old sludge and more wasting will fix it"
+     },
+     {
+      "id": "inf-c",
+      "label": "Nitrification was lost because blowers cannot keep up"
+     },
+     {
+      "id": "inf-d",
+      "label": "Influent ammonia load spiked and caused both problems"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "More wasting lowered inventory yet the blanket stayed high, which contradicts simple old sludge. Oxygen and load are normal. Microscopy showing bridging filaments explains a blanket that wasting cannot compact."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Microscopy report with wasting and ammonia trend for the four days"
+     },
+     {
+      "id": "nc-b",
+      "label": "Primary sludge solids log"
+     },
+     {
+      "id": "nc-c",
+      "label": "UV intensity log"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "The report confirms bridging filaments while ammonia rose as wasting increased.",
+    "nc-b": "Primary solids do not test secondary bulking.",
+    "nc-c": "UV intensity covers disinfection, not blankets."
+   }
+  },
+  {
+   "id": "wp2ww-evidence13",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A plant controls retention time by wasting from the return line, and its control chart shows wild swings that do not match basin behaviour.",
+   "topicId": "srt-process-control",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater plant case for Class 2 study. Readings are from the stated period unless a bench, paired train, or control check is noted. Provincial wastewater requirements, the federal Wastewater Systems Effluent Regulations, and the CCME Canada-wide Strategy apply in general terms.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Return sludge concentration swings from 4000 mg/L to 9000 mg/L with clarifier blanket changes through each day."
+    },
+    {
+     "id": "ev2",
+     "label": "Wasting is taken from the return line at a fixed volumetric rate all day."
+    },
+    {
+     "id": "ev3",
+     "label": "Mixed liquor in the basin stays comparatively steady near 2200 mg/L."
+    },
+    {
+     "id": "ev4",
+     "label": "A mass based check shows solids wasted per day varying twofold between morning and afternoon at the fixed rate."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The wasting pump is cavitating and losing prime at random"
+     },
+     {
+      "id": "inf-b",
+      "label": "Fixed volumetric wasting from a return line of swinging concentration wastes a varying solids mass, so true retention control swings even at a steady pump rate"
+     },
+     {
+      "id": "inf-c",
+      "label": "Basin mixed liquor swings are hidden by a faulty sampler"
+     },
+     {
+      "id": "inf-d",
+      "label": "Influent flow swings explain all of the variation"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Mixed liquor is steady, so hidden basin swings are unsupported, and no pump fault is recorded. The measured twofold mass variation at fixed volume with swinging return concentration directly supports the mass variation explanation."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Effluent phosphorus log"
+     },
+     {
+      "id": "nc-b",
+      "label": "Return concentration trend with a mass wasted calculation for morning and afternoon"
+     },
+     {
+      "id": "nc-c",
+      "label": "Screenings mass log"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "Phosphorus results do not test wasting mass.",
+    "nc-b": "The calculation shows solids wasted doubling between low and high return concentration periods at the same pump rate.",
+    "nc-c": "Screenings mass does not test return wasting."
+   }
+  },
+  {
+   "id": "wp2ww-evidence14",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Following a wet weather week, a plant shows low mixed liquor, poor floc, and high effluent solids even though wasting was cut to zero during the storm.",
+   "topicId": "srt-process-control",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater plant case for Class 2 study. Readings are from the stated period unless a bench, paired train, or control check is noted. Provincial wastewater requirements, the federal Wastewater Systems Effluent Regulations, and the CCME Canada-wide Strategy apply in general terms.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Influent flow peaked at 2.8 times average for three days and effluent suspended solids peaked with the flow."
+    },
+    {
+     "id": "ev2",
+     "label": "Wasting was held at zero for the three storm days on the log."
+    },
+    {
+     "id": "ev3",
+     "label": "Mixed liquor fell from 2500 mg/L to 1500 mg/L during the storm and blanket surveys show solids lost over the weirs."
+    },
+    {
+     "id": "ev4",
+     "label": "Floc on microscopy is small and weak after the storm at normal flows."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Operators wasted heavily during the storm off the record"
+     },
+     {
+      "id": "inf-b",
+      "label": "The storm influent was toxic and killed the biomass"
+     },
+     {
+      "id": "inf-c",
+      "label": "Storm flows washed inventory over the clarifiers despite zero wasting, leaving a young, low inventory sludge after the event"
+     },
+     {
+      "id": "inf-d",
+      "label": "Primary treatment failure sent all solids to the aeration basin"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "The log shows zero wasting, and no toxin or primary failure is recorded. Falling mixed liquor with documented weir loss at zero wasting supports hydraulic washout of inventory."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Chlorine residual log"
+     },
+     {
+      "id": "nc-b",
+      "label": "Digester feed log"
+     },
+     {
+      "id": "nc-c",
+      "label": "Storm flow record with wasting log and mixed liquor trend"
+     }
+    ],
+    "correctOptionId": "nc-c",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "Chlorine records do not test storm washout.",
+    "nc-b": "Digester feed records do not test aeration inventory.",
+    "nc-c": "The records show mixed liquor falling through the storm while wasting stayed at zero."
+   }
+  },
+  {
+   "id": "wp2ww-evidence15",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A Class 2 operator suspects the sludge age target is right but the sludge volume index keeps rising while effluent stays clear.",
+   "topicId": "srt-process-control",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater plant case for Class 2 study. Readings are from the stated period unless a bench, paired train, or control check is noted. Provincial wastewater requirements, the federal Wastewater Systems Effluent Regulations, and the CCME Canada-wide Strategy apply in general terms.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Sludge volume index rose from 110 to 190 mL/g over three weeks while effluent suspended solids stayed near 10 mg/L."
+    },
+    {
+     "id": "ev2",
+     "label": "Settle test shows sludge settling slowly but compacting, with a clear supernatant."
+    },
+    {
+     "id": "ev3",
+     "label": "Microscopy shows increasing filamentous organisms extending from the floc over the three weeks."
+    },
+    {
+     "id": "ev4",
+     "label": "Retention time, wasting, and dissolved oxygen have all been held steady."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The index rise is a lab timing error repeated for three weeks"
+     },
+     {
+      "id": "inf-b",
+      "label": "Rising index with clear effluent means the clarifier is failing first"
+     },
+     {
+      "id": "inf-c",
+      "label": "Old sludge alone explains filament growth at steady retention"
+     },
+     {
+      "id": "inf-d",
+      "label": "Growing filamentous organisms are raising the index and slowing settling before effluent quality fails, an early bulking warning at steady operation"
+     }
+    ],
+    "correctOptionId": "inf-d",
+    "explanation": "Settle tests are consistent across weeks and the clarifier still produces clear effluent, so lab error and clarifier failure are unsupported. Steady retention with growing filaments on microscopy supports early filamentous bulking."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Microscopy trend with settle test and index record for the three weeks"
+     },
+     {
+      "id": "nc-b",
+      "label": "Influent flow summary"
+     },
+     {
+      "id": "nc-c",
+      "label": "Cake conveyor run log"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "The trend shows filaments and index rising together while operating settings stayed fixed.",
+    "nc-b": "Flow summaries do not test filament growth.",
+    "nc-c": "Conveyor logs cover cake handling, not settling."
+   }
+  },
+  {
+   "id": "wp2ww-evidence16",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Bulking sludge with a rotten egg odour comes from a plant receiving septic sewage through a long force main in Alberta.",
+   "topicId": "filamentous-bulking",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater plant case for Class 2 study. Readings are from the stated period unless a bench, paired train, or control check is noted. Provincial wastewater requirements, the federal Wastewater Systems Effluent Regulations, and the CCME Canada-wide Strategy apply in general terms.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Microscopy shows filamentous organisms with attached sulfur granules visible along the filaments."
+    },
+    {
+     "id": "ev2",
+     "label": "Incoming sewage carries dissolved sulfide and arrives septic after long force main travel."
+    },
+    {
+     "id": "ev3",
+     "label": "Aeration dissolved oxygen is held at 2.0 mg/L and food ratio is in the normal band."
+    },
+    {
+     "id": "ev4",
+     "label": "Settle test shows slow settling with a clear supernatant, a bulking pattern rather than washout."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Sulfide in septic influent is feeding sulfur filamentous organisms, which fits the granules on the filaments and the bulking settle pattern"
+     },
+     {
+      "id": "inf-b",
+      "label": "Low dissolved oxygen alone is causing generic bulking"
+     },
+     {
+      "id": "inf-c",
+      "label": "High food ratio is causing young sludge washout"
+     },
+     {
+      "id": "inf-d",
+      "label": "Nutrient deficiency in the influent is causing the filaments"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Oxygen and food ratio are both in normal bands, which contradicts those causes. Sulfur granules on the filaments plus dissolved sulfide in septic influent directly support sulfur filaments."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Effluent chlorine log"
+     },
+     {
+      "id": "nc-b",
+      "label": "Influent sulfide results with the microscopy report for the bulking period"
+     },
+     {
+      "id": "nc-c",
+      "label": "Primary sludge pump log"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "Chlorine records do not test filament type.",
+    "nc-b": "Sulfide was present in the influent on the same days the granule bearing filaments dominated the samples.",
+    "nc-c": "Primary pump records do not test sulfur filaments."
+   }
+  },
+  {
+   "id": "wp2ww-evidence17",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Foam blankets the aeration basins in cold weather at a Saskatchewan plant, and the foam carries dark greasy looking solids.",
+   "topicId": "filamentous-foaming",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater plant case for Class 2 study. Readings are from the stated period unless a bench, paired train, or control check is noted. Provincial wastewater requirements, the federal Wastewater Systems Effluent Regulations, and the CCME Canada-wide Strategy apply in general terms.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Foam is thick, dark, and greasy, and it persists through cold weeks at 8 C basin temperature."
+    },
+    {
+     "id": "ev2",
+     "label": "Microscopy of foam shows branched filamentous organisms concentrated in the foam compared with the mixed liquor."
+    },
+    {
+     "id": "ev3",
+     "label": "Fats, oils, and grease load is high from a food processing contributor on the influent summary."
+    },
+    {
+     "id": "ev4",
+     "label": "Retention time is long at 25 days and wasting is low."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Zoogloeal viscous bulking is producing the foam"
+     },
+     {
+      "id": "inf-b",
+      "label": "Cold weather, long retention, and grease load favour foam forming filamentous organisms that concentrate in the foam layer"
+     },
+     {
+      "id": "inf-c",
+      "label": "Low dissolved oxygen is whipping air into a detergent foam"
+     },
+     {
+      "id": "inf-d",
+      "label": "Young sludge from over wasting is foaming like detergent"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Young sludge foam is white and fragile, not dark and greasy, and wasting is low rather than high. The branched filaments concentrated in persistent cold foam with grease load and long retention support foam forming filaments."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Bar screen differential log"
+     },
+     {
+      "id": "nc-b",
+      "label": "UV dose log"
+     },
+     {
+      "id": "nc-c",
+      "label": "Foam microscopy report with retention and grease load records"
+     }
+    ],
+    "correctOptionId": "nc-c",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "Screen records do not test foam filaments.",
+    "nc-b": "UV dose covers disinfection, not foaming.",
+    "nc-c": "The foam sample shows the branched filaments far denser in foam than in mixed liquor."
+   }
+  },
+  {
+   "id": "wp2ww-evidence18",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Settling deteriorates each time dissolved oxygen in the first aeration pass sags during the morning load peak.",
+   "topicId": "filamentous-bulking",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater plant case for Class 2 study. Readings are from the stated period unless a bench, paired train, or control check is noted. Provincial wastewater requirements, the federal Wastewater Systems Effluent Regulations, and the CCME Canada-wide Strategy apply in general terms.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Dissolved oxygen in the first pass falls to 0.3 mg/L during the morning peak and holds 2.0 mg/L the rest of the day."
+    },
+    {
+     "id": "ev2",
+     "label": "Microscopy shows filamentous organisms typical of low oxygen conditions increasing over two weeks."
+    },
+    {
+     "id": "ev3",
+     "label": "Sludge volume index rose from 120 to 185 mL/g over the same two weeks."
+    },
+    {
+     "id": "ev4",
+     "label": "Raising peak blower output on a trial day held first pass oxygen near 1.8 mg/L and settling improved within days."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Influent toxicity each morning is deflocculating the sludge"
+     },
+     {
+      "id": "inf-b",
+      "label": "High return rate is hydraulically lifting the blanket each morning"
+     },
+     {
+      "id": "inf-c",
+      "label": "Morning oxygen sags in the first pass are selecting for low oxygen filamentous organisms and driving the bulking"
+     },
+     {
+      "id": "inf-d",
+      "label": "Nutrient deficiency is causing the filaments year round"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "No toxin pattern is recorded and return rate is steady. The trial holding oxygen up and improving settling isolates the oxygen sag as the driver."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "First pass oxygen trend with microscopy and index record"
+     },
+     {
+      "id": "nc-b",
+      "label": "Digester gas log"
+     },
+     {
+      "id": "nc-c",
+      "label": "Cake solids log"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "The trend shows index rising as morning oxygen sags repeated, and easing after the blower trial.",
+    "nc-b": "Gas records cover digestion, not aeration oxygen.",
+    "nc-c": "Cake records cover dewatering, not bulking."
+   }
+  },
+  {
+   "id": "wp2ww-evidence19",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A plant with a strong industrial contributor shows bulking even though oxygen, retention, and sulfide all check normal.",
+   "topicId": "filamentous-bulking",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater plant case for Class 2 study. Readings are from the stated period unless a bench, paired train, or control check is noted. Provincial wastewater requirements, the federal Wastewater Systems Effluent Regulations, and the CCME Canada-wide Strategy apply in general terms.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Microscopy shows abundant filamentous organisms but no sulfur granules."
+    },
+    {
+     "id": "ev2",
+     "label": "Influent nitrogen measures low relative to BOD, giving a BOD to nitrogen ratio well above the posted nutrient need band."
+    },
+    {
+     "id": "ev3",
+     "label": "A bench trial adding nitrogen to one sample train improved settling over several days while the untreated train stayed bulked."
+    },
+    {
+     "id": "ev4",
+     "label": "Dissolved oxygen, retention time, and influent sulfide are all in normal ranges."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Low oxygen is the hidden cause despite normal readings"
+     },
+     {
+      "id": "inf-b",
+      "label": "Sulfide filaments explain bulking without granules"
+     },
+     {
+      "id": "inf-c",
+      "label": "Short retention washout explains the bulking pattern"
+     },
+     {
+      "id": "inf-d",
+      "label": "Nutrient deficiency, specifically low nitrogen for the BOD load, is driving filamentous growth, proven by the bench train that improved with nitrogen added"
+     }
+    ],
+    "correctOptionId": "inf-d",
+    "explanation": "Oxygen and sulfide are normal and granules are absent, which contradicts those causes. The side by side bench trial improving only with nitrogen directly isolates nutrient deficiency."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Effluent ammonia log alone"
+     },
+     {
+      "id": "nc-b",
+      "label": "Bench trial record comparing the nitrogen fed train with the untreated train"
+     },
+     {
+      "id": "nc-c",
+      "label": "Grit removal log"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "Ammonia alone cannot show the nutrient ratio trial.",
+    "nc-b": "Only the nitrogen fed bench train improved settling, while the control stayed bulked on the same sewage.",
+    "nc-c": "Grit records do not test nutrient deficiency."
+   }
+  }
+ ],
+ "missions": [
+  {
+   "id": "wp2ww-mission61",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 61: The Process Centrifuge Preparation Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-process40",
+     "revision": "r1",
+     "occurrenceId": "m61-t1"
+    },
+    {
+     "taskId": "wp2ww-evidence01",
+     "revision": "r1",
+     "occurrenceId": "m61-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission62",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 62: The Srt Process Control Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-evidence02",
+     "revision": "r1",
+     "occurrenceId": "m62-t1"
+    },
+    {
+     "taskId": "wp2ww-process41",
+     "revision": "r1",
+     "occurrenceId": "m62-t2"
+    },
+    {
+     "taskId": "wp2ww-process42",
+     "revision": "r1",
+     "occurrenceId": "m62-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission63",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 63: The Process Belt Press Wet Cake Troubleshoot Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-process43",
+     "revision": "r1",
+     "occurrenceId": "m63-t1"
+    },
+    {
+     "taskId": "wp2ww-evidence03",
+     "revision": "r1",
+     "occurrenceId": "m63-t2"
+    },
+    {
+     "taskId": "wp2ww-process44",
+     "revision": "r1",
+     "occurrenceId": "m63-t3"
+    },
+    {
+     "taskId": "wp2ww-process45",
+     "revision": "r1",
+     "occurrenceId": "m63-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission64",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 64: The Srt Process Control Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-evidence04",
+     "revision": "r1",
+     "occurrenceId": "m64-t1"
+    },
+    {
+     "taskId": "wp2ww-process46",
+     "revision": "r1",
+     "occurrenceId": "m64-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission65",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 65: The Process Chlorine Season Startup Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-process47",
+     "revision": "r1",
+     "occurrenceId": "m65-t1"
+    },
+    {
+     "taskId": "wp2ww-evidence05",
+     "revision": "r1",
+     "occurrenceId": "m65-t2"
+    },
+    {
+     "taskId": "wp2ww-process48",
+     "revision": "r1",
+     "occurrenceId": "m65-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission66",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 66: The Srt Process Control Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-evidence06",
+     "revision": "r1",
+     "occurrenceId": "m66-t1"
+    },
+    {
+     "taskId": "wp2ww-process49",
+     "revision": "r1",
+     "occurrenceId": "m66-t2"
+    },
+    {
+     "taskId": "wp2ww-process50",
+     "revision": "r1",
+     "occurrenceId": "m66-t3"
+    },
+    {
+     "taskId": "wp2ww-process51",
+     "revision": "r1",
+     "occurrenceId": "m66-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission67",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 67: The Process Chlorine Pump Calibration Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-process52",
+     "revision": "r1",
+     "occurrenceId": "m67-t1"
+    },
+    {
+     "taskId": "wp2ww-evidence07",
+     "revision": "r1",
+     "occurrenceId": "m67-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission68",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 68: The Srt Process Control Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-evidence08",
+     "revision": "r1",
+     "occurrenceId": "m68-t1"
+    },
+    {
+     "taskId": "wp2ww-process53",
+     "revision": "r1",
+     "occurrenceId": "m68-t2"
+    },
+    {
+     "taskId": "wp2ww-process54",
+     "revision": "r1",
+     "occurrenceId": "m68-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission69",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 69: The Process Disinfection Monthly Review Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-process55",
+     "revision": "r1",
+     "occurrenceId": "m69-t1"
+    },
+    {
+     "taskId": "wp2ww-evidence09",
+     "revision": "r1",
+     "occurrenceId": "m69-t2"
+    },
+    {
+     "taskId": "wp2ww-process56",
+     "revision": "r1",
+     "occurrenceId": "m69-t3"
+    },
+    {
+     "taskId": "wp2ww-process57",
+     "revision": "r1",
+     "occurrenceId": "m69-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission70",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 70: The Srt Process Control Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-evidence10",
+     "revision": "r1",
+     "occurrenceId": "m70-t1"
+    },
+    {
+     "taskId": "wp2ww-process58",
+     "revision": "r1",
+     "occurrenceId": "m70-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission71",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 71: The Process Alkalinity Nitrification Check Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-process59",
+     "revision": "r1",
+     "occurrenceId": "m71-t1"
+    },
+    {
+     "taskId": "wp2ww-evidence100",
+     "revision": "r1",
+     "occurrenceId": "m71-t2"
+    },
+    {
+     "taskId": "wp2ww-process60",
+     "revision": "r1",
+     "occurrenceId": "m71-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission72",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 72: The Srt Process Control Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-evidence11",
+     "revision": "r1",
+     "occurrenceId": "m72-t1"
+    },
+    {
+     "taskId": "wp2ww-process61",
+     "revision": "r1",
+     "occurrenceId": "m72-t2"
+    },
+    {
+     "taskId": "wp2ww-process62",
+     "revision": "r1",
+     "occurrenceId": "m72-t3"
+    },
+    {
+     "taskId": "wp2ww-process63",
+     "revision": "r1",
+     "occurrenceId": "m72-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission73",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 73: The Process Nutrient Dashboard Update Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-process64",
+     "revision": "r1",
+     "occurrenceId": "m73-t1"
+    },
+    {
+     "taskId": "wp2ww-evidence12",
+     "revision": "r1",
+     "occurrenceId": "m73-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission74",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 74: The Srt Process Control Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-evidence13",
+     "revision": "r1",
+     "occurrenceId": "m74-t1"
+    },
+    {
+     "taskId": "wp2ww-process65",
+     "revision": "r1",
+     "occurrenceId": "m74-t2"
+    },
+    {
+     "taskId": "wp2ww-process66",
+     "revision": "r1",
+     "occurrenceId": "m74-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission75",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 75: The Process Composite Sampling Program Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-process67",
+     "revision": "r1",
+     "occurrenceId": "m75-t1"
+    },
+    {
+     "taskId": "wp2ww-evidence14",
+     "revision": "r1",
+     "occurrenceId": "m75-t2"
+    },
+    {
+     "taskId": "wp2ww-process68",
+     "revision": "r1",
+     "occurrenceId": "m75-t3"
+    },
+    {
+     "taskId": "wp2ww-process69",
+     "revision": "r1",
+     "occurrenceId": "m75-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission76",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 76: The Srt Process Control Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-evidence15",
+     "revision": "r1",
+     "occurrenceId": "m76-t1"
+    },
+    {
+     "taskId": "wp2ww-process70",
+     "revision": "r1",
+     "occurrenceId": "m76-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission77",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 77: The Process Sample Bottle Preparation Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-process71",
+     "revision": "r1",
+     "occurrenceId": "m77-t1"
+    },
+    {
+     "taskId": "wp2ww-evidence16",
+     "revision": "r1",
+     "occurrenceId": "m77-t2"
+    },
+    {
+     "taskId": "wp2ww-process72",
+     "revision": "r1",
+     "occurrenceId": "m77-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission78",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 78: The Filamentous Foaming Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-evidence17",
+     "revision": "r1",
+     "occurrenceId": "m78-t1"
+    },
+    {
+     "taskId": "wp2ww-process73",
+     "revision": "r1",
+     "occurrenceId": "m78-t2"
+    },
+    {
+     "taskId": "wp2ww-process74",
+     "revision": "r1",
+     "occurrenceId": "m78-t3"
+    },
+    {
+     "taskId": "wp2ww-process75",
+     "revision": "r1",
+     "occurrenceId": "m78-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission79",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 79: The Process Grab Sample Sensitive Testing Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-process76",
+     "revision": "r1",
+     "occurrenceId": "m79-t1"
+    },
+    {
+     "taskId": "wp2ww-evidence18",
+     "revision": "r1",
+     "occurrenceId": "m79-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission80",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 80: The Filamentous Bulking Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-evidence19",
+     "revision": "r1",
+     "occurrenceId": "m80-t1"
+    },
+    {
+     "taskId": "wp2ww-process77",
+     "revision": "r1",
+     "occurrenceId": "m80-t2"
+    },
+    {
+     "taskId": "wp2ww-process78",
+     "revision": "r1",
+     "occurrenceId": "m80-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Wastewater treatment operations chapters (process control, digestion, dewatering)"
+  },
+  {
+   "id": "wpi-ntk-2025",
+   "title": "WPI, 2025 Need-to-Know Criteria, Wastewater Treatment Class II",
+   "locator": "https://gowpi.org/services/2025-need-to-know-criteria/"
+  },
+  {
+   "id": "ccme-strategy",
+   "title": "CCME, Canada-wide Strategy for the Management of Municipal Wastewater Effluent, 2009",
+   "locator": "National effluent quality context for Canadian municipal wastewater"
+  },
+  {
+   "id": "wser",
+   "title": "Government of Canada, Wastewater Systems Effluent Regulations (Fisheries Act)",
+   "locator": "Federal effluent requirements, general reference"
+  },
+  {
+   "id": "epa-ww-primer",
+   "title": "US EPA, wastewater treatment primer material",
+   "locator": "Treatment process background (not Canadian law)"
+  },
+  {
+   "id": "ccohs-safety",
+   "title": "CCOHS, OSH Answers (chemical safety, confined spaces, lockout)",
+   "locator": "https://www.ccohs.ca/oshanswers/"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "e4e4f52fc0a79489d38fd90528ab1353218fbea9b95bda90aa81ccb356f48f34",
+  "taskReceipts": [
+   {
+    "taskId": "wp2ww-process40",
+    "revision": "r1",
+    "sha256": "06f22c64a70bddd1d2aa1b419f0011c9a8c77946e9485a94dcd7c808b2e5d26e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process41",
+    "revision": "r1",
+    "sha256": "0a1a5a32b3452dd86d6f3d4f35eeb1453c7ebb8ddbe9576a4562c0013bb0929d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process42",
+    "revision": "r1",
+    "sha256": "a0834d9163797abfc56c819595c586acdded64419860647589716833ab672dec",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process43",
+    "revision": "r1",
+    "sha256": "167beef520556fc8a71d9480a6e9d3bfa4a600a070a3bac410572a981ec2bc85",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process44",
+    "revision": "r1",
+    "sha256": "40608fef85489f9e2344c4da9a31d83fed58b9cf40fed980de10103d00026a9c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process45",
+    "revision": "r1",
+    "sha256": "38016afa89c2e79685e4bddc854d90ee831a20203ac7a560fff1c53f464fc155",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process46",
+    "revision": "r1",
+    "sha256": "30139df5a13e6748fdcc30679276ca8d6c07aff6c9a987ad9d6fb8c20839ce83",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process47",
+    "revision": "r1",
+    "sha256": "c337fc75706dbbcbe43ae07a9130d1eacf7199765d1638ff7b0e533c4b592c13",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process48",
+    "revision": "r1",
+    "sha256": "ae6d8fc1fae0fe9a3f174cd03bef0f9c84900b9c7b4b1b500d8154b078294fe4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process49",
+    "revision": "r1",
+    "sha256": "21cc00c6249dd7a2cdfe185ce3350a6442705f4950aff029ea0384bffb1f30c1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process50",
+    "revision": "r1",
+    "sha256": "82ab43f778a71a214bf3a22883662c4bbd6c115a51f096300692068f88f7725e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process51",
+    "revision": "r1",
+    "sha256": "18bceea99575d967924d659a0882eca8a05d613cfaa1ac14b0d8a885f9f9a8ad",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process52",
+    "revision": "r1",
+    "sha256": "4f167766bf347df4098743cb3bd49b6f199c763c68793594deb032a90396c8cb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process53",
+    "revision": "r1",
+    "sha256": "b40304200b151a9dd0aa6aedbe72572958943eb66aa6888bb420d4189804a49a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process54",
+    "revision": "r1",
+    "sha256": "d7087bbb8dac43adbec3ea369198607aca287eec20203ec5773e01ddddea1875",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process55",
+    "revision": "r1",
+    "sha256": "f26c463a2f2ac064a56d7466409ab1e6b00e993e70c734e311d88ce19ecc86c7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process56",
+    "revision": "r1",
+    "sha256": "ec379f7551f4547f37f193ae5060dcbc620ccb6fd8e45c774c13314e62a69b98",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process57",
+    "revision": "r1",
+    "sha256": "31264398d68eb2be962a643f4db54ad06b894bd9b71be6fe51a3cc106513bd66",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process58",
+    "revision": "r1",
+    "sha256": "012ac49a90fb5f87cc5a3253b8e9b492bf4597a72c70b5eede283a16866756e5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process59",
+    "revision": "r1",
+    "sha256": "6dd9699a53655bf2ea0ba25b4ac3d3ebfc7561e6939357ae33afb9ce21a8ec83",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process60",
+    "revision": "r1",
+    "sha256": "aeca0806ee940ba2f1329c40544c9dab3bb4e42e3bf2b3a2de28db1d9e9f993b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process61",
+    "revision": "r1",
+    "sha256": "f5ff899bab956a963f6028448f55631b7bf8e705d1f5956c2809bd46394a6f0c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process62",
+    "revision": "r1",
+    "sha256": "81a9158ac00fabd61a98ac78ee35c91b4894db51f741b28f1f056466d2ced593",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process63",
+    "revision": "r1",
+    "sha256": "dd8e95af80c8e76038b90ad67946837e2a4745b8fefbeff0b3e43f19cceaa53e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process64",
+    "revision": "r1",
+    "sha256": "b59f9cc6e4c58d8fa995a481bb11b1a2ccc18675d480790e172531f5968ce90b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process65",
+    "revision": "r1",
+    "sha256": "2d4851d80800f4f4e7e4feefb4362a1b71c017c776cb7cffd3a054dd79caad16",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process66",
+    "revision": "r1",
+    "sha256": "ed090a7bbd2a8375b456ba3cef00d1ff2885f4dbf3878c8d70c6e906c2376e5b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process67",
+    "revision": "r1",
+    "sha256": "84dfed99394613e243902c95a0b98e76a6e45cc53c504c868721cf03f3d7a0d2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process68",
+    "revision": "r1",
+    "sha256": "cf584f5fb419dbd41fbe8912c635097df83ca95d31b7432194146d92961a8eac",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process69",
+    "revision": "r1",
+    "sha256": "87d1d0ec9ef6fe77351b1933c1e700d4b9bc269076886c62bd14626c206af029",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process70",
+    "revision": "r1",
+    "sha256": "2f511f0d8f42908fd2b8a062a937350ca44a23e935d6411ade8b0b73c4f19c27",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process71",
+    "revision": "r1",
+    "sha256": "5ab7d3b1b77dcd80c1cdf065493eed0e2f624c3d65fdf0426f86093d144a6381",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process72",
+    "revision": "r1",
+    "sha256": "8ca8662e0e73720d89c3ca2c3cbf914d19cf56c108bd9dbb5fefa423524cde80",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process73",
+    "revision": "r1",
+    "sha256": "f1246ca37b52e216f8863425b3c5bcbbb1bfd4691a3c5389799dea5e43dc08d9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process74",
+    "revision": "r1",
+    "sha256": "28fe2d6e0d534b3531eedb4b15d71d1616dcc9e4fcc05f00bdeba4e3616231e4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process75",
+    "revision": "r1",
+    "sha256": "ac4d64937a5816e54af68bdc6fe8a3cb3055b969b428f6a835c5534995f82852",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process76",
+    "revision": "r1",
+    "sha256": "773595c2acd117457b2d7d7fb2b72f4534f9610c27cd0867a9ce529bd8542b68",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process77",
+    "revision": "r1",
+    "sha256": "8c299acf6907be5f479b9160f94ac654fe64dc61b76c66851818bd0cea22fed0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process78",
+    "revision": "r1",
+    "sha256": "d1b1e0ce22f8c50ef7ec47fb6c502c907f8e1e182f08f343d8bb9536dd2831e7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process79",
+    "revision": "r1",
+    "sha256": "53f788d00846c3b4522ec6d164d3205af6e0f8fb94b2c3c0c2f30b66a039edc0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process80",
+    "revision": "r1",
+    "sha256": "c699f4344b1f9c8945635b245e78d1fbf3237d371c61f5046ca052711643e5e7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process81",
+    "revision": "r1",
+    "sha256": "93ae26d1cf805682913e88dc6c06a90a37c158603bcda7282af42106295a6f3a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process82",
+    "revision": "r1",
+    "sha256": "feabe0453a94af620928c57cf79c2712e782ac209a90dd40b82bb48b98b18813",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process83",
+    "revision": "r1",
+    "sha256": "f73deed4146198ac3b32f077410dd9417c42c88fd854c971df186786fd92c2fc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process84",
+    "revision": "r1",
+    "sha256": "65f63de50a93dd4850bec6bf0e85d231c4c82f5d2a9a75246ef83fbf4c9beb4d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process85",
+    "revision": "r1",
+    "sha256": "777ab56abf942dd7b05978824be8b815cd533bbc2d8e96b0aef09278c3696e81",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process86",
+    "revision": "r1",
+    "sha256": "d6b3554fca89301aa403520a240e45a6d75c8bde0d67632b729efee2ef6d600c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process87",
+    "revision": "r1",
+    "sha256": "36af2a09b2e8ab69f4bbd7a07e27c2f1f7ea3ee082feac6434e7971aacdf9be1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process88",
+    "revision": "r1",
+    "sha256": "fba1e8f6680a6fa47f852123c3f4c801f2a3ce10377de8a5d7be7712fe820a13",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process89",
+    "revision": "r1",
+    "sha256": "6aed6a0ddad601825fc73481b1faacc8891e8c4e8ae628ad173d7711fd55eee6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process90",
+    "revision": "r1",
+    "sha256": "fa5b668318de3ebcf05bb3a925b9a7284e59e9c11f4d72b9a304e11d386acd6e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process91",
+    "revision": "r1",
+    "sha256": "d59a55daeb9030e8cb61df6f8284930097116a22d7125f6f665a92bc827c062d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process92",
+    "revision": "r1",
+    "sha256": "dbf1b8f01e2b50ba3f2d5aaba283851cabf3c410f276070c76ae2a4ecd11cda9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process93",
+    "revision": "r1",
+    "sha256": "ce2dd6f9e273903c32d8dd9c13bbd9634e819dde8fac997bd6900af4a1e07eb9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process94",
+    "revision": "r1",
+    "sha256": "501f6466fda36f96a6b2b6cb474eed675e06a83e722032b952b653ce13d8cb85",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process95",
+    "revision": "r1",
+    "sha256": "e50c91d25798f80b0151cb975b776d506b1aa1b2545177499755881127476f74",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process96",
+    "revision": "r1",
+    "sha256": "66e03ec9ef0b029a21ba12f862dfe429bf8501014669aff946fd350fc0403dcc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process97",
+    "revision": "r1",
+    "sha256": "d2ac7194f6564a6b0760dd4cfea0864615c4d0565854273f840e36479f53869d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process98",
+    "revision": "r1",
+    "sha256": "e192d9766e95e73254cbcf6bb14336d2042eb9f9990554f749391896cd4c9f51",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process99",
+    "revision": "r1",
+    "sha256": "20eb1af9d2053d52aec8b0da9943889d5cc27f8acf0acae8d4898dfc14548e1e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-evidence01",
+    "revision": "r1",
+    "sha256": "6916e6262e8e5b39b1de48102111f512ea66a8ff0f08598cd30d42a1eaa59d7d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-evidence02",
+    "revision": "r1",
+    "sha256": "acdfbb0b8bd68f92689c742c1e26a0983c0dbf88325e7f0373cec9ea23271400",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-evidence03",
+    "revision": "r1",
+    "sha256": "7b14e79a4ce9f3fdaa485005cdfae9be4a3353c52f9bc88492577f16d9ec3568",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-evidence04",
+    "revision": "r1",
+    "sha256": "ef3c2dff28c1b19783f0db30430b424dd2232f56346b95131b93427860a91f67",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-evidence05",
+    "revision": "r1",
+    "sha256": "97a782658e0fd6c8138406af29ff31272c62284100ac06061059bbf08a3dd004",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-evidence06",
+    "revision": "r1",
+    "sha256": "b248ef575d06f580d11ee8b659e0c834d10b540ed0b4d2a54456876aca632c43",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-evidence07",
+    "revision": "r1",
+    "sha256": "c4dc510d36de689e38b5f077d305c2bb592bd5772a0f36091d997de1f93fe5f6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-evidence08",
+    "revision": "r1",
+    "sha256": "b1279761435cf5e6e3a2265515ebfca04f0c7e80f914c3df5c8b6e2e3d933e36",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-evidence09",
+    "revision": "r1",
+    "sha256": "4391001718ea33eb1805975b04958950edf09840e24aaa2751c2f7dafc918f11",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-evidence10",
+    "revision": "r1",
+    "sha256": "01cbd704428f8536cfcef5f19c200fbef46611b310c97c71350aa0e5e8eba902",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-evidence100",
+    "revision": "r1",
+    "sha256": "214a5d7bb907af64c871250d5bf581c99ee92d5239f2f1cfe69b6c491a8dcf9f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-evidence11",
+    "revision": "r1",
+    "sha256": "a97c839ffe067b7a452b5958efd265aa30be4b6ccf5f163e7fb2b39ec42a538e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-evidence12",
+    "revision": "r1",
+    "sha256": "464833d53d493a41e964f75a6d35bfcc454d6930c9b8614a49bfd9614c2998b7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-evidence13",
+    "revision": "r1",
+    "sha256": "f14b0b5ce7e2b6f94e03207d5ec79fd56830a0c87fb0727218b5d46ed1fb9d01",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-evidence14",
+    "revision": "r1",
+    "sha256": "3cba7347505158608d528042f08b3335ebecc2c03a2d118702d52ef9f06f992a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-evidence15",
+    "revision": "r1",
+    "sha256": "bb62b922952e0648bec2273283d377dabac35351405b1514d0fa00d633b83a53",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-evidence16",
+    "revision": "r1",
+    "sha256": "39c8aaf51ae02e4bc0a030c490c09c72fa0aa8981def5cf45183669675e6a49b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-evidence17",
+    "revision": "r1",
+    "sha256": "f3a080e12c31529154701f932ad51bf2f42ff8514ff2504609c3558fb0b80b83",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-evidence18",
+    "revision": "r1",
+    "sha256": "3e1a177043e51bf23c4d57218406c4004f92c1c061e99092cddfa2fbc106c149",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-evidence19",
+    "revision": "r1",
+    "sha256": "b1c861b810f6d03788b64a35e996f7d22b4b33075b0a9629fd5db9665329b8ba",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "wp2ww-mission61",
+    "revision": "r1",
+    "sha256": "754024b0983e9feeac80701a1128baf14286e7bbb78db8e2f4905631e1968cb8"
+   },
+   {
+    "missionId": "wp2ww-mission62",
+    "revision": "r1",
+    "sha256": "476200e65c9c4ec2b7f6b2ab60fbeab99d872185b79751d7d7676af976909aca"
+   },
+   {
+    "missionId": "wp2ww-mission63",
+    "revision": "r1",
+    "sha256": "2cab88da72952edfabfddecaeb9e7f170b2f562044878f216cea2c9a9ae84747"
+   },
+   {
+    "missionId": "wp2ww-mission64",
+    "revision": "r1",
+    "sha256": "91470baa115f84ab38986740d1a33fa26fd919a9675c1fe26830f237d1c377bb"
+   },
+   {
+    "missionId": "wp2ww-mission65",
+    "revision": "r1",
+    "sha256": "6913f835b4678f089c55b527f39414e1a80b0dc944bb9dc550d5f76a0ec5b395"
+   },
+   {
+    "missionId": "wp2ww-mission66",
+    "revision": "r1",
+    "sha256": "6ec7a382c801c986c6ce269ea09552de8a1eef0871b45472e5890aafb2bb821b"
+   },
+   {
+    "missionId": "wp2ww-mission67",
+    "revision": "r1",
+    "sha256": "146c7d0550ac72b0f2b5a1b1a21be0302ff41325dd592153ca99866654ac80fa"
+   },
+   {
+    "missionId": "wp2ww-mission68",
+    "revision": "r1",
+    "sha256": "9b300f73590974b4f73b6a02e35a3b990b327e1995b05efa77945e0824317c07"
+   },
+   {
+    "missionId": "wp2ww-mission69",
+    "revision": "r1",
+    "sha256": "0c9f3420603979bd3a7a0fa97d6839f9ff3a59c38ca0500c1d7a15bd94f2ac04"
+   },
+   {
+    "missionId": "wp2ww-mission70",
+    "revision": "r1",
+    "sha256": "f1880e9f02e89616b5c73b047e8f43228f0963995b6c136eb0be8d71827d64b5"
+   },
+   {
+    "missionId": "wp2ww-mission71",
+    "revision": "r1",
+    "sha256": "184eb3d3e80c5553c70620c6d45e863d5e0467e080d9b46b9ff274daabf13be0"
+   },
+   {
+    "missionId": "wp2ww-mission72",
+    "revision": "r1",
+    "sha256": "046b62318e3f39a61074c62c9db84b3ac1ecf8238eff5c6da27a3f52e1fbe6e0"
+   },
+   {
+    "missionId": "wp2ww-mission73",
+    "revision": "r1",
+    "sha256": "65fb1937f4b5ee4e5d325888a56d94b855a8a24c5c29beacf5d2c9e87f288cc2"
+   },
+   {
+    "missionId": "wp2ww-mission74",
+    "revision": "r1",
+    "sha256": "cb1a816d67f458f6ba0a420caf9b033791aa7e71149f7043c423289fd4db8836"
+   },
+   {
+    "missionId": "wp2ww-mission75",
+    "revision": "r1",
+    "sha256": "4fcb305311fa71ff592e2d7831fe4c04d92127c1930ff6a3fed44352afa95d46"
+   },
+   {
+    "missionId": "wp2ww-mission76",
+    "revision": "r1",
+    "sha256": "4184d5f8d67ab7c7c2c8a4d771e199f18918ddb115f091caf9f09ca7d70b2602"
+   },
+   {
+    "missionId": "wp2ww-mission77",
+    "revision": "r1",
+    "sha256": "660d4656192bb0553df53027013aec09f919941cf7c80a1e2546bc00771d0549"
+   },
+   {
+    "missionId": "wp2ww-mission78",
+    "revision": "r1",
+    "sha256": "b19958b4f5b9199f855efcc2bac5d7e35bcf20037427ca6d1fe687f21b6b8774"
+   },
+   {
+    "missionId": "wp2ww-mission79",
+    "revision": "r1",
+    "sha256": "50f26d1099a6e4f9780a9047cc7bb278fe9b976d49d8ea75578f851e8d620689"
+   },
+   {
+    "missionId": "wp2ww-mission80",
+    "revision": "r1",
+    "sha256": "4d62f51bcdd6f87bc4b13229c568b2b6c94a58e06e9ebb7be3cb46551d3bc317"
+   }
+  ]
+ }
+}

@@ -1,0 +1,5041 @@
+{
+ "courseKey": "wpi-class4-water",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "wp4w-ladder80",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A pumping summary gives a stated specific energy of 0.33 kWh/m3 at flow 18000 m3/day. Find the daily pumping energy in kWh/day. Enter the exact unrounded number.",
+   "topicId": "energy-benchmarking",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian utility in Yellowknife, Northwest Territories: stated specific energy = 0.33 kWh/m3, flow = 18000 m3/day. Daily energy is specific energy multiplied by daily volume. Provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality apply in general terms.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Energy kWh/day = Specific energy / Flow"
+      },
+      {
+       "id": "opt-b",
+       "label": "Energy kWh/day = Flow / Specific energy"
+      },
+      {
+       "id": "opt-c",
+       "label": "Energy kWh/day = Specific energy * Flow"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct formula matches the quantity being found and the given values."
+    },
+    {
+     "id": "units",
+     "prompt": "Which unit handling is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "kWh/m3 multiplied by m3/day gives kWh/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "The result is reported in m3/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "Flow is divided by the specific energy"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Units must be handled this way so the result comes out in the expected unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Energy = 0.33 / 18000 kWh/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "Energy = 0.33 * 18000 kWh/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "Energy = 18000 / 0.33 kWh/day"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Substitute the given values into the correct formula without swapping or dropping a term."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact result in kWh/day (kWh-day).",
+    "unitOptions": [
+     {
+      "id": "kWh-day",
+      "label": "kWh/day"
+     },
+     {
+      "id": "kWh-m3",
+      "label": "kWh/m3"
+     },
+     {
+      "id": "MWh-day",
+      "label": "MWh/day",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "m3-day",
+      "label": "m3/day"
+     }
+    ],
+    "expected": "5940",
+    "expectedUnitId": "kWh-day",
+    "absoluteTolerance": "0",
+    "explanation": "Daily energy = 0.33 * 18000 kWh/day."
+   }
+  },
+  {
+   "id": "wp4w-ladder81",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A utility wide disinfection balance uses dose D = 1.8 mg/L and flow Q = 25 ML/day. Find the chlorine mass in kg/day, noting that 1 mg/L over 1 ML equals 1 kg. Enter the exact unrounded number.",
+   "topicId": "utility-mass-balance",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian utility in Calgary, Alberta: dose D = 1.8 mg/L, flow Q = 25 ML/day. With the stated equivalence, mass in kg/day is dose multiplied by flow in ML/day. Provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality apply in general terms.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Mass kg/day = D * Q"
+      },
+      {
+       "id": "opt-b",
+       "label": "Mass kg/day = D / Q"
+      },
+      {
+       "id": "opt-c",
+       "label": "Mass kg/day = D * Q / 1000"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct formula matches the quantity being found and the given values."
+    },
+    {
+     "id": "units",
+     "prompt": "Which unit handling is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Dose is divided by flow to give kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "mg/L multiplied by ML/day gives kg/day with the stated equivalence"
+      },
+      {
+       "id": "opt-c",
+       "label": "The product is divided by 1000 a second time"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Units must be handled this way so the result comes out in the expected unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Mass = 1.8 / 25 kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "Mass = 1.8 * 25 / 1000 kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "Mass = 1.8 * 25 kg/day"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Substitute the given values into the correct formula without swapping or dropping a term."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact result in kg/day (kg-day).",
+    "unitOptions": [
+     {
+      "id": "ML-day",
+      "label": "ML/day"
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "g-day",
+      "label": "g/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     }
+    ],
+    "expected": "45",
+    "expectedUnitId": "kg-day",
+    "absoluteTolerance": "0",
+    "explanation": "Chlorine mass = 1.8 * 25 kg/day."
+   }
+  },
+  {
+   "id": "wp4w-ladder82",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A utility wide disinfection balance uses dose D = 2.2 mg/L and flow Q = 20 ML/day. Find the chlorine mass in kg/day, noting that 1 mg/L over 1 ML equals 1 kg. Enter the exact unrounded number.",
+   "topicId": "utility-mass-balance",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian utility in Edmonton, Alberta: dose D = 2.2 mg/L, flow Q = 20 ML/day. With the stated equivalence, mass in kg/day is dose multiplied by flow in ML/day. Provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality apply in general terms.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Mass kg/day = D * Q / 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Mass kg/day = D * Q"
+      },
+      {
+       "id": "opt-c",
+       "label": "Mass kg/day = D / Q"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct formula matches the quantity being found and the given values."
+    },
+    {
+     "id": "units",
+     "prompt": "Which unit handling is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The product is divided by 1000 a second time"
+      },
+      {
+       "id": "opt-b",
+       "label": "Dose is divided by flow to give kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "mg/L multiplied by ML/day gives kg/day with the stated equivalence"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Units must be handled this way so the result comes out in the expected unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Mass = 2.2 * 20 kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "Mass = 2.2 / 20 kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "Mass = 2.2 * 20 / 1000 kg/day"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Substitute the given values into the correct formula without swapping or dropping a term."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact result in kg/day (kg-day).",
+    "unitOptions": [
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "ML-day",
+      "label": "ML/day"
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "g-day",
+      "label": "g/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     }
+    ],
+    "expected": "44",
+    "expectedUnitId": "kg-day",
+    "absoluteTolerance": "0",
+    "explanation": "Chlorine mass = 2.2 * 20 kg/day."
+   }
+  },
+  {
+   "id": "wp4w-ladder83",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A utility wide disinfection balance uses dose D = 1.5 mg/L and flow Q = 32 ML/day. Find the chlorine mass in kg/day, noting that 1 mg/L over 1 ML equals 1 kg. Enter the exact unrounded number.",
+   "topicId": "utility-mass-balance",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian utility in Regina, Saskatchewan: dose D = 1.5 mg/L, flow Q = 32 ML/day. With the stated equivalence, mass in kg/day is dose multiplied by flow in ML/day. Provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality apply in general terms.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Mass kg/day = D / Q"
+      },
+      {
+       "id": "opt-b",
+       "label": "Mass kg/day = D * Q / 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Mass kg/day = D * Q"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct formula matches the quantity being found and the given values."
+    },
+    {
+     "id": "units",
+     "prompt": "Which unit handling is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "mg/L multiplied by ML/day gives kg/day with the stated equivalence"
+      },
+      {
+       "id": "opt-b",
+       "label": "The product is divided by 1000 a second time"
+      },
+      {
+       "id": "opt-c",
+       "label": "Dose is divided by flow to give kg/day"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Units must be handled this way so the result comes out in the expected unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Mass = 1.5 * 32 / 1000 kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "Mass = 1.5 * 32 kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "Mass = 1.5 / 32 kg/day"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Substitute the given values into the correct formula without swapping or dropping a term."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact result in kg/day (kg-day).",
+    "unitOptions": [
+     {
+      "id": "g-day",
+      "label": "g/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "ML-day",
+      "label": "ML/day"
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     }
+    ],
+    "expected": "48",
+    "expectedUnitId": "kg-day",
+    "absoluteTolerance": "0",
+    "explanation": "Chlorine mass = 1.5 * 32 kg/day."
+   }
+  },
+  {
+   "id": "wp4w-ladder84",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A utility wide disinfection balance uses dose D = 1.6 mg/L and flow Q = 35 ML/day. Find the chlorine mass in kg/day, noting that 1 mg/L over 1 ML equals 1 kg. Enter the exact unrounded number.",
+   "topicId": "utility-mass-balance",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian utility in Saskatoon, Saskatchewan: dose D = 1.6 mg/L, flow Q = 35 ML/day. With the stated equivalence, mass in kg/day is dose multiplied by flow in ML/day. Provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality apply in general terms.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Mass kg/day = D * Q"
+      },
+      {
+       "id": "opt-b",
+       "label": "Mass kg/day = D / Q"
+      },
+      {
+       "id": "opt-c",
+       "label": "Mass kg/day = D * Q / 1000"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct formula matches the quantity being found and the given values."
+    },
+    {
+     "id": "units",
+     "prompt": "Which unit handling is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Dose is divided by flow to give kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "mg/L multiplied by ML/day gives kg/day with the stated equivalence"
+      },
+      {
+       "id": "opt-c",
+       "label": "The product is divided by 1000 a second time"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Units must be handled this way so the result comes out in the expected unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Mass = 1.6 / 35 kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "Mass = 1.6 * 35 / 1000 kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "Mass = 1.6 * 35 kg/day"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Substitute the given values into the correct formula without swapping or dropping a term."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact result in kg/day (kg-day).",
+    "unitOptions": [
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "g-day",
+      "label": "g/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "ML-day",
+      "label": "ML/day"
+     }
+    ],
+    "expected": "56",
+    "expectedUnitId": "kg-day",
+    "absoluteTolerance": "0",
+    "explanation": "Chlorine mass = 1.6 * 35 kg/day."
+   }
+  },
+  {
+   "id": "wp4w-ladder85",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A utility wide disinfection balance uses dose D = 2.4 mg/L and flow Q = 22 ML/day. Find the chlorine mass in kg/day, noting that 1 mg/L over 1 ML equals 1 kg. Enter the exact unrounded number.",
+   "topicId": "utility-mass-balance",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian utility in Winnipeg, Manitoba: dose D = 2.4 mg/L, flow Q = 22 ML/day. With the stated equivalence, mass in kg/day is dose multiplied by flow in ML/day. Provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality apply in general terms.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Mass kg/day = D * Q / 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Mass kg/day = D * Q"
+      },
+      {
+       "id": "opt-c",
+       "label": "Mass kg/day = D / Q"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct formula matches the quantity being found and the given values."
+    },
+    {
+     "id": "units",
+     "prompt": "Which unit handling is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The product is divided by 1000 a second time"
+      },
+      {
+       "id": "opt-b",
+       "label": "Dose is divided by flow to give kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "mg/L multiplied by ML/day gives kg/day with the stated equivalence"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Units must be handled this way so the result comes out in the expected unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Mass = 2.4 * 22 kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "Mass = 2.4 / 22 kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "Mass = 2.4 * 22 / 1000 kg/day"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Substitute the given values into the correct formula without swapping or dropping a term."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact result in kg/day (kg-day).",
+    "unitOptions": [
+     {
+      "id": "ML-day",
+      "label": "ML/day"
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "g-day",
+      "label": "g/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     }
+    ],
+    "expected": "52.8",
+    "expectedUnitId": "kg-day",
+    "absoluteTolerance": "0",
+    "explanation": "Chlorine mass = 2.4 * 22 kg/day."
+   }
+  },
+  {
+   "id": "wp4w-ladder86",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A compliance sampling program covers 25 sites at 2 samples per site per month for 12 months. Find the total samples per year under provincial drinking water requirements in general terms. Enter the exact unrounded number.",
+   "topicId": "compliance-sampling-counts",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian utility in Kelowna, British Columbia: sites = 25, samples per site per month = 2, months = 12. The annual count is sites multiplied by samples per month multiplied by 12. Provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality apply in general terms.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Samples/year = Sites * Per month / 12"
+      },
+      {
+       "id": "opt-b",
+       "label": "Samples/year = Sites + Per month + 12"
+      },
+      {
+       "id": "opt-c",
+       "label": "Samples/year = Sites * Per month * 12"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct formula matches the quantity being found and the given values."
+    },
+    {
+     "id": "units",
+     "prompt": "Which unit handling is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The count is a pure number of samples per year"
+      },
+      {
+       "id": "opt-b",
+       "label": "The monthly count is reported with no annual factor"
+      },
+      {
+       "id": "opt-c",
+       "label": "Sites are divided by months to give the count"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Units must be handled this way so the result comes out in the expected unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Samples = 25 + 2 + 12 samples/year"
+      },
+      {
+       "id": "opt-b",
+       "label": "Samples = 25 * 2 * 12 samples/year"
+      },
+      {
+       "id": "opt-c",
+       "label": "Samples = 25 * 2 / 12 samples/year"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Substitute the given values into the correct formula without swapping or dropping a term."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact result in samples/year (samples-year).",
+    "unitOptions": [
+     {
+      "id": "samples",
+      "label": "samples"
+     },
+     {
+      "id": "sites",
+      "label": "sites"
+     },
+     {
+      "id": "samples-year",
+      "label": "samples/year"
+     },
+     {
+      "id": "samples-month",
+      "label": "samples/month",
+      "toExpected": {
+       "numerator": "12",
+       "denominator": "1"
+      }
+     }
+    ],
+    "expected": "600",
+    "expectedUnitId": "samples-year",
+    "absoluteTolerance": "0",
+    "explanation": "Annual samples = 25 * 2 * 12 samples per year."
+   }
+  },
+  {
+   "id": "wp4w-ladder87",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A compliance sampling program covers 30 sites at 1 samples per site per month for 12 months. Find the total samples per year under provincial drinking water requirements in general terms. Enter the exact unrounded number.",
+   "topicId": "compliance-sampling-counts",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian utility in Red Deer, Alberta: sites = 30, samples per site per month = 1, months = 12. The annual count is sites multiplied by samples per month multiplied by 12. Provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality apply in general terms.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Samples/year = Sites * Per month * 12"
+      },
+      {
+       "id": "opt-b",
+       "label": "Samples/year = Sites * Per month / 12"
+      },
+      {
+       "id": "opt-c",
+       "label": "Samples/year = Sites + Per month + 12"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct formula matches the quantity being found and the given values."
+    },
+    {
+     "id": "units",
+     "prompt": "Which unit handling is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Sites are divided by months to give the count"
+      },
+      {
+       "id": "opt-b",
+       "label": "The count is a pure number of samples per year"
+      },
+      {
+       "id": "opt-c",
+       "label": "The monthly count is reported with no annual factor"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Units must be handled this way so the result comes out in the expected unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Samples = 30 * 1 / 12 samples/year"
+      },
+      {
+       "id": "opt-b",
+       "label": "Samples = 30 + 1 + 12 samples/year"
+      },
+      {
+       "id": "opt-c",
+       "label": "Samples = 30 * 1 * 12 samples/year"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Substitute the given values into the correct formula without swapping or dropping a term."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact result in samples/year (samples-year).",
+    "unitOptions": [
+     {
+      "id": "samples-month",
+      "label": "samples/month",
+      "toExpected": {
+       "numerator": "12",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "samples",
+      "label": "samples"
+     },
+     {
+      "id": "sites",
+      "label": "sites"
+     },
+     {
+      "id": "samples-year",
+      "label": "samples/year"
+     }
+    ],
+    "expected": "360",
+    "expectedUnitId": "samples-year",
+    "absoluteTolerance": "0",
+    "explanation": "Annual samples = 30 * 1 * 12 samples per year."
+   }
+  },
+  {
+   "id": "wp4w-ladder88",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A compliance sampling program covers 18 sites at 2 samples per site per month for 12 months. Find the total samples per year under provincial drinking water requirements in general terms. Enter the exact unrounded number.",
+   "topicId": "compliance-sampling-counts",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian utility in Lethbridge, Alberta: sites = 18, samples per site per month = 2, months = 12. The annual count is sites multiplied by samples per month multiplied by 12. Provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality apply in general terms.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Samples/year = Sites + Per month + 12"
+      },
+      {
+       "id": "opt-b",
+       "label": "Samples/year = Sites * Per month * 12"
+      },
+      {
+       "id": "opt-c",
+       "label": "Samples/year = Sites * Per month / 12"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct formula matches the quantity being found and the given values."
+    },
+    {
+     "id": "units",
+     "prompt": "Which unit handling is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The monthly count is reported with no annual factor"
+      },
+      {
+       "id": "opt-b",
+       "label": "Sites are divided by months to give the count"
+      },
+      {
+       "id": "opt-c",
+       "label": "The count is a pure number of samples per year"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Units must be handled this way so the result comes out in the expected unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Samples = 18 * 2 * 12 samples/year"
+      },
+      {
+       "id": "opt-b",
+       "label": "Samples = 18 * 2 / 12 samples/year"
+      },
+      {
+       "id": "opt-c",
+       "label": "Samples = 18 + 2 + 12 samples/year"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Substitute the given values into the correct formula without swapping or dropping a term."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact result in samples/year (samples-year).",
+    "unitOptions": [
+     {
+      "id": "samples-year",
+      "label": "samples/year"
+     },
+     {
+      "id": "samples-month",
+      "label": "samples/month",
+      "toExpected": {
+       "numerator": "12",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "samples",
+      "label": "samples"
+     },
+     {
+      "id": "sites",
+      "label": "sites"
+     }
+    ],
+    "expected": "432",
+    "expectedUnitId": "samples-year",
+    "absoluteTolerance": "0",
+    "explanation": "Annual samples = 18 * 2 * 12 samples per year."
+   }
+  },
+  {
+   "id": "wp4w-ladder89",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A compliance sampling program covers 40 sites at 1 samples per site per month for 12 months. Find the total samples per year under provincial drinking water requirements in general terms. Enter the exact unrounded number.",
+   "topicId": "compliance-sampling-counts",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian utility in Prince George, British Columbia: sites = 40, samples per site per month = 1, months = 12. The annual count is sites multiplied by samples per month multiplied by 12. Provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality apply in general terms.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Samples/year = Sites * Per month / 12"
+      },
+      {
+       "id": "opt-b",
+       "label": "Samples/year = Sites + Per month + 12"
+      },
+      {
+       "id": "opt-c",
+       "label": "Samples/year = Sites * Per month * 12"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct formula matches the quantity being found and the given values."
+    },
+    {
+     "id": "units",
+     "prompt": "Which unit handling is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The count is a pure number of samples per year"
+      },
+      {
+       "id": "opt-b",
+       "label": "The monthly count is reported with no annual factor"
+      },
+      {
+       "id": "opt-c",
+       "label": "Sites are divided by months to give the count"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Units must be handled this way so the result comes out in the expected unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Samples = 40 + 1 + 12 samples/year"
+      },
+      {
+       "id": "opt-b",
+       "label": "Samples = 40 * 1 * 12 samples/year"
+      },
+      {
+       "id": "opt-c",
+       "label": "Samples = 40 * 1 / 12 samples/year"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Substitute the given values into the correct formula without swapping or dropping a term."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact result in samples/year (samples-year).",
+    "unitOptions": [
+     {
+      "id": "sites",
+      "label": "sites"
+     },
+     {
+      "id": "samples-year",
+      "label": "samples/year"
+     },
+     {
+      "id": "samples-month",
+      "label": "samples/month",
+      "toExpected": {
+       "numerator": "12",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "samples",
+      "label": "samples"
+     }
+    ],
+    "expected": "480",
+    "expectedUnitId": "samples-year",
+    "absoluteTolerance": "0",
+    "explanation": "Annual samples = 40 * 1 * 12 samples per year."
+   }
+  },
+  {
+   "id": "wp4w-ladder90",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A compliance sampling program covers 22 sites at 2 samples per site per month for 12 months. Find the total samples per year under provincial drinking water requirements in general terms. Enter the exact unrounded number.",
+   "topicId": "compliance-sampling-counts",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian utility in Kamloops, British Columbia: sites = 22, samples per site per month = 2, months = 12. The annual count is sites multiplied by samples per month multiplied by 12. Provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality apply in general terms.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Samples/year = Sites * Per month * 12"
+      },
+      {
+       "id": "opt-b",
+       "label": "Samples/year = Sites * Per month / 12"
+      },
+      {
+       "id": "opt-c",
+       "label": "Samples/year = Sites + Per month + 12"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct formula matches the quantity being found and the given values."
+    },
+    {
+     "id": "units",
+     "prompt": "Which unit handling is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Sites are divided by months to give the count"
+      },
+      {
+       "id": "opt-b",
+       "label": "The count is a pure number of samples per year"
+      },
+      {
+       "id": "opt-c",
+       "label": "The monthly count is reported with no annual factor"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Units must be handled this way so the result comes out in the expected unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Samples = 22 * 2 / 12 samples/year"
+      },
+      {
+       "id": "opt-b",
+       "label": "Samples = 22 + 2 + 12 samples/year"
+      },
+      {
+       "id": "opt-c",
+       "label": "Samples = 22 * 2 * 12 samples/year"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Substitute the given values into the correct formula without swapping or dropping a term."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact result in samples/year (samples-year).",
+    "unitOptions": [
+     {
+      "id": "samples",
+      "label": "samples"
+     },
+     {
+      "id": "sites",
+      "label": "sites"
+     },
+     {
+      "id": "samples-year",
+      "label": "samples/year"
+     },
+     {
+      "id": "samples-month",
+      "label": "samples/month",
+      "toExpected": {
+       "numerator": "12",
+       "denominator": "1"
+      }
+     }
+    ],
+    "expected": "528",
+    "expectedUnitId": "samples-year",
+    "absoluteTolerance": "0",
+    "explanation": "Annual samples = 22 * 2 * 12 samples per year."
+   }
+  },
+  {
+   "id": "wp4w-ladder91",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A utility water balance shows production 55 ML and billed use 44 ML for a period. Find the loss in percent of production. Enter the exact unrounded number.",
+   "topicId": "utility-mass-balance",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian utility in Brandon, Manitoba: production = 55 ML, billed use = 44 ML. Loss percent is production minus billed use, divided by production, expressed as a percent. Provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality apply in general terms.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Loss percent = (Production - Billed) / Billed * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Loss percent = (Production - Billed) / Production * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Loss percent = Billed / Production * 100"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct formula matches the quantity being found and the given values."
+    },
+    {
+     "id": "units",
+     "prompt": "Which unit handling is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The difference is reported in ML with no ratio"
+      },
+      {
+       "id": "opt-b",
+       "label": "The ratio is reported as a decimal with no multiplication by 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Both volumes are in ML, so the ratio is dimensionless and is multiplied by 100 for percent"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Units must be handled this way so the result comes out in the expected unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Loss = (55 - 44) / 55 * 100 percent"
+      },
+      {
+       "id": "opt-b",
+       "label": "Loss = 44 / 55 * 100 percent"
+      },
+      {
+       "id": "opt-c",
+       "label": "Loss = (55 - 44) / 44 * 100 percent"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Substitute the given values into the correct formula without swapping or dropping a term."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact result in percent (percent).",
+    "unitOptions": [
+     {
+      "id": "fraction",
+      "label": "fraction (decimal)",
+      "toExpected": {
+       "numerator": "100",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "ML",
+      "label": "ML"
+     },
+     {
+      "id": "ratio",
+      "label": "ratio"
+     },
+     {
+      "id": "percent",
+      "label": "percent"
+     }
+    ],
+    "expected": "20",
+    "expectedUnitId": "percent",
+    "absoluteTolerance": "0",
+    "explanation": "Loss = (55 - 44) / 55 * 100 percent."
+   }
+  },
+  {
+   "id": "wp4w-ladder92",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A utility water balance shows production 48 ML and billed use 40.8 ML for a period. Find the loss in percent of production. Enter the exact unrounded number.",
+   "topicId": "utility-mass-balance",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian utility in Prince Albert, Saskatchewan: production = 48 ML, billed use = 40.8 ML. Loss percent is production minus billed use, divided by production, expressed as a percent. Provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality apply in general terms.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Loss percent = Billed / Production * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Loss percent = (Production - Billed) / Billed * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Loss percent = (Production - Billed) / Production * 100"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct formula matches the quantity being found and the given values."
+    },
+    {
+     "id": "units",
+     "prompt": "Which unit handling is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Both volumes are in ML, so the ratio is dimensionless and is multiplied by 100 for percent"
+      },
+      {
+       "id": "opt-b",
+       "label": "The difference is reported in ML with no ratio"
+      },
+      {
+       "id": "opt-c",
+       "label": "The ratio is reported as a decimal with no multiplication by 100"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Units must be handled this way so the result comes out in the expected unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Loss = (48 - 40.8) / 40.8 * 100 percent"
+      },
+      {
+       "id": "opt-b",
+       "label": "Loss = (48 - 40.8) / 48 * 100 percent"
+      },
+      {
+       "id": "opt-c",
+       "label": "Loss = 40.8 / 48 * 100 percent"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Substitute the given values into the correct formula without swapping or dropping a term."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact result in percent (percent).",
+    "unitOptions": [
+     {
+      "id": "percent",
+      "label": "percent"
+     },
+     {
+      "id": "fraction",
+      "label": "fraction (decimal)",
+      "toExpected": {
+       "numerator": "100",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "ML",
+      "label": "ML"
+     },
+     {
+      "id": "ratio",
+      "label": "ratio"
+     }
+    ],
+    "expected": "15",
+    "expectedUnitId": "percent",
+    "absoluteTolerance": "0",
+    "explanation": "Loss = (48 - 40.8) / 48 * 100 percent."
+   }
+  },
+  {
+   "id": "wp4w-ladder93",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A utility water balance shows production 70 ML and billed use 59.5 ML for a period. Find the loss in percent of production. Enter the exact unrounded number.",
+   "topicId": "utility-mass-balance",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian utility in Victoria, British Columbia: production = 70 ML, billed use = 59.5 ML. Loss percent is production minus billed use, divided by production, expressed as a percent. Provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality apply in general terms.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Loss percent = (Production - Billed) / Production * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Loss percent = Billed / Production * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Loss percent = (Production - Billed) / Billed * 100"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct formula matches the quantity being found and the given values."
+    },
+    {
+     "id": "units",
+     "prompt": "Which unit handling is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The ratio is reported as a decimal with no multiplication by 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Both volumes are in ML, so the ratio is dimensionless and is multiplied by 100 for percent"
+      },
+      {
+       "id": "opt-c",
+       "label": "The difference is reported in ML with no ratio"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Units must be handled this way so the result comes out in the expected unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Loss = 59.5 / 70 * 100 percent"
+      },
+      {
+       "id": "opt-b",
+       "label": "Loss = (70 - 59.5) / 59.5 * 100 percent"
+      },
+      {
+       "id": "opt-c",
+       "label": "Loss = (70 - 59.5) / 70 * 100 percent"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Substitute the given values into the correct formula without swapping or dropping a term."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact result in percent (percent).",
+    "unitOptions": [
+     {
+      "id": "ratio",
+      "label": "ratio"
+     },
+     {
+      "id": "percent",
+      "label": "percent"
+     },
+     {
+      "id": "fraction",
+      "label": "fraction (decimal)",
+      "toExpected": {
+       "numerator": "100",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "ML",
+      "label": "ML"
+     }
+    ],
+    "expected": "15",
+    "expectedUnitId": "percent",
+    "absoluteTolerance": "0",
+    "explanation": "Loss = (70 - 59.5) / 70 * 100 percent."
+   }
+  },
+  {
+   "id": "wp4w-ladder94",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A utility water balance shows production 45 ML and billed use 36 ML for a period. Find the loss in percent of production. Enter the exact unrounded number.",
+   "topicId": "utility-mass-balance",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian utility in Nanaimo, British Columbia: production = 45 ML, billed use = 36 ML. Loss percent is production minus billed use, divided by production, expressed as a percent. Provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality apply in general terms.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Loss percent = (Production - Billed) / Billed * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Loss percent = (Production - Billed) / Production * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Loss percent = Billed / Production * 100"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct formula matches the quantity being found and the given values."
+    },
+    {
+     "id": "units",
+     "prompt": "Which unit handling is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The difference is reported in ML with no ratio"
+      },
+      {
+       "id": "opt-b",
+       "label": "The ratio is reported as a decimal with no multiplication by 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Both volumes are in ML, so the ratio is dimensionless and is multiplied by 100 for percent"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Units must be handled this way so the result comes out in the expected unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Loss = (45 - 36) / 45 * 100 percent"
+      },
+      {
+       "id": "opt-b",
+       "label": "Loss = 36 / 45 * 100 percent"
+      },
+      {
+       "id": "opt-c",
+       "label": "Loss = (45 - 36) / 36 * 100 percent"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Substitute the given values into the correct formula without swapping or dropping a term."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact result in percent (percent).",
+    "unitOptions": [
+     {
+      "id": "ML",
+      "label": "ML"
+     },
+     {
+      "id": "ratio",
+      "label": "ratio"
+     },
+     {
+      "id": "percent",
+      "label": "percent"
+     },
+     {
+      "id": "fraction",
+      "label": "fraction (decimal)",
+      "toExpected": {
+       "numerator": "100",
+       "denominator": "1"
+      }
+     }
+    ],
+    "expected": "20",
+    "expectedUnitId": "percent",
+    "absoluteTolerance": "0",
+    "explanation": "Loss = (45 - 36) / 45 * 100 percent."
+   }
+  },
+  {
+   "id": "wp4w-ladder95",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A utility water balance shows production 90 ML and billed use 72 ML for a period. Find the loss in percent of production. Enter the exact unrounded number.",
+   "topicId": "utility-mass-balance",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian utility in Medicine Hat, Alberta: production = 90 ML, billed use = 72 ML. Loss percent is production minus billed use, divided by production, expressed as a percent. Provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality apply in general terms.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Loss percent = Billed / Production * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Loss percent = (Production - Billed) / Billed * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Loss percent = (Production - Billed) / Production * 100"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct formula matches the quantity being found and the given values."
+    },
+    {
+     "id": "units",
+     "prompt": "Which unit handling is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Both volumes are in ML, so the ratio is dimensionless and is multiplied by 100 for percent"
+      },
+      {
+       "id": "opt-b",
+       "label": "The difference is reported in ML with no ratio"
+      },
+      {
+       "id": "opt-c",
+       "label": "The ratio is reported as a decimal with no multiplication by 100"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Units must be handled this way so the result comes out in the expected unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Loss = (90 - 72) / 72 * 100 percent"
+      },
+      {
+       "id": "opt-b",
+       "label": "Loss = (90 - 72) / 90 * 100 percent"
+      },
+      {
+       "id": "opt-c",
+       "label": "Loss = 72 / 90 * 100 percent"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Substitute the given values into the correct formula without swapping or dropping a term."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact result in percent (percent).",
+    "unitOptions": [
+     {
+      "id": "fraction",
+      "label": "fraction (decimal)",
+      "toExpected": {
+       "numerator": "100",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "ML",
+      "label": "ML"
+     },
+     {
+      "id": "ratio",
+      "label": "ratio"
+     },
+     {
+      "id": "percent",
+      "label": "percent"
+     }
+    ],
+    "expected": "20",
+    "expectedUnitId": "percent",
+    "absoluteTolerance": "0",
+    "explanation": "Loss = (90 - 72) / 90 * 100 percent."
+   }
+  },
+  {
+   "id": "wp4w-ladder96",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "An asset renewal plan covers a network of 240 km with a stated renewal fraction of 0.02 per year. Find the renewal length in km/year. Enter the exact unrounded number.",
+   "topicId": "capacity-planning",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian utility in Grande Prairie, Alberta: network length = 240 km, stated renewal fraction = 0.02 per year. Renewal length is total length multiplied by the stated fraction. Provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality apply in general terms.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Renewal km/year = Total km * Fraction"
+      },
+      {
+       "id": "opt-b",
+       "label": "Renewal km/year = Total km / Fraction"
+      },
+      {
+       "id": "opt-c",
+       "label": "Renewal km/year = Total km + Fraction"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct formula matches the quantity being found and the given values."
+    },
+    {
+     "id": "units",
+     "prompt": "Which unit handling is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The fraction is added to the length as km"
+      },
+      {
+       "id": "opt-b",
+       "label": "The fraction is a dimensionless decimal multiplying km, giving km/year"
+      },
+      {
+       "id": "opt-c",
+       "label": "The fraction is used as a percent number with no decimal form"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Units must be handled this way so the result comes out in the expected unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Renewal = 240 / 0.02 km/year"
+      },
+      {
+       "id": "opt-b",
+       "label": "Renewal = 240 * 2 km/year"
+      },
+      {
+       "id": "opt-c",
+       "label": "Renewal = 240 * 0.02 km/year"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Substitute the given values into the correct formula without swapping or dropping a term."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact result in km/year (km-year).",
+    "unitOptions": [
+     {
+      "id": "km-year",
+      "label": "km/year"
+     },
+     {
+      "id": "m-year",
+      "label": "m/year",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "km",
+      "label": "km"
+     },
+     {
+      "id": "percent",
+      "label": "percent"
+     }
+    ],
+    "expected": "4.8",
+    "expectedUnitId": "km-year",
+    "absoluteTolerance": "0",
+    "explanation": "Renewal = 240 * 0.02 km per year."
+   }
+  },
+  {
+   "id": "wp4w-ladder97",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "An asset renewal plan covers a network of 350 km with a stated renewal fraction of 0.015 per year. Find the renewal length in km/year. Enter the exact unrounded number.",
+   "topicId": "capacity-planning",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian utility in Moose Jaw, Saskatchewan: network length = 350 km, stated renewal fraction = 0.015 per year. Renewal length is total length multiplied by the stated fraction. Provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality apply in general terms.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Renewal km/year = Total km + Fraction"
+      },
+      {
+       "id": "opt-b",
+       "label": "Renewal km/year = Total km * Fraction"
+      },
+      {
+       "id": "opt-c",
+       "label": "Renewal km/year = Total km / Fraction"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct formula matches the quantity being found and the given values."
+    },
+    {
+     "id": "units",
+     "prompt": "Which unit handling is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The fraction is used as a percent number with no decimal form"
+      },
+      {
+       "id": "opt-b",
+       "label": "The fraction is added to the length as km"
+      },
+      {
+       "id": "opt-c",
+       "label": "The fraction is a dimensionless decimal multiplying km, giving km/year"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Units must be handled this way so the result comes out in the expected unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Renewal = 350 * 0.015 km/year"
+      },
+      {
+       "id": "opt-b",
+       "label": "Renewal = 350 / 0.015 km/year"
+      },
+      {
+       "id": "opt-c",
+       "label": "Renewal = 350 * 1.5 km/year"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Substitute the given values into the correct formula without swapping or dropping a term."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact result in km/year (km-year).",
+    "unitOptions": [
+     {
+      "id": "percent",
+      "label": "percent"
+     },
+     {
+      "id": "km-year",
+      "label": "km/year"
+     },
+     {
+      "id": "m-year",
+      "label": "m/year",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "km",
+      "label": "km"
+     }
+    ],
+    "expected": "5.25",
+    "expectedUnitId": "km-year",
+    "absoluteTolerance": "0",
+    "explanation": "Renewal = 350 * 0.015 km per year."
+   }
+  },
+  {
+   "id": "wp4w-ladder98",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "An asset renewal plan covers a network of 180 km with a stated renewal fraction of 0.025 per year. Find the renewal length in km/year. Enter the exact unrounded number.",
+   "topicId": "capacity-planning",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian utility in Cranbrook, British Columbia: network length = 180 km, stated renewal fraction = 0.025 per year. Renewal length is total length multiplied by the stated fraction. Provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality apply in general terms.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Renewal km/year = Total km / Fraction"
+      },
+      {
+       "id": "opt-b",
+       "label": "Renewal km/year = Total km + Fraction"
+      },
+      {
+       "id": "opt-c",
+       "label": "Renewal km/year = Total km * Fraction"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct formula matches the quantity being found and the given values."
+    },
+    {
+     "id": "units",
+     "prompt": "Which unit handling is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The fraction is a dimensionless decimal multiplying km, giving km/year"
+      },
+      {
+       "id": "opt-b",
+       "label": "The fraction is used as a percent number with no decimal form"
+      },
+      {
+       "id": "opt-c",
+       "label": "The fraction is added to the length as km"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Units must be handled this way so the result comes out in the expected unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Renewal = 180 * 2.5 km/year"
+      },
+      {
+       "id": "opt-b",
+       "label": "Renewal = 180 * 0.025 km/year"
+      },
+      {
+       "id": "opt-c",
+       "label": "Renewal = 180 / 0.025 km/year"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Substitute the given values into the correct formula without swapping or dropping a term."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact result in km/year (km-year).",
+    "unitOptions": [
+     {
+      "id": "km",
+      "label": "km"
+     },
+     {
+      "id": "percent",
+      "label": "percent"
+     },
+     {
+      "id": "km-year",
+      "label": "km/year"
+     },
+     {
+      "id": "m-year",
+      "label": "m/year",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     }
+    ],
+    "expected": "4.5",
+    "expectedUnitId": "km-year",
+    "absoluteTolerance": "0",
+    "explanation": "Renewal = 180 * 0.025 km per year."
+   }
+  },
+  {
+   "id": "wp4w-ladder99",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "An asset renewal plan covers a network of 300 km with a stated renewal fraction of 0.018 per year. Find the renewal length in km/year. Enter the exact unrounded number.",
+   "topicId": "capacity-planning",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian utility in Whitehorse, Yukon: network length = 300 km, stated renewal fraction = 0.018 per year. Renewal length is total length multiplied by the stated fraction. Provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality apply in general terms.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Renewal km/year = Total km * Fraction"
+      },
+      {
+       "id": "opt-b",
+       "label": "Renewal km/year = Total km / Fraction"
+      },
+      {
+       "id": "opt-c",
+       "label": "Renewal km/year = Total km + Fraction"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct formula matches the quantity being found and the given values."
+    },
+    {
+     "id": "units",
+     "prompt": "Which unit handling is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The fraction is added to the length as km"
+      },
+      {
+       "id": "opt-b",
+       "label": "The fraction is a dimensionless decimal multiplying km, giving km/year"
+      },
+      {
+       "id": "opt-c",
+       "label": "The fraction is used as a percent number with no decimal form"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Units must be handled this way so the result comes out in the expected unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Renewal = 300 / 0.018 km/year"
+      },
+      {
+       "id": "opt-b",
+       "label": "Renewal = 300 * 1.8 km/year"
+      },
+      {
+       "id": "opt-c",
+       "label": "Renewal = 300 * 0.018 km/year"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Substitute the given values into the correct formula without swapping or dropping a term."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact result in km/year (km-year).",
+    "unitOptions": [
+     {
+      "id": "m-year",
+      "label": "m/year",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "km",
+      "label": "km"
+     },
+     {
+      "id": "percent",
+      "label": "percent"
+     },
+     {
+      "id": "km-year",
+      "label": "km/year"
+     }
+    ],
+    "expected": "5.4",
+    "expectedUnitId": "km-year",
+    "absoluteTolerance": "0",
+    "explanation": "Renewal = 300 * 0.018 km per year."
+   }
+  },
+  {
+   "id": "wp4w-error01",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this utility water balance for a utility near Calgary, Alberta. Water produced is 12500 m3/day, billed metered use is 9800 m3/day, and authorized unbilled use is 450 m3/day. Non-revenue water is produced minus billed minus authorized unbilled.",
+   "topicId": "utility-water-balance",
+   "level": "class1",
+   "assumptions": "Fictional utility balance: produced = 12500 m3/day, billed = 9800 m3/day, authorized unbilled = 450 m3/day, non-revenue water = produced minus billed minus authorized unbilled. Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Non-revenue water = Produced minus Billed minus Authorized unbilled"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Produced = 12500 m3/day, Billed = 9800 m3/day, Authorized unbilled = 450 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Non-revenue water = 12500 minus 9800 minus 450 = 2500 m3/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 2500 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Non-revenue water = 12500 minus 9800 minus 450 = 2250 m3/day",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 12500 minus 9800 minus 450 = 2250, not 2500."
+  },
+  {
+   "id": "wp4w-error02",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this utility water balance for a utility near Edmonton, Alberta. Water produced is 18200 m3/day, billed metered use is 14500 m3/day, and authorized unbilled use is 700 m3/day. Non-revenue water is produced minus billed minus authorized unbilled.",
+   "topicId": "utility-water-balance",
+   "level": "class1",
+   "assumptions": "Fictional utility balance: produced = 18200 m3/day, billed = 14500 m3/day, authorized unbilled = 700 m3/day, non-revenue water = produced minus billed minus authorized unbilled. Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Non-revenue water = Produced minus Billed minus Authorized unbilled"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Produced = 18200 m3/day, Billed = 14500 m3/day, Authorized unbilled = 700 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Non-revenue water = 18200 minus 14500 plus 700 = 4400 m3/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 4400 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Non-revenue water = 18200 minus 14500 minus 700 = 3000 m3/day",
+   "explanation": "Line 3 added the authorized unbilled use instead of subtracting it. The non-revenue water is 3000 m3/day."
+  },
+  {
+   "id": "wp4w-error03",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this utility water balance for a utility near Regina, Saskatchewan. Water produced is 9600 m3/day, billed metered use is 7200 m3/day, and authorized unbilled use is 400 m3/day. Non-revenue water is produced minus billed minus authorized unbilled.",
+   "topicId": "utility-water-balance",
+   "level": "class1",
+   "assumptions": "Fictional utility balance: produced = 9600 m3/day, billed = 7200 m3/day, authorized unbilled = 400 m3/day, non-revenue water = produced minus billed minus authorized unbilled. Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Non-revenue water = Produced minus Billed minus Authorized unbilled"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Produced = 9600 m3/day, Billed = 7200 m3/day, Authorized unbilled = 400 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Non-revenue water = 9600 minus 7200 minus 400 = 1700 m3/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 1700 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Non-revenue water = 9600 minus 7200 minus 400 = 2000 m3/day",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 9600 minus 7200 minus 400 = 2000, not 1700."
+  },
+  {
+   "id": "wp4w-error04",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this utility water balance for a utility near Saskatoon, Saskatchewan. Water produced is 24000 m3/day, billed metered use is 19800 m3/day, and authorized unbilled use is 900 m3/day. Non-revenue water is produced minus billed minus authorized unbilled.",
+   "topicId": "utility-water-balance",
+   "level": "class1",
+   "assumptions": "Fictional utility balance: produced = 24000 m3/day, billed = 19800 m3/day, authorized unbilled = 900 m3/day, non-revenue water = produced minus billed minus authorized unbilled. Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Non-revenue water = Produced minus Billed minus Authorized unbilled"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Produced = 24000 m3/day, Billed = 19800 m3/day, Authorized unbilled = 900 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Non-revenue water = 24000 minus 19800 minus 900 = 3700 m3/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 3700 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Non-revenue water = 24000 minus 19800 minus 900 = 3300 m3/day",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 24000 minus 19800 minus 900 = 3300, not 3700."
+  },
+  {
+   "id": "wp4w-error05",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this utility water balance for a utility near Winnipeg, Manitoba. Water produced is 15600 m3/day, billed metered use is 12100 m3/day, and authorized unbilled use is 500 m3/day. Non-revenue water is produced minus billed minus authorized unbilled.",
+   "topicId": "utility-water-balance",
+   "level": "class1",
+   "assumptions": "Fictional utility balance: produced = 15600 m3/day, billed = 12100 m3/day, authorized unbilled = 500 m3/day, non-revenue water = produced minus billed minus authorized unbilled. Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Non-revenue water = Produced minus Billed minus Authorized unbilled"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Produced = 15600 m3/day, Billed = 12100 m3/day, Authorized unbilled = 500 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Non-revenue water = 15600 minus 12100 plus 500 = 4000 m3/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 4000 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Non-revenue water = 15600 minus 12100 minus 500 = 3000 m3/day",
+   "explanation": "Line 3 added the authorized unbilled use instead of subtracting it. The non-revenue water is 3000 m3/day."
+  },
+  {
+   "id": "wp4w-error06",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this utility water balance for a utility near Kelowna, British Columbia. Water produced is 8800 m3/day, billed metered use is 6600 m3/day, and authorized unbilled use is 350 m3/day. Non-revenue water is produced minus billed minus authorized unbilled.",
+   "topicId": "utility-water-balance",
+   "level": "class1",
+   "assumptions": "Fictional utility balance: produced = 8800 m3/day, billed = 6600 m3/day, authorized unbilled = 350 m3/day, non-revenue water = produced minus billed minus authorized unbilled. Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Non-revenue water = Produced minus Billed minus Authorized unbilled"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Produced = 8800 m3/day, Billed = 6600 m3/day, Authorized unbilled = 350 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Non-revenue water = 8800 minus 6600 minus 350 = 2000 m3/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 2000 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Non-revenue water = 8800 minus 6600 minus 350 = 1850 m3/day",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 8800 minus 6600 minus 350 = 1850, not 2000."
+  },
+  {
+   "id": "wp4w-error07",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this utility water balance for a utility near Red Deer, Alberta. Water produced is 20500 m3/day, billed metered use is 16900 m3/day, and authorized unbilled use is 800 m3/day. Non-revenue water is produced minus billed minus authorized unbilled.",
+   "topicId": "utility-water-balance",
+   "level": "class1",
+   "assumptions": "Fictional utility balance: produced = 20500 m3/day, billed = 16900 m3/day, authorized unbilled = 800 m3/day, non-revenue water = produced minus billed minus authorized unbilled. Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Non-revenue water = Produced minus Billed minus Authorized unbilled"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Produced = 20500 m3/day, Billed = 16900 m3/day, Authorized unbilled = 800 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Non-revenue water = 20500 minus 16900 minus 800 = 2300 m3/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 2300 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Non-revenue water = 20500 minus 16900 minus 800 = 2800 m3/day",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 20500 minus 16900 minus 800 = 2800, not 2300."
+  },
+  {
+   "id": "wp4w-error08",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this utility water balance for a utility near Brandon, Manitoba. Water produced is 13400 m3/day, billed metered use is 10600 m3/day, and authorized unbilled use is 600 m3/day. Non-revenue water is produced minus billed minus authorized unbilled.",
+   "topicId": "utility-water-balance",
+   "level": "class1",
+   "assumptions": "Fictional utility balance: produced = 13400 m3/day, billed = 10600 m3/day, authorized unbilled = 600 m3/day, non-revenue water = produced minus billed minus authorized unbilled. Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Non-revenue water = Produced minus Billed minus Authorized unbilled"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Produced = 13400 m3/day, Billed = 10600 m3/day, Authorized unbilled = 600 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Non-revenue water = 13400 minus 10600 minus 600 = 2400 m3/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 2400 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Non-revenue water = 13400 minus 10600 minus 600 = 2200 m3/day",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 13400 minus 10600 minus 600 = 2200, not 2400."
+  },
+  {
+   "id": "wp4w-error09",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this non-revenue water percentage for a utility near Prince George, British Columbia. Water produced is 20000 m3/day and non-revenue water is 3000 m3/day, under provincial drinking water requirements.",
+   "topicId": "utility-water-balance",
+   "level": "class1",
+   "assumptions": "Fictional utility balance: produced = 20000 m3/day, non-revenue water = 3000 m3/day, non-revenue percent = non-revenue / produced x 100. Target unit: percent.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Non-revenue percent = Non-revenue water / Produced x 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Produced = 20000 m3/day and Non-revenue water = 3000 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Non-revenue percent = 3000 / 20000 x 100 = 17 percent"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 17 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Non-revenue percent = 3000 / 20000 x 100 = 15 percent",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 3000 / 20000 x 100 = 15, not 17."
+  },
+  {
+   "id": "wp4w-error10",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this non-revenue water percentage for a utility near Lethbridge, Alberta. Water produced is 16000 m3/day and non-revenue water is 2400 m3/day, under provincial drinking water requirements.",
+   "topicId": "utility-water-balance",
+   "level": "class1",
+   "assumptions": "Fictional utility balance: produced = 16000 m3/day, non-revenue water = 2400 m3/day, non-revenue percent = non-revenue / produced x 100. Target unit: percent.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Non-revenue percent = Produced / Non-revenue water x 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Produced = 16000 m3/day and Non-revenue water = 2400 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Non-revenue percent calculated with the line 1 formula"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Non-revenue percent = 2400 / 16000 x 100 = 15 percent",
+   "explanation": "Line 1 inverts the percentage. Non-revenue percent is non-revenue divided by produced, giving 15 percent."
+  },
+  {
+   "id": "wp4w-error100",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this annual residuals total near Prince Albert, Saskatchewan. Dry solids production is 2400 kg/day over a full year of 365 days.",
+   "topicId": "residuals-program",
+   "level": "class1",
+   "assumptions": "Fictional residuals program: daily solids = 2400 kg/day, days = 365, annual total = daily x days. Target unit: kg/year.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Annual total = Daily solids x Days in the year"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Daily solids = 2400 kg/day and Days = 365"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual total = 2400 x 365 = 888000 kg/year"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 888000 kg/year"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Annual total = 2400 x 365 = 876000 kg/year",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 2400 x 365 = 876000, not 888000."
+  },
+  {
+   "id": "wp4w-error11",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this non-revenue water percentage for a utility near Moose Jaw, Saskatchewan. Water produced is 12500 m3/day and non-revenue water is 2500 m3/day, under provincial drinking water requirements.",
+   "topicId": "utility-water-balance",
+   "level": "class1",
+   "assumptions": "Fictional utility balance: produced = 12500 m3/day, non-revenue water = 2500 m3/day, non-revenue percent = non-revenue / produced x 100. Target unit: percent.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Non-revenue percent = Non-revenue water / Produced x 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Produced = 12500 m3/day and Non-revenue water = 2500 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Non-revenue percent = 2500 / 12500 x 100 = 15 percent"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 15 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Non-revenue percent = 2500 / 12500 x 100 = 20 percent",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 2500 / 12500 x 100 = 20, not 15."
+  },
+  {
+   "id": "wp4w-error12",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this non-revenue water percentage for a utility near Kamloops, British Columbia. Water produced is 18000 m3/day and non-revenue water is 2700 m3/day, under provincial drinking water requirements.",
+   "topicId": "utility-water-balance",
+   "level": "class1",
+   "assumptions": "Fictional utility balance: produced = 18000 m3/day, non-revenue water = 2700 m3/day, non-revenue percent = non-revenue / produced x 100. Target unit: percent.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Non-revenue percent = Produced / Non-revenue water x 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Produced = 18000 m3/day and Non-revenue water = 2700 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Non-revenue percent calculated with the line 1 formula"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Non-revenue percent = 2700 / 18000 x 100 = 15 percent",
+   "explanation": "Line 1 inverts the percentage. Non-revenue percent is non-revenue divided by produced, giving 15 percent."
+  },
+  {
+   "id": "wp4w-error13",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this non-revenue water percentage for a utility near Medicine Hat, Alberta. Water produced is 24000 m3/day and non-revenue water is 3600 m3/day, under provincial drinking water requirements.",
+   "topicId": "utility-water-balance",
+   "level": "class1",
+   "assumptions": "Fictional utility balance: produced = 24000 m3/day, non-revenue water = 3600 m3/day, non-revenue percent = non-revenue / produced x 100. Target unit: percent.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Non-revenue percent = Non-revenue water / Produced x 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Produced = 24000 m3/day and Non-revenue water = 3600 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Non-revenue percent = 3600 / 24000 x 100 = 18 percent"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 18 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Non-revenue percent = 3600 / 24000 x 100 = 15 percent",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 3600 / 24000 x 100 = 15, not 18."
+  },
+  {
+   "id": "wp4w-error14",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this non-revenue water percentage for a utility near Prince Albert, Saskatchewan. Water produced is 10000 m3/day and non-revenue water is 1800 m3/day, under provincial drinking water requirements.",
+   "topicId": "utility-water-balance",
+   "level": "class1",
+   "assumptions": "Fictional utility balance: produced = 10000 m3/day, non-revenue water = 1800 m3/day, non-revenue percent = non-revenue / produced x 100. Target unit: percent.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Non-revenue percent = Non-revenue water / Produced x 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Produced = 10000 m3/day and Non-revenue water = 1800 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Non-revenue percent = 1800 / 10000 x 100 = 15 percent"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 15 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Non-revenue percent = 1800 / 10000 x 100 = 18 percent",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 1800 / 10000 x 100 = 18, not 15."
+  },
+  {
+   "id": "wp4w-error15",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this real losses calculation for a utility near Grande Prairie, Alberta. Produced is 12500 m3/day, billed is 9800 m3/day, authorized unbilled is 450 m3/day, and apparent losses are 300 m3/day. Real losses equal non-revenue water minus apparent losses.",
+   "topicId": "utility-water-balance",
+   "level": "class1",
+   "assumptions": "Fictional utility balance: produced = 12500 m3/day, billed = 9800 m3/day, authorized unbilled = 450 m3/day, apparent losses = 300 m3/day, non-revenue = produced minus billed minus authorized unbilled, real losses = non-revenue minus apparent losses. Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Real losses = (Produced minus Billed minus Authorized unbilled) minus Apparent losses"
+    },
+    {
+     "id": "line2",
+     "label": "2. Non-revenue water = 12500 minus 9800 minus 450 = 2500 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Real losses = 2500 minus 300 = 2200 m3/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 2200 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Non-revenue water = 12500 minus 9800 minus 450 = 2250 m3/day, so real losses = 2250 minus 300 = 1950 m3/day",
+   "explanation": "Line 2 is an arithmetic slip: 12500 minus 9800 minus 450 = 2250, not 2500. Real losses are 1950 m3/day."
+  },
+  {
+   "id": "wp4w-error16",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this real losses calculation for a utility near Victoria, British Columbia. Produced is 18200 m3/day, billed is 14000 m3/day, authorized unbilled is 600 m3/day, and apparent losses are 450 m3/day. Real losses equal non-revenue water minus apparent losses.",
+   "topicId": "utility-water-balance",
+   "level": "class1",
+   "assumptions": "Fictional utility balance: produced = 18200 m3/day, billed = 14000 m3/day, authorized unbilled = 600 m3/day, apparent losses = 450 m3/day, non-revenue = produced minus billed minus authorized unbilled, real losses = non-revenue minus apparent losses. Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Real losses = (Produced minus Billed minus Authorized unbilled) minus Apparent losses"
+    },
+    {
+     "id": "line2",
+     "label": "2. Non-revenue water = 18200 minus 14000 plus 600 = 4800 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Real losses = 4800 minus 450 = 4350 m3/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 4350 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Non-revenue water = 18200 minus 14000 minus 600 = 3600 m3/day, so real losses = 3600 minus 450 = 3150 m3/day",
+   "explanation": "Line 2 added the authorized unbilled use instead of subtracting it. Real losses are 3150 m3/day."
+  },
+  {
+   "id": "wp4w-error17",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this real losses calculation for a utility near Yorkton, Saskatchewan. Produced is 9600 m3/day, billed is 7000 m3/day, authorized unbilled is 400 m3/day, and apparent losses are 250 m3/day. Real losses equal non-revenue water minus apparent losses.",
+   "topicId": "utility-water-balance",
+   "level": "class1",
+   "assumptions": "Fictional utility balance: produced = 9600 m3/day, billed = 7000 m3/day, authorized unbilled = 400 m3/day, apparent losses = 250 m3/day, non-revenue = produced minus billed minus authorized unbilled, real losses = non-revenue minus apparent losses. Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Real losses = (Produced minus Billed minus Authorized unbilled) minus Apparent losses"
+    },
+    {
+     "id": "line2",
+     "label": "2. Non-revenue water = 9600 minus 7000 minus 400 = 2450 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Real losses = 2450 minus 250 = 2200 m3/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 2200 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Non-revenue water = 9600 minus 7000 minus 400 = 2200 m3/day, so real losses = 2200 minus 250 = 1950 m3/day",
+   "explanation": "Line 2 is an arithmetic slip: 9600 minus 7000 minus 400 = 2200, not 2450. Real losses are 1950 m3/day."
+  },
+  {
+   "id": "wp4w-error18",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this supply balance closure for a utility near Saskatoon, Saskatchewan. Total supply entering the system is 15000 m3/day, storage increased by 1200 m3/day, and distribution losses are 800 m3/day. Water delivered to customers equals supply minus the storage increase minus losses.",
+   "topicId": "utility-water-balance",
+   "level": "class1",
+   "assumptions": "Fictional supply balance: supply = 15000 m3/day, storage increase = 1200 m3/day, losses = 800 m3/day, delivered = supply minus storage increase minus losses. Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Delivered = Supply minus Storage increase minus Losses"
+    },
+    {
+     "id": "line2",
+     "label": "2. Delivered flow taken as 14200 m3/day (supply minus losses, with no storage deduction), with Losses = 800 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Delivered = 14200 m3/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 14200 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Delivered = 15000 minus 1200 minus 800 = 13000 m3/day",
+   "explanation": "Line 2 forgot to deduct the storage increase. Water delivered to customers is 13000 m3/day."
+  },
+  {
+   "id": "wp4w-error19",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this supply balance closure for a utility near Winnipeg, Manitoba. Total supply entering the system is 21000 m3/day, storage increased by 1500 m3/day, and distribution losses are 1000 m3/day. Water delivered to customers equals supply minus the storage increase minus losses.",
+   "topicId": "utility-water-balance",
+   "level": "class1",
+   "assumptions": "Fictional supply balance: supply = 21000 m3/day, storage increase = 1500 m3/day, losses = 1000 m3/day, delivered = supply minus storage increase minus losses. Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Delivered = Supply minus Storage increase minus Losses"
+    },
+    {
+     "id": "line2",
+     "label": "2. Delivered flow taken as 20000 m3/day (supply minus losses, with no storage deduction), with Losses = 1000 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Delivered = 20000 m3/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 20000 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Delivered = 21000 minus 1500 minus 1000 = 18500 m3/day",
+   "explanation": "Line 2 forgot to deduct the storage increase. Water delivered to customers is 18500 m3/day."
+  },
+  {
+   "id": "wp4w-error20",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this supply balance closure for a utility near Kelowna, British Columbia. Total supply entering the system is 17500 m3/day, storage increased by 900 m3/day, and distribution losses are 1100 m3/day. Water delivered to customers equals supply minus the storage increase minus losses.",
+   "topicId": "utility-water-balance",
+   "level": "class1",
+   "assumptions": "Fictional supply balance: supply = 17500 m3/day, storage increase = 900 m3/day, losses = 1100 m3/day, delivered = supply minus storage increase minus losses. Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Delivered = Supply minus Storage increase minus Losses"
+    },
+    {
+     "id": "line2",
+     "label": "2. Delivered flow taken as 16400 m3/day (supply minus losses, with no storage deduction), with Losses = 1100 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Delivered = 16400 m3/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 16400 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Delivered = 17500 minus 900 minus 1100 = 15500 m3/day",
+   "explanation": "Line 2 forgot to deduct the storage increase. Water delivered to customers is 15500 m3/day."
+  },
+  {
+   "id": "wp4w-error21",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this demand forecast for a utility near Kelowna, British Columbia. Current average day demand is 12000 m3/day and total growth over the planning period is given as 25 percent. Future demand equals current demand times one plus the growth fraction, assessed against the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "topicId": "demand-forecast",
+   "level": "class1",
+   "assumptions": "Fictional forecast: current demand = 12000 m3/day, growth = 25 percent = 0.25 as a fraction, future demand = current x (1 plus growth fraction). Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Future demand = Current demand x (1 plus Growth fraction)"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Current = 12000 m3/day and Growth = 25 percent"
+    },
+    {
+     "id": "line3",
+     "label": "3. Future demand = 12000 x 25 = 300000 m3/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 300000 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Future demand = 12000 x (1 plus 0.25) = 15000 m3/day",
+   "explanation": "Line 3 used the growth as the whole number 25 instead of the factor (1 plus 0.25). The future demand is 15000 m3/day."
+  },
+  {
+   "id": "wp4w-error22",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this demand forecast for a utility near Red Deer, Alberta. Current average day demand is 8500 m3/day and total growth over the planning period is given as 20 percent. Future demand equals current demand times one plus the growth fraction, assessed against the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "topicId": "demand-forecast",
+   "level": "class1",
+   "assumptions": "Fictional forecast: current demand = 8500 m3/day, growth = 20 percent = 0.2 as a fraction, future demand = current x (1 plus growth fraction). Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Future demand = Current demand x (1 plus Growth fraction)"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Current = 8500 m3/day and Growth = 20 percent = 0.2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Future demand = 8500 x (1 plus 0.2) = 10500 m3/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 10500 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Future demand = 8500 x (1 plus 0.2) = 10200 m3/day",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 8500 x (1 plus 0.2) = 10200, not 10500."
+  },
+  {
+   "id": "wp4w-error23",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this demand forecast for a utility near Brandon, Manitoba. Current average day demand is 15000 m3/day and total growth over the planning period is given as 30 percent. Future demand equals current demand times one plus the growth fraction, assessed against the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "topicId": "demand-forecast",
+   "level": "class1",
+   "assumptions": "Fictional forecast: current demand = 15000 m3/day, growth = 30 percent = 0.3 as a fraction, future demand = current x (1 plus growth fraction). Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Future demand = Current demand x (1 plus Growth fraction)"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Current = 15000 m3/day and Growth = 30 percent"
+    },
+    {
+     "id": "line3",
+     "label": "3. Future demand = 15000 x 30 = 450000 m3/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 450000 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Future demand = 15000 x (1 plus 0.3) = 19500 m3/day",
+   "explanation": "Line 3 used the growth as the whole number 30 instead of the factor (1 plus 0.3). The future demand is 19500 m3/day."
+  },
+  {
+   "id": "wp4w-error24",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this demand forecast for a utility near Prince George, British Columbia. Current average day demand is 9600 m3/day and total growth over the planning period is given as 25 percent. Future demand equals current demand times one plus the growth fraction, assessed against the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "topicId": "demand-forecast",
+   "level": "class1",
+   "assumptions": "Fictional forecast: current demand = 9600 m3/day, growth = 25 percent = 0.25 as a fraction, future demand = current x (1 plus growth fraction). Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Future demand = Current demand x (1 plus Growth fraction)"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Current = 9600 m3/day and Growth = 25 percent = 0.25"
+    },
+    {
+     "id": "line3",
+     "label": "3. Future demand = 9600 x (1 plus 0.25) = 11600 m3/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 11600 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Future demand = 9600 x (1 plus 0.25) = 12000 m3/day",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 9600 x (1 plus 0.25) = 12000, not 11600."
+  },
+  {
+   "id": "wp4w-error25",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this demand forecast for a utility near Lethbridge, Alberta. Current average day demand is 20000 m3/day and total growth over the planning period is given as 15 percent. Future demand equals current demand times one plus the growth fraction, assessed against the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "topicId": "demand-forecast",
+   "level": "class1",
+   "assumptions": "Fictional forecast: current demand = 20000 m3/day, growth = 15 percent = 0.15 as a fraction, future demand = current x (1 plus growth fraction). Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Future demand = Current demand x (1 plus Growth fraction)"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Current = 20000 m3/day and Growth = 15 percent"
+    },
+    {
+     "id": "line3",
+     "label": "3. Future demand = 20000 x 15 = 300000 m3/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 300000 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Future demand = 20000 x (1 plus 0.15) = 23000 m3/day",
+   "explanation": "Line 3 used the growth as the whole number 15 instead of the factor (1 plus 0.15). The future demand is 23000 m3/day."
+  },
+  {
+   "id": "wp4w-error26",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this demand forecast for a utility near Moose Jaw, Saskatchewan. Current average day demand is 7200 m3/day and total growth over the planning period is given as 50 percent. Future demand equals current demand times one plus the growth fraction, assessed against the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "topicId": "demand-forecast",
+   "level": "class1",
+   "assumptions": "Fictional forecast: current demand = 7200 m3/day, growth = 50 percent = 0.5 as a fraction, future demand = current x (1 plus growth fraction). Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Future demand = Current demand x (1 plus Growth fraction)"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Current = 7200 m3/day and Growth = 50 percent = 0.5"
+    },
+    {
+     "id": "line3",
+     "label": "3. Future demand = 7200 x (1 plus 0.5) = 11050 m3/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 11050 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Future demand = 7200 x (1 plus 0.5) = 10800 m3/day",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 7200 x (1 plus 0.5) = 10800, not 11050."
+  },
+  {
+   "id": "wp4w-error27",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this peak day demand calculation for a utility near Kamloops, British Columbia. Average day demand is 9000 m3/day and the given maximum day peaking factor is 1.8.",
+   "topicId": "demand-forecast",
+   "level": "class1",
+   "assumptions": "Fictional forecast: average day demand = 9000 m3/day, peaking factor = 1.8, peak day demand = average x peaking factor. Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Peak day demand = Average day demand x Peaking factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Average = 9000 m3/day and Peaking factor = 1.8"
+    },
+    {
+     "id": "line3",
+     "label": "3. Peak day demand = 9000 x 1.8 = 16800 m3/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 16800 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Peak day demand = 9000 x 1.8 = 16200 m3/day",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 9000 x 1.8 = 16200, not 16800."
+  },
+  {
+   "id": "wp4w-error28",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this peak day demand calculation for a utility near Medicine Hat, Alberta. Average day demand is 11000 m3/day and the given maximum day peaking factor is 1.6.",
+   "topicId": "demand-forecast",
+   "level": "class1",
+   "assumptions": "Fictional forecast: average day demand = 11000 m3/day, peaking factor = 1.6, peak day demand = average x peaking factor. Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Peak day demand = Average day demand / Peaking factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Average = 11000 m3/day and Peaking factor = 1.6"
+    },
+    {
+     "id": "line3",
+     "label": "3. Peak day demand calculated with the line 1 formula"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Peak day demand = Average x Peaking factor = 11000 x 1.6 = 17600 m3/day",
+   "explanation": "Line 1 divides by the peaking factor instead of multiplying. The peak day demand is 17600 m3/day."
+  },
+  {
+   "id": "wp4w-error29",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this peak day demand calculation for a utility near Prince Albert, Saskatchewan. Average day demand is 7500 m3/day and the given maximum day peaking factor is 2.0.",
+   "topicId": "demand-forecast",
+   "level": "class1",
+   "assumptions": "Fictional forecast: average day demand = 7500 m3/day, peaking factor = 2.0, peak day demand = average x peaking factor. Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Peak day demand = Average day demand x Peaking factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Average = 7500 m3/day and Peaking factor = 2.0"
+    },
+    {
+     "id": "line3",
+     "label": "3. Peak day demand = 7500 x 2.0 = 14500 m3/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 14500 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Peak day demand = 7500 x 2.0 = 15000 m3/day",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 7500 x 2.0 = 15000, not 14500."
+  },
+  {
+   "id": "wp4w-error30",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this peak day demand calculation for a utility near Grande Prairie, Alberta. Average day demand is 13500 m3/day and the given maximum day peaking factor is 1.5.",
+   "topicId": "demand-forecast",
+   "level": "class1",
+   "assumptions": "Fictional forecast: average day demand = 13500 m3/day, peaking factor = 1.5, peak day demand = average x peaking factor. Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Peak day demand = Average day demand / Peaking factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Average = 13500 m3/day and Peaking factor = 1.5"
+    },
+    {
+     "id": "line3",
+     "label": "3. Peak day demand calculated with the line 1 formula"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Peak day demand = Average x Peaking factor = 13500 x 1.5 = 20250 m3/day",
+   "explanation": "Line 1 divides by the peaking factor instead of multiplying. The peak day demand is 20250 m3/day."
+  },
+  {
+   "id": "wp4w-error31",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this peak day demand calculation for a utility near Victoria, British Columbia. Average day demand is 6400 m3/day and the given maximum day peaking factor is 1.75.",
+   "topicId": "demand-forecast",
+   "level": "class1",
+   "assumptions": "Fictional forecast: average day demand = 6400 m3/day, peaking factor = 1.75, peak day demand = average x peaking factor. Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Peak day demand = Average day demand x Peaking factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Average = 6400 m3/day and Peaking factor = 1.75"
+    },
+    {
+     "id": "line3",
+     "label": "3. Peak day demand = 6400 x 1.75 = 11600 m3/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 11600 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Peak day demand = 6400 x 1.75 = 11200 m3/day",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 6400 x 1.75 = 11200, not 11600."
+  },
+  {
+   "id": "wp4w-error32",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this firm capacity calculation for a plant near Regina, Saskatchewan. Total installed capacity is 30000 m3/day and the largest single unit is 6000 m3/day. Firm capacity is total capacity with the largest unit out of service.",
+   "topicId": "capacity-planning",
+   "level": "class1",
+   "assumptions": "Fictional capacity check: total installed = 30000 m3/day, largest unit = 6000 m3/day, firm capacity = total minus largest unit. Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Firm capacity = Total installed minus Largest unit"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Total = 30000 m3/day and Largest unit = 6000 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Firm capacity = 30000 minus 6000 = 24800 m3/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 24800 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Firm capacity = 30000 minus 6000 = 24000 m3/day",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 30000 minus 6000 = 24000, not 24800."
+  },
+  {
+   "id": "wp4w-error33",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this firm capacity calculation for a plant near Saskatoon, Saskatchewan. Total installed capacity is 45000 m3/day and the largest single unit is 9000 m3/day. Firm capacity is total capacity with the largest unit out of service.",
+   "topicId": "capacity-planning",
+   "level": "class1",
+   "assumptions": "Fictional capacity check: total installed = 45000 m3/day, largest unit = 9000 m3/day, firm capacity = total minus largest unit. Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Firm capacity = Total installed minus Largest unit"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Total = 45000 m3/day and Largest unit = 9000 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Firm capacity = 45000 plus 9000 = 54000 m3/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 54000 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Firm capacity = 45000 minus 9000 = 36000 m3/day",
+   "explanation": "Line 3 added the largest unit instead of subtracting it. The firm capacity is 36000 m3/day."
+  },
+  {
+   "id": "wp4w-error34",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this firm capacity calculation for a plant near Winnipeg, Manitoba. Total installed capacity is 26000 m3/day and the largest single unit is 5000 m3/day. Firm capacity is total capacity with the largest unit out of service.",
+   "topicId": "capacity-planning",
+   "level": "class1",
+   "assumptions": "Fictional capacity check: total installed = 26000 m3/day, largest unit = 5000 m3/day, firm capacity = total minus largest unit. Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Firm capacity = Total installed minus Largest unit"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Total = 26000 m3/day and Largest unit = 5000 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Firm capacity = 26000 minus 5000 = 20400 m3/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 20400 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Firm capacity = 26000 minus 5000 = 21000 m3/day",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 26000 minus 5000 = 21000, not 20400."
+  },
+  {
+   "id": "wp4w-error35",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this firm capacity calculation for a plant near Kelowna, British Columbia. Total installed capacity is 38000 m3/day and the largest single unit is 8000 m3/day. Firm capacity is total capacity with the largest unit out of service.",
+   "topicId": "capacity-planning",
+   "level": "class1",
+   "assumptions": "Fictional capacity check: total installed = 38000 m3/day, largest unit = 8000 m3/day, firm capacity = total minus largest unit. Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Firm capacity = Total installed minus Largest unit"
+    },
+    {
+     "id": "line2",
+     "label": "2. Unit deducted = 4000 m3/day (the smallest unit), with Total = 38000 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Firm capacity = 38000 minus 4000 = 34000 m3/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 34000 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Unit deducted = largest = 8000 m3/day, so firm capacity = 38000 minus 8000 = 30000 m3/day",
+   "explanation": "Line 2 deducted the smallest unit instead of the largest. The firm capacity is 30000 m3/day."
+  },
+  {
+   "id": "wp4w-error36",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this capacity surplus calculation for a utility near Yorkton, Saskatchewan. Firm capacity is 28000 m3/day and forecast peak day demand is 22500 m3/day, under provincial drinking water requirements.",
+   "topicId": "capacity-planning",
+   "level": "class1",
+   "assumptions": "Fictional capacity check: firm capacity = 28000 m3/day, peak demand = 22500 m3/day, surplus = firm capacity minus peak demand. Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Surplus = Firm capacity minus Peak demand"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Firm capacity = 28000 m3/day and Peak demand = 22500 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Surplus = 28000 minus 22500 = 6200 m3/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 6200 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Surplus = 28000 minus 22500 = 5500 m3/day",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 28000 minus 22500 = 5500, not 6200."
+  },
+  {
+   "id": "wp4w-error37",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this required capacity calculation for a utility near Cranbrook, British Columbia. Forecast peak day demand is 18000 m3/day and the planning reserve is 2000 m3/day.",
+   "topicId": "capacity-planning",
+   "level": "class1",
+   "assumptions": "Fictional capacity check: peak demand = 18000 m3/day, reserve = 2000 m3/day, required capacity = peak demand plus reserve. Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Required capacity = Peak demand plus Reserve"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Peak demand = 18000 m3/day and Reserve = 2000 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Required capacity = 18000 plus 2000 = 19100 m3/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 19100 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Required capacity = 18000 plus 2000 = 20000 m3/day",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 18000 plus 2000 = 20000, not 19100."
+  },
+  {
+   "id": "wp4w-error38",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this capacity surplus calculation for a utility near Fort McMurray, Alberta. Firm capacity is 36000 m3/day and forecast peak day demand is 29700 m3/day, under provincial drinking water requirements.",
+   "topicId": "capacity-planning",
+   "level": "class1",
+   "assumptions": "Fictional capacity check: firm capacity = 36000 m3/day, peak demand = 29700 m3/day, surplus = firm capacity minus peak demand. Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Surplus = Firm capacity minus Peak demand"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Firm capacity = 36000 m3/day and Peak demand = 29700 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Surplus = 36000 minus 29700 = 5500 m3/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 5500 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Surplus = 36000 minus 29700 = 6300 m3/day",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 36000 minus 29700 = 6300, not 5500."
+  },
+  {
+   "id": "wp4w-error39",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this required capacity calculation for a utility near Swift Current, Saskatchewan. Forecast peak day demand is 24000 m3/day and the planning reserve is 3000 m3/day.",
+   "topicId": "capacity-planning",
+   "level": "class1",
+   "assumptions": "Fictional capacity check: peak demand = 24000 m3/day, reserve = 3000 m3/day, required capacity = peak demand plus reserve. Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Required capacity = Peak demand plus Reserve"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Peak demand = 24000 m3/day and Reserve = 3000 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Required capacity = 24000 plus 3000 = 28200 m3/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 28200 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Required capacity = 24000 plus 3000 = 27000 m3/day",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 24000 plus 3000 = 27000, not 28200."
+  },
+  {
+   "id": "wp4w-error40",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this capacity surplus calculation for a utility near Calgary, Alberta. Firm capacity is 19500 m3/day and forecast peak day demand is 16200 m3/day, under provincial drinking water requirements.",
+   "topicId": "capacity-planning",
+   "level": "class1",
+   "assumptions": "Fictional capacity check: firm capacity = 19500 m3/day, peak demand = 16200 m3/day, surplus = firm capacity minus peak demand. Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Surplus = Firm capacity minus Peak demand"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Firm capacity = 19500 m3/day and Peak demand = 16200 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Surplus = 19500 minus 16200 = 3750 m3/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 3750 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Surplus = 19500 minus 16200 = 3300 m3/day",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 19500 minus 16200 = 3300, not 3750."
+  },
+  {
+   "id": "wp4w-error41",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane train count for a technology comparison near Brandon, Manitoba. Required capacity is 24000 m3/day and each membrane train provides 4000 m3/day.",
+   "topicId": "technology-comparison",
+   "level": "class1",
+   "assumptions": "Fictional technology comparison: required capacity = 24000 m3/day, capacity per train = 4000 m3/day, trains required = required / per train. Target unit: trains.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Trains required = Required capacity / Capacity per train"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Required = 24000 m3/day and Per train = 4000 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Trains required = 24000 x 4000 = 96000000 trains"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 96000000 trains"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Trains required = 24000 / 4000 = 6 trains",
+   "explanation": "Line 3 multiplied capacity by train size instead of dividing. The comparison needs 6 trains."
+  },
+  {
+   "id": "wp4w-error42",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane train count for a technology comparison near Prince George, British Columbia. Required capacity is 36000 m3/day and each membrane train provides 4500 m3/day.",
+   "topicId": "technology-comparison",
+   "level": "class1",
+   "assumptions": "Fictional technology comparison: required capacity = 36000 m3/day, capacity per train = 4500 m3/day, trains required = required / per train. Target unit: trains.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Trains required = Required capacity / Capacity per train"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Required = 36000 m3/day and Per train = 4500 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Trains required = 36000 / 4500 = 9 trains"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 9 trains"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Trains required = 36000 / 4500 = 8 trains",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 36000 / 4500 = 8, not 9."
+  },
+  {
+   "id": "wp4w-error43",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane train count for a technology comparison near Lethbridge, Alberta. Required capacity is 18000 m3/day and each membrane train provides 3000 m3/day.",
+   "topicId": "technology-comparison",
+   "level": "class1",
+   "assumptions": "Fictional technology comparison: required capacity = 18000 m3/day, capacity per train = 3000 m3/day, trains required = required / per train. Target unit: trains.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Trains required = Required capacity / Capacity per train"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Required = 18000 m3/day and Per train = 3000 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Trains required = 18000 x 3000 = 54000000 trains"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 54000000 trains"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Trains required = 18000 / 3000 = 6 trains",
+   "explanation": "Line 3 multiplied capacity by train size instead of dividing. The comparison needs 6 trains."
+  },
+  {
+   "id": "wp4w-error44",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane train count for a technology comparison near Moose Jaw, Saskatchewan. Required capacity is 28000 m3/day and each membrane train provides 4000 m3/day.",
+   "topicId": "technology-comparison",
+   "level": "class1",
+   "assumptions": "Fictional technology comparison: required capacity = 28000 m3/day, capacity per train = 4000 m3/day, trains required = required / per train. Target unit: trains.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Trains required = Required capacity / Capacity per train"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Required = 28000 m3/day and Per train = 4000 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Trains required = 28000 / 4000 = 6 trains"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 6 trains"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Trains required = 28000 / 4000 = 7 trains",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 28000 / 4000 = 7, not 6."
+  },
+  {
+   "id": "wp4w-error45",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane train count for a technology comparison near Kamloops, British Columbia. Required capacity is 45000 m3/day and each membrane train provides 5000 m3/day.",
+   "topicId": "technology-comparison",
+   "level": "class1",
+   "assumptions": "Fictional technology comparison: required capacity = 45000 m3/day, capacity per train = 5000 m3/day, trains required = required / per train. Target unit: trains.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Trains required = Required capacity / Capacity per train"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Required = 45000 m3/day and Per train = 5000 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Trains required = 45000 x 5000 = 225000000 trains"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 225000000 trains"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Trains required = 45000 / 5000 = 9 trains",
+   "explanation": "Line 3 multiplied capacity by train size instead of dividing. The comparison needs 9 trains."
+  },
+  {
+   "id": "wp4w-error46",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this fleet total for a technology comparison near Medicine Hat, Alberta. The option has 8 units with 120 modules per unit, under provincial drinking water requirements.",
+   "topicId": "technology-comparison",
+   "level": "class1",
+   "assumptions": "Fictional technology comparison: units = 8, quantity per unit = 120 modules, fleet total = units x per unit. Target unit: modules.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Fleet total = Number of units x Quantity per unit"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Units = 8 and Per unit = 120 modules"
+    },
+    {
+     "id": "line3",
+     "label": "3. Fleet total = 8 x 120 = 1000 modules"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 1000 modules"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Fleet total = 8 x 120 = 960 modules",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 8 x 120 = 960, not 1000."
+  },
+  {
+   "id": "wp4w-error47",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this fleet total for a technology comparison near Prince Albert, Saskatchewan. The option has 6 units with 24 lamps per unit, under provincial drinking water requirements.",
+   "topicId": "technology-comparison",
+   "level": "class1",
+   "assumptions": "Fictional technology comparison: units = 6, quantity per unit = 24 lamps, fleet total = units x per unit. Target unit: lamps.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Fleet total = Number of units x Quantity per unit"
+    },
+    {
+     "id": "line2",
+     "label": "2. Units used = 5 (one unit left out of the count), with 24 lamps per unit"
+    },
+    {
+     "id": "line3",
+     "label": "3. Fleet total = 5 x 24 = 120 lamps"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 120 lamps"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Units = 6, so fleet total = 6 x 24 = 144 lamps",
+   "explanation": "Line 2 left one unit out of the count. The fleet total is 144 lamps."
+  },
+  {
+   "id": "wp4w-error48",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this fleet total for a technology comparison near Grande Prairie, Alberta. The option has 5 units with 90 m2 per unit, under provincial drinking water requirements.",
+   "topicId": "technology-comparison",
+   "level": "class1",
+   "assumptions": "Fictional technology comparison: units = 5, quantity per unit = 90 m2, fleet total = units x per unit. Target unit: m2.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Fleet total = Number of units x Quantity per unit"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Units = 5 and Per unit = 90 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Fleet total = 5 x 90 = 420 m2"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 420 m2"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Fleet total = 5 x 90 = 450 m2",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 5 x 90 = 450, not 420."
+  },
+  {
+   "id": "wp4w-error49",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this fleet total for a technology comparison near Victoria, British Columbia. The option has 10 units with 96 modules per unit, under provincial drinking water requirements.",
+   "topicId": "technology-comparison",
+   "level": "class1",
+   "assumptions": "Fictional technology comparison: units = 10, quantity per unit = 96 modules, fleet total = units x per unit. Target unit: modules.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Fleet total = Number of units x Quantity per unit"
+    },
+    {
+     "id": "line2",
+     "label": "2. Units used = 9 (one unit left out of the count), with 96 modules per unit"
+    },
+    {
+     "id": "line3",
+     "label": "3. Fleet total = 9 x 96 = 864 modules"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 864 modules"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Units = 10, so fleet total = 10 x 96 = 960 modules",
+   "explanation": "Line 2 left one unit out of the count. The fleet total is 960 modules."
+  },
+  {
+   "id": "wp4w-error50",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this fleet total for a technology comparison near Yorkton, Saskatchewan. The option has 4 units with 36 lamps per unit, under provincial drinking water requirements.",
+   "topicId": "technology-comparison",
+   "level": "class1",
+   "assumptions": "Fictional technology comparison: units = 4, quantity per unit = 36 lamps, fleet total = units x per unit. Target unit: lamps.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Fleet total = Number of units x Quantity per unit"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Units = 4 and Per unit = 36 lamps"
+    },
+    {
+     "id": "line3",
+     "label": "3. Fleet total = 4 x 36 = 168 lamps"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 168 lamps"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Fleet total = 4 x 36 = 144 lamps",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 4 x 36 = 144, not 168."
+  },
+  {
+   "id": "wp4w-error51",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this net capacity comparison near Edmonton, Alberta. Gross capacity is 32000 m3/day and one train rated 5000 m3/day is out of service for the firm comparison case.",
+   "topicId": "technology-comparison",
+   "level": "class1",
+   "assumptions": "Fictional technology comparison: gross capacity = 32000 m3/day, train out = 5000 m3/day, net firm capacity = gross minus train out. Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Net firm capacity = Gross capacity minus Train out of service"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Gross = 32000 m3/day and Train out = 5000 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Net firm capacity = 32000 minus 5000 = 27900 m3/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 27900 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Net firm capacity = 32000 minus 5000 = 27000 m3/day",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 32000 minus 5000 = 27000, not 27900."
+  },
+  {
+   "id": "wp4w-error52",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this feed flow requirement near Regina, Saskatchewan. The membrane option must deliver 18000 m3/day of permeate at a given recovery of 0.9 as a fraction.",
+   "topicId": "technology-comparison",
+   "level": "class1",
+   "assumptions": "Fictional technology comparison: permeate = 18000 m3/day, recovery = 0.9 as a fraction, feed required = permeate / recovery. Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Feed required = Permeate / Recovery"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Permeate = 18000 m3/day and Recovery = 0.9"
+    },
+    {
+     "id": "line3",
+     "label": "3. Feed required = 18000 x 0.9 = 16200 m3/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 16200 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Feed required = 18000 / 0.9 = 20000 m3/day",
+   "explanation": "Line 3 multiplied by recovery instead of dividing. The feed required is 20000 m3/day."
+  },
+  {
+   "id": "wp4w-error53",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this net capacity comparison near Saskatoon, Saskatchewan. Gross capacity is 27500 m3/day and one train rated 5500 m3/day is out of service for the firm comparison case.",
+   "topicId": "technology-comparison",
+   "level": "class1",
+   "assumptions": "Fictional technology comparison: gross capacity = 27500 m3/day, train out = 5500 m3/day, net firm capacity = gross minus train out. Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Net firm capacity = Gross capacity minus Train out of service"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Gross = 27500 m3/day and Train out = 5500 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Net firm capacity = 27500 minus 5500 = 21300 m3/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 21300 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Net firm capacity = 27500 minus 5500 = 22000 m3/day",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 27500 minus 5500 = 22000, not 21300."
+  },
+  {
+   "id": "wp4w-error54",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this feed flow requirement near Winnipeg, Manitoba. The membrane option must deliver 14400 m3/day of permeate at a given recovery of 0.8 as a fraction.",
+   "topicId": "technology-comparison",
+   "level": "class1",
+   "assumptions": "Fictional technology comparison: permeate = 14400 m3/day, recovery = 0.8 as a fraction, feed required = permeate / recovery. Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Feed required = Permeate / Recovery"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Permeate = 14400 m3/day and Recovery = 0.8"
+    },
+    {
+     "id": "line3",
+     "label": "3. Feed required = 14400 x 0.8 = 11520 m3/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 11520 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Feed required = 14400 / 0.8 = 18000 m3/day",
+   "explanation": "Line 3 multiplied by recovery instead of dividing. The feed required is 18000 m3/day."
+  },
+  {
+   "id": "wp4w-error55",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this capacity difference near Kelowna, British Columbia. Option A provides 46500 m3/day and Option B provides 38250 m3/day, assessed against the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "topicId": "technology-comparison",
+   "level": "class1",
+   "assumptions": "Fictional technology comparison: Option A = 46500 m3/day, Option B = 38250 m3/day, difference = Option A minus Option B. Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Difference = Option A capacity minus Option B capacity"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Option A = 46500 m3/day and Option B = 38250 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Difference = 46500 minus 38250 = 9000 m3/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 9000 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Difference = 46500 minus 38250 = 8250 m3/day",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 46500 minus 38250 = 8250, not 9000."
+  },
+  {
+   "id": "wp4w-error56",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chemical feed mass calculation for a plant near Lethbridge, Alberta. The alum dose is 8 mg/L and the plant flow is 12 ML/day. With flow in ML/day, chemical use in kg/day equals dose in mg/L times flow in ML/day.",
+   "topicId": "chemical-program-cost",
+   "level": "class1",
+   "assumptions": "Fictional chemical program: dose = 8 mg/L, flow = 12 ML/day, daily mass = dose x flow in ML/day. Target unit: kg/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily mass = Dose x Flow in ML/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Dose = 8 mg/L and Flow = 12 ML/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily mass = 8 x 12 = 102 kg/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 102 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Daily mass = 8 x 12 = 96 kg/day",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 8 x 12 = 96, not 102."
+  },
+  {
+   "id": "wp4w-error57",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chemical feed mass calculation for a plant near Moose Jaw, Saskatchewan. The alum dose is 5 mg/L and the plant flow is 18 ML/day. With flow in ML/day, chemical use in kg/day equals dose in mg/L times flow in ML/day.",
+   "topicId": "chemical-program-cost",
+   "level": "class1",
+   "assumptions": "Fictional chemical program: dose = 5 mg/L, flow = 18 ML/day, daily mass = dose x flow in ML/day. Target unit: kg/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily mass = Dose / Flow in ML/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Dose = 5 mg/L and Flow = 18 ML/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily mass calculated with the line 1 formula"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Daily mass = Dose x Flow = 5 x 18 = 90 kg/day",
+   "explanation": "Line 1 divides dose by flow instead of multiplying. The daily mass is 90 kg/day."
+  },
+  {
+   "id": "wp4w-error58",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chemical feed mass calculation for a plant near Kamloops, British Columbia. The alum dose is 12 mg/L and the plant flow is 9 ML/day. With flow in ML/day, chemical use in kg/day equals dose in mg/L times flow in ML/day.",
+   "topicId": "chemical-program-cost",
+   "level": "class1",
+   "assumptions": "Fictional chemical program: dose = 12 mg/L, flow = 9 ML/day, daily mass = dose x flow in ML/day. Target unit: kg/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily mass = Dose x Flow in ML/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Dose = 12 mg/L and Flow = 9 ML/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily mass = 12 x 9 = 100 kg/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 100 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Daily mass = 12 x 9 = 108 kg/day",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 12 x 9 = 108, not 100."
+  },
+  {
+   "id": "wp4w-error59",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chemical feed mass calculation for a plant near Medicine Hat, Alberta. The alum dose is 6 mg/L and the plant flow is 15 ML/day. With flow in ML/day, chemical use in kg/day equals dose in mg/L times flow in ML/day.",
+   "topicId": "chemical-program-cost",
+   "level": "class1",
+   "assumptions": "Fictional chemical program: dose = 6 mg/L, flow = 15 ML/day, daily mass = dose x flow in ML/day. Target unit: kg/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily mass = Dose / Flow in ML/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Dose = 6 mg/L and Flow = 15 ML/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily mass calculated with the line 1 formula"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Daily mass = Dose x Flow = 6 x 15 = 90 kg/day",
+   "explanation": "Line 1 divides dose by flow instead of multiplying. The daily mass is 90 kg/day."
+  }
+ ],
+ "missions": [
+  {
+   "id": "wp4w-mission21",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 21: The Energy Benchmarking Shift",
+   "tasks": [
+    {
+     "taskId": "wp4w-ladder80",
+     "revision": "r1",
+     "occurrenceId": "m21-t1"
+    },
+    {
+     "taskId": "wp4w-error01",
+     "revision": "r1",
+     "occurrenceId": "m21-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp4w-mission22",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 22: The Utility Water Balance Shift",
+   "tasks": [
+    {
+     "taskId": "wp4w-error02",
+     "revision": "r1",
+     "occurrenceId": "m22-t1"
+    },
+    {
+     "taskId": "wp4w-ladder81",
+     "revision": "r1",
+     "occurrenceId": "m22-t2"
+    },
+    {
+     "taskId": "wp4w-ladder82",
+     "revision": "r1",
+     "occurrenceId": "m22-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp4w-mission23",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 23: The Utility Mass Balance Shift",
+   "tasks": [
+    {
+     "taskId": "wp4w-ladder83",
+     "revision": "r1",
+     "occurrenceId": "m23-t1"
+    },
+    {
+     "taskId": "wp4w-error03",
+     "revision": "r1",
+     "occurrenceId": "m23-t2"
+    },
+    {
+     "taskId": "wp4w-ladder84",
+     "revision": "r1",
+     "occurrenceId": "m23-t3"
+    },
+    {
+     "taskId": "wp4w-ladder85",
+     "revision": "r1",
+     "occurrenceId": "m23-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp4w-mission24",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 24: The Utility Water Balance Shift",
+   "tasks": [
+    {
+     "taskId": "wp4w-error04",
+     "revision": "r1",
+     "occurrenceId": "m24-t1"
+    },
+    {
+     "taskId": "wp4w-ladder86",
+     "revision": "r1",
+     "occurrenceId": "m24-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp4w-mission25",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 25: The Compliance Sampling Counts Shift",
+   "tasks": [
+    {
+     "taskId": "wp4w-ladder87",
+     "revision": "r1",
+     "occurrenceId": "m25-t1"
+    },
+    {
+     "taskId": "wp4w-error05",
+     "revision": "r1",
+     "occurrenceId": "m25-t2"
+    },
+    {
+     "taskId": "wp4w-ladder88",
+     "revision": "r1",
+     "occurrenceId": "m25-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp4w-mission26",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 26: The Utility Water Balance Shift",
+   "tasks": [
+    {
+     "taskId": "wp4w-error06",
+     "revision": "r1",
+     "occurrenceId": "m26-t1"
+    },
+    {
+     "taskId": "wp4w-ladder89",
+     "revision": "r1",
+     "occurrenceId": "m26-t2"
+    },
+    {
+     "taskId": "wp4w-ladder90",
+     "revision": "r1",
+     "occurrenceId": "m26-t3"
+    },
+    {
+     "taskId": "wp4w-ladder91",
+     "revision": "r1",
+     "occurrenceId": "m26-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp4w-mission27",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 27: The Utility Mass Balance Shift",
+   "tasks": [
+    {
+     "taskId": "wp4w-ladder92",
+     "revision": "r1",
+     "occurrenceId": "m27-t1"
+    },
+    {
+     "taskId": "wp4w-error07",
+     "revision": "r1",
+     "occurrenceId": "m27-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp4w-mission28",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 28: The Utility Water Balance Shift",
+   "tasks": [
+    {
+     "taskId": "wp4w-error08",
+     "revision": "r1",
+     "occurrenceId": "m28-t1"
+    },
+    {
+     "taskId": "wp4w-ladder93",
+     "revision": "r1",
+     "occurrenceId": "m28-t2"
+    },
+    {
+     "taskId": "wp4w-ladder94",
+     "revision": "r1",
+     "occurrenceId": "m28-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp4w-mission29",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 29: The Utility Mass Balance Shift",
+   "tasks": [
+    {
+     "taskId": "wp4w-ladder95",
+     "revision": "r1",
+     "occurrenceId": "m29-t1"
+    },
+    {
+     "taskId": "wp4w-error09",
+     "revision": "r1",
+     "occurrenceId": "m29-t2"
+    },
+    {
+     "taskId": "wp4w-ladder96",
+     "revision": "r1",
+     "occurrenceId": "m29-t3"
+    },
+    {
+     "taskId": "wp4w-ladder97",
+     "revision": "r1",
+     "occurrenceId": "m29-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp4w-mission30",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 30: The Utility Water Balance Shift",
+   "tasks": [
+    {
+     "taskId": "wp4w-error10",
+     "revision": "r1",
+     "occurrenceId": "m30-t1"
+    },
+    {
+     "taskId": "wp4w-ladder98",
+     "revision": "r1",
+     "occurrenceId": "m30-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp4w-mission31",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 31: The Capacity Planning Shift",
+   "tasks": [
+    {
+     "taskId": "wp4w-ladder99",
+     "revision": "r1",
+     "occurrenceId": "m31-t1"
+    },
+    {
+     "taskId": "wp4w-error100",
+     "revision": "r1",
+     "occurrenceId": "m31-t2"
+    },
+    {
+     "taskId": "wp4w-ladder80",
+     "revision": "r1",
+     "occurrenceId": "m31-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp4w-mission32",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 32: The Utility Water Balance Shift",
+   "tasks": [
+    {
+     "taskId": "wp4w-error11",
+     "revision": "r1",
+     "occurrenceId": "m32-t1"
+    },
+    {
+     "taskId": "wp4w-ladder81",
+     "revision": "r1",
+     "occurrenceId": "m32-t2"
+    },
+    {
+     "taskId": "wp4w-ladder82",
+     "revision": "r1",
+     "occurrenceId": "m32-t3"
+    },
+    {
+     "taskId": "wp4w-ladder83",
+     "revision": "r1",
+     "occurrenceId": "m32-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp4w-mission33",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 33: The Utility Mass Balance Shift",
+   "tasks": [
+    {
+     "taskId": "wp4w-ladder84",
+     "revision": "r1",
+     "occurrenceId": "m33-t1"
+    },
+    {
+     "taskId": "wp4w-error12",
+     "revision": "r1",
+     "occurrenceId": "m33-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp4w-mission34",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 34: The Utility Water Balance Shift",
+   "tasks": [
+    {
+     "taskId": "wp4w-error13",
+     "revision": "r1",
+     "occurrenceId": "m34-t1"
+    },
+    {
+     "taskId": "wp4w-ladder85",
+     "revision": "r1",
+     "occurrenceId": "m34-t2"
+    },
+    {
+     "taskId": "wp4w-ladder86",
+     "revision": "r1",
+     "occurrenceId": "m34-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp4w-mission35",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 35: The Compliance Sampling Counts Shift",
+   "tasks": [
+    {
+     "taskId": "wp4w-ladder87",
+     "revision": "r1",
+     "occurrenceId": "m35-t1"
+    },
+    {
+     "taskId": "wp4w-error14",
+     "revision": "r1",
+     "occurrenceId": "m35-t2"
+    },
+    {
+     "taskId": "wp4w-ladder88",
+     "revision": "r1",
+     "occurrenceId": "m35-t3"
+    },
+    {
+     "taskId": "wp4w-ladder89",
+     "revision": "r1",
+     "occurrenceId": "m35-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp4w-mission36",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 36: The Utility Water Balance Shift",
+   "tasks": [
+    {
+     "taskId": "wp4w-error15",
+     "revision": "r1",
+     "occurrenceId": "m36-t1"
+    },
+    {
+     "taskId": "wp4w-ladder90",
+     "revision": "r1",
+     "occurrenceId": "m36-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp4w-mission37",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 37: The Utility Mass Balance Shift",
+   "tasks": [
+    {
+     "taskId": "wp4w-ladder91",
+     "revision": "r1",
+     "occurrenceId": "m37-t1"
+    },
+    {
+     "taskId": "wp4w-error16",
+     "revision": "r1",
+     "occurrenceId": "m37-t2"
+    },
+    {
+     "taskId": "wp4w-ladder92",
+     "revision": "r1",
+     "occurrenceId": "m37-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp4w-mission38",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 38: The Utility Water Balance Shift",
+   "tasks": [
+    {
+     "taskId": "wp4w-error17",
+     "revision": "r1",
+     "occurrenceId": "m38-t1"
+    },
+    {
+     "taskId": "wp4w-ladder93",
+     "revision": "r1",
+     "occurrenceId": "m38-t2"
+    },
+    {
+     "taskId": "wp4w-ladder94",
+     "revision": "r1",
+     "occurrenceId": "m38-t3"
+    },
+    {
+     "taskId": "wp4w-ladder95",
+     "revision": "r1",
+     "occurrenceId": "m38-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp4w-mission39",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 39: The Capacity Planning Shift",
+   "tasks": [
+    {
+     "taskId": "wp4w-ladder96",
+     "revision": "r1",
+     "occurrenceId": "m39-t1"
+    },
+    {
+     "taskId": "wp4w-error18",
+     "revision": "r1",
+     "occurrenceId": "m39-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp4w-mission40",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 40: The Utility Water Balance Shift",
+   "tasks": [
+    {
+     "taskId": "wp4w-error19",
+     "revision": "r1",
+     "occurrenceId": "m40-t1"
+    },
+    {
+     "taskId": "wp4w-ladder97",
+     "revision": "r1",
+     "occurrenceId": "m40-t2"
+    },
+    {
+     "taskId": "wp4w-ladder98",
+     "revision": "r1",
+     "occurrenceId": "m40-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Senior operations and management chapters (utility management, balances, technology selection)"
+  },
+  {
+   "id": "wpi-ntk-2025",
+   "title": "WPI, 2025 Need-to-Know Criteria, Water Treatment Class IV",
+   "locator": "https://gowpi.org/services/2025-need-to-know-criteria/"
+  },
+  {
+   "id": "gcdwq",
+   "title": "Health Canada, Guidelines for Canadian Drinking Water Quality",
+   "locator": "Federal guideline values and treatment context for Canadian drinking water"
+  },
+  {
+   "id": "epa-membrane",
+   "title": "US EPA, Membrane Filtration Guidance Manual",
+   "locator": "Membrane operation background (not Canadian law)"
+  },
+  {
+   "id": "epa-uv",
+   "title": "US EPA, Ultraviolet Disinfection Guidance Manual",
+   "locator": "UV disinfection background (not Canadian law)"
+  },
+  {
+   "id": "ccohs-safety",
+   "title": "CCOHS, OSH Answers (chemical safety, confined spaces, lockout)",
+   "locator": "https://www.ccohs.ca/oshanswers/"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "bb6f6b33368fa330db9cb7002fecd4f6b6db41415d1024f72d25ceb099cc4b6b",
+  "taskReceipts": [
+   {
+    "taskId": "wp4w-ladder80",
+    "revision": "r1",
+    "sha256": "1a70731125f01aa8a665e7d055b9e8bea33a20e491a8fe71f9c22f074aca005b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-ladder81",
+    "revision": "r1",
+    "sha256": "26e21e5db6436ac89bf9e0ae30248303a9650e6b12ed17d10cd944b7bed6044c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-ladder82",
+    "revision": "r1",
+    "sha256": "bc9dde2fbb83c35add331ee7fb4eb0a3b2f24e9ce48297143453e2040ddf3fd5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-ladder83",
+    "revision": "r1",
+    "sha256": "b89137e11225081a2f3a3033a3dda25880bfd56f9d9a1e9c8a9027ede894e839",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-ladder84",
+    "revision": "r1",
+    "sha256": "7b75543961a8cafabe3fbda41b32e22fe361c223e14c61f471fdc45193a9899d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-ladder85",
+    "revision": "r1",
+    "sha256": "0d7a37d654aaf73c7ba4f1ce5f76896ffa39f9608d07c2523446678677fb1dd8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-ladder86",
+    "revision": "r1",
+    "sha256": "43019608afd5a04dba8e3dd65d2771755b6f960ab22c4a021a1aa48bf9886aeb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-ladder87",
+    "revision": "r1",
+    "sha256": "85df6750ca6bd9258c42065a62b9e5088777da86f6c7c6425bfe3bdeff49e9e8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-ladder88",
+    "revision": "r1",
+    "sha256": "f2a4caa43ba3d6fadf3ac9672fbc9f3fa8b6d7c51277f30d15d87741a8f3f005",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-ladder89",
+    "revision": "r1",
+    "sha256": "99549c6d356f4461e2e6fd985ddc69cbf6012d1adc2ff3171ab447b9bd5627e2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-ladder90",
+    "revision": "r1",
+    "sha256": "1eefa8cf52d4dbe5a084a1c787655e9c70ea8f1ad1ba8e291f631cda22d67e3c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-ladder91",
+    "revision": "r1",
+    "sha256": "ba9ece4575407488f9c85dc1ee9fe85bfb7457d5a5e19baf475eb53c419bf75e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-ladder92",
+    "revision": "r1",
+    "sha256": "dc51d07699f3a04686fb3127e678ff28da8754ad81428d7778a34de6fc8b99db",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-ladder93",
+    "revision": "r1",
+    "sha256": "b356f48c518bde8079fc05b954fe2b5903359f814f6947280962cb5c4237676e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-ladder94",
+    "revision": "r1",
+    "sha256": "c52c02db39e7985ec4697f081138034aa72fc2e254c71a010f0ba0ae417ae5f2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-ladder95",
+    "revision": "r1",
+    "sha256": "3814faad924cc0fb20032b27aad53919e0edd10ca7f6e11a5759d83c5367b88d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-ladder96",
+    "revision": "r1",
+    "sha256": "1d162be636dbe2113ffd0496930435a9634aebd2be64ffda55b1e03aba0e8420",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-ladder97",
+    "revision": "r1",
+    "sha256": "e9bb657071e10219bc6dc8b3414a23624688f572144fe65210c9facd1966d199",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-ladder98",
+    "revision": "r1",
+    "sha256": "a4b94d0368d74af4a5271f45700bf83342d446fc555bacd45673966e8652f979",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-ladder99",
+    "revision": "r1",
+    "sha256": "3f161780a4c846a2fa8f9d75f7e8cc7e8797ee5fc9528f079a138b45245b214d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error01",
+    "revision": "r1",
+    "sha256": "a5fd49948eabee109f80236ec9c9c80b475ae81c6305328a1445aff5b93be945",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error02",
+    "revision": "r1",
+    "sha256": "48a8ebbcbc19c294f2a9891c6db847eb40d4b11b4d04a91a2f2b89f40d997faf",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error03",
+    "revision": "r1",
+    "sha256": "887152602b41fa641fccc67d808b9c78e444635f25926df707cf9739718e72d1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error04",
+    "revision": "r1",
+    "sha256": "7d6954d12f963704937708ab95925b3324d3d450ef2e73394db46db0cb6ea6a1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error05",
+    "revision": "r1",
+    "sha256": "139a14d24166fa063061b7aad4066dc5f4410bfc95f10bd0c31b78c908ddde12",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error06",
+    "revision": "r1",
+    "sha256": "f6b255dfff93a6954316e5c9ded4c949dc07a873a94a43b22d1ffca2a8e4b3f5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error07",
+    "revision": "r1",
+    "sha256": "bead39740549b420c95cbe2c9b77e527744de56b1a36a912011d9a52fdaf41a2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error08",
+    "revision": "r1",
+    "sha256": "21c8f3f77e59fb1001ced46c88bf3dd677e7a0ca3d87a57212980bc4e12b1573",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error09",
+    "revision": "r1",
+    "sha256": "92a797bd5517b5d14319c7bdbf43e833addcc85037813c8069ea6ed85458aaa0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error10",
+    "revision": "r1",
+    "sha256": "329227f960bcb6920e71d3ed958dbbe1b2fd2d72e08e3138d16566d0b37ca6c0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error100",
+    "revision": "r1",
+    "sha256": "f9e71279135944f51005a9905b292f729c09dc5f2b4917866a5ce5eec0027fea",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error11",
+    "revision": "r1",
+    "sha256": "3717c069d1f1d69e211973e51abc3a0b4f4036e19ba3775be46e4554066b1561",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error12",
+    "revision": "r1",
+    "sha256": "45440475b591ab39c4a29291791e58e580856b766c7e1ff46136d2057a52cb37",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error13",
+    "revision": "r1",
+    "sha256": "2da1a7f583b3193dd14298c6a8072bc2dac1bd669f748cf90441cee687c7613d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error14",
+    "revision": "r1",
+    "sha256": "bfa34c6367ec065298c8217f8bc86c20d872c080f33bb166e5197a3358e0eb1f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error15",
+    "revision": "r1",
+    "sha256": "2d41cfbb52a8fb67fba6122b953d435da57ddb9d07f2645da630699f6cd0b552",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error16",
+    "revision": "r1",
+    "sha256": "ad51acc4d764c64095ec91441056a4533340c8b8991b3a736c5d4da3dbd1b14b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error17",
+    "revision": "r1",
+    "sha256": "1a64e4dd2d619153c693e9a702d72f7675a9775c2ed311c9acaf539bd5b7b899",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error18",
+    "revision": "r1",
+    "sha256": "f554ce13bc60ac1316f4befad46d77cc03ecdec72bd8b1eff8e034a37efd973c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error19",
+    "revision": "r1",
+    "sha256": "5f8487671af83df8bb9ab43d49f8ad5659a75c3b47a8c992923163d564591ced",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error20",
+    "revision": "r1",
+    "sha256": "37477930234a9a844c4075f8ae3080759c1e0141249359e20c42df252d2b65f4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error21",
+    "revision": "r1",
+    "sha256": "c005fe491904358d6c1286d2e3d0f82d74b4718805c7b889befa250ff5624b5b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error22",
+    "revision": "r1",
+    "sha256": "d30a599483083bb7165f6daddd31354dcdc8fe36a4e9b4ce8c2f5b288f571b31",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error23",
+    "revision": "r1",
+    "sha256": "d76b6c461d5f79106ec3af373ae8a9851f8a683da32da372da757f5359281b30",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error24",
+    "revision": "r1",
+    "sha256": "2b05509dd58c76deacd156640fbd5fc3d243842e32e4119914d664033f1b1105",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error25",
+    "revision": "r1",
+    "sha256": "807d4046cf81582cbf76af954699af9713405865f70e8224776824fd87cb3295",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error26",
+    "revision": "r1",
+    "sha256": "40cefdfab3b87dc1377c430abab42490826efb7f0532409f842706f7e1c11f59",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error27",
+    "revision": "r1",
+    "sha256": "9cd69aa8bdbc48d80c8cf4f8d06a8815f24ae205573c770eb976b1fdc6974315",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error28",
+    "revision": "r1",
+    "sha256": "86a28c6f96ffb25ba11056b03c4e849844ba0980e2271088834973f31aa0694c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error29",
+    "revision": "r1",
+    "sha256": "5c3f6528ddbc2551755841de2da3390eb1830b112b33d45b14e116488413d0c6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error30",
+    "revision": "r1",
+    "sha256": "df77dfb1911f2d905af2a665f585760fb47d1b5fa4f4ba1eeb65315454949a17",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error31",
+    "revision": "r1",
+    "sha256": "f3c01e6f3712211f7809c2fa43014c8b2baeae4ba6b55ea8c39d8e9a3a95ae3e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error32",
+    "revision": "r1",
+    "sha256": "9297b370988e56b3be88d4f5c16be0da2cc0a75a921d9d239693725d1bdb05cb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error33",
+    "revision": "r1",
+    "sha256": "81774d15761d5e160a2af291f8dc80039e412f016e94f1f8b8adcf739f833e67",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error34",
+    "revision": "r1",
+    "sha256": "e392c2bcd14adee76ec608eb189f9f2577d6f83f72462d94f04c3f459789ba2a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error35",
+    "revision": "r1",
+    "sha256": "1dc64565258932b3ec786a062d945837d58bf85d0c23a511c6c2c76bf75275b3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error36",
+    "revision": "r1",
+    "sha256": "0a35d2b74f2003349affae335760dce7190a63788f9989161ab80629920d5f82",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error37",
+    "revision": "r1",
+    "sha256": "11590fe0abe0c7c69a416cdc4b898069f6c97cc6ae157f29928eda47b2d54b0d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error38",
+    "revision": "r1",
+    "sha256": "a49584007e0ba7324bb7a7a147a7fd97aae828ecdb43b459091f790008f8ffc7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error39",
+    "revision": "r1",
+    "sha256": "c949c2354e9bc0f7ad5ef096976094d37579fe87992dafd967398ca8742148db",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error40",
+    "revision": "r1",
+    "sha256": "23cb845f5190abfd94f493e631dfe5663d994dffc21213b2ee370e1490203464",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error41",
+    "revision": "r1",
+    "sha256": "df89f179b907d74f684d2723597a6b70670858275824b9bebf39f29f52238a83",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error42",
+    "revision": "r1",
+    "sha256": "1a9ae6438e60a9c1b7661e8cf6257f629e7421887ab4067815f26781833dbff0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error43",
+    "revision": "r1",
+    "sha256": "0c1cdb3f8c90259487bb6f2103aaf1925fb669d9c885aea7109fff668e48fbea",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error44",
+    "revision": "r1",
+    "sha256": "1f7da2005d8b693b43175d4d3731f3c37bab1b851e0182884b6a9d2836e737e9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error45",
+    "revision": "r1",
+    "sha256": "9863124aa5def015710b19703eeb037768d3787239a06113142401d4376ec611",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error46",
+    "revision": "r1",
+    "sha256": "b4992885c4ce33ed6d6310251837373350ee71164c8eacb8f3d8ed3eb1f1428a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error47",
+    "revision": "r1",
+    "sha256": "c35e9d2fe66be0c196bc6a77fe20298901c34eea54aaeb85a048cb7e2509652d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error48",
+    "revision": "r1",
+    "sha256": "4e285449f972c5e08d69b8cd6128aab03d139da50cf8962ddacb2cfa998c9c57",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error49",
+    "revision": "r1",
+    "sha256": "ee7bca4e24c26c8e2f6ad54a5e3fa5c75eeaeb5a5c0346946d630136413e2278",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error50",
+    "revision": "r1",
+    "sha256": "e751a9ee5d1d5ec26760e2e757d9e6719c919cc06fcc1daeaf683952012f9154",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error51",
+    "revision": "r1",
+    "sha256": "1086fa3e11c7510cb41278d97c34c3c99486278a7425b5ec7fc0519d3d26a94c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error52",
+    "revision": "r1",
+    "sha256": "75fb4cd958788362add0076ded453d7fe0d8f5530ac86c0f04989b11de9e448a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error53",
+    "revision": "r1",
+    "sha256": "897ce486f190bc70090973211a39e7db16f81e6f4d66fb587527d149864fa9b3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error54",
+    "revision": "r1",
+    "sha256": "57011b5069110f9d296a18cf8943cb0d65d67826b91ccc08ed9d7816771b9060",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error55",
+    "revision": "r1",
+    "sha256": "4a9e936061661636552ba4dfd056216acd611a25a4886e23da95e48e8a593503",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error56",
+    "revision": "r1",
+    "sha256": "236b4d7bbbd51adeffedb2ceb99c79783eb8d22ba6e923b4fcbf2eca7d6f533e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error57",
+    "revision": "r1",
+    "sha256": "551b8acb17b2451a5a170d1eaf5e5d95d6ff7b9ad4d16d6bc7ee03e2a6f4bb8c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error58",
+    "revision": "r1",
+    "sha256": "1c8b968ff16d23af6a50533adec347aa8328d5576832b1108ea20b6acddb6187",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error59",
+    "revision": "r1",
+    "sha256": "eddc77eaa63cf90e26b6aaa1d9d3f426260a214c52462a3d49d3277750eed6a3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "wp4w-mission21",
+    "revision": "r1",
+    "sha256": "d365d09805f72efa698e2a61c0a35d6e2264a54fb9b4ec3d1e39487937907a88"
+   },
+   {
+    "missionId": "wp4w-mission22",
+    "revision": "r1",
+    "sha256": "324c035a85810e633f006ace07b7e9d12e0fdfbe8cdf4f1d4419532d90a3c6fa"
+   },
+   {
+    "missionId": "wp4w-mission23",
+    "revision": "r1",
+    "sha256": "19fccfc86d2789e1481fde83a852a1bafff60c66856defb43e78ce42ca2df671"
+   },
+   {
+    "missionId": "wp4w-mission24",
+    "revision": "r1",
+    "sha256": "cf40fa4d369dfaef188fd65b564684b5987c5fa0f7e07ecce1f469cebe1d5595"
+   },
+   {
+    "missionId": "wp4w-mission25",
+    "revision": "r1",
+    "sha256": "1ff8581910cb96b02fd0c39f47f455e9b73f9df789e383ee7b8b4491d2f33cd9"
+   },
+   {
+    "missionId": "wp4w-mission26",
+    "revision": "r1",
+    "sha256": "120f1848190f36a997586f274528deb9a72184dc65f62ff8b6f4e3bf45f7ee85"
+   },
+   {
+    "missionId": "wp4w-mission27",
+    "revision": "r1",
+    "sha256": "1fd9cce85c0c6f5596123d25dca0bea5b062ec3d1a506aeae27af945ed847bd0"
+   },
+   {
+    "missionId": "wp4w-mission28",
+    "revision": "r1",
+    "sha256": "6ffcfab047c63b55d6daabb18e581deaadaedf870c479954c3dcac81cf44d21b"
+   },
+   {
+    "missionId": "wp4w-mission29",
+    "revision": "r1",
+    "sha256": "02f08f1f1385c0735d843c76b0f013cee971254d5c89e3be2b2b600c713aacb8"
+   },
+   {
+    "missionId": "wp4w-mission30",
+    "revision": "r1",
+    "sha256": "4288fedb3230e2275679a1ccc6b967bcf0a2422f9130f699e2aa8761faf7b315"
+   },
+   {
+    "missionId": "wp4w-mission31",
+    "revision": "r1",
+    "sha256": "b7fa286d630ec8dd24f37c3ba41f711d7907fc7e2aff4fc7a6d3bdd066909f0a"
+   },
+   {
+    "missionId": "wp4w-mission32",
+    "revision": "r1",
+    "sha256": "5a7678e0ec3364c4da35be049117e8e6d7c3979f542cd95c0fa1bb2ee4fbdff0"
+   },
+   {
+    "missionId": "wp4w-mission33",
+    "revision": "r1",
+    "sha256": "2c6da41ae2336a65510cba3e62617622140e5540fa3e057ec7b652b82af30c1d"
+   },
+   {
+    "missionId": "wp4w-mission34",
+    "revision": "r1",
+    "sha256": "3d3d824e8dcff8b74cbb9a1d05a3a8bbc70691dac8bc98a5bde64ac92a9bdbd9"
+   },
+   {
+    "missionId": "wp4w-mission35",
+    "revision": "r1",
+    "sha256": "c4c1316bbd4602919cc2ab6b42393526fa4055417d88aa232564c30c012fd23f"
+   },
+   {
+    "missionId": "wp4w-mission36",
+    "revision": "r1",
+    "sha256": "be18141f9f487b4624419dd2fe59856be20dd2bf319414406933bdc3bed874b5"
+   },
+   {
+    "missionId": "wp4w-mission37",
+    "revision": "r1",
+    "sha256": "32b6d940b4a9e8a7e606b7224999f565751e7dc2bb46ab4b916386e9cf5c5c02"
+   },
+   {
+    "missionId": "wp4w-mission38",
+    "revision": "r1",
+    "sha256": "88d0ca8b0ee46eba4dd9d0db938f23231c04b1ce3ac741a11f9df5c4362aa363"
+   },
+   {
+    "missionId": "wp4w-mission39",
+    "revision": "r1",
+    "sha256": "c2fa6447404bb27470ae60bf032cf2af05d7c3886a2398a2670ea59db3120303"
+   },
+   {
+    "missionId": "wp4w-mission40",
+    "revision": "r1",
+    "sha256": "5f269fcdd1f7aacd3a3c590a836be809bd9df7392c6b467655a6e71c960599af"
+   }
+  ]
+ }
+}

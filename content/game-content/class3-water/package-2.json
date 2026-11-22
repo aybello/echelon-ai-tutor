@@ -1,0 +1,4835 @@
+{
+ "courseKey": "class3-water",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "c3w-ladder80",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A residuals tank collects 320 kg/day of dry solids in sludge with a solids concentration of 40 kg/m3. Find the sludge volume produced per day. Enter the exact unrounded number.",
+   "topicId": "residuals-volume",
+   "level": "class1",
+   "assumptions": "Fictional residuals case in Ontario: dry solids = 320 kg/day, sludge concentration = 40 kg/m3. Volume equals mass divided by concentration.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for sludge volume.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Volume = Solids mass / Solids concentration"
+      },
+      {
+       "id": "opt-b",
+       "label": "Volume = Solids mass * Solids concentration"
+      },
+      {
+       "id": "opt-c",
+       "label": "Volume = Solids concentration / Solids mass"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Dividing mass by mass per unit volume leaves volume."
+    },
+    {
+     "id": "units",
+     "prompt": "Which statement about the volume unit is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "kg/day divided by kg/m3 gives m3/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "kg/day multiplied by kg/m3 gives m3/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "kg/day divided by kg/m3 gives mg/L"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The kilogram terms cancel, leaving cubic metres per day."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for sludge volume.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Volume = 320 kg/day / 40 kg/m3"
+      },
+      {
+       "id": "opt-b",
+       "label": "Volume = 320 kg/day * 40 kg/m3"
+      },
+      {
+       "id": "opt-c",
+       "label": "Volume = 40 kg/m3 / 320 kg/day"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Substitute solids mass over sludge concentration."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact sludge volume in m3/day.",
+    "unitOptions": [
+     {
+      "id": "m3-day",
+      "label": "m3/day"
+     },
+     {
+      "id": "L-day",
+      "label": "L/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "m3-h",
+      "label": "m3/h"
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     }
+    ],
+    "expected": "8",
+    "expectedUnitId": "m3-day",
+    "absoluteTolerance": "0",
+    "explanation": "Volume = 320 / 40 = 8 m3/day."
+   }
+  },
+  {
+   "id": "c3w-ladder81",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A treatment process draws 90 kW while treating 300 m3/h. Find the energy use per cubic metre treated. Enter the exact unrounded number.",
+   "topicId": "energy-per-volume",
+   "level": "class1",
+   "assumptions": "Fictional Ontario plant energy case: power = 90 kW, flow = 300 m3/h. Energy per volume equals power divided by flow for these units.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for energy per volume.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Energy per volume = Power / Flow"
+      },
+      {
+       "id": "opt-b",
+       "label": "Energy per volume = Power * Flow"
+      },
+      {
+       "id": "opt-c",
+       "label": "Energy per volume = Flow / Power"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Kilowatts divided by cubic metres per hour gives kilowatt hours per cubic metre."
+    },
+    {
+     "id": "units",
+     "prompt": "Which statement about the unit is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "kW divided by m3/h gives kWh/m3"
+      },
+      {
+       "id": "opt-b",
+       "label": "kW multiplied by m3/h gives kWh/m3"
+      },
+      {
+       "id": "opt-c",
+       "label": "kW divided by m3/h gives mg/L"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The hour terms combine to give energy per unit volume."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for energy per volume.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Energy per volume = 90 kW / 300 m3/h"
+      },
+      {
+       "id": "opt-b",
+       "label": "Energy per volume = 90 kW * 300 m3/h"
+      },
+      {
+       "id": "opt-c",
+       "label": "Energy per volume = 300 m3/h / 90 kW"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Divide power by the treated flow rate."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact energy use in kWh/m3.",
+    "unitOptions": [
+     {
+      "id": "kWh-m3",
+      "label": "kWh/m3"
+     },
+     {
+      "id": "Wh-L",
+      "label": "Wh/L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "kW",
+      "label": "kW"
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     }
+    ],
+    "expected": "0.3",
+    "expectedUnitId": "kWh-m3",
+    "absoluteTolerance": "0",
+    "explanation": "Energy per volume = 90 / 300 = 0.3 kWh/m3."
+   }
+  },
+  {
+   "id": "c3w-ladder82",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A treatment process draws 110 kW while treating 275 m3/h. Find the energy use per cubic metre treated. Enter the exact unrounded number.",
+   "topicId": "energy-per-volume",
+   "level": "class1",
+   "assumptions": "Fictional Ontario plant energy case: power = 110 kW, flow = 275 m3/h. Energy per volume equals power divided by flow for these units.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for energy per volume.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Energy per volume = Power / Flow"
+      },
+      {
+       "id": "opt-b",
+       "label": "Energy per volume = Power * Flow"
+      },
+      {
+       "id": "opt-c",
+       "label": "Energy per volume = Flow / Power"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Kilowatts divided by cubic metres per hour gives kilowatt hours per cubic metre."
+    },
+    {
+     "id": "units",
+     "prompt": "Which statement about the unit is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "kW divided by m3/h gives kWh/m3"
+      },
+      {
+       "id": "opt-b",
+       "label": "kW multiplied by m3/h gives kWh/m3"
+      },
+      {
+       "id": "opt-c",
+       "label": "kW divided by m3/h gives mg/L"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The hour terms combine to give energy per unit volume."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for energy per volume.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Energy per volume = 110 kW / 275 m3/h"
+      },
+      {
+       "id": "opt-b",
+       "label": "Energy per volume = 110 kW * 275 m3/h"
+      },
+      {
+       "id": "opt-c",
+       "label": "Energy per volume = 275 m3/h / 110 kW"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Divide power by the treated flow rate."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact energy use in kWh/m3.",
+    "unitOptions": [
+     {
+      "id": "kWh-m3",
+      "label": "kWh/m3"
+     },
+     {
+      "id": "Wh-L",
+      "label": "Wh/L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "kW",
+      "label": "kW"
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     }
+    ],
+    "expected": "0.4",
+    "expectedUnitId": "kWh-m3",
+    "absoluteTolerance": "0",
+    "explanation": "Energy per volume = 110 / 275 = 0.4 kWh/m3."
+   }
+  },
+  {
+   "id": "c3w-ladder83",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A treatment process draws 63 kW while treating 210 m3/h. Find the energy use per cubic metre treated. Enter the exact unrounded number.",
+   "topicId": "energy-per-volume",
+   "level": "class1",
+   "assumptions": "Fictional Ontario plant energy case: power = 63 kW, flow = 210 m3/h. Energy per volume equals power divided by flow for these units.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for energy per volume.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Energy per volume = Power / Flow"
+      },
+      {
+       "id": "opt-b",
+       "label": "Energy per volume = Power * Flow"
+      },
+      {
+       "id": "opt-c",
+       "label": "Energy per volume = Flow / Power"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Kilowatts divided by cubic metres per hour gives kilowatt hours per cubic metre."
+    },
+    {
+     "id": "units",
+     "prompt": "Which statement about the unit is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "kW divided by m3/h gives kWh/m3"
+      },
+      {
+       "id": "opt-b",
+       "label": "kW multiplied by m3/h gives kWh/m3"
+      },
+      {
+       "id": "opt-c",
+       "label": "kW divided by m3/h gives mg/L"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The hour terms combine to give energy per unit volume."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for energy per volume.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Energy per volume = 63 kW / 210 m3/h"
+      },
+      {
+       "id": "opt-b",
+       "label": "Energy per volume = 63 kW * 210 m3/h"
+      },
+      {
+       "id": "opt-c",
+       "label": "Energy per volume = 210 m3/h / 63 kW"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Divide power by the treated flow rate."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact energy use in kWh/m3.",
+    "unitOptions": [
+     {
+      "id": "kWh-m3",
+      "label": "kWh/m3"
+     },
+     {
+      "id": "Wh-L",
+      "label": "Wh/L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "kW",
+      "label": "kW"
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     }
+    ],
+    "expected": "0.3",
+    "expectedUnitId": "kWh-m3",
+    "absoluteTolerance": "0",
+    "explanation": "Energy per volume = 63 / 210 = 0.3 kWh/m3."
+   }
+  },
+  {
+   "id": "c3w-ladder84",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A treatment process draws 88 kW while treating 220 m3/h. Find the energy use per cubic metre treated. Enter the exact unrounded number.",
+   "topicId": "energy-per-volume",
+   "level": "class1",
+   "assumptions": "Fictional Ontario plant energy case: power = 88 kW, flow = 220 m3/h. Energy per volume equals power divided by flow for these units.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for energy per volume.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Energy per volume = Power / Flow"
+      },
+      {
+       "id": "opt-b",
+       "label": "Energy per volume = Power * Flow"
+      },
+      {
+       "id": "opt-c",
+       "label": "Energy per volume = Flow / Power"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Kilowatts divided by cubic metres per hour gives kilowatt hours per cubic metre."
+    },
+    {
+     "id": "units",
+     "prompt": "Which statement about the unit is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "kW divided by m3/h gives kWh/m3"
+      },
+      {
+       "id": "opt-b",
+       "label": "kW multiplied by m3/h gives kWh/m3"
+      },
+      {
+       "id": "opt-c",
+       "label": "kW divided by m3/h gives mg/L"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The hour terms combine to give energy per unit volume."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for energy per volume.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Energy per volume = 88 kW / 220 m3/h"
+      },
+      {
+       "id": "opt-b",
+       "label": "Energy per volume = 88 kW * 220 m3/h"
+      },
+      {
+       "id": "opt-c",
+       "label": "Energy per volume = 220 m3/h / 88 kW"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Divide power by the treated flow rate."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact energy use in kWh/m3.",
+    "unitOptions": [
+     {
+      "id": "kWh-m3",
+      "label": "kWh/m3"
+     },
+     {
+      "id": "Wh-L",
+      "label": "Wh/L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "kW",
+      "label": "kW"
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     }
+    ],
+    "expected": "0.4",
+    "expectedUnitId": "kWh-m3",
+    "absoluteTolerance": "0",
+    "explanation": "Energy per volume = 88 / 220 = 0.4 kWh/m3."
+   }
+  },
+  {
+   "id": "c3w-ladder85",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A treatment process draws 135 kW while treating 300 m3/h. Find the energy use per cubic metre treated. Enter the exact unrounded number.",
+   "topicId": "energy-per-volume",
+   "level": "class1",
+   "assumptions": "Fictional Ontario plant energy case: power = 135 kW, flow = 300 m3/h. Energy per volume equals power divided by flow for these units.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for energy per volume.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Energy per volume = Power / Flow"
+      },
+      {
+       "id": "opt-b",
+       "label": "Energy per volume = Power * Flow"
+      },
+      {
+       "id": "opt-c",
+       "label": "Energy per volume = Flow / Power"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Kilowatts divided by cubic metres per hour gives kilowatt hours per cubic metre."
+    },
+    {
+     "id": "units",
+     "prompt": "Which statement about the unit is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "kW divided by m3/h gives kWh/m3"
+      },
+      {
+       "id": "opt-b",
+       "label": "kW multiplied by m3/h gives kWh/m3"
+      },
+      {
+       "id": "opt-c",
+       "label": "kW divided by m3/h gives mg/L"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The hour terms combine to give energy per unit volume."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for energy per volume.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Energy per volume = 135 kW / 300 m3/h"
+      },
+      {
+       "id": "opt-b",
+       "label": "Energy per volume = 135 kW * 300 m3/h"
+      },
+      {
+       "id": "opt-c",
+       "label": "Energy per volume = 300 m3/h / 135 kW"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Divide power by the treated flow rate."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact energy use in kWh/m3.",
+    "unitOptions": [
+     {
+      "id": "kWh-m3",
+      "label": "kWh/m3"
+     },
+     {
+      "id": "Wh-L",
+      "label": "Wh/L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "kW",
+      "label": "kW"
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     }
+    ],
+    "expected": "0.45",
+    "expectedUnitId": "kWh-m3",
+    "absoluteTolerance": "0",
+    "explanation": "Energy per volume = 135 / 300 = 0.45 kWh/m3."
+   }
+  },
+  {
+   "id": "c3w-ladder86",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A high lift pump motor draws 45 kW and runs for 16 h in one day at an Ontario plant. Find the electrical energy used that day. Enter the exact unrounded number.",
+   "topicId": "energy-per-volume",
+   "level": "class1",
+   "assumptions": "Fictional pumping energy case: power = 45 kW, run time = 16 h. Energy equals power multiplied by time, with the given efficiency already reflected in the stated power draw.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for electrical energy.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Energy = Power * Time"
+      },
+      {
+       "id": "opt-b",
+       "label": "Energy = Power / Time"
+      },
+      {
+       "id": "opt-c",
+       "label": "Energy = Time / Power"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Energy is power applied over a period of time."
+    },
+    {
+     "id": "units",
+     "prompt": "Which statement about the energy unit is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "kW multiplied by h gives kWh"
+      },
+      {
+       "id": "opt-b",
+       "label": "kW divided by h gives kWh"
+      },
+      {
+       "id": "opt-c",
+       "label": "kW multiplied by h gives kPa"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Kilowatts multiplied by hours gives kilowatt hours."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for energy.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Energy = 45 kW * 16 h"
+      },
+      {
+       "id": "opt-b",
+       "label": "Energy = 45 kW / 16 h"
+      },
+      {
+       "id": "opt-c",
+       "label": "Energy = 16 h / 45 kW"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Multiply the power draw by the run time."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact electrical energy in kWh.",
+    "unitOptions": [
+     {
+      "id": "kWh",
+      "label": "kWh"
+     },
+     {
+      "id": "Wh",
+      "label": "Wh",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "kW",
+      "label": "kW"
+     },
+     {
+      "id": "kWh-m3",
+      "label": "kWh/m3"
+     }
+    ],
+    "expected": "720",
+    "expectedUnitId": "kWh",
+    "absoluteTolerance": "0",
+    "explanation": "Energy = 45 * 16 = 720 kWh."
+   }
+  },
+  {
+   "id": "c3w-ladder87",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A high lift pump motor draws 60 kW and runs for 14 h in one day at an Ontario plant. Find the electrical energy used that day. Enter the exact unrounded number.",
+   "topicId": "energy-per-volume",
+   "level": "class1",
+   "assumptions": "Fictional pumping energy case: power = 60 kW, run time = 14 h. Energy equals power multiplied by time, with the given efficiency already reflected in the stated power draw.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for electrical energy.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Energy = Power * Time"
+      },
+      {
+       "id": "opt-b",
+       "label": "Energy = Power / Time"
+      },
+      {
+       "id": "opt-c",
+       "label": "Energy = Time / Power"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Energy is power applied over a period of time."
+    },
+    {
+     "id": "units",
+     "prompt": "Which statement about the energy unit is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "kW multiplied by h gives kWh"
+      },
+      {
+       "id": "opt-b",
+       "label": "kW divided by h gives kWh"
+      },
+      {
+       "id": "opt-c",
+       "label": "kW multiplied by h gives kPa"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Kilowatts multiplied by hours gives kilowatt hours."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for energy.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Energy = 60 kW * 14 h"
+      },
+      {
+       "id": "opt-b",
+       "label": "Energy = 60 kW / 14 h"
+      },
+      {
+       "id": "opt-c",
+       "label": "Energy = 14 h / 60 kW"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Multiply the power draw by the run time."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact electrical energy in kWh.",
+    "unitOptions": [
+     {
+      "id": "kWh",
+      "label": "kWh"
+     },
+     {
+      "id": "Wh",
+      "label": "Wh",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "kW",
+      "label": "kW"
+     },
+     {
+      "id": "kWh-m3",
+      "label": "kWh/m3"
+     }
+    ],
+    "expected": "840",
+    "expectedUnitId": "kWh",
+    "absoluteTolerance": "0",
+    "explanation": "Energy = 60 * 14 = 840 kWh."
+   }
+  },
+  {
+   "id": "c3w-ladder88",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A high lift pump motor draws 38 kW and runs for 20 h in one day at an Ontario plant. Find the electrical energy used that day. Enter the exact unrounded number.",
+   "topicId": "energy-per-volume",
+   "level": "class1",
+   "assumptions": "Fictional pumping energy case: power = 38 kW, run time = 20 h. Energy equals power multiplied by time, with the given efficiency already reflected in the stated power draw.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for electrical energy.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Energy = Power * Time"
+      },
+      {
+       "id": "opt-b",
+       "label": "Energy = Power / Time"
+      },
+      {
+       "id": "opt-c",
+       "label": "Energy = Time / Power"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Energy is power applied over a period of time."
+    },
+    {
+     "id": "units",
+     "prompt": "Which statement about the energy unit is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "kW multiplied by h gives kWh"
+      },
+      {
+       "id": "opt-b",
+       "label": "kW divided by h gives kWh"
+      },
+      {
+       "id": "opt-c",
+       "label": "kW multiplied by h gives kPa"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Kilowatts multiplied by hours gives kilowatt hours."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for energy.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Energy = 38 kW * 20 h"
+      },
+      {
+       "id": "opt-b",
+       "label": "Energy = 38 kW / 20 h"
+      },
+      {
+       "id": "opt-c",
+       "label": "Energy = 20 h / 38 kW"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Multiply the power draw by the run time."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact electrical energy in kWh.",
+    "unitOptions": [
+     {
+      "id": "kWh",
+      "label": "kWh"
+     },
+     {
+      "id": "Wh",
+      "label": "Wh",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "kW",
+      "label": "kW"
+     },
+     {
+      "id": "kWh-m3",
+      "label": "kWh/m3"
+     }
+    ],
+    "expected": "760",
+    "expectedUnitId": "kWh",
+    "absoluteTolerance": "0",
+    "explanation": "Energy = 38 * 20 = 760 kWh."
+   }
+  },
+  {
+   "id": "c3w-ladder89",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A high lift pump motor draws 52 kW and runs for 15 h in one day at an Ontario plant. Find the electrical energy used that day. Enter the exact unrounded number.",
+   "topicId": "energy-per-volume",
+   "level": "class1",
+   "assumptions": "Fictional pumping energy case: power = 52 kW, run time = 15 h. Energy equals power multiplied by time, with the given efficiency already reflected in the stated power draw.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for electrical energy.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Energy = Power * Time"
+      },
+      {
+       "id": "opt-b",
+       "label": "Energy = Power / Time"
+      },
+      {
+       "id": "opt-c",
+       "label": "Energy = Time / Power"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Energy is power applied over a period of time."
+    },
+    {
+     "id": "units",
+     "prompt": "Which statement about the energy unit is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "kW multiplied by h gives kWh"
+      },
+      {
+       "id": "opt-b",
+       "label": "kW divided by h gives kWh"
+      },
+      {
+       "id": "opt-c",
+       "label": "kW multiplied by h gives kPa"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Kilowatts multiplied by hours gives kilowatt hours."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for energy.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Energy = 52 kW * 15 h"
+      },
+      {
+       "id": "opt-b",
+       "label": "Energy = 52 kW / 15 h"
+      },
+      {
+       "id": "opt-c",
+       "label": "Energy = 15 h / 52 kW"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Multiply the power draw by the run time."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact electrical energy in kWh.",
+    "unitOptions": [
+     {
+      "id": "kWh",
+      "label": "kWh"
+     },
+     {
+      "id": "Wh",
+      "label": "Wh",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "kW",
+      "label": "kW"
+     },
+     {
+      "id": "kWh-m3",
+      "label": "kWh/m3"
+     }
+    ],
+    "expected": "780",
+    "expectedUnitId": "kWh",
+    "absoluteTolerance": "0",
+    "explanation": "Energy = 52 * 15 = 780 kWh."
+   }
+  },
+  {
+   "id": "c3w-ladder90",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A high lift pump motor draws 70 kW and runs for 12 h in one day at an Ontario plant. Find the electrical energy used that day. Enter the exact unrounded number.",
+   "topicId": "energy-per-volume",
+   "level": "class1",
+   "assumptions": "Fictional pumping energy case: power = 70 kW, run time = 12 h. Energy equals power multiplied by time, with the given efficiency already reflected in the stated power draw.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for electrical energy.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Energy = Power * Time"
+      },
+      {
+       "id": "opt-b",
+       "label": "Energy = Power / Time"
+      },
+      {
+       "id": "opt-c",
+       "label": "Energy = Time / Power"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Energy is power applied over a period of time."
+    },
+    {
+     "id": "units",
+     "prompt": "Which statement about the energy unit is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "kW multiplied by h gives kWh"
+      },
+      {
+       "id": "opt-b",
+       "label": "kW divided by h gives kWh"
+      },
+      {
+       "id": "opt-c",
+       "label": "kW multiplied by h gives kPa"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Kilowatts multiplied by hours gives kilowatt hours."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for energy.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Energy = 70 kW * 12 h"
+      },
+      {
+       "id": "opt-b",
+       "label": "Energy = 70 kW / 12 h"
+      },
+      {
+       "id": "opt-c",
+       "label": "Energy = 12 h / 70 kW"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Multiply the power draw by the run time."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact electrical energy in kWh.",
+    "unitOptions": [
+     {
+      "id": "kWh",
+      "label": "kWh"
+     },
+     {
+      "id": "Wh",
+      "label": "Wh",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "kW",
+      "label": "kW"
+     },
+     {
+      "id": "kWh-m3",
+      "label": "kWh/m3"
+     }
+    ],
+    "expected": "840",
+    "expectedUnitId": "kWh",
+    "absoluteTolerance": "0",
+    "explanation": "Energy = 70 * 12 = 840 kWh."
+   }
+  },
+  {
+   "id": "c3w-ladder91",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Two streams blend before treatment in Ontario. Stream A is 300 m3/day at 12 mg/L and Stream B is 100 m3/day at 28 mg/L. Find the blended concentration. Enter the exact unrounded number.",
+   "topicId": "multi-unit-mass-balance",
+   "level": "class1",
+   "assumptions": "Fictional blending case: Stream A = 300 m3/day at 12 mg/L, Stream B = 100 m3/day at 28 mg/L. Blended concentration is the flow weighted average.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for a blended concentration.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Blended = (Q1 * C1 + Q2 * C2) / (Q1 + Q2)"
+      },
+      {
+       "id": "opt-b",
+       "label": "Blended = (C1 + C2) / 2 in all cases"
+      },
+      {
+       "id": "opt-c",
+       "label": "Blended = (Q1 * C1 + Q2 * C2) * (Q1 + Q2)"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "A flow weighted average weights each concentration by its flow."
+    },
+    {
+     "id": "units",
+     "prompt": "Which statement about the simple average is correct here?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "A simple average would be wrong because the two flows are unequal"
+      },
+      {
+       "id": "opt-b",
+       "label": "A simple average is required whenever two streams blend"
+      },
+      {
+       "id": "opt-c",
+       "label": "Flow weighting is only used for membrane recovery"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Unequal flows must be weighted by their share of total flow."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for blended concentration.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Blended = (300 * 12 + 100 * 28) / (300 + 100) mg/L"
+      },
+      {
+       "id": "opt-b",
+       "label": "Blended = (12 + 28) / 2 mg/L"
+      },
+      {
+       "id": "opt-c",
+       "label": "Blended = (300 * 12 + 100 * 28) * 400 mg/L"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Add the two mass terms, then divide by total flow."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact blended concentration in mg/L.",
+    "unitOptions": [
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "g-m3",
+      "label": "g/m3",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "ntu",
+      "label": "NTU"
+     }
+    ],
+    "expected": "16",
+    "expectedUnitId": "mg-L",
+    "absoluteTolerance": "0",
+    "explanation": "Blended = (3600 + 2800) / 400 = 16 mg/L."
+   }
+  },
+  {
+   "id": "c3w-ladder92",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Two treated streams combine in Ontario. Stream A is 500 m3/day at 6 mg/L and Stream B is 250 m3/day at 18 mg/L. Find the combined concentration. Enter the exact unrounded number.",
+   "topicId": "multi-unit-mass-balance",
+   "level": "class1",
+   "assumptions": "Fictional combining case: Stream A = 500 m3/day at 6 mg/L, Stream B = 250 m3/day at 18 mg/L. Combined concentration is the flow weighted average.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for a combined concentration.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Combined = (Q1 * C1 + Q2 * C2) / (Q1 + Q2)"
+      },
+      {
+       "id": "opt-b",
+       "label": "Combined = (C1 + C2) / 2 in all cases"
+      },
+      {
+       "id": "opt-c",
+       "label": "Combined = Q1 * C1 + Q2 * C2 with no division"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Total mass divided by total flow gives the combined concentration."
+    },
+    {
+     "id": "units",
+     "prompt": "Which statement about total flow is correct here?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Total flow is 500 plus 250, which is 750 m3/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "Total flow is 500 minus 250, which is 250 m3/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "Total flow is not needed for a weighted average"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Blended streams add their flows together."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for combined concentration.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Combined = (500 * 6 + 250 * 18) / (500 + 250) mg/L"
+      },
+      {
+       "id": "opt-b",
+       "label": "Combined = (6 + 18) / 2 mg/L"
+      },
+      {
+       "id": "opt-c",
+       "label": "Combined = (500 * 6 + 250 * 18) mg/L"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Add the mass terms, then divide by the total flow of 750 m3/day."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact combined concentration in mg/L.",
+    "unitOptions": [
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "g-m3",
+      "label": "g/m3",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "ntu",
+      "label": "NTU"
+     }
+    ],
+    "expected": "10",
+    "expectedUnitId": "mg-L",
+    "absoluteTolerance": "0",
+    "explanation": "Combined = (3000 + 4500) / 750 = 10 mg/L."
+   }
+  },
+  {
+   "id": "c3w-ladder93",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A membrane plant in Ontario takes 1200 m3/day of feed at 80 percent recovery, then uses 60 m3/day of permeate for backwash. Find the net permeate delivered. Enter the exact unrounded number.",
+   "topicId": "membrane-recovery",
+   "level": "class1",
+   "assumptions": "Fictional membrane production case: feed = 1200 m3/day, recovery = 80 percent, backwash use = 60 m3/day taken from permeate.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for net permeate delivered.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Net = Feed * Recovery / 100 - Backwash use"
+      },
+      {
+       "id": "opt-b",
+       "label": "Net = Feed * Recovery / 100 + Backwash use"
+      },
+      {
+       "id": "opt-c",
+       "label": "Net = Feed - Recovery - Backwash use"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Gross permeate is found first, then the backwash volume is subtracted."
+    },
+    {
+     "id": "units",
+     "prompt": "Which statement about the backwash volume is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Backwash use reduces the permeate available for delivery"
+      },
+      {
+       "id": "opt-b",
+       "label": "Backwash use increases the feed flow in this task"
+      },
+      {
+       "id": "opt-c",
+       "label": "Backwash use changes the recovery percent directly"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Water used for backwash is no longer delivered as product."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for net permeate.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Net = 1200 * 80 / 100 - 60 m3/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "Net = 1200 * 80 / 100 + 60 m3/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "Net = 1200 - 80 - 60 m3/day"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Gross permeate is 960 m3/day, minus 60 m3/day of backwash."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact net permeate delivered in m3/day.",
+    "unitOptions": [
+     {
+      "id": "m3-day",
+      "label": "m3/day"
+     },
+     {
+      "id": "L-day",
+      "label": "L/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "m3-h",
+      "label": "m3/h"
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     }
+    ],
+    "expected": "900",
+    "expectedUnitId": "m3-day",
+    "absoluteTolerance": "0",
+    "explanation": "Gross permeate = 1200 * 80 / 100 = 960 m3/day. Net = 960 - 60 = 900 m3/day."
+   }
+  },
+  {
+   "id": "c3w-ladder94",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A baffled contactor holds 180 m3 and receives 6 m3/min. Its baffling factor is 0.8. Find T10 in minutes. Enter the exact unrounded number.",
+   "topicId": "advanced-ct",
+   "level": "class1",
+   "assumptions": "Fictional Ontario contactor case: volume = 180 m3, flow = 6 m3/min, baffling factor = 0.8. T10 equals volume over flow multiplied by the baffling factor.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for T10.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "T10 = (Volume / Flow) * Baffling factor"
+      },
+      {
+       "id": "opt-b",
+       "label": "T10 = (Volume / Flow) / Baffling factor"
+      },
+      {
+       "id": "opt-c",
+       "label": "T10 = Volume * Flow * Baffling factor"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Theoretical detention is volume over flow, then the baffling factor is applied."
+    },
+    {
+     "id": "units",
+     "prompt": "Which statement about the detention step is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Volume in m3 divided by flow in m3/min gives detention in min"
+      },
+      {
+       "id": "opt-b",
+       "label": "Volume in m3 multiplied by flow in m3/min gives detention in min"
+      },
+      {
+       "id": "opt-c",
+       "label": "Detention time in this task is reported in mg/L"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Matching volume and flow units gives time directly."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for T10.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "T10 = (180 / 6) * 0.8 min"
+      },
+      {
+       "id": "opt-b",
+       "label": "T10 = (180 / 6) / 0.8 min"
+      },
+      {
+       "id": "opt-c",
+       "label": "T10 = 180 * 6 * 0.8 min"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Detention is 30 min, multiplied by 0.8 gives T10."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact T10 in min.",
+    "unitOptions": [
+     {
+      "id": "min",
+      "label": "min"
+     },
+     {
+      "id": "h",
+      "label": "h",
+      "toExpected": {
+       "numerator": "60",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     }
+    ],
+    "expected": "24",
+    "expectedUnitId": "min",
+    "absoluteTolerance": "0",
+    "explanation": "Detention = 180 / 6 = 30 min. T10 = 30 * 0.8 = 24 min."
+   }
+  },
+  {
+   "id": "c3w-ladder95",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A filter cell in Ontario produces 45 m3/h for a run of 18 h before backwash. Find the volume filtered in the run. Enter the exact unrounded number.",
+   "topicId": "filter-optimization",
+   "level": "class1",
+   "assumptions": "Fictional filter run case: filtration rate = 45 m3/h, run length = 18 h. Run volume equals rate multiplied by time.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for filter run volume.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Volume = Filtration rate * Run time"
+      },
+      {
+       "id": "opt-b",
+       "label": "Volume = Filtration rate / Run time"
+      },
+      {
+       "id": "opt-c",
+       "label": "Volume = Run time / Filtration rate"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Volume accumulates as rate applied over time."
+    },
+    {
+     "id": "units",
+     "prompt": "Which statement about the volume unit is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "m3/h multiplied by h gives m3"
+      },
+      {
+       "id": "opt-b",
+       "label": "m3/h divided by h gives m3"
+      },
+      {
+       "id": "opt-c",
+       "label": "m3/h multiplied by h gives mg/L"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The hour terms cancel, leaving cubic metres."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for run volume.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Volume = 45 m3/h * 18 h"
+      },
+      {
+       "id": "opt-b",
+       "label": "Volume = 45 m3/h / 18 h"
+      },
+      {
+       "id": "opt-c",
+       "label": "Volume = 18 h / 45 m3/h"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Multiply the filtration rate by the run length."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact volume filtered in m3.",
+    "unitOptions": [
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "L",
+      "label": "L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "m2",
+      "label": "m2"
+     },
+     {
+      "id": "m3-h",
+      "label": "m3/h"
+     }
+    ],
+    "expected": "810",
+    "expectedUnitId": "m3",
+    "absoluteTolerance": "0",
+    "explanation": "Volume = 45 * 18 = 810 m3."
+   }
+  },
+  {
+   "id": "c3w-ladder96",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A filter backwash flows at 25 L/s for 480 s in Ontario. Find the backwash volume in cubic metres. Enter the exact unrounded number.",
+   "topicId": "filter-optimization",
+   "level": "class1",
+   "assumptions": "Fictional backwash case: backwash flow = 25 L/s, duration = 480 s, 1000 L = 1 m3.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for backwash volume in m3.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Volume = Flow * Time / 1000, with flow in L/s and time in s"
+      },
+      {
+       "id": "opt-b",
+       "label": "Volume = Flow * Time * 1000, with flow in L/s and time in s"
+      },
+      {
+       "id": "opt-c",
+       "label": "Volume = Flow / Time / 1000"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Flow multiplied by time gives litres, then dividing by 1000 gives cubic metres."
+    },
+    {
+     "id": "units",
+     "prompt": "How should litres be converted to cubic metres?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Divide litres by 1000 to get cubic metres"
+      },
+      {
+       "id": "opt-b",
+       "label": "Multiply litres by 1000 to get cubic metres"
+      },
+      {
+       "id": "opt-c",
+       "label": "Divide litres by 60 to get cubic metres"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "There are 1000 litres in one cubic metre."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for backwash volume.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Volume = 25 * 480 / 1000 m3"
+      },
+      {
+       "id": "opt-b",
+       "label": "Volume = 25 * 480 * 1000 m3"
+      },
+      {
+       "id": "opt-c",
+       "label": "Volume = 25 / 480 / 1000 m3"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The backwash uses 12000 L, which is 12 m3."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact backwash volume in m3.",
+    "unitOptions": [
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "L",
+      "label": "L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "m2",
+      "label": "m2"
+     },
+     {
+      "id": "m3-h",
+      "label": "m3/h"
+     }
+    ],
+    "expected": "12",
+    "expectedUnitId": "m3",
+    "absoluteTolerance": "0",
+    "explanation": "Volume = 25 * 480 = 12000 L. 12000 / 1000 = 12 m3."
+   }
+  },
+  {
+   "id": "c3w-ladder97",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A chemical system must deliver 90 kg/day of dry chemical using a solution that contains 0.15 kg of chemical per litre of solution. Find the solution feed rate. Enter the exact unrounded number.",
+   "topicId": "chemical-optimization",
+   "level": "class1",
+   "assumptions": "Fictional solution feed case in Ontario: dry chemical need = 90 kg/day, solution strength = 0.15 kg/L. Solution volume equals dry mass divided by strength.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for solution feed rate.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Solution rate = Dry mass / Solution strength"
+      },
+      {
+       "id": "opt-b",
+       "label": "Solution rate = Dry mass * Solution strength"
+      },
+      {
+       "id": "opt-c",
+       "label": "Solution rate = Solution strength / Dry mass"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Dividing mass by mass per litre leaves litres."
+    },
+    {
+     "id": "units",
+     "prompt": "Which statement about the solution unit is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "kg/day divided by kg/L gives L/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "kg/day multiplied by kg/L gives L/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "kg/day divided by kg/L gives kPa"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The kilogram terms cancel, leaving litres per day."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for solution feed rate.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Rate = 90 kg/day / 0.15 kg/L"
+      },
+      {
+       "id": "opt-b",
+       "label": "Rate = 90 kg/day * 0.15 kg/L"
+      },
+      {
+       "id": "opt-c",
+       "label": "Rate = 0.15 kg/L / 90 kg/day"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Substitute dry mass over solution strength."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact solution feed rate in L/day.",
+    "unitOptions": [
+     {
+      "id": "L-day",
+      "label": "L/day"
+     },
+     {
+      "id": "m3-day",
+      "label": "m3/day",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "L",
+      "label": "L"
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     }
+    ],
+    "expected": "600",
+    "expectedUnitId": "L-day",
+    "absoluteTolerance": "0",
+    "explanation": "Rate = 90 / 0.15 = 600 L/day."
+   }
+  },
+  {
+   "id": "c3w-ladder98",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Across a clarifier and filter train in Ontario, 200 kg/day of solids enter and 30 kg/day leave in the filtered water. Find the solids mass captured by the train. Enter the exact unrounded number.",
+   "topicId": "multi-unit-mass-balance",
+   "level": "class1",
+   "assumptions": "Fictional solids balance case: solids in = 200 kg/day, solids out in filtered water = 30 kg/day. No other solids stream is counted in this task.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for captured solids mass.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Captured = Solids in - Solids out"
+      },
+      {
+       "id": "opt-b",
+       "label": "Captured = Solids in + Solids out"
+      },
+      {
+       "id": "opt-c",
+       "label": "Captured = Solids in * Solids out"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "A mass balance subtracts what leaves from what enters."
+    },
+    {
+     "id": "units",
+     "prompt": "Which statement about this mass balance is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Captured solids are the difference between the inlet and outlet mass rates"
+      },
+      {
+       "id": "opt-b",
+       "label": "Captured solids equal the outlet rate alone in this task"
+      },
+      {
+       "id": "opt-c",
+       "label": "Captured solids require a membrane recovery percent"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "With only two streams given, capture is the inlet minus the outlet."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for captured solids.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Captured = 200 - 30 kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "Captured = 200 + 30 kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "Captured = 200 * 30 kg/day"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Subtract the outlet solids rate from the inlet rate."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact captured solids mass in kg/day.",
+    "unitOptions": [
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "g-day",
+      "label": "g/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "kg",
+      "label": "kg"
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     }
+    ],
+    "expected": "170",
+    "expectedUnitId": "kg-day",
+    "absoluteTolerance": "0",
+    "explanation": "Captured = 200 - 30 = 170 kg/day."
+   }
+  },
+  {
+   "id": "c3w-ladder99",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A plant in Ontario treats 8500 m3/day and applies a total chlorine dose of 2.4 mg/L. Find the chlorine mass used per day. Enter the exact unrounded number.",
+   "topicId": "chemical-optimization",
+   "level": "class1",
+   "assumptions": "Fictional chlorine feed case: flow = 8500 m3/day, dose = 2.4 mg/L. Use mass in kg/day equals dose in mg/L multiplied by flow in m3/day divided by 1000.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for daily chlorine mass.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Mass = Dose * Flow / 1000, with dose in mg/L and flow in m3/day, giving kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "Mass = Dose / Flow * 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Mass = Dose + Flow / 1000"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The dose and flow relationship with the divisor of 1000 gives kg/day."
+    },
+    {
+     "id": "units",
+     "prompt": "Which statement about the dose is correct here?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The stated dose is the total applied dose for this task"
+      },
+      {
+       "id": "opt-b",
+       "label": "The stated dose is only the residual leaving the plant"
+      },
+      {
+       "id": "opt-c",
+       "label": "The stated dose must be converted to kPa first"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Total applied dose is what the feed system must supply."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for chlorine mass.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Mass = 2.4 mg/L * 8500 m3/day / 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Mass = 2.4 mg/L / 8500 m3/day * 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Mass = 2.4 mg/L + 8500 m3/day / 1000"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Multiply dose by flow, then divide by 1000."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact chlorine mass in kg/day.",
+    "unitOptions": [
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "g-day",
+      "label": "g/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "kg",
+      "label": "kg"
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     }
+    ],
+    "expected": "20.4",
+    "expectedUnitId": "kg-day",
+    "absoluteTolerance": "0",
+    "explanation": "Mass = 2.4 * 8500 / 1000 = 20.4 kg/day."
+   }
+  },
+  {
+   "id": "c3w-error01",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane flux calculation for permeate flow 2.4 m3/h and membrane area 20 m2.",
+   "topicId": "membrane-flux",
+   "level": "class1",
+   "assumptions": "Fictional ultrafiltration unit: permeate flow = 2.4 m3/h, membrane area = 20 m2, 1000 L = 1 m3. Target unit: L/m2/h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Flux = Permeate flow / Membrane area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Permeate flow = 2.4 m3/h * 1000 L/m3 = 2400 L/h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Flux = 2400 L/h * 20 m2 = 48000 L/m2/h"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Flux = 2400 L/h / 20 m2 = 120 L/m2/h",
+   "explanation": "Line 3 multiplied by area instead of dividing. Flux is flow divided by area, so 2400 / 20 = 120 L/m2/h."
+  },
+  {
+   "id": "c3w-error02",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane flux calculation for permeate flow 3 m3/h and membrane area 25 m2.",
+   "topicId": "membrane-flux",
+   "level": "class1",
+   "assumptions": "Fictional ultrafiltration unit: permeate flow = 3 m3/h, membrane area = 25 m2, 1000 L = 1 m3. Target unit: L/m2/h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Membrane area = 250000 cm2, and 10000 cm2 = 1 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Membrane area = 250000 cm2 * 10000 cm2/m2 = 2500000000 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Permeate flow = 3 m3/h * 1000 L/m3 = 3000 L/h"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Membrane area = 250000 cm2 / 10000 cm2/m2 = 25 m2",
+   "explanation": "Line 2 multiplied by 10000 instead of dividing when converting cm2 to m2. The area is 25 m2, giving flux 3000 / 25 = 120 L/m2/h."
+  },
+  {
+   "id": "c3w-error03",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane flux calculation for permeate flow 1.8 m3/h and membrane area 15 m2.",
+   "topicId": "membrane-flux",
+   "level": "class1",
+   "assumptions": "Fictional ultrafiltration unit: permeate flow = 1.8 m3/h, membrane area = 15 m2, 1000 L = 1 m3. Target unit: L/m2/h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Flux = Permeate flow / Membrane area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Permeate flow = 1800 L/h and feed flow = 2250 L/h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Flux = 2250 L/h / 15 m2 = 150 L/m2/h"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Flux = 1800 L/h / 15 m2 = 120 L/m2/h",
+   "explanation": "Line 3 used the feed flow 2250 L/h instead of the permeate flow. Flux uses permeate flow, so 1800 / 15 = 120 L/m2/h."
+  },
+  {
+   "id": "c3w-error04",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane flux calculation for permeate flow 4 m3/h and membrane area 20 m2.",
+   "topicId": "membrane-flux",
+   "level": "class1",
+   "assumptions": "Fictional ultrafiltration unit: permeate flow = 4 m3/h, membrane area = 20 m2, 1000 L = 1 m3. Target unit: L/m2/h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Flux = Permeate flow / Membrane area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Membrane area = 20 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Permeate flow = 4 m3/h / 1000 L/m3 = 0.004 L/h"
+    },
+    {
+     "id": "line4",
+     "label": "4. Flux = 0.004 L/h / 20 m2 = 0.0002 L/m2/h"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Permeate flow = 4 m3/h * 1000 L/m3 = 4000 L/h",
+   "explanation": "Line 3 divided by 1000 instead of multiplying when converting m3/h to L/h. Permeate flow is 4000 L/h, giving flux 200 L/m2/h."
+  },
+  {
+   "id": "c3w-error05",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane flux calculation for permeate flow 2 m3/h and membrane area 10 m2.",
+   "topicId": "membrane-flux",
+   "level": "class1",
+   "assumptions": "Fictional ultrafiltration unit: permeate flow = 2 m3/h, membrane area = 10 m2, 1000 L = 1 m3. Target unit: L/m2/h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Flux = Permeate flow / Membrane area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Permeate flow = 2 m3/h * 1000 L/m3 = 2000 L/h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Flux = 2000 L/h / 10 m2"
+    },
+    {
+     "id": "line4",
+     "label": "4. Flux = 400 L/m2/h"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Flux = 2000 L/h / 10 m2 = 200 L/m2/h",
+   "explanation": "Lines 1 to 3 are correct. Line 4 misdivides: 2000 / 10 = 200 L/m2/h, not 400."
+  },
+  {
+   "id": "c3w-error06",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane flux calculation for permeate flow 5 m3/h and membrane area 25 m2.",
+   "topicId": "membrane-flux",
+   "level": "class1",
+   "assumptions": "Fictional ultrafiltration unit: permeate flow = 5 m3/h, membrane area = 25 m2, 1000 L = 1 m3. Target unit: L/m2/h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Flux = Permeate flow / Membrane area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Permeate flow = 5 m3/h * 1000 L/m3 = 5000 L/h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Flux = 5000 L/h * 25 m2 = 125000 L/m2/h"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Flux = 5000 L/h / 25 m2 = 200 L/m2/h",
+   "explanation": "Line 3 multiplied by area instead of dividing. Flux is flow divided by area, so 5000 / 25 = 200 L/m2/h."
+  },
+  {
+   "id": "c3w-error07",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane flux calculation for permeate flow 1.2 m3/h and membrane area 12 m2.",
+   "topicId": "membrane-flux",
+   "level": "class1",
+   "assumptions": "Fictional ultrafiltration unit: permeate flow = 1.2 m3/h, membrane area = 12 m2, 1000 L = 1 m3. Target unit: L/m2/h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Membrane area = 120000 cm2, and 10000 cm2 = 1 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Membrane area = 120000 cm2 * 10000 cm2/m2 = 1200000000 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Permeate flow = 1.2 m3/h * 1000 L/m3 = 1200 L/h"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Membrane area = 120000 cm2 / 10000 cm2/m2 = 12 m2",
+   "explanation": "Line 2 multiplied by 10000 instead of dividing when converting cm2 to m2. The area is 12 m2, giving flux 1200 / 12 = 100 L/m2/h."
+  },
+  {
+   "id": "c3w-error08",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane flux calculation for permeate flow 3.6 m3/h and membrane area 18 m2.",
+   "topicId": "membrane-flux",
+   "level": "class1",
+   "assumptions": "Fictional ultrafiltration unit: permeate flow = 3.6 m3/h, membrane area = 18 m2, 1000 L = 1 m3. Target unit: L/m2/h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Flux = Permeate flow / Membrane area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Permeate flow = 3600 L/h and feed flow = 4500 L/h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Flux = 4500 L/h / 18 m2 = 250 L/m2/h"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Flux = 3600 L/h / 18 m2 = 200 L/m2/h",
+   "explanation": "Line 3 used the feed flow 4500 L/h instead of the permeate flow. Flux uses permeate flow, so 3600 / 18 = 200 L/m2/h."
+  },
+  {
+   "id": "c3w-error09",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane flux calculation for permeate flow 2.5 m3/h and membrane area 20 m2.",
+   "topicId": "membrane-flux",
+   "level": "class1",
+   "assumptions": "Fictional ultrafiltration unit: permeate flow = 2.5 m3/h, membrane area = 20 m2, 1000 L = 1 m3. Target unit: L/m2/h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Flux = Permeate flow / Membrane area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Membrane area = 20 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Permeate flow = 2.5 m3/h / 1000 L/m3 = 0.0025 L/h"
+    },
+    {
+     "id": "line4",
+     "label": "4. Flux = 0.0025 L/h / 20 m2 = 0.000125 L/m2/h"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Permeate flow = 2.5 m3/h * 1000 L/m3 = 2500 L/h",
+   "explanation": "Line 3 divided by 1000 instead of multiplying when converting m3/h to L/h. Permeate flow is 2500 L/h, giving flux 125 L/m2/h."
+  },
+  {
+   "id": "c3w-error10",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane flux calculation for permeate flow 4.5 m3/h and membrane area 30 m2.",
+   "topicId": "membrane-flux",
+   "level": "class1",
+   "assumptions": "Fictional ultrafiltration unit: permeate flow = 4.5 m3/h, membrane area = 30 m2, 1000 L = 1 m3. Target unit: L/m2/h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Flux = Permeate flow / Membrane area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Permeate flow = 4.5 m3/h * 1000 L/m3 = 4500 L/h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Flux = 4500 L/h / 30 m2"
+    },
+    {
+     "id": "line4",
+     "label": "4. Flux = 300 L/m2/h"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Flux = 4500 L/h / 30 m2 = 150 L/m2/h",
+   "explanation": "Lines 1 to 3 are correct. Line 4 misdivides: 4500 / 30 = 150 L/m2/h, not 300."
+  },
+  {
+   "id": "c3w-error100",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this blending calculation for 150 m3/day at 2 mg/L blended with 50 m3/day at 5 mg/L.",
+   "topicId": "blending-calculation",
+   "level": "class1",
+   "assumptions": "Fictional blending point: stream 1 = 150 m3/day at 2 mg/L, stream 2 = 50 m3/day at 5 mg/L. Blended concentration = (Q1 * C1 + Q2 * C2) / (Q1 + Q2).",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total flow = 150 + 50 = 200 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Blended concentration = (2 mg/L + 5 mg/L) / 2 = 3.5 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Blended concentration = (150 * 2 + 50 * 5) / (150 + 50) = 2.75 mg/L",
+   "explanation": "Line 2 averaged the concentrations without flow weighting, but the flows differ. The flow weighted result is 2.75 mg/L."
+  },
+  {
+   "id": "c3w-error11",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane flux calculation for permeate flow 0.9 m3/h and membrane area 9 m2.",
+   "topicId": "membrane-flux",
+   "level": "class1",
+   "assumptions": "Fictional ultrafiltration unit: permeate flow = 0.9 m3/h, membrane area = 9 m2, 1000 L = 1 m3. Target unit: L/m2/h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Flux = Permeate flow / Membrane area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Permeate flow = 0.9 m3/h * 1000 L/m3 = 900 L/h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Flux = 900 L/h * 9 m2 = 8100 L/m2/h"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Flux = 900 L/h / 9 m2 = 100 L/m2/h",
+   "explanation": "Line 3 multiplied by area instead of dividing. Flux is flow divided by area, so 900 / 9 = 100 L/m2/h."
+  },
+  {
+   "id": "c3w-error12",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane flux calculation for permeate flow 6 m3/h and membrane area 40 m2.",
+   "topicId": "membrane-flux",
+   "level": "class1",
+   "assumptions": "Fictional ultrafiltration unit: permeate flow = 6 m3/h, membrane area = 40 m2, 1000 L = 1 m3. Target unit: L/m2/h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Membrane area = 400000 cm2, and 10000 cm2 = 1 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Membrane area = 400000 cm2 * 10000 cm2/m2 = 4000000000 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Permeate flow = 6 m3/h * 1000 L/m3 = 6000 L/h"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Membrane area = 400000 cm2 / 10000 cm2/m2 = 40 m2",
+   "explanation": "Line 2 multiplied by 10000 instead of dividing when converting cm2 to m2. The area is 40 m2, giving flux 6000 / 40 = 150 L/m2/h."
+  },
+  {
+   "id": "c3w-error13",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane flux calculation for permeate flow 3.2 m3/h and membrane area 16 m2.",
+   "topicId": "membrane-flux",
+   "level": "class1",
+   "assumptions": "Fictional ultrafiltration unit: permeate flow = 3.2 m3/h, membrane area = 16 m2, 1000 L = 1 m3. Target unit: L/m2/h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Flux = Permeate flow / Membrane area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Permeate flow = 3200 L/h and feed flow = 4000 L/h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Flux = 4000 L/h / 16 m2 = 250 L/m2/h"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Flux = 3200 L/h / 16 m2 = 200 L/m2/h",
+   "explanation": "Line 3 used the feed flow 4000 L/h instead of the permeate flow. Flux uses permeate flow, so 3200 / 16 = 200 L/m2/h."
+  },
+  {
+   "id": "c3w-error14",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane flux calculation for permeate flow 1.5 m3/h and membrane area 10 m2.",
+   "topicId": "membrane-flux",
+   "level": "class1",
+   "assumptions": "Fictional ultrafiltration unit: permeate flow = 1.5 m3/h, membrane area = 10 m2, 1000 L = 1 m3. Target unit: L/m2/h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Flux = Permeate flow / Membrane area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Membrane area = 10 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Permeate flow = 1.5 m3/h / 1000 L/m3 = 0.0015 L/h"
+    },
+    {
+     "id": "line4",
+     "label": "4. Flux = 0.0015 L/h / 10 m2 = 0.00015 L/m2/h"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Permeate flow = 1.5 m3/h * 1000 L/m3 = 1500 L/h",
+   "explanation": "Line 3 divided by 1000 instead of multiplying when converting m3/h to L/h. Permeate flow is 1500 L/h, giving flux 150 L/m2/h."
+  },
+  {
+   "id": "c3w-error15",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane flux calculation for permeate flow 2.8 m3/h and membrane area 14 m2.",
+   "topicId": "membrane-flux",
+   "level": "class1",
+   "assumptions": "Fictional ultrafiltration unit: permeate flow = 2.8 m3/h, membrane area = 14 m2, 1000 L = 1 m3. Target unit: L/m2/h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Flux = Permeate flow / Membrane area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Permeate flow = 2.8 m3/h * 1000 L/m3 = 2800 L/h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Flux = 2800 L/h / 14 m2"
+    },
+    {
+     "id": "line4",
+     "label": "4. Flux = 400 L/m2/h"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Flux = 2800 L/h / 14 m2 = 200 L/m2/h",
+   "explanation": "Lines 1 to 3 are correct. Line 4 misdivides: 2800 / 14 = 200 L/m2/h, not 400."
+  },
+  {
+   "id": "c3w-error16",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane recovery calculation for feed flow 200 m3/day and recovery 75 percent.",
+   "topicId": "membrane-recovery",
+   "level": "class1",
+   "assumptions": "Fictional membrane system: feed flow = 200 m3/day, recovery = 75 percent. Permeate plus concentrate equals feed flow.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Permeate flow = Feed flow * Recovery = 200 m3/day * 0.75"
+    },
+    {
+     "id": "line2",
+     "label": "2. Permeate flow = 150 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Concentrate flow = Feed flow * Recovery = 200 m3/day * 0.75 = 150 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Concentrate flow = 200 m3/day - 150 m3/day = 50 m3/day",
+   "explanation": "Line 3 applied recovery to find concentrate, but that product is the permeate flow. Concentrate is feed minus permeate, 200 - 150 = 50 m3/day."
+  },
+  {
+   "id": "c3w-error17",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane recovery calculation for feed flow 240 m3/day and recovery 80 percent.",
+   "topicId": "membrane-recovery",
+   "level": "class1",
+   "assumptions": "Fictional membrane system: feed flow = 240 m3/day, recovery = 80 percent. Permeate plus concentrate equals feed flow.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Feed flow = 240 m3/day and permeate flow = 192 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Recovery = Concentrate flow / Feed flow = 48 m3/day / 240 m3/day = 0.2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Recovery = 20 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Recovery = Permeate flow / Feed flow = 192 m3/day / 240 m3/day = 0.8",
+   "explanation": "Line 2 used concentrate flow in the recovery ratio. Recovery is permeate divided by feed, 192 / 240 = 0.8, which is 80 percent."
+  },
+  {
+   "id": "c3w-error18",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane recovery calculation for feed flow 300 m3/day and recovery 60 percent.",
+   "topicId": "membrane-recovery",
+   "level": "class1",
+   "assumptions": "Fictional membrane system: feed flow = 300 m3/day, recovery = 60 percent. Permeate plus concentrate equals feed flow.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Permeate flow = 300 m3/day * 0.6 = 180 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Recovery ratio = 180 m3/day / 300 m3/day = 0.6"
+    },
+    {
+     "id": "line3",
+     "label": "3. Recovery = 0.6 * 10 = 6 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Recovery = 0.6 * 100 = 60 percent",
+   "explanation": "Line 3 multiplied the ratio by 10 instead of 100 to get a percent. Recovery is 0.6 * 100 = 60 percent."
+  },
+  {
+   "id": "c3w-error19",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane recovery calculation for feed flow 150 m3/day and recovery 80 percent.",
+   "topicId": "membrane-recovery",
+   "level": "class1",
+   "assumptions": "Fictional membrane system: feed flow = 150 m3/day, recovery = 80 percent. Permeate plus concentrate equals feed flow.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Permeate flow = Feed flow * Recovery = 150 m3/day * 0.8 = 120 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Concentrate flow = Feed flow - Permeate flow"
+    },
+    {
+     "id": "line3",
+     "label": "3. Concentrate flow = 150 m3/day - 120 m3/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Concentrate flow = 40 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Concentrate flow = 150 m3/day - 120 m3/day = 30 m3/day",
+   "explanation": "Lines 1 to 3 are correct. Line 4 missubtracts: 150 - 120 = 30 m3/day, not 40."
+  },
+  {
+   "id": "c3w-error20",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane recovery calculation for feed flow 400 m3/day and recovery 75 percent.",
+   "topicId": "membrane-recovery",
+   "level": "class1",
+   "assumptions": "Fictional membrane system: feed flow = 400 m3/day, recovery = 75 percent. Permeate plus concentrate equals feed flow.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Recovery = Permeate flow / Feed flow, so Permeate flow = Feed flow * Recovery"
+    },
+    {
+     "id": "line2",
+     "label": "2. Permeate flow = 400 m3/day / 0.75"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Permeate flow = 400 m3/day * 0.75 = 300 m3/day",
+   "explanation": "Line 2 divided by the recovery instead of multiplying. Permeate flow is 400 * 0.75 = 300 m3/day, and concentrate is 100 m3/day."
+  },
+  {
+   "id": "c3w-error21",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane recovery calculation for feed flow 120 m3/day and recovery 50 percent.",
+   "topicId": "membrane-recovery",
+   "level": "class1",
+   "assumptions": "Fictional membrane system: feed flow = 120 m3/day, recovery = 50 percent. Permeate plus concentrate equals feed flow.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Permeate flow = Feed flow * Recovery = 120 m3/day * 0.5"
+    },
+    {
+     "id": "line2",
+     "label": "2. Permeate flow = 60 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Concentrate flow = Feed flow * Recovery = 120 m3/day * 0.5 = 60 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Concentrate flow = 120 m3/day - 60 m3/day = 60 m3/day",
+   "explanation": "Line 3 applied recovery to find concentrate, but that product is the permeate flow. Concentrate is feed minus permeate, 120 - 60 = 60 m3/day."
+  },
+  {
+   "id": "c3w-error22",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane recovery calculation for feed flow 500 m3/day and recovery 70 percent.",
+   "topicId": "membrane-recovery",
+   "level": "class1",
+   "assumptions": "Fictional membrane system: feed flow = 500 m3/day, recovery = 70 percent. Permeate plus concentrate equals feed flow.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Feed flow = 500 m3/day and permeate flow = 350 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Recovery = Concentrate flow / Feed flow = 150 m3/day / 500 m3/day = 0.3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Recovery = 30 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Recovery = Permeate flow / Feed flow = 350 m3/day / 500 m3/day = 0.7",
+   "explanation": "Line 2 used concentrate flow in the recovery ratio. Recovery is permeate divided by feed, 350 / 500 = 0.7, which is 70 percent."
+  },
+  {
+   "id": "c3w-error23",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane recovery calculation for feed flow 180 m3/day and recovery 75 percent.",
+   "topicId": "membrane-recovery",
+   "level": "class1",
+   "assumptions": "Fictional membrane system: feed flow = 180 m3/day, recovery = 75 percent. Permeate plus concentrate equals feed flow.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Permeate flow = 180 m3/day * 0.75 = 135 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Recovery ratio = 135 m3/day / 180 m3/day = 0.75"
+    },
+    {
+     "id": "line3",
+     "label": "3. Recovery = 0.75 * 10 = 7.5 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Recovery = 0.75 * 100 = 75 percent",
+   "explanation": "Line 3 multiplied the ratio by 10 instead of 100 to get a percent. Recovery is 0.75 * 100 = 75 percent."
+  },
+  {
+   "id": "c3w-error24",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane recovery calculation for feed flow 260 m3/day and recovery 80 percent.",
+   "topicId": "membrane-recovery",
+   "level": "class1",
+   "assumptions": "Fictional membrane system: feed flow = 260 m3/day, recovery = 80 percent. Permeate plus concentrate equals feed flow.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Permeate flow = Feed flow * Recovery = 260 m3/day * 0.8 = 208 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Concentrate flow = Feed flow - Permeate flow"
+    },
+    {
+     "id": "line3",
+     "label": "3. Concentrate flow = 260 m3/day - 208 m3/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Concentrate flow = 62 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Concentrate flow = 260 m3/day - 208 m3/day = 52 m3/day",
+   "explanation": "Lines 1 to 3 are correct. Line 4 missubtracts: 260 - 208 = 52 m3/day, not 62."
+  },
+  {
+   "id": "c3w-error25",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane recovery calculation for feed flow 90 m3/day and recovery 60 percent.",
+   "topicId": "membrane-recovery",
+   "level": "class1",
+   "assumptions": "Fictional membrane system: feed flow = 90 m3/day, recovery = 60 percent. Permeate plus concentrate equals feed flow.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Recovery = Permeate flow / Feed flow, so Permeate flow = Feed flow * Recovery"
+    },
+    {
+     "id": "line2",
+     "label": "2. Permeate flow = 90 m3/day / 0.6"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Permeate flow = 90 m3/day * 0.6 = 54 m3/day",
+   "explanation": "Line 2 divided by the recovery instead of multiplying. Permeate flow is 90 * 0.6 = 54 m3/day, and concentrate is 36 m3/day."
+  },
+  {
+   "id": "c3w-error26",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane recovery calculation for feed flow 350 m3/day and recovery 80 percent.",
+   "topicId": "membrane-recovery",
+   "level": "class1",
+   "assumptions": "Fictional membrane system: feed flow = 350 m3/day, recovery = 80 percent. Permeate plus concentrate equals feed flow.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Permeate flow = Feed flow * Recovery = 350 m3/day * 0.8"
+    },
+    {
+     "id": "line2",
+     "label": "2. Permeate flow = 280 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Concentrate flow = Feed flow * Recovery = 350 m3/day * 0.8 = 280 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Concentrate flow = 350 m3/day - 280 m3/day = 70 m3/day",
+   "explanation": "Line 3 applied recovery to find concentrate, but that product is the permeate flow. Concentrate is feed minus permeate, 350 - 280 = 70 m3/day."
+  },
+  {
+   "id": "c3w-error27",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane recovery calculation for feed flow 160 m3/day and recovery 75 percent.",
+   "topicId": "membrane-recovery",
+   "level": "class1",
+   "assumptions": "Fictional membrane system: feed flow = 160 m3/day, recovery = 75 percent. Permeate plus concentrate equals feed flow.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Feed flow = 160 m3/day and permeate flow = 120 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Recovery = Concentrate flow / Feed flow = 40 m3/day / 160 m3/day = 0.25"
+    },
+    {
+     "id": "line3",
+     "label": "3. Recovery = 25 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Recovery = Permeate flow / Feed flow = 120 m3/day / 160 m3/day = 0.75",
+   "explanation": "Line 2 used concentrate flow in the recovery ratio. Recovery is permeate divided by feed, 120 / 160 = 0.75, which is 75 percent."
+  },
+  {
+   "id": "c3w-error28",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane recovery calculation for feed flow 220 m3/day and recovery 50 percent.",
+   "topicId": "membrane-recovery",
+   "level": "class1",
+   "assumptions": "Fictional membrane system: feed flow = 220 m3/day, recovery = 50 percent. Permeate plus concentrate equals feed flow.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Permeate flow = 220 m3/day * 0.5 = 110 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Recovery ratio = 110 m3/day / 220 m3/day = 0.5"
+    },
+    {
+     "id": "line3",
+     "label": "3. Recovery = 0.5 * 10 = 5 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Recovery = 0.5 * 100 = 50 percent",
+   "explanation": "Line 3 multiplied the ratio by 10 instead of 100 to get a percent. Recovery is 0.5 * 100 = 50 percent."
+  },
+  {
+   "id": "c3w-error29",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane recovery calculation for feed flow 320 m3/day and recovery 75 percent.",
+   "topicId": "membrane-recovery",
+   "level": "class1",
+   "assumptions": "Fictional membrane system: feed flow = 320 m3/day, recovery = 75 percent. Permeate plus concentrate equals feed flow.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Permeate flow = Feed flow * Recovery = 320 m3/day * 0.75 = 240 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Concentrate flow = Feed flow - Permeate flow"
+    },
+    {
+     "id": "line3",
+     "label": "3. Concentrate flow = 320 m3/day - 240 m3/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Concentrate flow = 90 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Concentrate flow = 320 m3/day - 240 m3/day = 80 m3/day",
+   "explanation": "Lines 1 to 3 are correct. Line 4 missubtracts: 320 - 240 = 80 m3/day, not 90."
+  },
+  {
+   "id": "c3w-error30",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane recovery calculation for feed flow 140 m3/day and recovery 60 percent.",
+   "topicId": "membrane-recovery",
+   "level": "class1",
+   "assumptions": "Fictional membrane system: feed flow = 140 m3/day, recovery = 60 percent. Permeate plus concentrate equals feed flow.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Recovery = Permeate flow / Feed flow, so Permeate flow = Feed flow * Recovery"
+    },
+    {
+     "id": "line2",
+     "label": "2. Permeate flow = 140 m3/day / 0.6"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Permeate flow = 140 m3/day * 0.6 = 84 m3/day",
+   "explanation": "Line 2 divided by the recovery instead of multiplying. Permeate flow is 140 * 0.6 = 84 m3/day, and concentrate is 56 m3/day."
+  },
+  {
+   "id": "c3w-error31",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this transmembrane pressure calculation with inlet 320 kPa, outlet 280 kPa, and permeate 20 kPa.",
+   "topicId": "transmembrane-pressure",
+   "level": "class1",
+   "assumptions": "Fictional membrane module: feed inlet pressure = 320 kPa, feed outlet pressure = 280 kPa, permeate pressure = 20 kPa. TMP = average feed pressure minus permeate pressure.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. TMP = Average feed pressure - Permeate pressure"
+    },
+    {
+     "id": "line2",
+     "label": "2. Average feed pressure = 320 kPa + 280 kPa = 600 kPa"
+    },
+    {
+     "id": "line3",
+     "label": "3. TMP = 600 kPa - 20 kPa = 580 kPa"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Average feed pressure = (320 kPa + 280 kPa) / 2 = 300 kPa",
+   "explanation": "Line 2 added the inlet and outlet pressures but did not divide by 2 for the average. The average is 300 kPa, so TMP = 300 - 20 = 280 kPa."
+  },
+  {
+   "id": "c3w-error32",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this transmembrane pressure calculation with inlet 350 kPa, outlet 250 kPa, and permeate 30 kPa.",
+   "topicId": "transmembrane-pressure",
+   "level": "class1",
+   "assumptions": "Fictional membrane module: feed inlet pressure = 350 kPa, feed outlet pressure = 250 kPa, permeate pressure = 30 kPa. TMP = average feed pressure minus permeate pressure.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. TMP = Average feed pressure - Permeate pressure"
+    },
+    {
+     "id": "line2",
+     "label": "2. Average feed pressure = (350 kPa - 250 kPa) / 2 = 50 kPa"
+    },
+    {
+     "id": "line3",
+     "label": "3. TMP = 50 kPa - 30 kPa = 20 kPa"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Average feed pressure = (350 kPa + 250 kPa) / 2 = 300 kPa",
+   "explanation": "Line 2 subtracted the pressures instead of adding them for the average. The average is 300 kPa, so TMP = 270 kPa."
+  },
+  {
+   "id": "c3w-error33",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this transmembrane pressure calculation with inlet 400 kPa, outlet 300 kPa, and permeate 25 kPa.",
+   "topicId": "transmembrane-pressure",
+   "level": "class1",
+   "assumptions": "Fictional membrane module: feed inlet pressure = 400 kPa, feed outlet pressure = 300 kPa, permeate pressure = 25 kPa. TMP = average feed pressure minus permeate pressure.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Average feed pressure = (400 kPa + 300 kPa) / 2 = 350 kPa"
+    },
+    {
+     "id": "line2",
+     "label": "2. TMP = Average feed pressure - Permeate pressure"
+    },
+    {
+     "id": "line3",
+     "label": "3. TMP = 350 kPa + 25 kPa = 375 kPa"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. TMP = 350 kPa - 25 kPa = 325 kPa",
+   "explanation": "Line 3 added the permeate pressure instead of subtracting it. TMP = 350 - 25 = 325 kPa."
+  },
+  {
+   "id": "c3w-error34",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this transmembrane pressure calculation with inlet 280 kPa, outlet 240 kPa, and permeate 15 kPa.",
+   "topicId": "transmembrane-pressure",
+   "level": "class1",
+   "assumptions": "Fictional membrane module: feed inlet pressure = 280 kPa, feed outlet pressure = 240 kPa, permeate pressure = 15 kPa. TMP = average feed pressure minus permeate pressure.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Average feed pressure = (280 kPa + 240 kPa) / 2 = 260 kPa"
+    },
+    {
+     "id": "line2",
+     "label": "2. TMP = 260 kPa - 15 kPa"
+    },
+    {
+     "id": "line3",
+     "label": "3. TMP = 265 kPa"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. TMP = 260 kPa - 15 kPa = 245 kPa",
+   "explanation": "Lines 1 and 2 are correct. Line 3 missubtracts: 260 - 15 = 245 kPa, not 265."
+  },
+  {
+   "id": "c3w-error35",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this transmembrane pressure calculation with inlet 360 kPa, outlet 320 kPa, and permeate 40 kPa.",
+   "topicId": "transmembrane-pressure",
+   "level": "class1",
+   "assumptions": "Fictional membrane module: feed inlet pressure = 360 kPa, feed outlet pressure = 320 kPa, permeate pressure = 40 kPa. TMP = average feed pressure minus permeate pressure.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. TMP = Inlet pressure - Permeate pressure"
+    },
+    {
+     "id": "line2",
+     "label": "2. TMP = 360 kPa - 40 kPa = 320 kPa"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. TMP = (360 kPa + 320 kPa) / 2 - 40 kPa = 300 kPa",
+   "explanation": "Line 1 used only the inlet pressure. TMP uses the average of inlet and outlet feed pressures, (360 + 320) / 2 = 340 kPa, so TMP = 300 kPa."
+  },
+  {
+   "id": "c3w-error36",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this transmembrane pressure calculation with inlet 300 kPa, outlet 260 kPa, and permeate 20 kPa.",
+   "topicId": "transmembrane-pressure",
+   "level": "class1",
+   "assumptions": "Fictional membrane module: feed inlet pressure = 300 kPa, feed outlet pressure = 260 kPa, permeate pressure = 20 kPa. TMP = average feed pressure minus permeate pressure.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. TMP = Average feed pressure - Permeate pressure"
+    },
+    {
+     "id": "line2",
+     "label": "2. Average feed pressure = 300 kPa + 260 kPa = 560 kPa"
+    },
+    {
+     "id": "line3",
+     "label": "3. TMP = 560 kPa - 20 kPa = 540 kPa"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Average feed pressure = (300 kPa + 260 kPa) / 2 = 280 kPa",
+   "explanation": "Line 2 added the inlet and outlet pressures but did not divide by 2 for the average. The average is 280 kPa, so TMP = 280 - 20 = 260 kPa."
+  },
+  {
+   "id": "c3w-error37",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this transmembrane pressure calculation with inlet 420 kPa, outlet 380 kPa, and permeate 50 kPa.",
+   "topicId": "transmembrane-pressure",
+   "level": "class1",
+   "assumptions": "Fictional membrane module: feed inlet pressure = 420 kPa, feed outlet pressure = 380 kPa, permeate pressure = 50 kPa. TMP = average feed pressure minus permeate pressure.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. TMP = Average feed pressure - Permeate pressure"
+    },
+    {
+     "id": "line2",
+     "label": "2. Average feed pressure = (420 kPa - 380 kPa) / 2 = 20 kPa"
+    },
+    {
+     "id": "line3",
+     "label": "3. TMP = 20 kPa - 50 kPa = -30 kPa"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Average feed pressure = (420 kPa + 380 kPa) / 2 = 400 kPa",
+   "explanation": "Line 2 subtracted the pressures instead of adding them for the average. The average is 400 kPa, so TMP = 350 kPa."
+  },
+  {
+   "id": "c3w-error38",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this transmembrane pressure calculation with inlet 250 kPa, outlet 210 kPa, and permeate 10 kPa.",
+   "topicId": "transmembrane-pressure",
+   "level": "class1",
+   "assumptions": "Fictional membrane module: feed inlet pressure = 250 kPa, feed outlet pressure = 210 kPa, permeate pressure = 10 kPa. TMP = average feed pressure minus permeate pressure.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Average feed pressure = (250 kPa + 210 kPa) / 2 = 230 kPa"
+    },
+    {
+     "id": "line2",
+     "label": "2. TMP = Average feed pressure - Permeate pressure"
+    },
+    {
+     "id": "line3",
+     "label": "3. TMP = 230 kPa + 10 kPa = 240 kPa"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. TMP = 230 kPa - 10 kPa = 220 kPa",
+   "explanation": "Line 3 added the permeate pressure instead of subtracting it. TMP = 230 - 10 = 220 kPa."
+  },
+  {
+   "id": "c3w-error39",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this transmembrane pressure calculation with inlet 380 kPa, outlet 340 kPa, and permeate 30 kPa.",
+   "topicId": "transmembrane-pressure",
+   "level": "class1",
+   "assumptions": "Fictional membrane module: feed inlet pressure = 380 kPa, feed outlet pressure = 340 kPa, permeate pressure = 30 kPa. TMP = average feed pressure minus permeate pressure.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Average feed pressure = (380 kPa + 340 kPa) / 2 = 360 kPa"
+    },
+    {
+     "id": "line2",
+     "label": "2. TMP = 360 kPa - 30 kPa"
+    },
+    {
+     "id": "line3",
+     "label": "3. TMP = 350 kPa"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. TMP = 360 kPa - 30 kPa = 330 kPa",
+   "explanation": "Lines 1 and 2 are correct. Line 3 missubtracts: 360 - 30 = 330 kPa, not 350."
+  },
+  {
+   "id": "c3w-error40",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this transmembrane pressure calculation with inlet 310 kPa, outlet 270 kPa, and permeate 15 kPa.",
+   "topicId": "transmembrane-pressure",
+   "level": "class1",
+   "assumptions": "Fictional membrane module: feed inlet pressure = 310 kPa, feed outlet pressure = 270 kPa, permeate pressure = 15 kPa. TMP = average feed pressure minus permeate pressure.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. TMP = Inlet pressure - Permeate pressure"
+    },
+    {
+     "id": "line2",
+     "label": "2. TMP = 310 kPa - 15 kPa = 295 kPa"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. TMP = (310 kPa + 270 kPa) / 2 - 15 kPa = 275 kPa",
+   "explanation": "Line 1 used only the inlet pressure. TMP uses the average of inlet and outlet feed pressures, (310 + 270) / 2 = 290 kPa, so TMP = 275 kPa."
+  },
+  {
+   "id": "c3w-error41",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this ultraviolet dose calculation with intensity 10 mW/cm2 and exposure time 4 s.",
+   "topicId": "uv-dose",
+   "level": "class1",
+   "assumptions": "Fictional UV reactor: intensity = 10 mW/cm2, exposure time = 4 s. Dose = Intensity * Time, giving mJ/cm2. Given factors in the lines apply as stated.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dose = Intensity * Exposure time"
+    },
+    {
+     "id": "line2",
+     "label": "2. Dose = 10 mW/cm2 / 4 s"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Dose = 10 mW/cm2 * 4 s = 40 mJ/cm2",
+   "explanation": "Line 2 divided intensity by time instead of multiplying. Dose = 10 * 4 = 40 mJ/cm2."
+  },
+  {
+   "id": "c3w-error42",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this ultraviolet dose calculation with intensity 15 mW/cm2 and exposure time 2 s.",
+   "topicId": "uv-dose",
+   "level": "class1",
+   "assumptions": "Fictional UV reactor: intensity = 15 mW/cm2, exposure time = 2 s. Dose = Intensity * Time, giving mJ/cm2. Given factors in the lines apply as stated.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Intensity = 15 mW/cm2 and 1000 mW = 1 W"
+    },
+    {
+     "id": "line2",
+     "label": "2. Intensity = 15 mW/cm2 / 100 = 0.15 W/cm2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Dose = 0.15 W/cm2 * 2 s = 0.3 J/cm2"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Intensity = 15 mW/cm2 / 1000 = 0.015 W/cm2",
+   "explanation": "Line 2 divided by 100 instead of 1000 when converting mW to W. In mW units the dose is simpler: 15 * 2 = 30 mJ/cm2."
+  },
+  {
+   "id": "c3w-error43",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this ultraviolet dose calculation with intensity 20 mW/cm2 and exposure time 2 s.",
+   "topicId": "uv-dose",
+   "level": "class1",
+   "assumptions": "Fictional UV reactor: intensity = 20 mW/cm2, exposure time = 2 s. Dose = Intensity * Time, giving mJ/cm2. Given factors in the lines apply as stated.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Effective intensity = Intensity * Given factor 0.8"
+    },
+    {
+     "id": "line2",
+     "label": "2. Effective intensity = 20 mW/cm2 / 0.8 = 25 mW/cm2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Dose = 25 mW/cm2 * 2 s = 50 mJ/cm2"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Effective intensity = 20 mW/cm2 * 0.8 = 16 mW/cm2",
+   "explanation": "Line 2 divided by the given factor instead of multiplying. Effective intensity is 16 mW/cm2, giving dose 16 * 2 = 32 mJ/cm2."
+  },
+  {
+   "id": "c3w-error44",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this ultraviolet dose calculation with intensity 8 mW/cm2 and exposure time 5 s.",
+   "topicId": "uv-dose",
+   "level": "class1",
+   "assumptions": "Fictional UV reactor: intensity = 8 mW/cm2, exposure time = 5 s. Dose = Intensity * Time, giving mJ/cm2. Given factors in the lines apply as stated.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dose = Intensity * Exposure time"
+    },
+    {
+     "id": "line2",
+     "label": "2. Dose = 8 mW/cm2 * 5 s"
+    },
+    {
+     "id": "line3",
+     "label": "3. Dose = 50 mJ/cm2"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Dose = 8 mW/cm2 * 5 s = 40 mJ/cm2",
+   "explanation": "Lines 1 and 2 are correct. Line 3 miscalculates the product: 8 * 5 = 40 mJ/cm2, not 50."
+  },
+  {
+   "id": "c3w-error45",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this ultraviolet dose calculation with intensity 12 mW/cm2 and exposure time 3 s.",
+   "topicId": "uv-dose",
+   "level": "class1",
+   "assumptions": "Fictional UV reactor: intensity = 12 mW/cm2, exposure time = 3 s. Dose = Intensity * Time, giving mJ/cm2. Given factors in the lines apply as stated.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dose = Effective intensity * Exposure time, with given factor 0.9"
+    },
+    {
+     "id": "line2",
+     "label": "2. Effective intensity = 12 mW/cm2 * 0.9 = 10.8 mW/cm2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Dose = 12 mW/cm2 * 3 s = 36 mJ/cm2"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Dose = 10.8 mW/cm2 * 3 s = 32.4 mJ/cm2",
+   "explanation": "Line 3 used the raw intensity instead of the effective intensity from line 2. Dose = 10.8 * 3 = 32.4 mJ/cm2."
+  },
+  {
+   "id": "c3w-error46",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this ultraviolet dose calculation with intensity 25 mW/cm2 and exposure time 2 s.",
+   "topicId": "uv-dose",
+   "level": "class1",
+   "assumptions": "Fictional UV reactor: intensity = 25 mW/cm2, exposure time = 2 s. Dose = Intensity * Time, giving mJ/cm2. Given factors in the lines apply as stated.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dose = Intensity * Exposure time"
+    },
+    {
+     "id": "line2",
+     "label": "2. Dose = 25 mW/cm2 / 2 s"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Dose = 25 mW/cm2 * 2 s = 50 mJ/cm2",
+   "explanation": "Line 2 divided intensity by time instead of multiplying. Dose = 25 * 2 = 50 mJ/cm2."
+  },
+  {
+   "id": "c3w-error47",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this ultraviolet dose calculation with intensity 18 mW/cm2 and exposure time 2 s.",
+   "topicId": "uv-dose",
+   "level": "class1",
+   "assumptions": "Fictional UV reactor: intensity = 18 mW/cm2, exposure time = 2 s. Dose = Intensity * Time, giving mJ/cm2. Given factors in the lines apply as stated.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Intensity = 18 mW/cm2 and 1000 mW = 1 W"
+    },
+    {
+     "id": "line2",
+     "label": "2. Intensity = 18 mW/cm2 / 100 = 0.18 W/cm2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Dose = 0.18 W/cm2 * 2 s = 0.36 J/cm2"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Intensity = 18 mW/cm2 / 1000 = 0.018 W/cm2",
+   "explanation": "Line 2 divided by 100 instead of 1000 when converting mW to W. In mW units the dose is simpler: 18 * 2 = 36 mJ/cm2."
+  },
+  {
+   "id": "c3w-error48",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this ultraviolet dose calculation with intensity 10 mW/cm2 and exposure time 3 s.",
+   "topicId": "uv-dose",
+   "level": "class1",
+   "assumptions": "Fictional UV reactor: intensity = 10 mW/cm2, exposure time = 3 s. Dose = Intensity * Time, giving mJ/cm2. Given factors in the lines apply as stated.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Effective intensity = Intensity * Given factor 0.8"
+    },
+    {
+     "id": "line2",
+     "label": "2. Effective intensity = 10 mW/cm2 / 0.8 = 12.5 mW/cm2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Dose = 12.5 mW/cm2 * 3 s = 37.5 mJ/cm2"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Effective intensity = 10 mW/cm2 * 0.8 = 8 mW/cm2",
+   "explanation": "Line 2 divided by the given factor instead of multiplying. Effective intensity is 8 mW/cm2, giving dose 8 * 3 = 24 mJ/cm2."
+  },
+  {
+   "id": "c3w-error49",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this ultraviolet dose calculation with intensity 14 mW/cm2 and exposure time 2.5 s.",
+   "topicId": "uv-dose",
+   "level": "class1",
+   "assumptions": "Fictional UV reactor: intensity = 14 mW/cm2, exposure time = 2.5 s. Dose = Intensity * Time, giving mJ/cm2. Given factors in the lines apply as stated.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dose = Intensity * Exposure time"
+    },
+    {
+     "id": "line2",
+     "label": "2. Dose = 14 mW/cm2 * 2.5 s"
+    },
+    {
+     "id": "line3",
+     "label": "3. Dose = 45 mJ/cm2"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Dose = 14 mW/cm2 * 2.5 s = 35 mJ/cm2",
+   "explanation": "Lines 1 and 2 are correct. Line 3 miscalculates the product: 14 * 2.5 = 35 mJ/cm2, not 45."
+  },
+  {
+   "id": "c3w-error50",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this ultraviolet dose calculation with intensity 16 mW/cm2 and exposure time 2.5 s.",
+   "topicId": "uv-dose",
+   "level": "class1",
+   "assumptions": "Fictional UV reactor: intensity = 16 mW/cm2, exposure time = 2.5 s. Dose = Intensity * Time, giving mJ/cm2. Given factors in the lines apply as stated.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dose = Effective intensity * Exposure time, with given factor 0.9"
+    },
+    {
+     "id": "line2",
+     "label": "2. Effective intensity = 16 mW/cm2 * 0.9 = 14.4 mW/cm2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Dose = 16 mW/cm2 * 2.5 s = 40 mJ/cm2"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Dose = 14.4 mW/cm2 * 2.5 s = 36 mJ/cm2",
+   "explanation": "Line 3 used the raw intensity instead of the effective intensity from line 2. Dose = 14.4 * 2.5 = 36 mJ/cm2."
+  },
+  {
+   "id": "c3w-error51",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this ultraviolet dose calculation with intensity 20 mW/cm2 and exposure time 1.5 s.",
+   "topicId": "uv-dose",
+   "level": "class1",
+   "assumptions": "Fictional UV reactor: intensity = 20 mW/cm2, exposure time = 1.5 s. Dose = Intensity * Time, giving mJ/cm2. Given factors in the lines apply as stated.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dose = Intensity * Exposure time"
+    },
+    {
+     "id": "line2",
+     "label": "2. Dose = 20 mW/cm2 / 1.5 s"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Dose = 20 mW/cm2 * 1.5 s = 30 mJ/cm2",
+   "explanation": "Line 2 divided intensity by time instead of multiplying. Dose = 20 * 1.5 = 30 mJ/cm2."
+  },
+  {
+   "id": "c3w-error52",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this ultraviolet dose calculation with intensity 9 mW/cm2 and exposure time 4 s.",
+   "topicId": "uv-dose",
+   "level": "class1",
+   "assumptions": "Fictional UV reactor: intensity = 9 mW/cm2, exposure time = 4 s. Dose = Intensity * Time, giving mJ/cm2. Given factors in the lines apply as stated.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Intensity = 9 mW/cm2 and 1000 mW = 1 W"
+    },
+    {
+     "id": "line2",
+     "label": "2. Intensity = 9 mW/cm2 / 100 = 0.09 W/cm2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Dose = 0.09 W/cm2 * 4 s = 0.36 J/cm2"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Intensity = 9 mW/cm2 / 1000 = 0.009 W/cm2",
+   "explanation": "Line 2 divided by 100 instead of 1000 when converting mW to W. In mW units the dose is simpler: 9 * 4 = 36 mJ/cm2."
+  },
+  {
+   "id": "c3w-error53",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this ultraviolet dose calculation with intensity 11 mW/cm2 and exposure time 4 s.",
+   "topicId": "uv-dose",
+   "level": "class1",
+   "assumptions": "Fictional UV reactor: intensity = 11 mW/cm2, exposure time = 4 s. Dose = Intensity * Time, giving mJ/cm2. Given factors in the lines apply as stated.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Effective intensity = Intensity * Given factor 0.8"
+    },
+    {
+     "id": "line2",
+     "label": "2. Effective intensity = 11 mW/cm2 / 0.8 = 13.75 mW/cm2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Dose = 13.75 mW/cm2 * 4 s = 55 mJ/cm2"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Effective intensity = 11 mW/cm2 * 0.8 = 8.8 mW/cm2",
+   "explanation": "Line 2 divided by the given factor instead of multiplying. Effective intensity is 8.8 mW/cm2, giving dose 8.8 * 4 = 35.2 mJ/cm2."
+  },
+  {
+   "id": "c3w-error54",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this ultraviolet dose calculation with intensity 13 mW/cm2 and exposure time 3 s.",
+   "topicId": "uv-dose",
+   "level": "class1",
+   "assumptions": "Fictional UV reactor: intensity = 13 mW/cm2, exposure time = 3 s. Dose = Intensity * Time, giving mJ/cm2. Given factors in the lines apply as stated.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dose = Intensity * Exposure time"
+    },
+    {
+     "id": "line2",
+     "label": "2. Dose = 13 mW/cm2 * 3 s"
+    },
+    {
+     "id": "line3",
+     "label": "3. Dose = 49 mJ/cm2"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Dose = 13 mW/cm2 * 3 s = 39 mJ/cm2",
+   "explanation": "Lines 1 and 2 are correct. Line 3 miscalculates the product: 13 * 3 = 39 mJ/cm2, not 49."
+  },
+  {
+   "id": "c3w-error55",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this ultraviolet dose calculation with intensity 15 mW/cm2 and exposure time 3 s.",
+   "topicId": "uv-dose",
+   "level": "class1",
+   "assumptions": "Fictional UV reactor: intensity = 15 mW/cm2, exposure time = 3 s. Dose = Intensity * Time, giving mJ/cm2. Given factors in the lines apply as stated.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dose = Effective intensity * Exposure time, with given factor 0.9"
+    },
+    {
+     "id": "line2",
+     "label": "2. Effective intensity = 15 mW/cm2 * 0.9 = 13.5 mW/cm2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Dose = 15 mW/cm2 * 3 s = 45 mJ/cm2"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Dose = 13.5 mW/cm2 * 3 s = 40.5 mJ/cm2",
+   "explanation": "Line 3 used the raw intensity instead of the effective intensity from line 2. Dose = 13.5 * 3 = 40.5 mJ/cm2."
+  },
+  {
+   "id": "c3w-error56",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids mass balance for flow 2000 m3/day at 150 mg/L through a treatment unit.",
+   "topicId": "mass-balance",
+   "level": "class1",
+   "assumptions": "Fictional treatment unit: flow = 2000 m3/day, solids concentration = 150 mg/L, 1000 L = 1 m3, 1000000 mg = 1 kg. Mass load in kg/day = Flow in m3/day * Concentration in mg/L / 1000.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Influent load = 2000 m3/day * 150 mg/L / 1000 = 300 kg/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. The same influent stream passes through Unit A and then Unit B in series"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total load entering the train = 300 kg/day + 300 kg/day = 600 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total load entering the train = 300 kg/day",
+   "explanation": "Line 3 counted the same stream twice because the units are in series, not parallel. The train receives the influent load once, 300 kg/day."
+  },
+  {
+   "id": "c3w-error57",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids mass balance for flow 1500 m3/day at 200 mg/L through a treatment unit.",
+   "topicId": "mass-balance",
+   "level": "class1",
+   "assumptions": "Fictional treatment unit: flow = 1500 m3/day, solids concentration = 200 mg/L, 1000 L = 1 m3, 1000000 mg = 1 kg. Mass load in kg/day = Flow in m3/day * Concentration in mg/L / 1000.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Influent load = 1500 m3/day * 200 mg/L / 1000 = 300 kg/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Captured solids = 60 percent of 300 kg/day = 180 kg/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solids leaving in effluent = 300 kg/day - 180 kg/day = 120 kg/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Total solids out = Captured solids only = 180 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Total solids out = 180 kg/day + 120 kg/day = 300 kg/day",
+   "explanation": "Line 4 omitted the effluent solids stream. Total out is captured plus passing, 180 + 120 = 300 kg/day, matching the influent."
+  },
+  {
+   "id": "c3w-error58",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids mass balance for flow 3000 m3/day at 100 mg/L through a treatment unit.",
+   "topicId": "mass-balance",
+   "level": "class1",
+   "assumptions": "Fictional treatment unit: flow = 3000 m3/day, solids concentration = 100 mg/L, 1000 L = 1 m3, 1000000 mg = 1 kg. Mass load in kg/day = Flow in m3/day * Concentration in mg/L / 1000.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Mass load in kg/day = Flow in m3/day * Concentration in mg/L / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Mass load = 3000 * 100 / 10000 = 30 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Mass load = 3000 * 100 / 1000 = 300 kg/day",
+   "explanation": "Line 2 divided by 10000 instead of 1000. The combined L to m3 and mg to kg conversions give a divisor of 1000, so the load is 300 kg/day."
+  },
+  {
+   "id": "c3w-error59",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids mass balance for flow 1200 m3/day at 250 mg/L through a treatment unit.",
+   "topicId": "mass-balance",
+   "level": "class1",
+   "assumptions": "Fictional treatment unit: flow = 1200 m3/day, solids concentration = 250 mg/L, 1000 L = 1 m3, 1000000 mg = 1 kg. Mass load in kg/day = Flow in m3/day * Concentration in mg/L / 1000.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Flow splits equally, so each parallel unit gets 1200 m3/day / 2 = 600 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Load to each unit = 600 m3/day * 250 mg/L / 1000 = 150 kg/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total load = 150 kg/day + 150 kg/day = 320 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total load = 150 kg/day + 150 kg/day = 300 kg/day",
+   "explanation": "Lines 1 and 2 are correct. Line 3 misadds: 150 + 150 = 300 kg/day, not 320."
+  }
+ ],
+ "missions": [
+  {
+   "id": "c3w-mission21",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 21: The Residuals Volume Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-ladder80",
+     "revision": "r1",
+     "occurrenceId": "m21-t1"
+    },
+    {
+     "taskId": "c3w-error01",
+     "revision": "r1",
+     "occurrenceId": "m21-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission22",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 22: The Membrane Flux Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-error02",
+     "revision": "r1",
+     "occurrenceId": "m22-t1"
+    },
+    {
+     "taskId": "c3w-ladder81",
+     "revision": "r1",
+     "occurrenceId": "m22-t2"
+    },
+    {
+     "taskId": "c3w-ladder82",
+     "revision": "r1",
+     "occurrenceId": "m22-t3"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission23",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 23: The Energy Per Volume Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-ladder83",
+     "revision": "r1",
+     "occurrenceId": "m23-t1"
+    },
+    {
+     "taskId": "c3w-error03",
+     "revision": "r1",
+     "occurrenceId": "m23-t2"
+    },
+    {
+     "taskId": "c3w-ladder84",
+     "revision": "r1",
+     "occurrenceId": "m23-t3"
+    },
+    {
+     "taskId": "c3w-ladder85",
+     "revision": "r1",
+     "occurrenceId": "m23-t4"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission24",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 24: The Membrane Flux Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-error04",
+     "revision": "r1",
+     "occurrenceId": "m24-t1"
+    },
+    {
+     "taskId": "c3w-ladder86",
+     "revision": "r1",
+     "occurrenceId": "m24-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission25",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 25: The Energy Per Volume Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-ladder87",
+     "revision": "r1",
+     "occurrenceId": "m25-t1"
+    },
+    {
+     "taskId": "c3w-error05",
+     "revision": "r1",
+     "occurrenceId": "m25-t2"
+    },
+    {
+     "taskId": "c3w-ladder88",
+     "revision": "r1",
+     "occurrenceId": "m25-t3"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission26",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 26: The Membrane Flux Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-error06",
+     "revision": "r1",
+     "occurrenceId": "m26-t1"
+    },
+    {
+     "taskId": "c3w-ladder89",
+     "revision": "r1",
+     "occurrenceId": "m26-t2"
+    },
+    {
+     "taskId": "c3w-ladder90",
+     "revision": "r1",
+     "occurrenceId": "m26-t3"
+    },
+    {
+     "taskId": "c3w-ladder91",
+     "revision": "r1",
+     "occurrenceId": "m26-t4"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission27",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 27: The Multi Unit Mass Balance Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-ladder92",
+     "revision": "r1",
+     "occurrenceId": "m27-t1"
+    },
+    {
+     "taskId": "c3w-error07",
+     "revision": "r1",
+     "occurrenceId": "m27-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission28",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 28: The Membrane Flux Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-error08",
+     "revision": "r1",
+     "occurrenceId": "m28-t1"
+    },
+    {
+     "taskId": "c3w-ladder93",
+     "revision": "r1",
+     "occurrenceId": "m28-t2"
+    },
+    {
+     "taskId": "c3w-ladder94",
+     "revision": "r1",
+     "occurrenceId": "m28-t3"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission29",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 29: The Filter Optimization Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-ladder95",
+     "revision": "r1",
+     "occurrenceId": "m29-t1"
+    },
+    {
+     "taskId": "c3w-error09",
+     "revision": "r1",
+     "occurrenceId": "m29-t2"
+    },
+    {
+     "taskId": "c3w-ladder96",
+     "revision": "r1",
+     "occurrenceId": "m29-t3"
+    },
+    {
+     "taskId": "c3w-ladder97",
+     "revision": "r1",
+     "occurrenceId": "m29-t4"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission30",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 30: The Membrane Flux Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-error10",
+     "revision": "r1",
+     "occurrenceId": "m30-t1"
+    },
+    {
+     "taskId": "c3w-ladder98",
+     "revision": "r1",
+     "occurrenceId": "m30-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission31",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 31: The Chemical Optimization Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-ladder99",
+     "revision": "r1",
+     "occurrenceId": "m31-t1"
+    },
+    {
+     "taskId": "c3w-error100",
+     "revision": "r1",
+     "occurrenceId": "m31-t2"
+    },
+    {
+     "taskId": "c3w-ladder80",
+     "revision": "r1",
+     "occurrenceId": "m31-t3"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission32",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 32: The Membrane Flux Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-error11",
+     "revision": "r1",
+     "occurrenceId": "m32-t1"
+    },
+    {
+     "taskId": "c3w-ladder81",
+     "revision": "r1",
+     "occurrenceId": "m32-t2"
+    },
+    {
+     "taskId": "c3w-ladder82",
+     "revision": "r1",
+     "occurrenceId": "m32-t3"
+    },
+    {
+     "taskId": "c3w-ladder83",
+     "revision": "r1",
+     "occurrenceId": "m32-t4"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission33",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 33: The Energy Per Volume Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-ladder84",
+     "revision": "r1",
+     "occurrenceId": "m33-t1"
+    },
+    {
+     "taskId": "c3w-error12",
+     "revision": "r1",
+     "occurrenceId": "m33-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission34",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 34: The Membrane Flux Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-error13",
+     "revision": "r1",
+     "occurrenceId": "m34-t1"
+    },
+    {
+     "taskId": "c3w-ladder85",
+     "revision": "r1",
+     "occurrenceId": "m34-t2"
+    },
+    {
+     "taskId": "c3w-ladder86",
+     "revision": "r1",
+     "occurrenceId": "m34-t3"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission35",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 35: The Energy Per Volume Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-ladder87",
+     "revision": "r1",
+     "occurrenceId": "m35-t1"
+    },
+    {
+     "taskId": "c3w-error14",
+     "revision": "r1",
+     "occurrenceId": "m35-t2"
+    },
+    {
+     "taskId": "c3w-ladder88",
+     "revision": "r1",
+     "occurrenceId": "m35-t3"
+    },
+    {
+     "taskId": "c3w-ladder89",
+     "revision": "r1",
+     "occurrenceId": "m35-t4"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission36",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 36: The Membrane Flux Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-error15",
+     "revision": "r1",
+     "occurrenceId": "m36-t1"
+    },
+    {
+     "taskId": "c3w-ladder90",
+     "revision": "r1",
+     "occurrenceId": "m36-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission37",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 37: The Multi Unit Mass Balance Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-ladder91",
+     "revision": "r1",
+     "occurrenceId": "m37-t1"
+    },
+    {
+     "taskId": "c3w-error16",
+     "revision": "r1",
+     "occurrenceId": "m37-t2"
+    },
+    {
+     "taskId": "c3w-ladder92",
+     "revision": "r1",
+     "occurrenceId": "m37-t3"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission38",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 38: The Membrane Recovery Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-error17",
+     "revision": "r1",
+     "occurrenceId": "m38-t1"
+    },
+    {
+     "taskId": "c3w-ladder93",
+     "revision": "r1",
+     "occurrenceId": "m38-t2"
+    },
+    {
+     "taskId": "c3w-ladder94",
+     "revision": "r1",
+     "occurrenceId": "m38-t3"
+    },
+    {
+     "taskId": "c3w-ladder95",
+     "revision": "r1",
+     "occurrenceId": "m38-t4"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission39",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 39: The Filter Optimization Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-ladder96",
+     "revision": "r1",
+     "occurrenceId": "m39-t1"
+    },
+    {
+     "taskId": "c3w-error18",
+     "revision": "r1",
+     "occurrenceId": "m39-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission40",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 40: The Membrane Recovery Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-error19",
+     "revision": "r1",
+     "occurrenceId": "m40-t1"
+    },
+    {
+     "taskId": "c3w-ladder97",
+     "revision": "r1",
+     "occurrenceId": "m40-t2"
+    },
+    {
+     "taskId": "c3w-ladder98",
+     "revision": "r1",
+     "occurrenceId": "m40-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Advanced water treatment operations chapters (membranes, disinfection strategy, residuals, optimization)"
+  },
+  {
+   "id": "epa-membrane-uv",
+   "title": "US EPA, Membrane Filtration Guidance Manual and UV Disinfection Guidance Manual",
+   "locator": "Membrane and UV background (not Ontario law)"
+  },
+  {
+   "id": "epa-swtr",
+   "title": "US EPA, Surface Water Treatment Rule guidance",
+   "locator": "Filtration and disinfection context (background, not Ontario law)"
+  },
+  {
+   "id": "owwco-exam-prep",
+   "title": "OWWCO, Exam preparation resources",
+   "locator": "https://owwco.ca/preparing-for-your-exam/"
+  },
+  {
+   "id": "wpi-ntk-2025",
+   "title": "WPI, 2025 Need-to-Know Criteria, Water Treatment Class III",
+   "locator": "https://gowpi.org/services/2025-need-to-know-criteria/"
+  },
+  {
+   "id": "ont-reg-170-03",
+   "title": "Ontario Regulation 170/03, Drinking Water Systems",
+   "locator": "https://www.ontario.ca/laws/regulation/03170"
+  },
+  {
+   "id": "ont-dwqms",
+   "title": "Ontario Drinking Water Quality Management Standard",
+   "locator": "Quality management awareness for municipal residential drinking water systems"
+  },
+  {
+   "id": "ccohs-safety",
+   "title": "CCOHS, OSH Answers (chemical safety, confined spaces, lockout)",
+   "locator": "https://www.ccohs.ca/oshanswers/"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "a7e5fb874ca02a0f1b71e5c1bc34993912579e81634822a5dad817225e02623b",
+  "taskReceipts": [
+   {
+    "taskId": "c3w-ladder80",
+    "revision": "r1",
+    "sha256": "be764ab619bd6f749105c2d764188fe2b0c2c5a2d4b6518130b56b4e083c1be8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-ladder81",
+    "revision": "r1",
+    "sha256": "4fe9582030b8119c6c02247214df8ab7e7b09abae966d1e8668a3d043f22de70",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-ladder82",
+    "revision": "r1",
+    "sha256": "f15b7b90191205776c58f685d2a46cf45417dd454806cd04cde137a1dd1817ae",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-ladder83",
+    "revision": "r1",
+    "sha256": "8dd9d2d9e8c9dd9289b011931122b40ee928d0dc22e8b27a6a10ae83e4bfc2af",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-ladder84",
+    "revision": "r1",
+    "sha256": "46882d108a5d5991f6e1a279a78124b612856afb23dac9b35f9a9380d0d90942",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-ladder85",
+    "revision": "r1",
+    "sha256": "30ae382edbf6e2f8c822ff0b388a7b9d8b508fa8336984ca29ceefc3fea85747",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-ladder86",
+    "revision": "r1",
+    "sha256": "60fe0ad38ad4807683a50f0368185c56f2781f0eacedc63a11228e644bb8779e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-ladder87",
+    "revision": "r1",
+    "sha256": "24a04f1deee80ffae064403287cbe13a4b0272585f3876cbd10590a419d597dc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-ladder88",
+    "revision": "r1",
+    "sha256": "1f57534488ed0a38aeb6fee2549e6614c60b7a9f7a98ddfd162ed7f5daca23c2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-ladder89",
+    "revision": "r1",
+    "sha256": "c1b25393b23b5ee6e5aa582fcd25e214f6238aa83b4b0cf5c11d36583d0b2d7e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-ladder90",
+    "revision": "r1",
+    "sha256": "7c683c74e7173f3fcccb8bfed1409770141fca81dd13d0764c36c5b0954c168e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-ladder91",
+    "revision": "r1",
+    "sha256": "2fa694c985f49b01ce7874496287e511f2ede411033472214785d9089d1e2f56",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-ladder92",
+    "revision": "r1",
+    "sha256": "144e98c345bd644f998e680168f93c6dc7d5b30da1827511a7689d0109386555",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-ladder93",
+    "revision": "r1",
+    "sha256": "05a43f832ad0fdfb6e83e0f21188519b02ab250619a0888f33a93b6ff76deb95",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-ladder94",
+    "revision": "r1",
+    "sha256": "d569290590199e1aa412187067332ff53a5463da12b896a718437cc645eff049",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-ladder95",
+    "revision": "r1",
+    "sha256": "c0a4dcf84493fb68b6be866e154fbaf7bb377510f2581b19d6442c3dc762de17",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-ladder96",
+    "revision": "r1",
+    "sha256": "965ac7c391ce43e526ad8d7ac22ee68511f21a06eb4abf4eab245a2ae6b88f92",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-ladder97",
+    "revision": "r1",
+    "sha256": "980195cb14eb034be58c63305999046121b2cee8935b8b64ac4b1cb741644562",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-ladder98",
+    "revision": "r1",
+    "sha256": "11d0f3948f9892a6d52550244cadfd6068fb3710dddb8cc7e45dfac783d4993a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-ladder99",
+    "revision": "r1",
+    "sha256": "a904bd2d09884513b7b529771efd1368d8696f389e6a9e1179487d059aa78939",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error01",
+    "revision": "r1",
+    "sha256": "718f33f5474f7dba07b53dc49b96e9bc2a3df10c4a2900e5f987c8f767225e3a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error02",
+    "revision": "r1",
+    "sha256": "c8b911913d3c07d7482e324a8e0d22b30b6941a392c3eb3e081afac1dac7d139",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error03",
+    "revision": "r1",
+    "sha256": "76592cdc0472e6ab62c0e81ae99cbb8c8bb3bb98ec2be0047de52ed21a2fd1b0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error04",
+    "revision": "r1",
+    "sha256": "815bae14ba300288420bc949c1aa6e6a8d07096b33c03e129f85dcd7c7a7d49d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error05",
+    "revision": "r1",
+    "sha256": "12d8409305cc726ca8aac9d1b4ed83cf39660280b98ef6cd44e820eac7b80e96",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error06",
+    "revision": "r1",
+    "sha256": "e08a4cddee01664246301df3ac9b2ca141aefc50f8873c72cb061befc13ba414",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error07",
+    "revision": "r1",
+    "sha256": "6a1028a4f18c639b43d974664926cc67f3dca5b6af6e4e5996d50f178094d3cd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error08",
+    "revision": "r1",
+    "sha256": "e9e088c70df719defb3581cc565c8b8efedce38409512fe80a099afe95890cb7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error09",
+    "revision": "r1",
+    "sha256": "150174e439affd8322ae499d1a0dca33890516c4bfb6f5273f78163bd47b6542",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error10",
+    "revision": "r1",
+    "sha256": "9a5d9de7f0abe7f16471c2d7ef3b338e27724727224938ffbfeaaa486beb81f1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error100",
+    "revision": "r1",
+    "sha256": "de0e0d3ab05659832c54156f8797ad98e81ff5502dd662519abde4107bc99b05",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error11",
+    "revision": "r1",
+    "sha256": "9a527f5781dd57928874d1fb2562bc65e3afdb54f51044618dbd8cf23f8867f0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error12",
+    "revision": "r1",
+    "sha256": "76330b16b755d0a70b11cc427826313c4746946f941d5c7e0b8ebd717a786478",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error13",
+    "revision": "r1",
+    "sha256": "f9fcabd6839332cb2da9ee771fc1dbd14e029f63ffb614b5f997d93adcb9bc67",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error14",
+    "revision": "r1",
+    "sha256": "f4508a8b60a3eaaf64b9536bd93126b7bffcb26fd96d20cd15b1491f98333ba4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error15",
+    "revision": "r1",
+    "sha256": "7d1a45d078a6d3e7358004b5d3928bc9ea0729de85401e813b7cc39e67e434e5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error16",
+    "revision": "r1",
+    "sha256": "c9c8bb1fd87672501d3a4a5190bed0789c4c89f1a4d46a31dc95f2cb6dede0c3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error17",
+    "revision": "r1",
+    "sha256": "c632203261f6feb135a77d567d6f1f23d6109ed5421c0bd21663b184d9e169aa",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error18",
+    "revision": "r1",
+    "sha256": "f6a575b8f15de81e65fa11a346bb0c41d1a2b915da84fa4c755bda03be81127f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error19",
+    "revision": "r1",
+    "sha256": "586029caaf9bbb4db2f295727de41c7771b4ceb69ff02c5f4dc8ca6536213325",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error20",
+    "revision": "r1",
+    "sha256": "635dc754679bd70f7e898a13f966e7e7d29f0f1b239c2ab7033215004d2ea8a6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error21",
+    "revision": "r1",
+    "sha256": "fab1263b14395881114ca230f12db8f229de2f4c08530a7719789f43f5ceb88c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error22",
+    "revision": "r1",
+    "sha256": "65649358508be53b559abd299ed7753c85bebb767adba3857e18fbaa1fdcb926",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error23",
+    "revision": "r1",
+    "sha256": "99666eb4d8f5ee8dc00cff26fa64e4bf52741b9d94a7f02901ed3f148583d46e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error24",
+    "revision": "r1",
+    "sha256": "32cf736a5142fb73eddd01c917fed640dfa2e753557d1524bba9620b1790fdbd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error25",
+    "revision": "r1",
+    "sha256": "8863512594af4927d95de98a8aa441c261a31584c77aa072b540bb1289ad8b84",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error26",
+    "revision": "r1",
+    "sha256": "d5be5f52e29466a93f7facbb727527e5139755475da4086c6caa42ce61e2b531",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error27",
+    "revision": "r1",
+    "sha256": "c2cbe79dcfc451ba140484e850ac1dacf29494c90cad18d78af9a02b595fcb0d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error28",
+    "revision": "r1",
+    "sha256": "53ddb22e8ad81b12903400d5092f2aa667d8336e4b5aff186f663b69ab92a078",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error29",
+    "revision": "r1",
+    "sha256": "709088cee97bc6c0ecf248d45b012850c20191921798858c3ea9f1d68fe8c053",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error30",
+    "revision": "r1",
+    "sha256": "bd3c2d9871b2265a3790d1993909c31fc9d71ad80688548446e887abd8c1d27d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error31",
+    "revision": "r1",
+    "sha256": "96aa8a8681d09234c7ff424411dc6c3ded19ac4910496ba370afa2bae8a10cad",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error32",
+    "revision": "r1",
+    "sha256": "9c3f2cb941ef0e4e7d554805bf1ddd484ae93f5789bec0f625806e00908bbc76",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error33",
+    "revision": "r1",
+    "sha256": "ad6c796e239572048c4e34b83f866625225c865913310a473fb91e6e8cd9ed02",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error34",
+    "revision": "r1",
+    "sha256": "eae9921e82630b82ffbd9a1e933bad9975a5d2f538b6bce33c32582050f5faed",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error35",
+    "revision": "r1",
+    "sha256": "21670e329ffb0f84a7e46220f7f34949d798a790f97d578436a96d3f54d70c58",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error36",
+    "revision": "r1",
+    "sha256": "16ac04a548baa5f039277b5aba787c6d01d94def5018dc4ad7556fad39fd8751",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error37",
+    "revision": "r1",
+    "sha256": "48f4beb83a1cb006645542bad985f396e4a5e31d57a257df97af7fcedb3356dd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error38",
+    "revision": "r1",
+    "sha256": "0f4acf55b1a4b5ba20366fc4b87f1767366658d452107d539e59bb0641fd137d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error39",
+    "revision": "r1",
+    "sha256": "39a9341b24f2189e251886819b1082d024c53647a9ff44594930a56d57c21c4e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error40",
+    "revision": "r1",
+    "sha256": "9061ba04e57293b0b3fcecbb1743a5b7f52fcb013ea0c927bd4c1c1677368545",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error41",
+    "revision": "r1",
+    "sha256": "544b16ca6978f950ee4c5fd280b4555ba1540bf74116ecf8e6f888f5b759fe8f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error42",
+    "revision": "r1",
+    "sha256": "9fde26fed65c8e0bdc114f22f403b8b06f5ff4d677ae0c4b99f710626c534b89",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error43",
+    "revision": "r1",
+    "sha256": "925c5e87d1d17e24e67b59771bad6191fa10aa7ce6e901bc64ee7fdd3d4c1c06",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error44",
+    "revision": "r1",
+    "sha256": "1703855cfe96cc3239b3ccb6ae5c2728fac58e97d3e1a76c9e200f8f7aa1b83b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error45",
+    "revision": "r1",
+    "sha256": "fae49b669e193a76760a7fcf6c54d595d944dc86ad07af9a1b86b49871b13d81",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error46",
+    "revision": "r1",
+    "sha256": "9cef1f99b6f4246e430f8be47944191182a42826098dd8b293eba0ce2a0c883d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error47",
+    "revision": "r1",
+    "sha256": "cc9225162b4ecae32b752f69b10edfc20261318ff60fba6cbefa9471a8280464",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error48",
+    "revision": "r1",
+    "sha256": "eb194bf41dbea258a274923178fc9f58bf2aa79d2c942f804ce14670d820335b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error49",
+    "revision": "r1",
+    "sha256": "2d0ff0956819a8cf32a46dcc419a17e911645bfc0e0dc8b1786a01afb6ec0195",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error50",
+    "revision": "r1",
+    "sha256": "29fe43c7583aba033f557b3b1b9648f275b3e1c39f5a6dff74d179fb102d250e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error51",
+    "revision": "r1",
+    "sha256": "98a882cac14083f1b02890ea7fb323ecde974a0c68735219a15269813854ccd5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error52",
+    "revision": "r1",
+    "sha256": "e2eb26120d270987e447da1f9dd1c3a6ccbab4d59ce06cfcf6a983b4072a0a60",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error53",
+    "revision": "r1",
+    "sha256": "e85866eaa81b3ba87ee185f0022f7e8dbfe4396fa50a105e6a7ad7f9a8000703",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error54",
+    "revision": "r1",
+    "sha256": "aafb8eeeb6ed184fa5860fb204daddba0799f32a96314bdfa67a547e85320ee2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error55",
+    "revision": "r1",
+    "sha256": "1bff13e9aebd578c9d46ba3460a29bf39c52a6be6bfa0e6a666e9998c447743b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error56",
+    "revision": "r1",
+    "sha256": "f487843589eedea651df0877e795eeb344af1b49866437740d811a4260e434b0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error57",
+    "revision": "r1",
+    "sha256": "b368c48c13e03ae82ded2f5127a9731e1d21782da77555b488c29ca090c153a0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error58",
+    "revision": "r1",
+    "sha256": "543305be2fe94ddf149e4db5752a189fc6c5069b7b7a235331af39c8144075c7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error59",
+    "revision": "r1",
+    "sha256": "245f04503a1550cddb1133684033fe61d593c77af25c3bfdf1e3ca06f39ae226",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "c3w-mission21",
+    "revision": "r1",
+    "sha256": "acd88a1219de5c217cdba8ee7ee4b55e3934d6b3f58fe212ee5bc0d178430ce7"
+   },
+   {
+    "missionId": "c3w-mission22",
+    "revision": "r1",
+    "sha256": "2a2fbf29a4e51d122003eaa30f5d4991aad04001d73363057ebf9955cfa6aea1"
+   },
+   {
+    "missionId": "c3w-mission23",
+    "revision": "r1",
+    "sha256": "968640f7e8efc00af2d72e5dfbbaac17c75f53d725c328501e88a1dceec4dfad"
+   },
+   {
+    "missionId": "c3w-mission24",
+    "revision": "r1",
+    "sha256": "865a6fa45127f11917ae0d64931d914cdaf67637afb89bb8a5898ebc38632285"
+   },
+   {
+    "missionId": "c3w-mission25",
+    "revision": "r1",
+    "sha256": "6804b439d3ef543719ceae40b5137e166c509c932350ede38c4f37109f9aa9e7"
+   },
+   {
+    "missionId": "c3w-mission26",
+    "revision": "r1",
+    "sha256": "7aab3920e68fdf1804d6c7fef2aae24d86fc103eaf6b725e9bb0b2f69771e72e"
+   },
+   {
+    "missionId": "c3w-mission27",
+    "revision": "r1",
+    "sha256": "ba9f0109b6efcc70582890018c9fb448294b5f917acf8814a766769e31e25d95"
+   },
+   {
+    "missionId": "c3w-mission28",
+    "revision": "r1",
+    "sha256": "b0aec7e21be29873ea12b66850ff49f3d72af7c2deef5b93cf9f2849040a6f9c"
+   },
+   {
+    "missionId": "c3w-mission29",
+    "revision": "r1",
+    "sha256": "77e8543770718a0f2e322ecfc25e58a19b63c545ffee80b9f1f85d43c11d1ca1"
+   },
+   {
+    "missionId": "c3w-mission30",
+    "revision": "r1",
+    "sha256": "8db6083be03bd06bc0e6b1df4f0761da7d17c4b6df5d495292762cdc9b8b2eae"
+   },
+   {
+    "missionId": "c3w-mission31",
+    "revision": "r1",
+    "sha256": "9830c0f4681d0d2d69571b460698a3a7a2d2f12dcb2a5179feb180c0f95c9729"
+   },
+   {
+    "missionId": "c3w-mission32",
+    "revision": "r1",
+    "sha256": "7860c9115f4650d3b866a15fe7b9fa25a67da1d2b24c271062ecafacbdafd84e"
+   },
+   {
+    "missionId": "c3w-mission33",
+    "revision": "r1",
+    "sha256": "b499a2aaef811893fff563452ee03ff74954d1b3433139c3bb73f3c63db965ef"
+   },
+   {
+    "missionId": "c3w-mission34",
+    "revision": "r1",
+    "sha256": "5a39f6c969a283b10bfed73a55e3e613ac1076f68e8dd855d139e3303e73ff19"
+   },
+   {
+    "missionId": "c3w-mission35",
+    "revision": "r1",
+    "sha256": "d42887bec809efa2e9a07efb631803ebde3a32e46de4b9c773c55bab71be36fc"
+   },
+   {
+    "missionId": "c3w-mission36",
+    "revision": "r1",
+    "sha256": "77431e0a4424cafa8d2817cbdfb39698ace3f65230d600df574f110527b03cf0"
+   },
+   {
+    "missionId": "c3w-mission37",
+    "revision": "r1",
+    "sha256": "6333716d9adf2ba4c2a47f667a4666f2f61ede0778117ccac0fa327fd963c5cc"
+   },
+   {
+    "missionId": "c3w-mission38",
+    "revision": "r1",
+    "sha256": "52af90bff5d98743c9598e5d166a4e7352d322913faf6a0ae7c8a84f65fb20ae"
+   },
+   {
+    "missionId": "c3w-mission39",
+    "revision": "r1",
+    "sha256": "a44bd83ee42a47fff4cb288bb6d7190087972bd1c519c59b927b01150b1627e9"
+   },
+   {
+    "missionId": "c3w-mission40",
+    "revision": "r1",
+    "sha256": "6a74eb4a5a6501651aa75811a49cfdd8c2b1b3db3c0e89f14a54c021eddab56c"
+   }
+  ]
+ }
+}

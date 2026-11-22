@@ -1,0 +1,5325 @@
+{
+ "courseKey": "class1-water-dist",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "assumptions": "Fictional Ontario distribution system. The valve was serviced and its setpoint must be reset to the zone target.",
+   "cards": [
+    {
+     "id": "s-gauge",
+     "label": "Fit a calibrated gauge on the downstream side"
+    },
+    {
+     "id": "s-open",
+     "label": "Open the station valves so the valve is live under low demand"
+    },
+    {
+     "id": "s-adjust",
+     "label": "Turn the pilot adjusting screw a small amount and wait for the pressure to settle"
+    },
+    {
+     "id": "s-verify",
+     "label": "Verify the settled downstream pressure matches the target setpoint"
+    },
+    {
+     "id": "s-lock",
+     "label": "Lock the adjustment, replace the pilot cover and record the final pressures"
+    }
+   ],
+   "configuration": "Scope: resetting one pressure reducing valve after service.",
+   "correctOrder": [
+    "s-gauge",
+    "s-open",
+    "s-adjust",
+    "s-verify",
+    "s-lock"
+   ],
+   "explanation": "Setpoints are set on a live valve under real demand, using a gauge the operator trusts. Small adjustments with settling time prevent overshooting the target, and the final setting is locked and recorded.",
+   "id": "c1wd-process40",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for resetting a pressure reducing valve setpoint after servicing.",
+   "revision": "r1",
+   "topicId": "prv-setpoint-adjustment"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The operator is reading meters in route order.",
+   "cards": [
+    {
+     "id": "s-locate",
+     "label": "Locate the meter from the route sheet and lift the meter box lid"
+    },
+    {
+     "id": "s-clean",
+     "label": "Clean the dial face or register glass so the digits are readable"
+    },
+    {
+     "id": "s-read",
+     "label": "Read and record the digits in the order shown on the register"
+    },
+    {
+     "id": "s-compare",
+     "label": "Compare the reading with the previous reading and flag any unusual change"
+    },
+    {
+     "id": "s-lid",
+     "label": "Replace the lid securely and move to the next meter on the route"
+    }
+   ],
+   "configuration": "Scope: one residential meter read during a route.",
+   "correctOrder": [
+    "s-locate",
+    "s-clean",
+    "s-read",
+    "s-compare",
+    "s-lid"
+   ],
+   "explanation": "The register cannot be read accurately through a dirty glass, so cleaning comes before the read. Comparing with the last read at the curb catches misreads and leaks early, and the lid goes back on before moving on.",
+   "id": "c1wd-process41",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for reading a residential water meter on a reading route.",
+   "revision": "r1",
+   "topicId": "meter-reading"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The customer reports a much higher bill than usual.",
+   "cards": [
+    {
+     "id": "s-reread",
+     "label": "Re-read the meter and confirm the billed reading was recorded correctly"
+    },
+    {
+     "id": "s-indicator",
+     "label": "Check the low flow indicator on the register with all water use in the home stopped"
+    },
+    {
+     "id": "s-fixtures",
+     "label": "If the indicator is moving, have the customer check toilets and fixtures for leaks"
+    },
+    {
+     "id": "s-compare",
+     "label": "Compare consumption with the same period last year"
+    },
+    {
+     "id": "s-advise",
+     "label": "Advise the customer of the finding and record the visit outcome"
+    }
+   ],
+   "configuration": "Scope: one high bill investigation at a home.",
+   "correctOrder": [
+    "s-reread",
+    "s-indicator",
+    "s-fixtures",
+    "s-compare",
+    "s-advise"
+   ],
+   "explanation": "A misread is checked first because it is the simplest cause. A moving low flow indicator with everything off proves water is passing the meter, which points to a leak on the customer side, and history confirms whether use truly changed.",
+   "id": "c1wd-process42",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for investigating a customer high consumption complaint at the meter.",
+   "revision": "r1",
+   "topicId": "meter-high-bill"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. A measured test volume can be run through the meter at the property.",
+   "cards": [
+    {
+     "id": "s-found",
+     "label": "Record the as-found meter reading"
+    },
+    {
+     "id": "s-run",
+     "label": "Run a measured volume of water through the meter at a steady test flow"
+    },
+    {
+     "id": "s-again",
+     "label": "Record the meter reading again after the test volume"
+    },
+    {
+     "id": "s-compute",
+     "label": "Compare the volume the meter registered with the measured volume"
+    },
+    {
+     "id": "s-decide",
+     "label": "Tag the meter as passed or schedule its replacement, and record the test result"
+    }
+   ],
+   "configuration": "Scope: one field accuracy test of a residential meter.",
+   "correctOrder": [
+    "s-found",
+    "s-run",
+    "s-again",
+    "s-compute",
+    "s-decide"
+   ],
+   "explanation": "Accuracy is the difference between what the meter registered and a volume known independently. Both readings bracket the test run, the comparison gives the error, and the meter is passed or replaced based on that result.",
+   "id": "c1wd-process43",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a field accuracy test of a residential meter.",
+   "revision": "r1",
+   "topicId": "meter-accuracy-test"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The old meter is being replaced because it stopped registering.",
+   "cards": [
+    {
+     "id": "s-notify",
+     "label": "Notify the customer and close the curb stop to shut off the water"
+    },
+    {
+     "id": "s-final",
+     "label": "Record the final reading and serial number of the old meter"
+    },
+    {
+     "id": "s-remove",
+     "label": "Drain the line at a tap, then remove the old meter"
+    },
+    {
+     "id": "s-install",
+     "label": "Install the new meter with new gaskets, arrow pointing in the direction of flow"
+    },
+    {
+     "id": "s-open",
+     "label": "Open the curb stop slowly and check the new meter connections for leaks"
+    },
+    {
+     "id": "s-record",
+     "label": "Record the new meter serial number and its starting reading"
+    }
+   ],
+   "configuration": "Scope: one residential meter change out, from shutoff to records.",
+   "correctOrder": [
+    "s-notify",
+    "s-final",
+    "s-remove",
+    "s-install",
+    "s-open",
+    "s-record"
+   ],
+   "explanation": "The old meter final reading must be captured before it comes out or the account cannot be closed. The new meter only registers correctly with the flow arrow pointing the right way, the curb stop is reopened slowly, and both serial numbers tie the billing record together.",
+   "id": "c1wd-process44",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for changing out a residential water meter.",
+   "revision": "r1",
+   "topicId": "meter-change-out"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The shutoff is needed so a plumber can repair a private line.",
+   "cards": [
+    {
+     "id": "s-locate",
+     "label": "Locate the curb stop box from the service record"
+    },
+    {
+     "id": "s-clear",
+     "label": "Remove the lid and clear debris from around the curb stop"
+    },
+    {
+     "id": "s-key",
+     "label": "Insert the curb key fully onto the curb stop head"
+    },
+    {
+     "id": "s-close",
+     "label": "Turn the key slowly to close the curb stop"
+    },
+    {
+     "id": "s-confirm",
+     "label": "Confirm the water is off at the meter or an outside tap, and tag the shutoff"
+    }
+   ],
+   "configuration": "Scope: one curb stop shutoff at the property line.",
+   "correctOrder": [
+    "s-locate",
+    "s-clear",
+    "s-key",
+    "s-close",
+    "s-confirm"
+   ],
+   "explanation": "The curb stop must be found and exposed before the key can seat properly. Closing slowly avoids a pressure surge, and the shutoff is only real once it is confirmed at the meter and tagged so nobody reopens it during the repair.",
+   "id": "c1wd-process45",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for shutting off a service at the curb stop.",
+   "revision": "r1",
+   "topicId": "curb-stop-shutoff"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The old large meter serves a factory and a bypass keeps the site supplied.",
+   "cards": [
+    {
+     "id": "s-bypass",
+     "label": "Open the bypass so the site stays in service during the change out"
+    },
+    {
+     "id": "s-isolate",
+     "label": "Close the valves on both sides of the old meter"
+    },
+    {
+     "id": "s-reading",
+     "label": "Record the final reading and serial number of the old meter"
+    },
+    {
+     "id": "s-swap",
+     "label": "Remove the old meter and install the new meter with new gaskets"
+    },
+    {
+     "id": "s-test",
+     "label": "Open the meter valves slowly, check for leaks and confirm the register is turning"
+    },
+    {
+     "id": "s-restore",
+     "label": "Close the bypass, record the new meter details and update the account"
+    }
+   ],
+   "configuration": "Scope: one large meter change out at an industrial property.",
+   "correctOrder": [
+    "s-bypass",
+    "s-isolate",
+    "s-reading",
+    "s-swap",
+    "s-test",
+    "s-restore"
+   ],
+   "explanation": "A large user cannot be left dry, so the bypass opens before the meter is isolated. The final reading protects billing, the new meter is proven before the bypass closes, and the account record closes the job.",
+   "id": "c1wd-process46",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for changing out a large commercial meter with a bypass line.",
+   "revision": "r1",
+   "topicId": "large-meter-change-out"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The meter itself is suspected because the register dial does not move.",
+   "cards": [
+    {
+     "id": "s-tap",
+     "label": "Have a tap opened in the building and watch the meter register"
+    },
+    {
+     "id": "s-valves",
+     "label": "Check that the meter valves on both sides of the meter are fully open"
+    },
+    {
+     "id": "s-curb",
+     "label": "Check that the curb stop is fully open"
+    },
+    {
+     "id": "s-strainer",
+     "label": "If flow is still absent, check the meter strainer for blockage"
+    },
+    {
+     "id": "s-decide",
+     "label": "Record whether the fault is a closed valve, a blockage or a failed meter, and raise the matching work order"
+    }
+   ],
+   "configuration": "Scope: one no water call traced from the meter outward.",
+   "correctOrder": [
+    "s-tap",
+    "s-valves",
+    "s-curb",
+    "s-strainer",
+    "s-decide"
+   ],
+   "explanation": "The register check with a tap running separates a dead meter from a supply problem. Valves are checked from the meter outward to the curb stop because a partly closed valve is the most common cause, and the strainer is checked last because it requires opening the line.",
+   "id": "c1wd-process47",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the checks when a customer has water at the curb but the meter register does not move.",
+   "revision": "r1",
+   "topicId": "meter-fault-diagnosis"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The endpoint transmits readings to a drive by receiver and one account shows no signal.",
+   "cards": [
+    {
+     "id": "s-account",
+     "label": "Confirm the account and the last successful read date in the reading system"
+    },
+    {
+     "id": "s-visit",
+     "label": "Visit the property and locate the endpoint and its antenna position"
+    },
+    {
+     "id": "s-obstruction",
+     "label": "Check for metal lids, parked vehicles or new obstructions over the meter box"
+    },
+    {
+     "id": "s-signal",
+     "label": "Wake the endpoint and test its signal with the handheld unit"
+    },
+    {
+     "id": "s-replace",
+     "label": "Replace the endpoint or its battery if the signal test fails, and record the new unit number"
+    }
+   ],
+   "configuration": "Scope: one radio read endpoint that has stopped reporting.",
+   "correctOrder": [
+    "s-account",
+    "s-visit",
+    "s-obstruction",
+    "s-signal",
+    "s-replace"
+   ],
+   "explanation": "The office record first shows how long the endpoint has been silent. On site, simple obstructions are checked before the unit is condemned, the handheld test proves whether it can transmit, and replacement details are recorded so billing keeps working.",
+   "id": "c1wd-process48",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the troubleshooting steps for an automatic meter reading endpoint that has stopped transmitting.",
+   "revision": "r1",
+   "topicId": "meter-amr-troubleshooting"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. Utility locates are complete and the service is being installed before the building is occupied.",
+   "cards": [
+    {
+     "id": "s-permit",
+     "label": "Confirm the service permit and the approved service size"
+    },
+    {
+     "id": "s-locates",
+     "label": "Verify utility locates are marked and still valid"
+    },
+    {
+     "id": "s-excavate",
+     "label": "Excavate to expose the main at the tap location"
+    },
+    {
+     "id": "s-tap",
+     "label": "Tap the main and install the corporation stop"
+    },
+    {
+     "id": "s-line",
+     "label": "Run the service line to the property line and install the curb stop and box"
+    },
+    {
+     "id": "s-test",
+     "label": "Pressure test and disinfect the new service following the approved procedure"
+    },
+    {
+     "id": "s-backfill",
+     "label": "Backfill, restore the surface and record the service location and size"
+    }
+   ],
+   "configuration": "Scope: one new residential service, from permit to records.",
+   "correctOrder": [
+    "s-permit",
+    "s-locates",
+    "s-excavate",
+    "s-tap",
+    "s-line",
+    "s-test",
+    "s-backfill"
+   ],
+   "explanation": "Permits and locates protect both the crew and other utilities before digging. The tap and corporation stop come before the service line because the line connects to them, testing and disinfection prove the service before it is buried, and the record locates it for the future.",
+   "id": "c1wd-process49",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for installing a new residential water service from the main to the property line.",
+   "revision": "r1",
+   "topicId": "service-installation"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The tap is performed by a trained crew with an approved tapping machine.",
+   "cards": [
+    {
+     "id": "s-sleeve",
+     "label": "Install the tapping sleeve and the tapping valve on the main"
+    },
+    {
+     "id": "s-test",
+     "label": "Pressure test the sleeve and valve assembly"
+    },
+    {
+     "id": "s-machine",
+     "label": "Mount the tapping machine on the valve"
+    },
+    {
+     "id": "s-cut",
+     "label": "Advance the cutter through the valve and cut the coupon from the main wall"
+    },
+    {
+     "id": "s-retract",
+     "label": "Retract the cutter past the valve and close the tapping valve"
+    },
+    {
+     "id": "s-remove",
+     "label": "Remove the tapping machine and connect the service line to the valve"
+    }
+   ],
+   "configuration": "Scope: one wet tap on a pressurized main.",
+   "correctOrder": [
+    "s-sleeve",
+    "s-test",
+    "s-machine",
+    "s-cut",
+    "s-retract",
+    "s-remove"
+   ],
+   "explanation": "The sleeve and valve contain the pressure for the whole operation and are tested before any cutting. The machine mounts on the valve, the coupon is cut and retracted behind the valve, the valve closes to seal the main, and only then is the machine removed.",
+   "id": "c1wd-process50",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for making a wet tap on a pressurized water main.",
+   "revision": "r1",
+   "topicId": "service-wet-tap"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. Water is bubbling up at the property line and the service record is available.",
+   "cards": [
+    {
+     "id": "s-confirm",
+     "label": "Confirm the leak is on the service line and not the main, using the service record and a listening check"
+    },
+    {
+     "id": "s-shut",
+     "label": "Close the curb stop to stop the leak if water is being lost"
+    },
+    {
+     "id": "s-locates",
+     "label": "Obtain utility locates for the excavation"
+    },
+    {
+     "id": "s-excavate",
+     "label": "Excavate at the leak location with traffic control in place"
+    },
+    {
+     "id": "s-repair",
+     "label": "Repair or replace the damaged section of service line"
+    },
+    {
+     "id": "s-restore",
+     "label": "Open the curb stop slowly, flush the service and check the repair for leaks"
+    }
+   ],
+   "configuration": "Scope: one leaking service line, from confirmation to restored service.",
+   "correctOrder": [
+    "s-confirm",
+    "s-shut",
+    "s-locates",
+    "s-excavate",
+    "s-repair",
+    "s-restore"
+   ],
+   "explanation": "Confirming the leak is on the service avoids digging up a sound main. The curb stop limits water loss, locates and traffic control make the dig safe, and the repair is flushed and proven before the excavation closes.",
+   "id": "c1wd-process51",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for repairing a leaking service line between the main and the curb stop.",
+   "revision": "r1",
+   "topicId": "service-leak-repair"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. A direct tap without a saddle is planned on a small main for one home.",
+   "cards": [
+    {
+     "id": "s-expose",
+     "label": "Expose and clean the outside of the main at the tap location"
+    },
+    {
+     "id": "s-saddle",
+     "label": "Fit the service saddle snugly on the main and tighten it evenly"
+    },
+    {
+     "id": "s-corp",
+     "label": "Thread the corporation stop into the saddle"
+    },
+    {
+     "id": "s-drill",
+     "label": "Drill through the corporation stop into the main with the drilling machine"
+    },
+    {
+     "id": "s-connect",
+     "label": "Close the corporation stop, remove the machine and connect the service line"
+    }
+   ],
+   "configuration": "Scope: one saddle tap for a single residential service.",
+   "correctOrder": [
+    "s-expose",
+    "s-saddle",
+    "s-corp",
+    "s-drill",
+    "s-connect"
+   ],
+   "explanation": "The saddle seals against a clean pipe surface, so cleaning comes first. The corporation stop threads into the saddle before drilling because the drill passes through it, and the stop is closed before the machine comes off so the tap stays controlled.",
+   "id": "c1wd-process52",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for tapping a main using a service saddle and corporation stop.",
+   "revision": "r1",
+   "topicId": "service-saddle-tap"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The service passed its pressure test and disinfection before backfilling.",
+   "cards": [
+    {
+     "id": "s-curb",
+     "label": "Open the curb stop slowly to fill the service line"
+    },
+    {
+     "id": "s-flush",
+     "label": "Flush the service at the meter box until the water runs clear"
+    },
+    {
+     "id": "s-residual",
+     "label": "Measure the free chlorine residual at the flush point"
+    },
+    {
+     "id": "s-meter",
+     "label": "Install the meter and open the meter valve"
+    },
+    {
+     "id": "s-record",
+     "label": "Record the service and meter details for the new account"
+    }
+   ],
+   "configuration": "Scope: one new service, from first filling to an active account.",
+   "correctOrder": [
+    "s-curb",
+    "s-flush",
+    "s-residual",
+    "s-meter",
+    "s-record"
+   ],
+   "explanation": "The service is filled slowly, flushed clear of construction debris, and proven to carry a chlorine residual before the meter is set. Records are completed last, once the installed details are final.",
+   "id": "c1wd-process53",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for commissioning a new service connection once construction is finished.",
+   "revision": "r1",
+   "topicId": "service-commissioning"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. An old galvanized service is being replaced with copper while the home is occupied.",
+   "cards": [
+    {
+     "id": "s-notify",
+     "label": "Notify the homeowner of the planned shutoff window"
+    },
+    {
+     "id": "s-shut",
+     "label": "Close the curb stop and the corporation stop to isolate the old service"
+    },
+    {
+     "id": "s-excavate",
+     "label": "Excavate at the main and at the property line"
+    },
+    {
+     "id": "s-new",
+     "label": "Install the new service line between the corporation stop and the curb stop"
+    },
+    {
+     "id": "s-transfer",
+     "label": "Connect the new service at the meter and remove or abandon the old line"
+    },
+    {
+     "id": "s-restore",
+     "label": "Open the stops slowly, flush at the meter and check for leaks"
+    }
+   ],
+   "configuration": "Scope: one service renewal, from notification to restored supply.",
+   "correctOrder": [
+    "s-notify",
+    "s-shut",
+    "s-excavate",
+    "s-new",
+    "s-transfer",
+    "s-restore"
+   ],
+   "explanation": "The homeowner is warned before any shutoff, both stops isolate the old line, excavation exposes both ends of the work, the new line goes in between the existing fittings, and restoration includes flushing and a leak check.",
+   "id": "c1wd-process54",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for renewing an old service line between the main and the meter.",
+   "revision": "r1",
+   "topicId": "service-renewal"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. A member of the public reports water flooding a road.",
+   "cards": [
+    {
+     "id": "s-details",
+     "label": "Take the report details, including exact location, severity and any hazards"
+    },
+    {
+     "id": "s-dispatch",
+     "label": "Dispatch a crew and notify the supervisor"
+    },
+    {
+     "id": "s-arrive",
+     "label": "On arrival, assess hazards and set up traffic control"
+    },
+    {
+     "id": "s-locate",
+     "label": "Locate the break and identify the valves needed to isolate it"
+    },
+    {
+     "id": "s-notify",
+     "label": "Notify affected customers that an emergency shutoff is coming"
+    }
+   ],
+   "configuration": "Scope: the first response phase, from the phone call to isolation planning.",
+   "correctOrder": [
+    "s-details",
+    "s-dispatch",
+    "s-arrive",
+    "s-locate",
+    "s-notify"
+   ],
+   "explanation": "Good location details get the right crew rolling, the supervisor is engaged early, and the crew makes the site safe before touching valves. Customers are notified once the isolation valves are known, so the notice names the right streets.",
+   "id": "c1wd-process55",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the first response steps when a major main break is reported.",
+   "revision": "r1",
+   "topicId": "main-break-first-response"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The break is flowing and the isolation valves are identified.",
+   "cards": [
+    {
+     "id": "s-upstream",
+     "label": "Close the nearest upstream valve slowly"
+    },
+    {
+     "id": "s-downstream",
+     "label": "Close the next downstream valve slowly"
+    },
+    {
+     "id": "s-confirm",
+     "label": "Confirm the break is isolated by checking that flow at the break has stopped"
+    },
+    {
+     "id": "s-drain",
+     "label": "Open a hydrant or drain valve to empty the isolated section"
+    },
+    {
+     "id": "s-tag",
+     "label": "Tag the closed valves and record the closure times and valve numbers"
+    }
+   ],
+   "configuration": "Scope: isolating one broken main section.",
+   "correctOrder": [
+    "s-upstream",
+    "s-downstream",
+    "s-confirm",
+    "s-drain",
+    "s-tag"
+   ],
+   "explanation": "Slow closures limit water hammer in the rest of the system. Isolation is confirmed at the break itself, the section is drained so the repair can start, and tags plus times protect the crew from an accidental reopening.",
+   "id": "c1wd-process56",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for isolating a broken water main.",
+   "revision": "r1",
+   "topicId": "main-break-isolation"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. Locates are complete and the broken pipe is under a paved road.",
+   "cards": [
+    {
+     "id": "s-traffic",
+     "label": "Set up traffic control and a safe work zone"
+    },
+    {
+     "id": "s-cut",
+     "label": "Saw cut and remove the road surface over the break"
+    },
+    {
+     "id": "s-excavate",
+     "label": "Excavate down to the pipe, sloping or shoring the walls as required"
+    },
+    {
+     "id": "s-dewater",
+     "label": "Pump water out of the excavation so the pipe is visible"
+    },
+    {
+     "id": "s-repair",
+     "label": "Enter the excavation and complete the pipe repair"
+    }
+   ],
+   "configuration": "Scope: excavation for one main break repair.",
+   "correctOrder": [
+    "s-traffic",
+    "s-cut",
+    "s-excavate",
+    "s-dewater",
+    "s-repair"
+   ],
+   "explanation": "Traffic control protects the crew before any plant work starts, the surface is cut before digging, the excavation is made safe as it deepens, dewatering exposes the pipe, and only then does the repair work begin.",
+   "id": "c1wd-process57",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the excavation steps for reaching a broken main under a road.",
+   "revision": "r1",
+   "topicId": "main-break-excavation"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The break is a clean circumferential crack in a straight run of pipe.",
+   "cards": [
+    {
+     "id": "s-expose",
+     "label": "Expose and clean the pipe surface around the break"
+    },
+    {
+     "id": "s-measure",
+     "label": "Measure the pipe outside diameter and select the correct repair clamp"
+    },
+    {
+     "id": "s-position",
+     "label": "Position the clamp centred over the crack"
+    },
+    {
+     "id": "s-tighten",
+     "label": "Tighten the clamp bolts evenly, working around the clamp"
+    },
+    {
+     "id": "s-pressurize",
+     "label": "Pressurize the section slowly and check the clamp for leaks"
+    }
+   ],
+   "configuration": "Scope: one repair clamp installation on a cracked main.",
+   "correctOrder": [
+    "s-expose",
+    "s-measure",
+    "s-position",
+    "s-tighten",
+    "s-pressurize"
+   ],
+   "explanation": "A clamp seals only against a clean surface and only if it matches the true pipe diameter. Even tightening seats the gasket uniformly, and the repair is proven under pressure before the excavation is backfilled.",
+   "id": "c1wd-process58",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for repairing a cracked main with a full circle repair clamp.",
+   "revision": "r1",
+   "topicId": "main-break-clamp-repair"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The repair is complete and the section is still isolated and drained.",
+   "cards": [
+    {
+     "id": "s-drains",
+     "label": "Close the drain valves and hydrants opened during the repair"
+    },
+    {
+     "id": "s-fill",
+     "label": "Open the upstream valve slowly to refill the section"
+    },
+    {
+     "id": "s-flush",
+     "label": "Flush through a hydrant at the far end until the water runs clear"
+    },
+    {
+     "id": "s-valves",
+     "label": "Open the remaining isolation valves fully and remove the tags"
+    },
+    {
+     "id": "s-notify",
+     "label": "Notify customers that water is restored and advise them to run a cold tap briefly"
+    }
+   ],
+   "configuration": "Scope: returning one repaired main section to normal service.",
+   "correctOrder": [
+    "s-drains",
+    "s-fill",
+    "s-flush",
+    "s-valves",
+    "s-notify"
+   ],
+   "explanation": "Drains are closed before refilling so water is not lost, the section fills slowly to push out air, flushing clears repair debris before customers use the water, all valves return to normal, and customers are told the service is back.",
+   "id": "c1wd-process59",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for restoring water service after a main break repair.",
+   "revision": "r1",
+   "topicId": "main-break-restoration"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The break affects several streets and a road closure.",
+   "cards": [
+    {
+     "id": "s-crew",
+     "label": "The crew leader notifies the supervisor with the location and extent of the break"
+    },
+    {
+     "id": "s-ops",
+     "label": "The supervisor notifies the municipal operations centre and arranges the road closure notice"
+    },
+    {
+     "id": "s-customers",
+     "label": "Customer notices are issued for the affected streets with the expected duration"
+    },
+    {
+     "id": "s-health",
+     "label": "The local health unit is notified as required for the size of the outage"
+    },
+    {
+     "id": "s-log",
+     "label": "Every notification is logged with the time and the person contacted"
+    }
+   ],
+   "configuration": "Scope: internal and external notifications for one large break.",
+   "correctOrder": [
+    "s-crew",
+    "s-ops",
+    "s-customers",
+    "s-health",
+    "s-log"
+   ],
+   "explanation": "Notifications escalate outward from the crew: the supervisor coordinates the operations centre and road closure, customers get a notice based on confirmed information, the health unit is informed as required, and the log proves who was told and when.",
+   "id": "c1wd-process60",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the notification sequence for a large main break affecting several streets.",
+   "revision": "r1",
+   "topicId": "main-break-notifications"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. An adjacent pressure zone can feed the area through a normally closed boundary valve.",
+   "cards": [
+    {
+     "id": "s-boundary",
+     "label": "Open the boundary valve so the adjacent zone feeds the area"
+    },
+    {
+     "id": "s-confirm",
+     "label": "Confirm pressures in the area are holding at an acceptable level"
+    },
+    {
+     "id": "s-isolate",
+     "label": "Close the isolation valves around the break"
+    },
+    {
+     "id": "s-repair",
+     "label": "Complete the repair and flush the repaired section"
+    },
+    {
+     "id": "s-restore",
+     "label": "Reopen the isolation valves, then close the boundary valve and record all final positions"
+    }
+   ],
+   "configuration": "Scope: keeping customers in supply while a trunk main is repaired.",
+   "correctOrder": [
+    "s-boundary",
+    "s-confirm",
+    "s-isolate",
+    "s-repair",
+    "s-restore"
+   ],
+   "explanation": "The alternate feed is established and proven before the break is isolated, so customers keep water during the repair. Normal valve positions are restored only after the repaired main is back, and every position is recorded.",
+   "id": "c1wd-process61",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for keeping an area in supply from an adjacent zone during a trunk main repair.",
+   "revision": "r1",
+   "topicId": "main-break-zone-feed"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The break is repaired, the site is restored and customers are back in service.",
+   "cards": [
+    {
+     "id": "s-report",
+     "label": "Complete the main break report with the cause, pipe details and repair used"
+    },
+    {
+     "id": "s-gis",
+     "label": "Update the system map and records with any new fittings or pipe installed"
+    },
+    {
+     "id": "s-loss",
+     "label": "Estimate and record the water lost during the break"
+    },
+    {
+     "id": "s-samples",
+     "label": "File the flushing and sample results collected during the event"
+    },
+    {
+     "id": "s-followup",
+     "label": "Schedule any follow up flushing or site restoration checks"
+    }
+   ],
+   "configuration": "Scope: closing out one main break event in the records.",
+   "correctOrder": [
+    "s-report",
+    "s-gis",
+    "s-loss",
+    "s-samples",
+    "s-followup"
+   ],
+   "explanation": "The break report is the primary record of the event, the map update keeps future crews working from correct information, water loss feeds the system water balance, and filed samples plus follow ups close the event completely.",
+   "id": "c1wd-process62",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the documentation steps after a main break has been repaired and service restored.",
+   "revision": "r1",
+   "topicId": "main-break-documentation"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The new main has passed its pressure test and is still isolated from the system.",
+   "cards": [
+    {
+     "id": "s-flush",
+     "label": "Flush the new main to remove construction debris"
+    },
+    {
+     "id": "s-fill",
+     "label": "Fill the main with chlorinated water at the target dose"
+    },
+    {
+     "id": "s-hold",
+     "label": "Hold the chlorinated water in the main for the required contact period"
+    },
+    {
+     "id": "s-out",
+     "label": "Flush the chlorinated water out until the residual is near the normal system level"
+    },
+    {
+     "id": "s-sample",
+     "label": "Collect bacteriological samples on the required consecutive days"
+    },
+    {
+     "id": "s-connect",
+     "label": "Connect the main to the system only after satisfactory sample results"
+    }
+   ],
+   "configuration": "Scope: disinfection of one new main, from first flush to connection.",
+   "correctOrder": [
+    "s-flush",
+    "s-fill",
+    "s-hold",
+    "s-out",
+    "s-sample",
+    "s-connect"
+   ],
+   "explanation": "Debris is flushed out before disinfection so chlorine is not wasted on dirt. The main is dosed, held for contact time, flushed back to normal residual, and proven by bacteriological results on consecutive days before it can supply customers.",
+   "id": "c1wd-process63",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for disinfecting a new water main before it is put into service.",
+   "revision": "r1",
+   "topicId": "new-main-disinfection"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The repaired section is short and was kept as clean as conditions allowed.",
+   "cards": [
+    {
+     "id": "s-parts",
+     "label": "Swab the interior of the repair parts with strong chlorine solution before installation"
+    },
+    {
+     "id": "s-repair",
+     "label": "Complete the repair and close up the pipe"
+    },
+    {
+     "id": "s-flush",
+     "label": "Flush the repaired section thoroughly through a nearby hydrant"
+    },
+    {
+     "id": "s-residual",
+     "label": "Confirm the chlorine residual in the section is back near the normal system level"
+    },
+    {
+     "id": "s-sample",
+     "label": "Collect a bacteriological sample from the repaired section and return it to service following the utility procedure"
+    }
+   ],
+   "configuration": "Scope: disinfection awareness for one short repaired section.",
+   "correctOrder": [
+    "s-parts",
+    "s-repair",
+    "s-flush",
+    "s-residual",
+    "s-sample"
+   ],
+   "explanation": "Parts are disinfected before they go into the ground because they cannot be reached afterwards. Flushing clears repair debris, the residual check shows the section matches the system, and the sample provides the safety evidence for the repair.",
+   "id": "c1wd-process64",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the disinfection steps used when a short section of main is repaired.",
+   "revision": "r1",
+   "topicId": "repaired-main-disinfection"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The main is filled and isolated, ready for its pressure test.",
+   "cards": [
+    {
+     "id": "s-fill",
+     "label": "Fill the main slowly from the low end, venting air at the high points"
+    },
+    {
+     "id": "s-raise",
+     "label": "Raise the pressure gradually to the specified test pressure"
+    },
+    {
+     "id": "s-hold",
+     "label": "Hold the test pressure for the specified period"
+    },
+    {
+     "id": "s-inspect",
+     "label": "Inspect the line and joints for leaks and record the pressure drop"
+    },
+    {
+     "id": "s-release",
+     "label": "Release the pressure and proceed to disinfection if the test passes"
+    }
+   ],
+   "configuration": "Scope: pressure testing one new main before disinfection.",
+   "correctOrder": [
+    "s-fill",
+    "s-raise",
+    "s-hold",
+    "s-inspect",
+    "s-release"
+   ],
+   "explanation": "Trapped air makes pressure tests misleading and unsafe, so filling is slow with venting. Pressure rises gradually, is held while joints are inspected, and disinfection only follows a passed test because a leaking main would be opened up again.",
+   "id": "c1wd-process65",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for pressure testing a new main before it is disinfected.",
+   "revision": "r1",
+   "topicId": "new-main-pressure-test"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The main has been disinfected and flushed to near normal residual.",
+   "cards": [
+    {
+     "id": "s-first",
+     "label": "Collect the first set of bacteriological samples from the sampling points"
+    },
+    {
+     "id": "s-wait",
+     "label": "Leave the main isolated and wait the required interval"
+    },
+    {
+     "id": "s-second",
+     "label": "Collect the second set of bacteriological samples on the following day"
+    },
+    {
+     "id": "s-results",
+     "label": "Review both sets of results"
+    },
+    {
+     "id": "s-connect",
+     "label": "Connect the main to the live system if both sets are satisfactory"
+    }
+   ],
+   "configuration": "Scope: the sampling sequence that clears a new main for connection.",
+   "correctOrder": [
+    "s-first",
+    "s-wait",
+    "s-second",
+    "s-results",
+    "s-connect"
+   ],
+   "explanation": "Two sample sets on consecutive days give far more confidence than a single grab, because contamination can be intermittent. The main stays isolated until both sets are satisfactory, which is the final gate before connection.",
+   "id": "c1wd-process66",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the sampling steps that must be passed before a disinfected new main is connected.",
+   "revision": "r1",
+   "topicId": "new-main-sampling-clearance"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The first bacteriological set from a new main came back unsatisfactory.",
+   "cards": [
+    {
+     "id": "s-isolated",
+     "label": "Keep the new main isolated from the live system"
+    },
+    {
+     "id": "s-reflush",
+     "label": "Reflush the main thoroughly"
+    },
+    {
+     "id": "s-resample",
+     "label": "Collect a new set of bacteriological samples"
+    },
+    {
+     "id": "s-redisinfect",
+     "label": "If the resample also fails, redisinfect the main and sample again"
+    },
+    {
+     "id": "s-connect",
+     "label": "Connect the main only after a satisfactory set of results"
+    }
+   ],
+   "configuration": "Scope: the response to one failed sample set on a new main.",
+   "correctOrder": [
+    "s-isolated",
+    "s-reflush",
+    "s-resample",
+    "s-redisinfect",
+    "s-connect"
+   ],
+   "explanation": "A failed result never leads straight to connection or straight to redisinfection. The main stays isolated, flushing and resampling come first because the failure may be debris or sampling error, and full redisinfection is the escalation if the failure repeats.",
+   "id": "c1wd-process67",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the response when a new main fails its bacteriological clearance sampling.",
+   "revision": "r1",
+   "topicId": "new-main-failed-sample"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. Superchlorinated water from a disinfection is about to be discharged to a ditch.",
+   "cards": [
+    {
+     "id": "s-measure",
+     "label": "Measure the chlorine residual of the water to be discharged"
+    },
+    {
+     "id": "s-dechlor",
+     "label": "Set up dechlorination so the discharge is neutralized as it leaves the main"
+    },
+    {
+     "id": "s-release",
+     "label": "Release the water at a controlled rate that the ditch can handle"
+    },
+    {
+     "id": "s-check",
+     "label": "Check the discharged water at the ditch for near zero chlorine residual"
+    },
+    {
+     "id": "s-record",
+     "label": "Record the volume discharged and the dechlorination results"
+    }
+   ],
+   "configuration": "Scope: safe discharge of highly chlorinated water from a new main.",
+   "correctOrder": [
+    "s-measure",
+    "s-dechlor",
+    "s-release",
+    "s-check",
+    "s-record"
+   ],
+   "explanation": "The residual must be known before the neutralization can be set up correctly. Dechlorination protects fish and the environment, a controlled release prevents erosion, and the check at the ditch proves the discharge was actually neutral.",
+   "id": "c1wd-process68",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for discharging superchlorinated water from a disinfected main to the environment.",
+   "revision": "r1",
+   "topicId": "dechlorinated-discharge"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The sample tap is an approved distribution sampling station.",
+   "cards": [
+    {
+     "id": "s-remove",
+     "label": "Remove any hoses, aerators or attachments from the sample tap"
+    },
+    {
+     "id": "s-clean",
+     "label": "Clean and disinfect the outside of the tap outlet following the sampling procedure"
+    },
+    {
+     "id": "s-flush",
+     "label": "Flush the tap line for the set time so the sample represents the main"
+    },
+    {
+     "id": "s-fill",
+     "label": "Reduce the flow and fill the sterile bottle without touching the rim or rinsing out the preservative"
+    },
+    {
+     "id": "s-cap",
+     "label": "Cap the bottle immediately, label it and place it in the cooler"
+    },
+    {
+     "id": "s-custody",
+     "label": "Complete the chain of custody form and deliver the sample to the laboratory"
+    }
+   ],
+   "configuration": "Scope: one routine bacteriological sample at a fixed sampling station.",
+   "correctOrder": [
+    "s-remove",
+    "s-clean",
+    "s-flush",
+    "s-fill",
+    "s-cap",
+    "s-custody"
+   ],
+   "explanation": "Attachments and a dirty tap contaminate samples, so they are removed and the tap is disinfected and flushed first. The sterile bottle is filled without touching the rim or losing the preservative, then capped, chilled and documented so the result is defensible.",
+   "id": "c1wd-process69",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for collecting a bacteriological sample from a distribution sampling tap.",
+   "revision": "r1",
+   "topicId": "bacteriological-sampling"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The site is a designated far point used to track residual decay.",
+   "cards": [
+    {
+     "id": "s-flush",
+     "label": "Flush the sample tap briefly following the site procedure"
+    },
+    {
+     "id": "s-vial",
+     "label": "Fill the sample vial to the mark with the water to be tested"
+    },
+    {
+     "id": "s-reagent",
+     "label": "Add the DPD reagent to the vial and mix it"
+    },
+    {
+     "id": "s-read",
+     "label": "Read the result in the comparator or meter within the specified time"
+    },
+    {
+     "id": "s-record",
+     "label": "Record the free chlorine residual, location and time"
+    },
+    {
+     "id": "s-report",
+     "label": "Report the result the same day if it is below the target range"
+    }
+   ],
+   "configuration": "Scope: one free chlorine residual measurement at a far point site.",
+   "correctOrder": [
+    "s-flush",
+    "s-vial",
+    "s-reagent",
+    "s-read",
+    "s-record",
+    "s-report"
+   ],
+   "explanation": "The DPD colour develops and fades on a schedule, so the vial is filled, dosed and read in sequence and on time. Recording and same day reporting of low results lets flushing or rechlorination happen before water quality degrades further.",
+   "id": "c1wd-process70",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for measuring free chlorine residual at a distribution sampling site.",
+   "revision": "r1",
+   "topicId": "residual-sampling"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The homeowner followed the instruction not to use water overnight.",
+   "cards": [
+    {
+     "id": "s-confirm",
+     "label": "Confirm with the homeowner that the water stood unused for the required standing period"
+    },
+    {
+     "id": "s-firstdraw",
+     "label": "Collect the first draw sample from the kitchen cold water tap without flushing first"
+    },
+    {
+     "id": "s-label",
+     "label": "Label the bottle with the address, tap and collection time"
+    },
+    {
+     "id": "s-flushed",
+     "label": "Collect any flushed sample required by the program after the first draw"
+    },
+    {
+     "id": "s-submit",
+     "label": "Submit the samples with the completed program form"
+    }
+   ],
+   "configuration": "Scope: one first draw metals sample at a home in a sampling program.",
+   "correctOrder": [
+    "s-confirm",
+    "s-firstdraw",
+    "s-label",
+    "s-flushed",
+    "s-submit"
+   ],
+   "explanation": "A first draw sample only represents metals leached during standing if the water truly sat unused, so that is confirmed before the tap is opened. The first draw is collected with no flushing at all, labelled at the tap, any flushed comparison sample comes after, and the set is submitted with its form.",
+   "id": "c1wd-process71",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for collecting a first draw lead sample at a home.",
+   "revision": "r1",
+   "topicId": "lead-sampling-first-draw"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The dead end is sampled every month for residual and bacteriological quality.",
+   "cards": [
+    {
+     "id": "s-arrive",
+     "label": "Record the site condition and the time of arrival"
+    },
+    {
+     "id": "s-residual",
+     "label": "Measure and record the free chlorine residual first"
+    },
+    {
+     "id": "s-flush",
+     "label": "Note whether the tap needed flushing to reach main water, and for how long"
+    },
+    {
+     "id": "s-bacti",
+     "label": "Collect the bacteriological sample using the sterile technique"
+    },
+    {
+     "id": "s-compare",
+     "label": "Compare the residual with last months result and report any downward trend"
+    }
+   ],
+   "configuration": "Scope: one monthly sampling visit to a dead end site.",
+   "correctOrder": [
+    "s-arrive",
+    "s-residual",
+    "s-flush",
+    "s-bacti",
+    "s-compare"
+   ],
+   "explanation": "The residual is measured on arrival because it represents the water customers at the dead end actually receive. Flushing notes explain the result, the bacteriological sample follows the standard technique, and the trend comparison catches water age problems early.",
+   "id": "c1wd-process72",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a monthly water quality check at a dead end main sampling site.",
+   "revision": "r1",
+   "topicId": "dead-end-sampling"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. A hydrant is the only sampling point available on this street.",
+   "cards": [
+    {
+     "id": "s-adapter",
+     "label": "Fit the disinfected sampling adapter to a hydrant outlet"
+    },
+    {
+     "id": "s-open",
+     "label": "Open the hydrant slowly and flush until the water is representative of the main"
+    },
+    {
+     "id": "s-reduce",
+     "label": "Reduce the flow to a gentle stream at the adapter"
+    },
+    {
+     "id": "s-fill",
+     "label": "Fill the sterile sample bottle without touching the adapter outlet"
+    },
+    {
+     "id": "s-close",
+     "label": "Close the hydrant slowly, remove the adapter and confirm the barrel drains"
+    }
+   ],
+   "configuration": "Scope: one bacteriological sample collected from a hydrant.",
+   "correctOrder": [
+    "s-adapter",
+    "s-open",
+    "s-reduce",
+    "s-fill",
+    "s-close"
+   ],
+   "explanation": "The adapter gives a clean, controllable sampling point on a hydrant. Flushing brings fresh main water, the flow is reduced so the bottle can be filled with sterile technique, and the hydrant is left draining so it is protected from freezing.",
+   "id": "c1wd-process73",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for collecting a bacteriological sample from a fire hydrant.",
+   "revision": "r1",
+   "topicId": "hydrant-sampling"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. Samples were collected at six sites across the system today.",
+   "cards": [
+    {
+     "id": "s-label",
+     "label": "Confirm every bottle is labelled with site, date and time at the point of collection"
+    },
+    {
+     "id": "s-cooler",
+     "label": "Place the bottles upright in the cooler with ice packs so they stay cold but do not freeze"
+    },
+    {
+     "id": "s-form",
+     "label": "Complete and sign the chain of custody form listing every sample"
+    },
+    {
+     "id": "s-deliver",
+     "label": "Deliver the cooler to the laboratory within the allowed holding time"
+    },
+    {
+     "id": "s-receipt",
+     "label": "Obtain and file the laboratory receipt showing the samples were accepted"
+    }
+   ],
+   "configuration": "Scope: handling todays samples from the last site to the laboratory.",
+   "correctOrder": [
+    "s-label",
+    "s-cooler",
+    "s-form",
+    "s-deliver",
+    "s-receipt"
+   ],
+   "explanation": "A sample without a label or custody record cannot be used as evidence. Cold, upright transport protects the bacteria count from changing, delivery inside the holding time keeps the analysis valid, and the receipt proves the handover.",
+   "id": "c1wd-process74",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for transporting distribution samples to the laboratory.",
+   "revision": "r1",
+   "topicId": "sample-chain-of-custody"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. Tomorrow has eight scheduled sites plus two resamples.",
+   "cards": [
+    {
+     "id": "s-schedule",
+     "label": "Review the sample schedule, site list and any resample locations"
+    },
+    {
+     "id": "s-bottles",
+     "label": "Prepare the sterile bottles, labels and custody forms for every site"
+    },
+    {
+     "id": "s-reagents",
+     "label": "Check the chlorine reagents are in date and the meter is working"
+    },
+    {
+     "id": "s-route",
+     "label": "Plan the route so samples reach the laboratory within the holding time"
+    },
+    {
+     "id": "s-brief",
+     "label": "Note any site access issues from previous visits for the sampling operator"
+    }
+   ],
+   "configuration": "Scope: preparation the day before a distribution sampling run.",
+   "correctOrder": [
+    "s-schedule",
+    "s-bottles",
+    "s-reagents",
+    "s-route",
+    "s-brief"
+   ],
+   "explanation": "The schedule defines how many bottles and forms are needed, reagent and meter checks prevent wasted trips, and the route is planned backwards from the laboratory holding time so no sample expires in the cooler.",
+   "id": "c1wd-process75",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the preparation steps for the next days distribution sampling run.",
+   "revision": "r1",
+   "topicId": "sampling-run-preparation"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The laboratory reports a total coliform positive result at a routine site.",
+   "cards": [
+    {
+     "id": "s-confirm",
+     "label": "Confirm the result details with the laboratory, including site and sample time"
+    },
+    {
+     "id": "s-notify-int",
+     "label": "Notify the supervisor and the responsible operator immediately"
+    },
+    {
+     "id": "s-resample",
+     "label": "Collect resamples at the original site plus upstream and downstream locations"
+    },
+    {
+     "id": "s-health",
+     "label": "Ensure the notifications required under Ontario Regulation 170/03 are made to the health unit and the Spills Action Centre"
+    },
+    {
+     "id": "s-record",
+     "label": "Record all actions and continue sampling until the required satisfactory results are received"
+    }
+   ],
+   "configuration": "Scope: the response to one adverse bacteriological result in distribution.",
+   "correctOrder": [
+    "s-confirm",
+    "s-notify-int",
+    "s-resample",
+    "s-health",
+    "s-record"
+   ],
+   "explanation": "The result is confirmed before alarms spread, internal notification is immediate, resampling at the site and on both sides locates the extent of the problem, the regulatory notifications required in Ontario follow, and sampling continues until the water is proven satisfactory again.",
+   "id": "c1wd-process76",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the response steps when a distribution bacteriological sample returns an adverse result.",
+   "revision": "r1",
+   "topicId": "adverse-result-response"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. Residuals at one end of the system have been falling for three days.",
+   "cards": [
+    {
+     "id": "s-verify",
+     "label": "Verify the low reading by remeasuring with fresh reagent"
+    },
+    {
+     "id": "s-nearby",
+     "label": "Measure residuals at the sites on either side of the low site"
+    },
+    {
+     "id": "s-flush",
+     "label": "Flush the nearest dead end or hydrant to draw fresher water into the area"
+    },
+    {
+     "id": "s-recheck",
+     "label": "Recheck the residual at the original site after flushing"
+    },
+    {
+     "id": "s-investigate",
+     "label": "If it stays low, report it for investigation of water age, storage turnover or rechlorination"
+    }
+   ],
+   "configuration": "Scope: one low chlorine residual result at a far point site.",
+   "correctOrder": [
+    "s-verify",
+    "s-nearby",
+    "s-flush",
+    "s-recheck",
+    "s-investigate"
+   ],
+   "explanation": "A bad reagent can fake a low residual, so the reading is verified first. Neighbouring sites show whether the problem is local or widespread, flushing is the immediate corrective action, and only a residual that survives flushing is escalated as a system problem.",
+   "id": "c1wd-process77",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for responding to a low chlorine residual found during routine sampling.",
+   "revision": "r1",
+   "topicId": "low-residual-response"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The customer agreed to a visit after reporting a chlorine taste.",
+   "cards": [
+    {
+     "id": "s-details",
+     "label": "Record the complaint details, including when the taste is strongest"
+    },
+    {
+     "id": "s-checks",
+     "label": "Check recent system events near the address, such as flushing or a tank returning to service"
+    },
+    {
+     "id": "s-visit",
+     "label": "Visit and measure the free chlorine residual at the customers tap"
+    },
+    {
+     "id": "s-compare",
+     "label": "Compare the tap result with the nearest routine sampling site result"
+    },
+    {
+     "id": "s-explain",
+     "label": "Explain the finding to the customer and log the complaint and result"
+    }
+   ],
+   "configuration": "Scope: one taste complaint investigation ending at the customers tap.",
+   "correctOrder": [
+    "s-details",
+    "s-checks",
+    "s-visit",
+    "s-compare",
+    "s-explain"
+   ],
+   "explanation": "Complaint timing often matches a system event, which the records check reveals before anyone travels. The tap measurement is then compared with the routine site so the customer gets an explanation based on numbers, and the case is logged either way.",
+   "id": "c1wd-process78",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for investigating a customer complaint about a strong chlorine taste.",
+   "revision": "r1",
+   "topicId": "taste-complaint-sampling"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The surveyor is trained for cross connection surveys and the owner representative is present.",
+   "cards": [
+    {
+     "id": "s-records",
+     "label": "Review the property records and any backflow devices already registered"
+    },
+    {
+     "id": "s-walk",
+     "label": "Walk the property with the representative and identify every water use and connection"
+    },
+    {
+     "id": "s-hazards",
+     "label": "Identify cross connections and rate the hazard of each one"
+    },
+    {
+     "id": "s-devices",
+     "label": "Record the details and test status of any existing backflow preventers"
+    },
+    {
+     "id": "s-report",
+     "label": "Give the owner the survey findings and the required corrective actions with deadlines"
+    }
+   ],
+   "configuration": "Scope: one cross connection survey of a commercial property.",
+   "correctOrder": [
+    "s-records",
+    "s-walk",
+    "s-hazards",
+    "s-devices",
+    "s-report"
+   ],
+   "explanation": "Records first tell the surveyor what should be there, the walkthrough finds what actually is there, hazards are rated while the connections are in view, existing devices are verified against the registry, and the owner leaves with written requirements.",
+   "id": "c1wd-process79",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a cross connection survey of a commercial property.",
+   "revision": "r1",
+   "topicId": "cross-connection-survey"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The tester is certified and the building has been told the water will be off briefly.",
+   "cards": [
+    {
+     "id": "s-notify",
+     "label": "Notify the building contact and confirm the test can proceed"
+    },
+    {
+     "id": "s-connect",
+     "label": "Connect the test kit hoses to the device test cocks following the kit procedure"
+    },
+    {
+     "id": "s-first",
+     "label": "Record the differential pressure across the first check valve"
+    },
+    {
+     "id": "s-relief",
+     "label": "Determine the relief valve opening point"
+    },
+    {
+     "id": "s-second",
+     "label": "Test that the second check valve holds tight"
+    },
+    {
+     "id": "s-restore",
+     "label": "Restore the device to service, remove the kit and complete the test report"
+    }
+   ],
+   "configuration": "Scope: one annual field test of a reduced pressure principle backflow preventer.",
+   "correctOrder": [
+    "s-notify",
+    "s-connect",
+    "s-first",
+    "s-relief",
+    "s-second",
+    "s-restore"
+   ],
+   "explanation": "The recognised test sequence works through the device in order: the first check valve differential, the relief valve opening point, then the second check valve. The building is warned first because the test briefly shuts the water, and the report closes the annual record.",
+   "id": "c1wd-process80",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for field testing a reduced pressure principle backflow preventer.",
+   "revision": "r1",
+   "topicId": "backflow-device-testing"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The device type has been selected for the hazard at the property.",
+   "cards": [
+    {
+     "id": "s-select",
+     "label": "Confirm the selected device type matches the degree of hazard"
+    },
+    {
+     "id": "s-flush",
+     "label": "Flush the service line to clear debris before the device is connected"
+    },
+    {
+     "id": "s-install",
+     "label": "Install the device with its test cocks accessible and the relief port piped to a visible drain"
+    },
+    {
+     "id": "s-pressure",
+     "label": "Pressurize the installation slowly and check for leaks"
+    },
+    {
+     "id": "s-test",
+     "label": "Have the device tested by a certified tester before it is relied on"
+    },
+    {
+     "id": "s-register",
+     "label": "Register the device in the backflow program records with its test date"
+    }
+   ],
+   "configuration": "Scope: one new backflow preventer installation on a commercial service.",
+   "correctOrder": [
+    "s-select",
+    "s-flush",
+    "s-install",
+    "s-pressure",
+    "s-test",
+    "s-register"
+   ],
+   "explanation": "Debris flushed into a new device can foul its checks on day one, so the line is flushed first. The device is installed so it can actually be tested, proven leak free, tested by a certified tester, and registered so its annual tests get scheduled.",
+   "id": "c1wd-process81",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for putting a new backflow preventer into service on a commercial property.",
+   "revision": "r1",
+   "topicId": "backflow-installation"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The program office tracks several hundred registered devices.",
+   "cards": [
+    {
+     "id": "s-list",
+     "label": "Generate the list of devices coming due for their annual test"
+    },
+    {
+     "id": "s-notices",
+     "label": "Send test notices to the property owners"
+    },
+    {
+     "id": "s-receive",
+     "label": "Receive the test reports from the certified testers"
+    },
+    {
+     "id": "s-review",
+     "label": "Review the reports and identify failed devices"
+    },
+    {
+     "id": "s-followup",
+     "label": "Send repair and retest notices for the failed devices with deadlines"
+    },
+    {
+     "id": "s-update",
+     "label": "Update the registry with the new test dates and results"
+    }
+   ],
+   "configuration": "Scope: one annual cycle of the backflow test program.",
+   "correctOrder": [
+    "s-list",
+    "s-notices",
+    "s-receive",
+    "s-review",
+    "s-followup",
+    "s-update"
+   ],
+   "explanation": "The program runs as a cycle: the due list drives the notices, reports come back from testers, failures are separated from passes because they need repair deadlines, and the registry update starts the next cycle from correct dates.",
+   "id": "c1wd-process82",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for running the annual backflow preventer test cycle.",
+   "revision": "r1",
+   "topicId": "backflow-program-cycle"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. A device at a food processing plant failed its annual test.",
+   "cards": [
+    {
+     "id": "s-tag",
+     "label": "Tag the device as failed and record the failing readings"
+    },
+    {
+     "id": "s-notify",
+     "label": "Notify the property owner of the failure and the repair deadline"
+    },
+    {
+     "id": "s-repair",
+     "label": "Have the device repaired or replaced by a qualified person"
+    },
+    {
+     "id": "s-retest",
+     "label": "Retest the device and confirm it passes"
+    },
+    {
+     "id": "s-file",
+     "label": "File the passing report and update the registry"
+    }
+   ],
+   "configuration": "Scope: follow up on one failed backflow device.",
+   "correctOrder": [
+    "s-tag",
+    "s-notify",
+    "s-repair",
+    "s-retest",
+    "s-file"
+   ],
+   "explanation": "A failed device is not protecting the system, so it is tagged and the owner is put on a deadline. Repair alone is not enough, the device must pass a retest, and the registry only clears once the passing report is filed.",
+   "id": "c1wd-process83",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the follow up steps when a backflow preventer fails its annual test.",
+   "revision": "r1",
+   "topicId": "backflow-failed-test"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. Several customers report a chemical taste and one property nearby uses solvents.",
+   "cards": [
+    {
+     "id": "s-isolate",
+     "label": "Isolate the suspect connection from the distribution system"
+    },
+    {
+     "id": "s-notify",
+     "label": "Notify the supervisor and begin the incident record"
+    },
+    {
+     "id": "s-sample",
+     "label": "Collect water quality samples in the affected area"
+    },
+    {
+     "id": "s-inspect",
+     "label": "Inspect the suspect propertys plumbing and backflow protection"
+    },
+    {
+     "id": "s-flush",
+     "label": "Flush the affected mains until samples are satisfactory"
+    },
+    {
+     "id": "s-report",
+     "label": "Complete the incident report with the cause and corrective actions"
+    }
+   ],
+   "configuration": "Scope: response to one suspected backflow incident.",
+   "correctOrder": [
+    "s-isolate",
+    "s-notify",
+    "s-sample",
+    "s-inspect",
+    "s-flush",
+    "s-report"
+   ],
+   "explanation": "Stopping the suspect connection comes first so no more contaminant can enter. Samples define the affected area, the property inspection finds the mechanism, flushing clears the mains, and the report captures the cause so the connection cannot quietly reopen.",
+   "id": "c1wd-process84",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the response steps for a suspected backflow incident in a neighbourhood.",
+   "revision": "r1",
+   "topicId": "backflow-incident-response"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The visit is educational and the homeowner is present.",
+   "cards": [
+    {
+     "id": "s-hose",
+     "label": "Identify every hose connection inside and outside the home"
+    },
+    {
+     "id": "s-vacuum",
+     "label": "Check each hose connection for a hose bibb vacuum breaker"
+    },
+    {
+     "id": "s-other",
+     "label": "Check other common hazards, such as a boiler feed or a lawn irrigation connection"
+    },
+    {
+     "id": "s-explain",
+     "label": "Explain any hazards found and how a vacuum breaker prevents backsiphonage"
+    },
+    {
+     "id": "s-leave",
+     "label": "Leave the homeowner the program information sheet and record the visit"
+    }
+   ],
+   "configuration": "Scope: one residential cross connection check.",
+   "correctOrder": [
+    "s-hose",
+    "s-vacuum",
+    "s-other",
+    "s-explain",
+    "s-leave"
+   ],
+   "explanation": "A submerged garden hose is the most common residential cross connection, so hose connections are found and checked for vacuum breakers first. Other fixed hazards follow, and the visit only works if the homeowner understands what was found.",
+   "id": "c1wd-process85",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a residential cross connection check focused on hose connections.",
+   "revision": "r1",
+   "topicId": "residential-cross-connection"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. District night flow data is available for the past month.",
+   "cards": [
+    {
+     "id": "s-night",
+     "label": "Review the minimum night flows for each district area"
+    },
+    {
+     "id": "s-rank",
+     "label": "Rank the areas from the highest unexplained night flow to the lowest"
+    },
+    {
+     "id": "s-zones",
+     "label": "Divide the worst area into smaller survey zones"
+    },
+    {
+     "id": "s-schedule",
+     "label": "Schedule the listening surveys for the zones in rank order"
+    },
+    {
+     "id": "s-brief",
+     "label": "Brief the survey crew on the zone maps and the fittings to be sounded"
+    }
+   ],
+   "configuration": "Scope: planning one leak detection campaign.",
+   "correctOrder": [
+    "s-night",
+    "s-rank",
+    "s-zones",
+    "s-schedule",
+    "s-brief"
+   ],
+   "explanation": "Leaks reveal themselves at night when legitimate use is lowest, so night flow decides where the crew time goes. Ranking focuses effort on the worst area first, and zones are made small enough that a leak can be narrowed down in one pass.",
+   "id": "c1wd-process86",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the planning steps for a leak detection survey using district night flow data.",
+   "revision": "r1",
+   "topicId": "leak-survey-planning"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The crew is sounding fittings along one street in a suspect zone.",
+   "cards": [
+    {
+     "id": "s-first",
+     "label": "Place the listening device on the first fitting and record the noise level"
+    },
+    {
+     "id": "s-move",
+     "label": "Move to the next fitting along the main and record its noise level"
+    },
+    {
+     "id": "s-compare",
+     "label": "Compare the readings to find where the noise is strongest"
+    },
+    {
+     "id": "s-narrow",
+     "label": "Sound the fittings and services around the strongest point to narrow the location"
+    },
+    {
+     "id": "s-mark",
+     "label": "Mark the most likely leak location on the road and in the survey record"
+    }
+   ],
+   "configuration": "Scope: one listening survey along a street.",
+   "correctOrder": [
+    "s-first",
+    "s-move",
+    "s-compare",
+    "s-narrow",
+    "s-mark"
+   ],
+   "explanation": "Leak noise is loudest closest to the leak, so the survey is a comparison exercise. Readings build fitting by fitting, the strongest area is narrowed with more contact points, and the marked spot is what the repair crew will excavate.",
+   "id": "c1wd-process87",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for pinpointing a leak with a listening device along a main.",
+   "revision": "r1",
+   "topicId": "leak-listening-survey"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. Two fittings bracket the suspect section and both are accessible.",
+   "cards": [
+    {
+     "id": "s-place",
+     "label": "Place one correlator sensor on each of the two fittings bracketing the suspect section"
+    },
+    {
+     "id": "s-record",
+     "label": "Record the leak noise arriving at both sensors"
+    },
+    {
+     "id": "s-compute",
+     "label": "Use the time difference and the pipe distance to compute the leak position"
+    },
+    {
+     "id": "s-verify",
+     "label": "Verify the computed position by listening directly above it"
+    },
+    {
+     "id": "s-mark",
+     "label": "Mark the verified position and raise the repair work order"
+    }
+   ],
+   "configuration": "Scope: one leak correlation on a suspect section of main.",
+   "correctOrder": [
+    "s-place",
+    "s-record",
+    "s-compute",
+    "s-verify",
+    "s-mark"
+   ],
+   "explanation": "Correlation works because the same leak noise reaches two sensors at different times. The sensors must bracket the leak, the time difference gives the position, and a surface listening check verifies the maths before anyone digs.",
+   "id": "c1wd-process88",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for locating a leak with a noise correlator.",
+   "revision": "r1",
+   "topicId": "leak-correlation"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The listening survey found strong noise but no visible water at the surface.",
+   "cards": [
+    {
+     "id": "s-listen",
+     "label": "Listen again at the fittings nearest the marked point to confirm the noise is unchanged"
+    },
+    {
+     "id": "s-barhole",
+     "label": "Drill a small bar hole over the main at the marked point and listen with a probe"
+    },
+    {
+     "id": "s-classify",
+     "label": "Classify the leak by the noise strength and any water found in the bar hole"
+    },
+    {
+     "id": "s-order",
+     "label": "Raise a repair work order with the location, classification and priority"
+    },
+    {
+     "id": "s-monitor",
+     "label": "Record the estimated loss and flag the site for recheck if the repair is deferred"
+    }
+   ],
+   "configuration": "Scope: confirming one suspected leak before excavation.",
+   "correctOrder": [
+    "s-listen",
+    "s-barhole",
+    "s-classify",
+    "s-order",
+    "s-monitor"
+   ],
+   "explanation": "Excavation is expensive, so the leak is confirmed as strongly as possible from the surface first. The bar hole puts the probe close to the pipe, the classification sets the repair priority, and deferred leaks stay on record with their estimated loss.",
+   "id": "c1wd-process89",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for confirming a suspected underground leak before it is scheduled for repair.",
+   "revision": "r1",
+   "topicId": "leak-confirmation"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. A visible leak at a hydrant base was found during the survey.",
+   "cards": [
+    {
+     "id": "s-source",
+     "label": "Determine whether the water is coming from the hydrant drain, the flange or the main"
+    },
+    {
+     "id": "s-isolate",
+     "label": "Close the hydrant isolation valve if the leak is at the flange or main"
+    },
+    {
+     "id": "s-measure",
+     "label": "Estimate the leak rate from the flow at the surface"
+    },
+    {
+     "id": "s-order",
+     "label": "Raise the repair work order with the source, rate and priority"
+    },
+    {
+     "id": "s-record",
+     "label": "Enter the leak in the water loss records"
+    }
+   ],
+   "configuration": "Scope: one visible leak found at a hydrant during survey work.",
+   "correctOrder": [
+    "s-source",
+    "s-isolate",
+    "s-measure",
+    "s-order",
+    "s-record"
+   ],
+   "explanation": "Water at a hydrant base has three common sources with very different urgency, so the source is identified first. A flange or main leak is isolated, the rate sets the priority on the work order, and the loss is recorded for the system water balance.",
+   "id": "c1wd-process90",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps when a leak detection survey finds water surfacing at a hydrant base.",
+   "revision": "r1",
+   "topicId": "leak-visible-response"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. No flushing, breaks or construction are reported near the address.",
+   "cards": [
+    {
+     "id": "s-details",
+     "label": "Take the complaint details and check for known work or outages in the area"
+    },
+    {
+     "id": "s-tap",
+     "label": "Measure the pressure at an outside tap at the property with a gauge"
+    },
+    {
+     "id": "s-compare",
+     "label": "Measure or check the pressure at the nearest hydrant for comparison"
+    },
+    {
+     "id": "s-valves",
+     "label": "Check the curb stop and meter valves at the property are fully open"
+    },
+    {
+     "id": "s-escalate",
+     "label": "If street pressure is also low, escalate it as a system investigation and log the case"
+    }
+   ],
+   "configuration": "Scope: one low pressure complaint at a home.",
+   "correctOrder": [
+    "s-details",
+    "s-tap",
+    "s-compare",
+    "s-valves",
+    "s-escalate"
+   ],
+   "explanation": "Known work explains many complaints before a visit is needed. Comparing the house pressure with the hydrant pressure separates a property problem from a street problem, the property valves are the common property cause, and a genuinely low street pressure becomes a system investigation.",
+   "id": "c1wd-process91",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for investigating a low water pressure complaint.",
+   "revision": "r1",
+   "topicId": "low-pressure-complaint"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The water turned brown this morning and no break is reported on the street.",
+   "cards": [
+    {
+     "id": "s-details",
+     "label": "Record when the discolouration started and whether it is in the hot water, the cold water or both"
+    },
+    {
+     "id": "s-events",
+     "label": "Check for recent flushing, breaks or valve work near the address"
+    },
+    {
+     "id": "s-advise",
+     "label": "Advise the customer to run a cold water tap until the water clears"
+    },
+    {
+     "id": "s-visit",
+     "label": "If it does not clear, visit and measure the chlorine residual and check the water at the curb"
+    },
+    {
+     "id": "s-flush",
+     "label": "Schedule flushing of the street main if the problem is in the main, and log the case"
+    }
+   ],
+   "configuration": "Scope: one dirty water complaint at a home.",
+   "correctOrder": [
+    "s-details",
+    "s-events",
+    "s-advise",
+    "s-visit",
+    "s-flush"
+   ],
+   "explanation": "Hot water only discolouration points at the home water heater, while cold water discolouration after nearby work is usually disturbed sediment. The cold tap flush clears most cases, a visit with a residual check handles the rest, and main flushing is scheduled only when the main itself is the source.",
+   "id": "c1wd-process92",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for investigating a dirty water complaint from a customer.",
+   "revision": "r1",
+   "topicId": "dirty-water-complaint"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The customer says the water looks milky but tastes normal.",
+   "cards": [
+    {
+     "id": "s-glass",
+     "label": "Fill a clear glass with cold water from the customers tap"
+    },
+    {
+     "id": "s-watch",
+     "label": "Watch whether the cloudiness clears from the bottom of the glass upward"
+    },
+    {
+     "id": "s-explain",
+     "label": "If it clears upward, explain that dissolved air from pressure in the main causes the bubbles"
+    },
+    {
+     "id": "s-check",
+     "label": "Check for recent repairs or pressure changes in the area that would add air"
+    },
+    {
+     "id": "s-log",
+     "label": "Log the complaint and the glass test result"
+    }
+   ],
+   "configuration": "Scope: one white or milky water complaint.",
+   "correctOrder": [
+    "s-glass",
+    "s-watch",
+    "s-explain",
+    "s-check",
+    "s-log"
+   ],
+   "explanation": "The glass test separates harmless dissolved air from other causes in one minute: air bubbles rise and clear from the bottom up. The explanation reassures the customer, the area check finds why air increased, and the log closes the case.",
+   "id": "c1wd-process93",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for investigating a report of white or milky water at a home.",
+   "revision": "r1",
+   "topicId": "white-water-complaint"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. It is a cold morning and the customer had water yesterday.",
+   "cards": [
+    {
+     "id": "s-account",
+     "label": "Check for planned shutoffs, breaks or account shutoffs affecting the address"
+    },
+    {
+     "id": "s-curb",
+     "label": "Check the curb stop position and confirm it is open"
+    },
+    {
+     "id": "s-meter",
+     "label": "Check the meter valves inside the property are open"
+    },
+    {
+     "id": "s-freeze",
+     "label": "In freezing weather, check whether the service or the indoor plumbing may be frozen"
+    },
+    {
+     "id": "s-dispatch",
+     "label": "Dispatch a crew with the finding so far and log the case"
+    }
+   ],
+   "configuration": "Scope: one no water complaint, checked from the office outward.",
+   "correctOrder": [
+    "s-account",
+    "s-curb",
+    "s-meter",
+    "s-freeze",
+    "s-dispatch"
+   ],
+   "explanation": "Most no water calls are explained by a shutoff or a closed valve, so records and valve positions are checked before anyone assumes a break. The checks work from the street inward, freezing is considered in cold weather, and the crew is dispatched with everything already known.",
+   "id": "c1wd-process94",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the checks for a customer report of no water at a home.",
+   "revision": "r1",
+   "topicId": "no-water-complaint"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The customer reports banging pipes when taps close quickly.",
+   "cards": [
+    {
+     "id": "s-details",
+     "label": "Record when the noise happens and which fixtures trigger it"
+    },
+    {
+     "id": "s-pressure",
+     "label": "Measure the static pressure at the property"
+    },
+    {
+     "id": "s-visit",
+     "label": "Visit and have a tap closed quickly while listening at the meter and the service entry"
+    },
+    {
+     "id": "s-cause",
+     "label": "Identify whether the cause is high pressure, a loose pipe or a faulty fixture in the home"
+    },
+    {
+     "id": "s-advise",
+     "label": "Advise the customer of the cause and the fix, and log the case"
+    }
+   ],
+   "configuration": "Scope: one water hammer noise complaint.",
+   "correctOrder": [
+    "s-details",
+    "s-pressure",
+    "s-visit",
+    "s-cause",
+    "s-advise"
+   ],
+   "explanation": "Water hammer is worst where pressure is high and valves close fast, so the pattern of the noise and the static pressure frame the visit. Reproducing the noise at the service entry locates the cause, and most fixes are on the customer side, which the advice reflects.",
+   "id": "c1wd-process95",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for investigating a customer complaint about banging pipes.",
+   "revision": "r1",
+   "topicId": "water-hammer-complaint"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. A cold snap is forecast and the system has services that froze in past winters.",
+   "cards": [
+    {
+     "id": "s-list",
+     "label": "Pull the list of shallow and previously frozen services from the records"
+    },
+    {
+     "id": "s-notify",
+     "label": "Notify those customers before the cold snap to run a thin stream of water during extreme cold"
+    },
+    {
+     "id": "s-monitor",
+     "label": "Monitor overnight temperatures and the list of active running water advisories"
+    },
+    {
+     "id": "s-check",
+     "label": "Check on any customer who reports low flow during the cold snap the same day"
+    },
+    {
+     "id": "s-record",
+     "label": "Record the services on running water so their billing can be adjusted"
+    }
+   ],
+   "configuration": "Scope: preparing known freeze prone services for a cold snap.",
+   "correctOrder": [
+    "s-list",
+    "s-notify",
+    "s-monitor",
+    "s-check",
+    "s-record"
+   ],
+   "explanation": "The services that freeze are usually the ones that froze before, so records drive the warning list. A pencil thin stream keeps water moving through the service during the coldest nights, reports of low flow are early warnings of a freeze starting, and the billing record protects the customers who complied.",
+   "id": "c1wd-process96",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for preventing frozen services during a forecast cold snap.",
+   "revision": "r1",
+   "topicId": "frozen-service-prevention"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The customer has no water and the service is suspected frozen, with no sign of a burst pipe.",
+   "cards": [
+    {
+     "id": "s-confirm",
+     "label": "Confirm the freeze is in the service line and check for any split pipe or leaking"
+    },
+    {
+     "id": "s-tap",
+     "label": "Open a cold water tap in the home so melting water and pressure can escape"
+    },
+    {
+     "id": "s-thaw",
+     "label": "Apply the approved thawing method at the frozen section, working from the tap side toward the main"
+    },
+    {
+     "id": "s-flow",
+     "label": "Watch for flow to start at the open tap and let it run until it is steady"
+    },
+    {
+     "id": "s-check",
+     "label": "Check the service and meter for leaks once flow is restored, then advise the customer on prevention"
+    }
+   ],
+   "configuration": "Scope: thawing one frozen residential service.",
+   "correctOrder": [
+    "s-confirm",
+    "s-tap",
+    "s-thaw",
+    "s-flow",
+    "s-check"
+   ],
+   "explanation": "A split pipe changes the job completely, so it is ruled out first. The open tap gives expanding ice and melt water somewhere to go, thawing works from the tap side so melted water is never trapped against ice, and the restored line is leak checked before the crew leaves.",
+   "id": "c1wd-process97",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for thawing a frozen water service.",
+   "revision": "r1",
+   "topicId": "frozen-service-thawing"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. A major snowstorm ended overnight and hydrants are buried along several streets.",
+   "cards": [
+    {
+     "id": "s-priority",
+     "label": "Review the priority list, starting with hydrants near hospitals, schools and high risk buildings"
+    },
+    {
+     "id": "s-clear",
+     "label": "Clear the snow from around each hydrant so caps and the operating nut are accessible"
+    },
+    {
+     "id": "s-check",
+     "label": "Check each cleared hydrant for damage and confirm the barrel is not holding water"
+    },
+    {
+     "id": "s-mark",
+     "label": "Mark any hydrant that cannot be cleared or is damaged for follow up"
+    },
+    {
+     "id": "s-record",
+     "label": "Record the hydrants cleared and notify the fire department of any that remain buried"
+    }
+   ],
+   "configuration": "Scope: clearing hydrants after one major storm.",
+   "correctOrder": [
+    "s-priority",
+    "s-clear",
+    "s-check",
+    "s-mark",
+    "s-record"
+   ],
+   "explanation": "Crews cannot clear every street at once, so priority locations come first. A cleared hydrant is also checked while it is accessible, problem hydrants are marked rather than forgotten, and the fire department hears about any that stay buried.",
+   "id": "c1wd-process98",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for clearing fire hydrants after a major snowstorm.",
+   "revision": "r1",
+   "topicId": "winter-hydrant-clearing"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The shift included a flushing job, two samples and a valve operation.",
+   "cards": [
+    {
+     "id": "s-work",
+     "label": "Record the work completed, with locations and times"
+    },
+    {
+     "id": "s-samples",
+     "label": "Enter the sample results and confirm the custody forms were delivered"
+    },
+    {
+     "id": "s-valves",
+     "label": "Record every valve operated and the position it was left in"
+    },
+    {
+     "id": "s-defects",
+     "label": "Raise work orders for every deficiency found during the shift"
+    },
+    {
+     "id": "s-handover",
+     "label": "Sign the log and brief the incoming operator on anything outstanding"
+    }
+   ],
+   "configuration": "Scope: completing the distribution log at the end of one shift.",
+   "correctOrder": [
+    "s-work",
+    "s-samples",
+    "s-valves",
+    "s-defects",
+    "s-handover"
+   ],
+   "explanation": "The log is written while the shift is fresh: work first, then results, then the valve positions the next crew will rely on. Deficiencies become work orders rather than notebook notes, and the signed handover transfers responsibility clearly.",
+   "id": "c1wd-process99",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for completing the end of shift distribution operations log.",
+   "revision": "r1",
+   "topicId": "shift-log-records"
+  },
+  {
+   "id": "c1wd-evidence01",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "After a main repair, one street in an Ontario town reports low pressure at every home, at all hours, while streets on either side are normal.",
+   "topicId": "distribution-pressure",
+   "level": "class1",
+   "assumptions": "Fictional street fed from a looped main through two isolation valves. Pressures in kPa. Repair records and valve records are available.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Street pressure reads 170 kPa steady, day and night, against a normal zone pressure of 380 kPa."
+    },
+    {
+     "id": "ev2",
+     "label": "The repair isolation valve at the west end of the street is found fully open."
+    },
+    {
+     "id": "ev3",
+     "label": "The east isolation valve position indicator shows open, but its stem has risen only a few millimetres and the valve was left near closed after the repair."
+    },
+    {
+     "id": "ev4",
+     "label": "A hydrant just east of that valve flows weakly, while a hydrant just west of it on the same main flows strongly."
+    },
+    {
+     "id": "ev5",
+     "label": "Opening the east valve fully in a supervised trial restores street pressure to 375 kPa within minutes."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The east isolation valve was left nearly closed after the repair and is throttling the street feed"
+     },
+     {
+      "id": "inf-b",
+      "label": "The street main collapsed during the repair and is blocked by soil"
+     },
+     {
+      "id": "inf-c",
+      "label": "Zone demand rose sharply and pulled pressure down across the whole zone"
+     },
+     {
+      "id": "inf-d",
+      "label": "The street pressure gauge is faulty and the real pressure is normal"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Only the nearly closed east valve fits every observation: steady low pressure at all hours, a strong hydrant west of the valve and a weak one east of it, and full recovery when the valve is opened in a trial. Zone demand cannot explain normal pressure on both neighbouring streets, and a faulty gauge cannot explain weak hydrant flow or the trial result."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best confirms the explanation and guides the fix?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Count and record the east valve turns to fully open and compare with the valve record card"
+     },
+     {
+      "id": "nc-b",
+      "label": "Excavate the middle of the street main to look for a collapse"
+     },
+     {
+      "id": "nc-c",
+      "label": "Replace the street pressure gauge and wait a week"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Counting turns against the valve record confirms how far the valve was from fully open and documents the as found condition before it is corrected."
+   },
+   "clueText": {
+    "nc-a": "The valve takes 22 turns to fully open against a record of 24 turns for this valve, confirming it was left near closed.",
+    "nc-b": "Excavation is costly and the trial opening already restored pressure, so a collapse is not supported.",
+    "nc-c": "The gauge agreed with hydrant flow behaviour, so replacing it would not test the cause."
+   }
+  },
+  {
+   "id": "c1wd-evidence02",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A growing subdivision in Ontario has good pressure at night but weak pressure every weekday morning, and the problem gets a little worse each year.",
+   "topicId": "distribution-pressure",
+   "level": "class1",
+   "assumptions": "Fictional subdivision fed by one long 150 mm dead end main sized for the first phase only. Pressure logging over two weeks is available.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Static pressure at the far end at 03:00 is 390 kPa, but it falls to 150 kPa between 07:00 and 08:30 on weekdays."
+    },
+    {
+     "id": "ev2",
+     "label": "Weekend mornings and evenings show much smaller pressure drops at the same homes."
+    },
+    {
+     "id": "ev3",
+     "label": "A hydrant flow test at the far end gives a low available flow while residual pressure falls steeply as flow increases."
+    },
+    {
+     "id": "ev4",
+     "label": "Pressure at the subdivision entrance stays near 400 kPa even during the morning drop at the far end."
+    },
+    {
+     "id": "ev5",
+     "label": "Occupied homes in the subdivision have doubled since the main was installed, with no looping main added."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "A pressure reducing valve feeding the subdivision is failing closed"
+     },
+     {
+      "id": "inf-b",
+      "label": "Friction loss in the long, now undersized dead end main drops far end pressure whenever demand peaks"
+     },
+     {
+      "id": "inf-c",
+      "label": "The elevated tank serving the zone is too small and empties each morning"
+     },
+     {
+      "id": "inf-d",
+      "label": "A large underground leak at the far end opens only on weekday mornings"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Entrance pressure stays normal while far end pressure collapses only under peak flow, and the hydrant test shows pressure falling steeply with flow. That pattern is friction loss in a long undersized main carrying twice its design demand. A tank or zone problem would drop entrance pressure too, and a leak would not follow the weekday demand pattern or spare weekends."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best confirms the explanation and guides the fix?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Compare logged entrance and far end pressures during the same peak to confirm the loss is along the main"
+     },
+     {
+      "id": "nc-b",
+      "label": "Raise the pressure reducing valve setpoint and recheck in a month"
+     },
+     {
+      "id": "nc-c",
+      "label": "Close the subdivision feed each night to rebuild pressure"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Paired logging at the entrance and far end during one peak directly measures the friction loss along the main and separates it from any zone supply problem."
+   },
+   "clueText": {
+    "nc-a": "Paired logs show the entrance at 398 kPa while the far end falls to 152 kPa at the same minute, confirming loss along the main.",
+    "nc-b": "There is no pressure reducing valve on this feed, and raising a setpoint would not change friction loss at peak flow.",
+    "nc-c": "Closing the feed nightly does not test the cause and would leave homes without water."
+   }
+  },
+  {
+   "id": "c1wd-evidence03",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Homes in the lowest part of an Ontario pressure zone report banging pipes and two water heater relief valves lifting, all starting in the past week.",
+   "topicId": "distribution-pressure",
+   "level": "class1",
+   "assumptions": "Fictional zone fed from a higher zone through a pressure reducing valve station. Normal downstream pressure is about 350 kPa.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Downstream pressure at the low end now reads 610 kPa steady, day and night."
+    },
+    {
+     "id": "ev2",
+     "label": "Upstream pressure above the station is 640 kPa, close to the downstream reading."
+    },
+    {
+     "id": "ev3",
+     "label": "The reducing valve downstream gauge used to hold 350 kPa and the valve has not been adjusted in two years."
+    },
+    {
+     "id": "ev4",
+     "label": "Streets in the higher part of the same zone, farther from the station, read lower pressures than the low end for the first time."
+    },
+    {
+     "id": "ev5",
+     "label": "A trial closing of the station bypass and manual throttling of the reducing valve brings downstream pressure back toward 350 kPa."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Zone demand has fallen so much that pressure naturally rose to 610 kPa"
+     },
+     {
+      "id": "inf-b",
+      "label": "The elevated tank was overfilled and is pushing extra head into the zone"
+     },
+     {
+      "id": "inf-c",
+      "label": "The pressure reducing valve has failed toward open, so downstream pressure is following upstream pressure"
+     },
+     {
+      "id": "inf-d",
+      "label": "Every home gauge in the low end has drifted high at the same time"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "Downstream pressure nearly equals upstream pressure and no longer holds its old 350 kPa setpoint, and manual control of the valve restores the setpoint in a trial. That is a reducing valve failed toward open. Falling demand cannot raise pressure above the controlled setpoint of a working valve, and many home gauges cannot all drift together while the station gauge agrees with them."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best confirms the explanation and guides the fix?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Test the reducing valve response by stepping the setpoint and watching downstream pressure follow or not follow"
+     },
+     {
+      "id": "nc-b",
+      "label": "Tell residents to open taps at night to bleed off the extra pressure"
+     },
+     {
+      "id": "nc-c",
+      "label": "Lower the elevated tank level by one metre and recheck next week"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "A setpoint step test shows whether the valve still controls downstream pressure at all, which is the direct test of valve failure."
+   },
+   "clueText": {
+    "nc-a": "Downstream pressure does not change when the setpoint is stepped, confirming the valve is not controlling and needs repair.",
+    "nc-b": "Bleeding water at taps wastes water and does not test or fix a failed valve.",
+    "nc-c": "Tank level changes head by only about 10 kPa per metre, far too little to explain a 260 kPa rise."
+   }
+  },
+  {
+   "id": "c1wd-evidence04",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A small booster station lifting water to an Ontario hilltop area has lost capacity: it holds pressure on quiet days but cannot keep up on summer afternoons.",
+   "topicId": "distribution-pumps",
+   "level": "class1",
+   "assumptions": "Fictional duplex booster station with a small hydropneumatic pressure tank on the discharge header. Run records are available.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Both pumps start and stop far more often than last year, sometimes every two minutes under steady demand."
+    },
+    {
+     "id": "ev2",
+     "label": "Discharge pressure swings widely between pump starts instead of holding a narrow band."
+    },
+    {
+     "id": "ev3",
+     "label": "The pressure tank feels completely full of water and no air cushion is found when its test fitting is opened."
+    },
+    {
+     "id": "ev4",
+     "label": "Each pump alone passes a flow test at its rated point when run continuously."
+    },
+    {
+     "id": "ev5",
+     "label": "Station demand records show no increase over last summer."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Both pump impellers have worn out at the same time"
+     },
+     {
+      "id": "inf-b",
+      "label": "The pressure tank has lost its air charge, so pumps short cycle and cannot hold steady pressure under demand"
+     },
+     {
+      "id": "inf-c",
+      "label": "A new large customer is drawing the station down each afternoon"
+     },
+     {
+      "id": "inf-d",
+      "label": "The discharge check valves are both stuck fully open"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Pumps that each pass a rated flow test are not worn out, and demand is unchanged. A waterlogged pressure tank with no air cushion explains the rapid cycling and wide pressure swings, and cycling pumps cannot sustain afternoon demand. Stuck open check valves would not remove the air cushion or cause this cycling pattern."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best confirms the explanation and guides the fix?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Isolate and drain the pressure tank, check its air charge and bladder, and restore the specified charge"
+     },
+     {
+      "id": "nc-b",
+      "label": "Replace both pumps with larger models"
+     },
+     {
+      "id": "nc-c",
+      "label": "Raise the pump cut in pressure setting by 100 kPa"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Checking the tank air charge and bladder tests the waterlogging explanation directly and is the repair path if the bladder has failed."
+   },
+   "clueText": {
+    "nc-a": "The tank bladder is found ruptured and the tank is solid with water; a replacement tank restores a narrow pressure band and normal cycling.",
+    "nc-b": "Larger pumps would cycle even harder against a waterlogged tank and do not address the missing air cushion.",
+    "nc-c": "Raising cut in pressure widens swings further and does not restore the air cushion."
+   }
+  },
+  {
+   "id": "c1wd-evidence05",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "One older Ontario street has slowly lost flow over ten years: hydrants that once flowed strongly now produce a weak stream, though static pressure is unchanged.",
+   "topicId": "distribution-pressure",
+   "level": "class1",
+   "assumptions": "Fictional 100 mm cast iron main installed in the 1950s. Hydrant flow test records from past years are kept.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Static pressure on the street is 360 kPa, the same as ten years ago."
+    },
+    {
+     "id": "ev2",
+     "label": "Hydrant flow at a set residual pressure has fallen by more than half over ten years in the test records."
+    },
+    {
+     "id": "ev3",
+     "label": "A cut out pipe coupon from a repair shows the bore narrowed by thick, rough rust tubercles."
+    },
+    {
+     "id": "ev4",
+     "label": "Streets with newer plastic mains in the same zone show no loss of hydrant flow."
+    },
+    {
+     "id": "ev5",
+     "label": "Flushing brings rusty water at first, then clear water, but hydrant flow the next week is unchanged."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Zone static pressure has been falling for ten years"
+     },
+     {
+      "id": "inf-b",
+      "label": "Every hydrant on the street has the same mechanical fault"
+     },
+     {
+      "id": "inf-c",
+      "label": "Internal tuberculation has narrowed and roughened the main, cutting its carrying capacity"
+     },
+     {
+      "id": "inf-d",
+      "label": "Residents have installed larger fixtures that use the flow before it reaches the hydrants"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "Static pressure is unchanged, so supply head is not the problem. Falling hydrant flow over years, a coupon showing a tubercle narrowed bore, and normal flow on newer plastic mains all point to tuberculation reducing capacity. Flushing removes loose sediment only, which is why flow does not recover the next week."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best confirms the explanation and guides the fix?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Run a hydrant flow test before and after a mechanical cleaning program on one section to confirm capacity can be recovered"
+     },
+     {
+      "id": "nc-b",
+      "label": "Raise zone pressure by 100 kPa to push more water through the street"
+     },
+     {
+      "id": "nc-c",
+      "label": "Replace all hydrants on the street with new models"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "A before and after flow test around cleaning one section directly tests whether removing the internal deposits restores capacity."
+   },
+   "clueText": {
+    "nc-a": "After cleaning, the test section hydrant flow rises close to its ten year old value, confirming tuberculation was the limit.",
+    "nc-b": "Raising pressure adds stress to an old main and does not remove the deposits narrowing it.",
+    "nc-c": "The hydrants pass strong flows on other mains during testing, so the hydrants are not the restriction."
+   }
+  },
+  {
+   "id": "c1wd-evidence06",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "An Ontario factory district loses pressure for about one hour at the same time every weekday, then recovers on its own.",
+   "topicId": "distribution-pressure",
+   "level": "class1",
+   "assumptions": "Fictional district with one large food plant. Pressure loggers were placed at three points for one week.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Pressure falls to 180 kPa from 14:00 to 15:00 on weekdays only, at all three loggers in the district."
+    },
+    {
+     "id": "ev2",
+     "label": "The food plant fills a large process tank from 14:00 to 15:00 daily, drawing through a 200 mm service with its booster running."
+    },
+    {
+     "id": "ev3",
+     "label": "Pressure in the zone outside the district stays normal during the same hour."
+    },
+    {
+     "id": "ev4",
+     "label": "When the plant shuts down for a holiday week, the daily pressure dip does not occur."
+    },
+    {
+     "id": "ev5",
+     "label": "Hydrant flow tests outside the dip hour show normal available flow for the district."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "A district valve is closing on a timer each afternoon"
+     },
+     {
+      "id": "inf-b",
+      "label": "The zone elevated tank empties at 14:00 every day"
+     },
+     {
+      "id": "inf-c",
+      "label": "The food plant tank filling draw exceeds what the district main can deliver without a large pressure drop"
+     },
+     {
+      "id": "inf-d",
+      "label": "All three pressure loggers share the same battery fault at the same hour"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "The dip matches the plant filling schedule exactly, disappears during the plant shutdown week, and is confined to the district while the wider zone stays normal. That ties the drop to the plant draw on the local main. A tank problem would affect the wider zone, and three loggers cannot share an identical one hour battery fault that also matches the plant schedule."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best confirms the explanation and guides the fix?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Log the plant service flow and district pressure together during one filling cycle to confirm the draw and drop coincide"
+     },
+     {
+      "id": "nc-b",
+      "label": "Install a larger zone tank to cover the afternoon hour"
+     },
+     {
+      "id": "nc-c",
+      "label": "Ask all district homes to stop using water from 14:00 to 15:00"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Simultaneous service flow and pressure logging confirms the size and timing of the plant draw against the pressure drop, which supports a filling schedule or storage fix at the plant."
+   },
+   "clueText": {
+    "nc-a": "Service flow peaks at the plant design fill rate in the same minutes that district pressure bottoms out, confirming the draw causes the drop.",
+    "nc-b": "Zone storage is normal during the dip, so a larger tank would not fix a local main capacity limit.",
+    "nc-c": "Restricting homes does not test the cause and the plant draw alone accounts for the drop."
+   }
+  },
+  {
+   "id": "c1wd-evidence07",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Operators are sure a gate valve on an Ontario street is open because its stem turns, yet almost no water passes it during a flow test.",
+   "topicId": "distribution-valves",
+   "level": "class1",
+   "assumptions": "Fictional 200 mm gate valve, 30 years old, on a feed main. The valve was last exercised five years ago.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "The operating nut turns the full normal number of turns and the stem rises as if opening."
+    },
+    {
+     "id": "ev2",
+     "label": "Flow through the valve stays near zero at every stem position during a controlled flow test."
+    },
+    {
+     "id": "ev3",
+     "label": "Pressure is normal on the upstream side and low on the downstream side with the valve supposedly open."
+    },
+    {
+     "id": "ev4",
+     "label": "A second valve of the same age on the next street operates and passes flow normally."
+    },
+    {
+     "id": "ev5",
+     "label": "Listening at the valve body during the test gives no sound of water passing at any position."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The downstream main is blocked by a construction debris plug"
+     },
+     {
+      "id": "inf-b",
+      "label": "The valve gate has detached from its stem, so the stem moves but the gate stays seated and closed"
+     },
+     {
+      "id": "inf-c",
+      "label": "The flow meter used in the test is reading zero in error"
+     },
+     {
+      "id": "inf-d",
+      "label": "The upstream main has run dry"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "The stem rises normally yet no flow passes at any position, with normal upstream pressure and silence at the valve body. A detached gate explains a stem that moves without opening the port. Upstream pressure rules out a dry main, and the silent body with low downstream pressure rules out a meter error alone."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best confirms the explanation and guides the fix?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Excavate and open the valve for internal inspection after isolating and draining the section"
+     },
+     {
+      "id": "nc-b",
+      "label": "Keep exercising the valve daily for a month to free it"
+     },
+     {
+      "id": "nc-c",
+      "label": "Abandon the feed and loop the street from the other end permanently"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Internal inspection is the direct confirmation for a detached gate and allows the valve to be repaired or replaced in the same excavation."
+   },
+   "clueText": {
+    "nc-a": "The opened valve shows the gate separated from the stem and sitting in the closed position, confirming the failure.",
+    "nc-b": "Exercising cannot reattach a detached gate and the flow test already shows no movement of water.",
+    "nc-c": "Looping may help the street, but it leaves a failed valve unconfirmed in the ground."
+   }
+  },
+  {
+   "id": "c1wd-evidence08",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A whole Ontario pressure zone has drifted to lower pressures over one season, worst at the far end, with no single day when it changed.",
+   "topicId": "distribution-pressure",
+   "level": "class1",
+   "assumptions": "Fictional zone supplied by pumps filling an elevated tank, with the tank altitude valve controlling inflow. Tank and pump records are available.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Zone pressures are down about 60 kPa from last season at all points, and down most at peak hours."
+    },
+    {
+     "id": "ev2",
+     "label": "Tank level records show the tank has sat near empty for weeks, with the level rarely rising even at night."
+    },
+    {
+     "id": "ev3",
+     "label": "Pumps at the plant run longer hours than last season for the same delivered volume."
+    },
+    {
+     "id": "ev4",
+     "label": "The tank altitude valve is found with its pilot line strainer packed with rust flakes, and the valve responds sluggishly in a manual test."
+    },
+    {
+     "id": "ev5",
+     "label": "When the altitude valve is bypassed in a supervised trial, the tank fills overnight and zone pressures recover the next day."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Customer demand in the zone doubled in one season"
+     },
+     {
+      "id": "inf-b",
+      "label": "The tank altitude valve is failing to admit water, so the zone is running on pumps alone with no storage head"
+     },
+     {
+      "id": "inf-c",
+      "label": "All zone pressure gauges have drifted low together"
+     },
+     {
+      "id": "inf-d",
+      "label": "A zone wide leak is losing most of the pumped volume"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "A near empty tank for weeks, longer pump hours for the same volume, a fouled altitude valve pilot strainer, and full recovery when the valve is bypassed all point to the altitude valve starving the tank. Demand doubling would show in delivered volume, and a large leak would show as extra volume, not the same volume."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best confirms the explanation and guides the fix?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Clean the altitude valve pilot strainer and function test the valve through a full fill cycle"
+     },
+     {
+      "id": "nc-b",
+      "label": "Add a third high lift pump at the plant"
+     },
+     {
+      "id": "nc-c",
+      "label": "Lower the zone pressure complaint threshold so fewer calls are logged"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Cleaning the pilot strainer and function testing the valve confirms whether it now admits water and controls the fill cycle normally."
+   },
+   "clueText": {
+    "nc-a": "After cleaning, the valve opens fully on falling level and the tank completes a normal fill cycle overnight.",
+    "nc-b": "Pumps already deliver the same volume with longer hours, so pump capacity is not the limit.",
+    "nc-c": "Changing a complaint threshold does not test or fix the missing storage."
+   }
+  },
+  {
+   "id": "c1wd-evidence09",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Homes at the high point of an Ontario street lose pressure first whenever zone demand peaks, and gurgling sounds come from their taps.",
+   "topicId": "distribution-air",
+   "level": "class1",
+   "assumptions": "Fictional street rising to a summit with a combination air valve in a chamber at the high point. The chamber was last entered two years ago.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "High point homes drop to 90 kPa at peak while homes at the street foot hold 340 kPa at the same time."
+    },
+    {
+     "id": "ev2",
+     "label": "Opening a high point hydrant briefly releases a strong blast of air before a steady water flow begins."
+    },
+    {
+     "id": "ev3",
+     "label": "The summit air valve chamber is flooded and the valve float mechanism is seized with corrosion."
+    },
+    {
+     "id": "ev4",
+     "label": "Zone pressure and tank level are normal during the peak events."
+    },
+    {
+     "id": "ev5",
+     "label": "Bleeding air from the hydrant restores high point pressures for several days, then the problem slowly returns."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The summit air valve has failed closed, so air collects at the high point and blocks flow at peak demand"
+     },
+     {
+      "id": "inf-b",
+      "label": "The street main at the summit has collapsed"
+     },
+     {
+      "id": "inf-c",
+      "label": "High point homes have all developed service line leaks at once"
+     },
+     {
+      "id": "inf-d",
+      "label": "The zone tank is emptying every peak period"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Air blasting from the hydrant, temporary recovery after bleeding, normal zone pressure and tank level, and a seized summit air valve together show air accumulating at the high point. A collapse would not recover after bleeding air, and tank emptying is ruled out by the normal tank level."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best confirms the explanation and guides the fix?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Service or replace the summit air valve and verify it vents air during a controlled refill"
+     },
+     {
+      "id": "nc-b",
+      "label": "Raise the whole zone pressure by 80 kPa year round"
+     },
+     {
+      "id": "nc-c",
+      "label": "Tell high point homes to run taps all morning to keep air moving"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Servicing the air valve and watching it vent during a refill directly confirms the valve now removes air as it collects."
+   },
+   "clueText": {
+    "nc-a": "The serviced valve vents a steady stream of air during refill and then seals, and high point peak pressures hold the following week.",
+    "nc-b": "Higher zone pressure does not remove a trapped air pocket at the summit.",
+    "nc-c": "Running taps wastes water and the air would still collect between uses."
+   }
+  },
+  {
+   "id": "c1wd-evidence10",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A looped Ontario neighbourhood suddenly behaves like a dead end: pressure is fine on one side and weak on the other, starting the day after a contractor worked in the area.",
+   "topicId": "distribution-valves",
+   "level": "class1",
+   "assumptions": "Fictional looped grid normally fed from both ends. Contractor valve work was done for a new service the day before complaints began.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "East side pressures are normal at all hours; west side pressures fall to 160 kPa at peak."
+    },
+    {
+     "id": "ev2",
+     "label": "Two valves on the connecting main between the east and west sides are found closed, with fresh contractor tags on them."
+    },
+    {
+     "id": "ev3",
+     "label": "Those valves are recorded as normally open in the system valve book."
+    },
+    {
+     "id": "ev4",
+     "label": "No breaks, leaks, or pump changes occurred in the area that week."
+    },
+    {
+     "id": "ev5",
+     "label": "Opening both valves in a trial restores west side peak pressure to normal within the hour."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The west side main has become tuberculated overnight"
+     },
+     {
+      "id": "inf-b",
+      "label": "The contractor closed the two normally open loop valves, cutting the west side back to a single dead end feed"
+     },
+     {
+      "id": "inf-c",
+      "label": "West side demand tripled in one day"
+     },
+     {
+      "id": "inf-d",
+      "label": "The east side is stealing pressure through a new cross connection"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Two normally open loop valves found closed with fresh contractor tags, a one day onset, and instant recovery on opening them explain the dead end behaviour. Tuberculation and demand growth do not happen overnight, and no cross connection work was reported."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best confirms the explanation and guides the fix?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Reopen both valves, remove the tags, and update the contractor close out check to include valve position verification"
+     },
+     {
+      "id": "nc-b",
+      "label": "Install a booster pump for the west side"
+     },
+     {
+      "id": "nc-c",
+      "label": "Flush the west side mains for a full day"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Reopening and verifying the valves restores the loop, and adding a position check to contractor close out prevents a repeat."
+   },
+   "clueText": {
+    "nc-a": "Both valves are confirmed fully open by turn count, west side peak pressure holds normal for a week, and the close out form is updated.",
+    "nc-b": "A booster would mask a simple valve position problem and is not needed once the loop is restored.",
+    "nc-c": "Flushing does not reopen closed valves or restore the loop feed."
+   }
+  },
+  {
+   "id": "c1wd-evidence100",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A seasonal Ontario trailer park, reopened each May, delivers stale, warm tasting water with no residual for its first two weeks every spring.",
+   "topicId": "distribution-water-age",
+   "level": "class1",
+   "assumptions": "Fictional park with its own looped mains, drained partially and unused from October to April. The town feed residual is strong.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Town water at the park entrance reads 0.85 mg/L on opening day."
+    },
+    {
+     "id": "ev2",
+     "label": "Park far end samples read 0.0 mg/L with a stale taste for the first two weeks, improving as occupancy and use rise."
+    },
+    {
+     "id": "ev3",
+     "label": "The park mains hold water all winter at very low turnover, and spring temperatures warm the shallow lines quickly."
+    },
+    {
+     "id": "ev4",
+     "label": "A full park flush at opening brings entrance quality water to the far end within a day."
+    },
+    {
+     "id": "ev5",
+     "label": "In a year when the flush was skipped, complaints lasted three weeks; in flush years they end within days."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The town feed to the park is failing each spring"
+     },
+     {
+      "id": "inf-b",
+      "label": "Water that sat in the park mains all winter is aged and depleted, and only flushing or weeks of use replace it"
+     },
+     {
+      "id": "inf-c",
+      "label": "The park storage tank is contaminating the spring water"
+     },
+     {
+      "id": "inf-d",
+      "label": "Spring runoff is entering the park mains"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Entrance water is strong on opening day, the far end improves exactly with use or flushing, and flush years end complaints in days while a skipped year lasted three weeks. The aged winter water in the park own mains explains it all; the park has no storage tank in this system, and runoff entry would threaten bacteriological results, which pass."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best confirms the explanation and guides the fix?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Make a full park flush and residual check part of the spring opening procedure every year"
+     },
+     {
+      "id": "nc-b",
+      "label": "Ask the town to raise its dose each May"
+     },
+     {
+      "id": "nc-c",
+      "label": "Let occupancy clear the water naturally each spring"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "A documented opening flush with a residual check starts every season with fresh water proven at the far end."
+   },
+   "clueText": {
+    "nc-a": "Opening day far end residual reads 0.7 mg/L after the flush and no stale complaints arrive that spring.",
+    "nc-b": "The town entrance already delivers 0.85 mg/L on opening day.",
+    "nc-c": "Natural clearing took two to three weeks of complaints, which the flush prevents."
+   }
+  },
+  {
+   "id": "c1wd-evidence11",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "One Ontario home has weak showers and slow filling appliances, but its garden hose fills a bucket at a normal rate outdoors.",
+   "topicId": "distribution-pressure",
+   "level": "class1",
+   "assumptions": "Fictional home with a pressure reducing valve on its service just inside the basement, installed 15 years ago. Street pressure is steady.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Static pressure at the outdoor tap, which is piped before the home reducing valve, is 420 kPa."
+    },
+    {
+     "id": "ev2",
+     "label": "Pressure at an indoor tap downstream of the home reducing valve is 140 kPa and falls further when a second tap opens."
+    },
+    {
+     "id": "ev3",
+     "label": "Bypassing the home reducing valve in a trial restores indoor pressure to near street pressure."
+    },
+    {
+     "id": "ev4",
+     "label": "Both neighbours on the same service street have normal indoor pressure."
+    },
+    {
+     "id": "ev5",
+     "label": "The home meter and strainer were cleaned last year and a recheck finds them clear."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The street main pressure has fallen for the whole block"
+     },
+     {
+      "id": "inf-b",
+      "label": "The home meter strainer is blocked again"
+     },
+     {
+      "id": "inf-c",
+      "label": "The home pressure reducing valve has failed and is over reducing indoor pressure"
+     },
+     {
+      "id": "inf-d",
+      "label": "The home has a hidden leak that uses most of its flow"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "Outdoor pressure before the valve is a healthy 420 kPa while indoor pressure after the valve is 140 kPa, the strainer is clear, and bypassing the valve restores indoor pressure. The failed home reducing valve is the only explanation consistent with all of these. A hidden leak would not be cured by bypassing the valve."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best confirms the explanation and guides the fix?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Replace the home pressure reducing valve and set it to the recommended household pressure"
+     },
+     {
+      "id": "nc-b",
+      "label": "Ask the utility to raise street pressure for the block"
+     },
+     {
+      "id": "nc-c",
+      "label": "Replace the home meter again"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Replacing the failed reducing valve and setting it correctly is the direct fix, verified by indoor pressure returning to a normal controlled value."
+   },
+   "clueText": {
+    "nc-a": "With the new valve set, indoor static pressure reads 350 kPa and showers run normally with two taps open.",
+    "nc-b": "Street pressure is already 420 kPa at the outdoor tap, so the street is not the problem.",
+    "nc-c": "The meter was rechecked clear, so replacing it again does not test the valve."
+   }
+  },
+  {
+   "id": "c1wd-evidence12",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Loud banging shakes the discharge piping of an Ontario booster station each time a pump stops, and a pipe joint has begun to weep.",
+   "topicId": "distribution-pressure",
+   "level": "class1",
+   "assumptions": "Fictional booster station at the foot of a long rising main to an elevated tank. A surge relief and air valve sit at the station high point.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Pressure logging at the station shows a sharp spike to 900 kPa within a second of each pump stop, against a normal 450 kPa."
+    },
+    {
+     "id": "ev2",
+     "label": "The bang and the spike occur only on pump stops, never on starts."
+    },
+    {
+     "id": "ev3",
+     "label": "The high point air valve at the station is found with its isolating valve closed for maintenance done months earlier."
+    },
+    {
+     "id": "ev4",
+     "label": "Check valves on both pumps were tested and close normally without slam when the air valve line is temporarily vented in a trial."
+    },
+    {
+     "id": "ev5",
+     "label": "The weeping joint is on the discharge header near the station, where the spike is recorded."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The pump motors are oversized and start too fast"
+     },
+     {
+      "id": "inf-b",
+      "label": "With the air valve isolated, pump stops send a pressure surge up the rising main that slams back at the station"
+     },
+     {
+      "id": "inf-c",
+      "label": "The discharge header is undersized for normal pumping"
+     },
+     {
+      "id": "inf-d",
+      "label": "The weeping joint is simply an old gasket failing with no pressure cause"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "A 900 kPa spike timed to pump stops only, an air valve left isolated after maintenance, and normal behaviour in a vented trial point to surge on pump stop with no air cushion or venting path. Starts cause no bang, so motor starting is not the cause, and normal pumping at 450 kPa does not explain a weeping joint that tracks the spikes."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best confirms the explanation and guides the fix?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Return the air valve to service and repeat pressure logging through several pump stops"
+     },
+     {
+      "id": "nc-b",
+      "label": "Slow every pump start with a longer ramp setting"
+     },
+     {
+      "id": "nc-c",
+      "label": "Replace the weeping gasket and take no other action"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Restoring the air valve and logging pump stops directly tests whether the surge is controlled, which is the safety critical question."
+   },
+   "clueText": {
+    "nc-a": "With the air valve in service, pump stop spikes fall to about 500 kPa and the banging stops, confirming surge control is restored.",
+    "nc-b": "The spikes occur on stops, not starts, so a start ramp change does not address them.",
+    "nc-c": "A new gasket alone would face the same 900 kPa spikes and likely weep again."
+   }
+  },
+  {
+   "id": "c1wd-evidence13",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A new Ontario subdivision reports low pressure only at its farthest crescent, and only while lawn sprinklers run across the subdivision in the evening.",
+   "topicId": "distribution-pressure",
+   "level": "class1",
+   "assumptions": "Fictional subdivision fed through a pressure reducing valve station set at 310 kPa when the first phase was built. The crescent is the highest ground in the subdivision.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Evening logging shows the crescent at 170 kPa while the subdivision entrance holds 305 kPa."
+    },
+    {
+     "id": "ev2",
+     "label": "The reducing valve station outlet gauge reads 310 kPa steady, matching its setpoint, during the same evenings."
+    },
+    {
+     "id": "ev3",
+     "label": "Sprinkler demand across the subdivision triples total inflow on those evenings."
+    },
+    {
+     "id": "ev4",
+     "label": "The crescent sits 18 m higher than the station, which alone accounts for about 175 kPa of static head difference."
+    },
+    {
+     "id": "ev5",
+     "label": "On rainy evenings with sprinklers off, crescent pressure is an acceptable 260 kPa."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The reducing valve has failed closed and starves the subdivision"
+     },
+     {
+      "id": "inf-b",
+      "label": "The crescent main is blocked by construction debris"
+     },
+     {
+      "id": "inf-c",
+      "label": "Elevation head plus friction loss at sprinkler demand leaves the high crescent short, because the station setpoint was chosen for the low first phase"
+     },
+     {
+      "id": "inf-d",
+      "label": "Residents on the crescent all have leaking services"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "The station holds its 310 kPa setpoint, so it has not failed closed. The crescent is 18 m higher, worth about 175 kPa of head, and friction loss grows when sprinkler demand triples, which together explain why only the high crescent and only on sprinkler evenings falls short. Debris blockage or leaks would not follow the rain pattern."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best confirms the explanation and guides the fix?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Log station outlet and crescent pressure together on a sprinkler evening to size a setpoint change for the higher ground"
+     },
+     {
+      "id": "nc-b",
+      "label": "Excavate the crescent main to search for debris"
+     },
+     {
+      "id": "nc-c",
+      "label": "Ban lawn sprinklers across the subdivision"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Paired logging sizes the actual elevation and friction loss, which is what a corrected setpoint or a small booster decision must be based on."
+   },
+   "clueText": {
+    "nc-a": "Paired logs confirm about 135 kPa of combined elevation and friction loss at sprinkler peak, supporting a setpoint review for the station.",
+    "nc-b": "Flow reaches the crescent and recovers fully on rainy evenings, so a debris blockage is not supported.",
+    "nc-c": "A ban does not measure the loss and is not needed to confirm the hydraulics."
+   }
+  },
+  {
+   "id": "c1wd-evidence14",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Pressure in one Ontario zone surges every time the tank fills at night: toilet valves fail and a relief valve at a school lifts repeatedly.",
+   "topicId": "distribution-pressure",
+   "level": "class1",
+   "assumptions": "Fictional zone where high lift pumps fill an elevated tank through the same main that feeds customers. Night filling is automatic.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Pressure loggers show zone pressure climbing to 700 kPa during the 01:00 to 03:00 fill window, against a normal 380 kPa."
+    },
+    {
+     "id": "ev2",
+     "label": "The pressure rise begins and ends exactly with the fill pump run times in the station log."
+    },
+    {
+     "id": "ev3",
+     "label": "The tank fill control valve, which should throttle as the tank nears full, is found stuck at full open with a broken actuator linkage."
+    },
+    {
+     "id": "ev4",
+     "label": "Daytime pressures with pumps off are normal everywhere in the zone."
+    },
+    {
+     "id": "ev5",
+     "label": "A supervised trial throttling the fill valve by hand holds zone pressure near 400 kPa through a full fill."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Night demand is so low that pressure naturally reaches 700 kPa"
+     },
+     {
+      "id": "inf-b",
+      "label": "The tank fill valve stuck full open lets fill pumps push their full head into the zone main all night"
+     },
+     {
+      "id": "inf-c",
+      "label": "The zone pressure reducing valve is set too high"
+     },
+     {
+      "id": "inf-d",
+      "label": "Temperature changes at night expand the water and raise pressure"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "The surge matches fill pump run times exactly, the fill valve is stuck full open with a broken linkage, and hand throttling holds normal pressure through a fill. Low night demand alone cannot push pressure to pump full head through a working throttling valve, and thermal expansion in an open distribution main does not create this pattern."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best confirms the explanation and guides the fix?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Repair the fill valve actuator and log zone pressure through the next automatic fill"
+     },
+     {
+      "id": "nc-b",
+      "label": "Tell customers to close their main shutoffs at night"
+     },
+     {
+      "id": "nc-c",
+      "label": "Run the fill pumps only in daytime from now on"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Repairing the actuator and logging an automatic fill verifies the valve throttles again and the surge is gone under normal operation."
+   },
+   "clueText": {
+    "nc-a": "After repair, the automatic fill peaks at 410 kPa in the zone and the school relief valve stays shut.",
+    "nc-b": "Asking customers to shut off water nightly is unsafe and does not test the valve.",
+    "nc-c": "Daytime filling would push the same uncontrolled head into a higher demand period."
+   }
+  },
+  {
+   "id": "c1wd-evidence15",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Free chlorine holds at 0.9 mg/L leaving an Ontario plant and at mid system taps, but a group of streets beyond a ground level reservoir reads 0.1 mg/L or less.",
+   "topicId": "distribution-residual",
+   "level": "class1",
+   "assumptions": "Fictional system with a ground level reservoir between the plant and the affected streets. Reservoir level and sampling records are available.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Samples at the reservoir inlet read 0.85 mg/L while samples at its outlet read 0.15 mg/L on the same day."
+    },
+    {
+     "id": "ev2",
+     "label": "The reservoir level cycles only between 85 and 95 percent full, so most of its volume sits for many days."
+    },
+    {
+     "id": "ev3",
+     "label": "Reservoir water temperature is 24 C and a sediment layer is visible through the inspection hatch."
+    },
+    {
+     "id": "ev4",
+     "label": "Streets fed directly from the plant, bypassing the reservoir, hold 0.8 mg/L."
+    },
+    {
+     "id": "ev5",
+     "label": "A trial that lowers the operating band and cycles the reservoir deeply raises outlet residual to 0.5 mg/L within days."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The plant chlorine dose has been cut without the operators knowing"
+     },
+     {
+      "id": "inf-b",
+      "label": "The reservoir stores water so long, warm and over sediment, that residual is consumed before the water leaves"
+     },
+     {
+      "id": "inf-c",
+      "label": "The affected streets have a large leak diluting the residual"
+     },
+     {
+      "id": "inf-d",
+      "label": "The outlet sampling tap is contaminated and reads falsely low"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Residual falls across the reservoir itself, from 0.85 to 0.15 mg/L, while direct fed streets hold 0.8 mg/L on the same plant dose. Shallow level cycling, warm water, sediment, and recovery under deep cycling all point to storage decay in the reservoir. A leak cannot remove chlorine selectively, and a faulty tap cannot explain the trial recovery pattern."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best confirms the explanation and guides the fix?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Set a deeper reservoir cycling range and schedule an interior cleaning inspection, then trend outlet residual daily"
+     },
+     {
+      "id": "nc-b",
+      "label": "Double the plant chlorine dose for the whole system"
+     },
+     {
+      "id": "nc-c",
+      "label": "Replace the reservoir outlet sampling tap and wait a month"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Deep cycling plus a cleaning inspection attacks the storage decay directly, and daily outlet trending verifies whether residual recovers and holds."
+   },
+   "clueText": {
+    "nc-a": "Outlet residual climbs to 0.55 mg/L and holds for two weeks under deep cycling, confirming storage age and sediment demand were the cause.",
+    "nc-b": "Doubling the plant dose would over chlorinate the direct fed streets that already hold 0.8 mg/L.",
+    "nc-c": "The tap agreed with a second flushed sample, so replacing it does not test storage decay."
+   }
+  },
+  {
+   "id": "c1wd-evidence16",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Chlorine residual is normal entering one Ontario street but nearly gone 400 m later, and the loss has grown worse over two summers.",
+   "topicId": "distribution-residual",
+   "level": "class1",
+   "assumptions": "Fictional street on an old unlined cast iron main. Paired sampling points bracket the street.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Paired same day samples read 0.8 mg/L at the street entrance and 0.1 mg/L at the far hydrant."
+    },
+    {
+     "id": "ev2",
+     "label": "The street main is unlined cast iron with heavy internal rust tubercles confirmed on a repair coupon."
+    },
+    {
+     "id": "ev3",
+     "label": "Flushing the street restores far end residual for about two days, then it decays again."
+    },
+    {
+     "id": "ev4",
+     "label": "A parallel street on a newer lined main, with the same water age, holds 0.6 mg/L at its far end."
+    },
+    {
+     "id": "ev5",
+     "label": "Iron in far end samples is elevated and the water there is slightly yellow after standing overnight."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Water age alone explains the loss, since the lined street loses residual the same way"
+     },
+     {
+      "id": "inf-b",
+      "label": "The rough rusted interior of the old main exerts a high chlorine demand that consumes residual along the street"
+     },
+     {
+      "id": "inf-c",
+      "label": "The far hydrant sample tap leaks and dilutes the sample"
+     },
+     {
+      "id": "inf-d",
+      "label": "The plant dose falls every afternoon when the street is sampled"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "The lined street with the same water age holds its residual, which rules out age alone. Heavy tuberculation on a repair coupon, elevated iron, and only two days of relief after flushing show the pipe wall demand consuming chlorine. A leaking sample tap would not raise iron or follow the flushing pattern."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best confirms the explanation and guides the fix?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Collect paired entrance and far end residuals before and after a cleaning and lining assessment section to size the wall demand"
+     },
+     {
+      "id": "nc-b",
+      "label": "Raise the plant dose until the far end reads 0.5 mg/L"
+     },
+     {
+      "id": "nc-c",
+      "label": "Sample the far end only right after flushing from now on"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Paired sampling around a cleaned section measures how much of the loss is wall demand and whether rehabilitation restores residual."
+   },
+   "clueText": {
+    "nc-a": "After the test section is cleaned, its far end residual rises from 0.1 to 0.55 mg/L at the same entrance residual, confirming wall demand.",
+    "nc-b": "Raising the plant dose enough for this street would push the rest of the system far above target.",
+    "nc-c": "Sampling only after flushing hides the normal condition instead of fixing it."
+   }
+  },
+  {
+   "id": "c1wd-evidence17",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "One Ontario pressure zone lost its chlorine residual over a weekend, while the rest of the system stayed normal, and Monday samples in the zone read zero.",
+   "topicId": "distribution-residual",
+   "level": "class1",
+   "assumptions": "Fictional zone with a booster chlorination station at its inlet that trims residual for the zone. Station logs are downloaded Monday.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Zone inlet samples upstream of the booster station read 0.7 mg/L all weekend."
+    },
+    {
+     "id": "ev2",
+     "label": "The booster station hypochlorite tote is found empty on Monday, and its low level alarm had been silenced during Friday maintenance."
+    },
+    {
+     "id": "ev3",
+     "label": "Station logs show the dosing pump ran all weekend against the empty tote."
+    },
+    {
+     "id": "ev4",
+     "label": "Zone samples recover to 0.6 mg/L within a day of a fresh tote being connected and the pump primed."
+    },
+    {
+     "id": "ev5",
+     "label": "Plant dose and all other zones held their normal residuals through the weekend."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "A zone wide contamination event consumed all the chlorine"
+     },
+     {
+      "id": "inf-b",
+      "label": "The booster chlorination station ran out of hypochlorite and dosed nothing all weekend after its alarm was silenced"
+     },
+     {
+      "id": "inf-c",
+      "label": "The zone main developed a sudden large leak of chlorinated water"
+     },
+     {
+      "id": "inf-d",
+      "label": "Weekend demand in the zone tripled and used up the residual"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Inlet water held 0.7 mg/L, the tote is empty, the pump ran dry with its alarm silenced, and residual recovered within a day of a fresh tote. That is a simple chemical outage. A contamination event large enough to zero a zone would show other quality changes, and neither a leak nor demand removes chlorine from water already in the mains."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best confirms the explanation and guides the fix?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Refill the tote, restore the low level alarm to active, and add a weekend tote level check to the station round"
+     },
+     {
+      "id": "nc-b",
+      "label": "Flush the entire zone for two days to restore residual"
+     },
+     {
+      "id": "nc-c",
+      "label": "Raise the plant dose to cover the zone permanently"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Restoring the alarm and adding a level check prevents a repeat silent outage, and zone trending verifies the booster is holding residual again."
+   },
+   "clueText": {
+    "nc-a": "Zone residual holds at 0.6 mg/L through the next weekend with the alarm active and the tote checked on rounds.",
+    "nc-b": "Flushing cannot add chlorine and the mains already receive 0.7 mg/L at the inlet.",
+    "nc-c": "The plant already delivers target residual to the zone inlet, so a plant increase is not the fix."
+   }
+  },
+  {
+   "id": "c1wd-evidence18",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "An Ontario plant online chlorine analyzer shows 1.1 mg/L leaving the plant, yet distribution samples across town have fallen to 0.2 mg/L over a week.",
+   "topicId": "distribution-residual",
+   "level": "class1",
+   "assumptions": "Fictional plant with an online analyzer on the treated water line and a bench DPD kit in the plant lab. Sampling is done by two methods.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Bench DPD tests at the plant outlet read 0.3 mg/L while the online analyzer beside them reads 1.1 mg/L."
+    },
+    {
+     "id": "ev2",
+     "label": "The analyzer sample line is found partly plugged with scale, so it delivers old sample water slowly to the sensor."
+    },
+    {
+     "id": "ev3",
+     "label": "Distribution bench samples agree with the plant bench result, not with the online analyzer."
+    },
+    {
+     "id": "ev4",
+     "label": "Chlorine feed pump stroke and tote use match a low dose, not the dose the analyzer value would need."
+    },
+    {
+     "id": "ev5",
+     "label": "After the sample line is cleaned and the analyzer calibrated, it reads 0.35 mg/L, matching the bench tests."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Distribution water age suddenly increased across the whole town"
+     },
+     {
+      "id": "inf-b",
+      "label": "The online analyzer has been reading falsely high on stale sample water, so the plant has been under dosing for a week"
+     },
+     {
+      "id": "inf-c",
+      "label": "Every bench DPD kit in town has failed at the same time"
+     },
+     {
+      "id": "inf-d",
+      "label": "A town wide leak is diluting the distribution residual"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Two independent bench methods agree with each other and with the low chemical use, while only the online analyzer disagrees, and its sample line is plugged with scale. After cleaning and calibration it matches the bench. That is a false high analyzer masking under dosing, not a town wide change that would also have to fool the chemical feed records."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best confirms the explanation and guides the fix?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Clean and calibrate the analyzer, verify it against bench DPD daily for a week, and restore the dose to target"
+     },
+     {
+      "id": "nc-b",
+      "label": "Trust the online analyzer and stop bench testing"
+     },
+     {
+      "id": "nc-c",
+      "label": "Flush all town mains to raise the residual"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Daily analyzer versus bench comparison verifies the instrument now tracks the true residual while the corrected dose restores distribution values."
+   },
+   "clueText": {
+    "nc-a": "Analyzer and bench readings agree within 0.05 mg/L for a week and distribution residual returns to 0.7 mg/L at the corrected dose.",
+    "nc-b": "The bench tests, feed records, and distribution samples all contradicted the analyzer.",
+    "nc-c": "Flushing does not add chlorine to water that is leaving the plant under dosed."
+   }
+  },
+  {
+   "id": "c1wd-evidence19",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Residuals in an Ontario industrial park are acceptable Tuesday to Friday but fail every Monday morning, and the park manager wants the plant dose raised.",
+   "topicId": "distribution-residual",
+   "level": "class1",
+   "assumptions": "Fictional industrial park loop fed from the town system. Most park businesses close on weekends.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Monday 08:00 samples at the park far end read 0.05 mg/L; by Tuesday noon the same tap reads 0.6 mg/L with no dose change."
+    },
+    {
+     "id": "ev2",
+     "label": "Park water use meters show near zero demand from Friday evening to Monday morning."
+    },
+    {
+     "id": "ev3",
+     "label": "The park loop is long and oversized for its weekday demand, and its far end warms to 22 C in summer."
+    },
+    {
+     "id": "ev4",
+     "label": "Town samples at the park entrance read 0.8 mg/L every day including Mondays."
+    },
+    {
+     "id": "ev5",
+     "label": "A Monday morning flush of the park loop restores far end residual within an hour, and complaints stop for that week."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The plant lowers its dose every weekend"
+     },
+     {
+      "id": "inf-b",
+      "label": "Weekend stagnation in the oversized park loop lets residual decay, and weekday use draws in fresh water again"
+     },
+     {
+      "id": "inf-c",
+      "label": "A park tenant discharges chlorine consuming waste into the mains on Mondays"
+     },
+     {
+      "id": "inf-d",
+      "label": "The Monday sampling officer uses a faulty test kit"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Entrance residual is normal on Mondays, park demand is near zero all weekend, and flushing or one day of weekday use restores the far end. That is weekend water age in an oversized loop. The plant dose is proven steady by the entrance samples, and a faulty kit would not be fixed by flushing."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best confirms the explanation and guides the fix?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Set an automatic or scheduled Monday flush for the park loop and trend Monday residuals before considering any dose change"
+     },
+     {
+      "id": "nc-b",
+      "label": "Raise the plant dose every Friday afternoon"
+     },
+     {
+      "id": "nc-c",
+      "label": "Fine the park tenants for the Monday failures"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "A scheduled Monday flush directly removes the aged weekend water, and trending shows whether Monday results pass without touching the plant dose."
+   },
+   "clueText": {
+    "nc-a": "Monday far end samples pass at 0.5 mg/L for four straight weeks under the flush schedule.",
+    "nc-b": "The entrance already reads 0.8 mg/L on Mondays, so the plant dose is not the gap.",
+    "nc-c": "No tenant discharge was found, and weekday results pass with the same tenants present."
+   }
+  }
+ ],
+ "missions": [
+  {
+   "id": "c1wd-mission61",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 61: The Prv Setpoint Adjustment Shift",
+   "tasks": [
+    {
+     "taskId": "c1wd-process40",
+     "revision": "r1",
+     "occurrenceId": "m61-t1"
+    },
+    {
+     "taskId": "c1wd-evidence01",
+     "revision": "r1",
+     "occurrenceId": "m61-t2"
+    }
+   ]
+  },
+  {
+   "id": "c1wd-mission62",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 62: The Distribution Pressure Shift",
+   "tasks": [
+    {
+     "taskId": "c1wd-evidence02",
+     "revision": "r1",
+     "occurrenceId": "m62-t1"
+    },
+    {
+     "taskId": "c1wd-process41",
+     "revision": "r1",
+     "occurrenceId": "m62-t2"
+    },
+    {
+     "taskId": "c1wd-process42",
+     "revision": "r1",
+     "occurrenceId": "m62-t3"
+    }
+   ]
+  },
+  {
+   "id": "c1wd-mission63",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 63: The Meter Accuracy Test Shift",
+   "tasks": [
+    {
+     "taskId": "c1wd-process43",
+     "revision": "r1",
+     "occurrenceId": "m63-t1"
+    },
+    {
+     "taskId": "c1wd-evidence03",
+     "revision": "r1",
+     "occurrenceId": "m63-t2"
+    },
+    {
+     "taskId": "c1wd-process44",
+     "revision": "r1",
+     "occurrenceId": "m63-t3"
+    },
+    {
+     "taskId": "c1wd-process45",
+     "revision": "r1",
+     "occurrenceId": "m63-t4"
+    }
+   ]
+  },
+  {
+   "id": "c1wd-mission64",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 64: The Distribution Pumps Shift",
+   "tasks": [
+    {
+     "taskId": "c1wd-evidence04",
+     "revision": "r1",
+     "occurrenceId": "m64-t1"
+    },
+    {
+     "taskId": "c1wd-process46",
+     "revision": "r1",
+     "occurrenceId": "m64-t2"
+    }
+   ]
+  },
+  {
+   "id": "c1wd-mission65",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 65: The Meter Fault Diagnosis Shift",
+   "tasks": [
+    {
+     "taskId": "c1wd-process47",
+     "revision": "r1",
+     "occurrenceId": "m65-t1"
+    },
+    {
+     "taskId": "c1wd-evidence05",
+     "revision": "r1",
+     "occurrenceId": "m65-t2"
+    },
+    {
+     "taskId": "c1wd-process48",
+     "revision": "r1",
+     "occurrenceId": "m65-t3"
+    }
+   ]
+  },
+  {
+   "id": "c1wd-mission66",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 66: The Distribution Pressure Shift",
+   "tasks": [
+    {
+     "taskId": "c1wd-evidence06",
+     "revision": "r1",
+     "occurrenceId": "m66-t1"
+    },
+    {
+     "taskId": "c1wd-process49",
+     "revision": "r1",
+     "occurrenceId": "m66-t2"
+    },
+    {
+     "taskId": "c1wd-process50",
+     "revision": "r1",
+     "occurrenceId": "m66-t3"
+    },
+    {
+     "taskId": "c1wd-process51",
+     "revision": "r1",
+     "occurrenceId": "m66-t4"
+    }
+   ]
+  },
+  {
+   "id": "c1wd-mission67",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 67: The Service Saddle Tap Shift",
+   "tasks": [
+    {
+     "taskId": "c1wd-process52",
+     "revision": "r1",
+     "occurrenceId": "m67-t1"
+    },
+    {
+     "taskId": "c1wd-evidence07",
+     "revision": "r1",
+     "occurrenceId": "m67-t2"
+    }
+   ]
+  },
+  {
+   "id": "c1wd-mission68",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 68: The Distribution Pressure Shift",
+   "tasks": [
+    {
+     "taskId": "c1wd-evidence08",
+     "revision": "r1",
+     "occurrenceId": "m68-t1"
+    },
+    {
+     "taskId": "c1wd-process53",
+     "revision": "r1",
+     "occurrenceId": "m68-t2"
+    },
+    {
+     "taskId": "c1wd-process54",
+     "revision": "r1",
+     "occurrenceId": "m68-t3"
+    }
+   ]
+  },
+  {
+   "id": "c1wd-mission69",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 69: The Main Break First Response Shift",
+   "tasks": [
+    {
+     "taskId": "c1wd-process55",
+     "revision": "r1",
+     "occurrenceId": "m69-t1"
+    },
+    {
+     "taskId": "c1wd-evidence09",
+     "revision": "r1",
+     "occurrenceId": "m69-t2"
+    },
+    {
+     "taskId": "c1wd-process56",
+     "revision": "r1",
+     "occurrenceId": "m69-t3"
+    },
+    {
+     "taskId": "c1wd-process57",
+     "revision": "r1",
+     "occurrenceId": "m69-t4"
+    }
+   ]
+  },
+  {
+   "id": "c1wd-mission70",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 70: The Distribution Valves Shift",
+   "tasks": [
+    {
+     "taskId": "c1wd-evidence10",
+     "revision": "r1",
+     "occurrenceId": "m70-t1"
+    },
+    {
+     "taskId": "c1wd-process58",
+     "revision": "r1",
+     "occurrenceId": "m70-t2"
+    }
+   ]
+  },
+  {
+   "id": "c1wd-mission71",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 71: The Main Break Restoration Shift",
+   "tasks": [
+    {
+     "taskId": "c1wd-process59",
+     "revision": "r1",
+     "occurrenceId": "m71-t1"
+    },
+    {
+     "taskId": "c1wd-evidence100",
+     "revision": "r1",
+     "occurrenceId": "m71-t2"
+    },
+    {
+     "taskId": "c1wd-process60",
+     "revision": "r1",
+     "occurrenceId": "m71-t3"
+    }
+   ]
+  },
+  {
+   "id": "c1wd-mission72",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 72: The Distribution Pressure Shift",
+   "tasks": [
+    {
+     "taskId": "c1wd-evidence11",
+     "revision": "r1",
+     "occurrenceId": "m72-t1"
+    },
+    {
+     "taskId": "c1wd-process61",
+     "revision": "r1",
+     "occurrenceId": "m72-t2"
+    },
+    {
+     "taskId": "c1wd-process62",
+     "revision": "r1",
+     "occurrenceId": "m72-t3"
+    },
+    {
+     "taskId": "c1wd-process63",
+     "revision": "r1",
+     "occurrenceId": "m72-t4"
+    }
+   ]
+  },
+  {
+   "id": "c1wd-mission73",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 73: The Repaired Main Disinfection Shift",
+   "tasks": [
+    {
+     "taskId": "c1wd-process64",
+     "revision": "r1",
+     "occurrenceId": "m73-t1"
+    },
+    {
+     "taskId": "c1wd-evidence12",
+     "revision": "r1",
+     "occurrenceId": "m73-t2"
+    }
+   ]
+  },
+  {
+   "id": "c1wd-mission74",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 74: The Distribution Pressure Shift",
+   "tasks": [
+    {
+     "taskId": "c1wd-evidence13",
+     "revision": "r1",
+     "occurrenceId": "m74-t1"
+    },
+    {
+     "taskId": "c1wd-process65",
+     "revision": "r1",
+     "occurrenceId": "m74-t2"
+    },
+    {
+     "taskId": "c1wd-process66",
+     "revision": "r1",
+     "occurrenceId": "m74-t3"
+    }
+   ]
+  },
+  {
+   "id": "c1wd-mission75",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 75: The New Main Failed Sample Shift",
+   "tasks": [
+    {
+     "taskId": "c1wd-process67",
+     "revision": "r1",
+     "occurrenceId": "m75-t1"
+    },
+    {
+     "taskId": "c1wd-evidence14",
+     "revision": "r1",
+     "occurrenceId": "m75-t2"
+    },
+    {
+     "taskId": "c1wd-process68",
+     "revision": "r1",
+     "occurrenceId": "m75-t3"
+    },
+    {
+     "taskId": "c1wd-process69",
+     "revision": "r1",
+     "occurrenceId": "m75-t4"
+    }
+   ]
+  },
+  {
+   "id": "c1wd-mission76",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 76: The Distribution Residual Shift",
+   "tasks": [
+    {
+     "taskId": "c1wd-evidence15",
+     "revision": "r1",
+     "occurrenceId": "m76-t1"
+    },
+    {
+     "taskId": "c1wd-process70",
+     "revision": "r1",
+     "occurrenceId": "m76-t2"
+    }
+   ]
+  },
+  {
+   "id": "c1wd-mission77",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 77: The Lead Sampling First Draw Shift",
+   "tasks": [
+    {
+     "taskId": "c1wd-process71",
+     "revision": "r1",
+     "occurrenceId": "m77-t1"
+    },
+    {
+     "taskId": "c1wd-evidence16",
+     "revision": "r1",
+     "occurrenceId": "m77-t2"
+    },
+    {
+     "taskId": "c1wd-process72",
+     "revision": "r1",
+     "occurrenceId": "m77-t3"
+    }
+   ]
+  },
+  {
+   "id": "c1wd-mission78",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 78: The Distribution Residual Shift",
+   "tasks": [
+    {
+     "taskId": "c1wd-evidence17",
+     "revision": "r1",
+     "occurrenceId": "m78-t1"
+    },
+    {
+     "taskId": "c1wd-process73",
+     "revision": "r1",
+     "occurrenceId": "m78-t2"
+    },
+    {
+     "taskId": "c1wd-process74",
+     "revision": "r1",
+     "occurrenceId": "m78-t3"
+    },
+    {
+     "taskId": "c1wd-process75",
+     "revision": "r1",
+     "occurrenceId": "m78-t4"
+    }
+   ]
+  },
+  {
+   "id": "c1wd-mission79",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 79: The Adverse Result Response Shift",
+   "tasks": [
+    {
+     "taskId": "c1wd-process76",
+     "revision": "r1",
+     "occurrenceId": "m79-t1"
+    },
+    {
+     "taskId": "c1wd-evidence18",
+     "revision": "r1",
+     "occurrenceId": "m79-t2"
+    }
+   ]
+  },
+  {
+   "id": "c1wd-mission80",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 80: The Distribution Residual Shift",
+   "tasks": [
+    {
+     "taskId": "c1wd-evidence19",
+     "revision": "r1",
+     "occurrenceId": "m80-t1"
+    },
+    {
+     "taskId": "c1wd-process77",
+     "revision": "r1",
+     "occurrenceId": "m80-t2"
+    },
+    {
+     "taskId": "c1wd-process78",
+     "revision": "r1",
+     "occurrenceId": "m80-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Distribution system operation and maintenance chapters"
+  },
+  {
+   "id": "epa-small-systems",
+   "title": "US EPA, Small Drinking Water Systems Handbook",
+   "locator": "Distribution operation and maintenance background"
+  },
+  {
+   "id": "epa-cross-connection",
+   "title": "US EPA, Cross-Connection Control Manual",
+   "locator": "Backflow principles and device application"
+  },
+  {
+   "id": "epa-epanet",
+   "title": "US EPA, EPANET and manual",
+   "locator": "Distribution hydraulics, pumps, storage, pressure and water age concepts"
+  },
+  {
+   "id": "owwco-exam-prep",
+   "title": "OWWCO, Exam preparation resources",
+   "locator": "https://owwco.ca/preparing-for-your-exam/"
+  },
+  {
+   "id": "wpi-distribution-1",
+   "title": "WPI, Water Distribution Class I Need-to-Know Criteria",
+   "locator": "https://gowpi.org/services/2025-need-to-know-criteria/"
+  },
+  {
+   "id": "ont-reg-170-03",
+   "title": "Ontario Regulation 170/03, Drinking Water Systems",
+   "locator": "https://www.ontario.ca/laws/regulation/03170"
+  },
+  {
+   "id": "ccohs-safety",
+   "title": "CCOHS, OSH Answers (confined spaces, lockout, excavation awareness)",
+   "locator": "https://www.ccohs.ca/oshanswers/"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "2d9cd87998519f9e05791d23a5d0c8b7d2470752fee5cd6dc776ffe01c746048",
+  "taskReceipts": [
+   {
+    "taskId": "c1wd-process40",
+    "revision": "r1",
+    "sha256": "0b5c480a341462381a520e9acdf3ee1ad04db0b3d2110a520f73e5c32ddee483",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process41",
+    "revision": "r1",
+    "sha256": "2506b1f89b7db07e9bd37e05504bceb7c1ff521a7d244802dfef48a43107be33",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process42",
+    "revision": "r1",
+    "sha256": "bb33a48cdaaa9019547735b5f2b4891b85ffec577b017fc55c9652d0677ea963",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process43",
+    "revision": "r1",
+    "sha256": "df08e6a9f3e9058625b4e86959969210befdaa4cd704ae93e866ced5bb191736",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process44",
+    "revision": "r1",
+    "sha256": "3ade40274febc6f8648a0753b94718f273861f80692b0064677a04f9006a8aa6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process45",
+    "revision": "r1",
+    "sha256": "5bafe8fbb816780362c0dcbe66ee6c1b7dac105c75749a34c4550ec590067f46",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process46",
+    "revision": "r1",
+    "sha256": "3348796c0242c9cb6205858fee2e2a0a7835a34b5768d771dc4426a982cbdee3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process47",
+    "revision": "r1",
+    "sha256": "b199ae4cab44fb02379647b54e214101552aa20850aac848351b1abd77d58e7c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process48",
+    "revision": "r1",
+    "sha256": "0782c6f80198fcf3c8288ffd678c08cf7ee69d27f6017144fab61ba857afa39c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process49",
+    "revision": "r1",
+    "sha256": "5a4f2794bf5073f18fa22039b3da320a9b2b5abd404c174da716e4f2d5f59d76",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process50",
+    "revision": "r1",
+    "sha256": "266478c763eb9c5c2812b36d57402f69db9a1b790e3301ead4c690ece6ca36ab",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process51",
+    "revision": "r1",
+    "sha256": "53a400e6ee035a813c3c00b8971b961468bc7cfa3014e8c54070006398d3d1e6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process52",
+    "revision": "r1",
+    "sha256": "550a3013b866b46a9627b011fedc0d4d4f65a77baa39a485193a2be13701add3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process53",
+    "revision": "r1",
+    "sha256": "75cfb51baa0254cde701b3cbeff3651c557d7ad374df57d4c77bcaaa0d0bf9d7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process54",
+    "revision": "r1",
+    "sha256": "c9b4a39b41d7efcaaae4c1fcc61108ec5949ffcd5fe198ae61f384729cdb1dd6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process55",
+    "revision": "r1",
+    "sha256": "9b113f11b499ff028887e65dee1480de5d99434fa5b4545371b0a2253ad75df5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process56",
+    "revision": "r1",
+    "sha256": "afeef30c7e006e0b74351cbae64640c78d779f81c841c165b53823af5991d5f0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process57",
+    "revision": "r1",
+    "sha256": "46a892d4b4433ba6eb69bea668b5df481aefd505a0e40ff6ed32597428b42bb4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process58",
+    "revision": "r1",
+    "sha256": "b8ee8dfbfb0cdbb47900f843c55b374e875e9933cf429769ac1b8ec3cd52d33f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process59",
+    "revision": "r1",
+    "sha256": "46b657931ffebd8afbaaac70e690a938d4245e2fa20d3fc6fcdc6fe19ced7146",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process60",
+    "revision": "r1",
+    "sha256": "04b677b07b38e6d8c77db7f077b4dee40b7d3e2978a595bb277e1798ac001699",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process61",
+    "revision": "r1",
+    "sha256": "a81771ca4896c09eb01ada3252ce149981a269d31546d02eb48f7b594c6bfc6f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process62",
+    "revision": "r1",
+    "sha256": "6a742d7cb7da271d29cfcc8a07ce93047fc974e78216c7c540dc9c53a91c7e2f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process63",
+    "revision": "r1",
+    "sha256": "103e160135dd253321d1a20f8158ebdc11077453b75f93b99caae387ce2517a5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process64",
+    "revision": "r1",
+    "sha256": "203ea7febb1ff1101a3253081220c36d37036607292accae3b3decdca559f4ac",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process65",
+    "revision": "r1",
+    "sha256": "ccd22da859af364fa2a143a79eaa8c18b013c605590184ee8f5945fd4a4ba274",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process66",
+    "revision": "r1",
+    "sha256": "4cfaf38b7d845fcb91ad4a84c1f238a70b06b0bda16f5015e8d612b2cfb65ef6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process67",
+    "revision": "r1",
+    "sha256": "7381b0fcd5c25c534126c3e22369c7e02adcf6036d2c6dd82b646ffaab65b0ba",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process68",
+    "revision": "r1",
+    "sha256": "146995236e9abe56421ac9dc9586f30d78f5de2725dbf73c000d6a26d6bbaa1b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process69",
+    "revision": "r1",
+    "sha256": "99d3534cb2b0b7e3e2b5d37633e7bf1e93d9cf2376b3d6f497d986ec983166da",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process70",
+    "revision": "r1",
+    "sha256": "b660ae144f4959b77be032ee583fe99b1d4491e904f54f14e2af35c63979ed04",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process71",
+    "revision": "r1",
+    "sha256": "bacf4d1a67e0e04dd30bdc3398c4b185bc708c1d33f78eaeb4487b984cfa7c3d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process72",
+    "revision": "r1",
+    "sha256": "f0227b270e57b7ddc31602fe9a0894b0052cea6ba81dcb71f48b156391553fd9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process73",
+    "revision": "r1",
+    "sha256": "1601c7d27ab15a158e1ccb0573c76e6baabc87dc601425df095941fc139ace38",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process74",
+    "revision": "r1",
+    "sha256": "5959e9b8e4c3a354589310ccdf99a015929d1c5d5bd01f226716fc8e2f518b1a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process75",
+    "revision": "r1",
+    "sha256": "ac2ed552cedd7ab8b6d7b1751543cbad0e1382b6e120bf471f8b52fc7abc90eb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process76",
+    "revision": "r1",
+    "sha256": "d1eb3a6329e3487d4bd6edbf24b9cb5c2b6b0c81940b425082519f9f34e82ffc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process77",
+    "revision": "r1",
+    "sha256": "441373336abdac063cfaf94b3763e2182bd913bdf383d20aabcbf5e39c9a7ca1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process78",
+    "revision": "r1",
+    "sha256": "8b5e6c31803200ba4cb78563fffcb7b80a60477ab9cba11c30df692e01efd935",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process79",
+    "revision": "r1",
+    "sha256": "56927d752c8ba0ec10afd70bdd1a5bb9493cd64b06eac003aa1c22b31b1feeee",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process80",
+    "revision": "r1",
+    "sha256": "4e1d7f36e1883135a915311b6a45f3e54a63e86dcb0102038441eb4600611169",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process81",
+    "revision": "r1",
+    "sha256": "3c97ba6001276c716b1dd9cf9149d90570ecaf59def89f0be64fe888bc2e2ea2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process82",
+    "revision": "r1",
+    "sha256": "9efad2e3101c5c3afcddc31cf742b40d7c41fbd786019361bd6832b70392b2fd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process83",
+    "revision": "r1",
+    "sha256": "c403fd2f4112df95c58a2ab61097edf2425ac059f6780156aa3829583a5b6e43",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process84",
+    "revision": "r1",
+    "sha256": "d7ca724d9ea798cd407edad3e572ef377286e38c08c32d0c3da156d003975695",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process85",
+    "revision": "r1",
+    "sha256": "5e034760df3db79ca3c4e052d7540fba1093ae462b28cbe1cbeec21f1ed96464",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process86",
+    "revision": "r1",
+    "sha256": "75c75275373d03c755c556cac0e8757e4dc49e28370169dc4999d8eaea16a969",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process87",
+    "revision": "r1",
+    "sha256": "da268ea647dc7dcb2a7ea7ced21a346921d14b03404ce70f1626cf90ed0a2b23",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process88",
+    "revision": "r1",
+    "sha256": "25be3f4a0ec0f4ce1af0b9778fcbcd3ba0e9bfdd402e280c4b2209839f11ec8f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process89",
+    "revision": "r1",
+    "sha256": "9429aa29945885987c57113efbb57afc476177b8a6104f949e7c3c01b0613824",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process90",
+    "revision": "r1",
+    "sha256": "6528fb08c9240cc214cbf88d838d7be875ea3aa0d3dfa0d409a427c921023050",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process91",
+    "revision": "r1",
+    "sha256": "aed28956136c840b67a87ac6182cce01a28a708fd03a2811d6e3704f9a57481d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process92",
+    "revision": "r1",
+    "sha256": "49bddbb525a8013affc44e248fa71a753bc107dea96c15f4d35cba5c7fd54e0f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process93",
+    "revision": "r1",
+    "sha256": "2be4e5d94248f48d179cdf5dec75ac5864b99c1594f9905aa9afc0a860be5656",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process94",
+    "revision": "r1",
+    "sha256": "321b78c7197b6f0debb680e16760cb382f94ca06ff4d1776e4a2de9b72ebaba6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process95",
+    "revision": "r1",
+    "sha256": "1351fcb7ef58363d0b2d37abd2e942fe91a8678ec3c660f406901e3766e0100e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process96",
+    "revision": "r1",
+    "sha256": "ca3f35d95e7d755c785f9e6f0060973cb69aef3cc165b116b23248933168926d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process97",
+    "revision": "r1",
+    "sha256": "da706244123f6fb29c2d371a2ae7294530dc229037b26471efde77bc2e786d31",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process98",
+    "revision": "r1",
+    "sha256": "eca579f9952b57daaf3037ec5b7761cf715d757d85da957b1dbc85788863407a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process99",
+    "revision": "r1",
+    "sha256": "848562485595356bda045e8eaf24d55fbf6cdbddfccfb1f3a3fcfa190fc6b139",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-evidence01",
+    "revision": "r1",
+    "sha256": "528844e1f0ccc040dcbe61cba86a0477c0b74b83fc9ae68514d05902b0c489ef",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-evidence02",
+    "revision": "r1",
+    "sha256": "5e746bbe619824fd7204ae3041e212e1098219c25539650f046709b27d64228a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-evidence03",
+    "revision": "r1",
+    "sha256": "6cac7a3804fda2c2ca5b86fcec3043b9c86b68fd834196caa78a36735a0e949b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-evidence04",
+    "revision": "r1",
+    "sha256": "1de404d34fa3e9416e663555576d89128b861ecc760a1c282fd729a8feef205d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-evidence05",
+    "revision": "r1",
+    "sha256": "b756fa5bd328bf06d4f6329f52f317281801de57ab327cc3aed6c7d10ce74c42",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-evidence06",
+    "revision": "r1",
+    "sha256": "a0c0f075dc68af1ef4e74609b5f0815b3a1d1019f1e4b27d092bd3fdabc1a98e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-evidence07",
+    "revision": "r1",
+    "sha256": "6cfc41d911b7db3580a05fdd470882c9f2e90521ca1e62ab5cb6f8fef1d58e8a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-evidence08",
+    "revision": "r1",
+    "sha256": "a3105b526e3ecd4def2f02ad524e1aa825754a610186fff167e5d25540492ea7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-evidence09",
+    "revision": "r1",
+    "sha256": "c980e878e4b72da472bf5d575acd25231970f7188180bcf9c5f67d3929e4b5da",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-evidence10",
+    "revision": "r1",
+    "sha256": "afc784de5fa5d1496662cbde72ee51239e18408a7776d26a6ea25454c795a5eb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-evidence100",
+    "revision": "r1",
+    "sha256": "f2642a5f03da333832e44e88898657b95c4de8b12ff2c0dd2cb9579a13d0b5b1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-evidence11",
+    "revision": "r1",
+    "sha256": "07f417cb7ace8c9be81ad9a946a2dcaddd6e7b0499a3f3825b1aedd0ca5814ca",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-evidence12",
+    "revision": "r1",
+    "sha256": "8ab338742dedcdc7a51033c0de8014a1823491a810f4bec2e3c9100f897325e6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-evidence13",
+    "revision": "r1",
+    "sha256": "bbb5a1857ef209826d084412b89fc5db3556ab109a5bd9336074d5a704e61762",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-evidence14",
+    "revision": "r1",
+    "sha256": "6164ed73b4f46799d4b805bc53ffc73f9e63b1c02c10da5b00a9cc25c6841e10",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-evidence15",
+    "revision": "r1",
+    "sha256": "2078ae939fd85cad9ae106b9841a3e1eac88a714276998b6fa09123fef81395d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-evidence16",
+    "revision": "r1",
+    "sha256": "796068cdeb5beea130529ae29d9c478c8c1e50c5c4affca1fc6e91edada9746d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-evidence17",
+    "revision": "r1",
+    "sha256": "5f2cf26e4ad7657d26d2ecc8b695d181b4479319a2945d6a8a9b7874f0ef45eb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-evidence18",
+    "revision": "r1",
+    "sha256": "39643c0adaf5a732afcbe87dd55548f7bd0c58bad35149786d5af6609a907a5b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-evidence19",
+    "revision": "r1",
+    "sha256": "6860ecf479b677366cfd3269c8d5cf6c724f3da44159bb374aeab1b5aa8746e4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "c1wd-mission61",
+    "revision": "r1",
+    "sha256": "b2e2b9dc9a8ef62e202b5a4d84dcc2a4cd0dee1039918c24d8f2b1846cab4935"
+   },
+   {
+    "missionId": "c1wd-mission62",
+    "revision": "r1",
+    "sha256": "e7647e2f726388058c8340dd17bca2fdb94394ecdcd92e27950b80739330d33d"
+   },
+   {
+    "missionId": "c1wd-mission63",
+    "revision": "r1",
+    "sha256": "5001f4360f977e4084f6a0b3e2562ecb39429e7bbf9f920538401aae688ce4fa"
+   },
+   {
+    "missionId": "c1wd-mission64",
+    "revision": "r1",
+    "sha256": "ab4c5686237a07a8258d16fde8e21f73235d525fd16404985525b561f232a131"
+   },
+   {
+    "missionId": "c1wd-mission65",
+    "revision": "r1",
+    "sha256": "b1917fc81b6a82d81b1b0f6fae9bdca9b273d3656030e12e2281b7c87169e62e"
+   },
+   {
+    "missionId": "c1wd-mission66",
+    "revision": "r1",
+    "sha256": "16cadbb887f6f18844833b7b77d392f30ba26f03ac32185f3aa1adfd38d00b27"
+   },
+   {
+    "missionId": "c1wd-mission67",
+    "revision": "r1",
+    "sha256": "08392387e645fb552fc026f217f3fdc19ee2e68d13ef063e631088821d8bd7f5"
+   },
+   {
+    "missionId": "c1wd-mission68",
+    "revision": "r1",
+    "sha256": "1b111e5df77bcece35a58ed68c43017520e003356ee003bf63090a51cd699520"
+   },
+   {
+    "missionId": "c1wd-mission69",
+    "revision": "r1",
+    "sha256": "19102016e59fb98c9145edc9b5e8d04ec1362f7d18d6675d57b82b6c10b1f24f"
+   },
+   {
+    "missionId": "c1wd-mission70",
+    "revision": "r1",
+    "sha256": "5fa7d2cff15d93e53f58e43978a11299e1e33931b7ff673499b5f3e3d552cc30"
+   },
+   {
+    "missionId": "c1wd-mission71",
+    "revision": "r1",
+    "sha256": "fbfdc060cf53d5594415d963f6214fefd56326ccb0cbd5cfd4c90a20c240a8bd"
+   },
+   {
+    "missionId": "c1wd-mission72",
+    "revision": "r1",
+    "sha256": "7a4aa68a2c1e772bedd3dda9a187752801ccd0d590ff121b860f3ff0fa42366f"
+   },
+   {
+    "missionId": "c1wd-mission73",
+    "revision": "r1",
+    "sha256": "da0c99b3a437bf8acc5187d9b83f5702dedd43cf6e57e417a36996af7f24057a"
+   },
+   {
+    "missionId": "c1wd-mission74",
+    "revision": "r1",
+    "sha256": "b4da3f4e928c1b38055157b6a98addf08e527459bec1d810d7ba7f04df459cf3"
+   },
+   {
+    "missionId": "c1wd-mission75",
+    "revision": "r1",
+    "sha256": "ef53d18b5a7a557314562cb93b54830aae5fa97b73218342c262f170346a1cc0"
+   },
+   {
+    "missionId": "c1wd-mission76",
+    "revision": "r1",
+    "sha256": "c401d9fff31463de9a0dac9b7b4f25fafb2e861475c6fa00924a8c1ce535a5f9"
+   },
+   {
+    "missionId": "c1wd-mission77",
+    "revision": "r1",
+    "sha256": "37c9db362f9e51cd4c82d4753093ea505de81bb47bef169c9c427edba6981f7f"
+   },
+   {
+    "missionId": "c1wd-mission78",
+    "revision": "r1",
+    "sha256": "f2970ac66fe69c84324d420a56eefe88997c00f84924c0e0f902bf2b0b45143e"
+   },
+   {
+    "missionId": "c1wd-mission79",
+    "revision": "r1",
+    "sha256": "0f2e0f50334dd72676212aebdfa1f1f5671eef750314da80555ab1fcc9d560e6"
+   },
+   {
+    "missionId": "c1wd-mission80",
+    "revision": "r1",
+    "sha256": "cc29ec7a39808b38bf6a0ceb5e05b7667f610697942a5f36f733ebf075abda9f"
+   }
+  ]
+ }
+}
