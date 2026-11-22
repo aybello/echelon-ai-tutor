@@ -1,0 +1,72 @@
+[
+ {
+  "itemId": "WQA-341",
+  "expression": "50*500/1000",
+  "expected": "25.0",
+  "decimalPlaces": 1,
+  "unit": "mL"
+ },
+ {
+  "itemId": "WQA-342",
+  "expression": "25*2",
+  "expected": "50.0",
+  "decimalPlaces": 1,
+  "unit": "mg"
+ },
+ {
+  "itemId": "WQA-343",
+  "expression": "47.5/50*100",
+  "expected": "95.0",
+  "decimalPlaces": 1,
+  "unit": "%"
+ },
+ {
+  "itemId": "WQA-344",
+  "expression": "184/200*100",
+  "expected": "92.0",
+  "decimalPlaces": 1,
+  "unit": "%"
+ },
+ {
+  "itemId": "WQA-345",
+  "expression": "(52-48)/((52+48)/2)*100",
+  "expected": "8.0",
+  "decimalPlaces": 1,
+  "unit": "%"
+ },
+ {
+  "itemId": "WQA-346",
+  "expression": "(123-117)/((123+117)/2)*100",
+  "expected": "5.0",
+  "decimalPlaces": 1,
+  "unit": "%"
+ },
+ {
+  "itemId": "WQA-347",
+  "expression": "400*2.5",
+  "expected": "1000.0",
+  "decimalPlaces": 1,
+  "unit": "mg"
+ },
+ {
+  "itemId": "WQA-348",
+  "expression": "15*1000/300",
+  "expected": "50.0",
+  "decimalPlaces": 1,
+  "unit": "mL"
+ },
+ {
+  "itemId": "WQA-349",
+  "expression": "8*250/200",
+  "expected": "10.0",
+  "decimalPlaces": 1,
+  "unit": "mL"
+ },
+ {
+  "itemId": "WQA-350",
+  "expression": "(68-8)/50*100",
+  "expected": "120.0",
+  "decimalPlaces": 1,
+  "unit": "%"
+ }
+]

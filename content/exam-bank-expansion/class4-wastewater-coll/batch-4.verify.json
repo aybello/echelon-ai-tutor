@@ -1,0 +1,72 @@
+[
+ {
+  "itemId": "COLLECTION-L4-441",
+  "expression": "9600+1450+950",
+  "expected": "12000",
+  "decimalPlaces": 0,
+  "unit": "m³/day"
+ },
+ {
+  "itemId": "COLLECTION-L4-442",
+  "expression": "(2400/16000)*100",
+  "expected": "15.0",
+  "decimalPlaces": 1,
+  "unit": "%"
+ },
+ {
+  "itemId": "COLLECTION-L4-443",
+  "expression": "18500*1.12",
+  "expected": "20720",
+  "decimalPlaces": 0,
+  "unit": "m³/day"
+ },
+ {
+  "itemId": "COLLECTION-L4-444",
+  "expression": "240*2.5/100",
+  "expected": "6.0",
+  "decimalPlaces": 1,
+  "unit": "km"
+ },
+ {
+  "itemId": "COLLECTION-L4-445",
+  "expression": "460*0.20",
+  "expected": "92",
+  "decimalPlaces": 0,
+  "unit": "sections"
+ },
+ {
+  "itemId": "COLLECTION-L4-446",
+  "expression": "24500+5300-850",
+  "expected": "28950",
+  "decimalPlaces": 0,
+  "unit": "m³/day"
+ },
+ {
+  "itemId": "COLLECTION-L4-447",
+  "expression": "23600*2.5",
+  "expected": "59000",
+  "decimalPlaces": 0,
+  "unit": "m³/day"
+ },
+ {
+  "itemId": "COLLECTION-L4-448",
+  "expression": "43.2/5.4",
+  "expected": "8.0",
+  "decimalPlaces": 1,
+  "unit": "years"
+ },
+ {
+  "itemId": "COLLECTION-L4-449",
+  "expression": "108/1.35",
+  "expected": "80",
+  "decimalPlaces": 0,
+  "unit": "shifts"
+ },
+ {
+  "itemId": "COLLECTION-L4-450",
+  "expression": "36*26",
+  "expected": "936",
+  "decimalPlaces": 0,
+  "unit": "visits"
+ }
+]
