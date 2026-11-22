@@ -1,0 +1,4054 @@
+{
+ "courseKey": "class4-ww",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "c4ww-error60",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biogas production calculation for volatile solids destroyed = 1200 kg/d.",
+   "topicId": "biogas-production",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant digester: volatile solids destroyed = 1200 kg/d. The given biogas yield is 0.9 m3 per kg of volatile solids destroyed. Target unit: m3/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Biogas = VS destroyed * yield"
+    },
+    {
+     "id": "line2",
+     "label": "2. Biogas = 1200 kg/d * 0.09 m3/kg = 108 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Weekly biogas = 108 m3/d * 7 d = 756 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Biogas = 1200 kg/d * 0.9 m3/kg = 1080 m3/d",
+   "explanation": "Line 2 used a yield ten times too small. Correct biogas production is 1080 m3/d, so weekly production is 1080 * 7 = 7560 m3."
+  },
+  {
+   "id": "c4ww-error61",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biogas production calculation for volatile solids destroyed = 800 kg/d.",
+   "topicId": "biogas-production",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant digester: volatile solids destroyed = 800 kg/d. The given biogas yield is 0.75 m3 per kg of volatile solids destroyed. Target unit: m3/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Biogas = VS destroyed * yield"
+    },
+    {
+     "id": "line2",
+     "label": "2. Biogas = 800 kg/d * 0.075 m3/kg = 60 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Weekly biogas = 60 m3/d * 7 d = 420 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Biogas = 800 kg/d * 0.75 m3/kg = 600 m3/d",
+   "explanation": "Line 2 used a yield ten times too small. Correct biogas production is 600 m3/d, so weekly production is 600 * 7 = 4200 m3."
+  },
+  {
+   "id": "c4ww-error62",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biogas production calculation for volatile solids destroyed = 1500 kg/d.",
+   "topicId": "biogas-production",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant digester: volatile solids destroyed = 1500 kg/d. The given biogas yield is 0.8 m3 per kg of volatile solids destroyed. Target unit: m3/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Biogas = VS destroyed * yield"
+    },
+    {
+     "id": "line2",
+     "label": "2. Biogas = 1500 kg/d * 0.08 m3/kg = 120 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Weekly biogas = 120 m3/d * 7 d = 840 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Biogas = 1500 kg/d * 0.8 m3/kg = 1200 m3/d",
+   "explanation": "Line 2 used a yield ten times too small. Correct biogas production is 1200 m3/d, so weekly production is 1200 * 7 = 8400 m3."
+  },
+  {
+   "id": "c4ww-error63",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biogas energy recovery calculation for biogas production = 1000 m3/d.",
+   "topicId": "biogas-energy",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: biogas production = 1000 m3/d, biogas energy content = 6 kWh per m3, generator electrical efficiency = 0.35. Net electrical energy is gross energy times efficiency. Target unit: kWh/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Gross energy = biogas * energy content"
+    },
+    {
+     "id": "line2",
+     "label": "2. Gross energy = 1000 m3/d * 6 kWh/m3 = 6000 kWh/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Net electrical energy = 6000 kWh/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Net electrical energy = 6000 kWh/d * 0.35 = 2100 kWh/d",
+   "explanation": "Line 3 reported the gross energy as net and omitted the generator efficiency. Correct net electrical energy is 2100 kWh/d."
+  },
+  {
+   "id": "c4ww-error64",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biogas energy recovery calculation for biogas production = 1200 m3/d.",
+   "topicId": "biogas-energy",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: biogas production = 1200 m3/d, biogas energy content = 6 kWh per m3, generator electrical efficiency = 0.4. Net electrical energy is gross energy times efficiency. Target unit: kWh/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Gross energy = biogas * energy content"
+    },
+    {
+     "id": "line2",
+     "label": "2. Gross energy = 1200 m3/d * 6 kWh/m3 = 7200 kWh/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Net electrical energy = 7200 kWh/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Net electrical energy = 7200 kWh/d * 0.4 = 2880 kWh/d",
+   "explanation": "Line 3 reported the gross energy as net and omitted the generator efficiency. Correct net electrical energy is 2880 kWh/d."
+  },
+  {
+   "id": "c4ww-error65",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biogas energy recovery calculation for biogas production = 1500 m3/d.",
+   "topicId": "biogas-energy",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: biogas production = 1500 m3/d, biogas energy content = 6 kWh per m3, generator electrical efficiency = 0.35. Net electrical energy is gross energy times efficiency. Target unit: kWh/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Gross energy = biogas * energy content"
+    },
+    {
+     "id": "line2",
+     "label": "2. Gross energy = 1500 m3/d * 6 kWh/m3 = 9000 kWh/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Net electrical energy = 9000 kWh/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Net electrical energy = 9000 kWh/d * 0.35 = 3150 kWh/d",
+   "explanation": "Line 3 reported the gross energy as net and omitted the generator efficiency. Correct net electrical energy is 3150 kWh/d."
+  },
+  {
+   "id": "c4ww-error66",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biogas energy recovery calculation for biogas production = 2000 m3/d.",
+   "topicId": "biogas-energy",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: biogas production = 2000 m3/d, biogas energy content = 6 kWh per m3, generator electrical efficiency = 0.3. Net electrical energy is gross energy times efficiency. Target unit: kWh/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Gross energy = biogas * energy content"
+    },
+    {
+     "id": "line2",
+     "label": "2. Gross energy = 2000 m3/d * 6 kWh/m3 = 12000 kWh/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Net electrical energy = 12000 kWh/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Net electrical energy = 12000 kWh/d * 0.3 = 3600 kWh/d",
+   "explanation": "Line 3 reported the gross energy as net and omitted the generator efficiency. Correct net electrical energy is 3600 kWh/d."
+  },
+  {
+   "id": "c4ww-error67",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biogas energy recovery calculation for biogas production = 900 m3/d.",
+   "topicId": "biogas-energy",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: biogas production = 900 m3/d, biogas energy content = 6 kWh per m3, generator electrical efficiency = 0.4. Net electrical energy is gross energy times efficiency. Target unit: kWh/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Gross energy = biogas * energy content"
+    },
+    {
+     "id": "line2",
+     "label": "2. Gross energy = 900 m3/d * 6 kWh/m3 = 5400 kWh/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Net electrical energy = 5400 kWh/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Net electrical energy = 5400 kWh/d * 0.4 = 2160 kWh/d",
+   "explanation": "Line 3 reported the gross energy as net and omitted the generator efficiency. Correct net electrical energy is 2160 kWh/d."
+  },
+  {
+   "id": "c4ww-error68",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biogas energy recovery calculation for biogas production = 1800 m3/d.",
+   "topicId": "biogas-energy",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: biogas production = 1800 m3/d, biogas energy content = 6 kWh per m3, generator electrical efficiency = 0.35. Net electrical energy is gross energy times efficiency. Target unit: kWh/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Gross energy = biogas * energy content"
+    },
+    {
+     "id": "line2",
+     "label": "2. Gross energy = 1800 m3/d * 6 kWh/m3 = 10800 kWh/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Net electrical energy = 10800 kWh/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Net electrical energy = 10800 kWh/d * 0.35 = 3780 kWh/d",
+   "explanation": "Line 3 reported the gross energy as net and omitted the generator efficiency. Correct net electrical energy is 3780 kWh/d."
+  },
+  {
+   "id": "c4ww-error69",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this dewatered cake production calculation for dry solids = 2000 kg/d and cake solids content = 20 percent.",
+   "topicId": "biosolids-cake-production",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: dry solids to disposal = 2000 kg/d, dewatered cake solids content = 20 percent, a fraction of 0.2. Wet cake mass is dry solids divided by the cake solids fraction. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Wet cake = dry solids / cake solids fraction"
+    },
+    {
+     "id": "line2",
+     "label": "2. Wet cake = 2000 kg/d * 0.2 = 400 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Weekly wet cake = 400 kg/d * 7 d = 2800 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Wet cake = 2000 kg/d / 0.2 = 10000 kg/d",
+   "explanation": "Line 2 multiplied by the cake solids fraction instead of dividing. Correct wet cake production is 10000 kg/d, so weekly production is 10000 * 7 = 70000 kg."
+  },
+  {
+   "id": "c4ww-error70",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this dewatered cake production calculation for dry solids = 1800 kg/d and cake solids content = 25 percent.",
+   "topicId": "biosolids-cake-production",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: dry solids to disposal = 1800 kg/d, dewatered cake solids content = 25 percent, a fraction of 0.25. Wet cake mass is dry solids divided by the cake solids fraction. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Wet cake = dry solids / cake solids fraction"
+    },
+    {
+     "id": "line2",
+     "label": "2. Wet cake = 1800 kg/d * 0.25 = 450 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Weekly wet cake = 450 kg/d * 7 d = 3150 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Wet cake = 1800 kg/d / 0.25 = 7200 kg/d",
+   "explanation": "Line 2 multiplied by the cake solids fraction instead of dividing. Correct wet cake production is 7200 kg/d, so weekly production is 7200 * 7 = 50400 kg."
+  },
+  {
+   "id": "c4ww-error71",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this dewatered cake production calculation for dry solids = 2400 kg/d and cake solids content = 20 percent.",
+   "topicId": "biosolids-cake-production",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: dry solids to disposal = 2400 kg/d, dewatered cake solids content = 20 percent, a fraction of 0.2. Wet cake mass is dry solids divided by the cake solids fraction. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Wet cake = dry solids / cake solids fraction"
+    },
+    {
+     "id": "line2",
+     "label": "2. Wet cake = 2400 kg/d * 0.2 = 480 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Weekly wet cake = 480 kg/d * 7 d = 3360 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Wet cake = 2400 kg/d / 0.2 = 12000 kg/d",
+   "explanation": "Line 2 multiplied by the cake solids fraction instead of dividing. Correct wet cake production is 12000 kg/d, so weekly production is 12000 * 7 = 84000 kg."
+  },
+  {
+   "id": "c4ww-error72",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this dewatered cake production calculation for dry solids = 1500 kg/d and cake solids content = 25 percent.",
+   "topicId": "biosolids-cake-production",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: dry solids to disposal = 1500 kg/d, dewatered cake solids content = 25 percent, a fraction of 0.25. Wet cake mass is dry solids divided by the cake solids fraction. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Wet cake = dry solids / cake solids fraction"
+    },
+    {
+     "id": "line2",
+     "label": "2. Wet cake = 1500 kg/d * 0.25 = 375 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Weekly wet cake = 375 kg/d * 7 d = 2625 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Wet cake = 1500 kg/d / 0.25 = 6000 kg/d",
+   "explanation": "Line 2 multiplied by the cake solids fraction instead of dividing. Correct wet cake production is 6000 kg/d, so weekly production is 6000 * 7 = 42000 kg."
+  },
+  {
+   "id": "c4ww-error73",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this dewatered cake production calculation for dry solids = 3000 kg/d and cake solids content = 25 percent.",
+   "topicId": "biosolids-cake-production",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: dry solids to disposal = 3000 kg/d, dewatered cake solids content = 25 percent, a fraction of 0.25. Wet cake mass is dry solids divided by the cake solids fraction. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Wet cake = dry solids / cake solids fraction"
+    },
+    {
+     "id": "line2",
+     "label": "2. Wet cake = 3000 kg/d * 0.25 = 750 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Weekly wet cake = 750 kg/d * 7 d = 5250 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Wet cake = 3000 kg/d / 0.25 = 12000 kg/d",
+   "explanation": "Line 2 multiplied by the cake solids fraction instead of dividing. Correct wet cake production is 12000 kg/d, so weekly production is 12000 * 7 = 84000 kg."
+  },
+  {
+   "id": "c4ww-error74",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this dewatered cake production calculation for dry solids = 2200 kg/d and cake solids content = 20 percent.",
+   "topicId": "biosolids-cake-production",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: dry solids to disposal = 2200 kg/d, dewatered cake solids content = 20 percent, a fraction of 0.2. Wet cake mass is dry solids divided by the cake solids fraction. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Wet cake = dry solids / cake solids fraction"
+    },
+    {
+     "id": "line2",
+     "label": "2. Wet cake = 2200 kg/d * 0.2 = 440 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Weekly wet cake = 440 kg/d * 7 d = 3080 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Wet cake = 2200 kg/d / 0.2 = 11000 kg/d",
+   "explanation": "Line 2 multiplied by the cake solids fraction instead of dividing. Correct wet cake production is 11000 kg/d, so weekly production is 11000 * 7 = 77000 kg."
+  },
+  {
+   "id": "c4ww-error75",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this dewatered cake production calculation for dry solids = 1600 kg/d and cake solids content = 20 percent.",
+   "topicId": "biosolids-cake-production",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: dry solids to disposal = 1600 kg/d, dewatered cake solids content = 20 percent, a fraction of 0.2. Wet cake mass is dry solids divided by the cake solids fraction. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Wet cake = dry solids / cake solids fraction"
+    },
+    {
+     "id": "line2",
+     "label": "2. Wet cake = 1600 kg/d * 0.2 = 320 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Weekly wet cake = 320 kg/d * 7 d = 2240 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Wet cake = 1600 kg/d / 0.2 = 8000 kg/d",
+   "explanation": "Line 2 multiplied by the cake solids fraction instead of dividing. Correct wet cake production is 8000 kg/d, so weekly production is 8000 * 7 = 56000 kg."
+  },
+  {
+   "id": "c4ww-error76",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biosolids production forecast for BOD removed = 1000 kg/d.",
+   "topicId": "biosolids-yield-forecast",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant forecast: BOD removed = 1000 kg/d. The given net solids yield is 0.5 kg of dry solids per kg of BOD removed. Forecast solids production is BOD removed times yield. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Solids forecast = BOD removed * yield"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids forecast = 1000 kg/d / 0.5 = 2000 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual forecast = 2000 kg/d * 365 d = 730000 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Solids forecast = 1000 kg/d * 0.5 = 500 kg/d",
+   "explanation": "Line 2 divided by the yield instead of multiplying. Correct forecast is 500 kg/d, so the annual forecast is 500 * 365 = 182500 kg."
+  },
+  {
+   "id": "c4ww-error77",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biosolids production forecast for BOD removed = 1200 kg/d.",
+   "topicId": "biosolids-yield-forecast",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant forecast: BOD removed = 1200 kg/d. The given net solids yield is 0.5 kg of dry solids per kg of BOD removed. Forecast solids production is BOD removed times yield. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Solids forecast = BOD removed * yield"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids forecast = 1200 kg/d / 0.5 = 2400 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual forecast = 2400 kg/d * 365 d = 876000 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Solids forecast = 1200 kg/d * 0.5 = 600 kg/d",
+   "explanation": "Line 2 divided by the yield instead of multiplying. Correct forecast is 600 kg/d, so the annual forecast is 600 * 365 = 219000 kg."
+  },
+  {
+   "id": "c4ww-error78",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biosolids production forecast for BOD removed = 800 kg/d.",
+   "topicId": "biosolids-yield-forecast",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant forecast: BOD removed = 800 kg/d. The given net solids yield is 0.25 kg of dry solids per kg of BOD removed. Forecast solids production is BOD removed times yield. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Solids forecast = BOD removed * yield"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids forecast = 800 kg/d / 0.25 = 3200 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual forecast = 3200 kg/d * 365 d = 1168000 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Solids forecast = 800 kg/d * 0.25 = 200 kg/d",
+   "explanation": "Line 2 divided by the yield instead of multiplying. Correct forecast is 200 kg/d, so the annual forecast is 200 * 365 = 73000 kg."
+  },
+  {
+   "id": "c4ww-error79",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biosolids production forecast for BOD removed = 1500 kg/d.",
+   "topicId": "biosolids-yield-forecast",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant forecast: BOD removed = 1500 kg/d. The given net solids yield is 0.5 kg of dry solids per kg of BOD removed. Forecast solids production is BOD removed times yield. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Solids forecast = BOD removed * yield"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids forecast = 1500 kg/d / 0.5 = 3000 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual forecast = 3000 kg/d * 365 d = 1095000 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Solids forecast = 1500 kg/d * 0.5 = 750 kg/d",
+   "explanation": "Line 2 divided by the yield instead of multiplying. Correct forecast is 750 kg/d, so the annual forecast is 750 * 365 = 273750 kg."
+  },
+  {
+   "id": "c4ww-error80",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biosolids production forecast for BOD removed = 900 kg/d.",
+   "topicId": "biosolids-yield-forecast",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant forecast: BOD removed = 900 kg/d. The given net solids yield is 0.25 kg of dry solids per kg of BOD removed. Forecast solids production is BOD removed times yield. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Solids forecast = BOD removed * yield"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids forecast = 900 kg/d / 0.25 = 3600 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual forecast = 3600 kg/d * 365 d = 1314000 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Solids forecast = 900 kg/d * 0.25 = 225 kg/d",
+   "explanation": "Line 2 divided by the yield instead of multiplying. Correct forecast is 225 kg/d, so the annual forecast is 225 * 365 = 82125 kg."
+  },
+  {
+   "id": "c4ww-error81",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biosolids production forecast for BOD removed = 2000 kg/d.",
+   "topicId": "biosolids-yield-forecast",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant forecast: BOD removed = 2000 kg/d. The given net solids yield is 0.5 kg of dry solids per kg of BOD removed. Forecast solids production is BOD removed times yield. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Solids forecast = BOD removed * yield"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids forecast = 2000 kg/d / 0.5 = 4000 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual forecast = 4000 kg/d * 365 d = 1460000 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Solids forecast = 2000 kg/d * 0.5 = 1000 kg/d",
+   "explanation": "Line 2 divided by the yield instead of multiplying. Correct forecast is 1000 kg/d, so the annual forecast is 1000 * 365 = 365000 kg."
+  },
+  {
+   "id": "c4ww-error82",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biosolids production forecast for BOD removed = 1600 kg/d.",
+   "topicId": "biosolids-yield-forecast",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant forecast: BOD removed = 1600 kg/d. The given net solids yield is 0.25 kg of dry solids per kg of BOD removed. Forecast solids production is BOD removed times yield. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Solids forecast = BOD removed * yield"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids forecast = 1600 kg/d / 0.25 = 6400 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual forecast = 6400 kg/d * 365 d = 2336000 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Solids forecast = 1600 kg/d * 0.25 = 400 kg/d",
+   "explanation": "Line 2 divided by the yield instead of multiplying. Correct forecast is 400 kg/d, so the annual forecast is 400 * 365 = 146000 kg."
+  },
+  {
+   "id": "c4ww-error83",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this aeration energy benchmark calculation for aeration energy = 10000 kWh/d and flow treated = 20000 m3/d.",
+   "topicId": "aeration-energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: aeration energy use = 10000 kWh/d, flow treated = 20000 m3/d. Specific energy is energy divided by flow. Target unit: kWh/m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Specific energy = energy / flow"
+    },
+    {
+     "id": "line2",
+     "label": "2. Specific energy = 20000 m3/d / 10000 kWh/d = 2 kWh/m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Specific energy = 10000 kWh/d / 20000 m3/d = 0.5 kWh/m3",
+   "explanation": "Line 2 inverted the benchmark, dividing flow by energy. Correct specific energy is 0.5 kWh/m3."
+  },
+  {
+   "id": "c4ww-error84",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this aeration energy benchmark calculation for aeration energy = 12000 kWh/d and flow treated = 24000 m3/d.",
+   "topicId": "aeration-energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: aeration energy use = 12000 kWh/d, flow treated = 24000 m3/d. Specific energy is energy divided by flow. Target unit: kWh/m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Specific energy = energy / flow"
+    },
+    {
+     "id": "line2",
+     "label": "2. Specific energy = 24000 m3/d / 12000 kWh/d = 2 kWh/m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Specific energy = 12000 kWh/d / 24000 m3/d = 0.5 kWh/m3",
+   "explanation": "Line 2 inverted the benchmark, dividing flow by energy. Correct specific energy is 0.5 kWh/m3."
+  },
+  {
+   "id": "c4ww-error85",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this aeration energy benchmark calculation for aeration energy = 9000 kWh/d and flow treated = 18000 m3/d.",
+   "topicId": "aeration-energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: aeration energy use = 9000 kWh/d, flow treated = 18000 m3/d. Specific energy is energy divided by flow. Target unit: kWh/m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Specific energy = energy / flow"
+    },
+    {
+     "id": "line2",
+     "label": "2. Specific energy = 18000 m3/d / 9000 kWh/d = 2 kWh/m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Specific energy = 9000 kWh/d / 18000 m3/d = 0.5 kWh/m3",
+   "explanation": "Line 2 inverted the benchmark, dividing flow by energy. Correct specific energy is 0.5 kWh/m3."
+  },
+  {
+   "id": "c4ww-error86",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this aeration energy benchmark calculation for aeration energy = 12000 kWh/d and flow treated = 30000 m3/d.",
+   "topicId": "aeration-energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: aeration energy use = 12000 kWh/d, flow treated = 30000 m3/d. Specific energy is energy divided by flow. Target unit: kWh/m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Specific energy = energy / flow"
+    },
+    {
+     "id": "line2",
+     "label": "2. Specific energy = 30000 m3/d / 12000 kWh/d = 2.5 kWh/m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Specific energy = 12000 kWh/d / 30000 m3/d = 0.4 kWh/m3",
+   "explanation": "Line 2 inverted the benchmark, dividing flow by energy. Correct specific energy is 0.4 kWh/m3."
+  },
+  {
+   "id": "c4ww-error87",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this aeration energy benchmark calculation for aeration energy = 8000 kWh/d and flow treated = 20000 m3/d.",
+   "topicId": "aeration-energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: aeration energy use = 8000 kWh/d, flow treated = 20000 m3/d. Specific energy is energy divided by flow. Target unit: kWh/m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Specific energy = energy / flow"
+    },
+    {
+     "id": "line2",
+     "label": "2. Specific energy = 20000 m3/d / 8000 kWh/d = 2.5 kWh/m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Specific energy = 8000 kWh/d / 20000 m3/d = 0.4 kWh/m3",
+   "explanation": "Line 2 inverted the benchmark, dividing flow by energy. Correct specific energy is 0.4 kWh/m3."
+  },
+  {
+   "id": "c4ww-error88",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this aeration energy benchmark calculation for aeration energy = 6000 kWh/d, influent BOD load = 1000 kg/d and effluent BOD load = 800 kg/d.",
+   "topicId": "aeration-energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: aeration energy use = 6000 kWh/d, influent BOD load = 1000 kg/d, effluent BOD load = 800 kg/d. Energy per kg of BOD removed uses BOD removed, which is influent minus effluent. Target unit: kWh/kg.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. BOD removed = influent BOD - effluent BOD"
+    },
+    {
+     "id": "line2",
+     "label": "2. BOD removed = 1000 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Energy per kg removed = 6000 kWh/d / 1000 kg/d = 6 kWh/kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. BOD removed = 1000 kg/d - 800 kg/d = 200 kg/d",
+   "explanation": "Line 2 used the influent BOD load instead of the BOD actually removed. Correct BOD removed is 200 kg/d, so energy per kg removed is 6000 / 200 = 30 kWh/kg."
+  },
+  {
+   "id": "c4ww-error89",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this aeration energy benchmark calculation for aeration energy = 8000 kWh/d, influent BOD load = 1250 kg/d and effluent BOD load = 1000 kg/d.",
+   "topicId": "aeration-energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: aeration energy use = 8000 kWh/d, influent BOD load = 1250 kg/d, effluent BOD load = 1000 kg/d. Energy per kg of BOD removed uses BOD removed, which is influent minus effluent. Target unit: kWh/kg.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. BOD removed = influent BOD - effluent BOD"
+    },
+    {
+     "id": "line2",
+     "label": "2. BOD removed = 1250 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Energy per kg removed = 8000 kWh/d / 1250 kg/d = 6.4 kWh/kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. BOD removed = 1250 kg/d - 1000 kg/d = 250 kg/d",
+   "explanation": "Line 2 used the influent BOD load instead of the BOD actually removed. Correct BOD removed is 250 kg/d, so energy per kg removed is 8000 / 250 = 32 kWh/kg."
+  },
+  {
+   "id": "c4ww-error90",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this aeration energy benchmark calculation for aeration energy = 5000 kWh/d, influent BOD load = 800 kg/d and effluent BOD load = 600 kg/d.",
+   "topicId": "aeration-energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: aeration energy use = 5000 kWh/d, influent BOD load = 800 kg/d, effluent BOD load = 600 kg/d. Energy per kg of BOD removed uses BOD removed, which is influent minus effluent. Target unit: kWh/kg.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. BOD removed = influent BOD - effluent BOD"
+    },
+    {
+     "id": "line2",
+     "label": "2. BOD removed = 800 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Energy per kg removed = 5000 kWh/d / 800 kg/d = 6.25 kWh/kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. BOD removed = 800 kg/d - 600 kg/d = 200 kg/d",
+   "explanation": "Line 2 used the influent BOD load instead of the BOD actually removed. Correct BOD removed is 200 kg/d, so energy per kg removed is 5000 / 200 = 25 kWh/kg."
+  },
+  {
+   "id": "c4ww-error91",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this aeration energy benchmark calculation for aeration energy = 9000 kWh/d, influent BOD load = 1500 kg/d and effluent BOD load = 1200 kg/d.",
+   "topicId": "aeration-energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: aeration energy use = 9000 kWh/d, influent BOD load = 1500 kg/d, effluent BOD load = 1200 kg/d. Energy per kg of BOD removed uses BOD removed, which is influent minus effluent. Target unit: kWh/kg.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. BOD removed = influent BOD - effluent BOD"
+    },
+    {
+     "id": "line2",
+     "label": "2. BOD removed = 1500 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Energy per kg removed = 9000 kWh/d / 1500 kg/d = 6 kWh/kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. BOD removed = 1500 kg/d - 1200 kg/d = 300 kg/d",
+   "explanation": "Line 2 used the influent BOD load instead of the BOD actually removed. Correct BOD removed is 300 kg/d, so energy per kg removed is 9000 / 300 = 30 kWh/kg."
+  },
+  {
+   "id": "c4ww-error92",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this aeration energy benchmark calculation for aeration energy = 7200 kWh/d, influent BOD load = 1200 kg/d and effluent BOD load = 900 kg/d.",
+   "topicId": "aeration-energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant: aeration energy use = 7200 kWh/d, influent BOD load = 1200 kg/d, effluent BOD load = 900 kg/d. Energy per kg of BOD removed uses BOD removed, which is influent minus effluent. Target unit: kWh/kg.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. BOD removed = influent BOD - effluent BOD"
+    },
+    {
+     "id": "line2",
+     "label": "2. BOD removed = 1200 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Energy per kg removed = 7200 kWh/d / 1200 kg/d = 6 kWh/kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. BOD removed = 1200 kg/d - 900 kg/d = 300 kg/d",
+   "explanation": "Line 2 used the influent BOD load instead of the BOD actually removed. Correct BOD removed is 300 kg/d, so energy per kg removed is 7200 / 300 = 24 kWh/kg."
+  },
+  {
+   "id": "c4ww-error93",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this capacity planning calculation for average day flow = 10000 m3/d and a peaking factor of 2.5.",
+   "topicId": "capacity-peaking-factor",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant capacity plan: average day flow = 10000 m3/d, given peaking factor = 2.5. Design peak flow is average flow times the peaking factor. Target unit: m3/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Design peak flow = average flow * peaking factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. Design peak flow = 10000 m3/d / 2.5 = 4000 m3/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Design peak flow = 10000 m3/d * 2.5 = 25000 m3/d",
+   "explanation": "Line 2 divided by the peaking factor instead of multiplying, which understates the design peak. Correct design peak flow is 25000 m3/d."
+  },
+  {
+   "id": "c4ww-error94",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this capacity planning calculation for average day flow = 12000 m3/d and a peaking factor of 2.",
+   "topicId": "capacity-peaking-factor",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant capacity plan: average day flow = 12000 m3/d, given peaking factor = 2. Design peak flow is average flow times the peaking factor. Target unit: m3/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Design peak flow = average flow * peaking factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. Design peak flow = 12000 m3/d / 2 = 6000 m3/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Design peak flow = 12000 m3/d * 2 = 24000 m3/d",
+   "explanation": "Line 2 divided by the peaking factor instead of multiplying, which understates the design peak. Correct design peak flow is 24000 m3/d."
+  },
+  {
+   "id": "c4ww-error95",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this capacity planning calculation for average day flow = 8000 m3/d and a peaking factor of 2.5.",
+   "topicId": "capacity-peaking-factor",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant capacity plan: average day flow = 8000 m3/d, given peaking factor = 2.5. Design peak flow is average flow times the peaking factor. Target unit: m3/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Design peak flow = average flow * peaking factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. Design peak flow = 8000 m3/d / 2.5 = 3200 m3/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Design peak flow = 8000 m3/d * 2.5 = 20000 m3/d",
+   "explanation": "Line 2 divided by the peaking factor instead of multiplying, which understates the design peak. Correct design peak flow is 20000 m3/d."
+  },
+  {
+   "id": "c4ww-error96",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this capacity planning calculation for average day flow = 15000 m3/d and a peaking factor of 2.",
+   "topicId": "capacity-peaking-factor",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant capacity plan: average day flow = 15000 m3/d, given peaking factor = 2. Design peak flow is average flow times the peaking factor. Target unit: m3/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Design peak flow = average flow * peaking factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. Design peak flow = 15000 m3/d / 2 = 7500 m3/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Design peak flow = 15000 m3/d * 2 = 30000 m3/d",
+   "explanation": "Line 2 divided by the peaking factor instead of multiplying, which understates the design peak. Correct design peak flow is 30000 m3/d."
+  },
+  {
+   "id": "c4ww-error97",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this capacity planning calculation for average day flow = 10000 m3/d and a peaking factor of 2.",
+   "topicId": "capacity-peaking-factor",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant capacity plan: average day flow = 10000 m3/d, given peaking factor = 2. Design peak flow is average flow times the peaking factor, applied once. Target unit: m3/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Design peak flow = average flow * peaking factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. Peak flow after factor = 10000 m3/d * 2 = 20000 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Design peak flow = 20000 m3/d * 2 = 40000 m3/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Design peak flow = 20000 m3/d",
+   "explanation": "Line 3 applied the peaking factor a second time, double counting the peak allowance. Correct design peak flow is 20000 m3/d with the factor applied once."
+  },
+  {
+   "id": "c4ww-error98",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this capacity planning calculation for average day flow = 9000 m3/d and a peaking factor of 2.5.",
+   "topicId": "capacity-peaking-factor",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant capacity plan: average day flow = 9000 m3/d, given peaking factor = 2.5. Design peak flow is average flow times the peaking factor, applied once. Target unit: m3/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Design peak flow = average flow * peaking factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. Peak flow after factor = 9000 m3/d * 2.5 = 22500 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Design peak flow = 22500 m3/d * 2.5 = 56250 m3/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Design peak flow = 22500 m3/d",
+   "explanation": "Line 3 applied the peaking factor a second time, double counting the peak allowance. Correct design peak flow is 22500 m3/d with the factor applied once."
+  },
+  {
+   "id": "c4ww-error99",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this capacity planning calculation for average day flow = 12000 m3/d and a peaking factor of 2.",
+   "topicId": "capacity-peaking-factor",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant capacity plan: average day flow = 12000 m3/d, given peaking factor = 2. Design peak flow is average flow times the peaking factor, applied once. Target unit: m3/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Design peak flow = average flow * peaking factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. Peak flow after factor = 12000 m3/d * 2 = 24000 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Design peak flow = 24000 m3/d * 2 = 48000 m3/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Design peak flow = 24000 m3/d",
+   "explanation": "Line 3 applied the peaking factor a second time, double counting the peak allowance. Correct design peak flow is 24000 m3/d with the factor applied once."
+  },
+  {
+   "id": "c4ww-process01",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for setting the annual operating plan for a Class 4 wastewater utility.",
+   "topicId": "utility-annual-operating-plan",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: utility serving several plants, annual plan linking service levels, compliance, and budget.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Assign an owner, a budget, and a deadline to each objective"
+    },
+    {
+     "id": "step-02",
+     "label": "Review prior year performance, incidents, and outstanding corrective actions"
+    },
+    {
+     "id": "step-05",
+     "label": "Approve the plan through utility leadership and record it as the controlled baseline"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm the service levels and compliance obligations that the plan must deliver"
+    },
+    {
+     "id": "step-06",
+     "label": "Review progress quarterly and revise only through a documented change process"
+    },
+    {
+     "id": "step-03",
+     "label": "Set measurable annual objectives for effluent quality, reliability, and cost"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The obligations frame the plan, past performance shows where to focus, objectives are resourced before approval, and quarterly review keeps the plan live."
+  },
+  {
+   "id": "c4ww-process02",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a utility wide management review of wastewater operations.",
+   "topicId": "utility-management-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: senior review covering compliance, process performance, safety, and finance for the year.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Hold the review meeting and test each result against its target"
+    },
+    {
+     "id": "step-06",
+     "label": "Track the actions to closure and report status at the next review"
+    },
+    {
+     "id": "step-01",
+     "label": "Issue a data call for compliance, process, safety, maintenance, and finance results"
+    },
+    {
+     "id": "step-05",
+     "label": "Communicate the decisions to plant leadership teams"
+    },
+    {
+     "id": "step-02",
+     "label": "Compile a single review package with trends and exceptions highlighted"
+    },
+    {
+     "id": "step-04",
+     "label": "Record decisions, corrective actions, owners, and due dates"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "A complete data package comes before judgment, decisions are recorded with owners, and closure tracking prevents review findings from fading."
+  },
+  {
+   "id": "c4ww-process03",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for building a plant performance dashboard for senior leadership.",
+   "topicId": "plant-performance-dashboard-build",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: dashboard reporting effluent quality, energy, chemical use, and asset health monthly.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Train plant leaders to review exceptions rather than raw tables"
+    },
+    {
+     "id": "step-01",
+     "label": "Define the small set of indicators that leadership will actually act on"
+    },
+    {
+     "id": "step-04",
+     "label": "Build the dashboard and validate it against laboratory and operating records"
+    },
+    {
+     "id": "step-06",
+     "label": "Review the dashboard monthly and retire indicators that drive no decisions"
+    },
+    {
+     "id": "step-03",
+     "label": "Set target, warning, and action levels for each indicator"
+    },
+    {
+     "id": "step-02",
+     "label": "Confirm the data source and owner for each indicator"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Useful indicators and trusted data come before design, exception based review follows, and unused measures are removed so focus stays sharp."
+  },
+  {
+   "id": "c4ww-process04",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for aligning plant staffing plans with future capacity needs.",
+   "topicId": "staffing-plan-capacity-alignment",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: growing service area, retirements expected, and new processes entering service.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Map current licensed staff by class, shift, and competency against those duties"
+    },
+    {
+     "id": "step-05",
+     "label": "Fund the actions in the operating and capital plans"
+    },
+    {
+     "id": "step-03",
+     "label": "Identify gaps in overall responsible operator coverage and relief coverage"
+    },
+    {
+     "id": "step-01",
+     "label": "Forecast flows, loads, and new process duties for the planning period"
+    },
+    {
+     "id": "step-04",
+     "label": "Build recruitment, training, and succession actions for each gap"
+    },
+    {
+     "id": "step-06",
+     "label": "Review the staffing plan yearly or when a major process change is approved"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Future duties define the need, current licensed coverage shows the gap, and funded succession actions close it before coverage fails."
+  },
+  {
+   "id": "c4ww-process05",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a utility risk register review for wastewater services.",
+   "topicId": "utility-risk-register-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: register covering compliance, asset failure, staffing, and extreme weather risks.",
+   "cards": [
+    {
+     "id": "step-06",
+     "label": "Report the highest risks and overdue actions to senior leadership"
+    },
+    {
+     "id": "step-03",
+     "label": "Check that each high risk has a named control and a control owner"
+    },
+    {
+     "id": "step-02",
+     "label": "Score likelihood and consequence using the utility scoring guide"
+    },
+    {
+     "id": "step-04",
+     "label": "Identify risks where the control is weak or untested"
+    },
+    {
+     "id": "step-01",
+     "label": "Gather risk owners to confirm each risk still exists as described"
+    },
+    {
+     "id": "step-05",
+     "label": "Assign improvement actions with dates for the weakest controls"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Existing risks are confirmed before scoring, controls are tested rather than assumed, and leadership sees only the risks that need decisions."
+  },
+  {
+   "id": "c4ww-process06",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for setting service level targets for a wastewater utility.",
+   "topicId": "service-level-target-setting",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: targets for effluent quality, overflow response, odour response, and customer service.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "Review the Environmental Compliance Approval and Ontario Regulation 129/04 duties that set minimum service"
+    },
+    {
+     "id": "step-04",
+     "label": "Cost the staffing and equipment needed to hold each target"
+    },
+    {
+     "id": "step-06",
+     "label": "Measure against the targets monthly and investigate every miss"
+    },
+    {
+     "id": "step-02",
+     "label": "Gather baseline performance for each proposed service area"
+    },
+    {
+     "id": "step-05",
+     "label": "Approve the targets and publish them to operating teams"
+    },
+    {
+     "id": "step-03",
+     "label": "Draft targets that stretch performance without risking compliance"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Regulatory minimums come first, baselines keep targets honest, costing prevents unfunded promises, and every miss is investigated."
+  },
+  {
+   "id": "c4ww-process07",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for integrating a newly acquired satellite plant into the utility.",
+   "topicId": "satellite-plant-integration",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: small satellite plant joining a larger utility, records and staff transferring.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Align procedures, sampling, and reporting with utility standards"
+    },
+    {
+     "id": "step-02",
+     "label": "Confirm licensed operator coverage and overall responsible operator designation"
+    },
+    {
+     "id": "step-05",
+     "label": "Operate under heightened oversight for the first reporting cycle"
+    },
+    {
+     "id": "step-01",
+     "label": "Complete due diligence on approvals, assets, records, and open compliance items"
+    },
+    {
+     "id": "step-06",
+     "label": "Close integration actions and confirm the plant runs on standard utility routines"
+    },
+    {
+     "id": "step-03",
+     "label": "Transfer operating records, manuals, and maintenance history into utility systems"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Due diligence and licensed coverage protect compliance on day one, records and procedures are aligned before oversight is relaxed."
+  },
+  {
+   "id": "c4ww-process08",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for an annual operations budget build for a large treatment plant.",
+   "topicId": "plant-annual-budget-build",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: budget covering staffing, chemicals, energy, maintenance, and contracted services.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Add planned maintenance and the minor capital items the plant must self fund"
+    },
+    {
+     "id": "step-06",
+     "label": "Submit the budget with the risks and assumptions stated in writing"
+    },
+    {
+     "id": "step-01",
+     "label": "Start from the approved service levels and the compliance sampling program"
+    },
+    {
+     "id": "step-05",
+     "label": "Challenge each line against prior year results and remove unsupported amounts"
+    },
+    {
+     "id": "step-02",
+     "label": "Forecast chemical, energy, and hauling quantities from expected flows and loads"
+    },
+    {
+     "id": "step-04",
+     "label": "Price each line using current contracts and recent actual costs"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Service and compliance needs drive quantities, quantities are priced from evidence, and stated assumptions let reviewers test the budget."
+  },
+  {
+   "id": "c4ww-process09",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for reviewing contractor performance for outsourced plant services.",
+   "topicId": "contractor-performance-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: contracted services include biosolids hauling, laboratory work, and specialized maintenance.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Apply the contract remedies where a level was missed without cause"
+    },
+    {
+     "id": "step-01",
+     "label": "Pull the contract service levels and the performance data for the review period"
+    },
+    {
+     "id": "step-04",
+     "label": "Agree corrective actions with dates and record them in the contract file"
+    },
+    {
+     "id": "step-06",
+     "label": "Confirm the corrective actions closed before the next review period"
+    },
+    {
+     "id": "step-03",
+     "label": "Meet the contractor to review exceptions and root causes"
+    },
+    {
+     "id": "step-02",
+     "label": "Compare delivered performance with each contracted level"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Contract terms and data frame the review, causes are tested with the contractor, and remedies and follow up give the review effect."
+  },
+  {
+   "id": "c4ww-process10",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a plant organizational review after a major expansion.",
+   "topicId": "post-expansion-org-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: expanded plant with new processes, more instruments, and a larger solids train.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Compare the duties with current positions, licences, and competencies"
+    },
+    {
+     "id": "step-05",
+     "label": "Approve and fund the changes through utility leadership"
+    },
+    {
+     "id": "step-03",
+     "label": "Identify duties with no owner or with only one trained person"
+    },
+    {
+     "id": "step-01",
+     "label": "List the new duties the expanded plant creates by shift and by role"
+    },
+    {
+     "id": "step-04",
+     "label": "Propose position and training changes to close the gaps"
+    },
+    {
+     "id": "step-06",
+     "label": "Fill and train the roles before the new processes enter full service"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "New duties are listed before positions are judged, single person risks are removed, and roles are ready before full service begins."
+  },
+  {
+   "id": "c4ww-process100",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for building a leadership succession plan for key plant roles.",
+   "topicId": "leadership-succession-plan",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: succession for overall responsible operator, superintendent, and specialist roles.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Identify ready now and developing candidates for each role"
+    },
+    {
+     "id": "step-05",
+     "label": "Keep contact and delegation arrangements current for emergencies"
+    },
+    {
+     "id": "step-03",
+     "label": "Give developing candidates acting duties and targeted experience"
+    },
+    {
+     "id": "step-01",
+     "label": "List the roles whose sudden vacancy would put compliance or safety at risk"
+    },
+    {
+     "id": "step-04",
+     "label": "Record the plan and review it with utility leadership"
+    },
+    {
+     "id": "step-06",
+     "label": "Review the plan yearly and after any senior departure"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Critical roles are identified by risk, candidates gain real acting experience, and the plan is reviewed before a vacancy tests it."
+  },
+  {
+   "id": "c4ww-process11",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for setting a multi year nutrient removal strategy for a utility.",
+   "topicId": "nutrient-strategy-multi-year",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: tightening nitrogen and phosphorus objectives expected over the next decade.",
+   "cards": [
+    {
+     "id": "step-06",
+     "label": "Phase the strategy into operating plans and capital plans with review points"
+    },
+    {
+     "id": "step-03",
+     "label": "Identify the limiting processes and the capacity of each nutrient pathway"
+    },
+    {
+     "id": "step-02",
+     "label": "Complete a whole plant nutrient balance for nitrogen and phosphorus"
+    },
+    {
+     "id": "step-04",
+     "label": "Develop strategy options that combine operations, chemicals, and capital work"
+    },
+    {
+     "id": "step-01",
+     "label": "Review current and expected approval limits and receiving water objectives"
+    },
+    {
+     "id": "step-05",
+     "label": "Select the preferred strategy using cost, risk, and compliance margin"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Future limits and a nutrient balance define the problem, options are compared fairly, and the chosen strategy is phased into real plans."
+  },
+  {
+   "id": "c4ww-process12",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for approving a plant wide nitrogen removal optimization program.",
+   "topicId": "nitrogen-optimization-program-approval",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: program targeting lower effluent total nitrogen across all aeration trains.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "Baseline effluent nitrogen species and aeration energy at current settings"
+    },
+    {
+     "id": "step-04",
+     "label": "Set program targets, trial periods, and stop conditions for poor performance"
+    },
+    {
+     "id": "step-06",
+     "label": "Report results against baseline and lock in only the changes that held"
+    },
+    {
+     "id": "step-02",
+     "label": "Identify the operational levers and the safe range for each lever"
+    },
+    {
+     "id": "step-05",
+     "label": "Approve the program and assign a program lead and reporting rhythm"
+    },
+    {
+     "id": "step-03",
+     "label": "Estimate the nitrogen gain and the energy effect for the combined levers"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Baseline data make gains provable, safe ranges and stop conditions protect compliance, and only proven changes become standard."
+  },
+  {
+   "id": "c4ww-process13",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a phosphorus removal strategy review before a limit reduction.",
+   "topicId": "phosphorus-strategy-limit-reduction",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: approval phosphorus limit dropping, biological and chemical removal both in use.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Size the chemical trim needed to cover the remaining gap with margin"
+    },
+    {
+     "id": "step-02",
+     "label": "Measure current phosphorus performance and its variability across seasons"
+    },
+    {
+     "id": "step-05",
+     "label": "Plan any capital changes and the commissioning time they need"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm the new limit, its averaging period, and the date it takes effect"
+    },
+    {
+     "id": "step-06",
+     "label": "Put interim operating targets in place well before the new limit applies"
+    },
+    {
+     "id": "step-03",
+     "label": "Test how much removal the biological process can reliably deliver"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The new limit and its timing come first, reliable biological removal is separated from chemical trim, and interim targets de risk the changeover."
+  },
+  {
+   "id": "c4ww-process14",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for leading a seasonal nutrient strategy across multiple plants.",
+   "topicId": "seasonal-nutrient-strategy-multiplant",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: utility plants face different seasonal limits and temperatures.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Align laboratory sampling so seasonal performance is comparable"
+    },
+    {
+     "id": "step-06",
+     "label": "Hold an end of season review and carry lessons into the next season plan"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm each plant seasonal limits and the dates they change"
+    },
+    {
+     "id": "step-05",
+     "label": "Track seasonal performance weekly against the plant targets"
+    },
+    {
+     "id": "step-02",
+     "label": "Set plant specific sludge age, recycle, and chemical targets for the season"
+    },
+    {
+     "id": "step-04",
+     "label": "Brief overall responsible operators on the targets and escalation triggers"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Plant specific targets respect different limits, common sampling allows comparison, and the season review turns experience into the next plan."
+  },
+  {
+   "id": "c4ww-process15",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for evaluating sidestream nutrient treatment as a strategy option.",
+   "topicId": "sidestream-treatment-evaluation",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: dewatering returns carry a large share of the plant ammonia load.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Compare sidestream treatment with mainstream capacity expansion"
+    },
+    {
+     "id": "step-01",
+     "label": "Quantify the sidestream flow and nutrient load over full operating cycles"
+    },
+    {
+     "id": "step-04",
+     "label": "Estimate capital and operating costs for the shortlisted options"
+    },
+    {
+     "id": "step-06",
+     "label": "Recommend an option with the load evidence and the comparison attached"
+    },
+    {
+     "id": "step-03",
+     "label": "Review proven sidestream options and their space and staffing needs"
+    },
+    {
+     "id": "step-02",
+     "label": "Calculate its share of total plant load and its effect on aeration demand"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The load is quantified before options are discussed, mainstream expansion is the fair comparator, and the recommendation rests on evidence."
+  },
+  {
+   "id": "c4ww-process16",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a nutrient removal capacity study ahead of growth.",
+   "topicId": "nutrient-capacity-study-growth",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: new development adding flow and nutrient load over five years.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Measure current nutrient removal capacity at winter and summer conditions"
+    },
+    {
+     "id": "step-05",
+     "label": "Cost the stages and note the approval lead time for each"
+    },
+    {
+     "id": "step-03",
+     "label": "Model the year when each nutrient pathway reaches its reliable limit"
+    },
+    {
+     "id": "step-01",
+     "label": "Forecast influent flow, nitrogen, and phosphorus loads for each growth year"
+    },
+    {
+     "id": "step-04",
+     "label": "Identify staged upgrades that match the growth timeline"
+    },
+    {
+     "id": "step-06",
+     "label": "Report the capacity limits and trigger points to planning leadership"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Growth forecasts and measured capacity show when limits arrive, staged upgrades match that timeline, and trigger points prevent late action."
+  },
+  {
+   "id": "c4ww-process17",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for governing chemical use in a nutrient removal program.",
+   "topicId": "nutrient-chemical-governance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: metal salt, carbon source, and alkalinity chemicals used across several plants.",
+   "cards": [
+    {
+     "id": "step-06",
+     "label": "Report chemical cost and performance together at program reviews"
+    },
+    {
+     "id": "step-03",
+     "label": "Track use per unit of nutrient removed for each plant monthly"
+    },
+    {
+     "id": "step-02",
+     "label": "Set dose control bases and maximum dose limits for each chemical"
+    },
+    {
+     "id": "step-04",
+     "label": "Investigate plants or periods where use per unit removed is out of range"
+    },
+    {
+     "id": "step-01",
+     "label": "List each chemical, its purpose, and its control point in the process"
+    },
+    {
+     "id": "step-05",
+     "label": "Approve any change to dose basis through the program lead"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Purpose and control bases come first, efficiency is tracked per unit removed, and cost is always reviewed beside performance."
+  },
+  {
+   "id": "c4ww-process18",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a denitrification performance recovery plan at utility scale.",
+   "topicId": "denitrification-recovery-plan",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: several plants showing rising effluent nitrate after process changes.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "Confirm the nitrate trend with validated laboratory data at each plant"
+    },
+    {
+     "id": "step-04",
+     "label": "Issue a recovery plan with actions sequenced by expected gain"
+    },
+    {
+     "id": "step-06",
+     "label": "Verify recovery at each plant before closing the plan"
+    },
+    {
+     "id": "step-02",
+     "label": "Compare anoxic zone conditions, recycle rates, and carbon availability"
+    },
+    {
+     "id": "step-05",
+     "label": "Support plants with added sampling and specialist visits during recovery"
+    },
+    {
+     "id": "step-03",
+     "label": "Identify the common causes shared across plants and the plant specific causes"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Validated data and cross plant comparison separate common from local causes, actions are sequenced by gain, and closure needs proof."
+  },
+  {
+   "id": "c4ww-process19",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for setting alkalinity strategy for full nitrification plants.",
+   "topicId": "alkalinity-strategy-nitrifying-plants",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: low alkalinity source water and full nitrification required year round.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Compare chemical options for cost, handling, and storage risk"
+    },
+    {
+     "id": "step-02",
+     "label": "Calculate alkalinity consumed by nitrification and returned by denitrification"
+    },
+    {
+     "id": "step-05",
+     "label": "Set feed control and low inventory alarms for the selected chemical"
+    },
+    {
+     "id": "step-01",
+     "label": "Measure influent alkalinity and ammonia load across seasons"
+    },
+    {
+     "id": "step-06",
+     "label": "Review consumption against theory quarterly and adjust the strategy"
+    },
+    {
+     "id": "step-03",
+     "label": "Determine the residual alkalinity needed to hold basin pH in range"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Seasonal measurement and a consumption balance size the need, options are compared on risk as well as cost, and quarterly review keeps theory honest."
+  },
+  {
+   "id": "c4ww-process20",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for approving a nutrient trading or watershed offset proposal review.",
+   "topicId": "nutrient-offset-proposal-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: proposal to offset part of a plant load through watershed measures.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Check the evidence that the watershed measures deliver that reduction"
+    },
+    {
+     "id": "step-06",
+     "label": "Present a recommendation that states the risk and the conditions clearly"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm the approval and policy conditions that any offset must meet"
+    },
+    {
+     "id": "step-05",
+     "label": "Identify the compliance risk if the offset underperforms"
+    },
+    {
+     "id": "step-02",
+     "label": "Quantify the plant load reduction the offset claims to replace"
+    },
+    {
+     "id": "step-04",
+     "label": "Assess monitoring that would prove the offset over time"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Policy conditions and claimed loads are tested first, proof and monitoring decide credibility, and the compliance risk is stated plainly."
+  },
+  {
+   "id": "c4ww-process21",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a nutrient removal benchmarking study across peer utilities.",
+   "topicId": "nutrient-benchmarking-study",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: comparing nitrogen and phosphorus performance, energy, and chemical use with peers.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Select practices that fit local approvals and equipment for trials"
+    },
+    {
+     "id": "step-01",
+     "label": "Define the measures and the normalizing basis, such as per cubic metre treated"
+    },
+    {
+     "id": "step-04",
+     "label": "Identify the practices behind the best performing plants"
+    },
+    {
+     "id": "step-06",
+     "label": "Report the findings and the trial plan to utility leadership"
+    },
+    {
+     "id": "step-03",
+     "label": "Normalize the results and flag data that cannot be compared fairly"
+    },
+    {
+     "id": "step-02",
+     "label": "Collect peer data and check that plant types and limits are comparable"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Fair comparison needs a common basis and comparable plants, best practice is then tested locally rather than copied blindly."
+  },
+  {
+   "id": "c4ww-process22",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for setting a long term biosolids strategy for a utility.",
+   "topicId": "biosolids-long-term-strategy",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: strategy covering stabilization, outlets, storage, and contingency for ten years.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Review current outlets, their capacity, and their acceptance criteria"
+    },
+    {
+     "id": "step-05",
+     "label": "Select the strategy and phase the needed storage and process investments"
+    },
+    {
+     "id": "step-03",
+     "label": "Assess regulatory and market risks for each outlet"
+    },
+    {
+     "id": "step-01",
+     "label": "Forecast biosolids quantities and quality for the planning period"
+    },
+    {
+     "id": "step-04",
+     "label": "Develop strategy options that keep at least two viable outlets"
+    },
+    {
+     "id": "step-06",
+     "label": "Review the strategy yearly against outlet performance and forecasts"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Forecasts and outlet capacity frame the strategy, two viable outlets protect the utility, and yearly review keeps the strategy current."
+  },
+  {
+   "id": "c4ww-process23",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for approving a biosolids beneficial use program expansion.",
+   "topicId": "biosolids-beneficial-use-expansion",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: expanding land application with new farm partners and added testing.",
+   "cards": [
+    {
+     "id": "step-06",
+     "label": "Audit the first applications and review records before expanding further"
+    },
+    {
+     "id": "step-03",
+     "label": "Test biosolids quality against all program criteria before contracting"
+    },
+    {
+     "id": "step-02",
+     "label": "Verify stabilization and pathogen reduction performance with records"
+    },
+    {
+     "id": "step-04",
+     "label": "Secure receiving sites, setback checks, and application plans"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm the regulatory requirements and acceptance criteria for the material"
+    },
+    {
+     "id": "step-05",
+     "label": "Brief haulers and applicators on program rules and record keeping"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Requirements and material quality are proven before sites are contracted, applicators are briefed, and early audits protect the program."
+  },
+  {
+   "id": "c4ww-process24",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a biosolids outlet contingency plan.",
+   "topicId": "biosolids-outlet-contingency-plan",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: main outlet can be lost through weather, market, or regulatory change.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "Calculate how many days of production the current storage can hold"
+    },
+    {
+     "id": "step-04",
+     "label": "Set trigger points that activate each alternate outlet"
+    },
+    {
+     "id": "step-06",
+     "label": "Test the plan with a tabletop exercise and correct the gaps found"
+    },
+    {
+     "id": "step-02",
+     "label": "List alternate outlets and the approval each one requires"
+    },
+    {
+     "id": "step-05",
+     "label": "Document the plan and brief the overall responsible operator and supervisors"
+    },
+    {
+     "id": "step-03",
+     "label": "Confirm hauling capacity available on short notice"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Storage days define the response window, alternates are confirmed before they are needed, and a tabletop test exposes gaps safely."
+  },
+  {
+   "id": "c4ww-process25",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for reviewing digestion performance as part of biosolids strategy.",
+   "topicId": "digestion-performance-strategy-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: anaerobic digesters underperforming on volatile solids reduction and gas output.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Estimate the effect of performance on downstream dewatering and outlets"
+    },
+    {
+     "id": "step-02",
+     "label": "Calculate volatile solids reduction and gas yield against expected ranges"
+    },
+    {
+     "id": "step-05",
+     "label": "Set improvement actions with expected gains for each action"
+    },
+    {
+     "id": "step-01",
+     "label": "Compile feed, volatile solids, temperature, and gas data for the review period"
+    },
+    {
+     "id": "step-06",
+     "label": "Reassess performance after one full solids retention period"
+    },
+    {
+     "id": "step-03",
+     "label": "Check mixing, heating, and feed consistency for limiting faults"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Data and calculated performance come before fault finding, downstream effects are valued, and reassessment waits a full retention period."
+  },
+  {
+   "id": "c4ww-process26",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a biosolids quality assurance program for metals and nutrients.",
+   "topicId": "biosolids-quality-assurance-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: routine testing program supporting beneficial use and compliance reporting.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Use approved methods and an accredited laboratory where required"
+    },
+    {
+     "id": "step-06",
+     "label": "Summarize quality results in the annual biosolids report"
+    },
+    {
+     "id": "step-01",
+     "label": "List the parameters, criteria, and sampling frequency the program requires"
+    },
+    {
+     "id": "step-05",
+     "label": "Investigate and hold material when a result is out of range"
+    },
+    {
+     "id": "step-02",
+     "label": "Set sampling points that represent the material actually leaving the plant"
+    },
+    {
+     "id": "step-04",
+     "label": "Review each result against criteria before the material is released"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Representative sampling and approved methods make results defensible, material is held on failure, and annual reporting closes the loop."
+  },
+  {
+   "id": "c4ww-process27",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for planning biosolids storage ahead of a seasonal outlet closure.",
+   "topicId": "biosolids-storage-seasonal-planning",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: land application outlet closes each winter for several months.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Arrange a backup outlet for use if storage approaches its limit"
+    },
+    {
+     "id": "step-01",
+     "label": "Forecast daily biosolids production through the closure period"
+    },
+    {
+     "id": "step-04",
+     "label": "Plan dewatering schedules to reduce stored volume where possible"
+    },
+    {
+     "id": "step-06",
+     "label": "Monitor stored volume weekly and report against the plan"
+    },
+    {
+     "id": "step-03",
+     "label": "Inspect storage structures and confirm usable volume and condition"
+    },
+    {
+     "id": "step-02",
+     "label": "Calculate the storage volume needed with a safety margin"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Production forecasts size the storage need, usable volume is verified in the field, and weekly monitoring prevents a late surprise."
+  },
+  {
+   "id": "c4ww-process28",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for evaluating a new biosolids processing technology proposal.",
+   "topicId": "biosolids-technology-proposal-evaluation",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: vendor proposes thermal drying to replace current dewatering and hauling.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Require vendor performance data from comparable full scale installations"
+    },
+    {
+     "id": "step-05",
+     "label": "Run a site visit and reference checks with operating utilities"
+    },
+    {
+     "id": "step-03",
+     "label": "Check product quality, odour, energy use, and outlet acceptance"
+    },
+    {
+     "id": "step-01",
+     "label": "Define the current cost, quality, and risk baseline for biosolids handling"
+    },
+    {
+     "id": "step-04",
+     "label": "Model whole life cost including hauling, energy, and maintenance"
+    },
+    {
+     "id": "step-06",
+     "label": "Recommend for or against a pilot with the evidence stated"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "A measured baseline and full scale references come before costing, whole life cost decides value, and a pilot is earned by evidence."
+  },
+  {
+   "id": "c4ww-process29",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for leading a biosolids odour management program.",
+   "topicId": "biosolids-odour-management-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: odour complaints linked to storage and loadout operations.",
+   "cards": [
+    {
+     "id": "step-06",
+     "label": "Review complaint trends monthly and adjust the program"
+    },
+    {
+     "id": "step-03",
+     "label": "Identify the activities and conditions that release the most odour"
+    },
+    {
+     "id": "step-02",
+     "label": "Inspect storage, loadout, and hauling practices during high risk activities"
+    },
+    {
+     "id": "step-04",
+     "label": "Change scheduling, covering, or housekeeping for those activities first"
+    },
+    {
+     "id": "step-01",
+     "label": "Log complaints with time, weather, and plant activity to find patterns"
+    },
+    {
+     "id": "step-05",
+     "label": "Set a response protocol for new complaints with named contacts"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Pattern evidence targets the worst activities first, practical controls precede capital ideas, and monthly review keeps pressure on results."
+  },
+  {
+   "id": "c4ww-process30",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a dewatering optimization program to cut hauling cost.",
+   "topicId": "dewatering-optimization-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: cake solids low, hauling volumes and costs rising across plants.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "Baseline cake solids, polymer use, and capture rate at each plant"
+    },
+    {
+     "id": "step-04",
+     "label": "Set cake solids and capture targets for each machine"
+    },
+    {
+     "id": "step-06",
+     "label": "Track hauling cost per tonne of dry solids monthly after the changes"
+    },
+    {
+     "id": "step-02",
+     "label": "Check dewatering feed consistency and solids inventory control"
+    },
+    {
+     "id": "step-05",
+     "label": "Train operators on the trial method so results are repeatable"
+    },
+    {
+     "id": "step-03",
+     "label": "Optimize polymer selection and dose through structured trials"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Baselines separate machine, feed, and chemical causes, structured trials find the best polymer use, and cost per dry tonne proves value."
+  },
+  {
+   "id": "c4ww-process31",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for approving changes to biosolids hauling contracts.",
+   "topicId": "biosolids-hauling-contract-change",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: contract change covering rates, destinations, and service windows.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Compare pricing on a cost per tonne of dry solids basis"
+    },
+    {
+     "id": "step-02",
+     "label": "Forecast volumes and destinations for the new contract period"
+    },
+    {
+     "id": "step-05",
+     "label": "Confirm contingency duties for spills, breakdowns, and outlet loss"
+    },
+    {
+     "id": "step-01",
+     "label": "Review current contract performance and the volumes actually hauled"
+    },
+    {
+     "id": "step-06",
+     "label": "Approve the contract and brief operations on the service terms"
+    },
+    {
+     "id": "step-03",
+     "label": "Check that proposed destinations hold the needed approvals and capacity"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Performance and forecasts frame the change, destinations are verified, pricing is compared on dry solids, and contingency duties are explicit."
+  },
+  {
+   "id": "c4ww-process32",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for an annual biosolids program report to leadership.",
+   "topicId": "biosolids-annual-report",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: report covering quantities, quality, outlets, cost, and incidents.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Report outlet use, costs, and any loss of outlet during the year"
+    },
+    {
+     "id": "step-06",
+     "label": "Present the report and record leadership decisions in the program file"
+    },
+    {
+     "id": "step-01",
+     "label": "Compile quantities produced, stored, and moved for the year"
+    },
+    {
+     "id": "step-05",
+     "label": "State the risks and the planned improvements for the next year"
+    },
+    {
+     "id": "step-02",
+     "label": "Summarize quality results against program criteria"
+    },
+    {
+     "id": "step-04",
+     "label": "Record incidents, complaints, and the corrective actions taken"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Quantities, quality, and outlets give the full picture, incidents are reported openly, and leadership decisions are recorded for follow up."
+  },
+  {
+   "id": "c4ww-process33",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for managing biosolids during a digester outage.",
+   "topicId": "biosolids-digester-outage-management",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: one digester out of service for repair, solids still arriving daily.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Brief the overall responsible operator and update the plan daily"
+    },
+    {
+     "id": "step-01",
+     "label": "Calculate the solids storage available before and after the outage starts"
+    },
+    {
+     "id": "step-04",
+     "label": "Arrange added dewatering, hauling, or alternate outlet capacity"
+    },
+    {
+     "id": "step-06",
+     "label": "Return feed to normal in stages as digestion capacity is restored"
+    },
+    {
+     "id": "step-03",
+     "label": "Confirm the quality status of material that will bypass full stabilization"
+    },
+    {
+     "id": "step-02",
+     "label": "Reduce or resequence solids feed to match the remaining digestion capacity"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Storage and remaining capacity set the plan, bypassed material quality is faced directly, and staged return protects the recovering digester."
+  },
+  {
+   "id": "c4ww-process34",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for leading an effluent compliance assurance program.",
+   "topicId": "effluent-compliance-assurance-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: program assuring every approval limit is monitored, reviewed, and acted on.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Assign each limit an owner who reviews its data on a set rhythm"
+    },
+    {
+     "id": "step-05",
+     "label": "Audit the register against the approval yearly and correct any gaps"
+    },
+    {
+     "id": "step-03",
+     "label": "Set internal action levels below the approval limits"
+    },
+    {
+     "id": "step-01",
+     "label": "Build a register of every approval limit, average period, and sampling duty"
+    },
+    {
+     "id": "step-04",
+     "label": "Define the escalation steps when an action level is crossed"
+    },
+    {
+     "id": "step-06",
+     "label": "Report compliance status and open actions to senior leadership monthly"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "A complete register and named owners come first, internal action levels create margin, and audits keep the register equal to the approval."
+  },
+  {
+   "id": "c4ww-process35",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for preparing for a ministry inspection of a wastewater plant.",
+   "topicId": "ministry-inspection-readiness",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: inspection covering operations, records, sampling, and operator certification.",
+   "cards": [
+    {
+     "id": "step-06",
+     "label": "Brief staff on inspection conduct and who speaks for the plant"
+    },
+    {
+     "id": "step-03",
+     "label": "Verify sampling records, chain of custody, and laboratory results are complete"
+    },
+    {
+     "id": "step-02",
+     "label": "Check operator licences and overall responsible operator records are current"
+    },
+    {
+     "id": "step-04",
+     "label": "Walk the plant for housekeeping, labelling, and safety items an inspector will see"
+    },
+    {
+     "id": "step-01",
+     "label": "Review the approval, recent reports, and any past inspection findings"
+    },
+    {
+     "id": "step-05",
+     "label": "Correct gaps found and keep evidence of each correction"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Past findings and records are checked before the walkdown, gaps are corrected with evidence, and staff briefing keeps the day orderly."
+  },
+  {
+   "id": "c4ww-process36",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for responding to an effluent limit exceedance at utility level.",
+   "topicId": "effluent-exceedance-utility-response",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: confirmed exceedance of an approval limit at a major plant.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "Confirm the result is valid through laboratory and sampling review"
+    },
+    {
+     "id": "step-04",
+     "label": "Assess whether other plants share the same cause or risk"
+    },
+    {
+     "id": "step-06",
+     "label": "Track the corrective actions to closure and verify sustained compliance"
+    },
+    {
+     "id": "step-02",
+     "label": "Notify as required by the approval and Ontario Regulation 129/04 duties"
+    },
+    {
+     "id": "step-05",
+     "label": "Prepare the written report with cause, actions, and prevention steps"
+    },
+    {
+     "id": "step-03",
+     "label": "Direct the plant to correct the process cause and increase sampling"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Validity is confirmed before notification, correction and reporting run together, and closure requires sustained compliance, not one good result."
+  },
+  {
+   "id": "c4ww-process37",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a compliance data quality audit across plants.",
+   "topicId": "compliance-data-quality-audit",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: audit of sampling, analysis, calculation, and reporting for effluent data.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Review chain of custody and sample holding times for the traced samples"
+    },
+    {
+     "id": "step-02",
+     "label": "Trace reported values back to laboratory reports and sampling records"
+    },
+    {
+     "id": "step-05",
+     "label": "Issue findings with corrections for any reported value that changes"
+    },
+    {
+     "id": "step-01",
+     "label": "Select the parameters and reporting periods the audit will cover"
+    },
+    {
+     "id": "step-06",
+     "label": "Confirm corrected reports are resubmitted where a change matters"
+    },
+    {
+     "id": "step-03",
+     "label": "Check averaging, rounding, and limit comparisons for errors"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Tracing from report to raw record finds real errors, calculations are checked as a system, and material changes are resubmitted."
+  },
+  {
+   "id": "c4ww-process38",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for setting internal effluent action levels below approval limits.",
+   "topicId": "internal-effluent-action-levels",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: action levels giving time to correct before a limit is at risk.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Define the action required at each level, from review to escalation"
+    },
+    {
+     "id": "step-06",
+     "label": "Adjust levels that trigger too often or too late and record the basis"
+    },
+    {
+     "id": "step-01",
+     "label": "Analyse several years of effluent data for level and variability"
+    },
+    {
+     "id": "step-05",
+     "label": "Apply the levels in routine data review for a trial period"
+    },
+    {
+     "id": "step-02",
+     "label": "Set action levels that reflect variability and the averaging period"
+    },
+    {
+     "id": "step-04",
+     "label": "Brief operators and supervisors on the levels and their duties"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Variability and averaging periods make levels realistic, duties are defined before use, and trial use tunes the levels with evidence."
+  },
+  {
+   "id": "c4ww-process39",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for leading a compliance improvement plan after repeated exceedances.",
+   "topicId": "compliance-improvement-plan",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: repeated exceedances of one parameter over several reporting periods.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Report progress and results to leadership on a fixed rhythm"
+    },
+    {
+     "id": "step-01",
+     "label": "Compile the exceedance history and the process conditions for each event"
+    },
+    {
+     "id": "step-04",
+     "label": "Add interim operating restrictions that protect compliance during the plan"
+    },
+    {
+     "id": "step-06",
+     "label": "Close the plan only after a sustained compliant period is demonstrated"
+    },
+    {
+     "id": "step-03",
+     "label": "Set improvement actions for each cause with owners and dates"
+    },
+    {
+     "id": "step-02",
+     "label": "Identify the root causes and separate operational from capacity causes"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "History and conditions reveal causes, operational and capacity fixes are separated, and closure waits for sustained compliance."
+  }
+ ],
+ "missions": [
+  {
+   "id": "c4ww-mission41",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 41: The Biogas Production Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-error60",
+     "revision": "r1",
+     "occurrenceId": "m41-t1"
+    },
+    {
+     "taskId": "c4ww-process01",
+     "revision": "r1",
+     "occurrenceId": "m41-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission42",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 42: The Utility Management Review Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-process02",
+     "revision": "r1",
+     "occurrenceId": "m42-t1"
+    },
+    {
+     "taskId": "c4ww-error61",
+     "revision": "r1",
+     "occurrenceId": "m42-t2"
+    },
+    {
+     "taskId": "c4ww-error62",
+     "revision": "r1",
+     "occurrenceId": "m42-t3"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission43",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 43: The Biogas Energy Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-error63",
+     "revision": "r1",
+     "occurrenceId": "m43-t1"
+    },
+    {
+     "taskId": "c4ww-process03",
+     "revision": "r1",
+     "occurrenceId": "m43-t2"
+    },
+    {
+     "taskId": "c4ww-error64",
+     "revision": "r1",
+     "occurrenceId": "m43-t3"
+    },
+    {
+     "taskId": "c4ww-error65",
+     "revision": "r1",
+     "occurrenceId": "m43-t4"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission44",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 44: The Staffing Plan Capacity Alignment Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-process04",
+     "revision": "r1",
+     "occurrenceId": "m44-t1"
+    },
+    {
+     "taskId": "c4ww-error66",
+     "revision": "r1",
+     "occurrenceId": "m44-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission45",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 45: The Biogas Energy Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-error67",
+     "revision": "r1",
+     "occurrenceId": "m45-t1"
+    },
+    {
+     "taskId": "c4ww-process05",
+     "revision": "r1",
+     "occurrenceId": "m45-t2"
+    },
+    {
+     "taskId": "c4ww-error68",
+     "revision": "r1",
+     "occurrenceId": "m45-t3"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission46",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 46: The Service Level Target Setting Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-process06",
+     "revision": "r1",
+     "occurrenceId": "m46-t1"
+    },
+    {
+     "taskId": "c4ww-error69",
+     "revision": "r1",
+     "occurrenceId": "m46-t2"
+    },
+    {
+     "taskId": "c4ww-error70",
+     "revision": "r1",
+     "occurrenceId": "m46-t3"
+    },
+    {
+     "taskId": "c4ww-error71",
+     "revision": "r1",
+     "occurrenceId": "m46-t4"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission47",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 47: The Biosolids Cake Production Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-error72",
+     "revision": "r1",
+     "occurrenceId": "m47-t1"
+    },
+    {
+     "taskId": "c4ww-process07",
+     "revision": "r1",
+     "occurrenceId": "m47-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission48",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 48: The Plant Annual Budget Build Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-process08",
+     "revision": "r1",
+     "occurrenceId": "m48-t1"
+    },
+    {
+     "taskId": "c4ww-error73",
+     "revision": "r1",
+     "occurrenceId": "m48-t2"
+    },
+    {
+     "taskId": "c4ww-error74",
+     "revision": "r1",
+     "occurrenceId": "m48-t3"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission49",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 49: The Biosolids Cake Production Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-error75",
+     "revision": "r1",
+     "occurrenceId": "m49-t1"
+    },
+    {
+     "taskId": "c4ww-process09",
+     "revision": "r1",
+     "occurrenceId": "m49-t2"
+    },
+    {
+     "taskId": "c4ww-error76",
+     "revision": "r1",
+     "occurrenceId": "m49-t3"
+    },
+    {
+     "taskId": "c4ww-error77",
+     "revision": "r1",
+     "occurrenceId": "m49-t4"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission50",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 50: The Post Expansion Org Review Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-process10",
+     "revision": "r1",
+     "occurrenceId": "m50-t1"
+    },
+    {
+     "taskId": "c4ww-error78",
+     "revision": "r1",
+     "occurrenceId": "m50-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission51",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 51: The Biosolids Yield Forecast Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-error79",
+     "revision": "r1",
+     "occurrenceId": "m51-t1"
+    },
+    {
+     "taskId": "c4ww-process100",
+     "revision": "r1",
+     "occurrenceId": "m51-t2"
+    },
+    {
+     "taskId": "c4ww-error80",
+     "revision": "r1",
+     "occurrenceId": "m51-t3"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission52",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 52: The Nutrient Strategy Multi Year Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-process11",
+     "revision": "r1",
+     "occurrenceId": "m52-t1"
+    },
+    {
+     "taskId": "c4ww-error81",
+     "revision": "r1",
+     "occurrenceId": "m52-t2"
+    },
+    {
+     "taskId": "c4ww-error82",
+     "revision": "r1",
+     "occurrenceId": "m52-t3"
+    },
+    {
+     "taskId": "c4ww-error83",
+     "revision": "r1",
+     "occurrenceId": "m52-t4"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission53",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 53: The Aeration Energy Benchmark Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-error84",
+     "revision": "r1",
+     "occurrenceId": "m53-t1"
+    },
+    {
+     "taskId": "c4ww-process12",
+     "revision": "r1",
+     "occurrenceId": "m53-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission54",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 54: The Phosphorus Strategy Limit Reduction Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-process13",
+     "revision": "r1",
+     "occurrenceId": "m54-t1"
+    },
+    {
+     "taskId": "c4ww-error85",
+     "revision": "r1",
+     "occurrenceId": "m54-t2"
+    },
+    {
+     "taskId": "c4ww-error86",
+     "revision": "r1",
+     "occurrenceId": "m54-t3"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission55",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 55: The Aeration Energy Benchmark Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-error87",
+     "revision": "r1",
+     "occurrenceId": "m55-t1"
+    },
+    {
+     "taskId": "c4ww-process14",
+     "revision": "r1",
+     "occurrenceId": "m55-t2"
+    },
+    {
+     "taskId": "c4ww-error88",
+     "revision": "r1",
+     "occurrenceId": "m55-t3"
+    },
+    {
+     "taskId": "c4ww-error89",
+     "revision": "r1",
+     "occurrenceId": "m55-t4"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission56",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 56: The Sidestream Treatment Evaluation Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-process15",
+     "revision": "r1",
+     "occurrenceId": "m56-t1"
+    },
+    {
+     "taskId": "c4ww-error90",
+     "revision": "r1",
+     "occurrenceId": "m56-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission57",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 57: The Aeration Energy Benchmark Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-error91",
+     "revision": "r1",
+     "occurrenceId": "m57-t1"
+    },
+    {
+     "taskId": "c4ww-process16",
+     "revision": "r1",
+     "occurrenceId": "m57-t2"
+    },
+    {
+     "taskId": "c4ww-error92",
+     "revision": "r1",
+     "occurrenceId": "m57-t3"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission58",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 58: The Nutrient Chemical Governance Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-process17",
+     "revision": "r1",
+     "occurrenceId": "m58-t1"
+    },
+    {
+     "taskId": "c4ww-error93",
+     "revision": "r1",
+     "occurrenceId": "m58-t2"
+    },
+    {
+     "taskId": "c4ww-error94",
+     "revision": "r1",
+     "occurrenceId": "m58-t3"
+    },
+    {
+     "taskId": "c4ww-error95",
+     "revision": "r1",
+     "occurrenceId": "m58-t4"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission59",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 59: The Capacity Peaking Factor Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-error96",
+     "revision": "r1",
+     "occurrenceId": "m59-t1"
+    },
+    {
+     "taskId": "c4ww-process18",
+     "revision": "r1",
+     "occurrenceId": "m59-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission60",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 60: The Alkalinity Strategy Nitrifying Plants Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-process19",
+     "revision": "r1",
+     "occurrenceId": "m60-t1"
+    },
+    {
+     "taskId": "c4ww-error97",
+     "revision": "r1",
+     "occurrenceId": "m60-t2"
+    },
+    {
+     "taskId": "c4ww-error98",
+     "revision": "r1",
+     "occurrenceId": "m60-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Advanced wastewater management, nutrient removal strategy, digestion and biosolids chapters"
+  },
+  {
+   "id": "epa-municipal-wastewater",
+   "title": "US EPA, Municipal Wastewater resources",
+   "locator": "https://www.epa.gov/npdes/municipal-wastewater"
+  },
+  {
+   "id": "epa-process-control",
+   "title": "US EPA, Process Control and nutrient removal guidance for municipal wastewater",
+   "locator": "Advanced nutrient removal strategy and whole plant optimization background"
+  },
+  {
+   "id": "owwco-exam-prep",
+   "title": "OWWCO, Exam preparation resources",
+   "locator": "https://owwco.ca/preparing-for-your-exam/"
+  },
+  {
+   "id": "wpi-ntk-2025",
+   "title": "WPI, 2025 Need-to-Know Criteria, Wastewater Treatment Class IV",
+   "locator": "https://gowpi.org/services/2025-need-to-know-criteria/"
+  },
+  {
+   "id": "ont-reg-129-04",
+   "title": "Ontario Regulation 129/04, Licensing of Sewage Works Operators",
+   "locator": "https://www.ontario.ca/laws/regulation/04129"
+  },
+  {
+   "id": "ccohs-safety",
+   "title": "CCOHS, OSH Answers (confined spaces, hydrogen sulfide, lockout)",
+   "locator": "https://www.ccohs.ca/oshanswers/"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "630993074849f16707c58cbf5ece6ba0fbe8d52737e59c8779589ec870a802a2",
+  "taskReceipts": [
+   {
+    "taskId": "c4ww-error60",
+    "revision": "r1",
+    "sha256": "6231f221647870ff40e162cbfdfea4fc736a174de4b815d2e42816284c03e17a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error61",
+    "revision": "r1",
+    "sha256": "dd0bf7e71259dcb1de886578d8cccdba51254baebb2158c395d2555eb78e3d95",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error62",
+    "revision": "r1",
+    "sha256": "d362d9c0fa6aec61873e6096fa5e5f4669085f98908c09a2f7be936dd4faa14b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error63",
+    "revision": "r1",
+    "sha256": "9918b201045322779b0f33d6afe6929e6e467fea5d34a9bb93d366c14ad64077",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error64",
+    "revision": "r1",
+    "sha256": "b872ad268a23017d9c3fdf0e2e54b1ccc34b056d1b6ba6c421299976f66e77d6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error65",
+    "revision": "r1",
+    "sha256": "a4740e7516d7e5600fc677213be1e898f5d10eedfd997d8862dbe9fa2fc923a4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error66",
+    "revision": "r1",
+    "sha256": "cf4f7f41439f7949db801c00d21006406c5b4d638a88c8bb2121f934e3da4fde",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error67",
+    "revision": "r1",
+    "sha256": "16c2493e973e03e083b1a9a5bfd65424f8ba2f9548341d81aacfefd0adc907e3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error68",
+    "revision": "r1",
+    "sha256": "53e31f783d2050d07b5f7571370a58af20bd701b42ce6529cf5cda35e7aa1697",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error69",
+    "revision": "r1",
+    "sha256": "2949d3bc4f8752a864f55d94a4532163c67c6e335d960b78eba02526b541b91d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error70",
+    "revision": "r1",
+    "sha256": "fc2bb10f36e219c8877f60376beaaf9fb9b4fc014f7173c45385c234593e087c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error71",
+    "revision": "r1",
+    "sha256": "14efed8b68faff21e9a074687acd659e2b8f4a1db4b0173fca4e56c8f8dff36d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error72",
+    "revision": "r1",
+    "sha256": "d58579f2f32460b6b349568e1b28eee5dcdb98289908b1533b65dbc3a989dae2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error73",
+    "revision": "r1",
+    "sha256": "5fce8d5545e13dad6eec827d24bae033f04f95adfe10ee0f224b7facbcc14e27",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error74",
+    "revision": "r1",
+    "sha256": "18284e1e8ed3c0e840dc756c99dd5c656b8b435f459be2e5bc6dccbd224c658c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error75",
+    "revision": "r1",
+    "sha256": "991d2a979c890ea159aa7ab295946fcfe8e3051fc7161edbf8a370c3d722acbd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error76",
+    "revision": "r1",
+    "sha256": "05888f7f043a3ad124133d1945630afc1631b982886ebf04ea8fe6977f3299db",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error77",
+    "revision": "r1",
+    "sha256": "c0110a8c60324d4bfb71084de003f4a115ab50526488eddab6ae7e168159b114",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error78",
+    "revision": "r1",
+    "sha256": "49a05fadcf4c39ee8cbedc96fe3e4ce5b8ade4a5b42d9d0e970bac66afb24412",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error79",
+    "revision": "r1",
+    "sha256": "9bea736bddd17feb8999c00a21740abf8275590bbb840d4df210ad9c74fe6830",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error80",
+    "revision": "r1",
+    "sha256": "7a50eea305c746d45a579ec3ee58ac415f24a795084dc52bbab738db0a4dac3b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error81",
+    "revision": "r1",
+    "sha256": "53f4ecc580e5d4eb52f87e61d1c1f5f02c75e10184e1be03f1aba8c5203a55d4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error82",
+    "revision": "r1",
+    "sha256": "670394d5d1b0dcfbc91c2c3b1a2f45ea488356341949c3d6f2609014cd0788b6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error83",
+    "revision": "r1",
+    "sha256": "6759da98119b0b608e2e50c5dde5c4cdc028e8989cc0b9676d2cdd6853ef7059",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error84",
+    "revision": "r1",
+    "sha256": "37844a396f2030db9f8fa470abbfdbe811b7373076f6c4a9408daef6e79eaf22",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error85",
+    "revision": "r1",
+    "sha256": "bb924b0426c13b5ca01ac008c76923fd8e23a6c082655cbd6c41215327230ea2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error86",
+    "revision": "r1",
+    "sha256": "c7220dda3b5fba18dbf73cd1234f4f091f61eaa0d1f0558e463c79a8dc375eb9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error87",
+    "revision": "r1",
+    "sha256": "2291fbb82539792d4b3eb54dcfdbf3fd58f5e854f9bd25df936e9e57d6442318",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error88",
+    "revision": "r1",
+    "sha256": "572f3363b8be26616302af80e74a234dbbcbf6baa287dd167e5ab423463fa56d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error89",
+    "revision": "r1",
+    "sha256": "1662c9772bf72d9910396b1cb1c01c4cb215c0b8bfda656b2e0bdfb7d76f8459",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error90",
+    "revision": "r1",
+    "sha256": "205c2b71a5d2d3d445a5219f7fb97674e6e8f727df4dc7995b9ab5e3df88b9bd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error91",
+    "revision": "r1",
+    "sha256": "84755321cf3a4d7fbea62947d80eddcfaad36b853e84eb05eb391d52a8fef6f1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error92",
+    "revision": "r1",
+    "sha256": "fad879d628cba232786aaad198944108bca506f9227f9e8ca55172d662fa207a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error93",
+    "revision": "r1",
+    "sha256": "accc186bc5da08a961f0557e79cafa9223901639d4342c3612e9f37aa5d83836",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error94",
+    "revision": "r1",
+    "sha256": "1c75e5b103fd613d5fbb5e7d0f82f37ce21eec49bb6c7d23b4324cf6a29b5f07",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error95",
+    "revision": "r1",
+    "sha256": "198b3ee65406148dbf3e65578d0d7b7423af68005831d025867bb791977045ad",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error96",
+    "revision": "r1",
+    "sha256": "d83f3b61b941d9867ab47e180ff58912dfdfb0293db92d165439c644f9b09783",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error97",
+    "revision": "r1",
+    "sha256": "7d88d8edb19536c1af0e7a1822986347acb20d98a6d9a947dd547e640133eee9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error98",
+    "revision": "r1",
+    "sha256": "919c33c6f4f20e71110375bbd8e406a44518e331f139a453122cd3b71fce135f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-error99",
+    "revision": "r1",
+    "sha256": "70f4679a7b26bc5063bfd272e3b82310acc2611bd2b324b9ed62a1d9121eea14",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process01",
+    "revision": "r1",
+    "sha256": "19a4ce11805252b2f7eb64dade77b9f0470c92fd191da5df52c9ea3157045472",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process02",
+    "revision": "r1",
+    "sha256": "e65ea73f23005589f5d64e7671d1a3ec1a3e1e1f14ca65b9aaecbd00398b7ef8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process03",
+    "revision": "r1",
+    "sha256": "8dd6fbea43b35b179e25f7adb9c40d629be5b1ddb02001a0b8909b7f8b53bbf4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process04",
+    "revision": "r1",
+    "sha256": "49934798c4b73e20cc607845f9a945ca433f553b3e966eecccb91b2f159be510",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process05",
+    "revision": "r1",
+    "sha256": "b539ee87c63232bbdb6055a4bd870be728656d24ac29421dce3782a63e0dac93",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process06",
+    "revision": "r1",
+    "sha256": "16b03940a518d4deb086b92632579845951bc9853e917d9fea9a9ccfd150a164",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process07",
+    "revision": "r1",
+    "sha256": "e9f722b91b92ebee4a1bde13ee974be49acbb71ebe8725b69d855dfeed07b0bd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process08",
+    "revision": "r1",
+    "sha256": "58edda281d43eb566682eb42a40bc72c2f7c80f19990b74f78adb7d2f042fd51",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process09",
+    "revision": "r1",
+    "sha256": "ac68f19ac4e7d231058763a4a5e331ee18288aaa8e5b8c300ce8040869367d01",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process10",
+    "revision": "r1",
+    "sha256": "a11d7c7059e173a6151dc228a10a3af2997c4393047b552d5aa99bae4b2e0378",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process100",
+    "revision": "r1",
+    "sha256": "237134c5a9d281b414f922c44402f3442f214c86ec1663a310846ae23173ca3b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process11",
+    "revision": "r1",
+    "sha256": "d1dd9931e9bc9bb85a357a704073da15c1a2992a3ae6702c92c6e89c5ec951f4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process12",
+    "revision": "r1",
+    "sha256": "944be257180cc7163d3b9365e4d9ff6794e9b4512cf52fbfcfc5f1a2257253c1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process13",
+    "revision": "r1",
+    "sha256": "4623a6ef2475e8393cb441c82a4f2346ed32be39f454ae8f7508f2663b4a9d19",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process14",
+    "revision": "r1",
+    "sha256": "2ba00d3bf05ab8f8cc2df6ba8da725b91abe65a8308d4941a1fc97718c81af97",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process15",
+    "revision": "r1",
+    "sha256": "3bd15112938f38054dc0123ed79f397e7cac479c562e7512c1f8338094c318c2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process16",
+    "revision": "r1",
+    "sha256": "5be432f6654e196743f449b03ea9681aad662f5b9c41847af1c453e5b0958b6e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process17",
+    "revision": "r1",
+    "sha256": "7d4bde51b17b0ce67cffad9f51da2c896c3ce26519b308e4c79d486fd6156add",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process18",
+    "revision": "r1",
+    "sha256": "64050f356f4ba6472fc81735acb1090d2a592489272bcdea8435e849bf0c2085",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process19",
+    "revision": "r1",
+    "sha256": "0c479385d349bb7f88a30e3255886a05d951aea16c851c799f02510aeb0d50c2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process20",
+    "revision": "r1",
+    "sha256": "2374af39b3a9fc9b8def066af4bc27431a1203fc4338169e7380bee80e38fdbd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process21",
+    "revision": "r1",
+    "sha256": "7eb8992acf06bd7bede0dcc24c942d8bd07d2fbda4175e75f1ce26c95f5979d1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process22",
+    "revision": "r1",
+    "sha256": "2f4f426bff8fc8306e7c5cbf59582fc5367a780efd311841dcbe28fe895bc08b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process23",
+    "revision": "r1",
+    "sha256": "1d49940c469eb0ca5ccab9ed16b7d95644c5953c3a52a995cccc13f78223aab5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process24",
+    "revision": "r1",
+    "sha256": "ba9a16ac58c6fba3149372a8c6287c4658de540d5c8489069cc40a56b017fb9c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process25",
+    "revision": "r1",
+    "sha256": "cee89f4a49a754e36631bfa259321055b6daea0915c0d198ecda58368f105398",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process26",
+    "revision": "r1",
+    "sha256": "998bd110febfe2992721dc4feba7a455a37367e4f80c6074e05328a46e2d70da",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process27",
+    "revision": "r1",
+    "sha256": "ea241236eb504541b86ef4fc4a770d4804bfd3ea88ffc78252bd068de52b80ea",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process28",
+    "revision": "r1",
+    "sha256": "85ee7d28d40e99e0d8c00e35ccd31260e1fbbe8e3482b6d96320fe69afea7b58",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process29",
+    "revision": "r1",
+    "sha256": "f3b96af6f16cfbbbb884464a5af28114796a8cae6c149cacc13999f68e99b811",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process30",
+    "revision": "r1",
+    "sha256": "94f43438b1fd5e794cd747d9a4e5dddf08d37d540eebc3f9b3c1448eda28fac3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process31",
+    "revision": "r1",
+    "sha256": "fbf193ebebb535589eb4de71b39d93268e7c2a2f28d1d944cf6c978cb7930c59",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process32",
+    "revision": "r1",
+    "sha256": "ff093b87cf2d3728bf0b6924eff38271e2608bc0d37a1d08bc9bf08fac3f13a2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process33",
+    "revision": "r1",
+    "sha256": "189bbd7906138b132a4e9a2cf711ca1b7203b97ad84b860daaef4e7acbde1f44",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process34",
+    "revision": "r1",
+    "sha256": "ebf3d7ba973d201c0a62430549e5aeec1eb1455158582ffee01af80b8897c5c1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process35",
+    "revision": "r1",
+    "sha256": "8ba1c0c093326653673fcc4006bb55ee612a29f52c8f4182e1506a6a122d89ef",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process36",
+    "revision": "r1",
+    "sha256": "713a4d1868a1382ecb0464c3727328fe98210d6b322ab4cff9eddda0fb108908",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process37",
+    "revision": "r1",
+    "sha256": "ab0b3beccbbddea69d8d8c46f5f0744f253ec3f20bc104e39965263b3cf44294",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process38",
+    "revision": "r1",
+    "sha256": "d13054242299f67817ea862dfa7c38db2c8f966b83b0deadc9051aff09a556e4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process39",
+    "revision": "r1",
+    "sha256": "89e263ebdd25119e5f2ec81e3b40078d6cfcb68ef01883dcfb84b7d2ac836c77",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "c4ww-mission41",
+    "revision": "r1",
+    "sha256": "d6eb7cb826c52e8c8ce5c4f2344630d696ea4c0b3719c68af558a6c9c2b8cfb7"
+   },
+   {
+    "missionId": "c4ww-mission42",
+    "revision": "r1",
+    "sha256": "11b9dca27cd9506cc14568adc36204885401551c27c04e5a3aa6bd79fb9dc36d"
+   },
+   {
+    "missionId": "c4ww-mission43",
+    "revision": "r1",
+    "sha256": "d59ac23a262409c9a7cc33fb7bc28af16fc20c269525f5302bea41235531ba39"
+   },
+   {
+    "missionId": "c4ww-mission44",
+    "revision": "r1",
+    "sha256": "598aa2e86461e681f6428e3b7158cb32dc0929b136b9d375e47cd9e891e4a43c"
+   },
+   {
+    "missionId": "c4ww-mission45",
+    "revision": "r1",
+    "sha256": "7f44045693e5860cd07ce17cbe01f31e9be963852afda8f16ead1dc545b29d2f"
+   },
+   {
+    "missionId": "c4ww-mission46",
+    "revision": "r1",
+    "sha256": "9f5abf83da386f23578445d0dafbd00c43e490a52519812fe6f462a959d7eb84"
+   },
+   {
+    "missionId": "c4ww-mission47",
+    "revision": "r1",
+    "sha256": "fd816102c42ed077cd6376ec5313780a42f3b109107adfd2561f0bc99284fe3d"
+   },
+   {
+    "missionId": "c4ww-mission48",
+    "revision": "r1",
+    "sha256": "e6f719a094bf7380595c9c27814cd89edb6d4263d3c5cf0b1acc611b0ad815e4"
+   },
+   {
+    "missionId": "c4ww-mission49",
+    "revision": "r1",
+    "sha256": "54678241dab001ed3fc648fbf3989cc58e42ce3dc9488798fcc4eeffd63e3882"
+   },
+   {
+    "missionId": "c4ww-mission50",
+    "revision": "r1",
+    "sha256": "f2b1118ddf769605a18e2abe3924de63ffc7cf42b16136ca30672707012b5d50"
+   },
+   {
+    "missionId": "c4ww-mission51",
+    "revision": "r1",
+    "sha256": "e2898674fa007daec7bcb9e00b2037f39a52bbfbaa378d660fdae687e097f91e"
+   },
+   {
+    "missionId": "c4ww-mission52",
+    "revision": "r1",
+    "sha256": "38f8e4b1414e145fb9c25c0b8cad4d172aa6db9f110517b5c543cfb5a8a339cb"
+   },
+   {
+    "missionId": "c4ww-mission53",
+    "revision": "r1",
+    "sha256": "ea05935bee8f9388e141f7cd0b8649e1dc500c8d24a426d2b59c41c6bdda2e17"
+   },
+   {
+    "missionId": "c4ww-mission54",
+    "revision": "r1",
+    "sha256": "8a17615669c1c770ad0b6723209e28be448ff076556da63428a3f2b90bcd8196"
+   },
+   {
+    "missionId": "c4ww-mission55",
+    "revision": "r1",
+    "sha256": "523808a39f15708810618aef7d2f442dfc9dc5f1c17859e4714bf7035ffdec04"
+   },
+   {
+    "missionId": "c4ww-mission56",
+    "revision": "r1",
+    "sha256": "d72776448ddeddfadd511af07d74541b7b2477001dfd98a6d049b21768b3f79f"
+   },
+   {
+    "missionId": "c4ww-mission57",
+    "revision": "r1",
+    "sha256": "9a58c789ab5a33be08df1696deea30e36c7c6470baaee642bf23035649c6027e"
+   },
+   {
+    "missionId": "c4ww-mission58",
+    "revision": "r1",
+    "sha256": "1f3335f8d1fbcf357042b121f7754cc0024141b3c84944ee5214f8e2ff26cabf"
+   },
+   {
+    "missionId": "c4ww-mission59",
+    "revision": "r1",
+    "sha256": "4eaa70347a5d21328bda25add3be026706e2aeb737379df5f48cb8c616e8c6be"
+   },
+   {
+    "missionId": "c4ww-mission60",
+    "revision": "r1",
+    "sha256": "d681dc1551cae756c5e73b1fb0462e963424b8e1d5881aac82387a055c64eb42"
+   }
+  ]
+ }
+}

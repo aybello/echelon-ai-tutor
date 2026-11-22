@@ -1,0 +1,4077 @@
+{
+ "courseKey": "class3-water",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "c3w-error60",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids mass balance for flow 2500 m3/day at 120 mg/L through a treatment unit.",
+   "topicId": "mass-balance",
+   "level": "class1",
+   "assumptions": "Fictional treatment unit: flow = 2500 m3/day, solids concentration = 120 mg/L, 1000 L = 1 m3, 1000000 mg = 1 kg. Mass load in kg/day = Flow in m3/day * Concentration in mg/L / 1000.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Influent load = 2500 m3/day * 120 mg/L / 1000 = 300 kg/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Removed load at 90 percent removal = 300 kg/day * 0.1 = 30 kg/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Effluent load = 300 kg/day - 30 kg/day = 270 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Removed load at 90 percent removal = 300 kg/day * 0.9 = 270 kg/day",
+   "explanation": "Line 2 used the 10 percent remaining fraction instead of the 90 percent removed fraction. Removed load is 300 * 0.9 = 270 kg/day."
+  },
+  {
+   "id": "c3w-error61",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids mass balance for flow 1800 m3/day at 150 mg/L through a treatment unit.",
+   "topicId": "mass-balance",
+   "level": "class1",
+   "assumptions": "Fictional treatment unit: flow = 1800 m3/day, solids concentration = 150 mg/L, 1000 L = 1 m3, 1000000 mg = 1 kg. Mass load in kg/day = Flow in m3/day * Concentration in mg/L / 1000.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Influent load = 1800 m3/day * 150 mg/L / 1000 = 270 kg/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. The same influent stream passes through Unit A and then Unit B in series"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total load entering the train = 270 kg/day + 270 kg/day = 540 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total load entering the train = 270 kg/day",
+   "explanation": "Line 3 counted the same stream twice because the units are in series, not parallel. The train receives the influent load once, 270 kg/day."
+  },
+  {
+   "id": "c3w-error62",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids mass balance for flow 4000 m3/day at 80 mg/L through a treatment unit.",
+   "topicId": "mass-balance",
+   "level": "class1",
+   "assumptions": "Fictional treatment unit: flow = 4000 m3/day, solids concentration = 80 mg/L, 1000 L = 1 m3, 1000000 mg = 1 kg. Mass load in kg/day = Flow in m3/day * Concentration in mg/L / 1000.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Influent load = 4000 m3/day * 80 mg/L / 1000 = 320 kg/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Captured solids = 60 percent of 320 kg/day = 192 kg/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solids leaving in effluent = 320 kg/day - 192 kg/day = 128 kg/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Total solids out = Captured solids only = 192 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Total solids out = 192 kg/day + 128 kg/day = 320 kg/day",
+   "explanation": "Line 4 omitted the effluent solids stream. Total out is captured plus passing, 192 + 128 = 320 kg/day, matching the influent."
+  },
+  {
+   "id": "c3w-error63",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids mass balance for flow 900 m3/day at 300 mg/L through a treatment unit.",
+   "topicId": "mass-balance",
+   "level": "class1",
+   "assumptions": "Fictional treatment unit: flow = 900 m3/day, solids concentration = 300 mg/L, 1000 L = 1 m3, 1000000 mg = 1 kg. Mass load in kg/day = Flow in m3/day * Concentration in mg/L / 1000.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Mass load in kg/day = Flow in m3/day * Concentration in mg/L / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Mass load = 900 * 300 / 10000 = 27 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Mass load = 900 * 300 / 1000 = 270 kg/day",
+   "explanation": "Line 2 divided by 10000 instead of 1000. The combined L to m3 and mg to kg conversions give a divisor of 1000, so the load is 270 kg/day."
+  },
+  {
+   "id": "c3w-error64",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids mass balance for flow 2200 m3/day at 200 mg/L through a treatment unit.",
+   "topicId": "mass-balance",
+   "level": "class1",
+   "assumptions": "Fictional treatment unit: flow = 2200 m3/day, solids concentration = 200 mg/L, 1000 L = 1 m3, 1000000 mg = 1 kg. Mass load in kg/day = Flow in m3/day * Concentration in mg/L / 1000.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Flow splits equally, so each parallel unit gets 2200 m3/day / 2 = 1100 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Load to each unit = 1100 m3/day * 200 mg/L / 1000 = 220 kg/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total load = 220 kg/day + 220 kg/day = 460 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total load = 220 kg/day + 220 kg/day = 440 kg/day",
+   "explanation": "Lines 1 and 2 are correct. Line 3 misadds: 220 + 220 = 440 kg/day, not 460."
+  },
+  {
+   "id": "c3w-error65",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids mass balance for flow 1600 m3/day at 125 mg/L through a treatment unit.",
+   "topicId": "mass-balance",
+   "level": "class1",
+   "assumptions": "Fictional treatment unit: flow = 1600 m3/day, solids concentration = 125 mg/L, 1000 L = 1 m3, 1000000 mg = 1 kg. Mass load in kg/day = Flow in m3/day * Concentration in mg/L / 1000.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Influent load = 1600 m3/day * 125 mg/L / 1000 = 200 kg/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Removed load at 90 percent removal = 200 kg/day * 0.1 = 20 kg/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Effluent load = 200 kg/day - 20 kg/day = 180 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Removed load at 90 percent removal = 200 kg/day * 0.9 = 180 kg/day",
+   "explanation": "Line 2 used the 10 percent remaining fraction instead of the 90 percent removed fraction. Removed load is 200 * 0.9 = 180 kg/day."
+  },
+  {
+   "id": "c3w-error66",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids mass balance for flow 2800 m3/day at 150 mg/L through a treatment unit.",
+   "topicId": "mass-balance",
+   "level": "class1",
+   "assumptions": "Fictional treatment unit: flow = 2800 m3/day, solids concentration = 150 mg/L, 1000 L = 1 m3, 1000000 mg = 1 kg. Mass load in kg/day = Flow in m3/day * Concentration in mg/L / 1000.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Influent load = 2800 m3/day * 150 mg/L / 1000 = 420 kg/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. The same influent stream passes through Unit A and then Unit B in series"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total load entering the train = 420 kg/day + 420 kg/day = 840 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total load entering the train = 420 kg/day",
+   "explanation": "Line 3 counted the same stream twice because the units are in series, not parallel. The train receives the influent load once, 420 kg/day."
+  },
+  {
+   "id": "c3w-error67",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids mass balance for flow 1100 m3/day at 200 mg/L through a treatment unit.",
+   "topicId": "mass-balance",
+   "level": "class1",
+   "assumptions": "Fictional treatment unit: flow = 1100 m3/day, solids concentration = 200 mg/L, 1000 L = 1 m3, 1000000 mg = 1 kg. Mass load in kg/day = Flow in m3/day * Concentration in mg/L / 1000.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Influent load = 1100 m3/day * 200 mg/L / 1000 = 220 kg/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Captured solids = 60 percent of 220 kg/day = 132 kg/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solids leaving in effluent = 220 kg/day - 132 kg/day = 88 kg/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Total solids out = Captured solids only = 132 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Total solids out = 132 kg/day + 88 kg/day = 220 kg/day",
+   "explanation": "Line 4 omitted the effluent solids stream. Total out is captured plus passing, 132 + 88 = 220 kg/day, matching the influent."
+  },
+  {
+   "id": "c3w-error68",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids mass balance for flow 3500 m3/day at 100 mg/L through a treatment unit.",
+   "topicId": "mass-balance",
+   "level": "class1",
+   "assumptions": "Fictional treatment unit: flow = 3500 m3/day, solids concentration = 100 mg/L, 1000 L = 1 m3, 1000000 mg = 1 kg. Mass load in kg/day = Flow in m3/day * Concentration in mg/L / 1000.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Mass load in kg/day = Flow in m3/day * Concentration in mg/L / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Mass load = 3500 * 100 / 10000 = 35 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Mass load = 3500 * 100 / 1000 = 350 kg/day",
+   "explanation": "Line 2 divided by 10000 instead of 1000. The combined L to m3 and mg to kg conversions give a divisor of 1000, so the load is 350 kg/day."
+  },
+  {
+   "id": "c3w-error69",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids mass balance for flow 2000 m3/day at 90 mg/L through a treatment unit.",
+   "topicId": "mass-balance",
+   "level": "class1",
+   "assumptions": "Fictional treatment unit: flow = 2000 m3/day, solids concentration = 90 mg/L, 1000 L = 1 m3, 1000000 mg = 1 kg. Mass load in kg/day = Flow in m3/day * Concentration in mg/L / 1000.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Flow splits equally, so each parallel unit gets 2000 m3/day / 2 = 1000 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Load to each unit = 1000 m3/day * 90 mg/L / 1000 = 90 kg/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total load = 90 kg/day + 90 kg/day = 200 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total load = 90 kg/day + 90 kg/day = 180 kg/day",
+   "explanation": "Lines 1 and 2 are correct. Line 3 misadds: 90 + 90 = 180 kg/day, not 200."
+  },
+  {
+   "id": "c3w-error70",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids mass balance for flow 2400 m3/day at 175 mg/L through a treatment unit.",
+   "topicId": "mass-balance",
+   "level": "class1",
+   "assumptions": "Fictional treatment unit: flow = 2400 m3/day, solids concentration = 175 mg/L, 1000 L = 1 m3, 1000000 mg = 1 kg. Mass load in kg/day = Flow in m3/day * Concentration in mg/L / 1000.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Influent load = 2400 m3/day * 175 mg/L / 1000 = 420 kg/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Removed load at 90 percent removal = 420 kg/day * 0.1 = 42 kg/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Effluent load = 420 kg/day - 42 kg/day = 378 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Removed load at 90 percent removal = 420 kg/day * 0.9 = 378 kg/day",
+   "explanation": "Line 2 used the 10 percent remaining fraction instead of the 90 percent removed fraction. Removed load is 420 * 0.9 = 378 kg/day."
+  },
+  {
+   "id": "c3w-error71",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this residuals solids calculation for 12 m3 of sludge at 3 percent solids.",
+   "topicId": "residuals-solids",
+   "level": "class1",
+   "assumptions": "Fictional residuals tank: sludge volume = 12 m3, solids content = 3 percent, sludge density taken as 1000 kg/m3. Dry solids = Volume * Density * Percent solids / 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dry solids = Sludge volume * Density * Percent solids / 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Dry solids = 12 m3 * 1000 kg/m3 * 3 = 36000 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Dry solids = 12 m3 * 1000 kg/m3 * 3 / 100 = 360 kg",
+   "explanation": "Line 2 used 3 percent as the whole number 3 without dividing by 100. Dry solids = 12 * 1000 * 3 / 100 = 360 kg."
+  },
+  {
+   "id": "c3w-error72",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this residuals solids calculation for 15 m3 of sludge at 4 percent solids.",
+   "topicId": "residuals-solids",
+   "level": "class1",
+   "assumptions": "Fictional residuals tank: sludge volume = 15 m3, solids content = 4 percent, sludge density taken as 1000 kg/m3. Dry solids = Volume * Density * Percent solids / 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Wet sludge mass = 15 m3 * 1000 kg/m3 = 15000 kg"
+    },
+    {
+     "id": "line2",
+     "label": "2. Dry solids = Wet mass * 4 percent"
+    },
+    {
+     "id": "line3",
+     "label": "3. Dry solids = 15000 kg * 4 / 1000 = 60 kg"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Dry solids = 15000 kg * 4 / 100 = 600 kg",
+   "explanation": "Line 3 divided the percent by 1000 instead of 100. Dry solids = 15000 * 4 / 100 = 600 kg."
+  },
+  {
+   "id": "c3w-error73",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this residuals solids calculation for 10 m3 of sludge at 5 percent solids.",
+   "topicId": "residuals-solids",
+   "level": "class1",
+   "assumptions": "Fictional residuals tank: sludge volume = 10 m3, solids content = 5 percent, sludge density taken as 1000 kg/m3. Dry solids = Volume * Density * Percent solids / 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Sludge volume = 10000 L and 1000 L = 1 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Sludge volume = 10000 L * 1000 L/m3 = 10000000 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Wet mass = 10000000 m3 * 1000 kg/m3 = 10000000000 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Sludge volume = 10000 L / 1000 L/m3 = 10 m3",
+   "explanation": "Line 2 multiplied by 1000 instead of dividing when converting L to m3. The volume is 10 m3, giving dry solids of 500 kg at 5 percent."
+  },
+  {
+   "id": "c3w-error74",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this residuals solids calculation for 20 m3 of sludge at 2 percent solids.",
+   "topicId": "residuals-solids",
+   "level": "class1",
+   "assumptions": "Fictional residuals tank: sludge volume = 20 m3, solids content = 2 percent, sludge density taken as 1000 kg/m3. Dry solids = Volume * Density * Percent solids / 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Wet sludge mass = 20 m3 * 1000 kg/m3 = 20000 kg"
+    },
+    {
+     "id": "line2",
+     "label": "2. Dry solids = 20000 kg * 2 / 100"
+    },
+    {
+     "id": "line3",
+     "label": "3. Dry solids = 440 kg"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Dry solids = 20000 kg * 2 / 100 = 400 kg",
+   "explanation": "Lines 1 and 2 are correct. Line 3 miscalculates: 20000 * 2 / 100 = 400 kg, not 440."
+  },
+  {
+   "id": "c3w-error75",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this residuals solids calculation for 8 m3 of sludge at 4 percent solids.",
+   "topicId": "residuals-solids",
+   "level": "class1",
+   "assumptions": "Fictional residuals tank: sludge volume = 8 m3, solids content = 4 percent, sludge density taken as 1000 kg/m3. Dry solids = Volume * Density * Percent solids / 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Wet sludge mass = 8 m3 * 1000 kg/m3 = 8000 kg"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids fraction = 4 percent and water fraction = 96 percent"
+    },
+    {
+     "id": "line3",
+     "label": "3. Dry solids = 8000 kg * 96 / 100 = 7680 kg"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Dry solids = 8000 kg * 4 / 100 = 320 kg",
+   "explanation": "Line 3 used the water fraction 96 percent instead of the solids fraction. Dry solids = 8000 * 4 / 100 = 320 kg."
+  },
+  {
+   "id": "c3w-error76",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this residuals solids calculation for 25 m3 of sludge at 3 percent solids.",
+   "topicId": "residuals-solids",
+   "level": "class1",
+   "assumptions": "Fictional residuals tank: sludge volume = 25 m3, solids content = 3 percent, sludge density taken as 1000 kg/m3. Dry solids = Volume * Density * Percent solids / 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dry solids = Sludge volume * Density * Percent solids / 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Dry solids = 25 m3 * 1000 kg/m3 * 3 = 75000 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Dry solids = 25 m3 * 1000 kg/m3 * 3 / 100 = 750 kg",
+   "explanation": "Line 2 used 3 percent as the whole number 3 without dividing by 100. Dry solids = 25 * 1000 * 3 / 100 = 750 kg."
+  },
+  {
+   "id": "c3w-error77",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this residuals solids calculation for 18 m3 of sludge at 5 percent solids.",
+   "topicId": "residuals-solids",
+   "level": "class1",
+   "assumptions": "Fictional residuals tank: sludge volume = 18 m3, solids content = 5 percent, sludge density taken as 1000 kg/m3. Dry solids = Volume * Density * Percent solids / 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Wet sludge mass = 18 m3 * 1000 kg/m3 = 18000 kg"
+    },
+    {
+     "id": "line2",
+     "label": "2. Dry solids = Wet mass * 5 percent"
+    },
+    {
+     "id": "line3",
+     "label": "3. Dry solids = 18000 kg * 5 / 1000 = 90 kg"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Dry solids = 18000 kg * 5 / 100 = 900 kg",
+   "explanation": "Line 3 divided the percent by 1000 instead of 100. Dry solids = 18000 * 5 / 100 = 900 kg."
+  },
+  {
+   "id": "c3w-error78",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this residuals solids calculation for 30 m3 of sludge at 2 percent solids.",
+   "topicId": "residuals-solids",
+   "level": "class1",
+   "assumptions": "Fictional residuals tank: sludge volume = 30 m3, solids content = 2 percent, sludge density taken as 1000 kg/m3. Dry solids = Volume * Density * Percent solids / 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Sludge volume = 30000 L and 1000 L = 1 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Sludge volume = 30000 L * 1000 L/m3 = 30000000 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Wet mass = 30000000 m3 * 1000 kg/m3 = 30000000000 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Sludge volume = 30000 L / 1000 L/m3 = 30 m3",
+   "explanation": "Line 2 multiplied by 1000 instead of dividing when converting L to m3. The volume is 30 m3, giving dry solids of 600 kg at 2 percent."
+  },
+  {
+   "id": "c3w-error79",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this residuals solids calculation for 14 m3 of sludge at 4 percent solids.",
+   "topicId": "residuals-solids",
+   "level": "class1",
+   "assumptions": "Fictional residuals tank: sludge volume = 14 m3, solids content = 4 percent, sludge density taken as 1000 kg/m3. Dry solids = Volume * Density * Percent solids / 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Wet sludge mass = 14 m3 * 1000 kg/m3 = 14000 kg"
+    },
+    {
+     "id": "line2",
+     "label": "2. Dry solids = 14000 kg * 4 / 100"
+    },
+    {
+     "id": "line3",
+     "label": "3. Dry solids = 600 kg"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Dry solids = 14000 kg * 4 / 100 = 560 kg",
+   "explanation": "Lines 1 and 2 are correct. Line 3 miscalculates: 14000 * 4 / 100 = 560 kg, not 600."
+  },
+  {
+   "id": "c3w-error80",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this residuals solids calculation for 22 m3 of sludge at 3 percent solids.",
+   "topicId": "residuals-solids",
+   "level": "class1",
+   "assumptions": "Fictional residuals tank: sludge volume = 22 m3, solids content = 3 percent, sludge density taken as 1000 kg/m3. Dry solids = Volume * Density * Percent solids / 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Wet sludge mass = 22 m3 * 1000 kg/m3 = 22000 kg"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids fraction = 3 percent and water fraction = 97 percent"
+    },
+    {
+     "id": "line3",
+     "label": "3. Dry solids = 22000 kg * 97 / 100 = 21340 kg"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Dry solids = 22000 kg * 3 / 100 = 660 kg",
+   "explanation": "Line 3 used the water fraction 97 percent instead of the solids fraction. Dry solids = 22000 * 3 / 100 = 660 kg."
+  },
+  {
+   "id": "c3w-error81",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this residuals solids calculation for 16 m3 of sludge at 5 percent solids.",
+   "topicId": "residuals-solids",
+   "level": "class1",
+   "assumptions": "Fictional residuals tank: sludge volume = 16 m3, solids content = 5 percent, sludge density taken as 1000 kg/m3. Dry solids = Volume * Density * Percent solids / 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dry solids = Sludge volume * Density * Percent solids / 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Dry solids = 16 m3 * 1000 kg/m3 * 5 = 80000 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Dry solids = 16 m3 * 1000 kg/m3 * 5 / 100 = 800 kg",
+   "explanation": "Line 2 used 5 percent as the whole number 5 without dividing by 100. Dry solids = 16 * 1000 * 5 / 100 = 800 kg."
+  },
+  {
+   "id": "c3w-error82",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this residuals solids calculation for 9 m3 of sludge at 6 percent solids.",
+   "topicId": "residuals-solids",
+   "level": "class1",
+   "assumptions": "Fictional residuals tank: sludge volume = 9 m3, solids content = 6 percent, sludge density taken as 1000 kg/m3. Dry solids = Volume * Density * Percent solids / 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Wet sludge mass = 9 m3 * 1000 kg/m3 = 9000 kg"
+    },
+    {
+     "id": "line2",
+     "label": "2. Dry solids = Wet mass * 6 percent"
+    },
+    {
+     "id": "line3",
+     "label": "3. Dry solids = 9000 kg * 6 / 1000 = 54 kg"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Dry solids = 9000 kg * 6 / 100 = 540 kg",
+   "explanation": "Line 3 divided the percent by 1000 instead of 100. Dry solids = 9000 * 6 / 100 = 540 kg."
+  },
+  {
+   "id": "c3w-error83",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this residuals solids calculation for 28 m3 of sludge at 4 percent solids.",
+   "topicId": "residuals-solids",
+   "level": "class1",
+   "assumptions": "Fictional residuals tank: sludge volume = 28 m3, solids content = 4 percent, sludge density taken as 1000 kg/m3. Dry solids = Volume * Density * Percent solids / 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Sludge volume = 28000 L and 1000 L = 1 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Sludge volume = 28000 L * 1000 L/m3 = 28000000 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Wet mass = 28000000 m3 * 1000 kg/m3 = 28000000000 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Sludge volume = 28000 L / 1000 L/m3 = 28 m3",
+   "explanation": "Line 2 multiplied by 1000 instead of dividing when converting L to m3. The volume is 28 m3, giving dry solids of 1120 kg at 4 percent."
+  },
+  {
+   "id": "c3w-error84",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this residuals solids calculation for 11 m3 of sludge at 5 percent solids.",
+   "topicId": "residuals-solids",
+   "level": "class1",
+   "assumptions": "Fictional residuals tank: sludge volume = 11 m3, solids content = 5 percent, sludge density taken as 1000 kg/m3. Dry solids = Volume * Density * Percent solids / 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Wet sludge mass = 11 m3 * 1000 kg/m3 = 11000 kg"
+    },
+    {
+     "id": "line2",
+     "label": "2. Dry solids = 11000 kg * 5 / 100"
+    },
+    {
+     "id": "line3",
+     "label": "3. Dry solids = 590 kg"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Dry solids = 11000 kg * 5 / 100 = 550 kg",
+   "explanation": "Lines 1 and 2 are correct. Line 3 miscalculates: 11000 * 5 / 100 = 550 kg, not 590."
+  },
+  {
+   "id": "c3w-error85",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this residuals solids calculation for 24 m3 of sludge at 2 percent solids.",
+   "topicId": "residuals-solids",
+   "level": "class1",
+   "assumptions": "Fictional residuals tank: sludge volume = 24 m3, solids content = 2 percent, sludge density taken as 1000 kg/m3. Dry solids = Volume * Density * Percent solids / 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Wet sludge mass = 24 m3 * 1000 kg/m3 = 24000 kg"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids fraction = 2 percent and water fraction = 98 percent"
+    },
+    {
+     "id": "line3",
+     "label": "3. Dry solids = 24000 kg * 98 / 100 = 23520 kg"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Dry solids = 24000 kg * 2 / 100 = 480 kg",
+   "explanation": "Line 3 used the water fraction 98 percent instead of the solids fraction. Dry solids = 24000 * 2 / 100 = 480 kg."
+  },
+  {
+   "id": "c3w-error86",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this energy per volume calculation for a 50 kW pump running 8 h and treating 2000 m3.",
+   "topicId": "energy-per-volume",
+   "level": "class1",
+   "assumptions": "Fictional pumping record: power = 50 kW, run time = 8 h, volume treated = 2000 m3. Energy = Power * Time, and energy per volume = Energy / Volume.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Energy = 50 kW * 8 h = 400 kWh"
+    },
+    {
+     "id": "line2",
+     "label": "2. Energy per volume = Volume / Energy"
+    },
+    {
+     "id": "line3",
+     "label": "3. Energy per volume = 2000 m3 / 400 kWh"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Energy per volume = 400 kWh / 2000 m3 = 0.2 kWh/m3",
+   "explanation": "Line 2 inverted the ratio. Energy per volume is energy divided by volume, 400 / 2000 = 0.2 kWh/m3."
+  },
+  {
+   "id": "c3w-error87",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this energy per volume calculation for a 40 kW pump running 10 h and treating 2000 m3.",
+   "topicId": "energy-per-volume",
+   "level": "class1",
+   "assumptions": "Fictional pumping record: power = 40 kW, run time = 10 h, volume treated = 2000 m3. Energy = Power * Time, and energy per volume = Energy / Volume.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Hydraulic output power = 40 kW and given efficiency = 0.8, so input power = Output power / Efficiency"
+    },
+    {
+     "id": "line2",
+     "label": "2. Input power = 40 kW * 0.8 = 32 kW"
+    },
+    {
+     "id": "line3",
+     "label": "3. Energy = 32 kW * 10 h = 320 kWh"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Input power = 40 kW / 0.8 = 50 kW",
+   "explanation": "Line 2 multiplied by the efficiency instead of dividing. Input power is 40 / 0.8 = 50 kW, giving energy 50 * 10 = 500 kWh."
+  },
+  {
+   "id": "c3w-error88",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this energy per volume calculation for a 60 kW pump running 6 h and treating 1800 m3.",
+   "topicId": "energy-per-volume",
+   "level": "class1",
+   "assumptions": "Fictional pumping record: power = 60 kW, run time = 6 h, volume treated = 1800 m3. Energy = Power * Time, and energy per volume = Energy / Volume.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Energy = 60 kW * 6 h"
+    },
+    {
+     "id": "line2",
+     "label": "2. Energy = 410 kWh"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Energy = 60 kW * 6 h = 360 kWh",
+   "explanation": "Line 2 miscalculates the product: 60 * 6 = 360 kWh, not 410. Energy per volume is then 360 / 1800 = 0.2 kWh/m3."
+  },
+  {
+   "id": "c3w-error89",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this energy per volume calculation for a 45 kW pump running 8 h and treating 2400 m3.",
+   "topicId": "energy-per-volume",
+   "level": "class1",
+   "assumptions": "Fictional pumping record: power = 45 kW, run time = 8 h, volume treated = 2400 m3. Energy = Power * Time, and energy per volume = Energy / Volume.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Energy = 45 kW * 8 h = 360 kWh"
+    },
+    {
+     "id": "line2",
+     "label": "2. Energy per volume = Volume / Energy"
+    },
+    {
+     "id": "line3",
+     "label": "3. Energy per volume = 2400 m3 / 360 kWh"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Energy per volume = 360 kWh / 2400 m3 = 0.15 kWh/m3",
+   "explanation": "Line 2 inverted the ratio. Energy per volume is energy divided by volume, 360 / 2400 = 0.15 kWh/m3."
+  },
+  {
+   "id": "c3w-error90",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this energy per volume calculation for a 30 kW pump running 12 h and treating 3000 m3.",
+   "topicId": "energy-per-volume",
+   "level": "class1",
+   "assumptions": "Fictional pumping record: power = 30 kW, run time = 12 h, volume treated = 3000 m3. Energy = Power * Time, and energy per volume = Energy / Volume.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Hydraulic output power = 30 kW and given efficiency = 0.8, so input power = Output power / Efficiency"
+    },
+    {
+     "id": "line2",
+     "label": "2. Input power = 30 kW * 0.8 = 24 kW"
+    },
+    {
+     "id": "line3",
+     "label": "3. Energy = 24 kW * 12 h = 288 kWh"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Input power = 30 kW / 0.8 = 37.5 kW",
+   "explanation": "Line 2 multiplied by the efficiency instead of dividing. Input power is 30 / 0.8 = 37.5 kW, giving energy 37.5 * 12 = 450 kWh."
+  },
+  {
+   "id": "c3w-error91",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this energy per volume calculation for a 80 kW pump running 5 h and treating 2000 m3.",
+   "topicId": "energy-per-volume",
+   "level": "class1",
+   "assumptions": "Fictional pumping record: power = 80 kW, run time = 5 h, volume treated = 2000 m3. Energy = Power * Time, and energy per volume = Energy / Volume.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Energy = 80 kW * 5 h"
+    },
+    {
+     "id": "line2",
+     "label": "2. Energy = 450 kWh"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Energy = 80 kW * 5 h = 400 kWh",
+   "explanation": "Line 2 miscalculates the product: 80 * 5 = 400 kWh, not 450. Energy per volume is then 400 / 2000 = 0.2 kWh/m3."
+  },
+  {
+   "id": "c3w-error92",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this energy per volume calculation for a 25 kW pump running 16 h and treating 2500 m3.",
+   "topicId": "energy-per-volume",
+   "level": "class1",
+   "assumptions": "Fictional pumping record: power = 25 kW, run time = 16 h, volume treated = 2500 m3. Energy = Power * Time, and energy per volume = Energy / Volume.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Energy = 25 kW * 16 h = 400 kWh"
+    },
+    {
+     "id": "line2",
+     "label": "2. Energy per volume = Volume / Energy"
+    },
+    {
+     "id": "line3",
+     "label": "3. Energy per volume = 2500 m3 / 400 kWh"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Energy per volume = 400 kWh / 2500 m3 = 0.16 kWh/m3",
+   "explanation": "Line 2 inverted the ratio. Energy per volume is energy divided by volume, 400 / 2500 = 0.16 kWh/m3."
+  },
+  {
+   "id": "c3w-error93",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this CT calculation with residual 1 mg/L, contactor volume 120 m3, flow 2 m3/min, and baffling factor 0.7.",
+   "topicId": "ct-calculation",
+   "level": "class1",
+   "assumptions": "Fictional contactor: residual = 1 mg/L, volume = 120 m3, flow = 2 m3/min, baffling factor = 0.7. T10 = Volume / Flow * Baffling factor, and CT = Residual * T10.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Detention time = 120 m3 / 2 m3/min = 60 min"
+    },
+    {
+     "id": "line2",
+     "label": "2. T10 = 60 min / 0.7"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. T10 = 60 min * 0.7 = 42 min",
+   "explanation": "Line 2 divided by the baffling factor instead of multiplying. T10 = 60 * 0.7 = 42 min, so CT = 1 * 42 = 42 mg min/L."
+  },
+  {
+   "id": "c3w-error94",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this CT calculation with residual 1.5 mg/L, contactor volume 90 m3, flow 1.5 m3/min, and baffling factor 0.8.",
+   "topicId": "ct-calculation",
+   "level": "class1",
+   "assumptions": "Fictional contactor: residual = 1.5 mg/L, volume = 90 m3, flow = 1.5 m3/min, baffling factor = 0.8. T10 = Volume / Flow * Baffling factor, and CT = Residual * T10.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Detention time = 90 m3 / 1.5 m3/min = 60 min"
+    },
+    {
+     "id": "line2",
+     "label": "2. T10 = 60 min * 0.8 = 48 min"
+    },
+    {
+     "id": "line3",
+     "label": "3. CT = 1.5 mg/L * 48 min = 78 mg min/L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. CT = 1.5 mg/L * 48 min = 72 mg min/L",
+   "explanation": "Lines 1 and 2 are correct. Line 3 miscalculates the product: 1.5 * 48 = 72 mg min/L, not 78."
+  },
+  {
+   "id": "c3w-error95",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this CT calculation with residual 2 mg/L, contactor volume 100 m3, flow 2 m3/min, and baffling factor 0.6.",
+   "topicId": "ct-calculation",
+   "level": "class1",
+   "assumptions": "Fictional contactor: residual = 2 mg/L, volume = 100 m3, flow = 2 m3/min, baffling factor = 0.6. T10 = Volume / Flow * Baffling factor, and CT = Residual * T10.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Detention time = 100 m3 / 2 m3/min = 50 min"
+    },
+    {
+     "id": "line2",
+     "label": "2. T10 = Detention time = 50 min"
+    },
+    {
+     "id": "line3",
+     "label": "3. CT = 2 mg/L * 50 min = 100 mg min/L"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. T10 = 50 min * 0.6 = 30 min",
+   "explanation": "Line 2 skipped the baffling factor. T10 is the detention time times the baffling factor, 50 * 0.6 = 30 min, so CT = 60 mg min/L."
+  },
+  {
+   "id": "c3w-error96",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this CT calculation with residual 0.8 mg/L, contactor volume 150 m3, flow 3 m3/min, and baffling factor 0.9.",
+   "topicId": "ct-calculation",
+   "level": "class1",
+   "assumptions": "Fictional contactor: residual = 0.8 mg/L, volume = 150 m3, flow = 3 m3/min, baffling factor = 0.9. T10 = Volume / Flow * Baffling factor, and CT = Residual * T10.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Detention time = 150 m3 * 3 m3/min = 450 min"
+    },
+    {
+     "id": "line2",
+     "label": "2. T10 = 450 min * 0.9 = 405 min"
+    },
+    {
+     "id": "line3",
+     "label": "3. CT = 0.8 mg/L * 405 min = 324 mg min/L"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Detention time = 150 m3 / 3 m3/min = 50 min",
+   "explanation": "Line 1 multiplied volume by flow instead of dividing. Detention time is 50 min, T10 is 45 min, and CT is 36 mg min/L."
+  },
+  {
+   "id": "c3w-error97",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this blending calculation for 100 m3/day at 2 mg/L blended with 100 m3/day at 4 mg/L.",
+   "topicId": "blending-calculation",
+   "level": "class1",
+   "assumptions": "Fictional blending point: stream 1 = 100 m3/day at 2 mg/L, stream 2 = 100 m3/day at 4 mg/L. Blended concentration = (Q1 * C1 + Q2 * C2) / (Q1 + Q2).",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Numerator = 100 * 2 + 100 * 4 = 600"
+    },
+    {
+     "id": "line2",
+     "label": "2. Blended concentration = 600 / 100 = 6 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Blended concentration = 600 / (100 + 100) = 3 mg/L",
+   "explanation": "Line 2 divided by only the first flow. The denominator is the total flow 100 + 100 = 200 m3/day, so the blended concentration is 3 mg/L."
+  },
+  {
+   "id": "c3w-error98",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this blending calculation for 200 m3/day at 1 mg/L blended with 100 m3/day at 4 mg/L.",
+   "topicId": "blending-calculation",
+   "level": "class1",
+   "assumptions": "Fictional blending point: stream 1 = 200 m3/day at 1 mg/L, stream 2 = 100 m3/day at 4 mg/L. Blended concentration = (Q1 * C1 + Q2 * C2) / (Q1 + Q2).",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Stream loads are 200 * 1 = 200 and 100 * 4 = 400"
+    },
+    {
+     "id": "line2",
+     "label": "2. Numerator = 200 + 200 + 400 = 800"
+    },
+    {
+     "id": "line3",
+     "label": "3. Blended concentration = 800 / 300 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Numerator = 200 + 400 = 600",
+   "explanation": "Line 2 counted stream 1 twice. The numerator is 600, so the blended concentration is 600 / 300 = 2 mg/L."
+  },
+  {
+   "id": "c3w-error99",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this blending calculation for 300 m3/day at 3 mg/L blended with 100 m3/day at 1 mg/L.",
+   "topicId": "blending-calculation",
+   "level": "class1",
+   "assumptions": "Fictional blending point: stream 1 = 300 m3/day at 3 mg/L, stream 2 = 100 m3/day at 1 mg/L. Blended concentration = (Q1 * C1 + Q2 * C2) / (Q1 + Q2).",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Numerator = 300 * 3 + 100 * 1 = 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total flow = 300 + 100 = 400 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Blended concentration = 1000 / 400 = 3 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Blended concentration = 1000 / 400 = 2.5 mg/L",
+   "explanation": "Lines 1 and 2 are correct. Line 3 misdivides: 1000 / 400 = 2.5 mg/L, not 3."
+  },
+  {
+   "id": "c3w-process01",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the start-up sequence for a membrane filtration train returning from an overnight shutdown.",
+   "topicId": "process-membrane-startup",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: one microfiltration train from isolated standby to normal production.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the train valves and drains are in the standby lineup and no maintenance locks remain"
+    },
+    {
+     "id": "s2",
+     "label": "Complete pre-start checks of feed pumps, air scour blowers, and instrument air supply"
+    },
+    {
+     "id": "s3",
+     "label": "Fill and vent the membrane modules slowly to displace air without pressure shock"
+    },
+    {
+     "id": "s4",
+     "label": "Run a short integrity and pressure hold check before opening to production"
+    },
+    {
+     "id": "s5",
+     "label": "Ramp feed flow gradually to the set flux while watching transmembrane pressure"
+    },
+    {
+     "id": "s6",
+     "label": "Divert initial permeate to waste until turbidity and particle counts stabilize"
+    },
+    {
+     "id": "s7",
+     "label": "Place the train in normal production and log starting flux, pressures, and permeate quality"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process02",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the daily start-up checks for a membrane plant at the beginning of a production day.",
+   "topicId": "process-membrane-daily-checks",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: whole membrane hall checks before the first train is placed in service.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review overnight alarms, trends, and permeate quality records from the previous day"
+    },
+    {
+     "id": "s2",
+     "label": "Inspect chemical day tanks and confirm cleaning and dosing chemicals are available"
+    },
+    {
+     "id": "s3",
+     "label": "Verify feed water turbidity, temperature, and pH are within the operating envelope"
+    },
+    {
+     "id": "s4",
+     "label": "Check compressed air, backpulse tank pressure, and valve operation on a test cycle"
+    },
+    {
+     "id": "s5",
+     "label": "Start the first train at reduced flux and confirm stable transmembrane pressure"
+    },
+    {
+     "id": "s6",
+     "label": "Release remaining trains to automatic production once the first train is stable"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process03",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the pressure decay integrity test awareness sequence for a membrane module.",
+   "topicId": "process-membrane-integrity-test",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: one isolated membrane rack taken offline for a direct integrity test.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Take the rack out of service and isolate it from feed and permeate headers"
+    },
+    {
+     "id": "s2",
+     "label": "Drain the feed side and apply test air pressure to the specified test value"
+    },
+    {
+     "id": "s3",
+     "label": "Allow pressure to stabilize, then close the air supply and start the timed hold"
+    },
+    {
+     "id": "s4",
+     "label": "Record pressure decay over the hold period and compare it with the pass limit"
+    },
+    {
+     "id": "s5",
+     "label": "If decay exceeds the limit, locate the leaking module or fibre using sonic or visual checks"
+    },
+    {
+     "id": "s6",
+     "label": "Return only a passing rack to service, and document the test in the integrity log"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process04",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the cleaning in place program for a fouled ultrafiltration train.",
+   "topicId": "process-membrane-cip-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: full chemical clean from production removal to return to service.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Trend normalized permeability and confirm cleaning is triggered by the set decline"
+    },
+    {
+     "id": "s2",
+     "label": "Remove the train from production and complete a backwash and drain sequence"
+    },
+    {
+     "id": "s3",
+     "label": "Prepare the cleaning solution at the specified chemical strength and temperature"
+    },
+    {
+     "id": "s4",
+     "label": "Recirculate the solution through the modules for the specified soak and circulation time"
+    },
+    {
+     "id": "s5",
+     "label": "Rinse the train until rinse water pH and conductivity return to near feed values"
+    },
+    {
+     "id": "s6",
+     "label": "Run an integrity check and a clean water flux test to confirm recovery"
+    },
+    {
+     "id": "s7",
+     "label": "Return the train to service and record chemicals used, waste volume, and flux recovery"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process05",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the start-up awareness sequence for a reverse osmosis skid after a weekend shutdown.",
+   "topicId": "process-membrane-ro-startup",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: one reverse osmosis skid from standby flush to normal permeate production.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm pretreatment is producing water within turbidity and chlorine limits for the membranes"
+    },
+    {
+     "id": "s2",
+     "label": "Open feed valves and flush the skid at low pressure to displace preservative and air"
+    },
+    {
+     "id": "s3",
+     "label": "Start the high pressure pump and raise pressure slowly to avoid water hammer"
+    },
+    {
+     "id": "s4",
+     "label": "Adjust feed flow and recovery valves toward the target recovery in small steps"
+    },
+    {
+     "id": "s5",
+     "label": "Divert permeate to waste until conductivity falls to the acceptable limit"
+    },
+    {
+     "id": "s6",
+     "label": "Place permeate to storage and log flows, pressures, recovery, and conductivity"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process06",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the recovery management sequence when a membrane plant must raise recovery without exceeding limits.",
+   "topicId": "process-membrane-recovery-management",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: supervisory adjustment of system recovery over one operating week.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Establish the current baseline recovery, flux, and normalized permeability from trend data"
+    },
+    {
+     "id": "s2",
+     "label": "Review feed water quality and concentrate limits that constrain recovery"
+    },
+    {
+     "id": "s3",
+     "label": "Raise recovery in one small planned increment and hold other settings constant"
+    },
+    {
+     "id": "s4",
+     "label": "Monitor transmembrane pressure, differential pressure, and permeate quality for a full test period"
+    },
+    {
+     "id": "s5",
+     "label": "Compare fouling rate and cleaning frequency against the baseline period"
+    },
+    {
+     "id": "s6",
+     "label": "Adopt, revise, or reverse the increment in the operating plan based on the comparison"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process07",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the investigation sequence for rapid membrane fouling in one train.",
+   "topicId": "process-membrane-fouling-investigation",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: diagnostic workup from first abnormal trend to a confirmed cause.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the fouling trend is real by checking normalized permeability and instrument readings"
+    },
+    {
+     "id": "s2",
+     "label": "Compare feed water quality, pretreatment performance, and recent raw water changes"
+    },
+    {
+     "id": "s3",
+     "label": "Review recent cleaning records and check whether the last clean restored baseline flux"
+    },
+    {
+     "id": "s4",
+     "label": "Inspect for mechanical causes such as failed pretreatment cartridges or air scour faults"
+    },
+    {
+     "id": "s5",
+     "label": "Take a module sample or perform an autopsy referral when other checks are inconclusive"
+    },
+    {
+     "id": "s6",
+     "label": "Implement the corrective action for the confirmed cause and verify fouling rate returns to normal"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process08",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the backpulse sequence for an ultrafiltration module during normal production.",
+   "topicId": "process-membrane-backpulse-sequence",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: one automatic backpulse cycle from filtration pause to resumed filtration.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Reach the timed or pressure trigger that initiates the backpulse cycle"
+    },
+    {
+     "id": "s2",
+     "label": "Stop feed flow to the module and close the permeate production valve"
+    },
+    {
+     "id": "s3",
+     "label": "Pressurize the permeate side with the backpulse tank to reverse flow through the fibres"
+    },
+    {
+     "id": "s4",
+     "label": "Open the feed side drain so dislodged solids are carried to waste"
+    },
+    {
+     "id": "s5",
+     "label": "Complete an air scour and forward flush to clear remaining solids"
+    },
+    {
+     "id": "s6",
+     "label": "Refill the module, vent air, and return it to filtration at the set flux"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process09",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the isolation sequence for taking a membrane train out for mechanical maintenance.",
+   "topicId": "process-membrane-isolation-maintenance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: train isolation, draining, and handover to maintenance staff.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Notify operations staff and record the planned outage in the shift log"
+    },
+    {
+     "id": "s2",
+     "label": "Remove the train from production and complete a final backwash"
+    },
+    {
+     "id": "s3",
+     "label": "Close and tag feed, permeate, and chemical isolation valves for the train"
+    },
+    {
+     "id": "s4",
+     "label": "Drain modules and headers to the residuals system and depressurize all lines"
+    },
+    {
+     "id": "s5",
+     "label": "Apply lockout devices to pumps and blowers serving the train"
+    },
+    {
+     "id": "s6",
+     "label": "Verify zero energy and formally hand the train over to maintenance"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process10",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the return to service sequence for a membrane train after chemical cleaning.",
+   "topicId": "process-membrane-return-after-cip",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: from final rinse to full production release.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm rinse water meets the pH and conductivity release criteria"
+    },
+    {
+     "id": "s2",
+     "label": "Complete a pressure hold integrity test on the cleaned train"
+    },
+    {
+     "id": "s3",
+     "label": "Run a clean water flux test and compare permeability with the expected post clean value"
+    },
+    {
+     "id": "s4",
+     "label": "Start production at reduced flux with permeate diverted to waste"
+    },
+    {
+     "id": "s5",
+     "label": "Verify permeate turbidity and particle counts are within normal limits"
+    },
+    {
+     "id": "s6",
+     "label": "Raise the train to normal flux and record the return to service in the operations log"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process100",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the corrective action reporting sequence after a ministry inspection.",
+   "topicId": "process-inspection-corrective-action-reporting",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: from inspection findings to verified closure with the regulator.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review the inspection report and list every required action and its deadline"
+    },
+    {
+     "id": "s2",
+     "label": "Assign each action an owner and prepare the corrective action plan"
+    },
+    {
+     "id": "s3",
+     "label": "Submit the plan or progress response to the inspector by the required date"
+    },
+    {
+     "id": "s4",
+     "label": "Complete the actions and collect evidence such as photos, records, and revised procedures"
+    },
+    {
+     "id": "s5",
+     "label": "Submit the completion evidence and request confirmation of closure"
+    },
+    {
+     "id": "s6",
+     "label": "File the closed inspection record and add lessons to operator training"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process11",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the response sequence when a membrane integrity breach is confirmed during production.",
+   "topicId": "process-membrane-integrity-breach-response",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: supervisory response from confirmed breach alarm to controlled return to service.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Acknowledge the integrity alarm and confirm the breach with a direct integrity test"
+    },
+    {
+     "id": "s2",
+     "label": "Remove the affected train from production and isolate it from the permeate header"
+    },
+    {
+     "id": "s3",
+     "label": "Assess treated water quality and notify the overall responsible operator of the event"
+    },
+    {
+     "id": "s4",
+     "label": "Locate and repair or isolate the broken fibre or failed module"
+    },
+    {
+     "id": "s5",
+     "label": "Re-test integrity and confirm the train passes before any return to service"
+    },
+    {
+     "id": "s6",
+     "label": "Document the breach, water quality assessment, and corrective actions for regulatory records"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process12",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the performance review sequence using normalized membrane data.",
+   "topicId": "process-membrane-performance-normalization",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: monthly supervisory review of membrane performance across all trains.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Collect flux, transmembrane pressure, temperature, and permeate quality data for the review period"
+    },
+    {
+     "id": "s2",
+     "label": "Normalize permeability to the reference temperature using the plant procedure"
+    },
+    {
+     "id": "s3",
+     "label": "Compare normalized trends train by train to identify the fastest fouling unit"
+    },
+    {
+     "id": "s4",
+     "label": "Relate fouling differences to feed quality, run time, and cleaning history"
+    },
+    {
+     "id": "s5",
+     "label": "Schedule cleaning or investigation for the outlier train first"
+    },
+    {
+     "id": "s6",
+     "label": "Issue the monthly performance summary with actions and due dates"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process13",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the handling sequence for spent membrane cleaning solution.",
+   "topicId": "process-membrane-cleaning-waste-handling",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: from cleaning tank drain down to approved disposal of spent solution.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the cleaning is complete and the train is isolated from the spent solution"
+    },
+    {
+     "id": "s2",
+     "label": "Sample the spent solution for pH and the parameters required by the disposal approval"
+    },
+    {
+     "id": "s3",
+     "label": "Neutralize the solution in the waste tank to the approved pH range"
+    },
+    {
+     "id": "s4",
+     "label": "Verify the neutralized waste meets discharge limits before release"
+    },
+    {
+     "id": "s5",
+     "label": "Release the waste at the controlled rate to the approved discharge point"
+    },
+    {
+     "id": "s6",
+     "label": "Record volumes, test results, and release times in the residuals log"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process14",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the preservation sequence for membrane modules during a long plant shutdown.",
+   "topicId": "process-membrane-preservation-shutdown",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: preparing trains for a shutdown longer than the allowed wet storage period.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Complete a cleaning cycle so modules are stored in a clean condition"
+    },
+    {
+     "id": "s2",
+     "label": "Flush preservative solution through the modules until it fills all fibres and headers"
+    },
+    {
+     "id": "s3",
+     "label": "Isolate the train with preservative inside and tag it with the preservation date"
+    },
+    {
+     "id": "s4",
+     "label": "Record the preservative type, strength, and the required renewal date in the log"
+    },
+    {
+     "id": "s5",
+     "label": "Check preservative condition at the scheduled interval during the shutdown"
+    },
+    {
+     "id": "s6",
+     "label": "Flush out preservative and pass an integrity test before returning to production"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process15",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the train rotation planning sequence for equalizing membrane run hours.",
+   "topicId": "process-membrane-train-rotation",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: weekly supervisory rotation of duty and standby membrane trains.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review run hours, cleaning history, and integrity status for every train"
+    },
+    {
+     "id": "s2",
+     "label": "Rank trains so the most recently cleaned and tested trains are preferred for duty"
+    },
+    {
+     "id": "s3",
+     "label": "Prepare the rotation schedule that balances hours while keeping one verified standby train"
+    },
+    {
+     "id": "s4",
+     "label": "Bring the incoming train into service and confirm stable operation before removing the outgoing train"
+    },
+    {
+     "id": "s5",
+     "label": "Remove the outgoing train, complete its backwash, and place it in standby condition"
+    },
+    {
+     "id": "s6",
+     "label": "Log the rotation and update run hour records for the next planning cycle"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process16",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the start-up sequence for a validated ultraviolet disinfection reactor.",
+   "topicId": "process-uv-reactor-startup",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: one UV reactor from standby to credited disinfection service.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm flow through the reactor is established and within the validated flow range"
+    },
+    {
+     "id": "s2",
+     "label": "Verify ultraviolet transmittance of the water is within the validated operating range"
+    },
+    {
+     "id": "s3",
+     "label": "Start lamps and allow the required warm up period for full output"
+    },
+    {
+     "id": "s4",
+     "label": "Confirm lamp status, intensity sensor readings, and dose monitoring are normal"
+    },
+    {
+     "id": "s5",
+     "label": "Check that the reactor is receiving disinfection credit in the control system"
+    },
+    {
+     "id": "s6",
+     "label": "Place the reactor in credited service and log dose, flow, and transmittance"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process17",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the daily ultraviolet dose monitoring program for a plant with multiple reactors.",
+   "topicId": "process-uv-dose-monitoring-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: one operating day of dose verification from morning checks to record review.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review calculated dose trends and alarms for each reactor from the previous day"
+    },
+    {
+     "id": "s2",
+     "label": "Verify intensity sensor readings against the reference sensor check schedule"
+    },
+    {
+     "id": "s3",
+     "label": "Confirm flow and ultraviolet transmittance inputs to the dose calculation are valid"
+    },
+    {
+     "id": "s4",
+     "label": "Compare delivered dose with the required validated dose for the operating conditions"
+    },
+    {
+     "id": "s5",
+     "label": "Investigate and correct any reactor operating below its dose setpoint"
+    },
+    {
+     "id": "s6",
+     "label": "Sign off the daily dose record and file it with the disinfection compliance records"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process18",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the lamp replacement sequence for an ultraviolet reactor taken offline.",
+   "topicId": "process-uv-lamp-replacement",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: replacing aged lamps in one reactor from isolation to return to credited service.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Remove the reactor from credited service and transfer duty to another reactor"
+    },
+    {
+     "id": "s2",
+     "label": "Isolate power to the reactor and apply lockout before opening the lamp rack"
+    },
+    {
+     "id": "s3",
+     "label": "Allow lamps to cool, then remove and handle spent lamps as controlled waste"
+    },
+    {
+     "id": "s4",
+     "label": "Install new lamps with clean gloves and confirm correct seating and connections"
+    },
+    {
+     "id": "s5",
+     "label": "Clean or inspect quartz sleeves while the rack is accessible"
+    },
+    {
+     "id": "s6",
+     "label": "Restore power, run the lamp output check, and return the reactor to credited service after verification"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process19",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the quartz sleeve cleaning sequence for a fouled ultraviolet reactor.",
+   "topicId": "process-uv-sleeve-cleaning",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: restoring sleeve condition from declining intensity readings to verified output.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Trend intensity and confirm fouling is suspected rather than lamp ageing"
+    },
+    {
+     "id": "s2",
+     "label": "Remove the reactor from service and isolate it from flow and power"
+    },
+    {
+     "id": "s3",
+     "label": "Run the mechanical wiper cycle and check whether intensity recovers"
+    },
+    {
+     "id": "s4",
+     "label": "If wiping is insufficient, perform the approved chemical cleaning of the sleeves"
+    },
+    {
+     "id": "s5",
+     "label": "Rinse and reassemble the reactor and confirm no leaks on refilling"
+    },
+    {
+     "id": "s6",
+     "label": "Restart lamps and verify intensity and dose have returned to the normal range"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process20",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the validation awareness sequence for a new ultraviolet reactor installation.",
+   "topicId": "process-uv-validation-commissioning",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: from installed reactor to approved credited operation.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm installation matches the approved drawings and manufacturer requirements"
+    },
+    {
+     "id": "s2",
+     "label": "Complete electrical, flow meter, and sensor calibration checks"
+    },
+    {
+     "id": "s3",
+     "label": "Run challenge testing or review the validated dose documentation for the reactor model"
+    },
+    {
+     "id": "s4",
+     "label": "Establish the validated operating ranges for flow, transmittance, and lamp power in the control system"
+    },
+    {
+     "id": "s5",
+     "label": "Train operators on dose alarms, lamp changes, and off specification response"
+    },
+    {
+     "id": "s6",
+     "label": "Obtain approval to place the reactor in credited disinfection service and file the validation records"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process21",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the response sequence for a low dose alarm on a duty ultraviolet reactor.",
+   "topicId": "process-uv-low-dose-alarm-response",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: operator and supervisor response from alarm to restored credited dose.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Acknowledge the alarm and check flow, transmittance, lamp status, and intensity readings"
+    },
+    {
+     "id": "s2",
+     "label": "Reduce flow through the reactor or transfer flow to a reactor with adequate dose"
+    },
+    {
+     "id": "s3",
+     "label": "Clean sleeves or restore failed lamps as indicated by the checks"
+    },
+    {
+     "id": "s4",
+     "label": "Verify calculated dose has returned above the required setpoint"
+    },
+    {
+     "id": "s5",
+     "label": "Assess whether any off specification water reached storage and notify the overall responsible operator"
+    },
+    {
+     "id": "s6",
+     "label": "Document the alarm, actions, and water quality assessment in the disinfection log"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process22",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the ultraviolet transmittance monitoring program sequence for source water changes.",
+   "topicId": "process-uv-transmittance-monitoring",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: seasonal program from baseline sampling to updated operating ranges.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Collect transmittance samples across the range of raw water conditions for the season"
+    },
+    {
+     "id": "s2",
+     "label": "Analyse samples with the calibrated bench instrument and record paired online readings"
+    },
+    {
+     "id": "s3",
+     "label": "Compare online analyzer values with bench results and correct any analyzer offset"
+    },
+    {
+     "id": "s4",
+     "label": "Update the expected transmittance range used in dose pacing for the season"
+    },
+    {
+     "id": "s5",
+     "label": "Brief operators on the revised range and the response to low transmittance events"
+    },
+    {
+     "id": "s6",
+     "label": "File the seasonal transmittance summary with the disinfection records"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process23",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the restart sequence for ultraviolet disinfection after a plant power failure.",
+   "topicId": "process-uv-power-failure-restart",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: from power restoration to re-established credited disinfection.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm power is stable and control systems have restarted without faults"
+    },
+    {
+     "id": "s2",
+     "label": "Re-establish treated water flow through the reactors at a controlled rate"
+    },
+    {
+     "id": "s3",
+     "label": "Restart lamps and allow full warm up before crediting any dose"
+    },
+    {
+     "id": "s4",
+     "label": "Verify intensity, flow, and transmittance inputs are reading correctly"
+    },
+    {
+     "id": "s5",
+     "label": "Confirm calculated dose meets the requirement before releasing water to storage"
+    },
+    {
+     "id": "s6",
+     "label": "Log the outage duration, restart checks, and any water diverted during the event"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process24",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the sensor verification program sequence for ultraviolet intensity sensors.",
+   "topicId": "process-uv-sensor-calibration-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: quarterly verification of duty sensors against reference standards.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Schedule verification for a period when a standby reactor can carry the duty"
+    },
+    {
+     "id": "s2",
+     "label": "Remove the duty sensor for comparison or install the reference sensor beside it"
+    },
+    {
+     "id": "s3",
+     "label": "Compare duty and reference readings across the operating intensity range"
+    },
+    {
+     "id": "s4",
+     "label": "Adjust or replace any sensor outside the allowed deviation"
+    },
+    {
+     "id": "s5",
+     "label": "Reinstall and confirm the reactor dose calculation uses the verified reading"
+    },
+    {
+     "id": "s6",
+     "label": "Record verification results and next due dates in the instrument register"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process25",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the disinfection strategy sequence for a plant using ultraviolet light followed by chlorine.",
+   "topicId": "process-uv-chlorine-strategy-sequence",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: treated water path from filtration through distribution residual protection.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Filter water to the turbidity required for effective ultraviolet disinfection"
+    },
+    {
+     "id": "s2",
+     "label": "Measure ultraviolet transmittance and set reactor dose pacing"
+    },
+    {
+     "id": "s3",
+     "label": "Apply ultraviolet disinfection for primary inactivation credit"
+    },
+    {
+     "id": "s4",
+     "label": "Add chlorine after the reactors to establish the required free chlorine residual"
+    },
+    {
+     "id": "s5",
+     "label": "Confirm chlorine contact time and residual leaving the plant meet the targets"
+    },
+    {
+     "id": "s6",
+     "label": "Monitor residual in the distribution system and adjust the chlorine dose as needed"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process26",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the plant performance audit sequence for a Class 3 treatment plant.",
+   "topicId": "process-plant-performance-audit",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: annual supervisory audit from planning to tracked corrective actions.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Define the audit scope, performance indicators, and data period to be reviewed"
+    },
+    {
+     "id": "s2",
+     "label": "Gather production, quality, chemical, energy, and downtime records for the period"
+    },
+    {
+     "id": "s3",
+     "label": "Compare each indicator with targets, licence limits, and previous year results"
+    },
+    {
+     "id": "s4",
+     "label": "Identify the largest performance gaps and investigate their root causes"
+    },
+    {
+     "id": "s5",
+     "label": "Issue the audit report with prioritized corrective actions and owners"
+    },
+    {
+     "id": "s6",
+     "label": "Track actions to completion and report progress at management review"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process27",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the filter performance optimization trial sequence.",
+   "topicId": "process-filter-optimization-trial",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: controlled trial of a higher filtration rate on one filter.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Establish baseline run time, headloss, and effluent turbidity at the current rate"
+    },
+    {
+     "id": "s2",
+     "label": "Set the trial rate, trial duration, and the stop criteria for turbidity or headloss"
+    },
+    {
+     "id": "s3",
+     "label": "Raise the trial filter to the new rate while other filters hold the baseline"
+    },
+    {
+     "id": "s4",
+     "label": "Monitor effluent turbidity, headloss growth, and run length through the trial"
+    },
+    {
+     "id": "s5",
+     "label": "Compare trial results with the baseline and with stop criteria performance"
+    },
+    {
+     "id": "s6",
+     "label": "Decide whether to adopt, extend, or abandon the new rate and document the decision"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process28",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the coagulation optimization project sequence for a plant with variable raw water.",
+   "topicId": "process-coagulation-optimization-project",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: project from problem definition to adopted dose control strategy.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Characterize raw water turbidity, colour, alkalinity, and seasonal variation"
+    },
+    {
+     "id": "s2",
+     "label": "Run jar tests across the observed raw water range to map effective doses"
+    },
+    {
+     "id": "s3",
+     "label": "Build a dose guidance table or curve relating raw water quality to coagulant dose"
+    },
+    {
+     "id": "s4",
+     "label": "Trial the guidance at plant scale during changing raw water conditions"
+    },
+    {
+     "id": "s5",
+     "label": "Evaluate settled and filtered water quality against the previous dosing practice"
+    },
+    {
+     "id": "s6",
+     "label": "Adopt the guidance into the operating procedure and train all shifts on its use"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process29",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the energy optimization project sequence for treatment plant pumping and process loads.",
+   "topicId": "process-energy-optimization-project",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: project from energy baseline to verified savings.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Meter or estimate energy use by major process area to build the baseline"
+    },
+    {
+     "id": "s2",
+     "label": "Rank loads and identify the largest avoidable energy uses"
+    },
+    {
+     "id": "s3",
+     "label": "Trial operational changes such as off peak pumping or revised backwash timing on one area"
+    },
+    {
+     "id": "s4",
+     "label": "Measure energy and confirm treated water quality is unchanged during the trial"
+    },
+    {
+     "id": "s5",
+     "label": "Calculate verified savings against the baseline for the trial area"
+    },
+    {
+     "id": "s6",
+     "label": "Extend proven changes plant wide and add energy tracking to monthly reporting"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process30",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the lifecycle sequence for a plant process optimization project.",
+   "topicId": "process-process-optimization-lifecycle",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: generic optimization project from opportunity selection to sustained control.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Select the process and the measurable outcome the project will improve"
+    },
+    {
+     "id": "s2",
+     "label": "Collect baseline data long enough to capture normal variation"
+    },
+    {
+     "id": "s3",
+     "label": "Analyse the baseline to identify the factors that drive the outcome"
+    },
+    {
+     "id": "s4",
+     "label": "Trial the chosen change under controlled conditions with quality safeguards"
+    },
+    {
+     "id": "s5",
+     "label": "Confirm the improvement is sustained over a full verification period"
+    },
+    {
+     "id": "s6",
+     "label": "Standardize the change in procedures, setpoints, and operator training"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process31",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the clarifier performance audit sequence.",
+   "topicId": "process-clarifier-performance-audit",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: audit of one sedimentation clarifier with poor solids carryover.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review sludge blanket depth records, surface loading, and effluent turbidity trends"
+    },
+    {
+     "id": "s2",
+     "label": "Inspect weirs, baffles, and sludge collection equipment for physical faults"
+    },
+    {
+     "id": "s3",
+     "label": "Measure blanket depth and settled sludge characteristics at several points"
+    },
+    {
+     "id": "s4",
+     "label": "Compare actual loading and detention with the design and operating targets"
+    },
+    {
+     "id": "s5",
+     "label": "Correct physical faults and adjust sludge withdrawal based on the findings"
+    },
+    {
+     "id": "s6",
+     "label": "Re-measure effluent quality over the following week to confirm improvement"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process32",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the benchmarking review sequence comparing plant performance with peer facilities.",
+   "topicId": "process-plant-benchmarking-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: supervisory benchmarking cycle using shared performance indicators.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Select indicators that are defined the same way at all participating plants"
+    },
+    {
+     "id": "s2",
+     "label": "Collect and validate the plant data before submitting it for comparison"
+    },
+    {
+     "id": "s3",
+     "label": "Review the comparison results and identify indicators where the plant lags peers"
+    },
+    {
+     "id": "s4",
+     "label": "Visit or consult a leading peer to learn the practices behind their results"
+    },
+    {
+     "id": "s5",
+     "label": "Set improvement targets and assign actions based on the peer practices"
+    },
+    {
+     "id": "s6",
+     "label": "Re-measure the indicators in the next cycle to confirm progress"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process33",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the particle monitoring program sequence for filtered water quality control.",
+   "topicId": "process-particle-monitoring-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: setting up routine particle counting on filter effluent.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Install and commission the particle counter on a representative filter effluent line"
+    },
+    {
+     "id": "s2",
+     "label": "Establish baseline particle counts during stable, good quality filter runs"
+    },
+    {
+     "id": "s3",
+     "label": "Set alert and action levels from the baseline and from turbidity correlations"
+    },
+    {
+     "id": "s4",
+     "label": "Train operators to respond to rising counts with filter inspection and rate checks"
+    },
+    {
+     "id": "s5",
+     "label": "Trend counts with turbidity and headloss in the weekly quality review"
+    },
+    {
+     "id": "s6",
+     "label": "Use the trends to refine backwash triggers and filter run targets"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process34",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the hydraulic capacity assessment sequence for a plant approaching its rated capacity.",
+   "topicId": "process-hydraulic-capacity-assessment",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: assessment from demand review to a capacity decision.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Compile current and projected demands and compare them with the rated plant capacity"
+    },
+    {
+     "id": "s2",
+     "label": "Identify each process unit hydraulic limit from design records and field checks"
+    },
+    {
+     "id": "s3",
+     "label": "Run a controlled high flow test to observe levels, headloss, and overflow margins"
+    },
+    {
+     "id": "s4",
+     "label": "Confirm which unit limits capacity first and by how much"
+    },
+    {
+     "id": "s5",
+     "label": "Evaluate options such as operational changes, minor upgrades, or capital expansion"
+    },
+    {
+     "id": "s6",
+     "label": "Issue the capacity assessment with the limiting unit and the recommended option"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process35",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the disinfection strategy review sequence at plant scale.",
+   "topicId": "process-disinfection-strategy-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: periodic review of primary disinfection and residual strategy.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Compile disinfection credit requirements for the source and the treatment barriers in place"
+    },
+    {
+     "id": "s2",
+     "label": "Review dose, contact time, and residual data for the review period"
+    },
+    {
+     "id": "s3",
+     "label": "Check by-product results and confirm they remain within limits under the current strategy"
+    },
+    {
+     "id": "s4",
+     "label": "Assess weak points such as low transmittance events or contact tank short circuiting"
+    },
+    {
+     "id": "s5",
+     "label": "Trial or model strategy adjustments that protect credit while controlling by-products"
+    },
+    {
+     "id": "s6",
+     "label": "Update the disinfection plan and brief operators on any changed setpoints"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process36",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the residuals management program development sequence.",
+   "topicId": "process-residuals-program-development",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: creating a documented program for all plant residual streams.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Inventory every residual stream, its volume, solids content, and current handling route"
+    },
+    {
+     "id": "s2",
+     "label": "Characterize each stream with the testing required for its disposal or reuse option"
+    },
+    {
+     "id": "s3",
+     "label": "Confirm approved outlets and their acceptance limits for each stream"
+    },
+    {
+     "id": "s4",
+     "label": "Write handling, storage, and record keeping procedures for each stream"
+    },
+    {
+     "id": "s5",
+     "label": "Train operators and arrange contracts or approvals for the outlets"
+    },
+    {
+     "id": "s6",
+     "label": "Start the program and review volumes and test results at the first quarterly review"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process37",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the residuals thickening operation sequence for clarifier sludge.",
+   "topicId": "process-residuals-thickening-operation",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: one thickener run from sludge transfer to thickened solids removal.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm thickener is available and the receiving storage has capacity"
+    },
+    {
+     "id": "s2",
+     "label": "Transfer clarifier sludge to the thickener at the controlled feed rate"
+    },
+    {
+     "id": "s3",
+     "label": "Add polymer only if the feed solids and settling checks show it is needed"
+    },
+    {
+     "id": "s4",
+     "label": "Allow settling and decant clear supernatant back to the plant headworks"
+    },
+    {
+     "id": "s5",
+     "label": "Measure thickened sludge solids before transfer"
+    },
+    {
+     "id": "s6",
+     "label": "Pump thickened sludge to storage and record volumes and solids results"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process38",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the residuals dewatering operation sequence using a mechanical dewatering unit.",
+   "topicId": "process-residuals-dewatering-operation",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: one dewatering run from sludge feed to cake handling.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm sludge storage level, polymer supply, and cake receiving area are ready"
+    },
+    {
+     "id": "s2",
+     "label": "Start the dewatering unit and establish wash water and polymer feed"
+    },
+    {
+     "id": "s3",
+     "label": "Introduce sludge feed gradually and adjust polymer dose for stable operation"
+    },
+    {
+     "id": "s4",
+     "label": "Monitor cake solids and filtrate quality through the run"
+    },
+    {
+     "id": "s5",
+     "label": "Shut down feed, wash the unit, and complete the end of run checks"
+    },
+    {
+     "id": "s6",
+     "label": "Record cake mass, solids results, polymer use, and filtrate disposition"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process39",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the review sequence for residuals disposal and beneficial use outlets.",
+   "topicId": "process-residuals-outlet-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: annual supervisory review of all residuals outlets.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Compile the year volumes, solids, and quality results for each residual stream"
+    },
+    {
+     "id": "s2",
+     "label": "Check each outlet approval, expiry date, and acceptance limits against the results"
+    },
+    {
+     "id": "s3",
+     "label": "Identify streams at risk of losing an outlet or exceeding a limit"
+    },
+    {
+     "id": "s4",
+     "label": "Qualify an alternate outlet for any at risk stream before it is needed"
+    },
+    {
+     "id": "s5",
+     "label": "Update haulage and application records procedures to match current approvals"
+    },
+    {
+     "id": "s6",
+     "label": "Issue the outlet review with renewal dates and assigned responsibilities"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  }
+ ],
+ "missions": [
+  {
+   "id": "c3w-mission41",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 41: The Mass Balance Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-error60",
+     "revision": "r1",
+     "occurrenceId": "m41-t1"
+    },
+    {
+     "taskId": "c3w-process01",
+     "revision": "r1",
+     "occurrenceId": "m41-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission42",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 42: The Process Membrane Daily Checks Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-process02",
+     "revision": "r1",
+     "occurrenceId": "m42-t1"
+    },
+    {
+     "taskId": "c3w-error61",
+     "revision": "r1",
+     "occurrenceId": "m42-t2"
+    },
+    {
+     "taskId": "c3w-error62",
+     "revision": "r1",
+     "occurrenceId": "m42-t3"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission43",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 43: The Mass Balance Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-error63",
+     "revision": "r1",
+     "occurrenceId": "m43-t1"
+    },
+    {
+     "taskId": "c3w-process03",
+     "revision": "r1",
+     "occurrenceId": "m43-t2"
+    },
+    {
+     "taskId": "c3w-error64",
+     "revision": "r1",
+     "occurrenceId": "m43-t3"
+    },
+    {
+     "taskId": "c3w-error65",
+     "revision": "r1",
+     "occurrenceId": "m43-t4"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission44",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 44: The Process Membrane Cip Program Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-process04",
+     "revision": "r1",
+     "occurrenceId": "m44-t1"
+    },
+    {
+     "taskId": "c3w-error66",
+     "revision": "r1",
+     "occurrenceId": "m44-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission45",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 45: The Mass Balance Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-error67",
+     "revision": "r1",
+     "occurrenceId": "m45-t1"
+    },
+    {
+     "taskId": "c3w-process05",
+     "revision": "r1",
+     "occurrenceId": "m45-t2"
+    },
+    {
+     "taskId": "c3w-error68",
+     "revision": "r1",
+     "occurrenceId": "m45-t3"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission46",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 46: The Process Membrane Recovery Management Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-process06",
+     "revision": "r1",
+     "occurrenceId": "m46-t1"
+    },
+    {
+     "taskId": "c3w-error69",
+     "revision": "r1",
+     "occurrenceId": "m46-t2"
+    },
+    {
+     "taskId": "c3w-error70",
+     "revision": "r1",
+     "occurrenceId": "m46-t3"
+    },
+    {
+     "taskId": "c3w-error71",
+     "revision": "r1",
+     "occurrenceId": "m46-t4"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission47",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 47: The Residuals Solids Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-error72",
+     "revision": "r1",
+     "occurrenceId": "m47-t1"
+    },
+    {
+     "taskId": "c3w-process07",
+     "revision": "r1",
+     "occurrenceId": "m47-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission48",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 48: The Process Membrane Backpulse Sequence Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-process08",
+     "revision": "r1",
+     "occurrenceId": "m48-t1"
+    },
+    {
+     "taskId": "c3w-error73",
+     "revision": "r1",
+     "occurrenceId": "m48-t2"
+    },
+    {
+     "taskId": "c3w-error74",
+     "revision": "r1",
+     "occurrenceId": "m48-t3"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission49",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 49: The Residuals Solids Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-error75",
+     "revision": "r1",
+     "occurrenceId": "m49-t1"
+    },
+    {
+     "taskId": "c3w-process09",
+     "revision": "r1",
+     "occurrenceId": "m49-t2"
+    },
+    {
+     "taskId": "c3w-error76",
+     "revision": "r1",
+     "occurrenceId": "m49-t3"
+    },
+    {
+     "taskId": "c3w-error77",
+     "revision": "r1",
+     "occurrenceId": "m49-t4"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission50",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 50: The Process Membrane Return After Cip Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-process10",
+     "revision": "r1",
+     "occurrenceId": "m50-t1"
+    },
+    {
+     "taskId": "c3w-error78",
+     "revision": "r1",
+     "occurrenceId": "m50-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission51",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 51: The Residuals Solids Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-error79",
+     "revision": "r1",
+     "occurrenceId": "m51-t1"
+    },
+    {
+     "taskId": "c3w-process100",
+     "revision": "r1",
+     "occurrenceId": "m51-t2"
+    },
+    {
+     "taskId": "c3w-error80",
+     "revision": "r1",
+     "occurrenceId": "m51-t3"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission52",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 52: The Process Membrane Integrity Breach Response Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-process11",
+     "revision": "r1",
+     "occurrenceId": "m52-t1"
+    },
+    {
+     "taskId": "c3w-error81",
+     "revision": "r1",
+     "occurrenceId": "m52-t2"
+    },
+    {
+     "taskId": "c3w-error82",
+     "revision": "r1",
+     "occurrenceId": "m52-t3"
+    },
+    {
+     "taskId": "c3w-error83",
+     "revision": "r1",
+     "occurrenceId": "m52-t4"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission53",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 53: The Residuals Solids Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-error84",
+     "revision": "r1",
+     "occurrenceId": "m53-t1"
+    },
+    {
+     "taskId": "c3w-process12",
+     "revision": "r1",
+     "occurrenceId": "m53-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission54",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 54: The Process Membrane Cleaning Waste Handling Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-process13",
+     "revision": "r1",
+     "occurrenceId": "m54-t1"
+    },
+    {
+     "taskId": "c3w-error85",
+     "revision": "r1",
+     "occurrenceId": "m54-t2"
+    },
+    {
+     "taskId": "c3w-error86",
+     "revision": "r1",
+     "occurrenceId": "m54-t3"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission55",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 55: The Energy Per Volume Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-error87",
+     "revision": "r1",
+     "occurrenceId": "m55-t1"
+    },
+    {
+     "taskId": "c3w-process14",
+     "revision": "r1",
+     "occurrenceId": "m55-t2"
+    },
+    {
+     "taskId": "c3w-error88",
+     "revision": "r1",
+     "occurrenceId": "m55-t3"
+    },
+    {
+     "taskId": "c3w-error89",
+     "revision": "r1",
+     "occurrenceId": "m55-t4"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission56",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 56: The Process Membrane Train Rotation Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-process15",
+     "revision": "r1",
+     "occurrenceId": "m56-t1"
+    },
+    {
+     "taskId": "c3w-error90",
+     "revision": "r1",
+     "occurrenceId": "m56-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission57",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 57: The Energy Per Volume Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-error91",
+     "revision": "r1",
+     "occurrenceId": "m57-t1"
+    },
+    {
+     "taskId": "c3w-process16",
+     "revision": "r1",
+     "occurrenceId": "m57-t2"
+    },
+    {
+     "taskId": "c3w-error92",
+     "revision": "r1",
+     "occurrenceId": "m57-t3"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission58",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 58: The Process Uv Dose Monitoring Program Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-process17",
+     "revision": "r1",
+     "occurrenceId": "m58-t1"
+    },
+    {
+     "taskId": "c3w-error93",
+     "revision": "r1",
+     "occurrenceId": "m58-t2"
+    },
+    {
+     "taskId": "c3w-error94",
+     "revision": "r1",
+     "occurrenceId": "m58-t3"
+    },
+    {
+     "taskId": "c3w-error95",
+     "revision": "r1",
+     "occurrenceId": "m58-t4"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission59",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 59: The Ct Calculation Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-error96",
+     "revision": "r1",
+     "occurrenceId": "m59-t1"
+    },
+    {
+     "taskId": "c3w-process18",
+     "revision": "r1",
+     "occurrenceId": "m59-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission60",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 60: The Process Uv Sleeve Cleaning Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-process19",
+     "revision": "r1",
+     "occurrenceId": "m60-t1"
+    },
+    {
+     "taskId": "c3w-error97",
+     "revision": "r1",
+     "occurrenceId": "m60-t2"
+    },
+    {
+     "taskId": "c3w-error98",
+     "revision": "r1",
+     "occurrenceId": "m60-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Advanced water treatment operations chapters (membranes, disinfection strategy, residuals, optimization)"
+  },
+  {
+   "id": "epa-membrane-uv",
+   "title": "US EPA, Membrane Filtration Guidance Manual and UV Disinfection Guidance Manual",
+   "locator": "Membrane and UV background (not Ontario law)"
+  },
+  {
+   "id": "epa-swtr",
+   "title": "US EPA, Surface Water Treatment Rule guidance",
+   "locator": "Filtration and disinfection context (background, not Ontario law)"
+  },
+  {
+   "id": "owwco-exam-prep",
+   "title": "OWWCO, Exam preparation resources",
+   "locator": "https://owwco.ca/preparing-for-your-exam/"
+  },
+  {
+   "id": "wpi-ntk-2025",
+   "title": "WPI, 2025 Need-to-Know Criteria, Water Treatment Class III",
+   "locator": "https://gowpi.org/services/2025-need-to-know-criteria/"
+  },
+  {
+   "id": "ont-reg-170-03",
+   "title": "Ontario Regulation 170/03, Drinking Water Systems",
+   "locator": "https://www.ontario.ca/laws/regulation/03170"
+  },
+  {
+   "id": "ont-dwqms",
+   "title": "Ontario Drinking Water Quality Management Standard",
+   "locator": "Quality management awareness for municipal residential drinking water systems"
+  },
+  {
+   "id": "ccohs-safety",
+   "title": "CCOHS, OSH Answers (chemical safety, confined spaces, lockout)",
+   "locator": "https://www.ccohs.ca/oshanswers/"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "27847f208d935a548435ab0643d85d7e7c3fd8bbe4dfa5305a21b66217c2b0a9",
+  "taskReceipts": [
+   {
+    "taskId": "c3w-error60",
+    "revision": "r1",
+    "sha256": "85d75b0137e2a6bfc4ef4e39873793ab52070042d3dddab02bc1c4df68f1f1d9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error61",
+    "revision": "r1",
+    "sha256": "c040f793fb5f9247e73103c461003f8a737e8eccc0e9ecf36de57d86b6a17152",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error62",
+    "revision": "r1",
+    "sha256": "dfb9629fd9ac9de27086e9d5c5a0aa4ff29c0232209e700311be67e54f4412ac",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error63",
+    "revision": "r1",
+    "sha256": "84661a177bb991ba0e06dbef30ef0a23dd9122d2b2c348652803975cf5d3f559",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error64",
+    "revision": "r1",
+    "sha256": "ff3f4fe8c8e091b8532388d64a8b3c0b147d8cabc49c0600b26849c094530bfc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error65",
+    "revision": "r1",
+    "sha256": "5ab2b727a5a6e28804291ffda58c2dd3a219476acb1c32f078178714e1e4803d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error66",
+    "revision": "r1",
+    "sha256": "7048089852296124d2b0edacc5e4174c99e7bbe00937f7c48fb96e39777bea6e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error67",
+    "revision": "r1",
+    "sha256": "ce23afe658d8988c75899c8c5c7ada49aa7c5db37a669e29e3d4b29585f0b316",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error68",
+    "revision": "r1",
+    "sha256": "3e10d21fbfdaa1a26676595840e5cad60d9a4bde8f00b2dceda8dc92a7193c3c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error69",
+    "revision": "r1",
+    "sha256": "fd52a2fe4b871842e13fc45e01044599d87823a8f83d6441a3eba193867add95",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error70",
+    "revision": "r1",
+    "sha256": "8d80cf7e68a2447a7526c3fb2ec9095cfa97bc1451e5bf492c3b197552a3e40b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error71",
+    "revision": "r1",
+    "sha256": "c153ae4023dce7f0bdad07bce74c643bbf16d7d9a1f6d69368231c248dadc308",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error72",
+    "revision": "r1",
+    "sha256": "2395a565dc27252db267c432a027e316e5e2070df9728f0afc3c783d4b8abdfd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error73",
+    "revision": "r1",
+    "sha256": "31f7dabebec611d4004d6443c175397428db4bc457c13834d6a25f7c8786ecab",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error74",
+    "revision": "r1",
+    "sha256": "391c95ca934d6eecee8284df41296015522eec5e4faa547537e274c2a9f1d456",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error75",
+    "revision": "r1",
+    "sha256": "e29229dbcc9ea551f1424462e0a7a9d742127ac8c6f774bed5700edf1f881183",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error76",
+    "revision": "r1",
+    "sha256": "fbc0eddeaed90fe23c07d1a843cbc4ba2d98b0f81436492e8553a759859e121c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error77",
+    "revision": "r1",
+    "sha256": "a92b9eac843d438c99e0aa68f8fc941978888813e0ddda57830b381b61bd1adf",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error78",
+    "revision": "r1",
+    "sha256": "51d3549585fb4923a23adb28b960cb1ff8d285ce43c782f4bed5630340ebecf7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error79",
+    "revision": "r1",
+    "sha256": "446e9bbed20e955b30e80dd69966fe569929301be10441be3a226e2d280a84e2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error80",
+    "revision": "r1",
+    "sha256": "a28e56086db638d0a891b74a3b0edfb7f73f789c188ddc8a888c766c3012b6d8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error81",
+    "revision": "r1",
+    "sha256": "f8fa22820afad67f9116c20ea3ad68a88ce98e10a998486ff4c35b51ca0a9c1e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error82",
+    "revision": "r1",
+    "sha256": "eeeea543fd6b9bbc8e6148e97ff41dae760d4e6464bd00ead8f2ff1814d507d6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error83",
+    "revision": "r1",
+    "sha256": "ead0235826b9e2cfa83ac175b3b2ff0f800d111d3b06ce92c4be61336aa0c872",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error84",
+    "revision": "r1",
+    "sha256": "07958a61bb0673fe4aa022ae9d4cacd6948771bc5c628d3bc49ca2dc0181c51b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error85",
+    "revision": "r1",
+    "sha256": "a2147e5b52b931e9a3196cb99b903cdbdbe1343cf6d7128ff8236dd325dfec36",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error86",
+    "revision": "r1",
+    "sha256": "f1a065c398a861a89a50c36a7480c4d7238dad62d7485b038388d64b0478813e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error87",
+    "revision": "r1",
+    "sha256": "3f5dac0e07a087ac9ec56ba32abf53197022d21b1e472b48d97aae9ef09c3d05",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error88",
+    "revision": "r1",
+    "sha256": "e0663045c59903396851ba50c00a60620225e9bcc0ca2e20688af29ace4040a8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error89",
+    "revision": "r1",
+    "sha256": "8257f132c18228f3f8de0e2a66c441de75acadba993fd523d0c90b692690acca",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error90",
+    "revision": "r1",
+    "sha256": "191eaa53e79be6a1c652e329e31f04e705562792980af62045cf9346674f0def",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error91",
+    "revision": "r1",
+    "sha256": "f1d921f7b20123293eba75d5d8ab213d24d78ab6a2b0a29ed31fed5c10318afe",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error92",
+    "revision": "r1",
+    "sha256": "ee97b3ba3ec89c982230fedaff057e74c915f0511f15690d1f1d58cb6f11a48c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error93",
+    "revision": "r1",
+    "sha256": "0c51b61fc30b510b45946c0a2ffdf1e6cbcdb66a45125670a0c6a38b79662454",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error94",
+    "revision": "r1",
+    "sha256": "589ebc219e33bb79d87d20ddffe7b01802d785b4e9afaa1018fc6adcf294769f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error95",
+    "revision": "r1",
+    "sha256": "8a9f99d9df8f2094f86c4580a738bf6769852666370508f54d076d66fc4eca24",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error96",
+    "revision": "r1",
+    "sha256": "8d071e999fc6ef80743733ed58fb2bd1f6a2f1270e251b5b733236cc837dc83a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error97",
+    "revision": "r1",
+    "sha256": "4982a7de01db781c7aec5f84d3bb0cee0de0e3f91a5ecba3dc37e34c756f5ce5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error98",
+    "revision": "r1",
+    "sha256": "621e615337ac539b52022870d171cb17aaa2f11befb60f942081c8a004307002",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-error99",
+    "revision": "r1",
+    "sha256": "dca0835724fae1f0070ea36e2d1c522371ac25b11ececff830ce299d8776d14d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process01",
+    "revision": "r1",
+    "sha256": "d2d30fd8cc6ae8eba4294b5c45aaa165e964658019b96a22dedbed6a06ab4bee",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process02",
+    "revision": "r1",
+    "sha256": "7b55cd0a590d1efe6a153df946e8aabfa9d9a7b2a00c6f1b68a81186aebe2e20",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process03",
+    "revision": "r1",
+    "sha256": "4d796c8962c19f54e1fd2b1d0662c285f55a81181ea01a80501be05411e53b9d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process04",
+    "revision": "r1",
+    "sha256": "076e4d6dd47ed513f52a5715f81b486aeabcec1f7c630e367b10550dcf97f842",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process05",
+    "revision": "r1",
+    "sha256": "1ddf7182bd8164723947b49f8d56f6d2ae71a136ee6413433db30a73bb4b7fa1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process06",
+    "revision": "r1",
+    "sha256": "fa9163182e76130f85bfa7d01519ea663784e4edd2c3f6e7e684df1432784029",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process07",
+    "revision": "r1",
+    "sha256": "ad83b45fb95cdb696d17005dcdfee5a62948231d93d8b72186342df96ba7197c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process08",
+    "revision": "r1",
+    "sha256": "83ac915bda1ef70a440abcea60fc7df33b2a0bc11842b8e6bf19636ab19bf028",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process09",
+    "revision": "r1",
+    "sha256": "5a3590fcafe54a2099c1c0661909f42b9e7ebdddbaf60f8a5bae441275d403f2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process10",
+    "revision": "r1",
+    "sha256": "461a2ce46dd6cd927b71d49ab2563a844f27e8804e0c9606847d265d08af2217",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process100",
+    "revision": "r1",
+    "sha256": "fe44ed4e40a5310f41c7dd8fa0a473ab18979e8eb32916a1bd67da7034830ae0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process11",
+    "revision": "r1",
+    "sha256": "38184f168f5dd8f3524e61d625c26293be6f19db70bf24a1db47a3e7a784d4a4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process12",
+    "revision": "r1",
+    "sha256": "987da190b77fcd59a8f801052f1f02f34ee4056a8e5e334dd9098de456bd2215",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process13",
+    "revision": "r1",
+    "sha256": "97df6cdc7724b655990ee6d1d2d084be8bacd1a310cebd5c9096a4d7d2ff8a4f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process14",
+    "revision": "r1",
+    "sha256": "dfc2ec818ce64a9c2f2638537d3d93517d31c35b6b950702b4b50fa5b96f57b1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process15",
+    "revision": "r1",
+    "sha256": "212696e06b479aae75d5ebc07507cf3dbf6103bc4d17cff75fd7fdaa1e9464b2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process16",
+    "revision": "r1",
+    "sha256": "b1534d48ed1647e019fd3276bf0a4c8544d51e69c71ca11b81d471aa7d1e2331",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process17",
+    "revision": "r1",
+    "sha256": "bdccb61e29930996e207cd6a9e1df62b2f02da6b0cd9a491294ed9105d7e41f2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process18",
+    "revision": "r1",
+    "sha256": "22ede59b035413034a82a5903f938764ab08d99a3154b39b42d415462e5c0538",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process19",
+    "revision": "r1",
+    "sha256": "927909c71a90f80cee8c3f51103b8da902fb4e5fb5c3b1347e2fd0a2dd30df71",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process20",
+    "revision": "r1",
+    "sha256": "f38a326fe8135cdf2a19cb9160901acd050cede62a3ef6fb048f2db7a4c4fc77",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process21",
+    "revision": "r1",
+    "sha256": "e264f6d92113272385ef0a3f8c96042bfa7ffe65a637a437d81db36ea641d390",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process22",
+    "revision": "r1",
+    "sha256": "45e6fcf71e9dca27f11bac243b4b639fe18b010bd5b4f73510d17dbed17615e1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process23",
+    "revision": "r1",
+    "sha256": "d00b5b28d3822db4d4ee0c79367e09dd029c06cff5ca110cda4b98fd477fb7cc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process24",
+    "revision": "r1",
+    "sha256": "d794c7774208b47859d87d8b6fa66c0343592a975c692b3a97a0d51f53f895b4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process25",
+    "revision": "r1",
+    "sha256": "74749a9b5e2ca3dcf05bf4918d8996b31cb3a0f9d6299651e54b9e89a8765066",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process26",
+    "revision": "r1",
+    "sha256": "2e66f231d7b821af543f9cfe2d8446cc7a847e304fe04093a2c1f9287bea4ce8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process27",
+    "revision": "r1",
+    "sha256": "c12810f17db8cd2c403ce3bb68675d5ce7f7200d489a13cd1a8133c6f29cb0e1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process28",
+    "revision": "r1",
+    "sha256": "fe5ce612d985f0d5fa3c5d154f8a34f8a3327870fac0af6af231e4f1707774fc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process29",
+    "revision": "r1",
+    "sha256": "19bb30e866ace48b6d876c2feab84348c5a8beefef5d4561dc1957f211b7f93d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process30",
+    "revision": "r1",
+    "sha256": "504001a2a606dac756eb3f3585c19cfeb03c220b68cccca550944ef93a855cce",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process31",
+    "revision": "r1",
+    "sha256": "1185bb7a5f12dc4201e55bc00805b4def4ed121e09ebddc8d7921487ba11a7f7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process32",
+    "revision": "r1",
+    "sha256": "81979b1b823287bf36ce6f762ffaedcbf37d9675659df3974e16624cb76d9195",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process33",
+    "revision": "r1",
+    "sha256": "137395eab508a692e6341170fa6450084e0efa6656af182912428d9e62fbc7e8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process34",
+    "revision": "r1",
+    "sha256": "63365695d5bc40810768cc813a2607f2086785f401995c10ffa1f859ce8f6696",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process35",
+    "revision": "r1",
+    "sha256": "366a8c19ff5321cb11cb2b92ceb40a69c79b91df7207f6ee2664bf455521345a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process36",
+    "revision": "r1",
+    "sha256": "014043d44fd9556e0f4aa2d57ee4eede2e7eddee3de523a108ad919f099e630a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process37",
+    "revision": "r1",
+    "sha256": "02839da8893bb02e460813b6e458874c726b18ecb9c6139ab14401e1a47c5f96",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process38",
+    "revision": "r1",
+    "sha256": "25e0dd497c8eb632798e367ed6b3f96062857be8336e86e55b0a6efcec28be76",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process39",
+    "revision": "r1",
+    "sha256": "15e63cc2462c4dcb02062627a15711d84e093e96e0d601320e6dff690498b993",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "c3w-mission41",
+    "revision": "r1",
+    "sha256": "f7f4d8d3c6d65d2e7b419c4422d2af885fb03b3a3e0dc05fb3aebb815aa18fa9"
+   },
+   {
+    "missionId": "c3w-mission42",
+    "revision": "r1",
+    "sha256": "8ddff934cdcd57c12c0f48263904576dd356d05cfbffadb714afff2e2d75e9b9"
+   },
+   {
+    "missionId": "c3w-mission43",
+    "revision": "r1",
+    "sha256": "e2d70590e8dbdef30987d500b82a1bea7cd6b8a4a4f0b359241ee7db4df1864d"
+   },
+   {
+    "missionId": "c3w-mission44",
+    "revision": "r1",
+    "sha256": "631dc2356cf764318987d1ff8027663710eb1f94058b4c6bb7c890bf5123abc1"
+   },
+   {
+    "missionId": "c3w-mission45",
+    "revision": "r1",
+    "sha256": "b5837ea9d8ced308965582a5a63c796e5db052e5fe6a3a0030276d843461a4bc"
+   },
+   {
+    "missionId": "c3w-mission46",
+    "revision": "r1",
+    "sha256": "239219d9531a22de640fb8deb72a7ac45818e2ab49b7c2a412c82d5033f5474f"
+   },
+   {
+    "missionId": "c3w-mission47",
+    "revision": "r1",
+    "sha256": "efb28b803dc886f8cc0b964c41b336aeb674455b7b349947435eeed154ab9de6"
+   },
+   {
+    "missionId": "c3w-mission48",
+    "revision": "r1",
+    "sha256": "22cad4bd88c1a781b70a63a2a8a619e358c5775090f3487915c9d3ff7afcca63"
+   },
+   {
+    "missionId": "c3w-mission49",
+    "revision": "r1",
+    "sha256": "d74bf831826d3828428c1957ba3886512e45b98e54ecf71f735f5548b3221fd3"
+   },
+   {
+    "missionId": "c3w-mission50",
+    "revision": "r1",
+    "sha256": "751146ccde9222748222dcaf3c11d84a400c929d7dd0267c5d09534f0b496bb1"
+   },
+   {
+    "missionId": "c3w-mission51",
+    "revision": "r1",
+    "sha256": "dad5bb05adf1981f26d2a3e0b75a20595c154ad0d0854987ec4c702bd98b6217"
+   },
+   {
+    "missionId": "c3w-mission52",
+    "revision": "r1",
+    "sha256": "6709dcd7b16f0f1c1d445775ac23422ba801fcda6a63bf1d58805f9409407c52"
+   },
+   {
+    "missionId": "c3w-mission53",
+    "revision": "r1",
+    "sha256": "653d5babbe471fc5f91d456ea9176d3906dfef7aaccb35154de0bb5243366806"
+   },
+   {
+    "missionId": "c3w-mission54",
+    "revision": "r1",
+    "sha256": "a8082083094c281efa11f2d0374f40f4cf0d62c8de263a8e981ae69c26107f44"
+   },
+   {
+    "missionId": "c3w-mission55",
+    "revision": "r1",
+    "sha256": "5eb3cb78a6c491f6a4a4f0e3a61530131fb0b9d898e7cb58263b809d6c2ee1c7"
+   },
+   {
+    "missionId": "c3w-mission56",
+    "revision": "r1",
+    "sha256": "06ce89783daf4532cbc31c4095ec2b6d5144c5f88efe99aaf43c9db76e9eb69c"
+   },
+   {
+    "missionId": "c3w-mission57",
+    "revision": "r1",
+    "sha256": "7e22ee26dd647c022413311545f96447f61d7a471485f6c1e84cd110c2f23f5b"
+   },
+   {
+    "missionId": "c3w-mission58",
+    "revision": "r1",
+    "sha256": "3ef25f2d3aec926669c5ed406291a7781818ba4d0ae8a818c79e2f461a9f9f98"
+   },
+   {
+    "missionId": "c3w-mission59",
+    "revision": "r1",
+    "sha256": "c30b0989029dbbe43ce73c9363fe80f2d6755e1a7db71d7a1a6b7a9a5c1f1a82"
+   },
+   {
+    "missionId": "c3w-mission60",
+    "revision": "r1",
+    "sha256": "80a142496c75f93d3c7d92d758b52cf44aa62aceaea869663b2cb5162531c82c"
+   }
+  ]
+ }
+}

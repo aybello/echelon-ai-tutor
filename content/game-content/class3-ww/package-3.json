@@ -1,0 +1,3986 @@
+{
+ "courseKey": "class3-ww",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "c3ww-error60",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this anaerobic digester volatile solids loading calculation for feed solids = 4500 kg/d, volatile fraction = 0.8 and digester volume = 1800 m3.",
+   "topicId": "digester-vs-loading",
+   "level": "class1",
+   "assumptions": "Fictional anaerobic digester: feed total solids = 4500 kg/d, volatile solids fraction of total solids = 0.8, digester volume = 1800 m3. Target unit: kg VS/m3/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. VS loading = VS mass / digester volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS mass = 4500 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. VS loading = 4500 kg/d / 1800 m3 = 2.5 kg VS/m3/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. VS mass = 4500 kg/d * 0.8 = 3600 kg/d",
+   "explanation": "Line 2 used total solids as volatile solids. Correct VS mass is 4500 * 0.8 = 3600 kg/d, so loading is 3600 / 1800 = 2 kg VS/m3/d."
+  },
+  {
+   "id": "c3ww-error61",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this volatile solids mass calculation for feed solids = 5000 kg/d that are 80 percent volatile.",
+   "topicId": "digestion-volatile-solids",
+   "level": "class1",
+   "assumptions": "Fictional digester feed: total solids = 5000 kg/d, volatile solids = 80 percent of total solids. Target unit: kg VS/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. VS mass = Total solids * volatile fraction"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS mass = 5000 kg/d * 0.08 = 400 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. VS mass = 5000 kg/d * 0.8 = 4000 kg/d",
+   "explanation": "Line 2 used 0.08 for 80 percent instead of 0.8. Correct VS mass is 5000 * 0.8 = 4000 kg/d."
+  },
+  {
+   "id": "c3ww-error62",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this volatile solids mass calculation for feed solids = 4000 kg/d that are 75 percent volatile.",
+   "topicId": "digestion-volatile-solids",
+   "level": "class1",
+   "assumptions": "Fictional digester feed: total solids = 4000 kg/d, volatile solids = 75 percent of total solids. Target unit: kg VS/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. VS mass = Total solids * volatile fraction"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS mass = 4000 kg/d * 0.075 = 300 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. VS mass = 4000 kg/d * 0.75 = 3000 kg/d",
+   "explanation": "Line 2 used 0.075 for 75 percent instead of 0.75. Correct VS mass is 4000 * 0.75 = 3000 kg/d."
+  },
+  {
+   "id": "c3ww-error63",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this volatile solids mass calculation for feed solids = 6000 kg/d that are 70 percent volatile.",
+   "topicId": "digestion-volatile-solids",
+   "level": "class1",
+   "assumptions": "Fictional digester feed: total solids = 6000 kg/d, volatile solids = 70 percent of total solids. Target unit: kg VS/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. VS mass = Total solids * volatile fraction"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS mass = 6000 kg/d * 0.07 = 420 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. VS mass = 6000 kg/d * 0.7 = 4200 kg/d",
+   "explanation": "Line 2 used 0.07 for 70 percent instead of 0.7. Correct VS mass is 6000 * 0.7 = 4200 kg/d."
+  },
+  {
+   "id": "c3ww-error64",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this volatile solids mass calculation for feed solids = 3200 kg/d that are 75 percent volatile.",
+   "topicId": "digestion-volatile-solids",
+   "level": "class1",
+   "assumptions": "Fictional digester feed: total solids = 3200 kg/d, volatile solids = 75 percent of total solids. Target unit: kg VS/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. VS mass = Total solids * volatile fraction"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS mass = 3200 kg/d * 0.075 = 240 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. VS mass = 3200 kg/d * 0.75 = 2400 kg/d",
+   "explanation": "Line 2 used 0.075 for 75 percent instead of 0.75. Correct VS mass is 3200 * 0.75 = 2400 kg/d."
+  },
+  {
+   "id": "c3ww-error65",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this volatile solids reduction calculation for VS in = 3200 kg/d and VS out = 1280 kg/d.",
+   "topicId": "digestion-volatile-solids",
+   "level": "class1",
+   "assumptions": "Fictional digester: volatile solids in = 3200 kg/d, volatile solids out = 1280 kg/d. Target: percent VS reduction.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent VS reduction = (VS in - VS out) / VS in * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS in - VS out = 3200 kg/d - 1280 kg/d = 1920 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent VS reduction = 1920 / 1280 * 100 = 150 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent VS reduction = 1920 / 3200 * 100 = 60 percent",
+   "explanation": "Line 3 divided by the outlet VS instead of the inlet VS. Correct reduction is 1920 / 3200 * 100 = 60 percent."
+  },
+  {
+   "id": "c3ww-error66",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this volatile solids reduction calculation for VS in = 3000 kg/d and VS out = 1200 kg/d.",
+   "topicId": "digestion-volatile-solids",
+   "level": "class1",
+   "assumptions": "Fictional digester: volatile solids in = 3000 kg/d, volatile solids out = 1200 kg/d. Target: percent VS reduction.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent VS reduction = (VS in - VS out) / VS in * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS in - VS out = 3000 kg/d - 1200 kg/d = 1800 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent VS reduction = 1800 / 1200 * 100 = 150 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent VS reduction = 1800 / 3000 * 100 = 60 percent",
+   "explanation": "Line 3 divided by the outlet VS instead of the inlet VS. Correct reduction is 1800 / 3000 * 100 = 60 percent."
+  },
+  {
+   "id": "c3ww-error67",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this volatile solids reduction calculation for VS in = 2500 kg/d and VS out = 1000 kg/d.",
+   "topicId": "digestion-volatile-solids",
+   "level": "class1",
+   "assumptions": "Fictional digester: volatile solids in = 2500 kg/d, volatile solids out = 1000 kg/d. Target: percent VS reduction.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent VS reduction = (VS in - VS out) / VS in * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS in - VS out = 2500 kg/d - 1000 kg/d = 1500 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent VS reduction = 1500 / 1000 * 100 = 150 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent VS reduction = 1500 / 2500 * 100 = 60 percent",
+   "explanation": "Line 3 divided by the outlet VS instead of the inlet VS. Correct reduction is 1500 / 2500 * 100 = 60 percent."
+  },
+  {
+   "id": "c3ww-error68",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this anaerobic digester volatile solids loading calculation for VS mass = 3000 kg/d and digester volume = 1500 m3.",
+   "topicId": "digester-vs-loading",
+   "level": "class1",
+   "assumptions": "Fictional anaerobic digester: volatile solids mass = 3000 kg/d, digester volume = 1500 m3. Target unit: kg VS/m3/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. VS loading = VS mass / digester volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS loading = 3000 kg/d / 1500 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. VS loading = 3 kg VS/m3/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. VS loading = 3000 / 1500 = 2 kg VS/m3/d",
+   "explanation": "Line 3 divided incorrectly. 3000 / 1500 = 2 kg VS/m3/d, not 3."
+  },
+  {
+   "id": "c3ww-error69",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this anaerobic digester volatile solids loading calculation for VS mass = 2800 kg/d and digester volume = 1400 m3.",
+   "topicId": "digester-vs-loading",
+   "level": "class1",
+   "assumptions": "Fictional anaerobic digester: volatile solids mass = 2800 kg/d, digester volume = 1400 m3. Target unit: kg VS/m3/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. VS loading = VS mass / digester volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS loading = 2800 kg/d / 1400 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. VS loading = 3 kg VS/m3/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. VS loading = 2800 / 1400 = 2 kg VS/m3/d",
+   "explanation": "Line 3 divided incorrectly. 2800 / 1400 = 2 kg VS/m3/d, not 3."
+  },
+  {
+   "id": "c3ww-error70",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this anaerobic digester volatile solids loading calculation for VS mass = 3600 kg/d and digester volume = 1800 m3.",
+   "topicId": "digester-vs-loading",
+   "level": "class1",
+   "assumptions": "Fictional anaerobic digester: volatile solids mass = 3600 kg/d, digester volume = 1800 m3. Target unit: kg VS/m3/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. VS loading = VS mass / digester volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS loading = 3600 kg/d / 1800 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. VS loading = 3 kg VS/m3/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. VS loading = 3600 / 1800 = 2 kg VS/m3/d",
+   "explanation": "Line 3 divided incorrectly. 3600 / 1800 = 2 kg VS/m3/d, not 3."
+  },
+  {
+   "id": "c3ww-error71",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this dewatering solids capture calculation for feed solids = 2000 kg/d, cake dry solids = 1800 kg/d and wet cake mass = 9000 kg/d.",
+   "topicId": "dewatering-capture",
+   "level": "class1",
+   "assumptions": "Fictional dewatering operation: feed dry solids = 2000 kg/d, cake dry solids = 1800 kg/d, wet cake mass = 9000 kg/d. Capture is cake dry solids divided by feed dry solids. Target: percent capture.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent capture = Cake dry solids / feed dry solids * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Percent capture = 1800 kg/d / 9000 kg/d * 100 = 20 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Percent capture = 1800 kg/d / 2000 kg/d * 100 = 90 percent",
+   "explanation": "Line 2 divided by the wet cake mass instead of the feed dry solids. Correct capture is 1800 / 2000 * 100 = 90 percent."
+  },
+  {
+   "id": "c3ww-error72",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this dewatering solids capture calculation for feed solids = 2500 kg/d, cake dry solids = 2250 kg/d and wet cake mass = 11250 kg/d.",
+   "topicId": "dewatering-capture",
+   "level": "class1",
+   "assumptions": "Fictional dewatering operation: feed dry solids = 2500 kg/d, cake dry solids = 2250 kg/d, wet cake mass = 11250 kg/d. Capture is cake dry solids divided by feed dry solids. Target: percent capture.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent capture = Cake dry solids / feed dry solids * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Percent capture = 2250 kg/d / 11250 kg/d * 100 = 20 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Percent capture = 2250 kg/d / 2500 kg/d * 100 = 90 percent",
+   "explanation": "Line 2 divided by the wet cake mass instead of the feed dry solids. Correct capture is 2250 / 2500 * 100 = 90 percent."
+  },
+  {
+   "id": "c3ww-error73",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this dewatering solids capture calculation for feed solids = 1600 kg/d, cake dry solids = 1440 kg/d and wet cake mass = 7200 kg/d.",
+   "topicId": "dewatering-capture",
+   "level": "class1",
+   "assumptions": "Fictional dewatering operation: feed dry solids = 1600 kg/d, cake dry solids = 1440 kg/d, wet cake mass = 7200 kg/d. Capture is cake dry solids divided by feed dry solids. Target: percent capture.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent capture = Cake dry solids / feed dry solids * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Percent capture = 1440 kg/d / 7200 kg/d * 100 = 20 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Percent capture = 1440 kg/d / 1600 kg/d * 100 = 90 percent",
+   "explanation": "Line 2 divided by the wet cake mass instead of the feed dry solids. Correct capture is 1440 / 1600 * 100 = 90 percent."
+  },
+  {
+   "id": "c3ww-error74",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this dewatering solids capture calculation for feed solids = 3000 kg/d, cake dry solids = 2700 kg/d and wet cake mass = 13500 kg/d.",
+   "topicId": "dewatering-capture",
+   "level": "class1",
+   "assumptions": "Fictional dewatering operation: feed dry solids = 3000 kg/d, cake dry solids = 2700 kg/d, wet cake mass = 13500 kg/d. Capture is cake dry solids divided by feed dry solids. Target: percent capture.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent capture = Cake dry solids / feed dry solids * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Percent capture = 2700 kg/d / 13500 kg/d * 100 = 20 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Percent capture = 2700 kg/d / 3000 kg/d * 100 = 90 percent",
+   "explanation": "Line 2 divided by the wet cake mass instead of the feed dry solids. Correct capture is 2700 / 3000 * 100 = 90 percent."
+  },
+  {
+   "id": "c3ww-error75",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this wet cake production calculation for cake dry solids = 1600 kg/d and cake solids fraction = 0.2.",
+   "topicId": "dewatering-cake-mass",
+   "level": "class1",
+   "assumptions": "Fictional dewatering operation: cake dry solids = 1600 kg/d, cake total solids fraction = 0.2. Target unit: kg wet cake/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Wet cake mass = Cake dry solids / cake solids fraction"
+    },
+    {
+     "id": "line2",
+     "label": "2. Wet cake mass = 1600 kg/d * 0.2 = 320 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Wet cake mass = 1600 kg/d / 0.2 = 8000 kg/d",
+   "explanation": "Line 2 multiplied by the cake solids fraction instead of dividing. Correct wet cake mass is 1600 / 0.2 = 8000 kg/d."
+  },
+  {
+   "id": "c3ww-error76",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this wet cake production calculation for cake dry solids = 1800 kg/d and cake solids fraction = 0.25.",
+   "topicId": "dewatering-cake-mass",
+   "level": "class1",
+   "assumptions": "Fictional dewatering operation: cake dry solids = 1800 kg/d, cake total solids fraction = 0.25. Target unit: kg wet cake/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Wet cake mass = Cake dry solids / cake solids fraction"
+    },
+    {
+     "id": "line2",
+     "label": "2. Wet cake mass = 1800 kg/d * 0.25 = 450 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Wet cake mass = 1800 kg/d / 0.25 = 7200 kg/d",
+   "explanation": "Line 2 multiplied by the cake solids fraction instead of dividing. Correct wet cake mass is 1800 / 0.25 = 7200 kg/d."
+  },
+  {
+   "id": "c3ww-error77",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this wet cake production calculation for cake dry solids = 2400 kg/d and cake solids fraction = 0.2.",
+   "topicId": "dewatering-cake-mass",
+   "level": "class1",
+   "assumptions": "Fictional dewatering operation: cake dry solids = 2400 kg/d, cake total solids fraction = 0.2. Target unit: kg wet cake/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Wet cake mass = Cake dry solids / cake solids fraction"
+    },
+    {
+     "id": "line2",
+     "label": "2. Wet cake mass = 2400 kg/d * 0.2 = 480 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Wet cake mass = 2400 kg/d / 0.2 = 12000 kg/d",
+   "explanation": "Line 2 multiplied by the cake solids fraction instead of dividing. Correct wet cake mass is 2400 / 0.2 = 12000 kg/d."
+  },
+  {
+   "id": "c3ww-error78",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this wet cake production calculation for cake dry solids = 1500 kg/d and cake solids fraction = 0.25.",
+   "topicId": "dewatering-cake-mass",
+   "level": "class1",
+   "assumptions": "Fictional dewatering operation: cake dry solids = 1500 kg/d, cake total solids fraction = 0.25. Target unit: kg wet cake/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Wet cake mass = Cake dry solids / cake solids fraction"
+    },
+    {
+     "id": "line2",
+     "label": "2. Wet cake mass = 1500 kg/d * 0.25 = 375 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Wet cake mass = 1500 kg/d / 0.25 = 6000 kg/d",
+   "explanation": "Line 2 multiplied by the cake solids fraction instead of dividing. Correct wet cake mass is 1500 / 0.25 = 6000 kg/d."
+  },
+  {
+   "id": "c3ww-error79",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this cake solids calculation for wet cake mass = 10000 kg/d and cake solids fraction = 0.25.",
+   "topicId": "dewatering-cake-mass",
+   "level": "class1",
+   "assumptions": "Fictional dewatering operation: wet cake mass = 10000 kg/d, cake total solids fraction = 0.25. Target unit: kg dry solids/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Cake dry solids = Wet cake mass * cake solids fraction"
+    },
+    {
+     "id": "line2",
+     "label": "2. Cake dry solids = 10000 kg/d / 0.25 = 40000 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Cake dry solids = 10000 kg/d * 0.25 = 2500 kg/d",
+   "explanation": "Line 2 divided by the cake solids fraction instead of multiplying. Correct cake dry solids is 10000 * 0.25 = 2500 kg/d."
+  },
+  {
+   "id": "c3ww-error80",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this cake solids calculation for wet cake mass = 8000 kg/d and cake solids fraction = 0.2.",
+   "topicId": "dewatering-cake-mass",
+   "level": "class1",
+   "assumptions": "Fictional dewatering operation: wet cake mass = 8000 kg/d, cake total solids fraction = 0.2. Target unit: kg dry solids/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Cake dry solids = Wet cake mass * cake solids fraction"
+    },
+    {
+     "id": "line2",
+     "label": "2. Cake dry solids = 8000 kg/d / 0.2 = 40000 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Cake dry solids = 8000 kg/d * 0.2 = 1600 kg/d",
+   "explanation": "Line 2 divided by the cake solids fraction instead of multiplying. Correct cake dry solids is 8000 * 0.2 = 1600 kg/d."
+  },
+  {
+   "id": "c3ww-error81",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this polymer use calculation for dry solids = 4000 kg/d, wet cake = 20000 kg/d and a polymer dose of 6 kg per tonne of dry solids.",
+   "topicId": "dewatering-polymer",
+   "level": "class1",
+   "assumptions": "Fictional dewatering operation: dry solids processed = 4000 kg/d, wet cake produced = 20000 kg/d, polymer dose = 6 kg per tonne of dry solids, 1000 kg = 1 tonne. Target unit: kg polymer/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Polymer use = Dry tonnes * dose"
+    },
+    {
+     "id": "line2",
+     "label": "2. Polymer use = 20 t/d * 6 kg/t = 120 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Polymer use = 4 t/d * 6 kg/t = 24 kg/d",
+   "explanation": "Line 2 used the wet cake tonnage. The dose is per tonne of dry solids, 4 t/d, so polymer use is 4 * 6 = 24 kg/d."
+  },
+  {
+   "id": "c3ww-error82",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this polymer use calculation for dry solids = 3000 kg/d, wet cake = 15000 kg/d and a polymer dose of 5 kg per tonne of dry solids.",
+   "topicId": "dewatering-polymer",
+   "level": "class1",
+   "assumptions": "Fictional dewatering operation: dry solids processed = 3000 kg/d, wet cake produced = 15000 kg/d, polymer dose = 5 kg per tonne of dry solids, 1000 kg = 1 tonne. Target unit: kg polymer/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Polymer use = Dry tonnes * dose"
+    },
+    {
+     "id": "line2",
+     "label": "2. Polymer use = 15 t/d * 5 kg/t = 75 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Polymer use = 3 t/d * 5 kg/t = 15 kg/d",
+   "explanation": "Line 2 used the wet cake tonnage. The dose is per tonne of dry solids, 3 t/d, so polymer use is 3 * 5 = 15 kg/d."
+  },
+  {
+   "id": "c3ww-error83",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this nitrification alkalinity calculation for ammonia nitrogen oxidized = 100 kg/d.",
+   "topicId": "nitrification-alkalinity",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 plant: ammonia nitrogen oxidized = 100 kg/d. Alkalinity consumed is 7.14 kg as CaCO3 per kg of ammonia nitrogen oxidized. Target unit: kg as CaCO3/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Alkalinity needed = NH3-N oxidized * 7.14"
+    },
+    {
+     "id": "line2",
+     "label": "2. Alkalinity needed = 100 kg/d * 71.4 = 7140 kg as CaCO3/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Alkalinity needed = 100 kg/d * 7.14 = 714 kg as CaCO3/d",
+   "explanation": "Line 2 used 71.4 instead of 7.14 kg as CaCO3 per kg. Correct alkalinity need is 100 * 7.14 = 714 kg as CaCO3/d."
+  },
+  {
+   "id": "c3ww-error84",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this nitrification alkalinity calculation for ammonia nitrogen oxidized = 150 kg/d.",
+   "topicId": "nitrification-alkalinity",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 plant: ammonia nitrogen oxidized = 150 kg/d. Alkalinity consumed is 7.14 kg as CaCO3 per kg of ammonia nitrogen oxidized. Target unit: kg as CaCO3/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Alkalinity needed = NH3-N oxidized * 7.14"
+    },
+    {
+     "id": "line2",
+     "label": "2. Alkalinity needed = 150 kg/d * 71.4 = 10710 kg as CaCO3/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Alkalinity needed = 150 kg/d * 7.14 = 1071 kg as CaCO3/d",
+   "explanation": "Line 2 used 71.4 instead of 7.14 kg as CaCO3 per kg. Correct alkalinity need is 150 * 7.14 = 1071 kg as CaCO3/d."
+  },
+  {
+   "id": "c3ww-error85",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this nitrification alkalinity calculation for ammonia nitrogen oxidized = 200 kg/d.",
+   "topicId": "nitrification-alkalinity",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 plant: ammonia nitrogen oxidized = 200 kg/d. Alkalinity consumed is 7.14 kg as CaCO3 per kg of ammonia nitrogen oxidized. Target unit: kg as CaCO3/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Alkalinity needed = NH3-N oxidized * 7.14"
+    },
+    {
+     "id": "line2",
+     "label": "2. Alkalinity needed = 200 kg/d * 71.4 = 14280 kg as CaCO3/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Alkalinity needed = 200 kg/d * 7.14 = 1428 kg as CaCO3/d",
+   "explanation": "Line 2 used 71.4 instead of 7.14 kg as CaCO3 per kg. Correct alkalinity need is 200 * 7.14 = 1428 kg as CaCO3/d."
+  },
+  {
+   "id": "c3ww-error86",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this nitrification alkalinity calculation for Q = 5000 m3/d and ammonia nitrogen oxidized = 20 mg/L.",
+   "topicId": "nitrification-alkalinity",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 plant: Q = 5000 m3/d, ammonia nitrogen oxidized = 20 mg/L, alkalinity factor 7.14 kg as CaCO3 per kg, 1000 g = 1 kg. Target unit: kg as CaCO3/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. NH3-N mass = Q * C / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. NH3-N mass = 5000 m3/d * 20 mg/L / 100 = 1000 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Alkalinity needed = 1000 kg/d * 7.14 = 7140 kg as CaCO3/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. NH3-N mass = 5000 m3/d * 20 mg/L / 1000 = 100 kg/d",
+   "explanation": "Line 2 divided by 100 instead of 1000. Correct ammonia mass is 100 kg/d, so alkalinity needed is 100 * 7.14 = 714 kg as CaCO3/d."
+  },
+  {
+   "id": "c3ww-error87",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this nitrification alkalinity calculation for Q = 4000 m3/d and ammonia nitrogen oxidized = 25 mg/L.",
+   "topicId": "nitrification-alkalinity",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 plant: Q = 4000 m3/d, ammonia nitrogen oxidized = 25 mg/L, alkalinity factor 7.14 kg as CaCO3 per kg, 1000 g = 1 kg. Target unit: kg as CaCO3/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. NH3-N mass = Q * C / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. NH3-N mass = 4000 m3/d * 25 mg/L / 100 = 1000 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Alkalinity needed = 1000 kg/d * 7.14 = 7140 kg as CaCO3/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. NH3-N mass = 4000 m3/d * 25 mg/L / 1000 = 100 kg/d",
+   "explanation": "Line 2 divided by 100 instead of 1000. Correct ammonia mass is 100 kg/d, so alkalinity needed is 100 * 7.14 = 714 kg as CaCO3/d."
+  },
+  {
+   "id": "c3ww-error88",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this methanol dose calculation for Q = 4000 m3/d, nitrate nitrogen in = 25 mg/L and nitrate nitrogen out = 5 mg/L.",
+   "topicId": "denitrification-carbon",
+   "level": "class1",
+   "assumptions": "Fictional denitrification zone: Q = 4000 m3/d, nitrate nitrogen in = 25 mg/L, nitrate nitrogen out = 5 mg/L, methanol required = 3 kg per kg of nitrate nitrogen removed, 1000 g = 1 kg. Target unit: kg methanol/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. NO3-N removed = Q * (In - Out) / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. NO3-N removed = 4000 m3/d * 25 mg/L / 1000 = 100 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Methanol = 100 kg/d * 3 = 300 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. NO3-N removed = 4000 m3/d * (25 mg/L - 5 mg/L) / 1000 = 80 kg/d",
+   "explanation": "Line 2 used the influent nitrate only and did not subtract the effluent nitrate. Correct removal is 80 kg/d, so methanol is 80 * 3 = 240 kg/d."
+  },
+  {
+   "id": "c3ww-error89",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this methanol dose calculation for Q = 5000 m3/d, nitrate nitrogen in = 24 mg/L and nitrate nitrogen out = 4 mg/L.",
+   "topicId": "denitrification-carbon",
+   "level": "class1",
+   "assumptions": "Fictional denitrification zone: Q = 5000 m3/d, nitrate nitrogen in = 24 mg/L, nitrate nitrogen out = 4 mg/L, methanol required = 3 kg per kg of nitrate nitrogen removed, 1000 g = 1 kg. Target unit: kg methanol/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. NO3-N removed = Q * (In - Out) / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. NO3-N removed = 5000 m3/d * 24 mg/L / 1000 = 120 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Methanol = 120 kg/d * 3 = 360 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. NO3-N removed = 5000 m3/d * (24 mg/L - 4 mg/L) / 1000 = 100 kg/d",
+   "explanation": "Line 2 used the influent nitrate only and did not subtract the effluent nitrate. Correct removal is 100 kg/d, so methanol is 100 * 3 = 300 kg/d."
+  },
+  {
+   "id": "c3ww-error90",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this methanol dose calculation for Q = 3000 m3/d, nitrate nitrogen in = 30 mg/L and nitrate nitrogen out = 10 mg/L.",
+   "topicId": "denitrification-carbon",
+   "level": "class1",
+   "assumptions": "Fictional denitrification zone: Q = 3000 m3/d, nitrate nitrogen in = 30 mg/L, nitrate nitrogen out = 10 mg/L, methanol required = 3 kg per kg of nitrate nitrogen removed, 1000 g = 1 kg. Target unit: kg methanol/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. NO3-N removed = Q * (In - Out) / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. NO3-N removed = 3000 m3/d * 30 mg/L / 1000 = 90 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Methanol = 90 kg/d * 3 = 270 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. NO3-N removed = 3000 m3/d * (30 mg/L - 10 mg/L) / 1000 = 60 kg/d",
+   "explanation": "Line 2 used the influent nitrate only and did not subtract the effluent nitrate. Correct removal is 60 kg/d, so methanol is 60 * 3 = 180 kg/d."
+  },
+  {
+   "id": "c3ww-error91",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this ferric dose calculation for phosphorus removed = 40 kg/d.",
+   "topicId": "phosphorus-chemical-dose",
+   "level": "class1",
+   "assumptions": "Fictional chemical phosphorus removal: phosphorus removed = 40 kg/d. Ferric required is 2.5 kg per kg of phosphorus removed, as given for this plant trial. Target unit: kg ferric/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Ferric dose = P removed * 2.5"
+    },
+    {
+     "id": "line2",
+     "label": "2. Ferric dose = 40 kg/d * 25 = 1000 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Ferric dose = 40 kg/d * 2.5 = 100 kg/d",
+   "explanation": "Line 2 used 25 instead of the given factor of 2.5 kg per kg. Correct ferric dose is 40 * 2.5 = 100 kg/d."
+  },
+  {
+   "id": "c3ww-error92",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this ferric dose calculation for phosphorus removed = 60 kg/d.",
+   "topicId": "phosphorus-chemical-dose",
+   "level": "class1",
+   "assumptions": "Fictional chemical phosphorus removal: phosphorus removed = 60 kg/d. Ferric required is 2.5 kg per kg of phosphorus removed, as given for this plant trial. Target unit: kg ferric/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Ferric dose = P removed * 2.5"
+    },
+    {
+     "id": "line2",
+     "label": "2. Ferric dose = 60 kg/d * 25 = 1500 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Ferric dose = 60 kg/d * 2.5 = 150 kg/d",
+   "explanation": "Line 2 used 25 instead of the given factor of 2.5 kg per kg. Correct ferric dose is 60 * 2.5 = 150 kg/d."
+  },
+  {
+   "id": "c3ww-error93",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this primary treatment mass balance for an influent TSS load of 1200 kg/d with 60 percent removed in the primary clarifier.",
+   "topicId": "mass-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 plant: influent TSS load = 1200 kg/d, primary clarifier removes 60 percent of the TSS load. Target unit: kg/d to secondary treatment.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. TSS removed = 1200 kg/d * 60 / 100 = 720 kg/d"
+    },
+    {
+     "id": "line2",
+     "label": "2. TSS to secondary = 1200 kg/d - 720 kg/d = 520 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. TSS to secondary = 1200 kg/d - 720 kg/d = 480 kg/d",
+   "explanation": "Line 2 subtracted incorrectly. 1200 - 720 = 480 kg/d passes to secondary treatment."
+  },
+  {
+   "id": "c3ww-error94",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this primary treatment mass balance for an influent TSS load of 1000 kg/d with 65 percent removed in the primary clarifier.",
+   "topicId": "mass-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 plant: influent TSS load = 1000 kg/d, primary clarifier removes 65 percent of the TSS load. Target unit: kg/d to secondary treatment.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. TSS removed = 1000 kg/d * 65 / 100 = 650 kg/d"
+    },
+    {
+     "id": "line2",
+     "label": "2. TSS to secondary = 1000 kg/d - 650 kg/d = 300 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. TSS to secondary = 1000 kg/d - 650 kg/d = 350 kg/d",
+   "explanation": "Line 2 subtracted incorrectly. 1000 - 650 = 350 kg/d passes to secondary treatment."
+  },
+  {
+   "id": "c3ww-error95",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this primary treatment mass balance for an influent TSS load of 1500 kg/d with 60 percent removed in the primary clarifier.",
+   "topicId": "mass-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 plant: influent TSS load = 1500 kg/d, primary clarifier removes 60 percent of the TSS load. Target unit: kg/d to secondary treatment.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. TSS removed = 1500 kg/d * 60 / 100 = 900 kg/d"
+    },
+    {
+     "id": "line2",
+     "label": "2. TSS to secondary = 1500 kg/d - 900 kg/d = 650 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. TSS to secondary = 1500 kg/d - 900 kg/d = 600 kg/d",
+   "explanation": "Line 2 subtracted incorrectly. 1500 - 900 = 600 kg/d passes to secondary treatment."
+  },
+  {
+   "id": "c3ww-error96",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids train mass balance for primary sludge = 800 kg/d and waste activated sludge = 600 kg/d, both sent to the digester.",
+   "topicId": "mass-balance",
+   "level": "class1",
+   "assumptions": "Fictional solids train: primary sludge = 800 kg dry solids/d, waste activated sludge = 600 kg dry solids/d, both streams go to the digester. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total to digester = Primary sludge + waste activated sludge"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total to digester = 800 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Total to digester = 800 kg/d + 600 kg/d = 1400 kg/d",
+   "explanation": "Line 2 omitted the waste activated sludge stream. Total feed to the digester is 800 + 600 = 1400 kg/d."
+  },
+  {
+   "id": "c3ww-error97",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids train mass balance for primary sludge = 950 kg/d and waste activated sludge = 450 kg/d, both sent to the digester.",
+   "topicId": "mass-balance",
+   "level": "class1",
+   "assumptions": "Fictional solids train: primary sludge = 950 kg dry solids/d, waste activated sludge = 450 kg dry solids/d, both streams go to the digester. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total to digester = Primary sludge + waste activated sludge"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total to digester = 950 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Total to digester = 950 kg/d + 450 kg/d = 1400 kg/d",
+   "explanation": "Line 2 omitted the waste activated sludge stream. Total feed to the digester is 950 + 450 = 1400 kg/d."
+  },
+  {
+   "id": "c3ww-error98",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this two stage BOD mass balance for a raw BOD load of 900 kg/d, primary removal of 30 percent and secondary removal of 95 percent of the load reaching secondary treatment.",
+   "topicId": "mass-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 plant: raw BOD load = 900 kg/d, primary clarifier removes 30 percent, secondary treatment removes 95 percent of the BOD load that reaches it. Target unit: kg/d removed in secondary treatment.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. BOD to secondary = 900 kg/d * (100 - 30) / 100 = 630 kg/d"
+    },
+    {
+     "id": "line2",
+     "label": "2. Secondary removal = 900 kg/d * 95 / 100 = 855 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Final effluent BOD load = 630 kg/d - 855 kg/d = -225 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Secondary removal = 630 kg/d * 95 / 100 = 598.5 kg/d",
+   "explanation": "Line 2 applied the secondary removal percent to the raw load instead of the load reaching secondary treatment. Correct secondary removal is 630 * 95 / 100 = 598.5 kg/d, leaving 31.5 kg/d."
+  },
+  {
+   "id": "c3ww-error99",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this two stage BOD mass balance for a raw BOD load of 800 kg/d, primary removal of 25 percent and secondary removal of 90 percent of the load reaching secondary treatment.",
+   "topicId": "mass-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 plant: raw BOD load = 800 kg/d, primary clarifier removes 25 percent, secondary treatment removes 90 percent of the BOD load that reaches it. Target unit: kg/d removed in secondary treatment.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. BOD to secondary = 800 kg/d * (100 - 25) / 100 = 600 kg/d"
+    },
+    {
+     "id": "line2",
+     "label": "2. Secondary removal = 800 kg/d * 90 / 100 = 720 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Final effluent BOD load = 600 kg/d - 720 kg/d = -120 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Secondary removal = 600 kg/d * 90 / 100 = 540 kg/d",
+   "explanation": "Line 2 applied the secondary removal percent to the raw load instead of the load reaching secondary treatment. Correct secondary removal is 600 * 90 / 100 = 540 kg/d, leaving 60 kg/d."
+  },
+  {
+   "id": "c3ww-process01",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for establishing a plant wide activated sludge process control program.",
+   "topicId": "process-control-program-setup",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: Class 3 plant with multiple aeration trains and secondary clarifiers, moving from reactive to proactive control.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Establish daily calculation routines for solids retention time and food to microorganism ratio"
+    },
+    {
+     "id": "step-02",
+     "label": "Define target ranges for mixed liquor solids, sludge age, dissolved oxygen, and clarifier blanket depth"
+    },
+    {
+     "id": "step-03",
+     "label": "Set sampling locations and frequencies for each control parameter"
+    },
+    {
+     "id": "step-05",
+     "label": "Define adjustment rules and authority limits for each control variable"
+    },
+    {
+     "id": "step-01",
+     "label": "Inventory all process control instruments and confirm calibration status"
+    },
+    {
+     "id": "step-06",
+     "label": "Start a trending review meeting to assess performance against targets weekly"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Instruments must be trusted before targets are set, sampling and calculations give the data the rules act on, and the weekly review closes the control loop."
+  },
+  {
+   "id": "c3ww-process02",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a systematic response to rising effluent ammonia in winter.",
+   "topicId": "process-winter-ammonia-response",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: nitrification weakening as wastewater temperature falls, effluent ammonia trending upward.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Increase wasting control to build solids inventory if sludge age is too short"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm the ammonia trend with laboratory results and online analyzer checks"
+    },
+    {
+     "id": "step-03",
+     "label": "Check aeration basin dissolved oxygen and alkalinity for limiting conditions"
+    },
+    {
+     "id": "step-05",
+     "label": "Reduce peak flow impacts by using equalization or flow splitting where available"
+    },
+    {
+     "id": "step-06",
+     "label": "Track ammonia daily and report compliance risk to the overall responsible operator"
+    },
+    {
+     "id": "step-02",
+     "label": "Review solids retention time and confirm it is long enough for nitrifiers at the current temperature"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "A confirmed trend drives the diagnosis, sludge age and oxygen are corrected before flow measures, and compliance risk is escalated with data in hand."
+  },
+  {
+   "id": "c3ww-process03",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for troubleshooting filamentous bulking confirmed by microscopic examination.",
+   "topicId": "process-filamentous-bulking-control",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: secondary clarifier blanket rising, sludge volume index elevated, filaments identified in the laboratory.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Increase return sludge rate to protect the clarifier while settling recovers"
+    },
+    {
+     "id": "step-02",
+     "label": "Check basin dissolved oxygen, nutrient balance, and food to microorganism ratio for the filament cause"
+    },
+    {
+     "id": "step-03",
+     "label": "Correct the underlying cause such as low oxygen or nutrient deficiency"
+    },
+    {
+     "id": "step-01",
+     "label": "Review microscopic findings and identify the dominant filament type"
+    },
+    {
+     "id": "step-05",
+     "label": "Apply a targeted control measure approved by the supervisor if the cause correction is slow"
+    },
+    {
+     "id": "step-06",
+     "label": "Repeat settleability and microscopy until the sludge volume index returns to target"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Identification comes before cause correction, clarifier protection runs while the biology recovers, and repeat testing proves the fix."
+  },
+  {
+   "id": "c3ww-process04",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for optimizing solids retention time across parallel aeration trains.",
+   "topicId": "process-srt-optimization-trains",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: three aeration trains with uneven solids distribution and one train underperforming.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Compare train performance for ammonia removal and settleability"
+    },
+    {
+     "id": "step-03",
+     "label": "Set a single plant target sludge age based on temperature and effluent objectives"
+    },
+    {
+     "id": "step-04",
+     "label": "Rebalance flow and solids between trains to equalize loading"
+    },
+    {
+     "id": "step-05",
+     "label": "Adjust wasting from the combined inventory to hold the target sludge age"
+    },
+    {
+     "id": "step-06",
+     "label": "Verify with a week of trending that all trains hold near the target"
+    },
+    {
+     "id": "step-01",
+     "label": "Measure mixed liquor solids and volumes in each train to calculate individual sludge ages"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Individual ages must be known before a plant target can be set, rebalancing precedes wasting changes, and trending verifies the result."
+  },
+  {
+   "id": "c3ww-process05",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for implementing dissolved oxygen cascade control in an aeration basin.",
+   "topicId": "process-do-cascade-control",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: basin with multiple aeration zones, manual air control being replaced by automatic cascade control.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Confirm air valves and blower controls respond correctly in manual mode"
+    },
+    {
+     "id": "step-04",
+     "label": "Place one zone in automatic control and observe stability for a full day"
+    },
+    {
+     "id": "step-03",
+     "label": "Set zone dissolved oxygen setpoints from the outlet zone backward to the inlet zone"
+    },
+    {
+     "id": "step-01",
+     "label": "Verify dissolved oxygen probes in each zone against handheld measurements"
+    },
+    {
+     "id": "step-06",
+     "label": "Review energy use and effluent quality after one week of automatic operation"
+    },
+    {
+     "id": "step-05",
+     "label": "Place the remaining zones in automatic control one at a time"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Probes and manual response are proven first, automatic control is introduced one zone at a time, and performance is judged only after stable operation."
+  },
+  {
+   "id": "c3ww-process06",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for recovering activated sludge after a toxic influent event.",
+   "topicId": "process-toxic-event-recovery",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: biomass activity sharply reduced after an industrial discharge, effluent quality deteriorating.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Reduce wasting to conserve remaining viable biomass"
+    },
+    {
+     "id": "step-02",
+     "label": "Preserve samples of influent and mixed liquor for analysis"
+    },
+    {
+     "id": "step-01",
+     "label": "Isolate or divert the suspect influent source and notify the overall responsible operator"
+    },
+    {
+     "id": "step-04",
+     "label": "Reseed from a healthy train or an external seed source if activity does not recover"
+    },
+    {
+     "id": "step-05",
+     "label": "Restart loading gradually while monitoring oxygen uptake and settleability"
+    },
+    {
+     "id": "step-06",
+     "label": "Restore normal wasting and loading only after effluent quality stabilizes"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The source is stopped before the biomass is managed, wasting is held to protect inventory, and reloading stays gradual until stability returns."
+  },
+  {
+   "id": "c3ww-process07",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a food to microorganism ratio study to reset wasting targets.",
+   "topicId": "process-fm-study",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: plant wasting by habit rather than by load, effluent quality variable.",
+   "cards": [
+    {
+     "id": "step-06",
+     "label": "Reset the wasting schedule to hold solids inventory within the target range"
+    },
+    {
+     "id": "step-02",
+     "label": "Measure aeration basin volumes and mixed liquor volatile solids for the same period"
+    },
+    {
+     "id": "step-04",
+     "label": "Compare the ratios with settleability and effluent quality for those days"
+    },
+    {
+     "id": "step-01",
+     "label": "Collect a week of influent flow and biochemical oxygen demand data"
+    },
+    {
+     "id": "step-03",
+     "label": "Calculate the food to microorganism ratio for each day of the study"
+    },
+    {
+     "id": "step-05",
+     "label": "Select a target ratio range supported by the best performing days"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Load and inventory data for the same period are needed for a valid ratio, the best days define the target, and wasting is reset last."
+  },
+  {
+   "id": "c3ww-process08",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for diagnosing rising sludge volume index across the whole plant.",
+   "topicId": "process-svi-diagnosis",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: sludge volume index climbing over two weeks in all trains.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Implement the correction matched to the confirmed cause"
+    },
+    {
+     "id": "step-04",
+     "label": "Check for septic influent or sulfide entering the aeration basins"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm the index trend using consistent settleability test methods"
+    },
+    {
+     "id": "step-02",
+     "label": "Examine mixed liquor microscopically for filament abundance and floc structure"
+    },
+    {
+     "id": "step-06",
+     "label": "Monitor the index daily until it returns to the normal range"
+    },
+    {
+     "id": "step-03",
+     "label": "Review dissolved oxygen, sludge age, and nutrient data for the same period"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Method consistency is checked before biology is blamed, cause data are reviewed together, and the correction follows the confirmed cause."
+  },
+  {
+   "id": "c3ww-process09",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for balancing return sludge distribution to multiple clarifiers.",
+   "topicId": "process-ras-distribution-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: four secondary clarifiers with uneven blanket depths at the same total return rate.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Identify clarifiers that are over returned or under returned"
+    },
+    {
+     "id": "step-02",
+     "label": "Check return sludge solids concentration from each clarifier"
+    },
+    {
+     "id": "step-05",
+     "label": "Allow several hours for blankets to respond and remeasure"
+    },
+    {
+     "id": "step-04",
+     "label": "Adjust individual return valves or pump speeds in small increments"
+    },
+    {
+     "id": "step-06",
+     "label": "Lock in the balanced settings and record them as the new baseline"
+    },
+    {
+     "id": "step-01",
+     "label": "Measure blanket depth and return flow for each clarifier"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Current distribution must be measured before valves move, small changes need time to show in blankets, and the proven settings become the baseline."
+  },
+  {
+   "id": "c3ww-process10",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a stepwise increase in plant loading during a growth trial.",
+   "topicId": "process-loading-trial",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: plant preparing to accept higher flows from a new subdivision, capacity to be proven in stages.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Evaluate whether all compliance parameters held with margin"
+    },
+    {
+     "id": "step-02",
+     "label": "Increase flow in one planned increment and hold for several days"
+    },
+    {
+     "id": "step-01",
+     "label": "Establish baseline effluent quality and process data at current loading"
+    },
+    {
+     "id": "step-06",
+     "label": "Document the proven capacity and the limiting unit process"
+    },
+    {
+     "id": "step-05",
+     "label": "Proceed to the next increment only if the evaluation passes"
+    },
+    {
+     "id": "step-03",
+     "label": "Monitor clarifier blankets, basin oxygen, and effluent quality through the hold"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Baseline data make the trial meaningful, each increment is held and judged before the next, and the limiting unit is identified from evidence."
+  },
+  {
+   "id": "c3ww-process100",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for preparing an operator training plan for the year.",
+   "topicId": "process-annual-training-plan",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: annual plan covering licences, safety, and process skills.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Assign each operator a personal training target for the year"
+    },
+    {
+     "id": "step-02",
+     "label": "Identify skill gaps from audits, incidents, and new equipment"
+    },
+    {
+     "id": "step-04",
+     "label": "Schedule courses and coverage so shifts remain staffed"
+    },
+    {
+     "id": "step-03",
+     "label": "Prioritize mandatory safety and compliance training first"
+    },
+    {
+     "id": "step-01",
+     "label": "Review licence renewal and continuing education requirements for each operator"
+    },
+    {
+     "id": "step-06",
+     "label": "Track completion quarterly and adjust the plan as needed"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Licence requirements and gaps frame the plan, mandatory training is scheduled first, and quarterly tracking keeps the plan on course."
+  },
+  {
+   "id": "c3ww-process11",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for controlling Nocardia foam in aeration basins and clarifiers.",
+   "topicId": "process-nocardia-foam-control",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: thick brown foam on basins and clarifier surfaces, foam forming solids in effluent.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Review sludge age and fats, oils, and grease loading as contributing factors"
+    },
+    {
+     "id": "step-02",
+     "label": "Remove foam from surfaces so it is not recycled to the process"
+    },
+    {
+     "id": "step-06",
+     "label": "Monitor foam coverage weekly until it declines to trace levels"
+    },
+    {
+     "id": "step-04",
+     "label": "Reduce sludge age if it is above the range that favours Nocardia growth"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm Nocardia type filaments by microscopic examination"
+    },
+    {
+     "id": "step-05",
+     "label": "Check foam traps and scum removal systems for proper operation"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Confirmation precedes control, foam is wasted out rather than recycled, sludge age is adjusted as the root cause measure, and monitoring proves decline."
+  },
+  {
+   "id": "c3ww-process12",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for optimizing aeration energy without losing treatment performance.",
+   "topicId": "process-aeration-energy-optimization",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: aeration using more than half the plant electricity, effluent quality comfortably in compliance.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Verify dissolved oxygen probe accuracy in every controlled zone"
+    },
+    {
+     "id": "step-01",
+     "label": "Baseline blower energy use against flow and load for a representative week"
+    },
+    {
+     "id": "step-04",
+     "label": "Confirm ammonia and oxygen trends stay within targets after each step"
+    },
+    {
+     "id": "step-03",
+     "label": "Lower zone setpoints in small steps where effluent margin allows"
+    },
+    {
+     "id": "step-05",
+     "label": "Fix air leaks and clean fouled diffusers found during the review"
+    },
+    {
+     "id": "step-06",
+     "label": "Report the sustained energy saving and the new standard setpoints"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Energy cannot be judged without a load baseline, probes must be accurate before setpoints fall, and savings are reported only when sustained."
+  },
+  {
+   "id": "c3ww-process13",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for managing activated sludge through a prolonged low load period.",
+   "topicId": "process-low-load-management",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: plant flow well below design for several weeks, biomass over aerated and sludge age very long.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Reduce the number of aeration trains in service to concentrate the biomass"
+    },
+    {
+     "id": "step-04",
+     "label": "Increase wasting to bring sludge age back toward the target range"
+    },
+    {
+     "id": "step-03",
+     "label": "Lower air supply to match the reduced oxygen demand"
+    },
+    {
+     "id": "step-05",
+     "label": "Watch for rising effluent solids from over aged sludge"
+    },
+    {
+     "id": "step-01",
+     "label": "Calculate current sludge age and food to microorganism ratio at the low load"
+    },
+    {
+     "id": "step-06",
+     "label": "Return trains to service in stages as load recovers"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Load calculations define the problem, concentrating biomass precedes air and wasting changes, and restaging follows load recovery."
+  },
+  {
+   "id": "c3ww-process14",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for investigating poor settling traced to dispersed growth.",
+   "topicId": "process-dispersed-growth-investigation",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: cloudy effluent, floc not forming, no significant filaments seen.",
+   "cards": [
+    {
+     "id": "step-06",
+     "label": "Recheck floc formation and effluent clarity as inventory builds"
+    },
+    {
+     "id": "step-04",
+     "label": "Check basin dissolved oxygen for over aeration breaking up floc"
+    },
+    {
+     "id": "step-05",
+     "label": "Reduce wasting to build inventory and sludge age"
+    },
+    {
+     "id": "step-02",
+     "label": "Check for very high food to microorganism ratio or very young sludge"
+    },
+    {
+     "id": "step-01",
+     "label": "Observe fresh mixed liquor under the microscope for floc structure and free bacteria"
+    },
+    {
+     "id": "step-03",
+     "label": "Review recent wasting for excessive removal of solids inventory"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Microscopy distinguishes dispersed growth from bulking, inventory loss is corrected by holding solids, and recovery is confirmed in the effluent."
+  },
+  {
+   "id": "c3ww-process15",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for setting up a selector zone operating review.",
+   "topicId": "process-selector-zone-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: anoxic selector ahead of the aeration basin, bulking control benefit in question.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Adjust selector mixing or return rate if oxygen is intruding"
+    },
+    {
+     "id": "step-02",
+     "label": "Confirm return sludge and influent are mixing as designed in the selector"
+    },
+    {
+     "id": "step-01",
+     "label": "Measure dissolved oxygen and oxidation reduction potential in the selector zone"
+    },
+    {
+     "id": "step-06",
+     "label": "Record the selector conditions that correspond to the best settling"
+    },
+    {
+     "id": "step-04",
+     "label": "Compare sludge volume index before and during selector operation"
+    },
+    {
+     "id": "step-03",
+     "label": "Sample for soluble biochemical oxygen demand removal across the selector"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Selector conditions must be measured before performance is judged, oxygen intrusion is corrected as the common fault, and the best conditions are recorded as the standard."
+  },
+  {
+   "id": "c3ww-process16",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for optimizing denitrification in an anoxic zone.",
+   "topicId": "process-denitrification-optimization",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: biological nutrient removal plant, effluent nitrate above the internal target.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Adjust anoxic mixing to keep solids suspended without adding oxygen"
+    },
+    {
+     "id": "step-01",
+     "label": "Measure nitrate entering and leaving the anoxic zone"
+    },
+    {
+     "id": "step-04",
+     "label": "Increase internal recycle rate if nitrate delivery is limiting"
+    },
+    {
+     "id": "step-06",
+     "label": "Verify effluent total nitrogen improves over the following week"
+    },
+    {
+     "id": "step-02",
+     "label": "Check anoxic zone dissolved oxygen and oxidation reduction potential for oxygen intrusion"
+    },
+    {
+     "id": "step-03",
+     "label": "Confirm readily available carbon is sufficient for the nitrate load"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Zone performance is measured first, oxygen intrusion and carbon are checked before recycle changes, and total nitrogen confirms the gain."
+  },
+  {
+   "id": "c3ww-process17",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for tuning internal recycle for total nitrogen removal.",
+   "topicId": "process-internal-recycle-tuning",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: plant with adjustable internal recycle from 100 to 400 percent of influent flow.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Increase recycle in one step and hold for several days"
+    },
+    {
+     "id": "step-04",
+     "label": "Monitor anoxic zone nitrate and aeration energy as recycle rises"
+    },
+    {
+     "id": "step-01",
+     "label": "Establish current effluent nitrate and total nitrogen at the present recycle rate"
+    },
+    {
+     "id": "step-06",
+     "label": "Set the recycle control range and record the basis for the choice"
+    },
+    {
+     "id": "step-02",
+     "label": "Calculate the theoretical nitrate removal limit for the current recycle rate"
+    },
+    {
+     "id": "step-05",
+     "label": "Stop increasing when nitrate removal no longer improves or energy cost outweighs the gain"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Current performance and theory frame the trial, each step is held and judged, and the final range is set where gains level off."
+  },
+  {
+   "id": "c3ww-process18",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for starting biological phosphorus removal after a process change.",
+   "topicId": "process-bio-p-startup",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: anaerobic zone added ahead of aeration, chemical backup available.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "Confirm the anaerobic zone is truly anaerobic with oxygen and nitrate checks"
+    },
+    {
+     "id": "step-06",
+     "label": "Hold a minimum chemical trim dose for compliance security and document the split"
+    },
+    {
+     "id": "step-05",
+     "label": "Reduce chemical dose gradually as biological removal strengthens"
+    },
+    {
+     "id": "step-02",
+     "label": "Measure volatile fatty acids or readily biodegradable carbon in the influent"
+    },
+    {
+     "id": "step-03",
+     "label": "Seed and operate at stable loading while phosphorus release and uptake develop"
+    },
+    {
+     "id": "step-04",
+     "label": "Measure phosphorus release in the anaerobic zone and uptake in the aerobic zone"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Anaerobic conditions and carbon come before performance is expected, biological removal is proven by release and uptake, and chemical trim remains as security."
+  },
+  {
+   "id": "c3ww-process19",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for responding to loss of nitrification in cold weather.",
+   "topicId": "process-nitrification-loss-response",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: effluent ammonia rising as temperature drops below 10 degrees Celsius.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Verify basin dissolved oxygen is not limiting nitrifier activity"
+    },
+    {
+     "id": "step-03",
+     "label": "Increase solids inventory by reducing wasting to extend sludge age"
+    },
+    {
+     "id": "step-05",
+     "label": "Supplement alkalinity if pH is falling from nitrification demand"
+    },
+    {
+     "id": "step-06",
+     "label": "Notify the overall responsible operator of the compliance timeline and recovery plan"
+    },
+    {
+     "id": "step-02",
+     "label": "Calculate the sludge age required for nitrification at the current temperature"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm ammonia and alkalinity trends with laboratory testing"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Laboratory confirmation and sludge age math come first, inventory and oxygen are corrected together, and compliance risk is communicated early."
+  },
+  {
+   "id": "c3ww-process20",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for an alkalinity management program for a nitrifying plant.",
+   "topicId": "process-alkalinity-management",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: low alkalinity influent, pH dropping in aeration basins during full nitrification.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Verify basin pH and residual alkalinity stabilize in the target range"
+    },
+    {
+     "id": "step-04",
+     "label": "Set up chemical feed control paced to flow or ammonia load"
+    },
+    {
+     "id": "step-06",
+     "label": "Review chemical use monthly and adjust the dose basis with load changes"
+    },
+    {
+     "id": "step-02",
+     "label": "Calculate alkalinity consumed by the ammonia load being nitrified"
+    },
+    {
+     "id": "step-01",
+     "label": "Measure influent and effluent alkalinity and basin pH over a representative week"
+    },
+    {
+     "id": "step-03",
+     "label": "Determine the supplemental dose needed to hold a safe residual alkalinity"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Consumption must be quantified before a dose can be set, feed control follows the dose basis, and monthly review keeps the program matched to load."
+  },
+  {
+   "id": "c3ww-process21",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for optimizing supplemental carbon dosing for denitrification.",
+   "topicId": "process-carbon-dose-optimization",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: external carbon fed to a post anoxic zone, chemical cost high.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "Measure nitrate load entering the post anoxic zone across the day"
+    },
+    {
+     "id": "step-06",
+     "label": "Record the dose per kilogram of nitrate removed as the efficiency benchmark"
+    },
+    {
+     "id": "step-03",
+     "label": "Trim the dose in small steps while watching effluent nitrate"
+    },
+    {
+     "id": "step-05",
+     "label": "Set flow paced dosing with a nitrate trim signal if available"
+    },
+    {
+     "id": "step-04",
+     "label": "Check effluent biochemical oxygen demand for carbon overdosing"
+    },
+    {
+     "id": "step-02",
+     "label": "Calculate the carbon dose required from the supplier ratio for the measured load"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Load based dosing replaces fixed dosing, trimming is guarded by nitrate and effluent quality checks, and efficiency is benchmarked for future control."
+  },
+  {
+   "id": "c3ww-process22",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a seasonal nutrient removal strategy changeover.",
+   "topicId": "process-seasonal-nutrient-changeover",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: plant moving into the summer nutrient removal season with tighter objectives.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Increase nutrient sampling frequency through the changeover"
+    },
+    {
+     "id": "step-04",
+     "label": "Rebalance aeration and anoxic zone operation for the new objectives"
+    },
+    {
+     "id": "step-01",
+     "label": "Review the Environmental Compliance Approval limits for the coming season"
+    },
+    {
+     "id": "step-06",
+     "label": "Confirm stable compliance at the new settings before reducing oversight"
+    },
+    {
+     "id": "step-03",
+     "label": "Adjust sludge age targets for the seasonal temperature and limits"
+    },
+    {
+     "id": "step-02",
+     "label": "Assess current biomass condition and nutrient removal performance"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Approval limits define the seasonal objectives, biomass and zones are adjusted to match, and heightened sampling proves stability."
+  },
+  {
+   "id": "c3ww-process23",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for diagnosing poor phosphorus removal in a biological nutrient removal plant.",
+   "topicId": "process-bio-p-diagnosis",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: effluent phosphorus rising, both biological and chemical systems in place.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Measure phosphorus release and uptake across the anaerobic and aerobic zones"
+    },
+    {
+     "id": "step-01",
+     "label": "Check anaerobic zone for nitrate and oxygen intrusion that blocks phosphorus release"
+    },
+    {
+     "id": "step-03",
+     "label": "Review volatile fatty acid availability in the influent"
+    },
+    {
+     "id": "step-04",
+     "label": "Check chemical feed system delivery and dose at the trim point"
+    },
+    {
+     "id": "step-05",
+     "label": "Evaluate wasting location so phosphorus rich sludge leaves the system"
+    },
+    {
+     "id": "step-06",
+     "label": "Correct the confirmed cause and verify effluent phosphorus over one week"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Release failure is checked at the zone level first, chemical delivery is verified as the backup, and wasting location closes the phosphorus balance."
+  },
+  {
+   "id": "c3ww-process24",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for controlling effluent nitrate spikes after wet weather flows.",
+   "topicId": "process-wet-weather-nitrate-control",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: storm flows diluting biomass and washing nitrate through the plant.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "Review flow and nitrate trends through the storm event"
+    },
+    {
+     "id": "step-04",
+     "label": "Restore anoxic zone carbon and recycle settings as flow recedes"
+    },
+    {
+     "id": "step-06",
+     "label": "Document the event response for the wet weather operating plan"
+    },
+    {
+     "id": "step-05",
+     "label": "Monitor total nitrogen recovery over the following days"
+    },
+    {
+     "id": "step-02",
+     "label": "Protect biomass by maximizing return sludge and reducing wasting during the event"
+    },
+    {
+     "id": "step-03",
+     "label": "Use equalization or step feed to blunt the hydraulic peak if available"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Biomass protection during the event comes before recovery settings, nitrogen recovery is tracked over time, and the event improves the standing plan."
+  },
+  {
+   "id": "c3ww-process25",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for optimizing aeration control for simultaneous nitrification and phosphorus removal.",
+   "topicId": "process-aeration-bnr-optimization",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: aerobic zone oxygen affecting both nitrification rate and phosphorus uptake.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Confirm ammonia conversion is complete before the zone outlet"
+    },
+    {
+     "id": "step-03",
+     "label": "Check that low oxygen at the zone inlet is not limiting phosphorus uptake"
+    },
+    {
+     "id": "step-04",
+     "label": "Adjust air distribution to create a tapered oxygen profile"
+    },
+    {
+     "id": "step-05",
+     "label": "Verify effluent ammonia and phosphorus together after the change"
+    },
+    {
+     "id": "step-06",
+     "label": "Lock the air profile into the control narrative for the plant"
+    },
+    {
+     "id": "step-01",
+     "label": "Map dissolved oxygen along the aerobic zone from inlet to outlet"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The oxygen profile is mapped before air moves, both nutrients are verified together because they share the zone, and the proven profile becomes standard."
+  },
+  {
+   "id": "c3ww-process26",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a nitrification capacity stress test.",
+   "topicId": "process-nitrification-stress-test",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: plant needs to prove ammonia capacity ahead of a load increase.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Identify the load at which effluent ammonia begins to climb"
+    },
+    {
+     "id": "step-03",
+     "label": "Hold basin dissolved oxygen and alkalinity non limiting during the test"
+    },
+    {
+     "id": "step-02",
+     "label": "Increase ammonia load in a controlled step using flow or sidestream return timing"
+    },
+    {
+     "id": "step-01",
+     "label": "Baseline ammonia removal at current load and temperature"
+    },
+    {
+     "id": "step-04",
+     "label": "Track effluent ammonia response through the step"
+    },
+    {
+     "id": "step-06",
+     "label": "Report the proven capacity with the temperature and sludge age conditions"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Baseline and non limiting conditions make the test valid, the breakthrough load is the key result, and conditions are reported with the capacity."
+  },
+  {
+   "id": "c3ww-process27",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for managing return sidestreams from dewatering in a nutrient removal plant.",
+   "topicId": "process-sidestream-management",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: dewatering centrate high in ammonia returning to the head of the plant.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Calculate the centrate ammonia load as a share of the total plant load"
+    },
+    {
+     "id": "step-01",
+     "label": "Measure centrate flow, ammonia, and solids over a full dewatering run"
+    },
+    {
+     "id": "step-06",
+     "label": "Include the sidestream load in the plant nutrient balance records"
+    },
+    {
+     "id": "step-03",
+     "label": "Schedule dewatering to spread the return load across the day"
+    },
+    {
+     "id": "step-04",
+     "label": "Consider equalizing centrate and returning it at a controlled rate"
+    },
+    {
+     "id": "step-05",
+     "label": "Monitor aeration basin ammonia and oxygen demand during return periods"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The sidestream load is quantified before it is managed, scheduling and equalization spread the impact, and the load enters the plant balance."
+  },
+  {
+   "id": "c3ww-process28",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for recovering denitrification after an aeration carryover problem.",
+   "topicId": "process-denitrification-recovery",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: high dissolved oxygen in internal recycle suppressing anoxic zone performance.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Track nitrate removal recovery over several days"
+    },
+    {
+     "id": "step-02",
+     "label": "Reduce final aerobic zone oxygen setpoint to limit carryover"
+    },
+    {
+     "id": "step-04",
+     "label": "Confirm anoxic zone oxidation reduction potential returns to the denitrifying range"
+    },
+    {
+     "id": "step-03",
+     "label": "Check recycle pump operation for air entrainment or excess turbulence"
+    },
+    {
+     "id": "step-01",
+     "label": "Measure dissolved oxygen in the internal recycle stream and anoxic zone"
+    },
+    {
+     "id": "step-06",
+     "label": "Add the carryover check to the routine nutrient removal rounds"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Carryover is measured at the recycle stream first, the aerobic setpoint is the main lever, and the check becomes routine once proven."
+  },
+  {
+   "id": "c3ww-process29",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for phosphorus chemical trim optimization.",
+   "topicId": "process-phosphorus-trim-optimization",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: metal salt fed for phosphorus trim, sludge production and chemical cost rising.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Monitor sludge production and alkalinity for chemical side effects"
+    },
+    {
+     "id": "step-02",
+     "label": "Calculate the chemical dose from the target effluent phosphorus and the supplier ratio"
+    },
+    {
+     "id": "step-06",
+     "label": "Set the dose control basis and review it with load changes monthly"
+    },
+    {
+     "id": "step-04",
+     "label": "Trim dose in steps while confirming effluent phosphorus holds"
+    },
+    {
+     "id": "step-03",
+     "label": "Check mixing and reaction time at the injection point"
+    },
+    {
+     "id": "step-01",
+     "label": "Measure phosphorus entering the chemical trim point across the day"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Load based dosing and good mixing come before trimming, side effects are watched as dose falls, and the basis is reviewed with load."
+  },
+  {
+   "id": "c3ww-process30",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for evaluating a biological nutrient removal optimization trial.",
+   "topicId": "process-bnr-trial-evaluation",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: month long trial of new recycle and aeration settings complete, results to be judged.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Check sludge settleability and solids production for unintended effects"
+    },
+    {
+     "id": "step-06",
+     "label": "Present the evaluation and recommendation to the overall responsible operator"
+    },
+    {
+     "id": "step-05",
+     "label": "Decide whether to adopt, modify, or abandon the trial settings"
+    },
+    {
+     "id": "step-02",
+     "label": "Normalize results for flow, load, and temperature differences"
+    },
+    {
+     "id": "step-03",
+     "label": "Compare energy and chemical use between the two periods"
+    },
+    {
+     "id": "step-01",
+     "label": "Compile effluent nitrogen and phosphorus results for the trial and baseline periods"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Results are normalized before comparison so the trial is judged fairly, side effects are checked, and the decision is presented with evidence."
+  },
+  {
+   "id": "c3ww-process31",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a secondary clarifier performance evaluation.",
+   "topicId": "process-clarifier-performance-evaluation",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: clarifier suspected of limiting plant capacity, full evaluation planned.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Compare calculated loadings with the design and guideline ranges"
+    },
+    {
+     "id": "step-04",
+     "label": "Observe flow patterns for density currents, short circuiting, or uneven weir loading"
+    },
+    {
+     "id": "step-01",
+     "label": "Collect flow, return rate, and mixed liquor solids data for a representative period"
+    },
+    {
+     "id": "step-02",
+     "label": "Measure blanket depths at several points and times of day"
+    },
+    {
+     "id": "step-03",
+     "label": "Calculate surface overflow rate and solids loading rate"
+    },
+    {
+     "id": "step-06",
+     "label": "Recommend operational or physical changes based on the findings"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Operating data and loadings are established before flow patterns are interpreted, comparison with design frames the findings, and recommendations follow evidence."
+  },
+  {
+   "id": "c3ww-process32",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for managing a rising sludge blanket during peak flow.",
+   "topicId": "process-blanket-peak-management",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: blanket rising toward the weirs as evening peak flow arrives.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Reduce solids inventory stress by checking wasting is not overdue"
+    },
+    {
+     "id": "step-06",
+     "label": "Return the return rate to normal in steps as the blanket falls"
+    },
+    {
+     "id": "step-03",
+     "label": "Check return pump capacity and return line for restrictions"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm blanket depth trend with repeated measurements"
+    },
+    {
+     "id": "step-05",
+     "label": "Monitor effluent solids as the peak passes"
+    },
+    {
+     "id": "step-02",
+     "label": "Increase return sludge rate in a step matched to the flow increase"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The trend is confirmed before the rate changes, pump capacity is verified as a possible limit, and step down waits for the blanket to fall."
+  },
+  {
+   "id": "c3ww-process33",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a clarifier stress test to find the solids flux limit.",
+   "topicId": "process-clarifier-stress-test",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: controlled test raising solids loading to one clarifier.",
+   "cards": [
+    {
+     "id": "step-06",
+     "label": "Report the practical solids loading limit with the test conditions"
+    },
+    {
+     "id": "step-03",
+     "label": "Hold each loading step long enough for the blanket to stabilize"
+    },
+    {
+     "id": "step-02",
+     "label": "Shift a measured share of flow and solids to the test clarifier"
+    },
+    {
+     "id": "step-05",
+     "label": "Stop the test when blanket rise accelerates or effluent quality degrades"
+    },
+    {
+     "id": "step-01",
+     "label": "Establish baseline blanket and effluent quality at normal loading"
+    },
+    {
+     "id": "step-04",
+     "label": "Record blanket depth and effluent solids at each step"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Baseline and staged loading make the limit credible, blanket stability defines each step, and the test stops before effluent is harmed."
+  },
+  {
+   "id": "c3ww-process34",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for correcting denitrification rising sludge in a secondary clarifier.",
+   "topicId": "process-rising-sludge-correction",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: sludge clumps rising to the clarifier surface with gas bubbles.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Review anoxic zone performance so nitrate reaching the clarifier is reduced"
+    },
+    {
+     "id": "step-05",
+     "label": "Break up surface accumulations so they do not leave with the effluent"
+    },
+    {
+     "id": "step-03",
+     "label": "Increase return rate or withdrawal to shorten blanket detention"
+    },
+    {
+     "id": "step-06",
+     "label": "Verify the surface clears and blanket detention stays short"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm rising sludge is gas driven by observing bubbles in a settled sample"
+    },
+    {
+     "id": "step-02",
+     "label": "Check clarifier blanket detention time and sludge withdrawal frequency"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Gas driven rising is distinguished from bulking first, blanket detention is shortened as the direct fix, and nitrate reduction addresses the source."
+  },
+  {
+   "id": "c3ww-process35",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for optimizing clarifier sludge withdrawal scheduling.",
+   "topicId": "process-withdrawal-scheduling",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: intermittent withdrawal causing blanket swings in a large clarifier.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Identify the withdrawal pattern that holds the blanket most steady"
+    },
+    {
+     "id": "step-05",
+     "label": "Verify blanket stability through a full peak flow cycle"
+    },
+    {
+     "id": "step-03",
+     "label": "Check return sludge concentration for signs of over or under withdrawal"
+    },
+    {
+     "id": "step-06",
+     "label": "Record the schedule and the blanket target in the operating log"
+    },
+    {
+     "id": "step-04",
+     "label": "Adjust pump cycle timers to the steadier pattern"
+    },
+    {
+     "id": "step-01",
+     "label": "Log blanket depth against withdrawal pump run times for several days"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The current pattern is proven from logs before timers change, concentration guards against over withdrawal, and a full peak cycle verifies the schedule."
+  },
+  {
+   "id": "c3ww-process36",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for investigating clarifier effluent solids spikes.",
+   "topicId": "process-clarifier-solids-spikes",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: effluent suspended solids spiking at predictable times of day.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "Align spike times with flow, return rate, and wasting records"
+    },
+    {
+     "id": "step-03",
+     "label": "Check for hydraulic surges from pump cycling or sidestream returns"
+    },
+    {
+     "id": "step-05",
+     "label": "Correct the surge source or rebalance return timing"
+    },
+    {
+     "id": "step-06",
+     "label": "Confirm spikes are gone over several comparable days"
+    },
+    {
+     "id": "step-04",
+     "label": "Observe the clarifier surface for density current patterns at the spike time"
+    },
+    {
+     "id": "step-02",
+     "label": "Measure blanket depth through the spike period"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Records alignment points to the cause before field work, surge sources are corrected at origin, and comparable days prove the fix."
+  },
+  {
+   "id": "c3ww-process37",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for preparing a clarifier for internal inspection.",
+   "topicId": "process-clarifier-inspection-prep",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: clarifier to be drained and entered for drive and weir inspection.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "Schedule the inspection for a low flow period and confirm remaining clarifiers can take the load"
+    },
+    {
+     "id": "step-04",
+     "label": "Wash down surfaces and ventilate the tank"
+    },
+    {
+     "id": "step-03",
+     "label": "Withdraw sludge and drain the tank to the plant inlet"
+    },
+    {
+     "id": "step-06",
+     "label": "Inspect drive, scrapers, weirs, and baffles against the checklist"
+    },
+    {
+     "id": "step-05",
+     "label": "Complete confined space entry procedures and atmospheric testing"
+    },
+    {
+     "id": "step-02",
+     "label": "Transfer flow to the other clarifiers and close the inlet gate"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Capacity is confirmed before flow moves, draining and washdown precede entry procedures, and the inspection follows the checklist last."
+  },
+  {
+   "id": "c3ww-process38",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for balancing flow split to parallel secondary clarifiers.",
+   "topicId": "process-clarifier-flow-split",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: parallel clarifiers with uneven blankets and effluent quality.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "Measure flow to each clarifier using weir levels or portable metering"
+    },
+    {
+     "id": "step-02",
+     "label": "Measure blanket depth and effluent solids from each clarifier"
+    },
+    {
+     "id": "step-05",
+     "label": "Fine tune the split for even blankets rather than only even flow"
+    },
+    {
+     "id": "step-06",
+     "label": "Record final gate positions as the balanced baseline"
+    },
+    {
+     "id": "step-03",
+     "label": "Adjust splitter gates or valves in small increments toward even flow"
+    },
+    {
+     "id": "step-04",
+     "label": "Allow blankets to respond over several hours and remeasure"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Flow and performance are both measured because even flow alone may not balance blankets, increments need response time, and the baseline is recorded."
+  },
+  {
+   "id": "c3ww-process39",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for responding to clarifier drive torque alarms.",
+   "topicId": "process-clarifier-drive-alarm",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: high torque alarm on a circular clarifier drive during winter operation.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Check sludge withdrawal operation for a plugged or failed line"
+    },
+    {
+     "id": "step-04",
+     "label": "Reduce loading to the clarifier if accumulation is confirmed"
+    },
+    {
+     "id": "step-06",
+     "label": "Reset the alarm only after the cause is corrected and log the event"
+    },
+    {
+     "id": "step-05",
+     "label": "Clear the obstruction or arrange drive inspection by maintenance"
+    },
+    {
+     "id": "step-02",
+     "label": "Inspect the clarifier for ice, debris, or heavy sludge accumulation"
+    },
+    {
+     "id": "step-01",
+     "label": "Check the alarm history for pattern and time of onset"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "History and inspection find the cause before load is cut, the alarm is reset only after correction, and the event is logged for follow up."
+  }
+ ],
+ "missions": [
+  {
+   "id": "c3ww-mission41",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 41: The Digester Vs Loading Shift",
+   "tasks": [
+    {
+     "taskId": "c3ww-error60",
+     "revision": "r1",
+     "occurrenceId": "m41-t1"
+    },
+    {
+     "taskId": "c3ww-process01",
+     "revision": "r1",
+     "occurrenceId": "m41-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3ww-mission42",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 42: The Process Winter Ammonia Response Shift",
+   "tasks": [
+    {
+     "taskId": "c3ww-process02",
+     "revision": "r1",
+     "occurrenceId": "m42-t1"
+    },
+    {
+     "taskId": "c3ww-error61",
+     "revision": "r1",
+     "occurrenceId": "m42-t2"
+    },
+    {
+     "taskId": "c3ww-error62",
+     "revision": "r1",
+     "occurrenceId": "m42-t3"
+    }
+   ]
+  },
+  {
+   "id": "c3ww-mission43",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 43: The Digestion Volatile Solids Shift",
+   "tasks": [
+    {
+     "taskId": "c3ww-error63",
+     "revision": "r1",
+     "occurrenceId": "m43-t1"
+    },
+    {
+     "taskId": "c3ww-process03",
+     "revision": "r1",
+     "occurrenceId": "m43-t2"
+    },
+    {
+     "taskId": "c3ww-error64",
+     "revision": "r1",
+     "occurrenceId": "m43-t3"
+    },
+    {
+     "taskId": "c3ww-error65",
+     "revision": "r1",
+     "occurrenceId": "m43-t4"
+    }
+   ]
+  },
+  {
+   "id": "c3ww-mission44",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 44: The Process Srt Optimization Trains Shift",
+   "tasks": [
+    {
+     "taskId": "c3ww-process04",
+     "revision": "r1",
+     "occurrenceId": "m44-t1"
+    },
+    {
+     "taskId": "c3ww-error66",
+     "revision": "r1",
+     "occurrenceId": "m44-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3ww-mission45",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 45: The Digestion Volatile Solids Shift",
+   "tasks": [
+    {
+     "taskId": "c3ww-error67",
+     "revision": "r1",
+     "occurrenceId": "m45-t1"
+    },
+    {
+     "taskId": "c3ww-process05",
+     "revision": "r1",
+     "occurrenceId": "m45-t2"
+    },
+    {
+     "taskId": "c3ww-error68",
+     "revision": "r1",
+     "occurrenceId": "m45-t3"
+    }
+   ]
+  },
+  {
+   "id": "c3ww-mission46",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 46: The Process Toxic Event Recovery Shift",
+   "tasks": [
+    {
+     "taskId": "c3ww-process06",
+     "revision": "r1",
+     "occurrenceId": "m46-t1"
+    },
+    {
+     "taskId": "c3ww-error69",
+     "revision": "r1",
+     "occurrenceId": "m46-t2"
+    },
+    {
+     "taskId": "c3ww-error70",
+     "revision": "r1",
+     "occurrenceId": "m46-t3"
+    },
+    {
+     "taskId": "c3ww-error71",
+     "revision": "r1",
+     "occurrenceId": "m46-t4"
+    }
+   ]
+  },
+  {
+   "id": "c3ww-mission47",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 47: The Dewatering Capture Shift",
+   "tasks": [
+    {
+     "taskId": "c3ww-error72",
+     "revision": "r1",
+     "occurrenceId": "m47-t1"
+    },
+    {
+     "taskId": "c3ww-process07",
+     "revision": "r1",
+     "occurrenceId": "m47-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3ww-mission48",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 48: The Process Svi Diagnosis Shift",
+   "tasks": [
+    {
+     "taskId": "c3ww-process08",
+     "revision": "r1",
+     "occurrenceId": "m48-t1"
+    },
+    {
+     "taskId": "c3ww-error73",
+     "revision": "r1",
+     "occurrenceId": "m48-t2"
+    },
+    {
+     "taskId": "c3ww-error74",
+     "revision": "r1",
+     "occurrenceId": "m48-t3"
+    }
+   ]
+  },
+  {
+   "id": "c3ww-mission49",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 49: The Dewatering Cake Mass Shift",
+   "tasks": [
+    {
+     "taskId": "c3ww-error75",
+     "revision": "r1",
+     "occurrenceId": "m49-t1"
+    },
+    {
+     "taskId": "c3ww-process09",
+     "revision": "r1",
+     "occurrenceId": "m49-t2"
+    },
+    {
+     "taskId": "c3ww-error76",
+     "revision": "r1",
+     "occurrenceId": "m49-t3"
+    },
+    {
+     "taskId": "c3ww-error77",
+     "revision": "r1",
+     "occurrenceId": "m49-t4"
+    }
+   ]
+  },
+  {
+   "id": "c3ww-mission50",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 50: The Process Loading Trial Shift",
+   "tasks": [
+    {
+     "taskId": "c3ww-process10",
+     "revision": "r1",
+     "occurrenceId": "m50-t1"
+    },
+    {
+     "taskId": "c3ww-error78",
+     "revision": "r1",
+     "occurrenceId": "m50-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3ww-mission51",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 51: The Dewatering Cake Mass Shift",
+   "tasks": [
+    {
+     "taskId": "c3ww-error79",
+     "revision": "r1",
+     "occurrenceId": "m51-t1"
+    },
+    {
+     "taskId": "c3ww-process100",
+     "revision": "r1",
+     "occurrenceId": "m51-t2"
+    },
+    {
+     "taskId": "c3ww-error80",
+     "revision": "r1",
+     "occurrenceId": "m51-t3"
+    }
+   ]
+  },
+  {
+   "id": "c3ww-mission52",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 52: The Process Nocardia Foam Control Shift",
+   "tasks": [
+    {
+     "taskId": "c3ww-process11",
+     "revision": "r1",
+     "occurrenceId": "m52-t1"
+    },
+    {
+     "taskId": "c3ww-error81",
+     "revision": "r1",
+     "occurrenceId": "m52-t2"
+    },
+    {
+     "taskId": "c3ww-error82",
+     "revision": "r1",
+     "occurrenceId": "m52-t3"
+    },
+    {
+     "taskId": "c3ww-error83",
+     "revision": "r1",
+     "occurrenceId": "m52-t4"
+    }
+   ]
+  },
+  {
+   "id": "c3ww-mission53",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 53: The Nitrification Alkalinity Shift",
+   "tasks": [
+    {
+     "taskId": "c3ww-error84",
+     "revision": "r1",
+     "occurrenceId": "m53-t1"
+    },
+    {
+     "taskId": "c3ww-process12",
+     "revision": "r1",
+     "occurrenceId": "m53-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3ww-mission54",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 54: The Process Low Load Management Shift",
+   "tasks": [
+    {
+     "taskId": "c3ww-process13",
+     "revision": "r1",
+     "occurrenceId": "m54-t1"
+    },
+    {
+     "taskId": "c3ww-error85",
+     "revision": "r1",
+     "occurrenceId": "m54-t2"
+    },
+    {
+     "taskId": "c3ww-error86",
+     "revision": "r1",
+     "occurrenceId": "m54-t3"
+    }
+   ]
+  },
+  {
+   "id": "c3ww-mission55",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 55: The Nitrification Alkalinity Shift",
+   "tasks": [
+    {
+     "taskId": "c3ww-error87",
+     "revision": "r1",
+     "occurrenceId": "m55-t1"
+    },
+    {
+     "taskId": "c3ww-process14",
+     "revision": "r1",
+     "occurrenceId": "m55-t2"
+    },
+    {
+     "taskId": "c3ww-error88",
+     "revision": "r1",
+     "occurrenceId": "m55-t3"
+    },
+    {
+     "taskId": "c3ww-error89",
+     "revision": "r1",
+     "occurrenceId": "m55-t4"
+    }
+   ]
+  },
+  {
+   "id": "c3ww-mission56",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 56: The Process Selector Zone Review Shift",
+   "tasks": [
+    {
+     "taskId": "c3ww-process15",
+     "revision": "r1",
+     "occurrenceId": "m56-t1"
+    },
+    {
+     "taskId": "c3ww-error90",
+     "revision": "r1",
+     "occurrenceId": "m56-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3ww-mission57",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 57: The Phosphorus Chemical Dose Shift",
+   "tasks": [
+    {
+     "taskId": "c3ww-error91",
+     "revision": "r1",
+     "occurrenceId": "m57-t1"
+    },
+    {
+     "taskId": "c3ww-process16",
+     "revision": "r1",
+     "occurrenceId": "m57-t2"
+    },
+    {
+     "taskId": "c3ww-error92",
+     "revision": "r1",
+     "occurrenceId": "m57-t3"
+    }
+   ]
+  },
+  {
+   "id": "c3ww-mission58",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 58: The Process Internal Recycle Tuning Shift",
+   "tasks": [
+    {
+     "taskId": "c3ww-process17",
+     "revision": "r1",
+     "occurrenceId": "m58-t1"
+    },
+    {
+     "taskId": "c3ww-error93",
+     "revision": "r1",
+     "occurrenceId": "m58-t2"
+    },
+    {
+     "taskId": "c3ww-error94",
+     "revision": "r1",
+     "occurrenceId": "m58-t3"
+    },
+    {
+     "taskId": "c3ww-error95",
+     "revision": "r1",
+     "occurrenceId": "m58-t4"
+    }
+   ]
+  },
+  {
+   "id": "c3ww-mission59",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 59: The Mass Balance Shift",
+   "tasks": [
+    {
+     "taskId": "c3ww-error96",
+     "revision": "r1",
+     "occurrenceId": "m59-t1"
+    },
+    {
+     "taskId": "c3ww-process18",
+     "revision": "r1",
+     "occurrenceId": "m59-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3ww-mission60",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 60: The Process Nitrification Loss Response Shift",
+   "tasks": [
+    {
+     "taskId": "c3ww-process19",
+     "revision": "r1",
+     "occurrenceId": "m60-t1"
+    },
+    {
+     "taskId": "c3ww-error97",
+     "revision": "r1",
+     "occurrenceId": "m60-t2"
+    },
+    {
+     "taskId": "c3ww-error98",
+     "revision": "r1",
+     "occurrenceId": "m60-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Advanced wastewater process control chapters (activated sludge control, nutrient removal, digestion, solids processing)"
+  },
+  {
+   "id": "epa-municipal-wastewater",
+   "title": "US EPA, Municipal Wastewater resources",
+   "locator": "https://www.epa.gov/npdes/municipal-wastewater"
+  },
+  {
+   "id": "epa-process-control",
+   "title": "US EPA, Process Control and nutrient removal guidance for municipal wastewater",
+   "locator": "Advanced activated sludge and nutrient removal process control background"
+  },
+  {
+   "id": "owwco-exam-prep",
+   "title": "OWWCO, Exam preparation resources",
+   "locator": "https://owwco.ca/preparing-for-your-exam/"
+  },
+  {
+   "id": "wpi-ntk-2025",
+   "title": "WPI, 2025 Need-to-Know Criteria, Wastewater Treatment Class III",
+   "locator": "https://gowpi.org/services/2025-need-to-know-criteria/"
+  },
+  {
+   "id": "ont-reg-129-04",
+   "title": "Ontario Regulation 129/04, Licensing of Sewage Works Operators",
+   "locator": "https://www.ontario.ca/laws/regulation/04129"
+  },
+  {
+   "id": "ccohs-safety",
+   "title": "CCOHS, OSH Answers (confined spaces, hydrogen sulfide, lockout)",
+   "locator": "https://www.ccohs.ca/oshanswers/"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "205793ab659e318fc8a0b80a259b72eaa24fb1a5ca23252e4d431533b7078e09",
+  "taskReceipts": [
+   {
+    "taskId": "c3ww-error60",
+    "revision": "r1",
+    "sha256": "10af9cb3328eb32000997fc453331c441c98612e6eefec3d340e5f4a265f7d89",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error61",
+    "revision": "r1",
+    "sha256": "04028305af5c1ac79596961f0d7f1abc065e639edcb54f32ae67956e1b55f397",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error62",
+    "revision": "r1",
+    "sha256": "40586a4cae7105001455e5be0ecaf4a858738d4b821c09ffaeafa013ae6fbeff",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error63",
+    "revision": "r1",
+    "sha256": "eb350950e834a053bc5a46550b987659bc0ae274cd5c2e7f2fd42bef5215b70f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error64",
+    "revision": "r1",
+    "sha256": "c5d9bde4b98ab91536c0f023885ddd32a793d8de52540d7d5ab4174d0e13716d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error65",
+    "revision": "r1",
+    "sha256": "6be881ff844ea6d09de795959e5b31cd13309fb5e26515bc7fa71b6e89a95dfd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error66",
+    "revision": "r1",
+    "sha256": "232fc8cce52a85584bc180a028ae2c279af9e0141cc63dfae9addd330dd8c8b8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error67",
+    "revision": "r1",
+    "sha256": "0c8ca21774375ba63fedaed43444674f8f0e1b507a7cb04fa8e729d2527c1189",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error68",
+    "revision": "r1",
+    "sha256": "5424acfb85e69707890fba3088cc161ae0cc46a2a9aa3be17695f66fcf12529f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error69",
+    "revision": "r1",
+    "sha256": "d0b3708511a1130589df6b56136c84823a3cefc8aa57e444b681bef6ea718526",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error70",
+    "revision": "r1",
+    "sha256": "c48024a59c8f236d8392c411edeea8543a399257dbca102ea6ae1e8cb1452e4e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error71",
+    "revision": "r1",
+    "sha256": "924463ab49c0baf1589050102002a557ce46ac7c12d67847ecde7d942a01a518",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error72",
+    "revision": "r1",
+    "sha256": "42855ba7ec5a95398781f87bf93e15ec64b280a24824081a01a1d8409e25c0e4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error73",
+    "revision": "r1",
+    "sha256": "11f08b2be5f781a15baa2824818d7506ff45cf80e03b21b40134f1f861094e30",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error74",
+    "revision": "r1",
+    "sha256": "572a65de8d8740d411bf67861dc8082aa19d46a7695a578232ac465bbfd2eea2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error75",
+    "revision": "r1",
+    "sha256": "7533278463478b35779fa83e0ead8139ae2e94147da387ef1d6b539570ec38b3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error76",
+    "revision": "r1",
+    "sha256": "1309514e9d6abe73f9598560b0d3ebd59eed3802515cfaf3929c871977cf9ea3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error77",
+    "revision": "r1",
+    "sha256": "a4cd1668b434fb77a91910b84bdd03a6b19a8b8fd85297e9bbc207980c758133",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error78",
+    "revision": "r1",
+    "sha256": "0ceee20b101c1ab6b09ccff6d9525644abae5e9281f4ff6e2f5ecf16e953d6ee",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error79",
+    "revision": "r1",
+    "sha256": "ccf5b52485b7e0c82905c14719cdb5bb69ea4d06bd6af93f28144014482d245b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error80",
+    "revision": "r1",
+    "sha256": "220b6ecfaa8de94e164972349bcad77fcb28a69ac52f72254e659427ba3dc7bd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error81",
+    "revision": "r1",
+    "sha256": "b8c9b1762d8de2769ca924e2f6864c52325b9b502c07b3d8794862f007f9fd5b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error82",
+    "revision": "r1",
+    "sha256": "48abecd7dd3f999aa5de0ef902a84c1e4d787c0f667a20bc7ba152e2af30e8ce",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error83",
+    "revision": "r1",
+    "sha256": "766f79c3a2bb846814dc269b2495b60cbf39b16db57a14371ccac12f9edb096c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error84",
+    "revision": "r1",
+    "sha256": "e767521173cbcabf8f5d879a8e771f6a08935e845d7e59a3dd9a33d106ca9b2b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error85",
+    "revision": "r1",
+    "sha256": "a04aed9d6c1287e2a88d868a5b69f6cfc8d71db17ebbd5eb424a42a0e5bcfc6e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error86",
+    "revision": "r1",
+    "sha256": "9cda5d937fee4251af184985c5f1ea221696375cc664afed7e8accf485eaeb0d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error87",
+    "revision": "r1",
+    "sha256": "388393f9a1384f20e427b1c0d6fd7cd6792bbee2f8aba601e3ce99479d8b3a8a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error88",
+    "revision": "r1",
+    "sha256": "64ea0f7e8957f63fab35fc15545b7b58046da2af718a8d559717329d32decbe7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error89",
+    "revision": "r1",
+    "sha256": "7dca01f8212e5cc8bb4a6e85f18940b2bbef0c57df50ad9478d3dd156492f5b2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error90",
+    "revision": "r1",
+    "sha256": "a9796137e5e4d0da46d77c3071e053183cf7bf3bf794769859d546b8401213e7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error91",
+    "revision": "r1",
+    "sha256": "9dd4e9e4556e088510c9b9cae9f0b02de0fbf3f6ca7136e28313e319ef9b7af1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error92",
+    "revision": "r1",
+    "sha256": "1e657baad85a135d64eeff838d36f217eb8a8d39bce125ebadacd2d8e2258f22",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error93",
+    "revision": "r1",
+    "sha256": "3b64d7f70688fc81a989a31e4639ec07261922f54b69ea9595ab39a2bf9decb8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error94",
+    "revision": "r1",
+    "sha256": "af982616dd8c25cccba24d85f6f26da69d5042d1ee05701f14e550debd5cf739",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error95",
+    "revision": "r1",
+    "sha256": "ab48210a06bde941cfdaafbbc1651cd404631e7efdffc1667a8b0a5ec16c0df8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error96",
+    "revision": "r1",
+    "sha256": "2aea6088852d0774622cf70d20de70e62f97ae51ba29a699e0668fb355c47762",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error97",
+    "revision": "r1",
+    "sha256": "2d9038928b2b93099a1733a398a341af7f19af6fe32689b25972bd6097c61dde",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error98",
+    "revision": "r1",
+    "sha256": "4c7b233e12f67a962f1c03f2fbcc4441b5515d5071f8808e7caebb1ab55b9cc5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error99",
+    "revision": "r1",
+    "sha256": "e354e69227eac724306e3b659ae255f579e3f8d681d74d657f89f5edd2b46782",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-process01",
+    "revision": "r1",
+    "sha256": "b3749c53d1417fda464f3f31f9861a10146341b1046025c19fe714cd6b6f26ce",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-process02",
+    "revision": "r1",
+    "sha256": "f377f2def4b6aea4d560b17a406a014a44e80f10b63ad8e1cd6a8feb1f0cbee3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-process03",
+    "revision": "r1",
+    "sha256": "1f49363d604c6134d81c78c75a56ade9c43cd2eb51cd03dd58a7f82753b896d5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-process04",
+    "revision": "r1",
+    "sha256": "c9fae6a0670d35329a9285da4b77b1d94306c74246d403a28ca70d0123451664",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-process05",
+    "revision": "r1",
+    "sha256": "6a6ee5c1843547ae372dc5723e95b8c82badc460479b98ae99e6da1847b737a5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-process06",
+    "revision": "r1",
+    "sha256": "90f8bfd873b4915a86f8443418b392263fda6ec38b5ac11ff1aedce0909b3b73",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-process07",
+    "revision": "r1",
+    "sha256": "ce38e43a2a8ca2900ed71f9979cc7ebd788a82279ec666c210e0ed93e346454c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-process08",
+    "revision": "r1",
+    "sha256": "7b0d970e71159444d4e105b6bf1596c4e55754c0dc6996949694b64bdb5fca31",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-process09",
+    "revision": "r1",
+    "sha256": "e561176d928dc2b46edddd701529b5a6b0c5f71184a534b9956ff8754e0fe313",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-process10",
+    "revision": "r1",
+    "sha256": "3b61c451626ace3830d424d74a663972aaeb95458b094c3188f89814a183aa94",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-process100",
+    "revision": "r1",
+    "sha256": "58366179b191e694110d6a607f635ba2534abdec662d580926c75304fd1539f4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-process11",
+    "revision": "r1",
+    "sha256": "b2a205efc96b70c5e8c6792f54acf1fb89a10b03d9b9abbb4f8430b3e5202521",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-process12",
+    "revision": "r1",
+    "sha256": "f5810e168ee9c6de7a01541d54e776d86cce43d15cdb0566b48caeb5fa10ce71",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-process13",
+    "revision": "r1",
+    "sha256": "3bf324d9931ed44857ea7bdcc69fd80d58623ed015bfb5555d056831d441f531",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-process14",
+    "revision": "r1",
+    "sha256": "5320674886f72614510937e60ec391f6c0e1b45a2589b80227f0a07020ae8a2d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-process15",
+    "revision": "r1",
+    "sha256": "dea22a9d4c0dbe2a8a0e09644273e447d5cd94437689bc6af9f90453b0d52a80",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-process16",
+    "revision": "r1",
+    "sha256": "96b4fe5cbe57af40c04d33ef9d67a1eaa006f6a646af5cb6a5e1f85f17f82712",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-process17",
+    "revision": "r1",
+    "sha256": "98900a8ca35d20e20a67eebca2e8ed6cb945af223b7fcb07a87602c4e8ce6059",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-process18",
+    "revision": "r1",
+    "sha256": "6ed6ae7f3b0928475d30c8cbe5956498b887977339d58686821556795d26d78d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-process19",
+    "revision": "r1",
+    "sha256": "a5ae01df7df91e1f4dda96eeba85b3de0bad1c22b2c1fd5626dc73037907c04b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-process20",
+    "revision": "r1",
+    "sha256": "4a5eea90c0da843a4ef00319ee8fb8626075fd10ad80c26347259787b179baee",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-process21",
+    "revision": "r1",
+    "sha256": "ca27482e2929cc34ef65fcb508e01e296ecea57c14ebeecb7818c29b506e4830",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-process22",
+    "revision": "r1",
+    "sha256": "262bdc145b1b7e40aab14498d1330be283097d67155966d97d4293092310b736",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-process23",
+    "revision": "r1",
+    "sha256": "032280b3e898a35e8edaad1a478fe6528f5b86156f568b4ed880014895c33a9d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-process24",
+    "revision": "r1",
+    "sha256": "cf53c8ad9c855fa5519d7210dcf8c13c10caae1699ebb598eb44aa66eb278601",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-process25",
+    "revision": "r1",
+    "sha256": "ed3be51b627637091a0a19844b8374ce2f14711050cde5989ecae8cd237051f4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-process26",
+    "revision": "r1",
+    "sha256": "da754003f4b061d3518e54c428b4d4da71081f41450e746196deba3244475697",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-process27",
+    "revision": "r1",
+    "sha256": "9b131970603e6f1d74ea6bfdee7d6f031255c3a30fe140e02ff1d22aaf65ca41",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-process28",
+    "revision": "r1",
+    "sha256": "bddd9fa0840ef9a2d2949e881ec4ee001f17114dd91afb9753d1c59b9d9b81ce",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-process29",
+    "revision": "r1",
+    "sha256": "1d2faffba4d5aaa6c73d0eed90f8fd676f4a28c3bfce1e9097e787cd4da03119",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-process30",
+    "revision": "r1",
+    "sha256": "07278783710b216852de45695163a3bbec6576ae8d2d5f09470639997a81ba68",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-process31",
+    "revision": "r1",
+    "sha256": "6da85315e89006e06b1c5c0b3fc65ceed92d6bf538b44763ebd51087d510b0ba",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-process32",
+    "revision": "r1",
+    "sha256": "155c43e8844982043d733a12e63f9d1dd02f848a72112549f147b492089268b6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-process33",
+    "revision": "r1",
+    "sha256": "9c4204228b2f3b8364c572cbf4d7086d59dcb419e9a4480c010a69fd20e52d4d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-process34",
+    "revision": "r1",
+    "sha256": "aabeb99a44743fc6095bf8ffbb3d484a0dcd389ea509241063dd81ad26e41741",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-process35",
+    "revision": "r1",
+    "sha256": "ec5e5708369d196bf16cba7a065ce5a04b33fe4479a585d60db39a57a453cfce",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-process36",
+    "revision": "r1",
+    "sha256": "559cdc6e49278bf5baad1fc10ca23eb78cf7366f05cbdbbd4f9b9ddb389b3edd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-process37",
+    "revision": "r1",
+    "sha256": "f7b2ecf5a20ee9ef05f9ebd98cdd45acb9e87472f39f2ff62e45413b211c4048",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-process38",
+    "revision": "r1",
+    "sha256": "e53b56bdc4e006e0992e211264a076d862ffbdcd35a9a40d251824bd4157d243",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-process39",
+    "revision": "r1",
+    "sha256": "50ac1dd831c4262fe59c47fee4019fefff0dab2b7eb54b29df56571305f1a3a3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "c3ww-mission41",
+    "revision": "r1",
+    "sha256": "7cfe0c5438560d1c47bc5b3e13f8fa009b9e536d97c8788e568a2980efc83b03"
+   },
+   {
+    "missionId": "c3ww-mission42",
+    "revision": "r1",
+    "sha256": "2bb0e4d3b874a4aa63f05d0d9823b4c77b9559c5cc2199a83508c69d6df2b2be"
+   },
+   {
+    "missionId": "c3ww-mission43",
+    "revision": "r1",
+    "sha256": "7d5b2ce6162596a60edcc833d42a4bf555fa56e4b9af522f7fd49141b7ff5bc0"
+   },
+   {
+    "missionId": "c3ww-mission44",
+    "revision": "r1",
+    "sha256": "da1d2a4fc2beedf0c7f7674c4cd34865d1ea887abaaabe28e0bb3704d86f9c05"
+   },
+   {
+    "missionId": "c3ww-mission45",
+    "revision": "r1",
+    "sha256": "619c5e4091a3b0f2b6640dd42a722c8f626a488a2b127a898488d598438dd577"
+   },
+   {
+    "missionId": "c3ww-mission46",
+    "revision": "r1",
+    "sha256": "0c630274ecc5848e9edf845365ea43ceb43db7842a099dfc1afdf3e4d79617f2"
+   },
+   {
+    "missionId": "c3ww-mission47",
+    "revision": "r1",
+    "sha256": "e64fd45b1953d52b0f637fda291adb7ceed6ec864e90d8a319c65b077c87764e"
+   },
+   {
+    "missionId": "c3ww-mission48",
+    "revision": "r1",
+    "sha256": "9ac22f1eb2f35ad20ab34dc038de75acaa63de6a45242338d19e6633c7758efd"
+   },
+   {
+    "missionId": "c3ww-mission49",
+    "revision": "r1",
+    "sha256": "86dbb28df9b05967899da7b2395eeeeb6461b99260ab6a5d21d5c0882d5cbe0e"
+   },
+   {
+    "missionId": "c3ww-mission50",
+    "revision": "r1",
+    "sha256": "b4d2344945c2b9da5dbe0a118efc2c1faffb407b18330c5613c94ebc64e6b38d"
+   },
+   {
+    "missionId": "c3ww-mission51",
+    "revision": "r1",
+    "sha256": "c5ce016ac76567ad43d8fda8ac1d3f96ac380860e8459fef877de1cf89bab7e1"
+   },
+   {
+    "missionId": "c3ww-mission52",
+    "revision": "r1",
+    "sha256": "540252b51df944d2bc76cd64e36b09d71f492de6a06896005066ad102ab79c9e"
+   },
+   {
+    "missionId": "c3ww-mission53",
+    "revision": "r1",
+    "sha256": "37b19928bfd872b2e424807db821564ec447a953adb22465ddda0308bf3c7218"
+   },
+   {
+    "missionId": "c3ww-mission54",
+    "revision": "r1",
+    "sha256": "b000a760a38fe8cd182ac6197246b89690326e027e11fbf03597fe6c930ccc89"
+   },
+   {
+    "missionId": "c3ww-mission55",
+    "revision": "r1",
+    "sha256": "71636dd78c7c2ebbeea991ee54479d229d488bca42d247eb8baa23b6c437db0c"
+   },
+   {
+    "missionId": "c3ww-mission56",
+    "revision": "r1",
+    "sha256": "365cf1967431c8dcbff433c0fb08b8a26633b1f680ec258678e0740f2ea158fd"
+   },
+   {
+    "missionId": "c3ww-mission57",
+    "revision": "r1",
+    "sha256": "8199981fe5fbb7f2dbcc6a790a18ddcd259d8d952bc7ebed5e7e94b443c1a1be"
+   },
+   {
+    "missionId": "c3ww-mission58",
+    "revision": "r1",
+    "sha256": "539282a0cc77dbbe6a183c1c49fa69de5c624c6df1182476791a9b7944e61a53"
+   },
+   {
+    "missionId": "c3ww-mission59",
+    "revision": "r1",
+    "sha256": "e1494a27285db41fd89a0320fedb03dbb3b3a999af5ff532379fec5ff47a01d8"
+   },
+   {
+    "missionId": "c3ww-mission60",
+    "revision": "r1",
+    "sha256": "80dcdb5d571e0299d67be6b5ead3498a6fde883edd660d32d2dd36fd466f1c67"
+   }
+  ]
+ }
+}

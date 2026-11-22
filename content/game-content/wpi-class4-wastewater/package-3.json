@@ -1,0 +1,4093 @@
+{
+ "courseKey": "wpi-class4-wastewater",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "wp4ww-error60",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biogas energy recovery calculation for the utility energy plan in Saskatchewan.",
+   "topicId": "biogas-energy",
+   "level": "class1",
+   "assumptions": "Fictional utility in Saskatchewan: biogas production = 5000 m3/d, methane fraction = 0.6 given in the energy study, energy factor = 10 kWh of heat per m3 of methane given in the study, generator efficiency = 0.35. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Methane volume = biogas volume * methane fraction, heat energy = methane volume * 10, electricity = heat energy * generator efficiency"
+    },
+    {
+     "id": "line2",
+     "label": "2. Methane volume = 5000 * 0.5 = 2500 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Heat energy = 2500 * 10 = 25000 kWh/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Methane volume = 5000 * 0.6 = 3000 m3/d",
+   "explanation": "Line 2 used a methane fraction of 0.5 instead of the study value of 0.6. The methane volume is 3000 m3/d."
+  },
+  {
+   "id": "wp4ww-error61",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biogas energy recovery calculation for the utility energy plan in Manitoba.",
+   "topicId": "biogas-energy",
+   "level": "class1",
+   "assumptions": "Fictional utility in Manitoba: biogas production = 8000 m3/d, methane fraction = 0.65 given in the energy study, energy factor = 10 kWh of heat per m3 of methane given in the study, generator efficiency = 0.3. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Methane volume = biogas volume * methane fraction, heat energy = methane volume * 10, electricity = heat energy * generator efficiency"
+    },
+    {
+     "id": "line2",
+     "label": "2. Methane volume = 8000 * 0.65 = 5200 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Heat energy = 8000 * 10 = 80000 kWh/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. Electricity = 80000 * 0.3 = 24000 kWh/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Heat energy = 5200 * 10 = 52000 kWh/d",
+   "explanation": "Line 3 applied the energy factor to the whole biogas volume instead of the methane volume. Only the methane carries the energy, 52000 kWh/d of heat and 15600 kWh/d of electricity."
+  },
+  {
+   "id": "wp4ww-error62",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biogas energy recovery calculation for the utility energy plan in British Columbia.",
+   "topicId": "biogas-energy",
+   "level": "class1",
+   "assumptions": "Fictional utility in British Columbia: biogas production = 6000 m3/d, methane fraction = 0.6 given in the energy study, energy factor = 10 kWh of heat per m3 of methane given in the study, generator efficiency = 0.4. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Methane volume = biogas volume * methane fraction, heat energy = methane volume * 10, electricity = heat energy * generator efficiency"
+    },
+    {
+     "id": "line2",
+     "label": "2. Methane volume = 6000 * 0.6 = 3600 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Heat energy = 3600 * 10 = 36000 kWh/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. Electricity = 36000 * 0.3 = 10800 kWh/d"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Electricity = 36000 * 0.4 = 14400 kWh/d",
+   "explanation": "Line 4 used a generator efficiency of 0.3 instead of the study value of 0.4. Electricity production is 14400 kWh/d."
+  },
+  {
+   "id": "wp4ww-error63",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biogas energy recovery calculation for the utility energy plan in Alberta.",
+   "topicId": "biogas-energy",
+   "level": "class1",
+   "assumptions": "Fictional utility in Alberta: biogas production = 10000 m3/d, methane fraction = 0.65 given in the energy study, energy factor = 10 kWh of heat per m3 of methane given in the study, generator efficiency = 0.3. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Methane volume = biogas volume * methane fraction, heat energy = methane volume * 10, electricity = heat energy * generator efficiency"
+    },
+    {
+     "id": "line2",
+     "label": "2. Methane volume = 10000 * 0.65 = 6700 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Heat energy = 6700 * 10 = 67000 kWh/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Methane volume = 10000 * 0.65 = 6500 m3/d",
+   "explanation": "Line 2 multiplied incorrectly. 10000 * 0.65 = 6500 m3/d, not 6700 m3/d."
+  },
+  {
+   "id": "wp4ww-error64",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biogas energy recovery calculation for the utility energy plan in Saskatchewan.",
+   "topicId": "biogas-energy",
+   "level": "class1",
+   "assumptions": "Fictional utility in Saskatchewan: biogas production = 4500 m3/d, methane fraction = 0.6 given in the energy study, energy factor = 10 kWh of heat per m3 of methane given in the study, generator efficiency = 0.35. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Methane volume = biogas volume * methane fraction, heat energy = methane volume * 10, electricity = heat energy * generator efficiency"
+    },
+    {
+     "id": "line2",
+     "label": "2. Methane volume = 4500 * 0.6 = 2700 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Heat energy = 2700 * 6 = 16200 kWh/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. Electricity = 16200 * 0.35 = 5670 kWh/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Heat energy = 2700 * 10 = 27000 kWh/d",
+   "explanation": "Line 3 used an energy factor of 6 instead of the study factor of 10 kWh per m3 of methane. Heat energy is 27000 kWh/d."
+  },
+  {
+   "id": "wp4ww-error65",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biogas energy recovery calculation for the utility energy plan in Manitoba.",
+   "topicId": "biogas-energy",
+   "level": "class1",
+   "assumptions": "Fictional utility in Manitoba: biogas production = 9000 m3/d, methane fraction = 0.6 given in the energy study, energy factor = 10 kWh of heat per m3 of methane given in the study, generator efficiency = 0.4. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Methane volume = biogas volume * methane fraction, heat energy = methane volume * 10, electricity = heat energy * generator efficiency"
+    },
+    {
+     "id": "line2",
+     "label": "2. Methane volume = 9000 * 0.6 = 5400 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Heat energy = 5400 * 10 = 54000 kWh/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. Electricity = 54000 * 0.4 = 22600 kWh/d"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Electricity = 54000 * 0.4 = 21600 kWh/d",
+   "explanation": "Line 4 multiplied incorrectly. 54000 * 0.4 = 21600 kWh/d, not 22600 kWh/d."
+  },
+  {
+   "id": "wp4ww-error66",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biogas utilization summary for a utility in Manitoba reporting to its board.",
+   "topicId": "biogas-energy",
+   "level": "class1",
+   "assumptions": "Fictional utility in Manitoba: biogas production = 6000 m3/d, utilization fraction = 0.8 given in the energy plan (the rest is flared). Used gas = production * utilization fraction, and flared gas = production - used gas. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Used biogas = production * utilization fraction, and flared biogas = production - used biogas"
+    },
+    {
+     "id": "line2",
+     "label": "2. Used biogas = 6000 * 0.8 = 4800 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Flared biogas = 4800 m3/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Flared biogas = 6000 - 4800 = 1200 m3/d",
+   "explanation": "Line 3 reported the used gas again instead of the flared remainder. Flaring is what is left, 1200 m3/d."
+  },
+  {
+   "id": "wp4ww-error67",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biogas utilization summary for a utility in British Columbia reporting to its board.",
+   "topicId": "biogas-energy",
+   "level": "class1",
+   "assumptions": "Fictional utility in British Columbia: biogas production = 7500 m3/d, utilization fraction = 0.8 given in the energy plan (the rest is flared). Used gas = production * utilization fraction, and flared gas = production - used gas. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Used biogas = production * utilization fraction, and flared biogas = production - used biogas"
+    },
+    {
+     "id": "line2",
+     "label": "2. Used biogas = 7500 * 0.7 = 5250 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Flared biogas = 7500 - 5250 = 2250 m3/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Used biogas = 7500 * 0.8 = 6000 m3/d",
+   "explanation": "Line 2 used a utilization fraction of 0.7 instead of the plan value of 0.8. Used gas is 6000 m3/d and flared gas is 1500 m3/d."
+  },
+  {
+   "id": "wp4ww-error68",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biogas utilization summary for a utility in Alberta reporting to its board.",
+   "topicId": "biogas-energy",
+   "level": "class1",
+   "assumptions": "Fictional utility in Alberta: biogas production = 8000 m3/d, utilization fraction = 0.75 given in the energy plan (the rest is flared). Used gas = production * utilization fraction, and flared gas = production - used gas. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Used biogas = production * utilization fraction, and flared biogas = production - used biogas"
+    },
+    {
+     "id": "line2",
+     "label": "2. Used biogas = 8000 * 0.75 = 6000 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Flared biogas = 8000 + 6000 = 14000 m3/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Flared biogas = 8000 - 6000 = 2000 m3/d",
+   "explanation": "Line 3 added the used gas instead of subtracting it. Flaring is the unused remainder, 2000 m3/d."
+  },
+  {
+   "id": "wp4ww-error69",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biogas utilization summary for a utility in Saskatchewan reporting to its board.",
+   "topicId": "biogas-energy",
+   "level": "class1",
+   "assumptions": "Fictional utility in Saskatchewan: biogas production = 5000 m3/d, utilization fraction = 0.9 given in the energy plan (the rest is flared). Used gas = production * utilization fraction, and flared gas = production - used gas. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Used biogas = production * utilization fraction, and flared biogas = production - used biogas"
+    },
+    {
+     "id": "line2",
+     "label": "2. Used biogas = 5000 * 0.9 = 4750 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Flared biogas = 5000 - 4750 = 250 m3/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Used biogas = 5000 * 0.9 = 4500 m3/d",
+   "explanation": "Line 2 multiplied incorrectly. 5000 * 0.9 = 4500 m3/d, not 4750 m3/d."
+  },
+  {
+   "id": "wp4ww-error70",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biogas utilization summary for a utility in Manitoba reporting to its board.",
+   "topicId": "biogas-energy",
+   "level": "class1",
+   "assumptions": "Fictional utility in Manitoba: biogas production = 9000 m3/d, utilization fraction = 0.8 given in the energy plan (the rest is flared). Used gas = production * utilization fraction, and flared gas = production - used gas. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Used biogas = production * utilization fraction, and flared biogas = production - used biogas"
+    },
+    {
+     "id": "line2",
+     "label": "2. Used biogas = 9000 * 0.8 = 7200 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Flared biogas = 9000 - 7200 = 2000 m3/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Flared biogas = 9000 - 7200 = 1800 m3/d",
+   "explanation": "Line 3 subtracted incorrectly. 9000 - 7200 = 1800 m3/d, not 2000 m3/d."
+  },
+  {
+   "id": "wp4ww-error71",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chemical program cost estimate for the annual budget of a utility in Alberta. Flow is 10000 m3/d.",
+   "topicId": "chemical-program-cost",
+   "level": "class1",
+   "assumptions": "Fictional utility in Alberta: Q = 10000 m3/d, alum dose = 20 mg/L for phosphorus removal, alum price = 2 dollars per kg given in the program budget, and a second chemical on file is priced at 4 dollars per kg. Annual mass uses 365 days. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily chemical mass = flow * dose / 1000, annual mass = daily mass * 365, and annual cost = annual mass * price per kg"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily mass = 10000 * 20 / 100 = 2000 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual mass = 2000 * 365 = 730000 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Daily mass = 10000 * 20 / 1000 = 200 kg/d",
+   "explanation": "Line 2 divided by 100 instead of 1000 in the mass conversion. The daily mass is 200 kg/d and the annual cost is 146000 dollars."
+  },
+  {
+   "id": "wp4ww-error72",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chemical program cost estimate for the annual budget of a utility in Saskatchewan. Flow is 12000 m3/d.",
+   "topicId": "chemical-program-cost",
+   "level": "class1",
+   "assumptions": "Fictional utility in Saskatchewan: Q = 12000 m3/d, alum dose = 25 mg/L for phosphorus removal, alum price = 2.5 dollars per kg given in the program budget, and a second chemical on file is priced at 4 dollars per kg. Annual mass uses 365 days. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily chemical mass = flow * dose / 1000, annual mass = daily mass * 365, and annual cost = annual mass * price per kg"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily mass = 12000 * 25 / 1000 = 300 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual mass = 300 * 360 = 108000 kg"
+    },
+    {
+     "id": "line4",
+     "label": "4. Annual cost = 108000 * 2.5 = 270000 dollars"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Annual mass = 300 * 365 = 109500 kg",
+   "explanation": "Line 3 used 360 days instead of 365 days. The annual mass is 109500 kg and the annual cost is 273750 dollars."
+  },
+  {
+   "id": "wp4ww-error73",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chemical program cost estimate for the annual budget of a utility in Manitoba. Flow is 8000 m3/d.",
+   "topicId": "chemical-program-cost",
+   "level": "class1",
+   "assumptions": "Fictional utility in Manitoba: Q = 8000 m3/d, alum dose = 30 mg/L for phosphorus removal, alum price = 1.5 dollars per kg given in the program budget, and a second chemical on file is priced at 4 dollars per kg. Annual mass uses 365 days. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily chemical mass = flow * dose / 1000, annual mass = daily mass * 365, and annual cost = annual mass * price per kg"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily mass = 8000 * 30 / 1000 = 240 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual mass = 240 * 365 = 87600 kg"
+    },
+    {
+     "id": "line4",
+     "label": "4. Annual cost = 87600 * 4 = 350400 dollars"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Annual cost = 87600 * 1.5 = 131400 dollars",
+   "explanation": "Line 4 used the 4 dollar price of the other chemical on file instead of the alum price of 1.5 dollars per kg. The annual cost is 131400 dollars."
+  },
+  {
+   "id": "wp4ww-error74",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chemical program cost estimate for the annual budget of a utility in British Columbia. Flow is 15000 m3/d.",
+   "topicId": "chemical-program-cost",
+   "level": "class1",
+   "assumptions": "Fictional utility in British Columbia: Q = 15000 m3/d, alum dose = 16 mg/L for phosphorus removal, alum price = 2 dollars per kg given in the program budget, and a second chemical on file is priced at 4 dollars per kg. Annual mass uses 365 days. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily chemical mass = flow * dose / 1000, annual mass = daily mass * 365, and annual cost = annual mass * price per kg"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily mass = 15000 * 16 / 1000 = 260 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual mass = 260 * 365 = 94900 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Daily mass = 15000 * 16 / 1000 = 240 kg/d",
+   "explanation": "Line 2 multiplied incorrectly. 15000 * 16 / 1000 = 240 kg/d, not 260 kg/d."
+  },
+  {
+   "id": "wp4ww-error75",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chemical program cost estimate for the annual budget of a utility in Alberta. Flow is 9000 m3/d.",
+   "topicId": "chemical-program-cost",
+   "level": "class1",
+   "assumptions": "Fictional utility in Alberta: Q = 9000 m3/d, alum dose = 40 mg/L for phosphorus removal, alum price = 1.25 dollars per kg given in the program budget, and a second chemical on file is priced at 4 dollars per kg. Annual mass uses 365 days. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily chemical mass = flow * dose / 1000, annual mass = daily mass * 365, and annual cost = annual mass * price per kg"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily mass = 9000 * 45 / 1000 = 405 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual mass = 405 * 365 = 147825 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Daily mass = 9000 * 40 / 1000 = 360 kg/d",
+   "explanation": "Line 2 used a dose of 45 mg/L instead of the program dose of 40 mg/L. The daily mass is 360 kg/d."
+  },
+  {
+   "id": "wp4ww-error76",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chemical program cost estimate for the annual budget of a utility in Saskatchewan. Flow is 20000 m3/d.",
+   "topicId": "chemical-program-cost",
+   "level": "class1",
+   "assumptions": "Fictional utility in Saskatchewan: Q = 20000 m3/d, alum dose = 12 mg/L for phosphorus removal, alum price = 2.5 dollars per kg given in the program budget, and a second chemical on file is priced at 4 dollars per kg. Annual mass uses 365 days. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily chemical mass = flow * dose / 1000, annual mass = daily mass * 365, and annual cost = annual mass * price per kg"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily mass = 20000 * 12 / 1000 = 240 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual mass = 240 * 365 = 87600 kg"
+    },
+    {
+     "id": "line4",
+     "label": "4. Annual cost = 87600 * 2.5 = 224000 dollars"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Annual cost = 87600 * 2.5 = 219000 dollars",
+   "explanation": "Line 4 multiplied incorrectly. 87600 * 2.5 = 219000 dollars, not 224000 dollars."
+  },
+  {
+   "id": "wp4ww-error77",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this total chemical program budget for a utility in Saskatchewan.",
+   "topicId": "chemical-program-cost",
+   "level": "class1",
+   "assumptions": "Fictional utility in Saskatchewan: annual chemical costs from the program budget are 120000 dollars for phosphorus removal, 80000 dollars for alkalinity supplement, and 50000 dollars for disinfection. The program total is the sum of the three. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Program total = phosphorus chemical + alkalinity chemical + disinfection chemical"
+    },
+    {
+     "id": "line2",
+     "label": "2. First two chemicals = 120000 + 80000 = 200000 dollars"
+    },
+    {
+     "id": "line3",
+     "label": "3. Program total = 200000 dollars"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Program total = 200000 + 50000 = 250000 dollars",
+   "explanation": "Line 3 forgot the disinfection chemical and its 50000 dollars. The program total is 250000 dollars."
+  },
+  {
+   "id": "wp4ww-error78",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this total chemical program budget for a utility in Manitoba.",
+   "topicId": "chemical-program-cost",
+   "level": "class1",
+   "assumptions": "Fictional utility in Manitoba: annual chemical costs from the program budget are 150000 dollars for phosphorus removal, 60000 dollars for alkalinity supplement, and 40000 dollars for disinfection. The program total is the sum of the three. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Program total = phosphorus chemical + alkalinity chemical + disinfection chemical"
+    },
+    {
+     "id": "line2",
+     "label": "2. First two chemicals = 150000 + 60000 = 220000 dollars"
+    },
+    {
+     "id": "line3",
+     "label": "3. Program total = 220000 + 40000 = 260000 dollars"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. First two chemicals = 150000 + 60000 = 210000 dollars",
+   "explanation": "Line 2 added incorrectly. 150000 + 60000 = 210000 dollars, so the program total is 250000 dollars."
+  },
+  {
+   "id": "wp4ww-error79",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this total chemical program budget for a utility in British Columbia.",
+   "topicId": "chemical-program-cost",
+   "level": "class1",
+   "assumptions": "Fictional utility in British Columbia: annual chemical costs from the program budget are 90000 dollars for phosphorus removal, 110000 dollars for alkalinity supplement, and 30000 dollars for disinfection. The program total is the sum of the three. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Program total = phosphorus chemical + alkalinity chemical + disinfection chemical"
+    },
+    {
+     "id": "line2",
+     "label": "2. First two chemicals = 90000 + 110000 = 200000 dollars"
+    },
+    {
+     "id": "line3",
+     "label": "3. Program total = 200000 + 30000 + 30000 = 260000 dollars"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Program total = 200000 + 30000 = 230000 dollars",
+   "explanation": "Line 3 counted the disinfection chemical twice. Counted once, the program total is 230000 dollars."
+  },
+  {
+   "id": "wp4ww-error80",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this total chemical program budget for a utility in Alberta.",
+   "topicId": "chemical-program-cost",
+   "level": "class1",
+   "assumptions": "Fictional utility in Alberta: annual chemical costs from the program budget are 200000 dollars for phosphorus removal, 75000 dollars for alkalinity supplement, and 25000 dollars for disinfection. The program total is the sum of the three. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Program total = phosphorus chemical + alkalinity chemical + disinfection chemical"
+    },
+    {
+     "id": "line2",
+     "label": "2. First two chemicals = 200000 - 75000 = 125000 dollars"
+    },
+    {
+     "id": "line3",
+     "label": "3. Program total = 125000 + 25000 = 150000 dollars"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. First two chemicals = 200000 + 75000 = 275000 dollars",
+   "explanation": "Line 2 subtracted the alkalinity chemical instead of adding it. All three chemicals add to the program, totalling 300000 dollars."
+  },
+  {
+   "id": "wp4ww-error81",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this total chemical program budget for a utility in Saskatchewan.",
+   "topicId": "chemical-program-cost",
+   "level": "class1",
+   "assumptions": "Fictional utility in Saskatchewan: annual chemical costs from the program budget are 135000 dollars for phosphorus removal, 45000 dollars for alkalinity supplement, and 60000 dollars for disinfection. The program total is the sum of the three. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Program total = phosphorus chemical + alkalinity chemical + disinfection chemical"
+    },
+    {
+     "id": "line2",
+     "label": "2. First two chemicals = 135000 + 45000 = 180000 dollars"
+    },
+    {
+     "id": "line3",
+     "label": "3. Program total = 180000 + 60000 = 245000 dollars"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Program total = 180000 + 60000 = 240000 dollars",
+   "explanation": "Line 3 added incorrectly. 180000 + 60000 = 240000 dollars, not 245000 dollars."
+  },
+  {
+   "id": "wp4ww-error82",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this phosphorus chemical estimate for the monthly program report of a utility in Manitoba.",
+   "topicId": "chemical-program-cost",
+   "level": "class1",
+   "assumptions": "Fictional utility in Manitoba: phosphorus removed = 100 kg/d, chemical ratio = 4.5 kg of chemical per kg of phosphorus removed given in the program study, chemical price = 1.2 dollars per kg. Monthly figures use 30 days. A separate alkalinity ratio of 7.14 is also noted in the study file. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily chemical = phosphorus removed * chemical ratio, monthly chemical = daily chemical * 30, and monthly cost = monthly chemical * price per kg"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily chemical = 100 * 7.14 = 714 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Monthly chemical = 714 * 30 = 21420 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Daily chemical = 100 * 4.5 = 450 kg/d",
+   "explanation": "Line 2 used 7.14, the alkalinity factor noted in the file, instead of the chemical ratio of 4.5. The daily chemical need is 450 kg/d."
+  },
+  {
+   "id": "wp4ww-error83",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this phosphorus chemical estimate for the monthly program report of a utility in British Columbia.",
+   "topicId": "chemical-program-cost",
+   "level": "class1",
+   "assumptions": "Fictional utility in British Columbia: phosphorus removed = 80 kg/d, chemical ratio = 5 kg of chemical per kg of phosphorus removed given in the program study, chemical price = 1.5 dollars per kg. Monthly figures use 30 days. A separate alkalinity ratio of 7.14 is also noted in the study file. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily chemical = phosphorus removed * chemical ratio, monthly chemical = daily chemical * 30, and monthly cost = monthly chemical * price per kg"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily chemical = 80 * 5 = 430 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Monthly chemical = 430 * 30 = 12900 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Daily chemical = 80 * 5 = 400 kg/d",
+   "explanation": "Line 2 multiplied incorrectly. 80 * 5 = 400 kg/d, not 430 kg/d."
+  },
+  {
+   "id": "wp4ww-error84",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this phosphorus chemical estimate for the monthly program report of a utility in Alberta.",
+   "topicId": "chemical-program-cost",
+   "level": "class1",
+   "assumptions": "Fictional utility in Alberta: phosphorus removed = 120 kg/d, chemical ratio = 4 kg of chemical per kg of phosphorus removed given in the program study, chemical price = 1.2 dollars per kg. Monthly figures use 30 days. A separate alkalinity ratio of 7.14 is also noted in the study file. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily chemical = phosphorus removed * chemical ratio, monthly chemical = daily chemical * 30, and monthly cost = monthly chemical * price per kg"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily chemical = 120 * 4 = 480 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Monthly chemical = 480 * 31 = 14880 kg"
+    },
+    {
+     "id": "line4",
+     "label": "4. Monthly cost = 14880 * 1.2 = 17856 dollars"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Monthly chemical = 480 * 30 = 14400 kg",
+   "explanation": "Line 3 used 31 days instead of the 30 day month in the program report. The monthly chemical need is 14400 kg costing 17280 dollars."
+  },
+  {
+   "id": "wp4ww-error85",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this phosphorus chemical estimate for the monthly program report of a utility in Saskatchewan.",
+   "topicId": "chemical-program-cost",
+   "level": "class1",
+   "assumptions": "Fictional utility in Saskatchewan: phosphorus removed = 90 kg/d, chemical ratio = 5 kg of chemical per kg of phosphorus removed given in the program study, chemical price = 2 dollars per kg. Monthly figures use 30 days. A separate alkalinity ratio of 7.14 is also noted in the study file. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily chemical = phosphorus removed * chemical ratio, monthly chemical = daily chemical * 30, and monthly cost = monthly chemical * price per kg"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily chemical = 90 * 5 = 450 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Monthly chemical = 450 * 30 = 13500 kg"
+    },
+    {
+     "id": "line4",
+     "label": "4. Monthly cost = 13500 * 4 = 54000 dollars"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Monthly cost = 13500 * 2 = 27000 dollars",
+   "explanation": "Line 4 used a price of 4 dollars per kg instead of the program price of 2 dollars per kg. The monthly cost is 27000 dollars."
+  },
+  {
+   "id": "wp4ww-error86",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this phosphorus chemical estimate for the monthly program report of a utility in Manitoba.",
+   "topicId": "chemical-program-cost",
+   "level": "class1",
+   "assumptions": "Fictional utility in Manitoba: phosphorus removed = 110 kg/d, chemical ratio = 4.5 kg of chemical per kg of phosphorus removed given in the program study, chemical price = 1.5 dollars per kg. Monthly figures use 30 days. A separate alkalinity ratio of 7.14 is also noted in the study file. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily chemical = phosphorus removed * chemical ratio, monthly chemical = daily chemical * 30, and monthly cost = monthly chemical * price per kg"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily chemical = 110 * 4.5 = 495 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Monthly chemical = 495 * 30 = 14850 kg"
+    },
+    {
+     "id": "line4",
+     "label": "4. Monthly cost = 14850 * 1.5 = 23275 dollars"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Monthly cost = 14850 * 1.5 = 22275 dollars",
+   "explanation": "Line 4 multiplied incorrectly. 14850 * 1.5 = 22275 dollars, not 23275 dollars."
+  },
+  {
+   "id": "wp4ww-error87",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this energy benchmark for a wastewater utility in Alberta reporting its annual performance.",
+   "topicId": "energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional utility in Alberta: annual electricity use = 9000000 kWh, annual treated volume = 15000000 m3, both from the utility annual report. Specific energy = annual electricity / annual treated volume. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Specific energy = annual electricity / annual treated volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Specific energy = 15000000 / 9000000 m3 per kWh"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Specific energy = 9000000 / 15000000 = 0.6 kWh/m3",
+   "explanation": "Line 2 inverted the division and reported volume per unit of energy. The benchmark is energy per volume, 0.6 kWh/m3."
+  },
+  {
+   "id": "wp4ww-error88",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this energy benchmark for a wastewater utility in Saskatchewan reporting its annual performance.",
+   "topicId": "energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional utility in Saskatchewan: annual electricity use = 7200000 kWh, annual treated volume = 12000000 m3, both from the utility annual report. Specific energy = annual electricity / annual treated volume. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Specific energy = annual electricity / annual treated volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Specific energy = 7200000 / 12000000 = 0.7 kWh/m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Specific energy = 7200000 / 12000000 = 0.6 kWh/m3",
+   "explanation": "Line 2 divided incorrectly. 7200000 / 12000000 = 0.6 kWh/m3, not 0.7 kWh/m3."
+  },
+  {
+   "id": "wp4ww-error89",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this energy benchmark for a wastewater utility in Manitoba reporting its annual performance.",
+   "topicId": "energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional utility in Manitoba: annual electricity use = 5000000 kWh, annual treated volume = 10000000 m3, both from the utility annual report. Specific energy = annual electricity / annual treated volume. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Specific energy = annual electricity / annual treated volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Specific energy = 6000000 / 10000000 = 0.6 kWh/m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Specific energy = 5000000 / 10000000 = 0.5 kWh/m3",
+   "explanation": "Line 2 used 6000000 kWh instead of the reported 5000000 kWh. The benchmark is 0.5 kWh/m3."
+  },
+  {
+   "id": "wp4ww-error90",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this energy benchmark for a wastewater utility in British Columbia reporting its annual performance.",
+   "topicId": "energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional utility in British Columbia: annual electricity use = 11000000 kWh, annual treated volume = 22000000 m3, both from the utility annual report. Specific energy = annual electricity / annual treated volume. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Specific energy = annual electricity / annual treated volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Specific energy = 11000000 * 22000000 kWh/m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Specific energy = 11000000 / 22000000 = 0.5 kWh/m3",
+   "explanation": "Line 2 multiplied the two annual totals instead of dividing energy by volume. The benchmark is 0.5 kWh/m3."
+  },
+  {
+   "id": "wp4ww-error91",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this energy benchmark for a wastewater utility in Alberta reporting its annual performance.",
+   "topicId": "energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional utility in Alberta: annual electricity use = 8400000 kWh, annual treated volume = 12000000 m3, both from the utility annual report. Specific energy = annual electricity / annual treated volume. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Specific energy = annual electricity / annual treated volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Specific energy = 8400000 / 12000000 = 0.6 kWh/m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Specific energy = 8400000 / 12000000 = 0.7 kWh/m3",
+   "explanation": "Line 2 divided incorrectly. 8400000 / 12000000 = 0.7 kWh/m3, not 0.6 kWh/m3."
+  },
+  {
+   "id": "wp4ww-error92",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this energy per unit load benchmark for a utility in Saskatchewan.",
+   "topicId": "energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional utility in Saskatchewan: annual electricity use = 6000000 kWh, annual BOD removed = 4000000 kg, both from the utility annual report. Energy per kg = annual electricity / annual BOD removed. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Energy per kg BOD removed = annual electricity / annual BOD removed"
+    },
+    {
+     "id": "line2",
+     "label": "2. Energy per kg = 6000000 / 4000000 = 1.8 kWh/kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Energy per kg = 6000000 / 4000000 = 1.5 kWh/kg",
+   "explanation": "Line 2 divided incorrectly. 6000000 / 4000000 = 1.5 kWh/kg, not 1.8 kWh/kg."
+  },
+  {
+   "id": "wp4ww-error93",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this energy per unit load benchmark for a utility in Manitoba.",
+   "topicId": "energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional utility in Manitoba: annual electricity use = 5400000 kWh, annual BOD removed = 3600000 kg, both from the utility annual report. Energy per kg = annual electricity / annual BOD removed. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Energy per kg BOD removed = annual electricity / annual BOD removed"
+    },
+    {
+     "id": "line2",
+     "label": "2. Energy per kg = 3600000 / 5400000 kg per kWh"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Energy per kg = 5400000 / 3600000 = 1.5 kWh/kg",
+   "explanation": "Line 2 inverted the division. The benchmark is energy divided by load removed, 1.5 kWh/kg."
+  },
+  {
+   "id": "wp4ww-error94",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this energy per unit load benchmark for a utility in British Columbia.",
+   "topicId": "energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional utility in British Columbia: annual electricity use = 4800000 kWh, annual BOD removed = 4000000 kg, both from the utility annual report. Energy per kg = annual electricity / annual BOD removed. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Energy per kg BOD removed = annual electricity / annual BOD removed"
+    },
+    {
+     "id": "line2",
+     "label": "2. Energy per kg = 4800000 / 3000000 = 1.6 kWh/kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Energy per kg = 4800000 / 4000000 = 1.2 kWh/kg",
+   "explanation": "Line 2 used 3000000 kg removed instead of the reported 4000000 kg. The benchmark is 1.2 kWh/kg."
+  },
+  {
+   "id": "wp4ww-error95",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this energy per unit load benchmark for a utility in Alberta.",
+   "topicId": "energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional utility in Alberta: annual electricity use = 7500000 kWh, annual BOD removed = 5000000 kg, both from the utility annual report. Energy per kg = annual electricity / annual BOD removed. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Energy per kg BOD removed = annual electricity / annual BOD removed"
+    },
+    {
+     "id": "line2",
+     "label": "2. Energy per kg = 7500000 / 5000000 = 1.3 kWh/kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Energy per kg = 7500000 / 5000000 = 1.5 kWh/kg",
+   "explanation": "Line 2 divided incorrectly. 7500000 / 5000000 = 1.5 kWh/kg, not 1.3 kWh/kg."
+  },
+  {
+   "id": "wp4ww-error96",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this energy savings forecast in the utility efficiency plan for Manitoba.",
+   "topicId": "energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional utility in Manitoba: baseline electricity use = 8000000 kWh per year, planned reduction fraction = 0.2 given in the efficiency plan, electricity price = 0.1 dollars per kWh. Saving = baseline * reduction fraction, new use = baseline - saving, and cost saving = saving * price. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Energy saving = baseline use * reduction fraction, new use = baseline use - saving, and cost saving = energy saving * price per kWh"
+    },
+    {
+     "id": "line2",
+     "label": "2. Energy saving = 8000000 * 0.25 = 2000000 kWh"
+    },
+    {
+     "id": "line3",
+     "label": "3. New use = 8000000 - 2000000 = 6000000 kWh"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Energy saving = 8000000 * 0.2 = 1600000 kWh",
+   "explanation": "Line 2 used a reduction fraction of 0.25 instead of the plan value of 0.2. The saving is 1600000 kWh and the new use is 6400000 kWh."
+  },
+  {
+   "id": "wp4ww-error97",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this energy savings forecast in the utility efficiency plan for British Columbia.",
+   "topicId": "energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional utility in British Columbia: baseline electricity use = 10000000 kWh per year, planned reduction fraction = 0.15 given in the efficiency plan, electricity price = 0.12 dollars per kWh. Saving = baseline * reduction fraction, new use = baseline - saving, and cost saving = saving * price. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Energy saving = baseline use * reduction fraction, new use = baseline use - saving, and cost saving = energy saving * price per kWh"
+    },
+    {
+     "id": "line2",
+     "label": "2. Energy saving = 10000000 * 0.15 = 1500000 kWh"
+    },
+    {
+     "id": "line3",
+     "label": "3. New use = 10000000 + 1500000 = 11500000 kWh"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. New use = 10000000 - 1500000 = 8500000 kWh",
+   "explanation": "Line 3 added the saving instead of subtracting it. A reduction lowers the use to 8500000 kWh."
+  },
+  {
+   "id": "wp4ww-error98",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this energy savings forecast in the utility efficiency plan for Alberta.",
+   "topicId": "energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional utility in Alberta: baseline electricity use = 6000000 kWh per year, planned reduction fraction = 0.25 given in the efficiency plan, electricity price = 0.1 dollars per kWh. Saving = baseline * reduction fraction, new use = baseline - saving, and cost saving = saving * price. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Energy saving = baseline use * reduction fraction, new use = baseline use - saving, and cost saving = energy saving * price per kWh"
+    },
+    {
+     "id": "line2",
+     "label": "2. Energy saving = 6000000 * 0.25 = 1500000 kWh"
+    },
+    {
+     "id": "line3",
+     "label": "3. New use = 6000000 - 1500000 = 4500000 kWh"
+    },
+    {
+     "id": "line4",
+     "label": "4. Cost saving = 1500000 * 1 = 1500000 dollars"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Cost saving = 1500000 * 0.1 = 150000 dollars",
+   "explanation": "Line 4 priced the saved energy at 1 dollar per kWh instead of the plan price of 0.1 dollars per kWh. The cost saving is 150000 dollars."
+  },
+  {
+   "id": "wp4ww-error99",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this energy savings forecast in the utility efficiency plan for Saskatchewan.",
+   "topicId": "energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional utility in Saskatchewan: baseline electricity use = 12000000 kWh per year, planned reduction fraction = 0.1 given in the efficiency plan, electricity price = 0.15 dollars per kWh. Saving = baseline * reduction fraction, new use = baseline - saving, and cost saving = saving * price. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Energy saving = baseline use * reduction fraction, new use = baseline use - saving, and cost saving = energy saving * price per kWh"
+    },
+    {
+     "id": "line2",
+     "label": "2. Energy saving = 12000000 * 0.1 = 1400000 kWh"
+    },
+    {
+     "id": "line3",
+     "label": "3. New use = 12000000 - 1400000 = 10600000 kWh"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Energy saving = 12000000 * 0.1 = 1200000 kWh",
+   "explanation": "Line 2 multiplied incorrectly. 12000000 * 0.1 = 1200000 kWh, not 1400000 kWh."
+  },
+  {
+   "id": "wp4ww-process01",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for building the annual operating plan for a large western Canadian wastewater utility.",
+   "topicId": "process-governance-annual-operating-plan",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: utility serves several communities, plan covers operations, maintenance, compliance, and staffing for the next fiscal year.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Draft the work programs, staffing needs, and chemical and energy budgets that deliver those goals"
+    },
+    {
+     "id": "step-05",
+     "label": "Approve the plan, assign an owner to each program, and load the milestones into the tracking system"
+    },
+    {
+     "id": "step-01",
+     "label": "Compile the prior year flows, loads, compliance results, and cost performance as the planning baseline"
+    },
+    {
+     "id": "step-06",
+     "label": "Review progress quarterly and record approved changes with reasons in the plan log"
+    },
+    {
+     "id": "step-02",
+     "label": "Set the utility goals and service levels for the year with the utility manager and senior operators"
+    },
+    {
+     "id": "step-04",
+     "label": "Review the draft plan against provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations duties"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Baseline evidence and goals come before budgets are drafted, compliance is checked before approval, and quarterly review keeps the approved plan a living control."
+  },
+  {
+   "id": "wp4ww-process02",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for preparing a quarterly performance report for the utility governing board.",
+   "topicId": "process-governance-board-quarterly-report",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: board oversees the wastewater utility, report covers compliance, finance, risk, and capital progress.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Calculate the quarter key indicators and compare them with the annual plan and the same quarter last year"
+    },
+    {
+     "id": "step-03",
+     "label": "Draft the report narrative that explains variances, risks, and corrective actions in plain language"
+    },
+    {
+     "id": "step-01",
+     "label": "Pull the quarter effluent compliance, flow, and incident data from the verified plant records"
+    },
+    {
+     "id": "step-05",
+     "label": "Issue the report to the board before the meeting and present the compliance and risk sections in person"
+    },
+    {
+     "id": "step-04",
+     "label": "Have the utility manager review the draft for accuracy and confirm no unverified figures remain"
+    },
+    {
+     "id": "step-06",
+     "label": "Record board directions as actions with owners and due dates and track them to closure"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Verified data and calculated indicators come before narrative is written, management review precedes issue to the board, and board directions become tracked actions."
+  },
+  {
+   "id": "wp4ww-process03",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for refreshing the five year strategic plan for a wastewater utility.",
+   "topicId": "process-governance-strategic-plan-refresh",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: growth, tightening nutrient expectations, and aging assets drive a full strategic refresh.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Test the draft priorities against funding capacity and staffing capacity and adjust the scope to fit"
+    },
+    {
+     "id": "step-03",
+     "label": "Draft the strategic priorities and the outcomes and measures that define success for each one"
+    },
+    {
+     "id": "step-01",
+     "label": "Review the current plan outcomes, growth forecasts, asset condition, and regulatory outlook together"
+    },
+    {
+     "id": "step-05",
+     "label": "Approve the refreshed plan through the utility governance process and publish the summary for staff"
+    },
+    {
+     "id": "step-02",
+     "label": "Hold structured input sessions with operations, maintenance, laboratory, and governing board members"
+    },
+    {
+     "id": "step-06",
+     "label": "Break the first year priorities into the annual operating plan with owners and milestones"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Evidence and consultation come before priorities are drafted, capacity testing precedes approval, and the annual plan is where strategy becomes assigned work."
+  },
+  {
+   "id": "wp4ww-process04",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for running the annual management review of the utility quality management system.",
+   "topicId": "process-governance-management-review",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: review covers audit results, compliance performance, corrective actions, and improvement plans for the whole utility.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Analyse trends in the collected material and flag the systemic issues behind repeat findings"
+    },
+    {
+     "id": "step-01",
+     "label": "Collect the audit findings, compliance summaries, incident reviews, and open corrective actions for the year"
+    },
+    {
+     "id": "step-05",
+     "label": "Issue the approved improvement actions into the corrective action system for tracking"
+    },
+    {
+     "id": "step-06",
+     "label": "Verify closure of the actions at the next quarterly check and report the status back to management"
+    },
+    {
+     "id": "step-03",
+     "label": "Prepare the review pack with proposed decisions on resources, procedures, and improvement priorities"
+    },
+    {
+     "id": "step-04",
+     "label": "Hold the management review meeting and record each decision, owner, and due date in the minutes"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Inputs are collected and analysed before the meeting pack is built, decisions are recorded in the meeting, and closure is verified rather than assumed."
+  },
+  {
+   "id": "wp4ww-process05",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for developing a new utility wide operating policy, for example a hauled waste acceptance policy.",
+   "topicId": "process-governance-policy-development",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: policy will apply at all utility facilities and must fit provincial wastewater requirements and site approvals.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Draft the policy with clear responsibilities, limits, and record keeping duties"
+    },
+    {
+     "id": "step-05",
+     "label": "Approve the policy, train the affected staff, and set the effective date in the document system"
+    },
+    {
+     "id": "step-04",
+     "label": "Consult the affected supervisors, operators, and the laboratory and revise the draft from their input"
+    },
+    {
+     "id": "step-01",
+     "label": "Define the policy purpose, scope, and the risks it must control with the utility manager"
+    },
+    {
+     "id": "step-02",
+     "label": "Review current practice at each facility and the requirements that the policy must satisfy"
+    },
+    {
+     "id": "step-06",
+     "label": "Audit compliance with the policy after the first season and report gaps for correction"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Purpose and current practice come before drafting, consultation precedes approval and training, and a first season audit proves the policy works in practice."
+  },
+  {
+   "id": "wp4ww-process06",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for building a utility performance dashboard for senior leadership.",
+   "topicId": "process-governance-performance-dashboard",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: dashboard will show compliance, process, energy, cost, and safety indicators monthly for all facilities.",
+   "cards": [
+    {
+     "id": "step-06",
+     "label": "Review the indicator set annually and remove measures that no longer drive a decision"
+    },
+    {
+     "id": "step-04",
+     "label": "Pilot the dashboard with senior operators for one cycle and fix unclear or misleading displays"
+    },
+    {
+     "id": "step-01",
+     "label": "Select the small set of indicators that leadership will actually use to make decisions"
+    },
+    {
+     "id": "step-03",
+     "label": "Build the data feeds from plant records and check them against hand calculated values for one month"
+    },
+    {
+     "id": "step-02",
+     "label": "Define each indicator calculation, data source, owner, and reporting frequency in writing"
+    },
+    {
+     "id": "step-05",
+     "label": "Publish the dashboard as the single leadership view and retire the competing local spreadsheets"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Indicators are defined before feeds are built, feeds are verified against hand calculations, and piloting precedes making the dashboard the single source."
+  },
+  {
+   "id": "wp4ww-process07",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for building a succession and certification plan for senior operator roles.",
+   "topicId": "process-governance-succession-certification-plan",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: several Class 4 operators approach retirement, the utility must protect coverage for overall responsible operator duties.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Fund the plans in the operating budget and report progress to leadership twice a year"
+    },
+    {
+     "id": "step-04",
+     "label": "Build individual development plans with exam milestones, mentoring, and supervised acting assignments"
+    },
+    {
+     "id": "step-01",
+     "label": "List the critical roles, their certification and experience requirements, and the current holders and deputies"
+    },
+    {
+     "id": "step-06",
+     "label": "Test coverage with planned acting periods and update the plan from what the tests reveal"
+    },
+    {
+     "id": "step-03",
+     "label": "Identify internal candidates and map the certification, training, and acting experience each one needs"
+    },
+    {
+     "id": "step-02",
+     "label": "Assess the gap for each role over the next five years using retirement and turnover expectations"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Roles and gaps are mapped before candidates are chosen, development is funded and scheduled, and acting periods test whether coverage is real."
+  },
+  {
+   "id": "wp4ww-process08",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for maintaining an operator certification compliance program at utility scale.",
+   "topicId": "process-governance-certification-compliance-program",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: program tracks certificates, renewals, and continuing education for all wastewater operators in the utility.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Verify new certificates and course records against the issuing records before updating the register"
+    },
+    {
+     "id": "step-06",
+     "label": "Audit the register annually against payroll and duty rosters and correct any mismatch"
+    },
+    {
+     "id": "step-02",
+     "label": "Set automated reminders at fixed intervals before each expiry and assign a coordinator to chase them"
+    },
+    {
+     "id": "step-03",
+     "label": "Schedule the training and exam sittings needed so renewals are completed well before expiry dates"
+    },
+    {
+     "id": "step-01",
+     "label": "Build the register of every operator certificate, class, expiry date, and continuing education balance"
+    },
+    {
+     "id": "step-05",
+     "label": "Report certification coverage and any at risk roles to leadership monthly"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The register comes before reminders can work, records are verified before they are entered, and the annual audit keeps the register honest."
+  },
+  {
+   "id": "wp4ww-process09",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for negotiating an inter municipal wastewater service agreement.",
+   "topicId": "process-governance-intermunicipal-agreement",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: a neighbouring community wants to discharge to the utility plant, capacity and cost sharing must be settled.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Draft the agreement terms covering flow limits, quality limits, metering, billing, and default actions"
+    },
+    {
+     "id": "step-06",
+     "label": "Review performance against the agreement annually and adjust the cost share on the agreed formula"
+    },
+    {
+     "id": "step-02",
+     "label": "Model the added flows and loads and the capital and operating cost share that follows from them"
+    },
+    {
+     "id": "step-05",
+     "label": "Sign the agreement and install and verify the metering and sampling point at the connection"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm the available plant capacity and the effluent quality duties the added flow must not compromise"
+    },
+    {
+     "id": "step-04",
+     "label": "Review the draft with legal advisors and both councils or boards and revise the contested terms"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Capacity and cost evidence come before terms are drafted, legal and governance review precedes signing, and annual review keeps the share fair."
+  },
+  {
+   "id": "wp4ww-process10",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for completing a wastewater rate study for the utility.",
+   "topicId": "process-governance-rate-study",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: study must fund operations, renewal, and growth while keeping the utility compliant and resilient.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "Compile the audited operating costs, asset renewal needs, and debt duties for the study period"
+    },
+    {
+     "id": "step-05",
+     "label": "Adopt the chosen rates through the formal approval process and publish the effective dates"
+    },
+    {
+     "id": "step-04",
+     "label": "Present the options and their customer impacts to the governing board for direction"
+    },
+    {
+     "id": "step-03",
+     "label": "Build the revenue requirement and test rate structures against it with the finance team"
+    },
+    {
+     "id": "step-02",
+     "label": "Forecast flows, customer growth, and the capital program costs over the rate horizon"
+    },
+    {
+     "id": "step-06",
+     "label": "Monitor actual revenue and costs against the study each year and report variances to the board"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Costs and forecasts come before rate structures are tested, board direction precedes adoption, and yearly monitoring checks the study against reality."
+  },
+  {
+   "id": "wp4ww-process100",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for completing a climate adaptation plan for wastewater services.",
+   "topicId": "process-senior-climate-adaptation-plan",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: plan addresses flood, drought, extreme cold, and wildfire effects on utility assets and operations.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "Assess the climate hazards for each facility using regional projections and the utility incident history"
+    },
+    {
+     "id": "step-04",
+     "label": "Prioritize the options and phase them into the capital and operating plans with trigger points"
+    },
+    {
+     "id": "step-06",
+     "label": "Review the plan after major weather events and on the set cycle, updating exposures and actions"
+    },
+    {
+     "id": "step-02",
+     "label": "Identify the assets and services most exposed to each hazard and the consequence of loss"
+    },
+    {
+     "id": "step-03",
+     "label": "Develop the adaptation options, from operational measures to capital works, for the highest exposures"
+    },
+    {
+     "id": "step-05",
+     "label": "Approve the plan through utility governance and share it with municipal emergency planning partners"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Hazards and exposure are assessed before options are developed, capital and operating measures are phased with triggers, and real events update the plan."
+  },
+  {
+   "id": "wp4ww-process11",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for preparing the utility annual public accountability report.",
+   "topicId": "process-governance-public-accountability-report",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: report explains effluent performance, investments, and incidents to the public in plain language.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Have operations and compliance staff check every figure and claim in the draft against the source records"
+    },
+    {
+     "id": "step-05",
+     "label": "Publish the report and brief the public information contact on the questions it is likely to raise"
+    },
+    {
+     "id": "step-06",
+     "label": "Log the public questions received and feed them into the topics covered in the next report"
+    },
+    {
+     "id": "step-02",
+     "label": "Draft the report in plain language with the context a non technical reader needs for each result"
+    },
+    {
+     "id": "step-04",
+     "label": "Approve the report through utility leadership and the governing board as required"
+    },
+    {
+     "id": "step-01",
+     "label": "Compile the year effluent results, flow data, and incident record from the verified compliance files"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Verified figures come before plain language drafting, independent checking precedes approval, and public questions shape the next edition."
+  },
+  {
+   "id": "wp4ww-process12",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for setting the utility risk register and reviewing it at leadership level.",
+   "topicId": "process-governance-risk-register",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: register covers compliance, asset failure, staffing, climate, and financial risks for the whole utility.",
+   "cards": [
+    {
+     "id": "step-06",
+     "label": "Close risks only when the treatment is verified in place and report closures to the board"
+    },
+    {
+     "id": "step-04",
+     "label": "Enter the risks and actions in the register and link them to the capital and operating plans"
+    },
+    {
+     "id": "step-01",
+     "label": "Identify the material risks with facility leads using incident history and asset and compliance data"
+    },
+    {
+     "id": "step-03",
+     "label": "Assign each high risk an owner and a treatment action with a due date"
+    },
+    {
+     "id": "step-05",
+     "label": "Review the register quarterly at leadership and update scores from new evidence"
+    },
+    {
+     "id": "step-02",
+     "label": "Score each risk for likelihood and consequence with the agreed utility scoring guide"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Risks are scored and owned before they enter the register, treatments link to real plans, and closure needs verification rather than a date passing."
+  },
+  {
+   "id": "wp4ww-process13",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for developing a ten year nutrient management strategy for the utility.",
+   "topicId": "process-nutrient-ten-year-strategy",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: strategy must meet provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations while growth continues.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Select the preferred strategy through utility governance and phase it into the capital and operating plans"
+    },
+    {
+     "id": "step-04",
+     "label": "Develop the strategy options, from operations optimization to capital upgrades, with costs and risks for each"
+    },
+    {
+     "id": "step-02",
+     "label": "Review the expected direction of provincial requirements and federal effluent expectations over the strategy period"
+    },
+    {
+     "id": "step-03",
+     "label": "Model the future loads from growth and the removal capacity of the existing processes"
+    },
+    {
+     "id": "step-01",
+     "label": "Compile ten years of influent and effluent nitrogen and phosphorus loads and the current removal performance"
+    },
+    {
+     "id": "step-06",
+     "label": "Set annual nutrient milestones and review progress against them in the annual operations report"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Loads, requirements, and capacity are established before options are built, selection flows into real plans, and milestones make the strategy accountable."
+  },
+  {
+   "id": "wp4ww-process14",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for planning the transition to a tighter effluent nitrogen limit.",
+   "topicId": "process-nutrient-tighter-nitrogen-transition",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: a tighter nitrogen expectation applies from a set future date, the plant currently runs close to it in winter.",
+   "cards": [
+    {
+     "id": "step-06",
+     "label": "Report readiness to leadership and the regulator contact as the approval requires before the limit applies"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm the new limit, its averaging period, and its start date from the provincial approval documents"
+    },
+    {
+     "id": "step-03",
+     "label": "Identify the process changes, chemical support, and capital items that close the seasonal gap"
+    },
+    {
+     "id": "step-02",
+     "label": "Analyse two years of effluent nitrogen data by season to find when the plant would fail the new limit"
+    },
+    {
+     "id": "step-04",
+     "label": "Build the transition plan with trial periods, interim internal targets, and decision dates"
+    },
+    {
+     "id": "step-05",
+     "label": "Run the trials in the season that matches the risk and confirm the settings hold before the start date"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The limit and the seasonal failure pattern are proven before solutions are chosen, trials run in the risky season, and readiness is reported before the date."
+  },
+  {
+   "id": "wp4ww-process15",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for developing a phosphorus removal strategy that balances biological and chemical removal.",
+   "topicId": "process-nutrient-phosphorus-strategy-balance",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: plant has biological phosphorus removal with chemical trim, strategy covers the next five years.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Review the failure modes of each route, including carbon shortage, chemical supply, and clarifier release"
+    },
+    {
+     "id": "step-06",
+     "label": "Review the balance annually using removal and cost data and adjust the target shares on evidence"
+    },
+    {
+     "id": "step-01",
+     "label": "Analyse the biological and chemical shares of current phosphorus removal and the cost of each share"
+    },
+    {
+     "id": "step-03",
+     "label": "Set the target operating balance and the conditions that shift removal between the two routes"
+    },
+    {
+     "id": "step-04",
+     "label": "Confirm chemical storage, feed capacity, and sludge production effects at the highest planned chemical share"
+    },
+    {
+     "id": "step-05",
+     "label": "Write the strategy into the nutrient control plan with triggers, doses, and sampling duties"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Current shares and failure modes come before a target balance is set, capacity is proven at the extreme share, and annual review keeps the balance honest."
+  },
+  {
+   "id": "wp4ww-process16",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for setting a utility wide chemical phosphorus removal program.",
+   "topicId": "process-nutrient-chemical-p-program",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: several facilities will use chemical trim, the utility wants one program for product, dosing, and reporting.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Set the program dosing triggers, record keeping, and sludge accounting rules in one procedure"
+    },
+    {
+     "id": "step-01",
+     "label": "Survey each facility phosphorus performance and the days when chemical trim is actually needed"
+    },
+    {
+     "id": "step-05",
+     "label": "Train the facility teams and start the program at the start of the high load season"
+    },
+    {
+     "id": "step-06",
+     "label": "Compare chemical use and effluent results across facilities quarterly and correct outliers"
+    },
+    {
+     "id": "step-03",
+     "label": "Size storage and feed systems for the peak seasonal demand at each facility with safe margins"
+    },
+    {
+     "id": "step-02",
+     "label": "Select the standard product and dose control approach that fits all facilities or record the exceptions"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Need is surveyed before a standard is chosen, systems are sized for peak demand, and cross facility comparison keeps the program efficient."
+  },
+  {
+   "id": "wp4ww-process17",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for developing a carbon management strategy for denitrification across the utility.",
+   "topicId": "process-nutrient-carbon-strategy",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: influent carbon varies seasonally, one facility buys external carbon, others rely on influent and fermentation.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Identify where and when carbon limits denitrification and where carbon is wasted to aeration"
+    },
+    {
+     "id": "step-05",
+     "label": "Phase the strategy into facility nutrient plans with seasonal settings and triggers"
+    },
+    {
+     "id": "step-01",
+     "label": "Compile influent carbon to nitrogen data by season and facility for the last two years"
+    },
+    {
+     "id": "step-04",
+     "label": "Size the external carbon need that remains and set the product, storage, and dosing standards"
+    },
+    {
+     "id": "step-06",
+     "label": "Track carbon use against nitrogen removed each season and revise the strategy on the results"
+    },
+    {
+     "id": "step-03",
+     "label": "Evaluate the internal carbon options first, including step feed, fermentation, and sidestream returns"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Seasonal data locates the real shortage before options are ranked, internal carbon is used before purchased carbon, and seasonal tracking judges the strategy."
+  },
+  {
+   "id": "wp4ww-process18",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for building an alkalinity security strategy for nitrifying facilities.",
+   "topicId": "process-nutrient-alkalinity-security-strategy",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: melt water dilutes influent alkalinity each spring, nitrification is at risk at two facilities.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Stock and test the feed systems before the melt season and brief all shifts on the triggers"
+    },
+    {
+     "id": "step-02",
+     "label": "Identify the facilities and weeks where the margin falls below the safe operating band"
+    },
+    {
+     "id": "step-03",
+     "label": "Evaluate the supply options, including chemical supplementation and load management, for cost and reliability"
+    },
+    {
+     "id": "step-06",
+     "label": "Review the melt season results and reset the triggers and stock levels for the next year"
+    },
+    {
+     "id": "step-01",
+     "label": "Calculate alkalinity consumption at each facility from ammonia loads and compare it with influent supply by season"
+    },
+    {
+     "id": "step-04",
+     "label": "Set the supplementation triggers, products, and storage standards for the at risk facilities"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Consumption and margins are calculated before options are judged, systems are stocked and tested before the melt, and the season review resets the plan."
+  },
+  {
+   "id": "wp4ww-process19",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for completing a nutrient trading and offset feasibility study.",
+   "topicId": "process-nutrient-trading-feasibility-study",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: leadership wants to know whether offsets within the watershed could complement plant upgrades.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Quantify the utility nutrient load and the cost per unit removed by the plant upgrade options"
+    },
+    {
+     "id": "step-05",
+     "label": "Present the findings to the governing board with a clear recommendation and its conditions"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm whether provincial requirements and the watershed framework allow trading or offsets at all"
+    },
+    {
+     "id": "step-06",
+     "label": "Record the decision and, if offsets proceed, build the monitoring and reporting program before any credit is claimed"
+    },
+    {
+     "id": "step-04",
+     "label": "Compare the options on cost, risk, permanence, and regulatory acceptance in a single assessment"
+    },
+    {
+     "id": "step-03",
+     "label": "Survey the watershed offset options and their cost, certainty, and monitoring requirements"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Permission is confirmed before money is compared, options are judged on certainty as well as cost, and monitoring exists before any credit is taken."
+  },
+  {
+   "id": "wp4ww-process20",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for setting the seasonal nutrient operating strategy for a cold climate utility.",
+   "topicId": "process-nutrient-seasonal-cold-strategy",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: winter temperatures slow nitrification, spring melt dilutes loads, summer brings the tightest expectations.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "Analyse nutrient performance by season for two years, including temperature and melt effects"
+    },
+    {
+     "id": "step-03",
+     "label": "Define the transition dates and the leading indicators that trigger an early or late change"
+    },
+    {
+     "id": "step-05",
+     "label": "Run the plan through the year with monthly nutrient reviews against the seasonal targets"
+    },
+    {
+     "id": "step-04",
+     "label": "Brief all facilities and shifts on the seasonal plan before the first transition of the year"
+    },
+    {
+     "id": "step-06",
+     "label": "Close the year with a season by season review and carry the lessons into the next year plan"
+    },
+    {
+     "id": "step-02",
+     "label": "Set the seasonal targets and the inventory, aeration, and carbon settings that support each season"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Seasonal evidence comes before seasonal settings, transitions are triggered by indicators as well as dates, and the year end review improves the next cycle."
+  },
+  {
+   "id": "wp4ww-process21",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for establishing nutrient optimization governance across multiple facilities.",
+   "topicId": "process-nutrient-optimization-governance",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: each facility optimizes locally today, leadership wants shared learning without losing local control.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Have each facility baseline its nutrient, chemical, and energy performance in the shared format"
+    },
+    {
+     "id": "step-04",
+     "label": "Agree the optimization trials for the quarter and assign each trial a lead facility and a sharing duty"
+    },
+    {
+     "id": "step-06",
+     "label": "Adopt the proven settings as utility guidance and update the framework annually"
+    },
+    {
+     "id": "step-05",
+     "label": "Run the trials and circulate the results, including the failures, to all facilities"
+    },
+    {
+     "id": "step-03",
+     "label": "Hold monthly cross facility reviews where the best and worst results are explained by their teams"
+    },
+    {
+     "id": "step-01",
+     "label": "Set the utility nutrient performance framework, including shared indicators and reporting formats"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "A shared framework and honest baselines come before reviews can compare fairly, trials are assigned and shared openly, and proven settings become guidance."
+  },
+  {
+   "id": "wp4ww-process22",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for scoping a biological nutrient removal upgrade strategy for an aging plant.",
+   "topicId": "process-nutrient-bnr-upgrade-strategy",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: plant meets current limits but has no margin for growth or tighter expectations.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Evaluate the concepts on performance certainty, constructability while operating, and lifecycle cost"
+    },
+    {
+     "id": "step-05",
+     "label": "Recommend the preferred concept and its phasing to leadership for capital plan entry"
+    },
+    {
+     "id": "step-02",
+     "label": "Forecast the flows, loads, and nutrient expectations the upgrade must serve over its design life"
+    },
+    {
+     "id": "step-06",
+     "label": "Carry the chosen concept into preliminary design with the performance targets recorded as design duties"
+    },
+    {
+     "id": "step-01",
+     "label": "Document the current process capacity, condition, and nutrient performance limits with plant data"
+    },
+    {
+     "id": "step-03",
+     "label": "Develop the upgrade concepts with process staff, from re rating zones to new trains, at study level"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Current limits and future duties are documented before concepts are drawn, evaluation weighs certainty and buildability, and targets follow the project into design."
+  },
+  {
+   "id": "wp4ww-process23",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for completing an effluent nutrient risk assessment for the utility.",
+   "topicId": "process-nutrient-effluent-risk-assessment",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: assessment covers the chance and consequence of nutrient exceedances at each facility over the next five years.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Estimate the likelihood of each scenario using data on loads, equipment condition, and staffing coverage"
+    },
+    {
+     "id": "step-03",
+     "label": "Assess the consequence of each scenario for compliance, the receiving water, and public confidence"
+    },
+    {
+     "id": "step-05",
+     "label": "Fund the priority treatments through the operating or capital plan as each one requires"
+    },
+    {
+     "id": "step-01",
+     "label": "List the nutrient failure scenarios for each facility from incident history and process knowledge"
+    },
+    {
+     "id": "step-06",
+     "label": "Refresh the assessment annually and after any nutrient incident and report the movement to leadership"
+    },
+    {
+     "id": "step-04",
+     "label": "Rank the scenarios and assign the highest risks a treatment action and an owner"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Scenarios come from evidence before likelihood is judged, ranking drives funding, and the assessment is refreshed by time and by events."
+  },
+  {
+   "id": "wp4ww-process24",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for designing a utility nutrient monitoring program.",
+   "topicId": "process-nutrient-monitoring-program-design",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: program must support compliance, process control, and strategy decisions at all facilities.",
+   "cards": [
+    {
+     "id": "step-06",
+     "label": "Audit the program data quality after two quarters and adjust points or frequencies on the findings"
+    },
+    {
+     "id": "step-05",
+     "label": "Train the samplers and analysts and start the program at the start of a new quarter"
+    },
+    {
+     "id": "step-02",
+     "label": "Select the sampling points, parameters, and frequencies that serve those decisions without excess"
+    },
+    {
+     "id": "step-04",
+     "label": "Build the data flow from sampling to the trending system with checks for missing or suspect values"
+    },
+    {
+     "id": "step-01",
+     "label": "List the decisions the program must support, from daily control to annual strategy, and the data each one needs"
+    },
+    {
+     "id": "step-03",
+     "label": "Set the quality requirements for field meters, online analysers, and laboratory methods for each parameter"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Decisions define the data before points are chosen, quality requirements match each use, and an early audit catches design errors while they are cheap."
+  },
+  {
+   "id": "wp4ww-process25",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for building a nutrient compliance roadmap for the next five years.",
+   "topicId": "process-nutrient-compliance-roadmap",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: roadmap links expected provincial and federal expectations to facility projects and operating changes.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "Map the known and expected nutrient requirements and their dates for each facility"
+    },
+    {
+     "id": "step-06",
+     "label": "Update the roadmap annually and whenever a requirement or a project date changes"
+    },
+    {
+     "id": "step-05",
+     "label": "Approve the roadmap through utility governance and share the relevant parts with the regulator contact"
+    },
+    {
+     "id": "step-04",
+     "label": "Assign each roadmap item an owner, a budget source, and a progress measure"
+    },
+    {
+     "id": "step-03",
+     "label": "Sequence the closing actions, trials, designs, and construction, so each date is met with margin"
+    },
+    {
+     "id": "step-02",
+     "label": "Assess each facility gap against those requirements using current performance and capacity data"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Requirements and gaps are mapped before actions are sequenced, every item carries an owner and funding, and the roadmap is maintained as conditions change."
+  },
+  {
+   "id": "wp4ww-process26",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for governing a whole plant nutrient balance program.",
+   "topicId": "process-nutrient-whole-plant-balance-governance",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: monthly balances will track nitrogen and phosphorus through liquid, solids, and chemical routes at the main plant.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Confirm the sampling and flow records exist for every measured stream and fix the gaps found"
+    },
+    {
+     "id": "step-06",
+     "label": "Review the balance method annually and tighten the estimated streams as better data becomes available"
+    },
+    {
+     "id": "step-05",
+     "label": "Use the balances to test one improvement claim each quarter against the measured mass movement"
+    },
+    {
+     "id": "step-03",
+     "label": "Run the first balance and investigate any closure gap larger than the agreed tolerance"
+    },
+    {
+     "id": "step-04",
+     "label": "Set the monthly balance routine, its owner, and its place in the process review meeting"
+    },
+    {
+     "id": "step-01",
+     "label": "Define the balance boundary, the streams to be measured, and the streams to be estimated with stated methods"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The boundary and data gaps are settled before the first balance is run, closure gaps are investigated, and the balance becomes a test for improvement claims."
+  },
+  {
+   "id": "wp4ww-process27",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for developing a biosolids master plan for the utility.",
+   "topicId": "process-biosolids-master-plan",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: plan covers production, treatment, storage, outlets, and costs for the next ten years.",
+   "cards": [
+    {
+     "id": "step-06",
+     "label": "Review production and outlet performance against the plan annually and update the forecast"
+    },
+    {
+     "id": "step-04",
+     "label": "Develop the plan options and evaluate them on cost, risk, resilience, and community impact"
+    },
+    {
+     "id": "step-03",
+     "label": "Assess the treatment and storage capacity against the forecast and the outlet windows"
+    },
+    {
+     "id": "step-02",
+     "label": "Survey the available outlets, land base, hauling distances, and seasonal restrictions in the region"
+    },
+    {
+     "id": "step-05",
+     "label": "Approve the preferred plan through utility governance and phase it into the capital program"
+    },
+    {
+     "id": "step-01",
+     "label": "Forecast biosolids production from flow and load growth and current solids yields at each facility"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Production and outlets are forecast before capacity is judged, options weigh resilience as well as cost, and annual review keeps the plan current."
+  },
+  {
+   "id": "wp4ww-process28",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for setting up a biosolids land application program for a new service area.",
+   "topicId": "process-biosolids-land-application-setup",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: new farmland area near a western Canadian facility, provincial requirements for land application apply.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "Confirm the provincial requirements, setback rules, and approval duties for the new application area"
+    },
+    {
+     "id": "step-05",
+     "label": "Run the first application under supervision and verify rates, setbacks, and records on site"
+    },
+    {
+     "id": "step-02",
+     "label": "Sample and analyse the biosolids and the receiving soils and confirm the pairing is suitable"
+    },
+    {
+     "id": "step-04",
+     "label": "Build the hauling, spreading, and record keeping procedures and train the crews and contractor"
+    },
+    {
+     "id": "step-03",
+     "label": "Agree the fields, rates, seasons, and notification duties with the landowners in writing"
+    },
+    {
+     "id": "step-06",
+     "label": "Review the first season results and landowner feedback and adjust the program before the next season"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Requirements and suitability come before agreements are signed, the first application is verified on site, and the season review closes the setup loop."
+  },
+  {
+   "id": "wp4ww-process29",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for building a biosolids quality management program.",
+   "topicId": "process-biosolids-quality-program",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: program covers metals, pathogens, and stability indicators for all biosolids leaving utility facilities.",
+   "cards": [
+    {
+     "id": "step-06",
+     "label": "Review the program annually against results and any change in requirements or outlets"
+    },
+    {
+     "id": "step-02",
+     "label": "Set the sampling points, frequencies, and methods that represent each biosolids stream fairly"
+    },
+    {
+     "id": "step-01",
+     "label": "List the quality parameters and limits that provincial requirements and outlet agreements impose"
+    },
+    {
+     "id": "step-03",
+     "label": "Build the laboratory and data review routine with action levels below the legal limits"
+    },
+    {
+     "id": "step-05",
+     "label": "Report quality performance to leadership and outlet partners on the agreed schedule"
+    },
+    {
+     "id": "step-04",
+     "label": "Hold or divert any batch that crosses an action level and investigate the source before release"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Limits and representative sampling come before data can be trusted, action levels trigger holds before limits are breached, and annual review keeps the program aligned."
+  },
+  {
+   "id": "wp4ww-process30",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for developing a dewatering strategy for the utility solids program.",
+   "topicId": "process-biosolids-dewatering-strategy",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: several facilities dewater differently, cake dryness and hauling cost vary widely.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Identify the causes of the gaps, from equipment condition to polymer choice and operating practice"
+    },
+    {
+     "id": "step-06",
+     "label": "Track cost per tonne by facility quarterly and investigate any facility that drifts from the standard"
+    },
+    {
+     "id": "step-03",
+     "label": "Trial the leading improvements at the weakest facility and measure the dryness and cost change"
+    },
+    {
+     "id": "step-01",
+     "label": "Benchmark each facility cake dryness, polymer use, capture rate, and cost per tonne of dry solids"
+    },
+    {
+     "id": "step-05",
+     "label": "Phase the equipment and practice changes into the maintenance and capital plans"
+    },
+    {
+     "id": "step-04",
+     "label": "Set the utility dewatering standards for dryness, capture, and polymer use from the trial evidence"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Benchmarking locates the gaps before trials begin, standards are set from measured trial results, and quarterly tracking holds the gains."
+  },
+  {
+   "id": "wp4ww-process31",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for setting a digestion strategy to stabilize solids and produce biogas.",
+   "topicId": "process-biosolids-digestion-strategy",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: strategy covers digester loading, temperature, mixing, and gas use across the main plant digesters.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Confirm the mixing, heating, and gas handling systems can hold the strategy through winter"
+    },
+    {
+     "id": "step-01",
+     "label": "Review digester capacity, current loading, volatile solids reduction, and gas production for two years"
+    },
+    {
+     "id": "step-06",
+     "label": "Review reduction and gas performance monthly and adjust loading only on sustained trends"
+    },
+    {
+     "id": "step-02",
+     "label": "Set the loading and temperature strategy that balances stability, gas yield, and foam and upset risk"
+    },
+    {
+     "id": "step-04",
+     "label": "Phase the loading changes in steps, watching volatile acids and alkalinity through each step"
+    },
+    {
+     "id": "step-05",
+     "label": "Set the gas use priority between heating, cogeneration, and flaring in the strategy document"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "History and capacity come before a loading strategy is set, winter capability is proven first, and changes move in steps under stability indicators."
+  },
+  {
+   "id": "wp4ww-process32",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for developing a biosolids storage strategy for winter and wet periods.",
+   "topicId": "process-biosolids-storage-strategy",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: land application stops in winter, storage must bridge from freeze up to spring access.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Size the storage gap and evaluate the options, from added volume to winter hauling contracts"
+    },
+    {
+     "id": "step-01",
+     "label": "Calculate the production that accumulates between the last fall application and the first spring window"
+    },
+    {
+     "id": "step-04",
+     "label": "Select the option set and phase any construction into the capital plan with interim measures first"
+    },
+    {
+     "id": "step-02",
+     "label": "Survey the existing storage volume, its condition, and its odour and runoff controls"
+    },
+    {
+     "id": "step-06",
+     "label": "Review the storage performance after each winter and resize the plan from actual accumulation"
+    },
+    {
+     "id": "step-05",
+     "label": "Set the storage operating rules, including fill order, level limits, and inspection duties"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Accumulation is calculated before storage is sized, interim measures bridge any build period, and each winter tests the plan against reality."
+  },
+  {
+   "id": "wp4ww-process33",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for establishing a beneficial use partnership with agricultural producers.",
+   "topicId": "process-biosolids-beneficial-use-partnership",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: utility seeks long term land partners to replace short term, year to year arrangements.",
+   "cards": [
+    {
+     "id": "step-06",
+     "label": "Convert the successful pilot into the long term agreement and schedule annual joint reviews"
+    },
+    {
+     "id": "step-04",
+     "label": "Start with a pilot season on a limited land base with joint field inspections"
+    },
+    {
+     "id": "step-02",
+     "label": "Meet candidate producers, explain the program, quality data, and controls, and hear their concerns"
+    },
+    {
+     "id": "step-01",
+     "label": "Define what the utility needs from partners, including land base, seasons, and notice periods"
+    },
+    {
+     "id": "step-03",
+     "label": "Draft the partnership terms covering rates, fields, responsibilities, and exit provisions"
+    },
+    {
+     "id": "step-05",
+     "label": "Review the pilot with the partners and fix the operational issues before expanding"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Needs and open discussion come before terms are drafted, a supervised pilot proves the fit, and expansion follows evidence rather than hope."
+  },
+  {
+   "id": "wp4ww-process34",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for building a biosolids contingency plan for outlet loss.",
+   "topicId": "process-biosolids-outlet-contingency-plan",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: the main outlet could be lost through weather, regulation change, or partner withdrawal.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Survey the backup outlets, emergency storage, and hauling capacity available on short notice"
+    },
+    {
+     "id": "step-06",
+     "label": "Update the plan after the exercise and after any real outlet disruption"
+    },
+    {
+     "id": "step-04",
+     "label": "Cost the contingency options and pre approve the spending route for a real event"
+    },
+    {
+     "id": "step-05",
+     "label": "Write the plan, brief the solids and hauling teams, and run a tabletop exercise on one scenario"
+    },
+    {
+     "id": "step-01",
+     "label": "List the credible outlet loss scenarios and how much production each one displaces and for how long"
+    },
+    {
+     "id": "step-03",
+     "label": "Set the trigger points and decision authority for switching to each backup option"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Scenarios and displaced volumes come before backups are surveyed, triggers and spending are settled in advance, and exercises keep the plan usable."
+  },
+  {
+   "id": "wp4ww-process35",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for running a public engagement program for a biosolids facility expansion.",
+   "topicId": "process-biosolids-public-engagement",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: a storage and loading facility expansion needs community input before design is finalized.",
+   "cards": [
+    {
+     "id": "step-06",
+     "label": "Keep the contact channel open through construction and report back on the commitments made"
+    },
+    {
+     "id": "step-04",
+     "label": "Answer the logged concerns in design changes or in written explanations where design cannot change"
+    },
+    {
+     "id": "step-05",
+     "label": "Publish the engagement summary and the design responses before the approval application is filed"
+    },
+    {
+     "id": "step-01",
+     "label": "Identify the affected residents, producers, and community groups and what each one needs to know"
+    },
+    {
+     "id": "step-02",
+     "label": "Prepare plain language material on the project, the odour and traffic controls, and the approval process"
+    },
+    {
+     "id": "step-03",
+     "label": "Hold the engagement sessions and record every concern and question in a public log"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Audiences and honest material come before sessions are held, concerns are answered in design or in writing, and commitments are reported through construction."
+  },
+  {
+   "id": "wp4ww-process36",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for renewing a biosolids hauling and application contract.",
+   "topicId": "process-biosolids-contract-renewal",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: the current contract ends next season, performance and price must both be tested.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Run the procurement process and evaluate bids on capability and service as well as price"
+    },
+    {
+     "id": "step-02",
+     "label": "Update the scope, volumes, service standards, and reporting duties for the new term"
+    },
+    {
+     "id": "step-04",
+     "label": "Award the contract and set the start up meeting, routes, and seasonal schedule with the contractor"
+    },
+    {
+     "id": "step-06",
+     "label": "Hold the annual performance review and record the lessons for the next renewal"
+    },
+    {
+     "id": "step-05",
+     "label": "Monitor the first season closely against the service standards and correct issues early"
+    },
+    {
+     "id": "step-01",
+     "label": "Review the current contract performance, including missed windows, complaints, and record quality"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Past performance shapes the new scope before procurement runs, evaluation weighs service with price, and close first season monitoring protects the program."
+  },
+  {
+   "id": "wp4ww-process37",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for maintaining biosolids regulatory compliance across the utility.",
+   "topicId": "process-biosolids-regulatory-compliance",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: compliance covers production records, quality testing, application records, and reporting duties.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Assign each duty an owner and a backup and load the dates into the tracking system"
+    },
+    {
+     "id": "step-01",
+     "label": "Build the compliance calendar of every biosolids test, record, and report the requirements impose"
+    },
+    {
+     "id": "step-03",
+     "label": "Run the sampling and record keeping to the calendar and check completeness monthly"
+    },
+    {
+     "id": "step-06",
+     "label": "Audit the full biosolids record set annually and report the findings to leadership"
+    },
+    {
+     "id": "step-04",
+     "label": "Investigate and correct any missed or late duty and record the cause and the fix"
+    },
+    {
+     "id": "step-05",
+     "label": "File the reports on time and keep the evidence file ready for inspection"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The calendar and owners come before duties can be tracked, monthly checks catch gaps early, and the annual audit proves the record set is complete."
+  },
+  {
+   "id": "wp4ww-process38",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for building the annual biosolids production and outlet forecast.",
+   "topicId": "process-biosolids-annual-forecast",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: forecast supports hauling contracts, storage planning, and the operating budget.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Check the forecast against storage capacity and contracted hauling and flag any short month"
+    },
+    {
+     "id": "step-05",
+     "label": "Agree the corrective actions for flagged months and enter them in the solids program plan"
+    },
+    {
+     "id": "step-01",
+     "label": "Compile the last three years production, dryness, and outlet use by month and facility"
+    },
+    {
+     "id": "step-02",
+     "label": "Adjust the history for growth, process changes, and any new industrial loads expected"
+    },
+    {
+     "id": "step-06",
+     "label": "Compare actual production with the forecast quarterly and reforecast when variance persists"
+    },
+    {
+     "id": "step-03",
+     "label": "Build the month by month forecast of production, storage movement, and outlet demand"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "History is adjusted before it is projected, the forecast is tested against capacity and contracts, and quarterly comparison keeps it honest."
+  },
+  {
+   "id": "wp4ww-process39",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for running a utility wide energy audit program.",
+   "topicId": "process-energy-audit-program",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: audits will cover aeration, pumping, heating, and solids processes at all major facilities.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "Collect two years of energy use and flow and load data to rank facilities by energy intensity"
+    },
+    {
+     "id": "step-06",
+     "label": "Report verified savings to leadership and roll the audit cycle to the next facilities"
+    },
+    {
+     "id": "step-05",
+     "label": "Implement the no cost and low cost measures first and meter the result where practical"
+    },
+    {
+     "id": "step-04",
+     "label": "Rank the opportunities and build the implementation program with owners and dates"
+    },
+    {
+     "id": "step-03",
+     "label": "Quantify each saving opportunity with its cost, saving, and effect on process performance"
+    },
+    {
+     "id": "step-02",
+     "label": "Audit the highest intensity facilities first with operations staff walking every major load"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Intensity ranking sends auditors where the energy is, opportunities are quantified before ranking, and verified savings justify the next cycle."
+  }
+ ],
+ "missions": [
+  {
+   "id": "wp4ww-mission41",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 41: The Biogas Energy Shift",
+   "tasks": [
+    {
+     "taskId": "wp4ww-error60",
+     "revision": "r1",
+     "occurrenceId": "m41-t1"
+    },
+    {
+     "taskId": "wp4ww-process01",
+     "revision": "r1",
+     "occurrenceId": "m41-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp4ww-mission42",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 42: The Process Governance Board Quarterly Report Shift",
+   "tasks": [
+    {
+     "taskId": "wp4ww-process02",
+     "revision": "r1",
+     "occurrenceId": "m42-t1"
+    },
+    {
+     "taskId": "wp4ww-error61",
+     "revision": "r1",
+     "occurrenceId": "m42-t2"
+    },
+    {
+     "taskId": "wp4ww-error62",
+     "revision": "r1",
+     "occurrenceId": "m42-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp4ww-mission43",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 43: The Biogas Energy Shift",
+   "tasks": [
+    {
+     "taskId": "wp4ww-error63",
+     "revision": "r1",
+     "occurrenceId": "m43-t1"
+    },
+    {
+     "taskId": "wp4ww-process03",
+     "revision": "r1",
+     "occurrenceId": "m43-t2"
+    },
+    {
+     "taskId": "wp4ww-error64",
+     "revision": "r1",
+     "occurrenceId": "m43-t3"
+    },
+    {
+     "taskId": "wp4ww-error65",
+     "revision": "r1",
+     "occurrenceId": "m43-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp4ww-mission44",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 44: The Process Governance Management Review Shift",
+   "tasks": [
+    {
+     "taskId": "wp4ww-process04",
+     "revision": "r1",
+     "occurrenceId": "m44-t1"
+    },
+    {
+     "taskId": "wp4ww-error66",
+     "revision": "r1",
+     "occurrenceId": "m44-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp4ww-mission45",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 45: The Biogas Energy Shift",
+   "tasks": [
+    {
+     "taskId": "wp4ww-error67",
+     "revision": "r1",
+     "occurrenceId": "m45-t1"
+    },
+    {
+     "taskId": "wp4ww-process05",
+     "revision": "r1",
+     "occurrenceId": "m45-t2"
+    },
+    {
+     "taskId": "wp4ww-error68",
+     "revision": "r1",
+     "occurrenceId": "m45-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp4ww-mission46",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 46: The Process Governance Performance Dashboard Shift",
+   "tasks": [
+    {
+     "taskId": "wp4ww-process06",
+     "revision": "r1",
+     "occurrenceId": "m46-t1"
+    },
+    {
+     "taskId": "wp4ww-error69",
+     "revision": "r1",
+     "occurrenceId": "m46-t2"
+    },
+    {
+     "taskId": "wp4ww-error70",
+     "revision": "r1",
+     "occurrenceId": "m46-t3"
+    },
+    {
+     "taskId": "wp4ww-error71",
+     "revision": "r1",
+     "occurrenceId": "m46-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp4ww-mission47",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 47: The Chemical Program Cost Shift",
+   "tasks": [
+    {
+     "taskId": "wp4ww-error72",
+     "revision": "r1",
+     "occurrenceId": "m47-t1"
+    },
+    {
+     "taskId": "wp4ww-process07",
+     "revision": "r1",
+     "occurrenceId": "m47-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp4ww-mission48",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 48: The Process Governance Certification Compliance Program Shift",
+   "tasks": [
+    {
+     "taskId": "wp4ww-process08",
+     "revision": "r1",
+     "occurrenceId": "m48-t1"
+    },
+    {
+     "taskId": "wp4ww-error73",
+     "revision": "r1",
+     "occurrenceId": "m48-t2"
+    },
+    {
+     "taskId": "wp4ww-error74",
+     "revision": "r1",
+     "occurrenceId": "m48-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp4ww-mission49",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 49: The Chemical Program Cost Shift",
+   "tasks": [
+    {
+     "taskId": "wp4ww-error75",
+     "revision": "r1",
+     "occurrenceId": "m49-t1"
+    },
+    {
+     "taskId": "wp4ww-process09",
+     "revision": "r1",
+     "occurrenceId": "m49-t2"
+    },
+    {
+     "taskId": "wp4ww-error76",
+     "revision": "r1",
+     "occurrenceId": "m49-t3"
+    },
+    {
+     "taskId": "wp4ww-error77",
+     "revision": "r1",
+     "occurrenceId": "m49-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp4ww-mission50",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 50: The Process Governance Rate Study Shift",
+   "tasks": [
+    {
+     "taskId": "wp4ww-process10",
+     "revision": "r1",
+     "occurrenceId": "m50-t1"
+    },
+    {
+     "taskId": "wp4ww-error78",
+     "revision": "r1",
+     "occurrenceId": "m50-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp4ww-mission51",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 51: The Chemical Program Cost Shift",
+   "tasks": [
+    {
+     "taskId": "wp4ww-error79",
+     "revision": "r1",
+     "occurrenceId": "m51-t1"
+    },
+    {
+     "taskId": "wp4ww-process100",
+     "revision": "r1",
+     "occurrenceId": "m51-t2"
+    },
+    {
+     "taskId": "wp4ww-error80",
+     "revision": "r1",
+     "occurrenceId": "m51-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp4ww-mission52",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 52: The Process Governance Public Accountability Report Shift",
+   "tasks": [
+    {
+     "taskId": "wp4ww-process11",
+     "revision": "r1",
+     "occurrenceId": "m52-t1"
+    },
+    {
+     "taskId": "wp4ww-error81",
+     "revision": "r1",
+     "occurrenceId": "m52-t2"
+    },
+    {
+     "taskId": "wp4ww-error82",
+     "revision": "r1",
+     "occurrenceId": "m52-t3"
+    },
+    {
+     "taskId": "wp4ww-error83",
+     "revision": "r1",
+     "occurrenceId": "m52-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp4ww-mission53",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 53: The Chemical Program Cost Shift",
+   "tasks": [
+    {
+     "taskId": "wp4ww-error84",
+     "revision": "r1",
+     "occurrenceId": "m53-t1"
+    },
+    {
+     "taskId": "wp4ww-process12",
+     "revision": "r1",
+     "occurrenceId": "m53-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp4ww-mission54",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 54: The Process Nutrient Ten Year Strategy Shift",
+   "tasks": [
+    {
+     "taskId": "wp4ww-process13",
+     "revision": "r1",
+     "occurrenceId": "m54-t1"
+    },
+    {
+     "taskId": "wp4ww-error85",
+     "revision": "r1",
+     "occurrenceId": "m54-t2"
+    },
+    {
+     "taskId": "wp4ww-error86",
+     "revision": "r1",
+     "occurrenceId": "m54-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp4ww-mission55",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 55: The Energy Benchmark Shift",
+   "tasks": [
+    {
+     "taskId": "wp4ww-error87",
+     "revision": "r1",
+     "occurrenceId": "m55-t1"
+    },
+    {
+     "taskId": "wp4ww-process14",
+     "revision": "r1",
+     "occurrenceId": "m55-t2"
+    },
+    {
+     "taskId": "wp4ww-error88",
+     "revision": "r1",
+     "occurrenceId": "m55-t3"
+    },
+    {
+     "taskId": "wp4ww-error89",
+     "revision": "r1",
+     "occurrenceId": "m55-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp4ww-mission56",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 56: The Process Nutrient Phosphorus Strategy Balance Shift",
+   "tasks": [
+    {
+     "taskId": "wp4ww-process15",
+     "revision": "r1",
+     "occurrenceId": "m56-t1"
+    },
+    {
+     "taskId": "wp4ww-error90",
+     "revision": "r1",
+     "occurrenceId": "m56-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp4ww-mission57",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 57: The Energy Benchmark Shift",
+   "tasks": [
+    {
+     "taskId": "wp4ww-error91",
+     "revision": "r1",
+     "occurrenceId": "m57-t1"
+    },
+    {
+     "taskId": "wp4ww-process16",
+     "revision": "r1",
+     "occurrenceId": "m57-t2"
+    },
+    {
+     "taskId": "wp4ww-error92",
+     "revision": "r1",
+     "occurrenceId": "m57-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp4ww-mission58",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 58: The Process Nutrient Carbon Strategy Shift",
+   "tasks": [
+    {
+     "taskId": "wp4ww-process17",
+     "revision": "r1",
+     "occurrenceId": "m58-t1"
+    },
+    {
+     "taskId": "wp4ww-error93",
+     "revision": "r1",
+     "occurrenceId": "m58-t2"
+    },
+    {
+     "taskId": "wp4ww-error94",
+     "revision": "r1",
+     "occurrenceId": "m58-t3"
+    },
+    {
+     "taskId": "wp4ww-error95",
+     "revision": "r1",
+     "occurrenceId": "m58-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp4ww-mission59",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 59: The Energy Benchmark Shift",
+   "tasks": [
+    {
+     "taskId": "wp4ww-error96",
+     "revision": "r1",
+     "occurrenceId": "m59-t1"
+    },
+    {
+     "taskId": "wp4ww-process18",
+     "revision": "r1",
+     "occurrenceId": "m59-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp4ww-mission60",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 60: The Process Nutrient Trading Feasibility Study Shift",
+   "tasks": [
+    {
+     "taskId": "wp4ww-process19",
+     "revision": "r1",
+     "occurrenceId": "m60-t1"
+    },
+    {
+     "taskId": "wp4ww-error97",
+     "revision": "r1",
+     "occurrenceId": "m60-t2"
+    },
+    {
+     "taskId": "wp4ww-error98",
+     "revision": "r1",
+     "occurrenceId": "m60-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Senior wastewater operations and management chapters (nutrient strategy, biosolids, energy)"
+  },
+  {
+   "id": "wpi-ntk-2025",
+   "title": "WPI, 2025 Need-to-Know Criteria, Wastewater Treatment Class IV",
+   "locator": "https://gowpi.org/services/2025-need-to-know-criteria/"
+  },
+  {
+   "id": "ccme-strategy",
+   "title": "CCME, Canada-wide Strategy for the Management of Municipal Wastewater Effluent, 2009",
+   "locator": "National effluent quality context for Canadian municipal wastewater"
+  },
+  {
+   "id": "wser",
+   "title": "Government of Canada, Wastewater Systems Effluent Regulations (Fisheries Act)",
+   "locator": "Federal effluent requirements, general reference"
+  },
+  {
+   "id": "wef-nutrient",
+   "title": "WEF, Manual of Practice material on biological nutrient removal",
+   "locator": "Nutrient removal background (not Canadian law)"
+  },
+  {
+   "id": "ccohs-safety",
+   "title": "CCOHS, OSH Answers (chemical safety, confined spaces, lockout)",
+   "locator": "https://www.ccohs.ca/oshanswers/"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "d2dee22e8e62c35240e1ca6c21e2baa3c15b2bce495f85bfc9081b7d09dc1727",
+  "taskReceipts": [
+   {
+    "taskId": "wp4ww-error60",
+    "revision": "r1",
+    "sha256": "890654ceddb4e74f73c4419641526bac94fe0ba8d565be56ca54f393c63e76ed",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error61",
+    "revision": "r1",
+    "sha256": "4edb6111c2f153e7be09cafc91f5470f174f5e4350d67161fef1f0db38e2f248",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error62",
+    "revision": "r1",
+    "sha256": "9836687633162f944df4f7898a414e4d609e10a4b0c821541353c79fcc4a6c1f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error63",
+    "revision": "r1",
+    "sha256": "38738e548a8727e1ddee31d835c8a458c41c165b372b7b6603f6382ba12ba6d1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error64",
+    "revision": "r1",
+    "sha256": "9e3483f8990738ea9934e5227dea67e3729187570c975de25bcc4e1a3f7cb960",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error65",
+    "revision": "r1",
+    "sha256": "36245dc15cd31dfcfbae6ffe37ad75bc421a6d699051494db6026c0879bc9352",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error66",
+    "revision": "r1",
+    "sha256": "754f98a539a8d0e8a04fd9e03e7cbb5f671d2b948ee9e72a551b12d338ab4ee8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error67",
+    "revision": "r1",
+    "sha256": "4218a7b2e8c65a7140403984b2934897fa8e43da683aef01787b3753046e1212",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error68",
+    "revision": "r1",
+    "sha256": "5f271e3973f3ee5b5f23f5de4764d7c52c308f2fb9840df4178c5ffcc59bdbc0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error69",
+    "revision": "r1",
+    "sha256": "c3e99f248f0f035e6d2219183fff78fe433bbba37d752a5e103a8efc76e8806f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error70",
+    "revision": "r1",
+    "sha256": "016fce3b52326fa002de6a062c38f856496a1557850a2d0b9103971fd3debfa5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error71",
+    "revision": "r1",
+    "sha256": "61d49013519cf65a5827b78418be20215644abb0bbbd52afb475b7109a9fdb4f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error72",
+    "revision": "r1",
+    "sha256": "b29e658fafc39c94961454f30263cc015531bcbfbd9ba4d44d50fd0b24ff5f2b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error73",
+    "revision": "r1",
+    "sha256": "afd81d1beeaa62bafe56d50586d137e03c9c6541543fb52c02a93c53feb0c80f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error74",
+    "revision": "r1",
+    "sha256": "0f930f4a3b0ed86ba309abec665c15783d6fbecfbdae50f4f6dbe9fc95fc2c4a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error75",
+    "revision": "r1",
+    "sha256": "d16515ab63f707cd8f979edb65df5cc8d0d645d6ff95161eefdf835baa81c1ff",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error76",
+    "revision": "r1",
+    "sha256": "ef6fbf313b5014741a18ee40014012d1e6ca0dde1eff2ef461bc423452d2a64b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error77",
+    "revision": "r1",
+    "sha256": "6ca169c95ccef696e47c7c57ec05bd33fea44af3ba9a0e1811045047f4f1d933",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error78",
+    "revision": "r1",
+    "sha256": "fd1ad17eec0952ebe20f0b4bd3de399db7b4358bd7a2b133155cd3c541eedf08",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error79",
+    "revision": "r1",
+    "sha256": "35860f9197e3325d763475a2c4315e844f04705903be89cfff670ca1de97ac1e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error80",
+    "revision": "r1",
+    "sha256": "02e7bef19dfc61c710b6f67d0865dc54c9a94a3e61742cdb48d935ed70b5becb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error81",
+    "revision": "r1",
+    "sha256": "233366c3f13b3a98f3e06b5c06e4dbd1458c2e59eaf3ef5dc484179dec332cd5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error82",
+    "revision": "r1",
+    "sha256": "def3a3a358a1d96154f785a43cf8b2c6d621156e82cc5412dd90afa14096cade",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error83",
+    "revision": "r1",
+    "sha256": "c355ba5f9c91a019183ca97d69d331e4b6e2eacdb6fa3d8af21977ae5d63540d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error84",
+    "revision": "r1",
+    "sha256": "64226e086ac7235a694cabc789602f4a5984d18b75fec48a3c22f8d15db01607",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error85",
+    "revision": "r1",
+    "sha256": "912b670af1648852fa76bb52b95d1759c8562510892925e51320b474fd68f313",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error86",
+    "revision": "r1",
+    "sha256": "989f2028b80193bc45c9aee3c20d516e6d49bf26258e01ba73612bee443fcf67",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error87",
+    "revision": "r1",
+    "sha256": "92e0da6a28365c6a77d9d031d84eba48af20112277d5a9c31ed0829174d2e5f3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error88",
+    "revision": "r1",
+    "sha256": "d84fa21d195c5310bcde82245d9698abc20679acae249041fe0ba05ea1a05ba9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error89",
+    "revision": "r1",
+    "sha256": "af66f2ab452a395a2a52378db6071612376d1c88fa12cd07eff483a586680b64",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error90",
+    "revision": "r1",
+    "sha256": "663b00f347ef9586e030a37f8949f62d3e1c12e6f92f25403caeaff61ebe56a4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error91",
+    "revision": "r1",
+    "sha256": "62f0e374464b256bda681b8510e8aade6a4f1c5253c7ea5f512d800e8094bf60",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error92",
+    "revision": "r1",
+    "sha256": "8a4f49a74c7b55e129591470166a1c379117de551122321e1fa45ccfbd75784b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error93",
+    "revision": "r1",
+    "sha256": "faee38a4bfd0df8ac0d3f3a4df4f2ae028cd988599ef3cff61c82a140b54238c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error94",
+    "revision": "r1",
+    "sha256": "4ad3fb20e02b1ba072f23d62b145b217762bd20342e01845074a230cfa257af9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error95",
+    "revision": "r1",
+    "sha256": "683a12bde59fcd3188e259d5749119c405f888faaaea999f6cc70a94b39b45e3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error96",
+    "revision": "r1",
+    "sha256": "e69070166b79c06604e6f04d3fe65a5ce36fa9b72561b23088b99e95f07af983",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error97",
+    "revision": "r1",
+    "sha256": "15a45bdae8fb62ced44bf09e10d818cde8c9d78f1062c6f4b84cc2ddb6c43a87",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error98",
+    "revision": "r1",
+    "sha256": "1fe45ba3487f0fc8a831dbc90bd55579b79050a07e6b0402b9104e6a876c29f4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error99",
+    "revision": "r1",
+    "sha256": "3df7f8f2d3fcafa8619d93355a97a975ca819e0e9b1e1d0939535205ea6df11f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-process01",
+    "revision": "r1",
+    "sha256": "73ed28b736b6cfbd5fc257c418d579912230006a699d38b710cf76ff9745d1ba",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-process02",
+    "revision": "r1",
+    "sha256": "06b1d508add033c42b73c18865666d6230fd34e6e0e1994f2960c177e705f278",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-process03",
+    "revision": "r1",
+    "sha256": "7929c35439418b1023ddc87d68234f220cb1d82770b85dc7ce83ac93ada5374f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-process04",
+    "revision": "r1",
+    "sha256": "dbed6f0d1be5191c339df7bb82146d1fe7abe92eeaba21778429db73094607f5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-process05",
+    "revision": "r1",
+    "sha256": "335adf64e6b9725bfd49b6c47059d43659a4477eb5eb1b7a35d5711f73afd0e0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-process06",
+    "revision": "r1",
+    "sha256": "1cdf276f7a4307cc700ad0425290c1ce5f5b4f706d579b2e73ba168a73545573",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-process07",
+    "revision": "r1",
+    "sha256": "7936be1782b317ea4805f907849a09ddd0e74edc77c746343b92f8d9dd030f8d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-process08",
+    "revision": "r1",
+    "sha256": "bd7a76011ca9be5057c7183e3481d17b15013cf74ada1e2302459d761bdd09a3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-process09",
+    "revision": "r1",
+    "sha256": "5b40d2f53cafbcde2d0d78f10a065d9e989ce9b57d87847fa8e7bd5070e55faf",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-process10",
+    "revision": "r1",
+    "sha256": "584b02c38d1fa6d4a1a9b7ab7b3ce6b7eadc7b150d09e7d17b548b4b341b899a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-process100",
+    "revision": "r1",
+    "sha256": "1082bc15520796421b30ec217a4292001dd74c5db58f7ea3fdd5036023874fc1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-process11",
+    "revision": "r1",
+    "sha256": "c2c9355c2e60c78a6de510ce03154c2ed62a708a8047a5774a0de6ed5368ec1e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-process12",
+    "revision": "r1",
+    "sha256": "2501d82f8dfd530bc4fad4635ca77b4979d184d374678a0c026be8d1cc634ab3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-process13",
+    "revision": "r1",
+    "sha256": "3d0386ab5a73be6509a9a338d7c99f8fc84a0921c00c285c55b1e24d5e07a59d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-process14",
+    "revision": "r1",
+    "sha256": "a319fe321395b876f54edbf605ef114ebc2edef9f91b20960eafd24f2979700d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-process15",
+    "revision": "r1",
+    "sha256": "69c9efead1e9ffc84ea3a93e73884ba6c50b4d5dd102e29b7e2849b7badbd5d5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-process16",
+    "revision": "r1",
+    "sha256": "0401cf706c92210cb2001433cdbb53bf49254e5bce269cbbca8a4ce87174270f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-process17",
+    "revision": "r1",
+    "sha256": "5ebf649f443a006d5ff5f31d42449da27f8154ae8a82d1b3e2e25ab24fe431cf",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-process18",
+    "revision": "r1",
+    "sha256": "81decd4617ff911deb65b57931c5a3e579f9ee0898c2a549b7fe2390644e9514",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-process19",
+    "revision": "r1",
+    "sha256": "18f5d17f85ff62c7716445d20e012a2f25087038e7219a6316f9f53304000308",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-process20",
+    "revision": "r1",
+    "sha256": "bf6e9d411f800cdff77381fd703ac1cf116a4e73c35cf39691a773129ca06a85",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-process21",
+    "revision": "r1",
+    "sha256": "11e7c60781e05782eef43a7a6520d97b35a59c3c986954647c560462f8c95295",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-process22",
+    "revision": "r1",
+    "sha256": "7506a3295a64c3b1e6f9ae71220c8493d680a771a32342d5896b15f0e7580416",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-process23",
+    "revision": "r1",
+    "sha256": "9ba2853e33bf5808b63c7328f5d25808eea2f5cfeebe54146c732a21cf34f435",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-process24",
+    "revision": "r1",
+    "sha256": "fddf3f0b0d059be73170a02de6fc9326ba86786efaaa007205185bd0f3aa1d38",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-process25",
+    "revision": "r1",
+    "sha256": "9ce34a7aeddfadb06dd4d37e2a12253a5848cbb5397b910fe5f82f47ec3e5256",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-process26",
+    "revision": "r1",
+    "sha256": "6b26b3475d546d2fffd31e9ab9f7922e93d36622daf9c461b0955d81d841751d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-process27",
+    "revision": "r1",
+    "sha256": "0f60559e18dd309efb2ce34d3d1d68438a97939fc195173b47c7f1b9ff6d9dc9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-process28",
+    "revision": "r1",
+    "sha256": "0f755c21cf5c21fc01891c7546ad6968e4d3481857f6bcc61f065e0ccbb1bb6b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-process29",
+    "revision": "r1",
+    "sha256": "c20f392ef8651314c5f8e6e4751ce4025ab58fc02d04415c4bfeca040345d3b5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-process30",
+    "revision": "r1",
+    "sha256": "63ce4185263956316d7add815e4dc0f00d3faad85b5e848726ee423f3097652d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-process31",
+    "revision": "r1",
+    "sha256": "1734071e17b65e153501aa517e6c8e64d2ff68a4ff72ad2005d7017c77fe207f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-process32",
+    "revision": "r1",
+    "sha256": "33a67016eee8b2c93a791ffe0769c09bbdd9367f7b9c062d7435baa3be6da92f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-process33",
+    "revision": "r1",
+    "sha256": "8276c63b3e1b745b4ead693b8eba17757bc9ba27bb675382cdd8f49b51b38f43",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-process34",
+    "revision": "r1",
+    "sha256": "7e3503323b982de12f0ca19d851f90f4e612a3877c2faa34f752c0e65fb2102b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-process35",
+    "revision": "r1",
+    "sha256": "ac1364dad595f3e3512b1303ba26f883a78990c654157c78d0c5c21fde37a520",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-process36",
+    "revision": "r1",
+    "sha256": "d31ecbbc035a9fd105ddec2f9af0848b0b19caa254f4c07603526bf5701c8e6f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-process37",
+    "revision": "r1",
+    "sha256": "85b834c9cd79f95cf832a21113542acce8c57ce86999c8162d7b9ff5614f2c18",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-process38",
+    "revision": "r1",
+    "sha256": "f907fa597c11787ba9ae98dc229c839e324549204230e00d225ca4e0806e6e63",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-process39",
+    "revision": "r1",
+    "sha256": "67d55c5357d6165b7b47ef19d0b826530c6623d917a1353f95638f0cb917b97a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "wp4ww-mission41",
+    "revision": "r1",
+    "sha256": "cfdac4deabfcecd58ee60db6716998cde08fd30dbb10a1ee67902c42e4f91393"
+   },
+   {
+    "missionId": "wp4ww-mission42",
+    "revision": "r1",
+    "sha256": "d1e5aad5f51cb38420f2cc5c67a212bf80f529ad86eb650f8539dd46357895f5"
+   },
+   {
+    "missionId": "wp4ww-mission43",
+    "revision": "r1",
+    "sha256": "a549c2ed30009e0e53f2d457bd1a73ec8f92333d24b83099f20dd6421ef0bd02"
+   },
+   {
+    "missionId": "wp4ww-mission44",
+    "revision": "r1",
+    "sha256": "fbcce7e251595be9f8be8057267e3ab0c85ee7dab52d900dac1d2fd6543d0139"
+   },
+   {
+    "missionId": "wp4ww-mission45",
+    "revision": "r1",
+    "sha256": "d9c596867fd6548e2766cf14a26c823ea2de968254aaf82dd98e26e8d80e25c4"
+   },
+   {
+    "missionId": "wp4ww-mission46",
+    "revision": "r1",
+    "sha256": "f5d223a7ff1bd77f1ed56249e0144bf1d4c39c0120a5a97b20dec6cd7a29c146"
+   },
+   {
+    "missionId": "wp4ww-mission47",
+    "revision": "r1",
+    "sha256": "8e08f53e431826d1499a636faa965bf6960f716353170070b72c0dfc288dc36d"
+   },
+   {
+    "missionId": "wp4ww-mission48",
+    "revision": "r1",
+    "sha256": "6b6f0da0795ebea6c204ac206cb7826ce32db785b62f21b9ccaa8e7ffbfaeba8"
+   },
+   {
+    "missionId": "wp4ww-mission49",
+    "revision": "r1",
+    "sha256": "feea8d1108bc66fed102df0e71090dc7c99c421792d84da335597d0a351d165d"
+   },
+   {
+    "missionId": "wp4ww-mission50",
+    "revision": "r1",
+    "sha256": "5d2656f9ff34bd0f3e4a3ac3a336b9496fe49a72591127d8e95db175dd02018a"
+   },
+   {
+    "missionId": "wp4ww-mission51",
+    "revision": "r1",
+    "sha256": "e2f21dbabb31bb952e1011858a959c3641e3e4449868bd55f2095aefaabb84a6"
+   },
+   {
+    "missionId": "wp4ww-mission52",
+    "revision": "r1",
+    "sha256": "1993f1bfc5b1ef3f9cccabe8e1ded9065b379a3fdf94a81ace690b985b89257a"
+   },
+   {
+    "missionId": "wp4ww-mission53",
+    "revision": "r1",
+    "sha256": "ccf4e2a453a3229804b42a771e816829996bdb0af1582e54f052bd2cf64bd3e3"
+   },
+   {
+    "missionId": "wp4ww-mission54",
+    "revision": "r1",
+    "sha256": "dd0bb9a09d00c6480126a1acbf3dc2e462a163b6e6ec5d3d185be02fd9508450"
+   },
+   {
+    "missionId": "wp4ww-mission55",
+    "revision": "r1",
+    "sha256": "c1cd8e248212acd62e0992d93cfced3744daa18b539e151a4c554ed3e8688cdc"
+   },
+   {
+    "missionId": "wp4ww-mission56",
+    "revision": "r1",
+    "sha256": "49b351177ca21d97e2e749246d7934228a027fb1f43d9dca2d5c7fe6fb9c0f79"
+   },
+   {
+    "missionId": "wp4ww-mission57",
+    "revision": "r1",
+    "sha256": "6ac35f2a07958b17800fcf6719c68c9cbdbaa59aef1591e4490b5f4a2f514d30"
+   },
+   {
+    "missionId": "wp4ww-mission58",
+    "revision": "r1",
+    "sha256": "e322298a6da2dfe660d3e9b79b017ec89135ef3d21e2cbba1d92492faff6884f"
+   },
+   {
+    "missionId": "wp4ww-mission59",
+    "revision": "r1",
+    "sha256": "16c9d648a20241b416bf0e8ef3267813a12493929a915ecd4acfebb157f722f0"
+   },
+   {
+    "missionId": "wp4ww-mission60",
+    "revision": "r1",
+    "sha256": "4a8cf47becb322589533854bdf1fa33a97eda46532ce11c10c8c6bc9872b857c"
+   }
+  ]
+ }
+}

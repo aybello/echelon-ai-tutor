@@ -1,0 +1,5545 @@
+{
+ "courseKey": "wpi-class2-water-dist",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "wp2wd-process40",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "flushing-program-priority-scoring",
+   "prompt": "Order the steps for scoring and ranking mains for the next flushing cycle.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: ranking all candidate mains for next year program.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Score each main for residual history, complaint history and water age"
+    },
+    {
+     "id": "c2",
+     "label": "Add a score factor for main material and age where records support it"
+    },
+    {
+     "id": "c3",
+     "label": "Total the scores and rank the mains from highest need to lowest"
+    },
+    {
+     "id": "c4",
+     "label": "Match the ranked list to the crew time and water budget available"
+    },
+    {
+     "id": "c5",
+     "label": "Set the cut line and list the mains deferred to the following cycle"
+    },
+    {
+     "id": "c6",
+     "label": "File the scoring sheet so next year ranking starts from this record"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Scoring makes the priority order defensible and repeatable. Matching the ranked list to real crew and water budgets prevents an approved program that cannot be finished, and filing the scores keeps the reasoning for deferred mains on record."
+  },
+  {
+   "id": "wp2wd-process41",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "storage-turnover-program",
+   "prompt": "Order the steps for setting up a storage turnover management program.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: all storage facilities in the system.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Record the usable volume and normal level range for each facility"
+    },
+    {
+     "id": "c2",
+     "label": "Calculate the current turnover time for each facility from demand records"
+    },
+    {
+     "id": "c3",
+     "label": "Set a target turnover range for each facility by season"
+    },
+    {
+     "id": "c4",
+     "label": "Adjust level setpoints and pump controls to meet the targets"
+    },
+    {
+     "id": "c5",
+     "label": "Monitor water age indicators such as residuals at facility outlets"
+    },
+    {
+     "id": "c6",
+     "label": "Review turnover monthly and report facilities outside target"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Turnover targets are meaningless until current turnover is calculated from real demand. Setpoints are the control that achieves the target, outlet residuals show whether age is actually improving, and monthly review keeps storage from drifting back to old habits."
+  },
+  {
+   "id": "wp2wd-process42",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "storage-inspection-program-setup",
+   "prompt": "Order the steps for setting up a storage inspection program.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: program for elevated tanks, standpipes and ground reservoirs.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Inventory all storage facilities with type, age and coating history"
+    },
+    {
+     "id": "c2",
+     "label": "Set inspection intervals for external, internal and coating assessments"
+    },
+    {
+     "id": "c3",
+     "label": "Create checklists covering structure, coating, vents, overflows and security"
+    },
+    {
+     "id": "c4",
+     "label": "Schedule the first cycle so the oldest and poorest condition facilities come first"
+    },
+    {
+     "id": "c5",
+     "label": "Assign qualified inspectors or contract the internal inspections"
+    },
+    {
+     "id": "c6",
+     "label": "File inspection reports and link deficiencies to work orders"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The inventory and condition history decide the inspection order. Checklists keep every facility judged on the same items, qualified inspection matters most for internal work, and linking reports to work orders ensures findings become repairs."
+  },
+  {
+   "id": "wp2wd-process43",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "storage-cleaning-program",
+   "prompt": "Order the steps for planning a reservoir cleaning cycle.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: one ground reservoir due for cleaning.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Review the last cleaning record and recent sediment and quality results"
+    },
+    {
+     "id": "c2",
+     "label": "Schedule the cleaning for a low demand period and confirm alternate storage"
+    },
+    {
+     "id": "c3",
+     "label": "Notify operations and customers who could be affected by the outage"
+    },
+    {
+     "id": "c4",
+     "label": "Drain and clean the reservoir under the confined space and disinfection procedures"
+    },
+    {
+     "id": "c5",
+     "label": "Inspect the interior during cleaning and record coating and structure condition"
+    },
+    {
+     "id": "c6",
+     "label": "Disinfect, refill, sample and return the reservoir only after results are accepted"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Cleaning is scheduled around demand and alternate storage so supply is never at risk. The drained reservoir is also the best inspection opportunity, and return to service waits for accepted samples, not just for the cleaning to finish."
+  },
+  {
+   "id": "wp2wd-process44",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "storage-level-control-review",
+   "prompt": "Order the steps for reviewing storage level controls after repeated overflow alarms.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: one elevated tank with overflow alarms in the past month.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Review alarm records and the tank level trend for each overflow event"
+    },
+    {
+     "id": "c2",
+     "label": "Check the level sensor readings against a manual level measurement"
+    },
+    {
+     "id": "c3",
+     "label": "Inspect altitude valve or pump control settings that fill the tank"
+    },
+    {
+     "id": "c4",
+     "label": "Correct the sensor or control fault found"
+    },
+    {
+     "id": "c5",
+     "label": "Test the controls through a full fill cycle while watching levels"
+    },
+    {
+     "id": "c6",
+     "label": "Record the fault, the correction and the test result in the facility log"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Alarm history shows the pattern, but the sensor must be proven against a manual measurement before controls are blamed. The fault is corrected, then proven by a watched fill cycle, because an untested fix for an overflow is only a hope."
+  },
+  {
+   "id": "wp2wd-process45",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "storage-ice-management-program",
+   "prompt": "Order the steps for a winter ice management program for elevated storage.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: elevated tanks in a cold prairie winter.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Review last winter ice records and any damage found at spring inspection"
+    },
+    {
+     "id": "c2",
+     "label": "Confirm circulation or mixing measures are operating before freeze up"
+    },
+    {
+     "id": "c3",
+     "label": "Set winter level ranges that reduce ice formation risk"
+    },
+    {
+     "id": "c4",
+     "label": "Monitor tank levels and temperatures through the coldest periods"
+    },
+    {
+     "id": "c5",
+     "label": "Inspect accessible vents, ladders and overflow for ice blockage after cold snaps"
+    },
+    {
+     "id": "c6",
+     "label": "Record ice conditions and plan any spring repairs from the findings"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Ice management starts before freeze up, because circulation must be running before ice forms. Winter level ranges and monitoring limit damage during cold snaps, and spring repairs are planned from recorded conditions rather than rediscovered damage."
+  },
+  {
+   "id": "wp2wd-process46",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "storage-security-program",
+   "prompt": "Order the steps for a storage facility security and access review.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: all storage sites in an annual security review.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Visit each site and check fencing, gates, locks and signage"
+    },
+    {
+     "id": "c2",
+     "label": "Check hatch and vent screens and locks for damage or gaps"
+    },
+    {
+     "id": "c3",
+     "label": "Review the access log and key control records for each site"
+    },
+    {
+     "id": "c4",
+     "label": "Repair or replace failed security hardware found during the visits"
+    },
+    {
+     "id": "c5",
+     "label": "Update the site security checklist and the key inventory"
+    },
+    {
+     "id": "c6",
+     "label": "Report the review and any unresolved risks to the supervisor"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Security is verified by visiting sites, not by assuming last year condition holds. Hatches and vents protect water quality directly, key control shows who can enter, and unresolved risks are reported rather than left in a checklist."
+  },
+  {
+   "id": "wp2wd-process47",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "storage-water-age-investigation",
+   "prompt": "Order the steps for investigating high water age in a low demand storage zone.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: one reservoir serving a slow growing area with falling residuals.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm low residuals at the reservoir outlet and in the served area"
+    },
+    {
+     "id": "c2",
+     "label": "Calculate the current turnover from level records and zone demand"
+    },
+    {
+     "id": "c3",
+     "label": "Check whether operating levels can be lowered without risking fire storage"
+    },
+    {
+     "id": "c4",
+     "label": "Trial the lower level range and monitor outlet residuals"
+    },
+    {
+     "id": "c5",
+     "label": "If age remains high, evaluate mixing or a smaller active volume option"
+    },
+    {
+     "id": "c6",
+     "label": "Record the decision and the new operating range for the facility"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Low outlet residuals confirm the complaint is a storage age problem. Turnover calculation quantifies it, a level trial is the lowest cost remedy and is monitored before capital options are considered, and the chosen range is recorded for all shifts."
+  },
+  {
+   "id": "wp2wd-process48",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "storage-overflow-response-program",
+   "prompt": "Order the steps in the program response to a storage overflow event.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: one tank overflow reported overnight.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm the overflow has stopped and check the site for erosion or property damage"
+    },
+    {
+     "id": "c2",
+     "label": "Record the level trend and the control settings at the time of the event"
+    },
+    {
+     "id": "c3",
+     "label": "Notify the supervisor and document any water loss volume estimate"
+    },
+    {
+     "id": "c4",
+     "label": "Inspect the level controls and alarms for the cause"
+    },
+    {
+     "id": "c5",
+     "label": "Repair the fault and test the high level alarm before returning to normal operation"
+    },
+    {
+     "id": "c6",
+     "label": "File the event report and add the facility to closer monitoring"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The site is made safe and damage is recorded first. The cause is found in controls and alarms, not assumed, the alarm is tested before normal operation resumes, and closer monitoring follows because one overflow often repeats."
+  },
+  {
+   "id": "wp2wd-process49",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "storage-decommissioning-plan",
+   "prompt": "Order the steps for planning the decommissioning of an old standpipe.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: planning stage for removing a standpipe from service.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm the standpipe is no longer needed for storage or fire protection with system records"
+    },
+    {
+     "id": "c2",
+     "label": "Plan how demand and fire flow will be met without the facility"
+    },
+    {
+     "id": "c3",
+     "label": "Notify affected customers and the fire department of the planned removal date"
+    },
+    {
+     "id": "c4",
+     "label": "Drain the facility and disconnect it from the distribution system"
+    },
+    {
+     "id": "c5",
+     "label": "Remove or secure the structure under the approved work plan"
+    },
+    {
+     "id": "c6",
+     "label": "Update system maps, storage records and the asset register"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Need is proven from records before a facility is retired, and replacement supply and fire protection are planned before notification. Disconnection precedes structural work, and closing the records prevents future crews from planning around a facility that no longer exists."
+  },
+  {
+   "id": "wp2wd-process50",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "storage-annual-condition-report",
+   "prompt": "Order the steps for preparing the annual storage condition report.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: report covering all storage facilities.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Compile the year inspection findings and photographs for each facility"
+    },
+    {
+     "id": "c2",
+     "label": "Summarize cleaning, repairs and overflow or ice events for the year"
+    },
+    {
+     "id": "c3",
+     "label": "Rank facilities by condition and by consequence of failure"
+    },
+    {
+     "id": "c4",
+     "label": "Estimate the next five year inspection, cleaning and repair needs"
+    },
+    {
+     "id": "c5",
+     "label": "Identify any facility needing capital assessment in the coming year"
+    },
+    {
+     "id": "c6",
+     "label": "Present the report to management and file it with the asset records"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The annual report combines inspections and events so condition trends are visible. Ranking by condition and consequence directs money to the facility whose failure would hurt most, and the five year view prevents surprise capital needs."
+  },
+  {
+   "id": "wp2wd-process51",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "pump-station-duty-rotation-program",
+   "prompt": "Order the steps for setting up a duty and standby pump rotation program.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: one booster station with three similar pumps.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Record run hours for each pump from the station log"
+    },
+    {
+     "id": "c2",
+     "label": "Set the rotation order so run hours equalize across the pumps"
+    },
+    {
+     "id": "c3",
+     "label": "Program or schedule the lead pump change to follow the rotation"
+    },
+    {
+     "id": "c4",
+     "label": "Run each standby pump under load during the first rotation cycle"
+    },
+    {
+     "id": "c5",
+     "label": "Check for vibration, leaks and abnormal noise during each test run"
+    },
+    {
+     "id": "c6",
+     "label": "Record the rotation and run hours in the station log"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Rotation starts from actual run hours so equalization is real. Standby pumps are proven under load, not just started, because a pump that cannot carry load is not a standby, and the log keeps the rotation honest."
+  },
+  {
+   "id": "wp2wd-process52",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "pump-station-alarm-response",
+   "prompt": "Order the steps for responding to a high wet well or high discharge pressure alarm at a booster station.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: one night alarm at an unattended booster station.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Acknowledge the alarm and check station pressures and levels remotely if available"
+    },
+    {
+     "id": "c2",
+     "label": "Attend the station and check for flooding, leaks or a closed valve condition"
+    },
+    {
+     "id": "c3",
+     "label": "Check which pumps are running and compare discharge pressure with normal"
+    },
+    {
+     "id": "c4",
+     "label": "Switch to the standby pump if the duty pump is the cause"
+    },
+    {
+     "id": "c5",
+     "label": "Restore normal operation and confirm pressures return to range"
+    },
+    {
+     "id": "c6",
+     "label": "Record the alarm, cause and actions in the station log and notify the supervisor"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Remote checks shape the response before arrival, but the cause is confirmed at the station. Switching to standby restores supply while the fault is isolated, and the log plus notification close the event for the next shift."
+  },
+  {
+   "id": "wp2wd-process53",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "pump-station-efficiency-check",
+   "prompt": "Order the steps for a pump efficiency spot check at a booster station.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: one duty pump checked against its expected performance.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Record suction and discharge pressures and calculate the pump head"
+    },
+    {
+     "id": "c2",
+     "label": "Measure or read the pump flow from the station meter"
+    },
+    {
+     "id": "c3",
+     "label": "Compare the head and flow point with the pump expected performance record"
+    },
+    {
+     "id": "c4",
+     "label": "Check for throttled valves, wear signs and abnormal power draw"
+    },
+    {
+     "id": "c5",
+     "label": "Report any shortfall and schedule detailed testing if performance is low"
+    },
+    {
+     "id": "c6",
+     "label": "File the spot check with the station performance history"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Head and flow must be measured together, because either alone cannot locate the pump on its curve. Valve and wear checks explain common shortfalls, and filing the check builds the history that shows gradual decline."
+  },
+  {
+   "id": "wp2wd-process54",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "pump-station-startup-after-outage",
+   "prompt": "Order the steps for restarting a booster station after a power outage.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: station restart after utility power returns.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm power is stable and check the station for damage or flooding"
+    },
+    {
+     "id": "c2",
+     "label": "Check pump and valve positions against the normal lineup"
+    },
+    {
+     "id": "c3",
+     "label": "Start the lead pump and watch suction and discharge pressures rise"
+    },
+    {
+     "id": "c4",
+     "label": "Check for leaks, abnormal noise and correct rotation indications"
+    },
+    {
+     "id": "c5",
+     "label": "Start additional pumps only as demand and pressures require"
+    },
+    {
+     "id": "c6",
+     "label": "Record the outage, restart times and any equipment that failed to start"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "A stable supply and a correct lineup come before any start, because restarting into a wrong lineup can damage pumps or the system. Pressures and sounds prove a healthy start, and the record captures equipment that needs follow up."
+  },
+  {
+   "id": "wp2wd-process55",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "pump-station-seasonal-capacity-plan",
+   "prompt": "Order the steps for preparing a booster station for peak summer demand.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: seasonal readiness for one station serving an irrigation heavy area.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Review last summer run times, alarms and any low pressure periods"
+    },
+    {
+     "id": "c2",
+     "label": "Test each pump under load and confirm standby capacity"
+    },
+    {
+     "id": "c3",
+     "label": "Service strainers, check valves and cooling or ventilation systems"
+    },
+    {
+     "id": "c4",
+     "label": "Confirm chemical and fuel or backup power supplies for the season"
+    },
+    {
+     "id": "c5",
+     "label": "Set the seasonal pump control settings and alarm call out roster"
+    },
+    {
+     "id": "c6",
+     "label": "Record the readiness check and brief all shifts on the plan"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Peak readiness is proven by testing every pump, including standby, before the peak arrives. Support systems and call out coverage fail more summer events than pumps do, so they are checked in the same pass and briefed to all shifts."
+  },
+  {
+   "id": "wp2wd-process56",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "pump-station-surge-protection-check",
+   "prompt": "Order the steps for checking surge protection at a pump station.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: annual check of surge vessels, relief valves and controls.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Review the station surge events and pressure spike records for the year"
+    },
+    {
+     "id": "c2",
+     "label": "Inspect surge vessel levels, pressures and bladder or air system condition"
+    },
+    {
+     "id": "c3",
+     "label": "Test the pressure relief valve operation under the approved procedure"
+    },
+    {
+     "id": "c4",
+     "label": "Check pump control settings for soft start and stop ramps where fitted"
+    },
+    {
+     "id": "c5",
+     "label": "Correct any deficiency found and retest the device"
+    },
+    {
+     "id": "c6",
+     "label": "Record the check and file the results with the station safety records"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Surge records show whether protection has actually been called on. Each device is inspected and tested in turn, deficiencies are retested after correction, and the results are filed as safety records because surge protection protects the whole main."
+  },
+  {
+   "id": "wp2wd-process57",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "pump-station-backup-power-test",
+   "prompt": "Order the steps for a monthly backup power test at a pump station.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: generator test under load at one station.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Notify dispatch and record station conditions before the test"
+    },
+    {
+     "id": "c2",
+     "label": "Switch the station to backup power under the approved procedure"
+    },
+    {
+     "id": "c3",
+     "label": "Run the duty pump on backup power and record pressures and run time"
+    },
+    {
+     "id": "c4",
+     "label": "Check fuel level, coolant and battery condition during the run"
+    },
+    {
+     "id": "c5",
+     "label": "Return the station to utility power and confirm normal operation"
+    },
+    {
+     "id": "c6",
+     "label": "Log the test, fuel use and any defect and raise work orders for defects"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The test proves the station can pump on backup power, not just that the generator starts. Running under load reveals fuel, cooling and battery weaknesses, and defects become work orders the same day."
+  },
+  {
+   "id": "wp2wd-process58",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "pump-station-chemical-feed-check",
+   "prompt": "Order the steps for a routine check of a booster chlorination feed at a pump station.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: one chemical feed system at a booster station.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Check the chemical storage level and record the amount on hand"
+    },
+    {
+     "id": "c2",
+     "label": "Inspect feed lines, injection point and containment for leaks"
+    },
+    {
+     "id": "c3",
+     "label": "Compare the feed rate setting with the station flow and target dose"
+    },
+    {
+     "id": "c4",
+     "label": "Measure the residual downstream and compare it with the target"
+    },
+    {
+     "id": "c5",
+     "label": "Adjust the feed only if the equipment checks are satisfactory"
+    },
+    {
+     "id": "c6",
+     "label": "Record chemical use, feed setting and residual in the station log"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Storage, lines and containment are checked before dose is judged, because leaks and low supply mimic dosing problems. The residual downstream is the proof of the feed, and the log ties chemical use to the water actually treated."
+  },
+  {
+   "id": "wp2wd-process59",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "pump-station-lockout-for-maintenance",
+   "prompt": "Order the steps for locking out a pump for motor maintenance.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: one pump isolated for contractor motor work.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Notify operations and confirm the standby pump can carry the station"
+    },
+    {
+     "id": "c2",
+     "label": "Transfer duty to the standby pump and confirm stable pressures"
+    },
+    {
+     "id": "c3",
+     "label": "Isolate the pump suction and discharge valves and tag them"
+    },
+    {
+     "id": "c4",
+     "label": "Lock out the motor electrical supply and apply personal locks and tags"
+    },
+    {
+     "id": "c5",
+     "label": "Drain the pump casing and confirm zero energy before work starts"
+    },
+    {
+     "id": "c6",
+     "label": "Record the lockout in the station log and brief the contractor on site rules"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Standby capacity is proven before the duty pump is surrendered. Isolation, lockout and draining follow in energy order, zero energy is confirmed before hands go on the equipment, and the contractor is briefed so site rules are shared."
+  },
+  {
+   "id": "wp2wd-process60",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "pump-station-performance-trend-review",
+   "prompt": "Order the steps for a quarterly pump station performance trend review.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: review for one station using run, energy and alarm records.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Compile run hours, starts and energy use for each pump for the quarter"
+    },
+    {
+     "id": "c2",
+     "label": "Compare energy per volume pumped with previous quarters"
+    },
+    {
+     "id": "c3",
+     "label": "Review alarm counts and causes for repeat patterns"
+    },
+    {
+     "id": "c4",
+     "label": "Check whether pump rotation kept run hours balanced"
+    },
+    {
+     "id": "c5",
+     "label": "Identify the top maintenance or control improvement for the station"
+    },
+    {
+     "id": "c6",
+     "label": "Present the trend review and the improvement plan to the supervisor"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Trends reveal slow decline that daily checks miss. Energy per volume is the efficiency signal, repeat alarms point to root causes, and the review ends with one ranked improvement rather than a list nobody owns."
+  },
+  {
+   "id": "wp2wd-process61",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "cross-connection-survey-program",
+   "prompt": "Order the steps for a cross connection survey of a commercial property.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: one commercial building survey under the utility cross connection control program.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Review the property water use and any existing backflow records before the visit"
+    },
+    {
+     "id": "c2",
+     "label": "Walk the property with the owner contact and list all water uses and connections"
+    },
+    {
+     "id": "c3",
+     "label": "Identify hazards such as boilers, irrigation, process water and hose connections"
+    },
+    {
+     "id": "c4",
+     "label": "Match each hazard to the required protection for its hazard class"
+    },
+    {
+     "id": "c5",
+     "label": "Issue the survey report listing required installations or tests"
+    },
+    {
+     "id": "c6",
+     "label": "Set the compliance deadline and schedule the follow up check"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Records before the visit focus the walkthrough. Every use is listed because the missed connection is usually the hazard, protection is matched to hazard class, and a deadline plus follow up turns a survey into compliance."
+  },
+  {
+   "id": "wp2wd-process62",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "cross-connection-tester-certification-routine",
+   "prompt": "Order the steps for the annual routine that keeps backflow tester records current.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: program routine for all testers working in the system.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "List all testers who submitted reports in the past year"
+    },
+    {
+     "id": "c2",
+     "label": "Verify each tester certification and test kit calibration record is current"
+    },
+    {
+     "id": "c3",
+     "label": "Notify testers whose documents expire in the next quarter"
+    },
+    {
+     "id": "c4",
+     "label": "Remove testers with lapsed documents from the accepted tester list"
+    },
+    {
+     "id": "c5",
+     "label": "Update the program list used by customer service"
+    },
+    {
+     "id": "c6",
+     "label": "File the routine check and the notices sent"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Only current testers produce reports the program can accept. Checking calibration as well as certification matters because an accurate tester with an uncalibrated kit still produces unreliable results, and customer service works from the same updated list."
+  },
+  {
+   "id": "wp2wd-process63",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "cross-connection-failed-test-response",
+   "prompt": "Order the steps in the program response to a failed backflow preventer test.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: one failed test report received for a high hazard property.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Verify the report details and the hazard class of the property"
+    },
+    {
+     "id": "c2",
+     "label": "Notify the property owner that repair or replacement and a retest are required"
+    },
+    {
+     "id": "c3",
+     "label": "Set the compliance deadline based on the hazard class"
+    },
+    {
+     "id": "c4",
+     "label": "Record the failed device as non compliant in the program tracking system"
+    },
+    {
+     "id": "c5",
+     "label": "Confirm the retest report shows a pass before the deadline"
+    },
+    {
+     "id": "c6",
+     "label": "Escalate overdue high hazard cases to the supervisor for enforcement steps"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "High hazard failures get the fastest deadlines because the contamination risk is highest. The device stays flagged non compliant until a passing retest is in hand, and escalation follows the deadline, not a reminder cycle that drifts."
+  },
+  {
+   "id": "wp2wd-process64",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "cross-connection-new-service-review",
+   "prompt": "Order the steps for reviewing backflow requirements for a new commercial service.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: one new service application for a commercial building.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Review the application for water uses planned in the building"
+    },
+    {
+     "id": "c2",
+     "label": "Assign the hazard class from the highest hazard use identified"
+    },
+    {
+     "id": "c3",
+     "label": "Specify the required premises isolation protection for that class"
+    },
+    {
+     "id": "c4",
+     "label": "Notify the applicant of the requirement before the service is activated"
+    },
+    {
+     "id": "c5",
+     "label": "Inspect or receive the test report for the installed device"
+    },
+    {
+     "id": "c6",
+     "label": "Add the device to the program inventory with its test due date"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Requirements are set from planned uses before the service goes live, because retrofitting protection after occupancy is slower and costlier. The device enters the inventory with a due date at installation, so the first test is never missed."
+  },
+  {
+   "id": "wp2wd-process65",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "cross-connection-irrigation-program",
+   "prompt": "Order the steps for the spring irrigation backflow program routine.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: seasonal routine for residential and commercial irrigation systems.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Send spring reminders to irrigation customers with test due notices"
+    },
+    {
+     "id": "c2",
+     "label": "Confirm test reports received match devices in the program inventory"
+    },
+    {
+     "id": "c3",
+     "label": "Follow up properties with overdue tests in hazard order"
+    },
+    {
+     "id": "c4",
+     "label": "Check a sample of installations for unprotected hose or auxiliary connections"
+    },
+    {
+     "id": "c5",
+     "label": "Update the inventory for removed or replaced irrigation devices"
+    },
+    {
+     "id": "c6",
+     "label": "Report seasonal compliance rates to the supervisor"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Spring is when irrigation systems are charged, so reminders and due notices go before startup. Sampling installations catches the unprotected connections that paperwork misses, and the seasonal compliance rate shows whether the routine is working."
+  },
+  {
+   "id": "wp2wd-process66",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "cross-connection-incident-response",
+   "prompt": "Order the steps for responding to a suspected backflow incident at a distribution site.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: one report of discoloured water and pressure loss near an industrial property.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Isolate the suspect property service if contamination is possible"
+    },
+    {
+     "id": "c2",
+     "label": "Notify the supervisor and follow the provincial drinking water notification procedure"
+    },
+    {
+     "id": "c3",
+     "label": "Collect samples at the property boundary and at nearby distribution points"
+    },
+    {
+     "id": "c4",
+     "label": "Inspect the property backflow protection with the owner contact"
+    },
+    {
+     "id": "c5",
+     "label": "Keep the service isolated until sample results and protection are satisfactory"
+    },
+    {
+     "id": "c6",
+     "label": "Document the incident, results and corrective actions in the program file"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Isolation comes first because protecting the public system outranks confirming the cause. Samples at the boundary and nearby points show whether anything entered the main, and the service stays isolated until both results and protection are proven."
+  },
+  {
+   "id": "wp2wd-process67",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "cross-connection-hydrant-use-program",
+   "prompt": "Order the steps for running the hydrant use permit and backflow routine.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: program routine for bulk water filling from hydrants.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Issue the permit only for designated filling hydrants and approved equipment"
+    },
+    {
+     "id": "c2",
+     "label": "Verify the applicant backflow preventer and meter are approved and tested"
+    },
+    {
+     "id": "c3",
+     "label": "Record the starting meter reading at the first fill"
+    },
+    {
+     "id": "c4",
+     "label": "Inspect permitted filling sites during the season for correct setup"
+    },
+    {
+     "id": "c5",
+     "label": "Record final readings and bill the volume used"
+    },
+    {
+     "id": "c6",
+     "label": "Review the season permits and revoke any permit with repeated violations"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Designated hydrants and tested protection keep bulk filling from becoming a contamination or loss problem. Site inspections during the season catch setups that drift from the permit, and revocation for repeat violations gives the routine consequences."
+  },
+  {
+   "id": "wp2wd-process68",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "cross-connection-annual-inventory-audit",
+   "prompt": "Order the steps for the annual backflow device inventory audit.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: audit of the program device inventory.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Export the device inventory and sort by hazard class and test due date"
+    },
+    {
+     "id": "c2",
+     "label": "Compare inventory counts with test reports received during the year"
+    },
+    {
+     "id": "c3",
+     "label": "Identify devices with no test report and no removal record"
+    },
+    {
+     "id": "c4",
+     "label": "Visit or contact the highest hazard sites on the missing list first"
+    },
+    {
+     "id": "c5",
+     "label": "Correct the inventory for removed, replaced and newly found devices"
+    },
+    {
+     "id": "c6",
+     "label": "Report audit results and the overdue device count to the supervisor"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The audit reconciles paper devices with tested devices. Missing reports on high hazard devices are chased first, field checks correct the inventory, and the overdue count is the program health measure management needs."
+  },
+  {
+   "id": "wp2wd-process69",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "cross-connection-residential-education-routine",
+   "prompt": "Order the steps for a residential cross connection education routine.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: one seasonal campaign covering hose, pool and irrigation hazards.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Select the seasonal hazards to feature, such as hoses in pools and chemical sprayers"
+    },
+    {
+     "id": "c2",
+     "label": "Prepare plain language guidance with the utility contact for questions"
+    },
+    {
+     "id": "c3",
+     "label": "Deliver the guidance with utility bills or the seasonal notice in the target area"
+    },
+    {
+     "id": "c4",
+     "label": "Offer hose vacuum breakers or guidance at the utility office during the campaign"
+    },
+    {
+     "id": "c5",
+     "label": "Track calls and questions received to judge which hazards need more work"
+    },
+    {
+     "id": "c6",
+     "label": "Report the campaign results and next season focus to the supervisor"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Education targets the hazards homeowners actually create each season. Plain guidance plus a contact produces questions the program can answer, tracking those questions shows which hazard to feature next, and the report closes the campaign."
+  },
+  {
+   "id": "wp2wd-process70",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "cross-connection-program-annual-review",
+   "prompt": "Order the steps for the annual cross connection control program review.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: yearly review of surveys, testing and incidents.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Compile survey, test and compliance counts for the year by hazard class"
+    },
+    {
+     "id": "c2",
+     "label": "Review incidents and failed tests for common causes"
+    },
+    {
+     "id": "c3",
+     "label": "Check tester list currency and inventory audit results"
+    },
+    {
+     "id": "c4",
+     "label": "Identify property types with the lowest compliance for targeted surveys"
+    },
+    {
+     "id": "c5",
+     "label": "Set next year survey and follow up targets from the findings"
+    },
+    {
+     "id": "c6",
+     "label": "Present the review and targets to management for approval"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The review is organized by hazard class because risk is not evenly spread. Low compliance property types become next year survey targets, and approved targets turn the review into the following year work plan."
+  },
+  {
+   "id": "wp2wd-process71",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "main-break-records-analysis",
+   "prompt": "Order the steps for analysing main break records to find repeat break mains.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: five years of break records for the whole system.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Compile break records with location, main material, size and age for each break"
+    },
+    {
+     "id": "c2",
+     "label": "Map the breaks to show clusters by street and by main segment"
+    },
+    {
+     "id": "c3",
+     "label": "Count breaks per segment and rank segments by break frequency"
+    },
+    {
+     "id": "c4",
+     "label": "Compare the ranking with main age and material patterns"
+    },
+    {
+     "id": "c5",
+     "label": "List the worst segments as candidates for renewal or closer monitoring"
+    },
+    {
+     "id": "c6",
+     "label": "Present the analysis and candidate list to management"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Break history only guides renewal when breaks are tied to specific segments. Mapping and counting reveal repeat segments that single break reports hide, age and material patterns explain the ranking, and the candidate list feeds capital planning."
+  },
+  {
+   "id": "wp2wd-process72",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "main-break-response-program-review",
+   "prompt": "Order the steps for reviewing response performance after a major main break.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: review of one large break that flooded a commercial street.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Reconstruct the timeline from first report to isolation, repair and restoration"
+    },
+    {
+     "id": "c2",
+     "label": "Compare isolation time with the program target for a break of this size"
+    },
+    {
+     "id": "c3",
+     "label": "Review customer notifications and complaint handling during the event"
+    },
+    {
+     "id": "c4",
+     "label": "Check sampling and disinfection records for the return to service"
+    },
+    {
+     "id": "c5",
+     "label": "Identify the step that caused the longest delay"
+    },
+    {
+     "id": "c6",
+     "label": "Record lessons and update the break response procedure where needed"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The timeline shows where time was actually lost, which is often isolation or notification rather than repair. Sampling records are reviewed with the same care as the repair, and the procedure is updated so the lesson changes the next response."
+  },
+  {
+   "id": "wp2wd-process73",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "main-break-winter-cluster-investigation",
+   "prompt": "Order the steps for investigating a winter cluster of main breaks in one area.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: several breaks in one neighbourhood during a cold snap in Manitoba.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Map the break locations and the dates against the cold snap temperatures"
+    },
+    {
+     "id": "c2",
+     "label": "Check the main material, depth of cover and frost depth for the area"
+    },
+    {
+     "id": "c3",
+     "label": "Review pressure records for spikes during the cold period"
+    },
+    {
+     "id": "c4",
+     "label": "Inspect one break site excavation for frost or bedding conditions"
+    },
+    {
+     "id": "c5",
+     "label": "Rank the causes supported by the evidence collected"
+    },
+    {
+     "id": "c6",
+     "label": "Recommend monitoring, pressure or renewal actions for the area"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Cold weather breaks have several possible causes, so temperature, depth, pressure and site evidence are gathered before ranking them. Recommendations follow the supported cause, whether that is frost depth, pressure control or renewal."
+  },
+  {
+   "id": "wp2wd-process74",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "main-break-repair-method-review",
+   "prompt": "Order the steps for reviewing repair methods used on main breaks this year.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: annual review of clamp, sleeve and cut out repairs.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "List repairs by method, main size and material from the break reports"
+    },
+    {
+     "id": "c2",
+     "label": "Compare return to service times and repeat failures by method"
+    },
+    {
+     "id": "c3",
+     "label": "Review repair costs recorded for each method where available"
+    },
+    {
+     "id": "c4",
+     "label": "Check which methods were used outside their suitable conditions"
+    },
+    {
+     "id": "c5",
+     "label": "Update the repair method guidance for crews"
+    },
+    {
+     "id": "c6",
+     "label": "Report the review findings to the supervisor"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Methods are compared on outcomes in this system, not on preference. Repeat failures by method are the strongest signal, use outside suitable conditions is corrected in guidance, and crews get updated direction from the review."
+  },
+  {
+   "id": "wp2wd-process75",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "main-break-customer-impact-analysis",
+   "prompt": "Order the steps for analysing customer impact from main breaks for the annual report.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: one year of breaks analysed for outage impact.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "For each break, record customers affected and outage duration from the reports"
+    },
+    {
+     "id": "c2",
+     "label": "Total customer outage hours by area and by month"
+    },
+    {
+     "id": "c3",
+     "label": "Identify the breaks with the largest customer impact"
+    },
+    {
+     "id": "c4",
+     "label": "Check whether notification reached affected customers before shutoff where planned"
+    },
+    {
+     "id": "c5",
+     "label": "Recommend isolation or valving improvements for high impact areas"
+    },
+    {
+     "id": "c6",
+     "label": "Include the impact analysis in the annual distribution report"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Counting breaks alone hides their real cost, which is customer outage hours. The largest impact events get the attention, notification performance is checked honestly, and valving improvements are recommended where one break isolates too many customers."
+  },
+  {
+   "id": "wp2wd-process76",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "main-break-valve-access-improvement",
+   "prompt": "Order the steps for a valve access improvement project arising from break analysis.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: valves that delayed isolation in recent breaks.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "List valves that were buried, paved over or inoperable during recent breaks"
+    },
+    {
+     "id": "c2",
+     "label": "Prioritize the list by the isolation areas those valves control"
+    },
+    {
+     "id": "c3",
+     "label": "Locate, raise or repair each valve box in priority order"
+    },
+    {
+     "id": "c4",
+     "label": "Operate each valve to prove it can isolate its area"
+    },
+    {
+     "id": "c5",
+     "label": "Update the valve records and isolation maps with the proven positions"
+    },
+    {
+     "id": "c6",
+     "label": "Report project completion and remaining problem valves to the supervisor"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Break reviews repeatedly show isolation delays come from valve access, not crew effort. Prioritizing by isolation area fixes the highest consequence valves first, and each valve is proven by operation before the map is trusted again."
+  },
+  {
+   "id": "wp2wd-process77",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "main-break-cause-coding-routine",
+   "prompt": "Order the steps for introducing cause coding to main break reports.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: new routine for all break reports from next month.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Define the cause codes, such as corrosion, frost, third party damage and joint failure"
+    },
+    {
+     "id": "c2",
+     "label": "Add the codes and a photo requirement to the break report form"
+    },
+    {
+     "id": "c3",
+     "label": "Brief crews and supervisors on assigning a cause at the repair, not later"
+    },
+    {
+     "id": "c4",
+     "label": "Review the first month reports for missing or inconsistent codes"
+    },
+    {
+     "id": "c5",
+     "label": "Correct the coding guidance where crews found it unclear"
+    },
+    {
+     "id": "c6",
+     "label": "File the routine and review coded causes quarterly"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Cause data is only useful if it is assigned at the excavation, where the evidence is visible. A first month review catches inconsistent coding while the routine is new, and quarterly review turns codes into the patterns that guide renewal."
+  },
+  {
+   "id": "wp2wd-process78",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "main-break-emergency-stock-review",
+   "prompt": "Order the steps for reviewing emergency repair stock after the winter break season.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: clamps, sleeves, pipe and fittings stock review.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Count stock used during the winter break season by size and type"
+    },
+    {
+     "id": "c2",
+     "label": "Compare use with the stock levels held at season start"
+    },
+    {
+     "id": "c3",
+     "label": "Identify any size that ran out or delayed a repair"
+    },
+    {
+     "id": "c4",
+     "label": "Restock to the planned levels and add any size the season showed was missing"
+    },
+    {
+     "id": "c5",
+     "label": "Check stored materials for damage and rotate stock as needed"
+    },
+    {
+     "id": "c6",
+     "label": "Record the review and the new stock list in the stores system"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Stock levels are set by what winter actually used, not by last year list. A size that delayed a repair is the strongest argument for holding it, damaged stock is removed before it fails on a night call, and the stores record matches the shelf."
+  },
+  {
+   "id": "wp2wd-process79",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "main-break-night-response-drill",
+   "prompt": "Order the steps for running a night main break response drill.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: one unannounced style drill for the on call crew.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Set the drill scenario and the safety limits with the supervisor in advance"
+    },
+    {
+     "id": "c2",
+     "label": "Call out the crew through the normal dispatch process and start the clock"
+    },
+    {
+     "id": "c3",
+     "label": "Have the crew locate the scenario valves on the map and in the field"
+    },
+    {
+     "id": "c4",
+     "label": "Walk through isolation, notification and repair setup without breaking ground"
+    },
+    {
+     "id": "c5",
+     "label": "Stop the drill and debrief response times and problems found"
+    },
+    {
+     "id": "c6",
+     "label": "Record drill results and assign fixes for any gaps found"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The drill tests the real call out path, not a classroom version. Map and field valve location is where night responses lose time, the debrief converts problems into assigned fixes, and the record proves the drill happened and mattered."
+  },
+  {
+   "id": "wp2wd-process80",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "main-break-renewal-prioritization",
+   "prompt": "Order the steps for prioritizing mains for renewal using break program data.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: renewal candidate list for the capital plan.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Rank mains by break frequency from the break records analysis"
+    },
+    {
+     "id": "c2",
+     "label": "Add condition factors such as age, material and consequence of failure"
+    },
+    {
+     "id": "c3",
+     "label": "Combine break and condition scores into a renewal priority list"
+    },
+    {
+     "id": "c4",
+     "label": "Check the list against planned road and development projects for coordination"
+    },
+    {
+     "id": "c5",
+     "label": "Estimate renewal lengths for the top priority mains"
+    },
+    {
+     "id": "c6",
+     "label": "Present the prioritized list for the capital plan"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Break frequency leads the ranking because it is measured failure, while age and material add context. Coordinating with road projects saves restoration cost and disruption, and lengths turn a ranked list into a plannable capital program."
+  },
+  {
+   "id": "wp2wd-process81",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "supervisory-daily-operations-review",
+   "prompt": "Order the steps for the supervisor daily operations review.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: morning review covering the previous day and the day ahead.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Review overnight alarms, call outs and any adverse results"
+    },
+    {
+     "id": "c2",
+     "label": "Check storage levels, pressures and pump station status for all zones"
+    },
+    {
+     "id": "c3",
+     "label": "Review today planned work, isolations and customer notifications"
+    },
+    {
+     "id": "c4",
+     "label": "Confirm crew assignments and any contractor work in the system"
+    },
+    {
+     "id": "c5",
+     "label": "Flag any item needing management or provincial contact notification"
+    },
+    {
+     "id": "c6",
+     "label": "Brief the crews and record the review decisions in the operations log"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Overnight events are reviewed before the day plan, because an unresolved alarm changes what crews should do. Planned work is checked against system status, notifications are confirmed before isolations, and the log makes the decisions visible to the next shift."
+  },
+  {
+   "id": "wp2wd-process82",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "supervisory-incident-debrief-routine",
+   "prompt": "Order the steps for a supervisor led debrief after a significant distribution incident.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: debrief within days of a major break or quality event.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Collect the event records, timelines and sample results while they are fresh"
+    },
+    {
+     "id": "c2",
+     "label": "Invite the responding crew, dispatch and any contractor involved"
+    },
+    {
+     "id": "c3",
+     "label": "Walk the timeline and identify what helped and what delayed the response"
+    },
+    {
+     "id": "c4",
+     "label": "Agree the specific procedure, stock or training changes to be made"
+    },
+    {
+     "id": "c5",
+     "label": "Assign each change an owner and a completion date"
+    },
+    {
+     "id": "c6",
+     "label": "File the debrief and check completion of the actions at the next review"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Debriefs work while memory and records are fresh. Walking the timeline with everyone involved surfaces causes a single report misses, and owned, dated actions are what separate a debrief from a discussion."
+  },
+  {
+   "id": "wp2wd-process83",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "supervisory-training-matrix-review",
+   "prompt": "Order the steps for the quarterly operator training and certification review.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: review for all distribution operators.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "List each operator certification class, expiry and required training"
+    },
+    {
+     "id": "c2",
+     "label": "Compare the list with the certification levels the system requires on shift"
+    },
+    {
+     "id": "c3",
+     "label": "Identify gaps where only one operator holds a needed qualification"
+    },
+    {
+     "id": "c4",
+     "label": "Schedule training or exam preparation for the identified gaps"
+    },
+    {
+     "id": "c5",
+     "label": "Update the training matrix and the shift coverage plan"
+    },
+    {
+     "id": "c6",
+     "label": "Report the review and any coverage risk to management"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Coverage risk appears when a needed qualification sits with one person. The matrix makes expiries and single points of failure visible early, scheduling follows the gaps, and management hears about coverage risk before it becomes a vacancy problem."
+  },
+  {
+   "id": "wp2wd-process84",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "supervisory-work-plan-weekly",
+   "prompt": "Order the steps for building the weekly distribution work plan.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: one week plan covering maintenance, programs and reactive work.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Collect overdue work orders and program tasks due this week"
+    },
+    {
+     "id": "c2",
+     "label": "Add reactive items carried from last week break and complaint work"
+    },
+    {
+     "id": "c3",
+     "label": "Check crew availability, contractor bookings and material stock"
+    },
+    {
+     "id": "c4",
+     "label": "Sequence the work so isolations and notifications are grouped by area"
+    },
+    {
+     "id": "c5",
+     "label": "Issue the plan to crews with the daily priorities marked"
+    },
+    {
+     "id": "c6",
+     "label": "Review completion at week end and carry forward unfinished items with reasons"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The plan starts from what is overdue and due, not from a blank page. Grouping isolations by area reduces customer disruption, daily priorities survive the week changes, and the week end review explains carry forward items instead of losing them."
+  },
+  {
+   "id": "wp2wd-process85",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "supervisory-safety-inspection-routine",
+   "prompt": "Order the steps for a supervisor monthly safety inspection of distribution work.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: inspection covering one field crew and one facility this month.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Select the crew task and facility to inspect from the monthly rotation"
+    },
+    {
+     "id": "c2",
+     "label": "Observe the crew setup for traffic control, excavation and personal protective equipment"
+    },
+    {
+     "id": "c3",
+     "label": "Check the facility for housekeeping, chemical storage and access control"
+    },
+    {
+     "id": "c4",
+     "label": "Discuss findings with the crew on site and correct immediate hazards at once"
+    },
+    {
+     "id": "c5",
+     "label": "Record the inspection and assign dated actions for other findings"
+    },
+    {
+     "id": "c6",
+     "label": "Follow up the actions at the next monthly inspection"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Observation in the field shows real practice, not paperwork practice. Immediate hazards are corrected on the spot, other findings get dated actions, and follow up at the next inspection is what makes the routine more than a tour."
+  },
+  {
+   "id": "wp2wd-process86",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "supervisory-contractor-oversight-routine",
+   "prompt": "Order the steps for supervisor oversight of a contractor main installation.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: one contractor installing a new main section.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Review the approved drawings, disinfection plan and traffic plan before work starts"
+    },
+    {
+     "id": "c2",
+     "label": "Confirm locates, permits and customer notifications are complete"
+    },
+    {
+     "id": "c3",
+     "label": "Inspect tie in points and materials on site before installation begins"
+    },
+    {
+     "id": "c4",
+     "label": "Visit during pressure testing and disinfection to witness key steps"
+    },
+    {
+     "id": "c5",
+     "label": "Review test and sample results before accepting the main"
+    },
+    {
+     "id": "c6",
+     "label": "Sign off acceptance and file the records with the asset information"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Oversight starts before ground is broken, because drawings and plans are cheapest to correct then. Witnessing testing and disinfection protects the acceptance decision, and the main is accepted only on results, with records filed for the asset file."
+  },
+  {
+   "id": "wp2wd-process87",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "supervisory-budget-tracking-routine",
+   "prompt": "Order the steps for the supervisor monthly operations budget tracking routine.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: monthly review of distribution operating costs.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Collect the month costs for labour, materials, contractors and energy"
+    },
+    {
+     "id": "c2",
+     "label": "Compare each category with the monthly budget and the year to date position"
+    },
+    {
+     "id": "c3",
+     "label": "Investigate the largest variances and record the causes"
+    },
+    {
+     "id": "c4",
+     "label": "Identify work that can be deferred or brought forward within the budget"
+    },
+    {
+     "id": "c5",
+     "label": "Update the forecast for the remaining months of the year"
+    },
+    {
+     "id": "c6",
+     "label": "Report the position and forecast to management"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Variance investigation focuses on the largest items first, where the money actually moves. Deferral and acceleration decisions are made from the forecast, not from the month alone, and management gets the full year picture every month."
+  },
+  {
+   "id": "wp2wd-process88",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "supervisory-record-audit-routine",
+   "prompt": "Order the steps for a supervisor audit of distribution operating records.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: quarterly audit of logs, sample records and work orders.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Select a sample of weeks and pull the operations logs and sample records"
+    },
+    {
+     "id": "c2",
+     "label": "Check records are complete, signed and filed in the correct location"
+    },
+    {
+     "id": "c3",
+     "label": "Compare sample records with the laboratory reports for the same dates"
+    },
+    {
+     "id": "c4",
+     "label": "Check work orders are closed with outcomes recorded, not just marked done"
+    },
+    {
+     "id": "c5",
+     "label": "List gaps and assign corrections with dates"
+    },
+    {
+     "id": "c6",
+     "label": "Report the audit and keep the findings with the quality records"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The audit compares records with independent sources such as laboratory reports, because a complete looking log can still be wrong. Work order outcomes matter for asset history, gaps get dated corrections, and findings stay with the quality records for the next audit."
+  },
+  {
+   "id": "wp2wd-process89",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "supervisory-on-call-roster-routine",
+   "prompt": "Order the steps for setting the monthly on call roster.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: roster for operators and supervisor backup.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "List qualified operators available for on call duty in the month"
+    },
+    {
+     "id": "c2",
+     "label": "Check leave, training and certification coverage for each week"
+    },
+    {
+     "id": "c3",
+     "label": "Assign primary and backup call out for each week in rotation"
+    },
+    {
+     "id": "c4",
+     "label": "Publish the roster to dispatch, crews and management"
+    },
+    {
+     "id": "c5",
+     "label": "Confirm each operator has the current call out list and contact numbers"
+    },
+    {
+     "id": "c6",
+     "label": "Record any swaps in the roster log so dispatch always has the current version"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Qualification and leave are checked before names are placed, because an unavailable or unqualified on call operator is a gap discovered at the worst time. Publishing to dispatch and logging swaps keep the roster true after it is issued."
+  },
+  {
+   "id": "wp2wd-process90",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "supervisory-performance-review-prep",
+   "prompt": "Order the steps for preparing an operator annual performance review.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: preparation for one operator review meeting.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Collect the operator work records, training completions and incident involvement"
+    },
+    {
+     "id": "c2",
+     "label": "Review the records for achievements, gaps and development needs"
+    },
+    {
+     "id": "c3",
+     "label": "Draft review points tied to specific work examples, not general impressions"
+    },
+    {
+     "id": "c4",
+     "label": "Set development goals that match the training matrix needs"
+    },
+    {
+     "id": "c5",
+     "label": "Hold the review meeting and record the agreed goals"
+    },
+    {
+     "id": "c6",
+     "label": "File the review and schedule the mid year check on the goals"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Reviews are prepared from records so they are fair and specific. Goals are tied to the training matrix so individual development also closes system coverage gaps, and a mid year check keeps the goals alive after the meeting."
+  },
+  {
+   "id": "wp2wd-process91",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "cold-climate-fall-readiness-program",
+   "prompt": "Order the steps for the fall cold climate readiness program.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: system wide preparation before freeze up in a Saskatchewan system.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Review last winter freeze ups, breaks and hydrant drainage problems"
+    },
+    {
+     "id": "c2",
+     "label": "Inspect and winterize hydrants, blow offs and exposed facilities"
+    },
+    {
+     "id": "c3",
+     "label": "Check heat tapes, heaters and insulation at stations and chambers"
+    },
+    {
+     "id": "c4",
+     "label": "Stock freeze response materials, thawing equipment and repair clamps"
+    },
+    {
+     "id": "c5",
+     "label": "Brief crews on winter procedures and the frozen service response plan"
+    },
+    {
+     "id": "c6",
+     "label": "Record readiness completion and any items carried into winter"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Last winter problems set this fall priorities. Hydrants, heating and insulation are checked while repair is still easy, stock and briefings prepare the response side, and carried items are recorded so they are not forgotten once snow arrives."
+  },
+  {
+   "id": "wp2wd-process92",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "cold-climate-frozen-service-response",
+   "prompt": "Order the steps for responding to a frozen customer service line.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: one residential frozen service reported during a cold snap.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm the freeze is in the service line and not a main or internal plumbing issue"
+    },
+    {
+     "id": "c2",
+     "label": "Check whether neighbouring services are also frozen, which suggests a wider problem"
+    },
+    {
+     "id": "c3",
+     "label": "Record the service material, depth and any previous freeze history at the address"
+    },
+    {
+     "id": "c4",
+     "label": "Thaw the service using the utility approved method for its material"
+    },
+    {
+     "id": "c5",
+     "label": "Advise the customer on keeping a small flow or other approved prevention during the cold snap"
+    },
+    {
+     "id": "c6",
+     "label": "Flag the address for the shallow or problem service list for follow up"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Confirming the location of the freeze prevents wasted thawing and wrong advice. Neighbour checks reveal whether this is one shallow service or an area problem, the approved method protects the pipe material, and flagging the address builds the prevention list."
+  },
+  {
+   "id": "wp2wd-process93",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "cold-climate-main-break-winter-response",
+   "prompt": "Order the steps for a winter main break response in extreme cold.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: one break during a minus 30 degree cold period in Alberta.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm the break location and identify isolation valves from the map"
+    },
+    {
+     "id": "c2",
+     "label": "Set traffic control and protect the work area from ice forming on the road"
+    },
+    {
+     "id": "c3",
+     "label": "Close the isolation valves slowly and confirm flow at the break stops"
+    },
+    {
+     "id": "c4",
+     "label": "Set up site heating and lighting for crew safety during the repair"
+    },
+    {
+     "id": "c5",
+     "label": "Repair the main and restore flow slowly, checking the repair under pressure"
+    },
+    {
+     "id": "c6",
+     "label": "Clear ice from the road and record the break, weather and repair details"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Winter adds ice, heating and crew exposure to a normal break response. Traffic and ice control protect the public as well as the crew, slow restoration limits surge in cold brittle conditions, and weather details in the record help later winter analysis."
+  },
+  {
+   "id": "wp2wd-process94",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "cold-climate-hydrant-freeze-program",
+   "prompt": "Order the steps for the program that checks hydrants after extreme cold periods.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: checks following a week of extreme cold.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "List hydrants in areas with known drainage or shallow main concerns"
+    },
+    {
+     "id": "c2",
+     "label": "Visit each listed hydrant and check the barrel for standing water or ice"
+    },
+    {
+     "id": "c3",
+     "label": "Pump out or thaw any hydrant found holding water, following the utility procedure"
+    },
+    {
+     "id": "c4",
+     "label": "Mark hydrants that cannot be cleared as out of service and notify dispatch and fire contacts"
+    },
+    {
+     "id": "c5",
+     "label": "Record the condition found for each hydrant visited"
+    },
+    {
+     "id": "c6",
+     "label": "Schedule drainage repairs for the spring program from the records"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The check list targets hydrants history says are at risk, rather than the whole system. A hydrant holding water is cleared or honestly marked out of service, because a frozen hydrant discovered at a fire is the failure this program exists to prevent."
+  },
+  {
+   "id": "wp2wd-process95",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "cold-climate-tank-ice-inspection",
+   "prompt": "Order the steps for inspecting an elevated tank for ice damage after spring thaw begins.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: one elevated tank after a severe winter.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Review winter ice records and level trends for the tank"
+    },
+    {
+     "id": "c2",
+     "label": "Inspect the exterior coating, roof and overflow for ice damage signs from the ground"
+    },
+    {
+     "id": "c3",
+     "label": "Check the interior during the scheduled inspection or by camera where used"
+    },
+    {
+     "id": "c4",
+     "label": "Inspect ladders, vents and the aviation light for ice related damage"
+    },
+    {
+     "id": "c5",
+     "label": "List repairs by urgency, with any water quality risk first"
+    },
+    {
+     "id": "c6",
+     "label": "Schedule the repairs and record the inspection in the facility file"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Winter records tell the inspector where ice was worst. Exterior and interior checks cover both visible damage and hidden coating harm, water quality risks are repaired first, and the file record sets up next winter comparison."
+  },
+  {
+   "id": "wp2wd-process96",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "cold-climate-blowoff-winterizing",
+   "prompt": "Order the steps for winterizing main blow offs and air valves before freeze up.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: fall visit to blow offs and air valves on exposed rural lines in British Columbia interior.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Open each chamber and check for water, damage and insulation condition"
+    },
+    {
+     "id": "c2",
+     "label": "Operate the blow off or air valve to confirm it works"
+    },
+    {
+     "id": "c3",
+     "label": "Drain chamber water and clear the discharge line"
+    },
+    {
+     "id": "c4",
+     "label": "Repair or replace insulation and chamber seals where damaged"
+    },
+    {
+     "id": "c5",
+     "label": "Confirm the vent and drain paths will not freeze shut"
+    },
+    {
+     "id": "c6",
+     "label": "Record the winterizing result for each site"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Chambers are checked and operated before cold arrives, because a frozen blow off is discovered only when it is needed. Drainage and insulation protect the assembly, vent paths are confirmed open, and site records drive spring follow up."
+  },
+  {
+   "id": "wp2wd-process97",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "cold-climate-pump-station-heating-check",
+   "prompt": "Order the steps for a winter heating and freeze protection check at pump stations.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: all booster stations before the coldest months.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Check building heaters and thermostats and record setpoints"
+    },
+    {
+     "id": "c2",
+     "label": "Inspect exposed piping, chemical lines and small diameter lines for insulation and heat tape operation"
+    },
+    {
+     "id": "c3",
+     "label": "Test heat tape circuits and replace failed sections"
+    },
+    {
+     "id": "c4",
+     "label": "Check standby heating arrangements for power outage periods"
+    },
+    {
+     "id": "c5",
+     "label": "Seal drafts around doors and pipe entries found during the visit"
+    },
+    {
+     "id": "c6",
+     "label": "Record the check and raise work orders for any failed protection"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Small lines and chemical feeds freeze before mains do, so they get specific attention. Heat tape is tested, not assumed, outage heating is considered because freeze risk peaks when power fails, and failed protection becomes a work order before winter, not during it."
+  },
+  {
+   "id": "wp2wd-process98",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "cold-climate-spring-thaw-monitoring",
+   "prompt": "Order the steps for spring thaw monitoring of the distribution system.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: monitoring routine during the main thaw period.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Identify areas with deep frost, shallow mains and past thaw related breaks"
+    },
+    {
+     "id": "c2",
+     "label": "Increase pressure and flow monitoring in those areas during thaw"
+    },
+    {
+     "id": "c3",
+     "label": "Inspect known problem sites for ground movement or leaking signs"
+    },
+    {
+     "id": "c4",
+     "label": "Respond to the first thaw breaks with cause notes tied to frost conditions"
+    },
+    {
+     "id": "c5",
+     "label": "Track break and freeze reports against falling frost depth"
+    },
+    {
+     "id": "c6",
+     "label": "Close the monitoring period with a summary that updates the fall readiness list"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Thaw is when frost movement breaks mains that survived the cold. Monitoring focuses where frost and history combine, cause notes during thaw are the evidence fall planning needs, and the summary feeds directly into the next readiness program."
+  },
+  {
+   "id": "wp2wd-process99",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "cold-climate-service-depth-review",
+   "prompt": "Order the steps for reviewing service line depths in a frost prone subdivision.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: review triggered by repeated frozen services on two streets.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Compile freeze records by address for the subdivision"
+    },
+    {
+     "id": "c2",
+     "label": "Compare recorded service depths with the local frost depth in severe winters"
+    },
+    {
+     "id": "c3",
+     "label": "Check whether freezes cluster on services installed in a particular period"
+    },
+    {
+     "id": "c4",
+     "label": "Recommend options such as insulation, depth correction at renewal or customer guidance"
+    },
+    {
+     "id": "c5",
+     "label": "Prioritize the streets by freeze frequency and customer impact"
+    },
+    {
+     "id": "c6",
+     "label": "File the review for use in renewal planning and customer advice"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Repeated freezes on the same streets indicate a depth or installation pattern, not bad luck. Comparing depth with severe winter frost depth tests the explanation, options are matched to renewal timing, and the review stays on file so advice and planning use the same facts."
+  },
+  {
+   "id": "wp2wd-evidence01",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A district metered area in a Saskatchewan city shows minimum night flow of 14 L/s against a historic norm of 4 L/s, and the rise began in one week in February.",
+   "topicId": "water-loss-night-flow",
+   "level": "class1",
+   "assumptions": "Fictional DMA with 2,100 services in Regina area conditions. Night flow is measured between 02:00 and 04:00. Step testing and acoustic loggers are available.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Minimum night flow rose from 4 L/s to 14 L/s in one week and stayed there."
+    },
+    {
+     "id": "ev2",
+     "label": "Step testing drops night flow by 9 L/s when one 600 m cast iron section is isolated, and by almost nothing elsewhere."
+    },
+    {
+     "id": "ev3",
+     "label": "Acoustic loggers on that section correlate a strong leak noise between two hydrants 90 m apart."
+    },
+    {
+     "id": "ev4",
+     "label": "Customer billed consumption in the DMA is unchanged over the same period."
+    },
+    {
+     "id": "ev5",
+     "label": "A paired DMA on newer plastic mains shows no night flow change that week."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "A leak on the isolated cast iron section is losing about 9 to 10 L/s at night"
+     },
+     {
+      "id": "inf-b",
+      "label": "The whole city demand grew in one week and raised every DMA night flow"
+     },
+     {
+      "id": "inf-c",
+      "label": "The DMA inlet meter began over registering in February"
+     },
+     {
+      "id": "inf-d",
+      "label": "Residents across the DMA started running taps all night at the same time"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "The step test isolates almost all of the rise to one section and loggers correlate leak noise there, while billed use is flat and a paired DMA is unchanged. A meter fault cannot produce a step test drop or leak noise, and city wide growth would lift the paired DMA too."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best confirms the explanation and guides the fix?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Excavate at the correlated noise midpoint after a pinpoint listening survey on the section"
+     },
+     {
+      "id": "nc-b",
+      "label": "Replace the DMA inlet meter and recheck night flow next month"
+     },
+     {
+      "id": "nc-c",
+      "label": "Lower DMA pressure by 100 kPa for the whole winter"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Pinpoint listening at the correlated location confirms the leak point before excavation, which is the direct confirmation of the step test result."
+   },
+   "clueText": {
+    "nc-a": "Listening confirms the loudest noise at one joint, and excavation finds a split bell joint leaking into a storm drain.",
+    "nc-b": "The inlet meter passes a later accuracy test, and a meter fault would not explain the step test drop.",
+    "nc-c": "Lowering pressure would cut all use and risks fire flow, and it would not locate the leak the step test already isolated."
+   }
+  },
+  {
+   "id": "wp2wd-evidence02",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A Manitoba town suspects leakage because production rose 18 percent in a year, yet its district night flows look normal everywhere.",
+   "topicId": "water-loss-night-flow",
+   "level": "class1",
+   "assumptions": "Fictional town with one bulk meter at the plant outlet and four DMAs. Large meter testing equipment is available.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Minimum night flow in all four DMAs stayed at historic levels all year."
+    },
+    {
+     "id": "ev2",
+     "label": "Billed customer consumption is flat year over year."
+    },
+    {
+     "id": "ev3",
+     "label": "A volumetric tank drawdown test shows the plant bulk meter reads 9 percent high against the measured volume passed."
+    },
+    {
+     "id": "ev4",
+     "label": "Acoustic survey of the oldest mains finds no leak noise above background."
+    },
+    {
+     "id": "ev5",
+     "label": "The bulk meter is 14 years old and has never been accuracy tested."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "A large trunk main leak is hiding between the plant and the DMAs"
+     },
+     {
+      "id": "inf-b",
+      "label": "The apparent loss is a bulk meter over registration error, not real leakage"
+     },
+     {
+      "id": "inf-c",
+      "label": "Customers across town are using 18 percent more water without it being billed"
+     },
+     {
+      "id": "inf-d",
+      "label": "All four DMA meters failed low at the same time"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Night flows are normal in every DMA, no leak noise is found, and the drawdown test proves the bulk meter reads 9 percent high. A hidden trunk leak would raise at least one DMA or plant outlet night flow, and four meters failing together is not supported by any test."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best confirms the explanation and guides the fix?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Launch a town wide leak survey of every service connection"
+     },
+     {
+      "id": "nc-b",
+      "label": "Remove and bench test or replace the bulk meter, then restate the water balance with the corrected factor"
+     },
+     {
+      "id": "nc-c",
+      "label": "Raise treated water production reporting targets to match the meter"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "Correcting the bulk meter fixes the input side of the water balance, which is where the measured error sits."
+   },
+   "clueText": {
+    "nc-a": "A service survey cannot explain normal night flows in all four DMAs.",
+    "nc-b": "After replacement, the same drawdown passes within 1 percent and the unexplained loss nearly disappears.",
+    "nc-c": "Restating targets would hide a proven meter error instead of correcting the balance."
+   }
+  },
+  {
+   "id": "wp2wd-evidence03",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "In an Alberta irrigation community, district night flow is high every summer but returns to normal each fall without any repairs.",
+   "topicId": "water-loss-night-flow",
+   "level": "class1",
+   "assumptions": "Fictional DMA serving homes and small acreages near Lethbridge. Night flow records cover three full years.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Night flow is 11 L/s from June to August and 3 L/s from October to April in each of three years."
+    },
+    {
+     "id": "ev2",
+     "label": "Step testing in July shows the excess spread evenly across the DMA, with no single section dominating."
+    },
+    {
+     "id": "ev3",
+     "label": "Several hydrants are found with caps loose and signs of recent use on summer mornings."
+    },
+    {
+     "id": "ev4",
+     "label": "Daytime billed consumption also rises each summer with lawn and garden use."
+    },
+    {
+     "id": "ev5",
+     "label": "Acoustic logging in July finds no concentrated leak noise."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "One large leak seals itself every fall and reopens every June"
+     },
+     {
+      "id": "inf-b",
+      "label": "The DMA meter drifts with warm weather each summer"
+     },
+     {
+      "id": "inf-c",
+      "label": "Seasonal summer night use, including hydrant and irrigation draws, explains the high summer night flow"
+     },
+     {
+      "id": "inf-d",
+      "label": "A trunk main leak runs only when the river level is high"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "The pattern repeats on a seasonal cycle for three years, the excess is spread evenly rather than isolated to one section, hydrants show use, and no leak noise is found. A leak does not seal and reopen on a calendar, and a meter drift would not match loose hydrant caps and higher billed summer use."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best confirms the explanation and guides the fix?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Excavate the oldest main in the DMA during July"
+     },
+     {
+      "id": "nc-b",
+      "label": "Replace the DMA meter each spring as a precaution"
+     },
+     {
+      "id": "nc-c",
+      "label": "Log hydrant use permits and sample night flows on streets with and without irrigation timers for two weeks"
+     }
+    ],
+    "correctOptionId": "nc-c",
+    "explanation": "Comparing night use street by street tests the seasonal use explanation directly and separates permitted draws from any true leakage."
+   },
+   "clueText": {
+    "nc-a": "Excavation has no target, since step testing found no dominant section.",
+    "nc-b": "The meter reads the same seasonal pattern as street level logging, so it is recording real flow.",
+    "nc-c": "Streets with timed irrigation account for most of the summer night flow, and permitted hydrant use explains the rest."
+   }
+  },
+  {
+   "id": "wp2wd-evidence04",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "After a deep cold snap and rapid thaw near Saskatoon, one district night flow doubles and a faint hissing is reported near a river crossing.",
+   "topicId": "water-loss-night-flow",
+   "level": "class1",
+   "assumptions": "Fictional DMA with a cast iron river crossing installed in the 1970s. Frost depth that winter reached well below normal.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Night flow doubled in the week after the thaw and stayed doubled."
+    },
+    {
+     "id": "ev2",
+     "label": "Step testing isolates most of the increase to the 300 m section containing the river crossing."
+    },
+    {
+     "id": "ev3",
+     "label": "Ground above the crossing stays wet and soft while surrounding ground dries after the thaw."
+    },
+    {
+     "id": "ev4",
+     "label": "Pressure in the DMA is normal and customer use is unchanged."
+    },
+    {
+     "id": "ev5",
+     "label": "A paired DMA away from the river shows no night flow change."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Spring runoff raised groundwater and the DMA meter is reading groundwater inflow"
+     },
+     {
+      "id": "inf-b",
+      "label": "Every customer in the DMA began thawing frozen services that week"
+     },
+     {
+      "id": "inf-c",
+      "label": "The treatment plant raised zone pressure and opened an old leak across town"
+     },
+     {
+      "id": "inf-d",
+      "label": "A frost and thaw related failure at or near the river crossing section is leaking"
+     }
+    ],
+    "correctOptionId": "inf-d",
+    "explanation": "The increase isolates to the crossing section, the ground above it stays wet, and a paired DMA is unchanged. Meter inflow is not possible in a pressurized main, customer thawing would not isolate to one section, and no pressure change is recorded."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best confirms the explanation and guides the fix?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Run acoustic correlation across the crossing section and inspect the crossing chambers at both banks"
+     },
+     {
+      "id": "nc-b",
+      "label": "Wait until summer to see if the night flow recovers on its own"
+     },
+     {
+      "id": "nc-c",
+      "label": "Replace all service lines in the DMA"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Correlation across the suspect section plus chamber inspection directly tests the crossing failure the step test points to."
+   },
+   "clueText": {
+    "nc-a": "Correlation peaks at a cracked joint just before the crossing, and the chamber shows fresh washout gravel.",
+    "nc-b": "A doubled night flow with wet ground will not recover on its own and delay risks undermining the crossing.",
+    "nc-c": "Service lines are spread across the DMA and step testing cleared their sections."
+   }
+  },
+  {
+   "id": "wp2wd-evidence05",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A district in Winnipeg shows high night flow, but step testing finds no section where isolation lowers the flow.",
+   "topicId": "water-loss-night-flow",
+   "level": "class1",
+   "assumptions": "Fictional DMA containing a hospital, two schools, and homes. A full step test was done on two separate nights with the same result.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Night flow holds at 9 L/s all night instead of dipping to a low minimum."
+    },
+    {
+     "id": "ev2",
+     "label": "Isolating each of six sections in turn changes night flow by less than 0.5 L/s each time."
+    },
+    {
+     "id": "ev3",
+     "label": "Flow falls to 2 L/s on the one statutory holiday night in the test period, then returns to 9 L/s."
+    },
+    {
+     "id": "ev4",
+     "label": "The hospital laundry and sterilizer schedule runs from 23:00 to 05:00 on working nights only."
+    },
+    {
+     "id": "ev5",
+     "label": "Acoustic loggers across the DMA record no leak noise."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Legitimate institutional night use, mainly the hospital schedule, explains the high night flow"
+     },
+     {
+      "id": "inf-b",
+      "label": "Six separate leaks of equal size are hidden in the six sections"
+     },
+     {
+      "id": "inf-c",
+      "label": "The DMA meter reads a steady false 7 L/s all night"
+     },
+     {
+      "id": "inf-d",
+      "label": "A large leak sits exactly at the DMA inlet where step testing cannot see it"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "No section isolation changes the flow, there is no leak noise, and the flow collapses on the holiday night when the hospital schedule stops. Six equal leaks and a steady meter error would not follow a working night calendar, and an inlet leak would still appear when downstream sections close."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best confirms the explanation and guides the fix?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Excavate each of the six sections in turn looking for leaks"
+     },
+     {
+      "id": "nc-b",
+      "label": "Meter the hospital service for one working week and subtract its night profile from the DMA balance"
+     },
+     {
+      "id": "nc-c",
+      "label": "Declare the DMA leakage as 7 L/s and add it to the loss target"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "A dedicated service meter measures the suspected legitimate use directly, which is what a leakage calculation must remove first."
+   },
+   "clueText": {
+    "nc-a": "Excavation has no target because no section changed the flow when isolated.",
+    "nc-b": "The hospital service accounts for about 6.5 L/s through the night, leaving a true minimum near the historic norm.",
+    "nc-c": "Calling it leakage without measuring the hospital draw would overstate loss and misdirect the repair budget."
+   }
+  },
+  {
+   "id": "wp2wd-evidence06",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A prairie city lowers pressure in one district at night as a trial, and leakage falls sharply while customer use barely changes.",
+   "topicId": "water-loss-night-flow",
+   "level": "class1",
+   "assumptions": "Fictional DMA with a pressure reducing valve that can be scheduled. Night pressures and flows were logged for two weeks before and during the trial.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "At 420 kPa night pressure, minimum night flow is 10 L/s with estimated customer night use of 2 L/s."
+    },
+    {
+     "id": "ev2",
+     "label": "At 300 kPa night pressure, minimum night flow falls to 5.5 L/s with the same estimated customer use."
+    },
+    {
+     "id": "ev3",
+     "label": "Daytime pressures and billed consumption are unchanged by the night only trial."
+    },
+    {
+     "id": "ev4",
+     "label": "Known leak repairs in the DMA in the past year were mostly joint weeps and service leaks, not bursts."
+    },
+    {
+     "id": "ev5",
+     "label": "A neighbouring DMA held at full pressure shows no night flow change in the same weeks."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "One large burst is throttling itself at lower pressure"
+     },
+     {
+      "id": "inf-b",
+      "label": "Much of the district leakage is pressure dependent background leakage from many small joint and service weeps"
+     },
+     {
+      "id": "inf-c",
+      "label": "Customers use far less water at night when pressure drops"
+     },
+     {
+      "id": "inf-d",
+      "label": "The inlet meter under registers at lower pressure"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Customer night use is accounted for and flat, the fall is large and gradual in character, and past repairs show many small weeps rather than one burst. A single burst would have been found as a dominant step test drop, and the control DMA rules out a seasonal or meter wide effect."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best confirms the explanation and guides the fix?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Search for one large burst with a full acoustic survey first"
+     },
+     {
+      "id": "nc-b",
+      "label": "Raise night pressure to find leaks faster by sound"
+     },
+     {
+      "id": "nc-c",
+      "label": "Adopt scheduled night pressure control for the DMA and track leakage against pressure over the next quarter"
+     }
+    ],
+    "correctOptionId": "nc-c",
+    "explanation": "Sustained pressure management with tracking tests whether the pressure and leakage relationship holds, which is the Class 2 program decision this case supports."
+   },
+   "clueText": {
+    "nc-a": "Past step tests and repair history already show no single dominant leak to find.",
+    "nc-b": "Raising pressure would increase loss from the many small weeps the records describe.",
+    "nc-c": "Over the quarter, leakage tracks night pressure closely and total loss falls by about a third with no pressure complaints."
+   }
+  },
+  {
+   "id": "wp2wd-evidence07",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A reservoir fed district in British Columbia shows a steady overnight reservoir drop that is larger than the metered outflow to the district.",
+   "topicId": "water-loss-night-flow",
+   "level": "class1",
+   "assumptions": "Fictional ground reservoir feeding one district by gravity. Staff ran a test with the district outlet closed for one night under supervision.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "With the outlet open, the reservoir drops 0.90 m overnight while district meters total a volume equal to a 0.55 m drop."
+    },
+    {
+     "id": "ev2",
+     "label": "With the outlet closed all night, the reservoir still drops 0.20 m with no district demand."
+    },
+    {
+     "id": "ev3",
+     "label": "Evaporation and temperature effects for the covered reservoir are estimated at under 0.01 m per night."
+    },
+    {
+     "id": "ev4",
+     "label": "The reservoir outlet meter passes a drawdown accuracy check."
+    },
+    {
+     "id": "ev5",
+     "label": "Dye and level checks find no overflow, since the overflow line stays dry all night."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "District customers use far more water at night than their meters record"
+     },
+     {
+      "id": "inf-b",
+      "label": "The reservoir level sensor overstates the overnight drop"
+     },
+     {
+      "id": "inf-c",
+      "label": "Water is leaving the reservoir or its feed main by a path other than the metered district outlet, such as a reservoir or trunk leak"
+     },
+     {
+      "id": "inf-d",
+      "label": "The reservoir overflows quietly every night"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "The closed outlet test still loses 0.20 m with no demand, overflow is dry, evaporation is negligible, and the outlet meter is proven accurate. Customer under recording cannot explain a loss with the outlet shut, and a sensor error would not match the metered open outlet shortfall pattern."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best confirms the explanation and guides the fix?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Isolate reservoir cells and the feed main in turn overnight to find which element loses level with everything shut"
+     },
+     {
+      "id": "nc-b",
+      "label": "Recalibrate all district customer meters"
+     },
+     {
+      "id": "nc-c",
+      "label": "Raise the reservoir operating level to cover the loss"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Element by element isolation with everything shut is the direct test for which structure or main is losing water."
+   },
+   "clueText": {
+    "nc-a": "The feed main section loses pressure in isolation while both cells hold level, locating the loss to the trunk main.",
+    "nc-b": "Customer meters cannot cause a drop with the district outlet closed.",
+    "nc-c": "Raising the level adds stored volume but does not find or stop the loss."
+   }
+  },
+  {
+   "id": "wp2wd-evidence08",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Minimum night flow in a new district metered area in Alberta is high from the first month, even though the mains are new plastic pipe.",
+   "topicId": "water-loss-night-flow",
+   "level": "class1",
+   "assumptions": "Fictional DMA commissioned eight months ago near Edmonton. Boundary valves were set at commissioning and not checked since.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Night flow is 8 L/s in a DMA where new pipe leakage should be near 1 L/s."
+    },
+    {
+     "id": "ev2",
+     "label": "Step testing inside the DMA finds no section that lowers the flow."
+    },
+    {
+     "id": "ev3",
+     "label": "A listening test on one boundary valve hears water passing while the valve shows closed."
+    },
+    {
+     "id": "ev4",
+     "label": "Fully seating that boundary valve in a trial drops night flow to 1.5 L/s the same night."
+    },
+    {
+     "id": "ev5",
+     "label": "The neighbouring older DMA night flow fell slightly in the same period."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "New plastic mains leak heavily along every joint"
+     },
+     {
+      "id": "inf-b",
+      "label": "New homes in the DMA use eight times the expected night flow"
+     },
+     {
+      "id": "inf-c",
+      "label": "The DMA meter was installed backwards"
+     },
+     {
+      "id": "inf-d",
+      "label": "A boundary valve is passing, so the new DMA is quietly feeding part of the neighbouring district at night"
+     }
+    ],
+    "correctOptionId": "inf-d",
+    "explanation": "New mains do not leak evenly at this rate, step testing inside the DMA finds nothing, and a passing boundary valve is heard and then proven by the trial seating that restores normal flow. A reversed meter would misread direction, not create a flow that a valve trial removes."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best confirms the explanation and guides the fix?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Pressure test every new main in the DMA again"
+     },
+     {
+      "id": "nc-b",
+      "label": "Seat and tag all boundary valves, then add boundary valve checks to the DMA monthly routine"
+     },
+     {
+      "id": "nc-c",
+      "label": "Replace the DMA meter with a larger size"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "Boundary valve verification closes the proven transfer path and the routine check prevents the balance error from returning."
+   },
+   "clueText": {
+    "nc-a": "The mains passed commissioning tests and step testing cleared them again.",
+    "nc-b": "With boundaries verified, both DMAs report stable and separate night flows for the next month.",
+    "nc-c": "Meter size does not explain flow that stops when a boundary valve is seated."
+   }
+  },
+  {
+   "id": "wp2wd-evidence09",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A large recreation complex in a Manitoba city is suspected of inflating district water loss, because district daytime use is high but night flow is normal.",
+   "topicId": "water-loss-night-flow",
+   "level": "class1",
+   "assumptions": "Fictional DMA with one large metered recreation complex. The complex meter is a 15 year old turbine meter.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "District night flow is at the historic norm, so background leakage looks low."
+    },
+    {
+     "id": "ev2",
+     "label": "The water balance still shows high unexplained daytime loss in the DMA."
+    },
+    {
+     "id": "ev3",
+     "label": "A test of the recreation complex meter at low and medium flows shows it under registers by 22 percent."
+    },
+    {
+     "id": "ev4",
+     "label": "At high test flows the same meter is within 3 percent of true volume."
+    },
+    {
+     "id": "ev5",
+     "label": "The complex irrigates and fills pools mostly at low to medium flow for long hours."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The complex meter under registers at the low flows it runs at most, creating apparent daytime loss"
+     },
+     {
+      "id": "inf-b",
+      "label": "A daytime only leak opens when the complex is busy"
+     },
+     {
+      "id": "inf-c",
+      "label": "District customers waste water only in daytime"
+     },
+     {
+      "id": "inf-d",
+      "label": "The DMA inlet meter over registers only in daytime"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Night flow is normal, the balance gap is daytime, and the meter test shows a large low flow error exactly where the complex operates for long hours. A daytime leak would show in step testing and would not match a proven meter error curve."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best confirms the explanation and guides the fix?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Run a full DMA leak survey during complex operating hours"
+     },
+     {
+      "id": "nc-b",
+      "label": "Bill the complex a flat estimated charge and stop metering it"
+     },
+     {
+      "id": "nc-c",
+      "label": "Replace or resize the complex meter for its real flow range and restate the DMA balance"
+     }
+    ],
+    "correctOptionId": "nc-c",
+    "explanation": "Correcting the meter at its operating range removes the measured error that creates the apparent loss."
+   },
+   "clueText": {
+    "nc-a": "A leak survey does not address a meter proven to under register at working flows.",
+    "nc-b": "Flat billing hides consumption and removes the data the balance depends on.",
+    "nc-c": "With a correctly sized meter, recorded complex use rises and the DMA unexplained loss falls to near the night flow estimate."
+   }
+  },
+  {
+   "id": "wp2wd-evidence10",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Step testing a Saskatchewan district over three nights shows small flow drops at almost every step instead of one large drop.",
+   "topicId": "water-loss-night-flow",
+   "level": "class1",
+   "assumptions": "Fictional DMA of mixed age housing in Moose Jaw. Each of nine sections was isolated in turn on comparable nights.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Each isolation step lowers night flow by 0.4 to 0.9 L/s, and the steps add up to most of the excess night flow."
+    },
+    {
+     "id": "ev2",
+     "label": "No single section accounts for more than a tenth of the excess."
+    },
+    {
+     "id": "ev3",
+     "label": "Acoustic loggers hear faint noise at many points rather than one loud source."
+    },
+    {
+     "id": "ev4",
+     "label": "Repair history for the DMA lists many service line weeps found over past years."
+    },
+    {
+     "id": "ev5",
+     "label": "Customer night use was measured separately and is too small to explain the pattern."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "One large leak sits on a section that was never isolated"
+     },
+     {
+      "id": "inf-b",
+      "label": "The district loss is many small service and joint leaks spread across the DMA, not one main leak"
+     },
+     {
+      "id": "inf-c",
+      "label": "The step test valves all leak past their seats equally"
+     },
+     {
+      "id": "inf-d",
+      "label": "Night flow rises because the whole DMA pressure rises at night"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Every section was isolated, each contributed a similar small drop, loggers hear many faint sources, and history matches many service weeps. One large hidden leak contradicts the even step pattern, and passing step valves would blur, not create, consistent section by section drops."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best confirms the explanation and guides the fix?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Plan a service renewal and targeted repair program by section rather than a single excavation"
+     },
+     {
+      "id": "nc-b",
+      "label": "Excavate the oldest section first and expect the loss to end"
+     },
+     {
+      "id": "nc-c",
+      "label": "Repeat the step test until one large drop appears"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "A section by section renewal program matches the proven distribution of many small leaks and can be tracked by repeating night flow after each section."
+   },
+   "clueText": {
+    "nc-a": "After the first two sections are renewed, night flow falls by about the amount those steps predicted.",
+    "nc-b": "One excavation cannot fix losses measured in all nine sections.",
+    "nc-c": "Repeating the same test will reproduce the same even pattern, not create a single drop."
+   }
+  },
+  {
+   "id": "wp2wd-evidence100",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Large meter testing across a Manitoba city finds its oldest turbine meters accurate at high flow but losing registration steadily at the low flows their sites now mostly run.",
+   "topicId": "metering-accuracy",
+   "level": "class1",
+   "assumptions": "Fictional testing programme in a Winnipeg area system covering forty large meters at three flow rates each. Site flow profiles were logged before testing.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "At high test flow, the oldest meters average within 2 percent of true volume."
+    },
+    {
+     "id": "ev2",
+     "label": "At low test flow, the same meters average 14 percent under registration."
+    },
+    {
+     "id": "ev3",
+     "label": "Most of their sites now run at low flow for over 80 percent of hours after process changes reduced their peaks."
+    },
+    {
+     "id": "ev4",
+     "label": "Newer meters tested the same week hold accuracy across all three flow rates."
+    },
+    {
+     "id": "ev5",
+     "label": "District balances containing the oldest meters show the largest apparent losses."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The test bench reads low flow incorrectly for old meters only"
+     },
+     {
+      "id": "inf-b",
+      "label": "The sites are leaking at low flow in proportion to meter age"
+     },
+     {
+      "id": "inf-c",
+      "label": "Customers with old meters are bypassing them at night"
+     },
+     {
+      "id": "inf-d",
+      "label": "Wear in the oldest meters has eroded their low flow accuracy, and their sites now live at low flow, creating apparent loss"
+     }
+    ],
+    "correctOptionId": "inf-d",
+    "explanation": "The same bench tests newer meters accurately at low flow, the error follows meter age and wear, and site profiles prove the meters spend their lives where they now err. Leaks would appear in night flow checks, not in bench tests of removed meters."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best confirms the explanation and guides the fix?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Programme replacement or resizing of the oldest meters by their site flow profiles, starting with the largest apparent loss districts"
+     },
+     {
+      "id": "nc-b",
+      "label": "Retest the oldest meters at high flow only and return them"
+     },
+     {
+      "id": "nc-c",
+      "label": "Adjust all old meter readings up by a flat 14 percent"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Sizing meters to real site profiles fixes registration where the water actually flows, and district balances verify the recovery."
+   },
+   "clueText": {
+    "nc-a": "The first replacement group cuts its district apparent loss by about half in the following quarter.",
+    "nc-b": "High flow only testing certifies the one range the sites rarely use.",
+    "nc-c": "A flat adjustment ignores that error varies by flow and by meter."
+   }
+  },
+  {
+   "id": "wp2wd-evidence11",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Winter night flow in a mobile home park district in Alberta is high every cold month, then normal all summer, for three winters running.",
+   "topicId": "water-loss-night-flow",
+   "level": "class1",
+   "assumptions": "Fictional DMA serving a mobile home park near Red Deer. Park services are shallow and the park operator manages frost protection taps.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Night flow rises to 7 L/s whenever the temperature stays below minus 20 C for several days."
+    },
+    {
+     "id": "ev2",
+     "label": "Park staff confirm frost protection bleed taps are opened park wide during deep cold and closed in spring."
+    },
+    {
+     "id": "ev3",
+     "label": "Metered flow at the park master meter matches the DMA excess closely on cold nights."
+    },
+    {
+     "id": "ev4",
+     "label": "Step testing in summer finds no leak sections."
+    },
+    {
+     "id": "ev5",
+     "label": "No burst repairs were needed in the park in any of the three winters."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The park mains burst every winter and heal every spring"
+     },
+     {
+      "id": "inf-b",
+      "label": "Cold weather makes the DMA meter over register"
+     },
+     {
+      "id": "inf-c",
+      "label": "Frost protection bleed taps running through cold periods explain the winter night flow"
+     },
+     {
+      "id": "inf-d",
+      "label": "Residents fill bathtubs nightly only in winter"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "The excess matches the master meter, follows deep cold exactly, and park staff confirm bleed taps are opened by policy, while summer step testing finds no leaks. Bursts do not heal seasonally, and a meter error would not match the park master meter and staff records."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best confirms the explanation and guides the fix?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Excavate park mains each winter looking for bursts"
+     },
+     {
+      "id": "nc-b",
+      "label": "Record bleed tap use as legitimate winter night use in the DMA balance and review tap settings with the park operator"
+     },
+     {
+      "id": "nc-c",
+      "label": "Count the full winter excess as leakage in the annual audit"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "Treating measured frost protection flow as legitimate use keeps the leakage figure honest and focuses attention on whether tap settings can be reduced safely."
+   },
+   "clueText": {
+    "nc-a": "Three winters produced no bursts to excavate, and step testing cleared the mains.",
+    "nc-b": "With bleed use logged nightly, the winter leakage estimate returns to the summer baseline.",
+    "nc-c": "Counting known frost protection flow as leakage would overstate loss and misstate the audit."
+   }
+  },
+  {
+   "id": "wp2wd-evidence12",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A city in British Columbia finds its annual non revenue water jumped in the year it changed from bimonthly to monthly customer meter reading.",
+   "topicId": "water-loss-night-flow",
+   "level": "class1",
+   "assumptions": "Fictional utility that changed reading cycles mid year. Production metering did not change. The audit compares calendar year production to billed volumes by read date.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Production for the calendar year is unchanged from the prior year trend."
+    },
+    {
+     "id": "ev2",
+     "label": "District night flows and leak repair counts are unchanged year over year."
+    },
+    {
+     "id": "ev3",
+     "label": "Billed volume in the transition year excludes about one month of consumption that was used but read in the next year."
+    },
+    {
+     "id": "ev4",
+     "label": "When billed volumes are matched to the months the water was actually used, the loss percentage returns to the prior level."
+    },
+    {
+     "id": "ev5",
+     "label": "Customer meter accuracy testing that year shows no change in fleet accuracy."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Leakage doubled in the transition year and then recovered"
+     },
+     {
+      "id": "inf-b",
+      "label": "Customer meters across the city slowed down for one year"
+     },
+     {
+      "id": "inf-c",
+      "label": "Production meters over registered for exactly one year"
+     },
+     {
+      "id": "inf-d",
+      "label": "The jump is a billing lag accounting artifact from the reading cycle change, not new physical loss"
+     }
+    ],
+    "correctOptionId": "inf-d",
+    "explanation": "Physical indicators, night flow, repairs, production trend, and meter accuracy are all unchanged, and realigning billed volume to use month removes the jump. Real leakage doubling would move night flow and repair counts, which it did not."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best confirms the explanation and guides the fix?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Launch an emergency leak detection program for the transition year pattern"
+     },
+     {
+      "id": "nc-b",
+      "label": "Replace the customer meter fleet based on the audit jump"
+     },
+     {
+      "id": "nc-c",
+      "label": "Restate the audit on a use month basis and note the cycle change in the water balance method"
+     }
+    ],
+    "correctOptionId": "nc-c",
+    "explanation": "Fixing the accounting basis corrects the audit without field work, and the method note prevents the same artifact at the next cycle change."
+   },
+   "clueText": {
+    "nc-a": "Field programs cannot fix a gap that disappears when volumes are aligned by use month.",
+    "nc-b": "Fleet testing already showed accuracy was unchanged that year.",
+    "nc-c": "The restated audit matches the prior three years within one percentage point."
+   }
+  },
+  {
+   "id": "wp2wd-evidence13",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "During a one night reservoir isolation test in a Manitoba district, staff close the district feed to measure true night demand, but the reservoir keeps falling.",
+   "topicId": "water-loss-night-flow",
+   "level": "class1",
+   "assumptions": "Fictional test in a Brandon area district. The feed valve was proven tight by a pressure hold test earlier that day.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "With the feed valve closed and proven tight, the reservoir still falls at a steady rate all night."
+    },
+    {
+     "id": "ev2",
+     "label": "District pressure holds steady all night from a second feed that staff did not know was open."
+    },
+    {
+     "id": "ev3",
+     "label": "Mapping later finds an old intertie valve to a neighbouring zone shown as abandoned on current drawings."
+    },
+    {
+     "id": "ev4",
+     "label": "Closing that intertie in a second test stops the reservoir fall when the feed is closed."
+    },
+    {
+     "id": "ev5",
+     "label": "No overflow or drain flow is observed during either test."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "An undocumented open intertie is supplying the district during the test, so the reservoir fall is real outflow through that path"
+     },
+     {
+      "id": "inf-b",
+      "label": "The reservoir is leaking through its floor at a steady rate"
+     },
+     {
+      "id": "inf-c",
+      "label": "The feed valve leaks despite passing its hold test"
+     },
+     {
+      "id": "inf-d",
+      "label": "The district uses no water at all at night and the fall is evaporation"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "District pressure holding steady with the feed shut proves another supply path exists, and closing the found intertie stops the fall. A floor leak would continue after the intertie closes, and the feed valve passed a hold test the same day."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best confirms the explanation and guides the fix?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Survey, tag, and set the intertie to its intended normally closed position, and correct the system drawings"
+     },
+     {
+      "id": "nc-b",
+      "label": "Line the reservoir floor to stop the steady fall"
+     },
+     {
+      "id": "nc-c",
+      "label": "Repeat the feed valve hold test weekly until it fails"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Correcting the intertie position and the drawings fixes both the test error and a real zone boundary problem."
+   },
+   "clueText": {
+    "nc-a": "The next isolation test shows the reservoir holding level and the district pressure falling as expected with no supply.",
+    "nc-b": "Lining the floor does not explain district pressure holding with the feed shut.",
+    "nc-c": "The valve already passed its hold test, and the intertie closure removed the fall."
+   }
+  },
+  {
+   "id": "wp2wd-evidence14",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A Saskatchewan district shows leakage concentrated in its daytime balance, yet acoustic surveys keep finding nothing and night flow is only slightly high.",
+   "topicId": "water-loss-night-flow",
+   "level": "class1",
+   "assumptions": "Fictional DMA in Prince Albert with a large food plant on a dedicated service. Plant production runs two day shifts.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Night flow is only 1 L/s above the historic norm."
+    },
+    {
+     "id": "ev2",
+     "label": "Daytime DMA inflow exceeds billed daytime use by about 12 L/s during plant shifts."
+    },
+    {
+     "id": "ev3",
+     "label": "The gap disappears on plant shutdown weekends while homes use water normally."
+    },
+    {
+     "id": "ev4",
+     "label": "A check meter on the plant service records about 12 L/s more than the plant billing meter during shifts."
+    },
+    {
+     "id": "ev5",
+     "label": "The plant billing meter is oversized for its current reduced production flows."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "A leak runs only during plant shifts and stops on weekends"
+     },
+     {
+      "id": "inf-b",
+      "label": "The plant billing meter under registers at its current flows, creating apparent daytime loss"
+     },
+     {
+      "id": "inf-c",
+      "label": "Plant staff steal water through an unmetered bypass that a check meter would also miss"
+     },
+     {
+      "id": "inf-d",
+      "label": "Home meters across the DMA all under register in daytime"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "The check meter on the same service measures the missing flow, the gap follows plant shifts exactly, and night flow is near normal. A shift timed leak is not supported by any acoustic or step result, and a bypass before the check meter is ruled out because the check meter was placed at the service entrance and captured the flow."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best confirms the explanation and guides the fix?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Survey all DMA mains acoustically during plant shifts"
+     },
+     {
+      "id": "nc-b",
+      "label": "Replace the plant meter with a correctly sized compound or modern meter and verify with the check meter for one month"
+     },
+     {
+      "id": "nc-c",
+      "label": "Add the gap to the DMA leakage total in the annual report"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "Correct meter sizing at the proven error point restores the balance, verified against the check meter."
+   },
+   "clueText": {
+    "nc-a": "Surveys already found nothing because the water is metered plant use, not leakage.",
+    "nc-b": "After replacement, billing and check meters agree within 2 percent and the daytime gap closes.",
+    "nc-c": "Reporting meter error as leakage would misstate both loss and plant consumption."
+   }
+  },
+  {
+   "id": "wp2wd-evidence15",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Two neighbouring districts in an Alberta city are compared for a renewal budget: one has high night flow per kilometre of main, the other has high total night flow but far more mains.",
+   "topicId": "water-loss-accounting",
+   "level": "class1",
+   "assumptions": "Fictional paired DMA comparison prepared for capital planning in Calgary area conditions. Both DMAs were measured in the same month with the same method.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "District A loses 0.9 L/s per kilometre at night across 8 km of main."
+    },
+    {
+     "id": "ev2",
+     "label": "District B loses 0.3 L/s per kilometre at night across 40 km of main."
+    },
+    {
+     "id": "ev3",
+     "label": "District A mains are 60 year old cast iron, while District B mains are mostly 25 year old plastic."
+    },
+    {
+     "id": "ev4",
+     "label": "Break records per kilometre are also three times higher in District A."
+    },
+    {
+     "id": "ev5",
+     "label": "Customer counts per kilometre are similar in the two districts."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "District B should rank first because its total night flow is larger"
+     },
+     {
+      "id": "inf-b",
+      "label": "Both districts are equal because both lose water at night"
+     },
+     {
+      "id": "inf-c",
+      "label": "District A has the worse leakage intensity and should rank first for renewal despite its smaller total loss"
+     },
+     {
+      "id": "inf-d",
+      "label": "District A loss is explained by having more customers per kilometre"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "Per kilometre loss and break rate are both far higher in A, customer density is similar, and A has the older leak prone material. Total flow alone favours the much larger district and hides intensity, which is what renewal ranking should compare."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best confirms the explanation and guides the fix?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Rank renewal by total night flow only and schedule District B first"
+     },
+     {
+      "id": "nc-b",
+      "label": "Split the budget equally because both districts lose water"
+     },
+     {
+      "id": "nc-c",
+      "label": "Rank renewal by loss per kilometre and break rate, and schedule District A first with a post renewal night flow target"
+     }
+    ],
+    "correctOptionId": "nc-c",
+    "explanation": "Intensity based ranking directs renewal to the worst performing mains and sets a measurable target for the work."
+   },
+   "clueText": {
+    "nc-a": "Total flow ranking would spend first where mains are newer and loss per kilometre is lowest.",
+    "nc-b": "Equal splitting ignores the threefold difference in both loss intensity and breaks.",
+    "nc-c": "The plan funds District A first and its target is a night flow intensity at or below the District B level within two years."
+   }
+  },
+  {
+   "id": "wp2wd-evidence16",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A district in Winnipeg reports rising leakage each spring for five years, always recovering by midsummer after a repair program finds one or two service leaks.",
+   "topicId": "water-loss-night-flow",
+   "level": "class1",
+   "assumptions": "Fictional DMA with many galvanized services near end of life. Spring thaw in Manitoba brings frost movement in the service trenches.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Each spring, step testing finds one or two sections with fresh leak flow that was absent the prior fall."
+    },
+    {
+     "id": "ev2",
+     "label": "Repairs each spring are on service lines at the frost depth zone, with split or pulled joints."
+    },
+    {
+     "id": "ev3",
+     "label": "Main break counts in the DMA are flat across the five years."
+    },
+    {
+     "id": "ev4",
+     "label": "Night flow returns to baseline after each spring repair round."
+    },
+    {
+     "id": "ev5",
+     "label": "A neighbouring DMA with copper and plastic services shows no spring pattern."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The trunk main is cracking a little more each spring"
+     },
+     {
+      "id": "inf-b",
+      "label": "Spring runoff enters the DMA meter chamber and adds false flow"
+     },
+     {
+      "id": "inf-c",
+      "label": "Customers irrigate heavily each spring and stop by midsummer"
+     },
+     {
+      "id": "inf-d",
+      "label": "Seasonal frost movement is failing aging galvanized services each spring, creating a repeating spring leakage rise"
+     }
+    ],
+    "correctOptionId": "inf-d",
+    "explanation": "Repairs land on services at frost depth each spring, mains are flat, the pattern is absent where services are modern materials, and flow returns to baseline after service repairs. A trunk main failure would appear in break counts and would not be cured by service repairs."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best confirms the explanation and guides the fix?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Program spring step testing each year and accelerate galvanized service renewal in the DMA"
+     },
+     {
+      "id": "nc-b",
+      "label": "Replace the trunk main through the DMA"
+     },
+     {
+      "id": "nc-c",
+      "label": "Ignore the spring rise because it recovers by midsummer"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Planned spring testing plus service renewal attacks the proven repeating failure point instead of reacting each year."
+   },
+   "clueText": {
+    "nc-a": "After half the galvanized services are renewed, the spring rise is about half its former size.",
+    "nc-b": "The trunk main has a flat break record and spring repairs never touch it.",
+    "nc-c": "Ignoring the rise leaves real treated water leaking for months each spring."
+   }
+  },
+  {
+   "id": "wp2wd-evidence17",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A low lying zone in a British Columbia interior city loses pressure every afternoon while the high zone above it stays normal.",
+   "topicId": "pressure-zones",
+   "level": "class1",
+   "assumptions": "Fictional two zone system in Kamloops area conditions. The low zone is fed through one pressure reducing valve station.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Low zone pressure falls to 150 kPa each afternoon and recovers each evening."
+    },
+    {
+     "id": "ev2",
+     "label": "High zone pressure stays near 550 kPa through the same afternoons."
+    },
+    {
+     "id": "ev3",
+     "label": "The reducing valve outlet gauge reads near zero flow pressure drop at low demand but the valve is found almost fully closed with a broken spring in its pilot."
+    },
+    {
+     "id": "ev4",
+     "label": "Opening the station bypass in a supervised trial restores low zone afternoon pressure at once."
+    },
+    {
+     "id": "ev5",
+     "label": "No main breaks or large demands were recorded in the low zone that week."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The pressure reducing valve has failed toward closed and is starving the low zone at demand"
+     },
+     {
+      "id": "inf-b",
+      "label": "The high zone is using all the water before it reaches the low zone"
+     },
+     {
+      "id": "inf-c",
+      "label": "The low zone elevated tank is too small for afternoon demand"
+     },
+     {
+      "id": "inf-d",
+      "label": "Afternoon heat expands air in the low zone mains and blocks flow"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "The valve pilot spring is broken, the valve sits almost closed, and the bypass trial restores pressure immediately, while the high zone stays normal. Tank size and high zone use cannot explain instant recovery through a bypass around one valve."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best confirms the explanation and guides the fix?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Add storage to the low zone before checking the station"
+     },
+     {
+      "id": "nc-b",
+      "label": "Repair the reducing valve pilot and spring, then log low zone pressure through the next afternoon peak"
+     },
+     {
+      "id": "nc-c",
+      "label": "Raise the high zone pressure to push more water down"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "Repairing the proven failed component and logging the next peak verifies control is restored under the condition that failed."
+   },
+   "clueText": {
+    "nc-a": "Storage would mask a failed valve and the bypass trial already located the fault.",
+    "nc-b": "After repair, the valve holds its setpoint and afternoon pressure stays above 320 kPa.",
+    "nc-c": "Higher upstream pressure against a closed valve adds stress without restoring control."
+   }
+  },
+  {
+   "id": "wp2wd-evidence18",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Pressures in a Saskatchewan zone swing up and down by 120 kPa every few minutes all day, and customers hear pipes humming.",
+   "topicId": "pressure-zones",
+   "level": "class1",
+   "assumptions": "Fictional zone fed through a pressure reducing valve station in a Saskatoon area system. A fast pressure logger was placed downstream of the station.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "The logger shows a repeating cycle: pressure climbs, then drops sharply, with a period of about four minutes."
+    },
+    {
+     "id": "ev2",
+     "label": "The reducing valve is heard hunting, opening and closing in time with the pressure cycle."
+    },
+    {
+     "id": "ev3",
+     "label": "Zone demand during the swings is steady, with no large user cycling."
+    },
+    {
+     "id": "ev4",
+     "label": "The valve pilot sensing line is found partly plugged with scale, cleaned in a trial, and the cycle period lengthens at once."
+    },
+    {
+     "id": "ev5",
+     "label": "A second zone fed from the same high zone through a different station is steady."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Customers across the zone open and close large taps in a four minute rhythm"
+     },
+     {
+      "id": "inf-b",
+      "label": "A partly plugged pilot sensing line makes the reducing valve hunt and cycle zone pressure"
+     },
+     {
+      "id": "inf-c",
+      "label": "The zone tank level is bouncing and driving the swings"
+     },
+     {
+      "id": "inf-d",
+      "label": "The pressure logger is faulty and inventing a cycle"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "The valve hunts in time with the logged cycle, demand is steady, a sister zone is steady, and cleaning the sensing line changes the cycle at once. Coordinated customer rhythm is not credible, and a faulty logger would not match valve sounds or respond to pilot cleaning."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best confirms the explanation and guides the fix?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Replace the zone pressure logger and close the case"
+     },
+     {
+      "id": "nc-b",
+      "label": "Tell customers the humming is normal for this zone"
+     },
+     {
+      "id": "nc-c",
+      "label": "Clean and flush the pilot system fully, then log downstream pressure for a full day to confirm steady control"
+     }
+    ],
+    "correctOptionId": "nc-c",
+    "explanation": "Full pilot cleaning plus a day of logging verifies the valve now holds pressure steadily, which is the operating requirement."
+   },
+   "clueText": {
+    "nc-a": "The logger agreed with valve behaviour and with the trial result, so it was reporting a real cycle.",
+    "nc-b": "A 120 kPa swing is not normal and risks fatigue damage to services and fixtures.",
+    "nc-c": "After full cleaning, downstream pressure holds within 15 kPa for the full day."
+   }
+  },
+  {
+   "id": "wp2wd-evidence19",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A hilltop area in Alberta has poor pressure that began the week a new pressure zone boundary was commissioned nearby.",
+   "topicId": "pressure-zones",
+   "level": "class1",
+   "assumptions": "Fictional hilltop area in a Red Deer area system. Zone boundaries were redrawn and two boundary valves were operated during commissioning.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Hilltop pressure fell from 340 kPa to 190 kPa in the commissioning week and stayed there."
+    },
+    {
+     "id": "ev2",
+     "label": "Streets just below the hilltop, moved to the new low zone, have normal pressure for that zone."
+    },
+    {
+     "id": "ev3",
+     "label": "One boundary valve between the hilltop and the high zone is found closed, though the commissioning plan shows it open."
+    },
+    {
+     "id": "ev4",
+     "label": "Opening that valve in a trial restores hilltop pressure to 335 kPa."
+    },
+    {
+     "id": "ev5",
+     "label": "No demand growth or breaks occurred on the hilltop that week."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The new low zone is stealing the hilltop supply through the boundary"
+     },
+     {
+      "id": "inf-b",
+      "label": "Hilltop homes need individual booster pumps from now on"
+     },
+     {
+      "id": "inf-c",
+      "label": "The hilltop was cut off from its high zone feed by a boundary valve left closed at commissioning"
+     },
+     {
+      "id": "inf-d",
+      "label": "The hilltop main suddenly tuberculated during commissioning week"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "Timing matches commissioning, the plan shows the valve open while it is found closed, and a trial opening restores pressure fully. Tuberculation does not occur in a week, and individual boosters are not needed once the intended feed is restored."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best confirms the explanation and guides the fix?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Open and verify the boundary valve, then audit every boundary valve position against the commissioning plan"
+     },
+     {
+      "id": "nc-b",
+      "label": "Install booster pumps at hilltop homes at utility cost"
+     },
+     {
+      "id": "nc-c",
+      "label": "Move the hilltop into the low zone permanently"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "A full boundary audit prevents other commissioning errors from hiding elsewhere in the redrawn zones."
+   },
+   "clueText": {
+    "nc-a": "The audit finds all other valves as planned, and hilltop pressure holds normal for a month.",
+    "nc-b": "Boosters treat a valve position error as a design problem and add cost without need.",
+    "nc-c": "The low zone cannot serve the hilltop elevation at adequate pressure, as its own setpoint shows."
+   }
+  }
+ ],
+ "missions": [
+  {
+   "id": "wp2wd-mission61",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 61: The Flushing Program Priority Scoring Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wd-process40",
+     "revision": "r1",
+     "occurrenceId": "m61-t1"
+    },
+    {
+     "taskId": "wp2wd-evidence01",
+     "revision": "r1",
+     "occurrenceId": "m61-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2wd-mission62",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 62: The Water Loss Night Flow Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wd-evidence02",
+     "revision": "r1",
+     "occurrenceId": "m62-t1"
+    },
+    {
+     "taskId": "wp2wd-process41",
+     "revision": "r1",
+     "occurrenceId": "m62-t2"
+    },
+    {
+     "taskId": "wp2wd-process42",
+     "revision": "r1",
+     "occurrenceId": "m62-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2wd-mission63",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 63: The Storage Cleaning Program Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wd-process43",
+     "revision": "r1",
+     "occurrenceId": "m63-t1"
+    },
+    {
+     "taskId": "wp2wd-evidence03",
+     "revision": "r1",
+     "occurrenceId": "m63-t2"
+    },
+    {
+     "taskId": "wp2wd-process44",
+     "revision": "r1",
+     "occurrenceId": "m63-t3"
+    },
+    {
+     "taskId": "wp2wd-process45",
+     "revision": "r1",
+     "occurrenceId": "m63-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2wd-mission64",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 64: The Water Loss Night Flow Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wd-evidence04",
+     "revision": "r1",
+     "occurrenceId": "m64-t1"
+    },
+    {
+     "taskId": "wp2wd-process46",
+     "revision": "r1",
+     "occurrenceId": "m64-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2wd-mission65",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 65: The Storage Water Age Investigation Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wd-process47",
+     "revision": "r1",
+     "occurrenceId": "m65-t1"
+    },
+    {
+     "taskId": "wp2wd-evidence05",
+     "revision": "r1",
+     "occurrenceId": "m65-t2"
+    },
+    {
+     "taskId": "wp2wd-process48",
+     "revision": "r1",
+     "occurrenceId": "m65-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2wd-mission66",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 66: The Water Loss Night Flow Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wd-evidence06",
+     "revision": "r1",
+     "occurrenceId": "m66-t1"
+    },
+    {
+     "taskId": "wp2wd-process49",
+     "revision": "r1",
+     "occurrenceId": "m66-t2"
+    },
+    {
+     "taskId": "wp2wd-process50",
+     "revision": "r1",
+     "occurrenceId": "m66-t3"
+    },
+    {
+     "taskId": "wp2wd-process51",
+     "revision": "r1",
+     "occurrenceId": "m66-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2wd-mission67",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 67: The Pump Station Alarm Response Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wd-process52",
+     "revision": "r1",
+     "occurrenceId": "m67-t1"
+    },
+    {
+     "taskId": "wp2wd-evidence07",
+     "revision": "r1",
+     "occurrenceId": "m67-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2wd-mission68",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 68: The Water Loss Night Flow Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wd-evidence08",
+     "revision": "r1",
+     "occurrenceId": "m68-t1"
+    },
+    {
+     "taskId": "wp2wd-process53",
+     "revision": "r1",
+     "occurrenceId": "m68-t2"
+    },
+    {
+     "taskId": "wp2wd-process54",
+     "revision": "r1",
+     "occurrenceId": "m68-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2wd-mission69",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 69: The Pump Station Seasonal Capacity Plan Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wd-process55",
+     "revision": "r1",
+     "occurrenceId": "m69-t1"
+    },
+    {
+     "taskId": "wp2wd-evidence09",
+     "revision": "r1",
+     "occurrenceId": "m69-t2"
+    },
+    {
+     "taskId": "wp2wd-process56",
+     "revision": "r1",
+     "occurrenceId": "m69-t3"
+    },
+    {
+     "taskId": "wp2wd-process57",
+     "revision": "r1",
+     "occurrenceId": "m69-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2wd-mission70",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 70: The Water Loss Night Flow Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wd-evidence10",
+     "revision": "r1",
+     "occurrenceId": "m70-t1"
+    },
+    {
+     "taskId": "wp2wd-process58",
+     "revision": "r1",
+     "occurrenceId": "m70-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2wd-mission71",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 71: The Pump Station Lockout For Maintenance Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wd-process59",
+     "revision": "r1",
+     "occurrenceId": "m71-t1"
+    },
+    {
+     "taskId": "wp2wd-evidence100",
+     "revision": "r1",
+     "occurrenceId": "m71-t2"
+    },
+    {
+     "taskId": "wp2wd-process60",
+     "revision": "r1",
+     "occurrenceId": "m71-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2wd-mission72",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 72: The Water Loss Night Flow Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wd-evidence11",
+     "revision": "r1",
+     "occurrenceId": "m72-t1"
+    },
+    {
+     "taskId": "wp2wd-process61",
+     "revision": "r1",
+     "occurrenceId": "m72-t2"
+    },
+    {
+     "taskId": "wp2wd-process62",
+     "revision": "r1",
+     "occurrenceId": "m72-t3"
+    },
+    {
+     "taskId": "wp2wd-process63",
+     "revision": "r1",
+     "occurrenceId": "m72-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2wd-mission73",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 73: The Cross Connection New Service Review Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wd-process64",
+     "revision": "r1",
+     "occurrenceId": "m73-t1"
+    },
+    {
+     "taskId": "wp2wd-evidence12",
+     "revision": "r1",
+     "occurrenceId": "m73-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2wd-mission74",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 74: The Water Loss Night Flow Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wd-evidence13",
+     "revision": "r1",
+     "occurrenceId": "m74-t1"
+    },
+    {
+     "taskId": "wp2wd-process65",
+     "revision": "r1",
+     "occurrenceId": "m74-t2"
+    },
+    {
+     "taskId": "wp2wd-process66",
+     "revision": "r1",
+     "occurrenceId": "m74-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2wd-mission75",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 75: The Cross Connection Hydrant Use Program Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wd-process67",
+     "revision": "r1",
+     "occurrenceId": "m75-t1"
+    },
+    {
+     "taskId": "wp2wd-evidence14",
+     "revision": "r1",
+     "occurrenceId": "m75-t2"
+    },
+    {
+     "taskId": "wp2wd-process68",
+     "revision": "r1",
+     "occurrenceId": "m75-t3"
+    },
+    {
+     "taskId": "wp2wd-process69",
+     "revision": "r1",
+     "occurrenceId": "m75-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2wd-mission76",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 76: The Water Loss Accounting Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wd-evidence15",
+     "revision": "r1",
+     "occurrenceId": "m76-t1"
+    },
+    {
+     "taskId": "wp2wd-process70",
+     "revision": "r1",
+     "occurrenceId": "m76-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2wd-mission77",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 77: The Main Break Records Analysis Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wd-process71",
+     "revision": "r1",
+     "occurrenceId": "m77-t1"
+    },
+    {
+     "taskId": "wp2wd-evidence16",
+     "revision": "r1",
+     "occurrenceId": "m77-t2"
+    },
+    {
+     "taskId": "wp2wd-process72",
+     "revision": "r1",
+     "occurrenceId": "m77-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2wd-mission78",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 78: The Pressure Zones Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wd-evidence17",
+     "revision": "r1",
+     "occurrenceId": "m78-t1"
+    },
+    {
+     "taskId": "wp2wd-process73",
+     "revision": "r1",
+     "occurrenceId": "m78-t2"
+    },
+    {
+     "taskId": "wp2wd-process74",
+     "revision": "r1",
+     "occurrenceId": "m78-t3"
+    },
+    {
+     "taskId": "wp2wd-process75",
+     "revision": "r1",
+     "occurrenceId": "m78-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2wd-mission79",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 79: The Main Break Valve Access Improvement Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wd-process76",
+     "revision": "r1",
+     "occurrenceId": "m79-t1"
+    },
+    {
+     "taskId": "wp2wd-evidence18",
+     "revision": "r1",
+     "occurrenceId": "m79-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2wd-mission80",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 80: The Pressure Zones Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wd-evidence19",
+     "revision": "r1",
+     "occurrenceId": "m80-t1"
+    },
+    {
+     "taskId": "wp2wd-process77",
+     "revision": "r1",
+     "occurrenceId": "m80-t2"
+    },
+    {
+     "taskId": "wp2wd-process78",
+     "revision": "r1",
+     "occurrenceId": "m80-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Distribution operations chapters (pressure zones, storage, water loss, pumps)"
+  },
+  {
+   "id": "wpi-ntk-2025",
+   "title": "WPI, 2025 Need-to-Know Criteria, Water Distribution Class II",
+   "locator": "https://gowpi.org/services/2025-need-to-know-criteria/"
+  },
+  {
+   "id": "gcdwq",
+   "title": "Health Canada, Guidelines for Canadian Drinking Water Quality",
+   "locator": "Federal guideline values and distribution water quality context"
+  },
+  {
+   "id": "awwa-water-loss",
+   "title": "AWWA, water loss control guidance (M36 family)",
+   "locator": "Water audit and loss control background (not Canadian law)"
+  },
+  {
+   "id": "epa-distribution",
+   "title": "US EPA, distribution system guidance material",
+   "locator": "Distribution water quality background (not Canadian law)"
+  },
+  {
+   "id": "ccohs-safety",
+   "title": "CCOHS, OSH Answers (chemical safety, confined spaces, lockout)",
+   "locator": "https://www.ccohs.ca/oshanswers/"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "96df349a7043798f0f2ea5387d0e8959c4bfc26467b4f9a8a3d915992e488490",
+  "taskReceipts": [
+   {
+    "taskId": "wp2wd-process40",
+    "revision": "r1",
+    "sha256": "e821d1eea2fc3ac2295fa4935097ebd3cb7828f73d5c2d539978fc227fc84e5d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process41",
+    "revision": "r1",
+    "sha256": "f5809d5aa5fb42db5789065ce73609c9d9063efcf03d1be0d032262f8a7b2929",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process42",
+    "revision": "r1",
+    "sha256": "2100487610ea5e98b3e915e72c793eb3aa569481de8fc14f9b95d0ee3703d2bb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process43",
+    "revision": "r1",
+    "sha256": "e8467290d405906217b5fb5e95ae362a4e230c16ef9d57a36fb558dcaa1263cb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process44",
+    "revision": "r1",
+    "sha256": "6d54d285a8de5dd971c12b91d5ccc2ede7139076635ac95727aeba1f3c3cbb38",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process45",
+    "revision": "r1",
+    "sha256": "05d231d2809f037d98d28e6ea274dcea10443668369f130671d893193791a24a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process46",
+    "revision": "r1",
+    "sha256": "018a6ff01fe1c5bde9fccf3099f7e64347eddcf3130440e7a4bd167e105dc295",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process47",
+    "revision": "r1",
+    "sha256": "6b742e0f4f101e03d2accf688af5d6f8a2c97ad46b10e2a25c5f92c9378e8b30",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process48",
+    "revision": "r1",
+    "sha256": "ea30fadf210e41ac933221d405ff25e1cdda6de85a5143dfee3c567cd73765c1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process49",
+    "revision": "r1",
+    "sha256": "b810a5b73d24cde6c691bfa066b75e39830b1e57bb2630e49eb3f141cbcc6704",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process50",
+    "revision": "r1",
+    "sha256": "0e7723f8e56e8b7edab66ac15b302a6eeca95473c8214151c99506db79573ce9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process51",
+    "revision": "r1",
+    "sha256": "ed10c87b130f218d23be8779e98c78201d5648cb8960def85ccd2704a83304b1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process52",
+    "revision": "r1",
+    "sha256": "45714abacaedc0b43e9739c24e6408db64daffdd842c687bc874b3f045fe214b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process53",
+    "revision": "r1",
+    "sha256": "3f9abce773fbc22ec30621be8c90b7466ac5a2e136d8702aa0902546429f4c08",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process54",
+    "revision": "r1",
+    "sha256": "e27288193bf12a05991ef7d4324d8cf8e0c1564ded697f8145c38561071695ea",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process55",
+    "revision": "r1",
+    "sha256": "a108e80b3451dfb11c899975e8bda427e7817723309c98f67c3d1e88c5ff3eeb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process56",
+    "revision": "r1",
+    "sha256": "201a1cbdfe444d5b68b56567e122b1df55b708bdb01b6cb423778b107f295021",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process57",
+    "revision": "r1",
+    "sha256": "f2b7c747ab9cb6d8de828c7c6477880339e4d964c1baf14ff817c41401dd485b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process58",
+    "revision": "r1",
+    "sha256": "5f8272c7828d873d17428a256ecb16b333d4f404c924157b984729f87c1d26cf",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process59",
+    "revision": "r1",
+    "sha256": "797a9fb4744f7874fa2bae0bf9bab50370d6184840fd29bec1f9df779dda1348",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process60",
+    "revision": "r1",
+    "sha256": "655646be7af789c8eff69a077271ccf30a1adf3ee28f69640a375f565aeda6a0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process61",
+    "revision": "r1",
+    "sha256": "9b3b22a0d9ccfe4e63315ec88f3af47bb588c00ebf9f1dddc09048cfcda69dee",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process62",
+    "revision": "r1",
+    "sha256": "6b28bf62aaff63968987e6b4d53d3ad97ea98b972a66d81e272079f4c905f005",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process63",
+    "revision": "r1",
+    "sha256": "a52ce8af512c35053560b5ece1e153cf8de220c48b0db2b8f46dc547d45b6435",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process64",
+    "revision": "r1",
+    "sha256": "140e7d45fc3e657ff143b4db3cbdd34878eea3b5771d06acb13ca154b5b062c2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process65",
+    "revision": "r1",
+    "sha256": "2f7db2284748838caa9935788d6b19c2adcfbc1dd62b1af4cd202c27eff2ffc1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process66",
+    "revision": "r1",
+    "sha256": "ada20d1483979dd6d746df8dc9e2cea1d412666443f9d81ab8d73bd8e2b22ede",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process67",
+    "revision": "r1",
+    "sha256": "4a42c9b26f0b97db0ee4871cc972746cd8351f84ffea8d74ebd88a6cbd1d8148",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process68",
+    "revision": "r1",
+    "sha256": "f16295abe90ef79cadfb257871580d6a4f168b2b1f98dab62431fef5a833ce7f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process69",
+    "revision": "r1",
+    "sha256": "c3fab3e57f276ab93a5869f30b84edaf34317ad9287d8f402e8dd8620a611d2e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process70",
+    "revision": "r1",
+    "sha256": "d4586466df74ee5d8ea57b6343b2cc297aeee3cc7f24c26e15a52d230edd6068",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process71",
+    "revision": "r1",
+    "sha256": "0ba3cb5b3f02a082385bc7bba7b4bb7036e8fbbf204e96a04b0527dae8c94404",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process72",
+    "revision": "r1",
+    "sha256": "04bfba7df7414266d0d793a2bd642b3d9b3cb9536f99754c89700ef8e13ebf9a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process73",
+    "revision": "r1",
+    "sha256": "22b32e851c3c9f6fc90658d1454f84f821b7cf18fa8ba0638e2c2e8ff32b6c64",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process74",
+    "revision": "r1",
+    "sha256": "41eff9899177f5ffa28e63dfd02740574b70f777b137537e9725a935428f8e72",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process75",
+    "revision": "r1",
+    "sha256": "bc8f398f4e7443365c027887b52bc039b73474ac8efad95f3ce7d30f4833da5c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process76",
+    "revision": "r1",
+    "sha256": "0a26a41395b51e378082f13792388642258f713cc92f442eb2d8726db50038b4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process77",
+    "revision": "r1",
+    "sha256": "6c34529bc9eab18bf349c94f442ffcb83836aa1e036480b92221c4b189ff69ab",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process78",
+    "revision": "r1",
+    "sha256": "f1b1c6edb30ad24b0bd5262ad4cc534b0f40bf22630bbff54b4f853bce730c9d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process79",
+    "revision": "r1",
+    "sha256": "b71b33524b823612958d0e579308c72ef5f77dd000532ccaf46bee91e137a0b9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process80",
+    "revision": "r1",
+    "sha256": "5e2fabd0feb8c19433c76ef5a69599d40428e7b58bfabcd059984aba926c3c41",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process81",
+    "revision": "r1",
+    "sha256": "8edfe44b529d317387c6551a20c0fa1695659274ad9e1c7fc960b11979c9f0d2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process82",
+    "revision": "r1",
+    "sha256": "4e0af47f1830b1df6b7820227cac6f34c2dd3208354abdc346b6c0f898432b8b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process83",
+    "revision": "r1",
+    "sha256": "ab21bcc1869b9af4cea834da3666cb4a81030187698e392b1c324aa85efb45ea",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process84",
+    "revision": "r1",
+    "sha256": "1cdf897792aec6d433b3623b16d1857ace41addb5292feeb74ba06716cd209bf",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process85",
+    "revision": "r1",
+    "sha256": "6de42ab92f35ed3cc0b98555bd160853b799caaf6c0cfb7d0a05327809efe746",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process86",
+    "revision": "r1",
+    "sha256": "651d174d9141feccd5df122ccd7d82886f9f1cc9033b313fe538e0417eb9bf00",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process87",
+    "revision": "r1",
+    "sha256": "29ece1d5bc7dcebff1ec765826270449ea6bc66c0d51ad0e346af65c00dd72f2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process88",
+    "revision": "r1",
+    "sha256": "5d99205c967b744cd8ced25f09222313961b32a261cdc7ca2d2fc453fd1212d3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process89",
+    "revision": "r1",
+    "sha256": "c3ef7017ded263d1778efa49d94bcba6ea5a48e61ba27acba4f442e16cd5fc35",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process90",
+    "revision": "r1",
+    "sha256": "763fa5fc3a5249ed6dd85cb7ade2e4ba90fe91cf14bd65c3abd88645041d871a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process91",
+    "revision": "r1",
+    "sha256": "1206b6029f20bca56577eebb244bca35da1f746ed402f54cfff77a58698079d5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process92",
+    "revision": "r1",
+    "sha256": "18250c362a68c4ca2b4cf623a04387c92fcd7601418879aa6d6f916b314d7380",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process93",
+    "revision": "r1",
+    "sha256": "63f43e6f297118592da21fb122e5145f5c2bcfba1260d3b562a1e46b6a654ff4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process94",
+    "revision": "r1",
+    "sha256": "60da8f893c6e7cb4f7bd1b9b0b4ae988a5b3d966be149c2962799bd8873df6e3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process95",
+    "revision": "r1",
+    "sha256": "b05467197db00879a557b995184795a5c69ed02c52f82dbb4195d77f778ef20e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process96",
+    "revision": "r1",
+    "sha256": "67f567b0d0b340dffa382733e296402576e6766f990f8a2f48627568a174c1c1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process97",
+    "revision": "r1",
+    "sha256": "b0f7e36033ee887934478e0942224b6466168a6d7665b1d1973e41035d495293",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process98",
+    "revision": "r1",
+    "sha256": "b49b8c9b13c37c5881d396254e113e44a4dfba084d38fe1c73bb7139a8e19638",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process99",
+    "revision": "r1",
+    "sha256": "24f13c402a0768c40277467af68ceb9263799e907f4e7d6c171649783352b1ee",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-evidence01",
+    "revision": "r1",
+    "sha256": "fb62cb04282ef4689a585ae5e85331a6dd63911f91a882742c116b2f985d9a96",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-evidence02",
+    "revision": "r1",
+    "sha256": "1d44ebcc4814cbd0855c11dbeaac885c579bbe5ae0b2c6d8484762b2b0976f7a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-evidence03",
+    "revision": "r1",
+    "sha256": "f8301e58779e1c50f5fc83e55d39158aa8151c02f56e97500f1983a788dc1711",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-evidence04",
+    "revision": "r1",
+    "sha256": "a3f5aaa8510349a34f9f3cf79a3b669f3b252d3a47d5383ab71fb8e8cee91f6f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-evidence05",
+    "revision": "r1",
+    "sha256": "87586cc0f2e3991e1f6471c6156f731564f4fc2ae8f16467b558eff02ed2aa6a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-evidence06",
+    "revision": "r1",
+    "sha256": "00e6640e43123d82502ebddbfd03b287fa3f060e5ce2504cb79ee2e91016de84",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-evidence07",
+    "revision": "r1",
+    "sha256": "abd62f4491e9169ee383c6174eb173f7b907ed1ac1b53c478053d2616b7c0446",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-evidence08",
+    "revision": "r1",
+    "sha256": "5a4e620be2eca2251769039b52df90cd26c00aec07cc8e5dc39a4477def3f70d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-evidence09",
+    "revision": "r1",
+    "sha256": "97c8da5f19573209175417e96435886e48d5c1f1525b4e9e02231abb12806926",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-evidence10",
+    "revision": "r1",
+    "sha256": "40e7995fa0b00040c6bcf03eb3bc99b52c607da2d44bce16026c3edd4410d603",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-evidence100",
+    "revision": "r1",
+    "sha256": "99102cdf84736c0a22c3c6e603e49037119cec5a7cd86b14a8b0328ab6398941",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-evidence11",
+    "revision": "r1",
+    "sha256": "e59a18f7320c704346ad98d9577dbda1415cdfc3e5cc33edd899aa0198e89185",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-evidence12",
+    "revision": "r1",
+    "sha256": "cd7b3147df7b8226ecfc145e197ac06e43f7862f774d7e02129f96d89bc279c0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-evidence13",
+    "revision": "r1",
+    "sha256": "8617f71aaa8a8c45e639f8d1fda9162139fae79c840ae765302d92f4820fcc9b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-evidence14",
+    "revision": "r1",
+    "sha256": "12b6b8f28d0d2504a4fc2f787238723eb43a335b3502b4490295c4a30f2b90e5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-evidence15",
+    "revision": "r1",
+    "sha256": "395ec58afc033b57e194992bf3aedd6024e1b1fd4d5796556b26c676c27295f6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-evidence16",
+    "revision": "r1",
+    "sha256": "1bc3fb69eb306d77a5b6506eaadb65f9a6d0c70519d46500c87491b3e39af2f4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-evidence17",
+    "revision": "r1",
+    "sha256": "cf1447ad7dafc635884a23fdb1374770de432550b51a6eefe707e17a822ea0d7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-evidence18",
+    "revision": "r1",
+    "sha256": "004b7c81757fd6b96fcf0e1dde1ba2b673bf0c9e281c8043b08e6ddbe0086052",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-evidence19",
+    "revision": "r1",
+    "sha256": "8667f36fa2ce0d6cd9ee02974fc4ccb7a659e1a2f682b6c471b8c977ad291fae",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "wp2wd-mission61",
+    "revision": "r1",
+    "sha256": "8b6220277b6ba1f7e3c3c057cc8398e5ed56d18b5f89f32ba5442b2aefee093c"
+   },
+   {
+    "missionId": "wp2wd-mission62",
+    "revision": "r1",
+    "sha256": "d11c5bf1bd27c2558476c578c3d7405ade70404a0953fb2d2337f4c663a954f8"
+   },
+   {
+    "missionId": "wp2wd-mission63",
+    "revision": "r1",
+    "sha256": "c790f14c08b2c40b0d7e1882daa536964dabd32793de6954a68fb27c939b90c2"
+   },
+   {
+    "missionId": "wp2wd-mission64",
+    "revision": "r1",
+    "sha256": "150bfc4e1a7d023634aa2a2faf1bec8de9c5ef678703abbb6beb35cfa14a76ca"
+   },
+   {
+    "missionId": "wp2wd-mission65",
+    "revision": "r1",
+    "sha256": "2cbdb9a1b17274bc4ac86ada8665cac0ba8f01aa8e027e21afab7d91a447b35f"
+   },
+   {
+    "missionId": "wp2wd-mission66",
+    "revision": "r1",
+    "sha256": "ed1192584bde31b8305db14f70ff4efe505976e31c605e43eba6a0cc1c47182a"
+   },
+   {
+    "missionId": "wp2wd-mission67",
+    "revision": "r1",
+    "sha256": "3cfde1647035c59c238d7ee248b807b2da37c56df1e20eb5670199bc7078d3a1"
+   },
+   {
+    "missionId": "wp2wd-mission68",
+    "revision": "r1",
+    "sha256": "9e96e0682b51055576ae3fda2a0981bab728f9b3db493f9fb370dcdecf8e70e6"
+   },
+   {
+    "missionId": "wp2wd-mission69",
+    "revision": "r1",
+    "sha256": "4bf9411609b3d5c9ed1b88824acf2f5f5001c48179a64f3e516bf9cd0c43210c"
+   },
+   {
+    "missionId": "wp2wd-mission70",
+    "revision": "r1",
+    "sha256": "6d479e74a352b213de819e54a8c0ca4984d9dd90611772f8f5bd0c1e85e37285"
+   },
+   {
+    "missionId": "wp2wd-mission71",
+    "revision": "r1",
+    "sha256": "3178db2e95958b770733786c8c17c93d3fe23ec0d5b4f0973dda2299fcadabff"
+   },
+   {
+    "missionId": "wp2wd-mission72",
+    "revision": "r1",
+    "sha256": "a5edd7cc0f2f1e9c40240d0fc7c8d5f121e4ed8fac0e6897e0b0adc3f418785d"
+   },
+   {
+    "missionId": "wp2wd-mission73",
+    "revision": "r1",
+    "sha256": "5dcb36c92a300a2a762e96df52e4d4bb5bd8a81b89d471a5b31a0752ecb7b185"
+   },
+   {
+    "missionId": "wp2wd-mission74",
+    "revision": "r1",
+    "sha256": "91f68d28654434857d15b3b8a98e1a207898e616595841a752404eb57fed1f45"
+   },
+   {
+    "missionId": "wp2wd-mission75",
+    "revision": "r1",
+    "sha256": "3dcf1e2926a5c88eeb35c41ae0754609626d038b96b70543d906390ad2c764d3"
+   },
+   {
+    "missionId": "wp2wd-mission76",
+    "revision": "r1",
+    "sha256": "bc2deb34000e7fc9630a4b9df8bef16f3cf230f1fc8f6fa9d3cded6d607d79cc"
+   },
+   {
+    "missionId": "wp2wd-mission77",
+    "revision": "r1",
+    "sha256": "f99250b554cae93fcdcc5bb5a79eafcbc5f6010aeb2ae4f74669f696b484f3d3"
+   },
+   {
+    "missionId": "wp2wd-mission78",
+    "revision": "r1",
+    "sha256": "9d837cb0280984a163ddcf3db8452bde23b30b09bc043a48b277ff08672de853"
+   },
+   {
+    "missionId": "wp2wd-mission79",
+    "revision": "r1",
+    "sha256": "24b5e5746eb732f013b1b3cec0ba7e127f2288c5b89aab1bdaf1d8a54b5ea29d"
+   },
+   {
+    "missionId": "wp2wd-mission80",
+    "revision": "r1",
+    "sha256": "46929478b5372c7433a3cb649e571bad3423cdc1f16e3a492b01aa38ce061128"
+   }
+  ]
+ }
+}

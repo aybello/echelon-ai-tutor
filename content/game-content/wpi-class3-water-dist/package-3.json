@@ -1,0 +1,4085 @@
+{
+ "courseKey": "wpi-class3-water-dist",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "wp3wd-error60",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this fire storage capacity check for a system near Yellowknife, Northwest Territories.",
+   "topicId": "capacity-margin",
+   "level": "class1",
+   "assumptions": "Fictional storage check near Yellowknife, Northwest Territories: given fire flow = 4000 L/min for 45 min, other required storage = 1000 m3, tank capacity = 1500 m3, 1000 L = 1 m3. The program context follows provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Fire storage = 4000 L/min * 45 min / 1000 = 180 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total required storage = 180 m3 + 1000 m3 = 1180 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Storage margin = 1500 m3 - 1180 m3 = 330 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Storage margin = 1500 m3 - 1180 m3 = 320 m3",
+   "explanation": "Line 3 arithmetic is wrong. The correct calculation is Storage margin = 1500 m3 - 1180 m3 = 320 m3."
+  },
+  {
+   "id": "wp3wd-error61",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this capacity margin check for a multi zone system near Regina, Saskatchewan.",
+   "topicId": "capacity-margin",
+   "level": "class1",
+   "assumptions": "Fictional capacity check near Regina, Saskatchewan: rated system capacity = 18000 m3/day, maximum day demand = 14400 m3/day, given demand per new connection = 0.6 m3/day. Margin percent is measured against rated capacity.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Capacity margin = 18000 m3/day - 14400 m3/day = 3600 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Margin share = 3600 m3/day / 18000 m3/day * 100 = 30 percent"
+    },
+    {
+     "id": "line3",
+     "label": "3. Additional connections = 3600 m3/day / 0.6 m3/day per connection = 6000 connections"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Margin share = 3600 m3/day / 18000 m3/day * 100 = 20 percent",
+   "explanation": "Line 2 arithmetic is wrong. The correct calculation is Margin share = 3600 m3/day / 18000 m3/day * 100 = 20 percent."
+  },
+  {
+   "id": "wp3wd-error62",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this storage capacity margin check for a system near Saskatoon, Saskatchewan.",
+   "topicId": "capacity-margin",
+   "level": "class1",
+   "assumptions": "Fictional storage check near Saskatoon, Saskatchewan: usable storage = 15000 m3, required storage = 12000 m3, average day demand = 1000 m3/day. Margin percent is measured against usable storage, and reserve days use the margin over average day demand.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Storage margin = 15000 m3 - 12000 m3 = 3050 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Margin share = 3050 m3 / 15000 m3 * 100"
+    },
+    {
+     "id": "line3",
+     "label": "3. Extra reserve = 3050 m3 / 1000 m3/day = 3.05 days"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Storage margin = 15000 m3 - 12000 m3 = 3000 m3",
+   "explanation": "Line 1 arithmetic is wrong. The correct calculation is Storage margin = 15000 m3 - 12000 m3 = 3000 m3."
+  },
+  {
+   "id": "wp3wd-error63",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this fire storage capacity check for a system near Calgary, Alberta.",
+   "topicId": "capacity-margin",
+   "level": "class1",
+   "assumptions": "Fictional storage check near Calgary, Alberta: given fire flow = 1500 L/min for 80 min, other required storage = 600 m3, tank capacity = 900 m3, 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Fire storage = 1500 L/min * 80 min / 1000 = 120 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total required storage = 120 m3 + 600 m3 = 720 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Storage margin = 900 m3 - 720 m3 = 185 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Storage margin = 900 m3 - 720 m3 = 180 m3",
+   "explanation": "Line 3 arithmetic is wrong. The correct calculation is Storage margin = 900 m3 - 720 m3 = 180 m3."
+  },
+  {
+   "id": "wp3wd-error64",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this capacity margin check for a multi zone system near Edmonton, Alberta.",
+   "topicId": "capacity-margin",
+   "level": "class1",
+   "assumptions": "Fictional capacity check near Edmonton, Alberta: rated system capacity = 10000 m3/day, maximum day demand = 7500 m3/day, given demand per new connection = 0.5 m3/day. Margin percent is measured against rated capacity.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Capacity margin = 10000 m3/day - 7500 m3/day = 2500 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Margin share = 2500 m3/day / 10000 m3/day * 100 = 27 percent"
+    },
+    {
+     "id": "line3",
+     "label": "3. Additional connections = 2500 m3/day / 0.5 m3/day per connection = 5000 connections"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Margin share = 2500 m3/day / 10000 m3/day * 100 = 25 percent",
+   "explanation": "Line 2 arithmetic is wrong. The correct calculation is Margin share = 2500 m3/day / 10000 m3/day * 100 = 25 percent."
+  },
+  {
+   "id": "wp3wd-error65",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pressure management savings estimate for a pressure district near Winnipeg, Manitoba.",
+   "topicId": "pressure-management-savings",
+   "level": "class1",
+   "assumptions": "Fictional pressure program near Winnipeg, Manitoba: current real losses = 2400 m3/day, given expected saving from pressure management = 25 percent of current real losses. A year is taken as 365 days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily saving = 2400 m3/day * 25 percent / 100 = 600 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. New real losses = 2400 m3/day - 600 m3/day = 1800 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual saving = 600 m3/day * 365 days = 219100 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Annual saving = 600 m3/day * 365 days = 219000 m3",
+   "explanation": "Line 3 arithmetic is wrong. The correct calculation is Annual saving = 600 m3/day * 365 days = 219000 m3."
+  },
+  {
+   "id": "wp3wd-error66",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pressure reduction savings calculation for a zone near Brandon, Manitoba.",
+   "topicId": "pressure-management-savings",
+   "level": "class1",
+   "assumptions": "Fictional pressure program near Brandon, Manitoba: average zone pressure is reduced by a head of 10 m, pressure factor = 9.81 kPa per metre of head, given leakage reduction = 0.4 L/min for each kPa of pressure reduction, 1440 min = 1 day, 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Pressure reduction = 10 m * 9.81 kPa/m = 98.1 kPa"
+    },
+    {
+     "id": "line2",
+     "label": "2. Leakage reduction = 98.1 kPa * 0.5 L/min per kPa = 49.05 L/min"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily volume saved = 49.05 L/min * 1440 min/day / 1000 = 70.632 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Leakage reduction = 98.1 kPa * 0.4 L/min per kPa = 39.24 L/min",
+   "explanation": "Line 2 used 0.5 L/min per kPa instead of the stated 0.4 L/min per kPa for leakage reduction rate. The correct calculation is Leakage reduction = 98.1 kPa * 0.4 L/min per kPa = 39.24 L/min."
+  },
+  {
+   "id": "wp3wd-error67",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this night leakage savings calculation for a district metered area near Kelowna, British Columbia.",
+   "topicId": "pressure-management-savings",
+   "level": "class1",
+   "assumptions": "Fictional district near Kelowna, British Columbia: night leakage rate before pressure management = 180 L/min, after pressure management = 120 L/min, 1440 min = 1 day, 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Leakage reduction = 180 L/min - 120 L/min = 62 L/min"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily volume saved = 62 L/min * 1440 min/day = 89280 L/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily volume saved = 89280 L/day / 1000 = 89.28 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Leakage reduction = 180 L/min - 120 L/min = 60 L/min",
+   "explanation": "Line 1 arithmetic is wrong. The correct calculation is Leakage reduction = 180 L/min - 120 L/min = 60 L/min."
+  },
+  {
+   "id": "wp3wd-error68",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pressure management savings estimate for a pressure district near Kamloops, British Columbia.",
+   "topicId": "pressure-management-savings",
+   "level": "class1",
+   "assumptions": "Fictional pressure program near Kamloops, British Columbia: current real losses = 3200 m3/day, given expected saving from pressure management = 20 percent of current real losses. A year is taken as 365 days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily saving = 3200 m3/day * 20 percent / 100 = 640 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. New real losses = 3200 m3/day - 640 m3/day = 2560 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual saving = 640 m3/day * 365 days = 234100 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Annual saving = 640 m3/day * 365 days = 233600 m3",
+   "explanation": "Line 3 arithmetic is wrong. The correct calculation is Annual saving = 640 m3/day * 365 days = 233600 m3."
+  },
+  {
+   "id": "wp3wd-error69",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pressure reduction savings calculation for a zone near Prince George, British Columbia.",
+   "topicId": "pressure-management-savings",
+   "level": "class1",
+   "assumptions": "Fictional pressure program near Prince George, British Columbia: average zone pressure is reduced by a head of 20 m, pressure factor = 9.81 kPa per metre of head, given leakage reduction = 0.25 L/min for each kPa of pressure reduction, 1440 min = 1 day, 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Pressure reduction = 20 m * 9.81 kPa/m = 196.2 kPa"
+    },
+    {
+     "id": "line2",
+     "label": "2. Leakage reduction = 196.2 kPa * 0.25 L/min per kPa = 54.05 L/min"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily volume saved = 54.05 L/min * 1440 min/day / 1000 = 77.832 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Leakage reduction = 196.2 kPa * 0.25 L/min per kPa = 49.05 L/min",
+   "explanation": "Line 2 arithmetic is wrong. The correct calculation is Leakage reduction = 196.2 kPa * 0.25 L/min per kPa = 49.05 L/min."
+  },
+  {
+   "id": "wp3wd-error70",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this night leakage savings calculation for a district metered area near Red Deer, Alberta.",
+   "topicId": "pressure-management-savings",
+   "level": "class1",
+   "assumptions": "Fictional district near Red Deer, Alberta: night leakage rate before pressure management = 240 L/min, after pressure management = 150 L/min, 1440 min = 1 day, 1000 L = 1 m3. The program context follows provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Leakage reduction = 240 L/min - 160 L/min = 80 L/min"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily volume saved = 80 L/min * 1440 min/day = 115200 L/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily volume saved = 115200 L/day / 1000 = 115.2 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Leakage reduction = 240 L/min - 150 L/min = 90 L/min",
+   "explanation": "Line 1 used 160 L/min instead of the stated 150 L/min for after pressure management rate. The correct calculation is Leakage reduction = 240 L/min - 150 L/min = 90 L/min."
+  },
+  {
+   "id": "wp3wd-error71",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pressure management savings estimate for a pressure district near Lethbridge, Alberta.",
+   "topicId": "pressure-management-savings",
+   "level": "class1",
+   "assumptions": "Fictional pressure program near Lethbridge, Alberta: current real losses = 1800 m3/day, given expected saving from pressure management = 30 percent of current real losses. A year is taken as 365 days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily saving = 1800 m3/day * 30 percent / 100 = 540 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. New real losses = 1800 m3/day - 540 m3/day = 1260 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual saving = 540 m3/day * 365 days = 197350 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Annual saving = 540 m3/day * 365 days = 197100 m3",
+   "explanation": "Line 3 arithmetic is wrong. The correct calculation is Annual saving = 540 m3/day * 365 days = 197100 m3."
+  },
+  {
+   "id": "wp3wd-error72",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pressure reduction savings calculation for a zone near Moose Jaw, Saskatchewan.",
+   "topicId": "pressure-management-savings",
+   "level": "class1",
+   "assumptions": "Fictional pressure program near Moose Jaw, Saskatchewan: average zone pressure is reduced by a head of 15 m, pressure factor = 9.81 kPa per metre of head, given leakage reduction = 0.4 L/min for each kPa of pressure reduction, 1440 min = 1 day, 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Pressure reduction = 15 m * 9.81 kPa/m = 147.15 kPa"
+    },
+    {
+     "id": "line2",
+     "label": "2. Leakage reduction = 147.15 kPa * 0.4 L/min per kPa = 68.86 L/min"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily volume saved = 68.86 L/min * 1440 min/day / 1000 = 99.1584 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Leakage reduction = 147.15 kPa * 0.4 L/min per kPa = 58.86 L/min",
+   "explanation": "Line 2 arithmetic is wrong. The correct calculation is Leakage reduction = 147.15 kPa * 0.4 L/min per kPa = 58.86 L/min."
+  },
+  {
+   "id": "wp3wd-error73",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this night leakage savings calculation for a district metered area near Medicine Hat, Alberta.",
+   "topicId": "pressure-management-savings",
+   "level": "class1",
+   "assumptions": "Fictional district near Medicine Hat, Alberta: night leakage rate before pressure management = 150 L/min, after pressure management = 95 L/min, 1440 min = 1 day, 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Leakage reduction = 150 L/min - 95 L/min = 60 L/min"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily volume saved = 60 L/min * 1440 min/day = 86400 L/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily volume saved = 86400 L/day / 1000 = 86.4 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Leakage reduction = 150 L/min - 95 L/min = 55 L/min",
+   "explanation": "Line 1 arithmetic is wrong. The correct calculation is Leakage reduction = 150 L/min - 95 L/min = 55 L/min."
+  },
+  {
+   "id": "wp3wd-error74",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pressure management savings estimate for a pressure district near Grande Prairie, Alberta.",
+   "topicId": "pressure-management-savings",
+   "level": "class1",
+   "assumptions": "Fictional pressure program near Grande Prairie, Alberta: current real losses = 4500 m3/day, given expected saving from pressure management = 15 percent of current real losses. A year is taken as 365 days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily saving = 4500 m3/day * 15 percent / 100 = 675 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. New real losses = 4500 m3/day - 675 m3/day = 3825 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual saving = 675 m3/day * 300 days = 202500 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Annual saving = 675 m3/day * 365 days = 246375 m3",
+   "explanation": "Line 3 used 300 days instead of the stated 365 days for days in the year. The correct calculation is Annual saving = 675 m3/day * 365 days = 246375 m3."
+  },
+  {
+   "id": "wp3wd-error75",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pressure reduction savings calculation for a zone near Cranbrook, British Columbia.",
+   "topicId": "pressure-management-savings",
+   "level": "class1",
+   "assumptions": "Fictional pressure program near Cranbrook, British Columbia: average zone pressure is reduced by a head of 5 m, pressure factor = 9.81 kPa per metre of head, given leakage reduction = 0.5 L/min for each kPa of pressure reduction, 1440 min = 1 day, 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Pressure reduction = 5 m * 9.81 kPa/m = 49.05 kPa"
+    },
+    {
+     "id": "line2",
+     "label": "2. Leakage reduction = 49.05 kPa * 0.5 L/min per kPa = 26.525 L/min"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily volume saved = 26.525 L/min * 1440 min/day / 1000 = 38.196 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Leakage reduction = 49.05 kPa * 0.5 L/min per kPa = 24.525 L/min",
+   "explanation": "Line 2 arithmetic is wrong. The correct calculation is Leakage reduction = 49.05 kPa * 0.5 L/min per kPa = 24.525 L/min."
+  },
+  {
+   "id": "wp3wd-error76",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this night leakage savings calculation for a district metered area near Swift Current, Saskatchewan.",
+   "topicId": "pressure-management-savings",
+   "level": "class1",
+   "assumptions": "Fictional district near Swift Current, Saskatchewan: night leakage rate before pressure management = 200 L/min, after pressure management = 130 L/min, 1440 min = 1 day, 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Leakage reduction = 200 L/min - 130 L/min = 80 L/min"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily volume saved = 80 L/min * 1440 min/day = 115200 L/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily volume saved = 115200 L/day / 1000 = 115.2 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Leakage reduction = 200 L/min - 130 L/min = 70 L/min",
+   "explanation": "Line 1 arithmetic is wrong. The correct calculation is Leakage reduction = 200 L/min - 130 L/min = 70 L/min."
+  },
+  {
+   "id": "wp3wd-error77",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pressure management savings estimate for a pressure district near Yorkton, Saskatchewan.",
+   "topicId": "pressure-management-savings",
+   "level": "class1",
+   "assumptions": "Fictional pressure program near Yorkton, Saskatchewan: current real losses = 2800 m3/day, given expected saving from pressure management = 25 percent of current real losses. A year is taken as 365 days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily saving = 2800 m3/day * 25 percent / 100 = 700 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. New real losses = 2800 m3/day - 700 m3/day = 2100 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual saving = 700 m3/day * 365 days = 255600 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Annual saving = 700 m3/day * 365 days = 255500 m3",
+   "explanation": "Line 3 arithmetic is wrong. The correct calculation is Annual saving = 700 m3/day * 365 days = 255500 m3."
+  },
+  {
+   "id": "wp3wd-error78",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pressure reduction savings calculation for a zone near Prince Albert, Saskatchewan.",
+   "topicId": "pressure-management-savings",
+   "level": "class1",
+   "assumptions": "Fictional pressure program near Prince Albert, Saskatchewan: average zone pressure is reduced by a head of 12 m, pressure factor = 9.81 kPa per metre of head, given leakage reduction = 0.5 L/min for each kPa of pressure reduction, 1440 min = 1 day, 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Pressure reduction = 12 m * 9.81 kPa/m = 117.72 kPa"
+    },
+    {
+     "id": "line2",
+     "label": "2. Leakage reduction = 117.72 kPa * 0.5 L/min per kPa = 63.86 L/min"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily volume saved = 63.86 L/min * 1440 min/day / 1000 = 91.9584 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Leakage reduction = 117.72 kPa * 0.5 L/min per kPa = 58.86 L/min",
+   "explanation": "Line 2 arithmetic is wrong. The correct calculation is Leakage reduction = 117.72 kPa * 0.5 L/min per kPa = 58.86 L/min."
+  },
+  {
+   "id": "wp3wd-error79",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this night leakage savings calculation for a district metered area near Fort McMurray, Alberta.",
+   "topicId": "pressure-management-savings",
+   "level": "class1",
+   "assumptions": "Fictional district near Fort McMurray, Alberta: night leakage rate before pressure management = 320 L/min, after pressure management = 210 L/min, 1440 min = 1 day, 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Leakage reduction = 320 L/min - 220 L/min = 100 L/min"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily volume saved = 100 L/min * 1440 min/day = 144000 L/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily volume saved = 144000 L/day / 1000 = 144 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Leakage reduction = 320 L/min - 210 L/min = 110 L/min",
+   "explanation": "Line 1 used 220 L/min instead of the stated 210 L/min for after pressure management rate. The correct calculation is Leakage reduction = 320 L/min - 210 L/min = 110 L/min."
+  },
+  {
+   "id": "wp3wd-error80",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pressure management savings estimate for a pressure district near Nanaimo, British Columbia.",
+   "topicId": "pressure-management-savings",
+   "level": "class1",
+   "assumptions": "Fictional pressure program near Nanaimo, British Columbia: current real losses = 3600 m3/day, given expected saving from pressure management = 10 percent of current real losses. A year is taken as 365 days. The program context follows provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily saving = 3600 m3/day * 10 percent / 100 = 360 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. New real losses = 3600 m3/day - 360 m3/day = 3240 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual saving = 360 m3/day * 365 days = 131650 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Annual saving = 360 m3/day * 365 days = 131400 m3",
+   "explanation": "Line 3 arithmetic is wrong. The correct calculation is Annual saving = 360 m3/day * 365 days = 131400 m3."
+  },
+  {
+   "id": "wp3wd-error81",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pressure reduction savings calculation for a zone near Victoria, British Columbia.",
+   "topicId": "pressure-management-savings",
+   "level": "class1",
+   "assumptions": "Fictional pressure program near Victoria, British Columbia: average zone pressure is reduced by a head of 8 m, pressure factor = 9.81 kPa per metre of head, given leakage reduction = 0.25 L/min for each kPa of pressure reduction, 1440 min = 1 day, 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Pressure reduction = 8 m * 9.81 kPa/m = 78.48 kPa"
+    },
+    {
+     "id": "line2",
+     "label": "2. Leakage reduction = 78.48 kPa * 0.25 L/min per kPa = 29.62 L/min"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily volume saved = 29.62 L/min * 1440 min/day / 1000 = 42.6528 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Leakage reduction = 78.48 kPa * 0.25 L/min per kPa = 19.62 L/min",
+   "explanation": "Line 2 arithmetic is wrong. The correct calculation is Leakage reduction = 78.48 kPa * 0.25 L/min per kPa = 19.62 L/min."
+  },
+  {
+   "id": "wp3wd-error82",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this night leakage savings calculation for a district metered area near Chilliwack, British Columbia.",
+   "topicId": "pressure-management-savings",
+   "level": "class1",
+   "assumptions": "Fictional district near Chilliwack, British Columbia: night leakage rate before pressure management = 96 L/min, after pressure management = 64 L/min, 1440 min = 1 day, 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Leakage reduction = 96 L/min - 64 L/min = 37 L/min"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily volume saved = 37 L/min * 1440 min/day = 53280 L/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily volume saved = 53280 L/day / 1000 = 53.28 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Leakage reduction = 96 L/min - 64 L/min = 32 L/min",
+   "explanation": "Line 1 arithmetic is wrong. The correct calculation is Leakage reduction = 96 L/min - 64 L/min = 32 L/min."
+  },
+  {
+   "id": "wp3wd-error83",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this watermain renewal quantity calculation for a capital program near Vernon, British Columbia.",
+   "topicId": "renewal-quantities",
+   "level": "class1",
+   "assumptions": "Fictional renewal program near Vernon, British Columbia: total mains length = 240 km, planned renewal share = 25 percent of total length, pipe is supplied in 6 m lengths, 1000 m = 1 km.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total mains = 240 km * 1000 m/km = 240000 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Renewal length = 240000 m * 25 percent / 100 = 60000 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Pipe lengths needed = 60000 m / 5 m per length = 12000 lengths"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Pipe lengths needed = 60000 m / 6 m per length = 10000 lengths",
+   "explanation": "Line 3 used 5 m instead of the stated 6 m for pipe length. The correct calculation is Pipe lengths needed = 60000 m / 6 m per length = 10000 lengths."
+  },
+  {
+   "id": "wp3wd-error84",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this renewal section quantity calculation for a program near Penticton, British Columbia.",
+   "topicId": "renewal-quantities",
+   "level": "class1",
+   "assumptions": "Fictional renewal program near Penticton, British Columbia: length to renew = 4800 m, standard section length = 24 m, valves renewed = 2 per section, crew production = 20 sections per day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Sections to renew = 4800 m / 24 m per section = 200 sections"
+    },
+    {
+     "id": "line2",
+     "label": "2. Valves to renew = 200 sections * 2 valves per section = 420 valves"
+    },
+    {
+     "id": "line3",
+     "label": "3. Crew days = 200 sections / 20 sections per day = 10 days"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Valves to renew = 200 sections * 2 valves per section = 400 valves",
+   "explanation": "Line 2 arithmetic is wrong. The correct calculation is Valves to renew = 200 sections * 2 valves per section = 400 valves."
+  },
+  {
+   "id": "wp3wd-error85",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this renewal program quantity calculation for a system near Thompson, Manitoba.",
+   "topicId": "renewal-quantities",
+   "level": "class1",
+   "assumptions": "Fictional renewal program near Thompson, Manitoba: total mains length = 120 km, planned renewal share = 25 percent, given density = 40 service connections per km renewed and 6 valves per km renewed.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Length to renew = 120 km * 25 percent / 10 = 300 km"
+    },
+    {
+     "id": "line2",
+     "label": "2. Services to renew = 300 km * 40 services per km = 12000 services"
+    },
+    {
+     "id": "line3",
+     "label": "3. Valves to renew = 300 km * 6 valves per km = 1800 valves"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Length to renew = 120 km * 25 percent / 100 = 30 km",
+   "explanation": "Line 1 used 10 instead of the stated 100 for percent factor. The correct calculation is Length to renew = 120 km * 25 percent / 100 = 30 km."
+  },
+  {
+   "id": "wp3wd-error86",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this watermain renewal quantity calculation for a capital program near Airdrie, Alberta.",
+   "topicId": "renewal-quantities",
+   "level": "class1",
+   "assumptions": "Fictional renewal program near Airdrie, Alberta: total mains length = 180 km, planned renewal share = 30 percent of total length, pipe is supplied in 6 m lengths, 1000 m = 1 km.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total mains = 180 km * 1000 m/km = 180000 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Renewal length = 180000 m * 30 percent / 100 = 54000 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Pipe lengths needed = 54000 m / 6 m per length = 9100 lengths"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Pipe lengths needed = 54000 m / 6 m per length = 9000 lengths",
+   "explanation": "Line 3 arithmetic is wrong. The correct calculation is Pipe lengths needed = 54000 m / 6 m per length = 9000 lengths."
+  },
+  {
+   "id": "wp3wd-error87",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this renewal section quantity calculation for a program near Spruce Grove, Alberta.",
+   "topicId": "renewal-quantities",
+   "level": "class1",
+   "assumptions": "Fictional renewal program near Spruce Grove, Alberta: length to renew = 6000 m, standard section length = 25 m, valves renewed = 2 per section, crew production = 20 sections per day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Sections to renew = 6000 m / 25 m per section = 240 sections"
+    },
+    {
+     "id": "line2",
+     "label": "2. Valves to renew = 240 sections * 3 valves per section = 720 valves"
+    },
+    {
+     "id": "line3",
+     "label": "3. Crew days = 240 sections / 20 sections per day = 12 days"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Valves to renew = 240 sections * 2 valves per section = 480 valves",
+   "explanation": "Line 2 used 3 valves instead of the stated 2 valves for valves per section. The correct calculation is Valves to renew = 240 sections * 2 valves per section = 480 valves."
+  },
+  {
+   "id": "wp3wd-error88",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this renewal program quantity calculation for a system near Lloydminster, Alberta.",
+   "topicId": "renewal-quantities",
+   "level": "class1",
+   "assumptions": "Fictional renewal program near Lloydminster, Alberta: total mains length = 150 km, planned renewal share = 20 percent, given density = 35 service connections per km renewed and 5 valves per km renewed.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Length to renew = 150 km * 20 percent / 100 = 35 km"
+    },
+    {
+     "id": "line2",
+     "label": "2. Services to renew = 35 km * 35 services per km = 1225 services"
+    },
+    {
+     "id": "line3",
+     "label": "3. Valves to renew = 35 km * 5 valves per km = 175 valves"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Length to renew = 150 km * 20 percent / 100 = 30 km",
+   "explanation": "Line 1 arithmetic is wrong. The correct calculation is Length to renew = 150 km * 20 percent / 100 = 30 km."
+  },
+  {
+   "id": "wp3wd-error89",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this watermain renewal quantity calculation for a capital program near Whitehorse, Yukon.",
+   "topicId": "renewal-quantities",
+   "level": "class1",
+   "assumptions": "Fictional renewal program near Whitehorse, Yukon: total mains length = 220 km, planned renewal share = 30 percent of total length, pipe is supplied in 6 m lengths, 1000 m = 1 km.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total mains = 220 km * 1000 m/km = 220000 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Renewal length = 220000 m * 30 percent / 100 = 66000 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Pipe lengths needed = 66000 m / 6 m per length = 11500 lengths"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Pipe lengths needed = 66000 m / 6 m per length = 11000 lengths",
+   "explanation": "Line 3 arithmetic is wrong. The correct calculation is Pipe lengths needed = 66000 m / 6 m per length = 11000 lengths."
+  },
+  {
+   "id": "wp3wd-error90",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this renewal section quantity calculation for a program near Yellowknife, Northwest Territories.",
+   "topicId": "renewal-quantities",
+   "level": "class1",
+   "assumptions": "Fictional renewal program near Yellowknife, Northwest Territories: length to renew = 5400 m, standard section length = 27 m, valves renewed = 3 per section, crew production = 25 sections per day. The program context follows provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Sections to renew = 5400 m / 27 m per section = 200 sections"
+    },
+    {
+     "id": "line2",
+     "label": "2. Valves to renew = 200 sections * 3 valves per section = 610 valves"
+    },
+    {
+     "id": "line3",
+     "label": "3. Crew days = 200 sections / 25 sections per day = 8 days"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Valves to renew = 200 sections * 3 valves per section = 600 valves",
+   "explanation": "Line 2 arithmetic is wrong. The correct calculation is Valves to renew = 200 sections * 3 valves per section = 600 valves."
+  },
+  {
+   "id": "wp3wd-error91",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this renewal program quantity calculation for a system near Regina, Saskatchewan.",
+   "topicId": "renewal-quantities",
+   "level": "class1",
+   "assumptions": "Fictional renewal program near Regina, Saskatchewan: total mains length = 200 km, planned renewal share = 30 percent, given density = 45 service connections per km renewed and 7 valves per km renewed.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Length to renew = 200 km * 30 percent / 100 = 65 km"
+    },
+    {
+     "id": "line2",
+     "label": "2. Services to renew = 65 km * 45 services per km = 2925 services"
+    },
+    {
+     "id": "line3",
+     "label": "3. Valves to renew = 65 km * 7 valves per km = 455 valves"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Length to renew = 200 km * 30 percent / 100 = 60 km",
+   "explanation": "Line 1 arithmetic is wrong. The correct calculation is Length to renew = 200 km * 30 percent / 100 = 60 km."
+  },
+  {
+   "id": "wp3wd-error92",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this watermain renewal quantity calculation for a capital program near Saskatoon, Saskatchewan.",
+   "topicId": "renewal-quantities",
+   "level": "class1",
+   "assumptions": "Fictional renewal program near Saskatoon, Saskatchewan: total mains length = 320 km, planned renewal share = 30 percent of total length, pipe is supplied in 6 m lengths, 1000 m = 1 km.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total mains = 320 km * 1000 m/km = 320000 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Renewal length = 320000 m * 30 percent / 100 = 96000 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Pipe lengths needed = 96000 m / 5 m per length = 19200 lengths"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Pipe lengths needed = 96000 m / 6 m per length = 16000 lengths",
+   "explanation": "Line 3 used 5 m instead of the stated 6 m for pipe length. The correct calculation is Pipe lengths needed = 96000 m / 6 m per length = 16000 lengths."
+  },
+  {
+   "id": "wp3wd-error93",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this renewal section quantity calculation for a program near Calgary, Alberta.",
+   "topicId": "renewal-quantities",
+   "level": "class1",
+   "assumptions": "Fictional renewal program near Calgary, Alberta: length to renew = 7200 m, standard section length = 24 m, valves renewed = 2 per section, crew production = 24 sections per day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Sections to renew = 7200 m / 24 m per section = 300 sections"
+    },
+    {
+     "id": "line2",
+     "label": "2. Valves to renew = 300 sections * 2 valves per section = 620 valves"
+    },
+    {
+     "id": "line3",
+     "label": "3. Crew days = 300 sections / 24 sections per day = 12.5 days"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Valves to renew = 300 sections * 2 valves per section = 600 valves",
+   "explanation": "Line 2 arithmetic is wrong. The correct calculation is Valves to renew = 300 sections * 2 valves per section = 600 valves."
+  },
+  {
+   "id": "wp3wd-error94",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this renewal program quantity calculation for a system near Edmonton, Alberta.",
+   "topicId": "renewal-quantities",
+   "level": "class1",
+   "assumptions": "Fictional renewal program near Edmonton, Alberta: total mains length = 90 km, planned renewal share = 40 percent, given density = 50 service connections per km renewed and 8 valves per km renewed.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Length to renew = 90 km * 40 percent / 100 = 38 km"
+    },
+    {
+     "id": "line2",
+     "label": "2. Services to renew = 38 km * 50 services per km = 1900 services"
+    },
+    {
+     "id": "line3",
+     "label": "3. Valves to renew = 38 km * 8 valves per km = 304 valves"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Length to renew = 90 km * 40 percent / 100 = 36 km",
+   "explanation": "Line 1 arithmetic is wrong. The correct calculation is Length to renew = 90 km * 40 percent / 100 = 36 km."
+  },
+  {
+   "id": "wp3wd-error95",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this watermain renewal quantity calculation for a capital program near Winnipeg, Manitoba.",
+   "topicId": "renewal-quantities",
+   "level": "class1",
+   "assumptions": "Fictional renewal program near Winnipeg, Manitoba: total mains length = 200 km, planned renewal share = 36 percent of total length, pipe is supplied in 6 m lengths, 1000 m = 1 km.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total mains = 200 km * 1000 m/km = 200000 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Renewal length = 200000 m * 36 percent / 100 = 72000 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Pipe lengths needed = 72000 m / 6 m per length = 12100 lengths"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Pipe lengths needed = 72000 m / 6 m per length = 12000 lengths",
+   "explanation": "Line 3 arithmetic is wrong. The correct calculation is Pipe lengths needed = 72000 m / 6 m per length = 12000 lengths."
+  },
+  {
+   "id": "wp3wd-error96",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this renewal section quantity calculation for a program near Brandon, Manitoba.",
+   "topicId": "renewal-quantities",
+   "level": "class1",
+   "assumptions": "Fictional renewal program near Brandon, Manitoba: length to renew = 4500 m, standard section length = 25 m, valves renewed = 3 per section, crew production = 18 sections per day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Sections to renew = 4500 m / 25 m per section = 180 sections"
+    },
+    {
+     "id": "line2",
+     "label": "2. Valves to renew = 180 sections * 4 valves per section = 720 valves"
+    },
+    {
+     "id": "line3",
+     "label": "3. Crew days = 180 sections / 18 sections per day = 10 days"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Valves to renew = 180 sections * 3 valves per section = 540 valves",
+   "explanation": "Line 2 used 4 valves instead of the stated 3 valves for valves per section. The correct calculation is Valves to renew = 180 sections * 3 valves per section = 540 valves."
+  },
+  {
+   "id": "wp3wd-error97",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this renewal program quantity calculation for a system near Kelowna, British Columbia.",
+   "topicId": "renewal-quantities",
+   "level": "class1",
+   "assumptions": "Fictional renewal program near Kelowna, British Columbia: total mains length = 160 km, planned renewal share = 25 percent, given density = 38 service connections per km renewed and 6 valves per km renewed.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Length to renew = 160 km * 30 percent / 100 = 48 km"
+    },
+    {
+     "id": "line2",
+     "label": "2. Services to renew = 48 km * 38 services per km = 1824 services"
+    },
+    {
+     "id": "line3",
+     "label": "3. Valves to renew = 48 km * 6 valves per km = 288 valves"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Length to renew = 160 km * 25 percent / 100 = 40 km",
+   "explanation": "Line 1 used 30 percent instead of the stated 25 percent for renewal share. The correct calculation is Length to renew = 160 km * 25 percent / 100 = 40 km."
+  },
+  {
+   "id": "wp3wd-error98",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this watermain renewal quantity calculation for a capital program near Kamloops, British Columbia.",
+   "topicId": "renewal-quantities",
+   "level": "class1",
+   "assumptions": "Fictional renewal program near Kamloops, British Columbia: total mains length = 240 km, planned renewal share = 35 percent of total length, pipe is supplied in 6 m lengths, 1000 m = 1 km.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total mains = 240 km * 1000 m/km = 240000 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Renewal length = 240000 m * 35 percent / 100 = 84000 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Pipe lengths needed = 84000 m / 6 m per length = 14500 lengths"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Pipe lengths needed = 84000 m / 6 m per length = 14000 lengths",
+   "explanation": "Line 3 arithmetic is wrong. The correct calculation is Pipe lengths needed = 84000 m / 6 m per length = 14000 lengths."
+  },
+  {
+   "id": "wp3wd-error99",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this renewal section quantity calculation for a program near Prince George, British Columbia.",
+   "topicId": "renewal-quantities",
+   "level": "class1",
+   "assumptions": "Fictional renewal program near Prince George, British Columbia: length to renew = 5600 m, standard section length = 28 m, valves renewed = 2 per section, crew production = 20 sections per day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Sections to renew = 5600 m / 28 m per section = 200 sections"
+    },
+    {
+     "id": "line2",
+     "label": "2. Valves to renew = 200 sections * 2 valves per section = 410 valves"
+    },
+    {
+     "id": "line3",
+     "label": "3. Crew days = 200 sections / 20 sections per day = 10 days"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Valves to renew = 200 sections * 2 valves per section = 400 valves",
+   "explanation": "Line 2 arithmetic is wrong. The correct calculation is Valves to renew = 200 sections * 2 valves per section = 400 valves."
+  },
+  {
+   "id": "wp3wd-process01",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "water-loss-strategy-five-year-plan",
+   "prompt": "Order the steps for building a five year water loss reduction strategy for a prairie city utility.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: utility wide strategy, from baseline audit to the approved five year targets.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Complete a validated system water audit to establish the baseline loss volumes"
+    },
+    {
+     "id": "c2",
+     "label": "Separate real losses from apparent losses and rank each component by volume"
+    },
+    {
+     "id": "c3",
+     "label": "Set staged annual reduction targets for the largest loss components"
+    },
+    {
+     "id": "c4",
+     "label": "Cost the intervention options for each target and rank them by volume saved per dollar"
+    },
+    {
+     "id": "c5",
+     "label": "Assign program owners and annual budgets for the selected interventions"
+    },
+    {
+     "id": "c6",
+     "label": "Present the strategy to utility leadership for approval and public reporting"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "A strategy built on a validated baseline can be measured year by year. Separating real and apparent losses prevents field crews chasing metering problems, and staged targets with owners and budgets turn the strategy into funded work."
+  },
+  {
+   "id": "wp3wd-process02",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "water-loss-audit-data-validation",
+   "prompt": "Order the steps for validating the data before a formal water loss audit is calculated.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: data validation stage for one audit year in a multi zone system.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Verify production meter calibration records for every source entering the system"
+    },
+    {
+     "id": "c2",
+     "label": "Reconcile production totals with treatment plant and pump station logs"
+    },
+    {
+     "id": "c3",
+     "label": "Check billing extracts for missing accounts, estimated reads and zero reads"
+    },
+    {
+     "id": "c4",
+     "label": "Confirm authorized unbilled volumes are supported by work records"
+    },
+    {
+     "id": "c5",
+     "label": "Grade each audit input for confidence and record the grading basis"
+    },
+    {
+     "id": "c6",
+     "label": "Lock the validated data set and calculate the audit from it only"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "An audit is only as good as its inputs. Production and billing data are proven first, confidence grading shows where the result is soft, and locking the data set prevents the audit changing as it is debated."
+  },
+  {
+   "id": "wp3wd-process03",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "water-loss-real-loss-component-analysis",
+   "prompt": "Order the steps for a component analysis of real losses across a large system.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: background leakage, reported bursts and unreported leakage for the whole network.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Total real losses from the validated audit for the study year"
+    },
+    {
+     "id": "c2",
+     "label": "Estimate background leakage from pipe age, material and pressure data"
+    },
+    {
+     "id": "c3",
+     "label": "Total reported burst volumes from break records and repair durations"
+    },
+    {
+     "id": "c4",
+     "label": "Derive unreported leakage as the remainder after background and burst volumes"
+    },
+    {
+     "id": "c5",
+     "label": "Compare each component with pressure and break history to test plausibility"
+    },
+    {
+     "id": "c6",
+     "label": "Rank components and direct the next detection investment at the largest"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Component analysis shows where real losses actually sit. Background, burst and unreported volumes are estimated in turn, the remainder is derived rather than guessed, and investment follows the largest proven component."
+  },
+  {
+   "id": "wp3wd-process04",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "water-loss-economic-level-study",
+   "prompt": "Order the steps for an economic level of leakage study for utility leadership.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: study to find the loss level where further control costs more than the water saved.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm the current real loss volume and its trend from recent audits"
+    },
+    {
+     "id": "c2",
+     "label": "Value saved water using production cost and the cost of new supply capacity"
+    },
+    {
+     "id": "c3",
+     "label": "Price active leakage control options at increasing levels of effort"
+    },
+    {
+     "id": "c4",
+     "label": "Find the point where the next unit of control costs more than the water it saves"
+    },
+    {
+     "id": "c5",
+     "label": "Test the result against drought risk and supply security needs"
+    },
+    {
+     "id": "c6",
+     "label": "Report the economic level and the recommended operating target to leadership"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The economic level balances control cost against water value, including avoided capacity. Security needs can justify going beyond the pure economic point, but the decision is made openly with both numbers in front of leadership."
+  },
+  {
+   "id": "wp3wd-process05",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "water-loss-dma-portfolio-prioritization",
+   "prompt": "Order the steps for prioritizing district metered areas across a whole city for loss work.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: portfolio ranking of forty districts for the next three years of detection work.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Compile night flow, leakage rate and break history for every district"
+    },
+    {
+     "id": "c2",
+     "label": "Normalize leakage by main length and by connection count for fair comparison"
+    },
+    {
+     "id": "c3",
+     "label": "Score each district for loss volume, trend and consequence of failure"
+    },
+    {
+     "id": "c4",
+     "label": "Group districts into annual work tranches that match crew capacity"
+    },
+    {
+     "id": "c5",
+     "label": "Schedule the highest scoring districts in the first tranche"
+    },
+    {
+     "id": "c6",
+     "label": "Review the ranking each year with new night flow data before committing the next tranche"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Fair comparison needs normalized rates, not raw volumes that favour large districts. Scoring by volume, trend and consequence sends crews where loss and risk combine, and annual review keeps the portfolio honest as conditions change."
+  },
+  {
+   "id": "wp3wd-process06",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "water-loss-pressure-leakage-study",
+   "prompt": "Order the steps for a pressure and leakage relationship study before a pressure program.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: one high pressure district where leakage falls at night are suspected.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Log district inlet flow and pressure together over several weeks"
+    },
+    {
+     "id": "c2",
+     "label": "Calculate night leakage at the recorded range of night pressures"
+    },
+    {
+     "id": "c3",
+     "label": "Compare leakage change with pressure change to estimate the pressure sensitivity"
+    },
+    {
+     "id": "c4",
+     "label": "Model leakage at candidate lower night pressures using the measured sensitivity"
+    },
+    {
+     "id": "c5",
+     "label": "Check fire flow and customer minimum pressures at the candidate settings"
+    },
+    {
+     "id": "c6",
+     "label": "Recommend the pressure setting that saves leakage without breaching service levels"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Leakage responds to pressure, but the size of the response must be measured in the district itself. Modelling from measured sensitivity, then checking fire flow and minimum pressures, gives a setting that saves water without trading away service."
+  },
+  {
+   "id": "wp3wd-process07",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "water-loss-apparent-loss-strategy",
+   "prompt": "Order the steps for an apparent loss reduction strategy at system scale.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: strategy covering metering, billing and unauthorized use for the whole utility.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Quantify apparent losses from the audit and split them by cause"
+    },
+    {
+     "id": "c2",
+     "label": "Rank causes by volume, covering meter under registration, data errors and unauthorized use"
+    },
+    {
+     "id": "c3",
+     "label": "Design a meter renewal and testing program aimed at the largest meter losses"
+    },
+    {
+     "id": "c4",
+     "label": "Design billing data checks that catch transfer and estimation errors early"
+    },
+    {
+     "id": "c5",
+     "label": "Set a hydrant permit and enforcement routine for unauthorized use"
+    },
+    {
+     "id": "c6",
+     "label": "Track apparent loss recovery in the next audit and report the change"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Apparent losses are recovered in offices and meter shops, not in trenches. Ranking by cause directs meter and data work at the biggest volumes first, and the next audit proves whether the recovery is real."
+  },
+  {
+   "id": "wp3wd-process08",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "water-loss-customer-meter-renewal-strategy",
+   "prompt": "Order the steps for a system wide customer meter renewal strategy.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: renewal strategy for all small customer meters over a ten year horizon.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Analyse meter age, test accuracy by age band and consumption by class"
+    },
+    {
+     "id": "c2",
+     "label": "Identify the age where accuracy loss makes renewal pay back fastest"
+    },
+    {
+     "id": "c3",
+     "label": "Group meters into renewal cohorts by age, route and meter size"
+    },
+    {
+     "id": "c4",
+     "label": "Set annual renewal volumes that match shop and field capacity"
+    },
+    {
+     "id": "c5",
+     "label": "Plan billing notices and access arrangements for each cohort"
+    },
+    {
+     "id": "c6",
+     "label": "Measure recovered consumption after each cohort and adjust the renewal age if needed"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Renewal pays when accuracy loss is proven by age band testing, not by calendar habit. Cohorts matched to capacity keep the program deliverable, and measuring recovered consumption after each cohort refines the economic age for the next round."
+  },
+  {
+   "id": "wp3wd-process09",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "water-loss-hidden-leak-detection-program",
+   "prompt": "Order the steps for a proactive hidden leak detection program using permanent noise loggers.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: logger deployment across the highest loss districts of a large city.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Select districts and streets for logger coverage from the loss ranking"
+    },
+    {
+     "id": "c2",
+     "label": "Deploy loggers on fittings at the planned spacing and record each location"
+    },
+    {
+     "id": "c3",
+     "label": "Collect nightly noise data and flag fittings with sustained leak noise"
+    },
+    {
+     "id": "c4",
+     "label": "Correlate flagged clusters to pinpoint the leak position before digging"
+    },
+    {
+     "id": "c5",
+     "label": "Raise repair orders for pinpointed leaks in priority order"
+    },
+    {
+     "id": "c6",
+     "label": "Review logger data after repairs to confirm noise has cleared and savings hold"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Permanent loggers find leaks that sounding visits miss between surveys. Correlation before excavation avoids dry holes, and post repair review confirms the noise and the loss are both gone."
+  },
+  {
+   "id": "wp3wd-process10",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "water-loss-burst-frequency-analysis",
+   "prompt": "Order the steps for a burst frequency analysis to guide mains renewal.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: ten years of break records for the whole network.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Clean the break database so each record carries pipe age, material, size and cause"
+    },
+    {
+     "id": "c2",
+     "label": "Group breaks by pipe cohort and calculate breaks per kilometre per year"
+    },
+    {
+     "id": "c3",
+     "label": "Compare cohorts to find the materials and ages failing fastest"
+    },
+    {
+     "id": "c4",
+     "label": "Overlay break clusters with soil, pressure and frost depth information"
+    },
+    {
+     "id": "c5",
+     "label": "Rank renewal candidates by break rate and consequence of failure"
+    },
+    {
+     "id": "c6",
+     "label": "Feed the ranked list into the capital renewal program for costing"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Break records only guide renewal once they are grouped into comparable cohorts. Rates per kilometre expose the failing materials, overlays explain why, and ranking by rate and consequence sends capital to the pipes most likely to fail next."
+  },
+  {
+   "id": "wp3wd-process100",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "cold-climate-design-standard-review",
+   "prompt": "Order the steps for reviewing cold climate design standards for new mains and services.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: standards review covering depth of bury, insulation and material choices.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Compile failure data for shallow or poorly insulated installations"
+    },
+    {
+     "id": "c2",
+     "label": "Compare current depth standards with measured maximum frost depths"
+    },
+    {
+     "id": "c3",
+     "label": "Review insulation practice where depth cannot be achieved in rock or high water table areas"
+    },
+    {
+     "id": "c4",
+     "label": "Update the standards with the frost evidence and the approved insulation details"
+    },
+    {
+     "id": "c5",
+     "label": "Brief designers, inspectors and developers on the revised standards"
+    },
+    {
+     "id": "c6",
+     "label": "Audit the first construction season under the new standards for compliance"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Design standards must be set by measured frost, not by tradition. Failure data and frost records justify deeper bury or proper insulation, the revision is briefed to everyone who builds, and a first season audit makes the new standard real."
+  },
+  {
+   "id": "wp3wd-process11",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "water-loss-audit-annual-cycle",
+   "prompt": "Order the steps for the annual water audit cycle at a Class 3 utility.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: recurring yearly cycle, from data close to published results.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Close the audit year and freeze production and billing data extracts"
+    },
+    {
+     "id": "c2",
+     "label": "Validate the extracts and grade input confidence with the audit team"
+    },
+    {
+     "id": "c3",
+     "label": "Calculate the water balance and loss components for the year"
+    },
+    {
+     "id": "c4",
+     "label": "Compare results with targets and with the previous three years"
+    },
+    {
+     "id": "c5",
+     "label": "Brief utility leadership on variances and the causes found"
+    },
+    {
+     "id": "c6",
+     "label": "Publish the audit summary and set the next year intervention priorities"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "A fixed annual cycle makes audits comparable across years. Freezing and validating data first prevents moving targets, multi year comparison separates trend from noise, and published results with priorities close the loop into action."
+  },
+  {
+   "id": "wp3wd-process12",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "water-loss-intervention-business-case",
+   "prompt": "Order the steps for the business case for a major leakage intervention program.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: business case for a three year district renewal and pressure program.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "State the loss volume the program will address from the validated audit"
+    },
+    {
+     "id": "c2",
+     "label": "Forecast savings by year using measured district results, not vendor claims"
+    },
+    {
+     "id": "c3",
+     "label": "Cost capital, operating and staffing needs for the full program life"
+    },
+    {
+     "id": "c4",
+     "label": "Compare program cost with the value of water and capacity saved"
+    },
+    {
+     "id": "c5",
+     "label": "Assess risks, including construction disruption and savings shortfall"
+    },
+    {
+     "id": "c6",
+     "label": "Present the case with a recommendation and a savings verification plan"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "A credible case rests on the utility own measured savings, not supplier promises. Full life costing and an honest risk section let leadership judge the program, and a verification plan commits the program to proving its savings."
+  },
+  {
+   "id": "wp3wd-process13",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "water-loss-AMI-data-program",
+   "prompt": "Order the steps for using advanced metering data in the loss program.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: new hourly customer meter data feeding district balances in a large system.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm district boundaries align with the meter data grouping"
+    },
+    {
+     "id": "c2",
+     "label": "Aggregate hourly customer consumption to district level for each night"
+    },
+    {
+     "id": "c3",
+     "label": "Compare district metered consumption with district inlet flow for the same nights"
+    },
+    {
+     "id": "c4",
+     "label": "Flag districts where the gap grows, showing rising unaccounted use"
+    },
+    {
+     "id": "c5",
+     "label": "Investigate flagged districts for leakage, theft or meter data faults"
+    },
+    {
+     "id": "c6",
+     "label": "Add the district gap trend to the monthly loss dashboard for leadership"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Hourly meter data turns the district balance from an annual estimate into a monthly signal. Comparing consumption with inlet flow on the same nights isolates the gap, and trending it monthly catches new losses while they are small."
+  },
+  {
+   "id": "wp3wd-process14",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "water-loss-freeze-season-loss-review",
+   "prompt": "Order the steps for reviewing winter losses after a severe cold period in a northern city.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: post winter review covering frost related bursts and running water bleeds.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Total winter burst repairs and compare with the five year winter average"
+    },
+    {
+     "id": "c2",
+     "label": "Total bleed water volumes authorized to protect frozen services"
+    },
+    {
+     "id": "c3",
+     "label": "Separate frost depth driven failures from age driven failures in the records"
+    },
+    {
+     "id": "c4",
+     "label": "Review which mains and services failed repeatedly at shallow depth"
+    },
+    {
+     "id": "c5",
+     "label": "Rank depth and insulation corrections for the summer construction season"
+    },
+    {
+     "id": "c6",
+     "label": "Report winter loss costs and the correction plan to leadership"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Winter losses mix frost effects with normal aging, and the review must separate them. Bleed volumes are counted honestly as loss, repeat shallow failures are ranked for correction in summer, and leadership sees the full winter cost."
+  },
+  {
+   "id": "wp3wd-process15",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "water-loss-target-setting-briefing",
+   "prompt": "Order the steps for briefing senior leadership to set the utility loss target.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: one decision briefing for the annual target in a multi zone utility.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Prepare the audit trend, component split and peer utility comparison"
+    },
+    {
+     "id": "c2",
+     "label": "Prepare costed options for holding, reducing moderately and reducing aggressively"
+    },
+    {
+     "id": "c3",
+     "label": "Show the service and supply risks of each option in plain terms"
+    },
+    {
+     "id": "c4",
+     "label": "Record the target leadership selects and the reasons given"
+    },
+    {
+     "id": "c5",
+     "label": "Translate the target into district and program level sub targets"
+    },
+    {
+     "id": "c6",
+     "label": "Schedule the mid year progress review against the selected target"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Leadership can only set a defensible target when options carry costs and risks together. Recording the reasons protects the target from later revision, and sub targets plus a mid year review keep the commitment managed."
+  },
+  {
+   "id": "wp3wd-process16",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "demand-forecast-base-year-build",
+   "prompt": "Order the steps for building the base year demand model for a twenty year forecast.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: base year construction for a growing western city system.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Select a weather normal base year and document why it represents typical demand"
+    },
+    {
+     "id": "c2",
+     "label": "Total base year production and split it by customer class from billing data"
+    },
+    {
+     "id": "c3",
+     "label": "Separate billed consumption, authorized unbilled use and losses"
+    },
+    {
+     "id": "c4",
+     "label": "Calculate per capita and per connection use for each customer class"
+    },
+    {
+     "id": "c5",
+     "label": "Check the base year against the previous five years for anomalies"
+    },
+    {
+     "id": "c6",
+     "label": "Lock the base year data set as the foundation of the forecast"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Every forecast inherits the errors of its base year. A weather normal year, split by class with losses separated, gives unit demands that can be projected, and locking the set keeps later debate about method rather than data."
+  },
+  {
+   "id": "wp3wd-process17",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "demand-forecast-population-scenarios",
+   "prompt": "Order the steps for building population and growth scenarios for demand forecasting.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: low, expected and high growth scenarios for a twenty year horizon.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Obtain official population and development projections for the service area"
+    },
+    {
+     "id": "c2",
+     "label": "Translate projections into serviced connections by district and by phase"
+    },
+    {
+     "id": "c3",
+     "label": "Build low, expected and high scenarios with stated assumptions for each"
+    },
+    {
+     "id": "c4",
+     "label": "Apply unit demands by customer class to each scenario"
+    },
+    {
+     "id": "c5",
+     "label": "Compare scenario demands with current system capacity by district"
+    },
+    {
+     "id": "c6",
+     "label": "Carry all three scenarios into capacity planning so triggers, not dates, drive projects"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Scenarios protect the utility from betting the capital plan on one growth guess. Translating population into phased connections by district shows where growth lands, and trigger based planning builds capacity when growth proves itself."
+  },
+  {
+   "id": "wp3wd-process18",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "demand-forecast-peaking-factor-review",
+   "prompt": "Order the steps for reviewing peaking factors used in capacity planning.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: review of maximum day and peak hour factors from ten years of records.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Extract maximum day and peak hour demands for each of the past ten years"
+    },
+    {
+     "id": "c2",
+     "label": "Relate each peak to weather, restrictions and major customer use in that year"
+    },
+    {
+     "id": "c3",
+     "label": "Remove peaks caused by one time events that planning should not design for"
+    },
+    {
+     "id": "c4",
+     "label": "Calculate the planning peaking factors from the remaining record"
+    },
+    {
+     "id": "c5",
+     "label": "Compare the factors with the values in the current master plan"
+    },
+    {
+     "id": "c6",
+     "label": "Update the master plan factors and record the evidence for the change"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Peaking factors set the size of everything the utility builds. Peaks are explained before they are averaged, one time events are excluded openly, and the master plan is updated from evidence so designs stay defensible."
+  },
+  {
+   "id": "wp3wd-process19",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "demand-forecast-climate-adjustment",
+   "prompt": "Order the steps for adjusting the demand forecast for a hotter, drier climate trend.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: forecast adjustment for summer irrigation demand in a prairie system.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Analyse summer demand against temperature and rainfall over twenty years"
+    },
+    {
+     "id": "c2",
+     "label": "Estimate the demand change per degree of summer temperature from the record"
+    },
+    {
+     "id": "c3",
+     "label": "Apply the climate trend for the forecast horizon to the summer component only"
+    },
+    {
+     "id": "c4",
+     "label": "Test the adjusted peak against storage and pumping capacity"
+    },
+    {
+     "id": "c5",
+     "label": "Identify the year the adjusted peak first exceeds firm capacity"
+    },
+    {
+     "id": "c6",
+     "label": "Report the climate adjusted capacity trigger year to leadership"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Climate effects belong on the weather sensitive summer component, not smeared across all demand. The measured temperature response drives the adjustment, and the output leadership needs is the year firm capacity is first exceeded."
+  },
+  {
+   "id": "wp3wd-process20",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "demand-capacity-master-plan-update",
+   "prompt": "Order the steps for updating the distribution master plan.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: full master plan update for a city expecting major growth.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Refresh the demand forecast with the latest base year and growth scenarios"
+    },
+    {
+     "id": "c2",
+     "label": "Update the hydraulic model with current network and operations data"
+    },
+    {
+     "id": "c3",
+     "label": "Test the model against forecast demands for each planning horizon"
+    },
+    {
+     "id": "c4",
+     "label": "List capacity deficiencies by zone, year and growth scenario"
+    },
+    {
+     "id": "c5",
+     "label": "Develop project options that resolve each deficiency with trigger years"
+    },
+    {
+     "id": "c6",
+     "label": "Present the updated plan and project triggers to leadership for adoption"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The master plan links forecast, model and projects in that order. Deficiencies are located by zone and scenario before options are drawn, and adoption of triggers rather than fixed dates keeps the plan useful as growth changes pace."
+  },
+  {
+   "id": "wp3wd-process21",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "demand-storage-capacity-assessment",
+   "prompt": "Order the steps for assessing whether system storage is adequate for the next decade.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: storage assessment covering balancing, fire and emergency volumes.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Calculate current balancing storage need from the diurnal demand pattern"
+    },
+    {
+     "id": "c2",
+     "label": "Add the fire storage requirement for the largest risk area served"
+    },
+    {
+     "id": "c3",
+     "label": "Add the emergency storage allowance set by utility policy"
+    },
+    {
+     "id": "c4",
+     "label": "Compare the total need with usable storage by zone, not just system wide"
+    },
+    {
+     "id": "c5",
+     "label": "Forecast the need at five and ten years using the demand scenarios"
+    },
+    {
+     "id": "c6",
+     "label": "Recommend storage projects with trigger years where zone deficits appear"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Storage adequacy is a zone question, because water stored across town cannot serve a local peak. Balancing, fire and emergency needs are stacked openly, and zone deficits with trigger years become the storage program."
+  },
+  {
+   "id": "wp3wd-process22",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "demand-pump-station-capacity-review",
+   "prompt": "Order the steps for a pump station firm capacity review across all stations.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: review triggered by forecast growth in the upper zones.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "List each station duty pumps, standby pumps and rated capacities"
+    },
+    {
+     "id": "c2",
+     "label": "Define firm capacity as output with the largest pump out of service"
+    },
+    {
+     "id": "c3",
+     "label": "Compare firm capacity with current and forecast zone peak demands"
+    },
+    {
+     "id": "c4",
+     "label": "Field test the oldest stations to confirm rated output is still achieved"
+    },
+    {
+     "id": "c5",
+     "label": "Rank stations by the year firm capacity is exceeded"
+    },
+    {
+     "id": "c6",
+     "label": "Program upgrades in rank order with design starting ahead of the trigger year"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Firm capacity, with the largest unit out, is the honest measure of a station. Field testing catches derated pumps that paper ratings hide, and ranking by exceedance year sequences upgrades before growth exposes the gap."
+  },
+  {
+   "id": "wp3wd-process23",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "demand-new-development-capacity-check",
+   "prompt": "Order the steps for checking capacity for a major new development application.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: one large subdivision and commercial development at the city edge.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Obtain the development phasing, unit counts and proposed demands"
+    },
+    {
+     "id": "c2",
+     "label": "Add the phased demands to the hydraulic model at the proposed connection points"
+    },
+    {
+     "id": "c3",
+     "label": "Test peak hour pressures and fire flow at the development under full build out"
+    },
+    {
+     "id": "c4",
+     "label": "Identify off site upgrades the development triggers on existing mains"
+    },
+    {
+     "id": "c5",
+     "label": "Set the upgrade and cost sharing conditions in the servicing response"
+    },
+    {
+     "id": "c6",
+     "label": "Record the committed demands in the forecast so later applications see them"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Each major application must be tested at full build out, not first phase only. Off site effects are identified while conditions can still be set, and recording committed demand prevents the same capacity being promised twice."
+  },
+  {
+   "id": "wp3wd-process24",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "demand-drought-demand-management-plan",
+   "prompt": "Order the steps for building the demand management stages of a drought plan.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: staged restrictions plan for a system supplied by a snowmelt river.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Define drought trigger levels from source storage and river flow indicators"
+    },
+    {
+     "id": "c2",
+     "label": "Estimate the demand saving each restriction stage must deliver"
+    },
+    {
+     "id": "c3",
+     "label": "Match measures to stages, from voluntary savings to mandatory limits"
+    },
+    {
+     "id": "c4",
+     "label": "Confirm enforcement, communications and exemption routines for each stage"
+    },
+    {
+     "id": "c5",
+     "label": "Test the staged savings against the worst recorded drought demand pattern"
+    },
+    {
+     "id": "c6",
+     "label": "Approve the plan and pre draft public notices for each stage"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Drought stages must be tied to measurable source triggers, not to judgement in a crisis. Savings are estimated per stage and tested against the worst recorded pattern, and pre drafted notices let the utility act the day a trigger is reached."
+  },
+  {
+   "id": "wp3wd-process25",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "demand-forecast-accuracy-review",
+   "prompt": "Order the steps for reviewing forecast accuracy five years into a master plan.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: mid plan review comparing forecast demands with actual demands.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Extract actual production and connections for the five years since the forecast"
+    },
+    {
+     "id": "c2",
+     "label": "Compare actuals with each growth scenario year by year"
+    },
+    {
+     "id": "c3",
+     "label": "Identify which scenario tracked reality and where class demands diverged"
+    },
+    {
+     "id": "c4",
+     "label": "Explain divergences from development records and weather data"
+    },
+    {
+     "id": "c5",
+     "label": "Rebase the forecast on the tracking scenario with corrected unit demands"
+    },
+    {
+     "id": "c6",
+     "label": "Report whether project triggers move earlier or later as a result"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "A forecast review is an audit of the utility own assumptions. Tracking which scenario matched reality shows whether growth or unit demand was misjudged, and rebasing moves project triggers honestly in either direction."
+  },
+  {
+   "id": "wp3wd-process26",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "demand-industrial-customer-planning",
+   "prompt": "Order the steps for planning service for a large new industrial water customer.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: one food processing plant proposing high steady demand with peak batches.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Obtain the customer process demand profile, peaks and quality needs"
+    },
+    {
+     "id": "c2",
+     "label": "Check average and peak effects on the supplying zone and storage"
+    },
+    {
+     "id": "c3",
+     "label": "Confirm backflow protection and any pretreatment conditions for the connection"
+    },
+    {
+     "id": "c4",
+     "label": "Agree demand charges, peak limits and curtailment terms for drought stages"
+    },
+    {
+     "id": "c5",
+     "label": "Design the metering and monitoring for the service with the customer"
+    },
+    {
+     "id": "c6",
+     "label": "Add the committed profile to the demand forecast and zone records"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "A large steady customer changes zone behaviour every day, not just at peak. Peak and drought terms are agreed before connection, monitoring is designed in from the start, and the forecast carries the real profile rather than an average."
+  },
+  {
+   "id": "wp3wd-process27",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "demand-fire-flow-capacity-planning",
+   "prompt": "Order the steps for planning fire flow upgrades across older districts.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: city wide fire flow deficiency program for pre war neighbourhoods.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Compile hydrant test results and model estimates for every older district"
+    },
+    {
+     "id": "c2",
+     "label": "Rank streets by the gap between available flow and the protection need"
+    },
+    {
+     "id": "c3",
+     "label": "Group deficient streets into renewal areas that share undersized mains"
+    },
+    {
+     "id": "c4",
+     "label": "Sequence areas by risk, combining fire flow with break history"
+    },
+    {
+     "id": "c5",
+     "label": "Cost the grouped program and phase it across the capital plan years"
+    },
+    {
+     "id": "c6",
+     "label": "Retest each completed area and publish the improved flow results"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Fire flow work grouped by shared mains fixes whole areas at once instead of scattering hydrant by hydrant. Combining flow gaps with break history spends once on streets that need renewal anyway, and retesting proves the protection gained."
+  },
+  {
+   "id": "wp3wd-process28",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "demand-emergency-supply-intertie",
+   "prompt": "Order the steps for planning an emergency intertie with a neighbouring utility.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: intertie study between two prairie cities sharing a regional supply risk.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Define the emergency scenarios the intertie must cover and their durations"
+    },
+    {
+     "id": "c2",
+     "label": "Estimate the flow each city must be able to send and receive in each scenario"
+    },
+    {
+     "id": "c3",
+     "label": "Locate connection points where pressures can be matched or boosted"
+    },
+    {
+     "id": "c4",
+     "label": "Agree water quality, metering and cost sharing terms in principle"
+    },
+    {
+     "id": "c5",
+     "label": "Design the connection works and the operating procedure for activation"
+    },
+    {
+     "id": "c6",
+     "label": "Exercise the intertie annually and review the agreement after each use"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "An intertie is an operating agreement as much as a pipe. Scenarios size the flows, pressure and quality terms are settled before construction, and annual exercising keeps the connection and the relationship ready for the real event."
+  },
+  {
+   "id": "wp3wd-process29",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "asset-inventory-data-program",
+   "prompt": "Order the steps for rebuilding the distribution asset inventory to decision grade.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: inventory rebuild for mains, valves, hydrants and services in a large system.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Define the asset attributes the renewal decisions actually require"
+    },
+    {
+     "id": "c2",
+     "label": "Extract existing records and grade each attribute for completeness"
+    },
+    {
+     "id": "c3",
+     "label": "Field verify a sample of records in each district to measure error rates"
+    },
+    {
+     "id": "c4",
+     "label": "Correct systematic errors found in the sample across the full data set"
+    },
+    {
+     "id": "c5",
+     "label": "Set update routines so new works enter the inventory at commissioning"
+    },
+    {
+     "id": "c6",
+     "label": "Report inventory confidence by asset class to the asset management team"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Decision grade data starts from the decisions, not from what the old database happens to hold. Sample verification measures real error rates, systematic faults are fixed at scale, and commissioning updates stop the inventory decaying again."
+  },
+  {
+   "id": "wp3wd-process30",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "asset-condition-assessment-program",
+   "prompt": "Order the steps for a condition assessment program for critical large mains.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: trunk mains whose failure would cut supply to whole zones.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Rank trunk mains by consequence of failure to select assessment candidates"
+    },
+    {
+     "id": "c2",
+     "label": "Choose assessment methods matched to pipe material and access"
+    },
+    {
+     "id": "c3",
+     "label": "Plan outages and bypass supply for each assessment window"
+    },
+    {
+     "id": "c4",
+     "label": "Carry out the assessments and record defects in the standard format"
+    },
+    {
+     "id": "c5",
+     "label": "Convert findings into remaining life estimates for each main"
+    },
+    {
+     "id": "c6",
+     "label": "Feed the results into renewal timing and interim risk controls"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Assessment money goes first where failure hurts most. Methods must fit the pipe, bypass planning keeps customers supplied during the work, and findings only matter once they become remaining life estimates that move renewal decisions."
+  },
+  {
+   "id": "wp3wd-process31",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "asset-risk-register-build",
+   "prompt": "Order the steps for building the distribution asset risk register.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: register covering likelihood and consequence for all major asset classes.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "List failure modes for each asset class with operations and maintenance staff"
+    },
+    {
+     "id": "c2",
+     "label": "Score likelihood from break, failure and condition records"
+    },
+    {
+     "id": "c3",
+     "label": "Score consequence for customers, water quality, cost and reputation"
+    },
+    {
+     "id": "c4",
+     "label": "Plot assets on the risk matrix and identify the highest risk group"
+    },
+    {
+     "id": "c5",
+     "label": "Assign a treatment, owner and review date to every high risk entry"
+    },
+    {
+     "id": "c6",
+     "label": "Review the register quarterly and after every major failure"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "A register built with field staff captures the failure modes records miss. Likelihood from evidence and consequence across four dimensions give a defensible ranking, and owners with review dates keep high risks actively treated."
+  },
+  {
+   "id": "wp3wd-process32",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "asset-renewal-prioritization-model",
+   "prompt": "Order the steps for setting up the mains renewal prioritization model.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: model combining break history, condition, risk and coordination factors.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Select the factors the model will score, with weights agreed by leadership"
+    },
+    {
+     "id": "c2",
+     "label": "Assemble clean data for every factor at individual pipe segment level"
+    },
+    {
+     "id": "c3",
+     "label": "Run the model and produce the first ranked renewal list"
+    },
+    {
+     "id": "c4",
+     "label": "Field check the top ranked segments for data errors and local knowledge"
+    },
+    {
+     "id": "c5",
+     "label": "Adjust weights only where the field check shows a systematic bias"
+    },
+    {
+     "id": "c6",
+     "label": "Publish the ranked list as the basis of the five year renewal program"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Weights are a leadership decision made before results are seen, which keeps the model honest. Field checking the top of the list catches data errors where they matter most, and weight changes need evidence of bias, not disappointment with the ranking."
+  },
+  {
+   "id": "wp3wd-process33",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "asset-capital-plan-ten-year",
+   "prompt": "Order the steps for building the ten year distribution capital plan.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: plan covering renewal, growth, quality and compliance projects.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Collect project needs from renewal, capacity, quality and risk programs"
+    },
+    {
+     "id": "c2",
+     "label": "Scope and cost each project at planning level with stated confidence"
+    },
+    {
+     "id": "c3",
+     "label": "Sequence projects by trigger year, risk and construction coordination"
+    },
+    {
+     "id": "c4",
+     "label": "Balance annual spending against the funding the utility can sustain"
+    },
+    {
+     "id": "c5",
+     "label": "Identify the risk carried by any project deferred beyond its trigger"
+    },
+    {
+     "id": "c6",
+     "label": "Present the balanced plan with deferral risks to leadership for approval"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "A capital plan is a balancing act made visible. Needs from every program compete in one list, sequencing respects triggers and coordination, and deferral risks are stated openly so approval is a real choice."
+  },
+  {
+   "id": "wp3wd-process34",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "asset-valve-program-strategy",
+   "prompt": "Order the steps for a system wide valve program strategy review.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: strategy for critical valve exercising, repair and replacement.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Identify critical valves whose failure would extend an outage area"
+    },
+    {
+     "id": "c2",
+     "label": "Review exercising completion and failure records for the critical set"
+    },
+    {
+     "id": "c3",
+     "label": "Set exercising frequencies by criticality rather than one interval for all"
+    },
+    {
+     "id": "c4",
+     "label": "Program replacements for valves that fail exercising twice"
+    },
+    {
+     "id": "c5",
+     "label": "Stock the repair parts the failure records show are actually needed"
+    },
+    {
+     "id": "c6",
+     "label": "Report valve readiness for the largest isolation areas to leadership"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Not all valves matter equally in an emergency. Criticality sets the exercising rhythm, repeat failures earn replacement rather than another note, and readiness reporting focuses on the isolations leadership will ask about after the next big break."
+  },
+  {
+   "id": "wp3wd-process35",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "asset-hydrant-program-strategy",
+   "prompt": "Order the steps for reviewing the hydrant inspection and flow testing strategy.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: strategy covering all hydrants in a cold climate city.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Review inspection findings for the most common hydrant defects by age and make"
+    },
+    {
+     "id": "c2",
+     "label": "Set flow testing coverage so every hydrant is tested within the policy cycle"
+    },
+    {
+     "id": "c3",
+     "label": "Add winter checks for drainage and freeze damage in problem areas"
+    },
+    {
+     "id": "c4",
+     "label": "Program repairs by defect severity, with out of service hydrants first"
+    },
+    {
+     "id": "c5",
+     "label": "Record flow results into the fire flow planning data set"
+    },
+    {
+     "id": "c6",
+     "label": "Report hydrant availability to the fire department each year"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Hydrant strategy links maintenance to fire protection outcomes. Defect patterns by make guide purchasing, winter drainage checks prevent freeze failures, and flow data flows straight into the planning set the fire department shares."
+  },
+  {
+   "id": "wp3wd-process36",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "asset-service-line-renewal-program",
+   "prompt": "Order the steps for a service line renewal program targeting repeat freeze and leak failures.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: program for services with repeated winter failures in older districts.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Extract services with two or more freeze or leak repairs in five years"
+    },
+    {
+     "id": "c2",
+     "label": "Group the repeat failures by street to find shared depth or material causes"
+    },
+    {
+     "id": "c3",
+     "label": "Inspect a sample of grouped services to confirm the cause before designing"
+    },
+    {
+     "id": "c4",
+     "label": "Design street by street renewal with corrected depth and material"
+    },
+    {
+     "id": "c5",
+     "label": "Schedule renewals in the frost free construction season by group priority"
+    },
+    {
+     "id": "c6",
+     "label": "Track the renewed streets through the next two winters for failure recurrence"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Repeat failures at the same services signal a design fault, not bad luck. Grouping by street exposes shared causes, renewal corrects depth and material together, and two winters of tracking prove the fix before the program scales."
+  },
+  {
+   "id": "wp3wd-process37",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "asset-reservoir-inspection-program",
+   "prompt": "Order the steps for the storage reservoir inspection and cleaning program.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: program covering all ground reservoirs and elevated tanks.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Set inspection intervals by tank age, coating condition and water quality history"
+    },
+    {
+     "id": "c2",
+     "label": "Plan each inspection with isolation, bypass supply and confined space controls"
+    },
+    {
+     "id": "c3",
+     "label": "Inspect structure, coating, vents, screens and security during the outage"
+    },
+    {
+     "id": "c4",
+     "label": "Sample sediment and review water quality results from the tank"
+    },
+    {
+     "id": "c5",
+     "label": "Complete repairs and recoating decisions from the findings before refilling"
+    },
+    {
+     "id": "c6",
+     "label": "Return the tank to service with disinfection and sampling as procedure requires"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Tank outages are rare, so each one must answer structure, coating, security and quality questions together. Findings are acted on before refilling because the next chance may be years away, and return to service follows the full disinfection routine."
+  },
+  {
+   "id": "wp3wd-process38",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "asset-pump-station-renewal-planning",
+   "prompt": "Order the steps for pump station renewal planning across the station fleet.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: fleet plan for stations aged twenty to forty years.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Compile station age, run hours, failure history and parts availability"
+    },
+    {
+     "id": "c2",
+     "label": "Assess each station for capacity, reliability and energy performance"
+    },
+    {
+     "id": "c3",
+     "label": "Identify stations where parts obsolescence creates an urgent risk"
+    },
+    {
+     "id": "c4",
+     "label": "Sequence renewals so no zone depends on two stations under renewal at once"
+    },
+    {
+     "id": "c5",
+     "label": "Stage design work to finish one year ahead of each construction window"
+    },
+    {
+     "id": "c6",
+     "label": "Present the fleet plan with the risk of the current sequence to leadership"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Fleet planning prevents several stations failing into the same decade. Obsolescence can outrank age as a risk, sequencing protects zone redundancy, and design lead time is planned so construction windows are never wasted waiting for drawings."
+  },
+  {
+   "id": "wp3wd-process39",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "asset-data-driven-break-prediction",
+   "prompt": "Order the steps for building a break prediction review to target inspections.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: annual prediction cycle using break, soil, pressure and age data.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Assemble the updated break history and asset data for the model run"
+    },
+    {
+     "id": "c2",
+     "label": "Run the prediction and list segments with the highest failure probability"
+    },
+    {
+     "id": "c3",
+     "label": "Compare predictions with the breaks that actually occurred last year"
+    },
+    {
+     "id": "c4",
+     "label": "Investigate the largest misses to find missing or wrong input data"
+    },
+    {
+     "id": "c5",
+     "label": "Correct the data faults and rerun the prediction for this year"
+    },
+    {
+     "id": "c6",
+     "label": "Issue the corrected high probability list to inspection and renewal teams"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "A prediction model earns trust by being scored against last year breaks. Misses are treated as data problems first, which improves both the model and the inventory, and only the corrected list goes to the field teams."
+  }
+ ],
+ "missions": [
+  {
+   "id": "wp3wd-mission41",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 41: The Capacity Margin Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wd-error60",
+     "revision": "r1",
+     "occurrenceId": "m41-t1"
+    },
+    {
+     "taskId": "wp3wd-process01",
+     "revision": "r1",
+     "occurrenceId": "m41-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp3wd-mission42",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 42: The Water Loss Audit Data Validation Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wd-process02",
+     "revision": "r1",
+     "occurrenceId": "m42-t1"
+    },
+    {
+     "taskId": "wp3wd-error61",
+     "revision": "r1",
+     "occurrenceId": "m42-t2"
+    },
+    {
+     "taskId": "wp3wd-error62",
+     "revision": "r1",
+     "occurrenceId": "m42-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp3wd-mission43",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 43: The Capacity Margin Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wd-error63",
+     "revision": "r1",
+     "occurrenceId": "m43-t1"
+    },
+    {
+     "taskId": "wp3wd-process03",
+     "revision": "r1",
+     "occurrenceId": "m43-t2"
+    },
+    {
+     "taskId": "wp3wd-error64",
+     "revision": "r1",
+     "occurrenceId": "m43-t3"
+    },
+    {
+     "taskId": "wp3wd-error65",
+     "revision": "r1",
+     "occurrenceId": "m43-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp3wd-mission44",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 44: The Water Loss Economic Level Study Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wd-process04",
+     "revision": "r1",
+     "occurrenceId": "m44-t1"
+    },
+    {
+     "taskId": "wp3wd-error66",
+     "revision": "r1",
+     "occurrenceId": "m44-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp3wd-mission45",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 45: The Pressure Management Savings Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wd-error67",
+     "revision": "r1",
+     "occurrenceId": "m45-t1"
+    },
+    {
+     "taskId": "wp3wd-process05",
+     "revision": "r1",
+     "occurrenceId": "m45-t2"
+    },
+    {
+     "taskId": "wp3wd-error68",
+     "revision": "r1",
+     "occurrenceId": "m45-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp3wd-mission46",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 46: The Water Loss Pressure Leakage Study Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wd-process06",
+     "revision": "r1",
+     "occurrenceId": "m46-t1"
+    },
+    {
+     "taskId": "wp3wd-error69",
+     "revision": "r1",
+     "occurrenceId": "m46-t2"
+    },
+    {
+     "taskId": "wp3wd-error70",
+     "revision": "r1",
+     "occurrenceId": "m46-t3"
+    },
+    {
+     "taskId": "wp3wd-error71",
+     "revision": "r1",
+     "occurrenceId": "m46-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp3wd-mission47",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 47: The Pressure Management Savings Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wd-error72",
+     "revision": "r1",
+     "occurrenceId": "m47-t1"
+    },
+    {
+     "taskId": "wp3wd-process07",
+     "revision": "r1",
+     "occurrenceId": "m47-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp3wd-mission48",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 48: The Water Loss Customer Meter Renewal Strategy Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wd-process08",
+     "revision": "r1",
+     "occurrenceId": "m48-t1"
+    },
+    {
+     "taskId": "wp3wd-error73",
+     "revision": "r1",
+     "occurrenceId": "m48-t2"
+    },
+    {
+     "taskId": "wp3wd-error74",
+     "revision": "r1",
+     "occurrenceId": "m48-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp3wd-mission49",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 49: The Pressure Management Savings Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wd-error75",
+     "revision": "r1",
+     "occurrenceId": "m49-t1"
+    },
+    {
+     "taskId": "wp3wd-process09",
+     "revision": "r1",
+     "occurrenceId": "m49-t2"
+    },
+    {
+     "taskId": "wp3wd-error76",
+     "revision": "r1",
+     "occurrenceId": "m49-t3"
+    },
+    {
+     "taskId": "wp3wd-error77",
+     "revision": "r1",
+     "occurrenceId": "m49-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp3wd-mission50",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 50: The Water Loss Burst Frequency Analysis Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wd-process10",
+     "revision": "r1",
+     "occurrenceId": "m50-t1"
+    },
+    {
+     "taskId": "wp3wd-error78",
+     "revision": "r1",
+     "occurrenceId": "m50-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp3wd-mission51",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 51: The Pressure Management Savings Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wd-error79",
+     "revision": "r1",
+     "occurrenceId": "m51-t1"
+    },
+    {
+     "taskId": "wp3wd-process100",
+     "revision": "r1",
+     "occurrenceId": "m51-t2"
+    },
+    {
+     "taskId": "wp3wd-error80",
+     "revision": "r1",
+     "occurrenceId": "m51-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp3wd-mission52",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 52: The Water Loss Audit Annual Cycle Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wd-process11",
+     "revision": "r1",
+     "occurrenceId": "m52-t1"
+    },
+    {
+     "taskId": "wp3wd-error81",
+     "revision": "r1",
+     "occurrenceId": "m52-t2"
+    },
+    {
+     "taskId": "wp3wd-error82",
+     "revision": "r1",
+     "occurrenceId": "m52-t3"
+    },
+    {
+     "taskId": "wp3wd-error83",
+     "revision": "r1",
+     "occurrenceId": "m52-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp3wd-mission53",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 53: The Renewal Quantities Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wd-error84",
+     "revision": "r1",
+     "occurrenceId": "m53-t1"
+    },
+    {
+     "taskId": "wp3wd-process12",
+     "revision": "r1",
+     "occurrenceId": "m53-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp3wd-mission54",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 54: The Water Loss Ami Data Program Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wd-process13",
+     "revision": "r1",
+     "occurrenceId": "m54-t1"
+    },
+    {
+     "taskId": "wp3wd-error85",
+     "revision": "r1",
+     "occurrenceId": "m54-t2"
+    },
+    {
+     "taskId": "wp3wd-error86",
+     "revision": "r1",
+     "occurrenceId": "m54-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp3wd-mission55",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 55: The Renewal Quantities Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wd-error87",
+     "revision": "r1",
+     "occurrenceId": "m55-t1"
+    },
+    {
+     "taskId": "wp3wd-process14",
+     "revision": "r1",
+     "occurrenceId": "m55-t2"
+    },
+    {
+     "taskId": "wp3wd-error88",
+     "revision": "r1",
+     "occurrenceId": "m55-t3"
+    },
+    {
+     "taskId": "wp3wd-error89",
+     "revision": "r1",
+     "occurrenceId": "m55-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp3wd-mission56",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 56: The Water Loss Target Setting Briefing Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wd-process15",
+     "revision": "r1",
+     "occurrenceId": "m56-t1"
+    },
+    {
+     "taskId": "wp3wd-error90",
+     "revision": "r1",
+     "occurrenceId": "m56-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp3wd-mission57",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 57: The Renewal Quantities Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wd-error91",
+     "revision": "r1",
+     "occurrenceId": "m57-t1"
+    },
+    {
+     "taskId": "wp3wd-process16",
+     "revision": "r1",
+     "occurrenceId": "m57-t2"
+    },
+    {
+     "taskId": "wp3wd-error92",
+     "revision": "r1",
+     "occurrenceId": "m57-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp3wd-mission58",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 58: The Demand Forecast Population Scenarios Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wd-process17",
+     "revision": "r1",
+     "occurrenceId": "m58-t1"
+    },
+    {
+     "taskId": "wp3wd-error93",
+     "revision": "r1",
+     "occurrenceId": "m58-t2"
+    },
+    {
+     "taskId": "wp3wd-error94",
+     "revision": "r1",
+     "occurrenceId": "m58-t3"
+    },
+    {
+     "taskId": "wp3wd-error95",
+     "revision": "r1",
+     "occurrenceId": "m58-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp3wd-mission59",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 59: The Renewal Quantities Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wd-error96",
+     "revision": "r1",
+     "occurrenceId": "m59-t1"
+    },
+    {
+     "taskId": "wp3wd-process18",
+     "revision": "r1",
+     "occurrenceId": "m59-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp3wd-mission60",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 60: The Demand Forecast Climate Adjustment Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wd-process19",
+     "revision": "r1",
+     "occurrenceId": "m60-t1"
+    },
+    {
+     "taskId": "wp3wd-error97",
+     "revision": "r1",
+     "occurrenceId": "m60-t2"
+    },
+    {
+     "taskId": "wp3wd-error98",
+     "revision": "r1",
+     "occurrenceId": "m60-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Distribution operations chapters (water loss, pressure management, asset care)"
+  },
+  {
+   "id": "wpi-ntk-2025",
+   "title": "WPI, 2025 Need-to-Know Criteria, Water Distribution Class III",
+   "locator": "https://gowpi.org/services/2025-need-to-know-criteria/"
+  },
+  {
+   "id": "gcdwq",
+   "title": "Health Canada, Guidelines for Canadian Drinking Water Quality",
+   "locator": "Federal guideline values and distribution water quality context"
+  },
+  {
+   "id": "awwa-water-loss",
+   "title": "AWWA, water loss control guidance (M36 family)",
+   "locator": "Water audit and loss control background (not Canadian law)"
+  },
+  {
+   "id": "awwa-asset",
+   "title": "AWWA, asset management guidance for water utilities",
+   "locator": "Asset management background (not Canadian law)"
+  },
+  {
+   "id": "ccohs-safety",
+   "title": "CCOHS, OSH Answers (chemical safety, confined spaces, lockout)",
+   "locator": "https://www.ccohs.ca/oshanswers/"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "9a0eb58c7a3f0f33dc512167489f6a974cdaaa82c25ddb5de13a219bb13c685b",
+  "taskReceipts": [
+   {
+    "taskId": "wp3wd-error60",
+    "revision": "r1",
+    "sha256": "139be80450e6e829b41b033eeacc46fe0a2950044bd0aff1f8bc0d54c5e7b4c0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error61",
+    "revision": "r1",
+    "sha256": "ae2f04b918fe6960014f0b7fc9cba099cf4dd2c4160b741f330c51b1f2c7fa98",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error62",
+    "revision": "r1",
+    "sha256": "f1b602765bd900d1338052c698a4e773247c08eeb734d46d45d4eb1205d0bff9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error63",
+    "revision": "r1",
+    "sha256": "f43f438d3d8003b077c3e8bcde524e96abb904db550cbb7066bb10e8e9bf4e84",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error64",
+    "revision": "r1",
+    "sha256": "411820356380e2113c85e4daefc2d1d08cd0d98cbbdee3c3daf708e705912036",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error65",
+    "revision": "r1",
+    "sha256": "247c4c130a2b09fa601a1c90b1ce6cad343072b474cfc03c15890aabfce5a316",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error66",
+    "revision": "r1",
+    "sha256": "37d1983f3333c73e4922c7b0d92bd17c6e8b315d5f0c5f05354e34caebf79a43",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error67",
+    "revision": "r1",
+    "sha256": "efaae793af4fd95343ba4f9648b9aa3f5877f8b0abd7008e8ad98494d11059f0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error68",
+    "revision": "r1",
+    "sha256": "387d0b8e0148daebd2c950c1dcb2395ebf5a9d5f0adc12a712a29df0234317a8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error69",
+    "revision": "r1",
+    "sha256": "7cec39815642a02f47c9c8f6f613b729476f02075137664234804b801c89af90",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error70",
+    "revision": "r1",
+    "sha256": "5fcb91b5abfd1abd5c1a7bfebfcc0d55ad5d8d364a3cd311a20b0c2bf01f2c22",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error71",
+    "revision": "r1",
+    "sha256": "8c3688325d7f275ea533f595ae7cc45c20dc3e37b18fcb025e02208e4779ce53",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error72",
+    "revision": "r1",
+    "sha256": "3ebc7d892e0cb8216a0ed2459da3b3495c95d1138ab1ebe84484057dce8e4568",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error73",
+    "revision": "r1",
+    "sha256": "efbdd8b19ed5e62456379a18380761fdb332e3db1438e9e73ea0b14f72a94376",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error74",
+    "revision": "r1",
+    "sha256": "8d6c048f8457f57d51e877885554a1bdb4f6120751071e0d6e09dca29a8a600b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error75",
+    "revision": "r1",
+    "sha256": "e63fbf57b6fe8b4da19df4872ae751563973add7918a64fc0a79b3bf9fd64270",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error76",
+    "revision": "r1",
+    "sha256": "bcb7137a851d47ff253d2ef6c71dd5c948822bbb1d66bcd6513b7599f3044e80",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error77",
+    "revision": "r1",
+    "sha256": "a0a77917aeaf016b6e8667bae7254ffe9b2b2feb6aa819c47a27a48bf84d8183",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error78",
+    "revision": "r1",
+    "sha256": "57b7b755827e6112f28b617c57a296138f30cf155e906290a13c37cfad773451",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error79",
+    "revision": "r1",
+    "sha256": "9e7fda84d50b3558a25a95918aa24b8821e2e85b04a3c843e6a950b6b5076d99",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error80",
+    "revision": "r1",
+    "sha256": "6b30412d691b68e11b19a4088193498c56841a21e54bb8f0a23b8b8f5995c625",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error81",
+    "revision": "r1",
+    "sha256": "6a3e6712c5f25f35d15ac75890d3dafc25a1951c4144d74854e33358083ca039",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error82",
+    "revision": "r1",
+    "sha256": "823c0c1d23531ae6df9c765e17a998d25c3e7aaea4b0d8692dc5569f72b06c5b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error83",
+    "revision": "r1",
+    "sha256": "1ea0560b0f7a5286dc02419c81ee0d8e2ceb2d34555d4377f2f95fd1840089fb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error84",
+    "revision": "r1",
+    "sha256": "6ceafe3f66548a236d0eb190d057b4a420fe51d630e3264e6f1941caa7546c21",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error85",
+    "revision": "r1",
+    "sha256": "4a95d2168a29733d4a49ec254076bb467ebab37859c2facb667bfea86a41b111",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error86",
+    "revision": "r1",
+    "sha256": "30a67cb6c1bfdbdb5bceb2e7e4b1222bdcbaa47204cce725b4b1010eaa12d9f8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error87",
+    "revision": "r1",
+    "sha256": "9a63d745f61058fc95e2be75b83b17e5d6dba2026955e952c897ca7d460afff7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error88",
+    "revision": "r1",
+    "sha256": "9b38b1617dfb2547327871718f3c5d27f475f0876ca0ad84c2f50094005056f6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error89",
+    "revision": "r1",
+    "sha256": "49b1e5516ab3dc790be10ecfcdea82178da64e24adbbfc80f88ed8036793f736",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error90",
+    "revision": "r1",
+    "sha256": "27dfbc787ed93c2a6497095f077b9a0eadc13b21dc3d10837430d5d041a0b72c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error91",
+    "revision": "r1",
+    "sha256": "5cd5f57c615a9f44b47f9e746f76d9f0ed84ceaef6a0af9d160959bb06d00bf0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error92",
+    "revision": "r1",
+    "sha256": "ca115303c60137d7e5b6cc74370a48eb8089f8f17a16681008cb6e8dad24b314",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error93",
+    "revision": "r1",
+    "sha256": "f8523f91212e76faa54fcba726eddd376561df260231cc251aaffb110efb0593",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error94",
+    "revision": "r1",
+    "sha256": "0c1518ff3b51b52678ba326efc13fb8a3bbfa4a1fdefb90fd0a1755467168da6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error95",
+    "revision": "r1",
+    "sha256": "72c83f874cd26b3216e1c0ed5b9e8f52cd41227b7562c27886caf52f853ed0dd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error96",
+    "revision": "r1",
+    "sha256": "2f50ba6d5431728a369a311427cfe5963bcd468af558598715fa0c44a3d390bf",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error97",
+    "revision": "r1",
+    "sha256": "24e9866b5a66709bf357bba3dc7dcd6c7e93cf4e04d62208d2960211de8eb3dd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error98",
+    "revision": "r1",
+    "sha256": "3e93991182e1e4d409ea42806b7436d6ba616235b190204da802780431079132",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-error99",
+    "revision": "r1",
+    "sha256": "44ff06518e3c60c8d809ca2ff1e4a0630de5702aaf3d2b67a4657420a6a0c2e4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-process01",
+    "revision": "r1",
+    "sha256": "c5501fd65dab99097c6553aadfee81176c65410f2d4fed8319211b78fcb82155",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-process02",
+    "revision": "r1",
+    "sha256": "f3d0ff729bb78fd24d45a42b3f23c6d5f3c77a5d1d16f91fad36218a5a994918",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-process03",
+    "revision": "r1",
+    "sha256": "933f09bbd551765e1264822197e6ac7563e06eaf05d53ee1e30ab88d8b322abe",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-process04",
+    "revision": "r1",
+    "sha256": "262eb8930acf58a99c02faea6e0d78d0bb4ae6b1e5b770c2c3fe25fa8a1b3d9f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-process05",
+    "revision": "r1",
+    "sha256": "56956145c6879869a8279168cc5f7355c28ae178aa72989dde08c4a1ef4e1c9e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-process06",
+    "revision": "r1",
+    "sha256": "b3326a26f9dd5d9c974bc9c9e73cf3027006a750c320235128ba42732daba7d7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-process07",
+    "revision": "r1",
+    "sha256": "9710e06e029739a33682e18676f366cdffe8456c103e34cd1362e54c40678acb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-process08",
+    "revision": "r1",
+    "sha256": "aa0bd9afbd827b22562b8dc1968b707a9f149733f1c73c98693d1337ee4ff9d5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-process09",
+    "revision": "r1",
+    "sha256": "f72912d252f217fb6db6d2cce04be30f0498f226bbe1b86dcd6a0f5b191acb67",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-process10",
+    "revision": "r1",
+    "sha256": "3ee868120ff5281dda6a15de51a3312a6c99fb943fe7f60c092d675d4aa77b64",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-process100",
+    "revision": "r1",
+    "sha256": "ee487151c44b7339a50439e27b7bb9542bb16889879238ee765426e5f7480927",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-process11",
+    "revision": "r1",
+    "sha256": "bc98694f730fa4469acb661156e7231dbd1b6afeb2772d6186be6d7807edb196",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-process12",
+    "revision": "r1",
+    "sha256": "24df252a0fed5e8ed2df369f047f564ee2c8cef7b7834c9ec68b89569c4c0d37",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-process13",
+    "revision": "r1",
+    "sha256": "18f9095034bf43fcbe7aec0496885873fcedd3788bb62a61a4072416494ab2e5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-process14",
+    "revision": "r1",
+    "sha256": "4d21df8dfdb92cae1a1c238159a58a1aea4088dfba4bd07b14c98a96c25e821c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-process15",
+    "revision": "r1",
+    "sha256": "b00975db8f63b534ba2f15ffe6924eefd673eb1171d3b3877b239b3801febc99",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-process16",
+    "revision": "r1",
+    "sha256": "59dca15b5c9531211a79ed60f84639e1700790f9a3d5807a4f0d6bc5bd75cdf2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-process17",
+    "revision": "r1",
+    "sha256": "cec5bf97131e9788ff340fb9adfff006f744e378bf17a80c3e9d3f32de3886ea",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-process18",
+    "revision": "r1",
+    "sha256": "4fff35dec43773bb37ff5ff407b26e0a93724cb98e16d9cc2c65043177dc7456",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-process19",
+    "revision": "r1",
+    "sha256": "8d2d64fed7ac654bf4bb32ef8c7d7de0a2fb30efb382096861571dd33a3cde28",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-process20",
+    "revision": "r1",
+    "sha256": "4d066a1526a40e2a50b4df5890c14dc05fe305bc0cfc8fb3866577111a8442ce",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-process21",
+    "revision": "r1",
+    "sha256": "ceee6e5e212c6c0aa4dcfa0c2f49979002e7ecbfd0ef3d5bba4ab1caf22151bb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-process22",
+    "revision": "r1",
+    "sha256": "2868667bf589d9569cee817fdf82e349294962ad4f9bc2e54c3aaf87cf54ff97",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-process23",
+    "revision": "r1",
+    "sha256": "0d187e3fd2880963d3601642b52c851d04d095d84188628dbe423e5b338d726d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-process24",
+    "revision": "r1",
+    "sha256": "66b513bb467c173f76534cc6f0eef1d9f7cf90f932a8c8740b6d8b22b9856195",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-process25",
+    "revision": "r1",
+    "sha256": "5ea4879568f068a188d35fdfc350fe35870c7e95b2be8b33e3c2017dd91394cc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-process26",
+    "revision": "r1",
+    "sha256": "e2821abf8ab8db1adc282cb59d99f6d990158e4b3a3327f57186dad079452d01",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-process27",
+    "revision": "r1",
+    "sha256": "05a2fc4db3c6551767c0d9c6197b4cc5e4efb5b3a5361ff7848ee8f2480eb2ec",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-process28",
+    "revision": "r1",
+    "sha256": "5a6b884dbe00de9e861f114e3c8c4b251d3646bd32dd45f60f3dd911eb9fb5d5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-process29",
+    "revision": "r1",
+    "sha256": "51046d41505012b1c4a827c33e29e80112b594ae2e3f45391cda5081defe6e3d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-process30",
+    "revision": "r1",
+    "sha256": "5a3fcb07dce3485123c9d40b8c64df45a353b10509c9d822053ff6c61a0553cb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-process31",
+    "revision": "r1",
+    "sha256": "c0a7c64adfca009294a9c8e2673f448198315709681272386a70601b02f81d77",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-process32",
+    "revision": "r1",
+    "sha256": "1817200dfd6d77896018af4f1c2b8b1f83d2ba064303a6fc090e9eff0f1e2b81",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-process33",
+    "revision": "r1",
+    "sha256": "44623bfc6b5a1b81a403452c4a4d5bb306860336ea8037163d8999e6b8c85dbb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-process34",
+    "revision": "r1",
+    "sha256": "31b67fd09ac367b16d631757c0b7826bcaba28a2419bdd476d7dc0ed73b44d86",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-process35",
+    "revision": "r1",
+    "sha256": "c8061ab6910010405432be49de95f51abc67c6f79fec4e57aa53537cc04c35eb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-process36",
+    "revision": "r1",
+    "sha256": "5f8e85b9d6cd50f853a22621e82dd3734c831864bb66368e0ff22673a8045347",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-process37",
+    "revision": "r1",
+    "sha256": "352d2da5146230c10102dafbeb981e35e272702efa5eec738b98030faa4ddba8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-process38",
+    "revision": "r1",
+    "sha256": "4b10ca063f2c115bb1dd534af43218e110ae12bc9b9461cdd13e4ecc0cba3728",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wd-process39",
+    "revision": "r1",
+    "sha256": "2e5c9e8ce5667b0a0b706dfbbde331395bec96e585505c152f6df9bc217d2716",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "wp3wd-mission41",
+    "revision": "r1",
+    "sha256": "2837f919b2af8bc5afdf50c887c0e364079841c31a47982b2b1a6f958587afb1"
+   },
+   {
+    "missionId": "wp3wd-mission42",
+    "revision": "r1",
+    "sha256": "8a0a44578b7425854828cd3f4d6eb892f021996a1dca651819903d7748d2c826"
+   },
+   {
+    "missionId": "wp3wd-mission43",
+    "revision": "r1",
+    "sha256": "9fb7a57b76f42d8185e7e74963514126c180dd5baeab905bca204500ad16aa0e"
+   },
+   {
+    "missionId": "wp3wd-mission44",
+    "revision": "r1",
+    "sha256": "e1a40cdc832abc5a98aa3bef9214aa308895e415639fe4acf1873c759adaab66"
+   },
+   {
+    "missionId": "wp3wd-mission45",
+    "revision": "r1",
+    "sha256": "84db00913e82b01c16a5a69b9ecb994be4d8aabb5e917549fa473d224d0f2ce8"
+   },
+   {
+    "missionId": "wp3wd-mission46",
+    "revision": "r1",
+    "sha256": "5125c93b01a87350f550fcaecbe8b1a32cd85470090baa3f31e06d3ca90fd208"
+   },
+   {
+    "missionId": "wp3wd-mission47",
+    "revision": "r1",
+    "sha256": "710e849f554fd8a50642f0ece1a2202d117ba5b4c4b13263e774c800398f50be"
+   },
+   {
+    "missionId": "wp3wd-mission48",
+    "revision": "r1",
+    "sha256": "f0067389088bec54ae530fd1b187da3cc0f75baa0a9751d928d16f6f0ddc6413"
+   },
+   {
+    "missionId": "wp3wd-mission49",
+    "revision": "r1",
+    "sha256": "ee5a32667cefb38b09296afdc8add346bcee08f9eca140eb80ef206c370e235c"
+   },
+   {
+    "missionId": "wp3wd-mission50",
+    "revision": "r1",
+    "sha256": "f84d8480bb116cba79ebbc55e6e192517b462aa7972d88935f92d19900a200d8"
+   },
+   {
+    "missionId": "wp3wd-mission51",
+    "revision": "r1",
+    "sha256": "0368fae4e455dc51cf729457e57692105be83c729dbda28b733f7032778c75f3"
+   },
+   {
+    "missionId": "wp3wd-mission52",
+    "revision": "r1",
+    "sha256": "37e5cfe0afb46dd35f099cf6d5f260558ce1a8960ac7bc5549a1437b2e95902a"
+   },
+   {
+    "missionId": "wp3wd-mission53",
+    "revision": "r1",
+    "sha256": "6a447c92d737d10fb5c042abce6a307f1d64eca762e493e65cb5240cd8841a09"
+   },
+   {
+    "missionId": "wp3wd-mission54",
+    "revision": "r1",
+    "sha256": "2223df4c299c529e605d780f94bacbd1ea32a3346829b62528905376117ee779"
+   },
+   {
+    "missionId": "wp3wd-mission55",
+    "revision": "r1",
+    "sha256": "47d8225104a648754597b6fd1ab27a499c24c72dd9626423a900a4d632b8554f"
+   },
+   {
+    "missionId": "wp3wd-mission56",
+    "revision": "r1",
+    "sha256": "735017cce9a44f6f88a7fc482b591bba730a70ad95db29a1ee83073fbd21b8ee"
+   },
+   {
+    "missionId": "wp3wd-mission57",
+    "revision": "r1",
+    "sha256": "02605b6988ab1b8aec7306dcedebf38c7b19eabfe4373b8dde22f92a62045991"
+   },
+   {
+    "missionId": "wp3wd-mission58",
+    "revision": "r1",
+    "sha256": "f183efc3850b4e0df1f10ff408d1e56e800f928dab0b6158296f68d86abc99f1"
+   },
+   {
+    "missionId": "wp3wd-mission59",
+    "revision": "r1",
+    "sha256": "e8a1cec3f3b875916665fedd84581c5113522aa4005a82e3fe736c742cc78213"
+   },
+   {
+    "missionId": "wp3wd-mission60",
+    "revision": "r1",
+    "sha256": "505802057dfd71c0c3936c2fb2b079b4fd22e1a5eba6f4aee245fb8a85205bc3"
+   }
+  ]
+ }
+}

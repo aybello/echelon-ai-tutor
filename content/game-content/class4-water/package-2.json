@@ -1,0 +1,4723 @@
+{
+ "courseKey": "class4-water",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "c4w-ladder80",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A chemical program review for an Ontario Class 4 plant shows ferric chloride use of 225 kg/day over 340 days of operation. Find the total chemical quantity used in the period. Enter the exact unrounded number.",
+   "topicId": "chemical-program-quantities",
+   "level": "class1",
+   "assumptions": "Fictional chemical program case in Ontario: daily use = 225 kg/day, operating days = 340. Total quantity equals daily use times days.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Total quantity = Daily use * Operating days"
+      },
+      {
+       "id": "opt-b",
+       "label": "Total quantity = Daily use / Operating days"
+      },
+      {
+       "id": "opt-c",
+       "label": "Total quantity = Operating days / Daily use"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Accumulating a daily rate over the operating days gives the period total."
+    },
+    {
+     "id": "units",
+     "prompt": "Which statement about the quantity unit is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "kg/day multiplied by days gives kg"
+      },
+      {
+       "id": "opt-b",
+       "label": "kg/day divided by days gives kg"
+      },
+      {
+       "id": "opt-c",
+       "label": "days divided by kg/day gives kg"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The day terms cancel, leaving kilograms."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for total quantity.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Total = 225 kg/day * 340 days"
+      },
+      {
+       "id": "opt-b",
+       "label": "Total = 225 kg/day / 340 days"
+      },
+      {
+       "id": "opt-c",
+       "label": "Total = 340 days / 225 kg/day"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Substitute daily use times operating days."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact total chemical quantity in kg.",
+    "unitOptions": [
+     {
+      "id": "kg",
+      "label": "kg"
+     },
+     {
+      "id": "t",
+      "label": "t",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "g",
+      "label": "g"
+     },
+     {
+      "id": "L",
+      "label": "L"
+     }
+    ],
+    "expected": "76500",
+    "expectedUnitId": "kg",
+    "absoluteTolerance": "0",
+    "explanation": "Total = 225 * 340 = 76500 kg."
+   }
+  },
+  {
+   "id": "c4w-ladder81",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "For storage planning, an Ontario system must store 2 days of demand at an average demand of 4500 m3/day. Find the required treated water storage volume. Enter the exact unrounded number.",
+   "topicId": "storage-capacity-planning",
+   "level": "class1",
+   "assumptions": "Fictional storage planning case in Ontario: demand = 4500 m3/day, storage period = 2 days. Required volume equals demand times storage period.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Required volume = Daily demand * Storage days"
+      },
+      {
+       "id": "opt-b",
+       "label": "Required volume = Daily demand / Storage days"
+      },
+      {
+       "id": "opt-c",
+       "label": "Required volume = Storage days / Daily demand"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Storage must hold the daily demand for each day of the storage period."
+    },
+    {
+     "id": "units",
+     "prompt": "Which statement about the storage unit is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "m3/day multiplied by days gives m3"
+      },
+      {
+       "id": "opt-b",
+       "label": "m3/day divided by days gives m3"
+      },
+      {
+       "id": "opt-c",
+       "label": "days divided by m3/day gives m3"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The day terms cancel, leaving cubic metres."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for required volume.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Volume = 4500 m3/day * 2 days"
+      },
+      {
+       "id": "opt-b",
+       "label": "Volume = 4500 m3/day / 2 days"
+      },
+      {
+       "id": "opt-c",
+       "label": "Volume = 2 days / 4500 m3/day"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Substitute daily demand times storage days."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact required storage volume in m3.",
+    "unitOptions": [
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "ML",
+      "label": "ML",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "m2",
+      "label": "m2"
+     },
+     {
+      "id": "ML-day",
+      "label": "ML/day"
+     }
+    ],
+    "expected": "9000",
+    "expectedUnitId": "m3",
+    "absoluteTolerance": "0",
+    "explanation": "Volume = 4500 * 2 = 9000 m3."
+   }
+  },
+  {
+   "id": "c4w-ladder82",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "For storage planning, an Ontario system must store 1.5 days of demand at an average demand of 6000 m3/day. Find the required treated water storage volume. Enter the exact unrounded number.",
+   "topicId": "storage-capacity-planning",
+   "level": "class1",
+   "assumptions": "Fictional storage planning case in Ontario: demand = 6000 m3/day, storage period = 1.5 days. Required volume equals demand times storage period.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Required volume = Daily demand * Storage days"
+      },
+      {
+       "id": "opt-b",
+       "label": "Required volume = Daily demand / Storage days"
+      },
+      {
+       "id": "opt-c",
+       "label": "Required volume = Storage days / Daily demand"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Storage must hold the daily demand for each day of the storage period."
+    },
+    {
+     "id": "units",
+     "prompt": "Which statement about the storage unit is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "m3/day multiplied by days gives m3"
+      },
+      {
+       "id": "opt-b",
+       "label": "m3/day divided by days gives m3"
+      },
+      {
+       "id": "opt-c",
+       "label": "days divided by m3/day gives m3"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The day terms cancel, leaving cubic metres."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for required volume.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Volume = 6000 m3/day * 1.5 days"
+      },
+      {
+       "id": "opt-b",
+       "label": "Volume = 6000 m3/day / 1.5 days"
+      },
+      {
+       "id": "opt-c",
+       "label": "Volume = 1.5 days / 6000 m3/day"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Substitute daily demand times storage days."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact required storage volume in m3.",
+    "unitOptions": [
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "ML",
+      "label": "ML",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "m2",
+      "label": "m2"
+     },
+     {
+      "id": "ML-day",
+      "label": "ML/day"
+     }
+    ],
+    "expected": "9000",
+    "expectedUnitId": "m3",
+    "absoluteTolerance": "0",
+    "explanation": "Volume = 6000 * 1.5 = 9000 m3."
+   }
+  },
+  {
+   "id": "c4w-ladder83",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "For storage planning, an Ontario system must store 2.5 days of demand at an average demand of 5200 m3/day. Find the required treated water storage volume. Enter the exact unrounded number.",
+   "topicId": "storage-capacity-planning",
+   "level": "class1",
+   "assumptions": "Fictional storage planning case in Ontario: demand = 5200 m3/day, storage period = 2.5 days. Required volume equals demand times storage period.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Required volume = Daily demand * Storage days"
+      },
+      {
+       "id": "opt-b",
+       "label": "Required volume = Daily demand / Storage days"
+      },
+      {
+       "id": "opt-c",
+       "label": "Required volume = Storage days / Daily demand"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Storage must hold the daily demand for each day of the storage period."
+    },
+    {
+     "id": "units",
+     "prompt": "Which statement about the storage unit is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "m3/day multiplied by days gives m3"
+      },
+      {
+       "id": "opt-b",
+       "label": "m3/day divided by days gives m3"
+      },
+      {
+       "id": "opt-c",
+       "label": "days divided by m3/day gives m3"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The day terms cancel, leaving cubic metres."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for required volume.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Volume = 5200 m3/day * 2.5 days"
+      },
+      {
+       "id": "opt-b",
+       "label": "Volume = 5200 m3/day / 2.5 days"
+      },
+      {
+       "id": "opt-c",
+       "label": "Volume = 2.5 days / 5200 m3/day"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Substitute daily demand times storage days."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact required storage volume in m3.",
+    "unitOptions": [
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "ML",
+      "label": "ML",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "m2",
+      "label": "m2"
+     },
+     {
+      "id": "ML-day",
+      "label": "ML/day"
+     }
+    ],
+    "expected": "13000",
+    "expectedUnitId": "m3",
+    "absoluteTolerance": "0",
+    "explanation": "Volume = 5200 * 2.5 = 13000 m3."
+   }
+  },
+  {
+   "id": "c4w-ladder84",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "For storage planning, an Ontario system must store 3 days of demand at an average demand of 3800 m3/day. Find the required treated water storage volume. Enter the exact unrounded number.",
+   "topicId": "storage-capacity-planning",
+   "level": "class1",
+   "assumptions": "Fictional storage planning case in Ontario: demand = 3800 m3/day, storage period = 3 days. Required volume equals demand times storage period.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Required volume = Daily demand * Storage days"
+      },
+      {
+       "id": "opt-b",
+       "label": "Required volume = Daily demand / Storage days"
+      },
+      {
+       "id": "opt-c",
+       "label": "Required volume = Storage days / Daily demand"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Storage must hold the daily demand for each day of the storage period."
+    },
+    {
+     "id": "units",
+     "prompt": "Which statement about the storage unit is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "m3/day multiplied by days gives m3"
+      },
+      {
+       "id": "opt-b",
+       "label": "m3/day divided by days gives m3"
+      },
+      {
+       "id": "opt-c",
+       "label": "days divided by m3/day gives m3"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The day terms cancel, leaving cubic metres."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for required volume.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Volume = 3800 m3/day * 3 days"
+      },
+      {
+       "id": "opt-b",
+       "label": "Volume = 3800 m3/day / 3 days"
+      },
+      {
+       "id": "opt-c",
+       "label": "Volume = 3 days / 3800 m3/day"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Substitute daily demand times storage days."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact required storage volume in m3.",
+    "unitOptions": [
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "ML",
+      "label": "ML",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "m2",
+      "label": "m2"
+     },
+     {
+      "id": "ML-day",
+      "label": "ML/day"
+     }
+    ],
+    "expected": "11400",
+    "expectedUnitId": "m3",
+    "absoluteTolerance": "0",
+    "explanation": "Volume = 3800 * 3 = 11400 m3."
+   }
+  },
+  {
+   "id": "c4w-ladder85",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "For storage planning, an Ontario system must store 1.5 days of demand at an average demand of 7200 m3/day. Find the required treated water storage volume. Enter the exact unrounded number.",
+   "topicId": "storage-capacity-planning",
+   "level": "class1",
+   "assumptions": "Fictional storage planning case in Ontario: demand = 7200 m3/day, storage period = 1.5 days. Required volume equals demand times storage period.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Required volume = Daily demand * Storage days"
+      },
+      {
+       "id": "opt-b",
+       "label": "Required volume = Daily demand / Storage days"
+      },
+      {
+       "id": "opt-c",
+       "label": "Required volume = Storage days / Daily demand"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Storage must hold the daily demand for each day of the storage period."
+    },
+    {
+     "id": "units",
+     "prompt": "Which statement about the storage unit is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "m3/day multiplied by days gives m3"
+      },
+      {
+       "id": "opt-b",
+       "label": "m3/day divided by days gives m3"
+      },
+      {
+       "id": "opt-c",
+       "label": "days divided by m3/day gives m3"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The day terms cancel, leaving cubic metres."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for required volume.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Volume = 7200 m3/day * 1.5 days"
+      },
+      {
+       "id": "opt-b",
+       "label": "Volume = 7200 m3/day / 1.5 days"
+      },
+      {
+       "id": "opt-c",
+       "label": "Volume = 1.5 days / 7200 m3/day"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Substitute daily demand times storage days."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact required storage volume in m3.",
+    "unitOptions": [
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "ML",
+      "label": "ML",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "m2",
+      "label": "m2"
+     },
+     {
+      "id": "ML-day",
+      "label": "ML/day"
+     }
+    ],
+    "expected": "10800",
+    "expectedUnitId": "m3",
+    "absoluteTolerance": "0",
+    "explanation": "Volume = 7200 * 1.5 = 10800 m3."
+   }
+  },
+  {
+   "id": "c4w-ladder86",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "For storage planning, an Ontario system must store 2 days of demand at an average demand of 4800 m3/day. Find the required treated water storage volume. Enter the exact unrounded number.",
+   "topicId": "storage-capacity-planning",
+   "level": "class1",
+   "assumptions": "Fictional storage planning case in Ontario: demand = 4800 m3/day, storage period = 2 days. Required volume equals demand times storage period.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Required volume = Daily demand * Storage days"
+      },
+      {
+       "id": "opt-b",
+       "label": "Required volume = Daily demand / Storage days"
+      },
+      {
+       "id": "opt-c",
+       "label": "Required volume = Storage days / Daily demand"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Storage must hold the daily demand for each day of the storage period."
+    },
+    {
+     "id": "units",
+     "prompt": "Which statement about the storage unit is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "m3/day multiplied by days gives m3"
+      },
+      {
+       "id": "opt-b",
+       "label": "m3/day divided by days gives m3"
+      },
+      {
+       "id": "opt-c",
+       "label": "days divided by m3/day gives m3"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The day terms cancel, leaving cubic metres."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for required volume.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Volume = 4800 m3/day * 2 days"
+      },
+      {
+       "id": "opt-b",
+       "label": "Volume = 4800 m3/day / 2 days"
+      },
+      {
+       "id": "opt-c",
+       "label": "Volume = 2 days / 4800 m3/day"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Substitute daily demand times storage days."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact required storage volume in m3.",
+    "unitOptions": [
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "ML",
+      "label": "ML",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "m2",
+      "label": "m2"
+     },
+     {
+      "id": "ML-day",
+      "label": "ML/day"
+     }
+    ],
+    "expected": "9600",
+    "expectedUnitId": "m3",
+    "absoluteTolerance": "0",
+    "explanation": "Volume = 4800 * 2 = 9600 m3."
+   }
+  },
+  {
+   "id": "c4w-ladder87",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "For storage planning, an Ontario system must store 2.4 days of demand at an average demand of 5500 m3/day. Find the required treated water storage volume. Enter the exact unrounded number.",
+   "topicId": "storage-capacity-planning",
+   "level": "class1",
+   "assumptions": "Fictional storage planning case in Ontario: demand = 5500 m3/day, storage period = 2.4 days. Required volume equals demand times storage period.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Required volume = Daily demand * Storage days"
+      },
+      {
+       "id": "opt-b",
+       "label": "Required volume = Daily demand / Storage days"
+      },
+      {
+       "id": "opt-c",
+       "label": "Required volume = Storage days / Daily demand"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Storage must hold the daily demand for each day of the storage period."
+    },
+    {
+     "id": "units",
+     "prompt": "Which statement about the storage unit is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "m3/day multiplied by days gives m3"
+      },
+      {
+       "id": "opt-b",
+       "label": "m3/day divided by days gives m3"
+      },
+      {
+       "id": "opt-c",
+       "label": "days divided by m3/day gives m3"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The day terms cancel, leaving cubic metres."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for required volume.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Volume = 5500 m3/day * 2.4 days"
+      },
+      {
+       "id": "opt-b",
+       "label": "Volume = 5500 m3/day / 2.4 days"
+      },
+      {
+       "id": "opt-c",
+       "label": "Volume = 2.4 days / 5500 m3/day"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Substitute daily demand times storage days."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact required storage volume in m3.",
+    "unitOptions": [
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "ML",
+      "label": "ML",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "m2",
+      "label": "m2"
+     },
+     {
+      "id": "ML-day",
+      "label": "ML/day"
+     }
+    ],
+    "expected": "13200",
+    "expectedUnitId": "m3",
+    "absoluteTolerance": "0",
+    "explanation": "Volume = 5500 * 2.4 = 13200 m3."
+   }
+  },
+  {
+   "id": "c4w-ladder88",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "For storage planning, an Ontario system must store 2 days of demand at an average demand of 6600 m3/day. Find the required treated water storage volume. Enter the exact unrounded number.",
+   "topicId": "storage-capacity-planning",
+   "level": "class1",
+   "assumptions": "Fictional storage planning case in Ontario: demand = 6600 m3/day, storage period = 2 days. Required volume equals demand times storage period.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Required volume = Daily demand * Storage days"
+      },
+      {
+       "id": "opt-b",
+       "label": "Required volume = Daily demand / Storage days"
+      },
+      {
+       "id": "opt-c",
+       "label": "Required volume = Storage days / Daily demand"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Storage must hold the daily demand for each day of the storage period."
+    },
+    {
+     "id": "units",
+     "prompt": "Which statement about the storage unit is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "m3/day multiplied by days gives m3"
+      },
+      {
+       "id": "opt-b",
+       "label": "m3/day divided by days gives m3"
+      },
+      {
+       "id": "opt-c",
+       "label": "days divided by m3/day gives m3"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The day terms cancel, leaving cubic metres."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for required volume.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Volume = 6600 m3/day * 2 days"
+      },
+      {
+       "id": "opt-b",
+       "label": "Volume = 6600 m3/day / 2 days"
+      },
+      {
+       "id": "opt-c",
+       "label": "Volume = 2 days / 6600 m3/day"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Substitute daily demand times storage days."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact required storage volume in m3.",
+    "unitOptions": [
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "ML",
+      "label": "ML",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "m2",
+      "label": "m2"
+     },
+     {
+      "id": "ML-day",
+      "label": "ML/day"
+     }
+    ],
+    "expected": "13200",
+    "expectedUnitId": "m3",
+    "absoluteTolerance": "0",
+    "explanation": "Volume = 6600 * 2 = 13200 m3."
+   }
+  },
+  {
+   "id": "c4w-ladder89",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "For storage planning, an Ontario system must store 3 days of demand at an average demand of 4100 m3/day. Find the required treated water storage volume. Enter the exact unrounded number.",
+   "topicId": "storage-capacity-planning",
+   "level": "class1",
+   "assumptions": "Fictional storage planning case in Ontario: demand = 4100 m3/day, storage period = 3 days. Required volume equals demand times storage period.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Required volume = Daily demand * Storage days"
+      },
+      {
+       "id": "opt-b",
+       "label": "Required volume = Daily demand / Storage days"
+      },
+      {
+       "id": "opt-c",
+       "label": "Required volume = Storage days / Daily demand"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Storage must hold the daily demand for each day of the storage period."
+    },
+    {
+     "id": "units",
+     "prompt": "Which statement about the storage unit is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "m3/day multiplied by days gives m3"
+      },
+      {
+       "id": "opt-b",
+       "label": "m3/day divided by days gives m3"
+      },
+      {
+       "id": "opt-c",
+       "label": "days divided by m3/day gives m3"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The day terms cancel, leaving cubic metres."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for required volume.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Volume = 4100 m3/day * 3 days"
+      },
+      {
+       "id": "opt-b",
+       "label": "Volume = 4100 m3/day / 3 days"
+      },
+      {
+       "id": "opt-c",
+       "label": "Volume = 3 days / 4100 m3/day"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Substitute daily demand times storage days."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact required storage volume in m3.",
+    "unitOptions": [
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "ML",
+      "label": "ML",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "m2",
+      "label": "m2"
+     },
+     {
+      "id": "ML-day",
+      "label": "ML/day"
+     }
+    ],
+    "expected": "12300",
+    "expectedUnitId": "m3",
+    "absoluteTolerance": "0",
+    "explanation": "Volume = 4100 * 3 = 12300 m3."
+   }
+  },
+  {
+   "id": "c4w-ladder90",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "For storage planning, an Ontario system must store 2 days of demand at an average demand of 5900 m3/day. Find the required treated water storage volume. Enter the exact unrounded number.",
+   "topicId": "storage-capacity-planning",
+   "level": "class1",
+   "assumptions": "Fictional storage planning case in Ontario: demand = 5900 m3/day, storage period = 2 days. Required volume equals demand times storage period.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Required volume = Daily demand * Storage days"
+      },
+      {
+       "id": "opt-b",
+       "label": "Required volume = Daily demand / Storage days"
+      },
+      {
+       "id": "opt-c",
+       "label": "Required volume = Storage days / Daily demand"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Storage must hold the daily demand for each day of the storage period."
+    },
+    {
+     "id": "units",
+     "prompt": "Which statement about the storage unit is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "m3/day multiplied by days gives m3"
+      },
+      {
+       "id": "opt-b",
+       "label": "m3/day divided by days gives m3"
+      },
+      {
+       "id": "opt-c",
+       "label": "days divided by m3/day gives m3"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The day terms cancel, leaving cubic metres."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for required volume.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Volume = 5900 m3/day * 2 days"
+      },
+      {
+       "id": "opt-b",
+       "label": "Volume = 5900 m3/day / 2 days"
+      },
+      {
+       "id": "opt-c",
+       "label": "Volume = 2 days / 5900 m3/day"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Substitute daily demand times storage days."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact required storage volume in m3.",
+    "unitOptions": [
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "ML",
+      "label": "ML",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "m2",
+      "label": "m2"
+     },
+     {
+      "id": "ML-day",
+      "label": "ML/day"
+     }
+    ],
+    "expected": "11800",
+    "expectedUnitId": "m3",
+    "absoluteTolerance": "0",
+    "explanation": "Volume = 5900 * 2 = 11800 m3."
+   }
+  },
+  {
+   "id": "c4w-ladder91",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "For disinfection strategy review at an Ontario Class 4 plant, the free chlorine residual is 1.2 mg/L, the contact time is 30 min, and the given baffling factor is 0.8. Find the CT value. Enter the exact unrounded number.",
+   "topicId": "disinfection-ct-management",
+   "level": "class1",
+   "assumptions": "Fictional CT case in Ontario: residual = 1.2 mg/L, contact time = 30 min, baffling factor = 0.8. CT equals residual times contact time times baffling factor.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "CT = Residual * Contact time * Baffling factor"
+      },
+      {
+       "id": "opt-b",
+       "label": "CT = Residual * Contact time / Baffling factor"
+      },
+      {
+       "id": "opt-c",
+       "label": "CT = Residual / Contact time * Baffling factor"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "CT multiplies residual, contact time, and the baffling factor that derates ideal contact time."
+    },
+    {
+     "id": "units",
+     "prompt": "Which statement about the CT unit is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "mg/L multiplied by min and a unitless factor gives mg*min/L"
+      },
+      {
+       "id": "opt-b",
+       "label": "mg/L divided by min gives mg*min/L"
+      },
+      {
+       "id": "opt-c",
+       "label": "min divided by mg/L gives mg*min/L"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The baffling factor is unitless, so the product keeps mg/L times minutes."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for CT.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "CT = 1.2 mg/L * 30 min * 0.8"
+      },
+      {
+       "id": "opt-b",
+       "label": "CT = 1.2 mg/L * 30 min / 0.8"
+      },
+      {
+       "id": "opt-c",
+       "label": "CT = 1.2 mg/L / 30 min * 0.8"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Substitute residual times contact time times baffling factor."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact CT value in mg*min/L.",
+    "unitOptions": [
+     {
+      "id": "mg-min-L",
+      "label": "mg*min/L"
+     },
+     {
+      "id": "mg-s-L",
+      "label": "mg*s/L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "60"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "min",
+      "label": "min"
+     }
+    ],
+    "expected": "28.8",
+    "expectedUnitId": "mg-min-L",
+    "absoluteTolerance": "0",
+    "explanation": "CT = 1.2 * 30 * 0.8 = 28.8 mg*min/L."
+   }
+  },
+  {
+   "id": "c4w-ladder92",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "For disinfection strategy review at an Ontario Class 4 plant, the free chlorine residual is 1.5 mg/L, the contact time is 20 min, and the given baffling factor is 0.7. Find the CT value. Enter the exact unrounded number.",
+   "topicId": "disinfection-ct-management",
+   "level": "class1",
+   "assumptions": "Fictional CT case in Ontario: residual = 1.5 mg/L, contact time = 20 min, baffling factor = 0.7. CT equals residual times contact time times baffling factor.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "CT = Residual * Contact time * Baffling factor"
+      },
+      {
+       "id": "opt-b",
+       "label": "CT = Residual * Contact time / Baffling factor"
+      },
+      {
+       "id": "opt-c",
+       "label": "CT = Residual / Contact time * Baffling factor"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "CT multiplies residual, contact time, and the baffling factor that derates ideal contact time."
+    },
+    {
+     "id": "units",
+     "prompt": "Which statement about the CT unit is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "mg/L multiplied by min and a unitless factor gives mg*min/L"
+      },
+      {
+       "id": "opt-b",
+       "label": "mg/L divided by min gives mg*min/L"
+      },
+      {
+       "id": "opt-c",
+       "label": "min divided by mg/L gives mg*min/L"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The baffling factor is unitless, so the product keeps mg/L times minutes."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for CT.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "CT = 1.5 mg/L * 20 min * 0.7"
+      },
+      {
+       "id": "opt-b",
+       "label": "CT = 1.5 mg/L * 20 min / 0.7"
+      },
+      {
+       "id": "opt-c",
+       "label": "CT = 1.5 mg/L / 20 min * 0.7"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Substitute residual times contact time times baffling factor."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact CT value in mg*min/L.",
+    "unitOptions": [
+     {
+      "id": "mg-min-L",
+      "label": "mg*min/L"
+     },
+     {
+      "id": "mg-s-L",
+      "label": "mg*s/L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "60"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "min",
+      "label": "min"
+     }
+    ],
+    "expected": "21",
+    "expectedUnitId": "mg-min-L",
+    "absoluteTolerance": "0",
+    "explanation": "CT = 1.5 * 20 * 0.7 = 21 mg*min/L."
+   }
+  },
+  {
+   "id": "c4w-ladder93",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "For disinfection strategy review at an Ontario Class 4 plant, the free chlorine residual is 0.8 mg/L, the contact time is 45 min, and the given baffling factor is 0.9. Find the CT value. Enter the exact unrounded number.",
+   "topicId": "disinfection-ct-management",
+   "level": "class1",
+   "assumptions": "Fictional CT case in Ontario: residual = 0.8 mg/L, contact time = 45 min, baffling factor = 0.9. CT equals residual times contact time times baffling factor.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "CT = Residual * Contact time * Baffling factor"
+      },
+      {
+       "id": "opt-b",
+       "label": "CT = Residual * Contact time / Baffling factor"
+      },
+      {
+       "id": "opt-c",
+       "label": "CT = Residual / Contact time * Baffling factor"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "CT multiplies residual, contact time, and the baffling factor that derates ideal contact time."
+    },
+    {
+     "id": "units",
+     "prompt": "Which statement about the CT unit is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "mg/L multiplied by min and a unitless factor gives mg*min/L"
+      },
+      {
+       "id": "opt-b",
+       "label": "mg/L divided by min gives mg*min/L"
+      },
+      {
+       "id": "opt-c",
+       "label": "min divided by mg/L gives mg*min/L"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The baffling factor is unitless, so the product keeps mg/L times minutes."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for CT.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "CT = 0.8 mg/L * 45 min * 0.9"
+      },
+      {
+       "id": "opt-b",
+       "label": "CT = 0.8 mg/L * 45 min / 0.9"
+      },
+      {
+       "id": "opt-c",
+       "label": "CT = 0.8 mg/L / 45 min * 0.9"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Substitute residual times contact time times baffling factor."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact CT value in mg*min/L.",
+    "unitOptions": [
+     {
+      "id": "mg-min-L",
+      "label": "mg*min/L"
+     },
+     {
+      "id": "mg-s-L",
+      "label": "mg*s/L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "60"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "min",
+      "label": "min"
+     }
+    ],
+    "expected": "32.4",
+    "expectedUnitId": "mg-min-L",
+    "absoluteTolerance": "0",
+    "explanation": "CT = 0.8 * 45 * 0.9 = 32.4 mg*min/L."
+   }
+  },
+  {
+   "id": "c4w-ladder94",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "For disinfection strategy review at an Ontario Class 4 plant, the free chlorine residual is 2.0 mg/L, the contact time is 15 min, and the given baffling factor is 0.6. Find the CT value. Enter the exact unrounded number.",
+   "topicId": "disinfection-ct-management",
+   "level": "class1",
+   "assumptions": "Fictional CT case in Ontario: residual = 2.0 mg/L, contact time = 15 min, baffling factor = 0.6. CT equals residual times contact time times baffling factor.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "CT = Residual * Contact time * Baffling factor"
+      },
+      {
+       "id": "opt-b",
+       "label": "CT = Residual * Contact time / Baffling factor"
+      },
+      {
+       "id": "opt-c",
+       "label": "CT = Residual / Contact time * Baffling factor"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "CT multiplies residual, contact time, and the baffling factor that derates ideal contact time."
+    },
+    {
+     "id": "units",
+     "prompt": "Which statement about the CT unit is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "mg/L multiplied by min and a unitless factor gives mg*min/L"
+      },
+      {
+       "id": "opt-b",
+       "label": "mg/L divided by min gives mg*min/L"
+      },
+      {
+       "id": "opt-c",
+       "label": "min divided by mg/L gives mg*min/L"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The baffling factor is unitless, so the product keeps mg/L times minutes."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for CT.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "CT = 2.0 mg/L * 15 min * 0.6"
+      },
+      {
+       "id": "opt-b",
+       "label": "CT = 2.0 mg/L * 15 min / 0.6"
+      },
+      {
+       "id": "opt-c",
+       "label": "CT = 2.0 mg/L / 15 min * 0.6"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Substitute residual times contact time times baffling factor."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact CT value in mg*min/L.",
+    "unitOptions": [
+     {
+      "id": "mg-min-L",
+      "label": "mg*min/L"
+     },
+     {
+      "id": "mg-s-L",
+      "label": "mg*s/L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "60"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "min",
+      "label": "min"
+     }
+    ],
+    "expected": "18",
+    "expectedUnitId": "mg-min-L",
+    "absoluteTolerance": "0",
+    "explanation": "CT = 2.0 * 15 * 0.6 = 18 mg*min/L."
+   }
+  },
+  {
+   "id": "c4w-ladder95",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "For disinfection strategy review at an Ontario Class 4 plant, the free chlorine residual is 1.0 mg/L, the contact time is 40 min, and the given baffling factor is 0.75. Find the CT value. Enter the exact unrounded number.",
+   "topicId": "disinfection-ct-management",
+   "level": "class1",
+   "assumptions": "Fictional CT case in Ontario: residual = 1.0 mg/L, contact time = 40 min, baffling factor = 0.75. CT equals residual times contact time times baffling factor.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "CT = Residual * Contact time * Baffling factor"
+      },
+      {
+       "id": "opt-b",
+       "label": "CT = Residual * Contact time / Baffling factor"
+      },
+      {
+       "id": "opt-c",
+       "label": "CT = Residual / Contact time * Baffling factor"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "CT multiplies residual, contact time, and the baffling factor that derates ideal contact time."
+    },
+    {
+     "id": "units",
+     "prompt": "Which statement about the CT unit is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "mg/L multiplied by min and a unitless factor gives mg*min/L"
+      },
+      {
+       "id": "opt-b",
+       "label": "mg/L divided by min gives mg*min/L"
+      },
+      {
+       "id": "opt-c",
+       "label": "min divided by mg/L gives mg*min/L"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The baffling factor is unitless, so the product keeps mg/L times minutes."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for CT.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "CT = 1.0 mg/L * 40 min * 0.75"
+      },
+      {
+       "id": "opt-b",
+       "label": "CT = 1.0 mg/L * 40 min / 0.75"
+      },
+      {
+       "id": "opt-c",
+       "label": "CT = 1.0 mg/L / 40 min * 0.75"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Substitute residual times contact time times baffling factor."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact CT value in mg*min/L.",
+    "unitOptions": [
+     {
+      "id": "mg-min-L",
+      "label": "mg*min/L"
+     },
+     {
+      "id": "mg-s-L",
+      "label": "mg*s/L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "60"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "min",
+      "label": "min"
+     }
+    ],
+    "expected": "30",
+    "expectedUnitId": "mg-min-L",
+    "absoluteTolerance": "0",
+    "explanation": "CT = 1.0 * 40 * 0.75 = 30 mg*min/L."
+   }
+  },
+  {
+   "id": "c4w-ladder96",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "For disinfection strategy review at an Ontario Class 4 plant, the free chlorine residual is 1.4 mg/L, the contact time is 25 min, and the given baffling factor is 0.8. Find the CT value. Enter the exact unrounded number.",
+   "topicId": "disinfection-ct-management",
+   "level": "class1",
+   "assumptions": "Fictional CT case in Ontario: residual = 1.4 mg/L, contact time = 25 min, baffling factor = 0.8. CT equals residual times contact time times baffling factor.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "CT = Residual * Contact time * Baffling factor"
+      },
+      {
+       "id": "opt-b",
+       "label": "CT = Residual * Contact time / Baffling factor"
+      },
+      {
+       "id": "opt-c",
+       "label": "CT = Residual / Contact time * Baffling factor"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "CT multiplies residual, contact time, and the baffling factor that derates ideal contact time."
+    },
+    {
+     "id": "units",
+     "prompt": "Which statement about the CT unit is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "mg/L multiplied by min and a unitless factor gives mg*min/L"
+      },
+      {
+       "id": "opt-b",
+       "label": "mg/L divided by min gives mg*min/L"
+      },
+      {
+       "id": "opt-c",
+       "label": "min divided by mg/L gives mg*min/L"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The baffling factor is unitless, so the product keeps mg/L times minutes."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for CT.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "CT = 1.4 mg/L * 25 min * 0.8"
+      },
+      {
+       "id": "opt-b",
+       "label": "CT = 1.4 mg/L * 25 min / 0.8"
+      },
+      {
+       "id": "opt-c",
+       "label": "CT = 1.4 mg/L / 25 min * 0.8"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Substitute residual times contact time times baffling factor."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact CT value in mg*min/L.",
+    "unitOptions": [
+     {
+      "id": "mg-min-L",
+      "label": "mg*min/L"
+     },
+     {
+      "id": "mg-s-L",
+      "label": "mg*s/L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "60"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "min",
+      "label": "min"
+     }
+    ],
+    "expected": "28",
+    "expectedUnitId": "mg-min-L",
+    "absoluteTolerance": "0",
+    "explanation": "CT = 1.4 * 25 * 0.8 = 28 mg*min/L."
+   }
+  },
+  {
+   "id": "c4w-ladder97",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "For disinfection strategy review at an Ontario Class 4 plant, the free chlorine residual is 0.9 mg/L, the contact time is 50 min, and the given baffling factor is 0.7. Find the CT value. Enter the exact unrounded number.",
+   "topicId": "disinfection-ct-management",
+   "level": "class1",
+   "assumptions": "Fictional CT case in Ontario: residual = 0.9 mg/L, contact time = 50 min, baffling factor = 0.7. CT equals residual times contact time times baffling factor.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "CT = Residual * Contact time * Baffling factor"
+      },
+      {
+       "id": "opt-b",
+       "label": "CT = Residual * Contact time / Baffling factor"
+      },
+      {
+       "id": "opt-c",
+       "label": "CT = Residual / Contact time * Baffling factor"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "CT multiplies residual, contact time, and the baffling factor that derates ideal contact time."
+    },
+    {
+     "id": "units",
+     "prompt": "Which statement about the CT unit is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "mg/L multiplied by min and a unitless factor gives mg*min/L"
+      },
+      {
+       "id": "opt-b",
+       "label": "mg/L divided by min gives mg*min/L"
+      },
+      {
+       "id": "opt-c",
+       "label": "min divided by mg/L gives mg*min/L"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The baffling factor is unitless, so the product keeps mg/L times minutes."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for CT.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "CT = 0.9 mg/L * 50 min * 0.7"
+      },
+      {
+       "id": "opt-b",
+       "label": "CT = 0.9 mg/L * 50 min / 0.7"
+      },
+      {
+       "id": "opt-c",
+       "label": "CT = 0.9 mg/L / 50 min * 0.7"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Substitute residual times contact time times baffling factor."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact CT value in mg*min/L.",
+    "unitOptions": [
+     {
+      "id": "mg-min-L",
+      "label": "mg*min/L"
+     },
+     {
+      "id": "mg-s-L",
+      "label": "mg*s/L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "60"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "min",
+      "label": "min"
+     }
+    ],
+    "expected": "31.5",
+    "expectedUnitId": "mg-min-L",
+    "absoluteTolerance": "0",
+    "explanation": "CT = 0.9 * 50 * 0.7 = 31.5 mg*min/L."
+   }
+  },
+  {
+   "id": "c4w-ladder98",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "For disinfection strategy review at an Ontario Class 4 plant, the free chlorine residual is 1.6 mg/L, the contact time is 30 min, and the given baffling factor is 0.65. Find the CT value. Enter the exact unrounded number.",
+   "topicId": "disinfection-ct-management",
+   "level": "class1",
+   "assumptions": "Fictional CT case in Ontario: residual = 1.6 mg/L, contact time = 30 min, baffling factor = 0.65. CT equals residual times contact time times baffling factor.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "CT = Residual * Contact time * Baffling factor"
+      },
+      {
+       "id": "opt-b",
+       "label": "CT = Residual * Contact time / Baffling factor"
+      },
+      {
+       "id": "opt-c",
+       "label": "CT = Residual / Contact time * Baffling factor"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "CT multiplies residual, contact time, and the baffling factor that derates ideal contact time."
+    },
+    {
+     "id": "units",
+     "prompt": "Which statement about the CT unit is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "mg/L multiplied by min and a unitless factor gives mg*min/L"
+      },
+      {
+       "id": "opt-b",
+       "label": "mg/L divided by min gives mg*min/L"
+      },
+      {
+       "id": "opt-c",
+       "label": "min divided by mg/L gives mg*min/L"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The baffling factor is unitless, so the product keeps mg/L times minutes."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for CT.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "CT = 1.6 mg/L * 30 min * 0.65"
+      },
+      {
+       "id": "opt-b",
+       "label": "CT = 1.6 mg/L * 30 min / 0.65"
+      },
+      {
+       "id": "opt-c",
+       "label": "CT = 1.6 mg/L / 30 min * 0.65"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Substitute residual times contact time times baffling factor."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact CT value in mg*min/L.",
+    "unitOptions": [
+     {
+      "id": "mg-min-L",
+      "label": "mg*min/L"
+     },
+     {
+      "id": "mg-s-L",
+      "label": "mg*s/L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "60"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "min",
+      "label": "min"
+     }
+    ],
+    "expected": "31.2",
+    "expectedUnitId": "mg-min-L",
+    "absoluteTolerance": "0",
+    "explanation": "CT = 1.6 * 30 * 0.65 = 31.2 mg*min/L."
+   }
+  },
+  {
+   "id": "c4w-ladder99",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "For disinfection strategy review at an Ontario Class 4 plant, the free chlorine residual is 1.1 mg/L, the contact time is 35 min, and the given baffling factor is 0.8. Find the CT value. Enter the exact unrounded number.",
+   "topicId": "disinfection-ct-management",
+   "level": "class1",
+   "assumptions": "Fictional CT case in Ontario: residual = 1.1 mg/L, contact time = 35 min, baffling factor = 0.8. CT equals residual times contact time times baffling factor.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "CT = Residual * Contact time * Baffling factor"
+      },
+      {
+       "id": "opt-b",
+       "label": "CT = Residual * Contact time / Baffling factor"
+      },
+      {
+       "id": "opt-c",
+       "label": "CT = Residual / Contact time * Baffling factor"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "CT multiplies residual, contact time, and the baffling factor that derates ideal contact time."
+    },
+    {
+     "id": "units",
+     "prompt": "Which statement about the CT unit is correct?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "mg/L multiplied by min and a unitless factor gives mg*min/L"
+      },
+      {
+       "id": "opt-b",
+       "label": "mg/L divided by min gives mg*min/L"
+      },
+      {
+       "id": "opt-c",
+       "label": "min divided by mg/L gives mg*min/L"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The baffling factor is unitless, so the product keeps mg/L times minutes."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution for CT.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "CT = 1.1 mg/L * 35 min * 0.8"
+      },
+      {
+       "id": "opt-b",
+       "label": "CT = 1.1 mg/L * 35 min / 0.8"
+      },
+      {
+       "id": "opt-c",
+       "label": "CT = 1.1 mg/L / 35 min * 0.8"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Substitute residual times contact time times baffling factor."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact CT value in mg*min/L.",
+    "unitOptions": [
+     {
+      "id": "mg-min-L",
+      "label": "mg*min/L"
+     },
+     {
+      "id": "mg-s-L",
+      "label": "mg*s/L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "60"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "min",
+      "label": "min"
+     }
+    ],
+    "expected": "30.8",
+    "expectedUnitId": "mg-min-L",
+    "absoluteTolerance": "0",
+    "explanation": "CT = 1.1 * 35 * 0.8 = 30.8 mg*min/L."
+   }
+  },
+  {
+   "id": "c4w-error01",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant balance for treated water 800 m3/day, backwash water 60 m3/day, and a residuals stream of 40 m3/day.",
+   "topicId": "whole-plant-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant daily water balance: treated water = 800 m3, backwash water = 60 m3, residuals stream = 40 m3. Total outflow is the sum of all three streams. Ontario Regulation 170/03 context applies to this fictional system.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total outflow = Treated water + Backwash water + Residuals stream"
+    },
+    {
+     "id": "line2",
+     "label": "2. Treated water + Backwash water = 800 m3 + 60 m3 = 860 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total outflow = 860 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total outflow = 860 m3 + 40 m3 = 900 m3",
+   "explanation": "Line 3 stopped after two streams and omitted the residuals stream of 40 m3. Total outflow is 860 + 40 = 900 m3."
+  },
+  {
+   "id": "c4w-error02",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant balance for treated water 950 m3/day, backwash water 80 m3/day, and a residuals stream of 30 m3/day.",
+   "topicId": "whole-plant-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant daily water balance: treated water = 950 m3, backwash water = 80 m3, residuals stream = 30 m3. Total outflow is the sum of all three streams. Ontario Regulation 170/03 context applies to this fictional system.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total outflow = Treated water + Backwash water + Residuals stream"
+    },
+    {
+     "id": "line2",
+     "label": "2. Treated water + Backwash water = 950 m3 + 80 m3 = 1030 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total outflow = 1030 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total outflow = 1030 m3 + 30 m3 = 1060 m3",
+   "explanation": "Line 3 stopped after two streams and omitted the residuals stream of 30 m3. Total outflow is 1030 + 30 = 1060 m3."
+  },
+  {
+   "id": "c4w-error03",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant balance for treated water 1200 m3/day, backwash water 90 m3/day, and a residuals stream of 60 m3/day.",
+   "topicId": "whole-plant-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant daily water balance: treated water = 1200 m3, backwash water = 90 m3, residuals stream = 60 m3. Total outflow is the sum of all three streams. Ontario Regulation 170/03 context applies to this fictional system.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total outflow = Treated water + Backwash water + Residuals stream"
+    },
+    {
+     "id": "line2",
+     "label": "2. Treated water + Backwash water = 1200 m3 + 90 m3 = 1290 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total outflow = 1290 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total outflow = 1290 m3 + 60 m3 = 1350 m3",
+   "explanation": "Line 3 stopped after two streams and omitted the residuals stream of 60 m3. Total outflow is 1290 + 60 = 1350 m3."
+  },
+  {
+   "id": "c4w-error04",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant balance for treated water 650 m3/day, backwash water 45 m3/day, and a residuals stream of 25 m3/day.",
+   "topicId": "whole-plant-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant daily water balance: treated water = 650 m3, backwash water = 45 m3, residuals stream = 25 m3. Total outflow is the sum of all three streams. Ontario Regulation 170/03 context applies to this fictional system.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total outflow = Treated water + Backwash water + Residuals stream"
+    },
+    {
+     "id": "line2",
+     "label": "2. Treated water + Backwash water = 650 m3 + 45 m3 = 695 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total outflow = 695 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total outflow = 695 m3 + 25 m3 = 720 m3",
+   "explanation": "Line 3 stopped after two streams and omitted the residuals stream of 25 m3. Total outflow is 695 + 25 = 720 m3."
+  },
+  {
+   "id": "c4w-error05",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant production balance for Train A 400 m3/day, Train B 350 m3/day, and Train C 250 m3/day.",
+   "topicId": "whole-plant-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant with three parallel trains: Train A = 400 m3/day, Train B = 350 m3/day, Train C = 250 m3/day. Total production is the sum of the three trains, each counted once. Ontario Regulation 170/03 context applies to this fictional system.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total production = Train A + Train B + Train C"
+    },
+    {
+     "id": "line2",
+     "label": "2. Train A + Train B = 400 m3/day + 350 m3/day = 750 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total production = 750 m3/day + 400 m3/day = 1150 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total production = 750 m3/day + 250 m3/day = 1000 m3/day",
+   "explanation": "Line 3 added Train A a second time instead of adding Train C. Train A is double counted and Train C is missed, so total production is 750 + 250 = 1000 m3/day."
+  },
+  {
+   "id": "c4w-error06",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant production balance for Train A 500 m3/day, Train B 300 m3/day, and Train C 200 m3/day.",
+   "topicId": "whole-plant-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant with three parallel trains: Train A = 500 m3/day, Train B = 300 m3/day, Train C = 200 m3/day. Total production is the sum of the three trains, each counted once. Ontario Regulation 170/03 context applies to this fictional system.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total production = Train A + Train B + Train C"
+    },
+    {
+     "id": "line2",
+     "label": "2. Train A + Train B = 500 m3/day + 300 m3/day = 800 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total production = 800 m3/day + 500 m3/day = 1300 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total production = 800 m3/day + 200 m3/day = 1000 m3/day",
+   "explanation": "Line 3 added Train A a second time instead of adding Train C. Train A is double counted and Train C is missed, so total production is 800 + 200 = 1000 m3/day."
+  },
+  {
+   "id": "c4w-error07",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant production balance for Train A 600 m3/day, Train B 450 m3/day, and Train C 150 m3/day.",
+   "topicId": "whole-plant-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant with three parallel trains: Train A = 600 m3/day, Train B = 450 m3/day, Train C = 150 m3/day. Total production is the sum of the three trains, each counted once. Ontario Regulation 170/03 context applies to this fictional system.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total production = Train A + Train B + Train C"
+    },
+    {
+     "id": "line2",
+     "label": "2. Train A + Train B = 600 m3/day + 450 m3/day = 1050 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total production = 1050 m3/day + 600 m3/day = 1650 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total production = 1050 m3/day + 150 m3/day = 1200 m3/day",
+   "explanation": "Line 3 added Train A a second time instead of adding Train C. Train A is double counted and Train C is missed, so total production is 1050 + 150 = 1200 m3/day."
+  },
+  {
+   "id": "c4w-error08",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant production balance for Train A 300 m3/day, Train B 280 m3/day, and Train C 220 m3/day.",
+   "topicId": "whole-plant-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant with three parallel trains: Train A = 300 m3/day, Train B = 280 m3/day, Train C = 220 m3/day. Total production is the sum of the three trains, each counted once. Ontario Regulation 170/03 context applies to this fictional system.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total production = Train A + Train B + Train C"
+    },
+    {
+     "id": "line2",
+     "label": "2. Train A + Train B = 300 m3/day + 280 m3/day = 580 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total production = 580 m3/day + 300 m3/day = 880 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total production = 580 m3/day + 220 m3/day = 800 m3/day",
+   "explanation": "Line 3 added Train A a second time instead of adding Train C. Train A is double counted and Train C is missed, so total production is 580 + 220 = 800 m3/day."
+  },
+  {
+   "id": "c4w-error09",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this net treated water balance for raw water 1500 m3/day, backwash use 100 m3/day, and residuals losses 50 m3/day.",
+   "topicId": "whole-plant-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant daily balance: raw water = 1500 m3, backwash use = 100 m3, residuals losses = 50 m3. Net treated water = Raw water - Backwash - Residuals. Ontario Regulation 170/03 context applies to this fictional system.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Net treated water = Raw water - Backwash - Residuals"
+    },
+    {
+     "id": "line2",
+     "label": "2. Raw water - Backwash = 1500 m3 - 100 m3 = 1400 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Net treated water = 1400 m3 - 50 m3"
+    },
+    {
+     "id": "line4",
+     "label": "4. Net treated water = 1360 m3"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Net treated water = 1400 m3 - 50 m3 = 1350 m3",
+   "explanation": "Lines 1 to 3 are correct. Line 4 missubtracts: 1400 - 50 = 1350 m3, not 1360 m3."
+  },
+  {
+   "id": "c4w-error10",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this net treated water balance for raw water 1800 m3/day, backwash use 120 m3/day, and residuals losses 80 m3/day.",
+   "topicId": "whole-plant-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant daily balance: raw water = 1800 m3, backwash use = 120 m3, residuals losses = 80 m3. Net treated water = Raw water - Backwash - Residuals. Ontario Regulation 170/03 context applies to this fictional system.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Net treated water = Raw water - Backwash - Residuals"
+    },
+    {
+     "id": "line2",
+     "label": "2. Raw water - Backwash = 1800 m3 - 120 m3 = 1680 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Net treated water = 1680 m3 - 80 m3"
+    },
+    {
+     "id": "line4",
+     "label": "4. Net treated water = 1590 m3"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Net treated water = 1680 m3 - 80 m3 = 1600 m3",
+   "explanation": "Lines 1 to 3 are correct. Line 4 missubtracts: 1680 - 80 = 1600 m3, not 1590 m3."
+  },
+  {
+   "id": "c4w-error100",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chemical program quantity plan for a given dose rate of 10 mg/L at flow 7500 m3/day.",
+   "topicId": "chemical-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant chemical program: given dose rate = 10 mg/L, flow = 7500 m3/day. Chemical mass in kg/day = Dose * Flow / 1000.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Chemical mass = Dose * Flow / 1000, giving kg/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Chemical mass = 10 mg/L * 7500 m3/day / 100 = 750 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Chemical mass = 10 mg/L * 7500 m3/day / 1000 = 75 kg/day",
+   "explanation": "Line 2 divided by 100 instead of 1000, overstating the program quantity tenfold. Chemical mass is 10 * 7500 / 1000 = 75 kg/day."
+  },
+  {
+   "id": "c4w-error11",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this net treated water balance for raw water 2000 m3/day, backwash use 150 m3/day, and residuals losses 50 m3/day.",
+   "topicId": "whole-plant-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant daily balance: raw water = 2000 m3, backwash use = 150 m3, residuals losses = 50 m3. Net treated water = Raw water - Backwash - Residuals. Ontario Regulation 170/03 context applies to this fictional system.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Net treated water = Raw water - Backwash - Residuals"
+    },
+    {
+     "id": "line2",
+     "label": "2. Raw water - Backwash = 2000 m3 - 150 m3 = 1850 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Net treated water = 1850 m3 - 50 m3"
+    },
+    {
+     "id": "line4",
+     "label": "4. Net treated water = 1810 m3"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Net treated water = 1850 m3 - 50 m3 = 1800 m3",
+   "explanation": "Lines 1 to 3 are correct. Line 4 missubtracts: 1850 - 50 = 1800 m3, not 1810 m3."
+  },
+  {
+   "id": "c4w-error12",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this net treated water balance for raw water 1250 m3/day, backwash use 75 m3/day, and residuals losses 25 m3/day.",
+   "topicId": "whole-plant-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant daily balance: raw water = 1250 m3, backwash use = 75 m3, residuals losses = 25 m3. Net treated water = Raw water - Backwash - Residuals. Ontario Regulation 170/03 context applies to this fictional system.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Net treated water = Raw water - Backwash - Residuals"
+    },
+    {
+     "id": "line2",
+     "label": "2. Raw water - Backwash = 1250 m3 - 75 m3 = 1175 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Net treated water = 1175 m3 - 25 m3"
+    },
+    {
+     "id": "line4",
+     "label": "4. Net treated water = 1140 m3"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Net treated water = 1175 m3 - 25 m3 = 1150 m3",
+   "explanation": "Lines 1 to 3 are correct. Line 4 missubtracts: 1175 - 25 = 1150 m3, not 1140 m3."
+  },
+  {
+   "id": "c4w-error13",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this unaccounted water balance for raw water 2000 m3/day, treated water 1750 m3/day, and backwash water 150 m3/day.",
+   "topicId": "whole-plant-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant daily balance: raw water = 2000 m3, treated water = 1750 m3, backwash water = 150 m3. Unaccounted water = Raw - Treated - Backwash. Ontario Regulation 170/03 context applies to this fictional system.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Unaccounted water = Raw water - Treated water - Backwash water"
+    },
+    {
+     "id": "line2",
+     "label": "2. Treated water + Backwash water = 1750 m3 + 150 m3 = 1900 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Unaccounted water = 2000 m3 - 1750 m3 = 250 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Unaccounted water = 2000 m3 - 1900 m3 = 100 m3",
+   "explanation": "Line 3 subtracted only the treated water and ignored the combined total from line 2, so the backwash water was omitted. Unaccounted water is 2000 - 1900 = 100 m3."
+  },
+  {
+   "id": "c4w-error14",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this unaccounted water balance for raw water 1600 m3/day, treated water 1400 m3/day, and backwash water 120 m3/day.",
+   "topicId": "whole-plant-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant daily balance: raw water = 1600 m3, treated water = 1400 m3, backwash water = 120 m3. Unaccounted water = Raw - Treated - Backwash. Ontario Regulation 170/03 context applies to this fictional system.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Unaccounted water = Raw water - Treated water - Backwash water"
+    },
+    {
+     "id": "line2",
+     "label": "2. Treated water + Backwash water = 1400 m3 + 120 m3 = 1520 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Unaccounted water = 1600 m3 - 1400 m3 = 200 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Unaccounted water = 1600 m3 - 1520 m3 = 80 m3",
+   "explanation": "Line 3 subtracted only the treated water and ignored the combined total from line 2, so the backwash water was omitted. Unaccounted water is 1600 - 1520 = 80 m3."
+  },
+  {
+   "id": "c4w-error15",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this unaccounted water balance for raw water 2500 m3/day, treated water 2200 m3/day, and backwash water 200 m3/day.",
+   "topicId": "whole-plant-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant daily balance: raw water = 2500 m3, treated water = 2200 m3, backwash water = 200 m3. Unaccounted water = Raw - Treated - Backwash. Ontario Regulation 170/03 context applies to this fictional system.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Unaccounted water = Raw water - Treated water - Backwash water"
+    },
+    {
+     "id": "line2",
+     "label": "2. Treated water + Backwash water = 2200 m3 + 200 m3 = 2400 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Unaccounted water = 2500 m3 - 2200 m3 = 300 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Unaccounted water = 2500 m3 - 2400 m3 = 100 m3",
+   "explanation": "Line 3 subtracted only the treated water and ignored the combined total from line 2, so the backwash water was omitted. Unaccounted water is 2500 - 2400 = 100 m3."
+  },
+  {
+   "id": "c4w-error16",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this unaccounted water balance for raw water 1800 m3/day, treated water 1550 m3/day, and backwash water 150 m3/day.",
+   "topicId": "whole-plant-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant daily balance: raw water = 1800 m3, treated water = 1550 m3, backwash water = 150 m3. Unaccounted water = Raw - Treated - Backwash. Ontario Regulation 170/03 context applies to this fictional system.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Unaccounted water = Raw water - Treated water - Backwash water"
+    },
+    {
+     "id": "line2",
+     "label": "2. Treated water + Backwash water = 1550 m3 + 150 m3 = 1700 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Unaccounted water = 1800 m3 - 1550 m3 = 250 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Unaccounted water = 1800 m3 - 1700 m3 = 100 m3",
+   "explanation": "Line 3 subtracted only the treated water and ignored the combined total from line 2, so the backwash water was omitted. Unaccounted water is 1800 - 1700 = 100 m3."
+  },
+  {
+   "id": "c4w-error17",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane fleet capacity plan for 6 trains at 250 m3/day per train.",
+   "topicId": "membrane-fleet-capacity",
+   "level": "class1",
+   "assumptions": "Fictional Ontario membrane plant: 6 identical trains, capacity per train = 250 m3/day. Fleet capacity = Number of trains * Capacity per train.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Fleet capacity = Number of trains * Capacity per train"
+    },
+    {
+     "id": "line2",
+     "label": "2. Fleet capacity = 6 / 250 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Fleet capacity = 6 * 250 m3/day = 1500 m3/day",
+   "explanation": "Line 2 divided the train count by the capacity per train instead of multiplying. Fleet capacity is 6 * 250 = 1500 m3/day."
+  },
+  {
+   "id": "c4w-error18",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane fleet capacity plan for 8 trains at 200 m3/day per train.",
+   "topicId": "membrane-fleet-capacity",
+   "level": "class1",
+   "assumptions": "Fictional Ontario membrane plant: 8 identical trains, capacity per train = 200 m3/day. Fleet capacity = Number of trains * Capacity per train.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Fleet capacity = Number of trains * Capacity per train"
+    },
+    {
+     "id": "line2",
+     "label": "2. Fleet capacity = 8 / 200 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Fleet capacity = 8 * 200 m3/day = 1600 m3/day",
+   "explanation": "Line 2 divided the train count by the capacity per train instead of multiplying. Fleet capacity is 8 * 200 = 1600 m3/day."
+  },
+  {
+   "id": "c4w-error19",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane fleet capacity plan for 5 trains at 320 m3/day per train.",
+   "topicId": "membrane-fleet-capacity",
+   "level": "class1",
+   "assumptions": "Fictional Ontario membrane plant: 5 identical trains, capacity per train = 320 m3/day. Fleet capacity = Number of trains * Capacity per train.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Fleet capacity = Number of trains * Capacity per train"
+    },
+    {
+     "id": "line2",
+     "label": "2. Fleet capacity = 5 / 320 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Fleet capacity = 5 * 320 m3/day = 1600 m3/day",
+   "explanation": "Line 2 divided the train count by the capacity per train instead of multiplying. Fleet capacity is 5 * 320 = 1600 m3/day."
+  },
+  {
+   "id": "c4w-error20",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane fleet capacity plan for 10 trains at 180 m3/day per train.",
+   "topicId": "membrane-fleet-capacity",
+   "level": "class1",
+   "assumptions": "Fictional Ontario membrane plant: 10 identical trains, capacity per train = 180 m3/day. Fleet capacity = Number of trains * Capacity per train.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Fleet capacity = Number of trains * Capacity per train"
+    },
+    {
+     "id": "line2",
+     "label": "2. Fleet capacity = 10 / 180 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Fleet capacity = 10 * 180 m3/day = 1800 m3/day",
+   "explanation": "Line 2 divided the train count by the capacity per train instead of multiplying. Fleet capacity is 10 * 180 = 1800 m3/day."
+  },
+  {
+   "id": "c4w-error21",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane fleet available capacity plan for 8 trains at 200 m3/day per train with 2 trains out of service.",
+   "topicId": "membrane-fleet-capacity",
+   "level": "class1",
+   "assumptions": "Fictional Ontario membrane plant: total trains = 8, trains out of service = 2, capacity per train = 200 m3/day. Available capacity = Trains in service * Capacity per train.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Available capacity = Trains in service * Capacity per train"
+    },
+    {
+     "id": "line2",
+     "label": "2. Trains in service = 8 - 2 = 6"
+    },
+    {
+     "id": "line3",
+     "label": "3. Available capacity = 8 * 200 m3/day = 1600 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Available capacity = 6 * 200 m3/day = 1200 m3/day",
+   "explanation": "Line 3 used all 8 trains instead of the 6 trains in service from line 2. Available capacity is 6 * 200 = 1200 m3/day."
+  },
+  {
+   "id": "c4w-error22",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane fleet available capacity plan for 10 trains at 150 m3/day per train with 2 trains out of service.",
+   "topicId": "membrane-fleet-capacity",
+   "level": "class1",
+   "assumptions": "Fictional Ontario membrane plant: total trains = 10, trains out of service = 2, capacity per train = 150 m3/day. Available capacity = Trains in service * Capacity per train.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Available capacity = Trains in service * Capacity per train"
+    },
+    {
+     "id": "line2",
+     "label": "2. Trains in service = 10 - 2 = 8"
+    },
+    {
+     "id": "line3",
+     "label": "3. Available capacity = 10 * 150 m3/day = 1500 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Available capacity = 8 * 150 m3/day = 1200 m3/day",
+   "explanation": "Line 3 used all 10 trains instead of the 8 trains in service from line 2. Available capacity is 8 * 150 = 1200 m3/day."
+  },
+  {
+   "id": "c4w-error23",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane fleet available capacity plan for 6 trains at 300 m3/day per train with 1 trains out of service.",
+   "topicId": "membrane-fleet-capacity",
+   "level": "class1",
+   "assumptions": "Fictional Ontario membrane plant: total trains = 6, trains out of service = 1, capacity per train = 300 m3/day. Available capacity = Trains in service * Capacity per train.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Available capacity = Trains in service * Capacity per train"
+    },
+    {
+     "id": "line2",
+     "label": "2. Trains in service = 6 - 1 = 5"
+    },
+    {
+     "id": "line3",
+     "label": "3. Available capacity = 6 * 300 m3/day = 1800 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Available capacity = 5 * 300 m3/day = 1500 m3/day",
+   "explanation": "Line 3 used all 6 trains instead of the 5 trains in service from line 2. Available capacity is 5 * 300 = 1500 m3/day."
+  },
+  {
+   "id": "c4w-error24",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane fleet available capacity plan for 12 trains at 100 m3/day per train with 3 trains out of service.",
+   "topicId": "membrane-fleet-capacity",
+   "level": "class1",
+   "assumptions": "Fictional Ontario membrane plant: total trains = 12, trains out of service = 3, capacity per train = 100 m3/day. Available capacity = Trains in service * Capacity per train.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Available capacity = Trains in service * Capacity per train"
+    },
+    {
+     "id": "line2",
+     "label": "2. Trains in service = 12 - 3 = 9"
+    },
+    {
+     "id": "line3",
+     "label": "3. Available capacity = 12 * 100 m3/day = 1200 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Available capacity = 9 * 100 m3/day = 900 m3/day",
+   "explanation": "Line 3 used all 12 trains instead of the 9 trains in service from line 2. Available capacity is 9 * 100 = 900 m3/day."
+  },
+  {
+   "id": "c4w-error25",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane recovery plan for a permeate target of 900 m3/day at recovery 0.75.",
+   "topicId": "membrane-recovery-planning",
+   "level": "class1",
+   "assumptions": "Fictional Ontario membrane system: permeate target = 900 m3/day, recovery = 0.75. Feed flow = Permeate target / Recovery.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Feed flow = Permeate target / Recovery"
+    },
+    {
+     "id": "line2",
+     "label": "2. Feed flow = 900 m3/day * 0.75 = 675 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Feed flow = 900 m3/day / 0.75 = 1200 m3/day",
+   "explanation": "Line 2 multiplied by the recovery instead of dividing. Feed flow is 900 / 0.75 = 1200 m3/day."
+  },
+  {
+   "id": "c4w-error26",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane recovery plan for a permeate target of 800 m3/day at recovery 0.8.",
+   "topicId": "membrane-recovery-planning",
+   "level": "class1",
+   "assumptions": "Fictional Ontario membrane system: permeate target = 800 m3/day, recovery = 0.8. Feed flow = Permeate target / Recovery.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Feed flow = Permeate target / Recovery"
+    },
+    {
+     "id": "line2",
+     "label": "2. Feed flow = 800 m3/day * 0.8 = 640 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Feed flow = 800 m3/day / 0.8 = 1000 m3/day",
+   "explanation": "Line 2 multiplied by the recovery instead of dividing. Feed flow is 800 / 0.8 = 1000 m3/day."
+  },
+  {
+   "id": "c4w-error27",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane recovery plan for a permeate target of 1050 m3/day at recovery 0.75.",
+   "topicId": "membrane-recovery-planning",
+   "level": "class1",
+   "assumptions": "Fictional Ontario membrane system: permeate target = 1050 m3/day, recovery = 0.75. Feed flow = Permeate target / Recovery.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Feed flow = Permeate target / Recovery"
+    },
+    {
+     "id": "line2",
+     "label": "2. Feed flow = 1050 m3/day * 0.75 = 787.5 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Feed flow = 1050 m3/day / 0.75 = 1400 m3/day",
+   "explanation": "Line 2 multiplied by the recovery instead of dividing. Feed flow is 1050 / 0.75 = 1400 m3/day."
+  },
+  {
+   "id": "c4w-error28",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane recovery plan for a permeate target of 720 m3/day at recovery 0.9.",
+   "topicId": "membrane-recovery-planning",
+   "level": "class1",
+   "assumptions": "Fictional Ontario membrane system: permeate target = 720 m3/day, recovery = 0.9. Feed flow = Permeate target / Recovery.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Feed flow = Permeate target / Recovery"
+    },
+    {
+     "id": "line2",
+     "label": "2. Feed flow = 720 m3/day * 0.9 = 648 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Feed flow = 720 m3/day / 0.9 = 800 m3/day",
+   "explanation": "Line 2 multiplied by the recovery instead of dividing. Feed flow is 720 / 0.9 = 800 m3/day."
+  },
+  {
+   "id": "c4w-error29",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane area plan for permeate flow 48000 L/h at a design flux of 40 L/m2/h.",
+   "topicId": "membrane-fleet-capacity",
+   "level": "class1",
+   "assumptions": "Fictional Ontario membrane plant expansion: permeate flow = 48000 L/h, design flux = 40 L/m2/h. Membrane area required = Permeate flow / Design flux.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Membrane area required = Permeate flow / Design flux"
+    },
+    {
+     "id": "line2",
+     "label": "2. Membrane area required = 48000 L/h * 40 L/m2/h = 1920000 m2"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Membrane area required = 48000 L/h / 40 L/m2/h = 1200 m2",
+   "explanation": "Line 2 multiplied by the flux instead of dividing. Membrane area required is 48000 / 40 = 1200 m2."
+  },
+  {
+   "id": "c4w-error30",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane area plan for permeate flow 36000 L/h at a design flux of 30 L/m2/h.",
+   "topicId": "membrane-fleet-capacity",
+   "level": "class1",
+   "assumptions": "Fictional Ontario membrane plant expansion: permeate flow = 36000 L/h, design flux = 30 L/m2/h. Membrane area required = Permeate flow / Design flux.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Membrane area required = Permeate flow / Design flux"
+    },
+    {
+     "id": "line2",
+     "label": "2. Membrane area required = 36000 L/h * 30 L/m2/h = 1080000 m2"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Membrane area required = 36000 L/h / 30 L/m2/h = 1200 m2",
+   "explanation": "Line 2 multiplied by the flux instead of dividing. Membrane area required is 36000 / 30 = 1200 m2."
+  },
+  {
+   "id": "c4w-error31",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane area plan for permeate flow 50000 L/h at a design flux of 50 L/m2/h.",
+   "topicId": "membrane-fleet-capacity",
+   "level": "class1",
+   "assumptions": "Fictional Ontario membrane plant expansion: permeate flow = 50000 L/h, design flux = 50 L/m2/h. Membrane area required = Permeate flow / Design flux.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Membrane area required = Permeate flow / Design flux"
+    },
+    {
+     "id": "line2",
+     "label": "2. Membrane area required = 50000 L/h * 50 L/m2/h = 2500000 m2"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Membrane area required = 50000 L/h / 50 L/m2/h = 1000 m2",
+   "explanation": "Line 2 multiplied by the flux instead of dividing. Membrane area required is 50000 / 50 = 1000 m2."
+  },
+  {
+   "id": "c4w-error32",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this membrane area plan for permeate flow 27000 L/h at a design flux of 30 L/m2/h.",
+   "topicId": "membrane-fleet-capacity",
+   "level": "class1",
+   "assumptions": "Fictional Ontario membrane plant expansion: permeate flow = 27000 L/h, design flux = 30 L/m2/h. Membrane area required = Permeate flow / Design flux.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Membrane area required = Permeate flow / Design flux"
+    },
+    {
+     "id": "line2",
+     "label": "2. Membrane area required = 27000 L/h * 30 L/m2/h = 810000 m2"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Membrane area required = 27000 L/h / 30 L/m2/h = 900 m2",
+   "explanation": "Line 2 multiplied by the flux instead of dividing. Membrane area required is 27000 / 30 = 900 m2."
+  },
+  {
+   "id": "c4w-error33",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this ultraviolet dose pacing calculation with intensity 12 mW/cm2 and exposure time 3 s.",
+   "topicId": "uv-bank-pacing",
+   "level": "class1",
+   "assumptions": "Fictional Ontario UV bank: intensity = 12 mW/cm2, exposure time = 3 s. Dose = Intensity * Exposure time, giving mJ/cm2. Ontario Regulation 170/03 context applies to this fictional system.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dose = Intensity * Exposure time"
+    },
+    {
+     "id": "line2",
+     "label": "2. Dose = 12 mW/cm2 / 3 s"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Dose = 12 mW/cm2 * 3 s = 36 mJ/cm2",
+   "explanation": "Line 2 divided intensity by time instead of multiplying. Dose is 12 * 3 = 36 mJ/cm2."
+  },
+  {
+   "id": "c4w-error34",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this ultraviolet dose pacing calculation with intensity 15 mW/cm2 and exposure time 2.5 s.",
+   "topicId": "uv-bank-pacing",
+   "level": "class1",
+   "assumptions": "Fictional Ontario UV bank: intensity = 15 mW/cm2, exposure time = 2.5 s. Dose = Intensity * Exposure time, giving mJ/cm2. Ontario Regulation 170/03 context applies to this fictional system.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dose = Intensity * Exposure time"
+    },
+    {
+     "id": "line2",
+     "label": "2. Dose = 15 mW/cm2 / 2.5 s"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Dose = 15 mW/cm2 * 2.5 s = 37.5 mJ/cm2",
+   "explanation": "Line 2 divided intensity by time instead of multiplying. Dose is 15 * 2.5 = 37.5 mJ/cm2."
+  },
+  {
+   "id": "c4w-error35",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this ultraviolet dose pacing calculation with intensity 11 mW/cm2 and exposure time 4 s.",
+   "topicId": "uv-bank-pacing",
+   "level": "class1",
+   "assumptions": "Fictional Ontario UV bank: intensity = 11 mW/cm2, exposure time = 4 s. Dose = Intensity * Exposure time, giving mJ/cm2. Ontario Regulation 170/03 context applies to this fictional system.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dose = Intensity * Exposure time"
+    },
+    {
+     "id": "line2",
+     "label": "2. Dose = 11 mW/cm2 / 4 s"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Dose = 11 mW/cm2 * 4 s = 44 mJ/cm2",
+   "explanation": "Line 2 divided intensity by time instead of multiplying. Dose is 11 * 4 = 44 mJ/cm2."
+  },
+  {
+   "id": "c4w-error36",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this ultraviolet dose pacing calculation with intensity 20 mW/cm2 and exposure time 1.8 s.",
+   "topicId": "uv-bank-pacing",
+   "level": "class1",
+   "assumptions": "Fictional Ontario UV bank: intensity = 20 mW/cm2, exposure time = 1.8 s. Dose = Intensity * Exposure time, giving mJ/cm2. Ontario Regulation 170/03 context applies to this fictional system.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dose = Intensity * Exposure time"
+    },
+    {
+     "id": "line2",
+     "label": "2. Dose = 20 mW/cm2 / 1.8 s"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Dose = 20 mW/cm2 * 1.8 s = 36 mJ/cm2",
+   "explanation": "Line 2 divided intensity by time instead of multiplying. Dose is 20 * 1.8 = 36 mJ/cm2."
+  },
+  {
+   "id": "c4w-error37",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this ultraviolet dose pacing calculation with intensity 20 mW/cm2, a given factor of 0.8, and exposure time 2 s.",
+   "topicId": "uv-bank-pacing",
+   "level": "class1",
+   "assumptions": "Fictional Ontario UV bank: intensity = 20 mW/cm2, given factor = 0.8, exposure time = 2 s. Effective intensity = Intensity * Given factor, and Dose = Effective intensity * Exposure time. Ontario Regulation 170/03 context applies to this fictional system.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Effective intensity = Intensity * Given factor 0.8"
+    },
+    {
+     "id": "line2",
+     "label": "2. Effective intensity = 20 mW/cm2 / 0.8 = 25 mW/cm2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Dose = 25 mW/cm2 * 2 s = 50 mJ/cm2"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Effective intensity = 20 mW/cm2 * 0.8 = 16 mW/cm2",
+   "explanation": "Line 2 divided by the given factor instead of multiplying. Effective intensity is 16 mW/cm2, so the dose is 16 * 2 = 32 mJ/cm2. Line 3 only carried the line 2 error forward."
+  },
+  {
+   "id": "c4w-error38",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this ultraviolet dose pacing calculation with intensity 25 mW/cm2, a given factor of 0.8, and exposure time 2 s.",
+   "topicId": "uv-bank-pacing",
+   "level": "class1",
+   "assumptions": "Fictional Ontario UV bank: intensity = 25 mW/cm2, given factor = 0.8, exposure time = 2 s. Effective intensity = Intensity * Given factor, and Dose = Effective intensity * Exposure time. Ontario Regulation 170/03 context applies to this fictional system.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Effective intensity = Intensity * Given factor 0.8"
+    },
+    {
+     "id": "line2",
+     "label": "2. Effective intensity = 25 mW/cm2 / 0.8 = 31.25 mW/cm2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Dose = 31.25 mW/cm2 * 2 s = 62.5 mJ/cm2"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Effective intensity = 25 mW/cm2 * 0.8 = 20 mW/cm2",
+   "explanation": "Line 2 divided by the given factor instead of multiplying. Effective intensity is 20 mW/cm2, so the dose is 20 * 2 = 40 mJ/cm2. Line 3 only carried the line 2 error forward."
+  },
+  {
+   "id": "c4w-error39",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this ultraviolet dose pacing calculation with intensity 18 mW/cm2, a given factor of 0.9, and exposure time 3 s.",
+   "topicId": "uv-bank-pacing",
+   "level": "class1",
+   "assumptions": "Fictional Ontario UV bank: intensity = 18 mW/cm2, given factor = 0.9, exposure time = 3 s. Effective intensity = Intensity * Given factor, and Dose = Effective intensity * Exposure time. Ontario Regulation 170/03 context applies to this fictional system.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Effective intensity = Intensity * Given factor 0.9"
+    },
+    {
+     "id": "line2",
+     "label": "2. Effective intensity = 18 mW/cm2 / 0.9 = 20 mW/cm2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Dose = 20 mW/cm2 * 3 s = 60 mJ/cm2"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Effective intensity = 18 mW/cm2 * 0.9 = 16.2 mW/cm2",
+   "explanation": "Line 2 divided by the given factor instead of multiplying. Effective intensity is 16.2 mW/cm2, so the dose is 16.2 * 3 = 48.6 mJ/cm2. Line 3 only carried the line 2 error forward."
+  },
+  {
+   "id": "c4w-error40",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this ultraviolet dose pacing calculation with intensity 30 mW/cm2, a given factor of 0.75, and exposure time 2 s.",
+   "topicId": "uv-bank-pacing",
+   "level": "class1",
+   "assumptions": "Fictional Ontario UV bank: intensity = 30 mW/cm2, given factor = 0.75, exposure time = 2 s. Effective intensity = Intensity * Given factor, and Dose = Effective intensity * Exposure time. Ontario Regulation 170/03 context applies to this fictional system.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Effective intensity = Intensity * Given factor 0.75"
+    },
+    {
+     "id": "line2",
+     "label": "2. Effective intensity = 30 mW/cm2 / 0.75 = 40 mW/cm2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Dose = 40 mW/cm2 * 2 s = 80 mJ/cm2"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Effective intensity = 30 mW/cm2 * 0.75 = 22.5 mW/cm2",
+   "explanation": "Line 2 divided by the given factor instead of multiplying. Effective intensity is 22.5 mW/cm2, so the dose is 22.5 * 2 = 45 mJ/cm2. Line 3 only carried the line 2 error forward."
+  },
+  {
+   "id": "c4w-error41",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this ultraviolet bank pacing calculation for total flow 600 m3/h with 3 banks online out of 4 banks installed.",
+   "topicId": "uv-bank-pacing",
+   "level": "class1",
+   "assumptions": "Fictional Ontario UV installation: total flow = 600 m3/h, banks installed = 4, banks online = 3, remaining banks on standby. Flow per bank = Total flow / Banks online. Ontario Regulation 170/03 context applies to this fictional system.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Flow per bank = Total flow / Banks online"
+    },
+    {
+     "id": "line2",
+     "label": "2. Banks online = 3, with 1 bank on standby excluded"
+    },
+    {
+     "id": "line3",
+     "label": "3. Flow per bank = 600 m3/h / 4 = 150 m3/h"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Flow per bank = 600 m3/h / 3 = 200 m3/h",
+   "explanation": "Line 3 divided by all 4 installed banks instead of the 3 banks online. Standby banks carry no flow, so flow per bank is 600 / 3 = 200 m3/h."
+  },
+  {
+   "id": "c4w-error42",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this ultraviolet bank pacing calculation for total flow 900 m3/h with 3 banks online out of 4 banks installed.",
+   "topicId": "uv-bank-pacing",
+   "level": "class1",
+   "assumptions": "Fictional Ontario UV installation: total flow = 900 m3/h, banks installed = 4, banks online = 3, remaining banks on standby. Flow per bank = Total flow / Banks online. Ontario Regulation 170/03 context applies to this fictional system.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Flow per bank = Total flow / Banks online"
+    },
+    {
+     "id": "line2",
+     "label": "2. Banks online = 3, with 1 bank on standby excluded"
+    },
+    {
+     "id": "line3",
+     "label": "3. Flow per bank = 900 m3/h / 4 = 225 m3/h"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Flow per bank = 900 m3/h / 3 = 300 m3/h",
+   "explanation": "Line 3 divided by all 4 installed banks instead of the 3 banks online. Standby banks carry no flow, so flow per bank is 900 / 3 = 300 m3/h."
+  },
+  {
+   "id": "c4w-error43",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this ultraviolet bank pacing calculation for total flow 800 m3/h with 4 banks online out of 5 banks installed.",
+   "topicId": "uv-bank-pacing",
+   "level": "class1",
+   "assumptions": "Fictional Ontario UV installation: total flow = 800 m3/h, banks installed = 5, banks online = 4, remaining banks on standby. Flow per bank = Total flow / Banks online. Ontario Regulation 170/03 context applies to this fictional system.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Flow per bank = Total flow / Banks online"
+    },
+    {
+     "id": "line2",
+     "label": "2. Banks online = 4, with 1 bank on standby excluded"
+    },
+    {
+     "id": "line3",
+     "label": "3. Flow per bank = 800 m3/h / 5 = 160 m3/h"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Flow per bank = 800 m3/h / 4 = 200 m3/h",
+   "explanation": "Line 3 divided by all 5 installed banks instead of the 4 banks online. Standby banks carry no flow, so flow per bank is 800 / 4 = 200 m3/h."
+  },
+  {
+   "id": "c4w-error44",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this ultraviolet bank pacing calculation for total flow 1200 m3/h with 4 banks online out of 6 banks installed.",
+   "topicId": "uv-bank-pacing",
+   "level": "class1",
+   "assumptions": "Fictional Ontario UV installation: total flow = 1200 m3/h, banks installed = 6, banks online = 4, remaining banks on standby. Flow per bank = Total flow / Banks online. Ontario Regulation 170/03 context applies to this fictional system.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Flow per bank = Total flow / Banks online"
+    },
+    {
+     "id": "line2",
+     "label": "2. Banks online = 4, with 2 banks on standby excluded"
+    },
+    {
+     "id": "line3",
+     "label": "3. Flow per bank = 1200 m3/h / 6 = 200 m3/h"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Flow per bank = 1200 m3/h / 4 = 300 m3/h",
+   "explanation": "Line 3 divided by all 6 installed banks instead of the 4 banks online. Standby banks carry no flow, so flow per bank is 1200 / 4 = 300 m3/h."
+  },
+  {
+   "id": "c4w-error45",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this ultraviolet pacing calculation for a target dose of 40 mJ/cm2 and exposure time 4 s.",
+   "topicId": "uv-bank-pacing",
+   "level": "class1",
+   "assumptions": "Fictional Ontario UV bank: target dose = 40 mJ/cm2, exposure time = 4 s. Required intensity = Target dose / Exposure time. Ontario Regulation 170/03 context applies to this fictional system.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Required intensity = Target dose / Exposure time"
+    },
+    {
+     "id": "line2",
+     "label": "2. Required intensity = 40 mJ/cm2 * 4 s = 160 mW/cm2"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Required intensity = 40 mJ/cm2 / 4 s = 10 mW/cm2",
+   "explanation": "Line 2 multiplied the dose by the time instead of dividing. Required intensity is 40 / 4 = 10 mW/cm2."
+  },
+  {
+   "id": "c4w-error46",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this ultraviolet pacing calculation for a target dose of 36 mJ/cm2 and exposure time 3 s.",
+   "topicId": "uv-bank-pacing",
+   "level": "class1",
+   "assumptions": "Fictional Ontario UV bank: target dose = 36 mJ/cm2, exposure time = 3 s. Required intensity = Target dose / Exposure time. Ontario Regulation 170/03 context applies to this fictional system.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Required intensity = Target dose / Exposure time"
+    },
+    {
+     "id": "line2",
+     "label": "2. Required intensity = 36 mJ/cm2 * 3 s = 108 mW/cm2"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Required intensity = 36 mJ/cm2 / 3 s = 12 mW/cm2",
+   "explanation": "Line 2 multiplied the dose by the time instead of dividing. Required intensity is 36 / 3 = 12 mW/cm2."
+  },
+  {
+   "id": "c4w-error47",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this ultraviolet pacing calculation for a target dose of 45 mJ/cm2 and exposure time 5 s.",
+   "topicId": "uv-bank-pacing",
+   "level": "class1",
+   "assumptions": "Fictional Ontario UV bank: target dose = 45 mJ/cm2, exposure time = 5 s. Required intensity = Target dose / Exposure time. Ontario Regulation 170/03 context applies to this fictional system.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Required intensity = Target dose / Exposure time"
+    },
+    {
+     "id": "line2",
+     "label": "2. Required intensity = 45 mJ/cm2 * 5 s = 225 mW/cm2"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Required intensity = 45 mJ/cm2 / 5 s = 9 mW/cm2",
+   "explanation": "Line 2 multiplied the dose by the time instead of dividing. Required intensity is 45 / 5 = 9 mW/cm2."
+  },
+  {
+   "id": "c4w-error48",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this ultraviolet pacing calculation for a target dose of 32 mJ/cm2 and exposure time 4 s.",
+   "topicId": "uv-bank-pacing",
+   "level": "class1",
+   "assumptions": "Fictional Ontario UV bank: target dose = 32 mJ/cm2, exposure time = 4 s. Required intensity = Target dose / Exposure time. Ontario Regulation 170/03 context applies to this fictional system.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Required intensity = Target dose / Exposure time"
+    },
+    {
+     "id": "line2",
+     "label": "2. Required intensity = 32 mJ/cm2 * 4 s = 128 mW/cm2"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Required intensity = 32 mJ/cm2 / 4 s = 8 mW/cm2",
+   "explanation": "Line 2 multiplied the dose by the time instead of dividing. Required intensity is 32 / 4 = 8 mW/cm2."
+  },
+  {
+   "id": "c4w-error49",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this residuals forecast for flow 2000 m3/day at a solids concentration of 15 mg/L.",
+   "topicId": "residuals-forecast",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant residuals forecast: flow = 2000 m3/day, solids concentration = 15 mg/L. Dry solids in kg/day = Flow * Concentration / 1000.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dry solids = Flow * Concentration / 1000, giving kg/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Dry solids = 2000 m3/day * 15 mg/L / 100 = 300 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Dry solids = 2000 m3/day * 15 mg/L / 1000 = 30 kg/day",
+   "explanation": "Line 2 divided by 100 instead of 1000, overstating the forecast tenfold. Dry solids are 2000 * 15 / 1000 = 30 kg/day."
+  },
+  {
+   "id": "c4w-error50",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this residuals forecast for flow 4000 m3/day at a solids concentration of 12 mg/L.",
+   "topicId": "residuals-forecast",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant residuals forecast: flow = 4000 m3/day, solids concentration = 12 mg/L. Dry solids in kg/day = Flow * Concentration / 1000.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dry solids = Flow * Concentration / 1000, giving kg/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Dry solids = 4000 m3/day * 12 mg/L / 100 = 480 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Dry solids = 4000 m3/day * 12 mg/L / 1000 = 48 kg/day",
+   "explanation": "Line 2 divided by 100 instead of 1000, overstating the forecast tenfold. Dry solids are 4000 * 12 / 1000 = 48 kg/day."
+  },
+  {
+   "id": "c4w-error51",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this residuals forecast for flow 3000 m3/day at a solids concentration of 20 mg/L.",
+   "topicId": "residuals-forecast",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant residuals forecast: flow = 3000 m3/day, solids concentration = 20 mg/L. Dry solids in kg/day = Flow * Concentration / 1000.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dry solids = Flow * Concentration / 1000, giving kg/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Dry solids = 3000 m3/day * 20 mg/L / 100 = 600 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Dry solids = 3000 m3/day * 20 mg/L / 1000 = 60 kg/day",
+   "explanation": "Line 2 divided by 100 instead of 1000, overstating the forecast tenfold. Dry solids are 3000 * 20 / 1000 = 60 kg/day."
+  },
+  {
+   "id": "c4w-error52",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this residuals forecast for flow 5000 m3/day at a solids concentration of 9 mg/L.",
+   "topicId": "residuals-forecast",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant residuals forecast: flow = 5000 m3/day, solids concentration = 9 mg/L. Dry solids in kg/day = Flow * Concentration / 1000.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dry solids = Flow * Concentration / 1000, giving kg/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Dry solids = 5000 m3/day * 9 mg/L / 100 = 450 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Dry solids = 5000 m3/day * 9 mg/L / 1000 = 45 kg/day",
+   "explanation": "Line 2 divided by 100 instead of 1000, overstating the forecast tenfold. Dry solids are 5000 * 9 / 1000 = 45 kg/day."
+  },
+  {
+   "id": "c4w-error53",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this residuals forecast for dry solids of 400 kg/day and a cake solids fraction of 0.2.",
+   "topicId": "residuals-forecast",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant residuals forecast: dry solids = 400 kg/day, cake solids fraction = 0.2. Wet cake mass = Dry solids mass / Cake solids fraction.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Wet cake mass = Dry solids mass / Cake solids fraction"
+    },
+    {
+     "id": "line2",
+     "label": "2. Wet cake mass = 400 kg/day * 0.2 = 80 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Wet cake mass = 400 kg/day / 0.2 = 2000 kg/day",
+   "explanation": "Line 2 multiplied by the cake solids fraction instead of dividing. Wet cake mass is 400 / 0.2 = 2000 kg/day."
+  },
+  {
+   "id": "c4w-error54",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this residuals forecast for dry solids of 600 kg/day and a cake solids fraction of 0.25.",
+   "topicId": "residuals-forecast",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant residuals forecast: dry solids = 600 kg/day, cake solids fraction = 0.25. Wet cake mass = Dry solids mass / Cake solids fraction.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Wet cake mass = Dry solids mass / Cake solids fraction"
+    },
+    {
+     "id": "line2",
+     "label": "2. Wet cake mass = 600 kg/day * 0.25 = 150 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Wet cake mass = 600 kg/day / 0.25 = 2400 kg/day",
+   "explanation": "Line 2 multiplied by the cake solids fraction instead of dividing. Wet cake mass is 600 / 0.25 = 2400 kg/day."
+  },
+  {
+   "id": "c4w-error55",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this residuals forecast for dry solids of 450 kg/day and a cake solids fraction of 0.15.",
+   "topicId": "residuals-forecast",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant residuals forecast: dry solids = 450 kg/day, cake solids fraction = 0.15. Wet cake mass = Dry solids mass / Cake solids fraction.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Wet cake mass = Dry solids mass / Cake solids fraction"
+    },
+    {
+     "id": "line2",
+     "label": "2. Wet cake mass = 450 kg/day * 0.15 = 67.5 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Wet cake mass = 450 kg/day / 0.15 = 3000 kg/day",
+   "explanation": "Line 2 multiplied by the cake solids fraction instead of dividing. Wet cake mass is 450 / 0.15 = 3000 kg/day."
+  },
+  {
+   "id": "c4w-error56",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this residuals forecast for dry solids of 800 kg/day and a cake solids fraction of 0.2.",
+   "topicId": "residuals-forecast",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant residuals forecast: dry solids = 800 kg/day, cake solids fraction = 0.2. Wet cake mass = Dry solids mass / Cake solids fraction.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Wet cake mass = Dry solids mass / Cake solids fraction"
+    },
+    {
+     "id": "line2",
+     "label": "2. Wet cake mass = 800 kg/day * 0.2 = 160 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Wet cake mass = 800 kg/day / 0.2 = 4000 kg/day",
+   "explanation": "Line 2 multiplied by the cake solids fraction instead of dividing. Wet cake mass is 800 / 0.2 = 4000 kg/day."
+  },
+  {
+   "id": "c4w-error57",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this residuals forecast for daily production of 35 kg/day over 30 days.",
+   "topicId": "residuals-forecast",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant residuals forecast: daily production = 35 kg/day, forecast period = 30 days. Forecast total = Daily production * Number of days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Forecast total = Daily production * Number of days"
+    },
+    {
+     "id": "line2",
+     "label": "2. Forecast total = 35 kg/day + 30 days = 65 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Forecast total = 35 kg/day * 30 days = 1050 kg",
+   "explanation": "Line 2 added the number of days instead of multiplying. Forecast total is 35 * 30 = 1050 kg."
+  },
+  {
+   "id": "c4w-error58",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this residuals forecast for daily production of 42 kg/day over 30 days.",
+   "topicId": "residuals-forecast",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant residuals forecast: daily production = 42 kg/day, forecast period = 30 days. Forecast total = Daily production * Number of days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Forecast total = Daily production * Number of days"
+    },
+    {
+     "id": "line2",
+     "label": "2. Forecast total = 42 kg/day + 30 days = 72 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Forecast total = 42 kg/day * 30 days = 1260 kg",
+   "explanation": "Line 2 added the number of days instead of multiplying. Forecast total is 42 * 30 = 1260 kg."
+  },
+  {
+   "id": "c4w-error59",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this residuals forecast for daily production of 28 kg/day over 30 days.",
+   "topicId": "residuals-forecast",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 plant residuals forecast: daily production = 28 kg/day, forecast period = 30 days. Forecast total = Daily production * Number of days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Forecast total = Daily production * Number of days"
+    },
+    {
+     "id": "line2",
+     "label": "2. Forecast total = 28 kg/day + 30 days = 58 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Forecast total = 28 kg/day * 30 days = 840 kg",
+   "explanation": "Line 2 added the number of days instead of multiplying. Forecast total is 28 * 30 = 840 kg."
+  }
+ ],
+ "missions": [
+  {
+   "id": "c4w-mission21",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 21: The Chemical Program Quantities Shift",
+   "tasks": [
+    {
+     "taskId": "c4w-ladder80",
+     "revision": "r1",
+     "occurrenceId": "m21-t1"
+    },
+    {
+     "taskId": "c4w-error01",
+     "revision": "r1",
+     "occurrenceId": "m21-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4w-mission22",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 22: The Whole Plant Balance Shift",
+   "tasks": [
+    {
+     "taskId": "c4w-error02",
+     "revision": "r1",
+     "occurrenceId": "m22-t1"
+    },
+    {
+     "taskId": "c4w-ladder81",
+     "revision": "r1",
+     "occurrenceId": "m22-t2"
+    },
+    {
+     "taskId": "c4w-ladder82",
+     "revision": "r1",
+     "occurrenceId": "m22-t3"
+    }
+   ]
+  },
+  {
+   "id": "c4w-mission23",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 23: The Storage Capacity Planning Shift",
+   "tasks": [
+    {
+     "taskId": "c4w-ladder83",
+     "revision": "r1",
+     "occurrenceId": "m23-t1"
+    },
+    {
+     "taskId": "c4w-error03",
+     "revision": "r1",
+     "occurrenceId": "m23-t2"
+    },
+    {
+     "taskId": "c4w-ladder84",
+     "revision": "r1",
+     "occurrenceId": "m23-t3"
+    },
+    {
+     "taskId": "c4w-ladder85",
+     "revision": "r1",
+     "occurrenceId": "m23-t4"
+    }
+   ]
+  },
+  {
+   "id": "c4w-mission24",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 24: The Whole Plant Balance Shift",
+   "tasks": [
+    {
+     "taskId": "c4w-error04",
+     "revision": "r1",
+     "occurrenceId": "m24-t1"
+    },
+    {
+     "taskId": "c4w-ladder86",
+     "revision": "r1",
+     "occurrenceId": "m24-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4w-mission25",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 25: The Storage Capacity Planning Shift",
+   "tasks": [
+    {
+     "taskId": "c4w-ladder87",
+     "revision": "r1",
+     "occurrenceId": "m25-t1"
+    },
+    {
+     "taskId": "c4w-error05",
+     "revision": "r1",
+     "occurrenceId": "m25-t2"
+    },
+    {
+     "taskId": "c4w-ladder88",
+     "revision": "r1",
+     "occurrenceId": "m25-t3"
+    }
+   ]
+  },
+  {
+   "id": "c4w-mission26",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 26: The Whole Plant Balance Shift",
+   "tasks": [
+    {
+     "taskId": "c4w-error06",
+     "revision": "r1",
+     "occurrenceId": "m26-t1"
+    },
+    {
+     "taskId": "c4w-ladder89",
+     "revision": "r1",
+     "occurrenceId": "m26-t2"
+    },
+    {
+     "taskId": "c4w-ladder90",
+     "revision": "r1",
+     "occurrenceId": "m26-t3"
+    },
+    {
+     "taskId": "c4w-ladder91",
+     "revision": "r1",
+     "occurrenceId": "m26-t4"
+    }
+   ]
+  },
+  {
+   "id": "c4w-mission27",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 27: The Disinfection Ct Management Shift",
+   "tasks": [
+    {
+     "taskId": "c4w-ladder92",
+     "revision": "r1",
+     "occurrenceId": "m27-t1"
+    },
+    {
+     "taskId": "c4w-error07",
+     "revision": "r1",
+     "occurrenceId": "m27-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4w-mission28",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 28: The Whole Plant Balance Shift",
+   "tasks": [
+    {
+     "taskId": "c4w-error08",
+     "revision": "r1",
+     "occurrenceId": "m28-t1"
+    },
+    {
+     "taskId": "c4w-ladder93",
+     "revision": "r1",
+     "occurrenceId": "m28-t2"
+    },
+    {
+     "taskId": "c4w-ladder94",
+     "revision": "r1",
+     "occurrenceId": "m28-t3"
+    }
+   ]
+  },
+  {
+   "id": "c4w-mission29",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 29: The Disinfection Ct Management Shift",
+   "tasks": [
+    {
+     "taskId": "c4w-ladder95",
+     "revision": "r1",
+     "occurrenceId": "m29-t1"
+    },
+    {
+     "taskId": "c4w-error09",
+     "revision": "r1",
+     "occurrenceId": "m29-t2"
+    },
+    {
+     "taskId": "c4w-ladder96",
+     "revision": "r1",
+     "occurrenceId": "m29-t3"
+    },
+    {
+     "taskId": "c4w-ladder97",
+     "revision": "r1",
+     "occurrenceId": "m29-t4"
+    }
+   ]
+  },
+  {
+   "id": "c4w-mission30",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 30: The Whole Plant Balance Shift",
+   "tasks": [
+    {
+     "taskId": "c4w-error10",
+     "revision": "r1",
+     "occurrenceId": "m30-t1"
+    },
+    {
+     "taskId": "c4w-ladder98",
+     "revision": "r1",
+     "occurrenceId": "m30-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4w-mission31",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 31: The Disinfection Ct Management Shift",
+   "tasks": [
+    {
+     "taskId": "c4w-ladder99",
+     "revision": "r1",
+     "occurrenceId": "m31-t1"
+    },
+    {
+     "taskId": "c4w-error100",
+     "revision": "r1",
+     "occurrenceId": "m31-t2"
+    },
+    {
+     "taskId": "c4w-ladder80",
+     "revision": "r1",
+     "occurrenceId": "m31-t3"
+    }
+   ]
+  },
+  {
+   "id": "c4w-mission32",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 32: The Whole Plant Balance Shift",
+   "tasks": [
+    {
+     "taskId": "c4w-error11",
+     "revision": "r1",
+     "occurrenceId": "m32-t1"
+    },
+    {
+     "taskId": "c4w-ladder81",
+     "revision": "r1",
+     "occurrenceId": "m32-t2"
+    },
+    {
+     "taskId": "c4w-ladder82",
+     "revision": "r1",
+     "occurrenceId": "m32-t3"
+    },
+    {
+     "taskId": "c4w-ladder83",
+     "revision": "r1",
+     "occurrenceId": "m32-t4"
+    }
+   ]
+  },
+  {
+   "id": "c4w-mission33",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 33: The Storage Capacity Planning Shift",
+   "tasks": [
+    {
+     "taskId": "c4w-ladder84",
+     "revision": "r1",
+     "occurrenceId": "m33-t1"
+    },
+    {
+     "taskId": "c4w-error12",
+     "revision": "r1",
+     "occurrenceId": "m33-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4w-mission34",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 34: The Whole Plant Balance Shift",
+   "tasks": [
+    {
+     "taskId": "c4w-error13",
+     "revision": "r1",
+     "occurrenceId": "m34-t1"
+    },
+    {
+     "taskId": "c4w-ladder85",
+     "revision": "r1",
+     "occurrenceId": "m34-t2"
+    },
+    {
+     "taskId": "c4w-ladder86",
+     "revision": "r1",
+     "occurrenceId": "m34-t3"
+    }
+   ]
+  },
+  {
+   "id": "c4w-mission35",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 35: The Storage Capacity Planning Shift",
+   "tasks": [
+    {
+     "taskId": "c4w-ladder87",
+     "revision": "r1",
+     "occurrenceId": "m35-t1"
+    },
+    {
+     "taskId": "c4w-error14",
+     "revision": "r1",
+     "occurrenceId": "m35-t2"
+    },
+    {
+     "taskId": "c4w-ladder88",
+     "revision": "r1",
+     "occurrenceId": "m35-t3"
+    },
+    {
+     "taskId": "c4w-ladder89",
+     "revision": "r1",
+     "occurrenceId": "m35-t4"
+    }
+   ]
+  },
+  {
+   "id": "c4w-mission36",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 36: The Whole Plant Balance Shift",
+   "tasks": [
+    {
+     "taskId": "c4w-error15",
+     "revision": "r1",
+     "occurrenceId": "m36-t1"
+    },
+    {
+     "taskId": "c4w-ladder90",
+     "revision": "r1",
+     "occurrenceId": "m36-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4w-mission37",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 37: The Disinfection Ct Management Shift",
+   "tasks": [
+    {
+     "taskId": "c4w-ladder91",
+     "revision": "r1",
+     "occurrenceId": "m37-t1"
+    },
+    {
+     "taskId": "c4w-error16",
+     "revision": "r1",
+     "occurrenceId": "m37-t2"
+    },
+    {
+     "taskId": "c4w-ladder92",
+     "revision": "r1",
+     "occurrenceId": "m37-t3"
+    }
+   ]
+  },
+  {
+   "id": "c4w-mission38",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 38: The Membrane Fleet Capacity Shift",
+   "tasks": [
+    {
+     "taskId": "c4w-error17",
+     "revision": "r1",
+     "occurrenceId": "m38-t1"
+    },
+    {
+     "taskId": "c4w-ladder93",
+     "revision": "r1",
+     "occurrenceId": "m38-t2"
+    },
+    {
+     "taskId": "c4w-ladder94",
+     "revision": "r1",
+     "occurrenceId": "m38-t3"
+    },
+    {
+     "taskId": "c4w-ladder95",
+     "revision": "r1",
+     "occurrenceId": "m38-t4"
+    }
+   ]
+  },
+  {
+   "id": "c4w-mission39",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 39: The Disinfection Ct Management Shift",
+   "tasks": [
+    {
+     "taskId": "c4w-ladder96",
+     "revision": "r1",
+     "occurrenceId": "m39-t1"
+    },
+    {
+     "taskId": "c4w-error18",
+     "revision": "r1",
+     "occurrenceId": "m39-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4w-mission40",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 40: The Membrane Fleet Capacity Shift",
+   "tasks": [
+    {
+     "taskId": "c4w-error19",
+     "revision": "r1",
+     "occurrenceId": "m40-t1"
+    },
+    {
+     "taskId": "c4w-ladder97",
+     "revision": "r1",
+     "occurrenceId": "m40-t2"
+    },
+    {
+     "taskId": "c4w-ladder98",
+     "revision": "r1",
+     "occurrenceId": "m40-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Advanced water treatment management, process evaluation and optimization chapters"
+  },
+  {
+   "id": "epa-membrane-uv",
+   "title": "US EPA, Membrane Filtration Guidance Manual and UV Disinfection Guidance Manual",
+   "locator": "Membrane and UV background (not Ontario law)"
+  },
+  {
+   "id": "epa-swtr",
+   "title": "US EPA, Surface Water Treatment Rule guidance",
+   "locator": "Filtration and disinfection context (background, not Ontario law)"
+  },
+  {
+   "id": "owwco-exam-prep",
+   "title": "OWWCO, Exam preparation resources",
+   "locator": "https://owwco.ca/preparing-for-your-exam/"
+  },
+  {
+   "id": "wpi-ntk-2025",
+   "title": "WPI, 2025 Need-to-Know Criteria, Water Treatment Class IV",
+   "locator": "https://gowpi.org/services/2025-need-to-know-criteria/"
+  },
+  {
+   "id": "ont-reg-170-03",
+   "title": "Ontario Regulation 170/03, Drinking Water Systems",
+   "locator": "https://www.ontario.ca/laws/regulation/03170"
+  },
+  {
+   "id": "ont-dwqms",
+   "title": "Ontario Drinking Water Quality Management Standard",
+   "locator": "Quality management system leadership and management review for municipal residential drinking water systems"
+  },
+  {
+   "id": "ccohs-safety",
+   "title": "CCOHS, OSH Answers (chemical safety, confined spaces, lockout)",
+   "locator": "https://www.ccohs.ca/oshanswers/"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "d89c694b136a97e4b50bca8b25eb59eef620ef972b5d5ada06f75626d14945e3",
+  "taskReceipts": [
+   {
+    "taskId": "c4w-ladder80",
+    "revision": "r1",
+    "sha256": "e34b7050a3438426c993e324a335fa20a7c64aa88c6d79a634c904a3ea801035",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-ladder81",
+    "revision": "r1",
+    "sha256": "eba8ae8b7607af85fea177953b04b81b34da8fcb81ff5588b6a0f95cb3007222",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-ladder82",
+    "revision": "r1",
+    "sha256": "a632ec5c17d180ac4a8d83aa3598cb1c9412e566fd36faefb33fc8efe9776984",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-ladder83",
+    "revision": "r1",
+    "sha256": "67234da10b3b9916d29ba2ae26f81e774e40cc4d816773213fca95bd796d5cf8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-ladder84",
+    "revision": "r1",
+    "sha256": "3f80c26747463b834d8177d16ee010ca86506ffcb7e9006a55ceb58765b5e68f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-ladder85",
+    "revision": "r1",
+    "sha256": "b922111fd5722816ca88b78b24138b0b3a344f89e4986d9f4b6881cf7f1c05d5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-ladder86",
+    "revision": "r1",
+    "sha256": "236af3c3e1e71e5002fc06073a70e62efc544cc6aeedd233d6ed78ecfface591",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-ladder87",
+    "revision": "r1",
+    "sha256": "2d562a16804b585142e78b0362013a45ad8947e08a8b52499fc18d8b62d872e4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-ladder88",
+    "revision": "r1",
+    "sha256": "36d94f00163b343f8b7fb2c5e16eb11a28c2de68e7372249beea0885d40ca9b9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-ladder89",
+    "revision": "r1",
+    "sha256": "290f0bf35365ac84f54021879a9cb1a0748d1ffc89b74de743b5ac4b65105cda",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-ladder90",
+    "revision": "r1",
+    "sha256": "c3ab59f490318375df8f8394659b906d11b361391455b5d4ec11c5a31ad93bb1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-ladder91",
+    "revision": "r1",
+    "sha256": "403633954a8e4409c92e92f2c23610e8bdc513917f620c2bb5809dbafd9c60e0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-ladder92",
+    "revision": "r1",
+    "sha256": "5e70bceae888cb1feaf553d6293edb800b98ada18749ff7fae377917c81780bd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-ladder93",
+    "revision": "r1",
+    "sha256": "7a549fffaf882f142cf52f4f0ff1c28232eb8fda68e58f11e6ec0f10ca821394",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-ladder94",
+    "revision": "r1",
+    "sha256": "ad5e640b06dcd95406855cd9579195aa594ebfb94f011b0f7ecde5b5ad7251ee",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-ladder95",
+    "revision": "r1",
+    "sha256": "f04b721614cad6d75b053b570b182bd23d734ee428bb11f2c8a39a16a65c167b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-ladder96",
+    "revision": "r1",
+    "sha256": "7da248d9f070b680312db88b64b5025b1735006e922b7cf8df9cdb053e5cad5f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-ladder97",
+    "revision": "r1",
+    "sha256": "76a4dacc14fabc4d5570fc910dd6a85dac1c650edf61cbc0cb3ddd741353b91f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-ladder98",
+    "revision": "r1",
+    "sha256": "bf63af941e136c6cf066da6bd36ff33325170b695f4df40551122bc545f79684",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-ladder99",
+    "revision": "r1",
+    "sha256": "26fc934b8830dad135c81a97f6f4275c1d3d76a50971832d2c543bf0316279b4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error01",
+    "revision": "r1",
+    "sha256": "88b605cd22046cd77313aab6a12d9455df62e806fbb4100053636e082cdcc356",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error02",
+    "revision": "r1",
+    "sha256": "83766c8677ca8c1b9b492615f1127268ec5f4ea315f3174dc438c9bc5edbad67",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error03",
+    "revision": "r1",
+    "sha256": "594fda1cff1dc5984c393c09ea6a2d5c2c5cec5150ec4ccb6f979d7d6f02b59f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error04",
+    "revision": "r1",
+    "sha256": "e3a597d47a210a7331f6cd65a6dbdbba018c70a5eb1f317a9342e7defd9fba3d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error05",
+    "revision": "r1",
+    "sha256": "7568d7f8b0fddd06ca9c5bfa0feec30d8e0352d5f3ccc8150790f7c13cca52f6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error06",
+    "revision": "r1",
+    "sha256": "fab75d21f5f96abcaf20f1b23b68b692521eea17b43bf2bf236fd683432ecef5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error07",
+    "revision": "r1",
+    "sha256": "7be7d2553b130edd83c2a1f35a729681bd119734e4331d508177d33484adb254",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error08",
+    "revision": "r1",
+    "sha256": "7b250e97bab93491c319638a9cf17956708c1d0fae2a9f6f13bed9769d5b60a9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error09",
+    "revision": "r1",
+    "sha256": "b1cdcdb22fb945aa475b72cfcbec2898421b68b3134c76ced8169e443d492cd1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error10",
+    "revision": "r1",
+    "sha256": "e45664e1d448957d42ada0fd36c629dfa59efe10fd4aeae0348ae84fe7b1fed7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error100",
+    "revision": "r1",
+    "sha256": "23759b761af0da06eb8d2878cca98098015d0b84215c02d5853dee231da34bd7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error11",
+    "revision": "r1",
+    "sha256": "d808aa053b11c3ba179b4fca514970dcdc82bd41c3d055a60e924b833f3b80ba",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error12",
+    "revision": "r1",
+    "sha256": "a51008ea62513d47a0b5837411ed1a8ee06c366c80a08a453fb6ff5577655bf6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error13",
+    "revision": "r1",
+    "sha256": "b8ab2762b7536bde842fcf3bcc3068467ce958a90ff86448f8853b9b308561c7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error14",
+    "revision": "r1",
+    "sha256": "33640a0e11f40f6229f2fe213ea9f045a9c9131c10fb1379fe71665a46ea0768",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error15",
+    "revision": "r1",
+    "sha256": "1e3783132574e8c05a3417273ef351b3780a1edbd449e7ded422b04893cf45d7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error16",
+    "revision": "r1",
+    "sha256": "78846733669419f6abb935cf2f6677f65f0960bae3de0137a818d93f75aae0fe",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error17",
+    "revision": "r1",
+    "sha256": "be59671232bf4c85990d9dde2b3853bdbc6883c4309cc775a335188c575c7a2f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error18",
+    "revision": "r1",
+    "sha256": "9b9f219bf12b243e3fba47b54e37ef59c706e5411a3c51416ce2ccb177c3474d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error19",
+    "revision": "r1",
+    "sha256": "d55dcdaf8dae84e2c0d7d28f9ea2168e661439d33addd1b1b864fa5260269c9a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error20",
+    "revision": "r1",
+    "sha256": "f7d395758ffb7dd98ae2c0c226d3f8f0a80d47c7e890a67271a0cc8e04e6a0b4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error21",
+    "revision": "r1",
+    "sha256": "4def8f97e153934780df62be6125597bcbfc05cc06ff5f661448459cd6041ce5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error22",
+    "revision": "r1",
+    "sha256": "e3a746a2688d1aad10e3b57e552eac81d0d9da3b3ae4b7f52d912dc052de55fc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error23",
+    "revision": "r1",
+    "sha256": "beb91bd8ed7a0a72e6e27428579f8894b45145a02f5f81817279cc2a236bf85d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error24",
+    "revision": "r1",
+    "sha256": "13de9dda08c2f32d9caa38467bd299a8b12b9931bf6bd035a1860f36f0f3ad44",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error25",
+    "revision": "r1",
+    "sha256": "50db53ccf130a47049068a569f44045c690a891486e5cd60812ad5dbfe4a6af2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error26",
+    "revision": "r1",
+    "sha256": "d9d0d7d1b6758decb11646317097c30aedd263601f34744cb5c9db1bae691d9d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error27",
+    "revision": "r1",
+    "sha256": "ee68ad1ef4689a0865e7b4a29b05acba9e498e50ad2ebd35547b8027556c666b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error28",
+    "revision": "r1",
+    "sha256": "08f0594aa77b1d0774a8d10c578f7e82893ae50aeea54ab39d0624c45e7ea720",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error29",
+    "revision": "r1",
+    "sha256": "ccc60089f139f65d14010a0e0ec8910b06d358bf0f980cbaf2cebb069e31f46b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error30",
+    "revision": "r1",
+    "sha256": "97a2f6bf8185b663e17cb88699c125261a6cc49ca4695607413d90fdc3f4a7b2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error31",
+    "revision": "r1",
+    "sha256": "cd65661afc698d18b066a287f3a0d9c91232e32daa18f1419adac2268d88e66b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error32",
+    "revision": "r1",
+    "sha256": "c6786527fd4b66a439fb702871d35d95aca4616bc09e90d3528665b106c272ac",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error33",
+    "revision": "r1",
+    "sha256": "453da3e7c4f9e9628f1d47a79c9a48541ceb99f17f56a57fe774ccb853946919",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error34",
+    "revision": "r1",
+    "sha256": "a19634220c851921330626818e22d37ee66bf97d9d0b8117cce3224eabacf7cd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error35",
+    "revision": "r1",
+    "sha256": "ea61343f47233af6eb5650a57a13d6ce74fcaf9a547cfc78af4b3a4347a82335",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error36",
+    "revision": "r1",
+    "sha256": "fd473e9a1437b8374628ac1bca03b311223fec37f137507bfef3a714cb381c06",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error37",
+    "revision": "r1",
+    "sha256": "c67f704ab5ed8dda753f41f98941adce42d42ba582150302ca7e5d7a3c06700a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error38",
+    "revision": "r1",
+    "sha256": "512f8acb80475912a8956393ff093b93ea88d32fb503cfc15831dcc192d6c64e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error39",
+    "revision": "r1",
+    "sha256": "128a420dc7d64973a6210a6c5c611e69b55523399268111fc552baca9b58525b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error40",
+    "revision": "r1",
+    "sha256": "9b6e4bbdfd0d7bb5340d2afa11e24933c6276be43949b9eb68e5b9289db9a9e3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error41",
+    "revision": "r1",
+    "sha256": "8f38d1af541c0946bde2a10475884c0482c3c9ae5c19582ebc2baf713b2e51a4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error42",
+    "revision": "r1",
+    "sha256": "069ce5cfd017abdde828ef74e4a78eaef128d0a9c98104b11505da9f7ddf3281",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error43",
+    "revision": "r1",
+    "sha256": "5b6fc5e9398f4b68ec6ffd9f1146b56bbee64792295b42585229dd83170876cf",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error44",
+    "revision": "r1",
+    "sha256": "b76081a612bcff1501effebb837163ab4360e7594eb3621c683194dbe70ad494",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error45",
+    "revision": "r1",
+    "sha256": "dd0cefd83760baa138fa46dd1211edb21a4ddf5a49e960eeff744928262fd092",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error46",
+    "revision": "r1",
+    "sha256": "fc8c640eac0d06349965586c4a73cfd7f6814c1315e944172024e9f5fd43ebe3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error47",
+    "revision": "r1",
+    "sha256": "ce5969da872e10d1678c5bf28f12663e38cb2a1d7c124c3e247eec5c862c2500",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error48",
+    "revision": "r1",
+    "sha256": "23b1930834de30bb9bc682639b5b57eb27d44e85f7af0f5fbea367decb373537",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error49",
+    "revision": "r1",
+    "sha256": "49efb4faaec61bb37bd63b8bb79170271d3f4e7692328d04b4a5de43aa9dff30",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error50",
+    "revision": "r1",
+    "sha256": "c5ba7c15192981d93d687c1434de62ba65eaacf0b685c17abbf58cff59468d27",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error51",
+    "revision": "r1",
+    "sha256": "53ae275d6994c33e02456146b06308ec92b2997c1eac7932b18e3e6376f52485",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error52",
+    "revision": "r1",
+    "sha256": "c40c5a4d789c155470150e6a41a15a209ab48c107ad43afd80b207b4fc883523",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error53",
+    "revision": "r1",
+    "sha256": "c026e6ef1d18dd2b160c99b4817076a4f7513aa4a8cd17bdb95f0675b7772bca",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error54",
+    "revision": "r1",
+    "sha256": "e53a9f067690d5ad5e3ba1774c6a76d615ab61e7cc01e0ffc52c670db32e4c9c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error55",
+    "revision": "r1",
+    "sha256": "f6d1143a7d377de06d185e1ab034b22e21d5fbc530e61c0da322cd32b977fd68",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error56",
+    "revision": "r1",
+    "sha256": "c6315f70e93a6d63cdc19cbeca0b5f9d387cf3dbedf692e919accd2bf2aa6ee6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error57",
+    "revision": "r1",
+    "sha256": "237a2a43514e7355e93f1fc1b7fa3876693d1e3c5d17b1499685130a2b6f0068",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error58",
+    "revision": "r1",
+    "sha256": "aca9dd13cf53f319c8faeedfe6f2257f6617fb27fd46e3e5b770fa8ee34b6456",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-error59",
+    "revision": "r1",
+    "sha256": "5c345a267a7cf699ade1acd1c3280118feeedac95f7187ec8b61bb329aebdc42",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "c4w-mission21",
+    "revision": "r1",
+    "sha256": "5465a91513bc4df6ca4b1175789bed5b5b6f879d72e47186d405fa1900dcc94e"
+   },
+   {
+    "missionId": "c4w-mission22",
+    "revision": "r1",
+    "sha256": "7594e8e2fa111dab796ed26e393021a0599ee1bdd2fde9fc6c8b7c948266bc53"
+   },
+   {
+    "missionId": "c4w-mission23",
+    "revision": "r1",
+    "sha256": "bbf64f3119a7a7b1a1a8589b27fb991e9f9a70a31b35a22a3a69c9a29f27af34"
+   },
+   {
+    "missionId": "c4w-mission24",
+    "revision": "r1",
+    "sha256": "d1e3e14946c23d361cc7f8bfd59df2495f1f4ce083d76dee531587be2e0f9b33"
+   },
+   {
+    "missionId": "c4w-mission25",
+    "revision": "r1",
+    "sha256": "38698fe7af554d97123a995aa8dc1c9facec9a2338b099910c2a89d652ef04bc"
+   },
+   {
+    "missionId": "c4w-mission26",
+    "revision": "r1",
+    "sha256": "47868f25983429fcd2e5295871dbab75ab3f694c9c15d3e1862c965f4233353f"
+   },
+   {
+    "missionId": "c4w-mission27",
+    "revision": "r1",
+    "sha256": "dce069bc9a9bdecbfd60ffe2a6c70654bf07fc5b918d3c54ccd0481b33f365e7"
+   },
+   {
+    "missionId": "c4w-mission28",
+    "revision": "r1",
+    "sha256": "a3966c07f307fd659139e4408d57a61921a11b7d1fe57c7b0702bd7c57483851"
+   },
+   {
+    "missionId": "c4w-mission29",
+    "revision": "r1",
+    "sha256": "ba23e3f9eeafc702cb7548b31d6f38e7ac0b55ff653b83bffebe0b009f28f257"
+   },
+   {
+    "missionId": "c4w-mission30",
+    "revision": "r1",
+    "sha256": "9232f1c77a56722d712eb88eec57bb9d6c384d35adeba0320124bbd56f75c57d"
+   },
+   {
+    "missionId": "c4w-mission31",
+    "revision": "r1",
+    "sha256": "364d7963d51931940d3ccb4af229ea3b93d570769fe9ff3d647c3b6f28a94b44"
+   },
+   {
+    "missionId": "c4w-mission32",
+    "revision": "r1",
+    "sha256": "5485fbead81d53ddb3845ef50c4bc5657a1947a99d790f4c2b7f13908fdf08db"
+   },
+   {
+    "missionId": "c4w-mission33",
+    "revision": "r1",
+    "sha256": "224330d8cd29a8ce186b363189ec67fb64619c055c35ca87ff9f938aefb2886f"
+   },
+   {
+    "missionId": "c4w-mission34",
+    "revision": "r1",
+    "sha256": "f19bf8ae49a32ed80965fa20d7463b5d60772751e09c64c7f8f39f268d8bba3f"
+   },
+   {
+    "missionId": "c4w-mission35",
+    "revision": "r1",
+    "sha256": "c443a78e328f63c2ddd0c38f0fc2575a7a0549632441cca95fa49ab46767af48"
+   },
+   {
+    "missionId": "c4w-mission36",
+    "revision": "r1",
+    "sha256": "863a167bb6ef3c2bfb45208c9a0cb10e933ed1e268a2aaa449406bf876077937"
+   },
+   {
+    "missionId": "c4w-mission37",
+    "revision": "r1",
+    "sha256": "2ff6f84c40265e9df5bde867d33cb659b529a00dafce4d2e33e0626fd81c9eb3"
+   },
+   {
+    "missionId": "c4w-mission38",
+    "revision": "r1",
+    "sha256": "6298f2d8db57b9d4e745942690459a1baa3c47d57646ff0401e4726a8746ed65"
+   },
+   {
+    "missionId": "c4w-mission39",
+    "revision": "r1",
+    "sha256": "b0a130c598eb15dcf66122ca7f6c9c483c05c9f123df0eff30519cdac4dd87f1"
+   },
+   {
+    "missionId": "c4w-mission40",
+    "revision": "r1",
+    "sha256": "95eb48abc62f8538eca4bd794e22780d364f12029295270684ddecfd28780682"
+   }
+  ]
+ }
+}

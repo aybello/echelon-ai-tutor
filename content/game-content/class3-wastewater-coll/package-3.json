@@ -1,0 +1,3954 @@
+{
+ "courseKey": "class3-wastewater-coll",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "c3wc-error60",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this total detention time calculation for two force main segments in series.",
+   "topicId": "force-main-detention",
+   "level": "class1",
+   "assumptions": "Fictional force main: segment 1 is 1000 m long, segment 2 is 1400 m long, velocity 2 m/s in both. Total detention equals the sum of the segment times.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Segment 1 time = 1000 m / 2 m/s = 500 s"
+    },
+    {
+     "id": "line2",
+     "label": "2. Segment 2 time = 1400 m / 2 m/s = 700 s"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total time = 500 s + 700 s = 120 s"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total time = 500 s + 700 s = 1200 s",
+   "explanation": "Line 3 dropped a zero in the addition. The total detention time is 1200 s, or 20 min."
+  },
+  {
+   "id": "c3wc-error61",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this cured in place liner area calculation.",
+   "topicId": "rehabilitation-quantities",
+   "level": "class1",
+   "assumptions": "Fictional lining job: diameter 0.6 m, circumference 3.14 * 0.6 m, length 120 m. Liner area equals the circumference times the length.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Circumference = 3.14 * 0.6 m = 1.884 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Liner area = 0.6 m * 120 m = 72 m2"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Liner area = 1.884 m * 120 m = 226.08 m2",
+   "explanation": "Line 2 used the diameter instead of the circumference from line 1. The liner area is 226.08 m2."
+  },
+  {
+   "id": "c3wc-error62",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this total liner length calculation for a two part lining job.",
+   "topicId": "rehabilitation-quantities",
+   "level": "class1",
+   "assumptions": "Fictional lining job: two identical parts, each 3 reaches of 45 m. Total length equals the sum of the two parts.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. First part = 3 reaches * 45 m = 135 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total length = 135 m + 45 m = 180 m"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Total length = 135 m + 135 m = 270 m",
+   "explanation": "Line 2 added only one 45 m reach for the second part instead of the full 135 m part. The total liner length is 270 m."
+  },
+  {
+   "id": "c3wc-error63",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this annular grout volume calculation for a slip lining job.",
+   "topicId": "rehabilitation-quantities",
+   "level": "class1",
+   "assumptions": "Fictional slip lining job: host pipe area 0.2826 m2, liner area 0.2326 m2, length 200 m. Grout volume equals the annular area times the length.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Annular area = 0.2826 m2 - 0.2326 m2 = 0.05 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Grout volume = 0.05 m2 * 200 m = 100 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Grout volume = 0.05 m2 * 200 m = 10 m3",
+   "explanation": "Line 2 added a zero in the multiplication. The grout volume is 10 m3."
+  },
+  {
+   "id": "c3wc-error64",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this grout quantity calculation for a rehabilitation job.",
+   "topicId": "rehabilitation-quantities",
+   "level": "class1",
+   "assumptions": "Fictional grouting job: annular area 0.04 m2, length 200 m, 1000 L = 1 m3. Grout volume equals the annular area times the length.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Grout volume = 0.04 m2 * 200 m = 8 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Grout volume = 8 m3 * 100 L/m3 = 800 L"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Grout volume = 8 m3 * 1000 L/m3 = 8000 L",
+   "explanation": "Line 2 used 100 L per m3 instead of 1000 L per m3. The grout quantity is 8000 L."
+  },
+  {
+   "id": "c3wc-error65",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this liner order length calculation with a waste allowance.",
+   "topicId": "rehabilitation-quantities",
+   "level": "class1",
+   "assumptions": "Fictional lining job: base length 400 m, waste allowance 10 percent. Order length equals the base length plus the waste amount.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Waste amount = 400 m * 0.1 = 40 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Order length = 400 m + 10 m = 410 m"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Order length = 400 m + 40 m = 440 m",
+   "explanation": "Line 2 added 10, the percent number, instead of the 40 m waste amount from line 1. The order length is 440 m."
+  },
+  {
+   "id": "c3wc-error66",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this cured in place liner area calculation for a trunk sewer.",
+   "topicId": "rehabilitation-quantities",
+   "level": "class1",
+   "assumptions": "Fictional lining job: diameter 0.8 m, circumference 3.14 * 0.8 m, length 80 m. Liner area equals the circumference times the length.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Circumference = 3.14 * 0.8 m = 2.512 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Liner area = 2.512 m / 80 m = 0.0314 m2"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Liner area = 2.512 m * 80 m = 200.96 m2",
+   "explanation": "Line 2 divided the circumference by the length instead of multiplying. The liner area is 200.96 m2."
+  },
+  {
+   "id": "c3wc-error67",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this liner section count calculation for a rehabilitation contract.",
+   "topicId": "rehabilitation-quantities",
+   "level": "class1",
+   "assumptions": "Fictional contract: 18 reaches of 50 m each, liner sections 30 m long. The section count equals the total length divided by the section length.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total length = 18 reaches * 50 m = 900 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Section count = 900 m * 30 m = 27000 sections"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Section count = 900 m / 30 m = 30 sections",
+   "explanation": "Line 2 multiplied the total length by the section length instead of dividing. The job needs 30 sections."
+  },
+  {
+   "id": "c3wc-error68",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this manhole coating quantity calculation.",
+   "topicId": "rehabilitation-quantities",
+   "level": "class1",
+   "assumptions": "Fictional program: coating area 12.5 m2 per manhole, 16 manholes, coating use 0.5 kg per m2. Total area equals the area per manhole times the count.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total area = 12.5 m2 + 16 manholes = 28.5 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Coating mass = 28.5 m2 * 0.5 kg/m2 = 14.25 kg"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Total area = 12.5 m2 * 16 manholes = 200 m2",
+   "explanation": "Line 1 added the area per manhole and the count instead of multiplying. The total area is 200 m2 and the coating mass is 100 kg."
+  },
+  {
+   "id": "c3wc-error69",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this lateral liner length calculation.",
+   "topicId": "rehabilitation-quantities",
+   "level": "class1",
+   "assumptions": "Fictional program: 4 streets with 6 laterals each, each lateral liner 7.5 m long. Total length equals the lateral count times the length each.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Lateral count = 4 streets * 6 laterals = 24 laterals"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total length = 24 laterals * 7.5 m = 18 m"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Total length = 24 laterals * 7.5 m = 180 m",
+   "explanation": "Line 2 dropped a zero in the multiplication. The total lateral liner length is 180 m."
+  },
+  {
+   "id": "c3wc-error70",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pipe bursting quantity calculation for a two crew program.",
+   "topicId": "rehabilitation-quantities",
+   "level": "class1",
+   "assumptions": "Fictional program: crew A bursts 25 m per day, crew B bursts 20 m per day, program duration 12 days. Total length equals the combined rate times the days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Combined rate = 25 m/day + 20 m/day = 45 m/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total length = 45 m/day * 12 days = 54 m"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Total length = 45 m/day * 12 days = 540 m",
+   "explanation": "Line 2 dropped a zero in the multiplication. The two crews burst 540 m in 12 days."
+  },
+  {
+   "id": "c3wc-error71",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this grout bag count calculation.",
+   "topicId": "rehabilitation-quantities",
+   "level": "class1",
+   "assumptions": "Fictional grouting job: annular area 0.03 m2, length 200 m, each bag yields 0.02 m3 of grout. The bag count equals the grout volume divided by the yield per bag.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Grout volume = 0.03 m2 * 200 m = 6 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Bag count = 6 m3 * 0.02 m3/bag = 0.12 bags"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Bag count = 6 m3 / 0.02 m3/bag = 300 bags",
+   "explanation": "Line 2 multiplied the volume by the yield per bag instead of dividing. The job needs 300 bags."
+  },
+  {
+   "id": "c3wc-error72",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this combined liner area calculation for two reaches.",
+   "topicId": "rehabilitation-quantities",
+   "level": "class1",
+   "assumptions": "Fictional lining job: reach 1 has circumference 1.57 m and length 100 m, reach 2 has circumference 1.57 m and length 50 m. Total area equals the sum of the reach areas.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Reach 1 area = 1.57 m * 100 m = 157 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Reach 2 area = 1.57 m * 50 m = 78.5 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total area = 157 m2 - 78.5 m2 = 78.5 m2"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total area = 157 m2 + 78.5 m2 = 235.5 m2",
+   "explanation": "Line 3 subtracted the second reach area instead of adding it. The total liner area is 235.5 m2."
+  },
+  {
+   "id": "c3wc-error73",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this remaining rehabilitation length calculation.",
+   "topicId": "rehabilitation-quantities",
+   "level": "class1",
+   "assumptions": "Fictional program: total program length 2400 m, completed 30 reaches of 50 m each. Remaining length equals the total minus the completed length.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Completed length = 30 reaches * 50 m = 1500 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Remaining length = 2400 m + 1500 m = 3900 m"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Remaining length = 2400 m - 1500 m = 900 m",
+   "explanation": "Line 2 added the completed length to the total instead of subtracting it. The remaining length is 900 m."
+  },
+  {
+   "id": "c3wc-error74",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this slip liner supply length calculation with an extra allowance.",
+   "topicId": "rehabilitation-quantities",
+   "level": "class1",
+   "assumptions": "Fictional job: host pipe length 350 m, extra allowance 10 percent. Supply length equals the host length plus the extra amount.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Extra amount = 350 m * 0.1 = 35 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Supply length = 350 m + 10 m = 360 m"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Supply length = 350 m + 35 m = 385 m",
+   "explanation": "Line 2 added 10, the percent number, instead of the 35 m extra amount from line 1. The supply length is 385 m."
+  },
+  {
+   "id": "c3wc-error75",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this manhole benching concrete calculation.",
+   "topicId": "rehabilitation-quantities",
+   "level": "class1",
+   "assumptions": "Fictional program: concrete 0.4 m3 per manhole, 25 manholes, truck capacity 5 m3 per load. Total concrete equals the amount per manhole times the count.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total concrete = 0.4 m3 * 25 manholes = 100 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Truck loads = 100 m3 / 5 m3/load = 20 loads"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Total concrete = 0.4 m3 * 25 manholes = 10 m3",
+   "explanation": "Line 1 added a zero in the multiplication. The total concrete is 10 m3, which is 2 truck loads."
+  },
+  {
+   "id": "c3wc-error76",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this CCTV inspection program completion calculation.",
+   "topicId": "program-completion",
+   "level": "class1",
+   "assumptions": "Fictional CCTV program: inspected 4500 m of a 12000 m program. Percent complete equals the ratio times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Ratio = 4500 m / 12000 m = 0.375"
+    },
+    {
+     "id": "line2",
+     "label": "2. Percent complete = 0.375 * 10 = 3.75 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Percent complete = 0.375 * 100 = 37.5 percent",
+   "explanation": "Line 2 multiplied the ratio by 10 instead of 100 to get a percent. The program is 37.5 percent complete."
+  },
+  {
+   "id": "c3wc-error77",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sewer cleaning program status calculation.",
+   "topicId": "program-completion",
+   "level": "class1",
+   "assumptions": "Fictional cleaning program: total 8000 m, cleaned 6000 m. Percent remaining equals 100 minus the percent complete.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Ratio complete = 6000 m / 8000 m = 0.75"
+    },
+    {
+     "id": "line2",
+     "label": "2. Percent complete = 0.75 * 100 = 75 percent"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent remaining = 75 percent, the percent complete reported again"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent remaining = 100 percent - 75 percent = 25 percent",
+   "explanation": "Line 3 reported the percent complete as the percent remaining. With 75 percent complete, 25 percent remains."
+  },
+  {
+   "id": "c3wc-error78",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this CCTV production rate calculation.",
+   "topicId": "program-completion",
+   "level": "class1",
+   "assumptions": "Fictional CCTV program: 3600 m inspected in 12 working days. The production rate equals the length divided by the days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Production rate = 3600 m * 12 days = 43200 m/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Days for the next 6000 m = 6000 m / 43200 m/day, using the rate from line 1"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Production rate = 3600 m / 12 days = 300 m/day",
+   "explanation": "Line 1 multiplied the length by the days instead of dividing. The production rate is 300 m per day, so the next 6000 m takes 20 days."
+  },
+  {
+   "id": "c3wc-error79",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this cleaning program forecast calculation.",
+   "topicId": "program-completion",
+   "level": "class1",
+   "assumptions": "Fictional cleaning program: total 5000 m, cleaned 2600 m, production rate 400 m per week. Weeks remaining equals the remaining length divided by the rate.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Remaining length = 5000 m - 2600 m = 2400 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Weeks remaining = 2400 m * 400 m/week = 960000 weeks"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Weeks remaining = 2400 m / 400 m/week = 6 weeks",
+   "explanation": "Line 2 multiplied the remaining length by the rate instead of dividing. The program needs 6 more weeks."
+  },
+  {
+   "id": "c3wc-error80",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this cleaning program completion calculation.",
+   "topicId": "program-completion",
+   "level": "class1",
+   "assumptions": "Fictional cleaning program: cleaned 17.5 km of a 25 km program, 1000 m = 1 km. Percent complete equals the cleaned length divided by the total, times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Cleaned length = 17.5 km * 1000 m/km = 17500 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total length = 25 km * 1000 m/km = 25000 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent complete = 25000 m / 17500 m * 100, total divided by cleaned"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent complete = 17500 m / 25000 m * 100 = 70 percent",
+   "explanation": "Line 3 inverted the ratio, dividing the total by the cleaned length. The program is 70 percent complete."
+  },
+  {
+   "id": "c3wc-error81",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this manhole inspection program completion calculation.",
+   "topicId": "program-completion",
+   "level": "class1",
+   "assumptions": "Fictional inspection program: 96 manholes inspected of 120 in the program. Percent complete equals the ratio times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Ratio = 96 manholes / 120 manholes = 0.08"
+    },
+    {
+     "id": "line2",
+     "label": "2. Percent complete = 0.08 * 100 = 8 percent"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Ratio = 96 manholes / 120 manholes = 0.8",
+   "explanation": "Line 1 misplaced the decimal in the division. The ratio is 0.8 and the program is 80 percent complete."
+  },
+  {
+   "id": "c3wc-error82",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this monthly CCTV target achievement calculation.",
+   "topicId": "program-completion",
+   "level": "class1",
+   "assumptions": "Fictional monthly target: target 2000 m, actual inspection 1500 m. Percent of target equals the ratio times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Ratio = 1500 m / 2000 m = 0.75"
+    },
+    {
+     "id": "line2",
+     "label": "2. Achievement = 0.75 percent, the ratio reported as a percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Achievement = 0.75 * 100 = 75 percent",
+   "explanation": "Line 2 reported the decimal ratio as if it were already a percent. The crew achieved 75 percent of the monthly target."
+  },
+  {
+   "id": "c3wc-error83",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this program schedule elapsed calculation.",
+   "topicId": "program-completion",
+   "level": "class1",
+   "assumptions": "Fictional program: planned duration 80 days, elapsed 20 days. Percent of schedule elapsed equals the ratio times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Ratio = 20 days / 80 days = 0.25"
+    },
+    {
+     "id": "line2",
+     "label": "2. Percent elapsed = 0.25 * 1000 = 250 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Percent elapsed = 0.25 * 100 = 25 percent",
+   "explanation": "Line 2 multiplied the ratio by 1000 instead of 100 to get a percent. The program is 25 percent through its schedule."
+  },
+  {
+   "id": "c3wc-error84",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this remaining CCTV share calculation.",
+   "topicId": "program-completion",
+   "level": "class1",
+   "assumptions": "Fictional CCTV program: total 15000 m, inspected 9000 m. Percent remaining is measured against the total program length.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Remaining length = 15000 m - 9000 m = 6000 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Percent remaining = 6000 m / 9000 m * 100, using the inspected length as the base"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Percent remaining = 6000 m / 15000 m * 100 = 40 percent",
+   "explanation": "Line 2 used the inspected length as the base instead of the total program length. The remaining share is 40 percent."
+  },
+  {
+   "id": "c3wc-error85",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this two crew cleaning forecast calculation.",
+   "topicId": "program-completion",
+   "level": "class1",
+   "assumptions": "Fictional cleaning program: crew A cleans 500 m per week, crew B cleans 300 m per week, remaining length 4000 m. Weeks remaining equals the remaining length divided by the combined rate.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Combined rate = 500 m/week + 300 m/week = 800 m/week"
+    },
+    {
+     "id": "line2",
+     "label": "2. Weeks remaining = 4000 m * 800 m/week = 3200000 weeks"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Weeks remaining = 4000 m / 800 m/week = 5 weeks",
+   "explanation": "Line 2 multiplied the remaining length by the combined rate instead of dividing. The two crews need 5 weeks."
+  },
+  {
+   "id": "c3wc-error86",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this manhole rehabilitation completion calculation.",
+   "topicId": "program-completion",
+   "level": "class1",
+   "assumptions": "Fictional rehabilitation program: 45 manholes rehabilitated of 180 in the program. Percent complete equals the ratio times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Ratio = 45 manholes / 180 manholes = 0.25"
+    },
+    {
+     "id": "line2",
+     "label": "2. Percent complete = 0.25 * 10 = 2.5 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Percent complete = 0.25 * 100 = 25 percent",
+   "explanation": "Line 2 multiplied the ratio by 10 instead of 100 to get a percent. The program is 25 percent complete."
+  },
+  {
+   "id": "c3wc-error87",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this cleaning completion calculation by segment count.",
+   "topicId": "program-completion",
+   "level": "class1",
+   "assumptions": "Fictional cleaning program: 140 segments cleaned, each segment 25 m, program total 5000 m. Percent complete equals the cleaned length divided by the total, times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Cleaned length = 140 segments * 25 m = 350 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Percent complete = 350 m / 5000 m * 100 = 7 percent"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Cleaned length = 140 segments * 25 m = 3500 m",
+   "explanation": "Line 1 dropped a zero in the multiplication. The cleaned length is 3500 m and the program is 70 percent complete."
+  },
+  {
+   "id": "c3wc-error88",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this overall program completion calculation for two equal basins.",
+   "topicId": "program-completion",
+   "level": "class1",
+   "assumptions": "Fictional program: basin A is 80 percent complete, basin B is 60 percent complete, and the two basins carry equal weight. The overall completion is the average of the two.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Sum of basin completions = 80 percent + 60 percent = 140 percent"
+    },
+    {
+     "id": "line2",
+     "label": "2. Overall completion = 140 percent, the sum reported as the overall value"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Overall completion = 140 percent / 2 basins = 70 percent",
+   "explanation": "Line 2 reported the sum of the two basin completions as the overall value. Averaging the equal basins gives 70 percent."
+  },
+  {
+   "id": "c3wc-error89",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this odour control chemical mass calculation.",
+   "topicId": "odour-dosing",
+   "level": "class1",
+   "assumptions": "Fictional dosing program: dose 6 mg/L, flow 3000 m3/day, 1000 L = 1 m3, 1000000 mg = 1 kg.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Flow = 3000 m3/day * 1000 L/m3 = 3000000 L/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Chemical mass = 6 mg/L * 3000000 L/day = 18000000 mg/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Chemical mass = 18000000 mg/day / 100000 mg/kg = 180 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Chemical mass = 18000000 mg/day / 1000000 mg/kg = 18 kg/day",
+   "explanation": "Line 3 divided by 100000 instead of 1000000 mg per kg. The chemical use is 18 kg per day."
+  },
+  {
+   "id": "c3wc-error90",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this hourly chemical feed calculation.",
+   "topicId": "odour-dosing",
+   "level": "class1",
+   "assumptions": "Fictional dosing program: dose 12 mg/L, flow 2000 m3/day, chemical mass in kg/day equals the dose times the flow divided by 1000, 24 h = 1 day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily mass = 12 mg/L * 2000 m3/day / 1000 = 24 kg/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Hourly feed = 24 kg/day * 24 h/day = 576 kg/h"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Hourly feed = 24 kg/day / 24 h/day = 1 kg/h",
+   "explanation": "Line 2 multiplied the daily mass by 24 instead of dividing by the hours per day. The feed rate is 1 kg per hour."
+  },
+  {
+   "id": "c3wc-error91",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this odour control solution feed calculation.",
+   "topicId": "odour-dosing",
+   "level": "class1",
+   "assumptions": "Fictional dosing program: dose 10 mg/L, flow 2000 m3/day, chemical mass in kg/day equals the dose times the flow divided by 1000, solution strength 0.4 kg per L. Feed volume equals the mass divided by the strength.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily mass = 10 mg/L * 2000 m3/day / 1000 = 20 kg/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Feed volume = 20 kg/day * 0.4 kg/L = 8 L/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Feed volume = 20 kg/day / 0.4 kg/L = 50 L/day",
+   "explanation": "Line 2 multiplied the mass by the solution strength instead of dividing. The feed volume is 50 L per day."
+  },
+  {
+   "id": "c3wc-error92",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chemical tank supply calculation.",
+   "topicId": "odour-dosing",
+   "level": "class1",
+   "assumptions": "Fictional dosing station: feed pump delivers 2.5 L/h, tank volume 900 L, 24 h = 1 day. Days of supply equals the tank volume divided by the daily use.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily use = 2.5 L/h * 24 h/day = 60 L/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Days of supply = 900 L * 60 L/day = 54000 days"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Days of supply = 900 L / 60 L/day = 15 days",
+   "explanation": "Line 2 multiplied the tank volume by the daily use instead of dividing. The tank holds 15 days of supply."
+  },
+  {
+   "id": "c3wc-error93",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sulfide load calculation for odour control design.",
+   "topicId": "odour-dosing",
+   "level": "class1",
+   "assumptions": "Fictional trunk sewer: sulfide concentration 4 mg/L, flow 5000 m3/day. Sulfide load in kg/day equals the concentration times the flow divided by 1000.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Flow check = 5000 m3/day, from the given monitoring average"
+    },
+    {
+     "id": "line2",
+     "label": "2. Sulfide load = 4 mg/L * 5000 m3/day / 100 = 200 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Sulfide load = 4 mg/L * 5000 m3/day / 1000 = 20 kg/day",
+   "explanation": "Line 2 divided by 100 instead of 1000 in the load formula. The sulfide load is 20 kg per day."
+  },
+  {
+   "id": "c3wc-error94",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chemical dose calculation using a dosing ratio.",
+   "topicId": "odour-dosing",
+   "level": "class1",
+   "assumptions": "Fictional dosing program: dosing ratio 1.5 kg of chemical per kg of sulfide, sulfide concentration 6 mg/L, flow 4000 m3/day. The dose equals the ratio times the sulfide concentration.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dose = 1.5 + 6 mg/L = 7.5 mg/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily mass = 7.5 mg/L * 4000 m3/day / 1000 = 30 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Dose = 1.5 * 6 mg/L = 9 mg/L",
+   "explanation": "Line 1 added the ratio to the sulfide concentration instead of multiplying. The dose is 9 mg/L and the daily mass is 36 kg."
+  },
+  {
+   "id": "c3wc-error95",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this feed pump rate calculation for an odour dosing station.",
+   "topicId": "odour-dosing",
+   "level": "class1",
+   "assumptions": "Fictional dosing station: feed volume 72 L/day, 24 h = 1 day, 1000 mL = 1 L, 60 min = 1 h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Feed rate = 72 L/day / 24 h/day = 3 L/h"
+    },
+    {
+     "id": "line2",
+     "label": "2. Feed rate = 3 L/h * 1000 mL/L = 3000 mL/h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Feed rate = 3000 mL/h * 60 min/h = 180000 mL/min"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Feed rate = 3000 mL/h / 60 min/h = 50 mL/min",
+   "explanation": "Line 3 multiplied by 60 instead of dividing to convert an hourly rate to a per minute rate. The pump delivers 50 mL per minute."
+  },
+  {
+   "id": "c3wc-error96",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this dose increase calculation for an odour program.",
+   "topicId": "odour-dosing",
+   "level": "class1",
+   "assumptions": "Fictional dosing program: current dose 5 mg/L, planned increase 20 percent. The new dose equals the current dose plus the increase amount.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Increase amount = 5 mg/L * 0.2 = 1 mg/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. New dose = 5 mg/L + 20 mg/L = 25 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. New dose = 5 mg/L + 1 mg/L = 6 mg/L",
+   "explanation": "Line 2 added 20, the percent number, instead of the 1 mg/L increase amount from line 1. The new dose is 6 mg/L."
+  },
+  {
+   "id": "c3wc-error97",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this injection point split calculation for odour dosing.",
+   "topicId": "odour-dosing",
+   "level": "class1",
+   "assumptions": "Fictional dosing program: daily chemical mass 40 kg, solution strength 0.5 kg per L, two injection points share the feed equally. Feed per point equals the total feed divided by the number of points.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total feed = 40 kg/day / 0.5 kg/L = 80 L/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Feed per point = 80 L/day, the total feed, at each of the two points"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Feed per point = 80 L/day / 2 points = 40 L/day",
+   "explanation": "Line 2 assigned the full total feed to each point. Split equally, each point receives 40 L per day."
+  },
+  {
+   "id": "c3wc-error98",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this daily chemical use calculation on a per megalitre basis.",
+   "topicId": "odour-dosing",
+   "level": "class1",
+   "assumptions": "Fictional dosing program: dose rate 15 kg per ML, flow 2500 m3/day, 1000 m3 = 1 ML. Daily use equals the rate times the flow in ML.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Flow = 2500 m3/day / 1000 m3/ML = 2.5 ML/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily use = 15 kg/ML / 2.5 ML/day = 6 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Daily use = 15 kg/ML * 2.5 ML/day = 37.5 kg/day",
+   "explanation": "Line 2 divided the dose rate by the flow instead of multiplying. The daily chemical use is 37.5 kg."
+  },
+  {
+   "id": "c3wc-error99",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this carbon media quantity calculation for an odour unit.",
+   "topicId": "odour-dosing",
+   "level": "class1",
+   "assumptions": "Fictional odour unit: sulfide load in kg/day equals the concentration times the flow divided by 1000, media capacity 0.2 kg of sulfide per kg of media. Media mass equals the load divided by the capacity.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Sulfide load = 2 mg/L * 5000 m3/day / 1000 = 10 kg/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Media mass = 10 kg/day * 0.2 kg/kg = 2 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Media mass = 10 kg/day / 0.2 kg/kg = 50 kg",
+   "explanation": "Line 2 multiplied the load by the media capacity instead of dividing. The unit needs 50 kg of media for one day of load."
+  },
+  {
+   "id": "c3wc-process01",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the annual CMOM program review cycle for a municipal collection system.",
+   "topicId": "cmom-program-leadership",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, Ontario Regulation 129/04 requirements where they apply, and standard collection system practice.",
+   "configuration": "Scope: yearly review of the capacity, management, operations and maintenance program covering about 420 km of gravity sewer, 38 lift stations, and 22 km of force main.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Score each CMOM element against the program goals and the commitments made in the previous annual review"
+    },
+    {
+     "id": "s2",
+     "label": "Publish the approved plan to supervisors and track action completion quarterly in the program file"
+    },
+    {
+     "id": "s3",
+     "label": "Set the next year targets, owners, and completion dates for each corrective and improvement action"
+    },
+    {
+     "id": "s4",
+     "label": "Present the review and the funded action plan to senior management for approval"
+    },
+    {
+     "id": "s5",
+     "label": "Identify the gaps with the largest overflow, flooding, and compliance risk and rank them with operations and engineering staff"
+    },
+    {
+     "id": "s6",
+     "label": "Compile the year of operating data, including overflow records, blockage history, cleaning and CCTV completion, and customer complaints"
+    }
+   ],
+   "correctOrder": [
+    "s6",
+    "s1",
+    "s5",
+    "s3",
+    "s4",
+    "s2"
+   ],
+   "explanation": "Data comes before scoring, and scoring before gap ranking, so targets rest on evidence. Management approval precedes publication, and quarterly tracking keeps the approved plan from becoming a paper exercise."
+  },
+  {
+   "id": "c3wc-process02",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the capacity assurance review before approving a large new development connection.",
+   "topicId": "cmom-program-leadership",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, Ontario Regulation 129/04 requirements where they apply, and standard collection system practice.",
+   "configuration": "Scope: a developer proposes 1,800 new homes tributary to a trunk sewer and two lift stations with a history of wet weather surcharge.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review recent surcharge, overflow, and basement flooding records in the tributary area for evidence of existing capacity limits"
+    },
+    {
+     "id": "s2",
+     "label": "Compare the added flows with the measured dry and wet weather capacity of the trunk sewer and the firm capacity of each lift station"
+    },
+    {
+     "id": "s3",
+     "label": "Identify the upgrades or flow conditions required before connection, with timing tied to the development phases"
+    },
+    {
+     "id": "s4",
+     "label": "Confirm the design flows for the development using the municipal design criteria and the peaking factors in the CMOM capacity procedure"
+    },
+    {
+     "id": "s5",
+     "label": "Add the approved added flows to the system capacity model so future applications are judged against the updated baseline"
+    },
+    {
+     "id": "s6",
+     "label": "Record the capacity decision, conditions, and supporting analysis in the CMOM capacity file and advise the developer in writing"
+    }
+   ],
+   "correctOrder": [
+    "s4",
+    "s2",
+    "s1",
+    "s3",
+    "s6",
+    "s5"
+   ],
+   "explanation": "Design flows and measured capacity must both be known before history is weighed and conditions are set. The written decision comes before the model update, so the file always shows the basis for the approval."
+  },
+  {
+   "id": "c3wc-process03",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the preparation for an external CMOM program audit.",
+   "topicId": "cmom-program-leadership",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, Ontario Regulation 129/04 requirements where they apply, and standard collection system practice.",
+   "configuration": "Scope: an auditor will review program documentation, field practices, and records for the past three years.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Run an internal gap check against the audit criteria and correct record errors that can be fixed honestly before the audit"
+    },
+    {
+     "id": "s2",
+     "label": "Gather the program manual, procedures, training records, overflow logs, and maintenance completion reports for the audit period"
+    },
+    {
+     "id": "s3",
+     "label": "Host the audit, record every finding and information request in an audit log as it is raised"
+    },
+    {
+     "id": "s4",
+     "label": "Brief supervisors and operators on the audit process and schedule field accompaniments for the audit days"
+    },
+    {
+     "id": "s5",
+     "label": "Confirm the audit scope, dates, and document request list with the auditor and assign a single municipal contact"
+    },
+    {
+     "id": "s6",
+     "label": "Build the corrective action plan with owners and dates and enter it into the CMOM improvement tracker"
+    }
+   ],
+   "correctOrder": [
+    "s5",
+    "s2",
+    "s1",
+    "s4",
+    "s3",
+    "s6"
+   ],
+   "explanation": "Scope and records come first, and the honest internal check precedes staff briefing. Findings are logged during the audit itself, and the corrective plan is the closing product of the process."
+  },
+  {
+   "id": "c3wc-process04",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the build of a CMOM performance dashboard for monthly management reporting.",
+   "topicId": "cmom-program-leadership",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, Ontario Regulation 129/04 requirements where they apply, and standard collection system practice.",
+   "configuration": "Scope: the utility wants one monthly page showing collection system performance for the director and council reporting.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Reassess the indicator set annually and retire measures that no longer drive decisions"
+    },
+    {
+     "id": "s2",
+     "label": "Build the dashboard with targets and alert levels for each indicator and test it against three months of known data"
+    },
+    {
+     "id": "s3",
+     "label": "Review the test dashboard with supervisors and correct definitions or data feeds that produce misleading values"
+    },
+    {
+     "id": "s4",
+     "label": "Select a small set of indicators tied to CMOM goals, such as overflows per 100 km, blockages, cleaning completion, and flooding complaints"
+    },
+    {
+     "id": "s5",
+     "label": "Launch monthly reporting and review any indicator past its alert level at the operations management meeting"
+    },
+    {
+     "id": "s6",
+     "label": "Confirm the data source and the owner for each indicator and document how each value is calculated"
+    }
+   ],
+   "correctOrder": [
+    "s4",
+    "s6",
+    "s2",
+    "s3",
+    "s5",
+    "s1"
+   ],
+   "explanation": "Indicators are chosen against goals before data sources are confirmed, and the dashboard is tested on known data before anyone manages from it. Annual reassessment keeps the measures honest and useful."
+  },
+  {
+   "id": "c3wc-process05",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the update of the collection system emergency response plan after a major overflow.",
+   "topicId": "cmom-program-leadership",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, Ontario Regulation 129/04 requirements where they apply, and standard collection system practice.",
+   "configuration": "Scope: a storm caused a sanitary sewer overflow at a lift station and the response exposed gaps in notification and bypass resources.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Compare the gaps against the current emergency response plan and mark the sections that failed or were missing"
+    },
+    {
+     "id": "s2",
+     "label": "Complete the event investigation and list every response gap the event exposed, with evidence from logs and staff debriefs"
+    },
+    {
+     "id": "s3",
+     "label": "Test the revised plan with a tabletop exercise within six months and record the results in the CMOM file"
+    },
+    {
+     "id": "s4",
+     "label": "Draft the revised sections covering notification, bypass deployment, public communication, and regulatory reporting"
+    },
+    {
+     "id": "s5",
+     "label": "Approve the revised plan, issue it to all response staff, and replace superseded copies at stations and in vehicles"
+    },
+    {
+     "id": "s6",
+     "label": "Review the draft with operations, communications staff, and the overall responsible operator and resolve conflicts with other plans"
+    }
+   ],
+   "correctOrder": [
+    "s2",
+    "s1",
+    "s4",
+    "s6",
+    "s5",
+    "s3"
+   ],
+   "explanation": "The plan is revised from investigated facts, not impressions. Review and approval precede issue, and the tabletop test proves the revision works before a real event tests it."
+  },
+  {
+   "id": "c3wc-process06",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the development of a collection operations staffing and training plan under CMOM.",
+   "topicId": "cmom-program-leadership",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, Ontario Regulation 129/04 requirements where they apply, and standard collection system practice.",
+   "configuration": "Scope: retirements will remove three of nine licensed operators within two years and night coverage is already thin.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Compare the forecast with current licences, expected retirements, and training progress of operators in training"
+    },
+    {
+     "id": "s2",
+     "label": "Review progress quarterly and escalate any licensing milestone that slips past its planned date"
+    },
+    {
+     "id": "s3",
+     "label": "Present the plan and its costs for approval and enter approved actions into the human resources and training trackers"
+    },
+    {
+     "id": "s4",
+     "label": "Build the hiring, licensing support, and cross training actions with dates that close each gap before it opens"
+    },
+    {
+     "id": "s5",
+     "label": "Forecast the licensed staffing needed by shift and by station coverage using the CMOM staffing analysis and the Regulation 129/04 coverage rules"
+    },
+    {
+     "id": "s6",
+     "label": "Identify the gaps by licence class and by coverage period and rank the periods with the highest compliance risk"
+    }
+   ],
+   "correctOrder": [
+    "s5",
+    "s1",
+    "s6",
+    "s4",
+    "s3",
+    "s2"
+   ],
+   "explanation": "Need is forecast before the current workforce is compared, because the gap only exists between the two. Approved actions are tracked quarterly so a slipped exam or hire is caught while it can still be fixed."
+  },
+  {
+   "id": "c3wc-process07",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the setup of a regulatory reporting calendar for a Class 3 collection system.",
+   "topicId": "cmom-program-leadership",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, Ontario Regulation 129/04 requirements where they apply, and standard collection system practice.",
+   "configuration": "Scope: the system must meet overflow reporting, annual reporting, and licence related duties under Ontario Regulation 129/04 and its environmental compliance approval.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Test the calendar against the previous year of events and confirm every past overflow would have triggered the right notification"
+    },
+    {
+     "id": "s2",
+     "label": "List every report, notification, and record duty from the environmental compliance approval, Regulation 129/04, and municipal procedures"
+    },
+    {
+     "id": "s3",
+     "label": "Assign each duty an owner, a backup, a due date or trigger, and the record that proves it was completed"
+    },
+    {
+     "id": "s4",
+     "label": "Build the calendar with advance reminders set early enough to gather data and obtain the overall responsible operator review"
+    },
+    {
+     "id": "s5",
+     "label": "Review the calendar after any approval amendment or regulatory change and reissue it to all owners"
+    },
+    {
+     "id": "s6",
+     "label": "Train owners and backups on their duties and where the supporting records are filed"
+    }
+   ],
+   "correctOrder": [
+    "s2",
+    "s3",
+    "s4",
+    "s1",
+    "s6",
+    "s5"
+   ],
+   "explanation": "Duties must be listed from the source documents before owners and dates can be assigned. Testing against real past events proves the triggers work, and review after changes keeps the calendar current."
+  },
+  {
+   "id": "c3wc-process08",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the review of the customer complaint program for sewer backups and odours.",
+   "topicId": "cmom-program-leadership",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, Ontario Regulation 129/04 requirements where they apply, and standard collection system practice.",
+   "configuration": "Scope: complaint records show repeat calls from the same streets and several complaints closed without a field visit.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Extract a year of complaint data and group it by location, cause, and response time to find repeat locations"
+    },
+    {
+     "id": "s2",
+     "label": "Compare the handling of a sample of complaints against the complaint procedure, including field visit and follow up requirements"
+    },
+    {
+     "id": "s3",
+     "label": "Refer repeat locations to the condition and cleaning programs and revise the complaint procedure for the handling gaps"
+    },
+    {
+     "id": "s4",
+     "label": "Train customer service and field staff on the revised procedure and the escalation route for repeat complaints"
+    },
+    {
+     "id": "s5",
+     "label": "Report complaint trends monthly with the CMOM dashboard and confirm repeat locations fall over the following two quarters"
+    },
+    {
+     "id": "s6",
+     "label": "Identify the procedural gaps and the repeat locations that indicate an asset or maintenance problem rather than a service problem"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s6",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Data patterns come before procedure comparison, because repeats point to assets while handling gaps point to process. Revised procedures and training follow the diagnosis, and trend reporting proves whether the fix worked."
+  },
+  {
+   "id": "c3wc-process09",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the setting of a three year overflow reduction target for the collection system.",
+   "topicId": "cmom-program-leadership",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, Ontario Regulation 129/04 requirements where they apply, and standard collection system practice.",
+   "configuration": "Scope: the utility averaged 14 sanitary sewer overflows per year over five years and council has directed a measurable reduction.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Establish the baseline from five years of verified overflow records, separated into wet weather, blockage, and equipment causes"
+    },
+    {
+     "id": "s2",
+     "label": "Estimate the reduction each planned program can deliver, using cleaning, rehabilitation, capacity, and power reliability actions already identified"
+    },
+    {
+     "id": "s3",
+     "label": "Report progress against the target each year and adjust programs, not the baseline, when progress falls behind"
+    },
+    {
+     "id": "s4",
+     "label": "Present the target, the baseline, and the supporting programs to council or the board for endorsement"
+    },
+    {
+     "id": "s5",
+     "label": "Confirm the funding and staffing in the operating and capital plans can deliver the actions behind the target"
+    },
+    {
+     "id": "s6",
+     "label": "Set the target by cause so each program owner knows the reduction their program must deliver"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s6",
+    "s5",
+    "s4",
+    "s3"
+   ],
+   "explanation": "A defensible target is built from a verified baseline and the estimated effect of real programs. Funding is confirmed before endorsement is sought, and progress reporting adjusts programs rather than rewriting history."
+  },
+  {
+   "id": "c3wc-process10",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the coordination of a joint operations and capital planning session for the collection system.",
+   "topicId": "cmom-program-leadership",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, Ontario Regulation 129/04 requirements where they apply, and standard collection system practice.",
+   "configuration": "Scope: operations and engineering hold separate priority lists and two projects last year conflicted on the same trunk sewer.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Issue the plan to both groups and review progress and conflicts at a quarterly joint meeting"
+    },
+    {
+     "id": "s2",
+     "label": "Sequence the top ranked items into a single multi year work plan with operating and capital items in dependency order"
+    },
+    {
+     "id": "s3",
+     "label": "Agree the shared ranking criteria at the start of the session, covering risk, compliance, level of service, and cost"
+    },
+    {
+     "id": "s4",
+     "label": "Rank the combined project and program list against the agreed criteria and record where the groups disagree and why"
+    },
+    {
+     "id": "s5",
+     "label": "Assign an owner and a next step to every item in the agreed plan before the session closes"
+    },
+    {
+     "id": "s6",
+     "label": "Circulate the current operating issues list, condition results, and growth forecasts to both groups before the session"
+    }
+   ],
+   "correctOrder": [
+    "s6",
+    "s3",
+    "s4",
+    "s2",
+    "s5",
+    "s1"
+   ],
+   "explanation": "Shared information and shared criteria come before ranking, so the argument is about evidence rather than departmental preference. Owners and a quarterly review keep one plan from splitting back into two lists."
+  },
+  {
+   "id": "c3wc-process100",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a succession planning and knowledge transfer program for senior collection operators.",
+   "topicId": "oro-supervisory-workflows",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, Ontario Regulation 129/04 requirements where they apply, and standard collection system practice.",
+   "configuration": "Scope: two senior operators hold most of the knowledge of station quirks, valve locations, and problem reaches and both retire within three years.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Pair each senior operator with a developing operator on the work where the knowledge is used, including storm response and bypass work"
+    },
+    {
+     "id": "s2",
+     "label": "Record the knowledge in the station files, the mapping system, and the operating procedures while the operators can still verify it"
+    },
+    {
+     "id": "s3",
+     "label": "Review the remaining knowledge gaps annually and repeat the cycle for the next group approaching retirement"
+    },
+    {
+     "id": "s4",
+     "label": "Identify the critical knowledge held by the senior operators, including undocumented valve locations, station quirks, and problem reach behaviour"
+    },
+    {
+     "id": "s5",
+     "label": "Test the transferred knowledge by assigning the developing operators the lead on a planned bypass or storm readiness exercise"
+    },
+    {
+     "id": "s6",
+     "label": "Have the developing operators lead the tasks under observation and correct their practice until they perform independently"
+    }
+   ],
+   "correctOrder": [
+    "s4",
+    "s2",
+    "s1",
+    "s6",
+    "s5",
+    "s3"
+   ],
+   "explanation": "Knowledge is identified and recorded while its holders can verify it. Pairing and observed practice transfer what documents cannot, and a live exercise tests whether the transfer worked."
+  },
+  {
+   "id": "c3wc-process11",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the design of a basin by basin infiltration and inflow study.",
+   "topicId": "inflow-infiltration-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, Ontario Regulation 129/04 requirements where they apply, and standard collection system practice.",
+   "configuration": "Scope: the system is divided into 12 sewer basins and wet weather flows at the treatment plant have risen for five years.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Report the basin rankings and the recommended rehabilitation and source removal actions to the CMOM program file"
+    },
+    {
+     "id": "s2",
+     "label": "Collect dry weather and wet weather data through the study period and check data quality weekly"
+    },
+    {
+     "id": "s3",
+     "label": "Rank the basins for study using existing flow records, overflow history, age of sewers, and basement flooding complaints"
+    },
+    {
+     "id": "s4",
+     "label": "Analyse the results to separate groundwater infiltration from rainfall dependent inflow for each basin"
+    },
+    {
+     "id": "s5",
+     "label": "Define the study method for the first basins, including flow monitoring locations, rain gauges, and the minimum wet weather events to capture"
+    },
+    {
+     "id": "s6",
+     "label": "Install and calibrate the flow monitors and rain gauges and confirm data transmission before the study period starts"
+    }
+   ],
+   "correctOrder": [
+    "s3",
+    "s5",
+    "s6",
+    "s2",
+    "s4",
+    "s1"
+   ],
+   "explanation": "Basins are ranked from existing evidence before money is spent on monitoring. Calibration precedes data collection, analysis separates the two inflow components, and recommendations close the study."
+  },
+  {
+   "id": "c3wc-process12",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a night flow analysis program to quantify groundwater infiltration.",
+   "topicId": "inflow-infiltration-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, Ontario Regulation 129/04 requirements where they apply, and standard collection system practice.",
+   "configuration": "Scope: minimum night flows between 2 a.m. and 5 a.m. will be compared across monitored basins to locate groundwater infiltration.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Schedule the flagged basins for manhole inspection and CCTV to locate the defects behind the infiltration"
+    },
+    {
+     "id": "s2",
+     "label": "Select the analysis period in a high groundwater season with at least two weeks without significant rainfall"
+    },
+    {
+     "id": "s3",
+     "label": "Extract the minimum night flow for each basin from the monitoring records and average it over the stable nights"
+    },
+    {
+     "id": "s4",
+     "label": "Rank the basins by infiltration per kilometre of sewer and flag the basins well above the system average"
+    },
+    {
+     "id": "s5",
+     "label": "Confirm the legitimate night water use allowance for each basin from population and known industrial night discharges"
+    },
+    {
+     "id": "s6",
+     "label": "Subtract the legitimate night use from the minimum night flow to estimate the groundwater infiltration rate for each basin"
+    }
+   ],
+   "correctOrder": [
+    "s2",
+    "s5",
+    "s3",
+    "s6",
+    "s4",
+    "s1"
+   ],
+   "explanation": "Night flow only means something in a dry, high groundwater window with a fair allowance for real night use. The ranking that results directs inspection spending to the basins where defects are most likely."
+  },
+  {
+   "id": "c3wc-process13",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a rainfall dependent infiltration and inflow analysis after a monitored storm season.",
+   "topicId": "inflow-infiltration-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, Ontario Regulation 129/04 requirements where they apply, and standard collection system practice.",
+   "configuration": "Scope: flow monitors and rain gauges captured six storms of different sizes in four basins.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Calculate the storm response in each basin as the extra volume and peak above the dry weather pattern for the same period"
+    },
+    {
+     "id": "s2",
+     "label": "Relate the response to rainfall depth and intensity to estimate the rainfall dependent inflow coefficient for each basin"
+    },
+    {
+     "id": "s3",
+     "label": "Match the worst responding areas with smoke testing and property inspection results to locate the direct inflow sources"
+    },
+    {
+     "id": "s4",
+     "label": "Set the source removal and rehabilitation priorities and update the wet weather capacity assessment with the findings"
+    },
+    {
+     "id": "s5",
+     "label": "Compare the coefficients between basins and against the system design allowance to find the basins driving wet weather peaks"
+    },
+    {
+     "id": "s6",
+     "label": "Check the flow and rainfall records for gaps and faulty readings and exclude storms with unreliable data"
+    }
+   ],
+   "correctOrder": [
+    "s6",
+    "s1",
+    "s2",
+    "s5",
+    "s3",
+    "s4"
+   ],
+   "explanation": "Bad data is removed before any calculation, and basin comparison precedes field source hunting. Priorities and the capacity assessment are updated from the analysis, not from the raw storm impressions."
+  },
+  {
+   "id": "c3wc-process14",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a private side inflow source removal program for a high response basin.",
+   "topicId": "inflow-infiltration-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, Ontario Regulation 129/04 requirements where they apply, and standard collection system practice.",
+   "configuration": "Scope: smoke testing and inspections found roof leaders, foundation drains, and cross connections contributing direct inflow on about 300 properties.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Apply the bylaw escalation steps only to properties that miss the deadline without an agreed extension"
+    },
+    {
+     "id": "s2",
+     "label": "Offer a pre correction meeting or guidance package for owners with complex plumbing or shared laterals"
+    },
+    {
+     "id": "s3",
+     "label": "Track corrections and reinspect each property after the owner reports the work complete"
+    },
+    {
+     "id": "s4",
+     "label": "Send owners a notice that explains the source found, the bylaw requirement, the correction options, and the compliance deadline"
+    },
+    {
+     "id": "s5",
+     "label": "Measure the basin flow response in the next storm season and report the reduction achieved to the CMOM file"
+    },
+    {
+     "id": "s6",
+     "label": "Confirm each source with a property level record, photographs, and the inspection result before any notice is issued"
+    }
+   ],
+   "correctOrder": [
+    "s6",
+    "s4",
+    "s2",
+    "s3",
+    "s1",
+    "s5"
+   ],
+   "explanation": "Sources are proven property by property before notices go out, and help is offered before enforcement. Reinspection confirms the correction, and flow measurement proves whether the program actually reduced inflow."
+  },
+  {
+   "id": "c3wc-process15",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a smoke testing program for a sewershed with high rainfall dependent inflow.",
+   "topicId": "inflow-infiltration-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, Ontario Regulation 129/04 requirements where they apply, and standard collection system practice.",
+   "configuration": "Scope: about 8 km of sewer in an older residential area will be smoke tested during dry weather.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Mark and measure each defect location on the sewershed map the same day so sources can be revisited"
+    },
+    {
+     "id": "s2",
+     "label": "Notify residents, the fire department, and customer service in writing before testing, with dates and an explanation of the smoke"
+    },
+    {
+     "id": "s3",
+     "label": "Issue the source records to the private side program and the manhole and main defect records to the rehabilitation program"
+    },
+    {
+     "id": "s4",
+     "label": "Introduce smoke and walk the section recording every emergence point at properties, catch basins, and manholes with photographs"
+    },
+    {
+     "id": "s5",
+     "label": "Summarize the sources found per kilometre and file the results with the basin study report"
+    },
+    {
+     "id": "s6",
+     "label": "Isolate the test section with plugs or sandbags as needed and confirm the blower setup at the start manhole"
+    }
+   ],
+   "correctOrder": [
+    "s2",
+    "s6",
+    "s4",
+    "s1",
+    "s3",
+    "s5"
+   ],
+   "explanation": "Notification comes before smoke, because unexplained smoke generates emergency calls. Emergence points are recorded and mapped the same day, then routed to the programs that will correct them."
+  },
+  {
+   "id": "c3wc-process16",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the dye testing follow up for properties flagged by smoke testing.",
+   "topicId": "inflow-infiltration-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, Ontario Regulation 129/04 requirements where they apply, and standard collection system practice.",
+   "configuration": "Scope: 40 properties showed smoke at roof leaders or yard drains and the exact connection path must be confirmed before notices are issued.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Issue correction notices only for properties with a confirmed connection and file inconclusive properties for retesting"
+    },
+    {
+     "id": "s2",
+     "label": "Introduce dye at the suspected source while an observer watches the maintenance hole for the dye colour"
+    },
+    {
+     "id": "s3",
+     "label": "Record the result with the time, dye colour, and photographs for each property tested"
+    },
+    {
+     "id": "s4",
+     "label": "Book appointments with owners and explain the dye test and what a confirmed cross connection would require"
+    },
+    {
+     "id": "s5",
+     "label": "Update the basin source inventory and the estimated removable inflow with the confirmed results"
+    },
+    {
+     "id": "s6",
+     "label": "Prioritize the flagged properties by the size of the suspected inflow contribution and group them by street for efficient visits"
+    }
+   ],
+   "correctOrder": [
+    "s6",
+    "s4",
+    "s2",
+    "s3",
+    "s1",
+    "s5"
+   ],
+   "explanation": "Dye testing converts a suspicion into a confirmed connection, which is the only fair basis for a correction notice. The inventory and the removable inflow estimate are updated from confirmed results only."
+  },
+  {
+   "id": "c3wc-process17",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a manhole inspection program aimed at infiltration sources.",
+   "topicId": "inflow-infiltration-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, Ontario Regulation 129/04 requirements where they apply, and standard collection system practice.",
+   "configuration": "Scope: 600 manholes in the oldest basins will be inspected for frame, chimney, and benching defects that admit groundwater and surface water.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Train the inspection crews on the standard defect codes and the photographic record required for each manhole"
+    },
+    {
+     "id": "s2",
+     "label": "Group the scored defects into manhole rehabilitation packages by basin and by method, such as sealing, lining, or frame replacement"
+    },
+    {
+     "id": "s3",
+     "label": "Inspect each manhole from the surface, recording cover condition, frame seal, chimney, walls, benching, and any visible infiltration"
+    },
+    {
+     "id": "s4",
+     "label": "Schedule inspections basin by basin in high groundwater season so active infiltration is visible when covers are lifted"
+    },
+    {
+     "id": "s5",
+     "label": "Score each manhole for infiltration contribution and structural condition and flag any immediate safety hazard for same day action"
+    },
+    {
+     "id": "s6",
+     "label": "Track completed repairs and reinspect a sample to confirm infiltration at repaired manholes has stopped"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s4",
+    "s3",
+    "s5",
+    "s2",
+    "s6"
+   ],
+   "explanation": "Standard codes and seasonal timing come first, because infiltration is only visible when groundwater is high. Scoring turns inspections into packaged work, and sample reinspection proves the repairs sealed the sources."
+  },
+  {
+   "id": "c3wc-process18",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the deployment plan for a temporary flow monitoring program.",
+   "topicId": "inflow-infiltration-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, Ontario Regulation 129/04 requirements where they apply, and standard collection system practice.",
+   "configuration": "Scope: 15 area velocity monitors and 4 rain gauges will be deployed for a six month wet weather study.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm remote data transmission and set data alarms for low battery, sensor drift, and missed transmissions"
+    },
+    {
+     "id": "s2",
+     "label": "Remove the monitors at the study end, complete a final calibration check, and archive the verified data set"
+    },
+    {
+     "id": "s3",
+     "label": "Select monitor locations that isolate each basin outlet and avoid surcharged or backwater affected sections where readings would be distorted"
+    },
+    {
+     "id": "s4",
+     "label": "Service the monitors on a fixed schedule, cleaning sensors and downloading data before memory limits are reached"
+    },
+    {
+     "id": "s5",
+     "label": "Visit each site to confirm access, pipe size and shape, sediment depth, and a safe installation method"
+    },
+    {
+     "id": "s6",
+     "label": "Install the monitors, set the pipe dimensions and offsets, and calibrate the level and velocity readings against manual measurements"
+    }
+   ],
+   "correctOrder": [
+    "s3",
+    "s5",
+    "s6",
+    "s1",
+    "s4",
+    "s2"
+   ],
+   "explanation": "Location quality decides data quality, so siting and site checks precede installation. Calibration at installation and at removal brackets the data set, and scheduled servicing protects the middle of the study."
+  },
+  {
+   "id": "c3wc-process19",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the verification of infiltration and inflow reduction after a rehabilitation project.",
+   "topicId": "inflow-infiltration-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, Ontario Regulation 129/04 requirements where they apply, and standard collection system practice.",
+   "configuration": "Scope: a basin received lining, manhole sealing, and source removals, and the utility must prove the wet weather benefit before funding the next basin.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Monitor the basin through a comparable storm season with the same monitor locations and rain gauges"
+    },
+    {
+     "id": "s2",
+     "label": "Report the verified results and the lessons for method selection to the rehabilitation and CMOM programs"
+    },
+    {
+     "id": "s3",
+     "label": "Calculate the reduction in infiltration rate and in rainfall dependent inflow volume and peak"
+    },
+    {
+     "id": "s4",
+     "label": "Compare the measured reduction with the reduction predicted in the project business case"
+    },
+    {
+     "id": "s5",
+     "label": "Compare dry weather infiltration and storm response between the two periods, adjusting for differences in rainfall and groundwater levels"
+    },
+    {
+     "id": "s6",
+     "label": "Retrieve the pre project flow and rainfall records for the basin and confirm the monitoring method matches the post project setup"
+    }
+   ],
+   "correctOrder": [
+    "s6",
+    "s1",
+    "s5",
+    "s3",
+    "s4",
+    "s2"
+   ],
+   "explanation": "Verification is only fair when the before and after monitoring match in method and season. The comparison against the business case prediction closes the loop and disciplines the next project estimate."
+  },
+  {
+   "id": "c3wc-process20",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the prioritization of sewer basins for the five year infiltration and inflow reduction program.",
+   "topicId": "inflow-infiltration-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, Ontario Regulation 129/04 requirements where they apply, and standard collection system practice.",
+   "configuration": "Scope: study results exist for nine basins and funding allows major work in about two basins per year.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Estimate the cost and the expected flow reduction for the leading rehabilitation and source removal package in each basin"
+    },
+    {
+     "id": "s2",
+     "label": "Sequence the ranked basins into the five year program so upstream and downstream work do not conflict"
+    },
+    {
+     "id": "s3",
+     "label": "Rank the basins by expected benefit for the cost and by the urgency of the capacity or overflow risk"
+    },
+    {
+     "id": "s4",
+     "label": "Score each basin on removable inflow, risk to capacity and the environment, and the condition of the assets already known"
+    },
+    {
+     "id": "s5",
+     "label": "Present the program with its expected system flow reduction to management and enter it into the capital plan"
+    },
+    {
+     "id": "s6",
+     "label": "Assemble the study results for all basins, including infiltration rates, storm response, overflow history, and flooding records"
+    }
+   ],
+   "correctOrder": [
+    "s6",
+    "s4",
+    "s1",
+    "s3",
+    "s2",
+    "s5"
+   ],
+   "explanation": "Scoring uses study evidence and risk before costs are estimated, and ranking precedes sequencing. The program enters the capital plan only after management sees the expected system level benefit."
+  },
+  {
+   "id": "c3wc-process21",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a foundation drain disconnection program in a combined response neighbourhood.",
+   "topicId": "inflow-infiltration-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, Ontario Regulation 129/04 requirements where they apply, and standard collection system practice.",
+   "configuration": "Scope: about 500 homes in an older area have foundation drains connected to the sanitary sewer and wet weather flows exceed the local trunk capacity.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Monitor the trunk sewer through the next wet season and report the peak flow change to the capacity file"
+    },
+    {
+     "id": "s2",
+     "label": "Design the standard disconnection and sump pump arrangement with building officials and confirm the bylaw and permit requirements"
+    },
+    {
+     "id": "s3",
+     "label": "Enforce the bylaw for properties that do not comply after notice, support, and a reasonable extension process"
+    },
+    {
+     "id": "s4",
+     "label": "Confirm the foundation drain connections area by area using records, inspections, and wet weather flow response"
+    },
+    {
+     "id": "s5",
+     "label": "Notify owners with a clear explanation, the approved arrangement, any municipal incentive, and the compliance timeline"
+    },
+    {
+     "id": "s6",
+     "label": "Provide inspections during and after the work to confirm the sump discharges to an approved location and the sanitary connection is capped"
+    }
+   ],
+   "correctOrder": [
+    "s4",
+    "s2",
+    "s5",
+    "s6",
+    "s3",
+    "s1"
+   ],
+   "explanation": "Connections are confirmed before owners are told to change their plumbing. A standard approved arrangement and inspections protect homeowners, enforcement follows support, and flow monitoring proves the capacity benefit."
+  },
+  {
+   "id": "c3wc-process22",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a cost effectiveness review of the infiltration and inflow program after three years.",
+   "topicId": "inflow-infiltration-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, Ontario Regulation 129/04 requirements where they apply, and standard collection system practice.",
+   "configuration": "Scope: spending and flow results exist for four completed basins and two basins remain in the original program.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Revise the scope of the two remaining basins to favour the most cost effective methods that still address their main sources"
+    },
+    {
+     "id": "s2",
+     "label": "Compile the verified flow reduction for each basin from the before and after monitoring studies"
+    },
+    {
+     "id": "s3",
+     "label": "Compare the methods and identify which delivered reduction at the lowest cost in this system"
+    },
+    {
+     "id": "s4",
+     "label": "Report the review and the revised program to management and update the CMOM program targets"
+    },
+    {
+     "id": "s5",
+     "label": "Calculate the cost per unit of flow reduction for each method used, such as lining, manhole sealing, and source removal"
+    },
+    {
+     "id": "s6",
+     "label": "Compile the actual cost of each completed basin project, separated into monitoring, rehabilitation, and source removal"
+    }
+   ],
+   "correctOrder": [
+    "s6",
+    "s2",
+    "s5",
+    "s3",
+    "s1",
+    "s4"
+   ],
+   "explanation": "Costs and verified reductions must both be compiled before any unit comparison is meaningful. The remaining basins are rescoped from the evidence, and targets are updated so the program is judged on what it learned."
+  },
+  {
+   "id": "c3wc-process23",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a lift station reliability audit across a fleet of stations.",
+   "topicId": "lift-station-reliability",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, Ontario Regulation 129/04 requirements where they apply, and standard collection system practice.",
+   "configuration": "Scope: 38 stations of different ages will be audited for redundancy, alarms, power, and bypass readiness.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Collect the station records, pump curves, run time data, failure history, and maintenance completion for each station"
+    },
+    {
+     "id": "s2",
+     "label": "Define the audit criteria for each reliability element, including firm capacity, standby power, alarm coverage, and bypass connection"
+    },
+    {
+     "id": "s3",
+     "label": "Report fleet reliability status annually and remove deficiencies from the list only after field verification"
+    },
+    {
+     "id": "s4",
+     "label": "Score each station and rank the deficiencies across the fleet by overflow risk if the element fails"
+    },
+    {
+     "id": "s5",
+     "label": "Build the corrective program with quick fixes separated from capital upgrades and assign owners and dates"
+    },
+    {
+     "id": "s6",
+     "label": "Inspect each station against the criteria with the area operator and record deficiencies with photographs"
+    }
+   ],
+   "correctOrder": [
+    "s2",
+    "s1",
+    "s6",
+    "s4",
+    "s5",
+    "s3"
+   ],
+   "explanation": "Criteria come before records and inspections, so every station is judged the same way. Fleet ranking by overflow risk directs money to the failures that would hurt most, and verification closes items."
+  },
+  {
+   "id": "c3wc-process24",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a firm capacity review for a lift station approaching its design limit.",
+   "topicId": "lift-station-reliability",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, Ontario Regulation 129/04 requirements where they apply, and standard collection system practice.",
+   "configuration": "Scope: peak wet weather inflow has reached about 90 percent of the station firm capacity with the largest pump out of service.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Set interim measures, such as enhanced alarm response and a pre arranged bypass plan, until the upgrade is in service"
+    },
+    {
+     "id": "s2",
+     "label": "Confirm the firm capacity by a drawdown test with the largest pump locked out and the remaining pumps in automatic"
+    },
+    {
+     "id": "s3",
+     "label": "Project the added flows from approved development and from the infiltration and inflow forecast for the tributary basin"
+    },
+    {
+     "id": "s4",
+     "label": "Compare the tested firm capacity with the measured peak inflows from the wettest storms in the flow record"
+    },
+    {
+     "id": "s5",
+     "label": "Identify the capacity shortfall date and the upgrade options, from pump replacement to a new forcemain or storage"
+    },
+    {
+     "id": "s6",
+     "label": "Recommend the option and timing to the capital planning process with the supporting test and flow evidence"
+    }
+   ],
+   "correctOrder": [
+    "s2",
+    "s4",
+    "s3",
+    "s5",
+    "s6",
+    "s1"
+   ],
+   "explanation": "Firm capacity is proven by test with the largest unit out, not taken from a nameplate. Interim protection is set because the shortfall date and the upgrade date are rarely the same."
+  },
+  {
+   "id": "c3wc-process25",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a force main condition assessment program for aging sewage force mains.",
+   "topicId": "force-main-management",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, Ontario Regulation 129/04 requirements where they apply, and standard collection system practice.",
+   "configuration": "Scope: the system has 22 km of force main, some sections are 45 years old and two have failed in five years.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Carry out the assessments and record the condition findings against the standard grading used for the inventory"
+    },
+    {
+     "id": "s2",
+     "label": "Choose the assessment method for each selected section, such as pressure transient review, leak detection survey, or internal inspection where feasible"
+    },
+    {
+     "id": "s3",
+     "label": "Build the force main inventory with material, age, diameter, pressure class, failure history, and consequence of failure for each section"
+    },
+    {
+     "id": "s4",
+     "label": "Enter the decisions and dates into the asset management plan and schedule the next assessment cycle"
+    },
+    {
+     "id": "s5",
+     "label": "Rank the sections by likelihood and consequence of failure to select the first sections for detailed assessment"
+    },
+    {
+     "id": "s6",
+     "label": "Convert the findings into renewal, monitoring, or run to failure decisions for each section with reasons documented"
+    }
+   ],
+   "correctOrder": [
+    "s3",
+    "s5",
+    "s2",
+    "s1",
+    "s6",
+    "s4"
+   ],
+   "explanation": "Inventory and risk ranking decide where assessment money goes. Findings are converted into explicit decisions per section, because an assessment that changes no decision was not worth its cost."
+  },
+  {
+   "id": "c3wc-process26",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the design of an air release valve maintenance program for sewage force mains.",
+   "topicId": "force-main-management",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, Ontario Regulation 129/04 requirements where they apply, and standard collection system practice.",
+   "configuration": "Scope: 64 air valves on force main high points have no consistent service history and several stations show rising discharge pressure.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Locate and inventory every air valve from drawings and field verification, recording type, size, and access condition"
+    },
+    {
+     "id": "s2",
+     "label": "Rank the valves by the consequence of failure, with high points on long force mains and known air binding locations first"
+    },
+    {
+     "id": "s3",
+     "label": "Service the highest ranked valves first and record the condition found and the work done for each valve"
+    },
+    {
+     "id": "s4",
+     "label": "Check station discharge pressures after the first service round for evidence that air binding has been relieved"
+    },
+    {
+     "id": "s5",
+     "label": "Set the service method and frequency for each class of valve, covering inspection, cleaning, and replacement of internals"
+    },
+    {
+     "id": "s6",
+     "label": "Report program completion and pressure trends annually and adjust frequencies based on the condition found"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s5",
+    "s3",
+    "s4",
+    "s6"
+   ],
+   "explanation": "A verified inventory precedes ranking, and ranking precedes service, so the valves whose failure restricts capacity most are serviced first. Pressure trends after service show whether the program is working."
+  },
+  {
+   "id": "c3wc-process27",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a standby power reliability program for lift stations.",
+   "topicId": "lift-station-reliability",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, Ontario Regulation 129/04 requirements where they apply, and standard collection system practice.",
+   "configuration": "Scope: 30 stations have standby generators of mixed age and the utility has had two generator fail to start events in three years.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Run the first full cycle of tests and record every failure to start, alarm, and defect against the station record"
+    },
+    {
+     "id": "s2",
+     "label": "Report generator readiness monthly as a CMOM indicator and escalate any station without proven standby power"
+    },
+    {
+     "id": "s3",
+     "label": "Set the standard test regime, covering weekly exercise, monthly load runs, annual full load testing, and fuel quality checks"
+    },
+    {
+     "id": "s4",
+     "label": "Inventory each generator with age, fuel type and capacity, transfer switch type, and the results of the last load test"
+    },
+    {
+     "id": "s5",
+     "label": "Set the fuel management actions, including polishing or replacement, for tanks that fail quality checks"
+    },
+    {
+     "id": "s6",
+     "label": "Repair the defects found and retest any generator that failed until it passes a full load test"
+    }
+   ],
+   "correctOrder": [
+    "s4",
+    "s3",
+    "s1",
+    "s6",
+    "s5",
+    "s2"
+   ],
+   "explanation": "The test regime is set from the inventory before testing begins. Failures are repaired and retested to a pass, and monthly readiness reporting keeps standby power from being assumed rather than proven."
+  },
+  {
+   "id": "c3wc-process28",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the optimization of a wet well cleaning program across lift stations.",
+   "topicId": "lift-station-reliability",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, Ontario Regulation 129/04 requirements where they apply, and standard collection system practice.",
+   "configuration": "Scope: cleaning frequencies were set by habit and grease related alarms cluster at six stations while others are cleaned more often than needed.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Set the cleaning frequency and method for each station class based on the ranking, from scheduled vacuum cleaning to surface washdown routines"
+    },
+    {
+     "id": "s2",
+     "label": "Compile grease, ragging, and float fouling incidents by station for the past two years from alarms and work orders"
+    },
+    {
+     "id": "s3",
+     "label": "Adjust the frequencies for stations where incidents continue or where cleaning finds little material"
+    },
+    {
+     "id": "s4",
+     "label": "Rank the stations by fouling rate and by the consequence of a float or pump failure at each station"
+    },
+    {
+     "id": "s5",
+     "label": "Run the revised frequencies for two quarters and track fouling incidents against the previous pattern"
+    },
+    {
+     "id": "s6",
+     "label": "Record the program and its results in the CMOM maintenance plan and review it annually"
+    }
+   ],
+   "correctOrder": [
+    "s2",
+    "s4",
+    "s1",
+    "s5",
+    "s3",
+    "s6"
+   ],
+   "explanation": "Frequencies are rebuilt from incident evidence rather than habit. A measured trial period follows, and adjustment is based on incidents and on what the cleaning actually finds."
+  },
+  {
+   "id": "c3wc-process29",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a SCADA alarm rationalization program for collection stations.",
+   "topicId": "lift-station-reliability",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, Ontario Regulation 129/04 requirements where they apply, and standard collection system practice.",
+   "configuration": "Scope: operators receive hundreds of alarms per month, many are nuisance alarms, and two high level alarms were missed in the noise last year.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review alarm counts and missed alarm events monthly and continue removing the top nuisance sources"
+    },
+    {
+     "id": "s2",
+     "label": "Classify each alarm type as critical, advisory, or nuisance using the consequence if the alarm is missed"
+    },
+    {
+     "id": "s3",
+     "label": "Train operators on the revised alarm classes and the expected response to each class"
+    },
+    {
+     "id": "s4",
+     "label": "Extract six months of alarm history and count alarms by station, by type, and by time of day"
+    },
+    {
+     "id": "s5",
+     "label": "Confirm every critical alarm reaches the on call operator by a tested path and requires acknowledgement"
+    },
+    {
+     "id": "s6",
+     "label": "Remove or reconfigure nuisance alarms, correct faulty sensors behind repeat alarms, and set sensible delays and deadbands"
+    }
+   ],
+   "correctOrder": [
+    "s4",
+    "s2",
+    "s6",
+    "s5",
+    "s3",
+    "s1"
+   ],
+   "explanation": "Alarm history shows where the noise is before anything is reconfigured. Critical alarms are proven to reach a person, and monthly review keeps the system from drifting back into noise."
+  },
+  {
+   "id": "c3wc-process30",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a force main leak detection program for a river crossing section.",
+   "topicId": "force-main-management",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, Ontario Regulation 129/04 requirements where they apply, and standard collection system practice.",
+   "configuration": "Scope: a 900 m force main section crosses a river and a slow leak would discharge to the watercourse before surfacing.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Record the program, alert levels, and response steps in the force main management plan and test the alerts annually"
+    },
+    {
+     "id": "s2",
+     "label": "Run a controlled valve and pressure survey of the accessible fittings and chambers on both banks"
+    },
+    {
+     "id": "s3",
+     "label": "Investigate any alert or survey finding with acoustic or internal methods suited to the pipe material and access"
+    },
+    {
+     "id": "s4",
+     "label": "Confirm the section boundaries, isolation valves, and the normal operating pressure and flow pattern for the crossing"
+    },
+    {
+     "id": "s5",
+     "label": "Set the imbalance and pressure drop alert levels from the normal variation observed over a stable month"
+    },
+    {
+     "id": "s6",
+     "label": "Install or verify pressure and flow monitoring at both ends so a loss in the section shows as a measurable imbalance"
+    }
+   ],
+   "correctOrder": [
+    "s4",
+    "s6",
+    "s5",
+    "s2",
+    "s3",
+    "s1"
+   ],
+   "explanation": "Monitoring must bracket the section before alert levels can be set from real variation. The response steps are documented and tested, because an alert nobody acts on detects nothing."
+  },
+  {
+   "id": "c3wc-process31",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a pump failure prediction review using run time and start data.",
+   "topicId": "lift-station-reliability",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, Ontario Regulation 129/04 requirements where they apply, and standard collection system practice.",
+   "configuration": "Scope: SCADA records run hours, starts, and levels for 38 stations and maintenance wants early warning of failing pumps.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Adopt the proven indicators into the monthly reliability review and retire the indicators that did not predict defects"
+    },
+    {
+     "id": "s2",
+     "label": "Calculate the trend indicators for each pump, including starts per day, average run time per start, and cycle volume change"
+    },
+    {
+     "id": "s3",
+     "label": "Inspect the flagged pumps and their wet wells for ragging, check valve leakage, float problems, or impeller wear"
+    },
+    {
+     "id": "s4",
+     "label": "Repair the causes found and record which indicators predicted real defects and which were false alarms"
+    },
+    {
+     "id": "s5",
+     "label": "Confirm the data quality for run hours, starts, and cycle times and exclude stations with faulty counters from the first review"
+    },
+    {
+     "id": "s6",
+     "label": "Flag pumps whose indicators have moved steadily from their own baseline over three months"
+    }
+   ],
+   "correctOrder": [
+    "s5",
+    "s2",
+    "s6",
+    "s3",
+    "s4",
+    "s1"
+   ],
+   "explanation": "Indicators are only useful if they are tested against what inspections actually find. Proven indicators are adopted and the rest are retired, so the review stays a tool rather than a ritual."
+  },
+  {
+   "id": "c3wc-process32",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a critical spare parts program for lift stations.",
+   "topicId": "lift-station-reliability",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, Ontario Regulation 129/04 requirements where they apply, and standard collection system practice.",
+   "configuration": "Scope: two recent pump failures waited weeks for parts while the stations ran without redundancy.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review the program after every major failure and add any part whose absence extended the outage"
+    },
+    {
+     "id": "s2",
+     "label": "List the failure modes that remove a station pump or its controls from service, using the failure history and manufacturer information"
+    },
+    {
+     "id": "s3",
+     "label": "Stock the approved parts at the central stores and at large stations where the response time justifies it"
+    },
+    {
+     "id": "s4",
+     "label": "Identify the parts whose absence keeps a station out of full service and record the current lead time for each part"
+    },
+    {
+     "id": "s5",
+     "label": "Set the reorder points and the stores review so a used part is replaced before the next failure needs it"
+    },
+    {
+     "id": "s6",
+     "label": "Rank the parts by station criticality and lead time and set the stock level for each ranked part"
+    }
+   ],
+   "correctOrder": [
+    "s2",
+    "s4",
+    "s6",
+    "s3",
+    "s5",
+    "s1"
+   ],
+   "explanation": "The program starts from failure modes and lead times, not from a generic parts list. Every major failure is a lesson that updates the stock, so the same wait never happens twice."
+  },
+  {
+   "id": "c3wc-process33",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the planning of a lift station capacity upgrade for a growing tributary area.",
+   "topicId": "lift-station-reliability",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, Ontario Regulation 129/04 requirements where they apply, and standard collection system practice.",
+   "configuration": "Scope: approved development will add about 40 percent to the peak flow at a duplex station within five years.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Evaluate upgrade options, including larger pumps, a third pump, storage, and force main upsizing, against the projected peaks"
+    },
+    {
+     "id": "s2",
+     "label": "Set the monitoring and interim bypass arrangements that protect the station until the upgrade trigger is reached"
+    },
+    {
+     "id": "s3",
+     "label": "Select the preferred option with operations and engineering and confirm it fits the site, power supply, and force main pressure limits"
+    },
+    {
+     "id": "s4",
+     "label": "Stage the project in the capital plan with a trigger tied to measured flows or development milestones"
+    },
+    {
+     "id": "s5",
+     "label": "Confirm the current firm capacity by drawdown testing and the current peak flows from the station flow record"
+    },
+    {
+     "id": "s6",
+     "label": "Project the future dry and wet weather peak flows using the development phasing and the basin infiltration and inflow rates"
+    }
+   ],
+   "correctOrder": [
+    "s5",
+    "s6",
+    "s1",
+    "s3",
+    "s4",
+    "s2"
+   ],
+   "explanation": "Current capacity is tested and future flows are projected before options are compared. Tying construction to a measured trigger avoids building too early while the interim plan protects the station in between."
+  },
+  {
+   "id": "c3wc-process34",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a force main cleaning program for a line with rising head loss.",
+   "topicId": "force-main-management",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, Ontario Regulation 129/04 requirements where they apply, and standard collection system practice.",
+   "configuration": "Scope: discharge pressure at a station has risen steadily at constant flow and air valve servicing did not restore it.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Plan the cleaning with launch and receive arrangements, disposal of removed material, and the bypass or storage needed while the line is out of service"
+    },
+    {
+     "id": "s2",
+     "label": "Confirm the head loss trend from logged pressures and flows and rule out gauge error and pump wear with a test gauge and the pump curve"
+    },
+    {
+     "id": "s3",
+     "label": "Review the force main profile and history to select the cleaning method, such as progressive pigging or ice pigging where suitable"
+    },
+    {
+     "id": "s4",
+     "label": "Clean the line in stages, recording the material removed and the pressure after each stage"
+    },
+    {
+     "id": "s5",
+     "label": "Repeat the drawdown and pressure test to measure the recovered capacity and compare it with the pre cleaning values"
+    },
+    {
+     "id": "s6",
+     "label": "Set the monitoring and the repeat cleaning trigger in the force main plan based on the rate of head loss return"
+    }
+   ],
+   "correctOrder": [
+    "s2",
+    "s3",
+    "s1",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The trend is verified and simpler causes are excluded before an intrusive cleaning is planned. Staged cleaning with pressure checks shows progress, and the repeat trigger is set from how fast the loss returns."
+  },
+  {
+   "id": "c3wc-process35",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order an annual standby generator load testing program.",
+   "topicId": "lift-station-reliability",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, Ontario Regulation 129/04 requirements where they apply, and standard collection system practice.",
+   "configuration": "Scope: generators at 30 stations must each prove they can carry the full station load, not only start.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Inspect fuel, coolant, oil, battery, and block heater condition before the test and correct anything that would fail the run"
+    },
+    {
+     "id": "s2",
+     "label": "Schedule the tests station by station in low risk flow periods and notify the on call operator and the monitoring point for each test"
+    },
+    {
+     "id": "s3",
+     "label": "Summarize fleet readiness for the CMOM report and flag stations that still lack a proven full load test"
+    },
+    {
+     "id": "s4",
+     "label": "Record voltage, frequency, load, temperatures, and any alarms through the loaded run and the transfer back to utility power"
+    },
+    {
+     "id": "s5",
+     "label": "Transfer the station to generator power and run all pumps in sequence at the maximum load the station can demand"
+    },
+    {
+     "id": "s6",
+     "label": "Repair any defect found, retest the generator under load, and record the pass in the station reliability file"
+    }
+   ],
+   "correctOrder": [
+    "s2",
+    "s1",
+    "s5",
+    "s4",
+    "s6",
+    "s3"
+   ],
+   "explanation": "Pre test inspection prevents avoidable failures, and the test must apply the real station load to mean anything. Defects are retested to a pass and the fleet summary exposes any station still unproven."
+  },
+  {
+   "id": "c3wc-process36",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the development of a station bypass contingency plan for the largest lift station.",
+   "topicId": "lift-station-reliability",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, Ontario Regulation 129/04 requirements where they apply, and standard collection system practice.",
+   "configuration": "Scope: the station serves 40 percent of the system flow and a pump or power failure without a plan would overflow to a creek within hours.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the equipment sources, including owned pumps, rental contracts, and mutual aid, with realistic mobilization times"
+    },
+    {
+     "id": "s2",
+     "label": "Calculate the time to overflow at average and peak inflow with all pumps stopped, using wet well and upstream storage volumes"
+    },
+    {
+     "id": "s3",
+     "label": "Identify the bypass pumping capacity, connection points, hose routes, and discharge location needed to match the peak inflow"
+    },
+    {
+     "id": "s4",
+     "label": "Stage or pre connect the fittings that save the most time and record the plan in the station file and the emergency response plan"
+    },
+    {
+     "id": "s5",
+     "label": "Exercise the plan with a deployment drill and correct the plan from what the drill reveals"
+    },
+    {
+     "id": "s6",
+     "label": "Write the deployment sequence with staffing, traffic control, and the notification steps for a bypass that risks overflow"
+    }
+   ],
+   "correctOrder": [
+    "s2",
+    "s3",
+    "s1",
+    "s6",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Time to overflow drives everything, because it sets how fast the bypass must be working. The drill is the proof, and the plan is corrected from the drill rather than from opinion."
+  },
+  {
+   "id": "c3wc-process37",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a systemwide odour complaint investigation program.",
+   "topicId": "odour-sulfide-management",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, Ontario Regulation 129/04 requirements where they apply, and standard collection system practice.",
+   "configuration": "Scope: odour complaints have doubled in two years and cluster near three lift stations and a long force main discharge.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Rank the locations by measured levels, complaint frequency, and the number of people affected"
+    },
+    {
+     "id": "s2",
+     "label": "Inspect the top cluster locations for ventilation condition, air valve behaviour, and sulfide indications such as blackening and concrete attack"
+    },
+    {
+     "id": "s3",
+     "label": "Report complaint and measurement trends after one season and adjust the actions where levels or complaints persist"
+    },
+    {
+     "id": "s4",
+     "label": "Measure hydrogen sulfide at the priority locations over representative warm weather periods with logged instruments"
+    },
+    {
+     "id": "s5",
+     "label": "Assign each ranked location a control action, from operational changes to chemical dosing or ventilation treatment"
+    },
+    {
+     "id": "s6",
+     "label": "Map a year of odour complaints by location, season, and time of day and compare the clusters with known long detention and turbulent discharge points"
+    }
+   ],
+   "correctOrder": [
+    "s6",
+    "s2",
+    "s4",
+    "s1",
+    "s5",
+    "s3"
+   ],
+   "explanation": "Complaint patterns point to where measurement money is spent. Ranking by measured levels and people affected keeps the program fair, and a season of trend data judges the controls."
+  },
+  {
+   "id": "c3wc-process38",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the design of a sulfide monitoring program for a corrosion prone trunk sewer.",
+   "topicId": "odour-sulfide-management",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, Ontario Regulation 129/04 requirements where they apply, and standard collection system practice.",
+   "configuration": "Scope: a concrete trunk sewer downstream of two force main discharges shows crown corrosion and the utility needs sulfide data before choosing controls.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Analyse the results against detention time and temperature to confirm where sulfide is generated and where it is released to the air"
+    },
+    {
+     "id": "s2",
+     "label": "Choose the monitoring methods for each location, covering continuous gas logging, liquid sulfide sampling, pH, and temperature"
+    },
+    {
+     "id": "s3",
+     "label": "Collect data through a warm weather period that represents the worst sulfide generation conditions"
+    },
+    {
+     "id": "s4",
+     "label": "Present the findings with the corrosion risk by reach and the control options each reach requires"
+    },
+    {
+     "id": "s5",
+     "label": "Select monitoring locations at the force main discharges, at downstream manholes, and at a control location with short detention"
+    },
+    {
+     "id": "s6",
+     "label": "Install and calibrate the instruments and confirm data capture through the first week of logging"
+    }
+   ],
+   "correctOrder": [
+    "s5",
+    "s2",
+    "s6",
+    "s3",
+    "s1",
+    "s4"
+   ],
+   "explanation": "Locations are chosen to separate generation from release, and the warm weather window captures the worst case. The analysis ties sulfide to detention and temperature so controls are aimed at the mechanism."
+  },
+  {
+   "id": "c3wc-process39",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the start up of a chemical dosing program for sulfide control in a force main.",
+   "topicId": "odour-sulfide-management",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, Ontario Regulation 129/04 requirements where they apply, and standard collection system practice.",
+   "configuration": "Scope: a dosing system will feed an approved chemical at a lift station to control sulfide in a 6 km force main and protect the downstream trunk.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Monitor sulfide, pH, and odour indications at the discharge through the first month at the planned sampling frequency"
+    },
+    {
+     "id": "s2",
+     "label": "Adjust the dose rate in steps toward the lowest rate that holds the target at the discharge"
+    },
+    {
+     "id": "s3",
+     "label": "Record the proven dose, the monitoring results, and the operating cost in the odour program file and set the ongoing review date"
+    },
+    {
+     "id": "s4",
+     "label": "Start dosing at the starting rate and confirm the feed by tank level change and a drawdown calibration of the dosing pump"
+    },
+    {
+     "id": "s5",
+     "label": "Commission the storage, dosing pumps, and safety systems and train the station operators on handling and spill response"
+    },
+    {
+     "id": "s6",
+     "label": "Confirm the target sulfide level at the force main discharge and the starting dose rate from the design basis and the supplier guidance"
+    }
+   ],
+   "correctOrder": [
+    "s6",
+    "s5",
+    "s4",
+    "s1",
+    "s2",
+    "s3"
+   ],
+   "explanation": "The target and the starting dose come from the design basis before any chemical flows. Stepwise adjustment finds the lowest effective dose, which protects the trunk without wasting chemical."
+  }
+ ],
+ "missions": [
+  {
+   "id": "c3wc-mission41",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 41: The Force Main Detention Shift",
+   "tasks": [
+    {
+     "taskId": "c3wc-error60",
+     "revision": "r1",
+     "occurrenceId": "m41-t1"
+    },
+    {
+     "taskId": "c3wc-process01",
+     "revision": "r1",
+     "occurrenceId": "m41-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3wc-mission42",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 42: The Cmom Program Leadership Shift",
+   "tasks": [
+    {
+     "taskId": "c3wc-process02",
+     "revision": "r1",
+     "occurrenceId": "m42-t1"
+    },
+    {
+     "taskId": "c3wc-error61",
+     "revision": "r1",
+     "occurrenceId": "m42-t2"
+    },
+    {
+     "taskId": "c3wc-error62",
+     "revision": "r1",
+     "occurrenceId": "m42-t3"
+    }
+   ]
+  },
+  {
+   "id": "c3wc-mission43",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 43: The Rehabilitation Quantities Shift",
+   "tasks": [
+    {
+     "taskId": "c3wc-error63",
+     "revision": "r1",
+     "occurrenceId": "m43-t1"
+    },
+    {
+     "taskId": "c3wc-process03",
+     "revision": "r1",
+     "occurrenceId": "m43-t2"
+    },
+    {
+     "taskId": "c3wc-error64",
+     "revision": "r1",
+     "occurrenceId": "m43-t3"
+    },
+    {
+     "taskId": "c3wc-error65",
+     "revision": "r1",
+     "occurrenceId": "m43-t4"
+    }
+   ]
+  },
+  {
+   "id": "c3wc-mission44",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 44: The Cmom Program Leadership Shift",
+   "tasks": [
+    {
+     "taskId": "c3wc-process04",
+     "revision": "r1",
+     "occurrenceId": "m44-t1"
+    },
+    {
+     "taskId": "c3wc-error66",
+     "revision": "r1",
+     "occurrenceId": "m44-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3wc-mission45",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 45: The Rehabilitation Quantities Shift",
+   "tasks": [
+    {
+     "taskId": "c3wc-error67",
+     "revision": "r1",
+     "occurrenceId": "m45-t1"
+    },
+    {
+     "taskId": "c3wc-process05",
+     "revision": "r1",
+     "occurrenceId": "m45-t2"
+    },
+    {
+     "taskId": "c3wc-error68",
+     "revision": "r1",
+     "occurrenceId": "m45-t3"
+    }
+   ]
+  },
+  {
+   "id": "c3wc-mission46",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 46: The Cmom Program Leadership Shift",
+   "tasks": [
+    {
+     "taskId": "c3wc-process06",
+     "revision": "r1",
+     "occurrenceId": "m46-t1"
+    },
+    {
+     "taskId": "c3wc-error69",
+     "revision": "r1",
+     "occurrenceId": "m46-t2"
+    },
+    {
+     "taskId": "c3wc-error70",
+     "revision": "r1",
+     "occurrenceId": "m46-t3"
+    },
+    {
+     "taskId": "c3wc-error71",
+     "revision": "r1",
+     "occurrenceId": "m46-t4"
+    }
+   ]
+  },
+  {
+   "id": "c3wc-mission47",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 47: The Rehabilitation Quantities Shift",
+   "tasks": [
+    {
+     "taskId": "c3wc-error72",
+     "revision": "r1",
+     "occurrenceId": "m47-t1"
+    },
+    {
+     "taskId": "c3wc-process07",
+     "revision": "r1",
+     "occurrenceId": "m47-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3wc-mission48",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 48: The Cmom Program Leadership Shift",
+   "tasks": [
+    {
+     "taskId": "c3wc-process08",
+     "revision": "r1",
+     "occurrenceId": "m48-t1"
+    },
+    {
+     "taskId": "c3wc-error73",
+     "revision": "r1",
+     "occurrenceId": "m48-t2"
+    },
+    {
+     "taskId": "c3wc-error74",
+     "revision": "r1",
+     "occurrenceId": "m48-t3"
+    }
+   ]
+  },
+  {
+   "id": "c3wc-mission49",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 49: The Rehabilitation Quantities Shift",
+   "tasks": [
+    {
+     "taskId": "c3wc-error75",
+     "revision": "r1",
+     "occurrenceId": "m49-t1"
+    },
+    {
+     "taskId": "c3wc-process09",
+     "revision": "r1",
+     "occurrenceId": "m49-t2"
+    },
+    {
+     "taskId": "c3wc-error76",
+     "revision": "r1",
+     "occurrenceId": "m49-t3"
+    },
+    {
+     "taskId": "c3wc-error77",
+     "revision": "r1",
+     "occurrenceId": "m49-t4"
+    }
+   ]
+  },
+  {
+   "id": "c3wc-mission50",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 50: The Cmom Program Leadership Shift",
+   "tasks": [
+    {
+     "taskId": "c3wc-process10",
+     "revision": "r1",
+     "occurrenceId": "m50-t1"
+    },
+    {
+     "taskId": "c3wc-error78",
+     "revision": "r1",
+     "occurrenceId": "m50-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3wc-mission51",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 51: The Program Completion Shift",
+   "tasks": [
+    {
+     "taskId": "c3wc-error79",
+     "revision": "r1",
+     "occurrenceId": "m51-t1"
+    },
+    {
+     "taskId": "c3wc-process100",
+     "revision": "r1",
+     "occurrenceId": "m51-t2"
+    },
+    {
+     "taskId": "c3wc-error80",
+     "revision": "r1",
+     "occurrenceId": "m51-t3"
+    }
+   ]
+  },
+  {
+   "id": "c3wc-mission52",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 52: The Inflow Infiltration Program Shift",
+   "tasks": [
+    {
+     "taskId": "c3wc-process11",
+     "revision": "r1",
+     "occurrenceId": "m52-t1"
+    },
+    {
+     "taskId": "c3wc-error81",
+     "revision": "r1",
+     "occurrenceId": "m52-t2"
+    },
+    {
+     "taskId": "c3wc-error82",
+     "revision": "r1",
+     "occurrenceId": "m52-t3"
+    },
+    {
+     "taskId": "c3wc-error83",
+     "revision": "r1",
+     "occurrenceId": "m52-t4"
+    }
+   ]
+  },
+  {
+   "id": "c3wc-mission53",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 53: The Program Completion Shift",
+   "tasks": [
+    {
+     "taskId": "c3wc-error84",
+     "revision": "r1",
+     "occurrenceId": "m53-t1"
+    },
+    {
+     "taskId": "c3wc-process12",
+     "revision": "r1",
+     "occurrenceId": "m53-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3wc-mission54",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 54: The Inflow Infiltration Program Shift",
+   "tasks": [
+    {
+     "taskId": "c3wc-process13",
+     "revision": "r1",
+     "occurrenceId": "m54-t1"
+    },
+    {
+     "taskId": "c3wc-error85",
+     "revision": "r1",
+     "occurrenceId": "m54-t2"
+    },
+    {
+     "taskId": "c3wc-error86",
+     "revision": "r1",
+     "occurrenceId": "m54-t3"
+    }
+   ]
+  },
+  {
+   "id": "c3wc-mission55",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 55: The Program Completion Shift",
+   "tasks": [
+    {
+     "taskId": "c3wc-error87",
+     "revision": "r1",
+     "occurrenceId": "m55-t1"
+    },
+    {
+     "taskId": "c3wc-process14",
+     "revision": "r1",
+     "occurrenceId": "m55-t2"
+    },
+    {
+     "taskId": "c3wc-error88",
+     "revision": "r1",
+     "occurrenceId": "m55-t3"
+    },
+    {
+     "taskId": "c3wc-error89",
+     "revision": "r1",
+     "occurrenceId": "m55-t4"
+    }
+   ]
+  },
+  {
+   "id": "c3wc-mission56",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 56: The Inflow Infiltration Program Shift",
+   "tasks": [
+    {
+     "taskId": "c3wc-process15",
+     "revision": "r1",
+     "occurrenceId": "m56-t1"
+    },
+    {
+     "taskId": "c3wc-error90",
+     "revision": "r1",
+     "occurrenceId": "m56-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3wc-mission57",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 57: The Odour Dosing Shift",
+   "tasks": [
+    {
+     "taskId": "c3wc-error91",
+     "revision": "r1",
+     "occurrenceId": "m57-t1"
+    },
+    {
+     "taskId": "c3wc-process16",
+     "revision": "r1",
+     "occurrenceId": "m57-t2"
+    },
+    {
+     "taskId": "c3wc-error92",
+     "revision": "r1",
+     "occurrenceId": "m57-t3"
+    }
+   ]
+  },
+  {
+   "id": "c3wc-mission58",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 58: The Inflow Infiltration Program Shift",
+   "tasks": [
+    {
+     "taskId": "c3wc-process17",
+     "revision": "r1",
+     "occurrenceId": "m58-t1"
+    },
+    {
+     "taskId": "c3wc-error93",
+     "revision": "r1",
+     "occurrenceId": "m58-t2"
+    },
+    {
+     "taskId": "c3wc-error94",
+     "revision": "r1",
+     "occurrenceId": "m58-t3"
+    },
+    {
+     "taskId": "c3wc-error95",
+     "revision": "r1",
+     "occurrenceId": "m58-t4"
+    }
+   ]
+  },
+  {
+   "id": "c3wc-mission59",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 59: The Odour Dosing Shift",
+   "tasks": [
+    {
+     "taskId": "c3wc-error96",
+     "revision": "r1",
+     "occurrenceId": "m59-t1"
+    },
+    {
+     "taskId": "c3wc-process18",
+     "revision": "r1",
+     "occurrenceId": "m59-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3wc-mission60",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 60: The Inflow Infiltration Program Shift",
+   "tasks": [
+    {
+     "taskId": "c3wc-process19",
+     "revision": "r1",
+     "occurrenceId": "m60-t1"
+    },
+    {
+     "taskId": "c3wc-error97",
+     "revision": "r1",
+     "occurrenceId": "m60-t2"
+    },
+    {
+     "taskId": "c3wc-error98",
+     "revision": "r1",
+     "occurrenceId": "m60-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Wastewater collection system management, assessment and rehabilitation chapters"
+  },
+  {
+   "id": "epa-cmom",
+   "title": "US EPA, CMOM Guide for Collection Systems",
+   "locator": "Collection management, operation, maintenance, investigation and rehabilitation principles"
+  },
+  {
+   "id": "epa-alternative-collection",
+   "title": "US EPA, Alternative Wastewater Collection Systems Manual",
+   "locator": "Collection system design and operation background"
+  },
+  {
+   "id": "owwco-exam-prep",
+   "title": "OWWCO, Exam preparation resources",
+   "locator": "https://owwco.ca/preparing-for-your-exam/"
+  },
+  {
+   "id": "wpi-collection-3",
+   "title": "WPI, Wastewater Collection Class III Need-to-Know Criteria",
+   "locator": "https://gowpi.org/services/2025-need-to-know-criteria/"
+  },
+  {
+   "id": "ont-reg-129-04",
+   "title": "Ontario Regulation 129/04, Licensing of Sewage Works Operators",
+   "locator": "https://www.ontario.ca/laws/regulation/04129"
+  },
+  {
+   "id": "ccohs-safety",
+   "title": "CCOHS, OSH Answers (confined spaces, hydrogen sulfide, lockout)",
+   "locator": "https://www.ccohs.ca/oshanswers/"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "803899d57d97a8096cd643013369dc0f329002c983cd22de965e82df17c767ce",
+  "taskReceipts": [
+   {
+    "taskId": "c3wc-error60",
+    "revision": "r1",
+    "sha256": "c7cdfb6795007f715c909c99d41efd426a899e2f5dfb40ea9fa9724e29daba62",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-error61",
+    "revision": "r1",
+    "sha256": "0c93323ce68f9c847fa08c502421e52cce2401ce2679b642b5561878445e424c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-error62",
+    "revision": "r1",
+    "sha256": "5ad49587c8cbb4f8d55bff50ffa6ebfdf02dca703b94b339ca977613c184327e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-error63",
+    "revision": "r1",
+    "sha256": "5cf01082a79e17dc4eb4b0dea8826d3923270833cc7cc789c49a4d313f0c94ed",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-error64",
+    "revision": "r1",
+    "sha256": "176986e5417445a1278ca7233f26571e1048bf8f2f24c14d360c4707d0a582f8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-error65",
+    "revision": "r1",
+    "sha256": "23393ea422077e48f4e3b95eea67e5d4a01b96be9c968501d72593988c133797",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-error66",
+    "revision": "r1",
+    "sha256": "fde721ff47b5dc4f5ba6c71b47afb73cd0cad419c2f86634f7c53363451b1e8a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-error67",
+    "revision": "r1",
+    "sha256": "006abc0731d1506dfc2af3b03f1d361333a4b9f1ee13c1b600d71b03f0622819",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-error68",
+    "revision": "r1",
+    "sha256": "c2f8887a22920631775beb88d941429f1b0820c0ea8264502a61b35db871b34f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-error69",
+    "revision": "r1",
+    "sha256": "b0b807b354664ef79bd48e635f29cd9e896d20fab254a2daf12c402f6e38a5ad",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-error70",
+    "revision": "r1",
+    "sha256": "8c960211e5c14d7a599c70eb313df39421dee0913ff4099702f1a741406af7a2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-error71",
+    "revision": "r1",
+    "sha256": "2490961071a2fbead10360b56562b2702fb04d4e6f15a80cd8cd15b5cae439e4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-error72",
+    "revision": "r1",
+    "sha256": "ac7e9db1831b1c16c49cb806cc3c409713400fed5d681aa8ddd43117fadc2c05",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-error73",
+    "revision": "r1",
+    "sha256": "5eecb43b4d159c28af7bd58d1988799ebb070e65fe9c528897e9b3b229138a38",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-error74",
+    "revision": "r1",
+    "sha256": "21e8ddef365081ecb766bbb669a6295ef8e10c04d29aa705bfd1a9c196734b2e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-error75",
+    "revision": "r1",
+    "sha256": "30aa42b36f07c4a534bfd52dc1ecb9ea4e4c0f45e94f543ef1ff7da609038765",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-error76",
+    "revision": "r1",
+    "sha256": "5b93da0132656ea61c7724c9fe06aaf819177e9ddd667482045bfd8c43de8efc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-error77",
+    "revision": "r1",
+    "sha256": "108e3a6ea962c74243290f0b94407cf2d61f0b289e9729399ebed6f91f72848b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-error78",
+    "revision": "r1",
+    "sha256": "aa3cc0f7fd52e8889879a4f8e13630b1ca6a2df7241798020c13e5d73f95a9d5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-error79",
+    "revision": "r1",
+    "sha256": "162c0f633f9d9273428fa02b644d0a731029165192fcae483c00f8abac9be938",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-error80",
+    "revision": "r1",
+    "sha256": "76e5ee0083301d5fd68a349b7061bbf745cf8c7d744019dad1bfc55b8bc5ab88",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-error81",
+    "revision": "r1",
+    "sha256": "cf0e240044b3e7cedeb9b8bf14d2df99d4faa334930be137d1eb4a13b9c61c17",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-error82",
+    "revision": "r1",
+    "sha256": "c84d2f8a44f2e5928aba17a20600c8ab333160d10e39894e264f9fbf7ed20881",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-error83",
+    "revision": "r1",
+    "sha256": "5327e59f2829e63df895c76c834ec8ab02046980f0093c120053e6ad8e330e87",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-error84",
+    "revision": "r1",
+    "sha256": "cfe1716652715e22b616d7e514906c96f335bd31f2cf02b6c6c0ddd8db96c548",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-error85",
+    "revision": "r1",
+    "sha256": "d6d00b53c5b7965a6eb3d4e742b80e1ab895652106a70c081eb21de31732619d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-error86",
+    "revision": "r1",
+    "sha256": "2f9de8b6de0e0620709552385ea80592e1a025598aba7845c4720ed0b43ed5f4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-error87",
+    "revision": "r1",
+    "sha256": "f6efd562732e8cf9e062875df4cdf39efe09ae68177882a1cbd0b7a5968059d6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-error88",
+    "revision": "r1",
+    "sha256": "a6f901f5f046e71dc2c4f9e5bd2b27e6dad1bb35ea59d4750484766b192a9506",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-error89",
+    "revision": "r1",
+    "sha256": "c1972314161fb061659746994184c37781f3349bf697105005247ad04606fede",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-error90",
+    "revision": "r1",
+    "sha256": "73ef8c13cbd8a25b38db928de01040ecd4859280b2a81b397b7fec528f35a1a9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-error91",
+    "revision": "r1",
+    "sha256": "3b9b979f6b02bb4f834c650a400b5065c77251c6502fab562379dde24ce75a3c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-error92",
+    "revision": "r1",
+    "sha256": "cb7c36828395b31d63d4b4f31bddfc8d380a03bc8068171ebacbb56eb1653677",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-error93",
+    "revision": "r1",
+    "sha256": "8b47fa65706ee5748a4963074a84c95e59bac583d11ab7b6bd91e55dd0edc067",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-error94",
+    "revision": "r1",
+    "sha256": "18b51812f4f220b376bde379bbe327f414e858cf45317799953ba7e506a7d13d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-error95",
+    "revision": "r1",
+    "sha256": "e9bc7d02104fb227e350a37156eade980e493d63c9edcc488a5032a4865b8744",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-error96",
+    "revision": "r1",
+    "sha256": "5e47eca365b72f8d8ef8b0e360304f96d942c82df79cdf0ad085e556cdd59ba8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-error97",
+    "revision": "r1",
+    "sha256": "ffd16dbbe475dd628cc62d324afb859a5763acfaa4bf00943e099aa24b6a81ad",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-error98",
+    "revision": "r1",
+    "sha256": "b10a6d13c0f8f4eb27325f568738292953bee97594ef7a8680ae9932d5588477",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-error99",
+    "revision": "r1",
+    "sha256": "8235c0c1ce52a18235d3c012be56e9c7eef79d1f84a118cc887b2fe2dbcc0393",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-process01",
+    "revision": "r1",
+    "sha256": "4ac1ecf64c8e4975cb82c66a1bcfda2a368bd6459a0a51b89780bd94e51fe4e2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-process02",
+    "revision": "r1",
+    "sha256": "54d88fad3a68b45735bf6f21f1a9a0b278a009876fd2f0602d14109539b9c30b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-process03",
+    "revision": "r1",
+    "sha256": "4833c91f37a22b62f6398b3122c5f107846caf1662be895d213ad1387d047f0d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-process04",
+    "revision": "r1",
+    "sha256": "6ea99fd366e05d9d94eb176192b05e1b112a5cd5f56a8e00594ed0a4bec652a8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-process05",
+    "revision": "r1",
+    "sha256": "10d5006f18ff322209559efe3d0e9b00477fbf2a9d8de7d7d094a0d1c2465266",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-process06",
+    "revision": "r1",
+    "sha256": "4aa22f0969ba12d380e08e01f8f6b3deda10c9d9a741b6eb7e45fc31e10c5298",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-process07",
+    "revision": "r1",
+    "sha256": "062382fa14f3da731ca95596a10b2ed3703223ea4d949988be71c9807b0d262e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-process08",
+    "revision": "r1",
+    "sha256": "47bc7de07fafbb42712d8808678c257dc6ea970c6c924a81285b44bf6383961c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-process09",
+    "revision": "r1",
+    "sha256": "8c27c204dc58f5632b227ae8bae732f5036a80fcdbf25b6eec0b8864e488cf3a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-process10",
+    "revision": "r1",
+    "sha256": "144c1d1439a88841d36e1a74adda12f646b38131d859e31b4c19ad39c58fd3a6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-process100",
+    "revision": "r1",
+    "sha256": "565f170b860dfb569c2db6e34a926ad308b5b780e72fa9c2ba3070c022369137",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-process11",
+    "revision": "r1",
+    "sha256": "79d41bc7c1eba4770b02b9af194a74e6ee981f6729b4d88cf85584687baac673",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-process12",
+    "revision": "r1",
+    "sha256": "d82c136b9b3896511a95cb1fd791c16a1dfe6a978b7e37b71164b4cfc35a6d0a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-process13",
+    "revision": "r1",
+    "sha256": "9accbe3ff75b623178c419ee534eefcbc967b46495c5f43f8934afafa70d9608",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-process14",
+    "revision": "r1",
+    "sha256": "86a98f817361ff9097ed0e5b4d5aebebe2503d1ba6ffaf146eb89f4f961c0177",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-process15",
+    "revision": "r1",
+    "sha256": "15ff47d0806f71092b7a99138f7481556df8918150e2623475b6986aa6e98f76",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-process16",
+    "revision": "r1",
+    "sha256": "f73cd0e540828522bc6d0d94c47d72020042df6ce5d326cb6e7bf53569223f94",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-process17",
+    "revision": "r1",
+    "sha256": "a3d61cfbc89f277b29ba67499b434fc97eed7c9b32470d4ff2f37e3f85d0d473",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-process18",
+    "revision": "r1",
+    "sha256": "8be8c6c3c968e12e633d5a97f55235aaab7b2e09b4a8be8434cab6c55bc9cdec",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-process19",
+    "revision": "r1",
+    "sha256": "4d06b1aa02a2c176e5322464c795c057ae69af6413ae188a340f297965425fc1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-process20",
+    "revision": "r1",
+    "sha256": "77eac697d4ebc221bb9a88911a4f47153e05d974d654901506adf96d1e0d2c48",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-process21",
+    "revision": "r1",
+    "sha256": "baabe80a9ebdb149b64dfaef3ea4f5c53268b2720189b53538b3445e980ee6c5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-process22",
+    "revision": "r1",
+    "sha256": "ac03a5451e9c03ca465f56350bd45d41554db95d502e4d982ad54a68f4865190",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-process23",
+    "revision": "r1",
+    "sha256": "e17dc2804aae3d88ee5d3ca9728b200defd298ba1605ec62b29f5e6dd9a15ba2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-process24",
+    "revision": "r1",
+    "sha256": "4332da38f623f958d129ab5600ed34025375ffca0e4d53215d94a5f44dbfbc60",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-process25",
+    "revision": "r1",
+    "sha256": "e5badf0b90a8d218e3ede354f297805ca00358b543f20a9453e419d5afb9a21b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-process26",
+    "revision": "r1",
+    "sha256": "f9e2b63688b1d3ec1fdf9dfa8497a7926a84a138a64e20c7abb3c877160114f1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-process27",
+    "revision": "r1",
+    "sha256": "e2992a33d10dfe5b490b53b31c4be3ae2a577e32d97c58a522d64f2a140e161c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-process28",
+    "revision": "r1",
+    "sha256": "432c0bae082330c90d435a9660a031fdb316a4b4f2aa60eaf4cb44b0159f65d4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-process29",
+    "revision": "r1",
+    "sha256": "9e9dcf3d8e4036bf175531d6f3286726800485a53408e869dfebe540c7ddec93",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-process30",
+    "revision": "r1",
+    "sha256": "f7650f3c44df4c589483ace44702e05f94b39703a43327de5ef93f4107763900",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-process31",
+    "revision": "r1",
+    "sha256": "f5d15b561086e337225e7cbec77a1dfc7904f898f20ec5c1623a456542df4a3d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-process32",
+    "revision": "r1",
+    "sha256": "8fc0f86ba5868d1e8792b42b72b4493319405f4426e28e5d330937a721cb46d6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-process33",
+    "revision": "r1",
+    "sha256": "fd6b673da2957371eb894bc401230f49f3879a1f2df4b7738521921d4c6fc687",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-process34",
+    "revision": "r1",
+    "sha256": "cb1fc35da304eb8d4170e64fb8973bfbe0826f56825faba22c5e909af111bc71",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-process35",
+    "revision": "r1",
+    "sha256": "c0aaf30cf71da7bfbf8d9d3421509fcb0403e23998906ed3449db084376e124b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-process36",
+    "revision": "r1",
+    "sha256": "016f1e0d1b9c540ac4487ab1a539de0af5e2767c4f7e8b7146bd58ca15ba2b36",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-process37",
+    "revision": "r1",
+    "sha256": "0ba859fb454637cbae239a31ba8bcef6bfe904dcce467fcf550b3a55ef3390f1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-process38",
+    "revision": "r1",
+    "sha256": "5d0d10322eb0c2b5e1c93336c73ff973ad039afb911a5d97f63c43190428851c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wc-process39",
+    "revision": "r1",
+    "sha256": "e9cfc7d4adacf2e96ad238fa06c8ef8e50c1bb1d65cc8f7836225b23cc212e93",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "c3wc-mission41",
+    "revision": "r1",
+    "sha256": "473f68b7e6f86b0954ffd6437823543749293d48a76b4ebbd1d3eb0b65aafb63"
+   },
+   {
+    "missionId": "c3wc-mission42",
+    "revision": "r1",
+    "sha256": "a2c9ca1c4175ce64fa13dbf246b80612917ba1ae07a7b099f5086870f97a5b59"
+   },
+   {
+    "missionId": "c3wc-mission43",
+    "revision": "r1",
+    "sha256": "0198e58e52196bc756e47341f73c7c4670edbd6a97d479f12995bca54387d7fe"
+   },
+   {
+    "missionId": "c3wc-mission44",
+    "revision": "r1",
+    "sha256": "16b0cbb12d77109f9d343675433f296413b4fb4fad692cb95a3e03026982d462"
+   },
+   {
+    "missionId": "c3wc-mission45",
+    "revision": "r1",
+    "sha256": "9d2c94864f7b6d589b0ff658879112d63a0fc213d9e0a65dd9134ba84160476f"
+   },
+   {
+    "missionId": "c3wc-mission46",
+    "revision": "r1",
+    "sha256": "8ac13a2ea95e3e3d3c80bd84b5f92f11afd717cdd66ef93b149daffe541957ba"
+   },
+   {
+    "missionId": "c3wc-mission47",
+    "revision": "r1",
+    "sha256": "8fa41a23112206455b173df2fff797d3addd7bfb7a7c66e0454ebbfa12be6e4e"
+   },
+   {
+    "missionId": "c3wc-mission48",
+    "revision": "r1",
+    "sha256": "68b899e70a20560d11ebe9b16f019521d6c96b57a6007704e7f4b7bd2807ee0d"
+   },
+   {
+    "missionId": "c3wc-mission49",
+    "revision": "r1",
+    "sha256": "ec4fb000d88eab3ccde6219d2bbaff65b3f1a192fea195c6aff700984e689b52"
+   },
+   {
+    "missionId": "c3wc-mission50",
+    "revision": "r1",
+    "sha256": "5f35335a411794089c1f4ccca8838a4e1e3b2837f5fda0cdfb4d56882adba3d6"
+   },
+   {
+    "missionId": "c3wc-mission51",
+    "revision": "r1",
+    "sha256": "f2a54a36a019daf4d1da24ee245452540b6ceb9fd5acc9ff245d7d98f7ca88df"
+   },
+   {
+    "missionId": "c3wc-mission52",
+    "revision": "r1",
+    "sha256": "59f925b155e63c08ab002a58f73f7b216ac45966aba17c73362dd8387f9cdd33"
+   },
+   {
+    "missionId": "c3wc-mission53",
+    "revision": "r1",
+    "sha256": "473a0137113518551680b2c3b5c7e1b6509aa788360d32387d1eea7c28f916ff"
+   },
+   {
+    "missionId": "c3wc-mission54",
+    "revision": "r1",
+    "sha256": "9c4d79ff5d3b0254c62cb8a63174fd943a578f429bbe584b4726e5f3080dcc5f"
+   },
+   {
+    "missionId": "c3wc-mission55",
+    "revision": "r1",
+    "sha256": "e84d572b33579d8440eb2145c1af3b280364b4dd3ce32fd05adf3e97381c2808"
+   },
+   {
+    "missionId": "c3wc-mission56",
+    "revision": "r1",
+    "sha256": "28143d297d864d7818d7311483bf9d87edc846cc950c3003d494780bd7710208"
+   },
+   {
+    "missionId": "c3wc-mission57",
+    "revision": "r1",
+    "sha256": "e0eaf512131a32bb917328f6e680321941eaf372a75683bdd186e75f410d3770"
+   },
+   {
+    "missionId": "c3wc-mission58",
+    "revision": "r1",
+    "sha256": "438b4be190b1be13cf7aba498f762bce8ca6c04c7c2444c141d47a8031bbbdd6"
+   },
+   {
+    "missionId": "c3wc-mission59",
+    "revision": "r1",
+    "sha256": "4ecab680250f62a9ee9947076f27b40d43797208e8bd7ea9486943ffeee5ad39"
+   },
+   {
+    "missionId": "c3wc-mission60",
+    "revision": "r1",
+    "sha256": "b359903d766a479566d219437a16f5751090b4e483687ca26cae7ef102eecc5e"
+   }
+  ]
+ }
+}

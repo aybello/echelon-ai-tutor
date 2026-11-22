@@ -1,0 +1,4225 @@
+{
+ "courseKey": "wpi-class2-water",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "wp2w-error60",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this lime mass calculation for a softening plant near Brandon, Manitoba, with lime dose 112 mg/L as CaO treating 2500000 L/day.",
+   "topicId": "softening-lime-demand",
+   "level": "class1",
+   "assumptions": "Fictional plant: lime dose = 112 mg/L as CaO, daily volume = 2500000 L/day = 2500 m3/day, 1000000 mg = 1 kg. Target unit: kg/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily mass = Dose x Daily volume in L / 1000000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily volume restated as 2500"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily mass = 112 x 2500 / 1000000 = 0.28 kg/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 0.28 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Daily mass = 112 mg/L x 2500000 L/day / 1000000 = 280 kg/day",
+   "explanation": "Line 3 used the daily volume in cubic metres as if it were litres. With 2500000 L/day, the lime mass is 280 kg/day."
+  },
+  {
+   "id": "wp2w-error61",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this lime dose calculation for a softening plant near Lethbridge, Alberta, with carbon dioxide 10 mg/L, calcium carbonate hardness 90 mg/L, magnesium carbonate hardness 60 mg/L, and magnesium noncarbonate hardness 40 mg/L, all as CaCO3.",
+   "topicId": "softening-lime-demand",
+   "level": "class1",
+   "assumptions": "Fictional water: CO2 = 10, Ca carbonate = 90, Mg carbonate = 60, Mg noncarbonate = 40, all mg/L as CaCO3, total Mg hardness = 100. Lime demand as CaCO3 = CO2 + Ca carbonate + Mg carbonate + Mg noncarbonate, each counted once, CaO factor = 0.56. Target unit: mg/L as CaO.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Lime as CaCO3 = CO2 + Ca carbonate + Mg carbonate + Mg noncarbonate"
+    },
+    {
+     "id": "line2",
+     "label": "2. Lime as CaCO3 = 10 + 90 + 60 + 40 + 100 = 300 mg/L (magnesium counted again as a total)"
+    },
+    {
+     "id": "line3",
+     "label": "3. Lime dose calculated from the line 2 value"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Lime as CaCO3 = 10 + 90 + 60 + 40 = 200 mg/L, so dose = 200 x 0.56 = 112 mg/L as CaO",
+   "explanation": "Line 2 counted the magnesium hardness twice, once as its two fractions and again as a total. Counted once, the lime dose is 112 mg/L as CaO."
+  },
+  {
+   "id": "wp2w-error62",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this soda ash dose calculation for a softening plant near Moose Jaw, Saskatchewan, with carbonate hardness 90 mg/L and noncarbonate hardness 110 mg/L, both as CaCO3.",
+   "topicId": "softening-soda-ash-demand",
+   "level": "class1",
+   "assumptions": "Fictional water: carbonate hardness = 90 mg/L as CaCO3, noncarbonate hardness = 110 mg/L as CaCO3. Soda ash removes noncarbonate hardness only, factor = 1.06. Target unit: mg/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Soda ash dose = Carbonate hardness x 1.06"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Carbonate = 90 and Noncarbonate = 110 mg/L as CaCO3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Soda ash dose calculated with the line 1 formula"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Soda ash dose = Noncarbonate hardness x 1.06 = 110 x 1.06 = 116.6 mg/L",
+   "explanation": "Line 1 uses the wrong hardness fraction. Soda ash removes noncarbonate hardness, giving a dose of 116.6 mg/L."
+  },
+  {
+   "id": "wp2w-error63",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this lime dose calculation for a softening plant near Prince Albert, Saskatchewan, with carbon dioxide 12 mg/L, calcium carbonate hardness 95 mg/L, magnesium carbonate hardness 35 mg/L, and magnesium noncarbonate hardness 28 mg/L, all as CaCO3.",
+   "topicId": "softening-lime-demand",
+   "level": "class1",
+   "assumptions": "Fictional water: CO2 = 12, Ca carbonate = 95, Mg carbonate = 35, Mg noncarbonate = 28, all mg/L as CaCO3. Lime demand as CaCO3 = CO2 + Ca carbonate + Mg carbonate + Mg noncarbonate, CaO factor = 0.56. Target unit: mg/L as CaO.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Lime as CaCO3 = CO2 + Ca carbonate + Mg carbonate + Mg noncarbonate"
+    },
+    {
+     "id": "line2",
+     "label": "2. Lime as CaCO3 = 95 + 35 = 130 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Lime dose = 130 x 0.56 = 72.8 mg/L as CaO"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 72.8 mg/L as CaO"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Lime as CaCO3 = 12 + 95 + 35 + 28 = 170 mg/L, so dose = 170 x 0.56 = 95.2 mg/L as CaO",
+   "explanation": "Line 2 counted only the carbonate hardness and left out the carbon dioxide and the magnesium noncarbonate hardness. The lime dose is 95.2 mg/L as CaO."
+  },
+  {
+   "id": "wp2w-error64",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this hydrated lime calculation for a softening plant near Grande Prairie, Alberta, where the CaO dose is 100 mg/L and the given conversion factor is 1.32 mg of hydrated lime per mg of CaO.",
+   "topicId": "softening-lime-demand",
+   "level": "class1",
+   "assumptions": "Fictional plant: CaO dose = 100 mg/L, given factor = 1.32 mg Ca(OH)2 per mg CaO, hydrated lime dose = CaO dose x factor. Target unit: mg/L as Ca(OH)2.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Hydrated lime dose = CaO dose x 1.32"
+    },
+    {
+     "id": "line2",
+     "label": "2. CaO dose given as 100 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Hydrated lime dose = 100 / 1.32"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported using the line 3 value"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Hydrated lime dose = 100 mg/L x 1.32 = 132 mg/L",
+   "explanation": "Line 3 divided by the conversion factor instead of multiplying. The hydrated lime dose is 132 mg/L."
+  },
+  {
+   "id": "wp2w-error65",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this total hardness calculation for a plant near Kamloops, British Columbia, with calcium 60 mg/L as Ca and magnesium hardness 50 mg/L as CaCO3, using the given calcium factor of 2.5.",
+   "topicId": "softening-hardness",
+   "level": "class1",
+   "assumptions": "Fictional water: calcium = 60 mg/L as Ca, given factor = 2.5 mg as CaCO3 per mg as Ca, magnesium hardness = 50 mg/L as CaCO3. Total hardness = Ca as CaCO3 + Mg as CaCO3. Target unit: mg/L as CaCO3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total hardness = Ca as CaCO3 + Mg as CaCO3, Ca as CaCO3 = Ca x 2.5"
+    },
+    {
+     "id": "line2",
+     "label": "2. Ca as CaCO3 = 60 x 2 = 120 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total hardness = 120 + 50 = 170 mg/L as CaCO3"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 170 mg/L as CaCO3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Ca as CaCO3 = 60 mg/L x 2.5 = 150 mg/L, so total = 150 + 50 = 200 mg/L as CaCO3",
+   "explanation": "Line 2 used a calcium factor of 2 instead of the given 2.5. The total hardness is 200 mg/L as CaCO3."
+  },
+  {
+   "id": "wp2w-error66",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this soda ash dose calculation for a softening plant near Medicine Hat, Alberta, with total hardness 220 mg/L and alkalinity 160 mg/L, both as CaCO3.",
+   "topicId": "softening-soda-ash-demand",
+   "level": "class1",
+   "assumptions": "Fictional water: total hardness = 220 mg/L as CaCO3, alkalinity = 160 mg/L as CaCO3. Carbonate hardness = the lesser of total hardness and alkalinity, noncarbonate = total - carbonate, soda ash factor = 1.06. Target unit: mg/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Carbonate hardness = the lesser of total hardness and alkalinity"
+    },
+    {
+     "id": "line2",
+     "label": "2. Carbonate hardness = 220 mg/L, so noncarbonate hardness = 0 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Soda ash dose = 0 x 1.06 = 0 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 0 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Carbonate hardness = 160 mg/L, so noncarbonate = 60 mg/L and soda ash dose = 60 x 1.06 = 63.6 mg/L",
+   "explanation": "Line 2 set the carbonate hardness equal to the total hardness even though the alkalinity is lower. Carbonate hardness cannot exceed the alkalinity, so 60 mg/L is noncarbonate hardness and the soda ash dose is 63.6 mg/L."
+  },
+  {
+   "id": "wp2w-error67",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this soda ash dose calculation for a softening plant near Vernon, British Columbia, with total hardness 180 mg/L and alkalinity 240 mg/L, both as CaCO3.",
+   "topicId": "softening-soda-ash-demand",
+   "level": "class1",
+   "assumptions": "Fictional water: total hardness = 180 mg/L as CaCO3, alkalinity = 240 mg/L as CaCO3. Carbonate hardness = the lesser of total hardness and alkalinity, noncarbonate = total - carbonate, soda ash factor = 1.06. Target unit: mg/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Carbonate hardness = the lesser of total hardness and alkalinity"
+    },
+    {
+     "id": "line2",
+     "label": "2. Noncarbonate hardness = 240 - 180 = 60 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Soda ash dose = 60 x 1.06 = 63.6 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 63.6 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Carbonate hardness = 180 mg/L, so noncarbonate hardness = 0 mg/L and soda ash dose = 0 mg/L",
+   "explanation": "Line 2 subtracted the total hardness from the alkalinity. When alkalinity exceeds total hardness, all of the hardness is carbonate hardness, the noncarbonate hardness is zero, and no soda ash is needed."
+  },
+  {
+   "id": "wp2w-error68",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this lime dose calculation for magnesium removal at a softening plant near Cranbrook, British Columbia, with magnesium carbonate hardness 75 mg/L as CaCO3.",
+   "topicId": "softening-lime-demand",
+   "level": "class1",
+   "assumptions": "Fictional water: Mg carbonate hardness = 75 mg/L as CaCO3. Lime dose as CaO = Mg hardness as CaCO3 x 0.56, the CaO factor. The soda ash factor 1.06 does not apply to lime. Target unit: mg/L as CaO.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Lime dose = Mg carbonate hardness x CaO factor 0.56"
+    },
+    {
+     "id": "line2",
+     "label": "2. Mg carbonate hardness given as 75 mg/L as CaCO3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Lime dose = 75 x 1.06 = 79.5 mg/L as CaO"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 79.5 mg/L as CaO"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Lime dose = 75 mg/L x 0.56 = 42 mg/L as CaO",
+   "explanation": "Line 3 used the soda ash factor 1.06 for a lime calculation. With the CaO factor of 0.56, the lime dose is 42 mg/L as CaO."
+  },
+  {
+   "id": "wp2w-error69",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this feed solution calculation for a plant near Calgary, Alberta, needing 3000 g of chemical from a 15 percent weight per volume solution.",
+   "topicId": "chemical-solution-strength",
+   "level": "class1",
+   "assumptions": "Fictional solution: strength = 15 percent w/v = 15 g per 100 mL = 150 g/L. Chemical need = 3000 g. Target unit: L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Strength = 15 g/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Need given as 3000 g"
+    },
+    {
+     "id": "line3",
+     "label": "3. Volume = 3000 g / 15 g/L = 200 L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 200 L"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Strength = 15 g per 100 mL x 10 = 150 g/L, so volume = 3000 / 150 = 20 L",
+   "explanation": "Line 1 read the percent value directly as grams per litre. A 15 percent w/v solution holds 150 g/L, so the feed is 20 L."
+  },
+  {
+   "id": "wp2w-error70",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this dilution calculation to prepare 600 L of a 5 percent solution from a 25 percent stock at a plant near Edmonton, Alberta.",
+   "topicId": "chemical-dilution",
+   "level": "class1",
+   "assumptions": "Fictional dilution: stock strength C1 = 25 percent, target strength C2 = 5 percent, target volume V2 = 600 L, stock volume V1 = C2 x V2 / C1. Target unit: L of stock.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Stock volume V1 = C2 x V2 / C1"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as C1 = 25 percent, C2 = 5 percent, V2 = 600 L"
+    },
+    {
+     "id": "line3",
+     "label": "3. V1 = 25 x 600 / 5 = 3000 L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 3000 L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. V1 = 5 x 600 / 25 = 120 L",
+   "explanation": "Line 3 inverted the two strengths in the substitution. The stock volume is 120 L."
+  },
+  {
+   "id": "wp2w-error71",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this dilution calculation where 4 L of a 50 mg/L solution is diluted to a final volume of 200 L at a plant near Regina, Saskatchewan.",
+   "topicId": "chemical-dilution",
+   "level": "class1",
+   "assumptions": "Fictional dilution: stock volume = 4 L, stock concentration = 50 mg/L, final volume = 200 L. Target unit: mg/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Final concentration = Stock mass / Final volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Stock mass = 4 L x 50 mg/L = 200 mg"
+    },
+    {
+     "id": "line3",
+     "label": "3. Final concentration = 200 mg / 4 L = 50 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 50 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Final concentration = 200 mg / 200 L = 1 mg/L",
+   "explanation": "Line 3 divided by the stock volume instead of the final diluted volume. The final concentration is 1 mg/L."
+  },
+  {
+   "id": "wp2w-error72",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this alkalinity titration calculation for a 100 mL sample at a plant near Winnipeg, Manitoba, using 0.02 N acid and a titre of 12.5 mL.",
+   "topicId": "lab-alkalinity-titration",
+   "level": "class1",
+   "assumptions": "Fictional titration: sample volume = 100 mL, acid normality = 0.02 N, titre = 12.5 mL, alkalinity in mg/L as CaCO3 = Titre x N x 50000 / Sample mL. Target unit: mg/L as CaCO3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Alkalinity = Titre x N x 50000 / Sample volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Titre = 12.5 mL, N = 0.02, Sample = 100 mL"
+    },
+    {
+     "id": "line3",
+     "label": "3. Alkalinity = 12.5 x 0.02 x 50000 / 100 = 62.5 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 62.5 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Alkalinity = 12.5 x 0.02 x 50000 / 100 = 125 mg/L as CaCO3",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: the product gives 125 mg/L, not 62.5 mg/L."
+  },
+  {
+   "id": "wp2w-error73",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this hardness titration calculation for a 50 mL sample at a plant near Saskatoon, Saskatchewan, with an EDTA titre of 9.6 mL and a given factor of 1000.",
+   "topicId": "lab-hardness-titration",
+   "level": "class1",
+   "assumptions": "Fictional titration: sample volume = 50 mL, EDTA titre = 9.6 mL, hardness in mg/L as CaCO3 = Titre x 1000 / Sample mL, with the given factor 1000. Target unit: mg/L as CaCO3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Hardness = Titre x 1000 / Sample volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Titre = 9.6 mL and Sample = 50 mL"
+    },
+    {
+     "id": "line3",
+     "label": "3. Hardness = 9.6 x 100 / 50 = 19.2 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 19.2 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Hardness = 9.6 x 1000 / 50 = 192 mg/L as CaCO3",
+   "explanation": "Line 3 used a factor of 100 instead of the given 1000. The hardness is 192 mg/L as CaCO3."
+  },
+  {
+   "id": "wp2w-error74",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this jar test dose calculation at a plant near Kelowna, British Columbia, where 2.5 mL of a 10 g/L alum stock is added to a 1 L jar.",
+   "topicId": "coagulation-jar-test",
+   "level": "class1",
+   "assumptions": "Fictional jar test: stock strength = 10 g/L = 10 mg/mL, volume added = 2.5 mL, jar volume = 1 L. Dose = Volume added x Strength / Jar volume. Target unit: mg/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Stock strength restated as 1 mg/mL"
+    },
+    {
+     "id": "line2",
+     "label": "2. Volume added given as 2.5 mL to a 1 L jar"
+    },
+    {
+     "id": "line3",
+     "label": "3. Dose calculated from the line 1 strength"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Stock strength = 10 g/L = 10 mg/mL, so dose = 2.5 x 10 / 1 = 25 mg/L",
+   "explanation": "Line 1 understated the stock strength by a factor of 10. A 10 g/L stock holds 10 mg/mL, so the jar dose is 25 mg/L."
+  },
+  {
+   "id": "wp2w-error75",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chemical mass calculation for a plant near Red Deer, Alberta, applying the jar test dose of 35 mg/L to a daily volume of 6000000 L.",
+   "topicId": "coagulation-jar-test",
+   "level": "class1",
+   "assumptions": "Fictional plant: selected dose = 35 mg/L, daily volume = 6000000 L/day, 1000000 mg = 1 kg. Target unit: kg/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily mass = Dose x Daily volume / 1000000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily volume restated as 6000"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily mass = 35 x 6000 / 1000000 = 0.21 kg/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 0.21 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Daily mass = 35 mg/L x 6000000 L/day / 1000000 = 210 kg/day",
+   "explanation": "Line 3 used the daily volume in cubic metres as if it were litres. With 6000000 L/day, the mass is 210 kg/day."
+  },
+  {
+   "id": "wp2w-error76",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solution preparation calculation to make 800 L of a 2 percent solution at a plant near Brandon, Manitoba.",
+   "topicId": "chemical-solution-strength",
+   "level": "class1",
+   "assumptions": "Fictional solution: target strength = 2 percent w/v = 20 g/L, target volume = 800 L, 1000 g = 1 kg. Target unit: kg.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Solute mass = Strength in g/L x Volume in L, converted to kg"
+    },
+    {
+     "id": "line2",
+     "label": "2. Strength used as 2 g/L and volume given as 800 L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solute mass calculated from the line 2 strength"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Strength is 20 g/L, so mass = 20 x 800 / 1000 = 16 kg",
+   "explanation": "Line 2 read 2 percent directly as 2 g/L. A 2 percent w/v solution holds 20 g/L, so 16 kg of solute is needed."
+  },
+  {
+   "id": "wp2w-error77",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this hypochlorite feed calculation for a plant near Lethbridge, Alberta, with chlorine dose 2 mg/L, daily volume 3000000 L, and a solution holding 120 g/L of available chlorine.",
+   "topicId": "chemical-solution-strength",
+   "level": "class1",
+   "assumptions": "Fictional plant: dose = 2 mg/L, daily volume = 3000000 L/day, chlorine mass = 6000 g/day, solution strength = 120 g/L. Target unit: L/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Solution volume = Chlorine mass in g / Strength in g/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Chlorine mass = 2 x 3000000 / 1000 = 6000 g/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Strength used as 12 g/L, so volume = 6000 / 12 = 500 L/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 500 L/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Strength is 120 g/L, so volume = 6000 g/day / 120 g/L = 50 L/day",
+   "explanation": "Line 3 dropped a zero from the solution strength. The feed is 50 L/day."
+  },
+  {
+   "id": "wp2w-error78",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this mixing calculation where 3 L of a 20 mg/L solution is mixed with 1 L of a 60 mg/L solution at a plant near Moose Jaw, Saskatchewan.",
+   "topicId": "chemical-dilution",
+   "level": "class1",
+   "assumptions": "Fictional mixture: 3 L at 20 mg/L mixed with 1 L at 60 mg/L, total volume = 4 L. Target unit: mg/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Mixed concentration = Total mass / Total volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total mass = 20 x 3 + 60 x 1 = 120 mg"
+    },
+    {
+     "id": "line3",
+     "label": "3. Mixed concentration = (20 + 60) / 2 = 40 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 40 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Mixed concentration = 120 mg / 4 L = 30 mg/L",
+   "explanation": "Line 3 took a simple average of the two concentrations even though the volumes differ. Dividing the total mass by the total volume gives 30 mg/L."
+  },
+  {
+   "id": "wp2w-error79",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solution feed calculation for a plant near Prince Albert, Saskatchewan, needing 2400 g of solute from a 10 percent weight per weight solution with density 1.2 kg/L.",
+   "topicId": "chemical-solution-strength",
+   "level": "class1",
+   "assumptions": "Fictional solution: strength = 10 percent w/w = 0.1, density = 1.2 kg/L = 1200 g/L, so strength per litre = 0.1 x 1200 = 120 g/L. Need = 2400 g. Target unit: L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Strength per litre = 100 g/L (the percent read as grams per litre)"
+    },
+    {
+     "id": "line2",
+     "label": "2. Need given as 2400 g"
+    },
+    {
+     "id": "line3",
+     "label": "3. Volume = 2400 g / 100 g/L = 24 L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 24 L"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Strength per litre = 0.1 x 1200 g/L = 120 g/L, so volume = 2400 / 120 = 20 L",
+   "explanation": "Line 1 read the weight percent as grams per litre and ignored the density. Each litre holds 120 g of solute, so the feed is 20 L."
+  },
+  {
+   "id": "wp2w-error80",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this standard preparation calculation to make 500 mL of a 10 mg/L standard from a 1000 mg/L stock at a plant near Grande Prairie, Alberta.",
+   "topicId": "chemical-dilution",
+   "level": "class1",
+   "assumptions": "Fictional standard: stock strength C1 = 1000 mg/L, target strength C2 = 10 mg/L, target volume V2 = 500 mL, stock volume V1 = C2 x V2 / C1. Target unit: mL of stock.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Stock volume V1 = C1 x V2 / C2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as C1 = 1000 mg/L, C2 = 10 mg/L, V2 = 500 mL"
+    },
+    {
+     "id": "line3",
+     "label": "3. Stock volume calculated with the line 1 formula"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Stock volume V1 = C2 x V2 / C1 = 10 x 500 / 1000 = 5 mL",
+   "explanation": "Line 1 uses the wrong dilution formula, with the strengths inverted. The stock volume is 5 mL."
+  },
+  {
+   "id": "wp2w-error81",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this residual decay calculation for stored water at a plant near Kamloops, British Columbia, where the residual starts at 1.8 mg/L and falls at a given rate of 0.2 mg/L per hour over 5 h.",
+   "topicId": "disinfection-residual-decay",
+   "level": "class1",
+   "assumptions": "Fictional storage check: starting residual = 1.8 mg/L, given decay rate = 0.2 mg/L per h, time = 5 h, final residual = Start - Rate x Time. Target unit: mg/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Final residual = Starting residual - Decay rate x Time"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Start = 1.8 mg/L, Rate = 0.2 mg/L per h, Time = 5 h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Final residual = 1.8 + 0.2 x 5 = 2.8 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 2.8 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Final residual = 1.8 - 0.2 x 5 = 0.8 mg/L",
+   "explanation": "Line 3 added the decay instead of subtracting it, even though the formula in line 1 was right. The final residual is 0.8 mg/L."
+  },
+  {
+   "id": "wp2w-error82",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this breakpoint chlorination calculation for a plant near Medicine Hat, Alberta, with ammonia nitrogen 1.9 mg/L and a given breakpoint ratio of 7.6 mg of chlorine per mg of ammonia nitrogen.",
+   "topicId": "disinfection-breakpoint",
+   "level": "class1",
+   "assumptions": "Fictional water: ammonia nitrogen = 1.9 mg/L, given breakpoint ratio = 7.6 to 1, chlorine to breakpoint = Ammonia x Ratio. Target unit: mg/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Chlorine to breakpoint = Ammonia nitrogen x Breakpoint ratio"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Ammonia = 1.9 mg/L and Ratio = 7.6"
+    },
+    {
+     "id": "line3",
+     "label": "3. Chlorine to breakpoint = 1.9 + 7.6 = 9.5 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 9.5 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Chlorine to breakpoint = 1.9 mg/L x 7.6 = 14.44 mg/L",
+   "explanation": "Line 3 added the ratio instead of multiplying. The chlorine needed to reach breakpoint is 14.44 mg/L."
+  },
+  {
+   "id": "wp2w-error83",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this iron oxidation calculation for a plant near Vernon, British Columbia, with iron 1.4 mg/L, using the given chlorine factor of 0.64 mg per mg of iron. The manganese factor of 1.29 is also listed in the notes.",
+   "topicId": "iron-manganese-oxidation",
+   "level": "class1",
+   "assumptions": "Fictional water: iron = 1.4 mg/L, given chlorine factor for iron = 0.64 mg/mg, given chlorine factor for manganese = 1.29 mg/mg. Chlorine for iron = Iron x 0.64. Target unit: mg/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Chlorine for iron = Iron x Iron factor 0.64"
+    },
+    {
+     "id": "line2",
+     "label": "2. Iron given as 1.4 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Chlorine = 1.4 x 1.29 = 1.806 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 1.806 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Chlorine = 1.4 mg/L x 0.64 = 0.896 mg/L",
+   "explanation": "Line 3 used the manganese factor for an iron calculation. With the iron factor of 0.64, the chlorine need is 0.896 mg/L."
+  },
+  {
+   "id": "wp2w-error84",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this manganese oxidation calculation for a plant near Cranbrook, British Columbia, with manganese 0.5 mg/L and a given permanganate factor of 1.92 mg per mg of manganese.",
+   "topicId": "iron-manganese-oxidation",
+   "level": "class1",
+   "assumptions": "Fictional water: manganese = 0.5 mg/L, given permanganate factor = 1.92 mg/mg, permanganate dose = Manganese x Factor. Target unit: mg/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Permanganate dose = Manganese x Factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Manganese = 0.5 mg/L and Factor = 1.92"
+    },
+    {
+     "id": "line3",
+     "label": "3. Permanganate dose = 0.5 / 1.92"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported using the line 3 value"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Permanganate dose = 0.5 mg/L x 1.92 = 0.96 mg/L",
+   "explanation": "Line 3 divided by the factor instead of multiplying. The permanganate dose is 0.96 mg/L."
+  },
+  {
+   "id": "wp2w-error85",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this filter loading calculation for a plant near Calgary, Alberta, with four filters of 20 m2 each, one out of service, and flow 240 m3/h.",
+   "topicId": "filtration-loading",
+   "level": "class1",
+   "assumptions": "Fictional filters: four units, area = 20 m2 each, one out of service, so in-service units = 3 and in-service area = 60 m2. Q = 240 m3/h. Target unit: m/h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Loading rate = Q / In-service area"
+    },
+    {
+     "id": "line2",
+     "label": "2. In-service area = 20 m2 x 4 = 80 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Loading rate = 240 / 80 = 3 m/h"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 3 m/h"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. In-service area = 20 m2 x 3 = 60 m2, so rate = 240 / 60 = 4 m/h",
+   "explanation": "Line 2 counted the out of service filter in the area. With three filters in service, the loading rate is 4 m/h."
+  },
+  {
+   "id": "wp2w-error86",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this backwash rate calculation for a filter at a plant near Edmonton, Alberta, with area 30 m2 and backwash flow 15 m3/min.",
+   "topicId": "filtration-backwash",
+   "level": "class1",
+   "assumptions": "Fictional filter: plan area = 30 m2, backwash flow = 15 m3/min, backwash rate = Flow / Area. Target unit: m/min.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Backwash rate = Flow / Area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Flow = 15 m3/min and Area = 30 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Backwash rate = 30 / 15 = 2 m/min"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 2 m/min"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Backwash rate = 15 m3/min / 30 m2 = 0.5 m/min",
+   "explanation": "Line 3 inverted the substitution. The backwash rate is 0.5 m/min."
+  },
+  {
+   "id": "wp2w-error87",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this backwash volume calculation for a filter at a plant near Regina, Saskatchewan, with area 25 m2, backwash rate 0.6 m/min, and an 8 min backwash.",
+   "topicId": "filtration-backwash",
+   "level": "class1",
+   "assumptions": "Fictional filter: plan area = 25 m2, backwash rate = 0.6 m/min, backwash time = 8 min. Target unit: m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Backwash volume = Rate x Area x Time"
+    },
+    {
+     "id": "line2",
+     "label": "2. Backwash flow = 0.6 m/min x 25 m2 = 15 m3/min"
+    },
+    {
+     "id": "line3",
+     "label": "3. Backwash volume = 15 m3"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 15 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Backwash volume = 15 m3/min x 8 min = 120 m3",
+   "explanation": "Line 3 reported the backwash flow as the volume and skipped the 8 min backwash time. The volume is 120 m3."
+  },
+  {
+   "id": "wp2w-error88",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this wash water percentage calculation for a plant near Winnipeg, Manitoba, producing 5000 m3 in a day and using 150 m3 for backwashing.",
+   "topicId": "filtration-performance",
+   "level": "class1",
+   "assumptions": "Fictional plant: daily production = 5000 m3, daily backwash use = 150 m3, percent wash water = Backwash / Production x 100. Target unit: percent.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent wash water = Backwash / Production x 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Backwash = 150 m3 and Production = 5000 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent = 150 / 5000 x 10 = 0.3 percent"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 0.3 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent = 150 / 5000 x 100 = 3 percent",
+   "explanation": "Line 3 multiplied by 10 instead of 100 when converting the fraction to a percent. The wash water use is 3 percent of production."
+  },
+  {
+   "id": "wp2w-error89",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this unit filter run volume calculation for a filter at a plant near Saskatoon, Saskatchewan, running 40 h at a loading rate of 5 m/h.",
+   "topicId": "filtration-performance",
+   "level": "class1",
+   "assumptions": "Fictional filter: run time = 40 h, loading rate = 5 m/h, unit filter run volume = Rate x Run time. Target unit: m3/m2.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Unit run volume = Loading rate x Run time"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Rate = 5 m/h and Time = 40 h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Unit run volume = 40 / 5 = 8 m3/m2"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 8 m3/m2"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Unit run volume = 5 m/h x 40 h = 200 m3/m2",
+   "explanation": "Line 3 divided instead of multiplying. The unit filter run volume is 200 m3/m2."
+  },
+  {
+   "id": "wp2w-error90",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this filter yield calculation for a filter at a plant near Kelowna, British Columbia, with area 24 m2 and a unit run volume of 180 m3/m2.",
+   "topicId": "filtration-performance",
+   "level": "class1",
+   "assumptions": "Fictional filter: plan area = 24 m2, unit filter run volume = 180 m3/m2, yield per run = Area x Unit run volume. Target unit: m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Yield per run = Area x Unit run volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Area = 24 m2 and Unit volume = 180 m3/m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Yield = 24 + 180 = 204 m3"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 204 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Yield = 24 m2 x 180 m3/m2 = 4320 m3",
+   "explanation": "Line 3 added the area and the unit run volume instead of multiplying. The yield per run is 4320 m3."
+  },
+  {
+   "id": "wp2w-error91",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this backwash flow calculation for a filter at a plant near Red Deer, Alberta, with area 18 m2 and a required backwash rate of 12 m/h.",
+   "topicId": "filtration-backwash",
+   "level": "class1",
+   "assumptions": "Fictional filter: plan area = 18 m2, backwash rate = 12 m/h, backwash flow = Rate x Area. Target unit: m3/h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Backwash flow = Rate x Area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Rate = 12 m/h and Area = 18 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Backwash flow = 18 / 12 = 1.5 m3/h"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 1.5 m3/h"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Backwash flow = 12 m/h x 18 m2 = 216 m3/h",
+   "explanation": "Line 3 divided instead of multiplying. The backwash flow is 216 m3/h."
+  },
+  {
+   "id": "wp2w-error92",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this daily backwash volume calculation for a plant near Brandon, Manitoba, with two filters, each backwashed twice a day, using 45 m3 per backwash.",
+   "topicId": "filtration-backwash",
+   "level": "class1",
+   "assumptions": "Fictional plant: filters = 2, backwashes per filter per day = 2, volume per backwash = 45 m3. Daily total = Filters x Washes x Volume each. Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily total = Filters x Washes per filter x Volume per backwash"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Filters = 2, Washes = 2, Volume = 45 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily total = 2 x 45 = 90 m3/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 90 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Daily total = 2 x 2 x 45 = 180 m3/day",
+   "explanation": "Line 3 counted only one backwash per filter. With two backwashes per filter, the daily total is 180 m3/day."
+  },
+  {
+   "id": "wp2w-error93",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this filter loading calculation for a plant near Lethbridge, Alberta, with five filters of 16 m2 each, two unavailable (one in backwash and one out of service), and flow 192 m3/h.",
+   "topicId": "filtration-loading",
+   "level": "class1",
+   "assumptions": "Fictional filters: five units, area = 16 m2 each, two unavailable, so in-service units = 3 and in-service area = 48 m2. Q = 192 m3/h. Target unit: m/h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Loading rate = Q / In-service area"
+    },
+    {
+     "id": "line2",
+     "label": "2. In-service area = 16 m2 x 4 = 64 m2 (one filter deducted)"
+    },
+    {
+     "id": "line3",
+     "label": "3. Loading rate = 192 / 64 = 3 m/h"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 3 m/h"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. In-service area = 16 m2 x 3 = 48 m2, so rate = 192 / 48 = 4 m/h",
+   "explanation": "Line 2 deducted only one of the two unavailable filters. With three filters in service, the loading rate is 4 m/h."
+  },
+  {
+   "id": "wp2w-error94",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this filter loading calculation for a filter at a plant near Moose Jaw, Saskatchewan, with area 20 m2 and flow 36 L/s.",
+   "topicId": "filtration-loading",
+   "level": "class1",
+   "assumptions": "Fictional filter: plan area = 20 m2, Q = 36 L/s, 1000 L = 1 m3, 3600 s = 1 h. Target unit: m/h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Loading rate = Q in m3/h / Area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q = 36 L/s x 60 s/h / 1000 L/m3 = 2.16 m3/h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Loading rate = 2.16 / 20 = 0.108 m/h"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 0.108 m/h"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Q = 36 L/s x 3600 s/h / 1000 L/m3 = 129.6 m3/h, so rate = 129.6 / 20 = 6.48 m/h",
+   "explanation": "Line 2 used 60 instead of 3600 seconds per hour in the flow conversion. The loading rate is 6.48 m/h."
+  },
+  {
+   "id": "wp2w-error95",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this filter loading calculation for a filter at a plant near Prince Albert, Saskatchewan, with area 120 m2 and daily flow 960 m3/day.",
+   "topicId": "filtration-loading",
+   "level": "class1",
+   "assumptions": "Fictional filter: plan area = 120 m2, Q = 960 m3/day. Target unit: m/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Loading rate = Q / Area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Q = 960 m3/day and Area = 120 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Loading rate = 960 / 120"
+    },
+    {
+     "id": "line4",
+     "label": "4. Loading rate = 6 m/day"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Loading rate = 960 m3/day / 120 m2 = 8 m/day",
+   "explanation": "Lines 1 to 3 are correct. Line 4 is an arithmetic slip: 960 / 120 = 8, not 6."
+  },
+  {
+   "id": "wp2w-error96",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this backwash duration calculation for a filter at a plant near Grande Prairie, Alberta, needing 96 m3 of backwash water at a backwash flow of 12 m3/min.",
+   "topicId": "filtration-backwash",
+   "level": "class1",
+   "assumptions": "Fictional filter: required backwash volume = 96 m3, backwash flow = 12 m3/min, time = Volume / Flow. Target unit: min.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Backwash time = Volume / Flow"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Volume = 96 m3 and Flow = 12 m3/min"
+    },
+    {
+     "id": "line3",
+     "label": "3. Backwash time = 12 / 96 = 0.125 min"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 0.125 min"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Backwash time = 96 m3 / 12 m3/min = 8 min",
+   "explanation": "Line 3 inverted the substitution. The backwash time is 8 min."
+  },
+  {
+   "id": "wp2w-error97",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this filter run time calculation for a filter at a plant near Kamloops, British Columbia, with a target unit run volume of 240 m3/m2 at a loading rate of 6 m/h.",
+   "topicId": "filtration-performance",
+   "level": "class1",
+   "assumptions": "Fictional filter: target unit run volume = 240 m3/m2, loading rate = 6 m/h, run time = Unit volume / Rate. Target unit: h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Run time = Unit run volume / Loading rate"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Unit volume = 240 m3/m2 and Rate = 6 m/h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Run time = 240 x 6 = 1440 h"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 1440 h"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Run time = 240 / 6 = 40 h",
+   "explanation": "Line 3 multiplied instead of dividing. The run time is 40 h."
+  },
+  {
+   "id": "wp2w-error98",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this headloss calculation for a filter at a plant near Medicine Hat, Alberta, with clean bed headloss 0.6 m, a given headloss increase of 0.15 m per hour, and a run of 20 h.",
+   "topicId": "filtration-performance",
+   "level": "class1",
+   "assumptions": "Fictional filter: clean bed headloss = 0.6 m, given increase rate = 0.15 m/h, run time = 20 h, total headloss = Clean bed + Rate x Time. Target unit: m.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total headloss = Clean bed headloss + Increase rate x Run time"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Clean bed = 0.6 m, Rate = 0.15 m/h, Time = 20 h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total headloss = (0.6 + 0.15) x 20 = 15 m"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 15 m"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total headloss = 0.6 + 0.15 x 20 = 3.6 m",
+   "explanation": "Line 3 multiplied the clean bed headloss by the run time as well. Only the increase accumulates over time, giving a total headloss of 3.6 m."
+  },
+  {
+   "id": "wp2w-error99",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this net production calculation for a filter at a plant near Vernon, British Columbia, with gross production 4320 m3 in a run and backwash use 120 m3.",
+   "topicId": "filtration-performance",
+   "level": "class1",
+   "assumptions": "Fictional filter: gross production per run = 4320 m3, backwash use = 120 m3, net production = Gross - Backwash. Target unit: m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Net production = Gross production - Backwash use"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Gross = 4320 m3 and Backwash = 120 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Net production = 4320 + 120 = 4440 m3"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 4440 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Net production = 4320 m3 - 120 m3 = 4200 m3",
+   "explanation": "Line 3 added the backwash use instead of subtracting it. Backwash water comes out of production, so the net production is 4200 m3."
+  },
+  {
+   "id": "wp2w-process01",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the weekly jar test program used to hold coagulation on target.",
+   "topicId": "process-jar-test-weekly-program",
+   "level": "class1",
+   "assumptions": "Fictional surface water plant in western Canada running a standing weekly jar test program on a prairie river source.",
+   "configuration": "Scope: Monday raw water collection through the dose decision posted for the week.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Collect a fresh raw water sample at the intake and measure turbidity, pH, alkalinity, temperature, and colour"
+    },
+    {
+     "id": "s2",
+     "label": "Fill six jars with equal measured volumes and set the dose ladder around the current plant dose"
+    },
+    {
+     "id": "s3",
+     "label": "Dose each jar during rapid mix, then run the standard flocculation and settling times"
+    },
+    {
+     "id": "s4",
+     "label": "Measure settled turbidity, pH, and colour in every jar and record floc size and settling character"
+    },
+    {
+     "id": "s5",
+     "label": "Select the lowest dose that meets the settled water targets and confirm alkalinity remains adequate"
+    },
+    {
+     "id": "s6",
+     "label": "Post the selected dose for the week, file the bench sheet, and flag any dose change to the operator in charge"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The weekly program samples first, tests a dose ladder under fixed bench conditions, and only then posts a dose, so plant changes rest on measured settled quality rather than habit."
+  },
+  {
+   "id": "wp2w-process02",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the jar test response when raw water quality shifts mid week.",
+   "topicId": "process-jar-test-raw-shift-response",
+   "level": "class1",
+   "assumptions": "Fictional plant in Saskatchewan treating river water whose turbidity and colour rose after overnight rain.",
+   "configuration": "Scope: detecting the raw water shift through a confirmed plant dose change.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the shift with a fresh grab sample and compare turbidity, colour, and alkalinity with the weekly bench sheet"
+    },
+    {
+     "id": "s2",
+     "label": "Collect a new raw water sample and run an unscheduled jar test series at the current conditions"
+    },
+    {
+     "id": "s3",
+     "label": "Include the current plant dose as one jar so the new results can be compared directly"
+    },
+    {
+     "id": "s4",
+     "label": "Choose the dose that restores settled turbidity and colour targets with adequate residual alkalinity"
+    },
+    {
+     "id": "s5",
+     "label": "Change the plant coagulant feed in one step to the jar test dose and note the time of the change"
+    },
+    {
+     "id": "s6",
+     "label": "Check settled water after one clarifier detention time and confirm the dose before logging the event"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A raw water shift voids the old bench sheet, so a fresh jar test that includes the current dose as a reference is run before the plant feed is changed and then verified in settled water."
+  },
+  {
+   "id": "wp2w-process03",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a coagulant dose optimization trial run over one production day.",
+   "topicId": "process-coagulant-optimization-trial",
+   "level": "class1",
+   "assumptions": "Fictional Class 2 operator in western Canada running a structured dose trial to reduce chemical use without losing settled quality.",
+   "configuration": "Scope: trial planning through the adopted operating dose.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Set the trial settled water turbidity, pH, and alkalinity limits and the step size between trial doses"
+    },
+    {
+     "id": "s2",
+     "label": "Record baseline settled quality and sludge production at the current dose for a full detention cycle"
+    },
+    {
+     "id": "s3",
+     "label": "Lower the dose by one step and hold it for at least one full clarifier detention time"
+    },
+    {
+     "id": "s4",
+     "label": "Measure settled turbidity and pH and observe floc and blanket behaviour at the trial dose"
+    },
+    {
+     "id": "s5",
+     "label": "Repeat the step down until settled quality approaches the trial limit, then return to the last passing dose"
+    },
+    {
+     "id": "s6",
+     "label": "Adopt the last passing dose, update the dose control chart, and record trial results for review"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "An optimization trial moves in single held steps with a full detention time at each dose, so each settled result belongs to one dose and the adopted dose is the last one proven to pass."
+  },
+  {
+   "id": "wp2w-process04",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the alkalinity supplementation program for a low alkalinity source.",
+   "topicId": "process-alkalinity-supplementation-program",
+   "level": "class1",
+   "assumptions": "Fictional plant in Manitoba on a low alkalinity source where coagulation regularly consumes most of the available alkalinity.",
+   "configuration": "Scope: raw alkalinity assessment through a stable supplemented coagulation program.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Measure raw water alkalinity, pH, and turbidity across a representative week and record the pattern"
+    },
+    {
+     "id": "s2",
+     "label": "Run jar tests with graded alkalinity supplement doses to find the dose that holds post coagulation pH and alkalinity on target"
+    },
+    {
+     "id": "s3",
+     "label": "Set the supplement feed point ahead of the coagulant so the water is conditioned before coagulation"
+    },
+    {
+     "id": "s4",
+     "label": "Start the supplement feed at the jar test dose and confirm delivery by calibration drawdown"
+    },
+    {
+     "id": "s5",
+     "label": "Track treated pH and residual alkalinity daily and trim the supplement dose against the control limits"
+    },
+    {
+     "id": "s6",
+     "label": "Review supplement use and treated quality monthly and update the program dose table by season"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Supplementation is set by jar testing first, fed ahead of the coagulant, proven by drawdown, and then managed by daily residual alkalinity rather than by a fixed guess."
+  },
+  {
+   "id": "wp2w-process05",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a coagulation pH optimization study for a coloured prairie source.",
+   "topicId": "process-coagulation-ph-optimization",
+   "level": "class1",
+   "assumptions": "Fictional plant in Alberta treating a high colour, high organic prairie reservoir source.",
+   "configuration": "Scope: bench study design through the plant pH set point decision.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Collect raw water and measure colour, turbidity, alkalinity, and natural pH"
+    },
+    {
+     "id": "s2",
+     "label": "Run jar test sets at several controlled pH values using the same coagulant dose in each set"
+    },
+    {
+     "id": "s3",
+     "label": "Measure settled colour, turbidity, and residual alkalinity for every pH set"
+    },
+    {
+     "id": "s4",
+     "label": "Identify the pH range that gives the best colour and turbidity removal without exhausting alkalinity"
+    },
+    {
+     "id": "s5",
+     "label": "Trial the selected pH set point at plant scale for a full production day and monitor settled quality"
+    },
+    {
+     "id": "s6",
+     "label": "Set the operating pH band, record the acid or alkali feed arrangement, and file the study results"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The study holds dose constant while pH varies, so the best pH range is proven on the bench before a plant trial fixes the operating band."
+  },
+  {
+   "id": "wp2w-process06",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the polymer aid selection trial for a conventional plant.",
+   "topicId": "process-polymer-aid-selection-trial",
+   "level": "class1",
+   "assumptions": "Fictional conventional plant in western Canada comparing two polymer aids to strengthen weak floc.",
+   "configuration": "Scope: candidate product screening through the adopted aid and dose.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Define the trial success measures: floc size, settled turbidity, filter run length, and aid cost per treated volume"
+    },
+    {
+     "id": "s2",
+     "label": "Run jar tests with each candidate aid at graded doses on the same raw water and coagulant dose"
+    },
+    {
+     "id": "s3",
+     "label": "Rank the aids by settled quality and floc strength and eliminate any aid that harms settled pH or alkalinity"
+    },
+    {
+     "id": "s4",
+     "label": "Trial the leading aid at plant scale at the bench dose and watch clarifier and filter performance for a full day"
+    },
+    {
+     "id": "s5",
+     "label": "Confirm the aid feed system delivers the trial dose steadily by drawdown and observation"
+    },
+    {
+     "id": "s6",
+     "label": "Adopt the proven aid and dose, record the product and dose in the chemical program, and set a review date"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Aid selection compares products on identical bench water first, proves the leader at plant scale, and only then writes the product into the chemical program."
+  },
+  {
+   "id": "wp2w-process07",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the seasonal coagulant changeover from alum to a polyaluminum product.",
+   "topicId": "process-coagulant-seasonal-changeover",
+   "level": "class1",
+   "assumptions": "Fictional plant in British Columbia switching coagulant for the cold water season under its chemical program.",
+   "configuration": "Scope: changeover planning through the new product in stable service.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Run jar tests on current raw water with both products and set the starting dose for the new product"
+    },
+    {
+     "id": "s2",
+     "label": "Confirm the new product storage, feed pump compatibility, and calibration for its different strength and density"
+    },
+    {
+     "id": "s3",
+     "label": "Draw the old product day tank down to the planned changeover level without running the feed dry"
+    },
+    {
+     "id": "s4",
+     "label": "Switch suction to the new product, prime the feed, and confirm delivery by calibration drawdown"
+    },
+    {
+     "id": "s5",
+     "label": "Start at the jar test dose and monitor settled turbidity, pH, and alkalinity closely for the first detention cycles"
+    },
+    {
+     "id": "s6",
+     "label": "Update the chemical log, dose tables, and safety data sheet file and brief all shifts on the change"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A product changeover is dosed from fresh jar tests, not converted by rule of thumb, and feed delivery, settled quality, and records are all proven before the change is treated as complete."
+  },
+  {
+   "id": "wp2w-process08",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order an enhanced coagulation program to improve organics removal.",
+   "topicId": "process-enhanced-coagulation-program",
+   "level": "class1",
+   "assumptions": "Fictional plant in western Canada increasing organics removal to limit disinfection byproduct formation, following the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: raw organics assessment through a sustained enhanced coagulation operation.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Measure raw water colour, ultraviolet absorbance or total organic carbon, alkalinity, and turbidity to set the removal goal"
+    },
+    {
+     "id": "s2",
+     "label": "Run jar tests at increased coagulant doses and adjusted pH to find the dose that meets the organics target"
+    },
+    {
+     "id": "s3",
+     "label": "Check that alkalinity supplementation holds treated pH and residual alkalinity within limits at the higher dose"
+    },
+    {
+     "id": "s4",
+     "label": "Raise the plant dose in steps, holding each step for a detention cycle while settled organics and turbidity are measured"
+    },
+    {
+     "id": "s5",
+     "label": "Confirm filter performance and sludge handling can sustain the higher solids load from the new dose"
+    },
+    {
+     "id": "s6",
+     "label": "Set the enhanced dose as the seasonal operating point and trend treated organics and byproduct samples on the program schedule"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Enhanced coagulation raises dose for organics, not just turbidity, so alkalinity support, filter load, and sludge capacity are all proven before the higher dose becomes the operating point."
+  },
+  {
+   "id": "wp2w-process09",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the settled water feedback routine that trims coagulant dose day to day.",
+   "topicId": "process-settled-water-feedback-routine",
+   "level": "class1",
+   "assumptions": "Fictional Class 2 plant in Alberta using settled water results as the daily control signal for coagulant dose.",
+   "configuration": "Scope: morning settled sampling through the logged dose decision.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Collect settled water at the clarifier effluent at the set morning time and measure turbidity, pH, and colour"
+    },
+    {
+     "id": "s2",
+     "label": "Compare the results with the plant control band and with the previous three days on the trend chart"
+    },
+    {
+     "id": "s3",
+     "label": "Check raw water turbidity and alkalinity to decide whether a settled change is a raw change or a dose problem"
+    },
+    {
+     "id": "s4",
+     "label": "Trim the coagulant dose by the program step size only when settled results are outside the band"
+    },
+    {
+     "id": "s5",
+     "label": "Recheck settled water after one detention time to confirm the trim moved quality toward the target"
+    },
+    {
+     "id": "s6",
+     "label": "Plot the results and the dose on the control chart and note the decision in the process log"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Daily trimming follows a fixed signal order: settled quality first, raw water context second, one small step at a time, and a recheck after a detention time before the day is closed."
+  },
+  {
+   "id": "wp2w-process10",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the coagulant dose control chart review at month end.",
+   "topicId": "process-dose-control-chart-review",
+   "level": "class1",
+   "assumptions": "Fictional operator in charge in western Canada reviewing a month of coagulant dose and settled quality data.",
+   "configuration": "Scope: data gathering through corrective actions assigned.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Gather the month of dose, raw turbidity, alkalinity, and settled turbidity records and check for missing days"
+    },
+    {
+     "id": "s2",
+     "label": "Plot dose against raw turbidity and mark periods where settled quality left the control band"
+    },
+    {
+     "id": "s3",
+     "label": "Separate excursions caused by raw water events from excursions at steady raw quality"
+    },
+    {
+     "id": "s4",
+     "label": "Check feed calibration records for any period where recorded dose and delivered dose may have differed"
+    },
+    {
+     "id": "s5",
+     "label": "Assign corrective actions such as recalibration, jar test refresh, or dose table revision with owners and dates"
+    },
+    {
+     "id": "s6",
+     "label": "File the review, update the dose table if directed, and brief the operating team on the findings"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A month end review separates raw water effects from delivery effects before assigning actions, so dose table changes are not made for what was actually a calibration problem."
+  },
+  {
+   "id": "wp2w-process100",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the seasonal winterization sequence for a small seasonal treatment plant.",
+   "topicId": "process-seasonal-plant-winterization",
+   "level": "class1",
+   "assumptions": "Fictional seasonal plant in a Manitoba recreation community closing for the winter.",
+   "configuration": "Scope: last production day through the plant secured for winter.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Produce and store the final treated water supply and notify the community of the seasonal closure"
+    },
+    {
+     "id": "s2",
+     "label": "Use or return remaining chemicals as the chemical program directs and secure what stays on site"
+    },
+    {
+     "id": "s3",
+     "label": "Drain process units, filters, and exposed piping in the order that protects media and equipment"
+    },
+    {
+     "id": "s4",
+     "label": "Blow out or drain small lines, sample lines, and pump casings that trap water"
+    },
+    {
+     "id": "s5",
+     "label": "Set building heat to the winter holding level and confirm low temperature alarms notify the responsible operator"
+    },
+    {
+     "id": "s6",
+     "label": "Lock and secure the plant, complete the winterization record, and set the spring start up inspection list"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Winterization drains in an equipment protecting order, secures chemicals, and leaves heat and alarms guarding the building, with the spring inspection list written while the plant condition is known."
+  },
+  {
+   "id": "wp2w-process11",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the start up sequence for a lime soda ash softening plant.",
+   "topicId": "process-lime-soda-softening-startup",
+   "level": "class1",
+   "assumptions": "Fictional lime soda ash softening plant in Manitoba starting production after a weekend shutdown.",
+   "configuration": "Scope: plant at rest through stable softened water to the filters.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review raw hardness, alkalinity, and temperature and set the lime and soda ash doses from the current dose table"
+    },
+    {
+     "id": "s2",
+     "label": "Inspect lime slaker, soda ash feeder, and solids contact clarifier and confirm each is ready for service"
+    },
+    {
+     "id": "s3",
+     "label": "Start raw water flow to the solids contact clarifier at a reduced rate"
+    },
+    {
+     "id": "s4",
+     "label": "Start lime feed, then soda ash feed, and confirm each delivery by feeder calibration checks"
+    },
+    {
+     "id": "s5",
+     "label": "Allow the sludge blanket to form and check softened hardness, pH, and alkalinity at the clarifier effluent"
+    },
+    {
+     "id": "s6",
+     "label": "Raise flow to the normal rate once softened quality is on target and record doses and results"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Softening start up sets chemistry from raw hardness first, proves each feeder, builds the blanket at low flow, and only raises flow once softened hardness and pH are on target."
+  },
+  {
+   "id": "wp2w-process12",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the bench determination of lime dose for a hardness change.",
+   "topicId": "process-softening-lime-dose-determination",
+   "level": "class1",
+   "assumptions": "Fictional laboratory bench program in Saskatchewan after raw hardness rose with a new well blend.",
+   "configuration": "Scope: raw sample analysis through the revised plant lime dose.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Analyse the raw sample for total hardness, calcium, magnesium, alkalinity, and pH"
+    },
+    {
+     "id": "s2",
+     "label": "Prepare a graded series of lime doses in bench reactors using the new raw water"
+    },
+    {
+     "id": "s3",
+     "label": "Mix, react, and settle each reactor for the standard bench reaction time"
+    },
+    {
+     "id": "s4",
+     "label": "Measure softened hardness, pH, and alkalinity in each reactor and note sludge character"
+    },
+    {
+     "id": "s5",
+     "label": "Select the lowest lime dose that meets the softened hardness target with stable pH"
+    },
+    {
+     "id": "s6",
+     "label": "Set the plant lime dose from the bench result and confirm with clarifier effluent hardness within one shift"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The bench series isolates lime dose on the actual new water, and the plant dose is only adopted after clarifier effluent hardness confirms the bench choice."
+  },
+  {
+   "id": "wp2w-process13",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the excess lime treatment sequence for high magnesium water.",
+   "topicId": "process-excess-lime-treatment-sequence",
+   "level": "class1",
+   "assumptions": "Fictional softening plant in western Canada treating high magnesium groundwater by excess lime treatment.",
+   "configuration": "Scope: raw water entering treatment through recarbonated softened water.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Measure raw calcium, magnesium, alkalinity, and pH and calculate the excess lime requirement from the plant factors"
+    },
+    {
+     "id": "s2",
+     "label": "Feed lime to raise the reaction pH into the magnesium removal range in the solids contact unit"
+    },
+    {
+     "id": "s3",
+     "label": "Hold the high pH reaction through the contact and settling zones so magnesium precipitates with the sludge"
+    },
+    {
+     "id": "s4",
+     "label": "Withdraw softening sludge at the rate that holds the blanket in its target band"
+    },
+    {
+     "id": "s5",
+     "label": "Recarbonate the settled water in stages to lower pH and stabilize the water before filtration"
+    },
+    {
+     "id": "s6",
+     "label": "Filter the stabilized water and confirm final hardness, pH, and alkalinity meet plant targets"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Excess lime treatment needs high pH contact first for magnesium removal, then staged recarbonation to restabilize the water, and filtration only after stability is restored."
+  },
+  {
+   "id": "wp2w-process14",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the recarbonation sequence after lime softening.",
+   "topicId": "process-recarbonation-sequence",
+   "level": "class1",
+   "assumptions": "Fictional softening plant in Alberta using carbon dioxide recarbonation after a solids contact clarifier.",
+   "configuration": "Scope: high pH clarifier effluent through stabilized water entering the filters.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Measure clarifier effluent pH, alkalinity, and hardness and confirm the water needs recarbonation"
+    },
+    {
+     "id": "s2",
+     "label": "Start carbon dioxide feed at a low rate into the recarbonation basin"
+    },
+    {
+     "id": "s3",
+     "label": "Mix and hold the water for the basin contact time while pH falls gradually"
+    },
+    {
+     "id": "s4",
+     "label": "Measure pH at the basin outlet and trim the gas feed to reach the first stage target"
+    },
+    {
+     "id": "s5",
+     "label": "Pass the water through the second stage contact and confirm final pH and alkalinity are in the stable range"
+    },
+    {
+     "id": "s6",
+     "label": "Send the stabilized water to filtration and record gas feed rate, pH, and alkalinity"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Recarbonation lowers pH in controlled stages with measurement between stages, so the water reaches the filters stable and does not deposit scale or turn corrosive."
+  },
+  {
+   "id": "wp2w-process15",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the softening sludge handling sequence for a solids contact clarifier.",
+   "topicId": "process-softening-sludge-handling",
+   "level": "class1",
+   "assumptions": "Fictional softening plant in western Canada managing lime sludge from clarifier to lagoon.",
+   "configuration": "Scope: blanket monitoring through sludge placed in the lagoon cell.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Measure the sludge blanket depth and the solids content of a blanket sample"
+    },
+    {
+     "id": "s2",
+     "label": "Set the sludge withdrawal rate to hold the blanket inside its target depth band"
+    },
+    {
+     "id": "s3",
+     "label": "Withdraw sludge to the thickening or holding tank and confirm transfer by tank level rise"
+    },
+    {
+     "id": "s4",
+     "label": "Dewater or condition the sludge as the site program directs and check the liquid return quality"
+    },
+    {
+     "id": "s5",
+     "label": "Place the sludge in the assigned lagoon cell and record the cell, volume, and date"
+    },
+    {
+     "id": "s6",
+     "label": "Review lagoon capacity against the seasonal plan and report the remaining room to the operator in charge"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Sludge handling is paced by blanket measurement, verified by holding tank level, and closed by lagoon accounting so softening capacity is never lost to an unmanaged blanket or a full lagoon."
+  },
+  {
+   "id": "wp2w-process16",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the calibration program for lime and soda ash feeders.",
+   "topicId": "process-softening-feeder-calibration",
+   "level": "class1",
+   "assumptions": "Fictional Class 2 operator in Manitoba calibrating dry chemical feeders on a softening plant.",
+   "configuration": "Scope: feeder shutdown checks through calibrated feeders returned to service.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Take one feeder out of service at a time so softening continues on the remaining equipment"
+    },
+    {
+     "id": "s2",
+     "label": "Clean the feeder, hopper outlet, and dissolving or slaking chamber and inspect for bridging and wear"
+    },
+    {
+     "id": "s3",
+     "label": "Run the feeder at several set points and collect and weigh the output over a timed interval at each setting"
+    },
+    {
+     "id": "s4",
+     "label": "Plot delivered rate against set point and adjust the feeder control to correct any offset"
+    },
+    {
+     "id": "s5",
+     "label": "Return the feeder to service and confirm softened hardness and pH hold at the calibrated rate"
+    },
+    {
+     "id": "s6",
+     "label": "Record the calibration curve and date in the chemical program file for both feeders"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Dry feeder calibration weighs timed output at several set points, corrects the control from the plotted curve, and proves the correction in softened water quality before the record is filed."
+  },
+  {
+   "id": "wp2w-process17",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the hardness monitoring program across a softening plant.",
+   "topicId": "process-hardness-monitoring-program",
+   "level": "class1",
+   "assumptions": "Fictional softening system in Saskatchewan with raw, clarifier effluent, filtered, and finished sampling points.",
+   "configuration": "Scope: program sampling round through the trended hardness review.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Collect samples at raw, clarifier effluent, filtered, and finished points at the program times"
+    },
+    {
+     "id": "s2",
+     "label": "Measure total hardness and calcium hardness on each sample and pH and alkalinity on the treated samples"
+    },
+    {
+     "id": "s3",
+     "label": "Calculate magnesium hardness and stage removals and compare each stage with its control band"
+    },
+    {
+     "id": "s4",
+     "label": "Investigate any stage outside its band by checking the related feeder delivery and blanket depth first"
+    },
+    {
+     "id": "s5",
+     "label": "Plot the day results on the hardness trend chart and note any dose or feeder change made"
+    },
+    {
+     "id": "s6",
+     "label": "Review the weekly trend with the operator in charge and set any dose table revision"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Stage by stage hardness monitoring locates a softening problem to one unit, and the feeder and blanket checks come before any dose change is considered."
+  },
+  {
+   "id": "wp2w-process18",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the response to rising finished hardness during a softening run.",
+   "topicId": "process-softening-hardness-breakthrough-response",
+   "level": "class1",
+   "assumptions": "Fictional softening plant in western Canada where finished hardness climbed steadily over two days.",
+   "configuration": "Scope: confirmed hardness rise through hardness restored and cause recorded.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the rise with a fresh finished sample and check the bench hardness result against the online reading if fitted"
+    },
+    {
+     "id": "s2",
+     "label": "Sample clarifier effluent hardness to learn whether breakthrough starts at the clarifier or later"
+    },
+    {
+     "id": "s3",
+     "label": "Check lime and soda ash feeder deliveries by timed output and day tank or hopper levels"
+    },
+    {
+     "id": "s4",
+     "label": "Check sludge blanket depth and withdrawal, since a high blanket carries precipitate into the effluent"
+    },
+    {
+     "id": "s5",
+     "label": "Correct the cause found, then hold or reduce flow if hardness is still rising toward the plant limit"
+    },
+    {
+     "id": "s6",
+     "label": "Monitor hardness hourly until two consecutive results are back in band and record the cause and fix"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The response works from finished water back to the clarifier, then to feeders and blanket, correcting the first proven cause instead of raising both chemical doses at once."
+  },
+  {
+   "id": "wp2w-process19",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a cold weather softening operating program for slow reaction water.",
+   "topicId": "process-cold-weather-softening-program",
+   "level": "class1",
+   "assumptions": "Fictional softening plant in northern Alberta facing very cold raw water and slower precipitation reactions.",
+   "configuration": "Scope: seasonal program set up through winter operating checks.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Measure raw temperature and hardness and note the longer reaction time needed at the cold condition"
+    },
+    {
+     "id": "s2",
+     "label": "Increase contact time by lowering clarifier loading or bringing the standby contact unit into service"
+    },
+    {
+     "id": "s3",
+     "label": "Confirm lime slaking quality, since poor slaking in cold conditions cuts effective dose"
+    },
+    {
+     "id": "s4",
+     "label": "Raise sludge blanket inventory within its band to seed precipitation in the slow reacting water"
+    },
+    {
+     "id": "s5",
+     "label": "Increase hardness sampling frequency and judge doses only after the longer reaction time has passed"
+    },
+    {
+     "id": "s6",
+     "label": "Record the winter dose and loading settings in the seasonal program for the next cold period"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Cold water slows softening reactions, so the winter program buys contact time and blanket seeding first and judges dose changes only after the longer reaction has had time to complete."
+  },
+  {
+   "id": "wp2w-process20",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the shutdown and cleaning sequence for a solids contact clarifier.",
+   "topicId": "process-solids-contact-clarifier-cleaning",
+   "level": "class1",
+   "assumptions": "Fictional annual cleaning of a solids contact softening clarifier in western Canada.",
+   "configuration": "Scope: clarifier in service through the cleaned unit ready to refill.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Shift softening production to the remaining unit or storage and confirm finished water supply is protected"
+    },
+    {
+     "id": "s2",
+     "label": "Stop raw flow and chemical feeds to the unit and let the blanket settle"
+    },
+    {
+     "id": "s3",
+     "label": "Drain the unit to the sludge system and remove accumulated scale and sludge deposits"
+    },
+    {
+     "id": "s4",
+     "label": "Wash down reaction and settling zones and inspect drives, scrapers, and sample lines while the unit is empty"
+    },
+    {
+     "id": "s5",
+     "label": "Repair or clear defects found and record the inspection in the asset file"
+    },
+    {
+     "id": "s6",
+     "label": "Close drains, refill slowly, and hold the unit ready for a controlled return to service"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Cleaning protects supply first, drains sludge in a controlled way to the sludge system, and uses the empty unit for inspection before a slow refill prepares it for service."
+  },
+  {
+   "id": "wp2w-process21",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the start up of an oxidation and filtration plant for iron and manganese.",
+   "topicId": "process-iron-manganese-plant-startup",
+   "level": "class1",
+   "assumptions": "Fictional groundwater plant in Manitoba with aeration, chemical oxidation, detention, and pressure filters.",
+   "configuration": "Scope: wells at rest through treated water meeting iron and manganese targets.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Analyse raw well water for iron, manganese, pH, alkalinity, and dissolved oxygen"
+    },
+    {
+     "id": "s2",
+     "label": "Start aeration and confirm air flow and water distribution over the aerator are even"
+    },
+    {
+     "id": "s3",
+     "label": "Start the oxidant feed at the dose set for the measured iron and manganese and confirm delivery by drawdown"
+    },
+    {
+     "id": "s4",
+     "label": "Fill the detention tank and allow the full oxidation contact time before filtration"
+    },
+    {
+     "id": "s5",
+     "label": "Start filtration at a reduced rate and sample filtered iron and manganese"
+    },
+    {
+     "id": "s6",
+     "label": "Raise flow to normal only when filtered results meet targets and record doses and results"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Iron and manganese must be fully oxidized during detention before filtration, so flow is raised only after filtered samples prove the oxidation step worked."
+  },
+  {
+   "id": "wp2w-process22",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the potassium permanganate feed program for manganese control.",
+   "topicId": "process-permanganate-feed-program",
+   "level": "class1",
+   "assumptions": "Fictional plant in Saskatchewan using potassium permanganate ahead of greensand style filters for manganese removal.",
+   "configuration": "Scope: program set up through steady manganese removal without permanganate carryover.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Measure raw manganese, iron, pH, and oxidant demand on a fresh well sample"
+    },
+    {
+     "id": "s2",
+     "label": "Run bench oxidant demand tests to set the starting permanganate dose for the raw water"
+    },
+    {
+     "id": "s3",
+     "label": "Prepare the solution at the program strength and calibrate the feed pump by drawdown"
+    },
+    {
+     "id": "s4",
+     "label": "Feed permanganate ahead of the contact tank and confirm a faint residual reaches the filter influent without pink water past the filters"
+    },
+    {
+     "id": "s5",
+     "label": "Sample filtered manganese and check for any pink colour in filtered water at each check round"
+    },
+    {
+     "id": "s6",
+     "label": "Trim the dose in small steps to the lowest dose that holds filtered manganese on target and record the program dose"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The permanganate program is set by bench demand, proven by drawdown, and trimmed to the lowest dose that removes manganese without carrying pink water through the filters."
+  },
+  {
+   "id": "wp2w-process23",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the chlorine oxidation program for iron removal on a well supply.",
+   "topicId": "process-chlorine-oxidation-iron-program",
+   "level": "class1",
+   "assumptions": "Fictional well supply in Alberta using free chlorine as the oxidant ahead of dual media pressure filters.",
+   "configuration": "Scope: dose setting through a stable iron removal operation.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Measure raw iron, manganese, pH, ammonia, and chlorine demand, since demand consumes oxidant first"
+    },
+    {
+     "id": "s2",
+     "label": "Set the chlorine dose to satisfy demand and still hold the oxidant residual set for iron oxidation at the filter influent"
+    },
+    {
+     "id": "s3",
+     "label": "Feed chlorine at the well discharge ahead of the contact tank and confirm delivery by drawdown"
+    },
+    {
+     "id": "s4",
+     "label": "Hold the full contact time and observe oxidized iron formation in a contact tank sample"
+    },
+    {
+     "id": "s5",
+     "label": "Filter at the program rate and sample filtered iron, manganese, and free chlorine residual"
+    },
+    {
+     "id": "s6",
+     "label": "Adjust dose only from filtered results and contact tank residual together and log the operating dose"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Chlorine must satisfy raw demand before it can oxidize iron, so the dose is judged by the contact tank residual and filtered iron together, never by dose alone."
+  },
+  {
+   "id": "wp2w-process24",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the regeneration sequence for a catalytic manganese greensand filter.",
+   "topicId": "process-greensand-regeneration-sequence",
+   "level": "class1",
+   "assumptions": "Fictional batch greensand filter in western Canada due for regeneration after a long manganese run.",
+   "configuration": "Scope: filter removed from service through the regenerated filter back in production.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Take the filter out of service and backwash it to remove accumulated solids and loosen the bed"
+    },
+    {
+     "id": "s2",
+     "label": "Drain the filter to the regeneration level specified for the vessel"
+    },
+    {
+     "id": "s3",
+     "label": "Introduce the permanganate regeneration solution and hold the soak for the full program contact time"
+    },
+    {
+     "id": "s4",
+     "label": "Rinse the filter slowly until the rinse water runs clear with no pink colour remaining"
+    },
+    {
+     "id": "s5",
+     "label": "Return the filter to service at a reduced rate and run filter to waste while manganese removal recovers"
+    },
+    {
+     "id": "s6",
+     "label": "Confirm filtered manganese meets target before placing the filter in full production and record the regeneration"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Regeneration restores the catalytic coating in order: clean the bed, soak at the correct level and time, rinse until no permanganate remains, and prove removal before full production."
+  },
+  {
+   "id": "wp2w-process25",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a sequestration program for a small well system with low iron and manganese.",
+   "topicId": "process-sequestration-program-small-system",
+   "level": "class1",
+   "assumptions": "Fictional small community well system in British Columbia with low iron and manganese below the level that justifies filtration.",
+   "configuration": "Scope: program approval checks through steady sequestered supply.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm by sampling that iron and manganese levels and water chemistry suit sequestration for this system"
+    },
+    {
+     "id": "s2",
+     "label": "Select the sequestering product and set the dose from the measured iron and manganese and the supplier program factors"
+    },
+    {
+     "id": "s3",
+     "label": "Feed the product at the well discharge so it mixes before any aeration or chlorine contact that would oxidize the metals"
+    },
+    {
+     "id": "s4",
+     "label": "Confirm feed delivery by drawdown and check that no staining complaints or deposits appear at system sample points"
+    },
+    {
+     "id": "s5",
+     "label": "Sample distribution iron, manganese, and chlorine residual on the program schedule"
+    },
+    {
+     "id": "s6",
+     "label": "Review staining reports and sample results each season and reassess whether filtration is now needed"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Sequestration keeps metals dissolved and colourless only if the product is fed before oxidation points, so feed location, delivery proof, and distribution sampling carry the program."
+  },
+  {
+   "id": "wp2w-process26",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the iron and manganese sampling program for a multi well field.",
+   "topicId": "process-iron-manganese-sampling-program",
+   "level": "class1",
+   "assumptions": "Fictional well field in western Canada with four wells of differing iron and manganese content.",
+   "configuration": "Scope: sampling round planning through well specific treatment settings updated.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "List each well and its sample points: raw wellhead, blended plant influent, and filtered water"
+    },
+    {
+     "id": "s2",
+     "label": "Collect raw samples well by well and measure iron, manganese, pH, and alkalinity for each well"
+    },
+    {
+     "id": "s3",
+     "label": "Calculate the blended influent metals load from the wells in service and their flows"
+    },
+    {
+     "id": "s4",
+     "label": "Compare filtered results with targets and relate any rise to the well combination in service"
+    },
+    {
+     "id": "s5",
+     "label": "Update the oxidant dose for the current well blend and record the dose basis in the log"
+    },
+    {
+     "id": "s6",
+     "label": "File well by well trends and flag any well with rising metals for investigation"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Well specific sampling separates the contribution of each well, so oxidant dose follows the actual blend in service rather than an average that fits no blend."
+  },
+  {
+   "id": "wp2w-process27",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the aeration and detention oxidation sequence for a high iron well.",
+   "topicId": "process-aeration-detention-oxidation-sequence",
+   "level": "class1",
+   "assumptions": "Fictional high iron well plant in Manitoba using cascade aeration and a detention tank ahead of filtration.",
+   "configuration": "Scope: raw well water through oxidized water entering the filters.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Start the well pump and set aerator water distribution so flow spreads evenly over the trays"
+    },
+    {
+     "id": "s2",
+     "label": "Confirm aeration raises dissolved oxygen and strips carbon dioxide, checking raw and aerated pH"
+    },
+    {
+     "id": "s3",
+     "label": "Add chemical oxidant after aeration where the program requires it for the remaining iron load"
+    },
+    {
+     "id": "s4",
+     "label": "Pass the water through the detention tank for the full oxidation time at the current flow"
+    },
+    {
+     "id": "s5",
+     "label": "Check a detention outlet sample for complete iron oxidation before filtration"
+    },
+    {
+     "id": "s6",
+     "label": "Send the oxidized water to the filters and record aerator condition, dose, and detention results"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Aeration does the first oxidation work and raises pH, chemical oxidant finishes the load, and detention time is proven by an outlet sample before the filters receive the water."
+  },
+  {
+   "id": "wp2w-process28",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the filter ripening program after backwashing an iron and manganese filter.",
+   "topicId": "process-iron-manganese-filter-ripening",
+   "level": "class1",
+   "assumptions": "Fictional pressure filter plant in Saskatchewan where manganese removal dips after every backwash.",
+   "configuration": "Scope: end of backwash through full manganese removal restored.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Backwash at the program rate and duration so the catalytic media surface is cleaned but not stripped"
+    },
+    {
+     "id": "s2",
+     "label": "Return the filter at a reduced filtration rate with oxidant feed confirmed at the influent"
+    },
+    {
+     "id": "s3",
+     "label": "Run filter to waste or recycle while filtered manganese is sampled at set intervals"
+    },
+    {
+     "id": "s4",
+     "label": "Watch filtered manganese fall as the catalytic surface reconditions and note the ripening time"
+    },
+    {
+     "id": "s5",
+     "label": "Place the filter in full production only when filtered manganese meets target on two consecutive samples"
+    },
+    {
+     "id": "s6",
+     "label": "Record ripening time in the filter log and use it to set the plant ripening allowance"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Manganese filters remove best on a conditioned catalytic surface, so ripening is measured by repeated filtered samples and the filter returns to production only on proven results."
+  },
+  {
+   "id": "wp2w-process29",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the backwash program review for iron and manganese pressure filters.",
+   "topicId": "process-iron-manganese-backwash-review",
+   "level": "class1",
+   "assumptions": "Fictional Class 2 operator in Alberta reviewing backwash practice on iron removal pressure filters.",
+   "configuration": "Scope: run data review through revised backwash settings in service.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Gather filter run lengths, headloss trends, and filtered iron results for the review period"
+    },
+    {
+     "id": "s2",
+     "label": "Observe a full backwash and measure wash rate, duration, and waste water appearance through the wash"
+    },
+    {
+     "id": "s3",
+     "label": "Check media condition and depth at the inspection port for fouling, loss, or cemented deposits"
+    },
+    {
+     "id": "s4",
+     "label": "Adjust wash rate or duration in one change only where the evidence shows under or over washing"
+    },
+    {
+     "id": "s5",
+     "label": "Run the revised wash on the next cycle and compare headloss recovery and filtered iron with the baseline"
+    },
+    {
+     "id": "s6",
+     "label": "Record the revised settings and the evidence for the change in the filter program file"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The review changes one wash variable at a time from observed evidence, then proves the new setting by headloss recovery and filtered quality on the next cycle."
+  },
+  {
+   "id": "wp2w-process30",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the response to black water complaints linked to manganese release.",
+   "topicId": "process-manganese-release-response",
+   "level": "class1",
+   "assumptions": "Fictional community in western Canada reporting black water after a distribution flow reversal stirred manganese deposits.",
+   "configuration": "Scope: first complaints through plant and system manganese control restored.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Collect complaint locations and times and sample chlorine residual, iron, and manganese at affected points"
+    },
+    {
+     "id": "s2",
+     "label": "Check plant filtered manganese and recent oxidant dose records to rule out a treatment breakthrough"
+    },
+    {
+     "id": "s3",
+     "label": "Inspect for a flow reversal, main break, or hydrant use that disturbed distribution deposits"
+    },
+    {
+     "id": "s4",
+     "label": "Flush affected mains in a planned sequence from clean areas toward the affected area"
+    },
+    {
+     "id": "s5",
+     "label": "Confirm manganese and colour at flushed points have returned to normal before closing the event"
+    },
+    {
+     "id": "s6",
+     "label": "Record the event, review plant manganese trending, and set added distribution manganese sampling for the following week"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Black water response first separates a plant breakthrough from a distribution deposit release, then flushes in a planned direction and closes only on normal samples."
+  },
+  {
+   "id": "wp2w-process31",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the daily CT verification program for a baffled clearwell.",
+   "topicId": "process-daily-ct-verification-program",
+   "level": "class1",
+   "assumptions": "Fictional plant in western Canada disinfecting with free chlorine through a baffled clearwell under provincial drinking water requirements in general terms.",
+   "configuration": "Scope: morning operating data through the filed daily CT result.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Record the lowest clearwell level for the period and the contact volume at that level"
+    },
+    {
+     "id": "s2",
+     "label": "Record the highest flow rate through the clearwell for the same period"
+    },
+    {
+     "id": "s3",
+     "label": "Calculate theoretical detention time from contact volume divided by peak flow"
+    },
+    {
+     "id": "s4",
+     "label": "Apply the clearwell baffling factor to obtain the effective contact time"
+    },
+    {
+     "id": "s5",
+     "label": "Measure free chlorine residual, temperature, and pH at the clearwell outlet"
+    },
+    {
+     "id": "s6",
+     "label": "Calculate CT from residual and effective time, compare with the required CT for the conditions, and file the result"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Daily CT uses worst case pairing: lowest volume, highest flow, and the baffling factor all come before the measured residual is applied, so the filed value is the conservative one."
+  },
+  {
+   "id": "wp2w-process32",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the CT management program for very cold treated water.",
+   "topicId": "process-cold-water-ct-management",
+   "level": "class1",
+   "assumptions": "Fictional plant in northern Saskatchewan where winter water near freezing raises the CT required for the same inactivation.",
+   "configuration": "Scope: seasonal CT review through winter CT settings in service.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Measure treated water temperature and confirm the required CT for the cold condition from the plant CT tables"
+    },
+    {
+     "id": "s2",
+     "label": "Review clearwell level control and raise the minimum operating level to gain contact volume if needed"
+    },
+    {
+     "id": "s3",
+     "label": "Check the baffling factor in use still matches the clearwell configuration at the winter level"
+    },
+    {
+     "id": "s4",
+     "label": "Set the winter chlorine dose so the outlet residual delivers the required CT at peak winter flow"
+    },
+    {
+     "id": "s5",
+     "label": "Verify the calculated winter CT daily for the first week and trend residual and temperature together"
+    },
+    {
+     "id": "s6",
+     "label": "Record the winter CT settings in the seasonal program and set the spring review date"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Cold water raises required CT, so the winter program gains time through level control first, then sets residual to meet the higher requirement, and proves it with a week of daily checks."
+  },
+  {
+   "id": "wp2w-process33",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a breakpoint chlorination study for an ammonia bearing well water.",
+   "topicId": "process-breakpoint-chlorination-study",
+   "level": "class1",
+   "assumptions": "Fictional groundwater plant in Manitoba with natural ammonia that consumes chlorine before a free residual forms.",
+   "configuration": "Scope: bench breakpoint curve through the adopted plant dose.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Measure raw ammonia, chlorine demand, pH, and alkalinity on a fresh sample"
+    },
+    {
+     "id": "s2",
+     "label": "Dose a bench series with increasing chlorine and hold each sample for the standard contact time"
+    },
+    {
+     "id": "s3",
+     "label": "Measure free and total chlorine in each sample and plot residual against dose to locate the breakpoint"
+    },
+    {
+     "id": "s4",
+     "label": "Select the operating dose past the breakpoint that holds the target free residual with a safety margin"
+    },
+    {
+     "id": "s5",
+     "label": "Trial the dose at plant scale and confirm free residual at the contactor outlet and in distribution samples"
+    },
+    {
+     "id": "s6",
+     "label": "Record the breakpoint dose basis and the ammonia conditions in the disinfection program file"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The breakpoint is found from a plotted bench curve, not guessed, and the plant dose is set past the breakpoint so a true free residual survives into distribution."
+  },
+  {
+   "id": "wp2w-process34",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the conversion of a small plant from free chlorine to chloramine awareness program steps.",
+   "topicId": "process-chloramine-conversion-program",
+   "level": "class1",
+   "assumptions": "Fictional small plant in western Canada planning a chloramine conversion study with provincial drinking water requirements considered in general terms.",
+   "configuration": "Scope: feasibility review through the decision record, with conversion only if every gate passes.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review distribution water age, residual history, and byproduct results to confirm a reason to study chloramine"
+    },
+    {
+     "id": "s2",
+     "label": "Measure source ammonia background and assess nitrification risk points in storage and dead ends"
+    },
+    {
+     "id": "s3",
+     "label": "Bench test chlorine and ammonia ratios and confirm the combined residual forms and holds as expected"
+    },
+    {
+     "id": "s4",
+     "label": "Set a nitrification monitoring plan covering storage, dead ends, and warm locations before any conversion"
+    },
+    {
+     "id": "s5",
+     "label": "Prepare customer and health unit notification material as the provincial program requires in general terms"
+    },
+    {
+     "id": "s6",
+     "label": "Record the go or no go decision with its evidence and file the monitoring plan with the decision"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A chloramine decision weighs nitrification risk and monitoring readiness alongside residual stability, so the monitoring plan exists before any conversion could proceed."
+  },
+  {
+   "id": "wp2w-process35",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the seasonal disinfection strategy review for a reservoir source plant.",
+   "topicId": "process-seasonal-disinfection-strategy-review",
+   "level": "class1",
+   "assumptions": "Fictional plant in British Columbia reviewing disinfection before the warm algae and high demand season.",
+   "configuration": "Scope: past season data review through the adopted warm season strategy.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review last warm season residuals, byproduct results, taste and odour events, and CT records"
+    },
+    {
+     "id": "s2",
+     "label": "Measure current raw organics, temperature, and chlorine demand to set the season starting point"
+    },
+    {
+     "id": "s3",
+     "label": "Confirm pretreatment and enhanced coagulation settings that lower demand before disinfection"
+    },
+    {
+     "id": "s4",
+     "label": "Set the warm season dose, residual targets, and CT checks for plant and distribution control points"
+    },
+    {
+     "id": "s5",
+     "label": "Schedule added byproduct and residual sampling for the high demand period"
+    },
+    {
+     "id": "s6",
+     "label": "Brief all shifts on the strategy and file it as the seasonal disinfection plan"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The seasonal strategy lowers demand through pretreatment first, then sets dose and residual targets, so disinfection is not asked to compensate for untreated organics load."
+  },
+  {
+   "id": "wp2w-process36",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a clearwell tracer study to confirm the baffling factor.",
+   "topicId": "process-clearwell-tracer-study",
+   "level": "class1",
+   "assumptions": "Fictional Class 2 plant in Alberta verifying the baffling factor used in its CT calculations.",
+   "configuration": "Scope: study planning through the adopted baffling factor.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Choose a tracer and dose that can be measured accurately at the clearwell outlet and set the study flow"
+    },
+    {
+     "id": "s2",
+     "label": "Hold clearwell level and flow steady for the study period and record both continuously"
+    },
+    {
+     "id": "s3",
+     "label": "Introduce the tracer as a step or pulse at the clearwell inlet at the recorded start time"
+    },
+    {
+     "id": "s4",
+     "label": "Sample the outlet at short intervals and plot outlet tracer concentration against time"
+    },
+    {
+     "id": "s5",
+     "label": "Determine the time for the leading tracer fraction to appear and calculate the baffling factor from the detention time"
+    },
+    {
+     "id": "s6",
+     "label": "Adopt the studied factor in CT calculations, file the study, and note the configuration it applies to"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A tracer study measures real short circuiting at steady level and flow, and the adopted factor is tied to the configuration studied so later changes trigger a restudy."
+  },
+  {
+   "id": "wp2w-process37",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a chlorine residual decay study in treated water storage.",
+   "topicId": "process-residual-decay-study",
+   "level": "class1",
+   "assumptions": "Fictional system in western Canada with a ground reservoir where residuals fall between plant and far end samples.",
+   "configuration": "Scope: study set up through residual control actions adopted.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Select study points at the plant outlet, reservoir inlet and outlet, and two distribution locations"
+    },
+    {
+     "id": "s2",
+     "label": "Sample free chlorine, temperature, and pH at every point at the same rounds for several days"
+    },
+    {
+     "id": "s3",
+     "label": "Calculate water age indicators from reservoir levels and flows for the study period"
+    },
+    {
+     "id": "s4",
+     "label": "Plot residual loss against storage time and identify where the largest decay occurs"
+    },
+    {
+     "id": "s5",
+     "label": "Set actions such as reservoir turnover, mixing, or dose adjustment matched to the location of the loss"
+    },
+    {
+     "id": "s6",
+     "label": "Repeat one sampling round after the actions and confirm residual recovery before closing the study"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The decay study pairs every residual with its location and storage time, so corrective action is aimed at the storage step where chlorine is actually lost."
+  },
+  {
+   "id": "wp2w-process38",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the disinfection byproduct monitoring program for a surface water plant.",
+   "topicId": "process-byproduct-monitoring-program",
+   "level": "class1",
+   "assumptions": "Fictional surface water plant in western Canada monitoring disinfection byproducts under the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: program design through the annual results review.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Select sample locations that represent the oldest water and highest formation potential in the system"
+    },
+    {
+     "id": "s2",
+     "label": "Set the sampling schedule to cover warm water and high organics periods when formation is highest"
+    },
+    {
+     "id": "s3",
+     "label": "Collect samples with the required preservative and quenching, and complete chain of custody records"
+    },
+    {
+     "id": "s4",
+     "label": "Record plant dose, treated organics, temperature, and pH for each sampling round"
+    },
+    {
+     "id": "s5",
+     "label": "Compare results with the guideline values and with the plant action levels and trend them by season"
+    },
+    {
+     "id": "s6",
+     "label": "Where results trend upward, assign pretreatment or dose strategy actions and review them at the annual program review"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Byproduct sampling targets oldest water in the highest formation season, and every result is read with the dose and organics data that explain it."
+  },
+  {
+   "id": "wp2w-process39",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the ultraviolet disinfection operating program for a plant with chlorine residual.",
+   "topicId": "process-uv-disinfection-operating-program",
+   "level": "class1",
+   "assumptions": "Fictional plant in British Columbia using ultraviolet disinfection for primary inactivation and chlorine for the distribution residual.",
+   "configuration": "Scope: daily UV checks through monthly performance review.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm filtered water turbidity and ultraviolet transmittance are inside the validated UV operating range"
+    },
+    {
+     "id": "s2",
+     "label": "Check lamp status, intensity readings, and sleeve cleaning system operation at start up"
+    },
+    {
+     "id": "s3",
+     "label": "Set flow through the reactor within the validated range and confirm the calculated dose meets the target"
+    },
+    {
+     "id": "s4",
+     "label": "Add chlorine after the reactor and confirm the distribution residual at the plant outlet"
+    },
+    {
+     "id": "s5",
+     "label": "Record intensity, transmittance, flow, and dose each shift and alarm any out of range condition"
+    },
+    {
+     "id": "s6",
+     "label": "Review dose compliance and lamp hours monthly and schedule lamp or sleeve work from the trend"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "UV dose depends on transmittance, intensity, and flow together, so all three are checked before flow is set, and chlorine still follows the reactor for the distribution residual."
+  }
+ ],
+ "missions": [
+  {
+   "id": "wp2w-mission41",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 41: The Softening Lime Demand Shift",
+   "tasks": [
+    {
+     "taskId": "wp2w-error60",
+     "revision": "r1",
+     "occurrenceId": "m41-t1"
+    },
+    {
+     "taskId": "wp2w-process01",
+     "revision": "r1",
+     "occurrenceId": "m41-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2w-mission42",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 42: The Process Jar Test Raw Shift Response Shift",
+   "tasks": [
+    {
+     "taskId": "wp2w-process02",
+     "revision": "r1",
+     "occurrenceId": "m42-t1"
+    },
+    {
+     "taskId": "wp2w-error61",
+     "revision": "r1",
+     "occurrenceId": "m42-t2"
+    },
+    {
+     "taskId": "wp2w-error62",
+     "revision": "r1",
+     "occurrenceId": "m42-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2w-mission43",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 43: The Softening Lime Demand Shift",
+   "tasks": [
+    {
+     "taskId": "wp2w-error63",
+     "revision": "r1",
+     "occurrenceId": "m43-t1"
+    },
+    {
+     "taskId": "wp2w-process03",
+     "revision": "r1",
+     "occurrenceId": "m43-t2"
+    },
+    {
+     "taskId": "wp2w-error64",
+     "revision": "r1",
+     "occurrenceId": "m43-t3"
+    },
+    {
+     "taskId": "wp2w-error65",
+     "revision": "r1",
+     "occurrenceId": "m43-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2w-mission44",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 44: The Process Alkalinity Supplementation Program Shift",
+   "tasks": [
+    {
+     "taskId": "wp2w-process04",
+     "revision": "r1",
+     "occurrenceId": "m44-t1"
+    },
+    {
+     "taskId": "wp2w-error66",
+     "revision": "r1",
+     "occurrenceId": "m44-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2w-mission45",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 45: The Softening Soda Ash Demand Shift",
+   "tasks": [
+    {
+     "taskId": "wp2w-error67",
+     "revision": "r1",
+     "occurrenceId": "m45-t1"
+    },
+    {
+     "taskId": "wp2w-process05",
+     "revision": "r1",
+     "occurrenceId": "m45-t2"
+    },
+    {
+     "taskId": "wp2w-error68",
+     "revision": "r1",
+     "occurrenceId": "m45-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2w-mission46",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 46: The Process Polymer Aid Selection Trial Shift",
+   "tasks": [
+    {
+     "taskId": "wp2w-process06",
+     "revision": "r1",
+     "occurrenceId": "m46-t1"
+    },
+    {
+     "taskId": "wp2w-error69",
+     "revision": "r1",
+     "occurrenceId": "m46-t2"
+    },
+    {
+     "taskId": "wp2w-error70",
+     "revision": "r1",
+     "occurrenceId": "m46-t3"
+    },
+    {
+     "taskId": "wp2w-error71",
+     "revision": "r1",
+     "occurrenceId": "m46-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2w-mission47",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 47: The Lab Alkalinity Titration Shift",
+   "tasks": [
+    {
+     "taskId": "wp2w-error72",
+     "revision": "r1",
+     "occurrenceId": "m47-t1"
+    },
+    {
+     "taskId": "wp2w-process07",
+     "revision": "r1",
+     "occurrenceId": "m47-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2w-mission48",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 48: The Process Enhanced Coagulation Program Shift",
+   "tasks": [
+    {
+     "taskId": "wp2w-process08",
+     "revision": "r1",
+     "occurrenceId": "m48-t1"
+    },
+    {
+     "taskId": "wp2w-error73",
+     "revision": "r1",
+     "occurrenceId": "m48-t2"
+    },
+    {
+     "taskId": "wp2w-error74",
+     "revision": "r1",
+     "occurrenceId": "m48-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2w-mission49",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 49: The Coagulation Jar Test Shift",
+   "tasks": [
+    {
+     "taskId": "wp2w-error75",
+     "revision": "r1",
+     "occurrenceId": "m49-t1"
+    },
+    {
+     "taskId": "wp2w-process09",
+     "revision": "r1",
+     "occurrenceId": "m49-t2"
+    },
+    {
+     "taskId": "wp2w-error76",
+     "revision": "r1",
+     "occurrenceId": "m49-t3"
+    },
+    {
+     "taskId": "wp2w-error77",
+     "revision": "r1",
+     "occurrenceId": "m49-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2w-mission50",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 50: The Process Dose Control Chart Review Shift",
+   "tasks": [
+    {
+     "taskId": "wp2w-process10",
+     "revision": "r1",
+     "occurrenceId": "m50-t1"
+    },
+    {
+     "taskId": "wp2w-error78",
+     "revision": "r1",
+     "occurrenceId": "m50-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2w-mission51",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 51: The Chemical Solution Strength Shift",
+   "tasks": [
+    {
+     "taskId": "wp2w-error79",
+     "revision": "r1",
+     "occurrenceId": "m51-t1"
+    },
+    {
+     "taskId": "wp2w-process100",
+     "revision": "r1",
+     "occurrenceId": "m51-t2"
+    },
+    {
+     "taskId": "wp2w-error80",
+     "revision": "r1",
+     "occurrenceId": "m51-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2w-mission52",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 52: The Process Lime Soda Softening Startup Shift",
+   "tasks": [
+    {
+     "taskId": "wp2w-process11",
+     "revision": "r1",
+     "occurrenceId": "m52-t1"
+    },
+    {
+     "taskId": "wp2w-error81",
+     "revision": "r1",
+     "occurrenceId": "m52-t2"
+    },
+    {
+     "taskId": "wp2w-error82",
+     "revision": "r1",
+     "occurrenceId": "m52-t3"
+    },
+    {
+     "taskId": "wp2w-error83",
+     "revision": "r1",
+     "occurrenceId": "m52-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2w-mission53",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 53: The Iron Manganese Oxidation Shift",
+   "tasks": [
+    {
+     "taskId": "wp2w-error84",
+     "revision": "r1",
+     "occurrenceId": "m53-t1"
+    },
+    {
+     "taskId": "wp2w-process12",
+     "revision": "r1",
+     "occurrenceId": "m53-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2w-mission54",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 54: The Process Excess Lime Treatment Sequence Shift",
+   "tasks": [
+    {
+     "taskId": "wp2w-process13",
+     "revision": "r1",
+     "occurrenceId": "m54-t1"
+    },
+    {
+     "taskId": "wp2w-error85",
+     "revision": "r1",
+     "occurrenceId": "m54-t2"
+    },
+    {
+     "taskId": "wp2w-error86",
+     "revision": "r1",
+     "occurrenceId": "m54-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2w-mission55",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 55: The Filtration Backwash Shift",
+   "tasks": [
+    {
+     "taskId": "wp2w-error87",
+     "revision": "r1",
+     "occurrenceId": "m55-t1"
+    },
+    {
+     "taskId": "wp2w-process14",
+     "revision": "r1",
+     "occurrenceId": "m55-t2"
+    },
+    {
+     "taskId": "wp2w-error88",
+     "revision": "r1",
+     "occurrenceId": "m55-t3"
+    },
+    {
+     "taskId": "wp2w-error89",
+     "revision": "r1",
+     "occurrenceId": "m55-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2w-mission56",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 56: The Process Softening Sludge Handling Shift",
+   "tasks": [
+    {
+     "taskId": "wp2w-process15",
+     "revision": "r1",
+     "occurrenceId": "m56-t1"
+    },
+    {
+     "taskId": "wp2w-error90",
+     "revision": "r1",
+     "occurrenceId": "m56-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2w-mission57",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 57: The Filtration Backwash Shift",
+   "tasks": [
+    {
+     "taskId": "wp2w-error91",
+     "revision": "r1",
+     "occurrenceId": "m57-t1"
+    },
+    {
+     "taskId": "wp2w-process16",
+     "revision": "r1",
+     "occurrenceId": "m57-t2"
+    },
+    {
+     "taskId": "wp2w-error92",
+     "revision": "r1",
+     "occurrenceId": "m57-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2w-mission58",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 58: The Process Hardness Monitoring Program Shift",
+   "tasks": [
+    {
+     "taskId": "wp2w-process17",
+     "revision": "r1",
+     "occurrenceId": "m58-t1"
+    },
+    {
+     "taskId": "wp2w-error93",
+     "revision": "r1",
+     "occurrenceId": "m58-t2"
+    },
+    {
+     "taskId": "wp2w-error94",
+     "revision": "r1",
+     "occurrenceId": "m58-t3"
+    },
+    {
+     "taskId": "wp2w-error95",
+     "revision": "r1",
+     "occurrenceId": "m58-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2w-mission59",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 59: The Filtration Backwash Shift",
+   "tasks": [
+    {
+     "taskId": "wp2w-error96",
+     "revision": "r1",
+     "occurrenceId": "m59-t1"
+    },
+    {
+     "taskId": "wp2w-process18",
+     "revision": "r1",
+     "occurrenceId": "m59-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2w-mission60",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 60: The Process Cold Weather Softening Program Shift",
+   "tasks": [
+    {
+     "taskId": "wp2w-process19",
+     "revision": "r1",
+     "occurrenceId": "m60-t1"
+    },
+    {
+     "taskId": "wp2w-error97",
+     "revision": "r1",
+     "occurrenceId": "m60-t2"
+    },
+    {
+     "taskId": "wp2w-error98",
+     "revision": "r1",
+     "occurrenceId": "m60-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Water treatment operations chapters (CT and disinfection, chemical feed, softening, filtration performance)"
+  },
+  {
+   "id": "wpi-ntk-2025",
+   "title": "WPI, 2025 Need-to-Know Criteria, Water Treatment Class II",
+   "locator": "https://gowpi.org/services/2025-need-to-know-criteria/"
+  },
+  {
+   "id": "gcdwq",
+   "title": "Health Canada, Guidelines for Canadian Drinking Water Quality",
+   "locator": "Federal guideline values and treatment context for Canadian drinking water"
+  },
+  {
+   "id": "epa-small-systems",
+   "title": "US EPA, Small Drinking Water Systems Handbook",
+   "locator": "Small system treatment operation background"
+  },
+  {
+   "id": "epa-swtr",
+   "title": "US EPA, Surface Water Treatment Rule guidance",
+   "locator": "Filtration and disinfection context (background, not Canadian law)"
+  },
+  {
+   "id": "ccohs-safety",
+   "title": "CCOHS, OSH Answers (chemical safety, confined spaces, lockout)",
+   "locator": "https://www.ccohs.ca/oshanswers/"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "b207d34bde36a4f4e2a4b9af9306814c05813e9669caf9a246a647bd61aa683b",
+  "taskReceipts": [
+   {
+    "taskId": "wp2w-error60",
+    "revision": "r1",
+    "sha256": "5f7e0512a2388ac70b5b2584a68ecaa0e39bfd3fcff62bd233bc2b626aedc94b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-error61",
+    "revision": "r1",
+    "sha256": "4824e2981241b98b0b55a2583b50d5ed3403094823187cfd33e54bc2279d0b1a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-error62",
+    "revision": "r1",
+    "sha256": "1c0371ca5204d7a93cdf19e0cd9c5dc044cb31463f9047c1f257743c7a4a162a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-error63",
+    "revision": "r1",
+    "sha256": "5533c8a02b63b5b91fad7219eb37b67900443501e0a3142dcde35f13a0377192",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-error64",
+    "revision": "r1",
+    "sha256": "79592fd7e3b34f1633d63821e2a3edf39fd078edb0a246cdd6c1fc9b5051f2c7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-error65",
+    "revision": "r1",
+    "sha256": "02b4de1a7e544e32e5741bdfe7ffd3d49b36f9d989224825e2695c490c6f8991",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-error66",
+    "revision": "r1",
+    "sha256": "3b7ceb51ba61724b337d0139049abedd8c1848018a8c4e1f31e4455996fc950b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-error67",
+    "revision": "r1",
+    "sha256": "aeaa0e86db8e1336a68d5e14739e304c46fdeb0c4746c22bad68c35604e7b55f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-error68",
+    "revision": "r1",
+    "sha256": "e3e1484d5dfd5a2b84ea2eae3b4774222517f77b75947c1f066bfcabad940b86",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-error69",
+    "revision": "r1",
+    "sha256": "21d6629261bbd51cf73d2d830e2bd6a54effa81d563a7710f8cecf6e67b8f4fe",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-error70",
+    "revision": "r1",
+    "sha256": "79f684ee6e7336fe4f83664be619276d726a30e033421f32c333ec8033de49ad",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-error71",
+    "revision": "r1",
+    "sha256": "029ec7d5ee0f3b8b0a01bc5eabfcf724037ea942c79512005aef6f347cc1814b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-error72",
+    "revision": "r1",
+    "sha256": "98d9004a1c2dae809bb3de4d66a3336510f393aacb72fd2b34dc22c9113d1d6d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-error73",
+    "revision": "r1",
+    "sha256": "296027595d7d3e30d69f2bcc16add285ab147723af35470748cf25ae517a2502",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-error74",
+    "revision": "r1",
+    "sha256": "24b9cf0c4c366b4379b7cf490649e6c8a103e0cfc3f157d9e47ffb87936dd937",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-error75",
+    "revision": "r1",
+    "sha256": "892ecf3460e90d6a60a8dfe255aa72f62200618e086c438824d00e4448b14b6c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-error76",
+    "revision": "r1",
+    "sha256": "6bfb389919846624cf21161e23a94dfc0acf82f6b864da7995487e9aacab5063",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-error77",
+    "revision": "r1",
+    "sha256": "fee9621d93b3949da59f50d2f94ca0503e9a0683f67c62457a1b91516a51043c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-error78",
+    "revision": "r1",
+    "sha256": "239ac517f00e97e67ec44c40101a020a8a1e05ce5df98cb7f672aef7d52accc6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-error79",
+    "revision": "r1",
+    "sha256": "94593906915606f40809579d2c4b3c0ffde4a262ac1fe0c13f3c4f8c1429bcad",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-error80",
+    "revision": "r1",
+    "sha256": "07298d5e4406f785d4374ceb90ec2ff4939974d230e13bed4932439a18210bf3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-error81",
+    "revision": "r1",
+    "sha256": "2917d5fb03895644d8fc9115893ae263574cad4017a8338ee97a25f00c1cd444",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-error82",
+    "revision": "r1",
+    "sha256": "cc4bb28c506288458e0d71d9313f614165dbd818e2ef90505e0cad7bc327d273",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-error83",
+    "revision": "r1",
+    "sha256": "845f38df27635d55fa9595ebfabea3678c1b294e899d4c43a4a0f46366535cba",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-error84",
+    "revision": "r1",
+    "sha256": "075b40c82037818ef07ea44ac3373e31604676daeb7365e1ef2ac69af4154454",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-error85",
+    "revision": "r1",
+    "sha256": "105865e01daa9d4cf7eb761b95f4463249504de486b9b19faf541ba32ebb6763",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-error86",
+    "revision": "r1",
+    "sha256": "9db2154256841db8be648fb9be56df2904c80a76ab2d42597364a8737d77dec0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-error87",
+    "revision": "r1",
+    "sha256": "ceb91e785f63a0ce64f2cad8cca5a40c9693e1c1de0bbef74685385c7a85ea05",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-error88",
+    "revision": "r1",
+    "sha256": "f36f774702bacfd50ab2e518e5197bb37c738e17c47cdef360567840acb61873",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-error89",
+    "revision": "r1",
+    "sha256": "d43c3976ff91d638f159031d07d4d81285e438e7b65e37ccd7f87d4659037725",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-error90",
+    "revision": "r1",
+    "sha256": "3ab85311dc1ffc2155b6d94a572d6680a826ccc387fe3bb928b1db5e627ccbf1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-error91",
+    "revision": "r1",
+    "sha256": "9171ba28a3782a91b58742ab0bf0d27dbcd36f84679f4b9aada66d64a053e70d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-error92",
+    "revision": "r1",
+    "sha256": "d37e35c859d386b7f7653d45a9508a6adb049b23984c6534108b2399a3ff7dbe",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-error93",
+    "revision": "r1",
+    "sha256": "ca2508a40e32b0ea9807be534a951c618dd7ed59427a2e4143bab7cfcbdcdd54",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-error94",
+    "revision": "r1",
+    "sha256": "4f119a03879c984d57c7da41b40cbc6460e185d7873d3b3e9c1a0087f890795d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-error95",
+    "revision": "r1",
+    "sha256": "8357dea842d603a82eb56ec93f8e026d70f0f469565f833b5f838309839b783a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-error96",
+    "revision": "r1",
+    "sha256": "4f2ff393599bdab57af83e5fc46644e57a544c2f522f3bfdc3c60a731c1c5b9e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-error97",
+    "revision": "r1",
+    "sha256": "33d3b67e70267e92aadec80263fafd107f663c7f963affc0e54151ac3ed8c47a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-error98",
+    "revision": "r1",
+    "sha256": "351e9c3cbdbf4a86c339c0c8d270f884b88eb9cb2ea0a10438828f7c061925f4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-error99",
+    "revision": "r1",
+    "sha256": "d0878e592e9b7c4da2b76363c533c27a410d6812e0bccbc948e7aec7b157c79d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process01",
+    "revision": "r1",
+    "sha256": "043f89c75f49c2eab8088a3ccf276129fcdf8cda4d6eb0183142b9b913053e25",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process02",
+    "revision": "r1",
+    "sha256": "665f11d469256f5e0a94a1bec6cf6d43a88f40839055bb9d6de5b3056f8c79fd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process03",
+    "revision": "r1",
+    "sha256": "85a472d7688877a8db176e4042618e58015e569988145d3c677293fda0a339df",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process04",
+    "revision": "r1",
+    "sha256": "db3e0e1c19107bf28132c70e41b70c9a1bc35fb5b09cf50ea39ce5fe43bddf33",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process05",
+    "revision": "r1",
+    "sha256": "e1f6dc2fb76665412a1b29a2ce0865c9b344c932fc2095a1ddff1ad0d30b682c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process06",
+    "revision": "r1",
+    "sha256": "bb0d16787c3455f0dbcf45b89e354b1e86a8cb0590f62e5fda8f20cc74e1a4b3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process07",
+    "revision": "r1",
+    "sha256": "4d8f7109c08013bad970db78561087de93cd6c77ad493efb12e56efe7c3ebd8b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process08",
+    "revision": "r1",
+    "sha256": "c2be5872f438566ffe254916453952084fb95519bebdd82671fee0c072b25d78",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process09",
+    "revision": "r1",
+    "sha256": "fae4282fadce1836ff700259eeeb512b883dad9ee96f1a09d33a2622bf4c4bd0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process10",
+    "revision": "r1",
+    "sha256": "9d9882b794396ca932c05084b9de9daa20607ff94b55da3718c59da2a09db06d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process100",
+    "revision": "r1",
+    "sha256": "e912133eed9f63e327553a08603e6fbf2f43ad0cfa615d8aac680a0ae2fe9dc4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process11",
+    "revision": "r1",
+    "sha256": "e975b032885977a7343165b385319763960b4cf765e3438cdfbf22da8833767a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process12",
+    "revision": "r1",
+    "sha256": "b6b4eacd9526a8d84cc765e96ea04828c124dfef5a51d39de206fbde7adfa410",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process13",
+    "revision": "r1",
+    "sha256": "7590eb45dcda6f7d4b7753c117ac713046bb5a8918f8b5d818b6671a2a58c5e2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process14",
+    "revision": "r1",
+    "sha256": "5a2b4e9a9b3285e047e9d1a4a30968660753c51c912b462489e8e10c376e7914",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process15",
+    "revision": "r1",
+    "sha256": "6a74cfbc8a928cb4bd9f5d6b92c208f573d778dc8a404cac9bdd88a2f81ab227",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process16",
+    "revision": "r1",
+    "sha256": "6d05ace4942eb057d66d2107af4ba7cd8cfc825853046325eadbd85a7e5b11ab",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process17",
+    "revision": "r1",
+    "sha256": "7435e0f579c9110b792a52312602028bcdcc58920c8c42982317c5300b33f247",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process18",
+    "revision": "r1",
+    "sha256": "322a9dc28bf90fc7a72b2e2fff04457b53cdce9de3d472caa000553d4920dd19",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process19",
+    "revision": "r1",
+    "sha256": "801386688fb0eb25ed81dd93c71b97dee94107060f02ae3ade0a35458c2daae5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process20",
+    "revision": "r1",
+    "sha256": "d18693d295e656334a84cff6f92fc4eb24a9065d65c96eadbac801d2d28e47dd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process21",
+    "revision": "r1",
+    "sha256": "256df67e62fbfb5310c6f283488f9b411890874e2cd19d2c3f25fcc863d0bd87",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process22",
+    "revision": "r1",
+    "sha256": "29e6714de716d73e316569d168eec7d735061e6f3544411023bb99a4c78c9a88",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process23",
+    "revision": "r1",
+    "sha256": "df6b88d1e81a12296acbb36a6ec9d7bd9bf6add7b6f47f6e1546c3f451327030",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process24",
+    "revision": "r1",
+    "sha256": "55141885a0ccbf06d3a7595c5e6b17bf7d8ad1c9608f886e3d84cdf63c85ae2e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process25",
+    "revision": "r1",
+    "sha256": "52f0a76293c68b79d16bbed9e15eff12f077d50e5b665d1df86215b2beec1c5c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process26",
+    "revision": "r1",
+    "sha256": "5d87f2821e957a3603ac5ca34a6c426ccdf01f034b8a44b4e552da9c8962e605",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process27",
+    "revision": "r1",
+    "sha256": "daf69ff41e7cd35327ab2b94aecf5cb9b37673576c2d084f3bbca2bc6a4f74ff",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process28",
+    "revision": "r1",
+    "sha256": "c06ce8aee9ed44e03e88592a5c74f2f7729c898658aff6e959a26442c3fd7d0d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process29",
+    "revision": "r1",
+    "sha256": "392771722eeb8d284a37703df659d8dc858ec63d6d5ca1fa3705fe014e9e501f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process30",
+    "revision": "r1",
+    "sha256": "ce3a49af7815c7edd5b43b2675e941d981c17a6479355f23adf60cc239781f5c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process31",
+    "revision": "r1",
+    "sha256": "ffac54e00f0cbdbc930b8bfe45d94415a79788848ea0032b52cde6b7c293af52",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process32",
+    "revision": "r1",
+    "sha256": "1f206f9dd4a392ad3fc3c0bd27d6df9079534691b9a4309a88bbcf02950e73bf",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process33",
+    "revision": "r1",
+    "sha256": "9af54c9df06f2ba17eb633bb678ce6770dda41d742e7c4ef6d8fe81059df87cc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process34",
+    "revision": "r1",
+    "sha256": "2b68f1b8639d1e327361e2367612f0f81fd7087832dc9b45bc441a0555d0a8ac",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process35",
+    "revision": "r1",
+    "sha256": "980dcdfc537abf0a98a42b01e0222fb6b2648fd1fbc87e06fdedec2994d773ab",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process36",
+    "revision": "r1",
+    "sha256": "4e1faee2a2ea3a6350c3ce387fc83e156d779e41c1199dd3d7c53d7d2d93a06b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process37",
+    "revision": "r1",
+    "sha256": "c6b26ce95ff9c061ba2ddda06812c4852fedb51dae18d97b97668a730ed76e54",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process38",
+    "revision": "r1",
+    "sha256": "c7e6a31402e59c56f6bd0abc8e6ef49bb7fc4b4b782083b96329e7809783c719",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process39",
+    "revision": "r1",
+    "sha256": "bf0692c87a01d475c0ea2e94276ee2c852810abdd1a6a54e33e56f0ffb197a0c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "wp2w-mission41",
+    "revision": "r1",
+    "sha256": "77c14a598f149f42806ff660b566f03485d2b499ddcc09725da5e169c24bc06c"
+   },
+   {
+    "missionId": "wp2w-mission42",
+    "revision": "r1",
+    "sha256": "dfcfeeea06f214d611c36d38f150a9fd112203aecb56a0da0f36125ed380911b"
+   },
+   {
+    "missionId": "wp2w-mission43",
+    "revision": "r1",
+    "sha256": "ecbde9c19a75b2870054e369b5d2c31a6afe7f1aad05e717aee717a8f6b403fe"
+   },
+   {
+    "missionId": "wp2w-mission44",
+    "revision": "r1",
+    "sha256": "97cf4c2f10289593916fc2d433995dbce85137042823428d860abcead468115e"
+   },
+   {
+    "missionId": "wp2w-mission45",
+    "revision": "r1",
+    "sha256": "095499ebc3039fd4244533eebc9029273356206d0efae3c301a60fad92c0fdec"
+   },
+   {
+    "missionId": "wp2w-mission46",
+    "revision": "r1",
+    "sha256": "e929969f1d7d127e5d718979faa0f105f1ec5512287f0d5be3d13f69654db3e3"
+   },
+   {
+    "missionId": "wp2w-mission47",
+    "revision": "r1",
+    "sha256": "082749a3a03ec1f6394eacf01b1123eaa2c18995460d224b9de3e9832630b7c3"
+   },
+   {
+    "missionId": "wp2w-mission48",
+    "revision": "r1",
+    "sha256": "2b62104dc05c066bd5e86f771bbcd092c8fcc021dcf26afdcb344734481a3c46"
+   },
+   {
+    "missionId": "wp2w-mission49",
+    "revision": "r1",
+    "sha256": "2623fa8ac211af2f6222e56643ce7ca87880e0cfc9e9683ef2d178ebd9d7154e"
+   },
+   {
+    "missionId": "wp2w-mission50",
+    "revision": "r1",
+    "sha256": "bbb3f05196585d8d0a91f9268f479620ce81cbd256bf4f7452070da788917d5c"
+   },
+   {
+    "missionId": "wp2w-mission51",
+    "revision": "r1",
+    "sha256": "63011c6de124947a0238e56421fcf4d7eb3e5886df4f5b61a0bb2fb77e465e19"
+   },
+   {
+    "missionId": "wp2w-mission52",
+    "revision": "r1",
+    "sha256": "3904d1b377327caf3dfb5220641da8d5999fb5d004a271eac2d927b3b015b94c"
+   },
+   {
+    "missionId": "wp2w-mission53",
+    "revision": "r1",
+    "sha256": "74152fbea34bcb84bcf1b0a2cf878d446858b4ab9f94147cf1e04b854fe16e1d"
+   },
+   {
+    "missionId": "wp2w-mission54",
+    "revision": "r1",
+    "sha256": "08ccb1c23e4cede7dd12edac1f2b130c7b3239b54c432cb2707757495da0188c"
+   },
+   {
+    "missionId": "wp2w-mission55",
+    "revision": "r1",
+    "sha256": "67f10044cd75c54d3f4daed6e4e3c431130d972763bedf140024afafcb2b5a47"
+   },
+   {
+    "missionId": "wp2w-mission56",
+    "revision": "r1",
+    "sha256": "af3dd5cab5505df0270bece5590837004f0c47f793986f492434d797d8c8111b"
+   },
+   {
+    "missionId": "wp2w-mission57",
+    "revision": "r1",
+    "sha256": "6e14c597ec02af4a1081ff05fa8ab4c62b58a71322f0295abcedfa80e12adb14"
+   },
+   {
+    "missionId": "wp2w-mission58",
+    "revision": "r1",
+    "sha256": "694a7ca635c6dac7c6aa0a5194c6561eb9a469d6136abbdd58ce81485c323b60"
+   },
+   {
+    "missionId": "wp2w-mission59",
+    "revision": "r1",
+    "sha256": "47d259d95b91b2b057b1d57011183c883c8a73cddfa6a9b891d51f3f9a27284c"
+   },
+   {
+    "missionId": "wp2w-mission60",
+    "revision": "r1",
+    "sha256": "cefbb524f6d69d491cacdfc02f3b4aca52eb414accb853efee0bc1ba2b8d8441"
+   }
+  ]
+ }
+}

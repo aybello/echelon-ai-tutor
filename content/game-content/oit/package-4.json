@@ -1,0 +1,4146 @@
+{
+ "courseKey": "oit",
+ "version": "deep-20261121-v3",
+ "tasks": [
+  {
+   "id": "oit-error62",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error caused by rounding a dose value too early.",
+   "topicId": "chemical-dose",
+   "level": "oit",
+   "assumptions": "Flow = 1500 m3/d, exact dose from a prior step in the work = 14 mg/L before any rounding, mass formula: mass in kg/d = dose x flow / 1000. The work rounds the dose first, as shown.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: flow = 1500 m3/d, exact dose = 14 mg/L"
+    },
+    {
+     "id": "l2",
+     "label": "Mass = dose x flow / 1000"
+    },
+    {
+     "id": "l3",
+     "label": "Dose rounded first to 10 mg/L (one significant figure) for the calculation"
+    },
+    {
+     "id": "l4",
+     "label": "Mass = 10 x 1500 / 1000 = 15 kg/d"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "Use the exact dose: Mass = 14 x 1500 / 1000 = 21 kg/d",
+   "explanation": "Line 3 rounds the dose from 14 mg/L down to 10 mg/L, to one significant figure, before calculating, which changes the result. Using the exact dose gives 14 x 1500 / 1000 = 21 kg/d."
+  },
+  {
+   "id": "oit-error63",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding BOD loading.",
+   "topicId": "bod-loading",
+   "level": "oit",
+   "assumptions": "Influent BOD = 200 mg/L, flow = 1000 m3/d. Formula: load in kg/d = BOD x flow / 1000.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: BOD = 200 mg/L, flow = 1000 m3/d"
+    },
+    {
+     "id": "l2",
+     "label": "Load = BOD x flow"
+    },
+    {
+     "id": "l3",
+     "label": "Load = 200 x 1000"
+    },
+    {
+     "id": "l4",
+     "label": "Load = 200000 kg/d"
+    }
+   ],
+   "firstWrongLineId": "l2",
+   "correctedLine": "Load = BOD x flow / 1000",
+   "explanation": "Line 2 omits the division by 1000 that converts the product to kg/d. The correct load is 200 x 1000 / 1000 = 200 kg/d."
+  },
+  {
+   "id": "oit-error64",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding BOD removal efficiency.",
+   "topicId": "bod-removal",
+   "level": "oit",
+   "assumptions": "Influent BOD = 240 mg/L, effluent BOD = 60 mg/L. Formula: percent removal = (in - out) / in x 100.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: in = 240 mg/L, out = 60 mg/L"
+    },
+    {
+     "id": "l2",
+     "label": "Removal = (in - out) / in x 100"
+    },
+    {
+     "id": "l3",
+     "label": "Removal = (240 - 60) / 60 x 100"
+    },
+    {
+     "id": "l4",
+     "label": "Removal = 300 percent"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "Removal = (240 - 60) / 240 x 100 = 75 percent",
+   "explanation": "Lines 1 and 2 are correct. Line 3 divides by the effluent value 60 instead of the influent value 240: (240 - 60) / 240 x 100 = 75 percent."
+  },
+  {
+   "id": "oit-error65",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when calculating sludge volume index.",
+   "topicId": "svi",
+   "level": "oit",
+   "assumptions": "Settled sludge volume = 300 mL/L, MLSS = 2000 mg/L. Formula: SVI = settled volume x 1000 / MLSS.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: settled = 300 mL/L, MLSS = 2000 mg/L"
+    },
+    {
+     "id": "l2",
+     "label": "SVI = settled x 1000 / MLSS"
+    },
+    {
+     "id": "l3",
+     "label": "SVI = 2000 x 1000 / 300"
+    },
+    {
+     "id": "l4",
+     "label": "SVI = 6666.6667 mL/g"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "SVI = 300 x 1000 / 2000 = 150 mL/g",
+   "explanation": "Lines 1 and 2 are correct. Line 3 inverts the substitution, placing MLSS over settled volume. The correct order gives 300 x 1000 / 2000 = 150 mL/g."
+  },
+  {
+   "id": "oit-error66",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when calculating sludge volume index.",
+   "topicId": "svi",
+   "level": "oit",
+   "assumptions": "Settled sludge volume = 250 mL/L, MLSS = 2500 mg/L. Formula: SVI = settled volume x 1000 / MLSS.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: settled = 250 mL/L, MLSS = 2500 mg/L"
+    },
+    {
+     "id": "l2",
+     "label": "SVI = settled x 1000 / MLSS"
+    },
+    {
+     "id": "l3",
+     "label": "SVI = 250 x 1000 / 2500"
+    },
+    {
+     "id": "l4",
+     "label": "SVI = 125 mL/g"
+    }
+   ],
+   "firstWrongLineId": "l4",
+   "correctedLine": "SVI = 250 x 1000 / 2500 = 100 mL/g",
+   "explanation": "Lines 1 to 3 are correct. Line 4 has an arithmetic slip: 250000 / 2500 = 100, not 125."
+  },
+  {
+   "id": "oit-error67",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when calculating the food to microorganism ratio.",
+   "topicId": "fm-ratio",
+   "level": "oit",
+   "assumptions": "BOD load = 400 kg/d, mass of microorganisms (MLSS mass) = 2000 kg. Formula: F/M = BOD load / MLSS mass.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: BOD load = 400 kg/d, MLSS mass = 2000 kg"
+    },
+    {
+     "id": "l2",
+     "label": "F/M = MLSS mass / BOD load"
+    },
+    {
+     "id": "l3",
+     "label": "F/M = 2000 / 400"
+    },
+    {
+     "id": "l4",
+     "label": "F/M = 5 per day"
+    }
+   ],
+   "firstWrongLineId": "l2",
+   "correctedLine": "F/M = BOD load / MLSS mass",
+   "explanation": "Line 2 inverts the ratio. Food over microorganisms is 400 / 2000 = 0.2 per day."
+  },
+  {
+   "id": "oit-error68",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding the BOD load step of an F/M calculation.",
+   "topicId": "fm-ratio",
+   "level": "oit",
+   "assumptions": "Flow = 2000 m3/d, influent BOD = 150 mg/L. Formula for load in kg/d = BOD x flow / 1000. The F/M step after this uses aeration MLSS mass = 1500 kg.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: flow = 2000 m3/d, BOD = 150 mg/L"
+    },
+    {
+     "id": "l2",
+     "label": "Load = BOD x flow / 1000"
+    },
+    {
+     "id": "l3",
+     "label": "Load = 150 x 2000 / 1000 = 250 kg/d"
+    },
+    {
+     "id": "l4",
+     "label": "F/M = 250 / 1500 = 0.1667 per day"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "Load = 150 x 2000 / 1000 = 300 kg/d",
+   "explanation": "Lines 1 and 2 are correct. Line 3 has an arithmetic slip in the load: 150 x 2000 / 1000 = 300 kg/d, not 250."
+  },
+  {
+   "id": "oit-error69",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when calculating solids retention time.",
+   "topicId": "srt",
+   "level": "oit",
+   "assumptions": "Mass of solids in the aeration system = 3000 kg, solids wasted = 150 kg/d. Formula: SRT = mass in system / mass wasted per day.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: mass in system = 3000 kg, wasted = 150 kg/d"
+    },
+    {
+     "id": "l2",
+     "label": "SRT = mass / wasted per day"
+    },
+    {
+     "id": "l3",
+     "label": "SRT = 150 / 3000"
+    },
+    {
+     "id": "l4",
+     "label": "SRT = 0.05 d"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "SRT = 3000 / 150 = 20 d",
+   "explanation": "Lines 1 and 2 are correct. Line 3 inverts the substitution. The correct order gives 3000 / 150 = 20 d."
+  },
+  {
+   "id": "oit-error70",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding the daily wasted solids mass for an SRT calculation.",
+   "topicId": "srt",
+   "level": "oit",
+   "assumptions": "Waste sludge flow = 20 m3/d, waste sludge concentration = 4000 mg/L. Formula: wasted mass in kg/d = flow x concentration / 1000.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: waste flow = 20 m3/d, concentration = 4000 mg/L"
+    },
+    {
+     "id": "l2",
+     "label": "Wasted mass = flow x concentration / 1000"
+    },
+    {
+     "id": "l3",
+     "label": "Wasted mass = 20 x 4000 / 1000"
+    },
+    {
+     "id": "l4",
+     "label": "Wasted mass = 8000 kg/d"
+    }
+   ],
+   "firstWrongLineId": "l4",
+   "correctedLine": "Wasted mass = 20 x 4000 / 1000 = 80 kg/d",
+   "explanation": "Lines 1 to 3 are correct. Line 4 ignores the division by 1000 in the result: 20 x 4000 / 1000 = 80 kg/d."
+  },
+  {
+   "id": "oit-error71",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding aeration detention time in hours.",
+   "topicId": "aeration-detention",
+   "level": "oit",
+   "assumptions": "Aeration volume V = 1200 m3, flow Q = 300 m3/d. Formula: t = V / Q, then convert days to hours using 1 d = 24 h.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: V = 1200 m3, Q = 300 m3/d"
+    },
+    {
+     "id": "l2",
+     "label": "t = 1200 / 300 = 4 d"
+    },
+    {
+     "id": "l3",
+     "label": "t in h = 4 d / (24 h/d)"
+    },
+    {
+     "id": "l4",
+     "label": "t = 0.1667 h"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "t in h = 4 d x (24 h/d) = 96 h",
+   "explanation": "Lines 1 and 2 are correct, giving 4 d. Line 3 divides by 24 instead of multiplying when converting days to hours: 4 x 24 = 96 h."
+  },
+  {
+   "id": "oit-error72",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding sewer slope.",
+   "topicId": "sewer-slope",
+   "level": "oit",
+   "assumptions": "A sewer drops 3 m over a length of 600 m. Formula: slope = drop / length.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: drop = 3 m, length = 600 m"
+    },
+    {
+     "id": "l2",
+     "label": "Slope = drop / length"
+    },
+    {
+     "id": "l3",
+     "label": "Slope = 600 / 3"
+    },
+    {
+     "id": "l4",
+     "label": "Slope = 200"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "Slope = 3 / 600 = 0.005",
+   "explanation": "Lines 1 and 2 are correct. Line 3 inverts the slope, placing length over drop. The correct order gives 3 / 600 = 0.005."
+  },
+  {
+   "id": "oit-error73",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when expressing a sewer slope as a percent.",
+   "topicId": "sewer-slope",
+   "level": "oit",
+   "assumptions": "Drop = 4 m, run = 800 m. Formula: slope fraction = drop / run, percent = fraction x 100.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: drop = 4 m, run = 800 m"
+    },
+    {
+     "id": "l2",
+     "label": "Slope fraction = 4 / 800 = 0.005"
+    },
+    {
+     "id": "l3",
+     "label": "Slope percent = 0.005 x 1000"
+    },
+    {
+     "id": "l4",
+     "label": "Slope = 5 percent"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "Slope percent = 0.005 x 100 = 0.5 percent",
+   "explanation": "Lines 1 and 2 are correct. Line 3 converts a fraction to a percent by multiplying by 1000 instead of 100: 0.005 x 100 = 0.5 percent."
+  },
+  {
+   "id": "oit-error74",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding wet well fill time.",
+   "topicId": "wet-well",
+   "level": "oit",
+   "assumptions": "Wet well volume to fill V = 12 m3, inflow Q = 0.4 m3/min. Formula: t = V / Q.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: V = 12 m3, Q = 0.4 m3/min"
+    },
+    {
+     "id": "l2",
+     "label": "t = V x Q"
+    },
+    {
+     "id": "l3",
+     "label": "t = 12 x 0.4"
+    },
+    {
+     "id": "l4",
+     "label": "t = 4.8 min"
+    }
+   ],
+   "firstWrongLineId": "l2",
+   "correctedLine": "t = V / Q",
+   "explanation": "Line 2 multiplies instead of dividing. Fill time is volume divided by inflow: 12 / 0.4 = 30 min."
+  },
+  {
+   "id": "oit-error75",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when converting an inflow for a wet well calculation.",
+   "topicId": "wet-well",
+   "level": "oit",
+   "assumptions": "Inflow = 300 L/min for a wet well fill calculation. Conversion: 1 m3 = 1000 L.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: inflow = 300 L/min"
+    },
+    {
+     "id": "l2",
+     "label": "Inflow in m3/min = 300 / 100 = 3 m3/min"
+    },
+    {
+     "id": "l3",
+     "label": "Wet well volume = 6 m3"
+    },
+    {
+     "id": "l4",
+     "label": "Fill time = 6 / 3 = 2 min"
+    }
+   ],
+   "firstWrongLineId": "l2",
+   "correctedLine": "Inflow in m3/min = 300 / 1000 = 0.3 m3/min",
+   "explanation": "Line 1 is correct. Line 2 divides by 100 instead of 1000 when converting L to m3: 300 / 1000 = 0.3 m3/min."
+  },
+  {
+   "id": "oit-error76",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding a wastewater pump run time.",
+   "topicId": "pump-run-time",
+   "level": "oit",
+   "assumptions": "Volume to pump V = 9000 L, pump rate Q = 50 L/s. Formula: t = V / Q.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: V = 9000 L, Q = 50 L/s"
+    },
+    {
+     "id": "l2",
+     "label": "t = V / Q"
+    },
+    {
+     "id": "l3",
+     "label": "t = 9000 / 50"
+    },
+    {
+     "id": "l4",
+     "label": "t = 160 s"
+    }
+   ],
+   "firstWrongLineId": "l4",
+   "correctedLine": "t = 9000 / 50 = 180 s",
+   "explanation": "Lines 1 to 3 are correct. Line 4 has an arithmetic slip: 9000 / 50 = 180, not 160."
+  },
+  {
+   "id": "oit-error77",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding force main velocity.",
+   "topicId": "force-main-velocity",
+   "level": "oit",
+   "assumptions": "Flow Q = 0.3 m3/s, force main area A = 0.15 m2. Formula: v = Q / A.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: Q = 0.3 m3/s, A = 0.15 m2"
+    },
+    {
+     "id": "l2",
+     "label": "v = Q x A"
+    },
+    {
+     "id": "l3",
+     "label": "v = 0.3 x 0.15"
+    },
+    {
+     "id": "l4",
+     "label": "v = 0.045 m/s"
+    }
+   ],
+   "firstWrongLineId": "l2",
+   "correctedLine": "v = Q / A",
+   "explanation": "Line 2 multiplies flow by area instead of dividing flow by area: 0.3 / 0.15 = 2 m/s."
+  },
+  {
+   "id": "oit-error78",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding detention time in parallel primary tanks.",
+   "topicId": "primary-detention",
+   "level": "oit",
+   "assumptions": "Two identical parallel primary tanks, each 90 m3. Total flow 90 m3/h splits equally, so each tank receives 45 m3/h. Water passes through one tank. Formula per tank: t = V per tank / Q per tank.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: each tank V = 90 m3, Q per tank = 45 m3/h"
+    },
+    {
+     "id": "l2",
+     "label": "t = V per tank / Q per tank"
+    },
+    {
+     "id": "l3",
+     "label": "t = 180 m3 / (45 m3/h)"
+    },
+    {
+     "id": "l4",
+     "label": "t = 4 h"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "t = 90 m3 / (45 m3/h) = 2 h",
+   "explanation": "Lines 1 and 2 are correct. Line 3 uses the total volume of both tanks, 180 m3, instead of the per tank volume of 90 m3: 90 / 45 = 2 h."
+  },
+  {
+   "id": "oit-error79",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding BOD loading to an aeration basin.",
+   "topicId": "bod-loading",
+   "level": "oit",
+   "assumptions": "Influent BOD = 180 mg/L, flow = 500 m3/d. Formula: load in kg/d = BOD x flow / 1000.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: BOD = 180 mg/L, flow = 500 m3/d"
+    },
+    {
+     "id": "l2",
+     "label": "Load = BOD x flow / 1000"
+    },
+    {
+     "id": "l3",
+     "label": "Load = 180 x 500 / 1000"
+    },
+    {
+     "id": "l4",
+     "label": "Load = 900 kg/d"
+    }
+   ],
+   "firstWrongLineId": "l4",
+   "correctedLine": "Load = 180 x 500 / 1000 = 90 kg/d",
+   "explanation": "Lines 1 to 3 are correct. Line 4 has an arithmetic slip: 180 x 500 / 1000 = 90, not 900."
+  },
+  {
+   "id": "oit-error80",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding percent solids in a sludge sample.",
+   "topicId": "percent-solids",
+   "level": "oit",
+   "assumptions": "Dry solids mass = 4 g, wet sample mass = 200 g. Formula: percent solids = dry / wet x 100.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: dry = 4 g, wet = 200 g"
+    },
+    {
+     "id": "l2",
+     "label": "Percent solids = dry / wet x 100"
+    },
+    {
+     "id": "l3",
+     "label": "Percent solids = 4 / 200 x 100"
+    },
+    {
+     "id": "l4",
+     "label": "Percent solids = 20 percent"
+    }
+   ],
+   "firstWrongLineId": "l4",
+   "correctedLine": "Percent solids = 4 / 200 x 100 = 2 percent",
+   "explanation": "Lines 1 to 3 are correct. Line 4 has an arithmetic slip: 4 / 200 x 100 = 2, not 20."
+  },
+  {
+   "id": "oit-error81",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding detention time in a grit chamber.",
+   "topicId": "grit-detention",
+   "level": "oit",
+   "assumptions": "Grit chamber volume V = 15 m3, flow Q = 5 m3/min. Formula: t = V / Q.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: V = 15 m3, Q = 5 m3/min"
+    },
+    {
+     "id": "l2",
+     "label": "t = V / Q"
+    },
+    {
+     "id": "l3",
+     "label": "t = 15 / 5"
+    },
+    {
+     "id": "l4",
+     "label": "t = 30 min"
+    }
+   ],
+   "firstWrongLineId": "l4",
+   "correctedLine": "t = 15 / 5 = 3 min",
+   "explanation": "Lines 1 to 3 are correct. Line 4 has an arithmetic slip: 15 / 5 = 3, not 30."
+  },
+  {
+   "id": "oit-error82",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error caused by rounding an intermediate wasted rate too early.",
+   "topicId": "srt",
+   "level": "oit",
+   "assumptions": "Mass in system = 2000 kg. A prior step wasted 100 kg of solids over 3 days, giving an exact wasted rate of 100 / 3 = 33.3333 kg/d. Formula: SRT = mass / wasted rate.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: mass = 2000 kg, exact wasted rate = 33.3333 kg/d"
+    },
+    {
+     "id": "l2",
+     "label": "SRT = mass / wasted rate"
+    },
+    {
+     "id": "l3",
+     "label": "Wasted rate rounded first to 30 kg/d (one significant figure) for the calculation"
+    },
+    {
+     "id": "l4",
+     "label": "SRT = 2000 / 30 = 66.6667 d"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "Use the exact wasted rate: SRT = 2000 / (100 / 3) = 60 d",
+   "explanation": "Line 3 rounds the intermediate wasted rate from 33.3333 kg/d down to 30 kg/d before calculating, which changes the result. Using the exact rate gives 60 d."
+  },
+  {
+   "id": "oit-error83",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when converting a collection system flow from L/min to L/s.",
+   "topicId": "collection-flow",
+   "level": "oit",
+   "assumptions": "Flow = 720 L/min. Conversion: 1 min = 60 s. Formula: flow per second = flow per minute / 60.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: flow = 720 L/min"
+    },
+    {
+     "id": "l2",
+     "label": "Flow in L/s = 720 x 60"
+    },
+    {
+     "id": "l3",
+     "label": "Flow = 43200 L/s"
+    },
+    {
+     "id": "l4",
+     "label": "Final answer: 43200 L/s"
+    }
+   ],
+   "firstWrongLineId": "l2",
+   "correctedLine": "Flow in L/s = 720 / 60 = 12 L/s",
+   "explanation": "Line 1 is correct. Line 2 multiplies by 60 instead of dividing when converting a per minute rate to a per second rate: 720 / 60 = 12 L/s."
+  },
+  {
+   "id": "oit-error84",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding the effluent BOD after a percent removal.",
+   "topicId": "bod-removal",
+   "level": "oit",
+   "assumptions": "Influent BOD = 300 mg/L, removal = 80 percent. Decimal removal = 0.80, remaining fraction = 1 - 0.80 = 0.20. Formula: effluent = influent x remaining fraction.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: influent = 300 mg/L, removal = 80 percent"
+    },
+    {
+     "id": "l2",
+     "label": "Remaining fraction = 1 - 0.80 = 0.20"
+    },
+    {
+     "id": "l3",
+     "label": "Effluent = 300 x 0.80"
+    },
+    {
+     "id": "l4",
+     "label": "Effluent = 240 mg/L"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "Effluent = 300 x 0.20 = 60 mg/L",
+   "explanation": "Lines 1 and 2 are correct. Line 3 multiplies by the removal fraction 0.80 instead of the remaining fraction 0.20 from line 2: 300 x 0.20 = 60 mg/L."
+  },
+  {
+   "id": "oit-error85",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding aeration basin volume needed from a detention time.",
+   "topicId": "aeration-volume",
+   "level": "oit",
+   "assumptions": "Flow Q = 400 m3/d, target detention t = 0.5 d. Formula: V = Q x t.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: Q = 400 m3/d, t = 0.5 d"
+    },
+    {
+     "id": "l2",
+     "label": "V = Q x t"
+    },
+    {
+     "id": "l3",
+     "label": "V = 400 / 0.5"
+    },
+    {
+     "id": "l4",
+     "label": "V = 800 m3"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "V = 400 x 0.5 = 200 m3",
+   "explanation": "Lines 1 and 2 are correct. Line 3 divides instead of multiplying in the substitution. Volume is flow multiplied by detention time: 400 x 0.5 = 200 m3."
+  },
+  {
+   "id": "oit-error86",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding sludge solids mass in a tank.",
+   "topicId": "sludge-mass",
+   "level": "oit",
+   "assumptions": "Tank volume = 50 m3, solids concentration = 3000 mg/L. Formula: mass in kg = volume x concentration / 1000.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: volume = 50 m3, concentration = 3000 mg/L"
+    },
+    {
+     "id": "l2",
+     "label": "Mass = volume x concentration / 1000"
+    },
+    {
+     "id": "l3",
+     "label": "Mass = 50 x 3000 / 1000"
+    },
+    {
+     "id": "l4",
+     "label": "Mass = 15 kg"
+    }
+   ],
+   "firstWrongLineId": "l4",
+   "correctedLine": "Mass = 50 x 3000 / 1000 = 150 kg",
+   "explanation": "Lines 1 to 3 are correct. Line 4 has an arithmetic slip: 50 x 3000 / 1000 = 150, not 15."
+  },
+  {
+   "id": "oit-error87",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding flow in a sewer from velocity and area.",
+   "topicId": "sewer-velocity",
+   "level": "oit",
+   "assumptions": "Velocity v = 0.8 m/s, sewer area A = 0.5 m2. Formula: Q = v x A.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: v = 0.8 m/s, A = 0.5 m2"
+    },
+    {
+     "id": "l2",
+     "label": "Q = v x A"
+    },
+    {
+     "id": "l3",
+     "label": "Q = 0.8 / 0.5"
+    },
+    {
+     "id": "l4",
+     "label": "Q = 1.6 m3/s"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "Q = 0.8 x 0.5 = 0.4 m3/s",
+   "explanation": "Lines 1 and 2 are correct. Line 3 divides instead of multiplying in the substitution: 0.8 x 0.5 = 0.4 m3/s."
+  },
+  {
+   "id": "oit-error88",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding surface loading on a primary clarifier.",
+   "topicId": "primary-loading",
+   "level": "oit",
+   "assumptions": "Flow Q = 1200 m3/d, clarifier surface area A = 40 m2. Formula: loading = Q / A.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: Q = 1200 m3/d, A = 40 m2"
+    },
+    {
+     "id": "l2",
+     "label": "Loading = Q / A"
+    },
+    {
+     "id": "l3",
+     "label": "Loading = 1200 / 40"
+    },
+    {
+     "id": "l4",
+     "label": "Loading = 20 m/d"
+    }
+   ],
+   "firstWrongLineId": "l4",
+   "correctedLine": "Loading = 1200 / 40 = 30 m/d",
+   "explanation": "Lines 1 to 3 are correct. Line 4 has an arithmetic slip: 1200 / 40 = 30, not 20."
+  },
+  {
+   "id": "oit-error89",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding wet well volume from its dimensions.",
+   "topicId": "wet-well",
+   "level": "oit",
+   "assumptions": "Wet well is 3 m by 2 m in plan, water depth change = 1.5 m. Formula: V = length x width x depth change.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: length = 3 m, width = 2 m, depth change = 1.5 m"
+    },
+    {
+     "id": "l2",
+     "label": "V = length x width x depth change"
+    },
+    {
+     "id": "l3",
+     "label": "V = 3 x 2 x 1.5"
+    },
+    {
+     "id": "l4",
+     "label": "V = 12 m3"
+    }
+   ],
+   "firstWrongLineId": "l4",
+   "correctedLine": "V = 3 x 2 x 1.5 = 9 m3",
+   "explanation": "Lines 1 to 3 are correct. Line 4 has an arithmetic slip: 3 x 2 x 1.5 = 9, not 12."
+  },
+  {
+   "id": "oit-error90",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding the MLSS mass step of an F/M calculation.",
+   "topicId": "fm-ratio",
+   "level": "oit",
+   "assumptions": "Aeration volume = 800 m3, MLSS concentration = 2500 mg/L. Formula: MLSS mass in kg = volume x concentration / 1000. The F/M step after this uses a BOD load of 400 kg/d.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: volume = 800 m3, MLSS = 2500 mg/L"
+    },
+    {
+     "id": "l2",
+     "label": "MLSS mass = volume x concentration / 1000"
+    },
+    {
+     "id": "l3",
+     "label": "MLSS mass = 800 x 2500 / 1000 = 20000 kg"
+    },
+    {
+     "id": "l4",
+     "label": "F/M = 400 / 20000 = 0.02 per day"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "MLSS mass = 800 x 2500 / 1000 = 2000 kg",
+   "explanation": "Lines 1 and 2 are correct. Line 3 has an arithmetic slip: 800 x 2500 / 1000 = 2000 kg, not 20000."
+  },
+  {
+   "id": "oit-error91",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding a diluted lab sample concentration.",
+   "topicId": "dilution-wastewater",
+   "level": "oit",
+   "assumptions": "Original sample BOD = 240 mg/L, diluted by a factor of 6, meaning the diluted concentration is the original divided by 6. Formula: diluted = original / dilution factor.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: original = 240 mg/L, dilution factor = 6"
+    },
+    {
+     "id": "l2",
+     "label": "Diluted = original / factor"
+    },
+    {
+     "id": "l3",
+     "label": "Diluted = 240 x 6"
+    },
+    {
+     "id": "l4",
+     "label": "Diluted = 1440 mg/L"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "Diluted = 240 / 6 = 40 mg/L",
+   "explanation": "Lines 1 and 2 are correct. Line 3 multiplies instead of dividing by the dilution factor: 240 / 6 = 40 mg/L."
+  },
+  {
+   "id": "oit-error92",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when converting an SVI result unit step.",
+   "topicId": "svi",
+   "level": "oit",
+   "assumptions": "An SVI calculation gives 0.15 L/g in an intermediate step, and the work converts it to mL/g using 1 L = 1000 mL. Formula: mL/g = L/g x 1000.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: intermediate SVI = 0.15 L/g"
+    },
+    {
+     "id": "l2",
+     "label": "SVI in mL/g = 0.15 / 1000"
+    },
+    {
+     "id": "l3",
+     "label": "SVI = 0.00015 mL/g"
+    },
+    {
+     "id": "l4",
+     "label": "Final answer: 0.00015 mL/g"
+    }
+   ],
+   "firstWrongLineId": "l2",
+   "correctedLine": "SVI in mL/g = 0.15 x 1000 = 150 mL/g",
+   "explanation": "Line 1 is correct. Line 2 divides by 1000 instead of multiplying when converting L to mL: 0.15 x 1000 = 150 mL/g."
+  },
+  {
+   "id": "oit-error93",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding BOD load per unit area step.",
+   "topicId": "bod-loading",
+   "level": "oit",
+   "assumptions": "Total BOD load = 500 kg/d applied over an area of 250 m2 in this exercise. Formula: load per area = total load / area.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: total load = 500 kg/d, area = 250 m2"
+    },
+    {
+     "id": "l2",
+     "label": "Load per area = total / area"
+    },
+    {
+     "id": "l3",
+     "label": "Load per area = 500 x 250"
+    },
+    {
+     "id": "l4",
+     "label": "Load per area = 125000 kg per m2 per day"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "Load per area = 500 / 250 = 2 kg per m2 per day",
+   "explanation": "Lines 1 and 2 are correct. Line 3 multiplies instead of dividing: 500 / 250 = 2."
+  },
+  {
+   "id": "oit-error94",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding total pump run time for two identical pumps in series of runs.",
+   "topicId": "pump-run-time",
+   "level": "oit",
+   "assumptions": "One run: V = 6000 L at Q = 60 L/min. Formula: t per run = V / Q. Two runs are done back to back, so total time adds.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: V = 6000 L, Q = 60 L/min, two back to back runs"
+    },
+    {
+     "id": "l2",
+     "label": "t per run = 6000 / 60 = 100 min"
+    },
+    {
+     "id": "l3",
+     "label": "Total t = 100 min + 100 min"
+    },
+    {
+     "id": "l4",
+     "label": "Total t = 150 min"
+    }
+   ],
+   "firstWrongLineId": "l4",
+   "correctedLine": "Total t = 100 min + 100 min = 200 min",
+   "explanation": "Lines 1 to 3 are correct for runs done back to back in time, where times add. Line 4 has an arithmetic slip: 100 + 100 = 200, not 150."
+  },
+  {
+   "id": "oit-error95",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding aeration detention time.",
+   "topicId": "aeration-detention",
+   "level": "oit",
+   "assumptions": "Aeration volume V = 900 m3, flow Q = 450 m3/d. Formula: t = V / Q.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: V = 900 m3, Q = 450 m3/d"
+    },
+    {
+     "id": "l2",
+     "label": "t = V / Q"
+    },
+    {
+     "id": "l3",
+     "label": "t = 900 / 450"
+    },
+    {
+     "id": "l4",
+     "label": "t = 3 d"
+    }
+   ],
+   "firstWrongLineId": "l4",
+   "correctedLine": "t = 900 / 450 = 2 d",
+   "explanation": "Lines 1 to 3 are correct. Line 4 has an arithmetic slip: 900 / 450 = 2, not 3."
+  },
+  {
+   "id": "oit-error96",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding the water mass in a sludge sample from percent solids.",
+   "topicId": "percent-solids",
+   "level": "oit",
+   "assumptions": "Wet sample mass = 500 g, percent solids = 8 percent, decimal = 0.08. Formula: solids mass = wet mass x decimal, water mass = wet mass - solids mass.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: wet = 500 g, decimal solids = 0.08"
+    },
+    {
+     "id": "l2",
+     "label": "Solids mass = 500 x 0.08 = 40 g"
+    },
+    {
+     "id": "l3",
+     "label": "Water mass = 500 - 40"
+    },
+    {
+     "id": "l4",
+     "label": "Water mass = 540 g"
+    }
+   ],
+   "firstWrongLineId": "l4",
+   "correctedLine": "Water mass = 500 - 40 = 460 g",
+   "explanation": "Lines 1 to 3 are correct, including solids of 40 g. Line 4 adds in the result instead of subtracting: 500 - 40 = 460 g."
+  },
+  {
+   "id": "oit-error97",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding the drop over a sewer length from slope.",
+   "topicId": "sewer-slope",
+   "level": "oit",
+   "assumptions": "Slope = 0.004, sewer length = 500 m. Formula: drop = slope x length.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: slope = 0.004, length = 500 m"
+    },
+    {
+     "id": "l2",
+     "label": "Drop = slope x length"
+    },
+    {
+     "id": "l3",
+     "label": "Drop = 0.004 / 500"
+    },
+    {
+     "id": "l4",
+     "label": "Drop = 0.000008 m"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "Drop = 0.004 x 500 = 2 m",
+   "explanation": "Lines 1 and 2 are correct. Line 3 divides instead of multiplying in the substitution: 0.004 x 500 = 2 m."
+  },
+  {
+   "id": "oit-error98",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding solids wasted from an SRT target.",
+   "topicId": "srt",
+   "level": "oit",
+   "assumptions": "Mass in system = 2400 kg, target SRT = 12 d. Formula: wasted per day = mass / SRT.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: mass = 2400 kg, SRT = 12 d"
+    },
+    {
+     "id": "l2",
+     "label": "Wasted per day = mass / SRT"
+    },
+    {
+     "id": "l3",
+     "label": "Wasted per day = 2400 x 12"
+    },
+    {
+     "id": "l4",
+     "label": "Wasted per day = 28800 kg/d"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "Wasted per day = 2400 / 12 = 200 kg/d",
+   "explanation": "Lines 1 and 2 are correct. Line 3 multiplies instead of dividing: 2400 / 12 = 200 kg/d."
+  },
+  {
+   "id": "oit-error99",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding total daily flow from an hourly rate.",
+   "topicId": "collection-flow",
+   "level": "oit",
+   "assumptions": "Hourly flow = 150 m3/h, operating for 16 h in the day in this exercise. Formula: daily volume = hourly flow x hours.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: hourly flow = 150 m3/h, hours = 16"
+    },
+    {
+     "id": "l2",
+     "label": "Daily volume = hourly flow x hours"
+    },
+    {
+     "id": "l3",
+     "label": "Daily volume = 150 / 16"
+    },
+    {
+     "id": "l4",
+     "label": "Daily volume = 9.375 m3"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "Daily volume = 150 x 16 = 2400 m3",
+   "explanation": "Lines 1 and 2 are correct. Line 3 divides instead of multiplying in the substitution: 150 x 16 = 2400 m3."
+  },
+  {
+   "id": "oit-process05",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the seven stages of this conventional surface water plant from the raw water intake to the customer tap.",
+   "topicId": "conventional-full-train",
+   "level": "oit",
+   "assumptions": "Fictional Ontario surface water plant treating a river source for a small municipality.",
+   "configuration": "Full conventional plant with chemical treatment, gravity filtration, disinfection, storage, and distribution.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Intake screening"
+    },
+    {
+     "id": "c2",
+     "label": "Coagulation and rapid mix"
+    },
+    {
+     "id": "c3",
+     "label": "Flocculation"
+    },
+    {
+     "id": "c4",
+     "label": "Sedimentation"
+    },
+    {
+     "id": "c5",
+     "label": "Granular media filtration"
+    },
+    {
+     "id": "c6",
+     "label": "Disinfection"
+    },
+    {
+     "id": "c7",
+     "label": "Clearwell storage and distribution"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6",
+    "c7"
+   ],
+   "explanation": "Debris is screened out first so it cannot damage downstream equipment. Coagulant is then dispersed by rapid mixing, floc grows during gentle flocculation, most floc settles in sedimentation, filtration removes what remains, disinfection inactivates pathogens, and the clearwell stores finished water for distribution."
+  },
+  {
+   "id": "oit-process06",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six stages of this groundwater iron removal system from the well to distribution.",
+   "topicId": "groundwater-iron-removal",
+   "level": "oit",
+   "assumptions": "Fictional Ontario well supply where iron is dissolved in the raw water and must be oxidized before it can be filtered out.",
+   "configuration": "Groundwater system using aeration, oxidation contact time, filtration, and disinfection for a well supply with dissolved iron.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Well pumping"
+    },
+    {
+     "id": "c2",
+     "label": "Aeration"
+    },
+    {
+     "id": "c3",
+     "label": "Oxidation and contact time"
+    },
+    {
+     "id": "c4",
+     "label": "Pressure filtration"
+    },
+    {
+     "id": "c5",
+     "label": "Disinfection"
+    },
+    {
+     "id": "c6",
+     "label": "Storage and distribution"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Pumping brings the water up first. Aeration adds oxygen so dissolved iron oxidizes during the contact period into solid particles, pressure filtration strains those particles out, disinfection follows filtration, and treated water is stored for distribution."
+  },
+  {
+   "id": "oit-process07",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six stages of this direct filtration plant from intake to finished water storage.",
+   "topicId": "direct-filtration-train",
+   "level": "oit",
+   "assumptions": "Fictional plant whose source water quality allows sedimentation to be skipped, so floc is removed on the filters.",
+   "configuration": "Direct filtration plant on a low turbidity source, with no sedimentation basin in the train.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Intake screening"
+    },
+    {
+     "id": "c2",
+     "label": "Coagulant addition and rapid mix"
+    },
+    {
+     "id": "c3",
+     "label": "Flocculation"
+    },
+    {
+     "id": "c4",
+     "label": "Granular media filtration"
+    },
+    {
+     "id": "c5",
+     "label": "Disinfection"
+    },
+    {
+     "id": "c6",
+     "label": "Clearwell storage"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Screening protects the plant, rapid mixing disperses the coagulant, and flocculation builds small floc. Because there is no sedimentation step in direct filtration, the filters themselves remove the floc, then the water is disinfected and stored."
+  },
+  {
+   "id": "oit-process08",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six stages of this membrane filtration plant from raw water to finished water.",
+   "topicId": "membrane-filtration-train",
+   "level": "oit",
+   "assumptions": "Fictional Ontario plant using ultrafiltration membranes that need fine pre-screening to protect the fibres.",
+   "configuration": "Low pressure membrane plant with pretreatment screening, membrane filtration, disinfection, and storage.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Raw water pumping"
+    },
+    {
+     "id": "c2",
+     "label": "Fine pre-screening"
+    },
+    {
+     "id": "c3",
+     "label": "Membrane filtration"
+    },
+    {
+     "id": "c4",
+     "label": "Integrity testing of membrane fibres"
+    },
+    {
+     "id": "c5",
+     "label": "Disinfection"
+    },
+    {
+     "id": "c6",
+     "label": "Treated water storage"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Raw water is pumped to the plant and finely screened so grit cannot damage the membranes. The membranes filter the water, integrity testing confirms no fibres are broken, and the permeate is disinfected and stored."
+  },
+  {
+   "id": "oit-process09",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps water passes through in this ultraviolet disinfection installation.",
+   "topicId": "uv-disinfection-water",
+   "level": "oit",
+   "assumptions": "Fictional plant where ultraviolet light provides primary disinfection credit and chlorine provides the residual.",
+   "configuration": "Ultraviolet reactor installed after filtration at a surface water plant, followed by chlorine for a distribution residual.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Filtered water enters the reactor bank"
+    },
+    {
+     "id": "c2",
+     "label": "Water passes the ultraviolet lamp sleeves"
+    },
+    {
+     "id": "c3",
+     "label": "Ultraviolet dose is delivered to the flowing water"
+    },
+    {
+     "id": "c4",
+     "label": "Reactor effluent leaves the unit"
+    },
+    {
+     "id": "c5",
+     "label": "Chlorine is added for a distribution residual"
+    },
+    {
+     "id": "c6",
+     "label": "Disinfected water flows to the clearwell"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Ultraviolet light only works on water flowing past the lamps, so filtration comes first to keep turbidity low. The dose is delivered inside the reactor, and because ultraviolet light leaves no residual, chlorine is added afterward before the water reaches the clearwell."
+  },
+  {
+   "id": "oit-process10",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps an operator follows to show that chlorine CT disinfection requirements are met.",
+   "topicId": "chlorine-ct-compliance",
+   "level": "oit",
+   "assumptions": "Fictional check using the plant contact tank, with residual, pH, temperature, and contact time all measured at the same operating condition.",
+   "configuration": "Chlorine contact system at a surface water plant being checked against CT requirements under Ontario Regulation 170/03.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Measure the free chlorine residual at the contact tank outlet"
+    },
+    {
+     "id": "c2",
+     "label": "Measure water temperature"
+    },
+    {
+     "id": "c3",
+     "label": "Measure pH"
+    },
+    {
+     "id": "c4",
+     "label": "Determine the contact time from tank volume and peak flow"
+    },
+    {
+     "id": "c5",
+     "label": "Calculate CT by multiplying residual by contact time"
+    },
+    {
+     "id": "c6",
+     "label": "Compare the calculated CT with the required CT table value"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "CT is the product of residual concentration and contact time, so the residual and the contact time must both be known first. Temperature and pH set which required CT value applies, so they are measured before the calculation and the final comparison."
+  },
+  {
+   "id": "oit-process100",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the seven steps for starting up a small municipal wastewater plant after a complete shutdown.",
+   "topicId": "wastewater-plant-startup",
+   "level": "oit",
+   "assumptions": "Fictional startup where units are filled and proven with water before wastewater and seed sludge are introduced.",
+   "configuration": "Plant startup following the general approach in US EPA guidance for starting up municipal wastewater facilities.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Fill the treatment units with water and check for leaks and proper equipment operation"
+    },
+    {
+     "id": "c2",
+     "label": "Start up the preliminary and primary units and confirm flows through them"
+    },
+    {
+     "id": "c3",
+     "label": "Bring in seed sludge from an operating plant if the biology is new"
+    },
+    {
+     "id": "c4",
+     "label": "Begin feeding wastewater at a low rate to the biological units"
+    },
+    {
+     "id": "c5",
+     "label": "Start aeration and sludge return and watch the mixed liquor develop"
+    },
+    {
+     "id": "c6",
+     "label": "Increase the feed rate gradually as treatment performance stabilizes"
+    },
+    {
+     "id": "c7",
+     "label": "Begin routine sampling and confirm effluent quality before normal operation"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6",
+    "c7"
+   ],
+   "explanation": "Clean water testing finds leaks and dead equipment without adding a pollution risk. Seed sludge gives the biology a working population, feed starts low so the young biomass is not overloaded, and load only increases as sampling proves the plant is treating."
+  },
+  {
+   "id": "oit-process11",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps of a gravity filter backwash from taking the filter out of service to washing it.",
+   "topicId": "filter-backwash-sequence",
+   "level": "oit",
+   "assumptions": "Fictional filter with a backwash supply, air scour blowers, and a wash water trough and waste line.",
+   "configuration": "Rapid gravity filter at the end of a run, backwashed with treated water and air scour.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Close the filter influent valve and take the filter out of service"
+    },
+    {
+     "id": "c2",
+     "label": "Drain the water level down to the wash troughs"
+    },
+    {
+     "id": "c3",
+     "label": "Start air scour to loosen the media bed"
+    },
+    {
+     "id": "c4",
+     "label": "Start the backwash water at a low rate and ramp it up"
+    },
+    {
+     "id": "c5",
+     "label": "Wash until the backwash waste water runs clear"
+    },
+    {
+     "id": "c6",
+     "label": "Stop the backwash water and let the bed settle"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The filter must be isolated and drained before washing so wash water is not wasted. Air scour first loosens the captured solids, backwash water then lifts and carries them to the troughs, and washing ends when the waste runs clear, after which the bed is left to settle."
+  },
+  {
+   "id": "oit-process12",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for returning a freshly backwashed gravity filter to service.",
+   "topicId": "filter-startup-after-backwash",
+   "level": "oit",
+   "assumptions": "Fictional filter with a filter to waste line so the first filtrate does not enter the clearwell.",
+   "configuration": "Gravity filter that has just been backwashed and is being returned to production.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Let the media bed settle after backwashing"
+    },
+    {
+     "id": "c2",
+     "label": "Open the influent valve and refill the filter slowly"
+    },
+    {
+     "id": "c3",
+     "label": "Start filtration to waste at a low rate"
+    },
+    {
+     "id": "c4",
+     "label": "Check the filter to waste turbidity until it is low and stable"
+    },
+    {
+     "id": "c5",
+     "label": "Close the waste valve and open the effluent valve to the clearwell"
+    },
+    {
+     "id": "c6",
+     "label": "Ramp the filter up to its normal filtration rate"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The bed needs time to settle and regrade before flow restarts. Filtering to waste first protects the clearwell from the turbid first filtrate, and only when that turbidity is low and stable is the filter put to the clearwell and brought up to full rate."
+  },
+  {
+   "id": "oit-process13",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps of a standard jar test used to pick a coagulant dose.",
+   "topicId": "jar-test-procedure",
+   "level": "oit",
+   "assumptions": "Fictional laboratory procedure following the standard rapid mix, slow mix, settling, and sampling sequence.",
+   "configuration": "Bench jar test with six beakers of raw water dosed at increasing coagulant concentrations.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Fill each beaker with the same volume of raw water"
+    },
+    {
+     "id": "c2",
+     "label": "Add a different coagulant dose to each beaker"
+    },
+    {
+     "id": "c3",
+     "label": "Rapid mix all beakers to disperse the chemical"
+    },
+    {
+     "id": "c4",
+     "label": "Slow mix to grow floc"
+    },
+    {
+     "id": "c5",
+     "label": "Stop mixing and let the floc settle"
+    },
+    {
+     "id": "c6",
+     "label": "Sample the settled water and measure turbidity to pick the best dose"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Each beaker must start with the same raw water so only the dose differs. Rapid mixing disperses the coagulant, slow mixing grows floc without breaking it, settling shows how well each dose clarifies, and the settled water turbidity identifies the best dose."
+  },
+  {
+   "id": "oit-process14",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for collecting and testing a distribution chlorine residual sample.",
+   "topicId": "chlorine-residual-sampling",
+   "level": "oit",
+   "assumptions": "Fictional routine sample collected under Ontario Regulation 170/03 sampling practice.",
+   "configuration": "Free chlorine residual check at a distribution sampling station using a DPD colorimeter.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Flush the sample tap until the water is fresh from the main"
+    },
+    {
+     "id": "c2",
+     "label": "Rinse the sample cell with the sample water"
+    },
+    {
+     "id": "c3",
+     "label": "Fill the cell to the mark with sample"
+    },
+    {
+     "id": "c4",
+     "label": "Add the DPD reagent and mix"
+    },
+    {
+     "id": "c5",
+     "label": "Read the residual on the colorimeter within the reagent time limit"
+    },
+    {
+     "id": "c6",
+     "label": "Record the result, location, date, and time"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Flushing first makes sure the sample represents water in the main, not water standing in the tap line. The cell is rinsed and filled before reagent is added, the reading must be taken promptly because the colour develops and fades, and the result is recorded with its sampling details."
+  },
+  {
+   "id": "oit-process15",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for collecting and measuring a turbidity sample that will read correctly.",
+   "topicId": "turbidity-sampling",
+   "level": "oit",
+   "assumptions": "Fictional sample where air bubbles and a dirty sample cell are the main causes of false high readings.",
+   "configuration": "Turbidity measurement of treated water with a bench turbidimeter at a small plant laboratory.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Collect the sample in a clean container and avoid shaking it"
+    },
+    {
+     "id": "c2",
+     "label": "Let the sample stand briefly so air bubbles rise out"
+    },
+    {
+     "id": "c3",
+     "label": "Rinse and fill the sample cell with the sample"
+    },
+    {
+     "id": "c4",
+     "label": "Wipe the outside of the cell clean and dry"
+    },
+    {
+     "id": "c5",
+     "label": "Insert the cell into the turbidimeter in the indexed position"
+    },
+    {
+     "id": "c6",
+     "label": "Read and record the turbidity in NTU"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Shaking adds air bubbles that scatter light and read as turbidity, so the sample is handled gently and left to clear. A clean, wiped cell in its indexed position keeps the light path consistent, and the reading is recorded in NTU."
+  },
+  {
+   "id": "oit-process16",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for collecting a drinking water bacteriological sample for total coliform and E. coli testing.",
+   "topicId": "bacteriological-sampling",
+   "level": "oit",
+   "assumptions": "Fictional sample collected in a sterile bottle containing sodium thiosulfate to neutralize chlorine.",
+   "configuration": "Bacteriological sample from a distribution tap, sent to a licensed laboratory under Ontario Regulation 170/03.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Remove the tap aerator and disinfect the tap outlet"
+    },
+    {
+     "id": "c2",
+     "label": "Flush the tap for several minutes to draw fresh water from the main"
+    },
+    {
+     "id": "c3",
+     "label": "Open the sterile sample bottle without touching the inside of the cap or neck"
+    },
+    {
+     "id": "c4",
+     "label": "Fill the bottle to the fill line without rinsing it"
+    },
+    {
+     "id": "c5",
+     "label": "Cap the bottle tightly and label it with location, date, and time"
+    },
+    {
+     "id": "c6",
+     "label": "Place the sample in a cooler with ice packs for transport to the laboratory"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Disinfecting and flushing the tap keeps tap contamination out of the sample. The sterile bottle is never rinsed because that would wash out the chlorine neutralizer, and the labelled sample is kept cold so bacteria neither grow nor die before analysis."
+  },
+  {
+   "id": "oit-process17",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps of an Ontario residential lead sampling procedure in a home with a lead service line.",
+   "topicId": "lead-sampling-ontario",
+   "level": "oit",
+   "assumptions": "Fictional home where the sample must capture water that stood in the lead service line and plumbing.",
+   "configuration": "Lead sampling at a residential tap following the Ontario Regulation 170/03 plumbing sampling approach.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Let the water stand in the plumbing for at least 30 minutes without use"
+    },
+    {
+     "id": "c2",
+     "label": "Collect the first litre drawn from the cold water tap"
+    },
+    {
+     "id": "c3",
+     "label": "Flush the tap for five minutes"
+    },
+    {
+     "id": "c4",
+     "label": "Let the water stand again for 30 minutes"
+    },
+    {
+     "id": "c5",
+     "label": "Collect a second one litre sample from the tap"
+    },
+    {
+     "id": "c6",
+     "label": "Label both samples and submit them with the sampling record"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The first litre captures water that sat in contact with the lead plumbing, which is where lead dissolves. Flushing and a second standing period then show the lead level after the standing water is replaced, and the pair of results is submitted together."
+  },
+  {
+   "id": "oit-process18",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps of a hydrant flushing job on a distribution main.",
+   "topicId": "hydrant-flushing-sequence",
+   "level": "oit",
+   "assumptions": "Fictional planned flush where traffic control, notification, and residual testing are part of the job.",
+   "configuration": "Flushing a hydrant to clear discoloured water and restore chlorine residual in a neighbourhood.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Notify affected customers and set up traffic control"
+    },
+    {
+     "id": "c2",
+     "label": "Attach the diffuser or hose and direct discharge away from traffic and property"
+    },
+    {
+     "id": "c3",
+     "label": "Open the hydrant slowly to a fully open position"
+    },
+    {
+     "id": "c4",
+     "label": "Flush until the water runs clear"
+    },
+    {
+     "id": "c5",
+     "label": "Measure the chlorine residual at the hydrant"
+    },
+    {
+     "id": "c6",
+     "label": "Close the hydrant slowly, remove equipment, and record the flush"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Customers and traffic are dealt with before any water moves. Opening slowly avoids pressure surges, flushing continues until the water clears, the residual confirms the fresh water has arrived, and closing slowly prevents water hammer before the job is recorded."
+  },
+  {
+   "id": "oit-process19",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the seven steps for putting a newly installed watermain into service in Ontario.",
+   "topicId": "watermain-disinfection-commissioning",
+   "level": "oit",
+   "assumptions": "Fictional new main that must be cleaned, pressure tested, disinfected, and proven bacteriologically safe before use.",
+   "configuration": "New watermain section being commissioned following Ontario disinfection practice for new mains.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Flush the new main to remove dirt and debris"
+    },
+    {
+     "id": "c2",
+     "label": "Pressure test the main and repair any leaks"
+    },
+    {
+     "id": "c3",
+     "label": "Fill the main with chlorinated water at the target dose"
+    },
+    {
+     "id": "c4",
+     "label": "Hold the chlorinated water in the main for the required contact period"
+    },
+    {
+     "id": "c5",
+     "label": "Flush the main until the chlorine residual matches the distribution system"
+    },
+    {
+     "id": "c6",
+     "label": "Collect bacteriological samples on two consecutive days"
+    },
+    {
+     "id": "c7",
+     "label": "Put the main into service after acceptable sample results"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6",
+    "c7"
+   ],
+   "explanation": "Debris is flushed out and leaks are fixed before disinfection so chlorine is not wasted and soil cannot enter. The chlorinated fill is held for its contact period, flushed down to system residual, and the main only enters service after two days of acceptable bacteriological results."
+  },
+  {
+   "id": "oit-process20",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the seven steps for repairing a watermain break and returning the main to service.",
+   "topicId": "watermain-break-return",
+   "level": "oit",
+   "assumptions": "Fictional break where the main is depressurized, excavated, repaired, disinfected, and sampled before full restoration.",
+   "configuration": "Emergency repair of a broken distribution main on a residential street.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Isolate the break by closing valves and notify affected customers"
+    },
+    {
+     "id": "c2",
+     "label": "Excavate and dewater the work area"
+    },
+    {
+     "id": "c3",
+     "label": "Cut out the damaged section and install the repair section"
+    },
+    {
+     "id": "c4",
+     "label": "Disinfect the repair parts and the exposed main interior"
+    },
+    {
+     "id": "c5",
+     "label": "Refill the main slowly and flush through a hydrant"
+    },
+    {
+     "id": "c6",
+     "label": "Collect a bacteriological sample from the repaired section"
+    },
+    {
+     "id": "c7",
+     "label": "Restore full pressure and return the main to service after acceptable results"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6",
+    "c7"
+   ],
+   "explanation": "Isolating the break stops water loss and limits the affected area before digging starts. The repair is disinfected because the main was open to the environment, then the main is refilled and flushed, and full service waits for an acceptable bacteriological result."
+  },
+  {
+   "id": "oit-process21",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for responding to a frozen residential water service line in winter.",
+   "topicId": "service-thawing-response",
+   "level": "oit",
+   "assumptions": "Fictional response where the operator confirms the freeze location before applying heat and checks for a split pipe afterward.",
+   "configuration": "Frozen service call in an Ontario municipality during a cold snap.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm the freeze is in the service line and not the home plumbing"
+    },
+    {
+     "id": "c2",
+     "label": "Shut off the water at the curb stop or inside the home"
+    },
+    {
+     "id": "c3",
+     "label": "Open the nearest tap to relieve pressure as ice melts"
+    },
+    {
+     "id": "c4",
+     "label": "Apply controlled heat or a thawing machine starting from the tap toward the freeze"
+    },
+    {
+     "id": "c5",
+     "label": "Restore water slowly once flow returns"
+    },
+    {
+     "id": "c6",
+     "label": "Check the service and plumbing for leaks from ice damage"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The freeze location is confirmed first so time is not spent thawing the wrong pipe. Shutting off the water and opening a tap protect against a burst when the ice lets go, heat is worked from the open tap toward the blockage, and the line is checked for splits before the job is closed."
+  },
+  {
+   "id": "oit-process22",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for starting a centrifugal treated water pump that has been out of service.",
+   "topicId": "centrifugal-pump-startup",
+   "level": "oit",
+   "assumptions": "Fictional pump with a flooded suction, a priming requirement, and a discharge valve that is opened gradually.",
+   "configuration": "Horizontal centrifugal pump at a booster station being returned to service after maintenance.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Check that the pump and motor are clear of tools and guards are in place"
+    },
+    {
+     "id": "c2",
+     "label": "Confirm the suction valve is open and the pump casing is primed and vented of air"
+    },
+    {
+     "id": "c3",
+     "label": "Check oil level and rotate the shaft by hand if the design allows"
+    },
+    {
+     "id": "c4",
+     "label": "Start the motor with the discharge valve closed or nearly closed"
+    },
+    {
+     "id": "c5",
+     "label": "Open the discharge valve slowly to the operating position"
+    },
+    {
+     "id": "c6",
+     "label": "Check pressure, flow, vibration, and seal leakage under load"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "A centrifugal pump must be full of water before starting because it cannot pump air, so priming and venting come before the start. Starting against a nearly closed discharge valve limits motor load, the valve is then opened slowly, and the running checks confirm the pump is healthy under load."
+  },
+  {
+   "id": "oit-process23",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six lockout steps before a mechanic opens a pump for maintenance.",
+   "topicId": "lockout-pump-maintenance",
+   "level": "oit",
+   "assumptions": "Fictional lockout following standard Canadian lockout practice for electrical and stored hydraulic energy.",
+   "configuration": "Lockout and tagout of an electrically driven pump with a pressurized discharge line.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Notify affected staff that the pump is being taken out of service"
+    },
+    {
+     "id": "c2",
+     "label": "Shut the pump down and isolate it with suction and discharge valves"
+    },
+    {
+     "id": "c3",
+     "label": "Open the motor disconnect and lock it in the off position"
+    },
+    {
+     "id": "c4",
+     "label": "Apply a tag identifying who locked it out and why"
+    },
+    {
+     "id": "c5",
+     "label": "Drain and bleed off the trapped pressure in the pump casing"
+    },
+    {
+     "id": "c6",
+     "label": "Try starting the pump to verify zero energy before work begins"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "People are warned first so the shutdown surprises no one. The pump is isolated from both power and water, the disconnect is locked and tagged, stored pressure is bled off, and the try start proves the equipment cannot run before anyone opens it."
+  },
+  {
+   "id": "oit-process24",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the seven steps of a permit required confined space entry into a wet well.",
+   "topicId": "confined-space-entry",
+   "level": "oit",
+   "assumptions": "Fictional entry with a trained entrant, an attendant at the surface, atmospheric testing, ventilation, and a rescue plan.",
+   "configuration": "Confined space entry into a wastewater wet well for an inspection, following CCOHS guidance and Ontario confined space rules.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Complete and sign the confined space entry permit"
+    },
+    {
+     "id": "c2",
+     "label": "Test the atmosphere for oxygen, flammable gases, hydrogen sulfide, and carbon monoxide"
+    },
+    {
+     "id": "c3",
+     "label": "Ventilate the space with a blower and retest the atmosphere"
+    },
+    {
+     "id": "c4",
+     "label": "Set up the tripod, harness, and retrieval system"
+    },
+    {
+     "id": "c5",
+     "label": "Station the trained attendant at the entrance with communication"
+    },
+    {
+     "id": "c6",
+     "label": "Entrant enters and performs the work under continuous monitoring"
+    },
+    {
+     "id": "c7",
+     "label": "Entrant exits and the permit is closed out with the space secured"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6",
+    "c7"
+   ],
+   "explanation": "The permit plans the entry before anyone is at risk. Testing shows whether the air is safe, ventilation and retesting make it safe, rescue equipment and the attendant are in place before entry, monitoring continues during the work, and the permit is closed when everyone is out."
+  },
+  {
+   "id": "oit-process25",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for responding to a chlorine gas leak at a treatment plant.",
+   "topicId": "chlorine-gas-leak-response",
+   "level": "oit",
+   "assumptions": "Fictional emergency response where personal safety comes before any attempt to stop the leak.",
+   "configuration": "Chlorine gas leak from a one tonne container in a plant chlorine room.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Raise the alarm and evacuate staff upwind of the leak"
+    },
+    {
+     "id": "c2",
+     "label": "Account for all personnel at the muster point"
+    },
+    {
+     "id": "c3",
+     "label": "Don self contained breathing apparatus and chemical protective clothing"
+    },
+    {
+     "id": "c4",
+     "label": "Enter with a buddy and apply the emergency repair kit to the leak"
+    },
+    {
+     "id": "c5",
+     "label": "Ventilate the area and confirm the chlorine level is safe"
+    },
+    {
+     "id": "c6",
+     "label": "Report the incident and complete the required notifications"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Life safety drives the order: people get out and are accounted for before anyone goes back in. Only trained responders in breathing apparatus attempt the repair kit, and the area is proven safe and the incident reported once the leak is controlled."
+  },
+  {
+   "id": "oit-process26",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six checks an operator makes when receiving a bulk alum delivery.",
+   "topicId": "chemical-delivery-receiving",
+   "level": "oit",
+   "assumptions": "Fictional delivery where the wrong chemical or an overfilled tank would cause a serious incident.",
+   "configuration": "Bulk aluminum sulfate delivery to a surface water plant storage tank.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Verify the delivery paperwork matches the chemical and quantity ordered"
+    },
+    {
+     "id": "c2",
+     "label": "Confirm the correct receiving tank and check its available capacity"
+    },
+    {
+     "id": "c3",
+     "label": "Inspect hoses and connections and confirm the fill line is the alum line"
+    },
+    {
+     "id": "c4",
+     "label": "Put on the required protective equipment and position spill containment"
+    },
+    {
+     "id": "c5",
+     "label": "Connect and start the transfer while staying at the controls"
+    },
+    {
+     "id": "c6",
+     "label": "Disconnect, confirm the delivered volume, and sign the delivery record"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Paperwork and tank capacity are checked before any hose is connected, so the wrong product or an overflow is caught on paper first. Connections are verified against the right fill line, the transfer is attended, and the signed record closes the delivery."
+  },
+  {
+   "id": "oit-process27",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for starting an alum feed system after a shutdown.",
+   "topicId": "alum-feed-startup",
+   "level": "oit",
+   "assumptions": "Fictional feed system with a day tank, a metering pump that needs priming, and a calibration column.",
+   "configuration": "Liquid alum metering pump and feed line to the rapid mix tank, restarted after a weekend shutdown.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Check the alum day tank level and inspect for leaks"
+    },
+    {
+     "id": "c2",
+     "label": "Open the suction and discharge valves on the feed line"
+    },
+    {
+     "id": "c3",
+     "label": "Prime the metering pump and vent air from the pump head"
+    },
+    {
+     "id": "c4",
+     "label": "Start the pump at a low stroke setting"
+    },
+    {
+     "id": "c5",
+     "label": "Draw down the calibration column to confirm the actual feed rate"
+    },
+    {
+     "id": "c6",
+     "label": "Set the pump to the required dose and confirm feed at the injection point"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Chemical must be available and the line open before the pump runs, and metering pumps cannot move liquid until they are primed. Starting low protects against overdosing, the calibration column proves the real rate, and the dose is set only once the rate is verified."
+  },
+  {
+   "id": "oit-process28",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for starting a sodium hypochlorite feed system.",
+   "topicId": "hypochlorite-feed-startup",
+   "level": "oit",
+   "assumptions": "Fictional system with a bulk tank, a metering pump, and a chlorine residual check after startup.",
+   "configuration": "Sodium hypochlorite disinfection feed system at a small groundwater plant.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Check the hypochlorite tank level and the solution strength date"
+    },
+    {
+     "id": "c2",
+     "label": "Inspect the suction line and foot valve for blockages or air leaks"
+    },
+    {
+     "id": "c3",
+     "label": "Prime the metering pump until solution reaches the pump head"
+    },
+    {
+     "id": "c4",
+     "label": "Start the pump and set the initial feed rate"
+    },
+    {
+     "id": "c5",
+     "label": "Confirm solution is discharging at the injection point"
+    },
+    {
+     "id": "c6",
+     "label": "Measure the treated water chlorine residual and adjust the feed rate"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Old hypochlorite loses strength, so the level and date are checked first. The pump is primed and feed is confirmed at the injection point before anyone trusts the setting, and the measured residual is the final proof that the dose is right."
+  },
+  {
+   "id": "oit-process29",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for returning an elevated storage tank to service after inspection and cleaning.",
+   "topicId": "elevated-tank-return",
+   "level": "oit",
+   "assumptions": "Fictional tank that must be disinfected and sampled before it is reconnected to the system.",
+   "configuration": "Elevated tank drained for an internal inspection and washout in an Ontario distribution system.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Complete the inspection and remove all tools, hoses, and debris"
+    },
+    {
+     "id": "c2",
+     "label": "Wash down the interior surfaces"
+    },
+    {
+     "id": "c3",
+     "label": "Disinfect the interior with chlorinated water"
+    },
+    {
+     "id": "c4",
+     "label": "Fill the tank and hold the disinfectant for the required time"
+    },
+    {
+     "id": "c5",
+     "label": "Drain or flush to normal system residual and collect a bacteriological sample"
+    },
+    {
+     "id": "c6",
+     "label": "Return the tank to service after an acceptable sample result"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Everything used inside the tank comes out before washing so nothing is left behind. Disinfection and its holding time follow the cleaning, the tank is brought back to normal residual, and reconnection waits for an acceptable bacteriological result."
+  },
+  {
+   "id": "oit-process30",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for cleaning a clearwell and returning it to service.",
+   "topicId": "clearwell-cleaning-return",
+   "level": "oit",
+   "assumptions": "Fictional clearwell cell that is isolated, drained, cleaned, disinfected, and sampled before reuse.",
+   "configuration": "One cell of a two cell clearwell taken out of service for sediment removal.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Isolate the cell and transfer production to the other cell"
+    },
+    {
+     "id": "c2",
+     "label": "Drain the cell and lock out its inlet and outlet valves"
+    },
+    {
+     "id": "c3",
+     "label": "Enter under confined space procedures and remove the sediment"
+    },
+    {
+     "id": "c4",
+     "label": "Wash and disinfect the cell surfaces"
+    },
+    {
+     "id": "c5",
+     "label": "Refill the cell and collect a bacteriological sample"
+    },
+    {
+     "id": "c6",
+     "label": "Return the cell to service after an acceptable sample result"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Production continues on the other cell while this one is isolated and drained. Entry follows confined space rules because a clearwell is a confined space, and after cleaning and disinfection the cell only returns to service on an acceptable sample."
+  },
+  {
+   "id": "oit-process31",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for taking a sedimentation basin out of service and cleaning it.",
+   "topicId": "sedimentation-basin-cleaning",
+   "level": "oit",
+   "assumptions": "Fictional basin where sludge is removed to the residuals system before staff wash the basin down.",
+   "configuration": "Rectangular sedimentation basin with a sludge collection mechanism, due for a full cleanout.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Transfer flow to the other basin and close the basin inlet"
+    },
+    {
+     "id": "c2",
+     "label": "Stop the sludge collector and lock it out"
+    },
+    {
+     "id": "c3",
+     "label": "Drain the basin to the residuals system"
+    },
+    {
+     "id": "c4",
+     "label": "Remove the settled sludge from the basin floor"
+    },
+    {
+     "id": "c5",
+     "label": "Wash down the walls, weirs, and launders"
+    },
+    {
+     "id": "c6",
+     "label": "Inspect the collector and baffles before refilling the basin"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Flow is moved first so treatment continues and the basin can be emptied safely. The collector is locked out before anyone works near it, sludge and wash water go to residuals, and inspection happens while the basin is empty and accessible."
+  },
+  {
+   "id": "oit-process32",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps of a distribution valve exercising visit.",
+   "topicId": "valve-exercising-procedure",
+   "level": "oit",
+   "assumptions": "Fictional program visit where the valve is located, operated through its full range, and documented.",
+   "configuration": "Annual exercising of a gate valve on a distribution main as part of a valve maintenance program.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Locate the valve and clear debris from the valve box"
+    },
+    {
+     "id": "c2",
+     "label": "Record the valve position found and check the box and cap condition"
+    },
+    {
+     "id": "c3",
+     "label": "Operate the valve slowly toward the closed position while counting turns"
+    },
+    {
+     "id": "c4",
+     "label": "Close the valve fully and note the total number of turns"
+    },
+    {
+     "id": "c5",
+     "label": "Reopen the valve fully to its normal position and recount the turns"
+    },
+    {
+     "id": "c6",
+     "label": "Record the results and any defects in the valve program records"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The box is cleared and the as found position recorded before the valve moves, so changes are traceable. The valve is worked slowly through its full travel in both directions to break up deposits, left in its normal open position, and the visit is documented."
+  },
+  {
+   "id": "oit-process33",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps of a fall hydrant maintenance and winterizing visit.",
+   "topicId": "hydrant-maintenance-winter",
+   "level": "oit",
+   "assumptions": "Fictional visit covering operation, drainage, lubrication, and visibility for winter service.",
+   "configuration": "Dry barrel hydrant being serviced before winter in an Ontario municipality.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Check the hydrant for damage and confirm it is visible and accessible"
+    },
+    {
+     "id": "c2",
+     "label": "Remove the caps and inspect the threads and gaskets"
+    },
+    {
+     "id": "c3",
+     "label": "Open the hydrant briefly and flush until the water runs clear"
+    },
+    {
+     "id": "c4",
+     "label": "Close the hydrant and confirm the barrel drains dry"
+    },
+    {
+     "id": "c5",
+     "label": "Lubricate the operating nut and chains and replace the caps"
+    },
+    {
+     "id": "c6",
+     "label": "Record the service and flag any hydrant that does not drain"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Damage and access are checked before operation. A short flush clears sediment, and for a dry barrel hydrant the critical winter step is confirming the barrel drains empty after closing, because trapped water would freeze and split the barrel."
+  },
+  {
+   "id": "oit-process34",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for replacing a residential water meter inside a home.",
+   "topicId": "water-meter-replacement",
+   "level": "oit",
+   "assumptions": "Fictional replacement where the new meter reading and a leak check close out the job.",
+   "configuration": "Meter change appointment at a home with an inside meter and a customer shut off valve.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Verify the service address and record the final reading on the old meter"
+    },
+    {
+     "id": "c2",
+     "label": "Close the customer shut off valve and confirm the water is off"
+    },
+    {
+     "id": "c3",
+     "label": "Open a downstream tap to drain pressure from the plumbing"
+    },
+    {
+     "id": "c4",
+     "label": "Remove the old meter and install the new meter with new seals"
+    },
+    {
+     "id": "c5",
+     "label": "Open the shut off valve slowly and check the new meter for leaks"
+    },
+    {
+     "id": "c6",
+     "label": "Record the new meter starting reading and seal number"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The old meter final reading is captured before removal so billing is correct. Water is shut off and pressure drained before the meter is broken loose, and the new installation is proven with a slow refill, a leak check, and the recorded starting reading."
+  },
+  {
+   "id": "oit-process35",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for restarting a booster pump station after a power outage.",
+   "topicId": "booster-station-restart",
+   "level": "oit",
+   "assumptions": "Fictional restart where surge control and pressure checks protect the distribution system.",
+   "configuration": "Distribution booster station that lost power during a storm and is being restarted.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm power is restored and stable and check for alarms or damage"
+    },
+    {
+     "id": "c2",
+     "label": "Verify wet well or suction supply level is normal"
+    },
+    {
+     "id": "c3",
+     "label": "Reset the pump controls and clear the fault alarms"
+    },
+    {
+     "id": "c4",
+     "label": "Start one pump and open its discharge valve slowly"
+    },
+    {
+     "id": "c5",
+     "label": "Check discharge pressure and confirm the pressure zone is recovering"
+    },
+    {
+     "id": "c6",
+     "label": "Start additional pumps as needed and return the station to automatic control"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Power quality and station condition are confirmed before any pump runs. Starting one pump at a time with a slow valve opening limits pressure surges, and the station goes back to automatic only after pressures prove the restart is stable."
+  },
+  {
+   "id": "oit-process36",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six response steps when filtered water turbidity rises above the plant limit at a surface water plant.",
+   "topicId": "filtered-turbidity-exceedance",
+   "level": "oit",
+   "assumptions": "Fictional response covering verification of the reading, filter action, notification, and sampling duties.",
+   "configuration": "Filtered water turbidity exceedance at a membrane or conventional filtration plant reporting under Ontario Regulation 170/03.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Verify the reading by checking the turbidimeter and a grab sample"
+    },
+    {
+     "id": "c2",
+     "label": "Take the affected filter out of service or reduce its rate"
+    },
+    {
+     "id": "c3",
+     "label": "Inspect the filter and recent backwash and chemical feed records"
+    },
+    {
+     "id": "c4",
+     "label": "Notify the supervisor and the responsible operator in charge"
+    },
+    {
+     "id": "c5",
+     "label": "Collect the required samples and increase monitoring frequency"
+    },
+    {
+     "id": "c6",
+     "label": "Make the required reports to the Ministry and the local health unit if the result is adverse"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The reading is verified first because a fouled instrument can mimic an exceedance. The affected filter is dealt with next to protect finished water, supervision is brought in, sampling and monitoring increase, and regulatory reporting follows once the event is confirmed adverse."
+  },
+  {
+   "id": "oit-process37",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps after a drinking water test result is confirmed as adverse in Ontario.",
+   "topicId": "adverse-water-quality-reporting",
+   "level": "oit",
+   "assumptions": "Fictional adverse total coliform result from a distribution sample, with verbal and written notice duties.",
+   "configuration": "Adverse water quality incident at a municipal residential drinking water system under Ontario Regulation 170/03.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm the adverse result with the laboratory"
+    },
+    {
+     "id": "c2",
+     "label": "Give verbal notice to the local health unit and the Ministry Spills Action Centre"
+    },
+    {
+     "id": "c3",
+     "label": "Notify the system owner and the responsible operator in charge"
+    },
+    {
+     "id": "c4",
+     "label": "Collect repeat and upstream and downstream check samples as directed"
+    },
+    {
+     "id": "c5",
+     "label": "Take corrective action such as flushing or raising the chlorine residual"
+    },
+    {
+     "id": "c6",
+     "label": "Provide the written adverse notice and later the notice of resolution"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The result is confirmed first so a reporting chain is not started on a laboratory error. Verbal notice is immediate because health decisions may follow, corrective action and resampling happen under direction, and the written notices document the event and its resolution."
+  },
+  {
+   "id": "oit-process38",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for verifying an online chlorine analyzer against a grab sample.",
+   "topicId": "chlorine-analyzer-verification",
+   "level": "oit",
+   "assumptions": "Fictional verification using a DPD grab sample measured beside the analyzer sampling point.",
+   "configuration": "Online free chlorine analyzer on a clearwell outlet being checked during a daily rounds visit.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Collect a grab sample from the analyzer sample tap"
+    },
+    {
+     "id": "c2",
+     "label": "Measure the grab sample free chlorine with a calibrated DPD colorimeter"
+    },
+    {
+     "id": "c3",
+     "label": "Compare the grab result with the analyzer reading shown on SCADA"
+    },
+    {
+     "id": "c4",
+     "label": "Check the analyzer sample flow and reagent or sensor condition if the readings differ"
+    },
+    {
+     "id": "c5",
+     "label": "Adjust or calibrate the analyzer following the manufacturer procedure"
+    },
+    {
+     "id": "c6",
+     "label": "Record both readings and any adjustment in the log"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The grab sample must come from the same water the analyzer sees, so it is taken at the analyzer tap. The comparison identifies whether there is a problem, the sample flow and sensor are checked before anything is adjusted, and the record shows the analyzer was verified."
+  },
+  {
+   "id": "oit-process39",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for calibrating a bench turbidimeter with prepared standards.",
+   "topicId": "turbidimeter-calibration",
+   "level": "oit",
+   "assumptions": "Fictional calibration following the standard practice of starting with the lowest standard after the instrument warms up.",
+   "configuration": "Bench turbidimeter calibration in a plant laboratory using sealed turbidity standards.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Turn on the turbidimeter and let it warm up and self check"
+    },
+    {
+     "id": "c2",
+     "label": "Rinse and fill a clean sample cell with the lowest turbidity standard"
+    },
+    {
+     "id": "c3",
+     "label": "Insert the standard and set the zero or lowest calibration point"
+    },
+    {
+     "id": "c4",
+     "label": "Repeat with each higher standard in increasing order"
+    },
+    {
+     "id": "c5",
+     "label": "Verify the calibration with an independent check standard"
+    },
+    {
+     "id": "c6",
+     "label": "Record the calibration results and the standard lot numbers"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The instrument must be warmed up before its readings are trusted. Standards are run from lowest to highest so carryover from a strong standard cannot bias a weak one, an independent standard verifies the work, and the record ties the calibration to the standards used."
+  },
+  {
+   "id": "oit-process40",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six stages that filter backwash water follows through the residuals handling system.",
+   "topicId": "residuals-handling-path",
+   "level": "oit",
+   "assumptions": "Fictional residuals train ending in dewatered solids disposal and returned supernatant.",
+   "configuration": "Residuals system at a surface water plant handling backwash water and sedimentation basin sludge.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Backwash water and basin sludge drain to the residuals equalization tank"
+    },
+    {
+     "id": "c2",
+     "label": "Solids settle in the residuals thickener"
+    },
+    {
+     "id": "c3",
+     "label": "Thickened solids are pumped to dewatering"
+    },
+    {
+     "id": "c4",
+     "label": "Dewatered cake is hauled away for disposal"
+    },
+    {
+     "id": "c5",
+     "label": "Supernatant is drawn off the thickener"
+    },
+    {
+     "id": "c6",
+     "label": "Supernatant is returned to the head of the plant for retreatment"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Waste streams are equalized first so the thickener is not hydraulically shocked. Gravity thickening concentrates the solids for dewatering and disposal, while the clarified supernatant is not wasted; it returns to the plant inlet to be treated again."
+  },
+  {
+   "id": "oit-process41",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six stages of a lime soda ash softening plant from raw water to finished water.",
+   "topicId": "lime-softening-train",
+   "level": "oit",
+   "assumptions": "Fictional plant where hardness precipitates as sludge and the softened water is stabilized before filtration.",
+   "configuration": "Lime softening plant treating hard groundwater in a solids contact clarifier arrangement.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Raw water enters the solids contact clarifier"
+    },
+    {
+     "id": "c2",
+     "label": "Lime and soda ash are added and rapidly mixed"
+    },
+    {
+     "id": "c3",
+     "label": "Hardness precipitates and settles as sludge in the clarifier"
+    },
+    {
+     "id": "c4",
+     "label": "Softened water is recarbonated with carbon dioxide to stabilize it"
+    },
+    {
+     "id": "c5",
+     "label": "Stabilized water is filtered"
+    },
+    {
+     "id": "c6",
+     "label": "Filtered water is disinfected and sent to storage"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The softening chemicals must be mixed in before precipitation can occur, and the precipitate settles in the same clarifier. Recarbonation comes after softening to lower the pH and stop scale forming downstream, then filtration and disinfection finish the water."
+  },
+  {
+   "id": "oit-process42",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six stages of a slow sand filtration plant from raw water to distribution.",
+   "topicId": "slow-sand-filtration-train",
+   "level": "oit",
+   "assumptions": "Fictional plant relying on the biological layer that forms on top of the sand bed.",
+   "configuration": "Slow sand filter plant serving a small community on a protected surface water source.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Raw water passes a coarse screen at the intake"
+    },
+    {
+     "id": "c2",
+     "label": "Raw water is held in a presedimentation or roughing stage"
+    },
+    {
+     "id": "c3",
+     "label": "Water flows slowly down through the slow sand filter and its biological layer"
+    },
+    {
+     "id": "c4",
+     "label": "Filtered water is collected in the underdrain system"
+    },
+    {
+     "id": "c5",
+     "label": "Filtered water is disinfected"
+    },
+    {
+     "id": "c6",
+     "label": "Treated water flows to storage and distribution"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Coarse screening and presedimentation protect the slow sand bed from heavy solids that would clog it quickly. The slow downward pass through the biological layer does the main treatment, and disinfection and storage follow collection."
+  }
+ ],
+ "missions": [
+  {
+   "id": "oit-mission44",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 44: The Chemical Dose Shift",
+   "tasks": [
+    {
+     "taskId": "oit-error62",
+     "revision": "r1",
+     "occurrenceId": "m44-t1"
+    },
+    {
+     "taskId": "oit-process05",
+     "revision": "r1",
+     "occurrenceId": "m44-t2"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission45",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 45: The Groundwater Iron Removal Shift",
+   "tasks": [
+    {
+     "taskId": "oit-process06",
+     "revision": "r1",
+     "occurrenceId": "m45-t1"
+    },
+    {
+     "taskId": "oit-error63",
+     "revision": "r1",
+     "occurrenceId": "m45-t2"
+    },
+    {
+     "taskId": "oit-error64",
+     "revision": "r1",
+     "occurrenceId": "m45-t3"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission46",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 46: The Svi Shift",
+   "tasks": [
+    {
+     "taskId": "oit-error65",
+     "revision": "r1",
+     "occurrenceId": "m46-t1"
+    },
+    {
+     "taskId": "oit-process07",
+     "revision": "r1",
+     "occurrenceId": "m46-t2"
+    },
+    {
+     "taskId": "oit-error66",
+     "revision": "r1",
+     "occurrenceId": "m46-t3"
+    },
+    {
+     "taskId": "oit-error67",
+     "revision": "r1",
+     "occurrenceId": "m46-t4"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission47",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 47: The Membrane Filtration Train Shift",
+   "tasks": [
+    {
+     "taskId": "oit-process08",
+     "revision": "r1",
+     "occurrenceId": "m47-t1"
+    },
+    {
+     "taskId": "oit-error68",
+     "revision": "r1",
+     "occurrenceId": "m47-t2"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission48",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 48: The Srt Shift",
+   "tasks": [
+    {
+     "taskId": "oit-error69",
+     "revision": "r1",
+     "occurrenceId": "m48-t1"
+    },
+    {
+     "taskId": "oit-process09",
+     "revision": "r1",
+     "occurrenceId": "m48-t2"
+    },
+    {
+     "taskId": "oit-error70",
+     "revision": "r1",
+     "occurrenceId": "m48-t3"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission49",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 49: The Chlorine Ct Compliance Shift",
+   "tasks": [
+    {
+     "taskId": "oit-process10",
+     "revision": "r1",
+     "occurrenceId": "m49-t1"
+    },
+    {
+     "taskId": "oit-error71",
+     "revision": "r1",
+     "occurrenceId": "m49-t2"
+    },
+    {
+     "taskId": "oit-error72",
+     "revision": "r1",
+     "occurrenceId": "m49-t3"
+    },
+    {
+     "taskId": "oit-error73",
+     "revision": "r1",
+     "occurrenceId": "m49-t4"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission50",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 50: The Wet Well Shift",
+   "tasks": [
+    {
+     "taskId": "oit-error74",
+     "revision": "r1",
+     "occurrenceId": "m50-t1"
+    },
+    {
+     "taskId": "oit-process100",
+     "revision": "r1",
+     "occurrenceId": "m50-t2"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission51",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 51: The Filter Backwash Sequence Shift",
+   "tasks": [
+    {
+     "taskId": "oit-process11",
+     "revision": "r1",
+     "occurrenceId": "m51-t1"
+    },
+    {
+     "taskId": "oit-error75",
+     "revision": "r1",
+     "occurrenceId": "m51-t2"
+    },
+    {
+     "taskId": "oit-error76",
+     "revision": "r1",
+     "occurrenceId": "m51-t3"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission52",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 52: The Force Main Velocity Shift",
+   "tasks": [
+    {
+     "taskId": "oit-error77",
+     "revision": "r1",
+     "occurrenceId": "m52-t1"
+    },
+    {
+     "taskId": "oit-process12",
+     "revision": "r1",
+     "occurrenceId": "m52-t2"
+    },
+    {
+     "taskId": "oit-error78",
+     "revision": "r1",
+     "occurrenceId": "m52-t3"
+    },
+    {
+     "taskId": "oit-error79",
+     "revision": "r1",
+     "occurrenceId": "m52-t4"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission53",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 53: The Jar Test Procedure Shift",
+   "tasks": [
+    {
+     "taskId": "oit-process13",
+     "revision": "r1",
+     "occurrenceId": "m53-t1"
+    },
+    {
+     "taskId": "oit-error80",
+     "revision": "r1",
+     "occurrenceId": "m53-t2"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission54",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 54: The Grit Detention Shift",
+   "tasks": [
+    {
+     "taskId": "oit-error81",
+     "revision": "r1",
+     "occurrenceId": "m54-t1"
+    },
+    {
+     "taskId": "oit-process14",
+     "revision": "r1",
+     "occurrenceId": "m54-t2"
+    },
+    {
+     "taskId": "oit-error82",
+     "revision": "r1",
+     "occurrenceId": "m54-t3"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission55",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 55: The Turbidity Sampling Shift",
+   "tasks": [
+    {
+     "taskId": "oit-process15",
+     "revision": "r1",
+     "occurrenceId": "m55-t1"
+    },
+    {
+     "taskId": "oit-error83",
+     "revision": "r1",
+     "occurrenceId": "m55-t2"
+    },
+    {
+     "taskId": "oit-error84",
+     "revision": "r1",
+     "occurrenceId": "m55-t3"
+    },
+    {
+     "taskId": "oit-error85",
+     "revision": "r1",
+     "occurrenceId": "m55-t4"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission56",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 56: The Sludge Mass Shift",
+   "tasks": [
+    {
+     "taskId": "oit-error86",
+     "revision": "r1",
+     "occurrenceId": "m56-t1"
+    },
+    {
+     "taskId": "oit-process16",
+     "revision": "r1",
+     "occurrenceId": "m56-t2"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission57",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 57: The Lead Sampling Ontario Shift",
+   "tasks": [
+    {
+     "taskId": "oit-process17",
+     "revision": "r1",
+     "occurrenceId": "m57-t1"
+    },
+    {
+     "taskId": "oit-error87",
+     "revision": "r1",
+     "occurrenceId": "m57-t2"
+    },
+    {
+     "taskId": "oit-error88",
+     "revision": "r1",
+     "occurrenceId": "m57-t3"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission58",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 58: The Wet Well Shift",
+   "tasks": [
+    {
+     "taskId": "oit-error89",
+     "revision": "r1",
+     "occurrenceId": "m58-t1"
+    },
+    {
+     "taskId": "oit-process18",
+     "revision": "r1",
+     "occurrenceId": "m58-t2"
+    },
+    {
+     "taskId": "oit-error90",
+     "revision": "r1",
+     "occurrenceId": "m58-t3"
+    },
+    {
+     "taskId": "oit-error91",
+     "revision": "r1",
+     "occurrenceId": "m58-t4"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission59",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 59: The Watermain Disinfection Commissioning Shift",
+   "tasks": [
+    {
+     "taskId": "oit-process19",
+     "revision": "r1",
+     "occurrenceId": "m59-t1"
+    },
+    {
+     "taskId": "oit-error92",
+     "revision": "r1",
+     "occurrenceId": "m59-t2"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission60",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 60: The Bod Loading Shift",
+   "tasks": [
+    {
+     "taskId": "oit-error93",
+     "revision": "r1",
+     "occurrenceId": "m60-t1"
+    },
+    {
+     "taskId": "oit-process20",
+     "revision": "r1",
+     "occurrenceId": "m60-t2"
+    },
+    {
+     "taskId": "oit-error94",
+     "revision": "r1",
+     "occurrenceId": "m60-t3"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission61",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 61: The Service Thawing Response Shift",
+   "tasks": [
+    {
+     "taskId": "oit-process21",
+     "revision": "r1",
+     "occurrenceId": "m61-t1"
+    },
+    {
+     "taskId": "oit-error95",
+     "revision": "r1",
+     "occurrenceId": "m61-t2"
+    },
+    {
+     "taskId": "oit-error96",
+     "revision": "r1",
+     "occurrenceId": "m61-t3"
+    },
+    {
+     "taskId": "oit-error97",
+     "revision": "r1",
+     "occurrenceId": "m61-t4"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission62",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 62: The Srt Shift",
+   "tasks": [
+    {
+     "taskId": "oit-error98",
+     "revision": "r1",
+     "occurrenceId": "m62-t1"
+    },
+    {
+     "taskId": "oit-process22",
+     "revision": "r1",
+     "occurrenceId": "m62-t2"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission63",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 63: The Lockout Pump Maintenance Shift",
+   "tasks": [
+    {
+     "taskId": "oit-process23",
+     "revision": "r1",
+     "occurrenceId": "m63-t1"
+    },
+    {
+     "taskId": "oit-error99",
+     "revision": "r1",
+     "occurrenceId": "m63-t2"
+    },
+    {
+     "taskId": "oit-error62",
+     "revision": "r1",
+     "occurrenceId": "m63-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "hb-p176",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "PDF p. 176 (printed p. 125), Section 6.4.3 Area and Volume"
+  },
+  {
+   "id": "hb-p182",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "PDF p. 182 (printed p. 131), Section 6.4.8.1 Hydraulic Detention Time"
+  },
+  {
+   "id": "hb-p510",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "PDF p. 510 (printed p. 459), Section 13.4.1 Solids & Color"
+  },
+  {
+   "id": "hb-p674",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "PDF p. 674 (printed p. 623), Section 20.5 Pretreatment & 20.5.1 Aeration"
+  },
+  {
+   "id": "hb-p683",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "PDF p. 683 (printed p. 632), Figure 20.3 Coagulation"
+  },
+  {
+   "id": "hb-p685",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "PDF p. 685 (printed p. 634), Figure 20.5 Flocculation & Section 20.8 Sedimentation"
+  },
+  {
+   "id": "hb-p686",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "PDF p. 686 (printed p. 635), Section 20.9 Filtration"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "bad3ef6e9b257cad0bd9cbba5bbb47d530d007dd056469cbf35431783ac0a78f",
+  "taskReceipts": [
+   {
+    "taskId": "oit-error62",
+    "revision": "r1",
+    "sha256": "68f18fcc0b42becfb219faacad8183171525f5b810ef341cf3debb4771343b2e",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error63",
+    "revision": "r1",
+    "sha256": "25b42544fb046e1f262ea2b43921a8625d2a2eaea616db227a44de5d833aaf02",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error64",
+    "revision": "r1",
+    "sha256": "6389adc840f1c515e2760ac359d86081a3689290967acd0a0c1748e04acb2d3c",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error65",
+    "revision": "r1",
+    "sha256": "f257c1163651b5b6489db37a17064a70954a7dd77e128ae546f84e1bb20bc15b",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error66",
+    "revision": "r1",
+    "sha256": "949fea2ed9b3738e9a734ac1c75c92fd3ed01c91ae5ddf2ce738788e730d0df8",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error67",
+    "revision": "r1",
+    "sha256": "62f233fc16d6a9da3807c7f5c077fda7e4a07e0f383c41852ffe61356e53663b",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error68",
+    "revision": "r1",
+    "sha256": "b8bb7a973fc9484ec94489788203965d56ee8cc7cfce0745fdd808f4ea6663b2",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error69",
+    "revision": "r1",
+    "sha256": "fd391fdd5bddd96e01534c5ab9a49faa8cfb74eeb338d43a684107e51bef1839",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error70",
+    "revision": "r1",
+    "sha256": "557ec6e42d12046f64b88b527c0b4f771a88122fba7c0fc8d6a21aab40558407",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error71",
+    "revision": "r1",
+    "sha256": "92737be1f0fffb41c774e44b39789bf4ee365a277ddc665fc08552f55bc9cabf",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error72",
+    "revision": "r1",
+    "sha256": "579bcc080f2fdd53726ab00bf31a4d812fe17fcb8e9e5a01c18d07ab2025c6d1",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error73",
+    "revision": "r1",
+    "sha256": "b576493ce490a1833cac5bad9083c347ba4fb5b32841263ed11a6bf782ac66d9",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error74",
+    "revision": "r1",
+    "sha256": "f9a14cf5640008a291c5ebac0730a6dfe7c14eb14b38c78275aa936cf68aa463",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error75",
+    "revision": "r1",
+    "sha256": "ff7a1d4ca26f4e38e483cc5bf98ddb696a49a82a92009d5ac4da0eba23713c59",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error76",
+    "revision": "r1",
+    "sha256": "28022bbef28f0f309aa39968b19e2e773ed531b56b07b1c7a735175e893364cf",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error77",
+    "revision": "r1",
+    "sha256": "3b17e3bc4a8f958dfb886b4f5e4005500c4cc0a12428f1b78921962fa16bedde",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error78",
+    "revision": "r1",
+    "sha256": "20283bd96b3cbda727bf1f2bab8cfa38133f85da53242e2601f92647c4241615",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error79",
+    "revision": "r1",
+    "sha256": "8c4c89f39edcb8c37253343f823f03f8a62d3c4535abb9f29b72582037db9f03",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error80",
+    "revision": "r1",
+    "sha256": "51d6e7cf5f7949dd25adad1f84649a08366694ea44f10556ab66cdb801bf48af",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error81",
+    "revision": "r1",
+    "sha256": "6d5b602408520f874283c2501113b3db7d2286bbf2283226959aff8b16b97bf5",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error82",
+    "revision": "r1",
+    "sha256": "2fbb9f495d307b6ca03789b12c8e6aa1d4b3d480b770be70f60603c9d63f8929",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error83",
+    "revision": "r1",
+    "sha256": "3c397c8790a3661e06f71cd039e481cf1ea86d81af2ed23187b8a0f081efaf02",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error84",
+    "revision": "r1",
+    "sha256": "f661fe58490cbf53a558ada2c8ee305fb150294e5a21013e8a5056aeac41460c",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error85",
+    "revision": "r1",
+    "sha256": "19e73088cf36d73616fa5922fa61e1d6fe3b2b314a40f0d4572ba9b47f8482a1",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error86",
+    "revision": "r1",
+    "sha256": "e4e0b9048206d7b4dcf4e93f5919d502b23fc1401d33687408c7588a6d153626",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error87",
+    "revision": "r1",
+    "sha256": "2fdee006d2901c01b242fe97cfc4908530781dc5826417303dc183f059a3c391",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error88",
+    "revision": "r1",
+    "sha256": "b52e6c70c8d8012b6eaf2e9fded7ab0585cf36a95edb6f3a4fdc482fb90fe698",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error89",
+    "revision": "r1",
+    "sha256": "393aca953983a64d24635d59e54e51616ad727fc9a884279795e22298f6642a6",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error90",
+    "revision": "r1",
+    "sha256": "1e2cea8f84fb64bac3478b5a92cff7d3e992e9581daa320b333c2e198f9e0b6d",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error91",
+    "revision": "r1",
+    "sha256": "0b9fc3f5de8d81c4dd41a988474ecba9b4beda5cacd18ec08c9d78ed1ae4fd43",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error92",
+    "revision": "r1",
+    "sha256": "4702caf6462ea5032c3cca44432d2ea06cf301b948c3d2a19bf2b2bb50dfc0ad",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error93",
+    "revision": "r1",
+    "sha256": "5bb52ce9768e3688accd7dc59ac98f11a029078c50f5cc08adcfeb8004912677",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error94",
+    "revision": "r1",
+    "sha256": "7407cacd1e9092041921bfa163c47b07d4cf8380e1840da57aac0884948c485d",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error95",
+    "revision": "r1",
+    "sha256": "39891fb806311887849f6b95067c6dcaac733f49ed03b384de6c19c445e697a7",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error96",
+    "revision": "r1",
+    "sha256": "5da9448c125b3f82fd36312b34edb98a98e7071d9c3d7b6924e6c1c2cb6d61e7",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error97",
+    "revision": "r1",
+    "sha256": "4341160b6b66f47aa5b444113570626d4089cfa812645293f42b871d9676a7ad",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error98",
+    "revision": "r1",
+    "sha256": "44957790f5a988fa8a63f21bb9e2dbe4af31301f793aa1379cf7d9ef8898fafa",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error99",
+    "revision": "r1",
+    "sha256": "277461bc7460846c6ac44f54b0de7da959b7b514a54e28c54afbf535e6283001",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process05",
+    "revision": "r1",
+    "sha256": "6bc2bdeb0e204da7f2e212a80f606d87a40cf59500a5ca038df422855a5d7036",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process06",
+    "revision": "r1",
+    "sha256": "e3c05d64c0620f5519a2b04b157efca72e0b95e952e5d0d2fabc28103745790f",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process07",
+    "revision": "r1",
+    "sha256": "b958f1739566d70865c80d5757029c311cff665f6150ba288186348dba8bacdf",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process08",
+    "revision": "r1",
+    "sha256": "567bc9ea4c92f6a3f5cfca586947d646d293d358082e8a6896fe5f71b4ea4ca0",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process09",
+    "revision": "r1",
+    "sha256": "3eb101ccf5ddfebe48ca09d395dbee16d421742b6e20c0f8f7ce6634d2ce626e",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process10",
+    "revision": "r1",
+    "sha256": "2c07bd21d6bbff453a085a5f104a144abdf2771eb9c06a3049039560db6d5ca5",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process100",
+    "revision": "r1",
+    "sha256": "201f95cfa08df3fed512572d2b6998599e7d6d505dfb9e01d35b0ce2dd6105c7",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process11",
+    "revision": "r1",
+    "sha256": "01962fab1db3c59db01da82ce2a19579e01c261d8b2b40e371e262472d0de122",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process12",
+    "revision": "r1",
+    "sha256": "4fc277fae0dc2f891f0f8763781617616326e0ddb66599e6a4afb457bb65b0ca",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process13",
+    "revision": "r1",
+    "sha256": "8348be8151a864b63629b07c2545cdbbd21d3e892b563e5e240ed872b6f0544d",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process14",
+    "revision": "r1",
+    "sha256": "54aaf358a80d8668abb56c88c98601562670a39b5e43d9c9fc750dd4be179be6",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process15",
+    "revision": "r1",
+    "sha256": "2082c913c13f4923a84737971833f694ac6a4feb876b84977ef56958b2b11603",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process16",
+    "revision": "r1",
+    "sha256": "c53558b50284faac33d0fb270f3cef10ef1ad8c148f0a51c8d6e7655736cd419",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process17",
+    "revision": "r1",
+    "sha256": "68a4447cc854a0c9a0ff7f177aa5e972b849b15e7f90c6f78bde2e515d6f65b0",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process18",
+    "revision": "r1",
+    "sha256": "9b17346eba2c9e7dbb709c7482cdea0596ed4b83f7ebdf5a1eda9ae33f19842a",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process19",
+    "revision": "r1",
+    "sha256": "9fa32fcdbce165fd154b95b2ecccdbdbab9919515af1fb5847a3043cb253e039",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process20",
+    "revision": "r1",
+    "sha256": "6f7a861c7f0d066726d9e0c42e9cb7f16dd28e1dc13c0fc17e6ea08719499a21",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process21",
+    "revision": "r1",
+    "sha256": "98c2c1db122721a2d1183f4ef8647a87b93ec846d7e224721f37c0395770bc29",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process22",
+    "revision": "r1",
+    "sha256": "909a9cb83633d922ff3c1cb4a4da26337bc759af60c2b78f87dfe431532329c6",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process23",
+    "revision": "r1",
+    "sha256": "260af966b33522a974376160353a978b9be3cb80ffefa8cea14e9db8f74ad805",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process24",
+    "revision": "r1",
+    "sha256": "da341fcf277b3da14510a3f8303deaf42334cd449201204ba590cc242e3db76f",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process25",
+    "revision": "r1",
+    "sha256": "f996b811809af5288fab427a3f9e552c21a20a976ad1a73ac719e111501f38c8",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process26",
+    "revision": "r1",
+    "sha256": "ca26b7b17f12d156861e44fd36b979ba7f657c5ccb0b545d759a5609ff15306b",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process27",
+    "revision": "r1",
+    "sha256": "a6a70576318d5eb5918d52153fce658f5c2c70c7d9cfd1ddcb7dee6f2084c1aa",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process28",
+    "revision": "r1",
+    "sha256": "7d0319c915c6f1b7676d138819b57dcdc0d09782283641467b7af3f19e4d6c8f",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process29",
+    "revision": "r1",
+    "sha256": "93972a1412ba14601ce81a446e0dc6d86d39de38ea7d46babe90a6698b12aade",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process30",
+    "revision": "r1",
+    "sha256": "292a4af2df64adbf132d111dd0b62557ff3fd050c4a3e6ac6f5f5cc9929a1599",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process31",
+    "revision": "r1",
+    "sha256": "e067e94066761f6ea56cc8b4b50f8e570e5748ed32558b11ef08f7200f5e420a",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process32",
+    "revision": "r1",
+    "sha256": "740fe6e77b0f3a711bedba482e91474e996d4732aa83456d0c70e728fec7e136",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process33",
+    "revision": "r1",
+    "sha256": "4b122e4554e9ac7cb19b38cf430e5a301fdeb2b26af7a454a0c05683fb74b1c3",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process34",
+    "revision": "r1",
+    "sha256": "c5048cf338811b0927befc1f9fcd32aa2e09d78beea0baff2a0e5d6220bd9651",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process35",
+    "revision": "r1",
+    "sha256": "e48870dbe558bebcdbe5a33000393789d1ceff2792519fed8ff2c14e774e7899",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process36",
+    "revision": "r1",
+    "sha256": "f03166ea9883f5c57f00a7bad4534a92dbde896d01d7fba113bb7e96af4805cd",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process37",
+    "revision": "r1",
+    "sha256": "add9eaab1a0cf43b0cb18e1cb4ba045978ca2da7a4219741458472a1bd0d3413",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process38",
+    "revision": "r1",
+    "sha256": "7a00b53fb6ae32901bb7cbac3b51f4ca4f5e84a9d3bfd5548a3125b4e898d3fc",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process39",
+    "revision": "r1",
+    "sha256": "bb7e9c0dc3ddb5c3b613ceb8e782022f5965f701d51fd76dc502cb84743d46c2",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process40",
+    "revision": "r1",
+    "sha256": "49cddc3df2120677a8c4765f963f34bf41213c07fcacc09423d6aee62e68208f",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process41",
+    "revision": "r1",
+    "sha256": "b3c10cab8749528b5629eaf2d9f67bdb83b58c2f1f21ee83e9eb53e8cd43b3d6",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process42",
+    "revision": "r1",
+    "sha256": "2fa33ce51d36d1f39846661e18a04ab524cc7f793c3022380ab8fbb7f30bf4dd",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "oit-mission44",
+    "revision": "r1",
+    "sha256": "62ae948c8e13401fc54e8d4bdb9706b70acd33f261d8fdf8af7c5cc689c3860e"
+   },
+   {
+    "missionId": "oit-mission45",
+    "revision": "r1",
+    "sha256": "aa63ae418c9454f98f881afcc1f434484ffc8b9ac709e6d0b06b54b2935bc5b6"
+   },
+   {
+    "missionId": "oit-mission46",
+    "revision": "r1",
+    "sha256": "ff0da1d5ff390fba6bab2659fe6dd80359ac8c2842544e0377959fce4622c9ed"
+   },
+   {
+    "missionId": "oit-mission47",
+    "revision": "r1",
+    "sha256": "394c35c6e16bde1dd743689bbc8f373c3bc6a18ba5c3adbb5d3ebab288f747c2"
+   },
+   {
+    "missionId": "oit-mission48",
+    "revision": "r1",
+    "sha256": "05a2ec9ede66ac8a68a7dfa462df2fc0746496c1f41fb57045349dbadcd3b9e2"
+   },
+   {
+    "missionId": "oit-mission49",
+    "revision": "r1",
+    "sha256": "8bbb3b255da93088c7e3e2e7724e02b97498c5077aa5ab3b41fe464a4dfd4b40"
+   },
+   {
+    "missionId": "oit-mission50",
+    "revision": "r1",
+    "sha256": "45dc27e0e53eb542df3127d3500801b3e7d0ff72e230de37f2af53d3f08c99c4"
+   },
+   {
+    "missionId": "oit-mission51",
+    "revision": "r1",
+    "sha256": "129002fd926dd94492dcbe7f5d4f2b9a52dc0adf3a1c2fe5dabb1fb7d89e1064"
+   },
+   {
+    "missionId": "oit-mission52",
+    "revision": "r1",
+    "sha256": "39459f0e59d6f0ed36af0c9119cd99cc8fb777574e2a2286ab0a547815d02af1"
+   },
+   {
+    "missionId": "oit-mission53",
+    "revision": "r1",
+    "sha256": "a7f494b705214322b913efdf0137c0970d0b300f962242964e6e38f1c96ad71e"
+   },
+   {
+    "missionId": "oit-mission54",
+    "revision": "r1",
+    "sha256": "3a96a8b60d39d6d6ccb771c539a4452f5ca2e3d031e6f5ea2d747524e51f3570"
+   },
+   {
+    "missionId": "oit-mission55",
+    "revision": "r1",
+    "sha256": "f8aa3ded213905faa3e5027fe1da26157b3d5d2baeb4870e281899fbe52bbd2f"
+   },
+   {
+    "missionId": "oit-mission56",
+    "revision": "r1",
+    "sha256": "bc93f4e3d515863442291131b7fcac728bccbfb8a76eb43cc1db82db7a7b88ed"
+   },
+   {
+    "missionId": "oit-mission57",
+    "revision": "r1",
+    "sha256": "b54487d39533310b13e58f5e2cbdbc2c4ca026f0aadae78a8de90f9e77cd482d"
+   },
+   {
+    "missionId": "oit-mission58",
+    "revision": "r1",
+    "sha256": "068f57e87d7da06c9ad2d3ba7c5a495054b93a99e841c57265192169fdfc531f"
+   },
+   {
+    "missionId": "oit-mission59",
+    "revision": "r1",
+    "sha256": "deefb8d06c1ae5febfec607f489f4f84cbdfa734bbdb7f15d52a0c5a8c4ed358"
+   },
+   {
+    "missionId": "oit-mission60",
+    "revision": "r1",
+    "sha256": "cf9dcb45d718b725770e671f19e36f96fcf8a1893e336e37fd8ede49e037bd62"
+   },
+   {
+    "missionId": "oit-mission61",
+    "revision": "r1",
+    "sha256": "a6fb4c614a07de891753c7370d8bdda2b154858ab194a881e2b6e7787a6676e7"
+   },
+   {
+    "missionId": "oit-mission62",
+    "revision": "r1",
+    "sha256": "e9ade1bd3c4c661a71fd5d50084ed2ecbc643d9de9f59436b88602ef4b5698f1"
+   },
+   {
+    "missionId": "oit-mission63",
+    "revision": "r1",
+    "sha256": "3580068df629d06bd2b42b2064f63125bc4236ee7686159988dd6af09f3a4783"
+   }
+  ]
+ }
+}

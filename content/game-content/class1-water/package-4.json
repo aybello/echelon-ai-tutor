@@ -1,0 +1,4136 @@
+{
+ "courseKey": "class1-water",
+ "version": "deep-20261121-v3",
+ "tasks": [
+  {
+   "id": "c1w-error62",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in converting a flow of 300 L/min to L/s.",
+   "topicId": "hydraulics-flow-conversion",
+   "level": "class1",
+   "assumptions": "Fictional flow conversion: Q = 300 L/min, 60 s = 1 min. Target unit: L/s.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Conversion: divide by 60 s/min"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q = 300 L/min / 60 s/min"
+    },
+    {
+     "id": "line3",
+     "label": "3. Q = 6 L/s"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 6 L/s"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Q = 300 L/min / 60 s/min = 5 L/s",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 300 / 60 = 5, not 6."
+  },
+  {
+   "id": "c1w-error63",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this average flow calculation where a totalizer recorded 1440 m3 over 12 h.",
+   "topicId": "hydraulics-flow-conversion",
+   "level": "class1",
+   "assumptions": "Fictional flow record: total volume = 1440 m3 collected over an elapsed time of 12 h. Target unit: m3/h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Average flow = Total volume / Elapsed time"
+    },
+    {
+     "id": "line2",
+     "label": "2. Elapsed time used = 24 h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Average flow = 1440 m3 / 24 h = 60 m3/h"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 60 m3/h"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Elapsed time = 12 h, so average flow = 1440 / 12 = 120 m3/h",
+   "explanation": "Line 2 used a full day instead of the actual 12 h elapsed time on the totalizer record. The average flow is 120 m3/h."
+  },
+  {
+   "id": "c1w-error64",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in converting a flow of 25.2 m3/h to L/s.",
+   "topicId": "hydraulics-flow-conversion",
+   "level": "class1",
+   "assumptions": "Fictional flow conversion: Q = 25.2 m3/h, 1000 L = 1 m3, 3600 s = 1 h. Target unit: L/s.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Conversion: multiply by 1000 L/m3 and divide by 3600 s/h"
+    },
+    {
+     "id": "line2",
+     "label": "2. Round Q to 25 m3/h for the calculation"
+    },
+    {
+     "id": "line3",
+     "label": "3. Q = 25 m3/h * 1000 / 3600 = 6.9444 L/s"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 6.9444 L/s"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Keep Q = 25.2 m3/h, so Q = 25.2 * 1000 / 3600 = 7 L/s",
+   "explanation": "Line 2 rounds 25.2 to 25 too early, which changes the answer. Using the unrounded flow gives exactly 7 L/s."
+  },
+  {
+   "id": "c1w-error65",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pipe velocity calculation for a pipe with diameter 0.2 m carrying Q = 0.0628 m3/s.",
+   "topicId": "hydraulics-velocity",
+   "level": "class1",
+   "assumptions": "Fictional pipe: diameter = 0.2 m, radius = 0.1 m, Q = 0.0628 m3/s, pi = 3.14. Target unit: m/s.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Velocity = Q / Area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 3.14 * 0.2 m * 0.2 m = 0.1256 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Velocity = 0.0628 m3/s / 0.1256 m2 = 0.5 m/s"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 0.5 m/s"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Area = 3.14 * 0.1 m * 0.1 m = 0.0314 m2, so velocity = 0.0628 / 0.0314 = 2 m/s",
+   "explanation": "Line 2 used the diameter 0.2 m instead of the radius 0.1 m in the area formula. The area is 0.0314 m2 and the velocity is 2 m/s."
+  },
+  {
+   "id": "c1w-error66",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this velocity calculation for Q = 0.15 m3/s through a cross section of 0.05 m2.",
+   "topicId": "hydraulics-velocity",
+   "level": "class1",
+   "assumptions": "Fictional channel section: Q = 0.15 m3/s, cross sectional area = 0.05 m2. Target unit: m/s.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Velocity = Area / Q"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Area = 0.05 m2 and Q = 0.15 m3/s"
+    },
+    {
+     "id": "line3",
+     "label": "3. Velocity = 0.05 m2 / 0.15 m3/s = 0.3333 m/s"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 0.3333 m/s"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Velocity = Q / Area = 0.15 / 0.05 = 3 m/s",
+   "explanation": "Line 1 uses the wrong formula. Velocity is flow divided by area, giving 3 m/s."
+  },
+  {
+   "id": "c1w-error67",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pipe velocity calculation where Q = 36 m3/h and the pipe area is 0.005 m2.",
+   "topicId": "hydraulics-velocity",
+   "level": "class1",
+   "assumptions": "Fictional pipe: Q = 36 m3/h, cross sectional area = 0.005 m2, 3600 s = 1 h. Target unit: m/s.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Velocity = Q / Area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q = 36 m3/h / 60 s/h = 0.6 m3/s"
+    },
+    {
+     "id": "line3",
+     "label": "3. Velocity = 0.6 m3/s / 0.005 m2 = 120 m/s"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 120 m/s"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Q = 36 m3/h / 3600 s/h = 0.01 m3/s, so velocity = 0.01 / 0.005 = 2 m/s",
+   "explanation": "Line 2 divided by 60 instead of 3600 seconds per hour when converting the flow. The velocity is 2 m/s."
+  },
+  {
+   "id": "c1w-error68",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this channel velocity calculation for a channel 2 m wide with water 0.5 m deep carrying Q = 3 m3/s.",
+   "topicId": "hydraulics-velocity",
+   "level": "class1",
+   "assumptions": "Fictional open channel: width = 2 m, water depth = 0.5 m, Q = 3 m3/s. Target unit: m/s.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Velocity = Q / Flow area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Flow area = 2 * (2 m + 0.5 m) = 5 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Velocity = 3 m3/s / 5 m2 = 0.6 m/s"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 0.6 m/s"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Flow area = 2 m * 0.5 m = 1 m2, so velocity = 3 / 1 = 3 m/s",
+   "explanation": "Line 2 used a perimeter style calculation instead of the flow area, width times depth. The flow area is 1 m2 and the velocity is 3 m/s."
+  },
+  {
+   "id": "c1w-error69",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pipe velocity calculation for Q = 0.4 m3/s through a cross section of 0.2 m2.",
+   "topicId": "hydraulics-velocity",
+   "level": "class1",
+   "assumptions": "Fictional pipe: Q = 0.4 m3/s, cross sectional area = 0.2 m2. Target unit: m/s.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Velocity = Q / Area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Velocity = 0.4 m3/s / 0.2 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Velocity = 3 m/s"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 3 m/s"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Velocity = 0.4 m3/s / 0.2 m2 = 2 m/s",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 0.4 / 0.2 = 2, not 3."
+  },
+  {
+   "id": "c1w-error70",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pipe velocity calculation where Q = 31.4 L/s and the pipe area is 0.0314 m2, reported in m/s.",
+   "topicId": "hydraulics-velocity",
+   "level": "class1",
+   "assumptions": "Fictional pipe: Q = 31.4 L/s, cross sectional area = 0.0314 m2, 1000 L = 1 m3. Target unit: m/s.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Velocity = Q in m3/s / Area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area given as 0.0314 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Velocity = 31.4 L/s / 0.0314 m2 = 1000 m/s"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 1000 m/s"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Q = 31.4 L/s / 1000 = 0.0314 m3/s, so velocity = 0.0314 / 0.0314 = 1 m/s",
+   "explanation": "Line 3 forgot to convert the flow from L/s to m3/s. The converted flow is 0.0314 m3/s, giving a velocity of 1 m/s."
+  },
+  {
+   "id": "c1w-error71",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pressure calculation for a gauge 15 m below a tank water surface.",
+   "topicId": "hydraulics-head-pressure",
+   "level": "class1",
+   "assumptions": "Fictional tank: water surface is 15 m above the gauge, unit weight of water = 9.81 kPa per m of head. Target unit: kPa.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Pressure = Head * 9.81 kPa/m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Pressure = 15 m * 9.81 kPa/m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Pressure = 137.15 kPa"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 137.15 kPa"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Pressure = 15 m * 9.81 kPa/m = 147.15 kPa",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 15 * 9.81 = 147.15, not 137.15."
+  },
+  {
+   "id": "c1w-error72",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in converting a pressure of 196.2 kPa to metres of head.",
+   "topicId": "hydraulics-head-pressure",
+   "level": "class1",
+   "assumptions": "Fictional conversion: pressure = 196.2 kPa, unit weight of water = 9.81 kPa per m of head. Target unit: m.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Head = Pressure / 9.81 kPa/m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Pressure = 196.2 kPa"
+    },
+    {
+     "id": "line3",
+     "label": "3. Head = 196.2 kPa * 9.81 kPa/m = 1924.722 m"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 1924.722 m"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Head = 196.2 kPa / 9.81 kPa/m = 20 m",
+   "explanation": "Line 3 multiplied by 9.81 instead of dividing by it. The head is 20 m."
+  },
+  {
+   "id": "c1w-error73",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this available head calculation where the elevation difference is 12 m and friction and minor losses total 3 m.",
+   "topicId": "hydraulics-head-pressure",
+   "level": "class1",
+   "assumptions": "Fictional gravity line: elevation difference = 12 m, total head losses = 3 m. Target unit: m.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Available head = Elevation difference - Head losses"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Elevation difference = 12 m and Losses = 3 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Available head = 12 m + 3 m = 15 m"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 15 m"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Available head = 12 m - 3 m = 9 m",
+   "explanation": "Line 3 added the losses instead of subtracting them. Losses consume head, leaving 9 m available."
+  },
+  {
+   "id": "c1w-error74",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this total dynamic head calculation where the discharge head is 25 m and the pump has a flooded suction head of 5 m above the pump centreline.",
+   "topicId": "hydraulics-head-pressure",
+   "level": "class1",
+   "assumptions": "Fictional pump: discharge head = 25 m above the pump centreline, suction water level = 5 m above the pump centreline (flooded suction). Target unit: m.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total dynamic head = Discharge head - Suction head"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Discharge head = 25 m and Suction head = 5 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total dynamic head = 25 m + 5 m = 30 m"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 30 m"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total dynamic head = 25 m - 5 m = 20 m",
+   "explanation": "Line 3 added the suction head instead of subtracting it. With a flooded suction the pump must add only the difference, 20 m."
+  },
+  {
+   "id": "c1w-error75",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pressure calculation for a water column 250 cm high.",
+   "topicId": "hydraulics-head-pressure",
+   "level": "class1",
+   "assumptions": "Fictional water column: height = 250 cm, 100 cm = 1 m, unit weight of water = 9.81 kPa per m of head. Target unit: kPa.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Pressure = Head in m * 9.81 kPa/m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Head = 250 cm / 1000 cm/m = 0.25 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Pressure = 0.25 m * 9.81 kPa/m = 2.4525 kPa"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 2.4525 kPa"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Head = 250 cm / 100 cm/m = 2.5 m, so pressure = 2.5 * 9.81 = 24.525 kPa",
+   "explanation": "Line 2 divided by 1000 instead of 100 cm per metre. The head is 2.5 m and the pressure is 24.525 kPa."
+  },
+  {
+   "id": "c1w-error76",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pressure calculation for a gauge 12.5 m below a water surface.",
+   "topicId": "hydraulics-head-pressure",
+   "level": "class1",
+   "assumptions": "Fictional tank: water surface is 12.5 m above the gauge, unit weight of water = 9.81 kPa per m of head. Target unit: kPa.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Pressure = Head * Unit weight"
+    },
+    {
+     "id": "line2",
+     "label": "2. Round unit weight 9.81 kPa/m to 10 kPa/m for the calculation"
+    },
+    {
+     "id": "line3",
+     "label": "3. Pressure = 12.5 m * 10 kPa/m = 125 kPa"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 125 kPa"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Keep unit weight = 9.81 kPa/m, so pressure = 12.5 * 9.81 = 122.625 kPa",
+   "explanation": "Line 2 rounds 9.81 to 10 too early, which changes the answer. Using the unrounded value gives 122.625 kPa."
+  },
+  {
+   "id": "c1w-error77",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this jar test calculation where a dose of 30 mg/L is applied to a 2 L jar.",
+   "topicId": "coagulation-jar-test-scaling",
+   "level": "class1",
+   "assumptions": "Fictional jar test: target dose = 30 mg/L, jar volume = 2 L. Target unit: mg per jar.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Chemical mass per jar = Dose * Jar volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Dose = 30 mg/L and Jar volume = 2 L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Chemical mass = 30 mg"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 30 mg per jar"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Chemical mass = 30 mg/L * 2 L = 60 mg per jar",
+   "explanation": "Line 3 used the per litre dose as the jar total and forgot to scale by the 2 L jar volume. Each jar needs 60 mg."
+  },
+  {
+   "id": "c1w-error78",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this jar test dose calculation where 3 mL of a 10 mg/mL stock is added to a 1 L jar.",
+   "topicId": "coagulation-jar-test-scaling",
+   "level": "class1",
+   "assumptions": "Fictional jar test: stock concentration = 10 mg/mL, stock added = 3 mL, jar volume = 1 L. Target unit: mg/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Jar dose = Mass added / Jar volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Mass added = 3 mL * 10 mg/mL = 30 mg"
+    },
+    {
+     "id": "line3",
+     "label": "3. Jar dose = 30 mg / 0.1 L = 300 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 300 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Jar dose = 30 mg / 1 L = 30 mg/L",
+   "explanation": "Line 3 used 0.1 L instead of the actual 1 L jar volume. The jar dose is 30 mg/L."
+  },
+  {
+   "id": "c1w-error79",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in scaling a jar test dose of 25 mg/L up to a plant flow of 40 L/s for one day.",
+   "topicId": "coagulation-jar-test-scaling",
+   "level": "class1",
+   "assumptions": "Fictional plant: jar test dose = 25 mg/L, plant Q = 40 L/s, 86400 s = 1 day, 1000000 mg = 1 kg. Target unit: kg/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily mass = Dose * Daily volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily volume = 40 L/s * 86400 s/day = 3456000 L/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily mass = 25 mg/L * 3456000 L/day = 86400000 mg/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Daily mass = 864 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Daily mass = 86400000 mg/day / 1000000 mg/kg = 86.4 kg/day",
+   "explanation": "Lines 1 to 3 are correct. Line 4 is an arithmetic slip in the final conversion: the daily mass is 86.4 kg/day, not 864 kg/day."
+  },
+  {
+   "id": "c1w-error80",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this jar test scale up where a dose of 15 mg/L is applied to 200 m3 of water per hour.",
+   "topicId": "coagulation-jar-test-scaling",
+   "level": "class1",
+   "assumptions": "Fictional plant: dose = 15 mg/L, hourly volume = 200 m3/h, 1000 L = 1 m3, 1000000 mg = 1 kg. Target unit: kg/h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Mass per hour = Dose * Volume in L per hour"
+    },
+    {
+     "id": "line2",
+     "label": "2. Volume given as 200 m3/h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Mass per hour = 15 mg/L * 200 L/h = 3000 mg/h = 0.003 kg/h"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 0.003 kg/h"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Volume = 200 m3/h * 1000 = 200000 L/h, so mass = 15 * 200000 / 1000000 = 3 kg/h",
+   "explanation": "Line 3 forgot to convert cubic metres to litres. The hourly volume is 200000 L, giving 3 kg/h."
+  },
+  {
+   "id": "c1w-error81",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in scaling a jar test from a 500 mL jar that used 2 mL of stock to a 2 L jar at the same dose.",
+   "topicId": "coagulation-jar-test-scaling",
+   "level": "class1",
+   "assumptions": "Fictional jar test: small jar = 500 mL using 2 mL of stock, large jar = 2000 mL, same target dose. Target unit: mL of stock.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Stock volume scales in proportion to jar volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Scale factor = 2000 mL / 500 mL = 4"
+    },
+    {
+     "id": "line3",
+     "label": "3. Stock for large jar = 2 mL"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 2 mL"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Stock for large jar = 2 mL * 4 = 8 mL",
+   "explanation": "Line 3 kept the same stock volume instead of applying the scale factor of 4. The large jar needs 8 mL."
+  },
+  {
+   "id": "c1w-error82",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this jar test dose calculation where 1.98 mL of a 10 mg/mL stock is added to a 1 L jar.",
+   "topicId": "coagulation-jar-test-scaling",
+   "level": "class1",
+   "assumptions": "Fictional jar test: stock concentration = 10 mg/mL, stock added = 1.98 mL, jar volume = 1 L. Target unit: mg/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Jar dose = Mass added / Jar volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Mass added = 1.98 mL * 10 mg/mL = 19.8 mg"
+    },
+    {
+     "id": "line3",
+     "label": "3. Round mass added to 20 mg for the calculation"
+    },
+    {
+     "id": "line4",
+     "label": "4. Jar dose = 20 mg / 1 L = 20 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Keep mass added = 19.8 mg, so dose = 19.8 / 1 = 19.8 mg/L",
+   "explanation": "Line 3 rounds 19.8 to 20 too early, which changes the answer. Using the unrounded mass gives exactly 19.8 mg/L."
+  },
+  {
+   "id": "c1w-error83",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids mass calculation for sludge at 2000 mg/L in a tank holding 50 m3.",
+   "topicId": "solids-mass-rate",
+   "level": "class1",
+   "assumptions": "Fictional sludge tank: solids concentration = 2000 mg/L, volume = 50 m3, 1000 L = 1 m3, 1000000 mg = 1 kg. Target unit: kg.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Solids mass = Concentration * Volume in L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Volume given as 50 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solids mass = 2000 mg/L * 50 L = 100000 mg = 0.1 kg"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 0.1 kg"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Volume = 50 m3 * 1000 = 50000 L, so mass = 2000 * 50000 / 1000000 = 100 kg",
+   "explanation": "Line 3 forgot to convert cubic metres to litres. The volume is 50000 L, giving a solids mass of 100 kg."
+  },
+  {
+   "id": "c1w-error84",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids removed calculation where the influent is 80 mg/L, the effluent is 20 mg/L, and 500000 L is treated.",
+   "topicId": "solids-mass-rate",
+   "level": "class1",
+   "assumptions": "Fictional clarifier: influent solids = 80 mg/L, effluent solids = 20 mg/L, volume treated = 500000 L, 1000000 mg = 1 kg. Target unit: kg removed.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Mass removed = Removed concentration * Volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Removed concentration = 80 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Mass removed = 80 mg/L * 500000 L = 40000000 mg = 40 kg"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 40 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Removed concentration = 80 mg/L - 20 mg/L = 60 mg/L, so mass = 60 * 500000 / 1000000 = 30 kg",
+   "explanation": "Line 2 used the full influent concentration instead of the portion actually removed. The removed concentration is 60 mg/L, giving 30 kg."
+  },
+  {
+   "id": "c1w-error85",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this percent solids calculation where a 500 g wet sample dries to 25 g.",
+   "topicId": "solids-mass-rate",
+   "level": "class1",
+   "assumptions": "Fictional sludge sample: wet mass = 500 g, dry mass = 25 g. Target unit: percent.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent solids = Dry mass / Wet mass * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Dry mass = 25 g and Wet mass = 500 g"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent solids = 500 g / 25 g * 100 = 2000 percent"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 2000 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent solids = 25 g / 500 g * 100 = 5 percent",
+   "explanation": "Line 3 inverted the two masses in the substitution. Percent solids is dry over wet, giving 5 percent."
+  },
+  {
+   "id": "c1w-error86",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids mass calculation for a concentration of 12 mg/L in 250000 L of water.",
+   "topicId": "solids-mass-rate",
+   "level": "class1",
+   "assumptions": "Fictional raw water: solids concentration = 12 mg/L, volume = 250000 L, 1000000 mg = 1 kg. Target unit: kg.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Solids mass = Concentration * Volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids mass = 12 mg/L * 250000 L = 3000000 mg"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solids mass = 3000000 mg / 1000000 mg/kg"
+    },
+    {
+     "id": "line4",
+     "label": "4. Solids mass = 2 kg"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Solids mass = 3000000 mg / 1000000 mg/kg = 3 kg",
+   "explanation": "Lines 1 to 3 are correct. Line 4 is an arithmetic slip: 3000000 / 1000000 = 3, not 2."
+  },
+  {
+   "id": "c1w-error87",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sludge volume calculation for 400 kg of solids at a solids concentration of 20 kg/m3.",
+   "topicId": "solids-mass-rate",
+   "level": "class1",
+   "assumptions": "Fictional sludge: solids mass = 400 kg, solids concentration = 20 kg/m3. Target unit: m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Sludge volume = Mass * Concentration"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Mass = 400 kg and Concentration = 20 kg/m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Sludge volume = 400 kg * 20 kg/m3 = 8000 m3"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 8000 m3"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Sludge volume = Mass / Concentration = 400 / 20 = 20 m3",
+   "explanation": "Line 1 uses the wrong formula. Volume is mass divided by concentration, giving 20 m3."
+  },
+  {
+   "id": "c1w-error88",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids mass calculation for a concentration of 6 mg/L at Q = 45 L/s over one day.",
+   "topicId": "solids-mass-rate",
+   "level": "class1",
+   "assumptions": "Fictional raw water: solids concentration = 6 mg/L, Q = 45 L/s, 86400 s = 1 day, 1000000 mg = 1 kg. Target unit: kg/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily mass = Concentration * Daily volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily volume = 45 L/s * 86400 s/day = 3888000 L/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Round daily volume to 3900000 L/day for the calculation"
+    },
+    {
+     "id": "line4",
+     "label": "4. Daily mass = 6 mg/L * 3900000 L/day / 1000000 mg/kg = 23.4 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Keep daily volume = 3888000 L/day, so mass = 6 * 3888000 / 1000000 = 23.328 kg/day",
+   "explanation": "Line 3 rounds 3888000 to 3900000 too early, which changes the answer. Using the unrounded volume gives 23.328 kg/day."
+  },
+  {
+   "id": "c1w-error89",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this alkalinity addition calculation to raise alkalinity by 40 mg/L in 250000 L of water.",
+   "topicId": "water-chemistry-alkalinity",
+   "level": "class1",
+   "assumptions": "Fictional treated water: alkalinity increase needed = 40 mg/L as CaCO3, volume = 250000 L, 1000000 mg = 1 kg. Target unit: kg.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Chemical mass = Alkalinity increase * Volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Mass = 40 mg/L * 250000 L = 10000000 mg"
+    },
+    {
+     "id": "line3",
+     "label": "3. Mass = 10000000 mg / 1000000 mg/kg"
+    },
+    {
+     "id": "line4",
+     "label": "4. Mass = 9 kg"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Mass = 10000000 mg / 1000000 mg/kg = 10 kg",
+   "explanation": "Lines 1 to 3 are correct. Line 4 is an arithmetic slip: 10000000 / 1000000 = 10, not 9."
+  },
+  {
+   "id": "c1w-error90",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in converting a bicarbonate concentration of 122 mg/L to alkalinity as CaCO3, using equivalent weights 61 for bicarbonate and 50 for CaCO3.",
+   "topicId": "water-chemistry-alkalinity",
+   "level": "class1",
+   "assumptions": "Fictional sample: bicarbonate = 122 mg/L, equivalent weight of bicarbonate = 61, equivalent weight of CaCO3 = 50. Target unit: mg/L as CaCO3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Alkalinity as CaCO3 = Bicarbonate * 50 / 61"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Bicarbonate = 122 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Alkalinity = 122 mg/L * 61 / 50 = 148.84 mg/L as CaCO3"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 148.84 mg/L as CaCO3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Alkalinity = 122 mg/L * 50 / 61 = 100 mg/L as CaCO3",
+   "explanation": "Line 3 inverted the equivalent weight ratio in the substitution. The alkalinity is 100 mg/L as CaCO3."
+  },
+  {
+   "id": "c1w-error91",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this alkalinity addition calculation to raise alkalinity by 30 mg/L in 100 m3 of water.",
+   "topicId": "water-chemistry-alkalinity",
+   "level": "class1",
+   "assumptions": "Fictional treated water: alkalinity increase needed = 30 mg/L as CaCO3, volume = 100 m3, 1000 L = 1 m3, 1000000 mg = 1 kg. Target unit: kg.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Chemical mass = Alkalinity increase * Volume in L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Volume given as 100 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Chemical mass = 30 mg/L * 100 L = 3000 mg = 0.003 kg"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 0.003 kg"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Volume = 100 m3 * 1000 = 100000 L, so mass = 30 * 100000 / 1000000 = 3 kg",
+   "explanation": "Line 3 forgot to convert cubic metres to litres. The volume is 100000 L, giving a chemical mass of 3 kg."
+  },
+  {
+   "id": "c1w-error92",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this blended alkalinity calculation where equal volumes of water at 80 mg/L and 120 mg/L as CaCO3 are mixed.",
+   "topicId": "water-chemistry-alkalinity",
+   "level": "class1",
+   "assumptions": "Fictional blend: equal volumes, source A alkalinity = 80 mg/L as CaCO3, source B alkalinity = 120 mg/L as CaCO3. Target unit: mg/L as CaCO3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Blended alkalinity = Total alkalinity mass / Total volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Alkalinity mass per litre of blend = 80 mg + 120 mg = 200 mg in 2 L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Blended alkalinity = 80 mg/L + 120 mg/L = 200 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 200 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Blended alkalinity = 200 mg / 2 L = 100 mg/L",
+   "explanation": "Line 3 added the two concentrations instead of dividing the total mass by the total volume. The blended alkalinity is 100 mg/L."
+  },
+  {
+   "id": "c1w-error93",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chemical addition calculation where 16 kg of pure chemical is needed and the commercial product is 80 percent pure.",
+   "topicId": "water-chemistry-alkalinity",
+   "level": "class1",
+   "assumptions": "Fictional chemical feed: pure chemical required = 16 kg, commercial product purity = 80 percent, or 0.8 as a fraction. Target unit: kg of commercial product.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Commercial mass = Pure mass / Purity fraction"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Pure mass = 16 kg and Purity = 0.8"
+    },
+    {
+     "id": "line3",
+     "label": "3. Commercial mass = 16 kg * 0.8 = 12.8 kg"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 12.8 kg"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Commercial mass = 16 kg / 0.8 = 20 kg",
+   "explanation": "Line 3 multiplied by the purity instead of dividing by it. More commercial product than pure chemical is needed, 20 kg."
+  },
+  {
+   "id": "c1w-error94",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in converting an alkalinity of 2 meq/L to mg/L as CaCO3, using 50 mg per meq as CaCO3.",
+   "topicId": "water-chemistry-alkalinity",
+   "level": "class1",
+   "assumptions": "Fictional sample: alkalinity = 2 meq/L, conversion = 50 mg as CaCO3 per meq. Target unit: mg/L as CaCO3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Alkalinity in mg/L = meq/L * 50 mg/meq"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Alkalinity = 2 meq/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Alkalinity = 2 meq/L / 50 mg/meq = 0.04 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 0.04 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Alkalinity = 2 meq/L * 50 mg/meq = 100 mg/L as CaCO3",
+   "explanation": "Line 3 divided by 50 instead of multiplying by 50 mg per meq. The alkalinity is 100 mg/L as CaCO3."
+  },
+  {
+   "id": "c1w-error95",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this CT calculation for two contact tanks in series, each with an effective contact time of 20 min, at a residual of 0.8 mg/L.",
+   "topicId": "disinfection-ct",
+   "level": "class1",
+   "assumptions": "Fictional contact system: two tanks in series, effective contact time = 20 min each, full flow passes through both, free chlorine residual = 0.8 mg/L. Target unit: mg min/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total contact time for series tanks = Sum of the tank times"
+    },
+    {
+     "id": "line2",
+     "label": "2. Tank times given as 20 min and 20 min"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total contact time used = 20 min"
+    },
+    {
+     "id": "line4",
+     "label": "4. CT = 0.8 mg/L * 20 min = 16 mg min/L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total contact time = 20 min + 20 min = 40 min, so CT = 0.8 * 40 = 32 mg min/L",
+   "explanation": "Line 3 treated the series tanks like parallel units and used only one tank time. In series the times add, giving a CT of 32 mg min/L."
+  },
+  {
+   "id": "c1w-error96",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chlorine feed calculation for a dose of 2 mg/L at Q = 25 L/s over one day.",
+   "topicId": "disinfection-chlorine-dose",
+   "level": "class1",
+   "assumptions": "Fictional plant: chlorine dose = 2 mg/L, Q = 25 L/s, 86400 s = 1 day, 1000000 mg = 1 kg. Target unit: kg/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily mass = Dose * Daily volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily volume = 25 L/s * 3600 s/day = 90000 L/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily mass = 2 mg/L * 90000 L/day = 180000 mg/day = 0.18 kg/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 0.18 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Daily volume = 25 L/s * 86400 s/day = 2160000 L/day, so mass = 2 * 2160000 / 1000000 = 4.32 kg/day",
+   "explanation": "Line 2 used 3600 seconds, which is one hour, as if it were a full day. The daily volume is 2160000 L and the feed is 4.32 kg/day."
+  },
+  {
+   "id": "c1w-error97",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this weir loading calculation for a circular clarifier with diameter 20 m and Q = 314 m3/day.",
+   "topicId": "sedimentation-weir-loading",
+   "level": "class1",
+   "assumptions": "Fictional circular clarifier: diameter = 20 m, radius = 10 m, weir on the full circumference, Q = 314 m3/day, pi = 3.14. Target unit: m3/day per m.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Weir loading = Q / Weir length"
+    },
+    {
+     "id": "line2",
+     "label": "2. Weir length = 3.14 * 10 m = 31.4 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Weir loading = 314 m3/day / 31.4 m = 10 m3/day per m"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 10 m3/day per m"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Weir length = 3.14 * 20 m = 62.8 m, so loading = 314 / 62.8 = 5 m3/day per m",
+   "explanation": "Line 2 used the radius in the circumference formula instead of the diameter, giving only half the weir length. The loading is 5 m3/day per m."
+  },
+  {
+   "id": "c1w-error98",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this dilution calculation to prepare 1000 L of a 5 mg/L solution from a 500 mg/L stock.",
+   "topicId": "chemical-dilution",
+   "level": "class1",
+   "assumptions": "Fictional dilution: stock concentration C1 = 500 mg/L, target concentration C2 = 5 mg/L, target volume V2 = 1000 L. Target unit: L of stock.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Stock volume V1 = C2 * V2 / C1"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as C1 = 500 mg/L, C2 = 5 mg/L, V2 = 1000 L"
+    },
+    {
+     "id": "line3",
+     "label": "3. V1 = 500 mg/L * 1000 L / 5 mg/L = 100000 L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 100000 L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. V1 = 5 mg/L * 1000 L / 500 mg/L = 10 L",
+   "explanation": "Line 3 inverted the two concentrations in the substitution. The stock volume is 10 L."
+  },
+  {
+   "id": "c1w-error99",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this feed pump calculation where the pump delivers 200 mL per stroke at 30 strokes per min.",
+   "topicId": "chemical-feed-rate",
+   "level": "class1",
+   "assumptions": "Fictional feed pump: delivery = 200 mL per stroke, speed = 30 strokes/min, 1000 mL = 1 L, 60 min = 1 h. Target unit: L/h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Feed rate = Delivery per stroke * Strokes per min"
+    },
+    {
+     "id": "line2",
+     "label": "2. Feed rate = 200 mL * 30 /min = 6000 mL/min = 6 L/min"
+    },
+    {
+     "id": "line3",
+     "label": "3. Feed rate = 6 L/min / 60 min/h = 0.1 L/h"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 0.1 L/h"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Feed rate = 6 L/min * 60 min/h = 360 L/h",
+   "explanation": "Line 3 divided by 60 instead of multiplying by 60 min/h when converting minutes to hours. The feed rate is 360 L/h."
+  },
+  {
+   "id": "c1w-process05",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the full conventional train from raw water intake to the distribution system.",
+   "topicId": "process-conventional-train-full",
+   "level": "class1",
+   "assumptions": "Fictional Ontario surface water plant using conventional treatment and chlorine disinfection.",
+   "configuration": "Scope: lake intake through treated water leaving the plant.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Intake screening removes coarse debris at the raw water intake"
+    },
+    {
+     "id": "s2",
+     "label": "Rapid mix disperses coagulant through the raw water"
+    },
+    {
+     "id": "s3",
+     "label": "Flocculation gently builds large settleable floc"
+    },
+    {
+     "id": "s4",
+     "label": "Sedimentation settles floc by gravity in the clarifier"
+    },
+    {
+     "id": "s5",
+     "label": "Granular media filtration polishes the settled water"
+    },
+    {
+     "id": "s6",
+     "label": "Chlorine disinfection inactivates remaining microorganisms"
+    },
+    {
+     "id": "s7",
+     "label": "Clearwell storage holds finished water before high lift pumping to distribution"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7"
+   ],
+   "explanation": "The full conventional train screens, coagulates, flocculates, settles, filters, disinfects, and only then stores finished water in the clearwell for pumping to distribution."
+  },
+  {
+   "id": "c1w-process06",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the direct filtration train for a low turbidity source water.",
+   "topicId": "process-direct-filtration",
+   "level": "class1",
+   "assumptions": "Fictional plant on a consistently low turbidity reservoir source, approved for direct filtration.",
+   "configuration": "Scope: screened raw water through disinfected finished water, with no sedimentation basin.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Screening removes coarse debris from the raw water"
+    },
+    {
+     "id": "s2",
+     "label": "Coagulant is added and dispersed in the rapid mix"
+    },
+    {
+     "id": "s3",
+     "label": "Brief flocculation forms small pin floc"
+    },
+    {
+     "id": "s4",
+     "label": "Water passes directly to the granular media filters"
+    },
+    {
+     "id": "s5",
+     "label": "Filters remove the floc and fine particles"
+    },
+    {
+     "id": "s6",
+     "label": "Chlorine disinfection follows filtration"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Direct filtration omits sedimentation, so coagulation, brief flocculation, and filtration must carry the full particle removal load before disinfection."
+  },
+  {
+   "id": "c1w-process07",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the membrane filtration train from intake to finished water.",
+   "topicId": "process-membrane-train",
+   "level": "class1",
+   "assumptions": "Fictional plant using low pressure ultrafiltration membranes after coagulation pretreatment.",
+   "configuration": "Scope: river intake through membrane permeate disinfection and storage.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Intake screening removes coarse debris"
+    },
+    {
+     "id": "s2",
+     "label": "Coagulant is mixed into the raw water as pretreatment"
+    },
+    {
+     "id": "s3",
+     "label": "Flocculation forms floc ahead of the membranes"
+    },
+    {
+     "id": "s4",
+     "label": "Membrane modules separate solids from the permeate by size exclusion"
+    },
+    {
+     "id": "s5",
+     "label": "Permeate receives chlorine disinfection for a distribution residual"
+    },
+    {
+     "id": "s6",
+     "label": "Finished water flows to clearwell storage"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Membranes physically separate particles from the permeate, but a chlorine residual is still added after membrane filtration because membranes provide no lasting disinfectant residual."
+  },
+  {
+   "id": "c1w-process08",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the slow sand filtration train from intake to finished water.",
+   "topicId": "process-slow-sand",
+   "level": "class1",
+   "assumptions": "Fictional small Ontario system using slow sand filtration on a clean source water.",
+   "configuration": "Scope: screened raw water through the slow sand beds and disinfection.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Intake screening removes coarse debris"
+    },
+    {
+     "id": "s2",
+     "label": "Pre filtration or roughing filtration reduces the load on the beds"
+    },
+    {
+     "id": "s3",
+     "label": "Slow sand beds develop a biological schmutzdecke layer on the sand surface"
+    },
+    {
+     "id": "s4",
+     "label": "Water percolates slowly through the sand and the biological layer"
+    },
+    {
+     "id": "s5",
+     "label": "Filtered water receives chlorine disinfection"
+    },
+    {
+     "id": "s6",
+     "label": "Finished water flows to storage"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Slow sand filtration relies on the biological layer that forms on the bed surface, so the beds run slowly and continuously, and disinfection still follows filtration."
+  },
+  {
+   "id": "c1w-process09",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the groundwater iron and manganese removal train.",
+   "topicId": "process-iron-manganese-removal",
+   "level": "class1",
+   "assumptions": "Fictional groundwater plant treating well water with dissolved iron and manganese.",
+   "configuration": "Scope: well water through aeration, oxidation, and filtration to storage.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Well pump delivers raw groundwater to the plant"
+    },
+    {
+     "id": "s2",
+     "label": "Aeration adds oxygen and strips dissolved gases"
+    },
+    {
+     "id": "s3",
+     "label": "Chemical oxidant is added and detention allows iron and manganese to oxidize"
+    },
+    {
+     "id": "s4",
+     "label": "Oxidized iron and manganese form solid particles"
+    },
+    {
+     "id": "s5",
+     "label": "Granular media filtration removes the oxidized particles"
+    },
+    {
+     "id": "s6",
+     "label": "Chlorine disinfection and storage complete the treated water"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Dissolved iron and manganese must first be oxidized into solid particles by aeration and chemical oxidation with detention time, and only then can filtration remove them."
+  },
+  {
+   "id": "c1w-process10",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the lime soda ash softening train from raw water to finished water.",
+   "topicId": "process-softening-train",
+   "level": "class1",
+   "assumptions": "Fictional plant softening a hard groundwater source with lime and soda ash.",
+   "configuration": "Scope: raw water through softening, recarbonation, filtration, and disinfection.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Rapid mix disperses lime and soda ash through the raw water"
+    },
+    {
+     "id": "s2",
+     "label": "Flocculation builds the calcium and magnesium precipitate floc"
+    },
+    {
+     "id": "s3",
+     "label": "Sedimentation settles the softening sludge by gravity"
+    },
+    {
+     "id": "s4",
+     "label": "Recarbonation adds carbon dioxide to stabilize the softened water and lower pH"
+    },
+    {
+     "id": "s5",
+     "label": "Granular media filtration polishes the stabilized water"
+    },
+    {
+     "id": "s6",
+     "label": "Chlorine disinfection completes the finished water"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Lime and soda ash precipitate hardness as a settleable floc, the sludge settles out, and recarbonation must stabilize the high pH water before filtration and disinfection."
+  },
+  {
+   "id": "c1w-process100",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the sequence for supplying a neighbouring system through an emergency interconnection.",
+   "topicId": "process-emergency-interconnection",
+   "level": "class1",
+   "assumptions": "Fictional Ontario municipality asked to supply a neighbour whose plant is down for repairs.",
+   "configuration": "Scope: request for emergency supply received through the interconnection in controlled operation.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the request, the approvals, and the volume and duration the home system can spare"
+    },
+    {
+     "id": "s2",
+     "label": "Inspect the interconnection chamber, valves, meter, and backflow preventer"
+    },
+    {
+     "id": "s3",
+     "label": "Flush the interconnection line until the water runs clear"
+    },
+    {
+     "id": "s4",
+     "label": "Open the supply valve slowly and set the agreed flow rate"
+    },
+    {
+     "id": "s5",
+     "label": "Monitor pressures on both systems and the supplied volume total"
+    },
+    {
+     "id": "s6",
+     "label": "Record the supply in both systems logs and notify the authorities the agreement requires"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "An emergency interconnection protects the home system first by confirming spare capacity, proves the line and backflow protection, and then supplies at a controlled, metered rate with both systems logging the transfer."
+  },
+  {
+   "id": "c1w-process11",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the chemical addition sequence at the rapid mix of a conventional plant.",
+   "topicId": "process-coagulation-chemical-order",
+   "level": "class1",
+   "assumptions": "Fictional plant adjusting alkalinity and feeding alum plus a polymer aid on a low alkalinity source.",
+   "configuration": "Scope: raw water entering the rapid mix through flocculation basin inlet.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Measure raw water pH, alkalinity, and turbidity before dosing"
+    },
+    {
+     "id": "s2",
+     "label": "Add alkalinity supplement first where raw alkalinity is too low for coagulation"
+    },
+    {
+     "id": "s3",
+     "label": "Add the primary coagulant at the point of maximum turbulence"
+    },
+    {
+     "id": "s4",
+     "label": "Allow rapid mix to disperse the coagulant before any aid is added"
+    },
+    {
+     "id": "s5",
+     "label": "Add polymer coagulant aid downstream of the rapid mix"
+    },
+    {
+     "id": "s6",
+     "label": "Carry the dosed water into gentle flocculation"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Coagulation chemistry is set in order: confirm the raw water, correct low alkalinity, disperse the primary coagulant at maximum turbulence, then add the aid where it can build floc rather than be torn apart."
+  },
+  {
+   "id": "c1w-process12",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to place a flocculation basin into service.",
+   "topicId": "process-flocculation-startup",
+   "level": "class1",
+   "assumptions": "Fictional three stage tapered flocculation basin being returned to service after cleaning.",
+   "configuration": "Scope: empty flocculation basin through normal operation at design flow.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Inspect paddles, drives, and baffles and confirm the basin is clean"
+    },
+    {
+     "id": "s2",
+     "label": "Fill the basin slowly with settled raw water from upstream"
+    },
+    {
+     "id": "s3",
+     "label": "Start the paddle drives at the lowest speed setting"
+    },
+    {
+     "id": "s4",
+     "label": "Introduce coagulated water from the rapid mix"
+    },
+    {
+     "id": "s5",
+     "label": "Set the tapered speeds, highest in the first stage and lowest in the last"
+    },
+    {
+     "id": "s6",
+     "label": "Observe floc size at the basin outlet and adjust speed or dose"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A flocculation basin is filled and started gently, with tapered mixing that is strongest where floc is forming and gentlest where finished floc must not be sheared."
+  },
+  {
+   "id": "c1w-process13",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to place a sedimentation basin into service.",
+   "topicId": "process-sedimentation-startup",
+   "level": "class1",
+   "assumptions": "Fictional rectangular sedimentation basin returned to service after a cleaning outage.",
+   "configuration": "Scope: clean empty clarifier through steady settled water flow to the filters.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Inspect the basin, sludge collectors, and effluent weirs and confirm they are clean and level"
+    },
+    {
+     "id": "s2",
+     "label": "Fill the basin slowly to avoid disturbing the inlet baffles"
+    },
+    {
+     "id": "s3",
+     "label": "Start the sludge collection mechanism before flow is introduced"
+    },
+    {
+     "id": "s4",
+     "label": "Introduce flocculated water at a reduced flow rate"
+    },
+    {
+     "id": "s5",
+     "label": "Raise flow gradually to the normal rate once a sludge blanket forms"
+    },
+    {
+     "id": "s6",
+     "label": "Check settled water turbidity at the effluent weir before sending full flow to the filters"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A clarifier is filled slowly, its sludge collector runs before solids arrive, and flow is raised gradually so the sludge blanket and settled water quality are established before full production."
+  },
+  {
+   "id": "c1w-process14",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the full backwash sequence for a gravity granular media filter.",
+   "topicId": "process-filter-backwash",
+   "level": "class1",
+   "assumptions": "Fictional rapid gravity filter at the end of a run, washed with air scour and filtered water.",
+   "configuration": "Scope: filter taken out of service through the end of the wash cycle.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Close the filter influent valve and let the water level draw down"
+    },
+    {
+     "id": "s2",
+     "label": "Close the filter effluent valve to isolate the filter from the clearwell"
+    },
+    {
+     "id": "s3",
+     "label": "Open the waste drain valve to the backwash waste line"
+    },
+    {
+     "id": "s4",
+     "label": "Start air scour to loosen the media bed"
+    },
+    {
+     "id": "s5",
+     "label": "Start the backwash pump and raise wash water flow gradually"
+    },
+    {
+     "id": "s6",
+     "label": "Wash until the waste water runs clear, then stop the pump and close the drain"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Backwashing isolates the filter first, opens the waste path before any wash water flows, uses air scour to loosen deposits, and ends only when the waste water runs clear."
+  },
+  {
+   "id": "c1w-process15",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to return a freshly backwashed filter to service using filter to waste.",
+   "topicId": "process-filter-startup-waste",
+   "level": "class1",
+   "assumptions": "Fictional rapid gravity filter that has just been backwashed and must ripen before production.",
+   "configuration": "Scope: end of backwash through the filter going into full production.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Allow the media bed to settle and the water above it to clear after backwashing"
+    },
+    {
+     "id": "s2",
+     "label": "Open the influent valve and start filtration at a reduced rate to the waste line"
+    },
+    {
+     "id": "s3",
+     "label": "Run filter to waste while effluent turbidity falls during ripening"
+    },
+    {
+     "id": "s4",
+     "label": "Confirm filtered water turbidity meets the plant target on a grab sample or analyzer"
+    },
+    {
+     "id": "s5",
+     "label": "Close the waste valve and open the effluent valve to the clearwell"
+    },
+    {
+     "id": "s6",
+     "label": "Raise the filtration rate gradually to the normal production rate"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A backwashed filter ripens as the bed re-forms its removal layer, so the first filtered water goes to waste until turbidity meets the target, and only then is the filter put into production."
+  },
+  {
+   "id": "c1w-process16",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the planned shutdown of a gravity filter for an extended outage.",
+   "topicId": "process-filter-shutdown",
+   "level": "class1",
+   "assumptions": "Fictional filter being removed from service for a week of underdrain repairs.",
+   "configuration": "Scope: filter in production through a drained and secured filter cell.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Reduce plant flow or shift production to the remaining filters"
+    },
+    {
+     "id": "s2",
+     "label": "Close the filter influent valve to stop flow into the cell"
+    },
+    {
+     "id": "s3",
+     "label": "Close the filter effluent valve to isolate the cell from the clearwell"
+    },
+    {
+     "id": "s4",
+     "label": "Open the drain and lower the water level to just above the media"
+    },
+    {
+     "id": "s5",
+     "label": "Drain the remaining water slowly so the media bed is not disturbed"
+    },
+    {
+     "id": "s6",
+     "label": "Lock out and tag the filter valves and record the shutdown in the log"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A planned filter shutdown first protects plant production, then isolates the cell on both sides, drains it slowly to protect the media, and finishes with lockout and a log entry."
+  },
+  {
+   "id": "c1w-process17",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the jar test procedure used to select a coagulant dose.",
+   "topicId": "process-jar-test",
+   "level": "class1",
+   "assumptions": "Fictional bench jar test on the day raw water, using six jars and a range of alum doses.",
+   "configuration": "Scope: collecting the raw water sample through choosing the dose for the plant.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Collect a fresh raw water sample and measure its turbidity, pH, and alkalinity"
+    },
+    {
+     "id": "s2",
+     "label": "Fill each jar with the same measured volume of raw water"
+    },
+    {
+     "id": "s3",
+     "label": "Add a different coagulant dose to each jar while rapid mixing"
+    },
+    {
+     "id": "s4",
+     "label": "Rapid mix briefly to disperse the coagulant evenly"
+    },
+    {
+     "id": "s5",
+     "label": "Slow mix to simulate flocculation and let floc form"
+    },
+    {
+     "id": "s6",
+     "label": "Stop mixing and allow a set settling period"
+    },
+    {
+     "id": "s7",
+     "label": "Measure the settled water turbidity in each jar and select the lowest dose that meets the target"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7"
+   ],
+   "explanation": "A jar test mirrors the plant in miniature: identical raw water in every jar, a dose range added during rapid mix, then flocculation, settling, and a turbidity comparison to pick the dose."
+  },
+  {
+   "id": "c1w-process18",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the sequence an operator follows to confirm chlorine CT compliance for the day.",
+   "topicId": "process-ct-compliance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario plant disinfecting with free chlorine through a baffled clearwell under Ontario Regulation 170/03 practice.",
+   "configuration": "Scope: gathering the operating data through recording the CT result.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Record the lowest clearwell water level and the corresponding contact volume"
+    },
+    {
+     "id": "s2",
+     "label": "Determine the peak flow rate through the contactor for the period"
+    },
+    {
+     "id": "s3",
+     "label": "Calculate the theoretical detention time from volume divided by peak flow"
+    },
+    {
+     "id": "s4",
+     "label": "Apply the baffling factor to get the effective contact time T"
+    },
+    {
+     "id": "s5",
+     "label": "Measure the free chlorine residual C at the contactor outlet and the water temperature and pH"
+    },
+    {
+     "id": "s6",
+     "label": "Multiply C by T and compare the CT against the required value for the target inactivation"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "CT is concentration multiplied by effective contact time, so the operator must first fix the volume at its lowest level, use peak flow, correct detention time with the baffling factor, and only then multiply by the measured residual."
+  },
+  {
+   "id": "c1w-process19",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the daily clearwell operating sequence from plant start up to steady supply.",
+   "topicId": "process-clearwell-operation",
+   "level": "class1",
+   "assumptions": "Fictional plant with a two cell clearwell supplying high lift pumps.",
+   "configuration": "Scope: clearwell level management through a normal production day.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the clearwell level is above the minimum needed for disinfection credit"
+    },
+    {
+     "id": "s2",
+     "label": "Start filtration at a rate matched to the expected demand"
+    },
+    {
+     "id": "s3",
+     "label": "Verify the chlorine residual leaving the clearwell meets the target"
+    },
+    {
+     "id": "s4",
+     "label": "Start high lift pumping to match distribution demand"
+    },
+    {
+     "id": "s5",
+     "label": "Cycle clearwell level between the low and high set points through the day"
+    },
+    {
+     "id": "s6",
+     "label": "Record levels, residuals, and volumes in the daily log"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Clearwell operation protects disinfection credit first by holding the minimum level, then balances filtration inflow against high lift outflow while residuals and levels are logged."
+  },
+  {
+   "id": "c1w-process20",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the operating sequence used to turn over water in an elevated storage tank.",
+   "topicId": "process-elevated-storage-turnover",
+   "level": "class1",
+   "assumptions": "Fictional Ontario distribution system with one elevated tank showing an aging chlorine residual.",
+   "configuration": "Scope: a full draw down and refill cycle for water age control.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Check the tank level trend and the chlorine residual at the tank sample point"
+    },
+    {
+     "id": "s2",
+     "label": "Plan the draw down for a low demand period so system pressure is protected"
+    },
+    {
+     "id": "s3",
+     "label": "Draw the tank down to its low operating level through normal demand"
+    },
+    {
+     "id": "s4",
+     "label": "Refill the tank with freshly treated water at a controlled rate"
+    },
+    {
+     "id": "s5",
+     "label": "Confirm the residual in the refilled tank has recovered to target"
+    },
+    {
+     "id": "s6",
+     "label": "Record the turnover volumes and residuals in the operating log"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Turnover replaces aged water with fresh treated water, but the draw down is timed to low demand and the refill is verified by residual recovery so pressure and quality are both protected."
+  },
+  {
+   "id": "c1w-process21",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for flushing one distribution hydrant.",
+   "topicId": "process-hydrant-flushing",
+   "level": "class1",
+   "assumptions": "Fictional routine hydrant flushing on a residential street in an Ontario municipality.",
+   "configuration": "Scope: arriving at the hydrant through returning it to service.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Notify affected customers and set up traffic control at the hydrant"
+    },
+    {
+     "id": "s2",
+     "label": "Inspect the hydrant and confirm the drain and caps are in good condition"
+    },
+    {
+     "id": "s3",
+     "label": "Attach a diffuser or hose to direct discharge away from traffic and property"
+    },
+    {
+     "id": "s4",
+     "label": "Open the hydrant slowly to avoid a pressure surge"
+    },
+    {
+     "id": "s5",
+     "label": "Flush until the water runs clear and measure the chlorine residual"
+    },
+    {
+     "id": "s6",
+     "label": "Close the hydrant slowly, replace the caps, and record flow, clarity, and residual"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A hydrant is opened and closed slowly to avoid water hammer, discharge is controlled for safety, and flushing continues until clarity and residual confirm the local water quality."
+  },
+  {
+   "id": "c1w-process22",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps of a unidirectional flushing program for one zone.",
+   "topicId": "process-unidirectional-flushing",
+   "level": "class1",
+   "assumptions": "Fictional Ontario utility running a unidirectional flushing program on a looped distribution zone.",
+   "configuration": "Scope: program planning through the final zone flush and records.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Map the zone and plan the flush sequence from the clean water source outward"
+    },
+    {
+     "id": "s2",
+     "label": "Notify customers in the zone and schedule the work for low demand hours"
+    },
+    {
+     "id": "s3",
+     "label": "Close valves to isolate one pipe segment and force flow in a single direction"
+    },
+    {
+     "id": "s4",
+     "label": "Open the designated hydrant and flush at a velocity high enough to scour the main"
+    },
+    {
+     "id": "s5",
+     "label": "Move segment by segment outward until the whole zone is flushed"
+    },
+    {
+     "id": "s6",
+     "label": "Reopen valves in the planned order, confirm residuals, and complete the program records"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Unidirectional flushing works outward from the cleanest water, isolating one segment at a time so full scouring velocity passes through each main in a single direction."
+  },
+  {
+   "id": "c1w-process23",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the disinfection and commissioning of a new watermain under Ontario practice.",
+   "topicId": "process-watermain-disinfection",
+   "level": "class1",
+   "assumptions": "Fictional new subdivision watermain in Ontario, disinfected by the continuous feed chlorine method.",
+   "configuration": "Scope: installed and pressure tested main through final clearance to place it in service.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Flush the new main to remove debris and dirty water"
+    },
+    {
+     "id": "s2",
+     "label": "Fill the main with chlorinated water to the target chlorine dose"
+    },
+    {
+     "id": "s3",
+     "label": "Hold the chlorinated water in the main for the required contact period"
+    },
+    {
+     "id": "s4",
+     "label": "Flush the main until the chlorine residual matches the distribution system"
+    },
+    {
+     "id": "s5",
+     "label": "Collect bacteriological samples on two consecutive days and receive absent results"
+    },
+    {
+     "id": "s6",
+     "label": "Connect the main to the live system and place it in service"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A new main is cleaned, disinfected with a held chlorine dose, flushed back to system residual, and only connected after two consecutive days of absent bacteriological results."
+  },
+  {
+   "id": "c1w-process24",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the return to service sequence after a watermain break repair.",
+   "topicId": "process-watermain-break-repair",
+   "level": "class1",
+   "assumptions": "Fictional winter watermain break on an Ontario residential street, repaired with a clamped section.",
+   "configuration": "Scope: the repaired section isolated in an excavated trench through restored service.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Isolate the broken section and confirm the excavation is safe to work in"
+    },
+    {
+     "id": "s2",
+     "label": "Repair the main using disinfected fittings and clean pipe handling"
+    },
+    {
+     "id": "s3",
+     "label": "Flush the repaired section through a hydrant or blow off until the water runs clear"
+    },
+    {
+     "id": "s4",
+     "label": "Restore the chlorine residual in the section to match the system"
+    },
+    {
+     "id": "s5",
+     "label": "Collect a bacteriological sample from the repaired section where required"
+    },
+    {
+     "id": "s6",
+     "label": "Reopen valves slowly, check pressure, and confirm service is restored to customers"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "After a break repair, the section is flushed clear and the residual restored before valves are reopened slowly, so repaired and disinfected pipe is not put back on customers without verification."
+  },
+  {
+   "id": "c1w-process25",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the response and reporting sequence for an adverse water quality incident in Ontario.",
+   "topicId": "process-awq-incident-response",
+   "level": "class1",
+   "assumptions": "Fictional Ontario municipal system that receives an adverse bacteriological result under Ontario Regulation 170/03.",
+   "configuration": "Scope: receipt of an adverse laboratory result through the required notifications and resampling.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Receive and confirm the adverse result from the licensed laboratory"
+    },
+    {
+     "id": "s2",
+     "label": "Notify the local medical officer of health and the ministry spill action centre as soon as possible"
+    },
+    {
+     "id": "s3",
+     "label": "Notify the owner and the overall responsible operator"
+    },
+    {
+     "id": "s4",
+     "label": "Issue any public notice or advisory directed by the medical officer of health"
+    },
+    {
+     "id": "s5",
+     "label": "Take corrective action such as flushing and raising the disinfectant residual"
+    },
+    {
+     "id": "s6",
+     "label": "Collect resamples and confirm the follow up results before standing down the response"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Ontario practice puts notification of the medical officer of health and the ministry first alongside corrective action, and the incident is not closed until resampling confirms the water is back to standard."
+  },
+  {
+   "id": "c1w-process26",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for collecting a distribution chlorine residual sample.",
+   "topicId": "process-chlorine-residual-sampling",
+   "level": "class1",
+   "assumptions": "Fictional routine free chlorine residual check at a designated Ontario distribution sample station.",
+   "configuration": "Scope: arriving at the sample tap through recording the result.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Select the designated sample tap and remove any aerator or hose"
+    },
+    {
+     "id": "s2",
+     "label": "Flush the tap at a steady flow for several minutes to draw fresh main water"
+    },
+    {
+     "id": "s3",
+     "label": "Rinse the sample cell with the sample water"
+    },
+    {
+     "id": "s4",
+     "label": "Fill the cell and add the DPD reagent for free chlorine"
+    },
+    {
+     "id": "s5",
+     "label": "Read the residual in the colorimeter within the method time limit"
+    },
+    {
+     "id": "s6",
+     "label": "Record the result, location, date, and time in the sampling log"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A residual sample must represent the main, not the plumbing, so the tap is flushed first, the cell is rinsed with sample, and the DPD reading is taken within the method time."
+  },
+  {
+   "id": "c1w-process27",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the bacteriological sampling and chain of custody sequence.",
+   "topicId": "process-bacteriological-sampling",
+   "level": "class1",
+   "assumptions": "Fictional routine distribution bacteriological sample in Ontario, collected in a sterile bottle with sodium thiosulfate.",
+   "configuration": "Scope: preparing the sterile bottle through delivery to the licensed laboratory.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Wash hands and confirm the sterile bottle seal is intact and within its expiry"
+    },
+    {
+     "id": "s2",
+     "label": "Disinfect the sample tap and flush it to draw fresh main water"
+    },
+    {
+     "id": "s3",
+     "label": "Reduce the flow and fill the bottle without touching the rim or rinsing out the preservative"
+    },
+    {
+     "id": "s4",
+     "label": "Cap the bottle immediately and label it with location, date, and time"
+    },
+    {
+     "id": "s5",
+     "label": "Complete the chain of custody form and place the sample in a cooler with ice packs"
+    },
+    {
+     "id": "s6",
+     "label": "Deliver the sample to the licensed laboratory within the allowed holding time"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Bacteriological sampling protects sterility at every step: the tap is disinfected, the bottle is never rinsed or touched at the rim, and the chilled sample reaches the lab inside its holding time with custody paperwork."
+  },
+  {
+   "id": "c1w-process28",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a grab turbidity measurement on filtered water.",
+   "topicId": "process-turbidity-sampling",
+   "level": "class1",
+   "assumptions": "Fictional bench turbidimeter check of filter effluent at a small Ontario plant.",
+   "configuration": "Scope: drawing the sample through recording the verified result.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Draw the sample from the filter effluent tap after a brief flush"
+    },
+    {
+     "id": "s2",
+     "label": "Fill a clean sample vial and wipe the outside dry and free of fingerprints"
+    },
+    {
+     "id": "s3",
+     "label": "Insert the vial into the calibrated turbidimeter with the index mark aligned"
+    },
+    {
+     "id": "s4",
+     "label": "Read and record the turbidity in NTU"
+    },
+    {
+     "id": "s5",
+     "label": "Compare the result with the continuous analyzer reading"
+    },
+    {
+     "id": "s6",
+     "label": "Investigate and note any difference beyond the plant tolerance"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A grab turbidity result is only trustworthy with a clean, bubble free vial in a calibrated meter, and comparing it with the continuous analyzer verifies the online instrument."
+  },
+  {
+   "id": "c1w-process29",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the general lead sampling sequence at an Ontario school or day nursery plumbing system.",
+   "topicId": "process-lead-sampling-schools",
+   "level": "class1",
+   "assumptions": "Fictional Ontario school sampled for lead in drinking water under Ontario Regulation 243/07 at a general level.",
+   "configuration": "Scope: planning the sampling visit through submission of the flushed and standing samples.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Identify the drinking water fixtures to be sampled and prepare labelled bottles"
+    },
+    {
+     "id": "s2",
+     "label": "Confirm the water has stood in the plumbing for the required standing period"
+    },
+    {
+     "id": "s3",
+     "label": "Collect the standing sample from the fixture before any flushing"
+    },
+    {
+     "id": "s4",
+     "label": "Flush the plumbing for the required period after the standing sample"
+    },
+    {
+     "id": "s5",
+     "label": "Collect the flushed sample from the same fixture"
+    },
+    {
+     "id": "s6",
+     "label": "Submit both samples with completed forms to the licensed laboratory"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Lead sampling compares a standing sample, which captures lead leached during stagnation, with a flushed sample from the same fixture, so the standing sample must be taken before any water is run."
+  },
+  {
+   "id": "c1w-process30",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the receiving and storage checks for a bulk chemical delivery.",
+   "topicId": "process-chemical-receiving",
+   "level": "class1",
+   "assumptions": "Fictional delivery of bulk sodium hypochlorite to an Ontario treatment plant.",
+   "configuration": "Scope: tanker arriving at the plant gate through the chemical placed in storage.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Verify the delivery paperwork matches the product and quantity ordered"
+    },
+    {
+     "id": "s2",
+     "label": "Inspect the tanker connections and the plant fill line before transfer"
+    },
+    {
+     "id": "s3",
+     "label": "Confirm the receiving tank has enough free volume for the delivery"
+    },
+    {
+     "id": "s4",
+     "label": "Connect the transfer line and open valves in the correct order with spill containment in place"
+    },
+    {
+     "id": "s5",
+     "label": "Monitor the transfer and tank level until the delivery is complete"
+    },
+    {
+     "id": "s6",
+     "label": "Disconnect, close and tag the fill line, and record the delivery in the chemical log"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A safe chemical transfer starts with paperwork, connections, and confirmed tank capacity, keeps containment in place during transfer, and ends with the fill point secured and the delivery logged."
+  },
+  {
+   "id": "c1w-process31",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the start up of a liquid alum feed system.",
+   "topicId": "process-alum-feed-startup",
+   "level": "class1",
+   "assumptions": "Fictional alum metering pump system being started at the beginning of a production run.",
+   "configuration": "Scope: alum storage tank through a verified feed rate at the rapid mix.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the alum tank level and that the suction line is flooded"
+    },
+    {
+     "id": "s2",
+     "label": "Open the suction and discharge valves on the feed line"
+    },
+    {
+     "id": "s3",
+     "label": "Prime the metering pump until alum flows without air"
+    },
+    {
+     "id": "s4",
+     "label": "Start the pump at the calculated stroke and speed setting for the target dose"
+    },
+    {
+     "id": "s5",
+     "label": "Confirm flow with a calibration column drawdown check"
+    },
+    {
+     "id": "s6",
+     "label": "Verify the dose by jar test or settled water turbidity and trim the setting"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A metering pump is primed on a flooded suction with valves lined up first, then set to the calculated dose and proven by a calibration drawdown before the dose is trusted."
+  },
+  {
+   "id": "c1w-process32",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the start up of a sodium hypochlorite feed system for disinfection.",
+   "topicId": "process-hypochlorite-feed-startup",
+   "level": "class1",
+   "assumptions": "Fictional 12 percent sodium hypochlorite feed system starting with the plant.",
+   "configuration": "Scope: day tank check through a confirmed residual at the clearwell outlet.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Check the hypochlorite day tank level and the age and strength of the solution"
+    },
+    {
+     "id": "s2",
+     "label": "Open the suction and discharge valves and prime the metering pump"
+    },
+    {
+     "id": "s3",
+     "label": "Start the feed pump paced to plant flow at the calculated dose"
+    },
+    {
+     "id": "s4",
+     "label": "Confirm feed by a calibration column drawdown"
+    },
+    {
+     "id": "s5",
+     "label": "Measure the free chlorine residual after the contact point"
+    },
+    {
+     "id": "s6",
+     "label": "Adjust the dose so the clearwell outlet residual meets the target"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Hypochlorite feed is proven at the pump by drawdown and proven in the water by the measured residual, with the dose trimmed only after both checks are known."
+  },
+  {
+   "id": "c1w-process33",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the overview sequence for starting a fluoride feed system where fluoridation is practised.",
+   "topicId": "process-fluoride-feed",
+   "level": "class1",
+   "assumptions": "Fictional Ontario plant that fluoridates, feeding a fluoride compound to finished water.",
+   "configuration": "Scope: saturator or solution tank check through a verified fluoride residual in finished water.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the fluoride solution tank level and that the feed line is intact"
+    },
+    {
+     "id": "s2",
+     "label": "Line up the suction and discharge valves and prime the metering pump"
+    },
+    {
+     "id": "s3",
+     "label": "Start the pump at the calculated setting for the target finished water concentration"
+    },
+    {
+     "id": "s4",
+     "label": "Confirm the feed rate with a calibration drawdown"
+    },
+    {
+     "id": "s5",
+     "label": "Collect a finished water sample and measure the fluoride concentration"
+    },
+    {
+     "id": "s6",
+     "label": "Adjust the feed and record the dose and result in the daily log"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Fluoride is fed to a tight target concentration, so the pump is set by calculation, proven by drawdown, and confirmed by a measured finished water concentration before adjustment."
+  },
+  {
+   "id": "c1w-process34",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the start up of a centrifugal treated water pump.",
+   "topicId": "process-pump-startup",
+   "level": "class1",
+   "assumptions": "Fictional high lift centrifugal pump being placed into service after a weekend shutdown.",
+   "configuration": "Scope: pump at rest through the pump running at its duty point.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Inspect the pump and motor and confirm the area is clear and dry"
+    },
+    {
+     "id": "s2",
+     "label": "Confirm the pump casing is primed and the suction valve is fully open"
+    },
+    {
+     "id": "s3",
+     "label": "Check that the discharge valve is closed or at its start position"
+    },
+    {
+     "id": "s4",
+     "label": "Start the motor and watch pressure and current as the pump comes up to speed"
+    },
+    {
+     "id": "s5",
+     "label": "Open the discharge valve slowly until the duty flow is reached"
+    },
+    {
+     "id": "s6",
+     "label": "Record flow, pressures, and any unusual noise or vibration"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A centrifugal pump starts primed with suction open and discharge throttled, then the discharge is opened slowly to the duty point while pressures and current confirm a healthy start."
+  },
+  {
+   "id": "c1w-process35",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the planned shutdown of a centrifugal treated water pump.",
+   "topicId": "process-pump-shutdown",
+   "level": "class1",
+   "assumptions": "Fictional planned shutdown of one high lift pump for seal inspection.",
+   "configuration": "Scope: pump running at duty through the pump secured at rest.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm another pump or storage can carry the demand while this pump is out"
+    },
+    {
+     "id": "s2",
+     "label": "Close the discharge valve slowly to unload the pump"
+    },
+    {
+     "id": "s3",
+     "label": "Stop the motor once flow has fallen to near zero"
+    },
+    {
+     "id": "s4",
+     "label": "Close the suction valve to isolate the pump"
+    },
+    {
+     "id": "s5",
+     "label": "Drain or vent the casing if the pump will be opened"
+    },
+    {
+     "id": "s6",
+     "label": "Apply lockout and tagout and record the shutdown in the log"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A planned shutdown unloads the pump by throttling the discharge before stopping the motor, then isolates, drains, and locks out the machine in that order."
+  },
+  {
+   "id": "c1w-process36",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the return of a disinfected well to service.",
+   "topicId": "process-well-startup-after-disinfection",
+   "level": "class1",
+   "assumptions": "Fictional municipal well disinfected after pump replacement, under Ontario practice.",
+   "configuration": "Scope: well disinfected and held through clearance sampling and connection to the system.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Pump the well to waste until the heavy chlorine from disinfection is flushed out"
+    },
+    {
+     "id": "s2",
+     "label": "Continue pumping until the chlorine residual falls to near the normal system level"
+    },
+    {
+     "id": "s3",
+     "label": "Collect a bacteriological sample from the well sample tap"
+    },
+    {
+     "id": "s4",
+     "label": "Receive an absent bacteriological result from the licensed laboratory"
+    },
+    {
+     "id": "s5",
+     "label": "Place the well into service at a controlled rate"
+    },
+    {
+     "id": "s6",
+     "label": "Monitor residual and turbidity as the well comes fully online"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A disinfected well is pumped to waste until the strong chlorine is gone, and it is only connected after an absent bacteriological result confirms the disinfection worked."
+  },
+  {
+   "id": "c1w-process37",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the shock chlorination of a well.",
+   "topicId": "process-well-shock-chlorination",
+   "level": "class1",
+   "assumptions": "Fictional shock chlorination of a drilled well after a positive routine sample investigation pointed to the well.",
+   "configuration": "Scope: preparing the chlorine solution through the disinfected well standing idle.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Calculate the well water volume and the chlorine needed for the target shock dose"
+    },
+    {
+     "id": "s2",
+     "label": "Mix the chlorine solution and confirm the well pump and controls are ready"
+    },
+    {
+     "id": "s3",
+     "label": "Introduce the solution into the well so it reaches the full water column"
+    },
+    {
+     "id": "s4",
+     "label": "Surge or circulate the water so chlorinated water contacts the casing and screen"
+    },
+    {
+     "id": "s5",
+     "label": "Run each connected outlet until a strong chlorine odour or residual is detected, then close it"
+    },
+    {
+     "id": "s6",
+     "label": "Let the chlorinated water stand in the well for the required contact period"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Shock chlorination doses the whole well volume, works the solution through the casing and into every outlet, and then relies on standing contact time before the well is flushed and resampled."
+  },
+  {
+   "id": "c1w-process38",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the cleaning of a raw water intake screen.",
+   "topicId": "process-intake-screen-cleaning",
+   "level": "class1",
+   "assumptions": "Fictional shoreline intake with a bar screen showing a rising differential level.",
+   "configuration": "Scope: planning the work through the screen returned to normal duty.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review the differential level trend and confirm the screen is fouling"
+    },
+    {
+     "id": "s2",
+     "label": "Reduce plant flow or switch to the standby intake path if available"
+    },
+    {
+     "id": "s3",
+     "label": "Isolate the screen bay and apply the required safety controls"
+    },
+    {
+     "id": "s4",
+     "label": "Rake or wash the accumulated debris from the screen bars"
+    },
+    {
+     "id": "s5",
+     "label": "Inspect the bars and guides for damage while the screen is clean"
+    },
+    {
+     "id": "s6",
+     "label": "Return the bay to service and confirm the differential level has recovered"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Screen cleaning is driven by the differential level, done with the bay isolated at reduced flow, and proven complete when the differential returns to normal."
+  },
+  {
+   "id": "c1w-process39",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the cleaning of a sedimentation basin.",
+   "topicId": "process-sedimentation-basin-cleaning",
+   "level": "class1",
+   "assumptions": "Fictional annual cleaning of a rectangular clarifier with accumulated sludge and algae.",
+   "configuration": "Scope: basin in service through the cleaned basin ready to refill.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Shift production to the remaining basins and confirm plant capacity"
+    },
+    {
+     "id": "s2",
+     "label": "Close the influent and effluent valves to isolate the basin"
+    },
+    {
+     "id": "s3",
+     "label": "Drain the basin to the residuals handling system"
+    },
+    {
+     "id": "s4",
+     "label": "Wash down walls, weirs, and baffles and remove the remaining sludge"
+    },
+    {
+     "id": "s5",
+     "label": "Inspect the sludge collector, weirs, and coating while the basin is empty"
+    },
+    {
+     "id": "s6",
+     "label": "Close the drain and record the basin as ready for a controlled refill"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Basin cleaning isolates and drains the cell to residuals handling, washes and inspects it while empty, and leaves it ready for the slow controlled refill used at start up."
+  },
+  {
+   "id": "c1w-process40",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a filter media inspection during a drained filter outage.",
+   "topicId": "process-filter-media-inspection",
+   "level": "class1",
+   "assumptions": "Fictional inspection of a dual media filter suspected of mudball formation.",
+   "configuration": "Scope: filter drained for inspection through the inspection findings recorded.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Drain the water to just below the media surface"
+    },
+    {
+     "id": "s2",
+     "label": "Take core samples of media at several points across the bed"
+    },
+    {
+     "id": "s3",
+     "label": "Measure the media depth and compare it with the design depth"
+    },
+    {
+     "id": "s4",
+     "label": "Check the cores for mudballs, fouling, and media loss or mixing"
+    },
+    {
+     "id": "s5",
+     "label": "Inspect the exposed underdrain and support gravel where visible"
+    },
+    {
+     "id": "s6",
+     "label": "Record depths and findings and set the corrective work before refilling"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A media inspection samples the bed itself: cores reveal mudballs and fouling, depth checks reveal media loss, and findings are recorded before the filter is returned to service."
+  },
+  {
+   "id": "c1w-process41",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the troubleshooting sequence when a filter backwash is not cleaning the bed.",
+   "topicId": "process-backwash-troubleshooting",
+   "level": "class1",
+   "assumptions": "Fictional filter whose post wash headloss stays high and whose waste water never ran dirty.",
+   "configuration": "Scope: a completed wash that left the bed dirty through the confirmed root cause check.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review the backwash flow rate record against the design wash rate"
+    },
+    {
+     "id": "s2",
+     "label": "Confirm the backwash pump delivered full flow for the full wash duration"
+    },
+    {
+     "id": "s3",
+     "label": "Check that the air scour ran for its full set time before the water wash"
+    },
+    {
+     "id": "s4",
+     "label": "Inspect the drained bed surface for mudballs and cracking"
+    },
+    {
+     "id": "s5",
+     "label": "Check the wash water troughs and waste valve for partial blockage or leakage"
+    },
+    {
+     "id": "s6",
+     "label": "Correct the cause found and repeat a supervised wash to confirm cleaning"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Poor washing is traced in the order the wash happens: rate, duration, air scour, bed condition, and the waste path, then proven fixed by a supervised repeat wash."
+  },
+  {
+   "id": "c1w-process42",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the calibration check sequence for a continuous free chlorine analyzer.",
+   "topicId": "process-chlorine-analyzer-calibration",
+   "level": "class1",
+   "assumptions": "Fictional online amperometric chlorine analyzer at the clearwell outlet.",
+   "configuration": "Scope: taking the analyzer reading through returning it to service verified.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Record the analyzer reading and the sample flow status"
+    },
+    {
+     "id": "s2",
+     "label": "Collect a grab sample at the analyzer sample tap at the same moment"
+    },
+    {
+     "id": "s3",
+     "label": "Measure the grab sample free chlorine on the bench DPD colorimeter"
+    },
+    {
+     "id": "s4",
+     "label": "Compare the analyzer and bench results against the plant tolerance"
+    },
+    {
+     "id": "s5",
+     "label": "Adjust or calibrate the analyzer if the difference is outside tolerance"
+    },
+    {
+     "id": "s6",
+     "label": "Return the analyzer to service and record both readings in the log"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "An online analyzer is verified against a simultaneous grab sample measured by the reference bench method, and it is only adjusted when the paired readings fall outside tolerance."
+  }
+ ],
+ "missions": [
+  {
+   "id": "c1w-mission44",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 44: The Hydraulics Flow Conversion Shift",
+   "tasks": [
+    {
+     "taskId": "c1w-error62",
+     "revision": "r1",
+     "occurrenceId": "m44-t1"
+    },
+    {
+     "taskId": "c1w-process05",
+     "revision": "r1",
+     "occurrenceId": "m44-t2"
+    }
+   ]
+  },
+  {
+   "id": "c1w-mission45",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 45: The Process Direct Filtration Shift",
+   "tasks": [
+    {
+     "taskId": "c1w-process06",
+     "revision": "r1",
+     "occurrenceId": "m45-t1"
+    },
+    {
+     "taskId": "c1w-error63",
+     "revision": "r1",
+     "occurrenceId": "m45-t2"
+    },
+    {
+     "taskId": "c1w-error64",
+     "revision": "r1",
+     "occurrenceId": "m45-t3"
+    }
+   ]
+  },
+  {
+   "id": "c1w-mission46",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 46: The Hydraulics Velocity Shift",
+   "tasks": [
+    {
+     "taskId": "c1w-error65",
+     "revision": "r1",
+     "occurrenceId": "m46-t1"
+    },
+    {
+     "taskId": "c1w-process07",
+     "revision": "r1",
+     "occurrenceId": "m46-t2"
+    },
+    {
+     "taskId": "c1w-error66",
+     "revision": "r1",
+     "occurrenceId": "m46-t3"
+    },
+    {
+     "taskId": "c1w-error67",
+     "revision": "r1",
+     "occurrenceId": "m46-t4"
+    }
+   ]
+  },
+  {
+   "id": "c1w-mission47",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 47: The Process Slow Sand Shift",
+   "tasks": [
+    {
+     "taskId": "c1w-process08",
+     "revision": "r1",
+     "occurrenceId": "m47-t1"
+    },
+    {
+     "taskId": "c1w-error68",
+     "revision": "r1",
+     "occurrenceId": "m47-t2"
+    }
+   ]
+  },
+  {
+   "id": "c1w-mission48",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 48: The Hydraulics Velocity Shift",
+   "tasks": [
+    {
+     "taskId": "c1w-error69",
+     "revision": "r1",
+     "occurrenceId": "m48-t1"
+    },
+    {
+     "taskId": "c1w-process09",
+     "revision": "r1",
+     "occurrenceId": "m48-t2"
+    },
+    {
+     "taskId": "c1w-error70",
+     "revision": "r1",
+     "occurrenceId": "m48-t3"
+    }
+   ]
+  },
+  {
+   "id": "c1w-mission49",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 49: The Process Softening Train Shift",
+   "tasks": [
+    {
+     "taskId": "c1w-process10",
+     "revision": "r1",
+     "occurrenceId": "m49-t1"
+    },
+    {
+     "taskId": "c1w-error71",
+     "revision": "r1",
+     "occurrenceId": "m49-t2"
+    },
+    {
+     "taskId": "c1w-error72",
+     "revision": "r1",
+     "occurrenceId": "m49-t3"
+    },
+    {
+     "taskId": "c1w-error73",
+     "revision": "r1",
+     "occurrenceId": "m49-t4"
+    }
+   ]
+  },
+  {
+   "id": "c1w-mission50",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 50: The Hydraulics Head Pressure Shift",
+   "tasks": [
+    {
+     "taskId": "c1w-error74",
+     "revision": "r1",
+     "occurrenceId": "m50-t1"
+    },
+    {
+     "taskId": "c1w-process100",
+     "revision": "r1",
+     "occurrenceId": "m50-t2"
+    }
+   ]
+  },
+  {
+   "id": "c1w-mission51",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 51: The Process Coagulation Chemical Order Shift",
+   "tasks": [
+    {
+     "taskId": "c1w-process11",
+     "revision": "r1",
+     "occurrenceId": "m51-t1"
+    },
+    {
+     "taskId": "c1w-error75",
+     "revision": "r1",
+     "occurrenceId": "m51-t2"
+    },
+    {
+     "taskId": "c1w-error76",
+     "revision": "r1",
+     "occurrenceId": "m51-t3"
+    }
+   ]
+  },
+  {
+   "id": "c1w-mission52",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 52: The Coagulation Jar Test Scaling Shift",
+   "tasks": [
+    {
+     "taskId": "c1w-error77",
+     "revision": "r1",
+     "occurrenceId": "m52-t1"
+    },
+    {
+     "taskId": "c1w-process12",
+     "revision": "r1",
+     "occurrenceId": "m52-t2"
+    },
+    {
+     "taskId": "c1w-error78",
+     "revision": "r1",
+     "occurrenceId": "m52-t3"
+    },
+    {
+     "taskId": "c1w-error79",
+     "revision": "r1",
+     "occurrenceId": "m52-t4"
+    }
+   ]
+  },
+  {
+   "id": "c1w-mission53",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 53: The Process Sedimentation Startup Shift",
+   "tasks": [
+    {
+     "taskId": "c1w-process13",
+     "revision": "r1",
+     "occurrenceId": "m53-t1"
+    },
+    {
+     "taskId": "c1w-error80",
+     "revision": "r1",
+     "occurrenceId": "m53-t2"
+    }
+   ]
+  },
+  {
+   "id": "c1w-mission54",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 54: The Coagulation Jar Test Scaling Shift",
+   "tasks": [
+    {
+     "taskId": "c1w-error81",
+     "revision": "r1",
+     "occurrenceId": "m54-t1"
+    },
+    {
+     "taskId": "c1w-process14",
+     "revision": "r1",
+     "occurrenceId": "m54-t2"
+    },
+    {
+     "taskId": "c1w-error82",
+     "revision": "r1",
+     "occurrenceId": "m54-t3"
+    }
+   ]
+  },
+  {
+   "id": "c1w-mission55",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 55: The Process Filter Startup Waste Shift",
+   "tasks": [
+    {
+     "taskId": "c1w-process15",
+     "revision": "r1",
+     "occurrenceId": "m55-t1"
+    },
+    {
+     "taskId": "c1w-error83",
+     "revision": "r1",
+     "occurrenceId": "m55-t2"
+    },
+    {
+     "taskId": "c1w-error84",
+     "revision": "r1",
+     "occurrenceId": "m55-t3"
+    },
+    {
+     "taskId": "c1w-error85",
+     "revision": "r1",
+     "occurrenceId": "m55-t4"
+    }
+   ]
+  },
+  {
+   "id": "c1w-mission56",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 56: The Solids Mass Rate Shift",
+   "tasks": [
+    {
+     "taskId": "c1w-error86",
+     "revision": "r1",
+     "occurrenceId": "m56-t1"
+    },
+    {
+     "taskId": "c1w-process16",
+     "revision": "r1",
+     "occurrenceId": "m56-t2"
+    }
+   ]
+  },
+  {
+   "id": "c1w-mission57",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 57: The Process Jar Test Shift",
+   "tasks": [
+    {
+     "taskId": "c1w-process17",
+     "revision": "r1",
+     "occurrenceId": "m57-t1"
+    },
+    {
+     "taskId": "c1w-error87",
+     "revision": "r1",
+     "occurrenceId": "m57-t2"
+    },
+    {
+     "taskId": "c1w-error88",
+     "revision": "r1",
+     "occurrenceId": "m57-t3"
+    }
+   ]
+  },
+  {
+   "id": "c1w-mission58",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 58: The Water Chemistry Alkalinity Shift",
+   "tasks": [
+    {
+     "taskId": "c1w-error89",
+     "revision": "r1",
+     "occurrenceId": "m58-t1"
+    },
+    {
+     "taskId": "c1w-process18",
+     "revision": "r1",
+     "occurrenceId": "m58-t2"
+    },
+    {
+     "taskId": "c1w-error90",
+     "revision": "r1",
+     "occurrenceId": "m58-t3"
+    },
+    {
+     "taskId": "c1w-error91",
+     "revision": "r1",
+     "occurrenceId": "m58-t4"
+    }
+   ]
+  },
+  {
+   "id": "c1w-mission59",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 59: The Process Clearwell Operation Shift",
+   "tasks": [
+    {
+     "taskId": "c1w-process19",
+     "revision": "r1",
+     "occurrenceId": "m59-t1"
+    },
+    {
+     "taskId": "c1w-error92",
+     "revision": "r1",
+     "occurrenceId": "m59-t2"
+    }
+   ]
+  },
+  {
+   "id": "c1w-mission60",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 60: The Water Chemistry Alkalinity Shift",
+   "tasks": [
+    {
+     "taskId": "c1w-error93",
+     "revision": "r1",
+     "occurrenceId": "m60-t1"
+    },
+    {
+     "taskId": "c1w-process20",
+     "revision": "r1",
+     "occurrenceId": "m60-t2"
+    },
+    {
+     "taskId": "c1w-error94",
+     "revision": "r1",
+     "occurrenceId": "m60-t3"
+    }
+   ]
+  },
+  {
+   "id": "c1w-mission61",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 61: The Process Hydrant Flushing Shift",
+   "tasks": [
+    {
+     "taskId": "c1w-process21",
+     "revision": "r1",
+     "occurrenceId": "m61-t1"
+    },
+    {
+     "taskId": "c1w-error95",
+     "revision": "r1",
+     "occurrenceId": "m61-t2"
+    },
+    {
+     "taskId": "c1w-error96",
+     "revision": "r1",
+     "occurrenceId": "m61-t3"
+    },
+    {
+     "taskId": "c1w-error97",
+     "revision": "r1",
+     "occurrenceId": "m61-t4"
+    }
+   ]
+  },
+  {
+   "id": "c1w-mission62",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 62: The Chemical Dilution Shift",
+   "tasks": [
+    {
+     "taskId": "c1w-error98",
+     "revision": "r1",
+     "occurrenceId": "m62-t1"
+    },
+    {
+     "taskId": "c1w-process22",
+     "revision": "r1",
+     "occurrenceId": "m62-t2"
+    }
+   ]
+  },
+  {
+   "id": "c1w-mission63",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 63: The Process Watermain Disinfection Shift",
+   "tasks": [
+    {
+     "taskId": "c1w-process23",
+     "revision": "r1",
+     "occurrenceId": "m63-t1"
+    },
+    {
+     "taskId": "c1w-error99",
+     "revision": "r1",
+     "occurrenceId": "m63-t2"
+    },
+    {
+     "taskId": "c1w-error62",
+     "revision": "r1",
+     "occurrenceId": "m63-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "hb-p182",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "PDF p. 182, printed p. 131, Section 6.4.8.1 Hydraulic Detention Time"
+  },
+  {
+   "id": "hb-p187",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "PDF p. 187, printed p. 136, Section 6.4.15 Filtration"
+  },
+  {
+   "id": "hb-p510",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "PDF p. 510, printed p. 459, Section 13.4.1 Solids and Color"
+  },
+  {
+   "id": "hb-p683",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "PDF p. 683, printed p. 632, Chapter 20 Coagulation and Conventional Treatment"
+  },
+  {
+   "id": "hb-p684",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "PDF p. 684, printed p. 633, Coagulation Mixing and Jar Testing"
+  },
+  {
+   "id": "hb-p685",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "PDF p. 685, printed p. 634, Section 20.8 Sedimentation and Section 20.9 Filtration"
+  },
+  {
+   "id": "hb-p686",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "PDF p. 686, printed p. 635, Filtration Mechanisms and Components"
+  },
+  {
+   "id": "hb-p687",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "PDF p. 687, printed p. 636, Rapid Sand Filtration Rates"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "9d705f3e88b317c0ae26347af91dec67d1ad7d1fb17bfcf438fa070566d470f9",
+  "taskReceipts": [
+   {
+    "taskId": "c1w-error62",
+    "revision": "r1",
+    "sha256": "8f4d642504d1ea396bd3e257d395e48fda9f49f4a13c5ff065d86898c166f5fb",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-error63",
+    "revision": "r1",
+    "sha256": "bcc4608e19d6843a817a1657feb9fe5ab05d83afd918523a0f0353d000fd077c",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-error64",
+    "revision": "r1",
+    "sha256": "1d0932e4ddd3b6a926b2855e1ad5b5c12ae6be1c588d51663c13df2cec44ff0c",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-error65",
+    "revision": "r1",
+    "sha256": "6f7160fa138903ad3cf3c9f3eac02082257fda7cab7e615c1fa41f15b039b3ce",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-error66",
+    "revision": "r1",
+    "sha256": "b9f4c158a1067fbd3d3bd412db569ad27f43df4a4a9245b1f34e7affe2a9a1c5",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-error67",
+    "revision": "r1",
+    "sha256": "f8792b5766bde2ddb27f2c919365e95b9ba672249f54a2193bb39b4b29e66d9a",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-error68",
+    "revision": "r1",
+    "sha256": "1eda3d5e944b78b333defd148c0b5169ea5516cee64bde6f889a9c3cf055a568",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-error69",
+    "revision": "r1",
+    "sha256": "eda5db925a3f3151eb342d9c4db72efa641ee2f3f12a3d761324561bed1b8715",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-error70",
+    "revision": "r1",
+    "sha256": "03f2ac82ae2010b0c196c6c9feb8af29de3751a67a910fa66eabea9bfdf84351",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-error71",
+    "revision": "r1",
+    "sha256": "2379043df7fd1ff837ba85664a5a7454a7d4ce3a61ad3cdb87d1f0efc87950bb",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-error72",
+    "revision": "r1",
+    "sha256": "97761f41990028b68a646dd1b4c21e7e815b4ce62c44d89f7887d08b3bd4b00f",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-error73",
+    "revision": "r1",
+    "sha256": "0effa6dec5db4b1d58586f49cad760612f90ae87b4fac524085aa195eabe4120",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-error74",
+    "revision": "r1",
+    "sha256": "283d6cec702ab3a55efc449e020de6813443ec367d0556ff5d3b0de0cd392153",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-error75",
+    "revision": "r1",
+    "sha256": "988a842c85fa67e682efbc1b57b347071b03a33b5018bfba01865f94183a65fa",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-error76",
+    "revision": "r1",
+    "sha256": "61496b92d54d06d03735a0f5420b28ea2b0d57f816d6ce627160e1b4e8400b2e",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-error77",
+    "revision": "r1",
+    "sha256": "1ef4203773f06299a5ab038d0f5ec6b1ccd0ca9ef6217fe05f197625ad5c6169",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-error78",
+    "revision": "r1",
+    "sha256": "ded724eb16ceef341cce84f9a8a1136ea28912a55a29e15aeead080c2b488dec",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-error79",
+    "revision": "r1",
+    "sha256": "104299bd25ff2574177d5d3ed4594015476ca07020c8f45ec5ab1251b8dc88ac",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-error80",
+    "revision": "r1",
+    "sha256": "8f5dc7b3ceaf46bc31d6c117734f81f52c1d519955fd71b510846cec52bc9d6e",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-error81",
+    "revision": "r1",
+    "sha256": "d9a7152adf698b148a57e58e71cb47f047d520597c7f663954ed75b5264ebedf",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-error82",
+    "revision": "r1",
+    "sha256": "c501c96ac2c01f1b19f858f91e84e091019cfb3c204848c4dc6f557d5fa6a21f",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-error83",
+    "revision": "r1",
+    "sha256": "300dc4de7059a752e92373ee513916c03993a94a843c2efec08277f32240fe90",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-error84",
+    "revision": "r1",
+    "sha256": "0fd23c429356fd07d6560c39a28e95ef641835627a221fd5c2ff64002b0a1edb",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-error85",
+    "revision": "r1",
+    "sha256": "cdbc0efc6c0762c2e2115246745d9d39282f7006edc0e91900db067b699d934b",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-error86",
+    "revision": "r1",
+    "sha256": "9a02d8760fd91d5cc0bd916ce7e6389efc1c5fe42be16833d545c5be4fb499c4",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-error87",
+    "revision": "r1",
+    "sha256": "b366385c963a11bd1ac8da360c004ba55ec1b4b74751c86f3314c379a041a7c1",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-error88",
+    "revision": "r1",
+    "sha256": "845f0826bdfc277499b5cbb7829ce6090f84fb1579294a5e4c48b0a1c37d1e4e",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-error89",
+    "revision": "r1",
+    "sha256": "acea9e8fa0924b320bef27c97d4e2e80af92601111e12ce1713410988706ee3f",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-error90",
+    "revision": "r1",
+    "sha256": "dbe914e6281acd46746ae6bae10c722ec45906ea918da0cf7c25291a65c6df3c",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-error91",
+    "revision": "r1",
+    "sha256": "b4f5776dbf02926d1b16575f66d52c5dfd0894f247945b67a15c1617211ecce8",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-error92",
+    "revision": "r1",
+    "sha256": "3bdf98651e611574472b66858fb0678ddb7af56ff46d3071d97948e6d09b619a",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-error93",
+    "revision": "r1",
+    "sha256": "0dfec5a8fbf9f21cc775ca76c17c7836fb2dbf6cb712e6301e0762fa5336afb1",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-error94",
+    "revision": "r1",
+    "sha256": "5fe56649b2ccdabfb9bfe8575e2bf92bc5d4e43cbc56e87e2e57580d6248e841",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-error95",
+    "revision": "r1",
+    "sha256": "e3e44eb01190b0b687269ebe6f2a078e8bfc50e3723b001020fcf67212f88880",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-error96",
+    "revision": "r1",
+    "sha256": "7f59cd4784f50474a083fc76618e08cb6e8b5789649583b75efe4513eeff49d3",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-error97",
+    "revision": "r1",
+    "sha256": "947d483ec5d2f1f5d0b79039e1557941f3ad81ae521bfd79ee613dcd1876b0af",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-error98",
+    "revision": "r1",
+    "sha256": "39f63f00582bffe1000dab83d0bc69f2f42fa0b175fdec357da28d7dea14c99a",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-error99",
+    "revision": "r1",
+    "sha256": "9347e7bfa400f792d4a29aa7a7f5afd66256411c380ed2a4b55f9b39109fc2b7",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-process05",
+    "revision": "r1",
+    "sha256": "007968df30dbb968c6b38b6f9a4a51c2a39c21015aa7566678681641282482b8",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-process06",
+    "revision": "r1",
+    "sha256": "8b4368f446a957ed44d02d19113539a3afc8bdb0ec7b6d31fe2a971bb074a57e",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-process07",
+    "revision": "r1",
+    "sha256": "69f83da4c99ee1febc4d8ed7ca336fea49037f972eaa924d0ae175c210e48249",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-process08",
+    "revision": "r1",
+    "sha256": "6d7c9e35e48c1455540f264ac0d83226c55c9222b9b54e8bc7dec9ff7b998b25",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-process09",
+    "revision": "r1",
+    "sha256": "0c88c6d0716f01de0e4b7019aee1bd008d5acc78a8f90cceb6fc9117036448f0",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-process10",
+    "revision": "r1",
+    "sha256": "cc1a83980ca055290b5daf543709c5766f827b9b032c3dcda4f7a811df61524a",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-process100",
+    "revision": "r1",
+    "sha256": "894b7d762aba7e9878941196f10898b2964ae7061f1ab4273cf2a7a325c9001e",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-process11",
+    "revision": "r1",
+    "sha256": "cd0272b08668546c12fa15c19e104ffe669b8a2b5282c38e259f3f42c747c639",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-process12",
+    "revision": "r1",
+    "sha256": "47a2b16c3ac5c41cbbcdd77d8cf7f983b73b7a1c9b415bc99cb6c1caf8ddd568",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-process13",
+    "revision": "r1",
+    "sha256": "0d460d76fd47efc500d46506f568dccf7797b30a7d1f134216ceaa2c327d5217",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-process14",
+    "revision": "r1",
+    "sha256": "a79042ba45866eda245f94d491eca147e0e825df92989b9aaaba8e4c0654a69a",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-process15",
+    "revision": "r1",
+    "sha256": "882caa19a98da61e700f15b71fd4a719a6f710fd94913d398d2f4ee6611c0dc9",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-process16",
+    "revision": "r1",
+    "sha256": "32d03a83a971d2da618318f7bada3e6251fa892994039efe13cc34b47c723691",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-process17",
+    "revision": "r1",
+    "sha256": "e185f0d44ba205d0f34a6a2cb82f6a21feb74267cb1f5491e94be2529e074a7c",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-process18",
+    "revision": "r1",
+    "sha256": "7e606ab9c8babc5b0d0991b8bdf734f21d4529e3c1966ffb41a21d2e62ee0ea1",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-process19",
+    "revision": "r1",
+    "sha256": "7d350727a1af3bd1ed337f9e98fe52f3112e5d080ca556762bb55a7e5f33e34b",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-process20",
+    "revision": "r1",
+    "sha256": "ba28f989f21ef8d08e11619174982599ee7a24be749801380af93a52876faf12",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-process21",
+    "revision": "r1",
+    "sha256": "12c14fd59fa262e0c6bd2b801934249a5d72fed1f39736c498b1767d99bc2cfc",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-process22",
+    "revision": "r1",
+    "sha256": "5e7b416fbb3e27cdf37638375af0ea84dd08d2872e16e9bb8103e2245e6756a6",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-process23",
+    "revision": "r1",
+    "sha256": "38c8fb4bbfa897b7c0c73fc65a82504acd8bd44893b9191bc5be2e0e27226fc1",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-process24",
+    "revision": "r1",
+    "sha256": "b2849e2b1bff159ec0019c1aebdeaf1d1f724df0f586d1b5323ab7bd2dfb096f",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-process25",
+    "revision": "r1",
+    "sha256": "e804bac6db8dac6dfe5159644ec6e56c626907a2282912b3bbf3b3aa5f6397c3",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-process26",
+    "revision": "r1",
+    "sha256": "cea2d53aebec5349b3b780918d4cbc8e08008e163157eaefbb3af947486f803f",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-process27",
+    "revision": "r1",
+    "sha256": "d1be9a3711e93d1f64bb0b5447fe729c3d61cc29d16352a284648b328a3921eb",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-process28",
+    "revision": "r1",
+    "sha256": "9c99c634bfc6330aa439e36e60a806f9f3e97c4b1e4a0cca6496854ce837761e",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-process29",
+    "revision": "r1",
+    "sha256": "e3ac684635cc7c325ecc4d231f32ae76114a96652ff076efa949816fedaf3c38",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-process30",
+    "revision": "r1",
+    "sha256": "40785f33fe72fb45a726c2b97ee5d6a1ff6f7c7021c83389352162afe0719a38",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-process31",
+    "revision": "r1",
+    "sha256": "f1ddfb2ac00debd25e105bb11c44ecaeaaf85be4f7ffaa9833ade79d3e74f292",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-process32",
+    "revision": "r1",
+    "sha256": "70c207779d9d54a8c7fadc481d33630fa9982cedd99a2586b95a9b7c8b25ba65",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-process33",
+    "revision": "r1",
+    "sha256": "945fd9988fb8ff55f39f7ddc9097a6f6e7c143d5d7c82bb34a22561690f9f70f",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-process34",
+    "revision": "r1",
+    "sha256": "6d2896b7b4be4e47f099c08556b52236f7f31d1ff832ae95dc70e15ae40bfc4e",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-process35",
+    "revision": "r1",
+    "sha256": "6e1faf056f582c10bf5df27e20da1616e2b074bb268def24bab488003e90b3f1",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-process36",
+    "revision": "r1",
+    "sha256": "cfc3fed7a08c0f816cb427452370a9ddbbfe286493c49977194b4d4df61b4445",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-process37",
+    "revision": "r1",
+    "sha256": "052369b5620e1e258b4d2d3b707b5aff408b1afadb3a6da992141e85d77b3b99",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-process38",
+    "revision": "r1",
+    "sha256": "12302f4df9da0a78e124b6df113c0614ee60467afd41bce7278ec7b4d5616d3c",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-process39",
+    "revision": "r1",
+    "sha256": "d15b445107442eeb02eb4de79ce44a9a5da5f54a2a5de3630584407d1b8eb2d1",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-process40",
+    "revision": "r1",
+    "sha256": "f162196ab250c832e92634fb220e0c02661d6430f2fbacb0e4d31525b1088523",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-process41",
+    "revision": "r1",
+    "sha256": "002d3bbca02e8410ec8eb9f3894e6be9f8721a5659c494d6b65a85f41777b614",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   },
+   {
+    "taskId": "c1w-process42",
+    "revision": "r1",
+    "sha256": "a58a9e2ad5db2e6495382189704b62f1f2e03fae94e8141f8e29c440193847ae",
+    "sourceIds": [
+     "hb-p182"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "c1w-mission44",
+    "revision": "r1",
+    "sha256": "84b69ab48fa054cf7a2219021bb7ac3dc765f11bd549a9048c3958261fd0fc83"
+   },
+   {
+    "missionId": "c1w-mission45",
+    "revision": "r1",
+    "sha256": "d8694581e6c18e813d56ea067b906b1c99d7eef06a8eb726238616ea4edbefab"
+   },
+   {
+    "missionId": "c1w-mission46",
+    "revision": "r1",
+    "sha256": "6cc08c67ac1e1a6dce3560dff1402e613d3d547bf72af27304fda7b4a1558c82"
+   },
+   {
+    "missionId": "c1w-mission47",
+    "revision": "r1",
+    "sha256": "f3e2c82b9fb4c2f5a9f743e6a5199ee9f3ff9807d1faeba75fcfc08fd300255b"
+   },
+   {
+    "missionId": "c1w-mission48",
+    "revision": "r1",
+    "sha256": "dff36bf7862202264b4ba444f1c9e600e46f59d2356e94d2215215239a7f73a6"
+   },
+   {
+    "missionId": "c1w-mission49",
+    "revision": "r1",
+    "sha256": "4491ff6070b58f0d4fb81a200caa0013ee656bb5522e05b03cdafc4cecbe5800"
+   },
+   {
+    "missionId": "c1w-mission50",
+    "revision": "r1",
+    "sha256": "7e390a31289f5273b745a668de5d03b74b2b2b541d2cae32e98af331bce9d6ec"
+   },
+   {
+    "missionId": "c1w-mission51",
+    "revision": "r1",
+    "sha256": "529041a6d779c73ff5153e5eb2f25563ed706951361cfa0cb642adf5590555d1"
+   },
+   {
+    "missionId": "c1w-mission52",
+    "revision": "r1",
+    "sha256": "f5ed4a20763f59a9cb97fdf02a3c05ee91c1f83c262e2de8d93277720a6e2f9c"
+   },
+   {
+    "missionId": "c1w-mission53",
+    "revision": "r1",
+    "sha256": "6a621c05d37c109622942677fa476fbf5489da1958c0a99690ceba5e736ed5bc"
+   },
+   {
+    "missionId": "c1w-mission54",
+    "revision": "r1",
+    "sha256": "0e34600394ca337307223a3a55df162346f2838405a3dabc0f995681d48b7aab"
+   },
+   {
+    "missionId": "c1w-mission55",
+    "revision": "r1",
+    "sha256": "1b4fbbd963b27d40435badd6badee3afd5eae9c124e7bfdd3bca848762b13920"
+   },
+   {
+    "missionId": "c1w-mission56",
+    "revision": "r1",
+    "sha256": "6f2460109736254fc0402e84b038ab476d9b853335c305f543d48c10405afe7a"
+   },
+   {
+    "missionId": "c1w-mission57",
+    "revision": "r1",
+    "sha256": "f15758954f165fddf07b9aa9786947b04787f94761dc11f4701f8288d871214e"
+   },
+   {
+    "missionId": "c1w-mission58",
+    "revision": "r1",
+    "sha256": "a0f0965b2570512ddc205d4eb1eca46e618e39e1f1f66922cb21b0f26cd4da5b"
+   },
+   {
+    "missionId": "c1w-mission59",
+    "revision": "r1",
+    "sha256": "48b0a482ae0782ff573bc3453502af299a83bd2d6cdef22e134674cf776568a9"
+   },
+   {
+    "missionId": "c1w-mission60",
+    "revision": "r1",
+    "sha256": "27bb478ce046a0cfaea97b815a7bbb1263bde3964c0aaedb8ef27dae3be413cb"
+   },
+   {
+    "missionId": "c1w-mission61",
+    "revision": "r1",
+    "sha256": "baf79e3f11b260a361af84c9a053a5dd9038f3ded2702d4b1724b7cc4ffd6c5b"
+   },
+   {
+    "missionId": "c1w-mission62",
+    "revision": "r1",
+    "sha256": "b9e7172ce571a63922c1f2b659ca3ed644371cc0083ffd8af7aa49996be18460"
+   },
+   {
+    "missionId": "c1w-mission63",
+    "revision": "r1",
+    "sha256": "f59dc69af7632523b73be084611734bae4c221866a83ea6a4414466b43816411"
+   }
+  ]
+ }
+}

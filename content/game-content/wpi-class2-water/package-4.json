@@ -1,0 +1,5545 @@
+{
+ "courseKey": "wpi-class2-water",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "wp2w-process40",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the emergency disinfection response after a treatment plant contamination event.",
+   "topicId": "process-emergency-disinfection-response",
+   "level": "class1",
+   "assumptions": "Fictional plant in western Canada responding to a suspected contamination of the clearwell during maintenance.",
+   "configuration": "Scope: event discovery through the plant returned to normal service.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Stop treated water leaving the plant and notify the operator in charge and the provincial contact as the emergency plan directs in general terms"
+    },
+    {
+     "id": "s2",
+     "label": "Isolate the affected clearwell cell or storage from the rest of the system"
+    },
+    {
+     "id": "s3",
+     "label": "Sample the affected water for chlorine residual and microbiological indicators before any correction"
+    },
+    {
+     "id": "s4",
+     "label": "Raise disinfection in the isolated water to the emergency plan level and hold the directed contact time"
+    },
+    {
+     "id": "s5",
+     "label": "Resample and confirm acceptable results, then flush or waste the affected water as directed"
+    },
+    {
+     "id": "s6",
+     "label": "Return the plant to service in stages, document the event fully, and review the maintenance procedure that allowed it"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Emergency response isolates first and samples before correcting, so evidence is preserved, disinfected water is proven by resampling, and return to service is staged and documented."
+  },
+  {
+   "id": "wp2w-process41",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a filter performance evaluation for a dual media filter plant.",
+   "topicId": "process-filter-performance-evaluation",
+   "level": "class1",
+   "assumptions": "Fictional Class 2 plant in Alberta evaluating four dual media filters against each other.",
+   "configuration": "Scope: evaluation planning through ranked filters and assigned actions.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Set the evaluation measures: filtered turbidity, headloss growth, run length, backwash water use, and ripening time"
+    },
+    {
+     "id": "s2",
+     "label": "Gather one month of run records for every filter and check the records are complete and comparable"
+    },
+    {
+     "id": "s3",
+     "label": "Run each filter through one observed cycle with individual turbidity and headloss readings at set intervals"
+    },
+    {
+     "id": "s4",
+     "label": "Compare filters on the same measures and identify the strongest and weakest performers"
+    },
+    {
+     "id": "s5",
+     "label": "Inspect the weakest filter media and underdrain indicators before assigning a cause"
+    },
+    {
+     "id": "s6",
+     "label": "Rank the filters, assign corrective actions with dates, and file the evaluation report"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Filters are compared on identical measures over the same kind of cycle, and the weakest unit is inspected before any cause is assigned, so actions rest on evidence."
+  },
+  {
+   "id": "wp2w-process42",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the filter run optimization program balancing run length and quality.",
+   "topicId": "process-filter-run-optimization-program",
+   "level": "class1",
+   "assumptions": "Fictional plant in Saskatchewan seeking longer filter runs without filtered quality loss.",
+   "configuration": "Scope: baseline runs through the adopted run termination settings.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Record baseline run length, terminal headloss, filtered turbidity profile, and wash water use for each filter"
+    },
+    {
+     "id": "s2",
+     "label": "Confirm settled water quality is stable, since run length cannot be judged on a changing filter load"
+    },
+    {
+     "id": "s3",
+     "label": "Extend the run termination limit by one small step on one filter only"
+    },
+    {
+     "id": "s4",
+     "label": "Track filtered turbidity through the extended portion of the run at close intervals"
+    },
+    {
+     "id": "s5",
+     "label": "Adopt the extension only if turbidity stays in band to the new limit, otherwise return to the prior limit"
+    },
+    {
+     "id": "s6",
+     "label": "Apply the proven setting to the remaining filters and record the new termination rules in the filter program"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Run optimization extends one filter by one step under stable settled quality, and the new limit is adopted plant wide only after turbidity proves the extension is safe."
+  },
+  {
+   "id": "wp2w-process43",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the backwash optimization study for a gravity filter.",
+   "topicId": "process-backwash-optimization-study",
+   "level": "class1",
+   "assumptions": "Fictional gravity filter plant in Manitoba using more wash water than its program target.",
+   "configuration": "Scope: baseline wash review through adopted wash settings.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Measure current wash rate, duration, bed expansion, and total wash volume for a baseline wash"
+    },
+    {
+     "id": "s2",
+     "label": "Observe waste water turbidity through the wash and note when it clears relative to the wash end"
+    },
+    {
+     "id": "s3",
+     "label": "Check the cleaned bed by headloss at the start of the next run and by media surface inspection"
+    },
+    {
+     "id": "s4",
+     "label": "Shorten or lower the wash by one step and repeat the waste turbidity and headloss checks"
+    },
+    {
+     "id": "s5",
+     "label": "Confirm filtered quality and ripening time are unchanged at the reduced wash"
+    },
+    {
+     "id": "s6",
+     "label": "Adopt the reduced settings, record wash volume savings, and set the next review date"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Wash water is cut only after waste turbidity shows when cleaning is actually finished, and the reduced wash must still prove itself by clean bed headloss and unchanged filtered quality."
+  },
+  {
+   "id": "wp2w-process44",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the filter media core sampling program for a plant wide survey.",
+   "topicId": "process-filter-media-core-survey",
+   "level": "class1",
+   "assumptions": "Fictional plant in western Canada surveying media condition in all filters before a capital decision.",
+   "configuration": "Scope: survey planning through the media condition report.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Drain the first filter to just below the media surface using the planned shutdown sequence"
+    },
+    {
+     "id": "s2",
+     "label": "Take core samples at a grid of points covering the centre, edges, and areas near the wash troughs"
+    },
+    {
+     "id": "s3",
+     "label": "Measure media depth at each point and examine cores for mudballs, fouling, and layer mixing"
+    },
+    {
+     "id": "s4",
+     "label": "Wash and sieve a core portion where the program requires a size check and record the result"
+    },
+    {
+     "id": "s5",
+     "label": "Repeat the same grid and checks on every filter so results are comparable"
+    },
+    {
+     "id": "s6",
+     "label": "Compile the condition report with depth maps and findings and recommend top up, cleaning, or replacement by filter"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A comparable grid on every filter turns core sampling into a plant wide survey, and the report recommends work filter by filter from measured depths and core condition."
+  },
+  {
+   "id": "wp2w-process45",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the particle counting program used to verify filter performance.",
+   "topicId": "process-particle-counting-program",
+   "level": "class1",
+   "assumptions": "Fictional plant in British Columbia fitting particle counters to settled and filtered water lines.",
+   "configuration": "Scope: instrument set up through particle trends in routine use.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Install sample taps that deliver a steady, bubble free flow to the settled and filtered counters"
+    },
+    {
+     "id": "s2",
+     "label": "Set counter size channels and flow rates to the instrument program and confirm sample flow is stable"
+    },
+    {
+     "id": "s3",
+     "label": "Run the counters alongside grab turbidity samples and compare trends before trusting the counts"
+    },
+    {
+     "id": "s4",
+     "label": "Set plant action levels for filtered counts based on the comparison period"
+    },
+    {
+     "id": "s5",
+     "label": "Trend counts through filter runs to detect early breakthrough before turbidity responds"
+    },
+    {
+     "id": "s6",
+     "label": "Review counter data monthly, clean and check the sensors, and file the performance summary"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Particle counters earn trust by running against grab turbidity first; once action levels are set from that comparison, counts give an earlier breakthrough warning than turbidity alone."
+  },
+  {
+   "id": "wp2w-process46",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the individual filter turbidity trending routine for a production day.",
+   "topicId": "process-individual-filter-turbidity-trending",
+   "level": "class1",
+   "assumptions": "Fictional operator in western Canada trending each filter separately rather than only the combined effluent.",
+   "configuration": "Scope: start of day readings through end of day filter decisions.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Record each filter starting turbidity, headloss, rate, and hours in service"
+    },
+    {
+     "id": "s2",
+     "label": "Plot individual turbidity at the set interval and mark any filter trending above the plant band"
+    },
+    {
+     "id": "s3",
+     "label": "Check a rising filter rate and settled quality to separate a load effect from a filter effect"
+    },
+    {
+     "id": "s4",
+     "label": "Reduce rate or prepare to wash the first filter that approaches its turbidity or headloss limit"
+    },
+    {
+     "id": "s5",
+     "label": "Wash filters in the order the trends dictate rather than by fixed rotation alone"
+    },
+    {
+     "id": "s6",
+     "label": "Close the day with run lengths and wash reasons recorded for every filter"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Individual trending catches one failing filter that combined effluent would hide, and wash order follows the trends, with rate and settled checks separating load effects from filter effects."
+  },
+  {
+   "id": "wp2w-process47",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the filter to waste optimization for plants with limited waste capacity.",
+   "topicId": "process-filter-to-waste-optimization",
+   "level": "class1",
+   "assumptions": "Fictional plant in Saskatchewan where filter to waste volume competes with a small residuals system.",
+   "configuration": "Scope: ripening study through the adopted filter to waste rule.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Measure filtered turbidity at short intervals from the start of a run to learn the true ripening profile"
+    },
+    {
+     "id": "s2",
+     "label": "Identify the time and turbidity at which filtered water first meets the plant target consistently"
+    },
+    {
+     "id": "s3",
+     "label": "Set the filter to waste end point at that proven turbidity with a safety margin, not at a fixed long time"
+    },
+    {
+     "id": "s4",
+     "label": "Trial the rule on one filter and confirm clearwell turbidity is unaffected"
+    },
+    {
+     "id": "s5",
+     "label": "Apply the rule to all filters and record waste volumes saved against the baseline"
+    },
+    {
+     "id": "s6",
+     "label": "Re study the ripening profile after any media or pretreatment change and update the rule"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The waste period is set from the measured ripening profile of the actual filters, proven on one unit, and restudied whenever media or pretreatment changes."
+  },
+  {
+   "id": "wp2w-process48",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the dual media inspection and top up sequence during a filter outage.",
+   "topicId": "process-dual-media-inspection-topup",
+   "level": "class1",
+   "assumptions": "Fictional dual media filter in Alberta opened for anthracite loss found at a core survey.",
+   "configuration": "Scope: filter drained through the topped up filter returned to service.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Drain the filter and measure anthracite and sand depths at the survey grid points"
+    },
+    {
+     "id": "s2",
+     "label": "Skim or remove fouled surface material and inspect the interface for mixing or mudballs"
+    },
+    {
+     "id": "s3",
+     "label": "Add new anthracite in layers to restore the design depth and level the surface evenly"
+    },
+    {
+     "id": "s4",
+     "label": "Fill the filter slowly from below to avoid disturbing the restored bed"
+    },
+    {
+     "id": "s5",
+     "label": "Backwash gently at first, then at the normal rate, until waste water runs clear and fines are removed"
+    },
+    {
+     "id": "s6",
+     "label": "Run filter to waste, confirm turbidity meets target, and return the filter to production with depths recorded"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Top up restores measured depth layer by layer, and the bed is refilled gently and washed in stages so the new media is clean and settled before production resumes."
+  },
+  {
+   "id": "wp2w-process49",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the membrane integrity monitoring program for a low pressure membrane plant.",
+   "topicId": "process-membrane-integrity-monitoring-program",
+   "level": "class1",
+   "assumptions": "Fictional ultrafiltration plant in western Canada running direct integrity tests on its membrane trains.",
+   "configuration": "Scope: program set up through a failed train isolated and repaired.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Set the direct integrity test method, test pressure, and pass limit for the membrane trains"
+    },
+    {
+     "id": "s2",
+     "label": "Run baseline integrity tests on every train and record permeate turbidity trends alongside"
+    },
+    {
+     "id": "s3",
+     "label": "Schedule routine tests at the program frequency and after any permeate turbidity excursion"
+    },
+    {
+     "id": "s4",
+     "label": "Take any train that fails its test out of service and isolate it from the permeate header"
+    },
+    {
+     "id": "s5",
+     "label": "Locate the failure by module testing, repair or replace the failed element, and retest the train"
+    },
+    {
+     "id": "s6",
+     "label": "Return the train to service only on a passing test and file all results in the membrane program record"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Integrity monitoring pairs routine direct tests with permeate trending, and a failed train stays isolated until a repair is proven by a passing retest."
+  },
+  {
+   "id": "wp2w-process50",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the commissioning sequence for a rehabilitated filter returning to service.",
+   "topicId": "process-rehabilitated-filter-commissioning",
+   "level": "class1",
+   "assumptions": "Fictional filter in Manitoba returning after underdrain and media rehabilitation.",
+   "configuration": "Scope: completed construction through the filter accepted for production.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Inspect underdrains, nozzles, and support layers and confirm construction debris is fully removed"
+    },
+    {
+     "id": "s2",
+     "label": "Place media in layers to design depths and level and record as built depths"
+    },
+    {
+     "id": "s3",
+     "label": "Fill slowly from below, then disinfect and soak the cell as the commissioning plan directs"
+    },
+    {
+     "id": "s4",
+     "label": "Wash the new bed repeatedly until waste water runs clear and fines are gone"
+    },
+    {
+     "id": "s5",
+     "label": "Run filter to waste with turbidity sampling and confirm results meet target across a full test run"
+    },
+    {
+     "id": "s6",
+     "label": "Accept the filter for production, file the commissioning record, and set its first performance review"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Commissioning proves a rebuilt filter in stages: clean structure, correct media, disinfection, washing, and a full test run on filter to waste before the plant accepts it."
+  },
+  {
+   "id": "wp2w-process51",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the receiving sequence for a bulk chemical delivery.",
+   "topicId": "process-bulk-chemical-receiving",
+   "level": "class1",
+   "assumptions": "Fictional plant in western Canada receiving a bulk coagulant delivery by tanker.",
+   "configuration": "Scope: truck arrival through the delivery recorded and storage returned to normal.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Verify the delivery paperwork matches the order: product, strength, and quantity"
+    },
+    {
+     "id": "s2",
+     "label": "Inspect the tanker fittings and confirm the receiving tank has room and the correct fill line is identified"
+    },
+    {
+     "id": "s3",
+     "label": "Take a sample from the tanker and check appearance and strength against the product specification"
+    },
+    {
+     "id": "s4",
+     "label": "Connect to the correct fill line, open containment, and stay present through the transfer"
+    },
+    {
+     "id": "s5",
+     "label": "Confirm the receiving tank level rise matches the delivered quantity and close and secure the fill line"
+    },
+    {
+     "id": "s6",
+     "label": "Record product, quantity, lot, and tank levels in the chemical log and file the delivery documents"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Receiving proves identity and strength before transfer, watches the transfer with containment ready, and reconciles level rise against the paperwork before the delivery is closed."
+  },
+  {
+   "id": "wp2w-process52",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the chemical inventory and reorder program for a treatment plant.",
+   "topicId": "process-chemical-inventory-reorder-program",
+   "level": "class1",
+   "assumptions": "Fictional Class 2 plant in Saskatchewan managing coagulant, chlorine, and softening chemicals.",
+   "configuration": "Scope: weekly inventory through a placed and confirmed reorder.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Measure every bulk tank, day tank, and dry storage quantity on the weekly inventory day"
+    },
+    {
+     "id": "s2",
+     "label": "Calculate days of supply for each chemical from current use rates and storage on hand"
+    },
+    {
+     "id": "s3",
+     "label": "Compare days of supply with the reorder point that covers delivery lead time plus a safety margin"
+    },
+    {
+     "id": "s4",
+     "label": "Prepare the order for any chemical at or below its reorder point and have it approved by the operator in charge"
+    },
+    {
+     "id": "s5",
+     "label": "Confirm the order and delivery date with the supplier and note the expected arrival in the plant log"
+    },
+    {
+     "id": "s6",
+     "label": "On delivery, receive the chemical under the receiving procedure and update the inventory record"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Reorder points are built from measured stock, actual use rates, and delivery lead time, so ordering happens before urgency and every delivery closes the inventory loop."
+  },
+  {
+   "id": "wp2w-process53",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the metering pump calibration program for liquid chemical feeds.",
+   "topicId": "process-metering-pump-calibration-program",
+   "level": "class1",
+   "assumptions": "Fictional plant in Alberta calibrating chlorine and coagulant metering pumps on a quarterly program.",
+   "configuration": "Scope: calibration planning through all duty pumps verified.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "List every duty and standby feed pump and its chemical, set rate range, and calibration due date"
+    },
+    {
+     "id": "s2",
+     "label": "Take one pump at a time and draw from its calibration column for a timed interval at the operating set point"
+    },
+    {
+     "id": "s3",
+     "label": "Calculate delivered rate from drawdown and compare with the pump setting and the dose calculation"
+    },
+    {
+     "id": "s4",
+     "label": "Adjust stroke or speed to correct any error and repeat the drawdown to confirm the correction"
+    },
+    {
+     "id": "s5",
+     "label": "Repeat the check at a low and a high set point where the pump operates across a range"
+    },
+    {
+     "id": "s6",
+     "label": "Record as found and as left rates, update due dates, and return the pump to normal service"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Calibration measures delivered rate by timed drawdown, corrects and remeasures at the same set point, and records as found and as left values so dose records can be trusted."
+  },
+  {
+   "id": "wp2w-process54",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the preparation of a diluted chemical solution in a day tank.",
+   "topicId": "process-day-tank-solution-preparation",
+   "level": "class1",
+   "assumptions": "Fictional operator in western Canada preparing a polymer or hypochlorite day tank solution at a set strength.",
+   "configuration": "Scope: empty day tank through the solution in feed service.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Calculate the chemical and water quantities for the target strength and tank volume and record the calculation"
+    },
+    {
+     "id": "s2",
+     "label": "Fill the tank with the measured water quantity first where the procedure requires water first"
+    },
+    {
+     "id": "s3",
+     "label": "Add the measured chemical slowly with mixing running and protective equipment in place"
+    },
+    {
+     "id": "s4",
+     "label": "Mix for the full program time and allow any required ageing or settling period"
+    },
+    {
+     "id": "s5",
+     "label": "Verify the solution strength by the program test or by a confirmed feed drawdown after start"
+    },
+    {
+     "id": "s6",
+     "label": "Label the tank with product, strength, and preparation date and record the batch in the chemical log"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Solution preparation is calculated before it is mixed, verified after ageing, and labelled with strength and date, so a feed problem can always be traced to a known batch."
+  },
+  {
+   "id": "wp2w-process55",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the chemical spill response sequence inside a treatment plant.",
+   "topicId": "process-chemical-spill-response-plant",
+   "level": "class1",
+   "assumptions": "Fictional plant in Manitoba responding to a hypochlorite spill in the chemical room.",
+   "configuration": "Scope: spill discovery through the area returned to service.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Alert nearby staff, keep people clear, and put on the protective equipment listed for the product"
+    },
+    {
+     "id": "s2",
+     "label": "Stop the source if it can be done safely, such as closing a valve or stopping the feed pump"
+    },
+    {
+     "id": "s3",
+     "label": "Contain the spill with the room berm or spill kit so it cannot reach a drain or doorway"
+    },
+    {
+     "id": "s4",
+     "label": "Notify the operator in charge and follow the product safety data sheet for cleanup and any reporting"
+    },
+    {
+     "id": "s5",
+     "label": "Clean and neutralize the area as directed, collect cleanup material for proper disposal, and ventilate the room"
+    },
+    {
+     "id": "s6",
+     "label": "Inspect the failed fitting or hose, record the event, and return the area to service only when it is clean and safe"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Spill response protects people first, stops and contains the source, and cleans up under the safety data sheet, with the failed equipment inspected before the area reopens."
+  },
+  {
+   "id": "wp2w-process56",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the qualification sequence before switching to a new chemical supplier product.",
+   "topicId": "process-chemical-product-qualification",
+   "level": "class1",
+   "assumptions": "Fictional plant in western Canada qualifying an alternate coagulant product offered by a new supplier.",
+   "configuration": "Scope: product documents received through the qualification decision.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review the product specification, safety data sheet, and drinking water suitability documentation for the offered product"
+    },
+    {
+     "id": "s2",
+     "label": "Run jar tests comparing the new product with the current product on the same raw waters"
+    },
+    {
+     "id": "s3",
+     "label": "Compare delivered cost per treated volume at the doses the jar tests require, not per container price"
+    },
+    {
+     "id": "s4",
+     "label": "Trial the leading product at plant scale with feed calibration confirmed for its strength and density"
+    },
+    {
+     "id": "s5",
+     "label": "Confirm settled and filtered quality, sludge character, and feed reliability through the trial period"
+    },
+    {
+     "id": "s6",
+     "label": "Approve or reject the product in writing, update the chemical program if approved, and file the evidence"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Qualification demands bench equivalence, true cost at the required dose, and a plant trial with calibrated feed before a product earns a place in the chemical program."
+  },
+  {
+   "id": "wp2w-process57",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the preventive maintenance program round for chemical feed systems.",
+   "topicId": "process-chemical-feed-preventive-maintenance",
+   "level": "class1",
+   "assumptions": "Fictional Class 2 plant in Saskatchewan running a monthly feed system maintenance round.",
+   "configuration": "Scope: round planning through deficiencies corrected or scheduled.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "List every feed system due this month: pumps, day tanks, lines, valves, and containment"
+    },
+    {
+     "id": "s2",
+     "label": "Inspect each pump for leaks, worn tubing or diaphragms, and steady operation, and check calibration due dates"
+    },
+    {
+     "id": "s3",
+     "label": "Flush and inspect feed lines and injection points for scale, blockage, or backflow device faults"
+    },
+    {
+     "id": "s4",
+     "label": "Check tank level gauges, vents, and secondary containment condition and drainage"
+    },
+    {
+     "id": "s5",
+     "label": "Correct minor faults during the round and raise work orders for anything needing parts or shutdown"
+    },
+    {
+     "id": "s6",
+     "label": "Record the round, close completed items, and carry open items to the next monthly list"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The monthly round inspects delivery, injection, and containment together, fixes small faults on the spot, and carries the rest forward as tracked work orders."
+  },
+  {
+   "id": "wp2w-process58",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a chemical dosage audit using plant mass balance.",
+   "topicId": "process-chemical-dosage-audit",
+   "level": "class1",
+   "assumptions": "Fictional operator in charge in Alberta auditing whether recorded coagulant dose matches chemical actually used.",
+   "configuration": "Scope: audit period selection through audit findings actioned.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Select an audit period and total the treated water volume for that period"
+    },
+    {
+     "id": "s2",
+     "label": "Total chemical used from tank level change plus deliveries received in the same period"
+    },
+    {
+     "id": "s3",
+     "label": "Calculate the average delivered dose from chemical mass used divided by treated volume"
+    },
+    {
+     "id": "s4",
+     "label": "Compare the delivered dose with the average of the doses recorded in the daily logs"
+    },
+    {
+     "id": "s5",
+     "label": "Investigate any gap by checking pump calibration, tank gauge accuracy, and log practices in that order"
+    },
+    {
+     "id": "s6",
+     "label": "Correct the cause found, note the audit in the chemical program file, and set the next audit date"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A mass balance audit compares what the tanks actually lost with what the logs claim, and investigates calibration and gauging before questioning the operators records."
+  },
+  {
+   "id": "wp2w-process59",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the polymer make down and ageing sequence for a dry polymer system.",
+   "topicId": "process-polymer-makedown-sequence",
+   "level": "class1",
+   "assumptions": "Fictional plant in western Canada preparing dry polymer solution for flocculation aid service.",
+   "configuration": "Scope: dry hopper check through aged solution feeding the process.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Check dry polymer stock, hopper condition, and wetting water supply before starting the batch"
+    },
+    {
+     "id": "s2",
+     "label": "Start wetting water and eductor flow, then start the dry feed at the program rate so powder wets without clumping"
+    },
+    {
+     "id": "s3",
+     "label": "Fill the mix tank to level and mix for the full programme mixing time"
+    },
+    {
+     "id": "s4",
+     "label": "Transfer the batch to the ageing tank and hold it for the full ageing period before use"
+    },
+    {
+     "id": "s5",
+     "label": "Confirm solution appearance is uniform with no fisheyes or undissolved material"
+    },
+    {
+     "id": "s6",
+     "label": "Place the aged solution in feed service, confirm delivery by drawdown, and record the batch"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Dry polymer must wet without clumping, mix fully, and age before use; feeding unaged solution wastes product and weakens floc, so the sequence protects each stage in order."
+  },
+  {
+   "id": "wp2w-process60",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the winter chemical storage management program for an unheated outbuilding.",
+   "topicId": "process-winter-chemical-storage-program",
+   "level": "class1",
+   "assumptions": "Fictional plant in northern Manitoba storing liquid chemicals in a building that can fall below freezing.",
+   "configuration": "Scope: autumn preparation through spring stand down.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "List every stored chemical and its freeze sensitivity and minimum storage temperature from its safety data sheet"
+    },
+    {
+     "id": "s2",
+     "label": "Move freeze sensitive products to heated storage or provide inspected tank and line heating"
+    },
+    {
+     "id": "s3",
+     "label": "Insulate and heat trace exposed feed lines and confirm the tracing works before the first cold period"
+    },
+    {
+     "id": "s4",
+     "label": "Check building heat, alarms, and low temperature notification weekly through the winter"
+    },
+    {
+     "id": "s5",
+     "label": "Inspect stored product after any cold event for freezing, crystallization, or container damage before use"
+    },
+    {
+     "id": "s6",
+     "label": "Record the winter checks and stand the program down in spring with a condition report"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Winter storage management starts from each product freeze limit, protects tanks and lines before the cold arrives, and verifies product condition after any cold event before the chemical is used."
+  },
+  {
+   "id": "wp2w-process61",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the daily laboratory QA routine before bench testing begins.",
+   "topicId": "process-lab-daily-qa-routine",
+   "level": "class1",
+   "assumptions": "Fictional plant laboratory in western Canada starting its daily testing round.",
+   "configuration": "Scope: entering the laboratory through the first samples accepted for analysis.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Check reagent expiry dates, standard stocks, and glassware cleanliness for the day tests"
+    },
+    {
+     "id": "s2",
+     "label": "Run the turbidimeter and pH meter start up checks with the program standards"
+    },
+    {
+     "id": "s3",
+     "label": "Analyse a quality control standard for each test and confirm results fall inside control limits"
+    },
+    {
+     "id": "s4",
+     "label": "Review sample log in times and holding times and prioritize samples closest to their limits"
+    },
+    {
+     "id": "s5",
+     "label": "Begin sample analysis only for tests whose quality control passed"
+    },
+    {
+     "id": "s6",
+     "label": "Record all start up checks and quality control results in the laboratory QA log"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Daily QA proves instruments and reagents with control standards before any sample is run, and samples near holding time limits are prioritized once testing is cleared."
+  },
+  {
+   "id": "wp2w-process62",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the turbidimeter calibration verification program.",
+   "topicId": "process-turbidimeter-calibration-verification",
+   "level": "class1",
+   "assumptions": "Fictional laboratory in Saskatchewan verifying bench and online turbidimeters on a monthly program.",
+   "configuration": "Scope: standards preparation through instruments returned to service.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Prepare or verify the calibration standards and check their expiry and condition"
+    },
+    {
+     "id": "s2",
+     "label": "Calibrate the bench turbidimeter with the standard series in order from lowest to highest"
+    },
+    {
+     "id": "s3",
+     "label": "Verify the calibration with an independent check standard not used in the calibration"
+    },
+    {
+     "id": "s4",
+     "label": "Compare the online turbidimeter with a bench grab sample taken at the same point and time"
+    },
+    {
+     "id": "s5",
+     "label": "Adjust or service the online instrument if the comparison exceeds the program tolerance"
+    },
+    {
+     "id": "s6",
+     "label": "Record calibration, verification, and comparison results with dates and analyst initials"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Calibration is verified with an independent standard, and the online instrument is judged against a same point bench sample, so neither instrument is trusted on its own word."
+  },
+  {
+   "id": "wp2w-process63",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the duplicate and spike quality control program for a monthly test batch.",
+   "topicId": "process-duplicate-spike-qc-program",
+   "level": "class1",
+   "assumptions": "Fictional laboratory in Alberta running monthly quality control on alkalinity and hardness testing.",
+   "configuration": "Scope: batch planning through quality control acceptance or rerun.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Select the samples for duplicate analysis and the sample to receive a known spike addition"
+    },
+    {
+     "id": "s2",
+     "label": "Analyse the batch in the normal sequence with duplicates placed blind in the run"
+    },
+    {
+     "id": "s3",
+     "label": "Analyse the spiked sample and calculate spike recovery from the measured increase"
+    },
+    {
+     "id": "s4",
+     "label": "Calculate duplicate agreement and compare both duplicate agreement and recovery with program limits"
+    },
+    {
+     "id": "s5",
+     "label": "Accept the batch if both measures pass; if either fails, investigate the method step and rerun the affected samples"
+    },
+    {
+     "id": "s6",
+     "label": "File the quality control results with the batch record and trend them on the laboratory control charts"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Duplicates prove precision and spikes prove accuracy on real samples; a batch is accepted only when both pass, and failures trigger a method investigation before results are released."
+  },
+  {
+   "id": "wp2w-process64",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the laboratory control chart program for chlorine residual testing.",
+   "topicId": "process-control-chart-chlorine-program",
+   "level": "class1",
+   "assumptions": "Fictional laboratory in western Canada charting a daily chlorine quality control standard.",
+   "configuration": "Scope: chart set up through an out of control response.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Analyse the same quality control standard daily under the normal residual method"
+    },
+    {
+     "id": "s2",
+     "label": "Plot each result on the control chart with the established mean and warning and control limits"
+    },
+    {
+     "id": "s3",
+     "label": "Watch for results beyond control limits, or runs and trends that the program rules define as out of control"
+    },
+    {
+     "id": "s4",
+     "label": "When a rule is triggered, stop reporting sample results from the method until the cause is checked"
+    },
+    {
+     "id": "s5",
+     "label": "Check standards, reagents, and instrument condition, correct the cause, and rerun the control standard"
+    },
+    {
+     "id": "s6",
+     "label": "Resume reporting only when the control standard is back in limits and record the event on the chart"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A control chart turns daily standard results into an early warning system: defined rules stop reporting, the cause is corrected, and a passing standard restarts the method."
+  },
+  {
+   "id": "wp2w-process65",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the alkalinity titration quality sequence for a new bench analyst.",
+   "topicId": "process-alkalinity-titration-quality-sequence",
+   "level": "class1",
+   "assumptions": "Fictional new analyst in a Manitoba plant laboratory being checked on the alkalinity titration.",
+   "configuration": "Scope: analyst preparation through results accepted into the plant record.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Prepare the acid titrant and confirm its standardization record is current"
+    },
+    {
+     "id": "s2",
+     "label": "Run a blank and a known alkalinity standard and confirm both meet the program expectations"
+    },
+    {
+     "id": "s3",
+     "label": "Analyse the sample in duplicate with careful end point technique"
+    },
+    {
+     "id": "s4",
+     "label": "Compare the duplicate results against the program agreement limit"
+    },
+    {
+     "id": "s5",
+     "label": "Have a second analyst analyse a split of the same sample and compare results"
+    },
+    {
+     "id": "s6",
+     "label": "Accept the analyst results into the plant record only when standard, duplicates, and split all pass"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A new analyst earns acceptance in layers: current standardization, a passing standard, agreeing duplicates, and a matching split sample from a second analyst."
+  },
+  {
+   "id": "wp2w-process66",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the sample preservation and holding time control program.",
+   "topicId": "process-sample-preservation-holding-program",
+   "level": "class1",
+   "assumptions": "Fictional sampling program in western Canada sending samples to the plant lab and an external lab.",
+   "configuration": "Scope: bottle preparation through results received within holding limits.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Prepare labelled bottles with the correct preservative for each test and a chain of custody form"
+    },
+    {
+     "id": "s2",
+     "label": "Collect samples at the program points, fill bottles as the method directs, and record time and conditions"
+    },
+    {
+     "id": "s3",
+     "label": "Cool and store samples at the required temperature immediately after collection"
+    },
+    {
+     "id": "s4",
+     "label": "Transport or analyse samples so every test starts inside its holding time, prioritizing the shortest limits"
+    },
+    {
+     "id": "s5",
+     "label": "Check holding compliance when results arrive and qualify any result that missed its limit"
+    },
+    {
+     "id": "s6",
+     "label": "File custody forms and results together and review missed limits at the monthly program review"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Preservation, cooling, and holding times protect the sample from the moment of collection; results are only filed as valid when the custody record proves those limits were met."
+  },
+  {
+   "id": "wp2w-process67",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the microbiological sampling quality program for a distribution system.",
+   "topicId": "process-microbiological-sampling-quality-program",
+   "level": "class1",
+   "assumptions": "Fictional distribution sampling program in British Columbia under provincial drinking water requirements in general terms.",
+   "configuration": "Scope: weekly sampling round planning through results reviewed.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Select the program sample sites for the week, rotating sites as the sampling plan directs"
+    },
+    {
+     "id": "s2",
+     "label": "Use sterile bottles containing dechlorinating agent and check bottle expiry before leaving the plant"
+    },
+    {
+     "id": "s3",
+     "label": "Flush the sample tap as the plan directs, collect without rinsing the bottle or touching its mouth, and record residual at the same tap"
+    },
+    {
+     "id": "s4",
+     "label": "Transport samples cooled and within the program time limit to the laboratory"
+    },
+    {
+     "id": "s5",
+     "label": "Review results on receipt and act on any positive result under the resampling and notification steps in the sampling plan"
+    },
+    {
+     "id": "s6",
+     "label": "File results, residuals, and site records together and update the site rotation record"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Microbiological quality depends on sterile technique, dechlorinated bottles, and paired residual readings, and any positive result follows the plan resampling steps without delay."
+  },
+  {
+   "id": "wp2w-process68",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the instrument calibration log program for plant laboratory and online instruments.",
+   "topicId": "process-instrument-calibration-log-program",
+   "level": "class1",
+   "assumptions": "Fictional Class 2 plant in Saskatchewan consolidating calibration records for bench and online instruments.",
+   "configuration": "Scope: instrument inventory through the monthly overdue review.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "List every bench and online instrument with its calibration method, interval, and responsible person"
+    },
+    {
+     "id": "s2",
+     "label": "Enter each completed calibration in the log with date, standards used, as found and as left results"
+    },
+    {
+     "id": "s3",
+     "label": "Flag instruments approaching their due date at the weekly operations meeting"
+    },
+    {
+     "id": "s4",
+     "label": "Remove from service, or qualify results from, any instrument that passes its due date uncalibrated"
+    },
+    {
+     "id": "s5",
+     "label": "Calibrate overdue instruments and review whether results since the due date need qualification"
+    },
+    {
+     "id": "s6",
+     "label": "Review the log monthly with the operator in charge and file the signed review"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A single calibration log with due date flags and overdue consequences keeps every reported result traceable to an instrument that was in calibration when the result was produced."
+  },
+  {
+   "id": "wp2w-process69",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the split sample proficiency program with an external laboratory.",
+   "topicId": "process-split-sample-proficiency-program",
+   "level": "class1",
+   "assumptions": "Fictional plant laboratory in Alberta comparing its results with an external laboratory twice a year.",
+   "configuration": "Scope: split round planning through corrective actions closed.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Collect a well mixed sample large enough for both laboratories and split it into matched portions"
+    },
+    {
+     "id": "s2",
+     "label": "Preserve, label, and ship the external portion under chain of custody while analysing the plant portion the same day"
+    },
+    {
+     "id": "s3",
+     "label": "Record plant results without seeing the external results first"
+    },
+    {
+     "id": "s4",
+     "label": "Compare results test by test against the program agreement limits when the external report arrives"
+    },
+    {
+     "id": "s5",
+     "label": "Investigate any test outside limits by reviewing method, calibration, and quality control records for that date"
+    },
+    {
+     "id": "s6",
+     "label": "Complete corrective actions, document the round, and file it in the laboratory QA record"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Split samples test the whole plant method against an outside laboratory; plant results are recorded blind, and disagreements are investigated from the records of the actual analysis date."
+  },
+  {
+   "id": "wp2w-process70",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the laboratory data review and reporting sequence for treated water results.",
+   "topicId": "process-lab-data-review-reporting",
+   "level": "class1",
+   "assumptions": "Fictional laboratory in western Canada releasing a week of treated water results.",
+   "configuration": "Scope: raw bench results through results reported and filed.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Check bench sheets for completeness: sample identity, times, analyst, and method for every result"
+    },
+    {
+     "id": "s2",
+     "label": "Verify calculations and unit conversions on a sample of results against the bench data"
+    },
+    {
+     "id": "s3",
+     "label": "Confirm quality control for each test day passed and flag any result tied to a failed control"
+    },
+    {
+     "id": "s4",
+     "label": "Compare treated results with plant targets and guideline values in general terms and highlight excursions"
+    },
+    {
+     "id": "s5",
+     "label": "Report the reviewed results to the operator in charge with excursions and qualifiers clearly marked"
+    },
+    {
+     "id": "s6",
+     "label": "File the signed results with bench sheets and quality control records as one traceable package"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Data review checks identity, calculations, and quality control before results are compared with targets, so the operator in charge receives results that are already proven traceable."
+  },
+  {
+   "id": "wp2w-process71",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the troubleshooting program for high settled water turbidity.",
+   "topicId": "process-high-settled-turbidity-troubleshooting",
+   "level": "class1",
+   "assumptions": "Fictional conventional plant in western Canada where settled turbidity rose while filtered quality is still holding.",
+   "configuration": "Scope: confirmed settled rise through settled quality restored.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm settled turbidity with a fresh sample and check raw turbidity, pH, and alkalinity for a source change"
+    },
+    {
+     "id": "s2",
+     "label": "Run a jar test on current raw water to test whether the plant dose still fits the water"
+    },
+    {
+     "id": "s3",
+     "label": "Verify coagulant and aid feed delivery by drawdown against the recorded doses"
+    },
+    {
+     "id": "s4",
+     "label": "Inspect floc size and character and clarifier blanket depth and surface condition"
+    },
+    {
+     "id": "s5",
+     "label": "Correct the first proven cause: dose, feed delivery, or blanket control, in that evidence order"
+    },
+    {
+     "id": "s6",
+     "label": "Recheck settled turbidity after a detention time and trend it until it returns to band, then log the diagnosis"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The program tests water, dose, delivery, and blanket in order and corrects the first proven cause, rather than changing dose and withdrawal at the same time."
+  },
+  {
+   "id": "wp2w-process72",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the troubleshooting program for a filter showing early breakthrough.",
+   "topicId": "process-filter-early-breakthrough-troubleshooting",
+   "level": "class1",
+   "assumptions": "Fictional gravity filter in Saskatchewan breaking through at half its normal run length.",
+   "configuration": "Scope: breakthrough confirmed through the filter returned to normal runs.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm breakthrough on the individual filter turbidity record and a grab sample"
+    },
+    {
+     "id": "s2",
+     "label": "Check settled turbidity and filtration rate to learn whether the filter is overloaded or underloaded"
+    },
+    {
+     "id": "s3",
+     "label": "Review the last backwash record and observe a wash for rate, expansion, and waste clearing"
+    },
+    {
+     "id": "s4",
+     "label": "Inspect the drained bed surface for mudballs, cracking, or media loss if the wash looks normal"
+    },
+    {
+     "id": "s5",
+     "label": "Check pretreatment floc condition, since weak pin floc passes a sound filter"
+    },
+    {
+     "id": "s6",
+     "label": "Correct the proven cause, run a monitored test run, and record the diagnosis and run result"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Early breakthrough is traced through load, wash, bed, and floc in that order, because each cause produces the same symptom but needs a different fix."
+  },
+  {
+   "id": "wp2w-process73",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the taste and odour event troubleshooting program.",
+   "topicId": "process-taste-odour-troubleshooting-program",
+   "level": "class1",
+   "assumptions": "Fictional plant in Manitoba responding to earthy taste complaints during an algae increase in the reservoir.",
+   "configuration": "Scope: complaints received through taste and odour controlled and monitoring set.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Log complaint locations and character and sample raw and treated water for odour at the plant"
+    },
+    {
+     "id": "s2",
+     "label": "Check reservoir conditions and recent raw results for algae or turnover changes that explain the event"
+    },
+    {
+     "id": "s3",
+     "label": "Confirm powdered activated carbon or oxidant systems, where fitted, are available and feeding correctly"
+    },
+    {
+     "id": "s4",
+     "label": "Run bench tests to set the carbon dose or treatment adjustment for the current raw odour"
+    },
+    {
+     "id": "s5",
+     "label": "Apply the adjustment and monitor treated odour and customer reports daily"
+    },
+    {
+     "id": "s6",
+     "label": "Hold the treatment until raw odour returns to normal, then step it down and record the event playbook"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Taste and odour work starts by matching complaint character to raw water evidence, sets treatment by bench test, and steps treatment down only when the source event has passed."
+  },
+  {
+   "id": "wp2w-process74",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the troubleshooting program for low chlorine residual in distribution.",
+   "topicId": "process-low-distribution-residual-troubleshooting",
+   "level": "class1",
+   "assumptions": "Fictional system in western Canada where far end residuals fell while the plant outlet residual stayed on target.",
+   "configuration": "Scope: low residuals confirmed through system residuals restored.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm far end results with fresh samples and record water temperature and sample point conditions"
+    },
+    {
+     "id": "s2",
+     "label": "Map low results by area and compare with storage levels and water age in those areas"
+    },
+    {
+     "id": "s3",
+     "label": "Check plant outlet residual, dose records, and feed calibration to prove the plant is delivering its target"
+    },
+    {
+     "id": "s4",
+     "label": "Inspect the serving reservoir turnover and mixing and sample its inlet and outlet residuals"
+    },
+    {
+     "id": "s5",
+     "label": "Flush low residual areas in a planned sequence and resample after flushing"
+    },
+    {
+     "id": "s6",
+     "label": "Correct the proven cause, such as turnover or dose, trend the area for a week, and log the diagnosis"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "When the plant outlet is on target, the search moves outward through water age, storage turnover, and local flushing, correcting the storage or age cause the evidence proves."
+  },
+  {
+   "id": "wp2w-process75",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the troubleshooting program for a chemical feed that is under delivering.",
+   "topicId": "process-chemical-underdelivery-troubleshooting",
+   "level": "class1",
+   "assumptions": "Fictional coagulant feed in Alberta where settled quality drifted and the day tank level fell more slowly than expected.",
+   "configuration": "Scope: suspected under delivery through delivery proven restored.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Compare day tank level change with treated volume to estimate the delivered dose"
+    },
+    {
+     "id": "s2",
+     "label": "Run a calibration drawdown at the operating set point and compare delivered rate with the setting"
+    },
+    {
+     "id": "s3",
+     "label": "Inspect suction lines, foot valves, and strainers for blockage or air leaks if delivery is low"
+    },
+    {
+     "id": "s4",
+     "label": "Check pump tubing, diaphragm, or drive condition and the injection point for scale or blockage"
+    },
+    {
+     "id": "s5",
+     "label": "Repair or replace the faulty part and repeat the drawdown until delivery matches the setting"
+    },
+    {
+     "id": "s6",
+     "label": "Recheck settled quality after a detention time and record the fault and repair in the feed log"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Under delivery is proven by tank accounting and drawdown before parts are changed, and the repair is only closed when drawdown and settled quality both confirm it."
+  },
+  {
+   "id": "wp2w-process76",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the algae bloom response program for a prairie reservoir plant.",
+   "topicId": "process-algae-bloom-response-program",
+   "level": "class1",
+   "assumptions": "Fictional plant in Saskatchewan facing a summer algae bloom with rising filter clogging and taste risk.",
+   "configuration": "Scope: bloom indicators confirmed through bloom season operating settings set.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm bloom indicators: raw algae counts or appearance, pH swings, taste and odour, and shortening filter runs"
+    },
+    {
+     "id": "s2",
+     "label": "Adjust intake depth or source blend where the plant has options to draw cleaner water"
+    },
+    {
+     "id": "s3",
+     "label": "Run jar tests to reset coagulant and aid doses for algae laden water and check alkalinity support"
+    },
+    {
+     "id": "s4",
+     "label": "Shorten filter run limits and increase backwash readiness for the higher solids and algae load"
+    },
+    {
+     "id": "s5",
+     "label": "Add or adjust taste and odour treatment where fitted and increase treated odour checks"
+    },
+    {
+     "id": "s6",
+     "label": "Review bloom indicators weekly and hold the settings until indicators return to normal, then step back and log the season response"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Bloom response combines source selection, reset coagulation, shorter filter runs, and odour control, and holds all of them until source indicators, not the calendar, say the bloom has passed."
+  },
+  {
+   "id": "wp2w-process77",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the troubleshooting program for a treated water pH excursion.",
+   "topicId": "process-ph-excursion-troubleshooting",
+   "level": "class1",
+   "assumptions": "Fictional plant in western Canada where finished pH moved outside its band over one shift.",
+   "configuration": "Scope: excursion confirmed through pH stable in band and cause recorded.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm finished pH with a freshly calibrated bench meter and a second sample"
+    },
+    {
+     "id": "s2",
+     "label": "Check raw pH and alkalinity and the coagulant dose, since coagulation consumes alkalinity"
+    },
+    {
+     "id": "s3",
+     "label": "Verify alkalinity supplement or lime feed delivery by drawdown or timed output"
+    },
+    {
+     "id": "s4",
+     "label": "Check softening or recarbonation performance where those processes set the final pH"
+    },
+    {
+     "id": "s5",
+     "label": "Correct the proven feed or dose cause in a small step and recheck pH after the process detention time"
+    },
+    {
+     "id": "s6",
+     "label": "Increase pH sampling until three consecutive results are in band and record the diagnosis"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A pH excursion is traced through raw alkalinity, coagulant demand, and each pH setting feed in order, with small corrections judged only after detention time has passed."
+  },
+  {
+   "id": "wp2w-process78",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the troubleshooting program for recurring coloured water after filter runs start.",
+   "topicId": "process-coloured-water-startup-troubleshooting",
+   "level": "class1",
+   "assumptions": "Fictional plant in British Columbia where a brief colour spike follows each filter return to service.",
+   "configuration": "Scope: pattern confirmed through colour controlled at run starts.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the pattern by sampling filtered colour at short intervals from a run start"
+    },
+    {
+     "id": "s2",
+     "label": "Check whether the filter was run to waste and for how long, and review the ripening record"
+    },
+    {
+     "id": "s3",
+     "label": "Inspect the bed for iron or manganese deposits and check backwash effectiveness for the cell"
+    },
+    {
+     "id": "s4",
+     "label": "Check oxidant residual at the filter influent, since low residual lets metals pass early in the run"
+    },
+    {
+     "id": "s5",
+     "label": "Extend filter to waste or correct the wash or oxidant cause the evidence supports"
+    },
+    {
+     "id": "s6",
+     "label": "Verify colour at run start on the next two runs and record the fix in the filter log"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A start of run colour spike points to ripening, deposits, or oxidant at the bed; each is checked in order and the fix is proven across the next two run starts."
+  },
+  {
+   "id": "wp2w-process79",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the clarifier sludge blanket upset troubleshooting program.",
+   "topicId": "process-blanket-upset-troubleshooting",
+   "level": "class1",
+   "assumptions": "Fictional clarifier in Manitoba whose blanket rose and began washing over the weirs.",
+   "configuration": "Scope: upset confirmed through blanket control restored.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Measure blanket depth across the basin and settled turbidity at the effluent"
+    },
+    {
+     "id": "s2",
+     "label": "Check raw flow and recent flow changes, since a hydraulic surge lifts an established blanket"
+    },
+    {
+     "id": "s3",
+     "label": "Check sludge withdrawal rate, pump operation, and sludge line for blockage"
+    },
+    {
+     "id": "s4",
+     "label": "Check solids loading from coagulation dose and raw turbidity changes"
+    },
+    {
+     "id": "s5",
+     "label": "Increase withdrawal in steps if withdrawal is the proven limit, or reduce flow if hydraulics are the cause"
+    },
+    {
+     "id": "s6",
+     "label": "Remonitor blanket and settled quality until both are in band and record the cause and settings"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Blanket upset has hydraulic, withdrawal, and loading causes; the program measures all three and corrects only the one the evidence proves, in steps with remonitoring."
+  },
+  {
+   "id": "wp2w-process80",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the troubleshooting program for shortened filter runs across the whole plant.",
+   "topicId": "process-plantwide-short-runs-troubleshooting",
+   "level": "class1",
+   "assumptions": "Fictional plant in Alberta where every filter run shortened over the same week.",
+   "configuration": "Scope: plant wide pattern confirmed through normal run lengths restored.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the pattern from run records and rule out a single filter fault by comparing all filters"
+    },
+    {
+     "id": "s2",
+     "label": "Check settled water turbidity and particle load, since a plant wide cause usually sits upstream of the filters"
+    },
+    {
+     "id": "s3",
+     "label": "Review coagulant dose, jar test currency, and raw water changes for the same period"
+    },
+    {
+     "id": "s4",
+     "label": "Check backwash water supply and confirm washes are reaching full rate on every filter"
+    },
+    {
+     "id": "s5",
+     "label": "Correct the proven upstream or wash cause and monitor the next full cycle on two filters"
+    },
+    {
+     "id": "s6",
+     "label": "Record the diagnosis and restore normal run termination settings once runs recover"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "When all filters shorten together, the cause is shared: settled load, coagulation, or wash supply, and the program proves it on two monitored cycles before closing."
+  },
+  {
+   "id": "wp2w-process81",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the operator in charge daily supervisory routine.",
+   "topicId": "process-operator-in-charge-daily-routine",
+   "level": "class1",
+   "assumptions": "Fictional operator in charge at a Class 2 plant in western Canada starting the production day.",
+   "configuration": "Scope: arriving on shift through the day plan issued to the team.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review overnight logs, alarms, treated volumes, and any outstanding samples or maintenance"
+    },
+    {
+     "id": "s2",
+     "label": "Check clearwell and storage levels, chemical inventories, and the day demand forecast"
+    },
+    {
+     "id": "s3",
+     "label": "Walk the plant with the shift operator and confirm process status at each unit"
+    },
+    {
+     "id": "s4",
+     "label": "Set the day priorities: production targets, sampling, maintenance support, and any process trials"
+    },
+    {
+     "id": "s5",
+     "label": "Assign tasks with owners and check back times and note them on the day board"
+    },
+    {
+     "id": "s6",
+     "label": "Close the routine by updating the operations log and flagging risks to the utility manager"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The operator in charge builds the day from records, storage, and chemical facts first, then assigns owned tasks with check back times, so supervision starts from evidence."
+  },
+  {
+   "id": "wp2w-process82",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the shift coverage program when an operator absence is reported.",
+   "topicId": "process-shift-coverage-program",
+   "level": "class1",
+   "assumptions": "Fictional Class 2 plant in Saskatchewan covering a week of shifts after a sickness absence is reported.",
+   "configuration": "Scope: absence reported through the covered roster confirmed to all staff.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the shifts affected and the minimum certified coverage each shift requires in general terms"
+    },
+    {
+     "id": "s2",
+     "label": "Check the roster for qualified operators available within working time limits"
+    },
+    {
+     "id": "s3",
+     "label": "Offer the open shifts in the program order and record acceptances"
+    },
+    {
+     "id": "s4",
+     "label": "Confirm no operator is scheduled beyond fatigue or hours limits by the coverage plan"
+    },
+    {
+     "id": "s5",
+     "label": "Publish the revised roster to all affected staff and the operator in charge board"
+    },
+    {
+     "id": "s6",
+     "label": "Log the absence coverage and review whether a standby list update is needed"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Coverage protects certified minimums and fatigue limits first, fills shifts in the program order, and is only complete when every affected person has the revised roster."
+  },
+  {
+   "id": "wp2w-process83",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the staff training and competency sign off program for a process task.",
+   "topicId": "process-staff-competency-signoff-program",
+   "level": "class1",
+   "assumptions": "Fictional operator in charge in Manitoba signing off a junior operator on filter backwashing.",
+   "configuration": "Scope: training need identified through the competency record filed.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the trainee has completed the procedure reading and safety requirements for the task"
+    },
+    {
+     "id": "s2",
+     "label": "Demonstrate the full task at normal pace, explaining each check and decision point"
+    },
+    {
+     "id": "s3",
+     "label": "Observe the trainee performing the task under direct supervision and correct technique on the spot"
+    },
+    {
+     "id": "s4",
+     "label": "Have the trainee perform the task a second time with the supervisor observing without prompting"
+    },
+    {
+     "id": "s5",
+     "label": "Question the trainee on abnormal situations, such as a wash that does not clear, and confirm sound responses"
+    },
+    {
+     "id": "s6",
+     "label": "Sign the competency record, file it in the training file, and set any refresher date"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Competency is signed only after an unprompted performance and abnormal situation questioning, so the record means the operator can handle the task and its failures."
+  },
+  {
+   "id": "wp2w-process84",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the standard operating procedure review program for treatment processes.",
+   "topicId": "process-sop-review-program",
+   "level": "class1",
+   "assumptions": "Fictional plant in western Canada reviewing its treatment standard operating procedures on an annual cycle.",
+   "configuration": "Scope: review schedule set through revised procedures issued.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "List every treatment procedure with its last review date and owner"
+    },
+    {
+     "id": "s2",
+     "label": "Have operators mark steps that no longer match the equipment or practice as actually performed"
+    },
+    {
+     "id": "s3",
+     "label": "Compare marked procedures with current equipment, chemical products, and safety requirements"
+    },
+    {
+     "id": "s4",
+     "label": "Draft revisions with operator input and check the revised steps in the field before approval"
+    },
+    {
+     "id": "s5",
+     "label": "Approve, date, and issue the revised procedures and remove superseded copies from use points"
+    },
+    {
+     "id": "s6",
+     "label": "Brief all shifts on changed procedures and file the review record"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Procedure review starts from how the work is actually done, checks revisions in the field, and removes old copies, so the issued procedure and the plant practice become the same thing."
+  },
+  {
+   "id": "wp2w-process85",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the regulatory sampling calendar management program for a treatment plant.",
+   "topicId": "process-sampling-calendar-management-program",
+   "level": "class1",
+   "assumptions": "Fictional Class 2 plant in Alberta managing its sampling calendar under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: annual calendar build through monthly completion checks.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "List every required sample by parameter, location, and frequency from the plant sampling plan"
+    },
+    {
+     "id": "s2",
+     "label": "Build the annual calendar spreading samples so no week carries an unmanageable load"
+    },
+    {
+     "id": "s3",
+     "label": "Assign each sampling round an owner and a backup and enter reminders ahead of due dates"
+    },
+    {
+     "id": "s4",
+     "label": "Check completion weekly and reschedule any missed sample inside its allowed window with a note"
+    },
+    {
+     "id": "s5",
+     "label": "Review results as they return and file them against the calendar entries they satisfy"
+    },
+    {
+     "id": "s6",
+     "label": "Close the year with a completion report and carry lessons into the next calendar build"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Calendar management assigns owners and backups, checks completion weekly while missed samples can still be recovered, and files results against the entries they satisfy."
+  },
+  {
+   "id": "wp2w-process86",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the incident reporting and notification sequence for an adverse water quality result.",
+   "topicId": "process-incident-reporting-notification-sequence",
+   "level": "class1",
+   "assumptions": "Fictional plant in British Columbia receiving an adverse treated water result during the working day.",
+   "configuration": "Scope: result received through the incident file closed.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Verify the result by checking sample identity, quality control, and whether a confirmation sample is required"
+    },
+    {
+     "id": "s2",
+     "label": "Notify the operator in charge immediately and begin the notification steps in the plant incident plan in general terms"
+    },
+    {
+     "id": "s3",
+     "label": "Collect confirmation and follow up samples at the directed locations and times"
+    },
+    {
+     "id": "s4",
+     "label": "Apply any directed corrective action, such as added disinfection or flushing, and record actions with times"
+    },
+    {
+     "id": "s5",
+     "label": "Keep a single incident log of results, notifications, and actions in time order"
+    },
+    {
+     "id": "s6",
+     "label": "Close the incident when follow up results and the responsible authority direction allow, and file the complete record"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Incident handling verifies the result without delaying notification, keeps one time ordered log, and closes only on follow up results and direction, not on the corrective action alone."
+  },
+  {
+   "id": "wp2w-process87",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the preventive maintenance planning program for a quarterly cycle.",
+   "topicId": "process-preventive-maintenance-planning-program",
+   "level": "class1",
+   "assumptions": "Fictional operator in charge in western Canada planning quarterly preventive maintenance with the maintenance team.",
+   "configuration": "Scope: asset list review through the quarter plan scheduled.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "List assets due for service this quarter from the maintenance register and their criticality"
+    },
+    {
+     "id": "s2",
+     "label": "Group tasks that share a shutdown or a process outage so units are opened once"
+    },
+    {
+     "id": "s3",
+     "label": "Check spare parts and consumables for the grouped tasks and order anything missing"
+    },
+    {
+     "id": "s4",
+     "label": "Schedule the work with production, protecting storage and treatment capacity on work days"
+    },
+    {
+     "id": "s5",
+     "label": "Issue work orders with owners, dates, and lockout requirements noted"
+    },
+    {
+     "id": "s6",
+     "label": "Review completed work at quarter end and carry unfinished items forward with reasons"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Quarterly planning groups work by shared outages, proves parts are on hand, and schedules around production, so maintenance does not create its own treatment risk."
+  },
+  {
+   "id": "wp2w-process88",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the monthly plant performance review led by the operator in charge.",
+   "topicId": "process-monthly-performance-review",
+   "level": "class1",
+   "assumptions": "Fictional Class 2 plant in Saskatchewan reviewing treated volumes, quality, chemical use, and energy for the month.",
+   "configuration": "Scope: data assembly through actions assigned for the next month.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Assemble monthly treated volume, quality results, chemical use per volume, and filter and energy records"
+    },
+    {
+     "id": "s2",
+     "label": "Compare each measure with the plant targets and with the same month in the prior year"
+    },
+    {
+     "id": "s3",
+     "label": "Identify the two largest variances and check the operating records that explain them"
+    },
+    {
+     "id": "s4",
+     "label": "Separate variances caused by raw water or demand events from those within operator control"
+    },
+    {
+     "id": "s5",
+     "label": "Assign improvement actions with owners and dates for the controllable variances"
+    },
+    {
+     "id": "s6",
+     "label": "Present the review to the team, file it, and carry open actions to the next monthly agenda"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The monthly review explains variances from records before assigning actions, and only controllable causes get improvement actions, so effort lands where the team can change the result."
+  },
+  {
+   "id": "wp2w-process89",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the emergency preparedness drill program for a plant power failure.",
+   "topicId": "process-emergency-drill-power-failure",
+   "level": "class1",
+   "assumptions": "Fictional plant in Manitoba running a planned drill of its power failure response.",
+   "configuration": "Scope: drill planning through the drill debrief actions assigned.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Set the drill scenario, safety limits, and the rule that real emergencies override the drill at any time"
+    },
+    {
+     "id": "s2",
+     "label": "Brief participants on the scenario start signal without revealing the drill injects"
+    },
+    {
+     "id": "s3",
+     "label": "Start the drill and observe generator start, load transfer, and process protection steps"
+    },
+    {
+     "id": "s4",
+     "label": "Record response times, communication steps, and any equipment that fails to perform"
+    },
+    {
+     "id": "s5",
+     "label": "End the drill, restore normal line up, and confirm the plant is fully back in normal service"
+    },
+    {
+     "id": "s6",
+     "label": "Debrief with participants, assign corrective actions with dates, and file the drill report"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A drill is run like the real event but inside safety limits, is judged on observed times and equipment performance, and ends with the plant proven back in normal service."
+  },
+  {
+   "id": "wp2w-process90",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the chemical budget and ordering cycle review at quarter end.",
+   "topicId": "process-chemical-budget-cycle-review",
+   "level": "class1",
+   "assumptions": "Fictional operator in charge in Alberta reviewing chemical spending and stock at quarter end.",
+   "configuration": "Scope: usage records gathered through next quarter orders planned.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Total each chemical used in the quarter from inventory records and deliveries"
+    },
+    {
+     "id": "s2",
+     "label": "Calculate use per treated volume for each chemical and compare with the dose records"
+    },
+    {
+     "id": "s3",
+     "label": "Compare spending with the quarter budget and explain variances from dose, volume, or price changes"
+    },
+    {
+     "id": "s4",
+     "label": "Check stock on hand and open orders against the next quarter demand forecast"
+    },
+    {
+     "id": "s5",
+     "label": "Plan next quarter orders and delivery timing around storage capacity and seasonal demand"
+    },
+    {
+     "id": "s6",
+     "label": "File the review and brief the utility manager on variances and the order plan"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The quarter review ties spending back to dose and volume, so a variance is explained as chemistry, demand, or price before the next quarter orders are planned."
+  },
+  {
+   "id": "wp2w-process91",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the winter start up sequence for a plant in extreme cold.",
+   "topicId": "process-extreme-cold-plant-startup",
+   "level": "class1",
+   "assumptions": "Fictional plant in northern Saskatchewan starting production on a morning well below freezing after an overnight shutdown.",
+   "configuration": "Scope: arriving at the plant through steady winter production.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Check building heat, ventilation, and for any frozen or burst lines before starting equipment"
+    },
+    {
+     "id": "s2",
+     "label": "Confirm chemical feed lines and day tanks are warm and product is flowing, not crystallized or frozen"
+    },
+    {
+     "id": "s3",
+     "label": "Inspect the intake and raw line for ice restriction and confirm raw flow can be established"
+    },
+    {
+     "id": "s4",
+     "label": "Start chemical feeds and confirm delivery by drawdown, allowing extra time for cold viscous product"
+    },
+    {
+     "id": "s5",
+     "label": "Start raw flow at a reduced rate and watch pressures for ice related restriction"
+    },
+    {
+     "id": "s6",
+     "label": "Raise to winter production rate once flows, doses, and treated quality are confirmed and log cold conditions"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Cold start up proves heat, chemical flow, and intake freedom from ice before production, because a frozen line discovered under full flow becomes damage instead of a delay."
+  },
+  {
+   "id": "wp2w-process92",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the intake frazil ice management program during a cold snap.",
+   "topicId": "process-frazil-ice-management-program",
+   "level": "class1",
+   "assumptions": "Fictional river intake plant in western Canada managing frazil ice that can block intake screens.",
+   "configuration": "Scope: cold snap forecast received through the event stood down.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Monitor river temperature, air temperature, and intake differential level for frazil conditions"
+    },
+    {
+     "id": "s2",
+     "label": "Reduce intake rate or cycle pumps where the program directs to limit ice adhesion"
+    },
+    {
+     "id": "s3",
+     "label": "Apply the site ice control measures, such as screen raking, air bubbling, or warm water recirculation, in program order"
+    },
+    {
+     "id": "s4",
+     "label": "Watch intake level and raw flow closely and switch to any standby intake or storage supply if blockage grows"
+    },
+    {
+     "id": "s5",
+     "label": "Record ice conditions, measures used, and intake performance through the event"
+    },
+    {
+     "id": "s6",
+     "label": "Stand the program down when temperatures moderate and inspect screens for ice damage"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Frazil management watches the temperature and level signals that precede blockage, applies controls in program order, and protects supply with standby options before the intake is lost."
+  },
+  {
+   "id": "wp2w-process93",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the chemical feed freeze protection program for winter.",
+   "topicId": "process-feed-freeze-protection-program",
+   "level": "class1",
+   "assumptions": "Fictional plant in Manitoba protecting outdoor and unheated chemical feed lines through winter.",
+   "configuration": "Scope: autumn preparation through a mid winter cold event check.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "List every feed line, pump, and tank exposed to freezing temperatures"
+    },
+    {
+     "id": "s2",
+     "label": "Insulate lines and confirm heat tracing operates on each exposed run"
+    },
+    {
+     "id": "s3",
+     "label": "Drain or protect any line that will sit idle with chemical in it during cold periods"
+    },
+    {
+     "id": "s4",
+     "label": "Set a weekly winter check of tracing, insulation condition, and building heat alarms"
+    },
+    {
+     "id": "s5",
+     "label": "After any extreme cold night, confirm each feed delivers by drawdown before relying on its dose"
+    },
+    {
+     "id": "s6",
+     "label": "Record checks and any freeze damage and repair protection before the next cold period"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Freeze protection inventories every exposed run before winter, proves heat tracing works, and rechecks delivery after cold nights, since a partly frozen line under delivers silently."
+  },
+  {
+   "id": "wp2w-process94",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the filter building heat and ventilation winter program.",
+   "topicId": "process-filter-building-winter-program",
+   "level": "class1",
+   "assumptions": "Fictional filter gallery in western Canada where condensation and freezing threaten instruments and valves.",
+   "configuration": "Scope: seasonal set up through winter weekly checks.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Check gallery heating units, louvers, and door seals before the heating season"
+    },
+    {
+     "id": "s2",
+     "label": "Set ventilation to control humidity without dropping gallery temperature toward freezing"
+    },
+    {
+     "id": "s3",
+     "label": "Identify cold spots at exterior walls, sample lines, and instrument taps and add protection where needed"
+    },
+    {
+     "id": "s4",
+     "label": "Drain or heat trace small sample and drain lines that can freeze and burst"
+    },
+    {
+     "id": "s5",
+     "label": "Walk the gallery weekly in winter checking temperature, condensation, and ice at doors and vents"
+    },
+    {
+     "id": "s6",
+     "label": "Record winter checks and correct heating or ventilation faults as priority work orders"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Gallery winter care balances heat against humidity, protects the small lines that freeze first, and turns weekly temperature walks into early warning for instruments and valves."
+  },
+  {
+   "id": "wp2w-process95",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the cold water coagulation adjustment program for winter raw water.",
+   "topicId": "process-cold-water-coagulation-program",
+   "level": "class1",
+   "assumptions": "Fictional plant in Alberta whose raw water falls near freezing with low turbidity and slow floc formation.",
+   "configuration": "Scope: winter jar testing through winter dose settings adopted.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Run jar tests at actual winter raw temperature, since warm bench water hides cold water behaviour"
+    },
+    {
+     "id": "s2",
+     "label": "Allow longer flocculation and settling times in the bench program to match cold reaction rates"
+    },
+    {
+     "id": "s3",
+     "label": "Compare coagulant and aid combinations for floc that forms and settles at the cold condition"
+    },
+    {
+     "id": "s4",
+     "label": "Set winter plant doses and consider aid addition from the cold bench results"
+    },
+    {
+     "id": "s5",
+     "label": "Adjust plant flocculation to the gentler, longer pattern the cold tests support where equipment allows"
+    },
+    {
+     "id": "s6",
+     "label": "Monitor settled quality closely for the first week and record the winter settings for the seasonal file"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Cold water coagulation must be tested cold: reaction and settling slow down, so doses, aid, and flocculation settings come from bench work at the real winter temperature."
+  },
+  {
+   "id": "wp2w-process96",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the winter access and delivery management program for a remote plant.",
+   "topicId": "process-winter-access-delivery-program",
+   "level": "class1",
+   "assumptions": "Fictional remote plant in northern British Columbia that depends on a single access road for staff and chemical deliveries.",
+   "configuration": "Scope: winter plan set through a storm delivery completed.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Set the winter minimum chemical and fuel stocks that cover the longest expected road closure"
+    },
+    {
+     "id": "s2",
+     "label": "Schedule autumn deliveries to reach winter stock levels before the first major storm period"
+    },
+    {
+     "id": "s3",
+     "label": "Agree storm communication and road condition checks with staff and suppliers"
+    },
+    {
+     "id": "s4",
+     "label": "During a storm closure, ration non essential chemical use and confirm essential treatment stocks daily"
+    },
+    {
+     "id": "s5",
+     "label": "Receive the first post storm delivery under the full receiving procedure and rebuild stocks to winter levels"
+    },
+    {
+     "id": "s6",
+     "label": "Review the winter stock performance in spring and reset minimum levels from the record"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Remote winter planning stocks for the longest closure, not the average one, and treats the first post storm delivery as a stock rebuild, not just a routine receipt."
+  },
+  {
+   "id": "wp2w-process97",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the standby power winter storm operating program.",
+   "topicId": "process-standby-power-winter-storm-program",
+   "level": "class1",
+   "assumptions": "Fictional plant in Saskatchewan preparing for a forecast winter storm with outage risk.",
+   "configuration": "Scope: storm forecast through the plant back on utility power.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Test the standby generator under load and confirm fuel for the forecast outage duration"
+    },
+    {
+     "id": "s2",
+     "label": "Fill treated storage toward the top of its operating range before the storm arrives"
+    },
+    {
+     "id": "s3",
+     "label": "Confirm chemical stocks, heating fuel, and staff coverage for an extended event"
+    },
+    {
+     "id": "s4",
+     "label": "On outage, confirm generator load transfer and shed non essential loads as the plan directs"
+    },
+    {
+     "id": "s5",
+     "label": "Run the plant at the storm production rate that storage and generator capacity can sustain"
+    },
+    {
+     "id": "s6",
+     "label": "On power return, transfer loads in stages, check all processes, and log the event and fuel used"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Storm readiness is built before the outage: tested generation, full storage, and confirmed stocks, so the outage itself is run at a sustainable rate and closed with a staged return."
+  },
+  {
+   "id": "wp2w-process98",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the winter distribution residual management program for cold, slow moving water.",
+   "topicId": "process-winter-residual-management-program",
+   "level": "class1",
+   "assumptions": "Fictional system in western Canada where winter demand falls and water age rises in storage and dead ends.",
+   "configuration": "Scope: autumn residual review through spring stand down.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Map winter low demand areas, storage turnover times, and historic low residual points"
+    },
+    {
+     "id": "s2",
+     "label": "Set winter reservoir operating levels and turnover cycles that limit water age"
+    },
+    {
+     "id": "s3",
+     "label": "Schedule dead end and low use area flushing through the winter on a rotating list"
+    },
+    {
+     "id": "s4",
+     "label": "Sample residuals at the mapped points more often through the cold period"
+    },
+    {
+     "id": "s5",
+     "label": "Adjust plant outlet residual within its target band where sampling shows age driven loss"
+    },
+    {
+     "id": "s6",
+     "label": "Review winter residual results in spring and update the low point map from the evidence"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Winter residual loss is an age problem, so the program manages turnover and flushing at mapped low points and uses sampling, not complaints, to judge whether it worked."
+  },
+  {
+   "id": "wp2w-process99",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the spring melt preparation program for a snowmelt driven source.",
+   "topicId": "process-spring-melt-preparation-program",
+   "level": "class1",
+   "assumptions": "Fictional plant in western Canada preparing in late winter for snowmelt turbidity and flow changes.",
+   "configuration": "Scope: preparation checklist through the plant ready for melt conditions.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review last year melt records for turbidity peaks, dose ranges, and filter performance"
+    },
+    {
+     "id": "s2",
+     "label": "Build chemical stocks, especially coagulant and alkalinity supplement, to melt season levels"
+    },
+    {
+     "id": "s3",
+     "label": "Service jar test equipment and prepare dose ladder sheets for rapid melt jar testing"
+    },
+    {
+     "id": "s4",
+     "label": "Inspect clarifier sludge handling and residuals capacity for the higher solids load"
+    },
+    {
+     "id": "s5",
+     "label": "Confirm standby filters are ready and backwash supply can support shorter runs"
+    },
+    {
+     "id": "s6",
+     "label": "Brief all shifts on melt triggers for dose changes and flow reduction and post the melt plan"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Melt preparation stocks chemicals, readies residuals capacity for higher solids, and posts clear dose and flow triggers before the melt, so the event is managed, not improvised."
+  },
+  {
+   "id": "wp2w-evidence01",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Settled turbidity at a Saskatchewan plant rose from 1.8 NTU to 4.6 NTU in two days while the alum dose stayed at the setting used all spring.",
+   "topicId": "coagulation-optimization",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian Class 2 water plant case: steady plant flow unless noted, archived plant and laboratory records available for review, and provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality apply in general terms.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Raw turbidity rose from 24 NTU to 66 NTU as snowmelt runoff reached the river intake."
+    },
+    {
+     "id": "ev2",
+     "label": "The alum feed setting was not changed during the two days."
+    },
+    {
+     "id": "ev3",
+     "label": "A jar test series today settles to 1.4 NTU at a dose about 45 percent above the plant dose, and worse at the plant dose."
+    },
+    {
+     "id": "ev4",
+     "label": "Floc in the basin is small and sparse and much of it stays suspended in a grab sample after 30 minutes."
+    },
+    {
+     "id": "ev5",
+     "label": "Raw pH, alkalinity, rapid mix and flocculator operation are all in their usual ranges."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The alum dose is excessive and particles have restabilized"
+     },
+     {
+      "id": "inf-b",
+      "label": "The alum dose is now too low for the higher raw solids load"
+     },
+     {
+      "id": "inf-c",
+      "label": "The flocculators are shearing floc that formed correctly"
+     },
+     {
+      "id": "inf-d",
+      "label": "The settled turbidimeter has drifted high"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Raw turbidity nearly tripled on a fixed dose, floc is small and unsettled, and jars settle well only at a higher dose. Restabilization needs an excessive dose, shear would break floc that had formed, and a drifted meter would not match the unsettled grab sample."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which archived record best confirms that the dose failed to track raw demand?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived filter backwash volume log"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived jar test series and dose log from the last runoff event"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived finished water hardness log"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "Archived jar test series and dose log from the last runoff event directly records the condition behind the keyed explanation over time, so it best confirms it against the alternatives."
+   },
+   "clueText": {
+    "nc-a": "Backwash volumes were normal, which says nothing about coagulant demand in the basin.",
+    "nc-b": "Last runoff, the jar optimum rose with raw turbidity in the same way and raising the plant dose restored settled turbidity below 2 NTU.",
+    "nc-c": "Hardness was steady and is unrelated to floc formation or settling."
+   }
+  },
+  {
+   "id": "wp2w-evidence02",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Two days after the alum dose was doubled for turbid runoff at a Manitoba plant, floc collapsed and settled turbidity rose sharply.",
+   "topicId": "coagulation-alkalinity",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian Class 2 water plant case: steady plant flow unless noted, archived plant and laboratory records available for review, and provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality apply in general terms.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "The alum dose was doubled two days ago and has stayed at the higher rate."
+    },
+    {
+     "id": "ev2",
+     "label": "Raw alkalinity fell from 88 mg/L to 26 mg/L as CaCO3 and coagulation pH fell from 7.2 to 5.9."
+    },
+    {
+     "id": "ev3",
+     "label": "The soda ash day bin is empty and its feeder shows a no-flow alarm that was acknowledged but not cleared."
+    },
+    {
+     "id": "ev4",
+     "label": "Jar tests with added alkalinity form large, fast settling floc at the current alum dose, while jars without added alkalinity fail."
+    },
+    {
+     "id": "ev5",
+     "label": "Raw turbidity is unchanged since the dose increase."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The higher alum dose restabilized particles by charge reversal"
+     },
+     {
+      "id": "inf-b",
+      "label": "Cold raw water slowed the flocculation reaction"
+     },
+     {
+      "id": "inf-c",
+      "label": "Alum consumed the alkalinity and, with no alkalinity replacement, pH dropped out of the effective coagulation range"
+     },
+     {
+      "id": "inf-d",
+      "label": "The flocculator paddles are turning too fast and shearing floc"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "Alkalinity fell by about two thirds and pH dropped after the dose doubled, the soda ash feeder is empty, and jars recover when alkalinity is added rather than when dose is cut. That rules against restabilization, and no temperature or paddle change is observed."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which archived record best confirms the alkalinity feed failure?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived raw water temperature log"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived clarifier sludge blanket survey"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived soda ash feeder run log and bin level record for the past week"
+     }
+    ],
+    "correctOptionId": "nc-c",
+    "explanation": "Archived soda ash feeder run log and bin level record for the past week directly records the condition behind the keyed explanation over time, so it best confirms it against the alternatives."
+   },
+   "clueText": {
+    "nc-a": "Raw temperature held near 10 C all week, which does not explain an alkalinity loss of this size.",
+    "nc-b": "The blanket survey was normal, which rules out a settling problem but does not track chemical feed.",
+    "nc-c": "The feeder log shows no soda ash delivered for three days while alum feed doubled, and the bin record shows it empty from the first day."
+   }
+  },
+  {
+   "id": "wp2w-evidence03",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "In mid January at a northern Alberta plant, floc is weak and slow to form and settled turbidity is 4.1 NTU, although the same dose produced 1.3 NTU in October.",
+   "topicId": "coagulation-cold-climate",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian Class 2 water plant case: steady plant flow unless noted, archived plant and laboratory records available for review, and provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality apply in general terms.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Raw water temperature is 1 C, down from 15 C in October."
+    },
+    {
+     "id": "ev2",
+     "label": "Jar tests at the current dose eventually form good floc but take about three times longer than in October."
+    },
+    {
+     "id": "ev3",
+     "label": "Alum dose, rapid mix and flocculator settings match the October settings."
+    },
+    {
+     "id": "ev4",
+     "label": "Raw turbidity, pH and alkalinity are similar to October values."
+    },
+    {
+     "id": "ev5",
+     "label": "Extending flocculation time in the jar test restores settled turbidity to about 1.5 NTU."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The alum stock has lost strength over the winter"
+     },
+     {
+      "id": "inf-b",
+      "label": "Raw alkalinity has been consumed by the alum dose"
+     },
+     {
+      "id": "inf-c",
+      "label": "The sedimentation basin is short-circuiting"
+     },
+     {
+      "id": "inf-d",
+      "label": "Cold water is slowing floc formation, so the available flocculation time is no longer enough"
+     }
+    ],
+    "correctOptionId": "inf-d",
+    "explanation": "Only temperature changed materially, jar floc forms well but slowly, and longer flocculation time restores performance. Alkalinity is unchanged, the same chemical works given time, and a short circuit would not slow floc growth in a jar."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which archived record best confirms a seasonal cold water pattern?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived winter operating records of settled turbidity against raw temperature for three past winters"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived alum delivery certificates"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived distribution pressure log"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Archived winter operating records of settled turbidity against raw temperature for three past winters directly records the condition behind the keyed explanation over time, so it best confirms it against the alternatives."
+   },
+   "clueText": {
+    "nc-a": "Each past winter, settled turbidity rose as raw water fell below 4 C and recovered in spring at the same dose, matching this year.",
+    "nc-b": "Alum certificates show the product met specification, which does not explain a pattern tied to temperature.",
+    "nc-c": "Distribution pressures were normal and have no bearing on floc formation time in the plant."
+   }
+  },
+  {
+   "id": "wp2w-evidence04",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Settled turbidity worsened after an operator raised the alum dose twice to chase colour at a British Columbia interior plant, and the water now carries fine dispersed solids.",
+   "topicId": "coagulation-optimization",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian Class 2 water plant case: steady plant flow unless noted, archived plant and laboratory records available for review, and provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality apply in general terms.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "The alum dose is now about double the jar test dose that worked last week."
+    },
+    {
+     "id": "ev2",
+     "label": "A jar test series today shows settled turbidity lowest at a mid range dose and higher at both lower and higher doses."
+    },
+    {
+     "id": "ev3",
+     "label": "Coagulation pH has fallen from 7.0 to 6.1 as the dose increased."
+    },
+    {
+     "id": "ev4",
+     "label": "Floc at the current dose is tiny and dispersed and a settled sample stays cloudy for hours."
+    },
+    {
+     "id": "ev5",
+     "label": "Raw colour and turbidity have been steady for two days."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The alum dose is excessive, restabilizing particles and depressing pH"
+     },
+     {
+      "id": "inf-b",
+      "label": "The alum dose is still too low for the raw load"
+     },
+     {
+      "id": "inf-c",
+      "label": "The flocculator is shearing large floc into fine floc"
+     },
+     {
+      "id": "inf-d",
+      "label": "The clarifier sludge blanket has risen into the effluent launders"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "The jar curve is U shaped with its best point well below the current dose, pH fell as dose rose, and solids stay dispersed. A low dose contradicts the lower jar optimum, shear needs large floc forming first, and no blanket observation is offered."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which archived record best confirms the overdose pattern?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived sludge blanket depth survey"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived jar test dose curve and plant dose trend for the past week"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived flocculator motor current log"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "Archived jar test dose curve and plant dose trend for the past week directly records the condition behind the keyed explanation over time, so it best confirms it against the alternatives."
+   },
+   "clueText": {
+    "nc-a": "Blanket depth was mid range and steady, which does not explain solids that will not settle in a jar.",
+    "nc-b": "The archived curve shows settled turbidity rising steadily once the plant dose passed the jar optimum, exactly as this week.",
+    "nc-c": "Flocculator current was normal, which argues against a mechanical mixing change."
+   }
+  },
+  {
+   "id": "wp2w-evidence05",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Settled and filtered turbidity are acceptable at a prairie plant, but chlorine demand has jumped, coagulant demand is rising, and the raw water looks tea coloured.",
+   "topicId": "source-water-quality",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian Class 2 water plant case: steady plant flow unless noted, archived plant and laboratory records available for review, and provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality apply in general terms.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "A 0.45 micron filtered raw sample still measures 30 CU of colour, close to the unfiltered value of 34 CU."
+    },
+    {
+     "id": "ev2",
+     "label": "Raw turbidity is low at 3 NTU and has not changed."
+    },
+    {
+     "id": "ev3",
+     "label": "Jar tests need a higher alum dose than usual, and the extra dose mainly removes colour rather than turbidity."
+    },
+    {
+     "id": "ev4",
+     "label": "The reservoir is low after a dry summer and the intake is drawing from a deeper, more organic rich layer."
+    },
+    {
+     "id": "ev5",
+     "label": "Raw dissolved organic carbon measures 6.9 mg/L, up from a usual 3.4 mg/L."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Suspended solids from runoff are overloading coagulation"
+     },
+     {
+      "id": "inf-b",
+      "label": "Dissolved organic matter in the source has increased, raising both coagulant and chlorine demand"
+     },
+     {
+      "id": "inf-c",
+      "label": "The alum stock solution has been diluted"
+     },
+     {
+      "id": "inf-d",
+      "label": "The colour meter reads high because of turbidity interference"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Colour survives fine filtration, turbidity is low, dissolved organic carbon nearly doubled, and jars spend extra dose removing colour. Diluted alum would not raise chlorine demand, and turbidity interference is contradicted by the low turbidity and the filtered reading."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which archived record best confirms the source organic shift?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived raw dissolved organic carbon and colour log by intake depth"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived alum tank refill records"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived turbidity meter calibration record"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Archived raw dissolved organic carbon and colour log by intake depth directly records the condition behind the keyed explanation over time, so it best confirms it against the alternatives."
+   },
+   "clueText": {
+    "nc-a": "The log shows the deep intake layer has run near 7 mg/L dissolved organic carbon all month, roughly double the shallow layer used in spring.",
+    "nc-b": "Refill records show alum delivered at normal strength, which clears the chemical stock.",
+    "nc-c": "The turbidity meter calibrated within tolerance, and turbidity is low in any case."
+   }
+  },
+  {
+   "id": "wp2w-evidence06",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Floc quality fell steadily over two days at a plant using a cationic polymer aid, even though the alum dose sits exactly at the jar test optimum.",
+   "topicId": "coagulation-polymer",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian Class 2 water plant case: steady plant flow unless noted, archived plant and laboratory records available for review, and provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality apply in general terms.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Jar tests at the plant alum dose settle to 1.3 NTU when the polymer dose is halved, and to 4.2 NTU at the current polymer dose."
+    },
+    {
+     "id": "ev2",
+     "label": "Floc at the plant polymer dose is stringy and gelatinous and floats in the jar instead of settling."
+    },
+    {
+     "id": "ev3",
+     "label": "The polymer feed pump was replaced two days ago and its calibration was never checked after the change."
+    },
+    {
+     "id": "ev4",
+     "label": "A drawdown test shows the new polymer pump delivers about twice the volume its setting indicates."
+    },
+    {
+     "id": "ev5",
+     "label": "Raw turbidity, pH and alkalinity are steady."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The alum dose is too low for the raw water"
+     },
+     {
+      "id": "inf-b",
+      "label": "The polymer aid is overdosed and is restabilizing and floating the floc"
+     },
+     {
+      "id": "inf-c",
+      "label": "The rapid mixer has failed"
+     },
+     {
+      "id": "inf-d",
+      "label": "The raw water temperature has fallen sharply"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Halving the polymer in jars restores settling at the same alum dose, floc is stringy and floating, and the uncalibrated replacement pump delivers double its setting. Alum, mixing and temperature are not implicated by any observation."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which archived record best confirms the polymer delivery error?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived polymer pump maintenance and calibration records"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived raw water temperature log"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived alum delivery certificates"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Archived polymer pump maintenance and calibration records directly records the condition behind the keyed explanation over time, so it best confirms it against the alternatives."
+   },
+   "clueText": {
+    "nc-a": "Records show the pump was swapped two days ago with no post repair calibration, and the same model ran high after a past swap until calibrated.",
+    "nc-b": "Raw temperature was steady near 9 C through the decline.",
+    "nc-c": "Alum certificates and jar results at the plant alum dose clear the alum feed."
+   }
+  },
+  {
+   "id": "wp2w-evidence07",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Floc formation stopped almost completely over one shift at an Alberta plant even though the alum pump is running and stroking normally.",
+   "topicId": "chemical-feed-systems",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian Class 2 water plant case: steady plant flow unless noted, archived plant and laboratory records available for review, and provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality apply in general terms.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "The alum day tank level has not dropped at all during the shift."
+    },
+    {
+     "id": "ev2",
+     "label": "Pressure at the pump discharge gauge is well above its normal reading."
+    },
+    {
+     "id": "ev3",
+     "label": "No flow is visible at the injection point sample tap and the feed line past the pump is cool and still."
+    },
+    {
+     "id": "ev4",
+     "label": "A jar test dosed by hand from the day tank forms normal floc at the usual dose."
+    },
+    {
+     "id": "ev5",
+     "label": "Raw turbidity, pH and alkalinity are unchanged."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The alum in the day tank has lost its strength"
+     },
+     {
+      "id": "inf-b",
+      "label": "The alum feed line or injection quill is plugged, so no coagulant reaches the water"
+     },
+     {
+      "id": "inf-c",
+      "label": "The alum pump has lost its prime and is pumping air"
+     },
+     {
+      "id": "inf-d",
+      "label": "Raw water demand rose beyond what the dose can treat"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "The tank level is static, discharge pressure is high, and nothing arrives at the injection tap, while hand dosed tank chemical works in a jar. That is a blockage downstream of the pump. A lost prime usually gives low rather than high discharge pressure, and raw demand is unchanged."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which archived record best confirms a recurring injection point blockage?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived alum supplier strength certificates"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived raw water turbidity trend"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived maintenance log for the injection quill and feed line"
+     }
+    ],
+    "correctOptionId": "nc-c",
+    "explanation": "Archived maintenance log for the injection quill and feed line directly records the condition behind the keyed explanation over time, so it best confirms it against the alternatives."
+   },
+   "clueText": {
+    "nc-a": "Supplier certificates show the alum met specification, matching the good jar test result.",
+    "nc-b": "Raw turbidity was flat all shift, which rules out a demand surge.",
+    "nc-c": "The log shows the quill was last cleaned 14 months ago and has plugged twice before with the same high pressure and zero tank drawdown."
+   }
+  },
+  {
+   "id": "wp2w-evidence08",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Floc in the flocculation basin at a Saskatchewan plant is patchy, with dense clouds of good floc beside stretches of milky untreated looking water, and settled turbidity is poor.",
+   "topicId": "coagulation-mixing",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian Class 2 water plant case: steady plant flow unless noted, archived plant and laboratory records available for review, and provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality apply in general terms.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "The rapid mix motor current reads zero and the mixer shaft is not turning, although its run light is on."
+    },
+    {
+     "id": "ev2",
+     "label": "Alum is being fed at the normal rate into the rapid mix chamber."
+    },
+    {
+     "id": "ev3",
+     "label": "Jar tests mixed vigorously for one minute form uniform good floc at the plant dose."
+    },
+    {
+     "id": "ev4",
+     "label": "Basin samples taken across the chamber vary widely, from well flocculated to almost raw."
+    },
+    {
+     "id": "ev5",
+     "label": "Raw water quality and the flocculator paddles are normal."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The alum dose is too low for the raw water"
+     },
+     {
+      "id": "inf-b",
+      "label": "The flocculator speed is too high and is shearing floc"
+     },
+     {
+      "id": "inf-c",
+      "label": "The rapid mixer has failed, so coagulant is not dispersed through the raw water"
+     },
+     {
+      "id": "inf-d",
+      "label": "Raw alkalinity is too low for coagulation"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "The mixer is not turning, samples vary from treated to almost raw across the chamber, and vigorous mixing in a jar fixes the result at the same dose. Dose, shear and alkalinity do not explain untreated pockets beside good floc."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which archived record best confirms when the rapid mixer stopped?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived motor current trend and run status history for the rapid mixer"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived jar test results from last month"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived settled turbidity monthly summary"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Archived motor current trend and run status history for the rapid mixer directly records the condition behind the keyed explanation over time, so it best confirms it against the alternatives."
+   },
+   "clueText": {
+    "nc-a": "Current dropped to zero at 03:10 and stayed there, and patchy floc was first noted on the next round, matching the failure time.",
+    "nc-b": "Last month the jar tests were normal, which only confirms the dose was right before the failure.",
+    "nc-c": "The monthly summary cannot pinpoint a failure that began this shift."
+   }
+  },
+  {
+   "id": "wp2w-evidence09",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "One of two parallel flocculation trains at a Manitoba plant produces poor settled water while the other train, on the same raw water and dose, performs normally.",
+   "topicId": "coagulation-mixing",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian Class 2 water plant case: steady plant flow unless noted, archived plant and laboratory records available for review, and provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality apply in general terms.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Train 2 settled turbidity is 1.2 NTU and Train 1 is 4.3 NTU at the same flow in each train."
+    },
+    {
+     "id": "ev2",
+     "label": "Both trains receive the same coagulated water from a common rapid mix."
+    },
+    {
+     "id": "ev3",
+     "label": "The Train 1 flocculator motor runs, but the paddle shaft does not rotate when watched through the hatch."
+    },
+    {
+     "id": "ev4",
+     "label": "Floc leaving Train 1 is small and unformed, and floc leaving Train 2 is large and settles well."
+    },
+    {
+     "id": "ev5",
+     "label": "A coupling guard on the Train 1 drive was found warm, with rubber dust beneath it."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The alum dose is wrong for the raw water"
+     },
+     {
+      "id": "inf-b",
+      "label": "Train 1 is hydraulically overloaded compared with Train 2"
+     },
+     {
+      "id": "inf-c",
+      "label": "The Train 1 clarifier blanket has risen and is washing out"
+     },
+     {
+      "id": "inf-d",
+      "label": "The Train 1 flocculator drive coupling has failed, so that train gets no gentle mixing"
+     }
+    ],
+    "correctOptionId": "inf-d",
+    "explanation": "Both trains share dose and raw water and carry the same flow, yet only Train 1 fails, its paddle shaft does not turn while the motor runs, and there is rubber dust at the coupling. Dose and overload are common or equal, and no blanket observation is offered."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which archived record best confirms the coupling failure point?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived flow split records for the two trains"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived drive inspection and vibration notes for the Train 1 flocculator"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived common rapid mix dose log"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "Archived drive inspection and vibration notes for the Train 1 flocculator directly records the condition behind the keyed explanation over time, so it best confirms it against the alternatives."
+   },
+   "clueText": {
+    "nc-a": "Flow split records show an even split all week, which removes overload from consideration.",
+    "nc-b": "Notes from last month flagged rising vibration and coupling wear on Train 1 and recommended replacement, which was deferred.",
+    "nc-c": "The dose log is steady and shared by both trains, so it cannot explain a one train failure."
+   }
+  },
+  {
+   "id": "wp2w-evidence10",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Sweep floc is poor and settled turbidity is high at a plant that doses lime with alum, and staff report a slippery feel at the plant tap.",
+   "topicId": "coagulation-ph-control",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian Class 2 water plant case: steady plant flow unless noted, archived plant and laboratory records available for review, and provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality apply in general terms.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Coagulation pH reads 8.8, well above the plant target range of 6.8 to 7.4."
+    },
+    {
+     "id": "ev2",
+     "label": "Raw alkalinity is normal, but treated alkalinity has risen to 165 mg/L as CaCO3."
+    },
+    {
+     "id": "ev3",
+     "label": "The lime feeder runs continuously, including during a period when the control signal called for it to stop."
+    },
+    {
+     "id": "ev4",
+     "label": "Jar tests at pH 7.1 form large sweep floc and settle to 1.2 NTU at the current alum dose."
+    },
+    {
+     "id": "ev5",
+     "label": "Alum dose and raw turbidity have not changed."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Lime is being overfed, pushing pH above the range where alum forms good sweep floc"
+     },
+     {
+      "id": "inf-b",
+      "label": "Alum is being underfed for the raw load"
+     },
+     {
+      "id": "inf-c",
+      "label": "The raw water has turned cold and slowed flocculation"
+     },
+     {
+      "id": "inf-d",
+      "label": "The rapid mixer has failed and coagulant is not dispersing"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "pH is far above target, treated alkalinity climbed, the lime feeder runs when it should be stopped, and jars at normal pH settle well on the same alum dose. Alum dose and temperature are unchanged, and a dispersion failure would not raise alkalinity."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which archived record best confirms the lime feeder control fault?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived raw water temperature log"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived alum day tank level record"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived lime feeder output signal and run time log"
+     }
+    ],
+    "correctOptionId": "nc-c",
+    "explanation": "Archived lime feeder output signal and run time log directly records the condition behind the keyed explanation over time, so it best confirms it against the alternatives."
+   },
+   "clueText": {
+    "nc-a": "Raw temperature stayed near 12 C, which does not explain a pH of 8.8.",
+    "nc-b": "Alum tank drawdown matches the set dose, which clears the alum feed.",
+    "nc-c": "The log shows the feeder at full output for 26 hours, including 9 hours when the controller output was zero, confirming a stuck feeder control."
+   }
+  },
+  {
+   "id": "wp2w-evidence100",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A lime softening plant in Saskatchewan finds white deposits forming in its finished water pumps each time a second solids contact unit is brought online.",
+   "topicId": "softening",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian Class 2 water plant case: steady plant flow unless noted, archived plant and laboratory records available for review, and provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality apply in general terms.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "With both units online, total flow per unit falls to about half the design rate and sludge blanket solids climb well above the normal range."
+    },
+    {
+     "id": "ev2",
+     "label": "Finished water from the two unit operation carries fine white solids that settle slowly in a sample bottle."
+    },
+    {
+     "id": "ev3",
+     "label": "With one unit online at full rate, deposits stop and finished turbidity is low."
+    },
+    {
+     "id": "ev4",
+     "label": "Lime and soda ash doses per megalitre are the same in both modes."
+    },
+    {
+     "id": "ev5",
+     "label": "The deposits analyse as calcium carbonate."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The second unit is contaminated with scale"
+     },
+     {
+      "id": "inf-b",
+      "label": "Running both units at half rate thickens the blankets until precipitated solids carry over, while the single unit at design rate keeps its blanket stable"
+     },
+     {
+      "id": "inf-c",
+      "label": "The lime dose doubles when the second unit starts"
+     },
+     {
+      "id": "inf-d",
+      "label": "The pumps cavitate with two units online"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Deposits are calcium carbonate, they appear only in the two unit half rate mode at unchanged dose per megalitre, and blanket solids climb in that mode. Carryover from over thickened blankets fits, not contamination, dose or cavitation."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which archived record best confirms the operating mode effect?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived blanket solids and finished turbidity records by operating mode"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived lime dose records"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived pump inspection reports"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Archived blanket solids and finished turbidity records by operating mode directly records the condition behind the keyed explanation over time, so it best confirms it against the alternatives."
+   },
+   "clueText": {
+    "nc-a": "Records show carryover episodes only in two unit mode across a year, with blanket solids high in every episode.",
+    "nc-b": "Dose per megalitre is flat across both modes.",
+    "nc-c": "Pump inspections show wear following, not preceding, the deposit episodes."
+   }
+  },
+  {
+   "id": "wp2w-evidence11",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "During spring snowmelt in the Alberta foothills, floc became pinpoint and settled turbidity rose, even though the soda ash feeder is running and delivering at its usual rate.",
+   "topicId": "coagulation-alkalinity",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian Class 2 water plant case: steady plant flow unless noted, archived plant and laboratory records available for review, and provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality apply in general terms.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Raw alkalinity has fallen from 95 mg/L to 34 mg/L as CaCO3 as dilute snowmelt entered the creek source."
+    },
+    {
+     "id": "ev2",
+     "label": "Coagulation pH drops to 6.0 after alum addition, from a raw pH of 7.4."
+    },
+    {
+     "id": "ev3",
+     "label": "Jar tests with extra soda ash added restore pH 7.0 and settle to 1.4 NTU at the current alum dose."
+    },
+    {
+     "id": "ev4",
+     "label": "A feeder drawdown test confirms soda ash is delivering at its set rate, but the set rate was sized for the old raw alkalinity."
+    },
+    {
+     "id": "ev5",
+     "label": "Raw turbidity is only moderately higher than usual."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The soda ash feeder has failed mechanically"
+     },
+     {
+      "id": "inf-b",
+      "label": "The alum dose is excessive and restabilizing particles"
+     },
+     {
+      "id": "inf-c",
+      "label": "Snowmelt dilution cut raw alkalinity so the usual alkalinity feed rate no longer replaces what alum consumes"
+     },
+     {
+      "id": "inf-d",
+      "label": "The clarifier is hydraulically overloaded"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "The feeder passes its drawdown test, raw alkalinity collapsed with snowmelt, pH falls on alum addition, and jars recover with extra alkalinity. The feed rate, not the feeder, is undersized for the new source chemistry, and no overload or jar overdose pattern is shown."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which archived record best confirms the snowmelt alkalinity pattern?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived raw alkalinity and creek flow records from past snowmelt periods"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived soda ash feeder repair invoices"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived clarifier flow records"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Archived raw alkalinity and creek flow records from past snowmelt periods directly records the condition behind the keyed explanation over time, so it best confirms it against the alternatives."
+   },
+   "clueText": {
+    "nc-a": "Past snowmelts show the same alkalinity collapse as creek flow rose, and settled turbidity recovered each time the soda ash rate was raised.",
+    "nc-b": "Repair invoices are old and the feeder just passed a drawdown test.",
+    "nc-c": "Clarifier flows stayed within the normal spring range."
+   }
+  },
+  {
+   "id": "wp2w-evidence12",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Settled turbidity at a British Columbia plant is excellent at 0.9 NTU, yet treated water organic removal has fallen and disinfection byproduct formation in distribution samples is trending up.",
+   "topicId": "enhanced-coagulation",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian Class 2 water plant case: steady plant flow unless noted, archived plant and laboratory records available for review, and provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality apply in general terms.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Jar tests at the current coagulation pH of 7.3 remove turbidity well but remove only about 25 percent of dissolved organic carbon."
+    },
+    {
+     "id": "ev2",
+     "label": "The same jar series run at pH 5.9 removes about 55 percent of dissolved organic carbon with similar settled turbidity."
+    },
+    {
+     "id": "ev3",
+     "label": "Raw dissolved organic carbon is 5.8 mg/L and raw turbidity is low at 6 NTU."
+    },
+    {
+     "id": "ev4",
+     "label": "Alum dose is at the usual turbidity based setting and has not been adjusted for organics."
+    },
+    {
+     "id": "ev5",
+     "label": "Filter performance and chlorine residual at the plant are normal."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The filters are passing organic matter through media defects"
+     },
+     {
+      "id": "inf-b",
+      "label": "Coagulation is optimized for turbidity at a pH too high for good organics removal, so dissolved organics pass through"
+     },
+     {
+      "id": "inf-c",
+      "label": "The chlorine dose is too low and is creating the byproduct trend"
+     },
+     {
+      "id": "inf-d",
+      "label": "The alum stock is diluted"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Jars show the same dose at lower pH removes twice the dissolved organics with no turbidity penalty, while filters and residuals are normal. The process is tuned for turbidity, not organics. Diluted alum would hurt turbidity removal too, and low chlorine would lower, not raise, byproduct formation."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which archived record best confirms the pH dependent organics pattern?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived paired jar test records of dissolved organic carbon removal against coagulation pH"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived filter media inspection report"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived chlorine dose log"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Archived paired jar test records of dissolved organic carbon removal against coagulation pH directly records the condition behind the keyed explanation over time, so it best confirms it against the alternatives."
+   },
+   "clueText": {
+    "nc-a": "Archived jars across three seasons show organics removal rising steadily as coagulation pH drops toward 6, at constant dose.",
+    "nc-b": "The media inspection found the beds in good condition.",
+    "nc-c": "The chlorine dose log is steady, so a dose change does not explain the trend."
+   }
+  },
+  {
+   "id": "wp2w-evidence13",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Floc leaving the first flocculation stage at a Saskatchewan plant is large and healthy, but by the last stage it is broken into small fragments and settled turbidity has risen.",
+   "topicId": "coagulation-mixing",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian Class 2 water plant case: steady plant flow unless noted, archived plant and laboratory records available for review, and provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality apply in general terms.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Flocculator speed in the last stage was raised during maintenance last week and left at the higher setting."
+    },
+    {
+     "id": "ev2",
+     "label": "Floc sampled after stage one is large and settles quickly, while floc after the last stage is fragmented."
+    },
+    {
+     "id": "ev3",
+     "label": "A bench test stirring a formed floc sample at the new last stage speed breaks it into the same small fragments."
+    },
+    {
+     "id": "ev4",
+     "label": "Alum dose, raw turbidity and alkalinity are unchanged."
+    },
+    {
+     "id": "ev5",
+     "label": "Settled turbidity was 1.5 NTU before the maintenance visit and is now 3.8 NTU."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The alum dose has become too low"
+     },
+     {
+      "id": "inf-b",
+      "label": "The higher last stage mixing speed is shearing floc after it forms"
+     },
+     {
+      "id": "inf-c",
+      "label": "The clarifier blanket is washing out"
+     },
+     {
+      "id": "inf-d",
+      "label": "Cold water is slowing floc formation"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Floc forms well in stage one and fragments only after the stage whose speed was raised, and the bench test reproduces the breakage at that speed. Formation problems from dose or cold would appear at stage one, and no blanket rise is observed."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which archived record best confirms the speed change effect?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived flocculator speed settings before and after the maintenance visit, with settled turbidity"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived sludge blanket surveys"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived raw water temperature log"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Archived flocculator speed settings before and after the maintenance visit, with settled turbidity directly records the condition behind the keyed explanation over time, so it best confirms it against the alternatives."
+   },
+   "clueText": {
+    "nc-a": "Settings show the last stage speed doubled at the visit and settled turbidity stepped up the same day, reversing a month of stable results.",
+    "nc-b": "Blanket surveys stayed in the normal band through the change.",
+    "nc-c": "Raw temperature changed by only 1 C that week."
+   }
+  },
+  {
+   "id": "wp2w-evidence14",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A plant manager blames coagulation for poor settled turbidity, but the jar tests run by the day shift look excellent.",
+   "topicId": "sedimentation-troubleshooting",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian Class 2 water plant case: steady plant flow unless noted, archived plant and laboratory records available for review, and provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality apply in general terms.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Jar tests at the plant dose settle to 1.1 NTU and floc entering the clarifier is large and settles well in a cylinder test."
+    },
+    {
+     "id": "ev2",
+     "label": "Dye added at the clarifier inlet appears at the effluent weir in about 20 minutes against a theoretical detention time near 3 hours."
+    },
+    {
+     "id": "ev3",
+     "label": "Most of the basin surface is calm, with a visible fast stream running from inlet to outlet along one side."
+    },
+    {
+     "id": "ev4",
+     "label": "The inlet baffle was found tilted and partly detached during a basin inspection last week."
+    },
+    {
+     "id": "ev5",
+     "label": "Flow, dose and sludge blanket depth are all in their normal ranges."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The sludge blanket has risen and is washing over the weir"
+     },
+     {
+      "id": "inf-b",
+      "label": "The coagulant dose is too low to form settleable floc"
+     },
+     {
+      "id": "inf-c",
+      "label": "The basin is hydraulically overloaded beyond its design flow"
+     },
+     {
+      "id": "inf-d",
+      "label": "Water is short-circuiting through the basin because the damaged inlet baffle lets a jet stream straight to the outlet"
+     }
+    ],
+    "correctOptionId": "inf-d",
+    "explanation": "Dye crosses in 20 minutes against a 3 hour theoretical time, a fast side stream is visible, the inlet baffle is damaged, and floc settles well in a cylinder. Blanket, dose and flow are all recorded normal or proven good by the cylinder test."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which archived record best confirms the short-circuit path?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived sludge blanket survey"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived plant flow records"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived dye tracer study results for this basin"
+     }
+    ],
+    "correctOptionId": "nc-c",
+    "explanation": "Archived dye tracer study results for this basin directly records the condition behind the keyed explanation over time, so it best confirms it against the alternatives."
+   },
+   "clueText": {
+    "nc-a": "The blanket survey shows a normal, even blanket, which clears sludge washout.",
+    "nc-b": "Flow records confirm operation within design flow all week.",
+    "nc-c": "The tracer study shows a sharp early peak at 18 minutes and a long tail, the classic short-circuit pattern for this basin."
+   }
+  },
+  {
+   "id": "wp2w-evidence15",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "At a Yukon community plant in February, settled turbidity is poor and the operator reports the flocculation basin feels sluggish, with visible ice along the basin walls.",
+   "topicId": "coagulation-cold-climate",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian Class 2 water plant case: steady plant flow unless noted, archived plant and laboratory records available for review, and provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality apply in general terms.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Raw water temperature is 0.5 C and the flocculator drive oil was last changed three years ago."
+    },
+    {
+     "id": "ev2",
+     "label": "The flocculator paddle speed measures about half its nameplate speed, and the gearbox oil is thick and dark."
+    },
+    {
+     "id": "ev3",
+     "label": "Jar tests stirred at full paddle speed in the heated lab form good floc, while jars stirred at the measured basin speed form poor floc in the same time."
+    },
+    {
+     "id": "ev4",
+     "label": "Alum dose, raw turbidity, pH and alkalinity match the plant winter targets."
+    },
+    {
+     "id": "ev5",
+     "label": "After the gearbox was warmed during a test, paddle speed rose partway toward nameplate."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The alum dose is too low for winter water"
+     },
+     {
+      "id": "inf-b",
+      "label": "Cold thickened gearbox oil has slowed the flocculator, cutting the mixing the floc needs"
+     },
+     {
+      "id": "inf-c",
+      "label": "The rapid mixer is dispersing coagulant unevenly"
+     },
+     {
+      "id": "inf-d",
+      "label": "The clarifier ice is channelling flow to the outlet"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Paddle speed is half of nameplate, the oil is old and thick, warming the gearbox raises speed, and jars at full speed succeed where jars at basin speed fail. Dose and chemistry are on target, and the jar comparison isolates mixing speed rather than flow channelling."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which archived record best confirms the drive maintenance link?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived flocculator drive maintenance and paddle speed check records"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived clarifier ice survey"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived alum dose log"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Archived flocculator drive maintenance and paddle speed check records directly records the condition behind the keyed explanation over time, so it best confirms it against the alternatives."
+   },
+   "clueText": {
+    "nc-a": "Records show speed checks falling each winter since the oil change was skipped, with recovery the one winter the oil was changed on schedule.",
+    "nc-b": "The ice survey shows wall ice only, with the basin centre open.",
+    "nc-c": "The dose log matches the winter target all season."
+   }
+  },
+  {
+   "id": "wp2w-evidence16",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A chlorine contact tank at a British Columbia plant shows a comfortable theoretical detention time of 60 minutes, yet the operator doubts the plant is earning the CT credit it claims.",
+   "topicId": "ct-and-tracer-studies",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian Class 2 water plant case: steady plant flow unless noted, archived plant and laboratory records available for review, and provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality apply in general terms.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "A step dose tracer test gives a T10 time of 14 minutes at the normal operating flow."
+    },
+    {
+     "id": "ev2",
+     "label": "The tracer curve shows a sharp peak in the first few minutes and a long low tail."
+    },
+    {
+     "id": "ev3",
+     "label": "One of three baffle curtains in the tank was found torn and hanging loose during inspection."
+    },
+    {
+     "id": "ev4",
+     "label": "Chlorine residual at the outlet is steady and the dose has not changed."
+    },
+    {
+     "id": "ev5",
+     "label": "Tank inlet and outlet are at opposite ends with no other visible damage."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The chlorine dose is too low for the water demand"
+     },
+     {
+      "id": "inf-b",
+      "label": "The tank is short-circuiting through the torn baffle, so the effective contact time is the T10 of 14 minutes, not the theoretical 60"
+     },
+     {
+      "id": "inf-c",
+      "label": "The outlet residual analyser has drifted low"
+     },
+     {
+      "id": "inf-d",
+      "label": "The tracer chemical reacted with chlorine and disappeared early"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "The tracer T10 is a quarter of the theoretical time with an early sharp peak, and a baffle curtain is torn. Residual is steady, so dose is not the issue, and a reacting tracer would shrink the whole curve rather than produce an early peak and long tail."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which archived record best confirms the contact tank flow pattern?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived tracer study reports from commissioning and from this year"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived chlorine dose log"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived residual analyser calibration record"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Archived tracer study reports from commissioning and from this year directly records the condition behind the keyed explanation over time, so it best confirms it against the alternatives."
+   },
+   "clueText": {
+    "nc-a": "The commissioning tracer gave a T10 of 44 minutes with baffles intact, and this year the T10 fell to 14 minutes, matching the torn curtain.",
+    "nc-b": "The dose log is steady through both tracer studies.",
+    "nc-c": "The analyser calibrated within tolerance last week."
+   }
+  },
+  {
+   "id": "wp2w-evidence17",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "In January at a Manitoba plant, the calculated disinfection performance fell short even though the chlorine residual at the clearwell outlet is the same as in summer.",
+   "topicId": "disinfection-ct",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian Class 2 water plant case: steady plant flow unless noted, archived plant and laboratory records available for review, and provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality apply in general terms.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Water temperature is 2 C, down from 18 C in summer."
+    },
+    {
+     "id": "ev2",
+     "label": "Clearwell outlet pH is 8.4, up from 7.4 in summer after a softening change."
+    },
+    {
+     "id": "ev3",
+     "label": "Free chlorine residual is 0.9 mg/L in both seasons and contact time is unchanged."
+    },
+    {
+     "id": "ev4",
+     "label": "Reference CT tables in the plant manual require much higher CT at low temperature and high pH for the same inactivation."
+    },
+    {
+     "id": "ev5",
+     "label": "Tracer testing last fall confirmed the baffling factor used in the calculation."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The residual analyser reads lower in cold water"
+     },
+     {
+      "id": "inf-b",
+      "label": "Cold temperature and high pH together reduce chlorine effectiveness, so the same residual and time no longer deliver the required CT"
+     },
+     {
+      "id": "inf-c",
+      "label": "The clearwell volume shrank over the winter"
+     },
+     {
+      "id": "inf-d",
+      "label": "Ammonia in the source is converting free chlorine to combined chlorine"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Residual, time and baffling are verified unchanged, while temperature fell and pH rose, the two conditions the CT tables penalize. No analyser, volume or ammonia observation supports the other options."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which archived record best confirms the seasonal CT pattern?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived monthly CT calculation sheets with temperature and pH for two years"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived clearwell level records"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived raw ammonia results"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Archived monthly CT calculation sheets with temperature and pH for two years directly records the condition behind the keyed explanation over time, so it best confirms it against the alternatives."
+   },
+   "clueText": {
+    "nc-a": "The sheets show the CT shortfall appearing every winter as temperature falls and worsening after the pH change, at constant residual.",
+    "nc-b": "Clearwell levels run in the same band in both seasons.",
+    "nc-c": "Raw ammonia has been below detection in every sample."
+   }
+  },
+  {
+   "id": "wp2w-evidence18",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "CT compliance at a Saskatchewan plant is marginal on weekday mornings but comfortable at midday, with the same chlorine dose and residual target all day.",
+   "topicId": "disinfection-ct",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian Class 2 water plant case: steady plant flow unless noted, archived plant and laboratory records available for review, and provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality apply in general terms.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Plant flow peaks at 210 L/s between 07:00 and 09:00 and runs near 110 L/s at midday."
+    },
+    {
+     "id": "ev2",
+     "label": "A tracer test run at peak flow gave a T10 about half the T10 measured at midday flow."
+    },
+    {
+     "id": "ev3",
+     "label": "Outlet free chlorine residual holds near 0.8 mg/L at both times."
+    },
+    {
+     "id": "ev4",
+     "label": "The CT calculation sheet in use applies the midday T10 value to the whole day."
+    },
+    {
+     "id": "ev5",
+     "label": "Temperature and pH change little through the day."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Chlorine demand rises in the morning and consumes the residual"
+     },
+     {
+      "id": "inf-b",
+      "label": "The morning calculation overstates CT because it uses the midday contact time instead of the shorter peak flow T10"
+     },
+     {
+      "id": "inf-c",
+      "label": "The clearwell baffles fail only at high level"
+     },
+     {
+      "id": "inf-d",
+      "label": "Operators are sampling the residual at the wrong location in the morning"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Residual, temperature and pH hold steady, but tracer T10 halves at peak flow while the sheet uses the midday value all day. The error is the contact time input, not demand, baffles or sampling location."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which archived record best confirms the flow dependent contact time?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived tracer results at low, medium and peak flows for the contact tank"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived hourly chlorine demand tests"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived sample location audit"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Archived tracer results at low, medium and peak flows for the contact tank directly records the condition behind the keyed explanation over time, so it best confirms it against the alternatives."
+   },
+   "clueText": {
+    "nc-a": "The archived series shows T10 falling steadily as flow rises, with the peak flow value near half the midday value used on the sheet.",
+    "nc-b": "Hourly demand tests show demand flat through the morning.",
+    "nc-c": "The audit confirmed the sample tap location last quarter."
+   }
+  },
+  {
+   "id": "wp2w-evidence19",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A contact tank at an Alberta plant has slowly lost effective volume over two years, and recent tracer results are worse than the commissioning results.",
+   "topicId": "ct-and-tracer-studies",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian Class 2 water plant case: steady plant flow unless noted, archived plant and laboratory records available for review, and provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality apply in general terms.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "A drained inspection found 0.6 m of settled solids covering the tank floor, in a tank 3 m deep."
+    },
+    {
+     "id": "ev2",
+     "label": "The tracer T10 has fallen from 38 minutes at commissioning to 26 minutes at the same flow."
+    },
+    {
+     "id": "ev3",
+     "label": "Inlet turbidity to the tank has run slightly high during spring runoff each year."
+    },
+    {
+     "id": "ev4",
+     "label": "Chlorine dose, residual and flow are similar to commissioning conditions."
+    },
+    {
+     "id": "ev5",
+     "label": "No baffle damage was found during the inspection."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The baffles have deteriorated and are short-circuiting the tank"
+     },
+     {
+      "id": "inf-b",
+      "label": "Accumulated solids have displaced about a fifth of the tank volume, cutting the real contact time"
+     },
+     {
+      "id": "inf-c",
+      "label": "The tracer method changed and the results are not comparable"
+     },
+     {
+      "id": "inf-d",
+      "label": "The chlorine injection point was moved"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Solids occupy about a fifth of the depth, baffles are intact, conditions match commissioning, and T10 fell in step with the buildup. The displaced volume explains the loss without baffle or method changes."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which archived record best confirms the volume loss timeline?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived tank cleaning and inspection records with solids depth measurements"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived baffle inspection photographs"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived chlorine injection drawings"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Archived tank cleaning and inspection records with solids depth measurements directly records the condition behind the keyed explanation over time, so it best confirms it against the alternatives."
+   },
+   "clueText": {
+    "nc-a": "Records show solids depth growing from a thin layer to 0.6 m over two years with no cleaning, tracking the falling T10 values.",
+    "nc-b": "Photographs show the baffles intact at each inspection.",
+    "nc-c": "The injection drawings are unchanged since commissioning."
+   }
+  }
+ ],
+ "missions": [
+  {
+   "id": "wp2w-mission61",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 61: The Process Emergency Disinfection Response Shift",
+   "tasks": [
+    {
+     "taskId": "wp2w-process40",
+     "revision": "r1",
+     "occurrenceId": "m61-t1"
+    },
+    {
+     "taskId": "wp2w-evidence01",
+     "revision": "r1",
+     "occurrenceId": "m61-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2w-mission62",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 62: The Coagulation Alkalinity Shift",
+   "tasks": [
+    {
+     "taskId": "wp2w-evidence02",
+     "revision": "r1",
+     "occurrenceId": "m62-t1"
+    },
+    {
+     "taskId": "wp2w-process41",
+     "revision": "r1",
+     "occurrenceId": "m62-t2"
+    },
+    {
+     "taskId": "wp2w-process42",
+     "revision": "r1",
+     "occurrenceId": "m62-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2w-mission63",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 63: The Process Backwash Optimization Study Shift",
+   "tasks": [
+    {
+     "taskId": "wp2w-process43",
+     "revision": "r1",
+     "occurrenceId": "m63-t1"
+    },
+    {
+     "taskId": "wp2w-evidence03",
+     "revision": "r1",
+     "occurrenceId": "m63-t2"
+    },
+    {
+     "taskId": "wp2w-process44",
+     "revision": "r1",
+     "occurrenceId": "m63-t3"
+    },
+    {
+     "taskId": "wp2w-process45",
+     "revision": "r1",
+     "occurrenceId": "m63-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2w-mission64",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 64: The Coagulation Optimization Shift",
+   "tasks": [
+    {
+     "taskId": "wp2w-evidence04",
+     "revision": "r1",
+     "occurrenceId": "m64-t1"
+    },
+    {
+     "taskId": "wp2w-process46",
+     "revision": "r1",
+     "occurrenceId": "m64-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2w-mission65",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 65: The Process Filter To Waste Optimization Shift",
+   "tasks": [
+    {
+     "taskId": "wp2w-process47",
+     "revision": "r1",
+     "occurrenceId": "m65-t1"
+    },
+    {
+     "taskId": "wp2w-evidence05",
+     "revision": "r1",
+     "occurrenceId": "m65-t2"
+    },
+    {
+     "taskId": "wp2w-process48",
+     "revision": "r1",
+     "occurrenceId": "m65-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2w-mission66",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 66: The Coagulation Polymer Shift",
+   "tasks": [
+    {
+     "taskId": "wp2w-evidence06",
+     "revision": "r1",
+     "occurrenceId": "m66-t1"
+    },
+    {
+     "taskId": "wp2w-process49",
+     "revision": "r1",
+     "occurrenceId": "m66-t2"
+    },
+    {
+     "taskId": "wp2w-process50",
+     "revision": "r1",
+     "occurrenceId": "m66-t3"
+    },
+    {
+     "taskId": "wp2w-process51",
+     "revision": "r1",
+     "occurrenceId": "m66-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2w-mission67",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 67: The Process Chemical Inventory Reorder Program Shift",
+   "tasks": [
+    {
+     "taskId": "wp2w-process52",
+     "revision": "r1",
+     "occurrenceId": "m67-t1"
+    },
+    {
+     "taskId": "wp2w-evidence07",
+     "revision": "r1",
+     "occurrenceId": "m67-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2w-mission68",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 68: The Coagulation Mixing Shift",
+   "tasks": [
+    {
+     "taskId": "wp2w-evidence08",
+     "revision": "r1",
+     "occurrenceId": "m68-t1"
+    },
+    {
+     "taskId": "wp2w-process53",
+     "revision": "r1",
+     "occurrenceId": "m68-t2"
+    },
+    {
+     "taskId": "wp2w-process54",
+     "revision": "r1",
+     "occurrenceId": "m68-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2w-mission69",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 69: The Process Chemical Spill Response Plant Shift",
+   "tasks": [
+    {
+     "taskId": "wp2w-process55",
+     "revision": "r1",
+     "occurrenceId": "m69-t1"
+    },
+    {
+     "taskId": "wp2w-evidence09",
+     "revision": "r1",
+     "occurrenceId": "m69-t2"
+    },
+    {
+     "taskId": "wp2w-process56",
+     "revision": "r1",
+     "occurrenceId": "m69-t3"
+    },
+    {
+     "taskId": "wp2w-process57",
+     "revision": "r1",
+     "occurrenceId": "m69-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2w-mission70",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 70: The Coagulation Ph Control Shift",
+   "tasks": [
+    {
+     "taskId": "wp2w-evidence10",
+     "revision": "r1",
+     "occurrenceId": "m70-t1"
+    },
+    {
+     "taskId": "wp2w-process58",
+     "revision": "r1",
+     "occurrenceId": "m70-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2w-mission71",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 71: The Process Polymer Makedown Sequence Shift",
+   "tasks": [
+    {
+     "taskId": "wp2w-process59",
+     "revision": "r1",
+     "occurrenceId": "m71-t1"
+    },
+    {
+     "taskId": "wp2w-evidence100",
+     "revision": "r1",
+     "occurrenceId": "m71-t2"
+    },
+    {
+     "taskId": "wp2w-process60",
+     "revision": "r1",
+     "occurrenceId": "m71-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2w-mission72",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 72: The Coagulation Alkalinity Shift",
+   "tasks": [
+    {
+     "taskId": "wp2w-evidence11",
+     "revision": "r1",
+     "occurrenceId": "m72-t1"
+    },
+    {
+     "taskId": "wp2w-process61",
+     "revision": "r1",
+     "occurrenceId": "m72-t2"
+    },
+    {
+     "taskId": "wp2w-process62",
+     "revision": "r1",
+     "occurrenceId": "m72-t3"
+    },
+    {
+     "taskId": "wp2w-process63",
+     "revision": "r1",
+     "occurrenceId": "m72-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2w-mission73",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 73: The Process Control Chart Chlorine Program Shift",
+   "tasks": [
+    {
+     "taskId": "wp2w-process64",
+     "revision": "r1",
+     "occurrenceId": "m73-t1"
+    },
+    {
+     "taskId": "wp2w-evidence12",
+     "revision": "r1",
+     "occurrenceId": "m73-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2w-mission74",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 74: The Coagulation Mixing Shift",
+   "tasks": [
+    {
+     "taskId": "wp2w-evidence13",
+     "revision": "r1",
+     "occurrenceId": "m74-t1"
+    },
+    {
+     "taskId": "wp2w-process65",
+     "revision": "r1",
+     "occurrenceId": "m74-t2"
+    },
+    {
+     "taskId": "wp2w-process66",
+     "revision": "r1",
+     "occurrenceId": "m74-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2w-mission75",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 75: The Process Microbiological Sampling Quality Program Shift",
+   "tasks": [
+    {
+     "taskId": "wp2w-process67",
+     "revision": "r1",
+     "occurrenceId": "m75-t1"
+    },
+    {
+     "taskId": "wp2w-evidence14",
+     "revision": "r1",
+     "occurrenceId": "m75-t2"
+    },
+    {
+     "taskId": "wp2w-process68",
+     "revision": "r1",
+     "occurrenceId": "m75-t3"
+    },
+    {
+     "taskId": "wp2w-process69",
+     "revision": "r1",
+     "occurrenceId": "m75-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2w-mission76",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 76: The Coagulation Cold Climate Shift",
+   "tasks": [
+    {
+     "taskId": "wp2w-evidence15",
+     "revision": "r1",
+     "occurrenceId": "m76-t1"
+    },
+    {
+     "taskId": "wp2w-process70",
+     "revision": "r1",
+     "occurrenceId": "m76-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2w-mission77",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 77: The Process High Settled Turbidity Troubleshooting Shift",
+   "tasks": [
+    {
+     "taskId": "wp2w-process71",
+     "revision": "r1",
+     "occurrenceId": "m77-t1"
+    },
+    {
+     "taskId": "wp2w-evidence16",
+     "revision": "r1",
+     "occurrenceId": "m77-t2"
+    },
+    {
+     "taskId": "wp2w-process72",
+     "revision": "r1",
+     "occurrenceId": "m77-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2w-mission78",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 78: The Disinfection Ct Shift",
+   "tasks": [
+    {
+     "taskId": "wp2w-evidence17",
+     "revision": "r1",
+     "occurrenceId": "m78-t1"
+    },
+    {
+     "taskId": "wp2w-process73",
+     "revision": "r1",
+     "occurrenceId": "m78-t2"
+    },
+    {
+     "taskId": "wp2w-process74",
+     "revision": "r1",
+     "occurrenceId": "m78-t3"
+    },
+    {
+     "taskId": "wp2w-process75",
+     "revision": "r1",
+     "occurrenceId": "m78-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2w-mission79",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 79: The Process Algae Bloom Response Program Shift",
+   "tasks": [
+    {
+     "taskId": "wp2w-process76",
+     "revision": "r1",
+     "occurrenceId": "m79-t1"
+    },
+    {
+     "taskId": "wp2w-evidence18",
+     "revision": "r1",
+     "occurrenceId": "m79-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2w-mission80",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 80: The Ct And Tracer Studies Shift",
+   "tasks": [
+    {
+     "taskId": "wp2w-evidence19",
+     "revision": "r1",
+     "occurrenceId": "m80-t1"
+    },
+    {
+     "taskId": "wp2w-process77",
+     "revision": "r1",
+     "occurrenceId": "m80-t2"
+    },
+    {
+     "taskId": "wp2w-process78",
+     "revision": "r1",
+     "occurrenceId": "m80-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Water treatment operations chapters (CT and disinfection, chemical feed, softening, filtration performance)"
+  },
+  {
+   "id": "wpi-ntk-2025",
+   "title": "WPI, 2025 Need-to-Know Criteria, Water Treatment Class II",
+   "locator": "https://gowpi.org/services/2025-need-to-know-criteria/"
+  },
+  {
+   "id": "gcdwq",
+   "title": "Health Canada, Guidelines for Canadian Drinking Water Quality",
+   "locator": "Federal guideline values and treatment context for Canadian drinking water"
+  },
+  {
+   "id": "epa-small-systems",
+   "title": "US EPA, Small Drinking Water Systems Handbook",
+   "locator": "Small system treatment operation background"
+  },
+  {
+   "id": "epa-swtr",
+   "title": "US EPA, Surface Water Treatment Rule guidance",
+   "locator": "Filtration and disinfection context (background, not Canadian law)"
+  },
+  {
+   "id": "ccohs-safety",
+   "title": "CCOHS, OSH Answers (chemical safety, confined spaces, lockout)",
+   "locator": "https://www.ccohs.ca/oshanswers/"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "a5b464055652304421e6af30358e0253e7032f358b1b5855d3dc4343bc397873",
+  "taskReceipts": [
+   {
+    "taskId": "wp2w-process40",
+    "revision": "r1",
+    "sha256": "3c8cab29795999cc74e73ca9f0f3084c9e550c3c013959e6cf6ca7aa8fc4f11b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process41",
+    "revision": "r1",
+    "sha256": "26b32e7ced59b6a902b4c1761f29ce6ac5929cab0e9df5ed2b5826f2408808f5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process42",
+    "revision": "r1",
+    "sha256": "ed60cf0de67bf8fc0c134185fc506d8a28d2e30f1fb6d97af044d6978543e449",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process43",
+    "revision": "r1",
+    "sha256": "f9ab6fca77f8c1cfc38e13dc98a3e5d2adb2e142b498c00ffb7a4fe6635aa8c5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process44",
+    "revision": "r1",
+    "sha256": "a95faed493d51bd8ff21ebae6609117fbe5922a933fcf1eae6d381f021fe2ebd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process45",
+    "revision": "r1",
+    "sha256": "2ddd292de32027c39f7e2e389d64777a20defacc0e39d46c31f238b7130fe1f9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process46",
+    "revision": "r1",
+    "sha256": "8548d6628790706bb0302e94024f34a6caee25d0dba6ad89cc0816d268d16067",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process47",
+    "revision": "r1",
+    "sha256": "aa7f3062f295214d38cddc37de2c8193ab89fd94a4a56091cc0efca9722fc929",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process48",
+    "revision": "r1",
+    "sha256": "6ffacf230bd66b588b64e746c0557c5d942f42775f8b12490cafa58d023617e2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process49",
+    "revision": "r1",
+    "sha256": "cfb80d5f831900646639f1be3287b6423203b50d4dcbd2361bc15034411c80be",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process50",
+    "revision": "r1",
+    "sha256": "9a6978a58a42449fd73166b186502e2d7cce62688b93423d3ccba6e390312445",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process51",
+    "revision": "r1",
+    "sha256": "90c847a285f32fb02b772677b58da351596d05a2b1c0945efeaaf29eb64cb1d7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process52",
+    "revision": "r1",
+    "sha256": "247768191a2d57e12cf0ebc8585b50864d69ae28b36106386d1459aef73d7e40",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process53",
+    "revision": "r1",
+    "sha256": "de354f5aa492b49ffd53ebff1e4b035690b7d2a45e47a2702beb0773d4639ded",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process54",
+    "revision": "r1",
+    "sha256": "a3b25d7818fec18f6a2e30355fddb27ad5398342108915433c60c4394f460b70",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process55",
+    "revision": "r1",
+    "sha256": "d2a82fb2881c94d6b30fda503e647870980c2ec2079f032549793ca7c0d80f72",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process56",
+    "revision": "r1",
+    "sha256": "95ef4bc1cbe45d1fa30925e76df9b7b6f1c517e3fe1fb3e65ca8ae5128d9f91c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process57",
+    "revision": "r1",
+    "sha256": "32d65e62a2401db6cedf0db5bfae7e7b584bc5830e0dbd44984c541a20f9f776",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process58",
+    "revision": "r1",
+    "sha256": "248002aa5caa54db115c1d693932a02dd65df2b668d213c3c2e9602fc4183036",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process59",
+    "revision": "r1",
+    "sha256": "14a9813c49b785252d5f9b3d22682f41281acca7e3a6651c24644e333d121dd7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process60",
+    "revision": "r1",
+    "sha256": "4484364f041eee5a3c647c4090e309a574f9e5056eeb8782151f1e65510e46df",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process61",
+    "revision": "r1",
+    "sha256": "2213daf0f9dc7c09d758ef072ba9e6e92c4933215621d797cd323d439da029f4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process62",
+    "revision": "r1",
+    "sha256": "63379915ad501739e1bd8612fb20e1130ad2ca34944f35751cfbfd6610d87651",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process63",
+    "revision": "r1",
+    "sha256": "8acb29af1a1c3eb54375ea0221f5f6f9be4f43ca5cf24136f73bcdd7ebc4f6d9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process64",
+    "revision": "r1",
+    "sha256": "5a6f8165d4509627263c49e8c74dc4aa2e5042c6bb0ced4c0f07a04ebdb2e833",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process65",
+    "revision": "r1",
+    "sha256": "6d9b8a64a49de2487b6dee231d11c0c27ade6c1b4c98c7118bdb0977e7591985",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process66",
+    "revision": "r1",
+    "sha256": "3c455301f2eb2bf9d9c9057f8b19fbd116a7cebe47370c322a2aea452eae85ea",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process67",
+    "revision": "r1",
+    "sha256": "9053719d0b8ac69b0ad25abf024487abe03e2461101c309847c64b1bf9f41304",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process68",
+    "revision": "r1",
+    "sha256": "efc69a553eec97ebcc8778f987d1bbd42a84949a1373019fd0129bd049ac3841",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process69",
+    "revision": "r1",
+    "sha256": "d304381611f931238655306f03bd6e71ae5618de58531b659810e90e8f66095e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process70",
+    "revision": "r1",
+    "sha256": "dbb608b3c05e05103de146f6806836549e202ea3f0ae822a01152127096c1a03",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process71",
+    "revision": "r1",
+    "sha256": "49ac959823130facfda3c724cea7b89935a78def9f9b37ac173c733063cf926c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process72",
+    "revision": "r1",
+    "sha256": "a82bf70009f176a99c16e4b047925bbe95074b07c01d27eb5f9c4116d0341d17",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process73",
+    "revision": "r1",
+    "sha256": "2f090776e7b1166a77adbee8474e300835d7a7527d15ab4fa174e88678af7ec1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process74",
+    "revision": "r1",
+    "sha256": "332de87bb223388282b41ed02dcce47f76ebddaee9b9b96ee59f5b9b941558fc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process75",
+    "revision": "r1",
+    "sha256": "7649d6068ac37d4ff827723615e72c1d49122090470d8d8c276d4b30b160fbb6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process76",
+    "revision": "r1",
+    "sha256": "a45cbad3ed17f540007100fcecb26b25f09dcaf7a1a0ee3e87853324b379596d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process77",
+    "revision": "r1",
+    "sha256": "f86bc2575c5dacd15b53dab2025e8a0c89cf496e9d12e10cc28e627ae8f898d2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process78",
+    "revision": "r1",
+    "sha256": "42ec8f7445022170ca2d71e1784a860a900631dc61d94d0786c0bf7c3b55f3d3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process79",
+    "revision": "r1",
+    "sha256": "d00ad90eef69a544e177f9acc15e5fdf29d18b02d1bb19058f3b3cbc25a290ae",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process80",
+    "revision": "r1",
+    "sha256": "a6e70c48fd3825cedb84117ab51ca7b59dc784081e5d17047a9f052964e82f17",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process81",
+    "revision": "r1",
+    "sha256": "3f1f2bd25cbfda12bb13d6e6ff8e1c67afe4343f975edff1152fa853fdc2e5d6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process82",
+    "revision": "r1",
+    "sha256": "7857923ece2a98b95f5bb46751bb9d66477baac80a0578804ac271beb744f543",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process83",
+    "revision": "r1",
+    "sha256": "ddad0c5d8106a4f15c3fe1b6fbdec9528aa144b74d309f344bb043d659826803",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process84",
+    "revision": "r1",
+    "sha256": "7c6b0315f4252a33d8caebae3ef5ee8a77231cb1eac25ed02837a8cc87f1c64a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process85",
+    "revision": "r1",
+    "sha256": "26e6b4111fcb0ffe0d06177dec4e34b561ba605b43b5f8fec86d23a3f3313a39",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process86",
+    "revision": "r1",
+    "sha256": "30a95dfdab02e6357bbc1d6b351fb23c56762cc587509290e34f1c4426496bf3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process87",
+    "revision": "r1",
+    "sha256": "bd27c72d1087df44195169c1a0c14bdd5ef252c4301b67354064f4d538081000",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process88",
+    "revision": "r1",
+    "sha256": "5881cf0b11f6b3cd2eb620daa8e4cdc314e7ed9ead7f8491d05a50f985ab6020",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process89",
+    "revision": "r1",
+    "sha256": "55df0d44028a839ed1174ebef60f388d3526afce9ec8f1234cbdeb08e83bfbdc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process90",
+    "revision": "r1",
+    "sha256": "c51f9b4fa28ce4732241f1afd9d463a6d34a0adb6b125743002df6731c515612",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process91",
+    "revision": "r1",
+    "sha256": "bab2b8bfd3da421d510614e1275c1df266908f69eaa4643c758deddc27b3203e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process92",
+    "revision": "r1",
+    "sha256": "c919ca98aed435938b7aeb7bff5a99010bb1b83fe3c6847df054536cd7108970",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process93",
+    "revision": "r1",
+    "sha256": "1e231462b9f5ea349eee40a035e2e0359ced1153aa614cc3bb898b1548a72087",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process94",
+    "revision": "r1",
+    "sha256": "c7af252f2416ab75bea11fd2fafd4f187754e0f08266a222cc58913ebc0a9829",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process95",
+    "revision": "r1",
+    "sha256": "0316d7b5515480c7c17edbd092d7c55f214027456cce9e5d9ad02e87f71fd8b0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process96",
+    "revision": "r1",
+    "sha256": "a63cf33af238ce44ea4866b940ab2218c5c1381921a80de8a27d7ac1222a83f8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process97",
+    "revision": "r1",
+    "sha256": "e22dbfb2122aabeb6b7969c594fd1a25f0f950b0927e91ac0f28e8671276123a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process98",
+    "revision": "r1",
+    "sha256": "05127ac25e13221c131d36f039f8ea1ddbe01537603e51735820518f7b46c477",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-process99",
+    "revision": "r1",
+    "sha256": "8828b1421ef940da7e1192dccddb3f18ca10dcb62f59a5bbd3bb79549fd1192c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-evidence01",
+    "revision": "r1",
+    "sha256": "311247ec04419950bdf84828f9b4c6ecf8447699992ce8dfabbe6c9aec81bdab",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-evidence02",
+    "revision": "r1",
+    "sha256": "1c11ba3f6e36a5b7191810a18fc25074540da1f784f4e3e3b478fd8b5ee121d2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-evidence03",
+    "revision": "r1",
+    "sha256": "246b186a64000f2f647d7f0de84715b1cf0f64032699d524123b298a95154d35",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-evidence04",
+    "revision": "r1",
+    "sha256": "28ce5ee70557ec655e6fb55d49e721a1c7034f6f263dfb230c1c3ab8c7fc0272",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-evidence05",
+    "revision": "r1",
+    "sha256": "4adc6dd9c6fb88518f486576b27958f281175d0de28089a8bbedc03412279408",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-evidence06",
+    "revision": "r1",
+    "sha256": "0ac3283ea5a0080b42691d618be74c174d8bc56b9d866015a281f13a3d600e13",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-evidence07",
+    "revision": "r1",
+    "sha256": "9f6593229a3464dd78c540cd2240e6e955d17050b46d0810157825cc9a31c13d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-evidence08",
+    "revision": "r1",
+    "sha256": "36dfc1ab298fec02803aabf6625560ccde3c9b5bbb39be00d2a673539d27e32e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-evidence09",
+    "revision": "r1",
+    "sha256": "5da1d4e0fabc4fe71978c77e3a39cd1ac95e1dc1d2535f8d842c3e3e41045626",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-evidence10",
+    "revision": "r1",
+    "sha256": "2c5a3dcbd44207b46f867315208663d96d4f651274101630c665cb3d96e73c0d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-evidence100",
+    "revision": "r1",
+    "sha256": "e0a9ac579eb88da287ac216686527beaf5cfd7760df5cea6a6fab02c1aea25a2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-evidence11",
+    "revision": "r1",
+    "sha256": "047cae24b8d8d39dbce41cf2ff1524a688e4fdadf139d9db48e3bdabb99310d7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-evidence12",
+    "revision": "r1",
+    "sha256": "829db76e7f1c7a737786837ca5656b57059c0d2b06c3a0e932be4d15e92094d7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-evidence13",
+    "revision": "r1",
+    "sha256": "865b1d94e514f902638e496b76826741c3d13e1eaf66c2b36fed8775913c1c25",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-evidence14",
+    "revision": "r1",
+    "sha256": "563da42f36edfab47a02d7e92a6415c8ff95d1d5b6ce740830fd27d74e3764c5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-evidence15",
+    "revision": "r1",
+    "sha256": "0008e423051cccc076208e73dd649209c147be55f4c56c4ba6d849e3695f6bc6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-evidence16",
+    "revision": "r1",
+    "sha256": "9317ad3da4edae0314b9bb6d67399072f18a49a369c7e3c5e8b9ee426a15bfab",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-evidence17",
+    "revision": "r1",
+    "sha256": "ce38ef9346c33b1e35e71d242ebea7161724096af82c85d550b087f566645be7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-evidence18",
+    "revision": "r1",
+    "sha256": "8d8d163753032099aa5d0b8a0b5bd9bd1f144fcb6d5a116b9fc36c3fb49ec222",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2w-evidence19",
+    "revision": "r1",
+    "sha256": "aaeaa4c04e51c889149c6985eea00d2178ead718451359959ff368ec3ec24ad9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "wp2w-mission61",
+    "revision": "r1",
+    "sha256": "057d23a1377153215e958ae8fb4c7364cae121fb567de7d019b9b53b48e2b020"
+   },
+   {
+    "missionId": "wp2w-mission62",
+    "revision": "r1",
+    "sha256": "2d6acc40f2cb41eff0566b6b16931411b5f333ade1ee40ba88ed21593f624bb8"
+   },
+   {
+    "missionId": "wp2w-mission63",
+    "revision": "r1",
+    "sha256": "25be2b000ea91aefa4b2e6c9c620842fa1febbc4c4c3005d868f58425dcb82d4"
+   },
+   {
+    "missionId": "wp2w-mission64",
+    "revision": "r1",
+    "sha256": "8643d58ca35aae0ce43683b0a0cbcee8ec3dd341efd8fb082eb1b7a978b7a38e"
+   },
+   {
+    "missionId": "wp2w-mission65",
+    "revision": "r1",
+    "sha256": "569c22568cc0a7324c9c6c224aef98fac150a60503937679dc0b284587d31450"
+   },
+   {
+    "missionId": "wp2w-mission66",
+    "revision": "r1",
+    "sha256": "2ace944ab2bb02d02dec0b5cca478758f340f4d6294158d53cbd71b258095ddb"
+   },
+   {
+    "missionId": "wp2w-mission67",
+    "revision": "r1",
+    "sha256": "89d02722c4c3606dcc741efe61f0198117a335e2bc12a48bd411ee900fb50b4c"
+   },
+   {
+    "missionId": "wp2w-mission68",
+    "revision": "r1",
+    "sha256": "76c3df5bd5e13d01a784b62b860b9e35d652e6a0378040406d07b6f8f22eb38c"
+   },
+   {
+    "missionId": "wp2w-mission69",
+    "revision": "r1",
+    "sha256": "b14a50938f055d98f9ccd6a01759448880f8186901faab39f7dfa14fa1742892"
+   },
+   {
+    "missionId": "wp2w-mission70",
+    "revision": "r1",
+    "sha256": "16f159997cd81149891bd941877f4e89c3f13651e4f418f97ccd8774549241ac"
+   },
+   {
+    "missionId": "wp2w-mission71",
+    "revision": "r1",
+    "sha256": "8b7712e00e7d2b1763c7f66083c4a299af6c589a125302124317a105243a5b33"
+   },
+   {
+    "missionId": "wp2w-mission72",
+    "revision": "r1",
+    "sha256": "06a6058ac03540517457310f2ecacce667b9ed30f676fa2b91e1f23b9298ff9f"
+   },
+   {
+    "missionId": "wp2w-mission73",
+    "revision": "r1",
+    "sha256": "1b49e19c732ce93f56cdd16458a4554f73096a63f0f9c114736a968345e7fe2d"
+   },
+   {
+    "missionId": "wp2w-mission74",
+    "revision": "r1",
+    "sha256": "fb7596a6fa9c199eb33ede862297b95cd6fb76b46c0c75c7619f963c17df7092"
+   },
+   {
+    "missionId": "wp2w-mission75",
+    "revision": "r1",
+    "sha256": "3eb9f7cef444895ba4bbe40e83679fee13d8667c3600540e615324113da07f04"
+   },
+   {
+    "missionId": "wp2w-mission76",
+    "revision": "r1",
+    "sha256": "7ec409f3511c19d559b8fd1ce1a8e3debf36db5338bc0d9d9323f9d20242edeb"
+   },
+   {
+    "missionId": "wp2w-mission77",
+    "revision": "r1",
+    "sha256": "8022234f333d342a182a13cc30c420eec297420fe742d810169b967361c8e7b5"
+   },
+   {
+    "missionId": "wp2w-mission78",
+    "revision": "r1",
+    "sha256": "56d39d29e3c94bc7c2559b64d01603b931ed3ac6ff9496b8d050af316e00b5a0"
+   },
+   {
+    "missionId": "wp2w-mission79",
+    "revision": "r1",
+    "sha256": "313574906f2e8cddefa2db9eda1285fe57e4b8b83634b94b08090f87811178a9"
+   },
+   {
+    "missionId": "wp2w-mission80",
+    "revision": "r1",
+    "sha256": "9a2f01b3a1fbdb564d6410850fee1f0e50d56ee7f323abaa031c6d5b0ddc9f6e"
+   }
+  ]
+ }
+}

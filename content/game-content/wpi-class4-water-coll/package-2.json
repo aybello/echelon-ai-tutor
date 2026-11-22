@@ -1,0 +1,4825 @@
+{
+ "courseKey": "wpi-class4-water-coll",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "wp4wc-ladder80",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A Lethbridge capital budget carries a contingency of 12 percent on a project base cost of 15000000 dollars. Find the contingency amount in dollars. Enter the exact unrounded number.",
+   "topicId": "budget-funding-arithmetic",
+   "level": "class1",
+   "assumptions": "Fictional budget: base cost = 15000000 dollars, contingency = 12 percent = 0.12 as a ratio.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Contingency = Base cost * Contingency percent value with no conversion"
+      },
+      {
+       "id": "opt-b",
+       "label": "Contingency = Base cost / Contingency share as a ratio"
+      },
+      {
+       "id": "opt-c",
+       "label": "Contingency = Base cost * Contingency share as a ratio"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "A share of 12 percent is 0.12 as a ratio, and multiplying dollars by a ratio gives dollars"
+      },
+      {
+       "id": "opt-b",
+       "label": "Use 12 as the multiplier with no conversion"
+      },
+      {
+       "id": "opt-c",
+       "label": "Convert the base cost to m before multiplying"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "15000000 * 12"
+      },
+      {
+       "id": "opt-b",
+       "label": "15000000 * 0.12"
+      },
+      {
+       "id": "opt-c",
+       "label": "15000000 / 0.12"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact value in $.",
+    "unitOptions": [
+     {
+      "id": "dollars",
+      "label": "$"
+     },
+     {
+      "id": "cents",
+      "label": "cents",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "100"
+      }
+     },
+     {
+      "id": "kg",
+      "label": "kg"
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     }
+    ],
+    "expected": "1800000",
+    "expectedUnitId": "dollars",
+    "absoluteTolerance": "0",
+    "explanation": "Contingency = 15000000 * 0.12 = 1800000 dollars."
+   }
+  },
+  {
+   "id": "wp4wc-ladder81",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Spring snowmelt planning for a Calgary utility uses a melt depth of 55 mm over a combined catchment of 220 ha. Find the total melt volume in m3. Enter the exact unrounded number.",
+   "topicId": "cold-climate-utility-scale",
+   "level": "class1",
+   "assumptions": "Fictional catchment: melt depth = 55 mm = 0.055 m, area = 220 ha = 2200000 m2. Utility scale melt planning is part of cold climate operations in western Canada.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Melt volume = Melt depth * Area"
+      },
+      {
+       "id": "opt-b",
+       "label": "Melt volume = Melt depth / Area"
+      },
+      {
+       "id": "opt-c",
+       "label": "Melt volume = Area / Melt depth"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Use 55 m as the melt depth in the multiplication"
+      },
+      {
+       "id": "opt-b",
+       "label": "Convert 55 mm to 0.055 m and 220 ha to 2200000 m2, then multiplying m by m2 gives m3"
+      },
+      {
+       "id": "opt-c",
+       "label": "Convert the melt depth to seconds before multiplying"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "55 * 2200000"
+      },
+      {
+       "id": "opt-b",
+       "label": "0.055 / 2200000"
+      },
+      {
+       "id": "opt-c",
+       "label": "0.055 * 2200000"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact value in m3.",
+    "unitOptions": [
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "L",
+      "label": "L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "m2",
+      "label": "m2"
+     },
+     {
+      "id": "min",
+      "label": "min"
+     }
+    ],
+    "expected": "121000",
+    "expectedUnitId": "m3",
+    "absoluteTolerance": "0",
+    "explanation": "Melt volume = 0.055 * 2200000 = 121000 m3."
+   }
+  },
+  {
+   "id": "wp4wc-ladder82",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "An Edmonton melt event delivers 96800 m3 of meltwater evenly over 11 days at utility scale. Find the average melt volume per day in m3/day. Enter the exact unrounded number.",
+   "topicId": "cold-climate-utility-scale",
+   "level": "class1",
+   "assumptions": "Fictional event: total melt volume = 96800 m3, duration = 11 days.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Average per day = Total melt volume * Days"
+      },
+      {
+       "id": "opt-b",
+       "label": "Average per day = Total melt volume / Days"
+      },
+      {
+       "id": "opt-c",
+       "label": "Average per day = Days / Total melt volume"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Multiplying m3 by days gives m3/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "Convert the days to L/s before dividing"
+      },
+      {
+       "id": "opt-c",
+       "label": "Dividing m3 by days gives m3/day"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "96800 / 11"
+      },
+      {
+       "id": "opt-b",
+       "label": "96800 * 11"
+      },
+      {
+       "id": "opt-c",
+       "label": "11 / 96800"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact value in m3/day.",
+    "unitOptions": [
+     {
+      "id": "m3-day",
+      "label": "m3/day"
+     },
+     {
+      "id": "L-s",
+      "label": "L/s",
+      "toExpected": {
+       "numerator": "86400",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "L",
+      "label": "L"
+     },
+     {
+      "id": "h",
+      "label": "h"
+     }
+    ],
+    "expected": "8800",
+    "expectedUnitId": "m3-day",
+    "absoluteTolerance": "0",
+    "explanation": "Average per day = 96800 / 11 = 8800 m3/day."
+   }
+  },
+  {
+   "id": "wp4wc-ladder83",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A Winnipeg utility records 135 frozen services in a winter across 90000 services. Find the frozen service share in percent. Enter the exact unrounded number.",
+   "topicId": "cold-climate-utility-scale",
+   "level": "class1",
+   "assumptions": "Fictional winter record: frozen services = 135, total services = 90000.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Percent frozen = Total services / Frozen services * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Percent frozen = Frozen services * Total services / 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Percent frozen = Frozen services / Total services * 100"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Both counts are services, so the ratio is dimensionless before multiplying by 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Convert the frozen count to km before dividing"
+      },
+      {
+       "id": "opt-c",
+       "label": "Convert the total count to m3 before dividing"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "90000 / 135 * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "135 / 90000 * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "135 * 90000 / 100"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact value in percent.",
+    "unitOptions": [
+     {
+      "id": "percent",
+      "label": "percent"
+     },
+     {
+      "id": "fraction",
+      "label": "fraction",
+      "toExpected": {
+       "numerator": "100",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "L-s",
+      "label": "L/s"
+     },
+     {
+      "id": "m",
+      "label": "m"
+     }
+    ],
+    "expected": "0.15",
+    "expectedUnitId": "percent",
+    "absoluteTolerance": "0",
+    "explanation": "Percent frozen = 135 / 90000 * 100 = 0.15 percent."
+   }
+  },
+  {
+   "id": "wp4wc-ladder84",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "During a cold snap, 18 thawing crews for a Regina utility each restore 6 services per day. Find the combined restoration rate in services/day. Enter the exact unrounded number.",
+   "topicId": "cold-climate-utility-scale",
+   "level": "class1",
+   "assumptions": "Fictional cold snap response: crews = 18, production = 6 services per day per crew.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Combined rate = Crews * Production per crew"
+      },
+      {
+       "id": "opt-b",
+       "label": "Combined rate = Crews / Production per crew"
+      },
+      {
+       "id": "opt-c",
+       "label": "Combined rate = Production per crew / Crews"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Dividing the crews by the production gives services/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "Crews times services per day per crew gives services/day, because the crew units cancel"
+      },
+      {
+       "id": "opt-c",
+       "label": "Convert the production to m before multiplying"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "18 / 6"
+      },
+      {
+       "id": "opt-b",
+       "label": "6 / 18"
+      },
+      {
+       "id": "opt-c",
+       "label": "18 * 6"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact value in services/day.",
+    "unitOptions": [
+     {
+      "id": "services-day",
+      "label": "services/day"
+     },
+     {
+      "id": "services-week",
+      "label": "services/week",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "7"
+      }
+     },
+     {
+      "id": "m",
+      "label": "m"
+     },
+     {
+      "id": "L",
+      "label": "L"
+     }
+    ],
+    "expected": "108",
+    "expectedUnitId": "services-day",
+    "absoluteTolerance": "0",
+    "explanation": "Combined rate = 18 * 6 = 108 services/day."
+   }
+  },
+  {
+   "id": "wp4wc-ladder85",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A Saskatoon utility holds 5000 m3 of winter surcharge storage, and a melt event uses 3750 m3 of it. Find the storage used in percent. Enter the exact unrounded number.",
+   "topicId": "cold-climate-utility-scale",
+   "level": "class1",
+   "assumptions": "Fictional event: storage used = 3750 m3, total storage = 5000 m3.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Percent used = Total storage / Storage used * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Percent used = Storage used / Total storage * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Percent used = Storage used * Total storage / 100"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Convert the used volume to L/s before dividing"
+      },
+      {
+       "id": "opt-b",
+       "label": "Convert the total storage to days before dividing"
+      },
+      {
+       "id": "opt-c",
+       "label": "Both volumes are in m3, so the ratio is dimensionless before multiplying by 100"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "3750 / 5000 * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "5000 / 3750 * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "3750 * 5000 / 100"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact value in percent.",
+    "unitOptions": [
+     {
+      "id": "percent",
+      "label": "percent"
+     },
+     {
+      "id": "fraction",
+      "label": "fraction",
+      "toExpected": {
+       "numerator": "100",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "L-s",
+      "label": "L/s"
+     },
+     {
+      "id": "m",
+      "label": "m"
+     }
+    ],
+    "expected": "75",
+    "expectedUnitId": "percent",
+    "absoluteTolerance": "0",
+    "explanation": "Percent used = 3750 / 5000 * 100 = 75 percent."
+   }
+  },
+  {
+   "id": "wp4wc-ladder86",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A Kelowna insulation program insulates 2500 services at a given unit rate of 180 dollars per service to prevent freezing. Find the total program cost in dollars. Enter the exact unrounded number.",
+   "topicId": "cold-climate-utility-scale",
+   "level": "class1",
+   "assumptions": "Fictional program: services = 2500, given unit rate = 180 dollars per service. Quantities use given rates only.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Program cost = Services / Unit rate"
+      },
+      {
+       "id": "opt-b",
+       "label": "Program cost = Unit rate / Services"
+      },
+      {
+       "id": "opt-c",
+       "label": "Program cost = Services * Unit rate"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Multiplying services by dollars per service gives dollars, because the service units cancel"
+      },
+      {
+       "id": "opt-b",
+       "label": "Dividing the services by the rate gives dollars"
+      },
+      {
+       "id": "opt-c",
+       "label": "Convert the services to hectares before multiplying"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "2500 / 180"
+      },
+      {
+       "id": "opt-b",
+       "label": "2500 * 180"
+      },
+      {
+       "id": "opt-c",
+       "label": "180 / 2500"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact value in $.",
+    "unitOptions": [
+     {
+      "id": "dollars",
+      "label": "$"
+     },
+     {
+      "id": "cents",
+      "label": "cents",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "100"
+      }
+     },
+     {
+      "id": "kg",
+      "label": "kg"
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     }
+    ],
+    "expected": "450000",
+    "expectedUnitId": "dollars",
+    "absoluteTolerance": "0",
+    "explanation": "Program cost = 2500 * 180 = 450000 dollars."
+   }
+  },
+  {
+   "id": "wp4wc-ladder87",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Deep frost conditions in Red Deer add a given extra excavation volume of 1.25 m3 per m of trench over a 400 m emergency repair. Find the extra excavation volume in m3. Enter the exact unrounded number.",
+   "topicId": "cold-climate-utility-scale",
+   "level": "class1",
+   "assumptions": "Fictional repair: trench length = 400 m, given extra volume = 1.25 m3 per m.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Extra volume = Trench length * Extra volume per m"
+      },
+      {
+       "id": "opt-b",
+       "label": "Extra volume = Trench length / Extra volume per m"
+      },
+      {
+       "id": "opt-c",
+       "label": "Extra volume = Extra volume per m / Trench length"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Dividing the length by the rate gives m3"
+      },
+      {
+       "id": "opt-b",
+       "label": "Multiplying m by m3 per m gives m3, because the m units cancel"
+      },
+      {
+       "id": "opt-c",
+       "label": "Convert the length to L/s before multiplying"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "400 / 1.25"
+      },
+      {
+       "id": "opt-b",
+       "label": "1.25 / 400"
+      },
+      {
+       "id": "opt-c",
+       "label": "400 * 1.25"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact value in m3.",
+    "unitOptions": [
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "L",
+      "label": "L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "m2",
+      "label": "m2"
+     },
+     {
+      "id": "min",
+      "label": "min"
+     }
+    ],
+    "expected": "500",
+    "expectedUnitId": "m3",
+    "absoluteTolerance": "0",
+    "explanation": "Extra volume = 400 * 1.25 = 500 m3."
+   }
+  },
+  {
+   "id": "wp4wc-ladder88",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A Brandon spring melt forecast adds a melt contribution of 650 L/s to a base flow of 1400 L/s for the whole system. Find the forecast melt peak flow in L/s. Enter the exact unrounded number.",
+   "topicId": "cold-climate-utility-scale",
+   "level": "class1",
+   "assumptions": "Fictional forecast: base flow = 1400 L/s, melt contribution = 650 L/s.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Melt peak flow = Base flow * Melt contribution"
+      },
+      {
+       "id": "opt-b",
+       "label": "Melt peak flow = Base flow + Melt contribution"
+      },
+      {
+       "id": "opt-c",
+       "label": "Melt peak flow = Base flow - Melt contribution"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Convert the melt contribution to m3/day before adding"
+      },
+      {
+       "id": "opt-b",
+       "label": "Multiply the flows because they occur together"
+      },
+      {
+       "id": "opt-c",
+       "label": "Both flows are in L/s, so they add directly with no conversion"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "1400 + 650"
+      },
+      {
+       "id": "opt-b",
+       "label": "1400 * 650"
+      },
+      {
+       "id": "opt-c",
+       "label": "1400 - 650"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact value in L/s.",
+    "unitOptions": [
+     {
+      "id": "L-s",
+      "label": "L/s"
+     },
+     {
+      "id": "m3-h",
+      "label": "m3/h",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "3600"
+      }
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "min",
+      "label": "min"
+     }
+    ],
+    "expected": "2050",
+    "expectedUnitId": "L-s",
+    "absoluteTolerance": "0",
+    "explanation": "Melt peak flow = 1400 + 650 = 2050 L/s."
+   }
+  },
+  {
+   "id": "wp4wc-ladder89",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A Prince George utility heats 35 lift stations through winter at an average of 12000 kWh per station for the season. Find the total heating energy in kWh. Enter the exact unrounded number.",
+   "topicId": "cold-climate-utility-scale",
+   "level": "class1",
+   "assumptions": "Fictional winter program: stations = 35, heating energy = 12000 kWh per station.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Total heating energy = Stations / Energy per station"
+      },
+      {
+       "id": "opt-b",
+       "label": "Total heating energy = Energy per station / Stations"
+      },
+      {
+       "id": "opt-c",
+       "label": "Total heating energy = Stations * Energy per station"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Stations times kWh per station gives kWh, because the station units cancel"
+      },
+      {
+       "id": "opt-b",
+       "label": "Dividing the stations by the energy gives kWh"
+      },
+      {
+       "id": "opt-c",
+       "label": "Convert the energy to dollars before multiplying"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "35 / 12000"
+      },
+      {
+       "id": "opt-b",
+       "label": "35 * 12000"
+      },
+      {
+       "id": "opt-c",
+       "label": "12000 / 35"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact value in kWh.",
+    "unitOptions": [
+     {
+      "id": "kWh",
+      "label": "kWh"
+     },
+     {
+      "id": "MWh",
+      "label": "MWh",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "kW",
+      "label": "kW"
+     },
+     {
+      "id": "L",
+      "label": "L"
+     }
+    ],
+    "expected": "420000",
+    "expectedUnitId": "kWh",
+    "absoluteTolerance": "0",
+    "explanation": "Total heating energy = 35 * 12000 = 420000 kWh."
+   }
+  },
+  {
+   "id": "wp4wc-ladder90",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A Lethbridge utility holds 26400 m3 of equalization storage, and freeze period inflow to storage averages 2400 m3/day. Find the storage duration in days. Enter the exact unrounded number.",
+   "topicId": "cold-climate-utility-scale",
+   "level": "class1",
+   "assumptions": "Fictional freeze period: storage volume = 26400 m3, inflow rate = 2400 m3/day.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Storage duration = Storage volume / Inflow rate"
+      },
+      {
+       "id": "opt-b",
+       "label": "Storage duration = Storage volume * Inflow rate"
+      },
+      {
+       "id": "opt-c",
+       "label": "Storage duration = Inflow rate / Storage volume"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Multiplying m3 by m3/day gives days"
+      },
+      {
+       "id": "opt-b",
+       "label": "Dividing m3 by m3/day gives days"
+      },
+      {
+       "id": "opt-c",
+       "label": "Convert the volume to L/s before dividing"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "26400 * 2400"
+      },
+      {
+       "id": "opt-b",
+       "label": "2400 / 26400"
+      },
+      {
+       "id": "opt-c",
+       "label": "26400 / 2400"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact value in days.",
+    "unitOptions": [
+     {
+      "id": "days",
+      "label": "days"
+     },
+     {
+      "id": "h",
+      "label": "h",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "24"
+      }
+     },
+     {
+      "id": "min",
+      "label": "min"
+     },
+     {
+      "id": "m",
+      "label": "m"
+     }
+    ],
+    "expected": "11",
+    "expectedUnitId": "days",
+    "absoluteTolerance": "0",
+    "explanation": "Storage duration = 26400 / 2400 = 11 days."
+   }
+  },
+  {
+   "id": "wp4wc-ladder91",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "An overflow event in Calgary runs at 350 L/s for 2.5 h, which is 9000 s, before crews stop it. Find the overflow volume in m3. Enter the exact unrounded number.",
+   "topicId": "overflow-emergency-governance",
+   "level": "class1",
+   "assumptions": "Fictional event: overflow rate = 350 L/s, duration = 9000 s, 1000 L = 1 m3. Overflow events are reported under provincial wastewater requirements in general terms.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Overflow volume = Overflow rate * Duration * 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Overflow volume = Overflow rate * Duration / 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Overflow volume = Duration / Overflow rate / 1000"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Multiply by 1000 at the end to get m3"
+      },
+      {
+       "id": "opt-b",
+       "label": "Divide the duration by the rate first"
+      },
+      {
+       "id": "opt-c",
+       "label": "L/s times s gives L, then dividing by 1000 L/m3 gives m3"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "350 * 9000 / 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "350 * 9000 * 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "9000 / 350 / 1000"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact value in m3.",
+    "unitOptions": [
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "L",
+      "label": "L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "m2",
+      "label": "m2"
+     },
+     {
+      "id": "min",
+      "label": "min"
+     }
+    ],
+    "expected": "3150",
+    "expectedUnitId": "m3",
+    "absoluteTolerance": "0",
+    "explanation": "Overflow volume = 350 * 9000 / 1000 = 3150 m3."
+   }
+  },
+  {
+   "id": "wp4wc-ladder92",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "An Edmonton emergency plan must bypass pump a flow of 600 L/s using portable pumps rated at 150 L/s each. Find the number of pumps required in pumps. Enter the exact unrounded number.",
+   "topicId": "overflow-emergency-governance",
+   "level": "class1",
+   "assumptions": "Fictional plan: flow to bypass = 600 L/s, pump rating = 150 L/s each.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Pumps required = Flow to bypass * Pump rating"
+      },
+      {
+       "id": "opt-b",
+       "label": "Pumps required = Pump rating / Flow to bypass"
+      },
+      {
+       "id": "opt-c",
+       "label": "Pumps required = Flow to bypass / Pump rating"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Dividing L/s by L/s per pump gives pumps"
+      },
+      {
+       "id": "opt-b",
+       "label": "Multiplying the flow by the rating gives pumps"
+      },
+      {
+       "id": "opt-c",
+       "label": "Convert the flow to m3 before dividing"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "600 * 150"
+      },
+      {
+       "id": "opt-b",
+       "label": "600 / 150"
+      },
+      {
+       "id": "opt-c",
+       "label": "150 / 600"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact value in pumps.",
+    "unitOptions": [
+     {
+      "id": "pumps",
+      "label": "pumps"
+     },
+     {
+      "id": "dozen-pumps",
+      "label": "dozen pumps",
+      "toExpected": {
+       "numerator": "12",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "kW",
+      "label": "kW"
+     },
+     {
+      "id": "L",
+      "label": "L"
+     }
+    ],
+    "expected": "4",
+    "expectedUnitId": "pumps",
+    "absoluteTolerance": "0",
+    "explanation": "Pumps required = 600 / 150 = 4 pumps."
+   }
+  },
+  {
+   "id": "wp4wc-ladder93",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A Winnipeg emergency response deploys 24 staff for 12 h each during a major overflow. Find the total staff time in h. Enter the exact unrounded number.",
+   "topicId": "overflow-emergency-governance",
+   "level": "class1",
+   "assumptions": "Fictional response: staff = 24, hours each = 12 h.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Total staff time = Staff * Hours each"
+      },
+      {
+       "id": "opt-b",
+       "label": "Total staff time = Staff / Hours each"
+      },
+      {
+       "id": "opt-c",
+       "label": "Total staff time = Hours each / Staff"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Dividing the staff by the hours gives h"
+      },
+      {
+       "id": "opt-b",
+       "label": "Staff times h per staff member gives h of total staff time"
+      },
+      {
+       "id": "opt-c",
+       "label": "Convert the hours to km before multiplying"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "24 / 12"
+      },
+      {
+       "id": "opt-b",
+       "label": "12 / 24"
+      },
+      {
+       "id": "opt-c",
+       "label": "24 * 12"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact value in h.",
+    "unitOptions": [
+     {
+      "id": "h",
+      "label": "h"
+     },
+     {
+      "id": "min",
+      "label": "min",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "60"
+      }
+     },
+     {
+      "id": "L",
+      "label": "L"
+     },
+     {
+      "id": "day",
+      "label": "day"
+     }
+    ],
+    "expected": "288",
+    "expectedUnitId": "h",
+    "absoluteTolerance": "0",
+    "explanation": "Total staff time = 24 * 12 = 288 h."
+   }
+  },
+  {
+   "id": "wp4wc-ladder94",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A Regina flood protection plan lines a channel edge of 850 m with barriers that each cover 2.5 m. Find the number of barriers required in barriers. Enter the exact unrounded number.",
+   "topicId": "overflow-emergency-governance",
+   "level": "class1",
+   "assumptions": "Fictional plan: edge length = 850 m, coverage per barrier = 2.5 m.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Barriers required = Edge length * Coverage per barrier"
+      },
+      {
+       "id": "opt-b",
+       "label": "Barriers required = Edge length / Coverage per barrier"
+      },
+      {
+       "id": "opt-c",
+       "label": "Barriers required = Coverage per barrier / Edge length"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Multiplying the length by the coverage gives barriers"
+      },
+      {
+       "id": "opt-b",
+       "label": "Convert the length to L/s before dividing"
+      },
+      {
+       "id": "opt-c",
+       "label": "Dividing m by m per barrier gives barriers"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "850 / 2.5"
+      },
+      {
+       "id": "opt-b",
+       "label": "850 * 2.5"
+      },
+      {
+       "id": "opt-c",
+       "label": "2.5 / 850"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact value in barriers.",
+    "unitOptions": [
+     {
+      "id": "barriers",
+      "label": "barriers"
+     },
+     {
+      "id": "dozen-barriers",
+      "label": "dozen barriers",
+      "toExpected": {
+       "numerator": "12",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "m",
+      "label": "m"
+     },
+     {
+      "id": "kg",
+      "label": "kg"
+     }
+    ],
+    "expected": "340",
+    "expectedUnitId": "barriers",
+    "absoluteTolerance": "0",
+    "explanation": "Barriers required = 850 / 2.5 = 340 barriers."
+   }
+  },
+  {
+   "id": "wp4wc-ladder95",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A Saskatoon utility notifies 1125 of 1250 properties in an overflow affected area within the target window. Find the notified share in percent. Enter the exact unrounded number.",
+   "topicId": "overflow-emergency-governance",
+   "level": "class1",
+   "assumptions": "Fictional event: properties notified = 1125, total properties = 1250. Public notification is part of overflow response leadership in general terms.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Percent notified = Total properties / Properties notified * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Percent notified = Properties notified * Total properties / 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Percent notified = Properties notified / Total properties * 100"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Both counts are properties, so the ratio is dimensionless before multiplying by 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Convert the notified count to m3 before dividing"
+      },
+      {
+       "id": "opt-c",
+       "label": "Convert the total count to hours before dividing"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "1250 / 1125 * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "1125 / 1250 * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "1125 * 1250 / 100"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact value in percent.",
+    "unitOptions": [
+     {
+      "id": "percent",
+      "label": "percent"
+     },
+     {
+      "id": "fraction",
+      "label": "fraction",
+      "toExpected": {
+       "numerator": "100",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "L-s",
+      "label": "L/s"
+     },
+     {
+      "id": "m",
+      "label": "m"
+     }
+    ],
+    "expected": "90",
+    "expectedUnitId": "percent",
+    "absoluteTolerance": "0",
+    "explanation": "Percent notified = 1125 / 1250 * 100 = 90 percent."
+   }
+  },
+  {
+   "id": "wp4wc-ladder96",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A Kelowna overflow cleanup runs crews for 48 h at a given combined crew rate of 850 dollars per h. Find the cleanup cost in dollars. Enter the exact unrounded number.",
+   "topicId": "overflow-emergency-governance",
+   "level": "class1",
+   "assumptions": "Fictional cleanup: crew time = 48 h, given combined rate = 850 dollars per h. Quantities use given rates only.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Cleanup cost = Crew time * Crew rate"
+      },
+      {
+       "id": "opt-b",
+       "label": "Cleanup cost = Crew time / Crew rate"
+      },
+      {
+       "id": "opt-c",
+       "label": "Cleanup cost = Crew rate / Crew time"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Dividing the time by the rate gives dollars"
+      },
+      {
+       "id": "opt-b",
+       "label": "Multiplying h by dollars per h gives dollars, because the h units cancel"
+      },
+      {
+       "id": "opt-c",
+       "label": "Convert the time to km before multiplying"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "48 / 850"
+      },
+      {
+       "id": "opt-b",
+       "label": "850 / 48"
+      },
+      {
+       "id": "opt-c",
+       "label": "48 * 850"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact value in $.",
+    "unitOptions": [
+     {
+      "id": "dollars",
+      "label": "$"
+     },
+     {
+      "id": "cents",
+      "label": "cents",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "100"
+      }
+     },
+     {
+      "id": "kg",
+      "label": "kg"
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     }
+    ],
+    "expected": "40800",
+    "expectedUnitId": "dollars",
+    "absoluteTolerance": "0",
+    "explanation": "Cleanup cost = 48 * 850 = 40800 dollars."
+   }
+  },
+  {
+   "id": "wp4wc-ladder97",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A Red Deer equalization plan must hold the excess of an inflow of 900 L/s over a downstream capacity of 650 L/s for 4 h, which is 14400 s. Find the required holding volume in m3. Enter the exact unrounded number.",
+   "topicId": "overflow-emergency-governance",
+   "level": "class1",
+   "assumptions": "Fictional plan: inflow = 900 L/s, downstream capacity = 650 L/s, duration = 14400 s, 1000 L = 1 m3.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Holding volume = (Inflow + Capacity) * Duration / 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Holding volume = (Inflow - Capacity) * Duration / 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Holding volume = (Inflow - Capacity) * Duration * 1000"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Add the inflow and capacity before multiplying"
+      },
+      {
+       "id": "opt-b",
+       "label": "Multiply by 1000 at the end to get m3"
+      },
+      {
+       "id": "opt-c",
+       "label": "The excess in L/s times s gives L, then dividing by 1000 L/m3 gives m3"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "(900 - 650) * 14400 / 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "(900 + 650) * 14400 / 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "(900 - 650) * 14400 * 1000"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact value in m3.",
+    "unitOptions": [
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "L",
+      "label": "L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "m2",
+      "label": "m2"
+     },
+     {
+      "id": "min",
+      "label": "min"
+     }
+    ],
+    "expected": "3600",
+    "expectedUnitId": "m3",
+    "absoluteTolerance": "0",
+    "explanation": "Holding volume = (900 - 650) * 14400 / 1000 = 3600 m3."
+   }
+  },
+  {
+   "id": "wp4wc-ladder98",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A Brandon overflow risk review finds 9 of 60 overflow locations in five years are repeat locations. Find the repeat location share in percent. Enter the exact unrounded number.",
+   "topicId": "overflow-emergency-governance",
+   "level": "class1",
+   "assumptions": "Fictional review: repeat locations = 9, total locations = 60.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Percent repeat = Total locations / Repeat locations * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Percent repeat = Repeat locations * Total locations / 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Percent repeat = Repeat locations / Total locations * 100"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Both counts are locations, so the ratio is dimensionless before multiplying by 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Convert the repeat count to km before dividing"
+      },
+      {
+       "id": "opt-c",
+       "label": "Convert the total count to m3 before dividing"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "60 / 9 * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "9 / 60 * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "9 * 60 / 100"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact value in percent.",
+    "unitOptions": [
+     {
+      "id": "percent",
+      "label": "percent"
+     },
+     {
+      "id": "fraction",
+      "label": "fraction",
+      "toExpected": {
+       "numerator": "100",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "L-s",
+      "label": "L/s"
+     },
+     {
+      "id": "m",
+      "label": "m"
+     }
+    ],
+    "expected": "15",
+    "expectedUnitId": "percent",
+    "absoluteTolerance": "0",
+    "explanation": "Percent repeat = 9 / 60 * 100 = 15 percent."
+   }
+  },
+  {
+   "id": "wp4wc-ladder99",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A Prince George utility draws 675000 dollars from a 900000 dollar emergency reserve after a trunk failure. Find the reserve used in percent. Enter the exact unrounded number.",
+   "topicId": "overflow-emergency-governance",
+   "level": "class1",
+   "assumptions": "Fictional event: reserve used = 675000 dollars, total reserve = 900000 dollars.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Percent used = Reserve used / Total reserve * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Percent used = Total reserve / Reserve used * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Percent used = Reserve used * Total reserve / 100"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Convert the used amount to km before dividing"
+      },
+      {
+       "id": "opt-b",
+       "label": "Both amounts are in dollars, so the ratio is dimensionless before multiplying by 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Convert the total reserve to days before dividing"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "900000 / 675000 * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "675000 * 900000 / 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "675000 / 900000 * 100"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact value in percent.",
+    "unitOptions": [
+     {
+      "id": "percent",
+      "label": "percent"
+     },
+     {
+      "id": "fraction",
+      "label": "fraction",
+      "toExpected": {
+       "numerator": "100",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "L-s",
+      "label": "L/s"
+     },
+     {
+      "id": "m",
+      "label": "m"
+     }
+    ],
+    "expected": "75",
+    "expectedUnitId": "percent",
+    "absoluteTolerance": "0",
+    "explanation": "Percent used = 675000 / 900000 * 100 = 75 percent."
+   }
+  },
+  {
+   "id": "wp4wc-error01",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this utility scale basin flow balance for the inflow and infiltration strategy for a prairie city in western Canada. The figures support regulatory reporting leadership under provincial wastewater requirements in general terms.",
+   "topicId": "ii-utility-strategy",
+   "level": "class1",
+   "assumptions": "Fictional basin balance, all flows in m3/day: dry weather flow 2000, groundwater infiltration 750, rainfall dependent inflow 1250. Base flow equals dry weather flow plus groundwater infiltration. Percent I/I equals I/I flow divided by total wet weather flow times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Base flow = 2000 m3/day + 750 m3/day = 2750 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total wet weather flow = 2750 m3/day + 1250 m3/day = 4000 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent I/I = (4000 m3/day - 2000 m3/day) / 2000 m3/day * 100 = 100 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent I/I = (4000 m3/day - 2000 m3/day) / 4000 m3/day * 100 = 50 percent",
+   "explanation": "Line 3 divided by 2000 instead of by the total 4000. The correct value is 50 percent."
+  },
+  {
+   "id": "wp4wc-error02",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this utility scale basin flow balance for the inflow and infiltration strategy for a foothills community in western Canada. The figures feed the utility report prepared in the context of the federal Wastewater Systems Effluent Regulations.",
+   "topicId": "ii-utility-strategy",
+   "level": "class1",
+   "assumptions": "Fictional basin balance, all flows in m3/day: dry weather flow 2500, groundwater infiltration 1000, rainfall dependent inflow 1500. Base flow equals dry weather flow plus groundwater infiltration. Percent I/I equals I/I flow divided by total wet weather flow times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Base flow = 2500 m3/day - 1000 m3/day = 1500 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total wet weather flow = 1500 m3/day + 1500 m3/day = 3000 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent I/I = (3000 m3/day - 2500 m3/day) / 3000 m3/day * 100"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Base flow = 2500 m3/day + 1000 m3/day = 3500 m3/day",
+   "explanation": "Line 1 subtracted 1000 from the previous value instead of adding it. The correct value is 3500 m3/day. With the correction, the total wet weather flow is 5000 m3/day and the percent i/i is 50 percent."
+  },
+  {
+   "id": "wp4wc-error03",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this utility scale basin flow balance for the inflow and infiltration strategy for a community on the British Columbia coast. The figures are tracked under the CCME Canada-wide Strategy context for the collection utility.",
+   "topicId": "ii-utility-strategy",
+   "level": "class1",
+   "assumptions": "Fictional basin balance, all flows in m3/day: dry weather flow 3000, groundwater infiltration 1500, rainfall dependent inflow 500. Base flow equals dry weather flow plus groundwater infiltration. Percent I/I equals I/I flow divided by total wet weather flow times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Base flow = 3000 m3/day + 1500 m3/day = 4500 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total wet weather flow = 4500 m3/day - 500 m3/day = 4000 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent I/I = (4000 m3/day - 3000 m3/day) / 4000 m3/day * 100 = 25 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Total wet weather flow = 4500 m3/day + 500 m3/day = 5000 m3/day",
+   "explanation": "Line 2 subtracted 500 from the previous value instead of adding it. The correct value is 5000 m3/day. With the correction, the percent i/i is 40 percent."
+  },
+  {
+   "id": "wp4wc-error04",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this utility scale basin flow balance for the inflow and infiltration strategy for a northern prairie community. The figures support board reporting for the collection utility under provincial wastewater requirements in general terms.",
+   "topicId": "ii-utility-strategy",
+   "level": "class1",
+   "assumptions": "Fictional basin balance, all flows in m3/day: dry weather flow 4000, groundwater infiltration 1000, rainfall dependent inflow 3000. Base flow equals dry weather flow plus groundwater infiltration. Percent I/I equals I/I flow divided by total wet weather flow times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Base flow = 4000 m3/day + 1000 m3/day = 5000 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total wet weather flow = 5000 m3/day + 3000 m3/day = 8000 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent I/I = (8000 m3/day - 4000 m3/day) / 8000 m3/day * 10 = 5 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent I/I = (8000 m3/day - 4000 m3/day) / 8000 m3/day * 100 = 50 percent",
+   "explanation": "Line 3 multiplied by 10 instead of 100 to get percent. The correct value is 50 percent."
+  },
+  {
+   "id": "wp4wc-error05",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this utility scale basin flow balance for the inflow and infiltration strategy for a mountain valley town in western Canada. The figures support regulatory reporting leadership under provincial wastewater requirements in general terms.",
+   "topicId": "ii-utility-strategy",
+   "level": "class1",
+   "assumptions": "Fictional basin balance, all flows in m3/day: dry weather flow 1500, groundwater infiltration 500, rainfall dependent inflow 1000. Base flow equals dry weather flow plus groundwater infiltration. Percent I/I equals I/I flow divided by total wet weather flow times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Base flow = 1500 m3/day - 500 m3/day = 1000 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total wet weather flow = 1000 m3/day + 1000 m3/day = 2000 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent I/I = (2000 m3/day - 1500 m3/day) / 2000 m3/day * 100 = 25 percent"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Base flow = 1500 m3/day + 500 m3/day = 2000 m3/day",
+   "explanation": "Line 1 subtracted 500 from the previous value instead of adding it. The correct value is 2000 m3/day. With the correction, the total wet weather flow is 3000 m3/day and the percent i/i is 50 percent."
+  },
+  {
+   "id": "wp4wc-error06",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this inflow and infiltration removal effectiveness calculation for a multi basin rehabilitation program for a community on the British Columbia coast. The figures are tracked under the CCME Canada-wide Strategy context for the collection utility.",
+   "topicId": "ii-removal-effectiveness-utility",
+   "level": "class1",
+   "assumptions": "Fictional basin study: flow before rehabilitation 40 L/s, flow after rehabilitation 15 L/s, given before volume 3456 m3/day. One L/s flowing for one day equals 86.4 m3. Percent removed equals volume removed divided by before volume times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. I/I flow removed = 40 L/s - 15 L/s = 25 L/s"
+    },
+    {
+     "id": "line2",
+     "label": "2. Volume removed = 25 L/s * 86.4 = 2160 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent removed = 2160 m3/day / 3456 m3/day * 10 = 6.25 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent removed = 2160 m3/day / 3456 m3/day * 100 = 62.5 percent",
+   "explanation": "Line 3 multiplied by 10 instead of 100. The correct value is 62.5 percent."
+  },
+  {
+   "id": "wp4wc-error07",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this inflow and infiltration removal effectiveness calculation for a multi basin rehabilitation program for a northern prairie community. The figures support board reporting for the collection utility under provincial wastewater requirements in general terms.",
+   "topicId": "ii-removal-effectiveness-utility",
+   "level": "class1",
+   "assumptions": "Fictional basin study: flow before rehabilitation 50 L/s, flow after rehabilitation 20 L/s, given before volume 4320 m3/day. One L/s flowing for one day equals 86.4 m3. Percent removed equals volume removed divided by before volume times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. I/I flow removed = 50 L/s + 20 L/s = 70 L/s"
+    },
+    {
+     "id": "line2",
+     "label": "2. Volume removed = 70 L/s * 86.4 = 6048 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent removed = 6048 m3/day / 4320 m3/day * 100 = 140 percent"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. I/I flow removed = 50 L/s - 20 L/s = 30 L/s",
+   "explanation": "Line 1 added 20 to the previous value instead of subtracting it. The correct value is 30 L/s. With the correction, the volume removed is 2592 m3/day and the percent removed is 60 percent."
+  },
+  {
+   "id": "wp4wc-error08",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this inflow and infiltration removal effectiveness calculation for a multi basin rehabilitation program for a mountain valley town in western Canada. The figures support regulatory reporting leadership under provincial wastewater requirements in general terms.",
+   "topicId": "ii-removal-effectiveness-utility",
+   "level": "class1",
+   "assumptions": "Fictional basin study: flow before rehabilitation 80 L/s, flow after rehabilitation 30 L/s, given before volume 6912 m3/day. One L/s flowing for one day equals 86.4 m3. Percent removed equals volume removed divided by before volume times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. I/I flow removed = 80 L/s - 30 L/s = 50 L/s"
+    },
+    {
+     "id": "line2",
+     "label": "2. Volume removed = 50 L/s * 864 = 43200 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent removed = 43200 m3/day / 6912 m3/day * 100 = 625 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Volume removed = 50 L/s * 86.4 = 4320 m3/day",
+   "explanation": "Line 2 used 864 instead of 86.4. The correct value is 4320 m3/day. With the correction, the percent removed is 62.5 percent."
+  },
+  {
+   "id": "wp4wc-error09",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this inflow and infiltration removal effectiveness calculation for a multi basin rehabilitation program for a western Canadian city during spring melt. The figures feed the utility report prepared in the context of the federal Wastewater Systems Effluent Regulations.",
+   "topicId": "ii-removal-effectiveness-utility",
+   "level": "class1",
+   "assumptions": "Fictional basin study: flow before rehabilitation 60 L/s, flow after rehabilitation 24 L/s, given before volume 5184 m3/day. One L/s flowing for one day equals 86.4 m3. Percent removed equals volume removed divided by before volume times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. I/I flow removed = 60 L/s - 24 L/s = 36 L/s"
+    },
+    {
+     "id": "line2",
+     "label": "2. Volume removed = 36 L/s * 86.4 = 3110.4 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent removed = 3110.4 m3/day / 5184 m3/day * 100 = 600 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent removed = 3110.4 m3/day / 5184 m3/day * 100 = 60 percent",
+   "explanation": "Line 3 states 600 but the stated operation gives 60. The correct value is 60 percent."
+  },
+  {
+   "id": "wp4wc-error10",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this inflow and infiltration removal effectiveness calculation for a multi basin rehabilitation program for a boreal shield community in western Canada. The figures are tracked under the CCME Canada-wide Strategy context for the collection utility.",
+   "topicId": "ii-removal-effectiveness-utility",
+   "level": "class1",
+   "assumptions": "Fictional basin study: flow before rehabilitation 48 L/s, flow after rehabilitation 18 L/s, given before volume 4147.2 m3/day. One L/s flowing for one day equals 86.4 m3. Percent removed equals volume removed divided by before volume times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. I/I flow removed = 48 L/s - 18 L/s = 300 L/s"
+    },
+    {
+     "id": "line2",
+     "label": "2. Volume removed = 300 L/s * 86.4 = 25920 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent removed = 25920 m3/day / 4147.2 m3/day * 100 = 625 percent"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. I/I flow removed = 48 L/s - 18 L/s = 30 L/s",
+   "explanation": "Line 1 states 300 but the stated operation gives 30. The correct value is 30 L/s. With the correction, the volume removed is 2592 m3/day and the percent removed is 62.5 percent."
+  },
+  {
+   "id": "wp4wc-error100",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this capital program average cost calculation for the renewal strategy for a mountain valley town in western Canada. The figures support regulatory reporting leadership under provincial wastewater requirements in general terms.",
+   "topicId": "budget-capital-program-cost",
+   "level": "class1",
+   "assumptions": "Fictional phasing plan: phase 1 length 6000 m at a given rate of 380 dollars per m, phase 2 cost given as 720000 dollars, total program length 10000 m. Average cost equals program cost divided by total length. Unit rates are given for program planning only.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Phase 1 cost = 6000 m + 380 dollars/m = 6380 dollars"
+    },
+    {
+     "id": "line2",
+     "label": "2. Program cost = 6380 dollars + 720000 dollars = 726380 dollars"
+    },
+    {
+     "id": "line3",
+     "label": "3. Average cost = 726380 dollars / 10000 m = 72.638 dollars/m"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Phase 1 cost = 6000 m * 380 dollars/m = 2280000 dollars",
+   "explanation": "Line 1 added 380 to the previous value instead of multiplying. The correct value is 2280000 dollars. With the correction, the program cost is 3000000 dollars and the average cost is 300 dollars/m."
+  },
+  {
+   "id": "wp4wc-error11",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this annual volume and value calculation for the utility inflow and infiltration reduction strategy for a mountain valley town in western Canada. The figures support regulatory reporting leadership under provincial wastewater requirements in general terms.",
+   "topicId": "ii-annual-volume-value",
+   "level": "class1",
+   "assumptions": "Fictional program costing: I/I removed 25 L/s, given unit value 0.8 dollars per m3 removed, 365 days per year. One L/s flowing for one day equals 86.4 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Volume removed = 25 L/s + 86.4 = 111.4 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Annual volume removed = 111.4 m3/day * 365 days = 40661 m3/year"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual program value = 40661 m3/year * 0.8 dollars/m3 = 32528.8 dollars"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Volume removed = 25 L/s * 86.4 = 2160 m3/day",
+   "explanation": "Line 1 added 86.4 to the previous value instead of multiplying. The correct value is 2160 m3/day. With the correction, the annual volume removed is 788400 m3/year and the annual program value is 630720 dollars."
+  },
+  {
+   "id": "wp4wc-error12",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this annual volume and value calculation for the utility inflow and infiltration reduction strategy for a western Canadian city during spring melt. The figures feed the utility report prepared in the context of the federal Wastewater Systems Effluent Regulations.",
+   "topicId": "ii-annual-volume-value",
+   "level": "class1",
+   "assumptions": "Fictional program costing: I/I removed 30 L/s, given unit value 1.25 dollars per m3 removed, 365 days per year. One L/s flowing for one day equals 86.4 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Volume removed = 30 L/s * 86.4 = 2592 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Annual volume removed = 2592 m3/day * 365 days = 9460800 m3/year"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual program value = 9460800 m3/year * 1.25 dollars/m3 = 11826000 dollars"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Annual volume removed = 2592 m3/day * 365 days = 946080 m3/year",
+   "explanation": "Line 2 states 9460800 but the stated operation gives 946080. The correct value is 946080 m3/year. With the correction, the annual program value is 1182600 dollars."
+  },
+  {
+   "id": "wp4wc-error13",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this annual volume and value calculation for the utility inflow and infiltration reduction strategy for a boreal shield community in western Canada. The figures are tracked under the CCME Canada-wide Strategy context for the collection utility.",
+   "topicId": "ii-annual-volume-value",
+   "level": "class1",
+   "assumptions": "Fictional program costing: I/I removed 20 L/s, given unit value 0.6 dollars per m3 removed, 365 days per year. One L/s flowing for one day equals 86.4 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Volume removed = 20 L/s * 86.4 = 1728 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Annual volume removed = 1728 m3/day * 365 days = 630720 m3/year"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual program value = 630720 m3/year + 0.6 dollars/m3 = 630720.6 dollars"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Annual program value = 630720 m3/year * 0.6 dollars/m3 = 378432 dollars",
+   "explanation": "Line 3 added 0.6 to the previous value instead of multiplying. The correct value is 378432 dollars."
+  },
+  {
+   "id": "wp4wc-error14",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this annual volume and value calculation for the utility inflow and infiltration reduction strategy for an interior plateau city in western Canada. The figures support board reporting for the collection utility under provincial wastewater requirements in general terms.",
+   "topicId": "ii-annual-volume-value",
+   "level": "class1",
+   "assumptions": "Fictional program costing: I/I removed 15 L/s, given unit value 1.6 dollars per m3 removed, 365 days per year. One L/s flowing for one day equals 86.4 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Volume removed = 15 L/s * 864 = 12960 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Annual volume removed = 12960 m3/day * 365 days = 4730400 m3/year"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual program value = 4730400 m3/year * 1.6 dollars/m3 = 7568640 dollars"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Volume removed = 15 L/s * 86.4 = 1296 m3/day",
+   "explanation": "Line 1 used 864 instead of 86.4. The correct value is 1296 m3/day. With the correction, the annual volume removed is 473040 m3/year and the annual program value is 756864 dollars."
+  },
+  {
+   "id": "wp4wc-error15",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this annual volume and value calculation for the utility inflow and infiltration reduction strategy for a prairie city in western Canada. The figures support regulatory reporting leadership under provincial wastewater requirements in general terms.",
+   "topicId": "ii-annual-volume-value",
+   "level": "class1",
+   "assumptions": "Fictional program costing: I/I removed 40 L/s, given unit value 0.45 dollars per m3 removed, 365 days per year. One L/s flowing for one day equals 86.4 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Volume removed = 40 L/s * 86.4 = 3456 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Annual volume removed = 3456 m3/day + 365 days = 3821 m3/year"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual program value = 3821 m3/year * 0.45 dollars/m3 = 1719.45 dollars"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Annual volume removed = 3456 m3/day * 365 days = 1261440 m3/year",
+   "explanation": "Line 2 added 365 to the previous value instead of multiplying. The correct value is 1261440 m3/year. With the correction, the annual program value is 567648 dollars."
+  },
+  {
+   "id": "wp4wc-error16",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this CCTV inspection program completion calculation for the CMOM performance report for a foothills community in western Canada. The figures feed the utility report prepared in the context of the federal Wastewater Systems Effluent Regulations.",
+   "topicId": "cmom-cctv-completion",
+   "level": "class1",
+   "assumptions": "Fictional CCTV program: phase 1 inspected 9600 m, phase 2 inspected 6400 m, program total 40000 m. Percent remaining equals remaining length divided by program total times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total inspected = 9600 m + 6400 m = 160000 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Remaining to inspect = 40000 m - 160000 m = -120000 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent remaining = -120000 m / 40000 m * 100 = -300 percent"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Total inspected = 9600 m + 6400 m = 16000 m",
+   "explanation": "Line 1 states 160000 but the stated operation gives 16000. The correct value is 16000 m. With the correction, the remaining to inspect is 24000 m and the percent remaining is 60 percent."
+  },
+  {
+   "id": "wp4wc-error17",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this CCTV inspection program completion calculation for the CMOM performance report for a community on the British Columbia coast. The figures are tracked under the CCME Canada-wide Strategy context for the collection utility.",
+   "topicId": "cmom-cctv-completion",
+   "level": "class1",
+   "assumptions": "Fictional CCTV program: phase 1 inspected 7200 m, phase 2 inspected 4800 m, program total 32000 m. Percent remaining equals remaining length divided by program total times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total inspected = 7200 m + 4800 m = 12000 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Remaining to inspect = 32000 m + 12000 m = 44000 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent remaining = 44000 m / 32000 m * 100 = 137.5 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Remaining to inspect = 32000 m - 12000 m = 20000 m",
+   "explanation": "Line 2 added the completed amount to the total 32000 instead of subtracting it. The correct value is 20000 m. With the correction, the percent remaining is 62.5 percent."
+  },
+  {
+   "id": "wp4wc-error18",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this CCTV inspection program completion calculation for the CMOM performance report for a northern prairie community. The figures support board reporting for the collection utility under provincial wastewater requirements in general terms.",
+   "topicId": "cmom-cctv-completion",
+   "level": "class1",
+   "assumptions": "Fictional CCTV program: phase 1 inspected 12800 m, phase 2 inspected 7200 m, program total 50000 m. Percent remaining equals remaining length divided by program total times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total inspected = 12800 m + 7200 m = 20000 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Remaining to inspect = 50000 m - 20000 m = 30000 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent remaining = 30000 m / 50000 m * 10 = 6 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent remaining = 30000 m / 50000 m * 100 = 60 percent",
+   "explanation": "Line 3 multiplied by 10 instead of 100. The correct value is 60 percent."
+  },
+  {
+   "id": "wp4wc-error19",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this CCTV inspection program completion calculation for the CMOM performance report for a mountain valley town in western Canada. The figures support regulatory reporting leadership under provincial wastewater requirements in general terms.",
+   "topicId": "cmom-cctv-completion",
+   "level": "class1",
+   "assumptions": "Fictional CCTV program: phase 1 inspected 6000 m, phase 2 inspected 3600 m, program total 32000 m. Percent remaining equals remaining length divided by program total times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total inspected = 6000 m - 3600 m = 2400 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Remaining to inspect = 32000 m - 2400 m = 29600 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent remaining = 29600 m / 32000 m * 100 = 92.5 percent"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Total inspected = 6000 m + 3600 m = 9600 m",
+   "explanation": "Line 1 subtracted 3600 from the previous value instead of adding it. The correct value is 9600 m. With the correction, the remaining to inspect is 22400 m and the percent remaining is 70 percent."
+  },
+  {
+   "id": "wp4wc-error20",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this CCTV inspection program completion calculation for the CMOM performance report for a western Canadian city during spring melt. The figures feed the utility report prepared in the context of the federal Wastewater Systems Effluent Regulations.",
+   "topicId": "cmom-cctv-completion",
+   "level": "class1",
+   "assumptions": "Fictional CCTV program: phase 1 inspected 8400 m, phase 2 inspected 5600 m, program total 20000 m. Percent remaining equals remaining length divided by program total times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total inspected = 8400 m + 5600 m = 14000 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Remaining to inspect = 20000 m - 14000 m = 60000 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent remaining = 60000 m / 20000 m * 100 = 300 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Remaining to inspect = 20000 m - 14000 m = 6000 m",
+   "explanation": "Line 2 states 60000 but the stated operation gives 6000. The correct value is 6000 m. With the correction, the percent remaining is 30 percent."
+  },
+  {
+   "id": "wp4wc-error21",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sewer cleaning program production calculation for the CMOM performance report for a northern prairie community. The figures support board reporting for the collection utility under provincial wastewater requirements in general terms.",
+   "topicId": "cmom-cleaning-program",
+   "level": "class1",
+   "assumptions": "Fictional cleaning program: 4 crews, given production 250 m per crew per day, 20 working days in the period, annual target 50000 m. Percent of target equals period production divided by annual target times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily cleaning production = 4 crews * 250 m/crew/day = 10000 m/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Period cleaning production = 10000 m/day * 20 days = 200000 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent of annual target = 200000 m / 50000 m * 100 = 400 percent"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Daily cleaning production = 4 crews * 250 m/crew/day = 1000 m/day",
+   "explanation": "Line 1 states 10000 but the stated operation gives 1000. The correct value is 1000 m/day. With the correction, the period cleaning production is 20000 m and the percent of annual target is 40 percent."
+  },
+  {
+   "id": "wp4wc-error22",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sewer cleaning program production calculation for the CMOM performance report for a mountain valley town in western Canada. The figures support regulatory reporting leadership under provincial wastewater requirements in general terms.",
+   "topicId": "cmom-cleaning-program",
+   "level": "class1",
+   "assumptions": "Fictional cleaning program: 5 crews, given production 240 m per crew per day, 25 working days in the period, annual target 60000 m. Percent of target equals period production divided by annual target times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily cleaning production = 5 crews * 240 m/crew/day = 1200 m/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Period cleaning production = 1200 m/day * 25 days = 300000 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent of annual target = 300000 m / 60000 m * 100 = 500 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Period cleaning production = 1200 m/day * 25 days = 30000 m",
+   "explanation": "Line 2 states 300000 but the stated operation gives 30000. The correct value is 30000 m. With the correction, the percent of annual target is 50 percent."
+  },
+  {
+   "id": "wp4wc-error23",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sewer cleaning program production calculation for the CMOM performance report for a western Canadian city during spring melt. The figures feed the utility report prepared in the context of the federal Wastewater Systems Effluent Regulations.",
+   "topicId": "cmom-cleaning-program",
+   "level": "class1",
+   "assumptions": "Fictional cleaning program: 4 crews, given production 300 m per crew per day, 20 working days in the period, annual target 80000 m. Percent of target equals period production divided by annual target times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily cleaning production = 4 crews * 300 m/crew/day = 1200 m/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Period cleaning production = 1200 m/day * 20 days = 24000 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent of annual target = 24000 m / 80000 m * 100 = 300 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent of annual target = 24000 m / 80000 m * 100 = 30 percent",
+   "explanation": "Line 3 states 300 but the stated operation gives 30. The correct value is 30 percent."
+  },
+  {
+   "id": "wp4wc-error24",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sewer cleaning program production calculation for the CMOM performance report for a boreal shield community in western Canada. The figures are tracked under the CCME Canada-wide Strategy context for the collection utility.",
+   "topicId": "cmom-cleaning-program",
+   "level": "class1",
+   "assumptions": "Fictional cleaning program: 6 crews, given production 200 m per crew per day, 25 working days in the period, annual target 60000 m. Percent of target equals period production divided by annual target times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily cleaning production = 6 crews * 200 m/crew/day = 12000 m/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Period cleaning production = 12000 m/day * 25 days = 300000 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent of annual target = 300000 m / 60000 m * 100 = 500 percent"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Daily cleaning production = 6 crews * 200 m/crew/day = 1200 m/day",
+   "explanation": "Line 1 states 12000 but the stated operation gives 1200. The correct value is 1200 m/day. With the correction, the period cleaning production is 30000 m and the percent of annual target is 50 percent."
+  },
+  {
+   "id": "wp4wc-error25",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sewer cleaning program production calculation for the CMOM performance report for an interior plateau city in western Canada. The figures support board reporting for the collection utility under provincial wastewater requirements in general terms.",
+   "topicId": "cmom-cleaning-program",
+   "level": "class1",
+   "assumptions": "Fictional cleaning program: 5 crews, given production 320 m per crew per day, 20 working days in the period, annual target 80000 m. Percent of target equals period production divided by annual target times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily cleaning production = 5 crews * 320 m/crew/day = 1600 m/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Period cleaning production = 1600 m/day * 20 days = 320000 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent of annual target = 320000 m / 80000 m * 100 = 400 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Period cleaning production = 1600 m/day * 20 days = 32000 m",
+   "explanation": "Line 2 states 320000 but the stated operation gives 32000. The correct value is 32000 m. With the correction, the percent of annual target is 40 percent."
+  },
+  {
+   "id": "wp4wc-error26",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this blockage rate calculation for the CMOM performance report for a western Canadian city during spring melt. The figures feed the utility report prepared in the context of the federal Wastewater Systems Effluent Regulations.",
+   "topicId": "cmom-blockage-rate",
+   "level": "class1",
+   "assumptions": "Fictional blockage records for one year: root blockages 120, fats oils and grease blockages 80, structural blockages 50, network length 500 km. The blockage rate equals total blockages divided by network length times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Blockages from roots and grease = 120 events + 80 events = 200 events"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total blockages = 200 events + 50 events = 250 events"
+    },
+    {
+     "id": "line3",
+     "label": "3. Blockage rate = 250 events / 500 km * 10 = 5 events per 100 km"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Blockage rate = 250 events / 500 km * 100 = 50 events per 100 km",
+   "explanation": "Line 3 multiplied by 10 instead of 100. The correct value is 50 events per 100 km."
+  },
+  {
+   "id": "wp4wc-error27",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this blockage rate calculation for the CMOM performance report for a boreal shield community in western Canada. The figures are tracked under the CCME Canada-wide Strategy context for the collection utility.",
+   "topicId": "cmom-blockage-rate",
+   "level": "class1",
+   "assumptions": "Fictional blockage records for one year: root blockages 90, fats oils and grease blockages 60, structural blockages 30, network length 400 km. The blockage rate equals total blockages divided by network length times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Blockages from roots and grease = 90 events + 60 events = 1500 events"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total blockages = 1500 events + 30 events = 1530 events"
+    },
+    {
+     "id": "line3",
+     "label": "3. Blockage rate = 1530 events / 400 km * 100 = 382.5 events per 100 km"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Blockages from roots and grease = 90 events + 60 events = 150 events",
+   "explanation": "Line 1 states 1500 but the stated operation gives 150. The correct value is 150 events. With the correction, the total blockages is 180 events and the blockage rate is 45 events per 100 km."
+  },
+  {
+   "id": "wp4wc-error28",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this blockage rate calculation for the CMOM performance report for an interior plateau city in western Canada. The figures support board reporting for the collection utility under provincial wastewater requirements in general terms.",
+   "topicId": "cmom-blockage-rate",
+   "level": "class1",
+   "assumptions": "Fictional blockage records for one year: root blockages 140, fats oils and grease blockages 110, structural blockages 90, network length 850 km. The blockage rate equals total blockages divided by network length times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Blockages from roots and grease = 140 events + 110 events = 250 events"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total blockages = 250 events + 90 events = 3400 events"
+    },
+    {
+     "id": "line3",
+     "label": "3. Blockage rate = 3400 events / 850 km * 100 = 400 events per 100 km"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Total blockages = 250 events + 90 events = 340 events",
+   "explanation": "Line 2 states 3400 but the stated operation gives 340. The correct value is 340 events. With the correction, the blockage rate is 40 events per 100 km."
+  },
+  {
+   "id": "wp4wc-error29",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this blockage rate calculation for the CMOM performance report for a prairie city in western Canada. The figures support regulatory reporting leadership under provincial wastewater requirements in general terms.",
+   "topicId": "cmom-blockage-rate",
+   "level": "class1",
+   "assumptions": "Fictional blockage records for one year: root blockages 80, fats oils and grease blockages 70, structural blockages 50, network length 400 km. The blockage rate equals total blockages divided by network length times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Blockages from roots and grease = 80 events + 70 events = 150 events"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total blockages = 150 events + 50 events = 200 events"
+    },
+    {
+     "id": "line3",
+     "label": "3. Blockage rate = 200 events / 400 km * 100 = 500 events per 100 km"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Blockage rate = 200 events / 400 km * 100 = 50 events per 100 km",
+   "explanation": "Line 3 states 500 but the stated operation gives 50. The correct value is 50 events per 100 km."
+  },
+  {
+   "id": "wp4wc-error30",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this blockage rate calculation for the CMOM performance report for a foothills community in western Canada. The figures feed the utility report prepared in the context of the federal Wastewater Systems Effluent Regulations.",
+   "topicId": "cmom-blockage-rate",
+   "level": "class1",
+   "assumptions": "Fictional blockage records for one year: root blockages 200, fats oils and grease blockages 120, structural blockages 80, network length 1000 km. The blockage rate equals total blockages divided by network length times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Blockages from roots and grease = 200 events - 120 events = 80 events"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total blockages = 80 events + 80 events = 160 events"
+    },
+    {
+     "id": "line3",
+     "label": "3. Blockage rate = 160 events / 1000 km * 100 = 16 events per 100 km"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Blockages from roots and grease = 200 events + 120 events = 320 events",
+   "explanation": "Line 1 subtracted 120 from the previous value instead of adding it. The correct value is 320 events. With the correction, the total blockages is 400 events and the blockage rate is 40 events per 100 km."
+  },
+  {
+   "id": "wp4wc-error31",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sewer renewal rate calculation for the utility asset management plan for a community on the British Columbia coast. The figures are tracked under the CCME Canada-wide Strategy context for the collection utility.",
+   "topicId": "asset-renewal-rate",
+   "level": "class1",
+   "assumptions": "Fictional renewal program: renewal rate 800 m per year, 5 years completed, total network length in the program 40000 m. Percent remaining equals remaining length divided by total times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Renewed to date = 800 m/year * 5 years = 4000 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Remaining length = 40000 m - 4000 m = 360000 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent remaining = 360000 m / 40000 m * 100 = 900 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Remaining length = 40000 m - 4000 m = 36000 m",
+   "explanation": "Line 2 states 360000 but the stated operation gives 36000. The correct value is 36000 m. With the correction, the percent remaining is 90 percent."
+  },
+  {
+   "id": "wp4wc-error32",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sewer renewal rate calculation for the utility asset management plan for a northern prairie community. The figures support board reporting for the collection utility under provincial wastewater requirements in general terms.",
+   "topicId": "asset-renewal-rate",
+   "level": "class1",
+   "assumptions": "Fictional renewal program: renewal rate 1000 m per year, 4 years completed, total network length in the program 50000 m. Percent remaining equals remaining length divided by total times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Renewed to date = 1000 m/year * 4 years = 4000 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Remaining length = 50000 m - 4000 m = 46000 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent remaining = 46000 m / 50000 m * 10 = 9.2 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent remaining = 46000 m / 50000 m * 100 = 92 percent",
+   "explanation": "Line 3 multiplied by 10 instead of 100. The correct value is 92 percent."
+  },
+  {
+   "id": "wp4wc-error33",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sewer renewal rate calculation for the utility asset management plan for a mountain valley town in western Canada. The figures support regulatory reporting leadership under provincial wastewater requirements in general terms.",
+   "topicId": "asset-renewal-rate",
+   "level": "class1",
+   "assumptions": "Fictional renewal program: renewal rate 600 m per year, 10 years completed, total network length in the program 30000 m. Percent remaining equals remaining length divided by total times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Renewed to date = 600 m/year * 10 years = 60000 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Remaining length = 30000 m - 60000 m = -30000 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent remaining = -30000 m / 30000 m * 100 = -100 percent"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Renewed to date = 600 m/year * 10 years = 6000 m",
+   "explanation": "Line 1 states 60000 but the stated operation gives 6000. The correct value is 6000 m. With the correction, the remaining length is 24000 m and the percent remaining is 80 percent."
+  },
+  {
+   "id": "wp4wc-error34",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sewer renewal rate calculation for the utility asset management plan for a western Canadian city during spring melt. The figures feed the utility report prepared in the context of the federal Wastewater Systems Effluent Regulations.",
+   "topicId": "asset-renewal-rate",
+   "level": "class1",
+   "assumptions": "Fictional renewal program: renewal rate 1250 m per year, 8 years completed, total network length in the program 50000 m. Percent remaining equals remaining length divided by total times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Renewed to date = 1250 m/year * 8 years = 10000 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Remaining length = 50000 m + 10000 m = 60000 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent remaining = 60000 m / 50000 m * 100 = 120 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Remaining length = 50000 m - 10000 m = 40000 m",
+   "explanation": "Line 2 added the completed amount to the total 50000 instead of subtracting it. The correct value is 40000 m. With the correction, the percent remaining is 80 percent."
+  },
+  {
+   "id": "wp4wc-error35",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sewer renewal rate calculation for the utility asset management plan for a boreal shield community in western Canada. The figures are tracked under the CCME Canada-wide Strategy context for the collection utility.",
+   "topicId": "asset-renewal-rate",
+   "level": "class1",
+   "assumptions": "Fictional renewal program: renewal rate 900 m per year, 10 years completed, total network length in the program 60000 m. Percent remaining equals remaining length divided by total times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Renewed to date = 900 m/year * 10 years = 9000 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Remaining length = 60000 m - 9000 m = 51000 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent remaining = 51000 m / 60000 m * 100 = 850 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent remaining = 51000 m / 60000 m * 100 = 85 percent",
+   "explanation": "Line 3 states 850 but the stated operation gives 85. The correct value is 85 percent."
+  },
+  {
+   "id": "wp4wc-error36",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this rehabilitation backlog cost calculation for the capital program for a mountain valley town in western Canada. The figures support regulatory reporting leadership under provincial wastewater requirements in general terms.",
+   "topicId": "asset-backlog-cost",
+   "level": "class1",
+   "assumptions": "Fictional backlog estimate: backlog length 12000 m at a given rate of 450 dollars per m, given design cost 600000 dollars, given contingency 400000 dollars. Unit rates are given for program planning only.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Backlog rehabilitation cost = 12000 m + 450 dollars/m = 12450 dollars"
+    },
+    {
+     "id": "line2",
+     "label": "2. Program cost before contingency = 12450 dollars + 600000 dollars = 612450 dollars"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total program cost = 612450 dollars + 400000 dollars = 1012450 dollars"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Backlog rehabilitation cost = 12000 m * 450 dollars/m = 5400000 dollars",
+   "explanation": "Line 1 added 450 to the previous value instead of multiplying. The correct value is 5400000 dollars. With the correction, the program cost before contingency is 6000000 dollars and the total program cost is 6400000 dollars."
+  },
+  {
+   "id": "wp4wc-error37",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this rehabilitation backlog cost calculation for the capital program for a western Canadian city during spring melt. The figures feed the utility report prepared in the context of the federal Wastewater Systems Effluent Regulations.",
+   "topicId": "asset-backlog-cost",
+   "level": "class1",
+   "assumptions": "Fictional backlog estimate: backlog length 8000 m at a given rate of 520 dollars per m, given design cost 440000 dollars, given contingency 300000 dollars. Unit rates are given for program planning only.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Backlog rehabilitation cost = 8000 m * 520 dollars/m = 4160000 dollars"
+    },
+    {
+     "id": "line2",
+     "label": "2. Program cost before contingency = 4160000 dollars + 440000 dollars = 46000000 dollars"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total program cost = 46000000 dollars + 300000 dollars = 46300000 dollars"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Program cost before contingency = 4160000 dollars + 440000 dollars = 4600000 dollars",
+   "explanation": "Line 2 states 46000000 but the stated operation gives 4600000. The correct value is 4600000 dollars. With the correction, the total program cost is 4900000 dollars."
+  },
+  {
+   "id": "wp4wc-error38",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this rehabilitation backlog cost calculation for the capital program for a boreal shield community in western Canada. The figures are tracked under the CCME Canada-wide Strategy context for the collection utility.",
+   "topicId": "asset-backlog-cost",
+   "level": "class1",
+   "assumptions": "Fictional backlog estimate: backlog length 15000 m at a given rate of 380 dollars per m, given design cost 700000 dollars, given contingency 500000 dollars. Unit rates are given for program planning only.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Backlog rehabilitation cost = 15000 m * 380 dollars/m = 5700000 dollars"
+    },
+    {
+     "id": "line2",
+     "label": "2. Program cost before contingency = 5700000 dollars + 700000 dollars = 6400000 dollars"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total program cost = 6400000 dollars - 500000 dollars = 5900000 dollars"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total program cost = 6400000 dollars + 500000 dollars = 6900000 dollars",
+   "explanation": "Line 3 subtracted 500000 from the previous value instead of adding it. The correct value is 6900000 dollars."
+  },
+  {
+   "id": "wp4wc-error39",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this rehabilitation backlog cost calculation for the capital program for an interior plateau city in western Canada. The figures support board reporting for the collection utility under provincial wastewater requirements in general terms.",
+   "topicId": "asset-backlog-cost",
+   "level": "class1",
+   "assumptions": "Fictional backlog estimate: backlog length 10000 m at a given rate of 600 dollars per m, given design cost 500000 dollars, given contingency 500000 dollars. Unit rates are given for program planning only.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Backlog rehabilitation cost = 10000 m * 600 dollars/m = 60000000 dollars"
+    },
+    {
+     "id": "line2",
+     "label": "2. Program cost before contingency = 60000000 dollars + 500000 dollars = 60500000 dollars"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total program cost = 60500000 dollars + 500000 dollars = 61000000 dollars"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Backlog rehabilitation cost = 10000 m * 600 dollars/m = 6000000 dollars",
+   "explanation": "Line 1 states 60000000 but the stated operation gives 6000000. The correct value is 6000000 dollars. With the correction, the program cost before contingency is 6500000 dollars and the total program cost is 7000000 dollars."
+  },
+  {
+   "id": "wp4wc-error40",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this rehabilitation backlog cost calculation for the capital program for a prairie city in western Canada. The figures support regulatory reporting leadership under provincial wastewater requirements in general terms.",
+   "topicId": "asset-backlog-cost",
+   "level": "class1",
+   "assumptions": "Fictional backlog estimate: backlog length 9000 m at a given rate of 480 dollars per m, given design cost 380000 dollars, given contingency 250000 dollars. Unit rates are given for program planning only.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Backlog rehabilitation cost = 9000 m * 480 dollars/m = 4320000 dollars"
+    },
+    {
+     "id": "line2",
+     "label": "2. Program cost before contingency = 4320000 dollars - 380000 dollars = 3940000 dollars"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total program cost = 3940000 dollars + 250000 dollars = 4190000 dollars"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Program cost before contingency = 4320000 dollars + 380000 dollars = 4700000 dollars",
+   "explanation": "Line 2 subtracted 380000 from the previous value instead of adding it. The correct value is 4700000 dollars. With the correction, the total program cost is 4950000 dollars."
+  },
+  {
+   "id": "wp4wc-error41",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this cured in place liner quantity and cost calculation for the renewal program for a boreal shield community in western Canada. The figures are tracked under the CCME Canada-wide Strategy context for the collection utility.",
+   "topicId": "asset-liner-program-cost",
+   "level": "class1",
+   "assumptions": "Fictional lining program: 40 sections of 25 m each, given liner width 1.6 m, given liner rate 120 dollars per m2. Unit rates are given for program planning only.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total liner length = 40 sections * 25 m = 1000 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Liner area = 1000 m * 1.6 m = 1600 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Liner program cost = 1600 m2 * 120 dollars/m2 = 1920000 dollars"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Liner program cost = 1600 m2 * 120 dollars/m2 = 192000 dollars",
+   "explanation": "Line 3 states 1920000 but the stated operation gives 192000. The correct value is 192000 dollars."
+  },
+  {
+   "id": "wp4wc-error42",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this cured in place liner quantity and cost calculation for the renewal program for an interior plateau city in western Canada. The figures support board reporting for the collection utility under provincial wastewater requirements in general terms.",
+   "topicId": "asset-liner-program-cost",
+   "level": "class1",
+   "assumptions": "Fictional lining program: 30 sections of 20 m each, given liner width 1.8 m, given liner rate 150 dollars per m2. Unit rates are given for program planning only.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total liner length = 30 sections + 20 m = 50 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Liner area = 50 m * 1.8 m = 90 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Liner program cost = 90 m2 * 150 dollars/m2 = 13500 dollars"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Total liner length = 30 sections * 20 m = 600 m",
+   "explanation": "Line 1 added 20 to the previous value instead of multiplying. The correct value is 600 m. With the correction, the liner area is 1080 m2 and the liner program cost is 162000 dollars."
+  },
+  {
+   "id": "wp4wc-error43",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this cured in place liner quantity and cost calculation for the renewal program for a prairie city in western Canada. The figures support regulatory reporting leadership under provincial wastewater requirements in general terms.",
+   "topicId": "asset-liner-program-cost",
+   "level": "class1",
+   "assumptions": "Fictional lining program: 50 sections of 24 m each, given liner width 2 m, given liner rate 110 dollars per m2. Unit rates are given for program planning only.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total liner length = 50 sections * 24 m = 1200 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Liner area = 1200 m * 2 m = 24000 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Liner program cost = 24000 m2 * 110 dollars/m2 = 2640000 dollars"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Liner area = 1200 m * 2 m = 2400 m2",
+   "explanation": "Line 2 states 24000 but the stated operation gives 2400. The correct value is 2400 m2. With the correction, the liner program cost is 264000 dollars."
+  },
+  {
+   "id": "wp4wc-error44",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this cured in place liner quantity and cost calculation for the renewal program for a foothills community in western Canada. The figures feed the utility report prepared in the context of the federal Wastewater Systems Effluent Regulations.",
+   "topicId": "asset-liner-program-cost",
+   "level": "class1",
+   "assumptions": "Fictional lining program: 25 sections of 32 m each, given liner width 1.5 m, given liner rate 140 dollars per m2. Unit rates are given for program planning only.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total liner length = 25 sections * 32 m = 800 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Liner area = 800 m * 1.5 m = 1200 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Liner program cost = 1200 m2 + 140 dollars/m2 = 1340 dollars"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Liner program cost = 1200 m2 * 140 dollars/m2 = 168000 dollars",
+   "explanation": "Line 3 added 140 to the previous value instead of multiplying. The correct value is 168000 dollars."
+  },
+  {
+   "id": "wp4wc-error45",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this cured in place liner quantity and cost calculation for the renewal program for a community on the British Columbia coast. The figures are tracked under the CCME Canada-wide Strategy context for the collection utility.",
+   "topicId": "asset-liner-program-cost",
+   "level": "class1",
+   "assumptions": "Fictional lining program: 60 sections of 20 m each, given liner width 2.4 m, given liner rate 90 dollars per m2. Unit rates are given for program planning only.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total liner length = 60 sections * 20 m = 12000 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Liner area = 12000 m * 2.4 m = 28800 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Liner program cost = 28800 m2 * 90 dollars/m2 = 2592000 dollars"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Total liner length = 60 sections * 20 m = 1200 m",
+   "explanation": "Line 1 states 12000 but the stated operation gives 1200. The correct value is 1200 m. With the correction, the liner area is 2880 m2 and the liner program cost is 259200 dollars."
+  },
+  {
+   "id": "wp4wc-error46",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this manhole assessment program calculation for the asset management plan for a foothills community in western Canada. The figures feed the utility report prepared in the context of the federal Wastewater Systems Effluent Regulations.",
+   "topicId": "asset-manhole-program",
+   "level": "class1",
+   "assumptions": "Fictional assessment program: given production 45 manholes per day, 80 working days completed, program total 4500 manholes. Percent remaining equals remaining manholes divided by program total times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Manholes assessed = 45 manholes/day * 80 days = 3600 manholes"
+    },
+    {
+     "id": "line2",
+     "label": "2. Manholes remaining = 4500 manholes + 3600 manholes = 8100 manholes"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent remaining = 8100 manholes / 4500 manholes * 100 = 180 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Manholes remaining = 4500 manholes - 3600 manholes = 900 manholes",
+   "explanation": "Line 2 added the completed amount to the total 4500 instead of subtracting it. The correct value is 900 manholes. With the correction, the percent remaining is 20 percent."
+  },
+  {
+   "id": "wp4wc-error47",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this manhole assessment program calculation for the asset management plan for a community on the British Columbia coast. The figures are tracked under the CCME Canada-wide Strategy context for the collection utility.",
+   "topicId": "asset-manhole-program",
+   "level": "class1",
+   "assumptions": "Fictional assessment program: given production 36 manholes per day, 100 working days completed, program total 6000 manholes. Percent remaining equals remaining manholes divided by program total times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Manholes assessed = 36 manholes/day * 100 days = 3600 manholes"
+    },
+    {
+     "id": "line2",
+     "label": "2. Manholes remaining = 6000 manholes - 3600 manholes = 2400 manholes"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent remaining = 2400 manholes / 6000 manholes * 100 = 400 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent remaining = 2400 manholes / 6000 manholes * 100 = 40 percent",
+   "explanation": "Line 3 states 400 but the stated operation gives 40. The correct value is 40 percent."
+  },
+  {
+   "id": "wp4wc-error48",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this manhole assessment program calculation for the asset management plan for a northern prairie community. The figures support board reporting for the collection utility under provincial wastewater requirements in general terms.",
+   "topicId": "asset-manhole-program",
+   "level": "class1",
+   "assumptions": "Fictional assessment program: given production 52 manholes per day, 75 working days completed, program total 6500 manholes. Percent remaining equals remaining manholes divided by program total times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Manholes assessed = 52 manholes/day * 75 days = 39000 manholes"
+    },
+    {
+     "id": "line2",
+     "label": "2. Manholes remaining = 6500 manholes - 39000 manholes = -32500 manholes"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent remaining = -32500 manholes / 6500 manholes * 100 = -500 percent"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Manholes assessed = 52 manholes/day * 75 days = 3900 manholes",
+   "explanation": "Line 1 states 39000 but the stated operation gives 3900. The correct value is 3900 manholes. With the correction, the manholes remaining is 2600 manholes and the percent remaining is 40 percent."
+  },
+  {
+   "id": "wp4wc-error49",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this manhole assessment program calculation for the asset management plan for a mountain valley town in western Canada. The figures support regulatory reporting leadership under provincial wastewater requirements in general terms.",
+   "topicId": "asset-manhole-program",
+   "level": "class1",
+   "assumptions": "Fictional assessment program: given production 64 manholes per day, 50 working days completed, program total 6400 manholes. Percent remaining equals remaining manholes divided by program total times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Manholes assessed = 64 manholes/day * 50 days = 3200 manholes"
+    },
+    {
+     "id": "line2",
+     "label": "2. Manholes remaining = 6400 manholes - 3200 manholes = 32000 manholes"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent remaining = 32000 manholes / 6400 manholes * 100 = 500 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Manholes remaining = 6400 manholes - 3200 manholes = 3200 manholes",
+   "explanation": "Line 2 states 32000 but the stated operation gives 3200. The correct value is 3200 manholes. With the correction, the percent remaining is 50 percent."
+  },
+  {
+   "id": "wp4wc-error50",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this manhole assessment program calculation for the asset management plan for a western Canadian city during spring melt. The figures feed the utility report prepared in the context of the federal Wastewater Systems Effluent Regulations.",
+   "topicId": "asset-manhole-program",
+   "level": "class1",
+   "assumptions": "Fictional assessment program: given production 40 manholes per day, 120 working days completed, program total 8000 manholes. Percent remaining equals remaining manholes divided by program total times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Manholes assessed = 40 manholes/day * 120 days = 4800 manholes"
+    },
+    {
+     "id": "line2",
+     "label": "2. Manholes remaining = 8000 manholes - 4800 manholes = 3200 manholes"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent remaining = 3200 manholes / 8000 manholes * 10 = 4 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent remaining = 3200 manholes / 8000 manholes * 100 = 40 percent",
+   "explanation": "Line 3 multiplied by 10 instead of 100. The correct value is 40 percent."
+  },
+  {
+   "id": "wp4wc-error51",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this long range growth flow forecast for capacity strategy planning for a northern prairie community. The figures support board reporting for the collection utility under provincial wastewater requirements in general terms.",
+   "topicId": "capacity-growth-flow",
+   "level": "class1",
+   "assumptions": "Fictional growth forecast: current population 40000 persons, growth 10000 persons, given per capita flow 250 L per person per day, 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Future population = 40000 persons + 10000 persons = 50000 persons"
+    },
+    {
+     "id": "line2",
+     "label": "2. Future flow = 50000 persons * 250 L/person/day = 12500000 L/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Future flow = 12500000 L/day / 1000 L/m3 = 125000 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Future flow = 12500000 L/day / 1000 L/m3 = 12500 m3/day",
+   "explanation": "Line 3 states 125000 but the stated operation gives 12500. The correct value is 12500 m3/day."
+  },
+  {
+   "id": "wp4wc-error52",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this long range growth flow forecast for capacity strategy planning for a mountain valley town in western Canada. The figures support regulatory reporting leadership under provincial wastewater requirements in general terms.",
+   "topicId": "capacity-growth-flow",
+   "level": "class1",
+   "assumptions": "Fictional growth forecast: current population 30000 persons, growth 7500 persons, given per capita flow 300 L per person per day, 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Future population = 30000 persons + 7500 persons = 375000 persons"
+    },
+    {
+     "id": "line2",
+     "label": "2. Future flow = 375000 persons * 300 L/person/day = 112500000 L/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Future flow = 112500000 L/day / 1000 L/m3 = 112500 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Future population = 30000 persons + 7500 persons = 37500 persons",
+   "explanation": "Line 1 states 375000 but the stated operation gives 37500. The correct value is 37500 persons. With the correction, the future flow is 11250000 L/day and the future flow is 11250 m3/day."
+  },
+  {
+   "id": "wp4wc-error53",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this long range growth flow forecast for capacity strategy planning for a western Canadian city during spring melt. The figures feed the utility report prepared in the context of the federal Wastewater Systems Effluent Regulations.",
+   "topicId": "capacity-growth-flow",
+   "level": "class1",
+   "assumptions": "Fictional growth forecast: current population 50000 persons, growth 12500 persons, given per capita flow 225 L per person per day, 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Future population = 50000 persons + 12500 persons = 62500 persons"
+    },
+    {
+     "id": "line2",
+     "label": "2. Future flow = 62500 persons + 225 L/person/day = 62725 L/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Future flow = 62725 L/day / 1000 L/m3 = 62.725 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Future flow = 62500 persons * 225 L/person/day = 14062500 L/day",
+   "explanation": "Line 2 added 225 to the previous value instead of multiplying. The correct value is 14062500 L/day. With the correction, the future flow is 14062.5 m3/day."
+  },
+  {
+   "id": "wp4wc-error54",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this long range growth flow forecast for capacity strategy planning for a boreal shield community in western Canada. The figures are tracked under the CCME Canada-wide Strategy context for the collection utility.",
+   "topicId": "capacity-growth-flow",
+   "level": "class1",
+   "assumptions": "Fictional growth forecast: current population 24000 persons, growth 6000 persons, given per capita flow 280 L per person per day, 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Future population = 24000 persons + 6000 persons = 30000 persons"
+    },
+    {
+     "id": "line2",
+     "label": "2. Future flow = 30000 persons * 280 L/person/day = 8400000 L/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Future flow = 8400000 L/day * 1000 L/m3 = 8400000000 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Future flow = 8400000 L/day / 1000 L/m3 = 8400 m3/day",
+   "explanation": "Line 3 multiplied by 1000 instead of dividing by it. The correct value is 8400 m3/day."
+  },
+  {
+   "id": "wp4wc-error55",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this long range growth flow forecast for capacity strategy planning for an interior plateau city in western Canada. The figures support board reporting for the collection utility under provincial wastewater requirements in general terms.",
+   "topicId": "capacity-growth-flow",
+   "level": "class1",
+   "assumptions": "Fictional growth forecast: current population 60000 persons, growth 20000 persons, given per capita flow 240 L per person per day, 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Future population = 60000 persons - 20000 persons = 40000 persons"
+    },
+    {
+     "id": "line2",
+     "label": "2. Future flow = 40000 persons * 240 L/person/day = 9600000 L/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Future flow = 9600000 L/day / 1000 L/m3 = 9600 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Future population = 60000 persons + 20000 persons = 80000 persons",
+   "explanation": "Line 1 subtracted 20000 from the previous value instead of adding it. The correct value is 80000 persons. With the correction, the future flow is 19200000 L/day and the future flow is 19200 m3/day."
+  },
+  {
+   "id": "wp4wc-error56",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this capacity reserve margin calculation for the long range capacity strategy for a western Canadian city during spring melt. The figures feed the utility report prepared in the context of the federal Wastewater Systems Effluent Regulations.",
+   "topicId": "capacity-reserve-margin",
+   "level": "class1",
+   "assumptions": "Fictional capacity study: average flow 8000 m3/day, given peaking factor 1.5, trunk capacity 15000 m3/day. Percent reserve equals reserve capacity divided by trunk capacity times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Projected peak flow = 8000 m3/day * 1.5 = 12000 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Reserve capacity = 15000 m3/day - 12000 m3/day = 30000 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent reserve = 30000 m3/day / 15000 m3/day * 100 = 200 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Reserve capacity = 15000 m3/day - 12000 m3/day = 3000 m3/day",
+   "explanation": "Line 2 states 30000 but the stated operation gives 3000. The correct value is 3000 m3/day. With the correction, the percent reserve is 20 percent."
+  },
+  {
+   "id": "wp4wc-error57",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this capacity reserve margin calculation for the long range capacity strategy for a boreal shield community in western Canada. The figures are tracked under the CCME Canada-wide Strategy context for the collection utility.",
+   "topicId": "capacity-reserve-margin",
+   "level": "class1",
+   "assumptions": "Fictional capacity study: average flow 9000 m3/day, given peaking factor 1.5, trunk capacity 18000 m3/day. Percent reserve equals reserve capacity divided by trunk capacity times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Projected peak flow = 9000 m3/day * 1.5 = 13500 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Reserve capacity = 18000 m3/day - 13500 m3/day = 4500 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent reserve = 4500 m3/day / 18000 m3/day * 100 = 250 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent reserve = 4500 m3/day / 18000 m3/day * 100 = 25 percent",
+   "explanation": "Line 3 states 250 but the stated operation gives 25. The correct value is 25 percent."
+  },
+  {
+   "id": "wp4wc-error58",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this capacity reserve margin calculation for the long range capacity strategy for an interior plateau city in western Canada. The figures support board reporting for the collection utility under provincial wastewater requirements in general terms.",
+   "topicId": "capacity-reserve-margin",
+   "level": "class1",
+   "assumptions": "Fictional capacity study: average flow 7500 m3/day, given peaking factor 1.6, trunk capacity 16000 m3/day. Percent reserve equals reserve capacity divided by trunk capacity times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Projected peak flow = 7500 m3/day * 1.6 = 120000 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Reserve capacity = 16000 m3/day - 120000 m3/day = -104000 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent reserve = -104000 m3/day / 16000 m3/day * 100 = -650 percent"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Projected peak flow = 7500 m3/day * 1.6 = 12000 m3/day",
+   "explanation": "Line 1 states 120000 but the stated operation gives 12000. The correct value is 12000 m3/day. With the correction, the reserve capacity is 4000 m3/day and the percent reserve is 25 percent."
+  },
+  {
+   "id": "wp4wc-error59",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this capacity reserve margin calculation for the long range capacity strategy for a prairie city in western Canada. The figures support regulatory reporting leadership under provincial wastewater requirements in general terms.",
+   "topicId": "capacity-reserve-margin",
+   "level": "class1",
+   "assumptions": "Fictional capacity study: average flow 12000 m3/day, given peaking factor 1.4, trunk capacity 21000 m3/day. Percent reserve equals reserve capacity divided by trunk capacity times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Projected peak flow = 12000 m3/day * 1.4 = 16800 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Reserve capacity = 21000 m3/day + 16800 m3/day = 37800 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent reserve = 37800 m3/day / 21000 m3/day * 100 = 180 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Reserve capacity = 21000 m3/day - 16800 m3/day = 4200 m3/day",
+   "explanation": "Line 2 added the completed amount to the total 21000 instead of subtracting it. The correct value is 4200 m3/day. With the correction, the percent reserve is 20 percent."
+  }
+ ],
+ "missions": [
+  {
+   "id": "wp4wc-mission21",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 21: The Budget Funding Arithmetic Shift",
+   "tasks": [
+    {
+     "taskId": "wp4wc-ladder80",
+     "revision": "r1",
+     "occurrenceId": "m21-t1"
+    },
+    {
+     "taskId": "wp4wc-error01",
+     "revision": "r1",
+     "occurrenceId": "m21-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp4wc-mission22",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 22: The Ii Utility Strategy Shift",
+   "tasks": [
+    {
+     "taskId": "wp4wc-error02",
+     "revision": "r1",
+     "occurrenceId": "m22-t1"
+    },
+    {
+     "taskId": "wp4wc-ladder81",
+     "revision": "r1",
+     "occurrenceId": "m22-t2"
+    },
+    {
+     "taskId": "wp4wc-ladder82",
+     "revision": "r1",
+     "occurrenceId": "m22-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp4wc-mission23",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 23: The Cold Climate Utility Scale Shift",
+   "tasks": [
+    {
+     "taskId": "wp4wc-ladder83",
+     "revision": "r1",
+     "occurrenceId": "m23-t1"
+    },
+    {
+     "taskId": "wp4wc-error03",
+     "revision": "r1",
+     "occurrenceId": "m23-t2"
+    },
+    {
+     "taskId": "wp4wc-ladder84",
+     "revision": "r1",
+     "occurrenceId": "m23-t3"
+    },
+    {
+     "taskId": "wp4wc-ladder85",
+     "revision": "r1",
+     "occurrenceId": "m23-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp4wc-mission24",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 24: The Ii Utility Strategy Shift",
+   "tasks": [
+    {
+     "taskId": "wp4wc-error04",
+     "revision": "r1",
+     "occurrenceId": "m24-t1"
+    },
+    {
+     "taskId": "wp4wc-ladder86",
+     "revision": "r1",
+     "occurrenceId": "m24-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp4wc-mission25",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 25: The Cold Climate Utility Scale Shift",
+   "tasks": [
+    {
+     "taskId": "wp4wc-ladder87",
+     "revision": "r1",
+     "occurrenceId": "m25-t1"
+    },
+    {
+     "taskId": "wp4wc-error05",
+     "revision": "r1",
+     "occurrenceId": "m25-t2"
+    },
+    {
+     "taskId": "wp4wc-ladder88",
+     "revision": "r1",
+     "occurrenceId": "m25-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp4wc-mission26",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 26: The Ii Removal Effectiveness Utility Shift",
+   "tasks": [
+    {
+     "taskId": "wp4wc-error06",
+     "revision": "r1",
+     "occurrenceId": "m26-t1"
+    },
+    {
+     "taskId": "wp4wc-ladder89",
+     "revision": "r1",
+     "occurrenceId": "m26-t2"
+    },
+    {
+     "taskId": "wp4wc-ladder90",
+     "revision": "r1",
+     "occurrenceId": "m26-t3"
+    },
+    {
+     "taskId": "wp4wc-ladder91",
+     "revision": "r1",
+     "occurrenceId": "m26-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp4wc-mission27",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 27: The Overflow Emergency Governance Shift",
+   "tasks": [
+    {
+     "taskId": "wp4wc-ladder92",
+     "revision": "r1",
+     "occurrenceId": "m27-t1"
+    },
+    {
+     "taskId": "wp4wc-error07",
+     "revision": "r1",
+     "occurrenceId": "m27-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp4wc-mission28",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 28: The Ii Removal Effectiveness Utility Shift",
+   "tasks": [
+    {
+     "taskId": "wp4wc-error08",
+     "revision": "r1",
+     "occurrenceId": "m28-t1"
+    },
+    {
+     "taskId": "wp4wc-ladder93",
+     "revision": "r1",
+     "occurrenceId": "m28-t2"
+    },
+    {
+     "taskId": "wp4wc-ladder94",
+     "revision": "r1",
+     "occurrenceId": "m28-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp4wc-mission29",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 29: The Overflow Emergency Governance Shift",
+   "tasks": [
+    {
+     "taskId": "wp4wc-ladder95",
+     "revision": "r1",
+     "occurrenceId": "m29-t1"
+    },
+    {
+     "taskId": "wp4wc-error09",
+     "revision": "r1",
+     "occurrenceId": "m29-t2"
+    },
+    {
+     "taskId": "wp4wc-ladder96",
+     "revision": "r1",
+     "occurrenceId": "m29-t3"
+    },
+    {
+     "taskId": "wp4wc-ladder97",
+     "revision": "r1",
+     "occurrenceId": "m29-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp4wc-mission30",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 30: The Ii Removal Effectiveness Utility Shift",
+   "tasks": [
+    {
+     "taskId": "wp4wc-error10",
+     "revision": "r1",
+     "occurrenceId": "m30-t1"
+    },
+    {
+     "taskId": "wp4wc-ladder98",
+     "revision": "r1",
+     "occurrenceId": "m30-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp4wc-mission31",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 31: The Overflow Emergency Governance Shift",
+   "tasks": [
+    {
+     "taskId": "wp4wc-ladder99",
+     "revision": "r1",
+     "occurrenceId": "m31-t1"
+    },
+    {
+     "taskId": "wp4wc-error100",
+     "revision": "r1",
+     "occurrenceId": "m31-t2"
+    },
+    {
+     "taskId": "wp4wc-ladder80",
+     "revision": "r1",
+     "occurrenceId": "m31-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp4wc-mission32",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 32: The Ii Annual Volume Value Shift",
+   "tasks": [
+    {
+     "taskId": "wp4wc-error11",
+     "revision": "r1",
+     "occurrenceId": "m32-t1"
+    },
+    {
+     "taskId": "wp4wc-ladder81",
+     "revision": "r1",
+     "occurrenceId": "m32-t2"
+    },
+    {
+     "taskId": "wp4wc-ladder82",
+     "revision": "r1",
+     "occurrenceId": "m32-t3"
+    },
+    {
+     "taskId": "wp4wc-ladder83",
+     "revision": "r1",
+     "occurrenceId": "m32-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp4wc-mission33",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 33: The Cold Climate Utility Scale Shift",
+   "tasks": [
+    {
+     "taskId": "wp4wc-ladder84",
+     "revision": "r1",
+     "occurrenceId": "m33-t1"
+    },
+    {
+     "taskId": "wp4wc-error12",
+     "revision": "r1",
+     "occurrenceId": "m33-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp4wc-mission34",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 34: The Ii Annual Volume Value Shift",
+   "tasks": [
+    {
+     "taskId": "wp4wc-error13",
+     "revision": "r1",
+     "occurrenceId": "m34-t1"
+    },
+    {
+     "taskId": "wp4wc-ladder85",
+     "revision": "r1",
+     "occurrenceId": "m34-t2"
+    },
+    {
+     "taskId": "wp4wc-ladder86",
+     "revision": "r1",
+     "occurrenceId": "m34-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp4wc-mission35",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 35: The Cold Climate Utility Scale Shift",
+   "tasks": [
+    {
+     "taskId": "wp4wc-ladder87",
+     "revision": "r1",
+     "occurrenceId": "m35-t1"
+    },
+    {
+     "taskId": "wp4wc-error14",
+     "revision": "r1",
+     "occurrenceId": "m35-t2"
+    },
+    {
+     "taskId": "wp4wc-ladder88",
+     "revision": "r1",
+     "occurrenceId": "m35-t3"
+    },
+    {
+     "taskId": "wp4wc-ladder89",
+     "revision": "r1",
+     "occurrenceId": "m35-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp4wc-mission36",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 36: The Ii Annual Volume Value Shift",
+   "tasks": [
+    {
+     "taskId": "wp4wc-error15",
+     "revision": "r1",
+     "occurrenceId": "m36-t1"
+    },
+    {
+     "taskId": "wp4wc-ladder90",
+     "revision": "r1",
+     "occurrenceId": "m36-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp4wc-mission37",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 37: The Overflow Emergency Governance Shift",
+   "tasks": [
+    {
+     "taskId": "wp4wc-ladder91",
+     "revision": "r1",
+     "occurrenceId": "m37-t1"
+    },
+    {
+     "taskId": "wp4wc-error16",
+     "revision": "r1",
+     "occurrenceId": "m37-t2"
+    },
+    {
+     "taskId": "wp4wc-ladder92",
+     "revision": "r1",
+     "occurrenceId": "m37-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp4wc-mission38",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 38: The Cmom Cctv Completion Shift",
+   "tasks": [
+    {
+     "taskId": "wp4wc-error17",
+     "revision": "r1",
+     "occurrenceId": "m38-t1"
+    },
+    {
+     "taskId": "wp4wc-ladder93",
+     "revision": "r1",
+     "occurrenceId": "m38-t2"
+    },
+    {
+     "taskId": "wp4wc-ladder94",
+     "revision": "r1",
+     "occurrenceId": "m38-t3"
+    },
+    {
+     "taskId": "wp4wc-ladder95",
+     "revision": "r1",
+     "occurrenceId": "m38-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp4wc-mission39",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 39: The Overflow Emergency Governance Shift",
+   "tasks": [
+    {
+     "taskId": "wp4wc-ladder96",
+     "revision": "r1",
+     "occurrenceId": "m39-t1"
+    },
+    {
+     "taskId": "wp4wc-error18",
+     "revision": "r1",
+     "occurrenceId": "m39-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp4wc-mission40",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 40: The Cmom Cctv Completion Shift",
+   "tasks": [
+    {
+     "taskId": "wp4wc-error19",
+     "revision": "r1",
+     "occurrenceId": "m40-t1"
+    },
+    {
+     "taskId": "wp4wc-ladder97",
+     "revision": "r1",
+     "occurrenceId": "m40-t2"
+    },
+    {
+     "taskId": "wp4wc-ladder98",
+     "revision": "r1",
+     "occurrenceId": "m40-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Collection system operations chapters (sewers, lift stations, inspection and cleaning)"
+  },
+  {
+   "id": "wpi-ntk-2025",
+   "title": "WPI, 2025 Need-to-Know Criteria, Wastewater Collection Class IV",
+   "locator": "https://gowpi.org/services/2025-need-to-know-criteria/"
+  },
+  {
+   "id": "ccme-strategy",
+   "title": "CCME, Canada-wide Strategy for the Management of Municipal Wastewater Effluent, 2009",
+   "locator": "National effluent quality context for Canadian municipal wastewater"
+  },
+  {
+   "id": "wser",
+   "title": "Government of Canada, Wastewater Systems Effluent Regulations (Fisheries Act)",
+   "locator": "Federal effluent requirements, general reference"
+  },
+  {
+   "id": "epa-collection",
+   "title": "US EPA, collection system operation and maintenance guidance",
+   "locator": "Collection system background (not Canadian law)"
+  },
+  {
+   "id": "ccohs-safety",
+   "title": "CCOHS, OSH Answers (chemical safety, confined spaces, lockout)",
+   "locator": "https://www.ccohs.ca/oshanswers/"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "b443d72ea8ba6b65ac099ebf74d8ded690a84eb28f620bb90feefb70ec152f31",
+  "taskReceipts": [
+   {
+    "taskId": "wp4wc-ladder80",
+    "revision": "r1",
+    "sha256": "0610e05cb491ca7eb467492abcf0cc79cc4de690015623a0e7a69901736a7af6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-ladder81",
+    "revision": "r1",
+    "sha256": "643024f804f683ab9ba0778e526e6603803bf2ae8ade44cfbeb4441ddf16d654",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-ladder82",
+    "revision": "r1",
+    "sha256": "3ef78726d5ffa5d9ad97a3340dad867e894498dfd8112c4a2be927278a2df140",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-ladder83",
+    "revision": "r1",
+    "sha256": "fa816fe93131f45f895ac08268744094ca16e31e2675d60145fe552faa2fc39d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-ladder84",
+    "revision": "r1",
+    "sha256": "83a851c933c9b46e88e05cc85ddb5bc9f7ccad0f53f06637104ae909bd570f46",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-ladder85",
+    "revision": "r1",
+    "sha256": "51e2feb89b253aeba0f278b4f9c7c06fb3410990e16838fcb1e57c8fa94fc056",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-ladder86",
+    "revision": "r1",
+    "sha256": "86022302b05fd91a0e931ddbfc25ea0f0c35710894a22be8a1cbf7d00a30f629",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-ladder87",
+    "revision": "r1",
+    "sha256": "9b2b3c191aeb0d2c47ebfe9accadbda5e340a9a9fbf98dc44a5d94d419d8c397",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-ladder88",
+    "revision": "r1",
+    "sha256": "4e619789d784d5f51540d00111b844745897fdd381abb6b20ad0395f9bd9253d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-ladder89",
+    "revision": "r1",
+    "sha256": "ca1936362bb2a3709f514c80d62a42172095ed9b1e8fc3d6ac213c14ddff788c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-ladder90",
+    "revision": "r1",
+    "sha256": "7bbf8b3ecdcb177599e6805b8d57ff83be5213b594614ad893d5af5706a84f1e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-ladder91",
+    "revision": "r1",
+    "sha256": "6e097e52e22c7792842a125525edb3ed6f555bdd0f7cfcfacff46b83b2dc8001",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-ladder92",
+    "revision": "r1",
+    "sha256": "90eee788ed2e144f2891e127247a30b2956e18fef956fa8b2fa36c47ed201c36",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-ladder93",
+    "revision": "r1",
+    "sha256": "bbdf8a7d24fddb1d97f2db422f00a887caca4af066e885cd8cd38797aa3c0434",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-ladder94",
+    "revision": "r1",
+    "sha256": "6a2817e00c3c3101d87d3db7db5e92f16a5628b32ffe7ac2a18d0613b979d41c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-ladder95",
+    "revision": "r1",
+    "sha256": "8b3c545401b34bf8db21e0b3cbf136d88c4b149256b0617acddd4ee65a66445f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-ladder96",
+    "revision": "r1",
+    "sha256": "8b86ab2d785db5fd643185904506220ba10b8cc8650c6f9807548dbffcf746bb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-ladder97",
+    "revision": "r1",
+    "sha256": "7aa165027efdec95ffe828b18e666d1d74f55ce3eb68957859807b88383a672a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-ladder98",
+    "revision": "r1",
+    "sha256": "95d7aa4973e1f0a1ecf16f47d7e407229fc39fabbff38d7b621ed32a5e28adb0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-ladder99",
+    "revision": "r1",
+    "sha256": "a51ecc937afc0564d8e5792c4ad1c9c17b3743e4656855cb5ade82f3162a4399",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error01",
+    "revision": "r1",
+    "sha256": "42aaa7efe8f691bf26e1cd7b4f30ba591a3f585d8674590e776e1bbaecd60eff",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error02",
+    "revision": "r1",
+    "sha256": "d26f2811379afe68b8eb3d1387ebd6ebdc2cd37090db264baedf41bb9e3a6dd1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error03",
+    "revision": "r1",
+    "sha256": "7d65906eb10549eefca3d42e1f2e1e6e45a99b05392082277fa7fe20e4c84ec6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error04",
+    "revision": "r1",
+    "sha256": "0729a940f51662f5ee9d22a57ff8b3db10f87f875b655fc8737f114f65490da8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error05",
+    "revision": "r1",
+    "sha256": "22f013c2075339b799d4df6ffdc3c8f4da20c586f21201b4d9ec9230dfd5d0c4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error06",
+    "revision": "r1",
+    "sha256": "c72f8206d5591805d50bc0f7483702b6ebd7d4fa7636f4c23302fd9bc1c633bd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error07",
+    "revision": "r1",
+    "sha256": "2c796924f605e5dfbc9b0508d2f64eaebb829d04f7089903c00c1ecd4e522777",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error08",
+    "revision": "r1",
+    "sha256": "3c321321f928acc3a07a6d683f10d18e97c48986e3322fe5b890a847e00b1274",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error09",
+    "revision": "r1",
+    "sha256": "bd4d9de4783ed632b6de3e858949fb36d8d5d9b8b0037ed22180d75484be669f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error10",
+    "revision": "r1",
+    "sha256": "94cf2f88e7fc0fe8c91e50daa6c79fb12f6c14ecf2fd7f43d5f5d03a9f688896",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error100",
+    "revision": "r1",
+    "sha256": "db5d5fe873fa1942272be999a7ef61a86ecc1999dcdfee4e67bfde17d7e37d0a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error11",
+    "revision": "r1",
+    "sha256": "6e22af40de9b3006141619ed464fb3e917d1a45fae46f2823cbbc2352c30777f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error12",
+    "revision": "r1",
+    "sha256": "fcbf1e6b25c948ea3b269a145188668d8390d5dcda7672882c8d1ded2cce3eea",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error13",
+    "revision": "r1",
+    "sha256": "c41b19f17a72eb96feb0f83655bec3ede9e2bcec53d51873ac3a8062fb755009",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error14",
+    "revision": "r1",
+    "sha256": "0eada486ce2e0c5e18155eb014e995531e0530e1edf91a376d4fa1cc68994abc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error15",
+    "revision": "r1",
+    "sha256": "9ccc58e8ecb7b75df9b9c6b4cd904c9c4acb0d56bc2681dabf03c906efd5e7e7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error16",
+    "revision": "r1",
+    "sha256": "25c9e1edd675564ea106c667a418b092d9de6c7bf334c523fd0291caef70a2e9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error17",
+    "revision": "r1",
+    "sha256": "f1c536df8a8e1dbc411657b89d13f2f22da4392efa470174afaecde18e7ae25b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error18",
+    "revision": "r1",
+    "sha256": "a20631f579f62bf1f86d7ab2a857bcd90007fdf0651abf878f91b0ec6f4a94eb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error19",
+    "revision": "r1",
+    "sha256": "b9356bda3eebd2a3ee8a3ff1a5d387db13921a192c00abf99d237d3d8df486b4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error20",
+    "revision": "r1",
+    "sha256": "bbe8a682b5dcb715ada41374673416c1e099ef494e589437d93c6c65c38c3e57",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error21",
+    "revision": "r1",
+    "sha256": "bd4f707f2d2c3afc6e975196accdc536081b769aed4bdde338df55ea6dbe592c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error22",
+    "revision": "r1",
+    "sha256": "8a4a82f1d70ada5a42e435533fb2a6ccf3a7ffb2f2ee8b89f0ee82e41ac33093",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error23",
+    "revision": "r1",
+    "sha256": "2df9d24453b4c297915f7f5803841a1ab4e4ba6506df2ff2dc12693c35b66bbc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error24",
+    "revision": "r1",
+    "sha256": "91e65d5ec1689b082b4b1fa48759291a21fa3805143dec6de7f52bfcce38a5f0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error25",
+    "revision": "r1",
+    "sha256": "e9a1bfec9db676dc0338200be8d97fe7082f55ce36305cf271b194490af0c61b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error26",
+    "revision": "r1",
+    "sha256": "d3cf261f29c3d17c2cd1314bc69841663f82b93775b575e941ad6c92fdefebd1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error27",
+    "revision": "r1",
+    "sha256": "c2460bfd386ee14848b1b9208c79079f4b26576ba66a137feb2300d6cba5ba32",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error28",
+    "revision": "r1",
+    "sha256": "287f8d5ad2c35f600016740062946967e2257d217a3ec3e37f4d7cb3fcd2b19b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error29",
+    "revision": "r1",
+    "sha256": "33a84893b46c5339c5a603c6d2bcc6377546c450197b717560227f7d6e7a2bd4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error30",
+    "revision": "r1",
+    "sha256": "adab71567b32aada7fde4eec248741c40f05954905a6c31f42ba0f59a98a7748",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error31",
+    "revision": "r1",
+    "sha256": "5a50c38043da83238a6451a8b27c3313579dc928cd0e5d4ee81b861bcc303b07",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error32",
+    "revision": "r1",
+    "sha256": "4959fca712b6ee128ac961c80f8d12250b60f5e63d3446f4ba0e7f50134f0c7b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error33",
+    "revision": "r1",
+    "sha256": "5be2d4143d68aac0556038cafb5f0cb9f60acfaa7d0f61efde97946a51bde650",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error34",
+    "revision": "r1",
+    "sha256": "e883d8220d688ba62238cc82ab1261dd189836f5ee9e151d511a04507da8e35e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error35",
+    "revision": "r1",
+    "sha256": "17b9aa3abaf721750e86b2ce91ecc6d27c974a4e719671e2fd885b4a33d2e7f0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error36",
+    "revision": "r1",
+    "sha256": "6ec427207b2a73a00377c1f1a6ba939a918b291447e78ce819913aa79c08b8d2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error37",
+    "revision": "r1",
+    "sha256": "c95b85576c6ff8270789b8dc25acd032a7432bd4c1f28b3805ee497603a9adc7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error38",
+    "revision": "r1",
+    "sha256": "92d1139a7d03a98601eb6f4c9b86dd3ab62d749890175b479a66f8a083b1c185",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error39",
+    "revision": "r1",
+    "sha256": "1eee130509e3aa11fec3c3aabf07fc0831fcebd593294d3d2f3b7497d499cf45",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error40",
+    "revision": "r1",
+    "sha256": "14f5587b5fe3e05f3263865f3acff72db4d3e662c11b514cc5d91f3074bb40f2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error41",
+    "revision": "r1",
+    "sha256": "46dcda1a1d5b64a037e1180626fef17a525b6ac625623683ea0d6c887a76fa98",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error42",
+    "revision": "r1",
+    "sha256": "5d2020941921f4524b665929bb42a9ad58a7154266b02a9ede2ef8b784bfc396",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error43",
+    "revision": "r1",
+    "sha256": "584d870503c271ffe4bd133dfb24b8112ca299d524d31b33399b45a9ce804a4a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error44",
+    "revision": "r1",
+    "sha256": "99da0947aa70fe9db49a2766c233139385a358a793fd33e069dd4ab557ad61b7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error45",
+    "revision": "r1",
+    "sha256": "db589754a80397386637b8aea2ef6df38c353e31bf0e429efc7ea08f8b4e4ecc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error46",
+    "revision": "r1",
+    "sha256": "ae515c68410f100eaae7d8061ba3f01e9baf202a73815b3ae5ebb6b2f7ab4c80",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error47",
+    "revision": "r1",
+    "sha256": "3cfc74189b178b73806f61a5f2b7db252804262194debe1e0821abc28f05ae0e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error48",
+    "revision": "r1",
+    "sha256": "809bb3350a626ea86e594df208685f2e46214f34ac4e08a14e3c07b94b024df3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error49",
+    "revision": "r1",
+    "sha256": "3a13384e4cb27299cc278785eed5685c8f99b4236618d5f4e22475c5451c7f5f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error50",
+    "revision": "r1",
+    "sha256": "28859e304d5a3153fb58b9ca6927d39e525391198f0b760a8631c0a25cdc8af1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error51",
+    "revision": "r1",
+    "sha256": "651644e30c6f099da0a0e40a2283f8f25dc308d7785e984ad426973f2772a2d4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error52",
+    "revision": "r1",
+    "sha256": "96ccd801e7b9e402608cbf26571d2bd6a02ec94b8e17e4a33892998daf07de1b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error53",
+    "revision": "r1",
+    "sha256": "13265835ffaddfb32828084bd5c0f71f327ba2748f217c2a24cc6a572a40be29",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error54",
+    "revision": "r1",
+    "sha256": "08cc0e510e44f6541f85297916f468b592f7682bc3faf2851d8037fbb69dcb8b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error55",
+    "revision": "r1",
+    "sha256": "be259f39cd2907638bc6a9ae5e99131dd13b1989e1fc5478f5ea36482372c9b1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error56",
+    "revision": "r1",
+    "sha256": "55e740d98c86772b9286711d740f148b650924de550c29ac3b366cea4e448eaa",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error57",
+    "revision": "r1",
+    "sha256": "8f0bc16b945209f94e27d04c71c2bec7a60d05c63b91c27acb29e1865db51e47",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error58",
+    "revision": "r1",
+    "sha256": "1ed8936a2d8727a531fd51c187d003078c5919507c6ca4fbb946d445a789f8ac",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4wc-error59",
+    "revision": "r1",
+    "sha256": "0944d2e3da067614e9d4de5d5a9a79ad02073bba7f3b9d66ffdc767a33d7aa92",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "wp4wc-mission21",
+    "revision": "r1",
+    "sha256": "98b1c3bf27a3faf9e30a678a349bb2d6841c416a8b1d563bbb4cd8d6c0629fd7"
+   },
+   {
+    "missionId": "wp4wc-mission22",
+    "revision": "r1",
+    "sha256": "2c30fda1f9c797efce5e99161d2653b6023442329fcd31d5259eed7669747918"
+   },
+   {
+    "missionId": "wp4wc-mission23",
+    "revision": "r1",
+    "sha256": "ad69501184cf5d0b9ae06602a8ff9654ff36539e8c39a74dfe6c12fda7b3aa53"
+   },
+   {
+    "missionId": "wp4wc-mission24",
+    "revision": "r1",
+    "sha256": "512c59d646fe898430f35f92ab6508eb109e7b16005f214dbd8ff6d0ef016f66"
+   },
+   {
+    "missionId": "wp4wc-mission25",
+    "revision": "r1",
+    "sha256": "416d6f4f2d982eaf1067b531b74d846a3643e438411039bf07837cf22fc9d206"
+   },
+   {
+    "missionId": "wp4wc-mission26",
+    "revision": "r1",
+    "sha256": "ee88f62648a30fd2180280f3792b1275139aad2ddc0dffee396249cbca80fe98"
+   },
+   {
+    "missionId": "wp4wc-mission27",
+    "revision": "r1",
+    "sha256": "7d1a96721799fba3472c3b1060779090596b8d5f305a9ad30fe155cfd82418b4"
+   },
+   {
+    "missionId": "wp4wc-mission28",
+    "revision": "r1",
+    "sha256": "7447a62ed04d91370feadb116938c2c4841bf72ad72bf2128be1eae6e9414e1d"
+   },
+   {
+    "missionId": "wp4wc-mission29",
+    "revision": "r1",
+    "sha256": "715e372fd228dc5e0f0dc6a9aa9051b882967891d4fbd3d1b1f14c2d41d1b8c5"
+   },
+   {
+    "missionId": "wp4wc-mission30",
+    "revision": "r1",
+    "sha256": "b4d86b3d85c0baa7d1733ae21bf1adb92deae0ffc39b2334bb6b51f9fb3e0a17"
+   },
+   {
+    "missionId": "wp4wc-mission31",
+    "revision": "r1",
+    "sha256": "5c8e97e508d088328e0daf3887ccc6a73fafc8815a526ee2955da1ff27661cd4"
+   },
+   {
+    "missionId": "wp4wc-mission32",
+    "revision": "r1",
+    "sha256": "1a7952d33030c0455c2623c3cc1e206f814925ab5b59f6b82e841a6502f8cc9f"
+   },
+   {
+    "missionId": "wp4wc-mission33",
+    "revision": "r1",
+    "sha256": "36abcb6eaa2c63921738dedca665b8a209aa0b0fff074fabef96321c3c8795d5"
+   },
+   {
+    "missionId": "wp4wc-mission34",
+    "revision": "r1",
+    "sha256": "90db836a2cb8495ee16c54dee862cd1eada733db45d90f73868c7599fd9ff34f"
+   },
+   {
+    "missionId": "wp4wc-mission35",
+    "revision": "r1",
+    "sha256": "df38588f056141fc46b6fd2e68f9d8f0a220d5b3c9bace309fb0fb424610b5e1"
+   },
+   {
+    "missionId": "wp4wc-mission36",
+    "revision": "r1",
+    "sha256": "259a240767b3f2ec53f3c43f19547286607b623c2553042cb66ebcccad373624"
+   },
+   {
+    "missionId": "wp4wc-mission37",
+    "revision": "r1",
+    "sha256": "f2ca7dcea53602e1452fd0b8676658e8eb329bd166b622c33f4b66f8e24d49f7"
+   },
+   {
+    "missionId": "wp4wc-mission38",
+    "revision": "r1",
+    "sha256": "e370faf8b3ba560ca50d65bc5e611aa0efeb9c0ae097bca927b64baf23052c35"
+   },
+   {
+    "missionId": "wp4wc-mission39",
+    "revision": "r1",
+    "sha256": "b5a42c18dcd75b969a9e2c7f3a0d70dea0f64ca31fedab0eefabfcd84882fab1"
+   },
+   {
+    "missionId": "wp4wc-mission40",
+    "revision": "r1",
+    "sha256": "fa659ee7c5b9f4fe0fb06a92032a311e47653ffcabe6c0aa9bf6dce5e914c461"
+   }
+  ]
+ }
+}
