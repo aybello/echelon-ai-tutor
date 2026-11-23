@@ -1,0 +1,72 @@
+[
+ {
+  "itemId": "2441",
+  "expression": "1850 * 1.12",
+  "expected": "2072",
+  "decimalPlaces": 0,
+  "unit": "m³/day"
+ },
+ {
+  "itemId": "2442",
+  "expression": "3200 * 1.6",
+  "expected": "5120",
+  "decimalPlaces": 0,
+  "unit": "m³/day"
+ },
+ {
+  "itemId": "2443",
+  "expression": "750 * 0.30",
+  "expected": "225",
+  "decimalPlaces": 0,
+  "unit": "m³"
+ },
+ {
+  "itemId": "2444",
+  "expression": "1200 / 400",
+  "expected": "3",
+  "decimalPlaces": 0,
+  "unit": "days"
+ },
+ {
+  "itemId": "2445",
+  "expression": "45 * 52",
+  "expected": "2340",
+  "decimalPlaces": 0,
+  "unit": "samples"
+ },
+ {
+  "itemId": "2446",
+  "expression": "1840 + 1840 * 0.10 + 46",
+  "expected": "2070",
+  "decimalPlaces": 0,
+  "unit": "samples"
+ },
+ {
+  "itemId": "2447",
+  "expression": "45 * 10 + 30 * 14 + 22 * 6",
+  "expected": "1002",
+  "decimalPlaces": 0,
+  "unit": "kWh"
+ },
+ {
+  "itemId": "2448",
+  "expression": "850 * 0.14 * 30",
+  "expected": "3570",
+  "decimalPlaces": 0,
+  "unit": "$"
+ },
+ {
+  "itemId": "2449",
+  "expression": "4600 * 1.09 * 1.06",
+  "expected": "5314.8",
+  "decimalPlaces": 1,
+  "unit": "m³/day"
+ },
+ {
+  "itemId": "2450",
+  "expression": "4 * 37 * 9",
+  "expected": "1332",
+  "decimalPlaces": 0,
+  "unit": "kWh"
+ }
+]

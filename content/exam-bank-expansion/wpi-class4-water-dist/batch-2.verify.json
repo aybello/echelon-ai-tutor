@@ -1,0 +1,72 @@
+[
+ {
+  "itemId": "DISTRIBUTION-L4-341",
+  "expression": "450*0.8",
+  "expected": "360",
+  "decimalPlaces": 0,
+  "unit": "g"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-342",
+  "expression": "500/12.5",
+  "expected": "40.0",
+  "decimalPlaces": 1,
+  "unit": "L"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-343",
+  "expression": "800*12.5*3",
+  "expected": "30000",
+  "decimalPlaces": 0,
+  "unit": "L"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-344",
+  "expression": "18000/250",
+  "expected": "72",
+  "decimalPlaces": 0,
+  "unit": "min"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-345",
+  "expression": "12*2*4",
+  "expected": "96",
+  "decimalPlaces": 0,
+  "unit": "samples"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-346",
+  "expression": "(15*52)+(24*4)",
+  "expected": "876",
+  "decimalPlaces": 0,
+  "unit": "samples"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-347",
+  "expression": "45000*0.032",
+  "expected": "1440",
+  "decimalPlaces": 0,
+  "unit": "m"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-348",
+  "expression": "850*380",
+  "expected": "323000",
+  "decimalPlaces": 0,
+  "unit": "dollars"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-349",
+  "expression": "(2.4*25)*1.1",
+  "expected": "66",
+  "decimalPlaces": 0,
+  "unit": "kg"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-350",
+  "expression": "1200*19.6*2.5",
+  "expected": "58800",
+  "decimalPlaces": 0,
+  "unit": "L"
+ }
+]
