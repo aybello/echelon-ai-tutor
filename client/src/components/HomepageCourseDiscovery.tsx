@@ -51,7 +51,7 @@ export default function HomepageCourseDiscovery({
   return (
     <div className="homepage-course-discovery">
       <h2 className="homepage-course-discovery__title">Find your course</h2>
-      <p className="homepage-course-discovery__intro">Choose where you write your exam.</p>
+      <p className="homepage-course-discovery__intro">Choose where you write your exam. Our 35 standard Ontario and WPI course banks each include 1,000+ practice questions. Other course totals vary.</p>
       <div
         className="homepage-course-discovery__countries"
         role="tablist"

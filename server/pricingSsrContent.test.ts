@@ -47,7 +47,8 @@ describe("crawlable pricing", () => {
   it("does not overstate question inventory or spaced repetition", () => {
     expect(body).not.toMatch(/over 500|500\+/i);
     expect(body).not.toMatch(/spaced repetition/i);
-    expect(body).toMatch(/400\+ practice questions/i);
+    expect(body).toMatch(/course-specific practice questions/i);
+    expect(body).toMatch(/400\+ digital flashcards/i);
   });
 });
 

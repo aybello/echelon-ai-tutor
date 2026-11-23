@@ -101,7 +101,7 @@ export default function OitHub() {
             Included with a paid OIT Exam Pass
           </h2>
           <ul className="mt-5 grid gap-3 text-sm leading-6 text-slate-700 sm:grid-cols-2 sm:text-base">
-            <li>400+ practice questions organized by exam topic</li>
+            <li>1,000+ practice questions organized by exam topic</li>
             <li>400+ concept flashcards with progress tracking</li>
             <li>Course-specific timed mock exam with module results</li>
             <li>AI Tutor explanations for concepts and calculations</li>

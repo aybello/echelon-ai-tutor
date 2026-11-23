@@ -25,7 +25,7 @@ const MODULE_ICONS: Record<string, string> = {
 export default function Class1WaterDistQuiz() {
   usePageMeta({
     title: "Ontario Class 1 Water Distribution and Supply Practice Questions",
-    description: "Practice questions for the Ontario Class 1 Water Distribution and Supply operator certification exam. 966 questions aligned to Ontario O. Reg. 170/03 and O. Reg. 129/04.",
+    description: "Practice questions for the Ontario Class 1 Water Distribution and Supply operator certification exam. 1,000+ questions aligned to Ontario O. Reg. 170/03 and O. Reg. 129/04.",
     noindex: true
   });
   const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, totalQuestions: bankTotal, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class1-water-dist", "lazy");

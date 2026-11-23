@@ -597,7 +597,7 @@ export async function sendReEngagementEmail(payload: ReEngagementEmailPayload): 
       `Just enter the email address you used to purchase (${email}) and you'll get a 6-digit code to sign in instantly. No password needed.`,
       ``,
       `Once you're in, you'll find:`,
-      `  - Your full question bank (400+ questions per course)`,
+      `  - Your full course-specific practice question bank`,
       `  - Timed mock exams`,
       `  - AI Tutor for step-by-step explanations`,
       `  - Your progress dashboard`,
@@ -645,7 +645,7 @@ export async function sendReEngagementEmail(payload: ReEngagementEmailPayload): 
 
             <p style="margin:0 0 12px;font-size:14px;font-weight:700;color:#0F172A;">Once you're in, you'll find:</p>
             <ul style="margin:0 0 28px;padding-left:20px;">
-              <li style="font-size:13px;color:#475569;margin-bottom:6px;line-height:1.5;">400+ practice questions per course, unlimited attempts</li>
+              <li style="font-size:13px;color:#475569;margin-bottom:6px;line-height:1.5;">Your full course-specific practice question bank, unlimited attempts</li>
               <li style="font-size:13px;color:#475569;margin-bottom:6px;line-height:1.5;">Timed mock exams (100 questions, 2 hours)</li>
               <li style="font-size:13px;color:#475569;margin-bottom:6px;line-height:1.5;">AI Tutor for step-by-step explanations on every question</li>
               <li style="font-size:13px;color:#475569;margin-bottom:6px;line-height:1.5;">Progress dashboard showing your accuracy by module</li>
@@ -902,7 +902,7 @@ export async function sendTeamEnrollmentEmail(
               <tr>
                 <td style="vertical-align:top;width:50%;padding-right:12px;">
                   <ul style="margin:0;padding-left:18px;">
-                    <li style="font-size:13px;color:#475569;margin-bottom:8px;line-height:1.5;">400+ practice questions per exam level</li>
+                    <li style="font-size:13px;color:#475569;margin-bottom:8px;line-height:1.5;">Full practice question bank for your assigned course</li>
                     <li style="font-size:13px;color:#475569;margin-bottom:8px;line-height:1.5;">Timed mock exams with course-specific formats and timers</li>
                     <li style="font-size:13px;color:#475569;margin-bottom:8px;line-height:1.5;">AI Tutor — step-by-step explanations</li>
                     <li style="font-size:13px;color:#475569;line-height:1.5;">Flashcard spaced-repetition system</li>

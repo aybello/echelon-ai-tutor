@@ -382,7 +382,7 @@ const BASE_STATIC_PAGE_META: PageMeta[] = [
       <p><a href="${SITE_URL}/wpi">Browse WPI-aligned courses</a>.</p>
 
       <h2>What Every Plan Includes</h2>
-      <p>Every paid pass includes 400+ practice questions organized by module, 400+ digital flashcards with progress tracking, study notes, timed mock exams, the AI Tutor, process guides, and score history.</p>
+      <p>Every paid pass includes course-specific practice questions organized by module, 400+ digital flashcards with progress tracking, study notes, timed mock exams, the AI Tutor, process guides, and score history.</p>
 
       <h2>Team Plans for Utilities and Municipalities</h2>
       <p>Echelon offers two team models for utilities, municipalities, training organizations, and Indigenous water authorities. Both include named-operator accounts, a shared manager dashboard, progress reporting, and volume discounts.</p>
@@ -429,7 +429,7 @@ const BASE_STATIC_PAGE_META: PageMeta[] = [
       </ul>
 
       <h2>One Selected OIT Course for ${formatCad(INDIVIDUAL_PRICES_CAD.oit)}</h2>
-      <p>A paid Exam Pass provides 12 months of access from successful payment for one named learner and includes 400+ practice questions, 400+ flashcards with progress tracking, a timed 100-question mock exam, AI Tutor explanations, process guides, formula sheets, and math practice.</p>
+      <p>A paid Exam Pass provides 12 months of access from successful payment for one named learner and includes 1,000+ practice questions, 400+ flashcards with progress tracking, a timed 100-question mock exam, AI Tutor explanations, process guides, formula sheets, and math practice.</p>
       <ul>
         <li><a href="${SITE_URL}/oit-water-flashcards">Water OIT flashcards</a> and <a href="${SITE_URL}/oit-ww-flashcards">Wastewater OIT flashcards</a></li>
         <li><a href="${SITE_URL}/oit-mock">Water OIT mock exam</a> and <a href="${SITE_URL}/oit-ww-mock">Wastewater OIT mock exam</a></li>

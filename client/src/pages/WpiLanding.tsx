@@ -47,22 +47,22 @@ const TRACKS: Track[] = [
     icon: "💧",
     classes: [
       {
-        label: "Class I", code: "WPI-W1", questions: 502, price: "CA$149", color: "#0E7490",
+        label: "Class I", code: "WPI-W1", questions: 1000, price: "CA$149", color: "#0E7490",
         quizHref: "/wpi-class1-water",
         topics: ["Source water & intake", "Coagulation & flocculation", "Sedimentation & filtration", "Disinfection & CT values", "Basic regulations & safety"],
       },
       {
-        label: "Class II", code: "WPI-W2", questions: 598, price: "CA$199", color: "#0F766E",
+        label: "Class II", code: "WPI-W2", questions: 1000, price: "CA$199", color: "#0F766E",
         quizHref: "/wpi-class2-water",
         topics: ["Advanced treatment processes", "System design & hydraulics", "Lab monitoring & analysis", "Source water management", "Regulatory compliance"],
       },
       {
-        label: "Class III", code: "WPI-W3", questions: 531, price: "CA$249", color: "#1D4ED8",
+        label: "Class III", code: "WPI-W3", questions: 1000, price: "CA$249", color: "#1D4ED8",
         quizHref: "/wpi-class3-water",
         topics: ["LSI, CT values & membranes", "Lime softening & advanced processes", "SCADA & automation", "Water quality monitoring programs", "Senior operator responsibilities"],
       },
       {
-        label: "Class IV", code: "WPI-W4", questions: 592, price: "CA$299", color: "#7C3AED",
+        label: "Class IV", code: "WPI-W4", questions: 1000, price: "CA$299", color: "#7C3AED",
         quizHref: "/wpi-class4-water", badge: "Class IV preparation",
         topics: ["Full system management", "Asset management & capital planning", "Advanced water quality & DWQMS", "Strategic regulatory compliance", "Emergency response & resilience"],
       },
@@ -74,22 +74,22 @@ const TRACKS: Track[] = [
     icon: "🌊",
     classes: [
       {
-        label: "Class I", code: "WPI-WW1", questions: 594, price: "CA$149", color: "#B45309",
+        label: "Class I", code: "WPI-WW1", questions: 1000, price: "CA$149", color: "#B45309",
         quizHref: "/wpi-class1-wastewater",
         topics: ["Collection systems & pipe materials", "Primary & secondary treatment", "Solids handling & biosolids", "Lab & monitoring", "Safety & regulations"],
       },
       {
-        label: "Class II", code: "WPI-WW2", questions: 599, price: "CA$199", color: "#0F766E",
+        label: "Class II", code: "WPI-WW2", questions: 1000, price: "CA$199", color: "#0F766E",
         quizHref: "/wpi-class2-wastewater",
         topics: ["Secondary treatment processes", "Nutrient removal (N & P)", "Biosolids management", "Advanced treatment", "Process control & safety"],
       },
       {
-        label: "Class III", code: "WPI-WW3", questions: 607, price: "CA$249", color: "#1D4ED8",
+        label: "Class III", code: "WPI-WW3", questions: 1000, price: "CA$249", color: "#1D4ED8",
         quizHref: "/wpi-class3-wastewater",
         topics: ["Advanced biological processes", "Tertiary treatment & reuse", "Sludge digestion & dewatering", "SCADA & instrumentation", "Regulatory reporting"],
       },
       {
-        label: "Class IV", code: "WPI-WW4", questions: 606, price: "CA$299", color: "#6D28D9",
+        label: "Class IV", code: "WPI-WW4", questions: 1000, price: "CA$299", color: "#6D28D9",
         quizHref: "/wpi-class4-wastewater", badge: "Class IV preparation",
         topics: ["Utility management & leadership", "Advanced process engineering", "Environmental compliance", "Capital planning & asset management", "Emerging technologies"],
       },
@@ -101,22 +101,22 @@ const TRACKS: Track[] = [
     icon: "🔧",
     classes: [
       {
-        label: "Class I", code: "WPI-D1", questions: 501, price: "CA$149", color: "#0369A1",
+        label: "Class I", code: "WPI-D1", questions: 1000, price: "CA$149", color: "#0369A1",
         quizHref: "/wpi-class1-water-dist",
         topics: ["Distribution system basics", "Pipe materials & fittings", "Pressure & flow fundamentals", "Chlorine residual maintenance", "Valve & hydrant operation"],
       },
       {
-        label: "Class II", code: "WPI-D2", questions: 500, price: "CA$199", color: "#0F766E",
+        label: "Class II", code: "WPI-D2", questions: 1000, price: "CA$199", color: "#0F766E",
         quizHref: "/wpi-class2-water-dist",
         topics: ["Hydraulic analysis", "Pressure zone design", "Water quality management", "Cross-connection control", "Regulatory compliance"],
       },
       {
-        label: "Class III", code: "WPI-D3", questions: 500, price: "CA$249", color: "#1D4ED8",
+        label: "Class III", code: "WPI-D3", questions: 1000, price: "CA$249", color: "#1D4ED8",
         quizHref: "/wpi-class3-water-dist",
         topics: ["Advanced hydraulic modelling", "Transmission main design", "Multi-zone systems", "SCADA & automation", "Water quality monitoring programs"],
       },
       {
-        label: "Class IV", code: "WPI-D4", questions: 500, price: "CA$299", color: "#4C1D95",
+        label: "Class IV", code: "WPI-D4", questions: 1000, price: "CA$299", color: "#4C1D95",
         quizHref: "/wpi-class4-water-dist", badge: "Class IV preparation",
         topics: ["Large-scale system management", "Asset management & capital planning", "Advanced water quality & DWQMS", "Strategic regulatory compliance", "Emergency response & resilience"],
       },
@@ -128,22 +128,22 @@ const TRACKS: Track[] = [
     icon: "🚧",
     classes: [
       {
-        label: "Class I", code: "WPI-C1", questions: 500, price: "CA$149", color: "#065F46",
+        label: "Class I", code: "WPI-C1", questions: 1000, price: "CA$149", color: "#065F46",
         quizHref: "/wpi-class1-water-coll",
         topics: ["Collection system components", "Lift station operation & maintenance", "Confined space & safety", "Basic hydraulics & flow calculations", "Environmental & public health"],
       },
       {
-        label: "Class II", code: "WPI-C2", questions: 504, price: "CA$199", color: "#1E3A5F",
+        label: "Class II", code: "WPI-C2", questions: 1000, price: "CA$199", color: "#1E3A5F",
         quizHref: "/wpi-class2-water-coll",
         topics: ["Advanced collection system design", "Intermediate lift station operations", "System maintenance & rehabilitation", "Hydraulics & flow analysis", "Regulatory compliance & reporting"],
       },
       {
-        label: "Class III", code: "WPI-C3", questions: 504, price: "CA$249", color: "#7C3AED",
+        label: "Class III", code: "WPI-C3", questions: 1000, price: "CA$249", color: "#7C3AED",
         quizHref: "/wpi-class3-water-coll",
         topics: ["Complex system operations & SCADA", "Advanced pump station engineering", "System hydraulic modelling", "Advanced maintenance management", "Leadership, safety & regulatory management"],
       },
       {
-        label: "Class IV", code: "WPI-C4", price: "CA$299", color: "#7F1D1D",
+        label: "Class IV", code: "WPI-C4", questions: 1000, price: "CA$299", color: "#7F1D1D",
         quizHref: "/wpi-class4-water-coll", badge: "Class IV preparation",
         topics: ["System planning & capital improvement", "Advanced engineering & design", "Utility management & leadership", "Advanced regulatory & environmental management", "Emerging technologies & innovation"],
       },
@@ -166,7 +166,7 @@ const FAQS = [
   },
   {
     q: "What's included in a practice pass?",
-    a: "Each Individual Exam Pass includes 400+ adaptive practice questions, a timed mock exam, a formula sheet, AI Tutor access, 400+ flashcards, and module study notes for 12 months from successful payment.",
+    a: "Each Individual Exam Pass includes 1,000+ adaptive practice questions, a timed mock exam, a formula sheet, AI Tutor access, 400+ flashcards, and module study notes for 12 months from successful payment.",
   },
   {
     q: "Do I need an account to start?",
@@ -282,7 +282,7 @@ export default function WpiLanding() {
             </a>
           </div>
           <div style={{ marginTop: 32, display: "flex", gap: 28, justifyContent: "center", flexWrap: "wrap" }}>
-            {[["8,000+", "Questions in bank"], ["4", "Certification tracks"], ["16", "Class levels covered"], ["15", "Free questions per course"]].map(([stat, label]) => (
+            {[["16,000+", "Practice questions across 16 banks"], ["4", "Certification tracks"], ["16", "Class levels covered"], ["15", "Free questions per course"]].map(([stat, label]) => (
               <div key={label} style={{ textAlign: "center" }}>
                 <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 22, fontWeight: 800, color: "#38BDF8" }}>{stat}</div>
                 <div style={{ fontSize: 12, color: "#94A3B8", fontWeight: 500 }}>{label}</div>
@@ -386,7 +386,7 @@ export default function WpiLanding() {
                         fontSize: 11, fontWeight: 700, color: cls.color,
                         background: cls.color + "12", padding: "3px 8px", borderRadius: 20, whiteSpace: "nowrap" as const,
                       }}>
-                        📝 {cls.questions} Q
+                        📝 {cls.questions.toLocaleString("en-CA")}+ questions
                       </span>}
                     </div>
 
