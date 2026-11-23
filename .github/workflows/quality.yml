@@ -58,8 +58,10 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python3 content/exam-bank-expansion/tools/validate.py
-          python3 content/exam-bank-expansion/tools/verify_calcs.py
+          # Verification must not add untracked bytecode to functional source.
+          python3 -B content/exam-bank-expansion/tools/validate.py
+          python3 -B content/exam-bank-expansion/tools/verify_calcs.py
+          test ! -d content/exam-bank-expansion/tools/__pycache__
           node scripts/exam-bank-expansion-release.mjs
           env -i PATH="$PATH" HOME=/tmp NODE_ENV=test \
             node --test scripts/exam-bank-expansion-release.test.mjs
