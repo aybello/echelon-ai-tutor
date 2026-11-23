@@ -1,4 +1,4 @@
-import { ArrowUpRight, Quote } from "lucide-react";
+import { ArrowUpRight, Quote, Star } from "lucide-react";
 
 /** Sources: owner-supplied November 18 call transcript and public Google listing checked November 20, 2026. */
 export default function LearnerReviews() {
@@ -17,11 +17,12 @@ export default function LearnerReviews() {
       <figcaption>
         <strong>Codie Bachner</strong>
         <span>Class 1 Wastewater learner · City of Peterborough</span>
-        <small>Feedback call, November 18, 2026. Lightly edited for clarity. Personal experience, not an organizational endorsement.</small>
       </figcaption>
     </figure>
     <figure className="homepage-review-card">
-      <Quote size={28} aria-hidden="true" />
+      <div className="flex gap-1 text-amber-500" role="img" aria-label="5 out of 5 stars">
+        {Array.from({ length: 5 }, (_, index) => <Star key={index} size={20} fill="currentColor" aria-hidden="true" />)}
+      </div>
       <blockquote cite="https://www.google.com/maps/place/?q=place_id:ChIJ_eBKhGWFK4gRayMFuRSVLys&hl=en">
         <p>“I have to retake my OIT certificate because it expired a long time ago. These mok questions are great, they explain if you got a question wrong along with what the correct answer is. I will be studying with this for sure.”</p>
       </blockquote>

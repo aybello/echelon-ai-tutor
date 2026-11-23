@@ -10,8 +10,16 @@ describe("genuine learner proof", () => {
     expect(html).toContain("Codie Bachner"); expect(html).toContain("Canadian Veggie");
     expect(html).toContain("These mok questions are great");
     expect(html).toContain("I am having great success with it. I do enjoy it.");
-    expect(html).toContain("Lightly edited for clarity"); expect(html).toContain("Google reviewer · 5 stars");
+    expect(html).not.toMatch(/Feedback call|Lightly edited for clarity|Personal experience, not an organizational endorsement/i);
+    expect(html).toContain("Google reviewer · 5 stars");
     expect(html).toContain("ChIJ_eBKhGWFK4gRayMFuRSVLys"); expect(html).toContain('rel="noopener noreferrer"');
     expect(html).not.toMatch(/Philip Emon|Carl Dooher|verified buyer|guaranteed|passed my exam|aggregateRating|<img/i);
+  });
+  it("shows five filled stars only for the source-confirmed five-star Google review", () => {
+    const html = renderToStaticMarkup(React.createElement(LearnerReviews));
+    const cards = html.match(/<figure[\s\S]*?<\/figure>/g)!;
+    expect(cards[0]).not.toContain("out of 5 stars");
+    expect(cards[1]).toContain('role="img" aria-label="5 out of 5 stars"');
+    expect(cards[1].match(/fill="currentColor"/g)).toHaveLength(5);
   });
 });
