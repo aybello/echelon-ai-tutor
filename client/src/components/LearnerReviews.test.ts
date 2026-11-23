@@ -15,11 +15,13 @@ describe("genuine learner proof", () => {
     expect(html).toContain("ChIJ_eBKhGWFK4gRayMFuRSVLys"); expect(html).toContain('rel="noopener noreferrer"');
     expect(html).not.toMatch(/Philip Emon|Carl Dooher|verified buyer|guaranteed|passed my exam|aggregateRating|<img/i);
   });
-  it("shows five filled stars only for the source-confirmed five-star Google review", () => {
+  it("shows five filled stars for each confirmed five-star review", () => {
     const html = renderToStaticMarkup(React.createElement(LearnerReviews));
     const cards = html.match(/<figure[\s\S]*?<\/figure>/g)!;
-    expect(cards[0]).not.toContain("out of 5 stars");
-    expect(cards[1]).toContain('role="img" aria-label="5 out of 5 stars"');
-    expect(cards[1].match(/fill="currentColor"/g)).toHaveLength(5);
+    expect(cards).toHaveLength(2);
+    for (const card of cards) {
+      expect(card).toContain('role="img" aria-label="5 out of 5 stars"');
+      expect(card.match(/fill="currentColor"/g)).toHaveLength(5);
+    }
   });
 });
