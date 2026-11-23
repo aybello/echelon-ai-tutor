@@ -25,6 +25,7 @@ export function normalizeStem(value) { return String(value ?? "").toLowerCase().
 export function itemIdentity(item) { return item.itemId ?? `${item.bankKey}-${item.questionNum}`; }
 export function mapDatabaseItem(item) {
   if (item.bankKey === "oit" && item.stream === "Wastewater Treatment") {
+    if (item.questionNum < 1501 || item.questionNum > 1600) fail(`OIT wastewater source question number outside approved range: ${item.questionNum}`);
     return { ...item, questionNum: item.questionNum + 100 };
   }
   return { ...item };
@@ -192,7 +193,7 @@ export async function applyPackage(connection, pkg, { reviewer = REVIEWER, now =
       if (result.affectedRows !== 1 || !result.insertId) fail(`insert failed ${item.bankKey}#${item.questionNum}`);
       const itemKey = `${item.bankKey}|${item.questionNum}`;
       idsByKey.set(itemKey, result.insertId);
-      const receiptPayload = { kind: "exam-bank-expansion-additive-insert", itemKey, itemId: itemIdentity(source), packageSha256: pkg.packageSha256, originalPayloadSha256: payloadHash(source), mappedPayloadSha256: payloadHash(item), mapping: source.questionNum === item.questionNum ? null : { field: "questionNum", from: source.questionNum, to: item.questionNum, reason: "approved OIT wastewater collision resolution" }, reviewer, reviewedAt: now.toISOString(), builderChecks: "package-validator=pass; calculation-verifier=pass; release-exclusion-verification=pass; live-bank-deduplication=pass", item };
+      const receiptPayload = { kind: "exam-bank-expansion-additive-insert", itemKey, itemId: itemIdentity(source), packageSha256: pkg.packageSha256, releaseKey: pkg.releaseKey, originalPayloadSha256: payloadHash(source), mappedPayloadSha256: payloadHash(item), mapping: source.questionNum === item.questionNum ? null : { field: "questionNum", from: source.questionNum, to: item.questionNum, reason: "approved OIT wastewater collision resolution" }, reviewer, reviewedAt: now.toISOString(), builderChecks: "package-validator=pass; calculation-verifier=pass; release-exclusion-verification=pass; live-bank-deduplication=pass", item };
       await connection.execute("INSERT INTO question_content_snapshots (releaseKey, bankKey, questionId, questionNum, sourceContentVersion, contentHash, payload) VALUES (?, ?, ?, ?, ?, ?, ?)", [pkg.releaseKey, item.bankKey, result.insertId, item.questionNum, 0, payloadHash(item), JSON.stringify(receiptPayload)]);
     }
     for (const bankKey of bankKeys) {
