@@ -1,0 +1,72 @@
+[
+ {
+  "itemId": "OIT-1141",
+  "expression": "2500 * 180 / 1000",
+  "expected": "450.0",
+  "decimalPlaces": 1,
+  "unit": "kg/day"
+ },
+ {
+  "itemId": "OIT-1142",
+  "expression": "4000 / (20 * 10)",
+  "expected": "20.0",
+  "decimalPlaces": 1,
+  "unit": "m/day"
+ },
+ {
+  "itemId": "OIT-1143",
+  "expression": "(240 - 60) / 240 * 100",
+  "expected": "75.0",
+  "decimalPlaces": 1,
+  "unit": "%"
+ },
+ {
+  "itemId": "OIT-1144",
+  "expression": "45 * 86400 / 1000",
+  "expected": "3888.0",
+  "decimalPlaces": 1,
+  "unit": "m3/day"
+ },
+ {
+  "itemId": "OIT-1145",
+  "expression": "7500 / 250",
+  "expected": "30.0",
+  "decimalPlaces": 1,
+  "unit": "m/day"
+ },
+ {
+  "itemId": "OIT-1146",
+  "expression": "50 * 86400 / 1000 * 200 / 1000",
+  "expected": "864.0",
+  "decimalPlaces": 1,
+  "unit": "kg/day"
+ },
+ {
+  "itemId": "OIT-1147",
+  "expression": "1963.5 / (3.1416 * 5 * 5)",
+  "expected": "25.0",
+  "decimalPlaces": 1,
+  "unit": "m/day"
+ },
+ {
+  "itemId": "OIT-1148",
+  "expression": "(320 - 16) / 320 * 100",
+  "expected": "95.0",
+  "decimalPlaces": 1,
+  "unit": "%"
+ },
+ {
+  "itemId": "OIT-1149",
+  "expression": "1.8 * 86400 / 1000",
+  "expected": "155.52",
+  "decimalPlaces": 2,
+  "unit": "ML/day"
+ },
+ {
+  "itemId": "OIT-1150",
+  "expression": "(3000 * 180 / 1000) / 900",
+  "expected": "0.60",
+  "decimalPlaces": 2,
+  "unit": "kg/m3/day"
+ }
+]

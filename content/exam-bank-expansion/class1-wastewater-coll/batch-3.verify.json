@@ -1,0 +1,72 @@
+[
+ {
+  "itemId": "COLLECTION-L1-391",
+  "expression": "3.0*2.0*0.6*1000/30/60",
+  "expected": "2.0",
+  "decimalPlaces": 1,
+  "unit": "min"
+ },
+ {
+  "itemId": "COLLECTION-L1-392",
+  "expression": "8.0*0.9*1000/40/60",
+  "expected": "3.0",
+  "decimalPlaces": 1,
+  "unit": "min"
+ },
+ {
+  "itemId": "COLLECTION-L1-393",
+  "expression": "54000/30/60",
+  "expected": "30.0",
+  "decimalPlaces": 1,
+  "unit": "min"
+ },
+ {
+  "itemId": "COLLECTION-L1-394",
+  "expression": "72/120*100",
+  "expected": "60.0",
+  "decimalPlaces": 1,
+  "unit": "%"
+ },
+ {
+  "itemId": "COLLECTION-L1-395",
+  "expression": "450/6",
+  "expected": "75.0",
+  "decimalPlaces": 1,
+  "unit": "m/h"
+ },
+ {
+  "itemId": "COLLECTION-L1-396",
+  "expression": "(4.0*2.5*0.9*1000)/(50-20)/60",
+  "expected": "5.0",
+  "decimalPlaces": 1,
+  "unit": "min"
+ },
+ {
+  "itemId": "COLLECTION-L1-397",
+  "expression": "3.1416*0.125*0.125*640*1000/10/60",
+  "expected": "52.36",
+  "decimalPlaces": 2,
+  "unit": "min"
+ },
+ {
+  "itemId": "COLLECTION-L1-398",
+  "expression": "(160+190)/2/250*100",
+  "expected": "70.0",
+  "decimalPlaces": 1,
+  "unit": "%"
+ },
+ {
+  "itemId": "COLLECTION-L1-399",
+  "expression": "84*2.5+96*2.0",
+  "expected": "402.0",
+  "decimalPlaces": 1,
+  "unit": "m"
+ },
+ {
+  "itemId": "COLLECTION-L1-400",
+  "expression": "540/(8.0-2.0)",
+  "expected": "90.0",
+  "decimalPlaces": 1,
+  "unit": "m/h"
+ }
+]
