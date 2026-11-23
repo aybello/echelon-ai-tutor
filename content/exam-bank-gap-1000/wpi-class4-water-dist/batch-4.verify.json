@@ -43,10 +43,10 @@
  },
  {
   "itemId": "DISTRIBUTION-L4-631",
-  "expression": "2400*1450+12*8500",
-  "expected": "3582000",
-  "decimalPlaces": 0,
-  "unit": "dollars"
+  "expression": "342/3.8",
+  "expected": "90.0",
+  "decimalPlaces": 1,
+  "unit": "years"
  },
  {
   "itemId": "DISTRIBUTION-L4-632",

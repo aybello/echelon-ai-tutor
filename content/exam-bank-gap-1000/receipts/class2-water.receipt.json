@@ -1,7 +1,7 @@
 {
  "reviewer": "owner-authorized-ai-review",
  "model": "Muse Wonder",
- "reviewDateUtc": "2026-11-23T17:59:30Z",
+ "reviewDateUtc": "2026-11-23T18:41:05Z",
  "sourceBranch": "exam-bank-gap-1000-2026-11-23",
  "baseCommit": "6b15ae5120c63cbfd28ea1c2c7aff31cc64ff526",
  "courseKey": "class2-water",
@@ -29,10 +29,89 @@
   ]
  },
  "checks": {
-  "schemaValidation": "see validate_gap.py run log in DUPLICATE-AND-SAFETY-REPORT.md",
-  "calculationVerification": null,
-  "dedup": {},
-  "quality": null
+  "schemaValidation": {
+   "checker": "validate_gap.py",
+   "checkerSha256": "2dc1a05aee0cd04c4fadd263ae0b724005ad793c959876b60d227f6940f3dab5",
+   "configSha256": "0b3ce1f0495aaca40fb2b0817cfca80786aef2a0d30cab555fe22960c7c1d8ba",
+   "payloadDigest": "abb299e7cdd0c6ae5daf10739c3e2b1bd3518b407df3e5e1147a8b9ed952b833",
+   "errors": [],
+   "warnings": []
+  },
+  "calculationVerification": {
+   "checker": "verify_calcs_gap.py",
+   "checkerSha256": "45907f709ec6056078e083990da0716582652f1adfd5c862f0da1a6f90f52b07",
+   "configSha256": "0b3ce1f0495aaca40fb2b0817cfca80786aef2a0d30cab555fe22960c7c1d8ba",
+   "payloadDigest": "abb299e7cdd0c6ae5daf10739c3e2b1bd3518b407df3e5e1147a8b9ed952b833",
+   "checked": 10,
+   "problems": [],
+   "checksPerformed": [
+    "expression recomputation in exact rational arithmetic",
+    "exactly-one-record enforcement",
+    "item/record field consistency",
+    "correctAnswer exact numeric and unit match",
+    "result-step value match (treat variant steps: Relationship, Substitution and Result entries required; Result entry must contain the expected value as a standalone number token)"
+   ]
+  },
+  "dedup": {
+   "new_items": 51,
+   "existing_corpus_items": 450,
+   "exact": [],
+   "near": [],
+   "expression_dups": [],
+   "option_collisions": [],
+   "cross_bank_exact": [],
+   "corpus": {
+    "files": [
+     {
+      "path": "echelon-ai-tutor/content/class2-2026-09-23/class2-water-250-drafts.json",
+      "sha256": "46450f303dd16e3e9d3e7d51f8bf3326a0d47e77b85f7cd9dea431862db3ed1d",
+      "items": 250
+     },
+     {
+      "path": "exam-bank-expansion/class2-water/additions.json",
+      "sha256": "385b388466c1b7f4e6a0c686b44d8ae53168b833aa23b036fbd109b8928cb540",
+      "items": 200
+     }
+    ],
+    "totalItems": 450,
+    "corpusSha256": "35ba9318f1edab6a10e2b3a5aa7970f71b06c451b10c8c71455216272a84c96b"
+   },
+   "config": {
+    "jaccardThreshold": 0.85,
+    "checker": "dedup_gap.py",
+    "checkerSha256": "ac4ce3075271eb61a3fc1a819d3582bd6c7b5d7111a23e895eeab72c58f416c8"
+   },
+   "payloadDigest": "abb299e7cdd0c6ae5daf10739c3e2b1bd3518b407df3e5e1147a8b9ed952b833",
+   "configSha256": "0b3ce1f0495aaca40fb2b0817cfca80786aef2a0d30cab555fe22960c7c1d8ba"
+  },
+  "quality": {
+   "checker": "quality_checks.py",
+   "checkerSha256": "2fa37c2d8676b68b4b73406ed3f53a68e3569bf2146febbb6feffee5e421d0b6",
+   "configSha256": "0b3ce1f0495aaca40fb2b0817cfca80786aef2a0d30cab555fe22960c7c1d8ba",
+   "payloadDigest": "abb299e7cdd0c6ae5daf10739c3e2b1bd3518b407df3e5e1147a8b9ed952b833",
+   "items": 51,
+   "length_flags": [],
+   "length_hard": [],
+   "correct_is_longest_share": 0.569,
+   "absolute_in_correct": [
+    "WATER-TREATMENT-L2-496: absolute wording in correct option: The index tracks carbonate balance only, so other corrosion "
+   ],
+   "absolute_in_stem_count": 3,
+   "true_false_items": [],
+   "true_false_share": 0.0,
+   "position_flags": []
+  }
+ },
+ "bindings": {
+  "gapConfigSha256": "0b3ce1f0495aaca40fb2b0817cfca80786aef2a0d30cab555fe22960c7c1d8ba",
+  "manifestSha256": "3f01bc1a60eb65ba607bcef538374b7e9a287bf9f8e990ee788a28d12c38359b",
+  "checkers": {
+   "validate_gap.py": "2dc1a05aee0cd04c4fadd263ae0b724005ad793c959876b60d227f6940f3dab5",
+   "verify_calcs_gap.py": "45907f709ec6056078e083990da0716582652f1adfd5c862f0da1a6f90f52b07",
+   "dedup_gap.py": "ac4ce3075271eb61a3fc1a819d3582bd6c7b5d7111a23e895eeab72c58f416c8",
+   "quality_checks.py": "2fa37c2d8676b68b4b73406ed3f53a68e3569bf2146febbb6feffee5e421d0b6",
+   "receipts.py": "07e07c6ac08f323495ab296a0086fd4b23733d9342ab738494a8a6280819c313"
+  }
  },
  "items": [
   {

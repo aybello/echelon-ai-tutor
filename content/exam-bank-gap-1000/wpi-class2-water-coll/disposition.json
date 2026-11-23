@@ -1,1 +1,27 @@
-{"accepted":298,"notes":["COLLECTION-L2-562, COLLECTION-L2-687 and COLLECTION-L2-723: absolute wording in correct options reviewed and accepted; all state engineering requirements (a repair sleeve must extend past the defect into sound pipe at both ends; a fully deteriorated design needs a thicker liner; a bypass must carry the peak flow until the repair is complete), factual statements, not shortcut patterns.","Coordinator formatting correction: COLLECTION-L2-544, COLLECTION-L2-548 and COLLECTION-L2-742 originally wrote money answers with thousands commas (for example $6,430.00 CAD), which failed the calculation verifier's answer cross-check; commas were stripped from the dollar amounts in those three items to match the bank house format ($6430.00). No values, options order, or content changed.","Bank answer-length metric: correct option strictly longest in 43% of items; no item carried a length flag.","Assignment topics naming Regulation 129/04 were authored on the same duty substance in generic provincial terms without naming the regulation in the item body, per the binding WPI rule; no regulation numbers or limits were invented."],"rejected":[],"withheld":[]}
+{
+ "accepted": 298,
+ "notes": [
+  "COLLECTION-L2-562, COLLECTION-L2-687 and COLLECTION-L2-723: absolute wording in correct options reviewed and accepted; all state engineering requirements (a repair sleeve must extend past the defect into sound pipe at both ends; a fully deteriorated design needs a thicker liner; a bypass must carry the peak flow until the repair is complete), factual statements, not shortcut patterns.",
+  "Coordinator formatting correction: COLLECTION-L2-544, COLLECTION-L2-548 and COLLECTION-L2-742 originally wrote money answers with thousands commas (for example $6,430.00 CAD), which failed the calculation verifier's answer cross-check; commas were stripped from the dollar amounts in those three items to match the bank house format ($6430.00). No values, options order, or content changed.",
+  "Bank answer-length metric: correct option strictly longest in 43% of items; no item carried a length flag.",
+  "Assignment topics naming Regulation 129/04 were authored on the same duty substance in generic provincial terms without naming the regulation in the item body, per the binding WPI rule; no regulation numbers or limits were invented."
+ ],
+ "rejected": [],
+ "withheld": [],
+ "nearDuplicatePairReview": [
+  {
+   "pair": [
+    "COLLECTION-L2-493",
+    "COLLECTION-L2-497"
+   ],
+   "similarity": 0.9259,
+   "decision": "replaced",
+   "replacedItemId": "COLLECTION-L2-497",
+   "reason": "Both items compute CIPP liner surface area as pi times diameter times the total length of two segments, differing only in segment lengths and diameter. Same formula and scenario, so the second item was replaced.",
+   "oldPayloadSha256": "a8951dc8f87541c4102888d2b8b4f7d36053134f0fcc37e9b1c6ffe120fe8145",
+   "newPayloadSha256": "b59666e21a9d5ca3d439fba5f488da476add9e6435ca9ee53bce93eca2968001",
+   "oldStem": "Two segments of 38 m and 42 m of 0.25 m diameter pipe will be lined. Use pi = 3.1416 and liner area = pi x diameter x total length. Find the total liner surface area. Round to 2 decimal places.",
+   "newStem": "A trench for a sewer replacement is 85 m long, 1.1 m wide and 2.2 m deep. Excavated material swells by a factor of 1.25 when it is loose. What is the loose volume of the excavated material? Round to 2 decimal places."
+  }
+ ]
+}

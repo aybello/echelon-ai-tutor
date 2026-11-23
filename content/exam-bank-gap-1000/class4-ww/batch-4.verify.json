@@ -8,10 +8,10 @@
  },
  {
   "itemId": "WASTEWATER-TREATMENT-L4-614",
-  "expression": "480*0.65",
-  "expected": "312.0",
-  "decimalPlaces": 1,
-  "unit": "kg/day"
+  "expression": "(9000*220/1000)/3000",
+  "expected": "0.66",
+  "decimalPlaces": 2,
+  "unit": "kg/m3/day"
  },
  {
   "itemId": "WASTEWATER-TREATMENT-L4-615",

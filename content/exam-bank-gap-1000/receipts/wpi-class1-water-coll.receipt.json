@@ -1,21 +1,21 @@
 {
  "reviewer": "owner-authorized-ai-review",
  "model": "Muse Wonder",
- "reviewDateUtc": "2026-11-23T17:59:30Z",
+ "reviewDateUtc": "2026-11-23T18:41:05Z",
  "sourceBranch": "exam-bank-gap-1000-2026-11-23",
  "baseCommit": "6b15ae5120c63cbfd28ea1c2c7aff31cc64ff526",
  "courseKey": "wpi-class1-water-coll",
  "canonicalBankKey": "wpi-class1-wastewater-coll",
  "itemBankKey": "wpi-class1-wastewater-coll",
- "packageSha256": "305b18568ba6244b0f3d123ad5b47c0e0f150f87a7d9b45f44143c58ec6e3c84",
- "additionsFileSha256": "bb0a83caa994369b46b17d9b8c6e36e03abec349d63bbb0ab84163912c84ed5e",
+ "packageSha256": "2392b62691a49c9179c5772c793ff57293992b50c2f6b50f4af244901a6b520b",
+ "additionsFileSha256": "120235effaee27472fb54ebd529d82a1f81b3e4f0c122d80f9b028c1758409ac",
  "batchFileSha256": {
   "batch-1.json": "a07ba98d1b7184768cf4a9dc2542b4fed6028cbe40b652141d6ad387779a357c",
   "batch-1.verify.json": "3b16721a228319fd7d41b0a0799004372a24aa3abd83f516eb1575d3955a820c",
   "batch-2.json": "786b078247448beef131aec6ffa4ec33db1e5f9c004702f60bc41aa4cca8954a",
   "batch-2.verify.json": "700547bce46eeb34a86a867c14304b59d7091cfa0ca058826ca0222032e5cb8f",
-  "batch-3.json": "beaf450aaf7e9d86e4e57278a1f8b713207778aa44aa6fa313f469e8a78b0862",
-  "batch-3.verify.json": "96249bb97182e37eb21a6b42093ccb098fe6885a502efbf79d628e2091a6d22f",
+  "batch-3.json": "6ff6c01cda605f066bc9ac5855b19030dda738ed5daff07b4645a0f44ea8ddc8",
+  "batch-3.verify.json": "5d60e970199a43bff1bad5b4bf983f60e9b3009611ba912c49c50cb7c7131fae",
   "batch-4.json": "ffa09d2a5488c09d4a913d5c0da5cef1d40a1b30719ecb17e56b44219729b699",
   "batch-4.verify.json": "e0d30225983c9f81365f844fff2ec202450601b51b6a1d83c3fc48e43bc39f25",
   "batch-5.json": "51036ef08d40c7fc211ac67556d1ffdea37aeade610edf9edc2a3173be074f3e",
@@ -42,10 +42,87 @@
   ]
  },
  "checks": {
-  "schemaValidation": "see validate_gap.py run log in DUPLICATE-AND-SAFETY-REPORT.md",
-  "calculationVerification": null,
-  "dedup": {},
-  "quality": null
+  "schemaValidation": {
+   "checker": "validate_gap.py",
+   "checkerSha256": "2dc1a05aee0cd04c4fadd263ae0b724005ad793c959876b60d227f6940f3dab5",
+   "configSha256": "0b3ce1f0495aaca40fb2b0817cfca80786aef2a0d30cab555fe22960c7c1d8ba",
+   "payloadDigest": "2392b62691a49c9179c5772c793ff57293992b50c2f6b50f4af244901a6b520b",
+   "errors": [],
+   "warnings": []
+  },
+  "calculationVerification": {
+   "checker": "verify_calcs_gap.py",
+   "checkerSha256": "45907f709ec6056078e083990da0716582652f1adfd5c862f0da1a6f90f52b07",
+   "configSha256": "0b3ce1f0495aaca40fb2b0817cfca80786aef2a0d30cab555fe22960c7c1d8ba",
+   "payloadDigest": "2392b62691a49c9179c5772c793ff57293992b50c2f6b50f4af244901a6b520b",
+   "checked": 63,
+   "problems": [],
+   "checksPerformed": [
+    "expression recomputation in exact rational arithmetic",
+    "exactly-one-record enforcement",
+    "item/record field consistency",
+    "correctAnswer exact numeric and unit match",
+    "result-step value match (treat variant steps: Relationship, Substitution and Result entries required; Result entry must contain the expected value as a standalone number token)"
+   ]
+  },
+  "dedup": {
+   "new_items": 302,
+   "existing_corpus_items": 200,
+   "exact": [],
+   "near": [],
+   "expression_dups": [],
+   "option_collisions": [],
+   "cross_bank_exact": [],
+   "corpus": {
+    "files": [
+     {
+      "path": "exam-bank-expansion/wpi-class1-water-coll/additions.json",
+      "sha256": "d338aa3d615a9cd5a1db5c65aece6e346d1218a8c44d0746f320082449151315",
+      "items": 200
+     }
+    ],
+    "totalItems": 200,
+    "corpusSha256": "2295786a45de8e6926d994779a20c0701ab12d9c1a4a83cde33b0f628928e356"
+   },
+   "config": {
+    "jaccardThreshold": 0.85,
+    "checker": "dedup_gap.py",
+    "checkerSha256": "ac4ce3075271eb61a3fc1a819d3582bd6c7b5d7111a23e895eeab72c58f416c8"
+   },
+   "payloadDigest": "2392b62691a49c9179c5772c793ff57293992b50c2f6b50f4af244901a6b520b",
+   "configSha256": "0b3ce1f0495aaca40fb2b0817cfca80786aef2a0d30cab555fe22960c7c1d8ba"
+  },
+  "quality": {
+   "checker": "quality_checks.py",
+   "checkerSha256": "2fa37c2d8676b68b4b73406ed3f53a68e3569bf2146febbb6feffee5e421d0b6",
+   "configSha256": "0b3ce1f0495aaca40fb2b0817cfca80786aef2a0d30cab555fe22960c7c1d8ba",
+   "payloadDigest": "2392b62691a49c9179c5772c793ff57293992b50c2f6b50f4af244901a6b520b",
+   "items": 302,
+   "length_flags": [],
+   "length_hard": [],
+   "correct_is_longest_share": 0.228,
+   "absolute_in_correct": [
+    "COLLECTION-L1-593: absolute wording in correct option: Each worker places a personal lock on the group hasp and rem",
+    "COLLECTION-L1-609: absolute wording in correct option: Stored pressure energy in the line that must be released or ",
+    "COLLECTION-L1-725: absolute wording in correct option: Work only under the direction of a properly licensed operato",
+    "COLLECTION-L1-728: absolute wording in correct option: Ventilate, retest, and enter only when the reading is safely"
+   ],
+   "absolute_in_stem_count": 20,
+   "true_false_items": [],
+   "true_false_share": 0.0,
+   "position_flags": []
+  }
+ },
+ "bindings": {
+  "gapConfigSha256": "0b3ce1f0495aaca40fb2b0817cfca80786aef2a0d30cab555fe22960c7c1d8ba",
+  "manifestSha256": "3f01bc1a60eb65ba607bcef538374b7e9a287bf9f8e990ee788a28d12c38359b",
+  "checkers": {
+   "validate_gap.py": "2dc1a05aee0cd04c4fadd263ae0b724005ad793c959876b60d227f6940f3dab5",
+   "verify_calcs_gap.py": "45907f709ec6056078e083990da0716582652f1adfd5c862f0da1a6f90f52b07",
+   "dedup_gap.py": "ac4ce3075271eb61a3fc1a819d3582bd6c7b5d7111a23e895eeab72c58f416c8",
+   "quality_checks.py": "2fa37c2d8676b68b4b73406ed3f53a68e3569bf2146febbb6feffee5e421d0b6",
+   "receipts.py": "07e07c6ac08f323495ab296a0086fd4b23733d9342ab738494a8a6280819c313"
+  }
  },
  "items": [
   {
@@ -808,7 +885,7 @@
    "bankKey": "wpi-class1-wastewater-coll",
    "questionNum": 2577,
    "itemId": "COLLECTION-L1-577",
-   "payloadSha256": "f7e84deb9bfaca57519aa44804b5769fdf784c9da2fdb58463359c92519762e2"
+   "payloadSha256": "1490e5c72e96a7d74247ef5e8e37216644d13f1d6c1112d885952690976957d3"
   },
   {
    "bankKey": "wpi-class1-wastewater-coll",

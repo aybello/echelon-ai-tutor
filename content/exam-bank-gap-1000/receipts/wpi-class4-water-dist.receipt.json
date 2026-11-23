@@ -1,14 +1,14 @@
 {
  "reviewer": "owner-authorized-ai-review",
  "model": "Muse Wonder",
- "reviewDateUtc": "2026-11-23T17:59:30Z",
+ "reviewDateUtc": "2026-11-23T18:41:05Z",
  "sourceBranch": "exam-bank-gap-1000-2026-11-23",
  "baseCommit": "6b15ae5120c63cbfd28ea1c2c7aff31cc64ff526",
  "courseKey": "wpi-class4-water-dist",
  "canonicalBankKey": "wpi-class4-water-dist",
  "itemBankKey": "wpi-class4-water-dist",
- "packageSha256": "b15a71b0c6aa861696d450b8aee19f670202cbfd51d642d939a045957eacc6f8",
- "additionsFileSha256": "45814e95be16ef01e9defc2d2bca7b9951f9b8e98107d133f9b5d8927cd61bc5",
+ "packageSha256": "00bc9af76d8369801874d905dca3cde237f17f9a1ae83e0b2c3581075a5ddab9",
+ "additionsFileSha256": "fbc1550ab262c380ec8f3d4d0ace0374710ae30b7affe52d891bf17d6cd8fdc4",
  "batchFileSha256": {
   "batch-1.json": "41e12210d8975a3623dfaa88b24963f022d3f75fb1c7ffdd7a92b61964156f46",
   "batch-1.verify.json": "e2b7f052b7c06328f60c0246591d8dff1165f6fb11bd3c83d464df322f12367d",
@@ -16,8 +16,8 @@
   "batch-2.verify.json": "756eb16f5023ee845ca2e4dcabc6d8c46b53431c75f541065707eebd83162788",
   "batch-3.json": "d042b34fe984b4a6817f26618dceace3f898107387459246c956e0642226a00a",
   "batch-3.verify.json": "d90e270c87427d43ea5e02851f8e7f5c081594806b5971cb2a964d50d5de9ac1",
-  "batch-4.json": "c847b41d9215dcfe4a9fd74e0d02a315a211da5589b7ffacacce03edf1f47b1f",
-  "batch-4.verify.json": "f7aaf9edd1317d6e20c6ee3d860ba28f0185ef22ee6d711d9c79d00082f97aae"
+  "batch-4.json": "145bdd35748fcb5ba0b94436426203bd1a32fff27bda32e42079da45110d77af",
+  "batch-4.verify.json": "06cb87239ace34a8e39a1a8893a85feec8c2a3e42db7880bcaa5c442763ddb8c"
  },
  "counts": {
   "requested": 183,
@@ -27,10 +27,84 @@
   "rejected": []
  },
  "checks": {
-  "schemaValidation": "see validate_gap.py run log in DUPLICATE-AND-SAFETY-REPORT.md",
-  "calculationVerification": null,
-  "dedup": {},
-  "quality": null
+  "schemaValidation": {
+   "checker": "validate_gap.py",
+   "checkerSha256": "2dc1a05aee0cd04c4fadd263ae0b724005ad793c959876b60d227f6940f3dab5",
+   "configSha256": "0b3ce1f0495aaca40fb2b0817cfca80786aef2a0d30cab555fe22960c7c1d8ba",
+   "payloadDigest": "00bc9af76d8369801874d905dca3cde237f17f9a1ae83e0b2c3581075a5ddab9",
+   "errors": [],
+   "warnings": []
+  },
+  "calculationVerification": {
+   "checker": "verify_calcs_gap.py",
+   "checkerSha256": "45907f709ec6056078e083990da0716582652f1adfd5c862f0da1a6f90f52b07",
+   "configSha256": "0b3ce1f0495aaca40fb2b0817cfca80786aef2a0d30cab555fe22960c7c1d8ba",
+   "payloadDigest": "00bc9af76d8369801874d905dca3cde237f17f9a1ae83e0b2c3581075a5ddab9",
+   "checked": 36,
+   "problems": [],
+   "checksPerformed": [
+    "expression recomputation in exact rational arithmetic",
+    "exactly-one-record enforcement",
+    "item/record field consistency",
+    "correctAnswer exact numeric and unit match",
+    "result-step value match (treat variant steps: Relationship, Substitution and Result entries required; Result entry must contain the expected value as a standalone number token)"
+   ]
+  },
+  "dedup": {
+   "new_items": 183,
+   "existing_corpus_items": 200,
+   "exact": [],
+   "near": [],
+   "expression_dups": [],
+   "option_collisions": [],
+   "cross_bank_exact": [],
+   "corpus": {
+    "files": [
+     {
+      "path": "exam-bank-expansion/wpi-class4-water-dist/additions.json",
+      "sha256": "cb593a08d2010734efc1d9239144bdaf53eb566f62bb799e6b157ca6aa157460",
+      "items": 200
+     }
+    ],
+    "totalItems": 200,
+    "corpusSha256": "83d08b3cea7e3d67c907ea5b03b0a1f707cbf043fd88cfab64a6479e08cbd1af"
+   },
+   "config": {
+    "jaccardThreshold": 0.85,
+    "checker": "dedup_gap.py",
+    "checkerSha256": "ac4ce3075271eb61a3fc1a819d3582bd6c7b5d7111a23e895eeab72c58f416c8"
+   },
+   "payloadDigest": "00bc9af76d8369801874d905dca3cde237f17f9a1ae83e0b2c3581075a5ddab9",
+   "configSha256": "0b3ce1f0495aaca40fb2b0817cfca80786aef2a0d30cab555fe22960c7c1d8ba"
+  },
+  "quality": {
+   "checker": "quality_checks.py",
+   "checkerSha256": "2fa37c2d8676b68b4b73406ed3f53a68e3569bf2146febbb6feffee5e421d0b6",
+   "configSha256": "0b3ce1f0495aaca40fb2b0817cfca80786aef2a0d30cab555fe22960c7c1d8ba",
+   "payloadDigest": "00bc9af76d8369801874d905dca3cde237f17f9a1ae83e0b2c3581075a5ddab9",
+   "items": 183,
+   "length_flags": [],
+   "length_hard": [],
+   "correct_is_longest_share": 0.421,
+   "absolute_in_correct": [
+    "DISTRIBUTION-L4-553: absolute wording in correct option: Reassign on-call coverage to licensed operators only"
+   ],
+   "absolute_in_stem_count": 26,
+   "true_false_items": [],
+   "true_false_share": 0.0,
+   "position_flags": []
+  }
+ },
+ "bindings": {
+  "gapConfigSha256": "0b3ce1f0495aaca40fb2b0817cfca80786aef2a0d30cab555fe22960c7c1d8ba",
+  "manifestSha256": "3f01bc1a60eb65ba607bcef538374b7e9a287bf9f8e990ee788a28d12c38359b",
+  "checkers": {
+   "validate_gap.py": "2dc1a05aee0cd04c4fadd263ae0b724005ad793c959876b60d227f6940f3dab5",
+   "verify_calcs_gap.py": "45907f709ec6056078e083990da0716582652f1adfd5c862f0da1a6f90f52b07",
+   "dedup_gap.py": "ac4ce3075271eb61a3fc1a819d3582bd6c7b5d7111a23e895eeab72c58f416c8",
+   "quality_checks.py": "2fa37c2d8676b68b4b73406ed3f53a68e3569bf2146febbb6feffee5e421d0b6",
+   "receipts.py": "07e07c6ac08f323495ab296a0086fd4b23733d9342ab738494a8a6280819c313"
+  }
  },
  "items": [
   {
@@ -1117,7 +1191,7 @@
    "bankKey": "wpi-class4-water-dist",
    "questionNum": 2631,
    "itemId": "DISTRIBUTION-L4-631",
-   "payloadSha256": "292a087dbd49e0177f5c8bfc90ab846e29216b214bdbb4fa87e26fe84380ce56"
+   "payloadSha256": "ba24c365890a21ee76234b43c274efa5479229f641b6ee51c1fe394d83c4e1eb"
   },
   {
    "bankKey": "wpi-class4-water-dist",

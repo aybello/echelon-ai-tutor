@@ -14,13 +14,50 @@ Per bank and per batch:
   option set is a true/false pair pattern; share of bank flagged above 5%.
 
 Usage: quality_checks.py [courseKey ...]  (default: all)
-Writes tools/quality-report.json. Exit 1 on hard flags.
+Writes tools/quality-report.json. Exit 1 on hard flags. Each bank entry
+carries the shared report envelope ("checker", "checkerSha256",
+"configSha256", "payloadDigest"). A run with explicit bank arguments
+merges: it updates only those banks in the existing report file. A run
+with no arguments recomputes every bank.
 """
-import json, re, sys
+import hashlib, json, re, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 CFG = json.loads((ROOT / "gap_config.json").read_text())
+REPORT = Path(__file__).resolve().parent / "quality-report.json"
+CHECKER = Path(__file__).name
+
+def sha_bytes(b):
+    return hashlib.sha256(b).hexdigest()
+
+def sha_file(p):
+    return sha_bytes(Path(p).read_bytes())
+
+def canon(it):
+    return json.dumps(it, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
+
+def payload_digest(items):
+    hashes = [sha_bytes(canon(it)) for it in sorted(items, key=lambda x: x["questionNum"])]
+    return sha_bytes("".join(hashes).encode("utf-8"))
+
+def envelope(items):
+    return {"checker": CHECKER,
+            "checkerSha256": sha_file(Path(__file__).resolve()),
+            "configSha256": sha_file(ROOT / "gap_config.json"),
+            "payloadDigest": payload_digest(items)}
+
+def merge_report(updates):
+    existing = {}
+    if REPORT.exists():
+        try:
+            loaded = json.loads(REPORT.read_text())
+            if isinstance(loaded, dict):
+                existing = loaded
+        except Exception:
+            existing = {}
+    existing.update(updates)
+    REPORT.write_text(json.dumps(existing, indent=1))
 ABS = re.compile(r"\b(always|never|must|only|guarantee[ds]?|all of the above|none of the above)\b", re.I)
 
 def load_new(key):
@@ -77,16 +114,18 @@ def main():
         # the per-item ratio checks above are the enforceable tell test.
         bank_hard = len(length_hard) + len(pos_flags) + (1 if tf_share > 0.05 else 0)
         hard += bank_hard
-        report[key] = {"items": len(items), "length_flags": length_flags, "length_hard": length_hard,
+        entry = envelope([it for _, it in items])
+        entry.update({"items": len(items), "length_flags": length_flags, "length_hard": length_hard,
                        "correct_is_longest_share": round(longest_share, 3),
                        "absolute_in_correct": abs_correct, "absolute_in_stem_count": len(abs_stem),
                        "true_false_items": tf_items, "true_false_share": round(tf_share, 3),
-                       "position_flags": pos_flags}
+                       "position_flags": pos_flags})
+        report[key] = entry
         print(f"{key}: {len(items)} items | length flags {len(length_flags)} (hard {len(length_hard)}), "
               f"longest-share {longest_share:.0%}, abs-in-correct {len(abs_correct)}, TF {len(tf_items)} ({tf_share:.0%}), pos flags {len(pos_flags)}")
         for x in length_hard + pos_flags:
             print("  HARD", x)
-    (Path(__file__).parent / "quality-report.json").write_text(json.dumps(report, indent=1))
+    merge_report(report)
     print("TOTAL hard quality flags:", hard)
     sys.exit(1 if hard else 0)
 

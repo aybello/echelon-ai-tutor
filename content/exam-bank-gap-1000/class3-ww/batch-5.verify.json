@@ -36,10 +36,10 @@
  },
  {
   "itemId": "WASTEWATER-TREATMENT-L3-667",
-  "expression": "(12500*160/1000)/(4000*2500/1000)",
-  "expected": "0.20",
+  "expression": "15000/(3.1416*25)",
+  "expected": "190.99",
   "decimalPlaces": 2,
-  "unit": "kg/kg/day"
+  "unit": "m3/m/day"
  },
  {
   "itemId": "WASTEWATER-TREATMENT-L3-668",

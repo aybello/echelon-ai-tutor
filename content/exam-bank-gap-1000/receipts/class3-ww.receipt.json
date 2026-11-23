@@ -1,14 +1,14 @@
 {
  "reviewer": "owner-authorized-ai-review",
  "model": "Muse Wonder",
- "reviewDateUtc": "2026-11-23T17:59:30Z",
+ "reviewDateUtc": "2026-11-23T18:41:05Z",
  "sourceBranch": "exam-bank-gap-1000-2026-11-23",
  "baseCommit": "6b15ae5120c63cbfd28ea1c2c7aff31cc64ff526",
  "courseKey": "class3-ww",
  "canonicalBankKey": "class3-wastewater",
  "itemBankKey": "class3-wastewater",
- "packageSha256": "ebb304c5b956b1f514b5b542b8525089beaa34a927826624adffa7a020beecc7",
- "additionsFileSha256": "4446a4a213d7bb6ec5dab144a6531bfd6ea896d2cdc2696ae88d9f4f258dbabd",
+ "packageSha256": "cdea8ece25ac3f91f24caf5d84fef9f5ed16247e026004cf514439688268a384",
+ "additionsFileSha256": "bf8f7b8c4cb203f9c2b26b0b61672592627baf366777749f6fc0157b3c7a814f",
  "batchFileSha256": {
   "batch-1.json": "61ade07e90c027aff3dcd2ca74220cae2daaca990d3925acffb70862400b6e09",
   "batch-1.verify.json": "875ded7988c18e01ee385879edfb5af41de3ec48fa0254baf0d0ff46614faf3e",
@@ -18,8 +18,8 @@
   "batch-3.verify.json": "d185c4d20c8c82b64139e07a5b6318cda3ab5102ebf15aee47cc12186b90aea5",
   "batch-4.json": "13929a751c48da79205effd4b0ab3cbb92684967ecdf6830dc611fe1c029b219",
   "batch-4.verify.json": "d5dd0fbd09a4fdb086959260f55c97daacefd40ff313db10163ac162a70424e1",
-  "batch-5.json": "65e68441001b91dcd1662f0a39a2e1e63aac50412facba066b1c4348b51df989",
-  "batch-5.verify.json": "72f0741cdd0578a361967f86726dca604ca2257232ea2637989fe816522fb28b"
+  "batch-5.json": "57bcebc15ab8119b51e082871f63001329e88efb48242e312ac874a2292b5045",
+  "batch-5.verify.json": "f36deb6742025d820f4b7c12b4019b40e0204ac8f2cd13d3366c8fe341541d38"
  },
  "counts": {
   "requested": 220,
@@ -80,10 +80,82 @@
   ]
  },
  "checks": {
-  "schemaValidation": "see validate_gap.py run log in DUPLICATE-AND-SAFETY-REPORT.md",
-  "calculationVerification": null,
-  "dedup": {},
-  "quality": null
+  "schemaValidation": {
+   "checker": "validate_gap.py",
+   "checkerSha256": "2dc1a05aee0cd04c4fadd263ae0b724005ad793c959876b60d227f6940f3dab5",
+   "configSha256": "0b3ce1f0495aaca40fb2b0817cfca80786aef2a0d30cab555fe22960c7c1d8ba",
+   "payloadDigest": "cdea8ece25ac3f91f24caf5d84fef9f5ed16247e026004cf514439688268a384",
+   "errors": [],
+   "warnings": []
+  },
+  "calculationVerification": {
+   "checker": "verify_calcs_gap.py",
+   "checkerSha256": "45907f709ec6056078e083990da0716582652f1adfd5c862f0da1a6f90f52b07",
+   "configSha256": "0b3ce1f0495aaca40fb2b0817cfca80786aef2a0d30cab555fe22960c7c1d8ba",
+   "payloadDigest": "cdea8ece25ac3f91f24caf5d84fef9f5ed16247e026004cf514439688268a384",
+   "checked": 45,
+   "problems": [],
+   "checksPerformed": [
+    "expression recomputation in exact rational arithmetic",
+    "exactly-one-record enforcement",
+    "item/record field consistency",
+    "correctAnswer exact numeric and unit match",
+    "result-step value match (treat variant steps: Relationship, Substitution and Result entries required; Result entry must contain the expected value as a standalone number token)"
+   ]
+  },
+  "dedup": {
+   "new_items": 220,
+   "existing_corpus_items": 200,
+   "exact": [],
+   "near": [],
+   "expression_dups": [],
+   "option_collisions": [],
+   "cross_bank_exact": [],
+   "corpus": {
+    "files": [
+     {
+      "path": "exam-bank-expansion/class3-ww/additions.json",
+      "sha256": "ff411a32cba0eda233e09378cc1296172c27047a410bed55f51078c5ffc5274a",
+      "items": 200
+     }
+    ],
+    "totalItems": 200,
+    "corpusSha256": "85afa3ba33f4fa0dbe9ebfcd7e5ee368baadbf63ff70b4eddd30c14d2eead1e0"
+   },
+   "config": {
+    "jaccardThreshold": 0.85,
+    "checker": "dedup_gap.py",
+    "checkerSha256": "ac4ce3075271eb61a3fc1a819d3582bd6c7b5d7111a23e895eeab72c58f416c8"
+   },
+   "payloadDigest": "cdea8ece25ac3f91f24caf5d84fef9f5ed16247e026004cf514439688268a384",
+   "configSha256": "0b3ce1f0495aaca40fb2b0817cfca80786aef2a0d30cab555fe22960c7c1d8ba"
+  },
+  "quality": {
+   "checker": "quality_checks.py",
+   "checkerSha256": "2fa37c2d8676b68b4b73406ed3f53a68e3569bf2146febbb6feffee5e421d0b6",
+   "configSha256": "0b3ce1f0495aaca40fb2b0817cfca80786aef2a0d30cab555fe22960c7c1d8ba",
+   "payloadDigest": "cdea8ece25ac3f91f24caf5d84fef9f5ed16247e026004cf514439688268a384",
+   "items": 220,
+   "length_flags": [],
+   "length_hard": [],
+   "correct_is_longest_share": 0.186,
+   "absolute_in_correct": [],
+   "absolute_in_stem_count": 10,
+   "true_false_items": [],
+   "true_false_share": 0.0,
+   "position_flags": []
+  }
+ },
+ "bindings": {
+  "gapConfigSha256": "0b3ce1f0495aaca40fb2b0817cfca80786aef2a0d30cab555fe22960c7c1d8ba",
+  "manifestSha256": "3f01bc1a60eb65ba607bcef538374b7e9a287bf9f8e990ee788a28d12c38359b",
+  "checkers": {
+   "validate_gap.py": "2dc1a05aee0cd04c4fadd263ae0b724005ad793c959876b60d227f6940f3dab5",
+   "verify_calcs_gap.py": "45907f709ec6056078e083990da0716582652f1adfd5c862f0da1a6f90f52b07",
+   "dedup_gap.py": "ac4ce3075271eb61a3fc1a819d3582bd6c7b5d7111a23e895eeab72c58f416c8",
+   "quality_checks.py": "2fa37c2d8676b68b4b73406ed3f53a68e3569bf2146febbb6feffee5e421d0b6",
+   "receipts.py": "07e07c6ac08f323495ab296a0086fd4b23733d9342ab738494a8a6280819c313"
+  }
  },
  "items": [
   {
@@ -1386,7 +1458,7 @@
    "bankKey": "class3-wastewater",
    "questionNum": 2667,
    "itemId": "WASTEWATER-TREATMENT-L3-667",
-   "payloadSha256": "97836df90c9e94ab614debe73180577e26adbac47bea9ca32de9f99bd936b735"
+   "payloadSha256": "e1abda823a5fe11f6eaa43a0a53cce2b49921255b797b80391e9bc8ca349aab6"
   },
   {
    "bankKey": "class3-wastewater",

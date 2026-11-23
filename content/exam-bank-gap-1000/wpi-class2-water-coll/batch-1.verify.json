@@ -43,10 +43,10 @@
  },
  {
   "itemId": "COLLECTION-L2-497",
-  "expression": "3.1416*0.25*(38+42)",
-  "expected": "62.83",
+  "expression": "85*1.1*2.2*1.25",
+  "expected": "257.13",
   "decimalPlaces": 2,
-  "unit": "m²"
+  "unit": "m³"
  },
  {
   "itemId": "COLLECTION-L2-498",

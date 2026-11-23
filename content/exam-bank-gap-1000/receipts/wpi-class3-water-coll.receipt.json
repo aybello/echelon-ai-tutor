@@ -1,7 +1,7 @@
 {
  "reviewer": "owner-authorized-ai-review",
  "model": "Muse Wonder",
- "reviewDateUtc": "2026-11-23T17:59:30Z",
+ "reviewDateUtc": "2026-11-23T18:41:05Z",
  "sourceBranch": "exam-bank-gap-1000-2026-11-23",
  "baseCommit": "6b15ae5120c63cbfd28ea1c2c7aff31cc64ff526",
  "courseKey": "wpi-class3-water-coll",
@@ -44,10 +44,89 @@
   ]
  },
  "checks": {
-  "schemaValidation": "see validate_gap.py run log in DUPLICATE-AND-SAFETY-REPORT.md",
-  "calculationVerification": null,
-  "dedup": {},
-  "quality": null
+  "schemaValidation": {
+   "checker": "validate_gap.py",
+   "checkerSha256": "2dc1a05aee0cd04c4fadd263ae0b724005ad793c959876b60d227f6940f3dab5",
+   "configSha256": "0b3ce1f0495aaca40fb2b0817cfca80786aef2a0d30cab555fe22960c7c1d8ba",
+   "payloadDigest": "1ab54ca71935b84dee7f57a4cf3298b7705030cbc525c794db53e09b54c8a0cf",
+   "errors": [],
+   "warnings": []
+  },
+  "calculationVerification": {
+   "checker": "verify_calcs_gap.py",
+   "checkerSha256": "45907f709ec6056078e083990da0716582652f1adfd5c862f0da1a6f90f52b07",
+   "configSha256": "0b3ce1f0495aaca40fb2b0817cfca80786aef2a0d30cab555fe22960c7c1d8ba",
+   "payloadDigest": "1ab54ca71935b84dee7f57a4cf3298b7705030cbc525c794db53e09b54c8a0cf",
+   "checked": 60,
+   "problems": [],
+   "checksPerformed": [
+    "expression recomputation in exact rational arithmetic",
+    "exactly-one-record enforcement",
+    "item/record field consistency",
+    "correctAnswer exact numeric and unit match",
+    "result-step value match (treat variant steps: Relationship, Substitution and Result entries required; Result entry must contain the expected value as a standalone number token)"
+   ]
+  },
+  "dedup": {
+   "new_items": 297,
+   "existing_corpus_items": 200,
+   "exact": [],
+   "near": [],
+   "expression_dups": [],
+   "option_collisions": [],
+   "cross_bank_exact": [],
+   "corpus": {
+    "files": [
+     {
+      "path": "exam-bank-expansion/wpi-class3-water-coll/additions.json",
+      "sha256": "ef4dd6eda8a3e816f4f0a72a28290d9e2e79b25d815b3c06db085d413c2128c7",
+      "items": 200
+     }
+    ],
+    "totalItems": 200,
+    "corpusSha256": "72af3ab5fc8264f02fa1249e7aa6c09bf2dfb0afae8ed4caabee72a441b9af84"
+   },
+   "config": {
+    "jaccardThreshold": 0.85,
+    "checker": "dedup_gap.py",
+    "checkerSha256": "ac4ce3075271eb61a3fc1a819d3582bd6c7b5d7111a23e895eeab72c58f416c8"
+   },
+   "payloadDigest": "1ab54ca71935b84dee7f57a4cf3298b7705030cbc525c794db53e09b54c8a0cf",
+   "configSha256": "0b3ce1f0495aaca40fb2b0817cfca80786aef2a0d30cab555fe22960c7c1d8ba"
+  },
+  "quality": {
+   "checker": "quality_checks.py",
+   "checkerSha256": "2fa37c2d8676b68b4b73406ed3f53a68e3569bf2146febbb6feffee5e421d0b6",
+   "configSha256": "0b3ce1f0495aaca40fb2b0817cfca80786aef2a0d30cab555fe22960c7c1d8ba",
+   "payloadDigest": "1ab54ca71935b84dee7f57a4cf3298b7705030cbc525c794db53e09b54c8a0cf",
+   "items": 297,
+   "length_flags": [
+    "COLLECTION-L3-736: correct/distractor length ratio 1.92"
+   ],
+   "length_hard": [],
+   "correct_is_longest_share": 0.572,
+   "absolute_in_correct": [
+    "COLLECTION-L3-460: absolute wording in correct option: Who must be notified outside the utility, and the time allow",
+    "COLLECTION-L3-558: absolute wording in correct option: Define the problem the sensors must solve and the results th",
+    "COLLECTION-L3-582: absolute wording in correct option: Cost per basin year of usable data, matched against the deci",
+    "COLLECTION-L3-670: absolute wording in correct option: Increase on site fuel storage or arrange a guaranteed refuel"
+   ],
+   "absolute_in_stem_count": 31,
+   "true_false_items": [],
+   "true_false_share": 0.0,
+   "position_flags": []
+  }
+ },
+ "bindings": {
+  "gapConfigSha256": "0b3ce1f0495aaca40fb2b0817cfca80786aef2a0d30cab555fe22960c7c1d8ba",
+  "manifestSha256": "3f01bc1a60eb65ba607bcef538374b7e9a287bf9f8e990ee788a28d12c38359b",
+  "checkers": {
+   "validate_gap.py": "2dc1a05aee0cd04c4fadd263ae0b724005ad793c959876b60d227f6940f3dab5",
+   "verify_calcs_gap.py": "45907f709ec6056078e083990da0716582652f1adfd5c862f0da1a6f90f52b07",
+   "dedup_gap.py": "ac4ce3075271eb61a3fc1a819d3582bd6c7b5d7111a23e895eeab72c58f416c8",
+   "quality_checks.py": "2fa37c2d8676b68b4b73406ed3f53a68e3569bf2146febbb6feffee5e421d0b6",
+   "receipts.py": "07e07c6ac08f323495ab296a0086fd4b23733d9342ab738494a8a6280819c313"
+  }
  },
  "items": [
   {

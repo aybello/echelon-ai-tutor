@@ -22,10 +22,10 @@
  },
  {
   "itemId": "WASTEWATER-TREATMENT-L2-528",
-  "expression": "(1200*2800/1000/10-6000*15/1000)*1000/8000",
-  "expected": "30.75",
+  "expression": "4800/(3.1416*8*8)",
+  "expected": "23.87",
   "decimalPlaces": 2,
-  "unit": "m3/day"
+  "unit": "m3/m2/day"
  },
  {
   "itemId": "WASTEWATER-TREATMENT-L2-529",

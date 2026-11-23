@@ -10,12 +10,51 @@ record count.
 
 Usage: validate_gap.py [courseKey ...]  (default: all banks in config)
 Exit 1 if any errors.
+
+Also writes tools/schema-validation-report.json: per bank an object with
+"errors", "warnings" and the shared report envelope ("checker",
+"checkerSha256", "configSha256", "payloadDigest"). A run with explicit
+bank arguments merges: it updates only those banks in the existing report
+file. A run with no arguments recomputes every bank.
 """
-import json, sys
+import hashlib, json, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 CFG = json.loads((ROOT / "gap_config.json").read_text())
+REPORT = Path(__file__).resolve().parent / "schema-validation-report.json"
+CHECKER = Path(__file__).name
+
+def sha_bytes(b):
+    return hashlib.sha256(b).hexdigest()
+
+def sha_file(p):
+    return sha_bytes(Path(p).read_bytes())
+
+def canon(it):
+    return json.dumps(it, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
+
+def payload_digest(items):
+    hashes = [sha_bytes(canon(it)) for it in sorted(items, key=lambda x: x["questionNum"])]
+    return sha_bytes("".join(hashes).encode("utf-8"))
+
+def envelope(items):
+    return {"checker": CHECKER,
+            "checkerSha256": sha_file(Path(__file__).resolve()),
+            "configSha256": sha_file(ROOT / "gap_config.json"),
+            "payloadDigest": payload_digest(items)}
+
+def merge_report(updates):
+    existing = {}
+    if REPORT.exists():
+        try:
+            loaded = json.loads(REPORT.read_text())
+            if isinstance(loaded, dict):
+                existing = loaded
+        except Exception:
+            existing = {}
+    existing.update(updates)
+    REPORT.write_text(json.dumps(existing, indent=1))
 
 BASE = {
     "oit": {"questionNum", "bankKey", "stream", "module", "topic", "difficulty", "cognitiveLevel",
@@ -44,6 +83,7 @@ CALC_ADD = {
 def check_bank(key):
     c = CFG[key]
     errs, warns = [], []
+    all_items = []
     d = ROOT / key
     variant = c["variant"]
     for b in c["batches"]:
@@ -62,6 +102,7 @@ def check_bank(key):
         if not isinstance(items, list) or len(items) != b["size"]:
             errs.append(f"{key} batch {bn}: expected {b['size']} items, got {len(items) if isinstance(items, list) else type(items)}")
             continue
+        all_items += [it for it in items if isinstance(it, dict) and "questionNum" in it]
         base = BASE[variant]
         for i, it in enumerate(items):
             tag = f"{key} b{bn} item {i + 1}"
@@ -143,17 +184,23 @@ def check_bank(key):
                     errs.append(f"{key} batch {bn}: verify file has {len(recs)} records, expected {b['calc']}")
             except Exception as e:
                 errs.append(f"{key} batch {bn}: verify JSON parse error: {e}")
-    return errs, warns
+    return errs, warns, all_items
 
 def main():
     keys = sys.argv[1:] or list(CFG)
     te = tw = 0
+    updates = {}
     for key in keys:
-        errs, warns = check_bank(key)
+        errs, warns, all_items = check_bank(key)
         te += len(errs); tw += len(warns)
         for e in errs: print("ERROR", e)
         for w in warns: print("warn ", w)
         print(f"{key}: {len(errs)} errors, {len(warns)} warnings")
+        entry = envelope(all_items)
+        entry["errors"] = errs
+        entry["warnings"] = warns
+        updates[key] = entry
+    merge_report(updates)
     print("TOTAL:", te, "errors,", tw, "warnings")
     sys.exit(1 if te else 0)
 

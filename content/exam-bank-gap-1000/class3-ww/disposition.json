@@ -1,12 +1,76 @@
-{"accepted": 220, "withheld": [], "rejected": [
-{"itemId": "WASTEWATER-TREATMENT-L3-487", "questionNum": 2487, "reason": "Original rejected pre-acceptance: masked-stem near-duplicate (Jaccard >= 0.85) of an existing F/M item. Replaced in place with a two-step F/M deriving MLVSS from MLSS and a volatile fraction; replacement passed all checks and is the accepted payload."},
-{"itemId": "WASTEWATER-TREATMENT-L3-488", "questionNum": 2488, "reason": "Original rejected pre-acceptance: masked-stem near-duplicate of an existing SVI item. Replaced in place with a two-sample settleability comparison; replacement passed all checks and is the accepted payload."},
-{"itemId": "WASTEWATER-TREATMENT-L3-489", "questionNum": 2489, "reason": "Original rejected pre-acceptance: masked-stem near-duplicate of an existing clarifier solids loading item. Replaced in place with a loading calculation deriving area from diameter and adding RAS flow; replacement passed all checks and is the accepted payload."},
-{"itemId": "WASTEWATER-TREATMENT-L3-491", "questionNum": 2491, "reason": "Original rejected pre-acceptance: masked-stem near-duplicate of an existing F/M item and of the original L3-487 shape. Replaced in place with an inverse F/M control calculation solving for required MLVSS; replacement passed all checks and is the accepted payload."},
-{"itemId": "WASTEWATER-TREATMENT-L3-503", "questionNum": 2503, "reason": "Original rejected pre-acceptance: masked-stem near-duplicate of an existing UV disinfection item. Replaced in place with an easy recall question on UV sleeve fouling and cleaning; replacement passed all checks and is the accepted payload."},
-{"itemId": "WASTEWATER-TREATMENT-L3-574", "questionNum": 2574, "reason": "Original rejected pre-acceptance: masked-stem near-duplicate of an existing nutrient mass balance item. Replaced in place with a load-based removal efficiency calculation; replacement passed all checks and is the accepted payload."},
-{"itemId": "WASTEWATER-TREATMENT-L3-578", "questionNum": 2578, "reason": "Original rejected pre-acceptance: masked-stem near-duplicate of an existing nutrient mass balance item. Replaced in place with a chemical product mass calculation from a phosphorus load and a given dose ratio; replacement passed all checks and is the accepted payload."},
-{"itemId": "WASTEWATER-TREATMENT-L3-632", "questionNum": 2632, "reason": "Original rejected pre-acceptance: stem exactly duplicated an existing bank item (what SRT describes). Replaced in place with an easy recall question on the F/M abbreviation; replacement passed all checks and is the accepted payload."},
-{"itemId": "WASTEWATER-TREATMENT-L3-665", "questionNum": 2665, "reason": "Original rejected pre-acceptance: masked-stem near-duplicate of an existing clarifier solids loading item. Replaced in place with a sludge blanket solids inventory calculation; replacement passed all checks and is the accepted payload."},
-{"itemId": "WASTEWATER-TREATMENT-L3-669", "questionNum": 2669, "reason": "Original rejected pre-acceptance: masked-stem near-duplicate of an existing clarifier solids loading item. Replaced in place with a limiting solids flux back-calculation for maximum influent flow; replacement passed all checks and is the accepted payload."}
-], "notes": ["Coordinator metadata correction (not a content rejection): 24 items in batches 2 to 4 carried module values ('Equipment Evaluation', 'Maintenance & Operation') outside the SPEC module list; the module field was set to the SPEC module 'Treatment Process Evaluation & Adjustment' used uniformly by batches 1 and 5 for the same topics. No other field changed.", "Bank answer-length metric: correct option strictly longest in 19% of items; no length flags."]}
+{
+ "accepted": 220,
+ "withheld": [],
+ "rejected": [
+  {
+   "itemId": "WASTEWATER-TREATMENT-L3-487",
+   "questionNum": 2487,
+   "reason": "Original rejected pre-acceptance: masked-stem near-duplicate (Jaccard >= 0.85) of an existing F/M item. Replaced in place with a two-step F/M deriving MLVSS from MLSS and a volatile fraction; replacement passed all checks and is the accepted payload."
+  },
+  {
+   "itemId": "WASTEWATER-TREATMENT-L3-488",
+   "questionNum": 2488,
+   "reason": "Original rejected pre-acceptance: masked-stem near-duplicate of an existing SVI item. Replaced in place with a two-sample settleability comparison; replacement passed all checks and is the accepted payload."
+  },
+  {
+   "itemId": "WASTEWATER-TREATMENT-L3-489",
+   "questionNum": 2489,
+   "reason": "Original rejected pre-acceptance: masked-stem near-duplicate of an existing clarifier solids loading item. Replaced in place with a loading calculation deriving area from diameter and adding RAS flow; replacement passed all checks and is the accepted payload."
+  },
+  {
+   "itemId": "WASTEWATER-TREATMENT-L3-491",
+   "questionNum": 2491,
+   "reason": "Original rejected pre-acceptance: masked-stem near-duplicate of an existing F/M item and of the original L3-487 shape. Replaced in place with an inverse F/M control calculation solving for required MLVSS; replacement passed all checks and is the accepted payload."
+  },
+  {
+   "itemId": "WASTEWATER-TREATMENT-L3-503",
+   "questionNum": 2503,
+   "reason": "Original rejected pre-acceptance: masked-stem near-duplicate of an existing UV disinfection item. Replaced in place with an easy recall question on UV sleeve fouling and cleaning; replacement passed all checks and is the accepted payload."
+  },
+  {
+   "itemId": "WASTEWATER-TREATMENT-L3-574",
+   "questionNum": 2574,
+   "reason": "Original rejected pre-acceptance: masked-stem near-duplicate of an existing nutrient mass balance item. Replaced in place with a load-based removal efficiency calculation; replacement passed all checks and is the accepted payload."
+  },
+  {
+   "itemId": "WASTEWATER-TREATMENT-L3-578",
+   "questionNum": 2578,
+   "reason": "Original rejected pre-acceptance: masked-stem near-duplicate of an existing nutrient mass balance item. Replaced in place with a chemical product mass calculation from a phosphorus load and a given dose ratio; replacement passed all checks and is the accepted payload."
+  },
+  {
+   "itemId": "WASTEWATER-TREATMENT-L3-632",
+   "questionNum": 2632,
+   "reason": "Original rejected pre-acceptance: stem exactly duplicated an existing bank item (what SRT describes). Replaced in place with an easy recall question on the F/M abbreviation; replacement passed all checks and is the accepted payload."
+  },
+  {
+   "itemId": "WASTEWATER-TREATMENT-L3-665",
+   "questionNum": 2665,
+   "reason": "Original rejected pre-acceptance: masked-stem near-duplicate of an existing clarifier solids loading item. Replaced in place with a sludge blanket solids inventory calculation; replacement passed all checks and is the accepted payload."
+  },
+  {
+   "itemId": "WASTEWATER-TREATMENT-L3-669",
+   "questionNum": 2669,
+   "reason": "Original rejected pre-acceptance: masked-stem near-duplicate of an existing clarifier solids loading item. Replaced in place with a limiting solids flux back-calculation for maximum influent flow; replacement passed all checks and is the accepted payload."
+  }
+ ],
+ "notes": [
+  "Coordinator metadata correction (not a content rejection): 24 items in batches 2 to 4 carried module values ('Equipment Evaluation', 'Maintenance & Operation') outside the SPEC module list; the module field was set to the SPEC module 'Treatment Process Evaluation & Adjustment' used uniformly by batches 1 and 5 for the same topics. No other field changed.",
+  "Bank answer-length metric: correct option strictly longest in 19% of items; no length flags."
+ ],
+ "nearDuplicatePairReview": [
+  {
+   "pair": [
+    "WASTEWATER-TREATMENT-L3-663",
+    "WASTEWATER-TREATMENT-L3-667"
+   ],
+   "similarity": 0.9697,
+   "decision": "replaced",
+   "replacedItemId": "WASTEWATER-TREATMENT-L3-667",
+   "reason": "Both items are the direct F/M ratio calculation, BOD load divided by MLVSS inventory, differing only in flow, BOD, volume and MLVSS numbers. Same formula and scenario, so the second item was replaced.",
+   "oldPayloadSha256": "97836df90c9e94ab614debe73180577e26adbac47bea9ca32de9f99bd936b735",
+   "newPayloadSha256": "e1abda823a5fe11f6eaa43a0a53cce2b49921255b797b80391e9bc8ca349aab6",
+   "oldStem": "A regional plant treats 12500 m3/day with an influent BOD of 160 mg/L. Its aeration volume is 4000 m3 with a mixed liquor volatile suspended solids concentration of 2500 mg/L. What is the food to microorganism ratio? Round to 2 decimal places.",
+   "newStem": "A circular clarifier receives 15000 m3/day. Its effluent weir runs around the full circumference of the tank, and the weir diameter is 25 m. Use pi as 3.1416. What is the weir overflow rate? Round to 2 decimal places."
+  }
+ ]
+}

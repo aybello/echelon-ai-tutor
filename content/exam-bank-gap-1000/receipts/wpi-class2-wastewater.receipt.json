@@ -1,19 +1,19 @@
 {
  "reviewer": "owner-authorized-ai-review",
  "model": "Muse Wonder",
- "reviewDateUtc": "2026-11-23T17:59:30Z",
+ "reviewDateUtc": "2026-11-23T18:41:05Z",
  "sourceBranch": "exam-bank-gap-1000-2026-11-23",
  "baseCommit": "6b15ae5120c63cbfd28ea1c2c7aff31cc64ff526",
  "courseKey": "wpi-class2-wastewater",
  "canonicalBankKey": "wpi-class2-wastewater",
  "itemBankKey": "wpi-class2-wastewater",
- "packageSha256": "37b915e3a4315b08a66ca7f834ca7350c5bbbdcbd3f9e40d6f8d05a74a0becdd",
- "additionsFileSha256": "b8f362b42958e924b113f05b0e9cbd774f8e519874b985bae377ff5dd73f82a3",
+ "packageSha256": "0cac70dde6753b690a4871975acb5c18c650df0c2f1e9568a6cd6e736e1345bc",
+ "additionsFileSha256": "439bba1eb8d88f6b47dc580b523a842745996eaa9494f37b21228894819549a1",
  "batchFileSha256": {
   "batch-1.json": "3773d2d1f321ef8d6272aa317cd9979043bb49cbc24f64fe93a454dc11006763",
   "batch-1.verify.json": "ef3b4f135389f06442407e00586646b408633fb1b4508c3a1205b593bb1680c0",
-  "batch-2.json": "9f815bc9505c8c92a348ecfe008f0d7426e81d70b93ac1b3deafbae5e078dd10",
-  "batch-2.verify.json": "31273cc406c7775696c1893798926f0081008ec868d207eb765d2f02b643b0c2",
+  "batch-2.json": "b815a1d6d7f3b80d954966e603866ca6251f0c093abac8705baf9082d54c5a88",
+  "batch-2.verify.json": "968526ddb2e1b271880e0b85ed5259a5b2d12d295756058e9dce6068900b1574",
   "batch-3.json": "681a44f3350fbfa6661082c0638487a3be6f2ed0e400645031fd39be90c27e73",
   "batch-3.verify.json": "2feeeb912c66513c3f1166ed98c1721c740237c602bbe0c42b577d5062acb951",
   "batch-4.json": "69695e5b03a537b34ca8929c08cd9bb0e823eaade31b090b8134a5266d2e4f27",
@@ -29,10 +29,87 @@
   "rejected": []
  },
  "checks": {
-  "schemaValidation": "see validate_gap.py run log in DUPLICATE-AND-SAFETY-REPORT.md",
-  "calculationVerification": null,
-  "dedup": {},
-  "quality": null
+  "schemaValidation": {
+   "checker": "validate_gap.py",
+   "checkerSha256": "2dc1a05aee0cd04c4fadd263ae0b724005ad793c959876b60d227f6940f3dab5",
+   "configSha256": "0b3ce1f0495aaca40fb2b0817cfca80786aef2a0d30cab555fe22960c7c1d8ba",
+   "payloadDigest": "0cac70dde6753b690a4871975acb5c18c650df0c2f1e9568a6cd6e736e1345bc",
+   "errors": [],
+   "warnings": []
+  },
+  "calculationVerification": {
+   "checker": "verify_calcs_gap.py",
+   "checkerSha256": "45907f709ec6056078e083990da0716582652f1adfd5c862f0da1a6f90f52b07",
+   "configSha256": "0b3ce1f0495aaca40fb2b0817cfca80786aef2a0d30cab555fe22960c7c1d8ba",
+   "payloadDigest": "0cac70dde6753b690a4871975acb5c18c650df0c2f1e9568a6cd6e736e1345bc",
+   "checked": 40,
+   "problems": [],
+   "checksPerformed": [
+    "expression recomputation in exact rational arithmetic",
+    "exactly-one-record enforcement",
+    "item/record field consistency",
+    "correctAnswer exact numeric and unit match",
+    "result-step value match (treat variant steps: Relationship, Substitution and Result entries required; Result entry must contain the expected value as a standalone number token)"
+   ]
+  },
+  "dedup": {
+   "new_items": 203,
+   "existing_corpus_items": 200,
+   "exact": [],
+   "near": [],
+   "expression_dups": [],
+   "option_collisions": [],
+   "cross_bank_exact": [],
+   "corpus": {
+    "files": [
+     {
+      "path": "exam-bank-expansion/wpi-class2-wastewater/additions.json",
+      "sha256": "dc5fd6d8156126fa821c8275f9491d342d925aaee573037c9c153f297b1aaf47",
+      "items": 200
+     }
+    ],
+    "totalItems": 200,
+    "corpusSha256": "3b9fb65135968dbc7037cf79c0969fd466fcc468337d62b92ae06a0495356152"
+   },
+   "config": {
+    "jaccardThreshold": 0.85,
+    "checker": "dedup_gap.py",
+    "checkerSha256": "ac4ce3075271eb61a3fc1a819d3582bd6c7b5d7111a23e895eeab72c58f416c8"
+   },
+   "payloadDigest": "0cac70dde6753b690a4871975acb5c18c650df0c2f1e9568a6cd6e736e1345bc",
+   "configSha256": "0b3ce1f0495aaca40fb2b0817cfca80786aef2a0d30cab555fe22960c7c1d8ba"
+  },
+  "quality": {
+   "checker": "quality_checks.py",
+   "checkerSha256": "2fa37c2d8676b68b4b73406ed3f53a68e3569bf2146febbb6feffee5e421d0b6",
+   "configSha256": "0b3ce1f0495aaca40fb2b0817cfca80786aef2a0d30cab555fe22960c7c1d8ba",
+   "payloadDigest": "0cac70dde6753b690a4871975acb5c18c650df0c2f1e9568a6cd6e736e1345bc",
+   "items": 203,
+   "length_flags": [
+    "WASTEWATER-TREATMENT-L2-483: correct/distractor length ratio 1.97"
+   ],
+   "length_hard": [],
+   "correct_is_longest_share": 0.419,
+   "absolute_in_correct": [
+    "WASTEWATER-TREATMENT-L2-518: absolute wording in correct option: Ammonia reacts with chlorine to form combined chlorine, so d",
+    "WASTEWATER-TREATMENT-L2-563: absolute wording in correct option: Warm sludge denitrifies faster, so solids must spend less ti"
+   ],
+   "absolute_in_stem_count": 20,
+   "true_false_items": [],
+   "true_false_share": 0.0,
+   "position_flags": []
+  }
+ },
+ "bindings": {
+  "gapConfigSha256": "0b3ce1f0495aaca40fb2b0817cfca80786aef2a0d30cab555fe22960c7c1d8ba",
+  "manifestSha256": "3f01bc1a60eb65ba607bcef538374b7e9a287bf9f8e990ee788a28d12c38359b",
+  "checkers": {
+   "validate_gap.py": "2dc1a05aee0cd04c4fadd263ae0b724005ad793c959876b60d227f6940f3dab5",
+   "verify_calcs_gap.py": "45907f709ec6056078e083990da0716582652f1adfd5c862f0da1a6f90f52b07",
+   "dedup_gap.py": "ac4ce3075271eb61a3fc1a819d3582bd6c7b5d7111a23e895eeab72c58f416c8",
+   "quality_checks.py": "2fa37c2d8676b68b4b73406ed3f53a68e3569bf2146febbb6feffee5e421d0b6",
+   "receipts.py": "07e07c6ac08f323495ab296a0086fd4b23733d9342ab738494a8a6280819c313"
+  }
  },
  "items": [
   {
@@ -501,7 +578,7 @@
    "bankKey": "wpi-class2-wastewater",
    "questionNum": 2528,
    "itemId": "WASTEWATER-TREATMENT-L2-528",
-   "payloadSha256": "f07b36893dfb932c969c1aec68b0edb3899884a133bf73a5f5e27fb83f55b32b"
+   "payloadSha256": "5f71e6d11e1016d133a6ded02335ccc63af8748f4242d4dc12536c38bb2ecc19"
   },
   {
    "bankKey": "wpi-class2-wastewater",

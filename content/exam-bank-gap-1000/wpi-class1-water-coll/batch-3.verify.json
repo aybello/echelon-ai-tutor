@@ -36,10 +36,10 @@
  },
  {
   "itemId": "COLLECTION-L1-577",
-  "expression": "3.1416*0.1*0.1*1200*1000/25/60",
-  "expected": "25.13",
-  "decimalPlaces": 2,
-  "unit": "minutes"
+  "expression": "120*1.2*2.5",
+  "expected": "360.0",
+  "decimalPlaces": 1,
+  "unit": "m3"
  },
  {
   "itemId": "COLLECTION-L1-578",

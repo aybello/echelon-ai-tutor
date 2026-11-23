@@ -8,10 +8,10 @@
  },
  {
   "itemId": "WASTEWATER-TREATMENT-L1-653",
-  "expression": "(3600/2)/(20*9)",
-  "expected": "10.0",
+  "expression": "5400/36",
+  "expected": "150.0",
   "decimalPlaces": 1,
-  "unit": "m3/m2/day"
+  "unit": "m3/m/day"
  },
  {
   "itemId": "WASTEWATER-TREATMENT-L1-654",
