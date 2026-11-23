@@ -17,7 +17,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 from courses_data import COURSES
 
-ROOT = Path.home() / "workspace/echelon/exam-bank-expansion"
+ROOT = Path(__file__).resolve().parent.parent
 CFG = {c["key"]: c for c in COURSES}
 TOKEN = re.compile(r"\d+(?:\.\d+)?|[()+\-*/]")
 
@@ -79,6 +79,7 @@ def main():
         for b in (1, 2, 3, 4):
             bf, vf = d / f"batch-{b}.json", d / f"batch-{b}.verify.json"
             if not bf.exists() or not vf.exists():
+                problems.append(f"b{b}: missing batch or calculation verification file")
                 continue
             items = json.loads(bf.read_text())
             recs = json.loads(vf.read_text())
@@ -87,6 +88,9 @@ def main():
             for it in calc_items:
                 ref = it.get("itemId") or str(it.get("questionNum"))
                 by_ref[ref] = it
+            record_refs = [str(rec.get("itemId")) for rec in recs]
+            if len(record_refs) != len(set(record_refs)) or set(record_refs) != set(by_ref):
+                problems.append(f"b{b}: calculation records must match every calculation item exactly once")
             for rec in recs:
                 checked += 1
                 ref = str(rec.get("itemId"))
@@ -125,6 +129,8 @@ def main():
                 ca = str(it.get("correctAnswer") or (it.get("options", [""] * 4)[it.get("correctIndex", 0)] if it.get("options") else ""))
                 if exp_str not in ca:
                     problems.append(f"b{b} {ref}: correctAnswer {ca!r} does not contain expected {exp_str}")
+        if checked != 40:
+            problems.append(f"expected 40 calculation records for {key}, checked {checked}")
         report[key] = {"checked": checked, "problems": problems}
         total += checked; bad += len(problems)
         print(f"{key}: {checked} calc records checked, {len(problems)} problems")

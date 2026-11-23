@@ -51,7 +51,8 @@ beforeAll(async () => {
       name: "isolated-quiz-shell",
       setup(builder) {
         builder.onResolve({ filter: /^sonner$|^wouter$|^@\/components\/|^@\/lib\/|^@shared\// }, args => {
-          if (["@/components/NextStepCard", "@/lib/nextStepHref", "@/lib/readAccessToken", "@shared/courseRegistry", "@shared/usStudyContext"].includes(args.path)) return;
+          // Navigation stays real, including its pure eligibility dependency.
+          if (["@/components/NextStepCard", "@/lib/nextStepHref", "@/lib/readAccessToken", "@/lib/courseNavigation", "@shared/funnelNavigation", "@shared/interactiveEligibility", "@shared/courseRegistry", "@shared/usStudyContext"].includes(args.path)) return;
           return { path: args.path, namespace: "mock" };
         });
         builder.onLoad({ filter: /.*/, namespace: "mock" }, args => {
@@ -65,15 +66,7 @@ beforeAll(async () => {
             export const useSearch=()=>location.search;
             export const Link=({href,children,...props})=><a href={href} {...props} onClick={event=>{event.preventDefault();history.pushState({},'',href)}}>{children}</a>;
           ` };
-          if (args.path === "@/lib/courseNavigation") return { contents: `
-            export const getCourseInteractiveHref=(courseKey,search='')=>{
-              if (!courseKey || courseKey==='electrician-309a') return undefined;
-              const province=new URLSearchParams(search).get('province')?.toUpperCase();
-              const query=new URLSearchParams();
-              if (['ON','BC','AB','SK','MB','NS'].includes(province)) query.set('province',province);
-              return '/courses/'+encodeURIComponent(courseKey)+'/interactive'+(query.size?'?'+query:'');
-            };
-          ` };
+          if (args.path === "@/components/FeatureSuggestion") return { contents: `export const SuggestionInvitation=()=>null;` };
           if (args.path === "@/components/PracticeSaveStatus") return { contents: `
             import {useSyncExternalStore} from 'react';
             const subscribe=fn=>{window.auditListeners.add(fn);return()=>window.auditListeners.delete(fn)};

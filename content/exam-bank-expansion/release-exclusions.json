@@ -3,9 +3,9 @@
   "generatedAtUtc": "2026-11-23T05:14:06.621Z",
   "source": "live-exam-bank-dedup-2026-11-22.json",
   "totalStaged": 7000,
-  "withheldCount": 9,
-  "approvedFlaggedCount": 2,
-  "releaseCandidateCount": 6991,
+  "withheldCount": 12,
+  "approvedFlaggedCount": 0,
+  "releaseCandidateCount": 6988,
   "reviewers": [
     {
       "provider": "Google",
@@ -74,21 +74,37 @@
       "itemId": "DISTRIBUTION-L1-351",
       "questionNum": 2351,
       "payloadSha256": "01f2f6690b64b1388317a0ce26ec82e7870e03e2beed959eb3bd579190f77813"
-    }
-  ],
-  "approvedFlagged": [
+    },
     {
       "bankKey": "wpi-class1-wastewater",
       "itemId": "WASTEWATER-TREATMENT-L1-303",
       "questionNum": 2303,
-      "payloadSha256": "a3ccdb52c56017c0e25e0dd2085fcecce12eb3049a463370948f5f89103a6a1e"
+      "payloadSha256": "a3ccdb52c56017c0e25e0dd2085fcecce12eb3049a463370948f5f89103a6a1e",
+      "reason": "Owner-approved withholding: exact normalized stem duplicate found during live-bank comparison; preserve existing live row.",
+      "decisionBy": "owner: Ay Bello",
+      "decisionAtUtc": "2026-11-23T05:49:15Z"
     },
     {
       "bankKey": "wpi-class1-wastewater",
       "itemId": "WASTEWATER-TREATMENT-L1-308",
       "questionNum": 2308,
-      "payloadSha256": "cc2fc0776d0fb778ac269e32f8bbe9ba27687a21203250ba1f5ac6fa324c8c3b"
+      "payloadSha256": "cc2fc0776d0fb778ac269e32f8bbe9ba27687a21203250ba1f5ac6fa324c8c3b",
+      "reason": "Owner-approved withholding: exact normalized stem duplicate found during live-bank comparison; preserve existing live row.",
+      "decisionBy": "owner: Ay Bello",
+      "decisionAtUtc": "2026-11-23T05:49:15Z"
+    },
+    {
+      "bankKey": "wpi-class1-water-coll",
+      "itemId": "COLLECTION-L1-266",
+      "questionNum": 2266,
+      "payloadSha256": "aeef1233f85f22eeb1bd61081abc4b590c9d6cb458403f964946c90fffa23421",
+      "reason": "Exact normalized stem duplicate in authoritative mapped bank wpi-class1-wastewater-coll, existing question ID 46720, number 7. Preserve existing live row.",
+      "decisionBy": "Manus AI: enforce owner no-duplicate release instruction",
+      "decisionAtUtc": "2026-11-23T06:00:00Z"
     }
   ],
-  "policy": "Do not import withheld items. Any importer must verify payloadSha256 before accepting an approved item and fail closed on mismatch."
+  "approvedFlagged": [],
+  "policy": "Do not import withheld items. Any importer must verify payloadSha256 before accepting an approved item and fail closed on mismatch.",
+  "updatedAtUtc": "2026-11-23T05:58:34.392615+00:00",
+  "ownerDecision": "2026-11-23: keep existing duplicates unchanged and withhold the two exact candidate duplicates."
 }

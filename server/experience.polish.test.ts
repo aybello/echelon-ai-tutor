@@ -23,12 +23,16 @@ const subscriptionSuccessSource = readFileSync(
   resolve(__dirname, "../client/src/pages/SubscriptionSuccess.tsx"), "utf8"
 );
 describe("post-purchase continuation", () => {
-  it("uses the Stripe-verified product and continues directly to activation", () => {
+  it("uses the Stripe-verified canonical course and continues to activation only after fulfillment", () => {
     expect(purchaseSuccessSource).toContain(
       "setPurchasedProductKey(data.paid ? data.productKey"
     );
+    expect(purchaseSuccessSource).toContain("setVerified(data.paid)");
     expect(purchaseSuccessSource).toContain(
-      "href={`/activate/${encodeURIComponent(purchasedProductKey)}`}"
+      "const purchasedCourse = verified ? purchasedCourseNavigation(purchasedProductKey) : null;"
+    );
+    expect(purchaseSuccessSource).toMatch(
+      /\{!fulfillmentPending && purchasedCourse && \(\s*<Link href=\{`\/activate\/\$\{encodeURIComponent\(purchasedCourse\.courseKey\)\}`\}>/
     );
     expect(purchaseSuccessSource).not.toContain("/account?next=");
   });

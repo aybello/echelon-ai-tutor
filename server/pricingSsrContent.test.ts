@@ -85,7 +85,7 @@ describe("public inventory claims", () => {
   it("does not overstate the homepage or FAQ question count", () => {
     const homepage = bodyFor("/");
     expect(homepage).not.toMatch(/over 500|500\+/i);
-    expect(homepage).toMatch(/400\+ practice questions/i);
+    expect(homepage).toContain("Inclusions and question totals vary by course");
 
     const faq = STATIC_PAGE_META.find(page => page.path === "/faq");
     expect(faq?.jsonLd).not.toMatch(/over 500|500\+/i);

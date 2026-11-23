@@ -51,3 +51,9 @@ Per the Manus release rules (`~/workspace/echelon/release-path-rules-2026-11-22.
 ## 6. Review level
 
 **These 7,000 questions are AI-authored and mechanically verified only. They have NOT been human-reviewed, NOT reviewed by a subject-matter expert, and are NOT endorsed by any exam board or regulator (including OWWCO, EOCP, or WPI/ABC).** The mechanical verification proves schema conformity, internal consistency, arithmetic correctness, and freedom from duplicates within the limits stated above. It does not prove that any individual question is technically correct, unambiguous, or exam-appropriate. A human review pass is required before any of this content is released to learners.
+
+### Later owner review and exclusion decision, 2026-11-23
+
+The paragraph above describes the original staging state. The owner, Ay Bello, subsequently stated that he personally reviewed the questions and authorized release. He approved preserving existing live content and withholding the two previously retained flagged duplicates, in addition to the original nine exclusions. The current manifest therefore permits **6,989 candidates and withholds 11 items**. This owner review does not establish subject-matter certification or exam-board endorsement. Exact decisions and approved source-to-database mappings are recorded in `RELEASE-REVIEW.md` and the importer receipts. Required Privacy and Quality Gates remain mandatory.
+
+The subsequent comparison against the actual authoritative production target found one additional exact mapped-bank duplicate, `COLLECTION-L1-266`. It is also withheld under the owner's no-duplicate instruction. Final release scope is **6,988 candidates and 12 withheld**. The repaired calculation verifier checks the complete checked-in set of 1,400 calculation records and rejects missing or incomplete inputs. Earlier zero-record runs did not verify this package.

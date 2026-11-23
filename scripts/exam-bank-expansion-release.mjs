@@ -10,6 +10,12 @@ const MANIFEST_PATH = resolve(PACKAGE_ROOT, "release-exclusions.json");
 const RELEASE_KEY_PREFIX = "exam-bank-expansion-2026-11-23";
 const REVIEWER = "owner-authorized-owner-review: Ay Bello";
 const QUESTION_FIELDS = ["bankKey", "questionNum", "module", "difficulty", "question", "options", "correctIndex", "explanation", "steps", "tip", "isCalc", "topic", "cognitiveLevel", "sourceTitle", "sourceReference", "sourceUrl", "blueprintObjective"];
+const APPROVED_BANK_KEY_MAPPINGS = new Map([
+  ["wpi-class1-water-coll", "wpi-class1-wastewater-coll"],
+  ["wpi-class2-water-coll", "wpi-class2-wastewater-coll"],
+  ["wpi-class3-water-coll", "wpi-class3-wastewater-coll"],
+  ["wpi-class4-water-coll", "wpi-class4-wastewater-coll"],
+]);
 
 function fail(message) { throw new Error(`Exam-bank expansion release blocked: ${message}`); }
 function canonical(value) {
@@ -24,12 +30,29 @@ export function payloadHash(item) { return digest(item); }
 export function normalizeStem(value) { return String(value ?? "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim(); }
 export function itemIdentity(item) { return item.itemId ?? `${item.bankKey}-${item.questionNum}`; }
 export function mapDatabaseItem(item) {
-  if (item.bankKey === "oit" && item.stream === "Wastewater Treatment") {
-    if (item.questionNum < 1501 || item.questionNum > 1600) fail(`OIT wastewater source question number outside approved range: ${item.questionNum}`);
-    return { ...item, questionNum: item.questionNum + 100 };
+  const mapped = APPROVED_BANK_KEY_MAPPINGS.has(item.bankKey)
+    ? { ...item, bankKey: APPROVED_BANK_KEY_MAPPINGS.get(item.bankKey) }
+    : { ...item };
+  if (mapped.bankKey === "oit" && mapped.stream === "Wastewater Treatment") {
+    if (mapped.questionNum < 1501 || mapped.questionNum > 1600) fail(`OIT wastewater source question number outside approved range: ${mapped.questionNum}`);
+    return { ...mapped, questionNum: mapped.questionNum + 100 };
   }
-  return { ...item };
+  return mapped;
 }
+function sourceForMappedItem(pkg, item) {
+  return pkg.sourceCandidates.find(source => {
+    const mapped = mapDatabaseItem(source);
+    return itemIdentity(mapped) === itemIdentity(item) && mapped.bankKey === item.bankKey && mapped.questionNum === item.questionNum;
+  });
+}
+function mappingDetails(source, item) {
+  const fields = [];
+  if (source.bankKey !== item.bankKey) fields.push({ field: "bankKey", from: source.bankKey, to: item.bankKey });
+  if (source.questionNum !== item.questionNum) fields.push({ field: "questionNum", from: source.questionNum, to: item.questionNum });
+  return fields.length ? { fields, reason: fields.some(field => field.field === "bankKey") ? "approved WPI collection bank alias resolution" : "approved OIT wastewater collision resolution" } : null;
+}
+function identityDetails(item) { return { bankKey: item.bankKey, questionNum: item.questionNum, itemId: itemIdentity(item) }; }
+function blueprintDetails(meta) { return Object.fromEntries(Object.entries(meta).filter(([key]) => !["totalQuestions", "contentVersion"].includes(key))); }
 function isApprovedOitSourceCollision(left, right) {
   return left.bankKey === "oit" && right.bankKey === "oit"
     && left.questionNum === right.questionNum
@@ -74,6 +97,7 @@ export function loadPackage() {
   for (const [bankKey, items] of banks) if (items.length !== 200) fail(`${bankKey} has ${items.length} items, expected 200`);
 
   const withheld = new Map(manifest.withheld.map(x => [`${x.bankKey}|${x.itemId}|${x.questionNum}`, x]));
+  if (withheld.size !== manifest.withheld.length || withheld.size !== Number(manifest.withheldCount) || manifest.approvedFlagged.length !== Number(manifest.approvedFlaggedCount)) fail("manifest exclusion counts or identities are inconsistent");
   const foundWithheld = new Set();
   for (const item of entries) {
     const key = `${item.bankKey}|${itemIdentity(item)}|${item.questionNum}`;
@@ -123,15 +147,15 @@ function rowMatchesItem(row, item) {
 
 export function planAgainstRows(pkg, existingRows) {
   const byNumber = new Map();
-  const stems = new Map();
   const nonRejectedStems = new Set();
+  let existingDuplicateStems = 0;
   for (const row of existingRows) {
     const key = `${row.bankKey}|${row.questionNum}`;
     if (byNumber.has(key)) fail(`live bank has duplicate question number ${key}`);
     byNumber.set(key, row);
     const stem = `${row.bankKey}|${normalizeStem(row.question)}`;
-    if (row.reviewStatus !== "rejected" && nonRejectedStems.has(stem)) fail(`live bank has duplicate non-rejected stem ${stem}`);
-    stems.set(stem, row);
+    // Owner decision: leave existing duplicates untouched. Only NEW conflicts block this additive release.
+    if (row.reviewStatus !== "rejected" && nonRejectedStems.has(stem)) existingDuplicateStems++;
     if (row.reviewStatus !== "rejected") nonRejectedStems.add(stem);
   }
   const conflicts = [];
@@ -142,7 +166,7 @@ export function planAgainstRows(pkg, existingRows) {
     if (nonRejectedStems.has(stemKey)) conflicts.push(`${numberKey}: question stem already exists`);
   }
   if (conflicts.length) fail(conflicts.slice(0, 20).join("; ") + (conflicts.length > 20 ? `; and ${conflicts.length - 20} more` : ""));
-  return { candidates: pkg.candidates.length, banks: pkg.banks.size, conflicts: [], existingRows: existingRows.length };
+  return { candidates: pkg.candidates.length, banks: new Set(pkg.candidates.map(item => item.bankKey)).size, conflicts: [], existingRows: existingRows.length, existingDuplicateStems };
 }
 
 async function visibleOutside(connection, bankKeys) {
@@ -152,7 +176,7 @@ async function visibleOutside(connection, bankKeys) {
 }
 async function verifyReceiptRows(connection, pkg, idsByKey) {
   for (const item of pkg.candidates) {
-    const source = pkg.sourceCandidates.find(candidate => candidate.bankKey === item.bankKey && itemIdentity(candidate) === itemIdentity(item));
+    const source = sourceForMappedItem(pkg, item);
     if (!source) fail(`missing original source item for ${item.bankKey}#${item.questionNum}`);
     const id = idsByKey.get(`${item.bankKey}|${item.questionNum}`);
     const [rows] = await connection.execute("SELECT * FROM questions WHERE id = ?", [id]);
@@ -160,14 +184,19 @@ async function verifyReceiptRows(connection, pkg, idsByKey) {
     const [receipts] = await connection.execute("SELECT bankKey, questionNum, sourceContentVersion, contentHash, payload FROM question_content_snapshots WHERE releaseKey = ? AND questionId = ?", [pkg.releaseKey, id]);
     if (receipts.length !== 1) fail(`missing receipt ${item.bankKey}#${item.questionNum}`);
     const payload = JSON.parse(receipts[0].payload);
-    const expectedMapping = source.questionNum === item.questionNum ? null : { field: "questionNum", from: source.questionNum, to: item.questionNum, reason: "approved OIT wastewater collision resolution" };
+    const expectedMapping = mappingDetails(source, item);
     const storedReviewedAt = rows[0].reviewedAt ? new Date(rows[0].reviewedAt).toISOString() : null;
+    if (digest(payload.sourceIdentity) !== digest(identityDetails(source)) || digest(payload.mappedIdentity) !== digest(identityDetails(item))) fail(`receipt source or mapped identity mismatch ${item.bankKey}#${item.questionNum}`);
     if (rows[0].reviewedBy !== payload.reviewer || storedReviewedAt !== payload.reviewedAt || receipts[0].bankKey !== item.bankKey || receipts[0].questionNum !== item.questionNum || Number(receipts[0].sourceContentVersion) !== 0 || receipts[0].contentHash !== payloadHash(item) || payload.kind !== "exam-bank-expansion-additive-insert" || payload.releaseKey !== pkg.releaseKey || payload.originalPayloadSha256 !== payloadHash(source) || payload.mappedPayloadSha256 !== payloadHash(item) || payload.packageSha256 !== pkg.packageSha256 || payload.itemKey !== `${item.bankKey}|${item.questionNum}` || payload.itemId !== itemIdentity(source) || !payload.item || payloadHash(payload.item) !== payloadHash(item) || JSON.stringify(payload.mapping ?? null) !== JSON.stringify(expectedMapping)) fail(`receipt hash, attribution, or mapping mismatch ${item.bankKey}#${item.questionNum}`);
   }
 }
 
 export async function applyPackage(connection, pkg, { reviewer = REVIEWER, now = new Date() } = {}) {
-  const bankKeys = [...pkg.banks.keys()].sort();
+  const bankKeys = [...new Set(pkg.candidates.map(item => item.bankKey))].sort();
+  // reviewedAt is TIMESTAMP(0). Bind the receipt to the exact persistable UTC time.
+  now = new Date(now);
+  if (!Number.isFinite(now.getTime())) fail("invalid review timestamp");
+  now.setUTCMilliseconds(0);
   await connection.beginTransaction();
   let committed = false;
   try {
@@ -187,13 +216,13 @@ export async function applyPackage(connection, pkg, { reviewer = REVIEWER, now =
     const idsByKey = new Map();
     const columns = "bankKey, questionNum, module, difficulty, question, options, correctIndex, explanation, steps, tip, isCalc, topic, cognitiveLevel, sourceTitle, sourceReference, sourceUrl, blueprintObjective, reviewStatus, reviewedBy, reviewedAt";
     for (const item of pkg.candidates) {
-      const source = pkg.sourceCandidates.find(candidate => candidate.bankKey === item.bankKey && itemIdentity(candidate) === itemIdentity(item));
+      const source = sourceForMappedItem(pkg, item);
       if (!source) fail(`missing original source item for ${item.bankKey}#${item.questionNum}`);
       const [result] = await connection.execute(`INSERT INTO questions (${columns}) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'approved', ?, ?)`, [...rowFor(item), reviewer, now]);
       if (result.affectedRows !== 1 || !result.insertId) fail(`insert failed ${item.bankKey}#${item.questionNum}`);
       const itemKey = `${item.bankKey}|${item.questionNum}`;
       idsByKey.set(itemKey, result.insertId);
-      const receiptPayload = { kind: "exam-bank-expansion-additive-insert", itemKey, itemId: itemIdentity(source), packageSha256: pkg.packageSha256, releaseKey: pkg.releaseKey, originalPayloadSha256: payloadHash(source), mappedPayloadSha256: payloadHash(item), mapping: source.questionNum === item.questionNum ? null : { field: "questionNum", from: source.questionNum, to: item.questionNum, reason: "approved OIT wastewater collision resolution" }, reviewer, reviewedAt: now.toISOString(), builderChecks: "package-validator=pass; calculation-verifier=pass; release-exclusion-verification=pass; live-bank-deduplication=pass", item };
+      const receiptPayload = { kind: "exam-bank-expansion-additive-insert", itemKey, itemId: itemIdentity(source), sourceIdentity: identityDetails(source), mappedIdentity: identityDetails(item), packageSha256: pkg.packageSha256, releaseKey: pkg.releaseKey, originalPayloadSha256: payloadHash(source), mappedPayloadSha256: payloadHash(item), mapping: mappingDetails(source, item), reviewer, reviewedAt: now.toISOString(), builderChecks: "package-validator=pass; calculation-verifier=pass; release-exclusion-verification=pass; live-candidate-deduplication=pass", item };
       await connection.execute("INSERT INTO question_content_snapshots (releaseKey, bankKey, questionId, questionNum, sourceContentVersion, contentHash, payload) VALUES (?, ?, ?, ?, ?, ?, ?)", [pkg.releaseKey, item.bankKey, result.insertId, item.questionNum, 0, payloadHash(item), JSON.stringify(receiptPayload)]);
     }
     for (const bankKey of bankKeys) {
@@ -201,6 +230,15 @@ export async function applyPackage(connection, pkg, { reviewer = REVIEWER, now =
       await connection.execute("UPDATE question_bank_meta SET totalQuestions = ?, contentVersion = contentVersion + 1 WHERE bankKey = ?", [Number(countRows[0].n), bankKey]);
     }
     await verifyReceiptRows(connection, pkg, idsByKey);
+    const [afterRows] = await connection.execute(`SELECT * FROM questions WHERE bankKey IN (${bankKeys.map(() => "?").join(",")}) FOR UPDATE`, bankKeys);
+    const afterById = new Map(afterRows.map(row => [row.id, row]));
+    if (afterRows.length !== existing.length + pkg.candidates.length || existing.some(row => digest(row) !== digest(afterById.get(row.id)))) fail("existing target-bank content changed or insertion count mismatch");
+    const [afterMetadata] = await connection.execute(`SELECT * FROM question_bank_meta WHERE bankKey IN (${bankKeys.map(() => "?").join(",")}) FOR UPDATE`, bankKeys);
+    for (const before of metadata) {
+      const after = afterMetadata.find(row => row.bankKey === before.bankKey);
+      const visibleCount = afterRows.filter(row => row.bankKey === before.bankKey && ["approved", "unreviewed"].includes(row.reviewStatus)).length;
+      if (!after || digest(blueprintDetails(before)) !== digest(blueprintDetails(after)) || Number(after.contentVersion) !== Number(before.contentVersion) + 1 || Number(after.totalQuestions) !== visibleCount) fail(`metadata preservation or count mismatch ${before.bankKey}`);
+    }
     if (await visibleOutside(connection, bankKeys) !== outsideBefore) fail("outside-bank inventory changed");
     await connection.commit(); committed = true;
     return { alreadyApplied: false, inserted: pkg.candidates.length, packageSha256: pkg.packageSha256, releaseKey: pkg.releaseKey, reviewer };
@@ -213,9 +251,13 @@ async function main() {
   console.log(JSON.stringify({ mode: apply ? "apply" : "dry-run", staged: pkg.entries.length, candidates: pkg.candidates.length, withheld: pkg.entries.length - pkg.candidates.length, banks: pkg.banks.size, packageSha256: pkg.packageSha256, releaseKey: pkg.releaseKey }, null, 2));
   if (!apply) { console.log("Dry run only. No database connection or writes performed."); return; }
   if (process.env.CONFIRM_EXPANSION_IMPORT !== pkg.packageSha256) fail(`set CONFIRM_EXPANSION_IMPORT=${pkg.packageSha256} to confirm this exact package`);
-  if (!process.env.DATABASE_URL) fail("DATABASE_URL is required for --apply");
+  const { activeScriptConnection } = await import("./lib/activeScriptConnection.mjs");
+  const target = activeScriptConnection();
+  if (!target.external || typeof target.options !== "object") fail("authoritative external production target is required");
+  const targetSha256 = digest({ host: target.options.host, port: target.options.port, database: target.options.database });
+  if (process.env.CONFIRM_EXPANSION_TARGET !== targetSha256) fail(`set CONFIRM_EXPANSION_TARGET=${targetSha256} to confirm the live target`);
   const mysql = await import("mysql2/promise");
-  const db = await mysql.createConnection(process.env.DATABASE_URL);
+  const db = await mysql.createConnection(target.options);
   try { console.log(JSON.stringify(await applyPackage(db, pkg), null, 2)); } finally { await db.end(); }
 }
 if (process.argv[1] && resolve(process.argv[1]) === resolve(fileURLToPath(import.meta.url))) main().catch(error => { console.error(error.message); process.exitCode = 1; });
