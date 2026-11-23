@@ -39,7 +39,7 @@
   },
   "calculationVerification": {
    "checker": "verify_calcs_gap.py",
-   "checkerSha256": "45907f709ec6056078e083990da0716582652f1adfd5c862f0da1a6f90f52b07",
+   "checkerSha256": "5d4a5952b765ee626744a180f47f7b82d4b9095a58759801e0132865f72b4382",
    "configSha256": "0b3ce1f0495aaca40fb2b0817cfca80786aef2a0d30cab555fe22960c7c1d8ba",
    "payloadDigest": "abb299e7cdd0c6ae5daf10739c3e2b1bd3518b407df3e5e1147a8b9ed952b833",
    "checked": 10,
@@ -74,12 +74,198 @@
      }
     ],
     "totalItems": 450,
-    "corpusSha256": "35ba9318f1edab6a10e2b3a5aa7970f71b06c451b10c8c71455216272a84c96b"
+    "corpusSha256": "8e70853b37280277ee9a80cc17e62e9be72bb1cd1068c49d81bc48699a184da3",
+    "globalNov22": {
+     "files": [
+      {
+       "path": "exam-bank-expansion/class1-wastewater-coll/additions.json",
+       "sha256": "34b7777a29d18e9ec5bb2a40f3218852d9954f492cd8eb57cfba6c92dc9f7f19",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class1-water/additions.json",
+       "sha256": "df88b9d9bb1464f540470ea274b0fb785124bce25df03c1e54942b747e1b4b26",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class1-water-dist/additions.json",
+       "sha256": "329e72c3edd06c4bae29f5a9c617b8a8b8e2796b5d4f5479b98bbcb34c4b6641",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class1-ww/additions.json",
+       "sha256": "90563f49d0fe1c39e80293409bf8782523b41221ae50f104dab532ed26645c2e",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class2-wastewater-coll/additions.json",
+       "sha256": "ca89489825aa3374437ae8889a4ae5894a36f127c4dcb308c498c4ba1df8e5b3",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class2-water/additions.json",
+       "sha256": "385b388466c1b7f4e6a0c686b44d8ae53168b833aa23b036fbd109b8928cb540",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class2-water-dist/additions.json",
+       "sha256": "19e3b0e6491deca77531e660d064048fd08a2b744e7ab682a4efee5fdbcbe40a",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class2-ww/additions.json",
+       "sha256": "bdf63927d6bad6a4b998d353777f3a90682a883f759ee4174a1a9824547096b9",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class3-wastewater-coll/additions.json",
+       "sha256": "22bb27af2c80dfa00386dc0e97abd261846b58d53bd018a26eb6333782710b12",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class3-water/additions.json",
+       "sha256": "34c78dfc6e6297751e2454e9a66dadc3ed7ee356716a88c867499a3129dc17f4",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class3-water-dist/additions.json",
+       "sha256": "c993927c03a1ce9817a8ea553cabf95a7b1fdd37a8500aadae6ee7f53d9c8f04",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class3-ww/additions.json",
+       "sha256": "ff411a32cba0eda233e09378cc1296172c27047a410bed55f51078c5ffc5274a",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class4-wastewater-coll/additions.json",
+       "sha256": "f5282577e09b2869a7d7d64e012d12ab1bf233fb39edac3dbe65b50a150a6a91",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class4-water/additions.json",
+       "sha256": "875e85fe3461dfc8bc071f3ce0feeb6e0544620b3946e209ed5d9797e44acc5e",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class4-water-dist/additions.json",
+       "sha256": "a8f67eee0d524be2d1d7dda9a9dbe32fa1a48b4a2b9f540fcd2a0bd030ac3f6b",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class4-ww/additions.json",
+       "sha256": "d1554f79de67a2a088c79f6be5882a0f72cb17c656ceee3436763550d4270e69",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/oit/additions-water.json",
+       "sha256": "bd790c18000682b45fc8747be13999c8def7149678534160be9c2d1dfbea4d89",
+       "items": 100
+      },
+      {
+       "path": "exam-bank-expansion/oit/additions-wastewater.json",
+       "sha256": "673ceedda7b46ea74c3a39c090abf2c485481d698a6d22855573a4958042170e",
+       "items": 100
+      },
+      {
+       "path": "exam-bank-expansion/oit-ww/additions-wastewater.json",
+       "sha256": "3a06447dc3fcc29a031900f43f2b4c25ed48b27211faa181937f18a6c79d9a85",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class1-wastewater/additions.json",
+       "sha256": "1c127c652039f0b9c765caec64e87e52d4df3adf0a52468e2a1686d33a40d3dc",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class1-water/additions.json",
+       "sha256": "4cd774bb5a6a8b2305bd61ef6dc73142572c0782498536d9a33feb6c36ff9d11",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class1-water-coll/additions.json",
+       "sha256": "d338aa3d615a9cd5a1db5c65aece6e346d1218a8c44d0746f320082449151315",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class1-water-dist/additions.json",
+       "sha256": "57b4e292ab623c4304daa820f3bf434968af0a5156db2c752e51765c33e111e0",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class2-wastewater/additions.json",
+       "sha256": "dc5fd6d8156126fa821c8275f9491d342d925aaee573037c9c153f297b1aaf47",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class2-water/additions.json",
+       "sha256": "9923b31afa38f31bf9dee714d5621ea0e444e6f478afaa98b75c0208dc7aa7a6",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class2-water-coll/additions.json",
+       "sha256": "97d9c35a4afdf33aaaf0ebf56a0b1d89443bd49e04786a92d1c24f0ad7611961",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class2-water-dist/additions.json",
+       "sha256": "94e645ea25bb7078fb7cd4714846352217d17a8c34549eedb3c5ad87268ad708",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class3-wastewater/additions.json",
+       "sha256": "6d34e3ccf935a90656ff514eb3894d963871c282f1167a1b6d0290fc843582da",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class3-water/additions.json",
+       "sha256": "5475fafea499a310331eedb7e89c92180fde71ef055134be7e0633cb6dd38675",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class3-water-coll/additions.json",
+       "sha256": "ef4dd6eda8a3e816f4f0a72a28290d9e2e79b25d815b3c06db085d413c2128c7",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class3-water-dist/additions.json",
+       "sha256": "6c7932362cf09817e51fe089df42371508180ff41f1eee002d78334f9cda23e2",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class4-wastewater/additions.json",
+       "sha256": "bc9ba57b4e654f3e4b42f7c06fe5783d442fcb5804efb5a28b12cd6a6cea6f88",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class4-water/additions.json",
+       "sha256": "bffcfc7604e0015ec8f8ca33e84ecb35295cbafc890f87a2290ef4dcd23debaf",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class4-water-coll/additions.json",
+       "sha256": "ccbdd77ec9cc2bb11cdfc6acbe137dfd9655e213661f4d63c21bfbc40412921b",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class4-water-dist/additions.json",
+       "sha256": "cb593a08d2010734efc1d9239144bdaf53eb566f62bb799e6b157ca6aa157460",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wqa/additions.json",
+       "sha256": "83579e46a2f4ec2d4f9fb741f40308e8a19279fdfee1f8e1547a006f91e349e6",
+       "items": 200
+      }
+     ],
+     "totalItems": 7000,
+     "corpusSha256": "9d6b5b31981e8e8617582f49af3f16413bec67a7c9c8ce9fa80255c6f001eee9"
+    }
    },
    "config": {
     "jaccardThreshold": 0.85,
     "checker": "dedup_gap.py",
-    "checkerSha256": "ac4ce3075271eb61a3fc1a819d3582bd6c7b5d7111a23e895eeab72c58f416c8"
+    "checkerSha256": "0f06ca95d080fba1e23778d547d0cb75ae74c9f384c7c8cb4c63220f3ceb4933"
    },
    "payloadDigest": "abb299e7cdd0c6ae5daf10739c3e2b1bd3518b407df3e5e1147a8b9ed952b833",
    "configSha256": "0b3ce1f0495aaca40fb2b0817cfca80786aef2a0d30cab555fe22960c7c1d8ba"
@@ -107,10 +293,11 @@
   "manifestSha256": "3f01bc1a60eb65ba607bcef538374b7e9a287bf9f8e990ee788a28d12c38359b",
   "checkers": {
    "validate_gap.py": "2dc1a05aee0cd04c4fadd263ae0b724005ad793c959876b60d227f6940f3dab5",
-   "verify_calcs_gap.py": "45907f709ec6056078e083990da0716582652f1adfd5c862f0da1a6f90f52b07",
-   "dedup_gap.py": "ac4ce3075271eb61a3fc1a819d3582bd6c7b5d7111a23e895eeab72c58f416c8",
+   "verify_calcs_gap.py": "5d4a5952b765ee626744a180f47f7b82d4b9095a58759801e0132865f72b4382",
+   "dedup_gap.py": "0f06ca95d080fba1e23778d547d0cb75ae74c9f384c7c8cb4c63220f3ceb4933",
    "quality_checks.py": "2fa37c2d8676b68b4b73406ed3f53a68e3569bf2146febbb6feffee5e421d0b6",
-   "receipts.py": "07e07c6ac08f323495ab296a0086fd4b23733d9342ab738494a8a6280819c313"
+   "receipts.py": "b9d4fa17b358ac50ec4cfe38de9c5bc236cb975ee520416743f36d75563c3616",
+   "verify_receipts.py": "edee2a3c35dcec49a61cac9381b5ec2f00118bcc8e4ee5b1da1ca9c0906f368e"
   }
  },
  "items": [
@@ -420,5 +607,17 @@
    "itemId": "WATER-TREATMENT-L2-501",
    "payloadSha256": "c9a4d520102725c2256d3cb07c0a78420ccc67578dc499b2228662c24b3b9b76"
   }
- ]
+ ],
+ "engineeringVerification": {
+  "verifiedBy": "Manus engineering verification (not a new content review)",
+  "verifiedAtUtc": "2026-11-23T18:59:04Z",
+  "checkers": {
+   "validate_gap.py": "2dc1a05aee0cd04c4fadd263ae0b724005ad793c959876b60d227f6940f3dab5",
+   "verify_calcs_gap.py": "5d4a5952b765ee626744a180f47f7b82d4b9095a58759801e0132865f72b4382",
+   "dedup_gap.py": "0f06ca95d080fba1e23778d547d0cb75ae74c9f384c7c8cb4c63220f3ceb4933",
+   "quality_checks.py": "2fa37c2d8676b68b4b73406ed3f53a68e3569bf2146febbb6feffee5e421d0b6",
+   "receipts.py": "b9d4fa17b358ac50ec4cfe38de9c5bc236cb975ee520416743f36d75563c3616",
+   "verify_receipts.py": "edee2a3c35dcec49a61cac9381b5ec2f00118bcc8e4ee5b1da1ca9c0906f368e"
+  }
+ }
 }

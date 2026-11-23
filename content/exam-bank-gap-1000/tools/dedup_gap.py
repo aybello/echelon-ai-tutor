@@ -22,13 +22,11 @@ Checks for every new item:
 - answer-option collision: identical normalized set of 4 options vs corpus
   or within the new set.
 
-Corpus locations resolve relative to the package root's parent directory
-(the echelon folder that holds echelon-ai-tutor/content and
-exam-bank-expansion), with env overrides GAP_DEDUP_BANKS_DIR and
-GAP_DEDUP_NOV22_DIR, falling back to the home-based paths when the
-relative ones do not exist. Every file listed in a bank's dedupSeedFiles
-and the bank's Nov 22 additions file are REQUIRED: a missing required
-file aborts the run with a clear error and a nonzero exit code.
+Corpus locations default to the repository content directory (ROOT.parent)
+and ROOT.parent/exam-bank-expansion, with explicit env overrides
+GAP_DEDUP_BANKS_DIR and GAP_DEDUP_NOV22_DIR. No author-workspace fallback
+is used. Every bank seed and all 36 Nov 22 addition files (35 courses,
+7,000 items) are REQUIRED. Missing or truncated corpus inputs abort.
 
 Each bank's report entry records the corpus files used (stable path
 identifier, sha256, item count), the corpus digest, the checker identity
@@ -48,19 +46,13 @@ ROOT = Path(__file__).resolve().parent.parent
 CFG = json.loads((ROOT / "gap_config.json").read_text())
 JACCARD_THRESHOLD = 0.85
 
-def _resolve_dir(env_name, relative_parts, fallback):
-    env = os.environ.get(env_name)
-    if env:
-        return Path(env).expanduser()
-    rel = ROOT.parent.joinpath(*relative_parts)
-    if rel.exists():
-        return rel
-    return fallback
-
-BANKS = _resolve_dir("GAP_DEDUP_BANKS_DIR", ("echelon-ai-tutor", "content"),
-                     Path.home() / "workspace/echelon-ai-tutor/content")
-NOV22 = _resolve_dir("GAP_DEDUP_NOV22_DIR", ("exam-bank-expansion",),
-                     Path.home() / "workspace/echelon/exam-bank-expansion")
+BANKS = Path(os.environ.get("GAP_DEDUP_BANKS_DIR", ROOT.parent)).expanduser()
+NOV22 = Path(os.environ.get("GAP_DEDUP_NOV22_DIR", ROOT.parent / "exam-bank-expansion")).expanduser()
+GLOBAL_NOV22_KEYS = sorted(set(CFG) | {
+    "oit", "oit-ww", "class1-water", "class1-ww", "class1-water-dist",
+    "class1-wastewater-coll", "class2-wastewater-coll", "class3-water-dist",
+    "wpi-class4-wastewater",
+})
 
 def norm(s):
     s = str(s).lower()
@@ -148,21 +140,34 @@ def load_corpus(key):
 def load_global_nov22_exact():
     """Exact-stem pool across ALL Nov 22 additions (35 courses, 7,000 items).
     Production inserted 6,988 of them; dedupe conservatively against all."""
-    if not NOV22.exists():
-        print(f"ERROR: Nov 22 corpus directory missing: {NOV22}", file=sys.stderr)
-        sys.exit(2)
-    pool = {}
-    for d in sorted(NOV22.iterdir()):
-        f = d / "additions.json"
-        if f.exists():
-            for it in json.loads(f.read_text()):
-                pool.setdefault(norm(it.get("question", "")), []).append(d.name)
-        for extra in ("additions-water.json", "additions-wastewater.json"):
-            f2 = d / extra
-            if f2.exists():
-                for it in json.loads(f2.read_text()):
-                    pool.setdefault(norm(it.get("question", "")), []).append(d.name)
-    return pool
+    pool, files = {}, []
+    for key in GLOBAL_NOV22_KEYS:
+        names = ("additions-water.json", "additions-wastewater.json") if key == "oit" else (
+            ("additions-wastewater.json",) if key == "oit-ww" else ("additions.json",))
+        for name in names:
+            f = NOV22 / key / name
+            label = f"exam-bank-expansion/{key}/{name}"
+            _require(f, key, label)
+            raw = json.loads(f.read_text())
+            expected = 100 if key == "oit" else 200
+            if not isinstance(raw, list) or len(raw) != expected:
+                print(f"ERROR: required corpus {label}: expected {expected} items", file=sys.stderr)
+                sys.exit(2)
+            files.append({"path": label, "sha256": sha_file(f), "items": len(raw)})
+            for it in raw:
+                pool.setdefault(norm(it.get("question", "")), []).append(key)
+    meta = {"files": files, "totalItems": sum(f["items"] for f in files),
+            "corpusSha256": sha_bytes(json.dumps(files, sort_keys=True, separators=(",", ":")).encode())}
+    return pool, meta
+
+def complete_corpus(key, global_meta):
+    """Bind both the same-bank comparison corpus and the global exact pool."""
+    existing, bank_meta = load_corpus(key)
+    meta = dict(bank_meta, globalNov22=global_meta)
+    meta["corpusSha256"] = sha_bytes(json.dumps(
+        {"bankFiles": bank_meta["files"], "globalNov22": global_meta},
+        sort_keys=True, separators=(",", ":")).encode())
+    return existing, meta
 
 def main():
     args = sys.argv[1:]
@@ -171,7 +176,7 @@ def main():
     checker_sha = sha_file(Path(__file__).resolve())
     config_sha = sha_file(ROOT / "gap_config.json")
     all_new = {k: load_new(k) for k in CFG}
-    global_exact = load_global_nov22_exact()
+    global_exact, global_meta = load_global_nov22_exact()
     # cross-bank exact stem pool
     cross_pool = {}
     for k, items in all_new.items():
@@ -182,7 +187,7 @@ def main():
     for key in keys:
         c = CFG[key]
         new = all_new[key]
-        existing, corpus_meta = load_corpus(key)
+        existing, corpus_meta = complete_corpus(key, global_meta)
         ex_norm = {norm(x["question"]) for x in existing}
         ex_masked = [masked(x["question"]) for x in existing]
         ex_masked_tok = [set(m.split()) for m in ex_masked]

@@ -57,7 +57,7 @@ CFG = json.loads((ROOT / "gap_config.json").read_text())
 REPORT = Path(__file__).resolve().parent / "calc-verification-report.json"
 CHECKER = Path(__file__).name
 TOKEN = re.compile(r"\d+(?:\.\d+)?|[()+\-*/]")
-CA_RE = re.compile(r"^\s*(\$)?\s*(-?\d[\d,]*(?:\.\d+)?)\s*(.*?)\s*$", re.S)
+CA_RE = re.compile(r"^\s*(\$)?\s*(-?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)(?![\d,.])\s*(.*?)\s*$", re.S)
 NUM_TOKEN = re.compile(r"-?\d[\d,]*(?:\.\d+)?")
 UNITLESS_UNITS = {"dimensionless", "dilution factor"}
 
@@ -163,12 +163,15 @@ def parse_correct_answer(ca):
     rest = m.group(3) or ""
     candidates = {rest}
     if prefix == "$":
+        candidates = set()
         if rest == "":
             candidates.add("$")
         elif rest.startswith("/"):
             candidates.add("$" + rest)
         elif rest.startswith("per "):
             candidates.add("$/" + rest[4:])
+        elif rest in {"CAD", "USD", "AUD", "NZD"}:
+            candidates.add(rest)
     return value, candidates, rest
 
 def check_correct_answer(it, rec, bn, ref, problems):
@@ -192,7 +195,7 @@ def check_correct_answer(it, rec, bn, ref, problems):
     unit = str(rec.get("unit"))
     if unit in candidates:
         return
-    if rest == "" and unit in UNITLESS_UNITS:
+    if candidates == {""} and unit in UNITLESS_UNITS:
         return
     problems.append(f"b{bn} {ref}: correctAnswer unit {rest!r} != record unit {unit!r} (correctAnswer {ca!r})")
 

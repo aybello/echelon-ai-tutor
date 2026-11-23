@@ -22,10 +22,10 @@ loads every receipt and receipts/INDEX.json and checks, per bank:
    current gap_config.json hash, MANIFEST.json hash and checker hashes.
 4. Fresh checker comparison: the four checkers are re-run as subprocesses
    (full runs; this rewrites the report JSONs in tools/, which are
-   evidence inputs, never the receipts) and their fresh per-bank outcome
-   summaries (error, problem and hard-flag counts, near-flag count for
-   dedup, and payloadDigest) are compared against the receipt-embedded
-   results.
+   evidence inputs, never the receipts) and their complete fresh per-bank
+   results must equal the receipt-embedded evidence, including all counts,
+   corpus file hashes, configuration and checker bindings. Any failed
+   checker subprocess fails verification even if an older report exists.
 
 Any mismatch, missing, incomplete or stale evidence prints the specific
 failure and the script exits 1. Otherwise it prints a PASS line per bank
@@ -35,13 +35,14 @@ Usage: verify_receipts.py
 """
 import hashlib, json, subprocess, sys
 from pathlib import Path
+from receipts import near_dispositioned
 
 ROOT = Path(__file__).resolve().parent.parent
 TOOLS = ROOT / "tools"
 CFG = json.loads((ROOT / "gap_config.json").read_text())
 MANIFEST = json.loads((ROOT / "MANIFEST.json").read_text())
 CHECKER_FILES = ["validate_gap.py", "verify_calcs_gap.py", "dedup_gap.py",
-                 "quality_checks.py", "receipts.py"]
+                 "quality_checks.py", "receipts.py", "verify_receipts.py"]
 REPORT_FILES = {
     "schemaValidation": "schema-validation-report.json",
     "calculationVerification": "calc-verification-report.json",
@@ -221,6 +222,9 @@ def main():
                 fail(key, f"{key}: embedded check {kind} is missing, null, empty or prose")
                 continue
             checker_name, checker_sha = entry_checker(entry)
+            expected_checker = CHECKER_SCRIPTS[list(REPORT_FILES).index(kind)]
+            if checker_name != expected_checker:
+                fail(key, f"{key}: embedded check {kind} must name {expected_checker}")
             for field in ("configSha256", "payloadDigest"):
                 if not (isinstance(entry.get(field), str) and entry[field]):
                     fail(key, f"{key}: embedded check {kind} missing envelope field {field}")
@@ -242,19 +246,24 @@ def main():
                 fail(key, f"{key}: embedded schema check records {summary['errors']} errors")
             elif kind == "calculationVerification" and summary["problems"] != 0:
                 fail(key, f"{key}: embedded calc check records {summary['problems']} problems")
+            elif kind == "quality" and summary["hard"] != 0:
+                fail(key, f"{key}: embedded quality check records {summary['hard']} hard flags")
             elif kind == "dedup":
                 if summary["hard"] != 0:
                     fail(key, f"{key}: embedded dedup check records {summary['hard']} hard duplicates")
                 corpus = entry.get("corpus")
                 if not (isinstance(corpus, dict) and isinstance(corpus.get("corpusSha256"), str) and corpus["corpusSha256"]):
                     fail(key, f"{key}: embedded dedup check missing corpus.corpusSha256")
+                for flag in entry.get("near", []):
+                    if not near_dispositioned(flag, disp):
+                        fail(key, f"{key}: embedded dedup near flag has no disposition: {flag}")
 
     # Fresh checker comparison: re-run the four checkers (full runs).
     for script in CHECKER_SCRIPTS:
-        proc = subprocess.run([sys.executable, str(TOOLS / script)],
+        proc = subprocess.run([sys.executable, "-B", str(TOOLS / script)],
                               capture_output=True, text=True, cwd=str(ROOT))
-        if proc.returncode not in (0, 1):
-            failures.append(f"checker {script} crashed on re-run (exit {proc.returncode}): {proc.stderr.strip()[:300]}")
+        if proc.returncode != 0:
+            failures.append(f"checker {script} failed on re-run (exit {proc.returncode}): {(proc.stdout + proc.stderr).strip()[-600:]}")
     fresh_reports = {}
     for kind, fname in REPORT_FILES.items():
         p = TOOLS / fname
@@ -271,11 +280,10 @@ def main():
             fresh = (fresh_reports.get(kind) or {}).get(key)
             embedded = receipt["checks"].get(kind)
             fs = outcome_summary(kind, fresh)
-            es = outcome_summary(kind, embedded)
             if fs is None:
                 fail(key, f"{key}: fresh {kind} outcome for this bank is missing or incomplete after re-run")
-            elif es is not None and fs != es:
-                fail(key, f"{key}: fresh {kind} outcome {fs} != receipt-embedded outcome {es}")
+            elif fresh != embedded:
+                fail(key, f"{key}: fresh {kind} evidence differs from receipt-embedded evidence (including counts, corpus and checker bindings)")
 
     for key in CFG:
         if bank_ok[key]:

@@ -31,12 +31,16 @@ runs, its hash will not match the receipt and the package must not ship.
 Verify with tools/verify_receipts.py. Re-run only after a fresh full
 verification.
 
-Usage: receipts.py <branch> <baseCommit>
+Usage: receipts.py <branch> <baseCommit> | --refresh-evidence
+The refresh mode requires unchanged authored payload and verification files,
+preserves original review provenance, and records a separate engineering check.
 Writes receipts/<courseKey>.receipt.json and receipts/INDEX.json.
 """
 import hashlib, json, re, sys
 from datetime import datetime, timezone
 from pathlib import Path
+from dedup_gap import load_global_nov22_exact, complete_corpus
+from verify_calcs_gap import CHECKS_PERFORMED
 
 ROOT = Path(__file__).resolve().parent.parent
 CFG = json.loads((ROOT / "gap_config.json").read_text())
@@ -51,7 +55,7 @@ REPORT_FILES = {
     "quality": "quality-report.json",
 }
 CHECKER_FILES = ["validate_gap.py", "verify_calcs_gap.py", "dedup_gap.py",
-                 "quality_checks.py", "receipts.py"]
+                 "quality_checks.py", "receipts.py", "verify_receipts.py"]
 DEDUP_HARD_KEYS = ("exact", "expression_dups", "option_collisions", "cross_bank_exact")
 ITEM_ID_RE = re.compile(r"\b[A-Z][A-Z0-9]*(?:-[A-Z0-9]+)*-\d+\b")
 
@@ -126,16 +130,19 @@ def near_dispositioned(near_entry, disp):
     return False
 
 def main():
-    if len(sys.argv) != 3:
-        print("usage: receipts.py <branch> <baseCommit>")
+    refresh = sys.argv[1:] == ["--refresh-evidence"]
+    if not refresh and len(sys.argv) != 3:
+        print("usage: receipts.py <branch> <baseCommit> | --refresh-evidence")
         sys.exit(2)
-    branch, base = sys.argv[1], sys.argv[2]
+    branch, base = (None, None) if refresh else sys.argv[1:]
     now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     config_hash = sha_file(ROOT / "gap_config.json")
     manifest_hash = sha_file(ROOT / "MANIFEST.json")
     checker_hashes = {name: sha_file(TOOLS / name) for name in CHECKER_FILES}
     reports = {kind: load_report(fname) for kind, fname in REPORT_FILES.items()}
     man = {b["courseKey"]: b for b in MANIFEST["banks"]}
+    _, global_meta = load_global_nov22_exact()
+    original_index = json.loads((ROOT / "receipts/INDEX.json").read_text()) if refresh else None
 
     # First pass: compute per-bank package data and gate on the reports.
     failures = []
@@ -162,6 +169,13 @@ def main():
             disp = json.loads(df.read_text())
         bank_data[key] = {"items": items, "item_records": item_records, "pkg_hash": pkg_hash,
                           "batch_hashes": batch_hashes, "disp": disp, "addf": addf}
+        if refresh:
+            prior = json.loads((ROOT / "receipts" / f"{key}.receipt.json").read_text())
+            bank_data[key]["prior"] = prior
+            if (prior.get("items") != item_records or prior.get("packageSha256") != pkg_hash
+                    or prior.get("batchFileSha256") != batch_hashes
+                    or prior.get("additionsFileSha256") != sha_file(addf)):
+                failures.append(f"{key}: evidence-only refresh refuses changed authored payload or verification records")
         for kind, fname in REPORT_FILES.items():
             rep = reports[kind]
             if rep is None:
@@ -172,6 +186,9 @@ def main():
                 failures.append(f"{key}: {fname} has no entry for this bank")
                 continue
             checker_name, checker_sha = entry_checker(entry)
+            expected_checker = ["validate_gap.py", "verify_calcs_gap.py", "dedup_gap.py", "quality_checks.py"][list(REPORT_FILES).index(kind)]
+            if checker_name != expected_checker:
+                failures.append(f"{key}: {fname} must name checker {expected_checker}")
             missing_env = [field for field in ("configSha256", "payloadDigest")
                            if not (isinstance(entry.get(field), str) and entry[field])]
             if not (isinstance(checker_name, str) and checker_name):
@@ -192,19 +209,25 @@ def main():
             if entry["payloadDigest"] != pkg_hash:
                 failures.append(f"{key}: {fname} payloadDigest does not match the current package payload hash (stale report)")
             if kind == "schemaValidation":
+                if not isinstance(entry.get("warnings"), list):
+                    failures.append(f"{key}: schema report entry has no warnings list")
                 if not isinstance(entry.get("errors"), list):
                     failures.append(f"{key}: schema report entry has no errors list")
                 elif entry["errors"]:
                     failures.append(f"{key}: schema validation has {len(entry['errors'])} errors")
             elif kind == "calculationVerification":
+                expected_calcs = sum(b["calc"] for b in c["batches"])
+                if entry.get("checked") != expected_calcs or entry.get("checksPerformed") != CHECKS_PERFORMED:
+                    failures.append(f"{key}: calculation evidence count/checksPerformed incomplete")
                 if not isinstance(entry.get("problems"), list):
                     failures.append(f"{key}: calc report entry has no problems list")
                 elif entry["problems"]:
                     failures.append(f"{key}: calculation verification has {len(entry['problems'])} problems")
             elif kind == "dedup":
                 corpus = entry.get("corpus")
-                if not (isinstance(corpus, dict) and isinstance(corpus.get("corpusSha256"), str) and corpus["corpusSha256"]):
-                    failures.append(f"{key}: dedup entry missing corpus.corpusSha256")
+                _, current_corpus = complete_corpus(key, global_meta)
+                if corpus != current_corpus:
+                    failures.append(f"{key}: dedup corpus evidence missing or stale against current required corpus files")
                 if not isinstance(entry.get("config"), dict):
                     failures.append(f"{key}: dedup entry missing config block")
                 for hk in DEDUP_HARD_KEYS:
@@ -233,8 +256,12 @@ def main():
 
     outdir = ROOT / "receipts"
     outdir.mkdir(exist_ok=True)
-    index = {"build": "exam-bank-gap-1000", "reviewer": REVIEWER, "model": MODEL,
+    index = dict(original_index) if refresh else {"build": "exam-bank-gap-1000", "reviewer": REVIEWER, "model": MODEL,
              "reviewDateUtc": now, "sourceBranch": branch, "baseCommit": base, "banks": {}}
+    engineering = {"verifiedBy": "Manus engineering verification (not a new content review)",
+                   "verifiedAtUtc": now, "checkers": checker_hashes}
+    if refresh:
+        index["engineeringVerification"] = engineering
     for key, c in CFG.items():
         data = bank_data[key]
         items = data["items"]
@@ -260,6 +287,13 @@ def main():
                          "checkers": checker_hashes},
             "items": data["item_records"],
         }
+        if refresh:
+            # Tool-evidence refresh is not a new author/content review.
+            # Preserve the original review identity, date and source provenance.
+            prior = dict(data["prior"])
+            prior.update({"checks": receipt["checks"], "bindings": receipt["bindings"]})
+            prior["engineeringVerification"] = engineering
+            receipt = prior
         (outdir / f"{key}.receipt.json").write_text(json.dumps(receipt, indent=1))
         index["banks"][key] = {"packageSha256": data["pkg_hash"], "items": len(data["item_records"]),
                                "requested": man[key]["requested"]}

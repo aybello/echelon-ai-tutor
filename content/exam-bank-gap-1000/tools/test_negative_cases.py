@@ -1,124 +1,160 @@
 #!/usr/bin/env python3
-"""Negative tests for the gap-to-1000 checking and receipt tooling.
+"""Portable, isolated regression checks for gap content/evidence tooling.
 
-Works on fresh copies of the package tree under /tmp (copied from the
-tree this script lives in; the original tree is never modified). Each
-case tampers with its own sub-copy and proves the tamper is rejected:
-
-1. Wrong numeric answer: one verify record's "expected" is changed to a
-   wrong value; verify_calcs_gap.py must exit nonzero.
-2. Duplicate verification reference: one record in a batch verify file
-   is duplicated; verify_calcs_gap.py must exit nonzero.
-3. Missing calculation record: one record is deleted from a batch
-   verify file; verify_calcs_gap.py must exit nonzero.
-4. Stale receipt: receipts are created in the sub-copy (all four
-   checkers run fully first, then receipts.py), then one item's question
-   text is changed in a batch file and additions.json is rebuilt with
-   assemble_gap.py; verify_receipts.py must exit nonzero.
-
-Cases 1 to 3 use the small class2-ww bank (6 items, 1 calculation item)
-to stay fast. Case 4 needs receipts for all banks, so it runs the full
-pipeline in its sub-copy.
-
-Prints PASS or FAIL per case (PASS means the tamper was correctly
-rejected). Exits 0 only if all four cases are rejected as required; a
-setup failure in any case is a FAIL for that case, with the reason
-printed.
+Copies only required corpus files and the package to a unique temporary tree.
+No source-tree writes, author-workspace dependencies, or review regeneration.
+A baseline must pass before any negative result can count as a rejection.
 """
-import json, shutil, subprocess, sys
-from decimal import Decimal
+import json
+import os
+import shutil
+import subprocess
+import sys
+import tempfile
+from contextlib import contextmanager
 from pathlib import Path
 
 SRC = Path(__file__).resolve().parent.parent
-WORK = Path("/tmp/gap1000-negative-tests")
-PY = sys.executable
 SMALL_BANK = "class2-ww"
 
-def run(args, cwd):
-    return subprocess.run([PY] + [str(a) for a in args],
-                          capture_output=True, text=True, cwd=str(cwd))
-
-def fresh_copy(name):
-    dst = WORK / name
-    if dst.exists():
-        shutil.rmtree(dst)
-    shutil.copytree(SRC, dst, ignore=shutil.ignore_patterns("__pycache__"))
-    return dst
-
-def tail(text, n=12):
-    lines = [ln for ln in text.strip().splitlines() if ln.strip()]
-    return "\n".join(lines[-n:])
-
-def case1():
-    tree = fresh_copy("case1-wrong-answer")
-    vf = tree / SMALL_BANK / "batch-1.verify.json"
-    recs = json.loads(vf.read_text())
-    recs[0]["expected"] = str(Decimal(str(recs[0]["expected"])) + Decimal("7"))
-    vf.write_text(json.dumps(recs, indent=1))
-    proc = run([tree / "tools" / "verify_calcs_gap.py", SMALL_BANK], tree)
-    return proc.returncode != 0, proc
-
-def case2():
-    tree = fresh_copy("case2-duplicate-record")
-    vf = tree / SMALL_BANK / "batch-1.verify.json"
-    recs = json.loads(vf.read_text())
-    recs.append(dict(recs[0]))
-    vf.write_text(json.dumps(recs, indent=1))
-    proc = run([tree / "tools" / "verify_calcs_gap.py", SMALL_BANK], tree)
-    return proc.returncode != 0, proc
-
-def case3():
-    tree = fresh_copy("case3-missing-record")
-    vf = tree / SMALL_BANK / "batch-1.verify.json"
-    recs = json.loads(vf.read_text())
-    del recs[0]
-    vf.write_text(json.dumps(recs, indent=1))
-    proc = run([tree / "tools" / "verify_calcs_gap.py", SMALL_BANK], tree)
-    return proc.returncode != 0, proc
-
-def case4():
-    tree = fresh_copy("case4-stale-receipt")
-    for script in ("validate_gap.py", "verify_calcs_gap.py", "dedup_gap.py", "quality_checks.py"):
-        proc = run([tree / "tools" / script], tree)
-        if proc.returncode not in (0, 1):
-            return False, f"setup: {script} crashed (exit {proc.returncode}): {tail(proc.stderr)}"
-    proc = run([tree / "tools" / "receipts.py", "negative-test-branch", "negative-test-commit"], tree)
-    if proc.returncode != 0:
-        return False, "setup: receipts.py refused to create receipts in the untampered sub-copy:\n" + tail(proc.stdout + "\n" + proc.stderr)
-    bf = tree / SMALL_BANK / "batch-1.json"
-    items = json.loads(bf.read_text())
-    items[0]["question"] = items[0]["question"] + " Tampered after receipt creation."
-    bf.write_text(json.dumps(items, indent=1, ensure_ascii=False))
-    proc = run([tree / "tools" / "assemble_gap.py", SMALL_BANK], tree)
-    if proc.returncode != 0:
-        return False, "setup: assemble_gap.py failed after tamper:\n" + tail(proc.stdout + "\n" + proc.stderr)
-    proc = run([tree / "tools" / "verify_receipts.py"], tree)
-    return proc.returncode != 0, proc
 
 def main():
-    if WORK.exists():
-        shutil.rmtree(WORK)
-    WORK.mkdir(parents=True)
-    cases = [
-        ("case1 wrong numeric answer rejected by verify_calcs_gap.py", case1),
-        ("case2 duplicate verification record rejected by verify_calcs_gap.py", case2),
-        ("case3 missing calculation record rejected by verify_calcs_gap.py", case3),
-        ("case4 stale receipt rejected by verify_receipts.py", case4),
-    ]
-    all_ok = True
-    for label, fn in cases:
-        try:
-            ok, detail = fn()
-        except Exception as e:
-            ok, detail = False, f"exception: {e}"
-        print(f"{'PASS' if ok else 'FAIL'} {label}")
-        if not ok:
-            all_ok = False
-            text = detail if isinstance(detail, str) else tail(detail.stdout + "\n" + detail.stderr)
-            if text:
-                print("  detail:", text)
-    print("ALL CASES REJECTED" if all_ok else "SOME CASES NOT REJECTED")
-    sys.exit(0 if all_ok else 1)
+    cfg = json.loads((SRC / "gap_config.json").read_text())
+    keys = sorted(set(cfg) | {
+        "oit", "oit-ww", "class1-water", "class1-ww", "class1-water-dist",
+        "class1-wastewater-coll", "class2-wastewater-coll", "class3-water-dist",
+        "wpi-class4-wastewater",
+    })
+    with tempfile.TemporaryDirectory(prefix="gap1000-negative-") as tmp:
+        content = Path(tmp) / "content"
+        tree = content / "exam-bank-gap-1000"
+        shutil.copytree(SRC, tree, ignore=shutil.ignore_patterns("__pycache__", "*-report.json"))
+        banks = Path(os.environ.get("GAP_DEDUP_BANKS_DIR", SRC.parent))
+        nov22 = Path(os.environ.get("GAP_DEDUP_NOV22_DIR", SRC.parent / "exam-bank-expansion"))
+        for c in cfg.values():
+            for rel in c["dedupSeedFiles"]:
+                dst = content / rel
+                dst.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(banks / rel, dst)
+        for key in keys:
+            names = ("additions-water.json", "additions-wastewater.json") if key == "oit" else (
+                ("additions-wastewater.json",) if key == "oit-ww" else ("additions.json",))
+            for name in names:
+                dst = content / "exam-bank-expansion" / key / name
+                dst.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(nov22 / key / name, dst)
+        env = dict(os.environ, PYTHONDONTWRITEBYTECODE="1")
+        env.pop("GAP_DEDUP_BANKS_DIR", None)
+        env.pop("GAP_DEDUP_NOV22_DIR", None)
+
+        def run(script, *args):
+            return subprocess.run([sys.executable, "-B", str(tree / "tools" / script), *args],
+                                  capture_output=True, text=True, cwd=tree, env=env)
+
+        @contextmanager
+        def changed(path, mutate):
+            old = path.read_bytes()
+            try:
+                value = json.loads(old)
+                mutate(value)
+                path.write_text(json.dumps(value, ensure_ascii=False))
+                yield
+            finally:
+                path.write_bytes(old)
+
+        @contextmanager
+        def missing(path):
+            old = path.read_bytes()
+            path.unlink()
+            try:
+                yield
+            finally:
+                path.write_bytes(old)
+
+        passed = 0
+        failed = 0
+
+        def expect(label, proc, rejected=False, diagnostic=None):
+            nonlocal passed, failed
+            output = proc.stdout + proc.stderr
+            ok = (proc.returncode != 0 if rejected else proc.returncode == 0)
+            if diagnostic:
+                ok = ok and diagnostic in output
+            print(f"{'PASS' if ok else 'FAIL'} {label}", flush=True)
+            if ok:
+                passed += 1
+            else:
+                failed += 1
+                print(output[-1800:])
+            return ok
+
+        for script in ("validate_gap.py", "verify_calcs_gap.py", "dedup_gap.py", "quality_checks.py"):
+            if not expect(f"baseline {script}", run(script)):
+                return 1
+        if not expect("evidence-only refresh", run("receipts.py", "--refresh-evidence")):
+            return 1
+        if not expect("baseline all 26 receipts", run("verify_receipts.py")):
+            return 1
+
+        batch = tree / SMALL_BANK / "batch-1.json"
+        verify = tree / SMALL_BANK / "batch-1.verify.json"
+        items = json.loads(batch.read_text())
+        calc_index = next(i for i, it in enumerate(items) if it["isCalc"] == "yes")
+        rec = json.loads(verify.read_text())[0]
+
+        def answer_mutator(answer):
+            def mutate(value):
+                item = value[calc_index]
+                item["correctAnswer"] = answer
+                item["options"][item["correctIndex"]] = answer
+                item["option" + "ABCD"[item["correctIndex"]]] = answer
+            return mutate
+
+        for label, answer in (
+            ("wrong numeric substring answer", f"9{rec['expected']} {rec['unit']}"),
+            ("wrong answer unit", f"{rec['expected']} incorrect-unit"),
+            ("extraneous currency prefix", f"${rec['expected']} {rec['unit']}"),
+            ("malformed comma number", "3,0 " + rec["unit"]),
+        ):
+            with changed(batch, answer_mutator(answer)):
+                expect(label, run("verify_calcs_gap.py", SMALL_BANK), True, "correctAnswer")
+
+        with changed(verify, lambda v: v.append(dict(v[0]))):
+            expect("duplicate verification record", run("verify_calcs_gap.py", SMALL_BANK), True, "expected exactly one")
+        with changed(verify, lambda v: v.clear()):
+            expect("missing verification record", run("verify_calcs_gap.py", SMALL_BANK), True, "no verification record")
+        with changed(verify, lambda v: v[0].update(itemId="ORPHAN-999")):
+            expect("orphan verification record", run("verify_calcs_gap.py", SMALL_BANK), True, "no matching calc item")
+        with changed(batch, lambda v: v[0].update(question=v[0]["question"] + " Stale receipt.")):
+            expect("stale payload receipt", run("verify_receipts.py"), True, "batchFileSha256")
+
+        corpus = content / "exam-bank-expansion" / SMALL_BANK / "additions.json"
+        with changed(corpus, lambda v: v[0].update(explanation=v[0]["explanation"] + " Corpus provenance tamper.")):
+            expect("receipt creation refuses stale corpus", run("receipts.py", "--refresh-evidence"), True, "corpus evidence missing or stale")
+            expect("stale same-bank corpus", run("verify_receipts.py"), True, "fresh dedup evidence differs")
+        global_file = content / "exam-bank-expansion/class1-water/additions.json"
+        with changed(global_file, lambda v: v[0].update(explanation=v[0]["explanation"] + " Global corpus tamper.")):
+            expect("stale cross-bank global corpus", run("verify_receipts.py"), True, "fresh dedup evidence differs")
+        with missing(global_file):
+            expect("missing global required corpus", run("dedup_gap.py", SMALL_BANK), True, "required corpus file missing")
+        seed = content / cfg[SMALL_BANK]["dedupSeedFiles"][0]
+        with missing(seed):
+            expect("missing seed corpus", run("dedup_gap.py", SMALL_BANK), True, "required corpus file missing")
+        with changed(global_file, lambda v: v.pop()):
+            expect("truncated required corpus", run("dedup_gap.py", SMALL_BANK), True, "expected 200 items")
+
+        receipt = tree / "receipts" / f"{SMALL_BANK}.receipt.json"
+        with changed(receipt, lambda v: v["checks"]["calculationVerification"].update(checked=0)):
+            expect("incomplete embedded calculation evidence", run("verify_receipts.py"), True, "fresh calculationVerification evidence differs")
+        with changed(receipt, lambda v: v["checks"].update(dedup=None)):
+            expect("missing embedded check evidence", run("verify_receipts.py"), True, "missing, null, empty or prose")
+        with changed(receipt, lambda v: v["checks"]["quality"].update(length_hard=["tampered hard failure"])):
+            expect("embedded quality hard failure", run("verify_receipts.py"), True, "embedded quality check records")
+        # Fresh generation after all mutations is required; verification never repairs receipts.
+        expect("final restored baseline", run("verify_receipts.py"))
+        print(f"RESULT: {passed} passed, {failed} failed", flush=True)
+        return 1 if failed else 0
+
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

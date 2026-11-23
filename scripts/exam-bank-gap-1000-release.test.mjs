@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Disposable-database tests for scripts/exam-bank-gap-1000-release.mjs.
+// In-memory unit tests for scripts/exam-bank-gap-1000-release.mjs.
 //
 // Run with plain node, no npm dependencies:
 //   node scripts/exam-bank-gap-1000-release.test.mjs
@@ -7,13 +7,13 @@
 // The fake connection below implements exactly the connection interface and
 // SQL surface that applyGapPackage uses: execute with the same statements,
 // plus beginTransaction, commit and rollback with snapshot semantics. It is a
-// faithful miniature of the three tables involved: questions,
-// question_bank_meta and question_content_snapshots.
+// model of the three tables involved, not proof of MySQL transactional, TLS,
+// timestamp, collation or AUTO_INCREMENT behavior. Run real-DB acceptance too.
 import assert from "node:assert";
-import { cpSync, mkdtempSync, readFileSync, rmSync, writeFileSync, mkdirSync } from "node:fs";
+import { cpSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { resolve } from "node:path";
-import { loadGapPackage, applyGapPackage, planAgainstRowsGap, payloadHash, digest } from "./exam-bank-gap-1000-release.mjs";
+import { loadGapPackage, applyGapPackage, planAgainstRowsGap, payloadHash, digest, gapTargetOptions } from "./exam-bank-gap-1000-release.mjs";
 
 const QUESTION_FIELDS = ["bankKey", "questionNum", "module", "difficulty", "question", "options", "correctIndex", "explanation", "steps", "tip", "isCalc", "topic", "cognitiveLevel", "sourceTitle", "sourceReference", "sourceUrl", "blueprintObjective"];
 const REVIEWER = "test-reviewer: Gap 1000 Test";
@@ -131,10 +131,12 @@ function seedFake(pkg, options) {
     fake.state.questions.push(row);
     seededIds.add(row.id);
   };
-  // Pre-existing rows in several target banks.
-  for (const bankKey of bankKeys.slice(0, 5)) {
-    addRow(bankKey, 1, `Seed question one for ${bankKey}?`, "approved");
-    addRow(bankKey, 2, `Seed question two for ${bankKey}?`, "unreviewed");
+  // Seed the manifest's actual usable baseline, plus excluded-status sentinels.
+  for (const bank of pkg.manifest.banks) {
+    const bankKey = bank.itemBankKey;
+    for (let n = 1; n <= bank.liveTotal; n++) addRow(bankKey, n, `Seed question ${n} for ${bankKey}?`, n % 2 ? "approved" : "unreviewed");
+    addRow(bankKey, 2001, `Rejected historical question for ${bankKey}?`, "rejected");
+    addRow(bankKey, 2002, `In-review historical question for ${bankKey}?`, "in_review");
   }
   // One unrelated bank and one 309A bank, both of which must remain untouched.
   addRow("oit", 1, "Seed question for the unrelated oit bank?", "approved");
@@ -157,13 +159,7 @@ function rowMatchesItem(row, item) {
 
 function buildTempPackage(pkg) {
   const dir = mkdtempSync(resolve(tmpdir(), "gap1000-test-"));
-  cpSync(resolve(pkg.packageRoot, "MANIFEST.json"), resolve(dir, "MANIFEST.json"));
-  mkdirSync(resolve(dir, "receipts"));
-  for (const bank of pkg.manifest.banks) {
-    mkdirSync(resolve(dir, bank.courseKey));
-    cpSync(resolve(pkg.packageRoot, bank.courseKey, "additions.json"), resolve(dir, bank.courseKey, "additions.json"));
-    cpSync(resolve(pkg.packageRoot, "receipts", `${bank.courseKey}.receipt.json`), resolve(dir, "receipts", `${bank.courseKey}.receipt.json`));
-  }
+  cpSync(pkg.packageRoot, dir, { recursive: true });
   return dir;
 }
 
@@ -252,6 +248,13 @@ await check("matching receipts: one snapshot per inserted item, bound to release
     assert.equal(payload.bankPackageSha256, pkg.bankPackageSha256[snapshot.bankKey]);
     assert.equal(payload.mapping, null);
     assert.equal(payload.reviewer, REVIEWER);
+    const evidence = pkg.reviewEvidence[snapshot.bankKey];
+    assert.deepEqual(payload.sourceReview, evidence.sourceReview);
+    assert.equal(payload.sourceReview.reviewer, "owner-authorized-ai-review");
+    assert.equal(payload.reviewReceiptSha256, evidence.receiptSha256);
+    assert.deepEqual(payload.builderChecks, evidence.checks);
+    assert.deepEqual(payload.reviewBindings, evidence.bindings);
+    assert.deepEqual(payload.receiptVerification, pkg.receiptVerification);
     const item = candidateByKey.get(payload.itemKey);
     assert.ok(item, `receipt itemKey ${payload.itemKey} has no source item`);
     assert.equal(snapshot.bankKey, item.bankKey);
@@ -275,6 +278,7 @@ await check("preservation: seeded rows and untouched banks unchanged, target met
     const before = beforeMetaByBank.get(meta.bankKey);
     if (pkg.banks.has(meta.bankKey)) {
       assert.equal(Number(meta.totalQuestions), Number(before.totalQuestions) + pkg.perBank[meta.bankKey], `meta total for ${meta.bankKey}`);
+      assert.equal(Number(meta.totalQuestions), 1000, `usable total for ${meta.bankKey}`);
       assert.equal(Number(meta.contentVersion), Number(before.contentVersion) + 1, `meta version for ${meta.bankKey}`);
       const strip = row => Object.fromEntries(Object.entries(row).filter(([key]) => !["totalQuestions", "contentVersion"].includes(key)));
       assert.equal(digest(strip(meta)), digest(strip(before)), `meta blueprint fields changed for ${meta.bankKey}`);
@@ -294,7 +298,7 @@ await check("idempotency: a second apply of the identical package returns alread
   assert.equal(mainRun.fake.state.snapshots.length, snapshotsBefore);
 });
 
-await check("rollback on failure: an injected mid-apply failure leaves the store byte-identical", async () => {
+await check("modeled rollback on failure: an injected mid-apply failure preserves rows, receipts and metadata", async () => {
   const { fake } = seedFake(pkg, { failOnQuestionInsert: 250 });
   const beforeDigest = digest(fake.state);
   const beforeJson = JSON.stringify(fake.state);
@@ -304,6 +308,85 @@ await check("rollback on failure: an injected mid-apply failure leaves the store
   assert.match(thrown.message, /injected failure/);
   assert.equal(digest(fake.state), beforeDigest);
   assert.equal(JSON.stringify(fake.state), beforeJson);
+});
+
+for (const pattern of [/^INSERT INTO question_content_snapshots/, /^UPDATE question_bank_meta/]) {
+  await check(`modeled rollback after a successful ${pattern.source} restores all table rows`, async () => {
+    const { fake } = seedFake(pkg);
+    const before = digest(fake.state);
+    const execute = fake.execute.bind(fake);
+    fake.execute = async (sql, params) => {
+      const result = await execute(sql, params);
+      if (pattern.test(sql)) throw new Error("injected failure after successful write");
+      return result;
+    };
+    await assert.rejects(applyGapPackage(fake, pkg, { reviewer: REVIEWER, now: NOW }), /injected failure after successful write/);
+    assert.equal(digest(fake.state), before);
+  });
+}
+
+await check("below-1000 live baseline is refused before the first insert", async () => {
+  const { fake } = seedFake(pkg);
+  fake.state.questions.splice(0, 1);
+  const before = digest(fake.state);
+  await assert.rejects(applyGapPackage(fake, pkg, { reviewer: REVIEWER, now: NOW }), /below 1000/);
+  assert.equal(fake.questionInsertCount, 0);
+  assert.equal(digest(fake.state), before);
+});
+
+await check("mutated or fabricated packages are refused before any DB operation", async () => {
+  const noDb = { beginTransaction() { throw new Error("DB must not be touched"); } };
+  await assert.rejects(applyGapPackage(noDb, { ...pkg }, { reviewer: REVIEWER }), /unchanged independently verified package/);
+  const original = pkg.candidates[0].question;
+  try {
+    pkg.candidates[0].question += " altered after load";
+    await assert.rejects(applyGapPackage(noDb, pkg, { reviewer: REVIEWER }), /unchanged independently verified package/);
+  } finally { pkg.candidates[0].question = original; }
+});
+
+await check("missing and invalid apply reviewer identities are refused before any DB operation", async () => {
+  const noDb = { beginTransaction() { throw new Error("DB must not be touched"); } };
+  for (const reviewer of [undefined, " ", "--apply", "x".repeat(321)]) await assert.rejects(applyGapPackage(noDb, pkg, { reviewer }), /valid reviewer identity/);
+});
+
+await check("authoritative target retains trusted CA and requires mysql2 hostname verification", () => {
+  const target = { external: true, options: { host: "db.example.invalid", database: "production", ssl: { ca: "fixture-ca", rejectUnauthorized: true } } };
+  const options = gapTargetOptions(target);
+  assert.equal(options.ssl.verifyIdentity, true);
+  assert.equal(options.ssl.rejectUnauthorized, true);
+  assert.equal(options.ssl.ca, target.options.ssl.ca);
+  assert.equal(target.options.ssl.verifyIdentity, undefined, "do not mutate the shared connection helper result");
+  assert.throws(() => gapTargetOptions({ ...target, external: false }), /trusted TLS/);
+  assert.throws(() => gapTargetOptions({ ...target, options: { ssl: { ca: "fixture", rejectUnauthorized: false } } }), /trusted TLS/);
+});
+
+await check("idempotent retry rejects missing receipts and corrupted structured evidence without mutation", async () => {
+  const fake = mainRun.fake;
+  const removed = fake.state.snapshots.pop();
+  try {
+    const before = digest(fake.state);
+    await assert.rejects(applyGapPackage(fake, pkg, { reviewer: REVIEWER }), /partial prior/);
+    assert.equal(digest(fake.state), before);
+  } finally { fake.state.snapshots.push(removed); }
+  const original = fake.state.snapshots[0].payload;
+  try {
+    const payload = JSON.parse(original);
+    payload.builderChecks = { fabricated: "pass" };
+    fake.state.snapshots[0].payload = JSON.stringify(payload);
+    const before = digest(fake.state);
+    await assert.rejects(applyGapPackage(fake, pkg, { reviewer: REVIEWER }), /review evidence mismatch/);
+    assert.equal(digest(fake.state), before);
+  } finally { fake.state.snapshots[0].payload = original; }
+});
+
+await check("idempotent retry refuses stale metadata rather than reporting success", async () => {
+  const meta = mainRun.fake.state.meta[0];
+  meta.totalQuestions--;
+  try {
+    const before = digest(mainRun.fake.state);
+    await assert.rejects(applyGapPackage(mainRun.fake, pkg, { reviewer: REVIEWER }), /metadata usable count mismatch/);
+    assert.equal(digest(mainRun.fake.state), before);
+  } finally { meta.totalQuestions++; mainRun.fake.state.meta.find(row => row.bankKey === meta.bankKey).totalQuestions = meta.totalQuestions; }
 });
 
 await check("rejection of altered payloads: a tampered question text fails receipt binding at load", () => {
@@ -327,6 +410,33 @@ await check("rejection of 309A items: an injected 309A bank key fails at load", 
   try {
     editAdditions(dir, "wqa", items => { items[0].bankKey = "ontario-309a-electrician"; });
     expectLoadFailure(dir, /309A/, "309A injection");
+  } finally { rmSync(dir, { recursive: true, force: true }); }
+});
+
+for (const [name, mutate] of [
+  ["missing structured checks", receipt => { delete receipt.checks; }],
+  ["calculation failure", receipt => { receipt.checks.calculationVerification.problems = ["injected failing calculation"]; }],
+  ["stale checker binding", receipt => { receipt.bindings.checkers["verify_calcs_gap.py"] = "0".repeat(64); }],
+  ["missing review provenance", receipt => { delete receipt.reviewer; }],
+  ["malformed withheld count", receipt => { receipt.counts.withheld = 0; }],
+]) {
+  await check(`load fails closed on ${name}`, () => {
+    const dir = buildTempPackage(pkg);
+    try {
+      const file = resolve(dir, "receipts/class2-water.receipt.json");
+      const receipt = JSON.parse(readFileSync(file, "utf8"));
+      mutate(receipt);
+      writeFileSync(file, JSON.stringify(receipt));
+      expectLoadFailure(dir, /independent receipt verification failed|structured review evidence|review provenance|withheld list/, name);
+    } finally { rmSync(dir, { recursive: true, force: true }); }
+  });
+}
+
+await check("load fails closed when the independent verifier cannot run", () => {
+  const dir = buildTempPackage(pkg);
+  try {
+    rmSync(resolve(dir, "tools/verify_receipts.py"));
+    expectLoadFailure(dir, /independent receipt verifier is missing/, "missing verifier");
   } finally { rmSync(dir, { recursive: true, force: true }); }
 });
 

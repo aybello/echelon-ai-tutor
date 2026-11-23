@@ -26,6 +26,7 @@
 //     matching tools/receipts.py in the package.
 import { createHash } from "node:crypto";
 import { existsSync, readFileSync } from "node:fs";
+import { spawnSync } from "node:child_process";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -35,6 +36,7 @@ const RELEASE_KEY_PREFIX = "exam-bank-gap-1000-2026-11-23";
 const EXPECTED_BANK_COUNT = 26;
 const EXPECTED_TOTAL_REQUESTED = 5442;
 const QUESTION_FIELDS = ["bankKey", "questionNum", "module", "difficulty", "question", "options", "correctIndex", "explanation", "steps", "tip", "isCalc", "topic", "cognitiveLevel", "sourceTitle", "sourceReference", "sourceUrl", "blueprintObjective"];
+const verifiedPackages = new WeakMap();
 
 function fail(message) { throw new Error(`Exam-bank gap-1000 release blocked: ${message}`); }
 function canonical(value) {
@@ -66,6 +68,24 @@ export function bankPackageHash(items) {
   return createHash("sha256").update(ordered.map(item => payloadHash(item)).join("")).digest("hex");
 }
 
+function packageStateHash(pkg) {
+  return digest({ manifest: pkg.manifest, manifestSha256: pkg.manifestSha256, candidates: pkg.candidates, perBank: pkg.perBank, bankPackageSha256: pkg.bankPackageSha256, reviewEvidence: pkg.reviewEvidence, receiptVerification: pkg.receiptVerification, packageSha256: pkg.packageSha256, releaseKey: pkg.releaseKey });
+}
+
+function verifyIndependentReceipts(packageRoot) {
+  const verifier = resolve(packageRoot, "tools/verify_receipts.py");
+  if (!existsSync(verifier)) fail("independent receipt verifier is missing");
+  const result = spawnSync("python3", ["-B", verifier], {
+    cwd: packageRoot,
+    env: { ...process.env, GAP_DEDUP_BANKS_DIR: resolve(ROOT, "content"), GAP_DEDUP_NOV22_DIR: resolve(ROOT, "content/exam-bank-expansion") },
+    encoding: "utf8", timeout: 300_000, maxBuffer: 8 * 1024 * 1024,
+  });
+  if (result.error || result.status !== 0 || !String(result.stdout).includes(`VERDICT: PASS (all ${EXPECTED_BANK_COUNT} bank receipts verified)`)) {
+    fail(`independent receipt verification failed: ${(result.error?.message || result.stderr || result.stdout || `exit ${result.status}`).slice(-6000)}`);
+  }
+  return { checker: "verify_receipts.py", checkerSha256: createHash("sha256").update(readFileSync(verifier)).digest("hex"), banksVerified: EXPECTED_BANK_COUNT };
+}
+
 export function loadGapPackage(explicitRoot) {
   const packageRoot = resolvePackageRoot(explicitRoot);
   const manifestPath = resolve(packageRoot, "MANIFEST.json");
@@ -83,6 +103,8 @@ export function loadGapPackage(explicitRoot) {
   const banks = new Map();
   const perBank = {};
   const bankPackageSha256 = {};
+  const reviewEvidence = {};
+  const receiptHashes = {};
   const seenNumbers = new Set();
   const seenHashes = new Set();
 
@@ -90,7 +112,7 @@ export function loadGapPackage(explicitRoot) {
     const courseKey = bank.courseKey;
     const itemBankKey = bank.itemBankKey;
     const requested = Number(bank.requested);
-    if (!courseKey || !itemBankKey) fail("every manifest bank needs a courseKey and an itemBankKey");
+    if (typeof courseKey !== "string" || !/^[a-z0-9-]+$/.test(courseKey) || typeof itemBankKey !== "string" || !/^[a-z0-9-]+$/.test(itemBankKey)) fail("every manifest bank needs safe courseKey and itemBankKey identifiers");
     if (!Number.isInteger(requested) || requested <= 0) fail(`${courseKey} has an invalid requested count ${bank.requested}`);
     if (/309a/i.test(courseKey) || /309a/i.test(itemBankKey)) fail(`Ontario 309A bank found in manifest: ${courseKey}/${itemBankKey}`);
     if (banks.has(itemBankKey)) fail(`duplicate manifest item bank key ${itemBankKey}`);
@@ -104,12 +126,20 @@ export function loadGapPackage(explicitRoot) {
     const receiptPath = resolve(packageRoot, "receipts", `${courseKey}.receipt.json`);
     if (!existsSync(receiptPath)) fail(`missing review receipt for ${courseKey}`);
     const receipt = readJson(receiptPath);
+    receiptHashes[courseKey] = digest(receipt);
     if (receipt.courseKey !== courseKey) fail(`receipt courseKey mismatch for ${courseKey}`);
     if (receipt.itemBankKey !== itemBankKey) fail(`receipt itemBankKey mismatch for ${courseKey}: ${receipt.itemBankKey} versus manifest ${itemBankKey}`);
     if (!Array.isArray(receipt.items) || receipt.items.length !== requested) fail(`receipt item count mismatch for ${courseKey}`);
     if (!receipt.counts || Number(receipt.counts.requested) !== requested) fail(`receipt requested count mismatch for ${courseKey}`);
     if (Number(receipt.counts.accepted) !== requested) fail(`receipt accepted count mismatch for ${courseKey}`);
-    if (Array.isArray(receipt.counts.withheld) && receipt.counts.withheld.length !== 0) fail(`receipt for ${courseKey} withholds items; this package releases with none withheld`);
+    if (!Array.isArray(receipt.counts.withheld) || receipt.counts.withheld.length !== 0) fail(`receipt for ${courseKey} must record an empty withheld list`);
+    if (!receipt.reviewer || !receipt.model || !receipt.reviewDateUtc || !receipt.sourceBranch || !receipt.baseCommit) fail(`missing review provenance for ${courseKey}`);
+    if (!receipt.checks || typeof receipt.checks !== "object" || !receipt.bindings || typeof receipt.bindings !== "object") fail(`missing structured review evidence for ${courseKey}`);
+    reviewEvidence[itemBankKey] = {
+      receiptSha256: digest(receipt),
+      sourceReview: { reviewer: receipt.reviewer, model: receipt.model, reviewedAt: receipt.reviewDateUtc, sourceBranch: receipt.sourceBranch, baseCommit: receipt.baseCommit },
+      checks: receipt.checks, bindings: receipt.bindings, counts: receipt.counts,
+    };
 
     const receiptByItemId = new Map();
     const receiptByNumber = new Map();
@@ -160,8 +190,16 @@ export function loadGapPackage(explicitRoot) {
   const itemBindings = candidates
     .map(item => ({ bankKey: item.bankKey, questionNum: item.questionNum, payloadSha256: payloadHash(item) }))
     .sort((a, b) => a.bankKey.localeCompare(b.bankKey) || a.questionNum - b.questionNum);
-  const packageSha256 = digest({ manifestSha256, items: itemBindings });
-  return {
+  // No DB helper is imported and no connection is opened until this gate passes.
+  const receiptVerification = verifyIndependentReceipts(packageRoot);
+  // Refuse a receipt/payload change during verification rather than approving a
+  // mixture of the pre-verification in-memory package and post-verification files.
+  if (createHash("sha256").update(readFileSync(manifestPath)).digest("hex") !== manifestSha256) fail("manifest changed during independent receipt verification");
+  for (const bank of manifest.banks) {
+    if (digest(readJson(resolve(packageRoot, bank.courseKey, "additions.json"))) !== digest(banks.get(bank.itemBankKey)) || digest(readJson(resolve(packageRoot, "receipts", `${bank.courseKey}.receipt.json`))) !== receiptHashes[bank.courseKey]) fail(`package changed during independent receipt verification: ${bank.courseKey}`);
+  }
+  const packageSha256 = digest({ manifestSha256, items: itemBindings, reviewEvidence, receiptVerification });
+  const pkg = {
     manifest,
     manifestSha256,
     entries,
@@ -169,10 +207,14 @@ export function loadGapPackage(explicitRoot) {
     banks,
     perBank,
     bankPackageSha256,
+    reviewEvidence,
+    receiptVerification,
     packageSha256,
     releaseKey: `${RELEASE_KEY_PREFIX}-${packageSha256.slice(0, 12)}`,
     packageRoot,
   };
+  verifiedPackages.set(pkg, packageStateHash(pkg));
+  return pkg;
 }
 
 function rowFor(item) {
@@ -213,6 +255,7 @@ async function visibleOutside(connection, bankKeys) {
 }
 
 function receiptPayloadFor(pkg, item, reviewer, now) {
+  const evidence = pkg.reviewEvidence[item.bankKey];
   return {
     kind: "exam-bank-gap-1000-additive-insert",
     itemKey: `${item.bankKey}|${item.questionNum}`,
@@ -227,7 +270,11 @@ function receiptPayloadFor(pkg, item, reviewer, now) {
     mapping: null,
     reviewer,
     reviewedAt: now.toISOString(),
-    builderChecks: "package-validator=pass; calculation-verifier=pass; receipt-binding=pass; live-candidate-deduplication=pass",
+    sourceReview: evidence.sourceReview,
+    reviewReceiptSha256: evidence.receiptSha256,
+    reviewBindings: evidence.bindings,
+    builderChecks: evidence.checks,
+    receiptVerification: pkg.receiptVerification,
     item,
   };
 }
@@ -242,12 +289,31 @@ async function verifyReceiptRowsGap(connection, pkg, idsByKey) {
     const payload = JSON.parse(receipts[0].payload);
     const storedReviewedAt = rows[0].reviewedAt ? new Date(rows[0].reviewedAt).toISOString() : null;
     if (digest(payload.sourceIdentity) !== digest(identityDetails(item)) || digest(payload.mappedIdentity) !== digest(identityDetails(item))) fail(`receipt source or mapped identity mismatch ${item.bankKey}#${item.questionNum}`);
+    const evidence = pkg.reviewEvidence[item.bankKey];
+    if (digest(payload.sourceReview) !== digest(evidence.sourceReview) || payload.reviewReceiptSha256 !== evidence.receiptSha256 || digest(payload.reviewBindings) !== digest(evidence.bindings) || digest(payload.builderChecks) !== digest(evidence.checks) || digest(payload.receiptVerification) !== digest(pkg.receiptVerification)) fail(`receipt review evidence mismatch ${item.bankKey}#${item.questionNum}`);
     if (rows[0].reviewedBy !== payload.reviewer || storedReviewedAt !== payload.reviewedAt || receipts[0].bankKey !== item.bankKey || receipts[0].questionNum !== item.questionNum || Number(receipts[0].sourceContentVersion) !== 0 || receipts[0].contentHash !== payloadHash(item) || payload.kind !== "exam-bank-gap-1000-additive-insert" || payload.releaseKey !== pkg.releaseKey || payload.originalPayloadSha256 !== payloadHash(item) || payload.mappedPayloadSha256 !== payloadHash(item) || payload.packageSha256 !== pkg.packageSha256 || payload.bankPackageSha256 !== pkg.bankPackageSha256[item.bankKey] || payload.itemKey !== `${item.bankKey}|${item.questionNum}` || payload.itemId !== itemIdentity(item) || !payload.item || payloadHash(payload.item) !== payloadHash(item) || JSON.stringify(payload.mapping ?? null) !== JSON.stringify(null)) fail(`receipt hash, attribution, or mapping mismatch ${item.bankKey}#${item.questionNum}`);
   }
 }
 
+function visibleCounts(rows) {
+  const counts = new Map();
+  for (const row of rows) if (["approved", "unreviewed"].includes(row.reviewStatus)) counts.set(row.bankKey, (counts.get(row.bankKey) ?? 0) + 1);
+  return counts;
+}
+
+function verifyBankTotals(pkg, rows, metadata, { pending = false } = {}) {
+  const counts = visibleCounts(rows);
+  for (const bank of pkg.manifest.banks) {
+    const current = counts.get(bank.itemBankKey) ?? 0;
+    const projected = current + (pending ? pkg.perBank[bank.itemBankKey] : 0);
+    if (projected < 1000) fail(`bank ${bank.itemBankKey} would have ${projected} usable questions, below 1000`);
+    if (!pending && Number(metadata.find(meta => meta.bankKey === bank.itemBankKey)?.totalQuestions) !== current) fail(`metadata usable count mismatch ${bank.itemBankKey}`);
+  }
+}
+
 export async function applyGapPackage(connection, pkg, { reviewer, now = new Date() } = {}) {
-  if (!reviewer || typeof reviewer !== "string" || !reviewer.trim()) fail("a reviewer identity must be supplied at apply time");
+  if (!verifiedPackages.has(pkg) || verifiedPackages.get(pkg) !== packageStateHash(pkg)) fail("apply requires an unchanged independently verified package from loadGapPackage");
+  if (!reviewer || typeof reviewer !== "string" || !reviewer.trim() || reviewer.length > 320 || reviewer.startsWith("--")) fail("a valid reviewer identity must be supplied at apply time");
   const bankKeys = [...new Set(pkg.candidates.map(item => item.bankKey))].sort();
   if (bankKeys.length !== EXPECTED_BANK_COUNT) fail(`expected ${EXPECTED_BANK_COUNT} target banks, found ${bankKeys.length}`);
   // reviewedAt is TIMESTAMP(0). Bind the receipt to the exact persistable UTC time.
@@ -266,10 +332,12 @@ export async function applyGapPackage(connection, pkg, { reviewer, now = new Dat
       if (receipts.length !== pkg.candidates.length) fail("partial prior gap-1000 receipt exists; reconcile before retry");
       const ids = new Map(receipts.map(receipt => [JSON.parse(receipt.payload).itemKey, receipt.questionId]));
       await verifyReceiptRowsGap(connection, pkg, ids);
+      verifyBankTotals(pkg, existing, metadata);
       await connection.rollback();
       return { alreadyApplied: true, inserted: 0, packageSha256: pkg.packageSha256, releaseKey: pkg.releaseKey };
     }
     planAgainstRowsGap(pkg, existing);
+    verifyBankTotals(pkg, existing, metadata, { pending: true });
     const idsByKey = new Map();
     const columns = "bankKey, questionNum, module, difficulty, question, options, correctIndex, explanation, steps, tip, isCalc, topic, cognitiveLevel, sourceTitle, sourceReference, sourceUrl, blueprintObjective, reviewStatus, reviewedBy, reviewedAt";
     for (const item of pkg.candidates) {
@@ -294,6 +362,7 @@ export async function applyGapPackage(connection, pkg, { reviewer, now = new Dat
       const visibleCount = afterRows.filter(row => row.bankKey === before.bankKey && ["approved", "unreviewed"].includes(row.reviewStatus)).length;
       if (!after || digest(blueprintDetails(before)) !== digest(blueprintDetails(after)) || Number(after.contentVersion) !== Number(before.contentVersion) + 1 || Number(after.totalQuestions) !== visibleCount) fail(`metadata preservation or count mismatch ${before.bankKey}`);
     }
+    verifyBankTotals(pkg, afterRows, afterMetadata);
     if (await visibleOutside(connection, bankKeys) !== outsideBefore) fail("outside-bank inventory changed");
     await connection.commit(); committed = true;
     return { alreadyApplied: false, inserted: pkg.candidates.length, packageSha256: pkg.packageSha256, releaseKey: pkg.releaseKey, reviewer };
@@ -303,6 +372,13 @@ export async function applyGapPackage(connection, pkg, { reviewer, now = new Dat
 function argValue(flag) {
   const index = process.argv.indexOf(flag);
   return index >= 0 ? process.argv[index + 1] : undefined;
+}
+
+export function gapTargetOptions(target) {
+  if (!target.external || !target.options || typeof target.options !== "object" || target.options.ssl?.rejectUnauthorized !== true || !target.options.ssl.ca) fail("authoritative external production target with trusted TLS is required");
+  // mysql2 3.24.4 otherwise installs a no-op checkServerIdentity even with
+  // rejectUnauthorized=true: CA verification alone does not bind the host.
+  return { ...target.options, ssl: { ...target.options.ssl, verifyIdentity: true } };
 }
 
 async function main() {
@@ -316,11 +392,11 @@ async function main() {
   if (!reviewer) fail("set GAP1000_REVIEWER or pass --reviewer with the reviewer identity for this apply run");
   const { activeScriptConnection } = await import("./lib/activeScriptConnection.mjs");
   const target = activeScriptConnection();
-  if (!target.external || typeof target.options !== "object") fail("authoritative external production target is required");
-  const targetSha256 = digest({ host: target.options.host, port: target.options.port, database: target.options.database });
+  const options = gapTargetOptions(target);
+  const targetSha256 = digest({ host: options.host, port: options.port, database: options.database });
   if (process.env.CONFIRM_GAP1000_TARGET !== targetSha256) fail(`set CONFIRM_GAP1000_TARGET=${targetSha256} to confirm the live target`);
   const mysql = await import("mysql2/promise");
-  const db = await mysql.createConnection(target.options);
+  const db = await mysql.createConnection(options);
   try { console.log(JSON.stringify(await applyGapPackage(db, pkg, { reviewer }), null, 2)); } finally { await db.end(); }
 }
 if (process.argv[1] && resolve(process.argv[1]) === resolve(fileURLToPath(import.meta.url))) main().catch(error => { console.error(error.message); process.exitCode = 1; });
