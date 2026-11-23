@@ -18,7 +18,7 @@ export default function LearnerReviews() {
       </blockquote>
       <figcaption>
         <strong>Codie Bachner</strong>
-        <span>Class 1 Wastewater learner · City of Peterborough</span>
+        <span>Environmental Officer I · City of Peterborough</span>
       </figcaption>
     </figure>
     <figure className="homepage-review-card">

@@ -8,6 +8,7 @@ describe("genuine learner proof", () => {
     const html = renderToStaticMarkup(React.createElement(LearnerReviews));
     expect(html.match(/<figure/g)).toHaveLength(2);
     expect(html).toContain("Codie Bachner"); expect(html).toContain("Canadian Veggie");
+    expect(html).toContain("Environmental Officer I · City of Peterborough");
     expect(html).toContain("These mok questions are great");
     expect(html).toContain("I am having great success with it. I do enjoy it.");
     expect(html).not.toMatch(/Feedback call|Lightly edited for clarity|Personal experience, not an organizational endorsement/i);
