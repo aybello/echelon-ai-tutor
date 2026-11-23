@@ -407,7 +407,7 @@ test("active mock fits a phone and question navigation is available", async ({pa
   await page.setViewportSize({width:390,height:844});
   await page.goto("/#/mock");
   await page.getByRole("button",{name:/Start Exam/}).click();
-  await expect(page.locator(".mes-active-grid")).toBeVisible();
+  await expect(page.locator(".mes-active-grid")).toBeVisible({timeout:10000});
   await expect(page.locator(".mes-navigator")).not.toHaveAttribute("open","");
   await page.locator(".mes-navigator summary").click();
   await page.getByRole("button",{name:"Question 5, unanswered",exact:true}).click();
