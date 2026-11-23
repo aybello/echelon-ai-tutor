@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "generatedAtUtc": "2026-11-23T03:20:22.740099+00:00",
+  "source": "live-exam-bank-dedup-2026-11-22.json",
+  "totalStaged": 7000,
+  "withheldCount": 9,
+  "approvedFlaggedCount": 2,
+  "releaseCandidateCount": 6991,
+  "reviewers": [
+    {
+      "provider": "Google",
+      "model": "gemini-4-argon",
+      "role": "independent content release review",
+      "decision": "concurred"
+    },
+    {
+      "provider": "OpenAI",
+      "model": "gpt-6.2-sol",
+      "role": "independent content release review",
+      "decision": "concurred"
+    }
+  ],
+  "withheld": [
+    {
+      "bankKey": "class1-water",
+      "itemId": "WATER-TREATMENT-L1-273",
+      "questionNum": 2273,
+      "payloadSha256": "addf3929356adb3f6c83b7d9efbc3f9fad765f7c6e6846c8466657eaea92bcc1"
+    },
+    {
+      "bankKey": "class1-ww",
+      "itemId": "WASTEWATER-TREATMENT-L1-268",
+      "questionNum": 2268,
+      "payloadSha256": "c664f7a8f3405d8a5e9fdd2716e8855ac694ce3724f52cc4fcfd03478a593aff"
+    },
+    {
+      "bankKey": "class1-ww",
+      "itemId": "WASTEWATER-TREATMENT-L1-251",
+      "questionNum": 2251,
+      "payloadSha256": "88e50ba1de28867df45309b8476263d99954e229c1bb6da0bf44d75e93f05388"
+    },
+    {
+      "bankKey": "class1-ww",
+      "itemId": "WASTEWATER-TREATMENT-L1-406",
+      "questionNum": 2406,
+      "payloadSha256": "791548479a9509d2fb4d19814234adf13ec65e238533a0521fbed7f7803a7e5d"
+    },
+    {
+      "bankKey": "wpi-class1-water",
+      "itemId": "WATER-TREATMENT-L1-373",
+      "questionNum": 2373,
+      "payloadSha256": "a4174b0427d0bd00ffe0872d3de47a44108645f20b896250484d5a35198dbe7e"
+    },
+    {
+      "bankKey": "wpi-class3-water",
+      "itemId": "WATER-TREATMENT-L3-371",
+      "questionNum": 2371,
+      "payloadSha256": "3ea052368b435909c964cd12a52938fcb82a20d65b20652eaad4e4e5d32cad10"
+    },
+    {
+      "bankKey": "wpi-class4-water",
+      "itemId": "WATER-TREATMENT-L4-416",
+      "questionNum": 2416,
+      "payloadSha256": "641194fbf309519bb0a0ca16496eb29dc389bb10ba034aa52053fde73a17c4e1"
+    },
+    {
+      "bankKey": "wpi-class1-wastewater",
+      "itemId": "WASTEWATER-TREATMENT-L1-268",
+      "questionNum": 2268,
+      "payloadSha256": "c664f7a8f3405d8a5e9fdd2716e8855ac694ce3724f52cc4fcfd03478a593aff"
+    },
+    {
+      "bankKey": "wpi-class1-water-dist",
+      "itemId": "DISTRIBUTION-L1-351",
+      "questionNum": 2351,
+      "payloadSha256": "d1359928bfd642bc353f416656b3d112670e1d497515cdbf443003e504b221cf"
+    }
+  ],
+  "approvedFlagged": [
+    {
+      "bankKey": "wpi-class1-wastewater",
+      "itemId": "WASTEWATER-TREATMENT-L1-303",
+      "questionNum": 2303,
+      "payloadSha256": "d364cce368711e71fb6f1bb9b33b0e251f37b84c2471095643d4e94fd413c86a"
+    },
+    {
+      "bankKey": "wpi-class1-wastewater",
+      "itemId": "WASTEWATER-TREATMENT-L1-308",
+      "questionNum": 2308,
+      "payloadSha256": "68dfcd7940c9a46abb8bde05a9979434c3971c24ece905c51a0b3efa89791307"
+    }
+  ],
+  "policy": "Do not import withheld items. Any importer must verify payloadSha256 before accepting an approved item and fail closed on mismatch."
+}

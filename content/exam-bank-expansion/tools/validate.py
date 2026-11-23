@@ -10,7 +10,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 from courses_data import COURSES
 
-ROOT = Path.home() / "workspace/echelon/exam-bank-expansion"
+# Resolve from the checked-in package so validation works from any clone.
+ROOT = Path(__file__).resolve().parents[1]
 CFG = {c["key"]: c for c in COURSES}
 
 BASE = {
