@@ -4,8 +4,8 @@ Inventory run: 2026-11-21 (Drive search) by the build coordinator.
 
 ## Headline finding: the connected Drive holds no textbooks
 
-The only Google Drive this environment can reach is the AfroPuppyYoga account
-(afropuppyyoga@gmail.com). The Drive connector supports one account per
+The only Google Drive this environment can reach is the connected AfroPuppyYoga
+account. The Drive connector supports one account per
 connector; selecting another account returns "account selection is unavailable
 for google_drive". That Drive was searched exhaustively on 2026-11-21:
 
@@ -22,11 +22,11 @@ for google_drive". That Drive was searched exhaustively on 2026-11-21:
 
 Result: no water or wastewater textbooks, manuals, or operator study guides
 exist in this Drive. Ay's textbooks are almost certainly in a different Google
-account's Drive (his personal account, or the afropuppyyogaofficial@gmail.com
-account the shared browser uses), which this connector cannot read.
+account's Drive (his personal account, or the other account the shared browser
+uses), which this connector cannot read.
 
 ACTION NEEDED (for Ay or the parent agent): share the textbook files or their
-folder with afropuppyyoga@gmail.com, or download them through the signed-in
+folder with the connected account, or download them through the signed-in
 browser, so the build can cite them directly. Until then, game tasks are
 grounded in the repo's own source citations (section 3 below), which are the
 same published references the existing question banks already use.
