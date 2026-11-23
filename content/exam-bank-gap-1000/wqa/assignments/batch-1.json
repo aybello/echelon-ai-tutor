@@ -1,0 +1,420 @@
+{
+ "courseKey": "wqa",
+ "bankKey": "wqa",
+ "batch": 1,
+ "size": 45,
+ "conceptualCount": 36,
+ "calcCount": 9,
+ "topicPoolRound": 1,
+ "questionNumStart": 2451,
+ "questionNumEnd": 2495,
+ "itemIdStart": "WQA-451",
+ "itemIdEnd": "WQA-495",
+ "items": [
+  {
+   "seq": 1,
+   "questionNum": 2451,
+   "itemId": "WQA-451",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Sampling & Sample Handling] sampling program design"
+  },
+  {
+   "seq": 2,
+   "questionNum": 2452,
+   "itemId": "WQA-452",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Sampling & Sample Handling] sample preservation"
+  },
+  {
+   "seq": 3,
+   "questionNum": 2453,
+   "itemId": "WQA-453",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Sampling & Sample Handling] holding times"
+  },
+  {
+   "seq": 4,
+   "questionNum": 2454,
+   "itemId": "WQA-454",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Sampling & Sample Handling] chain of custody"
+  },
+  {
+   "seq": 5,
+   "questionNum": 2455,
+   "itemId": "WQA-455",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Microbiological Analysis] total coliform methods awareness"
+  },
+  {
+   "seq": 6,
+   "questionNum": 2456,
+   "itemId": "WQA-456",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Microbiological Analysis] E. coli methods awareness"
+  },
+  {
+   "seq": 7,
+   "questionNum": 2457,
+   "itemId": "WQA-457",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Bench Chemistry] pH measurement"
+  },
+  {
+   "seq": 8,
+   "questionNum": 2458,
+   "itemId": "WQA-458",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Bench Chemistry] turbidity measurement"
+  },
+  {
+   "seq": 9,
+   "questionNum": 2459,
+   "itemId": "WQA-459",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Sampling & Sample Handling] sampling program design"
+  },
+  {
+   "seq": 10,
+   "questionNum": 2460,
+   "itemId": "WQA-460",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Sampling & Sample Handling] sample preservation"
+  },
+  {
+   "seq": 11,
+   "questionNum": 2461,
+   "itemId": "WQA-461",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Sampling & Sample Handling] holding times"
+  },
+  {
+   "seq": 12,
+   "questionNum": 2462,
+   "itemId": "WQA-462",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Sampling & Sample Handling] chain of custody"
+  },
+  {
+   "seq": 13,
+   "questionNum": 2463,
+   "itemId": "WQA-463",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Microbiological Analysis] total coliform methods awareness"
+  },
+  {
+   "seq": 14,
+   "questionNum": 2464,
+   "itemId": "WQA-464",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Microbiological Analysis] E. coli methods awareness"
+  },
+  {
+   "seq": 15,
+   "questionNum": 2465,
+   "itemId": "WQA-465",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Bench Chemistry] pH measurement"
+  },
+  {
+   "seq": 16,
+   "questionNum": 2466,
+   "itemId": "WQA-466",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Bench Chemistry] turbidity measurement"
+  },
+  {
+   "seq": 17,
+   "questionNum": 2467,
+   "itemId": "WQA-467",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Sampling & Sample Handling] sampling program design"
+  },
+  {
+   "seq": 18,
+   "questionNum": 2468,
+   "itemId": "WQA-468",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Sampling & Sample Handling] sample preservation"
+  },
+  {
+   "seq": 19,
+   "questionNum": 2469,
+   "itemId": "WQA-469",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Sampling & Sample Handling] holding times"
+  },
+  {
+   "seq": 20,
+   "questionNum": 2470,
+   "itemId": "WQA-470",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Sampling & Sample Handling] chain of custody"
+  },
+  {
+   "seq": 21,
+   "questionNum": 2471,
+   "itemId": "WQA-471",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Microbiological Analysis] total coliform methods awareness"
+  },
+  {
+   "seq": 22,
+   "questionNum": 2472,
+   "itemId": "WQA-472",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Microbiological Analysis] E. coli methods awareness"
+  },
+  {
+   "seq": 23,
+   "questionNum": 2473,
+   "itemId": "WQA-473",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Bench Chemistry] pH measurement"
+  },
+  {
+   "seq": 24,
+   "questionNum": 2474,
+   "itemId": "WQA-474",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Bench Chemistry] turbidity measurement"
+  },
+  {
+   "seq": 25,
+   "questionNum": 2475,
+   "itemId": "WQA-475",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Sampling & Sample Handling] sampling program design"
+  },
+  {
+   "seq": 26,
+   "questionNum": 2476,
+   "itemId": "WQA-476",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Sampling & Sample Handling] sample preservation"
+  },
+  {
+   "seq": 27,
+   "questionNum": 2477,
+   "itemId": "WQA-477",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Sampling & Sample Handling] holding times"
+  },
+  {
+   "seq": 28,
+   "questionNum": 2478,
+   "itemId": "WQA-478",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Sampling & Sample Handling] chain of custody"
+  },
+  {
+   "seq": 29,
+   "questionNum": 2479,
+   "itemId": "WQA-479",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Microbiological Analysis] total coliform methods awareness"
+  },
+  {
+   "seq": 30,
+   "questionNum": 2480,
+   "itemId": "WQA-480",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Microbiological Analysis] E. coli methods awareness"
+  },
+  {
+   "seq": 31,
+   "questionNum": 2481,
+   "itemId": "WQA-481",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Bench Chemistry] pH measurement"
+  },
+  {
+   "seq": 32,
+   "questionNum": 2482,
+   "itemId": "WQA-482",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Bench Chemistry] turbidity measurement"
+  },
+  {
+   "seq": 33,
+   "questionNum": 2483,
+   "itemId": "WQA-483",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Sampling & Sample Handling] sampling program design"
+  },
+  {
+   "seq": 34,
+   "questionNum": 2484,
+   "itemId": "WQA-484",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Sampling & Sample Handling] sample preservation"
+  },
+  {
+   "seq": 35,
+   "questionNum": 2485,
+   "itemId": "WQA-485",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Sampling & Sample Handling] holding times"
+  },
+  {
+   "seq": 36,
+   "questionNum": 2486,
+   "itemId": "WQA-486",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Sampling & Sample Handling] chain of custody"
+  },
+  {
+   "seq": 37,
+   "questionNum": 2487,
+   "itemId": "WQA-487",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "sample bottle planning counts"
+  },
+  {
+   "seq": 38,
+   "questionNum": 2488,
+   "itemId": "WQA-488",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "dilution factor calculation"
+  },
+  {
+   "seq": 39,
+   "questionNum": 2489,
+   "itemId": "WQA-489",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "holding time scheduling arithmetic"
+  },
+  {
+   "seq": 40,
+   "questionNum": 2490,
+   "itemId": "WQA-490",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "result averaging"
+  },
+  {
+   "seq": 41,
+   "questionNum": 2491,
+   "itemId": "WQA-491",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "sample bottle planning counts"
+  },
+  {
+   "seq": 42,
+   "questionNum": 2492,
+   "itemId": "WQA-492",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "dilution factor calculation"
+  },
+  {
+   "seq": 43,
+   "questionNum": 2493,
+   "itemId": "WQA-493",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "holding time scheduling arithmetic"
+  },
+  {
+   "seq": 44,
+   "questionNum": 2494,
+   "itemId": "WQA-494",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "result averaging"
+  },
+  {
+   "seq": 45,
+   "questionNum": 2495,
+   "itemId": "WQA-495",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "sample bottle planning counts"
+  }
+ ]
+}

@@ -1,0 +1,140 @@
+{
+ "build": "exam-bank-gap-1000",
+ "reviewer": "owner-authorized-ai-review",
+ "model": "Muse Wonder",
+ "reviewDateUtc": "2026-11-23T17:59:30Z",
+ "sourceBranch": "exam-bank-gap-1000-2026-11-23",
+ "baseCommit": "6b15ae5120c63cbfd28ea1c2c7aff31cc64ff526",
+ "banks": {
+  "class2-water": {
+   "packageSha256": "abb299e7cdd0c6ae5daf10739c3e2b1bd3518b407df3e5e1147a8b9ed952b833",
+   "items": 51,
+   "requested": 51
+  },
+  "class3-water": {
+   "packageSha256": "25efbb3a71364fe8ba15fca29012718e58d01b61bf82d635f099852030b9405b",
+   "items": 239,
+   "requested": 239
+  },
+  "class4-water": {
+   "packageSha256": "cab27404b38a5eed3290e7ae23223e6f118eea2413c7df27c3c79602e4edaaff",
+   "items": 231,
+   "requested": 231
+  },
+  "class2-ww": {
+   "packageSha256": "21b62e12fd185872a9e69a76be1150c4502a32480638e5d7b47506249d2ba5ad",
+   "items": 6,
+   "requested": 6
+  },
+  "class3-ww": {
+   "packageSha256": "ebb304c5b956b1f514b5b542b8525089beaa34a927826624adffa7a020beecc7",
+   "items": 220,
+   "requested": 220
+  },
+  "class4-ww": {
+   "packageSha256": "9ebfc52349cfc51a32b9130e5cbe956354733d1f555ab359d36469e92845c2c0",
+   "items": 212,
+   "requested": 212
+  },
+  "wqa": {
+   "packageSha256": "3911ca017d054016154c572fa14ca3500c044398ef5e822fcd1c12a95c3ea707",
+   "items": 312,
+   "requested": 312
+  },
+  "class2-water-dist": {
+   "packageSha256": "723652e18d81fffa1ae9a3b34b8395d6d4cc7cf8edccc13b41fcedbdc2a9260c",
+   "items": 16,
+   "requested": 16
+  },
+  "class4-water-dist": {
+   "packageSha256": "4ab2d7952643e3010dddee50c7c10f3d19a83b7ba559682a54c2c3e8157f821a",
+   "items": 235,
+   "requested": 235
+  },
+  "class3-wastewater-coll": {
+   "packageSha256": "38b0553b49759d7e77e9a75865c0fd0e76bc206940e49181dd24c191f5ea2a1b",
+   "items": 230,
+   "requested": 230
+  },
+  "class4-wastewater-coll": {
+   "packageSha256": "0134cc5fe0d1f593129770af3dedd0cfd62991a86cb98cd526494bef72e441d3",
+   "items": 230,
+   "requested": 230
+  },
+  "wpi-class1-water": {
+   "packageSha256": "4aaffc714e4758479d759dd4646bdd61a114c579e999f037e5993c540be35238",
+   "items": 203,
+   "requested": 203
+  },
+  "wpi-class2-water": {
+   "packageSha256": "a2516f03456d73fac7ff39c78e60f7c69846ba8467b35e8b82795d4104ea751a",
+   "items": 207,
+   "requested": 207
+  },
+  "wpi-class3-water": {
+   "packageSha256": "cf253a4b7a19b6a073e0adc4d84cc65e8dd5abebd553899f528103d7f424e2d4",
+   "items": 242,
+   "requested": 242
+  },
+  "wpi-class4-water": {
+   "packageSha256": "a6ba3d9701c4eafbf4f8274526a7f248629b4329afabb249b7ee4a4fa34414b6",
+   "items": 128,
+   "requested": 128
+  },
+  "wpi-class1-wastewater": {
+   "packageSha256": "8cdfde837b5183f7f7e0cab4739aeb5e325299bfa7e24209ebf4a744f82485c1",
+   "items": 209,
+   "requested": 209
+  },
+  "wpi-class2-wastewater": {
+   "packageSha256": "37b915e3a4315b08a66ca7f834ca7350c5bbbdcbd3f9e40d6f8d05a74a0becdd",
+   "items": 203,
+   "requested": 203
+  },
+  "wpi-class3-wastewater": {
+   "packageSha256": "9240efe7f29b3405ebaafbf71805befb7daba063d04d9509f4649118aff9f0a7",
+   "items": 194,
+   "requested": 194
+  },
+  "wpi-class1-water-dist": {
+   "packageSha256": "23be7db0e09893ad7fa81371e643599d4d0e7d55aa9e4e6eeab6760709ea7ca1",
+   "items": 302,
+   "requested": 302
+  },
+  "wpi-class2-water-dist": {
+   "packageSha256": "6f4d813cb77b05238b71f9a954a8b875f465da7d5d04feb4fd423e93b403d7c0",
+   "items": 206,
+   "requested": 206
+  },
+  "wpi-class3-water-dist": {
+   "packageSha256": "23e6b83178d6a95527df37ff2f6dfb795596e333a649f00239e8343b4d711841",
+   "items": 189,
+   "requested": 189
+  },
+  "wpi-class4-water-dist": {
+   "packageSha256": "b15a71b0c6aa861696d450b8aee19f670202cbfd51d642d939a045957eacc6f8",
+   "items": 183,
+   "requested": 183
+  },
+  "wpi-class1-water-coll": {
+   "packageSha256": "305b18568ba6244b0f3d123ad5b47c0e0f150f87a7d9b45f44143c58ec6e3c84",
+   "items": 302,
+   "requested": 302
+  },
+  "wpi-class2-water-coll": {
+   "packageSha256": "b883f629b7de71fb0f225395cbc291d3939ae98f79f20d1e83fadb443d748a90",
+   "items": 298,
+   "requested": 298
+  },
+  "wpi-class3-water-coll": {
+   "packageSha256": "1ab54ca71935b84dee7f57a4cf3298b7705030cbc525c794db53e09b54c8a0cf",
+   "items": 297,
+   "requested": 297
+  },
+  "wpi-class4-water-coll": {
+   "packageSha256": "aafabdbd8cd85895bad541407238ac2af6e45c82bdd19c19a78f89d9d6b6f9ae",
+   "items": 297,
+   "requested": 297
+  }
+ }
+}

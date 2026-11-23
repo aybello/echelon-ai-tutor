@@ -1,0 +1,127 @@
+{
+ "reviewer": "owner-authorized-ai-review",
+ "model": "Muse Wonder",
+ "reviewDateUtc": "2026-11-23T17:59:30Z",
+ "sourceBranch": "exam-bank-gap-1000-2026-11-23",
+ "baseCommit": "6b15ae5120c63cbfd28ea1c2c7aff31cc64ff526",
+ "courseKey": "class2-water-dist",
+ "canonicalBankKey": "class2-water-dist",
+ "itemBankKey": "class2-water-dist",
+ "packageSha256": "723652e18d81fffa1ae9a3b34b8395d6d4cc7cf8edccc13b41fcedbdc2a9260c",
+ "additionsFileSha256": "f63eb84416b102e5293b25838ef3fac18fb6dca4e197b93325b6a8f3e968dfcb",
+ "batchFileSha256": {
+  "batch-1.json": "c40866087a2da4a9a9ec99b3c469aa51e7dffc5d7e20827e837fc84cf0a806c5",
+  "batch-1.verify.json": "f1f840b4f80579ca4dfe7f0b139f781939ec9e7ca833ba056840daf9104df419"
+ },
+ "counts": {
+  "requested": 16,
+  "generated": 16,
+  "accepted": 16,
+  "withheld": [],
+  "rejected": []
+ },
+ "checks": {
+  "schemaValidation": "see validate_gap.py run log in DUPLICATE-AND-SAFETY-REPORT.md",
+  "calculationVerification": null,
+  "dedup": {},
+  "quality": null
+ },
+ "items": [
+  {
+   "bankKey": "class2-water-dist",
+   "questionNum": 2451,
+   "itemId": "DISTRIBUTION-L2-451",
+   "payloadSha256": "6b3eb7703b23a0abf4547aa9281326fc26e68ff19584b525c968f4a069a6805a"
+  },
+  {
+   "bankKey": "class2-water-dist",
+   "questionNum": 2452,
+   "itemId": "DISTRIBUTION-L2-452",
+   "payloadSha256": "bc56cab2db884e2fcbe7d1ce176b8d459c946460e690ba092ccae02227cdecf4"
+  },
+  {
+   "bankKey": "class2-water-dist",
+   "questionNum": 2453,
+   "itemId": "DISTRIBUTION-L2-453",
+   "payloadSha256": "4250d9c987b6c1fc68661ef212b6c4e32f6409ccdeeda68078027910a1927b5e"
+  },
+  {
+   "bankKey": "class2-water-dist",
+   "questionNum": 2454,
+   "itemId": "DISTRIBUTION-L2-454",
+   "payloadSha256": "fba1167eb0a00302a4635e2227b6ad9ec760578bba8ef5e849e5e438089a99bf"
+  },
+  {
+   "bankKey": "class2-water-dist",
+   "questionNum": 2455,
+   "itemId": "DISTRIBUTION-L2-455",
+   "payloadSha256": "c050dd49f953f2121d216515e90cbd5375d4a7422ce525f0d69195c8ba1c141c"
+  },
+  {
+   "bankKey": "class2-water-dist",
+   "questionNum": 2456,
+   "itemId": "DISTRIBUTION-L2-456",
+   "payloadSha256": "abe5b60856faee7daa7777992b1b1e8254f3995d0db4733b591f2cb2bb57271a"
+  },
+  {
+   "bankKey": "class2-water-dist",
+   "questionNum": 2457,
+   "itemId": "DISTRIBUTION-L2-457",
+   "payloadSha256": "83a602dfae45f53e8a1566cf0aa84a91c0a2f379c0c392c31c12a1049f82274d"
+  },
+  {
+   "bankKey": "class2-water-dist",
+   "questionNum": 2458,
+   "itemId": "DISTRIBUTION-L2-458",
+   "payloadSha256": "4bd55282a72555e8c802759e0692bcc427b16b1a65f60d798fb6df4d93fc08ab"
+  },
+  {
+   "bankKey": "class2-water-dist",
+   "questionNum": 2459,
+   "itemId": "DISTRIBUTION-L2-459",
+   "payloadSha256": "d148f77bd2e9e5367501caf1ab163662864cbe3b9a7d1beb516aba6e055228af"
+  },
+  {
+   "bankKey": "class2-water-dist",
+   "questionNum": 2460,
+   "itemId": "DISTRIBUTION-L2-460",
+   "payloadSha256": "471955a3457a869b1819a46adb56567e63f0a0495ed7f9d16df68a6de035958c"
+  },
+  {
+   "bankKey": "class2-water-dist",
+   "questionNum": 2461,
+   "itemId": "DISTRIBUTION-L2-461",
+   "payloadSha256": "726e5154ffeae96f54e01b02a8d05519bfaac5237ca260b2cbb4b19d7ba5c051"
+  },
+  {
+   "bankKey": "class2-water-dist",
+   "questionNum": 2462,
+   "itemId": "DISTRIBUTION-L2-462",
+   "payloadSha256": "a6d49cc71b82cb62f0854a73f374df36ee392c12a203a014ddf2a58a9b961238"
+  },
+  {
+   "bankKey": "class2-water-dist",
+   "questionNum": 2463,
+   "itemId": "DISTRIBUTION-L2-463",
+   "payloadSha256": "f63e77ad00181b7a9a0f409ab0c73ce56529ea59f93e9815e082c1222959fcba"
+  },
+  {
+   "bankKey": "class2-water-dist",
+   "questionNum": 2464,
+   "itemId": "DISTRIBUTION-L2-464",
+   "payloadSha256": "cea4077d9bd02b6c46e237a0e2e7349d85719e6ddb63b057e620e9b6f67551f7"
+  },
+  {
+   "bankKey": "class2-water-dist",
+   "questionNum": 2465,
+   "itemId": "DISTRIBUTION-L2-465",
+   "payloadSha256": "b75f92a38cba5df20af12de71359f3c3be7d68c9624a4daf7500d81e8c86e82b"
+  },
+  {
+   "bankKey": "class2-water-dist",
+   "questionNum": 2466,
+   "itemId": "DISTRIBUTION-L2-466",
+   "payloadSha256": "6d3d718d3f62c7671ab181e19b36145ebfd62033e4b08bde27f2bda89ef50908"
+  }
+ ]
+}

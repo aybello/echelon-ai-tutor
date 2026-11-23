@@ -1,0 +1,1410 @@
+{
+ "reviewer": "owner-authorized-ai-review",
+ "model": "Muse Wonder",
+ "reviewDateUtc": "2026-11-23T17:59:30Z",
+ "sourceBranch": "exam-bank-gap-1000-2026-11-23",
+ "baseCommit": "6b15ae5120c63cbfd28ea1c2c7aff31cc64ff526",
+ "courseKey": "class3-ww",
+ "canonicalBankKey": "class3-wastewater",
+ "itemBankKey": "class3-wastewater",
+ "packageSha256": "ebb304c5b956b1f514b5b542b8525089beaa34a927826624adffa7a020beecc7",
+ "additionsFileSha256": "4446a4a213d7bb6ec5dab144a6531bfd6ea896d2cdc2696ae88d9f4f258dbabd",
+ "batchFileSha256": {
+  "batch-1.json": "61ade07e90c027aff3dcd2ca74220cae2daaca990d3925acffb70862400b6e09",
+  "batch-1.verify.json": "875ded7988c18e01ee385879edfb5af41de3ec48fa0254baf0d0ff46614faf3e",
+  "batch-2.json": "ba2998bc28bf670623732300fb24beb41630cfed50b7667a215d59faa791c370",
+  "batch-2.verify.json": "880f36fd22b68908778aee6566f2408d4c982ba5c7b0171cfdc6b548b9899414",
+  "batch-3.json": "9d03dace20eb13db6429e7b5cda60c43b78fbce6ef9602c92a747a1b72348273",
+  "batch-3.verify.json": "d185c4d20c8c82b64139e07a5b6318cda3ab5102ebf15aee47cc12186b90aea5",
+  "batch-4.json": "13929a751c48da79205effd4b0ab3cbb92684967ecdf6830dc611fe1c029b219",
+  "batch-4.verify.json": "d5dd0fbd09a4fdb086959260f55c97daacefd40ff313db10163ac162a70424e1",
+  "batch-5.json": "65e68441001b91dcd1662f0a39a2e1e63aac50412facba066b1c4348b51df989",
+  "batch-5.verify.json": "72f0741cdd0578a361967f86726dca604ca2257232ea2637989fe816522fb28b"
+ },
+ "counts": {
+  "requested": 220,
+  "generated": 220,
+  "accepted": 220,
+  "withheld": [],
+  "rejected": [
+   {
+    "itemId": "WASTEWATER-TREATMENT-L3-487",
+    "questionNum": 2487,
+    "reason": "Original rejected pre-acceptance: masked-stem near-duplicate (Jaccard >= 0.85) of an existing F/M item. Replaced in place with a two-step F/M deriving MLVSS from MLSS and a volatile fraction; replacement passed all checks and is the accepted payload."
+   },
+   {
+    "itemId": "WASTEWATER-TREATMENT-L3-488",
+    "questionNum": 2488,
+    "reason": "Original rejected pre-acceptance: masked-stem near-duplicate of an existing SVI item. Replaced in place with a two-sample settleability comparison; replacement passed all checks and is the accepted payload."
+   },
+   {
+    "itemId": "WASTEWATER-TREATMENT-L3-489",
+    "questionNum": 2489,
+    "reason": "Original rejected pre-acceptance: masked-stem near-duplicate of an existing clarifier solids loading item. Replaced in place with a loading calculation deriving area from diameter and adding RAS flow; replacement passed all checks and is the accepted payload."
+   },
+   {
+    "itemId": "WASTEWATER-TREATMENT-L3-491",
+    "questionNum": 2491,
+    "reason": "Original rejected pre-acceptance: masked-stem near-duplicate of an existing F/M item and of the original L3-487 shape. Replaced in place with an inverse F/M control calculation solving for required MLVSS; replacement passed all checks and is the accepted payload."
+   },
+   {
+    "itemId": "WASTEWATER-TREATMENT-L3-503",
+    "questionNum": 2503,
+    "reason": "Original rejected pre-acceptance: masked-stem near-duplicate of an existing UV disinfection item. Replaced in place with an easy recall question on UV sleeve fouling and cleaning; replacement passed all checks and is the accepted payload."
+   },
+   {
+    "itemId": "WASTEWATER-TREATMENT-L3-574",
+    "questionNum": 2574,
+    "reason": "Original rejected pre-acceptance: masked-stem near-duplicate of an existing nutrient mass balance item. Replaced in place with a load-based removal efficiency calculation; replacement passed all checks and is the accepted payload."
+   },
+   {
+    "itemId": "WASTEWATER-TREATMENT-L3-578",
+    "questionNum": 2578,
+    "reason": "Original rejected pre-acceptance: masked-stem near-duplicate of an existing nutrient mass balance item. Replaced in place with a chemical product mass calculation from a phosphorus load and a given dose ratio; replacement passed all checks and is the accepted payload."
+   },
+   {
+    "itemId": "WASTEWATER-TREATMENT-L3-632",
+    "questionNum": 2632,
+    "reason": "Original rejected pre-acceptance: stem exactly duplicated an existing bank item (what SRT describes). Replaced in place with an easy recall question on the F/M abbreviation; replacement passed all checks and is the accepted payload."
+   },
+   {
+    "itemId": "WASTEWATER-TREATMENT-L3-665",
+    "questionNum": 2665,
+    "reason": "Original rejected pre-acceptance: masked-stem near-duplicate of an existing clarifier solids loading item. Replaced in place with a sludge blanket solids inventory calculation; replacement passed all checks and is the accepted payload."
+   },
+   {
+    "itemId": "WASTEWATER-TREATMENT-L3-669",
+    "questionNum": 2669,
+    "reason": "Original rejected pre-acceptance: masked-stem near-duplicate of an existing clarifier solids loading item. Replaced in place with a limiting solids flux back-calculation for maximum influent flow; replacement passed all checks and is the accepted payload."
+   }
+  ]
+ },
+ "checks": {
+  "schemaValidation": "see validate_gap.py run log in DUPLICATE-AND-SAFETY-REPORT.md",
+  "calculationVerification": null,
+  "dedup": {},
+  "quality": null
+ },
+ "items": [
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2451,
+   "itemId": "WASTEWATER-TREATMENT-L3-451",
+   "payloadSha256": "560c49e562700225b3ea9172dd1fbbde2fe597e3433b7a167fc9503ef83b1102"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2452,
+   "itemId": "WASTEWATER-TREATMENT-L3-452",
+   "payloadSha256": "a989a4b50f18ba05ca9f18c77796abcd51f02762c632935ebc8b8439e504c131"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2453,
+   "itemId": "WASTEWATER-TREATMENT-L3-453",
+   "payloadSha256": "2e1b0e27d1755802b04be9f5d4ac2ea8a032d61566d1916a8ea49e6f6f90fd81"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2454,
+   "itemId": "WASTEWATER-TREATMENT-L3-454",
+   "payloadSha256": "dd6430961c844ee6e82ae5e42082e94619a0018b852fb9dc657229a9c3c07c67"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2455,
+   "itemId": "WASTEWATER-TREATMENT-L3-455",
+   "payloadSha256": "e4ab1172a0bbd42f319e7969d0c4cd69af43252eb54f0c0e89a215620fb50acd"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2456,
+   "itemId": "WASTEWATER-TREATMENT-L3-456",
+   "payloadSha256": "45b4e4fa651898f4fc0239e59d8169ca63a50f18fce3243c7f5f8013f8c4eeec"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2457,
+   "itemId": "WASTEWATER-TREATMENT-L3-457",
+   "payloadSha256": "bf63687138632cbea3f170ed0a8419c165aa12a4803e5ff5c4fee941e87275cc"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2458,
+   "itemId": "WASTEWATER-TREATMENT-L3-458",
+   "payloadSha256": "1ecdf2606e4105e00759597d7627a33a1ee3fa7ffae2b35c2fb1a44b94fc31d6"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2459,
+   "itemId": "WASTEWATER-TREATMENT-L3-459",
+   "payloadSha256": "79b8c30a3fcf2b501ca68139375f1b764419c6f21f8c5a822e62b7ce7ed2a17f"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2460,
+   "itemId": "WASTEWATER-TREATMENT-L3-460",
+   "payloadSha256": "207d78f5d404527de517f8a544cdf5572485ebfd04226bfcbf746de57b62ae43"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2461,
+   "itemId": "WASTEWATER-TREATMENT-L3-461",
+   "payloadSha256": "1dd3efd063d331dda2e4e27ab94da947da4d370369f4bd4ef538b790795ee4af"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2462,
+   "itemId": "WASTEWATER-TREATMENT-L3-462",
+   "payloadSha256": "235a911178686ff76657c266832ef307c6a32ea80012c6132d55abf3bca9e8f7"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2463,
+   "itemId": "WASTEWATER-TREATMENT-L3-463",
+   "payloadSha256": "443de87de363d6ee9ced7bff3ed08fa21ed90cc5580a499cfd9215e874b76b72"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2464,
+   "itemId": "WASTEWATER-TREATMENT-L3-464",
+   "payloadSha256": "5230395046646ed3986634b6430fc8407fddce708dfdbff299519fdf45a37e5d"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2465,
+   "itemId": "WASTEWATER-TREATMENT-L3-465",
+   "payloadSha256": "b1ebdf6a302d525201d4045cc580f54a41fc9f58bb04cdc6c9e215111b4b0c82"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2466,
+   "itemId": "WASTEWATER-TREATMENT-L3-466",
+   "payloadSha256": "28ee0dcc5edd1009a685cf705a4c3f5c5d2c863750b8817c40ead58c446c6c18"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2467,
+   "itemId": "WASTEWATER-TREATMENT-L3-467",
+   "payloadSha256": "505948bcbd7948a6383632294c8a845a869a46baa30a4aba42e43d12d5d627f7"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2468,
+   "itemId": "WASTEWATER-TREATMENT-L3-468",
+   "payloadSha256": "80a53d5f2f4d42431b170c5149b74c989bb97cf2efbc8192643a62db46b675d5"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2469,
+   "itemId": "WASTEWATER-TREATMENT-L3-469",
+   "payloadSha256": "15d5a61103e2bc47c5ea498de62e8fe86a476d9ea9b23084469fbd8fc6919736"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2470,
+   "itemId": "WASTEWATER-TREATMENT-L3-470",
+   "payloadSha256": "0920f9b649c8ef127371fee7740ae4ba53b9ca8a85f9608e93dc3e38edc0dea0"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2471,
+   "itemId": "WASTEWATER-TREATMENT-L3-471",
+   "payloadSha256": "0f8386485f66e6fe40ae263d105503c604302aa30c49e99b74249a7714e7042b"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2472,
+   "itemId": "WASTEWATER-TREATMENT-L3-472",
+   "payloadSha256": "56edef0517ec5f06f5d4fb55a5aad3c5668a057d6ea77b96644957b5667fa16f"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2473,
+   "itemId": "WASTEWATER-TREATMENT-L3-473",
+   "payloadSha256": "5ab8e7658373e59c9289b37cea57803a4ac1f1bc7e51ef3502a7a1b173672b84"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2474,
+   "itemId": "WASTEWATER-TREATMENT-L3-474",
+   "payloadSha256": "fe97edb850ea51a927eefc0d0bbb45636d74c3f4b4c8cc5ee6bff1ee221582a1"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2475,
+   "itemId": "WASTEWATER-TREATMENT-L3-475",
+   "payloadSha256": "166e42d9a56bd924013e855a715edfd2a3435cc6e329632667e8ab836bddda2e"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2476,
+   "itemId": "WASTEWATER-TREATMENT-L3-476",
+   "payloadSha256": "78e93fac531cd8555438ce8be65705e18d60a0f1bca1797ffa139595af38ae3d"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2477,
+   "itemId": "WASTEWATER-TREATMENT-L3-477",
+   "payloadSha256": "cc85b03479950ff439390d861b4850b563d6bc925db2c170c8dbb341d3418639"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2478,
+   "itemId": "WASTEWATER-TREATMENT-L3-478",
+   "payloadSha256": "ef7acbb795881a12fd42a9d4a8cac172f1f5ec92f47fe91f600c02846c6084b3"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2479,
+   "itemId": "WASTEWATER-TREATMENT-L3-479",
+   "payloadSha256": "a4235ef21df0fbb88fc4169044c69519fc5542b01b6304fd9869ae5ca3d79832"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2480,
+   "itemId": "WASTEWATER-TREATMENT-L3-480",
+   "payloadSha256": "56ef18b09e01cd67642a6fff4b1dc5c7af46489df091404438d4222f7dd1ff7b"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2481,
+   "itemId": "WASTEWATER-TREATMENT-L3-481",
+   "payloadSha256": "ca287b4d148d171e842834cec5e68a9942b944d057bb5906e48d90f9bf5a4e3c"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2482,
+   "itemId": "WASTEWATER-TREATMENT-L3-482",
+   "payloadSha256": "524d42ab7d3176bd39085fcedf535ed50993dc3af15325c4f75aa6cdbdc80648"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2483,
+   "itemId": "WASTEWATER-TREATMENT-L3-483",
+   "payloadSha256": "9c49d8d54f1e7b2ad3451a9e03cf9f08a51686b173892b5774f07429dfc16dd4"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2484,
+   "itemId": "WASTEWATER-TREATMENT-L3-484",
+   "payloadSha256": "c8d0f9aaa1294675bf30479ca61f033f4db7c9383b07a403751dd692fadc3754"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2485,
+   "itemId": "WASTEWATER-TREATMENT-L3-485",
+   "payloadSha256": "ceb479a6d9da766d9de84aa0cde1e329e861e585a2207919f8f46a31af757405"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2486,
+   "itemId": "WASTEWATER-TREATMENT-L3-486",
+   "payloadSha256": "3f977b0ac1fce4335490b135c3132714da495900692ff181734d46c175261360"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2487,
+   "itemId": "WASTEWATER-TREATMENT-L3-487",
+   "payloadSha256": "717cfb366de6f340ac801b9ece797a5beb6a18727f4bf75387d8989b91086d34"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2488,
+   "itemId": "WASTEWATER-TREATMENT-L3-488",
+   "payloadSha256": "f783e3a8426af3265235de3f04783c00eabddb8e213849656be72e46deb26d2f"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2489,
+   "itemId": "WASTEWATER-TREATMENT-L3-489",
+   "payloadSha256": "dcb0fcb9ee7cf47782038cc8765387728af7fa65dfffbb2bfa2698dae52fb907"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2490,
+   "itemId": "WASTEWATER-TREATMENT-L3-490",
+   "payloadSha256": "4067a51b4efdab35087db08a3477df93139c6bdd53e626c7c03dd9f9d7012445"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2491,
+   "itemId": "WASTEWATER-TREATMENT-L3-491",
+   "payloadSha256": "f5980e64bad468541ebece718527b4c54302310d3e1a2f553860c4ac29c730af"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2492,
+   "itemId": "WASTEWATER-TREATMENT-L3-492",
+   "payloadSha256": "a9a2bd3e8306e4da214af5a60fdca7b7238ecc65b0203e84d56706c165d962b9"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2493,
+   "itemId": "WASTEWATER-TREATMENT-L3-493",
+   "payloadSha256": "4213b09d5e2af3f0405c0fec75fd5908eeec60e649dc001fc745ef478bf24345"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2494,
+   "itemId": "WASTEWATER-TREATMENT-L3-494",
+   "payloadSha256": "963ba3dd45a8c0e2b6c49a89f5c67b12951f0d754ea504e4e7f2abd5f8093286"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2495,
+   "itemId": "WASTEWATER-TREATMENT-L3-495",
+   "payloadSha256": "d5bcaaee32da14207616d24be391fa3f2fff65aaee17d6b8d272af93065c9bf1"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2496,
+   "itemId": "WASTEWATER-TREATMENT-L3-496",
+   "payloadSha256": "310504d0e2c8665e2f39c4628f36c55c6c5d7b75b98db1eaeb4ca4814f47dc03"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2497,
+   "itemId": "WASTEWATER-TREATMENT-L3-497",
+   "payloadSha256": "42e3b1432652b6e51c0e7602b9ca9499b0996ba6dccd4ea0453fe0ca31ec0c48"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2498,
+   "itemId": "WASTEWATER-TREATMENT-L3-498",
+   "payloadSha256": "29964eede5c23a1541af452b133c291fcdce818c6918ab23f7b7f52d1a5e5bec"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2499,
+   "itemId": "WASTEWATER-TREATMENT-L3-499",
+   "payloadSha256": "79e23d5cf99f6c9d77ed190ebe984046066737e55afd9c1b38e03c946a7fcfe8"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2500,
+   "itemId": "WASTEWATER-TREATMENT-L3-500",
+   "payloadSha256": "c7404f1b222ea484f5879829ce1864920d4c3a244cf6132985111318a10ff72d"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2501,
+   "itemId": "WASTEWATER-TREATMENT-L3-501",
+   "payloadSha256": "802e1c17268537c43c0ff23e90f5ad43240eaa5a678ff86070b1a69cb1f74944"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2502,
+   "itemId": "WASTEWATER-TREATMENT-L3-502",
+   "payloadSha256": "575bcbc1138fc44b531c6f4fe9fdfa11c5ac338d0772f99db41b89ce970cca19"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2503,
+   "itemId": "WASTEWATER-TREATMENT-L3-503",
+   "payloadSha256": "942efda3ff7c5ba03749b959c4a801a7b896fdbe3c313621d9b16dd3ef4965e1"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2504,
+   "itemId": "WASTEWATER-TREATMENT-L3-504",
+   "payloadSha256": "b20f60e6726569f266e7daa2d833d94d15ae887bd5eb999a03ceb9fe17a8a35c"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2505,
+   "itemId": "WASTEWATER-TREATMENT-L3-505",
+   "payloadSha256": "2ae27762a51fc642d62d131c4b2c249c22c2634b7c4d7608573a86d1a85bd642"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2506,
+   "itemId": "WASTEWATER-TREATMENT-L3-506",
+   "payloadSha256": "87873c0c640249782e44b9b785af6a773d25e30337b1290c0f2fe059faa20712"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2507,
+   "itemId": "WASTEWATER-TREATMENT-L3-507",
+   "payloadSha256": "acd36c9bce795bc54ef20c9c840d8a1f6a4abaa9fa306716f0c81059559e7194"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2508,
+   "itemId": "WASTEWATER-TREATMENT-L3-508",
+   "payloadSha256": "612b3d6d9714033442443c523698b0831c36aad2ca4bad4c3a20f1f7f45cfd79"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2509,
+   "itemId": "WASTEWATER-TREATMENT-L3-509",
+   "payloadSha256": "312b208187f667fedd7df098495125113017060d91e44e886474aca2c797738c"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2510,
+   "itemId": "WASTEWATER-TREATMENT-L3-510",
+   "payloadSha256": "89fe56381bd76b95a11b1dd2d73cacb1ad600cb76238cadc57c2cc25b5e955e8"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2511,
+   "itemId": "WASTEWATER-TREATMENT-L3-511",
+   "payloadSha256": "35c0914a4d1e5e65903384f8f0ad07c86ec7978236a178b85470044515e1d9b5"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2512,
+   "itemId": "WASTEWATER-TREATMENT-L3-512",
+   "payloadSha256": "57b30f04a2e9e36374cf6b784a431fbe2b6eed96543d52d5a90f4439359110ed"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2513,
+   "itemId": "WASTEWATER-TREATMENT-L3-513",
+   "payloadSha256": "a912403c7c2ce4f8e95985079ca5773d378fed0e0c6575de9daba8532df4cac9"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2514,
+   "itemId": "WASTEWATER-TREATMENT-L3-514",
+   "payloadSha256": "007f8264bc721b69218a1dc76a835063665d38b8541c7433fe996cf302947ae9"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2515,
+   "itemId": "WASTEWATER-TREATMENT-L3-515",
+   "payloadSha256": "34b17c2853d7cd4ab76cf7b8883c60ddcce8f8e4c2083b868cf32b089738b7f1"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2516,
+   "itemId": "WASTEWATER-TREATMENT-L3-516",
+   "payloadSha256": "e22dc40ca38568596e384075dcb472584f238506e83ca2c2f169101054c2b7bd"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2517,
+   "itemId": "WASTEWATER-TREATMENT-L3-517",
+   "payloadSha256": "541df0f7c1d7195db46bfe7927114eca1f00b341c722ef02558ecf0a98171c85"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2518,
+   "itemId": "WASTEWATER-TREATMENT-L3-518",
+   "payloadSha256": "3e52426c4bfef146d164d3592b2a54b496df2832e2dfa4db7eea21c53a3496dc"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2519,
+   "itemId": "WASTEWATER-TREATMENT-L3-519",
+   "payloadSha256": "bd8ee9f88f7d01904b028c1ca539458901642cc75d6d4af0b47892fa8f098c95"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2520,
+   "itemId": "WASTEWATER-TREATMENT-L3-520",
+   "payloadSha256": "2d82b235e74c8b697da8997480ca6aa6b682f22f101cd99c765dbcd59c66e097"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2521,
+   "itemId": "WASTEWATER-TREATMENT-L3-521",
+   "payloadSha256": "cacaecc3ccb4faf9950e6a6edd18c5b4adac9eddd6c7b1b524e154ce48d8eee9"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2522,
+   "itemId": "WASTEWATER-TREATMENT-L3-522",
+   "payloadSha256": "f5917902cc9f37b414105392ddec060a8b0e5d5c0ec77a0bfa679e0271812d1c"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2523,
+   "itemId": "WASTEWATER-TREATMENT-L3-523",
+   "payloadSha256": "11f361691373adbdcb3f73449ed00d2725504b7746ad84b27aa1d3dd4957d361"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2524,
+   "itemId": "WASTEWATER-TREATMENT-L3-524",
+   "payloadSha256": "66007a15d4018ffd52d6eda35ef83c81cd8d1c1ffc7cdc4b82fe430c83a79856"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2525,
+   "itemId": "WASTEWATER-TREATMENT-L3-525",
+   "payloadSha256": "11c2c6335e42a071ee294de1c4958a48f1634f804700a6f42ac862749261f212"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2526,
+   "itemId": "WASTEWATER-TREATMENT-L3-526",
+   "payloadSha256": "c90dda44faafd46e7140d13cf93d05549f1549ed2ee946f34f7820512f913968"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2527,
+   "itemId": "WASTEWATER-TREATMENT-L3-527",
+   "payloadSha256": "79ffa6264b05ff3d83992a97c8a14a9ea284f195bab59650c519bef06c96a4b8"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2528,
+   "itemId": "WASTEWATER-TREATMENT-L3-528",
+   "payloadSha256": "0816597f190bbad9a532cd5a7c91979adb4bbafd54526f37fad1d98ac0cb2c7d"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2529,
+   "itemId": "WASTEWATER-TREATMENT-L3-529",
+   "payloadSha256": "17e6004ec5c14e26d9126e54a60c1647d4b039bc5dbb47fb523c0ffef1a1318e"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2530,
+   "itemId": "WASTEWATER-TREATMENT-L3-530",
+   "payloadSha256": "325024e1985e5e4babc353ddee1d48eb304db06df887ca1e3c0eb72f148ac1e4"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2531,
+   "itemId": "WASTEWATER-TREATMENT-L3-531",
+   "payloadSha256": "822f30017fec6e8680560fb6d5972d1acaaca2b38be820184eeabf566f848ba3"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2532,
+   "itemId": "WASTEWATER-TREATMENT-L3-532",
+   "payloadSha256": "38a9b7fc516b2bde5d4d5e6b3f9e3523d5685eff5c5e7446f9735bd341b2517b"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2533,
+   "itemId": "WASTEWATER-TREATMENT-L3-533",
+   "payloadSha256": "8a5aae448c352784c4d675473f8b837e0bdcd180ebafe96385efa9810cacf01f"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2534,
+   "itemId": "WASTEWATER-TREATMENT-L3-534",
+   "payloadSha256": "750317e5a8185bb389b22f00c6ec98948413090d3fac059890af1e8c5440885b"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2535,
+   "itemId": "WASTEWATER-TREATMENT-L3-535",
+   "payloadSha256": "3b60d10993b3b272ce76aac1671d350510441f3d4ace31cce0d052112b63ba90"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2536,
+   "itemId": "WASTEWATER-TREATMENT-L3-536",
+   "payloadSha256": "3f8c1275063e7de62988a3a823aeebbf6342dd32fc2a0db1673def28b8f0f134"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2537,
+   "itemId": "WASTEWATER-TREATMENT-L3-537",
+   "payloadSha256": "74da46ad833b70aced63d44d4d7e66e9ea395f39bfee09ce8b0b0a175e36270f"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2538,
+   "itemId": "WASTEWATER-TREATMENT-L3-538",
+   "payloadSha256": "707ac18673afc6a0d3163c111af65a9d1ec4f25867387ce4b29b289c781ae1e6"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2539,
+   "itemId": "WASTEWATER-TREATMENT-L3-539",
+   "payloadSha256": "cb7d31e9bf421e299299f31e7d1d1c9de6dfb9341b47c93aee4cfb99bf346948"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2540,
+   "itemId": "WASTEWATER-TREATMENT-L3-540",
+   "payloadSha256": "22020133568259d8ca53eb7bcbc716c7c00f7d3060254fc634044173bdefd38c"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2541,
+   "itemId": "WASTEWATER-TREATMENT-L3-541",
+   "payloadSha256": "9c2bd79c2d72ba1ad726bb7c7001f2fe98f492757193bfd30f20b7438c6e9d5f"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2542,
+   "itemId": "WASTEWATER-TREATMENT-L3-542",
+   "payloadSha256": "c4a44bb767b976b78ba2a1b6beebf045909f3e36b95fa71f783407df98187819"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2543,
+   "itemId": "WASTEWATER-TREATMENT-L3-543",
+   "payloadSha256": "08003c3caed4185362b0eb04748450c9732568c61939cef985ea310afe93cd95"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2544,
+   "itemId": "WASTEWATER-TREATMENT-L3-544",
+   "payloadSha256": "f22deb9a7714858103fc3085c8e45df6889abb38c66b646aba1e3e1527e368ce"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2545,
+   "itemId": "WASTEWATER-TREATMENT-L3-545",
+   "payloadSha256": "338d6f3fd034b3bb58539021fbf867e69f900154e1f9be903aa2c3fc5044f746"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2546,
+   "itemId": "WASTEWATER-TREATMENT-L3-546",
+   "payloadSha256": "559c68cc5b1d37897c89b616d01f75a9942722e58cf32fa18d660a8e929ca143"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2547,
+   "itemId": "WASTEWATER-TREATMENT-L3-547",
+   "payloadSha256": "00ce52314733deb9667dec9eac9ec3af4171713782efa81a9bd1cf2a5b4214a0"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2548,
+   "itemId": "WASTEWATER-TREATMENT-L3-548",
+   "payloadSha256": "c63d49cd0994da54e812c3b391a96d4d55a94e0f06599687e850cd92e967e609"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2549,
+   "itemId": "WASTEWATER-TREATMENT-L3-549",
+   "payloadSha256": "0c51fc024a6bce8d4011295e662b44f9c9c4466e33fdedab177a080c0044ead0"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2550,
+   "itemId": "WASTEWATER-TREATMENT-L3-550",
+   "payloadSha256": "3d5a7d0b74594c5c6fbd7ce9fda44ed4241aef3f4da0858c4dec194f4263ce39"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2551,
+   "itemId": "WASTEWATER-TREATMENT-L3-551",
+   "payloadSha256": "7eb69505cfbf13e5b0419060068d401273ee38561733a22fcb6447380823f968"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2552,
+   "itemId": "WASTEWATER-TREATMENT-L3-552",
+   "payloadSha256": "ded1a653cf67c6b727344046488385ee19bdf0930957e49d5fa4ca273cf54bc5"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2553,
+   "itemId": "WASTEWATER-TREATMENT-L3-553",
+   "payloadSha256": "962c9aeb8e4052bca4d014d4829419f52534620a5193eed369177fea54e98be1"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2554,
+   "itemId": "WASTEWATER-TREATMENT-L3-554",
+   "payloadSha256": "f7b854f8bae054ed8b288e7b9dc89df8601b615c063285fd68f4a4a60edab847"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2555,
+   "itemId": "WASTEWATER-TREATMENT-L3-555",
+   "payloadSha256": "0820bed16055beda85f90da11f71dc7254ba9556f88f5e267f4f811c3df244d4"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2556,
+   "itemId": "WASTEWATER-TREATMENT-L3-556",
+   "payloadSha256": "a1b5c39bfda08152672164677ffd386c1e4b56f8c6e60896ccb3916e8275f6fe"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2557,
+   "itemId": "WASTEWATER-TREATMENT-L3-557",
+   "payloadSha256": "02ef25c641a5f60d27d80a57b9e6f2f89531452c7bdf6dbcd8f145d939a1dc77"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2558,
+   "itemId": "WASTEWATER-TREATMENT-L3-558",
+   "payloadSha256": "fca07fe5be9fdae3771faf0e62ae6c07adf8b92dc40e13194d49f0ece0438eb7"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2559,
+   "itemId": "WASTEWATER-TREATMENT-L3-559",
+   "payloadSha256": "a499a02bca4416383bebb0abbe76d526270d590b4d914027447391a724788792"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2560,
+   "itemId": "WASTEWATER-TREATMENT-L3-560",
+   "payloadSha256": "88f091187e3ee95cd2f710a291296ef312f84433c973e3432f618e7ae916c18c"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2561,
+   "itemId": "WASTEWATER-TREATMENT-L3-561",
+   "payloadSha256": "5aa10ad5370db01c4b4088a6695521a7d3ac59c9305ee339ca71d37e650b5cff"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2562,
+   "itemId": "WASTEWATER-TREATMENT-L3-562",
+   "payloadSha256": "1477f590396f9c137e57281124f8ecf6f17b38d570a7c07714b4902fab4a73c4"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2563,
+   "itemId": "WASTEWATER-TREATMENT-L3-563",
+   "payloadSha256": "5787aeb80d9b4d35e2c566fd1fe063ba42a6570831c9248eae27b555a8cba0e3"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2564,
+   "itemId": "WASTEWATER-TREATMENT-L3-564",
+   "payloadSha256": "c731e3501a24b92f9db71a5c16c23e9d5ab9f513a8dd8681b52db71faec82a82"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2565,
+   "itemId": "WASTEWATER-TREATMENT-L3-565",
+   "payloadSha256": "34f9fc7ff9fbb7b00b7ab1d6b993a20758c262e1206fffc04b70203cb7c44569"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2566,
+   "itemId": "WASTEWATER-TREATMENT-L3-566",
+   "payloadSha256": "8a79c172f6c7f03e8511ce5fd6b833fe87bd9e359461c2d19b0ebac4969ba918"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2567,
+   "itemId": "WASTEWATER-TREATMENT-L3-567",
+   "payloadSha256": "6a0bf527cdb8de6e7e12090474e5878d341e7146d4649696036c0c1e9bfa35aa"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2568,
+   "itemId": "WASTEWATER-TREATMENT-L3-568",
+   "payloadSha256": "5f507eff434424dbd65c82fe0d7b65febe1634ac3e07921684261c4c6a1ae76d"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2569,
+   "itemId": "WASTEWATER-TREATMENT-L3-569",
+   "payloadSha256": "be20412319c00406ee642f8bc098d9ef41ce35723c4941ce76e6b342e2451951"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2570,
+   "itemId": "WASTEWATER-TREATMENT-L3-570",
+   "payloadSha256": "786544afe21351c88efb8df40437898056a8b9007428aa353d868d1cf707f586"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2571,
+   "itemId": "WASTEWATER-TREATMENT-L3-571",
+   "payloadSha256": "5c440b60d764bddb5fed582162cca49e702d77ebe5e360817047bce9b95feb64"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2572,
+   "itemId": "WASTEWATER-TREATMENT-L3-572",
+   "payloadSha256": "061a0f13d7c7c3839be953c496cd85b7187715517d9debe136b8baec7c1bf06c"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2573,
+   "itemId": "WASTEWATER-TREATMENT-L3-573",
+   "payloadSha256": "79fd1be3a197f14530ad6d594baee9978a3338484a8aa496fcd39fe1092b6875"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2574,
+   "itemId": "WASTEWATER-TREATMENT-L3-574",
+   "payloadSha256": "da4f465327f0c7207ef3f126771da6d218f903044a2e1cb29b97e07501d6286c"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2575,
+   "itemId": "WASTEWATER-TREATMENT-L3-575",
+   "payloadSha256": "a062be3c8909d1d5585097b621a491ea87bdbed96634c8e0394842e376b29989"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2576,
+   "itemId": "WASTEWATER-TREATMENT-L3-576",
+   "payloadSha256": "378531e62b276c1cdc101231386549913d1da4dd048a05f69c9523a0049aced8"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2577,
+   "itemId": "WASTEWATER-TREATMENT-L3-577",
+   "payloadSha256": "120746781ce51eef2c8c996bc00885d1c0a1ca573aad14c8b4e0cad06a82894f"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2578,
+   "itemId": "WASTEWATER-TREATMENT-L3-578",
+   "payloadSha256": "dc64d0908a43bc0adbf3b52ce92b0b8c3b49e8e226d40a148ff6ca118e47f2ac"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2579,
+   "itemId": "WASTEWATER-TREATMENT-L3-579",
+   "payloadSha256": "80d584b5dd2b01d7168c12f48bf46ac21548dc97b63dd493395947956a675d16"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2580,
+   "itemId": "WASTEWATER-TREATMENT-L3-580",
+   "payloadSha256": "c9393705aaa9e15f9b349c5c5b1a3470feaf4c927cc99a53c468cea52f2eec06"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2581,
+   "itemId": "WASTEWATER-TREATMENT-L3-581",
+   "payloadSha256": "0a6d956a25e9e743ec1b39c16534e949dc43187aef74e76dd8a29f097aaad1e0"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2582,
+   "itemId": "WASTEWATER-TREATMENT-L3-582",
+   "payloadSha256": "71f7d06c5bb1161ba526de89d094f3a8283bd11925dc3e595e866f81f27fe168"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2583,
+   "itemId": "WASTEWATER-TREATMENT-L3-583",
+   "payloadSha256": "99c498fd9c2caedfd091d08920d0b82b601b0973cbf235669f0426559b73ab30"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2584,
+   "itemId": "WASTEWATER-TREATMENT-L3-584",
+   "payloadSha256": "2633ccd12d77a3a97b9900f4e700c8418f9e8e4f7922aa6e0e02188758c323fb"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2585,
+   "itemId": "WASTEWATER-TREATMENT-L3-585",
+   "payloadSha256": "d72d905e6faf7b35ec571244780a9a460433f9b19168e63dcbf9e3140c06b4b5"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2586,
+   "itemId": "WASTEWATER-TREATMENT-L3-586",
+   "payloadSha256": "deb40ed668b560a2bd98fd1d65fc0011ea388bfeafacdbf398c75d0db5aeb45c"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2587,
+   "itemId": "WASTEWATER-TREATMENT-L3-587",
+   "payloadSha256": "4bc8e7405be97655440c6c26d4d30c2ebddb7fc96eddda2089c77ff2db42e193"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2588,
+   "itemId": "WASTEWATER-TREATMENT-L3-588",
+   "payloadSha256": "32f4b389756aa552a40538a03bec14cd2cd4aaf6d2aefca972c884df8a96855a"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2589,
+   "itemId": "WASTEWATER-TREATMENT-L3-589",
+   "payloadSha256": "591ff8844c5916990cc5c718264847fb5686a558184c046baf786570f638fbb6"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2590,
+   "itemId": "WASTEWATER-TREATMENT-L3-590",
+   "payloadSha256": "7c4e1acc9b8dfc3f21ccac656bd0ec14d6e09a99cc0eb5fbec7133ce2fe51322"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2591,
+   "itemId": "WASTEWATER-TREATMENT-L3-591",
+   "payloadSha256": "d61354bc4b72c4f37bc978f1a766cae42674b5371e84dbf8c91e4d625f3a7d8f"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2592,
+   "itemId": "WASTEWATER-TREATMENT-L3-592",
+   "payloadSha256": "3b5f8cdd18d3d5fd5873dc200df6b9874fe7838d03a64ba0ae14f5de50b4898c"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2593,
+   "itemId": "WASTEWATER-TREATMENT-L3-593",
+   "payloadSha256": "29114ccdebfe7c9e1e751d39439288be66ad2ed66daee6e8b161e6e05714fe06"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2594,
+   "itemId": "WASTEWATER-TREATMENT-L3-594",
+   "payloadSha256": "524f3c123a7a6240caec9d550c36dc0c2924ee36315dfce331705849f3d0b7df"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2595,
+   "itemId": "WASTEWATER-TREATMENT-L3-595",
+   "payloadSha256": "ffc8ca44657401ba6c988accf00a9a87968e39e6a70abb5dcf0be3faa3a2ae0b"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2596,
+   "itemId": "WASTEWATER-TREATMENT-L3-596",
+   "payloadSha256": "93f570efb1cbd228c7c7fbbb1d159d7cfe9760cc88129442aec22d360f35575a"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2597,
+   "itemId": "WASTEWATER-TREATMENT-L3-597",
+   "payloadSha256": "b3ce4595b2acb39c1102b77fccff43ba1ca1905300b2d6f9965fb0719ff76197"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2598,
+   "itemId": "WASTEWATER-TREATMENT-L3-598",
+   "payloadSha256": "f37befb914bb5d223be236ebbc6a7cc132a4e076024b352159269093a7c12e94"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2599,
+   "itemId": "WASTEWATER-TREATMENT-L3-599",
+   "payloadSha256": "9940683ed23f78e9162d10f9eeeed9e0bf6e9c61aa564067353ffef56e8c41a7"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2600,
+   "itemId": "WASTEWATER-TREATMENT-L3-600",
+   "payloadSha256": "98c168477089d40ee64a5ef46ebef56be9a48c549e1029868c6fbadee4da2887"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2601,
+   "itemId": "WASTEWATER-TREATMENT-L3-601",
+   "payloadSha256": "f1fa02955fe605a86d369326bf5d613988d6f3120e2b8b0c146561c7d47016ea"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2602,
+   "itemId": "WASTEWATER-TREATMENT-L3-602",
+   "payloadSha256": "f902e45093411d6ef74f256ad08958120a2de16f8d78fde6c93e6ab0e791ecb1"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2603,
+   "itemId": "WASTEWATER-TREATMENT-L3-603",
+   "payloadSha256": "723c51b574166f81897cced26227c3cd573cb8c617701b7acb4ae36aca3eaf1d"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2604,
+   "itemId": "WASTEWATER-TREATMENT-L3-604",
+   "payloadSha256": "44d74a2c9a6b7ed37dcae62aa920d2528a7f5b7d3fdeb49286bf6c074a0767e1"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2605,
+   "itemId": "WASTEWATER-TREATMENT-L3-605",
+   "payloadSha256": "eb260e401e14fc7df47396b7008b86d872ee4972d2fbb7f4ecb16c60c8c74eaa"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2606,
+   "itemId": "WASTEWATER-TREATMENT-L3-606",
+   "payloadSha256": "50c8a1720218197505af01bf701dcdce280f5982819561d670cd4ea7b356b1b1"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2607,
+   "itemId": "WASTEWATER-TREATMENT-L3-607",
+   "payloadSha256": "3bb87c29c5701d58dacfe705a90032e4fbf0cfd9f5b049d26543886bc57b43c2"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2608,
+   "itemId": "WASTEWATER-TREATMENT-L3-608",
+   "payloadSha256": "101fe31cb256a8767969dfd6005aa27dd1f6016c82d9ee51b57e630faa6e87f9"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2609,
+   "itemId": "WASTEWATER-TREATMENT-L3-609",
+   "payloadSha256": "e6daa64dc957c4162a0d6749e372b4351e593150b02c9d7d4bf8ea8cff03bff1"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2610,
+   "itemId": "WASTEWATER-TREATMENT-L3-610",
+   "payloadSha256": "6fad2e54f303d9b5dcaf14ab9d3297f7a39c783be74465445efce595d778287f"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2611,
+   "itemId": "WASTEWATER-TREATMENT-L3-611",
+   "payloadSha256": "5d85d1ff7c69101d2addb478b93a07d1b44d7cb067e191d9e585ee63afc7132f"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2612,
+   "itemId": "WASTEWATER-TREATMENT-L3-612",
+   "payloadSha256": "81fc5d198f3ab09b20f886ac37b8ed64a6f15e13d56c06992a66f1a9e2ae827f"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2613,
+   "itemId": "WASTEWATER-TREATMENT-L3-613",
+   "payloadSha256": "d082b1ed098d61039e2ff17556d6d9b2ebe85a63f37f3f5a7eb55a312639bd55"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2614,
+   "itemId": "WASTEWATER-TREATMENT-L3-614",
+   "payloadSha256": "66ea83f22b50d11f1bee73281fcefb58e2c6eda33ab7901c7e6853b71be18858"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2615,
+   "itemId": "WASTEWATER-TREATMENT-L3-615",
+   "payloadSha256": "ee884b1cd8a1640ff6aad421b8fda4e70a106d9a0494b699aa0c59610f95ee97"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2616,
+   "itemId": "WASTEWATER-TREATMENT-L3-616",
+   "payloadSha256": "2837fceea2f4aa4349cabe8405c03d8ad7d4784ef8695b91ea29e452871a4679"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2617,
+   "itemId": "WASTEWATER-TREATMENT-L3-617",
+   "payloadSha256": "5a2b43eb2b8c54a42ee7deca966194c6b7b0b73da56a66c33e6bcb4f5e2cf2a0"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2618,
+   "itemId": "WASTEWATER-TREATMENT-L3-618",
+   "payloadSha256": "0ec6f76705e1ffc498447c3eebc3a38a8a1e1853a4d68609f2e8f137bd9d2183"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2619,
+   "itemId": "WASTEWATER-TREATMENT-L3-619",
+   "payloadSha256": "e5974bf93cd10ab956b15cca790993ed9b54e71b20a3ead3bb5b806a2b31be9d"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2620,
+   "itemId": "WASTEWATER-TREATMENT-L3-620",
+   "payloadSha256": "4ab429bd7a30a40758f06d9da9c04dd09fb0f2df5e0b2a305593d67cea15de40"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2621,
+   "itemId": "WASTEWATER-TREATMENT-L3-621",
+   "payloadSha256": "410b559114d5369493ff349341de8b9da4b7a0372663c756766b9d7711333130"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2622,
+   "itemId": "WASTEWATER-TREATMENT-L3-622",
+   "payloadSha256": "79b12a0c072ba5bfc70d3a6777df47936a0b1ad6472be7b3eb7fdaab1a82cc53"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2623,
+   "itemId": "WASTEWATER-TREATMENT-L3-623",
+   "payloadSha256": "e1f328a3a8135a43c6983c51c8b8c963ea4af803918f9b2406d12e54202565f6"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2624,
+   "itemId": "WASTEWATER-TREATMENT-L3-624",
+   "payloadSha256": "bab4d4c33cf3831d461b8f03f736d1b3bc03c09e59b033c86cac49fe94f5b70a"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2625,
+   "itemId": "WASTEWATER-TREATMENT-L3-625",
+   "payloadSha256": "14a2512da4de305383ca085f6ae33f7ecdec78d2635f523846160627573a5b96"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2626,
+   "itemId": "WASTEWATER-TREATMENT-L3-626",
+   "payloadSha256": "aedef0a2382ca79a220a894b820fdf1f9cac95ba7bd4dc1146955e1b8811cc85"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2627,
+   "itemId": "WASTEWATER-TREATMENT-L3-627",
+   "payloadSha256": "edf34b1800ba9fb3ac1cf36ccd81564b5ac6f3f47e6cd876c7fe2721e38e5839"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2628,
+   "itemId": "WASTEWATER-TREATMENT-L3-628",
+   "payloadSha256": "fba275e3b3ff65cafb82ab8f5ea379243de232d64255b5a92076a9422a046b26"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2629,
+   "itemId": "WASTEWATER-TREATMENT-L3-629",
+   "payloadSha256": "7cc64d1d694c4d8ca9f7903367aeac7a9a2b9ded157202b9d2b1f029a76c70bc"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2630,
+   "itemId": "WASTEWATER-TREATMENT-L3-630",
+   "payloadSha256": "1082b7099e4d7aeb586bdf028ab9361322a26ba382ccb88370636bdef51286cf"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2631,
+   "itemId": "WASTEWATER-TREATMENT-L3-631",
+   "payloadSha256": "886e236247cb83c36e7429c66ff72ea9c0a107a86be955ac35780df61c205b42"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2632,
+   "itemId": "WASTEWATER-TREATMENT-L3-632",
+   "payloadSha256": "678dcd3787461b80ff386d628f72f5b804bebba353946fe00568b2efc0142128"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2633,
+   "itemId": "WASTEWATER-TREATMENT-L3-633",
+   "payloadSha256": "58ce975b90dc4e0076d81a6046421df4b36a597275e0e6df4dd7f17f2c350cbb"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2634,
+   "itemId": "WASTEWATER-TREATMENT-L3-634",
+   "payloadSha256": "aafcb2f0cee14dee618a3663bba1824014e77e91ab6b670e10ca8179575ad7e7"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2635,
+   "itemId": "WASTEWATER-TREATMENT-L3-635",
+   "payloadSha256": "0732632d4ddcc523f324bf3739dbe33d44094e7559e638a74fbf765d1136c566"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2636,
+   "itemId": "WASTEWATER-TREATMENT-L3-636",
+   "payloadSha256": "3bd048d5ba4c42faf80ab12f014bee8000b9f860e56c68fbc5393daca771fad3"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2637,
+   "itemId": "WASTEWATER-TREATMENT-L3-637",
+   "payloadSha256": "dd38adbd8d943133799dc660f1c5f4db129d282120741d755be89be6dc96e5e9"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2638,
+   "itemId": "WASTEWATER-TREATMENT-L3-638",
+   "payloadSha256": "3b7db391f6ef68d416a2b82668b2ed7af96526a2439a691ca93fad6bcf316b12"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2639,
+   "itemId": "WASTEWATER-TREATMENT-L3-639",
+   "payloadSha256": "f1bef64eaa2b4d7fa3ebab8cd706f65ab1ac1af8b2ef840c41e7ada5f6543168"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2640,
+   "itemId": "WASTEWATER-TREATMENT-L3-640",
+   "payloadSha256": "b0a366dd62cec431f413e31e138ef386761926dd2e38a5cee9c083883917ebe9"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2641,
+   "itemId": "WASTEWATER-TREATMENT-L3-641",
+   "payloadSha256": "8dab85713ce0dc0e922d168c381a06fa9f5632367399cd3a125150ae60bca29e"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2642,
+   "itemId": "WASTEWATER-TREATMENT-L3-642",
+   "payloadSha256": "e8b4dfe89633a64f4a29f0a204f5ce1ef6b1c1ccfd60782a96421fb9ad1e41c5"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2643,
+   "itemId": "WASTEWATER-TREATMENT-L3-643",
+   "payloadSha256": "e1fc94a90fb2e0a2da2e4dffe2d9b8d404a832bdd602ef933c7e388f81f493fb"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2644,
+   "itemId": "WASTEWATER-TREATMENT-L3-644",
+   "payloadSha256": "fcbd0df3f5a40094ef29ac452d81f87c2ce3037aa2b17695f2c71bedc37d6ab2"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2645,
+   "itemId": "WASTEWATER-TREATMENT-L3-645",
+   "payloadSha256": "fac983c7f9e5489e56f5ce931ff4033bfe6ea2a5e8aedaa69a063a21389a3de8"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2646,
+   "itemId": "WASTEWATER-TREATMENT-L3-646",
+   "payloadSha256": "99f7d85c85f1c9ba83e55ca5da81b142228e6b9e7c90bf0ac676a98d980d8556"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2647,
+   "itemId": "WASTEWATER-TREATMENT-L3-647",
+   "payloadSha256": "3f675c67e05adc38d5913100638b94bdd8a1b68a0ee74a6c0347e732fe230dec"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2648,
+   "itemId": "WASTEWATER-TREATMENT-L3-648",
+   "payloadSha256": "a063dc6244935a0b73dd2ce263fce62abd5c23d7fd5c7a081c008a4531c756a4"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2649,
+   "itemId": "WASTEWATER-TREATMENT-L3-649",
+   "payloadSha256": "50b75c19f4dd58893e2e23cfa8f524f8343527002e3b71eb79c4344a1dfe333b"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2650,
+   "itemId": "WASTEWATER-TREATMENT-L3-650",
+   "payloadSha256": "779383627882e2d66cdf54a5997bd0edb84e38c5f0f7acd10f96ff1707c1f24e"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2651,
+   "itemId": "WASTEWATER-TREATMENT-L3-651",
+   "payloadSha256": "6f61b82f8d4179717d14a7f37a342b2657c998096bf86a11857f8a22f1c5f61b"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2652,
+   "itemId": "WASTEWATER-TREATMENT-L3-652",
+   "payloadSha256": "7bdd7974f4cd1b8f0332e7c2260d5ea594064f8ee098dc549945de65c1725baf"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2653,
+   "itemId": "WASTEWATER-TREATMENT-L3-653",
+   "payloadSha256": "9fbc107f22e85f4589948404b8a8527fbdc35958fe4921a73c987ed92027d355"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2654,
+   "itemId": "WASTEWATER-TREATMENT-L3-654",
+   "payloadSha256": "fa2cad8b0b8a5cf9f7549ae7ce4fd45c1d419d761fa4a6011cab3f2fe8157a45"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2655,
+   "itemId": "WASTEWATER-TREATMENT-L3-655",
+   "payloadSha256": "e2f1c6ca5fa21992f9415e35629730cfd107b8c4a81de4625d6c7b444a4cdd52"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2656,
+   "itemId": "WASTEWATER-TREATMENT-L3-656",
+   "payloadSha256": "c1ca8f47ef3c7d76c5422a2053df45111b7275396beb93769e2ecee444ebe5ad"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2657,
+   "itemId": "WASTEWATER-TREATMENT-L3-657",
+   "payloadSha256": "c2b2b351416a8551534c1897ba1be6ce86b2b6b39a9e33c5159760a1f84c338b"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2658,
+   "itemId": "WASTEWATER-TREATMENT-L3-658",
+   "payloadSha256": "b222492f6bb76b64d1164af20ac0123b9650d5d95200c32b1de87771c41a17d0"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2659,
+   "itemId": "WASTEWATER-TREATMENT-L3-659",
+   "payloadSha256": "ccb5ebacd93214675b85953f0bcdf4913701767add61ca5cf30bdb991cae84d3"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2660,
+   "itemId": "WASTEWATER-TREATMENT-L3-660",
+   "payloadSha256": "1a25a226460db736c4daf16c4963253cb80fe0c1d32b154b6b6c3108f28355d7"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2661,
+   "itemId": "WASTEWATER-TREATMENT-L3-661",
+   "payloadSha256": "058e7f58ea52e19ca5c8dde06c2d9b05a8ebab034bff92066bd45fce2a4ff01d"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2662,
+   "itemId": "WASTEWATER-TREATMENT-L3-662",
+   "payloadSha256": "f70826b24ff9a85d39ed07f7585cd65d96e55b1963d6e129fc1b10b0a9de11be"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2663,
+   "itemId": "WASTEWATER-TREATMENT-L3-663",
+   "payloadSha256": "94cc24ef1d8901910318e09ebad6cd6eea4b6564b862164831c7af56cd12e450"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2664,
+   "itemId": "WASTEWATER-TREATMENT-L3-664",
+   "payloadSha256": "1f66a0ff5b77fb071496532090eaf250758d152848969f2c48ba69c3281790ec"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2665,
+   "itemId": "WASTEWATER-TREATMENT-L3-665",
+   "payloadSha256": "5aab346f974799ee44621ef4509a3c1defa8d06745da22a502a3f18515cbbac8"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2666,
+   "itemId": "WASTEWATER-TREATMENT-L3-666",
+   "payloadSha256": "53cdc9a0b0acddab9b09e6f3d7145a4d46ce7be0e21f8cb8eeadeaa21d3d8e13"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2667,
+   "itemId": "WASTEWATER-TREATMENT-L3-667",
+   "payloadSha256": "97836df90c9e94ab614debe73180577e26adbac47bea9ca32de9f99bd936b735"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2668,
+   "itemId": "WASTEWATER-TREATMENT-L3-668",
+   "payloadSha256": "3b326cb63f6664249029e3eae2c22a270610ef8d778fd6955e2aae77529ab5c9"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2669,
+   "itemId": "WASTEWATER-TREATMENT-L3-669",
+   "payloadSha256": "0a9ede1f59426af95b3ddcf1c46bd923d7d72a07619af6494942865a8a1ba064"
+  },
+  {
+   "bankKey": "class3-wastewater",
+   "questionNum": 2670,
+   "itemId": "WASTEWATER-TREATMENT-L3-670",
+   "payloadSha256": "3c7237a5e8b176826a98d2b24e13cd1727deae7fce2cc18d304b1d564320bf5c"
+  }
+ ]
+}

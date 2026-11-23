@@ -1,0 +1,411 @@
+{
+ "courseKey": "wqa",
+ "bankKey": "wqa",
+ "batch": 7,
+ "size": 44,
+ "conceptualCount": 35,
+ "calcCount": 9,
+ "topicPoolRound": 2,
+ "questionNumStart": 2719,
+ "questionNumEnd": 2762,
+ "itemIdStart": "WQA-719",
+ "itemIdEnd": "WQA-762",
+ "items": [
+  {
+   "seq": 1,
+   "questionNum": 2719,
+   "itemId": "WQA-719",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Data Quality & Reporting] result calculation and review"
+  },
+  {
+   "seq": 2,
+   "questionNum": 2720,
+   "itemId": "WQA-720",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Data Quality & Reporting] adverse result duties awareness"
+  },
+  {
+   "seq": 3,
+   "questionNum": 2721,
+   "itemId": "WQA-721",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Data Quality & Reporting] reporting timelines awareness"
+  },
+  {
+   "seq": 4,
+   "questionNum": 2722,
+   "itemId": "WQA-722",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Laboratory Safety] chemical hygiene and PPE"
+  },
+  {
+   "seq": 5,
+   "questionNum": 2723,
+   "itemId": "WQA-723",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Laboratory Safety] housekeeping and waste"
+  },
+  {
+   "seq": 6,
+   "questionNum": 2724,
+   "itemId": "WQA-724",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Regulations & Certification] regulation 169/03 standards awareness"
+  },
+  {
+   "seq": 7,
+   "questionNum": 2725,
+   "itemId": "WQA-725",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Regulations & Certification] regulation 170/03 sampling context"
+  },
+  {
+   "seq": 8,
+   "questionNum": 2726,
+   "itemId": "WQA-726",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Regulations & Certification] analyst certificate context 128/04"
+  },
+  {
+   "seq": 9,
+   "questionNum": 2727,
+   "itemId": "WQA-727",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Data Quality & Reporting] result calculation and review"
+  },
+  {
+   "seq": 10,
+   "questionNum": 2728,
+   "itemId": "WQA-728",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Data Quality & Reporting] adverse result duties awareness"
+  },
+  {
+   "seq": 11,
+   "questionNum": 2729,
+   "itemId": "WQA-729",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Data Quality & Reporting] reporting timelines awareness"
+  },
+  {
+   "seq": 12,
+   "questionNum": 2730,
+   "itemId": "WQA-730",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Laboratory Safety] chemical hygiene and PPE"
+  },
+  {
+   "seq": 13,
+   "questionNum": 2731,
+   "itemId": "WQA-731",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Laboratory Safety] housekeeping and waste"
+  },
+  {
+   "seq": 14,
+   "questionNum": 2732,
+   "itemId": "WQA-732",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Regulations & Certification] regulation 169/03 standards awareness"
+  },
+  {
+   "seq": 15,
+   "questionNum": 2733,
+   "itemId": "WQA-733",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Regulations & Certification] regulation 170/03 sampling context"
+  },
+  {
+   "seq": 16,
+   "questionNum": 2734,
+   "itemId": "WQA-734",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Regulations & Certification] analyst certificate context 128/04"
+  },
+  {
+   "seq": 17,
+   "questionNum": 2735,
+   "itemId": "WQA-735",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Data Quality & Reporting] result calculation and review"
+  },
+  {
+   "seq": 18,
+   "questionNum": 2736,
+   "itemId": "WQA-736",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Data Quality & Reporting] adverse result duties awareness"
+  },
+  {
+   "seq": 19,
+   "questionNum": 2737,
+   "itemId": "WQA-737",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Data Quality & Reporting] reporting timelines awareness"
+  },
+  {
+   "seq": 20,
+   "questionNum": 2738,
+   "itemId": "WQA-738",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Laboratory Safety] chemical hygiene and PPE"
+  },
+  {
+   "seq": 21,
+   "questionNum": 2739,
+   "itemId": "WQA-739",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Laboratory Safety] housekeeping and waste"
+  },
+  {
+   "seq": 22,
+   "questionNum": 2740,
+   "itemId": "WQA-740",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Regulations & Certification] regulation 169/03 standards awareness"
+  },
+  {
+   "seq": 23,
+   "questionNum": 2741,
+   "itemId": "WQA-741",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Regulations & Certification] regulation 170/03 sampling context"
+  },
+  {
+   "seq": 24,
+   "questionNum": 2742,
+   "itemId": "WQA-742",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Regulations & Certification] analyst certificate context 128/04"
+  },
+  {
+   "seq": 25,
+   "questionNum": 2743,
+   "itemId": "WQA-743",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Data Quality & Reporting] result calculation and review"
+  },
+  {
+   "seq": 26,
+   "questionNum": 2744,
+   "itemId": "WQA-744",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Data Quality & Reporting] adverse result duties awareness"
+  },
+  {
+   "seq": 27,
+   "questionNum": 2745,
+   "itemId": "WQA-745",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Data Quality & Reporting] reporting timelines awareness"
+  },
+  {
+   "seq": 28,
+   "questionNum": 2746,
+   "itemId": "WQA-746",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Laboratory Safety] chemical hygiene and PPE"
+  },
+  {
+   "seq": 29,
+   "questionNum": 2747,
+   "itemId": "WQA-747",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Laboratory Safety] housekeeping and waste"
+  },
+  {
+   "seq": 30,
+   "questionNum": 2748,
+   "itemId": "WQA-748",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Regulations & Certification] regulation 169/03 standards awareness"
+  },
+  {
+   "seq": 31,
+   "questionNum": 2749,
+   "itemId": "WQA-749",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Regulations & Certification] regulation 170/03 sampling context"
+  },
+  {
+   "seq": 32,
+   "questionNum": 2750,
+   "itemId": "WQA-750",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Regulations & Certification] analyst certificate context 128/04"
+  },
+  {
+   "seq": 33,
+   "questionNum": 2751,
+   "itemId": "WQA-751",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Data Quality & Reporting] result calculation and review"
+  },
+  {
+   "seq": 34,
+   "questionNum": 2752,
+   "itemId": "WQA-752",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Data Quality & Reporting] adverse result duties awareness"
+  },
+  {
+   "seq": 35,
+   "questionNum": 2753,
+   "itemId": "WQA-753",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Data Quality & Reporting] reporting timelines awareness"
+  },
+  {
+   "seq": 36,
+   "questionNum": 2754,
+   "itemId": "WQA-754",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "diluted result calculation"
+  },
+  {
+   "seq": 37,
+   "questionNum": 2755,
+   "itemId": "WQA-755",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "summary statistics with given data"
+  },
+  {
+   "seq": 38,
+   "questionNum": 2756,
+   "itemId": "WQA-756",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "sample count planning"
+  },
+  {
+   "seq": 39,
+   "questionNum": 2757,
+   "itemId": "WQA-757",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "unit conversion for bench results"
+  },
+  {
+   "seq": 40,
+   "questionNum": 2758,
+   "itemId": "WQA-758",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "diluted result calculation"
+  },
+  {
+   "seq": 41,
+   "questionNum": 2759,
+   "itemId": "WQA-759",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "summary statistics with given data"
+  },
+  {
+   "seq": 42,
+   "questionNum": 2760,
+   "itemId": "WQA-760",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "sample count planning"
+  },
+  {
+   "seq": 43,
+   "questionNum": 2761,
+   "itemId": "WQA-761",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "unit conversion for bench results"
+  },
+  {
+   "seq": 44,
+   "questionNum": 2762,
+   "itemId": "WQA-762",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "diluted result calculation"
+  }
+ ]
+}

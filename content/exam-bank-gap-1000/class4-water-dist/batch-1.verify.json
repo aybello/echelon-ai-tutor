@@ -1,0 +1,65 @@
+[
+ {
+  "itemId": "DISTRIBUTION-L4-489",
+  "expression": "12500-10250-350-240",
+  "expected": "1660",
+  "decimalPlaces": 0,
+  "unit": "m3"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-490",
+  "expression": "8500*280*1.1*1.5/1000",
+  "expected": "3927",
+  "decimalPlaces": 0,
+  "unit": "m3/day"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-491",
+  "expression": "1800+950+650-1100",
+  "expected": "2300",
+  "decimalPlaces": 0,
+  "unit": "m3"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-492",
+  "expression": "(620000+380000)/2500000",
+  "expected": "0.40",
+  "decimalPlaces": 2,
+  "unit": "kWh/m3"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-493",
+  "expression": "(18600-13950)/18600*100",
+  "expected": "25.0",
+  "decimalPlaces": 1,
+  "unit": "%"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-494",
+  "expression": "(2600*1.12+1800*1.05)*1.4",
+  "expected": "6722.8",
+  "decimalPlaces": 1,
+  "unit": "m3/day"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-495",
+  "expression": "3.1416*10*10*3.5",
+  "expected": "1099.56",
+  "decimalPlaces": 2,
+  "unit": "m3"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-496",
+  "expression": "1200000*(0.52-0.45)",
+  "expected": "84000",
+  "decimalPlaces": 0,
+  "unit": "kWh"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-497",
+  "expression": "(24500-17150-490-735)/24500*100",
+  "expected": "25.0",
+  "decimalPlaces": 1,
+  "unit": "%"
+ }
+]

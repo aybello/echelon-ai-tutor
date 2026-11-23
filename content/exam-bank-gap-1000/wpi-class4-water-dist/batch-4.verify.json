@@ -1,0 +1,65 @@
+[
+ {
+  "itemId": "DISTRIBUTION-L4-625",
+  "expression": "1240000-(985000+15000)-40000",
+  "expected": "200000",
+  "decimalPlaces": 0,
+  "unit": "m³/year"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-626",
+  "expression": "(32500*285/1000+850)*1.6",
+  "expected": "16180.0",
+  "decimalPlaces": 1,
+  "unit": "m³/day"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-627",
+  "expression": "185*1.2/100+0.78",
+  "expected": "3.00",
+  "decimalPlaces": 2,
+  "unit": "km"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-628",
+  "expression": "28*2*12+6*4",
+  "expected": "696",
+  "decimalPlaces": 0,
+  "unit": "samples"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-629",
+  "expression": "(58500+37500-72000)/(58500+37500)*100",
+  "expected": "25.0",
+  "decimalPlaces": 1,
+  "unit": "%"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-630",
+  "expression": "(18000/1.5-2000)*1000/250",
+  "expected": "40000",
+  "decimalPlaces": 0,
+  "unit": "people"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-631",
+  "expression": "2400*1450+12*8500",
+  "expected": "3582000",
+  "decimalPlaces": 0,
+  "unit": "dollars"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-632",
+  "expression": "38*2*12+9*52+60",
+  "expected": "1440",
+  "decimalPlaces": 0,
+  "unit": "samples"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-633",
+  "expression": "(912500-730000)/125/365",
+  "expected": "4.0",
+  "decimalPlaces": 1,
+  "unit": "m³/km/day"
+ }
+]

@@ -1,0 +1,2354 @@
+{
+ "class2-water": {
+  "courseKey": "class2-water",
+  "label": "Class 2 Water",
+  "variant": "treat",
+  "bankKey": "class2-water",
+  "registryBankKey": "class2-water",
+  "nov22BankKey": "class2-water",
+  "itemFmt": "WATER-TREATMENT-L2-%03d",
+  "modules": [
+   "Treatment Process",
+   "Laboratory Analysis",
+   "Equipment O&M",
+   "Source Water",
+   "Safety & Admin"
+  ],
+  "sources": [
+   [
+    "US EPA - Small Drinking Water Systems Handbook",
+    "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=100046K6.TXT"
+   ],
+   [
+    "US EPA: Surface Water Treatment Rules \u2014 supporting treatment resources",
+    "https://www.epa.gov/dwreginfo/surface-water-treatment-rules"
+   ],
+   [
+    "US EPA - Surface Water Treatment Rule Turbidity Guidance Manual",
+    "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=P100ZLYM.TXT"
+   ],
+   [
+    "Ontario Regulation 170/03 - Drinking Water Systems",
+    "https://www.ontario.ca/laws/regulation/030170"
+   ],
+   [
+    "Canadian Centre for Occupational Health and Safety - Confined Spaces",
+    "https://www.ccohs.ca/oshanswers/hsprograms/confinedspace/confinedspace_intro.html"
+   ],
+   [
+    "WPI: formula/conversion tables",
+    "https://gowpi.org/services/abc-testing/formula-conversion-tables/"
+   ]
+  ],
+  "dedupSeedFiles": [
+   "class2-2026-09-23/class2-water-250-drafts.json"
+  ],
+  "batches": [
+   {
+    "batch": 1,
+    "size": 26,
+    "conceptual": 21,
+    "calc": 5,
+    "questionNumStart": 2451,
+    "questionNumEnd": 2476,
+    "itemIdStart": "WATER-TREATMENT-L2-451",
+    "itemIdEnd": "WATER-TREATMENT-L2-476"
+   },
+   {
+    "batch": 2,
+    "size": 25,
+    "conceptual": 20,
+    "calc": 5,
+    "questionNumStart": 2477,
+    "questionNumEnd": 2501,
+    "itemIdStart": "WATER-TREATMENT-L2-477",
+    "itemIdEnd": "WATER-TREATMENT-L2-501"
+   }
+  ]
+ },
+ "class3-water": {
+  "courseKey": "class3-water",
+  "label": "Class 3 Water",
+  "variant": "treat",
+  "bankKey": "class3-water",
+  "registryBankKey": "class3-water",
+  "nov22BankKey": "class3-water",
+  "itemFmt": "WATER-TREATMENT-L3-%03d",
+  "modules": [
+   "Treatment Process",
+   "Laboratory Analysis",
+   "Equipment O&M",
+   "Source Water",
+   "Safety & Admin"
+  ],
+  "sources": [
+   [
+    "US EPA - Small Drinking Water Systems Handbook",
+    "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=100046K6.TXT"
+   ],
+   [
+    "US EPA: Surface Water Treatment Rules \u2014 supporting treatment resources",
+    "https://www.epa.gov/dwreginfo/surface-water-treatment-rules"
+   ],
+   [
+    "US EPA - Surface Water Treatment Rule Turbidity Guidance Manual",
+    "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=P100ZLYM.TXT"
+   ],
+   [
+    "Ontario Regulation 170/03 - Drinking Water Systems",
+    "https://www.ontario.ca/laws/regulation/030170"
+   ],
+   [
+    "Canadian Centre for Occupational Health and Safety - Confined Spaces",
+    "https://www.ccohs.ca/oshanswers/hsprograms/confinedspace/confinedspace_intro.html"
+   ],
+   [
+    "WPI: formula/conversion tables",
+    "https://gowpi.org/services/abc-testing/formula-conversion-tables/"
+   ]
+  ],
+  "dedupSeedFiles": [],
+  "batches": [
+   {
+    "batch": 1,
+    "size": 48,
+    "conceptual": 38,
+    "calc": 10,
+    "questionNumStart": 2451,
+    "questionNumEnd": 2498,
+    "itemIdStart": "WATER-TREATMENT-L3-451",
+    "itemIdEnd": "WATER-TREATMENT-L3-498"
+   },
+   {
+    "batch": 2,
+    "size": 48,
+    "conceptual": 38,
+    "calc": 10,
+    "questionNumStart": 2499,
+    "questionNumEnd": 2546,
+    "itemIdStart": "WATER-TREATMENT-L3-499",
+    "itemIdEnd": "WATER-TREATMENT-L3-546"
+   },
+   {
+    "batch": 3,
+    "size": 48,
+    "conceptual": 38,
+    "calc": 10,
+    "questionNumStart": 2547,
+    "questionNumEnd": 2594,
+    "itemIdStart": "WATER-TREATMENT-L3-547",
+    "itemIdEnd": "WATER-TREATMENT-L3-594"
+   },
+   {
+    "batch": 4,
+    "size": 48,
+    "conceptual": 38,
+    "calc": 10,
+    "questionNumStart": 2595,
+    "questionNumEnd": 2642,
+    "itemIdStart": "WATER-TREATMENT-L3-595",
+    "itemIdEnd": "WATER-TREATMENT-L3-642"
+   },
+   {
+    "batch": 5,
+    "size": 47,
+    "conceptual": 38,
+    "calc": 9,
+    "questionNumStart": 2643,
+    "questionNumEnd": 2689,
+    "itemIdStart": "WATER-TREATMENT-L3-643",
+    "itemIdEnd": "WATER-TREATMENT-L3-689"
+   }
+  ]
+ },
+ "class4-water": {
+  "courseKey": "class4-water",
+  "label": "Class 4 Water",
+  "variant": "treat",
+  "bankKey": "class4-water",
+  "registryBankKey": "class4-water",
+  "nov22BankKey": "class4-water",
+  "itemFmt": "WATER-TREATMENT-L4-%03d",
+  "modules": [
+   "Treatment Process",
+   "Laboratory Analysis",
+   "Equipment O&M",
+   "Source Water",
+   "Safety & Admin"
+  ],
+  "sources": [
+   [
+    "US EPA - Small Drinking Water Systems Handbook",
+    "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=100046K6.TXT"
+   ],
+   [
+    "US EPA: Surface Water Treatment Rules \u2014 supporting treatment resources",
+    "https://www.epa.gov/dwreginfo/surface-water-treatment-rules"
+   ],
+   [
+    "US EPA - Surface Water Treatment Rule Turbidity Guidance Manual",
+    "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=P100ZLYM.TXT"
+   ],
+   [
+    "Ontario Regulation 170/03 - Drinking Water Systems",
+    "https://www.ontario.ca/laws/regulation/030170"
+   ],
+   [
+    "Canadian Centre for Occupational Health and Safety - Confined Spaces",
+    "https://www.ccohs.ca/oshanswers/hsprograms/confinedspace/confinedspace_intro.html"
+   ],
+   [
+    "WPI: formula/conversion tables",
+    "https://gowpi.org/services/abc-testing/formula-conversion-tables/"
+   ]
+  ],
+  "dedupSeedFiles": [],
+  "batches": [
+   {
+    "batch": 1,
+    "size": 47,
+    "conceptual": 38,
+    "calc": 9,
+    "questionNumStart": 2451,
+    "questionNumEnd": 2497,
+    "itemIdStart": "WATER-TREATMENT-L4-451",
+    "itemIdEnd": "WATER-TREATMENT-L4-497"
+   },
+   {
+    "batch": 2,
+    "size": 46,
+    "conceptual": 37,
+    "calc": 9,
+    "questionNumStart": 2498,
+    "questionNumEnd": 2543,
+    "itemIdStart": "WATER-TREATMENT-L4-498",
+    "itemIdEnd": "WATER-TREATMENT-L4-543"
+   },
+   {
+    "batch": 3,
+    "size": 46,
+    "conceptual": 37,
+    "calc": 9,
+    "questionNumStart": 2544,
+    "questionNumEnd": 2589,
+    "itemIdStart": "WATER-TREATMENT-L4-544",
+    "itemIdEnd": "WATER-TREATMENT-L4-589"
+   },
+   {
+    "batch": 4,
+    "size": 46,
+    "conceptual": 37,
+    "calc": 9,
+    "questionNumStart": 2590,
+    "questionNumEnd": 2635,
+    "itemIdStart": "WATER-TREATMENT-L4-590",
+    "itemIdEnd": "WATER-TREATMENT-L4-635"
+   },
+   {
+    "batch": 5,
+    "size": 46,
+    "conceptual": 37,
+    "calc": 9,
+    "questionNumStart": 2636,
+    "questionNumEnd": 2681,
+    "itemIdStart": "WATER-TREATMENT-L4-636",
+    "itemIdEnd": "WATER-TREATMENT-L4-681"
+   }
+  ]
+ },
+ "class2-ww": {
+  "courseKey": "class2-ww",
+  "label": "Class 2 Wastewater",
+  "variant": "treat",
+  "bankKey": "class2-wastewater",
+  "registryBankKey": "class2-wastewater",
+  "nov22BankKey": "class2-wastewater",
+  "itemFmt": "WASTEWATER-TREATMENT-L2-%03d",
+  "modules": [
+   "Treatment Process Evaluation & Adjustment",
+   "Equipment Evaluation, Maintenance & Operation",
+   "Safety & Admin",
+   "Laboratory Analysis"
+  ],
+  "sources": [
+   [
+    "US EPA: Municipal Wastewater \u2014 supporting treatment resources",
+    "https://www.epa.gov/npdes/municipal-wastewater"
+   ],
+   [
+    "US EPA - Resources for Wastewater Operators",
+    "https://www.epa.gov/compliance/resources-wastewater-operators"
+   ],
+   [
+    "US EPA - Start-Up of Municipal Wastewater Treatment Facilities",
+    "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=00000IDV.TXT"
+   ],
+   [
+    "Ontario Regulation 129/04 - Licensing of Sewage Works Operators",
+    "https://www.ontario.ca/laws/regulation/040129"
+   ],
+   [
+    "Canadian Centre for Occupational Health and Safety - Hydrogen Sulfide",
+    "https://www.ccohs.ca/oshanswers/chemicals/chem_profiles/hydrogen_sulfide.html"
+   ],
+   [
+    "WPI: formula/conversion tables",
+    "https://gowpi.org/services/abc-testing/formula-conversion-tables/"
+   ]
+  ],
+  "dedupSeedFiles": [
+   "class2-2026-09-23/class2-wastewater-250-drafts.json"
+  ],
+  "batches": [
+   {
+    "batch": 1,
+    "size": 6,
+    "conceptual": 5,
+    "calc": 1,
+    "questionNumStart": 2451,
+    "questionNumEnd": 2456,
+    "itemIdStart": "WASTEWATER-TREATMENT-L2-451",
+    "itemIdEnd": "WASTEWATER-TREATMENT-L2-456"
+   }
+  ]
+ },
+ "class3-ww": {
+  "courseKey": "class3-ww",
+  "label": "Class 3 Wastewater",
+  "variant": "treat",
+  "bankKey": "class3-wastewater",
+  "registryBankKey": "class3-wastewater",
+  "nov22BankKey": "class3-wastewater",
+  "itemFmt": "WASTEWATER-TREATMENT-L3-%03d",
+  "modules": [
+   "Treatment Process Evaluation & Adjustment",
+   "Equipment Evaluation, Maintenance & Operation",
+   "Safety & Admin",
+   "Laboratory Analysis"
+  ],
+  "sources": [
+   [
+    "US EPA: Municipal Wastewater \u2014 supporting treatment resources",
+    "https://www.epa.gov/npdes/municipal-wastewater"
+   ],
+   [
+    "US EPA - Resources for Wastewater Operators",
+    "https://www.epa.gov/compliance/resources-wastewater-operators"
+   ],
+   [
+    "US EPA - Start-Up of Municipal Wastewater Treatment Facilities",
+    "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=00000IDV.TXT"
+   ],
+   [
+    "Ontario Regulation 129/04 - Licensing of Sewage Works Operators",
+    "https://www.ontario.ca/laws/regulation/040129"
+   ],
+   [
+    "Canadian Centre for Occupational Health and Safety - Hydrogen Sulfide",
+    "https://www.ccohs.ca/oshanswers/chemicals/chem_profiles/hydrogen_sulfide.html"
+   ],
+   [
+    "WPI: formula/conversion tables",
+    "https://gowpi.org/services/abc-testing/formula-conversion-tables/"
+   ]
+  ],
+  "dedupSeedFiles": [],
+  "batches": [
+   {
+    "batch": 1,
+    "size": 44,
+    "conceptual": 35,
+    "calc": 9,
+    "questionNumStart": 2451,
+    "questionNumEnd": 2494,
+    "itemIdStart": "WASTEWATER-TREATMENT-L3-451",
+    "itemIdEnd": "WASTEWATER-TREATMENT-L3-494"
+   },
+   {
+    "batch": 2,
+    "size": 44,
+    "conceptual": 35,
+    "calc": 9,
+    "questionNumStart": 2495,
+    "questionNumEnd": 2538,
+    "itemIdStart": "WASTEWATER-TREATMENT-L3-495",
+    "itemIdEnd": "WASTEWATER-TREATMENT-L3-538"
+   },
+   {
+    "batch": 3,
+    "size": 44,
+    "conceptual": 35,
+    "calc": 9,
+    "questionNumStart": 2539,
+    "questionNumEnd": 2582,
+    "itemIdStart": "WASTEWATER-TREATMENT-L3-539",
+    "itemIdEnd": "WASTEWATER-TREATMENT-L3-582"
+   },
+   {
+    "batch": 4,
+    "size": 44,
+    "conceptual": 35,
+    "calc": 9,
+    "questionNumStart": 2583,
+    "questionNumEnd": 2626,
+    "itemIdStart": "WASTEWATER-TREATMENT-L3-583",
+    "itemIdEnd": "WASTEWATER-TREATMENT-L3-626"
+   },
+   {
+    "batch": 5,
+    "size": 44,
+    "conceptual": 35,
+    "calc": 9,
+    "questionNumStart": 2627,
+    "questionNumEnd": 2670,
+    "itemIdStart": "WASTEWATER-TREATMENT-L3-627",
+    "itemIdEnd": "WASTEWATER-TREATMENT-L3-670"
+   }
+  ]
+ },
+ "class4-ww": {
+  "courseKey": "class4-ww",
+  "label": "Class 4 Wastewater",
+  "variant": "treat",
+  "bankKey": "class4-wastewater",
+  "registryBankKey": "class4-wastewater",
+  "nov22BankKey": "class4-wastewater",
+  "itemFmt": "WASTEWATER-TREATMENT-L4-%03d",
+  "modules": [
+   "Treatment Process Evaluation & Adjustment",
+   "Equipment Evaluation, Maintenance & Operation",
+   "Safety & Admin",
+   "Laboratory Analysis"
+  ],
+  "sources": [
+   [
+    "US EPA: Municipal Wastewater \u2014 supporting treatment resources",
+    "https://www.epa.gov/npdes/municipal-wastewater"
+   ],
+   [
+    "US EPA - Resources for Wastewater Operators",
+    "https://www.epa.gov/compliance/resources-wastewater-operators"
+   ],
+   [
+    "US EPA - Start-Up of Municipal Wastewater Treatment Facilities",
+    "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=00000IDV.TXT"
+   ],
+   [
+    "Ontario Regulation 129/04 - Licensing of Sewage Works Operators",
+    "https://www.ontario.ca/laws/regulation/040129"
+   ],
+   [
+    "Canadian Centre for Occupational Health and Safety - Hydrogen Sulfide",
+    "https://www.ccohs.ca/oshanswers/chemicals/chem_profiles/hydrogen_sulfide.html"
+   ],
+   [
+    "WPI: formula/conversion tables",
+    "https://gowpi.org/services/abc-testing/formula-conversion-tables/"
+   ]
+  ],
+  "dedupSeedFiles": [],
+  "batches": [
+   {
+    "batch": 1,
+    "size": 43,
+    "conceptual": 34,
+    "calc": 9,
+    "questionNumStart": 2451,
+    "questionNumEnd": 2493,
+    "itemIdStart": "WASTEWATER-TREATMENT-L4-451",
+    "itemIdEnd": "WASTEWATER-TREATMENT-L4-493"
+   },
+   {
+    "batch": 2,
+    "size": 43,
+    "conceptual": 34,
+    "calc": 9,
+    "questionNumStart": 2494,
+    "questionNumEnd": 2536,
+    "itemIdStart": "WASTEWATER-TREATMENT-L4-494",
+    "itemIdEnd": "WASTEWATER-TREATMENT-L4-536"
+   },
+   {
+    "batch": 3,
+    "size": 42,
+    "conceptual": 34,
+    "calc": 8,
+    "questionNumStart": 2537,
+    "questionNumEnd": 2578,
+    "itemIdStart": "WASTEWATER-TREATMENT-L4-537",
+    "itemIdEnd": "WASTEWATER-TREATMENT-L4-578"
+   },
+   {
+    "batch": 4,
+    "size": 42,
+    "conceptual": 34,
+    "calc": 8,
+    "questionNumStart": 2579,
+    "questionNumEnd": 2620,
+    "itemIdStart": "WASTEWATER-TREATMENT-L4-579",
+    "itemIdEnd": "WASTEWATER-TREATMENT-L4-620"
+   },
+   {
+    "batch": 5,
+    "size": 42,
+    "conceptual": 34,
+    "calc": 8,
+    "questionNumStart": 2621,
+    "questionNumEnd": 2662,
+    "itemIdStart": "WASTEWATER-TREATMENT-L4-621",
+    "itemIdEnd": "WASTEWATER-TREATMENT-L4-662"
+   }
+  ]
+ },
+ "wqa": {
+  "courseKey": "wqa",
+  "label": "Water Quality (wqa)",
+  "variant": "treat",
+  "bankKey": "wqa",
+  "registryBankKey": "wqa",
+  "nov22BankKey": "wqa",
+  "itemFmt": "WQA-%03d",
+  "modules": [
+   "Sampling & Sample Handling",
+   "Microbiological Analysis",
+   "Bench Chemistry",
+   "Calibration & Quality Control",
+   "Data Quality & Reporting",
+   "Laboratory Safety",
+   "Regulations & Certification"
+  ],
+  "sources": [
+   [
+    "WPI: operator examination references \u2014 laboratory and treatment study resources",
+    "https://gowpi.org/services/abc-testing/exam-references/"
+   ],
+   [
+    "Ontario Regulation 169/03 - Ontario Drinking Water Quality Standards",
+    "https://www.ontario.ca/laws/regulation/030169"
+   ],
+   [
+    "Ontario Regulation 170/03 - Drinking Water Systems",
+    "https://www.ontario.ca/laws/regulation/030170"
+   ],
+   [
+    "Ontario Regulation 128/04 - Certification of Drinking Water System Operators",
+    "https://www.ontario.ca/laws/regulation/040128"
+   ],
+   [
+    "US EPA - Small Drinking Water Systems Handbook",
+    "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=100046K6.TXT"
+   ],
+   [
+    "Canadian Centre for Occupational Health and Safety - Confined Spaces",
+    "https://www.ccohs.ca/oshanswers/hsprograms/confinedspace/confinedspace_intro.html"
+   ]
+  ],
+  "dedupSeedFiles": [],
+  "batches": [
+   {
+    "batch": 1,
+    "size": 45,
+    "conceptual": 36,
+    "calc": 9,
+    "questionNumStart": 2451,
+    "questionNumEnd": 2495,
+    "itemIdStart": "WQA-451",
+    "itemIdEnd": "WQA-495"
+   },
+   {
+    "batch": 2,
+    "size": 45,
+    "conceptual": 36,
+    "calc": 9,
+    "questionNumStart": 2496,
+    "questionNumEnd": 2540,
+    "itemIdStart": "WQA-496",
+    "itemIdEnd": "WQA-540"
+   },
+   {
+    "batch": 3,
+    "size": 45,
+    "conceptual": 36,
+    "calc": 9,
+    "questionNumStart": 2541,
+    "questionNumEnd": 2585,
+    "itemIdStart": "WQA-541",
+    "itemIdEnd": "WQA-585"
+   },
+   {
+    "batch": 4,
+    "size": 45,
+    "conceptual": 36,
+    "calc": 9,
+    "questionNumStart": 2586,
+    "questionNumEnd": 2630,
+    "itemIdStart": "WQA-586",
+    "itemIdEnd": "WQA-630"
+   },
+   {
+    "batch": 5,
+    "size": 44,
+    "conceptual": 35,
+    "calc": 9,
+    "questionNumStart": 2631,
+    "questionNumEnd": 2674,
+    "itemIdStart": "WQA-631",
+    "itemIdEnd": "WQA-674"
+   },
+   {
+    "batch": 6,
+    "size": 44,
+    "conceptual": 35,
+    "calc": 9,
+    "questionNumStart": 2675,
+    "questionNumEnd": 2718,
+    "itemIdStart": "WQA-675",
+    "itemIdEnd": "WQA-718"
+   },
+   {
+    "batch": 7,
+    "size": 44,
+    "conceptual": 35,
+    "calc": 9,
+    "questionNumStart": 2719,
+    "questionNumEnd": 2762,
+    "itemIdStart": "WQA-719",
+    "itemIdEnd": "WQA-762"
+   }
+  ]
+ },
+ "class2-water-dist": {
+  "courseKey": "class2-water-dist",
+  "label": "Class 2 Water Distribution",
+  "variant": "net",
+  "bankKey": "class2-water-dist",
+  "registryBankKey": "class2-water-dist",
+  "nov22BankKey": "class2-water-dist",
+  "itemFmt": "DISTRIBUTION-L2-%03d",
+  "modules": [
+   "General",
+   "Processes",
+   "Support Systems",
+   "Administration"
+  ],
+  "sources": [
+   [
+    "US EPA \u2014 EPANET hydraulic modelling",
+    "https://www.epa.gov/water-research/epanet"
+   ],
+   [
+    "US EPA \u2014 Cross-Connection Control Manual",
+    "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000262T.TXT"
+   ],
+   [
+    "US EPA - Small Drinking Water Systems Handbook",
+    "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=100046K6.TXT"
+   ],
+   [
+    "Ontario Regulation 170/03 - Drinking Water Systems",
+    "https://www.ontario.ca/laws/regulation/030170"
+   ],
+   [
+    "Canadian Centre for Occupational Health and Safety - Confined Spaces",
+    "https://www.ccohs.ca/oshanswers/hsprograms/confinedspace/confinedspace_intro.html"
+   ],
+   [
+    "WPI: 2025 Need-to-Know criteria",
+    "https://gowpi.org/services/2025-need-to-know-criteria/"
+   ]
+  ],
+  "dedupSeedFiles": [
+   "class2-2026-09-23/class2-water-dist-250-drafts.json"
+  ],
+  "batches": [
+   {
+    "batch": 1,
+    "size": 16,
+    "conceptual": 13,
+    "calc": 3,
+    "questionNumStart": 2451,
+    "questionNumEnd": 2466,
+    "itemIdStart": "DISTRIBUTION-L2-451",
+    "itemIdEnd": "DISTRIBUTION-L2-466"
+   }
+  ]
+ },
+ "class4-water-dist": {
+  "courseKey": "class4-water-dist",
+  "label": "Class 4 Water Distribution",
+  "variant": "net",
+  "bankKey": "class4-water-dist",
+  "registryBankKey": "class4-water-dist",
+  "nov22BankKey": "class4-water-dist",
+  "itemFmt": "DISTRIBUTION-L4-%03d",
+  "modules": [
+   "General",
+   "Processes",
+   "Support Systems",
+   "Administration"
+  ],
+  "sources": [
+   [
+    "US EPA \u2014 EPANET hydraulic modelling",
+    "https://www.epa.gov/water-research/epanet"
+   ],
+   [
+    "US EPA \u2014 Cross-Connection Control Manual",
+    "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000262T.TXT"
+   ],
+   [
+    "US EPA - Small Drinking Water Systems Handbook",
+    "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=100046K6.TXT"
+   ],
+   [
+    "Ontario Regulation 170/03 - Drinking Water Systems",
+    "https://www.ontario.ca/laws/regulation/030170"
+   ],
+   [
+    "Canadian Centre for Occupational Health and Safety - Confined Spaces",
+    "https://www.ccohs.ca/oshanswers/hsprograms/confinedspace/confinedspace_intro.html"
+   ],
+   [
+    "WPI: 2025 Need-to-Know criteria",
+    "https://gowpi.org/services/2025-need-to-know-criteria/"
+   ]
+  ],
+  "dedupSeedFiles": [],
+  "batches": [
+   {
+    "batch": 1,
+    "size": 47,
+    "conceptual": 38,
+    "calc": 9,
+    "questionNumStart": 2451,
+    "questionNumEnd": 2497,
+    "itemIdStart": "DISTRIBUTION-L4-451",
+    "itemIdEnd": "DISTRIBUTION-L4-497"
+   },
+   {
+    "batch": 2,
+    "size": 47,
+    "conceptual": 38,
+    "calc": 9,
+    "questionNumStart": 2498,
+    "questionNumEnd": 2544,
+    "itemIdStart": "DISTRIBUTION-L4-498",
+    "itemIdEnd": "DISTRIBUTION-L4-544"
+   },
+   {
+    "batch": 3,
+    "size": 47,
+    "conceptual": 38,
+    "calc": 9,
+    "questionNumStart": 2545,
+    "questionNumEnd": 2591,
+    "itemIdStart": "DISTRIBUTION-L4-545",
+    "itemIdEnd": "DISTRIBUTION-L4-591"
+   },
+   {
+    "batch": 4,
+    "size": 47,
+    "conceptual": 38,
+    "calc": 9,
+    "questionNumStart": 2592,
+    "questionNumEnd": 2638,
+    "itemIdStart": "DISTRIBUTION-L4-592",
+    "itemIdEnd": "DISTRIBUTION-L4-638"
+   },
+   {
+    "batch": 5,
+    "size": 47,
+    "conceptual": 38,
+    "calc": 9,
+    "questionNumStart": 2639,
+    "questionNumEnd": 2685,
+    "itemIdStart": "DISTRIBUTION-L4-639",
+    "itemIdEnd": "DISTRIBUTION-L4-685"
+   }
+  ]
+ },
+ "class3-wastewater-coll": {
+  "courseKey": "class3-wastewater-coll",
+  "label": "Class 3 Wastewater Collection",
+  "variant": "net",
+  "bankKey": "class3-wastewater-coll",
+  "registryBankKey": "class3-wastewater-coll",
+  "nov22BankKey": "class3-wastewater-coll",
+  "itemFmt": "COLLECTION-L3-%03d",
+  "modules": [
+   "Collection System Components",
+   "Equipment Operation & Maintenance",
+   "Lift Station Operation and Maintenance",
+   "Collection System Monitoring & Evaluation",
+   "Safety & Regulations"
+  ],
+  "sources": [
+   [
+    "US EPA \u2014 CMOM Guide for Sanitary Sewer Collection Systems",
+    "https://www.epa.gov/sites/default/files/2015-10/documents/cmom_guide_for_collection_systems.pdf"
+   ],
+   [
+    "US EPA - Alternative Wastewater Collection Systems Manual",
+    "https://nepis.epa.gov/Exe/ZyNET.exe?Index=Prior+to+1976&Query=&SearchMethod=1&FuzzyDegree=0&User=ANONYMOUS&Password=<redacted>&QField=pubnumber%5E%22625191024%22&UseQField=pubnumber&IntQFieldOp=1&ExtQFieldOp=0&Docs="
+   ],
+   [
+    "Ontario Regulation 129/04 - Licensing of Sewage Works Operators",
+    "https://www.ontario.ca/laws/regulation/040129"
+   ],
+   [
+    "Canadian Centre for Occupational Health and Safety - Confined Spaces",
+    "https://www.ccohs.ca/oshanswers/hsprograms/confinedspace/confinedspace_intro.html"
+   ],
+   [
+    "Canadian Centre for Occupational Health and Safety - Hydrogen Sulfide",
+    "https://www.ccohs.ca/oshanswers/chemicals/chem_profiles/hydrogen_sulfide.html"
+   ],
+   [
+    "WPI: 2025 Need-to-Know criteria",
+    "https://gowpi.org/services/2025-need-to-know-criteria/"
+   ]
+  ],
+  "dedupSeedFiles": [],
+  "batches": [
+   {
+    "batch": 1,
+    "size": 46,
+    "conceptual": 37,
+    "calc": 9,
+    "questionNumStart": 2451,
+    "questionNumEnd": 2496,
+    "itemIdStart": "COLLECTION-L3-451",
+    "itemIdEnd": "COLLECTION-L3-496"
+   },
+   {
+    "batch": 2,
+    "size": 46,
+    "conceptual": 37,
+    "calc": 9,
+    "questionNumStart": 2497,
+    "questionNumEnd": 2542,
+    "itemIdStart": "COLLECTION-L3-497",
+    "itemIdEnd": "COLLECTION-L3-542"
+   },
+   {
+    "batch": 3,
+    "size": 46,
+    "conceptual": 37,
+    "calc": 9,
+    "questionNumStart": 2543,
+    "questionNumEnd": 2588,
+    "itemIdStart": "COLLECTION-L3-543",
+    "itemIdEnd": "COLLECTION-L3-588"
+   },
+   {
+    "batch": 4,
+    "size": 46,
+    "conceptual": 37,
+    "calc": 9,
+    "questionNumStart": 2589,
+    "questionNumEnd": 2634,
+    "itemIdStart": "COLLECTION-L3-589",
+    "itemIdEnd": "COLLECTION-L3-634"
+   },
+   {
+    "batch": 5,
+    "size": 46,
+    "conceptual": 37,
+    "calc": 9,
+    "questionNumStart": 2635,
+    "questionNumEnd": 2680,
+    "itemIdStart": "COLLECTION-L3-635",
+    "itemIdEnd": "COLLECTION-L3-680"
+   }
+  ]
+ },
+ "class4-wastewater-coll": {
+  "courseKey": "class4-wastewater-coll",
+  "label": "Class 4 Wastewater Collection",
+  "variant": "net",
+  "bankKey": "class4-wastewater-coll",
+  "registryBankKey": "class4-wastewater-coll",
+  "nov22BankKey": "class4-wastewater-coll",
+  "itemFmt": "COLLECTION-L4-%03d",
+  "modules": [
+   "Collection System Components",
+   "Equipment Operation & Maintenance",
+   "Lift Station Operation and Maintenance",
+   "Collection System Monitoring & Evaluation",
+   "Safety & Regulations"
+  ],
+  "sources": [
+   [
+    "US EPA \u2014 CMOM Guide for Sanitary Sewer Collection Systems",
+    "https://www.epa.gov/sites/default/files/2015-10/documents/cmom_guide_for_collection_systems.pdf"
+   ],
+   [
+    "US EPA - Alternative Wastewater Collection Systems Manual",
+    "https://nepis.epa.gov/Exe/ZyNET.exe?Index=Prior+to+1976&Query=&SearchMethod=1&FuzzyDegree=0&User=ANONYMOUS&Password=<redacted>&QField=pubnumber%5E%22625191024%22&UseQField=pubnumber&IntQFieldOp=1&ExtQFieldOp=0&Docs="
+   ],
+   [
+    "Ontario Regulation 129/04 - Licensing of Sewage Works Operators",
+    "https://www.ontario.ca/laws/regulation/040129"
+   ],
+   [
+    "Canadian Centre for Occupational Health and Safety - Confined Spaces",
+    "https://www.ccohs.ca/oshanswers/hsprograms/confinedspace/confinedspace_intro.html"
+   ],
+   [
+    "Canadian Centre for Occupational Health and Safety - Hydrogen Sulfide",
+    "https://www.ccohs.ca/oshanswers/chemicals/chem_profiles/hydrogen_sulfide.html"
+   ],
+   [
+    "WPI: 2025 Need-to-Know criteria",
+    "https://gowpi.org/services/2025-need-to-know-criteria/"
+   ]
+  ],
+  "dedupSeedFiles": [],
+  "batches": [
+   {
+    "batch": 1,
+    "size": 46,
+    "conceptual": 37,
+    "calc": 9,
+    "questionNumStart": 2451,
+    "questionNumEnd": 2496,
+    "itemIdStart": "COLLECTION-L4-451",
+    "itemIdEnd": "COLLECTION-L4-496"
+   },
+   {
+    "batch": 2,
+    "size": 46,
+    "conceptual": 37,
+    "calc": 9,
+    "questionNumStart": 2497,
+    "questionNumEnd": 2542,
+    "itemIdStart": "COLLECTION-L4-497",
+    "itemIdEnd": "COLLECTION-L4-542"
+   },
+   {
+    "batch": 3,
+    "size": 46,
+    "conceptual": 37,
+    "calc": 9,
+    "questionNumStart": 2543,
+    "questionNumEnd": 2588,
+    "itemIdStart": "COLLECTION-L4-543",
+    "itemIdEnd": "COLLECTION-L4-588"
+   },
+   {
+    "batch": 4,
+    "size": 46,
+    "conceptual": 37,
+    "calc": 9,
+    "questionNumStart": 2589,
+    "questionNumEnd": 2634,
+    "itemIdStart": "COLLECTION-L4-589",
+    "itemIdEnd": "COLLECTION-L4-634"
+   },
+   {
+    "batch": 5,
+    "size": 46,
+    "conceptual": 37,
+    "calc": 9,
+    "questionNumStart": 2635,
+    "questionNumEnd": 2680,
+    "itemIdStart": "COLLECTION-L4-635",
+    "itemIdEnd": "COLLECTION-L4-680"
+   }
+  ]
+ },
+ "wpi-class1-water": {
+  "courseKey": "wpi-class1-water",
+  "label": "WPI Class 1 Water",
+  "variant": "treat",
+  "bankKey": "wpi-class1-water",
+  "registryBankKey": "wpi-class1-water",
+  "nov22BankKey": "wpi-class1-water",
+  "itemFmt": "WATER-TREATMENT-L1-%03d",
+  "modules": [
+   "Treatment Process",
+   "Laboratory Analysis",
+   "Equipment O&M",
+   "Source Water",
+   "Safety & Admin"
+  ],
+  "sources": [
+   [
+    "US EPA - Small Drinking Water Systems Handbook",
+    "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=100046K6.TXT"
+   ],
+   [
+    "US EPA: Surface Water Treatment Rules \u2014 supporting treatment resources",
+    "https://www.epa.gov/dwreginfo/surface-water-treatment-rules"
+   ],
+   [
+    "WPI: 2025 Need-to-Know criteria",
+    "https://gowpi.org/services/2025-need-to-know-criteria/"
+   ],
+   [
+    "WPI: formula/conversion tables",
+    "https://gowpi.org/services/abc-testing/formula-conversion-tables/"
+   ],
+   [
+    "WPI: operator examination references \u2014 laboratory and treatment study resources",
+    "https://gowpi.org/services/abc-testing/exam-references/"
+   ],
+   [
+    "Canadian Centre for Occupational Health and Safety - Confined Spaces",
+    "https://www.ccohs.ca/oshanswers/hsprograms/confinedspace/confinedspace_intro.html"
+   ]
+  ],
+  "dedupSeedFiles": [],
+  "batches": [
+   {
+    "batch": 1,
+    "size": 41,
+    "conceptual": 33,
+    "calc": 8,
+    "questionNumStart": 2451,
+    "questionNumEnd": 2491,
+    "itemIdStart": "WATER-TREATMENT-L1-451",
+    "itemIdEnd": "WATER-TREATMENT-L1-491"
+   },
+   {
+    "batch": 2,
+    "size": 41,
+    "conceptual": 33,
+    "calc": 8,
+    "questionNumStart": 2492,
+    "questionNumEnd": 2532,
+    "itemIdStart": "WATER-TREATMENT-L1-492",
+    "itemIdEnd": "WATER-TREATMENT-L1-532"
+   },
+   {
+    "batch": 3,
+    "size": 41,
+    "conceptual": 33,
+    "calc": 8,
+    "questionNumStart": 2533,
+    "questionNumEnd": 2573,
+    "itemIdStart": "WATER-TREATMENT-L1-533",
+    "itemIdEnd": "WATER-TREATMENT-L1-573"
+   },
+   {
+    "batch": 4,
+    "size": 40,
+    "conceptual": 32,
+    "calc": 8,
+    "questionNumStart": 2574,
+    "questionNumEnd": 2613,
+    "itemIdStart": "WATER-TREATMENT-L1-574",
+    "itemIdEnd": "WATER-TREATMENT-L1-613"
+   },
+   {
+    "batch": 5,
+    "size": 40,
+    "conceptual": 32,
+    "calc": 8,
+    "questionNumStart": 2614,
+    "questionNumEnd": 2653,
+    "itemIdStart": "WATER-TREATMENT-L1-614",
+    "itemIdEnd": "WATER-TREATMENT-L1-653"
+   }
+  ]
+ },
+ "wpi-class2-water": {
+  "courseKey": "wpi-class2-water",
+  "label": "WPI Class 2 Water",
+  "variant": "treat",
+  "bankKey": "wpi-class2-water",
+  "registryBankKey": "wpi-class2-water",
+  "nov22BankKey": "wpi-class2-water",
+  "itemFmt": "WATER-TREATMENT-L2-%03d",
+  "modules": [
+   "Treatment Process",
+   "Laboratory Analysis",
+   "Equipment O&M",
+   "Source Water",
+   "Safety & Admin"
+  ],
+  "sources": [
+   [
+    "US EPA - Small Drinking Water Systems Handbook",
+    "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=100046K6.TXT"
+   ],
+   [
+    "US EPA: Surface Water Treatment Rules \u2014 supporting treatment resources",
+    "https://www.epa.gov/dwreginfo/surface-water-treatment-rules"
+   ],
+   [
+    "WPI: 2025 Need-to-Know criteria",
+    "https://gowpi.org/services/2025-need-to-know-criteria/"
+   ],
+   [
+    "WPI: formula/conversion tables",
+    "https://gowpi.org/services/abc-testing/formula-conversion-tables/"
+   ],
+   [
+    "WPI: operator examination references \u2014 laboratory and treatment study resources",
+    "https://gowpi.org/services/abc-testing/exam-references/"
+   ],
+   [
+    "Canadian Centre for Occupational Health and Safety - Confined Spaces",
+    "https://www.ccohs.ca/oshanswers/hsprograms/confinedspace/confinedspace_intro.html"
+   ]
+  ],
+  "dedupSeedFiles": [],
+  "batches": [
+   {
+    "batch": 1,
+    "size": 42,
+    "conceptual": 34,
+    "calc": 8,
+    "questionNumStart": 2451,
+    "questionNumEnd": 2492,
+    "itemIdStart": "WATER-TREATMENT-L2-451",
+    "itemIdEnd": "WATER-TREATMENT-L2-492"
+   },
+   {
+    "batch": 2,
+    "size": 42,
+    "conceptual": 34,
+    "calc": 8,
+    "questionNumStart": 2493,
+    "questionNumEnd": 2534,
+    "itemIdStart": "WATER-TREATMENT-L2-493",
+    "itemIdEnd": "WATER-TREATMENT-L2-534"
+   },
+   {
+    "batch": 3,
+    "size": 41,
+    "conceptual": 33,
+    "calc": 8,
+    "questionNumStart": 2535,
+    "questionNumEnd": 2575,
+    "itemIdStart": "WATER-TREATMENT-L2-535",
+    "itemIdEnd": "WATER-TREATMENT-L2-575"
+   },
+   {
+    "batch": 4,
+    "size": 41,
+    "conceptual": 33,
+    "calc": 8,
+    "questionNumStart": 2576,
+    "questionNumEnd": 2616,
+    "itemIdStart": "WATER-TREATMENT-L2-576",
+    "itemIdEnd": "WATER-TREATMENT-L2-616"
+   },
+   {
+    "batch": 5,
+    "size": 41,
+    "conceptual": 33,
+    "calc": 8,
+    "questionNumStart": 2617,
+    "questionNumEnd": 2657,
+    "itemIdStart": "WATER-TREATMENT-L2-617",
+    "itemIdEnd": "WATER-TREATMENT-L2-657"
+   }
+  ]
+ },
+ "wpi-class3-water": {
+  "courseKey": "wpi-class3-water",
+  "label": "WPI Class 3 Water",
+  "variant": "treat",
+  "bankKey": "wpi-class3-water",
+  "registryBankKey": "wpi-class3-water",
+  "nov22BankKey": "wpi-class3-water",
+  "itemFmt": "WATER-TREATMENT-L3-%03d",
+  "modules": [
+   "Treatment Process",
+   "Laboratory Analysis",
+   "Equipment O&M",
+   "Source Water",
+   "Safety & Admin"
+  ],
+  "sources": [
+   [
+    "US EPA - Small Drinking Water Systems Handbook",
+    "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=100046K6.TXT"
+   ],
+   [
+    "US EPA: Surface Water Treatment Rules \u2014 supporting treatment resources",
+    "https://www.epa.gov/dwreginfo/surface-water-treatment-rules"
+   ],
+   [
+    "WPI: 2025 Need-to-Know criteria",
+    "https://gowpi.org/services/2025-need-to-know-criteria/"
+   ],
+   [
+    "WPI: formula/conversion tables",
+    "https://gowpi.org/services/abc-testing/formula-conversion-tables/"
+   ],
+   [
+    "WPI: operator examination references \u2014 laboratory and treatment study resources",
+    "https://gowpi.org/services/abc-testing/exam-references/"
+   ],
+   [
+    "Canadian Centre for Occupational Health and Safety - Confined Spaces",
+    "https://www.ccohs.ca/oshanswers/hsprograms/confinedspace/confinedspace_intro.html"
+   ]
+  ],
+  "dedupSeedFiles": [],
+  "batches": [
+   {
+    "batch": 1,
+    "size": 49,
+    "conceptual": 39,
+    "calc": 10,
+    "questionNumStart": 2451,
+    "questionNumEnd": 2499,
+    "itemIdStart": "WATER-TREATMENT-L3-451",
+    "itemIdEnd": "WATER-TREATMENT-L3-499"
+   },
+   {
+    "batch": 2,
+    "size": 49,
+    "conceptual": 39,
+    "calc": 10,
+    "questionNumStart": 2500,
+    "questionNumEnd": 2548,
+    "itemIdStart": "WATER-TREATMENT-L3-500",
+    "itemIdEnd": "WATER-TREATMENT-L3-548"
+   },
+   {
+    "batch": 3,
+    "size": 48,
+    "conceptual": 38,
+    "calc": 10,
+    "questionNumStart": 2549,
+    "questionNumEnd": 2596,
+    "itemIdStart": "WATER-TREATMENT-L3-549",
+    "itemIdEnd": "WATER-TREATMENT-L3-596"
+   },
+   {
+    "batch": 4,
+    "size": 48,
+    "conceptual": 38,
+    "calc": 10,
+    "questionNumStart": 2597,
+    "questionNumEnd": 2644,
+    "itemIdStart": "WATER-TREATMENT-L3-597",
+    "itemIdEnd": "WATER-TREATMENT-L3-644"
+   },
+   {
+    "batch": 5,
+    "size": 48,
+    "conceptual": 38,
+    "calc": 10,
+    "questionNumStart": 2645,
+    "questionNumEnd": 2692,
+    "itemIdStart": "WATER-TREATMENT-L3-645",
+    "itemIdEnd": "WATER-TREATMENT-L3-692"
+   }
+  ]
+ },
+ "wpi-class4-water": {
+  "courseKey": "wpi-class4-water",
+  "label": "WPI Class 4 Water",
+  "variant": "treat",
+  "bankKey": "wpi-class4-water",
+  "registryBankKey": "wpi-class4-water",
+  "nov22BankKey": "wpi-class4-water",
+  "itemFmt": "WATER-TREATMENT-L4-%03d",
+  "modules": [
+   "Treatment Process",
+   "Laboratory Analysis",
+   "Equipment O&M",
+   "Source Water",
+   "Safety & Admin"
+  ],
+  "sources": [
+   [
+    "US EPA - Small Drinking Water Systems Handbook",
+    "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=100046K6.TXT"
+   ],
+   [
+    "US EPA: Surface Water Treatment Rules \u2014 supporting treatment resources",
+    "https://www.epa.gov/dwreginfo/surface-water-treatment-rules"
+   ],
+   [
+    "WPI: 2025 Need-to-Know criteria",
+    "https://gowpi.org/services/2025-need-to-know-criteria/"
+   ],
+   [
+    "WPI: formula/conversion tables",
+    "https://gowpi.org/services/abc-testing/formula-conversion-tables/"
+   ],
+   [
+    "WPI: operator examination references \u2014 laboratory and treatment study resources",
+    "https://gowpi.org/services/abc-testing/exam-references/"
+   ],
+   [
+    "Canadian Centre for Occupational Health and Safety - Confined Spaces",
+    "https://www.ccohs.ca/oshanswers/hsprograms/confinedspace/confinedspace_intro.html"
+   ]
+  ],
+  "dedupSeedFiles": [],
+  "batches": [
+   {
+    "batch": 1,
+    "size": 43,
+    "conceptual": 34,
+    "calc": 9,
+    "questionNumStart": 2451,
+    "questionNumEnd": 2493,
+    "itemIdStart": "WATER-TREATMENT-L4-451",
+    "itemIdEnd": "WATER-TREATMENT-L4-493"
+   },
+   {
+    "batch": 2,
+    "size": 43,
+    "conceptual": 34,
+    "calc": 9,
+    "questionNumStart": 2494,
+    "questionNumEnd": 2536,
+    "itemIdStart": "WATER-TREATMENT-L4-494",
+    "itemIdEnd": "WATER-TREATMENT-L4-536"
+   },
+   {
+    "batch": 3,
+    "size": 42,
+    "conceptual": 34,
+    "calc": 8,
+    "questionNumStart": 2537,
+    "questionNumEnd": 2578,
+    "itemIdStart": "WATER-TREATMENT-L4-537",
+    "itemIdEnd": "WATER-TREATMENT-L4-578"
+   }
+  ]
+ },
+ "wpi-class1-wastewater": {
+  "courseKey": "wpi-class1-wastewater",
+  "label": "WPI Class 1 Wastewater",
+  "variant": "treat",
+  "bankKey": "wpi-class1-wastewater",
+  "registryBankKey": "wpi-class1-wastewater",
+  "nov22BankKey": "wpi-class1-wastewater",
+  "itemFmt": "WASTEWATER-TREATMENT-L1-%03d",
+  "modules": [
+   "Treatment Process Evaluation & Adjustment",
+   "Equipment Evaluation, Maintenance & Operation",
+   "Safety & Admin",
+   "Laboratory Analysis"
+  ],
+  "sources": [
+   [
+    "US EPA: Municipal Wastewater \u2014 supporting treatment resources",
+    "https://www.epa.gov/npdes/municipal-wastewater"
+   ],
+   [
+    "US EPA - Resources for Wastewater Operators",
+    "https://www.epa.gov/compliance/resources-wastewater-operators"
+   ],
+   [
+    "WPI: 2025 Need-to-Know criteria",
+    "https://gowpi.org/services/2025-need-to-know-criteria/"
+   ],
+   [
+    "WPI: formula/conversion tables",
+    "https://gowpi.org/services/abc-testing/formula-conversion-tables/"
+   ],
+   [
+    "Canadian Centre for Occupational Health and Safety - Hydrogen Sulfide",
+    "https://www.ccohs.ca/oshanswers/chemicals/chem_profiles/hydrogen_sulfide.html"
+   ]
+  ],
+  "dedupSeedFiles": [],
+  "batches": [
+   {
+    "batch": 1,
+    "size": 42,
+    "conceptual": 34,
+    "calc": 8,
+    "questionNumStart": 2451,
+    "questionNumEnd": 2492,
+    "itemIdStart": "WASTEWATER-TREATMENT-L1-451",
+    "itemIdEnd": "WASTEWATER-TREATMENT-L1-492"
+   },
+   {
+    "batch": 2,
+    "size": 42,
+    "conceptual": 34,
+    "calc": 8,
+    "questionNumStart": 2493,
+    "questionNumEnd": 2534,
+    "itemIdStart": "WASTEWATER-TREATMENT-L1-493",
+    "itemIdEnd": "WASTEWATER-TREATMENT-L1-534"
+   },
+   {
+    "batch": 3,
+    "size": 42,
+    "conceptual": 34,
+    "calc": 8,
+    "questionNumStart": 2535,
+    "questionNumEnd": 2576,
+    "itemIdStart": "WASTEWATER-TREATMENT-L1-535",
+    "itemIdEnd": "WASTEWATER-TREATMENT-L1-576"
+   },
+   {
+    "batch": 4,
+    "size": 42,
+    "conceptual": 34,
+    "calc": 8,
+    "questionNumStart": 2577,
+    "questionNumEnd": 2618,
+    "itemIdStart": "WASTEWATER-TREATMENT-L1-577",
+    "itemIdEnd": "WASTEWATER-TREATMENT-L1-618"
+   },
+   {
+    "batch": 5,
+    "size": 41,
+    "conceptual": 33,
+    "calc": 8,
+    "questionNumStart": 2619,
+    "questionNumEnd": 2659,
+    "itemIdStart": "WASTEWATER-TREATMENT-L1-619",
+    "itemIdEnd": "WASTEWATER-TREATMENT-L1-659"
+   }
+  ]
+ },
+ "wpi-class2-wastewater": {
+  "courseKey": "wpi-class2-wastewater",
+  "label": "WPI Class 2 Wastewater",
+  "variant": "treat",
+  "bankKey": "wpi-class2-wastewater",
+  "registryBankKey": "wpi-class2-wastewater",
+  "nov22BankKey": "wpi-class2-wastewater",
+  "itemFmt": "WASTEWATER-TREATMENT-L2-%03d",
+  "modules": [
+   "Treatment Process Evaluation & Adjustment",
+   "Equipment Evaluation, Maintenance & Operation",
+   "Safety & Admin",
+   "Laboratory Analysis"
+  ],
+  "sources": [
+   [
+    "US EPA: Municipal Wastewater \u2014 supporting treatment resources",
+    "https://www.epa.gov/npdes/municipal-wastewater"
+   ],
+   [
+    "US EPA - Resources for Wastewater Operators",
+    "https://www.epa.gov/compliance/resources-wastewater-operators"
+   ],
+   [
+    "WPI: 2025 Need-to-Know criteria",
+    "https://gowpi.org/services/2025-need-to-know-criteria/"
+   ],
+   [
+    "WPI: formula/conversion tables",
+    "https://gowpi.org/services/abc-testing/formula-conversion-tables/"
+   ],
+   [
+    "Canadian Centre for Occupational Health and Safety - Hydrogen Sulfide",
+    "https://www.ccohs.ca/oshanswers/chemicals/chem_profiles/hydrogen_sulfide.html"
+   ]
+  ],
+  "dedupSeedFiles": [],
+  "batches": [
+   {
+    "batch": 1,
+    "size": 41,
+    "conceptual": 33,
+    "calc": 8,
+    "questionNumStart": 2451,
+    "questionNumEnd": 2491,
+    "itemIdStart": "WASTEWATER-TREATMENT-L2-451",
+    "itemIdEnd": "WASTEWATER-TREATMENT-L2-491"
+   },
+   {
+    "batch": 2,
+    "size": 41,
+    "conceptual": 33,
+    "calc": 8,
+    "questionNumStart": 2492,
+    "questionNumEnd": 2532,
+    "itemIdStart": "WASTEWATER-TREATMENT-L2-492",
+    "itemIdEnd": "WASTEWATER-TREATMENT-L2-532"
+   },
+   {
+    "batch": 3,
+    "size": 41,
+    "conceptual": 33,
+    "calc": 8,
+    "questionNumStart": 2533,
+    "questionNumEnd": 2573,
+    "itemIdStart": "WASTEWATER-TREATMENT-L2-533",
+    "itemIdEnd": "WASTEWATER-TREATMENT-L2-573"
+   },
+   {
+    "batch": 4,
+    "size": 40,
+    "conceptual": 32,
+    "calc": 8,
+    "questionNumStart": 2574,
+    "questionNumEnd": 2613,
+    "itemIdStart": "WASTEWATER-TREATMENT-L2-574",
+    "itemIdEnd": "WASTEWATER-TREATMENT-L2-613"
+   },
+   {
+    "batch": 5,
+    "size": 40,
+    "conceptual": 32,
+    "calc": 8,
+    "questionNumStart": 2614,
+    "questionNumEnd": 2653,
+    "itemIdStart": "WASTEWATER-TREATMENT-L2-614",
+    "itemIdEnd": "WASTEWATER-TREATMENT-L2-653"
+   }
+  ]
+ },
+ "wpi-class3-wastewater": {
+  "courseKey": "wpi-class3-wastewater",
+  "label": "WPI Class 3 Wastewater",
+  "variant": "treat",
+  "bankKey": "wpi-class3-wastewater",
+  "registryBankKey": "wpi-class3-wastewater",
+  "nov22BankKey": "wpi-class3-wastewater",
+  "itemFmt": "WASTEWATER-TREATMENT-L3-%03d",
+  "modules": [
+   "Treatment Process Evaluation & Adjustment",
+   "Equipment Evaluation, Maintenance & Operation",
+   "Safety & Admin",
+   "Laboratory Analysis"
+  ],
+  "sources": [
+   [
+    "US EPA: Municipal Wastewater \u2014 supporting treatment resources",
+    "https://www.epa.gov/npdes/municipal-wastewater"
+   ],
+   [
+    "US EPA - Resources for Wastewater Operators",
+    "https://www.epa.gov/compliance/resources-wastewater-operators"
+   ],
+   [
+    "WPI: 2025 Need-to-Know criteria",
+    "https://gowpi.org/services/2025-need-to-know-criteria/"
+   ],
+   [
+    "WPI: formula/conversion tables",
+    "https://gowpi.org/services/abc-testing/formula-conversion-tables/"
+   ],
+   [
+    "Canadian Centre for Occupational Health and Safety - Hydrogen Sulfide",
+    "https://www.ccohs.ca/oshanswers/chemicals/chem_profiles/hydrogen_sulfide.html"
+   ]
+  ],
+  "dedupSeedFiles": [],
+  "batches": [
+   {
+    "batch": 1,
+    "size": 49,
+    "conceptual": 39,
+    "calc": 10,
+    "questionNumStart": 2451,
+    "questionNumEnd": 2499,
+    "itemIdStart": "WASTEWATER-TREATMENT-L3-451",
+    "itemIdEnd": "WASTEWATER-TREATMENT-L3-499"
+   },
+   {
+    "batch": 2,
+    "size": 49,
+    "conceptual": 39,
+    "calc": 10,
+    "questionNumStart": 2500,
+    "questionNumEnd": 2548,
+    "itemIdStart": "WASTEWATER-TREATMENT-L3-500",
+    "itemIdEnd": "WASTEWATER-TREATMENT-L3-548"
+   },
+   {
+    "batch": 3,
+    "size": 48,
+    "conceptual": 38,
+    "calc": 10,
+    "questionNumStart": 2549,
+    "questionNumEnd": 2596,
+    "itemIdStart": "WASTEWATER-TREATMENT-L3-549",
+    "itemIdEnd": "WASTEWATER-TREATMENT-L3-596"
+   },
+   {
+    "batch": 4,
+    "size": 48,
+    "conceptual": 38,
+    "calc": 10,
+    "questionNumStart": 2597,
+    "questionNumEnd": 2644,
+    "itemIdStart": "WASTEWATER-TREATMENT-L3-597",
+    "itemIdEnd": "WASTEWATER-TREATMENT-L3-644"
+   }
+  ]
+ },
+ "wpi-class1-water-dist": {
+  "courseKey": "wpi-class1-water-dist",
+  "label": "WPI Class 1 Water Distribution",
+  "variant": "net",
+  "bankKey": "wpi-class1-water-dist",
+  "registryBankKey": "wpi-class1-water-dist",
+  "nov22BankKey": "wpi-class1-water-dist",
+  "itemFmt": "DISTRIBUTION-L1-%03d",
+  "modules": [
+   "General",
+   "Processes",
+   "Support Systems",
+   "Administration"
+  ],
+  "sources": [
+   [
+    "US EPA \u2014 EPANET hydraulic modelling",
+    "https://www.epa.gov/water-research/epanet"
+   ],
+   [
+    "US EPA \u2014 Cross-Connection Control Manual",
+    "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000262T.TXT"
+   ],
+   [
+    "WPI: 2025 Need-to-Know criteria",
+    "https://gowpi.org/services/2025-need-to-know-criteria/"
+   ],
+   [
+    "WPI: formula/conversion tables",
+    "https://gowpi.org/services/abc-testing/formula-conversion-tables/"
+   ],
+   [
+    "Canadian Centre for Occupational Health and Safety - Confined Spaces",
+    "https://www.ccohs.ca/oshanswers/hsprograms/confinedspace/confinedspace_intro.html"
+   ]
+  ],
+  "dedupSeedFiles": [],
+  "batches": [
+   {
+    "batch": 1,
+    "size": 44,
+    "conceptual": 35,
+    "calc": 9,
+    "questionNumStart": 2451,
+    "questionNumEnd": 2494,
+    "itemIdStart": "DISTRIBUTION-L1-451",
+    "itemIdEnd": "DISTRIBUTION-L1-494"
+   },
+   {
+    "batch": 2,
+    "size": 43,
+    "conceptual": 34,
+    "calc": 9,
+    "questionNumStart": 2495,
+    "questionNumEnd": 2537,
+    "itemIdStart": "DISTRIBUTION-L1-495",
+    "itemIdEnd": "DISTRIBUTION-L1-537"
+   },
+   {
+    "batch": 3,
+    "size": 43,
+    "conceptual": 34,
+    "calc": 9,
+    "questionNumStart": 2538,
+    "questionNumEnd": 2580,
+    "itemIdStart": "DISTRIBUTION-L1-538",
+    "itemIdEnd": "DISTRIBUTION-L1-580"
+   },
+   {
+    "batch": 4,
+    "size": 43,
+    "conceptual": 34,
+    "calc": 9,
+    "questionNumStart": 2581,
+    "questionNumEnd": 2623,
+    "itemIdStart": "DISTRIBUTION-L1-581",
+    "itemIdEnd": "DISTRIBUTION-L1-623"
+   },
+   {
+    "batch": 5,
+    "size": 43,
+    "conceptual": 34,
+    "calc": 9,
+    "questionNumStart": 2624,
+    "questionNumEnd": 2666,
+    "itemIdStart": "DISTRIBUTION-L1-624",
+    "itemIdEnd": "DISTRIBUTION-L1-666"
+   },
+   {
+    "batch": 6,
+    "size": 43,
+    "conceptual": 34,
+    "calc": 9,
+    "questionNumStart": 2667,
+    "questionNumEnd": 2709,
+    "itemIdStart": "DISTRIBUTION-L1-667",
+    "itemIdEnd": "DISTRIBUTION-L1-709"
+   },
+   {
+    "batch": 7,
+    "size": 43,
+    "conceptual": 34,
+    "calc": 9,
+    "questionNumStart": 2710,
+    "questionNumEnd": 2752,
+    "itemIdStart": "DISTRIBUTION-L1-710",
+    "itemIdEnd": "DISTRIBUTION-L1-752"
+   }
+  ]
+ },
+ "wpi-class2-water-dist": {
+  "courseKey": "wpi-class2-water-dist",
+  "label": "WPI Class 2 Water Distribution",
+  "variant": "net",
+  "bankKey": "wpi-class2-water-dist",
+  "registryBankKey": "wpi-class2-water-dist",
+  "nov22BankKey": "wpi-class2-water-dist",
+  "itemFmt": "DISTRIBUTION-L2-%03d",
+  "modules": [
+   "General",
+   "Processes",
+   "Support Systems",
+   "Administration"
+  ],
+  "sources": [
+   [
+    "US EPA \u2014 EPANET hydraulic modelling",
+    "https://www.epa.gov/water-research/epanet"
+   ],
+   [
+    "US EPA \u2014 Cross-Connection Control Manual",
+    "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000262T.TXT"
+   ],
+   [
+    "WPI: 2025 Need-to-Know criteria",
+    "https://gowpi.org/services/2025-need-to-know-criteria/"
+   ],
+   [
+    "WPI: formula/conversion tables",
+    "https://gowpi.org/services/abc-testing/formula-conversion-tables/"
+   ],
+   [
+    "Canadian Centre for Occupational Health and Safety - Confined Spaces",
+    "https://www.ccohs.ca/oshanswers/hsprograms/confinedspace/confinedspace_intro.html"
+   ]
+  ],
+  "dedupSeedFiles": [],
+  "batches": [
+   {
+    "batch": 1,
+    "size": 42,
+    "conceptual": 34,
+    "calc": 8,
+    "questionNumStart": 2451,
+    "questionNumEnd": 2492,
+    "itemIdStart": "DISTRIBUTION-L2-451",
+    "itemIdEnd": "DISTRIBUTION-L2-492"
+   },
+   {
+    "batch": 2,
+    "size": 41,
+    "conceptual": 33,
+    "calc": 8,
+    "questionNumStart": 2493,
+    "questionNumEnd": 2533,
+    "itemIdStart": "DISTRIBUTION-L2-493",
+    "itemIdEnd": "DISTRIBUTION-L2-533"
+   },
+   {
+    "batch": 3,
+    "size": 41,
+    "conceptual": 33,
+    "calc": 8,
+    "questionNumStart": 2534,
+    "questionNumEnd": 2574,
+    "itemIdStart": "DISTRIBUTION-L2-534",
+    "itemIdEnd": "DISTRIBUTION-L2-574"
+   },
+   {
+    "batch": 4,
+    "size": 41,
+    "conceptual": 33,
+    "calc": 8,
+    "questionNumStart": 2575,
+    "questionNumEnd": 2615,
+    "itemIdStart": "DISTRIBUTION-L2-575",
+    "itemIdEnd": "DISTRIBUTION-L2-615"
+   },
+   {
+    "batch": 5,
+    "size": 41,
+    "conceptual": 33,
+    "calc": 8,
+    "questionNumStart": 2616,
+    "questionNumEnd": 2656,
+    "itemIdStart": "DISTRIBUTION-L2-616",
+    "itemIdEnd": "DISTRIBUTION-L2-656"
+   }
+  ]
+ },
+ "wpi-class3-water-dist": {
+  "courseKey": "wpi-class3-water-dist",
+  "label": "WPI Class 3 Water Distribution",
+  "variant": "net",
+  "bankKey": "wpi-class3-water-dist",
+  "registryBankKey": "wpi-class3-water-dist",
+  "nov22BankKey": "wpi-class3-water-dist",
+  "itemFmt": "DISTRIBUTION-L3-%03d",
+  "modules": [
+   "General",
+   "Processes",
+   "Support Systems",
+   "Administration"
+  ],
+  "sources": [
+   [
+    "US EPA \u2014 EPANET hydraulic modelling",
+    "https://www.epa.gov/water-research/epanet"
+   ],
+   [
+    "US EPA \u2014 Cross-Connection Control Manual",
+    "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000262T.TXT"
+   ],
+   [
+    "WPI: 2025 Need-to-Know criteria",
+    "https://gowpi.org/services/2025-need-to-know-criteria/"
+   ],
+   [
+    "WPI: formula/conversion tables",
+    "https://gowpi.org/services/abc-testing/formula-conversion-tables/"
+   ],
+   [
+    "Canadian Centre for Occupational Health and Safety - Confined Spaces",
+    "https://www.ccohs.ca/oshanswers/hsprograms/confinedspace/confinedspace_intro.html"
+   ]
+  ],
+  "dedupSeedFiles": [],
+  "batches": [
+   {
+    "batch": 1,
+    "size": 48,
+    "conceptual": 38,
+    "calc": 10,
+    "questionNumStart": 2451,
+    "questionNumEnd": 2498,
+    "itemIdStart": "DISTRIBUTION-L3-451",
+    "itemIdEnd": "DISTRIBUTION-L3-498"
+   },
+   {
+    "batch": 2,
+    "size": 47,
+    "conceptual": 38,
+    "calc": 9,
+    "questionNumStart": 2499,
+    "questionNumEnd": 2545,
+    "itemIdStart": "DISTRIBUTION-L3-499",
+    "itemIdEnd": "DISTRIBUTION-L3-545"
+   },
+   {
+    "batch": 3,
+    "size": 47,
+    "conceptual": 38,
+    "calc": 9,
+    "questionNumStart": 2546,
+    "questionNumEnd": 2592,
+    "itemIdStart": "DISTRIBUTION-L3-546",
+    "itemIdEnd": "DISTRIBUTION-L3-592"
+   },
+   {
+    "batch": 4,
+    "size": 47,
+    "conceptual": 38,
+    "calc": 9,
+    "questionNumStart": 2593,
+    "questionNumEnd": 2639,
+    "itemIdStart": "DISTRIBUTION-L3-593",
+    "itemIdEnd": "DISTRIBUTION-L3-639"
+   }
+  ]
+ },
+ "wpi-class4-water-dist": {
+  "courseKey": "wpi-class4-water-dist",
+  "label": "WPI Class 4 Water Distribution",
+  "variant": "net",
+  "bankKey": "wpi-class4-water-dist",
+  "registryBankKey": "wpi-class4-water-dist",
+  "nov22BankKey": "wpi-class4-water-dist",
+  "itemFmt": "DISTRIBUTION-L4-%03d",
+  "modules": [
+   "General",
+   "Processes",
+   "Support Systems",
+   "Administration"
+  ],
+  "sources": [
+   [
+    "US EPA \u2014 EPANET hydraulic modelling",
+    "https://www.epa.gov/water-research/epanet"
+   ],
+   [
+    "US EPA \u2014 Cross-Connection Control Manual",
+    "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000262T.TXT"
+   ],
+   [
+    "WPI: 2025 Need-to-Know criteria",
+    "https://gowpi.org/services/2025-need-to-know-criteria/"
+   ],
+   [
+    "WPI: formula/conversion tables",
+    "https://gowpi.org/services/abc-testing/formula-conversion-tables/"
+   ],
+   [
+    "Canadian Centre for Occupational Health and Safety - Confined Spaces",
+    "https://www.ccohs.ca/oshanswers/hsprograms/confinedspace/confinedspace_intro.html"
+   ]
+  ],
+  "dedupSeedFiles": [],
+  "batches": [
+   {
+    "batch": 1,
+    "size": 46,
+    "conceptual": 37,
+    "calc": 9,
+    "questionNumStart": 2451,
+    "questionNumEnd": 2496,
+    "itemIdStart": "DISTRIBUTION-L4-451",
+    "itemIdEnd": "DISTRIBUTION-L4-496"
+   },
+   {
+    "batch": 2,
+    "size": 46,
+    "conceptual": 37,
+    "calc": 9,
+    "questionNumStart": 2497,
+    "questionNumEnd": 2542,
+    "itemIdStart": "DISTRIBUTION-L4-497",
+    "itemIdEnd": "DISTRIBUTION-L4-542"
+   },
+   {
+    "batch": 3,
+    "size": 46,
+    "conceptual": 37,
+    "calc": 9,
+    "questionNumStart": 2543,
+    "questionNumEnd": 2588,
+    "itemIdStart": "DISTRIBUTION-L4-543",
+    "itemIdEnd": "DISTRIBUTION-L4-588"
+   },
+   {
+    "batch": 4,
+    "size": 45,
+    "conceptual": 36,
+    "calc": 9,
+    "questionNumStart": 2589,
+    "questionNumEnd": 2633,
+    "itemIdStart": "DISTRIBUTION-L4-589",
+    "itemIdEnd": "DISTRIBUTION-L4-633"
+   }
+  ]
+ },
+ "wpi-class1-water-coll": {
+  "courseKey": "wpi-class1-water-coll",
+  "label": "WPI Class 1 Water Collection",
+  "variant": "net",
+  "bankKey": "wpi-class1-wastewater-coll",
+  "registryBankKey": "wpi-class1-wastewater-coll",
+  "nov22BankKey": "wpi-class1-water-coll",
+  "itemFmt": "COLLECTION-L1-%03d",
+  "modules": [
+   "Collection System Components",
+   "Equipment Operation & Maintenance",
+   "Lift Station Operation and Maintenance",
+   "Collection System Monitoring & Evaluation",
+   "Safety & Regulations"
+  ],
+  "sources": [
+   [
+    "US EPA \u2014 CMOM Guide for Sanitary Sewer Collection Systems",
+    "https://www.epa.gov/sites/default/files/2015-10/documents/cmom_guide_for_collection_systems.pdf"
+   ],
+   [
+    "US EPA - Alternative Wastewater Collection Systems Manual",
+    "https://nepis.epa.gov/Exe/ZyNET.exe?Index=Prior+to+1976&Query=&SearchMethod=1&FuzzyDegree=0&User=ANONYMOUS&Password=<redacted>&QField=pubnumber%5E%22625191024%22&UseQField=pubnumber&IntQFieldOp=1&ExtQFieldOp=0&Docs="
+   ],
+   [
+    "WPI: 2025 Need-to-Know criteria",
+    "https://gowpi.org/services/2025-need-to-know-criteria/"
+   ],
+   [
+    "Canadian Centre for Occupational Health and Safety - Confined Spaces",
+    "https://www.ccohs.ca/oshanswers/hsprograms/confinedspace/confinedspace_intro.html"
+   ],
+   [
+    "Canadian Centre for Occupational Health and Safety - Hydrogen Sulfide",
+    "https://www.ccohs.ca/oshanswers/chemicals/chem_profiles/hydrogen_sulfide.html"
+   ]
+  ],
+  "dedupSeedFiles": [],
+  "batches": [
+   {
+    "batch": 1,
+    "size": 44,
+    "conceptual": 35,
+    "calc": 9,
+    "questionNumStart": 2451,
+    "questionNumEnd": 2494,
+    "itemIdStart": "COLLECTION-L1-451",
+    "itemIdEnd": "COLLECTION-L1-494"
+   },
+   {
+    "batch": 2,
+    "size": 43,
+    "conceptual": 34,
+    "calc": 9,
+    "questionNumStart": 2495,
+    "questionNumEnd": 2537,
+    "itemIdStart": "COLLECTION-L1-495",
+    "itemIdEnd": "COLLECTION-L1-537"
+   },
+   {
+    "batch": 3,
+    "size": 43,
+    "conceptual": 34,
+    "calc": 9,
+    "questionNumStart": 2538,
+    "questionNumEnd": 2580,
+    "itemIdStart": "COLLECTION-L1-538",
+    "itemIdEnd": "COLLECTION-L1-580"
+   },
+   {
+    "batch": 4,
+    "size": 43,
+    "conceptual": 34,
+    "calc": 9,
+    "questionNumStart": 2581,
+    "questionNumEnd": 2623,
+    "itemIdStart": "COLLECTION-L1-581",
+    "itemIdEnd": "COLLECTION-L1-623"
+   },
+   {
+    "batch": 5,
+    "size": 43,
+    "conceptual": 34,
+    "calc": 9,
+    "questionNumStart": 2624,
+    "questionNumEnd": 2666,
+    "itemIdStart": "COLLECTION-L1-624",
+    "itemIdEnd": "COLLECTION-L1-666"
+   },
+   {
+    "batch": 6,
+    "size": 43,
+    "conceptual": 34,
+    "calc": 9,
+    "questionNumStart": 2667,
+    "questionNumEnd": 2709,
+    "itemIdStart": "COLLECTION-L1-667",
+    "itemIdEnd": "COLLECTION-L1-709"
+   },
+   {
+    "batch": 7,
+    "size": 43,
+    "conceptual": 34,
+    "calc": 9,
+    "questionNumStart": 2710,
+    "questionNumEnd": 2752,
+    "itemIdStart": "COLLECTION-L1-710",
+    "itemIdEnd": "COLLECTION-L1-752"
+   }
+  ]
+ },
+ "wpi-class2-water-coll": {
+  "courseKey": "wpi-class2-water-coll",
+  "label": "WPI Class 2 Water Collection",
+  "variant": "net",
+  "bankKey": "wpi-class2-wastewater-coll",
+  "registryBankKey": "wpi-class2-wastewater-coll",
+  "nov22BankKey": "wpi-class2-water-coll",
+  "itemFmt": "COLLECTION-L2-%03d",
+  "modules": [
+   "Collection System Components",
+   "Equipment Operation & Maintenance",
+   "Lift Station Operation and Maintenance",
+   "Collection System Monitoring & Evaluation",
+   "Safety & Regulations"
+  ],
+  "sources": [
+   [
+    "US EPA \u2014 CMOM Guide for Sanitary Sewer Collection Systems",
+    "https://www.epa.gov/sites/default/files/2015-10/documents/cmom_guide_for_collection_systems.pdf"
+   ],
+   [
+    "US EPA - Alternative Wastewater Collection Systems Manual",
+    "https://nepis.epa.gov/Exe/ZyNET.exe?Index=Prior+to+1976&Query=&SearchMethod=1&FuzzyDegree=0&User=ANONYMOUS&Password=<redacted>&QField=pubnumber%5E%22625191024%22&UseQField=pubnumber&IntQFieldOp=1&ExtQFieldOp=0&Docs="
+   ],
+   [
+    "WPI: 2025 Need-to-Know criteria",
+    "https://gowpi.org/services/2025-need-to-know-criteria/"
+   ],
+   [
+    "Canadian Centre for Occupational Health and Safety - Confined Spaces",
+    "https://www.ccohs.ca/oshanswers/hsprograms/confinedspace/confinedspace_intro.html"
+   ],
+   [
+    "Canadian Centre for Occupational Health and Safety - Hydrogen Sulfide",
+    "https://www.ccohs.ca/oshanswers/chemicals/chem_profiles/hydrogen_sulfide.html"
+   ]
+  ],
+  "dedupSeedFiles": [],
+  "batches": [
+   {
+    "batch": 1,
+    "size": 50,
+    "conceptual": 40,
+    "calc": 10,
+    "questionNumStart": 2451,
+    "questionNumEnd": 2500,
+    "itemIdStart": "COLLECTION-L2-451",
+    "itemIdEnd": "COLLECTION-L2-500"
+   },
+   {
+    "batch": 2,
+    "size": 50,
+    "conceptual": 40,
+    "calc": 10,
+    "questionNumStart": 2501,
+    "questionNumEnd": 2550,
+    "itemIdStart": "COLLECTION-L2-501",
+    "itemIdEnd": "COLLECTION-L2-550"
+   },
+   {
+    "batch": 3,
+    "size": 50,
+    "conceptual": 40,
+    "calc": 10,
+    "questionNumStart": 2551,
+    "questionNumEnd": 2600,
+    "itemIdStart": "COLLECTION-L2-551",
+    "itemIdEnd": "COLLECTION-L2-600"
+   },
+   {
+    "batch": 4,
+    "size": 50,
+    "conceptual": 40,
+    "calc": 10,
+    "questionNumStart": 2601,
+    "questionNumEnd": 2650,
+    "itemIdStart": "COLLECTION-L2-601",
+    "itemIdEnd": "COLLECTION-L2-650"
+   },
+   {
+    "batch": 5,
+    "size": 49,
+    "conceptual": 39,
+    "calc": 10,
+    "questionNumStart": 2651,
+    "questionNumEnd": 2699,
+    "itemIdStart": "COLLECTION-L2-651",
+    "itemIdEnd": "COLLECTION-L2-699"
+   },
+   {
+    "batch": 6,
+    "size": 49,
+    "conceptual": 39,
+    "calc": 10,
+    "questionNumStart": 2700,
+    "questionNumEnd": 2748,
+    "itemIdStart": "COLLECTION-L2-700",
+    "itemIdEnd": "COLLECTION-L2-748"
+   }
+  ]
+ },
+ "wpi-class3-water-coll": {
+  "courseKey": "wpi-class3-water-coll",
+  "label": "WPI Class 3 Water Collection",
+  "variant": "net",
+  "bankKey": "wpi-class3-wastewater-coll",
+  "registryBankKey": "wpi-class3-wastewater-coll",
+  "nov22BankKey": "wpi-class3-water-coll",
+  "itemFmt": "COLLECTION-L3-%03d",
+  "modules": [
+   "Collection System Components",
+   "Equipment Operation & Maintenance",
+   "Lift Station Operation and Maintenance",
+   "Collection System Monitoring & Evaluation",
+   "Safety & Regulations"
+  ],
+  "sources": [
+   [
+    "US EPA \u2014 CMOM Guide for Sanitary Sewer Collection Systems",
+    "https://www.epa.gov/sites/default/files/2015-10/documents/cmom_guide_for_collection_systems.pdf"
+   ],
+   [
+    "US EPA - Alternative Wastewater Collection Systems Manual",
+    "https://nepis.epa.gov/Exe/ZyNET.exe?Index=Prior+to+1976&Query=&SearchMethod=1&FuzzyDegree=0&User=ANONYMOUS&Password=<redacted>&QField=pubnumber%5E%22625191024%22&UseQField=pubnumber&IntQFieldOp=1&ExtQFieldOp=0&Docs="
+   ],
+   [
+    "WPI: 2025 Need-to-Know criteria",
+    "https://gowpi.org/services/2025-need-to-know-criteria/"
+   ],
+   [
+    "Canadian Centre for Occupational Health and Safety - Confined Spaces",
+    "https://www.ccohs.ca/oshanswers/hsprograms/confinedspace/confinedspace_intro.html"
+   ],
+   [
+    "Canadian Centre for Occupational Health and Safety - Hydrogen Sulfide",
+    "https://www.ccohs.ca/oshanswers/chemicals/chem_profiles/hydrogen_sulfide.html"
+   ]
+  ],
+  "dedupSeedFiles": [],
+  "batches": [
+   {
+    "batch": 1,
+    "size": 50,
+    "conceptual": 40,
+    "calc": 10,
+    "questionNumStart": 2451,
+    "questionNumEnd": 2500,
+    "itemIdStart": "COLLECTION-L3-451",
+    "itemIdEnd": "COLLECTION-L3-500"
+   },
+   {
+    "batch": 2,
+    "size": 50,
+    "conceptual": 40,
+    "calc": 10,
+    "questionNumStart": 2501,
+    "questionNumEnd": 2550,
+    "itemIdStart": "COLLECTION-L3-501",
+    "itemIdEnd": "COLLECTION-L3-550"
+   },
+   {
+    "batch": 3,
+    "size": 50,
+    "conceptual": 40,
+    "calc": 10,
+    "questionNumStart": 2551,
+    "questionNumEnd": 2600,
+    "itemIdStart": "COLLECTION-L3-551",
+    "itemIdEnd": "COLLECTION-L3-600"
+   },
+   {
+    "batch": 4,
+    "size": 49,
+    "conceptual": 39,
+    "calc": 10,
+    "questionNumStart": 2601,
+    "questionNumEnd": 2649,
+    "itemIdStart": "COLLECTION-L3-601",
+    "itemIdEnd": "COLLECTION-L3-649"
+   },
+   {
+    "batch": 5,
+    "size": 49,
+    "conceptual": 39,
+    "calc": 10,
+    "questionNumStart": 2650,
+    "questionNumEnd": 2698,
+    "itemIdStart": "COLLECTION-L3-650",
+    "itemIdEnd": "COLLECTION-L3-698"
+   },
+   {
+    "batch": 6,
+    "size": 49,
+    "conceptual": 39,
+    "calc": 10,
+    "questionNumStart": 2699,
+    "questionNumEnd": 2747,
+    "itemIdStart": "COLLECTION-L3-699",
+    "itemIdEnd": "COLLECTION-L3-747"
+   }
+  ]
+ },
+ "wpi-class4-water-coll": {
+  "courseKey": "wpi-class4-water-coll",
+  "label": "WPI Class 4 Water Collection",
+  "variant": "net",
+  "bankKey": "wpi-class4-wastewater-coll",
+  "registryBankKey": "wpi-class4-wastewater-coll",
+  "nov22BankKey": "wpi-class4-water-coll",
+  "itemFmt": "COLLECTION-L4-%03d",
+  "modules": [
+   "Collection System Components",
+   "Equipment Operation & Maintenance",
+   "Lift Station Operation and Maintenance",
+   "Collection System Monitoring & Evaluation",
+   "Safety & Regulations"
+  ],
+  "sources": [
+   [
+    "US EPA \u2014 CMOM Guide for Sanitary Sewer Collection Systems",
+    "https://www.epa.gov/sites/default/files/2015-10/documents/cmom_guide_for_collection_systems.pdf"
+   ],
+   [
+    "US EPA - Alternative Wastewater Collection Systems Manual",
+    "https://nepis.epa.gov/Exe/ZyNET.exe?Index=Prior+to+1976&Query=&SearchMethod=1&FuzzyDegree=0&User=ANONYMOUS&Password=<redacted>&QField=pubnumber%5E%22625191024%22&UseQField=pubnumber&IntQFieldOp=1&ExtQFieldOp=0&Docs="
+   ],
+   [
+    "WPI: 2025 Need-to-Know criteria",
+    "https://gowpi.org/services/2025-need-to-know-criteria/"
+   ],
+   [
+    "Canadian Centre for Occupational Health and Safety - Confined Spaces",
+    "https://www.ccohs.ca/oshanswers/hsprograms/confinedspace/confinedspace_intro.html"
+   ],
+   [
+    "Canadian Centre for Occupational Health and Safety - Hydrogen Sulfide",
+    "https://www.ccohs.ca/oshanswers/chemicals/chem_profiles/hydrogen_sulfide.html"
+   ]
+  ],
+  "dedupSeedFiles": [],
+  "batches": [
+   {
+    "batch": 1,
+    "size": 50,
+    "conceptual": 40,
+    "calc": 10,
+    "questionNumStart": 2451,
+    "questionNumEnd": 2500,
+    "itemIdStart": "COLLECTION-L4-451",
+    "itemIdEnd": "COLLECTION-L4-500"
+   },
+   {
+    "batch": 2,
+    "size": 50,
+    "conceptual": 40,
+    "calc": 10,
+    "questionNumStart": 2501,
+    "questionNumEnd": 2550,
+    "itemIdStart": "COLLECTION-L4-501",
+    "itemIdEnd": "COLLECTION-L4-550"
+   },
+   {
+    "batch": 3,
+    "size": 50,
+    "conceptual": 40,
+    "calc": 10,
+    "questionNumStart": 2551,
+    "questionNumEnd": 2600,
+    "itemIdStart": "COLLECTION-L4-551",
+    "itemIdEnd": "COLLECTION-L4-600"
+   },
+   {
+    "batch": 4,
+    "size": 49,
+    "conceptual": 39,
+    "calc": 10,
+    "questionNumStart": 2601,
+    "questionNumEnd": 2649,
+    "itemIdStart": "COLLECTION-L4-601",
+    "itemIdEnd": "COLLECTION-L4-649"
+   },
+   {
+    "batch": 5,
+    "size": 49,
+    "conceptual": 39,
+    "calc": 10,
+    "questionNumStart": 2650,
+    "questionNumEnd": 2698,
+    "itemIdStart": "COLLECTION-L4-650",
+    "itemIdEnd": "COLLECTION-L4-698"
+   },
+   {
+    "batch": 6,
+    "size": 49,
+    "conceptual": 39,
+    "calc": 10,
+    "questionNumStart": 2699,
+    "questionNumEnd": 2747,
+    "itemIdStart": "COLLECTION-L4-699",
+    "itemIdEnd": "COLLECTION-L4-747"
+   }
+  ]
+ }
+}

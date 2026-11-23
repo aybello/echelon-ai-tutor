@@ -1,0 +1,23 @@
+[
+ {
+  "itemId": "DISTRIBUTION-L2-464",
+  "expression": "64*1250/1000",
+  "expected": "80",
+  "decimalPlaces": 0,
+  "unit": "L/s"
+ },
+ {
+  "itemId": "DISTRIBUTION-L2-465",
+  "expression": "2.5*800/100",
+  "expected": "20.0",
+  "decimalPlaces": 1,
+  "unit": "m"
+ },
+ {
+  "itemId": "DISTRIBUTION-L2-466",
+  "expression": "(18-6)*3600*5/1000",
+  "expected": "216.0",
+  "decimalPlaces": 1,
+  "unit": "m³"
+ }
+]

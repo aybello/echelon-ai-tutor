@@ -1,0 +1,393 @@
+{
+ "courseKey": "class4-ww",
+ "bankKey": "class4-wastewater",
+ "batch": 4,
+ "size": 42,
+ "conceptualCount": 34,
+ "calcCount": 8,
+ "topicPoolRound": 1,
+ "questionNumStart": 2579,
+ "questionNumEnd": 2620,
+ "itemIdStart": "WASTEWATER-TREATMENT-L4-579",
+ "itemIdEnd": "WASTEWATER-TREATMENT-L4-620",
+ "items": [
+  {
+   "seq": 1,
+   "questionNum": 2579,
+   "itemId": "WASTEWATER-TREATMENT-L4-579",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "long term planning awareness"
+  },
+  {
+   "seq": 2,
+   "questionNum": 2580,
+   "itemId": "WASTEWATER-TREATMENT-L4-580",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "climate resilience awareness"
+  },
+  {
+   "seq": 3,
+   "questionNum": 2581,
+   "itemId": "WASTEWATER-TREATMENT-L4-581",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "regulatory change management"
+  },
+  {
+   "seq": 4,
+   "questionNum": 2582,
+   "itemId": "WASTEWATER-TREATMENT-L4-582",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "management review and audit"
+  },
+  {
+   "seq": 5,
+   "questionNum": 2583,
+   "itemId": "WASTEWATER-TREATMENT-L4-583",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "succession leadership"
+  },
+  {
+   "seq": 6,
+   "questionNum": 2584,
+   "itemId": "WASTEWATER-TREATMENT-L4-584",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "continuous improvement leadership"
+  },
+  {
+   "seq": 7,
+   "questionNum": 2585,
+   "itemId": "WASTEWATER-TREATMENT-L4-585",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "interutility cooperation awareness"
+  },
+  {
+   "seq": 8,
+   "questionNum": 2586,
+   "itemId": "WASTEWATER-TREATMENT-L4-586",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "innovation evaluation"
+  },
+  {
+   "seq": 9,
+   "questionNum": 2587,
+   "itemId": "WASTEWATER-TREATMENT-L4-587",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "long term planning awareness"
+  },
+  {
+   "seq": 10,
+   "questionNum": 2588,
+   "itemId": "WASTEWATER-TREATMENT-L4-588",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "climate resilience awareness"
+  },
+  {
+   "seq": 11,
+   "questionNum": 2589,
+   "itemId": "WASTEWATER-TREATMENT-L4-589",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "regulatory change management"
+  },
+  {
+   "seq": 12,
+   "questionNum": 2590,
+   "itemId": "WASTEWATER-TREATMENT-L4-590",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "management review and audit"
+  },
+  {
+   "seq": 13,
+   "questionNum": 2591,
+   "itemId": "WASTEWATER-TREATMENT-L4-591",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "succession leadership"
+  },
+  {
+   "seq": 14,
+   "questionNum": 2592,
+   "itemId": "WASTEWATER-TREATMENT-L4-592",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "continuous improvement leadership"
+  },
+  {
+   "seq": 15,
+   "questionNum": 2593,
+   "itemId": "WASTEWATER-TREATMENT-L4-593",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "interutility cooperation awareness"
+  },
+  {
+   "seq": 16,
+   "questionNum": 2594,
+   "itemId": "WASTEWATER-TREATMENT-L4-594",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "innovation evaluation"
+  },
+  {
+   "seq": 17,
+   "questionNum": 2595,
+   "itemId": "WASTEWATER-TREATMENT-L4-595",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "long term planning awareness"
+  },
+  {
+   "seq": 18,
+   "questionNum": 2596,
+   "itemId": "WASTEWATER-TREATMENT-L4-596",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "climate resilience awareness"
+  },
+  {
+   "seq": 19,
+   "questionNum": 2597,
+   "itemId": "WASTEWATER-TREATMENT-L4-597",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "regulatory change management"
+  },
+  {
+   "seq": 20,
+   "questionNum": 2598,
+   "itemId": "WASTEWATER-TREATMENT-L4-598",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "management review and audit"
+  },
+  {
+   "seq": 21,
+   "questionNum": 2599,
+   "itemId": "WASTEWATER-TREATMENT-L4-599",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "succession leadership"
+  },
+  {
+   "seq": 22,
+   "questionNum": 2600,
+   "itemId": "WASTEWATER-TREATMENT-L4-600",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "continuous improvement leadership"
+  },
+  {
+   "seq": 23,
+   "questionNum": 2601,
+   "itemId": "WASTEWATER-TREATMENT-L4-601",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "interutility cooperation awareness"
+  },
+  {
+   "seq": 24,
+   "questionNum": 2602,
+   "itemId": "WASTEWATER-TREATMENT-L4-602",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "innovation evaluation"
+  },
+  {
+   "seq": 25,
+   "questionNum": 2603,
+   "itemId": "WASTEWATER-TREATMENT-L4-603",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "long term planning awareness"
+  },
+  {
+   "seq": 26,
+   "questionNum": 2604,
+   "itemId": "WASTEWATER-TREATMENT-L4-604",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "climate resilience awareness"
+  },
+  {
+   "seq": 27,
+   "questionNum": 2605,
+   "itemId": "WASTEWATER-TREATMENT-L4-605",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "regulatory change management"
+  },
+  {
+   "seq": 28,
+   "questionNum": 2606,
+   "itemId": "WASTEWATER-TREATMENT-L4-606",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "management review and audit"
+  },
+  {
+   "seq": 29,
+   "questionNum": 2607,
+   "itemId": "WASTEWATER-TREATMENT-L4-607",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "succession leadership"
+  },
+  {
+   "seq": 30,
+   "questionNum": 2608,
+   "itemId": "WASTEWATER-TREATMENT-L4-608",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "continuous improvement leadership"
+  },
+  {
+   "seq": 31,
+   "questionNum": 2609,
+   "itemId": "WASTEWATER-TREATMENT-L4-609",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "interutility cooperation awareness"
+  },
+  {
+   "seq": 32,
+   "questionNum": 2610,
+   "itemId": "WASTEWATER-TREATMENT-L4-610",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "innovation evaluation"
+  },
+  {
+   "seq": 33,
+   "questionNum": 2611,
+   "itemId": "WASTEWATER-TREATMENT-L4-611",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "long term planning awareness"
+  },
+  {
+   "seq": 34,
+   "questionNum": 2612,
+   "itemId": "WASTEWATER-TREATMENT-L4-612",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "climate resilience awareness"
+  },
+  {
+   "seq": 35,
+   "questionNum": 2613,
+   "itemId": "WASTEWATER-TREATMENT-L4-613",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "whole utility flow balance quantity"
+  },
+  {
+   "seq": 36,
+   "questionNum": 2614,
+   "itemId": "WASTEWATER-TREATMENT-L4-614",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "solids forecast with given yields"
+  },
+  {
+   "seq": 37,
+   "questionNum": 2615,
+   "itemId": "WASTEWATER-TREATMENT-L4-615",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "energy benchmarking comparison"
+  },
+  {
+   "seq": 38,
+   "questionNum": 2616,
+   "itemId": "WASTEWATER-TREATMENT-L4-616",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "sampling program design counts"
+  },
+  {
+   "seq": 39,
+   "questionNum": 2617,
+   "itemId": "WASTEWATER-TREATMENT-L4-617",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "whole utility flow balance quantity"
+  },
+  {
+   "seq": 40,
+   "questionNum": 2618,
+   "itemId": "WASTEWATER-TREATMENT-L4-618",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "solids forecast with given yields"
+  },
+  {
+   "seq": 41,
+   "questionNum": 2619,
+   "itemId": "WASTEWATER-TREATMENT-L4-619",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "energy benchmarking comparison"
+  },
+  {
+   "seq": 42,
+   "questionNum": 2620,
+   "itemId": "WASTEWATER-TREATMENT-L4-620",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "sampling program design counts"
+  }
+ ]
+}

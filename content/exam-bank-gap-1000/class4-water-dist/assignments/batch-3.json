@@ -1,0 +1,438 @@
+{
+ "courseKey": "class4-water-dist",
+ "bankKey": "class4-water-dist",
+ "batch": 3,
+ "size": 47,
+ "conceptualCount": 38,
+ "calcCount": 9,
+ "topicPoolRound": 1,
+ "questionNumStart": 2545,
+ "questionNumEnd": 2591,
+ "itemIdStart": "DISTRIBUTION-L4-545",
+ "itemIdEnd": "DISTRIBUTION-L4-591",
+ "items": [
+  {
+   "seq": 1,
+   "questionNum": 2545,
+   "itemId": "DISTRIBUTION-L4-545",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[General] asset renewal strategy"
+  },
+  {
+   "seq": 2,
+   "questionNum": 2546,
+   "itemId": "DISTRIBUTION-L4-546",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Processes] water quality risk assessment"
+  },
+  {
+   "seq": 3,
+   "questionNum": 2547,
+   "itemId": "DISTRIBUTION-L4-547",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Administration] workforce planning"
+  },
+  {
+   "seq": 4,
+   "questionNum": 2548,
+   "itemId": "DISTRIBUTION-L4-548",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Support Systems] data and metering strategy"
+  },
+  {
+   "seq": 5,
+   "questionNum": 2549,
+   "itemId": "DISTRIBUTION-L4-549",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Processes] pressure management strategy"
+  },
+  {
+   "seq": 6,
+   "questionNum": 2550,
+   "itemId": "DISTRIBUTION-L4-550",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[General] intermunicipal supply awareness"
+  },
+  {
+   "seq": 7,
+   "questionNum": 2551,
+   "itemId": "DISTRIBUTION-L4-551",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Administration] financial planning awareness"
+  },
+  {
+   "seq": 8,
+   "questionNum": 2552,
+   "itemId": "DISTRIBUTION-L4-552",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Processes] performance benchmarking"
+  },
+  {
+   "seq": 9,
+   "questionNum": 2553,
+   "itemId": "DISTRIBUTION-L4-553",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[General] asset renewal strategy"
+  },
+  {
+   "seq": 10,
+   "questionNum": 2554,
+   "itemId": "DISTRIBUTION-L4-554",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Processes] water quality risk assessment"
+  },
+  {
+   "seq": 11,
+   "questionNum": 2555,
+   "itemId": "DISTRIBUTION-L4-555",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Administration] workforce planning"
+  },
+  {
+   "seq": 12,
+   "questionNum": 2556,
+   "itemId": "DISTRIBUTION-L4-556",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Support Systems] data and metering strategy"
+  },
+  {
+   "seq": 13,
+   "questionNum": 2557,
+   "itemId": "DISTRIBUTION-L4-557",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Processes] pressure management strategy"
+  },
+  {
+   "seq": 14,
+   "questionNum": 2558,
+   "itemId": "DISTRIBUTION-L4-558",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[General] intermunicipal supply awareness"
+  },
+  {
+   "seq": 15,
+   "questionNum": 2559,
+   "itemId": "DISTRIBUTION-L4-559",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Administration] financial planning awareness"
+  },
+  {
+   "seq": 16,
+   "questionNum": 2560,
+   "itemId": "DISTRIBUTION-L4-560",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Processes] performance benchmarking"
+  },
+  {
+   "seq": 17,
+   "questionNum": 2561,
+   "itemId": "DISTRIBUTION-L4-561",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[General] asset renewal strategy"
+  },
+  {
+   "seq": 18,
+   "questionNum": 2562,
+   "itemId": "DISTRIBUTION-L4-562",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Processes] water quality risk assessment"
+  },
+  {
+   "seq": 19,
+   "questionNum": 2563,
+   "itemId": "DISTRIBUTION-L4-563",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Administration] workforce planning"
+  },
+  {
+   "seq": 20,
+   "questionNum": 2564,
+   "itemId": "DISTRIBUTION-L4-564",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Support Systems] data and metering strategy"
+  },
+  {
+   "seq": 21,
+   "questionNum": 2565,
+   "itemId": "DISTRIBUTION-L4-565",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Processes] pressure management strategy"
+  },
+  {
+   "seq": 22,
+   "questionNum": 2566,
+   "itemId": "DISTRIBUTION-L4-566",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[General] intermunicipal supply awareness"
+  },
+  {
+   "seq": 23,
+   "questionNum": 2567,
+   "itemId": "DISTRIBUTION-L4-567",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Administration] financial planning awareness"
+  },
+  {
+   "seq": 24,
+   "questionNum": 2568,
+   "itemId": "DISTRIBUTION-L4-568",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Processes] performance benchmarking"
+  },
+  {
+   "seq": 25,
+   "questionNum": 2569,
+   "itemId": "DISTRIBUTION-L4-569",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[General] asset renewal strategy"
+  },
+  {
+   "seq": 26,
+   "questionNum": 2570,
+   "itemId": "DISTRIBUTION-L4-570",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Processes] water quality risk assessment"
+  },
+  {
+   "seq": 27,
+   "questionNum": 2571,
+   "itemId": "DISTRIBUTION-L4-571",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Administration] workforce planning"
+  },
+  {
+   "seq": 28,
+   "questionNum": 2572,
+   "itemId": "DISTRIBUTION-L4-572",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Support Systems] data and metering strategy"
+  },
+  {
+   "seq": 29,
+   "questionNum": 2573,
+   "itemId": "DISTRIBUTION-L4-573",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Processes] pressure management strategy"
+  },
+  {
+   "seq": 30,
+   "questionNum": 2574,
+   "itemId": "DISTRIBUTION-L4-574",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[General] intermunicipal supply awareness"
+  },
+  {
+   "seq": 31,
+   "questionNum": 2575,
+   "itemId": "DISTRIBUTION-L4-575",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Administration] financial planning awareness"
+  },
+  {
+   "seq": 32,
+   "questionNum": 2576,
+   "itemId": "DISTRIBUTION-L4-576",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Processes] performance benchmarking"
+  },
+  {
+   "seq": 33,
+   "questionNum": 2577,
+   "itemId": "DISTRIBUTION-L4-577",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[General] asset renewal strategy"
+  },
+  {
+   "seq": 34,
+   "questionNum": 2578,
+   "itemId": "DISTRIBUTION-L4-578",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Processes] water quality risk assessment"
+  },
+  {
+   "seq": 35,
+   "questionNum": 2579,
+   "itemId": "DISTRIBUTION-L4-579",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Administration] workforce planning"
+  },
+  {
+   "seq": 36,
+   "questionNum": 2580,
+   "itemId": "DISTRIBUTION-L4-580",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Support Systems] data and metering strategy"
+  },
+  {
+   "seq": 37,
+   "questionNum": 2581,
+   "itemId": "DISTRIBUTION-L4-581",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Processes] pressure management strategy"
+  },
+  {
+   "seq": 38,
+   "questionNum": 2582,
+   "itemId": "DISTRIBUTION-L4-582",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[General] intermunicipal supply awareness"
+  },
+  {
+   "seq": 39,
+   "questionNum": 2583,
+   "itemId": "DISTRIBUTION-L4-583",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "loss component forecast quantity"
+  },
+  {
+   "seq": 40,
+   "questionNum": 2584,
+   "itemId": "DISTRIBUTION-L4-584",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "storage turnover strategy quantity"
+  },
+  {
+   "seq": 41,
+   "questionNum": 2585,
+   "itemId": "DISTRIBUTION-L4-585",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "energy per volume comparison"
+  },
+  {
+   "seq": 42,
+   "questionNum": 2586,
+   "itemId": "DISTRIBUTION-L4-586",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "program quantity with given rates"
+  },
+  {
+   "seq": 43,
+   "questionNum": 2587,
+   "itemId": "DISTRIBUTION-L4-587",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "loss component forecast quantity"
+  },
+  {
+   "seq": 44,
+   "questionNum": 2588,
+   "itemId": "DISTRIBUTION-L4-588",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "storage turnover strategy quantity"
+  },
+  {
+   "seq": 45,
+   "questionNum": 2589,
+   "itemId": "DISTRIBUTION-L4-589",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "energy per volume comparison"
+  },
+  {
+   "seq": 46,
+   "questionNum": 2590,
+   "itemId": "DISTRIBUTION-L4-590",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "program quantity with given rates"
+  },
+  {
+   "seq": 47,
+   "questionNum": 2591,
+   "itemId": "DISTRIBUTION-L4-591",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "loss component forecast quantity"
+  }
+ ]
+}

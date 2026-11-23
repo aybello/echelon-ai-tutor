@@ -1,0 +1,1419 @@
+{
+ "reviewer": "owner-authorized-ai-review",
+ "model": "Muse Wonder",
+ "reviewDateUtc": "2026-11-23T17:59:30Z",
+ "sourceBranch": "exam-bank-gap-1000-2026-11-23",
+ "baseCommit": "6b15ae5120c63cbfd28ea1c2c7aff31cc64ff526",
+ "courseKey": "class3-wastewater-coll",
+ "canonicalBankKey": "class3-wastewater-coll",
+ "itemBankKey": "class3-wastewater-coll",
+ "packageSha256": "38b0553b49759d7e77e9a75865c0fd0e76bc206940e49181dd24c191f5ea2a1b",
+ "additionsFileSha256": "5c5411f8a3934dab51bc49baa668e612a405b2277f0028486a91823088fa9009",
+ "batchFileSha256": {
+  "batch-1.json": "f419f842fec42bab44145d0e4d46e714d9caf3dc2b802e9ddd9e69d8c88334be",
+  "batch-1.verify.json": "1cb1f4f3a29852f96425e6590464e0c900c9d23e3c05dd72e8b308692f3fed69",
+  "batch-2.json": "5ac3a3101b7f81e0984d7a8f6eafc63df809eac25782e22e1dc8e3fdb2a02f67",
+  "batch-2.verify.json": "308b85208c7fdc3b3ac8fed5f7505b1e81246501ad3550fd3c38882ef245a757",
+  "batch-3.json": "61079e56fbaee8729ba9c86c5f5e3688424c8f73bfb52aab3c6e0137a4864745",
+  "batch-3.verify.json": "fb8b92486d6207feccee6e24e401850f3333c8e88086f3966dab5e62f630c73e",
+  "batch-4.json": "7c30f0dc9c17fbde71824331c8cd4d32193ae87745dc39851cdc302842c6a649",
+  "batch-4.verify.json": "cd8d2444c09cf5094ef583eaa818089ea86651def47062d243f6a654840f1da9",
+  "batch-5.json": "94145558ef949662b4739ff3c02d9defc5da793ade18cbeb2fa3c8223c1c4ea2",
+  "batch-5.verify.json": "65be67eeec688641189b21bdb1353e26a85cf6b848408f8d045426a7dd7543d9"
+ },
+ "counts": {
+  "requested": 230,
+  "generated": 230,
+  "accepted": 230,
+  "withheld": [],
+  "rejected": []
+ },
+ "checks": {
+  "schemaValidation": "see validate_gap.py run log in DUPLICATE-AND-SAFETY-REPORT.md",
+  "calculationVerification": null,
+  "dedup": {},
+  "quality": null
+ },
+ "items": [
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2451,
+   "itemId": "COLLECTION-L3-451",
+   "payloadSha256": "42970d747bad53b7de2fe71ba7f8c2166a796f48bec00674ee9e1e58acbc1b2b"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2452,
+   "itemId": "COLLECTION-L3-452",
+   "payloadSha256": "8044b9af125c2c13231558159ee3588ca32685379edb4b2ef7ae5da72520a4df"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2453,
+   "itemId": "COLLECTION-L3-453",
+   "payloadSha256": "d013b3f0c4bae246c7fdf7210bcccf696a514eace19d97c430a58c6d81d313af"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2454,
+   "itemId": "COLLECTION-L3-454",
+   "payloadSha256": "19f9cb91aba57fb2f683961c6498d2491e61625e00358188461d28b682834c62"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2455,
+   "itemId": "COLLECTION-L3-455",
+   "payloadSha256": "472e64c08ca9a8f19a5426a5be9cf793d5003e2c4a4f4e6da964cf1bfc5861d5"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2456,
+   "itemId": "COLLECTION-L3-456",
+   "payloadSha256": "b45221893a626a88c05c7e4b7032b385efaddb945fcb44e67e4e808b8b1cbacc"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2457,
+   "itemId": "COLLECTION-L3-457",
+   "payloadSha256": "4019f4950b9950cc6ee2c0e8382241a8a9592ff08b7a7eadfd007d3be321e916"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2458,
+   "itemId": "COLLECTION-L3-458",
+   "payloadSha256": "8d761426a8289ea8ff9a8956a7d63b71ee6b238c88a72db743c97159ba41fbf1"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2459,
+   "itemId": "COLLECTION-L3-459",
+   "payloadSha256": "7d161a107cd3fac1fc841aca220c738fe84669c36693ee8bc1d0ce725dc759d2"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2460,
+   "itemId": "COLLECTION-L3-460",
+   "payloadSha256": "7ea9e295c6a34b7ee43108fc93ca553cf0bbb8426de3d2faf2f1d438efe20b86"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2461,
+   "itemId": "COLLECTION-L3-461",
+   "payloadSha256": "1f5696dfa792a14d3dce2bf41df96b88183731f9b9e212cef2f926a355e1a3c2"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2462,
+   "itemId": "COLLECTION-L3-462",
+   "payloadSha256": "9c562ae4d5e03afea36df889c84ed4cee13f7d47ffd10c23331e3bd9bd440534"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2463,
+   "itemId": "COLLECTION-L3-463",
+   "payloadSha256": "f22a792d163e0b921b09c3fbe40690248a8b20d492c8d3b34292a9a91d749dd8"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2464,
+   "itemId": "COLLECTION-L3-464",
+   "payloadSha256": "eb06f1fae7ffaef8caff6341424dfbe2bce00800106b1ea925e6f26fa171ba19"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2465,
+   "itemId": "COLLECTION-L3-465",
+   "payloadSha256": "79fbb3b9eebae78f2d1aac044c8ef64590b4f4d2975daaf2a6ef0266c148d1bd"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2466,
+   "itemId": "COLLECTION-L3-466",
+   "payloadSha256": "d1c83ae2e568334d8143b5514a88eeea3255c2b9456a172cca2bd8924029f75d"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2467,
+   "itemId": "COLLECTION-L3-467",
+   "payloadSha256": "b49679ccd44469a08c27a9f83f71cc1b7d4a237fce90262930024291f2736b89"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2468,
+   "itemId": "COLLECTION-L3-468",
+   "payloadSha256": "c58e44d67571c282733b977d219dfb7025441da10608b078af91cb07fd22fb60"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2469,
+   "itemId": "COLLECTION-L3-469",
+   "payloadSha256": "fd5f7469b9518a0618708916a47c1aec733b48e9e863fc229ab139c890edb6a4"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2470,
+   "itemId": "COLLECTION-L3-470",
+   "payloadSha256": "b9032b33be8af239c4fc434a925c21627570e372efc466d44f4309366f5a2373"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2471,
+   "itemId": "COLLECTION-L3-471",
+   "payloadSha256": "c7e5c892fdcd407993b0f702a97cf764bf039ebe88af8641b1c69109d85a2258"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2472,
+   "itemId": "COLLECTION-L3-472",
+   "payloadSha256": "ad5577fcc5f24af3d24fdf9bb94a5f0bf26259bb75fdf1ce36b09976d65ca878"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2473,
+   "itemId": "COLLECTION-L3-473",
+   "payloadSha256": "99dbed028e59ccb4a7338b49c9617c26a803ab8b6375409068ed1829ba558c3f"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2474,
+   "itemId": "COLLECTION-L3-474",
+   "payloadSha256": "b6cf1715a319219fa790c0d5969a1dc08c031b31228aa3253316af90cdba5af6"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2475,
+   "itemId": "COLLECTION-L3-475",
+   "payloadSha256": "445ebcbcc39ae62965350904ef4d209ec2fe4500ad4496a3742d52842f166f66"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2476,
+   "itemId": "COLLECTION-L3-476",
+   "payloadSha256": "ed03de517decca4396ce7a270026214177cce75fd5ad1a13be0d0ae2ab8532cf"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2477,
+   "itemId": "COLLECTION-L3-477",
+   "payloadSha256": "9f5ebef5b1e1e8cdb31944f57f84c9bbb439372a31f7d8b8c8d9efdcb87baf91"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2478,
+   "itemId": "COLLECTION-L3-478",
+   "payloadSha256": "3921021fb4fc3f5d898ae8fa3311f0cdd8876cce286434b4b678bf7f95a40d6e"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2479,
+   "itemId": "COLLECTION-L3-479",
+   "payloadSha256": "291bd3faaeb741454e64ef124cd9e7e9ad91f39bcdc50da7c2eebd77e50703e9"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2480,
+   "itemId": "COLLECTION-L3-480",
+   "payloadSha256": "8b855514313ce689e4d9b487b9236530ea357c62dd9b908c82db822785d4a198"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2481,
+   "itemId": "COLLECTION-L3-481",
+   "payloadSha256": "bd3bdff4f36b6a0ae41bde7bc5def81389e5213fb29b97e5be0f29e462710424"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2482,
+   "itemId": "COLLECTION-L3-482",
+   "payloadSha256": "d4aee3ecfda46338ac7e61adc2f0194eeddefeaefde8095d8282393b74390898"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2483,
+   "itemId": "COLLECTION-L3-483",
+   "payloadSha256": "e40ebff6187b4928f67c7aa5a94d344950912b701bc19e70d564d9c6159bbeca"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2484,
+   "itemId": "COLLECTION-L3-484",
+   "payloadSha256": "bfd8bf3046474e79b4e96f052175089390c0bdafdc4bd52787bd9bc65a923db4"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2485,
+   "itemId": "COLLECTION-L3-485",
+   "payloadSha256": "99987eba960adbc35f2f2247bc613727b8845d17b3a988a27fa53bc13893c0be"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2486,
+   "itemId": "COLLECTION-L3-486",
+   "payloadSha256": "3917d5b5558577d4d2a412247a53818e44f978a70fd28df7df06d07f92baa760"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2487,
+   "itemId": "COLLECTION-L3-487",
+   "payloadSha256": "208169c4f38f574364ea5e55f3907f04b0e13efe876d3454b67d83d8d56479c8"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2488,
+   "itemId": "COLLECTION-L3-488",
+   "payloadSha256": "55cc3627df79dd9bb8b86fb1d0472d890fffd46238ec8787861260fdf35d2ce2"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2489,
+   "itemId": "COLLECTION-L3-489",
+   "payloadSha256": "dd0695ae88b0b5a74776f4a00bbf7049f5ab4b4f5e4779a3d7b31b6aba96730e"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2490,
+   "itemId": "COLLECTION-L3-490",
+   "payloadSha256": "0eae7107b122af222384ba14c4d2f815f2e3370a3a2a347adadff5b754a19a6c"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2491,
+   "itemId": "COLLECTION-L3-491",
+   "payloadSha256": "4e06d1abd9ceb364a435a96df792dd435bac940c6e67f97627a692c1fd96f94e"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2492,
+   "itemId": "COLLECTION-L3-492",
+   "payloadSha256": "0884a526fdb894793f65328aee8da0bc6233b59ecd26815a396231da9d729551"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2493,
+   "itemId": "COLLECTION-L3-493",
+   "payloadSha256": "a8666fdae6327584f3e7487cb534c5b48ab2349fd124aebb5b0e570572ecd908"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2494,
+   "itemId": "COLLECTION-L3-494",
+   "payloadSha256": "eb08f39e2b54f931e65cde5a349b3533c68c143a3c866558ba4c16d06070c3d9"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2495,
+   "itemId": "COLLECTION-L3-495",
+   "payloadSha256": "bb0bf8ff40011845f0fedb4eb6dff77d5dd2e62017a35f2f73d0edbb919e7149"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2496,
+   "itemId": "COLLECTION-L3-496",
+   "payloadSha256": "56eff7dc24af67f52be22d1e887bee9cccb41f86c574b6d369c754064a91b3e4"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2497,
+   "itemId": "COLLECTION-L3-497",
+   "payloadSha256": "38a2347f5d23589e90a0466286fc8e5fd7583984568fa2c1f12e82d921686aee"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2498,
+   "itemId": "COLLECTION-L3-498",
+   "payloadSha256": "c9fada424c6d1295925ef9f6bf559e6cba2996fbea31ad98a1f0a449d9d1752a"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2499,
+   "itemId": "COLLECTION-L3-499",
+   "payloadSha256": "dd0b192838631ba1450c52ee18abe87d4072897aaf4654722e0a87e1caff7b0e"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2500,
+   "itemId": "COLLECTION-L3-500",
+   "payloadSha256": "3db76f648cf721a5cb11a076af8c8cae3260aecdf89b7c310adf51b16d85bf54"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2501,
+   "itemId": "COLLECTION-L3-501",
+   "payloadSha256": "23ffdbb1f51ee89b7edca81084955506cdfbf420dc4406759835fc20d2f0dda9"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2502,
+   "itemId": "COLLECTION-L3-502",
+   "payloadSha256": "08f40a024893b9763824ff9ddcdc44ec88cbe57de0f18c6eb366c4497529aa7f"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2503,
+   "itemId": "COLLECTION-L3-503",
+   "payloadSha256": "b86e5cd4955203ba15a7ed9fd174b86599e9bc646e09faf1fc959cd21e4083e9"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2504,
+   "itemId": "COLLECTION-L3-504",
+   "payloadSha256": "538d044c20c36eba0c78a10f760222d5d2225e88d384800122a155fc443480c5"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2505,
+   "itemId": "COLLECTION-L3-505",
+   "payloadSha256": "417e4130f64afe7bcd8a4f8406cdd9541361ab83433000a2eb3510808437109b"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2506,
+   "itemId": "COLLECTION-L3-506",
+   "payloadSha256": "10d28b09b9ed1c81167f86b6e210678d500a679c8bd79746ade76551dab2213d"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2507,
+   "itemId": "COLLECTION-L3-507",
+   "payloadSha256": "9632e293bdd49b787e1eb9d1fbb81336c517d7eb4f7549210c91caaffd57975d"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2508,
+   "itemId": "COLLECTION-L3-508",
+   "payloadSha256": "10734cb576b28e2a46513b4d5c7ab8d6bb9059d8285e2660bf5ee15099aa28f2"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2509,
+   "itemId": "COLLECTION-L3-509",
+   "payloadSha256": "b72cbd245b695d901d5189bc1f3ef670bd8eaa0450baaaa807b2f2aeb0baca3a"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2510,
+   "itemId": "COLLECTION-L3-510",
+   "payloadSha256": "7a935b843b2abf9a9ac34e5d5cf9a07e2e909f9f84135c9855dd545540fae179"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2511,
+   "itemId": "COLLECTION-L3-511",
+   "payloadSha256": "24cf844b703589c9a934e945ac2de0897017bf8c5b84fe5424ebc4e920fd1ffb"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2512,
+   "itemId": "COLLECTION-L3-512",
+   "payloadSha256": "19988dbeb77e47250385be771aa0696b754960891d7b2b5775d85034ecf84ad1"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2513,
+   "itemId": "COLLECTION-L3-513",
+   "payloadSha256": "9eb7065cb0243083fcde196f92fb1d5d89933abeb668a91aa8459c7bfda904cb"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2514,
+   "itemId": "COLLECTION-L3-514",
+   "payloadSha256": "3a273430e3d3a0c87e5976ac9b7db98de3fe5f98e86044a6d350405582389881"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2515,
+   "itemId": "COLLECTION-L3-515",
+   "payloadSha256": "f02e499ef2662390979039114e03520caeacff1d3861c9a22ef71611f8834075"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2516,
+   "itemId": "COLLECTION-L3-516",
+   "payloadSha256": "c0c431a923bbd74692d13fcd6ccf1f9babeaaf0c6cfe2b17fde253fa94c3cb59"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2517,
+   "itemId": "COLLECTION-L3-517",
+   "payloadSha256": "c2ec6c01d10bb4e00fb4c345dd7c324f0ea596daba1aa6eb57e0a4b58ba0ef6d"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2518,
+   "itemId": "COLLECTION-L3-518",
+   "payloadSha256": "ed9783e9b9aa9c94e50379709db2e3f92d7c33b89f8a61df19372fd524bcaa20"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2519,
+   "itemId": "COLLECTION-L3-519",
+   "payloadSha256": "a9db36a4b06378c6fedc02c3f49dcccced4c351f05c4189d2f5b70457490dcf0"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2520,
+   "itemId": "COLLECTION-L3-520",
+   "payloadSha256": "6d8d7a67276cc6368d16e1abffdd3c2ffc7bf6d9d8cfc5ceb27ab5b99cca8e9f"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2521,
+   "itemId": "COLLECTION-L3-521",
+   "payloadSha256": "771e0f4db74cafebd277a4df097e5519c30e6cb166682abd96d548833b29b9c3"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2522,
+   "itemId": "COLLECTION-L3-522",
+   "payloadSha256": "f5cb1c0e6997b8b173e233b9828a14be22e7135ea0b9e26311253b52ed1674ca"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2523,
+   "itemId": "COLLECTION-L3-523",
+   "payloadSha256": "cc4d151b9e6240b9cb09016545d3be2580cec687b06f94510a7a1147a7710cc7"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2524,
+   "itemId": "COLLECTION-L3-524",
+   "payloadSha256": "c028b9bb45a230748ac0ce18a6d4ff745ccfa706c625c22eaaee2a4135e9fb56"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2525,
+   "itemId": "COLLECTION-L3-525",
+   "payloadSha256": "109d0f4ccea65564c2353d794cf2404ed31894a10c721ed3ff10731b818b8ce5"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2526,
+   "itemId": "COLLECTION-L3-526",
+   "payloadSha256": "aa620e060253c0bfd9514f371e9de8c54bff563e1aca4e69cd1837ee70c79078"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2527,
+   "itemId": "COLLECTION-L3-527",
+   "payloadSha256": "0d15caa31b5c38f293f872017e913976653000d71f022e10437af240c009596a"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2528,
+   "itemId": "COLLECTION-L3-528",
+   "payloadSha256": "fd8da34ffbdf5d1ad8470caacae66256815e1bab28ca35edf30fd8284070a4c0"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2529,
+   "itemId": "COLLECTION-L3-529",
+   "payloadSha256": "b3d31d601b5a8d1a630992a6ade63dabe91cd6464dad0e2c97ba1bb4979b44c0"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2530,
+   "itemId": "COLLECTION-L3-530",
+   "payloadSha256": "320fbb067d3f08e65491f305f314cb3b7bdc0daaa278c1772b4db4c64fa2be99"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2531,
+   "itemId": "COLLECTION-L3-531",
+   "payloadSha256": "0efaa4d77e8c1b108f5decbd1c13ffafce966ad1ce91b929e0be2219e19261f2"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2532,
+   "itemId": "COLLECTION-L3-532",
+   "payloadSha256": "1a3d633e8d8fe1249c9e512538a5859c50dc65df33e4546682a8259fb8403f96"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2533,
+   "itemId": "COLLECTION-L3-533",
+   "payloadSha256": "6142f0809563251fbbafc59869eb3afafe9c25002246282306e88342fec0fc1b"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2534,
+   "itemId": "COLLECTION-L3-534",
+   "payloadSha256": "d2026c0906a72420b591846c287546cfb070b867edfbf8e69edd71d1e0d77e95"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2535,
+   "itemId": "COLLECTION-L3-535",
+   "payloadSha256": "b7822e0390a818ef5cc525c52926cbc00b54be480eff96befbc84536f5966335"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2536,
+   "itemId": "COLLECTION-L3-536",
+   "payloadSha256": "0b26fdab4279d2e737187860c49803c934141ae6fba58d4400e881d9936cb8a8"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2537,
+   "itemId": "COLLECTION-L3-537",
+   "payloadSha256": "bc245cdbd4d32a36e339241ea4d313bde62f0f670389bc1ddbe809d721fe9c5c"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2538,
+   "itemId": "COLLECTION-L3-538",
+   "payloadSha256": "25b15e0ae51b21701caf573e623321915df7285210f25736ae0f1800d8f893c2"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2539,
+   "itemId": "COLLECTION-L3-539",
+   "payloadSha256": "1226161e37a098584b16d85a74cea2f9ff7a5c3d8282c658f5643528ff54a6ba"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2540,
+   "itemId": "COLLECTION-L3-540",
+   "payloadSha256": "0788fc6fe24ad0e6d896cec0b9926183497e26068b71977c292d8deca57b13b5"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2541,
+   "itemId": "COLLECTION-L3-541",
+   "payloadSha256": "84a38ad8f29fd71a15139fddaeda95f5184b8fbd8f31ab85b2379a2b414579b4"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2542,
+   "itemId": "COLLECTION-L3-542",
+   "payloadSha256": "3349a269027c3485f4ad19dd10071dc912efc9f5dd478828001d571ce982c8a8"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2543,
+   "itemId": "COLLECTION-L3-543",
+   "payloadSha256": "213111762db2982dd90b867bd4829d3d8c4d08c37395cd79ecaeee0f44d19282"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2544,
+   "itemId": "COLLECTION-L3-544",
+   "payloadSha256": "e543bf723d2af9a068bed63f5a340d475d74670f079210efcfbe0eba171c61f3"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2545,
+   "itemId": "COLLECTION-L3-545",
+   "payloadSha256": "9543359c64fe062d70a48717d615e84527153259fc47856b5371d224f96ee622"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2546,
+   "itemId": "COLLECTION-L3-546",
+   "payloadSha256": "9d65ab9e4b3d737a085a370970de29a7eadb35e448c8b777c29d1be0f19de3d5"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2547,
+   "itemId": "COLLECTION-L3-547",
+   "payloadSha256": "ce26786e6806181946f54cd883a0940b551090896cdcf0cfe4a079908395735e"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2548,
+   "itemId": "COLLECTION-L3-548",
+   "payloadSha256": "ee3f9591b0d67057b13ff9a65f054795987f804fa46fa30ae15876c409ae5915"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2549,
+   "itemId": "COLLECTION-L3-549",
+   "payloadSha256": "6f15b5a73981726cdaccfedd836252ba48467fd7c1b5edb7d720c95bf468abc4"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2550,
+   "itemId": "COLLECTION-L3-550",
+   "payloadSha256": "c56c6e8a532f00c3164b8af608e9cb4dd0deddbf56368fcde520349693cdd3d1"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2551,
+   "itemId": "COLLECTION-L3-551",
+   "payloadSha256": "7f9e00557e71ce9449f5f97d84cd193e29a48abf72d26081b2e702ac5d96dcfe"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2552,
+   "itemId": "COLLECTION-L3-552",
+   "payloadSha256": "7cb7381c56fa9f16d938df2a35c1d06abf268b6bec63be12b6ad9ccf413f76ac"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2553,
+   "itemId": "COLLECTION-L3-553",
+   "payloadSha256": "63f23a73b8138cfef6df9c7f03d1b3ccf9c1821425a6dca4cee0397721e66208"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2554,
+   "itemId": "COLLECTION-L3-554",
+   "payloadSha256": "50bed3f108e98c8957958f7b18cfeb42a0bfa354b1f9c9f41b86bdbd2b4f8466"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2555,
+   "itemId": "COLLECTION-L3-555",
+   "payloadSha256": "4c0d0f348432f70399d486c394b889b390117c2453c13fc916524b43f4aa9ab6"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2556,
+   "itemId": "COLLECTION-L3-556",
+   "payloadSha256": "5b75fd406d30de990ac3d67b9802dfed6df8aa4a3db7cd87324e6daa55e6216d"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2557,
+   "itemId": "COLLECTION-L3-557",
+   "payloadSha256": "daa84fab9b8a004af14060bced3b464190323e2ad02704740c48f6ab30b521bc"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2558,
+   "itemId": "COLLECTION-L3-558",
+   "payloadSha256": "50bf627e0fd559e186d5952b89604828026c5b9c6f3c241b0b82e410b902dd3e"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2559,
+   "itemId": "COLLECTION-L3-559",
+   "payloadSha256": "fec88f8a6ca8ab7dba9409eb3d480c874465a80b7c1fb62761f1bf645630e26d"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2560,
+   "itemId": "COLLECTION-L3-560",
+   "payloadSha256": "411817025d95da0218668477e8c1c02c0106e4d7f3df793ea9f7c3229f33a4f2"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2561,
+   "itemId": "COLLECTION-L3-561",
+   "payloadSha256": "a7054a0829ebf90ce3d7d892b5c903145369b1d93219119edfcc0a1f36145272"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2562,
+   "itemId": "COLLECTION-L3-562",
+   "payloadSha256": "32f720dfb206a91bc511b800fbea7e720c7ced2cea2fb56034a306ba8110240a"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2563,
+   "itemId": "COLLECTION-L3-563",
+   "payloadSha256": "6291ce80021314e5f6fa82e07a15dbae1e8c8d7882482b3e079fad94d98e9da6"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2564,
+   "itemId": "COLLECTION-L3-564",
+   "payloadSha256": "839b4102be99c50ad44c0007f7d265646ad94697405411fa91561191b70ee061"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2565,
+   "itemId": "COLLECTION-L3-565",
+   "payloadSha256": "b231bcb51252de492e94e3b5b24d40d196bea7b43527d68b8e29927a0202d14f"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2566,
+   "itemId": "COLLECTION-L3-566",
+   "payloadSha256": "a4b117c9cf121b70f53000db00896066bc7853e20bc61c05e816ea55ed33928e"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2567,
+   "itemId": "COLLECTION-L3-567",
+   "payloadSha256": "b2461288d2986a99316b692638f2222c0414253ef1da51111d47a29b68d8379e"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2568,
+   "itemId": "COLLECTION-L3-568",
+   "payloadSha256": "b34ce56d83ce4882a0a0b8aaa18b8f0cb3f01c9e65786a683f8453caa889cbd8"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2569,
+   "itemId": "COLLECTION-L3-569",
+   "payloadSha256": "624700d4da4904add13e91759901fbe8b93707ce964aa488968a4abadc767073"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2570,
+   "itemId": "COLLECTION-L3-570",
+   "payloadSha256": "4c70f079da30d85027810d747e1e8fa65344f2563b817971e65ac9feb4ce60d9"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2571,
+   "itemId": "COLLECTION-L3-571",
+   "payloadSha256": "82bf17cf5e18bf7930b986c65c36316318d4a2f757def44ce793445caa6faacb"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2572,
+   "itemId": "COLLECTION-L3-572",
+   "payloadSha256": "e29067cc69acb7695512a44153c83229834165340c8edea10216132ccb0ab9af"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2573,
+   "itemId": "COLLECTION-L3-573",
+   "payloadSha256": "5d2c39f12a871ca4f28d33663eb349834d57c904691e3ef4dbaee5f245c08726"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2574,
+   "itemId": "COLLECTION-L3-574",
+   "payloadSha256": "23d2d80ab3567cff7c57db3e2a4f5a6833bce4b3e5ac7a0279a5361529d9ffff"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2575,
+   "itemId": "COLLECTION-L3-575",
+   "payloadSha256": "9e316f78825644d29aa8328e4171d540189b721f62ba69973325987214189ab8"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2576,
+   "itemId": "COLLECTION-L3-576",
+   "payloadSha256": "4fd2e73c6c4818c3963b22ea52b3547546ac141b94161d289195b6996659f369"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2577,
+   "itemId": "COLLECTION-L3-577",
+   "payloadSha256": "6598798fd322f7281219233b92a1c1b6801e510627cb9631f0a6e2ccc80176d2"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2578,
+   "itemId": "COLLECTION-L3-578",
+   "payloadSha256": "b63d52bbd0b96d228efe2055947781dc7c549ebb95c99e45e0a9d44a07374585"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2579,
+   "itemId": "COLLECTION-L3-579",
+   "payloadSha256": "d37894b3cfc787e5526c0b3b8527a956a2b547c4c13e873c0da8627ba54a55fc"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2580,
+   "itemId": "COLLECTION-L3-580",
+   "payloadSha256": "dbb7e4883f5da2ebff16e20efd81ffd136efadff5fa5cbc3ff20636455ffeabb"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2581,
+   "itemId": "COLLECTION-L3-581",
+   "payloadSha256": "fb25da05fe4b0079bb73594f5a589c2539a1e069649893ba7d247e13d4e1f379"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2582,
+   "itemId": "COLLECTION-L3-582",
+   "payloadSha256": "ab073f78b8f4bb8421e32b0e8542e7c6d38153c50fe3419af94e1ba0a2213167"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2583,
+   "itemId": "COLLECTION-L3-583",
+   "payloadSha256": "715bb748fe2355017ae5582d1e0bdd01d37679be60a40fc9002391e1bea04299"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2584,
+   "itemId": "COLLECTION-L3-584",
+   "payloadSha256": "38918bd65c074ea90e4c70e51d0bce7e9539a4d61f1952bda557de2082d7554b"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2585,
+   "itemId": "COLLECTION-L3-585",
+   "payloadSha256": "64b9df6c354bd86100a12510d14ff3fc24f08149fa505762ccdcfc634fd2d018"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2586,
+   "itemId": "COLLECTION-L3-586",
+   "payloadSha256": "d21c34c5fb7914f97abe01d66f3ab1a4c8b735813e1f2a5f209833f40fcee3ee"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2587,
+   "itemId": "COLLECTION-L3-587",
+   "payloadSha256": "be85d088b3293e8fc11db6e2782b97d4ac479c8d9e9379415c872ee32526e446"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2588,
+   "itemId": "COLLECTION-L3-588",
+   "payloadSha256": "56ab6c4487d69afa45c96e9f90b5ef6067e6cfa6554506cda72103f934fbabf3"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2589,
+   "itemId": "COLLECTION-L3-589",
+   "payloadSha256": "9b145941b5ccb4933153a8c36beb3ab3a38c13acfb2eb14d70e01f5481478de2"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2590,
+   "itemId": "COLLECTION-L3-590",
+   "payloadSha256": "acc996a7c14c5bcbde5290e5d4fe9be9ffbaddc58216f8419b9228ea672797a8"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2591,
+   "itemId": "COLLECTION-L3-591",
+   "payloadSha256": "f08c0166218025c9bca4a4aef53e797a7567731108f5cd6ecf38c39ae2295e9e"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2592,
+   "itemId": "COLLECTION-L3-592",
+   "payloadSha256": "27403e4be1ce6d772de4d9c3acfa66cda09015972b17046a8df3e362aaa205a4"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2593,
+   "itemId": "COLLECTION-L3-593",
+   "payloadSha256": "974145197bd04c0926b9ed39899bc18015fd54ad7ab1036b3ce7c88f158d6b49"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2594,
+   "itemId": "COLLECTION-L3-594",
+   "payloadSha256": "df5b138e6a9d7ddf0e5182490850e55b0ad16343f203a35f5ae13ad491ab7251"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2595,
+   "itemId": "COLLECTION-L3-595",
+   "payloadSha256": "d941c6ea5292cd68152886c89d3c3b1fff451e8d81467ab58ebb48c6e0c43b3a"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2596,
+   "itemId": "COLLECTION-L3-596",
+   "payloadSha256": "67b9b865ab2b48e1568e756846f897ed4d7961ebb2c7fbd166d0ed06ffc1a74f"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2597,
+   "itemId": "COLLECTION-L3-597",
+   "payloadSha256": "7911472378a06b2fcab9a53a3278cc52fae6a8ebf783b477c2a985e624897e15"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2598,
+   "itemId": "COLLECTION-L3-598",
+   "payloadSha256": "8cf367ca4acf612cfdc4014b2a8277c484f990568f0695d2c13b79f94feb22f2"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2599,
+   "itemId": "COLLECTION-L3-599",
+   "payloadSha256": "351cfe85b4f11cbb17386913c6ad2fc1366f3d3a63261b8de66ca673e3b06116"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2600,
+   "itemId": "COLLECTION-L3-600",
+   "payloadSha256": "39a69c3a74c2bc90df7234cd53680a80a1cf8ac12056fc0147a5c6c73e149378"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2601,
+   "itemId": "COLLECTION-L3-601",
+   "payloadSha256": "c17937d20318cb3ea048b35bdfb7860ae10179e607005a2caca104bf6490def0"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2602,
+   "itemId": "COLLECTION-L3-602",
+   "payloadSha256": "3b3b80227f2026311264ab5b36ca686ea40f667648aa83b54adb31e26cd71c54"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2603,
+   "itemId": "COLLECTION-L3-603",
+   "payloadSha256": "c02945770b4c202b74676dd4ae2633649db0bb73ad6284f789ed445e8cde69b1"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2604,
+   "itemId": "COLLECTION-L3-604",
+   "payloadSha256": "2ae9a8e5c9d402a1a21c3c4cd33433f6e1b64078561d4f724368a3e7f8d1c053"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2605,
+   "itemId": "COLLECTION-L3-605",
+   "payloadSha256": "752610c5f7e34e6ff33fb404e46294ea5670a568059d05387e36e9738333bdd0"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2606,
+   "itemId": "COLLECTION-L3-606",
+   "payloadSha256": "06ffb20687dc942f8b19670827d73ef491f0baa905e4fc9af0827d0734c08c3a"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2607,
+   "itemId": "COLLECTION-L3-607",
+   "payloadSha256": "6c8ed5b157b133bbe6af64b396ff550daaf76ff35a059979471517654b5ed1e2"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2608,
+   "itemId": "COLLECTION-L3-608",
+   "payloadSha256": "93b22ba957fb33b40aa64e969951b4c10bfec88e5901e6d893566dab1068418c"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2609,
+   "itemId": "COLLECTION-L3-609",
+   "payloadSha256": "dcd1c08b1077f3b65830d504611d10758c50a35d1ac9163ce1cd8519f8b13107"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2610,
+   "itemId": "COLLECTION-L3-610",
+   "payloadSha256": "4c84481d1cb8f8649f751da6317a0237da8986b6471fe1ff661e279e27587009"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2611,
+   "itemId": "COLLECTION-L3-611",
+   "payloadSha256": "a999f203ffb3617057bdf8e50adaa31bb846f83ec733b1de4f9432b030bf224a"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2612,
+   "itemId": "COLLECTION-L3-612",
+   "payloadSha256": "8ce31761fe06ea3206b56a8be66ae873a4bbfa959e3ec17e3ee4c7f354988679"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2613,
+   "itemId": "COLLECTION-L3-613",
+   "payloadSha256": "5944ccc1451a0316c57d2b64e9dd2a4cb37761043c55a822346077826c2f42cc"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2614,
+   "itemId": "COLLECTION-L3-614",
+   "payloadSha256": "87cc8e98f590ee6319f34b9113a8ffa6b9ac682c5169957053ec88a7889aeef1"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2615,
+   "itemId": "COLLECTION-L3-615",
+   "payloadSha256": "5e0dc7a6a2c8c2454c73cd5daf29b4abcca379f772e908ecbb78b7ee0f7542f5"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2616,
+   "itemId": "COLLECTION-L3-616",
+   "payloadSha256": "70177b484af053d3ad0307e8a8f895b38808353d658b5a499c3d814d1dd51741"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2617,
+   "itemId": "COLLECTION-L3-617",
+   "payloadSha256": "ee7adea25cbbd7bcffcdf46ce815cf473efe8ec4b4d01131b417419d24874cc1"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2618,
+   "itemId": "COLLECTION-L3-618",
+   "payloadSha256": "abb6d5ced759823861c420720da29482c51e9d1856c3464d081dfe355bd36177"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2619,
+   "itemId": "COLLECTION-L3-619",
+   "payloadSha256": "8cfe67275499b10cb429091f631a091b24085eec25b657c807c7efbe60907b29"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2620,
+   "itemId": "COLLECTION-L3-620",
+   "payloadSha256": "47d6b466213ae068bf254df27b0ed2635d65ae9a37a54de800f7aec882714c66"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2621,
+   "itemId": "COLLECTION-L3-621",
+   "payloadSha256": "fef062ec1602ec84835bad57180485079cb608ea20db51ad2b158a595b3bf52d"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2622,
+   "itemId": "COLLECTION-L3-622",
+   "payloadSha256": "998d04c8b40211a5e447ad8670536d0d84dd0fc64d53460749cbc68e12b63529"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2623,
+   "itemId": "COLLECTION-L3-623",
+   "payloadSha256": "5a0ee0261697b6de4fff1e97abb4ca33671cf6d297f8e177dfeb88f9f263d5aa"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2624,
+   "itemId": "COLLECTION-L3-624",
+   "payloadSha256": "a86514a28550f3c2f38b9e8dc5b6a89c07c82b583391a1dd44266f8bac1d5d24"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2625,
+   "itemId": "COLLECTION-L3-625",
+   "payloadSha256": "4a4aed393f710f7e010add77fde0f14b2ccf2772d8a73992d5c80433fb574235"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2626,
+   "itemId": "COLLECTION-L3-626",
+   "payloadSha256": "aac51f0aff7fcef1942e89e4364f06d0cc5ab651b1412112e1ea441055608103"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2627,
+   "itemId": "COLLECTION-L3-627",
+   "payloadSha256": "3409d4bec343c7b0ee9465d37929f3b18cc1554de7c8b59969ce720aa1570968"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2628,
+   "itemId": "COLLECTION-L3-628",
+   "payloadSha256": "bd5769e8a11bf137ebe7500f90011db7ad4ccc6c76874bc1050907a29e30de7b"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2629,
+   "itemId": "COLLECTION-L3-629",
+   "payloadSha256": "c4d97e2c907714d8e7d45bfb366812c8091dd086b1a3fbf00a0a38b550f41698"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2630,
+   "itemId": "COLLECTION-L3-630",
+   "payloadSha256": "2a24d4df7e7cd23e4d6dcb80ca14fe3923bab4ce6890f7ef033bda745fbdf5b3"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2631,
+   "itemId": "COLLECTION-L3-631",
+   "payloadSha256": "fd59d9c6f0bd3dd75267709ec537d6eb1510464bed5371f3a9ac0a0ac06d58fb"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2632,
+   "itemId": "COLLECTION-L3-632",
+   "payloadSha256": "a89e5ada74fe907e9a2ba8f6c9fd92f65872d3321d9bf32e5d61fdf31974d96b"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2633,
+   "itemId": "COLLECTION-L3-633",
+   "payloadSha256": "ac2cc453c40db17b5676244ddc2b30d1975861201a03e213bc666c3523da22e6"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2634,
+   "itemId": "COLLECTION-L3-634",
+   "payloadSha256": "9c2f04e9626229397a40639fdff641b990a8a70dcebccef27dfbb5347c92d734"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2635,
+   "itemId": "COLLECTION-L3-635",
+   "payloadSha256": "50a6e4472a37930a4f37c554a34513c828552af710235d5bd3a4674fbd432c36"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2636,
+   "itemId": "COLLECTION-L3-636",
+   "payloadSha256": "2296494d3bf10fc705049bb35dfee60ba3fee7036c73b0081a75f1f204ccd08b"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2637,
+   "itemId": "COLLECTION-L3-637",
+   "payloadSha256": "d5ecf6c127097d289a2505639ccf6dcd6d150c5c7f174bcc1f51feb40ba85d96"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2638,
+   "itemId": "COLLECTION-L3-638",
+   "payloadSha256": "eb8fbdfaf8d16db32a190ee481b6ae9a4efbb693e3a32a42af5cfbd249f1239d"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2639,
+   "itemId": "COLLECTION-L3-639",
+   "payloadSha256": "4860dbcd907d0f8d28d05efebea289f36c92f3a8ede0eff40a27260b26da1902"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2640,
+   "itemId": "COLLECTION-L3-640",
+   "payloadSha256": "9c1f1681bb9d941b97dd2c3a4bef03c395862090546832f11dcd8c193a1157c0"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2641,
+   "itemId": "COLLECTION-L3-641",
+   "payloadSha256": "e7e18de4a7c1fea4ae4bf13f0882b98c86f44b7437ca08960d373e5995dd2434"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2642,
+   "itemId": "COLLECTION-L3-642",
+   "payloadSha256": "d340638a1d842d5cc97be8e925f45d0e05e230a64ad7afabc98e2478d3a4f8bc"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2643,
+   "itemId": "COLLECTION-L3-643",
+   "payloadSha256": "a360fa2f3f8c61f8658e0cd92b497732024b8ed3166ee90a6d50779f302fd519"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2644,
+   "itemId": "COLLECTION-L3-644",
+   "payloadSha256": "156153239c577968eeaa8dd9dcf28e350d056cdc2368a9042490725a9a6d54da"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2645,
+   "itemId": "COLLECTION-L3-645",
+   "payloadSha256": "8cb0c92ef5f35178f4bf38f94895a6f6bcdcb83793314b815169082a966d4aaa"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2646,
+   "itemId": "COLLECTION-L3-646",
+   "payloadSha256": "bea7f94dba042d6ea25aa4e3ab96b6c297db9376502f4b59d952e22e0491cedb"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2647,
+   "itemId": "COLLECTION-L3-647",
+   "payloadSha256": "922ce64512188b9dcb4788e1d4684d531ba1438576b0edbbf0181ee248eff55d"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2648,
+   "itemId": "COLLECTION-L3-648",
+   "payloadSha256": "3767d4a5f0d426227da89479c520816da4d3f1d293b3e7993ec61a5d25bf77a8"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2649,
+   "itemId": "COLLECTION-L3-649",
+   "payloadSha256": "32ec04b12f450e24069f0f63ad26b82817d79e98abed9c388a2471176cc4177b"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2650,
+   "itemId": "COLLECTION-L3-650",
+   "payloadSha256": "1c981488c9544ba7c0805ef1f5be909fda62c1374883ebe75873574b9b2f74fe"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2651,
+   "itemId": "COLLECTION-L3-651",
+   "payloadSha256": "b2dc2b562165ca819f161b975f338f9c3f9f343ed3b68c1c0c76f2f10748edca"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2652,
+   "itemId": "COLLECTION-L3-652",
+   "payloadSha256": "30578a7226641110a3e171c66efd635af3dd977966591701099f344c21c9c5ec"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2653,
+   "itemId": "COLLECTION-L3-653",
+   "payloadSha256": "0d9657676eb606ad27e375557313316ae7ead5ce2dd7c5803ee6ea151fb98871"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2654,
+   "itemId": "COLLECTION-L3-654",
+   "payloadSha256": "10c4c61ba52b32cc8420130be8c78f17695007bf1b2c4b68024fc5623bb3da3f"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2655,
+   "itemId": "COLLECTION-L3-655",
+   "payloadSha256": "7b35ab49a80f643b1d53e9c9581488257f9b3efc4fd519736e6f707599395bf7"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2656,
+   "itemId": "COLLECTION-L3-656",
+   "payloadSha256": "d9e38d2f186cb90a001477ac74dc820d0ba702d39068d4cf7e9404bd12a5c0e5"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2657,
+   "itemId": "COLLECTION-L3-657",
+   "payloadSha256": "658ddfab068d3894a01ad618c613a4573cde3582ec0eda9a6b592e06a2f234e7"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2658,
+   "itemId": "COLLECTION-L3-658",
+   "payloadSha256": "61e7bb930b5056107f80d7258d11d9a12173fb5e2ba9acdec6cc021e5bb73ec2"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2659,
+   "itemId": "COLLECTION-L3-659",
+   "payloadSha256": "557a7afce8810611120137feadb25ddba3626f4d85f792adf09df848185173f0"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2660,
+   "itemId": "COLLECTION-L3-660",
+   "payloadSha256": "ddb0464c3ba59a231c4b597e34e32956636109ed08cb5ad3883a7f4114fe4179"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2661,
+   "itemId": "COLLECTION-L3-661",
+   "payloadSha256": "68fdef68646ca9cecea025f9703ea98f17660ca291d210b8fab7bfc820f0f92a"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2662,
+   "itemId": "COLLECTION-L3-662",
+   "payloadSha256": "ab8a6d637f221c14e7403b83a8c0bcdbba520d3712d6d915504f8514d302942c"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2663,
+   "itemId": "COLLECTION-L3-663",
+   "payloadSha256": "b33dabce7b311bf14befff254553506f121e8bbc826891300ff204e560c5330e"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2664,
+   "itemId": "COLLECTION-L3-664",
+   "payloadSha256": "19ec5b4c0e48bb8bae55dd21d9c7cb9065e22a924496dc841b312f1e14a8f835"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2665,
+   "itemId": "COLLECTION-L3-665",
+   "payloadSha256": "ea7e66f6e1b38b4228245efed27e5fbb6cea930009bf3f4e1dea78b8c58fbf4c"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2666,
+   "itemId": "COLLECTION-L3-666",
+   "payloadSha256": "7d107cf1d44325ee2e7749bee0085b75935fc44f586816dedfc0d92bff45bb3f"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2667,
+   "itemId": "COLLECTION-L3-667",
+   "payloadSha256": "c24e28ccc382bf0476a4e9851ac2908203f8a3592b173c2b5778244615d6413d"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2668,
+   "itemId": "COLLECTION-L3-668",
+   "payloadSha256": "a1fa26538ac2da8cfd6b114b8a88b6580884686590c29019563e0375ca0f27ae"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2669,
+   "itemId": "COLLECTION-L3-669",
+   "payloadSha256": "07ea211b2a0fbf9d46b845eb6a98c9d1d55035a511b85887f6675e8ae18d22fa"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2670,
+   "itemId": "COLLECTION-L3-670",
+   "payloadSha256": "c6db74559fad7bd49b16f6d3351f679e85bd22de525c83bdfbf546dca49a41c7"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2671,
+   "itemId": "COLLECTION-L3-671",
+   "payloadSha256": "d583506493c5652b61c735ec36706e3b57ba456f9f499dbe7b8c57ae89db4b53"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2672,
+   "itemId": "COLLECTION-L3-672",
+   "payloadSha256": "ce07ae736c91ba5c435ff02132b7862626281ef7cab0d0a71f670e99fd22cd81"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2673,
+   "itemId": "COLLECTION-L3-673",
+   "payloadSha256": "364a52bb7ce62002799eea5351dfb5c815379269f0f136b8d29501d56c8f0499"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2674,
+   "itemId": "COLLECTION-L3-674",
+   "payloadSha256": "3669688b5a4126129beacf4f19935732abbd4c5173b4e946c453254464e324b4"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2675,
+   "itemId": "COLLECTION-L3-675",
+   "payloadSha256": "c549acd6bb0af9baca89db2a59a72b800838115390a7e4c044478c3ac36a79fe"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2676,
+   "itemId": "COLLECTION-L3-676",
+   "payloadSha256": "9db3be21618d64a1e6b9951055ecc0b73ff053e1f8fc61b4a451b76529167b8a"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2677,
+   "itemId": "COLLECTION-L3-677",
+   "payloadSha256": "3eb6815a757031d9652e33962f6e641e2c10f1eae8fb95add2fa2d8f05e117b1"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2678,
+   "itemId": "COLLECTION-L3-678",
+   "payloadSha256": "90116525d3d6c71ccc2d645dd506b4e0ce0ace6ee46983c47f238ca4868814dc"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2679,
+   "itemId": "COLLECTION-L3-679",
+   "payloadSha256": "fd9434b52c487375b2d613cc22151ac9aa2c04ad909cd51a2475f6caeed4a054"
+  },
+  {
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 2680,
+   "itemId": "COLLECTION-L3-680",
+   "payloadSha256": "27266c7a244929e690314671786a8bf5ffbbfcbea713bb99303ba922cfe8644e"
+  }
+ ]
+}

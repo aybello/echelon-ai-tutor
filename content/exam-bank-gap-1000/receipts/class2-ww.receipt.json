@@ -1,0 +1,67 @@
+{
+ "reviewer": "owner-authorized-ai-review",
+ "model": "Muse Wonder",
+ "reviewDateUtc": "2026-11-23T17:59:30Z",
+ "sourceBranch": "exam-bank-gap-1000-2026-11-23",
+ "baseCommit": "6b15ae5120c63cbfd28ea1c2c7aff31cc64ff526",
+ "courseKey": "class2-ww",
+ "canonicalBankKey": "class2-wastewater",
+ "itemBankKey": "class2-wastewater",
+ "packageSha256": "21b62e12fd185872a9e69a76be1150c4502a32480638e5d7b47506249d2ba5ad",
+ "additionsFileSha256": "87b09ac41ad0ed567d9cbd716926a4458a642e072265d0cedc275780987fd5ab",
+ "batchFileSha256": {
+  "batch-1.json": "4752727ce0b243f85d1b2a45b5dd06574bc5a68f45fbfd5efcdb78578e909bb7",
+  "batch-1.verify.json": "4a677cbd13a8f5c612628722796be71ceba26de0c19cb29aae1075b4c1a8df18"
+ },
+ "counts": {
+  "requested": 6,
+  "generated": 6,
+  "accepted": 6,
+  "withheld": [],
+  "rejected": []
+ },
+ "checks": {
+  "schemaValidation": "see validate_gap.py run log in DUPLICATE-AND-SAFETY-REPORT.md",
+  "calculationVerification": null,
+  "dedup": {},
+  "quality": null
+ },
+ "items": [
+  {
+   "bankKey": "class2-wastewater",
+   "questionNum": 2451,
+   "itemId": "WASTEWATER-TREATMENT-L2-451",
+   "payloadSha256": "ffe4eba3b12ca4e6ccb0ff44484e6e5cf2aaf6375b915a1e0c5b19a0944bb68f"
+  },
+  {
+   "bankKey": "class2-wastewater",
+   "questionNum": 2452,
+   "itemId": "WASTEWATER-TREATMENT-L2-452",
+   "payloadSha256": "6b892565bf40b2382059a10187a7f4be0fd1ba403e5163d4fa6f19669f181a40"
+  },
+  {
+   "bankKey": "class2-wastewater",
+   "questionNum": 2453,
+   "itemId": "WASTEWATER-TREATMENT-L2-453",
+   "payloadSha256": "6ce153cfd1624666cb0ea2053122a242934536df48deef47ca54cc834327a29c"
+  },
+  {
+   "bankKey": "class2-wastewater",
+   "questionNum": 2454,
+   "itemId": "WASTEWATER-TREATMENT-L2-454",
+   "payloadSha256": "cca02154fe0b84dc5d22a7b391709ace120c4b293e5f7e17a82715a0f85d56c0"
+  },
+  {
+   "bankKey": "class2-wastewater",
+   "questionNum": 2455,
+   "itemId": "WASTEWATER-TREATMENT-L2-455",
+   "payloadSha256": "a2d28c961bbb31d7dcd6b18d79b095e6f318aae62b721cd912bca1f0567638dd"
+  },
+  {
+   "bankKey": "class2-wastewater",
+   "questionNum": 2456,
+   "itemId": "WASTEWATER-TREATMENT-L2-456",
+   "payloadSha256": "eb081bb1038f252ee5df1d31c5dfc4fcddcbe2c4ef01ab4f680b161185eda706"
+  }
+ ]
+}

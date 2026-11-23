@@ -1,0 +1,456 @@
+{
+ "courseKey": "wpi-class3-water",
+ "bankKey": "wpi-class3-water",
+ "batch": 2,
+ "size": 49,
+ "conceptualCount": 39,
+ "calcCount": 10,
+ "topicPoolRound": 1,
+ "questionNumStart": 2500,
+ "questionNumEnd": 2548,
+ "itemIdStart": "WATER-TREATMENT-L3-500",
+ "itemIdEnd": "WATER-TREATMENT-L3-548",
+ "items": [
+  {
+   "seq": 1,
+   "questionNum": 2500,
+   "itemId": "WATER-TREATMENT-L3-500",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "disinfection strategy at plant scale"
+  },
+  {
+   "seq": 2,
+   "questionNum": 2501,
+   "itemId": "WATER-TREATMENT-L3-501",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "CT management"
+  },
+  {
+   "seq": 3,
+   "questionNum": 2502,
+   "itemId": "WATER-TREATMENT-L3-502",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "residuals management"
+  },
+  {
+   "seq": 4,
+   "questionNum": 2503,
+   "itemId": "WATER-TREATMENT-L3-503",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "energy optimization awareness"
+  },
+  {
+   "seq": 5,
+   "questionNum": 2504,
+   "itemId": "WATER-TREATMENT-L3-504",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "chemical optimization"
+  },
+  {
+   "seq": 6,
+   "questionNum": 2505,
+   "itemId": "WATER-TREATMENT-L3-505",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "risk management and critical control points"
+  },
+  {
+   "seq": 7,
+   "questionNum": 2506,
+   "itemId": "WATER-TREATMENT-L3-506",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "DWQMS awareness"
+  },
+  {
+   "seq": 8,
+   "questionNum": 2507,
+   "itemId": "WATER-TREATMENT-L3-507",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "advanced laboratory QA"
+  },
+  {
+   "seq": 9,
+   "questionNum": 2508,
+   "itemId": "WATER-TREATMENT-L3-508",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "disinfection strategy at plant scale"
+  },
+  {
+   "seq": 10,
+   "questionNum": 2509,
+   "itemId": "WATER-TREATMENT-L3-509",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "CT management"
+  },
+  {
+   "seq": 11,
+   "questionNum": 2510,
+   "itemId": "WATER-TREATMENT-L3-510",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "residuals management"
+  },
+  {
+   "seq": 12,
+   "questionNum": 2511,
+   "itemId": "WATER-TREATMENT-L3-511",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "energy optimization awareness"
+  },
+  {
+   "seq": 13,
+   "questionNum": 2512,
+   "itemId": "WATER-TREATMENT-L3-512",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "chemical optimization"
+  },
+  {
+   "seq": 14,
+   "questionNum": 2513,
+   "itemId": "WATER-TREATMENT-L3-513",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "risk management and critical control points"
+  },
+  {
+   "seq": 15,
+   "questionNum": 2514,
+   "itemId": "WATER-TREATMENT-L3-514",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "DWQMS awareness"
+  },
+  {
+   "seq": 16,
+   "questionNum": 2515,
+   "itemId": "WATER-TREATMENT-L3-515",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "advanced laboratory QA"
+  },
+  {
+   "seq": 17,
+   "questionNum": 2516,
+   "itemId": "WATER-TREATMENT-L3-516",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "disinfection strategy at plant scale"
+  },
+  {
+   "seq": 18,
+   "questionNum": 2517,
+   "itemId": "WATER-TREATMENT-L3-517",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "CT management"
+  },
+  {
+   "seq": 19,
+   "questionNum": 2518,
+   "itemId": "WATER-TREATMENT-L3-518",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "residuals management"
+  },
+  {
+   "seq": 20,
+   "questionNum": 2519,
+   "itemId": "WATER-TREATMENT-L3-519",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "energy optimization awareness"
+  },
+  {
+   "seq": 21,
+   "questionNum": 2520,
+   "itemId": "WATER-TREATMENT-L3-520",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "chemical optimization"
+  },
+  {
+   "seq": 22,
+   "questionNum": 2521,
+   "itemId": "WATER-TREATMENT-L3-521",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "risk management and critical control points"
+  },
+  {
+   "seq": 23,
+   "questionNum": 2522,
+   "itemId": "WATER-TREATMENT-L3-522",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "DWQMS awareness"
+  },
+  {
+   "seq": 24,
+   "questionNum": 2523,
+   "itemId": "WATER-TREATMENT-L3-523",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "advanced laboratory QA"
+  },
+  {
+   "seq": 25,
+   "questionNum": 2524,
+   "itemId": "WATER-TREATMENT-L3-524",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "disinfection strategy at plant scale"
+  },
+  {
+   "seq": 26,
+   "questionNum": 2525,
+   "itemId": "WATER-TREATMENT-L3-525",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "CT management"
+  },
+  {
+   "seq": 27,
+   "questionNum": 2526,
+   "itemId": "WATER-TREATMENT-L3-526",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "residuals management"
+  },
+  {
+   "seq": 28,
+   "questionNum": 2527,
+   "itemId": "WATER-TREATMENT-L3-527",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "energy optimization awareness"
+  },
+  {
+   "seq": 29,
+   "questionNum": 2528,
+   "itemId": "WATER-TREATMENT-L3-528",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "chemical optimization"
+  },
+  {
+   "seq": 30,
+   "questionNum": 2529,
+   "itemId": "WATER-TREATMENT-L3-529",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "risk management and critical control points"
+  },
+  {
+   "seq": 31,
+   "questionNum": 2530,
+   "itemId": "WATER-TREATMENT-L3-530",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "DWQMS awareness"
+  },
+  {
+   "seq": 32,
+   "questionNum": 2531,
+   "itemId": "WATER-TREATMENT-L3-531",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "advanced laboratory QA"
+  },
+  {
+   "seq": 33,
+   "questionNum": 2532,
+   "itemId": "WATER-TREATMENT-L3-532",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "disinfection strategy at plant scale"
+  },
+  {
+   "seq": 34,
+   "questionNum": 2533,
+   "itemId": "WATER-TREATMENT-L3-533",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "CT management"
+  },
+  {
+   "seq": 35,
+   "questionNum": 2534,
+   "itemId": "WATER-TREATMENT-L3-534",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "residuals management"
+  },
+  {
+   "seq": 36,
+   "questionNum": 2535,
+   "itemId": "WATER-TREATMENT-L3-535",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "energy optimization awareness"
+  },
+  {
+   "seq": 37,
+   "questionNum": 2536,
+   "itemId": "WATER-TREATMENT-L3-536",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "chemical optimization"
+  },
+  {
+   "seq": 38,
+   "questionNum": 2537,
+   "itemId": "WATER-TREATMENT-L3-537",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "risk management and critical control points"
+  },
+  {
+   "seq": 39,
+   "questionNum": 2538,
+   "itemId": "WATER-TREATMENT-L3-538",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "DWQMS awareness"
+  },
+  {
+   "seq": 40,
+   "questionNum": 2539,
+   "itemId": "WATER-TREATMENT-L3-539",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "multi-unit mass balance"
+  },
+  {
+   "seq": 41,
+   "questionNum": 2540,
+   "itemId": "WATER-TREATMENT-L3-540",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "residuals volume and solids mass"
+  },
+  {
+   "seq": 42,
+   "questionNum": 2541,
+   "itemId": "WATER-TREATMENT-L3-541",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "energy per volume with given efficiency"
+  },
+  {
+   "seq": 43,
+   "questionNum": 2542,
+   "itemId": "WATER-TREATMENT-L3-542",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "chemical optimization quantity"
+  },
+  {
+   "seq": 44,
+   "questionNum": 2543,
+   "itemId": "WATER-TREATMENT-L3-543",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "multi-unit mass balance"
+  },
+  {
+   "seq": 45,
+   "questionNum": 2544,
+   "itemId": "WATER-TREATMENT-L3-544",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "residuals volume and solids mass"
+  },
+  {
+   "seq": 46,
+   "questionNum": 2545,
+   "itemId": "WATER-TREATMENT-L3-545",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "energy per volume with given efficiency"
+  },
+  {
+   "seq": 47,
+   "questionNum": 2546,
+   "itemId": "WATER-TREATMENT-L3-546",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "chemical optimization quantity"
+  },
+  {
+   "seq": 48,
+   "questionNum": 2547,
+   "itemId": "WATER-TREATMENT-L3-547",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "multi-unit mass balance"
+  },
+  {
+   "seq": 49,
+   "questionNum": 2548,
+   "itemId": "WATER-TREATMENT-L3-548",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "residuals volume and solids mass"
+  }
+ ]
+}
