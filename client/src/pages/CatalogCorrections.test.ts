@@ -192,16 +192,18 @@ it.each([
   expect(state.bankKeys).toEqual([`wpi-class${level}-wastewater-coll`]);
 });
 
-it("removes only the unverified Class IV Collection question badge without substituting a count or changing price", () => {
+it("shows the verified 1,000+ lower bound on all Collection cards without changing prices or routes", () => {
   state.track = "collection";
   const html = render(WpiLanding);
   const cards = [...html.matchAll(/<div class="wpi-class-card"[\s\S]*?(?=<div class="wpi-class-card"|<\/section>)/g)].map(match => match[0]);
   expect(cards).toHaveLength(4);
-  expect(cards[0]).toContain("500 Q");
-  expect(cards[1]).toContain("504 Q");
-  expect(cards[2]).toContain("504 Q");
+  for (const [index, price] of [149, 199, 249, 299].entries()) {
+    expect(cards[index]).toContain("1,000+ questions");
+    expect(cards[index]).toContain(`CA$${price}`);
+    expect(cards[index]).toContain(`href="/wpi-class${index + 1}-water-coll"`);
+  }
   expect(cards[3]).toContain("WPI-C4");
   expect(cards[3]).toContain("CA$299");
   expect(cards[3]).toContain('href="/wpi-class4-water-coll"');
-  expect(cards[3]).not.toMatch(/\d+ Q|503|504/);
+  expect(cards[3]).not.toMatch(/503|504/);
 });
