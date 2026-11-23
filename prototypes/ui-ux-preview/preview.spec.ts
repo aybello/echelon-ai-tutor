@@ -406,6 +406,11 @@ for (const width of [390, 720, 760, 1280]) {
 test("active mock fits a phone and question navigation is available", async ({page}) => {
   await page.setViewportSize({width:390,height:844});
   await page.goto("/#/mock");
+  // Starting during the fixture's guest-to-user change intentionally discards
+  // the old actor's response. Wait for auth.me, not dashboardAuth.me navigation.
+  await page.waitForFunction(() =>
+    JSON.parse(localStorage.getItem("manus-runtime-user-info") ?? "null")?.id === 1
+  );
   await page.getByRole("button",{name:/Start Exam/}).click();
   await expect(page.locator(".mes-active-grid")).toBeVisible({timeout:30000});
   await expect(page.locator(".mes-navigator")).not.toHaveAttribute("open","");
