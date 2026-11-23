@@ -105,7 +105,7 @@ describe("homepage trusted organizations", () => {
   it("uses equal viewport-filling groups and a transform-only 24-second seamless loop", () => {
     expect(css).toContain(".trusted-organizations-track { display: flex; width: 100%; }");
     expect(css).toMatch(/\.trusted-organizations-list\s*\{[^}]*grid-template-columns: repeat\(4, minmax\(120px, 1fr\)\)/);
-    expect(css).toMatch(/\.trusted-organizations-list\s*\{[^}]*flex-shrink: 0;[^}]*min-width: 100%;[^}]*width: max-content;[^}]*padding: 0 20px 0 0;/);
+    expect(css).toMatch(/\.trusted-organizations-list\s*\{[^}]*gap: 28px;[^}]*flex-shrink: 0;[^}]*min-width: 100%;[^}]*width: max-content;[^}]*padding: 0 28px 0 0;/);
     expect(css).toContain("animation: trusted-organizations-marquee 24s linear infinite");
     expect(css).toContain("from { transform: translateX(0); }");
     expect(css).toContain("to { transform: translateX(-100%); }");
@@ -125,7 +125,10 @@ describe("homepage trusted organizations", () => {
     expect(css).not.toContain("li:last-child");
     expect(css).not.toContain("max-width: 360px");
     expect(css).toMatch(/\.trusted-organizations-inner\s*\{[^}]*grid-template-columns: minmax\(0, 1fr\)/);
-    expect(css).toMatch(/\.trusted-organizations-mark--city-of-winnipeg \.trusted-organizations-logo\s*\{[^}]*padding: 12px 20%/);
+    expect(css).toMatch(/\.trusted-organizations-logo\s*\{[^}]*height: 94px;/);
+    expect(css).toMatch(/\.trusted-organizations-logo img\s*\{[^}]*max-height: 46px;/);
+    expect(css).toMatch(/@media \(max-width: 640px\)[\s\S]*?\.trusted-organizations-logo\s*\{ height: 90px; \}\s*\.trusted-organizations-logo img\s*\{ max-height: 42px; \}/);
+    expect(css).not.toContain(".trusted-organizations-mark--city-of-winnipeg");
     expect(css).not.toContain(".trusted-organizations-supporter");
     expect(css).not.toMatch(/(?:^|[;{])\s*(?:filter|opacity)\s*:/m);
     expect(css).not.toMatch(/object-fit:\s*cover/);

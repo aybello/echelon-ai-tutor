@@ -57,13 +57,13 @@
   display: grid;
   grid-template-columns: repeat(4, minmax(120px, 1fr));
   align-items: start;
-  gap: 20px;
+  gap: 28px;
   flex-shrink: 0;
   min-width: 100%;
   width: max-content;
   margin: 0;
   /* Include the seam gap in each group's own width, not on the track. */
-  padding: 0 20px 0 0;
+  padding: 0 28px 0 0;
   list-style: none;
 }
 @media (prefers-reduced-motion: no-preference) {
@@ -83,7 +83,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 46px;
+  /* Shared clear space keeps Winnipeg full-size without crowding any mark. */
+  height: 94px;
 }
 .trusted-organizations-logo img {
   display: block;
@@ -92,14 +93,6 @@
   max-width: 100%;
   max-height: 46px;
   object-fit: contain;
-}
-/* Reserve the City's two-W clear space inside the shared, fixed-height slot. */
-.trusted-organizations-mark--city-of-winnipeg .trusted-organizations-logo {
-  box-sizing: border-box;
-  padding: 12px 20%;
-}
-.trusted-organizations-mark--city-of-winnipeg .trusted-organizations-logo img {
-  max-height: 22px;
 }
 .trusted-organizations-mark figcaption {
   margin-top: 9px;
@@ -122,8 +115,8 @@
   .trusted-organizations-customers { gap: 20px; }
   .trusted-organizations-intro { display: block; text-align: center; }
   .trusted-organizations-intro p { margin-top: 5px; }
-  .trusted-organizations-list { gap: 14px; padding-right: 14px; }
-  .trusted-organizations-logo, .trusted-organizations-logo img { max-height: 42px; }
+  .trusted-organizations-logo { height: 90px; }
+  .trusted-organizations-logo img { max-height: 42px; }
   .trusted-organizations-mark figcaption { font-size: 11px; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -139,6 +132,6 @@
   }
   .trusted-organizations-list[aria-hidden="true"], .trusted-organizations-pause { display: none; }
   @media (max-width: 640px) {
-    .trusted-organizations-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 16px; }
+    .trusted-organizations-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 28px; }
   }
 }
