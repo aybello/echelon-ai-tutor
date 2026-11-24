@@ -131,6 +131,7 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
     issuedAt: -1,
   });
   const fileRef = useRef<HTMLInputElement>(null);
+  const csvReadGeneration = useRef(0);
 
   const invalidate = () => {
     void utils.certificates.list.invalidate({ orgId });
@@ -263,10 +264,12 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
   };
 
   const onCsvFile = async (file: File) => {
+    const generation = ++csvReadGeneration.current;
     setCsvText(null);
     setCsvHeaders([]);
     try {
       const text = await file.text();
+      if (generation !== csvReadGeneration.current) return;
       const rows = parseCsv(text);
       const headers = rows[0] ?? [];
       setCsvHeaders(headers);
@@ -280,6 +283,7 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
       });
       setCsvText(text);
     } catch (error) {
+      if (generation !== csvReadGeneration.current) return;
       toast.error(
         error instanceof Error ? error.message : "Could not read this CSV file."
       );
@@ -604,8 +608,8 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
                             onClick={() =>
                               removeMutation.mutate({
                                 orgId,
-                                id: row.id,
-                                expectedVersion: row.version,
+                                id: confirmRemove.id,
+                                expectedVersion: confirmRemove.expectedVersion,
                               })
                             }
                           >

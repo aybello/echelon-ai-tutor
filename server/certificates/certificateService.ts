@@ -271,7 +271,7 @@ export interface UpdateCertificateInput {
   certificateNumber?: string;
   issuedAt?: Date | null;
   expiresAt?: Date;
-  expectedVersion?: number;
+  expectedVersion: number;
 }
 
 export async function updateCertificate(
@@ -334,7 +334,7 @@ export async function updateCertificate(
 export async function deleteCertificate(
   orgId: number,
   certificateId: number,
-  expectedVersion?: number
+  expectedVersion: number
 ): Promise<boolean> {
   const db = await requireDb();
   const existing = await getCertificateForOrg(orgId, certificateId);
@@ -367,7 +367,7 @@ export async function deleteCertificate(
 export async function renewCertificate(
   orgId: number,
   certificateId: number,
-  input: { expiresAt: Date; issuedAt?: Date | null; expectedVersion?: number }
+  input: { expiresAt: Date; issuedAt?: Date | null; expectedVersion: number }
 ): Promise<CertificateView | null> {
   const existing = await getCertificateForOrg(orgId, certificateId);
   if (!existing) return null;

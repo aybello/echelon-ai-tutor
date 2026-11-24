@@ -137,32 +137,38 @@ describe("update / renew / delete scoping", () => {
     createdByUserId: 10,
     createdAt: NOW,
     updatedAt: NOW,
+    version: 1,
   };
 
   it("refuses to update or delete a certificate from another organization", async () => {
     seedDb({ certificates: [{ ...certRow }] });
     expect(
-      await updateCertificate(2, 1, { certificateNumber: "CHANGED" })
+      await updateCertificate(2, 1, {
+        expectedVersion: 1,
+        certificateNumber: "CHANGED",
+      })
     ).toBeNull();
-    expect(await deleteCertificate(2, 1)).toBe(false);
+    expect(await deleteCertificate(2, 1, 1)).toBe(false);
     expect(await listCertificatesForOrg(1, NOW)).toHaveLength(1);
   });
 
   it("updates within the org and renews with the matching course link", async () => {
     seedDb({ certificates: [{ ...certRow }] });
     const updated = await updateCertificate(1, 1, {
+      expectedVersion: 1,
       certificateNumber: "ON-1001-R",
     });
     expect(updated?.certificateNumber).toBe("ON-1001-R");
 
     const renewed = await renewCertificate(1, 1, {
+      expectedVersion: 2,
       expiresAt: daysFromNow(1000),
     });
     expect(renewed?.statusBand).toBe("current");
     expect(renewed?.courseKey).toBe("class1-water");
     expect(renewed?.coursePath).toBe("/class1-water");
 
-    expect(await deleteCertificate(1, 1)).toBe(true);
+    expect(await deleteCertificate(1, 1, 3)).toBe(true);
     expect(await listCertificatesForOrg(1, NOW)).toHaveLength(0);
   });
 });
