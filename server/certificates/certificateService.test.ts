@@ -22,6 +22,7 @@ import {
   listCertificatesForOrg,
   markAlertUncertain,
   renewCertificate,
+  resolveOperatorEmail,
   updateCertificate,
 } from "./certificateService";
 
@@ -311,6 +312,22 @@ describe("listCertificatesForOperator", () => {
     });
     const rows = await listCertificatesForOperator(1, "ava@quintewest.ca", NOW);
     expect(rows.map(r => r.id)).toEqual([1]);
+  });
+  it("does not rebind a linked user id to a different same-name roster account", async () => {
+    const db = seedDb();
+    const certificate = {
+      id: 99,
+      organizationId: 1,
+      operatorUserId: 1,
+      operatorMemberId: null,
+      operatorName: "Ben Ortiz",
+      certificateType: "oit",
+      certificateNumber: "ON-99",
+      expiresAt: daysFromNow(30),
+      createdAt: NOW,
+      updatedAt: NOW,
+    } as any;
+    await expect(resolveOperatorEmail(db.db as any, certificate)).resolves.toBeNull();
   });
 
   it("fences uncertain SMTP delivery from automatic retry", async () => {

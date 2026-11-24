@@ -62,6 +62,7 @@ export async function runCertificateExpiryAlerts(
       certificateId: certificateAlerts.certificateId,
       thresholdDays: certificateAlerts.thresholdDays,
       expiresAt: certificateAlerts.expiresAt,
+      recipientEmail: certificateAlerts.recipientEmail,
     })
     .from(certificateAlerts)
     .where(
@@ -77,10 +78,17 @@ export async function runCertificateExpiryAlerts(
       )
     );
   const retryThresholds = new Map<number, Set<number>>();
+  const retryRecipients = new Map<number, Map<number, Set<string>>>();
   for (const alert of retryLedgerRows) {
     const set = retryThresholds.get(alert.certificateId) ?? new Set<number>();
     set.add(alert.thresholdDays);
     retryThresholds.set(alert.certificateId, set);
+    const byThreshold =
+      retryRecipients.get(alert.certificateId) ?? new Map<number, Set<string>>();
+    const emails = byThreshold.get(alert.thresholdDays) ?? new Set<string>();
+    emails.add(alert.recipientEmail.toLowerCase());
+    byThreshold.set(alert.thresholdDays, emails);
+    retryRecipients.set(alert.certificateId, byThreshold);
   }
   const retryCertificates = await Promise.all(
     [...retryThresholds.keys()].map(async certificateId => {
@@ -140,7 +148,7 @@ export async function runCertificateExpiryAlerts(
       const quizPath = courseKey ? getCourseByKey(courseKey)?.quizPath : null;
       const courseUrl = quizPath ? `${siteUrl}${quizPath}` : undefined;
 
-      const targets: Array<{ email: string; isOperator: boolean }> = [
+      const allTargets: Array<{ email: string; isOperator: boolean }> = [
         ...recipients.managerEmails.map(email => ({
           email,
           isOperator: false,
@@ -149,6 +157,12 @@ export async function runCertificateExpiryAlerts(
           ? [{ email: recipients.operatorEmail, isOperator: true }]
           : []),
       ];
+      const thresholdIsDueToday = dueThreshold === threshold;
+      const retryEmails =
+        retryRecipients.get(currentCert.id)?.get(threshold) ?? new Set<string>();
+      const targets = thresholdIsDueToday
+        ? allTargets
+        : allTargets.filter(target => retryEmails.has(target.email.toLowerCase()));
       const seen = new Set<string>();
       for (const target of targets) {
         const email = target.email.toLowerCase();
@@ -164,6 +178,7 @@ export async function runCertificateExpiryAlerts(
             recipientUserId: await findUserIdByEmail(db, email),
           });
           if (!claim) continue;
+          let deliveryAccepted = false;
           try {
             const [fresh] = await db
               .select()
@@ -219,28 +234,46 @@ export async function runCertificateExpiryAlerts(
                 ? `${siteUrl}/account`
                 : `${siteUrl}/team`,
             });
-            if (await markAlertSent(db, claim.id, claim.token)) {
+            deliveryAccepted = true;
+            let finalized = false;
+            try {
+              finalized = await markAlertSent(db, claim.id, claim.token);
+            } catch {
+              // A provider-accepted message must never enter the ordinary
+              // retryable failure path when ledger finalization throws.
+              finalized = false;
+            }
+            if (finalized) {
               sent += 1;
             } else {
-              const finalized = await markAlertUncertain(
-                db,
-                claim.id,
-                claim.token,
-                "SMTP accepted the message but alert ledger finalization was not confirmed; automatic retry disabled."
-              );
+              let uncertaintyRecorded = false;
+              try {
+                uncertaintyRecorded = await markAlertUncertain(
+                  db,
+                  claim.id,
+                  claim.token,
+                  "SMTP accepted the message but alert ledger finalization was not confirmed; automatic retry disabled."
+                );
+              } catch {
+                // There is no safe database transition to make if both
+                // finalization writes fail. Surface the condition instead of
+                // pretending this is a normal retryable send failure.
+              }
               throw new Error(
-                finalized
+                uncertaintyRecorded
                   ? "Alert delivery is uncertain; automatic retry disabled."
                   : "Alert delivery is uncertain and could not be fenced; manual reconciliation required."
               );
             }
           } catch (sendError) {
-            await markAlertFailed(
-              db,
-              claim.id,
-              claim.token,
-              sendError instanceof Error ? sendError.message : String(sendError)
-            );
+            if (!deliveryAccepted) {
+              await markAlertFailed(
+                db,
+                claim.id,
+                claim.token,
+                sendError instanceof Error ? sendError.message : String(sendError)
+              );
+            }
             throw sendError;
           }
         } catch (error) {

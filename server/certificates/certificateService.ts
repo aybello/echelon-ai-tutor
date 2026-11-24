@@ -114,9 +114,10 @@ export async function findUserIdByEmail(
 }
 
 /**
- * Resolves the email alerts should be sent to for a certificate's operator:
- * their account email when linked, otherwise the roster (organization
- * member) email of the member in the same org with the same name.
+ * Resolves the email alerts should be sent to for a certificate's operator.
+ * Certificates without an explicit member link do not get rebound by display
+ * name, because a later roster change could send a private certificate alert
+ * to the wrong person.
  */
 export async function resolveOperatorEmail(
   db: Db,
@@ -137,25 +138,30 @@ export async function resolveOperatorEmail(
       .limit(1);
     return member ? normalizeEmail(member.email) : null;
   }
-  const members = await db
-    .select({
-      email: organizationMembers.email,
-      name: organizationMembers.name,
-    })
+  if (cert.operatorUserId == null) return null;
+  const [user] = await db
+    .select({ email: users.email })
+    .from(users)
+    .where(eq(users.id, cert.operatorUserId))
+    .limit(1);
+  if (!user?.email) return null;
+  const [activeMembership] = await db
+    .select({ email: organizationMembers.email, name: organizationMembers.name })
     .from(organizationMembers)
     .where(
       and(
         eq(organizationMembers.orgId, cert.organizationId),
+        eq(organizationMembers.email, normalizeEmail(user.email)),
         eq(organizationMembers.role, "operator"),
         eq(organizationMembers.status, "assigned")
       )
-    );
-  const matches = members.filter(
-    m =>
-      (m.name ?? "").trim().toLowerCase() ===
+    )
+    .limit(1);
+  if (!activeMembership) return null;
+  return (activeMembership.name ?? "").trim().toLowerCase() ===
       cert.operatorName.trim().toLowerCase()
-  );
-  return matches.length === 1 ? normalizeEmail(matches[0].email) : null;
+    ? normalizeEmail(activeMembership.email)
+    : null;
 }
 
 export async function listCertificatesForOrg(

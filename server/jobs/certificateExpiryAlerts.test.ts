@@ -21,6 +21,7 @@ vi.mock("../email", () => ({
 
 // Imported after the mocks so the job picks them up.
 import { runCertificateExpiryAlerts } from "./certificateExpiryAlerts";
+import * as certificateService from "../certificates/certificateService";
 
 function seedDb(): InMemoryDb {
   const certDExpires = inDays(7);
@@ -100,5 +101,30 @@ describe("runCertificateExpiryAlerts", () => {
     expect(second.errors).toEqual([]);
     expect(second.sent).toBe(0);
     expect(sendCertificateExpiryEmail).not.toHaveBeenCalled();
+  });
+  it("fences accepted SMTP delivery when sent finalization fails, including after lease expiry", async () => {
+    const fake = seedDb();
+    sendCertificateExpiryEmail.mockClear();
+    const sentSpy = vi
+      .spyOn(certificateService, "markAlertSent")
+      .mockResolvedValueOnce(false)
+      .mockImplementation(certificateService.markAlertSent);
+    const uncertainSpy = vi.spyOn(certificateService, "markAlertUncertain");
+    const first = await runCertificateExpiryAlerts();
+    expect(first.errors.some(error => error.includes("uncertain"))).toBe(true);
+    expect(uncertainSpy).toHaveBeenCalled();
+    const uncertain = fake.rows.certificateAlerts.find(
+      row => row.status === "uncertain"
+    );
+    expect(uncertain).toBeDefined();
+    expect(sendCertificateExpiryEmail).toHaveBeenCalled();
+
+    if (uncertain) uncertain.leaseUntil = new Date(0);
+    sendCertificateExpiryEmail.mockClear();
+    const second = await runCertificateExpiryAlerts();
+    expect(second.sent).toBe(0);
+    expect(sendCertificateExpiryEmail).not.toHaveBeenCalled();
+    sentSpy.mockRestore();
+    uncertainSpy.mockRestore();
   });
 });
