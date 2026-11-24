@@ -237,6 +237,13 @@ export interface CertificateCsvFailure {
   reason: string;
 }
 
+export const CERTIFICATE_CSV_LIMITS = {
+  maxChars: 1_000_000,
+  maxRows: 5_000,
+  maxColumns: 32,
+  maxFieldChars: 200,
+} as const;
+
 export interface CertificateCsvValidation {
   validRows: CertificateCsvRow[];
   failures: CertificateCsvFailure[];
@@ -314,6 +321,11 @@ export function parseCertificateDate(raw: string): Date | null {
       !strictUtcDate(Number(isoDate[1]), Number(isoDate[2]), Number(isoDate[3]))
     )
       return null;
+    if (
+      value.includes("T") &&
+      !/T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})$/.test(value)
+    )
+      return null;
     const parsed = new Date(value);
     return Number.isNaN(parsed.getTime()) ? null : parsed;
   }
@@ -324,6 +336,8 @@ export function parseCertificateDate(raw: string): Date | null {
       Number(slashDate[1]),
       Number(slashDate[2])
     );
+  if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})$/.test(value))
+    return null;
   const parsed = new Date(value);
   return Number.isNaN(parsed.getTime()) ? null : parsed;
 }
@@ -338,7 +352,19 @@ export function validateCertificateCsv(
   csvText: string,
   mapping: CertificateCsvMapping
 ): CertificateCsvValidation {
+  if (csvText.length > CERTIFICATE_CSV_LIMITS.maxChars)
+    throw new Error("CSV is too large.");
   const rows = parseCsv(csvText);
+  if (rows.length > CERTIFICATE_CSV_LIMITS.maxRows + 1)
+    throw new Error("CSV has too many rows.");
+  if (rows.some(row => row.length > CERTIFICATE_CSV_LIMITS.maxColumns))
+    throw new Error("CSV has too many columns.");
+  if (
+    rows.some(row =>
+      row.some(cell => cell.length > CERTIFICATE_CSV_LIMITS.maxFieldChars)
+    )
+  )
+    throw new Error("CSV field is too long.");
   const validRows: CertificateCsvRow[] = [];
   const failures: CertificateCsvFailure[] = [];
   const cellAt = (row: string[], index: number | undefined): string =>
@@ -350,6 +376,14 @@ export function validateCertificateCsv(
     if (row.every(c => c.trim() === "")) return; // blank line, not a failure
 
     const operatorName = cellAt(row, mapping.operatorName);
+    if (operatorName.length > 200) {
+      failures.push({
+        rowNumber,
+        raw: row,
+        reason: "Operator name is too long.",
+      });
+      return;
+    }
     if (!operatorName) {
       failures.push({ rowNumber, raw: row, reason: "Missing operator name." });
       return;
@@ -365,6 +399,14 @@ export function validateCertificateCsv(
       return;
     }
     const certificateNumber = cellAt(row, mapping.certificateNumber);
+    if (certificateNumber.length > 100) {
+      failures.push({
+        rowNumber,
+        raw: row,
+        reason: "Certificate number is too long.",
+      });
+      return;
+    }
     if (!certificateNumber) {
       failures.push({
         rowNumber,
@@ -393,6 +435,14 @@ export function validateCertificateCsv(
             rowNumber,
             raw: row,
             reason: `Unparseable issue date "${issuedRaw}".`,
+          });
+          return;
+        }
+        if (issuedAt.getTime() > expiresAt.getTime()) {
+          failures.push({
+            rowNumber,
+            raw: row,
+            reason: "Issue date must be on or before expiry date.",
           });
           return;
         }

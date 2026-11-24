@@ -42,6 +42,7 @@ const BAND_LABELS: Record<CertificateStatusBand, string> = {
 
 type CertificateRow = {
   id: number;
+  version: number;
   operatorName: string;
   certificateLabel: string;
   certificateNumber: string;
@@ -56,7 +57,12 @@ type CertificateRow = {
 function formatDate(value: Date | string | null): string {
   if (!value) return "—";
   const date = value instanceof Date ? value : new Date(value);
-  return date.toLocaleDateString("en-CA", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" });
+  return date.toLocaleDateString("en-CA", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    timeZone: "UTC",
+  });
 }
 
 function toDateInputValue(value: Date | string | null): string {
@@ -85,9 +91,18 @@ const EMPTY_FORM: CertFormState = {
 
 export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
   const utils = trpc.useUtils();
-  const listQuery = trpc.certificates.list.useQuery({ orgId }, { retry: false });
-  const summaryQuery = trpc.certificates.summary.useQuery({ orgId }, { retry: false });
-  const membersQuery = trpc.org.listMembers.useQuery({ orgId }, { retry: false });
+  const listQuery = trpc.certificates.list.useQuery(
+    { orgId },
+    { retry: false }
+  );
+  const summaryQuery = trpc.certificates.summary.useQuery(
+    { orgId },
+    { retry: false }
+  );
+  const membersQuery = trpc.org.listMembers.useQuery(
+    { orgId },
+    { retry: false }
+  );
 
   const [formOpen, setFormOpen] = useState(false);
   const [editing, setEditing] = useState<CertificateRow | null>(null);
@@ -99,7 +114,13 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
 
   const [csvText, setCsvText] = useState<string | null>(null);
   const [csvHeaders, setCsvHeaders] = useState<string[]>([]);
-  const [mapping, setMapping] = useState<{ operatorName: number; certificateType: number; certificateNumber: number; expiresAt: number; issuedAt: number | -1 }>({
+  const [mapping, setMapping] = useState<{
+    operatorName: number;
+    certificateType: number;
+    certificateNumber: number;
+    expiresAt: number;
+    issuedAt: number | -1;
+  }>({
     operatorName: 0,
     certificateType: 1,
     certificateNumber: 2,
@@ -120,7 +141,7 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
       setForm(EMPTY_FORM);
       invalidate();
     },
-    onError: (error) => toast.error(error.message),
+    onError: error => toast.error(error.message),
   });
 
   const updateMutation = trpc.certificates.update.useMutation({
@@ -129,7 +150,7 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
       setEditing(null);
       invalidate();
     },
-    onError: (error) => toast.error(error.message),
+    onError: error => toast.error(error.message),
   });
 
   const removeMutation = trpc.certificates.remove.useMutation({
@@ -138,46 +159,50 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
       setConfirmRemoveId(null);
       invalidate();
     },
-    onError: (error) => toast.error(error.message),
+    onError: error => toast.error(error.message),
   });
 
   const renewMutation = trpc.certificates.renew.useMutation({
-    onSuccess: (result) => {
+    onSuccess: result => {
       toast.success(
         result.coursePath
           ? `Renewed. Renewal prep course: ${result.certificateLabel} — open it from the row's course link.`
-          : "Certificate renewed.",
+          : "Certificate renewed."
       );
       setRenewing(null);
       invalidate();
     },
-    onError: (error) => toast.error(error.message),
+    onError: error => toast.error(error.message),
   });
 
   const importMutation = trpc.certificates.importCsv.useMutation({
-    onSuccess: (result) => {
+    onSuccess: result => {
       if (result.failures.length === 0) {
-        toast.success(`Imported ${result.imported} certificate${result.imported === 1 ? "" : "s"}.`);
+        toast.success(
+          `Imported ${result.imported} certificate${result.imported === 1 ? "" : "s"}.`
+        );
       } else {
         toast.warning(
           `Imported ${result.imported}. ${result.failures.length} row${result.failures.length === 1 ? "" : "s"} failed: ` +
-            result.failures.map((f) => `Row ${f.rowNumber}: ${f.reason}`).join(" "),
+            result.failures
+              .map(f => `Row ${f.rowNumber}: ${f.reason}`)
+              .join(" ")
         );
       }
       setCsvText(null);
       invalidate();
     },
-    onError: (error) => toast.error(error.message),
+    onError: error => toast.error(error.message),
   });
 
   // org.listMembers returns the org's operator roster (no managers).
   const operators = useMemo(
     () =>
-      (membersQuery.data ?? []).filter((m) => m.status === "assigned") as Array<{
+      (membersQuery.data ?? []).filter(m => m.status === "assigned") as Array<{
         email: string;
         name: string | null;
       }>,
-    [membersQuery.data],
+    [membersQuery.data]
   );
 
   const openAdd = () => {
@@ -189,7 +214,9 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
     setForm({
       operatorName: row.operatorName,
       operatorEmail: "",
-      certificateType: CERTIFICATE_TYPES.find((t) => t.label === row.certificateLabel)?.key ?? "oit",
+      certificateType:
+        CERTIFICATE_TYPES.find(t => t.label === row.certificateLabel)?.key ??
+        "oit",
       certificateNumber: row.certificateNumber,
       issuedAt: toDateInputValue(row.issuedAt),
       expiresAt: toDateInputValue(row.expiresAt),
@@ -198,14 +225,21 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
   };
 
   const submitForm = () => {
-    if (!form.operatorName.trim() || !form.certificateNumber.trim() || !form.expiresAt) {
-      toast.error("Operator name, certificate number, and expiry date are required.");
+    if (
+      !form.operatorName.trim() ||
+      !form.certificateNumber.trim() ||
+      !form.expiresAt
+    ) {
+      toast.error(
+        "Operator name, certificate number, and expiry date are required."
+      );
       return;
     }
     if (editing) {
       updateMutation.mutate({
         orgId,
         id: editing.id,
+        expectedVersion: editing.version,
         operatorName: form.operatorName,
         certificateType: form.certificateType,
         certificateNumber: form.certificateNumber,
@@ -267,9 +301,9 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
           <select
             className="mt-1 w-full rounded-md border px-3 py-2 text-sm"
             value={form.operatorEmail}
-            onChange={(e) => {
-              const member = operators.find((m) => m.email === e.target.value);
-              setForm((f) => ({
+            onChange={e => {
+              const member = operators.find(m => m.email === e.target.value);
+              setForm(f => ({
                 ...f,
                 operatorEmail: e.target.value,
                 operatorName: member?.name ?? f.operatorName,
@@ -277,7 +311,7 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
             }}
           >
             <option value="">Not on the roster / type the name</option>
-            {operators.map((m) => (
+            {operators.map(m => (
               <option key={m.email} value={m.email}>
                 {m.name ? `${m.name} (${m.email})` : m.email}
               </option>
@@ -286,11 +320,13 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
         </div>
       )}
       <div>
-        <label className="text-sm font-medium">Operator name (as on the certificate)</label>
+        <label className="text-sm font-medium">
+          Operator name (as on the certificate)
+        </label>
         <Input
           className="mt-1"
           value={form.operatorName}
-          onChange={(e) => setForm((f) => ({ ...f, operatorName: e.target.value }))}
+          onChange={e => setForm(f => ({ ...f, operatorName: e.target.value }))}
         />
       </div>
       <div>
@@ -298,9 +334,11 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
         <select
           className="mt-1 w-full rounded-md border px-3 py-2 text-sm"
           value={form.certificateType}
-          onChange={(e) => setForm((f) => ({ ...f, certificateType: e.target.value }))}
+          onChange={e =>
+            setForm(f => ({ ...f, certificateType: e.target.value }))
+          }
         >
-          {CERTIFICATE_TYPES.map((t) => (
+          {CERTIFICATE_TYPES.map(t => (
             <option key={t.key} value={t.key}>
               {t.label}
             </option>
@@ -312,7 +350,9 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
         <Input
           className="mt-1"
           value={form.certificateNumber}
-          onChange={(e) => setForm((f) => ({ ...f, certificateNumber: e.target.value }))}
+          onChange={e =>
+            setForm(f => ({ ...f, certificateNumber: e.target.value }))
+          }
         />
       </div>
       <div className="grid grid-cols-2 gap-3">
@@ -322,7 +362,7 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
             className="mt-1"
             type="date"
             value={form.issuedAt}
-            onChange={(e) => setForm((f) => ({ ...f, issuedAt: e.target.value }))}
+            onChange={e => setForm(f => ({ ...f, issuedAt: e.target.value }))}
           />
         </div>
         <div>
@@ -331,7 +371,7 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
             className="mt-1"
             type="date"
             value={form.expiresAt}
-            onChange={(e) => setForm((f) => ({ ...f, expiresAt: e.target.value }))}
+            onChange={e => setForm(f => ({ ...f, expiresAt: e.target.value }))}
           />
         </div>
       </div>
@@ -345,12 +385,17 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
           <div>
             <CardTitle>Licence Expiry Tracking</CardTitle>
             <p className="mt-1 text-sm text-slate-600">
-              Your operators' provincial certificates and when they expire. Managers and operators are
-              emailed at 90, 60, 30, and 7 days before expiry, and on the expiry date.
+              Your operators' provincial certificates and when they expire.
+              Managers and operators are emailed at 90, 60, 30, and 7 days
+              before expiry, and on the expiry date.
             </p>
           </div>
           <div className="flex gap-2">
-            <Button type="button" variant="outline" onClick={() => fileRef.current?.click()}>
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => fileRef.current?.click()}
+            >
               <Upload className="mr-2 h-4 w-4" /> Import spreadsheet (CSV)
             </Button>
             <input
@@ -358,7 +403,7 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
               type="file"
               accept=".csv,text/csv"
               className="hidden"
-              onChange={(e) => {
+              onChange={e => {
                 const file = e.target.files?.[0];
                 if (file) void onCsvFile(file);
                 e.target.value = "";
@@ -376,8 +421,11 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
               { label: "Expiring in 90 days", value: summary.expiringWithin90 },
               { label: "Expiring in 30 days", value: summary.expiringWithin30 },
               { label: "Expired", value: summary.expired },
-            ].map((stat) => (
-              <div key={stat.label} className="rounded-lg border bg-slate-50 px-4 py-3">
+            ].map(stat => (
+              <div
+                key={stat.label}
+                className="rounded-lg border bg-slate-50 px-4 py-3"
+              >
                 <div className="text-2xl font-bold">{stat.value}</div>
                 <div className="text-xs text-slate-600">{stat.label}</div>
               </div>
@@ -388,7 +436,9 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
       <CardContent>
         {csvText && (
           <div className="mb-4 rounded-lg border border-blue-200 bg-blue-50 p-4">
-            <p className="text-sm font-medium">Match your spreadsheet columns, then import.</p>
+            <p className="text-sm font-medium">
+              Match your spreadsheet columns, then import.
+            </p>
             <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3">
               {(
                 [
@@ -400,15 +450,22 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
                 ] as const
               ).map(([field, label]) => (
                 <div key={field}>
-                  <label className="text-xs font-medium text-slate-600">{label}</label>
+                  <label className="text-xs font-medium text-slate-600">
+                    {label}
+                  </label>
                   <select
                     className="mt-1 w-full rounded-md border px-2 py-1.5 text-sm"
                     value={mapping[field]}
-                    onChange={(e) =>
-                      setMapping((m) => ({ ...m, [field]: Number(e.target.value) }))
+                    onChange={e =>
+                      setMapping(m => ({
+                        ...m,
+                        [field]: Number(e.target.value),
+                      }))
                     }
                   >
-                    {field === "issuedAt" && <option value={-1}>Not in my sheet</option>}
+                    {field === "issuedAt" && (
+                      <option value={-1}>Not in my sheet</option>
+                    )}
                     {csvHeaders.map((header, i) => (
                       <option key={i} value={i}>
                         {header || `Column ${i + 1}`}
@@ -419,15 +476,28 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
               ))}
             </div>
             <div className="mt-3 flex gap-2">
-              <Button type="button" size="sm" onClick={submitImport} disabled={importMutation.isPending}>
-                {importMutation.isPending ? "Importing…" : "Import certificates"}
+              <Button
+                type="button"
+                size="sm"
+                onClick={submitImport}
+                disabled={importMutation.isPending}
+              >
+                {importMutation.isPending
+                  ? "Importing…"
+                  : "Import certificates"}
               </Button>
-              <Button type="button" size="sm" variant="ghost" onClick={() => setCsvText(null)}>
+              <Button
+                type="button"
+                size="sm"
+                variant="ghost"
+                onClick={() => setCsvText(null)}
+              >
                 Cancel
               </Button>
             </div>
             <p className="mt-2 text-xs text-slate-600">
-              Rows that cannot be imported are reported back with the reason — nothing is silently dropped.
+              Rows that cannot be imported are reported back with the reason —
+              nothing is silently dropped.
             </p>
           </div>
         )}
@@ -435,11 +505,13 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
         {listQuery.isLoading ? (
           <p className="text-sm text-slate-500">Loading certificates…</p>
         ) : listQuery.isError ? (
-          <p className="text-sm text-red-600">Could not load the certificate register.</p>
+          <p className="text-sm text-red-600">
+            Could not load the certificate register.
+          </p>
         ) : rows.length === 0 ? (
           <p className="text-sm text-slate-500">
-            No certificates tracked yet. Add them one at a time, or import the spreadsheet your team
-            already keeps.
+            No certificates tracked yet. Add them one at a time, or import the
+            spreadsheet your team already keeps.
           </p>
         ) : (
           <div className="overflow-x-auto">
@@ -456,26 +528,35 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
                 </tr>
               </thead>
               <tbody>
-                {rows.map((row) => (
+                {rows.map(row => (
                   <tr key={row.id} className="border-b last:border-0">
-                    <td className="py-2 pr-3 font-medium">{row.operatorName}</td>
+                    <td className="py-2 pr-3 font-medium">
+                      {row.operatorName}
+                    </td>
                     <td className="py-2 pr-3">{row.certificateLabel}</td>
                     <td className="py-2 pr-3">{row.certificateNumber}</td>
                     <td className="py-2 pr-3">
                       {formatDate(row.expiresAt)}
                       <span className="text-slate-500">
                         {" "}
-                        ({row.daysUntilExpiry < 0
+                        (
+                        {row.daysUntilExpiry < 0
                           ? `${Math.abs(row.daysUntilExpiry)}d ago`
-                          : `${row.daysUntilExpiry}d left`})
+                          : `${row.daysUntilExpiry}d left`}
+                        )
                       </span>
                     </td>
                     <td className="py-2 pr-3">
-                      <Badge className={BAND_COLORS[row.statusBand]}>{BAND_LABELS[row.statusBand]}</Badge>
+                      <Badge className={BAND_COLORS[row.statusBand]}>
+                        {BAND_LABELS[row.statusBand]}
+                      </Badge>
                     </td>
                     <td className="py-2 pr-3">
                       {row.coursePath ? (
-                        <Link href={row.coursePath} className="text-blue-700 underline">
+                        <Link
+                          href={row.coursePath}
+                          className="text-blue-700 underline"
+                        >
                           Open course
                         </Link>
                       ) : (
@@ -496,7 +577,12 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
                         >
                           <RotateCw className="mr-1 h-3.5 w-3.5" /> Renew
                         </Button>
-                        <Button type="button" size="sm" variant="ghost" onClick={() => openEdit(row)}>
+                        <Button
+                          type="button"
+                          size="sm"
+                          variant="ghost"
+                          onClick={() => openEdit(row)}
+                        >
                           <Pencil className="h-3.5 w-3.5" />
                         </Button>
                         {confirmRemoveId === row.id ? (
@@ -504,7 +590,9 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
                             type="button"
                             size="sm"
                             variant="destructive"
-                            onClick={() => removeMutation.mutate({ orgId, id: row.id })}
+                            onClick={() =>
+                              removeMutation.mutate({ orgId, id: row.id })
+                            }
                           >
                             Confirm remove
                           </Button>
@@ -528,24 +616,44 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
         )}
       </CardContent>
 
-      <Dialog open={formOpen || editing !== null} onOpenChange={(open) => { if (!open) { setFormOpen(false); setEditing(null); } }}>
+      <Dialog
+        open={formOpen || editing !== null}
+        onOpenChange={open => {
+          if (!open) {
+            setFormOpen(false);
+            setEditing(null);
+          }
+        }}
+      >
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>{editing ? "Edit certificate" : "Add certificate"}</DialogTitle>
+            <DialogTitle>
+              {editing ? "Edit certificate" : "Add certificate"}
+            </DialogTitle>
             <DialogDescription>
-              Record an operator's provincial certificate so expiry alerts can be sent before it lapses.
+              Record an operator's provincial certificate so expiry alerts can
+              be sent before it lapses.
             </DialogDescription>
           </DialogHeader>
           {formFields}
           <DialogFooter>
-            <Button type="button" onClick={submitForm} disabled={createMutation.isPending || updateMutation.isPending}>
+            <Button
+              type="button"
+              onClick={submitForm}
+              disabled={createMutation.isPending || updateMutation.isPending}
+            >
               {editing ? "Save changes" : "Add certificate"}
             </Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
 
-      <Dialog open={renewing !== null} onOpenChange={(open) => { if (!open) setRenewing(null); }}>
+      <Dialog
+        open={renewing !== null}
+        onOpenChange={open => {
+          if (!open) setRenewing(null);
+        }}
+      >
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Mark renewed</DialogTitle>
@@ -557,18 +665,33 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
           </DialogHeader>
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="text-sm font-medium">New issue date (optional)</label>
-              <Input className="mt-1" type="date" value={renewIssued} onChange={(e) => setRenewIssued(e.target.value)} />
+              <label className="text-sm font-medium">
+                New issue date (optional)
+              </label>
+              <Input
+                className="mt-1"
+                type="date"
+                value={renewIssued}
+                onChange={e => setRenewIssued(e.target.value)}
+              />
             </div>
             <div>
               <label className="text-sm font-medium">New expiry date</label>
-              <Input className="mt-1" type="date" value={renewExpiry} onChange={(e) => setRenewExpiry(e.target.value)} />
+              <Input
+                className="mt-1"
+                type="date"
+                value={renewExpiry}
+                onChange={e => setRenewExpiry(e.target.value)}
+              />
             </div>
           </div>
           {renewing?.coursePath && (
             <p className="text-sm text-slate-600">
               Renewal prep:{" "}
-              <Link href={renewing.coursePath} className="text-blue-700 underline">
+              <Link
+                href={renewing.coursePath}
+                className="text-blue-700 underline"
+              >
                 open the matching Echelon course
               </Link>{" "}
               for {renewing.operatorName.split(" ")[0]}'s renewal study.
@@ -584,7 +707,9 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
                   orgId,
                   id: renewing.id,
                   expiresAt: new Date(`${renewExpiry}T00:00:00Z`),
-                  ...(renewIssued ? { issuedAt: new Date(`${renewIssued}T00:00:00Z`) } : {}),
+                  ...(renewIssued
+                    ? { issuedAt: new Date(`${renewIssued}T00:00:00Z`) }
+                    : {}),
                 })
               }
             >

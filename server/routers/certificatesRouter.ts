@@ -9,6 +9,7 @@
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import {
+  CERTIFICATE_CSV_LIMITS,
   isCertificateTypeKey,
   parseCertificateDate,
 } from "../../shared/certificates";
@@ -106,13 +107,31 @@ export const certificatesRouter = router({
     .mutation(async ({ ctx, input }) => {
       const { orgId } = await resolveOrgManager(ctx);
       const { id, ...patch } = input;
-      const updated = await updateCertificate(orgId, id, patch);
-      if (!updated)
-        throw new TRPCError({
-          code: "NOT_FOUND",
-          message: "Certificate not found in your organization.",
-        });
-      return updated;
+      try {
+        const updated = await updateCertificate(orgId, id, patch);
+        if (!updated)
+          throw new TRPCError({
+            code: "NOT_FOUND",
+            message: "Certificate not found in your organization.",
+          });
+        return updated;
+      } catch (error) {
+        if (
+          error instanceof Error &&
+          error.message === "CERTIFICATE_VERSION_CONFLICT"
+        )
+          throw new TRPCError({
+            code: "CONFLICT",
+            message:
+              "Certificate changed by another manager. Refresh and try again.",
+          });
+        if (
+          error instanceof Error &&
+          /Issue date|Renewal expiry/.test(error.message)
+        )
+          throw new TRPCError({ code: "BAD_REQUEST", message: error.message });
+        throw error;
+      }
     }),
 
   remove: managerProcedure
@@ -131,8 +150,11 @@ export const certificatesRouter = router({
       );
       if (!removed)
         throw new TRPCError({
-          code: "NOT_FOUND",
-          message: "Certificate not found in your organization.",
+          code: input.expectedVersion != null ? "CONFLICT" : "NOT_FOUND",
+          message:
+            input.expectedVersion != null
+              ? "Certificate changed by another manager. Refresh and try again."
+              : "Certificate not found in your organization.",
         });
       return { success: true as const };
     }),
@@ -173,7 +195,7 @@ export const certificatesRouter = router({
   importCsv: managerProcedure
     .input(
       z.object({
-        csvText: z.string().min(1).max(1_000_000),
+        csvText: z.string().min(1).max(CERTIFICATE_CSV_LIMITS.maxChars),
         mapping: z.object({
           operatorName: z.number().int().min(0),
           certificateType: z.number().int().min(0),

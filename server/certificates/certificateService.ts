@@ -6,7 +6,7 @@
  * id (resolved by resolveOrgManager in the router) and filters on it, so a
  * manager can only ever see or change their own organization's records.
  */
-import { and, asc, eq, lte, or } from "drizzle-orm";
+import { and, asc, eq, isNull, lte, or } from "drizzle-orm";
 import { randomUUID } from "node:crypto";
 import {
   certificateAlerts,
@@ -280,7 +280,7 @@ export async function updateCertificate(
     patch.expiresAt !== undefined ? patch.expiresAt : existing.expiresAt;
   if (nextIssuedAt && nextIssuedAt.getTime() > nextExpiresAt.getTime())
     throw new Error("Issue date must be on or before expiry date.");
-  await db
+  const result = await db
     .update(certificates)
     .set({
       ...(patch.operatorName !== undefined
@@ -305,6 +305,12 @@ export async function updateCertificate(
           : [])
       )
     );
+  const affected = Number(
+    (result as any)?.affectedRows ??
+      (Array.isArray(result) ? (result as any)[0]?.affectedRows : 0)
+  );
+  if (patch.expectedVersion != null && affected !== 1)
+    throw new Error("CERTIFICATE_VERSION_CONFLICT");
   const updated = await getCertificateForOrg(orgId, certificateId);
   return updated ? toCertificateView(updated, new Date()) : null;
 }
@@ -328,12 +334,13 @@ export async function deleteCertificate(
           : [])
       )
     );
-  return (
-    Number(
-      (result as any)?.affectedRows ??
-        (Array.isArray(result) ? (result as any)[0]?.affectedRows : 0)
-    ) === 1
+  const affected = Number(
+    (result as any)?.affectedRows ??
+      (Array.isArray(result) ? (result as any)[0]?.affectedRows : 0)
   );
+  if (expectedVersion != null && affected !== 1)
+    throw new Error("CERTIFICATE_VERSION_CONFLICT");
+  return affected === 1;
 }
 
 /**
@@ -386,6 +393,7 @@ export async function importCertificates(
     .where(
       and(
         eq(organizationMembers.orgId, orgId),
+        eq(organizationMembers.role, "operator"),
         eq(organizationMembers.status, "assigned")
       )
     );
@@ -395,12 +403,33 @@ export async function importCertificates(
     const key = member.name.trim().toLowerCase();
     memberByName.set(key, memberByName.has(key) ? null : member);
   }
+  const existing = await db
+    .select({
+      certificateType: certificates.certificateType,
+      certificateNumber: certificates.certificateNumber,
+    })
+    .from(certificates)
+    .where(eq(certificates.organizationId, orgId));
+  const existingKeys = new Set(
+    existing.map(
+      row =>
+        `${row.certificateType}:${row.certificateNumber.trim().toLowerCase()}`
+    )
+  );
   const seen = new Set<string>();
   const rowsToInsert = [] as Array<
     (typeof validRows)[number] & { member: (typeof members)[number] | null }
   >;
   for (const row of validRows) {
     const dedupeKey = `${row.certificateType}:${row.certificateNumber.toLowerCase()}`;
+    if (existingKeys.has(dedupeKey)) {
+      failures.push({
+        rowNumber: row.rowNumber,
+        raw: [],
+        reason: "Certificate already exists in this organization.",
+      });
+      continue;
+    }
     if (seen.has(dedupeKey)) {
       failures.push({
         rowNumber: row.rowNumber,
@@ -611,7 +640,10 @@ export async function claimAlertSend(
             eq(certificateAlerts.status, "failed"),
             and(
               eq(certificateAlerts.status, "pending"),
-              lte(certificateAlerts.leaseUntil, now)
+              or(
+                isNull(certificateAlerts.leaseUntil),
+                lte(certificateAlerts.leaseUntil, now)
+              )
             )
           )
         )

@@ -1829,7 +1829,7 @@ export const certificateAlerts = mysqlTable("certificate_alerts", {
   id: int("id").autoincrement().primaryKey(),
   certificateId: int("certificateId").notNull(),
   thresholdDays: int("thresholdDays").notNull(), // 90 | 60 | 30 | 7 | 0
-  expiresAt: timestamp("expiresAt").notNull(), // the certificate expiry this alert was for
+  expiresAt: datetime("expiresAt").notNull(), // the certificate expiry this alert was for
   recipientUserId: int("recipientUserId"),
   recipientEmail: varchar("recipientEmail", { length: 320 }).notNull(),
   status: mysqlEnum("status", ["pending", "sent", "failed"]).notNull().default("pending"),
