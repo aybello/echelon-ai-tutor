@@ -83,6 +83,17 @@ function valuesEqual(a: unknown, b: unknown): boolean {
 }
 
 function matches(row: Row, filters: EqFilter[]): boolean {
+  const valuesByColumn = new Map<string, unknown>();
+  for (const filter of filters) {
+    const previous = valuesByColumn.get(filter.column);
+    if (
+      valuesByColumn.has(filter.column) &&
+      !valuesEqual(previous, filter.value)
+    ) {
+      return false;
+    }
+    valuesByColumn.set(filter.column, filter.value);
+  }
   return filters.every(f => valuesEqual(row[f.column], f.value));
 }
 

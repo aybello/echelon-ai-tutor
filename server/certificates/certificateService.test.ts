@@ -1,11 +1,28 @@
 import { describe, expect, it, vi } from "vitest";
+import { and, eq } from "drizzle-orm";
 import { createInMemoryDb, type InMemoryDb } from "./inMemoryDb";
+import { certificateAlerts } from "../../drizzle/schema";
 
 const NOW = new Date(Date.UTC(2026, 10, 24));
 const daysFromNow = (days: number): Date =>
   new Date(NOW.getTime() + days * 24 * 60 * 60 * 1000);
 
 let currentDb: InMemoryDb;
+
+describe("in-memory predicate semantics", () => {
+  it("rejects contradictory same-column equality filters joined by AND", async () => {
+    const db = createInMemoryDb({
+      certificateAlerts: [{ id: 1, certificateId: 10, status: "failed" }],
+    });
+
+    const rows = await (db.db as any)
+      .select()
+      .from(certificateAlerts)
+      .where(and(eq(certificateAlerts.id, 1), eq(certificateAlerts.id, 2)));
+
+    expect(rows).toEqual([]);
+  });
+});
 
 vi.mock("../db", () => ({
   getDb: async () => currentDb.db,
