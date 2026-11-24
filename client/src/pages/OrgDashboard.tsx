@@ -1136,7 +1136,7 @@ export default function OrgDashboard() {
         {overview.orgId && <FlexLicencePanel orgId={overview.orgId} />}
 
         {/* ── Licence Expiry Tracking ────────────────────────────────── */}
-        {overview.orgId && <CertificatesPanel orgId={overview.orgId} />}
+        {overview.orgId && <CertificatesPanel key={overview.orgId} orgId={overview.orgId} />}
 
         </section>}
 

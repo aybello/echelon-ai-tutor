@@ -110,7 +110,10 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
   const [renewing, setRenewing] = useState<CertificateRow | null>(null);
   const [renewExpiry, setRenewExpiry] = useState("");
   const [renewIssued, setRenewIssued] = useState("");
-  const [confirmRemoveId, setConfirmRemoveId] = useState<number | null>(null);
+  const [confirmRemove, setConfirmRemove] = useState<{
+    id: number;
+    expectedVersion: number;
+  } | null>(null);
 
   const [csvText, setCsvText] = useState<string | null>(null);
   const [csvHeaders, setCsvHeaders] = useState<string[]>([]);
@@ -156,7 +159,7 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
   const removeMutation = trpc.certificates.remove.useMutation({
     onSuccess: () => {
       toast.success("Certificate removed.");
-      setConfirmRemoveId(null);
+      setConfirmRemove(null);
       invalidate();
     },
     onError: error => toast.error(error.message),
@@ -260,19 +263,27 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
   };
 
   const onCsvFile = async (file: File) => {
-    const text = await file.text();
-    const rows = parseCsv(text);
-    const headers = rows[0] ?? [];
-    setCsvHeaders(headers);
-    const guessed = guessCertificateCsvMapping(headers);
-    setMapping({
-      operatorName: guessed.operatorName ?? 0,
-      certificateType: guessed.certificateType ?? 1,
-      certificateNumber: guessed.certificateNumber ?? 2,
-      expiresAt: guessed.expiresAt ?? 3,
-      issuedAt: guessed.issuedAt ?? -1,
-    });
-    setCsvText(text);
+    setCsvText(null);
+    setCsvHeaders([]);
+    try {
+      const text = await file.text();
+      const rows = parseCsv(text);
+      const headers = rows[0] ?? [];
+      setCsvHeaders(headers);
+      const guessed = guessCertificateCsvMapping(headers);
+      setMapping({
+        operatorName: guessed.operatorName ?? 0,
+        certificateType: guessed.certificateType ?? 1,
+        certificateNumber: guessed.certificateNumber ?? 2,
+        expiresAt: guessed.expiresAt ?? 3,
+        issuedAt: guessed.issuedAt ?? -1,
+      });
+      setCsvText(text);
+    } catch (error) {
+      toast.error(
+        error instanceof Error ? error.message : "Could not read this CSV file."
+      );
+    }
   };
 
   const submitImport = () => {
@@ -585,7 +596,7 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
                         >
                           <Pencil className="h-3.5 w-3.5" />
                         </Button>
-                        {confirmRemoveId === row.id ? (
+                        {confirmRemove?.id === row.id ? (
                           <Button
                             type="button"
                             size="sm"
@@ -605,7 +616,12 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
                             type="button"
                             size="sm"
                             variant="ghost"
-                            onClick={() => setConfirmRemoveId(row.id)}
+                            onClick={() =>
+                              setConfirmRemove({
+                                id: row.id,
+                                expectedVersion: row.version,
+                              })
+                            }
                           >
                             <Trash2 className="h-3.5 w-3.5" />
                           </Button>

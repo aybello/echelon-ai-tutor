@@ -54,7 +54,7 @@ const dateInput = z.union([z.date(), z.string()]).transform((value, ctx) => {
   }
   return parsed;
 });
-const expectedVersionInput = z.number().int().positive().optional();
+const expectedVersionInput = z.number().int().positive();
 
 export const certificatesRouter = router({
   /** Roster for the manager dashboard, sorted by soonest expiry. */

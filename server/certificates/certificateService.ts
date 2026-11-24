@@ -94,6 +94,12 @@ async function requireDb(): Promise<Db> {
   return db;
 }
 
+function canonicalUtcDay(value: Date): Date {
+  return new Date(
+    Date.UTC(value.getUTCFullYear(), value.getUTCMonth(), value.getUTCDate())
+  );
+}
+
 /** Finds the Echelon user id for an email, or null when there is no account. */
 export async function findUserIdByEmail(
   db: Db,
@@ -199,7 +205,9 @@ export async function createCertificate(
   input: CreateCertificateInput
 ): Promise<CertificateView> {
   const db = await requireDb();
-  if (input.issuedAt && input.issuedAt.getTime() > input.expiresAt.getTime())
+  const expiresAt = canonicalUtcDay(input.expiresAt);
+  const issuedAt = input.issuedAt ? canonicalUtcDay(input.issuedAt) : null;
+  if (issuedAt && issuedAt.getTime() > expiresAt.getTime())
     throw new Error("Issue date must be on or before expiry date.");
   const member = input.operatorEmail
     ? await findActiveOperatorMemberByEmail(db, orgId, input.operatorEmail)
@@ -220,8 +228,8 @@ export async function createCertificate(
       operatorName: input.operatorName.trim(),
       certificateType: input.certificateType,
       certificateNumber: input.certificateNumber.trim(),
-      issuedAt: input.issuedAt ?? null,
-      expiresAt: input.expiresAt,
+      issuedAt,
+      expiresAt,
       createdByUserId,
     })
     .$returningId();
@@ -275,9 +283,17 @@ export async function updateCertificate(
   const existing = await getCertificateForOrg(orgId, certificateId);
   if (!existing) return null;
   const nextIssuedAt =
-    patch.issuedAt !== undefined ? patch.issuedAt : existing.issuedAt;
+    patch.issuedAt !== undefined
+      ? patch.issuedAt
+        ? canonicalUtcDay(patch.issuedAt)
+        : null
+      : existing.issuedAt
+        ? canonicalUtcDay(existing.issuedAt)
+        : null;
   const nextExpiresAt =
-    patch.expiresAt !== undefined ? patch.expiresAt : existing.expiresAt;
+    patch.expiresAt !== undefined
+      ? canonicalUtcDay(patch.expiresAt)
+      : canonicalUtcDay(existing.expiresAt);
   if (nextIssuedAt && nextIssuedAt.getTime() > nextExpiresAt.getTime())
     throw new Error("Issue date must be on or before expiry date.");
   const result = await db
@@ -292,8 +308,8 @@ export async function updateCertificate(
       ...(patch.certificateNumber !== undefined
         ? { certificateNumber: patch.certificateNumber.trim() }
         : {}),
-      ...(patch.issuedAt !== undefined ? { issuedAt: patch.issuedAt } : {}),
-      ...(patch.expiresAt !== undefined ? { expiresAt: patch.expiresAt } : {}),
+      ...(patch.issuedAt !== undefined ? { issuedAt: nextIssuedAt } : {}),
+      ...(patch.expiresAt !== undefined ? { expiresAt: nextExpiresAt } : {}),
       version: (existing.version ?? 1) + 1,
     })
     .where(
@@ -355,10 +371,11 @@ export async function renewCertificate(
 ): Promise<CertificateView | null> {
   const existing = await getCertificateForOrg(orgId, certificateId);
   if (!existing) return null;
-  if (input.expiresAt.getTime() <= existing.expiresAt.getTime())
+  const expiresAt = canonicalUtcDay(input.expiresAt);
+  if (expiresAt.getTime() <= canonicalUtcDay(existing.expiresAt).getTime())
     throw new Error("Renewal expiry must move forward.");
   return updateCertificate(orgId, certificateId, {
-    expiresAt: input.expiresAt,
+    expiresAt,
     ...(input.issuedAt !== undefined ? { issuedAt: input.issuedAt } : {}),
     expectedVersion: input.expectedVersion,
   });
@@ -494,33 +511,11 @@ export async function listCertificatesForOperator(
       .select()
       .from(certificates)
       .where(eq(certificates.organizationId, membership.orgId));
-    const roster = await db
-      .select({ name: organizationMembers.name })
-      .from(organizationMembers)
-      .where(
-        and(
-          eq(organizationMembers.orgId, membership.orgId),
-          eq(organizationMembers.role, "operator"),
-          eq(organizationMembers.status, "assigned")
-        )
-      );
-    const rosterNameCounts = new Map<string, number>();
-    for (const member of roster) {
-      const key = (member.name ?? "").trim().toLowerCase();
-      if (key) rosterNameCounts.set(key, (rosterNameCounts.get(key) ?? 0) + 1);
-    }
     for (const row of orgRows) {
       const explicitMatch = row.operatorMemberId === membership.id;
       const legacyAccountMatch =
         row.operatorMemberId == null && row.operatorUserId === userId;
-      const uniqueLegacyNameMatch =
-        row.operatorMemberId == null &&
-        row.operatorUserId == null &&
-        row.operatorName.trim().toLowerCase() ===
-          (membership.name ?? "").trim().toLowerCase() &&
-        rosterNameCounts.get(row.operatorName.trim().toLowerCase()) === 1;
-      if (explicitMatch || legacyAccountMatch || uniqueLegacyNameMatch)
-        byId.set(row.id, row);
+      if (explicitMatch || legacyAccountMatch) byId.set(row.id, row);
     }
   }
   return [...byId.values()]
