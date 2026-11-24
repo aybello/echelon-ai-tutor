@@ -79,6 +79,7 @@ import { getTeamCourseOptions, courseKeyToLabel } from "@shared/courseRegistry";
 import { isTeamRegion, TEAM_REGION_LABELS } from "@shared/teamPricing";
 import { ProductEmptyState, ProductErrorState, ProductLoadingState } from "@/components/ProductState";
 import { FlexLicencePanel } from "@/components/FlexLicencePanel";
+import { CertificatesPanel } from "@/components/CertificatesPanel";
 import "@/components/StudyWorkspace.css";
 import { filterRosterMembers, getOperatorStudyStage } from "@/lib/managerRoster";
 import { FlexProgressDashboard } from "@/components/FlexProgressDashboard";
@@ -1133,6 +1134,9 @@ export default function OrgDashboard() {
         {/* ── Flex Licences ─────────────────────────────────────────── */}
         {!hasAnnualContract && <p className="text-sm text-slate-600">Teams Flex Course Passes are a one-time purchase. Each licence has its own activate-by date, study term and reporting window, shown below.</p>}
         {overview.orgId && <FlexLicencePanel orgId={overview.orgId} />}
+
+        {/* ── Licence Expiry Tracking ────────────────────────────────── */}
+        {overview.orgId && <CertificatesPanel key={overview.orgId} orgId={overview.orgId} />}
 
         </section>}
 

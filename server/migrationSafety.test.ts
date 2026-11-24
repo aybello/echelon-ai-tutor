@@ -220,6 +220,15 @@ describe("forward-only migration safety", () => {
         standaloneApply: { tables: ["feature_requests"] },
         verifierAllowMissingTables: ["feature_requests"],
       }),
+      expect.objectContaining({
+        version: 85,
+        tag: "0085_licence_expiry_tracking",
+        file: "drizzle/0085_licence_expiry_tracking.sql",
+        sha256: "36cfd33cbe7413ac2aa879abb0755730f62265b3d2d784b560fb0a82355bf3b5",
+        proposedOnly: true,
+        standaloneApply: { tables: ["certificates", "certificate_alerts"] },
+        verifierAllowMissingTables: ["certificates", "certificate_alerts"],
+      }),
     ]);
     const baseline = await loadSchemaContract(manifest.baseline.contract);
     const baselineRaw = await readFile(
@@ -970,7 +979,7 @@ describe("forward-only migration safety", () => {
 
     expect(
       planForwardMigrations(manifest, rows).map(migration => migration.version)
-    ).toEqual([59, 60, 61, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84]);
+    ).toEqual([59, 60, 61, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85]);
   });
 });
 

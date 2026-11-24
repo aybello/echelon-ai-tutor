@@ -1782,3 +1782,67 @@ export const featureRequests = mysqlTable("feature_requests", {
 ]);
 export type FeatureRequest = typeof featureRequests.$inferSelect;
 export type InsertFeatureRequest = typeof featureRequests.$inferInsert;
+
+/**
+ * Operator regulatory certificates tracked for an organization (for example
+ * an Ontario Class 2 Water Treatment certificate). This is the municipality's
+ * own licence-expiry register moved in from their spreadsheet; it is NOT an
+ * Echelon Course Pass (see team_flex_licences) and Echelon does not issue
+ * these certificates.
+ *
+ * operatorUserId is nullable: an operator may not have an Echelon account
+ * yet. operatorName is the name as it appears on the certificate register.
+ * certificateType stores a key from shared/certificates.ts CERTIFICATE_TYPES.
+ */
+export const certificates = mysqlTable("certificates", {
+  id: int("id").autoincrement().primaryKey(),
+  organizationId: int("organizationId").notNull(),
+  operatorUserId: int("operatorUserId"),
+  operatorMemberId: int("operatorMemberId"),
+  operatorName: varchar("operatorName", { length: 200 }).notNull(),
+  certificateType: varchar("certificateType", { length: 64 }).notNull(),
+  certificateNumber: varchar("certificateNumber", { length: 100 }).notNull(),
+  issuedAt: datetime("issuedAt"),
+  expiresAt: datetime("expiresAt").notNull(),
+  /** Manager who created the record; null when the creating identity had no user row. */
+  createdByUserId: int("createdByUserId"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  version: int("version").notNull().default(1),
+}, (t) => [
+  index("certificates_org_expiry_idx").on(t.organizationId, t.expiresAt),
+  uniqueIndex("certificates_org_type_number_idx").on(t.organizationId, t.certificateType, t.certificateNumber),
+  index("certificates_operator_idx").on(t.operatorUserId),
+  index("certificates_expiry_idx").on(t.expiresAt),
+]);
+export type Certificate = typeof certificates.$inferSelect;
+export type InsertCertificate = typeof certificates.$inferInsert;
+
+/**
+ * One row per expiry alert email actually sent. The unique key binds the
+ * certificate, the threshold, the expiry date the alert was for, and the
+ * recipient, so the same threshold never sends twice to the same person for
+ * the same expiry — and a renewal (a new expiresAt) starts a fresh cycle.
+ * recipientEmail is the platform's canonical identity for managers and
+ * operators; recipientUserId is recorded when the recipient has a user row.
+ */
+export const certificateAlerts = mysqlTable("certificate_alerts", {
+  id: int("id").autoincrement().primaryKey(),
+  certificateId: int("certificateId").notNull(),
+  thresholdDays: int("thresholdDays").notNull(), // 90 | 60 | 30 | 7 | 0
+  expiresAt: datetime("expiresAt").notNull(), // the certificate expiry this alert was for
+  recipientUserId: int("recipientUserId"),
+  recipientEmail: varchar("recipientEmail", { length: 320 }).notNull(),
+  status: mysqlEnum("status", ["pending", "sent", "failed", "uncertain"]).notNull().default("pending"),
+  claimToken: varchar("claimToken", { length: 64 }),
+  leaseUntil: datetime("leaseUntil"),
+  attemptCount: int("attemptCount").notNull().default(0),
+  lastError: varchar("lastError", { length: 500 }),
+  sentAt: datetime("sentAt"),
+}, (t) => [
+  uniqueIndex("certificate_alerts_unique_idx").on(t.certificateId, t.thresholdDays, t.expiresAt, t.recipientEmail),
+  index("certificate_alerts_cert_idx").on(t.certificateId),
+  index("certificate_alerts_claim_idx").on(t.status, t.leaseUntil),
+]);
+export type CertificateAlert = typeof certificateAlerts.$inferSelect;
+export type InsertCertificateAlert = typeof certificateAlerts.$inferInsert;

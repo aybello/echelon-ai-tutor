@@ -12,6 +12,7 @@ import { getAllSubscriptionExamTypes } from "../../../server/stripe/subscription
 import SiteNav from "@/components/SiteNav";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import ExamDateTracker from "@/components/ExamDateTracker";
+import { MyCertificates } from "@/components/MyCertificates";
 import { toast } from "sonner";
 import { sanitizeAccountNext } from "./accountAccess";
 
@@ -330,6 +331,9 @@ export default function Account() {
             </Link>
           )}
         </div>
+
+        {/* Operator's own tracked certificates (renders only when some are on file) */}
+        {isAnyAuthenticated && <MyCertificates />}
 
         {/* How it works */}
         {!submittedEmail && (
