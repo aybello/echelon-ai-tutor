@@ -466,18 +466,27 @@ export async function importCertificates(
       const operatorUserId = row.member
         ? await findUserIdByEmail(tx as Db, row.member.email)
         : null;
-      await tx.insert(certificates).values({
-        organizationId: orgId,
-        operatorUserId,
-        operatorMemberId: row.member?.id ?? null,
-        operatorName: row.operatorName,
-        certificateType: row.certificateType,
-        certificateNumber: row.certificateNumber,
-        issuedAt: row.issuedAt,
-        expiresAt: row.expiresAt,
-        createdByUserId,
-      });
-      imported += 1;
+      try {
+        await tx.insert(certificates).values({
+          organizationId: orgId,
+          operatorUserId,
+          operatorMemberId: row.member?.id ?? null,
+          operatorName: row.operatorName,
+          certificateType: row.certificateType,
+          certificateNumber: row.certificateNumber,
+          issuedAt: row.issuedAt ? canonicalUtcDay(row.issuedAt) : null,
+          expiresAt: canonicalUtcDay(row.expiresAt),
+          createdByUserId,
+        });
+        imported += 1;
+      } catch (error) {
+        if (!isCertificateUniqueDuplicate(error)) throw error;
+        failures.push({
+          rowNumber: row.rowNumber,
+          raw: [],
+          reason: "Certificate already exists in this organization.",
+        });
+      }
     }
   });
   return { imported, failures };
@@ -565,6 +574,51 @@ export async function getAlertRecipients(
   };
 }
 
+function isCertificateUniqueDuplicate(error: unknown): boolean {
+  const seen = new Set<unknown>();
+  const visit = (value: unknown): boolean => {
+    if (!value || typeof value !== "object" || seen.has(value)) return false;
+    seen.add(value);
+    const candidate = value as {
+      code?: unknown;
+      errno?: unknown;
+      message?: unknown;
+      cause?: unknown;
+    };
+    const message =
+      typeof candidate.message === "string" ? candidate.message : "";
+    if (
+      (candidate.code === "ER_DUP_ENTRY" || candidate.errno === 1062) &&
+      message.includes("certificates_org_type_number_idx")
+    )
+      return true;
+    return visit(candidate.cause);
+  };
+  return visit(error);
+}
+
+function isCertificateAlertUniqueDuplicate(error: unknown): boolean {
+  const seen = new Set<unknown>();
+  const visit = (value: unknown): boolean => {
+    if (!value || typeof value !== "object" || seen.has(value)) return false;
+    seen.add(value);
+    const candidate = value as {
+      code?: unknown;
+      errno?: unknown;
+      message?: unknown;
+      cause?: unknown;
+    };
+    const code = candidate.code;
+    const errno = candidate.errno;
+    const message =
+      typeof candidate.message === "string" ? candidate.message : "";
+    const indexMatch = message.includes("certificate_alerts_unique_idx");
+    if ((code === "ER_DUP_ENTRY" || errno === 1062) && indexMatch) return true;
+    return visit(candidate.cause);
+  };
+  return visit(error);
+}
+
 export async function claimAlertSend(
   db: Db,
   input: {
@@ -598,8 +652,11 @@ export async function claimAlertSend(
         sentAt: null,
       })
       .$returningId();
-    return inserted[0]?.id ? { id: inserted[0].id, token } : null;
-  } catch {
+    const id = inserted[0]?.id;
+    if (!id) throw new Error("Certificate alert claim returned no insert id.");
+    return { id, token };
+  } catch (error) {
+    if (!isCertificateAlertUniqueDuplicate(error)) throw error;
     const [existing] = await db
       .select()
       .from(certificateAlerts)

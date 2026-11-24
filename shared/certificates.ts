@@ -254,41 +254,62 @@ export function parseCsv(text: string): string[][] {
   const rows: string[][] = [];
   let row: string[] = [];
   let cell = "";
-  let inQuotes = false;
+  let state: "field-start" | "unquoted" | "quoted" | "after-quote" =
+    "field-start";
   const input = text.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+  const finishField = () => {
+    row.push(cell);
+    cell = "";
+    state = "field-start";
+  };
+  const finishRow = () => {
+    finishField();
+    rows.push(row);
+    row = [];
+  };
   for (let i = 0; i < input.length; i += 1) {
     const ch = input[i];
-    if (inQuotes) {
+    if (state === "quoted") {
       if (ch === '"') {
         if (input[i + 1] === '"') {
           cell += '"';
           i += 1;
-        } else {
-          inQuotes = false;
-        }
-      } else {
-        cell += ch;
-      }
+        } else state = "after-quote";
+      } else cell += ch;
       continue;
     }
-    if (ch === '"') {
-      inQuotes = true;
-    } else if (ch === ",") {
-      row.push(cell);
-      cell = "";
-    } else if (ch === "\n") {
-      row.push(cell);
-      cell = "";
-      rows.push(row);
-      row = [];
+    if (state === "after-quote") {
+      if (ch === ",") finishField();
+      else if (ch === "\n") finishRow();
+      else if (!/\s/.test(ch))
+        throw new Error("CSV contains characters after a closing quote.");
+      continue;
+    }
+    if (state === "field-start") {
+      if (ch === '"') state = "quoted";
+      else if (ch === ",") finishField();
+      else if (ch === "\n") finishRow();
+      else {
+        cell += ch;
+        state = "unquoted";
+      }
     } else {
-      cell += ch;
+      if (ch === '"')
+        throw new Error("CSV contains a quote inside an unquoted field.");
+      if (ch === ",") finishField();
+      else if (ch === "\n") finishRow();
+      else cell += ch;
     }
   }
-  if (inQuotes) throw new Error("CSV contains an unclosed quoted field.");
-  row.push(cell);
-  rows.push(row);
-  // Drop trailing fully-empty rows produced by a final newline.
+  if (state === "quoted")
+    throw new Error("CSV contains an unclosed quoted field.");
+  if (
+    state === "after-quote" ||
+    state === "unquoted" ||
+    cell.length > 0 ||
+    row.length > 0
+  )
+    finishRow();
   while (rows.length > 0 && rows[rows.length - 1].every(c => c.trim() === ""))
     rows.pop();
   return rows;

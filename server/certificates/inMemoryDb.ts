@@ -190,7 +190,13 @@ export function createInMemoryDb(
               valuesEqual(existing.expiresAt, values.expiresAt) &&
               existing.recipientEmail === values.recipientEmail
           );
-          if (duplicate) throw new Error("Duplicate certificate alert");
+          if (duplicate)
+            throw Object.assign(
+              new Error(
+                "Duplicate entry for key 'certificate_alerts_unique_idx'"
+              ),
+              { code: "ER_DUP_ENTRY", errno: 1062 }
+            );
         }
         const row: Row = {
           ...values,

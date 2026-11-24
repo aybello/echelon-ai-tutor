@@ -133,6 +133,16 @@ describe("parseCsv", () => {
       ["Smith, Jane", "x"],
     ]);
   });
+
+  it("rejects quotes in unquoted fields and trailing data after a quote", () => {
+    expect(() => parseCsv('a,AB"12"\n')).toThrow(
+      /quote inside an unquoted field/
+    );
+    expect(() => parseCsv('a,"AB"12\n')).toThrow(/after a closing quote/);
+    expect(parseCsv('a,"Smith ""The Boss""\nLine",x')).toEqual([
+      ["a", 'Smith "The Boss"\nLine', "x"],
+    ]);
+  });
 });
 
 describe("validateCertificateCsv", () => {
