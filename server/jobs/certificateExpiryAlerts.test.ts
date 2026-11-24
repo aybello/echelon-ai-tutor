@@ -102,29 +102,72 @@ describe("runCertificateExpiryAlerts", () => {
     expect(second.sent).toBe(0);
     expect(sendCertificateExpiryEmail).not.toHaveBeenCalled();
   });
+  it("does not expand an off-day retry to recipients from an older expiry cycle", async () => {
+    const fake = seedDb();
+    const currentExpiry = fake.rows.certificates.find(row => row.id === 2)!.expiresAt as Date;
+    fake.rows.certificateAlerts.push(
+      {
+        id: 10,
+        certificateId: 2,
+        thresholdDays: 30,
+        expiresAt: new Date(currentExpiry.getTime() + 15 * DAY_MS),
+        recipientUserId: null,
+        recipientEmail: "amy@quintewest.ca",
+        status: "failed",
+        sentAt: null,
+      },
+      {
+        id: 11,
+        certificateId: 2,
+        thresholdDays: 30,
+        expiresAt: currentExpiry,
+        recipientUserId: 2,
+        recipientEmail: "ben@quintewest.ca",
+        status: "failed",
+        sentAt: null,
+      }
+    );
+    sendCertificateExpiryEmail.mockClear();
+    const result = await runCertificateExpiryAlerts();
+    expect(result.errors).toEqual([]);
+    const calls = sendCertificateExpiryEmail.mock.calls
+      .map(([payload]) => payload as unknown as { email: string; certificateNumber: string })
+      .filter(call => call.certificateNumber === "ON-1002");
+    expect(calls).toEqual([
+      expect.objectContaining({
+        email: "ben@quintewest.ca",
+        certificateNumber: "ON-1002",
+      }),
+    ]);
+  });
   it("fences accepted SMTP delivery when sent finalization fails, including after lease expiry", async () => {
     const fake = seedDb();
     sendCertificateExpiryEmail.mockClear();
+    const originalMarkAlertSent = certificateService.markAlertSent;
     const sentSpy = vi
       .spyOn(certificateService, "markAlertSent")
-      .mockResolvedValueOnce(false)
-      .mockImplementation(certificateService.markAlertSent);
+      .mockImplementationOnce(async () => false)
+      .mockImplementation(originalMarkAlertSent);
     const uncertainSpy = vi.spyOn(certificateService, "markAlertUncertain");
-    const first = await runCertificateExpiryAlerts();
-    expect(first.errors.some(error => error.includes("uncertain"))).toBe(true);
-    expect(uncertainSpy).toHaveBeenCalled();
-    const uncertain = fake.rows.certificateAlerts.find(
-      row => row.status === "uncertain"
-    );
-    expect(uncertain).toBeDefined();
-    expect(sendCertificateExpiryEmail).toHaveBeenCalled();
+    try {
+      const first = await runCertificateExpiryAlerts();
+      expect(first.errors.some(error => error.includes("uncertain"))).toBe(true);
+      expect(uncertainSpy).toHaveBeenCalled();
+      const uncertain = fake.rows.certificateAlerts.find(
+        row => row.status === "uncertain"
+      );
+      expect(uncertain).toBeDefined();
+      expect(first.sent).toBe(3);
+      expect(sendCertificateExpiryEmail).toHaveBeenCalledTimes(4);
 
-    if (uncertain) uncertain.leaseUntil = new Date(0);
-    sendCertificateExpiryEmail.mockClear();
-    const second = await runCertificateExpiryAlerts();
-    expect(second.sent).toBe(0);
-    expect(sendCertificateExpiryEmail).not.toHaveBeenCalled();
-    sentSpy.mockRestore();
-    uncertainSpy.mockRestore();
+      if (uncertain) uncertain.leaseUntil = new Date(0);
+      sendCertificateExpiryEmail.mockClear();
+      const second = await runCertificateExpiryAlerts();
+      expect(second.sent).toBe(0);
+      expect(sendCertificateExpiryEmail).not.toHaveBeenCalled();
+    } finally {
+      sentSpy.mockRestore();
+      uncertainSpy.mockRestore();
+    }
   });
 });

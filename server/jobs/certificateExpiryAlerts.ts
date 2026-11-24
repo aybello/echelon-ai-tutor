@@ -78,17 +78,15 @@ export async function runCertificateExpiryAlerts(
       )
     );
   const retryThresholds = new Map<number, Set<number>>();
-  const retryRecipients = new Map<number, Map<number, Set<string>>>();
+  const retryRecipients = new Map<string, Set<string>>();
   for (const alert of retryLedgerRows) {
     const set = retryThresholds.get(alert.certificateId) ?? new Set<number>();
     set.add(alert.thresholdDays);
     retryThresholds.set(alert.certificateId, set);
-    const byThreshold =
-      retryRecipients.get(alert.certificateId) ?? new Map<number, Set<string>>();
-    const emails = byThreshold.get(alert.thresholdDays) ?? new Set<string>();
+    const retryKey = `${alert.certificateId}:${alert.thresholdDays}:${alert.expiresAt.getTime()}`;
+    const emails = retryRecipients.get(retryKey) ?? new Set<string>();
     emails.add(alert.recipientEmail.toLowerCase());
-    byThreshold.set(alert.thresholdDays, emails);
-    retryRecipients.set(alert.certificateId, byThreshold);
+    retryRecipients.set(retryKey, emails);
   }
   const retryCertificates = await Promise.all(
     [...retryThresholds.keys()].map(async certificateId => {
@@ -158,8 +156,8 @@ export async function runCertificateExpiryAlerts(
           : []),
       ];
       const thresholdIsDueToday = dueThreshold === threshold;
-      const retryEmails =
-        retryRecipients.get(currentCert.id)?.get(threshold) ?? new Set<string>();
+      const retryKey = `${currentCert.id}:${threshold}:${currentCert.expiresAt.getTime()}`;
+      const retryEmails = retryRecipients.get(retryKey) ?? new Set<string>();
       const targets = thresholdIsDueToday
         ? allTargets
         : allTargets.filter(target => retryEmails.has(target.email.toLowerCase()));
