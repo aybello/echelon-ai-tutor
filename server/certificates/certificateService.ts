@@ -95,9 +95,9 @@ async function requireDb(): Promise<Db> {
 }
 
 function canonicalUtcDay(value: Date): Date {
-  return new Date(
-    Date.UTC(value.getUTCFullYear(), value.getUTCMonth(), value.getUTCDate())
-  );
+  const result = new Date(value.getTime());
+  result.setUTCHours(0, 0, 0, 0);
+  return result;
 }
 
 /** Finds the Echelon user id for an email, or null when there is no account. */
@@ -325,8 +325,7 @@ export async function updateCertificate(
     (result as any)?.affectedRows ??
       (Array.isArray(result) ? (result as any)[0]?.affectedRows : 0)
   );
-  if (patch.expectedVersion != null && affected !== 1)
-    throw new Error("CERTIFICATE_VERSION_CONFLICT");
+  if (affected !== 1) throw new Error("CERTIFICATE_VERSION_CONFLICT");
   const updated = await getCertificateForOrg(orgId, certificateId);
   return updated ? toCertificateView(updated, new Date()) : null;
 }
