@@ -591,7 +591,11 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
                             size="sm"
                             variant="destructive"
                             onClick={() =>
-                              removeMutation.mutate({ orgId, id: row.id })
+                              removeMutation.mutate({
+                                orgId,
+                                id: row.id,
+                                expectedVersion: row.version,
+                              })
                             }
                           >
                             Confirm remove
@@ -706,6 +710,7 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
                 renewMutation.mutate({
                   orgId,
                   id: renewing.id,
+                  expectedVersion: renewing.version,
                   expiresAt: new Date(`${renewExpiry}T00:00:00Z`),
                   ...(renewIssued
                     ? { issuedAt: new Date(`${renewIssued}T00:00:00Z`) }

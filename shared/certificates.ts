@@ -285,6 +285,7 @@ export function parseCsv(text: string): string[][] {
       cell += ch;
     }
   }
+  if (inQuotes) throw new Error("CSV contains an unclosed quoted field.");
   row.push(cell);
   rows.push(row);
   // Drop trailing fully-empty rows produced by a final newline.
@@ -365,6 +366,24 @@ export function validateCertificateCsv(
     )
   )
     throw new Error("CSV field is too long.");
+  const header = rows[0] ?? [];
+  const requiredIndexes = [
+    mapping.operatorName,
+    mapping.certificateType,
+    mapping.certificateNumber,
+    mapping.expiresAt,
+  ];
+  if (
+    requiredIndexes.some(
+      index => !Number.isInteger(index) || index < 0 || index >= header.length
+    )
+  )
+    throw new Error("CSV mapping points outside the header.");
+  if (
+    mapping.issuedAt != null &&
+    (mapping.issuedAt < 0 || mapping.issuedAt >= header.length)
+  )
+    throw new Error("Issue-date mapping points outside the header.");
   const validRows: CertificateCsvRow[] = [];
   const failures: CertificateCsvFailure[] = [];
   const cellAt = (row: string[], index: number | undefined): string =>

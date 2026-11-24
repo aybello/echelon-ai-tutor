@@ -21,7 +21,8 @@ CREATE TABLE `certificates` (
   PRIMARY KEY (`id`),
   KEY `certificates_org_expiry_idx` (`organizationId`, `expiresAt`),
   KEY `certificates_operator_idx` (`operatorUserId`),
-  KEY `certificates_expiry_idx` (`expiresAt`)
+  KEY `certificates_expiry_idx` (`expiresAt`),
+  UNIQUE KEY `certificates_org_type_number_idx` (`organizationId`, `certificateType`, `certificateNumber`)
 );
 --> statement-breakpoint
 CREATE TABLE `certificate_alerts` (

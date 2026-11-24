@@ -1,4 +1,17 @@
-import { boolean, datetime, decimal, index, int, mediumtext, mysqlEnum, mysqlTable, text, timestamp, varchar, uniqueIndex } from "drizzle-orm/mysql-core";
+import {
+  boolean,
+  datetime,
+  decimal,
+  index,
+  int,
+  mediumtext,
+  mysqlEnum,
+  mysqlTable,
+  text,
+  timestamp,
+  varchar,
+  uniqueIndex,
+} from "drizzle-orm/mysql-core";
 import { sql } from "drizzle-orm";
 
 /**
@@ -55,7 +68,8 @@ export const questionErrorReports = mysqlTable("question_error_reports", {
 });
 
 export type QuestionErrorReport = typeof questionErrorReports.$inferSelect;
-export type InsertQuestionErrorReport = typeof questionErrorReports.$inferInsert;
+export type InsertQuestionErrorReport =
+  typeof questionErrorReports.$inferInsert;
 
 /** Trial email captures — users who hit the 15-question gate and unlocked the full bank */
 export const trialEmails = mysqlTable("trial_emails", {
@@ -95,62 +109,85 @@ export type InsertTrialEmail = typeof trialEmails.$inferInsert;
  * link and the consented email; this table records that so exactly one
  * recovery email can be sent per abandoned session and the outcome measured.
  */
-export const abandonedCheckouts = mysqlTable("abandoned_checkouts", {
-  id: int("id").autoincrement().primaryKey(),
-  /** Expired Stripe checkout session. Unique, so a replayed webhook is idempotent. */
-  stripeSessionId: varchar("stripeSessionId", { length: 128 }).notNull().unique(),
-  email: varchar("email", { length: 320 }).notNull(),
-  productKey: varchar("productKey", { length: 64 }).notNull(),
-  productName: varchar("productName", { length: 128 }),
-  amountCents: int("amountCents").notNull().default(0),
-  currency: varchar("currency", { length: 8 }).notNull().default("cad"),
-  /** Stripe-hosted link that reopens the same cart. Null when Stripe gave none. */
-  recoveryUrl: varchar("recoveryUrl", { length: 512 }),
-  abandonedAt: timestamp("abandonedAt").defaultNow().notNull(),
-  /** Set only after a successful send, so a transient SMTP failure retries. */
-  recoveryEmailSentAt: timestamp("recoveryEmailSentAt"),
-  /** Set when a purchase by this email is later observed. */
-  recoveredAt: timestamp("recoveredAt"),
-  /** One-click opt-out. Honoured before any recovery send. */
-  optOut: boolean("optOut").notNull().default(false),
-  unsubscribeToken: varchar("unsubscribeToken", { length: 64 }),
-}, (t) => [
-  index("abandoned_checkouts_email_idx").on(t.email),
-  index("abandoned_checkouts_pending_idx").on(t.recoveryEmailSentAt, t.abandonedAt),
-  uniqueIndex("abandoned_checkouts_unsubscribeToken_idx").on(t.unsubscribeToken),
-]);
+export const abandonedCheckouts = mysqlTable(
+  "abandoned_checkouts",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    /** Expired Stripe checkout session. Unique, so a replayed webhook is idempotent. */
+    stripeSessionId: varchar("stripeSessionId", { length: 128 })
+      .notNull()
+      .unique(),
+    email: varchar("email", { length: 320 }).notNull(),
+    productKey: varchar("productKey", { length: 64 }).notNull(),
+    productName: varchar("productName", { length: 128 }),
+    amountCents: int("amountCents").notNull().default(0),
+    currency: varchar("currency", { length: 8 }).notNull().default("cad"),
+    /** Stripe-hosted link that reopens the same cart. Null when Stripe gave none. */
+    recoveryUrl: varchar("recoveryUrl", { length: 512 }),
+    abandonedAt: timestamp("abandonedAt").defaultNow().notNull(),
+    /** Set only after a successful send, so a transient SMTP failure retries. */
+    recoveryEmailSentAt: timestamp("recoveryEmailSentAt"),
+    /** Set when a purchase by this email is later observed. */
+    recoveredAt: timestamp("recoveredAt"),
+    /** One-click opt-out. Honoured before any recovery send. */
+    optOut: boolean("optOut").notNull().default(false),
+    unsubscribeToken: varchar("unsubscribeToken", { length: 64 }),
+  },
+  t => [
+    index("abandoned_checkouts_email_idx").on(t.email),
+    index("abandoned_checkouts_pending_idx").on(
+      t.recoveryEmailSentAt,
+      t.abandonedAt
+    ),
+    uniqueIndex("abandoned_checkouts_unsubscribeToken_idx").on(
+      t.unsubscribeToken
+    ),
+  ]
+);
 
 export type AbandonedCheckout = typeof abandonedCheckouts.$inferSelect;
 export type InsertAbandonedCheckout = typeof abandonedCheckouts.$inferInsert;
 
 /** Exam results — saved when a user completes a mock exam */
-export const examResults = mysqlTable("exam_results", {
-  id: int("id").autoincrement().primaryKey(),
-  sessionId: varchar("sessionId", { length: 64 }).notNull(), // anonymous session ID from localStorage
-  userId: int("userId"), // linked user account (null for anonymous)
-  studentEmail: varchar("studentEmail", { length: 255 }), // linked email (null for anonymous)
-  examType: varchar("examType", { length: 32 }).notNull(), // 'class1' | 'wqa'
-  stream: varchar("stream", { length: 32 }), // 'water' | 'wastewater' | null for WQA
-  province: varchar("province", { length: 32 }), // province context for this exam
-  score: int("score").notNull(), // number of correct answers
-  total: int("total").notNull(), // total questions attempted
-  passed: mysqlEnum("passed", ["yes", "no"]).notNull(),
-  timeTakenSeconds: int("timeTakenSeconds"), // how long the exam took
-  moduleBreakdown: text("moduleBreakdown"), // JSON string: { moduleName: { correct, total } }
-  calcOnly: mysqlEnum("calcOnly", ["yes", "no"]).default("no"), // whether this was a Math Practice (calc-only) session
-  createdAt: timestamp("createdAt").defaultNow().notNull(),
-  /** Phase 1: Org-scoped mock results */
-  orgId: int("orgId"),
-  organizationMemberId: int("organizationMemberId"),
-  courseKey: varchar("courseKey", { length: 64 }),
-  bankKey: varchar("bankKey", { length: 64 }),
-}, (t) => [
-  index("exam_results_identity_idx").on(t.studentEmail, t.courseKey, t.createdAt),
-  index("exam_results_org_member_idx").on(t.orgId, t.organizationMemberId, t.createdAt),
-  uniqueIndex("exam_results_session_unique_idx").on(t.sessionId),
-  index("idx_exam_results_email").on(t.studentEmail),
-  index("idx_exam_results_user").on(t.userId),
-]);
+export const examResults = mysqlTable(
+  "exam_results",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    sessionId: varchar("sessionId", { length: 64 }).notNull(), // anonymous session ID from localStorage
+    userId: int("userId"), // linked user account (null for anonymous)
+    studentEmail: varchar("studentEmail", { length: 255 }), // linked email (null for anonymous)
+    examType: varchar("examType", { length: 32 }).notNull(), // 'class1' | 'wqa'
+    stream: varchar("stream", { length: 32 }), // 'water' | 'wastewater' | null for WQA
+    province: varchar("province", { length: 32 }), // province context for this exam
+    score: int("score").notNull(), // number of correct answers
+    total: int("total").notNull(), // total questions attempted
+    passed: mysqlEnum("passed", ["yes", "no"]).notNull(),
+    timeTakenSeconds: int("timeTakenSeconds"), // how long the exam took
+    moduleBreakdown: text("moduleBreakdown"), // JSON string: { moduleName: { correct, total } }
+    calcOnly: mysqlEnum("calcOnly", ["yes", "no"]).default("no"), // whether this was a Math Practice (calc-only) session
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    /** Phase 1: Org-scoped mock results */
+    orgId: int("orgId"),
+    organizationMemberId: int("organizationMemberId"),
+    courseKey: varchar("courseKey", { length: 64 }),
+    bankKey: varchar("bankKey", { length: 64 }),
+  },
+  t => [
+    index("exam_results_identity_idx").on(
+      t.studentEmail,
+      t.courseKey,
+      t.createdAt
+    ),
+    index("exam_results_org_member_idx").on(
+      t.orgId,
+      t.organizationMemberId,
+      t.createdAt
+    ),
+    uniqueIndex("exam_results_session_unique_idx").on(t.sessionId),
+    index("idx_exam_results_email").on(t.studentEmail),
+    index("idx_exam_results_user").on(t.userId),
+  ]
+);
 
 export type ExamResult = typeof examResults.$inferSelect;
 export type InsertExamResult = typeof examResults.$inferInsert;
@@ -162,7 +199,9 @@ export const purchases = mysqlTable("purchases", {
   productKey: varchar("productKey", { length: 64 }).notNull(), // e.g. 'oit', 'bundle-all'
   productName: varchar("productName", { length: 128 }).notNull(),
   amountCAD: int("amountCAD").notNull(), // in cents
-  stripeSessionId: varchar("stripeSessionId", { length: 128 }).notNull().unique(),
+  stripeSessionId: varchar("stripeSessionId", { length: 128 })
+    .notNull()
+    .unique(),
   stripePaymentIntentId: varchar("stripePaymentIntentId", { length: 128 }),
   province: varchar("province", { length: 32 }), // province at time of purchase
   utmSource: varchar("utmSource", { length: 128 }),
@@ -192,76 +231,130 @@ export type InsertPurchase = typeof purchases.$inferInsert;
  * and no application code may create purchases or subscriptions from it without
  * a separately approved, idempotent import operation.
  */
-export const customerRecoveryEvidence = mysqlTable("customer_recovery_evidence", {
-  id: int("id").autoincrement().primaryKey(),
-  /** Stable, non-secret evidence key, e.g. `stripe:pi_123` or an archive-row digest. */
-  sourceEvidenceKey: varchar("sourceEvidenceKey", { length: 191 }).notNull(),
-  sourceType: mysqlEnum("sourceType", ["stripe_payment", "stripe_checkout", "manual_document"]).notNull(),
-  /** Reference to a private archive manifest only, never a public file URL. */
-  sourceArchiveRef: varchar("sourceArchiveRef", { length: 191 }).notNull(),
-  stripePaymentIntentId: varchar("stripePaymentIntentId", { length: 128 }),
-  stripeCheckoutSessionId: varchar("stripeCheckoutSessionId", { length: 128 }),
-  stripeCustomerId: varchar("stripeCustomerId", { length: 128 }),
-  customerEmail: varchar("customerEmail", { length: 320 }).notNull(),
-  normalizedEmail: varchar("normalizedEmail", { length: 320 }).notNull(),
-  customerName: varchar("customerName", { length: 128 }),
-  amountMinor: int("amountMinor").notNull(),
-  currency: varchar("currency", { length: 3 }).notNull(),
-  paymentStatus: mysqlEnum("paymentStatus", ["succeeded", "refunded", "disputed", "unknown"]).notNull(),
-  paymentCreatedAt: timestamp("paymentCreatedAt"),
-  /** Evidence categorization only. This field never grants a product entitlement. */
-  recoverySubjectType: mysqlEnum("recoverySubjectType", ["individual", "organization_manager"]),
-  /** Private review context, not an organization record. */
-  recoveryOrganizationName: varchar("recoveryOrganizationName", { length: 128 }),
-  recoveryOrganizationGroup: mysqlEnum("recoveryOrganizationGroup", ["treatment", "distribution", "unspecified"]),
-  /** May be blank until the source seat count is reconciled. Never creates licences. */
-  recoverySeatCount: int("recoverySeatCount"),
-  candidateProductKey: varchar("candidateProductKey", { length: 64 }),
-  candidateAccessExpiresAt: timestamp("candidateAccessExpiresAt"),
-  /** staged → mapped → claim_verified → approved; rejected and imported are terminal. */
-  reviewStatus: mysqlEnum("reviewStatus", ["staged", "mapped", "claim_verified", "approved", "rejected", "imported"]).notNull().default("staged"),
-  claimVerifiedAt: timestamp("claimVerifiedAt"),
-  reviewedByUserId: int("reviewedByUserId"),
-  reviewedAt: timestamp("reviewedAt"),
-  reviewNote: text("reviewNote"),
-  importedPurchaseId: int("importedPurchaseId"),
-  importedAt: timestamp("importedAt"),
-  createdAt: timestamp("createdAt").defaultNow().notNull(),
-  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
-}, (t) => [
-  uniqueIndex("customer_recovery_evidence_source_key_unique").on(t.sourceEvidenceKey),
-  uniqueIndex("customer_recovery_evidence_payment_intent_unique").on(t.stripePaymentIntentId),
-  uniqueIndex("customer_recovery_evidence_checkout_session_unique").on(t.stripeCheckoutSessionId),
-  index("customer_recovery_evidence_status_idx").on(t.reviewStatus, t.createdAt),
-  index("customer_recovery_evidence_email_idx").on(t.normalizedEmail),
-]);
+export const customerRecoveryEvidence = mysqlTable(
+  "customer_recovery_evidence",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    /** Stable, non-secret evidence key, e.g. `stripe:pi_123` or an archive-row digest. */
+    sourceEvidenceKey: varchar("sourceEvidenceKey", { length: 191 }).notNull(),
+    sourceType: mysqlEnum("sourceType", [
+      "stripe_payment",
+      "stripe_checkout",
+      "manual_document",
+    ]).notNull(),
+    /** Reference to a private archive manifest only, never a public file URL. */
+    sourceArchiveRef: varchar("sourceArchiveRef", { length: 191 }).notNull(),
+    stripePaymentIntentId: varchar("stripePaymentIntentId", { length: 128 }),
+    stripeCheckoutSessionId: varchar("stripeCheckoutSessionId", {
+      length: 128,
+    }),
+    stripeCustomerId: varchar("stripeCustomerId", { length: 128 }),
+    customerEmail: varchar("customerEmail", { length: 320 }).notNull(),
+    normalizedEmail: varchar("normalizedEmail", { length: 320 }).notNull(),
+    customerName: varchar("customerName", { length: 128 }),
+    amountMinor: int("amountMinor").notNull(),
+    currency: varchar("currency", { length: 3 }).notNull(),
+    paymentStatus: mysqlEnum("paymentStatus", [
+      "succeeded",
+      "refunded",
+      "disputed",
+      "unknown",
+    ]).notNull(),
+    paymentCreatedAt: timestamp("paymentCreatedAt"),
+    /** Evidence categorization only. This field never grants a product entitlement. */
+    recoverySubjectType: mysqlEnum("recoverySubjectType", [
+      "individual",
+      "organization_manager",
+    ]),
+    /** Private review context, not an organization record. */
+    recoveryOrganizationName: varchar("recoveryOrganizationName", {
+      length: 128,
+    }),
+    recoveryOrganizationGroup: mysqlEnum("recoveryOrganizationGroup", [
+      "treatment",
+      "distribution",
+      "unspecified",
+    ]),
+    /** May be blank until the source seat count is reconciled. Never creates licences. */
+    recoverySeatCount: int("recoverySeatCount"),
+    candidateProductKey: varchar("candidateProductKey", { length: 64 }),
+    candidateAccessExpiresAt: timestamp("candidateAccessExpiresAt"),
+    /** staged → mapped → claim_verified → approved; rejected and imported are terminal. */
+    reviewStatus: mysqlEnum("reviewStatus", [
+      "staged",
+      "mapped",
+      "claim_verified",
+      "approved",
+      "rejected",
+      "imported",
+    ])
+      .notNull()
+      .default("staged"),
+    claimVerifiedAt: timestamp("claimVerifiedAt"),
+    reviewedByUserId: int("reviewedByUserId"),
+    reviewedAt: timestamp("reviewedAt"),
+    reviewNote: text("reviewNote"),
+    importedPurchaseId: int("importedPurchaseId"),
+    importedAt: timestamp("importedAt"),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  },
+  t => [
+    uniqueIndex("customer_recovery_evidence_source_key_unique").on(
+      t.sourceEvidenceKey
+    ),
+    uniqueIndex("customer_recovery_evidence_payment_intent_unique").on(
+      t.stripePaymentIntentId
+    ),
+    uniqueIndex("customer_recovery_evidence_checkout_session_unique").on(
+      t.stripeCheckoutSessionId
+    ),
+    index("customer_recovery_evidence_status_idx").on(
+      t.reviewStatus,
+      t.createdAt
+    ),
+    index("customer_recovery_evidence_email_idx").on(t.normalizedEmail),
+  ]
+);
 
-export type CustomerRecoveryEvidence = typeof customerRecoveryEvidence.$inferSelect;
-export type InsertCustomerRecoveryEvidence = typeof customerRecoveryEvidence.$inferInsert;
+export type CustomerRecoveryEvidence =
+  typeof customerRecoveryEvidence.$inferSelect;
+export type InsertCustomerRecoveryEvidence =
+  typeof customerRecoveryEvidence.$inferInsert;
 
 /**
  * Durable, append-only recovery batches for explicitly approved exceptional
  * organization restoration. They bind a private source archive, owner approval,
  * preflight plan and post-commit output without reusing live Stripe identifiers.
  */
-export const customerRecoveryBatches = mysqlTable("customer_recovery_batches", {
-  id: int("id").autoincrement().primaryKey(),
-  recoveryKey: varchar("recoveryKey", { length: 191 }).notNull(),
-  planDigest: varchar("planDigest", { length: 64 }).notNull(),
-  archiveSha256: varchar("archiveSha256", { length: 64 }).notNull(),
-  authorizationRef: varchar("authorizationRef", { length: 255 }).notNull(),
-  confirmationTokenSha256: varchar("confirmationTokenSha256", { length: 64 }).notNull(),
-  scriptVersion: varchar("scriptVersion", { length: 32 }).notNull(),
-  beforeSnapshotSha256: varchar("beforeSnapshotSha256", { length: 64 }).notNull(),
-  backupArtifactPath: varchar("backupArtifactPath", { length: 512 }).notNull(),
-  status: mysqlEnum("status", ["applying", "applied"]).notNull(),
-  outputDigest: varchar("outputDigest", { length: 64 }),
-  appliedAt: timestamp("appliedAt"),
-  createdAt: timestamp("createdAt").defaultNow().notNull(),
-}, (t) => [
-  uniqueIndex("customer_recovery_batches_key_unique").on(t.recoveryKey),
-  uniqueIndex("customer_recovery_batches_plan_unique").on(t.planDigest),
-]);
+export const customerRecoveryBatches = mysqlTable(
+  "customer_recovery_batches",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    recoveryKey: varchar("recoveryKey", { length: 191 }).notNull(),
+    planDigest: varchar("planDigest", { length: 64 }).notNull(),
+    archiveSha256: varchar("archiveSha256", { length: 64 }).notNull(),
+    authorizationRef: varchar("authorizationRef", { length: 255 }).notNull(),
+    confirmationTokenSha256: varchar("confirmationTokenSha256", {
+      length: 64,
+    }).notNull(),
+    scriptVersion: varchar("scriptVersion", { length: 32 }).notNull(),
+    beforeSnapshotSha256: varchar("beforeSnapshotSha256", {
+      length: 64,
+    }).notNull(),
+    backupArtifactPath: varchar("backupArtifactPath", {
+      length: 512,
+    }).notNull(),
+    status: mysqlEnum("status", ["applying", "applied"]).notNull(),
+    outputDigest: varchar("outputDigest", { length: 64 }),
+    appliedAt: timestamp("appliedAt"),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+  },
+  t => [
+    uniqueIndex("customer_recovery_batches_key_unique").on(t.recoveryKey),
+    uniqueIndex("customer_recovery_batches_plan_unique").on(t.planDigest),
+  ]
+);
 
 export type CustomerRecoveryBatch = typeof customerRecoveryBatches.$inferSelect;
 
@@ -269,27 +362,43 @@ export type CustomerRecoveryBatch = typeof customerRecoveryBatches.$inferSelect;
  * Immutable evidence-to-output mapping for organization recovery. This is an
  * audit record only; organization and manager records are created separately.
  */
-export const customerRecoveryImportItems = mysqlTable("customer_recovery_import_items", {
-  id: int("id").autoincrement().primaryKey(),
-  batchId: int("batchId").notNull(),
-  evidenceId: int("evidenceId").notNull(),
-  organizationId: int("organizationId").notNull(),
-  managerMemberId: int("managerMemberId").notNull(),
-  recoveryGroup: mysqlEnum("recoveryGroup", ["treatment", "distribution"]).notNull(),
-  seatCount: int("seatCount").notNull(),
-  termStart: datetime("termStart").notNull(),
-  termEnd: datetime("termEnd").notNull(),
-  externalReference: varchar("externalReference", { length: 191 }).notNull(),
-  createdAt: timestamp("createdAt").defaultNow().notNull(),
-}, (t) => [
-  uniqueIndex("customer_recovery_import_items_evidence_unique").on(t.evidenceId),
-  uniqueIndex("customer_recovery_import_items_organization_unique").on(t.organizationId),
-  uniqueIndex("customer_recovery_import_items_manager_unique").on(t.managerMemberId),
-  uniqueIndex("customer_recovery_import_items_reference_unique").on(t.externalReference),
-  index("customer_recovery_import_items_batch_idx").on(t.batchId),
-]);
+export const customerRecoveryImportItems = mysqlTable(
+  "customer_recovery_import_items",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    batchId: int("batchId").notNull(),
+    evidenceId: int("evidenceId").notNull(),
+    organizationId: int("organizationId").notNull(),
+    managerMemberId: int("managerMemberId").notNull(),
+    recoveryGroup: mysqlEnum("recoveryGroup", [
+      "treatment",
+      "distribution",
+    ]).notNull(),
+    seatCount: int("seatCount").notNull(),
+    termStart: datetime("termStart").notNull(),
+    termEnd: datetime("termEnd").notNull(),
+    externalReference: varchar("externalReference", { length: 191 }).notNull(),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+  },
+  t => [
+    uniqueIndex("customer_recovery_import_items_evidence_unique").on(
+      t.evidenceId
+    ),
+    uniqueIndex("customer_recovery_import_items_organization_unique").on(
+      t.organizationId
+    ),
+    uniqueIndex("customer_recovery_import_items_manager_unique").on(
+      t.managerMemberId
+    ),
+    uniqueIndex("customer_recovery_import_items_reference_unique").on(
+      t.externalReference
+    ),
+    index("customer_recovery_import_items_batch_idx").on(t.batchId),
+  ]
+);
 
-export type CustomerRecoveryImportItem = typeof customerRecoveryImportItems.$inferSelect;
+export type CustomerRecoveryImportItem =
+  typeof customerRecoveryImportItems.$inferSelect;
 
 /** Active purchase fields; deliberately excludes the retired welcome marker. */
 export const purchaseReadColumns = {
@@ -319,12 +428,28 @@ export const subscriptions = mysqlTable("subscriptions", {
   id: int("id").autoincrement().primaryKey(),
   userId: int("userId"), // null for guest subscriptions (email-only)
   email: varchar("email", { length: 320 }).notNull(),
-  tier: mysqlEnum("tier", ["class1", "class2", "class3", "class4", "all-access"]).notNull(),
+  tier: mysqlEnum("tier", [
+    "class1",
+    "class2",
+    "class3",
+    "class4",
+    "all-access",
+  ]).notNull(),
   province: mysqlEnum("province", ["ontario", "western"]).notNull(),
   /** Stripe ID for self-serve rows; deterministic org-{orgId}-{email}-{courseKey} ID for org-managed rows. */
-  stripeSubscriptionId: varchar("stripeSubscriptionId", { length: 128 }).notNull().unique(),
+  stripeSubscriptionId: varchar("stripeSubscriptionId", { length: 128 })
+    .notNull()
+    .unique(),
   stripeCustomerId: varchar("stripeCustomerId", { length: 128 }),
-  status: mysqlEnum("status", ["active", "cancelled", "past_due", "unpaid", "expired"]).notNull().default("active"),
+  status: mysqlEnum("status", [
+    "active",
+    "cancelled",
+    "past_due",
+    "unpaid",
+    "expired",
+  ])
+    .notNull()
+    .default("active"),
   currentPeriodStart: timestamp("currentPeriodStart").notNull(),
   currentPeriodEnd: timestamp("currentPeriodEnd").notNull(),
   /** Set when this row is org-managed (seat granted by an org). Null for self-serve subscriptions. */
@@ -347,20 +472,28 @@ export type Subscription = typeof subscriptions.$inferSelect;
 export type InsertSubscription = typeof subscriptions.$inferInsert;
 
 /** Contact form submissions — logged for searchable record of all inquiries */
-export const contactSubmissions = mysqlTable("contact_submissions", {
-  id: int("id").autoincrement().primaryKey(),
-  name: varchar("name", { length: 128 }).notNull(),
-  email: varchar("email", { length: 320 }).notNull(),
-  subject: varchar("subject", { length: 128 }).notNull(),
-  message: text("message").notNull(),
-  // Nullable additive fields preserve every historical general-contact row.
-  requestKey: varchar("requestKey", { length: 36 }),
-  organization: varchar("organization", { length: 128 }),
-  partnershipType: varchar("partnershipType", { length: 64 }),
-  followUpStatus: varchar("followUpStatus", { length: 16 }).default("new").notNull(),
-  notificationStatus: varchar("notificationStatus", { length: 16 }).default("pending").notNull(),
-  createdAt: timestamp("createdAt").defaultNow().notNull(),
-}, table => [uniqueIndex("contact_request_key_unique").on(table.requestKey)]);
+export const contactSubmissions = mysqlTable(
+  "contact_submissions",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    name: varchar("name", { length: 128 }).notNull(),
+    email: varchar("email", { length: 320 }).notNull(),
+    subject: varchar("subject", { length: 128 }).notNull(),
+    message: text("message").notNull(),
+    // Nullable additive fields preserve every historical general-contact row.
+    requestKey: varchar("requestKey", { length: 36 }),
+    organization: varchar("organization", { length: 128 }),
+    partnershipType: varchar("partnershipType", { length: 64 }),
+    followUpStatus: varchar("followUpStatus", { length: 16 })
+      .default("new")
+      .notNull(),
+    notificationStatus: varchar("notificationStatus", { length: 16 })
+      .default("pending")
+      .notNull(),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+  },
+  table => [uniqueIndex("contact_request_key_unique").on(table.requestKey)]
+);
 
 export type ContactSubmission = typeof contactSubmissions.$inferSelect;
 export type InsertContactSubmission = typeof contactSubmissions.$inferInsert;
@@ -371,78 +504,96 @@ export const flashcardProgress = mysqlTable("flashcard_progress", {
   email: varchar("email", { length: 320 }).notNull(),
   examType: varchar("examType", { length: 64 }).notNull(), // e.g. 'class1-water', 'wpi-class2-wastewater'
   knownIds: text("knownIds").notNull(), // JSON array of card IDs marked as known (TiDB does not allow TEXT defaults)
-  totalCards: int("totalCards").notNull().default(0),  // total cards in this deck at time of save
+  totalCards: int("totalCards").notNull().default(0), // total cards in this deck at time of save
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });
 export type FlashcardProgressRow = typeof flashcardProgress.$inferSelect;
 export type InsertFlashcardProgress = typeof flashcardProgress.$inferInsert;
 
 /** Exam dates — optional exam date set by customer per product, used for countdown + email reminders */
-export const examDates = mysqlTable("exam_dates", {
-  id: int("id").autoincrement().primaryKey(),
-  email: varchar("email", { length: 320 }).notNull(),
-  productKey: varchar("productKey", { length: 64 }).notNull(), // e.g. 'class1-water', 'oit'
-  examDate: timestamp("examDate").notNull(), // the date of their exam
-  remindersSent: text("remindersSent").notNull(), // JSON array of intervals already sent e.g. [30, 14]
-  createdAt: timestamp("createdAt").defaultNow().notNull(),
-  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
-  /** Phase 1: Org-scoped exam dates */
-  orgId: int("orgId"),
-  organizationMemberId: int("organizationMemberId"),
-  courseKey: varchar("courseKey", { length: 64 }),
-}, (t) => [
-  uniqueIndex("exam_dates_email_product_unique").on(t.email, t.productKey),
-  index("exam_dates_org_member_idx").on(t.orgId, t.organizationMemberId, t.courseKey, t.examDate),
-]);
+export const examDates = mysqlTable(
+  "exam_dates",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    email: varchar("email", { length: 320 }).notNull(),
+    productKey: varchar("productKey", { length: 64 }).notNull(), // e.g. 'class1-water', 'oit'
+    examDate: timestamp("examDate").notNull(), // the date of their exam
+    remindersSent: text("remindersSent").notNull(), // JSON array of intervals already sent e.g. [30, 14]
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+    /** Phase 1: Org-scoped exam dates */
+    orgId: int("orgId"),
+    organizationMemberId: int("organizationMemberId"),
+    courseKey: varchar("courseKey", { length: 64 }),
+  },
+  t => [
+    uniqueIndex("exam_dates_email_product_unique").on(t.email, t.productKey),
+    index("exam_dates_org_member_idx").on(
+      t.orgId,
+      t.organizationMemberId,
+      t.courseKey,
+      t.examDate
+    ),
+  ]
+);
 export type ExamDate = typeof examDates.$inferSelect;
 export type InsertExamDate = typeof examDates.$inferInsert;
 
 /** Question attempts — logs every quiz answer for topic tracking, missed questions, and agentic features */
-export const questionAttempts = mysqlTable("question_attempts", {
-  id: int("id").autoincrement().primaryKey(),
-  userId: int("userId"), // null for guest users
-  guestToken: varchar("guestToken", { length: 64 }), // localStorage token for guest tracking
-  studentEmail: varchar("studentEmail", { length: 320 }), // purchase/trial email for non-OAuth users
-  examType: varchar("examType", { length: 64 }).notNull(), // e.g. 'oit', 'class1-water', 'wpi-class2-wastewater'
-  topic: varchar("topic", { length: 128 }).notNull(), // e.g. 'Disinfection', 'Hydraulics'
-  questionId: int("questionId").notNull(),
-  correct: mysqlEnum("correct", ["yes", "no"]).notNull(),
-  difficulty: varchar("difficulty", { length: 16 }), // 'easy' | 'medium' | 'hard'
-  quizMode: varchar("quizMode", { length: 32 }).default("standard"), // 'standard' | 'quick10' | 'missed' | 'qotd'
-  /** Confidence self-rating — set by the student after answering. Used in readiness scoring and review prioritization. */
-  confidence: mysqlEnum("confidence", ["low", "medium", "high"]),
-  /** Bookmarked — student can flag a question for later review. */
-  bookmarked: mysqlEnum("bookmarked", ["yes", "no"]).default("no"),
-  /** Issue Q: client-generated UUID identifying the quiz session this attempt belongs to.
-   *  Nullable for historic rows; new rows always include it. */
-  sessionId: varchar("sessionId", { length: 36 }),
-  /** One answer/save operation, distinct from the multi-answer quiz session. */
-  operationId: varchar("operationId", { length: 36 }),
-  /** SHA-256 binding to the issued actor, receipt and exact submitted payload. */
-  operationPayloadHash: varchar("operationPayloadHash", { length: 64 }),
-  /** Server-scored: the option index the student selected (0-3). */
-  selectedIndex: int("selectedIndex"),
-  /** The bank key for this attempt — used for org analytics scoping. */
-  bankKey: varchar("bankKey", { length: 64 }),
-  /** The course key for this attempt — used for org entitlement scoping. */
-  courseKey: varchar("courseKey", { length: 64 }),
-  /** Org ID for team plan operators — null for individual learners. */
-  orgId: int("orgId"),
-  /** Organization member ID for team plan operators — null for individual learners. */
-  organizationMemberId: int("organizationMemberId"),
-  /** Server-issued Flex membership; null for individual, Annual and legacy study. */
-  flexLicenceId: int("flexLicenceId"),
-  createdAt: timestamp("createdAt").defaultNow().notNull(),
-}, (t) => [
-  // Issue O: composite indexes for the frequent userId/studentEmail + createdAt filter pattern
-  index("qa_userid_createdat_idx").on(t.userId, t.createdAt),
-  index("qa_email_createdat_idx").on(t.studentEmail, t.createdAt),
-  // Issue Q: index for GROUP BY sessionId queries in recentSessions
-  index("qa_flex_licence_created_idx").on(t.flexLicenceId, t.createdAt),
-  index("qa_sessionid_idx").on(t.sessionId),
-  index("qa_org_member_course_created_idx").on(t.orgId, t.organizationMemberId, t.courseKey, t.createdAt),
-  uniqueIndex("qa_operation_id_unique").on(t.operationId),
-]);
+export const questionAttempts = mysqlTable(
+  "question_attempts",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    userId: int("userId"), // null for guest users
+    guestToken: varchar("guestToken", { length: 64 }), // localStorage token for guest tracking
+    studentEmail: varchar("studentEmail", { length: 320 }), // purchase/trial email for non-OAuth users
+    examType: varchar("examType", { length: 64 }).notNull(), // e.g. 'oit', 'class1-water', 'wpi-class2-wastewater'
+    topic: varchar("topic", { length: 128 }).notNull(), // e.g. 'Disinfection', 'Hydraulics'
+    questionId: int("questionId").notNull(),
+    correct: mysqlEnum("correct", ["yes", "no"]).notNull(),
+    difficulty: varchar("difficulty", { length: 16 }), // 'easy' | 'medium' | 'hard'
+    quizMode: varchar("quizMode", { length: 32 }).default("standard"), // 'standard' | 'quick10' | 'missed' | 'qotd'
+    /** Confidence self-rating — set by the student after answering. Used in readiness scoring and review prioritization. */
+    confidence: mysqlEnum("confidence", ["low", "medium", "high"]),
+    /** Bookmarked — student can flag a question for later review. */
+    bookmarked: mysqlEnum("bookmarked", ["yes", "no"]).default("no"),
+    /** Issue Q: client-generated UUID identifying the quiz session this attempt belongs to.
+     *  Nullable for historic rows; new rows always include it. */
+    sessionId: varchar("sessionId", { length: 36 }),
+    /** One answer/save operation, distinct from the multi-answer quiz session. */
+    operationId: varchar("operationId", { length: 36 }),
+    /** SHA-256 binding to the issued actor, receipt and exact submitted payload. */
+    operationPayloadHash: varchar("operationPayloadHash", { length: 64 }),
+    /** Server-scored: the option index the student selected (0-3). */
+    selectedIndex: int("selectedIndex"),
+    /** The bank key for this attempt — used for org analytics scoping. */
+    bankKey: varchar("bankKey", { length: 64 }),
+    /** The course key for this attempt — used for org entitlement scoping. */
+    courseKey: varchar("courseKey", { length: 64 }),
+    /** Org ID for team plan operators — null for individual learners. */
+    orgId: int("orgId"),
+    /** Organization member ID for team plan operators — null for individual learners. */
+    organizationMemberId: int("organizationMemberId"),
+    /** Server-issued Flex membership; null for individual, Annual and legacy study. */
+    flexLicenceId: int("flexLicenceId"),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+  },
+  t => [
+    // Issue O: composite indexes for the frequent userId/studentEmail + createdAt filter pattern
+    index("qa_userid_createdat_idx").on(t.userId, t.createdAt),
+    index("qa_email_createdat_idx").on(t.studentEmail, t.createdAt),
+    // Issue Q: index for GROUP BY sessionId queries in recentSessions
+    index("qa_flex_licence_created_idx").on(t.flexLicenceId, t.createdAt),
+    index("qa_sessionid_idx").on(t.sessionId),
+    index("qa_org_member_course_created_idx").on(
+      t.orgId,
+      t.organizationMemberId,
+      t.courseKey,
+      t.createdAt
+    ),
+    uniqueIndex("qa_operation_id_unique").on(t.operationId),
+  ]
+);
 export type QuestionAttempt = typeof questionAttempts.$inferSelect;
 export type InsertQuestionAttempt = typeof questionAttempts.$inferInsert;
 
@@ -454,43 +605,56 @@ export type InsertQuestionAttempt = typeof questionAttempts.$inferInsert;
  * pre-change question payload here before an existing item is revised, allowing
  * historical attempts to remain interpretable without modifying learner data.
  */
-export const questionContentSnapshots = mysqlTable("question_content_snapshots", {
-  id: int("id").autoincrement().primaryKey(),
-  releaseKey: varchar("releaseKey", { length: 128 }).notNull(),
-  bankKey: varchar("bankKey", { length: 64 }).notNull(),
-  questionId: int("questionId").notNull(),
-  questionNum: int("questionNum").notNull(),
-  sourceContentVersion: int("sourceContentVersion").notNull(),
-  contentHash: varchar("contentHash", { length: 64 }).notNull(),
-  /** JSON before-image of the educational content and governance fields only; no learner data. */
-  payload: mediumtext("payload").notNull(),
-  capturedAt: timestamp("capturedAt").defaultNow().notNull(),
-}, (t) => [
-  uniqueIndex("question_snapshot_release_question_idx").on(t.releaseKey, t.questionId),
-  index("question_snapshot_bank_question_idx").on(t.bankKey, t.questionId),
-]);
-export type QuestionContentSnapshot = typeof questionContentSnapshots.$inferSelect;
-export type InsertQuestionContentSnapshot = typeof questionContentSnapshots.$inferInsert;
+export const questionContentSnapshots = mysqlTable(
+  "question_content_snapshots",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    releaseKey: varchar("releaseKey", { length: 128 }).notNull(),
+    bankKey: varchar("bankKey", { length: 64 }).notNull(),
+    questionId: int("questionId").notNull(),
+    questionNum: int("questionNum").notNull(),
+    sourceContentVersion: int("sourceContentVersion").notNull(),
+    contentHash: varchar("contentHash", { length: 64 }).notNull(),
+    /** JSON before-image of the educational content and governance fields only; no learner data. */
+    payload: mediumtext("payload").notNull(),
+    capturedAt: timestamp("capturedAt").defaultNow().notNull(),
+  },
+  t => [
+    uniqueIndex("question_snapshot_release_question_idx").on(
+      t.releaseKey,
+      t.questionId
+    ),
+    index("question_snapshot_bank_question_idx").on(t.bankKey, t.questionId),
+  ]
+);
+export type QuestionContentSnapshot =
+  typeof questionContentSnapshots.$inferSelect;
+export type InsertQuestionContentSnapshot =
+  typeof questionContentSnapshots.$inferInsert;
 
 /** Student profiles — live topic accuracy snapshot, updated after each quiz session */
-export const studentProfiles = mysqlTable("student_profiles", {
-  id: int("id").autoincrement().primaryKey(),
-  userId: int("userId"), // nullable — email-only (Stripe) students have no userId
-  studentEmail: varchar("studentEmail", { length: 320 }), // purchase/trial email for non-OAuth users
-  examType: varchar("examType", { length: 64 }).notNull(), // primary exam type
-  topicAccuracy: text("topicAccuracy").notNull(), // JSON: { "Disinfection": { correct: 18, total: 22 } } — default '{}' set in app code
-  weakTopics: text("weakTopics").notNull(), // JSON array of topic names with <65% accuracy — default '[]' set in app code
-  strongTopics: text("strongTopics").notNull(), // JSON array of topic names with >80% accuracy — default '[]' set in app code
-  totalAttempts: int("totalAttempts").notNull().default(0),
-  totalSessions: int("totalSessions").notNull().default(0),
-  currentStreak: int("currentStreak").notNull().default(0), // consecutive days active
-  longestStreak: int("longestStreak").notNull().default(0),
-  lastActiveDate: varchar("lastActiveDate", { length: 10 }), // YYYY-MM-DD for streak calculation
-  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
-}, (table) => [
-  uniqueIndex("student_profiles_userId_idx").on(table.userId),
-  uniqueIndex("student_profiles_email_idx").on(table.studentEmail),
-]);
+export const studentProfiles = mysqlTable(
+  "student_profiles",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    userId: int("userId"), // nullable — email-only (Stripe) students have no userId
+    studentEmail: varchar("studentEmail", { length: 320 }), // purchase/trial email for non-OAuth users
+    examType: varchar("examType", { length: 64 }).notNull(), // primary exam type
+    topicAccuracy: text("topicAccuracy").notNull(), // JSON: { "Disinfection": { correct: 18, total: 22 } } — default '{}' set in app code
+    weakTopics: text("weakTopics").notNull(), // JSON array of topic names with <65% accuracy — default '[]' set in app code
+    strongTopics: text("strongTopics").notNull(), // JSON array of topic names with >80% accuracy — default '[]' set in app code
+    totalAttempts: int("totalAttempts").notNull().default(0),
+    totalSessions: int("totalSessions").notNull().default(0),
+    currentStreak: int("currentStreak").notNull().default(0), // consecutive days active
+    longestStreak: int("longestStreak").notNull().default(0),
+    lastActiveDate: varchar("lastActiveDate", { length: 10 }), // YYYY-MM-DD for streak calculation
+    updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  },
+  table => [
+    uniqueIndex("student_profiles_userId_idx").on(table.userId),
+    uniqueIndex("student_profiles_email_idx").on(table.studentEmail),
+  ]
+);
 export type StudentProfile = typeof studentProfiles.$inferSelect;
 export type InsertStudentProfile = typeof studentProfiles.$inferInsert;
 
@@ -499,54 +663,80 @@ export type InsertStudentProfile = typeof studentProfiles.$inferInsert;
  * from entitlements: completing or skipping onboarding can never grant or
  * revoke paid access.
  */
-export const learnerOnboarding = mysqlTable("learner_onboarding", {
-  id: int("id").autoincrement().primaryKey(),
-  userId: int("userId"),
-  studentEmail: varchar("studentEmail", { length: 320 }),
-  orgId: int("orgId"),
-  organizationMemberId: int("organizationMemberId"),
-  courseKey: varchar("courseKey", { length: 64 }).notNull(),
-  examDate: timestamp("examDate"),
-  studyDaysPerWeek: int("studyDaysPerWeek").notNull().default(3),
-  sessionMinutes: int("sessionMinutes").notNull().default(25),
-  confidence: varchar("confidence", { length: 24 }).notNull().default("somewhat"),
-  status: varchar("status", { length: 24 }).notNull().default("profile_started"),
-  diagnosticStartedAt: timestamp("diagnosticStartedAt"),
-  completedAt: timestamp("completedAt"),
-  createdAt: timestamp("createdAt").defaultNow().notNull(),
-  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
-}, (table) => [
-  uniqueIndex("learner_onboarding_user_course_idx").on(table.userId, table.courseKey),
-  uniqueIndex("learner_onboarding_email_course_idx").on(table.studentEmail, table.courseKey),
-  index("learner_onboarding_org_status_idx").on(table.orgId, table.status),
-  index("learner_onboarding_member_idx").on(table.organizationMemberId),
-]);
+export const learnerOnboarding = mysqlTable(
+  "learner_onboarding",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    userId: int("userId"),
+    studentEmail: varchar("studentEmail", { length: 320 }),
+    orgId: int("orgId"),
+    organizationMemberId: int("organizationMemberId"),
+    courseKey: varchar("courseKey", { length: 64 }).notNull(),
+    examDate: timestamp("examDate"),
+    studyDaysPerWeek: int("studyDaysPerWeek").notNull().default(3),
+    sessionMinutes: int("sessionMinutes").notNull().default(25),
+    confidence: varchar("confidence", { length: 24 })
+      .notNull()
+      .default("somewhat"),
+    status: varchar("status", { length: 24 })
+      .notNull()
+      .default("profile_started"),
+    diagnosticStartedAt: timestamp("diagnosticStartedAt"),
+    completedAt: timestamp("completedAt"),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  },
+  table => [
+    uniqueIndex("learner_onboarding_user_course_idx").on(
+      table.userId,
+      table.courseKey
+    ),
+    uniqueIndex("learner_onboarding_email_course_idx").on(
+      table.studentEmail,
+      table.courseKey
+    ),
+    index("learner_onboarding_org_status_idx").on(table.orgId, table.status),
+    index("learner_onboarding_member_idx").on(table.organizationMemberId),
+  ]
+);
 export type LearnerOnboarding = typeof learnerOnboarding.$inferSelect;
 export type InsertLearnerOnboarding = typeof learnerOnboarding.$inferInsert;
 
 /** Server-scored starting baselines. Scores stay out of client-side analytics. */
-export const diagnosticSessions = mysqlTable("diagnostic_sessions", {
-  id: int("id").autoincrement().primaryKey(),
-  sessionId: varchar("sessionId", { length: 36 }).notNull().unique(),
-  userId: int("userId"),
-  studentEmail: varchar("studentEmail", { length: 320 }),
-  orgId: int("orgId"),
-  organizationMemberId: int("organizationMemberId"),
-  courseKey: varchar("courseKey", { length: 64 }).notNull(),
-  correct: int("correct").notNull(),
-  total: int("total").notNull(),
-  score: int("score").notNull(),
-  label: varchar("label", { length: 64 }).notNull(),
-  weakTopics: text("weakTopics").notNull(),
-  strongTopics: text("strongTopics").notNull(),
-  topicBreakdown: text("topicBreakdown").notNull(),
-  completedAt: timestamp("completedAt").defaultNow().notNull(),
-}, (table) => [
-  index("diagnostic_identity_time_idx").on(table.studentEmail, table.courseKey, table.completedAt),
-  index("diagnostic_user_time_idx").on(table.userId, table.courseKey, table.completedAt),
-  index("diagnostic_org_time_idx").on(table.orgId, table.completedAt),
-  index("diagnostic_member_idx").on(table.organizationMemberId),
-]);
+export const diagnosticSessions = mysqlTable(
+  "diagnostic_sessions",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    sessionId: varchar("sessionId", { length: 36 }).notNull().unique(),
+    userId: int("userId"),
+    studentEmail: varchar("studentEmail", { length: 320 }),
+    orgId: int("orgId"),
+    organizationMemberId: int("organizationMemberId"),
+    courseKey: varchar("courseKey", { length: 64 }).notNull(),
+    correct: int("correct").notNull(),
+    total: int("total").notNull(),
+    score: int("score").notNull(),
+    label: varchar("label", { length: 64 }).notNull(),
+    weakTopics: text("weakTopics").notNull(),
+    strongTopics: text("strongTopics").notNull(),
+    topicBreakdown: text("topicBreakdown").notNull(),
+    completedAt: timestamp("completedAt").defaultNow().notNull(),
+  },
+  table => [
+    index("diagnostic_identity_time_idx").on(
+      table.studentEmail,
+      table.courseKey,
+      table.completedAt
+    ),
+    index("diagnostic_user_time_idx").on(
+      table.userId,
+      table.courseKey,
+      table.completedAt
+    ),
+    index("diagnostic_org_time_idx").on(table.orgId, table.completedAt),
+    index("diagnostic_member_idx").on(table.organizationMemberId),
+  ]
+);
 export type DiagnosticSession = typeof diagnosticSessions.$inferSelect;
 export type InsertDiagnosticSession = typeof diagnosticSessions.$inferInsert;
 
@@ -565,44 +755,56 @@ export type QotdCompletion = typeof qotdCompletions.$inferSelect;
 export type InsertQotdCompletion = typeof qotdCompletions.$inferInsert;
 
 /** Questions — all 14,000+ exam questions stored in the database instead of JS bundles */
-export const questions = mysqlTable("questions", {
-  id: int("id").autoincrement().primaryKey(),
-  bankKey: varchar("bankKey", { length: 64 }).notNull(),
+export const questions = mysqlTable(
+  "questions",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    bankKey: varchar("bankKey", { length: 64 }).notNull(),
     // e.g. "class1-water", "wpi-class2-wastewater-coll", "wqa"
-  questionNum: int("questionNum").notNull(),
+    questionNum: int("questionNum").notNull(),
     // original per-bank sequential ID (1, 2, 3...) — matches questionAttempts.questionId
-  module: varchar("module", { length: 128 }).notNull(),
-  difficulty: varchar("difficulty", { length: 16 }),
+    module: varchar("module", { length: 128 }).notNull(),
+    difficulty: varchar("difficulty", { length: 16 }),
     // null for WPI banks that don't have difficulty
-  question: text("question").notNull(),
-  options: text("options").notNull(),
+    question: text("question").notNull(),
+    options: text("options").notNull(),
     // JSON array of option strings: ["option1", "option2", "option3", "option4"]
-  correctIndex: int("correctIndex").notNull(),
+    correctIndex: int("correctIndex").notNull(),
     // 0=A, 1=B, 2=C, 3=D
-  explanation: text("explanation").notNull(),
-  steps: text("steps"),
+    explanation: text("explanation").notNull(),
+    steps: text("steps"),
     // JSON: [{ "l": "label", "c": "content" }] or null
-  tip: text("tip"),
-  isCalc: mysqlEnum("isCalc", ["yes", "no"]).default("no").notNull(),
-  topic: varchar("topic", { length: 128 }),
-  /** Cognitive level per WPI NTK: 'recall' = knowledge/comprehension, 'application' = analysis/synthesis */
-  cognitiveLevel: mysqlEnum("cognitiveLevel", ["recall", "application"]),
-  /** Traceable source and blueprint metadata for content governance. */
-  sourceTitle: varchar("sourceTitle", { length: 255 }),
-  sourceReference: varchar("sourceReference", { length: 512 }),
-  sourceUrl: varchar("sourceUrl", { length: 1024 }),
-  blueprintObjective: varchar("blueprintObjective", { length: 255 }),
-  /** Existing questions start unreviewed and must be explicitly approved by an admin. */
-  reviewStatus: mysqlEnum("reviewStatus", ["unreviewed", "in_review", "approved", "rejected"])
-    .default("unreviewed")
-    .notNull(),
-  reviewedBy: varchar("reviewedBy", { length: 320 }),
-  reviewedAt: timestamp("reviewedAt"),
-}, (table) => [
-  uniqueIndex("bank_question_idx").on(table.bankKey, table.questionNum),
-  index("question_review_status_idx").on(table.reviewStatus),
-  index("question_bank_review_status_idx").on(table.bankKey, table.reviewStatus),
-]);
+    tip: text("tip"),
+    isCalc: mysqlEnum("isCalc", ["yes", "no"]).default("no").notNull(),
+    topic: varchar("topic", { length: 128 }),
+    /** Cognitive level per WPI NTK: 'recall' = knowledge/comprehension, 'application' = analysis/synthesis */
+    cognitiveLevel: mysqlEnum("cognitiveLevel", ["recall", "application"]),
+    /** Traceable source and blueprint metadata for content governance. */
+    sourceTitle: varchar("sourceTitle", { length: 255 }),
+    sourceReference: varchar("sourceReference", { length: 512 }),
+    sourceUrl: varchar("sourceUrl", { length: 1024 }),
+    blueprintObjective: varchar("blueprintObjective", { length: 255 }),
+    /** Existing questions start unreviewed and must be explicitly approved by an admin. */
+    reviewStatus: mysqlEnum("reviewStatus", [
+      "unreviewed",
+      "in_review",
+      "approved",
+      "rejected",
+    ])
+      .default("unreviewed")
+      .notNull(),
+    reviewedBy: varchar("reviewedBy", { length: 320 }),
+    reviewedAt: timestamp("reviewedAt"),
+  },
+  table => [
+    uniqueIndex("bank_question_idx").on(table.bankKey, table.questionNum),
+    index("question_review_status_idx").on(table.reviewStatus),
+    index("question_bank_review_status_idx").on(
+      table.bankKey,
+      table.reviewStatus
+    ),
+  ]
+);
 
 export type QuestionRow = typeof questions.$inferSelect;
 export type InsertQuestion = typeof questions.$inferInsert;
@@ -614,268 +816,407 @@ export type InsertQuestion = typeof questions.$inferInsert;
  * tables. A bank version is the publication boundary: content may exist in a
  * draft bank without becoming visible to learners, commerce, or Teams.
  */
-export const certificationBankVersions = mysqlTable("certification_bank_versions", {
-  id: int("id").autoincrement().primaryKey(),
-  programKey: varchar("programKey", { length: 128 }).notNull(),
-  bankKey: varchar("bankKey", { length: 64 }).notNull(),
-  versionKey: varchar("versionKey", { length: 128 }).notNull(),
-  blueprintVersion: varchar("blueprintVersion", { length: 255 }).notNull(),
-  releaseChannel: mysqlEnum("releaseChannel", ["internal", "beta", "public", "retired"])
-    .default("internal")
-    .notNull(),
-  itemTarget: int("itemTarget").notNull(),
-  active: boolean("active").default(false).notNull(),
-  allocationChecksum: varchar("allocationChecksum", { length: 64 }).notNull(),
-  sourceManifestChecksum: varchar("sourceManifestChecksum", { length: 64 }).notNull(),
-  commercialEligibility: boolean("commercialEligibility").default(false).notNull(),
-  teamEligibility: boolean("teamEligibility").default(false).notNull(),
-  createdAt: timestamp("createdAt").defaultNow().notNull(),
-  publishedAt: timestamp("publishedAt"),
-  retiredAt: timestamp("retiredAt"),
-}, (table) => [
-  uniqueIndex("cert_bank_version_unique_idx").on(table.bankKey, table.versionKey),
-  index("cert_bank_blueprint_idx").on(table.bankKey, table.blueprintVersion),
-  index("cert_bank_program_active_idx").on(table.programKey, table.active, table.releaseChannel),
-]);
+export const certificationBankVersions = mysqlTable(
+  "certification_bank_versions",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    programKey: varchar("programKey", { length: 128 }).notNull(),
+    bankKey: varchar("bankKey", { length: 64 }).notNull(),
+    versionKey: varchar("versionKey", { length: 128 }).notNull(),
+    blueprintVersion: varchar("blueprintVersion", { length: 255 }).notNull(),
+    releaseChannel: mysqlEnum("releaseChannel", [
+      "internal",
+      "beta",
+      "public",
+      "retired",
+    ])
+      .default("internal")
+      .notNull(),
+    itemTarget: int("itemTarget").notNull(),
+    active: boolean("active").default(false).notNull(),
+    allocationChecksum: varchar("allocationChecksum", { length: 64 }).notNull(),
+    sourceManifestChecksum: varchar("sourceManifestChecksum", {
+      length: 64,
+    }).notNull(),
+    commercialEligibility: boolean("commercialEligibility")
+      .default(false)
+      .notNull(),
+    teamEligibility: boolean("teamEligibility").default(false).notNull(),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    publishedAt: timestamp("publishedAt"),
+    retiredAt: timestamp("retiredAt"),
+  },
+  table => [
+    uniqueIndex("cert_bank_version_unique_idx").on(
+      table.bankKey,
+      table.versionKey
+    ),
+    index("cert_bank_blueprint_idx").on(table.bankKey, table.blueprintVersion),
+    index("cert_bank_program_active_idx").on(
+      table.programKey,
+      table.active,
+      table.releaseChannel
+    ),
+  ]
+);
 
-export type CertificationBankVersionRow = typeof certificationBankVersions.$inferSelect;
-export type InsertCertificationBankVersion = typeof certificationBankVersions.$inferInsert;
+export type CertificationBankVersionRow =
+  typeof certificationBankVersions.$inferSelect;
+export type InsertCertificationBankVersion =
+  typeof certificationBankVersions.$inferInsert;
 
 /** Rights and provenance records shared by governed certification content. */
-export const certificationSources = mysqlTable("certification_sources", {
-  id: int("id").autoincrement().primaryKey(),
-  sourceKey: varchar("sourceKey", { length: 128 }).notNull(),
-  publisher: varchar("publisher", { length: 255 }).notNull(),
-  title: varchar("title", { length: 512 }).notNull(),
-  stableUrl: varchar("stableUrl", { length: 1024 }).notNull(),
-  editionVersion: varchar("editionVersion", { length: 255 }),
-  retrievedAt: timestamp("retrievedAt").notNull(),
-  sha256: varchar("sha256", { length: 64 }).notNull(),
-  rightsBasis: mysqlEnum("rightsBasis", [
-    "public_official_reference",
-    "permission_granted",
-    "licensed_access_required",
-  ]).notNull(),
-  permittedUsage: text("permittedUsage").notNull(),
-  verifiedAt: timestamp("verifiedAt").notNull(),
-}, (table) => [
-  uniqueIndex("cert_source_version_unique_idx").on(table.sourceKey, table.sha256),
-  index("cert_source_key_idx").on(table.sourceKey),
-  index("cert_source_rights_idx").on(table.rightsBasis),
-]);
+export const certificationSources = mysqlTable(
+  "certification_sources",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    sourceKey: varchar("sourceKey", { length: 128 }).notNull(),
+    publisher: varchar("publisher", { length: 255 }).notNull(),
+    title: varchar("title", { length: 512 }).notNull(),
+    stableUrl: varchar("stableUrl", { length: 1024 }).notNull(),
+    editionVersion: varchar("editionVersion", { length: 255 }),
+    retrievedAt: timestamp("retrievedAt").notNull(),
+    sha256: varchar("sha256", { length: 64 }).notNull(),
+    rightsBasis: mysqlEnum("rightsBasis", [
+      "public_official_reference",
+      "permission_granted",
+      "licensed_access_required",
+    ]).notNull(),
+    permittedUsage: text("permittedUsage").notNull(),
+    verifiedAt: timestamp("verifiedAt").notNull(),
+  },
+  table => [
+    uniqueIndex("cert_source_version_unique_idx").on(
+      table.sourceKey,
+      table.sha256
+    ),
+    index("cert_source_key_idx").on(table.sourceKey),
+    index("cert_source_rights_idx").on(table.rightsBasis),
+  ]
+);
 
 export type CertificationSourceRow = typeof certificationSources.$inferSelect;
-export type InsertCertificationSource = typeof certificationSources.$inferInsert;
+export type InsertCertificationSource =
+  typeof certificationSources.$inferInsert;
 
 /** Exact task allocation for each immutable bank version. */
-export const certificationBlueprintTasks = mysqlTable("certification_blueprint_tasks", {
-  id: int("id").autoincrement().primaryKey(),
-  bankVersionId: int("bankVersionId").notNull(),
-  mwaCode: varchar("mwaCode", { length: 4 }).notNull(),
-  taskCode: varchar("taskCode", { length: 16 }).notNull(),
-  title: varchar("title", { length: 255 }).notNull(),
-  officialTarget: decimal("officialTarget", { precision: 5, scale: 2 }).notNull(),
-  bankTarget: int("bankTarget").notNull(),
-  sourceId: int("sourceId").notNull(),
-  sourceReference: varchar("sourceReference", { length: 512 }).notNull(),
-}, (table) => [
-  uniqueIndex("cert_blueprint_task_unique_idx").on(table.bankVersionId, table.taskCode),
-  index("cert_blueprint_mwa_idx").on(table.bankVersionId, table.mwaCode),
-]);
+export const certificationBlueprintTasks = mysqlTable(
+  "certification_blueprint_tasks",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    bankVersionId: int("bankVersionId").notNull(),
+    mwaCode: varchar("mwaCode", { length: 4 }).notNull(),
+    taskCode: varchar("taskCode", { length: 16 }).notNull(),
+    title: varchar("title", { length: 255 }).notNull(),
+    officialTarget: decimal("officialTarget", {
+      precision: 5,
+      scale: 2,
+    }).notNull(),
+    bankTarget: int("bankTarget").notNull(),
+    sourceId: int("sourceId").notNull(),
+    sourceReference: varchar("sourceReference", { length: 512 }).notNull(),
+  },
+  table => [
+    uniqueIndex("cert_blueprint_task_unique_idx").on(
+      table.bankVersionId,
+      table.taskCode
+    ),
+    index("cert_blueprint_mwa_idx").on(table.bankVersionId, table.mwaCode),
+  ]
+);
 
-export type CertificationBlueprintTaskRow = typeof certificationBlueprintTasks.$inferSelect;
-export type InsertCertificationBlueprintTask = typeof certificationBlueprintTasks.$inferInsert;
+export type CertificationBlueprintTaskRow =
+  typeof certificationBlueprintTasks.$inferSelect;
+export type InsertCertificationBlueprintTask =
+  typeof certificationBlueprintTasks.$inferInsert;
 
 /** Original, versioned certification questions. */
-export const certificationQuestions = mysqlTable("certification_questions", {
-  id: int("id").autoincrement().primaryKey(),
-  bankVersionId: int("bankVersionId").notNull(),
-  bankItemNumber: int("bankItemNumber").notNull(),
-  taskId: int("taskId").notNull(),
-  module: varchar("module", { length: 4 }).notNull(),
-  taskCode: varchar("taskCode", { length: 16 }).notNull(),
-  subtaskCode: varchar("subtaskCode", { length: 16 }).notNull(),
-  topic: varchar("topic", { length: 128 }).notNull(),
-  difficulty: mysqlEnum("difficulty", ["easy", "medium", "hard"]).notNull(),
-  questionType: mysqlEnum("questionType", [
-    "foundation",
-    "applied_scenario",
-    "troubleshooting_or_calculation",
-  ]).notNull(),
-  cognitiveLevel: mysqlEnum("cognitiveLevel", [
-    "recall",
-    "procedural_application",
-    "critical_thinking",
-  ]).notNull(),
-  question: text("question").notNull(),
-  options: text("options").notNull(),
-  correctIndex: int("correctIndex").notNull(),
-  explanation: text("explanation").notNull(),
-  steps: text("steps"),
-  tip: text("tip"),
-  isCalc: mysqlEnum("isCalc", ["yes", "no"]).default("no").notNull(),
-  diagramId: varchar("diagramId", { length: 64 }),
-  diagramAlt: text("diagramAlt"),
-  sourceId: int("sourceId").notNull(),
-  sourceReference: varchar("sourceReference", { length: 512 }).notNull(),
-  blueprintObjective: varchar("blueprintObjective", { length: 512 }).notNull(),
-  authorIdentity: varchar("authorIdentity", { length: 320 }).notNull(),
-  origin: mysqlEnum("origin", ["human", "ai_assisted", "imported"]).notNull(),
-  contentHash: varchar("contentHash", { length: 64 }).notNull(),
-  contentStatus: mysqlEnum("contentStatus", [
-    "draft",
-    "editorial_approved",
-    "technical_approved",
-    "beta_approved",
-    "rejected",
-    "retired",
-  ]).default("draft").notNull(),
-  publicEligibility: boolean("publicEligibility").default(false).notNull(),
-  createdAt: timestamp("createdAt").defaultNow().notNull(),
-  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
-  retiredAt: timestamp("retiredAt"),
-}, (table) => [
-  uniqueIndex("cert_question_bank_item_unique_idx").on(table.bankVersionId, table.bankItemNumber),
-  uniqueIndex("cert_question_content_hash_unique_idx").on(table.bankVersionId, table.contentHash),
-  index("cert_question_delivery_idx").on(table.bankVersionId, table.contentStatus, table.publicEligibility),
-  index("cert_question_task_idx").on(table.bankVersionId, table.taskCode),
-]);
+export const certificationQuestions = mysqlTable(
+  "certification_questions",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    bankVersionId: int("bankVersionId").notNull(),
+    bankItemNumber: int("bankItemNumber").notNull(),
+    taskId: int("taskId").notNull(),
+    module: varchar("module", { length: 4 }).notNull(),
+    taskCode: varchar("taskCode", { length: 16 }).notNull(),
+    subtaskCode: varchar("subtaskCode", { length: 16 }).notNull(),
+    topic: varchar("topic", { length: 128 }).notNull(),
+    difficulty: mysqlEnum("difficulty", ["easy", "medium", "hard"]).notNull(),
+    questionType: mysqlEnum("questionType", [
+      "foundation",
+      "applied_scenario",
+      "troubleshooting_or_calculation",
+    ]).notNull(),
+    cognitiveLevel: mysqlEnum("cognitiveLevel", [
+      "recall",
+      "procedural_application",
+      "critical_thinking",
+    ]).notNull(),
+    question: text("question").notNull(),
+    options: text("options").notNull(),
+    correctIndex: int("correctIndex").notNull(),
+    explanation: text("explanation").notNull(),
+    steps: text("steps"),
+    tip: text("tip"),
+    isCalc: mysqlEnum("isCalc", ["yes", "no"]).default("no").notNull(),
+    diagramId: varchar("diagramId", { length: 64 }),
+    diagramAlt: text("diagramAlt"),
+    sourceId: int("sourceId").notNull(),
+    sourceReference: varchar("sourceReference", { length: 512 }).notNull(),
+    blueprintObjective: varchar("blueprintObjective", {
+      length: 512,
+    }).notNull(),
+    authorIdentity: varchar("authorIdentity", { length: 320 }).notNull(),
+    origin: mysqlEnum("origin", ["human", "ai_assisted", "imported"]).notNull(),
+    contentHash: varchar("contentHash", { length: 64 }).notNull(),
+    contentStatus: mysqlEnum("contentStatus", [
+      "draft",
+      "editorial_approved",
+      "technical_approved",
+      "beta_approved",
+      "rejected",
+      "retired",
+    ])
+      .default("draft")
+      .notNull(),
+    publicEligibility: boolean("publicEligibility").default(false).notNull(),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+    retiredAt: timestamp("retiredAt"),
+  },
+  table => [
+    uniqueIndex("cert_question_bank_item_unique_idx").on(
+      table.bankVersionId,
+      table.bankItemNumber
+    ),
+    uniqueIndex("cert_question_content_hash_unique_idx").on(
+      table.bankVersionId,
+      table.contentHash
+    ),
+    index("cert_question_delivery_idx").on(
+      table.bankVersionId,
+      table.contentStatus,
+      table.publicEligibility
+    ),
+    index("cert_question_task_idx").on(table.bankVersionId, table.taskCode),
+  ]
+);
 
-export type CertificationQuestionRow = typeof certificationQuestions.$inferSelect;
-export type InsertCertificationQuestion = typeof certificationQuestions.$inferInsert;
+export type CertificationQuestionRow =
+  typeof certificationQuestions.$inferSelect;
+export type InsertCertificationQuestion =
+  typeof certificationQuestions.$inferInsert;
 
 /** Immutable review decisions; authors cannot technically approve their own content. */
-export const certificationContentReviews = mysqlTable("certification_content_reviews", {
-  id: int("id").autoincrement().primaryKey(),
-  bankVersionId: int("bankVersionId").notNull(),
-  contentKind: mysqlEnum("contentKind", ["question", "diagram", "flashcard", "module_note"]).notNull(),
-  contentId: int("contentId").notNull(),
-  authorIdentity: varchar("authorIdentity", { length: 320 }).notNull(),
-  reviewerIdentity: varchar("reviewerIdentity", { length: 320 }).notNull(),
-  reviewType: mysqlEnum("reviewType", ["editorial", "technical", "beta_release"]).notNull(),
-  decision: mysqlEnum("decision", ["approved", "changes_requested", "rejected"]).notNull(),
-  notes: text("notes"),
-  reviewedAt: timestamp("reviewedAt").defaultNow().notNull(),
-}, (table) => [
-  index("cert_review_content_idx").on(table.contentKind, table.contentId, table.reviewType),
-  index("cert_review_bank_idx").on(table.bankVersionId, table.reviewedAt),
-]);
+export const certificationContentReviews = mysqlTable(
+  "certification_content_reviews",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    bankVersionId: int("bankVersionId").notNull(),
+    contentKind: mysqlEnum("contentKind", [
+      "question",
+      "diagram",
+      "flashcard",
+      "module_note",
+    ]).notNull(),
+    contentId: int("contentId").notNull(),
+    authorIdentity: varchar("authorIdentity", { length: 320 }).notNull(),
+    reviewerIdentity: varchar("reviewerIdentity", { length: 320 }).notNull(),
+    reviewType: mysqlEnum("reviewType", [
+      "editorial",
+      "technical",
+      "beta_release",
+    ]).notNull(),
+    decision: mysqlEnum("decision", [
+      "approved",
+      "changes_requested",
+      "rejected",
+    ]).notNull(),
+    notes: text("notes"),
+    reviewedAt: timestamp("reviewedAt").defaultNow().notNull(),
+  },
+  table => [
+    index("cert_review_content_idx").on(
+      table.contentKind,
+      table.contentId,
+      table.reviewType
+    ),
+    index("cert_review_bank_idx").on(table.bankVersionId, table.reviewedAt),
+  ]
+);
 
-export type CertificationContentReviewRow = typeof certificationContentReviews.$inferSelect;
-export type InsertCertificationContentReview = typeof certificationContentReviews.$inferInsert;
+export type CertificationContentReviewRow =
+  typeof certificationContentReviews.$inferSelect;
+export type InsertCertificationContentReview =
+  typeof certificationContentReviews.$inferInsert;
 
 /** Auditable, atomic content-import runs. */
-export const certificationImportRuns = mysqlTable("certification_import_runs", {
-  id: int("id").autoincrement().primaryKey(),
-  bankVersionId: int("bankVersionId").notNull(),
-  manifestChecksum: varchar("manifestChecksum", { length: 64 }).notNull(),
-  dryRun: boolean("dryRun").default(true).notNull(),
-  importerIdentity: varchar("importerIdentity", { length: 320 }).notNull(),
-  status: mysqlEnum("status", ["planned", "validated", "completed", "failed"]).default("planned").notNull(),
-  insertedCount: int("insertedCount").default(0).notNull(),
-  updatedCount: int("updatedCount").default(0).notNull(),
-  rejectedCount: int("rejectedCount").default(0).notNull(),
-  errorMessage: text("errorMessage"),
-  createdAt: timestamp("createdAt").defaultNow().notNull(),
-  completedAt: timestamp("completedAt"),
-}, (table) => [
-  uniqueIndex("cert_import_manifest_unique_idx").on(table.bankVersionId, table.manifestChecksum),
-  index("cert_import_status_idx").on(table.status, table.createdAt),
-]);
+export const certificationImportRuns = mysqlTable(
+  "certification_import_runs",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    bankVersionId: int("bankVersionId").notNull(),
+    manifestChecksum: varchar("manifestChecksum", { length: 64 }).notNull(),
+    dryRun: boolean("dryRun").default(true).notNull(),
+    importerIdentity: varchar("importerIdentity", { length: 320 }).notNull(),
+    status: mysqlEnum("status", ["planned", "validated", "completed", "failed"])
+      .default("planned")
+      .notNull(),
+    insertedCount: int("insertedCount").default(0).notNull(),
+    updatedCount: int("updatedCount").default(0).notNull(),
+    rejectedCount: int("rejectedCount").default(0).notNull(),
+    errorMessage: text("errorMessage"),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    completedAt: timestamp("completedAt"),
+  },
+  table => [
+    uniqueIndex("cert_import_manifest_unique_idx").on(
+      table.bankVersionId,
+      table.manifestChecksum
+    ),
+    index("cert_import_status_idx").on(table.status, table.createdAt),
+  ]
+);
 
-export type CertificationImportRunRow = typeof certificationImportRuns.$inferSelect;
-export type InsertCertificationImportRun = typeof certificationImportRuns.$inferInsert;
+export type CertificationImportRunRow =
+  typeof certificationImportRuns.$inferSelect;
+export type InsertCertificationImportRun =
+  typeof certificationImportRuns.$inferInsert;
 
-export const certificationDiagrams = mysqlTable("certification_diagrams", {
-  id: int("id").autoincrement().primaryKey(),
-  bankVersionId: int("bankVersionId").notNull(),
-  diagramId: varchar("diagramId", { length: 64 }).notNull(),
-  version: int("version").default(1).notNull(),
-  componentKey: varchar("componentKey", { length: 255 }).notNull(),
-  altText: text("altText").notNull(),
-  sourceId: int("sourceId").notNull(),
-  rightsMetadata: text("rightsMetadata").notNull(),
-  authorIdentity: varchar("authorIdentity", { length: 320 }).notNull(),
-  contentStatus: mysqlEnum("contentStatus", [
-    "draft",
-    "editorial_approved",
-    "technical_approved",
-    "beta_approved",
-    "rejected",
-    "retired",
-  ]).default("draft").notNull(),
-  retiredAt: timestamp("retiredAt"),
-}, (table) => [
-  uniqueIndex("cert_diagram_version_unique_idx").on(table.bankVersionId, table.diagramId, table.version),
-  index("cert_diagram_delivery_idx").on(table.bankVersionId, table.contentStatus),
-]);
+export const certificationDiagrams = mysqlTable(
+  "certification_diagrams",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    bankVersionId: int("bankVersionId").notNull(),
+    diagramId: varchar("diagramId", { length: 64 }).notNull(),
+    version: int("version").default(1).notNull(),
+    componentKey: varchar("componentKey", { length: 255 }).notNull(),
+    altText: text("altText").notNull(),
+    sourceId: int("sourceId").notNull(),
+    rightsMetadata: text("rightsMetadata").notNull(),
+    authorIdentity: varchar("authorIdentity", { length: 320 }).notNull(),
+    contentStatus: mysqlEnum("contentStatus", [
+      "draft",
+      "editorial_approved",
+      "technical_approved",
+      "beta_approved",
+      "rejected",
+      "retired",
+    ])
+      .default("draft")
+      .notNull(),
+    retiredAt: timestamp("retiredAt"),
+  },
+  table => [
+    uniqueIndex("cert_diagram_version_unique_idx").on(
+      table.bankVersionId,
+      table.diagramId,
+      table.version
+    ),
+    index("cert_diagram_delivery_idx").on(
+      table.bankVersionId,
+      table.contentStatus
+    ),
+  ]
+);
 
 export type CertificationDiagramRow = typeof certificationDiagrams.$inferSelect;
-export type InsertCertificationDiagram = typeof certificationDiagrams.$inferInsert;
+export type InsertCertificationDiagram =
+  typeof certificationDiagrams.$inferInsert;
 
-export const certificationFlashcards = mysqlTable("certification_flashcards", {
-  id: int("id").autoincrement().primaryKey(),
-  bankVersionId: int("bankVersionId").notNull(),
-  taskId: int("taskId").notNull(),
-  cardNumber: int("cardNumber").notNull(),
-  front: text("front").notNull(),
-  back: text("back").notNull(),
-  sourceId: int("sourceId").notNull(),
-  sourceReference: varchar("sourceReference", { length: 512 }).notNull(),
-  authorIdentity: varchar("authorIdentity", { length: 320 }).notNull(),
-  contentStatus: mysqlEnum("contentStatus", [
-    "draft",
-    "editorial_approved",
-    "technical_approved",
-    "beta_approved",
-    "rejected",
-    "retired",
-  ]).default("draft").notNull(),
-  retiredAt: timestamp("retiredAt"),
-}, (table) => [
-  uniqueIndex("cert_flashcard_number_unique_idx").on(table.bankVersionId, table.cardNumber),
-  index("cert_flashcard_delivery_idx").on(table.bankVersionId, table.contentStatus),
-]);
+export const certificationFlashcards = mysqlTable(
+  "certification_flashcards",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    bankVersionId: int("bankVersionId").notNull(),
+    taskId: int("taskId").notNull(),
+    cardNumber: int("cardNumber").notNull(),
+    front: text("front").notNull(),
+    back: text("back").notNull(),
+    sourceId: int("sourceId").notNull(),
+    sourceReference: varchar("sourceReference", { length: 512 }).notNull(),
+    authorIdentity: varchar("authorIdentity", { length: 320 }).notNull(),
+    contentStatus: mysqlEnum("contentStatus", [
+      "draft",
+      "editorial_approved",
+      "technical_approved",
+      "beta_approved",
+      "rejected",
+      "retired",
+    ])
+      .default("draft")
+      .notNull(),
+    retiredAt: timestamp("retiredAt"),
+  },
+  table => [
+    uniqueIndex("cert_flashcard_number_unique_idx").on(
+      table.bankVersionId,
+      table.cardNumber
+    ),
+    index("cert_flashcard_delivery_idx").on(
+      table.bankVersionId,
+      table.contentStatus
+    ),
+  ]
+);
 
-export type CertificationFlashcardRow = typeof certificationFlashcards.$inferSelect;
-export type InsertCertificationFlashcard = typeof certificationFlashcards.$inferInsert;
+export type CertificationFlashcardRow =
+  typeof certificationFlashcards.$inferSelect;
+export type InsertCertificationFlashcard =
+  typeof certificationFlashcards.$inferInsert;
 
-export const certificationModuleNotes = mysqlTable("certification_module_notes", {
-  id: int("id").autoincrement().primaryKey(),
-  bankVersionId: int("bankVersionId").notNull(),
-  moduleCode: varchar("moduleCode", { length: 4 }).notNull(),
-  taskCode: varchar("taskCode", { length: 16 }),
-  sectionsJson: text("sectionsJson").notNull(),
-  sourceId: int("sourceId").notNull(),
-  sourceReference: varchar("sourceReference", { length: 512 }).notNull(),
-  authorIdentity: varchar("authorIdentity", { length: 320 }).notNull(),
-  contentStatus: mysqlEnum("contentStatus", [
-    "draft",
-    "editorial_approved",
-    "technical_approved",
-    "beta_approved",
-    "rejected",
-    "retired",
-  ]).default("draft").notNull(),
-  retiredAt: timestamp("retiredAt"),
-}, (table) => [
-  uniqueIndex("cert_module_note_scope_unique_idx").on(table.bankVersionId, table.moduleCode, table.taskCode),
-  index("cert_module_note_delivery_idx").on(table.bankVersionId, table.contentStatus),
-]);
+export const certificationModuleNotes = mysqlTable(
+  "certification_module_notes",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    bankVersionId: int("bankVersionId").notNull(),
+    moduleCode: varchar("moduleCode", { length: 4 }).notNull(),
+    taskCode: varchar("taskCode", { length: 16 }),
+    sectionsJson: text("sectionsJson").notNull(),
+    sourceId: int("sourceId").notNull(),
+    sourceReference: varchar("sourceReference", { length: 512 }).notNull(),
+    authorIdentity: varchar("authorIdentity", { length: 320 }).notNull(),
+    contentStatus: mysqlEnum("contentStatus", [
+      "draft",
+      "editorial_approved",
+      "technical_approved",
+      "beta_approved",
+      "rejected",
+      "retired",
+    ])
+      .default("draft")
+      .notNull(),
+    retiredAt: timestamp("retiredAt"),
+  },
+  table => [
+    uniqueIndex("cert_module_note_scope_unique_idx").on(
+      table.bankVersionId,
+      table.moduleCode,
+      table.taskCode
+    ),
+    index("cert_module_note_delivery_idx").on(
+      table.bankVersionId,
+      table.contentStatus
+    ),
+  ]
+);
 
-export type CertificationModuleNoteRow = typeof certificationModuleNotes.$inferSelect;
-export type InsertCertificationModuleNote = typeof certificationModuleNotes.$inferInsert;
+export type CertificationModuleNoteRow =
+  typeof certificationModuleNotes.$inferSelect;
+export type InsertCertificationModuleNote =
+  typeof certificationModuleNotes.$inferInsert;
 
 /** Question bank metadata — module lists, module targets, formula links per bank */
 export const questionBankMeta = mysqlTable("question_bank_meta", {
   id: int("id").autoincrement().primaryKey(),
   bankKey: varchar("bankKey", { length: 64 }).notNull().unique(),
   modules: text("modules").notNull(),
-    // JSON array of module names or objects
+  // JSON array of module names or objects
   moduleTargets: text("moduleTargets"),
-    // JSON: { "Treatment Process": 32, ... } or null
+  // JSON: { "Treatment Process": 32, ... } or null
   formulaLinks: text("formulaLinks"),
-    // JSON: { "WQA-M001": "/formulas-wqa#..." } or null
+  // JSON: { "WQA-M001": "/formulas-wqa#..." } or null
   totalQuestions: int("totalQuestions").notNull(),
   /** Monotonically increasing counter. Incremented by admin whenever a question in this bank
    *  is edited. Clients compare this against their cached value and invalidate on mismatch. */
@@ -892,13 +1233,17 @@ export type QuestionBankMetaRow = typeof questionBankMeta.$inferSelect;
 export type InsertQuestionBankMeta = typeof questionBankMeta.$inferInsert;
 
 /** Module overviews — study guide text per bank+module, previously in moduleOverviews.ts */
-export const moduleOverviews = mysqlTable("module_overviews", {
-  id: int("id").autoincrement().primaryKey(),
-  bankKey: varchar("bankKey", { length: 64 }).notNull(),
-  overviewsJson: text("overviewsJson").notNull(),
+export const moduleOverviews = mysqlTable(
+  "module_overviews",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    bankKey: varchar("bankKey", { length: 64 }).notNull(),
+    overviewsJson: text("overviewsJson").notNull(),
     // JSON: the full overviews object for this bank
     // e.g. { "Water Sources & Quality": { title, content, keyPoints, formulas } }
-}, (table) => [uniqueIndex("bank_overview_idx").on(table.bankKey)]);
+  },
+  table => [uniqueIndex("bank_overview_idx").on(table.bankKey)]
+);
 
 export type ModuleOverviewRow = typeof moduleOverviews.$inferSelect;
 export type InsertModuleOverview = typeof moduleOverviews.$inferInsert;
@@ -937,25 +1282,29 @@ export type AiChatSession = typeof aiChatSessions.$inferSelect;
 export type InsertAiChatSession = typeof aiChatSessions.$inferInsert;
 
 /** Trigger logs — tracks proactive email nudges sent by the agentic trigger engine */
-export const triggerLogs = mysqlTable("trigger_logs", {
-  id: int("id").autoincrement().primaryKey(),
-  userId: int("userId"), // nullable — email-only (Stripe) students have no userId
-  studentEmail: varchar("studentEmail", { length: 320 }), // set when userId is null
-  triggerType: varchar("triggerType", { length: 32 }).notNull(), // 'struggling' | 'plateau' | 'inactive' | 'exam_approaching' | 'milestone'
-  emailSubject: varchar("emailSubject", { length: 256 }).notNull(),
-  emailBodyPreview: text("emailBodyPreview"), // first 200 chars of the email body for admin review
-  sentAt: timestamp("sentAt").defaultNow().notNull(),
-  cooldownUntil: timestamp("cooldownUntil").notNull(), // don't send same trigger type again until this date
-  /** Issue R: written BEFORE sendMail so cooldown is claimed even on SMTP failure.
-   *  'pending' → row reserved, send in progress
-   *  'sent'    → sendMail succeeded
-   *  'failed'  → sendMail threw; cooldown still applies to prevent duplicate sends */
-  status: varchar("status", { length: 16 }).notNull().default("sent"),
-}, (t) => [
-  // Issue O: composite index for the two cooldown queries (userId + sentAt, userId + triggerType + sentAt)
-  index("trigger_logs_userid_sentat_idx").on(t.userId, t.sentAt),
-  index("trigger_logs_email_sentat_idx").on(t.studentEmail, t.sentAt),
-]);
+export const triggerLogs = mysqlTable(
+  "trigger_logs",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    userId: int("userId"), // nullable — email-only (Stripe) students have no userId
+    studentEmail: varchar("studentEmail", { length: 320 }), // set when userId is null
+    triggerType: varchar("triggerType", { length: 32 }).notNull(), // 'struggling' | 'plateau' | 'inactive' | 'exam_approaching' | 'milestone'
+    emailSubject: varchar("emailSubject", { length: 256 }).notNull(),
+    emailBodyPreview: text("emailBodyPreview"), // first 200 chars of the email body for admin review
+    sentAt: timestamp("sentAt").defaultNow().notNull(),
+    cooldownUntil: timestamp("cooldownUntil").notNull(), // don't send same trigger type again until this date
+    /** Issue R: written BEFORE sendMail so cooldown is claimed even on SMTP failure.
+     *  'pending' → row reserved, send in progress
+     *  'sent'    → sendMail succeeded
+     *  'failed'  → sendMail threw; cooldown still applies to prevent duplicate sends */
+    status: varchar("status", { length: 16 }).notNull().default("sent"),
+  },
+  t => [
+    // Issue O: composite index for the two cooldown queries (userId + sentAt, userId + triggerType + sentAt)
+    index("trigger_logs_userid_sentat_idx").on(t.userId, t.sentAt),
+    index("trigger_logs_email_sentat_idx").on(t.studentEmail, t.sentAt),
+  ]
+);
 
 export type TriggerLog = typeof triggerLogs.$inferSelect;
 export type InsertTriggerLog = typeof triggerLogs.$inferInsert;
@@ -1003,11 +1352,15 @@ export const organizations = mysqlTable("organizations", {
   stream: varchar("stream", { length: 32 }),
   seatsTotal: int("seatsTotal").notNull(), // = Stripe subscription quantity
   managerEmail: varchar("managerEmail", { length: 320 }).notNull(),
-  stripeSubscriptionId: varchar("stripeSubscriptionId", { length: 128 }).unique(),
+  stripeSubscriptionId: varchar("stripeSubscriptionId", {
+    length: 128,
+  }).unique(),
   stripeCustomerId: varchar("stripeCustomerId", { length: 128 }),
   termEnd: timestamp("termEnd").notNull(), // current period end from Stripe
   termStart: timestamp("termStart"), // current period start — null = backfill as termEnd minus 1 year
-  billingType: varchar("billingType", { length: 16 }).notNull().default("stripe"), // 'stripe' | 'invoice'
+  billingType: varchar("billingType", { length: 16 })
+    .notNull()
+    .default("stripe"), // 'stripe' | 'invoice'
   status: varchar("status", { length: 32 }).notNull().default("active"), // 'active' | 'past_due' | 'cancelled'
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   /** Timestamp when the manager onboarding email was successfully delivered. Null = not yet sent. */
@@ -1025,34 +1378,38 @@ export type InsertOrganization = typeof organizations.$inferInsert;
  *   Null means the seat holder gets the org's default tier (all-access within their province).
  *   Set by the manager at assignment time or updated later on unassigned seats.
  */
-export const organizationMembers = mysqlTable("organization_members", {
-  id: int("id").autoincrement().primaryKey(),
-  orgId: int("orgId").notNull(),
-  email: varchar("email", { length: 320 }).notNull(), // normalized
-  name: varchar("name", { length: 200 }), // optional display name set by manager at assignment time
-  role: varchar("role", { length: 20 }).notNull().default("operator"), // 'manager' | 'operator'
-  status: varchar("status", { length: 20 }).notNull().default("assigned"), // 'assigned' | 'revoked'
-  /** Specific course bundle for this seat. Null = org default (all-access for province). */
-  courseKey: varchar("courseKey", { length: 64 }), // e.g. 'wpi-class4-water', 'class3-water', 'class3-ww'
-  /**
-   * JSON array of all course keys assigned to this seat.
-   * Supersedes courseKey for multi-course seats. Kept in sync with courseKey (first entry).
-   * e.g. '["class2-wastewater-coll","class2-water-dist"]'
-   */
-  courseKeys: text("courseKeys"), // JSON string: string[] | null
-  assignedAt: timestamp("assignedAt").defaultNow().notNull(),
-  revokedAt: timestamp("revokedAt"),
-  /** FIX 4: Cooldown tracking — last time a reminder was sent to this operator. */
-  lastRemindedAt: timestamp("lastRemindedAt"),
-  /** FIX 4: Unsubscribe flag — true if operator has opted out of reminder emails. */
-  reminderOptOut: boolean("reminderOptOut").default(false).notNull(),
-  /** FIX 4: Unsubscribe token — signed token for one-click unsubscribe links. */
-  unsubscribeToken: varchar("unsubscribeToken", { length: 128 }),
-}, (t) => [
-  index("org_members_orgid_idx").on(t.orgId),
-  index("org_members_email_idx").on(t.email),
-  uniqueIndex("org_members_org_email_unique_idx").on(t.orgId, t.email),
-]);
+export const organizationMembers = mysqlTable(
+  "organization_members",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    orgId: int("orgId").notNull(),
+    email: varchar("email", { length: 320 }).notNull(), // normalized
+    name: varchar("name", { length: 200 }), // optional display name set by manager at assignment time
+    role: varchar("role", { length: 20 }).notNull().default("operator"), // 'manager' | 'operator'
+    status: varchar("status", { length: 20 }).notNull().default("assigned"), // 'assigned' | 'revoked'
+    /** Specific course bundle for this seat. Null = org default (all-access for province). */
+    courseKey: varchar("courseKey", { length: 64 }), // e.g. 'wpi-class4-water', 'class3-water', 'class3-ww'
+    /**
+     * JSON array of all course keys assigned to this seat.
+     * Supersedes courseKey for multi-course seats. Kept in sync with courseKey (first entry).
+     * e.g. '["class2-wastewater-coll","class2-water-dist"]'
+     */
+    courseKeys: text("courseKeys"), // JSON string: string[] | null
+    assignedAt: timestamp("assignedAt").defaultNow().notNull(),
+    revokedAt: timestamp("revokedAt"),
+    /** FIX 4: Cooldown tracking — last time a reminder was sent to this operator. */
+    lastRemindedAt: timestamp("lastRemindedAt"),
+    /** FIX 4: Unsubscribe flag — true if operator has opted out of reminder emails. */
+    reminderOptOut: boolean("reminderOptOut").default(false).notNull(),
+    /** FIX 4: Unsubscribe token — signed token for one-click unsubscribe links. */
+    unsubscribeToken: varchar("unsubscribeToken", { length: 128 }),
+  },
+  t => [
+    index("org_members_orgid_idx").on(t.orgId),
+    index("org_members_email_idx").on(t.email),
+    uniqueIndex("org_members_org_email_unique_idx").on(t.orgId, t.email),
+  ]
+);
 
 export type OrganizationMember = typeof organizationMembers.$inferSelect;
 export type InsertOrganizationMember = typeof organizationMembers.$inferInsert;
@@ -1062,30 +1419,45 @@ export type InsertOrganizationMember = typeof organizationMembers.$inferInsert;
  * operator. These are records for supervisor review, not Echelon-issued CEUs
  * or a determination that a learning event qualifies under any regulation.
  */
-export const onTheJobTrainingRecords = mysqlTable("on_the_job_training_records", {
-  id: int("id").autoincrement().primaryKey(),
-  orgId: int("orgId").notNull(),
-  organizationMemberId: int("organizationMemberId").notNull(),
-  studentEmail: varchar("studentEmail", { length: 320 }).notNull(),
-  courseKey: varchar("courseKey", { length: 64 }),
-  sessionDate: timestamp("sessionDate").notNull(),
-  topics: text("topics").notNull(),
-  learningObjectives: text("learningObjectives").notNull(),
-  providerName: varchar("providerName", { length: 200 }).notNull(),
-  providerPhone: varchar("providerPhone", { length: 64 }),
-  durationHours: decimal("durationHours", { precision: 5, scale: 2 }).notNull(),
-  /** Manager confirms the reported event was structured and facilitator-led. */
-  structuredLearningConfirmed: boolean("structuredLearningConfirmed").notNull().default(false),
-  recordedByEmail: varchar("recordedByEmail", { length: 320 }).notNull(),
-  createdAt: timestamp("createdAt").defaultNow().notNull(),
-  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
-}, (t) => [
-  index("ojt_records_org_member_date_idx").on(t.orgId, t.organizationMemberId, t.sessionDate),
-  index("ojt_records_student_date_idx").on(t.studentEmail, t.sessionDate),
-]);
+export const onTheJobTrainingRecords = mysqlTable(
+  "on_the_job_training_records",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    orgId: int("orgId").notNull(),
+    organizationMemberId: int("organizationMemberId").notNull(),
+    studentEmail: varchar("studentEmail", { length: 320 }).notNull(),
+    courseKey: varchar("courseKey", { length: 64 }),
+    sessionDate: timestamp("sessionDate").notNull(),
+    topics: text("topics").notNull(),
+    learningObjectives: text("learningObjectives").notNull(),
+    providerName: varchar("providerName", { length: 200 }).notNull(),
+    providerPhone: varchar("providerPhone", { length: 64 }),
+    durationHours: decimal("durationHours", {
+      precision: 5,
+      scale: 2,
+    }).notNull(),
+    /** Manager confirms the reported event was structured and facilitator-led. */
+    structuredLearningConfirmed: boolean("structuredLearningConfirmed")
+      .notNull()
+      .default(false),
+    recordedByEmail: varchar("recordedByEmail", { length: 320 }).notNull(),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  },
+  t => [
+    index("ojt_records_org_member_date_idx").on(
+      t.orgId,
+      t.organizationMemberId,
+      t.sessionDate
+    ),
+    index("ojt_records_student_date_idx").on(t.studentEmail, t.sessionDate),
+  ]
+);
 
-export type OnTheJobTrainingRecord = typeof onTheJobTrainingRecords.$inferSelect;
-export type InsertOnTheJobTrainingRecord = typeof onTheJobTrainingRecords.$inferInsert;
+export type OnTheJobTrainingRecord =
+  typeof onTheJobTrainingRecords.$inferSelect;
+export type InsertOnTheJobTrainingRecord =
+  typeof onTheJobTrainingRecords.$inferInsert;
 
 /**
  * Annual licence usage ledger.
@@ -1093,43 +1465,56 @@ export type InsertOnTheJobTrainingRecord = typeof onTheJobTrainingRecords.$infer
  * Used to enforce the annual-licence model: revoking an operator does NOT free a licence.
  * Unique constraint: (orgId, memberEmail, termStart) — one record per operator per term.
  */
-export const organizationTermUsage = mysqlTable("organization_term_operator_usage", {
-  id: int("id").autoincrement().primaryKey(),
-  orgId: int("orgId").notNull(),
-  memberEmail: varchar("memberEmail", { length: 320 }).notNull(),
-  termStart: timestamp("termStart").notNull(),
-  termEnd: timestamp("termEnd").notNull(),
-  firstActivatedAt: timestamp("firstActivatedAt").defaultNow().notNull(),
-}, (t) => [
-  index("term_usage_orgid_idx").on(t.orgId),
-  index("term_usage_email_idx").on(t.memberEmail),
-  uniqueIndex("term_usage_unique_idx").on(t.orgId, t.memberEmail, t.termStart),
-]);
+export const organizationTermUsage = mysqlTable(
+  "organization_term_operator_usage",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    orgId: int("orgId").notNull(),
+    memberEmail: varchar("memberEmail", { length: 320 }).notNull(),
+    termStart: timestamp("termStart").notNull(),
+    termEnd: timestamp("termEnd").notNull(),
+    firstActivatedAt: timestamp("firstActivatedAt").defaultNow().notNull(),
+  },
+  t => [
+    index("term_usage_orgid_idx").on(t.orgId),
+    index("term_usage_email_idx").on(t.memberEmail),
+    uniqueIndex("term_usage_unique_idx").on(
+      t.orgId,
+      t.memberEmail,
+      t.termStart
+    ),
+  ]
+);
 
 export type OrganizationTermUsage = typeof organizationTermUsage.$inferSelect;
-export type InsertOrganizationTermUsage = typeof organizationTermUsage.$inferInsert;
+export type InsertOrganizationTermUsage =
+  typeof organizationTermUsage.$inferInsert;
 
 /**
  * Exam outcomes — manager-recorded results plus learner self-reports.
  * orgId=0 and recordedBy="learner-self-report" identify an individual report;
  * positive org IDs remain manager-owned team outcomes.
  */
-export const examOutcomes = mysqlTable("exam_outcomes", {
-  id: int("id").autoincrement().primaryKey(),
-  orgId: int("orgId").notNull(),
-  memberEmail: varchar("memberEmail", { length: 320 }).notNull(),
-  courseKey: varchar("courseKey", { length: 64 }).notNull(),
-  result: mysqlEnum("result", ["passed", "failed", "no_show"]).notNull(),
-  examDate: timestamp("examDate"),
-  recordedBy: varchar("recordedBy", { length: 320 }).notNull(), // manager email
-  /** Study estimate captured immediately before the official result was recorded. */
-  readinessScoreAtOutcome: int("readinessScoreAtOutcome"),
-  readinessModelVersion: varchar("readinessModelVersion", { length: 64 }),
-  recordedAt: timestamp("recordedAt").defaultNow().notNull(),
-}, (t) => [
-  index("exam_outcomes_orgid_idx").on(t.orgId),
-  index("exam_outcomes_email_idx").on(t.memberEmail),
-]);
+export const examOutcomes = mysqlTable(
+  "exam_outcomes",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    orgId: int("orgId").notNull(),
+    memberEmail: varchar("memberEmail", { length: 320 }).notNull(),
+    courseKey: varchar("courseKey", { length: 64 }).notNull(),
+    result: mysqlEnum("result", ["passed", "failed", "no_show"]).notNull(),
+    examDate: timestamp("examDate"),
+    recordedBy: varchar("recordedBy", { length: 320 }).notNull(), // manager email
+    /** Study estimate captured immediately before the official result was recorded. */
+    readinessScoreAtOutcome: int("readinessScoreAtOutcome"),
+    readinessModelVersion: varchar("readinessModelVersion", { length: 64 }),
+    recordedAt: timestamp("recordedAt").defaultNow().notNull(),
+  },
+  t => [
+    index("exam_outcomes_orgid_idx").on(t.orgId),
+    index("exam_outcomes_email_idx").on(t.memberEmail),
+  ]
+);
 export type ExamOutcome = typeof examOutcomes.$inferSelect;
 export type InsertExamOutcome = typeof examOutcomes.$inferInsert;
 
@@ -1137,46 +1522,62 @@ export type InsertExamOutcome = typeof examOutcomes.$inferInsert;
  * Durable, queryable product events. Raw email addresses are never stored;
  * analytics.ts writes a deterministic SHA-256 hash for identity stitching.
  */
-export const productAnalyticsEvents = mysqlTable("product_analytics_events", {
-  id: int("id").autoincrement().primaryKey(),
-  eventName: varchar("eventName", { length: 64 }).notNull(),
-  occurredAt: timestamp("occurredAt").defaultNow().notNull(),
-  userId: varchar("userId", { length: 64 }),
-  emailHash: varchar("emailHash", { length: 64 }),
-  /** Browser journey identifier, stored separately so checkout can bridge anonymous and signed-in activity. */
-  anonymousHash: varchar("anonymousHash", { length: 64 }),
-  examType: varchar("examType", { length: 64 }),
-  productKey: varchar("productKey", { length: 64 }),
-  orgId: int("orgId"),
-  metadata: text("metadata"),
-}, (table) => [
-  index("analytics_event_time_idx").on(table.eventName, table.occurredAt),
-  index("analytics_email_time_idx").on(table.emailHash, table.occurredAt),
-  index("analytics_anonymous_time_idx").on(table.anonymousHash, table.occurredAt),
-  index("analytics_org_time_idx").on(table.orgId, table.occurredAt),
-]);
+export const productAnalyticsEvents = mysqlTable(
+  "product_analytics_events",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    eventName: varchar("eventName", { length: 64 }).notNull(),
+    occurredAt: timestamp("occurredAt").defaultNow().notNull(),
+    userId: varchar("userId", { length: 64 }),
+    emailHash: varchar("emailHash", { length: 64 }),
+    /** Browser journey identifier, stored separately so checkout can bridge anonymous and signed-in activity. */
+    anonymousHash: varchar("anonymousHash", { length: 64 }),
+    examType: varchar("examType", { length: 64 }),
+    productKey: varchar("productKey", { length: 64 }),
+    orgId: int("orgId"),
+    metadata: text("metadata"),
+  },
+  table => [
+    index("analytics_event_time_idx").on(table.eventName, table.occurredAt),
+    index("analytics_email_time_idx").on(table.emailHash, table.occurredAt),
+    index("analytics_anonymous_time_idx").on(
+      table.anonymousHash,
+      table.occurredAt
+    ),
+    index("analytics_org_time_idx").on(table.orgId, table.occurredAt),
+  ]
+);
 export type ProductAnalyticsEvent = typeof productAnalyticsEvents.$inferSelect;
-export type InsertProductAnalyticsEvent = typeof productAnalyticsEvents.$inferInsert;
+export type InsertProductAnalyticsEvent =
+  typeof productAnalyticsEvents.$inferInsert;
 
 /**
  * FIX 5 (P3): Bookmarks — per-user+question table so bookmark state persists across
  * multiple attempts of the same question. Keyed by (userId OR studentEmail) + bankKey + questionId.
  * Replaces the per-attempt bookmarked enum on questionAttempts (kept for backward compat).
  */
-export const bookmarks = mysqlTable("bookmarks", {
-  id: int("id").autoincrement().primaryKey(),
-  userId: int("userId"),
-  studentEmail: varchar("studentEmail", { length: 320 }),
-  bankKey: varchar("bankKey", { length: 64 }).notNull(),
-  questionId: int("questionId").notNull(),
-  createdAt: timestamp("createdAt").defaultNow().notNull(),
-}, (t) => [
-  // Unique constraint: one bookmark per user+question (upsert-safe)
-  uniqueIndex("bm_user_question_idx").on(t.userId, t.bankKey, t.questionId),
-  uniqueIndex("bm_email_question_idx").on(t.studentEmail, t.bankKey, t.questionId),
-  index("bm_userid_idx").on(t.userId),
-  index("bm_email_idx").on(t.studentEmail),
-]);
+export const bookmarks = mysqlTable(
+  "bookmarks",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    userId: int("userId"),
+    studentEmail: varchar("studentEmail", { length: 320 }),
+    bankKey: varchar("bankKey", { length: 64 }).notNull(),
+    questionId: int("questionId").notNull(),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+  },
+  t => [
+    // Unique constraint: one bookmark per user+question (upsert-safe)
+    uniqueIndex("bm_user_question_idx").on(t.userId, t.bankKey, t.questionId),
+    uniqueIndex("bm_email_question_idx").on(
+      t.studentEmail,
+      t.bankKey,
+      t.questionId
+    ),
+    index("bm_userid_idx").on(t.userId),
+    index("bm_email_idx").on(t.studentEmail),
+  ]
+);
 export type Bookmark = typeof bookmarks.$inferSelect;
 export type InsertBookmark = typeof bookmarks.$inferInsert;
 
@@ -1184,25 +1585,31 @@ export type InsertBookmark = typeof bookmarks.$inferInsert;
  * Blog posts — SEO-targeted articles for Ontario water/wastewater operator certification.
  * Content stored as HTML string (rendered server-side from markdown).
  */
-export const blogPosts = mysqlTable("blog_posts", {
-  id: int("id").autoincrement().primaryKey(),
-  slug: varchar("slug", { length: 200 }).notNull().unique(),
-  title: varchar("title", { length: 300 }).notNull(),
-  excerpt: text("excerpt").notNull(),
-  content: text("content").notNull(), // HTML content
-  author: varchar("author", { length: 100 }).notNull().default("Echelon Institute"),
-  tags: varchar("tags", { length: 500 }), // comma-separated
-  metaTitle: varchar("metaTitle", { length: 300 }),
-  metaDescription: varchar("metaDescription", { length: 500 }),
-  readingTimeMinutes: int("readingTimeMinutes").notNull().default(5),
-  published: int("published").notNull().default(1), // 1 = published, 0 = draft
-  publishedAt: timestamp("publishedAt").defaultNow().notNull(),
-  createdAt: timestamp("createdAt").defaultNow().notNull(),
-  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
-}, (t) => [
-  index("blog_slug_idx").on(t.slug),
-  index("blog_published_idx").on(t.published, t.publishedAt),
-]);
+export const blogPosts = mysqlTable(
+  "blog_posts",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    slug: varchar("slug", { length: 200 }).notNull().unique(),
+    title: varchar("title", { length: 300 }).notNull(),
+    excerpt: text("excerpt").notNull(),
+    content: text("content").notNull(), // HTML content
+    author: varchar("author", { length: 100 })
+      .notNull()
+      .default("Echelon Institute"),
+    tags: varchar("tags", { length: 500 }), // comma-separated
+    metaTitle: varchar("metaTitle", { length: 300 }),
+    metaDescription: varchar("metaDescription", { length: 500 }),
+    readingTimeMinutes: int("readingTimeMinutes").notNull().default(5),
+    published: int("published").notNull().default(1), // 1 = published, 0 = draft
+    publishedAt: timestamp("publishedAt").defaultNow().notNull(),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  },
+  t => [
+    index("blog_slug_idx").on(t.slug),
+    index("blog_published_idx").on(t.published, t.publishedAt),
+  ]
+);
 export type BlogPost = typeof blogPosts.$inferSelect;
 export type InsertBlogPost = typeof blogPosts.$inferInsert;
 
@@ -1211,32 +1618,42 @@ export type InsertBlogPost = typeof blogPosts.$inferInsert;
  * Populated by RSS ingestion (Indeed, Job Bank Canada) every 6 hours.
  * Deduplicated by sourceUrl. Jobs unseen for 14+ days are marked inactive.
  */
-export const jobPostings = mysqlTable("job_postings", {
-  id: int("id").autoincrement().primaryKey(),
-  title: varchar("title", { length: 255 }).notNull(),
-  company: varchar("company", { length: 255 }),
-  location: varchar("location", { length: 255 }),
-  province: mysqlEnum("province", ["ON", "BC", "AB", "SK", "MB", "other"]).notNull().default("other"),
-  salary: varchar("salary", { length: 255 }),
-  jobType: mysqlEnum("jobType", ["full-time", "part-time", "contract"]).notNull().default("full-time"),
-  sourceUrl: varchar("sourceUrl", { length: 1024 }).notNull(),
-  sourceName: varchar("sourceName", { length: 128 }).notNull(),
-  sourceType: mysqlEnum("sourceType", ["rss", "scraper", "association"]).notNull().default("rss"),
-  description: text("description"),
-  postedAt: timestamp("postedAt"),
-  isFeatured: int("isFeatured").notNull().default(0), // 1 = featured
-  isActive: int("isActive").notNull().default(1),     // 1 = active
-  lastSeenAt: timestamp("lastSeenAt").defaultNow().notNull(),
-  createdAt: timestamp("createdAt").defaultNow().notNull(),
-}, (t) => [
-  // MySQL 8 + utf8mb4 cannot index all 1,024 characters (4,096 bytes).
-  // A 700-character prefix preserves full URLs while staying below 3,072 bytes.
-  uniqueIndex("job_postings_source_url_unique").on(sql`${t.sourceUrl}(700)`),
-  index("job_province_idx").on(t.province),
-  index("job_type_idx").on(t.jobType),
-  index("job_posted_at_idx").on(t.postedAt),
-  index("job_active_idx").on(t.isActive),
-]);
+export const jobPostings = mysqlTable(
+  "job_postings",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    title: varchar("title", { length: 255 }).notNull(),
+    company: varchar("company", { length: 255 }),
+    location: varchar("location", { length: 255 }),
+    province: mysqlEnum("province", ["ON", "BC", "AB", "SK", "MB", "other"])
+      .notNull()
+      .default("other"),
+    salary: varchar("salary", { length: 255 }),
+    jobType: mysqlEnum("jobType", ["full-time", "part-time", "contract"])
+      .notNull()
+      .default("full-time"),
+    sourceUrl: varchar("sourceUrl", { length: 1024 }).notNull(),
+    sourceName: varchar("sourceName", { length: 128 }).notNull(),
+    sourceType: mysqlEnum("sourceType", ["rss", "scraper", "association"])
+      .notNull()
+      .default("rss"),
+    description: text("description"),
+    postedAt: timestamp("postedAt"),
+    isFeatured: int("isFeatured").notNull().default(0), // 1 = featured
+    isActive: int("isActive").notNull().default(1), // 1 = active
+    lastSeenAt: timestamp("lastSeenAt").defaultNow().notNull(),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+  },
+  t => [
+    // MySQL 8 + utf8mb4 cannot index all 1,024 characters (4,096 bytes).
+    // A 700-character prefix preserves full URLs while staying below 3,072 bytes.
+    uniqueIndex("job_postings_source_url_unique").on(sql`${t.sourceUrl}(700)`),
+    index("job_province_idx").on(t.province),
+    index("job_type_idx").on(t.jobType),
+    index("job_posted_at_idx").on(t.postedAt),
+    index("job_active_idx").on(t.isActive),
+  ]
+);
 export type JobPosting = typeof jobPostings.$inferSelect;
 export type InsertJobPosting = typeof jobPostings.$inferInsert;
 
@@ -1245,17 +1662,19 @@ export type InsertJobPosting = typeof jobPostings.$inferInsert;
  * Issued when an operator requests a code; consumed when they enter it.
  * Single-use and short-lived (10 minutes).
  */
-export const emailOtpCodes = mysqlTable("email_otp_codes", {
-  id: int("id").autoincrement().primaryKey(),
-  email: varchar("email", { length: 320 }).notNull(),
-  codeHash: varchar("codeHash", { length: 64 }).notNull(), // SHA-256 of the 6-digit code
-  expiresAt: timestamp("expiresAt").notNull(),
-  usedAt: timestamp("usedAt"), // null = not yet used
-  attempts: int("attempts").notNull().default(0), // wrong-guess counter (max 5)
-  createdAt: timestamp("createdAt").defaultNow().notNull(),
-}, (t) => [
-  index("otp_email_idx").on(t.email),
-]);
+export const emailOtpCodes = mysqlTable(
+  "email_otp_codes",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    email: varchar("email", { length: 320 }).notNull(),
+    codeHash: varchar("codeHash", { length: 64 }).notNull(), // SHA-256 of the 6-digit code
+    expiresAt: timestamp("expiresAt").notNull(),
+    usedAt: timestamp("usedAt"), // null = not yet used
+    attempts: int("attempts").notNull().default(0), // wrong-guess counter (max 5)
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+  },
+  t => [index("otp_email_idx").on(t.email)]
+);
 export type EmailOtpCode = typeof emailOtpCodes.$inferSelect;
 export type InsertEmailOtpCode = typeof emailOtpCodes.$inferInsert;
 
@@ -1264,17 +1683,21 @@ export type InsertEmailOtpCode = typeof emailOtpCodes.$inferInsert;
  * after completing an Echelon Command scenario.
  * One active row per user; upserted on each "Queue simulation" click.
  */
-export const commandDrillQueue = mysqlTable("command_drill_queue", {
-  id: int("id").autoincrement().primaryKey(),
-  userId: int("userId"),
-  guestId: varchar("guestId", { length: 64 }),
-  drillName: varchar("drillName", { length: 255 }).notNull(),
-  queuedAt: timestamp("queuedAt").defaultNow().notNull(),
-  completedAt: timestamp("completedAt"),
-}, (t) => [
-  index("cdq_user_idx").on(t.userId),
-  index("cdq_guest_idx").on(t.guestId),
-]);
+export const commandDrillQueue = mysqlTable(
+  "command_drill_queue",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    userId: int("userId"),
+    guestId: varchar("guestId", { length: 64 }),
+    drillName: varchar("drillName", { length: 255 }).notNull(),
+    queuedAt: timestamp("queuedAt").defaultNow().notNull(),
+    completedAt: timestamp("completedAt"),
+  },
+  t => [
+    index("cdq_user_idx").on(t.userId),
+    index("cdq_guest_idx").on(t.guestId),
+  ]
+);
 export type CommandDrillQueue = typeof commandDrillQueue.$inferSelect;
 export type InsertCommandDrillQueue = typeof commandDrillQueue.$inferInsert;
 
@@ -1282,25 +1705,29 @@ export type InsertCommandDrillQueue = typeof commandDrillQueue.$inferInsert;
  * Command run history — one row per completed scenario run.
  * Powers personal score timeline and the operator leaderboard.
  */
-export const commandRunHistory = mysqlTable("command_run_history", {
-  id: int("id").autoincrement().primaryKey(),
-  userId: int("userId"),
-  guestId: varchar("guestId", { length: 64 }),
-  displayName: varchar("displayName", { length: 80 }),
-  scenarioId: varchar("scenarioId", { length: 60 }).notNull(),
-  scenarioTitle: varchar("scenarioTitle", { length: 120 }).notNull(),
-  commandScore: int("commandScore").notNull(),
-  optimalCalls: int("optimalCalls").notNull(),
-  totalSteps: int("totalSteps").notNull(),
-  elapsedSeconds: int("elapsedSeconds").notNull().default(0),
-  decisionsJson: text("decisionsJson"), // JSON array of { stepId, choiceId, points } — nullable for historical rows
-  completedAt: timestamp("completedAt").defaultNow().notNull(),
-}, (t) => [
-  index("crh_user_idx").on(t.userId),
-  index("crh_guest_idx").on(t.guestId),
-  index("crh_scenario_idx").on(t.scenarioId),
-  index("crh_score_idx").on(t.commandScore),
-]);
+export const commandRunHistory = mysqlTable(
+  "command_run_history",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    userId: int("userId"),
+    guestId: varchar("guestId", { length: 64 }),
+    displayName: varchar("displayName", { length: 80 }),
+    scenarioId: varchar("scenarioId", { length: 60 }).notNull(),
+    scenarioTitle: varchar("scenarioTitle", { length: 120 }).notNull(),
+    commandScore: int("commandScore").notNull(),
+    optimalCalls: int("optimalCalls").notNull(),
+    totalSteps: int("totalSteps").notNull(),
+    elapsedSeconds: int("elapsedSeconds").notNull().default(0),
+    decisionsJson: text("decisionsJson"), // JSON array of { stepId, choiceId, points } — nullable for historical rows
+    completedAt: timestamp("completedAt").defaultNow().notNull(),
+  },
+  t => [
+    index("crh_user_idx").on(t.userId),
+    index("crh_guest_idx").on(t.guestId),
+    index("crh_scenario_idx").on(t.scenarioId),
+    index("crh_score_idx").on(t.commandScore),
+  ]
+);
 export type CommandRunHistory = typeof commandRunHistory.$inferSelect;
 export type InsertCommandRunHistory = typeof commandRunHistory.$inferInsert;
 
@@ -1325,7 +1752,9 @@ export const commandEmailCapture = mysqlTable("command_email_capture", {
   email: varchar("email", { length: 320 }).notNull(),
   userId: int("userId"),
   guestId: varchar("guestId", { length: 64 }),
-  source: varchar("source", { length: 64 }).default("command_debrief").notNull(),
+  source: varchar("source", { length: 64 })
+    .default("command_debrief")
+    .notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
 
@@ -1336,28 +1765,32 @@ export type InsertCommandEmailCapture = typeof commandEmailCapture.$inferInsert;
  * Stripe event ledger — one row per processed Stripe webhook event.
  * The unique constraint on stripeEventId prevents duplicate processing on replay.
  */
-export const stripeEventLog = mysqlTable("stripe_event_log", {
-  id: int("id").autoincrement().primaryKey(),
-  stripeEventId: varchar("stripeEventId", { length: 128 }).notNull().unique(),
-  eventType: varchar("eventType", { length: 128 }).notNull(),
-  stripeObjectId: varchar("stripeObjectId", { length: 128 }),
-  orgId: int("orgId"),
-  status: varchar("status", { length: 40 }).notNull().default("pending"),
-  dbProcessed: boolean("dbProcessed").notNull().default(false),
-  emailDelivered: boolean("emailDelivered").notNull().default(false),
-  /** Paid invoice conversion events have been persisted to product analytics. */
-  analyticsProcessed: boolean("analyticsProcessed").notNull().default(false),
-  attemptCount: int("attemptCount").notNull().default(0),
-  processingToken: varchar("processingToken", { length: 64 }),
-  processingStartedAt: timestamp("processingStartedAt"),
-  lastError: text("lastError"),
-  createdAt: timestamp("createdAt").defaultNow().notNull(),
-  completedAt: timestamp("completedAt"),
-}, (table) => ({
-  eventTypeIdx: index("stripe_event_log_event_type_idx").on(table.eventType),
-  orgIdIdx: index("stripe_event_log_org_id_idx").on(table.orgId),
-  statusIdx: index("stripe_event_log_status_idx").on(table.status),
-}));
+export const stripeEventLog = mysqlTable(
+  "stripe_event_log",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    stripeEventId: varchar("stripeEventId", { length: 128 }).notNull().unique(),
+    eventType: varchar("eventType", { length: 128 }).notNull(),
+    stripeObjectId: varchar("stripeObjectId", { length: 128 }),
+    orgId: int("orgId"),
+    status: varchar("status", { length: 40 }).notNull().default("pending"),
+    dbProcessed: boolean("dbProcessed").notNull().default(false),
+    emailDelivered: boolean("emailDelivered").notNull().default(false),
+    /** Paid invoice conversion events have been persisted to product analytics. */
+    analyticsProcessed: boolean("analyticsProcessed").notNull().default(false),
+    attemptCount: int("attemptCount").notNull().default(0),
+    processingToken: varchar("processingToken", { length: 64 }),
+    processingStartedAt: timestamp("processingStartedAt"),
+    lastError: text("lastError"),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    completedAt: timestamp("completedAt"),
+  },
+  table => ({
+    eventTypeIdx: index("stripe_event_log_event_type_idx").on(table.eventType),
+    orgIdIdx: index("stripe_event_log_org_id_idx").on(table.orgId),
+    statusIdx: index("stripe_event_log_status_idx").on(table.status),
+  })
+);
 
 export type StripeEventLog = typeof stripeEventLog.$inferSelect;
 export type InsertStripeEventLog = typeof stripeEventLog.$inferInsert;
@@ -1372,189 +1805,267 @@ export type StripeEventStatus =
 // ==================== Teams Flex Tables ====================
 
 /** Teams Flex orders - one order can contain multiple course licences at different terms */
-export const teamFlexOrders = mysqlTable("team_flex_orders", {
-  id: int("id").autoincrement().primaryKey(),
-  organizationId: int("organizationId").notNull(),
-  purchaserUserId: int("purchaserUserId"),
-  managerEmail: varchar("managerEmail", { length: 320 }).notNull(),
-  totalLicences: int("totalLicences").notNull(),
-  subtotalCents: int("subtotalCents").notNull(),
-  discountRate: decimal("discountRate", { precision: 5, scale: 4 }).notNull().default("0"),
-  discountCents: int("discountCents").notNull().default(0),
-  totalBeforeTaxCents: int("totalBeforeTaxCents").notNull(),
-  taxCents: int("taxCents"),
-  totalPaidCents: int("totalPaidCents"),
-  currency: varchar("currency", { length: 3 }).notNull().default("cad"),
-  stripeCheckoutSessionId: varchar("stripeCheckoutSessionId", { length: 128 }),
-  stripePaymentIntentId: varchar("stripePaymentIntentId", { length: 128 }),
-  stripeCustomerId: varchar("stripeCustomerId", { length: 128 }),
-  status: varchar("status", { length: 32 }).notNull().default("pending"),
-  overlapAcknowledged: boolean("overlapAcknowledged").notNull().default(false),
-  paidAt: timestamp("paidAt"),
-  createdAt: timestamp("createdAt").defaultNow().notNull(),
-}, (table) => [
-  uniqueIndex("team_flex_orders_checkout_unique").on(table.stripeCheckoutSessionId),
-  index("team_flex_orders_org_status_idx").on(table.organizationId, table.status),
-  index("idx_flex_orders_org").on(table.organizationId),
-  index("idx_flex_orders_status").on(table.status),
-  uniqueIndex("uk_stripe_pi").on(table.stripePaymentIntentId),
-]);
+export const teamFlexOrders = mysqlTable(
+  "team_flex_orders",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    organizationId: int("organizationId").notNull(),
+    purchaserUserId: int("purchaserUserId"),
+    managerEmail: varchar("managerEmail", { length: 320 }).notNull(),
+    totalLicences: int("totalLicences").notNull(),
+    subtotalCents: int("subtotalCents").notNull(),
+    discountRate: decimal("discountRate", { precision: 5, scale: 4 })
+      .notNull()
+      .default("0"),
+    discountCents: int("discountCents").notNull().default(0),
+    totalBeforeTaxCents: int("totalBeforeTaxCents").notNull(),
+    taxCents: int("taxCents"),
+    totalPaidCents: int("totalPaidCents"),
+    currency: varchar("currency", { length: 3 }).notNull().default("cad"),
+    stripeCheckoutSessionId: varchar("stripeCheckoutSessionId", {
+      length: 128,
+    }),
+    stripePaymentIntentId: varchar("stripePaymentIntentId", { length: 128 }),
+    stripeCustomerId: varchar("stripeCustomerId", { length: 128 }),
+    status: varchar("status", { length: 32 }).notNull().default("pending"),
+    overlapAcknowledged: boolean("overlapAcknowledged")
+      .notNull()
+      .default(false),
+    paidAt: timestamp("paidAt"),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+  },
+  table => [
+    uniqueIndex("team_flex_orders_checkout_unique").on(
+      table.stripeCheckoutSessionId
+    ),
+    index("team_flex_orders_org_status_idx").on(
+      table.organizationId,
+      table.status
+    ),
+    index("idx_flex_orders_org").on(table.organizationId),
+    index("idx_flex_orders_status").on(table.status),
+    uniqueIndex("uk_stripe_pi").on(table.stripePaymentIntentId),
+  ]
+);
 export type TeamFlexOrder = typeof teamFlexOrders.$inferSelect;
 
 /** Teams Flex order items - line items with pricing per course per term */
-export const teamFlexOrderItems = mysqlTable("team_flex_order_items", {
-  id: int("id").autoincrement().primaryKey(),
-  orderId: int("orderId").notNull(),
-  courseKey: varchar("courseKey", { length: 64 }).notNull(),
-  examFamily: varchar("examFamily", { length: 32 }).notNull(),
-  pricingBand: varchar("pricingBand", { length: 32 }).notNull(),
-  courseLevel: int("courseLevel"),
-  termMonths: int("termMonths").notNull(),
-  quantity: int("quantity").notNull(),
-  listUnitPriceCents: int("listUnitPriceCents").notNull(),
-  discountRate: decimal("discountRate", { precision: 5, scale: 4 }).notNull().default("0"),
-  discountedUnitPriceCents: int("discountedUnitPriceCents").notNull(),
-  lineTotalCents: int("lineTotalCents").notNull(),
-  createdAt: timestamp("createdAt").defaultNow().notNull(),
-}, (table) => [
-  index("idx_flex_items_order").on(table.orderId),
-]);
+export const teamFlexOrderItems = mysqlTable(
+  "team_flex_order_items",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    orderId: int("orderId").notNull(),
+    courseKey: varchar("courseKey", { length: 64 }).notNull(),
+    examFamily: varchar("examFamily", { length: 32 }).notNull(),
+    pricingBand: varchar("pricingBand", { length: 32 }).notNull(),
+    courseLevel: int("courseLevel"),
+    termMonths: int("termMonths").notNull(),
+    quantity: int("quantity").notNull(),
+    listUnitPriceCents: int("listUnitPriceCents").notNull(),
+    discountRate: decimal("discountRate", { precision: 5, scale: 4 })
+      .notNull()
+      .default("0"),
+    discountedUnitPriceCents: int("discountedUnitPriceCents").notNull(),
+    lineTotalCents: int("lineTotalCents").notNull(),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+  },
+  table => [index("idx_flex_items_order").on(table.orderId)]
+);
 export type TeamFlexOrderItem = typeof teamFlexOrderItems.$inferSelect;
 
 /** Teams Flex licences - individual operator access grants */
-export const teamFlexLicences = mysqlTable("team_flex_licences", {
-  id: int("id").autoincrement().primaryKey(),
-  orderItemId: int("orderItemId").notNull(),
-  organizationId: int("organizationId").notNull(),
-  courseKey: varchar("courseKey", { length: 64 }).notNull(),
-  termMonths: int("termMonths").notNull(),
-  status: varchar("status", { length: 32 }).notNull().default("unused"),
-  invitedEmail: varchar("invitedEmail", { length: 320 }),
-  invitationToken: varchar("invitationToken", { length: 128 }),
-  invitedAt: timestamp("invitedAt"),
-  operatorUserId: int("operatorUserId"),
-  assignedAt: timestamp("assignedAt"),
-  activatedAt: timestamp("activatedAt"),
-  accessEndsAt: timestamp("accessEndsAt"),
-  originalAccessEndsAt: timestamp("originalAccessEndsAt"),
-  reportingEndsAt: timestamp("reportingEndsAt"),
-  extensionApplied: boolean("extensionApplied").notNull().default(false),
-  extensionStartsAt: timestamp("extensionStartsAt"),
-  activationDeadline: timestamp("activationDeadline").notNull(),
-  startsAt: timestamp("startsAt"),
-  suspendedAt: timestamp("suspendedAt"),
-  suspendedReason: varchar("suspendedReason", { length: 100 }),
-  revokedAt: timestamp("revokedAt"),
-  revokeReason: varchar("revokeReason", { length: 64 }),
-  previousStatus: varchar("previousStatus", { length: 32 }),
-  replacedByLicenceId: int("replacedByLicenceId"),
-  replacesLicenceId: int("replacesLicenceId"),
-  createdAt: timestamp("createdAt").defaultNow().notNull(),
-}, (table) => [
-  index("flex_lic_org_status_idx").on(table.organizationId, table.status),
-  index("flex_lic_operator_idx").on(table.operatorUserId, table.status, table.courseKey),
-  index("flex_lic_email_idx").on(table.invitedEmail, table.status, table.courseKey),
-  index("flex_lic_deadline_idx").on(table.status, table.activationDeadline),
-  index("flex_lic_invitation_idx").on(table.invitationToken, table.status),
-  index("idx_flex_lic_deadline").on(table.status, table.activationDeadline),
-  index("idx_flex_lic_expiry").on(table.status, table.accessEndsAt),
-  index("idx_flex_lic_invitation").on(table.invitationToken),
-]);
+export const teamFlexLicences = mysqlTable(
+  "team_flex_licences",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    orderItemId: int("orderItemId").notNull(),
+    organizationId: int("organizationId").notNull(),
+    courseKey: varchar("courseKey", { length: 64 }).notNull(),
+    termMonths: int("termMonths").notNull(),
+    status: varchar("status", { length: 32 }).notNull().default("unused"),
+    invitedEmail: varchar("invitedEmail", { length: 320 }),
+    invitationToken: varchar("invitationToken", { length: 128 }),
+    invitedAt: timestamp("invitedAt"),
+    operatorUserId: int("operatorUserId"),
+    assignedAt: timestamp("assignedAt"),
+    activatedAt: timestamp("activatedAt"),
+    accessEndsAt: timestamp("accessEndsAt"),
+    originalAccessEndsAt: timestamp("originalAccessEndsAt"),
+    reportingEndsAt: timestamp("reportingEndsAt"),
+    extensionApplied: boolean("extensionApplied").notNull().default(false),
+    extensionStartsAt: timestamp("extensionStartsAt"),
+    activationDeadline: timestamp("activationDeadline").notNull(),
+    startsAt: timestamp("startsAt"),
+    suspendedAt: timestamp("suspendedAt"),
+    suspendedReason: varchar("suspendedReason", { length: 100 }),
+    revokedAt: timestamp("revokedAt"),
+    revokeReason: varchar("revokeReason", { length: 64 }),
+    previousStatus: varchar("previousStatus", { length: 32 }),
+    replacedByLicenceId: int("replacedByLicenceId"),
+    replacesLicenceId: int("replacesLicenceId"),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+  },
+  table => [
+    index("flex_lic_org_status_idx").on(table.organizationId, table.status),
+    index("flex_lic_operator_idx").on(
+      table.operatorUserId,
+      table.status,
+      table.courseKey
+    ),
+    index("flex_lic_email_idx").on(
+      table.invitedEmail,
+      table.status,
+      table.courseKey
+    ),
+    index("flex_lic_deadline_idx").on(table.status, table.activationDeadline),
+    index("flex_lic_invitation_idx").on(table.invitationToken, table.status),
+    index("idx_flex_lic_deadline").on(table.status, table.activationDeadline),
+    index("idx_flex_lic_expiry").on(table.status, table.accessEndsAt),
+    index("idx_flex_lic_invitation").on(table.invitationToken),
+  ]
+);
 export type TeamFlexLicence = typeof teamFlexLicences.$inferSelect;
 
 /**
  * Platform-recorded study sessions. Heartbeats are sequenced and capped to elapsed
  * wall-clock time so background tabs and retries cannot manufacture study time.
  */
-export const learningActivitySessions = mysqlTable("learning_activity_sessions", {
-  id: int("id").autoincrement().primaryKey(),
-  sessionKey: varchar("sessionKey", { length: 64 }).notNull(),
-  userId: int("userId"),
-  studentEmail: varchar("studentEmail", { length: 320 }).notNull(),
-  orgId: int("orgId"),
-  organizationMemberId: int("organizationMemberId"),
-  teamFlexLicenceId: int("teamFlexLicenceId"),
-  courseKey: varchar("courseKey", { length: 64 }).notNull(),
-  activityType: mysqlEnum("activityType", ["quiz", "mock_exam", "flashcards", "process_guide", "ai_tutor"]).notNull(),
-  topic: varchar("topic", { length: 128 }),
-  startedAt: timestamp("startedAt").defaultNow().notNull(),
-  lastHeartbeatAt: timestamp("lastHeartbeatAt").defaultNow().notNull(),
-  activeSeconds: int("activeSeconds").notNull().default(0),
-  lastSequence: int("lastSequence").notNull().default(0),
-  unitsCompleted: int("unitsCompleted").notNull().default(0),
-  score: int("score"),
-  total: int("total"),
-  status: mysqlEnum("status", ["active", "completed", "abandoned"]).notNull().default("active"),
-  completedAt: timestamp("completedAt"),
-  createdAt: timestamp("createdAt").defaultNow().notNull(),
-}, (table) => [
-  uniqueIndex("learning_sessions_key_unique_idx").on(table.sessionKey),
-  index("learning_sessions_identity_time_idx").on(table.studentEmail, table.startedAt),
-  index("learning_sessions_org_time_idx").on(table.orgId, table.startedAt),
-  index("learning_sessions_member_time_idx").on(table.organizationMemberId, table.startedAt),
-  index("learning_sessions_flex_time_idx").on(table.teamFlexLicenceId, table.startedAt),
-  index("learning_sessions_course_time_idx").on(table.courseKey, table.startedAt),
-]);
-export type LearningActivitySession = typeof learningActivitySessions.$inferSelect;
-export type InsertLearningActivitySession = typeof learningActivitySessions.$inferInsert;
+export const learningActivitySessions = mysqlTable(
+  "learning_activity_sessions",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    sessionKey: varchar("sessionKey", { length: 64 }).notNull(),
+    userId: int("userId"),
+    studentEmail: varchar("studentEmail", { length: 320 }).notNull(),
+    orgId: int("orgId"),
+    organizationMemberId: int("organizationMemberId"),
+    teamFlexLicenceId: int("teamFlexLicenceId"),
+    courseKey: varchar("courseKey", { length: 64 }).notNull(),
+    activityType: mysqlEnum("activityType", [
+      "quiz",
+      "mock_exam",
+      "flashcards",
+      "process_guide",
+      "ai_tutor",
+    ]).notNull(),
+    topic: varchar("topic", { length: 128 }),
+    startedAt: timestamp("startedAt").defaultNow().notNull(),
+    lastHeartbeatAt: timestamp("lastHeartbeatAt").defaultNow().notNull(),
+    activeSeconds: int("activeSeconds").notNull().default(0),
+    lastSequence: int("lastSequence").notNull().default(0),
+    unitsCompleted: int("unitsCompleted").notNull().default(0),
+    score: int("score"),
+    total: int("total"),
+    status: mysqlEnum("status", ["active", "completed", "abandoned"])
+      .notNull()
+      .default("active"),
+    completedAt: timestamp("completedAt"),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+  },
+  table => [
+    uniqueIndex("learning_sessions_key_unique_idx").on(table.sessionKey),
+    index("learning_sessions_identity_time_idx").on(
+      table.studentEmail,
+      table.startedAt
+    ),
+    index("learning_sessions_org_time_idx").on(table.orgId, table.startedAt),
+    index("learning_sessions_member_time_idx").on(
+      table.organizationMemberId,
+      table.startedAt
+    ),
+    index("learning_sessions_flex_time_idx").on(
+      table.teamFlexLicenceId,
+      table.startedAt
+    ),
+    index("learning_sessions_course_time_idx").on(
+      table.courseKey,
+      table.startedAt
+    ),
+  ]
+);
+export type LearningActivitySession =
+  typeof learningActivitySessions.$inferSelect;
+export type InsertLearningActivitySession =
+  typeof learningActivitySessions.$inferInsert;
 
 /** Immutable manager or ORO review snapshots for platform-recorded study activity. */
-export const trainingAttestations = mysqlTable("training_attestations", {
-  id: int("id").autoincrement().primaryKey(),
-  reportId: varchar("reportId", { length: 64 }).notNull(),
-  orgId: int("orgId").notNull(),
-  organizationMemberId: int("organizationMemberId"),
-  teamFlexLicenceId: int("teamFlexLicenceId"),
-  operatorUserId: int("operatorUserId"),
-  operatorEmail: varchar("operatorEmail", { length: 320 }).notNull(),
-  operatorName: varchar("operatorName", { length: 200 }),
-  courseKey: varchar("courseKey", { length: 64 }).notNull(),
-  periodStart: timestamp("periodStart").notNull(),
-  periodEnd: timestamp("periodEnd").notNull(),
-  platformRecordedSeconds: int("platformRecordedSeconds").notNull(),
-  supervisorReviewSeconds: int("supervisorReviewSeconds").notNull(),
-  studySessionCount: int("studySessionCount").notNull(),
-  providerName: varchar("providerName", { length: 200 }).notNull().default("Echelon Institute"),
-  instructorName: varchar("instructorName", { length: 200 }).notNull(),
-  instructorContact: varchar("instructorContact", { length: 320 }).notNull(),
-  learningObjectives: text("learningObjectives").notNull(),
-  trainingMethod: varchar("trainingMethod", { length: 120 }).notNull().default("Interactive online training"),
-  subjectSummary: text("subjectSummary").notNull(),
-  signedByName: varchar("signedByName", { length: 200 }).notNull(),
-  signedByEmail: varchar("signedByEmail", { length: 320 }).notNull(),
-  signedRole: varchar("signedRole", { length: 100 }).notNull(),
-  signerAuthority: varchar("signerAuthority", { length: 64 }).notNull(),
-  attestationKind: mysqlEnum("attestationKind", ["ojt_attestation", "manager_acknowledgement"]).notNull(),
-  signedAt: timestamp("signedAt").defaultNow().notNull(),
-  digestSha256: varchar("digestSha256", { length: 64 }).notNull(),
-  snapshotJson: mediumtext("snapshotJson").notNull(),
-  createdAt: timestamp("createdAt").defaultNow().notNull(),
-}, (table) => [
-  uniqueIndex("training_attestations_report_unique_idx").on(table.reportId),
-  index("training_attestations_org_time_idx").on(table.orgId, table.signedAt),
-  index("training_attestations_operator_time_idx").on(table.operatorEmail, table.signedAt),
-]);
+export const trainingAttestations = mysqlTable(
+  "training_attestations",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    reportId: varchar("reportId", { length: 64 }).notNull(),
+    orgId: int("orgId").notNull(),
+    organizationMemberId: int("organizationMemberId"),
+    teamFlexLicenceId: int("teamFlexLicenceId"),
+    operatorUserId: int("operatorUserId"),
+    operatorEmail: varchar("operatorEmail", { length: 320 }).notNull(),
+    operatorName: varchar("operatorName", { length: 200 }),
+    courseKey: varchar("courseKey", { length: 64 }).notNull(),
+    periodStart: timestamp("periodStart").notNull(),
+    periodEnd: timestamp("periodEnd").notNull(),
+    platformRecordedSeconds: int("platformRecordedSeconds").notNull(),
+    supervisorReviewSeconds: int("supervisorReviewSeconds").notNull(),
+    studySessionCount: int("studySessionCount").notNull(),
+    providerName: varchar("providerName", { length: 200 })
+      .notNull()
+      .default("Echelon Institute"),
+    instructorName: varchar("instructorName", { length: 200 }).notNull(),
+    instructorContact: varchar("instructorContact", { length: 320 }).notNull(),
+    learningObjectives: text("learningObjectives").notNull(),
+    trainingMethod: varchar("trainingMethod", { length: 120 })
+      .notNull()
+      .default("Interactive online training"),
+    subjectSummary: text("subjectSummary").notNull(),
+    signedByName: varchar("signedByName", { length: 200 }).notNull(),
+    signedByEmail: varchar("signedByEmail", { length: 320 }).notNull(),
+    signedRole: varchar("signedRole", { length: 100 }).notNull(),
+    signerAuthority: varchar("signerAuthority", { length: 64 }).notNull(),
+    attestationKind: mysqlEnum("attestationKind", [
+      "ojt_attestation",
+      "manager_acknowledgement",
+    ]).notNull(),
+    signedAt: timestamp("signedAt").defaultNow().notNull(),
+    digestSha256: varchar("digestSha256", { length: 64 }).notNull(),
+    snapshotJson: mediumtext("snapshotJson").notNull(),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+  },
+  table => [
+    uniqueIndex("training_attestations_report_unique_idx").on(table.reportId),
+    index("training_attestations_org_time_idx").on(table.orgId, table.signedAt),
+    index("training_attestations_operator_time_idx").on(
+      table.operatorEmail,
+      table.signedAt
+    ),
+  ]
+);
 export type TrainingAttestation = typeof trainingAttestations.$inferSelect;
-export type InsertTrainingAttestation = typeof trainingAttestations.$inferInsert;
+export type InsertTrainingAttestation =
+  typeof trainingAttestations.$inferInsert;
 
 /** Teams Flex extensions - 90-day retake extensions */
-export const teamFlexExtensions = mysqlTable("team_flex_extensions", {
-  id: int("id").autoincrement().primaryKey(),
-  licenceId: int("licenceId").notNull(),
-  organizationId: int("organizationId").notNull(),
-  /** OTP-verified Course Pass operators do not necessarily have an OAuth user row. */
-  purchaserUserId: int("purchaserUserId"),
-  extensionDays: int("extensionDays").notNull().default(90),
-  priceCents: int("priceCents").notNull(),
-  stripeCheckoutSessionId: varchar("stripeCheckoutSessionId", { length: 128 }),
-  stripePaymentIntentId: varchar("stripePaymentIntentId", { length: 128 }),
-  status: varchar("status", { length: 32 }).notNull().default("pending"),
-  appliedAt: timestamp("appliedAt"),
-  newAccessEndsAt: timestamp("newAccessEndsAt"),
-  createdAt: timestamp("createdAt").defaultNow().notNull(),
-}, (table) => [
-  uniqueIndex("team_flex_extensions_licence_unique").on(table.licenceId),
-]);
+export const teamFlexExtensions = mysqlTable(
+  "team_flex_extensions",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    licenceId: int("licenceId").notNull(),
+    organizationId: int("organizationId").notNull(),
+    /** OTP-verified Course Pass operators do not necessarily have an OAuth user row. */
+    purchaserUserId: int("purchaserUserId"),
+    extensionDays: int("extensionDays").notNull().default(90),
+    priceCents: int("priceCents").notNull(),
+    stripeCheckoutSessionId: varchar("stripeCheckoutSessionId", {
+      length: 128,
+    }),
+    stripePaymentIntentId: varchar("stripePaymentIntentId", { length: 128 }),
+    status: varchar("status", { length: 32 }).notNull().default("pending"),
+    appliedAt: timestamp("appliedAt"),
+    newAccessEndsAt: timestamp("newAccessEndsAt"),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+  },
+  table => [
+    uniqueIndex("team_flex_extensions_licence_unique").on(table.licenceId),
+  ]
+);
 export type TeamFlexExtension = typeof teamFlexExtensions.$inferSelect;
 
 // ─── Platform Changelog ────────────────────────────────────────────────────────
@@ -1562,7 +2073,9 @@ export const changelog = mysqlTable("changelog", {
   id: int("id").autoincrement().primaryKey(),
   date: varchar("date", { length: 32 }).notNull(), // e.g. "August 2026"
   badge: varchar("badge", { length: 32 }).default(""), // e.g. "New", "Improvement", ""
-  badgeColor: varchar("badgeColor", { length: 16 }).default("#0F766E").notNull(),
+  badgeColor: varchar("badgeColor", { length: 16 })
+    .default("#0F766E")
+    .notNull(),
   title: varchar("title", { length: 256 }).notNull(),
   body: text("body").notNull(),
   sortOrder: int("sortOrder").notNull().default(0), // lower = newer (top)
@@ -1574,34 +2087,49 @@ export type ChangelogEntry = typeof changelog.$inferSelect;
 export type InsertChangelogEntry = typeof changelog.$inferInsert;
 
 /** Durable individual purchase email delivery. Existing purchases are not backfilled. */
-export const purchaseEmailOutbox = mysqlTable("purchase_email_outbox", {
-  id: int("id").autoincrement().primaryKey(),
-  stripeSessionId: varchar("stripeSessionId", { length: 255 }).notNull(),
-  payload: text("payload").notNull(),
-  status: mysqlEnum("status", ["pending", "sending", "sent", "failed"]).default("pending").notNull(),
-  attempts: int("attempts").default(0).notNull(),
-  availableAt: timestamp("availableAt").defaultNow().notNull(),
-  leaseToken: varchar("leaseToken", { length: 36 }),
-  sentAt: timestamp("sentAt"),
-  createdAt: timestamp("createdAt").defaultNow().notNull(),
-}, t => [uniqueIndex("purchase_email_session_unique_idx").on(t.stripeSessionId),
-  index("purchase_email_delivery_idx").on(t.status, t.availableAt)]);
+export const purchaseEmailOutbox = mysqlTable(
+  "purchase_email_outbox",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    stripeSessionId: varchar("stripeSessionId", { length: 255 }).notNull(),
+    payload: text("payload").notNull(),
+    status: mysqlEnum("status", ["pending", "sending", "sent", "failed"])
+      .default("pending")
+      .notNull(),
+    attempts: int("attempts").default(0).notNull(),
+    availableAt: timestamp("availableAt").defaultNow().notNull(),
+    leaseToken: varchar("leaseToken", { length: 36 }),
+    sentAt: timestamp("sentAt"),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+  },
+  t => [
+    uniqueIndex("purchase_email_session_unique_idx").on(t.stripeSessionId),
+    index("purchase_email_delivery_idx").on(t.status, t.availableAt),
+  ]
+);
 
 /** Course-wide state, independent of the currently downloaded flashcard sample. */
-export const flashcardProgressState = mysqlTable("flashcard_progress_state", {
-  id: int("id").autoincrement().primaryKey(),
-  email: varchar("email", { length: 320 }).notNull(),
-  examType: varchar("examType", { length: 64 }).notNull(),
-  knownIds: mediumtext("knownIds").notNull(),
-  totalCards: int("totalCards").notNull().default(0),
-}, t => [uniqueIndex("flashcard_state_identity_idx").on(t.email, t.examType)]);
-export const flashcardProgressOperations = mysqlTable("flashcard_progress_operations", {
-  operationId: varchar("operationId", { length: 64 }).primaryKey(),
-  email: varchar("email", { length: 320 }).notNull(),
-  examType: varchar("examType", { length: 64 }).notNull(),
-  payloadHash: varchar("payloadHash", { length: 64 }).notNull(),
-  createdAt: timestamp("createdAt").defaultNow().notNull(),
-});
+export const flashcardProgressState = mysqlTable(
+  "flashcard_progress_state",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    email: varchar("email", { length: 320 }).notNull(),
+    examType: varchar("examType", { length: 64 }).notNull(),
+    knownIds: mediumtext("knownIds").notNull(),
+    totalCards: int("totalCards").notNull().default(0),
+  },
+  t => [uniqueIndex("flashcard_state_identity_idx").on(t.email, t.examType)]
+);
+export const flashcardProgressOperations = mysqlTable(
+  "flashcard_progress_operations",
+  {
+    operationId: varchar("operationId", { length: 64 }).primaryKey(),
+    email: varchar("email", { length: 320 }).notNull(),
+    examType: varchar("examType", { length: 64 }).notNull(),
+    payloadHash: varchar("payloadHash", { length: 64 }).notNull(),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+  }
+);
 
 /** Shared managed-job leases and conservative SMTP delivery receipts. */
 export const scheduledWork = mysqlTable("scheduled_work", {
@@ -1617,169 +2145,244 @@ export const scheduledWork = mysqlTable("scheduled_work", {
 });
 
 /** Separate pilot learning records; never treated as exam-pass entitlements or approved CEUs. */
-export const ceuLearningRecords = mysqlTable('ceu_learning_records', {
-  id: int('id').autoincrement().primaryKey(),
-  studentEmail: varchar('studentEmail', {length:320}).notNull(),
-  courseKey: varchar('courseKey', {length:80}).notNull(),
-  courseVersion: varchar('courseVersion', {length:32}).notNull(),
-  operatorNumber: varchar('operatorNumber', {length:32}).notNull(),
-  activeSeconds: int('activeSeconds').notNull().default(0),
-  exerciseAttempts: int('exerciseAttempts').notNull().default(0),
-  revision: int('revision').notNull().default(0),
-  stateJson: mediumtext('stateJson').notNull(),
-  createdAt: timestamp('createdAt').defaultNow().notNull(),
-  updatedAt: timestamp('updatedAt').defaultNow().onUpdateNow().notNull(),
-}, table => [uniqueIndex('ceu_learner_course_edition').on(table.studentEmail,table.courseKey,table.courseVersion)]);
+export const ceuLearningRecords = mysqlTable(
+  "ceu_learning_records",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    studentEmail: varchar("studentEmail", { length: 320 }).notNull(),
+    courseKey: varchar("courseKey", { length: 80 }).notNull(),
+    courseVersion: varchar("courseVersion", { length: 32 }).notNull(),
+    operatorNumber: varchar("operatorNumber", { length: 32 }).notNull(),
+    activeSeconds: int("activeSeconds").notNull().default(0),
+    exerciseAttempts: int("exerciseAttempts").notNull().default(0),
+    revision: int("revision").notNull().default(0),
+    stateJson: mediumtext("stateJson").notNull(),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  },
+  table => [
+    uniqueIndex("ceu_learner_course_edition").on(
+      table.studentEmail,
+      table.courseKey,
+      table.courseVersion
+    ),
+  ]
+);
 
 /** Atomic time reservations enforce the seven-hour limit across all CEU courses. */
-export const ceuLearningDailyTime = mysqlTable('ceu_learning_daily_time', {
-  studentEmail: varchar('studentEmail', {length:320}).notNull(),
-  localDate: varchar('localDate', {length:10}).notNull(),
-  seconds: int('seconds').notNull().default(0),
-  lastCreditedAt: timestamp('lastCreditedAt'),
-}, table => [uniqueIndex('ceu_learning_daily_time_pk').on(table.studentEmail, table.localDate)]);
+export const ceuLearningDailyTime = mysqlTable(
+  "ceu_learning_daily_time",
+  {
+    studentEmail: varchar("studentEmail", { length: 320 }).notNull(),
+    localDate: varchar("localDate", { length: 10 }).notNull(),
+    seconds: int("seconds").notNull().default(0),
+    lastCreditedAt: timestamp("lastCreditedAt"),
+  },
+  table => [
+    uniqueIndex("ceu_learning_daily_time_pk").on(
+      table.studentEmail,
+      table.localDate
+    ),
+  ]
+);
 
 /** Restart-safe editorial state. Draft/source payload and provider IDs are never public. */
-export const blogAutomationRuns = mysqlTable("blog_automation_runs", {
-  id: varchar("id", { length: 64 }).primaryKey(),
-  runKey: varchar("runKey", { length: 32 }).notNull(),
-  status: varchar("status", { length: 16 }).notNull(),
-  progress: mediumtext("progress").notNull(),
-  weeklyTaskUid: varchar("weeklyTaskUid", { length: 65 }),
-  workerTaskUid: varchar("workerTaskUid", { length: 65 }),
-  claimToken: varchar("claimToken", { length: 64 }),
-  leaseUntil: timestamp("leaseUntil"),
-  attempts: int("attempts").notNull().default(0),
-  lastError: varchar("lastError", { length: 500 }),
-  startedAt: timestamp("startedAt").defaultNow().notNull(),
-  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
-}, table => [
-  index("blog_weekly_task_idx").on(table.weeklyTaskUid),
-  index("blog_worker_task_idx").on(table.workerTaskUid),
-]);
+export const blogAutomationRuns = mysqlTable(
+  "blog_automation_runs",
+  {
+    id: varchar("id", { length: 64 }).primaryKey(),
+    runKey: varchar("runKey", { length: 32 }).notNull(),
+    status: varchar("status", { length: 16 }).notNull(),
+    progress: mediumtext("progress").notNull(),
+    weeklyTaskUid: varchar("weeklyTaskUid", { length: 65 }),
+    workerTaskUid: varchar("workerTaskUid", { length: 65 }),
+    claimToken: varchar("claimToken", { length: 64 }),
+    leaseUntil: timestamp("leaseUntil"),
+    attempts: int("attempts").notNull().default(0),
+    lastError: varchar("lastError", { length: 500 }),
+    startedAt: timestamp("startedAt").defaultNow().notNull(),
+    updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  },
+  table => [
+    index("blog_weekly_task_idx").on(table.weeklyTaskUid),
+    index("blog_worker_task_idx").on(table.workerTaskUid),
+  ]
+);
 
 /** Sparse audit evidence for the sole automatic recovery policy that never retries historic editorial content. */
-export const blogAutomationRunArchives = mysqlTable("blog_automation_run_archives", {
-  id: int("id").autoincrement().primaryKey(),
-  sourceRunId: varchar("sourceRunId", { length: 64 }).notNull(),
-  sourceRunKey: varchar("sourceRunKey", { length: 32 }).notNull(),
-  sourceStatus: varchar("sourceStatus", { length: 16 }).notNull(),
-  phase: varchar("phase", { length: 32 }).notNull(),
-  attempts: int("attempts").notNull(),
-  failureService: varchar("failureService", { length: 32 }).notNull(),
-  failureKind: varchar("failureKind", { length: 64 }).notNull(),
-  archiveReason: varchar("archiveReason", { length: 64 }).notNull(),
-  sourceStartedAt: timestamp("sourceStartedAt").notNull(),
-  sourceFailedAt: timestamp("sourceFailedAt").notNull(),
-  archivedAt: timestamp("archivedAt").defaultNow().notNull(),
-}, table => [
-  uniqueIndex("blog_run_archive_source_unique").on(table.sourceRunId, table.sourceRunKey),
-  index("blog_run_archive_archived_idx").on(table.archivedAt),
-]);
+export const blogAutomationRunArchives = mysqlTable(
+  "blog_automation_run_archives",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    sourceRunId: varchar("sourceRunId", { length: 64 }).notNull(),
+    sourceRunKey: varchar("sourceRunKey", { length: 32 }).notNull(),
+    sourceStatus: varchar("sourceStatus", { length: 16 }).notNull(),
+    phase: varchar("phase", { length: 32 }).notNull(),
+    attempts: int("attempts").notNull(),
+    failureService: varchar("failureService", { length: 32 }).notNull(),
+    failureKind: varchar("failureKind", { length: 64 }).notNull(),
+    archiveReason: varchar("archiveReason", { length: 64 }).notNull(),
+    sourceStartedAt: timestamp("sourceStartedAt").notNull(),
+    sourceFailedAt: timestamp("sourceFailedAt").notNull(),
+    archivedAt: timestamp("archivedAt").defaultNow().notNull(),
+  },
+  table => [
+    uniqueIndex("blog_run_archive_source_unique").on(
+      table.sourceRunId,
+      table.sourceRunKey
+    ),
+    index("blog_run_archive_archived_idx").on(table.archivedAt),
+  ]
+);
 
 /**
  * Saved game results, one row per learner and item. learnerKey is "user:<id>" for a signed-in account or
  * "email:<address>" for a verified email-code student. Anonymous play is never stored.
  * box is a Leitner box from 0 (missed, review now) to 4 (solid); dueAt is when the item should come back.
  */
-export const interactiveItemProgress = mysqlTable("interactive_item_progress", {
-  id: int("id").autoincrement().primaryKey(),
-  learnerKey: varchar("learnerKey", { length: 330 }).notNull(),
-  courseKey: varchar("courseKey", { length: 64 }).notNull(),
-  itemId: varchar("itemId", { length: 80 }).notNull(),
-  mode: varchar("mode", { length: 24 }).notNull(),
-  attempts: int("attempts").default(0).notNull(),
-  correctCount: int("correctCount").default(0).notNull(),
-  box: int("box").default(0).notNull(),
-  lastCorrect: boolean("lastCorrect").notNull(),
-  lastAttemptAt: timestamp("lastAttemptAt").defaultNow().notNull(),
-  dueAt: timestamp("dueAt").defaultNow().notNull(),
-}, table => [
-  uniqueIndex("iip_learner_item_unique").on(table.learnerKey, table.courseKey, table.itemId),
-  index("iip_learner_due_idx").on(table.learnerKey, table.courseKey, table.dueAt),
-]);
+export const interactiveItemProgress = mysqlTable(
+  "interactive_item_progress",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    learnerKey: varchar("learnerKey", { length: 330 }).notNull(),
+    courseKey: varchar("courseKey", { length: 64 }).notNull(),
+    itemId: varchar("itemId", { length: 80 }).notNull(),
+    mode: varchar("mode", { length: 24 }).notNull(),
+    attempts: int("attempts").default(0).notNull(),
+    correctCount: int("correctCount").default(0).notNull(),
+    box: int("box").default(0).notNull(),
+    lastCorrect: boolean("lastCorrect").notNull(),
+    lastAttemptAt: timestamp("lastAttemptAt").defaultNow().notNull(),
+    dueAt: timestamp("dueAt").defaultNow().notNull(),
+  },
+  table => [
+    uniqueIndex("iip_learner_item_unique").on(
+      table.learnerKey,
+      table.courseKey,
+      table.itemId
+    ),
+    index("iip_learner_due_idx").on(
+      table.learnerKey,
+      table.courseKey,
+      table.dueAt
+    ),
+  ]
+);
 
 /** Per learner per local day, for the daily goal and streak. activityDate is "YYYY-MM-DD". */
-export const interactiveDailyActivity = mysqlTable("interactive_daily_activity", {
-  id: int("id").autoincrement().primaryKey(),
-  learnerKey: varchar("learnerKey", { length: 330 }).notNull(),
-  activityDate: varchar("activityDate", { length: 10 }).notNull(),
-  answered: int("answered").default(0).notNull(),
-  correct: int("correct").default(0).notNull(),
-}, table => [
-  uniqueIndex("ida_learner_day_unique").on(table.learnerKey, table.activityDate),
-]);
+export const interactiveDailyActivity = mysqlTable(
+  "interactive_daily_activity",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    learnerKey: varchar("learnerKey", { length: 330 }).notNull(),
+    activityDate: varchar("activityDate", { length: 10 }).notNull(),
+    answered: int("answered").default(0).notNull(),
+    correct: int("correct").default(0).notNull(),
+  },
+  table => [
+    uniqueIndex("ida_learner_day_unique").on(
+      table.learnerKey,
+      table.activityDate
+    ),
+  ]
+);
 
 import { bigint } from "drizzle-orm/mysql-core";
 /** Supplemental observations; user, verified-email and anonymous namespaces never merge. */
-export const assessmentActivitySessions = mysqlTable("assessment_activity_sessions", {
-  sessionId: varchar("sessionId", { length: 36 }).primaryKey(),
-  actorHash: varchar("actorHash", { length: 64 }).notNull(),
-  identityKind: mysqlEnum("identityKind", ["user", "verified-email", "anonymous"]).notNull(),
-  userId: int("userId"),
-  emailHash: varchar("emailHash", { length: 64 }),
-  orgId: int("orgId"),
-  organizationMemberId: int("organizationMemberId"),
-  flexLicenceId: int("flexLicenceId"),
-  courseKey: varchar("courseKey", { length: 64 }).notNull(),
-  mode: varchar("mode", { length: 32 }).notNull(),
-  source: varchar("source", { length: 16 }).notNull().default("observed"),
-  sourceSessionId: varchar("sourceSessionId", { length: 80 }),
-  status: mysqlEnum("status", ["active", "completed", "abandoned"]).notNull().default("active"),
-  timed: boolean("timed"),
-  itemCount: int("itemCount").notNull(),
-  issuedItemsJson: mediumtext("issuedItemsJson").notNull(),
-  manifestHash: varchar("manifestHash", { length: 64 }).notNull(),
-  startedAt: bigint("startedAt", { mode: "number" }).notNull(),
-  lastObservedAt: bigint("lastObservedAt", { mode: "number" }).notNull(),
-  endedAt: bigint("endedAt", { mode: "number" }),
-  expiresAt: bigint("expiresAt", { mode: "number" }).notNull(),
-  activeSeconds: int("activeSeconds"), // NULL until reliable heartbeat exists; never wall-clock.
-  lastSequence: int("lastSequence").notNull().default(1),
-  eventCount: int("eventCount").notNull().default(1),
-}, table => [
-  index("aas_actor_started_idx").on(table.actorHash, table.startedAt),
-  index("aas_user_started_idx").on(table.userId, table.startedAt),
-  index("aas_email_started_idx").on(table.emailHash, table.startedAt),
-  index("aas_org_started_idx").on(table.orgId, table.startedAt),
-]);
+export const assessmentActivitySessions = mysqlTable(
+  "assessment_activity_sessions",
+  {
+    sessionId: varchar("sessionId", { length: 36 }).primaryKey(),
+    actorHash: varchar("actorHash", { length: 64 }).notNull(),
+    identityKind: mysqlEnum("identityKind", [
+      "user",
+      "verified-email",
+      "anonymous",
+    ]).notNull(),
+    userId: int("userId"),
+    emailHash: varchar("emailHash", { length: 64 }),
+    orgId: int("orgId"),
+    organizationMemberId: int("organizationMemberId"),
+    flexLicenceId: int("flexLicenceId"),
+    courseKey: varchar("courseKey", { length: 64 }).notNull(),
+    mode: varchar("mode", { length: 32 }).notNull(),
+    source: varchar("source", { length: 16 }).notNull().default("observed"),
+    sourceSessionId: varchar("sourceSessionId", { length: 80 }),
+    status: mysqlEnum("status", ["active", "completed", "abandoned"])
+      .notNull()
+      .default("active"),
+    timed: boolean("timed"),
+    itemCount: int("itemCount").notNull(),
+    issuedItemsJson: mediumtext("issuedItemsJson").notNull(),
+    manifestHash: varchar("manifestHash", { length: 64 }).notNull(),
+    startedAt: bigint("startedAt", { mode: "number" }).notNull(),
+    lastObservedAt: bigint("lastObservedAt", { mode: "number" }).notNull(),
+    endedAt: bigint("endedAt", { mode: "number" }),
+    expiresAt: bigint("expiresAt", { mode: "number" }).notNull(),
+    activeSeconds: int("activeSeconds"), // NULL until reliable heartbeat exists; never wall-clock.
+    lastSequence: int("lastSequence").notNull().default(1),
+    eventCount: int("eventCount").notNull().default(1),
+  },
+  table => [
+    index("aas_actor_started_idx").on(table.actorHash, table.startedAt),
+    index("aas_user_started_idx").on(table.userId, table.startedAt),
+    index("aas_email_started_idx").on(table.emailHash, table.startedAt),
+    index("aas_org_started_idx").on(table.orgId, table.startedAt),
+  ]
+);
 /** Insert-only events. UUID and monotonic sequence uniqueness are session-scoped. */
-export const assessmentActivityEvents = mysqlTable("assessment_activity_events", {
-  id: int("id").autoincrement().primaryKey(),
-  sessionId: varchar("sessionId", { length: 36 }).notNull(),
-  eventId: varchar("eventId", { length: 36 }).notNull(),
-  sequence: int("sequence").notNull(),
-  action: varchar("action", { length: 32 }).notNull(),
-  itemId: varchar("itemId", { length: 80 }),
-  stepId: varchar("stepId", { length: 80 }),
-  chosenAnswer: varchar("chosenAnswer", { length: 80 }),
-  observedCorrect: boolean("observedCorrect"),
-  source: varchar("source", { length: 16 }).notNull().default("observed"),
-  payloadHash: varchar("payloadHash", { length: 64 }).notNull(),
-  occurredAt: bigint("occurredAt", { mode: "number" }).notNull(),
-}, table => [
-  uniqueIndex("aae_session_event_unique").on(table.sessionId, table.eventId),
-  uniqueIndex("aae_session_sequence_unique").on(table.sessionId, table.sequence),
-]);
+export const assessmentActivityEvents = mysqlTable(
+  "assessment_activity_events",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    sessionId: varchar("sessionId", { length: 36 }).notNull(),
+    eventId: varchar("eventId", { length: 36 }).notNull(),
+    sequence: int("sequence").notNull(),
+    action: varchar("action", { length: 32 }).notNull(),
+    itemId: varchar("itemId", { length: 80 }),
+    stepId: varchar("stepId", { length: 80 }),
+    chosenAnswer: varchar("chosenAnswer", { length: 80 }),
+    observedCorrect: boolean("observedCorrect"),
+    source: varchar("source", { length: 16 }).notNull().default("observed"),
+    payloadHash: varchar("payloadHash", { length: 64 }).notNull(),
+    occurredAt: bigint("occurredAt", { mode: "number" }).notNull(),
+  },
+  table => [
+    uniqueIndex("aae_session_event_unique").on(table.sessionId, table.eventId),
+    uniqueIndex("aae_session_sequence_unique").on(
+      table.sessionId,
+      table.sequence
+    ),
+  ]
+);
 
 /** Learner suggestions, separate from rating-based user_feedback. TIMESTAMP values use UTC. */
-export const featureRequests = mysqlTable("feature_requests", {
-  id: int("id").autoincrement().primaryKey(),
-  userId: int("userId"),
-  /** Only the verified server context may supply this email. */
-  email: varchar("email", { length: 320 }),
-  courseKey: varchar("courseKey", { length: 64 }).notNull(),
-  pagePath: varchar("pagePath", { length: 256 }).notNull(),
-  source: mysqlEnum("source", ["dashboard", "quick10", "practice"]).notNull(),
-  suggestion: text("suggestion").notNull(),
-  problem: text("problem"),
-  followUpAllowed: boolean("followUpAllowed").default(false).notNull(),
-  status: mysqlEnum("status", ["new", "reviewing", "planned", "released"]).default("new").notNull(),
-  createdAt: timestamp("createdAt").defaultNow().notNull(),
-  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
-}, table => [
-  index("feature_requests_status_created_idx").on(table.status, table.createdAt),
-]);
+export const featureRequests = mysqlTable(
+  "feature_requests",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    userId: int("userId"),
+    /** Only the verified server context may supply this email. */
+    email: varchar("email", { length: 320 }),
+    courseKey: varchar("courseKey", { length: 64 }).notNull(),
+    pagePath: varchar("pagePath", { length: 256 }).notNull(),
+    source: mysqlEnum("source", ["dashboard", "quick10", "practice"]).notNull(),
+    suggestion: text("suggestion").notNull(),
+    problem: text("problem"),
+    followUpAllowed: boolean("followUpAllowed").default(false).notNull(),
+    status: mysqlEnum("status", ["new", "reviewing", "planned", "released"])
+      .default("new")
+      .notNull(),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  },
+  table => [
+    index("feature_requests_status_created_idx").on(
+      table.status,
+      table.createdAt
+    ),
+  ]
+);
 export type FeatureRequest = typeof featureRequests.$inferSelect;
 export type InsertFeatureRequest = typeof featureRequests.$inferInsert;
 
@@ -1794,26 +2397,30 @@ export type InsertFeatureRequest = typeof featureRequests.$inferInsert;
  * yet. operatorName is the name as it appears on the certificate register.
  * certificateType stores a key from shared/certificates.ts CERTIFICATE_TYPES.
  */
-export const certificates = mysqlTable("certificates", {
-  id: int("id").autoincrement().primaryKey(),
-  organizationId: int("organizationId").notNull(),
-  operatorUserId: int("operatorUserId"),
-  operatorMemberId: int("operatorMemberId"),
-  operatorName: varchar("operatorName", { length: 200 }).notNull(),
-  certificateType: varchar("certificateType", { length: 64 }).notNull(),
-  certificateNumber: varchar("certificateNumber", { length: 100 }).notNull(),
-  issuedAt: datetime("issuedAt"),
-  expiresAt: datetime("expiresAt").notNull(),
-  /** Manager who created the record; null when the creating identity had no user row. */
-  createdByUserId: int("createdByUserId"),
-  createdAt: timestamp("createdAt").defaultNow().notNull(),
-  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
-  version: int("version").notNull().default(1),
-}, (t) => [
-  index("certificates_org_expiry_idx").on(t.organizationId, t.expiresAt),
-  index("certificates_operator_idx").on(t.operatorUserId),
-  index("certificates_expiry_idx").on(t.expiresAt),
-]);
+export const certificates = mysqlTable(
+  "certificates",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    organizationId: int("organizationId").notNull(),
+    operatorUserId: int("operatorUserId"),
+    operatorMemberId: int("operatorMemberId"),
+    operatorName: varchar("operatorName", { length: 200 }).notNull(),
+    certificateType: varchar("certificateType", { length: 64 }).notNull(),
+    certificateNumber: varchar("certificateNumber", { length: 100 }).notNull(),
+    issuedAt: datetime("issuedAt"),
+    expiresAt: datetime("expiresAt").notNull(),
+    /** Manager who created the record; null when the creating identity had no user row. */
+    createdByUserId: int("createdByUserId"),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+    version: int("version").notNull().default(1),
+  },
+  t => [
+    index("certificates_org_expiry_idx").on(t.organizationId, t.expiresAt),
+    index("certificates_operator_idx").on(t.operatorUserId),
+    index("certificates_expiry_idx").on(t.expiresAt),
+  ]
+);
 export type Certificate = typeof certificates.$inferSelect;
 export type InsertCertificate = typeof certificates.$inferInsert;
 
@@ -1825,23 +2432,34 @@ export type InsertCertificate = typeof certificates.$inferInsert;
  * recipientEmail is the platform's canonical identity for managers and
  * operators; recipientUserId is recorded when the recipient has a user row.
  */
-export const certificateAlerts = mysqlTable("certificate_alerts", {
-  id: int("id").autoincrement().primaryKey(),
-  certificateId: int("certificateId").notNull(),
-  thresholdDays: int("thresholdDays").notNull(), // 90 | 60 | 30 | 7 | 0
-  expiresAt: datetime("expiresAt").notNull(), // the certificate expiry this alert was for
-  recipientUserId: int("recipientUserId"),
-  recipientEmail: varchar("recipientEmail", { length: 320 }).notNull(),
-  status: mysqlEnum("status", ["pending", "sent", "failed"]).notNull().default("pending"),
-  claimToken: varchar("claimToken", { length: 64 }),
-  leaseUntil: datetime("leaseUntil"),
-  attemptCount: int("attemptCount").notNull().default(0),
-  lastError: varchar("lastError", { length: 500 }),
-  sentAt: datetime("sentAt"),
-}, (t) => [
-  uniqueIndex("certificate_alerts_unique_idx").on(t.certificateId, t.thresholdDays, t.expiresAt, t.recipientEmail),
-  index("certificate_alerts_cert_idx").on(t.certificateId),
-  index("certificate_alerts_claim_idx").on(t.status, t.leaseUntil),
-]);
+export const certificateAlerts = mysqlTable(
+  "certificate_alerts",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    certificateId: int("certificateId").notNull(),
+    thresholdDays: int("thresholdDays").notNull(), // 90 | 60 | 30 | 7 | 0
+    expiresAt: datetime("expiresAt").notNull(), // the certificate expiry this alert was for
+    recipientUserId: int("recipientUserId"),
+    recipientEmail: varchar("recipientEmail", { length: 320 }).notNull(),
+    status: mysqlEnum("status", ["pending", "sent", "failed"])
+      .notNull()
+      .default("pending"),
+    claimToken: varchar("claimToken", { length: 64 }),
+    leaseUntil: datetime("leaseUntil"),
+    attemptCount: int("attemptCount").notNull().default(0),
+    lastError: varchar("lastError", { length: 500 }),
+    sentAt: datetime("sentAt"),
+  },
+  t => [
+    uniqueIndex("certificate_alerts_unique_idx").on(
+      t.certificateId,
+      t.thresholdDays,
+      t.expiresAt,
+      t.recipientEmail
+    ),
+    index("certificate_alerts_cert_idx").on(t.certificateId),
+    index("certificate_alerts_claim_idx").on(t.status, t.leaseUntil),
+  ]
+);
 export type CertificateAlert = typeof certificateAlerts.$inferSelect;
 export type InsertCertificateAlert = typeof certificateAlerts.$inferInsert;
