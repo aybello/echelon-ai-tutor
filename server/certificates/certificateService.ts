@@ -6,7 +6,8 @@
  * id (resolved by resolveOrgManager in the router) and filters on it, so a
  * manager can only ever see or change their own organization's records.
  */
-import { and, asc, eq } from "drizzle-orm";
+import { and, asc, eq, lte, or } from "drizzle-orm";
+import { randomUUID } from "node:crypto";
 import {
   certificateAlerts,
   certificates,
@@ -33,6 +34,26 @@ import { getDb } from "../db";
 
 type Db = NonNullable<Awaited<ReturnType<typeof getDb>>>;
 
+async function findActiveOperatorMemberByEmail(
+  db: Db,
+  orgId: number,
+  email: string
+) {
+  const normalized = normalizeEmail(email);
+  const rows = await db
+    .select()
+    .from(organizationMembers)
+    .where(
+      and(
+        eq(organizationMembers.orgId, orgId),
+        eq(organizationMembers.email, normalized),
+        eq(organizationMembers.role, "operator"),
+        eq(organizationMembers.status, "assigned")
+      )
+    );
+  return rows.length === 1 ? rows[0] : null;
+}
+
 export interface CertificateView extends Certificate {
   certificateLabel: string;
   daysUntilExpiry: number;
@@ -43,7 +64,10 @@ export interface CertificateView extends Certificate {
   coursePath: string | null;
 }
 
-export function toCertificateView(cert: Certificate, now: Date): CertificateView {
+export function toCertificateView(
+  cert: Certificate,
+  now: Date
+): CertificateView {
   const days = daysUntilExpiry(cert.expiresAt, now);
   const courseKey = courseKeyForCertificateType(cert.certificateType);
   return {
@@ -52,7 +76,9 @@ export function toCertificateView(cert: Certificate, now: Date): CertificateView
     daysUntilExpiry: days,
     statusBand: statusBandForDays(days),
     courseKey,
-    coursePath: courseKey ? (getCourseByKey(courseKey)?.quizPath ?? null) : null,
+    coursePath: courseKey
+      ? (getCourseByKey(courseKey)?.quizPath ?? null)
+      : null,
   };
 }
 
@@ -69,7 +95,10 @@ async function requireDb(): Promise<Db> {
 }
 
 /** Finds the Echelon user id for an email, or null when there is no account. */
-export async function findUserIdByEmail(db: Db, email: string): Promise<number | null> {
+export async function findUserIdByEmail(
+  db: Db,
+  email: string
+): Promise<number | null> {
   const [row] = await db
     .select({ id: users.id })
     .from(users)
@@ -83,48 +112,74 @@ export async function findUserIdByEmail(db: Db, email: string): Promise<number |
  * their account email when linked, otherwise the roster (organization
  * member) email of the member in the same org with the same name.
  */
-export async function resolveOperatorEmail(db: Db, cert: Certificate): Promise<string | null> {
-  if (cert.operatorUserId != null) {
-    const [user] = await db
-      .select({ email: users.email })
-      .from(users)
-      .where(eq(users.id, cert.operatorUserId))
+export async function resolveOperatorEmail(
+  db: Db,
+  cert: Certificate
+): Promise<string | null> {
+  if (cert.operatorMemberId != null) {
+    const [member] = await db
+      .select()
+      .from(organizationMembers)
+      .where(
+        and(
+          eq(organizationMembers.id, cert.operatorMemberId),
+          eq(organizationMembers.orgId, cert.organizationId),
+          eq(organizationMembers.role, "operator"),
+          eq(organizationMembers.status, "assigned")
+        )
+      )
       .limit(1);
-    if (user?.email) return normalizeEmail(user.email);
+    return member ? normalizeEmail(member.email) : null;
   }
   const members = await db
-    .select({ email: organizationMembers.email, name: organizationMembers.name })
+    .select({
+      email: organizationMembers.email,
+      name: organizationMembers.name,
+    })
     .from(organizationMembers)
     .where(
       and(
         eq(organizationMembers.orgId, cert.organizationId),
-        eq(organizationMembers.status, "assigned"),
-      ),
+        eq(organizationMembers.role, "operator"),
+        eq(organizationMembers.status, "assigned")
+      )
     );
-  const target = cert.operatorName.trim().toLowerCase();
-  const match = members.find((m) => (m.name ?? "").trim().toLowerCase() === target);
-  return match ? normalizeEmail(match.email) : null;
+  const matches = members.filter(
+    m =>
+      (m.name ?? "").trim().toLowerCase() ===
+      cert.operatorName.trim().toLowerCase()
+  );
+  return matches.length === 1 ? normalizeEmail(matches[0].email) : null;
 }
 
-export async function listCertificatesForOrg(orgId: number, now = new Date()): Promise<CertificateView[]> {
+export async function listCertificatesForOrg(
+  orgId: number,
+  now = new Date()
+): Promise<CertificateView[]> {
   const db = await requireDb();
   const rows = await db
     .select()
     .from(certificates)
     .where(eq(certificates.organizationId, orgId))
     .orderBy(asc(certificates.expiresAt));
-  return rows.map((row) => toCertificateView(row, now));
+  return rows.map(row => toCertificateView(row, now));
 }
 
-export async function getCertificateSummaryForOrg(orgId: number, now = new Date()): Promise<CertificateSummary> {
+export async function getCertificateSummaryForOrg(
+  orgId: number,
+  now = new Date()
+): Promise<CertificateSummary> {
   const db = await requireDb();
   const rows = await db
     .select()
     .from(certificates)
     .where(eq(certificates.organizationId, orgId));
   return summarizeCertificates(
-    rows.map((row) => ({ operatorKey: operatorKeyFor(row), expiresAt: row.expiresAt })),
-    now,
+    rows.map(row => ({
+      operatorKey: operatorKeyFor(row),
+      expiresAt: row.expiresAt,
+    })),
+    now
   );
 }
 
@@ -141,15 +196,27 @@ export interface CreateCertificateInput {
 export async function createCertificate(
   orgId: number,
   createdByUserId: number | null,
-  input: CreateCertificateInput,
+  input: CreateCertificateInput
 ): Promise<CertificateView> {
   const db = await requireDb();
-  const operatorUserId = input.operatorEmail ? await findUserIdByEmail(db, input.operatorEmail) : null;
+  if (input.issuedAt && input.issuedAt.getTime() > input.expiresAt.getTime())
+    throw new Error("Issue date must be on or before expiry date.");
+  const member = input.operatorEmail
+    ? await findActiveOperatorMemberByEmail(db, orgId, input.operatorEmail)
+    : null;
+  if (input.operatorEmail && !member)
+    throw new Error(
+      "Operator email must belong to an active operator in this organization."
+    );
+  const operatorUserId = member
+    ? await findUserIdByEmail(db, member.email)
+    : null;
   const [created] = await db
     .insert(certificates)
     .values({
       organizationId: orgId,
       operatorUserId,
+      operatorMemberId: member?.id ?? null,
       operatorName: input.operatorName.trim(),
       certificateType: input.certificateType,
       certificateNumber: input.certificateNumber.trim(),
@@ -161,18 +228,31 @@ export async function createCertificate(
   const [row] = await db
     .select()
     .from(certificates)
-    .where(and(eq(certificates.id, created.id), eq(certificates.organizationId, orgId)))
+    .where(
+      and(
+        eq(certificates.id, created.id),
+        eq(certificates.organizationId, orgId)
+      )
+    )
     .limit(1);
   return toCertificateView(row, new Date());
 }
 
 /** Fetches one certificate scoped to the org, or null when it is not theirs. */
-export async function getCertificateForOrg(orgId: number, certificateId: number): Promise<Certificate | null> {
+export async function getCertificateForOrg(
+  orgId: number,
+  certificateId: number
+): Promise<Certificate | null> {
   const db = await requireDb();
   const [row] = await db
     .select()
     .from(certificates)
-    .where(and(eq(certificates.id, certificateId), eq(certificates.organizationId, orgId)))
+    .where(
+      and(
+        eq(certificates.id, certificateId),
+        eq(certificates.organizationId, orgId)
+      )
+    )
     .limit(1);
   return row ?? null;
 }
@@ -183,38 +263,77 @@ export interface UpdateCertificateInput {
   certificateNumber?: string;
   issuedAt?: Date | null;
   expiresAt?: Date;
+  expectedVersion?: number;
 }
 
 export async function updateCertificate(
   orgId: number,
   certificateId: number,
-  patch: UpdateCertificateInput,
+  patch: UpdateCertificateInput
 ): Promise<CertificateView | null> {
   const db = await requireDb();
   const existing = await getCertificateForOrg(orgId, certificateId);
   if (!existing) return null;
+  const nextIssuedAt =
+    patch.issuedAt !== undefined ? patch.issuedAt : existing.issuedAt;
+  const nextExpiresAt =
+    patch.expiresAt !== undefined ? patch.expiresAt : existing.expiresAt;
+  if (nextIssuedAt && nextIssuedAt.getTime() > nextExpiresAt.getTime())
+    throw new Error("Issue date must be on or before expiry date.");
   await db
     .update(certificates)
     .set({
-      ...(patch.operatorName !== undefined ? { operatorName: patch.operatorName.trim() } : {}),
-      ...(patch.certificateType !== undefined ? { certificateType: patch.certificateType } : {}),
-      ...(patch.certificateNumber !== undefined ? { certificateNumber: patch.certificateNumber.trim() } : {}),
+      ...(patch.operatorName !== undefined
+        ? { operatorName: patch.operatorName.trim() }
+        : {}),
+      ...(patch.certificateType !== undefined
+        ? { certificateType: patch.certificateType }
+        : {}),
+      ...(patch.certificateNumber !== undefined
+        ? { certificateNumber: patch.certificateNumber.trim() }
+        : {}),
       ...(patch.issuedAt !== undefined ? { issuedAt: patch.issuedAt } : {}),
       ...(patch.expiresAt !== undefined ? { expiresAt: patch.expiresAt } : {}),
+      version: (existing.version ?? 1) + 1,
     })
-    .where(and(eq(certificates.id, certificateId), eq(certificates.organizationId, orgId)));
+    .where(
+      and(
+        eq(certificates.id, certificateId),
+        eq(certificates.organizationId, orgId),
+        ...(patch.expectedVersion != null
+          ? [eq(certificates.version, patch.expectedVersion)]
+          : [])
+      )
+    );
   const updated = await getCertificateForOrg(orgId, certificateId);
   return updated ? toCertificateView(updated, new Date()) : null;
 }
 
-export async function deleteCertificate(orgId: number, certificateId: number): Promise<boolean> {
+export async function deleteCertificate(
+  orgId: number,
+  certificateId: number,
+  expectedVersion?: number
+): Promise<boolean> {
   const db = await requireDb();
   const existing = await getCertificateForOrg(orgId, certificateId);
   if (!existing) return false;
-  await db
+  const result = await db
     .delete(certificates)
-    .where(and(eq(certificates.id, certificateId), eq(certificates.organizationId, orgId)));
-  return true;
+    .where(
+      and(
+        eq(certificates.id, certificateId),
+        eq(certificates.organizationId, orgId),
+        ...(expectedVersion != null
+          ? [eq(certificates.version, expectedVersion)]
+          : [])
+      )
+    );
+  return (
+    Number(
+      (result as any)?.affectedRows ??
+        (Array.isArray(result) ? (result as any)[0]?.affectedRows : 0)
+    ) === 1
+  );
 }
 
 /**
@@ -225,11 +344,16 @@ export async function deleteCertificate(orgId: number, certificateId: number): P
 export async function renewCertificate(
   orgId: number,
   certificateId: number,
-  input: { expiresAt: Date; issuedAt?: Date | null },
+  input: { expiresAt: Date; issuedAt?: Date | null; expectedVersion?: number }
 ): Promise<CertificateView | null> {
+  const existing = await getCertificateForOrg(orgId, certificateId);
+  if (!existing) return null;
+  if (input.expiresAt.getTime() <= existing.expiresAt.getTime())
+    throw new Error("Renewal expiry must move forward.");
   return updateCertificate(orgId, certificateId, {
     expiresAt: input.expiresAt,
     ...(input.issuedAt !== undefined ? { issuedAt: input.issuedAt } : {}),
+    expectedVersion: input.expectedVersion,
   });
 }
 
@@ -247,37 +371,70 @@ export async function importCertificates(
   orgId: number,
   createdByUserId: number | null,
   csvText: string,
-  mapping: CertificateCsvMapping,
+  mapping: CertificateCsvMapping
 ): Promise<ImportCertificatesResult> {
   const db = await requireDb();
   const { validRows, failures } = validateCertificateCsv(csvText, mapping);
   // Roster name -> email, used to link imported operators to their accounts.
   const members = await db
-    .select({ email: organizationMembers.email, name: organizationMembers.name })
+    .select({
+      id: organizationMembers.id,
+      email: organizationMembers.email,
+      name: organizationMembers.name,
+    })
     .from(organizationMembers)
     .where(
-      and(eq(organizationMembers.orgId, orgId), eq(organizationMembers.status, "assigned")),
+      and(
+        eq(organizationMembers.orgId, orgId),
+        eq(organizationMembers.status, "assigned")
+      )
     );
-  const emailByName = new Map<string, string>();
+  const memberByName = new Map<string, (typeof members)[number] | null>();
   for (const member of members) {
-    if (member.name) emailByName.set(member.name.trim().toLowerCase(), normalizeEmail(member.email));
+    if (!member.name) continue;
+    const key = member.name.trim().toLowerCase();
+    memberByName.set(key, memberByName.has(key) ? null : member);
+  }
+  const seen = new Set<string>();
+  const rowsToInsert = [] as Array<
+    (typeof validRows)[number] & { member: (typeof members)[number] | null }
+  >;
+  for (const row of validRows) {
+    const dedupeKey = `${row.certificateType}:${row.certificateNumber.toLowerCase()}`;
+    if (seen.has(dedupeKey)) {
+      failures.push({
+        rowNumber: row.rowNumber,
+        raw: [],
+        reason: "Duplicate certificate type and number in this import.",
+      });
+      continue;
+    }
+    seen.add(dedupeKey);
+    rowsToInsert.push({
+      ...row,
+      member: memberByName.get(row.operatorName.trim().toLowerCase()) ?? null,
+    });
   }
   let imported = 0;
-  for (const row of validRows) {
-    const memberEmail = emailByName.get(row.operatorName.trim().toLowerCase());
-    const operatorUserId = memberEmail ? await findUserIdByEmail(db, memberEmail) : null;
-    await db.insert(certificates).values({
-      organizationId: orgId,
-      operatorUserId,
-      operatorName: row.operatorName,
-      certificateType: row.certificateType,
-      certificateNumber: row.certificateNumber,
-      issuedAt: row.issuedAt,
-      expiresAt: row.expiresAt,
-      createdByUserId,
-    });
-    imported += 1;
-  }
+  await db.transaction(async tx => {
+    for (const row of rowsToInsert) {
+      const operatorUserId = row.member
+        ? await findUserIdByEmail(tx as Db, row.member.email)
+        : null;
+      await tx.insert(certificates).values({
+        organizationId: orgId,
+        operatorUserId,
+        operatorMemberId: row.member?.id ?? null,
+        operatorName: row.operatorName,
+        certificateType: row.certificateType,
+        certificateNumber: row.certificateNumber,
+        issuedAt: row.issuedAt,
+        expiresAt: row.expiresAt,
+        createdByUserId,
+      });
+      imported += 1;
+    }
+  });
   return { imported, failures };
 }
 
@@ -289,40 +446,57 @@ export async function importCertificates(
 export async function listCertificatesForOperator(
   userId: number,
   email: string,
-  now = new Date(),
+  now = new Date()
 ): Promise<CertificateView[]> {
   const db = await requireDb();
-  const byId = new Map<number, Certificate>();
-  const linked = await db
-    .select()
-    .from(certificates)
-    .where(eq(certificates.operatorUserId, userId));
-  for (const row of linked) byId.set(row.id, row);
-
   const memberships = await db
-    .select({ orgId: organizationMembers.orgId, name: organizationMembers.name })
+    .select()
     .from(organizationMembers)
     .where(
       and(
         eq(organizationMembers.email, normalizeEmail(email)),
         eq(organizationMembers.role, "operator"),
-        eq(organizationMembers.status, "assigned"),
-      ),
+        eq(organizationMembers.status, "assigned")
+      )
     );
+  const byId = new Map<number, Certificate>();
   for (const membership of memberships) {
-    if (!membership.name) continue;
-    const target = membership.name.trim().toLowerCase();
     const orgRows = await db
       .select()
       .from(certificates)
       .where(eq(certificates.organizationId, membership.orgId));
+    const roster = await db
+      .select({ name: organizationMembers.name })
+      .from(organizationMembers)
+      .where(
+        and(
+          eq(organizationMembers.orgId, membership.orgId),
+          eq(organizationMembers.role, "operator"),
+          eq(organizationMembers.status, "assigned")
+        )
+      );
+    const rosterNameCounts = new Map<string, number>();
+    for (const member of roster) {
+      const key = (member.name ?? "").trim().toLowerCase();
+      if (key) rosterNameCounts.set(key, (rosterNameCounts.get(key) ?? 0) + 1);
+    }
     for (const row of orgRows) {
-      if (row.operatorName.trim().toLowerCase() === target) byId.set(row.id, row);
+      const explicitMatch = row.operatorMemberId === membership.id;
+      const legacyAccountMatch =
+        row.operatorMemberId == null && row.operatorUserId === userId;
+      const uniqueLegacyNameMatch =
+        row.operatorMemberId == null &&
+        row.operatorUserId == null &&
+        row.operatorName.trim().toLowerCase() ===
+          (membership.name ?? "").trim().toLowerCase() &&
+        rosterNameCounts.get(row.operatorName.trim().toLowerCase()) === 1;
+      if (explicitMatch || legacyAccountMatch || uniqueLegacyNameMatch)
+        byId.set(row.id, row);
     }
   }
   return [...byId.values()]
     .sort((a, b) => a.expiresAt.getTime() - b.expiresAt.getTime())
-    .map((row) => toCertificateView(row, now));
+    .map(row => toCertificateView(row, now));
 }
 
 // ── Alert job support ────────────────────────────────────────────────────────
@@ -335,9 +509,15 @@ export interface AlertRecipients {
 }
 
 /** Everyone who should receive an expiry alert for one certificate. */
-export async function getAlertRecipients(db: Db, cert: Certificate): Promise<AlertRecipients> {
+export async function getAlertRecipients(
+  db: Db,
+  cert: Certificate
+): Promise<AlertRecipients> {
   const [org] = await db
-    .select({ name: organizations.name, managerEmail: organizations.managerEmail })
+    .select({
+      name: organizations.name,
+      managerEmail: organizations.managerEmail,
+    })
     .from(organizations)
     .where(eq(organizations.id, cert.organizationId))
     .limit(1);
@@ -348,12 +528,12 @@ export async function getAlertRecipients(db: Db, cert: Certificate): Promise<Ale
       and(
         eq(organizationMembers.orgId, cert.organizationId),
         eq(organizationMembers.role, "manager"),
-        eq(organizationMembers.status, "assigned"),
-      ),
+        eq(organizationMembers.status, "assigned")
+      )
     );
   const managerEmails = new Set<string>();
-  if (org?.managerEmail) managerEmails.add(normalizeEmail(org.managerEmail));
-  for (const member of managerMembers) managerEmails.add(normalizeEmail(member.email));
+  for (const member of managerMembers)
+    managerEmails.add(normalizeEmail(member.email));
   return {
     orgName: org?.name ?? "Your organization",
     managerEmails: [...managerEmails],
@@ -361,29 +541,7 @@ export async function getAlertRecipients(db: Db, cert: Certificate): Promise<Ale
   };
 }
 
-export async function hasAlertBeenSent(
-  db: Db,
-  certificateId: number,
-  thresholdDays: number,
-  expiresAt: Date,
-  recipientEmail: string,
-): Promise<boolean> {
-  const [row] = await db
-    .select({ id: certificateAlerts.id })
-    .from(certificateAlerts)
-    .where(
-      and(
-        eq(certificateAlerts.certificateId, certificateId),
-        eq(certificateAlerts.thresholdDays, thresholdDays),
-        eq(certificateAlerts.expiresAt, expiresAt),
-        eq(certificateAlerts.recipientEmail, normalizeEmail(recipientEmail)),
-      ),
-    )
-    .limit(1);
-  return Boolean(row);
-}
-
-export async function recordAlertSent(
+export async function claimAlertSend(
   db: Db,
   input: {
     certificateId: number;
@@ -391,13 +549,118 @@ export async function recordAlertSent(
     expiresAt: Date;
     recipientEmail: string;
     recipientUserId: number | null;
-  },
+    leaseMs?: number;
+  }
+): Promise<{ id: number; token: string } | null> {
+  const email = normalizeEmail(input.recipientEmail);
+  const token = randomUUID();
+  const now = new Date();
+  const leaseUntil = new Date(
+    now.getTime() + (input.leaseMs ?? 15 * 60 * 1000)
+  );
+  try {
+    const inserted = await db
+      .insert(certificateAlerts)
+      .values({
+        certificateId: input.certificateId,
+        thresholdDays: input.thresholdDays,
+        expiresAt: input.expiresAt,
+        recipientEmail: email,
+        recipientUserId: input.recipientUserId,
+        status: "pending",
+        claimToken: token,
+        leaseUntil,
+        attemptCount: 1,
+        sentAt: null,
+      })
+      .$returningId();
+    return inserted[0]?.id ? { id: inserted[0].id, token } : null;
+  } catch {
+    const [existing] = await db
+      .select()
+      .from(certificateAlerts)
+      .where(
+        and(
+          eq(certificateAlerts.certificateId, input.certificateId),
+          eq(certificateAlerts.thresholdDays, input.thresholdDays),
+          eq(certificateAlerts.expiresAt, input.expiresAt),
+          eq(certificateAlerts.recipientEmail, email)
+        )
+      )
+      .limit(1);
+    if (!existing || existing.status === "sent") return null;
+    const reclaimable =
+      existing.status === "failed" ||
+      (existing.status === "pending" &&
+        (!existing.leaseUntil ||
+          existing.leaseUntil.getTime() <= now.getTime()));
+    if (!reclaimable) return null;
+    const result = await db
+      .update(certificateAlerts)
+      .set({
+        status: "pending",
+        claimToken: token,
+        leaseUntil,
+        attemptCount: (existing.attemptCount ?? 0) + 1,
+        lastError: null,
+      })
+      .where(
+        and(
+          eq(certificateAlerts.id, existing.id),
+          or(
+            eq(certificateAlerts.status, "failed"),
+            and(
+              eq(certificateAlerts.status, "pending"),
+              lte(certificateAlerts.leaseUntil, now)
+            )
+          )
+        )
+      );
+    const affected = Number(
+      (result as any)?.affectedRows ??
+        (Array.isArray(result) ? (result as any)[0]?.affectedRows : 0)
+    );
+    return affected === 1 ? { id: existing.id, token } : null;
+  }
+}
+
+export async function markAlertSent(
+  db: Db,
+  id: number,
+  token: string
+): Promise<boolean> {
+  const result = await db
+    .update(certificateAlerts)
+    .set({ status: "sent", sentAt: new Date(), leaseUntil: null })
+    .where(
+      and(
+        eq(certificateAlerts.id, id),
+        eq(certificateAlerts.claimToken, token),
+        eq(certificateAlerts.status, "pending")
+      )
+    );
+  return (
+    Number(
+      (result as any)?.affectedRows ??
+        (Array.isArray(result) ? (result as any)[0]?.affectedRows : 0)
+    ) === 1
+  );
+}
+
+export async function markAlertFailed(
+  db: Db,
+  id: number,
+  token: string,
+  error: string
 ): Promise<void> {
-  await db.insert(certificateAlerts).values({
-    certificateId: input.certificateId,
-    thresholdDays: input.thresholdDays,
-    expiresAt: input.expiresAt,
-    recipientEmail: normalizeEmail(input.recipientEmail),
-    recipientUserId: input.recipientUserId,
-  });
+  await db
+    .update(certificateAlerts)
+    .set({ status: "failed", lastError: error.slice(0, 500), leaseUntil: null })
+    .where(
+      and(
+        eq(certificateAlerts.id, id),
+        eq(certificateAlerts.claimToken, token),
+        eq(certificateAlerts.status, "pending")
+      )
+    );
 }

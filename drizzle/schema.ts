@@ -1798,15 +1798,17 @@ export const certificates = mysqlTable("certificates", {
   id: int("id").autoincrement().primaryKey(),
   organizationId: int("organizationId").notNull(),
   operatorUserId: int("operatorUserId"),
+  operatorMemberId: int("operatorMemberId"),
   operatorName: varchar("operatorName", { length: 200 }).notNull(),
   certificateType: varchar("certificateType", { length: 64 }).notNull(),
   certificateNumber: varchar("certificateNumber", { length: 100 }).notNull(),
-  issuedAt: timestamp("issuedAt"),
-  expiresAt: timestamp("expiresAt").notNull(),
+  issuedAt: datetime("issuedAt"),
+  expiresAt: datetime("expiresAt").notNull(),
   /** Manager who created the record; null when the creating identity had no user row. */
   createdByUserId: int("createdByUserId"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  version: int("version").notNull().default(1),
 }, (t) => [
   index("certificates_org_expiry_idx").on(t.organizationId, t.expiresAt),
   index("certificates_operator_idx").on(t.operatorUserId),
@@ -1830,10 +1832,16 @@ export const certificateAlerts = mysqlTable("certificate_alerts", {
   expiresAt: timestamp("expiresAt").notNull(), // the certificate expiry this alert was for
   recipientUserId: int("recipientUserId"),
   recipientEmail: varchar("recipientEmail", { length: 320 }).notNull(),
-  sentAt: timestamp("sentAt").defaultNow().notNull(),
+  status: mysqlEnum("status", ["pending", "sent", "failed"]).notNull().default("pending"),
+  claimToken: varchar("claimToken", { length: 64 }),
+  leaseUntil: datetime("leaseUntil"),
+  attemptCount: int("attemptCount").notNull().default(0),
+  lastError: varchar("lastError", { length: 500 }),
+  sentAt: datetime("sentAt"),
 }, (t) => [
   uniqueIndex("certificate_alerts_unique_idx").on(t.certificateId, t.thresholdDays, t.expiresAt, t.recipientEmail),
   index("certificate_alerts_cert_idx").on(t.certificateId),
+  index("certificate_alerts_claim_idx").on(t.status, t.leaseUntil),
 ]);
 export type CertificateAlert = typeof certificateAlerts.$inferSelect;
 export type InsertCertificateAlert = typeof certificateAlerts.$inferInsert;

@@ -8,7 +8,10 @@
  */
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
-import { isCertificateTypeKey } from "../../shared/certificates";
+import {
+  isCertificateTypeKey,
+  parseCertificateDate,
+} from "../../shared/certificates";
 import { identityEmail, resolveVerifiedIdentity } from "../_core/accessService";
 import { publicProcedure, router } from "../_core/trpc";
 import {
@@ -29,13 +32,28 @@ import { resolveOrgManager } from "./orgRouter";
 // request-scoped input, never an identity or membership grant.
 const managerProcedure = publicProcedure
   .input(z.object({ orgId: z.number().int().positive().optional() }).optional())
-  .use(({ ctx, input, next }) => next({ ctx: { ...ctx, selectedOrganizationId: input?.orgId } }));
+  .use(({ ctx, input, next }) =>
+    next({ ctx: { ...ctx, selectedOrganizationId: input?.orgId } })
+  );
 
 const certificateTypeInput = z
   .string()
-  .refine((value) => isCertificateTypeKey(value), { message: "Unknown certificate type." });
+  .refine(value => isCertificateTypeKey(value), {
+    message: "Unknown certificate type.",
+  });
 
-const dateInput = z.coerce.date();
+const dateInput = z.union([z.date(), z.string()]).transform((value, ctx) => {
+  const parsed = value instanceof Date ? value : parseCertificateDate(value);
+  if (!parsed || Number.isNaN(parsed.getTime())) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      message: "Invalid calendar date.",
+    });
+    return z.NEVER;
+  }
+  return parsed;
+});
+const expectedVersionInput = z.number().int().positive().optional();
 
 export const certificatesRouter = router({
   /** Roster for the manager dashboard, sorted by soonest expiry. */
@@ -59,7 +77,7 @@ export const certificatesRouter = router({
         certificateNumber: z.string().trim().min(1).max(100),
         issuedAt: dateInput.nullable().optional(),
         expiresAt: dateInput,
-      }),
+      })
     )
     .mutation(async ({ ctx, input }) => {
       const { orgId } = await resolveOrgManager(ctx);
@@ -82,22 +100,40 @@ export const certificatesRouter = router({
         certificateNumber: z.string().trim().min(1).max(100).optional(),
         issuedAt: dateInput.nullable().optional(),
         expiresAt: dateInput.optional(),
-      }),
+        expectedVersion: expectedVersionInput,
+      })
     )
     .mutation(async ({ ctx, input }) => {
       const { orgId } = await resolveOrgManager(ctx);
       const { id, ...patch } = input;
       const updated = await updateCertificate(orgId, id, patch);
-      if (!updated) throw new TRPCError({ code: "NOT_FOUND", message: "Certificate not found in your organization." });
+      if (!updated)
+        throw new TRPCError({
+          code: "NOT_FOUND",
+          message: "Certificate not found in your organization.",
+        });
       return updated;
     }),
 
   remove: managerProcedure
-    .input(z.object({ id: z.number().int().positive() }))
+    .input(
+      z.object({
+        id: z.number().int().positive(),
+        expectedVersion: expectedVersionInput,
+      })
+    )
     .mutation(async ({ ctx, input }) => {
       const { orgId } = await resolveOrgManager(ctx);
-      const removed = await deleteCertificate(orgId, input.id);
-      if (!removed) throw new TRPCError({ code: "NOT_FOUND", message: "Certificate not found in your organization." });
+      const removed = await deleteCertificate(
+        orgId,
+        input.id,
+        input.expectedVersion
+      );
+      if (!removed)
+        throw new TRPCError({
+          code: "NOT_FOUND",
+          message: "Certificate not found in your organization.",
+        });
       return { success: true as const };
     }),
 
@@ -112,15 +148,21 @@ export const certificatesRouter = router({
         id: z.number().int().positive(),
         expiresAt: dateInput,
         issuedAt: dateInput.nullable().optional(),
-      }),
+        expectedVersion: expectedVersionInput,
+      })
     )
     .mutation(async ({ ctx, input }) => {
       const { orgId } = await resolveOrgManager(ctx);
       const renewed = await renewCertificate(orgId, input.id, {
         expiresAt: input.expiresAt,
         ...(input.issuedAt !== undefined ? { issuedAt: input.issuedAt } : {}),
+        expectedVersion: input.expectedVersion,
       });
-      if (!renewed) throw new TRPCError({ code: "NOT_FOUND", message: "Certificate not found in your organization." });
+      if (!renewed)
+        throw new TRPCError({
+          code: "NOT_FOUND",
+          message: "Certificate not found in your organization.",
+        });
       return renewed;
     }),
 
@@ -139,11 +181,16 @@ export const certificatesRouter = router({
           expiresAt: z.number().int().min(0),
           issuedAt: z.number().int().min(0).optional(),
         }),
-      }),
+      })
     )
     .mutation(async ({ ctx, input }) => {
       const { orgId } = await resolveOrgManager(ctx);
-      return importCertificates(orgId, ctx.user?.id ?? null, input.csvText, input.mapping);
+      return importCertificates(
+        orgId,
+        ctx.user?.id ?? null,
+        input.csvText,
+        input.mapping
+      );
     }),
 
   /** The signed-in operator's own certificates, soonest expiry first. */
@@ -152,8 +199,15 @@ export const certificatesRouter = router({
     const email = identityEmail(identity);
     if (!email) return [];
     const db = await getDb();
-    if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
-    const userId = identity.type === "oauth" ? identity.userId : ((await findUserIdByEmail(db, email)) ?? 0);
+    if (!db)
+      throw new TRPCError({
+        code: "INTERNAL_SERVER_ERROR",
+        message: "Database unavailable",
+      });
+    const userId =
+      identity.type === "oauth"
+        ? identity.userId
+        : ((await findUserIdByEmail(db, email)) ?? 0);
     return listCertificatesForOperator(userId, email);
   }),
 });

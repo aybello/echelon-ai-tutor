@@ -23,9 +23,9 @@ const CLASS_LEVELS = [1, 2, 3, 4] as const;
 function classTypes(
   streamKey: string,
   streamLabel: string,
-  courseKeyForLevel: (level: number) => string,
+  courseKeyForLevel: (level: number) => string
 ): CertificateTypeDefinition[] {
-  return CLASS_LEVELS.map((level) => ({
+  return CLASS_LEVELS.map(level => ({
     key: `class-${level}-${streamKey}`,
     label: `Class ${level} ${streamLabel}`,
     courseKey: courseKeyForLevel(level),
@@ -34,16 +34,34 @@ function classTypes(
 
 export const CERTIFICATE_TYPES: CertificateTypeDefinition[] = [
   { key: "oit", label: "Operator-in-Training (OIT)", courseKey: "oit" },
-  ...classTypes("water-treatment", "Water Treatment", (n) => `class${n}-water`),
-  ...classTypes("water-distribution", "Water Distribution and Supply", (n) => `class${n}-water-dist`),
-  ...classTypes("wastewater-treatment", "Wastewater Treatment", (n) => `class${n}-wastewater`),
-  ...classTypes("wastewater-collection", "Wastewater Collection", (n) => `class${n}-wastewater-coll`),
-  { key: "water-quality-analyst", label: "Water Quality Analyst", courseKey: "wqa" },
+  ...classTypes("water-treatment", "Water Treatment", n => `class${n}-water`),
+  ...classTypes(
+    "water-distribution",
+    "Water Distribution and Supply",
+    n => `class${n}-water-dist`
+  ),
+  ...classTypes(
+    "wastewater-treatment",
+    "Wastewater Treatment",
+    n => `class${n}-wastewater`
+  ),
+  ...classTypes(
+    "wastewater-collection",
+    "Wastewater Collection",
+    n => `class${n}-wastewater-coll`
+  ),
+  {
+    key: "water-quality-analyst",
+    label: "Water Quality Analyst",
+    courseKey: "wqa",
+  },
 ];
 
-const TYPE_BY_KEY = new Map(CERTIFICATE_TYPES.map((t) => [t.key, t]));
+const TYPE_BY_KEY = new Map(CERTIFICATE_TYPES.map(t => [t.key, t]));
 
-export function certificateTypeByKey(key: string): CertificateTypeDefinition | null {
+export function certificateTypeByKey(
+  key: string
+): CertificateTypeDefinition | null {
   return TYPE_BY_KEY.get(key) ?? null;
 }
 
@@ -81,21 +99,32 @@ export function resolveCertificateType(raw: string): string | null {
     if (normalizeTypeText(type.label) === normalized) return type.key;
     if (normalizeTypeText(type.courseKey) === normalized) return type.key;
   }
-  if (normalized === "operator-in-training" || normalized === "oit") return "oit";
-  if (normalized === "wqa" || normalized === "water-quality-analyst") return "water-quality-analyst";
+  if (normalized === "operator-in-training" || normalized === "oit")
+    return "oit";
+  if (normalized === "wqa" || normalized === "water-quality-analyst")
+    return "water-quality-analyst";
   return null;
 }
 
 // ── Expiry status ────────────────────────────────────────────────────────────
 
-export type CertificateStatusBand = "expired" | "within30" | "within90" | "current";
+export type CertificateStatusBand =
+  "expired" | "within30" | "within90" | "current";
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 
 /** Whole days from `now` until `expiresAt`, compared on UTC calendar days. */
 export function daysUntilExpiry(expiresAt: Date, now: Date): number {
-  const start = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
-  const end = Date.UTC(expiresAt.getUTCFullYear(), expiresAt.getUTCMonth(), expiresAt.getUTCDate());
+  const start = Date.UTC(
+    now.getUTCFullYear(),
+    now.getUTCMonth(),
+    now.getUTCDate()
+  );
+  const end = Date.UTC(
+    expiresAt.getUTCFullYear(),
+    expiresAt.getUTCMonth(),
+    expiresAt.getUTCDate()
+  );
   return Math.round((end - start) / DAY_MS);
 }
 
@@ -106,16 +135,20 @@ export function statusBandForDays(days: number): CertificateStatusBand {
   return "current";
 }
 
-export function statusBandForExpiry(expiresAt: Date, now: Date): CertificateStatusBand {
+export function statusBandForExpiry(
+  expiresAt: Date,
+  now: Date
+): CertificateStatusBand {
   return statusBandForDays(daysUntilExpiry(expiresAt, now));
 }
 
-export const CERTIFICATE_STATUS_LABELS: Record<CertificateStatusBand, string> = {
-  expired: "Expired",
-  within30: "30 days or less",
-  within90: "90 days or less",
-  current: "Current",
-};
+export const CERTIFICATE_STATUS_LABELS: Record<CertificateStatusBand, string> =
+  {
+    expired: "Expired",
+    within30: "30 days or less",
+    within90: "90 days or less",
+    current: "Current",
+  };
 
 export interface CertificateSummary {
   /** Distinct operators with at least one certificate on file. */
@@ -132,7 +165,7 @@ export interface CertificateSummary {
  */
 export function summarizeCertificates(
   rows: Array<{ operatorKey: string; expiresAt: Date }>,
-  now: Date,
+  now: Date
 ): CertificateSummary {
   const operators = new Set<string>();
   let expiringWithin90 = 0;
@@ -147,21 +180,29 @@ export function summarizeCertificates(
       expiringWithin90 += 1;
     } else if (band === "within90") expiringWithin90 += 1;
   }
-  return { operatorsTracked: operators.size, expiringWithin90, expiringWithin30, expired };
+  return {
+    operatorsTracked: operators.size,
+    expiringWithin90,
+    expiringWithin30,
+    expired,
+  };
 }
 
 // ── Alert thresholds ─────────────────────────────────────────────────────────
 
 /** Days-before-expiry thresholds at which alert emails are sent. 0 = expiry day. */
 export const CERTIFICATE_ALERT_THRESHOLDS = [90, 60, 30, 7, 0] as const;
-export type CertificateAlertThreshold = (typeof CERTIFICATE_ALERT_THRESHOLDS)[number];
+export type CertificateAlertThreshold =
+  (typeof CERTIFICATE_ALERT_THRESHOLDS)[number];
 
 /**
  * The alert threshold a certificate crosses today, or null when today is not
  * a threshold day for it. The alert job runs daily, so each threshold is
  * crossed exactly once; the certificate_alerts log makes re-runs idempotent.
  */
-export function dueAlertThreshold(days: number): CertificateAlertThreshold | null {
+export function dueAlertThreshold(
+  days: number
+): CertificateAlertThreshold | null {
   return (CERTIFICATE_ALERT_THRESHOLDS as readonly number[]).includes(days)
     ? (days as CertificateAlertThreshold)
     : null;
@@ -240,7 +281,8 @@ export function parseCsv(text: string): string[][] {
   row.push(cell);
   rows.push(row);
   // Drop trailing fully-empty rows produced by a final newline.
-  while (rows.length > 0 && rows[rows.length - 1].every((c) => c.trim() === "")) rows.pop();
+  while (rows.length > 0 && rows[rows.length - 1].every(c => c.trim() === ""))
+    rows.pop();
   return rows;
 }
 
@@ -252,16 +294,36 @@ export function parseCsv(text: string): string[][] {
 export function parseCertificateDate(raw: string): Date | null {
   const value = raw.trim();
   if (!value) return null;
-  const isoDate = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
+  const isoDate = /^(\d{4})-(\d{2})-(\d{2})(?:$|T)/.exec(value);
+  const strictUtcDate = (
+    year: number,
+    month: number,
+    day: number
+  ): Date | null => {
+    if (year < 1970 || year > 9999 || month < 1 || month > 12 || day < 1)
+      return null;
+    const parsed = new Date(Date.UTC(year, month - 1, day));
+    return parsed.getUTCFullYear() === year &&
+      parsed.getUTCMonth() === month - 1 &&
+      parsed.getUTCDate() === day
+      ? parsed
+      : null;
+  };
   if (isoDate) {
-    const parsed = new Date(Date.UTC(Number(isoDate[1]), Number(isoDate[2]) - 1, Number(isoDate[3])));
+    if (
+      !strictUtcDate(Number(isoDate[1]), Number(isoDate[2]), Number(isoDate[3]))
+    )
+      return null;
+    const parsed = new Date(value);
     return Number.isNaN(parsed.getTime()) ? null : parsed;
   }
   const slashDate = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/.exec(value);
-  if (slashDate) {
-    const parsed = new Date(Date.UTC(Number(slashDate[3]), Number(slashDate[1]) - 1, Number(slashDate[2])));
-    return Number.isNaN(parsed.getTime()) ? null : parsed;
-  }
+  if (slashDate)
+    return strictUtcDate(
+      Number(slashDate[3]),
+      Number(slashDate[1]),
+      Number(slashDate[2])
+    );
   const parsed = new Date(value);
   return Number.isNaN(parsed.getTime()) ? null : parsed;
 }
@@ -274,7 +336,7 @@ export function parseCertificateDate(raw: string): Date | null {
  */
 export function validateCertificateCsv(
   csvText: string,
-  mapping: CertificateCsvMapping,
+  mapping: CertificateCsvMapping
 ): CertificateCsvValidation {
   const rows = parseCsv(csvText);
   const validRows: CertificateCsvRow[] = [];
@@ -285,7 +347,7 @@ export function validateCertificateCsv(
   rows.forEach((row, index) => {
     const rowNumber = index + 1;
     if (index === 0) return; // header row
-    if (row.every((c) => c.trim() === "")) return; // blank line, not a failure
+    if (row.every(c => c.trim() === "")) return; // blank line, not a failure
 
     const operatorName = cellAt(row, mapping.operatorName);
     if (!operatorName) {
@@ -295,18 +357,30 @@ export function validateCertificateCsv(
     const typeRaw = cellAt(row, mapping.certificateType);
     const certificateType = resolveCertificateType(typeRaw);
     if (!certificateType) {
-      failures.push({ rowNumber, raw: row, reason: `Unrecognized certificate type "${typeRaw}".` });
+      failures.push({
+        rowNumber,
+        raw: row,
+        reason: `Unrecognized certificate type "${typeRaw}".`,
+      });
       return;
     }
     const certificateNumber = cellAt(row, mapping.certificateNumber);
     if (!certificateNumber) {
-      failures.push({ rowNumber, raw: row, reason: "Missing certificate number." });
+      failures.push({
+        rowNumber,
+        raw: row,
+        reason: "Missing certificate number.",
+      });
       return;
     }
     const expiresRaw = cellAt(row, mapping.expiresAt);
     const expiresAt = parseCertificateDate(expiresRaw);
     if (!expiresAt) {
-      failures.push({ rowNumber, raw: row, reason: `Unparseable expiry date "${expiresRaw}".` });
+      failures.push({
+        rowNumber,
+        raw: row,
+        reason: `Unparseable expiry date "${expiresRaw}".`,
+      });
       return;
     }
     let issuedAt: Date | null = null;
@@ -315,12 +389,23 @@ export function validateCertificateCsv(
       if (issuedRaw) {
         issuedAt = parseCertificateDate(issuedRaw);
         if (!issuedAt) {
-          failures.push({ rowNumber, raw: row, reason: `Unparseable issue date "${issuedRaw}".` });
+          failures.push({
+            rowNumber,
+            raw: row,
+            reason: `Unparseable issue date "${issuedRaw}".`,
+          });
           return;
         }
       }
     }
-    validRows.push({ rowNumber, operatorName, certificateType, certificateNumber, issuedAt, expiresAt });
+    validRows.push({
+      rowNumber,
+      operatorName,
+      certificateType,
+      certificateNumber,
+      issuedAt,
+      expiresAt,
+    });
   });
 
   return { validRows, failures };
@@ -341,7 +426,7 @@ export function guessCertificateCsvMapping(headerRow: string[]): {
   const find = (patterns: RegExp[]): number | null => {
     for (let i = 0; i < headerRow.length; i += 1) {
       const header = headerRow[i].trim().toLowerCase();
-      if (patterns.some((p) => p.test(header))) return i;
+      if (patterns.some(p => p.test(header))) return i;
     }
     return null;
   };

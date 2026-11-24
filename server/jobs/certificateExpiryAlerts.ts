@@ -8,7 +8,7 @@
  * never sends a duplicate, and a renewal (new expiry date) starts a fresh
  * alert cycle.
  */
-import { and, gte, lte } from "drizzle-orm";
+import { and, eq, gte, lte } from "drizzle-orm";
 import { certificates } from "../../drizzle/schema";
 import {
   certificateTypeLabel,
@@ -20,8 +20,9 @@ import { getCourseByKey } from "../../shared/courseRegistry";
 import {
   findUserIdByEmail,
   getAlertRecipients,
-  hasAlertBeenSent,
-  recordAlertSent,
+  claimAlertSend,
+  markAlertFailed,
+  markAlertSent,
 } from "../certificates/certificateService";
 import { getDb } from "../db";
 import { sendCertificateExpiryEmail } from "../email";
@@ -39,12 +40,13 @@ export async function runCertificateExpiryAlerts(
 
   const now = new Date();
   const todayStart = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
+  const windowStart = new Date(todayStart.getTime() - 7 * DAY_MS);
   const windowEnd = new Date(todayStart.getTime() + 91 * DAY_MS - 1);
 
   const rows = await db
     .select()
     .from(certificates)
-    .where(and(gte(certificates.expiresAt, todayStart), lte(certificates.expiresAt, windowEnd)));
+    .where(and(gte(certificates.expiresAt, windowStart), lte(certificates.expiresAt, windowEnd)));
 
   const siteUrl = process.env.FRONTEND_URL ?? "https://echeloninstitute.ca";
 
@@ -53,17 +55,20 @@ export async function runCertificateExpiryAlerts(
     const days = daysUntilExpiry(cert.expiresAt, now);
     const threshold = dueAlertThreshold(days);
     if (threshold === null) continue;
+    const [live] = await db.select().from(certificates).where(eq(certificates.id, cert.id)).limit(1);
+    if (!live || live.expiresAt.getTime() !== cert.expiresAt.getTime() || dueAlertThreshold(daysUntilExpiry(live.expiresAt, now)) !== threshold) continue;
     considered += 1;
+    const currentCert = live;
 
     let recipients: Awaited<ReturnType<typeof getAlertRecipients>>;
     try {
-      recipients = await getAlertRecipients(db, cert);
+      recipients = await getAlertRecipients(db, currentCert);
     } catch (error) {
       errors.push(`Certificate ${cert.id}: could not resolve alert recipients (${error instanceof Error ? error.message : String(error)})`);
       continue;
     }
 
-    const courseKey = courseKeyForCertificateType(cert.certificateType);
+    const courseKey = courseKeyForCertificateType(currentCert.certificateType);
     const quizPath = courseKey ? getCourseByKey(courseKey)?.quizPath : null;
     const courseUrl = quizPath ? `${siteUrl}${quizPath}` : undefined;
 
@@ -77,27 +82,36 @@ export async function runCertificateExpiryAlerts(
       if (seen.has(email)) continue;
       seen.add(email);
       try {
-        if (await hasAlertBeenSent(db, cert.id, threshold, cert.expiresAt, email)) continue;
-        await sendCertificateExpiryEmail({
-          email,
-          orgName: recipients.orgName,
-          operatorName: cert.operatorName,
-          certificateLabel: certificateTypeLabel(cert.certificateType),
-          certificateNumber: cert.certificateNumber,
-          expiresAt: cert.expiresAt,
+        await assertOwned();
+        const claim = await claimAlertSend(db, {
+          certificateId: currentCert.id,
           thresholdDays: threshold,
-          isOperator: target.isOperator,
-          courseUrl,
-          dashboardUrl: target.isOperator ? `${siteUrl}/account` : `${siteUrl}/team`,
-        });
-        await recordAlertSent(db, {
-          certificateId: cert.id,
-          thresholdDays: threshold,
-          expiresAt: cert.expiresAt,
+          expiresAt: currentCert.expiresAt,
           recipientEmail: email,
           recipientUserId: await findUserIdByEmail(db, email),
         });
-        sent += 1;
+        if (!claim) continue;
+        try {
+          const [fresh] = await db.select().from(certificates).where(eq(certificates.id, currentCert.id)).limit(1);
+          if (!fresh || fresh.expiresAt.getTime() !== currentCert.expiresAt.getTime()) { await markAlertFailed(db, claim.id, claim.token, "Certificate changed before delivery."); continue; }
+          await assertOwned();
+          await sendCertificateExpiryEmail({
+            email,
+            orgName: recipients.orgName,
+            operatorName: fresh.operatorName,
+            certificateLabel: certificateTypeLabel(fresh.certificateType),
+            certificateNumber: fresh.certificateNumber,
+            expiresAt: fresh.expiresAt,
+            thresholdDays: threshold,
+            isOperator: target.isOperator,
+            courseUrl,
+            dashboardUrl: target.isOperator ? `${siteUrl}/account` : `${siteUrl}/team`,
+          });
+          if (await markAlertSent(db, claim.id, claim.token)) sent += 1;
+        } catch (sendError) {
+          await markAlertFailed(db, claim.id, claim.token, sendError instanceof Error ? sendError.message : String(sendError));
+          throw sendError;
+        }
       } catch (error) {
         errors.push(`Certificate ${cert.id} to ${email}: ${error instanceof Error ? error.message : String(error)}`);
       }

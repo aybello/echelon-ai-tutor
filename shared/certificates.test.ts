@@ -3,6 +3,7 @@ import {
   courseKeyForCertificateType,
   daysUntilExpiry,
   dueAlertThreshold,
+  parseCertificateDate,
   parseCsv,
   resolveCertificateType,
   statusBandForDays,
@@ -51,25 +52,56 @@ describe("dueAlertThreshold", () => {
   });
 });
 
+describe("parseCertificateDate", () => {
+  it("rejects impossible calendar dates and accepts leap day and bounded timestamps", () => {
+    expect(parseCertificateDate("2026-02-30")).toBeNull();
+    expect(parseCertificateDate("2026-02-31T00:00:00Z")).toBeNull();
+    expect(parseCertificateDate("2024-02-29")?.toISOString()).toBe(
+      "2024-02-29T00:00:00.000Z"
+    );
+    expect(parseCertificateDate("2038-01-19T03:14:07Z")?.toISOString()).toBe(
+      "2038-01-19T03:14:07.000Z"
+    );
+  });
+});
+
 describe("resolveCertificateType", () => {
   it("resolves keys, labels, course keys, and short forms", () => {
-    expect(resolveCertificateType("class-2-water-treatment")).toBe("class-2-water-treatment");
-    expect(resolveCertificateType("Class 2 Water Treatment")).toBe("class-2-water-treatment");
-    expect(resolveCertificateType("Class 4 Wastewater Collection")).toBe("class-4-wastewater-collection");
-    expect(resolveCertificateType("class3-water-dist")).toBe("class-3-water-distribution");
+    expect(resolveCertificateType("class-2-water-treatment")).toBe(
+      "class-2-water-treatment"
+    );
+    expect(resolveCertificateType("Class 2 Water Treatment")).toBe(
+      "class-2-water-treatment"
+    );
+    expect(resolveCertificateType("Class 4 Wastewater Collection")).toBe(
+      "class-4-wastewater-collection"
+    );
+    expect(resolveCertificateType("class3-water-dist")).toBe(
+      "class-3-water-distribution"
+    );
     expect(resolveCertificateType("OIT")).toBe("oit");
     expect(resolveCertificateType("Operator-in-Training (OIT)")).toBe("oit");
     expect(resolveCertificateType("WQA")).toBe("water-quality-analyst");
-    expect(resolveCertificateType("Water Quality Analyst")).toBe("water-quality-analyst");
+    expect(resolveCertificateType("Water Quality Analyst")).toBe(
+      "water-quality-analyst"
+    );
     expect(resolveCertificateType("Underwater Basket Weaving")).toBeNull();
   });
 
   it("maps every certificate type to its renewal course", () => {
     expect(courseKeyForCertificateType("oit")).toBe("oit");
-    expect(courseKeyForCertificateType("class-1-water-treatment")).toBe("class1-water");
-    expect(courseKeyForCertificateType("class-2-water-distribution")).toBe("class2-water-dist");
-    expect(courseKeyForCertificateType("class-3-wastewater-treatment")).toBe("class3-wastewater");
-    expect(courseKeyForCertificateType("class-4-wastewater-collection")).toBe("class4-wastewater-coll");
+    expect(courseKeyForCertificateType("class-1-water-treatment")).toBe(
+      "class1-water"
+    );
+    expect(courseKeyForCertificateType("class-2-water-distribution")).toBe(
+      "class2-water-dist"
+    );
+    expect(courseKeyForCertificateType("class-3-wastewater-treatment")).toBe(
+      "class3-wastewater"
+    );
+    expect(courseKeyForCertificateType("class-4-wastewater-collection")).toBe(
+      "class4-wastewater-coll"
+    );
     expect(courseKeyForCertificateType("water-quality-analyst")).toBe("wqa");
   });
 });
@@ -83,7 +115,7 @@ describe("summarizeCertificates", () => {
         { operatorKey: "user:2", expiresAt: daysFromNow(-2) },
         { operatorKey: "name:pat", expiresAt: daysFromNow(200) },
       ],
-      NOW,
+      NOW
     );
     expect(summary).toEqual({
       operatorsTracked: 3,
@@ -104,7 +136,12 @@ describe("parseCsv", () => {
 });
 
 describe("validateCertificateCsv", () => {
-  const mapping = { operatorName: 0, certificateType: 1, certificateNumber: 2, expiresAt: 3 };
+  const mapping = {
+    operatorName: 0,
+    certificateType: 1,
+    certificateNumber: 2,
+    expiresAt: 3,
+  };
 
   it("imports 8 of 10 rows and reports the 2 failures with reasons", () => {
     const lines = [
@@ -120,7 +157,10 @@ describe("validateCertificateCsv", () => {
       "Ivy May,Underwater Basket Weaving,ON-1009,2027-03-31",
       "Jay Fox,Class 1 Water Treatment,ON-1010,not-a-date",
     ];
-    const { validRows, failures } = validateCertificateCsv(lines.join("\n"), mapping);
+    const { validRows, failures } = validateCertificateCsv(
+      lines.join("\n"),
+      mapping
+    );
     expect(validRows).toHaveLength(8);
     expect(failures).toHaveLength(2);
     expect(failures[0].rowNumber).toBe(10);
@@ -132,14 +172,20 @@ describe("validateCertificateCsv", () => {
       certificateType: "class-1-water-treatment",
       certificateNumber: "ON-1001",
     });
-    expect(validRows[3].expiresAt.toISOString()).toBe("2027-04-22T00:00:00.000Z");
+    expect(validRows[3].expiresAt.toISOString()).toBe(
+      "2027-04-22T00:00:00.000Z"
+    );
   });
 
   it("reports missing values instead of dropping rows", () => {
-    const csv = ["Operator,Type,Number,Expiry", ",Class 1 Water Treatment,ON-1,2027-01-01", "Kay,Class 1 Water Treatment,,2027-01-01"].join("\n");
+    const csv = [
+      "Operator,Type,Number,Expiry",
+      ",Class 1 Water Treatment,ON-1,2027-01-01",
+      "Kay,Class 1 Water Treatment,,2027-01-01",
+    ].join("\n");
     const { validRows, failures } = validateCertificateCsv(csv, mapping);
     expect(validRows).toHaveLength(0);
-    expect(failures.map((f) => f.reason)).toEqual([
+    expect(failures.map(f => f.reason)).toEqual([
       "Missing operator name.",
       "Missing certificate number.",
     ]);

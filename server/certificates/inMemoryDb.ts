@@ -59,7 +59,10 @@ function extractEqFilters(condition: unknown): EqFilter[] {
       pendingOp = null;
       return;
     }
-    if (typeof node === "object" && "queryChunks" in (node as Record<string, unknown>)) {
+    if (
+      typeof node === "object" &&
+      "queryChunks" in (node as Record<string, unknown>)
+    ) {
       for (const chunk of (node as SQL).queryChunks) walk(chunk);
     }
   };
@@ -70,15 +73,17 @@ function extractEqFilters(condition: unknown): EqFilter[] {
 
 function valuesEqual(a: unknown, b: unknown): boolean {
   if (a instanceof Date || b instanceof Date) {
-    const timeA = a instanceof Date ? a.getTime() : new Date(a as string).getTime();
-    const timeB = b instanceof Date ? b.getTime() : new Date(b as string).getTime();
+    const timeA =
+      a instanceof Date ? a.getTime() : new Date(a as string).getTime();
+    const timeB =
+      b instanceof Date ? b.getTime() : new Date(b as string).getTime();
     return timeA === timeB;
   }
   return a === b;
 }
 
 function matches(row: Row, filters: EqFilter[]): boolean {
-  return filters.every((f) => valuesEqual(row[f.column], f.value));
+  return filters.every(f => valuesEqual(row[f.column], f.value));
 }
 
 class SelectQuery implements PromiseLike<Row[]> {
@@ -104,7 +109,7 @@ class SelectQuery implements PromiseLike<Row[]> {
   }
 
   private execute(): Row[] {
-    let rows = this.rowsRef().filter((row) => matches(row, this.filters));
+    let rows = this.rowsRef().filter(row => matches(row, this.filters));
     if (this.ordered) {
       rows = [...rows].sort((a, b) => {
         const timeA = a.expiresAt instanceof Date ? a.expiresAt.getTime() : 0;
@@ -113,12 +118,12 @@ class SelectQuery implements PromiseLike<Row[]> {
       });
     }
     if (this.limitCount != null) rows = rows.slice(0, this.limitCount);
-    return rows.map((row) => ({ ...row }));
+    return rows.map(row => ({ ...row }));
   }
 
   then<TResult1 = Row[], TResult2 = never>(
     onFulfilled?: ((value: Row[]) => TResult1 | PromiseLike<TResult1>) | null,
-    onRejected?: ((reason: unknown) => TResult2 | PromiseLike<TResult2>) | null,
+    onRejected?: ((reason: unknown) => TResult2 | PromiseLike<TResult2>) | null
   ): Promise<TResult1 | TResult2> {
     return Promise.resolve()
       .then(() => this.execute())
@@ -126,7 +131,7 @@ class SelectQuery implements PromiseLike<Row[]> {
   }
 
   catch<TResult = never>(
-    onRejected?: ((reason: unknown) => TResult | PromiseLike<TResult>) | null,
+    onRejected?: ((reason: unknown) => TResult | PromiseLike<TResult>) | null
   ): Promise<Row[] | TResult> {
     return this.then(undefined, onRejected ?? undefined);
   }
@@ -143,7 +148,9 @@ export interface InMemoryDb {
   };
 }
 
-export function createInMemoryDb(seed: Partial<InMemoryDb["rows"]> = {}): InMemoryDb {
+export function createInMemoryDb(
+  seed: Partial<InMemoryDb["rows"]> = {}
+): InMemoryDb {
   const rows: InMemoryDb["rows"] = {
     users: [...(seed.users ?? [])],
     organizations: [...(seed.organizations ?? [])],
@@ -162,7 +169,10 @@ export function createInMemoryDb(seed: Partial<InMemoryDb["rows"]> = {}): InMemo
   };
 
   const nextId = (store: Row[]): number =>
-    store.reduce((max, row) => Math.max(max, typeof row.id === "number" ? row.id : 0), 0) + 1;
+    store.reduce(
+      (max, row) => Math.max(max, typeof row.id === "number" ? row.id : 0),
+      0
+    ) + 1;
 
   const db = {
     select: () => ({
@@ -172,17 +182,37 @@ export function createInMemoryDb(seed: Partial<InMemoryDb["rows"]> = {}): InMemo
       values: (values: Row) => {
         const store = storeFor(table);
         const now = new Date();
+        if (table === certificateAlerts) {
+          const duplicate = store.find(
+            existing =>
+              existing.certificateId === values.certificateId &&
+              existing.thresholdDays === values.thresholdDays &&
+              valuesEqual(existing.expiresAt, values.expiresAt) &&
+              existing.recipientEmail === values.recipientEmail
+          );
+          if (duplicate) throw new Error("Duplicate certificate alert");
+        }
         const row: Row = {
           ...values,
           id: nextId(store),
           createdAt: values.createdAt ?? now,
           updatedAt: values.updatedAt ?? now,
-          sentAt: values.sentAt ?? now,
+          ...(table === certificateAlerts && values.sentAt === undefined
+            ? { sentAt: null }
+            : {}),
+          ...(table === certificateAlerts && values.status === undefined
+            ? { status: "pending" }
+            : {}),
+          ...(table === certificateAlerts && values.attemptCount === undefined
+            ? { attemptCount: 0 }
+            : {}),
         };
         store.push(row);
-        const result = Promise.resolve([{ insertId: row.id, affectedRows: 1 }]) as Promise<
-          Array<{ insertId: number; affectedRows: number }>
-        > & { $returningId: () => Promise<Array<{ id: number }>> };
+        const result = Promise.resolve([
+          { insertId: row.id, affectedRows: 1 },
+        ]) as Promise<Array<{ insertId: number; affectedRows: number }>> & {
+          $returningId: () => Promise<Array<{ id: number }>>;
+        };
         result.$returningId = async () => [{ id: row.id as number }];
         return result;
       },
@@ -202,6 +232,32 @@ export function createInMemoryDb(seed: Partial<InMemoryDb["rows"]> = {}): InMemo
         },
       }),
     }),
+    transaction: async <T>(
+      callback: (tx: unknown) => Promise<T>
+    ): Promise<T> => {
+      const snapshot = Object.fromEntries(
+        Object.entries(rows).map(([key, value]) => [
+          key,
+          (value as Row[]).map(row =>
+            Object.fromEntries(
+              Object.entries(row).map(([field, item]) => [
+                field,
+                item instanceof Date ? new Date(item.getTime()) : item,
+              ])
+            )
+          ),
+        ])
+      ) as InMemoryDb["rows"];
+      try {
+        return await callback(db);
+      } catch (error) {
+        for (const [key, value] of Object.entries(snapshot)) {
+          const target = rows[key as keyof InMemoryDb["rows"]] as Row[];
+          target.splice(0, target.length, ...(value as Row[]));
+        }
+        throw error;
+      }
+    },
     delete: (table: unknown) => ({
       where: (condition: unknown) => {
         const filters = extractEqFilters(condition);
