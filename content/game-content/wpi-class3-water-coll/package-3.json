@@ -1,0 +1,4060 @@
+{
+ "courseKey": "wpi-class3-water-coll",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "wp3wc-error60",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this growth phasing calculation for a developing area in a northern prairie community. The phasing check confirms reserve capacity before new connections are approved.",
+   "topicId": "capacity-growth-phasing",
+   "level": "class1",
+   "assumptions": "Fictional phasing check: 600 homes per phase at a given 550 L per day per home, 3 phases, given reserve capacity 3000000 L/day. Percent of reserve used equals total added flow divided by reserve times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Added flow per phase = 600 homes + 550 L/day/home = 1150 L/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total added flow = 1150 L/day * 3 phases = 3450 L/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent of reserve used = 3450 L/day / 3000000 L/day * 100 = 0.115 percent"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Added flow per phase = 600 homes * 550 L/day/home = 330000 L/day",
+   "explanation": "Line 1 added the homes and the per home flow instead of multiplying them. The added flow per phase is 330000 L/day, the total added flow is 990000 L/day, which is 33 percent of the reserve."
+  },
+  {
+   "id": "wp3wc-error61",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this lift station energy calculation for the station optimization program in a prairie city in western Canada. Energy per volume is benchmarked across the station fleet.",
+   "topicId": "lift-energy-per-volume",
+   "level": "class1",
+   "assumptions": "Fictional station benchmark: pumped flow 120 m3/h for 8 h per day, given specific energy 0.4 kWh per m3, given energy price 0.15 dollars per kWh.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily volume = 120 m3/h + 8 h = 128 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily energy = 128 m3 * 0.4 kWh/m3 = 51.2 kWh"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily energy cost = 51.2 kWh * 0.15 dollars/kWh = 7.68 dollars"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Daily volume = 120 m3/h * 8 h = 960 m3",
+   "explanation": "Line 1 added the flow and the run hours instead of multiplying them. The daily volume is 960 m3, the daily energy is 384 kWh, and the daily cost is 57.6 dollars."
+  },
+  {
+   "id": "wp3wc-error62",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this lift station energy calculation for the station optimization program in a foothills community in western Canada. Energy per volume is benchmarked across the station fleet.",
+   "topicId": "lift-energy-per-volume",
+   "level": "class1",
+   "assumptions": "Fictional station benchmark: pumped flow 150 m3/h for 6 h per day, given specific energy 0.36 kWh per m3, given energy price 0.18 dollars per kWh.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily volume = 150 m3/h * 6 h = 900 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily energy = 900 m3 / 0.36 kWh/m3 = 2500 kWh"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily energy cost = 2500 kWh * 0.18 dollars/kWh = 450 dollars"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Daily energy = 900 m3 * 0.36 kWh/m3 = 324 kWh",
+   "explanation": "Line 2 divided by the specific energy instead of multiplying by it. The daily energy is 324 kWh and the daily cost is 58.32 dollars."
+  },
+  {
+   "id": "wp3wc-error63",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this lift station energy calculation for the station optimization program in a community on the British Columbia coast. Energy per volume is benchmarked across the station fleet.",
+   "topicId": "lift-energy-per-volume",
+   "level": "class1",
+   "assumptions": "Fictional station benchmark: pumped flow 200 m3/h for 5 h per day, given specific energy 0.25 kWh per m3, given energy price 0.125 dollars per kWh.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily volume = 200 m3/h * 5 h = 1000 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily energy = 1000 m3 * 0.25 kWh/m3 = 250 kWh"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily energy cost = 250 kWh / 0.125 dollars/kWh = 2000 dollars"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Daily energy cost = 250 kWh * 0.125 dollars/kWh = 31.25 dollars",
+   "explanation": "Line 3 divided by the energy price instead of multiplying by it. The daily cost is 31.25 dollars."
+  },
+  {
+   "id": "wp3wc-error64",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this lift station energy calculation for the station optimization program in a northern prairie community. Energy per volume is benchmarked across the station fleet.",
+   "topicId": "lift-energy-per-volume",
+   "level": "class1",
+   "assumptions": "Fictional station benchmark: pumped flow 90 m3/h for 10 h per day, given specific energy 0.45 kWh per m3, given energy price 0.16 dollars per kWh.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily volume = 90 m3/h * 10 h = 900 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily energy = 900 m3 / 0.45 kWh/m3 = 2000 kWh"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily energy cost = 2000 kWh * 0.16 dollars/kWh = 320 dollars"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Daily energy = 900 m3 * 0.45 kWh/m3 = 405 kWh",
+   "explanation": "Line 2 divided by the specific energy instead of multiplying by it. The daily energy is 405 kWh and the daily cost is 64.8 dollars."
+  },
+  {
+   "id": "wp3wc-error65",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this lift station energy calculation for the station optimization program in a mountain valley town in western Canada. Energy per volume is benchmarked across the station fleet.",
+   "topicId": "lift-energy-per-volume",
+   "level": "class1",
+   "assumptions": "Fictional station benchmark: pumped flow 160 m3/h for 7 h per day, given specific energy 0.25 kWh per m3, given energy price 0.2 dollars per kWh.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily volume = 160 m3/h + 7 h = 167 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily energy = 167 m3 * 0.25 kWh/m3 = 41.75 kWh"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily energy cost = 41.75 kWh * 0.2 dollars/kWh = 8.35 dollars"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Daily volume = 160 m3/h * 7 h = 1120 m3",
+   "explanation": "Line 1 added the flow and the run hours instead of multiplying them. The daily volume is 1120 m3, the daily energy is 280 kWh, and the daily cost is 56 dollars."
+  },
+  {
+   "id": "wp3wc-error66",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this lift station fleet energy comparison for the reliability and optimization program in a community on the British Columbia coast. A pump upgrade at one station is being evaluated against the fleet total.",
+   "topicId": "lift-fleet-comparison",
+   "level": "class1",
+   "assumptions": "Fictional fleet comparison: station A uses 800 kWh per day, station B uses a given 219000 kWh per year, given upgrade saving 73000 kWh per year, 365 days per year.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Station A annual energy = 800 kWh/day + 365 days = 1165 kWh"
+    },
+    {
+     "id": "line2",
+     "label": "2. Fleet annual energy = 1165 kWh + 219000 kWh = 220165 kWh"
+    },
+    {
+     "id": "line3",
+     "label": "3. Fleet energy after upgrade = 220165 kWh - 73000 kWh = 147165 kWh"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Station A annual energy = 800 kWh/day * 365 days = 292000 kWh",
+   "explanation": "Line 1 added the days to the daily energy instead of multiplying. Station A uses 292000 kWh per year, the fleet total is 511000 kWh, and the total after the upgrade is 438000 kWh."
+  },
+  {
+   "id": "wp3wc-error67",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this lift station fleet energy comparison for the reliability and optimization program in a northern prairie community. A pump upgrade at one station is being evaluated against the fleet total.",
+   "topicId": "lift-fleet-comparison",
+   "level": "class1",
+   "assumptions": "Fictional fleet comparison: station A uses 650 kWh per day, station B uses a given 182500 kWh per year, given upgrade saving 54750 kWh per year, 365 days per year.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Station A annual energy = 650 kWh/day * 365 days = 237250 kWh"
+    },
+    {
+     "id": "line2",
+     "label": "2. Fleet annual energy = 237250 kWh - 182500 kWh = 54750 kWh"
+    },
+    {
+     "id": "line3",
+     "label": "3. Fleet energy after upgrade = 54750 kWh - 54750 kWh = 0 kWh"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Fleet annual energy = 237250 kWh + 182500 kWh = 419750 kWh",
+   "explanation": "Line 2 subtracted station B energy from station A energy instead of adding them. The fleet total is 419750 kWh and the total after the upgrade is 365000 kWh."
+  },
+  {
+   "id": "wp3wc-error68",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this lift station fleet energy comparison for the reliability and optimization program in a mountain valley town in western Canada. A pump upgrade at one station is being evaluated against the fleet total.",
+   "topicId": "lift-fleet-comparison",
+   "level": "class1",
+   "assumptions": "Fictional fleet comparison: station A uses 920 kWh per day, station B uses a given 255500 kWh per year, given upgrade saving 80300 kWh per year, 365 days per year.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Station A annual energy = 920 kWh/day * 365 days = 335800 kWh"
+    },
+    {
+     "id": "line2",
+     "label": "2. Fleet annual energy = 335800 kWh + 255500 kWh = 591300 kWh"
+    },
+    {
+     "id": "line3",
+     "label": "3. Fleet energy after upgrade = 591300 kWh + 80300 kWh = 671600 kWh"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Fleet energy after upgrade = 591300 kWh - 80300 kWh = 511000 kWh",
+   "explanation": "Line 3 added the upgrade saving instead of subtracting it. The fleet energy after the upgrade is 511000 kWh."
+  },
+  {
+   "id": "wp3wc-error69",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this lift station fleet energy comparison for the reliability and optimization program in a western Canadian city during spring melt. A pump upgrade at one station is being evaluated against the fleet total.",
+   "topicId": "lift-fleet-comparison",
+   "level": "class1",
+   "assumptions": "Fictional fleet comparison: station A uses 540 kWh per day, station B uses a given 146000 kWh per year, given upgrade saving 43800 kWh per year, 365 days per year.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Station A annual energy = 540 kWh/day + 365 days = 905 kWh"
+    },
+    {
+     "id": "line2",
+     "label": "2. Fleet annual energy = 905 kWh + 146000 kWh = 146905 kWh"
+    },
+    {
+     "id": "line3",
+     "label": "3. Fleet energy after upgrade = 146905 kWh - 43800 kWh = 103105 kWh"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Station A annual energy = 540 kWh/day * 365 days = 197100 kWh",
+   "explanation": "Line 1 added the days to the daily energy instead of multiplying. Station A uses 197100 kWh per year, the fleet total is 343100 kWh, and the total after the upgrade is 299300 kWh."
+  },
+  {
+   "id": "wp3wc-error70",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this lift station fleet energy comparison for the reliability and optimization program in a prairie city in western Canada. A pump upgrade at one station is being evaluated against the fleet total.",
+   "topicId": "lift-fleet-comparison",
+   "level": "class1",
+   "assumptions": "Fictional fleet comparison: station A uses 730 kWh per day, station B uses a given 200750 kWh per year, given upgrade saving 65700 kWh per year, 365 days per year.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Station A annual energy = 730 kWh/day * 365 days = 266450 kWh"
+    },
+    {
+     "id": "line2",
+     "label": "2. Fleet annual energy = 266450 kWh - 200750 kWh = 65700 kWh"
+    },
+    {
+     "id": "line3",
+     "label": "3. Fleet energy after upgrade = 65700 kWh - 65700 kWh = 0 kWh"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Fleet annual energy = 266450 kWh + 200750 kWh = 467200 kWh",
+   "explanation": "Line 2 subtracted station B energy from station A energy instead of adding them. The fleet total is 467200 kWh and the total after the upgrade is 401500 kWh."
+  },
+  {
+   "id": "wp3wc-error71",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pump duty optimization calculation at a lift station in a mountain valley town in western Canada. A speed change is being checked before the new duty point is adopted.",
+   "topicId": "lift-pump-optimization",
+   "level": "class1",
+   "assumptions": "Fictional duty check: current pump rate 900 L/min, given speed ratio 1.2, run time 600 min per day, given specific energy 0.4 kWh per m3, 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. New pump rate = 900 L/min / 1.2 = 750 L/min"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily volume = 750 L/min * 600 min = 450000 L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily energy = 450000 L / 1000 L/m3 * 0.4 kWh/m3 = 180 kWh"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. New pump rate = 900 L/min * 1.2 = 1080 L/min",
+   "explanation": "Line 1 divided by the speed ratio instead of multiplying by it. The new pump rate is 1080 L/min, the daily volume is 648000 L, and the daily energy is 259.2 kWh."
+  },
+  {
+   "id": "wp3wc-error72",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pump duty optimization calculation at a lift station in a western Canadian city during spring melt. A speed change is being checked before the new duty point is adopted.",
+   "topicId": "lift-pump-optimization",
+   "level": "class1",
+   "assumptions": "Fictional duty check: current pump rate 750 L/min, given speed ratio 1.25, run time 480 min per day, given specific energy 0.36 kWh per m3, 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. New pump rate = 750 L/min * 1.25 = 937.5 L/min"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily volume = 937.5 L/min + 480 min = 1417.5 L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily energy = 1417.5 L / 1000 L/m3 * 0.36 kWh/m3 = 0.5103 kWh"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Daily volume = 937.5 L/min * 480 min = 450000 L",
+   "explanation": "Line 2 added the run time to the pump rate instead of multiplying. The daily volume is 450000 L and the daily energy is 162 kWh."
+  },
+  {
+   "id": "wp3wc-error73",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pump duty optimization calculation at a lift station in a prairie city in western Canada. A speed change is being checked before the new duty point is adopted.",
+   "topicId": "lift-pump-optimization",
+   "level": "class1",
+   "assumptions": "Fictional duty check: current pump rate 1200 L/min, given speed ratio 0.8, run time 540 min per day, given specific energy 0.3 kWh per m3, 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. New pump rate = 1200 L/min * 0.8 = 960 L/min"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily volume = 960 L/min * 540 min = 518400 L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily energy = 518400 L * 0.3 kWh/m3 = 155520 kWh"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Daily energy = 518400 L / 1000 L/m3 * 0.3 kWh/m3 = 155.52 kWh",
+   "explanation": "Line 3 skipped the conversion from L to m3 before applying the specific energy. The daily energy is 155.52 kWh."
+  },
+  {
+   "id": "wp3wc-error74",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pump duty optimization calculation at a lift station in a foothills community in western Canada. A speed change is being checked before the new duty point is adopted.",
+   "topicId": "lift-pump-optimization",
+   "level": "class1",
+   "assumptions": "Fictional duty check: current pump rate 600 L/min, given speed ratio 1.5, run time 720 min per day, given specific energy 0.28 kWh per m3, 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. New pump rate = 600 L/min * 1.5 = 900 L/min"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily volume = 900 L/min + 720 min = 1620 L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily energy = 1620 L / 1000 L/m3 * 0.28 kWh/m3 = 0.4536 kWh"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Daily volume = 900 L/min * 720 min = 648000 L",
+   "explanation": "Line 2 added the run time to the pump rate instead of multiplying. The daily volume is 648000 L and the daily energy is 181.44 kWh."
+  },
+  {
+   "id": "wp3wc-error75",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pump duty optimization calculation at a lift station in a community on the British Columbia coast. A speed change is being checked before the new duty point is adopted.",
+   "topicId": "lift-pump-optimization",
+   "level": "class1",
+   "assumptions": "Fictional duty check: current pump rate 840 L/min, given speed ratio 1.25, run time 600 min per day, given specific energy 0.32 kWh per m3, 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. New pump rate = 840 L/min / 1.25 = 672 L/min"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily volume = 672 L/min * 600 min = 403200 L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily energy = 403200 L / 1000 L/m3 * 0.32 kWh/m3 = 129.024 kWh"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. New pump rate = 840 L/min * 1.25 = 1050 L/min",
+   "explanation": "Line 1 divided by the speed ratio instead of multiplying by it. The new pump rate is 1050 L/min, the daily volume is 630000 L, and the daily energy is 201.6 kWh."
+  },
+  {
+   "id": "wp3wc-error76",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pump cycling calculation for the lift station reliability program in a foothills community in western Canada. Excess starts shorten pump life, so the cycle check is part of station optimization.",
+   "topicId": "lift-pump-cycling",
+   "level": "class1",
+   "assumptions": "Fictional cycle check: fill time 30 min, drawdown time 30 min, 1440 min per day. Starts per day equals 1440 divided by cycle time.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Cycle time = 30 min + 30 min = 60 min"
+    },
+    {
+     "id": "line2",
+     "label": "2. Starts per day = 1440 min/day * 60 min = 86400 starts"
+    },
+    {
+     "id": "line3",
+     "label": "3. Run time per day = 86400 starts * 30 min = 2592000 min"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Starts per day = 1440 min/day / 60 min = 24 starts",
+   "explanation": "Line 2 multiplied by the cycle time instead of dividing 1440 by it. The station sees 24 starts per day and 720 min of run time per day."
+  },
+  {
+   "id": "wp3wc-error77",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pump cycling calculation for the lift station reliability program in a community on the British Columbia coast. Excess starts shorten pump life, so the cycle check is part of station optimization.",
+   "topicId": "lift-pump-cycling",
+   "level": "class1",
+   "assumptions": "Fictional cycle check: fill time 40 min, drawdown time 32 min, 1440 min per day. Starts per day equals 1440 divided by cycle time.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Cycle time = 40 min - 32 min = 8 min"
+    },
+    {
+     "id": "line2",
+     "label": "2. Starts per day = 1440 min/day / 8 min = 180 starts"
+    },
+    {
+     "id": "line3",
+     "label": "3. Run time per day = 180 starts * 32 min = 5760 min"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Cycle time = 40 min + 32 min = 72 min",
+   "explanation": "Line 1 subtracted the drawdown time from the fill time instead of adding them. The cycle time is 72 min, with 20 starts per day and 640 min of run time per day."
+  },
+  {
+   "id": "wp3wc-error78",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pump cycling calculation for the lift station reliability program in a northern prairie community. Excess starts shorten pump life, so the cycle check is part of station optimization.",
+   "topicId": "lift-pump-cycling",
+   "level": "class1",
+   "assumptions": "Fictional cycle check: fill time 55 min, drawdown time 35 min, 1440 min per day. Starts per day equals 1440 divided by cycle time.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Cycle time = 55 min + 35 min = 90 min"
+    },
+    {
+     "id": "line2",
+     "label": "2. Starts per day = 1440 min/day / 90 min = 16 starts"
+    },
+    {
+     "id": "line3",
+     "label": "3. Run time per day = 16 starts + 35 min = 51 min"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Run time per day = 16 starts * 35 min = 560 min",
+   "explanation": "Line 3 added the drawdown time to the start count instead of multiplying. The run time is 560 min per day."
+  },
+  {
+   "id": "wp3wc-error79",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pump cycling calculation for the lift station reliability program in a mountain valley town in western Canada. Excess starts shorten pump life, so the cycle check is part of station optimization.",
+   "topicId": "lift-pump-cycling",
+   "level": "class1",
+   "assumptions": "Fictional cycle check: fill time 70 min, drawdown time 50 min, 1440 min per day. Starts per day equals 1440 divided by cycle time.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Cycle time = 70 min - 50 min = 20 min"
+    },
+    {
+     "id": "line2",
+     "label": "2. Starts per day = 1440 min/day / 20 min = 72 starts"
+    },
+    {
+     "id": "line3",
+     "label": "3. Run time per day = 72 starts * 50 min = 3600 min"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Cycle time = 70 min + 50 min = 120 min",
+   "explanation": "Line 1 subtracted the drawdown time from the fill time instead of adding them. The cycle time is 120 min, with 12 starts per day and 600 min of run time per day."
+  },
+  {
+   "id": "wp3wc-error80",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pump cycling calculation for the lift station reliability program in a western Canadian city during spring melt. Excess starts shorten pump life, so the cycle check is part of station optimization.",
+   "topicId": "lift-pump-cycling",
+   "level": "class1",
+   "assumptions": "Fictional cycle check: fill time 130 min, drawdown time 110 min, 1440 min per day. Starts per day equals 1440 divided by cycle time.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Cycle time = 130 min + 110 min = 240 min"
+    },
+    {
+     "id": "line2",
+     "label": "2. Starts per day = 1440 min/day * 240 min = 345600 starts"
+    },
+    {
+     "id": "line3",
+     "label": "3. Run time per day = 345600 starts * 110 min = 38016000 min"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Starts per day = 1440 min/day / 240 min = 6 starts",
+   "explanation": "Line 2 multiplied by the cycle time instead of dividing 1440 by it. The station sees 6 starts per day and 660 min of run time per day."
+  },
+  {
+   "id": "wp3wc-error81",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this CCTV defect rate calculation for the condition assessment program in a northern prairie community. Defect rates drive rehabilitation prioritization in the asset management plan.",
+   "topicId": "cctv-defect-rate",
+   "level": "class1",
+   "assumptions": "Fictional condition program: inspection rate 450 m per shift, 8 shifts completed, 54 defects recorded, 1000 m = 1 km. Defects per km equals defects divided by inspected km.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Inspected length = 450 m/shift * 8 shifts = 36000 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Inspected length = 36000 m / 1000 m/km = 36 km"
+    },
+    {
+     "id": "line3",
+     "label": "3. Defects per km = 54 defects / 36 km = 1.5 defects/km"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Inspected length = 450 m/shift * 8 shifts = 3600 m",
+   "explanation": "Line 1 overstates the inspected length by a factor of 10: 450 m/shift * 8 shifts is 3600 m. The inspected length is 3.6 km and the defect rate is 15 defects per km."
+  },
+  {
+   "id": "wp3wc-error82",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this CCTV defect rate calculation for the condition assessment program in a mountain valley town in western Canada. Defect rates drive rehabilitation prioritization in the asset management plan.",
+   "topicId": "cctv-defect-rate",
+   "level": "class1",
+   "assumptions": "Fictional condition program: inspection rate 380 m per shift, 10 shifts completed, 76 defects recorded, 1000 m = 1 km. Defects per km equals defects divided by inspected km.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Inspected length = 380 m/shift * 10 shifts = 3800 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Inspected length = 3800 m / 100 m/km = 38 km"
+    },
+    {
+     "id": "line3",
+     "label": "3. Defects per km = 76 defects / 38 km = 2 defects/km"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Inspected length = 3800 m / 1000 m/km = 3.8 km",
+   "explanation": "Line 2 divided by 100 instead of 1000 m per km. The inspected length is 3.8 km and the defect rate is 20 defects per km."
+  },
+  {
+   "id": "wp3wc-error83",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this CCTV defect rate calculation for the condition assessment program in a western Canadian city during spring melt. Defect rates drive rehabilitation prioritization in the asset management plan.",
+   "topicId": "cctv-defect-rate",
+   "level": "class1",
+   "assumptions": "Fictional condition program: inspection rate 500 m per shift, 6 shifts completed, 60 defects recorded, 1000 m = 1 km. Defects per km equals defects divided by inspected km.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Inspected length = 500 m/shift * 6 shifts = 3000 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Inspected length = 3000 m / 1000 m/km = 3 km"
+    },
+    {
+     "id": "line3",
+     "label": "3. Defects per km = 60 defects * 3 km = 180 defects/km"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Defects per km = 60 defects / 3 km = 20 defects/km",
+   "explanation": "Line 3 multiplied the defect count by the inspected length instead of dividing by it. The defect rate is 20 defects per km."
+  },
+  {
+   "id": "wp3wc-error84",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this CCTV defect rate calculation for the condition assessment program in a prairie city in western Canada. Defect rates drive rehabilitation prioritization in the asset management plan.",
+   "topicId": "cctv-defect-rate",
+   "level": "class1",
+   "assumptions": "Fictional condition program: inspection rate 420 m per shift, 5 shifts completed, 42 defects recorded, 1000 m = 1 km. Defects per km equals defects divided by inspected km.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Inspected length = 420 m/shift * 5 shifts = 2100 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Inspected length = 2100 m / 100 m/km = 21 km"
+    },
+    {
+     "id": "line3",
+     "label": "3. Defects per km = 42 defects / 21 km = 2 defects/km"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Inspected length = 2100 m / 1000 m/km = 2.1 km",
+   "explanation": "Line 2 divided by 100 instead of 1000 m per km. The inspected length is 2.1 km and the defect rate is 20 defects per km."
+  },
+  {
+   "id": "wp3wc-error85",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this CCTV defect rate calculation for the condition assessment program in a foothills community in western Canada. Defect rates drive rehabilitation prioritization in the asset management plan.",
+   "topicId": "cctv-defect-rate",
+   "level": "class1",
+   "assumptions": "Fictional condition program: inspection rate 360 m per shift, 9 shifts completed, 81 defects recorded, 1000 m = 1 km. Defects per km equals defects divided by inspected km.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Inspected length = 360 m/shift * 9 shifts = 32400 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Inspected length = 32400 m / 1000 m/km = 32.4 km"
+    },
+    {
+     "id": "line3",
+     "label": "3. Defects per km = 81 defects / 32.4 km = 2.5 defects/km"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Inspected length = 360 m/shift * 9 shifts = 3240 m",
+   "explanation": "Line 1 overstates the inspected length by a factor of 10: 360 m/shift * 9 shifts is 3240 m. The inspected length is 3.24 km and the defect rate is 25 defects per km."
+  },
+  {
+   "id": "wp3wc-error86",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this condition grading progress calculation for the sewer inspection program in a western Canadian city during spring melt. Grading progress is reported for the condition assessment program under provincial wastewater requirements in general terms.",
+   "topicId": "condition-grading-progress",
+   "level": "class1",
+   "assumptions": "Fictional grading program: inspected this period 5000 m, ungraded 750 m, previously graded 12000 m, program total 20000 m. Cumulative percent equals cumulative graded divided by program total times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Graded this period = 5000 m + 750 m = 5750 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Cumulative graded = 12000 m + 5750 m = 17750 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Cumulative percent = 17750 m / 20000 m * 100 = 88.75 percent"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Graded this period = 5000 m - 750 m = 4250 m",
+   "explanation": "Line 1 added the ungraded length to the inspected length instead of subtracting it. The graded length is 4250 m, the cumulative graded length is 16250 m, and the cumulative progress is 81.25 percent."
+  },
+  {
+   "id": "wp3wc-error87",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this condition grading progress calculation for the sewer inspection program in a prairie city in western Canada. Grading progress is reported for the condition assessment program under provincial wastewater requirements in general terms.",
+   "topicId": "condition-grading-progress",
+   "level": "class1",
+   "assumptions": "Fictional grading program: inspected this period 4000 m, ungraded 600 m, previously graded 9000 m, program total 20000 m. Cumulative percent equals cumulative graded divided by program total times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Graded this period = 4000 m - 600 m = 3400 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Cumulative graded = 9000 m - 3400 m = 5600 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Cumulative percent = 5600 m / 20000 m * 100 = 28 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Cumulative graded = 9000 m + 3400 m = 12400 m",
+   "explanation": "Line 2 subtracted this period graded length from the previously graded length instead of adding it. The cumulative graded length is 12400 m and the cumulative progress is 62 percent."
+  },
+  {
+   "id": "wp3wc-error88",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this condition grading progress calculation for the sewer inspection program in a foothills community in western Canada. Grading progress is reported for the condition assessment program under provincial wastewater requirements in general terms.",
+   "topicId": "condition-grading-progress",
+   "level": "class1",
+   "assumptions": "Fictional grading program: inspected this period 8000 m, ungraded 1600 m, previously graded 15000 m, program total 25000 m. Cumulative percent equals cumulative graded divided by program total times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Graded this period = 8000 m - 1600 m = 6400 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Cumulative graded = 15000 m + 6400 m = 21400 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Cumulative percent = 21400 m / 25000 m * 10 = 8.56 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Cumulative percent = 21400 m / 25000 m * 100 = 85.6 percent",
+   "explanation": "Line 3 multiplied by 10 instead of 100 to get percent. The cumulative progress is 85.6 percent."
+  },
+  {
+   "id": "wp3wc-error89",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this condition grading progress calculation for the sewer inspection program in a community on the British Columbia coast. Grading progress is reported for the condition assessment program under provincial wastewater requirements in general terms.",
+   "topicId": "condition-grading-progress",
+   "level": "class1",
+   "assumptions": "Fictional grading program: inspected this period 10000 m, ungraded 2500 m, previously graded 20000 m, program total 40000 m. Cumulative percent equals cumulative graded divided by program total times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Graded this period = 10000 m - 2500 m = 7500 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Cumulative graded = 20000 m - 7500 m = 12500 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Cumulative percent = 12500 m / 40000 m * 100 = 31.25 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Cumulative graded = 20000 m + 7500 m = 27500 m",
+   "explanation": "Line 2 subtracted this period graded length from the previously graded length instead of adding it. The cumulative graded length is 27500 m and the cumulative progress is 68.75 percent."
+  },
+  {
+   "id": "wp3wc-error90",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this condition grading progress calculation for the sewer inspection program in a northern prairie community. Grading progress is reported for the condition assessment program under provincial wastewater requirements in general terms.",
+   "topicId": "condition-grading-progress",
+   "level": "class1",
+   "assumptions": "Fictional grading program: inspected this period 8000 m, ungraded 1000 m, previously graded 11000 m, program total 20000 m. Cumulative percent equals cumulative graded divided by program total times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Graded this period = 8000 m + 1000 m = 9000 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Cumulative graded = 11000 m + 9000 m = 20000 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Cumulative percent = 20000 m / 20000 m * 100 = 100 percent"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Graded this period = 8000 m - 1000 m = 7000 m",
+   "explanation": "Line 1 added the ungraded length to the inspected length instead of subtracting it. The graded length is 7000 m, the cumulative graded length is 18000 m, and the cumulative progress is 90 percent."
+  },
+  {
+   "id": "wp3wc-error91",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this high risk cleaning program calculation in a prairie city in western Canada. High risk reaches are cleaned first under the maintenance program, and unit rates are given for planning.",
+   "topicId": "cleaning-condition-program",
+   "level": "class1",
+   "assumptions": "Fictional cleaning program: cleaning rate 320 m per day, 15 days worked, high risk length 8000 m, given unit rate 12 dollars per m, given total program budget 96000 dollars. Percent of budget used equals program cost divided by total budget times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Cleaned length = 320 m/day + 15 days = 335 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Program cost = 335 m * 12 dollars/m = 4020 dollars"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent of budget used = 4020 dollars / 96000 dollars * 100 = 4.1875 percent"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Cleaned length = 320 m/day * 15 days = 4800 m",
+   "explanation": "Line 1 added the cleaning rate and the days instead of multiplying them. The cleaned length is 4800 m, the program cost is 57600 dollars, and the budget used is 60 percent."
+  },
+  {
+   "id": "wp3wc-error92",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this high risk cleaning program calculation in a foothills community in western Canada. High risk reaches are cleaned first under the maintenance program, and unit rates are given for planning.",
+   "topicId": "cleaning-condition-program",
+   "level": "class1",
+   "assumptions": "Fictional cleaning program: cleaning rate 280 m per day, 20 days worked, high risk length 10000 m, given unit rate 14 dollars per m, given total program budget 140000 dollars. Percent of budget used equals program cost divided by total budget times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Cleaned length = 280 m/day * 20 days = 5600 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Program cost = 5600 m + 14 dollars/m = 5614 dollars"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent of budget used = 5614 dollars / 140000 dollars * 100 = 4.01 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Program cost = 5600 m * 14 dollars/m = 78400 dollars",
+   "explanation": "Line 2 added the unit rate to the cleaned length instead of multiplying. The program cost is 78400 dollars and the budget used is 56 percent."
+  },
+  {
+   "id": "wp3wc-error93",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this high risk cleaning program calculation in a community on the British Columbia coast. High risk reaches are cleaned first under the maintenance program, and unit rates are given for planning.",
+   "topicId": "cleaning-condition-program",
+   "level": "class1",
+   "assumptions": "Fictional cleaning program: cleaning rate 450 m per day, 12 days worked, high risk length 10000 m, given unit rate 12 dollars per m, given total program budget 120000 dollars. Percent of budget used equals program cost divided by total budget times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Cleaned length = 450 m/day * 12 days = 5400 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Program cost = 5400 m * 12 dollars/m = 64800 dollars"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent of budget used = 64800 dollars / 120000 dollars * 10 = 5.4 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent of budget used = 64800 dollars / 120000 dollars * 100 = 54 percent",
+   "explanation": "Line 3 multiplied by 10 instead of 100 to get percent. The budget used is 54 percent."
+  },
+  {
+   "id": "wp3wc-error94",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this high risk cleaning program calculation in a northern prairie community. High risk reaches are cleaned first under the maintenance program, and unit rates are given for planning.",
+   "topicId": "cleaning-condition-program",
+   "level": "class1",
+   "assumptions": "Fictional cleaning program: cleaning rate 360 m per day, 18 days worked, high risk length 8000 m, given unit rate 16 dollars per m, given total program budget 128000 dollars. Percent of budget used equals program cost divided by total budget times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Cleaned length = 360 m/day + 18 days = 378 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Program cost = 378 m * 16 dollars/m = 6048 dollars"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent of budget used = 6048 dollars / 128000 dollars * 100 = 4.725 percent"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Cleaned length = 360 m/day * 18 days = 6480 m",
+   "explanation": "Line 1 added the cleaning rate and the days instead of multiplying them. The cleaned length is 6480 m, the program cost is 103680 dollars, and the budget used is 81 percent."
+  },
+  {
+   "id": "wp3wc-error95",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this high risk cleaning program calculation in a mountain valley town in western Canada. High risk reaches are cleaned first under the maintenance program, and unit rates are given for planning.",
+   "topicId": "cleaning-condition-program",
+   "level": "class1",
+   "assumptions": "Fictional cleaning program: cleaning rate 300 m per day, 25 days worked, high risk length 10000 m, given unit rate 15 dollars per m, given total program budget 150000 dollars. Percent of budget used equals program cost divided by total budget times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Cleaned length = 300 m/day * 25 days = 7500 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Program cost = 7500 m + 15 dollars/m = 7515 dollars"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent of budget used = 7515 dollars / 150000 dollars * 100 = 5.01 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Program cost = 7500 m * 15 dollars/m = 112500 dollars",
+   "explanation": "Line 2 added the unit rate to the cleaned length instead of multiplying. The program cost is 112500 dollars and the budget used is 75 percent."
+  },
+  {
+   "id": "wp3wc-error96",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this manhole assessment program calculation in a community on the British Columbia coast. Assessment progress feeds the rehabilitation priority list for the coming season.",
+   "topicId": "manhole-assessment-program",
+   "level": "class1",
+   "assumptions": "Fictional assessment program: assessment rate 18 manholes per day, 20 days worked, inventory 500 manholes. Percent remaining equals remaining divided by inventory times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Manholes assessed = 18 per day / 20 days = 0.9 manholes"
+    },
+    {
+     "id": "line2",
+     "label": "2. Remaining to assess = 500 - 0.9 = 499.1 manholes"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent remaining = 499.1 / 500 * 100 = 99.82 percent"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Manholes assessed = 18 per day * 20 days = 360 manholes",
+   "explanation": "Line 1 divided the assessment rate by the days instead of multiplying. The crew assessed 360 manholes, which is 72 percent of the inventory, with 140 remaining."
+  },
+  {
+   "id": "wp3wc-error97",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this manhole assessment program calculation in a northern prairie community. Assessment progress feeds the rehabilitation priority list for the coming season.",
+   "topicId": "manhole-assessment-program",
+   "level": "class1",
+   "assumptions": "Fictional assessment program: assessment rate 22 manholes per day, 15 days worked, inventory 800 manholes. Percent remaining equals remaining divided by inventory times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Manholes assessed = 22 per day * 15 days = 330 manholes"
+    },
+    {
+     "id": "line2",
+     "label": "2. Remaining to assess = 800 + 330 = 1130 manholes"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent remaining = 1130 / 800 * 100 = 141.25 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Remaining to assess = 800 - 330 = 470 manholes",
+   "explanation": "Line 2 added the assessed count to the inventory instead of subtracting it. The remaining count is 470 manholes, which is 58.75 percent of the inventory."
+  },
+  {
+   "id": "wp3wc-error98",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this manhole assessment program calculation in a mountain valley town in western Canada. Assessment progress feeds the rehabilitation priority list for the coming season.",
+   "topicId": "manhole-assessment-program",
+   "level": "class1",
+   "assumptions": "Fictional assessment program: assessment rate 16 manholes per day, 25 days worked, inventory 1000 manholes. Percent remaining equals remaining divided by inventory times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Manholes assessed = 16 per day * 25 days = 400 manholes"
+    },
+    {
+     "id": "line2",
+     "label": "2. Remaining to assess = 1000 - 400 = 600 manholes"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent remaining = 600 / 1000 * 10 = 6 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent remaining = 600 / 1000 * 100 = 60 percent",
+   "explanation": "Line 3 multiplied by 10 instead of 100 to get percent. The remaining share is 60 percent."
+  },
+  {
+   "id": "wp3wc-error99",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this manhole assessment program calculation in a western Canadian city during spring melt. Assessment progress feeds the rehabilitation priority list for the coming season.",
+   "topicId": "manhole-assessment-program",
+   "level": "class1",
+   "assumptions": "Fictional assessment program: assessment rate 25 manholes per day, 16 days worked, inventory 800 manholes. Percent remaining equals remaining divided by inventory times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Manholes assessed = 25 per day + 16 days = 41 manholes"
+    },
+    {
+     "id": "line2",
+     "label": "2. Remaining to assess = 800 - 41 = 759 manholes"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent remaining = 759 / 800 * 100 = 94.875 percent"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Manholes assessed = 25 per day * 16 days = 400 manholes",
+   "explanation": "Line 1 added the assessment rate and the days instead of multiplying them. The crew assessed 400 manholes, which is 50 percent of the inventory, with 400 remaining."
+  },
+  {
+   "id": "wp3wc-process01",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the design of a citywide infiltration and inflow reduction program.",
+   "topicId": "ii-program-design",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: program design task for a prairie city of 120000 people, budget approval is annual, and no field work is ordered yet.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Set program goals in measurable terms, such as peak wet weather flow reduction per basin and a target share of private side sources addressed"
+    },
+    {
+     "id": "s2",
+     "label": "Define the annual report that compares flow removed, cost per basin, and remaining sources so council and management see progress"
+    },
+    {
+     "id": "s3",
+     "label": "Divide the city into study basins using trunk sewers, lift station catchments, and natural drainage boundaries that can each be flow monitored"
+    },
+    {
+     "id": "s4",
+     "label": "Sequence the basins over the program years so the worst basins are studied first and rehabilitation contracts can follow study results"
+    },
+    {
+     "id": "s5",
+     "label": "Rank basins by existing evidence, including overflow records, basement backup reports, pump run hours, and wet weather peaking from past monitoring"
+    },
+    {
+     "id": "s6",
+     "label": "Select the study methods for each basin tier, from systemwide metering down to smoke testing, dye testing, and property inspections where justified"
+    }
+   ],
+   "correctOrder": [
+    "s3",
+    "s5",
+    "s1",
+    "s6",
+    "s4",
+    "s2"
+   ],
+   "explanation": "Basins that can be metered make every later claim measurable. Ranking by evidence spends study money where removal is largest, and annual reporting on flow removed keeps the program honest over many years."
+  },
+  {
+   "id": "wp3wc-process02",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a basin level rainfall dependent I/I study from planning to findings.",
+   "topicId": "ii-program-design",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: one basin of 85 hectares is suspected of high rainfall dependent inflow, and one wet season of monitoring is funded.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Analyse the storm response by sub basin to locate where rainfall enters fastest, which points to inflow rather than slow infiltration"
+    },
+    {
+     "id": "s2",
+     "label": "Install rain gauges and flow meters at the basin outlet and at sub basin splits before the spring wet season begins"
+    },
+    {
+     "id": "s3",
+     "label": "Report the rainfall dependent inflow by sub basin with recommended source removal work and the expected flow reduction"
+    },
+    {
+     "id": "s4",
+     "label": "Collect dry weather baseline flows for several weeks so wet weather response can be separated from normal diurnal flow"
+    },
+    {
+     "id": "s5",
+     "label": "Field verify the fastest responding areas with smoke testing, manhole inspections during rain, and checks of roof leaders and cross connections"
+    },
+    {
+     "id": "s6",
+     "label": "Capture a range of storm sizes and record peak flow, total wet weather volume, and the time for flow to return to baseline after each storm"
+    }
+   ],
+   "correctOrder": [
+    "s2",
+    "s4",
+    "s6",
+    "s1",
+    "s5",
+    "s3"
+   ],
+   "explanation": "A dry weather baseline is what makes wet weather analysis possible. Storm response timing separates fast inflow from slow infiltration, and field verification in the fastest areas turns data into removable sources."
+  },
+  {
+   "id": "wp3wc-process03",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the economic comparison of I/I removal against added conveyance and treatment capacity.",
+   "topicId": "ii-program-design",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: management must choose between a source removal program and upsizing a trunk sewer and lift station, using given unit rates only.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Cost the capacity option using given unit rates for the trunk, station, and treatment capacity needed for the same peak flow"
+    },
+    {
+     "id": "s2",
+     "label": "Test the comparison with a sensitivity case using lower removal effectiveness so the decision does not rest on the most optimistic outcome"
+    },
+    {
+     "id": "s3",
+     "label": "Cost the removal option using given unit rates per source type and the removal effectiveness measured in the basin studies"
+    },
+    {
+     "id": "s4",
+     "label": "Recommend the option or the staged combination, with the trigger points at which the capacity work would be revisited"
+    },
+    {
+     "id": "s5",
+     "label": "State the decision in measurable terms, including the peak flow to be managed, the planning horizon, and the level of service to be protected"
+    },
+    {
+     "id": "s6",
+     "label": "Compare both options on the same basis, including operating cost, asset life, residual wet weather risk, and the flow that remains after removal"
+    }
+   ],
+   "correctOrder": [
+    "s5",
+    "s1",
+    "s3",
+    "s6",
+    "s2",
+    "s4"
+   ],
+   "explanation": "Both options must be priced against the same peak flow and service level or the comparison is meaningless. A sensitivity case protects the decision, because removal programs rarely perform exactly as first estimated."
+  },
+  {
+   "id": "wp3wc-process04",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a private side I/I source removal program for residential areas.",
+   "topicId": "ii-program-design",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: studies show foundation drains, roof leaders, and defective laterals are the largest inflow sources in two older neighbourhoods.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Expand in phases by basin priority, tracking completions and reinspections so corrected properties stay corrected"
+    },
+    {
+     "id": "s2",
+     "label": "Pilot the program on one neighbourhood block group and measure participation rates, defects found, and cost per property corrected"
+    },
+    {
+     "id": "s3",
+     "label": "Confirm the private side share of wet weather flow from basin data so the program size matches the source, not a guess"
+    },
+    {
+     "id": "s4",
+     "label": "Arrange contractor capacity and inspection staff for the repair volume the pilot predicts before expanding the offer citywide"
+    },
+    {
+     "id": "s5",
+     "label": "Measure wet weather flow in the completed basins against the pre program baseline and report the removal achieved"
+    },
+    {
+     "id": "s6",
+     "label": "Design the program offer, including inspection method, who pays for each repair type, permits, and how work on private property is authorized"
+    }
+   ],
+   "correctOrder": [
+    "s3",
+    "s6",
+    "s2",
+    "s4",
+    "s1",
+    "s5"
+   ],
+   "explanation": "Private side work succeeds on participation, so the pilot tests the offer before the city commits. Phased expansion matched to contractor capacity avoids a backlog of approved but unfinished repairs."
+  },
+  {
+   "id": "wp3wc-process05",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a manhole rehabilitation program aimed at infiltration reduction.",
+   "topicId": "ii-program-design",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: night flow analysis and wet weather inspections show many manholes in low lying areas admit surface water and groundwater.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Remeter the completed basins in comparable storms and record the flow change against the manhole work done"
+    },
+    {
+     "id": "s2",
+     "label": "Group the defects by repair method, such as cover replacement, frame seals, chimney liners, and full structure rehabilitation"
+    },
+    {
+     "id": "s3",
+     "label": "Package the repairs into contracts by basin so a whole basin can be remeasured after its structures are sealed"
+    },
+    {
+     "id": "s4",
+     "label": "Inspect manholes in the priority basins during and after wet weather and grade each for frame and cover inflow, chimney leakage, and wall and benching defects"
+    },
+    {
+     "id": "s5",
+     "label": "Rank the work by infiltration removed per structure and by flood risk at each location, not by age alone"
+    },
+    {
+     "id": "s6",
+     "label": "Complete the first basin package and hold quality checks on seals and liners before the next package is released"
+    }
+   ],
+   "correctOrder": [
+    "s4",
+    "s2",
+    "s5",
+    "s3",
+    "s6",
+    "s1"
+   ],
+   "explanation": "Manhole inflow is removed basin by basin so the effect can be metered, not assumed. Grouping by repair method makes efficient contracts, and remeasurement closes the loop on whether sealing worked."
+  },
+  {
+   "id": "wp3wc-process06",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the long term effectiveness review of a five year I/I program.",
+   "topicId": "ii-program-design",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: the program has completed source removal in four basins, and management needs to know whether the promised peak flow reduction arrived.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Compare wet weather response for storms of similar size and antecedent conditions so the comparison is fair"
+    },
+    {
+     "id": "s2",
+     "label": "Assemble the pre program baseline flows, the storm records, and the completed source removal inventory for each finished basin"
+    },
+    {
+     "id": "s3",
+     "label": "Identify basins where removal underperformed and diagnose whether sources remain, repairs failed, or the original estimate was optimistic"
+    },
+    {
+     "id": "s4",
+     "label": "Report effectiveness by basin with cost per unit of peak flow removed and recommend where the next program phase should focus"
+    },
+    {
+     "id": "s5",
+     "label": "Separate the flow change explained by completed removals from changes due to growth, new connections, and drier or wetter weather"
+    },
+    {
+     "id": "s6",
+     "label": "Remeter each finished basin over a wet season with rain gauges placed as they were for the baseline study"
+    }
+   ],
+   "correctOrder": [
+    "s2",
+    "s6",
+    "s1",
+    "s5",
+    "s3",
+    "s4"
+   ],
+   "explanation": "Effectiveness can only be judged against storms of similar size, which is why the baseline method is repeated exactly. Separating growth and weather from removal keeps the verdict honest and points the next phase at real remaining sources."
+  },
+  {
+   "id": "wp3wc-process07",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a smoke testing program to find direct inflow connections in an older district.",
+   "topicId": "ii-program-design",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: the district has rapid storm response, testing covers 900 properties, and public notification is required before testing begins.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Notify residents, the fire dispatch centre, and affected businesses in writing before testing, with dates and what smoke at a property means"
+    },
+    {
+     "id": "s2",
+     "label": "Blow smoke through the section and record every emergence point with photos, addresses, and an estimate of the opening size"
+    },
+    {
+     "id": "s3",
+     "label": "Issue correction notices for confirmed connections and enter all findings in the basin source inventory with reinspection dates"
+    },
+    {
+     "id": "s4",
+     "label": "Brief crews on properties to watch, including roof leaders, area drains, cleanouts, and buildings where smoke indoors must be reported at once"
+    },
+    {
+     "id": "s5",
+     "label": "Isolate the test section between manholes, confirm the blower setup, and check weather so smoke behaviour will be readable"
+    },
+    {
+     "id": "s6",
+     "label": "Follow up the strongest inflow points with dye testing or property visits to confirm the connection before any correction notice is issued"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s5",
+    "s4",
+    "s2",
+    "s6",
+    "s3"
+   ],
+   "explanation": "Notification comes first because smoke in a home alarms people and the fire service. Confirmation before a correction notice protects owners from being ordered to fix a connection that was never proven."
+  },
+  {
+   "id": "wp3wc-process08",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a groundwater infiltration reduction plan for sewers below the water table.",
+   "topicId": "ii-program-design",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: several clay sewer reaches in a river valley show high dry weather base flow in late spring when groundwater is highest.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Schedule the sealing work for the season when access and curing conditions suit the method, with flow control planned for live sewers"
+    },
+    {
+     "id": "s2",
+     "label": "Verify by night flow measurement after the work in the next high groundwater season and record the base flow change"
+    },
+    {
+     "id": "s3",
+     "label": "Inspect the suspect reaches by CCTV at high groundwater and record joint leakage, crack weeping, and lateral connection leakage by severity"
+    },
+    {
+     "id": "s4",
+     "label": "Confirm the infiltration reaches by comparing dry weather flows in high and low groundwater seasons and by night flow analysis"
+    },
+    {
+     "id": "s5",
+     "label": "Select the method per reach, such as joint grouting, cured in place lining, or open cut renewal, using condition and access"
+    },
+    {
+     "id": "s6",
+     "label": "Rank reaches by infiltration volume per metre and by structural condition, since leaking but sound pipe suits sealing while failed pipe suits renewal"
+    }
+   ],
+   "correctOrder": [
+    "s4",
+    "s3",
+    "s6",
+    "s5",
+    "s1",
+    "s2"
+   ],
+   "explanation": "Infiltration through joints follows the groundwater season, so both the inspection and the proof are timed to high water. Method follows condition, because grouting a structurally failed pipe wastes the sealing investment."
+  },
+  {
+   "id": "wp3wc-process09",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the integration of I/I findings into the sewer rehabilitation capital plan.",
+   "topicId": "ii-program-design",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: three basin studies are complete and the capital plan is being rebuilt for the next ten years.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Merge the I/I list with the structural rehabilitation list and flag reaches where one project can solve both problems at once"
+    },
+    {
+     "id": "s2",
+     "label": "Sequence projects so upstream source removal precedes downstream capacity decisions that depend on the reduced flow"
+    },
+    {
+     "id": "s3",
+     "label": "Consolidate the basin study findings into one ranked source list with flows, locations, and removal methods for the whole city"
+    },
+    {
+     "id": "s4",
+     "label": "Update the plan each year with completed work, remeasured flows, and new study results rather than treating it as fixed"
+    },
+    {
+     "id": "s5",
+     "label": "Estimate each combined project with given unit rates and the flow and risk reduction it delivers"
+    },
+    {
+     "id": "s6",
+     "label": "Present the ten year plan with annual spending, expected peak flow trend, and the projects deferred with their residual risk stated"
+    }
+   ],
+   "correctOrder": [
+    "s3",
+    "s1",
+    "s5",
+    "s2",
+    "s6",
+    "s4"
+   ],
+   "explanation": "I/I and structural work planned together avoid lining a pipe and then digging it for capacity. Sequencing removal before capacity decisions is what turns study findings into avoided capital cost."
+  },
+  {
+   "id": "wp3wc-process10",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a foundation drain disconnection study for a neighbourhood with chronic wet weather surcharging.",
+   "topicId": "ii-program-design",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: the neighbourhood predates current practice, many homes connect foundation drains to the sanitary sewer, and surcharging occurs in large storms.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Design a disconnection approach with the plumbing and permit requirements, owner costs, and any city assistance defined"
+    },
+    {
+     "id": "s2",
+     "label": "Decide on the wider program, including whether it stays voluntary or becomes required at property sale or renovation, and report the flow evidence"
+    },
+    {
+     "id": "s3",
+     "label": "Check where disconnected water can go, including storm sewer capacity, lot grading, and winter icing risk for surface discharges"
+    },
+    {
+     "id": "s4",
+     "label": "Survey a sample of homes with owner permission to confirm connection patterns and where a sump pump and discharge could be installed"
+    },
+    {
+     "id": "s5",
+     "label": "Estimate the foundation drain contribution from storm flow response, home age and type, and any existing sump pump records for the area"
+    },
+    {
+     "id": "s6",
+     "label": "Run a voluntary pilot on one street, monitor its storm response, and record owner experience and actual installation costs"
+    }
+   ],
+   "correctOrder": [
+    "s5",
+    "s4",
+    "s3",
+    "s1",
+    "s6",
+    "s2"
+   ],
+   "explanation": "Disconnection moves water rather than deleting it, so the receiving route and winter icing are checked before any home is changed. The pilot proves both the flow benefit and the owner experience before policy is set."
+  },
+  {
+   "id": "wp3wc-process100",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the long term cold climate adaptation review for collection infrastructure.",
+   "topicId": "cold-climate-programs",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: freeze thaw cycles are increasing, frost depths are changing, and the utility reviews its design and maintenance standards for the next 25 years.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Propose standard changes and program adjustments in order of the risk they retire, using given rates where costs are compared"
+    },
+    {
+     "id": "s2",
+     "label": "Adopt the proven changes into the design manual with a review cycle, since the climate input will continue to move"
+    },
+    {
+     "id": "s3",
+     "label": "Identify the asset groups most exposed, including shallow services, older clay sewers in frost susceptible soils, and exposed station components"
+    },
+    {
+     "id": "s4",
+     "label": "Compare current design standards, such as burial depth, insulation practice, and station cold provisions, with the conditions the records now show"
+    },
+    {
+     "id": "s5",
+     "label": "Gather the evidence of change from the utility records, including freeze incidents, frost related breaks, thaw inflow trends, and winter access problems"
+    },
+    {
+     "id": "s6",
+     "label": "Pilot the most consequential standard change on the next suitable projects and monitor the results against the old standard"
+    }
+   ],
+   "correctOrder": [
+    "s5",
+    "s4",
+    "s3",
+    "s1",
+    "s6",
+    "s2"
+   ],
+   "explanation": "Adaptation grounded in the utility own freeze and break records survives scrutiny that generic climate claims do not. Piloting the biggest standard change before adopting it everywhere keeps a 25 year decision honest."
+  },
+  {
+   "id": "wp3wc-process11",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the building of a ten year sewer rehabilitation program from condition data.",
+   "topicId": "rehabilitation-program-planning",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: the city holds graded CCTV data for 60 percent of its sewers and must set a defensible renewal program.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Group triggered reaches into project packages by basin and street so excavation, traffic, and lining work are done once per area"
+    },
+    {
+     "id": "s2",
+     "label": "Publish the program with the backlog trend it produces, so management sees whether the renewal rate is gaining on deterioration"
+    },
+    {
+     "id": "s3",
+     "label": "Consolidate condition grades, age, material, failure history, and consequence data into one asset register view for every sewer reach"
+    },
+    {
+     "id": "s4",
+     "label": "Sequence packages by risk so the highest likelihood and consequence combinations are renewed first across the ten years"
+    },
+    {
+     "id": "s5",
+     "label": "Define the renewal triggers, such as the worst structural grades, repeated failures, and reaches where failure consequence is unacceptable at any grade"
+    },
+    {
+     "id": "s6",
+     "label": "Estimate package costs with given unit rates and set the annual program size the budget and contractor market can actually deliver"
+    }
+   ],
+   "correctOrder": [
+    "s3",
+    "s5",
+    "s1",
+    "s6",
+    "s4",
+    "s2"
+   ],
+   "explanation": "A program built on triggers and risk can be defended line by line. Publishing the backlog trend is the honesty check, because a renewal rate below the deterioration rate is a growing problem, not a plan."
+  },
+  {
+   "id": "wp3wc-process12",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the selection between lining, pipe bursting, and open cut renewal for a project area.",
+   "topicId": "rehabilitation-program-planning",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: one project area has 2 km of deteriorated sewer with mixed diameters, several sags, and two reaches needing larger capacity.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Check lateral connections and their condition in each reach, because the renewal method must restore every live service"
+    },
+    {
+     "id": "s2",
+     "label": "List the hard constraints for the area, including reaches needing upsizing, sags needing grade correction, and access or surface limits on excavation"
+    },
+    {
+     "id": "s3",
+     "label": "Carry the chosen methods into design with the pre renewal cleaning and CCTV requirements each method needs"
+    },
+    {
+     "id": "s4",
+     "label": "Screen out methods that cannot meet the constraints, since lining cannot fix grade or add much capacity and bursting needs suitable soil and separation"
+    },
+    {
+     "id": "s5",
+     "label": "Assign the method per reach and record the reason, so a mixed method project is a decision, not an accident"
+    },
+    {
+     "id": "s6",
+     "label": "Compare the surviving methods reach by reach on given unit rates, service life, disruption, and risk during construction"
+    }
+   ],
+   "correctOrder": [
+    "s2",
+    "s4",
+    "s6",
+    "s1",
+    "s5",
+    "s3"
+   ],
+   "explanation": "Constraints eliminate methods before cost is compared, which prevents choosing a liner for a pipe whose real problem is grade. Recording the reason per reach lets design proceed without reopening settled questions."
+  },
+  {
+   "id": "wp3wc-process13",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a cured in place lining program for a year of scattered sewer reaches.",
+   "topicId": "rehabilitation-program-planning",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: 3.5 km of lining is planned across 14 reaches, all in live residential streets with active services.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Verify every live lateral in each reach from records and dye or camera checks so reinstatement after lining is complete"
+    },
+    {
+     "id": "s2",
+     "label": "Supervise installation and curing records, collect liner samples as specified, and hold acceptance until post lining CCTV is reviewed"
+    },
+    {
+     "id": "s3",
+     "label": "Sequence the reaches into installation days by diameter and access, with bypass pumping plans sized for peak flow in each reach"
+    },
+    {
+     "id": "s4",
+     "label": "Enter accepted reaches into the asset register with new condition grade, liner details, and the warranty expiry date"
+    },
+    {
+     "id": "s5",
+     "label": "Confirm each reach with recent CCTV, cleaning records, and measured dimensions so liner thickness and length are ordered correctly"
+    },
+    {
+     "id": "s6",
+     "label": "Notify affected residents of the work dates, the water use restrictions during cure, and the contact for odour or backup concerns"
+    }
+   ],
+   "correctOrder": [
+    "s5",
+    "s1",
+    "s3",
+    "s6",
+    "s2",
+    "s4"
+   ],
+   "explanation": "Lining quality is decided before the resin arrives, by measurement, lateral verification, and bypass capacity. Acceptance on post lining CCTV and cure records, not on installation alone, is what starts the warranty honestly."
+  },
+  {
+   "id": "wp3wc-process14",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a lateral rehabilitation program for a district with root and infiltration problems at services.",
+   "topicId": "rehabilitation-program-planning",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: mainline lining is complete in the district, but CCTV shows laterals now contribute most of the remaining infiltration.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Verify each finished lateral by camera and record the seal or liner installed in the property and asset files"
+    },
+    {
+     "id": "s2",
+     "label": "Set the cost sharing and access rules with property owners in writing before any lateral is scheduled"
+    },
+    {
+     "id": "s3",
+     "label": "Rank laterals by defect evidence from launch camera surveys, backup history, and the infiltration measured at the district meter"
+    },
+    {
+     "id": "s4",
+     "label": "Schedule lateral work street by street with the connection seals done while access and bypass arrangements are in place"
+    },
+    {
+     "id": "s5",
+     "label": "Remeter the district after the first streets are complete and adjust the program scope if the flow response differs from the estimate"
+    },
+    {
+     "id": "s6",
+     "label": "Define the rehabilitation scope per lateral, from connection sealing at the main to full lateral lining to the property line"
+    }
+   ],
+   "correctOrder": [
+    "s3",
+    "s6",
+    "s2",
+    "s4",
+    "s1",
+    "s5"
+   ],
+   "explanation": "After mainline renewal, laterals often dominate the remaining infiltration, so the program follows the meter. Written cost sharing before scheduling prevents the disputes that stall private side work."
+  },
+  {
+   "id": "wp3wc-process15",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a spot repair program for isolated structural defects found by CCTV.",
+   "topicId": "rehabilitation-program-planning",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: 46 isolated defects across the city are severe but the pipes around them are sound, so full reach renewal is not justified.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Update the condition record for each reach so repaired defects no longer drive the renewal ranking, with the repair date noted"
+    },
+    {
+     "id": "s2",
+     "label": "Group defects by repair method, such as robotic grouting, internal patch liners, and short open cut repairs where internal methods cannot reach"
+    },
+    {
+     "id": "s3",
+     "label": "Schedule internal repairs in batches by area to share traffic control, bypass, and camera crew costs across nearby defects"
+    },
+    {
+     "id": "s4",
+     "label": "Confirm each defect from the graded CCTV record with chainage, clock position, and a check that the surrounding pipe is truly sound"
+    },
+    {
+     "id": "s5",
+     "label": "Rank the groups by failure risk and by whether the defect is actively leaking soil or groundwater into the pipe"
+    },
+    {
+     "id": "s6",
+     "label": "Verify each repair by CCTV after completion and grade the repaired location before the work is accepted"
+    }
+   ],
+   "correctOrder": [
+    "s4",
+    "s2",
+    "s5",
+    "s3",
+    "s6",
+    "s1"
+   ],
+   "explanation": "Spot repair only pays when the surrounding pipe is genuinely sound, which the record check proves first. Batching by area shares the fixed costs, and post repair grading keeps the condition data truthful."
+  },
+  {
+   "id": "wp3wc-process16",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the rehabilitation design review for a trunk sewer renewal project.",
+   "topicId": "rehabilitation-program-planning",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: a 900 mm trunk sewer under an arterial road is to be renewed, design is at the review stage, and construction affects a hospital route.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the traffic and access plan keeps emergency routes open and that the phasing matches the bypass capacity in each phase"
+    },
+    {
+     "id": "s2",
+     "label": "Review the design basis, including the design flows, the condition evidence, and the service life the renewal is required to deliver"
+    },
+    {
+     "id": "s3",
+     "label": "Record review comments as accepted, rejected with reason, or requiring redesign, and confirm the designer responds to each before tender"
+    },
+    {
+     "id": "s4",
+     "label": "Approve the design for tender only when the flow, access, and restoration checks are closed, and file the review in the project record"
+    },
+    {
+     "id": "s5",
+     "label": "Verify the design restores every connection and manhole in the reach and addresses the manhole defects found in the condition survey"
+    },
+    {
+     "id": "s6",
+     "label": "Check the bypass and flow management design against peak wet weather flow, not average flow, with a contingency for a storm during construction"
+    }
+   ],
+   "correctOrder": [
+    "s2",
+    "s6",
+    "s1",
+    "s5",
+    "s3",
+    "s4"
+   ],
+   "explanation": "Trunk renewal fails most often on flow management, so the bypass is checked against wet weather peaks with a storm contingency. A comment log that forces a response per item prevents review findings from evaporating before tender."
+  },
+  {
+   "id": "wp3wc-process17",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a rehabilitation pilot project to test a new renewal method before program adoption.",
+   "topicId": "rehabilitation-program-planning",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: a grouting system new to the city claims to seal leaking joints, and management wants local evidence before adding it to the program.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Choose pilot reaches that match the intended use, with measured joint leakage, sound structure, and access for before and after inspection"
+    },
+    {
+     "id": "s2",
+     "label": "Carry out the pilot with the supplier present but city inspection recording production, problems, and actual quantities used"
+    },
+    {
+     "id": "s3",
+     "label": "Decide adoption, limited adoption, or rejection in a written report that other project teams can rely on"
+    },
+    {
+     "id": "s4",
+     "label": "Set the acceptance criteria in advance, covering leakage reduction, finish quality, production rate, and unit cost from given rates"
+    },
+    {
+     "id": "s5",
+     "label": "Measure the baseline carefully, including CCTV grading, joint leakage evidence, and night flow in the pilot reach"
+    },
+    {
+     "id": "s6",
+     "label": "Remeasure the pilot reaches after a groundwater season and compare results against the criteria set before the work"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s5",
+    "s4",
+    "s2",
+    "s6",
+    "s3"
+   ],
+   "explanation": "Criteria set before the work cannot be quietly moved after it. Remeasuring after a groundwater season matters because joint sealing is proven at high water, not on the installation day."
+  },
+  {
+   "id": "wp3wc-process18",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the prioritization workshop that ranks rehabilitation projects for the annual budget.",
+   "topicId": "rehabilitation-program-planning",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: project requests exceed the budget by three times, and operations, engineering, and finance staff must produce one ranked list.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the funded list, the deferred list with its stated risks, and the projects that need more condition data before they can compete"
+    },
+    {
+     "id": "s2",
+     "label": "Minute the decisions and owners, and feed the deferred risks into the risk register and next year CCTV priorities"
+    },
+    {
+     "id": "s3",
+     "label": "Require each project submission to carry its condition evidence, failure history, and cost estimate on the same one page format"
+    },
+    {
+     "id": "s4",
+     "label": "Issue the scoring criteria in advance, covering failure likelihood, consequence, regulatory and overflow risk, and coordination with road work"
+    },
+    {
+     "id": "s5",
+     "label": "Test the draft ranking by asking what failure the city accepts for each project pushed below the funding line"
+    },
+    {
+     "id": "s6",
+     "label": "Score the projects in the workshop against the criteria, with disagreements recorded rather than averaged away"
+    }
+   ],
+   "correctOrder": [
+    "s4",
+    "s3",
+    "s6",
+    "s5",
+    "s1",
+    "s2"
+   ],
+   "explanation": "Common criteria and one page evidence make projects comparable instead of loudest first. Naming the failure accepted for each deferred project turns a budget line into an honest risk decision."
+  },
+  {
+   "id": "wp3wc-process19",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the renewal program coordination with the city road reconstruction program.",
+   "topicId": "rehabilitation-program-planning",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: roads publishes a five year reconstruction list, and sewer renewal done after new pavement is both wasteful and restricted by a pavement cut moratorium.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Advance sewer work on streets scheduled for reconstruction so renewal is complete before the new surface is placed"
+    },
+    {
+     "id": "s2",
+     "label": "Agree the shared schedule, cost splits for shared excavation and restoration, and who leads each combined project"
+    },
+    {
+     "id": "s3",
+     "label": "Overlay the sewer renewal priorities on the road program map and list every street where both programs need the same pavement"
+    },
+    {
+     "id": "s4",
+     "label": "Review the overlay annually, because road priorities shift and a missed street becomes an emergency cut in new pavement"
+    },
+    {
+     "id": "s5",
+     "label": "For streets reconstructed before sewer renewal is due, confirm the sewer condition is good enough to outlast the moratorium period"
+    },
+    {
+     "id": "s6",
+     "label": "Track the combined projects in both programs with the same milestones so a slip in one is visible to the other"
+    }
+   ],
+   "correctOrder": [
+    "s3",
+    "s1",
+    "s5",
+    "s2",
+    "s6",
+    "s4"
+   ],
+   "explanation": "The overlay is simple and saves the most money of any coordination step. Checking that sewers under soon to be rebuilt roads can outlast the moratorium prevents the emergency cut everyone is trying to avoid."
+  },
+  {
+   "id": "wp3wc-process20",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the post project review of a completed rehabilitation contract.",
+   "topicId": "rehabilitation-program-planning",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: a lining and open cut contract finished two months ago, slightly over budget, with one street generating repeated complaints.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Check that as built records, CCTV, and asset register updates were received and loaded for every reach in the contract"
+    },
+    {
+     "id": "s2",
+     "label": "Close the contract only when warranty start dates, holdback release conditions, and outstanding items are documented and assigned"
+    },
+    {
+     "id": "s3",
+     "label": "Examine the complaint record for the problem street and separate construction impacts that were unavoidable from ones caused by poor practice"
+    },
+    {
+     "id": "s4",
+     "label": "Review the acceptance records, deficiency lists, and warranty items to confirm everything contracted was actually delivered and corrected"
+    },
+    {
+     "id": "s5",
+     "label": "Compare the contract quantities and final cost with the estimate and identify which items drove the variance"
+    },
+    {
+     "id": "s6",
+     "label": "Record lessons for estimating, specification, and supervision in the program file where the next project team will find them"
+    }
+   ],
+   "correctOrder": [
+    "s5",
+    "s4",
+    "s3",
+    "s1",
+    "s6",
+    "s2"
+   ],
+   "explanation": "A review that only checks cost misses whether the assets were delivered and recorded. Lessons filed where the next team works, not in a separate report, are the ones that change the next contract."
+  },
+  {
+   "id": "wp3wc-process21",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the annual CMOM program self assessment for the collection utility.",
+   "topicId": "cmom-program-routines",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: the utility runs a capacity, management, operations and maintenance program and reviews it every year before budget season.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Identify the gaps that contributed to any overflow, backup cluster, or capacity surprise during the year"
+    },
+    {
+     "id": "s2",
+     "label": "File the assessment and track the gap actions quarterly so the next annual review starts from progress, not from memory"
+    },
+    {
+     "id": "s3",
+     "label": "Gather the year evidence for each program element, including overflow records, cleaning and inspection completion, and capacity study status"
+    },
+    {
+     "id": "s4",
+     "label": "Present the assessment to management with the scores, the gap actions, and the measures that will show improvement"
+    },
+    {
+     "id": "s5",
+     "label": "Score each element against the program document, marking elements as in place, partly in place, or missing, with evidence for each score"
+    },
+    {
+     "id": "s6",
+     "label": "Convert the top gaps into funded actions with owners and dates, sized to what the next budget can carry"
+    }
+   ],
+   "correctOrder": [
+    "s3",
+    "s5",
+    "s1",
+    "s6",
+    "s4",
+    "s2"
+   ],
+   "explanation": "Scoring against evidence rather than intention is what makes a self assessment worth doing. Gap actions with owners and dates are the bridge between the review and the budget that follows it."
+  },
+  {
+   "id": "wp3wc-process22",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the capacity assurance review for a sewershed approaching its design flow.",
+   "topicId": "cmom-program-routines",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: wet weather flows at the shed outlet have reached 85 percent of the trunk capacity in two recent storms.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Identify the first element that limits capacity and the flow at which surcharging begins there"
+    },
+    {
+     "id": "s2",
+     "label": "Assemble the flow monitoring record, growth connections added, and the I/I removal completed in the shed to date"
+    },
+    {
+     "id": "s3",
+     "label": "Adopt a capacity plan with trigger flows that start design or construction early enough to be ready before the limit is reached"
+    },
+    {
+     "id": "s4",
+     "label": "Project the peak wet weather flow for the approved development horizon using given growth and peaking factors"
+    },
+    {
+     "id": "s5",
+     "label": "Evaluate the response options, including further I/I removal, storage, upsizing, and development phasing, on the same flow basis"
+    },
+    {
+     "id": "s6",
+     "label": "Compare the projection with the capacity of each element in the path, including trunk reaches, the lift station, and the force main"
+    }
+   ],
+   "correctOrder": [
+    "s2",
+    "s4",
+    "s6",
+    "s1",
+    "s5",
+    "s3"
+   ],
+   "explanation": "Capacity assurance works on triggers set before the limit arrives, because design and construction take years. Checking every element in the path matters, since the limit is usually one reach or one station, not the whole shed."
+  },
+  {
+   "id": "wp3wc-process23",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the routine update of the overflow response plan under the CMOM program.",
+   "topicId": "cmom-program-routines",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: the plan is reviewed every two years and after any major overflow, and staffing and phone numbers have changed since the last version.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Update contact lists, call out rosters, equipment locations, and the notification steps for the regulator and public health contacts in general terms"
+    },
+    {
+     "id": "s2",
+     "label": "Revise the plan from the exercise findings, including any step that responders could not complete as written"
+    },
+    {
+     "id": "s3",
+     "label": "Check the plan against current field reality, including bypass pump sizes, hose and fitting compatibility, and access at known overflow points"
+    },
+    {
+     "id": "s4",
+     "label": "Issue the new version with a version date, withdraw old copies from trucks and stations, and brief all shifts on the changes"
+    },
+    {
+     "id": "s5",
+     "label": "Compare the plan against the overflows of the last two years and list where responders actually departed from it and why"
+    },
+    {
+     "id": "s6",
+     "label": "Run a tabletop exercise with the response crews and dispatch using a wet weather overflow scenario at a sensitive location"
+    }
+   ],
+   "correctOrder": [
+    "s5",
+    "s1",
+    "s3",
+    "s6",
+    "s2",
+    "s4"
+   ],
+   "explanation": "A plan is only true if the pumps, fittings, and phone numbers in it still exist. The tabletop exercise finds the broken steps on a quiet day instead of during a storm."
+  },
+  {
+   "id": "wp3wc-process24",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the monthly CMOM performance dashboard review.",
+   "topicId": "cmom-program-routines",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: the dashboard tracks overflows, backups, cleaning and CCTV completion, lift station alarms, and complaint response times.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Record the review in the program file, including measures accepted as seasonal and the evidence for that judgement"
+    },
+    {
+     "id": "s2",
+     "label": "Investigate the measures off target, assigning each a cause from the records rather than accepting the number at face value"
+    },
+    {
+     "id": "s3",
+     "label": "Pull the month data from the work order, alarm, and overflow records and check it for missing or duplicated entries before the meeting"
+    },
+    {
+     "id": "s4",
+     "label": "Agree corrective actions for the off target measures, with owners and the month by which the effect should show"
+    },
+    {
+     "id": "s5",
+     "label": "Carry unresolved measures forward visibly on the next dashboard so they cannot quietly drop off the agenda"
+    },
+    {
+     "id": "s6",
+     "label": "Compare each measure with its target and with the same month last year so seasonal effects are not mistaken for trends"
+    }
+   ],
+   "correctOrder": [
+    "s3",
+    "s6",
+    "s2",
+    "s4",
+    "s1",
+    "s5"
+   ],
+   "explanation": "Checking the data before the meeting prevents managing from recording errors. Carrying unresolved measures forward is the discipline that stops the same gap being rediscovered every quarter."
+  },
+  {
+   "id": "wp3wc-process25",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the legal and regulatory awareness review inside the CMOM program.",
+   "topicId": "cmom-program-routines",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: the program requires staff to know the reporting duties that apply to overflows and bypasses under provincial requirements in general terms and the federal Wastewater Systems Effluent Regulations as general references.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Record the review and the procedure corrections in the CMOM program file with the next review date"
+    },
+    {
+     "id": "s2",
+     "label": "Compare the list with the last year of actual reports and check that every reportable event was reported with complete information"
+    },
+    {
+     "id": "s3",
+     "label": "Correct any procedure step where the reporting duty and the field paperwork do not match, such as missing volume estimate fields"
+    },
+    {
+     "id": "s4",
+     "label": "List the events the utility must report, the information each report needs, and the time limits the procedures state in general terms"
+    },
+    {
+     "id": "s5",
+     "label": "Brief supervisors and dispatch staff on the duties using the utility own recent events as teaching examples"
+    },
+    {
+     "id": "s6",
+     "label": "Set a file check each quarter in which a sample of overflow files is audited for reporting completeness"
+    }
+   ],
+   "correctOrder": [
+    "s4",
+    "s2",
+    "s5",
+    "s3",
+    "s6",
+    "s1"
+   ],
+   "explanation": "Reporting failures are usually paperwork design failures, so the field forms are checked against the duty, not just the staff. Using the utility own events as examples makes the duty concrete for the people who will make the call."
+  },
+  {
+   "id": "wp3wc-process26",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the CMOM documentation audit for collection system records.",
+   "topicId": "cmom-program-routines",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: an internal audit samples whether maps, inspection records, and work histories match what the program document promises.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Classify each finding as a missing record, an inaccurate record, or a record that exists but cannot be retrieved when needed"
+    },
+    {
+     "id": "s2",
+     "label": "Define the sample, covering map accuracy for new subdivisions, CCTV record completeness, and work order closure quality across districts"
+    },
+    {
+     "id": "s3",
+     "label": "Set the retrieval test, in which a duty operator must find a named record within a set time, and repeat it after corrections"
+    },
+    {
+     "id": "s4",
+     "label": "Report the audit results and the correction status to management and schedule the next sample before the findings go stale"
+    },
+    {
+     "id": "s5",
+     "label": "Assign corrections with owners, starting with records that affect emergency response and capacity decisions"
+    },
+    {
+     "id": "s6",
+     "label": "Check sampled records against field or source evidence, such as as built drawings and contractor deliveries, rather than against other records only"
+    }
+   ],
+   "correctOrder": [
+    "s2",
+    "s6",
+    "s1",
+    "s5",
+    "s3",
+    "s4"
+   ],
+   "explanation": "Records that cannot be retrieved during an event are functionally missing, which is why the audit ends with a timed retrieval test. Correcting emergency and capacity records first puts the effort where bad data does the most harm."
+  },
+  {
+   "id": "wp3wc-process27",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the sewer use and source control element review within the CMOM program.",
+   "topicId": "cmom-program-routines",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: the element covers fats, oils and grease control, hauled waste receiving, and prohibited discharge follow up for the collection system.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review the year records for grease related blockages, hauled waste volumes, and discharge incidents traced to sources"
+    },
+    {
+     "id": "s2",
+     "label": "Confirm the hauled waste receiving procedure records source, volume, and load character for every load accepted"
+    },
+    {
+     "id": "s3",
+     "label": "Report element performance with the cleaning program results so source control and cleaning are judged together"
+    },
+    {
+     "id": "s4",
+     "label": "Compare blockage locations with inspection status and target the next inspection round at premises upstream of repeat blockages"
+    },
+    {
+     "id": "s5",
+     "label": "Check inspection coverage of food service premises against the inventory so uninspected premises are visible, not assumed compliant"
+    },
+    {
+     "id": "s6",
+     "label": "Update the element procedures where records show a step is skipped in practice, and brief the inspectors on the change"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s5",
+    "s4",
+    "s2",
+    "s6",
+    "s3"
+   ],
+   "explanation": "Source control and cleaning are two halves of the same grease problem, so they are reported together. Targeting inspections upstream of repeat blockages spends inspector time where the evidence points."
+  },
+  {
+   "id": "wp3wc-process28",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the customer complaint and basement backup tracking routine under CMOM.",
+   "topicId": "cmom-program-routines",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: backup complaints arrive through the city call centre, field crews, and an after hours line, and the records do not yet agree with each other.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Feed clusters into the cleaning, CCTV, and capacity programs as work, with the originating complaint references attached"
+    },
+    {
+     "id": "s2",
+     "label": "Report monthly counts by cause and cluster so management sees whether field programs are reducing repeat events at the same addresses"
+    },
+    {
+     "id": "s3",
+     "label": "Classify each event by the cause found in the field, separating mainline problems, lateral problems, and plumbing problems inside the home"
+    },
+    {
+     "id": "s4",
+     "label": "Merge the three intake sources into one register with duplicates removed and each event tied to an address and a work order"
+    },
+    {
+     "id": "s5",
+     "label": "Check response times and the information given to residents against the program standard for backup events"
+    },
+    {
+     "id": "s6",
+     "label": "Map the classified events and identify clusters that indicate a mainline capacity or condition problem rather than isolated laterals"
+    }
+   ],
+   "correctOrder": [
+    "s4",
+    "s3",
+    "s6",
+    "s5",
+    "s1",
+    "s2"
+   ],
+   "explanation": "Three intake lists that disagree hide repeat addresses, which are the strongest signal of a mainline problem. Classification by cause found, not by first impression, keeps lateral problems from inflating the mainline program and the reverse."
+  },
+  {
+   "id": "wp3wc-process29",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the annual training and competency review for collection staff under CMOM.",
+   "topicId": "cmom-program-routines",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: the review covers operators, crew leaders, and supervisors across cleaning, CCTV, lift stations, and emergency response duties.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Compare the training records with the role requirements and list every expired or missing item by person and crew"
+    },
+    {
+     "id": "s2",
+     "label": "Schedule the missing training and observations into the work calendar so crews are not pulled from emergency coverage to complete them"
+    },
+    {
+     "id": "s3",
+     "label": "List the competencies each role requires from the program document, including safety certifications and equipment authorizations"
+    },
+    {
+     "id": "s4",
+     "label": "File the review with completion tracking and set the mid year check for items that were scheduled but not delivered"
+    },
+    {
+     "id": "s5",
+     "label": "Check field competency by sampling supervised task observations for the highest risk duties, such as confined space entry and bypass pumping"
+    },
+    {
+     "id": "s6",
+     "label": "Brief supervisors on coaching points from the observations, such as steps crews perform differently from the written procedure"
+    }
+   ],
+   "correctOrder": [
+    "s3",
+    "s1",
+    "s5",
+    "s2",
+    "s6",
+    "s4"
+   ],
+   "explanation": "Records alone overstate competency, so high risk duties are also observed in the field. Differences between crew practice and the written procedure are treated as information about both, not automatically as crew error."
+  },
+  {
+   "id": "wp3wc-process30",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the CMOM program budget justification package for the coming year.",
+   "topicId": "cmom-program-routines",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: the package must link every requested dollar to a program element and a measurable result from the current year.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Offer a reduced funding scenario that names the work that would not be done and the risk accepted with it"
+    },
+    {
+     "id": "s2",
+     "label": "Record the approved funding against each element so next year results can be compared with what was actually resourced"
+    },
+    {
+     "id": "s3",
+     "label": "Build each request with the work volume, the given unit rate, and the result the volume is expected to produce"
+    },
+    {
+     "id": "s4",
+     "label": "Identify the service risks that grow if funding stays flat, stated as specific assets and sheds rather than general warnings"
+    },
+    {
+     "id": "s5",
+     "label": "Start from the current year results, listing what each element delivered, such as metres cleaned, overflows by cause, and capacity studies completed"
+    },
+    {
+     "id": "s6",
+     "label": "Present the package to management with the dashboard trends attached so the numbers in the room match the program record"
+    }
+   ],
+   "correctOrder": [
+    "s5",
+    "s4",
+    "s3",
+    "s1",
+    "s6",
+    "s2"
+   ],
+   "explanation": "Linking money to delivered results is what separates a program budget from a wish list. The reduced scenario forces an explicit risk decision instead of a silent cut that surfaces later as an overflow."
+  },
+  {
+   "id": "wp3wc-process31",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the building of a collection asset register from maps and field records.",
+   "topicId": "asset-management-programs",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: the utility is replacing a map only inventory with a register that carries age, material, condition, and criticality for every asset.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Field verify a sample in each district, including manholes shown on maps that cannot be found and assets found that are not mapped"
+    },
+    {
+     "id": "s2",
+     "label": "Publish the register with a data confidence note per asset group so planners know which decisions the data can support"
+    },
+    {
+     "id": "s3",
+     "label": "Define the asset hierarchy first, from system down through sheds, reaches, manholes, stations, and components, so every record has one place"
+    },
+    {
+     "id": "s4",
+     "label": "Load condition grades from CCTV and station assessments and set the rule for how grades age when no new inspection occurs"
+    },
+    {
+     "id": "s5",
+     "label": "Load the base inventory from the mapping system and reconcile counts against as built records and the station equipment lists"
+    },
+    {
+     "id": "s6",
+     "label": "Attach the known attributes, age, material, size, and depth, and mark attributes that are estimated rather than recorded"
+    }
+   ],
+   "correctOrder": [
+    "s3",
+    "s5",
+    "s1",
+    "s6",
+    "s4",
+    "s2"
+   ],
+   "explanation": "A hierarchy agreed first prevents the register becoming a pile of disconnected lists. Marking estimated attributes as estimated protects planners from treating guesses as survey facts."
+  },
+  {
+   "id": "wp3wc-process32",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a criticality assessment for collection system assets.",
+   "topicId": "asset-management-programs",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: criticality will drive inspection frequency and spares, covering trunk sewers, river crossings, lift stations, and force mains.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Check the top band in the field or from records to confirm no asset is critical only because of a data error"
+    },
+    {
+     "id": "s2",
+     "label": "Define consequence categories with management, including environmental harm at watercourse crossings, basement flooding, road and rail disruption, and repair difficulty"
+    },
+    {
+     "id": "s3",
+     "label": "Review the bands annually and after any major failure, since a single event can rewrite the likelihood evidence"
+    },
+    {
+     "id": "s4",
+     "label": "Score consequence for each asset group using location, depth, size, and what lies above and downstream of the asset"
+    },
+    {
+     "id": "s5",
+     "label": "Set the inspection frequency, monitoring, and spares that each band receives, and record the cost of that service level"
+    },
+    {
+     "id": "s6",
+     "label": "Combine consequence with likelihood from condition and failure history to place each asset in a criticality band"
+    }
+   ],
+   "correctOrder": [
+    "s2",
+    "s4",
+    "s6",
+    "s1",
+    "s5",
+    "s3"
+   ],
+   "explanation": "Criticality is consequence times likelihood, and both halves need evidence. Field checking the top band matters because inspection budgets will follow those scores for years."
+  },
+  {
+   "id": "wp3wc-process33",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the lifecycle cost comparison for a lift station renewal decision.",
+   "topicId": "asset-management-programs",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: a 30 year old station needs either a major rehabilitation or a full replacement, and management wants the whole life comparison using given rates.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Cost each option over the same horizon using given rates for capital, energy, maintenance, and the mid life component renewals each will need"
+    },
+    {
+     "id": "s2",
+     "label": "Recommend the option with the lower whole life cost that still meets the capacity and reliability requirements, naming any non cost reason to choose otherwise"
+    },
+    {
+     "id": "s3",
+     "label": "Add the risk cost difference, such as the expected overflow and emergency repair exposure of the older structure if it is retained"
+    },
+    {
+     "id": "s4",
+     "label": "Record the decision and its assumptions in the asset file so a future review can see why replacement was or was not chosen"
+    },
+    {
+     "id": "s5",
+     "label": "Define the options precisely, including the scope, capacity, and service life each option actually delivers"
+    },
+    {
+     "id": "s6",
+     "label": "State the assumptions that most affect the answer, especially energy price, service life, and discount treatment directed by finance"
+    }
+   ],
+   "correctOrder": [
+    "s5",
+    "s1",
+    "s3",
+    "s6",
+    "s2",
+    "s4"
+   ],
+   "explanation": "Options compared over different lives or capacities produce a confident wrong answer. Recording assumptions in the asset file lets a future reviewer test the decision instead of relitigating it from memory."
+  },
+  {
+   "id": "wp3wc-process34",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the annual asset condition summary that feeds the capital plan.",
+   "topicId": "asset-management-programs",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: the summary covers sewers, manholes, and stations and must show how much of the network sits in each condition band.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Present the summary with the renewal rate needed to hold the backlog steady, stated plainly beside the funded rate"
+    },
+    {
+     "id": "s2",
+     "label": "Identify districts where condition data is too old to trust and assign CCTV or inspection work to refresh them before they drive capital decisions"
+    },
+    {
+     "id": "s3",
+     "label": "Extract condition grades by asset group and age band from the register and check the share of assets with no current grade"
+    },
+    {
+     "id": "s4",
+     "label": "Translate the worst band assets into candidate projects with given unit rates and group them by area for the capital planners"
+    },
+    {
+     "id": "s5",
+     "label": "File the summary as the dated baseline the next year summary will be compared against"
+    },
+    {
+     "id": "s6",
+     "label": "Calculate the value and length in the worst two bands and compare with last year to show whether the backlog is growing or shrinking"
+    }
+   ],
+   "correctOrder": [
+    "s3",
+    "s6",
+    "s2",
+    "s4",
+    "s1",
+    "s5"
+   ],
+   "explanation": "The share of assets with no grade is reported beside the grades themselves, because unknown condition is a finding. Comparing the funded renewal rate with the rate needed to hold the backlog steady is the summary core message."
+  },
+  {
+   "id": "wp3wc-process35",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a spare parts criticality review for the lift station fleet.",
+   "topicId": "asset-management-programs",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: stores holds parts for 22 stations, some shelves hold parts for retired pumps, and two recent events waited days for components.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review the list after every major failure and annually, adding any component whose absence extended an outage"
+    },
+    {
+     "id": "s2",
+     "label": "Check current stock against that list and flag critical items with no spare, long lead time, or a spare that fits only one station"
+    },
+    {
+     "id": "s3",
+     "label": "Set minimum stock for the critical list from lead time and failure frequency, and arrange shared spares where stations use identical equipment"
+    },
+    {
+     "id": "s4",
+     "label": "List station components whose failure stops the station or removes its backup, using the failure records and station designs"
+    },
+    {
+     "id": "s5",
+     "label": "Remove or return parts for equipment no longer in service and record the disposal so the catalogue stays truthful"
+    },
+    {
+     "id": "s6",
+     "label": "Fund the gaps in order of station criticality and record expected delivery dates for long lead items"
+    }
+   ],
+   "correctOrder": [
+    "s4",
+    "s2",
+    "s5",
+    "s3",
+    "s6",
+    "s1"
+   ],
+   "explanation": "Spares earn their shelf by the outage they prevent, so the review starts from failure consequence. Deleting parts for retired equipment matters because a catalogue that lies about what is available is worse than a short list."
+  },
+  {
+   "id": "wp3wc-process36",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the asset data update routine after a capital project is completed.",
+   "topicId": "asset-management-programs",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: three renewal projects closed this quarter and the register, maps, and condition grades must reflect the new assets before the next planning cycle.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Reset the age, material, and condition fields for renewed assets and attach the project reference and warranty expiry"
+    },
+    {
+     "id": "s2",
+     "label": "Collect the as built drawings, acceptance CCTV, liner and material records, and warranty documents from each project file"
+    },
+    {
+     "id": "s3",
+     "label": "Notify the planning, operations, and finance users that the update is live and which reports now use the new data"
+    },
+    {
+     "id": "s4",
+     "label": "Sample check the updated records against the as builts and log any project whose documentation is still incomplete with an owner to chase it"
+    },
+    {
+     "id": "s5",
+     "label": "Reconcile the project asset list against the register so no renewed reach keeps its old failing grade into the next ranking"
+    },
+    {
+     "id": "s6",
+     "label": "Update the mapping with the new alignments, sizes, and manhole locations and retire the records of assets removed from service"
+    }
+   ],
+   "correctOrder": [
+    "s2",
+    "s6",
+    "s1",
+    "s5",
+    "s3",
+    "s4"
+   ],
+   "explanation": "Renewed assets that keep old grades get renewed twice on paper and distort every ranking. The sample check closes the loop, because documentation promised at project close often arrives late or not at all."
+  },
+  {
+   "id": "wp3wc-process37",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a risk based inspection plan for river and rail crossings.",
+   "topicId": "asset-management-programs",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: the city has 14 watercourse crossings and 5 rail crossings, several are siphons or aerial crossings that cannot be inspected by standard CCTV alone.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Inventory the crossings with their type, access, isolation options, and the consequence of failure at each location"
+    },
+    {
+     "id": "s2",
+     "label": "Sequence the plan so unknown condition at high consequence crossings is resolved first, even where access makes the work expensive"
+    },
+    {
+     "id": "s3",
+     "label": "Set the reinspection interval per crossing from the condition found and add any needed repair to the rehabilitation program with its risk stated"
+    },
+    {
+     "id": "s4",
+     "label": "Select the inspection method per crossing, such as sonar, laser profiling, diver or drawdown inspection, based on type and flow"
+    },
+    {
+     "id": "s5",
+     "label": "Review the inspection history and the last known condition, and list crossings where condition is effectively unknown"
+    },
+    {
+     "id": "s6",
+     "label": "Carry out the inspections with the isolation and environmental precautions each site requires and record condition in the register"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s5",
+    "s4",
+    "s2",
+    "s6",
+    "s3"
+   ],
+   "explanation": "Crossings concentrate consequence, so unknown condition there outranks easy inspections elsewhere. Method follows crossing type, because a siphon surveyed with the wrong tool produces a report and no knowledge."
+  },
+  {
+   "id": "wp3wc-process38",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the level of service review for the collection utility.",
+   "topicId": "asset-management-programs",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: council wants stated service levels for overflows, backups, odour response, and new development capacity, with the cost of each level shown.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Record the adopted levels in the asset management plan and align the CMOM targets and dashboard measures with them"
+    },
+    {
+     "id": "s2",
+     "label": "Review performance against the adopted levels annually and report shortfalls with the cause, whether funding, capacity, or delivery"
+    },
+    {
+     "id": "s3",
+     "label": "Measure current performance against each candidate level from the program records and identify where the utility already complies or falls short"
+    },
+    {
+     "id": "s4",
+     "label": "Draft candidate service levels in measurable terms, such as response times, inspection coverage, and the storm size the system should carry without surcharging"
+    },
+    {
+     "id": "s5",
+     "label": "Present the levels with their costs and the residual risk at each, so the choice is made with its price attached"
+    },
+    {
+     "id": "s6",
+     "label": "Cost the work required to hold each level using given unit rates, including the capital projects the higher levels would force"
+    }
+   ],
+   "correctOrder": [
+    "s4",
+    "s3",
+    "s6",
+    "s5",
+    "s1",
+    "s2"
+   ],
+   "explanation": "A service level without its cost is a slogan. Aligning the dashboard with the adopted levels afterwards is what turns a council decision into daily management information."
+  },
+  {
+   "id": "wp3wc-process39",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the deterioration forecast for the sewer network renewal budget.",
+   "topicId": "asset-management-programs",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 3 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: finance asks how the renewal backlog will move over 20 years at three funding levels, using the register condition and age data.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Project how much length enters the worst condition bands in each five year period if no renewal occurs"
+    },
+    {
+     "id": "s2",
+     "label": "Check the forecast against the last five years of actual condition movement and adjust the patterns where the utility data disagrees"
+    },
+    {
+     "id": "s3",
+     "label": "Group the network by material and age and assign each group a deterioration pattern from the utility own condition history where it exists"
+    },
+    {
+     "id": "s4",
+     "label": "Record the forecast assumptions in the plan so the next update can test them against new condition data"
+    },
+    {
+     "id": "s5",
+     "label": "Apply each funding level as a renewal volume per year and project the backlog and the worst band share over the horizon"
+    },
+    {
+     "id": "s6",
+     "label": "Present the three futures with the risk each carries, including the point where emergency repairs begin to dominate spending"
+    }
+   ],
+   "correctOrder": [
+    "s3",
+    "s1",
+    "s5",
+    "s2",
+    "s6",
+    "s4"
+   ],
+   "explanation": "A forecast checked against the utility own recent condition movement beats a generic curve. Showing when emergency work begins to dominate makes the cost of underfunding visible in operational terms, not just dollars."
+  }
+ ],
+ "missions": [
+  {
+   "id": "wp3wc-mission41",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 41: The Capacity Growth Phasing Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wc-error60",
+     "revision": "r1",
+     "occurrenceId": "m41-t1"
+    },
+    {
+     "taskId": "wp3wc-process01",
+     "revision": "r1",
+     "occurrenceId": "m41-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp3wc-mission42",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 42: The Ii Program Design Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wc-process02",
+     "revision": "r1",
+     "occurrenceId": "m42-t1"
+    },
+    {
+     "taskId": "wp3wc-error61",
+     "revision": "r1",
+     "occurrenceId": "m42-t2"
+    },
+    {
+     "taskId": "wp3wc-error62",
+     "revision": "r1",
+     "occurrenceId": "m42-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp3wc-mission43",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 43: The Lift Energy Per Volume Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wc-error63",
+     "revision": "r1",
+     "occurrenceId": "m43-t1"
+    },
+    {
+     "taskId": "wp3wc-process03",
+     "revision": "r1",
+     "occurrenceId": "m43-t2"
+    },
+    {
+     "taskId": "wp3wc-error64",
+     "revision": "r1",
+     "occurrenceId": "m43-t3"
+    },
+    {
+     "taskId": "wp3wc-error65",
+     "revision": "r1",
+     "occurrenceId": "m43-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp3wc-mission44",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 44: The Ii Program Design Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wc-process04",
+     "revision": "r1",
+     "occurrenceId": "m44-t1"
+    },
+    {
+     "taskId": "wp3wc-error66",
+     "revision": "r1",
+     "occurrenceId": "m44-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp3wc-mission45",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 45: The Lift Fleet Comparison Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wc-error67",
+     "revision": "r1",
+     "occurrenceId": "m45-t1"
+    },
+    {
+     "taskId": "wp3wc-process05",
+     "revision": "r1",
+     "occurrenceId": "m45-t2"
+    },
+    {
+     "taskId": "wp3wc-error68",
+     "revision": "r1",
+     "occurrenceId": "m45-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp3wc-mission46",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 46: The Ii Program Design Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wc-process06",
+     "revision": "r1",
+     "occurrenceId": "m46-t1"
+    },
+    {
+     "taskId": "wp3wc-error69",
+     "revision": "r1",
+     "occurrenceId": "m46-t2"
+    },
+    {
+     "taskId": "wp3wc-error70",
+     "revision": "r1",
+     "occurrenceId": "m46-t3"
+    },
+    {
+     "taskId": "wp3wc-error71",
+     "revision": "r1",
+     "occurrenceId": "m46-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp3wc-mission47",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 47: The Lift Pump Optimization Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wc-error72",
+     "revision": "r1",
+     "occurrenceId": "m47-t1"
+    },
+    {
+     "taskId": "wp3wc-process07",
+     "revision": "r1",
+     "occurrenceId": "m47-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp3wc-mission48",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 48: The Ii Program Design Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wc-process08",
+     "revision": "r1",
+     "occurrenceId": "m48-t1"
+    },
+    {
+     "taskId": "wp3wc-error73",
+     "revision": "r1",
+     "occurrenceId": "m48-t2"
+    },
+    {
+     "taskId": "wp3wc-error74",
+     "revision": "r1",
+     "occurrenceId": "m48-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp3wc-mission49",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 49: The Lift Pump Optimization Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wc-error75",
+     "revision": "r1",
+     "occurrenceId": "m49-t1"
+    },
+    {
+     "taskId": "wp3wc-process09",
+     "revision": "r1",
+     "occurrenceId": "m49-t2"
+    },
+    {
+     "taskId": "wp3wc-error76",
+     "revision": "r1",
+     "occurrenceId": "m49-t3"
+    },
+    {
+     "taskId": "wp3wc-error77",
+     "revision": "r1",
+     "occurrenceId": "m49-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp3wc-mission50",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 50: The Ii Program Design Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wc-process10",
+     "revision": "r1",
+     "occurrenceId": "m50-t1"
+    },
+    {
+     "taskId": "wp3wc-error78",
+     "revision": "r1",
+     "occurrenceId": "m50-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp3wc-mission51",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 51: The Lift Pump Cycling Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wc-error79",
+     "revision": "r1",
+     "occurrenceId": "m51-t1"
+    },
+    {
+     "taskId": "wp3wc-process100",
+     "revision": "r1",
+     "occurrenceId": "m51-t2"
+    },
+    {
+     "taskId": "wp3wc-error80",
+     "revision": "r1",
+     "occurrenceId": "m51-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp3wc-mission52",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 52: The Rehabilitation Program Planning Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wc-process11",
+     "revision": "r1",
+     "occurrenceId": "m52-t1"
+    },
+    {
+     "taskId": "wp3wc-error81",
+     "revision": "r1",
+     "occurrenceId": "m52-t2"
+    },
+    {
+     "taskId": "wp3wc-error82",
+     "revision": "r1",
+     "occurrenceId": "m52-t3"
+    },
+    {
+     "taskId": "wp3wc-error83",
+     "revision": "r1",
+     "occurrenceId": "m52-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp3wc-mission53",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 53: The Cctv Defect Rate Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wc-error84",
+     "revision": "r1",
+     "occurrenceId": "m53-t1"
+    },
+    {
+     "taskId": "wp3wc-process12",
+     "revision": "r1",
+     "occurrenceId": "m53-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp3wc-mission54",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 54: The Rehabilitation Program Planning Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wc-process13",
+     "revision": "r1",
+     "occurrenceId": "m54-t1"
+    },
+    {
+     "taskId": "wp3wc-error85",
+     "revision": "r1",
+     "occurrenceId": "m54-t2"
+    },
+    {
+     "taskId": "wp3wc-error86",
+     "revision": "r1",
+     "occurrenceId": "m54-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp3wc-mission55",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 55: The Condition Grading Progress Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wc-error87",
+     "revision": "r1",
+     "occurrenceId": "m55-t1"
+    },
+    {
+     "taskId": "wp3wc-process14",
+     "revision": "r1",
+     "occurrenceId": "m55-t2"
+    },
+    {
+     "taskId": "wp3wc-error88",
+     "revision": "r1",
+     "occurrenceId": "m55-t3"
+    },
+    {
+     "taskId": "wp3wc-error89",
+     "revision": "r1",
+     "occurrenceId": "m55-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp3wc-mission56",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 56: The Rehabilitation Program Planning Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wc-process15",
+     "revision": "r1",
+     "occurrenceId": "m56-t1"
+    },
+    {
+     "taskId": "wp3wc-error90",
+     "revision": "r1",
+     "occurrenceId": "m56-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp3wc-mission57",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 57: The Cleaning Condition Program Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wc-error91",
+     "revision": "r1",
+     "occurrenceId": "m57-t1"
+    },
+    {
+     "taskId": "wp3wc-process16",
+     "revision": "r1",
+     "occurrenceId": "m57-t2"
+    },
+    {
+     "taskId": "wp3wc-error92",
+     "revision": "r1",
+     "occurrenceId": "m57-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp3wc-mission58",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 58: The Rehabilitation Program Planning Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wc-process17",
+     "revision": "r1",
+     "occurrenceId": "m58-t1"
+    },
+    {
+     "taskId": "wp3wc-error93",
+     "revision": "r1",
+     "occurrenceId": "m58-t2"
+    },
+    {
+     "taskId": "wp3wc-error94",
+     "revision": "r1",
+     "occurrenceId": "m58-t3"
+    },
+    {
+     "taskId": "wp3wc-error95",
+     "revision": "r1",
+     "occurrenceId": "m58-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp3wc-mission59",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 59: The Manhole Assessment Program Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wc-error96",
+     "revision": "r1",
+     "occurrenceId": "m59-t1"
+    },
+    {
+     "taskId": "wp3wc-process18",
+     "revision": "r1",
+     "occurrenceId": "m59-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp3wc-mission60",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 60: The Rehabilitation Program Planning Shift",
+   "tasks": [
+    {
+     "taskId": "wp3wc-process19",
+     "revision": "r1",
+     "occurrenceId": "m60-t1"
+    },
+    {
+     "taskId": "wp3wc-error97",
+     "revision": "r1",
+     "occurrenceId": "m60-t2"
+    },
+    {
+     "taskId": "wp3wc-error98",
+     "revision": "r1",
+     "occurrenceId": "m60-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Collection system operations chapters (sewers, lift stations, inspection and cleaning)"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "dd3cd8f44f7c47ae5b44380edc94bab750068bdd9140da002d0641dec6e42b67",
+  "taskReceipts": [
+   {
+    "taskId": "wp3wc-error60",
+    "revision": "r1",
+    "sha256": "07985b793d43719a66c856e4d9e7305f76ffbead3dbc48de9050d22f3766e5f6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-error61",
+    "revision": "r1",
+    "sha256": "6a2b77ddd3387b22ee595b6f8f606a8b2bbb3e1ad6c70c9ab04385ba59a5ef79",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-error62",
+    "revision": "r1",
+    "sha256": "ca042f17185d7972c6ae52dc7a61fa3cc44b097ca7ee934866feb2183debee8e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-error63",
+    "revision": "r1",
+    "sha256": "4255cb9eba4d254471e7de889b91b4152defc51706c8f0e1a42cb26830916a15",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-error64",
+    "revision": "r1",
+    "sha256": "6aa2569f5217a496a364aac979361ec56bffcebd0a58bf4aae8f27bf50cf8fdf",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-error65",
+    "revision": "r1",
+    "sha256": "cf19ddc550395eed0fa653c2dba5898d77b20c0bc4988bc2e1421025c0b068f4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-error66",
+    "revision": "r1",
+    "sha256": "653c0061c403c26094d79607c4bf2b2f664b7bc632ceb1e681244da44e3f486d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-error67",
+    "revision": "r1",
+    "sha256": "25cae4cabb339ca868764a6c309c4cca5cff0de93ea8fd7c509e2500c8ae15cf",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-error68",
+    "revision": "r1",
+    "sha256": "6de55f3bf10869baaea8cb6b5547772ac4fc69e8c07cdafb71c093f02159c8e9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-error69",
+    "revision": "r1",
+    "sha256": "60fab9735d91c33888ec90aea69677b914e61ffda825b8dbdcbbd07cbd94550a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-error70",
+    "revision": "r1",
+    "sha256": "3dbe5d020994f610e71ac082e8fd75d32be521276dcd66812e5bb45fb6d73f89",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-error71",
+    "revision": "r1",
+    "sha256": "95f1da9bd70b825c738b3848657f13cb1d339b5b00325496a098bc61a75f1b85",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-error72",
+    "revision": "r1",
+    "sha256": "a380a3f6452ce8834d8b6f8a4e1cb76332b291d05cb8f26d5b35ebaac52b34c8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-error73",
+    "revision": "r1",
+    "sha256": "b668003bbf31d95531dd78a44f9edba9fc91301a1380ec780fbb8e8afc90c6af",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-error74",
+    "revision": "r1",
+    "sha256": "518387c7d2e24681fdbff289c1261d9a87a0e9875ff1733714fc39c0d8ba290d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-error75",
+    "revision": "r1",
+    "sha256": "246d11df98a117a9d59050ea08769084a049acc2815ccd0da73959c83828d296",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-error76",
+    "revision": "r1",
+    "sha256": "e9fc212610e7a68f37d3d2a80c44d136d0a42e95c5ad1da106b7b486bd830488",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-error77",
+    "revision": "r1",
+    "sha256": "c123e54c8f1fbec226f9bc6c80f91cd2d2438bc1e4f2453919767d4161610f1e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-error78",
+    "revision": "r1",
+    "sha256": "881349d4a689797747dfeb6ca15da85dee657dc2d3a06622da10c1c2dfa97764",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-error79",
+    "revision": "r1",
+    "sha256": "c00e21d6da71761acaf968898804c7e5cef9f25e53e3b981a4e3258a68b9c10d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-error80",
+    "revision": "r1",
+    "sha256": "48140e0f37e17e686dbf82e62ffa4e8c6f8ace8e11c7022e520c3bd15752fdb3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-error81",
+    "revision": "r1",
+    "sha256": "342705d23cbd021305b9976bb1b2b2e973f1dc3e05f62cae2027beb90b26823c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-error82",
+    "revision": "r1",
+    "sha256": "d3e016786f3919bd4ca85d0c6b1186f48fc903b58d86210ec3343e766f733b29",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-error83",
+    "revision": "r1",
+    "sha256": "37c51b238875c978260b639bdd8b9f491643aeb160cf5894020a9be0e587d29f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-error84",
+    "revision": "r1",
+    "sha256": "9eb4df2b81095ec40e33891c0c24b0a50496299ae76d6360bbfeae9b5aa5e08e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-error85",
+    "revision": "r1",
+    "sha256": "6a806d15974cea4cc6d5d5583492f89861806d60812916f1d77f9490f186e594",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-error86",
+    "revision": "r1",
+    "sha256": "fd3573db5e1be25ebf03e5f1d770867ea8e714306b5dc156570f0e15f5915ef4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-error87",
+    "revision": "r1",
+    "sha256": "4596528376623baba2fca88e67696476594eceab52e5a8c6e1b954684a8d00c4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-error88",
+    "revision": "r1",
+    "sha256": "9e24a6991ae09fcd7c08c29b692299df6ebb1fdcec8003c445bb57f2da29441c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-error89",
+    "revision": "r1",
+    "sha256": "cf584e729b9b6a6f65b370a9b6bd1116c4cc7811d10fbdcb92ce47503b985533",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-error90",
+    "revision": "r1",
+    "sha256": "8492d0e4d3a85eb6696fa9470a4a8374effe9cbcf702c1c401ec3d46705fd674",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-error91",
+    "revision": "r1",
+    "sha256": "08c0c2f647943e6466e1f2e3b4c080da15630f0a67b818da9b1ff275bb746634",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-error92",
+    "revision": "r1",
+    "sha256": "072b8f3a1ad3e12fed16855cf2df00e543bcdb67e62fd41b3d888ecb04251c2a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-error93",
+    "revision": "r1",
+    "sha256": "29f2a6097d514429c954726937b423ddef9edb2f9a31f53d13eb014e97543b12",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-error94",
+    "revision": "r1",
+    "sha256": "661d7c5edfa2cdd3b090b840439f1201867c9e912e64094fbf402494304383dd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-error95",
+    "revision": "r1",
+    "sha256": "504881951ea949c8d61c0f65286c93a9377c3ff29943ea0b73e3ddee1b3d9c27",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-error96",
+    "revision": "r1",
+    "sha256": "0f202704b788725da4e07a43c44a30995b68e092889582e726f8144705574881",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-error97",
+    "revision": "r1",
+    "sha256": "d5a06bdb26e554453b1194814516cbd9051c238c7574c248e91670d8981c2e55",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-error98",
+    "revision": "r1",
+    "sha256": "4920783b4a3ba3c554d06441f98563bec93bb82fd0eff622534a0f527a34050d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-error99",
+    "revision": "r1",
+    "sha256": "8ba53d40a28f3b19bf7154941b172949770635ebea86e8a534cb5ca1f45c53a9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-process01",
+    "revision": "r1",
+    "sha256": "21777170f1f6a7fdc211230ced51b254e00012efc131fb27b36178486876526e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-process02",
+    "revision": "r1",
+    "sha256": "7e4218c7dc34b70e7b5ff60ee192db15b042178f7e33bacc9f9ba8adb17a8bbb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-process03",
+    "revision": "r1",
+    "sha256": "8ac2cb2b72bae1a759060ee04a4c964811100fe1bb6176fac2fb2c128d6ba1f1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-process04",
+    "revision": "r1",
+    "sha256": "31002ed01c765cab576a7254587d440c8585e538d5f200bd90332d6049cbc6f4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-process05",
+    "revision": "r1",
+    "sha256": "b8c32f1b6573c8dd9011bb27a5740952e5db90fc19f7d908a9abdf94588a50ab",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-process06",
+    "revision": "r1",
+    "sha256": "21afd30cf4795f3b77be2d5e291044528aa5609e5541012f05f55eb9368cc601",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-process07",
+    "revision": "r1",
+    "sha256": "100445bd7d2d70989ff7f860401a1b86574debb578040d32ef02b1ea80157f75",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-process08",
+    "revision": "r1",
+    "sha256": "18f83ecd7b2f077ad8b6f955c1e94c87861950c067ca6c14d85f403d2baf63f6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-process09",
+    "revision": "r1",
+    "sha256": "598002874fd9e01f0b3c1e8ec1b088d037a5d49fcbfc7eabb38ee8e167e3770d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-process10",
+    "revision": "r1",
+    "sha256": "bf8652953c4bdaf52d0945f2fb7c392275611d22f33ba9731a0417b904bc98ad",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-process100",
+    "revision": "r1",
+    "sha256": "15770a77e7be6960626b71420629423e57870760ff9b8d764d7a99d9507f7359",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-process11",
+    "revision": "r1",
+    "sha256": "6d91ee0b59b41a12ba6e4b44037b7d4f87a625b921e493b07e747737ae049fb7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-process12",
+    "revision": "r1",
+    "sha256": "969f3abbda3e988fb69f4a56d935ab8ab6506885f6f9477938cfbe84f2e782ec",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-process13",
+    "revision": "r1",
+    "sha256": "d35bf385d6ae5f7c17ea4e4f42d0c8c4c04d87583a00be2876f1ab965fa4968a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-process14",
+    "revision": "r1",
+    "sha256": "260d9498e86987ecab6bc8c82de7ca074daa914b5c16d1d3fd8704d5a43aee75",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-process15",
+    "revision": "r1",
+    "sha256": "daf4f6ce12354d52ff2a38e18cd64b0cd3602bb3e964315b4eeccffa5f0dc125",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-process16",
+    "revision": "r1",
+    "sha256": "52712a4597040728b485cfd2369a89cf4b3072b25749370f67c72ed926c6d96b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-process17",
+    "revision": "r1",
+    "sha256": "14205c840b9e24d55b3048309b15cf63ff9801a17443fc24d8075502010de47e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-process18",
+    "revision": "r1",
+    "sha256": "183640292c1381bc55bc5c0ef4066e8da5edecf2af1bb631828d8790abf9ce56",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-process19",
+    "revision": "r1",
+    "sha256": "5e71ead9aa96c57927cc03c684d00952b6a898a3f66775b357bda43ca94b3525",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-process20",
+    "revision": "r1",
+    "sha256": "2545ed6292fb972f9a683f8814a435b593d511596c8cac2ec841171b8d7ced7e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-process21",
+    "revision": "r1",
+    "sha256": "3ecd334caa1d52ebc38917d7b61a03afb72ecfbf93c2519edc9a79f95e3c0f0d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-process22",
+    "revision": "r1",
+    "sha256": "ff19f9bf8c83e7840aa1dfa04f010e633e34164f1c73a8704ac272dd26fe44c0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-process23",
+    "revision": "r1",
+    "sha256": "151d94fe559a3534bbf93ebd7eca6eff98d81850a25ef6965f8f06776ee98ff6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-process24",
+    "revision": "r1",
+    "sha256": "61f0576d1462bfe052e339df2170ea2e789d6fd3cdf285e8edd34602a78b41c0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-process25",
+    "revision": "r1",
+    "sha256": "2ffe19be9dffca61211b5ad3aa1bfcd1c19ac86305f23de968c9b63911abbb0f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-process26",
+    "revision": "r1",
+    "sha256": "6cfeac4bf352ffd59c0f31366238ba915206deb1911bc9a78f9bf254a9237a90",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-process27",
+    "revision": "r1",
+    "sha256": "6b019a6fa56b627f13b69de71c4631d18100ae86c4e5700a90b32798f93ad436",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-process28",
+    "revision": "r1",
+    "sha256": "c10dbb0b7961848a3890aac05f7e9014f5eafa5a376d62dc6d5a2e3bfba4e6a6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-process29",
+    "revision": "r1",
+    "sha256": "41eb343ba64e9c3718dc650da55244c7a962bf37ffe263ceefd749ab27b45bbb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-process30",
+    "revision": "r1",
+    "sha256": "9db9d33860fe7674fc647d3eb7fdafc2461c31ec798f9701da00a83ac9092f4a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-process31",
+    "revision": "r1",
+    "sha256": "90e4cd4ed9db294708a17a722b93d28b4fd2ad7ebbbde2e0fb74b80ea7e9be08",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-process32",
+    "revision": "r1",
+    "sha256": "52fdd225b3c79405e2b87652c515923547fb9a541cb62f601063dfa63e98b570",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-process33",
+    "revision": "r1",
+    "sha256": "7b475968fd7e5f5cae8ff0e956a13c3ffb09b621cd33b014057a0b0274713bd7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-process34",
+    "revision": "r1",
+    "sha256": "e084a8db5cd3cc4c2d3828c2b882c1676344e6659c003ad65af61caed08416a3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-process35",
+    "revision": "r1",
+    "sha256": "554f5e4854abd49b6d805f5c0de9f20d7a4ab653502cdf0bf88e7b1cdec38681",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-process36",
+    "revision": "r1",
+    "sha256": "7709871b42c56d633bd34caf168f26ab1584d4b011817d4272927fa84da023aa",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-process37",
+    "revision": "r1",
+    "sha256": "ce559a1cfaa24ab7030483d2a534a07aa4c69c0ec8c0f1d90b1b0373f4ef00fb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-process38",
+    "revision": "r1",
+    "sha256": "cc6d6297c5af5d8d7a28ccdaa8cdbe008df6de3686796b2a519f17b15b6368b7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp3wc-process39",
+    "revision": "r1",
+    "sha256": "bb6b4cea0677d6233d12f40fe5cc3ab900b94b189f3f01cf801cb52005a234fa",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "wp3wc-mission41",
+    "revision": "r1",
+    "sha256": "a8bca1260ab6fe2af81289dba5c3eb2a504b8cdc16d962eed3b696ded1fb0d91"
+   },
+   {
+    "missionId": "wp3wc-mission42",
+    "revision": "r1",
+    "sha256": "f2af4a767e998aac1401103626625e11a216ed2d55b2e3e9ad8b60afd3e3e449"
+   },
+   {
+    "missionId": "wp3wc-mission43",
+    "revision": "r1",
+    "sha256": "f9dc2974c9026252f9b6abf4710c4fd5ec95e01b0798794cc2a7179e835cff53"
+   },
+   {
+    "missionId": "wp3wc-mission44",
+    "revision": "r1",
+    "sha256": "e64a73a2c0115caff4e4eb6781ae8589f026cdefc4821b2a5195ff9998deac77"
+   },
+   {
+    "missionId": "wp3wc-mission45",
+    "revision": "r1",
+    "sha256": "0657e22de048d23c08b9f39ed036b594d3b524ee594c021547ccfd1c7327d90a"
+   },
+   {
+    "missionId": "wp3wc-mission46",
+    "revision": "r1",
+    "sha256": "a72e75cf611c21d09d20fd9dc7f7b73e36e7039041144573277f6b366a1c6b92"
+   },
+   {
+    "missionId": "wp3wc-mission47",
+    "revision": "r1",
+    "sha256": "05ce1c82eedb6be8d386d7f7d2ff1058afa07f7af57c8a52cd0ef8c11e7089f8"
+   },
+   {
+    "missionId": "wp3wc-mission48",
+    "revision": "r1",
+    "sha256": "9e88369d8c8d85f7a35a2f0ec96c0e3f060c380a1fc40f0b2c12aa3a4e9aa058"
+   },
+   {
+    "missionId": "wp3wc-mission49",
+    "revision": "r1",
+    "sha256": "50d05df546ec8136efa2967f988307600182016e49c3e47b0e2b46b6cd92e73f"
+   },
+   {
+    "missionId": "wp3wc-mission50",
+    "revision": "r1",
+    "sha256": "26a7e00ae54ee887da75bff7e20e58a5af0070e28d6175932dfdebb6593a508b"
+   },
+   {
+    "missionId": "wp3wc-mission51",
+    "revision": "r1",
+    "sha256": "5c96f9e9b9ee1ad96b54c940945bd917f6ca58930405df28d2c9f58a917421a6"
+   },
+   {
+    "missionId": "wp3wc-mission52",
+    "revision": "r1",
+    "sha256": "ad601c3bc8f607faa53382bc4c99f7a85580a1daebf8eb320480d946a0dabdef"
+   },
+   {
+    "missionId": "wp3wc-mission53",
+    "revision": "r1",
+    "sha256": "b5aecf9fab9216045122f798d9dea825186849679ad0014eb90631f3a3aeedfe"
+   },
+   {
+    "missionId": "wp3wc-mission54",
+    "revision": "r1",
+    "sha256": "0a81b689edc47d1df03368b1a241cd8f46055b460b958c1dde584676be8d84c2"
+   },
+   {
+    "missionId": "wp3wc-mission55",
+    "revision": "r1",
+    "sha256": "17447abb3c2ac17f55992322cd5a8a75c8fae65af449871861af3da46c43ca60"
+   },
+   {
+    "missionId": "wp3wc-mission56",
+    "revision": "r1",
+    "sha256": "b7b3185280900be4caecd43062482e97e476f377ae0fe454b0685167d13494bd"
+   },
+   {
+    "missionId": "wp3wc-mission57",
+    "revision": "r1",
+    "sha256": "02fef4cb6046df52ed61596bc1ebe4fef478a9dced4167f076f8079b3fd4e8a9"
+   },
+   {
+    "missionId": "wp3wc-mission58",
+    "revision": "r1",
+    "sha256": "200683d1be7baa270606557733ef1d1007edca0c8ed62b9ef388af24e0a6c6d2"
+   },
+   {
+    "missionId": "wp3wc-mission59",
+    "revision": "r1",
+    "sha256": "8766e627650e75b68c6c2f68f8000aeeae1bc7a89b100f90ab44908db09bacab"
+   },
+   {
+    "missionId": "wp3wc-mission60",
+    "revision": "r1",
+    "sha256": "da6f177cceece47567abb6c37437bc5ed8966fdb68e095e46516c5d6be0337b5"
+   }
+  ]
+ }
+}

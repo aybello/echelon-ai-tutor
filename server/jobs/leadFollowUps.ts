@@ -67,7 +67,7 @@ export function dueStage(lead: {
 /** Resolve the course label, link and offer for the lead's capture source. */
 export function resolveLeadCourse(source: string): {
   courseLabel: string;
-  courseUrl: string;
+  courseUrl?: string;
   offerUrl: string;
   priceLabel?: string;
 } {
@@ -77,15 +77,15 @@ export function resolveLeadCourse(source: string): {
   const courseLabel =
     course?.displayName ??
     (offer.available ? offer.productName : "your operator exam");
-  // The pricing page with the course preselected works for every source,
-  // including gates like "paywall_browse" that are not product keys.
-  const url = offer.available || course
+  // Keep purchase offers separate from practice. Unrecognized capture sources
+  // such as "paywall_browse" can only link to course access options.
+  const offerUrl = offer.available || course
     ? `${site}/pricing?course=${encodeURIComponent(source)}`
     : `${site}/pricing`;
   return {
     courseLabel,
-    courseUrl: url,
-    offerUrl: url,
+    courseUrl: course ? `${site}${course.quizPath}` : undefined,
+    offerUrl,
     priceLabel: offer.available ? offer.priceLabel : undefined,
   };
 }

@@ -1,0 +1,35 @@
+{
+ "accepted": 302,
+ "notes": [
+  "COLLECTION-L1-593, COLLECTION-L1-609, COLLECTION-L1-725 and COLLECTION-L1-728: absolute wording in correct options reviewed and accepted; all four state safety or licensing requirements (personal lock on the group hasp, stored pressure that must be released, work only under a properly licensed operator's direction, enter only when the reading is safe), factual procedural statements, not shortcut patterns.",
+  "Bank answer-length metric: correct option strictly longest in 23% of items; no item carried a length flag after repair.",
+  "Assignment topics naming Regulation 129/04 were authored on the same duty substance in generic provincial licensing terms without naming the regulation in the item body, per the binding WPI rule; the assigned topic string is retained in the topic field and derived metadata only."
+ ],
+ "rejected": [
+  {
+   "itemId": "COLLECTION-L1-734",
+   "reason": "rejected pre-acceptance: correct option was 2.69x the mean distractor length (answer-length tell); distractors lengthened in place, replacement is the accepted payload"
+  },
+  {
+   "itemId": "COLLECTION-L1-744",
+   "reason": "rejected pre-acceptance: calculation expression duplicated an existing bank item (same circular wet well drawdown, identical numbers); replaced in place with a rectangular wet well net-rate drawdown, replacement is the accepted payload"
+  }
+ ],
+ "withheld": [],
+ "nearDuplicatePairReview": [
+  {
+   "pair": [
+    "COLLECTION-L1-573",
+    "COLLECTION-L1-577"
+   ],
+   "similarity": 0.9091,
+   "decision": "replaced",
+   "replacedItemId": "COLLECTION-L1-577",
+   "reason": "Both items compute force main detention time as pipe volume divided by flow, pi times radius squared times length converted to litres, divided by flow and by 60, differing only in length, diameter and flow. Same formula and scenario, so the second item was replaced.",
+   "oldPayloadSha256": "f7e84deb9bfaca57519aa44804b5769fdf784c9da2fdb58463359c92519762e2",
+   "newPayloadSha256": "1490e5c72e96a7d74247ef5e8e37216644d13f1d6c1112d885952690976957d3",
+   "oldStem": "A force main is 1,200 m long with an inside diameter of 200 mm and carries 25 L/s. Use pi as 3.1416. What is the detention time in the force main? The diameter is 0.20 m. Use 1 m3 = 1,000 L and 60 seconds = 1 minute. Round to 2 decimal places.",
+   "newStem": "A sewer trench is 120 m long, 1.2 m wide and 2.5 m deep. What volume of material is excavated from the trench? Round to 1 decimal place."
+  }
+ ]
+}

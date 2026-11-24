@@ -1,0 +1,65 @@
+[
+ {
+  "itemId": "DISTRIBUTION-L1-529",
+  "expression": "3.1416*6*6*3",
+  "expected": "339.3",
+  "decimalPlaces": 1,
+  "unit": "m³"
+ },
+ {
+  "itemId": "DISTRIBUTION-L1-530",
+  "expression": "900/(12.5*24)",
+  "expected": "3.0",
+  "decimalPlaces": 1,
+  "unit": "days"
+ },
+ {
+  "itemId": "DISTRIBUTION-L1-531",
+  "expression": "500*1000*(0.8+0.6)/1000000",
+  "expected": "0.7",
+  "decimalPlaces": 1,
+  "unit": "kg/day"
+ },
+ {
+  "itemId": "DISTRIBUTION-L1-532",
+  "expression": "450*1000/25/3600",
+  "expected": "5.0",
+  "decimalPlaces": 1,
+  "unit": "hours"
+ },
+ {
+  "itemId": "DISTRIBUTION-L1-533",
+  "expression": "20*10*(3.5-1.5)",
+  "expected": "400",
+  "decimalPlaces": 0,
+  "unit": "m³"
+ },
+ {
+  "itemId": "DISTRIBUTION-L1-534",
+  "expression": "(3.1416*5*5*4)/78.54",
+  "expected": "4.0",
+  "decimalPlaces": 1,
+  "unit": "days"
+ },
+ {
+  "itemId": "DISTRIBUTION-L1-535",
+  "expression": "600*3*1000*2/1000000",
+  "expected": "3.6",
+  "decimalPlaces": 1,
+  "unit": "kg"
+ },
+ {
+  "itemId": "DISTRIBUTION-L1-536",
+  "expression": "288*1000/(30-10)/3600",
+  "expected": "4.0",
+  "decimalPlaces": 1,
+  "unit": "hours"
+ },
+ {
+  "itemId": "DISTRIBUTION-L1-537",
+  "expression": "3.1416*7.5*7.5*5",
+  "expected": "883.6",
+  "decimalPlaces": 1,
+  "unit": "m³"
+ }
+]

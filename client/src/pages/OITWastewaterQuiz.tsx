@@ -11,8 +11,8 @@ import QuizGate from "@/components/QuizGate";
 
 export default function OITWastewaterQuiz() {
   usePageMeta({
-    title: "OIT Wastewater Practice Quiz — 400+ Questions",
-    description: "Practice for the Ontario OIT Wastewater exam with 400+ questions. AI Tutor, step-by-step solutions, and confidence tracking.",
+    title: "OIT Wastewater Practice Quiz — 1,000+ Questions",
+    description: "Practice for the Ontario OIT Wastewater exam with 1,000+ questions. AI Tutor, step-by-step solutions, and confidence tracking.",
     keywords: "OIT wastewater exam, Ontario wastewater certification, operator practice questions",
     noindex: true
   });
@@ -95,7 +95,7 @@ export default function OITWastewaterQuiz() {
           productName="OIT Wastewater Treatment Exam Pass"
           priceLabel="CA$49"
           paidFeatures={[
-            "400+ OIT Wastewater questions — unlimited attempts",
+            "1,000+ OIT Wastewater questions — unlimited attempts",
             "Complete 50-question timed mock exams",
             "Full flashcard deck and saved progress",
             "Module-by-module performance tracking",

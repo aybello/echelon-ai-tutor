@@ -59,7 +59,14 @@ beforeAll(async () => {
               if(input.reviewMode==='missed')qs=qs.filter(q=>q.id===2);if(input.reviewMode==='bookmarked')qs=qs.filter(q=>q.id===3);
               return {questions:qs,total:qs.length,locked:window.access?.hasAccess!==true,hasMore:false};};
             const utils={client:{quiz:{getRandomQuestions:{query}}}};
-            export const trpc={useUtils:()=>utils,stripe:{checkAccess:{useQuery:()=>({data:window.access})}},
+            // Keep the real actor/activity hooks. These synthetic anonymous
+            // identities are already authoritative and idle on every render.
+            const anonymousQuery={data:null,isLoading:false,isFetching:false,isError:false,isSuccess:true,status:'success',fetchStatus:'idle',dataUpdatedAt:1};
+            const anonymousIdentity={useQuery:()=>anonymousQuery};
+            const unavailableMutation={mutateAsync:async()=>({tracking:false,recorded:false}),isPending:false};
+            const unavailableActivity={useMutation:()=>unavailableMutation};
+            export const trpc={useUtils:()=>utils,auth:{me:anonymousIdentity},dashboardAuth:{me:anonymousIdentity},
+              assessmentActivity:{record:unavailableActivity,resume:unavailableActivity},stripe:{checkAccess:{useQuery:()=>({data:window.access})}},
               funnelAnalytics:{track:{useMutation:()=>({mutate(){}})}},quiz:{getMissedQuestions:{useQuery:()=>({data:{total:1,questionIds:[2]},refetch:()=>Promise.resolve()})}},
               dashboard:{bookmarkedQuestions:{useQuery:()=>({data:[{questionId:3}]})},lowConfidenceQuestions:{useQuery:()=>({data:[{questionId:4}]})}}};`,
             };
@@ -192,6 +199,9 @@ describe.each(courses)("%s timed answer-state lifecycle", (course, free) => {
     async (_label, name, value) => {
       const page = await setup(course, free);
       try {
+        // These assertions cover a pending timed answer, not an unanswered
+        // timeout (which intentionally has no canonical attempt to log).
+        await action(page, "setSelected", 2);
         await action(page, "handleTimeUp");
         await action(page, name as string, value);
         const fresh = await page.evaluate(
@@ -233,6 +243,7 @@ describe.each(courses)("%s timed answer-state lifecycle", (course, free) => {
       const timedQuestion = await page.evaluate(
         () => (window as any).session.current.id
       );
+      await action(page, "setSelected", 2);
       await action(page, "handleTimeUp");
       await action(page, "goBack");
       await page.waitForTimeout(1000);
@@ -298,6 +309,7 @@ describe.each(courses)("%s timed answer-state lifecycle", (course, free) => {
   it("does not request another paged question after the hook unmounts", async () => {
     const page = await setup(course, free);
     try {
+      await action(page, "setSelected", 2);
       await action(page, "handleTimeUp");
       await page.evaluate(() => (window as any).unmount());
       const requests = await page.evaluate(

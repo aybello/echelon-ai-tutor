@@ -1,0 +1,4748 @@
+{
+ "courseKey": "class3-ww",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "c3ww-ladder80",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the volatile solids destroyed in kg/day when a digester receives 3200 kg/day of volatile solids and achieves 60 percent volatile solids reduction. Enter the exact unrounded number.",
+   "topicId": "digester-vs-reduction",
+   "level": "class1",
+   "assumptions": "Fictional digester: VS feed = 3200 kg/day, VS reduction = 60 percent.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "VS destroyed (kg/day) = VS feed (kg/day) / Percent reduction * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "VS destroyed (kg/day) = VS feed (kg/day) * (100 - Percent reduction) / 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "VS destroyed (kg/day) = VS feed (kg/day) * Percent reduction / 100"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: VS destroyed (kg/day) = VS feed (kg/day) * Percent reduction / 100"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "kg/day times a percent divided by 100 stays in kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "kg/day divided by the percent gives kg/day destroyed"
+      },
+      {
+       "id": "opt-c",
+       "label": "Using 100 minus the percent gives the destroyed mass"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: kg/day times a percent divided by 100 stays in kg/day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "3200 / 60 * 100 kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "3200 * 60 / 100 kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "3200 * (100 - 60) / 100 kg/day"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: 3200 * 60 / 100 kg/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact volatile solids destroyed in kg/day.",
+    "unitOptions": [
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "g-day",
+      "label": "g/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "L-day",
+      "label": "L/day"
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     }
+    ],
+    "expected": "1920",
+    "expectedUnitId": "kg-day",
+    "absoluteTolerance": "0",
+    "explanation": "VS destroyed = 3200 * 60 / 100 = 1920 kg/day."
+   }
+  },
+  {
+   "id": "c3ww-ladder81",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the volatile solids leaving a digester in kg/day when the feed is 5000 kg/day of volatile solids and the reduction is 50 percent. Enter the exact unrounded number.",
+   "topicId": "digester-vs-reduction",
+   "level": "class1",
+   "assumptions": "Fictional digester: VS feed = 5000 kg/day, VS reduction = 50 percent, so 50 percent remains.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "VS out (kg/day) = VS feed (kg/day) * (100 - Percent reduction) / 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "VS out (kg/day) = VS feed (kg/day) * Percent reduction / 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "VS out (kg/day) = VS feed (kg/day) / (100 - Percent reduction)"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: VS out (kg/day) = VS feed (kg/day) * (100 - Percent reduction) / 100"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Using the reduction percent directly gives the mass leaving"
+      },
+      {
+       "id": "opt-b",
+       "label": "kg/day times the remaining percent divided by 100 stays in kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "Dividing by the remaining percent gives kg/day out"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: kg/day times the remaining percent divided by 100 stays in kg/day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "5000 * 50 / 100 kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "5000 / (100 - 50) kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "5000 * (100 - 50) / 100 kg/day"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: 5000 * (100 - 50) / 100 kg/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact volatile solids leaving in kg/day.",
+    "unitOptions": [
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "g-day",
+      "label": "g/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "L-day",
+      "label": "L/day"
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     }
+    ],
+    "expected": "2500",
+    "expectedUnitId": "kg-day",
+    "absoluteTolerance": "0",
+    "explanation": "VS out = 5000 * 50 / 100 = 2500 kg/day."
+   }
+  },
+  {
+   "id": "c3ww-ladder82",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the digester gas production in m3/day when 2000 kg/day of volatile solids are destroyed. Use the given yield of 0.9 m3 of gas per kg of volatile solids destroyed. Enter the exact unrounded number.",
+   "topicId": "digester-gas",
+   "level": "class1",
+   "assumptions": "Fictional digester: VS destroyed = 2000 kg/day, given gas yield = 0.9 m3/kg.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Gas production (m3/day) = VS destroyed (kg/day) / 0.9"
+      },
+      {
+       "id": "opt-b",
+       "label": "Gas production (m3/day) = VS destroyed (kg/day) * 0.9"
+      },
+      {
+       "id": "opt-c",
+       "label": "Gas production (m3/day) = VS destroyed (kg/day) + 0.9"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Gas production (m3/day) = VS destroyed (kg/day) * 0.9"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "kg/day divided by m3 per kg gives m3/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "kg/day plus the yield gives m3/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "kg/day times m3 per kg gives m3/day"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: kg/day times m3 per kg gives m3/day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "2000 * 0.9 m3/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "2000 / 0.9 m3/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "2000 + 0.9 m3/day"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: 2000 * 0.9 m3/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact gas production in m3/day.",
+    "unitOptions": [
+     {
+      "id": "m3-day",
+      "label": "m3/day"
+     },
+     {
+      "id": "L-day",
+      "label": "L/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "m3-h",
+      "label": "m3/h"
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     }
+    ],
+    "expected": "1800",
+    "expectedUnitId": "m3-day",
+    "absoluteTolerance": "0",
+    "explanation": "Gas production = 2000 * 0.9 = 1800 m3/day."
+   }
+  },
+  {
+   "id": "c3ww-ladder83",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the solids capture in percent when a dewatering unit feeds 2000 kg/day of dry solids and the cake contains 1900 kg/day of dry solids. Enter the exact unrounded number.",
+   "topicId": "dewatering-capture",
+   "level": "class1",
+   "assumptions": "Fictional dewatering unit: feed solids = 2000 kg/day, cake solids = 1900 kg/day, both dry.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Capture (percent) = Feed solids (kg/day) / Cake solids (kg/day) * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Capture (percent) = Cake solids (kg/day) * Feed solids (kg/day) / 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Capture (percent) = Cake solids (kg/day) / Feed solids (kg/day) * 100"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Capture (percent) = Cake solids (kg/day) / Feed solids (kg/day) * 100"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Matching kg/day units cancel, leaving a dimensionless ratio times 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "The kg/day unit remains in the answer"
+      },
+      {
+       "id": "opt-c",
+       "label": "Dividing by 100 converts the ratio to a percent"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Matching kg/day units cancel, leaving a dimensionless ratio times 100"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "2000 / 1900 * 100 percent"
+      },
+      {
+       "id": "opt-b",
+       "label": "1900 / 2000 * 100 percent"
+      },
+      {
+       "id": "opt-c",
+       "label": "1900 * 2000 / 100 percent"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: 1900 / 2000 * 100 percent"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact solids capture in percent.",
+    "unitOptions": [
+     {
+      "id": "percent",
+      "label": "percent"
+     },
+     {
+      "id": "fraction",
+      "label": "fraction (decimal)",
+      "toExpected": {
+       "numerator": "100",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     }
+    ],
+    "expected": "95",
+    "expectedUnitId": "percent",
+    "absoluteTolerance": "0",
+    "explanation": "Capture = 1900 / 2000 * 100 = 95 percent."
+   }
+  },
+  {
+   "id": "c3ww-ladder84",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the solids capture in percent when a dewatering unit feeds 2500 kg/day of dry solids and the cake contains 2350 kg/day of dry solids. Enter the exact unrounded number.",
+   "topicId": "dewatering-capture",
+   "level": "class1",
+   "assumptions": "Fictional dewatering unit: feed solids = 2500 kg/day, cake solids = 2350 kg/day, both dry.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Capture (percent) = Cake solids (kg/day) / Feed solids (kg/day) * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Capture (percent) = Feed solids (kg/day) / Cake solids (kg/day) * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Capture (percent) = Cake solids (kg/day) * Feed solids (kg/day) / 100"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Capture (percent) = Cake solids (kg/day) / Feed solids (kg/day) * 100"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The kg/day unit remains in the answer"
+      },
+      {
+       "id": "opt-b",
+       "label": "Matching kg/day units cancel, leaving a dimensionless ratio times 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Dividing by 100 converts the ratio to a percent"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Matching kg/day units cancel, leaving a dimensionless ratio times 100"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "2500 / 2350 * 100 percent"
+      },
+      {
+       "id": "opt-b",
+       "label": "2350 * 2500 / 100 percent"
+      },
+      {
+       "id": "opt-c",
+       "label": "2350 / 2500 * 100 percent"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: 2350 / 2500 * 100 percent"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact solids capture in percent.",
+    "unitOptions": [
+     {
+      "id": "percent",
+      "label": "percent"
+     },
+     {
+      "id": "fraction",
+      "label": "fraction (decimal)",
+      "toExpected": {
+       "numerator": "100",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     }
+    ],
+    "expected": "94",
+    "expectedUnitId": "percent",
+    "absoluteTolerance": "0",
+    "explanation": "Capture = 2350 / 2500 * 100 = 94 percent."
+   }
+  },
+  {
+   "id": "c3ww-ladder85",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the solids capture in percent when a dewatering unit feeds 3000 kg/day of dry solids and the cake contains 2910 kg/day of dry solids. Enter the exact unrounded number.",
+   "topicId": "dewatering-capture",
+   "level": "class1",
+   "assumptions": "Fictional dewatering unit: feed solids = 3000 kg/day, cake solids = 2910 kg/day, both dry.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Capture (percent) = Feed solids (kg/day) / Cake solids (kg/day) * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Capture (percent) = Cake solids (kg/day) / Feed solids (kg/day) * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Capture (percent) = Cake solids (kg/day) * Feed solids (kg/day) / 100"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Capture (percent) = Cake solids (kg/day) / Feed solids (kg/day) * 100"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The kg/day unit remains in the answer"
+      },
+      {
+       "id": "opt-b",
+       "label": "Dividing by 100 converts the ratio to a percent"
+      },
+      {
+       "id": "opt-c",
+       "label": "Matching kg/day units cancel, leaving a dimensionless ratio times 100"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Matching kg/day units cancel, leaving a dimensionless ratio times 100"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "2910 / 3000 * 100 percent"
+      },
+      {
+       "id": "opt-b",
+       "label": "3000 / 2910 * 100 percent"
+      },
+      {
+       "id": "opt-c",
+       "label": "2910 * 3000 / 100 percent"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: 2910 / 3000 * 100 percent"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact solids capture in percent.",
+    "unitOptions": [
+     {
+      "id": "percent",
+      "label": "percent"
+     },
+     {
+      "id": "fraction",
+      "label": "fraction (decimal)",
+      "toExpected": {
+       "numerator": "100",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     }
+    ],
+    "expected": "97",
+    "expectedUnitId": "percent",
+    "absoluteTolerance": "0",
+    "explanation": "Capture = 2910 / 3000 * 100 = 97 percent."
+   }
+  },
+  {
+   "id": "c3ww-ladder86",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the wet cake mass in kg/day when the cake contains 2000 kg/day of dry solids and the cake is 20 percent solids. Enter the exact unrounded number.",
+   "topicId": "dewatering-cake",
+   "level": "class1",
+   "assumptions": "Fictional dewatering unit: dry solids in cake = 2000 kg/day, cake solids content = 20 percent.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Wet cake (kg/day) = Dry solids (kg/day) * Cake percent solids / 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Wet cake (kg/day) = Cake percent solids / Dry solids (kg/day) * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Wet cake (kg/day) = Dry solids (kg/day) * 100 / Cake percent solids"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Wet cake (kg/day) = Dry solids (kg/day) * 100 / Cake percent solids"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Dividing dry kg/day by the solids fraction gives the larger wet kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "Multiplying dry kg/day by the percent gives the wet mass"
+      },
+      {
+       "id": "opt-c",
+       "label": "Wet mass is smaller than dry mass at these percents"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Dividing dry kg/day by the solids fraction gives the larger wet kg/day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "2000 * 20 / 100 kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "2000 * 100 / 20 kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "20 / 2000 * 100 kg/day"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: 2000 * 100 / 20 kg/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact wet cake mass in kg/day.",
+    "unitOptions": [
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "g-day",
+      "label": "g/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "L-day",
+      "label": "L/day"
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     }
+    ],
+    "expected": "10000",
+    "expectedUnitId": "kg-day",
+    "absoluteTolerance": "0",
+    "explanation": "Wet cake = 2000 * 100 / 20 = 10000 kg/day."
+   }
+  },
+  {
+   "id": "c3ww-ladder87",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the wet cake mass in kg/day when the cake contains 1800 kg/day of dry solids and the cake is 25 percent solids. Enter the exact unrounded number.",
+   "topicId": "dewatering-cake",
+   "level": "class1",
+   "assumptions": "Fictional dewatering unit: dry solids in cake = 1800 kg/day, cake solids content = 25 percent.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Wet cake (kg/day) = Dry solids (kg/day) * 100 / Cake percent solids"
+      },
+      {
+       "id": "opt-b",
+       "label": "Wet cake (kg/day) = Dry solids (kg/day) * Cake percent solids / 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Wet cake (kg/day) = Cake percent solids / Dry solids (kg/day) * 100"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Wet cake (kg/day) = Dry solids (kg/day) * 100 / Cake percent solids"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Multiplying dry kg/day by the percent gives the wet mass"
+      },
+      {
+       "id": "opt-b",
+       "label": "Dividing dry kg/day by the solids fraction gives the larger wet kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "Wet mass is smaller than dry mass at these percents"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Dividing dry kg/day by the solids fraction gives the larger wet kg/day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "1800 * 25 / 100 kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "25 / 1800 * 100 kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "1800 * 100 / 25 kg/day"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: 1800 * 100 / 25 kg/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact wet cake mass in kg/day.",
+    "unitOptions": [
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "g-day",
+      "label": "g/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "L-day",
+      "label": "L/day"
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     }
+    ],
+    "expected": "7200",
+    "expectedUnitId": "kg-day",
+    "absoluteTolerance": "0",
+    "explanation": "Wet cake = 1800 * 100 / 25 = 7200 kg/day."
+   }
+  },
+  {
+   "id": "c3ww-ladder88",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the wet cake mass in kg/day when the cake contains 2400 kg/day of dry solids and the cake is 30 percent solids. Enter the exact unrounded number.",
+   "topicId": "dewatering-cake",
+   "level": "class1",
+   "assumptions": "Fictional dewatering unit: dry solids in cake = 2400 kg/day, cake solids content = 30 percent.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Wet cake (kg/day) = Dry solids (kg/day) * Cake percent solids / 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Wet cake (kg/day) = Dry solids (kg/day) * 100 / Cake percent solids"
+      },
+      {
+       "id": "opt-c",
+       "label": "Wet cake (kg/day) = Cake percent solids / Dry solids (kg/day) * 100"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Wet cake (kg/day) = Dry solids (kg/day) * 100 / Cake percent solids"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Multiplying dry kg/day by the percent gives the wet mass"
+      },
+      {
+       "id": "opt-b",
+       "label": "Wet mass is smaller than dry mass at these percents"
+      },
+      {
+       "id": "opt-c",
+       "label": "Dividing dry kg/day by the solids fraction gives the larger wet kg/day"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Dividing dry kg/day by the solids fraction gives the larger wet kg/day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "2400 * 100 / 30 kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "2400 * 30 / 100 kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "30 / 2400 * 100 kg/day"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: 2400 * 100 / 30 kg/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact wet cake mass in kg/day.",
+    "unitOptions": [
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "g-day",
+      "label": "g/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "L-day",
+      "label": "L/day"
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     }
+    ],
+    "expected": "8000",
+    "expectedUnitId": "kg-day",
+    "absoluteTolerance": "0",
+    "explanation": "Wet cake = 2400 * 100 / 30 = 8000 kg/day."
+   }
+  },
+  {
+   "id": "c3ww-ladder89",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the solids lost to the filtrate in kg/day when a dewatering unit feeds 2500 kg/day of dry solids and the cake captures 2375 kg/day of dry solids. Enter the exact unrounded number.",
+   "topicId": "dewatering-filtrate",
+   "level": "class1",
+   "assumptions": "Fictional dewatering unit: feed solids = 2500 kg/day, cake solids = 2375 kg/day, both dry, no other solids stream.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Filtrate solids (kg/day) = Feed solids (kg/day) + Cake solids (kg/day)"
+      },
+      {
+       "id": "opt-b",
+       "label": "Filtrate solids (kg/day) = Cake solids (kg/day) - Feed solids (kg/day)"
+      },
+      {
+       "id": "opt-c",
+       "label": "Filtrate solids (kg/day) = Feed solids (kg/day) - Cake solids (kg/day)"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Filtrate solids (kg/day) = Feed solids (kg/day) - Cake solids (kg/day)"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "kg/day minus kg/day gives kg/day in a closed solids balance"
+      },
+      {
+       "id": "opt-b",
+       "label": "kg/day plus kg/day gives the filtrate loss"
+      },
+      {
+       "id": "opt-c",
+       "label": "The balance can be negative for a loss stream"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: kg/day minus kg/day gives kg/day in a closed solids balance"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "2500 + 2375 kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "2500 - 2375 kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "2375 - 2500 kg/day"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: 2500 - 2375 kg/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact filtrate solids in kg/day.",
+    "unitOptions": [
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "g-day",
+      "label": "g/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "L-day",
+      "label": "L/day"
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     }
+    ],
+    "expected": "125",
+    "expectedUnitId": "kg-day",
+    "absoluteTolerance": "0",
+    "explanation": "Filtrate solids = 2500 - 2375 = 125 kg/day."
+   }
+  },
+  {
+   "id": "c3ww-ladder90",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the dry solids in a cake in kg/day when the wet cake mass is 8000 kg/day at 25 percent solids. Enter the exact unrounded number.",
+   "topicId": "dewatering-cake",
+   "level": "class1",
+   "assumptions": "Fictional dewatering unit: wet cake = 8000 kg/day, cake solids content = 25 percent.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Dry solids (kg/day) = Wet cake (kg/day) * Percent solids / 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Dry solids (kg/day) = Wet cake (kg/day) * 100 / Percent solids"
+      },
+      {
+       "id": "opt-c",
+       "label": "Dry solids (kg/day) = Percent solids / Wet cake (kg/day) * 100"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Dry solids (kg/day) = Wet cake (kg/day) * Percent solids / 100"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Dividing by the percent fraction gives the dry mass"
+      },
+      {
+       "id": "opt-b",
+       "label": "kg/day times a percent divided by 100 stays in kg/day and is smaller than the wet mass"
+      },
+      {
+       "id": "opt-c",
+       "label": "Dry mass is larger than wet mass at 25 percent solids"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: kg/day times a percent divided by 100 stays in kg/day and is smaller than the wet mass"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "8000 * 100 / 25 kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "25 / 8000 * 100 kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "8000 * 25 / 100 kg/day"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: 8000 * 25 / 100 kg/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact dry solids in the cake in kg/day.",
+    "unitOptions": [
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "g-day",
+      "label": "g/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "L-day",
+      "label": "L/day"
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     }
+    ],
+    "expected": "2000",
+    "expectedUnitId": "kg-day",
+    "absoluteTolerance": "0",
+    "explanation": "Dry solids = 8000 * 25 / 100 = 2000 kg/day."
+   }
+  },
+  {
+   "id": "c3ww-ladder91",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the final effluent BOD in mg/L when raw BOD is 240 mg/L, primary treatment removes 35 percent, and secondary treatment removes 90 percent of what remains. Enter the exact unrounded number.",
+   "topicId": "staged-removal",
+   "level": "class1",
+   "assumptions": "Fictional plant: raw BOD = 240 mg/L, primary removal = 35 percent so 65 percent remains, secondary removal = 90 percent so 10 percent of the remainder remains.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Effluent BOD (mg/L) = Raw BOD * (Primary percent + Secondary percent) / 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Effluent BOD (mg/L) = Raw BOD * (100 - Primary percent) / 100 * (100 - Secondary percent) / 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Effluent BOD (mg/L) = Raw BOD * (100 - Primary percent - Secondary percent) / 100"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Effluent BOD (mg/L) = Raw BOD * (100 - Primary percent) / 100 * (100 - Secondary percent) / 100"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Adding the two removal percents gives the total remaining fraction"
+      },
+      {
+       "id": "opt-b",
+       "label": "Subtracting both percents from 100 in one step gives the effluent"
+      },
+      {
+       "id": "opt-c",
+       "label": "Each stage multiplies the concentration by its remaining fraction, and mg/L stays mg/L"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Each stage multiplies the concentration by its remaining fraction, and mg/L stays mg/L"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "240 * 65 / 100 * 10 / 100 mg/L"
+      },
+      {
+       "id": "opt-b",
+       "label": "240 * (35 + 90) / 100 mg/L"
+      },
+      {
+       "id": "opt-c",
+       "label": "240 * (100 - 35 - 90) / 100 mg/L"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: 240 * 65 / 100 * 10 / 100 mg/L"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact final effluent BOD in mg/L.",
+    "unitOptions": [
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "g-L",
+      "label": "g/L",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "percent",
+      "label": "percent"
+     }
+    ],
+    "expected": "15.6",
+    "expectedUnitId": "mg-L",
+    "absoluteTolerance": "0",
+    "explanation": "After primary: 240 * 65 / 100 = 156 mg/L. After secondary: 156 * 10 / 100 = 15.6 mg/L."
+   }
+  },
+  {
+   "id": "c3ww-ladder92",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the final effluent TSS in mg/L when raw TSS is 200 mg/L, primary treatment removes 40 percent, and secondary treatment removes 85 percent of what remains. Enter the exact unrounded number.",
+   "topicId": "staged-removal",
+   "level": "class1",
+   "assumptions": "Fictional plant: raw TSS = 200 mg/L, primary removal = 40 percent so 60 percent remains, secondary removal = 85 percent so 15 percent of the remainder remains.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Effluent TSS (mg/L) = Raw TSS * (Primary percent + Secondary percent) / 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Effluent TSS (mg/L) = Raw TSS * (100 - Primary percent - Secondary percent) / 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Effluent TSS (mg/L) = Raw TSS * (100 - Primary percent) / 100 * (100 - Secondary percent) / 100"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Effluent TSS (mg/L) = Raw TSS * (100 - Primary percent) / 100 * (100 - Secondary percent) / 100"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Each stage multiplies the concentration by its remaining fraction, and mg/L stays mg/L"
+      },
+      {
+       "id": "opt-b",
+       "label": "Adding the two removal percents gives the total remaining fraction"
+      },
+      {
+       "id": "opt-c",
+       "label": "Subtracting both percents from 100 in one step gives the effluent"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Each stage multiplies the concentration by its remaining fraction, and mg/L stays mg/L"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "200 * (40 + 85) / 100 mg/L"
+      },
+      {
+       "id": "opt-b",
+       "label": "200 * 60 / 100 * 15 / 100 mg/L"
+      },
+      {
+       "id": "opt-c",
+       "label": "200 * (100 - 40 - 85) / 100 mg/L"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: 200 * 60 / 100 * 15 / 100 mg/L"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact final effluent TSS in mg/L.",
+    "unitOptions": [
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "g-L",
+      "label": "g/L",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "percent",
+      "label": "percent"
+     }
+    ],
+    "expected": "18",
+    "expectedUnitId": "mg-L",
+    "absoluteTolerance": "0",
+    "explanation": "After primary: 200 * 60 / 100 = 120 mg/L. After secondary: 120 * 15 / 100 = 18 mg/L."
+   }
+  },
+  {
+   "id": "c3ww-ladder93",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the overall percent BOD removal across a whole plant when influent BOD is 240 mg/L and final effluent BOD is 12 mg/L. Enter the exact unrounded number.",
+   "topicId": "overall-removal",
+   "level": "class1",
+   "assumptions": "Fictional plant samples: influent = 240 mg/L, effluent = 12 mg/L, in the same units.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Percent removal = (Influent - Effluent) / Influent * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Percent removal = Effluent / Influent * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Percent removal = (Influent - Effluent) * Influent * 100"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Percent removal = (Influent - Effluent) / Influent * 100"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The influent unit remains in the answer"
+      },
+      {
+       "id": "opt-b",
+       "label": "Matching units cancel, leaving a dimensionless ratio times 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "The result is in kg/day after multiplying by 100"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Matching units cancel, leaving a dimensionless ratio times 100"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "12 / 240 * 100 percent"
+      },
+      {
+       "id": "opt-b",
+       "label": "(240 - 12) * 240 * 100 percent"
+      },
+      {
+       "id": "opt-c",
+       "label": "(240 - 12) / 240 * 100 percent"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: (240 - 12) / 240 * 100 percent"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact overall percent removal.",
+    "unitOptions": [
+     {
+      "id": "percent",
+      "label": "percent"
+     },
+     {
+      "id": "fraction",
+      "label": "fraction (decimal)",
+      "toExpected": {
+       "numerator": "100",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     }
+    ],
+    "expected": "95",
+    "expectedUnitId": "percent",
+    "absoluteTolerance": "0",
+    "explanation": "Removal = (240 - 12) / 240 * 100 = 95 percent."
+   }
+  },
+  {
+   "id": "c3ww-ladder94",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the overall percent TSS removal across a whole plant when influent TSS is 300 mg/L and final effluent TSS is 24 mg/L. Enter the exact unrounded number.",
+   "topicId": "overall-removal",
+   "level": "class1",
+   "assumptions": "Fictional plant samples: influent = 300 mg/L, effluent = 24 mg/L, in the same units.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Percent removal = Effluent / Influent * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Percent removal = (Influent - Effluent) / Influent * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Percent removal = (Influent - Effluent) * Influent * 100"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Percent removal = (Influent - Effluent) / Influent * 100"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The influent unit remains in the answer"
+      },
+      {
+       "id": "opt-b",
+       "label": "The result is in kg/day after multiplying by 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Matching units cancel, leaving a dimensionless ratio times 100"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Matching units cancel, leaving a dimensionless ratio times 100"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "(300 - 24) / 300 * 100 percent"
+      },
+      {
+       "id": "opt-b",
+       "label": "24 / 300 * 100 percent"
+      },
+      {
+       "id": "opt-c",
+       "label": "(300 - 24) * 300 * 100 percent"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: (300 - 24) / 300 * 100 percent"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact overall percent removal.",
+    "unitOptions": [
+     {
+      "id": "percent",
+      "label": "percent"
+     },
+     {
+      "id": "fraction",
+      "label": "fraction (decimal)",
+      "toExpected": {
+       "numerator": "100",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     }
+    ],
+    "expected": "92",
+    "expectedUnitId": "percent",
+    "absoluteTolerance": "0",
+    "explanation": "Removal = (300 - 24) / 300 * 100 = 92 percent."
+   }
+  },
+  {
+   "id": "c3ww-ladder95",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the biological sludge production in kg/day when 1500 kg/day of BOD is removed. Use the given yield of 0.6 kg of sludge solids per kg of BOD removed. Enter the exact unrounded number.",
+   "topicId": "sludge-production",
+   "level": "class1",
+   "assumptions": "Fictional plant: BOD removed = 1500 kg/day, given yield = 0.6 kg/kg.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Sludge production (kg/day) = BOD removed (kg/day) / Yield"
+      },
+      {
+       "id": "opt-b",
+       "label": "Sludge production (kg/day) = BOD removed (kg/day) + Yield"
+      },
+      {
+       "id": "opt-c",
+       "label": "Sludge production (kg/day) = BOD removed (kg/day) * Yield"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Sludge production (kg/day) = BOD removed (kg/day) * Yield"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "kg/day times a dimensionless kg per kg yield stays in kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "kg/day divided by the yield gives the production"
+      },
+      {
+       "id": "opt-c",
+       "label": "kg/day plus the yield gives kg/day of sludge"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: kg/day times a dimensionless kg per kg yield stays in kg/day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "1500 / 0.6 kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "1500 * 0.6 kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "1500 + 0.6 kg/day"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: 1500 * 0.6 kg/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact sludge production in kg/day.",
+    "unitOptions": [
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "g-day",
+      "label": "g/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "L-day",
+      "label": "L/day"
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     }
+    ],
+    "expected": "900",
+    "expectedUnitId": "kg-day",
+    "absoluteTolerance": "0",
+    "explanation": "Sludge production = 1500 * 0.6 = 900 kg/day."
+   }
+  },
+  {
+   "id": "c3ww-ladder96",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the biological sludge production in kg/day when 1600 kg/day of BOD is removed. Use the given yield of 0.65 kg of sludge solids per kg of BOD removed. Enter the exact unrounded number.",
+   "topicId": "sludge-production",
+   "level": "class1",
+   "assumptions": "Fictional plant: BOD removed = 1600 kg/day, given yield = 0.65 kg/kg.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Sludge production (kg/day) = BOD removed (kg/day) * Yield"
+      },
+      {
+       "id": "opt-b",
+       "label": "Sludge production (kg/day) = BOD removed (kg/day) / Yield"
+      },
+      {
+       "id": "opt-c",
+       "label": "Sludge production (kg/day) = BOD removed (kg/day) + Yield"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Sludge production (kg/day) = BOD removed (kg/day) * Yield"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "kg/day divided by the yield gives the production"
+      },
+      {
+       "id": "opt-b",
+       "label": "kg/day times a dimensionless kg per kg yield stays in kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "kg/day plus the yield gives kg/day of sludge"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: kg/day times a dimensionless kg per kg yield stays in kg/day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "1600 / 0.65 kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "1600 + 0.65 kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "1600 * 0.65 kg/day"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: 1600 * 0.65 kg/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact sludge production in kg/day.",
+    "unitOptions": [
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "g-day",
+      "label": "g/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "L-day",
+      "label": "L/day"
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     }
+    ],
+    "expected": "1040",
+    "expectedUnitId": "kg-day",
+    "absoluteTolerance": "0",
+    "explanation": "Sludge production = 1600 * 0.65 = 1040 kg/day."
+   }
+  },
+  {
+   "id": "c3ww-ladder97",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the effluent solids load in kg/day leaving a secondary clarifier at 5000 m3/day with effluent suspended solids of 15 mg/L. Enter the exact unrounded number.",
+   "topicId": "effluent-solids-load",
+   "level": "class1",
+   "assumptions": "Fictional plant: effluent flow = 5000 m3/day, effluent solids = 15 mg/L. Mass in kg/day equals m3/day times mg/L divided by 1000.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Effluent load (kg/day) = Flow (m3/day) / Concentration (mg/L) * 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Effluent load (kg/day) = Flow (m3/day) * Concentration (mg/L) / 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Effluent load (kg/day) = Concentration (mg/L) / Flow (m3/day) / 1000"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Effluent load (kg/day) = Flow (m3/day) * Concentration (mg/L) / 1000"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "m3/day times mg/L times 1000 gives kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "m3/day divided by mg/L gives kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "m3/day times mg/L divided by 1000 gives kg/day"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: m3/day times mg/L divided by 1000 gives kg/day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "5000 * 15 / 1000 kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "5000 / 15 * 1000 kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "15 / 5000 / 1000 kg/day"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: 5000 * 15 / 1000 kg/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact effluent solids load in kg/day.",
+    "unitOptions": [
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "g-day",
+      "label": "g/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "L-day",
+      "label": "L/day"
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     }
+    ],
+    "expected": "75",
+    "expectedUnitId": "kg-day",
+    "absoluteTolerance": "0",
+    "explanation": "Effluent load = 5000 * 15 / 1000 = 75 kg/day."
+   }
+  },
+  {
+   "id": "c3ww-ladder98",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the blended BOD in mg/L when 2000 m3/day at 200 mg/L mixes with 1000 m3/day at 350 mg/L. Enter the exact unrounded number.",
+   "topicId": "blended-concentration",
+   "level": "class1",
+   "assumptions": "Fictional blend: stream 1 = 2000 m3/day at 200 mg/L, stream 2 = 1000 m3/day at 350 mg/L, total flow = 3000 m3/day.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Blended concentration = (C1 + C2) / 2 with no flow weighting"
+      },
+      {
+       "id": "opt-b",
+       "label": "Blended concentration = (Q1 * C1 + Q2 * C2) * (Q1 + Q2)"
+      },
+      {
+       "id": "opt-c",
+       "label": "Blended concentration = (Q1 * C1 + Q2 * C2) / (Q1 + Q2)"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Blended concentration = (Q1 * C1 + Q2 * C2) / (Q1 + Q2)"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Flow weighted masses add in the numerator and total flow divides, giving mg/L"
+      },
+      {
+       "id": "opt-b",
+       "label": "A simple average of the concentrations gives the blend"
+      },
+      {
+       "id": "opt-c",
+       "label": "Multiplying by total flow gives mg/L"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Flow weighted masses add in the numerator and total flow divides, giving mg/L"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "(200 + 350) / 2 mg/L"
+      },
+      {
+       "id": "opt-b",
+       "label": "(2000 * 200 + 1000 * 350) / (2000 + 1000) mg/L"
+      },
+      {
+       "id": "opt-c",
+       "label": "(2000 * 200 + 1000 * 350) * (2000 + 1000) mg/L"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: (2000 * 200 + 1000 * 350) / (2000 + 1000) mg/L"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact blended BOD in mg/L.",
+    "unitOptions": [
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "g-L",
+      "label": "g/L",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "percent",
+      "label": "percent"
+     }
+    ],
+    "expected": "250",
+    "expectedUnitId": "mg-L",
+    "absoluteTolerance": "0",
+    "explanation": "Blended BOD = (2000 * 200 + 1000 * 350) / 3000 = 750000 / 3000 = 250 mg/L."
+   }
+  },
+  {
+   "id": "c3ww-ladder99",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the blended TSS in mg/L when 3000 m3/day at 180 mg/L mixes with 1000 m3/day at 260 mg/L. Enter the exact unrounded number.",
+   "topicId": "blended-concentration",
+   "level": "class1",
+   "assumptions": "Fictional blend: stream 1 = 3000 m3/day at 180 mg/L, stream 2 = 1000 m3/day at 260 mg/L, total flow = 4000 m3/day.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Blended concentration = (Q1 * C1 + Q2 * C2) / (Q1 + Q2)"
+      },
+      {
+       "id": "opt-b",
+       "label": "Blended concentration = (C1 + C2) / 2 with no flow weighting"
+      },
+      {
+       "id": "opt-c",
+       "label": "Blended concentration = (Q1 * C1 + Q2 * C2) * (Q1 + Q2)"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Blended concentration = (Q1 * C1 + Q2 * C2) / (Q1 + Q2)"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "A simple average of the concentrations gives the blend"
+      },
+      {
+       "id": "opt-b",
+       "label": "Flow weighted masses add in the numerator and total flow divides, giving mg/L"
+      },
+      {
+       "id": "opt-c",
+       "label": "Multiplying by total flow gives mg/L"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Flow weighted masses add in the numerator and total flow divides, giving mg/L"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "(180 + 260) / 2 mg/L"
+      },
+      {
+       "id": "opt-b",
+       "label": "(3000 * 180 + 1000 * 260) * (3000 + 1000) mg/L"
+      },
+      {
+       "id": "opt-c",
+       "label": "(3000 * 180 + 1000 * 260) / (3000 + 1000) mg/L"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: (3000 * 180 + 1000 * 260) / (3000 + 1000) mg/L"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact blended TSS in mg/L.",
+    "unitOptions": [
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "g-L",
+      "label": "g/L",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "percent",
+      "label": "percent"
+     }
+    ],
+    "expected": "200",
+    "expectedUnitId": "mg-L",
+    "absoluteTolerance": "0",
+    "explanation": "Blended TSS = (3000 * 180 + 1000 * 260) / 4000 = 800000 / 4000 = 200 mg/L."
+   }
+  },
+  {
+   "id": "c3ww-error01",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids retention time calculation for aeration volume = 2000 m3, MLSS = 3000 mg/L and total solids loss = 400 kg/d.",
+   "topicId": "solids-retention-time",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 plant: aeration volume = 2000 m3, MLSS = 3000 mg/L, total solids loss in waste sludge and effluent = 400 kg/d, 1000 g = 1 kg. Target unit: d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SRT = MLSS inventory / daily solids loss"
+    },
+    {
+     "id": "line2",
+     "label": "2. MLSS inventory = 2000 m3 * 3000 mg/L / 100 = 60000 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. SRT = 60000 kg / 400 kg/d = 150 d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. MLSS inventory = 2000 m3 * 3000 mg/L / 1000 = 6000 kg",
+   "explanation": "Line 2 divided by 100 instead of 1000. Correct inventory is 6000 kg, so SRT is 6000 / 400 = 15 d."
+  },
+  {
+   "id": "c3ww-error02",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids retention time calculation for aeration volume = 1500 m3, MLSS = 2000 mg/L and total solids loss = 300 kg/d.",
+   "topicId": "solids-retention-time",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 plant: aeration volume = 1500 m3, MLSS = 2000 mg/L, total solids loss in waste sludge and effluent = 300 kg/d, 1000 g = 1 kg. Target unit: d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SRT = MLSS inventory / daily solids loss"
+    },
+    {
+     "id": "line2",
+     "label": "2. MLSS inventory = 1500 m3 * 2000 mg/L / 100 = 30000 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. SRT = 30000 kg / 300 kg/d = 100 d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. MLSS inventory = 1500 m3 * 2000 mg/L / 1000 = 3000 kg",
+   "explanation": "Line 2 divided by 100 instead of 1000. Correct inventory is 3000 kg, so SRT is 3000 / 300 = 10 d."
+  },
+  {
+   "id": "c3ww-error03",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids retention time calculation for aeration volume = 2500 m3, MLSS = 2400 mg/L and total solids loss = 500 kg/d.",
+   "topicId": "solids-retention-time",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 plant: aeration volume = 2500 m3, MLSS = 2400 mg/L, total solids loss in waste sludge and effluent = 500 kg/d, 1000 g = 1 kg. Target unit: d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SRT = MLSS inventory / daily solids loss"
+    },
+    {
+     "id": "line2",
+     "label": "2. MLSS inventory = 2500 m3 * 2400 mg/L / 100 = 60000 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. SRT = 60000 kg / 500 kg/d = 120 d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. MLSS inventory = 2500 m3 * 2400 mg/L / 1000 = 6000 kg",
+   "explanation": "Line 2 divided by 100 instead of 1000. Correct inventory is 6000 kg, so SRT is 6000 / 500 = 12 d."
+  },
+  {
+   "id": "c3ww-error04",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids retention time calculation for aeration volume = 1000 m3, MLSS = 3500 mg/L and total solids loss = 350 kg/d.",
+   "topicId": "solids-retention-time",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 plant: aeration volume = 1000 m3, MLSS = 3500 mg/L, total solids loss in waste sludge and effluent = 350 kg/d, 1000 g = 1 kg. Target unit: d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SRT = MLSS inventory / daily solids loss"
+    },
+    {
+     "id": "line2",
+     "label": "2. MLSS inventory = 1000 m3 * 3500 mg/L / 100 = 35000 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. SRT = 35000 kg / 350 kg/d = 100 d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. MLSS inventory = 1000 m3 * 3500 mg/L / 1000 = 3500 kg",
+   "explanation": "Line 2 divided by 100 instead of 1000. Correct inventory is 3500 kg, so SRT is 3500 / 350 = 10 d."
+  },
+  {
+   "id": "c3ww-error05",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids retention time calculation for aeration volume = 3000 m3, MLSS = 2000 mg/L and total solids loss = 600 kg/d.",
+   "topicId": "solids-retention-time",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 plant: aeration volume = 3000 m3, MLSS = 2000 mg/L, total solids loss in waste sludge and effluent = 600 kg/d, 1000 g = 1 kg. Target unit: d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SRT = MLSS inventory / daily solids loss"
+    },
+    {
+     "id": "line2",
+     "label": "2. MLSS inventory = 3000 m3 * 2000 mg/L / 100 = 60000 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. SRT = 60000 kg / 600 kg/d = 100 d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. MLSS inventory = 3000 m3 * 2000 mg/L / 1000 = 6000 kg",
+   "explanation": "Line 2 divided by 100 instead of 1000. Correct inventory is 6000 kg, so SRT is 6000 / 600 = 10 d."
+  },
+  {
+   "id": "c3ww-error06",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids retention time calculation for aeration volume = 2000 m3, MLSS = 3000 mg/L, waste sludge loss = 240 kg/d and effluent solids loss = 60 kg/d.",
+   "topicId": "solids-retention-time",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 plant: aeration volume = 2000 m3, MLSS = 3000 mg/L, waste activated sludge loss = 240 kg/d, effluent solids loss = 60 kg/d, 1000 g = 1 kg. Target unit: d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SRT = MLSS inventory / (waste loss + effluent loss)"
+    },
+    {
+     "id": "line2",
+     "label": "2. MLSS inventory = 2000 m3 * 3000 mg/L / 1000 = 6000 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily solids loss = 240 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. SRT = 6000 kg / 240 kg/d = 25 d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Daily solids loss = 240 kg/d + 60 kg/d = 300 kg/d",
+   "explanation": "Line 3 omitted the effluent solids loss of 60 kg/d. Correct total loss is 300 kg/d, so SRT is 6000 / 300 = 20 d."
+  },
+  {
+   "id": "c3ww-error07",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids retention time calculation for aeration volume = 1600 m3, MLSS = 2500 mg/L, waste sludge loss = 400 kg/d and effluent solids loss = 100 kg/d.",
+   "topicId": "solids-retention-time",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 plant: aeration volume = 1600 m3, MLSS = 2500 mg/L, waste activated sludge loss = 400 kg/d, effluent solids loss = 100 kg/d, 1000 g = 1 kg. Target unit: d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SRT = MLSS inventory / (waste loss + effluent loss)"
+    },
+    {
+     "id": "line2",
+     "label": "2. MLSS inventory = 1600 m3 * 2500 mg/L / 1000 = 4000 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily solids loss = 400 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. SRT = 4000 kg / 400 kg/d = 10 d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Daily solids loss = 400 kg/d + 100 kg/d = 500 kg/d",
+   "explanation": "Line 3 omitted the effluent solids loss of 100 kg/d. Correct total loss is 500 kg/d, so SRT is 4000 / 500 = 8 d."
+  },
+  {
+   "id": "c3ww-error08",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids retention time calculation for aeration volume = 2400 m3, MLSS = 2500 mg/L, waste sludge loss = 150 kg/d and effluent solids loss = 50 kg/d.",
+   "topicId": "solids-retention-time",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 plant: aeration volume = 2400 m3, MLSS = 2500 mg/L, waste activated sludge loss = 150 kg/d, effluent solids loss = 50 kg/d, 1000 g = 1 kg. Target unit: d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SRT = MLSS inventory / (waste loss + effluent loss)"
+    },
+    {
+     "id": "line2",
+     "label": "2. MLSS inventory = 2400 m3 * 2500 mg/L / 1000 = 6000 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily solids loss = 150 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. SRT = 6000 kg / 150 kg/d = 40 d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Daily solids loss = 150 kg/d + 50 kg/d = 200 kg/d",
+   "explanation": "Line 3 omitted the effluent solids loss of 50 kg/d. Correct total loss is 200 kg/d, so SRT is 6000 / 200 = 30 d."
+  },
+  {
+   "id": "c3ww-error09",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids retention time calculation for aeration volume = 1800 m3, MLSS = 2000 mg/L, waste sludge loss = 320 kg/d and effluent solids loss = 80 kg/d.",
+   "topicId": "solids-retention-time",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 plant: aeration volume = 1800 m3, MLSS = 2000 mg/L, waste activated sludge loss = 320 kg/d, effluent solids loss = 80 kg/d, 1000 g = 1 kg. Target unit: d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SRT = MLSS inventory / (waste loss + effluent loss)"
+    },
+    {
+     "id": "line2",
+     "label": "2. MLSS inventory = 1800 m3 * 2000 mg/L / 1000 = 3600 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily solids loss = 320 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. SRT = 3600 kg / 320 kg/d = 11.25 d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Daily solids loss = 320 kg/d + 80 kg/d = 400 kg/d",
+   "explanation": "Line 3 omitted the effluent solids loss of 80 kg/d. Correct total loss is 400 kg/d, so SRT is 3600 / 400 = 9 d."
+  },
+  {
+   "id": "c3ww-error10",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids retention time calculation for an MLSS inventory of 6000 kg and a total solids loss of 500 kg/d.",
+   "topicId": "solids-retention-time",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 plant: MLSS inventory = 6000 kg, total solids loss = 500 kg/d. Target unit: d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SRT = MLSS inventory / daily solids loss"
+    },
+    {
+     "id": "line2",
+     "label": "2. SRT = 6000 kg / 500 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. SRT = 15 d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. SRT = 6000 / 500 = 12 d",
+   "explanation": "Line 3 divided incorrectly. 6000 / 500 = 12 d, not 15 d."
+  },
+  {
+   "id": "c3ww-error100",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this clarifier feed mass balance for Q = 6000 m3/d, return sludge flow = 3000 m3/d and MLSS = 3000 mg/L.",
+   "topicId": "mass-balance",
+   "level": "class1",
+   "assumptions": "Fictional secondary clarifier feed: Q = 6000 m3/d, return activated sludge flow = 3000 m3/d, MLSS = 3000 mg/L, 1000 g = 1 kg. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total flow = Q + QR = 6000 m3/d + 3000 m3/d = 8000 m3/d"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids to clarifier = 8000 m3/d * 3000 mg/L / 1000 = 24000 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Total flow = Q + QR = 6000 m3/d + 3000 m3/d = 9000 m3/d",
+   "explanation": "Line 1 added incorrectly. 6000 + 3000 = 9000 m3/d, so solids to the clarifier are 9000 * 3000 / 1000 = 27000 kg/d."
+  },
+  {
+   "id": "c3ww-error11",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids retention time calculation for an MLSS inventory of 3000 kg and a total solids loss of 250 kg/d.",
+   "topicId": "solids-retention-time",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 plant: MLSS inventory = 3000 kg, total solids loss = 250 kg/d. Target unit: d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SRT = MLSS inventory / daily solids loss"
+    },
+    {
+     "id": "line2",
+     "label": "2. SRT = 3000 kg / 250 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. SRT = 15 d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. SRT = 3000 / 250 = 12 d",
+   "explanation": "Line 3 divided incorrectly. 3000 / 250 = 12 d, not 15 d."
+  },
+  {
+   "id": "c3ww-error12",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids retention time calculation for an MLSS inventory of 8000 kg and a total solids loss of 400 kg/d.",
+   "topicId": "solids-retention-time",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 plant: MLSS inventory = 8000 kg, total solids loss = 400 kg/d. Target unit: d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SRT = MLSS inventory / daily solids loss"
+    },
+    {
+     "id": "line2",
+     "label": "2. SRT = 8000 kg / 400 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. SRT = 25 d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. SRT = 8000 / 400 = 20 d",
+   "explanation": "Line 3 divided incorrectly. 8000 / 400 = 20 d, not 25 d."
+  },
+  {
+   "id": "c3ww-error13",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this wasting calculation for an MLSS inventory of 6000 kg and a target SRT of 15 d.",
+   "topicId": "wasting-rate",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 plant: MLSS inventory = 6000 kg, target SRT = 15 d, effluent solids loss is neglected for this wasting estimate. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Required wasting = MLSS inventory / target SRT"
+    },
+    {
+     "id": "line2",
+     "label": "2. Required wasting = 6000 kg * 15 d = 90000 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Required wasting = 6000 kg / 15 d = 400 kg/d",
+   "explanation": "Line 2 multiplied instead of dividing. Required wasting is 6000 / 15 = 400 kg/d."
+  },
+  {
+   "id": "c3ww-error14",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this wasting calculation for an MLSS inventory of 4500 kg and a target SRT of 10 d.",
+   "topicId": "wasting-rate",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 plant: MLSS inventory = 4500 kg, target SRT = 10 d, effluent solids loss is neglected for this wasting estimate. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Required wasting = MLSS inventory / target SRT"
+    },
+    {
+     "id": "line2",
+     "label": "2. Required wasting = 4500 kg * 10 d = 45000 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Required wasting = 4500 kg / 10 d = 450 kg/d",
+   "explanation": "Line 2 multiplied instead of dividing. Required wasting is 4500 / 10 = 450 kg/d."
+  },
+  {
+   "id": "c3ww-error15",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this food to microorganism calculation for BOD load = 400 kg/d, aeration volume = 1000 m3 and MLSS = 2000 mg/L.",
+   "topicId": "food-to-microorganism",
+   "level": "class1",
+   "assumptions": "Fictional aeration tank: BOD load = 400 kg/d, volume = 1000 m3, MLSS = 2000 mg/L, 1000 g = 1 kg. Target: F/M per d, using MLSS as the microorganism basis as stated in the worked lines.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. MLSS mass = V * MLSS / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. MLSS mass = 1000 m3 * 2000 mg/L / 100 = 20000 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. F/M = 400 kg/d / 20000 kg = 0.02 per d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. MLSS mass = 1000 m3 * 2000 mg/L / 1000 = 2000 kg",
+   "explanation": "Line 2 divided by 100 instead of 1000. Correct MLSS mass is 2000 kg, so F/M is 400 / 2000 = 0.2 per d."
+  },
+  {
+   "id": "c3ww-error16",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this food to microorganism calculation for BOD load = 500 kg/d, aeration volume = 1250 m3 and MLSS = 2000 mg/L.",
+   "topicId": "food-to-microorganism",
+   "level": "class1",
+   "assumptions": "Fictional aeration tank: BOD load = 500 kg/d, volume = 1250 m3, MLSS = 2000 mg/L, 1000 g = 1 kg. Target: F/M per d, using MLSS as the microorganism basis as stated in the worked lines.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. MLSS mass = V * MLSS / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. MLSS mass = 1250 m3 * 2000 mg/L / 100 = 25000 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. F/M = 500 kg/d / 25000 kg = 0.02 per d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. MLSS mass = 1250 m3 * 2000 mg/L / 1000 = 2500 kg",
+   "explanation": "Line 2 divided by 100 instead of 1000. Correct MLSS mass is 2500 kg, so F/M is 500 / 2500 = 0.2 per d."
+  },
+  {
+   "id": "c3ww-error17",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this food to microorganism calculation for BOD load = 600 kg/d, aeration volume = 1500 m3 and MLSS = 2000 mg/L.",
+   "topicId": "food-to-microorganism",
+   "level": "class1",
+   "assumptions": "Fictional aeration tank: BOD load = 600 kg/d, volume = 1500 m3, MLSS = 2000 mg/L, 1000 g = 1 kg. Target: F/M per d, using MLSS as the microorganism basis as stated in the worked lines.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. MLSS mass = V * MLSS / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. MLSS mass = 1500 m3 * 2000 mg/L / 100 = 30000 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. F/M = 600 kg/d / 30000 kg = 0.02 per d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. MLSS mass = 1500 m3 * 2000 mg/L / 1000 = 3000 kg",
+   "explanation": "Line 2 divided by 100 instead of 1000. Correct MLSS mass is 3000 kg, so F/M is 600 / 3000 = 0.2 per d."
+  },
+  {
+   "id": "c3ww-error18",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this food to microorganism calculation for BOD load = 360 kg/d, aeration volume = 1200 m3 and MLSS = 2500 mg/L.",
+   "topicId": "food-to-microorganism",
+   "level": "class1",
+   "assumptions": "Fictional aeration tank: BOD load = 360 kg/d, volume = 1200 m3, MLSS = 2500 mg/L, 1000 g = 1 kg. Target: F/M per d, using MLSS as the microorganism basis as stated in the worked lines.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. MLSS mass = V * MLSS / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. MLSS mass = 1200 m3 * 2500 mg/L / 100 = 30000 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. F/M = 360 kg/d / 30000 kg = 0.012 per d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. MLSS mass = 1200 m3 * 2500 mg/L / 1000 = 3000 kg",
+   "explanation": "Line 2 divided by 100 instead of 1000. Correct MLSS mass is 3000 kg, so F/M is 360 / 3000 = 0.12 per d."
+  },
+  {
+   "id": "c3ww-error19",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this food to microorganism calculation for BOD load = 480 kg/d, aeration volume = 1000 m3, MLSS = 3000 mg/L and MLVSS = 2400 mg/L.",
+   "topicId": "food-to-microorganism",
+   "level": "class1",
+   "assumptions": "Fictional aeration tank: BOD load = 480 kg/d, volume = 1000 m3, MLSS = 3000 mg/L, MLVSS = 2400 mg/L, 1000 g = 1 kg. F/M is based on MLVSS. Target: F/M per d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. MLVSS mass = V * MLVSS / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. MLVSS mass = 1000 m3 * 3000 mg/L / 1000 = 3000 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. F/M = 480 kg/d / 3000 kg = 0.16 per d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. MLVSS mass = 1000 m3 * 2400 mg/L / 1000 = 2400 kg",
+   "explanation": "Line 2 used the MLSS value 3000 mg/L instead of the MLVSS value 2400 mg/L. Correct MLVSS mass is 2400 kg, so F/M is 480 / 2400 = 0.2 per d."
+  },
+  {
+   "id": "c3ww-error20",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this food to microorganism calculation for BOD load = 500 kg/d, aeration volume = 1250 m3, MLSS = 3200 mg/L and MLVSS = 2500 mg/L.",
+   "topicId": "food-to-microorganism",
+   "level": "class1",
+   "assumptions": "Fictional aeration tank: BOD load = 500 kg/d, volume = 1250 m3, MLSS = 3200 mg/L, MLVSS = 2500 mg/L, 1000 g = 1 kg. F/M is based on MLVSS. Target: F/M per d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. MLVSS mass = V * MLVSS / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. MLVSS mass = 1250 m3 * 3200 mg/L / 1000 = 4000 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. F/M = 500 kg/d / 4000 kg = 0.125 per d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. MLVSS mass = 1250 m3 * 2500 mg/L / 1000 = 3125 kg",
+   "explanation": "Line 2 used the MLSS value 3200 mg/L instead of the MLVSS value 2500 mg/L. Correct MLVSS mass is 3125 kg, so F/M is 500 / 3125 = 0.16 per d."
+  },
+  {
+   "id": "c3ww-error21",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this food to microorganism calculation for BOD load = 420 kg/d, aeration volume = 1000 m3, MLSS = 2800 mg/L and MLVSS = 2100 mg/L.",
+   "topicId": "food-to-microorganism",
+   "level": "class1",
+   "assumptions": "Fictional aeration tank: BOD load = 420 kg/d, volume = 1000 m3, MLSS = 2800 mg/L, MLVSS = 2100 mg/L, 1000 g = 1 kg. F/M is based on MLVSS. Target: F/M per d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. MLVSS mass = V * MLVSS / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. MLVSS mass = 1000 m3 * 2800 mg/L / 1000 = 2800 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. F/M = 420 kg/d / 2800 kg = 0.15 per d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. MLVSS mass = 1000 m3 * 2100 mg/L / 1000 = 2100 kg",
+   "explanation": "Line 2 used the MLSS value 2800 mg/L instead of the MLVSS value 2100 mg/L. Correct MLVSS mass is 2100 kg, so F/M is 420 / 2100 = 0.2 per d."
+  },
+  {
+   "id": "c3ww-error22",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this food to microorganism calculation for BOD load = 640 kg/d, aeration volume = 1600 m3, MLSS = 2500 mg/L and MLVSS = 2000 mg/L.",
+   "topicId": "food-to-microorganism",
+   "level": "class1",
+   "assumptions": "Fictional aeration tank: BOD load = 640 kg/d, volume = 1600 m3, MLSS = 2500 mg/L, MLVSS = 2000 mg/L, 1000 g = 1 kg. F/M is based on MLVSS. Target: F/M per d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. MLVSS mass = V * MLVSS / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. MLVSS mass = 1600 m3 * 2500 mg/L / 1000 = 4000 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. F/M = 640 kg/d / 4000 kg = 0.16 per d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. MLVSS mass = 1600 m3 * 2000 mg/L / 1000 = 3200 kg",
+   "explanation": "Line 2 used the MLSS value 2500 mg/L instead of the MLVSS value 2000 mg/L. Correct MLVSS mass is 3200 kg, so F/M is 640 / 3200 = 0.2 per d."
+  },
+  {
+   "id": "c3ww-error23",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this food to microorganism calculation for BOD load = 250 kg/d, aeration volume = 1000 m3 and MLSS = 2500 mg/L.",
+   "topicId": "food-to-microorganism",
+   "level": "class1",
+   "assumptions": "Fictional aeration tank: BOD load = 250 kg/d, volume = 1000 m3, MLSS = 2500 mg/L, 1000 g = 1 kg. Target: F/M per d, using MLSS as the microorganism basis as stated in the worked lines.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. MLSS mass = 1000 m3 * 2500 mg/L / 1000 = 2500 kg"
+    },
+    {
+     "id": "line2",
+     "label": "2. F/M = BOD load / MLSS mass"
+    },
+    {
+     "id": "line3",
+     "label": "3. F/M = 2500 kg / 250 kg/d = 10 per d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. F/M = 250 kg/d / 2500 kg = 0.1 per d",
+   "explanation": "Line 3 inverted the ratio. F/M is BOD load divided by MLSS mass, 250 / 2500 = 0.1 per d."
+  },
+  {
+   "id": "c3ww-error24",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this food to microorganism calculation for BOD load = 240 kg/d, aeration volume = 800 m3 and MLSS = 3000 mg/L.",
+   "topicId": "food-to-microorganism",
+   "level": "class1",
+   "assumptions": "Fictional aeration tank: BOD load = 240 kg/d, volume = 800 m3, MLSS = 3000 mg/L, 1000 g = 1 kg. Target: F/M per d, using MLSS as the microorganism basis as stated in the worked lines.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. MLSS mass = 800 m3 * 3000 mg/L / 1000 = 2400 kg"
+    },
+    {
+     "id": "line2",
+     "label": "2. F/M = BOD load / MLSS mass"
+    },
+    {
+     "id": "line3",
+     "label": "3. F/M = 2400 kg / 240 kg/d = 10 per d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. F/M = 240 kg/d / 2400 kg = 0.1 per d",
+   "explanation": "Line 3 inverted the ratio. F/M is BOD load divided by MLSS mass, 240 / 2400 = 0.1 per d."
+  },
+  {
+   "id": "c3ww-error25",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this food to microorganism calculation for BOD load = 300 kg/d, aeration volume = 1500 m3 and MLSS = 2000 mg/L.",
+   "topicId": "food-to-microorganism",
+   "level": "class1",
+   "assumptions": "Fictional aeration tank: BOD load = 300 kg/d, volume = 1500 m3, MLSS = 2000 mg/L, 1000 g = 1 kg. Target: F/M per d, using MLSS as the microorganism basis as stated in the worked lines.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. MLSS mass = 1500 m3 * 2000 mg/L / 1000 = 3000 kg"
+    },
+    {
+     "id": "line2",
+     "label": "2. F/M = BOD load / MLSS mass"
+    },
+    {
+     "id": "line3",
+     "label": "3. F/M = 3000 kg / 300 kg/d = 10 per d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. F/M = 300 kg/d / 3000 kg = 0.1 per d",
+   "explanation": "Line 3 inverted the ratio. F/M is BOD load divided by MLSS mass, 300 / 3000 = 0.1 per d."
+  },
+  {
+   "id": "c3ww-error26",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this food to microorganism calculation for Q = 4000 m3/d, influent BOD = 200 mg/L, aeration volume = 2000 m3 and MLSS = 2000 mg/L.",
+   "topicId": "food-to-microorganism",
+   "level": "class1",
+   "assumptions": "Fictional aeration tank: Q = 4000 m3/d, influent BOD = 200 mg/L, volume = 2000 m3, MLSS = 2000 mg/L, 1000 g = 1 kg. Target: F/M per d, using MLSS as the microorganism basis as stated in the worked lines.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. BOD load = Q * BOD / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. BOD load = 4000 m3/d * 200 mg/L / 100 = 8000 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. MLSS mass = 2000 m3 * 2000 mg/L / 1000 = 4000 kg"
+    },
+    {
+     "id": "line4",
+     "label": "4. F/M = 8000 kg/d / 4000 kg = 2 per d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. BOD load = 4000 m3/d * 200 mg/L / 1000 = 800 kg/d",
+   "explanation": "Line 2 divided by 100 instead of 1000. Correct BOD load is 800 kg/d, so F/M is 800 / 4000 = 0.2 per d."
+  },
+  {
+   "id": "c3ww-error27",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this food to microorganism calculation for Q = 3000 m3/d, influent BOD = 160 mg/L, aeration volume = 1500 m3 and MLSS = 2000 mg/L.",
+   "topicId": "food-to-microorganism",
+   "level": "class1",
+   "assumptions": "Fictional aeration tank: Q = 3000 m3/d, influent BOD = 160 mg/L, volume = 1500 m3, MLSS = 2000 mg/L, 1000 g = 1 kg. Target: F/M per d, using MLSS as the microorganism basis as stated in the worked lines.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. BOD load = Q * BOD / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. BOD load = 3000 m3/d * 160 mg/L / 100 = 4800 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. MLSS mass = 1500 m3 * 2000 mg/L / 1000 = 3000 kg"
+    },
+    {
+     "id": "line4",
+     "label": "4. F/M = 4800 kg/d / 3000 kg = 1.6 per d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. BOD load = 3000 m3/d * 160 mg/L / 1000 = 480 kg/d",
+   "explanation": "Line 2 divided by 100 instead of 1000. Correct BOD load is 480 kg/d, so F/M is 480 / 3000 = 0.16 per d."
+  },
+  {
+   "id": "c3ww-error28",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sludge volume index calculation for settled volume = 300 mL/L and MLSS = 3000 mg/L.",
+   "topicId": "sludge-volume-index",
+   "level": "class1",
+   "assumptions": "Fictional settleometer test: settled volume after 30 min = 300 mL/L, MLSS = 3000 mg/L. SVI in mL/g equals settled volume times 1000 divided by MLSS in mg/L. Target unit: mL/g.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SVI = Settled volume * 1000 / MLSS"
+    },
+    {
+     "id": "line2",
+     "label": "2. SVI = 300 / 3000 = 0.1 mL/g"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. SVI = 300 * 1000 / 3000 = 100 mL/g",
+   "explanation": "Line 2 omitted the factor of 1000 that converts MLSS from mg/L to g/L. Correct SVI is 300 * 1000 / 3000 = 100 mL/g."
+  },
+  {
+   "id": "c3ww-error29",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sludge volume index calculation for settled volume = 270 mL/L and MLSS = 2700 mg/L.",
+   "topicId": "sludge-volume-index",
+   "level": "class1",
+   "assumptions": "Fictional settleometer test: settled volume after 30 min = 270 mL/L, MLSS = 2700 mg/L. SVI in mL/g equals settled volume times 1000 divided by MLSS in mg/L. Target unit: mL/g.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SVI = Settled volume * 1000 / MLSS"
+    },
+    {
+     "id": "line2",
+     "label": "2. SVI = 270 / 2700 = 0.1 mL/g"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. SVI = 270 * 1000 / 2700 = 100 mL/g",
+   "explanation": "Line 2 omitted the factor of 1000 that converts MLSS from mg/L to g/L. Correct SVI is 270 * 1000 / 2700 = 100 mL/g."
+  },
+  {
+   "id": "c3ww-error30",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sludge volume index calculation for settled volume = 330 mL/L and MLSS = 3000 mg/L.",
+   "topicId": "sludge-volume-index",
+   "level": "class1",
+   "assumptions": "Fictional settleometer test: settled volume after 30 min = 330 mL/L, MLSS = 3000 mg/L. SVI in mL/g equals settled volume times 1000 divided by MLSS in mg/L. Target unit: mL/g.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SVI = Settled volume * 1000 / MLSS"
+    },
+    {
+     "id": "line2",
+     "label": "2. SVI = 330 / 3000 = 0.11 mL/g"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. SVI = 330 * 1000 / 3000 = 110 mL/g",
+   "explanation": "Line 2 omitted the factor of 1000 that converts MLSS from mg/L to g/L. Correct SVI is 330 * 1000 / 3000 = 110 mL/g."
+  },
+  {
+   "id": "c3ww-error31",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sludge volume index calculation for settled volume = 240 mL/L and MLSS = 2000 mg/L.",
+   "topicId": "sludge-volume-index",
+   "level": "class1",
+   "assumptions": "Fictional settleometer test: settled volume after 30 min = 240 mL/L, MLSS = 2000 mg/L. SVI in mL/g equals settled volume times 1000 divided by MLSS in mg/L. Target unit: mL/g.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SVI = Settled volume * 1000 / MLSS"
+    },
+    {
+     "id": "line2",
+     "label": "2. SVI = 240 / 2000 = 0.12 mL/g"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. SVI = 240 * 1000 / 2000 = 120 mL/g",
+   "explanation": "Line 2 omitted the factor of 1000 that converts MLSS from mg/L to g/L. Correct SVI is 240 * 1000 / 2000 = 120 mL/g."
+  },
+  {
+   "id": "c3ww-error32",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sludge volume index calculation for settled volume = 350 mL/L and MLSS = 2500 mg/L.",
+   "topicId": "sludge-volume-index",
+   "level": "class1",
+   "assumptions": "Fictional settleometer test: settled volume after 30 min = 350 mL/L, MLSS = 2500 mg/L. SVI in mL/g equals settled volume times 1000 divided by MLSS in mg/L. Target unit: mL/g.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SVI = Settled volume * 1000 / MLSS"
+    },
+    {
+     "id": "line2",
+     "label": "2. SVI = 350 / 2500 = 0.14 mL/g"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. SVI = 350 * 1000 / 2500 = 140 mL/g",
+   "explanation": "Line 2 omitted the factor of 1000 that converts MLSS from mg/L to g/L. Correct SVI is 350 * 1000 / 2500 = 140 mL/g."
+  },
+  {
+   "id": "c3ww-error33",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sludge volume index calculation for settled volume = 300 mL/L and MLSS = 2500 mg/L.",
+   "topicId": "sludge-volume-index",
+   "level": "class1",
+   "assumptions": "Fictional settleometer test: settled volume after 30 min = 300 mL/L, MLSS = 2500 mg/L. SVI in mL/g equals settled volume times 1000 divided by MLSS in mg/L. Target unit: mL/g.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SVI = Settled volume * 1000 / MLSS"
+    },
+    {
+     "id": "line2",
+     "label": "2. SVI = 300 * 100 / 2500 = 12 mL/g"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. SVI = 300 * 1000 / 2500 = 120 mL/g",
+   "explanation": "Line 2 used a factor of 100 instead of 1000. Correct SVI is 300 * 1000 / 2500 = 120 mL/g."
+  },
+  {
+   "id": "c3ww-error34",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sludge volume index calculation for settled volume = 260 mL/L and MLSS = 2600 mg/L.",
+   "topicId": "sludge-volume-index",
+   "level": "class1",
+   "assumptions": "Fictional settleometer test: settled volume after 30 min = 260 mL/L, MLSS = 2600 mg/L. SVI in mL/g equals settled volume times 1000 divided by MLSS in mg/L. Target unit: mL/g.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SVI = Settled volume * 1000 / MLSS"
+    },
+    {
+     "id": "line2",
+     "label": "2. SVI = 260 * 100 / 2600 = 10 mL/g"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. SVI = 260 * 1000 / 2600 = 100 mL/g",
+   "explanation": "Line 2 used a factor of 100 instead of 1000. Correct SVI is 260 * 1000 / 2600 = 100 mL/g."
+  },
+  {
+   "id": "c3ww-error35",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sludge volume index calculation for settled volume = 200 mL/L and MLSS = 2000 mg/L.",
+   "topicId": "sludge-volume-index",
+   "level": "class1",
+   "assumptions": "Fictional settleometer test: settled volume after 30 min = 200 mL/L, MLSS = 2000 mg/L. SVI in mL/g equals settled volume times 1000 divided by MLSS in mg/L. Target unit: mL/g.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SVI = Settled volume * 1000 / MLSS"
+    },
+    {
+     "id": "line2",
+     "label": "2. SVI = 200 * 100 / 2000 = 10 mL/g"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. SVI = 200 * 1000 / 2000 = 100 mL/g",
+   "explanation": "Line 2 used a factor of 100 instead of 1000. Correct SVI is 200 * 1000 / 2000 = 100 mL/g."
+  },
+  {
+   "id": "c3ww-error36",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sludge volume index calculation for settled volume = 450 mL/L and MLSS = 3000 mg/L.",
+   "topicId": "sludge-volume-index",
+   "level": "class1",
+   "assumptions": "Fictional settleometer test: settled volume after 30 min = 450 mL/L, MLSS = 3000 mg/L. SVI in mL/g equals settled volume times 1000 divided by MLSS in mg/L. Target unit: mL/g.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SVI = Settled volume * 1000 / MLSS"
+    },
+    {
+     "id": "line2",
+     "label": "2. SVI = 450 * 100 / 3000 = 15 mL/g"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. SVI = 450 * 1000 / 3000 = 150 mL/g",
+   "explanation": "Line 2 used a factor of 100 instead of 1000. Correct SVI is 450 * 1000 / 3000 = 150 mL/g."
+  },
+  {
+   "id": "c3ww-error37",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sludge volume index calculation for settled volume = 280 mL/L and MLSS = 2800 mg/L.",
+   "topicId": "sludge-volume-index",
+   "level": "class1",
+   "assumptions": "Fictional settleometer test: settled volume after 30 min = 280 mL/L, MLSS = 2800 mg/L. SVI in mL/g equals settled volume times 1000 divided by MLSS in mg/L. Target unit: mL/g.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SVI = Settled volume * 1000 / MLSS"
+    },
+    {
+     "id": "line2",
+     "label": "2. SVI = 280 * 1000 / 2800"
+    },
+    {
+     "id": "line3",
+     "label": "3. SVI = 90 mL/g"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. SVI = 280 * 1000 / 2800 = 100 mL/g",
+   "explanation": "Line 3 divided incorrectly. 280 * 1000 / 2800 = 100 mL/g, not 90 mL/g."
+  },
+  {
+   "id": "c3ww-error38",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sludge volume index calculation for settled volume = 320 mL/L and MLSS = 3200 mg/L.",
+   "topicId": "sludge-volume-index",
+   "level": "class1",
+   "assumptions": "Fictional settleometer test: settled volume after 30 min = 320 mL/L, MLSS = 3200 mg/L. SVI in mL/g equals settled volume times 1000 divided by MLSS in mg/L. Target unit: mL/g.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SVI = Settled volume * 1000 / MLSS"
+    },
+    {
+     "id": "line2",
+     "label": "2. SVI = 320 * 1000 / 3200"
+    },
+    {
+     "id": "line3",
+     "label": "3. SVI = 110 mL/g"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. SVI = 320 * 1000 / 3200 = 100 mL/g",
+   "explanation": "Line 3 divided incorrectly. 320 * 1000 / 3200 = 100 mL/g, not 110 mL/g."
+  },
+  {
+   "id": "c3ww-error39",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sludge volume index calculation for settled volume = 360 mL/L and MLSS = 3000 mg/L.",
+   "topicId": "sludge-volume-index",
+   "level": "class1",
+   "assumptions": "Fictional settleometer test: settled volume after 30 min = 360 mL/L, MLSS = 3000 mg/L. SVI in mL/g equals settled volume times 1000 divided by MLSS in mg/L. Target unit: mL/g.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SVI = Settled volume * 1000 / MLSS"
+    },
+    {
+     "id": "line2",
+     "label": "2. SVI = 360 * 1000 / 3000"
+    },
+    {
+     "id": "line3",
+     "label": "3. SVI = 100 mL/g"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. SVI = 360 * 1000 / 3000 = 120 mL/g",
+   "explanation": "Line 3 divided incorrectly. 360 * 1000 / 3000 = 120 mL/g, not 100 mL/g."
+  },
+  {
+   "id": "c3ww-error40",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sludge volume index calculation for settled volume = 200 mL/L and MLSS = 2500 mg/L.",
+   "topicId": "sludge-volume-index",
+   "level": "class1",
+   "assumptions": "Fictional settleometer test: settled volume after 30 min = 200 mL/L, MLSS = 2500 mg/L. SVI in mL/g equals settled volume times 1000 divided by MLSS in mg/L. Target unit: mL/g.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SVI = Settled volume * 1000 / MLSS"
+    },
+    {
+     "id": "line2",
+     "label": "2. SVI = 200 * 1000 / 2500"
+    },
+    {
+     "id": "line3",
+     "label": "3. SVI = 100 mL/g"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. SVI = 200 * 1000 / 2500 = 80 mL/g",
+   "explanation": "Line 3 divided incorrectly. 200 * 1000 / 2500 = 80 mL/g, not 100 mL/g."
+  },
+  {
+   "id": "c3ww-error41",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this secondary clarifier solids loading calculation for Q = 5000 m3/d, return sludge flow = 2500 m3/d, MLSS = 3000 mg/L and clarifier area = 500 m2.",
+   "topicId": "clarifier-solids-loading",
+   "level": "class1",
+   "assumptions": "Fictional secondary clarifier: Q = 5000 m3/d, return activated sludge flow = 2500 m3/d, MLSS = 3000 mg/L, surface area = 500 m2, 1000 g = 1 kg. Target unit: kg/m2/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Solids loading = (Q + QR) * MLSS / (1000 * Area)"
+    },
+    {
+     "id": "line2",
+     "label": "2. Applied flow = 5000 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solids loading = 5000 * 3000 / (1000 * 500) = 30 kg/m2/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Applied flow = 5000 m3/d + 2500 m3/d = 7500 m3/d",
+   "explanation": "Line 2 omitted the return sludge flow. Applied flow is 7500 m3/d, so solids loading is 7500 * 3000 / (1000 * 500) = 45 kg/m2/d."
+  },
+  {
+   "id": "c3ww-error42",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this secondary clarifier solids loading calculation for Q = 6000 m3/d, return sludge flow = 3000 m3/d, MLSS = 2800 mg/L and clarifier area = 600 m2.",
+   "topicId": "clarifier-solids-loading",
+   "level": "class1",
+   "assumptions": "Fictional secondary clarifier: Q = 6000 m3/d, return activated sludge flow = 3000 m3/d, MLSS = 2800 mg/L, surface area = 600 m2, 1000 g = 1 kg. Target unit: kg/m2/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Solids loading = (Q + QR) * MLSS / (1000 * Area)"
+    },
+    {
+     "id": "line2",
+     "label": "2. Applied flow = 6000 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solids loading = 6000 * 2800 / (1000 * 600) = 28 kg/m2/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Applied flow = 6000 m3/d + 3000 m3/d = 9000 m3/d",
+   "explanation": "Line 2 omitted the return sludge flow. Applied flow is 9000 m3/d, so solids loading is 9000 * 2800 / (1000 * 600) = 42 kg/m2/d."
+  },
+  {
+   "id": "c3ww-error43",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this secondary clarifier solids loading calculation for Q = 4000 m3/d, return sludge flow = 2000 m3/d, MLSS = 3200 mg/L and clarifier area = 400 m2.",
+   "topicId": "clarifier-solids-loading",
+   "level": "class1",
+   "assumptions": "Fictional secondary clarifier: Q = 4000 m3/d, return activated sludge flow = 2000 m3/d, MLSS = 3200 mg/L, surface area = 400 m2, 1000 g = 1 kg. Target unit: kg/m2/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Solids loading = (Q + QR) * MLSS / (1000 * Area)"
+    },
+    {
+     "id": "line2",
+     "label": "2. Applied flow = 4000 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solids loading = 4000 * 3200 / (1000 * 400) = 32 kg/m2/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Applied flow = 4000 m3/d + 2000 m3/d = 6000 m3/d",
+   "explanation": "Line 2 omitted the return sludge flow. Applied flow is 6000 m3/d, so solids loading is 6000 * 3200 / (1000 * 400) = 48 kg/m2/d."
+  },
+  {
+   "id": "c3ww-error44",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this secondary clarifier solids loading calculation for Q = 8000 m3/d, return sludge flow = 4000 m3/d, MLSS = 2500 mg/L and clarifier area = 800 m2.",
+   "topicId": "clarifier-solids-loading",
+   "level": "class1",
+   "assumptions": "Fictional secondary clarifier: Q = 8000 m3/d, return activated sludge flow = 4000 m3/d, MLSS = 2500 mg/L, surface area = 800 m2, 1000 g = 1 kg. Target unit: kg/m2/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Solids loading = (Q + QR) * MLSS / (1000 * Area)"
+    },
+    {
+     "id": "line2",
+     "label": "2. Applied flow = 8000 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solids loading = 8000 * 2500 / (1000 * 800) = 25 kg/m2/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Applied flow = 8000 m3/d + 4000 m3/d = 12000 m3/d",
+   "explanation": "Line 2 omitted the return sludge flow. Applied flow is 12000 m3/d, so solids loading is 12000 * 2500 / (1000 * 800) = 37.5 kg/m2/d."
+  },
+  {
+   "id": "c3ww-error45",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this secondary clarifier solids loading calculation for Q = 4500 m3/d, return sludge flow = 1500 m3/d, MLSS = 3000 mg/L and clarifier area = 500 m2.",
+   "topicId": "clarifier-solids-loading",
+   "level": "class1",
+   "assumptions": "Fictional secondary clarifier: Q = 4500 m3/d, return activated sludge flow = 1500 m3/d, MLSS = 3000 mg/L, surface area = 500 m2, 1000 g = 1 kg. Target unit: kg/m2/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Solids loading = (Q + QR) * MLSS / (1000 * Area)"
+    },
+    {
+     "id": "line2",
+     "label": "2. Applied flow = 4500 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solids loading = 4500 * 3000 / (1000 * 500) = 27 kg/m2/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Applied flow = 4500 m3/d + 1500 m3/d = 6000 m3/d",
+   "explanation": "Line 2 omitted the return sludge flow. Applied flow is 6000 m3/d, so solids loading is 6000 * 3000 / (1000 * 500) = 36 kg/m2/d."
+  },
+  {
+   "id": "c3ww-error46",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this secondary clarifier solids loading calculation for Q = 5000 m3/d, return sludge flow = 2500 m3/d, MLSS = 2000 mg/L and clarifier area = 600 m2.",
+   "topicId": "clarifier-solids-loading",
+   "level": "class1",
+   "assumptions": "Fictional secondary clarifier: Q = 5000 m3/d, return activated sludge flow = 2500 m3/d, MLSS = 2000 mg/L, surface area = 600 m2, 1000 g = 1 kg. Target unit: kg/m2/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Applied flow = 5000 m3/d + 2500 m3/d = 7500 m3/d"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids applied = 7500 m3/d * 2000 mg/L / 100 = 150000 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solids loading = 150000 kg/d / 600 m2 = 250 kg/m2/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Solids applied = 7500 m3/d * 2000 mg/L / 1000 = 15000 kg/d",
+   "explanation": "Line 2 divided by 100 instead of 1000. Correct solids applied is 15000 kg/d, so solids loading is 15000 / 600 = 25 kg/m2/d."
+  },
+  {
+   "id": "c3ww-error47",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this secondary clarifier solids loading calculation for Q = 6000 m3/d, return sludge flow = 2000 m3/d, MLSS = 2500 mg/L and clarifier area = 500 m2.",
+   "topicId": "clarifier-solids-loading",
+   "level": "class1",
+   "assumptions": "Fictional secondary clarifier: Q = 6000 m3/d, return activated sludge flow = 2000 m3/d, MLSS = 2500 mg/L, surface area = 500 m2, 1000 g = 1 kg. Target unit: kg/m2/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Applied flow = 6000 m3/d + 2000 m3/d = 8000 m3/d"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids applied = 8000 m3/d * 2500 mg/L / 100 = 200000 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solids loading = 200000 kg/d / 500 m2 = 400 kg/m2/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Solids applied = 8000 m3/d * 2500 mg/L / 1000 = 20000 kg/d",
+   "explanation": "Line 2 divided by 100 instead of 1000. Correct solids applied is 20000 kg/d, so solids loading is 20000 / 500 = 40 kg/m2/d."
+  },
+  {
+   "id": "c3ww-error48",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this secondary clarifier solids loading calculation for Q = 4000 m3/d, return sludge flow = 4000 m3/d, MLSS = 2000 mg/L and clarifier area = 800 m2.",
+   "topicId": "clarifier-solids-loading",
+   "level": "class1",
+   "assumptions": "Fictional secondary clarifier: Q = 4000 m3/d, return activated sludge flow = 4000 m3/d, MLSS = 2000 mg/L, surface area = 800 m2, 1000 g = 1 kg. Target unit: kg/m2/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Applied flow = 4000 m3/d + 4000 m3/d = 8000 m3/d"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids applied = 8000 m3/d * 2000 mg/L / 100 = 160000 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solids loading = 160000 kg/d / 800 m2 = 200 kg/m2/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Solids applied = 8000 m3/d * 2000 mg/L / 1000 = 16000 kg/d",
+   "explanation": "Line 2 divided by 100 instead of 1000. Correct solids applied is 16000 kg/d, so solids loading is 16000 / 800 = 20 kg/m2/d."
+  },
+  {
+   "id": "c3ww-error49",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this secondary clarifier surface overflow rate calculation for Q = 6000 m3/d, return sludge flow = 3000 m3/d and clarifier area = 300 m2.",
+   "topicId": "clarifier-surface-overflow",
+   "level": "class1",
+   "assumptions": "Fictional secondary clarifier: Q = 6000 m3/d, return activated sludge flow = 3000 m3/d, surface area = 300 m2. Surface overflow rate is based on influent flow Q only. Target unit: m/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SOR = Q / Area"
+    },
+    {
+     "id": "line2",
+     "label": "2. SOR = (6000 m3/d + 3000 m3/d) / 300 m2 = 30 m/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. SOR = 6000 m3/d / 300 m2 = 20 m/d",
+   "explanation": "Line 2 added the return sludge flow, but surface overflow rate uses influent flow only. Correct SOR is 6000 / 300 = 20 m/d."
+  },
+  {
+   "id": "c3ww-error50",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this secondary clarifier surface overflow rate calculation for Q = 9000 m3/d, return sludge flow = 3000 m3/d and clarifier area = 400 m2.",
+   "topicId": "clarifier-surface-overflow",
+   "level": "class1",
+   "assumptions": "Fictional secondary clarifier: Q = 9000 m3/d, return activated sludge flow = 3000 m3/d, surface area = 400 m2. Surface overflow rate is based on influent flow Q only. Target unit: m/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SOR = Q / Area"
+    },
+    {
+     "id": "line2",
+     "label": "2. SOR = (9000 m3/d + 3000 m3/d) / 400 m2 = 30 m/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. SOR = 9000 m3/d / 400 m2 = 22.5 m/d",
+   "explanation": "Line 2 added the return sludge flow, but surface overflow rate uses influent flow only. Correct SOR is 9000 / 400 = 22.5 m/d."
+  },
+  {
+   "id": "c3ww-error51",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this secondary clarifier surface overflow rate calculation for Q = 5000 m3/d, return sludge flow = 2500 m3/d and clarifier area = 250 m2.",
+   "topicId": "clarifier-surface-overflow",
+   "level": "class1",
+   "assumptions": "Fictional secondary clarifier: Q = 5000 m3/d, return activated sludge flow = 2500 m3/d, surface area = 250 m2. Surface overflow rate is based on influent flow Q only. Target unit: m/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SOR = Q / Area"
+    },
+    {
+     "id": "line2",
+     "label": "2. SOR = (5000 m3/d + 2500 m3/d) / 250 m2 = 30 m/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. SOR = 5000 m3/d / 250 m2 = 20 m/d",
+   "explanation": "Line 2 added the return sludge flow, but surface overflow rate uses influent flow only. Correct SOR is 5000 / 250 = 20 m/d."
+  },
+  {
+   "id": "c3ww-error52",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this secondary clarifier surface overflow rate calculation for Q = 7200 m3/d, return sludge flow = 2400 m3/d and clarifier area = 480 m2.",
+   "topicId": "clarifier-surface-overflow",
+   "level": "class1",
+   "assumptions": "Fictional secondary clarifier: Q = 7200 m3/d, return activated sludge flow = 2400 m3/d, surface area = 480 m2. Surface overflow rate is based on influent flow Q only. Target unit: m/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SOR = Q / Area"
+    },
+    {
+     "id": "line2",
+     "label": "2. SOR = (7200 m3/d + 2400 m3/d) / 480 m2 = 20 m/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. SOR = 7200 m3/d / 480 m2 = 15 m/d",
+   "explanation": "Line 2 added the return sludge flow, but surface overflow rate uses influent flow only. Correct SOR is 7200 / 480 = 15 m/d."
+  },
+  {
+   "id": "c3ww-error53",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this clarifier weir loading calculation for Q = 3140 m3/d and a peripheral weir length of 62.8 m on a 20 m diameter clarifier.",
+   "topicId": "clarifier-weir-loading",
+   "level": "class1",
+   "assumptions": "Fictional circular clarifier: Q = 3140 m3/d, peripheral weir length = 62.8 m, clarifier diameter = 20 m. Target unit: m3/m/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Weir loading = Q / weir length"
+    },
+    {
+     "id": "line2",
+     "label": "2. Weir loading = 3140 m3/d / 20 m = 157 m3/m/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Weir loading = 3140 m3/d / 62.8 m = 50 m3/m/d",
+   "explanation": "Line 2 divided by the clarifier diameter instead of the weir length. Correct weir loading is 3140 / 62.8 = 50 m3/m/d."
+  },
+  {
+   "id": "c3ww-error54",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this clarifier weir loading calculation for Q = 4710 m3/d and a peripheral weir length of 94.2 m on a 30 m diameter clarifier.",
+   "topicId": "clarifier-weir-loading",
+   "level": "class1",
+   "assumptions": "Fictional circular clarifier: Q = 4710 m3/d, peripheral weir length = 94.2 m, clarifier diameter = 30 m. Target unit: m3/m/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Weir loading = Q / weir length"
+    },
+    {
+     "id": "line2",
+     "label": "2. Weir loading = 4710 m3/d / 30 m = 157 m3/m/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Weir loading = 4710 m3/d / 94.2 m = 50 m3/m/d",
+   "explanation": "Line 2 divided by the clarifier diameter instead of the weir length. Correct weir loading is 4710 / 94.2 = 50 m3/m/d."
+  },
+  {
+   "id": "c3ww-error55",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this clarifier weir loading calculation for Q = 2512 m3/d and a peripheral weir length of 62.8 m on a 20 m diameter clarifier.",
+   "topicId": "clarifier-weir-loading",
+   "level": "class1",
+   "assumptions": "Fictional circular clarifier: Q = 2512 m3/d, peripheral weir length = 62.8 m, clarifier diameter = 20 m. Target unit: m3/m/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Weir loading = Q / weir length"
+    },
+    {
+     "id": "line2",
+     "label": "2. Weir loading = 2512 m3/d / 20 m = 125.6 m3/m/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Weir loading = 2512 m3/d / 62.8 m = 40 m3/m/d",
+   "explanation": "Line 2 divided by the clarifier diameter instead of the weir length. Correct weir loading is 2512 / 62.8 = 40 m3/m/d."
+  },
+  {
+   "id": "c3ww-error56",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this anaerobic digester volatile solids loading calculation for feed solids = 4000 kg/d, volatile fraction = 0.75 and digester volume = 2000 m3.",
+   "topicId": "digester-vs-loading",
+   "level": "class1",
+   "assumptions": "Fictional anaerobic digester: feed total solids = 4000 kg/d, volatile solids fraction of total solids = 0.75, digester volume = 2000 m3. Target unit: kg VS/m3/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. VS loading = VS mass / digester volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS mass = 4000 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. VS loading = 4000 kg/d / 2000 m3 = 2 kg VS/m3/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. VS mass = 4000 kg/d * 0.75 = 3000 kg/d",
+   "explanation": "Line 2 used total solids as volatile solids. Correct VS mass is 4000 * 0.75 = 3000 kg/d, so loading is 3000 / 2000 = 1.5 kg VS/m3/d."
+  },
+  {
+   "id": "c3ww-error57",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this anaerobic digester volatile solids loading calculation for feed solids = 5000 kg/d, volatile fraction = 0.8 and digester volume = 2000 m3.",
+   "topicId": "digester-vs-loading",
+   "level": "class1",
+   "assumptions": "Fictional anaerobic digester: feed total solids = 5000 kg/d, volatile solids fraction of total solids = 0.8, digester volume = 2000 m3. Target unit: kg VS/m3/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. VS loading = VS mass / digester volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS mass = 5000 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. VS loading = 5000 kg/d / 2000 m3 = 2.5 kg VS/m3/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. VS mass = 5000 kg/d * 0.8 = 4000 kg/d",
+   "explanation": "Line 2 used total solids as volatile solids. Correct VS mass is 5000 * 0.8 = 4000 kg/d, so loading is 4000 / 2000 = 2 kg VS/m3/d."
+  },
+  {
+   "id": "c3ww-error58",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this anaerobic digester volatile solids loading calculation for feed solids = 3600 kg/d, volatile fraction = 0.75 and digester volume = 1800 m3.",
+   "topicId": "digester-vs-loading",
+   "level": "class1",
+   "assumptions": "Fictional anaerobic digester: feed total solids = 3600 kg/d, volatile solids fraction of total solids = 0.75, digester volume = 1800 m3. Target unit: kg VS/m3/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. VS loading = VS mass / digester volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS mass = 3600 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. VS loading = 3600 kg/d / 1800 m3 = 2 kg VS/m3/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. VS mass = 3600 kg/d * 0.75 = 2700 kg/d",
+   "explanation": "Line 2 used total solids as volatile solids. Correct VS mass is 3600 * 0.75 = 2700 kg/d, so loading is 2700 / 1800 = 1.5 kg VS/m3/d."
+  },
+  {
+   "id": "c3ww-error59",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this anaerobic digester volatile solids loading calculation for feed solids = 6000 kg/d, volatile fraction = 0.7 and digester volume = 2000 m3.",
+   "topicId": "digester-vs-loading",
+   "level": "class1",
+   "assumptions": "Fictional anaerobic digester: feed total solids = 6000 kg/d, volatile solids fraction of total solids = 0.7, digester volume = 2000 m3. Target unit: kg VS/m3/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. VS loading = VS mass / digester volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS mass = 6000 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. VS loading = 6000 kg/d / 2000 m3 = 3 kg VS/m3/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. VS mass = 6000 kg/d * 0.7 = 4200 kg/d",
+   "explanation": "Line 2 used total solids as volatile solids. Correct VS mass is 6000 * 0.7 = 4200 kg/d, so loading is 4200 / 2000 = 2.1 kg VS/m3/d."
+  }
+ ],
+ "missions": [
+  {
+   "id": "c3ww-mission21",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 21: The Digester Vs Reduction Shift",
+   "tasks": [
+    {
+     "taskId": "c3ww-ladder80",
+     "revision": "r1",
+     "occurrenceId": "m21-t1"
+    },
+    {
+     "taskId": "c3ww-error01",
+     "revision": "r1",
+     "occurrenceId": "m21-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3ww-mission22",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 22: The Solids Retention Time Shift",
+   "tasks": [
+    {
+     "taskId": "c3ww-error02",
+     "revision": "r1",
+     "occurrenceId": "m22-t1"
+    },
+    {
+     "taskId": "c3ww-ladder81",
+     "revision": "r1",
+     "occurrenceId": "m22-t2"
+    },
+    {
+     "taskId": "c3ww-ladder82",
+     "revision": "r1",
+     "occurrenceId": "m22-t3"
+    }
+   ]
+  },
+  {
+   "id": "c3ww-mission23",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 23: The Dewatering Capture Shift",
+   "tasks": [
+    {
+     "taskId": "c3ww-ladder83",
+     "revision": "r1",
+     "occurrenceId": "m23-t1"
+    },
+    {
+     "taskId": "c3ww-error03",
+     "revision": "r1",
+     "occurrenceId": "m23-t2"
+    },
+    {
+     "taskId": "c3ww-ladder84",
+     "revision": "r1",
+     "occurrenceId": "m23-t3"
+    },
+    {
+     "taskId": "c3ww-ladder85",
+     "revision": "r1",
+     "occurrenceId": "m23-t4"
+    }
+   ]
+  },
+  {
+   "id": "c3ww-mission24",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 24: The Solids Retention Time Shift",
+   "tasks": [
+    {
+     "taskId": "c3ww-error04",
+     "revision": "r1",
+     "occurrenceId": "m24-t1"
+    },
+    {
+     "taskId": "c3ww-ladder86",
+     "revision": "r1",
+     "occurrenceId": "m24-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3ww-mission25",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 25: The Dewatering Cake Shift",
+   "tasks": [
+    {
+     "taskId": "c3ww-ladder87",
+     "revision": "r1",
+     "occurrenceId": "m25-t1"
+    },
+    {
+     "taskId": "c3ww-error05",
+     "revision": "r1",
+     "occurrenceId": "m25-t2"
+    },
+    {
+     "taskId": "c3ww-ladder88",
+     "revision": "r1",
+     "occurrenceId": "m25-t3"
+    }
+   ]
+  },
+  {
+   "id": "c3ww-mission26",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 26: The Solids Retention Time Shift",
+   "tasks": [
+    {
+     "taskId": "c3ww-error06",
+     "revision": "r1",
+     "occurrenceId": "m26-t1"
+    },
+    {
+     "taskId": "c3ww-ladder89",
+     "revision": "r1",
+     "occurrenceId": "m26-t2"
+    },
+    {
+     "taskId": "c3ww-ladder90",
+     "revision": "r1",
+     "occurrenceId": "m26-t3"
+    },
+    {
+     "taskId": "c3ww-ladder91",
+     "revision": "r1",
+     "occurrenceId": "m26-t4"
+    }
+   ]
+  },
+  {
+   "id": "c3ww-mission27",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 27: The Staged Removal Shift",
+   "tasks": [
+    {
+     "taskId": "c3ww-ladder92",
+     "revision": "r1",
+     "occurrenceId": "m27-t1"
+    },
+    {
+     "taskId": "c3ww-error07",
+     "revision": "r1",
+     "occurrenceId": "m27-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3ww-mission28",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 28: The Solids Retention Time Shift",
+   "tasks": [
+    {
+     "taskId": "c3ww-error08",
+     "revision": "r1",
+     "occurrenceId": "m28-t1"
+    },
+    {
+     "taskId": "c3ww-ladder93",
+     "revision": "r1",
+     "occurrenceId": "m28-t2"
+    },
+    {
+     "taskId": "c3ww-ladder94",
+     "revision": "r1",
+     "occurrenceId": "m28-t3"
+    }
+   ]
+  },
+  {
+   "id": "c3ww-mission29",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 29: The Sludge Production Shift",
+   "tasks": [
+    {
+     "taskId": "c3ww-ladder95",
+     "revision": "r1",
+     "occurrenceId": "m29-t1"
+    },
+    {
+     "taskId": "c3ww-error09",
+     "revision": "r1",
+     "occurrenceId": "m29-t2"
+    },
+    {
+     "taskId": "c3ww-ladder96",
+     "revision": "r1",
+     "occurrenceId": "m29-t3"
+    },
+    {
+     "taskId": "c3ww-ladder97",
+     "revision": "r1",
+     "occurrenceId": "m29-t4"
+    }
+   ]
+  },
+  {
+   "id": "c3ww-mission30",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 30: The Solids Retention Time Shift",
+   "tasks": [
+    {
+     "taskId": "c3ww-error10",
+     "revision": "r1",
+     "occurrenceId": "m30-t1"
+    },
+    {
+     "taskId": "c3ww-ladder98",
+     "revision": "r1",
+     "occurrenceId": "m30-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3ww-mission31",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 31: The Blended Concentration Shift",
+   "tasks": [
+    {
+     "taskId": "c3ww-ladder99",
+     "revision": "r1",
+     "occurrenceId": "m31-t1"
+    },
+    {
+     "taskId": "c3ww-error100",
+     "revision": "r1",
+     "occurrenceId": "m31-t2"
+    },
+    {
+     "taskId": "c3ww-ladder80",
+     "revision": "r1",
+     "occurrenceId": "m31-t3"
+    }
+   ]
+  },
+  {
+   "id": "c3ww-mission32",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 32: The Solids Retention Time Shift",
+   "tasks": [
+    {
+     "taskId": "c3ww-error11",
+     "revision": "r1",
+     "occurrenceId": "m32-t1"
+    },
+    {
+     "taskId": "c3ww-ladder81",
+     "revision": "r1",
+     "occurrenceId": "m32-t2"
+    },
+    {
+     "taskId": "c3ww-ladder82",
+     "revision": "r1",
+     "occurrenceId": "m32-t3"
+    },
+    {
+     "taskId": "c3ww-ladder83",
+     "revision": "r1",
+     "occurrenceId": "m32-t4"
+    }
+   ]
+  },
+  {
+   "id": "c3ww-mission33",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 33: The Dewatering Capture Shift",
+   "tasks": [
+    {
+     "taskId": "c3ww-ladder84",
+     "revision": "r1",
+     "occurrenceId": "m33-t1"
+    },
+    {
+     "taskId": "c3ww-error12",
+     "revision": "r1",
+     "occurrenceId": "m33-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3ww-mission34",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 34: The Wasting Rate Shift",
+   "tasks": [
+    {
+     "taskId": "c3ww-error13",
+     "revision": "r1",
+     "occurrenceId": "m34-t1"
+    },
+    {
+     "taskId": "c3ww-ladder85",
+     "revision": "r1",
+     "occurrenceId": "m34-t2"
+    },
+    {
+     "taskId": "c3ww-ladder86",
+     "revision": "r1",
+     "occurrenceId": "m34-t3"
+    }
+   ]
+  },
+  {
+   "id": "c3ww-mission35",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 35: The Dewatering Cake Shift",
+   "tasks": [
+    {
+     "taskId": "c3ww-ladder87",
+     "revision": "r1",
+     "occurrenceId": "m35-t1"
+    },
+    {
+     "taskId": "c3ww-error14",
+     "revision": "r1",
+     "occurrenceId": "m35-t2"
+    },
+    {
+     "taskId": "c3ww-ladder88",
+     "revision": "r1",
+     "occurrenceId": "m35-t3"
+    },
+    {
+     "taskId": "c3ww-ladder89",
+     "revision": "r1",
+     "occurrenceId": "m35-t4"
+    }
+   ]
+  },
+  {
+   "id": "c3ww-mission36",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 36: The Food To Microorganism Shift",
+   "tasks": [
+    {
+     "taskId": "c3ww-error15",
+     "revision": "r1",
+     "occurrenceId": "m36-t1"
+    },
+    {
+     "taskId": "c3ww-ladder90",
+     "revision": "r1",
+     "occurrenceId": "m36-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3ww-mission37",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 37: The Staged Removal Shift",
+   "tasks": [
+    {
+     "taskId": "c3ww-ladder91",
+     "revision": "r1",
+     "occurrenceId": "m37-t1"
+    },
+    {
+     "taskId": "c3ww-error16",
+     "revision": "r1",
+     "occurrenceId": "m37-t2"
+    },
+    {
+     "taskId": "c3ww-ladder92",
+     "revision": "r1",
+     "occurrenceId": "m37-t3"
+    }
+   ]
+  },
+  {
+   "id": "c3ww-mission38",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 38: The Food To Microorganism Shift",
+   "tasks": [
+    {
+     "taskId": "c3ww-error17",
+     "revision": "r1",
+     "occurrenceId": "m38-t1"
+    },
+    {
+     "taskId": "c3ww-ladder93",
+     "revision": "r1",
+     "occurrenceId": "m38-t2"
+    },
+    {
+     "taskId": "c3ww-ladder94",
+     "revision": "r1",
+     "occurrenceId": "m38-t3"
+    },
+    {
+     "taskId": "c3ww-ladder95",
+     "revision": "r1",
+     "occurrenceId": "m38-t4"
+    }
+   ]
+  },
+  {
+   "id": "c3ww-mission39",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 39: The Sludge Production Shift",
+   "tasks": [
+    {
+     "taskId": "c3ww-ladder96",
+     "revision": "r1",
+     "occurrenceId": "m39-t1"
+    },
+    {
+     "taskId": "c3ww-error18",
+     "revision": "r1",
+     "occurrenceId": "m39-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3ww-mission40",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 40: The Food To Microorganism Shift",
+   "tasks": [
+    {
+     "taskId": "c3ww-error19",
+     "revision": "r1",
+     "occurrenceId": "m40-t1"
+    },
+    {
+     "taskId": "c3ww-ladder97",
+     "revision": "r1",
+     "occurrenceId": "m40-t2"
+    },
+    {
+     "taskId": "c3ww-ladder98",
+     "revision": "r1",
+     "occurrenceId": "m40-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Advanced wastewater process control chapters (activated sludge control, nutrient removal, digestion, solids processing)"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "62a895a5e54d83934e2ec68ebea32630d17f7dfed1e9fe41eac9baf5bc26a1e9",
+  "taskReceipts": [
+   {
+    "taskId": "c3ww-ladder80",
+    "revision": "r1",
+    "sha256": "769b9cb0ff708eae668a0cbf2204738da4769be6e2ea23641b8ea4d71f3fbcdc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-ladder81",
+    "revision": "r1",
+    "sha256": "b07aef95a8cea4188d1ccccfec119d5f92d421d1f7030bb68f445060bc183db3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-ladder82",
+    "revision": "r1",
+    "sha256": "80b239407e317c77deb1d7361d2c1a986c2aa318349452299df997241a024b98",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-ladder83",
+    "revision": "r1",
+    "sha256": "87432446904cdc69a5b79fec89511eb0b6c1f3dc409776539de5b577f76b34c4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-ladder84",
+    "revision": "r1",
+    "sha256": "72ba17070d855ada997c7491a228f297fa13ec4a31c0fae9fa7b56255326e2e6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-ladder85",
+    "revision": "r1",
+    "sha256": "373a9bb967d5de5473604cf0f2817078dc3dec12c55ccecd2bcc269ed5ea3a9a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-ladder86",
+    "revision": "r1",
+    "sha256": "7d05fd511b6406948ea5b3e2ce566ddb4e927b1dae4cb762a105c4e9e45c1947",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-ladder87",
+    "revision": "r1",
+    "sha256": "4468d3fc714d132588e16c23a031e9ca2f302a401a56e5606e857d2227685703",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-ladder88",
+    "revision": "r1",
+    "sha256": "eb944826e87432e997ebaf5345b9bd3130fdbd6f1efdda508f8f6a108a3c8bf8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-ladder89",
+    "revision": "r1",
+    "sha256": "a8e9b875b41b660f7ae485959507b7b43915562567a24fcccd547e65ab623cdd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-ladder90",
+    "revision": "r1",
+    "sha256": "68745e1be2f8e3844b75c0ab1c8a109b7d5e6808978011f80be4f2f2e116f63a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-ladder91",
+    "revision": "r1",
+    "sha256": "2ab79fb74d1fd0b74db4bdf9afc11f03b6b85923de6e8be950003044d534725d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-ladder92",
+    "revision": "r1",
+    "sha256": "eb2c8a2fec1f20bb2e3d49dba4badf3267caa024fd3bcfc2c17be7edcb6e2130",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-ladder93",
+    "revision": "r1",
+    "sha256": "4f50e857a2a6d517d17f91906ae2bf5ce5e895e2521c5d4727861b41e18ff946",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-ladder94",
+    "revision": "r1",
+    "sha256": "a2f5d885aa5518f29e0334f4c889c94c67f5ea694cdc85c3d10f7cb0880d571d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-ladder95",
+    "revision": "r1",
+    "sha256": "be04be0507728f56d1333e752d19bce13f5643572ba300e4870490c1f95777ea",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-ladder96",
+    "revision": "r1",
+    "sha256": "ce229704b2fc752fe2e92f84d4bfea1b06711d9235501c6c3c8ff449aa45b884",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-ladder97",
+    "revision": "r1",
+    "sha256": "9eba89721bf588dc280806c9f3d962bbf8474ff629d696e65c0c03a3ec566a4d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-ladder98",
+    "revision": "r1",
+    "sha256": "4762ed3af3788c8281a46521843484c0c93ba3870498fba996420c317da02ed4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-ladder99",
+    "revision": "r1",
+    "sha256": "fd842ecde14322da426981ec89bfa9c00aa3045f6cac4bb22d99e7fed8dc1692",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error01",
+    "revision": "r1",
+    "sha256": "98272b5b96e0aee3a198989cff941cb83640d93f1d61405e25b21e0031ca24e6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error02",
+    "revision": "r1",
+    "sha256": "c4763bac269a5f8a12cd09fd34b7b9faf38d31e388a68d37bc88f97d28e02e67",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error03",
+    "revision": "r1",
+    "sha256": "ec92131d6ddbd9633d437ea0412c5993119f2cd5133daeba008c498f9a0be3cb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error04",
+    "revision": "r1",
+    "sha256": "110fca93af0a496c4c5430c15f4460d344675c118a72280bc09125f4d12c52f2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error05",
+    "revision": "r1",
+    "sha256": "28fba4b874785ab80dc0b8bb7089ee2c19180027655a3a2d37fb5d13ff974764",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error06",
+    "revision": "r1",
+    "sha256": "c5edb9ab5e05de3a6710db78aa0fc4c84f7953b37882e5a28aa46129d7562649",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error07",
+    "revision": "r1",
+    "sha256": "b0cbc7bf6958fd18c990f6e5ec7312ab8a61cfd45d113ffd54fd2fca5ba90486",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error08",
+    "revision": "r1",
+    "sha256": "fd043629f4284bbb2cdbdd909c8bdf2a444733d206645d6edd1e298a38f7e108",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error09",
+    "revision": "r1",
+    "sha256": "002b90956f631438fb7e5ac618bc78afbdf7a5cfa4fff47ad168f3cfc933d17a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error10",
+    "revision": "r1",
+    "sha256": "4f70c01ff4f4061a3831334e0e54146f09beb5fda13e6417ed43fe80b2829144",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error100",
+    "revision": "r1",
+    "sha256": "973bc8a7586ed5bae483a6fb652b23059c8fbb450fc5bf610918a21272a1c06b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error11",
+    "revision": "r1",
+    "sha256": "e53c58ccf703d7f8fe226117d59a25a3d45b7ad7f84954617f07cd951cd31ecc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error12",
+    "revision": "r1",
+    "sha256": "01ee513677f1529080827dea58eedf4e294919fae41366fd68f60bfa761164f9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error13",
+    "revision": "r1",
+    "sha256": "5c85e2767c19000dd4c9f51f6970e11637df15aa972b273e0f9530c918a7a9e9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error14",
+    "revision": "r1",
+    "sha256": "20535a12d894dc212f58c2455d1e748fa83a4c068bd9a154caec25edb7f197ff",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error15",
+    "revision": "r1",
+    "sha256": "7168669589523dec18c0efbd949db169ea803b1cc531fcafb8568417d83264bd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error16",
+    "revision": "r1",
+    "sha256": "19f3d4216168271ef6cffaffc883ca0e524aecb77e9dec996261fc717e978d2a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error17",
+    "revision": "r1",
+    "sha256": "128ab8610502d4d93170459f29092d0cd3e329ae7e66349085d72cd6f820aa2b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error18",
+    "revision": "r1",
+    "sha256": "5d52fe5e0b3ac4eecc3e928a312ac393f150e9b8b632b2b04dfc7607c9a9f17e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error19",
+    "revision": "r1",
+    "sha256": "591a48a8937610cba59d829d05027cfdd053e502168445f0f743770f6414b4b5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error20",
+    "revision": "r1",
+    "sha256": "8e5bd188f43cacba4fd519e2e93344073be1b229070c9065f1ea7064de04ffae",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error21",
+    "revision": "r1",
+    "sha256": "95450ec7d806a17d1ca22185ec033832a2d71468a6c99ee29e9e6f4a716ce8cd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error22",
+    "revision": "r1",
+    "sha256": "21bfb1ce27368d837f1a73b760423f4ff1a6591ec2719bd1db0df8cc4379ed3c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error23",
+    "revision": "r1",
+    "sha256": "93a8b6188881cb597461d4dc0f1b24079306ecf8606fa28e7a09267c62d13936",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error24",
+    "revision": "r1",
+    "sha256": "20e2970fad2050ab71d869634078bc3a587a0412010237b4582ef3e685c6d08d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error25",
+    "revision": "r1",
+    "sha256": "a20ab0473b6d858ada6a2ce942195f6d9bcd8bff3bcf8a08aff0b8abeaac45bc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error26",
+    "revision": "r1",
+    "sha256": "8982b6835fbe0d6b223bf38f71b3baeedb94c62c1a8d86044143d3bfbf5cc08e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error27",
+    "revision": "r1",
+    "sha256": "d209cd73605b255e0f7f070431313e0d755b0472452b38090dfc4b9998e0dcfa",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error28",
+    "revision": "r1",
+    "sha256": "d3ae6f6bbdc8a923a2ffe6248ea8d61c884f05577016aa50e653d3892440103b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error29",
+    "revision": "r1",
+    "sha256": "d3c924b3f28c9177d0977acb390b66ed4a01887eb9563a53db8e896248b46c93",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error30",
+    "revision": "r1",
+    "sha256": "54afa2f165325c32f102da36b17e12579849aad145af6c75074766c2118e8d73",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error31",
+    "revision": "r1",
+    "sha256": "fa1faa9b1145cf1628bdde4b6ef726d9697f76a0cbb4892cdfb60e81514a0dfe",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error32",
+    "revision": "r1",
+    "sha256": "bf32a9cba727aae583ca15c38e7053498d438046a8310538d7282017f1cef567",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error33",
+    "revision": "r1",
+    "sha256": "7cf67bd5d264c2f2a7e0ab5f052c4423cbd7c684fde5fd9f2ae1d430bf779b64",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error34",
+    "revision": "r1",
+    "sha256": "f38cf4bf700a2e8fb5d36a780a476507c3e52a22575d3cdf30ddab7e74e0995a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error35",
+    "revision": "r1",
+    "sha256": "ffee89c26e0579cdfd752bd5f71f186d40b5a6bfd89677c90eee96830807a076",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error36",
+    "revision": "r1",
+    "sha256": "dec975e61637a1dddfed3eef2264e2f796ad1280eef9001649b61a0ee9297197",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error37",
+    "revision": "r1",
+    "sha256": "f849d75f969dbac0e61bc9c953c6695df2f01e5c7f5d85d1992eca6446478269",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error38",
+    "revision": "r1",
+    "sha256": "fa0e5594dea84a735a0e21da5ce2fc07005a124c62af80e1e622ec1c93d28d31",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error39",
+    "revision": "r1",
+    "sha256": "83830450c522d95b61a4b8cf1fb3fd207d74d8e52aeb642731b4de774f8d7300",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error40",
+    "revision": "r1",
+    "sha256": "459d637645e68e160e878fa1f0e8b64fa2c6ea1d9a150c420b9d6b9027894681",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error41",
+    "revision": "r1",
+    "sha256": "27769e295828f8f051bc38dbfd1ae64476c5c1700d922cc38a5df7643b8d7e8f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error42",
+    "revision": "r1",
+    "sha256": "e133b8adb193453926981df7fd497d24685c951bf28592005c6b45e03c6aa3fd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error43",
+    "revision": "r1",
+    "sha256": "f17ec3383e8bb0300f55e5342e45951881ece372c2748c4c63472ca9b81d46d4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error44",
+    "revision": "r1",
+    "sha256": "ff38067c5891da5403bf3d56096cd9543730655fdef26f316eab5fa55f14fbc6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error45",
+    "revision": "r1",
+    "sha256": "61a4e57f6a74a2bd686c1157edf569f1af140e2abe7325908a574b56d450694e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error46",
+    "revision": "r1",
+    "sha256": "43d04a2f0eee2bc53404f7181c815b80e7bd05ad865e02715d5445e92e45b26f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error47",
+    "revision": "r1",
+    "sha256": "b9302662bcabb5689d16442933b9e0d3cdabda77784c89e1946bcaa209806a9c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error48",
+    "revision": "r1",
+    "sha256": "723214c3e8a9586379fb7a30606d6fbce83b3f3c7bbb5a07457b09505af5a7db",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error49",
+    "revision": "r1",
+    "sha256": "724fc44623c37ca1ce720eb9bc1c100c14a89272d891a2a5408bfb4848d06568",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error50",
+    "revision": "r1",
+    "sha256": "1e48f1b8bf3a44eb710291fd7550f0a89481bf2d160845d4cb21f64e08c5ee70",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error51",
+    "revision": "r1",
+    "sha256": "d4b2cae35b3cd087e01d18c91e77d399a76c1e3920a82718f4f5f4013902d721",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error52",
+    "revision": "r1",
+    "sha256": "16e64d737fc7cdc5cdbc186c3539e92b5e7a508dc69309a5da4bc6bf4bba6942",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error53",
+    "revision": "r1",
+    "sha256": "32ca20a2f551d91e1ec543caf1c2c2ebb966a4995f4bc17f10d3a9ddc653c154",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error54",
+    "revision": "r1",
+    "sha256": "79d27017027eb3f8df8c8882ea60206fb144731eb378505464b7c8ad2cf3d073",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error55",
+    "revision": "r1",
+    "sha256": "dc370da6b19948c527316f30901a97b7cd2b62f4932cda061cf1b77e416eb0ab",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error56",
+    "revision": "r1",
+    "sha256": "cce63b534749d78d1c0a040e0bbaa32d4d299ef48700c76b1c25b7559b917f2d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error57",
+    "revision": "r1",
+    "sha256": "2a56d0d28fef48a4f3bffd3fe5061dc34887af64644f11eb6dad1a8ed7ca0883",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error58",
+    "revision": "r1",
+    "sha256": "b756a04b713d8d8cecafb9aa7bff3696f2ca20469c81eee4f9595ed299f5f199",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3ww-error59",
+    "revision": "r1",
+    "sha256": "827c734112f5feed457353865e0da71b8b798ec0cface66564f7ab7b3bd37c3e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "c3ww-mission21",
+    "revision": "r1",
+    "sha256": "850593bc63996d11ef5288695ddf9f48be315f992c787f77d94353fcf7afbec4"
+   },
+   {
+    "missionId": "c3ww-mission22",
+    "revision": "r1",
+    "sha256": "43adf3bee405be27a6a52e30dba28185634915dec7ba226eeb6eddaefcbfcc9f"
+   },
+   {
+    "missionId": "c3ww-mission23",
+    "revision": "r1",
+    "sha256": "51cc9fdd6e0850267f7cab78da09e2d19341e3ef052d5d4c67bcfadd74aa00b8"
+   },
+   {
+    "missionId": "c3ww-mission24",
+    "revision": "r1",
+    "sha256": "c305158ba208695cf58c0b42bd2f7812c3078b9fd0f6c3f6bb40f0de36004845"
+   },
+   {
+    "missionId": "c3ww-mission25",
+    "revision": "r1",
+    "sha256": "02236638417769b278c97970c2777b4d972b820ae81d9f549c2685c5cb04e589"
+   },
+   {
+    "missionId": "c3ww-mission26",
+    "revision": "r1",
+    "sha256": "0d623bd37c22e4148de78572537faec15ec9be5ebc28ed75ea980e6f23c0bd15"
+   },
+   {
+    "missionId": "c3ww-mission27",
+    "revision": "r1",
+    "sha256": "7840266286771ea45aa38aa02d8b4ce3be91ed7dc6d09b0b0a4ac1fdff5877b5"
+   },
+   {
+    "missionId": "c3ww-mission28",
+    "revision": "r1",
+    "sha256": "30aed36abb86b311f6ba092205d889b277ac5bc780bb118ebbd6ff0bf0c1ac2f"
+   },
+   {
+    "missionId": "c3ww-mission29",
+    "revision": "r1",
+    "sha256": "16bc8c8c9743938db51abb6e0f76836806beccf56b8a7d017e0292a5254c4d7e"
+   },
+   {
+    "missionId": "c3ww-mission30",
+    "revision": "r1",
+    "sha256": "7ad1f3d03c375811e2edd358e6dfadd437bd4dbf2f8717b979a44ca91537fa85"
+   },
+   {
+    "missionId": "c3ww-mission31",
+    "revision": "r1",
+    "sha256": "808e3b7107645becf97a60610b9c56a5622683abc0d1fb3203ea68ed6481b2ef"
+   },
+   {
+    "missionId": "c3ww-mission32",
+    "revision": "r1",
+    "sha256": "98ccbe75d59eaa880e9a74f8ce93bafa3c51064267aef5685d64cf1e880e6322"
+   },
+   {
+    "missionId": "c3ww-mission33",
+    "revision": "r1",
+    "sha256": "cca1e3cafcb9e72800c0f34ca0177ac4e064eba1135502b8d7fb70382ea068ce"
+   },
+   {
+    "missionId": "c3ww-mission34",
+    "revision": "r1",
+    "sha256": "35fa1deff899596105a73038518183190a9f30a2bf2a7505ded6e02029fd5b44"
+   },
+   {
+    "missionId": "c3ww-mission35",
+    "revision": "r1",
+    "sha256": "5ad03abce652386ee6b289e3982d551dceb2fddd51cf08d57eb1ee6d2981d044"
+   },
+   {
+    "missionId": "c3ww-mission36",
+    "revision": "r1",
+    "sha256": "75d15a874fd5f77bf7e6ee1539d195e53de46e37b9bc04f284680a4794b4af41"
+   },
+   {
+    "missionId": "c3ww-mission37",
+    "revision": "r1",
+    "sha256": "19aab3a301d857e969f1c8316a960e4e13fa4620894648fe1d28a5b6546412ab"
+   },
+   {
+    "missionId": "c3ww-mission38",
+    "revision": "r1",
+    "sha256": "8845a50c4d4ef11b9a016c2df92a785d3daa5987970c083fb7ab922e5578cc6d"
+   },
+   {
+    "missionId": "c3ww-mission39",
+    "revision": "r1",
+    "sha256": "0d3499d3a989b31404755f1ebd89b1be0df6980ca4e0e8fe364dcf6964c54f4c"
+   },
+   {
+    "missionId": "c3ww-mission40",
+    "revision": "r1",
+    "sha256": "cfbf93218c8b05654e774f5b31ce387b9d865918579c3da067a201fa5879d3dc"
+   }
+  ]
+ }
+}

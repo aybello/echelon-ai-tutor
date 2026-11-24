@@ -13,6 +13,8 @@ import SiteNav from "@/components/SiteNav";
 import StudyHomeCard from "@/components/StudyHomeCard";
 import Quick10Button from "@/components/Quick10Button";
 import { isQuick10Eligible, quick10Href } from "@/lib/nextStepHref";
+import { ReviewButton } from "@/components/FeedbackModal";
+import { SuggestionButton } from "@/components/FeatureSuggestion";
 import GamesCard from "@/components/GamesCard";
 import { TutorGuideMark } from "@/components/TutorGuideMark";
 import "@/components/StudyWorkspace.css";
@@ -231,7 +233,7 @@ export default function StudentDashboard() {
       }),
       datasets: [
         {
-          label: "Questions Answered",
+          label: "Quiz Questions Answered",
           data: days.map((d) => d.total),
           backgroundColor: BLUE + "99",
           borderColor: BLUE,
@@ -239,7 +241,7 @@ export default function StudentDashboard() {
           borderRadius: 4,
         },
         {
-          label: "Correct",
+          label: "Correct Quiz Answers",
           data: days.map((d) => d.correct),
           backgroundColor: GREEN + "99",
           borderColor: GREEN,
@@ -329,6 +331,9 @@ export default function StudentDashboard() {
   const focusCourse = (selectedCourseKey ? resolveCourseKey(selectedCourseKey) : undefined)
     ?? (studyFocus.data?.courseKey ? resolveCourseKey(studyFocus.data.courseKey) : undefined)
     ?? (activation.data?.course.courseKey ? resolveCourseKey(activation.data.course.courseKey) : undefined);
+  // Topic totals are scoped only by selectedCourseKey, not the primary study
+  // focus. Never attach an all-course topic aggregate to one course's quiz.
+  const topicPracticeCourse = selectedCourseKey ? resolveCourseKey(selectedCourseKey) : undefined;
   const nextRecommendation = studyPlan.data?.recommendations?.[0];
   const focusedWeakRecommendation = studyPlan.data?.recommendations.find(recommendation => recommendation.type === "weak_topic");
   const setupNeeded = Boolean(focusCourse && activation.data && activation.data.status !== "completed");
@@ -355,6 +360,8 @@ export default function StudentDashboard() {
             </p>
           </div>
           <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
+            <ReviewButton examType={selectedCourseKey ?? focusCourse?.courseKey ?? "general"} />
+            <SuggestionButton courseKey={selectedCourseKey ?? focusCourse?.courseKey ?? "general"} />
             <a href="/account" style={{
               background: "#fff", border: "1px solid #E2E8F0", borderRadius: 8,
               padding: "7px 14px", color: "#475569", fontSize: 13, fontWeight: 600, cursor: "pointer",
@@ -396,15 +403,18 @@ export default function StudentDashboard() {
         {(studyPlan.isError || activation.isError) && <p role="alert" style={{ color: "#9a3412", fontSize: 14 }}>Your personalized plan could not load. Your course is still available. <button type="button" className="workspace-text-link" onClick={() => { void studyPlan.refetch(); void activation.refetch(); }}>Retry plan</button></p>}
         <nav className="workspace-view-tabs" aria-label="Dashboard views">
           <button type="button" aria-pressed={dashboardView === "study"} onClick={() => setDashboardView("study")}>Study</button>
-          <button type="button" aria-pressed={dashboardView === "progress"} onClick={() => setDashboardView("progress")}>Progress and history</button>
+          <button type="button" aria-pressed={dashboardView === "progress"} onClick={() => setDashboardView("progress")}>Quiz progress and tutor history</button>
         </nav>
+        {dashboardView === "progress" && <p style={{ color: "#64748B", fontSize: 12, lineHeight: 1.6, margin: "12px 0 20px" }}>
+          Question totals, accuracy, daily activity and recent answer sessions cover quiz answers only. Saved tutor sessions are listed separately. The study streak and profile session count may include other recorded study tools. Game observations are tracked separately and are not added to quiz accuracy or readiness.
+        </p>}
         {dashboardView === "progress" && <section aria-label="Your progress">
         {/* Top row: Readiness ring + Countdown + Key stats */}
         <div className="dashboard-metrics-grid">
 
           {/* Readiness Score */}
           <div style={{ background: "#fff", borderRadius: 16, padding: "20px 18px", border: "1px solid #E2E8F0", gridColumn: "span 1" }}>
-            <div style={{ color: "#94A3B8", fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 12 }}>Exam Readiness</div>
+            <div style={{ color: "#94A3B8", fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 12 }}>Quiz-based Readiness Estimate</div>
             {readinessScore.isLoading ? (
               <Skeleton height={80} />
             ) : !readinessScore.data ? (
@@ -497,12 +507,12 @@ export default function StudentDashboard() {
 
           {/* Questions Answered */}
           <div style={{ background: "#fff", borderRadius: 16, padding: "20px 18px", border: "1px solid #E2E8F0" }}>
-            <div style={{ color: "#94A3B8", fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 12 }}>Questions Answered</div>
+            <div style={{ color: "#94A3B8", fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 12 }}>Quiz Questions Answered</div>
             {isLoading ? <Skeleton height={50} /> : (
               <>
                 <div style={{ color: "#3B82F6", fontSize: 34, fontWeight: 900, fontFamily: "Sora,sans-serif", lineHeight: 1 }}>{stats?.totalAttempts ?? 0}</div>
                 <div style={{ color: "#94A3B8", fontSize: 12, marginTop: 6, display: "flex", alignItems: "center", gap: 5 }}>
-                  {stats?.currentStreak ?? 0} day streak <Flame size={13} color="#F59E0B" aria-hidden="true" />
+                  {stats?.currentStreak ?? 0} day recorded study streak <Flame size={13} color="#F59E0B" aria-hidden="true" />
                 </div>
               </>
             )}
@@ -510,7 +520,7 @@ export default function StudentDashboard() {
 
           {/* Overall Accuracy */}
           <div style={{ background: "#fff", borderRadius: 16, padding: "20px 18px", border: "1px solid #E2E8F0" }}>
-            <div style={{ color: "#94A3B8", fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 12 }}>Overall Accuracy</div>
+            <div style={{ color: "#94A3B8", fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 12 }}>Quiz Accuracy</div>
             {isLoading ? <Skeleton height={50} /> : (
               <>
                 <div style={{
@@ -520,7 +530,7 @@ export default function StudentDashboard() {
                   {stats?.overallAccuracy ?? 0}%
                 </div>
                 <div style={{ color: "#94A3B8", fontSize: 12, marginTop: 6 }}>
-                  {stats?.totalSessions ?? 0} sessions total
+                  {stats?.totalSessions ?? 0} {selectedCourseKey ? "quiz answer sessions" : "recorded profile sessions"}
                 </div>
               </>
             )}
@@ -671,11 +681,11 @@ export default function StudentDashboard() {
         <div className="dashboard-two-column">
 
           {/* Daily Activity */}
-          <Section title={<><CalendarDays size={17} color="#2563EB" />Daily Activity (Last 30 Days)</>} style={{ margin: 0 }}>
+          <Section title={<><CalendarDays size={17} color="#2563EB" />Quiz Question Activity (Last 30 Days)</>} style={{ margin: 0 }}>
             {dailyActivity.isLoading ? (
               <Skeleton height={200} />
             ) : (dailyActivity.data?.length ?? 0) === 0 ? (
-              <EmptyState text="No activity yet. Start a quiz to see your daily progress." />
+              <EmptyState text="No quiz answers recorded in this view. Games and other study tools are tracked separately." />
             ) : (
               <div style={{ height: 200 }}>
                 <Bar
@@ -694,7 +704,7 @@ export default function StudentDashboard() {
           </Section>
 
           {/* Topic Accuracy */}
-          <Section title={<><BarChart3 size={17} color="#0F766E" />Topic Accuracy</>} style={{ margin: 0 }}>
+          <Section title={<><BarChart3 size={17} color="#0F766E" />Quiz Topic Accuracy</>} style={{ margin: 0 }}>
             {topicAccuracy.isLoading ? (
               <Skeleton height={200} />
             ) : (topicAccuracy.data?.topics.length ?? 0) === 0 ? (
@@ -742,9 +752,9 @@ export default function StudentDashboard() {
                         <div style={{ height: 5, borderRadius: 3, background: "#E2E8F0", overflow: "hidden", marginBottom: 8 }}>
                           <div style={{ height: "100%", width: `${acc}%`, borderRadius: 3, background: acc < 40 ? "#EF4444" : "#F59E0B" }} />
                         </div>
-                        <a href={`/?topic=${encodeURIComponent(t.name)}`} style={{ display: "inline-block", padding: "4px 10px", borderRadius: 6, fontSize: 11, fontWeight: 700, background: acc < 40 ? "#EF444415" : "#F59E0B15", color: acc < 40 ? "#EF4444" : "#F59E0B", textDecoration: "none", border: `1px solid ${acc < 40 ? "#EF444433" : "#F59E0B33"}` }}>
+                        {topicPracticeCourse ? <a href={`${topicPracticeCourse.quizPath}?topic=${encodeURIComponent(t.name)}`} style={{ display: "inline-block", padding: "4px 10px", borderRadius: 6, fontSize: 11, fontWeight: 700, background: acc < 40 ? "#EF444415" : "#F59E0B15", color: acc < 40 ? "#EF4444" : "#F59E0B", textDecoration: "none", border: `1px solid ${acc < 40 ? "#EF444433" : "#F59E0B33"}` }}>
                           Practice →
-                        </a>
+                        </a> : <span style={{ color: "#64748B", fontSize: 11 }}>Open a course dashboard from My Courses for topic practice.</span>}
                       </div>
                     );
                   })}
@@ -754,7 +764,7 @@ export default function StudentDashboard() {
           </Section>
 
           {/* Difficulty Split */}
-          <Section title={<><Gauge size={17} color="#7C3AED" />Difficulty Split</>} style={{ margin: 0 }}>
+          <Section title={<><Gauge size={17} color="#7C3AED" />Quiz Difficulty Split</>} style={{ margin: 0 }}>
             {difficultyBreakdown.isLoading ? (
               <Skeleton height={120} />
             ) : (difficultyBreakdown.data?.length ?? 0) === 0 ? (
@@ -775,7 +785,7 @@ export default function StudentDashboard() {
         </div>
 
         {/* Row 3: Course Breakdown */}
-        <Section title={<><GraduationCap size={17} color="#2563EB" />Course Breakdown</>}>
+        <Section title={<><GraduationCap size={17} color="#2563EB" />Quiz Course Breakdown</>}>
           {courseBreakdown.isLoading ? (
             <Skeleton height={80} />
           ) : (courseBreakdown.data?.length ?? 0) === 0 ? (
@@ -805,17 +815,20 @@ export default function StudentDashboard() {
 
           {/* AI Tutor Sessions */}
           <Section title={<><TutorGuideMark size={17} color="#0F766E" />AI Tutor Sessions</>} style={{ margin: 0 }}>
+            <p style={{ color: "#64748B", fontSize: 11, lineHeight: 1.5 }}>Latest saved sessions for this sign-in. Account and verified-email histories stay separate; unsaved conversations are not included.</p>
             {aiSessions.isLoading ? (
               <Skeleton height={120} />
+            ) : aiSessions.isError ? (
+              <div role="alert" style={{ color: "#9a3412", fontSize: 12 }}>Saved tutor history could not load. <button type="button" className="workspace-text-link" onClick={() => { void aiSessions.refetch(); }}>Retry tutor history</button></div>
             ) : (aiSessions.data?.length ?? 0) === 0 ? (
-              <EmptyState text="No AI tutor sessions yet. Ask the AI tutor a question while practicing." />
+              <EmptyState text="No saved AI tutor sessions found for this sign-in. Account and verified-email histories are separate." />
             ) : (
               <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                 {aiSessions.data?.slice(0, 4).map((s, i) => (
                   <div key={i} style={{ padding: "10px 12px", background: "#F8FAFC", borderRadius: 10, border: "1px solid #E2E8F0" }}>
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 4 }}>
                       <span style={{ color: "#0F172A", fontSize: 12, fontWeight: 700 }}>{EXAM_TYPE_LABELS[s.examType] ?? s.examType}</span>
-                      <span style={{ color: "#94A3B8", fontSize: 11 }}>{new Date(s.sessionStart).toLocaleDateString("en-CA", { month: "short", day: "numeric" })}</span>
+                      <span style={{ color: "#94A3B8", fontSize: 11 }}>{s.sessionStart ? new Date(s.sessionStart).toLocaleDateString("en-CA", { month: "short", day: "numeric" }) : "Date not recorded"}</span>
                     </div>
                     <div style={{ color: "#64748B", fontSize: 12, lineHeight: 1.4 }}>
                       {s.summary ? (s.summary.length > 80 ? s.summary.slice(0, 77) + "…" : s.summary) : `${s.messageCount} messages`}
@@ -868,11 +881,11 @@ export default function StudentDashboard() {
         </div>
 
         {/* Row 5: Recent Sessions */}
-        <Section title={<><Clock3 size={17} color="#475569" />Recent Sessions</>}>
+        <Section title={<><Clock3 size={17} color="#475569" />Recent Quiz Answer Sessions</>}>
           {recentSessions.isLoading ? (
             <Skeleton height={120} />
           ) : (recentSessions.data?.length ?? 0) === 0 ? (
-            <EmptyState text="No sessions recorded yet. Complete a quiz to see your session history." />
+            <EmptyState text="No quiz answer sessions recorded in this view. Games and other study tools are tracked separately." />
           ) : (
             <div style={{ overflowX: "auto" }}>
               <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>

@@ -1,0 +1,72 @@
+[
+ {
+  "itemId": "OIT-1241",
+  "expression": "3000 * 220 / 1000",
+  "expected": "660.0",
+  "decimalPlaces": 1,
+  "unit": "kg/day"
+ },
+ {
+  "itemId": "OIT-1242",
+  "expression": "600 / 2400 * 24",
+  "expected": "6.0",
+  "decimalPlaces": 1,
+  "unit": "hours"
+ },
+ {
+  "itemId": "OIT-1243",
+  "expression": "(280 - 70) / 280 * 100",
+  "expected": "75.0",
+  "decimalPlaces": 1,
+  "unit": "%"
+ },
+ {
+  "itemId": "OIT-1244",
+  "expression": "2.5 * 1000",
+  "expected": "2500.0",
+  "decimalPlaces": 1,
+  "unit": "L"
+ },
+ {
+  "itemId": "OIT-1245",
+  "expression": "4000 * 200 / 1000 / 200",
+  "expected": "4.0",
+  "decimalPlaces": 1,
+  "unit": "kg/m2/day"
+ },
+ {
+  "itemId": "OIT-1246",
+  "expression": "18 * 6 * 3 / 2592 * 24",
+  "expected": "3.0",
+  "decimalPlaces": 1,
+  "unit": "hours"
+ },
+ {
+  "itemId": "OIT-1247",
+  "expression": "(450 - 36) / 450 * 100",
+  "expected": "92.0",
+  "decimalPlaces": 1,
+  "unit": "%"
+ },
+ {
+  "itemId": "OIT-1248",
+  "expression": "12750 / 1000",
+  "expected": "12.75",
+  "decimalPlaces": 2,
+  "unit": "m3"
+ },
+ {
+  "itemId": "OIT-1249",
+  "expression": "45 * 86400 / 1000 * 250 / 1000",
+  "expected": "972.0",
+  "decimalPlaces": 1,
+  "unit": "kg/day"
+ },
+ {
+  "itemId": "OIT-1250",
+  "expression": "375 * 2 / (1200 / 24)",
+  "expected": "15.0",
+  "decimalPlaces": 1,
+  "unit": "hours"
+ }
+]

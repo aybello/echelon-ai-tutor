@@ -1,0 +1,384 @@
+{
+ "courseKey": "wpi-class2-water-dist",
+ "bankKey": "wpi-class2-water-dist",
+ "batch": 4,
+ "size": 41,
+ "conceptualCount": 33,
+ "calcCount": 8,
+ "topicPoolRound": 1,
+ "questionNumStart": 2575,
+ "questionNumEnd": 2615,
+ "itemIdStart": "DISTRIBUTION-L2-575",
+ "itemIdEnd": "DISTRIBUTION-L2-615",
+ "items": [
+  {
+   "seq": 1,
+   "questionNum": 2575,
+   "itemId": "DISTRIBUTION-L2-575",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Processes] disinfection of new mains"
+  },
+  {
+   "seq": 2,
+   "questionNum": 2576,
+   "itemId": "DISTRIBUTION-L2-576",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[General] corrosion in distribution awareness"
+  },
+  {
+   "seq": 3,
+   "questionNum": 2577,
+   "itemId": "DISTRIBUTION-L2-577",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Support Systems] pressure transient awareness"
+  },
+  {
+   "seq": 4,
+   "questionNum": 2578,
+   "itemId": "DISTRIBUTION-L2-578",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Administration] regulation 170/03 class 2 duties"
+  },
+  {
+   "seq": 5,
+   "questionNum": 2579,
+   "itemId": "DISTRIBUTION-L2-579",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Processes] complaint investigation depth"
+  },
+  {
+   "seq": 6,
+   "questionNum": 2580,
+   "itemId": "DISTRIBUTION-L2-580",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[General] service connection programs"
+  },
+  {
+   "seq": 7,
+   "questionNum": 2581,
+   "itemId": "DISTRIBUTION-L2-581",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Support Systems] reservoir operations"
+  },
+  {
+   "seq": 8,
+   "questionNum": 2582,
+   "itemId": "DISTRIBUTION-L2-582",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Administration] supervisory awareness"
+  },
+  {
+   "seq": 9,
+   "questionNum": 2583,
+   "itemId": "DISTRIBUTION-L2-583",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Processes] disinfection of new mains"
+  },
+  {
+   "seq": 10,
+   "questionNum": 2584,
+   "itemId": "DISTRIBUTION-L2-584",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[General] corrosion in distribution awareness"
+  },
+  {
+   "seq": 11,
+   "questionNum": 2585,
+   "itemId": "DISTRIBUTION-L2-585",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Support Systems] pressure transient awareness"
+  },
+  {
+   "seq": 12,
+   "questionNum": 2586,
+   "itemId": "DISTRIBUTION-L2-586",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Administration] regulation 170/03 class 2 duties"
+  },
+  {
+   "seq": 13,
+   "questionNum": 2587,
+   "itemId": "DISTRIBUTION-L2-587",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Processes] complaint investigation depth"
+  },
+  {
+   "seq": 14,
+   "questionNum": 2588,
+   "itemId": "DISTRIBUTION-L2-588",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[General] service connection programs"
+  },
+  {
+   "seq": 15,
+   "questionNum": 2589,
+   "itemId": "DISTRIBUTION-L2-589",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Support Systems] reservoir operations"
+  },
+  {
+   "seq": 16,
+   "questionNum": 2590,
+   "itemId": "DISTRIBUTION-L2-590",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Administration] supervisory awareness"
+  },
+  {
+   "seq": 17,
+   "questionNum": 2591,
+   "itemId": "DISTRIBUTION-L2-591",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Processes] disinfection of new mains"
+  },
+  {
+   "seq": 18,
+   "questionNum": 2592,
+   "itemId": "DISTRIBUTION-L2-592",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[General] corrosion in distribution awareness"
+  },
+  {
+   "seq": 19,
+   "questionNum": 2593,
+   "itemId": "DISTRIBUTION-L2-593",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Support Systems] pressure transient awareness"
+  },
+  {
+   "seq": 20,
+   "questionNum": 2594,
+   "itemId": "DISTRIBUTION-L2-594",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Administration] regulation 170/03 class 2 duties"
+  },
+  {
+   "seq": 21,
+   "questionNum": 2595,
+   "itemId": "DISTRIBUTION-L2-595",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Processes] complaint investigation depth"
+  },
+  {
+   "seq": 22,
+   "questionNum": 2596,
+   "itemId": "DISTRIBUTION-L2-596",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[General] service connection programs"
+  },
+  {
+   "seq": 23,
+   "questionNum": 2597,
+   "itemId": "DISTRIBUTION-L2-597",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Support Systems] reservoir operations"
+  },
+  {
+   "seq": 24,
+   "questionNum": 2598,
+   "itemId": "DISTRIBUTION-L2-598",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Administration] supervisory awareness"
+  },
+  {
+   "seq": 25,
+   "questionNum": 2599,
+   "itemId": "DISTRIBUTION-L2-599",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Processes] disinfection of new mains"
+  },
+  {
+   "seq": 26,
+   "questionNum": 2600,
+   "itemId": "DISTRIBUTION-L2-600",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[General] corrosion in distribution awareness"
+  },
+  {
+   "seq": 27,
+   "questionNum": 2601,
+   "itemId": "DISTRIBUTION-L2-601",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Support Systems] pressure transient awareness"
+  },
+  {
+   "seq": 28,
+   "questionNum": 2602,
+   "itemId": "DISTRIBUTION-L2-602",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Administration] regulation 170/03 class 2 duties"
+  },
+  {
+   "seq": 29,
+   "questionNum": 2603,
+   "itemId": "DISTRIBUTION-L2-603",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Processes] complaint investigation depth"
+  },
+  {
+   "seq": 30,
+   "questionNum": 2604,
+   "itemId": "DISTRIBUTION-L2-604",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[General] service connection programs"
+  },
+  {
+   "seq": 31,
+   "questionNum": 2605,
+   "itemId": "DISTRIBUTION-L2-605",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Support Systems] reservoir operations"
+  },
+  {
+   "seq": 32,
+   "questionNum": 2606,
+   "itemId": "DISTRIBUTION-L2-606",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Administration] supervisory awareness"
+  },
+  {
+   "seq": 33,
+   "questionNum": 2607,
+   "itemId": "DISTRIBUTION-L2-607",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Processes] disinfection of new mains"
+  },
+  {
+   "seq": 34,
+   "questionNum": 2608,
+   "itemId": "DISTRIBUTION-L2-608",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "zone demand with given peaking factors"
+  },
+  {
+   "seq": 35,
+   "questionNum": 2609,
+   "itemId": "DISTRIBUTION-L2-609",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "storage water age calculation"
+  },
+  {
+   "seq": 36,
+   "questionNum": 2610,
+   "itemId": "DISTRIBUTION-L2-610",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "booster dose quantity"
+  },
+  {
+   "seq": 37,
+   "questionNum": 2611,
+   "itemId": "DISTRIBUTION-L2-611",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "pump run time at system scale"
+  },
+  {
+   "seq": 38,
+   "questionNum": 2612,
+   "itemId": "DISTRIBUTION-L2-612",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "zone demand with given peaking factors"
+  },
+  {
+   "seq": 39,
+   "questionNum": 2613,
+   "itemId": "DISTRIBUTION-L2-613",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "storage water age calculation"
+  },
+  {
+   "seq": 40,
+   "questionNum": 2614,
+   "itemId": "DISTRIBUTION-L2-614",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "booster dose quantity"
+  },
+  {
+   "seq": 41,
+   "questionNum": 2615,
+   "itemId": "DISTRIBUTION-L2-615",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "pump run time at system scale"
+  }
+ ]
+}

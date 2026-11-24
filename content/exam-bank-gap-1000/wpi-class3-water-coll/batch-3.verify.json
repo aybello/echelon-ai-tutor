@@ -1,0 +1,72 @@
+[
+ {
+  "itemId": "COLLECTION-L3-591",
+  "expression": "(6250*260+4800*250)*2.2/1000",
+  "expected": "6215",
+  "decimalPlaces": 0,
+  "unit": "m³/day"
+ },
+ {
+  "itemId": "COLLECTION-L3-592",
+  "expression": "1800/(0.36/0.24)/60",
+  "expected": "20.0",
+  "decimalPlaces": 1,
+  "unit": "min"
+ },
+ {
+  "itemId": "COLLECTION-L3-593",
+  "expression": "(18900-2100)/420",
+  "expected": "40",
+  "decimalPlaces": 0,
+  "unit": "days"
+ },
+ {
+  "itemId": "COLLECTION-L3-594",
+  "expression": "640*0.85*1.15",
+  "expected": "625.6",
+  "decimalPlaces": 1,
+  "unit": "L"
+ },
+ {
+  "itemId": "COLLECTION-L3-595",
+  "expression": "7920*1000/(275*2.4)",
+  "expected": "12000",
+  "decimalPlaces": 0,
+  "unit": "people"
+ },
+ {
+  "itemId": "COLLECTION-L3-596",
+  "expression": "0.45/0.25-0.48/0.32",
+  "expected": "0.3",
+  "decimalPlaces": 1,
+  "unit": "m/s"
+ },
+ {
+  "itemId": "COLLECTION-L3-597",
+  "expression": "(27000-3000)/(850+650)",
+  "expected": "16",
+  "decimalPlaces": 0,
+  "unit": "days"
+ },
+ {
+  "itemId": "COLLECTION-L3-598",
+  "expression": "1250*385+24*2750",
+  "expected": "547250",
+  "decimalPlaces": 0,
+  "unit": "dollars"
+ },
+ {
+  "itemId": "COLLECTION-L3-599",
+  "expression": "185*1.85+0.35*140",
+  "expected": "391.25",
+  "decimalPlaces": 2,
+  "unit": "L/s"
+ },
+ {
+  "itemId": "COLLECTION-L3-600",
+  "expression": "2400*0.20*1000/160/60",
+  "expected": "50",
+  "decimalPlaces": 0,
+  "unit": "min"
+ }
+]

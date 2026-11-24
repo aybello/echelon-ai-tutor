@@ -5,7 +5,7 @@ import "./MockExamShell.css";
 
 import { class1OptionOrder } from "@/lib/class1OptionOrder";
 import { useState, useEffect, useCallback, useRef, useMemo, type ReactNode } from "react";
-import { Link } from "wouter";
+import { Link, useSearch } from "wouter";
 import { toast } from "sonner";
 import SiteNav from "@/components/SiteNav";
 import PurchaseGate from "@/components/PurchaseGate";
@@ -23,9 +23,31 @@ import { shouldShowReviewPrompt } from "@/lib/reviewFunnel";
 import { getTutorFailureMessage, isTutorDismissKey } from "@/lib/tutorInteraction";
 import { useLearningActivitySession } from "@/hooks/useLearningActivitySession";
 import { TutorGuideMark } from "@/components/TutorGuideMark";
-import { readTutorStudyLocale } from "@shared/usStudyContext";
+import { readTutorStudyLocale, withUSStudyContext } from "@shared/usStudyContext";
+import { funnelProvince } from "@shared/funnelNavigation";
+import { getCourseWorkspaceTabs } from "@/lib/courseNavigation";
 import { useAssessmentActivity } from "@/hooks/useAssessmentActivity";
 import type { AssessmentActivityCapability } from "@shared/assessmentActivity";
+
+/** Match the optional CTA to the active stream's registered sheet, never a label. */
+function mockFormulaHref(path: string, courseKey: string, search: string): string;
+function mockFormulaHref(path: undefined, courseKey: string, search: string): undefined;
+function mockFormulaHref(path: string | undefined, courseKey: string, search: string): string | undefined {
+  const course = resolveCourseKey(courseKey);
+  if (!path || !course?.isActive) return path;
+  const workspaceHref = getCourseWorkspaceTabs(course).find(tab => tab.kind === "formulas")?.href;
+  if (!workspaceHref) return path;
+  let url: URL;
+  try { url = new URL(path, "https://echelon.invalid"); } catch { return path; }
+  const workspaceUrl = new URL(workspaceHref, "https://echelon.invalid");
+  if (url.origin !== workspaceUrl.origin || url.pathname !== workspaceUrl.pathname) return path;
+  url.searchParams.set("course", course.courseKey);
+  // An explicit destination jurisdiction wins; otherwise carry validated study context.
+  const contextSearch = url.searchParams.has("province") || url.searchParams.has("country") ? url.search : search;
+  const province = funnelProvince(new URLSearchParams(contextSearch).get("province"));
+  if (province && !url.searchParams.has("province")) url.searchParams.set("province", province);
+  return withUSStudyContext(`${url.pathname}${url.search}${url.hash}`, course.courseKey, contextSearch);
+}
 
 // ─── Inline AI Tutor for review mode ─────────────────────────────────────────
 
@@ -394,6 +416,7 @@ export default function MockExamShell({
   streamOptions,
   renderQuestionSupplement,
 }: MockExamConfig) {
+  const search = useSearch();
   const { user, loading: authLoading } = useAuth();
   const [navigatorOpen, setNavigatorOpen] = useState(() => typeof window !== "undefined" && window.matchMedia("(min-width: 769px)").matches);
   useEffect(() => {
@@ -1127,7 +1150,7 @@ export default function MockExamShell({
           {/* Formula link */}
           {formulaPath && formulaLabel && (
             <div style={{ textAlign: "center", marginBottom: 24 }}>
-              <Link href={formulaPath} target="_blank" style={{ fontSize: 13, color: accentColor, fontWeight: 600, textDecoration: "none" }}>
+              <Link href={mockFormulaHref(formulaPath, productKey, search)} target="_blank" style={{ fontSize: 13, color: accentColor, fontWeight: 600, textDecoration: "none" }}>
                 📐 {formulaLabel} →
               </Link>
             </div>

@@ -1,0 +1,4792 @@
+{
+ "courseKey": "wpi-class4-wastewater",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "wp4ww-ladder80",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "An energy benchmark records 6000 kWh/day of aeration energy and 2000 kg/day of BOD removed. Find the specific energy in kWh per kg of BOD removed. This is a utility leadership review for a cold climate treatment utility in Prince George, British Columbia. Enter the exact unrounded number.",
+   "topicId": "energy-benchmarking",
+   "level": "class1",
+   "assumptions": "Fictional benchmark data: 6000 for energy in kWh/day, 2000 for BOD removed in kg/day. Use the given values exactly as stated.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Specific energy (kWh/kg) = Energy (kWh/day) * BOD removed (kg/day)"
+      },
+      {
+       "id": "opt-b",
+       "label": "Specific energy (kWh/kg) = BOD removed (kg/day) / Energy (kWh/day)"
+      },
+      {
+       "id": "opt-c",
+       "label": "Specific energy (kWh/kg) = Energy (kWh/day) / BOD removed (kg/day)"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Specific energy (kWh/kg) = Energy (kWh/day) / BOD removed (kg/day)"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "KWh per day divided by kg per day gives kWh per kg"
+      },
+      {
+       "id": "opt-b",
+       "label": "The result is in kWh per day because energy is used"
+      },
+      {
+       "id": "opt-c",
+       "label": "The result is in percent because a ratio is used"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: KWh per day divided by kg per day gives kWh per kg"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "6000 * 2000 kWh/kg"
+      },
+      {
+       "id": "opt-b",
+       "label": "6000 / 2000 kWh/kg"
+      },
+      {
+       "id": "opt-c",
+       "label": "2000 / 6000 kWh/kg"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: 6000 / 2000 kWh/kg"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact specific energy in kWh/kg.",
+    "unitOptions": [
+     {
+      "id": "kWh-kg",
+      "label": "kWh/kg"
+     },
+     {
+      "id": "Wh-kg",
+      "label": "Wh/kg",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "percent",
+      "label": "%"
+     }
+    ],
+    "expected": "3",
+    "expectedUnitId": "kWh-kg",
+    "absoluteTolerance": "0",
+    "explanation": "6000/2000 = 3."
+   }
+  },
+  {
+   "id": "wp4ww-ladder81",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "An effluent quality review compares an actual effluent BOD of 15 mg/L with a given objective of 25 mg/L. Find the concentration margin in mg/L. This is a senior operations review for a municipal wastewater utility in Kelowna, British Columbia. Enter the exact unrounded number.",
+   "topicId": "effluent-quality-margins",
+   "level": "class1",
+   "assumptions": "Fictional review data: 25 for the objective in mg/L, 15 for the actual value in mg/L. Use the given values exactly as stated. Effluent quality is managed under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Margin (mg/L) = Objective (mg/L) - Actual (mg/L)"
+      },
+      {
+       "id": "opt-b",
+       "label": "Margin (mg/L) = Objective (mg/L) + Actual (mg/L)"
+      },
+      {
+       "id": "opt-c",
+       "label": "Margin (mg/L) = Actual (mg/L) - Objective (mg/L)"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Margin (mg/L) = Objective (mg/L) - Actual (mg/L)"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The result is in kg/day because effluent is involved"
+      },
+      {
+       "id": "opt-b",
+       "label": "Both values are in mg/L, so the difference is in mg/L"
+      },
+      {
+       "id": "opt-c",
+       "label": "The result is in percent because a comparison is made"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Both values are in mg/L, so the difference is in mg/L"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "25 + 15 mg/L"
+      },
+      {
+       "id": "opt-b",
+       "label": "15 - 25 mg/L"
+      },
+      {
+       "id": "opt-c",
+       "label": "25 - 15 mg/L"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: 25 - 15 mg/L"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact concentration margin in mg/L.",
+    "unitOptions": [
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "g-L",
+      "label": "g/L",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "percent",
+      "label": "%"
+     }
+    ],
+    "expected": "10",
+    "expectedUnitId": "mg-L",
+    "absoluteTolerance": "0",
+    "explanation": "25-15 = 10."
+   }
+  },
+  {
+   "id": "wp4ww-ladder82",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "An effluent quality review compares an actual effluent BOD of 18 mg/L with a given objective of 30 mg/L. Find the concentration margin in mg/L. This is a utility wide review for a large activated sludge utility in Red Deer, Alberta. Enter the exact unrounded number.",
+   "topicId": "effluent-quality-margins",
+   "level": "class1",
+   "assumptions": "Fictional review data: 30 for the objective in mg/L, 18 for the actual value in mg/L. Use the given values exactly as stated.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Margin (mg/L) = Objective (mg/L) + Actual (mg/L)"
+      },
+      {
+       "id": "opt-b",
+       "label": "Margin (mg/L) = Objective (mg/L) - Actual (mg/L)"
+      },
+      {
+       "id": "opt-c",
+       "label": "Margin (mg/L) = Actual (mg/L) - Objective (mg/L)"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Margin (mg/L) = Objective (mg/L) - Actual (mg/L)"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The result is in kg/day because effluent is involved"
+      },
+      {
+       "id": "opt-b",
+       "label": "The result is in percent because a comparison is made"
+      },
+      {
+       "id": "opt-c",
+       "label": "Both values are in mg/L, so the difference is in mg/L"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Both values are in mg/L, so the difference is in mg/L"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "30 - 18 mg/L"
+      },
+      {
+       "id": "opt-b",
+       "label": "30 + 18 mg/L"
+      },
+      {
+       "id": "opt-c",
+       "label": "18 - 30 mg/L"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: 30 - 18 mg/L"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact concentration margin in mg/L.",
+    "unitOptions": [
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "g-L",
+      "label": "g/L",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "percent",
+      "label": "%"
+     }
+    ],
+    "expected": "12",
+    "expectedUnitId": "mg-L",
+    "absoluteTolerance": "0",
+    "explanation": "30-18 = 12."
+   }
+  },
+  {
+   "id": "wp4ww-ladder83",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "An effluent quality review compares an actual effluent BOD of 12 mg/L with a given objective of 20 mg/L. Find the concentration margin in mg/L. This is a annual planning review for a biological nutrient removal utility in Lethbridge, Alberta. Enter the exact unrounded number.",
+   "topicId": "effluent-quality-margins",
+   "level": "class1",
+   "assumptions": "Fictional review data: 20 for the objective in mg/L, 12 for the actual value in mg/L. Use the given values exactly as stated. Effluent quality is managed under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Margin (mg/L) = Objective (mg/L) + Actual (mg/L)"
+      },
+      {
+       "id": "opt-b",
+       "label": "Margin (mg/L) = Actual (mg/L) - Objective (mg/L)"
+      },
+      {
+       "id": "opt-c",
+       "label": "Margin (mg/L) = Objective (mg/L) - Actual (mg/L)"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Margin (mg/L) = Objective (mg/L) - Actual (mg/L)"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Both values are in mg/L, so the difference is in mg/L"
+      },
+      {
+       "id": "opt-b",
+       "label": "The result is in kg/day because effluent is involved"
+      },
+      {
+       "id": "opt-c",
+       "label": "The result is in percent because a comparison is made"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Both values are in mg/L, so the difference is in mg/L"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "20 + 12 mg/L"
+      },
+      {
+       "id": "opt-b",
+       "label": "20 - 12 mg/L"
+      },
+      {
+       "id": "opt-c",
+       "label": "12 - 20 mg/L"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: 20 - 12 mg/L"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact concentration margin in mg/L.",
+    "unitOptions": [
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "g-L",
+      "label": "g/L",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "percent",
+      "label": "%"
+     }
+    ],
+    "expected": "8",
+    "expectedUnitId": "mg-L",
+    "absoluteTolerance": "0",
+    "explanation": "20-12 = 8."
+   }
+  },
+  {
+   "id": "wp4ww-ladder84",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "An effluent quality review compares an actual effluent BOD of 10 mg/L with a given objective of 25 mg/L. Find the concentration margin in mg/L. This is a utility leadership review for a cold climate treatment utility in Prince George, British Columbia. Enter the exact unrounded number.",
+   "topicId": "effluent-quality-margins",
+   "level": "class1",
+   "assumptions": "Fictional review data: 25 for the objective in mg/L, 10 for the actual value in mg/L. Use the given values exactly as stated.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Margin (mg/L) = Objective (mg/L) - Actual (mg/L)"
+      },
+      {
+       "id": "opt-b",
+       "label": "Margin (mg/L) = Objective (mg/L) + Actual (mg/L)"
+      },
+      {
+       "id": "opt-c",
+       "label": "Margin (mg/L) = Actual (mg/L) - Objective (mg/L)"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Margin (mg/L) = Objective (mg/L) - Actual (mg/L)"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The result is in kg/day because effluent is involved"
+      },
+      {
+       "id": "opt-b",
+       "label": "Both values are in mg/L, so the difference is in mg/L"
+      },
+      {
+       "id": "opt-c",
+       "label": "The result is in percent because a comparison is made"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Both values are in mg/L, so the difference is in mg/L"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "25 + 10 mg/L"
+      },
+      {
+       "id": "opt-b",
+       "label": "10 - 25 mg/L"
+      },
+      {
+       "id": "opt-c",
+       "label": "25 - 10 mg/L"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: 25 - 10 mg/L"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact concentration margin in mg/L.",
+    "unitOptions": [
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "g-L",
+      "label": "g/L",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "percent",
+      "label": "%"
+     }
+    ],
+    "expected": "15",
+    "expectedUnitId": "mg-L",
+    "absoluteTolerance": "0",
+    "explanation": "25-10 = 15."
+   }
+  },
+  {
+   "id": "wp4ww-ladder85",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "An effluent quality review compares an actual effluent BOD of 20 mg/L with a given objective of 35 mg/L. Find the concentration margin in mg/L. This is a capital planning review for a regional wastewater utility in Calgary, Alberta. Enter the exact unrounded number.",
+   "topicId": "effluent-quality-margins",
+   "level": "class1",
+   "assumptions": "Fictional review data: 35 for the objective in mg/L, 20 for the actual value in mg/L. Use the given values exactly as stated. Effluent quality is managed under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Margin (mg/L) = Objective (mg/L) + Actual (mg/L)"
+      },
+      {
+       "id": "opt-b",
+       "label": "Margin (mg/L) = Objective (mg/L) - Actual (mg/L)"
+      },
+      {
+       "id": "opt-c",
+       "label": "Margin (mg/L) = Actual (mg/L) - Objective (mg/L)"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Margin (mg/L) = Objective (mg/L) - Actual (mg/L)"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The result is in kg/day because effluent is involved"
+      },
+      {
+       "id": "opt-b",
+       "label": "The result is in percent because a comparison is made"
+      },
+      {
+       "id": "opt-c",
+       "label": "Both values are in mg/L, so the difference is in mg/L"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Both values are in mg/L, so the difference is in mg/L"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "35 - 20 mg/L"
+      },
+      {
+       "id": "opt-b",
+       "label": "35 + 20 mg/L"
+      },
+      {
+       "id": "opt-c",
+       "label": "20 - 35 mg/L"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: 35 - 20 mg/L"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact concentration margin in mg/L.",
+    "unitOptions": [
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "g-L",
+      "label": "g/L",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "percent",
+      "label": "%"
+     }
+    ],
+    "expected": "15",
+    "expectedUnitId": "mg-L",
+    "absoluteTolerance": "0",
+    "explanation": "35-20 = 15."
+   }
+  },
+  {
+   "id": "wp4ww-ladder86",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "An effluent quality review records an actual value of 15 mg/L against a given objective of 25 mg/L. Find the actual value as a percent of the objective. This is a utility wide review for a large activated sludge utility in Red Deer, Alberta. Enter the exact unrounded number.",
+   "topicId": "effluent-quality-margins",
+   "level": "class1",
+   "assumptions": "Fictional review data: 15 for the actual value in mg/L, 25 for the objective in mg/L. Use the given values exactly as stated.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Percent of objective (%) = Objective (mg/L) / Actual (mg/L) * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Percent of objective (%) = Actual (mg/L) * Objective (mg/L) * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Percent of objective (%) = Actual (mg/L) / Objective (mg/L) * 100"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Percent of objective (%) = Actual (mg/L) / Objective (mg/L) * 100"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The ratio is dimensionless and times 100 gives percent"
+      },
+      {
+       "id": "opt-b",
+       "label": "The result is in mg/L because concentrations are used"
+      },
+      {
+       "id": "opt-c",
+       "label": "The result is in kg/day because effluent is involved"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: The ratio is dimensionless and times 100 gives percent"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "25 / 15 * 100 %"
+      },
+      {
+       "id": "opt-b",
+       "label": "15 / 25 * 100 %"
+      },
+      {
+       "id": "opt-c",
+       "label": "15 * 25 * 100 %"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: 15 / 25 * 100 %"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact percent of the objective in %.",
+    "unitOptions": [
+     {
+      "id": "percent",
+      "label": "%"
+     },
+     {
+      "id": "fraction",
+      "label": "fraction",
+      "toExpected": {
+       "numerator": "100",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     }
+    ],
+    "expected": "60",
+    "expectedUnitId": "percent",
+    "absoluteTolerance": "0",
+    "explanation": "15/25*100 = 60."
+   }
+  },
+  {
+   "id": "wp4ww-ladder87",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "An effluent quality review records an actual value of 12 mg/L against a given objective of 20 mg/L. Find the actual value as a percent of the objective. This is a annual planning review for a biological nutrient removal utility in Lethbridge, Alberta. Enter the exact unrounded number.",
+   "topicId": "effluent-quality-margins",
+   "level": "class1",
+   "assumptions": "Fictional review data: 12 for the actual value in mg/L, 20 for the objective in mg/L. Use the given values exactly as stated. Effluent quality is managed under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Percent of objective (%) = Actual (mg/L) / Objective (mg/L) * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Percent of objective (%) = Objective (mg/L) / Actual (mg/L) * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Percent of objective (%) = Actual (mg/L) * Objective (mg/L) * 100"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Percent of objective (%) = Actual (mg/L) / Objective (mg/L) * 100"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The result is in mg/L because concentrations are used"
+      },
+      {
+       "id": "opt-b",
+       "label": "The ratio is dimensionless and times 100 gives percent"
+      },
+      {
+       "id": "opt-c",
+       "label": "The result is in kg/day because effluent is involved"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: The ratio is dimensionless and times 100 gives percent"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "20 / 12 * 100 %"
+      },
+      {
+       "id": "opt-b",
+       "label": "12 * 20 * 100 %"
+      },
+      {
+       "id": "opt-c",
+       "label": "12 / 20 * 100 %"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: 12 / 20 * 100 %"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact percent of the objective in %.",
+    "unitOptions": [
+     {
+      "id": "percent",
+      "label": "%"
+     },
+     {
+      "id": "fraction",
+      "label": "fraction",
+      "toExpected": {
+       "numerator": "100",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     }
+    ],
+    "expected": "60",
+    "expectedUnitId": "percent",
+    "absoluteTolerance": "0",
+    "explanation": "12/20*100 = 60."
+   }
+  },
+  {
+   "id": "wp4ww-ladder88",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "An effluent quality review records an actual value of 18 mg/L against a given objective of 30 mg/L. Find the actual value as a percent of the objective. This is a utility leadership review for a cold climate treatment utility in Prince George, British Columbia. Enter the exact unrounded number.",
+   "topicId": "effluent-quality-margins",
+   "level": "class1",
+   "assumptions": "Fictional review data: 18 for the actual value in mg/L, 30 for the objective in mg/L. Use the given values exactly as stated.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Percent of objective (%) = Objective (mg/L) / Actual (mg/L) * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Percent of objective (%) = Actual (mg/L) / Objective (mg/L) * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Percent of objective (%) = Actual (mg/L) * Objective (mg/L) * 100"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Percent of objective (%) = Actual (mg/L) / Objective (mg/L) * 100"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The result is in mg/L because concentrations are used"
+      },
+      {
+       "id": "opt-b",
+       "label": "The result is in kg/day because effluent is involved"
+      },
+      {
+       "id": "opt-c",
+       "label": "The ratio is dimensionless and times 100 gives percent"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: The ratio is dimensionless and times 100 gives percent"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "18 / 30 * 100 %"
+      },
+      {
+       "id": "opt-b",
+       "label": "30 / 18 * 100 %"
+      },
+      {
+       "id": "opt-c",
+       "label": "18 * 30 * 100 %"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: 18 / 30 * 100 %"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact percent of the objective in %.",
+    "unitOptions": [
+     {
+      "id": "percent",
+      "label": "%"
+     },
+     {
+      "id": "fraction",
+      "label": "fraction",
+      "toExpected": {
+       "numerator": "100",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     }
+    ],
+    "expected": "60",
+    "expectedUnitId": "percent",
+    "absoluteTolerance": "0",
+    "explanation": "18/30*100 = 60."
+   }
+  },
+  {
+   "id": "wp4ww-ladder89",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "An effluent quality review records an actual value of 20 mg/L against a given objective of 25 mg/L. Find the actual value as a percent of the objective. This is a capital planning review for a regional wastewater utility in Calgary, Alberta. Enter the exact unrounded number.",
+   "topicId": "effluent-quality-margins",
+   "level": "class1",
+   "assumptions": "Fictional review data: 20 for the actual value in mg/L, 25 for the objective in mg/L. Use the given values exactly as stated. Effluent quality is managed under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Percent of objective (%) = Objective (mg/L) / Actual (mg/L) * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Percent of objective (%) = Actual (mg/L) * Objective (mg/L) * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Percent of objective (%) = Actual (mg/L) / Objective (mg/L) * 100"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Percent of objective (%) = Actual (mg/L) / Objective (mg/L) * 100"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The ratio is dimensionless and times 100 gives percent"
+      },
+      {
+       "id": "opt-b",
+       "label": "The result is in mg/L because concentrations are used"
+      },
+      {
+       "id": "opt-c",
+       "label": "The result is in kg/day because effluent is involved"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: The ratio is dimensionless and times 100 gives percent"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "25 / 20 * 100 %"
+      },
+      {
+       "id": "opt-b",
+       "label": "20 / 25 * 100 %"
+      },
+      {
+       "id": "opt-c",
+       "label": "20 * 25 * 100 %"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: 20 / 25 * 100 %"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact percent of the objective in %.",
+    "unitOptions": [
+     {
+      "id": "percent",
+      "label": "%"
+     },
+     {
+      "id": "fraction",
+      "label": "fraction",
+      "toExpected": {
+       "numerator": "100",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     }
+    ],
+    "expected": "80",
+    "expectedUnitId": "percent",
+    "absoluteTolerance": "0",
+    "explanation": "20/25*100 = 80."
+   }
+  },
+  {
+   "id": "wp4ww-ladder90",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "An effluent quality review records an actual value of 16 mg/L against a given objective of 20 mg/L. Find the actual value as a percent of the objective. This is a senior operations review for a municipal wastewater utility in Edmonton, Alberta. Enter the exact unrounded number.",
+   "topicId": "effluent-quality-margins",
+   "level": "class1",
+   "assumptions": "Fictional review data: 16 for the actual value in mg/L, 20 for the objective in mg/L. Use the given values exactly as stated.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Percent of objective (%) = Actual (mg/L) / Objective (mg/L) * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Percent of objective (%) = Objective (mg/L) / Actual (mg/L) * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Percent of objective (%) = Actual (mg/L) * Objective (mg/L) * 100"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Percent of objective (%) = Actual (mg/L) / Objective (mg/L) * 100"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The result is in mg/L because concentrations are used"
+      },
+      {
+       "id": "opt-b",
+       "label": "The ratio is dimensionless and times 100 gives percent"
+      },
+      {
+       "id": "opt-c",
+       "label": "The result is in kg/day because effluent is involved"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: The ratio is dimensionless and times 100 gives percent"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "20 / 16 * 100 %"
+      },
+      {
+       "id": "opt-b",
+       "label": "16 * 20 * 100 %"
+      },
+      {
+       "id": "opt-c",
+       "label": "16 / 20 * 100 %"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: 16 / 20 * 100 %"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact percent of the objective in %.",
+    "unitOptions": [
+     {
+      "id": "percent",
+      "label": "%"
+     },
+     {
+      "id": "fraction",
+      "label": "fraction",
+      "toExpected": {
+       "numerator": "100",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     }
+    ],
+    "expected": "80",
+    "expectedUnitId": "percent",
+    "absoluteTolerance": "0",
+    "explanation": "16/20*100 = 80."
+   }
+  },
+  {
+   "id": "wp4ww-ladder91",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A utility wide solids balance records 45000 kg of solids inventory in the biological system and a total solids loss rate of 1500 kg/day through wasting and effluent. Find the solids retention time in days. This is a annual planning review for a biological nutrient removal utility in Lethbridge, Alberta. Enter the exact unrounded number.",
+   "topicId": "whole-plant-solids-balance",
+   "level": "class1",
+   "assumptions": "Fictional operating data: 45000 for inventory in kg, 1500 for solids loss in kg/day. Use the given values exactly as stated.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "SRT (days) = Inventory (kg) * Solids loss rate (kg/day)"
+      },
+      {
+       "id": "opt-b",
+       "label": "SRT (days) = Inventory (kg) / Solids loss rate (kg/day)"
+      },
+      {
+       "id": "opt-c",
+       "label": "SRT (days) = Solids loss rate (kg/day) / Inventory (kg)"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: SRT (days) = Inventory (kg) / Solids loss rate (kg/day)"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The result is in kg/day because solids are used"
+      },
+      {
+       "id": "opt-b",
+       "label": "The result is in percent because a ratio is used"
+      },
+      {
+       "id": "opt-c",
+       "label": "Kg divided by kg per day gives days"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Kg divided by kg per day gives days"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "45000 / 1500 days"
+      },
+      {
+       "id": "opt-b",
+       "label": "45000 * 1500 days"
+      },
+      {
+       "id": "opt-c",
+       "label": "1500 / 45000 days"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: 45000 / 1500 days"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact solids retention time in days.",
+    "unitOptions": [
+     {
+      "id": "days",
+      "label": "days"
+     },
+     {
+      "id": "hours",
+      "label": "hours",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "24"
+      }
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "percent",
+      "label": "%"
+     }
+    ],
+    "expected": "30",
+    "expectedUnitId": "days",
+    "absoluteTolerance": "0",
+    "explanation": "45000/1500 = 30."
+   }
+  },
+  {
+   "id": "wp4ww-ladder92",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A utility wide solids balance records 60000 kg of solids inventory in the biological system and a total solids loss rate of 2000 kg/day through wasting and effluent. Find the solids retention time in days. This is a utility leadership review for a cold climate treatment utility in Prince George, British Columbia. Enter the exact unrounded number.",
+   "topicId": "whole-plant-solids-balance",
+   "level": "class1",
+   "assumptions": "Fictional operating data: 60000 for inventory in kg, 2000 for solids loss in kg/day. Use the given values exactly as stated.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "SRT (days) = Inventory (kg) * Solids loss rate (kg/day)"
+      },
+      {
+       "id": "opt-b",
+       "label": "SRT (days) = Solids loss rate (kg/day) / Inventory (kg)"
+      },
+      {
+       "id": "opt-c",
+       "label": "SRT (days) = Inventory (kg) / Solids loss rate (kg/day)"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: SRT (days) = Inventory (kg) / Solids loss rate (kg/day)"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Kg divided by kg per day gives days"
+      },
+      {
+       "id": "opt-b",
+       "label": "The result is in kg/day because solids are used"
+      },
+      {
+       "id": "opt-c",
+       "label": "The result is in percent because a ratio is used"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Kg divided by kg per day gives days"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "60000 * 2000 days"
+      },
+      {
+       "id": "opt-b",
+       "label": "60000 / 2000 days"
+      },
+      {
+       "id": "opt-c",
+       "label": "2000 / 60000 days"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: 60000 / 2000 days"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact solids retention time in days.",
+    "unitOptions": [
+     {
+      "id": "days",
+      "label": "days"
+     },
+     {
+      "id": "hours",
+      "label": "hours",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "24"
+      }
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "percent",
+      "label": "%"
+     }
+    ],
+    "expected": "30",
+    "expectedUnitId": "days",
+    "absoluteTolerance": "0",
+    "explanation": "60000/2000 = 30."
+   }
+  },
+  {
+   "id": "wp4ww-ladder93",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A utility wide solids balance records 36000 kg of solids inventory in the biological system and a total solids loss rate of 1200 kg/day through wasting and effluent. Find the solids retention time in days. This is a capital planning review for a regional wastewater utility in Calgary, Alberta. Enter the exact unrounded number.",
+   "topicId": "whole-plant-solids-balance",
+   "level": "class1",
+   "assumptions": "Fictional operating data: 36000 for inventory in kg, 1200 for solids loss in kg/day. Use the given values exactly as stated.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "SRT (days) = Inventory (kg) / Solids loss rate (kg/day)"
+      },
+      {
+       "id": "opt-b",
+       "label": "SRT (days) = Inventory (kg) * Solids loss rate (kg/day)"
+      },
+      {
+       "id": "opt-c",
+       "label": "SRT (days) = Solids loss rate (kg/day) / Inventory (kg)"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: SRT (days) = Inventory (kg) / Solids loss rate (kg/day)"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The result is in kg/day because solids are used"
+      },
+      {
+       "id": "opt-b",
+       "label": "Kg divided by kg per day gives days"
+      },
+      {
+       "id": "opt-c",
+       "label": "The result is in percent because a ratio is used"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Kg divided by kg per day gives days"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "36000 * 1200 days"
+      },
+      {
+       "id": "opt-b",
+       "label": "1200 / 36000 days"
+      },
+      {
+       "id": "opt-c",
+       "label": "36000 / 1200 days"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: 36000 / 1200 days"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact solids retention time in days.",
+    "unitOptions": [
+     {
+      "id": "days",
+      "label": "days"
+     },
+     {
+      "id": "hours",
+      "label": "hours",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "24"
+      }
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "percent",
+      "label": "%"
+     }
+    ],
+    "expected": "30",
+    "expectedUnitId": "days",
+    "absoluteTolerance": "0",
+    "explanation": "36000/1200 = 30."
+   }
+  },
+  {
+   "id": "wp4ww-ladder94",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A utility wide solids balance records 52500 kg of solids inventory in the biological system and a total solids loss rate of 1500 kg/day through wasting and effluent. Find the solids retention time in days. This is a senior operations review for a municipal wastewater utility in Edmonton, Alberta. Enter the exact unrounded number.",
+   "topicId": "whole-plant-solids-balance",
+   "level": "class1",
+   "assumptions": "Fictional operating data: 52500 for inventory in kg, 1500 for solids loss in kg/day. Use the given values exactly as stated.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "SRT (days) = Inventory (kg) * Solids loss rate (kg/day)"
+      },
+      {
+       "id": "opt-b",
+       "label": "SRT (days) = Inventory (kg) / Solids loss rate (kg/day)"
+      },
+      {
+       "id": "opt-c",
+       "label": "SRT (days) = Solids loss rate (kg/day) / Inventory (kg)"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: SRT (days) = Inventory (kg) / Solids loss rate (kg/day)"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The result is in kg/day because solids are used"
+      },
+      {
+       "id": "opt-b",
+       "label": "The result is in percent because a ratio is used"
+      },
+      {
+       "id": "opt-c",
+       "label": "Kg divided by kg per day gives days"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Kg divided by kg per day gives days"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "52500 / 1500 days"
+      },
+      {
+       "id": "opt-b",
+       "label": "52500 * 1500 days"
+      },
+      {
+       "id": "opt-c",
+       "label": "1500 / 52500 days"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: 52500 / 1500 days"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact solids retention time in days.",
+    "unitOptions": [
+     {
+      "id": "days",
+      "label": "days"
+     },
+     {
+      "id": "hours",
+      "label": "hours",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "24"
+      }
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "percent",
+      "label": "%"
+     }
+    ],
+    "expected": "35",
+    "expectedUnitId": "days",
+    "absoluteTolerance": "0",
+    "explanation": "52500/1500 = 35."
+   }
+  },
+  {
+   "id": "wp4ww-ladder95",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A utility wide solids balance records 48000 kg of solids inventory in the biological system and a total solids loss rate of 1600 kg/day through wasting and effluent. Find the solids retention time in days. This is a utility wide review for a large activated sludge utility in Regina, Saskatchewan. Enter the exact unrounded number.",
+   "topicId": "whole-plant-solids-balance",
+   "level": "class1",
+   "assumptions": "Fictional operating data: 48000 for inventory in kg, 1600 for solids loss in kg/day. Use the given values exactly as stated.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "SRT (days) = Inventory (kg) * Solids loss rate (kg/day)"
+      },
+      {
+       "id": "opt-b",
+       "label": "SRT (days) = Solids loss rate (kg/day) / Inventory (kg)"
+      },
+      {
+       "id": "opt-c",
+       "label": "SRT (days) = Inventory (kg) / Solids loss rate (kg/day)"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: SRT (days) = Inventory (kg) / Solids loss rate (kg/day)"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Kg divided by kg per day gives days"
+      },
+      {
+       "id": "opt-b",
+       "label": "The result is in kg/day because solids are used"
+      },
+      {
+       "id": "opt-c",
+       "label": "The result is in percent because a ratio is used"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Kg divided by kg per day gives days"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "48000 * 1600 days"
+      },
+      {
+       "id": "opt-b",
+       "label": "48000 / 1600 days"
+      },
+      {
+       "id": "opt-c",
+       "label": "1600 / 48000 days"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: 48000 / 1600 days"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact solids retention time in days.",
+    "unitOptions": [
+     {
+      "id": "days",
+      "label": "days"
+     },
+     {
+      "id": "hours",
+      "label": "hours",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "24"
+      }
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "percent",
+      "label": "%"
+     }
+    ],
+    "expected": "30",
+    "expectedUnitId": "days",
+    "absoluteTolerance": "0",
+    "explanation": "48000/1600 = 30."
+   }
+  },
+  {
+   "id": "wp4ww-ladder96",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A digestion program feeds 3000 kg/day of volatile solids and achieves a given volatile solids reduction of 55 percent. Find the mass of volatile solids destroyed in kg/day. This is a utility leadership review for a cold climate treatment utility in Prince George, British Columbia. Enter the exact unrounded number.",
+   "topicId": "whole-plant-solids-balance",
+   "level": "class1",
+   "assumptions": "Fictional operating data: 3000 for volatile solids fed in kg/day, 55 for reduction in percent. Use the given values exactly as stated.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "VS destroyed (kg/day) = VS fed (kg/day) * Reduction (%) / 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "VS destroyed (kg/day) = VS fed (kg/day) / Reduction (%) * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "VS destroyed (kg/day) = Reduction (%) / VS fed (kg/day) * 100"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: VS destroyed (kg/day) = VS fed (kg/day) * Reduction (%) / 100"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The result is in percent because a percent is used"
+      },
+      {
+       "id": "opt-b",
+       "label": "Percent divided by 100 is a fraction, so the result stays in kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "The result is in m3/day because digestion is involved"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Percent divided by 100 is a fraction, so the result stays in kg/day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "3000 / 55 * 100 kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "55 / 3000 * 100 kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "3000 * 55 / 100 kg/day"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: 3000 * 55 / 100 kg/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact mass of volatile solids destroyed in kg/day.",
+    "unitOptions": [
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "g-day",
+      "label": "g/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "percent",
+      "label": "%"
+     }
+    ],
+    "expected": "1650",
+    "expectedUnitId": "kg-day",
+    "absoluteTolerance": "0",
+    "explanation": "3000*55/100 = 1650."
+   }
+  },
+  {
+   "id": "wp4ww-ladder97",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A digestion program feeds 2500 kg/day of volatile solids and achieves a given volatile solids reduction of 60 percent. Find the mass of volatile solids destroyed in kg/day. This is a capital planning review for a regional wastewater utility in Calgary, Alberta. Enter the exact unrounded number.",
+   "topicId": "whole-plant-solids-balance",
+   "level": "class1",
+   "assumptions": "Fictional operating data: 2500 for volatile solids fed in kg/day, 60 for reduction in percent. Use the given values exactly as stated.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "VS destroyed (kg/day) = VS fed (kg/day) / Reduction (%) * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "VS destroyed (kg/day) = VS fed (kg/day) * Reduction (%) / 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "VS destroyed (kg/day) = Reduction (%) / VS fed (kg/day) * 100"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: VS destroyed (kg/day) = VS fed (kg/day) * Reduction (%) / 100"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The result is in percent because a percent is used"
+      },
+      {
+       "id": "opt-b",
+       "label": "The result is in m3/day because digestion is involved"
+      },
+      {
+       "id": "opt-c",
+       "label": "Percent divided by 100 is a fraction, so the result stays in kg/day"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Percent divided by 100 is a fraction, so the result stays in kg/day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "2500 * 60 / 100 kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "2500 / 60 * 100 kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "60 / 2500 * 100 kg/day"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: 2500 * 60 / 100 kg/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact mass of volatile solids destroyed in kg/day.",
+    "unitOptions": [
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "g-day",
+      "label": "g/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "percent",
+      "label": "%"
+     }
+    ],
+    "expected": "1500",
+    "expectedUnitId": "kg-day",
+    "absoluteTolerance": "0",
+    "explanation": "2500*60/100 = 1500."
+   }
+  },
+  {
+   "id": "wp4ww-ladder98",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A digestion program feeds 4000 kg/day of volatile solids and achieves a given volatile solids reduction of 50 percent. Find the mass of volatile solids destroyed in kg/day. This is a senior operations review for a municipal wastewater utility in Edmonton, Alberta. Enter the exact unrounded number.",
+   "topicId": "whole-plant-solids-balance",
+   "level": "class1",
+   "assumptions": "Fictional operating data: 4000 for volatile solids fed in kg/day, 50 for reduction in percent. Use the given values exactly as stated.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "VS destroyed (kg/day) = VS fed (kg/day) / Reduction (%) * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "VS destroyed (kg/day) = Reduction (%) / VS fed (kg/day) * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "VS destroyed (kg/day) = VS fed (kg/day) * Reduction (%) / 100"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: VS destroyed (kg/day) = VS fed (kg/day) * Reduction (%) / 100"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Percent divided by 100 is a fraction, so the result stays in kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "The result is in percent because a percent is used"
+      },
+      {
+       "id": "opt-c",
+       "label": "The result is in m3/day because digestion is involved"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Percent divided by 100 is a fraction, so the result stays in kg/day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "4000 / 50 * 100 kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "4000 * 50 / 100 kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "50 / 4000 * 100 kg/day"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: 4000 * 50 / 100 kg/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact mass of volatile solids destroyed in kg/day.",
+    "unitOptions": [
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "g-day",
+      "label": "g/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "percent",
+      "label": "%"
+     }
+    ],
+    "expected": "2000",
+    "expectedUnitId": "kg-day",
+    "absoluteTolerance": "0",
+    "explanation": "4000*50/100 = 2000."
+   }
+  },
+  {
+   "id": "wp4ww-ladder99",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A digestion program feeds 3500 kg/day of volatile solids and achieves a given volatile solids reduction of 60 percent. Find the mass of volatile solids destroyed in kg/day. This is a utility wide review for a large activated sludge utility in Regina, Saskatchewan. Enter the exact unrounded number.",
+   "topicId": "whole-plant-solids-balance",
+   "level": "class1",
+   "assumptions": "Fictional operating data: 3500 for volatile solids fed in kg/day, 60 for reduction in percent. Use the given values exactly as stated.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "VS destroyed (kg/day) = VS fed (kg/day) * Reduction (%) / 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "VS destroyed (kg/day) = VS fed (kg/day) / Reduction (%) * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "VS destroyed (kg/day) = Reduction (%) / VS fed (kg/day) * 100"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: VS destroyed (kg/day) = VS fed (kg/day) * Reduction (%) / 100"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The result is in percent because a percent is used"
+      },
+      {
+       "id": "opt-b",
+       "label": "Percent divided by 100 is a fraction, so the result stays in kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "The result is in m3/day because digestion is involved"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Percent divided by 100 is a fraction, so the result stays in kg/day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "3500 / 60 * 100 kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "60 / 3500 * 100 kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "3500 * 60 / 100 kg/day"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: 3500 * 60 / 100 kg/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact mass of volatile solids destroyed in kg/day.",
+    "unitOptions": [
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "g-day",
+      "label": "g/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "percent",
+      "label": "%"
+     }
+    ],
+    "expected": "2100",
+    "expectedUnitId": "kg-day",
+    "absoluteTolerance": "0",
+    "explanation": "3500*60/100 = 2100."
+   }
+  },
+  {
+   "id": "wp4ww-error01",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this utility wide nitrogen balance closure prepared for the annual nutrient strategy review at a plant in Alberta. Flow is 12000 m3/d.",
+   "topicId": "utility-nutrient-balance",
+   "level": "class1",
+   "assumptions": "Fictional plant in Alberta: Q = 12000 m3/d, influent total nitrogen = 38 mg/L, effluent total nitrogen = 9 mg/L, nitrogen leaving in waste sludge = 60 kg/d from plant records. Denitrified nitrogen closes the balance. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Denitrified N = influent TN load - effluent TN load - sludge N load"
+    },
+    {
+     "id": "line2",
+     "label": "2. Influent TN load = 12000 * 38 / 1000 = 456 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Effluent TN load = 12000 * 38 / 1000 = 456 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Effluent TN load = 12000 * 9 / 1000 = 108 kg/d",
+   "explanation": "Line 3 used the influent concentration of 38 mg/L for the effluent instead of 9 mg/L. The effluent load is 108 kg/d, so denitrified nitrogen is 288 kg/d and the balance closes."
+  },
+  {
+   "id": "wp4ww-error02",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this utility wide nitrogen balance closure prepared for the annual nutrient strategy review at a plant in Saskatchewan. Flow is 15000 m3/d.",
+   "topicId": "utility-nutrient-balance",
+   "level": "class1",
+   "assumptions": "Fictional plant in Saskatchewan: Q = 15000 m3/d, influent total nitrogen = 42 mg/L, effluent total nitrogen = 12 mg/L, nitrogen leaving in waste sludge = 75 kg/d from plant records. Denitrified nitrogen closes the balance. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Denitrified N = influent TN load - effluent TN load - sludge N load"
+    },
+    {
+     "id": "line2",
+     "label": "2. Influent TN load = 15000 * 42 / 100 = 6300 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Effluent TN load = 15000 * 12 / 1000 = 180 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. Denitrified N = 6300 - 180 - 75 = 6045 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Influent TN load = 15000 * 42 / 1000 = 630 kg/d",
+   "explanation": "Line 2 divided by 100 instead of 1000 in the load conversion. The influent load is 630 kg/d, so denitrified nitrogen is 375 kg/d."
+  },
+  {
+   "id": "wp4ww-error03",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this utility wide nitrogen balance closure prepared for the annual nutrient strategy review at a plant in Manitoba. Flow is 20000 m3/d.",
+   "topicId": "utility-nutrient-balance",
+   "level": "class1",
+   "assumptions": "Fictional plant in Manitoba: Q = 20000 m3/d, influent total nitrogen = 35 mg/L, effluent total nitrogen = 10 mg/L, nitrogen leaving in waste sludge = 80 kg/d from plant records. Denitrified nitrogen closes the balance. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Denitrified N = influent TN load - effluent TN load - sludge N load"
+    },
+    {
+     "id": "line2",
+     "label": "2. Influent TN load = 20000 * 35 / 1000 = 700 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Effluent TN load = 20000 * 10 / 1000 = 200 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. Denitrified N = 700 + 200 - 80 = 820 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Denitrified N = 700 - 200 - 80 = 420 kg/d",
+   "explanation": "Line 4 added the effluent load instead of subtracting it. Nitrogen leaving in the effluent is not denitrified, so denitrified nitrogen is 420 kg/d."
+  },
+  {
+   "id": "wp4ww-error04",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this utility wide nitrogen balance closure prepared for the annual nutrient strategy review at a plant in British Columbia. Flow is 9000 m3/d.",
+   "topicId": "utility-nutrient-balance",
+   "level": "class1",
+   "assumptions": "Fictional plant in British Columbia: Q = 9000 m3/d, influent total nitrogen = 40 mg/L, effluent total nitrogen = 8 mg/L, nitrogen leaving in waste sludge = 45 kg/d from plant records. Denitrified nitrogen closes the balance. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Denitrified N = influent TN load - effluent TN load - sludge N load"
+    },
+    {
+     "id": "line2",
+     "label": "2. Influent TN load = 9000 * 40 / 1000 = 360 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Effluent TN load = 9000 * 8 / 1000 = 72 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. Denitrified N = 360 - 72 - 45 = 253 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Denitrified N = 360 - 72 - 45 = 243 kg/d",
+   "explanation": "Line 4 subtracted incorrectly. 360 - 72 - 45 = 243 kg/d, not 253 kg/d."
+  },
+  {
+   "id": "wp4ww-error05",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this utility wide nitrogen balance closure prepared for the annual nutrient strategy review at a plant in Alberta. Flow is 18000 m3/d.",
+   "topicId": "utility-nutrient-balance",
+   "level": "class1",
+   "assumptions": "Fictional plant in Alberta: Q = 18000 m3/d, influent total nitrogen = 36 mg/L, effluent total nitrogen = 11 mg/L, nitrogen leaving in waste sludge = 90 kg/d from plant records. Denitrified nitrogen closes the balance. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Denitrified N = influent TN load - effluent TN load - sludge N load"
+    },
+    {
+     "id": "line2",
+     "label": "2. Influent TN load = 18000 * 36 / 1000 = 648 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Effluent TN load = 18000 * 11 / 1000 = 208 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. Denitrified N = 648 - 208 - 90 = 350 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Effluent TN load = 18000 * 11 / 1000 = 198 kg/d",
+   "explanation": "Line 3 multiplied incorrectly. 18000 * 11 / 1000 = 198 kg/d, so denitrified nitrogen is 360 kg/d."
+  },
+  {
+   "id": "wp4ww-error06",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this utility wide nitrogen balance closure prepared for the annual nutrient strategy review at a plant in Saskatchewan. Flow is 25000 m3/d.",
+   "topicId": "utility-nutrient-balance",
+   "level": "class1",
+   "assumptions": "Fictional plant in Saskatchewan: Q = 25000 m3/d, influent total nitrogen = 32 mg/L, effluent total nitrogen = 7 mg/L, nitrogen leaving in waste sludge = 100 kg/d from plant records. Denitrified nitrogen closes the balance. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Denitrified N = influent TN load - effluent TN load - sludge N load"
+    },
+    {
+     "id": "line2",
+     "label": "2. Influent TN load = 25000 * 32 / 1000 = 800 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Effluent TN load = 25000 * 7 / 1000 = 175 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. Denitrified N = 800 - 175 = 625 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Denitrified N = 800 - 175 - 100 = 525 kg/d",
+   "explanation": "Line 4 forgot the 100 kg/d of nitrogen leaving in waste sludge. Denitrified nitrogen is 525 kg/d and the balance closes."
+  },
+  {
+   "id": "wp4ww-error07",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this utility wide phosphorus balance closure for a nutrient removal utility in Saskatchewan. Flow is 12000 m3/d.",
+   "topicId": "utility-nutrient-balance",
+   "level": "class1",
+   "assumptions": "Fictional plant in Saskatchewan: Q = 12000 m3/d, influent total phosphorus = 7 mg/L, effluent total phosphorus = 1 mg/L. All phosphorus removed from the liquid leaves in the waste sludge, so the balance must close. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Sludge P load = influent TP load - effluent TP load"
+    },
+    {
+     "id": "line2",
+     "label": "2. Influent TP load = 12000 * 7 / 1000 = 84 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Effluent TP load = 12000 * 1 / 1000 = 12 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. Sludge P load = 84 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Sludge P load = 84 - 12 = 72 kg/d",
+   "explanation": "Line 4 forgot the phosphorus that leaves in the effluent. The sludge load is 84 - 12 = 72 kg/d, which closes the balance."
+  },
+  {
+   "id": "wp4ww-error08",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this utility wide phosphorus balance closure for a nutrient removal utility in Manitoba. Flow is 20000 m3/d.",
+   "topicId": "utility-nutrient-balance",
+   "level": "class1",
+   "assumptions": "Fictional plant in Manitoba: Q = 20000 m3/d, influent total phosphorus = 5 mg/L, effluent total phosphorus = 1 mg/L. All phosphorus removed from the liquid leaves in the waste sludge, so the balance must close. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Sludge P load = influent TP load - effluent TP load"
+    },
+    {
+     "id": "line2",
+     "label": "2. Influent TP load = 20000 * 5 / 1000 = 100 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Effluent TP load = 20000 * 1 / 1000 = 25 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. Sludge P load = 100 - 25 = 75 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Effluent TP load = 20000 * 1 / 1000 = 20 kg/d",
+   "explanation": "Line 3 multiplied incorrectly. 20000 * 1 / 1000 = 20 kg/d, so the sludge load is 80 kg/d."
+  },
+  {
+   "id": "wp4ww-error09",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this utility wide phosphorus balance closure for a nutrient removal utility in British Columbia. Flow is 9000 m3/d.",
+   "topicId": "utility-nutrient-balance",
+   "level": "class1",
+   "assumptions": "Fictional plant in British Columbia: Q = 9000 m3/d, influent total phosphorus = 8 mg/L, effluent total phosphorus = 2 mg/L. All phosphorus removed from the liquid leaves in the waste sludge, so the balance must close. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Sludge P load = influent TP load - effluent TP load"
+    },
+    {
+     "id": "line2",
+     "label": "2. Influent TP load = 9000 * 2 / 1000 = 18 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Effluent TP load = 9000 * 2 / 1000 = 18 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. Sludge P load = 18 - 18 = 0 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Influent TP load = 9000 * 8 / 1000 = 72 kg/d",
+   "explanation": "Line 2 used the effluent concentration of 2 mg/L for the influent instead of 8 mg/L. The influent load is 72 kg/d, so the sludge load is 54 kg/d."
+  },
+  {
+   "id": "wp4ww-error10",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this utility wide phosphorus balance closure for a nutrient removal utility in Alberta. Flow is 16000 m3/d.",
+   "topicId": "utility-nutrient-balance",
+   "level": "class1",
+   "assumptions": "Fictional plant in Alberta: Q = 16000 m3/d, influent total phosphorus = 6 mg/L, effluent total phosphorus = 2 mg/L. All phosphorus removed from the liquid leaves in the waste sludge, so the balance must close. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Sludge P load = influent TP load - effluent TP load"
+    },
+    {
+     "id": "line2",
+     "label": "2. Influent TP load = 16000 * 6 / 1000 = 96 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Effluent TP load = 16000 * 2 / 1000 = 32 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. Sludge P load = 96 - 32 - 32 = 32 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Sludge P load = 96 - 32 = 64 kg/d",
+   "explanation": "Line 4 subtracted the effluent load twice. Counted once, the sludge load is 96 - 32 = 64 kg/d."
+  },
+  {
+   "id": "wp4ww-error100",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this energy savings forecast in the utility efficiency plan for Manitoba.",
+   "topicId": "energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional utility in Manitoba: baseline electricity use = 9000000 kWh per year, planned reduction fraction = 0.2 given in the efficiency plan, electricity price = 0.12 dollars per kWh. Saving = baseline * reduction fraction, new use = baseline - saving, and cost saving = saving * price. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Energy saving = baseline use * reduction fraction, new use = baseline use - saving, and cost saving = energy saving * price per kWh"
+    },
+    {
+     "id": "line2",
+     "label": "2. Energy saving = 9000000 * 0.2 = 1800000 kWh"
+    },
+    {
+     "id": "line3",
+     "label": "3. New use = 9000000 - 1800000 = 7200000 kWh"
+    },
+    {
+     "id": "line4",
+     "label": "4. Cost saving = 1800000 * 0.12 = 226000 dollars"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Cost saving = 1800000 * 0.12 = 216000 dollars",
+   "explanation": "Line 4 multiplied incorrectly. 1800000 * 0.12 = 216000 dollars, not 226000 dollars."
+  },
+  {
+   "id": "wp4ww-error11",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant solids production total used in the utility solids strategy for a plant in Manitoba.",
+   "topicId": "whole-plant-solids-balance",
+   "level": "class1",
+   "assumptions": "Fictional plant in Manitoba: primary dry solids = 1200 kg/d, waste secondary dry solids = 800 kg/d, grit and screenings dry solids = 150 kg/d, all from plant records for the same day. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total solids = primary solids + secondary solids + grit solids"
+    },
+    {
+     "id": "line2",
+     "label": "2. Primary plus secondary = 1200 + 800 = 2000 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total solids = 2000 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total solids = 2000 + 150 = 2150 kg/d",
+   "explanation": "Line 3 forgot the 150 kg/d of grit and screenings solids. The total is 2150 kg/d."
+  },
+  {
+   "id": "wp4ww-error12",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant solids production total used in the utility solids strategy for a plant in British Columbia.",
+   "topicId": "whole-plant-solids-balance",
+   "level": "class1",
+   "assumptions": "Fictional plant in British Columbia: primary dry solids = 1500 kg/d, waste secondary dry solids = 900 kg/d, grit and screenings dry solids = 200 kg/d, all from plant records for the same day. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total solids = primary solids + secondary solids + grit solids"
+    },
+    {
+     "id": "line2",
+     "label": "2. Primary plus secondary = 1500 + 900 = 2500 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total solids = 2500 + 200 = 2700 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Primary plus secondary = 1500 + 900 = 2400 kg/d",
+   "explanation": "Line 2 added incorrectly. 1500 + 900 = 2400 kg/d, so the total is 2600 kg/d."
+  },
+  {
+   "id": "wp4ww-error13",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant solids production total used in the utility solids strategy for a plant in Alberta.",
+   "topicId": "whole-plant-solids-balance",
+   "level": "class1",
+   "assumptions": "Fictional plant in Alberta: primary dry solids = 1000 kg/d, waste secondary dry solids = 650 kg/d, grit and screenings dry solids = 120 kg/d, all from plant records for the same day. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total solids = primary solids + secondary solids + grit solids"
+    },
+    {
+     "id": "line2",
+     "label": "2. Primary plus secondary = 1000 + 650 = 1650 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total solids = 1650 + 120 + 120 = 1890 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total solids = 1650 + 120 = 1770 kg/d",
+   "explanation": "Line 3 counted the grit solids twice. Counted once, the total is 1770 kg/d."
+  },
+  {
+   "id": "wp4ww-error14",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this whole plant solids production total used in the utility solids strategy for a plant in Saskatchewan.",
+   "topicId": "whole-plant-solids-balance",
+   "level": "class1",
+   "assumptions": "Fictional plant in Saskatchewan: primary dry solids = 1800 kg/d, waste secondary dry solids = 1100 kg/d, grit and screenings dry solids = 250 kg/d, all from plant records for the same day. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total solids = primary solids + secondary solids + grit solids"
+    },
+    {
+     "id": "line2",
+     "label": "2. Primary plus secondary = 1800 - 1100 = 700 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total solids = 700 + 250 = 950 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Primary plus secondary = 1800 + 1100 = 2900 kg/d",
+   "explanation": "Line 2 subtracted the secondary solids instead of adding them. Both streams add to the total, which is 3150 kg/d."
+  },
+  {
+   "id": "wp4ww-error15",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this utility BOD balance and removal summary for a plant in British Columbia. Flow is 10000 m3/d.",
+   "topicId": "utility-bod-balance",
+   "level": "class1",
+   "assumptions": "Fictional plant in British Columbia: Q = 10000 m3/d, influent BOD = 200 mg/L, effluent BOD = 20 mg/L. Percent removal uses the influent load as the base. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. BOD removed = influent BOD load - effluent BOD load, and percent removal = BOD removed / influent BOD load * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Influent BOD load = 10000 * 200 / 1000 = 2000 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. BOD removed = 2000 - 200 = 1800 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. Percent removal = 1800 / 200 * 100 = 900 percent"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Percent removal = 1800 / 2000 * 100 = 90 percent",
+   "explanation": "Line 4 divided by the effluent load instead of the influent load. Percent removal is measured against what entered the plant, 90 percent."
+  },
+  {
+   "id": "wp4ww-error16",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this utility BOD balance and removal summary for a plant in Alberta. Flow is 8000 m3/d.",
+   "topicId": "utility-bod-balance",
+   "level": "class1",
+   "assumptions": "Fictional plant in Alberta: Q = 8000 m3/d, influent BOD = 250 mg/L, effluent BOD = 50 mg/L. Percent removal uses the influent load as the base. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. BOD removed = influent BOD load - effluent BOD load, and percent removal = BOD removed / influent BOD load * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Influent BOD load = 8000 * 250 / 1000 = 2000 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. BOD removed = 2000 - 400 = 1700 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. Percent removal = 1700 / 2000 * 100 = 85 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. BOD removed = 2000 - 400 = 1600 kg/d",
+   "explanation": "Line 3 subtracted incorrectly. 2000 - 400 = 1600 kg/d, so removal is 80 percent."
+  },
+  {
+   "id": "wp4ww-error17",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this utility BOD balance and removal summary for a plant in Saskatchewan. Flow is 12000 m3/d.",
+   "topicId": "utility-bod-balance",
+   "level": "class1",
+   "assumptions": "Fictional plant in Saskatchewan: Q = 12000 m3/d, influent BOD = 200 mg/L, effluent BOD = 40 mg/L. Percent removal uses the influent load as the base. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. BOD removed = influent BOD load - effluent BOD load, and percent removal = BOD removed / influent BOD load * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Influent BOD load = 12000 * 200 / 100 = 24000 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. BOD removed = 24000 - 480 = 23520 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Influent BOD load = 12000 * 200 / 1000 = 2400 kg/d",
+   "explanation": "Line 2 divided by 100 instead of 1000 in the load conversion. The influent load is 2400 kg/d, so BOD removed is 1920 kg/d."
+  },
+  {
+   "id": "wp4ww-error18",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this utility BOD balance and removal summary for a plant in Manitoba. Flow is 15000 m3/d.",
+   "topicId": "utility-bod-balance",
+   "level": "class1",
+   "assumptions": "Fictional plant in Manitoba: Q = 15000 m3/d, influent BOD = 160 mg/L, effluent BOD = 16 mg/L. Percent removal uses the influent load as the base. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. BOD removed = influent BOD load - effluent BOD load, and percent removal = BOD removed / influent BOD load * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Influent BOD load = 15000 * 160 / 1000 = 2400 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. BOD removed = 2400 - 240 = 2160 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. Percent removal = 2160 / 2400 * 100 = 95 percent"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Percent removal = 2160 / 2400 * 100 = 90 percent",
+   "explanation": "Line 4 calculated the percentage incorrectly. 2160 / 2400 * 100 = 90 percent, not 95 percent."
+  },
+  {
+   "id": "wp4ww-error19",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this population forecast in the capacity plan for a wastewater utility in Alberta.",
+   "topicId": "capacity-load-forecast",
+   "level": "class1",
+   "assumptions": "Fictional utility in Alberta: current serviced population = 50000, planning growth factor for the forecast period = 1.2 given in the capacity study. Forecast population = current population * growth factor. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Forecast population = current population * growth factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. Forecast population = 50000 * 1.2 = 65000"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Forecast population = 50000 * 1.2 = 60000",
+   "explanation": "Line 2 multiplied incorrectly. 50000 * 1.2 = 60000, not 65000."
+  },
+  {
+   "id": "wp4ww-error20",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this population forecast in the capacity plan for a wastewater utility in Saskatchewan.",
+   "topicId": "capacity-load-forecast",
+   "level": "class1",
+   "assumptions": "Fictional utility in Saskatchewan: current serviced population = 80000, planning growth factor for the forecast period = 1.25 given in the capacity study. Forecast population = current population * growth factor. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Forecast population = current population * growth factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. Forecast population = 80000 * 1.02 = 81600"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Forecast population = 80000 * 1.25 = 100000",
+   "explanation": "Line 2 used a growth factor of 1.02 instead of the study factor of 1.25. The forecast population is 100000."
+  },
+  {
+   "id": "wp4ww-error21",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this population forecast in the capacity plan for a wastewater utility in Manitoba.",
+   "topicId": "capacity-load-forecast",
+   "level": "class1",
+   "assumptions": "Fictional utility in Manitoba: current serviced population = 45000, planning growth factor for the forecast period = 1.2 given in the capacity study. Forecast population = current population * growth factor. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Forecast population = current population * growth factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. Forecast population = 45000 * 1.1 = 49500"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Forecast population = 45000 * 1.2 = 54000",
+   "explanation": "Line 2 used a growth factor of 1.1 instead of the study factor of 1.2. The forecast population is 54000."
+  },
+  {
+   "id": "wp4ww-error22",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this population forecast in the capacity plan for a wastewater utility in British Columbia.",
+   "topicId": "capacity-load-forecast",
+   "level": "class1",
+   "assumptions": "Fictional utility in British Columbia: current serviced population = 120000, planning growth factor for the forecast period = 1.15 given in the capacity study. Forecast population = current population * growth factor. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Forecast population = current population * growth factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. Forecast population = 120000 + 1.15 = 120001.15"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Forecast population = 120000 * 1.15 = 138000",
+   "explanation": "Line 2 added the growth factor instead of multiplying by it. A factor scales the population, giving 138000."
+  },
+  {
+   "id": "wp4ww-error23",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this population forecast in the capacity plan for a wastewater utility in Alberta.",
+   "topicId": "capacity-load-forecast",
+   "level": "class1",
+   "assumptions": "Fictional utility in Alberta: current serviced population = 60000, planning growth factor for the forecast period = 1.5 given in the capacity study. Forecast population = current population * growth factor. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Forecast population = current population * growth factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. Forecast population = 60000 * 1.5 = 86000"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Forecast population = 60000 * 1.5 = 90000",
+   "explanation": "Line 2 multiplied incorrectly. 60000 * 1.5 = 90000, not 86000."
+  },
+  {
+   "id": "wp4ww-error24",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this flow forecast in the capital plan for a wastewater utility in Saskatchewan.",
+   "topicId": "capacity-load-forecast",
+   "level": "class1",
+   "assumptions": "Fictional utility in Saskatchewan: forecast population = 60000, per capita flow = 250 L per person per day given in the capacity study. Forecast flow = population * per capita flow / 1000, and annual volume uses 365 days. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Forecast flow = forecast population * per capita flow / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Forecast flow = 60000 * 250 / 100 = 150000 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual volume = 150000 * 365 = 54750000 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Forecast flow = 60000 * 250 / 1000 = 15000 m3/d",
+   "explanation": "Line 2 divided by 100 instead of 1000 converting litres to cubic metres. The forecast flow is 15000 m3/d and the annual volume is 5475000 m3."
+  },
+  {
+   "id": "wp4ww-error25",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this flow forecast in the capital plan for a wastewater utility in Manitoba.",
+   "topicId": "capacity-load-forecast",
+   "level": "class1",
+   "assumptions": "Fictional utility in Manitoba: forecast population = 100000, per capita flow = 220 L per person per day given in the capacity study. Forecast flow = population * per capita flow / 1000, and annual volume uses 365 days. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Forecast flow = forecast population * per capita flow / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Forecast flow = 100000 * 270 / 1000 = 27000 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual volume = 27000 * 365 = 9855000 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Forecast flow = 100000 * 220 / 1000 = 22000 m3/d",
+   "explanation": "Line 2 used 270 L per person per day instead of the study value of 220. The forecast flow is 22000 m3/d."
+  },
+  {
+   "id": "wp4ww-error26",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this flow forecast in the capital plan for a wastewater utility in British Columbia.",
+   "topicId": "capacity-load-forecast",
+   "level": "class1",
+   "assumptions": "Fictional utility in British Columbia: forecast population = 54000, per capita flow = 200 L per person per day given in the capacity study. Forecast flow = population * per capita flow / 1000, and annual volume uses 365 days. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Forecast flow = forecast population * per capita flow / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Forecast flow = 54000 * 200 / 1000 = 10800 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual volume = 10800 * 360 = 3888000 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Annual volume = 10800 * 365 = 3942000 m3",
+   "explanation": "Line 3 used 360 days instead of 365 days for the annual volume. The annual volume is 3942000 m3."
+  },
+  {
+   "id": "wp4ww-error27",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this flow forecast in the capital plan for a wastewater utility in Alberta.",
+   "topicId": "capacity-load-forecast",
+   "level": "class1",
+   "assumptions": "Fictional utility in Alberta: forecast population = 90000, per capita flow = 240 L per person per day given in the capacity study. Forecast flow = population * per capita flow / 1000, and annual volume uses 365 days. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Forecast flow = forecast population * per capita flow / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Forecast flow = 90000 * 240 / 1000 = 22600 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual volume = 22600 * 365 = 8249000 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Forecast flow = 90000 * 240 / 1000 = 21600 m3/d",
+   "explanation": "Line 2 multiplied incorrectly. 90000 * 240 / 1000 = 21600 m3/d, not 22600 m3/d."
+  },
+  {
+   "id": "wp4ww-error28",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this flow forecast in the capital plan for a wastewater utility in Saskatchewan.",
+   "topicId": "capacity-load-forecast",
+   "level": "class1",
+   "assumptions": "Fictional utility in Saskatchewan: forecast population = 75000, per capita flow = 280 L per person per day given in the capacity study. Forecast flow = population * per capita flow / 1000, and annual volume uses 365 days. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Forecast flow = forecast population * per capita flow / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Forecast flow = 75000 * 280 / 1000 = 21000 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual volume = 21000 * 365 = 7670000 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Annual volume = 21000 * 365 = 7665000 m3",
+   "explanation": "Line 3 multiplied incorrectly. 21000 * 365 = 7665000 m3, not 7670000 m3."
+  },
+  {
+   "id": "wp4ww-error29",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this BOD load forecast for the expansion study of a plant in Manitoba. Forecast flow is 15000 m3/d.",
+   "topicId": "capacity-load-forecast",
+   "level": "class1",
+   "assumptions": "Fictional plant in Manitoba: forecast flow = 15000 m3/d, forecast influent BOD = 220 mg/L given in the expansion study, current BOD load on record = 2800 kg/d for comparison only. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Forecast BOD load = forecast flow * forecast BOD / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Forecast BOD load = 15000 * 220 / 100 = 33000 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Forecast BOD load = 15000 * 220 / 1000 = 3300 kg/d",
+   "explanation": "Line 2 divided by 100 instead of 1000 in the load conversion. The forecast load is 3300 kg/d."
+  },
+  {
+   "id": "wp4ww-error30",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this BOD load forecast for the expansion study of a plant in British Columbia. Forecast flow is 22000 m3/d.",
+   "topicId": "capacity-load-forecast",
+   "level": "class1",
+   "assumptions": "Fictional plant in British Columbia: forecast flow = 22000 m3/d, forecast influent BOD = 200 mg/L given in the expansion study, current BOD load on record = 3900 kg/d for comparison only. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Forecast BOD load = forecast flow * forecast BOD / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Forecast BOD load = 3900 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Forecast BOD load = 22000 * 200 / 1000 = 4400 kg/d",
+   "explanation": "Line 2 carried forward the current load on record instead of calculating the forecast load. At the forecast flow and concentration the load is 4400 kg/d."
+  },
+  {
+   "id": "wp4ww-error31",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this BOD load forecast for the expansion study of a plant in Alberta. Forecast flow is 18000 m3/d.",
+   "topicId": "capacity-load-forecast",
+   "level": "class1",
+   "assumptions": "Fictional plant in Alberta: forecast flow = 18000 m3/d, forecast influent BOD = 250 mg/L given in the expansion study, current BOD load on record = 4000 kg/d for comparison only. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Forecast BOD load = forecast flow * forecast BOD / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Forecast BOD load = 18000 * 250 / 1000 = 4700 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Forecast BOD load = 18000 * 250 / 1000 = 4500 kg/d",
+   "explanation": "Line 2 multiplied incorrectly. 18000 * 250 / 1000 = 4500 kg/d, not 4700 kg/d."
+  },
+  {
+   "id": "wp4ww-error32",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this BOD load forecast for the expansion study of a plant in Saskatchewan. Forecast flow is 24000 m3/d.",
+   "topicId": "capacity-load-forecast",
+   "level": "class1",
+   "assumptions": "Fictional plant in Saskatchewan: forecast flow = 24000 m3/d, forecast influent BOD = 180 mg/L given in the expansion study, current BOD load on record = 3820 kg/d for comparison only. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Forecast BOD load = forecast flow * forecast BOD / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Forecast BOD load = 24000 * 200 / 1000 = 4800 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Forecast BOD load = 24000 * 180 / 1000 = 4320 kg/d",
+   "explanation": "Line 2 used 200 mg/L instead of the study concentration of 180 mg/L. The forecast load is 4320 kg/d."
+  },
+  {
+   "id": "wp4ww-error33",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this capacity assessment for a wastewater utility in British Columbia.",
+   "topicId": "capacity-planning",
+   "level": "class1",
+   "assumptions": "Fictional utility in British Columbia: design capacity = 30000 m3/d, forecast average flow = 24000 m3/d, peaking factor = 2.5 given in the capacity study. Percent used uses design capacity as the base. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Spare capacity = design capacity - forecast flow, percent used = forecast flow / design capacity * 100, peak flow = forecast flow * peaking factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. Spare capacity = 30000 - 24000 = 6000 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent used = 24000 / 30000 * 100 = 80 percent"
+    },
+    {
+     "id": "line4",
+     "label": "4. Peak flow = 24000 * 2.5 = 61000 m3/d"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Peak flow = 24000 * 2.5 = 60000 m3/d",
+   "explanation": "Line 4 multiplied incorrectly. 24000 * 2.5 = 60000 m3/d, not 61000 m3/d."
+  },
+  {
+   "id": "wp4ww-error34",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this capacity assessment for a wastewater utility in Alberta.",
+   "topicId": "capacity-planning",
+   "level": "class1",
+   "assumptions": "Fictional utility in Alberta: design capacity = 25000 m3/d, forecast average flow = 20000 m3/d, peaking factor = 2 given in the capacity study. Percent used uses design capacity as the base. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Spare capacity = design capacity - forecast flow, percent used = forecast flow / design capacity * 100, peak flow = forecast flow * peaking factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. Spare capacity = 25000 + 20000 = 45000 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent used = 20000 / 25000 * 100 = 80 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Spare capacity = 25000 - 20000 = 5000 m3/d",
+   "explanation": "Line 2 added the forecast flow instead of subtracting it from design capacity. Spare capacity is 5000 m3/d."
+  },
+  {
+   "id": "wp4ww-error35",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this capacity assessment for a wastewater utility in Saskatchewan.",
+   "topicId": "capacity-planning",
+   "level": "class1",
+   "assumptions": "Fictional utility in Saskatchewan: design capacity = 40000 m3/d, forecast average flow = 30000 m3/d, peaking factor = 2.5 given in the capacity study. Percent used uses design capacity as the base. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Spare capacity = design capacity - forecast flow, percent used = forecast flow / design capacity * 100, peak flow = forecast flow * peaking factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. Spare capacity = 40000 - 30000 = 10000 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent used = 10000 / 40000 * 100 = 25 percent"
+    },
+    {
+     "id": "line4",
+     "label": "4. Peak flow = 30000 * 2.5 = 75000 m3/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent used = 30000 / 40000 * 100 = 75 percent",
+   "explanation": "Line 3 used the spare capacity instead of the forecast flow in the percent used calculation. The plant is 75 percent used at the forecast flow."
+  },
+  {
+   "id": "wp4ww-error36",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this capacity assessment for a wastewater utility in Manitoba.",
+   "topicId": "capacity-planning",
+   "level": "class1",
+   "assumptions": "Fictional utility in Manitoba: design capacity = 20000 m3/d, forecast average flow = 17000 m3/d, peaking factor = 3 given in the capacity study. Percent used uses design capacity as the base. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Spare capacity = design capacity - forecast flow, percent used = forecast flow / design capacity * 100, peak flow = forecast flow * peaking factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. Spare capacity = 20000 - 17000 = 3500 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent used = 17000 / 20000 * 100 = 85 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Spare capacity = 20000 - 17000 = 3000 m3/d",
+   "explanation": "Line 2 subtracted incorrectly. 20000 - 17000 = 3000 m3/d, not 3500 m3/d."
+  },
+  {
+   "id": "wp4ww-error37",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biosolids cake production forecast for the annual program review at a utility in Alberta.",
+   "topicId": "biosolids-program-totals",
+   "level": "class1",
+   "assumptions": "Fictional utility in Alberta: dry solids to dewatering = 4 t/d, cake solids fraction = 0.2 given in the biosolids program (wet cake = dry solids / cake fraction). Annual production uses 365 days. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Wet cake per day = dry solids per day / cake solids fraction"
+    },
+    {
+     "id": "line2",
+     "label": "2. Wet cake = 4 * 0.2 = 0.8 t/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual wet cake = 0.8 * 365 = 292 t"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Wet cake = 4 / 0.2 = 20 t/d",
+   "explanation": "Line 2 multiplied by the cake fraction instead of dividing by it. Wet cake holds the dry solids plus water, so production is 20 t/d and 7300 t per year."
+  },
+  {
+   "id": "wp4ww-error38",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biosolids cake production forecast for the annual program review at a utility in Saskatchewan.",
+   "topicId": "biosolids-program-totals",
+   "level": "class1",
+   "assumptions": "Fictional utility in Saskatchewan: dry solids to dewatering = 5 t/d, cake solids fraction = 0.25 given in the biosolids program (wet cake = dry solids / cake fraction). Annual production uses 365 days. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Wet cake per day = dry solids per day / cake solids fraction"
+    },
+    {
+     "id": "line2",
+     "label": "2. Wet cake = 5 / 0.25 = 22 t/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual wet cake = 22 * 365 = 8030 t"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Wet cake = 5 / 0.25 = 20 t/d",
+   "explanation": "Line 2 divided incorrectly. 5 / 0.25 = 20 t/d, not 22 t/d."
+  },
+  {
+   "id": "wp4ww-error39",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biosolids cake production forecast for the annual program review at a utility in Manitoba.",
+   "topicId": "biosolids-program-totals",
+   "level": "class1",
+   "assumptions": "Fictional utility in Manitoba: dry solids to dewatering = 6 t/d, cake solids fraction = 0.2 given in the biosolids program (wet cake = dry solids / cake fraction). Annual production uses 365 days. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Wet cake per day = dry solids per day / cake solids fraction"
+    },
+    {
+     "id": "line2",
+     "label": "2. Wet cake = 6 / 0.2 = 30 t/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual wet cake = 30 * 360 = 10800 t"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Annual wet cake = 30 * 365 = 10950 t",
+   "explanation": "Line 3 used 360 days instead of 365 days. Annual production is 10950 t."
+  },
+  {
+   "id": "wp4ww-error40",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biosolids cake production forecast for the annual program review at a utility in British Columbia.",
+   "topicId": "biosolids-program-totals",
+   "level": "class1",
+   "assumptions": "Fictional utility in British Columbia: dry solids to dewatering = 4.5 t/d, cake solids fraction = 0.25 given in the biosolids program (wet cake = dry solids / cake fraction). Annual production uses 365 days. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Wet cake per day = dry solids per day / cake solids fraction"
+    },
+    {
+     "id": "line2",
+     "label": "2. Wet cake = 4.5 / 0.2 = 22.5 t/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual wet cake = 22.5 * 365 = 8212.5 t"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Wet cake = 4.5 / 0.25 = 18 t/d",
+   "explanation": "Line 2 used a cake fraction of 0.2 instead of the program value of 0.25. Wet cake production is 18 t/d."
+  },
+  {
+   "id": "wp4ww-error41",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biosolids cake production forecast for the annual program review at a utility in Alberta.",
+   "topicId": "biosolids-program-totals",
+   "level": "class1",
+   "assumptions": "Fictional utility in Alberta: dry solids to dewatering = 8 t/d, cake solids fraction = 0.2 given in the biosolids program (wet cake = dry solids / cake fraction). Annual production uses 365 days. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Wet cake per day = dry solids per day / cake solids fraction"
+    },
+    {
+     "id": "line2",
+     "label": "2. Wet cake = 8 / 0.2 = 40 t/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual wet cake = 40 * 365 = 14965 t"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Annual wet cake = 40 * 365 = 14600 t",
+   "explanation": "Line 3 multiplied incorrectly. 40 * 365 = 14600 t, not 14965 t."
+  },
+  {
+   "id": "wp4ww-error42",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biosolids hauling program total for a utility in Saskatchewan.",
+   "topicId": "biosolids-program-totals",
+   "level": "class1",
+   "assumptions": "Fictional utility in Saskatchewan: annual wet cake = 7300 t, truck capacity = 20 t per load, hauling rate = 400 dollars per load given in the program budget. Loads = annual cake / truck capacity, and program cost = loads * rate. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Truck loads = annual wet cake / truck capacity, and hauling cost = loads * rate per load"
+    },
+    {
+     "id": "line2",
+     "label": "2. Truck loads = 7300 / 20 = 375 loads"
+    },
+    {
+     "id": "line3",
+     "label": "3. Hauling cost = 375 * 400 = 150000 dollars"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Truck loads = 7300 / 20 = 365 loads",
+   "explanation": "Line 2 divided incorrectly. 7300 / 20 = 365 loads, so the hauling cost is 146000 dollars."
+  },
+  {
+   "id": "wp4ww-error43",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biosolids hauling program total for a utility in Manitoba.",
+   "topicId": "biosolids-program-totals",
+   "level": "class1",
+   "assumptions": "Fictional utility in Manitoba: annual wet cake = 10950 t, truck capacity = 25 t per load, hauling rate = 400 dollars per load given in the program budget. Loads = annual cake / truck capacity, and program cost = loads * rate. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Truck loads = annual wet cake / truck capacity, and hauling cost = loads * rate per load"
+    },
+    {
+     "id": "line2",
+     "label": "2. Truck loads = 10950 / 25 = 438 loads"
+    },
+    {
+     "id": "line3",
+     "label": "3. Hauling cost = 438 * 40 = 17520 dollars"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Hauling cost = 438 * 400 = 175200 dollars",
+   "explanation": "Line 3 used 40 dollars per load instead of the program rate of 400 dollars per load. The hauling cost is 175200 dollars."
+  },
+  {
+   "id": "wp4ww-error44",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biosolids hauling program total for a utility in British Columbia.",
+   "topicId": "biosolids-program-totals",
+   "level": "class1",
+   "assumptions": "Fictional utility in British Columbia: annual wet cake = 8760 t, truck capacity = 20 t per load, hauling rate = 400 dollars per load given in the program budget. Loads = annual cake / truck capacity, and program cost = loads * rate. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Truck loads = annual wet cake / truck capacity, and hauling cost = loads * rate per load"
+    },
+    {
+     "id": "line2",
+     "label": "2. Truck loads = 8760 / 25 = 350.4 loads"
+    },
+    {
+     "id": "line3",
+     "label": "3. Hauling cost = 350.4 * 400 = 140160 dollars"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Truck loads = 8760 / 20 = 438 loads",
+   "explanation": "Line 2 used a truck capacity of 25 t instead of 20 t. The program needs 438 loads costing 175200 dollars."
+  },
+  {
+   "id": "wp4ww-error45",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biosolids hauling program total for a utility in Alberta.",
+   "topicId": "biosolids-program-totals",
+   "level": "class1",
+   "assumptions": "Fictional utility in Alberta: annual wet cake = 14600 t, truck capacity = 25 t per load, hauling rate = 400 dollars per load given in the program budget. Loads = annual cake / truck capacity, and program cost = loads * rate. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Truck loads = annual wet cake / truck capacity, and hauling cost = loads * rate per load"
+    },
+    {
+     "id": "line2",
+     "label": "2. Truck loads = 14600 / 25 = 584 loads"
+    },
+    {
+     "id": "line3",
+     "label": "3. Hauling cost = 584 * 400 = 237600 dollars"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Hauling cost = 584 * 400 = 233600 dollars",
+   "explanation": "Line 3 multiplied incorrectly. 584 * 400 = 233600 dollars, not 237600 dollars."
+  },
+  {
+   "id": "wp4ww-error46",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this land application area calculation for the biosolids program of a utility in Manitoba.",
+   "topicId": "biosolids-land-application",
+   "level": "class1",
+   "assumptions": "Fictional utility in Manitoba: annual dry biosolids = 1460 t, approved application rate = 5 dry t per hectare given in the program plan. Area required = annual dry biosolids / application rate. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Area required = annual dry biosolids / application rate"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area required = 1460 * 5 = 7300 ha"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Area required = 1460 / 5 = 292 ha",
+   "explanation": "Line 2 multiplied by the application rate instead of dividing by it. Spreading 1460 t at 5 t per hectare needs 292 ha."
+  },
+  {
+   "id": "wp4ww-error47",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this land application area calculation for the biosolids program of a utility in British Columbia.",
+   "topicId": "biosolids-land-application",
+   "level": "class1",
+   "assumptions": "Fictional utility in British Columbia: annual dry biosolids = 1825 t, approved application rate = 5 dry t per hectare given in the program plan. Area required = annual dry biosolids / application rate. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Area required = annual dry biosolids / application rate"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area required = 1825 / 5 = 385 ha"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Area required = 1825 / 5 = 365 ha",
+   "explanation": "Line 2 divided incorrectly. 1825 / 5 = 365 ha, not 385 ha."
+  },
+  {
+   "id": "wp4ww-error48",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this land application area calculation for the biosolids program of a utility in Alberta.",
+   "topicId": "biosolids-land-application",
+   "level": "class1",
+   "assumptions": "Fictional utility in Alberta: annual dry biosolids = 1200 t, approved application rate = 4 dry t per hectare given in the program plan. Area required = annual dry biosolids / application rate. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Area required = annual dry biosolids / application rate"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area required = 1200 / 5 = 240 ha"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Area required = 1200 / 4 = 300 ha",
+   "explanation": "Line 2 used an application rate of 5 t per hectare instead of the approved 4 t per hectare. The area required is 300 ha."
+  },
+  {
+   "id": "wp4ww-error49",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this land application area calculation for the biosolids program of a utility in Saskatchewan.",
+   "topicId": "biosolids-land-application",
+   "level": "class1",
+   "assumptions": "Fictional utility in Saskatchewan: annual dry biosolids = 2100 t, approved application rate = 6 dry t per hectare given in the program plan. Area required = annual dry biosolids / application rate. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Area required = annual dry biosolids / application rate"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area required = 1800 / 6 = 300 ha"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Area required = 2100 / 6 = 350 ha",
+   "explanation": "Line 2 used 1800 t instead of the full annual production of 2100 t. The area required is 350 ha."
+  },
+  {
+   "id": "wp4ww-error50",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biosolids storage sizing calculation for a utility in British Columbia planning winter storage.",
+   "topicId": "biosolids-program-totals",
+   "level": "class1",
+   "assumptions": "Fictional utility in British Columbia: wet cake production = 25 m3/d, required storage period = 180 days given in the biosolids program for the winter no-spread season. Storage volume = daily production * storage days. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Storage volume = daily wet cake volume * storage days"
+    },
+    {
+     "id": "line2",
+     "label": "2. Storage volume = 25 * 180 = 5000 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Storage volume = 25 * 180 = 4500 m3",
+   "explanation": "Line 2 multiplied incorrectly. 25 * 180 = 4500 m3, not 5000 m3."
+  },
+  {
+   "id": "wp4ww-error51",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biosolids storage sizing calculation for a utility in Alberta planning winter storage.",
+   "topicId": "biosolids-program-totals",
+   "level": "class1",
+   "assumptions": "Fictional utility in Alberta: wet cake production = 30 m3/d, required storage period = 150 days given in the biosolids program for the winter no-spread season. Storage volume = daily production * storage days. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Storage volume = daily wet cake volume * storage days"
+    },
+    {
+     "id": "line2",
+     "label": "2. Storage volume = 30 * 120 = 3600 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Storage volume = 30 * 150 = 4500 m3",
+   "explanation": "Line 2 used 120 days instead of the full 150 day winter storage period. The storage volume is 4500 m3."
+  },
+  {
+   "id": "wp4ww-error52",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biosolids storage sizing calculation for a utility in Saskatchewan planning winter storage.",
+   "topicId": "biosolids-program-totals",
+   "level": "class1",
+   "assumptions": "Fictional utility in Saskatchewan: wet cake production = 20 m3/d, required storage period = 200 days given in the biosolids program for the winter no-spread season. Storage volume = daily production * storage days. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Storage volume = daily wet cake volume * storage days"
+    },
+    {
+     "id": "line2",
+     "label": "2. Storage volume = 20 + 200 = 220 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Storage volume = 20 * 200 = 4000 m3",
+   "explanation": "Line 2 added the daily volume and the days instead of multiplying them. Storage must hold every day of production, 4000 m3 in total."
+  },
+  {
+   "id": "wp4ww-error53",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this multi plant biosolids program total for a regional utility in Saskatchewan.",
+   "topicId": "biosolids-program-totals",
+   "level": "class1",
+   "assumptions": "Fictional regional utility in Saskatchewan: annual wet cake is 2400 t at Plant A, 1800 t at Plant B, and 1200 t at Plant C, from program records. The utility total is the sum of the three plants. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Utility total = Plant A + Plant B + Plant C"
+    },
+    {
+     "id": "line2",
+     "label": "2. Plant A plus Plant B = 2400 + 1800 = 4200 t"
+    },
+    {
+     "id": "line3",
+     "label": "3. Utility total = 4200 t"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Utility total = 4200 + 1200 = 5400 t",
+   "explanation": "Line 3 forgot Plant C and its 1200 t. The utility total is 5400 t."
+  },
+  {
+   "id": "wp4ww-error54",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this multi plant biosolids program total for a regional utility in Manitoba.",
+   "topicId": "biosolids-program-totals",
+   "level": "class1",
+   "assumptions": "Fictional regional utility in Manitoba: annual wet cake is 3000 t at Plant A, 2100 t at Plant B, and 900 t at Plant C, from program records. The utility total is the sum of the three plants. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Utility total = Plant A + Plant B + Plant C"
+    },
+    {
+     "id": "line2",
+     "label": "2. Plant A plus Plant B = 3000 + 2100 = 5100 t"
+    },
+    {
+     "id": "line3",
+     "label": "3. Utility total = 5100 + 900 + 900 = 6900 t"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Utility total = 5100 + 900 = 6000 t",
+   "explanation": "Line 3 counted Plant C twice. Counted once, the utility total is 6000 t."
+  },
+  {
+   "id": "wp4ww-error55",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biogas production estimate in the energy plan for a utility in Alberta.",
+   "topicId": "biogas-energy",
+   "level": "class1",
+   "assumptions": "Fictional utility in Alberta: volatile solids destroyed = 5000 kg/d, biogas yield = 0.9 m3 per kg of volatile solids destroyed given in the energy study. Monthly production uses 30 days. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily biogas = volatile solids destroyed * biogas yield"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily biogas = 5000 * 0.8 = 4000 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Monthly biogas = 4000 * 30 = 120000 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Daily biogas = 5000 * 0.9 = 4500 m3/d",
+   "explanation": "Line 2 used a yield of 0.8 instead of the study yield of 0.9 m3 per kg. Daily production is 4500 m3/d and monthly production is 135000 m3."
+  },
+  {
+   "id": "wp4ww-error56",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biogas production estimate in the energy plan for a utility in Saskatchewan.",
+   "topicId": "biogas-energy",
+   "level": "class1",
+   "assumptions": "Fictional utility in Saskatchewan: volatile solids destroyed = 6000 kg/d, biogas yield = 0.8 m3 per kg of volatile solids destroyed given in the energy study. Monthly production uses 30 days. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily biogas = volatile solids destroyed * biogas yield"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily biogas = 6000 * 0.8 = 5100 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Monthly biogas = 5100 * 30 = 153000 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Daily biogas = 6000 * 0.8 = 4800 m3/d",
+   "explanation": "Line 2 multiplied incorrectly. 6000 * 0.8 = 4800 m3/d, not 5100 m3/d."
+  },
+  {
+   "id": "wp4ww-error57",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biogas production estimate in the energy plan for a utility in Manitoba.",
+   "topicId": "biogas-energy",
+   "level": "class1",
+   "assumptions": "Fictional utility in Manitoba: volatile solids destroyed = 4000 kg/d, biogas yield = 0.85 m3 per kg of volatile solids destroyed given in the energy study. Monthly production uses 30 days. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily biogas = volatile solids destroyed * biogas yield"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily biogas = 4000 * 0.85 = 3400 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Monthly biogas = 3400 * 31 = 105400 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Monthly biogas = 3400 * 30 = 102000 m3",
+   "explanation": "Line 3 used 31 days instead of the 30 day month in the energy plan. Monthly production is 102000 m3."
+  },
+  {
+   "id": "wp4ww-error58",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biogas production estimate in the energy plan for a utility in British Columbia.",
+   "topicId": "biogas-energy",
+   "level": "class1",
+   "assumptions": "Fictional utility in British Columbia: volatile solids destroyed = 7000 kg/d, biogas yield = 0.9 m3 per kg of volatile solids destroyed given in the energy study. Monthly production uses 30 days. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily biogas = volatile solids destroyed * biogas yield"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily biogas = 7000 / 0.9 m3/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Daily biogas = 7000 * 0.9 = 6300 m3/d",
+   "explanation": "Line 2 divided by the yield instead of multiplying by it. Daily production is 6300 m3/d."
+  },
+  {
+   "id": "wp4ww-error59",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this biogas production estimate in the energy plan for a utility in Alberta.",
+   "topicId": "biogas-energy",
+   "level": "class1",
+   "assumptions": "Fictional utility in Alberta: volatile solids destroyed = 5500 kg/d, biogas yield = 0.8 m3 per kg of volatile solids destroyed given in the energy study. Monthly production uses 30 days. The utility operates under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily biogas = volatile solids destroyed * biogas yield"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily biogas = 5500 * 0.8 = 4400 m3/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Monthly biogas = 4400 * 30 = 135000 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Monthly biogas = 4400 * 30 = 132000 m3",
+   "explanation": "Line 3 multiplied incorrectly. 4400 * 30 = 132000 m3, not 135000 m3."
+  }
+ ],
+ "missions": [
+  {
+   "id": "wp4ww-mission21",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 21: The Energy Benchmarking Shift",
+   "tasks": [
+    {
+     "taskId": "wp4ww-ladder80",
+     "revision": "r1",
+     "occurrenceId": "m21-t1"
+    },
+    {
+     "taskId": "wp4ww-error01",
+     "revision": "r1",
+     "occurrenceId": "m21-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp4ww-mission22",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 22: The Utility Nutrient Balance Shift",
+   "tasks": [
+    {
+     "taskId": "wp4ww-error02",
+     "revision": "r1",
+     "occurrenceId": "m22-t1"
+    },
+    {
+     "taskId": "wp4ww-ladder81",
+     "revision": "r1",
+     "occurrenceId": "m22-t2"
+    },
+    {
+     "taskId": "wp4ww-ladder82",
+     "revision": "r1",
+     "occurrenceId": "m22-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp4ww-mission23",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 23: The Effluent Quality Margins Shift",
+   "tasks": [
+    {
+     "taskId": "wp4ww-ladder83",
+     "revision": "r1",
+     "occurrenceId": "m23-t1"
+    },
+    {
+     "taskId": "wp4ww-error03",
+     "revision": "r1",
+     "occurrenceId": "m23-t2"
+    },
+    {
+     "taskId": "wp4ww-ladder84",
+     "revision": "r1",
+     "occurrenceId": "m23-t3"
+    },
+    {
+     "taskId": "wp4ww-ladder85",
+     "revision": "r1",
+     "occurrenceId": "m23-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp4ww-mission24",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 24: The Utility Nutrient Balance Shift",
+   "tasks": [
+    {
+     "taskId": "wp4ww-error04",
+     "revision": "r1",
+     "occurrenceId": "m24-t1"
+    },
+    {
+     "taskId": "wp4ww-ladder86",
+     "revision": "r1",
+     "occurrenceId": "m24-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp4ww-mission25",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 25: The Effluent Quality Margins Shift",
+   "tasks": [
+    {
+     "taskId": "wp4ww-ladder87",
+     "revision": "r1",
+     "occurrenceId": "m25-t1"
+    },
+    {
+     "taskId": "wp4ww-error05",
+     "revision": "r1",
+     "occurrenceId": "m25-t2"
+    },
+    {
+     "taskId": "wp4ww-ladder88",
+     "revision": "r1",
+     "occurrenceId": "m25-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp4ww-mission26",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 26: The Utility Nutrient Balance Shift",
+   "tasks": [
+    {
+     "taskId": "wp4ww-error06",
+     "revision": "r1",
+     "occurrenceId": "m26-t1"
+    },
+    {
+     "taskId": "wp4ww-ladder89",
+     "revision": "r1",
+     "occurrenceId": "m26-t2"
+    },
+    {
+     "taskId": "wp4ww-ladder90",
+     "revision": "r1",
+     "occurrenceId": "m26-t3"
+    },
+    {
+     "taskId": "wp4ww-ladder91",
+     "revision": "r1",
+     "occurrenceId": "m26-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp4ww-mission27",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 27: The Whole Plant Solids Balance Shift",
+   "tasks": [
+    {
+     "taskId": "wp4ww-ladder92",
+     "revision": "r1",
+     "occurrenceId": "m27-t1"
+    },
+    {
+     "taskId": "wp4ww-error07",
+     "revision": "r1",
+     "occurrenceId": "m27-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp4ww-mission28",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 28: The Utility Nutrient Balance Shift",
+   "tasks": [
+    {
+     "taskId": "wp4ww-error08",
+     "revision": "r1",
+     "occurrenceId": "m28-t1"
+    },
+    {
+     "taskId": "wp4ww-ladder93",
+     "revision": "r1",
+     "occurrenceId": "m28-t2"
+    },
+    {
+     "taskId": "wp4ww-ladder94",
+     "revision": "r1",
+     "occurrenceId": "m28-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp4ww-mission29",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 29: The Whole Plant Solids Balance Shift",
+   "tasks": [
+    {
+     "taskId": "wp4ww-ladder95",
+     "revision": "r1",
+     "occurrenceId": "m29-t1"
+    },
+    {
+     "taskId": "wp4ww-error09",
+     "revision": "r1",
+     "occurrenceId": "m29-t2"
+    },
+    {
+     "taskId": "wp4ww-ladder96",
+     "revision": "r1",
+     "occurrenceId": "m29-t3"
+    },
+    {
+     "taskId": "wp4ww-ladder97",
+     "revision": "r1",
+     "occurrenceId": "m29-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp4ww-mission30",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 30: The Utility Nutrient Balance Shift",
+   "tasks": [
+    {
+     "taskId": "wp4ww-error10",
+     "revision": "r1",
+     "occurrenceId": "m30-t1"
+    },
+    {
+     "taskId": "wp4ww-ladder98",
+     "revision": "r1",
+     "occurrenceId": "m30-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp4ww-mission31",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 31: The Whole Plant Solids Balance Shift",
+   "tasks": [
+    {
+     "taskId": "wp4ww-ladder99",
+     "revision": "r1",
+     "occurrenceId": "m31-t1"
+    },
+    {
+     "taskId": "wp4ww-error100",
+     "revision": "r1",
+     "occurrenceId": "m31-t2"
+    },
+    {
+     "taskId": "wp4ww-ladder80",
+     "revision": "r1",
+     "occurrenceId": "m31-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp4ww-mission32",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 32: The Whole Plant Solids Balance Shift",
+   "tasks": [
+    {
+     "taskId": "wp4ww-error11",
+     "revision": "r1",
+     "occurrenceId": "m32-t1"
+    },
+    {
+     "taskId": "wp4ww-ladder81",
+     "revision": "r1",
+     "occurrenceId": "m32-t2"
+    },
+    {
+     "taskId": "wp4ww-ladder82",
+     "revision": "r1",
+     "occurrenceId": "m32-t3"
+    },
+    {
+     "taskId": "wp4ww-ladder83",
+     "revision": "r1",
+     "occurrenceId": "m32-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp4ww-mission33",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 33: The Effluent Quality Margins Shift",
+   "tasks": [
+    {
+     "taskId": "wp4ww-ladder84",
+     "revision": "r1",
+     "occurrenceId": "m33-t1"
+    },
+    {
+     "taskId": "wp4ww-error12",
+     "revision": "r1",
+     "occurrenceId": "m33-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp4ww-mission34",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 34: The Whole Plant Solids Balance Shift",
+   "tasks": [
+    {
+     "taskId": "wp4ww-error13",
+     "revision": "r1",
+     "occurrenceId": "m34-t1"
+    },
+    {
+     "taskId": "wp4ww-ladder85",
+     "revision": "r1",
+     "occurrenceId": "m34-t2"
+    },
+    {
+     "taskId": "wp4ww-ladder86",
+     "revision": "r1",
+     "occurrenceId": "m34-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp4ww-mission35",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 35: The Effluent Quality Margins Shift",
+   "tasks": [
+    {
+     "taskId": "wp4ww-ladder87",
+     "revision": "r1",
+     "occurrenceId": "m35-t1"
+    },
+    {
+     "taskId": "wp4ww-error14",
+     "revision": "r1",
+     "occurrenceId": "m35-t2"
+    },
+    {
+     "taskId": "wp4ww-ladder88",
+     "revision": "r1",
+     "occurrenceId": "m35-t3"
+    },
+    {
+     "taskId": "wp4ww-ladder89",
+     "revision": "r1",
+     "occurrenceId": "m35-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp4ww-mission36",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 36: The Utility Bod Balance Shift",
+   "tasks": [
+    {
+     "taskId": "wp4ww-error15",
+     "revision": "r1",
+     "occurrenceId": "m36-t1"
+    },
+    {
+     "taskId": "wp4ww-ladder90",
+     "revision": "r1",
+     "occurrenceId": "m36-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp4ww-mission37",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 37: The Whole Plant Solids Balance Shift",
+   "tasks": [
+    {
+     "taskId": "wp4ww-ladder91",
+     "revision": "r1",
+     "occurrenceId": "m37-t1"
+    },
+    {
+     "taskId": "wp4ww-error16",
+     "revision": "r1",
+     "occurrenceId": "m37-t2"
+    },
+    {
+     "taskId": "wp4ww-ladder92",
+     "revision": "r1",
+     "occurrenceId": "m37-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp4ww-mission38",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 38: The Utility Bod Balance Shift",
+   "tasks": [
+    {
+     "taskId": "wp4ww-error17",
+     "revision": "r1",
+     "occurrenceId": "m38-t1"
+    },
+    {
+     "taskId": "wp4ww-ladder93",
+     "revision": "r1",
+     "occurrenceId": "m38-t2"
+    },
+    {
+     "taskId": "wp4ww-ladder94",
+     "revision": "r1",
+     "occurrenceId": "m38-t3"
+    },
+    {
+     "taskId": "wp4ww-ladder95",
+     "revision": "r1",
+     "occurrenceId": "m38-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp4ww-mission39",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 39: The Whole Plant Solids Balance Shift",
+   "tasks": [
+    {
+     "taskId": "wp4ww-ladder96",
+     "revision": "r1",
+     "occurrenceId": "m39-t1"
+    },
+    {
+     "taskId": "wp4ww-error18",
+     "revision": "r1",
+     "occurrenceId": "m39-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp4ww-mission40",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 40: The Capacity Load Forecast Shift",
+   "tasks": [
+    {
+     "taskId": "wp4ww-error19",
+     "revision": "r1",
+     "occurrenceId": "m40-t1"
+    },
+    {
+     "taskId": "wp4ww-ladder97",
+     "revision": "r1",
+     "occurrenceId": "m40-t2"
+    },
+    {
+     "taskId": "wp4ww-ladder98",
+     "revision": "r1",
+     "occurrenceId": "m40-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Senior wastewater operations and management chapters (nutrient strategy, biosolids, energy)"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "1b8a66525244be411eab6c368685039634e3dc1bd2d3dd4a606f9851a4244287",
+  "taskReceipts": [
+   {
+    "taskId": "wp4ww-ladder80",
+    "revision": "r1",
+    "sha256": "4d52bcc47e4e110455f6cb3b633c3cf73ef96110683b33a069e03ccee5b1d58b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-ladder81",
+    "revision": "r1",
+    "sha256": "433890d6ca6ad7cb83e104b2e556cf1fc7e6f0f6be4f5fe5b2297ac0d9861bd7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-ladder82",
+    "revision": "r1",
+    "sha256": "80ed78bcbaaf5324aec60a8e2990d3a47ea04f4bcb7ac624ae04d9eaa5374eaa",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-ladder83",
+    "revision": "r1",
+    "sha256": "ba534396f28f94540aba91cc30a7a5ab1c721381fe74db0e3248d601c4c059fb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-ladder84",
+    "revision": "r1",
+    "sha256": "fe46c2852f32a0dbc0a213e65501d565a14dbec3feb76a71a04698575bd8f588",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-ladder85",
+    "revision": "r1",
+    "sha256": "79e3a83bb94b9ac25d1f694d61e3c03f83fb021f13c55ed0a547755256174b57",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-ladder86",
+    "revision": "r1",
+    "sha256": "734a3d1dd11f8ef36449bcfc54f7a4028a62c698ffb162855aa1772877e91bdd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-ladder87",
+    "revision": "r1",
+    "sha256": "4a348bb858828a3d42469ae3b0409ce679810c992b5857c478476970cef69285",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-ladder88",
+    "revision": "r1",
+    "sha256": "d504e3d8012eef8f2e438e873abdd8f855575486e1c8e4889c4c90318192519c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-ladder89",
+    "revision": "r1",
+    "sha256": "821637a66c28691967cca5e02494cebc92242dc121ef10e44b8a5d781e2dd8f4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-ladder90",
+    "revision": "r1",
+    "sha256": "f3853972d511653a1381974e3c62812c5a91a2107c45cb6cd67cd80c14e9f08a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-ladder91",
+    "revision": "r1",
+    "sha256": "cda930ae887f814d570ff9bb993ff596067df748ef540a54d84aac3c8c508968",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-ladder92",
+    "revision": "r1",
+    "sha256": "129c05bd5c4c32f7e215a2e1fd3b7f0629124f7d62074eeb969c25f612709741",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-ladder93",
+    "revision": "r1",
+    "sha256": "62746257459f68670ee398fd8c63abae314980664a41ca35ad201c8fae5d3d4d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-ladder94",
+    "revision": "r1",
+    "sha256": "6a0e70f237158111873784ba573686905b35e9d02454264ad76e707c59095ecf",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-ladder95",
+    "revision": "r1",
+    "sha256": "749e3e8d1403084276bca3338f9c5af50ac9549d0290e6a41bb6f70c3a662d98",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-ladder96",
+    "revision": "r1",
+    "sha256": "51e667424644db16dfd9334e2cd02cbb30293e804f5e08d3913ca89683930bee",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-ladder97",
+    "revision": "r1",
+    "sha256": "f1583ec30aa8d18152ffb95e804ff6492f796fe57510c92f6909561dda262965",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-ladder98",
+    "revision": "r1",
+    "sha256": "76d406b4bca97b1613545ddf9a3bb1a56cb4e31910f6fee6ff61fb92472a917e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-ladder99",
+    "revision": "r1",
+    "sha256": "fcc4f145cd458939569a9258a8b137b38cde8457ef864cf321362c2370108365",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error01",
+    "revision": "r1",
+    "sha256": "2e18c15d084b5fbcbf0c57917b99932fe1b004e08131234ebdfcdf2a913373d8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error02",
+    "revision": "r1",
+    "sha256": "8fe252ce10998ecd08d8c913f85e4eada1347fa8fa882faebc81adbc03704e87",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error03",
+    "revision": "r1",
+    "sha256": "aa37500e5e5304068587d190fe6527a4aa0c1f9a8a70df3d224dccc937a7a9d9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error04",
+    "revision": "r1",
+    "sha256": "fe1ed77d8a2c9ea739eb3c9b6353bfc4511e0025c1f6d8f5c000c23569922d46",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error05",
+    "revision": "r1",
+    "sha256": "8e38c061cc2fdfed1add42612ba5feee2efec2a7d2b170d0e02e4de485a3ec26",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error06",
+    "revision": "r1",
+    "sha256": "c787c87c779119daea14f12c4ad57041f4d3a1341d73e3c77fb52410da6fee96",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error07",
+    "revision": "r1",
+    "sha256": "17de8659c1a0f057079f25c07e5cda4646f01fab48b081a36d9f9f14ecae0eee",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error08",
+    "revision": "r1",
+    "sha256": "cc8d10b96d170ac52b80d9fe6ba3927f097734392b47c9a28128611f01d45529",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error09",
+    "revision": "r1",
+    "sha256": "b24c6095c2b811b6a2711b1e6a79d143fb2df4287d2df87ca5ff626c1d72d366",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error10",
+    "revision": "r1",
+    "sha256": "c1166fa57f93876f4f4563a5c17e8a9b9fc1f261dc949ee55c45621f1c2d3fc7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error100",
+    "revision": "r1",
+    "sha256": "bed63f56a9474ee069ed727ba36736a88385011a0c378d642dd839c8a1185388",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error11",
+    "revision": "r1",
+    "sha256": "8ace853e200cbaeba200da98bb31b57e8dd516886ff7c6b5259b971058625457",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error12",
+    "revision": "r1",
+    "sha256": "18cd10a03999ff17523a51c78355182ef1e1c60bb3bf845678e60c0aa415f42c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error13",
+    "revision": "r1",
+    "sha256": "a8fa2dfecb7bac0545a89bd59a686b5a0e795d5f3df75a140b3b78ef54fb7bfe",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error14",
+    "revision": "r1",
+    "sha256": "e66e836c6e9d53663d0ccdd78ecf6eed494d74d3b0ee7b6c1dd37e4d2e03b386",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error15",
+    "revision": "r1",
+    "sha256": "800f4adab949d689f728d9367803209e5e3fc084cc29f5546da2707827e8badb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error16",
+    "revision": "r1",
+    "sha256": "b8f08737ddb5942e6213e7e57f6f85f2b63d91737fdf5dd6fa645dfae59f79f5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error17",
+    "revision": "r1",
+    "sha256": "450e63f4cef9584882f89925c49d2d72e3358025790e2042e6c30c1a94c2fd43",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error18",
+    "revision": "r1",
+    "sha256": "61b971dfada28d0a798c61978cb309bfd178ab0c204d87b218990cd71f731d9b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error19",
+    "revision": "r1",
+    "sha256": "2707c0862e468fd28b454bd7c0d12dc74e82bf5b2ec6897b3a7357a49d313483",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error20",
+    "revision": "r1",
+    "sha256": "ba2f0a677e27cd2ba09598c5c88d27bea17ba2692daea6c54356db52bd5d92ff",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error21",
+    "revision": "r1",
+    "sha256": "4ade6a60ce1c7bd37c49b567026745d89424eee1a4b23d0f0a002aa27216a600",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error22",
+    "revision": "r1",
+    "sha256": "1036076d0de680cf79ef6eeb444e38fb3fd16f7e353258a95cf10194a7cd00fa",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error23",
+    "revision": "r1",
+    "sha256": "470358ac5844ae362a212a7aadd8ae05135aaf4dac206327d7578d1344ba2988",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error24",
+    "revision": "r1",
+    "sha256": "c81563a1eb77ddb4955b43af677a4cd21e1eb8ce103c37019a41ae59f5694c1d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error25",
+    "revision": "r1",
+    "sha256": "43a14054fe89fc3b8a31bb7f4de5ce9fe8932b474b47ad1b598ca9544c375867",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error26",
+    "revision": "r1",
+    "sha256": "5ce6376377f03b6ecbaecd11334961ca1b297c9af3bc9366802635f5ea83b00c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error27",
+    "revision": "r1",
+    "sha256": "5ebc5fa9962965ccd84474b30a57c0fc35f085e55109929604badeb5676af8c8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error28",
+    "revision": "r1",
+    "sha256": "fa8c6bef7fd50057fda5e100436b806e5fa654425df44f5a208879783e53df07",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error29",
+    "revision": "r1",
+    "sha256": "b4f5ae14292dbdc6b8d61ae3225ded4f38b7e4a3e14ff2caf6207a77ad5f814b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error30",
+    "revision": "r1",
+    "sha256": "eb028f6f672fc04a3577c6947fb542f940f13c78945ec0c8f0d79f5bb865b805",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error31",
+    "revision": "r1",
+    "sha256": "1940687ae0a902839ee909ff931e38e314e3773f0b43bc7cc7ab10710934b937",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error32",
+    "revision": "r1",
+    "sha256": "a66abf92d3cae8d955f4d5f89c08d23d9b880e23396c876fce54e9aabe938eef",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error33",
+    "revision": "r1",
+    "sha256": "ef1e77b2b0e4f7790624113ae03789a50bbf86e33c3962e25b06aa9c682a1db1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error34",
+    "revision": "r1",
+    "sha256": "8fd09a1141dd02275400cece3076ce127b80d5ec6cbd0f9cc67995af846e0bed",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error35",
+    "revision": "r1",
+    "sha256": "5208a3b530f644098bf9cfa3df2ea04f6ada26b7e8b5907cf7f8572e3d87b641",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error36",
+    "revision": "r1",
+    "sha256": "e06682a8c2ecdd51d85f670e6ce1d9dde337b2cd25d81b1aa5bbe91ea518a217",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error37",
+    "revision": "r1",
+    "sha256": "741d17a567fa852b54544e5f7649dde39c1c6ea422ff1edea0cf6a17adebb81c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error38",
+    "revision": "r1",
+    "sha256": "7e1540050bd273adca6e32bf773bc4ef8ea889e816a60b47fa0d8ffd973c610f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error39",
+    "revision": "r1",
+    "sha256": "99ebd64fd6faeed02ad91dae6e98cfc53d87a52b2cc8cd475d55e28382e29768",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error40",
+    "revision": "r1",
+    "sha256": "46137ad1a1c3e68606b7a92708a4cad7e8799185c60d918c1e5fe82a7109c17b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error41",
+    "revision": "r1",
+    "sha256": "9c8b04bc1eac43e99b1b150d8b4eff8143fb82d03e60c35d76933533dcc2f38a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error42",
+    "revision": "r1",
+    "sha256": "f99b70eb0e6b3682f066b006f09f483fe29477cafb4061e6bbea7d579d0f0cbe",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error43",
+    "revision": "r1",
+    "sha256": "be927be364d2e4d8cc3786b0d79ae7af91c654fac876f55fac6114e5fe19cd6d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error44",
+    "revision": "r1",
+    "sha256": "840129733f0df3bcc66960616ff00bf87b657941af02d5b35098f6c7754e0df9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error45",
+    "revision": "r1",
+    "sha256": "fc337288f1d5e68ff1da80a3b778a5d045a9b1b1fe2cb89cda754003e8be5b0a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error46",
+    "revision": "r1",
+    "sha256": "31725ac2e3a9a48cf51002525dc4b5263322478f3b94be831d59b22830c81df4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error47",
+    "revision": "r1",
+    "sha256": "31682b23dfa614fc2ccb66519d7ec518427327bacc0c3014807f489ea2ddc90a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error48",
+    "revision": "r1",
+    "sha256": "b67c9120b3f507e1c4d57d0184d98355826ab032e2dc83daf1bca0604f90dc9f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error49",
+    "revision": "r1",
+    "sha256": "a79e7e1a09e399c7a282e2dd1d2554da37763705ea92b9b94ed99d3f11d03f8d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error50",
+    "revision": "r1",
+    "sha256": "c2085d5e6c8c8ecf83b5c26b88b8e4812e934543010c4a19015f7ab8b02a77a2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error51",
+    "revision": "r1",
+    "sha256": "f5be9188861e2f519033709399d2ccdd76523931044946e627d412e58970b034",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error52",
+    "revision": "r1",
+    "sha256": "1abfda746cb8a26a84a9f852677274d8c1f19bfade7d738f1b8562786b4606d4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error53",
+    "revision": "r1",
+    "sha256": "6a663fdfa8067c40336c08bbcc5de0a2e25e88b22f9c8f56f10e11b4162a307f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error54",
+    "revision": "r1",
+    "sha256": "83b16216767d51f8895f30ee8d0b8302283f47da4b88380f5f52ee5a6b123d94",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error55",
+    "revision": "r1",
+    "sha256": "249add47be68936c7d06eded8a0a60091b21e3a8f20a14130fc164820df476ad",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error56",
+    "revision": "r1",
+    "sha256": "aaec4c56bc8d66a9d1c052cdf0d462195ea02e8b92f280ffd7cd20df28e7508c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error57",
+    "revision": "r1",
+    "sha256": "8e3f81e65a3cf106ea82a32c8c2c46a137be61df3887b98b963515ae908679d4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error58",
+    "revision": "r1",
+    "sha256": "8400f69bd5963d0e428f1e3701d9e34272477788196a682f8bdf8682425b6e68",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4ww-error59",
+    "revision": "r1",
+    "sha256": "2e3d4e9a3328329f28d6ce5dd660f90e280efd8679c5056bedda5be7f36f04a4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "wp4ww-mission21",
+    "revision": "r1",
+    "sha256": "4bda006b126849ca44c51da24db25431762a23a9f1d8d2840a81cba4b35fd7fd"
+   },
+   {
+    "missionId": "wp4ww-mission22",
+    "revision": "r1",
+    "sha256": "c38ac2fb1ff3bafb1d4f286daa70fc14afc480b77ffafbd4b97824e06ac69e3d"
+   },
+   {
+    "missionId": "wp4ww-mission23",
+    "revision": "r1",
+    "sha256": "758c9b6861a3c6b5fe02fbc7d44f84f9bfced02aeafc2c27f85fa0f27b765692"
+   },
+   {
+    "missionId": "wp4ww-mission24",
+    "revision": "r1",
+    "sha256": "bd9d45e1f78d3fd6192d97b33e826ebbcd2250f394c628b75a3b73670c1a687a"
+   },
+   {
+    "missionId": "wp4ww-mission25",
+    "revision": "r1",
+    "sha256": "a60f13ae99456144f9a4a2f4747175df5c9238e02d65de69699fb33d3af77a6b"
+   },
+   {
+    "missionId": "wp4ww-mission26",
+    "revision": "r1",
+    "sha256": "6d8ff8e7bcff26a2014fb7a451634c9a226f9d07ad2733f3ee61ce8a82379a02"
+   },
+   {
+    "missionId": "wp4ww-mission27",
+    "revision": "r1",
+    "sha256": "159ce35d6e45c813df4ea970bbe900524ddbcff72b5c0f9b890a80e24614b9f5"
+   },
+   {
+    "missionId": "wp4ww-mission28",
+    "revision": "r1",
+    "sha256": "3be74b956cda2bac3b3e2559f6681b38c89c8425ef5e8e73002389d56f34ddad"
+   },
+   {
+    "missionId": "wp4ww-mission29",
+    "revision": "r1",
+    "sha256": "d728c00a1ea4b137a83958d5399b1ddbf6b704ba331a6c32940599384f20f887"
+   },
+   {
+    "missionId": "wp4ww-mission30",
+    "revision": "r1",
+    "sha256": "c730304d4ea3b1de2afce4c78a2b12217f341714f6bdf1b2987d1228a005685e"
+   },
+   {
+    "missionId": "wp4ww-mission31",
+    "revision": "r1",
+    "sha256": "1ca7515decbccbf007fb681902d8b008d53653ed6d8c2975aae987eb96006771"
+   },
+   {
+    "missionId": "wp4ww-mission32",
+    "revision": "r1",
+    "sha256": "bdeef844707ff3793f1198ee785ad3d0be8c0e7ebe287de915e2676a87b55cfa"
+   },
+   {
+    "missionId": "wp4ww-mission33",
+    "revision": "r1",
+    "sha256": "1fb581a6fd59f5c11caccafcbba9f81e9699165bf5a5c5d10751cf9b7f559e7d"
+   },
+   {
+    "missionId": "wp4ww-mission34",
+    "revision": "r1",
+    "sha256": "b58ad28d86b6f531dabda03cbf1555c6e07a0cb3548953903623129ddede02d7"
+   },
+   {
+    "missionId": "wp4ww-mission35",
+    "revision": "r1",
+    "sha256": "72f9db04b470eb224796e7fec4ead8c5f8a27be9f37e61d1fd5939a673e31b62"
+   },
+   {
+    "missionId": "wp4ww-mission36",
+    "revision": "r1",
+    "sha256": "f37edd2998046ca3ff301c46ee7f1984312ba124cfa83212eb5259626d7849a8"
+   },
+   {
+    "missionId": "wp4ww-mission37",
+    "revision": "r1",
+    "sha256": "9bfaef6649979c5607ecfb643497e529c6ac6c05bb2acaf7f117f6b3c1588b2f"
+   },
+   {
+    "missionId": "wp4ww-mission38",
+    "revision": "r1",
+    "sha256": "721384379cb40d902bed2b855d31756dbb88d40f3b2bd40856c5f9f8ed8692ce"
+   },
+   {
+    "missionId": "wp4ww-mission39",
+    "revision": "r1",
+    "sha256": "396cb70bb8c67be341e77fdae52e84923213018d15955988c1f3ce25e8f09bed"
+   },
+   {
+    "missionId": "wp4ww-mission40",
+    "revision": "r1",
+    "sha256": "746d1f34a68e6926d372839ef863616712179c79376d336e68af3cb27ac24188"
+   }
+  ]
+ }
+}

@@ -9,7 +9,9 @@ export const deepGameModeSchema = z.enum(deepGameModes);
 export type DeepGameMode = z.infer<typeof deepGameModeSchema>;
 export type TaskMode = Exclude<DeepGameMode, "exam-escape-room">;
 export const deepPilotCourseKeySchema = z.enum(["oit", "class1-water"]);
-export const deepGameLimits = { tasks: 200, missions: 20, missionTasks: 4, sessionTasks: 10, options: 8, packageBytes: 1_048_576, sessionBytes: 131_072 } as const;
+export const deepContentCourseKeys = ["class1-wastewater-coll", "class1-water", "class1-water-dist", "class1-ww", "class2-wastewater-coll", "class2-water", "class2-water-dist", "class2-ww", "class3-wastewater-coll", "class3-water", "class3-water-dist", "class3-ww", "class4-wastewater-coll", "class4-water", "class4-water-dist", "class4-ww", "oit", "oit-ww", "wpi-class1-wastewater", "wpi-class1-water", "wpi-class1-water-coll", "wpi-class1-water-dist", "wpi-class2-wastewater", "wpi-class2-water", "wpi-class2-water-coll", "wpi-class2-water-dist", "wpi-class3-wastewater", "wpi-class3-water", "wpi-class3-water-coll", "wpi-class3-water-dist", "wpi-class4-wastewater", "wpi-class4-water", "wpi-class4-water-coll", "wpi-class4-water-dist", "wqa"] as const;
+export const deepCourseKeySchema = z.enum(deepContentCourseKeys);
+export const deepGameLimits = { tasks: 500, missions: 100, missionTasks: 4, sessionTasks: 10, options: 8, packageBytes: 2_097_152, sessionBytes: 131_072 } as const;
 export const deepSafeIdSchema = z.string().regex(/^[a-zA-Z0-9][a-zA-Z0-9_.:-]{0,79}$/);
 const version = z.string().regex(/^[a-zA-Z0-9][a-zA-Z0-9_.-]{0,79}$/);
 const text = (max: number) => z.string().min(1).max(max).refine(value => value.trim().length > 0, "Blank text");
@@ -87,8 +89,8 @@ export const deepEscapeMissionSchema = z.object({
 export type EscapeMission = z.infer<typeof deepEscapeMissionSchema>;
 
 const packageCore = {
-  courseKey: deepPilotCourseKeySchema, version,
-  tasks: z.array(deepTaskSchema).min(1).max(200), missions: z.array(deepEscapeMissionSchema).max(20),
+  courseKey: deepCourseKeySchema, version,
+  tasks: z.array(deepTaskSchema).min(1).max(deepGameLimits.tasks), missions: z.array(deepEscapeMissionSchema).max(deepGameLimits.missions),
 };
 const sha256 = z.string().regex(/^[a-f0-9]{64}$/);
 const taskReceipt = z.object({ taskId: deepSafeIdSchema, revision: version, sha256, sourceIds: z.array(deepSafeIdSchema).min(1).max(12) }).strict();
@@ -102,14 +104,14 @@ export const deepCoursePackageSchema = z.object({
   sources: z.array(z.object({ id: deepSafeIdSchema, title: text(300), locator: text(2000), note: text(2000).optional() }).strict()).min(1).max(100),
   publication: z.object({
     published: z.literal(true), reviewedBy: text(200), reviewedAt: z.string().datetime({ offset: true }), packageSha256: sha256,
-    taskReceipts: z.array(taskReceipt).min(1).max(200), missionReceipts: z.array(missionReceipt).max(20),
+    taskReceipts: z.array(taskReceipt).min(1).max(deepGameLimits.tasks), missionReceipts: z.array(missionReceipt).max(deepGameLimits.missions),
   }).strict(),
 }).strict().superRefine((data, ctx) => {
   const invalid = (message: string) => ctx.addIssue({ code: "custom", message });
   if (!unique(data.tasks.map(task => task.id)) || !unique(data.missions.map(mission => mission.id))) invalid("Duplicate authored IDs");
   if (data.missions.some(mission => data.tasks.some(task => task.id === mission.id))) invalid("Task and mission IDs must be distinct");
-  const expectedLevel = data.courseKey === "oit" ? "oit" : "class1";
-  if (data.tasks.some(task => task.level !== expectedLevel)) invalid("Task level does not match explicit pilot course");
+  const expectedLevel = data.courseKey === "oit" || data.courseKey === "oit-ww" ? "oit" : "class1";
+  if (data.tasks.some(task => task.level !== expectedLevel)) invalid("Task level does not match explicit course");
   for (const mission of data.missions) for (const ref of mission.tasks)
     if (!data.tasks.some(task => task.id === ref.taskId && task.revision === ref.revision)) invalid("Mission reference missing or revised");
   if (!unique(data.sources.map(source => source.id))) invalid("Duplicate source IDs");
@@ -138,15 +140,15 @@ export const deepCatalogInputSchema = z.object({ courseKey: requestedCourseKey }
 export const deepStartInputSchema = z.object({ courseKey: requestedCourseKey, mode: deepGameModeSchema, sessionSize: z.number().int().min(1).max(10), version: version.optional() }).strict();
 export const deepCatalogResponseSchema = z.object({
   courseKey: requestedCourseKey, version: version.nullable(), available: z.boolean(),
-  modes: z.array(z.object({ mode: deepGameModeSchema, title: text(100), count: z.number().int().min(1).max(200) }).strict()).max(5),
-  authoredTaskCount: z.number().int().min(0).max(200), missionCount: z.number().int().min(0).max(20),
+  modes: z.array(z.object({ mode: deepGameModeSchema, title: text(100), count: z.number().int().min(1).max(deepGameLimits.tasks) }).strict()).max(5),
+  authoredTaskCount: z.number().int().min(0).max(deepGameLimits.tasks), missionCount: z.number().int().min(0).max(deepGameLimits.missions),
 }).strict().superRefine((catalog, ctx) => {
   const invalid = () => ctx.addIssue({ code: "custom", message: "Inconsistent catalog availability/counts" });
   if (!unique(catalog.modes.map(mode => mode.mode))) invalid();
   if (!catalog.available) {
     if (catalog.version !== null || catalog.modes.length || catalog.authoredTaskCount || catalog.missionCount) invalid();
   } else {
-    if (!deepPilotCourseKeySchema.safeParse(catalog.courseKey).success || !catalog.version || !catalog.modes.length) invalid();
+    if (!deepCourseKeySchema.safeParse(catalog.courseKey).success || !catalog.version || !catalog.modes.length) invalid();
     const taskCount = catalog.modes.filter(mode => mode.mode !== "exam-escape-room").reduce((sum, mode) => sum + mode.count, 0);
     const missionCount = catalog.modes.find(mode => mode.mode === "exam-escape-room")?.count ?? 0;
     if (taskCount !== catalog.authoredTaskCount || missionCount !== catalog.missionCount) invalid();
@@ -161,14 +163,14 @@ const activityTracking = z.union([
   z.object({ tracking: z.literal(false), recorded: z.literal(false), source: z.literal("observed") }).strict(),
 ]);
 export const deepSessionResponseSchema = z.object({
-  courseKey: deepPilotCourseKeySchema, version, sessionId: deepSafeIdSchema, mode: deepGameModeSchema,
+  courseKey: deepCourseKeySchema, version, sessionId: deepSafeIdSchema, mode: deepGameModeSchema,
   tasks: z.array(deepTaskOccurrenceSchema).min(1).max(10),
   /** Reference-only mission plus the selected expanded occurrences, never an entire course bank. */
   mission: deepEscapeMissionSchema.optional(), activityTracking: activityTracking.optional(),
 }).strict().superRefine((session, ctx) => {
   const invalid = (message: string) => ctx.addIssue({ code: "custom", message });
   if (!unique(session.tasks.map(task => task.id))) invalid("Duplicate session occurrence IDs");
-  const expectedLevel = session.courseKey === "oit" ? "oit" : "class1";
+  const expectedLevel = session.courseKey === "oit" || session.courseKey === "oit-ww" ? "oit" : "class1";
   if (session.tasks.some(item => item.task.level !== expectedLevel)) invalid("Session course/level mismatch");
   if (session.mode === "exam-escape-room") {
     if (!session.mission || session.tasks.length !== session.mission.tasks.length) invalid("One expanded mission required");

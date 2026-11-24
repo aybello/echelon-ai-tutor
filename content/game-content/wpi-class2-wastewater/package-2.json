@@ -1,0 +1,4912 @@
+{
+ "courseKey": "wpi-class2-wastewater",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "wp2ww-ladder80",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A disinfection target CT of 45 mg min/L is set for effluent, and the chlorine residual is held at 1.5 mg/L. Find the contact time required. The facility is a mechanical wastewater treatment plant in western Manitoba. Enter the exact unrounded number.",
+   "topicId": "disinfection",
+   "level": "class1",
+   "assumptions": "Fictional operating data: 45 for target CT in mg min/L, 1.5 for chlorine residual in mg/L. Use the given values exactly as stated.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Contact time (min) = Target CT (mg min/L) * Residual (mg/L)"
+      },
+      {
+       "id": "opt-b",
+       "label": "Contact time (min) = Target CT (mg min/L) / Residual (mg/L)"
+      },
+      {
+       "id": "opt-c",
+       "label": "Contact time (min) = Residual (mg/L) / Target CT (mg min/L)"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Contact time (min) = Target CT (mg min/L) / Residual (mg/L)"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The result is in mg/L"
+      },
+      {
+       "id": "opt-b",
+       "label": "The result is in mg min/L"
+      },
+      {
+       "id": "opt-c",
+       "label": "mg min/L divided by mg/L gives min"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: mg min/L divided by mg/L gives min"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "45 / 1.5 min"
+      },
+      {
+       "id": "opt-b",
+       "label": "45 * 1.5 min"
+      },
+      {
+       "id": "opt-c",
+       "label": "1.5 / 45 min"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: 45 / 1.5 min"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact contact time required in min.",
+    "unitOptions": [
+     {
+      "id": "min",
+      "label": "min"
+     },
+     {
+      "id": "h",
+      "label": "h",
+      "toExpected": {
+       "numerator": "60",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "percent",
+      "label": "%"
+     }
+    ],
+    "expected": "30",
+    "expectedUnitId": "min",
+    "absoluteTolerance": "0",
+    "explanation": "45 / 1.5 min = 30 min."
+   }
+  },
+  {
+   "id": "wp2ww-ladder81",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Wastewater with a total nitrogen concentration of 45 mg/L flows at 2000 m3/day. Find the total nitrogen load per day. The facility is a municipal wastewater treatment plant in Alberta. Enter the exact unrounded number.",
+   "topicId": "nutrient-loading",
+   "level": "class1",
+   "assumptions": "Fictional operating data: 45 for concentration in mg/L, 2000 for flow in m3/day. Use the given values exactly as stated. Effluent quality is managed under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Mass load (kg/day) = Concentration (mg/L) / Flow (m3/day) * 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Mass load (kg/day) = Flow (m3/day) / Concentration (mg/L) / 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Mass load (kg/day) = Concentration (mg/L) * Flow (m3/day) / 1000"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Mass load (kg/day) = Concentration (mg/L) * Flow (m3/day) / 1000"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Divide the product by 1000 to get kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "Multiply the product by 1000 to get kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "Divide the product by 1000000 to get kg/day"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Divide the product by 1000 to get kg/day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "45 / 2000 * 1000 kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "45 * 2000 / 1000 kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "2000 / 45 / 1000 kg/day"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: 45 * 2000 / 1000 kg/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact mass load in kg/day.",
+    "unitOptions": [
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "g-day",
+      "label": "g/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "percent",
+      "label": "%"
+     }
+    ],
+    "expected": "90",
+    "expectedUnitId": "kg-day",
+    "absoluteTolerance": "0",
+    "explanation": "45 * 2000 / 1000 kg/day = 90 kg/day."
+   }
+  },
+  {
+   "id": "wp2ww-ladder82",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Wastewater with a total phosphorus concentration of 6 mg/L flows at 2500 m3/day. Find the total phosphorus load per day. The facility is an activated sludge plant in Saskatchewan. Enter the exact unrounded number.",
+   "topicId": "nutrient-loading",
+   "level": "class1",
+   "assumptions": "Fictional operating data: 6 for concentration in mg/L, 2500 for flow in m3/day. Use the given values exactly as stated.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Mass load (kg/day) = Concentration (mg/L) * Flow (m3/day) / 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Mass load (kg/day) = Concentration (mg/L) / Flow (m3/day) * 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Mass load (kg/day) = Flow (m3/day) / Concentration (mg/L) / 1000"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Mass load (kg/day) = Concentration (mg/L) * Flow (m3/day) / 1000"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Multiply the product by 1000 to get kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "Divide the product by 1000 to get kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "Divide the product by 1000000 to get kg/day"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Divide the product by 1000 to get kg/day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "6 / 2500 * 1000 kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "2500 / 6 / 1000 kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "6 * 2500 / 1000 kg/day"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: 6 * 2500 / 1000 kg/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact mass load in kg/day.",
+    "unitOptions": [
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "g-day",
+      "label": "g/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "percent",
+      "label": "%"
+     }
+    ],
+    "expected": "15",
+    "expectedUnitId": "kg-day",
+    "absoluteTolerance": "0",
+    "explanation": "6 * 2500 / 1000 kg/day = 15 kg/day."
+   }
+  },
+  {
+   "id": "wp2ww-ladder83",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Wastewater with a ammonia nitrogen concentration of 28 mg/L flows at 3000 m3/day. Find the ammonia nitrogen load per day. The facility is a wastewater treatment facility in Manitoba. Enter the exact unrounded number.",
+   "topicId": "nutrient-loading",
+   "level": "class1",
+   "assumptions": "Fictional operating data: 28 for concentration in mg/L, 3000 for flow in m3/day. Use the given values exactly as stated.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Mass load (kg/day) = Concentration (mg/L) / Flow (m3/day) * 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Mass load (kg/day) = Concentration (mg/L) * Flow (m3/day) / 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Mass load (kg/day) = Flow (m3/day) / Concentration (mg/L) / 1000"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Mass load (kg/day) = Concentration (mg/L) * Flow (m3/day) / 1000"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Multiply the product by 1000 to get kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "Divide the product by 1000000 to get kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "Divide the product by 1000 to get kg/day"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Divide the product by 1000 to get kg/day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "28 * 3000 / 1000 kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "28 / 3000 * 1000 kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "3000 / 28 / 1000 kg/day"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: 28 * 3000 / 1000 kg/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact mass load in kg/day.",
+    "unitOptions": [
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "g-day",
+      "label": "g/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "percent",
+      "label": "%"
+     }
+    ],
+    "expected": "84",
+    "expectedUnitId": "kg-day",
+    "absoluteTolerance": "0",
+    "explanation": "28 * 3000 / 1000 kg/day = 84 kg/day."
+   }
+  },
+  {
+   "id": "wp2ww-ladder84",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Wastewater with a nitrate nitrogen concentration of 12 mg/L flows at 4500 m3/day. Find the nitrate nitrogen load per day. The facility is a cold climate wastewater plant on the British Columbia coast. Enter the exact unrounded number.",
+   "topicId": "nutrient-loading",
+   "level": "class1",
+   "assumptions": "Fictional operating data: 12 for concentration in mg/L, 4500 for flow in m3/day. Use the given values exactly as stated.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Mass load (kg/day) = Concentration (mg/L) / Flow (m3/day) * 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Mass load (kg/day) = Flow (m3/day) / Concentration (mg/L) / 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Mass load (kg/day) = Concentration (mg/L) * Flow (m3/day) / 1000"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Mass load (kg/day) = Concentration (mg/L) * Flow (m3/day) / 1000"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Divide the product by 1000 to get kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "Multiply the product by 1000 to get kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "Divide the product by 1000000 to get kg/day"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Divide the product by 1000 to get kg/day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "12 / 4500 * 1000 kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "12 * 4500 / 1000 kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "4500 / 12 / 1000 kg/day"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: 12 * 4500 / 1000 kg/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact mass load in kg/day.",
+    "unitOptions": [
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "g-day",
+      "label": "g/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "percent",
+      "label": "%"
+     }
+    ],
+    "expected": "54",
+    "expectedUnitId": "kg-day",
+    "absoluteTolerance": "0",
+    "explanation": "12 * 4500 / 1000 kg/day = 54 kg/day."
+   }
+  },
+  {
+   "id": "wp2ww-ladder85",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Treatment reduces total phosphorus from 8 mg/L to 1.5 mg/L at a flow of 2000 m3/day. Find the mass of total phosphorus removed per day. The facility is a mechanical wastewater treatment plant in northern Alberta. Enter the exact unrounded number.",
+   "topicId": "nutrient-loading",
+   "level": "class1",
+   "assumptions": "Fictional operating data: 8 for influent concentration in mg/L, 1.5 for effluent concentration in mg/L, 2000 for flow in m3/day. Use the given values exactly as stated.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Mass removed (kg/day) = (In (mg/L) - Out (mg/L)) * Flow (m3/day) / 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Mass removed (kg/day) = (In (mg/L) + Out (mg/L)) * Flow (m3/day) / 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Mass removed (kg/day) = Out (mg/L) * Flow (m3/day) / 1000"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Mass removed (kg/day) = (In (mg/L) - Out (mg/L)) * Flow (m3/day) / 1000"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Multiply the product by 1000 to get kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "The concentration difference times flow, divided by 1000, gives kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "The result is in mg/L"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: The concentration difference times flow, divided by 1000, gives kg/day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "(8 + 1.5) * 2000 / 1000 kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "1.5 * 2000 / 1000 kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "(8 - 1.5) * 2000 / 1000 kg/day"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: (8 - 1.5) * 2000 / 1000 kg/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact mass removed in kg/day.",
+    "unitOptions": [
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "g-day",
+      "label": "g/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "percent",
+      "label": "%"
+     }
+    ],
+    "expected": "13",
+    "expectedUnitId": "kg-day",
+    "absoluteTolerance": "0",
+    "explanation": "(8 - 1.5) * 2000 / 1000 kg/day = 13 kg/day."
+   }
+  },
+  {
+   "id": "wp2ww-ladder86",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Treatment reduces total nitrogen from 50 mg/L to 15 mg/L at a flow of 1600 m3/day. Find the mass of total nitrogen removed per day. The facility is a municipal wastewater treatment plant in southern Saskatchewan. Enter the exact unrounded number.",
+   "topicId": "nutrient-loading",
+   "level": "class1",
+   "assumptions": "Fictional operating data: 50 for influent concentration in mg/L, 15 for effluent concentration in mg/L, 1600 for flow in m3/day. Use the given values exactly as stated.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Mass removed (kg/day) = (In (mg/L) + Out (mg/L)) * Flow (m3/day) / 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Mass removed (kg/day) = (In (mg/L) - Out (mg/L)) * Flow (m3/day) / 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Mass removed (kg/day) = Out (mg/L) * Flow (m3/day) / 1000"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Mass removed (kg/day) = (In (mg/L) - Out (mg/L)) * Flow (m3/day) / 1000"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Multiply the product by 1000 to get kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "The result is in mg/L"
+      },
+      {
+       "id": "opt-c",
+       "label": "The concentration difference times flow, divided by 1000, gives kg/day"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: The concentration difference times flow, divided by 1000, gives kg/day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "(50 - 15) * 1600 / 1000 kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "(50 + 15) * 1600 / 1000 kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "15 * 1600 / 1000 kg/day"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: (50 - 15) * 1600 / 1000 kg/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact mass removed in kg/day.",
+    "unitOptions": [
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "g-day",
+      "label": "g/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "percent",
+      "label": "%"
+     }
+    ],
+    "expected": "56",
+    "expectedUnitId": "kg-day",
+    "absoluteTolerance": "0",
+    "explanation": "(50 - 15) * 1600 / 1000 kg/day = 56 kg/day."
+   }
+  },
+  {
+   "id": "wp2ww-ladder87",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A plant oxidizes 84 kg/day of ammonia nitrogen during nitrification. Use the given factor of 7.14 kg of alkalinity as CaCO3 required per kg of ammonia nitrogen oxidized. Find the alkalinity requirement per day as CaCO3. The facility is an activated sludge plant in northern Manitoba. Enter the exact unrounded number.",
+   "topicId": "nutrient-loading",
+   "level": "class1",
+   "assumptions": "Fictional operating data: 84 for ammonia nitrogen oxidized in kg/day. Use the given values exactly as stated.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Alkalinity required (kg/day) = Ammonia oxidized (kg/day) / 7.14"
+      },
+      {
+       "id": "opt-b",
+       "label": "Alkalinity required (kg/day) = 7.14 / Ammonia oxidized (kg/day)"
+      },
+      {
+       "id": "opt-c",
+       "label": "Alkalinity required (kg/day) = Ammonia oxidized (kg/day) * 7.14"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Alkalinity required (kg/day) = Ammonia oxidized (kg/day) * 7.14"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "kg/day times the dimensionless factor 7.14 gives kg/day as CaCO3"
+      },
+      {
+       "id": "opt-b",
+       "label": "The result is in mg/L"
+      },
+      {
+       "id": "opt-c",
+       "label": "The result is a dimensionless ratio"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: kg/day times the dimensionless factor 7.14 gives kg/day as CaCO3"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "84 / 7.14 kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "84 * 7.14 kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "7.14 / 84 kg/day"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: 84 * 7.14 kg/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact alkalinity requirement as CaCO3 in kg/day.",
+    "unitOptions": [
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "g-day",
+      "label": "g/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "percent",
+      "label": "%"
+     }
+    ],
+    "expected": "599.76",
+    "expectedUnitId": "kg-day",
+    "absoluteTolerance": "0",
+    "explanation": "84 * 7.14 kg/day = 599.76 kg/day."
+   }
+  },
+  {
+   "id": "wp2ww-ladder88",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A plant removes 20 kg/day of phosphorus. The given alum requirement is 8.5 kg of alum per kg of phosphorus removed. Find the alum required per day. The facility is a wastewater treatment facility in the British Columbia interior. Enter the exact unrounded number.",
+   "topicId": "nutrient-loading",
+   "level": "class1",
+   "assumptions": "Fictional operating data: 20 for phosphorus removed in kg/day, 8.5 for alum factor in kg/kg. Use the given values exactly as stated.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Chemical (kg/day) = Mass removed (kg/day) * Given factor (kg/kg)"
+      },
+      {
+       "id": "opt-b",
+       "label": "Chemical (kg/day) = Mass removed (kg/day) / Given factor (kg/kg)"
+      },
+      {
+       "id": "opt-c",
+       "label": "Chemical (kg/day) = Given factor (kg/kg) / Mass removed (kg/day)"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Chemical (kg/day) = Mass removed (kg/day) * Given factor (kg/kg)"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The result is in mg/L"
+      },
+      {
+       "id": "opt-b",
+       "label": "kg/day times a dimensionless kg/kg factor gives kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "The result is a dimensionless ratio"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: kg/day times a dimensionless kg/kg factor gives kg/day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "20 / 8.5 kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "8.5 / 20 kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "20 * 8.5 kg/day"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: 20 * 8.5 kg/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact alum required in kg/day.",
+    "unitOptions": [
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "g-day",
+      "label": "g/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "percent",
+      "label": "%"
+     }
+    ],
+    "expected": "170",
+    "expectedUnitId": "kg-day",
+    "absoluteTolerance": "0",
+    "explanation": "20 * 8.5 kg/day = 170 kg/day."
+   }
+  },
+  {
+   "id": "wp2ww-ladder89",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A secondary clarifier with a surface area of 300 m2 receives 3000 m3/day of mixed liquor flow plus 1500 m3/day of return flow. MLSS is 3000 mg/L. Find the clarifier solids loading rate. The facility is a cold climate wastewater plant in central Alberta. Enter the exact unrounded number.",
+   "topicId": "clarifier-loading",
+   "level": "class1",
+   "assumptions": "Fictional operating data: 3000 for mixed liquor flow in m3/day, 1500 for return flow in m3/day, 3000 for MLSS in mg/L, 300 for clarifier area in m2. Use the given values exactly as stated.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Solids loading (kg/m2/day) = Area (m2) * MLSS (mg/L) / 1000 / (Flow + Return flow) (m3/day)"
+      },
+      {
+       "id": "opt-b",
+       "label": "Solids loading (kg/m2/day) = (Flow + Return flow) (m3/day) * MLSS (mg/L) / 1000 / Area (m2)"
+      },
+      {
+       "id": "opt-c",
+       "label": "Solids loading (kg/m2/day) = Flow (m3/day) * MLSS (mg/L) / 1000 / Area (m2)"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Solids loading (kg/m2/day) = (Flow + Return flow) (m3/day) * MLSS (mg/L) / 1000 / Area (m2)"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The result is in m/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "The return flow is not included in a solids loading calculation"
+      },
+      {
+       "id": "opt-c",
+       "label": "Total flow times MLSS divided by 1000 gives kg/day, and kg/day divided by m2 gives kg/m2/day"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Total flow times MLSS divided by 1000 gives kg/day, and kg/day divided by m2 gives kg/m2/day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "(3000 + 1500) * 3000 / 1000 / 300 kg/m2/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "300 * 3000 / 1000 / (3000 + 1500) kg/m2/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "3000 * 3000 / 1000 / 300 kg/m2/day"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: (3000 + 1500) * 3000 / 1000 / 300 kg/m2/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact clarifier solids loading rate in kg/m2/day.",
+    "unitOptions": [
+     {
+      "id": "kg-m2-day",
+      "label": "kg/m2/day"
+     },
+     {
+      "id": "g-m2-day",
+      "label": "g/m2/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "percent",
+      "label": "%"
+     }
+    ],
+    "expected": "45",
+    "expectedUnitId": "kg-m2-day",
+    "absoluteTolerance": "0",
+    "explanation": "(3000 + 1500) * 3000 / 1000 / 300 kg/m2/day = 45 kg/m2/day."
+   }
+  },
+  {
+   "id": "wp2ww-ladder90",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A secondary clarifier with a surface area of 250 m2 receives 2000 m3/day of mixed liquor flow plus 1000 m3/day of return flow. MLSS is 2500 mg/L. Find the clarifier solids loading rate. The facility is a mechanical wastewater treatment plant in western Manitoba. Enter the exact unrounded number.",
+   "topicId": "clarifier-loading",
+   "level": "class1",
+   "assumptions": "Fictional operating data: 2000 for mixed liquor flow in m3/day, 1000 for return flow in m3/day, 2500 for MLSS in mg/L, 250 for clarifier area in m2. Use the given values exactly as stated. Effluent quality is managed under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Solids loading (kg/m2/day) = Area (m2) * MLSS (mg/L) / 1000 / (Flow + Return flow) (m3/day)"
+      },
+      {
+       "id": "opt-b",
+       "label": "Solids loading (kg/m2/day) = Flow (m3/day) * MLSS (mg/L) / 1000 / Area (m2)"
+      },
+      {
+       "id": "opt-c",
+       "label": "Solids loading (kg/m2/day) = (Flow + Return flow) (m3/day) * MLSS (mg/L) / 1000 / Area (m2)"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Solids loading (kg/m2/day) = (Flow + Return flow) (m3/day) * MLSS (mg/L) / 1000 / Area (m2)"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Total flow times MLSS divided by 1000 gives kg/day, and kg/day divided by m2 gives kg/m2/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "The result is in m/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "The return flow is not included in a solids loading calculation"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Total flow times MLSS divided by 1000 gives kg/day, and kg/day divided by m2 gives kg/m2/day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "250 * 2500 / 1000 / (2000 + 1000) kg/m2/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "(2000 + 1000) * 2500 / 1000 / 250 kg/m2/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "2000 * 2500 / 1000 / 250 kg/m2/day"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: (2000 + 1000) * 2500 / 1000 / 250 kg/m2/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact clarifier solids loading rate in kg/m2/day.",
+    "unitOptions": [
+     {
+      "id": "kg-m2-day",
+      "label": "kg/m2/day"
+     },
+     {
+      "id": "g-m2-day",
+      "label": "g/m2/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "percent",
+      "label": "%"
+     }
+    ],
+    "expected": "30",
+    "expectedUnitId": "kg-m2-day",
+    "absoluteTolerance": "0",
+    "explanation": "(2000 + 1000) * 2500 / 1000 / 250 kg/m2/day = 30 kg/m2/day."
+   }
+  },
+  {
+   "id": "wp2ww-ladder91",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A secondary clarifier with a surface area of 300 m2 receives a flow of 3600 m3/day. Find the surface overflow rate. The facility is a municipal wastewater treatment plant in Alberta. Enter the exact unrounded number.",
+   "topicId": "clarifier-loading",
+   "level": "class1",
+   "assumptions": "Fictional operating data: 3600 for flow in m3/day, 300 for clarifier area in m2. Use the given values exactly as stated.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Surface overflow rate (m/day) = Flow (m3/day) / Area (m2)"
+      },
+      {
+       "id": "opt-b",
+       "label": "Surface overflow rate (m/day) = Area (m2) / Flow (m3/day)"
+      },
+      {
+       "id": "opt-c",
+       "label": "Surface overflow rate (m/day) = Flow (m3/day) * Area (m2)"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Surface overflow rate (m/day) = Flow (m3/day) / Area (m2)"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The result is in kg/m2/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "m3/day divided by m2 gives m/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "The result is in days"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: m3/day divided by m2 gives m/day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "300 / 3600 m/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "3600 * 300 m/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "3600 / 300 m/day"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: 3600 / 300 m/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact surface overflow rate in m/day.",
+    "unitOptions": [
+     {
+      "id": "m-day",
+      "label": "m/day"
+     },
+     {
+      "id": "mm-day",
+      "label": "mm/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "percent",
+      "label": "%"
+     }
+    ],
+    "expected": "12",
+    "expectedUnitId": "m-day",
+    "absoluteTolerance": "0",
+    "explanation": "3600 / 300 m/day = 12 m/day."
+   }
+  },
+  {
+   "id": "wp2ww-ladder92",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A secondary clarifier with a surface area of 250 m2 receives a flow of 2750 m3/day. Find the surface overflow rate. The facility is an activated sludge plant in Saskatchewan. Enter the exact unrounded number.",
+   "topicId": "clarifier-loading",
+   "level": "class1",
+   "assumptions": "Fictional operating data: 2750 for flow in m3/day, 250 for clarifier area in m2. Use the given values exactly as stated.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Surface overflow rate (m/day) = Area (m2) / Flow (m3/day)"
+      },
+      {
+       "id": "opt-b",
+       "label": "Surface overflow rate (m/day) = Flow (m3/day) / Area (m2)"
+      },
+      {
+       "id": "opt-c",
+       "label": "Surface overflow rate (m/day) = Flow (m3/day) * Area (m2)"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Surface overflow rate (m/day) = Flow (m3/day) / Area (m2)"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The result is in kg/m2/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "The result is in days"
+      },
+      {
+       "id": "opt-c",
+       "label": "m3/day divided by m2 gives m/day"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: m3/day divided by m2 gives m/day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "2750 / 250 m/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "250 / 2750 m/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "2750 * 250 m/day"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: 2750 / 250 m/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact surface overflow rate in m/day.",
+    "unitOptions": [
+     {
+      "id": "m-day",
+      "label": "m/day"
+     },
+     {
+      "id": "mm-day",
+      "label": "mm/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "percent",
+      "label": "%"
+     }
+    ],
+    "expected": "11",
+    "expectedUnitId": "m-day",
+    "absoluteTolerance": "0",
+    "explanation": "2750 / 250 m/day = 11 m/day."
+   }
+  },
+  {
+   "id": "wp2ww-ladder93",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A secondary clarifier with a surface area of 400 m2 receives 4000 m3/day of mixed liquor flow plus 2000 m3/day of return flow. MLSS is 2800 mg/L. Find the clarifier solids loading rate. The facility is a wastewater treatment facility in Manitoba. Enter the exact unrounded number.",
+   "topicId": "clarifier-loading",
+   "level": "class1",
+   "assumptions": "Fictional operating data: 4000 for mixed liquor flow in m3/day, 2000 for return flow in m3/day, 2800 for MLSS in mg/L, 400 for clarifier area in m2. Use the given values exactly as stated.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Solids loading (kg/m2/day) = Area (m2) * MLSS (mg/L) / 1000 / (Flow + Return flow) (m3/day)"
+      },
+      {
+       "id": "opt-b",
+       "label": "Solids loading (kg/m2/day) = Flow (m3/day) * MLSS (mg/L) / 1000 / Area (m2)"
+      },
+      {
+       "id": "opt-c",
+       "label": "Solids loading (kg/m2/day) = (Flow + Return flow) (m3/day) * MLSS (mg/L) / 1000 / Area (m2)"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Solids loading (kg/m2/day) = (Flow + Return flow) (m3/day) * MLSS (mg/L) / 1000 / Area (m2)"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Total flow times MLSS divided by 1000 gives kg/day, and kg/day divided by m2 gives kg/m2/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "The result is in m/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "The return flow is not included in a solids loading calculation"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Total flow times MLSS divided by 1000 gives kg/day, and kg/day divided by m2 gives kg/m2/day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "400 * 2800 / 1000 / (4000 + 2000) kg/m2/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "(4000 + 2000) * 2800 / 1000 / 400 kg/m2/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "4000 * 2800 / 1000 / 400 kg/m2/day"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: (4000 + 2000) * 2800 / 1000 / 400 kg/m2/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact clarifier solids loading rate in kg/m2/day.",
+    "unitOptions": [
+     {
+      "id": "kg-m2-day",
+      "label": "kg/m2/day"
+     },
+     {
+      "id": "g-m2-day",
+      "label": "g/m2/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "percent",
+      "label": "%"
+     }
+    ],
+    "expected": "42",
+    "expectedUnitId": "kg-m2-day",
+    "absoluteTolerance": "0",
+    "explanation": "(4000 + 2000) * 2800 / 1000 / 400 kg/m2/day = 42 kg/m2/day."
+   }
+  },
+  {
+   "id": "wp2ww-ladder94",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A clarifier effluent weir has a total length of 40 m and the clarifier flow is 4800 m3/day. Find the weir loading rate. The facility is a cold climate wastewater plant on the British Columbia coast. Enter the exact unrounded number.",
+   "topicId": "clarifier-loading",
+   "level": "class1",
+   "assumptions": "Fictional operating data: 4800 for flow in m3/day, 40 for weir length in m. Use the given values exactly as stated.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Weir loading (m3/m/day) = Flow (m3/day) / Weir length (m)"
+      },
+      {
+       "id": "opt-b",
+       "label": "Weir loading (m3/m/day) = Weir length (m) / Flow (m3/day)"
+      },
+      {
+       "id": "opt-c",
+       "label": "Weir loading (m3/m/day) = Flow (m3/day) * Weir length (m)"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Weir loading (m3/m/day) = Flow (m3/day) / Weir length (m)"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The result is in m/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "m3/day divided by m gives m3/m/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "The result is in kg/day"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: m3/day divided by m gives m3/m/day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "40 / 4800 m3/m/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "4800 * 40 m3/m/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "4800 / 40 m3/m/day"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: 4800 / 40 m3/m/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact weir loading rate in m3/m/day.",
+    "unitOptions": [
+     {
+      "id": "m3-m-day",
+      "label": "m3/m/day"
+     },
+     {
+      "id": "L-m-day",
+      "label": "L/m/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "percent",
+      "label": "%"
+     }
+    ],
+    "expected": "120",
+    "expectedUnitId": "m3-m-day",
+    "absoluteTolerance": "0",
+    "explanation": "4800 / 40 m3/m/day = 120 m3/m/day."
+   }
+  },
+  {
+   "id": "wp2ww-ladder95",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A settleability test shows a settled sludge volume of 300 mL/L after 30 minutes, and MLSS is 2500 mg/L. Find the sludge volume index. The facility is a mechanical wastewater treatment plant in northern Alberta. Enter the exact unrounded number.",
+   "topicId": "svi",
+   "level": "class1",
+   "assumptions": "Fictional operating data: 300 for settled volume in mL/L, 2500 for MLSS in mg/L. Use the given values exactly as stated.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "SVI (mL/g) = MLSS (mg/L) * 1000 / Settled volume (mL/L)"
+      },
+      {
+       "id": "opt-b",
+       "label": "SVI (mL/g) = Settled volume (mL/L) * 1000 / MLSS (mg/L)"
+      },
+      {
+       "id": "opt-c",
+       "label": "SVI (mL/g) = Settled volume (mL/L) / 1000 * MLSS (mg/L)"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: SVI (mL/g) = Settled volume (mL/L) * 1000 / MLSS (mg/L)"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The result is in mg/L"
+      },
+      {
+       "id": "opt-b",
+       "label": "The result is in percent"
+      },
+      {
+       "id": "opt-c",
+       "label": "mL/L times 1000 divided by mg/L gives mL/g"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: mL/L times 1000 divided by mg/L gives mL/g"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "300 * 1000 / 2500 mL/g"
+      },
+      {
+       "id": "opt-b",
+       "label": "2500 * 1000 / 300 mL/g"
+      },
+      {
+       "id": "opt-c",
+       "label": "300 / 1000 * 2500 mL/g"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: 300 * 1000 / 2500 mL/g"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact sludge volume index in mL/g.",
+    "unitOptions": [
+     {
+      "id": "mL-g",
+      "label": "mL/g"
+     },
+     {
+      "id": "L-kg",
+      "label": "L/kg",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "percent",
+      "label": "%"
+     }
+    ],
+    "expected": "120",
+    "expectedUnitId": "mL-g",
+    "absoluteTolerance": "0",
+    "explanation": "300 * 1000 / 2500 mL/g = 120 mL/g."
+   }
+  },
+  {
+   "id": "wp2ww-ladder96",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A settleability test shows a settled sludge volume of 280 mL/L after 30 minutes, and MLSS is 2000 mg/L. Find the sludge volume index. The facility is a municipal wastewater treatment plant in southern Saskatchewan. Enter the exact unrounded number.",
+   "topicId": "svi",
+   "level": "class1",
+   "assumptions": "Fictional operating data: 280 for settled volume in mL/L, 2000 for MLSS in mg/L. Use the given values exactly as stated.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "SVI (mL/g) = MLSS (mg/L) * 1000 / Settled volume (mL/L)"
+      },
+      {
+       "id": "opt-b",
+       "label": "SVI (mL/g) = Settled volume (mL/L) / 1000 * MLSS (mg/L)"
+      },
+      {
+       "id": "opt-c",
+       "label": "SVI (mL/g) = Settled volume (mL/L) * 1000 / MLSS (mg/L)"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: SVI (mL/g) = Settled volume (mL/L) * 1000 / MLSS (mg/L)"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "mL/L times 1000 divided by mg/L gives mL/g"
+      },
+      {
+       "id": "opt-b",
+       "label": "The result is in mg/L"
+      },
+      {
+       "id": "opt-c",
+       "label": "The result is in percent"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: mL/L times 1000 divided by mg/L gives mL/g"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "2000 * 1000 / 280 mL/g"
+      },
+      {
+       "id": "opt-b",
+       "label": "280 * 1000 / 2000 mL/g"
+      },
+      {
+       "id": "opt-c",
+       "label": "280 / 1000 * 2000 mL/g"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: 280 * 1000 / 2000 mL/g"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact sludge volume index in mL/g.",
+    "unitOptions": [
+     {
+      "id": "mL-g",
+      "label": "mL/g"
+     },
+     {
+      "id": "L-kg",
+      "label": "L/kg",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "percent",
+      "label": "%"
+     }
+    ],
+    "expected": "140",
+    "expectedUnitId": "mL-g",
+    "absoluteTolerance": "0",
+    "explanation": "280 * 1000 / 2000 mL/g = 140 mL/g."
+   }
+  },
+  {
+   "id": "wp2ww-ladder97",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A plant removes 450 kg/day of BOD. The given oxygen factor is 1.1 kg of oxygen per kg of BOD removed. Find the oxygen required per day for BOD removal. The facility is an activated sludge plant in northern Manitoba. Enter the exact unrounded number.",
+   "topicId": "oxygen-requirements",
+   "level": "class1",
+   "assumptions": "Fictional operating data: 450 for mass in kg/day, 1.1 for oxygen factor in kg/kg. Use the given values exactly as stated.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Oxygen required (kg/day) = Mass (kg/day) * Given oxygen factor (kg/kg)"
+      },
+      {
+       "id": "opt-b",
+       "label": "Oxygen required (kg/day) = Mass (kg/day) / Given oxygen factor (kg/kg)"
+      },
+      {
+       "id": "opt-c",
+       "label": "Oxygen required (kg/day) = Given oxygen factor (kg/kg) / Mass (kg/day)"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Oxygen required (kg/day) = Mass (kg/day) * Given oxygen factor (kg/kg)"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The result is in mg/L"
+      },
+      {
+       "id": "opt-b",
+       "label": "kg/day times a dimensionless kg/kg factor gives kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "The result is a dimensionless ratio"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: kg/day times a dimensionless kg/kg factor gives kg/day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "450 / 1.1 kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "1.1 / 450 kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "450 * 1.1 kg/day"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: 450 * 1.1 kg/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact oxygen required in kg/day.",
+    "unitOptions": [
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "g-day",
+      "label": "g/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "percent",
+      "label": "%"
+     }
+    ],
+    "expected": "495",
+    "expectedUnitId": "kg-day",
+    "absoluteTolerance": "0",
+    "explanation": "450 * 1.1 kg/day = 495 kg/day."
+   }
+  },
+  {
+   "id": "wp2ww-ladder98",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A nitrifying plant oxidizes 120 kg/day of ammonia nitrogen. The given oxygen factor is 4.57 kg of oxygen per kg of ammonia nitrogen oxidized. Find the oxygen required per day for nitrification. The facility is a wastewater treatment facility in the British Columbia interior. Enter the exact unrounded number.",
+   "topicId": "oxygen-requirements",
+   "level": "class1",
+   "assumptions": "Fictional operating data: 120 for mass in kg/day, 4.57 for oxygen factor in kg/kg. Use the given values exactly as stated.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Oxygen required (kg/day) = Mass (kg/day) / Given oxygen factor (kg/kg)"
+      },
+      {
+       "id": "opt-b",
+       "label": "Oxygen required (kg/day) = Mass (kg/day) * Given oxygen factor (kg/kg)"
+      },
+      {
+       "id": "opt-c",
+       "label": "Oxygen required (kg/day) = Given oxygen factor (kg/kg) / Mass (kg/day)"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Oxygen required (kg/day) = Mass (kg/day) * Given oxygen factor (kg/kg)"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The result is in mg/L"
+      },
+      {
+       "id": "opt-b",
+       "label": "The result is a dimensionless ratio"
+      },
+      {
+       "id": "opt-c",
+       "label": "kg/day times a dimensionless kg/kg factor gives kg/day"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: kg/day times a dimensionless kg/kg factor gives kg/day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "120 * 4.57 kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "120 / 4.57 kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "4.57 / 120 kg/day"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: 120 * 4.57 kg/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact oxygen required in kg/day.",
+    "unitOptions": [
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "g-day",
+      "label": "g/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "percent",
+      "label": "%"
+     }
+    ],
+    "expected": "548.4",
+    "expectedUnitId": "kg-day",
+    "absoluteTolerance": "0",
+    "explanation": "120 * 4.57 kg/day = 548.4 kg/day."
+   }
+  },
+  {
+   "id": "wp2ww-ladder99",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "An aeration basin has a volume of 1800 m3 and receives a flow of 3600 m3/day. Find the aeration detention time in hours. The facility is a cold climate wastewater plant in central Alberta. Enter the exact unrounded number.",
+   "topicId": "detention-time",
+   "level": "class1",
+   "assumptions": "Fictional operating data: 1800 for aeration volume in m3, 3600 for flow in m3/day. Use the given values exactly as stated. Effluent quality is managed under provincial wastewater requirements and the federal Wastewater Systems Effluent Regulations, with the CCME Canada-wide Strategy as context.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Detention time (h) = Flow (m3/day) / Volume (m3) * 24"
+      },
+      {
+       "id": "opt-b",
+       "label": "Detention time (h) = Volume (m3) * Flow (m3/day) / 24"
+      },
+      {
+       "id": "opt-c",
+       "label": "Detention time (h) = Volume (m3) / Flow (m3/day) * 24"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Detention time (h) = Volume (m3) / Flow (m3/day) * 24"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "m3 divided by m3/day gives days, and days times 24 gives hours"
+      },
+      {
+       "id": "opt-b",
+       "label": "The result is in days with no conversion"
+      },
+      {
+       "id": "opt-c",
+       "label": "The result is in m3/day"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: m3 divided by m3/day gives days, and days times 24 gives hours"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "3600 / 1800 * 24 h"
+      },
+      {
+       "id": "opt-b",
+       "label": "1800 / 3600 * 24 h"
+      },
+      {
+       "id": "opt-c",
+       "label": "1800 * 3600 / 24 h"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: 1800 / 3600 * 24 h"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact aeration detention time in h.",
+    "unitOptions": [
+     {
+      "id": "hours",
+      "label": "h"
+     },
+     {
+      "id": "days",
+      "label": "days",
+      "toExpected": {
+       "numerator": "24",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "percent",
+      "label": "%"
+     }
+    ],
+    "expected": "12",
+    "expectedUnitId": "hours",
+    "absoluteTolerance": "0",
+    "explanation": "1800 / 3600 * 24 h = 12 h."
+   }
+  },
+  {
+   "id": "wp2ww-error01",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids retention time calculation for an activated sludge plant in Alberta. Aeration volume is 1000 m3 and MLSS is 3000 mg/L.",
+   "topicId": "srt-control",
+   "level": "class1",
+   "assumptions": "Fictional plant in Alberta: aeration volume V = 1000 m3, MLSS = 3000 mg/L. Solids leaving in the waste activated sludge are 300 kg/d and solids leaving in the final effluent are 100 kg/d, both from plant records. Target unit: days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SRT = solids in aeration tank / solids leaving per day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids in tank = 1000 m3 * 3000 mg/L / 1000 = 3000 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solids leaving = WAS solids = 300 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. SRT = 3000 kg / 300 kg/d = 10 d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Solids leaving = 300 kg/d + 100 kg/d = 400 kg/d",
+   "explanation": "Line 3 forgot the effluent solids. Solids also leave in the final effluent, so solids leaving are 300 + 100 = 400 kg/d and SRT is 3000 / 400 = 7.5 d."
+  },
+  {
+   "id": "wp2ww-error02",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids retention time calculation for an activated sludge plant in Saskatchewan. Aeration volume is 800 m3 and MLSS is 3000 mg/L.",
+   "topicId": "srt-control",
+   "level": "class1",
+   "assumptions": "Fictional plant in Saskatchewan: aeration volume V = 800 m3, MLSS = 3000 mg/L. Solids leaving in the waste activated sludge are 200 kg/d and solids leaving in the final effluent are 100 kg/d, both from plant records. Target unit: days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SRT = solids in aeration tank / solids leaving per day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids in tank = 800 m3 * 3000 mg/L / 1000 = 2400 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solids leaving = 200 kg/d + 100 kg/d + 100 kg/d = 400 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. SRT = 2400 kg / 400 kg/d = 6 d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Solids leaving = 200 kg/d + 100 kg/d = 300 kg/d",
+   "explanation": "Line 3 counted the effluent solids twice. Solids leaving are 200 + 100 = 300 kg/d, counted once each, so SRT is 2400 / 300 = 8 d."
+  },
+  {
+   "id": "wp2ww-error03",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids retention time calculation for an activated sludge plant in Manitoba. Aeration volume is 1200 m3 and MLSS is 2000 mg/L.",
+   "topicId": "srt-control",
+   "level": "class1",
+   "assumptions": "Fictional plant in Manitoba: aeration volume V = 1200 m3, MLSS = 2000 mg/L. Solids leaving in the waste activated sludge are 240 kg/d and solids leaving in the final effluent are 60 kg/d, both from plant records. Target unit: days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SRT = solids in aeration tank / solids leaving per day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids in tank = 1200 m3 * 2000 mg/L / 1000 = 24000 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solids leaving = 240 kg/d + 60 kg/d = 300 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. SRT = 24000 kg / 300 kg/d = 80 d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Solids in tank = 1200 m3 * 2000 mg/L / 1000 = 2400 kg",
+   "explanation": "Line 2 converted with the wrong factor. 1200 * 2000 / 1000 = 2400 kg, not 24000 kg, so SRT is 2400 / 300 = 8 d."
+  },
+  {
+   "id": "wp2ww-error04",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids retention time calculation for an activated sludge plant in British Columbia. Aeration volume is 1500 m3 and MLSS is 2800 mg/L.",
+   "topicId": "srt-control",
+   "level": "class1",
+   "assumptions": "Fictional plant in British Columbia: aeration volume V = 1500 m3, MLSS = 2800 mg/L. Solids leaving in the waste activated sludge are 420 kg/d and solids leaving in the final effluent are 280 kg/d, both from plant records. Target unit: days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SRT = solids in aeration tank / solids leaving per day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids in tank = 1500 m3 * 2800 mg/L / 1000 = 4200 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solids leaving = 420 kg/d + 280 kg/d = 700 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. SRT = 4200 kg / 700 kg/d = 7 d"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. SRT = 4200 kg / 700 kg/d = 6 d",
+   "explanation": "Line 4 divided incorrectly. 4200 / 700 = 6 d, not 7 d."
+  },
+  {
+   "id": "wp2ww-error05",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids retention time calculation for an activated sludge plant in Alberta. Aeration volume is 900 m3 and MLSS is 2000 mg/L.",
+   "topicId": "srt-control",
+   "level": "class1",
+   "assumptions": "Fictional plant in Alberta: aeration volume V = 900 m3, MLSS = 2000 mg/L. Solids leaving in the waste activated sludge are 150 kg/d and solids leaving in the final effluent are 90 kg/d, both from plant records. Target unit: days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SRT = solids in aeration tank / solids leaving per day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids in tank = 900 m3 * 2000 mg/L / 1000 = 1800 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solids leaving = WAS solids = 150 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. SRT = 1800 kg / 150 kg/d = 12 d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Solids leaving = 150 kg/d + 90 kg/d = 240 kg/d",
+   "explanation": "Line 3 forgot the effluent solids. Solids also leave in the final effluent, so solids leaving are 150 + 90 = 240 kg/d and SRT is 1800 / 240 = 7.5 d."
+  },
+  {
+   "id": "wp2ww-error06",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids retention time calculation for an activated sludge plant in Saskatchewan. Aeration volume is 1600 m3 and MLSS is 3000 mg/L.",
+   "topicId": "srt-control",
+   "level": "class1",
+   "assumptions": "Fictional plant in Saskatchewan: aeration volume V = 1600 m3, MLSS = 3000 mg/L. Solids leaving in the waste activated sludge are 400 kg/d and solids leaving in the final effluent are 200 kg/d, both from plant records. Target unit: days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SRT = solids in aeration tank / solids leaving per day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids in tank = 1600 m3 * 3000 mg/L / 1000 = 4800 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solids leaving = 400 kg/d + 200 kg/d + 200 kg/d = 800 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. SRT = 4800 kg / 800 kg/d = 6 d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Solids leaving = 400 kg/d + 200 kg/d = 600 kg/d",
+   "explanation": "Line 3 counted the effluent solids twice. Solids leaving are 400 + 200 = 600 kg/d, counted once each, so SRT is 4800 / 600 = 8 d."
+  },
+  {
+   "id": "wp2ww-error07",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids retention time calculation for an activated sludge plant in Manitoba. Aeration volume is 1000 m3 and MLSS is 2400 mg/L.",
+   "topicId": "srt-control",
+   "level": "class1",
+   "assumptions": "Fictional plant in Manitoba: aeration volume V = 1000 m3, MLSS = 2400 mg/L. Solids leaving in the waste activated sludge are 200 kg/d and solids leaving in the final effluent are 100 kg/d, both from plant records. Target unit: days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SRT = solids in aeration tank / solids leaving per day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids in tank = 1000 m3 * 2400 mg/L / 1000 = 2400 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solids leaving = 200 kg/d + 100 kg/d = 300 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. SRT = 2400 kg / 300 kg/d = 9 d"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. SRT = 2400 kg / 300 kg/d = 8 d",
+   "explanation": "Line 4 divided incorrectly. 2400 / 300 = 8 d, not 9 d."
+  },
+  {
+   "id": "wp2ww-error08",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids retention time calculation for an activated sludge plant in British Columbia. Aeration volume is 600 m3 and MLSS is 3000 mg/L.",
+   "topicId": "srt-control",
+   "level": "class1",
+   "assumptions": "Fictional plant in British Columbia: aeration volume V = 600 m3, MLSS = 3000 mg/L. Solids leaving in the waste activated sludge are 180 kg/d and solids leaving in the final effluent are 120 kg/d, both from plant records. Target unit: days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SRT = solids in aeration tank / solids leaving per day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids in tank = 600 m3 * 3000 mg/L / 1000 = 1800 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solids leaving = WAS solids = 180 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. SRT = 1800 kg / 180 kg/d = 10 d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Solids leaving = 180 kg/d + 120 kg/d = 300 kg/d",
+   "explanation": "Line 3 forgot the effluent solids. Solids also leave in the final effluent, so solids leaving are 180 + 120 = 300 kg/d and SRT is 1800 / 300 = 6 d."
+  },
+  {
+   "id": "wp2ww-error09",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids retention time calculation for an activated sludge plant in Alberta. Aeration volume is 2500 m3 and MLSS is 2000 mg/L.",
+   "topicId": "srt-control",
+   "level": "class1",
+   "assumptions": "Fictional plant in Alberta: aeration volume V = 2500 m3, MLSS = 2000 mg/L. Solids leaving in the waste activated sludge are 400 kg/d and solids leaving in the final effluent are 100 kg/d, both from plant records. Target unit: days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SRT = solids in aeration tank / solids leaving per day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids in tank = 2500 m3 * 2000 mg/L / 1000 = 50000 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solids leaving = 400 kg/d + 100 kg/d = 500 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. SRT = 50000 kg / 500 kg/d = 100 d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Solids in tank = 2500 m3 * 2000 mg/L / 1000 = 5000 kg",
+   "explanation": "Line 2 converted with the wrong factor. 2500 * 2000 / 1000 = 5000 kg, not 50000 kg, so SRT is 5000 / 500 = 10 d."
+  },
+  {
+   "id": "wp2ww-error10",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids retention time calculation for an activated sludge plant in Saskatchewan. Aeration volume is 1100 m3 and MLSS is 2000 mg/L.",
+   "topicId": "srt-control",
+   "level": "class1",
+   "assumptions": "Fictional plant in Saskatchewan: aeration volume V = 1100 m3, MLSS = 2000 mg/L. Solids leaving in the waste activated sludge are 200 kg/d and solids leaving in the final effluent are 120 kg/d, both from plant records. Target unit: days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SRT = solids in aeration tank / solids leaving per day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids in tank = 1100 m3 * 2000 mg/L / 1000 = 2200 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solids leaving = 200 kg/d + 120 kg/d + 120 kg/d = 440 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. SRT = 2200 kg / 440 kg/d = 5 d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Solids leaving = 200 kg/d + 120 kg/d = 320 kg/d",
+   "explanation": "Line 3 counted the effluent solids twice. Solids leaving are 200 + 120 = 320 kg/d, counted once each, so SRT is 2200 / 320 = 6.875 d."
+  },
+  {
+   "id": "wp2ww-error100",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this secondary clarifier solids loading calculation for a plant in Manitoba. Influent flow is 7000 m3/d, return sludge flow is 3500 m3/d and MLSS is 2400 mg/L.",
+   "topicId": "clarifier-solids-loading",
+   "level": "class1",
+   "assumptions": "Fictional plant in Manitoba: Q = 7000 m3/d, return activated sludge flow = 3500 m3/d, MLSS = 2400 mg/L, rectangular clarifier 30 m long by 28 m wide. Target unit: kg/m2/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Solids loading = (Q + QR) * MLSS / 1000 / clarifier area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids applied = (7000 + 3500) m3/d * 2400 mg/L / 1000 = 25200 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Clarifier area = 30 m * 28 m = 840 m2"
+    },
+    {
+     "id": "line4",
+     "label": "4. Solids loading = 25200 kg/d / 840 m2 = 28 kg/m2/d"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Solids loading = 25200 kg/d / 840 m2 = 30 kg/m2/d",
+   "explanation": "Line 4 divided incorrectly. 25200 / 840 = 30 kg/m2/d, not 28 kg/m2/d."
+  },
+  {
+   "id": "wp2ww-error11",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids retention time calculation for an activated sludge plant in Manitoba. Aeration volume is 700 m3 and MLSS is 3000 mg/L.",
+   "topicId": "srt-control",
+   "level": "class1",
+   "assumptions": "Fictional plant in Manitoba: aeration volume V = 700 m3, MLSS = 3000 mg/L. Solids leaving in the waste activated sludge are 210 kg/d and solids leaving in the final effluent are 90 kg/d, both from plant records. Target unit: days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SRT = solids in aeration tank / solids leaving per day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids in tank = 700 m3 * 3000 mg/L / 1000 = 2100 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solids leaving = 210 kg/d + 90 kg/d = 300 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. SRT = 2100 kg / 300 kg/d = 6 d"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. SRT = 2100 kg / 300 kg/d = 7 d",
+   "explanation": "Line 4 divided incorrectly. 2100 / 300 = 7 d, not 6 d."
+  },
+  {
+   "id": "wp2ww-error12",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids retention time calculation for an activated sludge plant in British Columbia. Aeration volume is 1800 m3 and MLSS is 2000 mg/L.",
+   "topicId": "srt-control",
+   "level": "class1",
+   "assumptions": "Fictional plant in British Columbia: aeration volume V = 1800 m3, MLSS = 2000 mg/L. Solids leaving in the waste activated sludge are 300 kg/d and solids leaving in the final effluent are 60 kg/d, both from plant records. Target unit: days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SRT = solids in aeration tank / solids leaving per day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids in tank = 1800 m3 * 2000 mg/L / 1000 = 3600 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solids leaving = WAS solids = 300 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. SRT = 3600 kg / 300 kg/d = 12 d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Solids leaving = 300 kg/d + 60 kg/d = 360 kg/d",
+   "explanation": "Line 3 forgot the effluent solids. Solids also leave in the final effluent, so solids leaving are 300 + 60 = 360 kg/d and SRT is 3600 / 360 = 10 d."
+  },
+  {
+   "id": "wp2ww-error13",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids retention time calculation for an activated sludge plant in Alberta. Aeration volume is 500 m3 and MLSS is 3600 mg/L.",
+   "topicId": "srt-control",
+   "level": "class1",
+   "assumptions": "Fictional plant in Alberta: aeration volume V = 500 m3, MLSS = 3600 mg/L. Solids leaving in the waste activated sludge are 160 kg/d and solids leaving in the final effluent are 80 kg/d, both from plant records. Target unit: days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SRT = solids in aeration tank / solids leaving per day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids in tank = 500 m3 * 3600 mg/L / 1000 = 1800 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solids leaving = 160 kg/d + 80 kg/d + 80 kg/d = 320 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. SRT = 1800 kg / 320 kg/d = 5.625 d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Solids leaving = 160 kg/d + 80 kg/d = 240 kg/d",
+   "explanation": "Line 3 counted the effluent solids twice. Solids leaving are 160 + 80 = 240 kg/d, counted once each, so SRT is 1800 / 240 = 7.5 d."
+  },
+  {
+   "id": "wp2ww-error14",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids retention time calculation for an activated sludge plant in Saskatchewan. Aeration volume is 1300 m3 and MLSS is 2000 mg/L.",
+   "topicId": "srt-control",
+   "level": "class1",
+   "assumptions": "Fictional plant in Saskatchewan: aeration volume V = 1300 m3, MLSS = 2000 mg/L. Solids leaving in the waste activated sludge are 260 kg/d and solids leaving in the final effluent are 140 kg/d, both from plant records. Target unit: days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SRT = solids in aeration tank / solids leaving per day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids in tank = 1300 m3 * 2000 mg/L / 1000 = 2400 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solids leaving = 260 kg/d + 140 kg/d = 400 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. SRT = 2400 kg / 400 kg/d = 6 d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Solids in tank = 1300 m3 * 2000 mg/L / 1000 = 2600 kg",
+   "explanation": "Line 2 multiplied incorrectly. 1300 * 2000 / 1000 = 2600 kg, so SRT is 2600 / 400 = 6.5 d."
+  },
+  {
+   "id": "wp2ww-error15",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids retention time calculation for an activated sludge plant in Manitoba. Aeration volume is 1000 m3 and MLSS is 2600 mg/L.",
+   "topicId": "srt-control",
+   "level": "class1",
+   "assumptions": "Fictional plant in Manitoba: aeration volume V = 1000 m3, MLSS = 2600 mg/L. Solids leaving in the waste activated sludge are 325 kg/d and solids leaving in the final effluent are 195 kg/d, both from plant records. Target unit: days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SRT = solids in aeration tank / solids leaving per day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids in tank = 1000 m3 * 2600 mg/L / 1000 = 2600 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solids leaving = 325 kg/d + 195 kg/d = 520 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. SRT = 2600 kg / 520 kg/d = 4 d"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. SRT = 2600 kg / 520 kg/d = 5 d",
+   "explanation": "Line 4 divided incorrectly. 2600 / 520 = 5 d, not 4 d."
+  },
+  {
+   "id": "wp2ww-error16",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids retention time calculation for an activated sludge plant in British Columbia. Aeration volume is 1440 m3 and MLSS is 2500 mg/L.",
+   "topicId": "srt-control",
+   "level": "class1",
+   "assumptions": "Fictional plant in British Columbia: aeration volume V = 1440 m3, MLSS = 2500 mg/L. Solids leaving in the waste activated sludge are 300 kg/d and solids leaving in the final effluent are 150 kg/d, both from plant records. Target unit: days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SRT = solids in aeration tank / solids leaving per day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids in tank = 1440 m3 * 2500 mg/L / 1000 = 3600 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solids leaving = 300 kg/d + 150 kg/d + 150 kg/d = 600 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. SRT = 3600 kg / 600 kg/d = 6 d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Solids leaving = 300 kg/d + 150 kg/d = 450 kg/d",
+   "explanation": "Line 3 counted the effluent solids twice. Solids leaving are 300 + 150 = 450 kg/d, counted once each, so SRT is 3600 / 450 = 8 d."
+  },
+  {
+   "id": "wp2ww-error17",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids retention time calculation for an activated sludge plant in Alberta. Aeration volume is 2000 m3 and MLSS is 1800 mg/L.",
+   "topicId": "srt-control",
+   "level": "class1",
+   "assumptions": "Fictional plant in Alberta: aeration volume V = 2000 m3, MLSS = 1800 mg/L. Solids leaving in the waste activated sludge are 360 kg/d and solids leaving in the final effluent are 240 kg/d, both from plant records. Target unit: days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SRT = solids in aeration tank / solids leaving per day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids in tank = 2000 m3 * 1800 mg/L / 1000 = 3600 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solids leaving = WAS solids = 360 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. SRT = 3600 kg / 360 kg/d = 10 d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Solids leaving = 360 kg/d + 240 kg/d = 600 kg/d",
+   "explanation": "Line 3 forgot the effluent solids. Solids also leave in the final effluent, so solids leaving are 360 + 240 = 600 kg/d and SRT is 3600 / 600 = 6 d."
+  },
+  {
+   "id": "wp2ww-error18",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solids retention time calculation for an activated sludge plant in Saskatchewan. Aeration volume is 750 m3 and MLSS is 2800 mg/L.",
+   "topicId": "srt-control",
+   "level": "class1",
+   "assumptions": "Fictional plant in Saskatchewan: aeration volume V = 750 m3, MLSS = 2800 mg/L. Solids leaving in the waste activated sludge are 210 kg/d and solids leaving in the final effluent are 70 kg/d, both from plant records. Target unit: days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SRT = solids in aeration tank / solids leaving per day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids in tank = 750 m3 * 2800 mg/L / 1000 = 2100 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solids leaving = 210 kg/d + 70 kg/d = 280 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. SRT = 2100 kg / 280 kg/d = 7 d"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. SRT = 2100 kg / 280 kg/d = 7.5 d",
+   "explanation": "Line 4 divided incorrectly. 2100 / 280 = 7.5 d, not 7 d."
+  },
+  {
+   "id": "wp2ww-error19",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this food to microorganism ratio calculation for a plant in Saskatchewan. Flow is 4000 m3/d, influent BOD is 200 mg/L, aeration volume is 2000 m3 and MLVSS is 2000 mg/L.",
+   "topicId": "fm-ratio",
+   "level": "class1",
+   "assumptions": "Fictional plant in Saskatchewan: Q = 4000 m3/d, influent BOD = 200 mg/L, influent TSS = 260 mg/L, aeration volume V = 2000 m3, MLVSS = 2000 mg/L, MLSS = 2500 mg/L. F/M uses BOD load and MLVSS mass. Target: kg BOD per kg MLVSS per day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. F/M = BOD load / MLVSS mass in aeration tank"
+    },
+    {
+     "id": "line2",
+     "label": "2. BOD load = 4000 m3/d * 200 mg/L / 1000 = 800 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. MLVSS mass = 2000 m3 * 2000 mg/L / 1000 = 4000 kg"
+    },
+    {
+     "id": "line4",
+     "label": "4. F/M = 4000 kg / 800 kg/d = 5 per day"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. F/M = 800 kg/d / 4000 kg = 0.2 per day",
+   "explanation": "Line 4 inverted the division. F/M is BOD load divided by MLVSS mass, 800 / 4000 = 0.2 per day."
+  },
+  {
+   "id": "wp2ww-error20",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this food to microorganism ratio calculation for a plant in Manitoba. Flow is 5000 m3/d, influent BOD is 180 mg/L, aeration volume is 1800 m3 and MLVSS is 2500 mg/L.",
+   "topicId": "fm-ratio",
+   "level": "class1",
+   "assumptions": "Fictional plant in Manitoba: Q = 5000 m3/d, influent BOD = 180 mg/L, influent TSS = 270 mg/L, aeration volume V = 1800 m3, MLVSS = 2500 mg/L, MLSS = 3000 mg/L. F/M uses BOD load and MLVSS mass. Target: kg BOD per kg MLVSS per day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. F/M = BOD load / MLVSS mass in aeration tank"
+    },
+    {
+     "id": "line2",
+     "label": "2. BOD load = 5000 m3/d * 270 mg/L / 1000 = 1350 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. MLVSS mass = 1800 m3 * 2500 mg/L / 1000 = 4500 kg"
+    },
+    {
+     "id": "line4",
+     "label": "4. F/M = 1350 kg/d / 4500 kg = 0.3 per day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. BOD load = 5000 m3/d * 180 mg/L / 1000 = 900 kg/d",
+   "explanation": "Line 2 used the influent TSS of 270 mg/L instead of the BOD of 180 mg/L. The BOD load is 5000 * 180 / 1000 = 900 kg/d, so F/M is 0.2 per day."
+  },
+  {
+   "id": "wp2ww-error21",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this food to microorganism ratio calculation for a plant in British Columbia. Flow is 3600 m3/d, influent BOD is 250 mg/L, aeration volume is 1500 m3 and MLVSS is 2000 mg/L.",
+   "topicId": "fm-ratio",
+   "level": "class1",
+   "assumptions": "Fictional plant in British Columbia: Q = 3600 m3/d, influent BOD = 250 mg/L, influent TSS = 310 mg/L, aeration volume V = 1500 m3, MLVSS = 2000 mg/L, MLSS = 3000 mg/L. F/M uses BOD load and MLVSS mass. Target: kg BOD per kg MLVSS per day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. F/M = BOD load / MLVSS mass in aeration tank"
+    },
+    {
+     "id": "line2",
+     "label": "2. BOD load = 3600 m3/d * 250 mg/L / 1000 = 900 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. MLVSS mass = 1500 m3 * 3000 mg/L / 1000 = 4500 kg"
+    },
+    {
+     "id": "line4",
+     "label": "4. F/M = 900 kg/d / 4500 kg = 0.2 per day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. MLVSS mass = 1500 m3 * 2000 mg/L / 1000 = 3000 kg",
+   "explanation": "Line 3 used MLSS of 3000 mg/L instead of MLVSS of 2000 mg/L. The MLVSS mass is 1500 * 2000 / 1000 = 3000 kg, so F/M is 0.3 per day."
+  },
+  {
+   "id": "wp2ww-error22",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this food to microorganism ratio calculation for a plant in Alberta. Flow is 6000 m3/d, influent BOD is 150 mg/L, aeration volume is 3000 m3 and MLVSS is 2000 mg/L.",
+   "topicId": "fm-ratio",
+   "level": "class1",
+   "assumptions": "Fictional plant in Alberta: Q = 6000 m3/d, influent BOD = 150 mg/L, influent TSS = 210 mg/L, aeration volume V = 3000 m3, MLVSS = 2000 mg/L, MLSS = 2600 mg/L. F/M uses BOD load and MLVSS mass. Target: kg BOD per kg MLVSS per day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. F/M = BOD load / MLVSS mass in aeration tank"
+    },
+    {
+     "id": "line2",
+     "label": "2. BOD load = 6000 m3/d * 150 mg/L / 1000 = 900 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. MLVSS mass = 3000 m3 * 2000 mg/L / 1000 = 6000 kg"
+    },
+    {
+     "id": "line4",
+     "label": "4. F/M = 900 kg/d / 6000 kg = 0.2 per day"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. F/M = 900 kg/d / 6000 kg = 0.15 per day",
+   "explanation": "Line 4 divided incorrectly. 900 / 6000 = 0.15 per day, not 0.2 per day."
+  },
+  {
+   "id": "wp2ww-error23",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this food to microorganism ratio calculation for a plant in Saskatchewan. Flow is 2500 m3/d, influent BOD is 240 mg/L, aeration volume is 1200 m3 and MLVSS is 2500 mg/L.",
+   "topicId": "fm-ratio",
+   "level": "class1",
+   "assumptions": "Fictional plant in Saskatchewan: Q = 2500 m3/d, influent BOD = 240 mg/L, influent TSS = 300 mg/L, aeration volume V = 1200 m3, MLVSS = 2500 mg/L, MLSS = 3000 mg/L. F/M uses BOD load and MLVSS mass. Target: kg BOD per kg MLVSS per day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. F/M = BOD load / MLVSS mass in aeration tank"
+    },
+    {
+     "id": "line2",
+     "label": "2. BOD load = 2500 m3/d * 300 mg/L / 1000 = 750 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. MLVSS mass = 1200 m3 * 2500 mg/L / 1000 = 3000 kg"
+    },
+    {
+     "id": "line4",
+     "label": "4. F/M = 750 kg/d / 3000 kg = 0.25 per day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. BOD load = 2500 m3/d * 240 mg/L / 1000 = 600 kg/d",
+   "explanation": "Line 2 used the influent TSS of 300 mg/L instead of the BOD of 240 mg/L. The BOD load is 2500 * 240 / 1000 = 600 kg/d, so F/M is 0.2 per day."
+  },
+  {
+   "id": "wp2ww-error24",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this food to microorganism ratio calculation for a plant in Manitoba. Flow is 9600 m3/d, influent BOD is 120 mg/L, aeration volume is 2400 m3 and MLVSS is 2000 mg/L.",
+   "topicId": "fm-ratio",
+   "level": "class1",
+   "assumptions": "Fictional plant in Manitoba: Q = 9600 m3/d, influent BOD = 120 mg/L, influent TSS = 180 mg/L, aeration volume V = 2400 m3, MLVSS = 2000 mg/L, MLSS = 2400 mg/L. F/M uses BOD load and MLVSS mass. Target: kg BOD per kg MLVSS per day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. F/M = BOD load / MLVSS mass in aeration tank"
+    },
+    {
+     "id": "line2",
+     "label": "2. BOD load = 9600 m3/d * 120 mg/L / 1000 = 1152 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. MLVSS mass = 2400 m3 * 2400 mg/L / 1000 = 5760 kg"
+    },
+    {
+     "id": "line4",
+     "label": "4. F/M = 1152 kg/d / 5760 kg = 0.2 per day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. MLVSS mass = 2400 m3 * 2000 mg/L / 1000 = 4800 kg",
+   "explanation": "Line 3 used MLSS of 2400 mg/L instead of MLVSS of 2000 mg/L. The MLVSS mass is 2400 * 2000 / 1000 = 4800 kg, so F/M is 0.24 per day."
+  },
+  {
+   "id": "wp2ww-error25",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this food to microorganism ratio calculation for a plant in British Columbia. Flow is 4500 m3/d, influent BOD is 200 mg/L, aeration volume is 1500 m3 and MLVSS is 3000 mg/L.",
+   "topicId": "fm-ratio",
+   "level": "class1",
+   "assumptions": "Fictional plant in British Columbia: Q = 4500 m3/d, influent BOD = 200 mg/L, influent TSS = 260 mg/L, aeration volume V = 1500 m3, MLVSS = 3000 mg/L, MLSS = 3600 mg/L. F/M uses BOD load and MLVSS mass. Target: kg BOD per kg MLVSS per day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. F/M = BOD load / MLVSS mass in aeration tank"
+    },
+    {
+     "id": "line2",
+     "label": "2. BOD load = 4500 m3/d * 200 mg/L / 1000 = 900 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. MLVSS mass = 1500 m3 * 3000 mg/L / 1000 = 4500 kg"
+    },
+    {
+     "id": "line4",
+     "label": "4. F/M = 4500 kg / 900 kg/d = 5 per day"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. F/M = 900 kg/d / 4500 kg = 0.2 per day",
+   "explanation": "Line 4 inverted the division. F/M is BOD load divided by MLVSS mass, 900 / 4500 = 0.2 per day."
+  },
+  {
+   "id": "wp2ww-error26",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this food to microorganism ratio calculation for a plant in Alberta. Flow is 3200 m3/d, influent BOD is 250 mg/L, aeration volume is 1600 m3 and MLVSS is 2000 mg/L.",
+   "topicId": "fm-ratio",
+   "level": "class1",
+   "assumptions": "Fictional plant in Alberta: Q = 3200 m3/d, influent BOD = 250 mg/L, influent TSS = 320 mg/L, aeration volume V = 1600 m3, MLVSS = 2000 mg/L, MLSS = 2500 mg/L. F/M uses BOD load and MLVSS mass. Target: kg BOD per kg MLVSS per day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. F/M = BOD load / MLVSS mass in aeration tank"
+    },
+    {
+     "id": "line2",
+     "label": "2. BOD load = 3200 m3/d * 250 mg/L / 1000 = 880 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. MLVSS mass = 1600 m3 * 2000 mg/L / 1000 = 3200 kg"
+    },
+    {
+     "id": "line4",
+     "label": "4. F/M = 880 kg/d / 3200 kg = 0.275 per day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. BOD load = 3200 m3/d * 250 mg/L / 1000 = 800 kg/d",
+   "explanation": "Line 2 multiplied incorrectly. 3200 * 250 / 1000 = 800 kg/d, so F/M is 800 / 3200 = 0.25 per day."
+  },
+  {
+   "id": "wp2ww-error27",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this food to microorganism ratio calculation for a plant in Saskatchewan. Flow is 7000 m3/d, influent BOD is 160 mg/L, aeration volume is 2800 m3 and MLVSS is 2000 mg/L.",
+   "topicId": "fm-ratio",
+   "level": "class1",
+   "assumptions": "Fictional plant in Saskatchewan: Q = 7000 m3/d, influent BOD = 160 mg/L, influent TSS = 220 mg/L, aeration volume V = 2800 m3, MLVSS = 2000 mg/L, MLSS = 2500 mg/L. F/M uses BOD load and MLVSS mass. Target: kg BOD per kg MLVSS per day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. F/M = BOD load / MLVSS mass in aeration tank"
+    },
+    {
+     "id": "line2",
+     "label": "2. BOD load = 7000 m3/d * 160 mg/L / 1000 = 1120 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. MLVSS mass = 2800 m3 * 2500 mg/L / 1000 = 7000 kg"
+    },
+    {
+     "id": "line4",
+     "label": "4. F/M = 1120 kg/d / 7000 kg = 0.16 per day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. MLVSS mass = 2800 m3 * 2000 mg/L / 1000 = 5600 kg",
+   "explanation": "Line 3 used MLSS of 2500 mg/L instead of MLVSS of 2000 mg/L. The MLVSS mass is 2800 * 2000 / 1000 = 5600 kg, so F/M is 0.2 per day."
+  },
+  {
+   "id": "wp2ww-error28",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this food to microorganism ratio calculation for a plant in Manitoba. Flow is 2000 m3/d, influent BOD is 300 mg/L, aeration volume is 1000 m3 and MLVSS is 2400 mg/L.",
+   "topicId": "fm-ratio",
+   "level": "class1",
+   "assumptions": "Fictional plant in Manitoba: Q = 2000 m3/d, influent BOD = 300 mg/L, influent TSS = 360 mg/L, aeration volume V = 1000 m3, MLVSS = 2400 mg/L, MLSS = 3000 mg/L. F/M uses BOD load and MLVSS mass. Target: kg BOD per kg MLVSS per day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. F/M = BOD load / MLVSS mass in aeration tank"
+    },
+    {
+     "id": "line2",
+     "label": "2. BOD load = 2000 m3/d * 300 mg/L / 1000 = 600 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. MLVSS mass = 1000 m3 * 2400 mg/L / 1000 = 2400 kg"
+    },
+    {
+     "id": "line4",
+     "label": "4. F/M = 600 kg/d / 2400 kg = 0.3 per day"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. F/M = 600 kg/d / 2400 kg = 0.25 per day",
+   "explanation": "Line 4 divided incorrectly. 600 / 2400 = 0.25 per day, not 0.3 per day."
+  },
+  {
+   "id": "wp2ww-error29",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this food to microorganism ratio calculation for a plant in British Columbia. Flow is 5500 m3/d, influent BOD is 200 mg/L, aeration volume is 2200 m3 and MLVSS is 2500 mg/L.",
+   "topicId": "fm-ratio",
+   "level": "class1",
+   "assumptions": "Fictional plant in British Columbia: Q = 5500 m3/d, influent BOD = 200 mg/L, influent TSS = 160 mg/L, aeration volume V = 2200 m3, MLVSS = 2500 mg/L, MLSS = 3000 mg/L. F/M uses BOD load and MLVSS mass. Target: kg BOD per kg MLVSS per day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. F/M = BOD load / MLVSS mass in aeration tank"
+    },
+    {
+     "id": "line2",
+     "label": "2. BOD load = 5500 m3/d * 160 mg/L / 1000 = 880 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. MLVSS mass = 2200 m3 * 2500 mg/L / 1000 = 5500 kg"
+    },
+    {
+     "id": "line4",
+     "label": "4. F/M = 880 kg/d / 5500 kg = 0.16 per day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. BOD load = 5500 m3/d * 200 mg/L / 1000 = 1100 kg/d",
+   "explanation": "Line 2 used the influent TSS of 160 mg/L instead of the BOD of 200 mg/L. The BOD load is 5500 * 200 / 1000 = 1100 kg/d, so F/M is 0.2 per day."
+  },
+  {
+   "id": "wp2ww-error30",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this food to microorganism ratio calculation for a plant in Alberta. Flow is 3800 m3/d, influent BOD is 200 mg/L, aeration volume is 1900 m3 and MLVSS is 2000 mg/L.",
+   "topicId": "fm-ratio",
+   "level": "class1",
+   "assumptions": "Fictional plant in Alberta: Q = 3800 m3/d, influent BOD = 200 mg/L, influent TSS = 280 mg/L, aeration volume V = 1900 m3, MLVSS = 2000 mg/L, MLSS = 2500 mg/L. F/M uses BOD load and MLVSS mass. Target: kg BOD per kg MLVSS per day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. F/M = BOD load / MLVSS mass in aeration tank"
+    },
+    {
+     "id": "line2",
+     "label": "2. BOD load = 3800 m3/d * 200 mg/L / 1000 = 760 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. MLVSS mass = 1900 m3 * 2000 mg/L / 1000 = 4000 kg"
+    },
+    {
+     "id": "line4",
+     "label": "4. F/M = 760 kg/d / 4000 kg = 0.19 per day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. MLVSS mass = 1900 m3 * 2000 mg/L / 1000 = 3800 kg",
+   "explanation": "Line 3 multiplied incorrectly. 1900 * 2000 / 1000 = 3800 kg, so F/M is 760 / 3800 = 0.2 per day."
+  },
+  {
+   "id": "wp2ww-error31",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this food to microorganism ratio calculation for a plant in Saskatchewan. Flow is 6400 m3/d, influent BOD is 175 mg/L, aeration volume is 3200 m3 and MLVSS is 1750 mg/L.",
+   "topicId": "fm-ratio",
+   "level": "class1",
+   "assumptions": "Fictional plant in Saskatchewan: Q = 6400 m3/d, influent BOD = 175 mg/L, influent TSS = 240 mg/L, aeration volume V = 3200 m3, MLVSS = 1750 mg/L, MLSS = 2200 mg/L. F/M uses BOD load and MLVSS mass. Target: kg BOD per kg MLVSS per day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. F/M = BOD load / MLVSS mass in aeration tank"
+    },
+    {
+     "id": "line2",
+     "label": "2. BOD load = 6400 m3/d * 175 mg/L / 1000 = 1120 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. MLVSS mass = 3200 m3 * 1750 mg/L / 1000 = 5600 kg"
+    },
+    {
+     "id": "line4",
+     "label": "4. F/M = 5600 kg / 1120 kg/d = 5 per day"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. F/M = 1120 kg/d / 5600 kg = 0.2 per day",
+   "explanation": "Line 4 inverted the division. F/M is BOD load divided by MLVSS mass, 1120 / 5600 = 0.2 per day."
+  },
+  {
+   "id": "wp2ww-error32",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this food to microorganism ratio calculation for a plant in Manitoba. Flow is 2800 m3/d, influent BOD is 250 mg/L, aeration volume is 1400 m3 and MLVSS is 2500 mg/L.",
+   "topicId": "fm-ratio",
+   "level": "class1",
+   "assumptions": "Fictional plant in Manitoba: Q = 2800 m3/d, influent BOD = 250 mg/L, influent TSS = 330 mg/L, aeration volume V = 1400 m3, MLVSS = 2500 mg/L, MLSS = 3000 mg/L. F/M uses BOD load and MLVSS mass. Target: kg BOD per kg MLVSS per day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. F/M = BOD load / MLVSS mass in aeration tank"
+    },
+    {
+     "id": "line2",
+     "label": "2. BOD load = 2800 m3/d * 250 mg/L / 1000 = 840 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. MLVSS mass = 1400 m3 * 2500 mg/L / 1000 = 3500 kg"
+    },
+    {
+     "id": "line4",
+     "label": "4. F/M = 840 kg/d / 3500 kg = 0.24 per day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. BOD load = 2800 m3/d * 250 mg/L / 1000 = 700 kg/d",
+   "explanation": "Line 2 multiplied incorrectly. 2800 * 250 / 1000 = 700 kg/d, so F/M is 700 / 3500 = 0.2 per day."
+  },
+  {
+   "id": "wp2ww-error33",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this food to microorganism ratio calculation for a plant in British Columbia. Flow is 4200 m3/d, influent BOD is 200 mg/L, aeration volume is 2000 m3 and MLVSS is 2100 mg/L.",
+   "topicId": "fm-ratio",
+   "level": "class1",
+   "assumptions": "Fictional plant in British Columbia: Q = 4200 m3/d, influent BOD = 200 mg/L, influent TSS = 290 mg/L, aeration volume V = 2000 m3, MLVSS = 2100 mg/L, MLSS = 2625 mg/L. F/M uses BOD load and MLVSS mass. Target: kg BOD per kg MLVSS per day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. F/M = BOD load / MLVSS mass in aeration tank"
+    },
+    {
+     "id": "line2",
+     "label": "2. BOD load = 4200 m3/d * 200 mg/L / 1000 = 840 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. MLVSS mass = 2000 m3 * 2625 mg/L / 1000 = 5250 kg"
+    },
+    {
+     "id": "line4",
+     "label": "4. F/M = 840 kg/d / 5250 kg = 0.16 per day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. MLVSS mass = 2000 m3 * 2100 mg/L / 1000 = 4200 kg",
+   "explanation": "Line 3 used MLSS of 2625 mg/L instead of MLVSS of 2100 mg/L. The MLVSS mass is 2000 * 2100 / 1000 = 4200 kg, so F/M is 0.2 per day."
+  },
+  {
+   "id": "wp2ww-error34",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this food to microorganism ratio calculation for a plant in Alberta. Flow is 10000 m3/d, influent BOD is 140 mg/L, aeration volume is 3500 m3 and MLVSS is 2000 mg/L.",
+   "topicId": "fm-ratio",
+   "level": "class1",
+   "assumptions": "Fictional plant in Alberta: Q = 10000 m3/d, influent BOD = 140 mg/L, influent TSS = 200 mg/L, aeration volume V = 3500 m3, MLVSS = 2000 mg/L, MLSS = 2500 mg/L. F/M uses BOD load and MLVSS mass. Target: kg BOD per kg MLVSS per day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. F/M = BOD load / MLVSS mass in aeration tank"
+    },
+    {
+     "id": "line2",
+     "label": "2. BOD load = 10000 m3/d * 140 mg/L / 1000 = 1400 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. MLVSS mass = 3500 m3 * 2000 mg/L / 1000 = 7000 kg"
+    },
+    {
+     "id": "line4",
+     "label": "4. F/M = 1400 kg/d / 7000 kg = 0.25 per day"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. F/M = 1400 kg/d / 7000 kg = 0.2 per day",
+   "explanation": "Line 4 divided incorrectly. 1400 / 7000 = 0.2 per day, not 0.25 per day."
+  },
+  {
+   "id": "wp2ww-error35",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this volatile solids reduction calculation for an anaerobic digester in Manitoba. Volatile solids in are 800 kg/d and out are 320 kg/d.",
+   "topicId": "vs-reduction",
+   "level": "class1",
+   "assumptions": "Fictional digester in Manitoba: volatile solids fed = 800 kg/d, volatile solids out in digested sludge = 320 kg/d. Target: percent volatile solids reduction.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent VS reduction = (VS in - VS out) / VS in * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS destroyed = 800 kg/d - 320 kg/d = 480 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent VS reduction = 480 / 320 * 100 = 150 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent VS reduction = 480 / 800 * 100 = 60 percent",
+   "explanation": "Line 3 divided by the volatile solids out instead of the volatile solids in. Reduction is based on the feed, 480 / 800 * 100 = 60 percent."
+  },
+  {
+   "id": "wp2ww-error36",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this volatile solids reduction calculation for an anaerobic digester in British Columbia. Volatile solids in are 1000 kg/d and out are 400 kg/d.",
+   "topicId": "vs-reduction",
+   "level": "class1",
+   "assumptions": "Fictional digester in British Columbia: volatile solids fed = 1000 kg/d, volatile solids out in digested sludge = 400 kg/d. Target: percent volatile solids reduction.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent VS reduction = (VS in - VS out) / VS in * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS destroyed = 1000 kg/d + 400 kg/d = 1400 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent VS reduction = 1400 / 1000 * 100 = 140 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. VS destroyed = 1000 kg/d - 400 kg/d = 600 kg/d",
+   "explanation": "Line 2 added instead of subtracting. VS destroyed is 1000 - 400 = 600 kg/d, so reduction is 60 percent."
+  },
+  {
+   "id": "wp2ww-error37",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this volatile solids reduction calculation for an anaerobic digester in Alberta. Volatile solids in are 750 kg/d and out are 300 kg/d.",
+   "topicId": "vs-reduction",
+   "level": "class1",
+   "assumptions": "Fictional digester in Alberta: volatile solids fed = 750 kg/d, volatile solids out in digested sludge = 300 kg/d. Target: percent volatile solids reduction.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent VS reduction = (VS in - VS out) / VS in * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS destroyed = 750 kg/d - 300 kg/d = 450 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent VS reduction = 450 / 750 = 0.6 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent VS reduction = 450 / 750 * 100 = 60 percent",
+   "explanation": "Line 3 forgot to multiply by 100. 450 / 750 = 0.6, which is 60 percent."
+  },
+  {
+   "id": "wp2ww-error38",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this volatile solids reduction calculation for an anaerobic digester in Saskatchewan. Volatile solids in are 1200 kg/d and out are 480 kg/d.",
+   "topicId": "vs-reduction",
+   "level": "class1",
+   "assumptions": "Fictional digester in Saskatchewan: volatile solids fed = 1200 kg/d, volatile solids out in digested sludge = 480 kg/d. Target: percent volatile solids reduction.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent VS reduction = (VS in - VS out) / VS in * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS destroyed = 1200 kg/d - 480 kg/d = 720 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent VS reduction = 720 / 480 * 100 = 150 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent VS reduction = 720 / 1200 * 100 = 60 percent",
+   "explanation": "Line 3 divided by the volatile solids out instead of the volatile solids in. Reduction is based on the feed, 720 / 1200 * 100 = 60 percent."
+  },
+  {
+   "id": "wp2ww-error39",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this volatile solids reduction calculation for an anaerobic digester in Manitoba. Volatile solids in are 1000 kg/d and out are 600 kg/d.",
+   "topicId": "vs-reduction",
+   "level": "class1",
+   "assumptions": "Fictional digester in Manitoba: volatile solids fed = 1000 kg/d, volatile solids out in digested sludge = 600 kg/d. Target: percent volatile solids reduction.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent VS reduction = (VS in - VS out) / VS in * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS destroyed = 1000 kg/d - 600 kg/d = 500 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent VS reduction = 500 / 1000 * 100 = 50 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. VS destroyed = 1000 kg/d - 600 kg/d = 400 kg/d",
+   "explanation": "Line 2 subtracted incorrectly. 1000 - 600 = 400 kg/d, so reduction is 400 / 1000 * 100 = 40 percent."
+  },
+  {
+   "id": "wp2ww-error40",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this volatile solids reduction calculation for an anaerobic digester in British Columbia. Volatile solids in are 600 kg/d and out are 240 kg/d.",
+   "topicId": "vs-reduction",
+   "level": "class1",
+   "assumptions": "Fictional digester in British Columbia: volatile solids fed = 600 kg/d, volatile solids out in digested sludge = 240 kg/d. Target: percent volatile solids reduction.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent VS reduction = (VS in - VS out) / VS in * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS destroyed = 600 kg/d - 240 kg/d = 360 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent VS reduction = 360 / 240 * 100 = 150 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent VS reduction = 360 / 600 * 100 = 60 percent",
+   "explanation": "Line 3 divided by the volatile solids out instead of the volatile solids in. Reduction is based on the feed, 360 / 600 * 100 = 60 percent."
+  },
+  {
+   "id": "wp2ww-error41",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this volatile solids reduction calculation for an anaerobic digester in Alberta. Volatile solids in are 1500 kg/d and out are 900 kg/d.",
+   "topicId": "vs-reduction",
+   "level": "class1",
+   "assumptions": "Fictional digester in Alberta: volatile solids fed = 1500 kg/d, volatile solids out in digested sludge = 900 kg/d. Target: percent volatile solids reduction.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent VS reduction = (VS in - VS out) / VS in * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS destroyed = 1500 kg/d + 900 kg/d = 2400 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent VS reduction = 2400 / 1500 * 100 = 160 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. VS destroyed = 1500 kg/d - 900 kg/d = 600 kg/d",
+   "explanation": "Line 2 added instead of subtracting. VS destroyed is 1500 - 900 = 600 kg/d, so reduction is 40 percent."
+  },
+  {
+   "id": "wp2ww-error42",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this volatile solids reduction calculation for an anaerobic digester in Saskatchewan. Volatile solids in are 2000 kg/d and out are 800 kg/d.",
+   "topicId": "vs-reduction",
+   "level": "class1",
+   "assumptions": "Fictional digester in Saskatchewan: volatile solids fed = 2000 kg/d, volatile solids out in digested sludge = 800 kg/d. Target: percent volatile solids reduction.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent VS reduction = (VS in - VS out) / VS in * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS destroyed = 2000 kg/d - 800 kg/d = 1200 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent VS reduction = 1200 / 2000 = 0.6 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent VS reduction = 1200 / 2000 * 100 = 60 percent",
+   "explanation": "Line 3 forgot to multiply by 100. 1200 / 2000 = 0.6, which is 60 percent."
+  },
+  {
+   "id": "wp2ww-error43",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this digester volatile solids loading calculation for a plant in British Columbia. The digester volume is 800 m3 and volatile solids fed are 2400 kg/d.",
+   "topicId": "digester-vs-loading",
+   "level": "class1",
+   "assumptions": "Fictional plant in British Columbia: volatile solids fed = 2400 kg/d, total solids fed = 3200 kg/d, digester volume = 800 m3. Target unit: kg VS per m3 per day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. VS loading = VS fed / digester volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS loading = 3200 kg/d / 800 m3 = 4 kg/m3/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. VS loading = 2400 kg/d / 800 m3 = 3 kg/m3/d",
+   "explanation": "Line 2 used total solids of 3200 kg/d instead of volatile solids of 2400 kg/d. Loading is 2400 / 800 = 3 kg/m3/d."
+  },
+  {
+   "id": "wp2ww-error44",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this digester volatile solids loading calculation for a plant in Alberta. The digester volume is 600 m3 and volatile solids fed are 1800 kg/d.",
+   "topicId": "digester-vs-loading",
+   "level": "class1",
+   "assumptions": "Fictional plant in Alberta: volatile solids fed = 1800 kg/d, total solids fed = 2600 kg/d, digester volume = 600 m3. Target unit: kg VS per m3 per day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. VS loading = VS fed / digester volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS loading = 1800 kg/d / 600 m3 = 2.5 kg/m3/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. VS loading = 1800 kg/d / 600 m3 = 3 kg/m3/d",
+   "explanation": "Line 2 divided incorrectly. 1800 / 600 = 3 kg/m3/d, not 2.5 kg/m3/d."
+  },
+  {
+   "id": "wp2ww-error45",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this digester volatile solids loading calculation for a plant in Saskatchewan. The digester volume is 1000 m3 and volatile solids fed are 3000 kg/d.",
+   "topicId": "digester-vs-loading",
+   "level": "class1",
+   "assumptions": "Fictional plant in Saskatchewan: volatile solids fed = 3000 kg/d, total solids fed = 3900 kg/d, digester volume = 1000 m3. Target unit: kg VS per m3 per day. The plant has two digesters of 500 m3 each, both in service.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. VS loading = VS fed / digester volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS loading = 3000 kg/d / 500 m3 = 6 kg/m3/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. VS loading = 3000 kg/d / 1000 m3 = 3 kg/m3/d",
+   "explanation": "Line 2 used the volume of only one digester. Both digesters are in service, so the volume is 1000 m3 and loading is 3000 / 1000 = 3 kg/m3/d."
+  },
+  {
+   "id": "wp2ww-error46",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this digester volatile solids loading calculation for a plant in Manitoba. The digester volume is 750 m3 and volatile solids fed are 1500 kg/d.",
+   "topicId": "digester-vs-loading",
+   "level": "class1",
+   "assumptions": "Fictional plant in Manitoba: volatile solids fed = 1500 kg/d, total solids fed = 2250 kg/d, digester volume = 750 m3. Target unit: kg VS per m3 per day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. VS loading = VS fed / digester volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS loading = 2250 kg/d / 750 m3 = 3 kg/m3/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. VS loading = 1500 kg/d / 750 m3 = 2 kg/m3/d",
+   "explanation": "Line 2 used total solids of 2250 kg/d instead of volatile solids of 1500 kg/d. Loading is 1500 / 750 = 2 kg/m3/d."
+  },
+  {
+   "id": "wp2ww-error47",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this digester volatile solids loading calculation for a plant in British Columbia. The digester volume is 700 m3 and volatile solids fed are 2800 kg/d.",
+   "topicId": "digester-vs-loading",
+   "level": "class1",
+   "assumptions": "Fictional plant in British Columbia: volatile solids fed = 2800 kg/d, total solids fed = 3500 kg/d, digester volume = 700 m3. Target unit: kg VS per m3 per day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. VS loading = VS fed / digester volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS loading = 2800 kg/d / 700 m3 = 3.5 kg/m3/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. VS loading = 2800 kg/d / 700 m3 = 4 kg/m3/d",
+   "explanation": "Line 2 divided incorrectly. 2800 / 700 = 4 kg/m3/d, not 3.5 kg/m3/d."
+  },
+  {
+   "id": "wp2ww-error48",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this digester volatile solids loading calculation for a plant in Alberta. The digester volume is 800 m3 and volatile solids fed are 2000 kg/d.",
+   "topicId": "digester-vs-loading",
+   "level": "class1",
+   "assumptions": "Fictional plant in Alberta: volatile solids fed = 2000 kg/d, total solids fed = 2400 kg/d, digester volume = 800 m3. Target unit: kg VS per m3 per day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. VS loading = VS fed / digester volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS loading = 2400 kg/d / 800 m3 = 3 kg/m3/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. VS loading = 2000 kg/d / 800 m3 = 2.5 kg/m3/d",
+   "explanation": "Line 2 used total solids of 2400 kg/d instead of volatile solids of 2000 kg/d. Loading is 2000 / 800 = 2.5 kg/m3/d."
+  },
+  {
+   "id": "wp2ww-error49",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this digester gas production calculation for a plant in Alberta. The given gas factor is 0.9 m3 per kg of volatile solids destroyed.",
+   "topicId": "gas-production",
+   "level": "class1",
+   "assumptions": "Fictional digester in Alberta: volatile solids in = 1400 kg/d, volatile solids out = 800 kg/d, total solids destroyed = 800 kg/d, gas factor = 0.9 m3/kg VS destroyed. Target unit: m3/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Gas = VS destroyed * gas factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS destroyed = 1400 kg/d - 800 kg/d = 600 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Gas = 800 kg/d * 0.9 m3/kg = 720 m3/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Gas = 600 kg/d * 0.9 m3/kg = 540 m3/d",
+   "explanation": "Line 3 used total solids destroyed of 800 kg/d instead of volatile solids destroyed of 600 kg/d. Gas is 600 * 0.9 = 540 m3/d."
+  },
+  {
+   "id": "wp2ww-error50",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this digester gas production calculation for a plant in Saskatchewan. The given gas factor is 0.85 m3 per kg of volatile solids destroyed.",
+   "topicId": "gas-production",
+   "level": "class1",
+   "assumptions": "Fictional digester in Saskatchewan: volatile solids in = 1600 kg/d, volatile solids out = 800 kg/d, total solids destroyed = 1100 kg/d, gas factor = 0.85 m3/kg VS destroyed. Target unit: m3/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Gas = VS destroyed * gas factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS destroyed = 1600 kg/d - 800 kg/d = 800 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Gas = 800 kg/d * 0.85 m3/kg = 640 m3/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Gas = 800 kg/d * 0.85 m3/kg = 680 m3/d",
+   "explanation": "Line 3 multiplied incorrectly. 800 * 0.85 = 680 m3/d, not 640 m3/d."
+  },
+  {
+   "id": "wp2ww-error51",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this digester gas production calculation for a plant in Manitoba. The given gas factor is 0.8 m3 per kg of volatile solids destroyed.",
+   "topicId": "gas-production",
+   "level": "class1",
+   "assumptions": "Fictional digester in Manitoba: volatile solids in = 900 kg/d, volatile solids out = 400 kg/d, total solids destroyed = 650 kg/d, gas factor = 0.8 m3/kg VS destroyed. Target unit: m3/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Gas = VS destroyed * gas factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS destroyed = 900 kg/d - 400 kg/d = 500 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Gas = 500 kg/d / 0.8 m3/kg = 625 m3/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Gas = 500 kg/d * 0.8 m3/kg = 400 m3/d",
+   "explanation": "Line 3 divided by the gas factor instead of multiplying. Gas is 500 * 0.8 = 400 m3/d."
+  },
+  {
+   "id": "wp2ww-error52",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this digester gas production calculation for a plant in British Columbia. The given gas factor is 0.75 m3 per kg of volatile solids destroyed.",
+   "topicId": "gas-production",
+   "level": "class1",
+   "assumptions": "Fictional digester in British Columbia: volatile solids in = 1800 kg/d, volatile solids out = 800 kg/d, total solids destroyed = 1300 kg/d, gas factor = 0.75 m3/kg VS destroyed. Target unit: m3/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Gas = VS destroyed * gas factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS destroyed = 1800 kg/d - 800 kg/d = 1000 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Gas = 1000 kg/d * 0.5 m3/kg = 500 m3/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Gas = 1000 kg/d * 0.75 m3/kg = 750 m3/d",
+   "explanation": "Line 3 used a gas factor of 0.5 instead of the given factor of 0.75 m3/kg. Gas is 1000 * 0.75 = 750 m3/d."
+  },
+  {
+   "id": "wp2ww-error53",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this digester gas production calculation for a plant in Alberta. The given gas factor is 0.9 m3 per kg of volatile solids destroyed.",
+   "topicId": "gas-production",
+   "level": "class1",
+   "assumptions": "Fictional digester in Alberta: volatile solids in = 900 kg/d, volatile solids out = 450 kg/d, total solids destroyed = 600 kg/d, gas factor = 0.9 m3/kg VS destroyed. Target unit: m3/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Gas = VS destroyed * gas factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS destroyed = 900 kg/d - 450 kg/d = 500 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Gas = 500 kg/d * 0.9 m3/kg = 450 m3/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. VS destroyed = 900 kg/d - 450 kg/d = 450 kg/d",
+   "explanation": "Line 2 subtracted incorrectly. 900 - 450 = 450 kg/d, so gas is 450 * 0.9 = 405 m3/d."
+  },
+  {
+   "id": "wp2ww-error54",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this digester gas production calculation for a plant in Saskatchewan. The given gas factor is 0.8 m3 per kg of volatile solids destroyed.",
+   "topicId": "gas-production",
+   "level": "class1",
+   "assumptions": "Fictional digester in Saskatchewan: volatile solids in = 1500 kg/d, volatile solids out = 800 kg/d, total solids destroyed = 875 kg/d, gas factor = 0.8 m3/kg VS destroyed. Target unit: m3/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Gas = VS destroyed * gas factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS destroyed = 1500 kg/d - 800 kg/d = 700 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Gas = 875 kg/d * 0.8 m3/kg = 700 m3/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Gas = 700 kg/d * 0.8 m3/kg = 560 m3/d",
+   "explanation": "Line 3 used total solids destroyed of 875 kg/d instead of volatile solids destroyed of 700 kg/d. Gas is 700 * 0.8 = 560 m3/d."
+  },
+  {
+   "id": "wp2ww-error55",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this digester gas production calculation for a plant in Manitoba. The given gas factor is 0.65 m3 per kg of volatile solids destroyed.",
+   "topicId": "gas-production",
+   "level": "class1",
+   "assumptions": "Fictional digester in Manitoba: volatile solids in = 2000 kg/d, volatile solids out = 800 kg/d, total solids destroyed = 1500 kg/d, gas factor = 0.65 m3/kg VS destroyed. Target unit: m3/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Gas = VS destroyed * gas factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS destroyed = 2000 kg/d - 800 kg/d = 1200 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Gas = 1200 kg/d * 0.65 m3/kg = 720 m3/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Gas = 1200 kg/d * 0.65 m3/kg = 780 m3/d",
+   "explanation": "Line 3 multiplied incorrectly. 1200 * 0.65 = 780 m3/d, not 720 m3/d."
+  },
+  {
+   "id": "wp2ww-error56",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this digester gas production calculation for a plant in British Columbia. The given gas factor is 0.8 m3 per kg of volatile solids destroyed.",
+   "topicId": "gas-production",
+   "level": "class1",
+   "assumptions": "Fictional digester in British Columbia: volatile solids in = 1000 kg/d, volatile solids out = 450 kg/d, total solids destroyed = 700 kg/d, gas factor = 0.8 m3/kg VS destroyed. Target unit: m3/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Gas = VS destroyed * gas factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS destroyed = 1000 kg/d - 450 kg/d = 550 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Gas = 550 kg/d / 0.8 m3/kg = 687.5 m3/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Gas = 550 kg/d * 0.8 m3/kg = 440 m3/d",
+   "explanation": "Line 3 divided by the gas factor instead of multiplying. Gas is 550 * 0.8 = 440 m3/d."
+  },
+  {
+   "id": "wp2ww-error57",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this specific gas production calculation for a digester in Alberta. Gas produced is 720 m3/d and volatile solids destroyed are 800 kg/d.",
+   "topicId": "gas-production",
+   "level": "class1",
+   "assumptions": "Fictional digester in Alberta: gas produced = 720 m3/d, volatile solids destroyed = 800 kg/d. Target unit: m3 of gas per kg VS destroyed.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Specific gas production = gas produced / VS destroyed"
+    },
+    {
+     "id": "line2",
+     "label": "2. Specific gas production = 800 kg/d / 720 m3/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Specific gas production = 720 m3/d / 800 kg/d = 0.9 m3/kg",
+   "explanation": "Line 2 inverted the division. Specific gas production is gas divided by solids destroyed, 720 / 800 = 0.9 m3/kg."
+  },
+  {
+   "id": "wp2ww-error58",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this specific gas production calculation for a digester in Saskatchewan. Gas produced is 540 m3/d and volatile solids destroyed are 600 kg/d.",
+   "topicId": "gas-production",
+   "level": "class1",
+   "assumptions": "Fictional digester in Saskatchewan: gas produced = 540 m3/d, volatile solids destroyed = 600 kg/d, total solids destroyed = 750 kg/d. Target unit: m3 of gas per kg VS destroyed.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Specific gas production = gas produced / VS destroyed"
+    },
+    {
+     "id": "line2",
+     "label": "2. Specific gas production = 540 m3/d / 750 kg/d = 0.72 m3/kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Specific gas production = 540 m3/d / 600 kg/d = 0.9 m3/kg",
+   "explanation": "Line 2 divided by total solids destroyed instead of volatile solids destroyed. Specific gas production is 540 / 600 = 0.9 m3/kg."
+  },
+  {
+   "id": "wp2ww-error59",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this dewatering solids capture calculation for a plant in Saskatchewan. Feed flow is 50 m3/d at 40000 mg/L solids and the press produces 8000 kg/d of wet cake at 20 percent solids.",
+   "topicId": "dewatering-capture",
+   "level": "class1",
+   "assumptions": "Fictional plant in Saskatchewan: feed flow = 50 m3/d, feed solids = 40000 mg/L, wet cake = 8000 kg/d, cake solids content = 20 percent. Target: percent solids capture.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Capture = cake solids / feed solids * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Feed solids = 50 m3/d * 40000 mg/L / 1000 = 2000 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Cake solids = 8000 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. Capture = 8000 / 2000 * 100 = 400 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Cake solids = 8000 kg/d * 20 / 100 = 1600 kg/d",
+   "explanation": "Line 3 used the wet cake mass as if it were dry solids. Cake solids are 8000 * 20 / 100 = 1600 kg/d, so capture is 80 percent."
+  }
+ ],
+ "missions": [
+  {
+   "id": "wp2ww-mission21",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 21: The Disinfection Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-ladder80",
+     "revision": "r1",
+     "occurrenceId": "m21-t1"
+    },
+    {
+     "taskId": "wp2ww-error01",
+     "revision": "r1",
+     "occurrenceId": "m21-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission22",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 22: The Srt Control Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-error02",
+     "revision": "r1",
+     "occurrenceId": "m22-t1"
+    },
+    {
+     "taskId": "wp2ww-ladder81",
+     "revision": "r1",
+     "occurrenceId": "m22-t2"
+    },
+    {
+     "taskId": "wp2ww-ladder82",
+     "revision": "r1",
+     "occurrenceId": "m22-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission23",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 23: The Nutrient Loading Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-ladder83",
+     "revision": "r1",
+     "occurrenceId": "m23-t1"
+    },
+    {
+     "taskId": "wp2ww-error03",
+     "revision": "r1",
+     "occurrenceId": "m23-t2"
+    },
+    {
+     "taskId": "wp2ww-ladder84",
+     "revision": "r1",
+     "occurrenceId": "m23-t3"
+    },
+    {
+     "taskId": "wp2ww-ladder85",
+     "revision": "r1",
+     "occurrenceId": "m23-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission24",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 24: The Srt Control Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-error04",
+     "revision": "r1",
+     "occurrenceId": "m24-t1"
+    },
+    {
+     "taskId": "wp2ww-ladder86",
+     "revision": "r1",
+     "occurrenceId": "m24-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission25",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 25: The Nutrient Loading Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-ladder87",
+     "revision": "r1",
+     "occurrenceId": "m25-t1"
+    },
+    {
+     "taskId": "wp2ww-error05",
+     "revision": "r1",
+     "occurrenceId": "m25-t2"
+    },
+    {
+     "taskId": "wp2ww-ladder88",
+     "revision": "r1",
+     "occurrenceId": "m25-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission26",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 26: The Srt Control Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-error06",
+     "revision": "r1",
+     "occurrenceId": "m26-t1"
+    },
+    {
+     "taskId": "wp2ww-ladder89",
+     "revision": "r1",
+     "occurrenceId": "m26-t2"
+    },
+    {
+     "taskId": "wp2ww-ladder90",
+     "revision": "r1",
+     "occurrenceId": "m26-t3"
+    },
+    {
+     "taskId": "wp2ww-ladder91",
+     "revision": "r1",
+     "occurrenceId": "m26-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission27",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 27: The Clarifier Loading Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-ladder92",
+     "revision": "r1",
+     "occurrenceId": "m27-t1"
+    },
+    {
+     "taskId": "wp2ww-error07",
+     "revision": "r1",
+     "occurrenceId": "m27-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission28",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 28: The Srt Control Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-error08",
+     "revision": "r1",
+     "occurrenceId": "m28-t1"
+    },
+    {
+     "taskId": "wp2ww-ladder93",
+     "revision": "r1",
+     "occurrenceId": "m28-t2"
+    },
+    {
+     "taskId": "wp2ww-ladder94",
+     "revision": "r1",
+     "occurrenceId": "m28-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission29",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 29: The Svi Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-ladder95",
+     "revision": "r1",
+     "occurrenceId": "m29-t1"
+    },
+    {
+     "taskId": "wp2ww-error09",
+     "revision": "r1",
+     "occurrenceId": "m29-t2"
+    },
+    {
+     "taskId": "wp2ww-ladder96",
+     "revision": "r1",
+     "occurrenceId": "m29-t3"
+    },
+    {
+     "taskId": "wp2ww-ladder97",
+     "revision": "r1",
+     "occurrenceId": "m29-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission30",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 30: The Srt Control Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-error10",
+     "revision": "r1",
+     "occurrenceId": "m30-t1"
+    },
+    {
+     "taskId": "wp2ww-ladder98",
+     "revision": "r1",
+     "occurrenceId": "m30-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission31",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 31: The Detention Time Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-ladder99",
+     "revision": "r1",
+     "occurrenceId": "m31-t1"
+    },
+    {
+     "taskId": "wp2ww-error100",
+     "revision": "r1",
+     "occurrenceId": "m31-t2"
+    },
+    {
+     "taskId": "wp2ww-ladder80",
+     "revision": "r1",
+     "occurrenceId": "m31-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission32",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 32: The Srt Control Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-error11",
+     "revision": "r1",
+     "occurrenceId": "m32-t1"
+    },
+    {
+     "taskId": "wp2ww-ladder81",
+     "revision": "r1",
+     "occurrenceId": "m32-t2"
+    },
+    {
+     "taskId": "wp2ww-ladder82",
+     "revision": "r1",
+     "occurrenceId": "m32-t3"
+    },
+    {
+     "taskId": "wp2ww-ladder83",
+     "revision": "r1",
+     "occurrenceId": "m32-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission33",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 33: The Nutrient Loading Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-ladder84",
+     "revision": "r1",
+     "occurrenceId": "m33-t1"
+    },
+    {
+     "taskId": "wp2ww-error12",
+     "revision": "r1",
+     "occurrenceId": "m33-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission34",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 34: The Srt Control Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-error13",
+     "revision": "r1",
+     "occurrenceId": "m34-t1"
+    },
+    {
+     "taskId": "wp2ww-ladder85",
+     "revision": "r1",
+     "occurrenceId": "m34-t2"
+    },
+    {
+     "taskId": "wp2ww-ladder86",
+     "revision": "r1",
+     "occurrenceId": "m34-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission35",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 35: The Nutrient Loading Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-ladder87",
+     "revision": "r1",
+     "occurrenceId": "m35-t1"
+    },
+    {
+     "taskId": "wp2ww-error14",
+     "revision": "r1",
+     "occurrenceId": "m35-t2"
+    },
+    {
+     "taskId": "wp2ww-ladder88",
+     "revision": "r1",
+     "occurrenceId": "m35-t3"
+    },
+    {
+     "taskId": "wp2ww-ladder89",
+     "revision": "r1",
+     "occurrenceId": "m35-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission36",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 36: The Srt Control Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-error15",
+     "revision": "r1",
+     "occurrenceId": "m36-t1"
+    },
+    {
+     "taskId": "wp2ww-ladder90",
+     "revision": "r1",
+     "occurrenceId": "m36-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission37",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 37: The Clarifier Loading Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-ladder91",
+     "revision": "r1",
+     "occurrenceId": "m37-t1"
+    },
+    {
+     "taskId": "wp2ww-error16",
+     "revision": "r1",
+     "occurrenceId": "m37-t2"
+    },
+    {
+     "taskId": "wp2ww-ladder92",
+     "revision": "r1",
+     "occurrenceId": "m37-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission38",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 38: The Srt Control Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-error17",
+     "revision": "r1",
+     "occurrenceId": "m38-t1"
+    },
+    {
+     "taskId": "wp2ww-ladder93",
+     "revision": "r1",
+     "occurrenceId": "m38-t2"
+    },
+    {
+     "taskId": "wp2ww-ladder94",
+     "revision": "r1",
+     "occurrenceId": "m38-t3"
+    },
+    {
+     "taskId": "wp2ww-ladder95",
+     "revision": "r1",
+     "occurrenceId": "m38-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission39",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 39: The Svi Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-ladder96",
+     "revision": "r1",
+     "occurrenceId": "m39-t1"
+    },
+    {
+     "taskId": "wp2ww-error18",
+     "revision": "r1",
+     "occurrenceId": "m39-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission40",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 40: The Fm Ratio Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-error19",
+     "revision": "r1",
+     "occurrenceId": "m40-t1"
+    },
+    {
+     "taskId": "wp2ww-ladder97",
+     "revision": "r1",
+     "occurrenceId": "m40-t2"
+    },
+    {
+     "taskId": "wp2ww-ladder98",
+     "revision": "r1",
+     "occurrenceId": "m40-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Wastewater treatment operations chapters (process control, digestion, dewatering)"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "1731629e1699ebbdf6ebf38d857a369d7f1032cd0adbfa3e16ee5df978b4ccc0",
+  "taskReceipts": [
+   {
+    "taskId": "wp2ww-ladder80",
+    "revision": "r1",
+    "sha256": "265ffed5d5950856290f64ebfd32a19f2eadf75df6196f69a5a6a1759cb93851",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-ladder81",
+    "revision": "r1",
+    "sha256": "4f061b35c3a0c47aaab2b4d1b33bd15095bc123082a47564c063ab77ff85a436",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-ladder82",
+    "revision": "r1",
+    "sha256": "1b1f541b85da2b7b05ddbb091d58de35130219d44a66f524409ffc29567e604f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-ladder83",
+    "revision": "r1",
+    "sha256": "bbcf9a5d1c3fe45dabc0084ab7cb3f2a654ec73dd0d243683782fd9e9b42e02d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-ladder84",
+    "revision": "r1",
+    "sha256": "19e557ab18979218e5f4dba9f1b88b2ed6d6631d2967f7bc50cb044ea8b094a6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-ladder85",
+    "revision": "r1",
+    "sha256": "73d0cea42bad7af4abec4c5350b7b30af1b98947a5eae01b21e55f53e6c95717",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-ladder86",
+    "revision": "r1",
+    "sha256": "43ea5e61c664441ae61dbb3796fc2a91cd48c595d90ca6dbc309467e854b0f35",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-ladder87",
+    "revision": "r1",
+    "sha256": "63b2d690b9e0c359e7e701203935a632944dd38fa843f8d0f1b578938f1d4c85",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-ladder88",
+    "revision": "r1",
+    "sha256": "9592c2d923aed4ee72617b25c835f1d39656406e5815570bef309dc58afbbd45",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-ladder89",
+    "revision": "r1",
+    "sha256": "8638931b51bfd0bfcd1211785724882380f83ad6dfabf1b0eac73458d679c95d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-ladder90",
+    "revision": "r1",
+    "sha256": "e5e3d61ba7ad3bc983452e1171713aacadb96649035f08768541d43dbf3bce93",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-ladder91",
+    "revision": "r1",
+    "sha256": "10fba0d76015f68ef213878de71ba2b376506b0c559ac715525d8d4110dfdb49",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-ladder92",
+    "revision": "r1",
+    "sha256": "90108624185e2a81ce9c69a1f09a261b7fdf0b914d1a315594428274c228dc30",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-ladder93",
+    "revision": "r1",
+    "sha256": "f16e36015bc356f9a3a3ddc2890f2fff25d0f0ccdc575000ffafeaf4b8f76513",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-ladder94",
+    "revision": "r1",
+    "sha256": "8e374f7c64c3c815aa9375ec90514c770e99587e24f212e50fdbc2f6cc2d11b0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-ladder95",
+    "revision": "r1",
+    "sha256": "9f9b67eacc99ac7d3b12a69e088a52e9d650d6dbdfc059cae2dbb6e9ee9fd4b2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-ladder96",
+    "revision": "r1",
+    "sha256": "7acee176a794649fa1423f81c178a958ae19a119ee9d2a17eb35bec2591071c1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-ladder97",
+    "revision": "r1",
+    "sha256": "f13d99996bb3097fec0367ef9b0399ad10863d2eb124ae83635f86702c527a71",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-ladder98",
+    "revision": "r1",
+    "sha256": "a090962c77e8f9f967278bd2908391e4d9e2835482a39bc3e6e595d31e940637",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-ladder99",
+    "revision": "r1",
+    "sha256": "18a02b10252a2fb3da3e23bab5f4963d1c9a8b8b20522b57a653cf6679acf000",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error01",
+    "revision": "r1",
+    "sha256": "759f27adc65aecdab5a89dad16574534ec52262265a409993b6287ce0333a5dc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error02",
+    "revision": "r1",
+    "sha256": "7143a6f6910194e1cbb4964fda86ae015bc1362102b4d3038e6d5c364fe43712",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error03",
+    "revision": "r1",
+    "sha256": "d0fdb9da1256a6e3199a458ec89255386f9abe0467c79d51ee61af15034d97db",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error04",
+    "revision": "r1",
+    "sha256": "ccc2fd2d62549147ff0944b3c89104ca396543e9ab6d7140c2762e27bc5926f4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error05",
+    "revision": "r1",
+    "sha256": "6bdb3bd7a379895259da506fffa87dc860d59230ff2102bb481b47659ae91bba",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error06",
+    "revision": "r1",
+    "sha256": "beeded2659d9b5d8e8799f03905681dc38587db9d74a8b4902feaa4abd6d91c9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error07",
+    "revision": "r1",
+    "sha256": "1f75e2555a96e1b8e70e521f3066c6477e0d10f1f6ac3c914945e7d96cecee51",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error08",
+    "revision": "r1",
+    "sha256": "37b76b8bc5afa69e5169d20cea9ecd768219d1535056596a48550779de1205e5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error09",
+    "revision": "r1",
+    "sha256": "d3cc3776cb817eecc4058a60ec77004e3819beacca3661def7b24745ee220032",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error10",
+    "revision": "r1",
+    "sha256": "dbaecfa76a0ab5290c5ed0ae0f76cb2e5a7111fc4e049df966a18c37f24dda49",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error100",
+    "revision": "r1",
+    "sha256": "dc50d0ab100256d1cf54827590540c89c22f7f6f4c33edef0315f8ed80e8b339",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error11",
+    "revision": "r1",
+    "sha256": "847ce5bf49d92e1b5af05ce05d0d790671cc844d2bff41dd142abd64b30a046b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error12",
+    "revision": "r1",
+    "sha256": "f529c7975692f281a73fae9e632783d7911561c5f53274afb1c74c7c9af1ba7a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error13",
+    "revision": "r1",
+    "sha256": "3060bbaaf89b43f7c3e830a5396ac005ab418f41146c2a0a25f96245acf4f7b2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error14",
+    "revision": "r1",
+    "sha256": "3ae319ec9d5ffb98a3437679e11544cdfd71c79f0cf1c4c8f8e773e49cf46e43",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error15",
+    "revision": "r1",
+    "sha256": "258e78e89ef660a60c9678fb133d892ebdd7db05c054da5347ca5e7a26c4d6d7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error16",
+    "revision": "r1",
+    "sha256": "8dbba41b5862cd2b4480dc6f4a0a3e87f5a07e14978bd6e2f18509b7cf8a94d8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error17",
+    "revision": "r1",
+    "sha256": "ae2501d76e38279d9069265a5280b9f80fd34d6eaf0fe920009f2126fc1c467e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error18",
+    "revision": "r1",
+    "sha256": "3bebe3ea10de5fa44f74e85ae602be803c3b7b57ea780424e4e85c423ef18d83",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error19",
+    "revision": "r1",
+    "sha256": "6ee3b902b5719ce2d456df2ce256ec446a4d0d7fee7f1b70f866ffc40cce1e66",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error20",
+    "revision": "r1",
+    "sha256": "47a934997219ee5beaed16e8d34d1a55ccbb65af56545ff0e96258d14e34885a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error21",
+    "revision": "r1",
+    "sha256": "c3578acbb8d50b80e51689315661338027c3d8598f9ded1a5995e3020d9ddeff",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error22",
+    "revision": "r1",
+    "sha256": "b0161a3a8a40649e11045c1a9d7802973ba1013654e3aba56a12ae5412d0edac",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error23",
+    "revision": "r1",
+    "sha256": "f9078a1b24d3e4d0daa6c5558d1de701b7c777cae7467bac64b3392ed5fb3520",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error24",
+    "revision": "r1",
+    "sha256": "95b26e1701f99b6d31a47876c46ee053c4cc27af5eb3c45382dcd245d6f9a934",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error25",
+    "revision": "r1",
+    "sha256": "95898fdecf2129ff1aa087e23a93f41661b16a566816d33175ac2b1bd74f47e6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error26",
+    "revision": "r1",
+    "sha256": "c88147f589fec39f6ab0a64b5f65c41c6cf9d8422da0291061553783206f6f98",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error27",
+    "revision": "r1",
+    "sha256": "84f7c5bb49db6be749ea7eda9540d8627811013afeac9e4d18fd1b1459597cd5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error28",
+    "revision": "r1",
+    "sha256": "3e5ae0f4a5659f81e3e29ac7a08cb89fe7dc66cde64c353ec0f11149eccada52",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error29",
+    "revision": "r1",
+    "sha256": "72762d075028eee12b77fca36fab2d807fc523208a1558d0202ecc59db242e50",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error30",
+    "revision": "r1",
+    "sha256": "9fbc02328c2895611eaa3f1173887d4fba85eb7777624bc002d54cbb722783e8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error31",
+    "revision": "r1",
+    "sha256": "b29fe8744359be8709b9ffd966997115f38eebe2be979b83ec83f8878c37a4f7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error32",
+    "revision": "r1",
+    "sha256": "2e55541eee702bfab816e2354524047b96f95e027418104d3286c50384cd944a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error33",
+    "revision": "r1",
+    "sha256": "5b565cd9c8c2cd05d3a0df5c436b027da3e364d29bbc0ea43bf6b7c690810075",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error34",
+    "revision": "r1",
+    "sha256": "62563d8dc2cccb7f47ef92c280f6dea222273cc9b3b69a5203d36a9c5a4f7de2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error35",
+    "revision": "r1",
+    "sha256": "7c7c1d113221d24dbfdfa088f8c69fbab399600ce29b1d23d1c9126f3404460b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error36",
+    "revision": "r1",
+    "sha256": "fd67bbad83a3c4918daa214688e50be149544d8388eedea02ef9b4f0b8ba6e5e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error37",
+    "revision": "r1",
+    "sha256": "6d8a654367fd1c792bc252c3a879e00e219e4ab8676a43466477829a5bcf379f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error38",
+    "revision": "r1",
+    "sha256": "e1a435fd6157634e9285120b35ae33e701004e4b9338141c2bfb69e01f085abf",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error39",
+    "revision": "r1",
+    "sha256": "e086443d87a68fb2ed300b035b74d66f2b7860e5453978b015934a17b2f8fd70",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error40",
+    "revision": "r1",
+    "sha256": "53ca7906966bef22232a7cf919f5eadb9f8ab472b99472ec1345a00aa3dc43ca",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error41",
+    "revision": "r1",
+    "sha256": "75da15b86ff7947f555a640959865c908d4f55fe2d464c32ce12dfa5ba736f95",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error42",
+    "revision": "r1",
+    "sha256": "cde9ce864ee38acba6a94ead43bb803541025ca92f3f9bfda299f4ae5e2b46d0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error43",
+    "revision": "r1",
+    "sha256": "781151d66d84520680f8222bd4626e6eb2ca07ee087ebfb061307e5e3e74008b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error44",
+    "revision": "r1",
+    "sha256": "e64aad1fbc22e60b016a9ecbd8613da0b53757c4d3639a02fcfeeb828415c136",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error45",
+    "revision": "r1",
+    "sha256": "390e78778e63bd4b357732f9e2b7dce3f7221ef2e1dfcb09eecaf6f3c7496b1b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error46",
+    "revision": "r1",
+    "sha256": "2d32d2cb0a8581852d34bae5f50782a440f83ebb613bf19ff95c36ef1d3b6b69",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error47",
+    "revision": "r1",
+    "sha256": "3b8674adb8442864df5e219d173c59313992f33a351c4fcbbab82d9fef6af7a3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error48",
+    "revision": "r1",
+    "sha256": "4774db5bf7b7a3f5b81cd81be633297ee3c063920ab29d0f7d4b1e0949a0b5b5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error49",
+    "revision": "r1",
+    "sha256": "d5505d4c809f72acec032112c896464da7d31d6b1bed160567a3c974d2eced4a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error50",
+    "revision": "r1",
+    "sha256": "3a9eb8a75216178b111b7ee806035797310499b057ff282096a9e7839d38831f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error51",
+    "revision": "r1",
+    "sha256": "2b37df7c883b2f373e07f4a4b0f1bd91484ffbe22fed98730a306c8dffd1ff7d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error52",
+    "revision": "r1",
+    "sha256": "904cb67d7b07aacb3c02f543f81b55b864cd0cfbc33fc2bdb7093209af7633cb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error53",
+    "revision": "r1",
+    "sha256": "61f44570c1b1af93fd5eb50baef86d002ef2b3c1172ef0725f8d05d8f53292f8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error54",
+    "revision": "r1",
+    "sha256": "b6d2fd09b15512c06350e075ee6fff833ce78fbcf351b06bfef57370d21fadb7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error55",
+    "revision": "r1",
+    "sha256": "af6c8c110ef3bf5bffd63bab5e7e1cb8a0455abae8cd5b22c8699828acd195c7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error56",
+    "revision": "r1",
+    "sha256": "ae75b75bb59bfe4c8f11c0e212a9283382e7f8886fff7b4d5772d765874f6688",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error57",
+    "revision": "r1",
+    "sha256": "2a420ac568b073f1a4edcc97f82e25de7a434448d057d55e99854afa7801509d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error58",
+    "revision": "r1",
+    "sha256": "7e084d6c3b6f2b911e7918321681eb24081ddccd394ca3a694374f461f859724",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error59",
+    "revision": "r1",
+    "sha256": "ba9afc99213feaffbc428bc8375b6dd4cd6f0068511479121ca631766f2c3096",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "wp2ww-mission21",
+    "revision": "r1",
+    "sha256": "22403c8ebe1c21a50ce1bde2b5f1711a773509653f988ea9d6c2943e9c71b436"
+   },
+   {
+    "missionId": "wp2ww-mission22",
+    "revision": "r1",
+    "sha256": "eb48e790e997b1953433c1fba412556b0c49a434b18b640362f7403898718869"
+   },
+   {
+    "missionId": "wp2ww-mission23",
+    "revision": "r1",
+    "sha256": "d98398ad98c1e28f3135570aff55a2d8b79804d1c215a0125b271d54ddda0c88"
+   },
+   {
+    "missionId": "wp2ww-mission24",
+    "revision": "r1",
+    "sha256": "c2cea262ebe4d5df1ed8c328cc4102c46f93e94f5d84d44d73fc8b43e90bcf5c"
+   },
+   {
+    "missionId": "wp2ww-mission25",
+    "revision": "r1",
+    "sha256": "d53a8a57cad8cfcce432a83cd9a9097612425da2c36d9c70d9930b0b9783dab2"
+   },
+   {
+    "missionId": "wp2ww-mission26",
+    "revision": "r1",
+    "sha256": "acf484ee89785f47adb8051b91bfb706c8e262a72529b99008a422e280924a2e"
+   },
+   {
+    "missionId": "wp2ww-mission27",
+    "revision": "r1",
+    "sha256": "caee4952bc422648b56793c5af7298ac3775517a76bff39e41d094eaf5899330"
+   },
+   {
+    "missionId": "wp2ww-mission28",
+    "revision": "r1",
+    "sha256": "a6dd194867b0b7c7136d957e534d5bb0cce3573b699f0eedfa68fbec48ac43f3"
+   },
+   {
+    "missionId": "wp2ww-mission29",
+    "revision": "r1",
+    "sha256": "262cb81b8a4e8f6c5db0e1b645f01b8c99863ae81e7e22d546457fcbaaa33b63"
+   },
+   {
+    "missionId": "wp2ww-mission30",
+    "revision": "r1",
+    "sha256": "3010592a88ca7c4029a50f7d449c56f330820635c0651a73ab7e3834ad285602"
+   },
+   {
+    "missionId": "wp2ww-mission31",
+    "revision": "r1",
+    "sha256": "f7c10bcec995970d525708a90b011175bf6e6fd0522d26ae2072bbf7d07f3fe6"
+   },
+   {
+    "missionId": "wp2ww-mission32",
+    "revision": "r1",
+    "sha256": "7a1ef7cd7bc40cbf08e91c766b9dd956ac06aebbfbaaccc1fa543828ef1517bd"
+   },
+   {
+    "missionId": "wp2ww-mission33",
+    "revision": "r1",
+    "sha256": "e9c0ab058d9f78ea98646e5fc26b9c31cd74bf80163d5d6a74857d86c2c09ef3"
+   },
+   {
+    "missionId": "wp2ww-mission34",
+    "revision": "r1",
+    "sha256": "103c9168997b5a938eaec04db45dbbc5a07da23562a32e24751404be01b29d17"
+   },
+   {
+    "missionId": "wp2ww-mission35",
+    "revision": "r1",
+    "sha256": "f4d1bf8c5c06b793ff8094ce1d243fb3bc579f1384816941fa7cb9bc4bb51969"
+   },
+   {
+    "missionId": "wp2ww-mission36",
+    "revision": "r1",
+    "sha256": "437408c6b2a1ae3ab87cc56c6ecd7d81c369ef83469d9d02cba14105c8b34b04"
+   },
+   {
+    "missionId": "wp2ww-mission37",
+    "revision": "r1",
+    "sha256": "a02832c90952b2fae555bae060549465a223aef6a0fd931ee2e5afac5022a75c"
+   },
+   {
+    "missionId": "wp2ww-mission38",
+    "revision": "r1",
+    "sha256": "b869fdb6ceb4097355e359be29a4c022f9598f3a13be47d8270b7bd808c373e9"
+   },
+   {
+    "missionId": "wp2ww-mission39",
+    "revision": "r1",
+    "sha256": "3a49e59508ebd96f38b6dadf6f13fe8266f6f91a922cbc8b7797a3579dcd1926"
+   },
+   {
+    "missionId": "wp2ww-mission40",
+    "revision": "r1",
+    "sha256": "1731c19f2defee1b54e15de38a99a6d1ca0f8ade1e728acda64502c48dedf23e"
+   }
+  ]
+ }
+}

@@ -239,7 +239,7 @@ export function FlexOrderBuilder({ initialRegion = "ontario" }: { initialRegion?
         <Button className="teams-checkout-button w-full bg-gradient-to-r from-blue-600 to-blue-500 py-3 font-semibold text-white" onClick={handleSubmit} disabled={identity.isLoading || availability.isLoading || createOrder.isPending || total === 0}>
           {createOrder.isPending ? "Creating secure checkout…" : `Proceed to secure checkout — ${formatCAD(total)}`}
         </Button>
-        <p className="text-center text-xs text-gray-400">Unused licences can be reassigned. Each operator starts their own study term when they activate the assigned Course Pass.</p>
+        <p className="text-center text-xs text-gray-400">Unused licences can be reassigned. Activate each pass within 12 months of payment fulfilment. The purchased 3- or 6-month study term starts on activation.</p>
       </CardContent>
     </Card>
   );

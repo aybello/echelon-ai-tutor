@@ -1,8 +1,9 @@
 import { and, desc, eq, gte, inArray, isNull, like, lte, or, sql } from "drizzle-orm";
 import { TRPCError } from "@trpc/server";
-import { diagnosticSessions as diagnostics, examResults as exams, learningActivitySessions as study, productAnalyticsEvents as events, questionAttempts as attempts, users } from "../drizzle/schema";
+import { assessmentActivitySessions, diagnosticSessions as diagnostics, examResults as exams, learningActivitySessions as study, productAnalyticsEvents as events, questionAttempts as attempts, users } from "../drizzle/schema";
 import { getDb } from "./db";
 import { hashAnalyticsEmail } from "./analytics";
+import { adminAssessmentScope, assessmentReadPredicate } from "./assessmentActivityRead";
 import type { LearnerActivityFeed, LearnerActivityItem, LearnerOption, LearnerSelection } from "../shared/learnerActivity";
 
 const LIMIT = 200;
@@ -40,6 +41,15 @@ export async function searchLearners(query: string) {
   // Exact email can inspect hash-only sign-ins without inventing an account association.
   if (exact && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(q) && !options.some(option => option.key === `email:${q}`)) {
     const found = await db.select({ id: events.id }).from(events).where(and(eq(events.emailHash, hashAnalyticsEmail(q)), isNull(events.userId), eq(events.eventName, "login"), gte(events.occurredAt, since))).limit(1);
+    if (found.length) options.push({ key: `email:${q}`, selection: { email: q }, name: null, email: q });
+  }
+  // The ledger uses its own HMAC namespace, not analytics SHA-256. Exact email
+  // only: reuse the authorized reader's observed/verified-email window and never
+  // reverse hashes, prefix-match them, or borrow a matching account's identity.
+  if (exact && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(q) && !options.some(option => option.key === `email:${q}`)) {
+    const window = assessmentReadPredicate(adminAssessmentScope({ email: q }), 30);
+    const found = await db.select({ id: assessmentActivitySessions.sessionId }).from(assessmentActivitySessions)
+      .where(window.predicate).limit(1);
     if (found.length) options.push({ key: `email:${q}`, selection: { email: q }, name: null, email: q });
   }
   return { learners: options.slice(0, 20), partial: partial || options.length > 20 };

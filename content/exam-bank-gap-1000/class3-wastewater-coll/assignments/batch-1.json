@@ -1,0 +1,429 @@
+{
+ "courseKey": "class3-wastewater-coll",
+ "bankKey": "class3-wastewater-coll",
+ "batch": 1,
+ "size": 46,
+ "conceptualCount": 37,
+ "calcCount": 9,
+ "topicPoolRound": 1,
+ "questionNumStart": 2451,
+ "questionNumEnd": 2496,
+ "itemIdStart": "COLLECTION-L3-451",
+ "itemIdEnd": "COLLECTION-L3-496",
+ "items": [
+  {
+   "seq": 1,
+   "questionNum": 2451,
+   "itemId": "COLLECTION-L3-451",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "collection system management at scale"
+  },
+  {
+   "seq": 2,
+   "questionNum": 2452,
+   "itemId": "COLLECTION-L3-452",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "CMOM leadership"
+  },
+  {
+   "seq": 3,
+   "questionNum": 2453,
+   "itemId": "COLLECTION-L3-453",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "I&I reduction program design"
+  },
+  {
+   "seq": 4,
+   "questionNum": 2454,
+   "itemId": "COLLECTION-L3-454",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "RDII analysis depth"
+  },
+  {
+   "seq": 5,
+   "questionNum": 2455,
+   "itemId": "COLLECTION-L3-455",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "lift station system management"
+  },
+  {
+   "seq": 6,
+   "questionNum": 2456,
+   "itemId": "COLLECTION-L3-456",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "force main reliability programs"
+  },
+  {
+   "seq": 7,
+   "questionNum": 2457,
+   "itemId": "COLLECTION-L3-457",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "odour and corrosion programs"
+  },
+  {
+   "seq": 8,
+   "questionNum": 2458,
+   "itemId": "COLLECTION-L3-458",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "FOG program leadership"
+  },
+  {
+   "seq": 9,
+   "questionNum": 2459,
+   "itemId": "COLLECTION-L3-459",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "collection system management at scale"
+  },
+  {
+   "seq": 10,
+   "questionNum": 2460,
+   "itemId": "COLLECTION-L3-460",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "CMOM leadership"
+  },
+  {
+   "seq": 11,
+   "questionNum": 2461,
+   "itemId": "COLLECTION-L3-461",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "I&I reduction program design"
+  },
+  {
+   "seq": 12,
+   "questionNum": 2462,
+   "itemId": "COLLECTION-L3-462",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "RDII analysis depth"
+  },
+  {
+   "seq": 13,
+   "questionNum": 2463,
+   "itemId": "COLLECTION-L3-463",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "lift station system management"
+  },
+  {
+   "seq": 14,
+   "questionNum": 2464,
+   "itemId": "COLLECTION-L3-464",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "force main reliability programs"
+  },
+  {
+   "seq": 15,
+   "questionNum": 2465,
+   "itemId": "COLLECTION-L3-465",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "odour and corrosion programs"
+  },
+  {
+   "seq": 16,
+   "questionNum": 2466,
+   "itemId": "COLLECTION-L3-466",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "FOG program leadership"
+  },
+  {
+   "seq": 17,
+   "questionNum": 2467,
+   "itemId": "COLLECTION-L3-467",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "collection system management at scale"
+  },
+  {
+   "seq": 18,
+   "questionNum": 2468,
+   "itemId": "COLLECTION-L3-468",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "CMOM leadership"
+  },
+  {
+   "seq": 19,
+   "questionNum": 2469,
+   "itemId": "COLLECTION-L3-469",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "I&I reduction program design"
+  },
+  {
+   "seq": 20,
+   "questionNum": 2470,
+   "itemId": "COLLECTION-L3-470",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "RDII analysis depth"
+  },
+  {
+   "seq": 21,
+   "questionNum": 2471,
+   "itemId": "COLLECTION-L3-471",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "lift station system management"
+  },
+  {
+   "seq": 22,
+   "questionNum": 2472,
+   "itemId": "COLLECTION-L3-472",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "force main reliability programs"
+  },
+  {
+   "seq": 23,
+   "questionNum": 2473,
+   "itemId": "COLLECTION-L3-473",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "odour and corrosion programs"
+  },
+  {
+   "seq": 24,
+   "questionNum": 2474,
+   "itemId": "COLLECTION-L3-474",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "FOG program leadership"
+  },
+  {
+   "seq": 25,
+   "questionNum": 2475,
+   "itemId": "COLLECTION-L3-475",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "collection system management at scale"
+  },
+  {
+   "seq": 26,
+   "questionNum": 2476,
+   "itemId": "COLLECTION-L3-476",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "CMOM leadership"
+  },
+  {
+   "seq": 27,
+   "questionNum": 2477,
+   "itemId": "COLLECTION-L3-477",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "I&I reduction program design"
+  },
+  {
+   "seq": 28,
+   "questionNum": 2478,
+   "itemId": "COLLECTION-L3-478",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "RDII analysis depth"
+  },
+  {
+   "seq": 29,
+   "questionNum": 2479,
+   "itemId": "COLLECTION-L3-479",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "lift station system management"
+  },
+  {
+   "seq": 30,
+   "questionNum": 2480,
+   "itemId": "COLLECTION-L3-480",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "force main reliability programs"
+  },
+  {
+   "seq": 31,
+   "questionNum": 2481,
+   "itemId": "COLLECTION-L3-481",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "odour and corrosion programs"
+  },
+  {
+   "seq": 32,
+   "questionNum": 2482,
+   "itemId": "COLLECTION-L3-482",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "FOG program leadership"
+  },
+  {
+   "seq": 33,
+   "questionNum": 2483,
+   "itemId": "COLLECTION-L3-483",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "collection system management at scale"
+  },
+  {
+   "seq": 34,
+   "questionNum": 2484,
+   "itemId": "COLLECTION-L3-484",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "CMOM leadership"
+  },
+  {
+   "seq": 35,
+   "questionNum": 2485,
+   "itemId": "COLLECTION-L3-485",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "I&I reduction program design"
+  },
+  {
+   "seq": 36,
+   "questionNum": 2486,
+   "itemId": "COLLECTION-L3-486",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "RDII analysis depth"
+  },
+  {
+   "seq": 37,
+   "questionNum": 2487,
+   "itemId": "COLLECTION-L3-487",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "lift station system management"
+  },
+  {
+   "seq": 38,
+   "questionNum": 2488,
+   "itemId": "COLLECTION-L3-488",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "I&I rate at system scale"
+  },
+  {
+   "seq": 39,
+   "questionNum": 2489,
+   "itemId": "COLLECTION-L3-489",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "RDII volume with given coefficients"
+  },
+  {
+   "seq": 40,
+   "questionNum": 2490,
+   "itemId": "COLLECTION-L3-490",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "peaking factor and design flow"
+  },
+  {
+   "seq": 41,
+   "questionNum": 2491,
+   "itemId": "COLLECTION-L3-491",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "wet well cycling analysis"
+  },
+  {
+   "seq": 42,
+   "questionNum": 2492,
+   "itemId": "COLLECTION-L3-492",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "I&I rate at system scale"
+  },
+  {
+   "seq": 43,
+   "questionNum": 2493,
+   "itemId": "COLLECTION-L3-493",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "RDII volume with given coefficients"
+  },
+  {
+   "seq": 44,
+   "questionNum": 2494,
+   "itemId": "COLLECTION-L3-494",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "peaking factor and design flow"
+  },
+  {
+   "seq": 45,
+   "questionNum": 2495,
+   "itemId": "COLLECTION-L3-495",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "wet well cycling analysis"
+  },
+  {
+   "seq": 46,
+   "questionNum": 2496,
+   "itemId": "COLLECTION-L3-496",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "I&I rate at system scale"
+  }
+ ]
+}

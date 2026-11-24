@@ -502,7 +502,7 @@ describe("build release provenance", () => {
         put(checkout, path, readFileSync(path, "utf8"));
       }
       // Exercise the real compiler and frozen release, not a stubbed build path.
-      for (const path of ["shared", "scripts/content-engine", "server/interactiveContent"]) {
+      for (const path of ["shared", "scripts/content-engine", "server/interactiveContent", "server/deepGames", "content/game-content"]) {
         cpSync(path, join(checkout, path), { recursive: true });
       }
       git(["init", "--quiet"]);
@@ -519,9 +519,11 @@ describe("build release provenance", () => {
         "-m",
         "Synthetic managed server build",
       ]);
-      execFileSync("tar", ["-xf", "-", "-C", exported], {
-        input: git(["archive", "HEAD"]),
-      });
+      // Real course packages can exceed the subprocess output buffer limit.
+      const archivePath = join(checkout, "source.tar");
+      git(["archive", "--format=tar", `--output=${archivePath}`, "HEAD"]);
+      execFileSync("tar", ["-xf", archivePath, "-C", exported]);
+      rmSync(archivePath);
       const expected = computeSourceFingerprint(checkout);
       expect(computeSourceFingerprint(exported)).toBe(expected);
       // Model already-installed pinned build dependencies, not source. No install/provider call.

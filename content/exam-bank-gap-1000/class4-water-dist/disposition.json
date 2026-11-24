@@ -1,0 +1,5 @@
+{"accepted": 235, "withheld": [], "rejected": [
+{"itemId": "DISTRIBUTION-L4-499", "questionNum": 2499, "reason": "Original rejected pre-acceptance: masked-stem near-duplicate (Jaccard >= 0.85) of an existing capital plan purpose item. Replaced in place with a different easy recall question on capital planning leadership; replacement passed all checks and is the accepted payload."},
+{"itemId": "DISTRIBUTION-L4-592", "questionNum": 2592, "reason": "Original rejected pre-acceptance: masked-stem near-duplicate of an existing master plan purpose item. Replaced in place with a different easy recall question on master planning; replacement passed all checks and is the accepted payload."},
+{"itemId": "DISTRIBUTION-L4-640", "questionNum": 2640, "reason": "Original rejected pre-acceptance: masked-stem near-duplicate of an existing water quality strategy goal item. Replaced in place with a different easy recall question on system wide water quality strategy; replacement passed all checks and is the accepted payload."}
+], "notes": ["Bank answer-length metric: correct option strictly longest in 22% of items; no length flags."]}

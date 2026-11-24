@@ -9,10 +9,11 @@ import "./StudyWorkspace.css";
 
 type CourseFinderProps = {
   initialProvince?: string | null;
+  onProvinceSelected?: (province: string) => void;
   onCourseSelected?: (selection: { courseKey: string; examFamily: ExamFamily }) => void;
 };
 
-export default function CourseFinder({ initialProvince, onCourseSelected }: CourseFinderProps) {
+export default function CourseFinder({ initialProvince, onProvinceSelected, onCourseSelected }: CourseFinderProps) {
   const id = useId();
   const [location, navigate] = useLocation();
   const search = useSearch();
@@ -47,7 +48,7 @@ export default function CourseFinder({ initialProvince, onCourseSelected }: Cour
     <div className="course-finder-heading"><span className="workspace-eyebrow"><MapPin size={14} /> Your certification path</span>
       <h2 id={`${id}-title`}>Find your course</h2><p>Choose where you write your exam, your system and your level.</p></div>
     <div className="course-finder-fields">
-      <label htmlFor={`${id}-province`}><span>1. Province</span><select id={`${id}-province`} value={province} onChange={event => choose(event.target.value)}>
+      <label htmlFor={`${id}-province`}><span>1. Province</span><select id={`${id}-province`} value={province} onChange={event => { choose(event.target.value); onProvinceSelected?.(event.target.value); }}>
         <option value="">Select your province</option>{FINDER_PROVINCES.map(item => <option key={item.id} value={item.id}>{item.label}</option>)}
       </select></label>
       <label htmlFor={`${id}-track`}><span>2. System</span><select id={`${id}-track`} value={track} disabled={!province} onChange={event => choose(province, event.target.value)}>

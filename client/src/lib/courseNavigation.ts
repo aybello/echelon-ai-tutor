@@ -1,5 +1,5 @@
 import { getAllCourses, resolveCourseKey, type CourseEntry } from "@shared/courseRegistry";
-import { funnelProvince } from "@shared/funnelNavigation";
+import { courseProvinceHref, funnelProvince } from "@shared/funnelNavigation";
 import { withUSStudyContext } from "@shared/usStudyContext";
 import { isInteractiveCourseEligible } from "@shared/interactiveEligibility";
 
@@ -26,10 +26,10 @@ function cleanPath(path: string): string {
   return path.split("?")[0].split("#")[0].replace(/\/$/, "") || "/";
 }
 
-/** Resolve any course study surface back to its canonical registry entry. */
-export function getCourseForPath(path: string): CourseEntry | undefined {
+/** Query context may disambiguate a formula sheet, never override another study page. */
+export function getCourseForPath(path: string, search = path.split("?")[1]?.split("#")[0] ?? ""): CourseEntry | undefined {
   const current = cleanPath(path);
-  return getAllCourses().find((course) =>
+  const candidates = getAllCourses().filter((course) =>
     course.isActive && [
       course.quizPath,
       course.mockExamPath,
@@ -37,6 +37,32 @@ export function getCourseForPath(path: string): CourseEntry | undefined {
       course.formulaPath,
     ].filter(Boolean).some((candidate) => cleanPath(candidate!) === current),
   );
+  const courseKeys = new URLSearchParams(search).getAll("course");
+  const context = courseKeys.length === 1 ? resolveCourseKey(courseKeys[0]) : undefined;
+  if (context?.isActive && context.formulaPath && cleanPath(context.formulaPath) === current) {
+    return context;
+  }
+  return candidates.length === 1 ? candidates[0] : undefined;
+}
+
+export function isSharedFormulaPath(path: string): boolean {
+  return getAllCourses().filter((course) =>
+    course.isActive && course.formulaPath && cleanPath(course.formulaPath) === cleanPath(path),
+  ).length > 1;
+}
+
+/** Shared sheets' own practice/mock buttons must not send distribution/collection to treatment. */
+export function getFormulaStudyLinks(path: string, search: string) {
+  const course = getCourseForPath(path, search);
+  const fallback = cleanPath(path).startsWith("/formulas-us-") ? "/us/courses" : "/wpi";
+  const province = new URLSearchParams(search).get("province");
+  return {
+    course,
+    practiceHref: course ? courseProvinceHref(course.quizPath, course.courseKey, province, search) : fallback,
+    mockHref: course ? courseProvinceHref(course.mockExamPath, course.courseKey, province, search) : fallback,
+    practiceLabel: course ? "Practice Quiz →" : "Choose a course →",
+    mockLabel: course ? "Mock Exam →" : "Choose a course for mock exams →",
+  };
 }
 
 export function getCourseWorkspaceTabs(course: CourseEntry): CourseWorkspaceTab[] {
@@ -55,7 +81,9 @@ export function getCourseWorkspaceTabs(course: CourseEntry): CourseWorkspaceTab[
   tabs.push({ label: "Notes", href: `${course.quizPath}?panel=notes`, kind: "notes" });
 
   if (course.formulaPath) {
-    tabs.push({ label: "Formulas", href: course.formulaPath, kind: "formulas" });
+    const url = new URL(course.formulaPath, "https://echelon.invalid");
+    url.searchParams.set("course", course.courseKey);
+    tabs.push({ label: "Formulas", href: `${url.pathname}${url.search}${url.hash}`, kind: "formulas" });
   }
 
   tabs.push(

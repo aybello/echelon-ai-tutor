@@ -1,0 +1,65 @@
+[
+ {
+  "itemId": "DISTRIBUTION-L4-536",
+  "expression": "0.6*2400/1000/0.12*7",
+  "expected": "84.0",
+  "decimalPlaces": 1,
+  "unit": "L/week"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-537",
+  "expression": "45*12*60*6/1000",
+  "expected": "194.4",
+  "decimalPlaces": 1,
+  "unit": "m3"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-538",
+  "expression": "(25*4+25*4*0.10)*3",
+  "expected": "330",
+  "decimalPlaces": 0,
+  "unit": "samples/quarter"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-539",
+  "expression": "2400-(55+40)*20",
+  "expected": "500",
+  "decimalPlaces": 0,
+  "unit": "m"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-540",
+  "expression": "0.5*3600/1000-0.8*1500/1000",
+  "expected": "0.6",
+  "decimalPlaces": 1,
+  "unit": "kg/day"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-541",
+  "expression": "8*30*9*60/1000+65*2",
+  "expected": "259.6",
+  "decimalPlaces": 1,
+  "unit": "m3"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-542",
+  "expression": "36*12+9*4+120",
+  "expected": "588",
+  "decimalPlaces": 0,
+  "unit": "samples/year"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-543",
+  "expression": "850*(1-0.40)-175",
+  "expected": "335",
+  "decimalPlaces": 0,
+  "unit": "valves"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-544",
+  "expression": "(0.7*3+0.4*4)*2800/1000",
+  "expected": "10.36",
+  "decimalPlaces": 2,
+  "unit": "kg/week"
+ }
+]

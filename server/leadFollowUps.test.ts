@@ -58,10 +58,11 @@ describe("lead follow-up scheduling", () => {
 
 describe("lead follow-up copy", () => {
   it("stage 1 nudges the learner back without a hard sell", () => {
-    const copy = buildLeadFollowUpCopy({ stage: 1, courseLabel: "OIT Certification" });
+    const copy = buildLeadFollowUpCopy({ stage: 1, courseLabel: "OIT Certification", courseUrl: "https://echeloninstitute.ca/quiz" });
     expect(copy.subject).toContain("OIT Certification");
     const body = copy.paragraphs.join(" ");
     expect(body).toContain("free preview");
+    expect(copy.cta).toBe("Keep practising");
     // Stage 1 is a study nudge; it must not quote a price.
     expect(body).not.toMatch(/CA\$/);
   });
@@ -96,13 +97,15 @@ describe("lead course resolution", () => {
   it("resolves a real product key to its course label, link and price", () => {
     const resolved = resolveLeadCourse("oit");
     expect(resolved.courseLabel.toLowerCase()).toContain("oit");
-    expect(resolved.courseUrl).toContain("/pricing?course=oit");
+    expect(resolved.courseUrl).toBe("https://echeloninstitute.ca/quiz");
+    expect(resolved.offerUrl).toBe("https://echeloninstitute.ca/pricing?course=oit");
     expect(resolved.priceLabel).toMatch(/^CA\$/);
   });
 
   it("falls back to the plain pricing page for unknown sources", () => {
     const resolved = resolveLeadCourse("paywall_browse");
-    expect(resolved.courseUrl).toBe("https://echeloninstitute.ca/pricing");
+    expect(resolved.courseUrl).toBeUndefined();
+    expect(resolved.offerUrl).toBe("https://echeloninstitute.ca/pricing");
     expect(resolved.priceLabel).toBeUndefined();
     // The label must stay generic rather than inventing a course name.
     expect(resolved.courseLabel).toBe("your operator exam");

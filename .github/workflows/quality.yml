@@ -54,6 +54,37 @@ jobs:
       - run: pnpm check
       - name: Type-check the coordinated UI review
         run: pnpm exec tsc --noEmit -p prototypes/ui-ux-preview/tsconfig.json
+      - name: Validate governed exam-bank expansion and rollback acceptance
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Verification must not add untracked bytecode to functional source.
+          python3 -B content/exam-bank-expansion/tools/validate.py
+          python3 -B content/exam-bank-expansion/tools/verify_calcs.py
+          test ! -d content/exam-bank-expansion/tools/__pycache__
+          node scripts/exam-bank-expansion-release.mjs
+          env -i PATH="$PATH" HOME=/tmp NODE_ENV=test \
+            node --test scripts/exam-bank-expansion-release.test.mjs
+          schema="expansion_acceptance_$(node -e 'process.stdout.write(require("crypto").randomBytes(16).toString("hex"))')"
+          env -i PATH="$PATH" HOME=/tmp NODE_ENV=test \
+            EXPANSION_TEST_DATABASE_URL="mysql://root:root@localhost:3306/$schema" \
+            node scripts/exam-bank-expansion-acceptance.mjs --acknowledge-disposable-local-database
+      - name: Validate governed gap-to-1000 package and real database rollback acceptance
+        shell: bash
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: |
+          set -euo pipefail
+          python3 -B content/exam-bank-gap-1000/tools/verify_receipts.py
+          python3 -B content/exam-bank-gap-1000/tools/test_negative_cases.py
+          test ! -d content/exam-bank-gap-1000/tools/__pycache__
+          node scripts/exam-bank-gap-1000-release.mjs
+          env -i PATH="$PATH" HOME=/tmp NODE_ENV=test PYTHONDONTWRITEBYTECODE=1 \
+            node --test scripts/exam-bank-gap-1000-release.test.mjs
+          schema="expansion_acceptance_$(node -e 'process.stdout.write(require("crypto").randomBytes(16).toString("hex"))')"
+          env -i PATH="$PATH" HOME=/tmp NODE_ENV=test PYTHONDONTWRITEBYTECODE=1 \
+            EXPANSION_TEST_DATABASE_URL="mysql://root:root@localhost:3306/$schema" \
+            node scripts/exam-bank-gap-1000-acceptance.mjs --acknowledge-disposable-local-database
       - name: Validate exact OIT batch-release package
         run: node scripts/release-oit-question-banks.mjs
       - name: Validate governed Class IV exam releases

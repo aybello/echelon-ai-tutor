@@ -1761,3 +1761,24 @@ export const assessmentActivityEvents = mysqlTable("assessment_activity_events",
   uniqueIndex("aae_session_event_unique").on(table.sessionId, table.eventId),
   uniqueIndex("aae_session_sequence_unique").on(table.sessionId, table.sequence),
 ]);
+
+/** Learner suggestions, separate from rating-based user_feedback. TIMESTAMP values use UTC. */
+export const featureRequests = mysqlTable("feature_requests", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId"),
+  /** Only the verified server context may supply this email. */
+  email: varchar("email", { length: 320 }),
+  courseKey: varchar("courseKey", { length: 64 }).notNull(),
+  pagePath: varchar("pagePath", { length: 256 }).notNull(),
+  source: mysqlEnum("source", ["dashboard", "quick10", "practice"]).notNull(),
+  suggestion: text("suggestion").notNull(),
+  problem: text("problem"),
+  followUpAllowed: boolean("followUpAllowed").default(false).notNull(),
+  status: mysqlEnum("status", ["new", "reviewing", "planned", "released"]).default("new").notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+}, table => [
+  index("feature_requests_status_created_idx").on(table.status, table.createdAt),
+]);
+export type FeatureRequest = typeof featureRequests.$inferSelect;
+export type InsertFeatureRequest = typeof featureRequests.$inferInsert;

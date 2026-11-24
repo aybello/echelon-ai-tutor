@@ -1,0 +1,384 @@
+{
+ "courseKey": "wpi-class2-water",
+ "bankKey": "wpi-class2-water",
+ "batch": 3,
+ "size": 41,
+ "conceptualCount": 33,
+ "calcCount": 8,
+ "topicPoolRound": 1,
+ "questionNumStart": 2535,
+ "questionNumEnd": 2575,
+ "itemIdStart": "WATER-TREATMENT-L2-535",
+ "itemIdEnd": "WATER-TREATMENT-L2-575",
+ "items": [
+  {
+   "seq": 1,
+   "questionNum": 2535,
+   "itemId": "WATER-TREATMENT-L2-535",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "enhanced sedimentation performance"
+  },
+  {
+   "seq": 2,
+   "questionNum": 2536,
+   "itemId": "WATER-TREATMENT-L2-536",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "filtration troubleshooting"
+  },
+  {
+   "seq": 3,
+   "questionNum": 2537,
+   "itemId": "WATER-TREATMENT-L2-537",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "chloramine awareness"
+  },
+  {
+   "seq": 4,
+   "questionNum": 2538,
+   "itemId": "WATER-TREATMENT-L2-538",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "disinfection by-product control"
+  },
+  {
+   "seq": 5,
+   "questionNum": 2539,
+   "itemId": "WATER-TREATMENT-L2-539",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "particle counting awareness"
+  },
+  {
+   "seq": 6,
+   "questionNum": 2540,
+   "itemId": "WATER-TREATMENT-L2-540",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "advanced sampling"
+  },
+  {
+   "seq": 7,
+   "questionNum": 2541,
+   "itemId": "WATER-TREATMENT-L2-541",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "hardness and alkalinity analysis"
+  },
+  {
+   "seq": 8,
+   "questionNum": 2542,
+   "itemId": "WATER-TREATMENT-L2-542",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "process trending"
+  },
+  {
+   "seq": 9,
+   "questionNum": 2543,
+   "itemId": "WATER-TREATMENT-L2-543",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "enhanced sedimentation performance"
+  },
+  {
+   "seq": 10,
+   "questionNum": 2544,
+   "itemId": "WATER-TREATMENT-L2-544",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "filtration troubleshooting"
+  },
+  {
+   "seq": 11,
+   "questionNum": 2545,
+   "itemId": "WATER-TREATMENT-L2-545",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "chloramine awareness"
+  },
+  {
+   "seq": 12,
+   "questionNum": 2546,
+   "itemId": "WATER-TREATMENT-L2-546",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "disinfection by-product control"
+  },
+  {
+   "seq": 13,
+   "questionNum": 2547,
+   "itemId": "WATER-TREATMENT-L2-547",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "particle counting awareness"
+  },
+  {
+   "seq": 14,
+   "questionNum": 2548,
+   "itemId": "WATER-TREATMENT-L2-548",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "advanced sampling"
+  },
+  {
+   "seq": 15,
+   "questionNum": 2549,
+   "itemId": "WATER-TREATMENT-L2-549",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "hardness and alkalinity analysis"
+  },
+  {
+   "seq": 16,
+   "questionNum": 2550,
+   "itemId": "WATER-TREATMENT-L2-550",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "process trending"
+  },
+  {
+   "seq": 17,
+   "questionNum": 2551,
+   "itemId": "WATER-TREATMENT-L2-551",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "enhanced sedimentation performance"
+  },
+  {
+   "seq": 18,
+   "questionNum": 2552,
+   "itemId": "WATER-TREATMENT-L2-552",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "filtration troubleshooting"
+  },
+  {
+   "seq": 19,
+   "questionNum": 2553,
+   "itemId": "WATER-TREATMENT-L2-553",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "chloramine awareness"
+  },
+  {
+   "seq": 20,
+   "questionNum": 2554,
+   "itemId": "WATER-TREATMENT-L2-554",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "disinfection by-product control"
+  },
+  {
+   "seq": 21,
+   "questionNum": 2555,
+   "itemId": "WATER-TREATMENT-L2-555",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "particle counting awareness"
+  },
+  {
+   "seq": 22,
+   "questionNum": 2556,
+   "itemId": "WATER-TREATMENT-L2-556",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "advanced sampling"
+  },
+  {
+   "seq": 23,
+   "questionNum": 2557,
+   "itemId": "WATER-TREATMENT-L2-557",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "hardness and alkalinity analysis"
+  },
+  {
+   "seq": 24,
+   "questionNum": 2558,
+   "itemId": "WATER-TREATMENT-L2-558",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "process trending"
+  },
+  {
+   "seq": 25,
+   "questionNum": 2559,
+   "itemId": "WATER-TREATMENT-L2-559",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "enhanced sedimentation performance"
+  },
+  {
+   "seq": 26,
+   "questionNum": 2560,
+   "itemId": "WATER-TREATMENT-L2-560",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "filtration troubleshooting"
+  },
+  {
+   "seq": 27,
+   "questionNum": 2561,
+   "itemId": "WATER-TREATMENT-L2-561",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "chloramine awareness"
+  },
+  {
+   "seq": 28,
+   "questionNum": 2562,
+   "itemId": "WATER-TREATMENT-L2-562",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "disinfection by-product control"
+  },
+  {
+   "seq": 29,
+   "questionNum": 2563,
+   "itemId": "WATER-TREATMENT-L2-563",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "particle counting awareness"
+  },
+  {
+   "seq": 30,
+   "questionNum": 2564,
+   "itemId": "WATER-TREATMENT-L2-564",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "advanced sampling"
+  },
+  {
+   "seq": 31,
+   "questionNum": 2565,
+   "itemId": "WATER-TREATMENT-L2-565",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "hardness and alkalinity analysis"
+  },
+  {
+   "seq": 32,
+   "questionNum": 2566,
+   "itemId": "WATER-TREATMENT-L2-566",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "process trending"
+  },
+  {
+   "seq": 33,
+   "questionNum": 2567,
+   "itemId": "WATER-TREATMENT-L2-567",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "enhanced sedimentation performance"
+  },
+  {
+   "seq": 34,
+   "questionNum": 2568,
+   "itemId": "WATER-TREATMENT-L2-568",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "detention time in series units"
+  },
+  {
+   "seq": 35,
+   "questionNum": 2569,
+   "itemId": "WATER-TREATMENT-L2-569",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "solids mass rate to filters"
+  },
+  {
+   "seq": 36,
+   "questionNum": 2570,
+   "itemId": "WATER-TREATMENT-L2-570",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "solution feed with strength correction"
+  },
+  {
+   "seq": 37,
+   "questionNum": 2571,
+   "itemId": "WATER-TREATMENT-L2-571",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "pump energy with given efficiency"
+  },
+  {
+   "seq": 38,
+   "questionNum": 2572,
+   "itemId": "WATER-TREATMENT-L2-572",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "detention time in series units"
+  },
+  {
+   "seq": 39,
+   "questionNum": 2573,
+   "itemId": "WATER-TREATMENT-L2-573",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "solids mass rate to filters"
+  },
+  {
+   "seq": 40,
+   "questionNum": 2574,
+   "itemId": "WATER-TREATMENT-L2-574",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "solution feed with strength correction"
+  },
+  {
+   "seq": 41,
+   "questionNum": 2575,
+   "itemId": "WATER-TREATMENT-L2-575",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "pump energy with given efficiency"
+  }
+ ]
+}

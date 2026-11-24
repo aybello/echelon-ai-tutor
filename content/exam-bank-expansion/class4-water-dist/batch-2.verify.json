@@ -1,0 +1,72 @@
+[
+ {
+  "itemId": "DISTRIBUTION-L4-341",
+  "expression": "2400*0.8/1000",
+  "expected": "1.92",
+  "decimalPlaces": 2,
+  "unit": "kg/day"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-342",
+  "expression": "3.6*1000/120",
+  "expected": "30.0",
+  "decimalPlaces": 1,
+  "unit": "L/day"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-343",
+  "expression": "3.1416*0.15*0.15*850",
+  "expected": "60.08",
+  "decimalPlaces": 2,
+  "unit": "m3"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-344",
+  "expression": "45*18*60/1000",
+  "expected": "48.6",
+  "decimalPlaces": 1,
+  "unit": "m3"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-345",
+  "expression": "24*2*3+12",
+  "expected": "156",
+  "decimalPlaces": 0,
+  "unit": "samples"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-346",
+  "expression": "35*4+14+7",
+  "expected": "161",
+  "decimalPlaces": 0,
+  "unit": "samples"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-347",
+  "expression": "850*0.02",
+  "expected": "17",
+  "decimalPlaces": 0,
+  "unit": "hydrants"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-348",
+  "expression": "1250*0.08",
+  "expected": "100",
+  "decimalPlaces": 0,
+  "unit": "services"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-349",
+  "expression": "(1800*0.6+1200*0.9)/1000",
+  "expected": "2.16",
+  "decimalPlaces": 2,
+  "unit": "kg/day"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-350",
+  "expression": "3.1416*0.1*0.1*1200*3",
+  "expected": "113.10",
+  "decimalPlaces": 2,
+  "unit": "m3"
+ }
+]

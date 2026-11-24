@@ -126,12 +126,15 @@ export const adminRouter = router({
   getCustomerRecoveryEvidence: adminProcedure
     .input(z.object({
       reviewStatus: z.enum(["staged", "mapped", "claim_verified", "approved", "rejected", "imported"]).optional(),
-      limit: z.number().int().min(1).max(100).default(50),
-    }).default({ limit: 50 }))
+      limit: z.number().int().min(1).max(100).default(25),
+      page: z.number().int().min(1).max(100_000).default(1),
+    }).default({ limit: 25, page: 1 }))
     .query(async ({ input }) => {
       const db = await getDb();
       if (!db) throw new Error("Database unavailable");
 
+      const where = input.reviewStatus ? eq(customerRecoveryEvidence.reviewStatus, input.reviewStatus) : undefined;
+      const [totalRow] = await db.select({ total: count() }).from(customerRecoveryEvidence).where(where);
       const rows = await db.select({
         id: customerRecoveryEvidence.id,
         sourceType: customerRecoveryEvidence.sourceType,
@@ -154,11 +157,12 @@ export const adminRouter = router({
         importedAt: customerRecoveryEvidence.importedAt,
         createdAt: customerRecoveryEvidence.createdAt,
       }).from(customerRecoveryEvidence)
-        .where(input.reviewStatus ? eq(customerRecoveryEvidence.reviewStatus, input.reviewStatus) : undefined)
-        .orderBy(desc(customerRecoveryEvidence.createdAt))
-        .limit(input.limit);
-
-      return rows;
+        .where(where)
+        .orderBy(desc(customerRecoveryEvidence.createdAt), desc(customerRecoveryEvidence.id))
+        .limit(input.limit)
+        .offset((input.page - 1) * input.limit);
+      const total = Number(totalRow?.total ?? 0);
+      return { items: rows, total, page: input.page, pageSize: input.limit, totalPages: Math.max(1, Math.ceil(total / input.limit)) };
     }),
   /**
    * Admin-only evidence classification. It deliberately cannot approve a claim,

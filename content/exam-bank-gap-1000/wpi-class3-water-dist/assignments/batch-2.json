@@ -1,0 +1,438 @@
+{
+ "courseKey": "wpi-class3-water-dist",
+ "bankKey": "wpi-class3-water-dist",
+ "batch": 2,
+ "size": 47,
+ "conceptualCount": 38,
+ "calcCount": 9,
+ "topicPoolRound": 1,
+ "questionNumStart": 2499,
+ "questionNumEnd": 2545,
+ "itemIdStart": "DISTRIBUTION-L3-499",
+ "itemIdEnd": "DISTRIBUTION-L3-545",
+ "items": [
+  {
+   "seq": 1,
+   "questionNum": 2499,
+   "itemId": "DISTRIBUTION-L3-499",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[General] main break leadership"
+  },
+  {
+   "seq": 2,
+   "questionNum": 2500,
+   "itemId": "DISTRIBUTION-L3-500",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Administration] cross-connection program leadership"
+  },
+  {
+   "seq": 3,
+   "questionNum": 2501,
+   "itemId": "DISTRIBUTION-L3-501",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Processes] nitrification in storage response"
+  },
+  {
+   "seq": 4,
+   "questionNum": 2502,
+   "itemId": "DISTRIBUTION-L3-502",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Support Systems] pressure zone operations depth"
+  },
+  {
+   "seq": 5,
+   "questionNum": 2503,
+   "itemId": "DISTRIBUTION-L3-503",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Administration] asset management awareness"
+  },
+  {
+   "seq": 6,
+   "questionNum": 2504,
+   "itemId": "DISTRIBUTION-L3-504",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[General] leak detection programs"
+  },
+  {
+   "seq": 7,
+   "questionNum": 2505,
+   "itemId": "DISTRIBUTION-L3-505",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Processes] flushing strategy at scale"
+  },
+  {
+   "seq": 8,
+   "questionNum": 2506,
+   "itemId": "DISTRIBUTION-L3-506",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Administration] ORO duties awareness"
+  },
+  {
+   "seq": 9,
+   "questionNum": 2507,
+   "itemId": "DISTRIBUTION-L3-507",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[General] main break leadership"
+  },
+  {
+   "seq": 10,
+   "questionNum": 2508,
+   "itemId": "DISTRIBUTION-L3-508",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Administration] cross-connection program leadership"
+  },
+  {
+   "seq": 11,
+   "questionNum": 2509,
+   "itemId": "DISTRIBUTION-L3-509",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Processes] nitrification in storage response"
+  },
+  {
+   "seq": 12,
+   "questionNum": 2510,
+   "itemId": "DISTRIBUTION-L3-510",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Support Systems] pressure zone operations depth"
+  },
+  {
+   "seq": 13,
+   "questionNum": 2511,
+   "itemId": "DISTRIBUTION-L3-511",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Administration] asset management awareness"
+  },
+  {
+   "seq": 14,
+   "questionNum": 2512,
+   "itemId": "DISTRIBUTION-L3-512",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[General] leak detection programs"
+  },
+  {
+   "seq": 15,
+   "questionNum": 2513,
+   "itemId": "DISTRIBUTION-L3-513",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Processes] flushing strategy at scale"
+  },
+  {
+   "seq": 16,
+   "questionNum": 2514,
+   "itemId": "DISTRIBUTION-L3-514",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Administration] ORO duties awareness"
+  },
+  {
+   "seq": 17,
+   "questionNum": 2515,
+   "itemId": "DISTRIBUTION-L3-515",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[General] main break leadership"
+  },
+  {
+   "seq": 18,
+   "questionNum": 2516,
+   "itemId": "DISTRIBUTION-L3-516",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Administration] cross-connection program leadership"
+  },
+  {
+   "seq": 19,
+   "questionNum": 2517,
+   "itemId": "DISTRIBUTION-L3-517",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Processes] nitrification in storage response"
+  },
+  {
+   "seq": 20,
+   "questionNum": 2518,
+   "itemId": "DISTRIBUTION-L3-518",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Support Systems] pressure zone operations depth"
+  },
+  {
+   "seq": 21,
+   "questionNum": 2519,
+   "itemId": "DISTRIBUTION-L3-519",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Administration] asset management awareness"
+  },
+  {
+   "seq": 22,
+   "questionNum": 2520,
+   "itemId": "DISTRIBUTION-L3-520",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[General] leak detection programs"
+  },
+  {
+   "seq": 23,
+   "questionNum": 2521,
+   "itemId": "DISTRIBUTION-L3-521",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Processes] flushing strategy at scale"
+  },
+  {
+   "seq": 24,
+   "questionNum": 2522,
+   "itemId": "DISTRIBUTION-L3-522",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Administration] ORO duties awareness"
+  },
+  {
+   "seq": 25,
+   "questionNum": 2523,
+   "itemId": "DISTRIBUTION-L3-523",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[General] main break leadership"
+  },
+  {
+   "seq": 26,
+   "questionNum": 2524,
+   "itemId": "DISTRIBUTION-L3-524",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Administration] cross-connection program leadership"
+  },
+  {
+   "seq": 27,
+   "questionNum": 2525,
+   "itemId": "DISTRIBUTION-L3-525",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Processes] nitrification in storage response"
+  },
+  {
+   "seq": 28,
+   "questionNum": 2526,
+   "itemId": "DISTRIBUTION-L3-526",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Support Systems] pressure zone operations depth"
+  },
+  {
+   "seq": 29,
+   "questionNum": 2527,
+   "itemId": "DISTRIBUTION-L3-527",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Administration] asset management awareness"
+  },
+  {
+   "seq": 30,
+   "questionNum": 2528,
+   "itemId": "DISTRIBUTION-L3-528",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[General] leak detection programs"
+  },
+  {
+   "seq": 31,
+   "questionNum": 2529,
+   "itemId": "DISTRIBUTION-L3-529",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Processes] flushing strategy at scale"
+  },
+  {
+   "seq": 32,
+   "questionNum": 2530,
+   "itemId": "DISTRIBUTION-L3-530",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Administration] ORO duties awareness"
+  },
+  {
+   "seq": 33,
+   "questionNum": 2531,
+   "itemId": "DISTRIBUTION-L3-531",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[General] main break leadership"
+  },
+  {
+   "seq": 34,
+   "questionNum": 2532,
+   "itemId": "DISTRIBUTION-L3-532",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Administration] cross-connection program leadership"
+  },
+  {
+   "seq": 35,
+   "questionNum": 2533,
+   "itemId": "DISTRIBUTION-L3-533",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Processes] nitrification in storage response"
+  },
+  {
+   "seq": 36,
+   "questionNum": 2534,
+   "itemId": "DISTRIBUTION-L3-534",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Support Systems] pressure zone operations depth"
+  },
+  {
+   "seq": 37,
+   "questionNum": 2535,
+   "itemId": "DISTRIBUTION-L3-535",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Administration] asset management awareness"
+  },
+  {
+   "seq": 38,
+   "questionNum": 2536,
+   "itemId": "DISTRIBUTION-L3-536",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[General] leak detection programs"
+  },
+  {
+   "seq": 39,
+   "questionNum": 2537,
+   "itemId": "DISTRIBUTION-L3-537",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "flushing volume at system scale"
+  },
+  {
+   "seq": 40,
+   "questionNum": 2538,
+   "itemId": "DISTRIBUTION-L3-538",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "booster dosing with given rates"
+  },
+  {
+   "seq": 41,
+   "questionNum": 2539,
+   "itemId": "DISTRIBUTION-L3-539",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "pressure and head conversions"
+  },
+  {
+   "seq": 42,
+   "questionNum": 2540,
+   "itemId": "DISTRIBUTION-L3-540",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "sampling program counts"
+  },
+  {
+   "seq": 43,
+   "questionNum": 2541,
+   "itemId": "DISTRIBUTION-L3-541",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "flushing volume at system scale"
+  },
+  {
+   "seq": 44,
+   "questionNum": 2542,
+   "itemId": "DISTRIBUTION-L3-542",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "booster dosing with given rates"
+  },
+  {
+   "seq": 45,
+   "questionNum": 2543,
+   "itemId": "DISTRIBUTION-L3-543",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "pressure and head conversions"
+  },
+  {
+   "seq": 46,
+   "questionNum": 2544,
+   "itemId": "DISTRIBUTION-L3-544",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "sampling program counts"
+  },
+  {
+   "seq": 47,
+   "questionNum": 2545,
+   "itemId": "DISTRIBUTION-L3-545",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "flushing volume at system scale"
+  }
+ ]
+}

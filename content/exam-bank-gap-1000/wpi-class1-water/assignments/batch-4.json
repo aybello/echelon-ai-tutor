@@ -1,0 +1,375 @@
+{
+ "courseKey": "wpi-class1-water",
+ "bankKey": "wpi-class1-water",
+ "batch": 4,
+ "size": 40,
+ "conceptualCount": 32,
+ "calcCount": 8,
+ "topicPoolRound": 1,
+ "questionNumStart": 2574,
+ "questionNumEnd": 2613,
+ "itemIdStart": "WATER-TREATMENT-L1-574",
+ "itemIdEnd": "WATER-TREATMENT-L1-613",
+ "items": [
+  {
+   "seq": 1,
+   "questionNum": 2574,
+   "itemId": "WATER-TREATMENT-L1-574",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "source protection awareness"
+  },
+  {
+   "seq": 2,
+   "questionNum": 2575,
+   "itemId": "WATER-TREATMENT-L1-575",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "disinfection by-products awareness"
+  },
+  {
+   "seq": 3,
+   "questionNum": 2576,
+   "itemId": "WATER-TREATMENT-L1-576",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "filter troubleshooting"
+  },
+  {
+   "seq": 4,
+   "questionNum": 2577,
+   "itemId": "WATER-TREATMENT-L1-577",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "taste and odour basics"
+  },
+  {
+   "seq": 5,
+   "questionNum": 2578,
+   "itemId": "WATER-TREATMENT-L1-578",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "iron and manganese awareness"
+  },
+  {
+   "seq": 6,
+   "questionNum": 2579,
+   "itemId": "WATER-TREATMENT-L1-579",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "softening awareness"
+  },
+  {
+   "seq": 7,
+   "questionNum": 2580,
+   "itemId": "WATER-TREATMENT-L1-580",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "record keeping and reporting"
+  },
+  {
+   "seq": 8,
+   "questionNum": 2581,
+   "itemId": "WATER-TREATMENT-L1-581",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "operator duties and licensing"
+  },
+  {
+   "seq": 9,
+   "questionNum": 2582,
+   "itemId": "WATER-TREATMENT-L1-582",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "source protection awareness"
+  },
+  {
+   "seq": 10,
+   "questionNum": 2583,
+   "itemId": "WATER-TREATMENT-L1-583",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "disinfection by-products awareness"
+  },
+  {
+   "seq": 11,
+   "questionNum": 2584,
+   "itemId": "WATER-TREATMENT-L1-584",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "filter troubleshooting"
+  },
+  {
+   "seq": 12,
+   "questionNum": 2585,
+   "itemId": "WATER-TREATMENT-L1-585",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "taste and odour basics"
+  },
+  {
+   "seq": 13,
+   "questionNum": 2586,
+   "itemId": "WATER-TREATMENT-L1-586",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "iron and manganese awareness"
+  },
+  {
+   "seq": 14,
+   "questionNum": 2587,
+   "itemId": "WATER-TREATMENT-L1-587",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "softening awareness"
+  },
+  {
+   "seq": 15,
+   "questionNum": 2588,
+   "itemId": "WATER-TREATMENT-L1-588",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "record keeping and reporting"
+  },
+  {
+   "seq": 16,
+   "questionNum": 2589,
+   "itemId": "WATER-TREATMENT-L1-589",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "operator duties and licensing"
+  },
+  {
+   "seq": 17,
+   "questionNum": 2590,
+   "itemId": "WATER-TREATMENT-L1-590",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "source protection awareness"
+  },
+  {
+   "seq": 18,
+   "questionNum": 2591,
+   "itemId": "WATER-TREATMENT-L1-591",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "disinfection by-products awareness"
+  },
+  {
+   "seq": 19,
+   "questionNum": 2592,
+   "itemId": "WATER-TREATMENT-L1-592",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "filter troubleshooting"
+  },
+  {
+   "seq": 20,
+   "questionNum": 2593,
+   "itemId": "WATER-TREATMENT-L1-593",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "taste and odour basics"
+  },
+  {
+   "seq": 21,
+   "questionNum": 2594,
+   "itemId": "WATER-TREATMENT-L1-594",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "iron and manganese awareness"
+  },
+  {
+   "seq": 22,
+   "questionNum": 2595,
+   "itemId": "WATER-TREATMENT-L1-595",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "softening awareness"
+  },
+  {
+   "seq": 23,
+   "questionNum": 2596,
+   "itemId": "WATER-TREATMENT-L1-596",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "record keeping and reporting"
+  },
+  {
+   "seq": 24,
+   "questionNum": 2597,
+   "itemId": "WATER-TREATMENT-L1-597",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "operator duties and licensing"
+  },
+  {
+   "seq": 25,
+   "questionNum": 2598,
+   "itemId": "WATER-TREATMENT-L1-598",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "source protection awareness"
+  },
+  {
+   "seq": 26,
+   "questionNum": 2599,
+   "itemId": "WATER-TREATMENT-L1-599",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "disinfection by-products awareness"
+  },
+  {
+   "seq": 27,
+   "questionNum": 2600,
+   "itemId": "WATER-TREATMENT-L1-600",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "filter troubleshooting"
+  },
+  {
+   "seq": 28,
+   "questionNum": 2601,
+   "itemId": "WATER-TREATMENT-L1-601",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "taste and odour basics"
+  },
+  {
+   "seq": 29,
+   "questionNum": 2602,
+   "itemId": "WATER-TREATMENT-L1-602",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "iron and manganese awareness"
+  },
+  {
+   "seq": 30,
+   "questionNum": 2603,
+   "itemId": "WATER-TREATMENT-L1-603",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "softening awareness"
+  },
+  {
+   "seq": 31,
+   "questionNum": 2604,
+   "itemId": "WATER-TREATMENT-L1-604",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "record keeping and reporting"
+  },
+  {
+   "seq": 32,
+   "questionNum": 2605,
+   "itemId": "WATER-TREATMENT-L1-605",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "operator duties and licensing"
+  },
+  {
+   "seq": 33,
+   "questionNum": 2606,
+   "itemId": "WATER-TREATMENT-L1-606",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "solution strength and feed rate"
+  },
+  {
+   "seq": 34,
+   "questionNum": 2607,
+   "itemId": "WATER-TREATMENT-L1-607",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "storage detention time"
+  },
+  {
+   "seq": 35,
+   "questionNum": 2608,
+   "itemId": "WATER-TREATMENT-L1-608",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "pump run time"
+  },
+  {
+   "seq": 36,
+   "questionNum": 2609,
+   "itemId": "WATER-TREATMENT-L1-609",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "chlorine demand calculation"
+  },
+  {
+   "seq": 37,
+   "questionNum": 2610,
+   "itemId": "WATER-TREATMENT-L1-610",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "solution strength and feed rate"
+  },
+  {
+   "seq": 38,
+   "questionNum": 2611,
+   "itemId": "WATER-TREATMENT-L1-611",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "storage detention time"
+  },
+  {
+   "seq": 39,
+   "questionNum": 2612,
+   "itemId": "WATER-TREATMENT-L1-612",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "pump run time"
+  },
+  {
+   "seq": 40,
+   "questionNum": 2613,
+   "itemId": "WATER-TREATMENT-L1-613",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "chlorine demand calculation"
+  }
+ ]
+}

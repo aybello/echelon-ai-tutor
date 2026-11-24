@@ -27,7 +27,7 @@ const MODULE_ICONS: Record<string, string> = {
 export default function WpiClass4WaterQuiz() {
   usePageMeta({
     title: "WPI Class 4 Water Treatment Practice Quiz",
-    description: "Practice for the WPI Class 4 Water Treatment operator exam with 500 questions.",
+    description: "Practice for the WPI Class 4 Water Treatment operator exam with 1,000+ questions.",
     path: "/wpi-class4-water",
     keywords: "WPI Class 4 water treatment, operator exam prep",
     noindex: true
@@ -141,7 +141,7 @@ export default function WpiClass4WaterQuiz() {
           productName="WPI Class 4 Water Treatment Practice Pass"
           priceLabel="CA$299"
           paidFeatures={[
-            "502 WPI Class 4 questions — unlimited attempts",
+            "1,000+ WPI Class 4 questions — unlimited attempts",
             "Timed mock exam (100 questions, 2 hrs)",
             "AI Tutor explanations on every question",
             "Module-by-module performance tracking",

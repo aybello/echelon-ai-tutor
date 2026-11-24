@@ -45,6 +45,17 @@ function request(method: "GET" | "POST", procedure: string, payload: unknown) {
   });
 }
 
+function withoutActivityTracking(value: {
+  activityTracking?: unknown;
+  questions: Array<{ activityTracking?: unknown; [key: string]: unknown }>;
+}) {
+  const { activityTracking: _activityTracking, questions, ...rest } = value;
+  return {
+    ...rest,
+    questions: questions.map(({ activityTracking: _questionTracking, ...question }) => question),
+  };
+}
+
 beforeEach(() => {
   vi.clearAllMocks();
   select.mockImplementation(() => ({ from: () => ({ where: () => ({ orderBy: async () => rows }) }) }));
@@ -101,7 +112,14 @@ describe("interactive question working set", () => {
     expect(interactive.status).toBe(200);
     const legacyBody = await legacy.json();
     const body = await interactive.json();
-    expect(body.result.data.json).toEqual(legacyBody.result.data.json);
+    expect(withoutActivityTracking(body.result.data.json)).toEqual(withoutActivityTracking(legacyBody.result.data.json));
+    expect(body.result.data.json.activityTracking).toEqual({ tracking: false });
+    const expectedLegacyTracking = previewSurface === "practice"
+      ? { tracking: false, recorded: false, source: "observed" }
+      : { tracking: false };
+    expect(legacyBody.result.data.json.activityTracking).toEqual(expectedLegacyTracking);
+    for (const question of body.result.data.json.questions) expect(question.activityTracking).toEqual({ tracking: false });
+    for (const question of legacyBody.result.data.json.questions) expect(question.activityTracking).toEqual(expectedLegacyTracking);
     const result = body.result.data.json;
     expect(result).toMatchObject({ locked: true, total: 65, trialLimit: limit });
     expect(result.questions).toHaveLength(limit);
@@ -117,7 +135,12 @@ describe("interactive question working set", () => {
     vi.mocked(resolveAccessByEmail).mockResolvedValue({ hasAccess: true });
     const legacy = await caller.getQuestions(input);
     const paid = await caller.getInteractiveQuestions(input);
-    expect(paid).toEqual(legacy);
+    expect(withoutActivityTracking(paid)).toEqual(withoutActivityTracking(legacy));
+    expect(paid.activityTracking).toEqual({ tracking: false });
+    const expectedLegacyTracking = { tracking: false, recorded: false, source: "observed" };
+    expect(legacy.activityTracking).toEqual(expectedLegacyTracking);
+    for (const question of paid.questions) expect(question.activityTracking).toEqual({ tracking: false });
+    for (const question of legacy.questions) expect(question.activityTracking).toEqual(expectedLegacyTracking);
     expect(paid.locked).toBe(false);
     expect(paid.questions).toHaveLength(30);
     expect(paid.questions[0]).toMatchObject({ question: "Question 1", options: ["a", "b", "c", "d"], correctIndex: 0, attemptToken: "paid-receipt" });

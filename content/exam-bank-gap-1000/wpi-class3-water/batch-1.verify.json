@@ -1,0 +1,72 @@
+[
+ {
+  "itemId": "WATER-TREATMENT-L3-490",
+  "expression": "8*50*22.5",
+  "expected": "9000.0",
+  "decimalPlaces": 1,
+  "unit": "L/h"
+ },
+ {
+  "itemId": "WATER-TREATMENT-L3-491",
+  "expression": "640*(1-0.8)",
+  "expected": "128.0",
+  "decimalPlaces": 1,
+  "unit": "m3/day"
+ },
+ {
+  "itemId": "WATER-TREATMENT-L3-492",
+  "expression": "(285+245)/2-65",
+  "expected": "200.0",
+  "decimalPlaces": 1,
+  "unit": "kPa"
+ },
+ {
+  "itemId": "WATER-TREATMENT-L3-493",
+  "expression": "15*(45/15)",
+  "expected": "45.0",
+  "decimalPlaces": 1,
+  "unit": "mJ/cm2"
+ },
+ {
+  "itemId": "WATER-TREATMENT-L3-494",
+  "expression": "10800/27/4",
+  "expected": "100.0",
+  "decimalPlaces": 1,
+  "unit": "m2"
+ },
+ {
+  "itemId": "WATER-TREATMENT-L3-495",
+  "expression": "900*(1-0.75)*(1-0.6)",
+  "expected": "90.0",
+  "decimalPlaces": 1,
+  "unit": "m3/day"
+ },
+ {
+  "itemId": "WATER-TREATMENT-L3-496",
+  "expression": "((380+330)/2-25)-((340+300)/2-20)",
+  "expected": "30.0",
+  "decimalPlaces": 1,
+  "unit": "kPa"
+ },
+ {
+  "itemId": "WATER-TREATMENT-L3-497",
+  "expression": "24*2.5*0.9*0.85",
+  "expected": "45.9",
+  "decimalPlaces": 1,
+  "unit": "mJ/cm2"
+ },
+ {
+  "itemId": "WATER-TREATMENT-L3-498",
+  "expression": "7800/300-7200/300",
+  "expected": "2.0",
+  "decimalPlaces": 1,
+  "unit": "L/m2/h"
+ },
+ {
+  "itemId": "WATER-TREATMENT-L3-499",
+  "expression": "(900+600)/0.75",
+  "expected": "2000.0",
+  "decimalPlaces": 1,
+  "unit": "m3/day"
+ }
+]

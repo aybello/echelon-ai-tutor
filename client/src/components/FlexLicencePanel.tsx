@@ -267,7 +267,7 @@ export function FlexLicencePanel({ orgId }: FlexLicencePanelProps) {
               {unusedCount > 0 && <p className="rounded-lg border border-blue-200 bg-blue-50 p-3 text-xs text-blue-900"><strong>{unusedCount} unused pass{unusedCount === 1 ? "" : "es"}</strong> ready for eligible operator invitations.</p>}
               {pendingCount > 0 && <p className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-xs text-amber-900"><strong>{pendingCount} pending invitation{pendingCount === 1 ? "" : "s"}</strong>. Follow up before activation deadlines.</p>}
               {invitedNearDeadline > 0 && <p className="rounded-lg border border-orange-200 bg-orange-50 p-3 text-xs text-orange-900"><strong>{invitedNearDeadline} invitation{invitedNearDeadline === 1 ? "" : "s"}</strong> with activation deadlines within 14 days.</p>}
-              {invitedOverdue > 0 && <p className="rounded-lg border border-red-200 bg-red-50 p-3 text-xs text-red-900"><strong>{invitedOverdue} invitation{invitedOverdue === 1 ? "" : "s"}</strong> past the activation deadline. Reissue these passes so the seats are not wasted.</p>}
+              {invitedOverdue > 0 && <p className="rounded-lg border border-red-200 bg-red-50 p-3 text-xs text-red-900"><strong>{invitedOverdue} invitation{invitedOverdue === 1 ? "" : "s"}</strong>: the activation deadline has passed. Contact support to review available options.</p>}
               {expiringAccessCount > 0 && <p className="rounded-lg border border-rose-200 bg-rose-50 p-3 text-xs text-rose-900"><strong>{expiringAccessCount} active pass{expiringAccessCount === 1 ? "" : "es"}</strong> reaching access end within 30 days. Review renewal or retake options.</p>}
             </div>
           )}
@@ -275,7 +275,7 @@ export function FlexLicencePanel({ orgId }: FlexLicencePanelProps) {
             <table className="w-full min-w-[820px] text-sm">
               <thead><tr className="border-b text-left text-muted-foreground">
                 <th className="pb-2 pr-4">Course</th><th className="pb-2 pr-4">Term</th><th className="pb-2 pr-4">Status</th>
-                <th className="pb-2 pr-4">Operator</th><th className="pb-2 pr-4">Access ends</th><th className="pb-2">Actions</th>
+                <th className="pb-2 pr-4">Operator</th><th className="pb-2 pr-4">Licence dates</th><th className="pb-2">Actions</th>
               </tr></thead>
               <tbody>{licences.map((licence) => (
                 <tr key={licence.id} className="border-b last:border-0">
@@ -283,7 +283,12 @@ export function FlexLicencePanel({ orgId }: FlexLicencePanelProps) {
                   <td className="py-2 pr-4">{licence.termMonths}mo</td>
                   <td className="py-2 pr-4"><span className={`inline-block rounded px-2 py-0.5 text-xs font-medium ${STATUS_COLORS[licence.status] ?? "bg-gray-100"}`}>{licence.status}</span></td>
                   <td className="py-2 pr-4 text-muted-foreground">{licence.invitedEmail ?? (licence.operatorUserId ? `User #${licence.operatorUserId}` : "—")}</td>
-                  <td className="py-2 pr-4 text-muted-foreground">{licence.accessEndsAt ? new Date(licence.accessEndsAt).toLocaleDateString() : "—"}</td>
+                  <td className="py-2 pr-4 text-xs text-muted-foreground">
+                    {!licence.activatedAt && <div>Activate by {new Date(licence.activationDeadline).toLocaleDateString()}</div>}
+                    {licence.activatedAt && <div>Activated {new Date(licence.activatedAt).toLocaleDateString()}</div>}
+                    <div>Access ends {licence.accessEndsAt ? new Date(licence.accessEndsAt).toLocaleDateString() : "—"}</div>
+                    {licence.reportingEndsAt && <div>Reporting ends {new Date(licence.reportingEndsAt).toLocaleDateString()}</div>}
+                  </td>
                   <td className="py-2">
                     {licence.status === "unused" && (invitingId === licence.id ? (
                       <div className="flex items-center gap-1">
@@ -293,7 +298,7 @@ export function FlexLicencePanel({ orgId }: FlexLicencePanelProps) {
                       </div>
                     ) : <Button size="sm" variant="outline" className="h-7 text-xs" onClick={() => setInvitingId(licence.id)}>Invite</Button>)}
                     {licence.status === "invited" && <div className="flex gap-1">
-                      <Button size="sm" variant="ghost" className="h-7 text-xs" disabled={resendMutation.isPending} onClick={() => resendMutation.mutate({ licenceId: licence.id, orgId })}><RotateCw className="mr-1 h-3 w-3" />Resend</Button>
+                      <Button size="sm" variant="ghost" className="h-7 text-xs" disabled={resendMutation.isPending || isOverdue(licence.activationDeadline)} onClick={() => resendMutation.mutate({ licenceId: licence.id, orgId })}><RotateCw className="mr-1 h-3 w-3" />Resend</Button>
                       <Button size="sm" variant="ghost" className="h-7 text-xs text-red-600" onClick={() => cancelMutation.mutate({ licenceId: licence.id, orgId })}>Cancel</Button>
                     </div>}
                   </td>

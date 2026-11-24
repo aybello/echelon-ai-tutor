@@ -10,11 +10,11 @@ test("homepage managed organization logos all load offline on phone, tablet and 
     await page.goto("/#/homepage");
     const originals = page.locator('.trusted-organizations-list:not([aria-hidden])');
     const clone = page.locator('.trusted-organizations-list[aria-hidden="true"]');
-    await expect(originals.locator("li")).toHaveCount(3);
-    await expect(page.locator('.trusted-organizations-list:not([aria-hidden]) img, .trusted-organizations-supporter img')).toHaveCount(4);
+    await expect(originals.locator("li")).toHaveCount(4);
+    await expect(originals.locator("img")).toHaveCount(4);
     await expect(page.locator(".trusted-organizations").getByRole("img")).toHaveCount(4);
     await expect(clone).toHaveAttribute("role", "presentation");
-    await expect(clone.locator("li")).toHaveCount(3);
+    await expect(clone.locator("li")).toHaveCount(4);
     await expect(clone.locator("a, button, [tabindex]")).toHaveCount(0);
     await expect(clone).toBeHidden();
     for (const organization of organizations) {
@@ -28,7 +28,7 @@ test("homepage managed organization logos all load offline on phone, tablet and 
   }
 });
 
-test("customer logo motion is seamless, pausable and static for reduced motion while BEA never moves", async ({page}) => {
+test("customer logo motion is seamless, pausable and static for reduced motion with BEA absent", async ({page}) => {
   test.setTimeout(60000);
   await page.emulateMedia({reducedMotion:"no-preference"});
   await page.setViewportSize({width:1440, height:844});
@@ -36,20 +36,18 @@ test("customer logo motion is seamless, pausable and static for reduced motion w
   const customers = page.locator(".trusted-organizations-customers");
   const original = page.locator('.trusted-organizations-list:not([aria-hidden])');
   const clone = page.locator('.trusted-organizations-list[aria-hidden="true"]');
-  const supporter = page.locator(".trusted-organizations-supporter");
   const pause = page.getByRole("button", {name:"Pause logo animation", exact:true});
   await expect(pause).toBeVisible();
-  await expect(page.locator(".trusted-organizations img")).toHaveCount(7);
+  await expect(page.locator(".trusted-organizations img")).toHaveCount(8);
   await expect(page.locator(".trusted-organizations").getByRole("img")).toHaveCount(4);
+  await expect(page.locator(".trusted-organizations-supporter")).toHaveCount(0);
+  await expect(page.locator('.trusted-organizations img[alt*="Black Entrepreneurship Alliance"], .trusted-organizations img[src*="bea_560997bf"]')).toHaveCount(0);
   await expect(clone).toHaveAttribute("role", "presentation");
   await expect(clone.locator("a, button, [tabindex]")).toHaveCount(0);
   await page.mouse.move(0, 0);
   const position = () => original.evaluate(element => element.getBoundingClientRect().left);
   const initial = await position();
-  const bea = await supporter.boundingBox();
   await expect.poll(position).toBeLessThan(initial - 1);
-  await expect(supporter).toHaveCSS("animation-name", "none");
-  expect(await supporter.boundingBox()).toEqual(bea);
 
   await customers.hover();
   await expect(original).toHaveCSS("animation-play-state", "paused");
@@ -114,7 +112,6 @@ test("customer logo motion is seamless, pausable and static for reduced motion w
     expect(Math.abs(geometry.samples[4].cloneTile - geometry.samples[0].firstTile)).toBeLessThan(1);
     expect(geometry.samples[5].firstTile).toBeCloseTo(geometry.samples[0].firstTile, 2);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
-    expect(await supporter.evaluate(element => element.getAnimations({subtree:true}).length)).toBe(0);
   }
 
   await page.emulateMedia({reducedMotion:"reduce"});
@@ -159,15 +156,15 @@ test("offline preview embeds and loads the approved Echelon font families withou
 test("real homepage keeps the approved light technical design and both free OIT entry points on a phone", async ({page}) => {
   await page.setViewportSize({width:390,height:844});
   await page.goto("/#/homepage");
-  const heroTitle = page.getByRole("heading", {name:"Be ready for what’s next."});
+  const heroTitle = page.getByRole("heading", {name:"Learn the material. Build skills that last.", level:1, exact:true});
   await expect(heroTitle).toBeVisible();
   await expect(heroTitle).toHaveCSS("font-family", /Manrope/);
   await expect.poll(() => page.locator(".echelon-brand img").evaluate((image: HTMLImageElement) => image.naturalWidth > 0)).toBe(true);
   await page.getByRole("button", {name:"Open navigation menu", exact:true}).click();
-  await expect(page.locator(".echelon-mobile-links").getByRole("link", {name:"Jobs", exact:true})).toHaveAttribute("href", "/jobs");
-  await expect(page.locator(".echelon-mobile-links").getByRole("link", {name:"Blog", exact:true})).toHaveAttribute("href", "/blog");
+  await expect(page.locator(".echelon-mobile-links").getByRole("link", {name:"Continuing education", exact:true})).toHaveAttribute("href", "/continuing-education");
+  await expect(page.locator(".echelon-mobile-resources").getByRole("link", {name:"Blog", exact:true})).toHaveAttribute("href", /^#?\/blog$/);
   await page.getByRole("button", {name:"Close navigation menu", exact:true}).first().click();
-  const previewTrigger = page.getByRole("button",{name:"Try 15 free questions (OIT)",exact:true});
+  const previewTrigger = page.getByRole("button",{name:"New to the field? Try a free OIT preview",exact:true});
   await expect(previewTrigger).toHaveAttribute("aria-expanded", "false");
   await expect(previewTrigger).toHaveAttribute("aria-controls", "oit-preview-choice");
   await previewTrigger.click();
@@ -179,22 +176,28 @@ test("real homepage keeps the approved light technical design and both free OIT 
   await expect(page.locator("#oit-preview-choice")).toHaveCount(0);
   await expect(previewTrigger).toHaveAttribute("aria-expanded", "false");
   await expect(previewTrigger).toBeFocused();
-  await expect(page.getByRole("link",{name:"Find my course →",exact:true})).toHaveCount(0);
+  await expect(page.locator(".homepage-hero").getByRole("link",{name:"Find your course",exact:true})).toHaveAttribute("href", "#find-course");
   await expect(page.locator("#courses").getByRole("heading",{name:"Find your course",exact:true})).toBeVisible();
   await expect(page.locator("#courses").getByLabel("1. Province")).toBeEnabled();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
   await page.screenshot({path:"test-results/ui-workspace/homepage-mobile.png",fullPage:true});
 });
 
-test("Jobs and Blog stay directly accessible in public and learning desktop navigation", async ({page}) => {
+test("Jobs and Blog are reachable from the homepage and learning desktop navigation", async ({page}) => {
   await page.setViewportSize({width:1280,height:844});
-  for (const route of ["/homepage", "/class1-water"]) {
-    await page.goto(`/#${route}`);
-    for (const {label, href} of [{label:"Jobs", href:/^#?\/jobs$/}, {label:"Blog", href:/^#?\/blog$/}]) {
-      const link = page.locator(".echelon-desktop-links").getByRole("link", {name:label, exact:true});
-      await expect(link).toBeVisible();
-      await expect(link).toHaveAttribute("href", href);
-    }
+  await page.goto("/#/homepage");
+  const jobs = page.locator(".homepage-footer").getByRole("link", {name:"Jobs", exact:true});
+  await expect(jobs).toBeVisible();
+  await expect(jobs).toHaveAttribute("href", /^#?\/jobs$/);
+  await page.getByRole("button", {name:"Resources", exact:true}).click();
+  const blog = page.locator("#echelon-resources-menu").getByRole("link", {name:/^Blog\b/});
+  await expect(blog).toBeVisible();
+  await expect(blog).toHaveAttribute("href", /^#?\/blog$/);
+  await page.goto("/#/class1-water");
+  for (const {label, href} of [{label:"Jobs", href:/^#?\/jobs$/}, {label:"Blog", href:/^#?\/blog$/}]) {
+    const link = page.locator(".echelon-desktop-links").getByRole("link", {name:label, exact:true});
+    await expect(link).toBeVisible();
+    await expect(link).toHaveAttribute("href", href);
   }
 });
 
@@ -205,9 +208,9 @@ test("restored navigation keeps account controls on screen on a narrow laptop", 
   await expect(trigger).toBeVisible();
   expect(await page.locator(".echelon-nav-actions").evaluate(element => element.getBoundingClientRect().right <= window.innerWidth)).toBe(true);
   await trigger.click();
-  for (const name of ["Jobs", "Blog"]) {
-    await expect(page.locator(".echelon-mobile-links").getByRole("link", {name, exact:true})).toBeVisible();
-  }
+  await expect(page.locator(".echelon-mobile-links").getByRole("link", {name:"Continuing education", exact:true})).toBeVisible();
+  await expect(page.locator(".echelon-mobile-resources").getByRole("link", {name:"Blog", exact:true})).toBeVisible();
+  await expect(page.locator(".echelon-mobile-actions").getByRole("link", {name:/My account|Sign in/})).toBeVisible();
 });
 
 test("finder keeps province, system and level aligned, and resets dependent choices", async ({page}) => {
@@ -304,7 +307,7 @@ test("learner gets one primary step with charts in Progress", async ({page}) => 
   await expect(page.getByRole("link",{name:"Continue studying"})).toHaveAttribute("href",/class1-water/);
   await expect(page.getByRole("region",{name:"Study activity and history"})).toHaveCount(0);
   await page.screenshot({path:"test-results/ui-workspace/learner-dashboard.png",fullPage:true});
-  await page.getByRole("button",{name:"Progress and history",exact:true}).click();
+  await page.getByRole("button",{name:"Quiz progress and tutor history",exact:true}).click();
   await expect(page.getByRole("region",{name:"Study activity and history"})).toBeVisible();
 });
 
@@ -403,8 +406,13 @@ for (const width of [390, 720, 760, 1280]) {
 test("active mock fits a phone and question navigation is available", async ({page}) => {
   await page.setViewportSize({width:390,height:844});
   await page.goto("/#/mock");
+  // Starting during the fixture's guest-to-user change intentionally discards
+  // the old actor's response. Wait for auth.me, not dashboardAuth.me navigation.
+  await page.waitForFunction(() =>
+    JSON.parse(localStorage.getItem("manus-runtime-user-info") ?? "null")?.id === 1
+  );
   await page.getByRole("button",{name:/Start Exam/}).click();
-  await expect(page.locator(".mes-active-grid")).toBeVisible();
+  await expect(page.locator(".mes-active-grid")).toBeVisible({timeout:30000});
   await expect(page.locator(".mes-navigator")).not.toHaveAttribute("open","");
   await page.locator(".mes-navigator summary").click();
   await page.getByRole("button",{name:"Question 5, unanswered",exact:true}).click();
@@ -565,10 +573,10 @@ test("compact overview shortcut opens Learners and uses isolated search and acti
   await page.getByRole("textbox", {name:"Name or email"}).fill("jordan");
   await page.getByRole("button", {name:"Search learners", exact:true}).click();
   await page.getByRole("button", {name:"Jordan Mercer · jordan@example.test · Account #1", exact:true}).click();
-  await expect(page.getByText("No supported activity recorded in this window.", {exact:true})).toBeVisible();
+  await expect(page.getByText("No supported timeline activity recorded in this window. Check observed assessment sessions separately below.", {exact:true})).toBeVisible();
   await expect(page.getByLabel("History window")).toHaveValue("7");
   await page.getByLabel("History window").selectOption("30");
-  await expect(page.getByText("No supported activity recorded in this window.", {exact:true})).toBeVisible();
+  await expect(page.getByText("No supported timeline activity recorded in this window. Check observed assessment sessions separately below.", {exact:true})).toBeVisible();
   await expect(page.getByRole("alert")).toHaveCount(0);
   await page.getByRole("button", {name:"Open navigation", exact:true}).click();
   const learning = page.getByRole("navigation", {name:"Admin sections"}).locator("details").filter({has:page.locator("summary", {hasText:/^Learning$/})});

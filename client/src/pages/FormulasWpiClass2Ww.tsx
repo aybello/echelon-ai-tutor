@@ -1,8 +1,9 @@
 // WPI CLASS II WASTEWATER TREATMENT FORMULA SHEET
 import { useState } from "react";
-import { Link } from "wouter";
+import { Link, useSearch } from "wouter";
 import SiteNav from "@/components/SiteNav";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { getFormulaStudyLinks } from "@/lib/courseNavigation";
 
 interface FormulaCard {
   title: string;
@@ -353,6 +354,7 @@ const QUICK_REF = [
 ];
 
 export default function FormulasWpiClass2Ww() {
+  const study = getFormulaStudyLinks("/formulas-wpi-class2-ww", useSearch());
   usePageMeta({
     title: "WPI Class 2 Wastewater Formulas",
     description: "Essential formulas and calculations for WPI Class 2 Wastewater operator certification exam. Quick reference formula sheet.",
@@ -393,19 +395,19 @@ export default function FormulasWpiClass2Ww() {
             Key formulas for the WPI Class II Wastewater Treatment Operator exam — secondary treatment, nutrient removal, biosolids management, and advanced treatment.
           </p>
           <div style={{ display: "flex", gap: 12, marginTop: 20, flexWrap: "wrap" }}>
-            <Link href="/wpi-class2-wastewater" style={{
+            <Link href={study.practiceHref} style={{
               background: "#065f46", color: "#34d399", padding: "8px 18px",
               borderRadius: 8, textDecoration: "none", fontSize: 14, fontWeight: 600,
               border: "1px solid #34d399"
             }}>
-              Practice Quiz →
+              {study.practiceLabel}
             </Link>
-            <Link href="/wpi-class2-wastewater-mock" style={{
+            <Link href={study.mockHref} style={{
               background: "transparent", color: "#94a3b8", padding: "8px 18px",
               borderRadius: 8, textDecoration: "none", fontSize: 14,
               border: "1px solid #334155"
             }}>
-              Mock Exam →
+              {study.mockLabel}
             </Link>
           </div>
         </div>
@@ -512,18 +514,18 @@ export default function FormulasWpiClass2Ww() {
             Practice with 501 WPI Class II Wastewater questions
           </p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-            <Link href="/wpi-class2-wastewater" style={{
+            <Link href={study.practiceHref} style={{
               background: "#065f46", color: "#fff", padding: "12px 28px",
               borderRadius: 10, textDecoration: "none", fontSize: 15, fontWeight: 700
             }}>
-              Start Practice Quiz
+              {study.practiceLabel}
             </Link>
-            <Link href="/wpi-class2-wastewater-mock" style={{
+            <Link href={study.mockHref} style={{
               background: "#1e293b", color: "#94a3b8", padding: "12px 28px",
               borderRadius: 10, textDecoration: "none", fontSize: 15,
               border: "1px solid #334155"
             }}>
-              Take Mock Exam
+              {study.mockLabel}
             </Link>
           </div>
         </div>

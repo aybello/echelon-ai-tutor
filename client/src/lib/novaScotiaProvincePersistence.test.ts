@@ -12,14 +12,21 @@ describe("Nova Scotia saved province", () => {
     for (const province of PROVINCE_LIST) expect(schema.safeParse(province.id).success).toBe(true);
     expect(schema.safeParse("unsupported").success).toBe(false);
   });
-  it("selects the WPI family and scoped finder from either province banner", () => {
+  it("persists validated homepage selections and routes Nova Scotia through the scoped WPI finder", () => {
     expect(PROVINCE_LIST.find(item => item.id === "ns")?.track).toBe("wpi");
     const landing = readFileSync(new URL("../pages/Landing.tsx", import.meta.url), "utf8");
-    expect(landing).toContain("const handleProvinceSelect = (id: ProvinceId)");
-    expect(landing).toContain("setProvince(id)");
-    expect(landing).toContain("<CourseFinder initialProvince={province}");
+    expect(landing).toContain("const handleProvinceSelect = (value: string)");
+    expect(landing).toContain('if (value !== "on" && value !== "bc" && value !== "ab" && value !== "sk" && value !== "mb" && value !== "ns") return;');
+    expect(landing).toContain("setProvince(value)");
+    expect(landing).toContain("if (isAuthenticated) updateProvinceMutation.mutate({ province: value })");
+    expect(landing).toContain('new URLSearchParams(search).get("province")?.toLowerCase()');
+    expect(landing).toContain('routeProvince === "ns" ? routeProvince : storedProvince');
+    expect(landing).toContain("<HomepageCourseDiscovery initialProvince={province} onProvinceSelected={handleProvinceSelect}");
     expect(landing).toContain('id="find-course"');
+    const discovery = readFileSync(new URL("../components/HomepageCourseDiscovery.tsx", import.meta.url), "utf8");
+    expect(discovery).toContain("<CourseFinder initialProvince={initialProvince} onProvinceSelected={onProvinceSelected}");
     const wpi = readFileSync(new URL("../pages/WpiLanding.tsx", import.meta.url), "utf8");
+    expect(wpi).toContain("setProvince(id)");
     expect(wpi).toContain('if (id === "ns") navigate("/?province=NS#find-course")');
   });
 });

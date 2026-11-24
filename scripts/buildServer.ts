@@ -14,6 +14,7 @@ import {
   computeSourceFingerprint,
   isSourceFingerprintPath,
 } from "./sourceFingerprint";
+import { deepContentCourseKeys } from "../shared/deepGames";
 
 export type BuildReleaseKind = "git-commit" | "source-sha256" | "development";
 export type BuildReleaseIdentity = {
@@ -196,10 +197,10 @@ if (
     // Missing reviewed entrypoints fail the build rather than becoming placeholders.
     rmSync(resolve("dist/deep-game-content"), { recursive: true, force: true });
     await build({
-      entryPoints: {
-        oit: "server/deepGames/content/oit.ts",
-        "class1-water": "server/deepGames/content/class1-water.ts",
-      },
+      entryPoints: Object.fromEntries(deepContentCourseKeys.filter(courseKey => courseKey !== "oit-ww").map(courseKey => [
+        courseKey,
+        `server/deepGames/content/${courseKey}.ts`,
+      ])),
       platform: "node",
       bundle: true,
       format: "esm",

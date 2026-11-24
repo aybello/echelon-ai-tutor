@@ -1,0 +1,65 @@
+[
+ {
+  "itemId": "COLLECTION-L1-572",
+  "expression": "(4.8*1000/(12-4))/60",
+  "expected": "10.0",
+  "decimalPlaces": 1,
+  "unit": "minutes"
+ },
+ {
+  "itemId": "COLLECTION-L1-573",
+  "expression": "3.1416*0.15*0.15*900*1000/18/60",
+  "expected": "58.9",
+  "decimalPlaces": 1,
+  "unit": "minutes"
+ },
+ {
+  "itemId": "COLLECTION-L1-574",
+  "expression": "(96+48)/240*100",
+  "expected": "60.0",
+  "decimalPlaces": 1,
+  "unit": "%"
+ },
+ {
+  "itemId": "COLLECTION-L1-575",
+  "expression": "180*(7-1)",
+  "expected": "1080",
+  "decimalPlaces": 0,
+  "unit": "m"
+ },
+ {
+  "itemId": "COLLECTION-L1-576",
+  "expression": "(5.4*1000/(12*60))+5",
+  "expected": "12.5",
+  "decimalPlaces": 1,
+  "unit": "L/s"
+ },
+ {
+  "itemId": "COLLECTION-L1-577",
+  "expression": "120*1.2*2.5",
+  "expected": "360.0",
+  "decimalPlaces": 1,
+  "unit": "m3"
+ },
+ {
+  "itemId": "COLLECTION-L1-578",
+  "expression": "(54+30)/(2*60)*100",
+  "expected": "70.0",
+  "decimalPlaces": 1,
+  "unit": "%"
+ },
+ {
+  "itemId": "COLLECTION-L1-579",
+  "expression": "180*(5.5-0.5)+240*(4.5-0.5)",
+  "expected": "1860",
+  "decimalPlaces": 0,
+  "unit": "m"
+ },
+ {
+  "itemId": "COLLECTION-L1-580",
+  "expression": "(4.8*1000/(14+10-8))/60",
+  "expected": "5.0",
+  "decimalPlaces": 1,
+  "unit": "minutes"
+ }
+]

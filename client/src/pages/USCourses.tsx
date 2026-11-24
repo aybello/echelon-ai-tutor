@@ -63,8 +63,8 @@ export default function USCourses() {
       {US_STREAMS.filter(item => streamCourses.some(course => course.track === item.key)).map(item => <section key={item.key} className="us-course-section">
         <h2>{item.label}</h2>
         <div className="us-card-grid">{streamCourses.filter(course => course.track === item.key).map(course => <article key={course.courseKey} className="us-card" data-course-key={course.courseKey}>
-          <span className="us-badge">{course.examFamily === "us-state" ? "Pennsylvania-specific practice · free preview" : course.examFamily === "us-wpi" ? "Dedicated US Class I course" : "Shared WPI preparation"}</span><h3>{course.displayName}</h3>
-          <p>{course.examFamily === "us-state" ? "Original practice in US customary units. Not an official exam blueprint. Full Pennsylvania course-pass sales are not available yet." : course.examFamily === "us-wpi"
+          <span className="us-badge">{course.examFamily === "us-state" ? "State-specific practice · free preview" : course.examFamily === "us-wpi" ? "Dedicated US Class I course" : "Shared WPI preparation"}</span><h3>{course.displayName}</h3>
+          <p>{course.examFamily === "us-state" ? "Original practice in US customary units. Not an official exam blueprint. Full course-pass sales for this course are not available yet." : course.examFamily === "us-wpi"
             ? "Written to the WPI Class 1 Need-to-Know Criteria in US customary units, with cited public sources and worked calculation steps."
             : state ? `Confirmed ${state.name} program match. Review the local class names on the state page.` : "Confirm your authority's exam version and local class before choosing this course."}</p>
           <div className="us-actions">

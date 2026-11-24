@@ -1,5 +1,6 @@
 import nodemailer, { type Transporter, type SendMailOptions } from "nodemailer";
 import { ENV } from "./_core/env";
+import { renderPurchaseConfirmationEmail } from "./purchaseConfirmationTemplate";
 
 export interface ContactEmailPayload {
   name: string;
@@ -89,7 +90,7 @@ async function getTransporter(): Promise<Transporter> {
 export async function sendPurchaseConfirmationEmail(
   payload: PurchaseConfirmationPayload
 ): Promise<void> {
-  const { email, productName, productKey, amountCAD, paymentCurrency, quizPath, mockPath, accessExpiresAt } = payload;
+  const { email, productKey, amountCAD, paymentCurrency, accessExpiresAt } = payload;
 
   let transporter: Transporter;
 
@@ -108,124 +109,14 @@ export async function sendPurchaseConfirmationEmail(
     throw new Error("Email service not configured");
   }
 
-  const siteUrl = "https://echeloninstitute.ca";
-  const amountFormatted = formatPurchasePaymentAmount(amountCAD, paymentCurrency);
-  const quizUrl = `${siteUrl}${quizPath}`;
-  const mockUrl = `${siteUrl}${mockPath}`;
-  const accountUrl = `${siteUrl}/account`;
-  const accessSummary = purchaseAccessSummary(accessExpiresAt);
-  const accessLabel = purchaseAccessLabel(accessExpiresAt);
-
+  const confirmation = renderPurchaseConfirmationEmail(payload, {
+    amountFormatted: formatPurchasePaymentAmount(amountCAD, paymentCurrency),
+    accessLabel: purchaseAccessLabel(accessExpiresAt),
+  });
   const confirmationMail = {
     from: `"Echelon Institute" <${ENV.smtpUser || "no-reply@echeloninstitute.ca"}>`,
     to: email,
-    subject: `Your ${productName} is ready — Echelon Institute`,
-    text: [
-      `You're all set!`,
-      ``,
-      `Thank you for purchasing the ${productName} (${amountFormatted}).`,
-      accessSummary,
-      ``,
-      `Start studying now:`,
-      `  Practice Quiz: ${quizUrl}`,
-      `  Mock Exam:     ${mockUrl}`,
-      ``,
-      `IMPORTANT — Save this email.`,
-      `Your access is tied to this email address: ${email}`,
-      `To restore access on any device, visit: ${accountUrl}`,
-      `Enter the email above and your passes will be unlocked instantly.`,
-      ``,
-      `Questions? Reply to this email or contact us at abello@echeloninstitute.ca`,
-      ``,
-      `Good luck on your exam!`,
-      `— The Echelon Institute Team`,
-    ].join("\n"),
-    html: `
-<!DOCTYPE html>
-<html>
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"></head>
-<body style="margin:0;padding:0;background:#F1F5F9;font-family:Arial,Helvetica,sans-serif;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="background:#F1F5F9;padding:32px 16px;">
-    <tr><td align="center">
-      <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
-
-        <!-- Header -->
-        <tr>
-          <td style="background:linear-gradient(135deg,#1D4ED8 0%,#0E7490 100%);border-radius:12px 12px 0 0;padding:32px 32px 28px;text-align:center;">
-            <div style="font-size:40px;margin-bottom:12px;">🎉</div>
-            <h1 style="color:#ffffff;margin:0 0 8px;font-size:26px;font-weight:800;line-height:1.2;">You're all set!</h1>
-            <p style="color:rgba(255,255,255,0.85);margin:0;font-size:15px;">Your practice pass is now active and ready to use.</p>
-          </td>
-        </tr>
-
-        <!-- Body -->
-        <tr>
-          <td style="background:#ffffff;padding:32px;border:1px solid #E2E8F0;border-top:none;border-radius:0 0 12px 12px;">
-
-            <!-- Purchase summary -->
-            <div style="background:#F0FDF4;border:1.5px solid #BBF7D0;border-radius:10px;padding:18px 22px;margin-bottom:28px;">
-              <p style="margin:0 0 4px;font-size:12px;font-weight:700;color:#15803D;letter-spacing:0.06em;text-transform:uppercase;">Purchase Confirmed</p>
-              <p style="margin:0;font-size:18px;font-weight:800;color:#0F172A;">${productName}</p>
-              <p style="margin:4px 0 0;font-size:14px;color:#475569;">${amountFormatted} · One-time payment · ${accessLabel}</p>
-            </div>
-
-            <!-- Start studying CTAs -->
-            <p style="margin:0 0 16px;font-size:16px;font-weight:700;color:#0F172A;">Start studying now:</p>
-            <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:28px;">
-              <tr>
-                <td style="padding-right:8px;width:50%;">
-                  <a href="${quizUrl}" style="display:block;background:linear-gradient(135deg,#1D4ED8,#0E7490);color:#ffffff;text-decoration:none;text-align:center;padding:14px 12px;border-radius:8px;font-size:14px;font-weight:700;">
-                    📝 Practice Quiz →
-                  </a>
-                </td>
-                <td style="padding-left:8px;width:50%;">
-                  <a href="${mockUrl}" style="display:block;background:#0F172A;color:#ffffff;text-decoration:none;text-align:center;padding:14px 12px;border-radius:8px;font-size:14px;font-weight:700;">
-                    ⏱ Mock Exam →
-                  </a>
-                </td>
-              </tr>
-            </table>
-
-            <!-- Access restore notice -->
-            <div style="background:#FFF7ED;border:1.5px solid #FED7AA;border-radius:10px;padding:18px 22px;margin-bottom:28px;">
-              <p style="margin:0 0 8px;font-size:13px;font-weight:700;color:#C2410C;">⚠️ Save this email — it's your access key</p>
-              <p style="margin:0 0 10px;font-size:13px;color:#78350F;line-height:1.6;">
-                Your access is tied to this email address:<br>
-                <strong style="color:#0F172A;font-size:14px;">${email}</strong>
-              </p>
-              <p style="margin:0 0 12px;font-size:13px;color:#78350F;line-height:1.6;">
-                To restore access on any device (new phone, different browser, cleared cache), visit the Account page and enter this email.
-              </p>
-              <a href="${accountUrl}" style="display:inline-block;background:#FFF7ED;border:1.5px solid #FED7AA;color:#C2410C;text-decoration:none;padding:10px 18px;border-radius:7px;font-size:13px;font-weight:700;">
-                🎫 Restore Access → Account Page
-              </a>
-            </div>
-
-            <!-- What's included -->
-            <p style="margin:0 0 12px;font-size:14px;font-weight:700;color:#0F172A;">What's included in your pass:</p>
-            <ul style="margin:0 0 28px;padding-left:20px;">
-              <li style="font-size:13px;color:#475569;margin-bottom:6px;line-height:1.5;">400+ practice questions — unlimited attempts</li>
-              <li style="font-size:13px;color:#475569;margin-bottom:6px;line-height:1.5;">Timed mock exam (100 questions, 2 hours)</li>
-              <li style="font-size:13px;color:#475569;margin-bottom:6px;line-height:1.5;">AI Tutor — step-by-step explanations on every question</li>
-              <li style="font-size:13px;color:#475569;margin-bottom:6px;line-height:1.5;">Module-by-module performance tracking</li>
-              <li style="font-size:13px;color:#475569;line-height:1.5;">Formula sheet with worked examples</li>
-            </ul>
-
-            <!-- Footer -->
-            <div style="border-top:1px solid #E2E8F0;padding-top:20px;text-align:center;">
-              <p style="margin:0 0 6px;font-size:13px;color:#64748B;">Questions? Reply to this email or reach us at</p>
-              <p style="margin:0 0 6px;font-size:13px;"><a href="mailto:abello@echeloninstitute.ca" style="color:#1D4ED8;text-decoration:none;">abello@echeloninstitute.ca</a></p>
-              <p style="margin:12px 0 0;font-size:12px;color:#94A3B8;">Echelon Institute · Canada's AI-powered exam prep for water &amp; wastewater operators</p>
-            </div>
-
-          </td>
-        </tr>
-      </table>
-    </td></tr>
-  </table>
-</body>
-</html>
-    `,
+    ...confirmation,
   };
 
   const info = await transporter.sendMail(confirmationMail);
@@ -706,7 +597,7 @@ export async function sendReEngagementEmail(payload: ReEngagementEmailPayload): 
       `Just enter the email address you used to purchase (${email}) and you'll get a 6-digit code to sign in instantly. No password needed.`,
       ``,
       `Once you're in, you'll find:`,
-      `  - Your full question bank (400+ questions per course)`,
+      `  - Your full course-specific practice question bank`,
       `  - Timed mock exams`,
       `  - AI Tutor for step-by-step explanations`,
       `  - Your progress dashboard`,
@@ -754,7 +645,7 @@ export async function sendReEngagementEmail(payload: ReEngagementEmailPayload): 
 
             <p style="margin:0 0 12px;font-size:14px;font-weight:700;color:#0F172A;">Once you're in, you'll find:</p>
             <ul style="margin:0 0 28px;padding-left:20px;">
-              <li style="font-size:13px;color:#475569;margin-bottom:6px;line-height:1.5;">400+ practice questions per course, unlimited attempts</li>
+              <li style="font-size:13px;color:#475569;margin-bottom:6px;line-height:1.5;">Your full course-specific practice question bank, unlimited attempts</li>
               <li style="font-size:13px;color:#475569;margin-bottom:6px;line-height:1.5;">Timed mock exams (100 questions, 2 hours)</li>
               <li style="font-size:13px;color:#475569;margin-bottom:6px;line-height:1.5;">AI Tutor for step-by-step explanations on every question</li>
               <li style="font-size:13px;color:#475569;margin-bottom:6px;line-height:1.5;">Progress dashboard showing your accuracy by module</li>
@@ -922,6 +813,7 @@ export async function sendTeamEnrollmentEmail(
 ): Promise<void> {
   const { email, orgName, managerEmail, loginUrl, courseName, unsubscribeUrl } = payload;
   const courseLabel = courseName ?? "All-Access (all certification levels)";
+  const privacyNote = `Authorized managers at ${orgName} can review your assigned-course activity, platform-recorded study time, and session dates, activities, topics, and durations. Managers do not receive the text of private AI Tutor conversations or individual answer content.`;
 
   let transporter: Transporter;
   if (ENV.smtpHost && ENV.smtpUser && ENV.smtpPass) {
@@ -959,7 +851,7 @@ export async function sendTeamEnrollmentEmail(
       ``,
       `Use this email address (${email}) to sign in. You'll receive a one-time code — no password needed.`,
       ``,
-      `Your progress, scores, and exam readiness are tracked on your personal dashboard. Your manager at ${orgName} can see an overview of team readiness but cannot see your individual question responses.`,
+      `Your progress, scores, and exam readiness are tracked on your personal dashboard. ${privacyNote}`,
       ``,
       `Questions? Reply to this email or reach us at abello@echeloninstitute.ca`,
       ``,
@@ -1010,8 +902,8 @@ export async function sendTeamEnrollmentEmail(
               <tr>
                 <td style="vertical-align:top;width:50%;padding-right:12px;">
                   <ul style="margin:0;padding-left:18px;">
-                    <li style="font-size:13px;color:#475569;margin-bottom:8px;line-height:1.5;">400+ practice questions per exam level</li>
-                    <li style="font-size:13px;color:#475569;margin-bottom:8px;line-height:1.5;">Timed mock exams (100 questions, 2 hrs)</li>
+                    <li style="font-size:13px;color:#475569;margin-bottom:8px;line-height:1.5;">Full practice question bank for your assigned course</li>
+                    <li style="font-size:13px;color:#475569;margin-bottom:8px;line-height:1.5;">Timed mock exams with course-specific formats and timers</li>
                     <li style="font-size:13px;color:#475569;margin-bottom:8px;line-height:1.5;">AI Tutor — step-by-step explanations</li>
                     <li style="font-size:13px;color:#475569;line-height:1.5;">Flashcard spaced-repetition system</li>
                   </ul>
@@ -1030,7 +922,7 @@ export async function sendTeamEnrollmentEmail(
             <!-- Privacy note -->
             <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;padding:14px 18px;margin-bottom:28px;">
               <p style="margin:0;font-size:13px;color:#475569;line-height:1.6;">
-                <strong style="color:#0F172A;">Your privacy:</strong> Your manager at ${orgName} can see team-level readiness metrics (overall accuracy, activity, exam dates) but cannot see your individual question responses or session details.
+                <strong style="color:#0F172A;">Your privacy:</strong> ${privacyNote}
               </p>
             </div>
 

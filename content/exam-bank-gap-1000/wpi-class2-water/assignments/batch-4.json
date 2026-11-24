@@ -1,0 +1,384 @@
+{
+ "courseKey": "wpi-class2-water",
+ "bankKey": "wpi-class2-water",
+ "batch": 4,
+ "size": 41,
+ "conceptualCount": 33,
+ "calcCount": 8,
+ "topicPoolRound": 1,
+ "questionNumStart": 2576,
+ "questionNumEnd": 2616,
+ "itemIdStart": "WATER-TREATMENT-L2-576",
+ "itemIdEnd": "WATER-TREATMENT-L2-616",
+ "items": [
+  {
+   "seq": 1,
+   "questionNum": 2576,
+   "itemId": "WATER-TREATMENT-L2-576",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "coagulation under cold water conditions"
+  },
+  {
+   "seq": 2,
+   "questionNum": 2577,
+   "itemId": "WATER-TREATMENT-L2-577",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "filter ripening and turbidity spikes"
+  },
+  {
+   "seq": 3,
+   "questionNum": 2578,
+   "itemId": "WATER-TREATMENT-L2-578",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "storage and distribution interface"
+  },
+  {
+   "seq": 4,
+   "questionNum": 2579,
+   "itemId": "WATER-TREATMENT-L2-579",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "chemical spill response"
+  },
+  {
+   "seq": 5,
+   "questionNum": 2580,
+   "itemId": "WATER-TREATMENT-L2-580",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "supervisory duties awareness"
+  },
+  {
+   "seq": 6,
+   "questionNum": 2581,
+   "itemId": "WATER-TREATMENT-L2-581",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "regulation 170/03 class 2 duties"
+  },
+  {
+   "seq": 7,
+   "questionNum": 2582,
+   "itemId": "WATER-TREATMENT-L2-582",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "emergency response awareness"
+  },
+  {
+   "seq": 8,
+   "questionNum": 2583,
+   "itemId": "WATER-TREATMENT-L2-583",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "optimization studies"
+  },
+  {
+   "seq": 9,
+   "questionNum": 2584,
+   "itemId": "WATER-TREATMENT-L2-584",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "coagulation under cold water conditions"
+  },
+  {
+   "seq": 10,
+   "questionNum": 2585,
+   "itemId": "WATER-TREATMENT-L2-585",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "filter ripening and turbidity spikes"
+  },
+  {
+   "seq": 11,
+   "questionNum": 2586,
+   "itemId": "WATER-TREATMENT-L2-586",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "storage and distribution interface"
+  },
+  {
+   "seq": 12,
+   "questionNum": 2587,
+   "itemId": "WATER-TREATMENT-L2-587",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "chemical spill response"
+  },
+  {
+   "seq": 13,
+   "questionNum": 2588,
+   "itemId": "WATER-TREATMENT-L2-588",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "supervisory duties awareness"
+  },
+  {
+   "seq": 14,
+   "questionNum": 2589,
+   "itemId": "WATER-TREATMENT-L2-589",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "regulation 170/03 class 2 duties"
+  },
+  {
+   "seq": 15,
+   "questionNum": 2590,
+   "itemId": "WATER-TREATMENT-L2-590",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "emergency response awareness"
+  },
+  {
+   "seq": 16,
+   "questionNum": 2591,
+   "itemId": "WATER-TREATMENT-L2-591",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "optimization studies"
+  },
+  {
+   "seq": 17,
+   "questionNum": 2592,
+   "itemId": "WATER-TREATMENT-L2-592",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "coagulation under cold water conditions"
+  },
+  {
+   "seq": 18,
+   "questionNum": 2593,
+   "itemId": "WATER-TREATMENT-L2-593",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "filter ripening and turbidity spikes"
+  },
+  {
+   "seq": 19,
+   "questionNum": 2594,
+   "itemId": "WATER-TREATMENT-L2-594",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "storage and distribution interface"
+  },
+  {
+   "seq": 20,
+   "questionNum": 2595,
+   "itemId": "WATER-TREATMENT-L2-595",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "chemical spill response"
+  },
+  {
+   "seq": 21,
+   "questionNum": 2596,
+   "itemId": "WATER-TREATMENT-L2-596",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "supervisory duties awareness"
+  },
+  {
+   "seq": 22,
+   "questionNum": 2597,
+   "itemId": "WATER-TREATMENT-L2-597",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "regulation 170/03 class 2 duties"
+  },
+  {
+   "seq": 23,
+   "questionNum": 2598,
+   "itemId": "WATER-TREATMENT-L2-598",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "emergency response awareness"
+  },
+  {
+   "seq": 24,
+   "questionNum": 2599,
+   "itemId": "WATER-TREATMENT-L2-599",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "optimization studies"
+  },
+  {
+   "seq": 25,
+   "questionNum": 2600,
+   "itemId": "WATER-TREATMENT-L2-600",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "coagulation under cold water conditions"
+  },
+  {
+   "seq": 26,
+   "questionNum": 2601,
+   "itemId": "WATER-TREATMENT-L2-601",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "filter ripening and turbidity spikes"
+  },
+  {
+   "seq": 27,
+   "questionNum": 2602,
+   "itemId": "WATER-TREATMENT-L2-602",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "storage and distribution interface"
+  },
+  {
+   "seq": 28,
+   "questionNum": 2603,
+   "itemId": "WATER-TREATMENT-L2-603",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "chemical spill response"
+  },
+  {
+   "seq": 29,
+   "questionNum": 2604,
+   "itemId": "WATER-TREATMENT-L2-604",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "supervisory duties awareness"
+  },
+  {
+   "seq": 30,
+   "questionNum": 2605,
+   "itemId": "WATER-TREATMENT-L2-605",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "regulation 170/03 class 2 duties"
+  },
+  {
+   "seq": 31,
+   "questionNum": 2606,
+   "itemId": "WATER-TREATMENT-L2-606",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "emergency response awareness"
+  },
+  {
+   "seq": 32,
+   "questionNum": 2607,
+   "itemId": "WATER-TREATMENT-L2-607",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "optimization studies"
+  },
+  {
+   "seq": 33,
+   "questionNum": 2608,
+   "itemId": "WATER-TREATMENT-L2-608",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "coagulation under cold water conditions"
+  },
+  {
+   "seq": 34,
+   "questionNum": 2609,
+   "itemId": "WATER-TREATMENT-L2-609",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "overflow rate for larger works"
+  },
+  {
+   "seq": 35,
+   "questionNum": 2610,
+   "itemId": "WATER-TREATMENT-L2-610",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "chlorine demand and dose"
+  },
+  {
+   "seq": 36,
+   "questionNum": 2611,
+   "itemId": "WATER-TREATMENT-L2-611",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "tank turnover time"
+  },
+  {
+   "seq": 37,
+   "questionNum": 2612,
+   "itemId": "WATER-TREATMENT-L2-612",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "percent removal across stages"
+  },
+  {
+   "seq": 38,
+   "questionNum": 2613,
+   "itemId": "WATER-TREATMENT-L2-613",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "overflow rate for larger works"
+  },
+  {
+   "seq": 39,
+   "questionNum": 2614,
+   "itemId": "WATER-TREATMENT-L2-614",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "chlorine demand and dose"
+  },
+  {
+   "seq": 40,
+   "questionNum": 2615,
+   "itemId": "WATER-TREATMENT-L2-615",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "tank turnover time"
+  },
+  {
+   "seq": 41,
+   "questionNum": 2616,
+   "itemId": "WATER-TREATMENT-L2-616",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "percent removal across stages"
+  }
+ ]
+}

@@ -35,7 +35,11 @@ beforeAll(async () => {
             const status = {status:'diagnostic_started', profile:null, diagnostic:null, course:{displayName:'Synthetic OIT',quizPath:'/quiz'}};
             const questions = {questions:Array.from({length:15},(_,i)=>({id:i+1,module:'Safety',question:'Synthetic question '+(i+1),options:['Option A','Option B','Option C','Option D']}))};
             const idleMutation = () => ({isPending:false,mutate(){throw Error('Unexpected mutation in isolated diagnostic fixture');}});
+            // Supplemental tracking is unavailable; diagnostic storage remains real.
+            const unavailableTrackingMutation = {isPending:false,mutate(){},mutateAsync:async()=>({tracking:false})};
+            const unavailableActivity = {useMutation:()=>unavailableTrackingMutation};
             export const trpc = {
+              assessmentActivity:{record:unavailableActivity,resume:unavailableActivity},
               dashboardAuth:{me:{useQuery:()=>({data:null,isLoading:false})}},
               activation:{
                 status:{useQuery:()=>({data:status,isLoading:false,refetch(){}})},

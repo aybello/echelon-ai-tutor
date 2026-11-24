@@ -53,7 +53,7 @@ describe("pinned Class 3–4 Claude publication", () => {
       ...counts.protectedHashes,
       "client/src/pages/admin.css": "008a798cf62d2d5582409e735f77d2513e3556fa140eed22206b47508cf8ec5e",
       "client/src/pages/ContinuingEducationCourse.css": "3c791788f370ec2f7fda4b2c87d0d89162dad5a76d717accacbcef1f4803ae87",
-      "client/src/pages/Landing.css": "3e0d055cf7ab32bc48e7b42fa78d77df3c973905eee4a6f9485dce52360f26e3",
+      "client/src/pages/Landing.css": "2f3992c022962044a49733a29c60cae7279dadb5a820b4e3870be5c99c7929bb",
     };
     for (const [path, hash] of Object.entries(protectedHashes)) expect(sha(path === "server/interactiveContent/engine/releaseExclusions.json" ? historicalExclusionBytes : historicalAuthoringBytes(path)), path).toBe(hash);
   });

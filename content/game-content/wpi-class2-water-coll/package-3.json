@@ -1,0 +1,4060 @@
+{
+ "courseKey": "wpi-class2-water-coll",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "wp2wc-error60",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this rainfall inflow calculation for a combined sewer area on the British Columbia coast. The area and rainfall depth are given.",
+   "topicId": "rainfall-inflow-rate",
+   "level": "class1",
+   "assumptions": "Fictional inflow check: given area 21600 m2, rainfall depth 0.02 m over 4 h (14400 s), 1000 L = 1 m3, 3600 s = 1 h. All rain on the area reaches the sewer.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Inflow volume = 21600 m2 * 0.02 m = 4320 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Inflow volume = 4320 m3 * 1000 L/m3 = 4320000 L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Average inflow = 4320000 L / 14400 s = 300 L/s"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Inflow volume = 21600 m2 * 0.02 m = 432 m3",
+   "explanation": "Line 1 overstates the inflow volume by a factor of 10: 21600 m2 * 0.02 m is 432 m3, not 4320 m3. The volume is 432000 L and the average inflow is 30 L/s."
+  },
+  {
+   "id": "wp2wc-error61",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this rainfall inflow calculation for a combined sewer area on the British Columbia coast. The area and rainfall depth are given.",
+   "topicId": "rainfall-inflow-rate",
+   "level": "class1",
+   "assumptions": "Fictional inflow check: given area 14400 m2, rainfall depth 0.03 m over 3 h (10800 s), 1000 L = 1 m3, 3600 s = 1 h. All rain on the area reaches the sewer.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Inflow volume = 14400 m2 * 0.03 m = 432 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Inflow volume = 432 m3 * 1000 L/m3 = 432000 L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Average inflow = 432000 L / 1080 s = 400 L/s"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Average inflow = 432000 L / 10800 s = 40 L/s",
+   "explanation": "Line 3 used 1080 s for the storm duration instead of 10800 s. The average inflow is 40 L/s."
+  },
+  {
+   "id": "wp2wc-error62",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this rainfall inflow calculation for a combined sewer area on the British Columbia coast. The area and rainfall depth are given.",
+   "topicId": "rainfall-inflow-rate",
+   "level": "class1",
+   "assumptions": "Fictional inflow check: given area 28800 m2, rainfall depth 0.015 m over 6 h (21600 s), 1000 L = 1 m3, 3600 s = 1 h. All rain on the area reaches the sewer.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Inflow volume = 28800 m2 * 0.015 m = 432 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Inflow volume = 432 m3 * 100 L/m3 = 43200 L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Average inflow = 43200 L / 21600 s = 2 L/s"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Inflow volume = 432 m3 * 1000 L/m3 = 432000 L",
+   "explanation": "Line 2 used 100 L per m3 instead of 1000 L per m3. The volume is 432000 L and the average inflow is 20 L/s."
+  },
+  {
+   "id": "wp2wc-error63",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this storm inflow estimate for a sewer shed in a foothills community in western Canada. The shed area and the inflow coefficient are given.",
+   "topicId": "rainfall-depth-volume",
+   "level": "class1",
+   "assumptions": "Fictional storm estimate: rainfall 25 mm, given shed area 20000 m2, given inflow coefficient 0.4, 1000 mm = 1 m. Inflow volume equals rain volume times the coefficient.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Rain depth = 25 mm / 100 mm/m = 0.25 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Rain volume = 20000 m2 * 0.25 m = 5000 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Inflow volume = 5000 m3 * 0.4 = 2000 m3"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Rain depth = 25 mm / 1000 mm/m = 0.025 m",
+   "explanation": "Line 1 divided by 100 instead of 1000 mm per m. The rain depth is 0.025 m, the rain volume is 500 m3, and the inflow volume is 200 m3."
+  },
+  {
+   "id": "wp2wc-error64",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this storm inflow estimate for a sewer shed in a foothills community in western Canada. The shed area and the inflow coefficient are given.",
+   "topicId": "rainfall-depth-volume",
+   "level": "class1",
+   "assumptions": "Fictional storm estimate: rainfall 30 mm, given shed area 18000 m2, given inflow coefficient 0.5, 1000 mm = 1 m. Inflow volume equals rain volume times the coefficient.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Rain depth = 30 mm / 1000 mm/m = 0.03 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Rain volume = 18000 m2 + 0.03 m = 18000.03 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Inflow volume = 18000.03 m3 * 0.5 = 9000.015 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Rain volume = 18000 m2 * 0.03 m = 540 m3",
+   "explanation": "Line 2 added the area and the depth instead of multiplying them. The rain volume is 540 m3 and the inflow volume is 270 m3."
+  },
+  {
+   "id": "wp2wc-error65",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this storm inflow estimate for a sewer shed in a foothills community in western Canada. The shed area and the inflow coefficient are given.",
+   "topicId": "rainfall-depth-volume",
+   "level": "class1",
+   "assumptions": "Fictional storm estimate: rainfall 20 mm, given shed area 24000 m2, given inflow coefficient 0.6, 1000 mm = 1 m. Inflow volume equals rain volume times the coefficient.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Rain depth = 20 mm / 1000 mm/m = 0.02 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Rain volume = 24000 m2 * 0.02 m = 480 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Inflow volume = 480 m3 / 0.6 = 800 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Inflow volume = 480 m3 * 0.6 = 288 m3",
+   "explanation": "Line 3 divided by the inflow coefficient instead of multiplying by it. The inflow volume is 288 m3."
+  },
+  {
+   "id": "wp2wc-error66",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this storm inflow estimate for a sewer shed in a foothills community in western Canada. The shed area and the inflow coefficient are given.",
+   "topicId": "rainfall-depth-volume",
+   "level": "class1",
+   "assumptions": "Fictional storm estimate: rainfall 40 mm, given shed area 15000 m2, given inflow coefficient 0.3, 1000 mm = 1 m. Inflow volume equals rain volume times the coefficient.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Rain depth = 40 mm / 1000 mm/m = 0.04 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Rain volume = 15000 m2 + 0.04 m = 15000.04 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Inflow volume = 15000.04 m3 * 0.3 = 4500.012 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Rain volume = 15000 m2 * 0.04 m = 600 m3",
+   "explanation": "Line 2 added the area and the depth instead of multiplying them. The rain volume is 600 m3 and the inflow volume is 180 m3."
+  },
+  {
+   "id": "wp2wc-error67",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this cleaning production calculation for a sewer jetting crew working through the annual program in a western Canadian city.",
+   "topicId": "cleaning-production",
+   "level": "class1",
+   "assumptions": "Fictional cleaning program: jetting rate 45 m/h, 8 h per day, 5 days worked, program reach 3000 m. Percent complete equals cleaned / program * 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Cleaned per day = 45 m/h * 8 h = 3600 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Cleaned in 5 days = 3600 m * 5 days = 18000 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent complete = 18000 m / 3000 m * 100 = 600 percent"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Cleaned per day = 45 m/h * 8 h = 360 m",
+   "explanation": "Line 1 overstates the daily production by a factor of 10: 45 m/h * 8 h is 360 m, not 3600 m. The crew cleaned 1800 m in 5 days, which is 60 percent of the reach."
+  },
+  {
+   "id": "wp2wc-error68",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this cleaning production calculation for a sewer jetting crew working through the annual program in a western Canadian city.",
+   "topicId": "cleaning-production",
+   "level": "class1",
+   "assumptions": "Fictional cleaning program: jetting rate 50 m/h, 6 h per day, 4 days worked, program reach 2400 m. Percent complete equals cleaned / program * 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Cleaned per day = 50 m/h * 6 h = 300 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Cleaned in 4 days = 300 m / 4 days = 75 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent complete = 75 m / 2400 m * 100 = 3.125 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Cleaned in 4 days = 300 m * 4 days = 1200 m",
+   "explanation": "Line 2 divided the daily production by the number of days instead of multiplying. The crew cleaned 1200 m, which is 50 percent of the reach."
+  },
+  {
+   "id": "wp2wc-error69",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this cleaning production calculation for a sewer jetting crew working through the annual program in a western Canadian city.",
+   "topicId": "cleaning-production",
+   "level": "class1",
+   "assumptions": "Fictional cleaning program: jetting rate 40 m/h, 8 h per day, 5 days worked, program reach 3200 m. Percent complete equals cleaned / program * 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Cleaned per day = 40 m/h * 8 h = 320 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Cleaned in 5 days = 320 m * 5 days = 1600 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent complete = 1600 m / 3200 m * 10 = 5 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent complete = 1600 m / 3200 m * 100 = 50 percent",
+   "explanation": "Line 3 multiplied by 10 instead of 100 to get percent. The crew is 50 percent complete."
+  },
+  {
+   "id": "wp2wc-error70",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this cleaning production calculation for a sewer jetting crew working through the annual program in a western Canadian city.",
+   "topicId": "cleaning-production",
+   "level": "class1",
+   "assumptions": "Fictional cleaning program: jetting rate 60 m/h, 5 h per day, 6 days worked, program reach 3600 m. Percent complete equals cleaned / program * 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Cleaned per day = 60 m/h * 5 h = 300 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Cleaned in 6 days = 300 m * 6 days = 1800 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent complete = 1800 m / 3600 m * 10 = 5 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent complete = 1800 m / 3600 m * 100 = 50 percent",
+   "explanation": "Line 3 multiplied by 10 instead of 100 to get percent. The crew is 50 percent complete."
+  },
+  {
+   "id": "wp2wc-error71",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this cleaning production calculation for a sewer jetting crew working through the annual program in a western Canadian city.",
+   "topicId": "cleaning-production",
+   "level": "class1",
+   "assumptions": "Fictional cleaning program: jetting rate 35 m/h, 8 h per day, 5 days worked, program reach 2800 m. Percent complete equals cleaned / program * 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Cleaned per day = 35 m/h * 8 h = 280 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Cleaned in 5 days = 280 m / 5 days = 56 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent complete = 56 m / 2800 m * 100 = 2 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Cleaned in 5 days = 280 m * 5 days = 1400 m",
+   "explanation": "Line 2 divided the daily production by the number of days instead of multiplying. The crew cleaned 1400 m, which is 50 percent of the reach."
+  },
+  {
+   "id": "wp2wc-error72",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this cleaning production calculation for a sewer jetting crew working through the annual program in a western Canadian city.",
+   "topicId": "cleaning-production",
+   "level": "class1",
+   "assumptions": "Fictional cleaning program: jetting rate 55 m/h, 8 h per day, 4 days worked, program reach 4400 m. Percent complete equals cleaned / program * 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Cleaned per day = 55 m/h * 8 h = 4400 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Cleaned in 4 days = 4400 m * 4 days = 17600 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent complete = 17600 m / 4400 m * 100 = 400 percent"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Cleaned per day = 55 m/h * 8 h = 440 m",
+   "explanation": "Line 1 overstates the daily production by a factor of 10: 55 m/h * 8 h is 440 m, not 4400 m. The crew cleaned 1760 m in 4 days, which is 40 percent of the reach."
+  },
+  {
+   "id": "wp2wc-error73",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this cleaning production calculation for a sewer jetting crew working through the annual program in a western Canadian city.",
+   "topicId": "cleaning-production",
+   "level": "class1",
+   "assumptions": "Fictional cleaning program: jetting rate 48 m/h, 5 h per day, 5 days worked, program reach 3000 m. Percent complete equals cleaned / program * 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Cleaned per day = 48 m/h * 5 h = 240 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Cleaned in 5 days = 240 m / 5 days = 48 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent complete = 48 m / 3000 m * 100 = 1.6 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Cleaned in 5 days = 240 m * 5 days = 1200 m",
+   "explanation": "Line 2 divided the daily production by the number of days instead of multiplying. The crew cleaned 1200 m, which is 40 percent of the reach."
+  },
+  {
+   "id": "wp2wc-error74",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this cleaning production calculation for a sewer jetting crew working through the annual program in a western Canadian city.",
+   "topicId": "cleaning-production",
+   "level": "class1",
+   "assumptions": "Fictional cleaning program: jetting rate 42 m/h, 10 h per day, 3 days worked, program reach 2100 m. Percent complete equals cleaned / program * 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Cleaned per day = 42 m/h * 10 h = 420 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Cleaned in 3 days = 420 m * 3 days = 1260 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent complete = 1260 m / 2100 m * 10 = 6 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent complete = 1260 m / 2100 m * 100 = 60 percent",
+   "explanation": "Line 3 multiplied by 10 instead of 100 to get percent. The crew is 60 percent complete."
+  },
+  {
+   "id": "wp2wc-error75",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this CCTV inspection production calculation for the condition assessment program in a western Canadian community.",
+   "topicId": "cctv-production",
+   "level": "class1",
+   "assumptions": "Fictional CCTV program: average section length 30 m, 12 sections per shift, 5 shifts worked, program total 3000 m. Percent complete equals inspected / program * 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Inspected per shift = 30 m/section * 12 sections = 360 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Inspected in 5 shifts = 360 m / 5 shifts = 72 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent complete = 72 m / 3000 m * 100 = 2.4 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Inspected in 5 shifts = 360 m * 5 shifts = 1800 m",
+   "explanation": "Line 2 divided the per shift production by the number of shifts instead of multiplying. The crew inspected 1800 m, which is 60 percent of the program."
+  },
+  {
+   "id": "wp2wc-error76",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this CCTV inspection production calculation for the condition assessment program in a western Canadian community.",
+   "topicId": "cctv-production",
+   "level": "class1",
+   "assumptions": "Fictional CCTV program: average section length 25 m, 16 sections per shift, 4 shifts worked, program total 3200 m. Percent complete equals inspected / program * 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Inspected per shift = 25 m/section + 16 sections = 41 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Inspected in 4 shifts = 41 m * 4 shifts = 164 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent complete = 164 m / 3200 m * 100 = 5.125 percent"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Inspected per shift = 25 m/section * 16 sections = 400 m",
+   "explanation": "Line 1 added the section length and the section count instead of multiplying them. Each shift covers 400 m, the crew inspected 1600 m, which is 50 percent of the program."
+  },
+  {
+   "id": "wp2wc-error77",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this CCTV inspection production calculation for the condition assessment program in a western Canadian community.",
+   "topicId": "cctv-production",
+   "level": "class1",
+   "assumptions": "Fictional CCTV program: average section length 35 m, 10 sections per shift, 6 shifts worked, program total 4200 m. Percent complete equals inspected / program * 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Inspected per shift = 35 m/section * 10 sections = 350 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Inspected in 6 shifts = 350 m * 6 shifts = 2100 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent complete = 2100 m / 4200 m * 10 = 5 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent complete = 2100 m / 4200 m * 100 = 50 percent",
+   "explanation": "Line 3 multiplied by 10 instead of 100 to get percent. The crew is 50 percent complete."
+  },
+  {
+   "id": "wp2wc-error78",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this CCTV inspection production calculation for the condition assessment program in a western Canadian community.",
+   "topicId": "cctv-production",
+   "level": "class1",
+   "assumptions": "Fictional CCTV program: average section length 28 m, 15 sections per shift, 4 shifts worked, program total 3360 m. Percent complete equals inspected / program * 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Inspected per shift = 28 m/section * 15 sections = 420 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Inspected in 4 shifts = 420 m / 4 shifts = 105 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent complete = 105 m / 3360 m * 100 = 3.125 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Inspected in 4 shifts = 420 m * 4 shifts = 1680 m",
+   "explanation": "Line 2 divided the per shift production by the number of shifts instead of multiplying. The crew inspected 1680 m, which is 50 percent of the program."
+  },
+  {
+   "id": "wp2wc-error79",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this CCTV inspection production calculation for the condition assessment program in a western Canadian community.",
+   "topicId": "cctv-production",
+   "level": "class1",
+   "assumptions": "Fictional CCTV program: average section length 32 m, 10 sections per shift, 5 shifts worked, program total 3200 m. Percent complete equals inspected / program * 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Inspected per shift = 32 m/section * 10 sections = 320 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Inspected in 5 shifts = 320 m * 5 shifts = 1600 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent complete = 1600 m / 3200 m * 10 = 5 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent complete = 1600 m / 3200 m * 100 = 50 percent",
+   "explanation": "Line 3 multiplied by 10 instead of 100 to get percent. The crew is 50 percent complete."
+  },
+  {
+   "id": "wp2wc-error80",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this CCTV inspection production calculation for the condition assessment program in a western Canadian community.",
+   "topicId": "cctv-production",
+   "level": "class1",
+   "assumptions": "Fictional CCTV program: average section length 25 m, 20 sections per shift, 4 shifts worked, program total 4000 m. Percent complete equals inspected / program * 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Inspected per shift = 25 m/section + 20 sections = 45 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Inspected in 4 shifts = 45 m * 4 shifts = 180 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent complete = 180 m / 4000 m * 100 = 4.5 percent"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Inspected per shift = 25 m/section * 20 sections = 500 m",
+   "explanation": "Line 1 added the section length and the section count instead of multiplying them. Each shift covers 500 m, the crew inspected 2000 m, which is 50 percent of the program."
+  },
+  {
+   "id": "wp2wc-error81",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this CCTV inspection production calculation for the condition assessment program in a western Canadian community.",
+   "topicId": "cctv-production",
+   "level": "class1",
+   "assumptions": "Fictional CCTV program: average section length 36 m, 9 sections per shift, 5 shifts worked, program total 3240 m. Percent complete equals inspected / program * 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Inspected per shift = 36 m/section * 9 sections = 324 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Inspected in 5 shifts = 324 m * 5 shifts = 1620 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent complete = 1620 m / 3240 m * 10 = 5 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent complete = 1620 m / 3240 m * 100 = 50 percent",
+   "explanation": "Line 3 multiplied by 10 instead of 100 to get percent. The crew is 50 percent complete."
+  },
+  {
+   "id": "wp2wc-error82",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this CCTV inspection production calculation for the condition assessment program in a western Canadian community.",
+   "topicId": "cctv-production",
+   "level": "class1",
+   "assumptions": "Fictional CCTV program: average section length 24 m, 18 sections per shift, 5 shifts worked, program total 4320 m. Percent complete equals inspected / program * 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Inspected per shift = 24 m/section * 18 sections = 432 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Inspected in 5 shifts = 432 m / 5 shifts = 86.4 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent complete = 86.4 m / 4320 m * 100 = 2 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Inspected in 5 shifts = 432 m * 5 shifts = 2160 m",
+   "explanation": "Line 2 divided the per shift production by the number of shifts instead of multiplying. The crew inspected 2160 m, which is 50 percent of the program."
+  },
+  {
+   "id": "wp2wc-error83",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this cured in place liner quantity calculation for a sewer rehabilitation job in a western Canadian city.",
+   "topicId": "cipp-liner-quantity",
+   "level": "class1",
+   "assumptions": "Fictional lining job: pipe length 120 m, end allowance 1.5 m at each end, given liner width 1.6 m, given liner mass rate 1.2 kg/m2. Total length counts both end allowances.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total liner length = 120 m + 1.5 m = 121.5 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Liner area = 121.5 m * 1.6 m = 194.4 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Liner mass = 194.4 m2 * 1.2 kg/m2 = 233.28 kg"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Total liner length = 120 m + 2 * 1.5 m = 123 m",
+   "explanation": "Line 1 counted the end allowance only once, but the liner needs it at both ends. The total liner length is 123 m, the area is 196.8 m2, and the mass is 236.16 kg."
+  },
+  {
+   "id": "wp2wc-error84",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this cured in place liner quantity calculation for a sewer rehabilitation job in a western Canadian city.",
+   "topicId": "cipp-liner-quantity",
+   "level": "class1",
+   "assumptions": "Fictional lining job: pipe length 85 m, end allowance 2 m at each end, given liner width 1.2 m, given liner mass rate 1.5 kg/m2. Total length counts both end allowances.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total liner length = 85 m + 2 * 2 m = 89 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Liner area = 89 m + 1.2 m = 90.2 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Liner mass = 90.2 m2 * 1.5 kg/m2 = 135.3 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Liner area = 89 m * 1.2 m = 106.8 m2",
+   "explanation": "Line 2 added the liner length and width instead of multiplying them. The liner area is 106.8 m2 and the mass is 160.2 kg."
+  },
+  {
+   "id": "wp2wc-error85",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this cured in place liner quantity calculation for a sewer rehabilitation job in a western Canadian city.",
+   "topicId": "cipp-liner-quantity",
+   "level": "class1",
+   "assumptions": "Fictional lining job: pipe length 150 m, end allowance 1 m at each end, given liner width 2 m, given liner mass rate 1.1 kg/m2. Total length counts both end allowances.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total liner length = 150 m + 2 * 1 m = 152 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Liner area = 152 m * 2 m = 304 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Liner mass = 304 m2 + 1.1 kg/m2 = 305.1 kg"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Liner mass = 304 m2 * 1.1 kg/m2 = 334.4 kg",
+   "explanation": "Line 3 added the mass rate to the area instead of multiplying by it. The liner mass is 334.4 kg."
+  },
+  {
+   "id": "wp2wc-error86",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this cured in place liner quantity calculation for a sewer rehabilitation job in a western Canadian city.",
+   "topicId": "cipp-liner-quantity",
+   "level": "class1",
+   "assumptions": "Fictional lining job: pipe length 64 m, end allowance 1.5 m at each end, given liner width 1.4 m, given liner mass rate 1.25 kg/m2. Total length counts both end allowances.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total liner length = 64 m + 2 * 1.5 m = 67 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Liner area = 67 m + 1.4 m = 68.4 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Liner mass = 68.4 m2 * 1.25 kg/m2 = 85.5 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Liner area = 67 m * 1.4 m = 93.8 m2",
+   "explanation": "Line 2 added the liner length and width instead of multiplying them. The liner area is 93.8 m2 and the mass is 117.25 kg."
+  },
+  {
+   "id": "wp2wc-error87",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this cured in place liner quantity calculation for a sewer rehabilitation job in a western Canadian city.",
+   "topicId": "cipp-liner-quantity",
+   "level": "class1",
+   "assumptions": "Fictional lining job: pipe length 200 m, end allowance 2.5 m at each end, given liner width 1.8 m, given liner mass rate 0.9 kg/m2. Total length counts both end allowances.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total liner length = 200 m + 2.5 m = 202.5 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Liner area = 202.5 m * 1.8 m = 364.5 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Liner mass = 364.5 m2 * 0.9 kg/m2 = 328.05 kg"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Total liner length = 200 m + 2 * 2.5 m = 205 m",
+   "explanation": "Line 1 counted the end allowance only once, but the liner needs it at both ends. The total liner length is 205 m, the area is 369 m2, and the mass is 332.1 kg."
+  },
+  {
+   "id": "wp2wc-error88",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this cured in place liner quantity calculation for a sewer rehabilitation job in a western Canadian city.",
+   "topicId": "cipp-liner-quantity",
+   "level": "class1",
+   "assumptions": "Fictional lining job: pipe length 96 m, end allowance 2 m at each end, given liner width 1.5 m, given liner mass rate 1.6 kg/m2. Total length counts both end allowances.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total liner length = 96 m + 2 * 2 m = 100 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Liner area = 100 m * 1.5 m = 150 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Liner mass = 150 m2 / 1.6 kg/m2 = 93.75 kg"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Liner mass = 150 m2 * 1.6 kg/m2 = 240 kg",
+   "explanation": "Line 3 divided by the mass rate instead of multiplying by it. The liner mass is 240 kg."
+  },
+  {
+   "id": "wp2wc-error89",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this replacement pipe quantity calculation for a pipe bursting rehabilitation job in a western Canadian town.",
+   "topicId": "pipe-replacement-quantity",
+   "level": "class1",
+   "assumptions": "Fictional replacement job: 24 sections of 15 m each, pipe supplied in 6 m sticks, 4 spare sticks ordered. Sticks needed equals total length / stick length.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total length = 24 sections * 15 m = 360 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Pipe sticks needed = 360 m * 6 m/stick = 2160 sticks"
+    },
+    {
+     "id": "line3",
+     "label": "3. Sticks to order = 2160 sticks + 4 spare sticks = 2164 sticks"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Pipe sticks needed = 360 m / 6 m/stick = 60 sticks",
+   "explanation": "Line 2 multiplied the total length by the stick length instead of dividing by it. The job needs 60 sticks, and 64 sticks are ordered with spares."
+  },
+  {
+   "id": "wp2wc-error90",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this replacement pipe quantity calculation for a pipe bursting rehabilitation job in a western Canadian town.",
+   "topicId": "pipe-replacement-quantity",
+   "level": "class1",
+   "assumptions": "Fictional replacement job: 30 sections of 12 m each, pipe supplied in 6 m sticks, 5 spare sticks ordered. Sticks needed equals total length / stick length.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total length = 30 sections * 12 m = 360 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Pipe sticks needed = 360 m / 6 m/stick = 60 sticks"
+    },
+    {
+     "id": "line3",
+     "label": "3. Sticks to order = 60 sticks - 5 spare sticks = 55 sticks"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Sticks to order = 60 sticks + 5 spare sticks = 65 sticks",
+   "explanation": "Line 3 subtracted the spare sticks instead of adding them. The order is 65 sticks."
+  },
+  {
+   "id": "wp2wc-error91",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this replacement pipe quantity calculation for a pipe bursting rehabilitation job in a western Canadian town.",
+   "topicId": "pipe-replacement-quantity",
+   "level": "class1",
+   "assumptions": "Fictional replacement job: 18 sections of 20 m each, pipe supplied in 6 m sticks, 3 spare sticks ordered. Sticks needed equals total length / stick length.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total length = 18 sections * 20 m = 36 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Pipe sticks needed = 36 m / 6 m/stick = 6 sticks"
+    },
+    {
+     "id": "line3",
+     "label": "3. Sticks to order = 6 sticks + 3 spare sticks = 9 sticks"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Total length = 18 sections * 20 m = 360 m",
+   "explanation": "Line 1 understates the total length by a factor of 10: 18 sections * 20 m is 360 m, not 36 m. The job needs 60 sticks, and 63 sticks are ordered with spares."
+  },
+  {
+   "id": "wp2wc-error92",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this replacement pipe quantity calculation for a pipe bursting rehabilitation job in a western Canadian town.",
+   "topicId": "pipe-replacement-quantity",
+   "level": "class1",
+   "assumptions": "Fictional replacement job: 25 sections of 18 m each, pipe supplied in 6 m sticks, 4 spare sticks ordered. Sticks needed equals total length / stick length.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total length = 25 sections * 18 m = 450 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Pipe sticks needed = 450 m / 6 m/stick = 75 sticks"
+    },
+    {
+     "id": "line3",
+     "label": "3. Sticks to order = 75 sticks - 4 spare sticks = 71 sticks"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Sticks to order = 75 sticks + 4 spare sticks = 79 sticks",
+   "explanation": "Line 3 subtracted the spare sticks instead of adding them. The order is 79 sticks."
+  },
+  {
+   "id": "wp2wc-error93",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this replacement pipe quantity calculation for a pipe bursting rehabilitation job in a western Canadian town.",
+   "topicId": "pipe-replacement-quantity",
+   "level": "class1",
+   "assumptions": "Fictional replacement job: 16 sections of 24 m each, pipe supplied in 6 m sticks, 2 spare sticks ordered. Sticks needed equals total length / stick length.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total length = 16 sections * 24 m = 384 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Pipe sticks needed = 384 m * 6 m/stick = 2304 sticks"
+    },
+    {
+     "id": "line3",
+     "label": "3. Sticks to order = 2304 sticks + 2 spare sticks = 2306 sticks"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Pipe sticks needed = 384 m / 6 m/stick = 64 sticks",
+   "explanation": "Line 2 multiplied the total length by the stick length instead of dividing by it. The job needs 64 sticks, and 66 sticks are ordered with spares."
+  },
+  {
+   "id": "wp2wc-error94",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this replacement pipe quantity calculation for a pipe bursting rehabilitation job in a western Canadian town.",
+   "topicId": "pipe-replacement-quantity",
+   "level": "class1",
+   "assumptions": "Fictional replacement job: 28 sections of 15 m each, pipe supplied in 6 m sticks, 4 spare sticks ordered. Sticks needed equals total length / stick length.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total length = 28 sections * 15 m = 42 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Pipe sticks needed = 42 m / 6 m/stick = 7 sticks"
+    },
+    {
+     "id": "line3",
+     "label": "3. Sticks to order = 7 sticks + 4 spare sticks = 11 sticks"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Total length = 28 sections * 15 m = 420 m",
+   "explanation": "Line 1 understates the total length by a factor of 10: 28 sections * 15 m is 420 m, not 42 m. The job needs 70 sticks, and 74 sticks are ordered with spares."
+  },
+  {
+   "id": "wp2wc-error95",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chemical grout quantity calculation for a joint sealing rehabilitation job in a western Canadian community.",
+   "topicId": "grout-quantity",
+   "level": "class1",
+   "assumptions": "Fictional grouting job: reach length 240 m, joint spacing 8 m, given grout use 12 L per joint, 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Joints to seal = 240 m * 8 m/joint = 1920 joints"
+    },
+    {
+     "id": "line2",
+     "label": "2. Grout volume = 1920 joints * 12 L/joint = 23040 L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Grout volume = 23040 L / 1000 L/m3 = 23.04 m3"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Joints to seal = 240 m / 8 m/joint = 30 joints",
+   "explanation": "Line 1 multiplied the reach length by the joint spacing instead of dividing by it. The reach has 30 joints, the grout volume is 360 L, or 0.36 m3."
+  },
+  {
+   "id": "wp2wc-error96",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chemical grout quantity calculation for a joint sealing rehabilitation job in a western Canadian community.",
+   "topicId": "grout-quantity",
+   "level": "class1",
+   "assumptions": "Fictional grouting job: reach length 300 m, joint spacing 10 m, given grout use 9 L per joint, 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Joints to seal = 300 m / 10 m/joint = 30 joints"
+    },
+    {
+     "id": "line2",
+     "label": "2. Grout volume = 30 joints + 9 L/joint = 39 L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Grout volume = 39 L / 1000 L/m3 = 0.039 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Grout volume = 30 joints * 9 L/joint = 270 L",
+   "explanation": "Line 2 added the grout rate to the joint count instead of multiplying. The grout volume is 270 L, or 0.27 m3."
+  },
+  {
+   "id": "wp2wc-error97",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chemical grout quantity calculation for a joint sealing rehabilitation job in a western Canadian community.",
+   "topicId": "grout-quantity",
+   "level": "class1",
+   "assumptions": "Fictional grouting job: reach length 180 m, joint spacing 6 m, given grout use 15 L per joint, 1000 L = 1 m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Joints to seal = 180 m / 6 m/joint = 30 joints"
+    },
+    {
+     "id": "line2",
+     "label": "2. Grout volume = 30 joints * 15 L/joint = 450 L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Grout volume = 450 L * 1000 L/m3 = 450000 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Grout volume = 450 L / 1000 L/m3 = 0.45 m3",
+   "explanation": "Line 3 multiplied by 1000 instead of dividing to convert L to m3. The grout volume is 0.45 m3."
+  },
+  {
+   "id": "wp2wc-error98",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this manhole coating quantity calculation for a rehabilitation program in a western Canadian city, tracked for reporting under the federal Wastewater Systems Effluent Regulations context.",
+   "topicId": "manhole-coating-quantity",
+   "level": "class1",
+   "assumptions": "Fictional coating program: given wall area 12 m2 per manhole, 15 manholes, given coating rate 1.5 kg/m2.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total coating area = 12 m2/manhole * 15 manholes = 180 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Coating mass = 180 m2 / 1.5 kg/m2 = 120 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. Coating per manhole = 120 kg / 15 manholes = 8 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Coating mass = 180 m2 * 1.5 kg/m2 = 270 kg",
+   "explanation": "Line 2 divided by the coating rate instead of multiplying by it. The coating mass is 270 kg, which is 18 kg per manhole."
+  },
+  {
+   "id": "wp2wc-error99",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this manhole coating quantity calculation for a rehabilitation program in a western Canadian city, tracked for reporting under the federal Wastewater Systems Effluent Regulations context.",
+   "topicId": "manhole-coating-quantity",
+   "level": "class1",
+   "assumptions": "Fictional coating program: given wall area 9.6 m2 per manhole, 20 manholes, given coating rate 1.25 kg/m2.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total coating area = 9.6 m2/manhole * 20 manholes = 192 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Coating mass = 192 m2 * 1.25 kg/m2 = 240 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. Coating per manhole = 240 kg * 20 manholes = 4800 kg"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Coating per manhole = 240 kg / 20 manholes = 12 kg",
+   "explanation": "Line 3 multiplied by the manhole count instead of dividing by it. The coating use is 12 kg per manhole."
+  },
+  {
+   "id": "wp2wc-process01",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a quarterly pump performance check at a triplex lift station.",
+   "topicId": "lift-station-maintenance",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: Class 2 maintenance program check comparing each pump against its baseline drawdown rate, no pump is removed from service.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Compare the measured rate with the baseline and check current draw and discharge pressure during the same run"
+    },
+    {
+     "id": "s2",
+     "label": "Review baseline drawdown rates, run hours, and alarm history for all three pumps before the visit"
+    },
+    {
+     "id": "s3",
+     "label": "Record results in the asset history, flag any pump below the action threshold, and raise a work order for follow up"
+    },
+    {
+     "id": "s4",
+     "label": "Confirm the wet well level is in the normal band and isolate one pump at a time so the station stays in service"
+    },
+    {
+     "id": "s5",
+     "label": "Repeat the timed drawdown for the remaining pumps and rank them against the baseline"
+    },
+    {
+     "id": "s6",
+     "label": "Time a controlled drawdown with the test pump alone and record start and stop levels and elapsed time"
+    }
+   ],
+   "correctOrder": [
+    "s2",
+    "s4",
+    "s6",
+    "s1",
+    "s5",
+    "s3"
+   ],
+   "explanation": "One pump is tested at a time so capacity is never lost. Timed drawdown against a stored baseline, supported by current and pressure, separates a worn pump from a system problem, and the ranking drives the repair queue."
+  },
+  {
+   "id": "wp2wc-process02",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a planned wet well cleaning using a vacuum truck at a duplex lift station.",
+   "topicId": "lift-station-maintenance",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: grease and grit have built up in the wet well, both pumps remain available, and no confined space entry is planned.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "On site, confirm both pumps operate in automatic and draw the wet well down to the lowest safe level"
+    },
+    {
+     "id": "s2",
+     "label": "Record debris volume, disposal record, float condition, and the next due date in the station file"
+    },
+    {
+     "id": "s3",
+     "label": "Vacuum grease, grit, and rags from the surface and floor of the well, washing down the walls and floats as the level allows"
+    },
+    {
+     "id": "s4",
+     "label": "Review the station history and confirm the cleaning interval, access, and disposal site before scheduling the truck"
+    },
+    {
+     "id": "s5",
+     "label": "Isolate and lock out the pumps as required by the site procedure before hoses are lowered into the well"
+    },
+    {
+     "id": "s6",
+     "label": "Restore the pumps to automatic, run a full cycle, and confirm floats and level controls move freely and stop correctly"
+    }
+   ],
+   "correctOrder": [
+    "s4",
+    "s1",
+    "s5",
+    "s3",
+    "s6",
+    "s2"
+   ],
+   "explanation": "Drawing down first reduces the volume to be handled and exposes the deposits. Pumps are locked out while hoses are in the well, controls are proven on a real cycle afterwards, and the record resets the cleaning interval on evidence."
+  },
+  {
+   "id": "wp2wc-process03",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the removal and inspection of a submersible pump that has lost capacity.",
+   "topicId": "lift-station-maintenance",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: the pump was flagged by a performance check, a spare pump is on hand, and the second pump can carry the station alone.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Decide repair, rebuild, or replacement with the supervisor using the inspection findings and the pump age and hours"
+    },
+    {
+     "id": "s2",
+     "label": "Lift the pump by the approved rail and chain method, washing it down at the surface before inspection"
+    },
+    {
+     "id": "s3",
+     "label": "Isolate, lock out, and tag the faulty pump circuit and close its discharge valve"
+    },
+    {
+     "id": "s4",
+     "label": "Inspect the impeller, wear ring clearance, volute, cable, and seal chamber for the cause of the capacity loss"
+    },
+    {
+     "id": "s5",
+     "label": "Install the spare or repaired pump, restore automatic control, run a timed drawdown, and record the as left performance"
+    },
+    {
+     "id": "s6",
+     "label": "Confirm the standby pump carries the station and place the faulty pump control in off before any lifting"
+    }
+   ],
+   "correctOrder": [
+    "s6",
+    "s3",
+    "s2",
+    "s4",
+    "s1",
+    "s5"
+   ],
+   "explanation": "The station is protected first because it runs on one pump during the job. Lockout precedes lifting, inspection findings drive the repair decision rather than habit, and a timed drawdown proves the station was left at full capacity."
+  },
+  {
+   "id": "wp2wc-process04",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order discharge check valve and isolation valve maintenance at a lift station.",
+   "topicId": "lift-station-maintenance",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: annual program task on a duplex station, one pump branch is worked on at a time during low inflow hours.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Record valve condition, parts used, and any branch left with a defect in the maintenance log"
+    },
+    {
+     "id": "s2",
+     "label": "Exercise the isolation valve through its full travel and confirm it seats fully without excessive torque"
+    },
+    {
+     "id": "s3",
+     "label": "Reassemble with a sound gasket, restore the branch, and run the pump while checking for slam, leakage, and backflow on stop"
+    },
+    {
+     "id": "s4",
+     "label": "Remove the check valve cover and inspect the flapper or ball, hinge pin, and seat for wear, rags, and corrosion"
+    },
+    {
+     "id": "s5",
+     "label": "Schedule the work in the low flow window and confirm the other pump branch can carry the full station inflow"
+    },
+    {
+     "id": "s6",
+     "label": "Isolate the branch, lock out its pump, and drain the branch piping to the wet well before opening anything"
+    }
+   ],
+   "correctOrder": [
+    "s5",
+    "s6",
+    "s4",
+    "s2",
+    "s3",
+    "s1"
+   ],
+   "explanation": "Working one branch at a time in low flow keeps the station live. A check valve is judged on inspection plus behaviour on pump stop, because backflow and slam only show under real flow, and defects are logged for the next outage window."
+  },
+  {
+   "id": "wp2wc-process05",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the calibration check of a wet well level transmitter against the float backups.",
+   "topicId": "lift-station-maintenance",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: the monitoring trend suggests the transmitter reads about 150 mm high, floats are the independent backup control.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Clean the transmitter sensing face or stilling area and repeat the comparison to rule out fouling before adjusting anything"
+    },
+    {
+     "id": "s2",
+     "label": "Confirm the high level and low level float alarms still act independently of the transmitter"
+    },
+    {
+     "id": "s3",
+     "label": "Record the transmitter reading and the physical level from a fixed reference point at a steady inflow condition"
+    },
+    {
+     "id": "s4",
+     "label": "Record as found and as left readings in the instrument file and update the control setpoint sheet"
+    },
+    {
+     "id": "s5",
+     "label": "Compare transmitter start and stop levels with the float switch levels over one full pump cycle"
+    },
+    {
+     "id": "s6",
+     "label": "Adjust the transmitter span or offset as permitted by the manufacturer procedure and verify at low, mid, and high levels"
+    }
+   ],
+   "correctOrder": [
+    "s3",
+    "s5",
+    "s1",
+    "s6",
+    "s2",
+    "s4"
+   ],
+   "explanation": "As found evidence comes before adjustment, and fouling is ruled out first because cleaning often restores accuracy without touching the span. Floats are proven independent afterwards, since they are the last protection if the transmitter fails."
+  },
+  {
+   "id": "wp2wc-process06",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the annual control panel and pump alternator preventive maintenance at a lift station.",
+   "topicId": "lift-station-maintenance",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: panel contains the alternator, alarm dialer, and surge protection, and the station must stay in service throughout.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Force alternation and confirm each pump becomes duty in turn and both run together on the lag level"
+    },
+    {
+     "id": "s2",
+     "label": "Review panel drawings and the alarm history and confirm a portable pump plan exists if control power must be interrupted"
+    },
+    {
+     "id": "s3",
+     "label": "Restore normal automatic settings, record deficiencies, and file the panel check sheet in the station record"
+    },
+    {
+     "id": "s4",
+     "label": "With power isolated as required, inspect for heat damage, loose terminations, corrosion, and moisture inside the panel"
+    },
+    {
+     "id": "s5",
+     "label": "Test every alarm output to the dialer or monitoring system, including power fail and high level, and confirm receipt"
+    },
+    {
+     "id": "s6",
+     "label": "Clean or replace panel ventilation filters and confirm the enclosure heater and thermostat operate"
+    }
+   ],
+   "correctOrder": [
+    "s2",
+    "s4",
+    "s6",
+    "s1",
+    "s5",
+    "s3"
+   ],
+   "explanation": "Drawings and history focus the inspection, and thermal and moisture damage are checked while the panel can be safely opened. Alternation and every alarm path are proven by test, not assumed, because panel faults usually announce themselves only during an event."
+  },
+  {
+   "id": "wp2wc-process07",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the review and correction of recurring grease and rag fouling at one lift station.",
+   "topicId": "lift-station-maintenance",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: the station has needed three float cleanings in two months, and the supervisor wants the cause addressed, not just the symptom.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Inspect the wet well surface, inflow entry, and float positions from above and note where grease mats form and rags collect"
+    },
+    {
+     "id": "s2",
+     "label": "Monitor cleaning frequency for two cycles and record whether the interval can return to normal in the station file"
+    },
+    {
+     "id": "s3",
+     "label": "Adjust float positions or install the approved anti fouling arrangement and set a shortened wet well cleaning interval"
+    },
+    {
+     "id": "s4",
+     "label": "Pull the work order history and confirm the fouling pattern, dates, and which floats and pumps are affected"
+    },
+    {
+     "id": "s5",
+     "label": "Check upstream sources on the sewershed map for food service or high density inputs that match the fouling pattern"
+    },
+    {
+     "id": "s6",
+     "label": "Notify the fats, oils, and grease program contact of the upstream findings for source follow up"
+    }
+   ],
+   "correctOrder": [
+    "s4",
+    "s1",
+    "s5",
+    "s3",
+    "s6",
+    "s2"
+   ],
+   "explanation": "History proves the problem is recurring before money is spent. Well layout and upstream sources are both examined, because fouling is fixed by position, cleaning interval, and source control together, and the result is verified over real cycles."
+  },
+  {
+   "id": "wp2wc-process08",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order force main air release valve servicing on a rising force main high point.",
+   "topicId": "lift-station-maintenance",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: the valve is in a small chamber on a rural road allowance, sewage air release valve on a 300 mm force main.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Return the valve to service slowly, confirm it vents on pump start and seals under pressure without leaking"
+    },
+    {
+     "id": "s2",
+     "label": "Isolate the valve from the force main with its service valve and drain the valve body to a contained container"
+    },
+    {
+     "id": "s3",
+     "label": "Set up traffic control and test the chamber atmosphere before opening fittings, treating it under the confined space program"
+    },
+    {
+     "id": "s4",
+     "label": "Inspect and clean the float, orifice, and seat, and replace worn seals as directed by the manufacturer procedure"
+    },
+    {
+     "id": "s5",
+     "label": "Record the service, parts, and the pressure trend check date in the force main asset file"
+    },
+    {
+     "id": "s6",
+     "label": "Review force main pressure trends for signs of air binding, such as rising pump pressure at the same flow"
+    }
+   ],
+   "correctOrder": [
+    "s6",
+    "s3",
+    "s2",
+    "s4",
+    "s1",
+    "s5"
+   ],
+   "explanation": "Pressure trends justify the service and give the before picture. The chamber is treated as a hazardous atmosphere space, the valve is proven venting and sealing under real pump pressure, and the trend is rechecked so air binding is confirmed fixed."
+  },
+  {
+   "id": "wp2wc-process09",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a seal oil and moisture check program visit for submersible pumps at several stations.",
+   "topicId": "lift-station-maintenance",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: quarterly route covering six duplex stations, pumps stay in service unless a check fails.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Update the seal check register with pass or fail results and the follow up work orders raised"
+    },
+    {
+     "id": "s2",
+     "label": "Where the design allows, check seal chamber oil condition through the inspection plug under lockout and containment"
+    },
+    {
+     "id": "s3",
+     "label": "Remove from service and schedule lifting for any pump with confirmed moisture or milky oil, leaving the twin pump in automatic"
+    },
+    {
+     "id": "s4",
+     "label": "Test the seal moisture probe and alarm output as permitted by the manufacturer procedure without lifting the pump"
+    },
+    {
+     "id": "s5",
+     "label": "List the pumps due from the asset register and confirm seal probe alarm history for each station before the route"
+    },
+    {
+     "id": "s6",
+     "label": "At each station confirm the healthy pump arrangement and record run hours before testing the probe circuit"
+    }
+   ],
+   "correctOrder": [
+    "s5",
+    "s6",
+    "s4",
+    "s2",
+    "s3",
+    "s1"
+   ],
+   "explanation": "The route is built from the register so no pump is missed. Probe testing precedes any oil check, a failed seal takes the pump out before water reaches the motor, and the register gives the supervisor a fleet wide view of seal health."
+  },
+  {
+   "id": "wp2wc-process10",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a lift station capacity review after a new subdivision connects upstream.",
+   "topicId": "lift-station-maintenance",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: connected population has grown about 20 percent, the supervisor needs to know if the duplex station still has firm capacity.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Compare wet well cycle times and peak inflow estimates with the original design values from the station file"
+    },
+    {
+     "id": "s2",
+     "label": "Summarize the capacity margin, list the limiting component, and recommend monitoring, upgrades, or no action with reasons"
+    },
+    {
+     "id": "s3",
+     "label": "Gather current run hours, starts, high level alarm counts, and any surcharge records since the subdivision connected"
+    },
+    {
+     "id": "s4",
+     "label": "File the review in the station asset record and set the trigger values that would reopen the assessment"
+    },
+    {
+     "id": "s5",
+     "label": "Run timed drawdown tests on each pump and calculate the firm capacity with the largest pump out of service"
+    },
+    {
+     "id": "s6",
+     "label": "Check force main pressure at peak pumping against the original readings for signs of added friction or air binding"
+    }
+   ],
+   "correctOrder": [
+    "s3",
+    "s5",
+    "s1",
+    "s6",
+    "s2",
+    "s4"
+   ],
+   "explanation": "Firm capacity means capacity with the largest unit out, which is the honest test for a duplex station. Field measurements are compared with design values, the limiting component is named, and trigger values turn the review into ongoing capacity management."
+  },
+  {
+   "id": "wp2wc-process100",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the year end collection program review and next year plan.",
+   "topicId": "supervisory-cold-climate",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: the supervisor closes the year on cleaning, CCTV, rehabilitation, station maintenance, and overflow performance and drafts next year priorities.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Carry forward unfinished quantities honestly, naming the cause, such as winter lost time, vacancies, or equipment downtime"
+    },
+    {
+     "id": "s2",
+     "label": "Draft the next year targets and the resource needs, including crew, equipment, and contract quantities, for budget review"
+    },
+    {
+     "id": "s3",
+     "label": "Assemble the year results for each program against its targets, including the overflow summary and the audit results"
+    },
+    {
+     "id": "s4",
+     "label": "Issue the review and plan to management and file them with the CMOM annual update so the record reads as one story"
+    },
+    {
+     "id": "s5",
+     "label": "Identify the reaches and stations where outcomes did not improve despite the work done and list the evidence for each"
+    },
+    {
+     "id": "s6",
+     "label": "Set next year priorities from the risk evidence: repeat overflow locations, worst condition grades, and capacity limited reaches"
+    }
+   ],
+   "correctOrder": [
+    "s3",
+    "s5",
+    "s1",
+    "s6",
+    "s2",
+    "s4"
+   ],
+   "explanation": "The year is closed on outcomes, not effort: locations that did not improve despite work are named with their evidence. Unfinished work is carried forward with its cause stated, and next year priorities follow the risk record, which is what makes the plan defensible."
+  },
+  {
+   "id": "wp2wc-process11",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the build of the annual preventive sewer cleaning program for a mid size city.",
+   "topicId": "cleaning-program-planning",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: office planning task, the program must cover all hotspot sections plus a rotating share of the remaining network.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Convert the length into crew days using the measured production rates for jet and vacuum work in each pipe size group"
+    },
+    {
+     "id": "s2",
+     "label": "Extract blockage, complaint, and repeat cleaning history from the work order system for the last three years"
+    },
+    {
+     "id": "s3",
+     "label": "Issue the program with monthly targets, the hotspot list, and the completion measures the supervisor will report"
+    },
+    {
+     "id": "s4",
+     "label": "Rank sections into hotspot, high risk, and routine groups using blockage history, pipe age, material, and grease or root evidence"
+    },
+    {
+     "id": "s5",
+     "label": "Sequence the routes by sewershed so downstream sections are cleaned before upstream sections in the same system"
+    },
+    {
+     "id": "s6",
+     "label": "Set a cleaning frequency for each group and calculate the total length to be cleaned in the year"
+    }
+   ],
+   "correctOrder": [
+    "s2",
+    "s4",
+    "s6",
+    "s1",
+    "s5",
+    "s3"
+   ],
+   "explanation": "History and risk set the frequencies, and measured production rates turn length into a crew plan that can actually be finished. Downstream first sequencing stops cleaned debris from being pushed into dirty pipe, and monthly targets make slippage visible early."
+  },
+  {
+   "id": "wp2wc-process12",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the setting of a shorter cleaning interval for a repeat grease hotspot.",
+   "topicId": "cleaning-program-planning",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: a 250 mm section behind food service businesses has blocked twice in eight months despite annual cleaning.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the food service sources upstream and check that the grease program inspections are current for those premises"
+    },
+    {
+     "id": "s2",
+     "label": "Update the hotspot register, the cleaning map, and the grease program file with the new interval and the evidence"
+    },
+    {
+     "id": "s3",
+     "label": "Schedule the first two visits at the new interval and brief the crew on the capture and disposal requirements for grease"
+    },
+    {
+     "id": "s4",
+     "label": "Review both blockage reports, the CCTV record, and the grease volumes removed at each cleaning for the section"
+    },
+    {
+     "id": "s5",
+     "label": "Set a trial interval short enough that the heaviest deposit seen cannot rebuild to a blockage before the next visit"
+    },
+    {
+     "id": "s6",
+     "label": "After two visits, compare the deposit found with the earlier visits and confirm or adjust the interval with the supervisor"
+    }
+   ],
+   "correctOrder": [
+    "s4",
+    "s1",
+    "s5",
+    "s3",
+    "s6",
+    "s2"
+   ],
+   "explanation": "The interval is set from the deposit growth actually observed, not from a standard table. Source inspections run in parallel because cleaning alone never wins against an uncontrolled grease source, and the trial is reviewed on evidence."
+  },
+  {
+   "id": "wp2wc-process13",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the weekly production review for two jet vacuum crews.",
+   "topicId": "cleaning-program-planning",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: the supervisor reviews last week production against the cleaning program targets every Monday morning.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Arrange the specific fixes for the top lost time cause, such as raising a buried manhole or booking a repair"
+    },
+    {
+     "id": "s2",
+     "label": "Check the sections reported complete against the required passes and the post cleaning condition notes"
+    },
+    {
+     "id": "s3",
+     "label": "Separate lost time into causes such as buried manholes, equipment faults, weather, and traffic control delays"
+    },
+    {
+     "id": "s4",
+     "label": "Reassign this week routes so the highest risk overdue sections are covered first"
+    },
+    {
+     "id": "s5",
+     "label": "Record the review decisions and the revised targets in the program tracking sheet"
+    },
+    {
+     "id": "s6",
+     "label": "Pull the completed work orders and compare metres cleaned, sections completed, and debris volumes with the weekly target"
+    }
+   ],
+   "correctOrder": [
+    "s6",
+    "s3",
+    "s2",
+    "s4",
+    "s1",
+    "s5"
+   ],
+   "explanation": "Production is reviewed as completed risk reduction, not just metres. Lost time is assigned to causes so the same delay is not accepted week after week, and overdue high risk sections are recovered first."
+  },
+  {
+   "id": "wp2wc-process14",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order nozzle and pressure selection for a cleaning job with mixed grit, grease, and roots.",
+   "topicId": "cleaning-program-planning",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: 300 mm concrete collector, CCTV shows moderate roots at joints, heavy grit in the invert, and grease on the crown.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Finish with a cleaning pass, confirm return flow runs clear, and record passes, pressures, and debris by type"
+    },
+    {
+     "id": "s2",
+     "label": "Run the grease cutting pass at the marked sections, working in short retrieves so grease is captured, not pushed ahead"
+    },
+    {
+     "id": "s3",
+     "label": "Run the rotary root cutter only at the marked root joints, slowly, with continuous vacuum capture of cut roots"
+    },
+    {
+     "id": "s4",
+     "label": "Vacuum the loosened material at the downstream manhole and confirm the invert is clear before any cutting pass"
+    },
+    {
+     "id": "s5",
+     "label": "Review the CCTV record and mark the chainages and severity of roots, grit depth, and grease before choosing equipment"
+    },
+    {
+     "id": "s6",
+     "label": "Start with a standard cleaning nozzle at the pressure set for concrete pipe to remove grit and loose debris"
+    }
+   ],
+   "correctOrder": [
+    "s5",
+    "s6",
+    "s4",
+    "s2",
+    "s3",
+    "s1"
+   ],
+   "explanation": "Each tool is used in the order that protects the pipe and the downstream system: bulk cleaning first, then grease, then cutting only where roots are proven. Cutting into a dirty pipe wastes the cutter and spreads roots downstream."
+  },
+  {
+   "id": "wp2wc-process15",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the decanting and disposal routine for a vacuum truck at the end of a cleaning shift.",
+   "topicId": "cleaning-program-planning",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: the truck tank holds grit, grease, and wastewater from four sections, and the approved disposal site closes in one hour.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Travel to the approved disposal site and discharge the solid debris into the designated area or bin"
+    },
+    {
+     "id": "s2",
+     "label": "Wash out the tank, screens, and vacuum tubes and inspect for damage or blockages before the next shift"
+    },
+    {
+     "id": "s3",
+     "label": "Confirm the tank load and the approved disposal location and route before leaving the last work site"
+    },
+    {
+     "id": "s4",
+     "label": "Complete the work order entries for debris volumes by section and file the disposal record with the program file"
+    },
+    {
+     "id": "s5",
+     "label": "At the decant area, drain free liquid back to the sanitary system only as permitted by the site procedure"
+    },
+    {
+     "id": "s6",
+     "label": "Obtain and keep the disposal record showing date, volume estimate, and receiving site"
+    }
+   ],
+   "correctOrder": [
+    "s3",
+    "s5",
+    "s1",
+    "s6",
+    "s2",
+    "s4"
+   ],
+   "explanation": "Decanting is done only where permitted, because grit liquid returned at the wrong point re-enters the system it was removed from. The disposal record closes the legal chain for the material, and a washed, inspected truck starts the next shift ready."
+  },
+  {
+   "id": "wp2wc-process16",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the annual root control cycle for clay sewers in a mature tree lined district.",
+   "topicId": "cleaning-program-planning",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: the district has recurring root blockages, chemical root treatment is approved for listed sections only, and cutting is the alternative.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Apply the approved root control product at the specified rate and contact time, with flow conditions as directed"
+    },
+    {
+     "id": "s2",
+     "label": "Rank the district sections by blockage history and CCTV root severity and confirm which sections are approved for chemical treatment"
+    },
+    {
+     "id": "s3",
+     "label": "Review blockage calls in the district after one season and adjust the section list and cycle length in the program file"
+    },
+    {
+     "id": "s4",
+     "label": "Schedule mechanical cutting first on sections with heavy root masses that would block chemical contact with fine roots"
+    },
+    {
+     "id": "s5",
+     "label": "Record treated chainages, product used, and sections cut, and set the CCTV re-inspection date for the worst sections"
+    },
+    {
+     "id": "s6",
+     "label": "Notify affected residents and the downstream treatment contact of the treatment dates as required by the product procedure"
+    }
+   ],
+   "correctOrder": [
+    "s2",
+    "s4",
+    "s6",
+    "s1",
+    "s5",
+    "s3"
+   ],
+   "explanation": "Heavy masses are cut first because chemical treatment works on fine regrowth, not on a root ball. Notification and exact chainage records protect residents and the treatment plant, and the cycle is adjusted on blockage results, not on the calendar alone."
+  },
+  {
+   "id": "wp2wc-process17",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the escalation when a cleaned grease section reblocks within one month.",
+   "topicId": "cleaning-program-planning",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: the section was cleaned four weeks ago and has blocked again, and two basement backups are reported.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Run CCTV on the section in the same visit window to see whether the deposit is grease regrowth, a structural trap, or debris left behind"
+    },
+    {
+     "id": "s2",
+     "label": "Record the reblock as a program failure in the hotspot register so the section performance history stays honest"
+    },
+    {
+     "id": "s3",
+     "label": "Check the upstream food service grease interceptors for overdue maintenance through the grease program contact"
+    },
+    {
+     "id": "s4",
+     "label": "Restore flow first with jetting and vacuum capture and confirm both affected services are draining"
+    },
+    {
+     "id": "s5",
+     "label": "Compare the CCTV findings with the cleaning record, including passes made, nozzle used, and debris volume removed"
+    },
+    {
+     "id": "s6",
+     "label": "Set the corrective action, such as a much shorter interval, a different nozzle program, or a repair work order, with the supervisor"
+    }
+   ],
+   "correctOrder": [
+    "s4",
+    "s1",
+    "s5",
+    "s3",
+    "s6",
+    "s2"
+   ],
+   "explanation": "Flow restoration comes first, but a one month reblock is a program failure that needs a cause, not just another cleaning. CCTV in the same window separates regrowth from a structural trap or an incomplete clean, and each cause has a different fix."
+  },
+  {
+   "id": "wp2wc-process18",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the coordination of cleaning immediately ahead of a CCTV survey contract.",
+   "topicId": "cleaning-program-planning",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: a contractor will inspect 4 km of sewer next month and the specifications require the pipe cleaned to a stated standard first.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Hold a daily contact during the survey so any section rejected as too dirty is recleaned the same week"
+    },
+    {
+     "id": "s2",
+     "label": "Verify a sample of cleaned sections by a short CCTV or lamping check before handing them to the survey crew"
+    },
+    {
+     "id": "s3",
+     "label": "Sequence in house or contractor cleaning so each section is cleaned shortly before its survey date, not weeks ahead"
+    },
+    {
+     "id": "s4",
+     "label": "Pass the survey crew the cleaning records, known access problems, and any sections that could not be cleaned to standard"
+    },
+    {
+     "id": "s5",
+     "label": "Close the coordination with a list of sections surveyed, sections deferred, and the reasons, filed with the contract record"
+    },
+    {
+     "id": "s6",
+     "label": "Confirm the survey sections, the required cleaning standard, and the survey start dates from the contract documents"
+    }
+   ],
+   "correctOrder": [
+    "s6",
+    "s3",
+    "s2",
+    "s4",
+    "s1",
+    "s5"
+   ],
+   "explanation": "CCTV money is wasted on dirty pipe, so cleaning is timed just ahead of the camera and verified on a sample. Sections that cannot reach the standard are declared before the survey, and a same week reclean loop keeps the contract on schedule."
+  },
+  {
+   "id": "wp2wc-process19",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the winter adjustment of a cleaning program in a prairie city.",
+   "topicId": "cleaning-program-planning",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: January temperatures near minus 30 degrees Celsius, hydrants and exposed water lines are at freeze risk, and some manholes are snow covered.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Record the deferred sections with a spring catch up date so winter deferral does not become silent cancellation"
+    },
+    {
+     "id": "s2",
+     "label": "Shorten exposed hose runs and schedule the longest jetting passes for the warmest part of the day where the program allows"
+    },
+    {
+     "id": "s3",
+     "label": "Track freeze related lost time and equipment damage separately in the weekly production review"
+    },
+    {
+     "id": "s4",
+     "label": "Brief crews on continuous water circulation, hose draining, and truck freeze protection steps for each shift"
+    },
+    {
+     "id": "s5",
+     "label": "Review the winter route list and defer sections that can safely wait while keeping grease hotspots and known freeze prone sections"
+    },
+    {
+     "id": "s6",
+     "label": "Confirm heated water supply points, hydrant condition, and the route for locating and clearing snow covered manholes"
+    }
+   ],
+   "correctOrder": [
+    "s5",
+    "s6",
+    "s4",
+    "s2",
+    "s3",
+    "s1"
+   ],
+   "explanation": "Winter cleaning protects the highest risk sections and the equipment at the same time. Freeze protection steps are briefed per shift because most winter damage happens during pauses, and deferred work carries a spring date so the program stays whole."
+  },
+  {
+   "id": "wp2wc-process20",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a quality audit of completed cleaning work using a CCTV sample.",
+   "topicId": "cleaning-program-planning",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: the supervisor audits 5 percent of sections reported cleaned in the last quarter to verify the program standard is real.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Compare the audit grades with the crew work order notes for passes, debris volumes, and time on section"
+    },
+    {
+     "id": "s2",
+     "label": "Order recleaning of sections below standard and add them to the route before their risk date"
+    },
+    {
+     "id": "s3",
+     "label": "Select the audit sample at random from completed sections, weighted toward hotspots and sections cleaned by each crew"
+    },
+    {
+     "id": "s4",
+     "label": "Record the audit rate and results in the program file and adjust training or nozzle guidance where a pattern appears"
+    },
+    {
+     "id": "s5",
+     "label": "Run CCTV or lamping on each sampled section and grade the remaining debris, grease, and roots against the cleaning standard"
+    },
+    {
+     "id": "s6",
+     "label": "Feed back the results crew by crew, naming the specific sections that passed and the specific gaps found"
+    }
+   ],
+   "correctOrder": [
+    "s3",
+    "s5",
+    "s1",
+    "s6",
+    "s2",
+    "s4"
+   ],
+   "explanation": "Random sampling keeps the audit honest, and grading against a written standard separates a poor clean from a hard section. Feedback names real sections, recleaning fixes the risk, and patterns across crews point to training or equipment, not individuals."
+  },
+  {
+   "id": "wp2wc-process21",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a CCTV survey setup for a trunk sewer inspection.",
+   "topicId": "cctv-condition-assessment",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: 600 mm trunk sewer, moderate flow, two lane arterial road above, survey is for condition assessment, not an emergency.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Calibrate the camera distance counter at the start manhole and record pipe size, material, and manhole numbers on the survey header"
+    },
+    {
+     "id": "s2",
+     "label": "Review the asset record, previous surveys, and the reason for inspection and mark the survey limits and direction"
+    },
+    {
+     "id": "s3",
+     "label": "Complete the survey log, back up the video and data the same day, and flag any defect needing urgent action to the supervisor"
+    },
+    {
+     "id": "s4",
+     "label": "Confirm the pipe is cleaned to the survey standard and arrange flow control if the depth would hide the invert"
+    },
+    {
+     "id": "s5",
+     "label": "Run the survey at a steady speed, stopping and panning at every defect, joint of interest, and service connection"
+    },
+    {
+     "id": "s6",
+     "label": "Set up traffic control for the arterial and confirm access, ventilation, and atmosphere testing at both manholes"
+    }
+   ],
+   "correctOrder": [
+    "s2",
+    "s4",
+    "s6",
+    "s1",
+    "s5",
+    "s3"
+   ],
+   "explanation": "The survey is only as good as its setup: a clean pipe, controlled flow, and a calibrated counter make every defect locatable. Urgent defects are flagged the same day rather than waiting for the formal report."
+  },
+  {
+   "id": "wp2wc-process22",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the office review and grading of a completed CCTV survey.",
+   "topicId": "cctv-condition-assessment",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: a reviewer grades 800 m of surveyed sewer using the utility standard defect terms and severity grades.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review the video in order and record each defect with its type, clock position, chainage, and extent in standard terms"
+    },
+    {
+     "id": "s2",
+     "label": "File the graded report with the video reference in the asset record and pass urgent grades to the supervisor the same day"
+    },
+    {
+     "id": "s3",
+     "label": "Separate structural grades from operation and maintenance grades so cleaning needs are not mixed with pipe failure"
+    },
+    {
+     "id": "s4",
+     "label": "Verify the survey header data, chainages, and video quality are complete before grading begins"
+    },
+    {
+     "id": "s5",
+     "label": "Assign severity grades using the utility grading guide and note where image quality limits the grade confidence"
+    },
+    {
+     "id": "s6",
+     "label": "Rank the sections by worst defect and by overall grade and list the sections needing rehabilitation assessment"
+    }
+   ],
+   "correctOrder": [
+    "s4",
+    "s1",
+    "s5",
+    "s3",
+    "s6",
+    "s2"
+   ],
+   "explanation": "Header and chainage checks come first because a grade attached to the wrong location is worse than no grade. Structural and maintenance findings are kept apart so a dirty pipe is not lined and a broken pipe is not just cleaned."
+  },
+  {
+   "id": "wp2wc-process23",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a lateral launch CCTV inspection from a mainline sewer.",
+   "topicId": "cctv-condition-assessment",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: a repeat backup property is suspected of a defective service lateral, and excavation is to be avoided until the fault is located.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Retrieve the camera, confirm the mainline is left clear, and record the lateral condition in the property file"
+    },
+    {
+     "id": "s2",
+     "label": "Launch the lateral camera and record distance, bends, and defects from the mainline to the property line or cleanout"
+    },
+    {
+     "id": "s3",
+     "label": "Set up at the downstream manhole with traffic control and atmosphere testing and run the mainline camera to the lateral connection"
+    },
+    {
+     "id": "s4",
+     "label": "Note the exact chainage and clock position of each defect and whether it sits on the private or public portion by the local rule"
+    },
+    {
+     "id": "s5",
+     "label": "Advise the owner of the findings through the supervisor, including which portion is their responsibility, in writing"
+    },
+    {
+     "id": "s6",
+     "label": "Confirm the mainline is cleaned and the launch camera can pass, and notify the property owner of the inspection timing"
+    }
+   ],
+   "correctOrder": [
+    "s6",
+    "s3",
+    "s2",
+    "s4",
+    "s1",
+    "s5"
+   ],
+   "explanation": "The mainline must be passable before a launch is attempted, and distances are recorded against a known start point so the fault can be found again without digging. Responsibility is stated in writing because lateral ownership decides who pays for the repair."
+  },
+  {
+   "id": "wp2wc-process24",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the quality acceptance check of CCTV data delivered by a contractor.",
+   "topicId": "cctv-condition-assessment",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: the monthly delivery covers 3 km of surveys, and payment depends on the data meeting the specification.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Record the acceptance results and any payment holdback in the contract file and report completion to the supervisor"
+    },
+    {
+     "id": "s2",
+     "label": "Return nonconforming sections to the contractor with the specific defects in the data and the resurvey requirement"
+    },
+    {
+     "id": "s3",
+     "label": "Accept conforming sections into the asset system and update the condition grades in the asset register"
+    },
+    {
+     "id": "s4",
+     "label": "Confirm defect records use the standard terms and grades and that chainages match the video counter at sampled defects"
+    },
+    {
+     "id": "s5",
+     "label": "Check the delivery inventory against the scheduled sections and list any missing surveys, videos, or reports"
+    },
+    {
+     "id": "s6",
+     "label": "Replay a sample of videos and confirm header data, chainage accuracy, focus, lighting, and survey speed meet the specification"
+    }
+   ],
+   "correctOrder": [
+    "s5",
+    "s6",
+    "s4",
+    "s2",
+    "s3",
+    "s1"
+   ],
+   "explanation": "Inventory comes before quality, because missing surveys hide inside large deliveries. Sampled replay checks both the pictures and the data discipline, and only accepted data enters the asset register so bad grades never drive rehabilitation money."
+  },
+  {
+   "id": "wp2wc-process25",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the post rehabilitation CCTV acceptance inspection for a lined sewer.",
+   "topicId": "cctv-condition-assessment",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: a cured in place liner has been installed in 180 m of sewer and the warranty period starts only after acceptance.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Run the acceptance survey slowly and record liner wrinkles, fins, resin slugs, and lateral openings against the specification limits"
+    },
+    {
+     "id": "s2",
+     "label": "List deficiencies for the contractor to correct before acceptance and set the reinspection date"
+    },
+    {
+     "id": "s3",
+     "label": "Review the lining installation record, including cure logs, samples, and the pre lining survey for comparison"
+    },
+    {
+     "id": "s4",
+     "label": "File the accepted survey as the new baseline condition record for the asset and start the warranty tracking"
+    },
+    {
+     "id": "s5",
+     "label": "Confirm the lined section is cleaned, laterals are reinstated, and flow is normal before the camera enters"
+    },
+    {
+     "id": "s6",
+     "label": "Compare each lateral reinstatement with the pre lining connection list so no service is left cut off"
+    }
+   ],
+   "correctOrder": [
+    "s3",
+    "s5",
+    "s1",
+    "s6",
+    "s2",
+    "s4"
+   ],
+   "explanation": "Installation records are checked first because cure quality cannot be judged from video alone. Lateral reinstatement is compared connection by connection, since a sealed live lateral is the most serious lining defect, and the accepted survey becomes the baseline for warranty claims."
+  },
+  {
+   "id": "wp2wc-process26",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order an emergency CCTV inspection after a road depression is reported over a sewer.",
+   "topicId": "cctv-condition-assessment",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: a depression and cracked pavement are reported above a 450 mm sewer, and the road is still open to traffic.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Record any void, displaced joint, fracture, or soil visible in the pipe and measure its chainage from both directions if possible"
+    },
+    {
+     "id": "s2",
+     "label": "Close or control the affected lane and notify the supervisor and the roads group of the suspected sewer failure"
+    },
+    {
+     "id": "s3",
+     "label": "File the emergency survey and photos in the asset record the same day with the road status and the follow up owner"
+    },
+    {
+     "id": "s4",
+     "label": "Review the asset record and last survey for the section while the crew travels, noting pipe material, depth, and known defects"
+    },
+    {
+     "id": "s5",
+     "label": "Decide with the supervisor whether the road stays closed and whether excavation, grouting, or monitoring is the next step"
+    },
+    {
+     "id": "s6",
+     "label": "Set up at the nearest sound manholes and inspect toward the depression from the safer end first"
+    }
+   ],
+   "correctOrder": [
+    "s2",
+    "s4",
+    "s6",
+    "s1",
+    "s5",
+    "s3"
+   ],
+   "explanation": "Public safety and road control come before diagnosis. Inspecting from the sound end protects the camera and crew if the pipe has collapsed, and the same day record supports the repair decision and any later claim about when the failure was known."
+  },
+  {
+   "id": "wp2wc-process27",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a pan and tilt inspection of a large diameter sewer from a manhole platform.",
+   "topicId": "cctv-condition-assessment",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: a 1200 mm trunk cannot be travelled by the standard crawler at current flow, so a manhole based camera inspection is planned.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Set up traffic control, ventilation, and atmosphere testing and rig the camera on its platform or float as designed"
+    },
+    {
+     "id": "s2",
+     "label": "Recommend the follow up method for the unseen length, such as a float survey at lower flow or sonar, in the asset file"
+    },
+    {
+     "id": "s3",
+     "label": "Advance or reposition the camera as the equipment allows and record defects with chainage estimates tied to fixed features"
+    },
+    {
+     "id": "s4",
+     "label": "Confirm flow depth and velocity are within the equipment limits and arrange the work for the low flow window"
+    },
+    {
+     "id": "s5",
+     "label": "Record a full rotation inspection of each manhole wall, benching, and the pipe ends visible from the chamber"
+    },
+    {
+     "id": "s6",
+     "label": "Note the limits of the inspection clearly, including the length not seen and the reason, in the survey record"
+    }
+   ],
+   "correctOrder": [
+    "s4",
+    "s1",
+    "s5",
+    "s3",
+    "s6",
+    "s2"
+   ],
+   "explanation": "Large diameter work is limited by flow, so the low flow window and honest recording of what was not seen matter as much as the video. An inspection that hides its blind spots creates false confidence in the asset record."
+  },
+  {
+   "id": "wp2wc-process28",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the daily workflow for an in house CCTV crew on a routine survey route.",
+   "topicId": "cctv-condition-assessment",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: the crew surveys planned sections in an older residential district with the combination cleaning truck on call.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Back up video and data at midday and at shift end and complete the survey headers before leaving each site"
+    },
+    {
+     "id": "s2",
+     "label": "Survey each section in the planned direction, calling for cleaning support if debris hides the pipe wall"
+    },
+    {
+     "id": "s3",
+     "label": "At the first manhole, set up traffic control and atmosphere testing and confirm the section was cleaned to standard"
+    },
+    {
+     "id": "s4",
+     "label": "Log defects in standard terms during the survey and photograph any defect that may need urgent action"
+    },
+    {
+     "id": "s5",
+     "label": "Hand the day surveys, urgent defects, and any unsurveyed sections with reasons to the supervisor at shift end"
+    },
+    {
+     "id": "s6",
+     "label": "Review the day sections, previous defects, and access notes and load the correct camera, crawler, and cable lengths"
+    }
+   ],
+   "correctOrder": [
+    "s6",
+    "s3",
+    "s2",
+    "s4",
+    "s1",
+    "s5"
+   ],
+   "explanation": "Headers and backups are done on site because survey data reconstructed later is unreliable. Cleaning support is called while the camera is set up, not after a failed survey, and unsurveyed sections are reported with reasons so the program count stays true."
+  },
+  {
+   "id": "wp2wc-process29",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the prioritization of rehabilitation candidates from a year of CCTV grades.",
+   "topicId": "cctv-condition-assessment",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: office task, the supervisor must turn 120 graded sections into a ranked candidate list for the rehabilitation planner.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Pass the ranked list with the survey references to the rehabilitation planner and file it in the program record"
+    },
+    {
+     "id": "s2",
+     "label": "Group adjacent candidate sections into practical project lengths that share manholes and traffic control"
+    },
+    {
+     "id": "s3",
+     "label": "Rank the grouped candidates by risk, combining defect severity with consequence, and note the evidence for each rank"
+    },
+    {
+     "id": "s4",
+     "label": "Remove sections whose high grade is driven by maintenance defects that cleaning or root control can correct"
+    },
+    {
+     "id": "s5",
+     "label": "Extract all sections with the two highest structural grades and list their worst defects and chainages"
+    },
+    {
+     "id": "s6",
+     "label": "Add the consequence factors for each section, such as road class, depth, proximity to buildings, and overflow history"
+    }
+   ],
+   "correctOrder": [
+    "s5",
+    "s6",
+    "s4",
+    "s2",
+    "s3",
+    "s1"
+   ],
+   "explanation": "Severity alone does not set priorities, because a failed pipe under a lawn and the same pipe under an arterial are different risks. Maintenance driven grades are removed first so capital is not spent lining pipes that only need cleaning."
+  },
+  {
+   "id": "wp2wc-process30",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the CCTV inspection of a siphon barrel under a creek crossing.",
+   "topicId": "cctv-condition-assessment",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: a twin barrel siphon shows rising head loss, and one barrel can be isolated while the other carries the flow.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Isolate and draw down the barrel to be inspected and confirm the running barrel is carrying the flow without surcharge"
+    },
+    {
+     "id": "s2",
+     "label": "Restore both barrels to service, confirm head levels return to normal, and compare with the levels recorded before the work"
+    },
+    {
+     "id": "s3",
+     "label": "Review the siphon drawings and confirm which barrel can be isolated and how the head chambers are accessed"
+    },
+    {
+     "id": "s4",
+     "label": "Record the sediment and condition findings and set the cleaning or repair follow up in the asset file"
+    },
+    {
+     "id": "s5",
+     "label": "Set up traffic control, ventilation, and atmosphere testing at both head chambers and confirm rescue arrangements for the entry classified work"
+    },
+    {
+     "id": "s6",
+     "label": "Run the camera through the isolated barrel and record sediment depth, joint condition, and any deformation with chainages"
+    }
+   ],
+   "correctOrder": [
+    "s3",
+    "s5",
+    "s1",
+    "s6",
+    "s2",
+    "s4"
+   ],
+   "explanation": "A siphon is inspected one barrel at a time so the creek crossing never loses its flow path. Head levels before and after prove whether the barrel was the restriction, and sediment findings drive cleaning before they become a blockage."
+  },
+  {
+   "id": "wp2wc-process31",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the installation of a temporary area velocity flow monitor in a trunk manhole.",
+   "topicId": "flow-monitoring-ii",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: the monitor will record depth and velocity for a six week inflow and infiltration study in a 750 mm trunk.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Program the logger interval and clock, take manual depth and velocity check readings, and compare them with the sensor values"
+    },
+    {
+     "id": "s2",
+     "label": "Select the site from the sewershed map where flow is uniform, the pipe is accessible, and the reach has no nearby junction turbulence"
+    },
+    {
+     "id": "s3",
+     "label": "Schedule the first data download and battery check within two weeks and record the study end date in the program file"
+    },
+    {
+     "id": "s4",
+     "label": "Set up traffic control, ventilation, and atmosphere testing and confirm the entry classification for the installation work"
+    },
+    {
+     "id": "s5",
+     "label": "Photograph the installation, record sensor height and pipe dimensions in the site file, and confirm data is logging before leaving"
+    },
+    {
+     "id": "s6",
+     "label": "Install the sensor band or mount at the invert, level and secure it, and route the cable so it cannot catch debris"
+    }
+   ],
+   "correctOrder": [
+    "s2",
+    "s4",
+    "s6",
+    "s1",
+    "s5",
+    "s3"
+   ],
+   "explanation": "Site hydraulics decide data quality before any electronics are installed. Manual check readings at installation catch a bad sensor offset on day one instead of after six weeks, and the site file lets a different crew service the monitor correctly."
+  },
+  {
+   "id": "wp2wc-process32",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the deployment of rain gauges for a rainfall dependent inflow study.",
+   "topicId": "flow-monitoring-ii",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: three sewershed basins will be compared, and each basin needs rainfall data that matches its flow monitors.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Level and secure each gauge, set its clock to match the flow logger clocks, and record its location and exposure in the site file"
+    },
+    {
+     "id": "s2",
+     "label": "At study end, pair each basin flow record with its gauge record and file the combined data set for analysis"
+    },
+    {
+     "id": "s3",
+     "label": "Download rain data on the same visits as the flow data so rainfall and flow records cover identical periods"
+    },
+    {
+     "id": "s4",
+     "label": "Place one gauge in or near each study basin, clear of buildings and trees that would shelter or drip into the gauge"
+    },
+    {
+     "id": "s5",
+     "label": "Check each gauge against a manual rain measurement at the first significant rainfall and note any difference"
+    },
+    {
+     "id": "s6",
+     "label": "Flag dry gauge periods, tipping faults, or frozen gauge gaps in the data file as they are found, not at study end"
+    }
+   ],
+   "correctOrder": [
+    "s4",
+    "s1",
+    "s5",
+    "s3",
+    "s6",
+    "s2"
+   ],
+   "explanation": "Rainfall and flow are only comparable when clocks, periods, and locations match. Early checks against manual readings catch a faulty gauge while the study can still be saved, and data gaps are flagged honestly for the analysis."
+  },
+  {
+   "id": "wp2wc-process33",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a night flow analysis to estimate infiltration in a residential basin.",
+   "topicId": "flow-monitoring-ii",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: dry weather period, the basin flow monitor has four weeks of clean data, and the analysis is done in the office.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Compare the result with the basin ranking values used by the utility and flag the basin if it exceeds the action level"
+    },
+    {
+     "id": "s2",
+     "label": "Subtract the estimated legitimate night use allowance given for the basin from the average minimum flow"
+    },
+    {
+     "id": "s3",
+     "label": "Extract the minimum hourly flows between 2 a.m. and 5 a.m. for each night and average the stable nights"
+    },
+    {
+     "id": "s4",
+     "label": "Express the remaining flow as the estimated groundwater infiltration for the basin and note the assumptions used"
+    },
+    {
+     "id": "s5",
+     "label": "File the analysis sheet with the data references and pass flagged basins to the source detection program"
+    },
+    {
+     "id": "s6",
+     "label": "Confirm the analysis nights had no rainfall in the previous 48 hours using the study rain gauge record"
+    }
+   ],
+   "correctOrder": [
+    "s6",
+    "s3",
+    "s2",
+    "s4",
+    "s1",
+    "s5"
+   ],
+   "explanation": "Night flow only means infiltration after rain influenced nights and legitimate use are removed. Stating the allowance and assumptions lets another analyst reproduce the number, and flagged basins move directly into source detection."
+  },
+  {
+   "id": "wp2wc-process34",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the comparison and ranking of flow monitoring basins for an inflow and infiltration program.",
+   "topicId": "flow-monitoring-ii",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: six basins have completed eight week studies with paired rain gauges, and capital must target the worst basins first.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Issue the ranking report with the evidence for each basin and the recommended next step and budget year"
+    },
+    {
+     "id": "s2",
+     "label": "Check the top ranked basins for data quality problems, such as surcharge at the monitor or gauge gaps, before accepting the rank"
+    },
+    {
+     "id": "s3",
+     "label": "Match each top basin to the next investigation step, such as smoke testing, CCTV, or manhole sealing, based on which response dominates"
+    },
+    {
+     "id": "s4",
+     "label": "Rank the basins by infiltration estimate and by rainfall dependent response in two separate lists"
+    },
+    {
+     "id": "s5",
+     "label": "Assemble dry weather and wet weather flow summaries for each basin using the same measures and the same study rules"
+    },
+    {
+     "id": "s6",
+     "label": "Calculate each basin wet weather peaking response against its own dry weather average so basins of different sizes compare fairly"
+    }
+   ],
+   "correctOrder": [
+    "s5",
+    "s6",
+    "s4",
+    "s2",
+    "s3",
+    "s1"
+   ],
+   "explanation": "Dry and wet responses are ranked separately because infiltration and inflow have different fixes. Normalizing each basin against its own dry weather flow keeps big basins from always winning, and data quality is checked before money follows the ranking."
+  },
+  {
+   "id": "wp2wc-process35",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a smoke testing day in a basin flagged for rainfall dependent inflow.",
+   "topicId": "flow-monitoring-ii",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: the basin response rises within an hour of rain, suggesting direct connections, and residents were notified last week.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Introduce smoke section by section and walk the surface marking every emergence point with flags, photos, and addresses"
+    },
+    {
+     "id": "s2",
+     "label": "Record each defect source, such as a broken cleanout cap, a connected roof leader, or a cracked lateral at the surface, by type"
+    },
+    {
+     "id": "s3",
+     "label": "Confirm resident notification is complete and list properties with special conditions, such as roof leaders already known or indoor traps that may be dry"
+    },
+    {
+     "id": "s4",
+     "label": "Compile the source list into the basin file with photos and issue property notices and repair work orders through the supervisor"
+    },
+    {
+     "id": "s5",
+     "label": "Set up the blower at the start manhole with traffic control and atmosphere testing and seal the section as the equipment requires"
+    },
+    {
+     "id": "s6",
+     "label": "Pour water into dry traps in notified buildings if smoke enters indoors and record the address for follow up"
+    }
+   ],
+   "correctOrder": [
+    "s3",
+    "s5",
+    "s1",
+    "s6",
+    "s2",
+    "s4"
+   ],
+   "explanation": "Smoke testing only works on notified streets, because unexplained smoke in homes creates alarm and false emergency calls. Every emergence point is recorded by type and address the same day, since a flag without a record finds nothing later."
+  },
+  {
+   "id": "wp2wc-process36",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order dye testing to confirm suspected cross connections found by smoke testing.",
+   "topicId": "flow-monitoring-ii",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: three properties showed smoke at roof leaders or yard drains, and dye testing will confirm which drains reach the sanitary sewer.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Test a control fixture known to be sanitary connected to confirm the observation method is working"
+    },
+    {
+     "id": "s2",
+     "label": "Schedule the tests with the property owners and confirm which fixture or drain will be tested at each property"
+    },
+    {
+     "id": "s3",
+     "label": "Issue the results to the supervisor for property correction notices and update the basin source inventory"
+    },
+    {
+     "id": "s4",
+     "label": "Introduce dye with a measured flush of water at one source at a time while an observer watches the downstream sanitary manhole"
+    },
+    {
+     "id": "s5",
+     "label": "Classify each source as confirmed connected, not connected, or inconclusive with the reason recorded"
+    },
+    {
+     "id": "s6",
+     "label": "Record whether dye appears, the travel time, and the strength of the colour for each tested source"
+    }
+   ],
+   "correctOrder": [
+    "s2",
+    "s4",
+    "s6",
+    "s1",
+    "s5",
+    "s3"
+   ],
+   "explanation": "One source is tested at a time so dye in the manhole can be tied to a single drain. The control test protects the whole day, because a method fault would otherwise turn real connections into false negatives."
+  },
+  {
+   "id": "wp2wc-process37",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a wet weather manhole inflow survey during a spring rain event.",
+   "topicId": "flow-monitoring-ii",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: crews will check 40 manholes in a high response basin while rain is falling, looking for cover and frame inflow sources.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "At each manhole, observe the cover, vent holes, and frame seal for ponded water entering and listen for inflow before opening"
+    },
+    {
+     "id": "s2",
+     "label": "Rank the sources by estimated rate and add the top sources to the sealing and rehabilitation work plan"
+    },
+    {
+     "id": "s3",
+     "label": "Estimate each source rate in the standard terms and mark manholes needing seals, inserts, or frame repairs on the route list"
+    },
+    {
+     "id": "s4",
+     "label": "Brief crews on the route, the rating terms for weeping, dripping, and running leaks, and the rule not to open covers in fast traffic without control"
+    },
+    {
+     "id": "s5",
+     "label": "Where safe, open the cover and observe and photograph joint and connection leaks with the asset number recorded"
+    },
+    {
+     "id": "s6",
+     "label": "Return the completed route sheets the same day and enter the sources into the basin inventory before the next rain"
+    }
+   ],
+   "correctOrder": [
+    "s4",
+    "s1",
+    "s5",
+    "s3",
+    "s6",
+    "s2"
+   ],
+   "explanation": "Inflow sources are only visible while it rains, so ratings use one standard language across crews. Sources are entered and ranked before the next event, turning a wet day of observations into a repair list instead of a memory."
+  },
+  {
+   "id": "wp2wc-process38",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the data download and validation visit for a temporary flow monitor at week three.",
+   "topicId": "flow-monitoring-ii",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: the monitor is mid study, battery and data quality must be confirmed before the wettest forecast period.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Record the visit, readings, and any data flags in the site file so the final analysis can exclude bad periods honestly"
+    },
+    {
+     "id": "s2",
+     "label": "Plot the downloaded flows against the rain gauge record and flag any period where flow does not respond as expected"
+    },
+    {
+     "id": "s3",
+     "label": "Compare the logged depth with a manual depth reading and check the sensor for debris fouling or movement"
+    },
+    {
+     "id": "s4",
+     "label": "Clean the sensor, replace the battery if the voltage is below the study threshold, and confirm logging has restarted"
+    },
+    {
+     "id": "s5",
+     "label": "Confirm the remaining study duration and the retrieval date with the program coordinator before leaving the site"
+    },
+    {
+     "id": "s6",
+     "label": "Download the data on site and confirm the record is continuous with no gaps since installation"
+    }
+   ],
+   "correctOrder": [
+    "s6",
+    "s3",
+    "s2",
+    "s4",
+    "s1",
+    "s5"
+   ],
+   "explanation": "Mid study validation saves studies: a fouled sensor found at week three costs days of data, while the same fault found at retrieval costs the whole study. Flags are recorded at the visit so the analyst is not left guessing which periods to trust."
+  },
+  {
+   "id": "wp2wc-process39",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the effectiveness monitoring after an inflow and infiltration reduction project.",
+   "topicId": "flow-monitoring-ii",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, provincial wastewater requirements in general terms, the federal Wastewater Systems Effluent Regulations and the CCME Canada-wide Strategy as general references, and standard collection practice.",
+   "configuration": "Scope: a basin had manhole sealing, lateral repairs, and two cross connections removed last year, and the utility must show whether flows fell.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "File the effectiveness report in the basin record and recommend whether the next basin should use the same repair mix"
+    },
+    {
+     "id": "s2",
+     "label": "Compare dry weather infiltration and storm response between the two periods using the same calculation method"
+    },
+    {
+     "id": "s3",
+     "label": "Report the change with its data limits, including any development growth in the basin during the project period"
+    },
+    {
+     "id": "s4",
+     "label": "Select post project storms of similar depth to the pre project storms used in the original analysis"
+    },
+    {
+     "id": "s5",
+     "label": "Retrieve the pre project flow and rainfall records for the basin and confirm the monitor location can be reoccupied exactly"
+    },
+    {
+     "id": "s6",
+     "label": "Install the monitor at the same site with the same sensor setup and record for a comparable season and duration"
+    }
+   ],
+   "correctOrder": [
+    "s5",
+    "s6",
+    "s4",
+    "s2",
+    "s3",
+    "s1"
+   ],
+   "explanation": "Effectiveness claims fail when the second study measures something different from the first. Same site, same method, and matched storms make the comparison fair, and growth in the basin is declared so a real reduction is not hidden or invented."
+  }
+ ],
+ "missions": [
+  {
+   "id": "wp2wc-mission41",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 41: The Rainfall Inflow Rate Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wc-error60",
+     "revision": "r1",
+     "occurrenceId": "m41-t1"
+    },
+    {
+     "taskId": "wp2wc-process01",
+     "revision": "r1",
+     "occurrenceId": "m41-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2wc-mission42",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 42: The Lift Station Maintenance Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wc-process02",
+     "revision": "r1",
+     "occurrenceId": "m42-t1"
+    },
+    {
+     "taskId": "wp2wc-error61",
+     "revision": "r1",
+     "occurrenceId": "m42-t2"
+    },
+    {
+     "taskId": "wp2wc-error62",
+     "revision": "r1",
+     "occurrenceId": "m42-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2wc-mission43",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 43: The Rainfall Depth Volume Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wc-error63",
+     "revision": "r1",
+     "occurrenceId": "m43-t1"
+    },
+    {
+     "taskId": "wp2wc-process03",
+     "revision": "r1",
+     "occurrenceId": "m43-t2"
+    },
+    {
+     "taskId": "wp2wc-error64",
+     "revision": "r1",
+     "occurrenceId": "m43-t3"
+    },
+    {
+     "taskId": "wp2wc-error65",
+     "revision": "r1",
+     "occurrenceId": "m43-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2wc-mission44",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 44: The Lift Station Maintenance Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wc-process04",
+     "revision": "r1",
+     "occurrenceId": "m44-t1"
+    },
+    {
+     "taskId": "wp2wc-error66",
+     "revision": "r1",
+     "occurrenceId": "m44-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2wc-mission45",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 45: The Cleaning Production Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wc-error67",
+     "revision": "r1",
+     "occurrenceId": "m45-t1"
+    },
+    {
+     "taskId": "wp2wc-process05",
+     "revision": "r1",
+     "occurrenceId": "m45-t2"
+    },
+    {
+     "taskId": "wp2wc-error68",
+     "revision": "r1",
+     "occurrenceId": "m45-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2wc-mission46",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 46: The Lift Station Maintenance Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wc-process06",
+     "revision": "r1",
+     "occurrenceId": "m46-t1"
+    },
+    {
+     "taskId": "wp2wc-error69",
+     "revision": "r1",
+     "occurrenceId": "m46-t2"
+    },
+    {
+     "taskId": "wp2wc-error70",
+     "revision": "r1",
+     "occurrenceId": "m46-t3"
+    },
+    {
+     "taskId": "wp2wc-error71",
+     "revision": "r1",
+     "occurrenceId": "m46-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2wc-mission47",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 47: The Cleaning Production Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wc-error72",
+     "revision": "r1",
+     "occurrenceId": "m47-t1"
+    },
+    {
+     "taskId": "wp2wc-process07",
+     "revision": "r1",
+     "occurrenceId": "m47-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2wc-mission48",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 48: The Lift Station Maintenance Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wc-process08",
+     "revision": "r1",
+     "occurrenceId": "m48-t1"
+    },
+    {
+     "taskId": "wp2wc-error73",
+     "revision": "r1",
+     "occurrenceId": "m48-t2"
+    },
+    {
+     "taskId": "wp2wc-error74",
+     "revision": "r1",
+     "occurrenceId": "m48-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2wc-mission49",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 49: The Cctv Production Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wc-error75",
+     "revision": "r1",
+     "occurrenceId": "m49-t1"
+    },
+    {
+     "taskId": "wp2wc-process09",
+     "revision": "r1",
+     "occurrenceId": "m49-t2"
+    },
+    {
+     "taskId": "wp2wc-error76",
+     "revision": "r1",
+     "occurrenceId": "m49-t3"
+    },
+    {
+     "taskId": "wp2wc-error77",
+     "revision": "r1",
+     "occurrenceId": "m49-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2wc-mission50",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 50: The Lift Station Maintenance Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wc-process10",
+     "revision": "r1",
+     "occurrenceId": "m50-t1"
+    },
+    {
+     "taskId": "wp2wc-error78",
+     "revision": "r1",
+     "occurrenceId": "m50-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2wc-mission51",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 51: The Cctv Production Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wc-error79",
+     "revision": "r1",
+     "occurrenceId": "m51-t1"
+    },
+    {
+     "taskId": "wp2wc-process100",
+     "revision": "r1",
+     "occurrenceId": "m51-t2"
+    },
+    {
+     "taskId": "wp2wc-error80",
+     "revision": "r1",
+     "occurrenceId": "m51-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2wc-mission52",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 52: The Cleaning Program Planning Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wc-process11",
+     "revision": "r1",
+     "occurrenceId": "m52-t1"
+    },
+    {
+     "taskId": "wp2wc-error81",
+     "revision": "r1",
+     "occurrenceId": "m52-t2"
+    },
+    {
+     "taskId": "wp2wc-error82",
+     "revision": "r1",
+     "occurrenceId": "m52-t3"
+    },
+    {
+     "taskId": "wp2wc-error83",
+     "revision": "r1",
+     "occurrenceId": "m52-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2wc-mission53",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 53: The Cipp Liner Quantity Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wc-error84",
+     "revision": "r1",
+     "occurrenceId": "m53-t1"
+    },
+    {
+     "taskId": "wp2wc-process12",
+     "revision": "r1",
+     "occurrenceId": "m53-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2wc-mission54",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 54: The Cleaning Program Planning Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wc-process13",
+     "revision": "r1",
+     "occurrenceId": "m54-t1"
+    },
+    {
+     "taskId": "wp2wc-error85",
+     "revision": "r1",
+     "occurrenceId": "m54-t2"
+    },
+    {
+     "taskId": "wp2wc-error86",
+     "revision": "r1",
+     "occurrenceId": "m54-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2wc-mission55",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 55: The Cipp Liner Quantity Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wc-error87",
+     "revision": "r1",
+     "occurrenceId": "m55-t1"
+    },
+    {
+     "taskId": "wp2wc-process14",
+     "revision": "r1",
+     "occurrenceId": "m55-t2"
+    },
+    {
+     "taskId": "wp2wc-error88",
+     "revision": "r1",
+     "occurrenceId": "m55-t3"
+    },
+    {
+     "taskId": "wp2wc-error89",
+     "revision": "r1",
+     "occurrenceId": "m55-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2wc-mission56",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 56: The Cleaning Program Planning Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wc-process15",
+     "revision": "r1",
+     "occurrenceId": "m56-t1"
+    },
+    {
+     "taskId": "wp2wc-error90",
+     "revision": "r1",
+     "occurrenceId": "m56-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2wc-mission57",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 57: The Pipe Replacement Quantity Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wc-error91",
+     "revision": "r1",
+     "occurrenceId": "m57-t1"
+    },
+    {
+     "taskId": "wp2wc-process16",
+     "revision": "r1",
+     "occurrenceId": "m57-t2"
+    },
+    {
+     "taskId": "wp2wc-error92",
+     "revision": "r1",
+     "occurrenceId": "m57-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2wc-mission58",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 58: The Cleaning Program Planning Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wc-process17",
+     "revision": "r1",
+     "occurrenceId": "m58-t1"
+    },
+    {
+     "taskId": "wp2wc-error93",
+     "revision": "r1",
+     "occurrenceId": "m58-t2"
+    },
+    {
+     "taskId": "wp2wc-error94",
+     "revision": "r1",
+     "occurrenceId": "m58-t3"
+    },
+    {
+     "taskId": "wp2wc-error95",
+     "revision": "r1",
+     "occurrenceId": "m58-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2wc-mission59",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 59: The Grout Quantity Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wc-error96",
+     "revision": "r1",
+     "occurrenceId": "m59-t1"
+    },
+    {
+     "taskId": "wp2wc-process18",
+     "revision": "r1",
+     "occurrenceId": "m59-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2wc-mission60",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 60: The Cleaning Program Planning Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wc-process19",
+     "revision": "r1",
+     "occurrenceId": "m60-t1"
+    },
+    {
+     "taskId": "wp2wc-error97",
+     "revision": "r1",
+     "occurrenceId": "m60-t2"
+    },
+    {
+     "taskId": "wp2wc-error98",
+     "revision": "r1",
+     "occurrenceId": "m60-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Collection system operations chapters (sewers, lift stations, inspection and cleaning)"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "de9800ce706011e2c74acdbc7ab512d3f5217ba8f15f5cbc56102abb0369f45d",
+  "taskReceipts": [
+   {
+    "taskId": "wp2wc-error60",
+    "revision": "r1",
+    "sha256": "abb76ec0969d435d20fccef2823dce2fbe14a91a3e1cec854bfda078aa178677",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-error61",
+    "revision": "r1",
+    "sha256": "c34d4112aa672bfaa03bb6c0e34b3ec2d66b0f175f10eb4c3593ffff9dbf337d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-error62",
+    "revision": "r1",
+    "sha256": "dfa125dcb8575e5029abee31f44f540601f61eb34cee1c55398c395f015750e1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-error63",
+    "revision": "r1",
+    "sha256": "10847c45ae49a19ac82f0123e2c71fc406b7a75aab59ff850f79cefbe3c103ab",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-error64",
+    "revision": "r1",
+    "sha256": "0a6862fbdc03371911f8c835436fbf7a2c1e70de2ac107cd6bc754b1239db67f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-error65",
+    "revision": "r1",
+    "sha256": "eadf2ab27297d6cf78229f4ceaba6140d090c396dea179aa6082a3937bd3cf2b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-error66",
+    "revision": "r1",
+    "sha256": "1d4845b427b67417b0e9ef7ade8cf9f138c94328c8ce20079b7a91978a50cbae",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-error67",
+    "revision": "r1",
+    "sha256": "14d9fbca8527e2cd14f5cf93f4869ff76c0efe48302b1b8acb2f7d925d90b671",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-error68",
+    "revision": "r1",
+    "sha256": "42bc9ecaba53d52bcd50ac0dfafc54abb1919ed82dc7b911ac7e3e22714c4e3a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-error69",
+    "revision": "r1",
+    "sha256": "d6213e534ace9ecd2b34f7c8cf71b64e68c65f5d237d8d878b6be41dbc2552f0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-error70",
+    "revision": "r1",
+    "sha256": "57e8dd31bee936da9fc340db35cefafefd906a06cd6b17eee508e5b363fd0c3c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-error71",
+    "revision": "r1",
+    "sha256": "e85571389fcff695b85d634787a218fe0875e65add8d02eb1434cb08864f961c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-error72",
+    "revision": "r1",
+    "sha256": "1a9421c58cbb902cf19a66652921632d0530b10f71bed831e7dd76d3dd366b11",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-error73",
+    "revision": "r1",
+    "sha256": "619e98e23ff55ffb5e0abb62d91d2ccaade0431aa234b89b222eae8acb97d2f0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-error74",
+    "revision": "r1",
+    "sha256": "ec8ed3d183a210083cbaa1f4e46542e04a4d34368310e58719d99c2d82ce1216",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-error75",
+    "revision": "r1",
+    "sha256": "21ebb0645f4143f4903dc5576bab5b90150fbcf02325ce2f3953bf91ad2d8693",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-error76",
+    "revision": "r1",
+    "sha256": "3d6a6533fccf918391d6728b312a9874baed46fa202eab6a17e7778193816748",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-error77",
+    "revision": "r1",
+    "sha256": "ef847e1894055c67e77ee8c6773d0314563903496c87126abda559413f9dbf6a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-error78",
+    "revision": "r1",
+    "sha256": "7f2a3ae99756395c7edf44020508552d4cfcbd3957418ec6a573cdc14630d608",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-error79",
+    "revision": "r1",
+    "sha256": "562c9577b70e9dc8ba412e35754a9e6732a933647ba95c691cc634be45fc389c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-error80",
+    "revision": "r1",
+    "sha256": "4b5e67a42246524655872716b9b1ebdc0d7011decd50fb5ea092d2eaa1298ba4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-error81",
+    "revision": "r1",
+    "sha256": "b63c3986a27e138093672c81026b6af176cca3f3c90190349339fa7f45accca6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-error82",
+    "revision": "r1",
+    "sha256": "47c91b467b0705d9137b84a68aaf0e552f99294ed04ea16aed7543a5e6f3a2f7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-error83",
+    "revision": "r1",
+    "sha256": "bbaec084cbe6cddb1d0d77d515828463d0b17a4933d86b141eeb13e71afd7730",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-error84",
+    "revision": "r1",
+    "sha256": "3a8f69d147f724b2b287767085d384921ee716d311a4d1ccb6b3953ac8581522",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-error85",
+    "revision": "r1",
+    "sha256": "c13943b5e65b92faf18a5c78da2d19ea551ae5e4ca68ee882db3f684c64597c3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-error86",
+    "revision": "r1",
+    "sha256": "9ff5990d0c92705236ab3b043e30847708ec4544b1c8c23b2473dadb53cff315",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-error87",
+    "revision": "r1",
+    "sha256": "447a0d4637c1da0c8f999609645afe0e90b184983597be266dc19cf15beb9c26",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-error88",
+    "revision": "r1",
+    "sha256": "23c58bd20db8d6c87209e50fe56b5bbaa048c159ad2fd57e273e19f8860d625b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-error89",
+    "revision": "r1",
+    "sha256": "71a5ca072c3f6f2f20f16b2aa08e19089dff8d75bef738a8b88e9d921e2836fe",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-error90",
+    "revision": "r1",
+    "sha256": "8460217ad8e5e73ca956edb2aa6b26d6324d7793f1e51dbd4e9bddf296eb2c0e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-error91",
+    "revision": "r1",
+    "sha256": "82f8ae8a541402a8060d7879138a6f119a9282a5c54ad9b58bc68c60b2ae0311",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-error92",
+    "revision": "r1",
+    "sha256": "c783e6586cbaa00630c9eb44c7b9cf3e9a438b1be12fd702e08c64306c4489ca",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-error93",
+    "revision": "r1",
+    "sha256": "2ad1e8cb2fc2618aa26258dc5739807ab93e146ac998ed602c1b6bdc2bc2c193",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-error94",
+    "revision": "r1",
+    "sha256": "5844b4fc357bfd99f1499b7e27e2043cff2439a8f15595abffe9949b84c5fb93",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-error95",
+    "revision": "r1",
+    "sha256": "af7cce20574c285305fb015e051f450e814399513edcc393dfdb90c119d7899d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-error96",
+    "revision": "r1",
+    "sha256": "296554747a50ab5ce88618b31ddfe5b9fc5244ba3ade19e30c37558b4a26e6ad",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-error97",
+    "revision": "r1",
+    "sha256": "c72cc6cebc8140f78a43065dc10d1aa88d4cbb645e6c3ea7ac376edc1a26ffbf",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-error98",
+    "revision": "r1",
+    "sha256": "b8f605088b8dc9c517903c1817161157898b662248bb4f9529eb5ede6c143e0a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-error99",
+    "revision": "r1",
+    "sha256": "5e3896d3f4b0c4ed396c7205fa384a68119c52dd050597e42f27ac96600ce37c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-process01",
+    "revision": "r1",
+    "sha256": "fb2952ada6ec4eee94f7bcc97214278adc24f2d4b1069615d1791aa0bbe7a7d1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-process02",
+    "revision": "r1",
+    "sha256": "f9c98038ee281d41ded591e02f2c41db2d90ffc0680e3805f7ce57234d941eb7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-process03",
+    "revision": "r1",
+    "sha256": "b849651cdf5372039b41ac0683f09fee5bc7a6c8a7ad41fd18d9cf446895151d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-process04",
+    "revision": "r1",
+    "sha256": "c2b0c176d305e3974acc43cc595560767cda65b981e20c7b5b7d1145335f7fa4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-process05",
+    "revision": "r1",
+    "sha256": "de79261a2f3d23cbb826cb9783e5c6f5a0a2638ffc3f0577fd3f988e0828db6c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-process06",
+    "revision": "r1",
+    "sha256": "1557518eefdfdd1d28b5786ea2b8fea9df412da69d4744b1ba27caee30102e15",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-process07",
+    "revision": "r1",
+    "sha256": "1fd98bd6337439181d723c68df2a2f8859e2b8bb424df225732fecdb42d53b38",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-process08",
+    "revision": "r1",
+    "sha256": "a876d4969473924cc7802d2d102ce233d8faa4927426b6d99b3ebad79f31f0a0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-process09",
+    "revision": "r1",
+    "sha256": "e7f1556f8e0d045dab6f6a411b94b84aa9bebeb6f93841e6caca77828f90d337",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-process10",
+    "revision": "r1",
+    "sha256": "d0af6dc81663a5996e1e502908a03bd26587df9dd3995ef24e7e15be91cea205",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-process100",
+    "revision": "r1",
+    "sha256": "9e1658406b08860236589006eae460528835c3201740b9d9fdca1d1ee5af5f06",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-process11",
+    "revision": "r1",
+    "sha256": "2ee28e65fe7c08fb41383bc5d32733419966d00dbdeae25005c203f98d67ba35",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-process12",
+    "revision": "r1",
+    "sha256": "f7dc0c49ced39d5ade4448328fe165a9fe7d79dbbfbe8cabda693c9fce9e83a4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-process13",
+    "revision": "r1",
+    "sha256": "866f442550d1d1d28189b1be966bbef257558fee33e9a2cd572ef98ee4c1afad",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-process14",
+    "revision": "r1",
+    "sha256": "0b4bcf08b3b57e61b307eff041dabfbeba2be1c735a5481ee84e14e889540092",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-process15",
+    "revision": "r1",
+    "sha256": "22df2a079b00815e5f8bddc002924c979ac9cf8074d99b816958d60a614a45ff",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-process16",
+    "revision": "r1",
+    "sha256": "816c3f177f9db171d053ae786c55f31723657c6e91893b17989aa33483f48f23",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-process17",
+    "revision": "r1",
+    "sha256": "32c289bc43ebc6556aa14fdcd10e2d75504c275e64f14019ad281bb604972fe1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-process18",
+    "revision": "r1",
+    "sha256": "d99519e3b64595885be6417e77702fb7735675a85a57bfb7fcbb5f679f76e564",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-process19",
+    "revision": "r1",
+    "sha256": "020b771999be0d3318a92d8353f684b1b3c2597645ffb2757a659eb5523018d1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-process20",
+    "revision": "r1",
+    "sha256": "1c3738b31a1e36a0fbc8bf0fe3db63d41699e8d4df912e99eb6fe58d3cd777d4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-process21",
+    "revision": "r1",
+    "sha256": "8dbe3df08ae7a36ff74dd594afb1a220e0f0bfdfaa427e605981882c660c6fd5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-process22",
+    "revision": "r1",
+    "sha256": "b136405767da9ffb2740f6a3e1703cec5ab3a5c35a8696cc3939e5990200d605",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-process23",
+    "revision": "r1",
+    "sha256": "c6c8e6b3bf23aa0a7e6f2a7e771f3fe4721696c4d68ff3e8246138db45d80fa2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-process24",
+    "revision": "r1",
+    "sha256": "ca15aadd0faeda433baa9cfcc1c0ee1514f3f0315c424e149b51a182610b3f26",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-process25",
+    "revision": "r1",
+    "sha256": "e06e4a8ba16f6bdacd6df4deb9389037c12fc3c55f49522fbd559194df03b549",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-process26",
+    "revision": "r1",
+    "sha256": "ea674970cb6d2bf94621eac916fc012bd0c67662c107d892ab18ae352f51ae76",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-process27",
+    "revision": "r1",
+    "sha256": "c2889477b74a2f75fef0aeda6e17c63f233127296ab28fb47448635f1c4b413f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-process28",
+    "revision": "r1",
+    "sha256": "ea5ed7c42fd89ca70585f5483fae5631a9dbb543cd601930d1b2aebe1b1aa9eb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-process29",
+    "revision": "r1",
+    "sha256": "de6f7b0e833f8704283db1c087a7b10678bb74d00f0611b358b4b667f362abbb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-process30",
+    "revision": "r1",
+    "sha256": "7451d83606ba5da7b1f76fe6d34ca90120a8c7e208931b32759002409195bb64",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-process31",
+    "revision": "r1",
+    "sha256": "99c79c543fa9e80ff8e6db9b59c40d73d7d758526052c0ee38226783f991122c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-process32",
+    "revision": "r1",
+    "sha256": "a798c33750f65a223a446fc6394168a738a607401b3ec17af1f4a7cfd27bf8b2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-process33",
+    "revision": "r1",
+    "sha256": "9d024e56cc435b8a5e60e8a30f917fce0541f77085cbdca509498770b3ed0cb7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-process34",
+    "revision": "r1",
+    "sha256": "3707dbd2ce77b75b53ee5821bdc7ded1858b3688859e8b921b504ad181455c72",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-process35",
+    "revision": "r1",
+    "sha256": "ce9318a842fe77e1bfca2ad86bdb60d633da26c86d083453b6d471ecf112dc07",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-process36",
+    "revision": "r1",
+    "sha256": "369f1c5a2ae47e0310ef9100c93663cda9fd4b8e467f89808ee90f9f0f6d3e3b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-process37",
+    "revision": "r1",
+    "sha256": "5d216352e2f46a74d5bb34a2546168bf3bfb917662516ed6ada86212106e971e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-process38",
+    "revision": "r1",
+    "sha256": "f719de14e5d7a404defc3f69466a663570254e74f0f1e09d7b143b5b053715b3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wc-process39",
+    "revision": "r1",
+    "sha256": "a0a3bddae64feaf9f8b54f6cccbb448bb42ed29fe85a0b5388445b4d4023808e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "wp2wc-mission41",
+    "revision": "r1",
+    "sha256": "c38f4b303ed43f99b3173a89bfa28b5eb38dddd873201f3a7441e90015285cd9"
+   },
+   {
+    "missionId": "wp2wc-mission42",
+    "revision": "r1",
+    "sha256": "4ee82a831e57d3a4ab8f4ff8493884c51214fdac1b0cf79d19f3247ec4809c2e"
+   },
+   {
+    "missionId": "wp2wc-mission43",
+    "revision": "r1",
+    "sha256": "d54b3ee9d5f633b6e4a648a054a87e051384c6219cdfbac399436a8e1f6002c0"
+   },
+   {
+    "missionId": "wp2wc-mission44",
+    "revision": "r1",
+    "sha256": "44b998cf6f50c842f3e7032e1676e4cade339774cf9c19e38ef7639266f14f76"
+   },
+   {
+    "missionId": "wp2wc-mission45",
+    "revision": "r1",
+    "sha256": "cb35bfdd2d957cfa8c130f949ebe586eb1136398404e1fe82529e68f1ff36280"
+   },
+   {
+    "missionId": "wp2wc-mission46",
+    "revision": "r1",
+    "sha256": "4724faef779cd8d17d33e3df9377c4e72eebee439d0cacd9f8bd5d8863ff819b"
+   },
+   {
+    "missionId": "wp2wc-mission47",
+    "revision": "r1",
+    "sha256": "f867651b227493b69573f938b386acd889ab3cfb249c3af24868891f9dfd2aff"
+   },
+   {
+    "missionId": "wp2wc-mission48",
+    "revision": "r1",
+    "sha256": "4cb3ab1c68e3191302ab8aa5dd698de46adb33b634fcf3a7391c481467dee14a"
+   },
+   {
+    "missionId": "wp2wc-mission49",
+    "revision": "r1",
+    "sha256": "0641d48581fe95a31b196f0c131fce7be492cc12261d32e0090e91164c9ab149"
+   },
+   {
+    "missionId": "wp2wc-mission50",
+    "revision": "r1",
+    "sha256": "129b130df6ae9432562f07fbafac6ef93a95de2e95fe659e6dca14ca4e4366dd"
+   },
+   {
+    "missionId": "wp2wc-mission51",
+    "revision": "r1",
+    "sha256": "17f29b204306d3a68f6adc7cf5b6981670279ae54c6f7966cbd34adc20a6dcc2"
+   },
+   {
+    "missionId": "wp2wc-mission52",
+    "revision": "r1",
+    "sha256": "770ae7bcb1b707bfb500a4f54e12fb1ff29b04f8e36a60ac6e545e930a8243fb"
+   },
+   {
+    "missionId": "wp2wc-mission53",
+    "revision": "r1",
+    "sha256": "1c07ac5beab78f12fcbd1ac341f189e40458ae5967469dd616ed8c7a62c89421"
+   },
+   {
+    "missionId": "wp2wc-mission54",
+    "revision": "r1",
+    "sha256": "7d565946cf77e1f89e73e3f789012de697e8272f9f4f3779a3037184ee6632e5"
+   },
+   {
+    "missionId": "wp2wc-mission55",
+    "revision": "r1",
+    "sha256": "0d3df5638ebe827d80203937e23fc09c7e6d5ada576e22974a35d8b79b2b150b"
+   },
+   {
+    "missionId": "wp2wc-mission56",
+    "revision": "r1",
+    "sha256": "a04bea3619046fb2a8450f322c87b54d578a661e8d562f4ac54175cf7fafe6d5"
+   },
+   {
+    "missionId": "wp2wc-mission57",
+    "revision": "r1",
+    "sha256": "482b039727cd8915335ffd7ed14d86748f27e580f6debc9a90c68658a2bb9108"
+   },
+   {
+    "missionId": "wp2wc-mission58",
+    "revision": "r1",
+    "sha256": "6e15168ac08e58846bdc52762405f20e7a1d2c6b0da338cdd02ae7eee0efeb7f"
+   },
+   {
+    "missionId": "wp2wc-mission59",
+    "revision": "r1",
+    "sha256": "462946a31fb6a0c0b19f0f5ad8bd4db0d9cd92f4930262b4f613b6b50f1341fd"
+   },
+   {
+    "missionId": "wp2wc-mission60",
+    "revision": "r1",
+    "sha256": "b4f41782c9d168080f8c1c950806d94c9f505ff7f75ae02d88156ab6d8c12c24"
+   }
+  ]
+ }
+}

@@ -1,0 +1,65 @@
+[
+ {
+  "itemId": "COLLECTION-L3-626",
+  "expression": "24100-(12640+9860)",
+  "expected": "1600",
+  "decimalPlaces": 0,
+  "unit": "m3"
+ },
+ {
+  "itemId": "COLLECTION-L3-627",
+  "expression": "340+3*620",
+  "expected": "2200",
+  "decimalPlaces": 0,
+  "unit": "m"
+ },
+ {
+  "itemId": "COLLECTION-L3-628",
+  "expression": "12*3.5*1.8-28.4",
+  "expected": "47.2",
+  "decimalPlaces": 1,
+  "unit": "m3"
+ },
+ {
+  "itemId": "COLLECTION-L3-629",
+  "expression": "14*6+12",
+  "expected": "96",
+  "decimalPlaces": 0,
+  "unit": "samples"
+ },
+ {
+  "itemId": "COLLECTION-L3-630",
+  "expression": "(31500-6300)/6",
+  "expected": "4200",
+  "decimalPlaces": 0,
+  "unit": "m3/day"
+ },
+ {
+  "itemId": "COLLECTION-L3-631",
+  "expression": "(48*75-1275)/155",
+  "expected": "15",
+  "decimalPlaces": 0,
+  "unit": "weeks"
+ },
+ {
+  "itemId": "COLLECTION-L3-632",
+  "expression": "3.1416*1.5*1.5*2.5-2.1715",
+  "expected": "15.5",
+  "decimalPlaces": 1,
+  "unit": "m3"
+ },
+ {
+  "itemId": "COLLECTION-L3-633",
+  "expression": "9*96*12",
+  "expected": "10368",
+  "decimalPlaces": 0,
+  "unit": "readings"
+ },
+ {
+  "itemId": "COLLECTION-L3-634",
+  "expression": "(185-62)*6*3600/1000",
+  "expected": "2656.8",
+  "decimalPlaces": 1,
+  "unit": "m3"
+ }
+]

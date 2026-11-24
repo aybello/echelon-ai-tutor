@@ -31,6 +31,8 @@ beforeAll(async () => {
       const client = new QueryClient({defaultOptions:{queries:{retry:false,refetchOnWindowFocus:false,gcTime:Infinity}}});
       const authKey=getQueryKey(trpc.auth.me,undefined,'query');
       const emailKey=getQueryKey(trpc.dashboardAuth.me,undefined,'query');
+      const accessKey=getQueryKey(trpc.stripe.checkAccess,{examType:'oit',email:undefined,accessToken:undefined},'query');
+      window.identityQueries=()=>({auth:client.getQueryState(authKey),email:client.getQueryState(emailKey),access:client.getQueryState(accessKey)});
       client.setQueryData(authKey,{id:101});
       client.setQueryData(emailKey,null);
       const rpc=trpc.createClient({links:[()=>({op})=>observable(observer=>{
@@ -44,7 +46,8 @@ beforeAll(async () => {
       function NavigationObserver(){
         // SiteNav mounts only inside QuizShell's current-question branch. Its
         // stale observer is the remount/refetch trigger from the real failure.
-        trpc.auth.me.useQuery(undefined,{retry:false});
+        const auth=trpc.auth.me.useQuery(undefined,{retry:false});
+        useEffect(()=>{window.navigationAuth={status:auth.status,fetchStatus:auth.fetchStatus,dataUpdatedAt:auth.dataUpdatedAt,isFetchedAfterMount:auth.isFetchedAfterMount}},[auth.status,auth.fetchStatus,auth.dataUpdatedAt,auth.isFetchedAfterMount]);
         useEffect(()=>{window.mounts++;return()=>{window.unmounts++}},[]);
         return <nav>Synthetic navigation</nav>;
       }
@@ -54,6 +57,7 @@ beforeAll(async () => {
         const scope=useVerifiedPracticeSaveScope('oit');
         window.session=session; window.strictScope=scope;
         window.renders.push({current:session.current?.id??null,scope,actor:window.actor});
+        useEffect(()=>{window.committedSession=session;window.committedScope=scope});
         // Mirror QuizShell's early return: status/navigation disappear without current.
         if(!session.current)return <p data-testid="loading">Loading synthetic question</p>;
         return <main><NavigationObserver/><PracticeSaveStatus courseKey="oit"/>
@@ -205,11 +209,33 @@ async function state(page: Page) {
   });
 }
 async function settled(page: Page) {
+  const ready = () => page.evaluate(() => {
+    const w = window as any;
+    const queries = w.identityQueries();
+    const authoritativeIdle = Object.values(queries).every((query: any) =>
+      query?.status === "success" && query.fetchStatus === "idle"
+    );
+    const navigation = w.navigationAuth;
+    return Boolean(
+      authoritativeIdle && queries.auth.data?.id === 101 && queries.access.data?.hasAccess === true &&
+      navigation?.isFetchedAfterMount && navigation.status === "success" && navigation.fetchStatus === "idle" &&
+      navigation.dataUpdatedAt === queries.auth.dataUpdatedAt &&
+      w.session?.current?.id && w.session.questionStatus === undefined && w.strictScope?.identity === "user:101" &&
+      w.committedSession === w.session && w.committedScope === w.strictScope
+    );
+  });
+  // A current question and verified scope can coexist for one render before
+  // the settled actor's queue-reset effect and SiteNav's mount refetch finish.
+  // Start actions only after authoritative idle queries and their committed
+  // render survive the subsequent effect/render turn, not that transient state.
   await expect
     .poll(
       async () => {
-        const s = await state(page);
-        return Boolean(s.id && s.scope?.identity === "user:101");
+        if (!await ready()) return false;
+        await page.evaluate(() => new Promise<void>(resolve =>
+          requestAnimationFrame(() => requestAnimationFrame(() => resolve()))
+        ));
+        return ready();
       },
       { timeout: 2000 }
     )

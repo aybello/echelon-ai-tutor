@@ -273,7 +273,7 @@ test('startup handoff retains useful homepage content when JavaScript is disable
     await page.route('**/*', route => new URL(route.request().url()).origin === new URL(baseURL!).origin ? route.continue() : route.abort());
     await page.goto(baseURL!);
     await expect(page.locator('#ssr-page-shell')).toBeVisible();
-    await expect(page.getByRole('heading', { level: 1 })).toContainText('Prepare for Your Operator Exam');
+    await expect(page.getByRole('heading', { level: 1 })).toContainText('AI-Powered Exam Prep for Skilled Trades');
     await expect(page.getByRole('link', { name: 'Ontario courses', exact: true })).toBeVisible();
   } finally { await context.close(); }
 });

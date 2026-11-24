@@ -84,10 +84,11 @@ describe("SEO and geographic landing-page contract", () => {
       "utf8"
     );
 
-    const ctaLabel = "Try 15 free questions (OIT)";
+    const ctaLabel = "New to the field? Try a free OIT preview";
     const ctaIndex = landing.indexOf(ctaLabel);
     expect(ctaIndex).toBeGreaterThan(-1);
     expect(landing).toContain("Which operator path would you like to explore?");
+    expect(landing).toContain("Start with 15 free questions");
     expect(landing).toContain('href="/quiz"');
     expect(landing).toContain('href="/oit-ww"');
     expect(landing).toContain("Water OIT");
@@ -101,11 +102,15 @@ describe("SEO and geographic landing-page contract", () => {
       path.resolve(process.cwd(), "client/src/pages/Landing.tsx"),
       "utf8"
     );
+    const demo = fs.readFileSync(
+      path.resolve(process.cwd(), "client/src/components/HomepageProductDemo.tsx"),
+      "utf8"
+    );
     expect(landing).toContain("Illustrative preview");
     expect(landing).toContain("Illustrative team training overview");
-    expect(landing).toContain('aria-label="Example worked solution from the study tools"');
-    expect(landing).toContain('className="homepage-preview-badge">Example');
-    expect(landing).toContain("Worked calculation · Water Class I");
+    expect(demo).toContain("Interactive example · Water Class 1");
+    expect(demo).toContain("Try it here. No account needed; this example isn’t saved.");
+    expect(demo).toContain("Show worked solution");
     expect(landing).not.toContain("Illustrative readiness by topic");
     expect(landing).not.toContain("{passPriceLabel}");
     expect(landing).not.toContain('from CA$49');

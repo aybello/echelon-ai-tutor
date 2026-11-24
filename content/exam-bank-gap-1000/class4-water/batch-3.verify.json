@@ -1,0 +1,65 @@
+[
+ {
+  "itemId": "WATER-TREATMENT-L4-581",
+  "expression": "26000*250/1000*1.28*1.4",
+  "expected": "11648.0",
+  "decimalPlaces": 1,
+  "unit": "m3/day"
+ },
+ {
+  "itemId": "WATER-TREATMENT-L4-582",
+  "expression": "18500/37000",
+  "expected": "0.50",
+  "decimalPlaces": 2,
+  "unit": "kWh/m3"
+ },
+ {
+  "itemId": "WATER-TREATMENT-L4-583",
+  "expression": "13500/2700+1",
+  "expected": "6",
+  "decimalPlaces": 0,
+  "unit": "trains"
+ },
+ {
+  "itemId": "WATER-TREATMENT-L4-584",
+  "expression": "400+400*0.10+400*0.05",
+  "expected": "460",
+  "decimalPlaces": 0,
+  "unit": "samples"
+ },
+ {
+  "itemId": "WATER-TREATMENT-L4-585",
+  "expression": "18500*240/1000",
+  "expected": "4440.0",
+  "decimalPlaces": 1,
+  "unit": "m3/day"
+ },
+ {
+  "itemId": "WATER-TREATMENT-L4-586",
+  "expression": "12450*0.48",
+  "expected": "5976.0",
+  "decimalPlaces": 1,
+  "unit": "kWh"
+ },
+ {
+  "itemId": "WATER-TREATMENT-L4-587",
+  "expression": "15000*(1-0.92)",
+  "expected": "1200.0",
+  "decimalPlaces": 1,
+  "unit": "m3/day"
+ },
+ {
+  "itemId": "WATER-TREATMENT-L4-588",
+  "expression": "9600*0.035*30",
+  "expected": "10080.0",
+  "decimalPlaces": 1,
+  "unit": "kg"
+ },
+ {
+  "itemId": "WATER-TREATMENT-L4-589",
+  "expression": "11200*1.15*1.5",
+  "expected": "19320.0",
+  "decimalPlaces": 1,
+  "unit": "m3/day"
+ }
+]

@@ -33,14 +33,14 @@
     "logoDisplayAllowed": true
   },
   {
-    "slug": "black-entrepreneurship-alliance",
-    "name": "Black Entrepreneurship Alliance",
-    "sourcePage": "https://www.yorku.ca/yspace/programs-streams/bea/",
-    "sourceAsset": "https://www.yorku.ca/yspace/wp-content/uploads/sites/231/2026/09/Logo-black-1024x326.png",
-    "runtimeUrl": "/manus-storage/bea_560997bf.png",
-    "width": 1024,
-    "height": 326,
-    "sha256": "1681e9c43e30edc28502f7e1d44b69b421c3fcfc569905d219c0c93da19a1480",
+    "slug": "city-of-peterborough",
+    "name": "City of Peterborough",
+    "sourcePage": "https://www.peterborough.ca/",
+    "sourceAsset": "https://files.manuscdn.com/search-media/310519663446228701/kf4bQuJbRxevyT4M6RPLMZ/osDjMezMNo4LKfWfs8823U.png",
+    "runtimeUrl": "/manus-storage/city-of-peterborough_b5524a31.png",
+    "width": 1608,
+    "height": 414,
+    "sha256": "b403fb6b786a21f83b62ec71f3360fe70df016471247e54bd4ec2bad2fd8f156",
     "logoDisplayAllowed": true
   }
 ]

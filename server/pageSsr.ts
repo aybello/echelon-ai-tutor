@@ -109,15 +109,15 @@ function buildFaqJsonLd(): string {
         name: "What is Echelon Institute?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Echelon Institute is Canada's AI-powered exam prep platform for water and wastewater operators. It provides adaptive practice questions, module study notes, 400+ concept flashcards per course, interactive process guides, and an AI tutor for active course-pass holders.",
+          text: "Echelon Institute is an independent Canadian provider of AI-powered exam preparation for the skilled-trades workforce, starting with water and wastewater. It offers Canadian courses and supported US preparation, plus free Ontario 309A practice and mock exams. Course inclusions and question totals vary.",
         },
       },
       {
         "@type": "Question",
-        name: "Which provinces does Echelon cover?",
+        name: "Which certifications and regions does Echelon cover?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Echelon provides Ontario-specific OIT and Class 1–4 courses plus WPI-aligned Class I–IV preparation for treatment, distribution, and collection candidates in British Columbia, Alberta, Saskatchewan, and Manitoba. Candidates should confirm the current exam and eligibility requirements with their provincial certifying authority.",
+          text: "Echelon provides Ontario-specific OIT and Class 1–4 operator preparation, WPI-aligned Class I–IV courses for treatment, distribution, and collection candidates in Canada and supported US jurisdictions, and Ontario 309A Construction Electrician preparation. Availability varies by course and jurisdiction; confirm current requirements with your certifying authority.",
         },
       },
       {
@@ -125,7 +125,7 @@ function buildFaqJsonLd(): string {
         name: "Is there a free trial?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes. Every course includes 15 free practice questions. The OIT preview also includes 50 flashcards, 30 mock-exam questions, and three AI Tutor messages — no account or credit card required.",
+          text: "Paid operator courses include 15 free practice questions. The OIT preview also includes 50 flashcards, 30 mock-exam questions, and three AI Tutor messages — no account or credit card required. Full access to paid operator courses requires an Individual Exam Pass or an assigned team licence. Ontario 309A practice and mock exams are free.",
         },
       },
       {
@@ -149,7 +149,7 @@ function buildFaqJsonLd(): string {
         name: "How many practice questions does Echelon have?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Echelon courses have 400+ practice questions, organized by module and difficulty level. The question banks cover exam topics including treatment processes, laboratory analysis, equipment operation and maintenance, source water, and safety and administration.",
+          text: "Course inclusions and question totals vary by course. Check the matching course page for its current practice questions and study tools, and the pricing page for paid course access terms.",
         },
       },
       {
@@ -165,7 +165,7 @@ function buildFaqJsonLd(): string {
         name: "How much does Echelon cost?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Individuals purchase one 12-month Exam Pass for a selected course with a one-time payment. Team plans are available for utilities and municipalities. Visit echeloninstitute.ca/pricing for current pricing.",
+          text: "For paid operator courses, individuals purchase one 12-month Exam Pass for a selected course with a one-time payment. Team plans are available for utilities and municipalities. Ontario 309A practice and mock exams are free. Visit echeloninstitute.ca/pricing for current pricing.",
         },
       },
     ],
@@ -180,7 +180,11 @@ function buildOrganizationJsonLd(): string {
     url: SITE_URL,
     logo: PUBLISHER_LOGO,
     description:
-      "Independent Canadian exam preparation for water and wastewater operators, with course-specific practice, flashcards, mock exams, process guides, and an AI tutor.",
+      "Independent Canadian provider of AI-powered exam preparation for the skilled-trades workforce, starting with water and wastewater, with Canadian courses and supported US preparation.",
+    areaServed: [
+      { "@type": "Country", name: "Canada" },
+      { "@type": "Country", name: "United States", description: "Supported operator exam-preparation courses and jurisdictions only." },
+    ],
     sameAs: [
       "https://www.linkedin.com/company/echeloninstitute",
       "https://github.com/aybello/echelon-ai-tutor",
@@ -232,23 +236,23 @@ function buildPricingJsonLd(): string {
 const BASE_STATIC_PAGE_META: PageMeta[] = [
   {
     path: "/",
-    title: "Water & Wastewater Operator Exam Prep | Echelon Institute",
+    title: "AI-Powered Exam Prep for Skilled Trades | Echelon Institute",
     description:
-      "Canadian water and wastewater operator exam preparation with a free OIT taste: 15 practice questions, 50 flashcards, 30 mock questions, and three AI Tutor messages.",
-    h1: "Prepare for Your Operator Exam. Advance Your Career.",
+      "AI-powered exam prep for the skilled-trades workforce, starting with water and wastewater. Canadian courses and supported US preparation, plus free Ontario 309A practice and mock exams.",
+    h1: "AI-Powered Exam Prep for Skilled Trades",
     jsonLd: buildOrganizationJsonLd(),
     bodyHtml: `
-      <h2>Canada's Exam Prep Platform for Water &amp; Wastewater Operators</h2>
-      <p>Echelon Institute is an independent Canadian exam-preparation platform built specifically for water and wastewater operators. It provides Ontario-specific courses and WPI-aligned preparation for treatment, distribution, and collection candidates in Western Canada.</p>
+      <h2>Exam Preparation for the Skilled-Trades Workforce</h2>
+      <p>Echelon Institute is an independent Canadian provider of AI-powered exam preparation for the skilled-trades workforce, starting with water and wastewater. Explore Canadian operator courses, preparation for supported US jurisdictions, and free Ontario 309A Construction Electrician practice and mock exams. Availability varies by course and jurisdiction.</p>
 
       <h2>What's Included</h2>
-      <p>Every Echelon course includes 400+ practice questions organized by module and difficulty, 400+ concept flashcards, comprehensive study notes, timed mock exams that simulate the real test format, and an AI tutor for active course-pass holders that explains concepts and calculations in plain language.</p>
+      <p>Course-specific practice questions, flashcards, study notes and mock exams help structure your preparation. Inclusions and question totals vary by course. Check the matching course page for its study tools and the pricing page for paid access terms.</p>
 
       <h2>Courses Available</h2>
-      <p>Echelon covers Ontario OIT and Class 1–4 Water Treatment, Water Distribution and Supply, Wastewater Treatment, and Wastewater Collection. WPI-aligned Class I–IV preparation is also available for Western Canadian candidates. Provincial authorities control eligibility, exam content, and certification requirements.</p>
+      <p>Echelon covers Ontario OIT and Class 1–4 Water Treatment, Water Distribution and Supply, Wastewater Treatment, and Wastewater Collection. WPI-aligned Class I–IV preparation is also available for Western Canadian candidates and supported US jurisdictions. Ontario <a href="${SITE_URL}/electrician-309a">309A Construction Electrician preparation</a> is also available. Certifying authorities control eligibility, exam content, and certification requirements.</p>
 
       <h2>Free to Start</h2>
-      <p>Every course includes 15 free practice questions. OIT learners can also try 50 flashcards, 30 mock-exam questions, and three AI Tutor messages — no account or credit card required. Experience the complete study system before purchasing a 12-month Exam Pass.</p>
+      <p>Paid operator courses include 15 free practice questions. OIT learners can also try 50 flashcards, 30 mock-exam questions, and three AI Tutor messages — no account or credit card required. Full access to paid operator courses requires an Individual Exam Pass for 12 months from successful payment or an assigned team licence. Ontario 309A practice and mock exams are free.</p>
 
       <h2>Team Plans for Utilities</h2>
       <p>Echelon offers bulk seat pricing for utilities, municipalities, and training organizations. Team plans include a shared admin dashboard and volume discounts. Contact us at <a href="mailto:abello@echeloninstitute.ca">abello@echeloninstitute.ca</a> or visit <a href="${SITE_URL}/pricing">our pricing page</a> to learn more.</p>
@@ -378,7 +382,7 @@ const BASE_STATIC_PAGE_META: PageMeta[] = [
       <p><a href="${SITE_URL}/wpi">Browse WPI-aligned courses</a>.</p>
 
       <h2>What Every Plan Includes</h2>
-      <p>Every paid pass includes 400+ practice questions organized by module, 400+ digital flashcards with progress tracking, study notes, timed mock exams, the AI Tutor, process guides, and score history.</p>
+      <p>Every paid pass includes course-specific practice questions organized by module, 400+ digital flashcards with progress tracking, study notes, timed mock exams, the AI Tutor, process guides, and score history.</p>
 
       <h2>Team Plans for Utilities and Municipalities</h2>
       <p>Echelon offers two team models for utilities, municipalities, training organizations, and Indigenous water authorities. Both include named-operator accounts, a shared manager dashboard, progress reporting, and volume discounts.</p>
@@ -425,7 +429,7 @@ const BASE_STATIC_PAGE_META: PageMeta[] = [
       </ul>
 
       <h2>One Selected OIT Course for ${formatCad(INDIVIDUAL_PRICES_CAD.oit)}</h2>
-      <p>A paid Exam Pass provides 12 months of access from successful payment for one named learner and includes 400+ practice questions, 400+ flashcards with progress tracking, a timed 100-question mock exam, AI Tutor explanations, process guides, formula sheets, and math practice.</p>
+      <p>A paid Exam Pass provides 12 months of access from successful payment for one named learner and includes 1,000+ practice questions, 400+ flashcards with progress tracking, a timed 100-question mock exam, AI Tutor explanations, process guides, formula sheets, and math practice.</p>
       <ul>
         <li><a href="${SITE_URL}/oit-water-flashcards">Water OIT flashcards</a> and <a href="${SITE_URL}/oit-ww-flashcards">Wastewater OIT flashcards</a></li>
         <li><a href="${SITE_URL}/oit-mock">Water OIT mock exam</a> and <a href="${SITE_URL}/oit-ww-mock">Wastewater OIT mock exam</a></li>
@@ -439,29 +443,29 @@ const BASE_STATIC_PAGE_META: PageMeta[] = [
   },
   {
     path: "/about",
-    title: "About Echelon Institute | Canadian Water Operator Exam Prep",
+    title: "About — Echelon Institute",
     description:
-      "Learn about Echelon Institute, an independent Canadian exam-preparation platform built specifically for water and wastewater operators.",
+      "Echelon Institute provides AI-powered exam prep for the skilled-trades workforce, starting with water and wastewater. Canadian courses, supported US preparation and free Ontario 309A practice and mock exams.",
     h1: "About Echelon Institute",
     jsonLd: buildWebPageJsonLd({
       path: "/about",
-      title: "About Echelon Institute",
+      title: "About — Echelon Institute",
       description:
-        "Canada's AI-powered exam prep platform built for water and wastewater operators.",
+        "Echelon Institute provides AI-powered exam prep for the skilled-trades workforce, starting with water and wastewater. Canadian courses, supported US preparation and free Ontario 309A practice and mock exams.",
       h1: "About Echelon Institute",
     }),
     bodyHtml: `
       <h2>Our Mission</h2>
-      <p>Echelon Institute exists to help Canadian water and wastewater operators pass their certification exams and advance their careers. Water operators are among the most essential workers in any community — they protect public health every day — and they deserve world-class study tools to match the importance of their work.</p>
+      <p>Echelon Institute provides AI-powered exam preparation for the skilled-trades workforce, starting with water and wastewater. Founded in Canada, the platform offers Canadian courses and supported US preparation, plus free Ontario 309A practice and mock exams. Water and wastewater operators remain our initial focus, with study tools built around the work that protects public health.</p>
 
-      <h2>Built for Canadian Operators</h2>
-      <p>Unlike generic exam-prep platforms, Echelon is built specifically for the water sector. Ontario-specific courses and WPI-aligned Western Canadian courses are organized by certification stream and class. Candidates should verify current requirements with OWWCO, EOCP, or the applicable provincial authority.</p>
+      <h2>Course-Specific Preparation</h2>
+      <p>Ontario-specific operator courses and WPI-aligned preparation are organized by certification stream and class. Availability varies by course and jurisdiction; not every trade or exam is offered. Candidates should verify current requirements with OWWCO, EOCP, or their applicable certifying authority.</p>
 
       <h2>AI-Powered Learning</h2>
       <p>Echelon's AI tutor is available 24/7 to answer questions, explain concepts, and walk through calculation problems in plain language. The adaptive question engine tracks your performance by module and adjusts difficulty to focus your study time where it matters most.</p>
 
       <h2>Certifications Covered</h2>
-      <p>Echelon covers Ontario OIT and Class 1–4 treatment, distribution, and collection streams, plus WPI-aligned Class I–IV preparation used by candidates in Western Canada. Echelon is independent and is not endorsed by a certifying authority.</p>
+      <p>Echelon covers Ontario OIT and Class 1–4 treatment, distribution, and collection streams, WPI-aligned Class I–IV preparation used by candidates in Western Canada and supported US jurisdictions, and Ontario 309A Construction Electrician preparation. Course inclusions and question totals vary. Echelon is independent and is not endorsed by a certifying authority.</p>
 
       <h2>Contact Us</h2>
       <p>Questions about Echelon? Reach us at <a href="mailto:abello@echeloninstitute.ca">abello@echeloninstitute.ca</a>. For team and organizational inquiries, visit the <a href="${SITE_URL}/pricing">pricing page</a>.</p>
@@ -581,23 +585,23 @@ const BASE_STATIC_PAGE_META: PageMeta[] = [
   },
   {
     path: "/faq",
-    title: "FAQ — Echelon Institute | Water Operator Exam Prep Questions",
+    title: "FAQ — Echelon Institute | Skilled Trades Exam Prep Questions",
     description:
-      "Frequently asked questions about Echelon Institute's water operator exam prep platform — courses, pricing, provinces covered, team plans, and more.",
+      "Questions about Echelon's AI-powered exam prep for skilled trades, starting with water and wastewater: Canadian courses, supported US preparation and free Ontario 309A practice and mock exams.",
     h1: "Frequently Asked Questions",
     jsonLd: buildFaqJsonLd(),
     bodyHtml: `
       <h2>About Echelon Institute</h2>
-      <p>Echelon Institute is Canada's AI-powered exam prep platform for water and wastewater operators. It provides adaptive practice questions, module study notes, 400+ concept flashcards per course, interactive process guides, mock exams, and an AI tutor for active course-pass holders.</p>
+      <p>Echelon Institute is an independent Canadian provider of AI-powered exam preparation for the skilled-trades workforce, starting with water and wastewater. It offers Canadian courses and supported US preparation, plus free Ontario 309A practice and mock exams. Course inclusions and question totals vary.</p>
 
-      <h2>Which Provinces Are Covered?</h2>
-      <p>Echelon provides Ontario-specific OIT and Class 1–4 courses plus WPI-aligned Class I–IV preparation for treatment, distribution, and collection candidates in British Columbia, Alberta, Saskatchewan, and Manitoba. Confirm current requirements with your certifying authority.</p>
+      <h2>Which Certifications and Regions Are Covered?</h2>
+      <p>Echelon provides Ontario-specific OIT and Class 1–4 operator preparation, WPI-aligned Class I–IV courses for treatment, distribution, and collection candidates in Canada and supported US jurisdictions, and Ontario 309A Construction Electrician preparation. Availability varies by course and jurisdiction; confirm current requirements with your certifying authority.</p>
 
       <h2>Is There a Free Trial?</h2>
-      <p>Yes. Every course includes 15 free practice questions. OIT also includes 50 flashcards, 30 mock-exam questions, and three AI Tutor messages — no account or credit card required. A 12-month Exam Pass is required to continue beyond those limits. <a href="${SITE_URL}/">Start practising now</a>.</p>
+      <p>Paid operator courses include 15 free practice questions. The OIT preview also includes 50 flashcards, 30 mock-exam questions, and three AI Tutor messages — no account or credit card required. Full access to paid operator courses requires an Individual Exam Pass or an assigned team licence. Ontario 309A practice and mock exams are free. <a href="${SITE_URL}/">Start practising now</a>.</p>
 
       <h2>How Many Practice Questions Are There?</h2>
-      <p>Each course has 400+ practice questions organized by module and difficulty level. Topics include treatment processes, laboratory analysis, equipment operation and maintenance, source water, and safety and administration.</p>
+      <p>Course inclusions and question totals vary by course. Check the matching course page for its current practice questions and study tools, and the pricing page for paid course access terms.</p>
 
       <h2>What Is the AI Tutor?</h2>
       <p>The Echelon AI tutor is a 24/7 study assistant trained on water and wastewater operator content. It explains concepts, walks through calculation steps, clarifies regulations, and answers questions about any topic in your course — all in plain language.</p>
@@ -606,7 +610,7 @@ const BASE_STATIC_PAGE_META: PageMeta[] = [
       <p>Echelon offers bulk seat pricing for utilities, municipalities, and training organizations. Contact <a href="mailto:abello@echeloninstitute.ca">abello@echeloninstitute.ca</a> or visit the <a href="${SITE_URL}/pricing">pricing page</a>.</p>
 
       <h2>How Much Does It Cost?</h2>
-      <p>Individuals purchase one 12-month Exam Pass for a selected course with a one-time payment. Visit <a href="${SITE_URL}/pricing">echeloninstitute.ca/pricing</a> for current pricing.</p>
+      <p>For paid operator courses, individuals purchase one 12-month Exam Pass for a selected course with a one-time payment. Ontario 309A practice and mock exams are free. Visit <a href="${SITE_URL}/pricing">echeloninstitute.ca/pricing</a> for current pricing.</p>
     `,
   },
   {
@@ -1160,9 +1164,9 @@ export function injectSeoIntoTemplate(template: string, meta: PageMeta): string 
 /** Build the llms.txt content for AI assistants and answer engines. */
 export function buildLlmsTxt(): string {
   return `# Echelon Institute
-> Independent Canadian exam-preparation platform for water and wastewater operators.
+> Independent Canadian provider of AI-powered exam preparation for the skilled-trades workforce, starting with water and wastewater, with Canadian courses and supported US preparation.
 
-Echelon Institute provides course-specific practice questions, mock exams, flashcards, process guides, progress tracking, and AI-supported explanations. Every course includes 15 free practice questions. OIT also includes 50 flashcards, 30 mock-exam questions, and three AI Tutor messages without an account or credit card. An Individual Exam Pass is a one-time payment for one selected course and 12 months of access from successful payment.
+Echelon Institute provides course-specific study tools; inclusions and question totals vary by course. Paid operator courses include 15 free practice questions. OIT also includes 50 flashcards, 30 mock-exam questions, and three AI Tutor messages without an account or credit card. For paid operator courses, an Individual Exam Pass is a one-time payment for one selected course and 12 months of access from successful payment, or access can come through an assigned team licence. Ontario 309A practice and mock exams are free.
 
 Echelon Institute is independent. It is not affiliated with or endorsed by OWWCO, MOECP, EOCP, WPI, or a provincial or US state certifying authority. Official authority documents control eligibility, exam content, permitted references, and certification decisions.
 
@@ -1170,6 +1174,7 @@ Echelon Institute is independent. It is not affiliated with or endorsed by OWWCO
 - Ontario-specific OIT, Water Quality Analyst, and Class 1–4 preparation for water treatment, water distribution and supply, wastewater treatment, and wastewater collection
 - WPI-aligned Class I–IV preparation for water treatment, wastewater treatment, water distribution, and wastewater collection
 - Province guides for British Columbia, Alberta, Saskatchewan, and Manitoba explain where to confirm current requirements
+- Ontario 309A Construction Electrician preparation; practice and mock exams are free. Not every trade or exam is offered.
 
 ## US Coverage
 - Water Treatment — Class I, II, III, IV

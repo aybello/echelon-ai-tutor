@@ -29,7 +29,7 @@ const MODULE_ICONS: Record<string, string> = {
 export default function Class4WastewaterCollQuiz() {
   usePageMeta({
     title: "Ontario Class 4 Wastewater Collection Practice Questions",
-    description: "Practice questions for the Ontario Class 4 Wastewater Collection operator certification exam. 500 questions aligned to Ontario O. Reg. 170/03 and O. Reg. 129/04.",
+    description: "Practice questions for the Ontario Class 4 Wastewater Collection operator certification exam. 1,000+ questions aligned to Ontario O. Reg. 170/03 and O. Reg. 129/04.",
     noindex: true
   });
   const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class4-wastewater-coll", "lazy");
@@ -52,7 +52,7 @@ export default function Class4WastewaterCollQuiz() {
       currentPath="/class4-wastewater-coll"
       courseLabel="Ontario Class 4 · Wastewater Collection"
       courseTitle="Ontario Class 4 Wastewater Collection Quiz"
-      courseSubtitle="500 questions · Ontario Class 4 Wastewater Collection"
+      courseSubtitle="1,000+ questions · Ontario Class 4 Wastewater Collection"
       headerGradient="linear-gradient(135deg, #065F46 0%, #0F766E 100%)"
       headerIcon="🔩"
       headerActions={[
@@ -134,7 +134,7 @@ export default function Class4WastewaterCollQuiz() {
           productName="Ontario Class 4 Wastewater Collection Practice Pass"
           priceLabel="CA$99"
           paidFeatures={[
-            "300 Ontario Class 4 Wastewater Collection questions — unlimited attempts",
+            "1,000+ Ontario Class 4 Wastewater Collection questions — unlimited attempts",
             "Timed mock exam (100 questions, 2 hrs)",
             "AI Tutor explanations on every question",
             "Module-by-module performance tracking",

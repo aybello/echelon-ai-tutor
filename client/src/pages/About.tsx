@@ -104,7 +104,7 @@ function ChangelogList({ entries, isLoading, error }: {
 export default function About() {
   usePageMeta({
     title: "About — Echelon Institute",
-    description: "Echelon Institute was built to give water and wastewater operators the modern, interactive study tools they deserve — built on the actual regulatory frameworks they are tested on.",
+    description: "Echelon Institute provides AI-powered exam prep for the skilled-trades workforce, starting with water and wastewater. Canadian courses, supported US preparation and free Ontario 309A practice and mock exams.",
   });
 
   const { isAuthenticated } = useAuth({ lazy: true });
@@ -171,7 +171,7 @@ export default function About() {
             margin: "0 auto",
             maxWidth: 580,
           }}>
-            Water and wastewater operators deserved better study tools. We built them.
+            AI-powered exam prep for the skilled-trades workforce, starting with water and wastewater. Canadian courses and supported US preparation, plus free Ontario 309A practice and mock exams.
           </p>
         </div>
       </section>
@@ -393,7 +393,7 @@ export default function About() {
         background: "#fff",
       }}>
         <p style={{ fontSize: 13, color: "#94A3B8", margin: 0 }}>
-          © 2026 Echelon Institute · Built for water and wastewater operators across North America
+          © 2026 Echelon Institute · AI-powered exam preparation for the skilled-trades workforce, starting with water and wastewater
         </p>
       </footer>
 

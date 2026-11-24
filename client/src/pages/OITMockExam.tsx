@@ -4,6 +4,7 @@
 import MockExamShell from "@/components/MockExamShell";
 import { useMockExamMetadata } from "@/hooks/useQuestionBank";
 import QuizSkeleton from "@/components/QuizSkeleton";
+import { Link } from "wouter";
 
 const MODULE_TARGETS: Record<string, number> = {
   "Disinfection": 11,
@@ -38,18 +39,24 @@ export default function OITMockExam() {
   if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
 
   return (
+    <>
+    <nav aria-label="OIT mock exam streams" className="bg-slate-50 px-5 py-3 text-center text-sm">
+      <Link href="/oit-ww-mock" className="font-semibold text-blue-700 underline underline-offset-4 hover:text-blue-900">
+        Looking for Ontario OIT Wastewater? Open the separate Wastewater mock exam.
+      </Link>
+    </nav>
     <MockExamShell
-      title="OIT Mock Exam"
-      badge="OPERATOR-IN-TRAINING · WATER & WASTEWATER"
-      metaDescription="100-question timed mock exam for the Operator-in-Training (OIT) certification. 3-hour timer, 70% pass threshold, and full module breakdown on results. For Ontario, BC, Alberta, and all Canadian provinces."
-      metaKeywords="OIT mock exam, Canadian operator in training exam, water operator practice test, OWWCO OIT, MOECP OIT, timed exam prep"
+      title="Ontario OIT Water Mock Exam"
+      badge="ONTARIO OPERATOR-IN-TRAINING · WATER"
+      metaDescription="100-question timed mock exam for Ontario Operator-in-Training (OIT) Water preparation. 3-hour timer, 70% pass threshold, and full module breakdown on results."
+      metaKeywords="Ontario OIT Water mock exam, Ontario operator in training exam, water operator practice test, OWWCO OIT, MECP OIT, timed exam prep"
       examQuestions={100}
       examDuration={3 * 60 * 60}
       passThreshold={0.7}
       moduleTargets={MODULE_TARGETS}
       moduleColors={MODULE_COLORS}
       productKey="oit"
-      productName="OIT Practice Pass"
+      productName="OIT Water Practice Pass"
       price={49}
       freeQuestionLimit={30}
       features={[
@@ -60,10 +67,11 @@ export default function OITMockExam() {
       ]}
       backPath="/oit-mock"
       practicePath="/quiz"
-      practiceLabel="OIT Practice Mode"
-      showProvinceSelector={true}
+      practiceLabel="OIT Water Practice Mode"
+      showProvinceSelector={false}
       currentPath="/oit-mock"
-      infoLine={`${totalQuestions} questions · Canadian OIT (Water & Wastewater)`}
+      infoLine={`${totalQuestions} questions · Ontario OIT Water`}
     />
+    </>
   );
 }

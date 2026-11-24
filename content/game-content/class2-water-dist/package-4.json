@@ -1,0 +1,5220 @@
+{
+ "courseKey": "class2-water-dist",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "c2wd-process40",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to improve turnover by changing tank level control bands.",
+   "topicId": "tank-level-band-change",
+   "level": "class1",
+   "assumptions": "Fictional tank operated in a narrow high band, approval given to widen the operating range.",
+   "configuration": "Scope: analysis through verified improvement.",
+   "cards": [
+    {
+     "id": "s4",
+     "label": "Measure the new daily exchange share and outlet residual response"
+    },
+    {
+     "id": "s5",
+     "label": "Adopt the new band in the operating procedure if results confirm improvement"
+    },
+    {
+     "id": "s1",
+     "label": "Confirm the wider band still meets fire storage and minimum pressure needs"
+    },
+    {
+     "id": "s2",
+     "label": "Set new pump start and stop levels to draw the tank down further each day"
+    },
+    {
+     "id": "s3",
+     "label": "Monitor pressures at critical points during the first drawdown cycle"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Storage and pressure needs are confirmed first, new levels are set, the first cycle is monitored, improvement is measured, and the procedure is updated only after results confirm it."
+  },
+  {
+   "id": "c2wd-process41",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to commission an active tank mixer.",
+   "topicId": "tank-mixer-commissioning",
+   "level": "class1",
+   "assumptions": "Fictional submersible mixer installed in a stratified tank during a drained outage.",
+   "configuration": "Scope: installation checks through performance verification.",
+   "cards": [
+    {
+     "id": "s3",
+     "label": "Start the mixer and confirm rotation and current draw match the specification"
+    },
+    {
+     "id": "s2",
+     "label": "Refill and disinfect the tank following the storage return procedure"
+    },
+    {
+     "id": "s4",
+     "label": "Profile temperature and residual with depth after a full mixing cycle"
+    },
+    {
+     "id": "s1",
+     "label": "Verify mixer mounting, cable protection, and control wiring before refilling"
+    },
+    {
+     "id": "s5",
+     "label": "Record the mixed profile as the performance baseline"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Installation is verified while the tank is empty, refilling and disinfection follow, the mixer is started and checked electrically, profiling verifies mixing, and the baseline is recorded."
+  },
+  {
+   "id": "c2wd-process42",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to manage water age in an oversized tank during low demand season.",
+   "topicId": "tank-water-age-management",
+   "level": "class1",
+   "assumptions": "Fictional tank sized for future growth, current winter demand is a small share of its volume.",
+   "configuration": "Scope: seasonal plan through residual monitoring.",
+   "cards": [
+    {
+     "id": "s3",
+     "label": "Schedule periodic deep drawdowns coordinated with system demand"
+    },
+    {
+     "id": "s4",
+     "label": "Increase residual monitoring frequency at the tank outlet and far points"
+    },
+    {
+     "id": "s5",
+     "label": "Review results monthly and adjust the band or drawdown schedule"
+    },
+    {
+     "id": "s2",
+     "label": "Lower the operating band as far as fire and pressure needs allow"
+    },
+    {
+     "id": "s1",
+     "label": "Estimate water age from exchange volume and tank volume at winter demand"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Age is estimated first, the band is lowered within safe limits, drawdowns are scheduled, monitoring is increased, and monthly review adjusts the plan."
+  },
+  {
+   "id": "c2wd-process43",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to evaluate a passive inlet modification for mixing.",
+   "topicId": "tank-passive-mixing",
+   "level": "class1",
+   "assumptions": "Fictional tank with a proposed inlet diffuser change to reduce stratification without active equipment.",
+   "configuration": "Scope: baseline through post modification comparison.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Profile temperature and residual with depth to set the pre change baseline"
+    },
+    {
+     "id": "s3",
+     "label": "Return the tank to service with the standard disinfection and sampling steps"
+    },
+    {
+     "id": "s4",
+     "label": "Repeat depth profiling under similar level and demand conditions"
+    },
+    {
+     "id": "s2",
+     "label": "Install the inlet modification during a planned drained outage"
+    },
+    {
+     "id": "s5",
+     "label": "Compare profiles and decide whether stratification is acceptably reduced"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Baseline profiling comes first, installation happens during the outage, standard return to service follows, profiling is repeated under similar conditions, and comparison drives the decision."
+  },
+  {
+   "id": "c2wd-process44",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to respond to falling residuals traced to one storage tank.",
+   "topicId": "tank-residual-response",
+   "level": "class1",
+   "assumptions": "Fictional system where residual mapping shows low values only downstream of one tank.",
+   "configuration": "Scope: confirmation through restored residuals.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm low residuals with repeat samples at the tank outlet and downstream sites"
+    },
+    {
+     "id": "s4",
+     "label": "Boost or adjust feed residual if the operating plan allows"
+    },
+    {
+     "id": "s3",
+     "label": "Draw the tank down and refill with fresh high residual water"
+    },
+    {
+     "id": "s5",
+     "label": "Resample downstream sites to verify residuals have recovered"
+    },
+    {
+     "id": "s2",
+     "label": "Profile the tank for stratification and check its daily exchange share"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Confirmation sampling comes first, tank profiling finds the mechanism, drawdown and refill replace aged water, feed adjustment supports recovery, and verification sampling closes the response."
+  },
+  {
+   "id": "c2wd-process45",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to design a unidirectional flushing program for a zone.",
+   "topicId": "udf-program-design",
+   "level": "class1",
+   "assumptions": "Fictional zone with dead ends and looped mains, target flushing velocity set by the utility standard.",
+   "configuration": "Scope: mapping through sequenced flush plans.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Map mains by size, material, and flow direction under normal operation"
+    },
+    {
+     "id": "s5",
+     "label": "Issue sequence sheets with valve and hydrant steps for field crews"
+    },
+    {
+     "id": "s2",
+     "label": "Divide the zone into flushing sequences that start at the clean source and move outward"
+    },
+    {
+     "id": "s3",
+     "label": "Size each sequence so target velocity can be reached with available hydrants"
+    },
+    {
+     "id": "s4",
+     "label": "Identify valves to close so flow stays unidirectional in each sequence"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Mapping comes first, sequences build outward from clean water, hydraulics are sized, isolation valves are identified, and crew sheets are issued last."
+  },
+  {
+   "id": "c2wd-process46",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to execute one unidirectional flushing sequence.",
+   "topicId": "udf-sequence-execution",
+   "level": "class1",
+   "assumptions": "Fictional crew executing a prepared sequence sheet on a residential street.",
+   "configuration": "Scope: setup through sequence completion.",
+   "cards": [
+    {
+     "id": "s4",
+     "label": "Move outward to the next hydrant in the sequence and repeat"
+    },
+    {
+     "id": "s3",
+     "label": "Flush until discharge clears and the recorded volume meets the sequence target"
+    },
+    {
+     "id": "s5",
+     "label": "Restore all valves to their normal positions and record them"
+    },
+    {
+     "id": "s2",
+     "label": "Open the first hydrant slowly and confirm discharge is controlled and dechlorinated as required"
+    },
+    {
+     "id": "s1",
+     "label": "Close the listed isolation valves to force one direction of flow"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Isolation comes first, the first hydrant is opened carefully, flushing meets its clarity and volume target, the crew works outward, and valves are restored and recorded last."
+  },
+  {
+   "id": "c2wd-process47",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to prepare customers for a flushing program week.",
+   "topicId": "udf-customer-notice",
+   "level": "class1",
+   "assumptions": "Fictional flushing program covering one neighbourhood over five days.",
+   "configuration": "Scope: scheduling through day of reminders.",
+   "cards": [
+    {
+     "id": "s2",
+     "label": "Deliver door notices warning of possible discoloured water and pressure drops"
+    },
+    {
+     "id": "s4",
+     "label": "Staff a contact line for complaints during flushing hours"
+    },
+    {
+     "id": "s5",
+     "label": "Log and follow up every complaint received during the program"
+    },
+    {
+     "id": "s1",
+     "label": "Set the daily street schedule and publish it on the utility notice channels"
+    },
+    {
+     "id": "s3",
+     "label": "Advise customers to run a cold tap until clear if discolouration occurs"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "The schedule is published first, direct notices follow, self help advice is given, a contact line is staffed, and complaints are logged and followed up."
+  },
+  {
+   "id": "c2wd-process48",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to handle discoloured water complaints during flushing.",
+   "topicId": "udf-complaint-handling",
+   "level": "class1",
+   "assumptions": "Fictional complaints arriving from a street adjacent to the active flushing sequence.",
+   "configuration": "Scope: complaint intake through resolution.",
+   "cards": [
+    {
+     "id": "s4",
+     "label": "If complaints are widespread, pause and check for a valve error or break"
+    },
+    {
+     "id": "s3",
+     "label": "Check whether complaints extend beyond the expected flushing area"
+    },
+    {
+     "id": "s1",
+     "label": "Record the complaint location and check it against the active sequence map"
+    },
+    {
+     "id": "s2",
+     "label": "Advise the customer to avoid hot water use and run the cold tap after flushing passes"
+    },
+    {
+     "id": "s5",
+     "label": "Close each complaint only after the customer confirms water has cleared"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Intake and mapping come first, customer advice follows, spread is checked, widespread problems stop work for investigation, and closure needs customer confirmation."
+  },
+  {
+   "id": "c2wd-process49",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to flush a dead end main on a routine schedule.",
+   "topicId": "dead-end-flushing",
+   "level": "class1",
+   "assumptions": "Fictional dead end main with a blow off, flushed quarterly to hold chlorine residual.",
+   "configuration": "Scope: preparation through records.",
+   "cards": [
+    {
+     "id": "s4",
+     "label": "Resample residual and continue flushing if the target is not met"
+    },
+    {
+     "id": "s3",
+     "label": "Flush at least the planned pipe volumes while watching discharge clarity"
+    },
+    {
+     "id": "s5",
+     "label": "Close the blow off, record volume used, clarity, and final residual"
+    },
+    {
+     "id": "s2",
+     "label": "Open the blow off in a controlled way with discharge erosion protection"
+    },
+    {
+     "id": "s1",
+     "label": "Check the residual at the blow off before flushing to set the baseline"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Baseline residual comes first, controlled opening follows, planned volumes are flushed, resampling decides whether to continue, and records close the job."
+  },
+  {
+   "id": "c2wd-process50",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to verify flushing effectiveness with before and after sampling.",
+   "topicId": "udf-effectiveness-sampling",
+   "level": "class1",
+   "assumptions": "Fictional program evaluation sampling residuals and turbidity at fixed sites in a flushed zone.",
+   "configuration": "Scope: baseline sampling through effectiveness report.",
+   "cards": [
+    {
+     "id": "s2",
+     "label": "Complete the zone flushing sequences as designed"
+    },
+    {
+     "id": "s4",
+     "label": "Compare results site by site against program targets"
+    },
+    {
+     "id": "s5",
+     "label": "Report effectiveness and list sites needing design changes"
+    },
+    {
+     "id": "s1",
+     "label": "Sample fixed sites for residual and turbidity in the week before flushing"
+    },
+    {
+     "id": "s3",
+     "label": "Resample the same sites within days after flushing under similar demand"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Baseline sampling precedes flushing, the same sites are resampled promptly after, comparison is site by site, and the report drives design changes."
+  },
+  {
+   "id": "c2wd-process51",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to add a newly built subdivision main to the flushing program.",
+   "topicId": "udf-new-main-addition",
+   "level": "class1",
+   "assumptions": "Fictional subdivision main accepted into service last month, records transferred from the developer.",
+   "configuration": "Scope: records review through program inclusion.",
+   "cards": [
+    {
+     "id": "s2",
+     "label": "Enter pipe sizes, valves, and hydrants into the distribution map and valve records"
+    },
+    {
+     "id": "s5",
+     "label": "Schedule its first program flush and record baseline residuals"
+    },
+    {
+     "id": "s1",
+     "label": "Confirm the main passed pressure, disinfection, and bacteriological acceptance at construction"
+    },
+    {
+     "id": "s4",
+     "label": "Add the main and its hydrants to the sequence sheets"
+    },
+    {
+     "id": "s3",
+     "label": "Work out flow direction and which sequence the new main joins"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Acceptance is confirmed first, records are entered, hydraulics and sequence fit are worked out, sheets are updated, and the first flush with baselines is scheduled."
+  },
+  {
+   "id": "c2wd-process52",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to plan flushing water disposal for a large diameter sequence.",
+   "topicId": "udf-water-disposal",
+   "level": "class1",
+   "assumptions": "Fictional 600 mm main sequence producing high discharge flows near a creek and a storm sewer.",
+   "configuration": "Scope: disposal assessment through field setup.",
+   "cards": [
+    {
+     "id": "s3",
+     "label": "Set dechlorination equipment sized for the discharge flow"
+    },
+    {
+     "id": "s2",
+     "label": "Check receiving options and any approval conditions for discharge to the environment"
+    },
+    {
+     "id": "s1",
+     "label": "Estimate discharge flow and total volume for the sequence"
+    },
+    {
+     "id": "s4",
+     "label": "Direct discharge to protect against erosion, flooding, and ice on roads"
+    },
+    {
+     "id": "s5",
+     "label": "Monitor residual chlorine in the discharge during flushing"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Volume is estimated first, approvals and receivers are checked, dechlorination is sized to the flow, discharge is directed safely, and monitoring runs during the work."
+  },
+  {
+   "id": "c2wd-process53",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to revise a flushing sequence after a valve fails to close.",
+   "topicId": "udf-sequence-revision",
+   "level": "class1",
+   "assumptions": "Fictional sequence stopped when a listed isolation valve would not close, work rescheduled after valve repair.",
+   "configuration": "Scope: failure recording through revised execution.",
+   "cards": [
+    {
+     "id": "s5",
+     "label": "Execute the revised sequence and record the completed volumes"
+    },
+    {
+     "id": "s3",
+     "label": "Rewalk the sequence to confirm every listed valve operates"
+    },
+    {
+     "id": "s1",
+     "label": "Record the failed valve and raise a repair work order before rescheduling"
+    },
+    {
+     "id": "s2",
+     "label": "Repair or replace the valve and prove it closes fully"
+    },
+    {
+     "id": "s4",
+     "label": "Update the sequence sheet with any valve changes found"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "The failure is recorded and repaired first, the valve is proven, the whole sequence is rewalked, sheets are updated, and execution happens last."
+  },
+  {
+   "id": "c2wd-process54",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for conventional flushing of a looped area where UDF is not practical.",
+   "topicId": "conventional-flushing",
+   "level": "class1",
+   "assumptions": "Fictional fully looped downtown grid where isolation for unidirectional flow is not practical.",
+   "configuration": "Scope: planning through completion.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Identify the lowest residual and highest complaint streets to flush first"
+    },
+    {
+     "id": "s5",
+     "label": "Record the limited effectiveness and recommend capital options such as looping changes or rechlorination study"
+    },
+    {
+     "id": "s2",
+     "label": "Open hydrants one area at a time to draw flow from several directions"
+    },
+    {
+     "id": "s3",
+     "label": "Flush until discharge clears at each hydrant"
+    },
+    {
+     "id": "s4",
+     "label": "Resample residuals on the problem streets after flushing"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Problem streets are prioritized first, hydrants are worked area by area, clarity ends each flush, resampling measures the result, and records note limits and next options."
+  },
+  {
+   "id": "c2wd-process55",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a large meter accuracy testing program cycle.",
+   "topicId": "large-meter-testing-program",
+   "level": "class1",
+   "assumptions": "Fictional program testing compound and turbine meters at major customers on a multi year cycle.",
+   "configuration": "Scope: inventory through schedule publication.",
+   "cards": [
+    {
+     "id": "s2",
+     "label": "Rank meters for testing by volume impact and time since last test"
+    },
+    {
+     "id": "s5",
+     "label": "Publish the cycle schedule and file accuracy results by account"
+    },
+    {
+     "id": "s3",
+     "label": "Arrange customer appointments where shutdown or bypass is needed"
+    },
+    {
+     "id": "s1",
+     "label": "Inventory large meters by size, type, age, and billed volume share"
+    },
+    {
+     "id": "s4",
+     "label": "Test each meter at low, medium, and high flow rates against a calibrated standard"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Inventory comes first, ranking follows impact and age, appointments enable access, multi rate testing measures accuracy, and scheduling with filed results closes the cycle."
+  },
+  {
+   "id": "c2wd-process56",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to field test one large meter in place.",
+   "topicId": "large-meter-field-test",
+   "level": "class1",
+   "assumptions": "Fictional in place test of a 150 mm turbine meter using a calibrated test meter in series.",
+   "configuration": "Scope: setup through accuracy calculation.",
+   "cards": [
+    {
+     "id": "s5",
+     "label": "Decide repair, replacement, or return to service based on accuracy limits"
+    },
+    {
+     "id": "s2",
+     "label": "Install the calibrated test meter in series and purge air from the line"
+    },
+    {
+     "id": "s3",
+     "label": "Run controlled flows at low, medium, and high rates recording both meters"
+    },
+    {
+     "id": "s4",
+     "label": "Calculate registration error at each rate from the paired readings"
+    },
+    {
+     "id": "s1",
+     "label": "Confirm bypass or test connections and notify the customer of the test window"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Access and notice come first, the standard is installed and air purged, controlled runs are recorded, errors are calculated, and the disposition decision closes the test."
+  },
+  {
+   "id": "c2wd-process57",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to respond to a large meter found under registering.",
+   "topicId": "large-meter-underregistration",
+   "level": "class1",
+   "assumptions": "Fictional test showing a major customer meter under registering beyond the utility accuracy limit.",
+   "configuration": "Scope: finding through billing resolution.",
+   "cards": [
+    {
+     "id": "s4",
+     "label": "Adjust billing under the utility policy with documented calculations"
+    },
+    {
+     "id": "s3",
+     "label": "Replace or repair the meter and test the new installation"
+    },
+    {
+     "id": "s5",
+     "label": "Shorten the retest interval for that account and record the reason"
+    },
+    {
+     "id": "s2",
+     "label": "Estimate unbilled volume from the error curve and consumption records"
+    },
+    {
+     "id": "s1",
+     "label": "Confirm the result with a repeat test or bench test before acting"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Confirmation comes first, the volume impact is estimated, the meter is corrected and verified, billing is adjusted by policy, and closer future testing is set."
+  },
+  {
+   "id": "c2wd-process58",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to size a replacement large meter for a changed customer load.",
+   "topicId": "large-meter-replacement-sizing",
+   "level": "class1",
+   "assumptions": "Fictional customer whose demand pattern changed after a process expansion, old meter oversized for low flows.",
+   "configuration": "Scope: load study through commissioning.",
+   "cards": [
+    {
+     "id": "s3",
+     "label": "Select the meter that stays accurate across the real flow range"
+    },
+    {
+     "id": "s2",
+     "label": "Compare the profile with accuracy ranges of candidate meter types and sizes"
+    },
+    {
+     "id": "s1",
+     "label": "Log the customer flow profile across low, average, and peak periods"
+    },
+    {
+     "id": "s4",
+     "label": "Install with required straight runs and test connections"
+    },
+    {
+     "id": "s5",
+     "label": "Verify registration against a standard at commissioning flows"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "The real load profile comes first, candidates are compared against it, selection follows the range fit, installation meets layout needs, and commissioning verifies accuracy."
+  },
+  {
+   "id": "c2wd-process59",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to investigate a sudden drop in a large customer billed consumption.",
+   "topicId": "large-meter-consumption-drop",
+   "level": "class1",
+   "assumptions": "Fictional industrial account with billed use down sharply with no reported production change.",
+   "configuration": "Scope: records review through cause confirmation.",
+   "cards": [
+    {
+     "id": "s4",
+     "label": "Test meter accuracy at the customer typical flow rates"
+    },
+    {
+     "id": "s1",
+     "label": "Check billing reads and estimates for a data or reading error"
+    },
+    {
+     "id": "s5",
+     "label": "Correct the cause found and document the account resolution"
+    },
+    {
+     "id": "s3",
+     "label": "Inspect the meter and service for bypass use, damage, or a stuck register"
+    },
+    {
+     "id": "s2",
+     "label": "Compare the account trend with system production and similar customers"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Billing data is checked first, trends are compared, the installation is inspected, accuracy is tested, and correction with documentation closes the case."
+  },
+  {
+   "id": "c2wd-process60",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to maintain a meter test bench calibration chain.",
+   "topicId": "meter-bench-calibration",
+   "level": "class1",
+   "assumptions": "Fictional utility test bench whose prover and reference meters need scheduled calibration.",
+   "configuration": "Scope: scheduling through return to testing duty.",
+   "cards": [
+    {
+     "id": "s2",
+     "label": "Verify prover volume and reference meters against certified standards"
+    },
+    {
+     "id": "s5",
+     "label": "Release the bench for testing and file the calibration certificates"
+    },
+    {
+     "id": "s3",
+     "label": "Adjust or repair any reference found outside tolerance"
+    },
+    {
+     "id": "s4",
+     "label": "Run a known accuracy meter through the bench as a final check"
+    },
+    {
+     "id": "s1",
+     "label": "Schedule bench calibration during the lowest testing demand period"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Scheduling comes first, standards verification follows, out of tolerance references are corrected, a known meter proves the bench, and release with certificates closes the work."
+  },
+  {
+   "id": "c2wd-process61",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a valve exercising program annual cycle.",
+   "topicId": "valve-exercising-program",
+   "level": "class1",
+   "assumptions": "Fictional program exercising critical valves yearly and others on a rotating cycle.",
+   "configuration": "Scope: prioritization through records update.",
+   "cards": [
+    {
+     "id": "s2",
+     "label": "Issue crew routes grouped by street to limit travel and traffic setups"
+    },
+    {
+     "id": "s3",
+     "label": "Exercise each valve through its full range and count turns"
+    },
+    {
+     "id": "s4",
+     "label": "Raise work orders on the spot for valves that fail or cannot be found"
+    },
+    {
+     "id": "s5",
+     "label": "Update the valve record with condition, turns, and date operated"
+    },
+    {
+     "id": "s1",
+     "label": "Rank valves by criticality, size, and time since last operation"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Ranking comes first, routes follow, exercising records turns, failures become work orders during the round, and records are updated to close the cycle."
+  },
+  {
+   "id": "c2wd-process62",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to assess valve criticality for a hospital feed.",
+   "topicId": "valve-criticality-assessment",
+   "level": "class1",
+   "assumptions": "Fictional assessment of valves controlling supply to a hospital with a single feed main.",
+   "configuration": "Scope: consequence review through program changes.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Identify every valve whose closure interrupts the hospital feed"
+    },
+    {
+     "id": "s3",
+     "label": "Exercise and prove the valves that isolate the feed in the shortest sections"
+    },
+    {
+     "id": "s5",
+     "label": "Add the proven valves to the highest frequency exercise group"
+    },
+    {
+     "id": "s4",
+     "label": "Flag any inoperable critical valve for priority repair"
+    },
+    {
+     "id": "s2",
+     "label": "Check each critical valve location, access, and last exercise date"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Critical valves are identified first, their condition history is checked, they are proven by operation, failures get priority repair, and the exercise program is updated last."
+  },
+  {
+   "id": "c2wd-process63",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to locate and recover a paved over valve box.",
+   "topicId": "valve-box-recovery",
+   "level": "class1",
+   "assumptions": "Fictional valve shown on records but not found after street resurfacing.",
+   "configuration": "Scope: records check through restored access.",
+   "cards": [
+    {
+     "id": "s5",
+     "label": "Update records with the recovered location and new grade reference"
+    },
+    {
+     "id": "s3",
+     "label": "Expose the box by careful excavation and confirm it is the correct valve"
+    },
+    {
+     "id": "s1",
+     "label": "Confirm the valve position from records, ties, and nearby valve spacing"
+    },
+    {
+     "id": "s4",
+     "label": "Raise or replace the box to grade and confirm the valve operates"
+    },
+    {
+     "id": "s2",
+     "label": "Sweep the area with a metal detector and mark the likely box location"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Records come first, detection narrows the search, exposure confirms identity, access and operation are restored, and records are corrected last."
+  },
+  {
+   "id": "c2wd-process64",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to replace a broken gate valve on a distribution main.",
+   "topicId": "valve-replacement",
+   "level": "class1",
+   "assumptions": "Fictional broken 200 mm gate valve replaced under a planned shutdown with customer notice given.",
+   "configuration": "Scope: shutdown through return to service.",
+   "cards": [
+    {
+     "id": "s5",
+     "label": "Restore pressure, check for leaks, and record the new valve details"
+    },
+    {
+     "id": "s3",
+     "label": "Remove the old valve and set the new valve in the correct orientation"
+    },
+    {
+     "id": "s2",
+     "label": "Drain the section and confirm zero pressure at the work point"
+    },
+    {
+     "id": "s1",
+     "label": "Isolate the section using the nearest sound valves and confirm the shutdown boundary"
+    },
+    {
+     "id": "s4",
+     "label": "Refill slowly, vent air, and disinfect affected parts before opening fully"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Isolation comes first, draining and zero pressure follow, replacement is next, disinfection precedes full opening, and leak checks with records close the job."
+  },
+  {
+   "id": "c2wd-process65",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to build a valve closure plan for a trunk main repair.",
+   "topicId": "valve-closure-plan",
+   "level": "class1",
+   "assumptions": "Fictional repair on a 600 mm trunk main affecting two pressure zones.",
+   "configuration": "Scope: hydraulic review through rehearsed plan.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Identify the smallest set of valves that isolates the repair section"
+    },
+    {
+     "id": "s5",
+     "label": "Issue the numbered closure sequence to all crews and the control room"
+    },
+    {
+     "id": "s2",
+     "label": "Check how many customers and which critical users fall inside the boundary"
+    },
+    {
+     "id": "s3",
+     "label": "Confirm alternate feeds keep the rest of the system within pressure targets"
+    },
+    {
+     "id": "s4",
+     "label": "Prove each listed valve operates before the repair day"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "The isolation set comes first, impacts are counted, alternate feeds are checked, valves are proven in advance, and the sequenced plan is issued last."
+  },
+  {
+   "id": "c2wd-process66",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps after finding a valve left closed following repairs.",
+   "topicId": "valve-left-closed-response",
+   "level": "class1",
+   "assumptions": "Fictional low pressure complaints traced to a valve left closed after a repair two streets away.",
+   "configuration": "Scope: complaint triage through preventive change.",
+   "cards": [
+    {
+     "id": "s3",
+     "label": "Open the found closed valve slowly and monitor pressure recovery"
+    },
+    {
+     "id": "s1",
+     "label": "Map complaints and compare them with the recent repair shutdown boundary"
+    },
+    {
+     "id": "s4",
+     "label": "Confirm complaints clear and sample residual if water age increased"
+    },
+    {
+     "id": "s5",
+     "label": "Change the restoration checklist so two staff verify valve positions at closeout"
+    },
+    {
+     "id": "s2",
+     "label": "Check listed boundary valves in the field against the restoration record"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Mapping against the boundary comes first, field checks follow, the valve is opened carefully, recovery is confirmed, and the checklist change prevents recurrence."
+  },
+  {
+   "id": "c2wd-process67",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to install a new air valve on a high point of a main.",
+   "topicId": "air-valve-installation",
+   "level": "class1",
+   "assumptions": "Fictional air valve added at a high point where air binding reduced flow.",
+   "configuration": "Scope: site confirmation through commissioning.",
+   "cards": [
+    {
+     "id": "s4",
+     "label": "Return the main to pressure slowly and watch the valve vent air"
+    },
+    {
+     "id": "s2",
+     "label": "Isolate the tapping location and install the service connection and chamber"
+    },
+    {
+     "id": "s3",
+     "label": "Mount the air valve and confirm its isolation valve is fully open"
+    },
+    {
+     "id": "s5",
+     "label": "Record the installation and add the valve to the inspection round"
+    },
+    {
+     "id": "s1",
+     "label": "Confirm the high point and air problem from profiles and flow records"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "The problem is confirmed first, the connection is installed under isolation, the valve is mounted with its isolator open, repressurization tests venting, and records plus inspection rounds close the work."
+  },
+  {
+   "id": "c2wd-process68",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for hydrant inspection combined with valve checks on a route.",
+   "topicId": "hydrant-valve-route",
+   "level": "class1",
+   "assumptions": "Fictional combined route inspecting hydrants and their auxiliary valves in one neighbourhood.",
+   "configuration": "Scope: route preparation through deficiency reporting.",
+   "cards": [
+    {
+     "id": "s4",
+     "label": "Flow or pressure check hydrants flagged at the last inspection"
+    },
+    {
+     "id": "s2",
+     "label": "Inspect each hydrant for access, caps, drainage, and visible damage"
+    },
+    {
+     "id": "s3",
+     "label": "Operate each auxiliary valve to confirm the hydrant can be isolated"
+    },
+    {
+     "id": "s5",
+     "label": "Report deficiencies ranked by fire protection impact"
+    },
+    {
+     "id": "s1",
+     "label": "Print route sheets with hydrant and auxiliary valve locations and past deficiencies"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Route sheets come first, hydrant condition is inspected, auxiliary valves are proven, flagged hydrants are checked, and ranked reporting closes the route."
+  },
+  {
+   "id": "c2wd-process69",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to analyse main break records for renewal planning.",
+   "topicId": "break-records-analysis",
+   "level": "class1",
+   "assumptions": "Fictional ten year break history used to rank mains for the capital renewal program.",
+   "configuration": "Scope: data assembly through ranked list.",
+   "cards": [
+    {
+     "id": "s4",
+     "label": "Rank cohorts and streets by break rate and consequence of failure"
+    },
+    {
+     "id": "s3",
+     "label": "Calculate break rates per kilometre per year by pipe cohort"
+    },
+    {
+     "id": "s1",
+     "label": "Assemble break records with pipe age, material, diameter, and soil notes"
+    },
+    {
+     "id": "s2",
+     "label": "Clean the data by removing duplicates and service line failures"
+    },
+    {
+     "id": "s5",
+     "label": "Carry the ranked list into the capital plan with cost estimates"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Records are assembled first, cleaning follows, rates are calculated by cohort, ranking weighs consequence, and the capital plan receives the finished list."
+  },
+  {
+   "id": "c2wd-process70",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to investigate a cluster of breaks on one street.",
+   "topicId": "break-cluster-investigation",
+   "level": "class1",
+   "assumptions": "Fictional street with four breaks in two years on the same cast iron main.",
+   "configuration": "Scope: history review through recommendation.",
+   "cards": [
+    {
+     "id": "s5",
+     "label": "Recommend renewal, pressure control, or monitoring with reasons"
+    },
+    {
+     "id": "s4",
+     "label": "Assess remaining pipe condition from repair clamp and coupon observations"
+    },
+    {
+     "id": "s3",
+     "label": "Check soil corrosivity and stray current sources near the main"
+    },
+    {
+     "id": "s1",
+     "label": "Plot break locations, dates, and failure types along the street"
+    },
+    {
+     "id": "s2",
+     "label": "Review pressure records and transient events for the street"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "History is plotted first, pressure causes are reviewed, external corrosion factors are checked, condition evidence is assessed, and the recommendation closes the study."
+  },
+  {
+   "id": "c2wd-process71",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to prioritize renewal between two candidate mains.",
+   "topicId": "renewal-prioritization",
+   "level": "class1",
+   "assumptions": "Fictional choice between an older small main with many breaks and a larger main with fewer breaks but high consequence.",
+   "configuration": "Scope: criteria setting through decision record.",
+   "cards": [
+    {
+     "id": "s5",
+     "label": "Record the decision and the criteria that drove it"
+    },
+    {
+     "id": "s3",
+     "label": "Check coordination opportunities with road reconstruction schedules"
+    },
+    {
+     "id": "s1",
+     "label": "Set the scoring criteria covering break history, consequence, water quality, and growth"
+    },
+    {
+     "id": "s4",
+     "label": "Present the ranked options with costs to the decision maker"
+    },
+    {
+     "id": "s2",
+     "label": "Score both mains using the same records and criteria"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Criteria are set before scoring, both mains are scored the same way, road coordination is checked, options are presented, and the decision is recorded last."
+  },
+  {
+   "id": "c2wd-process72",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps after a major trunk main break to capture lessons for renewal.",
+   "topicId": "break-lessons-learned",
+   "level": "class1",
+   "assumptions": "Fictional 600 mm trunk break that flooded a road and cut supply to a zone.",
+   "configuration": "Scope: restoration through program updates.",
+   "cards": [
+    {
+     "id": "s2",
+     "label": "Document failure mode, pipe condition, and photos before backfill closes the evidence"
+    },
+    {
+     "id": "s4",
+     "label": "Update the break database and the main condition score"
+    },
+    {
+     "id": "s3",
+     "label": "Review response times, valve performance, and customer notification"
+    },
+    {
+     "id": "s1",
+     "label": "Restore supply and complete emergency repairs and disinfection"
+    },
+    {
+     "id": "s5",
+     "label": "Adjust the renewal ranking and valve program from the findings"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Restoration comes first, evidence is captured before backfill, response is reviewed, records and scores are updated, and program rankings change last."
+  },
+  {
+   "id": "c2wd-process73",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to evaluate pipe condition using break and coupon data.",
+   "topicId": "pipe-condition-evaluation",
+   "level": "class1",
+   "assumptions": "Fictional evaluation of a cast iron cohort using break history and coupons cut during repairs.",
+   "configuration": "Scope: data collection through condition grade.",
+   "cards": [
+    {
+     "id": "s5",
+     "label": "Set the reinspection or renewal trigger for each grade"
+    },
+    {
+     "id": "s1",
+     "label": "Collect coupon wall thickness and corrosion depth measurements from repairs"
+    },
+    {
+     "id": "s2",
+     "label": "Pair coupon results with the break rate for the same cohort"
+    },
+    {
+     "id": "s3",
+     "label": "Compare measured remaining wall with the original specification"
+    },
+    {
+     "id": "s4",
+     "label": "Assign a condition grade to the cohort using the utility scale"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Measurements are collected first, paired with break performance, compared with specification, graded, and triggers are set from the grade."
+  },
+  {
+   "id": "c2wd-process74",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to plan a renewal project public notice sequence.",
+   "topicId": "renewal-public-notice",
+   "level": "class1",
+   "assumptions": "Fictional watermain replacement on a residential street over six weeks.",
+   "configuration": "Scope: project confirmation through construction updates.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the construction schedule, work hours, and water shutdown windows"
+    },
+    {
+     "id": "s5",
+     "label": "Send a completion notice with flushing advice when the new main is live"
+    },
+    {
+     "id": "s4",
+     "label": "Give 48 hour notices before each planned shutdown"
+    },
+    {
+     "id": "s2",
+     "label": "Send advance letters explaining the project, parking, and water impacts"
+    },
+    {
+     "id": "s3",
+     "label": "Post project signs and a contact number at both ends of the street"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "The schedule is confirmed first, advance letters follow, signs post contact information, shutdown notices meet the notice period, and completion advice closes the sequence."
+  },
+  {
+   "id": "c2wd-process75",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a nitrification monitoring program in a chloraminated system.",
+   "topicId": "nitrification-monitoring-program",
+   "level": "class1",
+   "assumptions": "Fictional chloraminated Ontario system setting up seasonal nitrification surveillance.",
+   "configuration": "Scope: site selection through action triggers.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Select monitoring sites at high water age locations, tank outlets, and dead ends"
+    },
+    {
+     "id": "s4",
+     "label": "Train samplers on preservation and hold times for nitrogen species"
+    },
+    {
+     "id": "s5",
+     "label": "Begin routine sampling before the warm season peak"
+    },
+    {
+     "id": "s3",
+     "label": "Define alert levels and the actions each level triggers"
+    },
+    {
+     "id": "s2",
+     "label": "Set the sampling schedule for total chlorine, free ammonia, nitrite, and nitrate"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Sites come first, the analyte schedule follows, alert levels define responses, training ensures valid samples, and sampling starts ahead of the risk season."
+  },
+  {
+   "id": "c2wd-process76",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to respond to rising nitrite at a distribution site.",
+   "topicId": "nitrification-nitrite-response",
+   "level": "class1",
+   "assumptions": "Fictional site where nitrite is rising and total chlorine is falling across three weekly samples.",
+   "configuration": "Scope: confirmation through recovery verification.",
+   "cards": [
+    {
+     "id": "s3",
+     "label": "Flush the local area to bring in fresher water with higher residual"
+    },
+    {
+     "id": "s4",
+     "label": "Review chloramine feed and the chlorine to ammonia ratio at the plant"
+    },
+    {
+     "id": "s2",
+     "label": "Check water age contributors such as tank levels and dead end use near the site"
+    },
+    {
+     "id": "s5",
+     "label": "Resample until nitrite falls and total chlorine recovers to target"
+    },
+    {
+     "id": "s1",
+     "label": "Confirm the trend with a repeat sample and check sample handling"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Confirmation comes first, local age factors are checked, flushing brings fresher water, plant feed is reviewed, and resampling verifies recovery."
+  },
+  {
+   "id": "c2wd-process77",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to investigate nitrification inside a storage tank.",
+   "topicId": "nitrification-tank-investigation",
+   "level": "class1",
+   "assumptions": "Fictional tank outlet showing nitrite and falling total chlorine while plant effluent stays stable.",
+   "configuration": "Scope: isolation of cause through corrective plan.",
+   "cards": [
+    {
+     "id": "s5",
+     "label": "Set increased outlet monitoring until outlet quality matches inlet quality"
+    },
+    {
+     "id": "s4",
+     "label": "Plan a drawdown and refill or cleaning based on findings"
+    },
+    {
+     "id": "s3",
+     "label": "Check daily exchange share and recent level control history"
+    },
+    {
+     "id": "s2",
+     "label": "Profile the tank for stratification that shelters aged water"
+    },
+    {
+     "id": "s1",
+     "label": "Compare tank inlet and outlet nitrogen species and total chlorine"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Inlet outlet comparison comes first, profiling tests stratification, exchange history is checked, corrective action is planned from findings, and enhanced monitoring verifies the fix."
+  },
+  {
+   "id": "c2wd-process78",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to prepare for the warm season nitrification risk period.",
+   "topicId": "nitrification-seasonal-prep",
+   "level": "class1",
+   "assumptions": "Fictional system entering summer with warm water and historically late summer nitrification episodes.",
+   "configuration": "Scope: spring review through summer readiness.",
+   "cards": [
+    {
+     "id": "s5",
+     "label": "Start enhanced monitoring at historic episode sites in early summer"
+    },
+    {
+     "id": "s4",
+     "label": "Stock sampling supplies and confirm laboratory capacity for nitrogen species"
+    },
+    {
+     "id": "s1",
+     "label": "Review last summer episode sites, dates, and what actions worked"
+    },
+    {
+     "id": "s3",
+     "label": "Flush chronic dead ends and confirm blow offs operate"
+    },
+    {
+     "id": "s2",
+     "label": "Lower tank operating bands where allowed to cut water age before summer"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "History is reviewed first, water age is reduced in spring, dead ends are flushed, supplies and lab capacity are secured, and enhanced monitoring starts as risk rises."
+  },
+  {
+   "id": "c2wd-process79",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to evaluate a breakpoint chlorination response to an advanced episode.",
+   "topicId": "nitrification-breakpoint-response",
+   "level": "class1",
+   "assumptions": "Fictional advanced nitrification episode where flushing alone has not restored total chlorine in one zone.",
+   "configuration": "Scope: decision through return to chloramine operation.",
+   "cards": [
+    {
+     "id": "s4",
+     "label": "Convert the zone to free chlorine for the planned period and monitor daily"
+    },
+    {
+     "id": "s2",
+     "label": "Obtain supervisory and regulatory guidance required for a temporary free chlorine period"
+    },
+    {
+     "id": "s1",
+     "label": "Confirm the episode severity with nitrite, ammonia, and total chlorine results"
+    },
+    {
+     "id": "s5",
+     "label": "Return to chloramine operation once nitrite clears and residuals stabilize"
+    },
+    {
+     "id": "s3",
+     "label": "Notify customers about the temporary change and possible taste changes"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Severity is confirmed first, required guidance is obtained, customers are notified, conversion runs with daily monitoring, and return to chloramines follows verified recovery."
+  },
+  {
+   "id": "c2wd-process80",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to trace the source of ammonia loss in one zone.",
+   "topicId": "ammonia-loss-tracing",
+   "level": "class1",
+   "assumptions": "Fictional zone where free ammonia falls faster than total chlorine, suggesting biological activity.",
+   "configuration": "Scope: sampling design through source identification.",
+   "cards": [
+    {
+     "id": "s2",
+     "label": "Plot free ammonia, total chlorine, and nitrite against distance and water age"
+    },
+    {
+     "id": "s1",
+     "label": "Sample along the flow path from zone entry to the far point on the same day"
+    },
+    {
+     "id": "s4",
+     "label": "Inspect that asset for sediment, biofilm, or low turnover"
+    },
+    {
+     "id": "s3",
+     "label": "Identify the reach or storage point where ammonia loss accelerates"
+    },
+    {
+     "id": "s5",
+     "label": "Target flushing or cleaning at the identified asset and resample the path"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Same day path sampling comes first, plotting locates the change, the suspect asset is identified, inspection confirms the mechanism, and targeted action with resampling closes the trace."
+  },
+  {
+   "id": "c2wd-process81",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to set nitrification action levels for a small system.",
+   "topicId": "nitrification-action-levels",
+   "level": "class1",
+   "assumptions": "Fictional small chloraminated system formalizing its response plan with limited staff.",
+   "configuration": "Scope: data review through adopted plan.",
+   "cards": [
+    {
+     "id": "s2",
+     "label": "Choose alert values that give staff time to act before residuals collapse"
+    },
+    {
+     "id": "s1",
+     "label": "Review several seasons of nitrogen and residual data for the system"
+    },
+    {
+     "id": "s4",
+     "label": "Assign who acts, who is notified, and the resampling schedule for each level"
+    },
+    {
+     "id": "s3",
+     "label": "Match each alert value to a specific action such as flushing or tank drawdown"
+    },
+    {
+     "id": "s5",
+     "label": "Adopt the plan into the operations manual and train all operators"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "System data comes first, alert values are chosen from that data, actions are matched to levels, responsibilities are assigned, and adoption with training closes the work."
+  },
+  {
+   "id": "c2wd-process82",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to close out a nitrification episode.",
+   "topicId": "nitrification-episode-closeout",
+   "level": "class1",
+   "assumptions": "Fictional episode in one zone now showing normal nitrite and stable total chlorine for two weeks.",
+   "configuration": "Scope: recovery confirmation through lessons applied.",
+   "cards": [
+    {
+     "id": "s5",
+     "label": "Brief all operators on the episode before the next warm season"
+    },
+    {
+     "id": "s4",
+     "label": "Update action levels or site lists where the episode showed gaps"
+    },
+    {
+     "id": "s1",
+     "label": "Confirm two consecutive weeks of normal results at all episode sites"
+    },
+    {
+     "id": "s3",
+     "label": "Document episode causes, actions taken, and their measured effects"
+    },
+    {
+     "id": "s2",
+     "label": "Restore normal tank levels and routine monitoring frequency in stages"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Recovery is confirmed first, normal operation resumes in stages, the episode is documented, the plan is updated from gaps found, and staff briefing carries lessons forward."
+  },
+  {
+   "id": "c2wd-process83",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a booster station energy efficiency check.",
+   "topicId": "booster-energy-check",
+   "level": "class1",
+   "assumptions": "Fictional booster station with rising energy use per cubic metre pumped.",
+   "configuration": "Scope: data collection through recommendations.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Collect pump run hours, flows, pressures, and energy use for a representative month"
+    },
+    {
+     "id": "s3",
+     "label": "Compare pump operating points with their best efficiency ranges"
+    },
+    {
+     "id": "s4",
+     "label": "Check for throttled valves, worn wear rings, or off peak scheduling losses"
+    },
+    {
+     "id": "s2",
+     "label": "Calculate energy per cubic metre for each pump and the station"
+    },
+    {
+     "id": "s5",
+     "label": "Recommend the fixes with the largest savings first"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Operating data comes first, unit energy is calculated, efficiency comparison follows, mechanical and scheduling losses are checked, and recommendations are ranked by savings."
+  },
+  {
+   "id": "c2wd-process84",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to optimize booster pump scheduling for off peak energy rates.",
+   "topicId": "booster-scheduling-optimization",
+   "level": "class1",
+   "assumptions": "Fictional station filling an elevated tank, electricity priced by time of use.",
+   "configuration": "Scope: demand review through new schedule.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review tank level patterns and when storage can be filled ahead of peaks"
+    },
+    {
+     "id": "s4",
+     "label": "Monitor zone pressures during the first week of the new schedule"
+    },
+    {
+     "id": "s3",
+     "label": "Shift major filling to off peak hours while holding required levels"
+    },
+    {
+     "id": "s2",
+     "label": "Confirm fire storage and minimum level limits that scheduling must respect"
+    },
+    {
+     "id": "s5",
+     "label": "Compare energy cost per cubic metre with the previous schedule"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Storage flexibility is reviewed first, hard limits are confirmed, filling is shifted, pressures are monitored during transition, and cost comparison verifies the benefit."
+  },
+  {
+   "id": "c2wd-process85",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to test a booster pump against its curve.",
+   "topicId": "booster-pump-curve-test",
+   "level": "class1",
+   "assumptions": "Fictional pump suspected of lost capacity, tested with suction and discharge gauges and a flow measurement.",
+   "configuration": "Scope: preparation through condition decision.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Install calibrated suction and discharge pressure gauges and arrange flow measurement"
+    },
+    {
+     "id": "s5",
+     "label": "Decide on repair, impeller work, or continued service from the deviation found"
+    },
+    {
+     "id": "s4",
+     "label": "Plot the measured points against the manufacturer curve"
+    },
+    {
+     "id": "s3",
+     "label": "Convert gauge readings to total head at each flow"
+    },
+    {
+     "id": "s2",
+     "label": "Run the pump at several controlled discharge settings"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Instrumentation comes first, controlled runs follow, heads are calculated, plotting compares with the curve, and the condition decision closes the test."
+  },
+  {
+   "id": "c2wd-process86",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to add a variable speed drive retrofit evaluation for a booster pump.",
+   "topicId": "booster-vfd-evaluation",
+   "level": "class1",
+   "assumptions": "Fictional constant speed booster cycling frequently against a PRV controlled zone.",
+   "configuration": "Scope: duty analysis through recommendation.",
+   "cards": [
+    {
+     "id": "s5",
+     "label": "Recommend retrofit or continued constant speed operation with the analysis attached"
+    },
+    {
+     "id": "s2",
+     "label": "Estimate energy at variable speed using the affinity relationships for the logged duty"
+    },
+    {
+     "id": "s4",
+     "label": "Compare retrofit cost with projected energy and maintenance savings"
+    },
+    {
+     "id": "s1",
+     "label": "Log flow and pressure duty across daily demand swings for several weeks"
+    },
+    {
+     "id": "s3",
+     "label": "Check motor, cable, and harmonic requirements for drive compatibility"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Duty logging comes first, energy is estimated from that duty, compatibility is checked, economics are compared, and the recommendation closes the evaluation."
+  },
+  {
+   "id": "c2wd-process87",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to respond to a booster station high energy alarm.",
+   "topicId": "booster-high-energy-response",
+   "level": "class1",
+   "assumptions": "Fictional station energy per cubic metre alarm during a hot week with high demand.",
+   "configuration": "Scope: alarm review through verified cause.",
+   "cards": [
+    {
+     "id": "s5",
+     "label": "Correct the cause found and verify unit energy returns to normal"
+    },
+    {
+     "id": "s2",
+     "label": "Compare individual pump unit energy to find any outlier pump"
+    },
+    {
+     "id": "s4",
+     "label": "Check pressure settings for an unplanned increase raising head"
+    },
+    {
+     "id": "s1",
+     "label": "Check whether higher demand alone explains the energy rise"
+    },
+    {
+     "id": "s3",
+     "label": "Inspect the outlier for valve throttling, recirculation, or wear indicators"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Demand effects are checked first, pumps are compared to find outliers, the outlier is inspected, settings are reviewed, and correction with verification closes the alarm."
+  },
+  {
+   "id": "c2wd-process88",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a seasonal booster station readiness check before summer peak.",
+   "topicId": "booster-seasonal-readiness",
+   "level": "class1",
+   "assumptions": "Fictional booster station checked each spring before irrigation season demand.",
+   "configuration": "Scope: inspection through peak readiness sign off.",
+   "cards": [
+    {
+     "id": "s4",
+     "label": "Confirm spare parts for the most failure prone components"
+    },
+    {
+     "id": "s5",
+     "label": "Sign off station readiness and file the checklist before peak season"
+    },
+    {
+     "id": "s1",
+     "label": "Service pumps, check valves, and standby power under load"
+    },
+    {
+     "id": "s3",
+     "label": "Verify pressure controls, alarms, and telemetry to the control room"
+    },
+    {
+     "id": "s2",
+     "label": "Test each pump capacity against the station duty requirement"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Servicing comes first, capacity is tested, controls and alarms are verified, spares are confirmed, and signed readiness closes the check."
+  },
+  {
+   "id": "c2wd-process89",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to build a cross connection control program survey cycle.",
+   "topicId": "ccc-survey-cycle",
+   "level": "class1",
+   "assumptions": "Fictional Ontario municipality surveying industrial, commercial, and institutional premises by hazard level.",
+   "configuration": "Scope: inventory through survey schedule.",
+   "cards": [
+    {
+     "id": "s2",
+     "label": "Classify premises by hazard level using the program criteria"
+    },
+    {
+     "id": "s1",
+     "label": "Build the premises inventory from billing and property records"
+    },
+    {
+     "id": "s3",
+     "label": "Schedule surveys starting with the highest hazard premises"
+    },
+    {
+     "id": "s4",
+     "label": "Survey each premises for cross connections and existing protection"
+    },
+    {
+     "id": "s5",
+     "label": "Record findings and required devices in the program database"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Inventory comes first, hazard classification follows, scheduling prioritizes hazard, surveys gather findings, and the database records requirements last."
+  },
+  {
+   "id": "c2wd-process90",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to bring a high hazard premises into compliance.",
+   "topicId": "ccc-high-hazard-compliance",
+   "level": "class1",
+   "assumptions": "Fictional chemical plant found with an unprotected cross connection at survey.",
+   "configuration": "Scope: finding through verified compliance.",
+   "cards": [
+    {
+     "id": "s2",
+     "label": "Confirm the device selection and installation plan with the owner"
+    },
+    {
+     "id": "s4",
+     "label": "Witness or receive the passing field test from a certified tester"
+    },
+    {
+     "id": "s3",
+     "label": "Inspect the installation for correct orientation, drainage, and test cocks"
+    },
+    {
+     "id": "s5",
+     "label": "Enter the device into the test tracking database with its annual test date"
+    },
+    {
+     "id": "s1",
+     "label": "Issue the survey report requiring an approved reduced pressure assembly on the service"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "The requirement is issued first, selection is confirmed, installation is inspected, a passing test is received, and tracking entry closes compliance."
+  },
+  {
+   "id": "c2wd-process91",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for annual backflow preventer test tracking and enforcement.",
+   "topicId": "ccc-test-tracking",
+   "level": "class1",
+   "assumptions": "Fictional program office managing annual test reports for hundreds of devices.",
+   "configuration": "Scope: reminder through enforcement.",
+   "cards": [
+    {
+     "id": "s3",
+     "label": "Flag failed tests and require repair and retest within the program deadline"
+    },
+    {
+     "id": "s4",
+     "label": "Escalate overdue accounts through reminder, notice, and water service actions per bylaw"
+    },
+    {
+     "id": "s2",
+     "label": "Receive and review test reports for completeness and tester certification"
+    },
+    {
+     "id": "s1",
+     "label": "Send test due notices ahead of each device anniversary date"
+    },
+    {
+     "id": "s5",
+     "label": "Update device records and close the cycle for compliant accounts"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Notices precede due dates, reports are reviewed on receipt, failures get repair deadlines, overdue accounts escalate by bylaw steps, and records close the cycle."
+  },
+  {
+   "id": "c2wd-process92",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to respond to a backflow incident with suspected contamination.",
+   "topicId": "ccc-backflow-incident",
+   "level": "class1",
+   "assumptions": "Fictional report of discoloured water near an industrial premises after a pressure loss event.",
+   "configuration": "Scope: report through cleared system.",
+   "cards": [
+    {
+     "id": "s3",
+     "label": "Flush affected mains until samples clear"
+    },
+    {
+     "id": "s5",
+     "label": "Document the incident and add the premises to the high priority survey list"
+    },
+    {
+     "id": "s1",
+     "label": "Isolate the suspected premises service to stop further backflow"
+    },
+    {
+     "id": "s2",
+     "label": "Sample upstream and downstream of the premises for the suspected contaminant indicators"
+    },
+    {
+     "id": "s4",
+     "label": "Require repair or installation of protection before restoring full service"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Isolation comes first, sampling defines the affected area, flushing clears the mains, protection is required before full service, and documentation with follow up closes the incident."
+  },
+  {
+   "id": "c2wd-process93",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to qualify and list certified backflow testers for the program.",
+   "topicId": "ccc-tester-qualification",
+   "level": "class1",
+   "assumptions": "Fictional program maintaining its list of accepted testers for annual device tests.",
+   "configuration": "Scope: criteria through published list.",
+   "cards": [
+    {
+     "id": "s5",
+     "label": "Remove testers whose certification or calibration lapses"
+    },
+    {
+     "id": "s4",
+     "label": "Publish the accepted tester list for property owners"
+    },
+    {
+     "id": "s2",
+     "label": "Receive applications with proof of certification and gauge calibration"
+    },
+    {
+     "id": "s1",
+     "label": "Set tester criteria covering certification, calibration, and insurance requirements"
+    },
+    {
+     "id": "s3",
+     "label": "Verify credentials with the certifying body where required"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Criteria are set first, applications are received, credentials are verified, the list is published, and lapses are removed to keep the list current."
+  },
+  {
+   "id": "c2wd-process94",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to survey a newly opened restaurant premises.",
+   "topicId": "ccc-new-premises-survey",
+   "level": "class1",
+   "assumptions": "Fictional new restaurant connecting to the system, survey required before occupancy under the program.",
+   "configuration": "Scope: application through occupancy clearance.",
+   "cards": [
+    {
+     "id": "s4",
+     "label": "Require corrections and reinspect any missing devices"
+    },
+    {
+     "id": "s3",
+     "label": "Inspect the installed protection during the site survey"
+    },
+    {
+     "id": "s5",
+     "label": "Clear the premises in the program records once protection passes"
+    },
+    {
+     "id": "s1",
+     "label": "Receive the water service application and plumbing drawings"
+    },
+    {
+     "id": "s2",
+     "label": "Review drawings for cross connections at dishwashers, boilers, and chemical dispensers"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "The application and drawings come first, drawing review identifies risks, site inspection verifies installation, corrections are reinspected, and clearance is recorded last."
+  },
+  {
+   "id": "c2wd-process95",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps when a distribution sample shows an adverse result under Ontario Regulation 170/03 awareness.",
+   "topicId": "adverse-result-response",
+   "level": "class1",
+   "assumptions": "Fictional Ontario distribution sample reported adverse by the laboratory, operator following the system adverse response procedure.",
+   "configuration": "Scope: laboratory notice through required notifications.",
+   "cards": [
+    {
+     "id": "s4",
+     "label": "Flush or isolate the affected area if directed by the health authority guidance"
+    },
+    {
+     "id": "s3",
+     "label": "Collect resamples at the site, upstream, and downstream locations as directed"
+    },
+    {
+     "id": "s1",
+     "label": "Receive and confirm the adverse result details with the laboratory"
+    },
+    {
+     "id": "s2",
+     "label": "Notify the required authorities and the system owner as the procedure directs"
+    },
+    {
+     "id": "s5",
+     "label": "Document every notification, time, and result in the adverse water quality incident record"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Confirmation comes first, notifications follow the procedure, resampling defines the extent, protective actions follow direction, and full documentation closes the record."
+  },
+  {
+   "id": "c2wd-process96",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for supervisory review of weekly distribution data.",
+   "topicId": "supervisory-data-review",
+   "level": "class1",
+   "assumptions": "Fictional supervisor reviewing one week of residuals, pressures, flows, and complaints for a Class 2 system.",
+   "configuration": "Scope: data assembly through assigned actions.",
+   "cards": [
+    {
+     "id": "s5",
+     "label": "Sign the review and file it with the operating records"
+    },
+    {
+     "id": "s3",
+     "label": "Flag anomalies such as falling residuals or rising night flow for investigation"
+    },
+    {
+     "id": "s1",
+     "label": "Assemble residual, pressure, flow, and complaint records for the same week"
+    },
+    {
+     "id": "s4",
+     "label": "Assign each flag to an operator with a due date"
+    },
+    {
+     "id": "s2",
+     "label": "Compare each record set against targets, limits, and past performance"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Assembly comes first, comparison against targets follows, anomalies are flagged, assignments carry due dates, and the signed review is filed last."
+  },
+  {
+   "id": "c2wd-process97",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to respond to a major trunk main break emergency.",
+   "topicId": "major-break-emergency-response",
+   "level": "class1",
+   "assumptions": "Fictional night time 600 mm trunk break flooding an arterial road, emergency response underway.",
+   "configuration": "Scope: first report through restored service.",
+   "cards": [
+    {
+     "id": "s2",
+     "label": "Isolate the break using the closure plan valves and confirm shutdown"
+    },
+    {
+     "id": "s1",
+     "label": "Confirm the break location and dispatch crews while protecting the site with traffic control"
+    },
+    {
+     "id": "s5",
+     "label": "Collect bacteriological samples and restore full service when results and procedure allow"
+    },
+    {
+     "id": "s4",
+     "label": "Repair the main, then disinfect and flush the affected section"
+    },
+    {
+     "id": "s3",
+     "label": "Notify affected customers, the municipality, and critical users of the outage"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Confirmation and safe site setup come first, isolation follows, notifications go out, repair with disinfection is next, and sampling governs restoration."
+  },
+  {
+   "id": "c2wd-process98",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps after a contamination event is suspected in one zone.",
+   "topicId": "contamination-event-response",
+   "level": "class1",
+   "assumptions": "Fictional suspected contamination after a cross connection failure and customer illness reports in one zone, awareness level response.",
+   "configuration": "Scope: suspicion through cleared zone.",
+   "cards": [
+    {
+     "id": "s4",
+     "label": "Lift restrictions only on the direction of the health authority after clear results"
+    },
+    {
+     "id": "s1",
+     "label": "Isolate the zone or premises source and issue the directed public notice with health authorities"
+    },
+    {
+     "id": "s5",
+     "label": "Complete the incident report and review program gaps that allowed the event"
+    },
+    {
+     "id": "s2",
+     "label": "Sample the zone for the suspected contaminant and indicator organisms"
+    },
+    {
+     "id": "s3",
+     "label": "Flush and disinfect affected mains under the directed procedure"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Isolation and public notice come first under direction, sampling defines the problem, flushing and disinfection clean the zone, restrictions lift only on direction, and reporting with review closes the event."
+  },
+  {
+   "id": "c2wd-process99",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a supervisory review before approving a flushing program report.",
+   "topicId": "supervisory-flushing-review",
+   "level": "class1",
+   "assumptions": "Fictional supervisor reviewing a completed zone flushing report before it is filed.",
+   "configuration": "Scope: report check through filing.",
+   "cards": [
+    {
+     "id": "s3",
+     "label": "Review complaint logs and confirm each complaint was closed with the customer"
+    },
+    {
+     "id": "s5",
+     "label": "Approve and file the report or return it with corrections required"
+    },
+    {
+     "id": "s2",
+     "label": "Verify valve restoration records match the sequence sheets"
+    },
+    {
+     "id": "s1",
+     "label": "Check that every planned sequence shows completed volumes and clarity results"
+    },
+    {
+     "id": "s4",
+     "label": "Check before and after residual results against program targets"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Completion records are checked first, valve records are verified, complaints are confirmed closed, results are compared with targets, and approval or return closes the review."
+  },
+  {
+   "id": "c2wd-evidence01",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "DMA North in an Ontario city shows minimum night flow rising over three months while billed consumption stays flat.",
+   "topicId": "leakage-night-flow",
+   "level": "class1",
+   "assumptions": "Fictional DMA with 2,400 services, verified boundary valves, and a calibrated inlet meter. Night flow is the 02:00 to 04:00 average in L/s.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "DMA minimum night flow rose from 4.1 L/s to 9.3 L/s over 90 days, on both weekdays and weekends."
+    },
+    {
+     "id": "ev2",
+     "label": "Billed consumption and customer meter reads in the DMA are unchanged over the same period."
+    },
+    {
+     "id": "ev3",
+     "label": "A portable meter check confirms the DMA inlet meter reads within 1 percent of a test meter at night flows."
+    },
+    {
+     "id": "ev4",
+     "label": "Pressure logging at the DMA inlet shows average zone pressure unchanged at 420 kPa."
+    },
+    {
+     "id": "ev5",
+     "label": "Two adjacent DMAs fed from the same trunk main show no change in night flow."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Higher customer night use explains the rise, because a new 24 hour business opened in the DMA"
+     },
+     {
+      "id": "inf-b",
+      "label": "A real loss has developed inside this DMA, because night flow rose with no change in legitimate use, pressure, or meter accuracy"
+     },
+     {
+      "id": "inf-c",
+      "label": "The DMA inlet meter is drifting high and creating false night flow"
+     },
+     {
+      "id": "inf-d",
+      "label": "Higher zone pressure is pushing more legitimate flow through customer fixtures at night"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Only a new real loss fits all records. Billed use is flat, the inlet meter checks within 1 percent, and pressure is unchanged, so higher use, meter drift, and pressure driven use are each contradicted. Neighbouring DMAs are stable, so the loss is inside this DMA."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best locates the loss within the DMA?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Replace the DMA inlet meter and remeasure night flow next month"
+     },
+     {
+      "id": "nc-b",
+      "label": "Step test the DMA by closing section valves in sequence at night while logging inlet flow drops"
+     },
+     {
+      "id": "nc-c",
+      "label": "Raise DMA pressure for one night and watch whether night flow falls"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "A step test isolates which section carries the excess night flow, which is the direct way to narrow a confirmed DMA loss to a searchable length of main."
+   },
+   "clueText": {
+    "nc-a": "The inlet meter already verified within 1 percent, so replacing it would not locate a loss inside the DMA.",
+    "nc-b": "Step test drops are 0.4, 0.6, and 4.1 L/s across three sections, isolating almost all excess flow to the third section.",
+    "nc-c": "Raising pressure would tend to increase leakage, not locate it, and pressure is already confirmed unchanged."
+   }
+  },
+  {
+   "id": "c2wd-evidence02",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A step test in an Ontario DMA isolates a large night flow drop to one 800 m section, but no surface water is visible anywhere on that section.",
+   "topicId": "leakage-step-testing",
+   "level": "class1",
+   "assumptions": "Fictional DMA step test at 03:00 with all boundary valves confirmed closed except the metered feed. Section length 800 m of 200 mm main.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Closing the valve feeding Section C drops DMA inlet flow from 8.8 L/s to 3.9 L/s, a 4.9 L/s step."
+    },
+    {
+     "id": "ev2",
+     "label": "Closing valves for Sections A and B in turn drops inlet flow by only 0.3 L/s and 0.5 L/s."
+    },
+    {
+     "id": "ev3",
+     "label": "Acoustic loggers on Section C hydrants record strong leak noise at two adjacent hydrants and none elsewhere in the DMA."
+    },
+    {
+     "id": "ev4",
+     "label": "The road surface over Section C is completely dry, and a nearby storm sewer outfall is flowing clear in dry weather."
+    },
+    {
+     "id": "ev5",
+     "label": "Soil over Section C is sandy and a storm sewer runs parallel 2 m from the water main for the full section."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "There is no leak in Section C, because a real leak would always surface on the road"
+     },
+     {
+      "id": "inf-b",
+      "label": "The step drop was caused by customers in Section C using water at 03:00"
+     },
+     {
+      "id": "inf-c",
+      "label": "The Section C leak is draining into the parallel storm sewer through sandy soil instead of surfacing"
+     },
+     {
+      "id": "inf-d",
+      "label": "The acoustic noise is traffic vibration carried along the main from the arterial road"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "A 4.9 L/s step on one section with matching acoustic noise confirms a leak there. Dry surface plus a flowing storm outfall in dry weather and sandy soil explain where the water goes. Customer use at 03:00 cannot produce a repeatable valve step of this size."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best confirms where the leaking water is going?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Wait for the leak to surface on its own before taking any action"
+     },
+     {
+      "id": "nc-b",
+      "label": "Repeat the full DMA step test on three more nights to confirm Section C again"
+     },
+     {
+      "id": "nc-c",
+      "label": "Inspect the parallel storm sewer at the downstream manhole for clear water flow and chlorine residual in dry weather"
+     }
+    ],
+    "correctOptionId": "nc-c",
+    "explanation": "Checking the storm sewer for clear flow with a chlorine residual directly tests whether treated water is entering it, confirming the drainage path before excavation."
+   },
+   "clueText": {
+    "nc-a": "Waiting leaves a 4.9 L/s loss running and risks undermining the road and the storm sewer bedding.",
+    "nc-b": "Section C is already isolated by both the step drop and acoustic noise, so repeating the DMA test adds no location detail.",
+    "nc-c": "Storm sewer water at the manhole flows clear in dry weather and tests 0.7 mg/L free chlorine, matching distribution water."
+   }
+  },
+  {
+   "id": "c2wd-evidence03",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Two Ontario DMAs share one trunk feed. DMA East night flow doubled in one week while DMA West, on the same feed, did not change.",
+   "topicId": "leakage-night-flow",
+   "level": "class1",
+   "assumptions": "Fictional paired DMAs, each with its own calibrated inlet meter and confirmed closed boundaries. Both are at the same elevation and pressure.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "DMA East minimum night flow rose from 3.0 L/s to 6.2 L/s within seven days and stayed at the new level."
+    },
+    {
+     "id": "ev2",
+     "label": "DMA West minimum night flow held at 3.1 L/s plus or minus 0.2 L/s over the same week."
+    },
+    {
+     "id": "ev3",
+     "label": "Trunk main pressure and treatment plant output show no step change in the week the East rise began."
+    },
+    {
+     "id": "ev4",
+     "label": "East DMA customer counts, billed use, and large user schedules are unchanged, and no new construction feed was opened."
+    },
+    {
+     "id": "ev5",
+     "label": "A boundary valve check finds all East boundary valves closed except the metered inlet, verified by a zero flow test."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "A trunk main or plant supply change raised flows to both DMAs equally"
+     },
+     {
+      "id": "inf-b",
+      "label": "Seasonal demand growth raised night flow across the whole system"
+     },
+     {
+      "id": "inf-c",
+      "label": "The East inlet meter suddenly began over registering by double"
+     },
+     {
+      "id": "inf-d",
+      "label": "A new leak or unauthorised draw began inside DMA East during that week"
+     }
+    ],
+    "correctOptionId": "inf-d",
+    "explanation": "The paired comparison rules out shared causes. West on the same feed is unchanged, plant output and pressure show no step, and East boundaries and use are verified unchanged, so the step is local to East. A one week doubling that then holds steady fits a new leak, not seasonal growth."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best narrows the new East loss?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Run a night step test inside DMA East, closing sections in sequence while logging inlet flow"
+     },
+     {
+      "id": "nc-b",
+      "label": "Recalibrate the West inlet meter to match the East meter"
+     },
+     {
+      "id": "nc-c",
+      "label": "Compare annual billed consumption for the two DMAs"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "A step test inside East is the direct localisation step for a confirmed local loss. Annual billing cannot locate a leak, and the West meter is not in question."
+   },
+   "clueText": {
+    "nc-a": "The step test isolates a 2.8 L/s drop to one industrial side street section in DMA East.",
+    "nc-b": "The West meter agrees with its stable record, and recalibrating it does not investigate the East rise.",
+    "nc-c": "Annual totals cannot show which street carries a loss that began one week ago."
+   }
+  },
+  {
+   "id": "c2wd-evidence04",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "An Ontario utility chases a DMA leak for a month with no result. Night flow is high, but daytime flow and pressure are normal and acoustic surveys find nothing.",
+   "topicId": "leakage-boundary-integrity",
+   "level": "class1",
+   "assumptions": "Fictional DMA believed to be discrete, with one metered inlet and four boundary valves on the district plan. All flows in L/s.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "DMA night flow is 7.5 L/s against an expected legitimate night use of about 2.0 L/s for its 1,800 services."
+    },
+    {
+     "id": "ev2",
+     "label": "A zero pressure drop test is run: with the inlet closed at 02:30, DMA pressure falls only very slowly instead of dropping steadily."
+    },
+    {
+     "id": "ev3",
+     "label": "One boundary valve shown closed on the plan passes flow when the DMA side is depressurised."
+    },
+    {
+     "id": "ev4",
+     "label": "When that boundary valve is repaired and truly closed, DMA night flow at the inlet falls to 2.3 L/s."
+    },
+    {
+     "id": "ev5",
+     "label": "Acoustic surveys, hydrant inspections, and customer meter checks inside the DMA found no leak or unmetered use."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The DMA was never discrete: water entered unmetered through the passing boundary valve, inflating apparent night flow"
+     },
+     {
+      "id": "inf-b",
+      "label": "A large hidden leak inside the DMA stops flowing whenever crews survey for it"
+     },
+     {
+      "id": "inf-c",
+      "label": "Customers in the DMA use far more water at night than the standard allowance"
+     },
+     {
+      "id": "inf-d",
+      "label": "The inlet meter under registers by day and over registers by night"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "The drop test shows the district is being fed from elsewhere, the passing boundary valve is found directly, and repairing it returns night flow to near the legitimate allowance. No internal leak is needed to explain the record, and surveys found none."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which program change best prevents a repeat of this false leakage figure?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Increase the legitimate night use allowance for this DMA on paper"
+     },
+     {
+      "id": "nc-b",
+      "label": "Add a scheduled boundary valve integrity test, including a drop test, to the DMA audit routine"
+     },
+     {
+      "id": "nc-c",
+      "label": "Replace all customer meters in the DMA"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "Testing boundary integrity on a schedule protects every future night flow figure for the DMA. Changing the allowance on paper would hide real losses, and customer meters were already checked."
+   },
+   "clueText": {
+    "nc-a": "Raising the allowance would have masked the inflow as legitimate use and left the boundary fault in place.",
+    "nc-b": "The next quarterly audit includes drop tests at all four boundaries and finds all four holding, with night flow steady at 2.2 L/s.",
+    "nc-c": "Customer meters were checked with no fault found, so mass replacement does not address a boundary inflow."
+   }
+  },
+  {
+   "id": "c2wd-evidence05",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Night flow in an Ontario DMA falls to near zero for exactly 20 minutes at 02:10 on three nights, then returns to its usual elevated level.",
+   "topicId": "leakage-night-flow",
+   "level": "class1",
+   "assumptions": "Fictional DMA inlet logging at 1 minute intervals. A large food plant inside the DMA has a private storage tank filled from the distribution system.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Inlet flow drops from 6.0 L/s to 0.2 L/s at 02:10 and returns to 6.0 L/s at 02:30 on three separate nights."
+    },
+    {
+     "id": "ev2",
+     "label": "DMA pressure rises by 60 kPa during each 20 minute flow gap and falls back when flow resumes."
+    },
+    {
+     "id": "ev3",
+     "label": "The food plant confirms its tank fill valve closes on a timer from 02:10 to 02:30 for a cleaning cycle, and its fill line has no meter."
+    },
+    {
+     "id": "ev4",
+     "label": "Customer meters and the DMA inlet meter both pass accuracy checks, and no boundary valve work occurred on those nights."
+    },
+    {
+     "id": "ev5",
+     "label": "Outside the 20 minute gaps, DMA night flow stays at 6.0 L/s, well above the 2.5 L/s expected for homes alone."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The DMA leak repairs itself for 20 minutes each night and then reopens"
+     },
+     {
+      "id": "inf-b",
+      "label": "An unmetered industrial tank fill is a large part of the apparent night flow, revealed when its timed closure drops inlet flow to near zero"
+     },
+     {
+      "id": "inf-c",
+      "label": "The inlet data logger loses signal for 20 minutes each night"
+     },
+     {
+      "id": "inf-d",
+      "label": "Residents collectively stop all water use at 02:10 each night"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "A logger fault cannot raise DMA pressure during the gap, and a leak cannot switch off on a timer. The plant fill valve schedule matches the gap exactly, and pressure rising while inflow stops confirms real flow stopped."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next step best separates the plant draw from true leakage?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Declare the DMA leak free because flow once fell to 0.2 L/s"
+     },
+     {
+      "id": "nc-b",
+      "label": "Lower DMA pressure at night to reduce the plant fill rate"
+     },
+     {
+      "id": "nc-c",
+      "label": "Meter or log the plant fill line separately and subtract its draw from DMA night flow before calculating leakage"
+     }
+    ],
+    "correctOptionId": "nc-c",
+    "explanation": "Separating the known industrial draw is required before any leakage figure for this DMA is valid. The 0.2 L/s gap value alone does not prove the rest of the night is leak free."
+   },
+   "clueText": {
+    "nc-a": "Flow fell only while the fill valve was shut, so the gap does not prove the remaining hours are free of loss.",
+    "nc-b": "Lowering pressure changes both leakage and fill rate and still leaves the two flows mixed in one figure.",
+    "nc-c": "With the fill line logged, the plant draws 3.4 L/s while filling, leaving a corrected DMA night flow of 2.6 L/s."
+   }
+  },
+  {
+   "id": "c2wd-evidence06",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "An Ontario DMA shows excellent night flow, yet the utility still loses water: the annual water audit gap keeps growing while every DMA reports low leakage.",
+   "topicId": "metering-water-audit",
+   "level": "class1",
+   "assumptions": "Fictional system audit. Plant production meters were verified. One older district, DMA Old Town, has no inlet meter and is supplied through two unmetered feeds.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "All metered DMAs report minimum night flows within their legitimate use allowances."
+    },
+    {
+     "id": "ev2",
+     "label": "Plant production for the year rose 6 percent while total billed consumption was flat."
+    },
+    {
+     "id": "ev3",
+     "label": "DMA Old Town, covering 15 percent of services, has never had an inlet meter, so it appears in no night flow report."
+    },
+    {
+     "id": "ev4",
+     "label": "A temporary insertion meter on one Old Town feed for two weeks records night flow of 11 L/s for 900 services, far above allowance."
+    },
+    {
+     "id": "ev5",
+     "label": "Customer meter accuracy sampling across the system averages 98 percent registration, too small to explain the audit gap."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Customer meters across the system are under registering enough to explain the whole gap"
+     },
+     {
+      "id": "inf-b",
+      "label": "The plant production meters are over registering total supply"
+     },
+     {
+      "id": "inf-c",
+      "label": "The audit gap is concentrated in the unmetered Old Town district, which night flow reporting never covered"
+     },
+     {
+      "id": "inf-d",
+      "label": "All DMAs are leak free, so the audit gap must be a billing data error"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "Production meters are verified and customer sampling shows only 2 percent under registration, too small for a 6 percent gap. The only district never measured shows 11 L/s at night for 900 services when finally metered, which fits the missing loss."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next step best closes the audit blind spot?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Install permanent inlet metering on both Old Town feeds and bring the district into the night flow program"
+     },
+     {
+      "id": "nc-b",
+      "label": "Increase the system wide customer meter replacement budget"
+     },
+     {
+      "id": "nc-c",
+      "label": "Write off the audit gap as unbilled authorised use"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Permanent metering makes the one unmeasured district visible to the same leakage program as every other district. The gap is measured water loss, not a paper category."
+   },
+   "clueText": {
+    "nc-a": "Both feeds are metered within the quarter, and Old Town enters the monthly night flow report at 10.8 L/s.",
+    "nc-b": "Customer meters average 98 percent registration, so system wide replacement cannot recover a gap of this size.",
+    "nc-c": "Writing off the gap would leave a measured 11 L/s night flow uninvestigated."
+   }
+  },
+  {
+   "id": "c2wd-evidence07",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "After a leak repair in an Ontario DMA, night flow falls by only half the expected amount, and crews suspect a second leak.",
+   "topicId": "leakage-step-testing",
+   "level": "class1",
+   "assumptions": "Fictional DMA. A 3.0 L/s leak on a 150 mm main was repaired and verified by pressure test. Night flow logging continues at the inlet.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Before repair, DMA night flow was 9.0 L/s. After the verified repair it is 6.0 L/s, a fall of 3.0 L/s matching the repaired leak."
+    },
+    {
+     "id": "ev2",
+     "label": "A repeat step test now shows no single section dropping more than 0.4 L/s when closed."
+    },
+    {
+     "id": "ev3",
+     "label": "Legitimate night use was recalculated from a customer sample and is 2.2 L/s, not the 5.5 L/s allowance used in the original estimate."
+    },
+    {
+     "id": "ev4",
+     "label": "Inlet pressure during the new tests is the same 410 kPa as during the original tests."
+    },
+    {
+     "id": "ev5",
+     "label": "Acoustic loggers deployed across the DMA for two weeks record no leak noise above background."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "A second 3.0 L/s leak exists but is completely silent to acoustic loggers"
+     },
+     {
+      "id": "inf-b",
+      "label": "The repaired leak has reopened at exactly half its former rate"
+     },
+     {
+      "id": "inf-c",
+      "label": "The inlet meter began under registering on the day of the repair"
+     },
+     {
+      "id": "inf-d",
+      "label": "There is no second large leak: the original estimate used an inflated legitimate night use allowance, so the remaining flow is mostly legitimate and background loss"
+     }
+    ],
+    "correctOptionId": "inf-d",
+    "explanation": "The repair removed exactly its measured 3.0 L/s, the step test finds no section carrying a large loss, and loggers hear nothing. The recalculated legitimate use plus small background losses accounts for the remaining flow far better than the old allowance suggested."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next action best confirms the DMA is now at background leakage?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Excavate the repaired joint to check whether it reopened"
+     },
+     {
+      "id": "nc-b",
+      "label": "Compare DMA night flow against a component based background loss estimate for its mains length, services, and pressure"
+     },
+     {
+      "id": "nc-c",
+      "label": "Close the DMA inlet for a full night to force any leak to show"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "A component based background estimate tests whether the remaining flow matches unavoidable background loss for this network size and pressure."
+   },
+   "clueText": {
+    "nc-a": "The joint passed a pressure test and the flow fall matched the leak size, so reopening is not supported.",
+    "nc-b": "The background estimate for this DMA is 5.4 L/s at 410 kPa, close to the measured 6.0 L/s, indicating background level losses.",
+    "nc-c": "Closing the inlet overnight deprives customers of supply and gives no section level information."
+   }
+  },
+  {
+   "id": "c2wd-evidence08",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "An Ontario town paves a road in June. By August, DMA night flow on that road corridor has tripled, with no surface water and no customer complaints.",
+   "topicId": "leakage-detection",
+   "level": "class1",
+   "assumptions": "Fictional corridor subzone. Paving included heavy vibratory compaction over a 40 year old cast iron main. Night flow figures are for the corridor subzone.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Corridor night flow rose from 1.2 L/s to 3.8 L/s in the eight weeks after paving, with no change in services or billed use."
+    },
+    {
+     "id": "ev2",
+     "label": "Acoustic correlation on the corridor places strong leak noise midway along the paved length, between two sensors 180 m apart."
+    },
+    {
+     "id": "ev3",
+     "label": "A hydrant check shows corridor pressure 40 kPa lower than the parallel street at the same elevation during the day."
+    },
+    {
+     "id": "ev4",
+     "label": "The road was compacted with heavy vibratory rollers directly over the cast iron main, which has a history of circumferential cracks."
+    },
+    {
+     "id": "ev5",
+     "label": "No new services, irrigation systems, or construction feeds were added on the corridor after paving."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Vibratory compaction cracked the old cast iron main, and the leak drains into the road granular base without surfacing"
+     },
+     {
+      "id": "inf-b",
+      "label": "The paving seal is hiding a leak that started years earlier"
+     },
+     {
+      "id": "inf-c",
+      "label": "Summer irrigation by corridor homes explains the night flow rise"
+     },
+     {
+      "id": "inf-d",
+      "label": "The corridor subzone meter was damaged by construction vibration and over reads"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "The timing follows compaction directly, correlation locates noise on the main, and daytime pressure is depressed on that corridor only. Night flow is not irrigation, no services were added, and a damaged meter would not depress street pressure or create correlated leak noise."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best pinpoints the dig location?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Repave a test strip to see whether water appears"
+     },
+     {
+      "id": "nc-b",
+      "label": "Wait until winter freeze lifts the pavement over the leak"
+     },
+     {
+      "id": "nc-c",
+      "label": "Run a close interval acoustic correlation with sensors bracketing the noisy length to fix the leak position within a few metres"
+     }
+    ],
+    "correctOptionId": "nc-c",
+    "explanation": "Correlation already places the noise on this length. A tighter sensor bracket converts that into an excavation point."
+   },
+   "clueText": {
+    "nc-a": "Repaving a test strip destroys evidence and does not locate the crack along 180 m.",
+    "nc-b": "Waiting leaves about 2.6 L/s running into the road base, risking pavement failure.",
+    "nc-c": "Correlation with 60 m sensor spacing fixes the leak 4 m from the marked point, and excavation finds a circumferential crack."
+   }
+  },
+  {
+   "id": "c2wd-evidence09",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Minimum night flow in an Ontario DMA is normal in winter but climbs every summer, returning to normal each fall, for three summers in a row.",
+   "topicId": "leakage-seasonal",
+   "level": "class1",
+   "assumptions": "Fictional DMA with mixed residential services and a large sports field complex on a metered municipal service. Three years of monthly night flow data.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Summer night flow reaches 6.5 L/s against a winter baseline of 2.4 L/s, with the same pattern in each of three years."
+    },
+    {
+     "id": "ev2",
+     "label": "The sports field irrigation meter reads zero all summer, yet field grass stays green through a six week drought."
+    },
+    {
+     "id": "ev3",
+     "label": "Irrigation at the fields is scheduled from 01:00 to 04:00, matching the hours of elevated DMA flow."
+    },
+    {
+     "id": "ev4",
+     "label": "A check finds the irrigation system connected ahead of its meter after a plumbing alteration."
+    },
+    {
+     "id": "ev5",
+     "label": "Residential billed use in the DMA rises only slightly in summer, and no pool filling program operates at night."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "A seasonal leak opens in warm soil each summer and seals each fall"
+     },
+     {
+      "id": "inf-b",
+      "label": "The sports field irrigation draws unmetered water at night through a connection ahead of its meter"
+     },
+     {
+      "id": "inf-c",
+      "label": "Residents irrigate lawns at night far more than billed records show"
+     },
+     {
+      "id": "inf-d",
+      "label": "The DMA inlet meter drifts high whenever air temperature exceeds 25 C"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "The irrigation schedule matches the elevated hours, the field stays green in drought with a zero meter read, and a connection ahead of the meter is found directly. A soil leak would not follow an irrigation timer for three summers."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next step best corrects both the loss figure and the billing?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Repipe the irrigation feed through its meter and add the fields to the large user night use allowance in the DMA balance"
+     },
+     {
+      "id": "nc-b",
+      "label": "Classify the summer rise as background leakage and take no action"
+     },
+     {
+      "id": "nc-c",
+      "label": "Install a second inlet meter to average out the seasonal drift"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Feeding irrigation through its meter restores both revenue and a valid DMA balance. The flow is real authorised use once metered, not leakage and not meter drift."
+   },
+   "clueText": {
+    "nc-a": "After repiping, the irrigation meter records the night draw and DMA leakage returns to the winter baseline in the balance.",
+    "nc-b": "Classifying metered use as leakage would keep crews hunting for a loss that does not exist.",
+    "nc-c": "A second inlet meter would still measure the same unmetered irrigation draw as DMA inflow."
+   }
+  },
+  {
+   "id": "c2wd-evidence10",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "An Ontario DMA step test gives confusing results: every section closure drops inlet flow a little, and no section stands out.",
+   "topicId": "leakage-step-testing",
+   "level": "class1",
+   "assumptions": "Fictional DMA with five sections, night flow 8.0 L/s against 2.5 L/s legitimate use. Valves were exercised the previous year. Tests run at 02:00 to 04:00.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Each of five section closures drops inlet flow by 0.8 to 1.2 L/s, with no dominant step."
+    },
+    {
+     "id": "ev2",
+     "label": "DMA pressure falls slowly but measurably during the test even with section valves closed in sequence."
+    },
+    {
+     "id": "ev3",
+     "label": "One section valve is later found to pass flow when closed, so its section was never truly isolated during the test."
+    },
+    {
+     "id": "ev4",
+     "label": "Acoustic loggers show low level noise spread across many streets rather than one loud point."
+    },
+    {
+     "id": "ev5",
+     "label": "The DMA mains are 60 year old cast iron with a long history of joint weeps repaired one at a time."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "One large leak is moving between sections during the test"
+     },
+     {
+      "id": "inf-b",
+      "label": "All five section flow meters are misreading in the same direction"
+     },
+     {
+      "id": "inf-c",
+      "label": "Losses are diffuse background leakage across many ageing joints, and the passing valve further blurred the step results"
+     },
+     {
+      "id": "inf-d",
+      "label": "A single customer is drawing the excess equally from all five sections"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "Diffuse low level noise, a history of joint weeps, and small even steps fit many small losses rather than one large one. A single leak cannot appear in all five sections, there are no section meters in this design, and the passing valve explains why isolation was imperfect."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which program response best fits diffuse background leakage?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Keep step testing weekly until one section finally stands out"
+     },
+     {
+      "id": "nc-b",
+      "label": "Prioritise the DMA for mains renewal and pressure management rather than continued point leak hunting"
+     },
+     {
+      "id": "nc-c",
+      "label": "Excavate the section with the largest step, at 1.2 L/s"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "When losses are spread across ageing joints, renewal and pressure reduction address the whole loss at once. Repeated point hunting chases losses that are individually below repair value."
+   },
+   "clueText": {
+    "nc-a": "Weekly step tests would keep returning the same even pattern because the loss is not in one section.",
+    "nc-b": "The DMA enters the renewal priority list, and a pressure reduction trial lowers its night flow from 8.0 to 6.9 L/s.",
+    "nc-c": "Excavating the 1.2 L/s section targets a step within the range of all five sections, not a located leak."
+   }
+  },
+  {
+   "id": "c2wd-evidence100",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "An Ontario utility replaces a break prone main, and breaks on the parallel old main one street over immediately increase.",
+   "topicId": "break-pattern-analysis",
+   "level": "class1",
+   "assumptions": "Fictional renewal: a 250 mm main on King Street replaced a failing 200 mm main; the parallel 200 mm main on Queen Street, same age and material, was left in service. Flows were transferred to King at renewal. Two years of records follow.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Queen Street breaks rose from 1 per year before renewal to 5 per year in the two years after."
+    },
+    {
+     "id": "ev2",
+     "label": "Flow records show Queen Street velocities and daily flow reversals increased sharply after King Street took the primary feed role."
+    },
+    {
+     "id": "ev3",
+     "label": "Pressure logging on Queen shows new daily transient swings of 120 kPa tied to the changed feed pattern and pump starts that Queen never experienced before."
+    },
+    {
+     "id": "ev4",
+     "label": "Queen Street pipe samples show condition similar to the old King main, but no sudden corrosion change in two years."
+    },
+    {
+     "id": "ev5",
+     "label": "No construction, soil, or pressure zone boundary change occurred on Queen Street itself."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The renewal changed Queen Street hydraulics: new transients and reversals are fatiguing a main whose condition alone had produced only one break a year"
+     },
+     {
+      "id": "inf-b",
+      "label": "Queen Street pipe suddenly corroded faster after the King renewal"
+     },
+     {
+      "id": "inf-c",
+      "label": "Queen Street breaks were under reported before the renewal"
+     },
+     {
+      "id": "inf-d",
+      "label": "The Queen Street main is a different, weaker material than recorded"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Samples exclude a sudden corrosion change and records confirm the material. The measured new transient regime gives a dated mechanism that begins with the renewal, while under reporting would not coincide so exactly with the hydraulic change."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which renewal planning lesson must be recorded?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Always replace parallel mains at the same time regardless of condition"
+     },
+     {
+      "id": "nc-b",
+      "label": "Model the hydraulic effects of a renewal on parallel remaining mains, and include transient checks on those mains after any feed pattern change"
+     },
+     {
+      "id": "nc-c",
+      "label": "Slow the King Street renewal program until Queen Street settles"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "Feed changes redistribute transients, so parallel mains belong in the renewal hydraulic review. Blanket parallel replacement doubles capital where condition may be sound, and slowing renewals leaves known failing mains in the ground."
+   },
+   "clueText": {
+    "nc-a": "Queen condition samples are fair; its problem is the new load pattern, not universal parallel failure.",
+    "nc-b": "The renewal standard now requires a parallel main transient review, and Queen Street is added to the transient monitoring list.",
+    "nc-c": "Pausing renewals does not reduce the transients already imposed on Queen Street."
+   }
+  },
+  {
+   "id": "c2wd-evidence11",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A new Ontario DMA is commissioned and its first night flow is three times the design allowance, alarming the leakage team.",
+   "topicId": "leakage-commissioning",
+   "level": "class1",
+   "assumptions": "Fictional new DMA serving a subdivision still under construction. Boundary plan shows one feed. Inlet meter is new and tested.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "First month night flow averages 7.0 L/s against a design allowance of 2.3 L/s for occupied homes."
+    },
+    {
+     "id": "ev2",
+     "label": "Only 40 percent of homes are occupied, so legitimate night use should be well below the full allowance."
+    },
+    {
+     "id": "ev3",
+     "label": "A second feed from the neighbouring DMA, shown as a closed valve on the plan, is found open and unmetered during a site walk."
+    },
+    {
+     "id": "ev4",
+     "label": "Closing that feed under supervision drops night flow at the metered inlet to 2.0 L/s the same night."
+    },
+    {
+     "id": "ev5",
+     "label": "Builder standpipes inside the subdivision are metered and their night use is near zero."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "New subdivision mains leak heavily from the day they are laid"
+     },
+     {
+      "id": "inf-b",
+      "label": "Occupied homes in new subdivisions use three times the standard night allowance"
+     },
+     {
+      "id": "inf-c",
+      "label": "The new inlet meter was installed backwards and over registers"
+     },
+     {
+      "id": "inf-d",
+      "label": "The new DMA was being fed through a second open, unmetered connection, so its balance was never valid"
+     }
+    ],
+    "correctOptionId": "inf-d",
+    "explanation": "A new tested meter, metered builder use near zero, and low occupancy all argue against high legitimate use or heavy new main leakage. The open second feed explains the excess directly, and closing it normalises the balance the same night."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which commissioning control would have caught this before the first report?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "A larger design night use allowance for new subdivisions"
+     },
+     {
+      "id": "nc-b",
+      "label": "A second accuracy test of the new inlet meter"
+     },
+     {
+      "id": "nc-c",
+      "label": "A boundary integrity walk and drop test signed off at DMA commissioning, before night flow reporting begins"
+     }
+    ],
+    "correctOptionId": "nc-c",
+    "explanation": "Commissioning drop tests prove a district is discrete before its data is trusted. The meter already tested correctly, and a larger allowance would have hidden the open feed."
+   },
+   "clueText": {
+    "nc-a": "A larger allowance would have classified the cross feed inflow as normal use.",
+    "nc-b": "The inlet meter tested correctly, and the fault was an open boundary, not registration.",
+    "nc-c": "The commissioning checklist is updated, and the next new DMA passes its drop test before reporting starts."
+   }
+  },
+  {
+   "id": "c2wd-evidence12",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "An Ontario DMA shows night flow rising steadily at 0.3 L/s per month for a year, evenly, with no step changes and no single noisy street.",
+   "topicId": "leakage-pressure-management",
+   "level": "class1",
+   "assumptions": "Fictional DMA on 50 year old mains. Average zone pressure is 480 kPa, the highest in the system. Logger data at 15 minute intervals for 12 months.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Night flow rose from 5.0 L/s to 8.6 L/s over 12 months in a smooth trend with no weekly steps."
+    },
+    {
+     "id": "ev2",
+     "label": "Break frequency in the DMA rose from 2 to 7 breaks per year over the same period, spread across the district."
+    },
+    {
+     "id": "ev3",
+     "label": "A one month trial lowering average pressure from 480 kPa to 420 kPa cut night flow by 1.8 L/s with no pressure complaints."
+    },
+    {
+     "id": "ev4",
+     "label": "Customer use, service count, and meter accuracy are all verified unchanged over the year."
+    },
+    {
+     "id": "ev5",
+     "label": "Neighbouring DMAs at 380 kPa average pressure show flat night flow trends over the same year."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "High pressure is driving growing background leakage and break frequency across the ageing DMA, and pressure reduction is the effective control"
+     },
+     {
+      "id": "inf-b",
+      "label": "One slowly growing leak accounts for the whole rise and the break pattern"
+     },
+     {
+      "id": "inf-c",
+      "label": "A gradual inlet meter drift is inflating the trend"
+     },
+     {
+      "id": "inf-d",
+      "label": "Slow growth in unregistered garden suites is adding the night use"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "One leak would not spread breaks across the district or respond to pressure across the whole DMA. Meter accuracy and customer use are verified, and the pressure trial cut flow by 1.8 L/s, tying losses to the 480 kPa pressure that neighbouring districts do not share."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which long term action best holds the gain from the pressure trial?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Make the reduced pressure permanent with PRV control on the DMA feed and keep the DMA on enhanced break monitoring"
+     },
+     {
+      "id": "nc-b",
+      "label": "Return pressure to 480 kPa once the trial month ends"
+     },
+     {
+      "id": "nc-c",
+      "label": "Replace the DMA inlet meter annually to control drift"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "The trial proved the lower pressure is sustainable with no complaints. Making it permanent locks in the leakage and break benefit, while the verified meter needs no annual replacement."
+   },
+   "clueText": {
+    "nc-a": "Six months at 420 kPa hold night flow near 6.5 L/s and breaks fall to one in the period.",
+    "nc-b": "Returning to 480 kPa would restore the pressure driving both the leakage trend and the breaks.",
+    "nc-c": "Meter accuracy was verified, so replacement does not address pressure driven losses."
+   }
+  },
+  {
+   "id": "c2wd-evidence13",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Leak noise loggers in an Ontario DMA report a loud leak every night near a trunk main, but excavation at the loudest point finds a sound main.",
+   "topicId": "leakage-detection",
+   "level": "class1",
+   "assumptions": "Fictional DMA crossed by a 600 mm trunk main feeding the next pressure zone. Loggers are on distribution hydrants. Night work only.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Leak noise peaks between 01:00 and 03:00 and is loudest on hydrants closest to the trunk main crossing."
+    },
+    {
+     "id": "ev2",
+     "label": "Excavation at the correlation peak exposes the 200 mm distribution main in sound condition with no leak."
+    },
+    {
+     "id": "ev3",
+     "label": "A partially open trunk main washout valve is found discharging to a chamber drain during the same night hours on a flushing timer."
+    },
+    {
+     "id": "ev4",
+     "label": "When the washout timer is disabled for one night, logger noise across the DMA falls to background."
+    },
+    {
+     "id": "ev5",
+     "label": "DMA inlet night flow does not change on the quiet night, staying at its normal 2.6 L/s."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The distribution leak moved away from the excavation before crews arrived"
+     },
+     {
+      "id": "inf-b",
+      "label": "The noise source is the trunk washout discharging on a timer, transmitted through the network, not a distribution leak"
+     },
+     {
+      "id": "inf-c",
+      "label": "The loggers are all faulty and produce false noise on a nightly schedule"
+     },
+     {
+      "id": "inf-d",
+      "label": "A leak on the trunk main itself is losing DMA water at night"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Inlet flow never changed, so no DMA water was being lost. The noise follows the washout timer exactly and stops when it is disabled, and the excavated main is sound. Loggers correctly reported a real water noise."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record check should precede future excavations on logger evidence alone?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Excavate a second point at the next loudest hydrant"
+     },
+     {
+      "id": "nc-b",
+      "label": "Check trunk main appurtenance schedules, including washouts and air valves, against the noise hours before digging"
+     },
+     {
+      "id": "nc-c",
+      "label": "Replace all leak loggers in the DMA with a different model"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "Matching noise hours against scheduled discharges prevents digging on transmitted operational noise. The loggers performed correctly, so replacing them does not fix the interpretation error."
+   },
+   "clueText": {
+    "nc-a": "A second dig would repeat the same error, since the source is a scheduled discharge, not a buried leak.",
+    "nc-b": "The pre dig checklist is adopted, and the next two noise events are both matched to scheduled operations without excavation.",
+    "nc-c": "Loggers accurately reported real flowing water noise, so the fault is in interpretation, not the instruments."
+   }
+  },
+  {
+   "id": "c2wd-evidence14",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "An Ontario DMA contains a hospital with steady night use. Its night flow jumps by 2.0 L/s one night and stays there, and the hospital insists its use is unchanged.",
+   "topicId": "leakage-large-users",
+   "level": "class1",
+   "assumptions": "Fictional DMA. The hospital is separately metered with hourly logging. DMA night flow baseline 5.5 L/s including hospital use of about 2.5 L/s.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "DMA night flow rose from 5.5 L/s to 7.5 L/s on one night and held the new level for three weeks."
+    },
+    {
+     "id": "ev2",
+     "label": "The hospital hourly meter record shows its night draw unchanged at 2.5 L/s plus or minus 0.1 L/s across the step."
+    },
+    {
+     "id": "ev3",
+     "label": "No other large user in the DMA changed operations, and residential billed use is flat."
+    },
+    {
+     "id": "ev4",
+     "label": "A step test isolates a 1.9 L/s drop to the section containing a 30 year old watermain along the hospital rear laneway."
+    },
+    {
+     "id": "ev5",
+     "label": "Acoustic correlation on that section places leak noise 30 m from a hydrant, and the laneway asphalt shows a fresh shallow depression."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The hospital increased its night use but its meter failed to record the increase"
+     },
+     {
+      "id": "inf-b",
+      "label": "The DMA inlet meter stepped up by 2.0 L/s due to an air slug"
+     },
+     {
+      "id": "inf-c",
+      "label": "A new distribution leak on the laneway main accounts for the step, not a change in hospital use"
+     },
+     {
+      "id": "inf-d",
+      "label": "Seasonal cooling tower use at the hospital explains the sustained step"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "The hospital meter record directly contradicts a hospital increase, and its meter shows no step at all. The step test and correlation locate a matching 1.9 L/s loss on one section, with surface signs. An air slug cannot sustain a three week step."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which evidence should be shared with the hospital to close the dispute?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "The annual system water audit summary"
+     },
+     {
+      "id": "nc-b",
+      "label": "A photograph of the laneway depression alone"
+     },
+     {
+      "id": "nc-c",
+      "label": "The paired hospital meter trend and DMA step test record showing its draw flat while the laneway section carries the step"
+     }
+    ],
+    "correctOptionId": "nc-c",
+    "explanation": "Paired records answer the claim directly: hospital draw flat, DMA step located elsewhere. A photo alone does not quantify flows, and the annual audit is too coarse for a one night step."
+   },
+   "clueText": {
+    "nc-a": "The annual audit cannot resolve a single night step in one DMA.",
+    "nc-b": "A depression can have many causes, so the photo alone does not prove where the 2.0 L/s is going.",
+    "nc-c": "The hospital accepts the paired records, and repair of the laneway main returns DMA night flow to 5.6 L/s."
+   }
+  },
+  {
+   "id": "c2wd-evidence15",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Two Ontario DMAs are separated by a normally closed boundary valve. After a trunk repair, both DMAs report distorted night flows in opposite directions.",
+   "topicId": "leakage-boundary-integrity",
+   "level": "class1",
+   "assumptions": "Fictional DMAs A and B. A trunk repair required opening the A to B boundary valve for supply support. Repair finished two weeks ago.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "DMA A night flow fell from 5.0 L/s to 2.1 L/s after the repair, an apparent improvement with no leak repairs in A."
+    },
+    {
+     "id": "ev2",
+     "label": "DMA B night flow rose from 3.0 L/s to 5.8 L/s in the same week, with no breaks or new users in B."
+    },
+    {
+     "id": "ev3",
+     "label": "Combined A plus B night flow is 7.9 L/s, close to the 8.0 L/s combined figure before the repair."
+    },
+    {
+     "id": "ev4",
+     "label": "The boundary valve log sheet for the repair was never closed out, and field check finds the valve still open."
+    },
+    {
+     "id": "ev5",
+     "label": "Pressures in A and B, formerly 30 kPa apart, have equalised since the repair."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "DMA A fixed its leakage and DMA B developed a leak in the same week by coincidence"
+     },
+     {
+      "id": "inf-b",
+      "label": "Both DMA inlet meters drifted in opposite directions during the repair"
+     },
+     {
+      "id": "inf-c",
+      "label": "Customers moved consumption from DMA B to DMA A during the repair"
+     },
+     {
+      "id": "inf-d",
+      "label": "The boundary valve was left open after the repair, so A now feeds part of B and both district balances are invalid"
+     }
+    ],
+    "correctOptionId": "inf-d",
+    "explanation": "Opposite moves of equal size, a constant combined total, and equalised pressures all point to water crossing the boundary. The valve is found open with its log sheet unclosed. Simultaneous opposite meter drifts and a coincidental leak pair do not fit the combined total."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which closeout control best prevents this distortion after future repairs?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Require boundary valve restoration and sign off as a hold point before the repair job can be closed"
+     },
+     {
+      "id": "nc-b",
+      "label": "Recalculate both DMA allowances to match the new night flows"
+     },
+     {
+      "id": "nc-c",
+      "label": "Average the two DMA night flows for reporting until they settle"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "A hold point makes restoring district discreteness part of the repair itself. Recalculating allowances or averaging would institutionalise an invalid boundary."
+   },
+   "clueText": {
+    "nc-a": "With the valve closed and signed off, A returns to 4.9 L/s and B to 3.1 L/s on the next night.",
+    "nc-b": "New allowances would hide the open boundary and corrupt both leakage trends.",
+    "nc-c": "Averaging hides which district holds any real loss and delays restoring the boundary."
+   }
+  },
+  {
+   "id": "c2wd-evidence16",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "An Ontario DMA supplied through a PRV shows night flow that tracks inlet pressure hour by hour, rising and falling with it each night.",
+   "topicId": "leakage-pressure-management",
+   "level": "class1",
+   "assumptions": "Fictional PRV fed DMA, average night pressure varying between 350 and 500 kPa as the upstream zone cycles. Legitimate night use is small and steady.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "DMA night flow varies from 3.0 L/s at 350 kPa to 5.2 L/s at 500 kPa within single nights, following pressure with no time lag."
+    },
+    {
+     "id": "ev2",
+     "label": "Customer night use in the DMA is dominated by a few steady process users whose metered draw is flat all night."
+    },
+    {
+     "id": "ev3",
+     "label": "The same pressure flow relationship repeats every night for a month with no breaks reported."
+    },
+    {
+     "id": "ev4",
+     "label": "A fixed outlet PRV trial holding 360 kPa for one week holds night flow near 3.1 L/s every night."
+    },
+    {
+     "id": "ev5",
+     "label": "Acoustic surveys find widespread low level joint noise that gets louder as pressure rises."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Background leakage in this DMA is strongly pressure dependent, so pressure control, not point leak hunting, is the primary remedy"
+     },
+     {
+      "id": "inf-b",
+      "label": "A large leak opens and closes in step with pressure each night"
+     },
+     {
+      "id": "inf-c",
+      "label": "Customer process users vary their draw in step with pressure"
+     },
+     {
+      "id": "inf-d",
+      "label": "The inlet flow meter reads high whenever pressure is high"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Metered process use is flat, so customers do not explain the swing. A single leak cycling nightly for a month with no break surfacing is implausible, while joint noise rising with pressure and the fixed pressure trial holding flow low both confirm pressure dependent background loss."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which PRV control mode best fits this DMA?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Fixed high outlet pressure to keep fire flow margins at all hours"
+     },
+     {
+      "id": "nc-b",
+      "label": "Flow modulated or time based pressure control that holds the lowest adequate night pressure"
+     },
+     {
+      "id": "nc-c",
+      "label": "Removing the PRV so the DMA follows upstream pressure"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "Night pressure can be lowered when demand is lowest, cutting the pressure dependent loss. Removing control or fixing a high outlet preserves the loss the trial just measured."
+   },
+   "clueText": {
+    "nc-a": "A fixed high outlet keeps night pressure near the top of the range that produced 5.2 L/s losses.",
+    "nc-b": "Under modulated control, average night flow falls to 3.2 L/s with minimum service pressure maintained.",
+    "nc-c": "Without the PRV the DMA would follow upstream swings up to 500 kPa, the worst condition measured."
+   }
+  },
+  {
+   "id": "c2wd-evidence17",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "An Ontario utility compares two similar DMAs. DMA One loses 8 L per service per hour at night. DMA Two loses 2 L per service per hour. Both have similar age mains.",
+   "topicId": "leakage-benchmarking",
+   "level": "class1",
+   "assumptions": "Fictional paired DMAs, each about 2,000 services, similar mains age and length. Pressures differ: DMA One averages 520 kPa, DMA Two averages 340 kPa.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Per service night loss is four times higher in DMA One than DMA Two, with similar mains condition scores."
+    },
+    {
+     "id": "ev2",
+     "label": "DMA One average pressure is 520 kPa against 340 kPa in DMA Two, the largest pressure difference in the system."
+    },
+    {
+     "id": "ev3",
+     "label": "Break records per 100 km are similar in the two DMAs over five years."
+    },
+    {
+     "id": "ev4",
+     "label": "Soil type, service material, and customer profiles are closely matched between the DMAs."
+    },
+    {
+     "id": "ev5",
+     "label": "A pressure reduction pilot in one subzone of DMA One cut its per service night loss by 40 percent."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "DMA One mains are in far worse condition than DMA Two mains"
+     },
+     {
+      "id": "inf-b",
+      "label": "The loss difference is driven mainly by operating pressure, not by mains condition"
+     },
+     {
+      "id": "inf-c",
+      "label": "DMA One customers waste far more water at night than DMA Two customers"
+     },
+     {
+      "id": "inf-d",
+      "label": "DMA One has a single very large undetected leak"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Condition scores and break rates are matched, so condition does not explain a fourfold difference. A single leak would not respond across a whole subzone pilot, while the pilot cut losses 40 percent by pressure alone, matching the pressure gap between the districts."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which system wide lesson should the utility record?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Renew DMA One mains before any other district regardless of pressure"
+     },
+     {
+      "id": "nc-b",
+      "label": "Raise DMA Two pressure to match DMA One for consistency"
+     },
+     {
+      "id": "nc-c",
+      "label": "Set district pressure targets as a leakage control, since per service losses track pressure where condition is similar"
+     }
+    ],
+    "correctOptionId": "nc-c",
+    "explanation": "The paired comparison isolates pressure as the variable that differs and responds. Renewal may still be needed in time, but the evidence ranks pressure control first, and raising Two would raise its losses."
+   },
+   "clueText": {
+    "nc-a": "Renewing first ignores the pilot result showing 40 percent loss reduction from pressure alone.",
+    "nc-b": "Raising DMA Two pressure would be expected to raise its per service losses toward DMA One levels.",
+    "nc-c": "District pressure targets are adopted, and DMA One is scheduled for PRV control before any renewal decision."
+   }
+  },
+  {
+   "id": "c2wd-evidence18",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A step test in an Ontario DMA is planned for Tuesday night, but a watermain break in the next DMA on Monday forces a boundary change that nobody records.",
+   "topicId": "leakage-step-testing",
+   "level": "class1",
+   "assumptions": "Fictional DMAs C and D. To support D during its break repair, a C to D boundary valve was opened Monday and left open. The C step test ran Tuesday as scheduled.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Tuesday step test results for DMA C are erratic: closing C sections sometimes raises inlet flow instead of lowering it."
+    },
+    {
+     "id": "ev2",
+     "label": "DMA C pressure during the test is 25 kPa higher than its normal night pressure."
+    },
+    {
+     "id": "ev3",
+     "label": "DMA D, under repair, shows supply holding up better than expected for a district on one feed."
+    },
+    {
+     "id": "ev4",
+     "label": "The C to D boundary valve is found open on Wednesday, with no entry in the C test record."
+    },
+    {
+     "id": "ev5",
+     "label": "Repeating the C step test the following week with the boundary confirmed closed gives clean, repeatable section drops."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "DMA C has several leaks that open and close randomly during tests"
+     },
+     {
+      "id": "inf-b",
+      "label": "The Tuesday test crew operated the wrong valves throughout"
+     },
+     {
+      "id": "inf-c",
+      "label": "The Tuesday test is invalid because DMA C was not discrete: the open boundary to D let flows shift during section closures"
+     },
+     {
+      "id": "inf-d",
+      "label": "The inlet logger malfunctioned on Tuesday night only"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "Higher than normal pressure, flow rising on closures, and D holding up all fit an open inter district feed. The valve is found open, and the repeat test with a confirmed boundary is clean, which a logger fault or random leaks would not produce so neatly."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which test protocol change follows from this case?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Require a same night boundary verification, signed by the test lead, before any step test data is accepted"
+     },
+     {
+      "id": "nc-b",
+      "label": "Repeat every step test three times and average the results"
+     },
+     {
+      "id": "nc-c",
+      "label": "Run step tests only during the day when crews are larger"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Boundary verification is the control that failed. Averaging invalid data does not make it valid, and daytime tests are distorted by customer demand."
+   },
+   "clueText": {
+    "nc-a": "The protocol is adopted, and the next four step tests all carry signed boundary verifications with clean results.",
+    "nc-b": "Averaging cannot correct data collected while the district was open to another DMA.",
+    "nc-c": "Daytime demand swamps night flow signals, which is why step tests are night work."
+   }
+  },
+  {
+   "id": "c2wd-evidence19",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "An Ontario PRV station controls well all summer but loses control on the coldest nights, when downstream pressure climbs toward upstream pressure.",
+   "topicId": "pressure-prv-faults",
+   "level": "class1",
+   "assumptions": "Fictional PRV station in an unheated chamber. The pilot sensing line runs exposed along the chamber wall. A sister station with an insulated, heat traced sensing line serves the next zone. Setpoint is 360 kPa, upstream is 610 kPa.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Downstream pressure holds 360 kPa plus or minus 12 kPa from April to November."
+    },
+    {
+     "id": "ev2",
+     "label": "On nights below minus 15 C, downstream pressure climbs over hours to 540 kPa and stays there until morning thaw."
+    },
+    {
+     "id": "ev3",
+     "label": "The sister station, with its sensing line insulated and heat traced, holds setpoint through the same cold nights."
+    },
+    {
+     "id": "ev4",
+     "label": "Inspection finds the sensing line uninsulated where it leaves the chamber, with ice confirmed in a drained test section after a cold night."
+    },
+    {
+     "id": "ev5",
+     "label": "The main valve and pilot test perfectly in a warm workshop test the following week."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The PRV main valve wears out every winter and recovers every spring"
+     },
+     {
+      "id": "inf-b",
+      "label": "Upstream pressure rises only on cold nights and overwhelms the valve"
+     },
+     {
+      "id": "inf-c",
+      "label": "Downstream customers use no water on cold nights, causing the rise"
+     },
+     {
+      "id": "inf-d",
+      "label": "Ice in the exposed pilot sensing line blinds the PRV on cold nights, so the valve drifts open toward upstream pressure"
+     }
+    ],
+    "correctOptionId": "inf-d",
+    "explanation": "Workshop tests clear the valve, and wear cannot heal each spring. The sister station on the same upstream supply holds setpoint, excluding an upstream cause, while ice is physically confirmed in the sensing line that tells the pilot what downstream pressure is."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which station program fix prevents the winter loss of control?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Replace the PRV main valve every autumn"
+     },
+     {
+      "id": "nc-b",
+      "label": "Insulate and heat trace PRV sensing lines at unheated stations and add them to the fall cold weather checklist"
+     },
+     {
+      "id": "nc-c",
+      "label": "Raise the setpoint in winter to match the higher pressures"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "Protecting the sensing line preserves control in the conditions that disable it. Annual valve replacement discards a valve that tests perfectly, and raising the setpoint accepts the overpressure that damages the zone."
+   },
+   "clueText": {
+    "nc-a": "The valve passed a full workshop test, so replacement does not address ice in its sensing line.",
+    "nc-b": "With the sensing line insulated and traced, the station holds setpoint through the next cold snap at minus 22 C.",
+    "nc-c": "A higher winter setpoint would keep the zone at the excessive pressures customers experienced."
+   }
+  }
+ ],
+ "missions": [
+  {
+   "id": "c2wd-mission61",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 61: The Tank Level Band Change Shift",
+   "tasks": [
+    {
+     "taskId": "c2wd-process40",
+     "revision": "r1",
+     "occurrenceId": "m61-t1"
+    },
+    {
+     "taskId": "c2wd-evidence01",
+     "revision": "r1",
+     "occurrenceId": "m61-t2"
+    }
+   ]
+  },
+  {
+   "id": "c2wd-mission62",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 62: The Leakage Step Testing Shift",
+   "tasks": [
+    {
+     "taskId": "c2wd-evidence02",
+     "revision": "r1",
+     "occurrenceId": "m62-t1"
+    },
+    {
+     "taskId": "c2wd-process41",
+     "revision": "r1",
+     "occurrenceId": "m62-t2"
+    },
+    {
+     "taskId": "c2wd-process42",
+     "revision": "r1",
+     "occurrenceId": "m62-t3"
+    }
+   ]
+  },
+  {
+   "id": "c2wd-mission63",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 63: The Tank Passive Mixing Shift",
+   "tasks": [
+    {
+     "taskId": "c2wd-process43",
+     "revision": "r1",
+     "occurrenceId": "m63-t1"
+    },
+    {
+     "taskId": "c2wd-evidence03",
+     "revision": "r1",
+     "occurrenceId": "m63-t2"
+    },
+    {
+     "taskId": "c2wd-process44",
+     "revision": "r1",
+     "occurrenceId": "m63-t3"
+    },
+    {
+     "taskId": "c2wd-process45",
+     "revision": "r1",
+     "occurrenceId": "m63-t4"
+    }
+   ]
+  },
+  {
+   "id": "c2wd-mission64",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 64: The Leakage Boundary Integrity Shift",
+   "tasks": [
+    {
+     "taskId": "c2wd-evidence04",
+     "revision": "r1",
+     "occurrenceId": "m64-t1"
+    },
+    {
+     "taskId": "c2wd-process46",
+     "revision": "r1",
+     "occurrenceId": "m64-t2"
+    }
+   ]
+  },
+  {
+   "id": "c2wd-mission65",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 65: The Udf Customer Notice Shift",
+   "tasks": [
+    {
+     "taskId": "c2wd-process47",
+     "revision": "r1",
+     "occurrenceId": "m65-t1"
+    },
+    {
+     "taskId": "c2wd-evidence05",
+     "revision": "r1",
+     "occurrenceId": "m65-t2"
+    },
+    {
+     "taskId": "c2wd-process48",
+     "revision": "r1",
+     "occurrenceId": "m65-t3"
+    }
+   ]
+  },
+  {
+   "id": "c2wd-mission66",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 66: The Metering Water Audit Shift",
+   "tasks": [
+    {
+     "taskId": "c2wd-evidence06",
+     "revision": "r1",
+     "occurrenceId": "m66-t1"
+    },
+    {
+     "taskId": "c2wd-process49",
+     "revision": "r1",
+     "occurrenceId": "m66-t2"
+    },
+    {
+     "taskId": "c2wd-process50",
+     "revision": "r1",
+     "occurrenceId": "m66-t3"
+    },
+    {
+     "taskId": "c2wd-process51",
+     "revision": "r1",
+     "occurrenceId": "m66-t4"
+    }
+   ]
+  },
+  {
+   "id": "c2wd-mission67",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 67: The Udf Water Disposal Shift",
+   "tasks": [
+    {
+     "taskId": "c2wd-process52",
+     "revision": "r1",
+     "occurrenceId": "m67-t1"
+    },
+    {
+     "taskId": "c2wd-evidence07",
+     "revision": "r1",
+     "occurrenceId": "m67-t2"
+    }
+   ]
+  },
+  {
+   "id": "c2wd-mission68",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 68: The Leakage Detection Shift",
+   "tasks": [
+    {
+     "taskId": "c2wd-evidence08",
+     "revision": "r1",
+     "occurrenceId": "m68-t1"
+    },
+    {
+     "taskId": "c2wd-process53",
+     "revision": "r1",
+     "occurrenceId": "m68-t2"
+    },
+    {
+     "taskId": "c2wd-process54",
+     "revision": "r1",
+     "occurrenceId": "m68-t3"
+    }
+   ]
+  },
+  {
+   "id": "c2wd-mission69",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 69: The Large Meter Testing Program Shift",
+   "tasks": [
+    {
+     "taskId": "c2wd-process55",
+     "revision": "r1",
+     "occurrenceId": "m69-t1"
+    },
+    {
+     "taskId": "c2wd-evidence09",
+     "revision": "r1",
+     "occurrenceId": "m69-t2"
+    },
+    {
+     "taskId": "c2wd-process56",
+     "revision": "r1",
+     "occurrenceId": "m69-t3"
+    },
+    {
+     "taskId": "c2wd-process57",
+     "revision": "r1",
+     "occurrenceId": "m69-t4"
+    }
+   ]
+  },
+  {
+   "id": "c2wd-mission70",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 70: The Leakage Step Testing Shift",
+   "tasks": [
+    {
+     "taskId": "c2wd-evidence10",
+     "revision": "r1",
+     "occurrenceId": "m70-t1"
+    },
+    {
+     "taskId": "c2wd-process58",
+     "revision": "r1",
+     "occurrenceId": "m70-t2"
+    }
+   ]
+  },
+  {
+   "id": "c2wd-mission71",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 71: The Large Meter Consumption Drop Shift",
+   "tasks": [
+    {
+     "taskId": "c2wd-process59",
+     "revision": "r1",
+     "occurrenceId": "m71-t1"
+    },
+    {
+     "taskId": "c2wd-evidence100",
+     "revision": "r1",
+     "occurrenceId": "m71-t2"
+    },
+    {
+     "taskId": "c2wd-process60",
+     "revision": "r1",
+     "occurrenceId": "m71-t3"
+    }
+   ]
+  },
+  {
+   "id": "c2wd-mission72",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 72: The Leakage Commissioning Shift",
+   "tasks": [
+    {
+     "taskId": "c2wd-evidence11",
+     "revision": "r1",
+     "occurrenceId": "m72-t1"
+    },
+    {
+     "taskId": "c2wd-process61",
+     "revision": "r1",
+     "occurrenceId": "m72-t2"
+    },
+    {
+     "taskId": "c2wd-process62",
+     "revision": "r1",
+     "occurrenceId": "m72-t3"
+    },
+    {
+     "taskId": "c2wd-process63",
+     "revision": "r1",
+     "occurrenceId": "m72-t4"
+    }
+   ]
+  },
+  {
+   "id": "c2wd-mission73",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 73: The Valve Replacement Shift",
+   "tasks": [
+    {
+     "taskId": "c2wd-process64",
+     "revision": "r1",
+     "occurrenceId": "m73-t1"
+    },
+    {
+     "taskId": "c2wd-evidence12",
+     "revision": "r1",
+     "occurrenceId": "m73-t2"
+    }
+   ]
+  },
+  {
+   "id": "c2wd-mission74",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 74: The Leakage Detection Shift",
+   "tasks": [
+    {
+     "taskId": "c2wd-evidence13",
+     "revision": "r1",
+     "occurrenceId": "m74-t1"
+    },
+    {
+     "taskId": "c2wd-process65",
+     "revision": "r1",
+     "occurrenceId": "m74-t2"
+    },
+    {
+     "taskId": "c2wd-process66",
+     "revision": "r1",
+     "occurrenceId": "m74-t3"
+    }
+   ]
+  },
+  {
+   "id": "c2wd-mission75",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 75: The Air Valve Installation Shift",
+   "tasks": [
+    {
+     "taskId": "c2wd-process67",
+     "revision": "r1",
+     "occurrenceId": "m75-t1"
+    },
+    {
+     "taskId": "c2wd-evidence14",
+     "revision": "r1",
+     "occurrenceId": "m75-t2"
+    },
+    {
+     "taskId": "c2wd-process68",
+     "revision": "r1",
+     "occurrenceId": "m75-t3"
+    },
+    {
+     "taskId": "c2wd-process69",
+     "revision": "r1",
+     "occurrenceId": "m75-t4"
+    }
+   ]
+  },
+  {
+   "id": "c2wd-mission76",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 76: The Leakage Boundary Integrity Shift",
+   "tasks": [
+    {
+     "taskId": "c2wd-evidence15",
+     "revision": "r1",
+     "occurrenceId": "m76-t1"
+    },
+    {
+     "taskId": "c2wd-process70",
+     "revision": "r1",
+     "occurrenceId": "m76-t2"
+    }
+   ]
+  },
+  {
+   "id": "c2wd-mission77",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 77: The Renewal Prioritization Shift",
+   "tasks": [
+    {
+     "taskId": "c2wd-process71",
+     "revision": "r1",
+     "occurrenceId": "m77-t1"
+    },
+    {
+     "taskId": "c2wd-evidence16",
+     "revision": "r1",
+     "occurrenceId": "m77-t2"
+    },
+    {
+     "taskId": "c2wd-process72",
+     "revision": "r1",
+     "occurrenceId": "m77-t3"
+    }
+   ]
+  },
+  {
+   "id": "c2wd-mission78",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 78: The Leakage Benchmarking Shift",
+   "tasks": [
+    {
+     "taskId": "c2wd-evidence17",
+     "revision": "r1",
+     "occurrenceId": "m78-t1"
+    },
+    {
+     "taskId": "c2wd-process73",
+     "revision": "r1",
+     "occurrenceId": "m78-t2"
+    },
+    {
+     "taskId": "c2wd-process74",
+     "revision": "r1",
+     "occurrenceId": "m78-t3"
+    },
+    {
+     "taskId": "c2wd-process75",
+     "revision": "r1",
+     "occurrenceId": "m78-t4"
+    }
+   ]
+  },
+  {
+   "id": "c2wd-mission79",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 79: The Nitrification Nitrite Response Shift",
+   "tasks": [
+    {
+     "taskId": "c2wd-process76",
+     "revision": "r1",
+     "occurrenceId": "m79-t1"
+    },
+    {
+     "taskId": "c2wd-evidence18",
+     "revision": "r1",
+     "occurrenceId": "m79-t2"
+    }
+   ]
+  },
+  {
+   "id": "c2wd-mission80",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 80: The Pressure Prv Faults Shift",
+   "tasks": [
+    {
+     "taskId": "c2wd-evidence19",
+     "revision": "r1",
+     "occurrenceId": "m80-t1"
+    },
+    {
+     "taskId": "c2wd-process77",
+     "revision": "r1",
+     "occurrenceId": "m80-t2"
+    },
+    {
+     "taskId": "c2wd-process78",
+     "revision": "r1",
+     "occurrenceId": "m80-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Distribution system operation, hydraulics and maintenance chapters"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "427ee48266dfce387105b51dcca45795af74b30e4b5e2ac14e010adfc0a12d8f",
+  "taskReceipts": [
+   {
+    "taskId": "c2wd-process40",
+    "revision": "r1",
+    "sha256": "ca3e04e6e0b317dd9aecab5b2f67086f17634027f55d4d399c99b9ba3d29e0c6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process41",
+    "revision": "r1",
+    "sha256": "fff477e1b649c9792cbd05e97f8d430c923e19af75c5ad7c754748cd56e8f6d8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process42",
+    "revision": "r1",
+    "sha256": "39654f597565d8932d975c06d4db7f3f3ac15a763ac76c309c62ca0a6b11c8db",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process43",
+    "revision": "r1",
+    "sha256": "93cc0f4c1d4daf3b4ae907c6346a44227f320551afb095961ff3ea9f2afbc0a3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process44",
+    "revision": "r1",
+    "sha256": "51c3387996f8f24d76d7d0a5d7a0d84d72c675f4046d832eac2467b2357fa43c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process45",
+    "revision": "r1",
+    "sha256": "2045c7ee1b2bba3552bf66aabfe998a1b29f530f707d8a1cf3ffacd122795ee9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process46",
+    "revision": "r1",
+    "sha256": "a636e207a46fe56e7df0da7df2a73cc39d5dc57900ebd893a88d900019ffaee3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process47",
+    "revision": "r1",
+    "sha256": "40e1a9c76f07c9d44808dd9a789962c68884300f05367f6b5f6e426734400783",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process48",
+    "revision": "r1",
+    "sha256": "b2d30e2b6fe140038cdb7d12cf52ec339712c77a7cc22e605a1a1327f862915d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process49",
+    "revision": "r1",
+    "sha256": "2eea245bdf6f0df12e44692479a09fd0d16be16e8089cc3a656cf7b3a70bbc08",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process50",
+    "revision": "r1",
+    "sha256": "f5f601981b66a3180bb1cd9049bd1cc977887b3a7fbd070eb6fb6221361e9acb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process51",
+    "revision": "r1",
+    "sha256": "b946de88056b07668960e2f6ee8cd34540ac29959942ec872c9b2b3cef8e10fc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process52",
+    "revision": "r1",
+    "sha256": "1fd290cb93f87ae8a6d8d95ea71f280c86814cae4f0abb11f8721080d2803a98",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process53",
+    "revision": "r1",
+    "sha256": "db448067841c182f0e6d294a9253f3e417915286c8eb9de7f964b1916acee644",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process54",
+    "revision": "r1",
+    "sha256": "b5727ada32c9d1b34ef2728a6876716895f9f3b3b5b8b4432209aafdec04eace",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process55",
+    "revision": "r1",
+    "sha256": "3c0c02e1ed0a6f2b05ec153038f82e4766f0b3cdeec8ce4554b5851b316a6f21",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process56",
+    "revision": "r1",
+    "sha256": "9c96a1b624fcfb72f13eba4cb75df5590f264c3919975d04faff54b4ca9d5b7e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process57",
+    "revision": "r1",
+    "sha256": "f863cc468af997b1fdd10cd0222ee3367ca640a77dbf0f0f2dce1579a6ec50b5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process58",
+    "revision": "r1",
+    "sha256": "f47d4f3ccde59e1e75d75bc6348d639fa3883a7ef22e87b00080acb25ea9025d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process59",
+    "revision": "r1",
+    "sha256": "46747786fba97c546af33d6bcbbfef25250c230cf0e11bc746204b402ed2d975",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process60",
+    "revision": "r1",
+    "sha256": "b96abd85b02dbd6bdbb4f938ad98ab6ac62b36d37e9049aa044c3bccd4aabad9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process61",
+    "revision": "r1",
+    "sha256": "3560d5ea0b9697a5e8e6c0b84e7e9a7c2d2e9f8392fe3fc318209e1b007f684b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process62",
+    "revision": "r1",
+    "sha256": "4f458d3478d1d45610ada3a7c2487a881b9c0268e2b92e04d416d19777f02232",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process63",
+    "revision": "r1",
+    "sha256": "a59b80d34349933b63135df7edf2e42dc788f196d024adad185b03061da37c15",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process64",
+    "revision": "r1",
+    "sha256": "5e84d089d792eb986901e8bb4d4165b0fc15af329ae8ee4e9d3fc91330af10da",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process65",
+    "revision": "r1",
+    "sha256": "88231f0b4cece6ab33e250e725454bc964ab456694f622248fb13f2acc2f4f84",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process66",
+    "revision": "r1",
+    "sha256": "089504c7822241526f6c771cca8eeb454fd719e93be50a72bc07fdb045fe6ae6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process67",
+    "revision": "r1",
+    "sha256": "e514e52b963c78214d7d06a34bf19f25f168bcb525526d8d88d86c2430f241c9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process68",
+    "revision": "r1",
+    "sha256": "c7d6883de6192412a3385eac3736b5d2712bf5d5200e36e4ecb8ad52d9335f7a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process69",
+    "revision": "r1",
+    "sha256": "cda79db10b80aad5fd0fbb13336a6e02e75db8160a25cb79953a42ad3ac53e3d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process70",
+    "revision": "r1",
+    "sha256": "0e5a541bb9332f7d32930709dc7cb77b5db1da34fc52a676ff443b07108de0d9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process71",
+    "revision": "r1",
+    "sha256": "fa5566e3a5f0348589c86675ae70f9b7dc43980952cb0e4302ee1d2c4bf3b9c9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process72",
+    "revision": "r1",
+    "sha256": "0e2529d4286999a58a41a45cfb52c2abb7170d793ef62deb48a600c617d0dba8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process73",
+    "revision": "r1",
+    "sha256": "2aacaf747eae6a10a832f3d3fddc7006a0b70acd7e45d370e1217da80ac0a343",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process74",
+    "revision": "r1",
+    "sha256": "419384dff1f3adc5dd1fc05492f1f56291fbfc28df1fb3816615f3a61cb2f9d5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process75",
+    "revision": "r1",
+    "sha256": "b2eaf89c51715b245b97d520316b8278afc775c871f8fcb29eee51ff7cfbc3ce",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process76",
+    "revision": "r1",
+    "sha256": "6afe249367a13d38a8cccd4c1e4328d1962fa3ae32dd9c9361077bccf140b54b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process77",
+    "revision": "r1",
+    "sha256": "021584480259d7cbf5e510b94897db35974d3708365ca437f040fc50d8329a85",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process78",
+    "revision": "r1",
+    "sha256": "0c03a13160228a48902fe57c30e1758fec4a4eecbaf69c7e3f1e15c0143625ab",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process79",
+    "revision": "r1",
+    "sha256": "73711e475f216ba790f81a44358bf3312de0fbac9ba210bb609024bcdf2f5597",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process80",
+    "revision": "r1",
+    "sha256": "0acf4a478b5410d92ea8e6eb941f2e63733ee5d7caf0a438033faf8757c01ce4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process81",
+    "revision": "r1",
+    "sha256": "0dc4f2a567b2b295c6000d23fa73376d4926c79df3093efe8ffe669608d317de",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process82",
+    "revision": "r1",
+    "sha256": "3d7ba801021470140f7e02f1f015243da87687c8dca5d533568d016ab1d66088",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process83",
+    "revision": "r1",
+    "sha256": "e59cbdf4137b6160989a182352d514623a90aaf66d91cc67bacc96fef3e0e9ad",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process84",
+    "revision": "r1",
+    "sha256": "8e4c514f1495a28b81c3d4735460efa9309942af22006002ae2dc437aa0b689f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process85",
+    "revision": "r1",
+    "sha256": "3e40fc195259fa0f5e56a7b69829d484b957126b346d78ec1090c96672bdc1f0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process86",
+    "revision": "r1",
+    "sha256": "0f5fc931e37686fafb12597f1ff191c0db5da2a29c6ab770963657268f1d423d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process87",
+    "revision": "r1",
+    "sha256": "9b02af3693bad5f6e67f798c680ac6ac6ee85f9cf1282e93d5bbabb8e3cbf252",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process88",
+    "revision": "r1",
+    "sha256": "784e8cca050e9ff064ed3e66c8761b4cde4ed4732ef305c9ae71d8ba79685404",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process89",
+    "revision": "r1",
+    "sha256": "c0a9858a5bf342994cb380b967ae46a4e55650b5c043d4c68d27f74ada6b91db",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process90",
+    "revision": "r1",
+    "sha256": "b04bee3b3a27c8743abee520f2bad91eb6da6d6b71c82aa3c2654f16a8c02029",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process91",
+    "revision": "r1",
+    "sha256": "5393321da9d422d30642b277738910b7f4168093e465ec85071117bc3fe85ee1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process92",
+    "revision": "r1",
+    "sha256": "e119f79c59a9a76d2b4e0e9dab5b9fba36d9fac8da32c9389114764ec844c9d2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process93",
+    "revision": "r1",
+    "sha256": "b128dd6b6e35bd0aa7ee5bbc042d402606f9f467d0b29a1443bb843636b6fd05",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process94",
+    "revision": "r1",
+    "sha256": "e5c8eb5a806d33139b944d4a58d54747ed1a8aec383f693d0b1d6fc3be3d1b2b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process95",
+    "revision": "r1",
+    "sha256": "169ef6b2b28dc7b0fbb72a031ad439ba6567fd51b274dbc917600e3420e14881",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process96",
+    "revision": "r1",
+    "sha256": "e05c2c12be41560eb8551593d50e57f54d08b3fb9079de9bef2923fd8128bf81",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process97",
+    "revision": "r1",
+    "sha256": "fdc29f46c62320f3aefed66c5c09ff4a761306a81941c5c822c326fe536eeed1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process98",
+    "revision": "r1",
+    "sha256": "0794f78e73982cebac306f306f131e7281e87ced37b5531f9f5ab48730218298",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-process99",
+    "revision": "r1",
+    "sha256": "d14cd28a612ea7985b3046db8c653219d30536b91a491caea0802de39e2062eb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-evidence01",
+    "revision": "r1",
+    "sha256": "3e5f6e69780ad2adf4d26991bebde7c5f70a6a622722053aac5c24fe37ef5ddf",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-evidence02",
+    "revision": "r1",
+    "sha256": "3dd635e963dc742eef62ff3230f20f92900421096459d6d35c91e3424fed37ef",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-evidence03",
+    "revision": "r1",
+    "sha256": "c166dd1c994f9144712d1abfe70f93cbc84af31cef3bf18095c22932f9643202",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-evidence04",
+    "revision": "r1",
+    "sha256": "78a7e63f36dd36ac109d299f0b0ffa7d8f6ec9c3893fb34bfd7e75a30ff7db43",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-evidence05",
+    "revision": "r1",
+    "sha256": "0999528b03d55f7f9a0c216e10b049fa9ded8d99fb8313af82baf02054371d25",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-evidence06",
+    "revision": "r1",
+    "sha256": "24d09a0fa9b844536a9fa3aa1db1e417cf587e7d3369769483689ced1710875e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-evidence07",
+    "revision": "r1",
+    "sha256": "6067d9b40370528f3b13048d5d74c8e5545a2d2c4fbfe4cc17c2874b0fd0f4b8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-evidence08",
+    "revision": "r1",
+    "sha256": "6002cf7402d56fe25ce8a393525ebb522a8d99d220a19fbd269803ada6302824",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-evidence09",
+    "revision": "r1",
+    "sha256": "11c721e1b202dc5968887a4fe0bcd999db15285e0425d50a4f91ffcf20be449f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-evidence10",
+    "revision": "r1",
+    "sha256": "090643b63ad4cba8a125930c1061c58cfa53b831d618007c5ff91c794aece7bc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-evidence100",
+    "revision": "r1",
+    "sha256": "0e29e1239da35f232d4e1ad2d8f84cb07f006483808767a0994aa8155f256d5e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-evidence11",
+    "revision": "r1",
+    "sha256": "5196b96557345b884656b752834b6f91877d1ca15849a90a4c326cad977a9746",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-evidence12",
+    "revision": "r1",
+    "sha256": "26ecd65516f358cb8587906cb7c49bc2feb01cc48e1726c82dfcf1123e62dfe9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-evidence13",
+    "revision": "r1",
+    "sha256": "1f0057834b238f3ceb3518906a0db9a813277b6b833868dd007fe84ed20e0637",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-evidence14",
+    "revision": "r1",
+    "sha256": "49f2ded1cee3643f3000cfedfd2262d70f6c029717304cb4c25848c7dd9e2d36",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-evidence15",
+    "revision": "r1",
+    "sha256": "577c5e3429b1f506a8a8dbb0611651583939a5de1bcd70a66991eb1f3dee57a3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-evidence16",
+    "revision": "r1",
+    "sha256": "809a0610bf98f61bcfc1c045d9ea85fc7abc82dc998c90e5902e4703440101bc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-evidence17",
+    "revision": "r1",
+    "sha256": "0197614448f7826c8815945273087b4be5f212e47f2496ac649b39424fbc6a8c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-evidence18",
+    "revision": "r1",
+    "sha256": "20a3a946489096f417a1ab209e69d8a95bcbc72126385f612524f07f81d5daff",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-evidence19",
+    "revision": "r1",
+    "sha256": "aa505e18747c409c35c3fe36d6ef86348c64be2bb17e6c7cdd02ed2d11707736",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "c2wd-mission61",
+    "revision": "r1",
+    "sha256": "a88cbbfb87eb06ac2a02cae074b6240c828eb1a131fcd6ca5f770025f6555957"
+   },
+   {
+    "missionId": "c2wd-mission62",
+    "revision": "r1",
+    "sha256": "671e910b41bf52111155abf57cac64846f5635631c8da48cd08dbc01070c48ac"
+   },
+   {
+    "missionId": "c2wd-mission63",
+    "revision": "r1",
+    "sha256": "5174602a4eb29eeb6b54389a1a64b4252309c12084b1d701431a21b346c3f013"
+   },
+   {
+    "missionId": "c2wd-mission64",
+    "revision": "r1",
+    "sha256": "af886f3665c2367951c929cb98d5270a1d0139dc9adee6e18096c6b2f39f4c59"
+   },
+   {
+    "missionId": "c2wd-mission65",
+    "revision": "r1",
+    "sha256": "c46e90d0d2f4117f3d5d5317568f2e6d5fbff393f47738525fa141064a6e76cd"
+   },
+   {
+    "missionId": "c2wd-mission66",
+    "revision": "r1",
+    "sha256": "38e85fa02835f6503b3941680f8577087258e8aabfefda77728c948293f78b3c"
+   },
+   {
+    "missionId": "c2wd-mission67",
+    "revision": "r1",
+    "sha256": "0d107bc75f04f7c478d1df0a2d8a8360fd621cfab2867e27d3a0d12a06755fa7"
+   },
+   {
+    "missionId": "c2wd-mission68",
+    "revision": "r1",
+    "sha256": "d1ffdd454a622881fd253c27b3086c488eb6e3cea66c1cbbdd59dc7e4c6f2350"
+   },
+   {
+    "missionId": "c2wd-mission69",
+    "revision": "r1",
+    "sha256": "fd03857612026e2e50abc78e388763ded73db39018475e90c00b40be60d17930"
+   },
+   {
+    "missionId": "c2wd-mission70",
+    "revision": "r1",
+    "sha256": "91ec3f6b1d9d32bf25498c612ac26485f968751668e28f2cd65eb877c2ff0234"
+   },
+   {
+    "missionId": "c2wd-mission71",
+    "revision": "r1",
+    "sha256": "2201be129071b7b8b95f6a09d02b2628a2d7f8409495fc34ef1abab25c9700a5"
+   },
+   {
+    "missionId": "c2wd-mission72",
+    "revision": "r1",
+    "sha256": "52363c46c96719b77de872ae3bf4d4fc296905738ca339805710ee035db826ac"
+   },
+   {
+    "missionId": "c2wd-mission73",
+    "revision": "r1",
+    "sha256": "0abe4482c82b3cfe72794281d05520e52634c147774fd300cf074864379ae966"
+   },
+   {
+    "missionId": "c2wd-mission74",
+    "revision": "r1",
+    "sha256": "33d6d999f12437c1f0117d0663786ab53944c5fe45c46a26cac3225ded6dd59c"
+   },
+   {
+    "missionId": "c2wd-mission75",
+    "revision": "r1",
+    "sha256": "400287f9337b38ab1affc543859a7c2b7fbc101deb93ea2840052c69809ebda2"
+   },
+   {
+    "missionId": "c2wd-mission76",
+    "revision": "r1",
+    "sha256": "3955f45d8a72e46ec93fc346e8bef91d6820ceb8e7e06cee6c90b4abbb3eda7c"
+   },
+   {
+    "missionId": "c2wd-mission77",
+    "revision": "r1",
+    "sha256": "f21ce9858c05ffe472a78d25032ccece639af238f90d2d2f07b862ed24af852f"
+   },
+   {
+    "missionId": "c2wd-mission78",
+    "revision": "r1",
+    "sha256": "8055154241bad009c7b194af08ba708254ffb98d2329c2b603c32ecea889ab65"
+   },
+   {
+    "missionId": "c2wd-mission79",
+    "revision": "r1",
+    "sha256": "42e71475599d817b3f386123668102bd9624cbf7f291cedba34792f00c2156a7"
+   },
+   {
+    "missionId": "c2wd-mission80",
+    "revision": "r1",
+    "sha256": "b14d05073337fe3008a75b4ae6e3b026df21fd043af8029d1ae2458ad4009e06"
+   }
+  ]
+ }
+}

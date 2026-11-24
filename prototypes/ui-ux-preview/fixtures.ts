@@ -57,7 +57,8 @@ export function previewResult(path: string, input: any): any {
       teamPipeline:{ordersStarted:9, ordersPaid:2, ordersAwaitingPayment:6, ordersFollowedUp:1, valueAwaitingPaymentCAD:1074},
       outcomes:{passRate:null, passed:0, failed:0, averageReadinessPassed:null, averageReadinessFailed:null},
     };
-    case "admin.getPurchases": case "admin.getSubscriptions": case "admin.getTrialEmails": case "admin.getWaitlist": case "admin.getErrorReports": case "admin.getScoreHistory": case "admin.getFeedback": case "admin.listOrganizations": case "admin.getCustomerRecoveryEvidence": return [];
+    case "admin.getCustomerRecoveryEvidence": return {items:[], total:0, page:input?.page ?? 1, pageSize:input?.limit ?? 25, totalPages:1};
+    case "admin.getPurchases": case "admin.getSubscriptions": case "admin.getTrialEmails": case "admin.getWaitlist": case "admin.getErrorReports": case "admin.getScoreHistory": case "admin.getFeedback": case "admin.listOrganizations": return [];
     case "admin.getDataExplorerCatalog": return {datasets:[]};
     case "admin.getDataExplorerPage": return {dataset:{label:"Synthetic users",description:"Fictional preview only",tableName:"users",restrictedColumns:[]},rows:[], total:0, totalPages:1, generatedAt:now, columns:[], page:1, pageSize:50};
     case "stripe.checkAccess": return { hasAccess: true };

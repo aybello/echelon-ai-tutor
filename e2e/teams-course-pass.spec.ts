@@ -61,6 +61,50 @@ async function signInWithOtp(page: Page, email: string, next: string) {
   await expect(page.getByRole("heading", { name: "You're signed in!" })).toBeVisible();
 }
 
+async function openPracticeOptions(page: Page) {
+  await expect(page.getByTestId("practice-question")).toBeVisible();
+  const options = page.locator(".practice-options");
+  await expect(options).toBeVisible();
+  // A module queue change remounts this native disclosure closed.
+  if (await options.getAttribute("open") === null) await options.locator("summary").click();
+  await expect(page.getByRole("combobox", { name: "Module", exact: true })).toBeVisible();
+}
+
+async function closePracticeOptions(page: Page) {
+  await expect(page.getByTestId("practice-question")).toBeVisible();
+  const options = page.locator(".practice-options");
+  if (await options.getAttribute("open") !== null) await options.locator("summary").click();
+}
+
+function paceGeneralApiWindow(page: Page) {
+  let remaining = 100;
+  let windowEndsAt = 0;
+  const throttled: string[] = [];
+  page.on("response", response => {
+    if (!response.url().includes("/api/trpc/")) return;
+    if (response.status() === 429) throttled.push(response.url());
+    const headers = response.headers();
+    // OTP has a separate 10-request policy. Only track the general API window.
+    if (headers["ratelimit-limit"] !== "100") return;
+    const nextRemaining = Number(headers["ratelimit-remaining"]);
+    const resetSeconds = Number(headers["ratelimit-reset"]);
+    if (!Number.isFinite(nextRemaining) || !Number.isFinite(resetSeconds) || resetSeconds <= 0) return;
+    if (Date.now() >= windowEndsAt) remaining = 100;
+    remaining = Math.min(remaining, nextRemaining);
+    windowEndsAt = Math.max(windowEndsAt, Date.now() + resetSeconds * 1000);
+  });
+  return async (headroom: number) => {
+    expect(throttled, "The real API limiter must not reject this paced learner journey").toEqual([]);
+    // Automation compresses study time. Wait before the next action, not after
+    // failed saves, without changing the learner, IP or production limiter.
+    if (remaining < headroom && windowEndsAt > Date.now()) {
+      await page.waitForTimeout(windowEndsAt - Date.now() + 250);
+      remaining = 100;
+      windowEndsAt = 0;
+    }
+  };
+}
+
 for (const [prefix, COURSE_KEY, COURSE_NAME] of [
   ["teams", "wpi-class4-wastewater", "WPI Class IV Wastewater Treatment"],
   ["reporting", "class4-ww", "Class 4 Wastewater Treatment"],
@@ -155,6 +199,15 @@ test(`${COURSE_NAME}: invitation, activation, mock recovery and manager reportin
     await expect(operatorPage.getByText("Recording active study time.", { exact: true })).toBeVisible();
     await operatorPage.waitForTimeout(1500);
     await operatorPage.goto(claimUrl!);
+    // The invitation was consumed on claim. Recovery requires exact-pass choice.
+    const passPicker = operatorPage.getByRole("combobox", { name: "Choose a Course Pass", exact: true });
+    await expect(passPicker).toBeVisible();
+    const activePass = passPicker.locator("option").filter({ hasText: COURSE_NAME }).filter({ hasText: " · active · " });
+    await expect(activePass).toHaveCount(1);
+    const activePassId = await activePass.getAttribute("value");
+    expect(activePassId).toMatch(/^\d+$/);
+    await passPicker.selectOption(activePassId!);
+    await expect(operatorPage.getByText("Course access is active")).toBeVisible();
     const db = await mysql.createConnection(process.env.DATABASE_URL!);
     try {
       await expect.poll(async () => {
@@ -353,19 +406,11 @@ test(`${COURSE_NAME}: invitation, activation, mock recovery and manager reportin
 
 }
 
-test("paid practice continues past 50 questions and loads saved review slices", async ({ page }) => {
-  test.setTimeout(180_000);
-  const db = await mysql.createConnection(process.env.DATABASE_URL!);
+test.describe("paid practice paging and saved review", () => {
   const email = "practice-e2e-learner@echelon.test";
   const bankKey = "class3-water-dist";
-  let apiWindowEndsAt = 0;
-  page.on("response", response => {
-    if (!response.url().includes("/api/trpc/")) return;
-    const resetSeconds = Number(response.headers()["ratelimit-reset"]);
-    if (Number.isFinite(resetSeconds) && resetSeconds > 0) {
-      apiWindowEndsAt = Date.now() + resetSeconds * 1000;
-    }
-  });
+  test.beforeAll(async () => {
+    const db = await mysql.createConnection(process.env.DATABASE_URL!);
   try {
     await db.execute("INSERT INTO purchases (email, productKey, productName, amountCAD, stripeSessionId) VALUES (?, ?, 'Practice browser QA', 9900, 'cs_practice_browser_qa')", [email, bankKey]);
     // Reproduce metadata left behind by an import: the advertised topic no
@@ -378,6 +423,16 @@ test("paid practice continues past 50 questions and loads saved review slices", 
     }
     await db.execute("INSERT INTO bookmarks (studentEmail, bankKey, questionId) VALUES (?, ?, 960081)", [email, bankKey]);
     await db.execute("INSERT INTO question_attempts (studentEmail, examType, bankKey, courseKey, questionId, topic, correct, confidence) VALUES (?, ?, ?, ?, 960082, 'Rare module', 'no', 'low')", [email, bankKey, bankKey, bankKey]);
+  } finally { await db.end(); }
+  });
+
+  // These are independent journeys. The combined automation exceeds three
+  // real request windows; keep both cases bounded without relaxing the limiter.
+  test("paid practice continues past 50 questions", async ({ page }) => {
+    test.setTimeout(180_000);
+    const db = await mysql.createConnection(process.env.DATABASE_URL!);
+    const paceApi = paceGeneralApiWindow(page);
+    try {
     await page.setExtraHTTPHeaders({ "X-Forwarded-For": "192.0.2.30" });
     await page.addInitScript(() => {
       localStorage.setItem("echelon_qbank_class3-water-dist", JSON.stringify({ questions: [{ id: 42, question: "Legacy private cached question" }] }));
@@ -386,17 +441,27 @@ test("paid practice continues past 50 questions and loads saved review slices", 
     await signInWithOtp(page, email, `/${bankKey}`);
     await page.waitForURL(`**/${bankKey}`);
     await expect(page.getByTestId("practice-question")).toBeVisible();
-    await page.locator(".practice-options summary").click();
+    await openPracticeOptions(page);
     const moduleFilter = page.getByRole("combobox", { name: "Module", exact: true });
     await expect(moduleFilter.getByRole("option", { name: "Retired module", exact: true })).toHaveCount(0);
     await expect(moduleFilter.getByRole("option", { name: "Rare module", exact: true })).toHaveCount(1);
+    const moduleDelivery = page.waitForResponse(response => response.url().includes("quiz.getRandomQuestions")
+      && decodeURIComponent(response.url()).includes('"module":"Paging module"'));
     await moduleFilter.selectOption({ label: "Paging module" });
+    const delivered = await moduleDelivery;
+    expect(delivered.status()).toBe(200);
+    await delivered.finished();
+    await openPracticeOptions(page);
     await page.getByRole("button", { name: /Quiz Settings/ }).click();
-    await page.getByRole("button", { name: "50 Qs", exact: true }).click();
-    await page.getByRole("button", { name: "Apply Settings →" }).click();
-    await page.locator(".practice-options summary").click();
+    const settings = page.getByRole("dialog", { name: "Quiz Settings", exact: true });
+    await expect(settings).toBeVisible();
+    await settings.getByRole("button", { name: "50 Qs", exact: true }).click();
+    await settings.getByRole("button", { name: "Apply Settings →" }).click();
+    await expect(page.getByRole("progressbar", { name: "Session progress", exact: true })).toHaveAttribute("aria-valuemax", "50");
+    await closePracticeOptions(page);
     const seen = new Set<string>();
     for (let i = 0; i < 52; i++) {
+      await paceApi(15);
       await expect(page.getByTestId("practice-question")).toBeVisible();
       const id = (await page.getByTestId("practice-question").getAttribute("data-question-id"))!;
       expect(seen.has(id)).toBe(false);
@@ -408,7 +473,10 @@ test("paid practice continues past 50 questions and loads saved review slices", 
       await page.getByRole("button", { name: "Next Question →", exact: true }).click();
       if (i === 49) {
         await expect(page.getByText("Session Complete!", { exact: true })).toBeVisible();
-        await page.getByRole("button", { name: "Skip feedback", exact: true }).click();
+        const feedback = page.getByRole("dialog", { name: "Share your experience", exact: true });
+        await expect(feedback).toBeVisible();
+        await feedback.getByRole("button", { name: "Not now", exact: true }).click();
+        await expect(feedback).toHaveCount(0);
         await page.getByRole("button", { name: /New Session/ }).click();
       }
     }
@@ -422,16 +490,28 @@ test("paid practice continues past 50 questions and loads saved review slices", 
     expect(await page.evaluate(() => localStorage.getItem("echelon_qbank_class3-water-dist"))).toBeNull();
     expect(await page.evaluate(() => localStorage.getItem("practice_progress_sentinel"))).toBe("keep");
     await expect(page.getByText("Legacy private cached question", { exact: true })).toHaveCount(0);
-    // Answering 52 questions at automation speed compresses a real study session
-    // into seconds. Respect the server's advertised request window before the
-    // next journey; keep the production limiter and every paging assertion intact.
-    const remainingWindow = apiWindowEndsAt - Date.now();
-    if (remainingWindow > 0) await page.waitForTimeout(remainingWindow + 250);
+    await paceApi(0);
+    } finally { await db.end(); }
+  });
+
+  test("paid practice loads saved review slices and reconciles direct topic links", async ({ page }) => {
+    const paceApi = paceGeneralApiWindow(page);
+    await page.setExtraHTTPHeaders({ "X-Forwarded-For": "192.0.2.30" });
+    // Retain the same learner/IP and observe its real remaining budget before
+    // starting a fresh browser's OTP and course-navigation journey.
+    await page.goto("/login/otp");
+    await expect(page.getByRole("textbox", { name: "Email address", exact: true })).toBeVisible();
+    await paceApi(40);
+    await signInWithOtp(page, email, `/${bankKey}`);
+    await page.waitForURL(`**/${bankKey}`);
+    await expect(page.getByTestId("practice-question")).toBeVisible();
     // These are outside the selected module and initial 50-item working set.
     for (const [mode, question] of [["bookmarked", "960081"], ["missed", "960082"], ["low-confidence", "960082"]]) {
+      await paceApi(20);
       await page.goto(`/${bankKey}?mode=${mode}`);
       await expect(page.getByTestId("practice-question")).toHaveAttribute("data-question-id", question);
     }
+    await paceApi(20);
     await page.goto(`/${bankKey}?topic=${encodeURIComponent("Rare module")}&calcOnly=true`);
     await expect(page.getByTestId("practice-question")).toBeVisible();
     expect(Number(await page.getByTestId("practice-question").getAttribute("data-question-id"))).toBeGreaterThan(960075);
@@ -439,17 +519,20 @@ test("paid practice continues past 50 questions and loads saved review slices", 
     // A bookmarked obsolete topic is reconciled to All Modules once the current
     // learner-visible bank metadata loads. A learner must not reach an empty
     // screen or need to make a second selection to resume studying.
+    await paceApi(20);
     await page.goto(`/${bankKey}?topic=${encodeURIComponent("Retired module")}`);
     await expect(page.getByTestId("practice-question")).toBeVisible();
     await expect(page.getByRole("status").filter({ hasText: "No questions are available" })).toHaveCount(0);
     await expect(page.getByText("Selected module: Retired module", { exact: true })).toHaveCount(0);
     await expect(page.getByText("Your 0 answers", { exact: false })).toHaveCount(0);
-  } finally { await db.end(); }
+    await paceApi(0);
+  });
 });
 test("paid Water and OIT pages use current bank modules and keep filtering in the quiz", async ({ page }) => {
   test.setTimeout(180_000);
   const db = await mysql.createConnection(process.env.DATABASE_URL!);
   const email = "water-modules-e2e@echelon.test";
+  const paceApi = paceGeneralApiWindow(page);
   const courses = [
     ["class1-water", "/class1-water"], ["class2-water", "/class2-water"],
     ["class3-water", "/class3-water"], ["class4-water", "/class4-water"], ["oit", "/quiz"],
@@ -471,12 +554,14 @@ test("paid Water and OIT pages use current bank modules and keep filtering in th
     await signInWithOtp(page, email, "/class1-water");
     await page.waitForURL("**/class1-water");
     for (const [bankKey, path] of courses) {
+      await paceApi(40);
       await page.goto(path);
       await expect(page.getByTestId("practice-question")).toBeVisible();
-      await page.locator(".practice-options summary").click();
+      await openPracticeOptions(page);
       const filters = page.getByRole("combobox", { name: "Module", exact: true });
       await expect(filters.getByRole("option", { name: "Coagulation & Flocculation", exact: true })).toHaveCount(0);
       for (const [index, module] of modules.entries()) {
+        await openPracticeOptions(page);
         await filters.selectOption({ label: module });
         const question = page.getByTestId("practice-question");
         await expect(question).toContainText(`Module QA ${bankKey}`);
@@ -487,23 +572,25 @@ test("paid Water and OIT pages use current bank modules and keep filtering in th
         await expect(page.getByText("No questions are available for this practice selection.", { exact: true })).toHaveCount(0);
         expect(new URL(page.url()).pathname).toBe(path);
       }
+      await openPracticeOptions(page);
       await filters.selectOption("");
-      await page.locator(".practice-options summary").click();
+      await closePracticeOptions(page);
       await expect(page.getByTestId("practice-question")).toBeVisible();
     }
+    await paceApi(0);
   } finally { await db.end(); }
 });
 
 test("checkout receipt asks a guest to verify email before opening the purchased course", async ({ page }) => {
   await page.route("**/api/trpc/stripe.verifySession*", async route => {
     const payload = { result: { data: { json: { paid: true, email: "", productKey: "oit", requiresSignIn: true,
-      unlockedExamTypes: [], accessToken: null, accessExpiresAt: null } } } };
+      unlockedExamTypes: [], accessToken: null, accessExpiresAt: null, fulfillmentPending: false, adsConversion: null } } } };
     await route.fulfill({ contentType: "application/json", body: JSON.stringify(route.request().url().includes("batch=1") ? [payload] : payload) });
   });
   await page.goto("/purchase-success?session_id=cs_synthetic_receipt");
   await expect(page.getByRole("heading", { name: "Payment Successful!" })).toBeVisible();
   await expect(page.getByText("you do not need to purchase again", { exact: false })).toBeVisible();
-  const link = page.getByRole("link", { name: /Sign in — OIT Practice Quiz/ });
+  const link = page.getByRole("link", { name: /Sign in — OIT — Water Treatment — Practice Quiz/ });
   await expect(link).toHaveAttribute("href", "/login/otp?next=%2Fquiz");
   expect(await page.evaluate(() => localStorage.getItem("echelon_access_token"))).toBeNull();
 });

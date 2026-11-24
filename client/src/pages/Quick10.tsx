@@ -1,8 +1,18 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowRight, CheckCircle2, XCircle } from "lucide-react";
 import { Link, useLocation, useSearch } from "wouter";
+import AITutor from "@/components/AITutor";
 import NextStepCard from "@/components/NextStepCard";
 import QuizGate from "@/components/QuizGate";
+import { ReviewButton } from "@/components/FeedbackModal";
+import { SuggestionInvitation } from "@/components/FeatureSuggestion";
+import SiteNav from "@/components/SiteNav";
+import StepSolution from "@/components/StepSolution";
+import { TutorPanelPlacement } from "@/components/TutorPanelPlacement";
+import "@/components/StudyWorkspace.css";
+import "@/components/PracticeWorkspace.css";
+import "@/components/QuizPage.css";
+import "./Quick10.css";
 import { useVerifiedPracticeSaveScope } from "@/components/PracticeSaveStatus";
 import { useAssessmentActivity } from "@/hooks/useAssessmentActivity";
 import type { AssessmentActivityCapability } from "@shared/assessmentActivity";
@@ -10,6 +20,7 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 import { quick10Href } from "@/lib/nextStepHref";
 import { readAccessToken } from "@/lib/readAccessToken";
 import { trpc } from "@/lib/trpc";
+import type { Question } from "@/lib/questionTypes";
 import { getCourseByKey } from "@shared/courseRegistry";
 
 type Phase = "loading" | "asking" | "checking" | "revealed" | "done" | "empty" | "error";
@@ -53,6 +64,8 @@ export default function Quick10() {
   const [message, setMessage] = useState("");
   const [round, setRound] = useState(0);
   const [pendingAnswer, setPendingAnswer] = useState<PendingQuick10Answer | null>(null);
+  const [tutorContext, setTutorContext] = useState<string | null>(null);
+  const tutorDeepLink = useRef(params.get("panel") === "tutor");
   const pendingRef = useRef<PendingQuick10Answer | null>(null);
   const sessionId = useRef<string>(crypto.randomUUID());
   const generation = useRef(0);
@@ -67,6 +80,7 @@ export default function Quick10() {
     const requestGeneration = ++generation.current;
     const requestActor = actorKey;
     setSession(null); setPhase("loading"); setMessage(""); setReveal(null); setIndex(0); setResults([]);
+    setTutorContext(null);
     setPendingAnswer(null); pendingRef.current = null; busy.current = false;
     sessionId.current = crypto.randomUUID();
     try {
@@ -93,6 +107,37 @@ export default function Quick10() {
   useEffect(() => { if (phase === "revealed") nextButton.current?.focus(); }, [phase]);
 
   const current = session?.questions[index];
+  // Include the request scope so a course/actor transition hides the old panel
+  // immediately, even before the replacement session effect starts.
+  const tutorContextKey = session && current && ["asking", "checking", "revealed"].includes(phase)
+    ? JSON.stringify([requestedCourse, sessionLength, round, actorKey, sessionId.current, session.courseKey, current.id])
+    : null;
+  const tutorOpen = tutorContextKey !== null && tutorContext === tutorContextKey;
+  const dismissTutor = useCallback(() => {
+    setTutorContext(null);
+    tutorDeepLink.current = false;
+    try {
+      const url = new URL(window.location.href);
+      if (url.searchParams.get("panel") === "tutor") {
+        url.searchParams.delete("panel");
+        window.history.replaceState({}, "", `${url.pathname}${url.search}${url.hash}`);
+      }
+    } catch {
+      // Local dismissal still works if browser history is unavailable.
+    }
+  }, []);
+  useEffect(() => {
+    if (!tutorDeepLink.current || !tutorContextKey || phase !== "asking") return;
+    // Consume the entry deep link once; subsequent questions/sessions stay closed.
+    tutorDeepLink.current = false;
+    setTutorContext(tutorContextKey);
+  }, [tutorContextKey, phase]);
+  const tutorQuestion: Partial<Question> | null = current ? {
+    id: current.id, module: current.module, q: current.question,
+    options: current.options, isCalc: current.isCalc,
+    // Quick10 deliberately receives no answer key until the save is confirmed.
+    ...(reveal ? { correct: reveal.correctIndex, explanation: reveal.explanation, steps: reveal.steps, tip: reveal.tip } : {}),
+  } : null;
   const presentation = useRef("");
   const activityStarted = useRef("");
   useEffect(() => {
@@ -150,6 +195,7 @@ export default function Quick10() {
 
   function next() {
     if (!session || phase !== "revealed" || !reveal || pendingRef.current) return;
+    dismissTutor();
     setReveal(null);
     if (index + 1 >= session.questions.length) {
       // Explicit finish after every canonical answer acknowledgement, never cleanup.
@@ -162,71 +208,95 @@ export default function Quick10() {
   const total = session?.questions.length ?? sessionLength;
   const score = results.filter(Boolean).length;
   const courseList = courses.data?.courses ?? [];
+  // SiteNav resolves course tabs from registered study paths, not /quick-10.
+  const navigationCourse = course ?? getCourseByKey(requestedCourse ?? courses.data?.currentCourseKey ?? "");
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <main className="mx-auto w-full max-w-2xl px-4 pb-24 pt-4 sm:pt-8">
-        <div className="flex items-center justify-between gap-3">
-          <Link href="/dashboard" className="text-sm font-medium text-primary hover:underline">← Dashboard</Link>
-          {courseList.length > 1 && (
-            <label className="flex items-center gap-2 text-sm">
-              <span className="text-muted-foreground">Course</span>
-              <select className="min-h-10 max-w-[12rem] rounded-md border border-border bg-card px-2 text-sm"
-                value={session?.courseKey ?? requestedCourse ?? courses.data?.currentCourseKey ?? ""}
-                onChange={event => navigate(quick10Href(event.target.value, search, sessionLength === 1 ? 1 : undefined))}>
-                {courseList.map(c => <option key={c.courseKey} value={c.courseKey}>{c.shortName}</option>)}
-              </select>
-            </label>
-          )}
-        </div>
-        <h1 className="mt-4 text-2xl font-extrabold tracking-tight">Quick 10</h1>
-        {session && <p className="mt-1 text-sm text-muted-foreground">{session.courseName}</p>}
-        {session?.locked && phase !== "done" && <p className="mt-2 rounded-md bg-secondary px-3 py-2 text-sm">You're trying the free preview questions.</p>}
+    <div className={`practice-page practice-screen learning-redesign quick10-page${tutorOpen ? " has-tutor" : ""}`}>
+      <SiteNav currentPath={navigationCourse?.quizPath ?? "/quick-10"} variant="learning" />
+      <main className="practice-screen-main">
+        <header className="practice-header" aria-label="Practice session">
+          <div className="practice-header-inner">
+            <div className="practice-title-row">
+              <div>
+                <span className="workspace-eyebrow">Course practice</span>
+                <h1>Quick 10</h1>
+                {session && <p>{session.courseName}</p>}
+              </div>
+              <div className="quick10-header-actions">
+                <Link href="/dashboard" className="text-sm font-medium text-primary hover:underline">← Dashboard</Link>
+                {courseList.length > 1 && (
+                  <label className="quick10-course-select">
+                    <span className="text-muted-foreground">Course</span>
+                    <select className="quick10-course-input"
+                      value={session?.courseKey ?? requestedCourse ?? courses.data?.currentCourseKey ?? ""}
+                      onChange={event => navigate(quick10Href(event.target.value, search, sessionLength === 1 ? 1 : undefined))}>
+                      {courseList.map(c => <option key={c.courseKey} value={c.courseKey}>{c.shortName}</option>)}
+                    </select>
+                  </label>
+                )}
+              </div>
+            </div>
+            {session && <>
+              <div className="practice-session-stats"><span><strong>{Math.min(index + 1, total)} / {total}</strong> questions</span><span><strong>{score}</strong> correct</span></div>
+              <div role="progressbar" aria-valuemin={0} aria-valuemax={total} aria-valuenow={results.length} aria-label="Progress" className="practice-progress">
+                <span style={{ width: `${(results.length / total) * 100}%` }} />
+              </div>
+            </>}
+            {session?.locked && phase !== "done" && <div className="practice-preview-banner"><p>You're trying the free preview questions.</p></div>}
+          </div>
+        </header>
+        <div className="practice-content" tabIndex={0} role="region" aria-label="Practice question and explanation">
         {saveError && <p role="status" className="mt-2 text-sm">Activity observations not saved; your answer score is separate. <button type="button" onClick={() => void retry()} className="underline">Retry activity save</button></p>}
         {phase === "loading" && <p role="status" className="mt-8 text-muted-foreground">Getting your questions…</p>}
         {(phase === "error" || phase === "empty") && (
-          <div role="alert" className="mt-8 rounded-xl border border-border bg-card p-5">
+          <div role="alert" className="quick10-state-card">
             <p className="font-semibold">{phase === "empty" ? "There are no questions to practise yet." : message}</p>
             <div className="mt-4 flex flex-wrap gap-3">
-              {phase === "error" && <button type="button" onClick={() => setRound(r => r + 1)} className="min-h-11 rounded-lg bg-primary px-4 text-sm font-semibold text-primary-foreground">Try again</button>}
+              {phase === "error" && <button type="button" onClick={() => setRound(r => r + 1)} className="quick10-primary min-h-11 rounded-lg px-4 text-sm font-semibold">Try again</button>}
               <Link href="/account" className="inline-flex min-h-11 items-center rounded-lg border border-border px-4 text-sm font-semibold">My courses</Link>
             </div>
           </div>
         )}
         {session && current && (phase === "asking" || phase === "checking" || phase === "revealed") && (
-          <section aria-label={`Question ${index + 1} of ${total}`} className="mt-5">
-            <div className="flex items-center justify-between text-sm text-muted-foreground"><span>Question {index + 1} of {total}</span><span>{current.module}</span></div>
-            <div role="progressbar" aria-valuemin={0} aria-valuemax={total} aria-valuenow={index + (phase === "revealed" ? 1 : 0)} aria-label="Progress" className="mt-2 h-2 overflow-hidden rounded-full bg-secondary">
-              <div className="h-full bg-primary transition-all" style={{ width: `${((index + (phase === "revealed" ? 1 : 0)) / total) * 100}%` }} />
-            </div>
-            <h2 className="mt-5 text-lg font-semibold leading-snug">{current.question}</h2>
+          <section aria-label={`Question ${index + 1} of ${total}`} className="quick10-question">
+            <div className="qs-question-card">
+            <div className="qs-badges-row quick10-badges"><span>Question {index + 1} of {total}</span><span>{current.module}</span></div>
+            <h2 data-testid="practice-question" data-question-id={current.id}>{current.question}</h2>
             <div className="mt-4 grid gap-3" role="group" aria-label="Answer choices">
               {current.options.map((option, i) => {
                 const isPicked = reveal ? reveal.picked === i : pendingAnswer?.selectedIndex === i;
                 const isRight = reveal ? reveal.correctIndex === i : false;
-                const state = !reveal ? isPicked ? "border-primary bg-secondary" : "border-border bg-card hover:border-primary"
-                  : isRight ? "border-[var(--echelon-teal)] bg-secondary" : isPicked ? "border-destructive bg-secondary" : "border-border bg-card opacity-70";
+                const state = !reveal ? isPicked ? "is-selected" : ""
+                  : isRight ? "is-correct" : isPicked ? "is-incorrect" : "is-muted";
                 return <button key={i} type="button" disabled={phase !== "asking" || pendingAnswer !== null} onClick={() => void choose(i)}
-                  className={`flex min-h-12 w-full items-start gap-3 rounded-lg border-2 px-4 py-3 text-left text-base transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring disabled:cursor-default ${state}`}>
-                  <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-secondary text-sm font-bold" aria-hidden="true">{LETTERS[i]}</span>
+                  aria-pressed={isPicked}
+                  className={`qs-option ${state}`}>
+                  <span className="qs-option-letter" aria-hidden="true">{LETTERS[i]}</span>
                   <span className="flex-1">{option}</span>
-                  {reveal && isRight && <CheckCircle2 size={20} className="mt-0.5 shrink-0 text-[var(--echelon-teal)]" aria-label="Correct answer" />}
+                  {reveal && isRight && <CheckCircle2 size={20} className="mt-0.5 shrink-0" aria-label="Correct answer" />}
                   {reveal && isPicked && !isRight && <XCircle size={20} className="mt-0.5 shrink-0 text-destructive" aria-label="Your answer" />}
                 </button>;
               })}
             </div>
+            <div className="practice-resource-actions quick10-tutor-actions">
+              <button type="button" className="quick10-tutor-trigger" aria-expanded={tutorOpen}
+                aria-controls={tutorOpen ? "quick10-tutor" : undefined}
+                onClick={() => setTutorContext(tutorContextKey)}>Ask AI Tutor</button>
+            </div>
             {phase === "checking" && <p role="status" className="mt-4 text-sm text-muted-foreground">Checking your answer…</p>}
             {message && phase === "asking" && <p role="alert" className="mt-4 text-sm text-destructive">{message}</p>}
             {pendingAnswer && phase === "asking" && <button type="button" onClick={() => void choose(pendingAnswer.selectedIndex)} className="mt-3 min-h-11 rounded-lg border border-border px-4 text-sm font-semibold">Retry original answer {LETTERS[pendingAnswer.selectedIndex]}</button>}
-            {phase === "revealed" && reveal && <div className="mt-5" role="status" aria-live="polite">
-              <p className="text-base font-bold">{reveal.correct ? "Correct." : `Not quite. The answer is ${LETTERS[reveal.correctIndex]}.`}</p>
-              <p className="mt-2 text-base leading-relaxed">{reveal.explanation}</p>
-              {reveal.steps && reveal.steps.length > 0 && <ol className="mt-3 list-decimal space-y-1 pl-5 text-sm">{reveal.steps.map((step, i) => <li key={i}><span className="font-semibold">{step.l}:</span> {step.c}</li>)}</ol>}
-              {reveal.tip && <p className="mt-3 text-sm text-muted-foreground">Tip: {reveal.tip}</p>}
-              <button ref={nextButton} type="button" onClick={next} className="mt-5 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-lg bg-primary px-5 text-base font-semibold text-primary-foreground sm:w-auto">{index + 1 >= total ? "See my result" : "Next question"} <ArrowRight size={18} aria-hidden="true" /></button>
+            </div>
+            {phase === "revealed" && reveal && <div className="practice-explanation" role="status" aria-live="polite">
+              <p className="practice-result-label font-bold">{reveal.correct ? "Correct." : `Not quite. The answer is ${LETTERS[reveal.correctIndex]}.`}</p>
+              <p className="practice-explanation-content">{reveal.explanation}</p>
+              {reveal.steps && reveal.steps.length > 0 && <StepSolution steps={reveal.steps} tip={reveal.tip} />}
+              {reveal.tip && !reveal.steps?.length && <p className="mt-3 text-sm text-muted-foreground">Tip: {reveal.tip}</p>}
+              <button ref={nextButton} type="button" onClick={next} className="quick10-primary mt-5 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-lg px-5 text-base font-semibold sm:w-auto">{index + 1 >= total ? "See my result" : "Next question"} <ArrowRight size={18} aria-hidden="true" /></button>
             </div>}
           </section>
         )}
-        {phase === "done" && session && <section aria-label="Your result" className="mt-8">
+        {phase === "done" && session && <section aria-label="Your result" className="quick10-state-card">
           <p className="text-sm text-muted-foreground">Your result</p><p className="mt-1 text-4xl font-extrabold">{score} of {total}</p>
           <p className="mt-2 text-base">{score === total ? "Every answer correct." : score >= Math.ceil(total * 0.7) ? "A solid session." : "Each miss is a chance to learn. Your missed questions will come back."}</p>
           {session.locked ? course && <QuizGate questionsAnswered={results.length} onUnlocked={() => window.location.reload()} productKey={course.productKey} examType={course.courseKey} diagnosticAvailable={false} previewName="Quick 10 questions" backPath="/dashboard" />
@@ -234,8 +304,23 @@ export default function Quick10() {
               <button type="button" onClick={() => { startedKey.current = ""; setRound(r => r + 1); }} className="min-h-11 rounded-lg border border-border px-4 text-sm font-semibold">Another Quick 10</button>
               <Link href="/dashboard" className="inline-flex min-h-11 items-center rounded-lg border border-border px-4 text-sm font-semibold">Back to dashboard</Link>
             </div></>}
+          <div className="mt-5"><ReviewButton examType={session.courseKey} feedbackType="quick10" /></div>
+          <SuggestionInvitation courseKey={session.courseKey} source="quick10" />
         </section>}
+        </div>
       </main>
+      {tutorOpen && session && tutorQuestion && (
+        <TutorPanelPlacement.Provider value="workspace">
+          <div id="quick10-tutor" className="practice-tutor-slot">
+            <AITutor key={tutorContextKey}
+              // AITutor's legacy bank type requires answer fields. Do not invent
+              // them for an unanswered Quick10 question; the runtime supports omissions.
+              question={tutorQuestion as Question}
+              userAnswer={reveal?.picked ?? pendingAnswer?.selectedIndex ?? null}
+              history={[]} patternMode={false} onClose={dismissTutor} examType={session.courseKey} />
+          </div>
+        </TutorPanelPlacement.Provider>
+      )}
     </div>
   );
 }

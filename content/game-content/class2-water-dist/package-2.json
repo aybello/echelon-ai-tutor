@@ -1,0 +1,4848 @@
+{
+ "courseKey": "class2-water-dist",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "c2wd-ladder80",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A Milton flushing segment has a given area of 0.03 m2 and a length of 200 m. The program targets three pipe volumes at a flushing flow of 30 L/s. Find the flushing time in minutes. Enter the exact unrounded number.",
+   "topicId": "flushing-volume",
+   "level": "class1",
+   "assumptions": "Fictional main in Milton, Ontario: given pipe area = 0.03 m2, length = 200 m, target = 3 pipe volumes, flow = 30 L/s, 1000 L = 1 m3, 60 s = 1 min.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Time = (Area * Length / Pipe volumes) / Flow, converted to minutes"
+      },
+      {
+       "id": "opt-b",
+       "label": "Time = Flow / (Area * Length * Pipe volumes), converted to minutes"
+      },
+      {
+       "id": "opt-c",
+       "label": "Time = (Area * Length * Pipe volumes) / Flow, converted to minutes"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Find the total flushing volume first, then divide by the flow."
+    },
+    {
+     "id": "units",
+     "prompt": "What is the total flushing volume for this segment?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "0.03 * 200 * 3 = 18 m3 total"
+      },
+      {
+       "id": "opt-b",
+       "label": "0.03 * 200 / 3 = 2 m3 total"
+      },
+      {
+       "id": "opt-c",
+       "label": "0.03 + 200 + 3 = 203.03 m3 total"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "One pipe volume is 6 m3, so three pipe volumes are 18 m3."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Time = 0.03 * 200 / 3 * 1000 / 30 / 60"
+      },
+      {
+       "id": "opt-b",
+       "label": "Time = 0.03 * 200 * 3 * 1000 / 30 / 60"
+      },
+      {
+       "id": "opt-c",
+       "label": "Time = 30 / (0.03 * 200 * 3) / 60"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Compute the total volume in litres, divide by the flow, then convert to minutes."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact flushing time in minutes.",
+    "unitOptions": [
+     {
+      "id": "min",
+      "label": "min"
+     },
+     {
+      "id": "s",
+      "label": "s",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "60"
+      }
+     },
+     {
+      "id": "h",
+      "label": "h",
+      "toExpected": {
+       "numerator": "60",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "L",
+      "label": "L"
+     }
+    ],
+    "expected": "10",
+    "expectedUnitId": "min",
+    "absoluteTolerance": "0",
+    "explanation": "Total volume is 18000 L, divided by 30 L/s and by 60, in minutes."
+   }
+  },
+  {
+   "id": "c2wd-ladder81",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A dead end main in Georgetown has a given area of 0.08 m2 and a length of 150 m. Find one pipe volume in m3 for the flushing plan. Enter the exact unrounded number.",
+   "topicId": "flushing-volume",
+   "level": "class1",
+   "assumptions": "Fictional dead end main in Georgetown, Ontario: given pipe area = 0.08 m2, length = 150 m, area is taken as given for this main.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Pipe volume = Pipe area * Length"
+      },
+      {
+       "id": "opt-b",
+       "label": "Pipe volume = Pipe area / Length"
+      },
+      {
+       "id": "opt-c",
+       "label": "Pipe volume = Length / Pipe area"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The volume of a prism is its cross sectional area multiplied by its length."
+    },
+    {
+     "id": "units",
+     "prompt": "What unit results from m2 multiplied by m?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "m2, the area unit"
+      },
+      {
+       "id": "opt-b",
+       "label": "m3, the volume unit"
+      },
+      {
+       "id": "opt-c",
+       "label": "m, the length unit"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Area times length gives volume in cubic metres."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Volume = 0.08 / 150"
+      },
+      {
+       "id": "opt-b",
+       "label": "Volume = 150 / 0.08"
+      },
+      {
+       "id": "opt-c",
+       "label": "Volume = 0.08 * 150"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Multiply the given area by the length."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact pipe volume in m3.",
+    "unitOptions": [
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "L",
+      "label": "L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "mL",
+      "label": "mL",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000000"
+      }
+     },
+     {
+      "id": "m2",
+      "label": "m2"
+     }
+    ],
+    "expected": "12",
+    "expectedUnitId": "m3",
+    "absoluteTolerance": "0",
+    "explanation": "Pipe volume = 0.08 * 150 m3 for this main."
+   }
+  },
+  {
+   "id": "c2wd-ladder82",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A flushing crew in Stratford flows 80 L/s through a main with a given area of 0.05 m2. Find the velocity in m/s. Enter the exact unrounded number.",
+   "topicId": "flushing-velocity",
+   "level": "class1",
+   "assumptions": "Fictional main in Stratford, Ontario: flow = 80 L/s, given pipe area = 0.05 m2, 1000 L = 1 m3.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Velocity = Flow * Area, with flow in m3/s"
+      },
+      {
+       "id": "opt-b",
+       "label": "Velocity = Flow / Area, with flow in m3/s"
+      },
+      {
+       "id": "opt-c",
+       "label": "Velocity = Area / Flow, with flow in m3/s"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Continuity gives velocity as volumetric flow divided by cross sectional area."
+    },
+    {
+     "id": "units",
+     "prompt": "What is 80 L/s in m3/s?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "80 * 1000 = 80000 m3/s"
+      },
+      {
+       "id": "opt-b",
+       "label": "80 / 60 = 1.3333 m3/s"
+      },
+      {
+       "id": "opt-c",
+       "label": "80 / 1000 = 0.08 m3/s"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Litres convert to cubic metres by dividing by 1000."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Velocity = (80 / 1000) / 0.05"
+      },
+      {
+       "id": "opt-b",
+       "label": "Velocity = (80 / 1000) * 0.05"
+      },
+      {
+       "id": "opt-c",
+       "label": "Velocity = 0.05 / (80 / 1000)"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Convert the flow to m3/s, then divide by the given area."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact velocity in m/s.",
+    "unitOptions": [
+     {
+      "id": "m-s",
+      "label": "m/s"
+     },
+     {
+      "id": "m-min",
+      "label": "m/min",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "60"
+      }
+     },
+     {
+      "id": "km-h",
+      "label": "km/h",
+      "toExpected": {
+       "numerator": "5",
+       "denominator": "18"
+      }
+     },
+     {
+      "id": "L-s",
+      "label": "L/s"
+     }
+    ],
+    "expected": "1.6",
+    "expectedUnitId": "m-s",
+    "absoluteTolerance": "0",
+    "explanation": "Velocity = 0.08 / 0.05 m/s by continuity."
+   }
+  },
+  {
+   "id": "c2wd-ladder83",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A Kitchener flushing plan targets 2.5 pipe volumes for a main with a given area of 0.04 m2 and a length of 250 m. Find the total flushing volume in m3. Enter the exact unrounded number.",
+   "topicId": "flushing-volume",
+   "level": "class1",
+   "assumptions": "Fictional main in Kitchener, Ontario: given pipe area = 0.04 m2, length = 250 m, target = 2.5 pipe volumes.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Flushing volume = Pipe area * Length / Number of pipe volumes"
+      },
+      {
+       "id": "opt-b",
+       "label": "Flushing volume = Pipe area + Length + Number of pipe volumes"
+      },
+      {
+       "id": "opt-c",
+       "label": "Flushing volume = Pipe area * Length * Number of pipe volumes"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Find one pipe volume first, then multiply by the number of pipe volumes targeted."
+    },
+    {
+     "id": "units",
+     "prompt": "What is one pipe volume for this main?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "0.04 * 250 = 10 m3 for one pipe volume"
+      },
+      {
+       "id": "opt-b",
+       "label": "0.04 / 250 = 0.00016 m3 for one pipe volume"
+      },
+      {
+       "id": "opt-c",
+       "label": "0.04 + 250 = 250.04 m3 for one pipe volume"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "One pipe volume is area times length, 10 m3 here."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Flushing volume = 0.04 * 250 / 2.5"
+      },
+      {
+       "id": "opt-b",
+       "label": "Flushing volume = 0.04 * 250 * 2.5"
+      },
+      {
+       "id": "opt-c",
+       "label": "Flushing volume = 0.04 + 250 + 2.5"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Multiply area by length, then by the 2.5 pipe volume target."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact total flushing volume in m3.",
+    "unitOptions": [
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "L",
+      "label": "L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "mL",
+      "label": "mL",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000000"
+      }
+     },
+     {
+      "id": "m2",
+      "label": "m2"
+     }
+    ],
+    "expected": "25",
+    "expectedUnitId": "m3",
+    "absoluteTolerance": "0",
+    "explanation": "One pipe volume is 10 m3, and 2.5 pipe volumes give the total in m3."
+   }
+  },
+  {
+   "id": "c2wd-ladder84",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A hydrant in Guelph flushes 45 m3 of water at a steady 50 L/s. Find the flushing time in minutes. Enter the exact unrounded number.",
+   "topicId": "flushing-volume",
+   "level": "class1",
+   "assumptions": "Fictional hydrant flush in Guelph, Ontario: volume = 45 m3, flow = 50 L/s, 1000 L = 1 m3, 60 s = 1 min.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Time = Volume / Flow, converted to minutes"
+      },
+      {
+       "id": "opt-b",
+       "label": "Time = Volume * Flow, converted to minutes"
+      },
+      {
+       "id": "opt-c",
+       "label": "Time = Flow / Volume, converted to minutes"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Time to move a volume at a steady flow is volume divided by flow."
+    },
+    {
+     "id": "units",
+     "prompt": "How is the volume in m3 matched to the flow in L/s?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Convert the volume to 45 L before dividing by L/s"
+      },
+      {
+       "id": "opt-b",
+       "label": "Convert the volume to 45000 L before dividing by L/s"
+      },
+      {
+       "id": "opt-c",
+       "label": "Convert the flow to 50 m3/s before dividing"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Matching litres with L/s gives seconds directly."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Time = 45 * 1000 * 50 / 60"
+      },
+      {
+       "id": "opt-b",
+       "label": "Time = 45 / 1000 / 50 / 60"
+      },
+      {
+       "id": "opt-c",
+       "label": "Time = 45 * 1000 / 50 / 60"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Divide the volume in litres by the flow, then convert seconds to minutes."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact flushing time in minutes.",
+    "unitOptions": [
+     {
+      "id": "min",
+      "label": "min"
+     },
+     {
+      "id": "s",
+      "label": "s",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "60"
+      }
+     },
+     {
+      "id": "h",
+      "label": "h",
+      "toExpected": {
+       "numerator": "60",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "L",
+      "label": "L"
+     }
+    ],
+    "expected": "15",
+    "expectedUnitId": "min",
+    "absoluteTolerance": "0",
+    "explanation": "Time = 45000 / 50 s, divided by 60, in minutes."
+   }
+  },
+  {
+   "id": "c2wd-ladder85",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A main in Hamilton carries a flushing flow of 0.04 m3/s with a given area of 0.025 m2. Find the velocity in m/s. Enter the exact unrounded number.",
+   "topicId": "flushing-velocity",
+   "level": "class1",
+   "assumptions": "Fictional main in Hamilton, Ontario: flow = 0.04 m3/s, given pipe area = 0.025 m2, flow and area already in consistent units.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Velocity = Flow * Area"
+      },
+      {
+       "id": "opt-b",
+       "label": "Velocity = Flow / Area"
+      },
+      {
+       "id": "opt-c",
+       "label": "Velocity = Area / Flow"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Continuity gives velocity as volumetric flow divided by cross sectional area."
+    },
+    {
+     "id": "units",
+     "prompt": "Are any unit conversions needed before dividing?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Yes, flow must first be multiplied by 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Yes, area must first be divided by 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "No, flow in m3/s over area in m2 gives m/s directly"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Cubic metres per second divided by square metres is metres per second."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Velocity = 0.04 / 0.025"
+      },
+      {
+       "id": "opt-b",
+       "label": "Velocity = 0.04 * 0.025"
+      },
+      {
+       "id": "opt-c",
+       "label": "Velocity = 0.025 / 0.04"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Divide the flow by the given area with no conversion needed."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact velocity in m/s.",
+    "unitOptions": [
+     {
+      "id": "m-s",
+      "label": "m/s"
+     },
+     {
+      "id": "m-min",
+      "label": "m/min",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "60"
+      }
+     },
+     {
+      "id": "km-h",
+      "label": "km/h",
+      "toExpected": {
+       "numerator": "5",
+       "denominator": "18"
+      }
+     },
+     {
+      "id": "L-s",
+      "label": "L/s"
+     }
+    ],
+    "expected": "1.6",
+    "expectedUnitId": "m-s",
+    "absoluteTolerance": "0",
+    "explanation": "Velocity = 0.04 / 0.025 m/s by continuity."
+   }
+  },
+  {
+   "id": "c2wd-ladder86",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A booster pump in Cambridge has a given hydraulic power of 24 kW and a given overall efficiency of 0.8. Find the input power in kW. Enter the exact unrounded number.",
+   "topicId": "pump-energy-efficiency",
+   "level": "class1",
+   "assumptions": "Fictional booster pump in Cambridge, Ontario: hydraulic power = 24 kW, overall efficiency = 0.8 as a decimal fraction.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Input power = Hydraulic power * Efficiency"
+      },
+      {
+       "id": "opt-b",
+       "label": "Input power = Efficiency / Hydraulic power"
+      },
+      {
+       "id": "opt-c",
+       "label": "Input power = Hydraulic power / Efficiency"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Input power must exceed the hydraulic power, so the hydraulic power is divided by the efficiency fraction."
+    },
+    {
+     "id": "units",
+     "prompt": "How is the given efficiency of 0.8 used?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "As the decimal fraction 0.8 in the division"
+      },
+      {
+       "id": "opt-b",
+       "label": "As 80 in the division, without converting the percent"
+      },
+      {
+       "id": "opt-c",
+       "label": "As 1.25, its reciprocal, in a multiplication by 24 only"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Efficiency is applied as a decimal fraction between 0 and 1."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Input = 24 * 0.8"
+      },
+      {
+       "id": "opt-b",
+       "label": "Input = 24 / 0.8"
+      },
+      {
+       "id": "opt-c",
+       "label": "Input = 0.8 / 24"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Divide the hydraulic power by the efficiency fraction."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact input power in kW.",
+    "unitOptions": [
+     {
+      "id": "kW",
+      "label": "kW"
+     },
+     {
+      "id": "W",
+      "label": "W",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "kWh",
+      "label": "kWh"
+     },
+     {
+      "id": "m",
+      "label": "m"
+     }
+    ],
+    "expected": "30",
+    "expectedUnitId": "kW",
+    "absoluteTolerance": "0",
+    "explanation": "Input power = 24 / 0.8 kW at the given efficiency."
+   }
+  },
+  {
+   "id": "c2wd-ladder87",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A booster pump in Waterloo draws a steady input power of 15 kW for 8 h. Find the energy used in kWh. Enter the exact unrounded number.",
+   "topicId": "pump-energy-efficiency",
+   "level": "class1",
+   "assumptions": "Fictional booster pump in Waterloo, Ontario: input power = 15 kW steady, run time = 8 h.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Energy = Power * Time"
+      },
+      {
+       "id": "opt-b",
+       "label": "Energy = Power / Time"
+      },
+      {
+       "id": "opt-c",
+       "label": "Energy = Time / Power"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Energy is power multiplied by the time the power is drawn."
+    },
+    {
+     "id": "units",
+     "prompt": "What unit results from kW multiplied by h?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "kW, the power unit"
+      },
+      {
+       "id": "opt-b",
+       "label": "kWh, the energy unit"
+      },
+      {
+       "id": "opt-c",
+       "label": "m3, the volume unit"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Kilowatts times hours gives kilowatt hours."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Energy = 15 / 8"
+      },
+      {
+       "id": "opt-b",
+       "label": "Energy = 8 / 15"
+      },
+      {
+       "id": "opt-c",
+       "label": "Energy = 15 * 8"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Multiply the input power by the run time."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact energy used in kWh.",
+    "unitOptions": [
+     {
+      "id": "kWh",
+      "label": "kWh"
+     },
+     {
+      "id": "Wh",
+      "label": "Wh",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "kW",
+      "label": "kW"
+     },
+     {
+      "id": "L",
+      "label": "L"
+     }
+    ],
+    "expected": "120",
+    "expectedUnitId": "kWh",
+    "absoluteTolerance": "0",
+    "explanation": "Energy = 15 * 8 kWh for this run."
+   }
+  },
+  {
+   "id": "c2wd-ladder88",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A high lift pump in Brantford has a given hydraulic power of 36 kW and a given overall efficiency of 0.75. Find the input power in kW. Enter the exact unrounded number.",
+   "topicId": "pump-energy-efficiency",
+   "level": "class1",
+   "assumptions": "Fictional high lift pump in Brantford, Ontario: hydraulic power = 36 kW, overall efficiency = 0.75 as a decimal fraction.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Input power = Hydraulic power * Efficiency"
+      },
+      {
+       "id": "opt-b",
+       "label": "Input power = Hydraulic power / Efficiency"
+      },
+      {
+       "id": "opt-c",
+       "label": "Input power = Efficiency / Hydraulic power"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Input power must exceed the hydraulic power, so the hydraulic power is divided by the efficiency fraction."
+    },
+    {
+     "id": "units",
+     "prompt": "How is the given efficiency of 0.75 used?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "As 75 in the division, without converting the percent"
+      },
+      {
+       "id": "opt-b",
+       "label": "As 1.5 in a multiplication, doubling the allowance"
+      },
+      {
+       "id": "opt-c",
+       "label": "As the decimal fraction 0.75 in the division"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Efficiency is applied as a decimal fraction between 0 and 1."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Input = 36 / 0.75"
+      },
+      {
+       "id": "opt-b",
+       "label": "Input = 36 * 0.75"
+      },
+      {
+       "id": "opt-c",
+       "label": "Input = 0.75 / 36"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Divide the hydraulic power by the efficiency fraction."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact input power in kW.",
+    "unitOptions": [
+     {
+      "id": "kW",
+      "label": "kW"
+     },
+     {
+      "id": "W",
+      "label": "W",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "kWh",
+      "label": "kWh"
+     },
+     {
+      "id": "m",
+      "label": "m"
+     }
+    ],
+    "expected": "48",
+    "expectedUnitId": "kW",
+    "absoluteTolerance": "0",
+    "explanation": "Input power = 36 / 0.75 kW at the given efficiency."
+   }
+  },
+  {
+   "id": "c2wd-ladder89",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A booster pump in Burlington draws a steady input power of 40 kW for 12 h overnight. Find the energy used in kWh. Enter the exact unrounded number.",
+   "topicId": "pump-energy-efficiency",
+   "level": "class1",
+   "assumptions": "Fictional booster pump in Burlington, Ontario: input power = 40 kW steady, run time = 12 h.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Energy = Power / Time"
+      },
+      {
+       "id": "opt-b",
+       "label": "Energy = Time / Power"
+      },
+      {
+       "id": "opt-c",
+       "label": "Energy = Power * Time"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Energy is power multiplied by the time the power is drawn."
+    },
+    {
+     "id": "units",
+     "prompt": "What unit results from kW multiplied by h?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "kWh, the energy unit"
+      },
+      {
+       "id": "opt-b",
+       "label": "kW, the power unit"
+      },
+      {
+       "id": "opt-c",
+       "label": "m3, the volume unit"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Kilowatts times hours gives kilowatt hours."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Energy = 40 / 12"
+      },
+      {
+       "id": "opt-b",
+       "label": "Energy = 40 * 12"
+      },
+      {
+       "id": "opt-c",
+       "label": "Energy = 12 / 40"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Multiply the input power by the run time."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact energy used in kWh.",
+    "unitOptions": [
+     {
+      "id": "kWh",
+      "label": "kWh"
+     },
+     {
+      "id": "Wh",
+      "label": "Wh",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "kW",
+      "label": "kW"
+     },
+     {
+      "id": "L",
+      "label": "L"
+     }
+    ],
+    "expected": "480",
+    "expectedUnitId": "kWh",
+    "absoluteTolerance": "0",
+    "explanation": "Energy = 40 * 12 kWh for this run."
+   }
+  },
+  {
+   "id": "c2wd-ladder90",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A pump in Milton delivers a given hydraulic power of 27 kW while drawing 36 kW of input power. Find the overall efficiency in percent. Enter the exact unrounded number.",
+   "topicId": "pump-energy-efficiency",
+   "level": "class1",
+   "assumptions": "Fictional pump in Milton, Ontario: hydraulic power = 27 kW, input power = 36 kW.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Efficiency percent = (Hydraulic power / Input power) * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Efficiency percent = (Input power / Hydraulic power) * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Efficiency percent = (Hydraulic power * Input power) / 100"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Efficiency is the useful power out divided by the power in, expressed as a percent."
+    },
+    {
+     "id": "units",
+     "prompt": "Which power is the useful output here?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The 36 kW input power is the output"
+      },
+      {
+       "id": "opt-b",
+       "label": "The 27 kW hydraulic power is the output"
+      },
+      {
+       "id": "opt-c",
+       "label": "The sum of both powers is the output"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Hydraulic power is the useful work done on the water."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Efficiency = (36 / 27) * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Efficiency = (27 * 36) / 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Efficiency = (27 / 36) * 100"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Divide hydraulic power by input power and multiply by 100."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact efficiency in percent.",
+    "unitOptions": [
+     {
+      "id": "percent",
+      "label": "percent"
+     },
+     {
+      "id": "fraction",
+      "label": "fraction",
+      "toExpected": {
+       "numerator": "100",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "L",
+      "label": "L"
+     }
+    ],
+    "expected": "75",
+    "expectedUnitId": "percent",
+    "absoluteTolerance": "0",
+    "explanation": "Efficiency = 27 / 36 * 100 percent for this pump."
+   }
+  },
+  {
+   "id": "c2wd-ladder91",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A pumping upgrade in Georgetown cuts input power from 50 kW to 40 kW for a pump that runs 10 h/day. Find the daily energy saving in kWh. Enter the exact unrounded number.",
+   "topicId": "pump-energy-efficiency",
+   "level": "class1",
+   "assumptions": "Fictional upgrade in Georgetown, Ontario: old input = 50 kW, new input = 40 kW, run time = 10 h/day, both at the same duty point.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Daily saving = (Old input + New input) * Run time"
+      },
+      {
+       "id": "opt-b",
+       "label": "Daily saving = (Old input - New input) * Run time"
+      },
+      {
+       "id": "opt-c",
+       "label": "Daily saving = (Old input - New input) / Run time"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The power saving multiplied by the daily run time gives the daily energy saving."
+    },
+    {
+     "id": "units",
+     "prompt": "What is the power saving before the time step?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "50 + 40 = 90 kW saved"
+      },
+      {
+       "id": "opt-b",
+       "label": "50 / 40 = 1.25 kW saved"
+      },
+      {
+       "id": "opt-c",
+       "label": "50 - 40 = 10 kW saved"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The upgrade saves the difference between the old and new input power."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Saving = (50 - 40) * 10"
+      },
+      {
+       "id": "opt-b",
+       "label": "Saving = (50 + 40) * 10"
+      },
+      {
+       "id": "opt-c",
+       "label": "Saving = (50 - 40) / 10"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Subtract the input powers, then multiply by the run time."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact daily energy saving in kWh.",
+    "unitOptions": [
+     {
+      "id": "kWh",
+      "label": "kWh"
+     },
+     {
+      "id": "Wh",
+      "label": "Wh",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "kW",
+      "label": "kW"
+     },
+     {
+      "id": "L",
+      "label": "L"
+     }
+    ],
+    "expected": "100",
+    "expectedUnitId": "kWh",
+    "absoluteTolerance": "0",
+    "explanation": "Saving = 10 kW times 10 h, in kWh per day."
+   }
+  },
+  {
+   "id": "c2wd-ladder92",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A booster pump in Stratford has a given hydraulic power of 17.6 kW and a given overall efficiency of 0.8. Find the input power in kW. Enter the exact unrounded number.",
+   "topicId": "pump-energy-efficiency",
+   "level": "class1",
+   "assumptions": "Fictional booster pump in Stratford, Ontario: hydraulic power = 17.6 kW, overall efficiency = 0.8 as a decimal fraction.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Input power = Hydraulic power * Efficiency"
+      },
+      {
+       "id": "opt-b",
+       "label": "Input power = Efficiency / Hydraulic power"
+      },
+      {
+       "id": "opt-c",
+       "label": "Input power = Hydraulic power / Efficiency"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Input power must exceed the hydraulic power, so the hydraulic power is divided by the efficiency fraction."
+    },
+    {
+     "id": "units",
+     "prompt": "How is the given efficiency of 0.8 used?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "As the decimal fraction 0.8 in the division"
+      },
+      {
+       "id": "opt-b",
+       "label": "As 80 in the division, without converting the percent"
+      },
+      {
+       "id": "opt-c",
+       "label": "As 1.25, its reciprocal, in a multiplication by 17.6 only"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Efficiency is applied as a decimal fraction between 0 and 1."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Input = 17.6 * 0.8"
+      },
+      {
+       "id": "opt-b",
+       "label": "Input = 17.6 / 0.8"
+      },
+      {
+       "id": "opt-c",
+       "label": "Input = 0.8 / 17.6"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Divide the hydraulic power by the efficiency fraction."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact input power in kW.",
+    "unitOptions": [
+     {
+      "id": "kW",
+      "label": "kW"
+     },
+     {
+      "id": "W",
+      "label": "W",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "kWh",
+      "label": "kWh"
+     },
+     {
+      "id": "m",
+      "label": "m"
+     }
+    ],
+    "expected": "22",
+    "expectedUnitId": "kW",
+    "absoluteTolerance": "0",
+    "explanation": "Input power = 17.6 / 0.8 kW at the given efficiency."
+   }
+  },
+  {
+   "id": "c2wd-ladder93",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A booster pump in Kitchener draws a steady input power of 30 kW for 6 h/day over a 30 day month. Find the monthly energy use in kWh. Enter the exact unrounded number.",
+   "topicId": "pump-energy-efficiency",
+   "level": "class1",
+   "assumptions": "Fictional booster pump in Kitchener, Ontario: input power = 30 kW steady, run time = 6 h/day, period = 30 days.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Monthly energy = Power * Hours per day * Days"
+      },
+      {
+       "id": "opt-b",
+       "label": "Monthly energy = Power * Hours per day / Days"
+      },
+      {
+       "id": "opt-c",
+       "label": "Monthly energy = Power / (Hours per day * Days)"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Energy is power multiplied by total run time, and total run time is hours per day times days."
+    },
+    {
+     "id": "units",
+     "prompt": "What is the total run time in the month?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "6 / 30 = 0.2 h in the month"
+      },
+      {
+       "id": "opt-b",
+       "label": "6 * 30 = 180 h in the month"
+      },
+      {
+       "id": "opt-c",
+       "label": "6 + 30 = 36 h in the month"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Daily run time multiplied by the number of days gives the monthly run time."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Energy = 30 * 6 / 30"
+      },
+      {
+       "id": "opt-b",
+       "label": "Energy = 30 / (6 * 30)"
+      },
+      {
+       "id": "opt-c",
+       "label": "Energy = 30 * 6 * 30"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Multiply power by hours per day and by days."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact monthly energy use in kWh.",
+    "unitOptions": [
+     {
+      "id": "kWh",
+      "label": "kWh"
+     },
+     {
+      "id": "Wh",
+      "label": "Wh",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "kW",
+      "label": "kW"
+     },
+     {
+      "id": "L",
+      "label": "L"
+     }
+    ],
+    "expected": "5400",
+    "expectedUnitId": "kWh",
+    "absoluteTolerance": "0",
+    "explanation": "Energy = 30 * 180 h, in kWh for the month."
+   }
+  },
+  {
+   "id": "c2wd-ladder94",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A pressure zone in Guelph has 35 m of head available at a service connection. Find the pressure in kPa, using 9.81 kPa per metre of head. Enter the exact unrounded number.",
+   "topicId": "pressure-head",
+   "level": "class1",
+   "assumptions": "Fictional service connection in Guelph, Ontario: head = 35 m, conversion = 9.81 kPa per m of head, as given for this course.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Pressure = Head / 9.81 kPa/m"
+      },
+      {
+       "id": "opt-b",
+       "label": "Pressure = Head * 9.81 kPa/m"
+      },
+      {
+       "id": "opt-c",
+       "label": "Pressure = 9.81 kPa/m / Head"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Each metre of head produces 9.81 kPa, so pressure is head multiplied by that given factor."
+    },
+    {
+     "id": "units",
+     "prompt": "Is the given factor multiplied or divided here?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Divided, because pressure falls as head grows"
+      },
+      {
+       "id": "opt-b",
+       "label": "Added, because both are in metres"
+      },
+      {
+       "id": "opt-c",
+       "label": "Multiplied, because pressure grows with head"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "More head means more pressure, so the factor is a multiplier."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Pressure = 35 * 9.81"
+      },
+      {
+       "id": "opt-b",
+       "label": "Pressure = 35 / 9.81"
+      },
+      {
+       "id": "opt-c",
+       "label": "Pressure = 9.81 / 35"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Multiply the head by the given 9.81 kPa per metre."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact pressure in kPa.",
+    "unitOptions": [
+     {
+      "id": "kPa",
+      "label": "kPa"
+     },
+     {
+      "id": "Pa",
+      "label": "Pa",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "m-head",
+      "label": "m of head",
+      "toExpected": {
+       "numerator": "981",
+       "denominator": "100"
+      }
+     },
+     {
+      "id": "m",
+      "label": "m"
+     }
+    ],
+    "expected": "343.35",
+    "expectedUnitId": "kPa",
+    "absoluteTolerance": "0",
+    "explanation": "Pressure = 35 * 9.81 kPa at this head."
+   }
+  },
+  {
+   "id": "c2wd-ladder95",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Two pressure zones in Hamilton are fed from reservoirs with water surfaces at 210 m and 165 m elevation. Find the head difference in m between the zones. Enter the exact unrounded number.",
+   "topicId": "pressure-zone-head",
+   "level": "class1",
+   "assumptions": "Fictional pressure zones in Hamilton, Ontario: upper reservoir surface = 210 m elevation, lower reservoir surface = 165 m elevation, same elevation datum.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Head difference = Upper elevation + Lower elevation"
+      },
+      {
+       "id": "opt-b",
+       "label": "Head difference = Lower elevation - Upper elevation"
+      },
+      {
+       "id": "opt-c",
+       "label": "Head difference = Upper elevation - Lower elevation"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The head difference between two water surfaces on the same datum is the difference of their elevations."
+    },
+    {
+     "id": "units",
+     "prompt": "Both elevations are in m on the same datum. What unit is the difference in?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "m, the same unit as the elevations"
+      },
+      {
+       "id": "opt-b",
+       "label": "kPa, after multiplying by 9.81"
+      },
+      {
+       "id": "opt-c",
+       "label": "L/s, after a flow conversion"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "A difference of elevations in metres is itself in metres."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Difference = 210 + 165"
+      },
+      {
+       "id": "opt-b",
+       "label": "Difference = 210 - 165"
+      },
+      {
+       "id": "opt-c",
+       "label": "Difference = 165 - 210"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Subtract the lower elevation from the upper elevation."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact head difference in m.",
+    "unitOptions": [
+     {
+      "id": "m",
+      "label": "m"
+     },
+     {
+      "id": "cm",
+      "label": "cm",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "100"
+      }
+     },
+     {
+      "id": "mm",
+      "label": "mm",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "kPa",
+      "label": "kPa"
+     }
+    ],
+    "expected": "45",
+    "expectedUnitId": "m",
+    "absoluteTolerance": "0",
+    "explanation": "Head difference = 210 - 165 m between the zones."
+   }
+  },
+  {
+   "id": "c2wd-ladder96",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A lower pressure zone in Cambridge sits 20 m below the zone above it. Find the pressure gain in kPa from that elevation drop, using 9.81 kPa per metre of head. Enter the exact unrounded number.",
+   "topicId": "pressure-head",
+   "level": "class1",
+   "assumptions": "Fictional pressure zones in Cambridge, Ontario: elevation drop = 20 m, conversion = 9.81 kPa per m of head.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Pressure gain = Elevation drop * 9.81 kPa/m"
+      },
+      {
+       "id": "opt-b",
+       "label": "Pressure gain = Elevation drop / 9.81 kPa/m"
+      },
+      {
+       "id": "opt-c",
+       "label": "Pressure gain = 9.81 kPa/m / Elevation drop"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Each metre of drop adds 9.81 kPa, so the gain is the drop multiplied by that given factor."
+    },
+    {
+     "id": "units",
+     "prompt": "Is the given factor multiplied or divided here?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Divided, because pressure falls as the drop grows"
+      },
+      {
+       "id": "opt-b",
+       "label": "Multiplied, because pressure grows with the drop"
+      },
+      {
+       "id": "opt-c",
+       "label": "Added, because both are in metres"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "A larger elevation drop means a larger pressure gain, so the factor is a multiplier."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Gain = 20 / 9.81"
+      },
+      {
+       "id": "opt-b",
+       "label": "Gain = 9.81 / 20"
+      },
+      {
+       "id": "opt-c",
+       "label": "Gain = 20 * 9.81"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Multiply the drop by the given 9.81 kPa per metre."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact pressure gain in kPa.",
+    "unitOptions": [
+     {
+      "id": "kPa",
+      "label": "kPa"
+     },
+     {
+      "id": "Pa",
+      "label": "Pa",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "m-head",
+      "label": "m of head",
+      "toExpected": {
+       "numerator": "981",
+       "denominator": "100"
+      }
+     },
+     {
+      "id": "m",
+      "label": "m"
+     }
+    ],
+    "expected": "196.2",
+    "expectedUnitId": "kPa",
+    "absoluteTolerance": "0",
+    "explanation": "Pressure gain = 20 * 9.81 kPa for this drop."
+   }
+  },
+  {
+   "id": "c2wd-ladder97",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A service in Waterloo has a pressure of 400 kPa at the top of a hill. A second service sits 30 m lower, with no flow losses between them. Find the pressure in kPa at the lower service, using 9.81 kPa per metre of head. Enter the exact unrounded number.",
+   "topicId": "pressure-head",
+   "level": "class1",
+   "assumptions": "Fictional services in Waterloo, Ontario: upper pressure = 400 kPa, elevation difference = 30 m lower, conversion = 9.81 kPa per m of head, static conditions with no losses.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Lower pressure = Upper pressure - Elevation difference * 9.81 kPa/m"
+      },
+      {
+       "id": "opt-b",
+       "label": "Lower pressure = Upper pressure + Elevation difference * 9.81 kPa/m"
+      },
+      {
+       "id": "opt-c",
+       "label": "Lower pressure = Upper pressure + Elevation difference / 9.81 kPa/m"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Moving down 30 m adds head, so the added pressure is added to the upper pressure."
+    },
+    {
+     "id": "units",
+     "prompt": "What pressure does the 30 m drop add on its own?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "30 / 9.81 = 3.0581 kPa added"
+      },
+      {
+       "id": "opt-b",
+       "label": "30 + 9.81 = 39.81 kPa added"
+      },
+      {
+       "id": "opt-c",
+       "label": "30 * 9.81 = 294.3 kPa added"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Each metre of drop adds 9.81 kPa, so 30 m adds 294.3 kPa."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Lower pressure = 400 + 30 * 9.81"
+      },
+      {
+       "id": "opt-b",
+       "label": "Lower pressure = 400 - 30 * 9.81"
+      },
+      {
+       "id": "opt-c",
+       "label": "Lower pressure = 400 + 30 / 9.81"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Add the pressure from the elevation drop to the upper pressure."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact pressure at the lower service in kPa.",
+    "unitOptions": [
+     {
+      "id": "kPa",
+      "label": "kPa"
+     },
+     {
+      "id": "Pa",
+      "label": "Pa",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "m-head",
+      "label": "m of head",
+      "toExpected": {
+       "numerator": "981",
+       "denominator": "100"
+      }
+     },
+     {
+      "id": "m",
+      "label": "m"
+     }
+    ],
+    "expected": "694.3",
+    "expectedUnitId": "kPa",
+    "absoluteTolerance": "0",
+    "explanation": "Lower pressure = 400 plus 30 * 9.81, in kPa."
+   }
+  },
+  {
+   "id": "c2wd-ladder98",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A pressure zone in Brantford targets 490.5 kPa at a service. Find the head in m needed to produce that pressure, using 9.81 kPa per metre of head. Enter the exact unrounded number.",
+   "topicId": "pressure-head",
+   "level": "class1",
+   "assumptions": "Fictional pressure zone in Brantford, Ontario: target pressure = 490.5 kPa, conversion = 9.81 kPa per m of head.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Head = Pressure * 9.81 kPa/m"
+      },
+      {
+       "id": "opt-b",
+       "label": "Head = 9.81 kPa/m / Pressure"
+      },
+      {
+       "id": "opt-c",
+       "label": "Head = Pressure / 9.81 kPa/m"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Head is pressure divided by the given pressure produced by each metre of head."
+    },
+    {
+     "id": "units",
+     "prompt": "Is the given factor multiplied or divided here?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Divided, because head is recovered from pressure"
+      },
+      {
+       "id": "opt-b",
+       "label": "Multiplied, because head grows the same way as pressure"
+      },
+      {
+       "id": "opt-c",
+       "label": "Added, because both are in kPa"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Reversing the pressure from head relation means dividing by the factor."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Head = 490.5 * 9.81"
+      },
+      {
+       "id": "opt-b",
+       "label": "Head = 490.5 / 9.81"
+      },
+      {
+       "id": "opt-c",
+       "label": "Head = 9.81 / 490.5"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Divide the target pressure by the given 9.81 kPa per metre."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact head needed in m.",
+    "unitOptions": [
+     {
+      "id": "m",
+      "label": "m"
+     },
+     {
+      "id": "cm",
+      "label": "cm",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "100"
+      }
+     },
+     {
+      "id": "mm",
+      "label": "mm",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "kPa",
+      "label": "kPa"
+     }
+    ],
+    "expected": "50",
+    "expectedUnitId": "m",
+    "absoluteTolerance": "0",
+    "explanation": "Head = 490.5 / 9.81 m for the target pressure."
+   }
+  },
+  {
+   "id": "c2wd-ladder99",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A Burlington zone is supplied with 80 m of head at its boundary. The highest service sits 25 m above the boundary point and friction losses to that service are given as 10 m. Find the residual head in m at the service. Enter the exact unrounded number.",
+   "topicId": "pressure-zone-head",
+   "level": "class1",
+   "assumptions": "Fictional zone in Burlington, Ontario: supply head = 80 m, elevation rise = 25 m, given friction loss = 10 m, all heads in metres on the same datum.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Residual head = Supply head - Elevation rise - Friction loss"
+      },
+      {
+       "id": "opt-b",
+       "label": "Residual head = Supply head + Elevation rise - Friction loss"
+      },
+      {
+       "id": "opt-c",
+       "label": "Residual head = Supply head - Elevation rise + Friction loss"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Both the elevation rise and the friction loss consume part of the supply head."
+    },
+    {
+     "id": "units",
+     "prompt": "Both deductions are in m. What unit is the residual head in?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "kPa, after multiplying by 9.81"
+      },
+      {
+       "id": "opt-b",
+       "label": "m, the same unit as the supply head"
+      },
+      {
+       "id": "opt-c",
+       "label": "L/s, after a flow conversion"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Subtracting metres from metres leaves metres."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Residual = 80 + 25 - 10"
+      },
+      {
+       "id": "opt-b",
+       "label": "Residual = 80 - 25 + 10"
+      },
+      {
+       "id": "opt-c",
+       "label": "Residual = 80 - 25 - 10"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Subtract both the elevation rise and the given friction loss from the supply head."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact residual head in m.",
+    "unitOptions": [
+     {
+      "id": "m",
+      "label": "m"
+     },
+     {
+      "id": "cm",
+      "label": "cm",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "100"
+      }
+     },
+     {
+      "id": "mm",
+      "label": "mm",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "kPa",
+      "label": "kPa"
+     }
+    ],
+    "expected": "45",
+    "expectedUnitId": "m",
+    "absoluteTolerance": "0",
+    "explanation": "Residual head = 80 - 25 - 10 m at the highest service."
+   }
+  },
+  {
+   "id": "c2wd-error01",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this affinity law head calculation for a pump sped from 1000 rpm to 1250 rpm.",
+   "topicId": "affinity-laws-head",
+   "level": "class1",
+   "assumptions": "Fictional booster pump: head at 1000 rpm is 40 m. Affinity laws: flow varies with speed ratio, head varies with speed ratio squared, power varies with speed ratio cubed. Target: head at 1250 rpm in m.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Speed ratio = 1250 rpm / 1000 rpm = 1.25"
+    },
+    {
+     "id": "line2",
+     "label": "2. Head ratio = speed ratio = 1.25"
+    },
+    {
+     "id": "line3",
+     "label": "3. Head at 1250 rpm = 40 m * 1.25 = 50 m"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Head ratio = (speed ratio) squared = (1.25)^2 = 1.5625, so head at 1250 rpm = 40 m * 1.5625 = 62.5 m",
+   "explanation": "Line 2 used the speed ratio to the first power for head. Head varies with the square of the speed ratio, so the new head is 62.5 m, not 50 m."
+  },
+  {
+   "id": "c2wd-error02",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this affinity law head calculation for a pump sped from 1200 rpm to 1800 rpm.",
+   "topicId": "affinity-laws-head",
+   "level": "class1",
+   "assumptions": "Fictional booster pump: head at 1200 rpm is 30 m. Affinity laws: flow varies with speed ratio, head varies with speed ratio squared, power varies with speed ratio cubed. Target: head at 1800 rpm in m.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Speed ratio = 1800 rpm / 1200 rpm = 1.5"
+    },
+    {
+     "id": "line2",
+     "label": "2. Head ratio = speed ratio = 1.5"
+    },
+    {
+     "id": "line3",
+     "label": "3. Head at 1800 rpm = 30 m * 1.5 = 45 m"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Head ratio = (speed ratio) squared = (1.5)^2 = 2.25, so head at 1800 rpm = 30 m * 2.25 = 67.5 m",
+   "explanation": "Line 2 used the speed ratio to the first power for head. Head varies with the square of the speed ratio, so the new head is 67.5 m, not 45 m."
+  },
+  {
+   "id": "c2wd-error03",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this affinity law head calculation for a pump sped from 900 rpm to 1080 rpm.",
+   "topicId": "affinity-laws-head",
+   "level": "class1",
+   "assumptions": "Fictional booster pump: head at 900 rpm is 50 m. Affinity laws: flow varies with speed ratio, head varies with speed ratio squared, power varies with speed ratio cubed. Target: head at 1080 rpm in m.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Speed ratio = 1080 rpm / 900 rpm = 1.2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Head ratio = speed ratio = 1.2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Head at 1080 rpm = 50 m * 1.2 = 60 m"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Head ratio = (speed ratio) squared = (1.2)^2 = 1.44, so head at 1080 rpm = 50 m * 1.44 = 72 m",
+   "explanation": "Line 2 used the speed ratio to the first power for head. Head varies with the square of the speed ratio, so the new head is 72 m, not 60 m."
+  },
+  {
+   "id": "c2wd-error04",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this affinity law head calculation for a pump sped from 1500 rpm to 1200 rpm.",
+   "topicId": "affinity-laws-head",
+   "level": "class1",
+   "assumptions": "Fictional booster pump: head at 1500 rpm is 60 m. Affinity laws: flow varies with speed ratio, head varies with speed ratio squared, power varies with speed ratio cubed. Target: head at 1200 rpm in m.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Speed ratio = 1200 rpm / 1500 rpm = 0.8"
+    },
+    {
+     "id": "line2",
+     "label": "2. Head ratio = speed ratio = 0.8"
+    },
+    {
+     "id": "line3",
+     "label": "3. Head at 1200 rpm = 60 m * 0.8 = 48 m"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Head ratio = (speed ratio) squared = (0.8)^2 = 0.64, so head at 1200 rpm = 60 m * 0.64 = 38.4 m",
+   "explanation": "Line 2 used the speed ratio to the first power for head. Head varies with the square of the speed ratio, so the new head is 38.4 m, not 48 m."
+  },
+  {
+   "id": "c2wd-error05",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this affinity law head calculation for a pump sped from 1000 rpm to 1500 rpm.",
+   "topicId": "affinity-laws-head",
+   "level": "class1",
+   "assumptions": "Fictional booster pump: head at 1000 rpm is 45 m. Affinity laws: flow varies with speed ratio, head varies with speed ratio squared, power varies with speed ratio cubed. Target: head at 1500 rpm in m.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Speed ratio = 1500 rpm / 1000 rpm = 1.5"
+    },
+    {
+     "id": "line2",
+     "label": "2. Head ratio = speed ratio = 1.5"
+    },
+    {
+     "id": "line3",
+     "label": "3. Head at 1500 rpm = 45 m * 1.5 = 67.5 m"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Head ratio = (speed ratio) squared = (1.5)^2 = 2.25, so head at 1500 rpm = 45 m * 2.25 = 101.25 m",
+   "explanation": "Line 2 used the speed ratio to the first power for head. Head varies with the square of the speed ratio, so the new head is 101.25 m, not 67.5 m."
+  },
+  {
+   "id": "c2wd-error06",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this affinity law head calculation for a pump sped from 1750 rpm to 1400 rpm.",
+   "topicId": "affinity-laws-head",
+   "level": "class1",
+   "assumptions": "Fictional booster pump: head at 1750 rpm is 80 m. Affinity laws: flow varies with speed ratio, head varies with speed ratio squared, power varies with speed ratio cubed. Target: head at 1400 rpm in m.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Speed ratio = 1400 rpm / 1750 rpm = 0.8"
+    },
+    {
+     "id": "line2",
+     "label": "2. Head ratio = speed ratio = 0.8"
+    },
+    {
+     "id": "line3",
+     "label": "3. Head at 1400 rpm = 80 m * 0.8 = 64 m"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Head ratio = (speed ratio) squared = (0.8)^2 = 0.64, so head at 1400 rpm = 80 m * 0.64 = 51.2 m",
+   "explanation": "Line 2 used the speed ratio to the first power for head. Head varies with the square of the speed ratio, so the new head is 51.2 m, not 64 m."
+  },
+  {
+   "id": "c2wd-error07",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this affinity law head calculation for a pump sped from 800 rpm to 1000 rpm.",
+   "topicId": "affinity-laws-head",
+   "level": "class1",
+   "assumptions": "Fictional booster pump: head at 800 rpm is 25 m. Affinity laws: flow varies with speed ratio, head varies with speed ratio squared, power varies with speed ratio cubed. Target: head at 1000 rpm in m.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Speed ratio = 1000 rpm / 800 rpm = 1.25"
+    },
+    {
+     "id": "line2",
+     "label": "2. Head ratio = speed ratio = 1.25"
+    },
+    {
+     "id": "line3",
+     "label": "3. Head at 1000 rpm = 25 m * 1.25 = 31.25 m"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Head ratio = (speed ratio) squared = (1.25)^2 = 1.5625, so head at 1000 rpm = 25 m * 1.5625 = 39.0625 m",
+   "explanation": "Line 2 used the speed ratio to the first power for head. Head varies with the square of the speed ratio, so the new head is 39.0625 m, not 31.25 m."
+  },
+  {
+   "id": "c2wd-error08",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this affinity law head calculation for a pump sped from 1100 rpm to 990 rpm.",
+   "topicId": "affinity-laws-head",
+   "level": "class1",
+   "assumptions": "Fictional booster pump: head at 1100 rpm is 36 m. Affinity laws: flow varies with speed ratio, head varies with speed ratio squared, power varies with speed ratio cubed. Target: head at 990 rpm in m.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Speed ratio = 990 rpm / 1100 rpm = 0.9"
+    },
+    {
+     "id": "line2",
+     "label": "2. Head ratio = speed ratio = 0.9"
+    },
+    {
+     "id": "line3",
+     "label": "3. Head at 990 rpm = 36 m * 0.9 = 32.4 m"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Head ratio = (speed ratio) squared = (0.9)^2 = 0.81, so head at 990 rpm = 36 m * 0.81 = 29.16 m",
+   "explanation": "Line 2 used the speed ratio to the first power for head. Head varies with the square of the speed ratio, so the new head is 29.16 m, not 32.4 m."
+  },
+  {
+   "id": "c2wd-error09",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this affinity law head calculation for a pump sped from 1000 rpm to 1100 rpm.",
+   "topicId": "affinity-laws-head",
+   "level": "class1",
+   "assumptions": "Fictional booster pump: head at 1000 rpm is 55 m. Affinity laws: flow varies with speed ratio, head varies with speed ratio squared, power varies with speed ratio cubed. Target: head at 1100 rpm in m.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Speed ratio = 1100 rpm / 1000 rpm = 1.1"
+    },
+    {
+     "id": "line2",
+     "label": "2. Head ratio = speed ratio = 1.1"
+    },
+    {
+     "id": "line3",
+     "label": "3. Head at 1100 rpm = 55 m * 1.1 = 60.5 m"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Head ratio = (speed ratio) squared = (1.1)^2 = 1.21, so head at 1100 rpm = 55 m * 1.21 = 66.55 m",
+   "explanation": "Line 2 used the speed ratio to the first power for head. Head varies with the square of the speed ratio, so the new head is 66.55 m, not 60.5 m."
+  },
+  {
+   "id": "c2wd-error10",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this affinity law head calculation for a pump sped from 1400 rpm to 1750 rpm.",
+   "topicId": "affinity-laws-head",
+   "level": "class1",
+   "assumptions": "Fictional booster pump: head at 1400 rpm is 70 m. Affinity laws: flow varies with speed ratio, head varies with speed ratio squared, power varies with speed ratio cubed. Target: head at 1750 rpm in m.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Speed ratio = 1750 rpm / 1400 rpm = 1.25"
+    },
+    {
+     "id": "line2",
+     "label": "2. Head ratio = speed ratio = 1.25"
+    },
+    {
+     "id": "line3",
+     "label": "3. Head at 1750 rpm = 70 m * 1.25 = 87.5 m"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Head ratio = (speed ratio) squared = (1.25)^2 = 1.5625, so head at 1750 rpm = 70 m * 1.5625 = 109.375 m",
+   "explanation": "Line 2 used the speed ratio to the first power for head. Head varies with the square of the speed ratio, so the new head is 109.375 m, not 87.5 m."
+  },
+  {
+   "id": "c2wd-error100",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this large meter accuracy correction for a commercial customer meter.",
+   "topicId": "large-meter-accuracy",
+   "level": "class1",
+   "assumptions": "Fictional large meter test: meter indicated 8910 m3 over the test period, tested accuracy 99 percent, meaning the meter registers 99 percent of the actual volume. Actual volume equals indicated volume divided by the accuracy as a decimal. Target: actual volume in m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Accuracy as a decimal = 99 percent / 100 = 0.99"
+    },
+    {
+     "id": "line2",
+     "label": "2. Actual volume = 8910 m3 * 0.99 = 8820.9 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Actual volume reported = 8820.9 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Actual volume = 8910 m3 / 0.99 = 9000 m3",
+   "explanation": "Line 2 multiplied by the accuracy. A meter registering only 99 percent reads low, so the indicated volume is divided by 0.99: 8910 / 0.99 = 9000 m3, not 8820.9 m3."
+  },
+  {
+   "id": "c2wd-error11",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this affinity law head calculation for a pump sped from 1600 rpm to 1280 rpm.",
+   "topicId": "affinity-laws-head",
+   "level": "class1",
+   "assumptions": "Fictional booster pump: head at 1600 rpm is 48 m. Affinity laws: flow varies with speed ratio, head varies with speed ratio squared, power varies with speed ratio cubed. Target: head at 1280 rpm in m.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Speed ratio = 1280 rpm / 1600 rpm = 0.8"
+    },
+    {
+     "id": "line2",
+     "label": "2. Head ratio = speed ratio = 0.8"
+    },
+    {
+     "id": "line3",
+     "label": "3. Head at 1280 rpm = 48 m * 0.8 = 38.4 m"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Head ratio = (speed ratio) squared = (0.8)^2 = 0.64, so head at 1280 rpm = 48 m * 0.64 = 30.72 m",
+   "explanation": "Line 2 used the speed ratio to the first power for head. Head varies with the square of the speed ratio, so the new head is 30.72 m, not 38.4 m."
+  },
+  {
+   "id": "c2wd-error12",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this affinity law head calculation for a pump sped from 750 rpm to 1500 rpm.",
+   "topicId": "affinity-laws-head",
+   "level": "class1",
+   "assumptions": "Fictional booster pump: head at 750 rpm is 20 m. Affinity laws: flow varies with speed ratio, head varies with speed ratio squared, power varies with speed ratio cubed. Target: head at 1500 rpm in m.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Speed ratio = 1500 rpm / 750 rpm = 2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Head ratio = speed ratio = 2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Head at 1500 rpm = 20 m * 2 = 40 m"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Head ratio = (speed ratio) squared = (2)^2 = 4, so head at 1500 rpm = 20 m * 4 = 80 m",
+   "explanation": "Line 2 used the speed ratio to the first power for head. Head varies with the square of the speed ratio, so the new head is 80 m, not 40 m."
+  },
+  {
+   "id": "c2wd-error13",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this affinity law power calculation for a pump sped from 1000 rpm to 1250 rpm.",
+   "topicId": "affinity-laws-power",
+   "level": "class1",
+   "assumptions": "Fictional distribution pump: power draw at 1000 rpm is 20 kW. Affinity laws: flow varies with speed ratio, head varies with speed ratio squared, power varies with speed ratio cubed. Target: power at 1250 rpm in kW.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Speed ratio = 1250 rpm / 1000 rpm = 1.25"
+    },
+    {
+     "id": "line2",
+     "label": "2. Power ratio = (speed ratio) squared = (1.25)^2 = 1.5625"
+    },
+    {
+     "id": "line3",
+     "label": "3. Power at 1250 rpm = 20 kW * 1.5625 = 31.25 kW"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Power ratio = (speed ratio) cubed, so power at 1250 rpm = 20 kW * (1.25)^3 = 39.0625 kW",
+   "explanation": "Line 2 squared the speed ratio for power. Power varies with the cube of the speed ratio, so the new power is 39.0625 kW, not 31.25 kW."
+  },
+  {
+   "id": "c2wd-error14",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this affinity law power calculation for a pump sped from 1000 rpm to 1500 rpm.",
+   "topicId": "affinity-laws-power",
+   "level": "class1",
+   "assumptions": "Fictional distribution pump: power draw at 1000 rpm is 16 kW. Affinity laws: flow varies with speed ratio, head varies with speed ratio squared, power varies with speed ratio cubed. Target: power at 1500 rpm in kW.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Speed ratio = 1500 rpm / 1000 rpm = 1.5"
+    },
+    {
+     "id": "line2",
+     "label": "2. Power ratio = (speed ratio) squared = (1.5)^2 = 2.25"
+    },
+    {
+     "id": "line3",
+     "label": "3. Power at 1500 rpm = 16 kW * 2.25 = 36 kW"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Power ratio = (speed ratio) cubed, so power at 1500 rpm = 16 kW * (1.5)^3 = 54 kW",
+   "explanation": "Line 2 squared the speed ratio for power. Power varies with the cube of the speed ratio, so the new power is 54 kW, not 36 kW."
+  },
+  {
+   "id": "c2wd-error15",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this affinity law power calculation for a pump sped from 1000 rpm to 1200 rpm.",
+   "topicId": "affinity-laws-power",
+   "level": "class1",
+   "assumptions": "Fictional distribution pump: power draw at 1000 rpm is 30 kW. Affinity laws: flow varies with speed ratio, head varies with speed ratio squared, power varies with speed ratio cubed. Target: power at 1200 rpm in kW.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Speed ratio = 1200 rpm / 1000 rpm = 1.2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Power ratio = (speed ratio) squared = (1.2)^2 = 1.44"
+    },
+    {
+     "id": "line3",
+     "label": "3. Power at 1200 rpm = 30 kW * 1.44 = 43.2 kW"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Power ratio = (speed ratio) cubed, so power at 1200 rpm = 30 kW * (1.2)^3 = 51.84 kW",
+   "explanation": "Line 2 squared the speed ratio for power. Power varies with the cube of the speed ratio, so the new power is 51.84 kW, not 43.2 kW."
+  },
+  {
+   "id": "c2wd-error16",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this affinity law power calculation for a pump sped from 1250 rpm to 1000 rpm.",
+   "topicId": "affinity-laws-power",
+   "level": "class1",
+   "assumptions": "Fictional distribution pump: power draw at 1250 rpm is 50 kW. Affinity laws: flow varies with speed ratio, head varies with speed ratio squared, power varies with speed ratio cubed. Target: power at 1000 rpm in kW.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Speed ratio = 1000 rpm / 1250 rpm = 0.8"
+    },
+    {
+     "id": "line2",
+     "label": "2. Power ratio = (speed ratio) squared = (0.8)^2 = 0.64"
+    },
+    {
+     "id": "line3",
+     "label": "3. Power at 1000 rpm = 50 kW * 0.64 = 32 kW"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Power ratio = (speed ratio) cubed, so power at 1000 rpm = 50 kW * (0.8)^3 = 25.6 kW",
+   "explanation": "Line 2 squared the speed ratio for power. Power varies with the cube of the speed ratio, so the new power is 25.6 kW, not 32 kW."
+  },
+  {
+   "id": "c2wd-error17",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this affinity law power calculation for a pump sped from 1000 rpm to 1100 rpm.",
+   "topicId": "affinity-laws-power",
+   "level": "class1",
+   "assumptions": "Fictional distribution pump: power draw at 1000 rpm is 24 kW. Affinity laws: flow varies with speed ratio, head varies with speed ratio squared, power varies with speed ratio cubed. Target: power at 1100 rpm in kW.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Speed ratio = 1100 rpm / 1000 rpm = 1.1"
+    },
+    {
+     "id": "line2",
+     "label": "2. Power ratio = (speed ratio) squared = (1.1)^2 = 1.21"
+    },
+    {
+     "id": "line3",
+     "label": "3. Power at 1100 rpm = 24 kW * 1.21 = 29.04 kW"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Power ratio = (speed ratio) cubed, so power at 1100 rpm = 24 kW * (1.1)^3 = 31.944 kW",
+   "explanation": "Line 2 squared the speed ratio for power. Power varies with the cube of the speed ratio, so the new power is 31.944 kW, not 29.04 kW."
+  },
+  {
+   "id": "c2wd-error18",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this affinity law power calculation for a pump sped from 750 rpm to 1500 rpm.",
+   "topicId": "affinity-laws-power",
+   "level": "class1",
+   "assumptions": "Fictional distribution pump: power draw at 750 rpm is 10 kW. Affinity laws: flow varies with speed ratio, head varies with speed ratio squared, power varies with speed ratio cubed. Target: power at 1500 rpm in kW.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Speed ratio = 1500 rpm / 750 rpm = 2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Power ratio = (speed ratio) squared = (2)^2 = 4"
+    },
+    {
+     "id": "line3",
+     "label": "3. Power at 1500 rpm = 10 kW * 4 = 40 kW"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Power ratio = (speed ratio) cubed, so power at 1500 rpm = 10 kW * (2)^3 = 80 kW",
+   "explanation": "Line 2 squared the speed ratio for power. Power varies with the cube of the speed ratio, so the new power is 80 kW, not 40 kW."
+  },
+  {
+   "id": "c2wd-error19",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this affinity law power calculation for a pump sped from 1000 rpm to 900 rpm.",
+   "topicId": "affinity-laws-power",
+   "level": "class1",
+   "assumptions": "Fictional distribution pump: power draw at 1000 rpm is 40 kW. Affinity laws: flow varies with speed ratio, head varies with speed ratio squared, power varies with speed ratio cubed. Target: power at 900 rpm in kW.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Speed ratio = 900 rpm / 1000 rpm = 0.9"
+    },
+    {
+     "id": "line2",
+     "label": "2. Power ratio = (speed ratio) squared = (0.9)^2 = 0.81"
+    },
+    {
+     "id": "line3",
+     "label": "3. Power at 900 rpm = 40 kW * 0.81 = 32.4 kW"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Power ratio = (speed ratio) cubed, so power at 900 rpm = 40 kW * (0.9)^3 = 29.16 kW",
+   "explanation": "Line 2 squared the speed ratio for power. Power varies with the cube of the speed ratio, so the new power is 29.16 kW, not 32.4 kW."
+  },
+  {
+   "id": "c2wd-error20",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this affinity law power calculation for a pump sped from 800 rpm to 1000 rpm.",
+   "topicId": "affinity-laws-power",
+   "level": "class1",
+   "assumptions": "Fictional distribution pump: power draw at 800 rpm is 32 kW. Affinity laws: flow varies with speed ratio, head varies with speed ratio squared, power varies with speed ratio cubed. Target: power at 1000 rpm in kW.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Speed ratio = 1000 rpm / 800 rpm = 1.25"
+    },
+    {
+     "id": "line2",
+     "label": "2. Power ratio = (speed ratio) squared = (1.25)^2 = 1.5625"
+    },
+    {
+     "id": "line3",
+     "label": "3. Power at 1000 rpm = 32 kW * 1.5625 = 50 kW"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Power ratio = (speed ratio) cubed, so power at 1000 rpm = 32 kW * (1.25)^3 = 62.5 kW",
+   "explanation": "Line 2 squared the speed ratio for power. Power varies with the cube of the speed ratio, so the new power is 62.5 kW, not 50 kW."
+  },
+  {
+   "id": "c2wd-error21",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this affinity law power calculation for a pump sped from 900 rpm to 1080 rpm.",
+   "topicId": "affinity-laws-power",
+   "level": "class1",
+   "assumptions": "Fictional distribution pump: power draw at 900 rpm is 45 kW. Affinity laws: flow varies with speed ratio, head varies with speed ratio squared, power varies with speed ratio cubed. Target: power at 1080 rpm in kW.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Speed ratio = 1080 rpm / 900 rpm = 1.2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Power ratio = (speed ratio) squared = (1.2)^2 = 1.44"
+    },
+    {
+     "id": "line3",
+     "label": "3. Power at 1080 rpm = 45 kW * 1.44 = 64.8 kW"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Power ratio = (speed ratio) cubed, so power at 1080 rpm = 45 kW * (1.2)^3 = 77.76 kW",
+   "explanation": "Line 2 squared the speed ratio for power. Power varies with the cube of the speed ratio, so the new power is 77.76 kW, not 64.8 kW."
+  },
+  {
+   "id": "c2wd-error22",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this affinity law power calculation for a pump sped from 1500 rpm to 1200 rpm.",
+   "topicId": "affinity-laws-power",
+   "level": "class1",
+   "assumptions": "Fictional distribution pump: power draw at 1500 rpm is 60 kW. Affinity laws: flow varies with speed ratio, head varies with speed ratio squared, power varies with speed ratio cubed. Target: power at 1200 rpm in kW.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Speed ratio = 1200 rpm / 1500 rpm = 0.8"
+    },
+    {
+     "id": "line2",
+     "label": "2. Power ratio = (speed ratio) squared = (0.8)^2 = 0.64"
+    },
+    {
+     "id": "line3",
+     "label": "3. Power at 1200 rpm = 60 kW * 0.64 = 38.4 kW"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Power ratio = (speed ratio) cubed, so power at 1200 rpm = 60 kW * (0.8)^3 = 30.72 kW",
+   "explanation": "Line 2 squared the speed ratio for power. Power varies with the cube of the speed ratio, so the new power is 30.72 kW, not 38.4 kW."
+  },
+  {
+   "id": "c2wd-error23",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this affinity law power calculation for a pump sped from 800 rpm to 1200 rpm.",
+   "topicId": "affinity-laws-power",
+   "level": "class1",
+   "assumptions": "Fictional distribution pump: power draw at 800 rpm is 15 kW. Affinity laws: flow varies with speed ratio, head varies with speed ratio squared, power varies with speed ratio cubed. Target: power at 1200 rpm in kW.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Speed ratio = 1200 rpm / 800 rpm = 1.5"
+    },
+    {
+     "id": "line2",
+     "label": "2. Power ratio = (speed ratio) squared = (1.5)^2 = 2.25"
+    },
+    {
+     "id": "line3",
+     "label": "3. Power at 1200 rpm = 15 kW * 2.25 = 33.75 kW"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Power ratio = (speed ratio) cubed, so power at 1200 rpm = 15 kW * (1.5)^3 = 50.625 kW",
+   "explanation": "Line 2 squared the speed ratio for power. Power varies with the cube of the speed ratio, so the new power is 50.625 kW, not 33.75 kW."
+  },
+  {
+   "id": "c2wd-error24",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this affinity law power calculation for a pump sped from 1100 rpm to 1210 rpm.",
+   "topicId": "affinity-laws-power",
+   "level": "class1",
+   "assumptions": "Fictional distribution pump: power draw at 1100 rpm is 36 kW. Affinity laws: flow varies with speed ratio, head varies with speed ratio squared, power varies with speed ratio cubed. Target: power at 1210 rpm in kW.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Speed ratio = 1210 rpm / 1100 rpm = 1.1"
+    },
+    {
+     "id": "line2",
+     "label": "2. Power ratio = (speed ratio) squared = (1.1)^2 = 1.21"
+    },
+    {
+     "id": "line3",
+     "label": "3. Power at 1210 rpm = 36 kW * 1.21 = 43.56 kW"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Power ratio = (speed ratio) cubed, so power at 1210 rpm = 36 kW * (1.1)^3 = 47.916 kW",
+   "explanation": "Line 2 squared the speed ratio for power. Power varies with the cube of the speed ratio, so the new power is 47.916 kW, not 43.56 kW."
+  },
+  {
+   "id": "c2wd-error25",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this head loss calculation for 750 m of main with a given unit loss rate.",
+   "topicId": "head-loss-unit-rate",
+   "level": "class1",
+   "assumptions": "Fictional watermain reach: length 750 m, given unit head loss rate 0.8 m per 100 m at the design flow. Target: total head loss in m.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Unit head loss rate = 0.8 m per 100 m of main, length = 750 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Number of 100 m units = 750 m / 100 m = 7.5"
+    },
+    {
+     "id": "line3",
+     "label": "3. Head loss = 0.8 m per 100 m * 750 m = 600 m"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Head loss = 0.8 m per 100 m * 7.5 = 6 m",
+   "explanation": "The rate applies per 100 m, not per metre. The reach has 7.5 units of 100 m, so head loss is 0.8 * 7.5 = 6 m, not 600 m."
+  },
+  {
+   "id": "c2wd-error26",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this head loss calculation for 450 m of main with a given unit loss rate.",
+   "topicId": "head-loss-unit-rate",
+   "level": "class1",
+   "assumptions": "Fictional watermain reach: length 450 m, given unit head loss rate 1.2 m per 100 m at the design flow. Target: total head loss in m.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Unit head loss rate = 1.2 m per 100 m of main, length = 450 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Number of 100 m units = 450 m / 100 m = 4.5"
+    },
+    {
+     "id": "line3",
+     "label": "3. Head loss = 1.2 m per 100 m * 450 m = 540 m"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Head loss = 1.2 m per 100 m * 4.5 = 5.4 m",
+   "explanation": "The rate applies per 100 m, not per metre. The reach has 4.5 units of 100 m, so head loss is 1.2 * 4.5 = 5.4 m, not 540 m."
+  },
+  {
+   "id": "c2wd-error27",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this head loss calculation for 1200 m of main with a given unit loss rate.",
+   "topicId": "head-loss-unit-rate",
+   "level": "class1",
+   "assumptions": "Fictional watermain reach: length 1200 m, given unit head loss rate 0.6 m per 100 m at the design flow. Target: total head loss in m.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total main length = 600 m + 600 m = 1200 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Head loss = 0.6 m per 100 m * 1200 m = 720 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total head loss for the reach = 720 m"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Head loss = 0.6 m per 100 m * (1200 m / 100 m) = 7.2 m",
+   "explanation": "The rate applies per 100 m, not per metre. The reach has 12 units of 100 m, so head loss is 0.6 * 12 = 7.2 m, not 720 m."
+  },
+  {
+   "id": "c2wd-error28",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this head loss calculation for 640 m of main with a given unit loss rate.",
+   "topicId": "head-loss-unit-rate",
+   "level": "class1",
+   "assumptions": "Fictional watermain reach: length 640 m, given unit head loss rate 1.5 m per 100 m at the design flow. Target: total head loss in m.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Unit head loss rate = 1.5 m per 100 m of main, length = 640 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Number of 100 m units = 640 m / 100 m = 6.4"
+    },
+    {
+     "id": "line3",
+     "label": "3. Head loss = 1.5 m per 100 m * 640 m = 960 m"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Head loss = 1.5 m per 100 m * 6.4 = 9.6 m",
+   "explanation": "The rate applies per 100 m, not per metre. The reach has 6.4 units of 100 m, so head loss is 1.5 * 6.4 = 9.6 m, not 960 m."
+  },
+  {
+   "id": "c2wd-error29",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this head loss calculation for 800 m of main with a given unit loss rate.",
+   "topicId": "head-loss-unit-rate",
+   "level": "class1",
+   "assumptions": "Fictional watermain reach: length 800 m, given unit head loss rate 0.45 m per 100 m at the design flow. Target: total head loss in m.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Unit head loss rate = 0.45 m per 100 m of main, length = 800 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Number of 100 m units = 800 m / 100 m = 8"
+    },
+    {
+     "id": "line3",
+     "label": "3. Head loss = 0.45 m per 100 m * 800 m = 360 m"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Head loss = 0.45 m per 100 m * 8 = 3.6 m",
+   "explanation": "The rate applies per 100 m, not per metre. The reach has 8 units of 100 m, so head loss is 0.45 * 8 = 3.6 m, not 360 m."
+  },
+  {
+   "id": "c2wd-error30",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this head loss calculation for 350 m of main with a given unit loss rate.",
+   "topicId": "head-loss-unit-rate",
+   "level": "class1",
+   "assumptions": "Fictional watermain reach: length 350 m, given unit head loss rate 2 m per 100 m at the design flow. Target: total head loss in m.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total main length = 175 m + 175 m = 350 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Head loss = 2 m per 100 m * 350 m = 700 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total head loss for the reach = 700 m"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Head loss = 2 m per 100 m * (350 m / 100 m) = 7 m",
+   "explanation": "The rate applies per 100 m, not per metre. The reach has 3.5 units of 100 m, so head loss is 2 * 3.5 = 7 m, not 700 m."
+  },
+  {
+   "id": "c2wd-error31",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this head loss calculation for 500 m of main with a given unit loss rate.",
+   "topicId": "head-loss-unit-rate",
+   "level": "class1",
+   "assumptions": "Fictional watermain reach: length 500 m, given unit head loss rate 1.1 m per 100 m at the design flow. Target: total head loss in m.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Unit head loss rate = 1.1 m per 100 m of main, length = 500 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Number of 100 m units = 500 m / 100 m = 5"
+    },
+    {
+     "id": "line3",
+     "label": "3. Head loss = 1.1 m per 100 m * 500 m = 550 m"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Head loss = 1.1 m per 100 m * 5 = 5.5 m",
+   "explanation": "The rate applies per 100 m, not per metre. The reach has 5 units of 100 m, so head loss is 1.1 * 5 = 5.5 m, not 550 m."
+  },
+  {
+   "id": "c2wd-error32",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this head loss calculation for 1000 m of main with a given unit loss rate.",
+   "topicId": "head-loss-unit-rate",
+   "level": "class1",
+   "assumptions": "Fictional watermain reach: length 1000 m, given unit head loss rate 0.75 m per 100 m at the design flow. Target: total head loss in m.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Unit head loss rate = 0.75 m per 100 m of main, length = 1000 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Number of 100 m units = 1000 m / 100 m = 10"
+    },
+    {
+     "id": "line3",
+     "label": "3. Head loss = 0.75 m per 100 m * 1000 m = 750 m"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Head loss = 0.75 m per 100 m * 10 = 7.5 m",
+   "explanation": "The rate applies per 100 m, not per metre. The reach has 10 units of 100 m, so head loss is 0.75 * 10 = 7.5 m, not 750 m."
+  },
+  {
+   "id": "c2wd-error33",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this head loss calculation for 250 m of main with a given unit loss rate.",
+   "topicId": "head-loss-unit-rate",
+   "level": "class1",
+   "assumptions": "Fictional watermain reach: length 250 m, given unit head loss rate 1.8 m per 100 m at the design flow. Target: total head loss in m.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total main length = 125 m + 125 m = 250 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Head loss = 1.8 m per 100 m * 250 m = 450 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total head loss for the reach = 450 m"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Head loss = 1.8 m per 100 m * (250 m / 100 m) = 4.5 m",
+   "explanation": "The rate applies per 100 m, not per metre. The reach has 2.5 units of 100 m, so head loss is 1.8 * 2.5 = 4.5 m, not 450 m."
+  },
+  {
+   "id": "c2wd-error34",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this head loss calculation for 1300 m of main with a given unit loss rate.",
+   "topicId": "head-loss-unit-rate",
+   "level": "class1",
+   "assumptions": "Fictional watermain reach: length 1300 m, given unit head loss rate 0.4 m per 100 m at the design flow. Target: total head loss in m.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Unit head loss rate = 0.4 m per 100 m of main, length = 1300 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Number of 100 m units = 1300 m / 100 m = 13"
+    },
+    {
+     "id": "line3",
+     "label": "3. Head loss = 0.4 m per 100 m * 1300 m = 520 m"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Head loss = 0.4 m per 100 m * 13 = 5.2 m",
+   "explanation": "The rate applies per 100 m, not per metre. The reach has 13 units of 100 m, so head loss is 0.4 * 13 = 5.2 m, not 520 m."
+  },
+  {
+   "id": "c2wd-error35",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this head loss calculation for 425 m of main with a given unit loss rate.",
+   "topicId": "head-loss-unit-rate",
+   "level": "class1",
+   "assumptions": "Fictional watermain reach: length 425 m, given unit head loss rate 1.6 m per 100 m at the design flow. Target: total head loss in m.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Unit head loss rate = 1.6 m per 100 m of main, length = 425 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Number of 100 m units = 425 m / 100 m = 4.25"
+    },
+    {
+     "id": "line3",
+     "label": "3. Head loss = 1.6 m per 100 m * 425 m = 680 m"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Head loss = 1.6 m per 100 m * 4.25 = 6.8 m",
+   "explanation": "The rate applies per 100 m, not per metre. The reach has 4.25 units of 100 m, so head loss is 1.6 * 4.25 = 6.8 m, not 680 m."
+  },
+  {
+   "id": "c2wd-error36",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this head loss calculation for 400 m of main with a given unit loss rate.",
+   "topicId": "head-loss-unit-rate",
+   "level": "class1",
+   "assumptions": "Fictional watermain reach: length 400 m, given unit head loss rate 0.85 m per 100 m at the design flow. Target: total head loss in m.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total main length = 200 m + 200 m = 400 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Head loss = 0.85 m per 100 m * 400 m = 340 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total head loss for the reach = 340 m"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Head loss = 0.85 m per 100 m * (400 m / 100 m) = 3.4 m",
+   "explanation": "The rate applies per 100 m, not per metre. The reach has 4 units of 100 m, so head loss is 0.85 * 4 = 3.4 m, not 340 m."
+  },
+  {
+   "id": "c2wd-error37",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this storage turnover time calculation for an elevated tank.",
+   "topicId": "storage-turnover",
+   "level": "class1",
+   "assumptions": "Fictional elevated tank: usable volume 1200 m3, average daily inflow 400 m3/day, average daily outflow to the system 300 m3/day. Turnover time is based on water leaving storage. Target: turnover time in days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Tank volume = 1200 m3, outflow = 300 m3/day, inflow = 400 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Turnover time = Volume / Inflow = 1200 m3 / 400 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Turnover time = 3 days"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Turnover time = Volume / Outflow = 1200 m3 / 300 m3/day = 4 days",
+   "explanation": "Line 2 divided by inflow. Turnover describes how long stored water stays before leaving, so it uses outflow: 1200 / 300 = 4 days, not 3 days."
+  },
+  {
+   "id": "c2wd-error38",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this storage turnover time calculation for an elevated tank.",
+   "topicId": "storage-turnover",
+   "level": "class1",
+   "assumptions": "Fictional elevated tank: usable volume 900 m3, average daily inflow 450 m3/day, average daily outflow to the system 300 m3/day. Turnover time is based on water leaving storage. Target: turnover time in days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Tank volume = 900 m3, outflow = 300 m3/day, inflow = 450 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Turnover time = Volume / Inflow = 900 m3 / 450 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Turnover time = 2 days"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Turnover time = Volume / Outflow = 900 m3 / 300 m3/day = 3 days",
+   "explanation": "Line 2 divided by inflow. Turnover describes how long stored water stays before leaving, so it uses outflow: 900 / 300 = 3 days, not 2 days."
+  },
+  {
+   "id": "c2wd-error39",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this storage turnover time calculation for an elevated tank.",
+   "topicId": "storage-turnover",
+   "level": "class1",
+   "assumptions": "Fictional elevated tank: usable volume 1500 m3, average daily inflow 500 m3/day, average daily outflow to the system 375 m3/day. Turnover time is based on water leaving storage. Target: turnover time in days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Tank volume = 1500 m3, outflow = 375 m3/day, inflow = 500 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Turnover time = Volume / Inflow = 1500 m3 / 500 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Turnover time = 3 days"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Turnover time = Volume / Outflow = 1500 m3 / 375 m3/day = 4 days",
+   "explanation": "Line 2 divided by inflow. Turnover describes how long stored water stays before leaving, so it uses outflow: 1500 / 375 = 4 days, not 3 days."
+  },
+  {
+   "id": "c2wd-error40",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this storage turnover time calculation for an elevated tank.",
+   "topicId": "storage-turnover",
+   "level": "class1",
+   "assumptions": "Fictional elevated tank: usable volume 2000 m3, average daily inflow 800 m3/day, average daily outflow to the system 500 m3/day. Turnover time is based on water leaving storage. Target: turnover time in days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Tank volume = 2000 m3, outflow = 500 m3/day, inflow = 800 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Turnover time = Volume / Inflow = 2000 m3 / 800 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Turnover time = 2.5 days"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Turnover time = Volume / Outflow = 2000 m3 / 500 m3/day = 4 days",
+   "explanation": "Line 2 divided by inflow. Turnover describes how long stored water stays before leaving, so it uses outflow: 2000 / 500 = 4 days, not 2.5 days."
+  },
+  {
+   "id": "c2wd-error41",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this storage turnover time calculation for an elevated tank.",
+   "topicId": "storage-turnover",
+   "level": "class1",
+   "assumptions": "Fictional elevated tank: usable volume 750 m3, average daily inflow 375 m3/day, average daily outflow to the system 250 m3/day. Turnover time is based on water leaving storage. Target: turnover time in days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Tank volume = 750 m3, outflow = 250 m3/day, inflow = 375 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Turnover time = Volume / Inflow = 750 m3 / 375 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Turnover time = 2 days"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Turnover time = Volume / Outflow = 750 m3 / 250 m3/day = 3 days",
+   "explanation": "Line 2 divided by inflow. Turnover describes how long stored water stays before leaving, so it uses outflow: 750 / 250 = 3 days, not 2 days."
+  },
+  {
+   "id": "c2wd-error42",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this storage turnover time calculation for an elevated tank.",
+   "topicId": "storage-turnover",
+   "level": "class1",
+   "assumptions": "Fictional elevated tank: usable volume 1800 m3, average daily inflow 600 m3/day, average daily outflow to the system 450 m3/day. Turnover time is based on water leaving storage. Target: turnover time in days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Tank volume = 1800 m3, outflow = 450 m3/day, inflow = 600 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Turnover time = Volume / Inflow = 1800 m3 / 600 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Turnover time = 3 days"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Turnover time = Volume / Outflow = 1800 m3 / 450 m3/day = 4 days",
+   "explanation": "Line 2 divided by inflow. Turnover describes how long stored water stays before leaving, so it uses outflow: 1800 / 450 = 4 days, not 3 days."
+  },
+  {
+   "id": "c2wd-error43",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this storage turnover time calculation for an elevated tank.",
+   "topicId": "storage-turnover",
+   "level": "class1",
+   "assumptions": "Fictional elevated tank: usable volume 1000 m3, average daily inflow 400 m3/day, average daily outflow to the system 250 m3/day. Turnover time is based on water leaving storage. Target: turnover time in days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Tank volume = 1000 m3, outflow = 250 m3/day, inflow = 400 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Turnover time = Volume / Inflow = 1000 m3 / 400 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Turnover time = 2.5 days"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Turnover time = Volume / Outflow = 1000 m3 / 250 m3/day = 4 days",
+   "explanation": "Line 2 divided by inflow. Turnover describes how long stored water stays before leaving, so it uses outflow: 1000 / 250 = 4 days, not 2.5 days."
+  },
+  {
+   "id": "c2wd-error44",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this storage turnover time calculation for an elevated tank.",
+   "topicId": "storage-turnover",
+   "level": "class1",
+   "assumptions": "Fictional elevated tank: usable volume 640 m3, average daily inflow 320 m3/day, average daily outflow to the system 160 m3/day. Turnover time is based on water leaving storage. Target: turnover time in days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Tank volume = 640 m3, outflow = 160 m3/day, inflow = 320 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Turnover time = Volume / Inflow = 640 m3 / 320 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Turnover time = 2 days"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Turnover time = Volume / Outflow = 640 m3 / 160 m3/day = 4 days",
+   "explanation": "Line 2 divided by inflow. Turnover describes how long stored water stays before leaving, so it uses outflow: 640 / 160 = 4 days, not 2 days."
+  },
+  {
+   "id": "c2wd-error45",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this storage turnover time calculation for an elevated tank.",
+   "topicId": "storage-turnover",
+   "level": "class1",
+   "assumptions": "Fictional elevated tank: usable volume 2100 m3, average daily inflow 700 m3/day, average daily outflow to the system 350 m3/day. Turnover time is based on water leaving storage. Target: turnover time in days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Tank volume = 2100 m3, outflow = 350 m3/day, inflow = 700 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Turnover time = Volume / Inflow = 2100 m3 / 700 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Turnover time = 3 days"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Turnover time = Volume / Outflow = 2100 m3 / 350 m3/day = 6 days",
+   "explanation": "Line 2 divided by inflow. Turnover describes how long stored water stays before leaving, so it uses outflow: 2100 / 350 = 6 days, not 3 days."
+  },
+  {
+   "id": "c2wd-error46",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this storage turnover time calculation for an elevated tank.",
+   "topicId": "storage-turnover",
+   "level": "class1",
+   "assumptions": "Fictional elevated tank: usable volume 1350 m3, average daily inflow 450 m3/day, average daily outflow to the system 270 m3/day. Turnover time is based on water leaving storage. Target: turnover time in days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Tank volume = 1350 m3, outflow = 270 m3/day, inflow = 450 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Turnover time = Volume / Inflow = 1350 m3 / 450 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Turnover time = 3 days"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Turnover time = Volume / Outflow = 1350 m3 / 270 m3/day = 5 days",
+   "explanation": "Line 2 divided by inflow. Turnover describes how long stored water stays before leaving, so it uses outflow: 1350 / 270 = 5 days, not 3 days."
+  },
+  {
+   "id": "c2wd-error47",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this storage turnover time calculation for a ground reservoir.",
+   "topicId": "storage-turnover",
+   "level": "class1",
+   "assumptions": "Fictional ground reservoir: usable volume 1200 m3, average daily inflow 500 m3/day, average daily outflow to the system 300 m3/day. Turnover time is based on water leaving storage. Target: turnover time in days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Net inflow = 500 m3/day - 300 m3/day = 200 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Turnover time = Volume / Net inflow = 1200 m3 / 200 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Turnover time = 6 days"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Turnover time = Volume / Outflow = 1200 m3 / 300 m3/day = 4 days",
+   "explanation": "Line 2 divided by net inflow. Turnover uses the outflow that actually replaces stored water: 1200 / 300 = 4 days, not 6 days."
+  },
+  {
+   "id": "c2wd-error48",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this storage turnover time calculation for a ground reservoir.",
+   "topicId": "storage-turnover",
+   "level": "class1",
+   "assumptions": "Fictional ground reservoir: usable volume 1600 m3, average daily inflow 600 m3/day, average daily outflow to the system 400 m3/day. Turnover time is based on water leaving storage. Target: turnover time in days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Net inflow = 600 m3/day - 400 m3/day = 200 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Turnover time = Volume / Net inflow = 1600 m3 / 200 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Turnover time = 8 days"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Turnover time = Volume / Outflow = 1600 m3 / 400 m3/day = 4 days",
+   "explanation": "Line 2 divided by net inflow. Turnover uses the outflow that actually replaces stored water: 1600 / 400 = 4 days, not 8 days."
+  },
+  {
+   "id": "c2wd-error49",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this minimum night flow leakage calculation for a district metered area.",
+   "topicId": "night-flow-leakage",
+   "level": "class1",
+   "assumptions": "Fictional district metered area: minimum night flow 85 L/min, assessed legitimate night use 25 L/min. Leakage rate equals minimum night flow minus legitimate night use. Target: leakage rate in L/min.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Minimum night flow = 85 L/min, legitimate night use = 25 L/min"
+    },
+    {
+     "id": "line2",
+     "label": "2. Leakage rate = Minimum night flow = 85 L/min"
+    },
+    {
+     "id": "line3",
+     "label": "3. Leakage rate reported = 85 L/min"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Leakage rate = 85 L/min - 25 L/min = 60 L/min",
+   "explanation": "Line 2 reported the full night flow as leakage. Legitimate night use must be subtracted first: 85 - 25 = 60 L/min, not 85 L/min."
+  },
+  {
+   "id": "c2wd-error50",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this minimum night flow leakage calculation for a district metered area.",
+   "topicId": "night-flow-leakage",
+   "level": "class1",
+   "assumptions": "Fictional district metered area: minimum night flow 72 L/min, assessed legitimate night use 18 L/min. Leakage rate equals minimum night flow minus legitimate night use. Target: leakage rate in L/min.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Minimum night flow = 72 L/min, legitimate night use = 18 L/min"
+    },
+    {
+     "id": "line2",
+     "label": "2. Leakage rate = Minimum night flow = 72 L/min"
+    },
+    {
+     "id": "line3",
+     "label": "3. Leakage rate reported = 72 L/min"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Leakage rate = 72 L/min - 18 L/min = 54 L/min",
+   "explanation": "Line 2 reported the full night flow as leakage. Legitimate night use must be subtracted first: 72 - 18 = 54 L/min, not 72 L/min."
+  },
+  {
+   "id": "c2wd-error51",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this minimum night flow leakage calculation for a district metered area.",
+   "topicId": "night-flow-leakage",
+   "level": "class1",
+   "assumptions": "Fictional district metered area: minimum night flow 64 L/min, assessed legitimate night use 16 L/min. Leakage rate equals minimum night flow minus legitimate night use. Target: leakage rate in L/min.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Minimum night flow = 64 L/min, legitimate night use = 16 L/min"
+    },
+    {
+     "id": "line2",
+     "label": "2. Leakage rate = Minimum night flow = 64 L/min"
+    },
+    {
+     "id": "line3",
+     "label": "3. Leakage rate reported = 64 L/min"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Leakage rate = 64 L/min - 16 L/min = 48 L/min",
+   "explanation": "Line 2 reported the full night flow as leakage. Legitimate night use must be subtracted first: 64 - 16 = 48 L/min, not 64 L/min."
+  },
+  {
+   "id": "c2wd-error52",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this minimum night flow leakage calculation for a district metered area.",
+   "topicId": "night-flow-leakage",
+   "level": "class1",
+   "assumptions": "Fictional district metered area: minimum night flow 95 L/min, assessed legitimate night use 20 L/min. Leakage rate equals minimum night flow minus legitimate night use. Target: leakage rate in L/min.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Minimum night flow = 95 L/min, legitimate night use = 20 L/min"
+    },
+    {
+     "id": "line2",
+     "label": "2. Leakage rate = Minimum night flow = 95 L/min"
+    },
+    {
+     "id": "line3",
+     "label": "3. Leakage rate reported = 95 L/min"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Leakage rate = 95 L/min - 20 L/min = 75 L/min",
+   "explanation": "Line 2 reported the full night flow as leakage. Legitimate night use must be subtracted first: 95 - 20 = 75 L/min, not 95 L/min."
+  },
+  {
+   "id": "c2wd-error53",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this minimum night flow leakage calculation for a district metered area.",
+   "topicId": "night-flow-leakage",
+   "level": "class1",
+   "assumptions": "Fictional district metered area: minimum night flow 58 L/min, assessed legitimate night use 13 L/min. Leakage rate equals minimum night flow minus legitimate night use. Target: leakage rate in L/min.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Minimum night flow = 58 L/min, legitimate night use = 13 L/min"
+    },
+    {
+     "id": "line2",
+     "label": "2. Leakage rate = Minimum night flow = 58 L/min"
+    },
+    {
+     "id": "line3",
+     "label": "3. Leakage rate reported = 58 L/min"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Leakage rate = 58 L/min - 13 L/min = 45 L/min",
+   "explanation": "Line 2 reported the full night flow as leakage. Legitimate night use must be subtracted first: 58 - 13 = 45 L/min, not 58 L/min."
+  },
+  {
+   "id": "c2wd-error54",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this minimum night flow leakage calculation for a district metered area.",
+   "topicId": "night-flow-leakage",
+   "level": "class1",
+   "assumptions": "Fictional district metered area: minimum night flow 110 L/min, assessed legitimate night use 30 L/min. Leakage rate equals minimum night flow minus legitimate night use. Target: leakage rate in L/min.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Minimum night flow = 110 L/min, legitimate night use = 30 L/min"
+    },
+    {
+     "id": "line2",
+     "label": "2. Leakage rate = Minimum night flow = 110 L/min"
+    },
+    {
+     "id": "line3",
+     "label": "3. Leakage rate reported = 110 L/min"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Leakage rate = 110 L/min - 30 L/min = 80 L/min",
+   "explanation": "Line 2 reported the full night flow as leakage. Legitimate night use must be subtracted first: 110 - 30 = 80 L/min, not 110 L/min."
+  },
+  {
+   "id": "c2wd-error55",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this night leakage volume calculation for a district metered area.",
+   "topicId": "night-flow-leakage",
+   "level": "class1",
+   "assumptions": "Fictional district metered area: minimum night flow 90 L/min, legitimate night use 50 L/min, night period 4 h. Leakage rate equals minimum night flow minus legitimate night use. Target: leakage volume in L over the night period.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Leakage rate = 90 L/min - 50 L/min = 40 L/min"
+    },
+    {
+     "id": "line2",
+     "label": "2. Leakage volume = 40 L/min * 4 h = 160 L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Leakage volume reported = 160 L"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Leakage volume = 40 L/min * 60 min/h * 4 h = 9600 L",
+   "explanation": "Line 2 multiplied a per minute rate by hours without converting. The volume is 40 * 60 * 4 = 9600 L, not 160 L."
+  },
+  {
+   "id": "c2wd-error56",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this night leakage volume calculation for a district metered area.",
+   "topicId": "night-flow-leakage",
+   "level": "class1",
+   "assumptions": "Fictional district metered area: minimum night flow 80 L/min, legitimate night use 45 L/min, night period 5 h. Leakage rate equals minimum night flow minus legitimate night use. Target: leakage volume in L over the night period.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Leakage rate = 80 L/min - 45 L/min = 35 L/min"
+    },
+    {
+     "id": "line2",
+     "label": "2. Leakage volume = 35 L/min * 5 h = 175 L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Leakage volume reported = 175 L"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Leakage volume = 35 L/min * 60 min/h * 5 h = 10500 L",
+   "explanation": "Line 2 multiplied a per minute rate by hours without converting. The volume is 35 * 60 * 5 = 10500 L, not 175 L."
+  },
+  {
+   "id": "c2wd-error57",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this night leakage volume calculation for a district metered area.",
+   "topicId": "night-flow-leakage",
+   "level": "class1",
+   "assumptions": "Fictional district metered area: minimum night flow 70 L/min, legitimate night use 20 L/min, night period 3 h. Leakage rate equals minimum night flow minus legitimate night use. Target: leakage volume in L over the night period.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Leakage rate = 70 L/min - 20 L/min = 50 L/min"
+    },
+    {
+     "id": "line2",
+     "label": "2. Leakage volume = 50 L/min * 3 h = 150 L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Leakage volume reported = 150 L"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Leakage volume = 50 L/min * 60 min/h * 3 h = 9000 L",
+   "explanation": "Line 2 multiplied a per minute rate by hours without converting. The volume is 50 * 60 * 3 = 9000 L, not 150 L."
+  },
+  {
+   "id": "c2wd-error58",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this night leakage volume calculation for a district metered area.",
+   "topicId": "night-flow-leakage",
+   "level": "class1",
+   "assumptions": "Fictional district metered area: minimum night flow 85 L/min, legitimate night use 40 L/min, night period 6 h. Leakage rate equals minimum night flow minus legitimate night use. Target: leakage volume in L over the night period.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Leakage rate = 85 L/min - 40 L/min = 45 L/min"
+    },
+    {
+     "id": "line2",
+     "label": "2. Leakage volume = 45 L/min * 6 h = 270 L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Leakage volume reported = 270 L"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Leakage volume = 45 L/min * 60 min/h * 6 h = 16200 L",
+   "explanation": "Line 2 multiplied a per minute rate by hours without converting. The volume is 45 * 60 * 6 = 16200 L, not 270 L."
+  },
+  {
+   "id": "c2wd-error59",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this night leakage volume calculation for a district metered area.",
+   "topicId": "night-flow-leakage",
+   "level": "class1",
+   "assumptions": "Fictional district metered area: minimum night flow 66 L/min, legitimate night use 36 L/min, night period 4.5 h. Leakage rate equals minimum night flow minus legitimate night use. Target: leakage volume in L over the night period.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Leakage rate = 66 L/min - 36 L/min = 30 L/min"
+    },
+    {
+     "id": "line2",
+     "label": "2. Leakage volume = 30 L/min * 4.5 h = 135 L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Leakage volume reported = 135 L"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Leakage volume = 30 L/min * 60 min/h * 4.5 h = 8100 L",
+   "explanation": "Line 2 multiplied a per minute rate by hours without converting. The volume is 30 * 60 * 4.5 = 8100 L, not 135 L."
+  }
+ ],
+ "missions": [
+  {
+   "id": "c2wd-mission21",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 21: The Flushing Volume Shift",
+   "tasks": [
+    {
+     "taskId": "c2wd-ladder80",
+     "revision": "r1",
+     "occurrenceId": "m21-t1"
+    },
+    {
+     "taskId": "c2wd-error01",
+     "revision": "r1",
+     "occurrenceId": "m21-t2"
+    }
+   ]
+  },
+  {
+   "id": "c2wd-mission22",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 22: The Affinity Laws Head Shift",
+   "tasks": [
+    {
+     "taskId": "c2wd-error02",
+     "revision": "r1",
+     "occurrenceId": "m22-t1"
+    },
+    {
+     "taskId": "c2wd-ladder81",
+     "revision": "r1",
+     "occurrenceId": "m22-t2"
+    },
+    {
+     "taskId": "c2wd-ladder82",
+     "revision": "r1",
+     "occurrenceId": "m22-t3"
+    }
+   ]
+  },
+  {
+   "id": "c2wd-mission23",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 23: The Flushing Volume Shift",
+   "tasks": [
+    {
+     "taskId": "c2wd-ladder83",
+     "revision": "r1",
+     "occurrenceId": "m23-t1"
+    },
+    {
+     "taskId": "c2wd-error03",
+     "revision": "r1",
+     "occurrenceId": "m23-t2"
+    },
+    {
+     "taskId": "c2wd-ladder84",
+     "revision": "r1",
+     "occurrenceId": "m23-t3"
+    },
+    {
+     "taskId": "c2wd-ladder85",
+     "revision": "r1",
+     "occurrenceId": "m23-t4"
+    }
+   ]
+  },
+  {
+   "id": "c2wd-mission24",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 24: The Affinity Laws Head Shift",
+   "tasks": [
+    {
+     "taskId": "c2wd-error04",
+     "revision": "r1",
+     "occurrenceId": "m24-t1"
+    },
+    {
+     "taskId": "c2wd-ladder86",
+     "revision": "r1",
+     "occurrenceId": "m24-t2"
+    }
+   ]
+  },
+  {
+   "id": "c2wd-mission25",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 25: The Pump Energy Efficiency Shift",
+   "tasks": [
+    {
+     "taskId": "c2wd-ladder87",
+     "revision": "r1",
+     "occurrenceId": "m25-t1"
+    },
+    {
+     "taskId": "c2wd-error05",
+     "revision": "r1",
+     "occurrenceId": "m25-t2"
+    },
+    {
+     "taskId": "c2wd-ladder88",
+     "revision": "r1",
+     "occurrenceId": "m25-t3"
+    }
+   ]
+  },
+  {
+   "id": "c2wd-mission26",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 26: The Affinity Laws Head Shift",
+   "tasks": [
+    {
+     "taskId": "c2wd-error06",
+     "revision": "r1",
+     "occurrenceId": "m26-t1"
+    },
+    {
+     "taskId": "c2wd-ladder89",
+     "revision": "r1",
+     "occurrenceId": "m26-t2"
+    },
+    {
+     "taskId": "c2wd-ladder90",
+     "revision": "r1",
+     "occurrenceId": "m26-t3"
+    },
+    {
+     "taskId": "c2wd-ladder91",
+     "revision": "r1",
+     "occurrenceId": "m26-t4"
+    }
+   ]
+  },
+  {
+   "id": "c2wd-mission27",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 27: The Pump Energy Efficiency Shift",
+   "tasks": [
+    {
+     "taskId": "c2wd-ladder92",
+     "revision": "r1",
+     "occurrenceId": "m27-t1"
+    },
+    {
+     "taskId": "c2wd-error07",
+     "revision": "r1",
+     "occurrenceId": "m27-t2"
+    }
+   ]
+  },
+  {
+   "id": "c2wd-mission28",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 28: The Affinity Laws Head Shift",
+   "tasks": [
+    {
+     "taskId": "c2wd-error08",
+     "revision": "r1",
+     "occurrenceId": "m28-t1"
+    },
+    {
+     "taskId": "c2wd-ladder93",
+     "revision": "r1",
+     "occurrenceId": "m28-t2"
+    },
+    {
+     "taskId": "c2wd-ladder94",
+     "revision": "r1",
+     "occurrenceId": "m28-t3"
+    }
+   ]
+  },
+  {
+   "id": "c2wd-mission29",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 29: The Pressure Zone Head Shift",
+   "tasks": [
+    {
+     "taskId": "c2wd-ladder95",
+     "revision": "r1",
+     "occurrenceId": "m29-t1"
+    },
+    {
+     "taskId": "c2wd-error09",
+     "revision": "r1",
+     "occurrenceId": "m29-t2"
+    },
+    {
+     "taskId": "c2wd-ladder96",
+     "revision": "r1",
+     "occurrenceId": "m29-t3"
+    },
+    {
+     "taskId": "c2wd-ladder97",
+     "revision": "r1",
+     "occurrenceId": "m29-t4"
+    }
+   ]
+  },
+  {
+   "id": "c2wd-mission30",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 30: The Affinity Laws Head Shift",
+   "tasks": [
+    {
+     "taskId": "c2wd-error10",
+     "revision": "r1",
+     "occurrenceId": "m30-t1"
+    },
+    {
+     "taskId": "c2wd-ladder98",
+     "revision": "r1",
+     "occurrenceId": "m30-t2"
+    }
+   ]
+  },
+  {
+   "id": "c2wd-mission31",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 31: The Pressure Zone Head Shift",
+   "tasks": [
+    {
+     "taskId": "c2wd-ladder99",
+     "revision": "r1",
+     "occurrenceId": "m31-t1"
+    },
+    {
+     "taskId": "c2wd-error100",
+     "revision": "r1",
+     "occurrenceId": "m31-t2"
+    },
+    {
+     "taskId": "c2wd-ladder80",
+     "revision": "r1",
+     "occurrenceId": "m31-t3"
+    }
+   ]
+  },
+  {
+   "id": "c2wd-mission32",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 32: The Affinity Laws Head Shift",
+   "tasks": [
+    {
+     "taskId": "c2wd-error11",
+     "revision": "r1",
+     "occurrenceId": "m32-t1"
+    },
+    {
+     "taskId": "c2wd-ladder81",
+     "revision": "r1",
+     "occurrenceId": "m32-t2"
+    },
+    {
+     "taskId": "c2wd-ladder82",
+     "revision": "r1",
+     "occurrenceId": "m32-t3"
+    },
+    {
+     "taskId": "c2wd-ladder83",
+     "revision": "r1",
+     "occurrenceId": "m32-t4"
+    }
+   ]
+  },
+  {
+   "id": "c2wd-mission33",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 33: The Flushing Volume Shift",
+   "tasks": [
+    {
+     "taskId": "c2wd-ladder84",
+     "revision": "r1",
+     "occurrenceId": "m33-t1"
+    },
+    {
+     "taskId": "c2wd-error12",
+     "revision": "r1",
+     "occurrenceId": "m33-t2"
+    }
+   ]
+  },
+  {
+   "id": "c2wd-mission34",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 34: The Affinity Laws Power Shift",
+   "tasks": [
+    {
+     "taskId": "c2wd-error13",
+     "revision": "r1",
+     "occurrenceId": "m34-t1"
+    },
+    {
+     "taskId": "c2wd-ladder85",
+     "revision": "r1",
+     "occurrenceId": "m34-t2"
+    },
+    {
+     "taskId": "c2wd-ladder86",
+     "revision": "r1",
+     "occurrenceId": "m34-t3"
+    }
+   ]
+  },
+  {
+   "id": "c2wd-mission35",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 35: The Pump Energy Efficiency Shift",
+   "tasks": [
+    {
+     "taskId": "c2wd-ladder87",
+     "revision": "r1",
+     "occurrenceId": "m35-t1"
+    },
+    {
+     "taskId": "c2wd-error14",
+     "revision": "r1",
+     "occurrenceId": "m35-t2"
+    },
+    {
+     "taskId": "c2wd-ladder88",
+     "revision": "r1",
+     "occurrenceId": "m35-t3"
+    },
+    {
+     "taskId": "c2wd-ladder89",
+     "revision": "r1",
+     "occurrenceId": "m35-t4"
+    }
+   ]
+  },
+  {
+   "id": "c2wd-mission36",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 36: The Affinity Laws Power Shift",
+   "tasks": [
+    {
+     "taskId": "c2wd-error15",
+     "revision": "r1",
+     "occurrenceId": "m36-t1"
+    },
+    {
+     "taskId": "c2wd-ladder90",
+     "revision": "r1",
+     "occurrenceId": "m36-t2"
+    }
+   ]
+  },
+  {
+   "id": "c2wd-mission37",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 37: The Pump Energy Efficiency Shift",
+   "tasks": [
+    {
+     "taskId": "c2wd-ladder91",
+     "revision": "r1",
+     "occurrenceId": "m37-t1"
+    },
+    {
+     "taskId": "c2wd-error16",
+     "revision": "r1",
+     "occurrenceId": "m37-t2"
+    },
+    {
+     "taskId": "c2wd-ladder92",
+     "revision": "r1",
+     "occurrenceId": "m37-t3"
+    }
+   ]
+  },
+  {
+   "id": "c2wd-mission38",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 38: The Affinity Laws Power Shift",
+   "tasks": [
+    {
+     "taskId": "c2wd-error17",
+     "revision": "r1",
+     "occurrenceId": "m38-t1"
+    },
+    {
+     "taskId": "c2wd-ladder93",
+     "revision": "r1",
+     "occurrenceId": "m38-t2"
+    },
+    {
+     "taskId": "c2wd-ladder94",
+     "revision": "r1",
+     "occurrenceId": "m38-t3"
+    },
+    {
+     "taskId": "c2wd-ladder95",
+     "revision": "r1",
+     "occurrenceId": "m38-t4"
+    }
+   ]
+  },
+  {
+   "id": "c2wd-mission39",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 39: The Pressure Head Shift",
+   "tasks": [
+    {
+     "taskId": "c2wd-ladder96",
+     "revision": "r1",
+     "occurrenceId": "m39-t1"
+    },
+    {
+     "taskId": "c2wd-error18",
+     "revision": "r1",
+     "occurrenceId": "m39-t2"
+    }
+   ]
+  },
+  {
+   "id": "c2wd-mission40",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 40: The Affinity Laws Power Shift",
+   "tasks": [
+    {
+     "taskId": "c2wd-error19",
+     "revision": "r1",
+     "occurrenceId": "m40-t1"
+    },
+    {
+     "taskId": "c2wd-ladder97",
+     "revision": "r1",
+     "occurrenceId": "m40-t2"
+    },
+    {
+     "taskId": "c2wd-ladder98",
+     "revision": "r1",
+     "occurrenceId": "m40-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Distribution system operation, hydraulics and maintenance chapters"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "a85a1f38cd6f2bd532b0d658ff5bb37a4be6a77f5eaaa5d42c43ca504e5c7796",
+  "taskReceipts": [
+   {
+    "taskId": "c2wd-ladder80",
+    "revision": "r1",
+    "sha256": "39caca1728fb53c1270dbae24148b8987abd95bd5bc2670cae2752181bc75560",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-ladder81",
+    "revision": "r1",
+    "sha256": "81f65405b995ab87af85d10ce2e6c6edd30024da3445d1deddd201069f45564b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-ladder82",
+    "revision": "r1",
+    "sha256": "954fe2ba140f1b886a82beecdc51881dad0081ec3084aee5810e86b3f684b781",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-ladder83",
+    "revision": "r1",
+    "sha256": "e24923c5a91ca7153af4ea03f9c69f87a76b3635ce0d4476fc48676c31480b9c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-ladder84",
+    "revision": "r1",
+    "sha256": "3253a41dd870b4407d2f06b9cf33420e21317e17108b78ff395bfebe55203e1c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-ladder85",
+    "revision": "r1",
+    "sha256": "4cf3017ba620210dfca142d1022c80b04443accf51b3b40716d50b5123572934",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-ladder86",
+    "revision": "r1",
+    "sha256": "900d525383ec2c7393a9f01ca733936e8503bc23cf170dc2742f922fd3e71ea2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-ladder87",
+    "revision": "r1",
+    "sha256": "885ef0599ee702e7bb777e1a35e65cf87c23c4b8c4e1b78c818cdf0810cfd364",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-ladder88",
+    "revision": "r1",
+    "sha256": "8591d97a3ee78a95e34cd75a6e90bab900c6e0f162c70a1eef66ec89e0093bc5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-ladder89",
+    "revision": "r1",
+    "sha256": "a13125c3a661788db3e2217a61b6dcdf8f6f4f6952c2411d11864fa193396bf3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-ladder90",
+    "revision": "r1",
+    "sha256": "d61bb374da0c5e94ef23f50ecd3b2855231c5f26811fbdc71c1564d03454f392",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-ladder91",
+    "revision": "r1",
+    "sha256": "c6e8ad6829223f04b4524b7138e7f0bed341382735e45facbeabc42cc265799a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-ladder92",
+    "revision": "r1",
+    "sha256": "1b525a4a1520d8ad7c1c5feb8986f0ef52e820ee391f5b5059cda17a08b44741",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-ladder93",
+    "revision": "r1",
+    "sha256": "d364d7bdf80c774ea5b5e4f9ae43101a8a8c82a036e57766b638605b7fa75c81",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-ladder94",
+    "revision": "r1",
+    "sha256": "44153fc6c48426e8baaaf67e705d475dcedb593f385333bb0536d58594a6bce9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-ladder95",
+    "revision": "r1",
+    "sha256": "971b2cd9c7ae269c4bea9fecdbc02a44e31415874bfd3a2f507164e31b74a948",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-ladder96",
+    "revision": "r1",
+    "sha256": "9e87a5a88f3ad7f3315b06e3e25740bda695a957c9937a06313217edc489914b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-ladder97",
+    "revision": "r1",
+    "sha256": "f163c7980d9aab5e9d4e7c7b6161462ee60c939ab11cf6d1ad00ff76a753f01d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-ladder98",
+    "revision": "r1",
+    "sha256": "1ee073aba6ab9e05ebae5ef138cc6c2673bb5ff7873ab7e0155c5f5b0bb25864",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-ladder99",
+    "revision": "r1",
+    "sha256": "ca6647d7f852cb293e5893408ad423b9233b73b7f383b71ff1508829c9c635cf",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error01",
+    "revision": "r1",
+    "sha256": "0e82d390b75cb9ce6de7cf3282ada70138a9af1aa66f741ad1b5af1bbcd1b30d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error02",
+    "revision": "r1",
+    "sha256": "9cfd1f8a37f3530e12883adc5833bf81b3b0e9cee3ea21ec7518e31bc8f475c8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error03",
+    "revision": "r1",
+    "sha256": "ab63458606081a4c3adaf93a67f887dfd3ada509a228f8cd003bd464da9b8659",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error04",
+    "revision": "r1",
+    "sha256": "cde51223121541b9c8626d817b290ad9049097b9294aa25c029d4510fdd25ab1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error05",
+    "revision": "r1",
+    "sha256": "d9055eea0e58376ac39fa88a4ee31121f5d59335f10370d86c30ab94d93fd1b4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error06",
+    "revision": "r1",
+    "sha256": "b6776db60970854088bb83904fceecea4a97c2aea5d7047fa493558074982f3f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error07",
+    "revision": "r1",
+    "sha256": "7dca39d2d1190e561a8ac959806f40225daf72d4b4b270b8a6d762a2ad605f71",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error08",
+    "revision": "r1",
+    "sha256": "498bce6aa66a683dea4fc25890d45bb6b4ecf3241e37b5eb5c4f254e5b4b992e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error09",
+    "revision": "r1",
+    "sha256": "c2eec77022b06b5384bcef8a6b535c18223d0e0854292148035cc727091d44a4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error10",
+    "revision": "r1",
+    "sha256": "2851738bd40abddfd8a9120077bf5102f0ff37ce9bb7364ee960f4f7846fcdcf",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error100",
+    "revision": "r1",
+    "sha256": "616d5c03f2ff2915a313cca9ca86c5e15f68e88919d8932d09399ae379d9a22e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error11",
+    "revision": "r1",
+    "sha256": "662bc1d1da9e26a4893fda95d591832a0780c70a94d5f4cb665037818340a1c7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error12",
+    "revision": "r1",
+    "sha256": "1d75082ee11dba583da45819b720e01b756685cec6d55dd2a3bcfd73022c65c8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error13",
+    "revision": "r1",
+    "sha256": "41132610c14bcf92d4a5db8f00449bfe4c884721efd9a1c2241aed4267388b36",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error14",
+    "revision": "r1",
+    "sha256": "e93454e96f3c2487849057a3845ca82b0372abb4c4b8bd671135efd6f4f10580",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error15",
+    "revision": "r1",
+    "sha256": "a47f25bce1cb483f827927e795948937e2cc31635c2eaff149dc749b368c6c6e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error16",
+    "revision": "r1",
+    "sha256": "7157dff5edf3ee1d86d9f80daed7e60ecb16152305734e7f92d2dd0410a881e9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error17",
+    "revision": "r1",
+    "sha256": "63b6db6a6c86e02b48f503f5f07cfc8a94fd990643c6e5630de9360f60826d8a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error18",
+    "revision": "r1",
+    "sha256": "4764dd149e7d84dd2d057f99869fbb5e3f02d78dc066e1a277cd01d661b6e928",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error19",
+    "revision": "r1",
+    "sha256": "59ff2e3e7377217991626736c2278b59971f8b63ec06e751c8ccfd89e46a0536",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error20",
+    "revision": "r1",
+    "sha256": "415925cbadaa83eda351b6262a4d5ed3bea3f30933ece73934b0a76bad432c20",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error21",
+    "revision": "r1",
+    "sha256": "8dfc42c0fe39263c9c5c1376eb52861f599f01425af2861edff5439a5e6e2cd2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error22",
+    "revision": "r1",
+    "sha256": "5738b550583d5f1967f2413ed0898715012d8cb04cd7d162d0cb93c4bc891ee4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error23",
+    "revision": "r1",
+    "sha256": "f46505f10e3eb6700974d2c6a7c765aeeb493b36da60904c3d406638d2d3edff",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error24",
+    "revision": "r1",
+    "sha256": "e8cff4c91924a95e26ac7c685f506f0d583fc09fd3f30a67b852f092b43d90fc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error25",
+    "revision": "r1",
+    "sha256": "96b10e883c25d5092a4c460e616ce3fb896b5de3994e3fb32eba27d16d02a9d5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error26",
+    "revision": "r1",
+    "sha256": "c151cb050c3d28c1ee43634bc6e22c325b991e6211ae1e98263b2b61f449dc43",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error27",
+    "revision": "r1",
+    "sha256": "e0ad910c5b859c65f056f2aa38eb51f33b4fe634631241895bb9b93966184024",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error28",
+    "revision": "r1",
+    "sha256": "f314080fd78faeabceac1c1ffd0e9dc1ca3784694161505ef407da8b911893a8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error29",
+    "revision": "r1",
+    "sha256": "c5c68d200a9aea82f566b029a2118316ab1d095a1e4a78fc77c47d3c7fabe08e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error30",
+    "revision": "r1",
+    "sha256": "d8a97549f0924271324838af80716446d23d3cc428536510cbbeea91293211f3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error31",
+    "revision": "r1",
+    "sha256": "bd4c3b1109070644515d8a096509eaff2ede777c7e75769c2a6acd6f91054abe",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error32",
+    "revision": "r1",
+    "sha256": "beff42f8c2f82eec82a3c0b416cc4efedec30c79159bdb2184bab826f697659d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error33",
+    "revision": "r1",
+    "sha256": "05ebb2be4ebb8d9c7ac9cd4d08a0b554bd54cc1064a8782083d2315436ed1831",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error34",
+    "revision": "r1",
+    "sha256": "35615c57e60a21ce58c4f90d93df5f6d3bf39bbf2681795828ebf7c7a62b1e89",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error35",
+    "revision": "r1",
+    "sha256": "f7a7312f0bc1cafeecb0ed5ea90580dff67a4758574761215b9541e4e3a8a09f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error36",
+    "revision": "r1",
+    "sha256": "5cfb7d3dc7901a790cc2cf19d73b11c20c86c879a5bf0b95c469ae23a01d9a3f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error37",
+    "revision": "r1",
+    "sha256": "1f704c5378a1410f951241f7bcb2897d7a56eb678bf62b1ac4caa72701239163",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error38",
+    "revision": "r1",
+    "sha256": "31dd09f3839182eb73f7ae9596a78aac7db0596175c53c68c424f8d936652bbc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error39",
+    "revision": "r1",
+    "sha256": "9f1bd104eb80e352b26b4f0eb87d373387c9d0f3f87e1a1f77341bc23c583f54",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error40",
+    "revision": "r1",
+    "sha256": "2f826a922282100e3da39528f5ef0af94fc585ef7dc8a0d38017ca6bd68061a1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error41",
+    "revision": "r1",
+    "sha256": "9f009a940f290d8f277a8d24067e20a551a02c1829e568fb0a459844fae56b01",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error42",
+    "revision": "r1",
+    "sha256": "3196fb11113146994c8a07fd78aaef81ee228c7c2d327b8aac9e2114d9c3feae",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error43",
+    "revision": "r1",
+    "sha256": "213c65dc073754e7c4a691a46e8cd91c038efa374c49f3a088132848b1d4652f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error44",
+    "revision": "r1",
+    "sha256": "545a7c91533f863a65ec760a84243607da96a24a6bd8ea380deba189bcd5d119",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error45",
+    "revision": "r1",
+    "sha256": "434d39024a2373534dc31940b47bee3491066dca67fc23fa5b6f0870f1ef8e53",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error46",
+    "revision": "r1",
+    "sha256": "40b09afd96707f55d7e8b5659611aae2f1bec945b9c8174679a20337dc2321d0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error47",
+    "revision": "r1",
+    "sha256": "698d9083708df1ba64add0f6b9793a152d4bdec08d8648aaa766ab2e87c5e6c3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error48",
+    "revision": "r1",
+    "sha256": "f1e8b84f9d48497bdec506826d1f2fd67d63108b78d96b39cd67235e15812440",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error49",
+    "revision": "r1",
+    "sha256": "4dafce00f62669e9de3505ce6e60f8daece49d8add322da0030ffdc06ef34884",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error50",
+    "revision": "r1",
+    "sha256": "d06bdd6fb2e60a3347e1def85cac146a3bfa48a9ee9cdbef273ac26b82fe4544",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error51",
+    "revision": "r1",
+    "sha256": "06ede8988767f622f27e8e50aa04c379e8b0b6a2daaf39a503cd57f90356977a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error52",
+    "revision": "r1",
+    "sha256": "7c4d362a01510e836a828d836046185854200ee9540f25bf78551ead87d038ba",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error53",
+    "revision": "r1",
+    "sha256": "c611f5bcbba3da43201667e5dbe4b0ec15e73978cd0434dcbb214971842fb9b9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error54",
+    "revision": "r1",
+    "sha256": "e6b7e2f5a0d20cece7dcd5855b8f44a4afe0145f1d1bd577411fa441e61f346f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error55",
+    "revision": "r1",
+    "sha256": "d20ffa5b8932a67d7e20cbe6dab7f1c675c703cd897c6a92847205cec739bd2e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error56",
+    "revision": "r1",
+    "sha256": "b157f5bcf8c95922f7dde3d969a72ace8f228d2b054cd72319b6c01c1cffb64f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error57",
+    "revision": "r1",
+    "sha256": "1c7b3d314877f0863801a4a615baec580cbdfccb7fcc17e33ef0a3e1067231ea",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error58",
+    "revision": "r1",
+    "sha256": "085852add35d70014bc6774d5e7f4588706b9516bda9c12d97b1a3c691454d32",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wd-error59",
+    "revision": "r1",
+    "sha256": "260d983494c9c4f9f420eccf77a3941b2d0c616b10a291d8085511f0760949da",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "c2wd-mission21",
+    "revision": "r1",
+    "sha256": "985d1f3ce8f442585ad92f79dd256caaf7459fbada2efef0ef02583bc7be53cd"
+   },
+   {
+    "missionId": "c2wd-mission22",
+    "revision": "r1",
+    "sha256": "3f9293f7215e1b4d4c9f42f44f3a7f6071ee4390b43e507ea0746ccd421a31e4"
+   },
+   {
+    "missionId": "c2wd-mission23",
+    "revision": "r1",
+    "sha256": "ca3b231ec757120f3e3eebc11942a7705252ec6c9ea9fe5220340afc6e73feab"
+   },
+   {
+    "missionId": "c2wd-mission24",
+    "revision": "r1",
+    "sha256": "eff160f41fca0013ece79d1342d4ffc67ecf7feb851be98a24811d33774c5bb0"
+   },
+   {
+    "missionId": "c2wd-mission25",
+    "revision": "r1",
+    "sha256": "8f33a5a529f4228af8cbf8880d41b08ecff202dd9a9be7c8c382f2705f456d2a"
+   },
+   {
+    "missionId": "c2wd-mission26",
+    "revision": "r1",
+    "sha256": "a6262bf0e663532b9cb226beb82c08a5f12b31ac621bdb2a422509fa8388f4cb"
+   },
+   {
+    "missionId": "c2wd-mission27",
+    "revision": "r1",
+    "sha256": "af47aa6c670ab71cbde261c94e2929b74e7d7b9085266319cf30c41892cca68b"
+   },
+   {
+    "missionId": "c2wd-mission28",
+    "revision": "r1",
+    "sha256": "c8b851683671e76c9ddcc1d6944824eba86a53697a4c9059deb0a5e326f585c6"
+   },
+   {
+    "missionId": "c2wd-mission29",
+    "revision": "r1",
+    "sha256": "0e2238fd05fd4b0e57c1f6e523ce36037a14e35c39bcbd2362ef86b60553192a"
+   },
+   {
+    "missionId": "c2wd-mission30",
+    "revision": "r1",
+    "sha256": "d2c98eb280705bd80ee37014b313beffddcff9da63f89de63bf2cbb3ce34bb67"
+   },
+   {
+    "missionId": "c2wd-mission31",
+    "revision": "r1",
+    "sha256": "fda2b697e786fe407b0cb55362a873db328d9bf9e9890d3b32649a8d26ad0771"
+   },
+   {
+    "missionId": "c2wd-mission32",
+    "revision": "r1",
+    "sha256": "a1c08fc5b208a3cfed9a00a404623ace963c0fbf190b05697100287746224542"
+   },
+   {
+    "missionId": "c2wd-mission33",
+    "revision": "r1",
+    "sha256": "c801c234fc6fccb64addfdea6aba97138c34eb9b40747d0bbdd8b582234cb680"
+   },
+   {
+    "missionId": "c2wd-mission34",
+    "revision": "r1",
+    "sha256": "e7eb7ca8c1e5d1c96a2a77210b5e1b354d2b7daae9589bd52bb43f19fb3c4776"
+   },
+   {
+    "missionId": "c2wd-mission35",
+    "revision": "r1",
+    "sha256": "405b618fc0707cad347e1f90030ffa17f4dae313adb33ecabfda5e75319f53be"
+   },
+   {
+    "missionId": "c2wd-mission36",
+    "revision": "r1",
+    "sha256": "7d3a236519a712aeda10502e5031f30c98501d21856004836ada32e351e8ad27"
+   },
+   {
+    "missionId": "c2wd-mission37",
+    "revision": "r1",
+    "sha256": "6d5b593cff755d75e89a760ff6a7d5c73b0c7a21976d5e9b8bf1803655fd8073"
+   },
+   {
+    "missionId": "c2wd-mission38",
+    "revision": "r1",
+    "sha256": "935eb74e76763a226ef6bb5ec89e1c8a9074d11e4ac63d5a6a84a8970f4eba3b"
+   },
+   {
+    "missionId": "c2wd-mission39",
+    "revision": "r1",
+    "sha256": "6cfb4bba1f32c0a37199a24caaf890abf4a7c44759159d3178af3a4f35eb2041"
+   },
+   {
+    "missionId": "c2wd-mission40",
+    "revision": "r1",
+    "sha256": "273caef0f55130b795ea214ea786d62aa9316ade4e1d16945d25a7736a854ca4"
+   }
+  ]
+ }
+}

@@ -1,0 +1,1725 @@
+{
+ "reviewer": "owner-authorized-ai-review",
+ "model": "Muse Wonder",
+ "reviewDateUtc": "2026-11-23T18:41:05Z",
+ "sourceBranch": "exam-bank-gap-1000-2026-11-23",
+ "baseCommit": "6b15ae5120c63cbfd28ea1c2c7aff31cc64ff526",
+ "courseKey": "class4-water",
+ "canonicalBankKey": "class4-water",
+ "itemBankKey": "class4-water",
+ "packageSha256": "cab27404b38a5eed3290e7ae23223e6f118eea2413c7df27c3c79602e4edaaff",
+ "additionsFileSha256": "b21c996885198bb7614e41ccbdc1b407958f8575da1e4f185cf581a22ecaa41a",
+ "batchFileSha256": {
+  "batch-1.json": "f1058e23f6ba411282535cea717315c134bffe343c0900730d8786ab503c3b32",
+  "batch-1.verify.json": "5893aa8d7a0c73c2d68bcd7bf8b1cc984497f511f0b8a20bd61909c2f82e3a22",
+  "batch-2.json": "7a28a8ff1ebb5262b33b4beba515f18b8596fe2255be299c0012ff6252778539",
+  "batch-2.verify.json": "5b3596fd5abcd0ae4496e061337b863363d2595cb46f0fd35593d4e940f70ac5",
+  "batch-3.json": "0ac5191ad665d53dad394be37ca7920ecc2505c4271c8346d2e05b9f2238ff7a",
+  "batch-3.verify.json": "9b7893655ec86c207ab45d37d8db618aa069788e63340f38d83d215d900f97df",
+  "batch-4.json": "1acef7856ab6b5f159b57f6e4389f52122892b26ed6f56efc6cde532ab393366",
+  "batch-4.verify.json": "2d309473edf230e083a3b24750bb717be2317682b02bcc1da8e21c1a49f41604",
+  "batch-5.json": "fcdca8d7e982d1296090a7210065eec1a153e8129e4bf7a1c977fd854cfb9e0b",
+  "batch-5.verify.json": "8c874338e6e121e67383041b50576b1f2c759d432c2b8d2fe24daddcafc07804"
+ },
+ "counts": {
+  "requested": 231,
+  "generated": 231,
+  "accepted": 231,
+  "withheld": [],
+  "rejected": [
+   {
+    "itemId": "WATER-TREATMENT-L4-581",
+    "questionNum": 2581,
+    "reason": "Original payload rejected pre-acceptance: expression 8400*1.25 duplicated an existing bank expression. Replaced in place with a two-step population/per-capita capacity calculation; replacement passed all checks and is the accepted payload."
+   },
+   {
+    "itemId": "WATER-TREATMENT-L4-583",
+    "questionNum": 2583,
+    "reason": "Original payload rejected pre-acceptance: masked-stem near-duplicate (Jaccard >= 0.85) of an existing membrane trains item. Replaced in place with a firm-capacity trains-required calculation; replacement passed all checks and is the accepted payload."
+   },
+   {
+    "itemId": "WATER-TREATMENT-L4-584",
+    "questionNum": 2584,
+    "reason": "Original payload rejected pre-acceptance: masked-stem near-duplicate (Jaccard >= 0.85) of an existing sampling program item. Replaced in place with a base-plus-duplicates-plus-blanks program count; replacement passed all checks and is the accepted payload."
+   },
+   {
+    "itemId": "WATER-TREATMENT-L4-590",
+    "questionNum": 2590,
+    "reason": "Original payload rejected pre-acceptance: stem exactly duplicated an existing bank item (primary purpose of a long term master plan). Replaced in place with a different easy recall question on master plan inputs; replacement passed all checks and is the accepted payload."
+   }
+  ]
+ },
+ "checks": {
+  "schemaValidation": {
+   "checker": "validate_gap.py",
+   "checkerSha256": "2dc1a05aee0cd04c4fadd263ae0b724005ad793c959876b60d227f6940f3dab5",
+   "configSha256": "0b3ce1f0495aaca40fb2b0817cfca80786aef2a0d30cab555fe22960c7c1d8ba",
+   "payloadDigest": "cab27404b38a5eed3290e7ae23223e6f118eea2413c7df27c3c79602e4edaaff",
+   "errors": [],
+   "warnings": []
+  },
+  "calculationVerification": {
+   "checker": "verify_calcs_gap.py",
+   "checkerSha256": "5d4a5952b765ee626744a180f47f7b82d4b9095a58759801e0132865f72b4382",
+   "configSha256": "0b3ce1f0495aaca40fb2b0817cfca80786aef2a0d30cab555fe22960c7c1d8ba",
+   "payloadDigest": "cab27404b38a5eed3290e7ae23223e6f118eea2413c7df27c3c79602e4edaaff",
+   "checked": 45,
+   "problems": [],
+   "checksPerformed": [
+    "expression recomputation in exact rational arithmetic",
+    "exactly-one-record enforcement",
+    "item/record field consistency",
+    "correctAnswer exact numeric and unit match",
+    "result-step value match (treat variant steps: Relationship, Substitution and Result entries required; Result entry must contain the expected value as a standalone number token)"
+   ]
+  },
+  "dedup": {
+   "new_items": 231,
+   "existing_corpus_items": 200,
+   "exact": [],
+   "near": [],
+   "expression_dups": [],
+   "option_collisions": [],
+   "cross_bank_exact": [],
+   "corpus": {
+    "files": [
+     {
+      "path": "exam-bank-expansion/class4-water/additions.json",
+      "sha256": "875e85fe3461dfc8bc071f3ce0feeb6e0544620b3946e209ed5d9797e44acc5e",
+      "items": 200
+     }
+    ],
+    "totalItems": 200,
+    "corpusSha256": "7734f64ef08631f94a187f96be010f5c0afd3c9eb37cd865bb48481f54906f29",
+    "globalNov22": {
+     "files": [
+      {
+       "path": "exam-bank-expansion/class1-wastewater-coll/additions.json",
+       "sha256": "34b7777a29d18e9ec5bb2a40f3218852d9954f492cd8eb57cfba6c92dc9f7f19",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class1-water/additions.json",
+       "sha256": "df88b9d9bb1464f540470ea274b0fb785124bce25df03c1e54942b747e1b4b26",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class1-water-dist/additions.json",
+       "sha256": "329e72c3edd06c4bae29f5a9c617b8a8b8e2796b5d4f5479b98bbcb34c4b6641",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class1-ww/additions.json",
+       "sha256": "90563f49d0fe1c39e80293409bf8782523b41221ae50f104dab532ed26645c2e",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class2-wastewater-coll/additions.json",
+       "sha256": "ca89489825aa3374437ae8889a4ae5894a36f127c4dcb308c498c4ba1df8e5b3",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class2-water/additions.json",
+       "sha256": "385b388466c1b7f4e6a0c686b44d8ae53168b833aa23b036fbd109b8928cb540",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class2-water-dist/additions.json",
+       "sha256": "19e3b0e6491deca77531e660d064048fd08a2b744e7ab682a4efee5fdbcbe40a",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class2-ww/additions.json",
+       "sha256": "bdf63927d6bad6a4b998d353777f3a90682a883f759ee4174a1a9824547096b9",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class3-wastewater-coll/additions.json",
+       "sha256": "22bb27af2c80dfa00386dc0e97abd261846b58d53bd018a26eb6333782710b12",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class3-water/additions.json",
+       "sha256": "34c78dfc6e6297751e2454e9a66dadc3ed7ee356716a88c867499a3129dc17f4",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class3-water-dist/additions.json",
+       "sha256": "c993927c03a1ce9817a8ea553cabf95a7b1fdd37a8500aadae6ee7f53d9c8f04",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class3-ww/additions.json",
+       "sha256": "ff411a32cba0eda233e09378cc1296172c27047a410bed55f51078c5ffc5274a",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class4-wastewater-coll/additions.json",
+       "sha256": "f5282577e09b2869a7d7d64e012d12ab1bf233fb39edac3dbe65b50a150a6a91",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class4-water/additions.json",
+       "sha256": "875e85fe3461dfc8bc071f3ce0feeb6e0544620b3946e209ed5d9797e44acc5e",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class4-water-dist/additions.json",
+       "sha256": "a8f67eee0d524be2d1d7dda9a9dbe32fa1a48b4a2b9f540fcd2a0bd030ac3f6b",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class4-ww/additions.json",
+       "sha256": "d1554f79de67a2a088c79f6be5882a0f72cb17c656ceee3436763550d4270e69",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/oit/additions-water.json",
+       "sha256": "bd790c18000682b45fc8747be13999c8def7149678534160be9c2d1dfbea4d89",
+       "items": 100
+      },
+      {
+       "path": "exam-bank-expansion/oit/additions-wastewater.json",
+       "sha256": "673ceedda7b46ea74c3a39c090abf2c485481d698a6d22855573a4958042170e",
+       "items": 100
+      },
+      {
+       "path": "exam-bank-expansion/oit-ww/additions-wastewater.json",
+       "sha256": "3a06447dc3fcc29a031900f43f2b4c25ed48b27211faa181937f18a6c79d9a85",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class1-wastewater/additions.json",
+       "sha256": "1c127c652039f0b9c765caec64e87e52d4df3adf0a52468e2a1686d33a40d3dc",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class1-water/additions.json",
+       "sha256": "4cd774bb5a6a8b2305bd61ef6dc73142572c0782498536d9a33feb6c36ff9d11",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class1-water-coll/additions.json",
+       "sha256": "d338aa3d615a9cd5a1db5c65aece6e346d1218a8c44d0746f320082449151315",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class1-water-dist/additions.json",
+       "sha256": "57b4e292ab623c4304daa820f3bf434968af0a5156db2c752e51765c33e111e0",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class2-wastewater/additions.json",
+       "sha256": "dc5fd6d8156126fa821c8275f9491d342d925aaee573037c9c153f297b1aaf47",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class2-water/additions.json",
+       "sha256": "9923b31afa38f31bf9dee714d5621ea0e444e6f478afaa98b75c0208dc7aa7a6",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class2-water-coll/additions.json",
+       "sha256": "97d9c35a4afdf33aaaf0ebf56a0b1d89443bd49e04786a92d1c24f0ad7611961",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class2-water-dist/additions.json",
+       "sha256": "94e645ea25bb7078fb7cd4714846352217d17a8c34549eedb3c5ad87268ad708",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class3-wastewater/additions.json",
+       "sha256": "6d34e3ccf935a90656ff514eb3894d963871c282f1167a1b6d0290fc843582da",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class3-water/additions.json",
+       "sha256": "5475fafea499a310331eedb7e89c92180fde71ef055134be7e0633cb6dd38675",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class3-water-coll/additions.json",
+       "sha256": "ef4dd6eda8a3e816f4f0a72a28290d9e2e79b25d815b3c06db085d413c2128c7",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class3-water-dist/additions.json",
+       "sha256": "6c7932362cf09817e51fe089df42371508180ff41f1eee002d78334f9cda23e2",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class4-wastewater/additions.json",
+       "sha256": "bc9ba57b4e654f3e4b42f7c06fe5783d442fcb5804efb5a28b12cd6a6cea6f88",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class4-water/additions.json",
+       "sha256": "bffcfc7604e0015ec8f8ca33e84ecb35295cbafc890f87a2290ef4dcd23debaf",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class4-water-coll/additions.json",
+       "sha256": "ccbdd77ec9cc2bb11cdfc6acbe137dfd9655e213661f4d63c21bfbc40412921b",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class4-water-dist/additions.json",
+       "sha256": "cb593a08d2010734efc1d9239144bdaf53eb566f62bb799e6b157ca6aa157460",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wqa/additions.json",
+       "sha256": "83579e46a2f4ec2d4f9fb741f40308e8a19279fdfee1f8e1547a006f91e349e6",
+       "items": 200
+      }
+     ],
+     "totalItems": 7000,
+     "corpusSha256": "9d6b5b31981e8e8617582f49af3f16413bec67a7c9c8ce9fa80255c6f001eee9"
+    }
+   },
+   "config": {
+    "jaccardThreshold": 0.85,
+    "checker": "dedup_gap.py",
+    "checkerSha256": "0f06ca95d080fba1e23778d547d0cb75ae74c9f384c7c8cb4c63220f3ceb4933"
+   },
+   "payloadDigest": "cab27404b38a5eed3290e7ae23223e6f118eea2413c7df27c3c79602e4edaaff",
+   "configSha256": "0b3ce1f0495aaca40fb2b0817cfca80786aef2a0d30cab555fe22960c7c1d8ba"
+  },
+  "quality": {
+   "checker": "quality_checks.py",
+   "checkerSha256": "2fa37c2d8676b68b4b73406ed3f53a68e3569bf2146febbb6feffee5e421d0b6",
+   "configSha256": "0b3ce1f0495aaca40fb2b0817cfca80786aef2a0d30cab555fe22960c7c1d8ba",
+   "payloadDigest": "cab27404b38a5eed3290e7ae23223e6f118eea2413c7df27c3c79602e4edaaff",
+   "items": 231,
+   "length_flags": [],
+   "length_hard": [],
+   "correct_is_longest_share": 0.424,
+   "absolute_in_correct": [
+    "WATER-TREATMENT-L4-460: absolute wording in correct option: Testing during the high turbidity events it must handle",
+    "WATER-TREATMENT-L4-601: absolute wording in correct option: Raise a corrective action that addresses why sign offs are m",
+    "WATER-TREATMENT-L4-607: absolute wording in correct option: Historical low flows in the only source approach the volume ",
+    "WATER-TREATMENT-L4-651: absolute wording in correct option: The corrective actions treated the symptom, and their effect",
+    "WATER-TREATMENT-L4-664: absolute wording in correct option: Cold water slows chemical disinfection, so the CT needed for",
+    "WATER-TREATMENT-L4-667: absolute wording in correct option: Essential supplies and services must be evaluated and approv",
+    "WATER-TREATMENT-L4-669: absolute wording in correct option: Treatment must perform on the difficult days, so selection a"
+   ],
+   "absolute_in_stem_count": 17,
+   "true_false_items": [],
+   "true_false_share": 0.0,
+   "position_flags": []
+  }
+ },
+ "bindings": {
+  "gapConfigSha256": "0b3ce1f0495aaca40fb2b0817cfca80786aef2a0d30cab555fe22960c7c1d8ba",
+  "manifestSha256": "3f01bc1a60eb65ba607bcef538374b7e9a287bf9f8e990ee788a28d12c38359b",
+  "checkers": {
+   "validate_gap.py": "2dc1a05aee0cd04c4fadd263ae0b724005ad793c959876b60d227f6940f3dab5",
+   "verify_calcs_gap.py": "5d4a5952b765ee626744a180f47f7b82d4b9095a58759801e0132865f72b4382",
+   "dedup_gap.py": "0f06ca95d080fba1e23778d547d0cb75ae74c9f384c7c8cb4c63220f3ceb4933",
+   "quality_checks.py": "2fa37c2d8676b68b4b73406ed3f53a68e3569bf2146febbb6feffee5e421d0b6",
+   "receipts.py": "b9d4fa17b358ac50ec4cfe38de9c5bc236cb975ee520416743f36d75563c3616",
+   "verify_receipts.py": "edee2a3c35dcec49a61cac9381b5ec2f00118bcc8e4ee5b1da1ca9c0906f368e"
+  }
+ },
+ "items": [
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2451,
+   "itemId": "WATER-TREATMENT-L4-451",
+   "payloadSha256": "bff27923e871a4675cefc8221514350c3eeb5ec55ffcb6f34e7757dccb86cfc2"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2452,
+   "itemId": "WATER-TREATMENT-L4-452",
+   "payloadSha256": "4e3c405119870a1d865ba1021fa655f160f51b455c37f7154f4430774e0e3d81"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2453,
+   "itemId": "WATER-TREATMENT-L4-453",
+   "payloadSha256": "d7733b950f903b6cb668b62c06efff25370064827e48a059474cf00088f24b0b"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2454,
+   "itemId": "WATER-TREATMENT-L4-454",
+   "payloadSha256": "b5a25ab7bd7d1cd39cf2a55fa8b00dcc87be395b18e14364ff5d053c96722e94"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2455,
+   "itemId": "WATER-TREATMENT-L4-455",
+   "payloadSha256": "618cb461210a1a0b1f275e7ffc631c84adf54a3635b60cb99ed827df6c17b38e"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2456,
+   "itemId": "WATER-TREATMENT-L4-456",
+   "payloadSha256": "13e7e54c5c3f2cd92a756a21515201925456f813c32511f5c2eb4584adba5059"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2457,
+   "itemId": "WATER-TREATMENT-L4-457",
+   "payloadSha256": "8a0c3a36c5daa1292f7b38e8d21a9381020f7a62cf9572c089ae38a5d6e51933"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2458,
+   "itemId": "WATER-TREATMENT-L4-458",
+   "payloadSha256": "feea0fafbaa4adc06c2df6c7c5d15f27369af448d98128777ac73f0d6ab5749f"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2459,
+   "itemId": "WATER-TREATMENT-L4-459",
+   "payloadSha256": "b7f8827d6e7cb75289c28d5026a50f50d6fc6ec9e167af8edbbc6754955f9e1d"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2460,
+   "itemId": "WATER-TREATMENT-L4-460",
+   "payloadSha256": "8e24d216b7c1c13e51a576d3ff6ae33ded19476344fae2e95f705c7fbfe8368c"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2461,
+   "itemId": "WATER-TREATMENT-L4-461",
+   "payloadSha256": "a7ccda3be47ff9a1e32585ae210e42f092a980f19d03c19a52cfd5663a578099"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2462,
+   "itemId": "WATER-TREATMENT-L4-462",
+   "payloadSha256": "e661c26a9f45ad3c16389c530ef763c9d04e751979cc555d8afc6f4777c85a5b"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2463,
+   "itemId": "WATER-TREATMENT-L4-463",
+   "payloadSha256": "001f2fc1cd8b5939fe008aed799f409573dcc642319b17490bec2995f32c990e"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2464,
+   "itemId": "WATER-TREATMENT-L4-464",
+   "payloadSha256": "245804116ede28be2ae79b9d795beb954d6e0f8ec5967de7b38daad792c257b9"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2465,
+   "itemId": "WATER-TREATMENT-L4-465",
+   "payloadSha256": "d50f3167e5acf678665d08b95ab07c5c5ab9a3bd1eb60947ca689dba07c796d0"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2466,
+   "itemId": "WATER-TREATMENT-L4-466",
+   "payloadSha256": "88b05e19a5804c5e201ae568c28ef12f0679e254117a71ec31a99e6f528295f5"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2467,
+   "itemId": "WATER-TREATMENT-L4-467",
+   "payloadSha256": "91b4d6a3c5722953b424c41d32ca06480cfff6067a639df5ce2804cc5f714dc1"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2468,
+   "itemId": "WATER-TREATMENT-L4-468",
+   "payloadSha256": "cab101db053c740bd3451477d23a809f04a53adf53cce2db0660d8e397bc1d5b"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2469,
+   "itemId": "WATER-TREATMENT-L4-469",
+   "payloadSha256": "3e74caef76c34bb8abc90043282f398e91e6268effd9295b34ed4dbcabad3bbd"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2470,
+   "itemId": "WATER-TREATMENT-L4-470",
+   "payloadSha256": "96b32a6400f80c4255055b760eecd9798831b9b72a3f71e6aab444d2a1c69797"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2471,
+   "itemId": "WATER-TREATMENT-L4-471",
+   "payloadSha256": "85218099111c8ced26817ee3cd8fb9ec66ece8ad8eb5d77dd92ddc3644a56f02"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2472,
+   "itemId": "WATER-TREATMENT-L4-472",
+   "payloadSha256": "192f42acfac223987ff8e0a6d37e4841cbcbefed7c475c259783642287437129"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2473,
+   "itemId": "WATER-TREATMENT-L4-473",
+   "payloadSha256": "fbbe48db4c98d94a86957583b254b8a2129758758d6e2de6e16ec6851d8ccc9c"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2474,
+   "itemId": "WATER-TREATMENT-L4-474",
+   "payloadSha256": "97d949c3bea18a86bd72c32b2b240d1944dfb003b7eb4a4935ddbcb2988a6a38"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2475,
+   "itemId": "WATER-TREATMENT-L4-475",
+   "payloadSha256": "1f0fa1b954548217d2a5a0ac236bda2ee45475cd741d1a5a3ffd7e1a01a4237f"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2476,
+   "itemId": "WATER-TREATMENT-L4-476",
+   "payloadSha256": "aae7e3e1b05dc6e481503d958b28dfdaf6d3cb66ae4126b99aedb12ad89d5816"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2477,
+   "itemId": "WATER-TREATMENT-L4-477",
+   "payloadSha256": "b976811c9c62733a9a8bb3143f3c26c546b2235adb28aca6893a030313b6af7e"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2478,
+   "itemId": "WATER-TREATMENT-L4-478",
+   "payloadSha256": "f43165b5f44174e30883d84f3b6d295cef867b2c9afaa390a4e3c16742b8c4c9"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2479,
+   "itemId": "WATER-TREATMENT-L4-479",
+   "payloadSha256": "2ae40c8924af68772c666d5098772acd5ece2f9b95a8af2db62a117a2e220e04"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2480,
+   "itemId": "WATER-TREATMENT-L4-480",
+   "payloadSha256": "19df628a6970b3cdeb07ba43783a51ed97947d58bee6b9fa3ceb388232979584"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2481,
+   "itemId": "WATER-TREATMENT-L4-481",
+   "payloadSha256": "6fffe83093d242df0e00c144dfbc98ed5d689efdd26799e98f70f9279a918961"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2482,
+   "itemId": "WATER-TREATMENT-L4-482",
+   "payloadSha256": "343c7bbe781386f582ba7d5a48fecfef6a5264c8be65cf865cada2a6870c360a"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2483,
+   "itemId": "WATER-TREATMENT-L4-483",
+   "payloadSha256": "765291cd8a69a5784e56d7e82bb0f5089dcb1106c0a99b6244b129799e0d9500"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2484,
+   "itemId": "WATER-TREATMENT-L4-484",
+   "payloadSha256": "b1021af56874987052638c7749583265ac5f19618ef9a3130986be18795fe32c"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2485,
+   "itemId": "WATER-TREATMENT-L4-485",
+   "payloadSha256": "c400982dd4c9d96858c9613547dc13256e37cfc4b458d7fc0e7cdd6e8dc27003"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2486,
+   "itemId": "WATER-TREATMENT-L4-486",
+   "payloadSha256": "76abff4dff096b14a9435cf70060ddcde9783ce42cc33bb9c3291d9c9522ddbc"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2487,
+   "itemId": "WATER-TREATMENT-L4-487",
+   "payloadSha256": "d163283d08211974d535c20217039cf7c02c93ad0a54ff9f495259c67a39164e"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2488,
+   "itemId": "WATER-TREATMENT-L4-488",
+   "payloadSha256": "17d785855ee5d3e76a03f45dde598d3303bad0cfbd8aa066da3f19bae52eb959"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2489,
+   "itemId": "WATER-TREATMENT-L4-489",
+   "payloadSha256": "e299d4b8780f62c36e757231947b774dba25b011a006bfd9f58c61a4032a50eb"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2490,
+   "itemId": "WATER-TREATMENT-L4-490",
+   "payloadSha256": "bc09ff84f055d37ad4c9fcf555462ad69e04796726b845407951b68c3b1f6333"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2491,
+   "itemId": "WATER-TREATMENT-L4-491",
+   "payloadSha256": "02003b2c3049bb862b43cb509b9ccb7a47308c3cb0b1227831f647f4b3cda343"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2492,
+   "itemId": "WATER-TREATMENT-L4-492",
+   "payloadSha256": "7dcea3b35dfb471a881e9863a38499fc936ce370b341c536ea678476c21239e9"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2493,
+   "itemId": "WATER-TREATMENT-L4-493",
+   "payloadSha256": "dc3de815691506226949b1b8eeb3ba764226c6c8740d16bc3c244ff3468f4a3c"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2494,
+   "itemId": "WATER-TREATMENT-L4-494",
+   "payloadSha256": "2d9bf1770d054c30d7ae50d75920b2d0ff256adb0613e9537af9ca3f9eba9a4c"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2495,
+   "itemId": "WATER-TREATMENT-L4-495",
+   "payloadSha256": "46790474f8d801abe524756a244a4f75f15e099126aea37823f08bf9e3ad05aa"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2496,
+   "itemId": "WATER-TREATMENT-L4-496",
+   "payloadSha256": "73933f3503f617d479ea46e4e088e996ad9e83b1517dc60261751cfd98f29cb6"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2497,
+   "itemId": "WATER-TREATMENT-L4-497",
+   "payloadSha256": "1df016faabbaf4ffb0d2dc5660a3c7f9b07feccaf075122655e48396f495513f"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2498,
+   "itemId": "WATER-TREATMENT-L4-498",
+   "payloadSha256": "fda5b6635163f8d92010c01658e486c38a63756eb9d4b84df032df33006eb6f3"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2499,
+   "itemId": "WATER-TREATMENT-L4-499",
+   "payloadSha256": "10072846e67cf8af2b7ca3b958f23a995046bb30917c2ba9ffb3d17ee88b50fe"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2500,
+   "itemId": "WATER-TREATMENT-L4-500",
+   "payloadSha256": "a7d4b9cb580270b21b9ac041fb9e0a943c9539f2220669e791d1b96b50cce9a5"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2501,
+   "itemId": "WATER-TREATMENT-L4-501",
+   "payloadSha256": "ae1d7087db0b4efad10101a5704b37a6fa618e026b756bab021de1b27a202ff5"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2502,
+   "itemId": "WATER-TREATMENT-L4-502",
+   "payloadSha256": "c8a4d67bff0ccda37954329264b68d93c71891cbf9f0e3d224d01e16c51aac1e"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2503,
+   "itemId": "WATER-TREATMENT-L4-503",
+   "payloadSha256": "2ee410b791444333415552cf2e0930a99f65b494a4672affdd4ea84935ca314b"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2504,
+   "itemId": "WATER-TREATMENT-L4-504",
+   "payloadSha256": "cf8a44d2a05fdf74465fb1aea3e9622db3680475b18d4c9b011d1c927818f55e"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2505,
+   "itemId": "WATER-TREATMENT-L4-505",
+   "payloadSha256": "dd576360c387c94a1d6c46beb2e1b8d25facb491cbff3737a8f11d3b9c515628"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2506,
+   "itemId": "WATER-TREATMENT-L4-506",
+   "payloadSha256": "bebb0595e64335e5b59c7a91e769aeedeb16f68bf66a90684e99ae188f87c8a8"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2507,
+   "itemId": "WATER-TREATMENT-L4-507",
+   "payloadSha256": "cab0c7b081584d3d667f23a2682ad8f7733d69f745e6965f0f54b00c7a0e963c"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2508,
+   "itemId": "WATER-TREATMENT-L4-508",
+   "payloadSha256": "27c42271b18df1c9d1f0cb2e96775b2a831bf005fbc7d198ad42d654d9932947"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2509,
+   "itemId": "WATER-TREATMENT-L4-509",
+   "payloadSha256": "8d9181493092e710abdba8811ec2d9cb3ca2b5d7f9ad43e77619c863186432e0"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2510,
+   "itemId": "WATER-TREATMENT-L4-510",
+   "payloadSha256": "dbd82dd9f4b9c92f8d6040930d5847e924a8c6723c665ad6be37b3efdc22e4d7"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2511,
+   "itemId": "WATER-TREATMENT-L4-511",
+   "payloadSha256": "e6586202dd5a72991c513bb4f43ad8faa91712e89596b08ec9ccdb88c533c13b"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2512,
+   "itemId": "WATER-TREATMENT-L4-512",
+   "payloadSha256": "a64239445f1c8ea9cc173e1683f40bca80c8660152e8add9fae5040f4bad0574"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2513,
+   "itemId": "WATER-TREATMENT-L4-513",
+   "payloadSha256": "54bb6cd7d4d8bd8534a79d1eab2503b1cabecb7389b62015e56827eccff7a6d7"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2514,
+   "itemId": "WATER-TREATMENT-L4-514",
+   "payloadSha256": "cc6bbaa22abb0803f21d6940453dfcf20d69ecb587f0d113b61cbee1edee2b80"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2515,
+   "itemId": "WATER-TREATMENT-L4-515",
+   "payloadSha256": "90d7d637974c832c6d032a1214f71d5d04f13aae480c1831489d59f78e6a8541"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2516,
+   "itemId": "WATER-TREATMENT-L4-516",
+   "payloadSha256": "b32d3df87159e59bb825e1c0c745a7974209e5f4f3034d075ddff7e83927caa8"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2517,
+   "itemId": "WATER-TREATMENT-L4-517",
+   "payloadSha256": "804556f4a1eea946665646804f851759395316b8845b672d58c5945ffb54b6dc"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2518,
+   "itemId": "WATER-TREATMENT-L4-518",
+   "payloadSha256": "f43c545ed739e61cb9cf4870f3e1b66db18c848e2b6dc08f8e4fc106bbcbc9f5"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2519,
+   "itemId": "WATER-TREATMENT-L4-519",
+   "payloadSha256": "196b7622ea0fe7b43a9536be523dca73590ee7c0da3ff72c28cc78c546bbd512"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2520,
+   "itemId": "WATER-TREATMENT-L4-520",
+   "payloadSha256": "90b9dca87860218daeaf2fc995a1943b1fe806bbac84a7344a8e79331a8918a7"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2521,
+   "itemId": "WATER-TREATMENT-L4-521",
+   "payloadSha256": "d14669f7b05ba0c6db0397287102c576aac30aff63d1ad8e8efdc9c2a7420351"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2522,
+   "itemId": "WATER-TREATMENT-L4-522",
+   "payloadSha256": "9138803f8fb6aaf6205f5f40af8b91ec69a03ea460d6e0a8f927fd11f919d43c"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2523,
+   "itemId": "WATER-TREATMENT-L4-523",
+   "payloadSha256": "64d928b124665af67086f16e63279703ee32a99bb53f09deda55a0a747affff0"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2524,
+   "itemId": "WATER-TREATMENT-L4-524",
+   "payloadSha256": "0b76007ae7acc4ea1445d5a2e833360e959e2a3d440d3c2650d5a34f78c072b8"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2525,
+   "itemId": "WATER-TREATMENT-L4-525",
+   "payloadSha256": "2f8d1db3840cd35f02419d5153d2252f2e9b64445ee96e411072f472f978e057"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2526,
+   "itemId": "WATER-TREATMENT-L4-526",
+   "payloadSha256": "bccfd1093126d30f1c4c44ad02e43ee439fc6f5bb4abe38d2c3170d194e89045"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2527,
+   "itemId": "WATER-TREATMENT-L4-527",
+   "payloadSha256": "b7290973a82839bd16f3d7ced43831938d3f748d0becc98c832d247c588002d7"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2528,
+   "itemId": "WATER-TREATMENT-L4-528",
+   "payloadSha256": "ed753bd0528a6994498a1eed81d4a948c8416d53588b9105ebd1fd6daa42c5e4"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2529,
+   "itemId": "WATER-TREATMENT-L4-529",
+   "payloadSha256": "94622cbf7e94a49188568b74bddd213e4a361fe4aaecf52af80b5691a975ee53"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2530,
+   "itemId": "WATER-TREATMENT-L4-530",
+   "payloadSha256": "97e1cd4c88d5875531902112a9feddb219a21b728e19babc1cfc727c67256fcb"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2531,
+   "itemId": "WATER-TREATMENT-L4-531",
+   "payloadSha256": "2fb6652d70fab04c373094a4e2cf2e928ab3046cf042fa7bbff871570a829a63"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2532,
+   "itemId": "WATER-TREATMENT-L4-532",
+   "payloadSha256": "32d87d58e4a2a42f1ddb3d43045a47ed203ca826b982a407b04ec77641ba649d"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2533,
+   "itemId": "WATER-TREATMENT-L4-533",
+   "payloadSha256": "78882234dcb4b2db50de726857c9f6dfdb977db33d36ec094ac5fee8d8e1223a"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2534,
+   "itemId": "WATER-TREATMENT-L4-534",
+   "payloadSha256": "2fe3aece451d7574a7a6025337e28f348b2b5ee59711613e6df69c1c0c8e6089"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2535,
+   "itemId": "WATER-TREATMENT-L4-535",
+   "payloadSha256": "749b0e16f6c4b3fc66bc8b8ddd6aa74df77bebe6b4e29333ae9686c358734ffb"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2536,
+   "itemId": "WATER-TREATMENT-L4-536",
+   "payloadSha256": "ed1ca6803d47f791347f5605239d437d66bb79d12260ad72c09475b94f415d5d"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2537,
+   "itemId": "WATER-TREATMENT-L4-537",
+   "payloadSha256": "ff736c4ff6cddb9133ab6ebfa747c2de4bb401c1381847a15d2919ac5986d1f9"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2538,
+   "itemId": "WATER-TREATMENT-L4-538",
+   "payloadSha256": "873aa768f1fce65f1454e56661183039dc627b7fe42711aa0054570113db8aed"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2539,
+   "itemId": "WATER-TREATMENT-L4-539",
+   "payloadSha256": "1d0665e92dff457ad078185a8973713359ac5f8bb09ed941bbbaa888169f0395"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2540,
+   "itemId": "WATER-TREATMENT-L4-540",
+   "payloadSha256": "98e06b36a77af9df40267023f3d659ed8ca4fece032c38301feb29d1f42dfabd"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2541,
+   "itemId": "WATER-TREATMENT-L4-541",
+   "payloadSha256": "b8915c29c39626e6c9c17299f6654f3fa2bd7466e0fe93e027887c641ea4449b"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2542,
+   "itemId": "WATER-TREATMENT-L4-542",
+   "payloadSha256": "569c7c594918a2e13215570a5327aca47f3e681f4685c7ce572634fcac4b64dc"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2543,
+   "itemId": "WATER-TREATMENT-L4-543",
+   "payloadSha256": "824382639920ea8b97ce4a758a709df5e3614580e763df8fd396fe43776bc540"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2544,
+   "itemId": "WATER-TREATMENT-L4-544",
+   "payloadSha256": "ee8677af50c80c7a1d4259546b62a5df4136544e022697cf9a73d73eb951cc3b"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2545,
+   "itemId": "WATER-TREATMENT-L4-545",
+   "payloadSha256": "320e1441a41e651b78f8a15aac84374d222304b1a5919dee9b2db799b6798eb4"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2546,
+   "itemId": "WATER-TREATMENT-L4-546",
+   "payloadSha256": "fcef6ab898f677300afd29781bcb687c8b1ef2f54e71f29184b3b97e3e08bb9a"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2547,
+   "itemId": "WATER-TREATMENT-L4-547",
+   "payloadSha256": "9ef01d90b2df32b58b58c1b35760988b91ff672ebd1b35dcee863035f3c8ab5d"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2548,
+   "itemId": "WATER-TREATMENT-L4-548",
+   "payloadSha256": "de4341537a1bf31ce7bbfb6040e7e68ffce45a0b673d4ae51c4b83d53400748d"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2549,
+   "itemId": "WATER-TREATMENT-L4-549",
+   "payloadSha256": "237a071b66e630ee2267083df40146467460629b76f7849ed067d15e93b64e58"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2550,
+   "itemId": "WATER-TREATMENT-L4-550",
+   "payloadSha256": "6a5e1a7a6cf78a8350ba6cbc1a19600d759454e768824581096e41e0702e1a5d"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2551,
+   "itemId": "WATER-TREATMENT-L4-551",
+   "payloadSha256": "65df4ac5df980a00f83f5b5435e108597995c9201abf65cd4161b0c380e1e95b"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2552,
+   "itemId": "WATER-TREATMENT-L4-552",
+   "payloadSha256": "03bf0127fbf799727a06dae3c7bbdeb980ff2e3f91ab02bca7e2e4dbc41e0f18"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2553,
+   "itemId": "WATER-TREATMENT-L4-553",
+   "payloadSha256": "69ff6c45b64935fff8975ea38a0300b2a37f037a0e2e1c30eaf30d4a5aecc5b5"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2554,
+   "itemId": "WATER-TREATMENT-L4-554",
+   "payloadSha256": "8226ee76892f65100975c0828a4410f8fa6c8c80056f1d40c687d42ddaae8ba5"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2555,
+   "itemId": "WATER-TREATMENT-L4-555",
+   "payloadSha256": "d4c6381176323a405ac35765cb77d6e64f9b2d208c73e3632049147a9c74fb01"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2556,
+   "itemId": "WATER-TREATMENT-L4-556",
+   "payloadSha256": "85da6a069668dc578d081248132a4811768f65d8dbfdb52c83e2667dfd8ad579"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2557,
+   "itemId": "WATER-TREATMENT-L4-557",
+   "payloadSha256": "58bb824e8cbab56c4a60787400fb2ef2e665790523f1e22c1c7eef0d412e271f"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2558,
+   "itemId": "WATER-TREATMENT-L4-558",
+   "payloadSha256": "76d15a9f06adb41bc31c3f98a83bd8bcf69d85c6cfd02d8fc06a4c08a6a0c9ab"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2559,
+   "itemId": "WATER-TREATMENT-L4-559",
+   "payloadSha256": "d6acbe6bc4db332d35b540bec36ba5549120b0e977e15c6ce592ed0fe43041be"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2560,
+   "itemId": "WATER-TREATMENT-L4-560",
+   "payloadSha256": "f426d65b610f46d80a4c4eeffb5952a86d2fb7127ccbbb7a814cc995a944b4d4"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2561,
+   "itemId": "WATER-TREATMENT-L4-561",
+   "payloadSha256": "7e71ccfb9a6c23f4f9225288336f64af9e0b61c5b17a648272052bbd5524695c"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2562,
+   "itemId": "WATER-TREATMENT-L4-562",
+   "payloadSha256": "c4e01db0f45babcc03421854b4e83a18b57f5c393bd6fd683fb86925cd7fd943"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2563,
+   "itemId": "WATER-TREATMENT-L4-563",
+   "payloadSha256": "860f64038d06ffa19c3d3098fbff93a2ad703e24d53f79fb047a501bcf00e529"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2564,
+   "itemId": "WATER-TREATMENT-L4-564",
+   "payloadSha256": "d9b00e828a6df0e0cf5633397195eb3683a36f789ee3f988ea11ddd492443a70"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2565,
+   "itemId": "WATER-TREATMENT-L4-565",
+   "payloadSha256": "4955a36228485cfed0f16ad864963aa983746faa21877f0527cc0e1f93bc6061"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2566,
+   "itemId": "WATER-TREATMENT-L4-566",
+   "payloadSha256": "3c88942679dbe0964fbbcdec43d2a1a02ab49f8dcd94478a6e0e8227551f0674"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2567,
+   "itemId": "WATER-TREATMENT-L4-567",
+   "payloadSha256": "faf2898dd6cb2d374bc82f23a4a7817b68d16f0ff78a444dbd6be176e17c0942"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2568,
+   "itemId": "WATER-TREATMENT-L4-568",
+   "payloadSha256": "86b1544d063ac2ff65d34dcf1dda8fd7c164f5b684d2246bd9e862c2ef72bf26"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2569,
+   "itemId": "WATER-TREATMENT-L4-569",
+   "payloadSha256": "f3401d461029d7643521bc37fff39ce00033cfb3d9101fa7512ff945904ee80f"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2570,
+   "itemId": "WATER-TREATMENT-L4-570",
+   "payloadSha256": "87330b23fd2be982285221b7235688f57f50b8ffb24adb20fef5f1a71054f25d"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2571,
+   "itemId": "WATER-TREATMENT-L4-571",
+   "payloadSha256": "e0b28ff446567921ad24b04bdcb3446ba0669da7e77850157eb745d63ab892a2"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2572,
+   "itemId": "WATER-TREATMENT-L4-572",
+   "payloadSha256": "d07746ffe58500352b08f28a83bc8801256a87aff629050151eae8e03c8aaef2"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2573,
+   "itemId": "WATER-TREATMENT-L4-573",
+   "payloadSha256": "cf2fd9ba012516791d3f869436f0b9bc9e7fd596e0ef0a3391c6fa42dc991267"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2574,
+   "itemId": "WATER-TREATMENT-L4-574",
+   "payloadSha256": "becd484496c43f95290924650020439042a933c6a7020a3f0f4f82d3dd7fefdc"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2575,
+   "itemId": "WATER-TREATMENT-L4-575",
+   "payloadSha256": "4b11a6a4f9a59e03851d2346953804cb4588a552cee36aedef004d9c06f81fa5"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2576,
+   "itemId": "WATER-TREATMENT-L4-576",
+   "payloadSha256": "fb87e68f3026bf501abbdbdedb69d2bcd1fa95b607b17131183485d5f443d2ea"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2577,
+   "itemId": "WATER-TREATMENT-L4-577",
+   "payloadSha256": "408ca4addd43616255439e75aa5eda62ff43bbe5bad29646d49e250dcec19521"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2578,
+   "itemId": "WATER-TREATMENT-L4-578",
+   "payloadSha256": "9d20158d546d953cd6fa63186195d3ab3f0d2568244c3fe3ab47d638813eeb3d"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2579,
+   "itemId": "WATER-TREATMENT-L4-579",
+   "payloadSha256": "ebd6cdcc2587e21a691e320578790d1f87cf36cb32399d0f4e0a5eb4116c234a"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2580,
+   "itemId": "WATER-TREATMENT-L4-580",
+   "payloadSha256": "23c276b12e638f0f435b804817c514bc693116407592ecccdccc426bcbc4b0e3"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2581,
+   "itemId": "WATER-TREATMENT-L4-581",
+   "payloadSha256": "17a23da4963ad1c9187e357e7f3184546e374c876babb9a5d6188d1d362a6403"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2582,
+   "itemId": "WATER-TREATMENT-L4-582",
+   "payloadSha256": "ae62db20f13aa4afbbcc8cd44a47554518fd13e4407cd4dac3cd7340bf57f0c0"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2583,
+   "itemId": "WATER-TREATMENT-L4-583",
+   "payloadSha256": "85da4bcc2fbddac448db305e6b9d463f14be2bf33898209ff301b4e44180ed62"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2584,
+   "itemId": "WATER-TREATMENT-L4-584",
+   "payloadSha256": "4e70f6c5bd4839113717a8fe4bd1d7e08a1b5e6e5addcab186027782caba851f"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2585,
+   "itemId": "WATER-TREATMENT-L4-585",
+   "payloadSha256": "897f8a5bc7f3167f9166fb626ed426160a63b878e3e1ccaef2b1b34b95ef6268"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2586,
+   "itemId": "WATER-TREATMENT-L4-586",
+   "payloadSha256": "8a62de66a4c4907c96526eaf4bb39b1225753ca4dcb90679fae08424f8abfa65"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2587,
+   "itemId": "WATER-TREATMENT-L4-587",
+   "payloadSha256": "759d60ae807b3e8621bcf81e3b6d9b2762abd49ef617a665d82d2dbcccab51c0"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2588,
+   "itemId": "WATER-TREATMENT-L4-588",
+   "payloadSha256": "d0e01a53dc0a3fa79c120f05ce55821736a40dbfe69046278ae225c03c540ab9"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2589,
+   "itemId": "WATER-TREATMENT-L4-589",
+   "payloadSha256": "bf1e4c1d84ca57f92b83efb86d1d270273529106db4c3b9166266a31a670609a"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2590,
+   "itemId": "WATER-TREATMENT-L4-590",
+   "payloadSha256": "cb91708c94adb40ae6c8502c76ea56346e1b0286d635756668b949ca9b01bd21"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2591,
+   "itemId": "WATER-TREATMENT-L4-591",
+   "payloadSha256": "3e90a7e8709b4d261b88c65e9b114173716a69d710e6f488add0fdc79dd2c01d"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2592,
+   "itemId": "WATER-TREATMENT-L4-592",
+   "payloadSha256": "a869b2589a573beecd5188f31ba23821593d5ce21d61ca7cff8a9b9ae21ae85a"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2593,
+   "itemId": "WATER-TREATMENT-L4-593",
+   "payloadSha256": "83e8157897e0538db415d4e9d805fca7862bb497f841e9b9cb2a41f1d0251fb2"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2594,
+   "itemId": "WATER-TREATMENT-L4-594",
+   "payloadSha256": "447070bf9f7350823e2de60141a637fb08ce137c2cdc5fcb403bd7534c23f692"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2595,
+   "itemId": "WATER-TREATMENT-L4-595",
+   "payloadSha256": "ffb5cae87a27a519ba1f8f69c384869912a4b32ec5dfc05474021ba64f387b97"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2596,
+   "itemId": "WATER-TREATMENT-L4-596",
+   "payloadSha256": "eb343bd77de7c200100239b850c3fc22956bcc3b2d7a0217acffe6b846835892"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2597,
+   "itemId": "WATER-TREATMENT-L4-597",
+   "payloadSha256": "9891e0a3fe0601000add212b01ca56e9df5136ff25affcf22ec59d487f8ac35e"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2598,
+   "itemId": "WATER-TREATMENT-L4-598",
+   "payloadSha256": "522455afe6208e4dfb334075ef67037d8858b51dcbd2dc02be07970095de5441"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2599,
+   "itemId": "WATER-TREATMENT-L4-599",
+   "payloadSha256": "51ebdededc38e31f4d3f7bd0f254dceb2e2d042463d11ba7ee72f3316cdc5227"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2600,
+   "itemId": "WATER-TREATMENT-L4-600",
+   "payloadSha256": "bc2a24e014b70b70baae2b9c4bcfc36f808109a8576cd95c408166eecf60cc75"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2601,
+   "itemId": "WATER-TREATMENT-L4-601",
+   "payloadSha256": "6b464a30b184bd25cb8b98540d6a466dd0117e25b325b4683171a6c70a8391fb"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2602,
+   "itemId": "WATER-TREATMENT-L4-602",
+   "payloadSha256": "8fa09eeef4947fb418da866ae44ceaf7e24dbed3acdc541b41fd04bfaf1bcb8d"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2603,
+   "itemId": "WATER-TREATMENT-L4-603",
+   "payloadSha256": "56d0f8c1604ce036daab10e7f02f5782acbc2e76a81dbad25e0a648ad42d4ac7"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2604,
+   "itemId": "WATER-TREATMENT-L4-604",
+   "payloadSha256": "6c996c6274fde970c2980b441bff9f2df415ff1019d74cd9ccf931c4bd8c23e8"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2605,
+   "itemId": "WATER-TREATMENT-L4-605",
+   "payloadSha256": "75c0816026e54c42b14f2a1bd502ea9088cf81abf2908802bae2c297e2b49fe4"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2606,
+   "itemId": "WATER-TREATMENT-L4-606",
+   "payloadSha256": "4ceb3c86a5bc052be5221138e30c486a870093dd2b1fb7c6958f31161b29fb3b"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2607,
+   "itemId": "WATER-TREATMENT-L4-607",
+   "payloadSha256": "75ec14b6a74aa4c48e982144c5c2f027f2768f635e7946707e9de9a0b4ed8887"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2608,
+   "itemId": "WATER-TREATMENT-L4-608",
+   "payloadSha256": "f7bb7e94434764bf7627cd54b94d9e0d6feb2b38448f6bc485c780d338f1c9c5"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2609,
+   "itemId": "WATER-TREATMENT-L4-609",
+   "payloadSha256": "37cd35dc286a17a78f1821fe43a68786ae88e9530028c16a5faf018ee205268b"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2610,
+   "itemId": "WATER-TREATMENT-L4-610",
+   "payloadSha256": "98736d97542187499ab08661f41865424b584fbcbd4523d48b6a1703735ea88d"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2611,
+   "itemId": "WATER-TREATMENT-L4-611",
+   "payloadSha256": "cf14cf4fccd93b0623dbda6ae2f5ce252d500f68a8f6856cf8903d167b7629a5"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2612,
+   "itemId": "WATER-TREATMENT-L4-612",
+   "payloadSha256": "71f8541b5cfb267ca5ef4b10e09ec19139296d1e959c5a63daf70cfa9455f211"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2613,
+   "itemId": "WATER-TREATMENT-L4-613",
+   "payloadSha256": "f153054da7f5f224f0d8494b46c44191fc8c31cf1027d9c3d75650c9337e8cc6"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2614,
+   "itemId": "WATER-TREATMENT-L4-614",
+   "payloadSha256": "61a72494ea04bf75753c75c0e0d030a4b404a1d594673ffce42ea18b196ed70f"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2615,
+   "itemId": "WATER-TREATMENT-L4-615",
+   "payloadSha256": "3f77e8df4a87ac2108bcd89c1f59744aac49fa560d9311d2100dd5a1d3b818ce"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2616,
+   "itemId": "WATER-TREATMENT-L4-616",
+   "payloadSha256": "257006f00a4d9e394fdfdbb7b107aeffacaa240d7f6175f54158f725f519fcda"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2617,
+   "itemId": "WATER-TREATMENT-L4-617",
+   "payloadSha256": "6d2d53b09a6896ef11aba678da0e57dcece6bda1b7854715182f1e0f524d9833"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2618,
+   "itemId": "WATER-TREATMENT-L4-618",
+   "payloadSha256": "d46d69774a9185e71f163576225e23d4488d47951ce9c50a0f916a863581c876"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2619,
+   "itemId": "WATER-TREATMENT-L4-619",
+   "payloadSha256": "df44749711f7f7c2cc82ee8b998d33ef140de6b8826c1047dbebd2e4fb47ccaa"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2620,
+   "itemId": "WATER-TREATMENT-L4-620",
+   "payloadSha256": "c94892d10bf94ab916462e3790bd6a6ec18ccea62ad43917537168ad078a129d"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2621,
+   "itemId": "WATER-TREATMENT-L4-621",
+   "payloadSha256": "e255211772bea11963383d07c22d59b0fc7eda1bc6eac03d44efcd1908e200a1"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2622,
+   "itemId": "WATER-TREATMENT-L4-622",
+   "payloadSha256": "5092a6d550f63a1c09c414247b50b1aba5cdf347480192003beab0cffbb42b0e"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2623,
+   "itemId": "WATER-TREATMENT-L4-623",
+   "payloadSha256": "abde7a5ac5c302f0b2dabe0db89922390643af991fba02a2a9a16e8e3d9c1dab"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2624,
+   "itemId": "WATER-TREATMENT-L4-624",
+   "payloadSha256": "e3c2311740c186e142863fa9492dd102b2ff05385ec617da7b7e052888868ad9"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2625,
+   "itemId": "WATER-TREATMENT-L4-625",
+   "payloadSha256": "a7e1862af90d26c6875fd4879ff8ba1c82533eedab732616d1b564aa8dfeace9"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2626,
+   "itemId": "WATER-TREATMENT-L4-626",
+   "payloadSha256": "9b8a3fc9931aaa8c107a96042149c20012f01cacb6fa25142b889220c066773c"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2627,
+   "itemId": "WATER-TREATMENT-L4-627",
+   "payloadSha256": "7a238c86c67871afaa5601a921a8986f52ee6c7a9daf5687d2093b2e1ae17418"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2628,
+   "itemId": "WATER-TREATMENT-L4-628",
+   "payloadSha256": "ae40bfd81ed20685db04b882a364ac36cabb4df5185b3806d6f68a8233397c49"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2629,
+   "itemId": "WATER-TREATMENT-L4-629",
+   "payloadSha256": "ab25a56b266f19cc848edeea93f0771daf0a42922e497595a5edb419c7cb7ee7"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2630,
+   "itemId": "WATER-TREATMENT-L4-630",
+   "payloadSha256": "79760448544c50a5c1ecd8d2abbc4ce11ddb1dbd32d924981dd116898a2c18f0"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2631,
+   "itemId": "WATER-TREATMENT-L4-631",
+   "payloadSha256": "c70239c6369084966036881c4cfb94143a6f75b7f793a1fe2203a32dc0930069"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2632,
+   "itemId": "WATER-TREATMENT-L4-632",
+   "payloadSha256": "75ccab80c10cf9e8e07feaf356cf2cf7f1a078a75837094de0add8e12b50bc5c"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2633,
+   "itemId": "WATER-TREATMENT-L4-633",
+   "payloadSha256": "a0f886ad6d51eb920cffddc7eb0d80e5df39bda53ffb7acbb27fb4815bf37054"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2634,
+   "itemId": "WATER-TREATMENT-L4-634",
+   "payloadSha256": "a1182add087aab660777ed5b3d2efc3f597ab2047fc6dea16e17c67c48f662d2"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2635,
+   "itemId": "WATER-TREATMENT-L4-635",
+   "payloadSha256": "07ce242c6983c763ecf29ed5c1f164949f13be771d36710b64b5338a2e712291"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2636,
+   "itemId": "WATER-TREATMENT-L4-636",
+   "payloadSha256": "c098e23aab3e7ea5deca5f49fbb344e98b1fe11553918c9c0353bdafdc95fcf8"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2637,
+   "itemId": "WATER-TREATMENT-L4-637",
+   "payloadSha256": "b28a4887086033108d559744bb1e8678ce58d4d43ed33e2c14666b3be82be064"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2638,
+   "itemId": "WATER-TREATMENT-L4-638",
+   "payloadSha256": "4105c00819eff851e1777250300e51179c964853b84f34245f19bb62d50d4ebc"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2639,
+   "itemId": "WATER-TREATMENT-L4-639",
+   "payloadSha256": "9fd863d359c68f0f0204ba03e22d1594630c73346dc68ad89c017d70a9e5da18"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2640,
+   "itemId": "WATER-TREATMENT-L4-640",
+   "payloadSha256": "5ae7346b3e16650de77c4ba2c5b21a7e414fa53d9b92a49252ae4000823eb8d7"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2641,
+   "itemId": "WATER-TREATMENT-L4-641",
+   "payloadSha256": "1461e961889d86450fab47fb8c5243efa2dc28613aacca241759cac70d5dc1da"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2642,
+   "itemId": "WATER-TREATMENT-L4-642",
+   "payloadSha256": "0aaf4e9c28b80294072792343dda388ee873ead43f061341bfc8a9b928da4a2d"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2643,
+   "itemId": "WATER-TREATMENT-L4-643",
+   "payloadSha256": "64da4f9cc817278d0c8706ba74f67fd07888684cafe52b89c13cbe69d06ab35a"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2644,
+   "itemId": "WATER-TREATMENT-L4-644",
+   "payloadSha256": "54e8588010b668b2819fdc5291c4c3e945a7dedcd65d8e470f9186361d96c144"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2645,
+   "itemId": "WATER-TREATMENT-L4-645",
+   "payloadSha256": "aadeb05b385b29dc2a2edc91722ba046e499e109a31f4897e7118f6cbc35bd59"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2646,
+   "itemId": "WATER-TREATMENT-L4-646",
+   "payloadSha256": "f17cbf0201b3ce08f6fab63286bab503314d4d3d219a21f482e5c3d4ac62134f"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2647,
+   "itemId": "WATER-TREATMENT-L4-647",
+   "payloadSha256": "71f9858183896d79153c34751a76c35457ef756ef7ed974e66ec5caddda56b19"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2648,
+   "itemId": "WATER-TREATMENT-L4-648",
+   "payloadSha256": "ecf23fbc9e7fb9f4d78745570f1c9481143a40188415969737bf42177133cc86"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2649,
+   "itemId": "WATER-TREATMENT-L4-649",
+   "payloadSha256": "97a88bd08f39688dfc59c6fe473ebf7cd08f0366b4bc322641d8a4b22d3236d3"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2650,
+   "itemId": "WATER-TREATMENT-L4-650",
+   "payloadSha256": "17dfb880a50d1f2257fc2cbebf7662a2d6f597bd9c8e4ce9a5558c61c8a93188"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2651,
+   "itemId": "WATER-TREATMENT-L4-651",
+   "payloadSha256": "cf11c3f34dac9c26c8817cda0cd97cfc9eb99e823f0b3f8a9a2d29ff8f7357f0"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2652,
+   "itemId": "WATER-TREATMENT-L4-652",
+   "payloadSha256": "067b27456a8bc9537b7e6012d5fa7b6dae5df162f8ed66d941bdb9060e9fd0bc"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2653,
+   "itemId": "WATER-TREATMENT-L4-653",
+   "payloadSha256": "7ef498ec1a19022bd448a0691c5b0705f62ad5580fd423d93d165dfe477af5fe"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2654,
+   "itemId": "WATER-TREATMENT-L4-654",
+   "payloadSha256": "de4bd0fb3c758062ff4d623fcae838d2498f0813a02d7cb627673e6ba100733c"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2655,
+   "itemId": "WATER-TREATMENT-L4-655",
+   "payloadSha256": "31a6cd4acf0d664b7407f4b3408b2bf6a3031977fefccebab4e8d8b94edd080d"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2656,
+   "itemId": "WATER-TREATMENT-L4-656",
+   "payloadSha256": "d736cfa249c874c127f810ccab17550789f383fb5e8809caa344696e5d046467"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2657,
+   "itemId": "WATER-TREATMENT-L4-657",
+   "payloadSha256": "de3cd7f4ceb86b617f48d6513399c76daab34157d39fbe76c6cb53141698a790"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2658,
+   "itemId": "WATER-TREATMENT-L4-658",
+   "payloadSha256": "c12871ffb236306753fcf0f631f6e664bde0234be7672c35b41780926982d942"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2659,
+   "itemId": "WATER-TREATMENT-L4-659",
+   "payloadSha256": "aeeed377160175db89516f07e731240b88cfcd344d14fb114a1275f57254610c"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2660,
+   "itemId": "WATER-TREATMENT-L4-660",
+   "payloadSha256": "e90d7814fc970d5f63d6b3dd83d634550f7f7da36e06353977f0505a34e120e2"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2661,
+   "itemId": "WATER-TREATMENT-L4-661",
+   "payloadSha256": "c26a524c0808e05dbb6c19b30225ac0c263a264288bc4d7aa26877d2abc9fdbc"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2662,
+   "itemId": "WATER-TREATMENT-L4-662",
+   "payloadSha256": "bb3c05d38d1a5460ab2a3f88327edcc034d868bced4d7c68555a9e5bd76f62d8"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2663,
+   "itemId": "WATER-TREATMENT-L4-663",
+   "payloadSha256": "ae86b220026b9ee8f349132dc1c00e594e9a0b0d0dec4ae351a3ae92255ed5f3"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2664,
+   "itemId": "WATER-TREATMENT-L4-664",
+   "payloadSha256": "0fdb1cb91bca6b64914f8454a7b393573c77f73cd7efb5850476c421b3494f0b"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2665,
+   "itemId": "WATER-TREATMENT-L4-665",
+   "payloadSha256": "5a6574202521e7d348cfc0c34e90f411d3da7110973313f0bdd1c7a204e34e65"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2666,
+   "itemId": "WATER-TREATMENT-L4-666",
+   "payloadSha256": "5a0f1c5aae637453ba0f41e140b8d31f29e31dd426727946ece0f394b465330a"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2667,
+   "itemId": "WATER-TREATMENT-L4-667",
+   "payloadSha256": "e26e6af4e0a948aa673eabe1f8d9679985c7da8cf7a285131b149285a91cc456"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2668,
+   "itemId": "WATER-TREATMENT-L4-668",
+   "payloadSha256": "3ae0216dc72ce8b2fb8c64b692e6abdfbaaf781ec5c9bfedcec6dee662ae2700"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2669,
+   "itemId": "WATER-TREATMENT-L4-669",
+   "payloadSha256": "44c44942afc0631d15c54e7a7482700eb3d83fb0a23a24b6473fb8b82b06ec17"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2670,
+   "itemId": "WATER-TREATMENT-L4-670",
+   "payloadSha256": "eb4dde143eb82f6fa721c0f0462a32cb51fcbe6bab87ae46286ff922d558590c"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2671,
+   "itemId": "WATER-TREATMENT-L4-671",
+   "payloadSha256": "25716aefa884d199eacfe6aa833160cf753723c07f5324c11d2d73140d45153d"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2672,
+   "itemId": "WATER-TREATMENT-L4-672",
+   "payloadSha256": "70aadb3add456d466155aca2bc6d1f58707043b2b95a671efda7482df5f68af1"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2673,
+   "itemId": "WATER-TREATMENT-L4-673",
+   "payloadSha256": "10165e2bd61f727adb057fb01e5029634d2f962778318587883c578f63ab5969"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2674,
+   "itemId": "WATER-TREATMENT-L4-674",
+   "payloadSha256": "a0ebde84856fc7fa8831cd566cb92c5cca03ddb7106518e09854ca52d830568b"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2675,
+   "itemId": "WATER-TREATMENT-L4-675",
+   "payloadSha256": "139485906f2ac8fb1be6a811eea715cf21b7616fa65e29819e70975cd084bdf1"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2676,
+   "itemId": "WATER-TREATMENT-L4-676",
+   "payloadSha256": "8b4037e610aec5f3098e7c826921a02b330a44cb791c0fa77ed6d339ac545e97"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2677,
+   "itemId": "WATER-TREATMENT-L4-677",
+   "payloadSha256": "92d551e6f677ed9566f01af24a51dc7487de16e67fc719c76ca10d67ae2e5914"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2678,
+   "itemId": "WATER-TREATMENT-L4-678",
+   "payloadSha256": "81ef8e70774d3115a56292ff2a50cfce17f1cbe619c1fed8a42335a4e9808578"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2679,
+   "itemId": "WATER-TREATMENT-L4-679",
+   "payloadSha256": "315e1e923c3f7a8b0a46a0891f87e6a2b62240639c2b26cad796e128adbf9f0e"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2680,
+   "itemId": "WATER-TREATMENT-L4-680",
+   "payloadSha256": "85be951d76e05787c76176725cd3d86ac981711648ff6761a0c74b34426e9590"
+  },
+  {
+   "bankKey": "class4-water",
+   "questionNum": 2681,
+   "itemId": "WATER-TREATMENT-L4-681",
+   "payloadSha256": "cb5625c7fd7374558454e0f21c4c3155b26d917485c71626a370fc924e50e65f"
+  }
+ ],
+ "engineeringVerification": {
+  "verifiedBy": "Manus engineering verification (not a new content review)",
+  "verifiedAtUtc": "2026-11-23T18:59:04Z",
+  "checkers": {
+   "validate_gap.py": "2dc1a05aee0cd04c4fadd263ae0b724005ad793c959876b60d227f6940f3dab5",
+   "verify_calcs_gap.py": "5d4a5952b765ee626744a180f47f7b82d4b9095a58759801e0132865f72b4382",
+   "dedup_gap.py": "0f06ca95d080fba1e23778d547d0cb75ae74c9f384c7c8cb4c63220f3ceb4933",
+   "quality_checks.py": "2fa37c2d8676b68b4b73406ed3f53a68e3569bf2146febbb6feffee5e421d0b6",
+   "receipts.py": "b9d4fa17b358ac50ec4cfe38de9c5bc236cb975ee520416743f36d75563c3616",
+   "verify_receipts.py": "edee2a3c35dcec49a61cac9381b5ec2f00118bcc8e4ee5b1da1ca9c0906f368e"
+  }
+ }
+}

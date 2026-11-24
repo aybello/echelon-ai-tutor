@@ -1,0 +1,5140 @@
+{
+ "courseKey": "class2-ww",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "c2ww-process40",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a return sludge control program review at the weekly operations meeting.",
+   "topicId": "clarifier-performance",
+   "level": "class1",
+   "assumptions": "Fictional plant adjusting return control seasonally.",
+   "configuration": "Scope: review covering blanket, settleability and return rate data.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Assemble blanket depth, settleability and return rate records for the week"
+    },
+    {
+     "id": "c2",
+     "label": "Identify periods where blanket depth left the target range"
+    },
+    {
+     "id": "c3",
+     "label": "Correlate blanket excursions with return rate and flow at the time"
+    },
+    {
+     "id": "c4",
+     "label": "Set the return rate schedule for the coming week, including peak flow settings"
+    },
+    {
+     "id": "c5",
+     "label": "Issue the schedule to all shifts and file the review"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Records are assembled, excursions are identified and correlated with return rate and flow, and the new schedule is issued to every shift."
+  },
+  {
+   "id": "c2ww-process41",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the weir and launder cleaning program for a clarifier with algae growth.",
+   "topicId": "clarifier-operations",
+   "level": "class1",
+   "assumptions": "Fictional clarifier with algae on the weirs causing uneven effluent flow.",
+   "configuration": "Scope: scheduled cleaning of one clarifier launder.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Notify the shift team and record the clarifier condition before cleaning"
+    },
+    {
+     "id": "c2",
+     "label": "Brush and hose the algae from the weirs and launder surfaces"
+    },
+    {
+     "id": "c3",
+     "label": "Check the weir plates are level and firmly seated after cleaning"
+    },
+    {
+     "id": "c4",
+     "label": "Confirm effluent flow over the weirs is even around the launder"
+    },
+    {
+     "id": "c5",
+     "label": "Record the cleaning in the maintenance log"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "The team is notified and condition recorded first, cleaning follows, weir level and even flow are confirmed, and the work is logged."
+  },
+  {
+   "id": "c2ww-process42",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a clarifier stress check ahead of a forecast high flow event.",
+   "topicId": "clarifier-performance",
+   "level": "class1",
+   "assumptions": "Fictional plant expecting flows well above average the next day.",
+   "configuration": "Scope: readiness check the day before a major storm reaches the plant.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Review clarifier blanket depths and bring them to the low end of the target range"
+    },
+    {
+     "id": "c2",
+     "label": "Confirm all return sludge pumps are available and set to the wet weather schedule"
+    },
+    {
+     "id": "c3",
+     "label": "Confirm scrapers, skimmers and drives are running without defects"
+    },
+    {
+     "id": "c4",
+     "label": "Check that the standby clarifier is ready to be placed in service if needed"
+    },
+    {
+     "id": "c5",
+     "label": "Brief all shifts on the high flow clarifier settings"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Blankets are lowered first, return capacity and mechanisms are confirmed next, standby capacity is readied, and shifts are briefed last."
+  },
+  {
+   "id": "c2ww-process43",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the start up of a newly cleaned anaerobic digester.",
+   "topicId": "digester-startup",
+   "level": "class1",
+   "assumptions": "Fictional Ontario plant returning a mesophilic digester to service.",
+   "configuration": "Scope: start up from filling through stable gas production.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Fill the digester with warm wastewater or sludge and confirm heating and mixing work"
+    },
+    {
+     "id": "c2",
+     "label": "Add seed sludge from a healthy operating digester"
+    },
+    {
+     "id": "c3",
+     "label": "Begin feeding at a low volatile solids loading rate"
+    },
+    {
+     "id": "c4",
+     "label": "Monitor volatile acids, alkalinity, pH and gas production daily"
+    },
+    {
+     "id": "c5",
+     "label": "Increase feeding in steps only after volatile acids stay low and gas production is stable"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Heating, mixing and seed come before feeding, daily acid and gas checks guard the start up, and loading rises only when the digester is stable."
+  },
+  {
+   "id": "c2ww-process44",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a digester feeding rate increase program.",
+   "topicId": "digester-operations",
+   "level": "class1",
+   "assumptions": "Fictional digester running well below its design volatile solids loading.",
+   "configuration": "Scope: loading increase over two weeks for a stable digester.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm volatile acids, alkalinity ratio, pH and gas production are stable at the current loading"
+    },
+    {
+     "id": "c2",
+     "label": "Calculate the new feed volume for the next planned loading step"
+    },
+    {
+     "id": "c3",
+     "label": "Increase the daily feed volume to that step"
+    },
+    {
+     "id": "c4",
+     "label": "Monitor volatile acids and gas production daily at the new loading"
+    },
+    {
+     "id": "c5",
+     "label": "Hold or step back if volatile acids rise, and proceed only when stable again"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Stability is confirmed before the increase, the new volume is calculated and applied next, and daily monitoring decides whether to hold or proceed."
+  },
+  {
+   "id": "c2ww-process45",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the withdrawal and feeding sequence for a digester on a once per day cycle.",
+   "topicId": "digester-operations",
+   "level": "class1",
+   "assumptions": "Fictional digester fed from a sludge holding tank with a set working level.",
+   "configuration": "Scope: one daily cycle that keeps digester level steady.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Check the digester level and confirm room is needed for the days feed volume"
+    },
+    {
+     "id": "c2",
+     "label": "Withdraw digested sludge equal to the planned feed volume to the withdrawal system"
+    },
+    {
+     "id": "c3",
+     "label": "Confirm the withdrawal is complete and valves are returned to normal"
+    },
+    {
+     "id": "c4",
+     "label": "Feed the planned volume of raw sludge at the set rate"
+    },
+    {
+     "id": "c5",
+     "label": "Record the volumes withdrawn and fed and the final level"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Room is made by withdrawing first, the withdrawal is confirmed complete, and only then is the equal feed volume added and recorded."
+  },
+  {
+   "id": "c2ww-process46",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the daily digester mixing and heating check.",
+   "topicId": "digester-operations",
+   "level": "class1",
+   "assumptions": "Fictional digester with pumped mixing and a hot water heating loop.",
+   "configuration": "Scope: morning rounds for one mesophilic digester.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Check digester temperature against the mesophilic target range"
+    },
+    {
+     "id": "c2",
+     "label": "Confirm the mixing system is running and drawing normal power"
+    },
+    {
+     "id": "c3",
+     "label": "Check the heating circulation pump and heat exchanger temperatures"
+    },
+    {
+     "id": "c4",
+     "label": "Inspect for foam or level abnormality at the digester sight glass or hatch where safe"
+    },
+    {
+     "id": "c5",
+     "label": "Record all readings and report any abnormality to the supervisor"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Temperature, mixing and heating are checked in order, the digester condition is inspected, and readings are recorded with abnormalities reported."
+  },
+  {
+   "id": "c2ww-process47",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the response to rising volatile acids in an anaerobic digester.",
+   "topicId": "digester-troubleshooting",
+   "level": "class1",
+   "assumptions": "Fictional digester showing souring signs after a loading increase.",
+   "configuration": "Scope: recovery program after the volatile acid to alkalinity ratio climbs.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm the rise with a repeat volatile acids and alkalinity test"
+    },
+    {
+     "id": "c2",
+     "label": "Reduce or stop raw sludge feeding to cut the acid load"
+    },
+    {
+     "id": "c3",
+     "label": "Check digester temperature and mixing for a contributing fault"
+    },
+    {
+     "id": "c4",
+     "label": "Monitor volatile acids, alkalinity and pH daily while feeding is held"
+    },
+    {
+     "id": "c5",
+     "label": "Resume feeding at a reduced rate only after the acid ratio falls back to the normal range"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "The souring is confirmed first, feeding is cut next, temperature and mixing are checked, and feeding resumes at a reduced rate only after recovery."
+  },
+  {
+   "id": "c2ww-process48",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the response to a digester temperature drop below the mesophilic range.",
+   "topicId": "digester-troubleshooting",
+   "level": "class1",
+   "assumptions": "Fictional digester cooling by several degrees over two days.",
+   "configuration": "Scope: response after a heating system fault is suspected.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Verify the temperature drop with a second reading or sensor check"
+    },
+    {
+     "id": "c2",
+     "label": "Inspect the boiler or heat source and the hot water circulation pump"
+    },
+    {
+     "id": "c3",
+     "label": "Check the heat exchanger for fouling or a closed valve"
+    },
+    {
+     "id": "c4",
+     "label": "Restore heating and confirm temperature begins rising toward the range"
+    },
+    {
+     "id": "c5",
+     "label": "Reduce feeding while temperature is low and monitor gas production daily"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "The drop is verified first, the heat source, circulation and exchanger are checked in order, heating is restored, and feeding is eased while it recovers."
+  },
+  {
+   "id": "c2ww-process49",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the daily digester gas system check at awareness level.",
+   "topicId": "digester-safety",
+   "level": "class1",
+   "assumptions": "Fictional plant gas system checked from outside the digester roof area under the plant safety procedure.",
+   "configuration": "Scope: routine external check of gas piping, flame arrester and pressure relief devices.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Review the gas production and digester pressure trends for abnormal values"
+    },
+    {
+     "id": "c2",
+     "label": "Inspect accessible gas piping and condensate traps for leaks, damage or blockage"
+    },
+    {
+     "id": "c3",
+     "label": "Confirm the pressure and vacuum relief device appears unobstructed and undamaged"
+    },
+    {
+     "id": "c4",
+     "label": "Check the flame arrester and gas meter readings are recorded"
+    },
+    {
+     "id": "c5",
+     "label": "Log the check and report any abnormal finding to the supervisor immediately"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Trends are reviewed first, accessible piping and safety devices are inspected next, and the check is logged with abnormalities reported at once."
+  },
+  {
+   "id": "c2ww-process50",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a digester foaming investigation.",
+   "topicId": "digester-troubleshooting",
+   "level": "class1",
+   "assumptions": "Fictional digester foaming after a change in sludge feed character.",
+   "configuration": "Scope: investigation after foam appears in the gas line and at the digester hatch.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Record when the foaming started and what feed or loading changes came before it"
+    },
+    {
+     "id": "c2",
+     "label": "Check volatile acids, alkalinity and temperature for digester instability"
+    },
+    {
+     "id": "c3",
+     "label": "Review feed sludge for filamentous or industrial contributions"
+    },
+    {
+     "id": "c4",
+     "label": "Reduce feeding rate and apply the plant foam control step"
+    },
+    {
+     "id": "c5",
+     "label": "Monitor foam, gas production and acids daily until conditions normalise"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "The timeline is recorded first, stability and feed character are checked next, feeding is reduced with foam control, and recovery is monitored daily."
+  },
+  {
+   "id": "c2ww-process51",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a digester supernatant withdrawal program that protects the liquid treatment train.",
+   "topicId": "digester-operations",
+   "level": "class1",
+   "assumptions": "Fictional digester with a supernatant layer high in ammonia.",
+   "configuration": "Scope: scheduled supernatant return to the plant inlet in small batches.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm the supernatant layer depth and sample its ammonia strength"
+    },
+    {
+     "id": "c2",
+     "label": "Schedule withdrawals for low load periods at the plant inlet"
+    },
+    {
+     "id": "c3",
+     "label": "Withdraw a small batch and confirm the volume sent to the inlet"
+    },
+    {
+     "id": "c4",
+     "label": "Watch aeration basin ammonia and dissolved oxygen during the return"
+    },
+    {
+     "id": "c5",
+     "label": "Adjust the batch size or timing if the basin shows load stress"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Strength is sampled first, withdrawals are timed for low load, basin response is watched during return, and batch size is adjusted from that response."
+  },
+  {
+   "id": "c2ww-process52",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the preparation steps for taking a digester out of service for cleaning.",
+   "topicId": "digester-operations",
+   "level": "class1",
+   "assumptions": "Fictional Ontario plant preparing a digester for contractor cleaning under Regulation 129/04 licensed supervision.",
+   "configuration": "Scope: preparation only, ending with the vessel ready for the confined space program.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Stop feeding the digester and continue withdrawal until the level is as low as operations allow"
+    },
+    {
+     "id": "c2",
+     "label": "Transfer remaining contents to another digester or holding as directed"
+    },
+    {
+     "id": "c3",
+     "label": "Isolate and lock out feed, withdrawal, heating, mixing and gas connections"
+    },
+    {
+     "id": "c4",
+     "label": "Purge and ventilate the vessel and test the atmosphere under the confined space procedure"
+    },
+    {
+     "id": "c5",
+     "label": "Hand the prepared vessel over to the confined space entry team with the test records"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Feeding stops and contents are removed first, all energy and gas connections are isolated and locked out, the atmosphere is tested, and handover closes the preparation."
+  },
+  {
+   "id": "c2ww-process53",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a 30 minute settleability test from sampling to recorded result.",
+   "topicId": "laboratory-testing",
+   "level": "class1",
+   "assumptions": "Fictional plant laboratory running the standard settleometer routine.",
+   "configuration": "Scope: one mixed liquor settleability test in a 1 L cylinder.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Collect a fresh mixed liquor sample from the aeration basin outlet"
+    },
+    {
+     "id": "c2",
+     "label": "Fill the settleometer to the 1000 mL mark and start the timer"
+    },
+    {
+     "id": "c3",
+     "label": "Record the settled sludge volume at 30 minutes"
+    },
+    {
+     "id": "c4",
+     "label": "Note the supernatant clarity and any rising or floating sludge"
+    },
+    {
+     "id": "c5",
+     "label": "Calculate or record the result with the matching mixed liquor solids for the SVI record"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "A fresh sample and a timed test come first, the 30 minute volume and supernatant are observed next, and the result is recorded with its solids value."
+  },
+  {
+   "id": "c2ww-process54",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a weekly SVI trending program for the process control meeting.",
+   "topicId": "laboratory-testing",
+   "level": "class1",
+   "assumptions": "Fictional plant tracking sludge quality through the season.",
+   "configuration": "Scope: trend review combining settleability and mixed liquor data.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Collect the daily settled volume and mixed liquor suspended solids results for the week"
+    },
+    {
+     "id": "c2",
+     "label": "Calculate the sludge volume index for each day from settled volume and solids"
+    },
+    {
+     "id": "c3",
+     "label": "Plot the SVI trend and mark values outside the plant normal band"
+    },
+    {
+     "id": "c4",
+     "label": "Compare the trend with blanket depth and effluent quality for the same days"
+    },
+    {
+     "id": "c5",
+     "label": "Present the trend and a recommended wasting or return action at the meeting"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Daily results are collected and SVI is calculated first, the trend is compared with clarifier performance next, and a recommendation is presented last."
+  },
+  {
+   "id": "c2ww-process55",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the quality checks inside a BOD test batch before results are accepted.",
+   "topicId": "laboratory-testing",
+   "level": "class1",
+   "assumptions": "Fictional laboratory running BOD by the dilution method.",
+   "configuration": "Scope: one BOD batch with samples, blanks and a glucose glutamic acid standard.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm dilution water quality and seed condition meet the method requirements"
+    },
+    {
+     "id": "c2",
+     "label": "Check the glucose glutamic acid standard result is within its acceptance range"
+    },
+    {
+     "id": "c3",
+     "label": "Check duplicate sample results agree within the laboratory limit"
+    },
+    {
+     "id": "c4",
+     "label": "Check blank depletion is within the method limit"
+    },
+    {
+     "id": "c5",
+     "label": "Accept and report sample results only for the checks that pass, and rerun any failed portion"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Seed and standard performance are checked first, duplicates and blanks follow, and results are accepted or rerun based on those checks."
+  },
+  {
+   "id": "c2ww-process56",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a BOD seed check used to decide if seed correction is needed.",
+   "topicId": "laboratory-testing",
+   "level": "class1",
+   "assumptions": "Fictional laboratory using seed from the plant final effluent.",
+   "configuration": "Scope: seed evaluation run alongside a sample batch.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Prepare a series of seed dilutions in BOD bottles with dilution water"
+    },
+    {
+     "id": "c2",
+     "label": "Incubate the bottles at 20 degrees C for 5 days with the sample batch"
+    },
+    {
+     "id": "c3",
+     "label": "Measure the dissolved oxygen depletion in each seed bottle"
+    },
+    {
+     "id": "c4",
+     "label": "Calculate the seed correction factor from the depletion per mL of seed"
+    },
+    {
+     "id": "c5",
+     "label": "Apply the correction to the seeded sample results and record it"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Seed dilutions are prepared and incubated with the batch, depletion is measured next, and the calculated correction is applied to sample results."
+  },
+  {
+   "id": "c2ww-process57",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a nutrient sampling program for one day of ammonia and phosphorus monitoring.",
+   "topicId": "laboratory-sampling",
+   "level": "class1",
+   "assumptions": "Fictional plant tracking nutrient removal performance.",
+   "configuration": "Scope: sampling at the aeration inlet, basin outlet and final effluent.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Prepare labelled bottles and preservatives required for ammonia and phosphorus samples"
+    },
+    {
+     "id": "c2",
+     "label": "Collect the influent sample at the set morning time"
+    },
+    {
+     "id": "c3",
+     "label": "Collect the aeration basin outlet sample at the matching time"
+    },
+    {
+     "id": "c4",
+     "label": "Collect the final effluent sample at the matching time"
+    },
+    {
+     "id": "c5",
+     "label": "Deliver all samples to the laboratory with the completed chain of custody form"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Bottles are prepared first, samples follow the flow path through the plant in order, and delivery with custody documentation closes the program."
+  },
+  {
+   "id": "c2ww-process58",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a microscopic sample handling sequence that keeps the organisms representative.",
+   "topicId": "laboratory-testing",
+   "level": "class1",
+   "assumptions": "Fictional plant laboratory examining live mixed liquor.",
+   "configuration": "Scope: handling from basin sampling to slide examination within the hour.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Collect the mixed liquor sample in a clean wide mouth container"
+    },
+    {
+     "id": "c2",
+     "label": "Transport it to the laboratory promptly without aerating or chilling it"
+    },
+    {
+     "id": "c3",
+     "label": "Gently invert the container to resuspend the floc evenly"
+    },
+    {
+     "id": "c4",
+     "label": "Prepare the slide and examine it while the organisms are still active"
+    },
+    {
+     "id": "c5",
+     "label": "Record organism types and activity with the sample time noted"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Prompt gentle handling protects the live sample, the slide is prepared after even resuspension, and findings are recorded with the sample time."
+  },
+  {
+   "id": "c2ww-process59",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a total and volatile suspended solids test sequence for a sludge sample.",
+   "topicId": "laboratory-testing",
+   "level": "class1",
+   "assumptions": "Fictional laboratory determining TS and VS for a digester feed sample.",
+   "configuration": "Scope: one gravimetric solids determination in the plant laboratory.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Filter a measured volume of well mixed sample through a prepared filter"
+    },
+    {
+     "id": "c2",
+     "label": "Dry the filter and residue at 103 to 105 degrees C and weigh to get total suspended solids"
+    },
+    {
+     "id": "c3",
+     "label": "Ignite the dried residue at 550 degrees C"
+    },
+    {
+     "id": "c4",
+     "label": "Cool in a desiccator and weigh again to get the volatile portion"
+    },
+    {
+     "id": "c5",
+     "label": "Calculate total and volatile suspended solids and record both results"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "The sample is filtered and dried for total solids first, ignition and reweighing give the volatile portion, and both results are calculated and recorded."
+  },
+  {
+   "id": "c2ww-process60",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a 24 hour composite effluent sampling sequence for compliance monitoring.",
+   "topicId": "laboratory-sampling",
+   "level": "class1",
+   "assumptions": "Fictional Ontario plant sampling under its environmental compliance approval.",
+   "configuration": "Scope: one flow proportional composite sample at the final effluent.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Program the automatic sampler for flow proportional compositing over 24 hours"
+    },
+    {
+     "id": "c2",
+     "label": "Confirm the sampler intake is in the effluent flow and the refrigeration is working"
+    },
+    {
+     "id": "c3",
+     "label": "Check the sampler partway through the day for intake blockage or missed pulses"
+    },
+    {
+     "id": "c4",
+     "label": "Collect the completed composite, mix it and fill the labelled laboratory bottles"
+    },
+    {
+     "id": "c5",
+     "label": "Complete the chain of custody and deliver the samples within the holding time"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "The sampler is programmed and confirmed working first, checked during the day next, and the completed composite is bottled and delivered with custody records."
+  },
+  {
+   "id": "c2ww-process61",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the response sequence after a confirmed effluent ammonia result above the compliance limit.",
+   "topicId": "effluent-compliance",
+   "level": "class1",
+   "assumptions": "Fictional plant receiving a laboratory confirmed ammonia exceedance for the previous day.",
+   "configuration": "Scope: response at an Ontario plant operating under an environmental compliance approval.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm the result and check the sample record for sampling or laboratory error"
+    },
+    {
+     "id": "c2",
+     "label": "Notify the supervisor and follow the approval reporting duty for the exceedance"
+    },
+    {
+     "id": "c3",
+     "label": "Inspect aeration, dissolved oxygen, SRT and alkalinity records for the sample day"
+    },
+    {
+     "id": "c4",
+     "label": "Apply the corrective process step for the cause found"
+    },
+    {
+     "id": "c5",
+     "label": "Increase effluent ammonia sampling frequency until results return within the limit"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Confirmation comes first, supervisory notification and reporting follow, process records are inspected and corrected next, and sampling is increased until compliance returns."
+  },
+  {
+   "id": "c2ww-process62",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the response to an effluent total suspended solids exceedance from a clarifier upset.",
+   "topicId": "effluent-compliance",
+   "level": "class1",
+   "assumptions": "Fictional plant with solids carryover visible at the clarifier weirs.",
+   "configuration": "Scope: response over the shift after a high effluent TSS result.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm the TSS result and inspect the clarifier surface and blanket depth"
+    },
+    {
+     "id": "c2",
+     "label": "Check return sludge rate and flow split between clarifiers"
+    },
+    {
+     "id": "c3",
+     "label": "Correct the return rate or flow split found out of position"
+    },
+    {
+     "id": "c4",
+     "label": "Resample effluent TSS after the clarifier has stabilised"
+    },
+    {
+     "id": "c5",
+     "label": "Report the event and the corrective action to the supervisor for the compliance record"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "The result and clarifier condition are confirmed first, return and split are checked and corrected next, resampling verifies recovery, and reporting closes the event."
+  },
+  {
+   "id": "c2ww-process63",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a chlorine disinfection dose adjustment after effluent quality changes.",
+   "topicId": "effluent-disinfection",
+   "level": "class1",
+   "assumptions": "Fictional plant disinfecting with chlorine and monitoring residual after contact.",
+   "configuration": "Scope: dose program change for a chlorinated final effluent.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Measure the current effluent chlorine demand indicators, including turbidity and ammonia"
+    },
+    {
+     "id": "c2",
+     "label": "Check the current chlorine dose and the residual after the contact time"
+    },
+    {
+     "id": "c3",
+     "label": "Adjust the dose by one planned step toward the target residual"
+    },
+    {
+     "id": "c4",
+     "label": "Measure the residual again after the new dose has passed through the contact tank"
+    },
+    {
+     "id": "c5",
+     "label": "Record the dose change and confirm dechlorination or discharge residual stays within the approval"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Demand and current residual are measured first, the dose is adjusted in one step, residual is remeasured after contact, and discharge limits are confirmed."
+  },
+  {
+   "id": "c2ww-process64",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a UV disinfection performance check for one duty channel.",
+   "topicId": "effluent-disinfection",
+   "level": "class1",
+   "assumptions": "Fictional plant with a UV channel disinfecting final effluent.",
+   "configuration": "Scope: routine check of UV intensity, flow and lamp status.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Record the channel flow and confirm it is within the validated range for the unit"
+    },
+    {
+     "id": "c2",
+     "label": "Check the UV intensity sensor reading against the expected value for the lamp age"
+    },
+    {
+     "id": "c3",
+     "label": "Inspect and clean the sensor window and sleeves if fouling is suspected"
+    },
+    {
+     "id": "c4",
+     "label": "Confirm lamp status shows all required lamps in service"
+    },
+    {
+     "id": "c5",
+     "label": "Record the check and report any low intensity for maintenance follow up"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Flow is confirmed in range first, intensity and fouling are checked next, lamp status is confirmed, and the check is recorded with follow up reported."
+  },
+  {
+   "id": "c2ww-process65",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the response to a rising effluent phosphorus trend approaching the limit.",
+   "topicId": "effluent-compliance",
+   "level": "class1",
+   "assumptions": "Fictional plant with biological phosphorus removal and chemical backup.",
+   "configuration": "Scope: supervisory response over one week of climbing phosphorus results.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm the trend from several laboratory results and check sampling consistency"
+    },
+    {
+     "id": "c2",
+     "label": "Review biological phosphorus indicators, including anaerobic zone condition and volatile fatty acid supply"
+    },
+    {
+     "id": "c3",
+     "label": "Check the chemical feed system is available and the precipitant inventory is adequate"
+    },
+    {
+     "id": "c4",
+     "label": "Start or trim chemical feed to hold the trend below the limit"
+    },
+    {
+     "id": "c5",
+     "label": "Trend phosphorus daily until the results stabilise in the normal range"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "The trend is confirmed first, biological performance and chemical readiness are reviewed next, chemical feed is applied, and daily trending confirms control."
+  },
+  {
+   "id": "c2ww-process66",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the spill and overflow response reporting sequence for a plant bypass event.",
+   "topicId": "effluent-compliance",
+   "level": "class1",
+   "assumptions": "Fictional event where a bypass occurred and the supervisor must complete the notifications.",
+   "configuration": "Scope: response at an Ontario plant after partially treated wastewater bypasses secondary treatment during a storm.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Estimate the bypass start time, duration and volume from plant records"
+    },
+    {
+     "id": "c2",
+     "label": "Notify the supervisor and the Ontario Spills Action Centre as the approval requires"
+    },
+    {
+     "id": "c3",
+     "label": "Collect effluent and receiving water samples as directed for the event"
+    },
+    {
+     "id": "c4",
+     "label": "Record the cause, the weather and flow conditions and the actions taken"
+    },
+    {
+     "id": "c5",
+     "label": "Complete the written follow up report within the time the approval sets"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Volume and duration are estimated first, required notifications follow at once, sampling and documentation come next, and the written report closes the sequence."
+  },
+  {
+   "id": "c2ww-process67",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the monthly effluent compliance reporting workflow.",
+   "topicId": "effluent-compliance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario plant reporting under its environmental compliance approval.",
+   "configuration": "Scope: office workflow preparing one month of results for submission.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Collect all laboratory results and flow records for the month"
+    },
+    {
+     "id": "c2",
+     "label": "Check the results against the approval limits and flag any exceedance"
+    },
+    {
+     "id": "c3",
+     "label": "Calculate the monthly averages and loadings the approval requires"
+    },
+    {
+     "id": "c4",
+     "label": "Have the supervisor review and sign the report"
+    },
+    {
+     "id": "c5",
+     "label": "Submit the report by the approval deadline and file the copy"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Records are collected and checked against limits first, required averages are calculated next, supervisory review and signing follow, and submission closes the workflow."
+  },
+  {
+   "id": "c2ww-process68",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the response to a falling disinfection residual trend at the contact tank outlet.",
+   "topicId": "effluent-disinfection",
+   "level": "class1",
+   "assumptions": "Fictional chlorinated plant with residual trending down over three days.",
+   "configuration": "Scope: investigation over one shift before residual reaches the minimum.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Verify the residual with a grab test using a freshly calibrated meter"
+    },
+    {
+     "id": "c2",
+     "label": "Check chlorine supply level and feed pump operation"
+    },
+    {
+     "id": "c3",
+     "label": "Check effluent turbidity and ammonia for a rise in chlorine demand"
+    },
+    {
+     "id": "c4",
+     "label": "Adjust the chlorine feed rate for the cause found"
+    },
+    {
+     "id": "c5",
+     "label": "Retest residual after one contact time and record the recovery"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Residual is verified first, supply and feed are checked next, demand causes follow, the feed is adjusted, and recovery is retested and recorded."
+  },
+  {
+   "id": "c2ww-process69",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a dissolved oxygen probe calibration and verification routine.",
+   "topicId": "instrumentation-calibration",
+   "level": "class1",
+   "assumptions": "Fictional probe drifting against handheld readings.",
+   "configuration": "Scope: one online probe in an aeration basin.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Compare the online reading with a handheld meter reading at the basin"
+    },
+    {
+     "id": "c2",
+     "label": "Remove and clean the probe sensor as the manufacturer directs"
+    },
+    {
+     "id": "c3",
+     "label": "Calibrate the probe in air saturated water or the standard the manufacturer specifies"
+    },
+    {
+     "id": "c4",
+     "label": "Return the probe to the basin and confirm it matches the handheld reading"
+    },
+    {
+     "id": "c5",
+     "label": "Record the calibration and the before and after readings in the instrument log"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Drift is shown by comparison first, cleaning and calibration follow, the probe is verified back in the basin, and the work is logged."
+  },
+  {
+   "id": "c2ww-process70",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a pH probe two point calibration routine.",
+   "topicId": "instrumentation-calibration",
+   "level": "class1",
+   "assumptions": "Fictional laboratory with fresh pH 7 and pH 4 buffer solutions.",
+   "configuration": "Scope: bench calibration of a process pH probe.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Rinse the probe and place it in fresh pH 7 buffer"
+    },
+    {
+     "id": "c2",
+     "label": "Set the zero point once the reading is stable"
+    },
+    {
+     "id": "c3",
+     "label": "Rinse the probe and place it in fresh pH 4 buffer"
+    },
+    {
+     "id": "c4",
+     "label": "Set the slope point once the reading is stable"
+    },
+    {
+     "id": "c5",
+     "label": "Verify the probe in a third buffer or sample of known value and record the calibration"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "The neutral buffer sets the zero first, the acid buffer sets the slope second, and a verification check plus recording close the routine."
+  },
+  {
+   "id": "c2ww-process71",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a flow meter verification check using a tank drawdown.",
+   "topicId": "instrumentation-verification",
+   "level": "class1",
+   "assumptions": "Fictional plant able to isolate an influent wet well or tank for the test.",
+   "configuration": "Scope: verification of the influent flow meter over one timed test.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Record the starting level and the meter totaliser reading"
+    },
+    {
+     "id": "c2",
+     "label": "Pump or drain a measured volume over a timed interval with the meter recording flow"
+    },
+    {
+     "id": "c3",
+     "label": "Record the ending level and the ending totaliser reading"
+    },
+    {
+     "id": "c4",
+     "label": "Calculate the volume the meter measured and compare it with the actual volume moved"
+    },
+    {
+     "id": "c5",
+     "label": "Record the percent difference and report it if it exceeds the plant tolerance"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Start readings are taken first, a known volume is moved next, end readings allow the comparison, and the difference is recorded and reported."
+  },
+  {
+   "id": "c2ww-process72",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the morning SCADA trend review for process control.",
+   "topicId": "instrumentation-trending",
+   "level": "class1",
+   "assumptions": "Fictional plant with trends for flow, dissolved oxygen, levels and alarms.",
+   "configuration": "Scope: supervisor morning review of the previous 24 hours.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Review the influent flow trend for peaks, surges or flat lines"
+    },
+    {
+     "id": "c2",
+     "label": "Review dissolved oxygen and blower output trends for control problems"
+    },
+    {
+     "id": "c3",
+     "label": "Review tank levels and pump run trends for abnormal cycling"
+    },
+    {
+     "id": "c4",
+     "label": "Review the alarm history and confirm each alarm was acknowledged and acted on"
+    },
+    {
+     "id": "c5",
+     "label": "Note the days process adjustments in the operations log"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Flow, aeration, levels and alarms are reviewed in that order, and the days adjustments are noted in the log at the end."
+  },
+  {
+   "id": "c2ww-process73",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order an ORP trending check for an anoxic zone at awareness level.",
+   "topicId": "instrumentation-trending",
+   "level": "class1",
+   "assumptions": "Fictional plant using ORP to support, not replace, nitrate sampling.",
+   "configuration": "Scope: review of oxidation reduction potential as a supporting indicator only.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm the ORP probe is clean and recently verified"
+    },
+    {
+     "id": "c2",
+     "label": "Review the ORP trend alongside dissolved oxygen for the anoxic zone"
+    },
+    {
+     "id": "c3",
+     "label": "Compare the trend direction with recent nitrate laboratory results"
+    },
+    {
+     "id": "c4",
+     "label": "Investigate sampling or probe fouling if ORP and nitrate disagree"
+    },
+    {
+     "id": "c5",
+     "label": "Record ORP as a supporting indicator with the laboratory result as the decision basis"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "The probe is verified first, trends are compared with laboratory nitrate next, disagreements are investigated, and laboratory results remain the decision basis."
+  },
+  {
+   "id": "c2ww-process74",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order an online ammonia analyser check against laboratory results.",
+   "topicId": "instrumentation-calibration",
+   "level": "class1",
+   "assumptions": "Fictional analyser used for aeration control trimming.",
+   "configuration": "Scope: weekly verification of a basin effluent ammonia analyser.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Collect a grab sample at the analyser sample point at a recorded time"
+    },
+    {
+     "id": "c2",
+     "label": "Analyse the grab sample in the laboratory for ammonia"
+    },
+    {
+     "id": "c3",
+     "label": "Compare the laboratory result with the analyser reading at the sample time"
+    },
+    {
+     "id": "c4",
+     "label": "Clean the analyser sample line and check its reagents if the difference is large"
+    },
+    {
+     "id": "c5",
+     "label": "Record the comparison and arrange calibration if the difference stays outside tolerance"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "The grab sample and laboratory result come first, comparison follows, cleaning and reagent checks come next, and calibration is arranged only if the error persists."
+  },
+  {
+   "id": "c2ww-process75",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a chlorine analyser sample line and calibration check.",
+   "topicId": "instrumentation-calibration",
+   "level": "class1",
+   "assumptions": "Fictional effluent chlorine analyser with a continuous sample line.",
+   "configuration": "Scope: routine check after analyser residuals disagree with grab tests.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Take a grab sample at the analyser location and test it with a calibrated handheld method"
+    },
+    {
+     "id": "c2",
+     "label": "Compare the grab result with the analyser display"
+    },
+    {
+     "id": "c3",
+     "label": "Flush and inspect the sample line for blockage or air bubbles"
+    },
+    {
+     "id": "c4",
+     "label": "Calibrate or replace reagents as the manufacturer directs if the error remains"
+    },
+    {
+     "id": "c5",
+     "label": "Confirm the analyser now matches a second grab test and record the work"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "The grab comparison identifies the error first, the sample line is checked next, calibration follows if needed, and a second grab test confirms the fix."
+  },
+  {
+   "id": "c2ww-process76",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the response workflow to a critical high level alarm in a sludge holding tank.",
+   "topicId": "instrumentation-trending",
+   "level": "class1",
+   "assumptions": "Fictional plant where the night operator receives a high level alarm.",
+   "configuration": "Scope: alarm response from SCADA notification to recorded resolution.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Acknowledge the alarm and confirm the tank level in the field"
+    },
+    {
+     "id": "c2",
+     "label": "Stop or divert the sludge transfer filling the tank"
+    },
+    {
+     "id": "c3",
+     "label": "Check the withdrawal pump and downstream path for the reason the tank filled"
+    },
+    {
+     "id": "c4",
+     "label": "Restart withdrawal and confirm the level is falling"
+    },
+    {
+     "id": "c5",
+     "label": "Record the alarm, the cause and the actions in the operations log"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "The alarm is acknowledged and confirmed in the field first, filling is stopped next, the cause is found, withdrawal restores the level, and the event is logged."
+  },
+  {
+   "id": "c2ww-process77",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a wet weather flow equalisation program for a forecast storm.",
+   "topicId": "wet-weather-response",
+   "level": "class1",
+   "assumptions": "Fictional Ontario plant preparing for a major rainfall event.",
+   "configuration": "Scope: plant with an equalisation tank brought in before peak flow arrives.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Review the forecast and the expected peak flow timing"
+    },
+    {
+     "id": "c2",
+     "label": "Lower the equalisation tank level in advance to create storage room"
+    },
+    {
+     "id": "c3",
+     "label": "Place the equalisation tank in service as influent flow rises"
+    },
+    {
+     "id": "c4",
+     "label": "Feed stored flow back to treatment at a controlled rate as the peak passes"
+    },
+    {
+     "id": "c5",
+     "label": "Record peak flow, storage used and the return schedule in the event log"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Forecast review and advance drawdown create room first, storage captures the peak next, controlled return follows, and the event is logged."
+  },
+  {
+   "id": "c2ww-process78",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order wet weather clarifier protection steps during a peak flow event.",
+   "topicId": "wet-weather-response",
+   "level": "class1",
+   "assumptions": "Fictional plant at peak wet weather flow with blankets starting to rise.",
+   "configuration": "Scope: in event actions for the secondary clarifiers.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm all clarifiers in service are sharing flow as evenly as possible"
+    },
+    {
+     "id": "c2",
+     "label": "Set return sludge rates to the wet weather schedule"
+    },
+    {
+     "id": "c3",
+     "label": "Monitor blanket depths at the set check interval through the peak"
+    },
+    {
+     "id": "c4",
+     "label": "Watch effluent solids and adjust return rate if carryover begins"
+    },
+    {
+     "id": "c5",
+     "label": "Return clarifier settings to normal once flow and blankets stabilise"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Flow sharing and wet weather return settings come first, blankets are monitored through the peak, carryover triggers adjustment, and normal settings return after stabilising."
+  },
+  {
+   "id": "c2ww-process79",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the response to a suspected high strength industrial discharge reaching the plant.",
+   "topicId": "high-load-response",
+   "level": "class1",
+   "assumptions": "Fictional plant receiving an unusual load with falling basin dissolved oxygen.",
+   "configuration": "Scope: response after influent appearance and oxygen demand change suddenly.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Collect influent samples for BOD, pH and any parameter the discharge approval names"
+    },
+    {
+     "id": "c2",
+     "label": "Increase aeration to protect dissolved oxygen as the load reaches the basins"
+    },
+    {
+     "id": "c3",
+     "label": "Notify the supervisor and the sewer use contact for source tracing"
+    },
+    {
+     "id": "c4",
+     "label": "Divert or equalise part of the flow if storage is available and directed"
+    },
+    {
+     "id": "c5",
+     "label": "Monitor effluent quality closely until the load has passed through the plant"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Samples are taken first, aeration protects the biomass next, escalation and source tracing follow, and effluent is monitored until the load passes."
+  },
+  {
+   "id": "c2ww-process80",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a wet weather disinfection capacity check before a high flow period.",
+   "topicId": "wet-weather-response",
+   "level": "class1",
+   "assumptions": "Fictional plant whose disinfection is flow limited at peak events.",
+   "configuration": "Scope: readiness check of chlorine contact and UV capacity at peak flow.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Calculate the contact time available at the forecast peak flow"
+    },
+    {
+     "id": "c2",
+     "label": "Confirm chemical inventory and feed capacity can hold the target residual at that flow"
+    },
+    {
+     "id": "c3",
+     "label": "Confirm all UV channels or contact tank cells are in service"
+    },
+    {
+     "id": "c4",
+     "label": "Set the peak flow disinfection settings before the event arrives"
+    },
+    {
+     "id": "c5",
+     "label": "Verify residuals during the event and record the performance"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Contact time at peak flow is calculated first, feed capacity and equipment in service are confirmed next, settings are made in advance, and event performance is verified."
+  },
+  {
+   "id": "c2ww-process81",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the staffing and supervisory program for a major wet weather event.",
+   "topicId": "wet-weather-response",
+   "level": "class1",
+   "assumptions": "Fictional Ontario plant expecting a multi day storm.",
+   "configuration": "Scope: management program spanning the day before, during and after the event.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Review the forecast and schedule added operator coverage for the peak period"
+    },
+    {
+     "id": "c2",
+     "label": "Brief all shifts on wet weather settings, sampling duties and reporting duties"
+    },
+    {
+     "id": "c3",
+     "label": "Confirm on call maintenance and supervisor contact arrangements"
+    },
+    {
+     "id": "c4",
+     "label": "Monitor plant performance and compliance reporting through the event"
+    },
+    {
+     "id": "c5",
+     "label": "Hold a post event review and file the event report"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Coverage is scheduled and shifts briefed before the event, contacts are confirmed next, performance is monitored through it, and a review closes the program."
+  },
+  {
+   "id": "c2ww-process82",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the post storm recovery and inspection program.",
+   "topicId": "wet-weather-response",
+   "level": "class1",
+   "assumptions": "Fictional plant that ran at peak flow for a full day.",
+   "configuration": "Scope: recovery the day after flows return to normal.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Inspect screens, grit units and channels for storm debris and flush as needed"
+    },
+    {
+     "id": "c2",
+     "label": "Check clarifier blankets, return rates and sludge inventory after the event"
+    },
+    {
+     "id": "c3",
+     "label": "Review effluent results from the event for any compliance impact"
+    },
+    {
+     "id": "c4",
+     "label": "Return all wet weather settings to normal operation"
+    },
+    {
+     "id": "c5",
+     "label": "Complete the event report with peak flow, problems found and actions taken"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Debris inspection comes first, sludge inventory is checked next, compliance impact is reviewed, settings are normalised, and the event report is completed."
+  },
+  {
+   "id": "c2ww-process83",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a load balancing program when influent BOD stays high for several days.",
+   "topicId": "high-load-response",
+   "level": "class1",
+   "assumptions": "Fictional plant receiving sustained high organic loading from a seasonal industry.",
+   "configuration": "Scope: multi day program protecting the activated sludge process.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm the sustained load from influent BOD and flow records"
+    },
+    {
+     "id": "c2",
+     "label": "Split flow evenly between parallel treatment trains"
+    },
+    {
+     "id": "c3",
+     "label": "Raise dissolved oxygen targets within blower capacity to meet the added demand"
+    },
+    {
+     "id": "c4",
+     "label": "Protect solids inventory by holding wasting at or below the normal rate"
+    },
+    {
+     "id": "c5",
+     "label": "Review effluent BOD and ammonia daily and ease settings as the load falls"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "The load is confirmed first, flow is balanced and oxygen raised next, inventory is protected, and daily effluent review guides the return to normal."
+  },
+  {
+   "id": "c2ww-process84",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order nitrification protection during a cold, dilute snowmelt period.",
+   "topicId": "wet-weather-response",
+   "level": "class1",
+   "assumptions": "Fictional Ontario plant in spring snowmelt with falling mixed liquor temperature.",
+   "configuration": "Scope: protective program while meltwater keeps influent cold and flows high.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm influent temperature and flow trends from the plant records"
+    },
+    {
+     "id": "c2",
+     "label": "Protect the nitrifier inventory by minimising wasting during the melt"
+    },
+    {
+     "id": "c3",
+     "label": "Keep dissolved oxygen at the setpoint despite the dilute load"
+    },
+    {
+     "id": "c4",
+     "label": "Watch clarifier blankets closely at the sustained high flow"
+    },
+    {
+     "id": "c5",
+     "label": "Resume normal wasting only after temperature and ammonia performance recover"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Trends trigger protection, wasting is minimised and oxygen held next, blankets are watched at high flow, and normal wasting waits for recovery."
+  },
+  {
+   "id": "c2ww-process85",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the morning supervisory process review for an activated sludge plant.",
+   "topicId": "supervisory-review",
+   "level": "class1",
+   "assumptions": "Fictional plant starting each day with a structured process review.",
+   "configuration": "Scope: daily review by the overall responsible operator style supervisor role under Ontario Regulation 129/04.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Review overnight alarms, flows and any compliance sample results"
+    },
+    {
+     "id": "c2",
+     "label": "Review aeration, clarifier and solids trends against their targets"
+    },
+    {
+     "id": "c3",
+     "label": "Decide the days wasting, return and chemical settings"
+    },
+    {
+     "id": "c4",
+     "label": "Communicate the settings to the shift operators and note them in the log"
+    },
+    {
+     "id": "c5",
+     "label": "Set the follow up checks that will confirm the settings worked"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Alarms and results are reviewed first, process trends follow, settings are decided and communicated next, and follow up checks close the review."
+  },
+  {
+   "id": "c2ww-process86",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a process adjustment approval workflow for a major setpoint change.",
+   "topicId": "supervisory-review",
+   "level": "class1",
+   "assumptions": "Fictional plant where major changes need documented approval.",
+   "configuration": "Scope: change control for moving a plant wide dissolved oxygen strategy.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Document the current performance and the reason the change is proposed"
+    },
+    {
+     "id": "c2",
+     "label": "Present the proposed setting, the expected benefit and the risk to the supervisor"
+    },
+    {
+     "id": "c3",
+     "label": "Obtain supervisor approval and record who approved it and when"
+    },
+    {
+     "id": "c4",
+     "label": "Implement the change on one train first as a trial"
+    },
+    {
+     "id": "c5",
+     "label": "Review trial results and extend, adjust or reverse the change as directed"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "The case is documented and presented first, approval is recorded next, a single train trial follows, and results decide the wider rollout."
+  },
+  {
+   "id": "c2ww-process87",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a shift handover for process control information.",
+   "topicId": "supervisory-review",
+   "level": "class1",
+   "assumptions": "Fictional plant running continuous shifts with active process adjustments underway.",
+   "configuration": "Scope: handover between outgoing and incoming operators.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Outgoing operator completes the log with current settings, trends and unfinished tasks"
+    },
+    {
+     "id": "c2",
+     "label": "Outgoing and incoming operators walk the key process areas together"
+    },
+    {
+     "id": "c3",
+     "label": "Incoming operator confirms the active adjustments, alarms and sampling duties"
+    },
+    {
+     "id": "c4",
+     "label": "Both operators sign or initial the handover record"
+    },
+    {
+     "id": "c5",
+     "label": "Incoming operator makes the first round check against the handed over settings"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "The log is completed first, the joint walkdown and confirmation follow, signing records the transfer, and the incoming round verifies the settings."
+  },
+  {
+   "id": "c2ww-process88",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the weekly process control meeting workflow.",
+   "topicId": "supervisory-review",
+   "level": "class1",
+   "assumptions": "Fictional plant reviewing performance each Monday.",
+   "configuration": "Scope: one weekly meeting covering all treatment processes.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Circulate the weeks trend summary and laboratory results before the meeting"
+    },
+    {
+     "id": "c2",
+     "label": "Review effluent compliance performance first"
+    },
+    {
+     "id": "c3",
+     "label": "Review activated sludge, clarifier and solids process indicators next"
+    },
+    {
+     "id": "c4",
+     "label": "Agree the weeks wasting, aeration and chemical feed actions"
+    },
+    {
+     "id": "c5",
+     "label": "Assign each action an owner and a completion date and minute the meeting"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Data is circulated first, compliance is reviewed before process detail, actions are agreed next, and owners and dates close the meeting."
+  },
+  {
+   "id": "c2ww-process89",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a trend based wasting decision workflow.",
+   "topicId": "supervisory-review",
+   "level": "class1",
+   "assumptions": "Fictional plant using SVI, blanket and ammonia trends together.",
+   "configuration": "Scope: decision support sequence used before the weekly wasting schedule is set.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Assemble the weeks SVI, blanket depth, mixed liquor and ammonia trends"
+    },
+    {
+     "id": "c2",
+     "label": "Identify which indicator is furthest from its target range"
+    },
+    {
+     "id": "c3",
+     "label": "Decide whether wasting should rise, fall or hold based on the combined trends"
+    },
+    {
+     "id": "c4",
+     "label": "Set the daily wasting volumes for the week"
+    },
+    {
+     "id": "c5",
+     "label": "Schedule the midweek trend check that can revise the decision"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Trends are assembled and the limiting indicator is identified first, the wasting direction is decided next, volumes are set, and a midweek check is scheduled."
+  },
+  {
+   "id": "c2ww-process90",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the escalation workflow for an abnormal laboratory result.",
+   "topicId": "supervisory-review",
+   "level": "class1",
+   "assumptions": "Fictional plant receiving an unexpectedly high effluent result.",
+   "configuration": "Scope: escalation from bench result to management decision.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Laboratory confirms the result and checks for analytical error"
+    },
+    {
+     "id": "c2",
+     "label": "Operator repeats the sample or checks the matching online trend"
+    },
+    {
+     "id": "c3",
+     "label": "Supervisor is notified with the confirmed result and the process conditions"
+    },
+    {
+     "id": "c4",
+     "label": "Process inspection and corrective action are directed based on the likely cause"
+    },
+    {
+     "id": "c5",
+     "label": "The result, decision and outcome are recorded in the compliance file"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Analytical confirmation comes first, field verification follows, the supervisor is notified with context next, corrective action is directed, and the file record closes it."
+  },
+  {
+   "id": "c2ww-process91",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a supervised process adjustment carried out by a trainee operator.",
+   "topicId": "supervisory-review",
+   "level": "class1",
+   "assumptions": "Fictional plant where a trainee works under a licensed operator.",
+   "configuration": "Scope: training sequence for one wasting rate change.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Licensed operator explains the reason for the change and the target setting"
+    },
+    {
+     "id": "c2",
+     "label": "Trainee calculates the new pump run time or rate for review"
+    },
+    {
+     "id": "c3",
+     "label": "Licensed operator checks the calculation and the field setup before the change"
+    },
+    {
+     "id": "c4",
+     "label": "Trainee makes the adjustment while the licensed operator observes"
+    },
+    {
+     "id": "c5",
+     "label": "Both record the change and the trainee notes the follow up check required"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Explanation and calculation come first, the licensed check precedes the field change, the trainee acts under observation, and recording closes the training sequence."
+  },
+  {
+   "id": "c2ww-process92",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the monthly process performance review for plant management.",
+   "topicId": "supervisory-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 plant reporting to its owner municipality.",
+   "configuration": "Scope: monthly review of capacity, compliance and process stability.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Compile monthly flows, loadings and effluent quality against approval limits"
+    },
+    {
+     "id": "c2",
+     "label": "Summarise process upsets, bypasses and corrective actions for the month"
+    },
+    {
+     "id": "c3",
+     "label": "Review solids production, digester performance and chemical use"
+    },
+    {
+     "id": "c4",
+     "label": "Identify capacity or equipment risks for the coming months"
+    },
+    {
+     "id": "c5",
+     "label": "Issue the review with recommended actions to management"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Compliance data is compiled first, upsets and solids performance follow, risks are identified next, and the review is issued with recommendations."
+  },
+  {
+   "id": "c2ww-process93",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a precipitant dose program for chemical phosphorus removal.",
+   "topicId": "chemical-feed-phosphorus",
+   "level": "class1",
+   "assumptions": "Fictional plant adding metal salt at the aeration basin outlet.",
+   "configuration": "Scope: ferric or alum feed trimmed against effluent phosphorus results.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Measure the current effluent phosphorus and the flow it represents"
+    },
+    {
+     "id": "c2",
+     "label": "Calculate the starting precipitant dose from the plant dose ratio for that phosphorus level"
+    },
+    {
+     "id": "c3",
+     "label": "Set the feed pump to the calculated rate and confirm chemical is reaching the injection point"
+    },
+    {
+     "id": "c4",
+     "label": "Measure effluent phosphorus after the treated flow has passed through the clarifier"
+    },
+    {
+     "id": "c5",
+     "label": "Trim the dose in small steps to hold phosphorus in the target band"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Phosphorus and flow are measured first, the dose is calculated and confirmed at the injection point next, and effluent results guide small trims."
+  },
+  {
+   "id": "c2ww-process94",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a ferric chloride feed system start up after a pump replacement.",
+   "topicId": "chemical-feed-systems",
+   "level": "class1",
+   "assumptions": "Fictional plant with a replaced metering pump and a day tank of ferric solution.",
+   "configuration": "Scope: return to service of one chemical feed line.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Inspect the suction and discharge lines, fittings and containment for damage or leaks"
+    },
+    {
+     "id": "c2",
+     "label": "Prime the pump and confirm chemical reaches the calibration column"
+    },
+    {
+     "id": "c3",
+     "label": "Draw down the calibration column to verify the pump rate at the set speed"
+    },
+    {
+     "id": "c4",
+     "label": "Set the pump to the program rate and open the injection point"
+    },
+    {
+     "id": "c5",
+     "label": "Monitor the first hours of feeding and the effluent phosphorus response"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Lines are inspected first, priming and rate verification follow, the program rate is set and injection opened, and early response is monitored."
+  },
+  {
+   "id": "c2ww-process95",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order an alum feed pump calibration check.",
+   "topicId": "chemical-feed-systems",
+   "level": "class1",
+   "assumptions": "Fictional plant feeding alum for phosphorus removal.",
+   "configuration": "Scope: calibration column check on one alum metering pump.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Fill the calibration column to the zero mark with the pump on its normal suction"
+    },
+    {
+     "id": "c2",
+     "label": "Run the pump at its operating setting for a timed interval drawing from the column"
+    },
+    {
+     "id": "c3",
+     "label": "Read the volume drawn and calculate the actual feed rate"
+    },
+    {
+     "id": "c4",
+     "label": "Compare the actual rate with the rate the control system assumes"
+    },
+    {
+     "id": "c5",
+     "label": "Adjust the pump setting or stroke and repeat the drawdown until the rates agree"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "The column is set up first, the timed drawdown gives the actual rate next, comparison follows, and adjustment repeats until the rates agree."
+  },
+  {
+   "id": "c2ww-process96",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a polymer feed program for sludge thickening at awareness level.",
+   "topicId": "chemical-feed-solids",
+   "level": "class1",
+   "assumptions": "Fictional plant thickening waste sludge before digestion.",
+   "configuration": "Scope: dose routine for a gravity belt or rotary drum thickener feed.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm the sludge feed rate and solids concentration to the thickener"
+    },
+    {
+     "id": "c2",
+     "label": "Prepare or confirm the polymer solution strength and ageing are correct"
+    },
+    {
+     "id": "c3",
+     "label": "Start polymer feed at the low end of the plant dose range"
+    },
+    {
+     "id": "c4",
+     "label": "Observe thickened solids and filtrate clarity and trim the dose in small steps"
+    },
+    {
+     "id": "c5",
+     "label": "Record the dose that gives good capture without excess polymer use"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Feed conditions are confirmed first, polymer quality follows, dosing starts low, and observation of capture and clarity guides the recorded dose."
+  },
+  {
+   "id": "c2ww-process97",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a hypochlorite feed program change for effluent disinfection.",
+   "topicId": "chemical-feed-disinfection",
+   "level": "class1",
+   "assumptions": "Fictional plant feeding hypochlorite by metering pump.",
+   "configuration": "Scope: program change after a new batch of sodium hypochlorite arrives at a different strength.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Check the delivered solution strength from the supplier certificate or a titration"
+    },
+    {
+     "id": "c2",
+     "label": "Recalculate the pump rate needed to deliver the same chlorine dose at the new strength"
+    },
+    {
+     "id": "c3",
+     "label": "Set the pump to the recalculated rate and confirm feed at the injection point"
+    },
+    {
+     "id": "c4",
+     "label": "Measure effluent residual after one contact time"
+    },
+    {
+     "id": "c5",
+     "label": "Record the new strength, the rate and the residual in the chemical log"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Strength is confirmed first because dose depends on it, the rate is recalculated and set next, residual verifies the change, and the log closes it."
+  },
+  {
+   "id": "c2ww-process98",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a hypochlorite storage and feed safety check.",
+   "topicId": "chemical-feed-safety",
+   "level": "class1",
+   "assumptions": "Fictional plant storing hypochlorite in a bunded tank area.",
+   "configuration": "Scope: weekly check of the chemical storage and feed area.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Inspect the storage tank, bund and vents for leaks, damage or blockage"
+    },
+    {
+     "id": "c2",
+     "label": "Check the eyewash and safety shower operate and are accessible"
+    },
+    {
+     "id": "c3",
+     "label": "Inspect feed lines and the metering pump for leaks or crystallisation"
+    },
+    {
+     "id": "c4",
+     "label": "Confirm the delivery and usage inventory matches the tank level"
+    },
+    {
+     "id": "c5",
+     "label": "Record the check and report any defect for immediate repair"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Containment is inspected first, safety equipment and feed lines follow, inventory is reconciled next, and the check is recorded with defects reported."
+  },
+  {
+   "id": "c2ww-process99",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a carbon source feed program for denitrification support.",
+   "topicId": "chemical-feed-denitrification",
+   "level": "class1",
+   "assumptions": "Fictional plant using a carbon product to support total nitrogen removal.",
+   "configuration": "Scope: supplemental carbon fed to an anoxic zone with a metering pump.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm nitrate removal is limited by carbon from the anoxic zone sampling"
+    },
+    {
+     "id": "c2",
+     "label": "Calculate the starting carbon dose from the nitrate to be removed and the product strength"
+    },
+    {
+     "id": "c3",
+     "label": "Set and verify the feed pump rate at the injection point"
+    },
+    {
+     "id": "c4",
+     "label": "Monitor anoxic zone nitrate and effluent total nitrogen over the following days"
+    },
+    {
+     "id": "c5",
+     "label": "Trim the dose to hold nitrogen targets without wasting chemical"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Carbon limitation is confirmed first, the dose is calculated from nitrate and product strength next, the pump is verified, and nitrogen trends guide trimming."
+  },
+  {
+   "id": "c2ww-evidence01",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Train 2 SVI climbed from 95 to 210 mL/g in ten days while Train 1 on the same influent stayed at 100 mL/g.",
+   "topicId": "activated-sludge-bulking",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 wastewater plant case. Readings are from the stated period unless a bench or paired check is noted. Archived plant records are available for follow up.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Train 2 DO averaged 0.4 mg/L overnight while Train 1 held 1.8 mg/L, and both trains received the same flow and BOD load."
+    },
+    {
+     "id": "ev2",
+     "label": "Microscopy on Train 2 showed abundant Type 021N filaments extending from floc, while Train 1 floc had few filaments."
+    },
+    {
+     "id": "ev3",
+     "label": "Train 2 SV30 was 68 percent with a cloudy supernatant, and effluent TSS rose only on Train 2."
+    },
+    {
+     "id": "ev4",
+     "label": "A bench aeration check raised Train 2 DO to 2.0 mg/L for 48 hours and filament abundance and SVI both began falling, while a low DO aliquot kept in the lab stayed filamentous."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Low dissolved oxygen in Train 2 selected for low DO filamentous organisms and caused filamentous bulking"
+     },
+     {
+      "id": "inf-b",
+      "label": "A nutrient deficiency in the shared influent caused bulking in both trains"
+     },
+     {
+      "id": "inf-c",
+      "label": "Excessive wasting lowered the SRT plant wide and washed out Train 2 floc"
+     },
+     {
+      "id": "inf-d",
+      "label": "A toxic influent slug damaged Train 2 biomass on contact"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Train 1 rules out a shared influent cause such as nutrient deficiency or toxicity. No wasting change was shared or stated, and the bench check isolates DO as the variable that changed the outcome."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Side by side microscopy and DO profile for Train 2 versus Train 1 over a full diurnal cycle"
+     },
+     {
+      "id": "nc-b",
+      "label": "Plant influent nutrient analysis for the month"
+     },
+     {
+      "id": "nc-c",
+      "label": "Effluent toxicity test result for the week"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "The profile shows Train 2 DO below 0.5 mg/L at night with dense filaments, while Train 1 stays above 1.5 mg/L with compact floc.",
+    "nc-b": "Influent nutrients were adequate and identical for both trains, so they do not explain a one train problem.",
+    "nc-c": "A toxicity result does not explain why the bench DO correction reversed the filament growth."
+   }
+  },
+  {
+   "id": "c2ww-evidence02",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A plant with a long sewer force main developed bulking each late summer, with SVI near 190 mL/g and a rotten egg odour at the aeration inlet.",
+   "topicId": "activated-sludge-bulking",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 wastewater plant case. Readings are from the stated period unless a bench or paired check is noted. Archived plant records are available for follow up.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Influent sulfide at the aeration inlet measured 2.8 mg/L on warm afternoons and near zero in winter."
+    },
+    {
+     "id": "ev2",
+     "label": "Microscopy showed Thiothrix filaments with visible sulfur granules inside the cells."
+    },
+    {
+     "id": "ev3",
+     "label": "Settling was poor but floc strength was normal, and the supernatant carried filament bridges between floc particles."
+    },
+    {
+     "id": "ev4",
+     "label": "Bench aeration of a sulfide stripped sample produced compact settling, while the untreated paired sample kept bridging and poor settling."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Low F/M alone caused the bulking, with sulfide present only as a coincidence"
+     },
+     {
+      "id": "inf-b",
+      "label": "Septic, sulfide bearing influent selected for Thiothrix and caused sulfide driven filamentous bulking"
+     },
+     {
+      "id": "inf-c",
+      "label": "High RAS rate sheared the floc and produced the poor settling"
+     },
+     {
+      "id": "inf-d",
+      "label": "Chlorine in the RAS oxidized the floc and caused the filaments to grow"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Sulfur granules inside Thiothrix, a measured sulfide load that tracks the season, and the paired bench result tie the filaments to sulfide. No RAS or chlorination change is stated, and low F/M does not explain sulfur granules."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Clarifier sludge blanket depth log for the month"
+     },
+     {
+      "id": "nc-b",
+      "label": "Influent sulfide trend paired with microscopy over warm and cool weeks"
+     },
+     {
+      "id": "nc-c",
+      "label": "RAS pump run time summary"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "Blanket depth is a clarifier symptom and does not identify the filament or its food source.",
+    "nc-b": "Sulfide and Thiothrix abundance rise and fall together, and both drop when the force main is kept fresher.",
+    "nc-c": "RAS run time does not explain sulfur granules inside filament cells."
+   }
+  },
+  {
+   "id": "c2ww-evidence03",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "After an industrial discharge was diverted away, SVI rose to 185 mL/g even though BOD load fell by half.",
+   "topicId": "activated-sludge-bulking",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 wastewater plant case. Readings are from the stated period unless a bench or paired check is noted. Archived plant records are available for follow up.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "F/M fell to 0.04 kg BOD per kg MLVSS per day and SRT lengthened to 28 days with wasting unchanged."
+    },
+    {
+     "id": "ev2",
+     "label": "Microscopy showed low food type filaments and many small, weak floc particles, with few protozoa."
+    },
+    {
+     "id": "ev3",
+     "label": "Effluent BOD stayed low, so soluble food was being removed, but solids separation in the clarifier worsened."
+    },
+    {
+     "id": "ev4",
+     "label": "A bench test fed one aliquot additional BOD to raise F/M and it formed larger floc, while the unfed paired aliquot stayed small and filamentous."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Over aeration sheared large floc into pin floc overnight"
+     },
+     {
+      "id": "inf-b",
+      "label": "A phosphorus deficiency stopped floc formation entirely"
+     },
+     {
+      "id": "inf-c",
+      "label": "Very low F/M and excessive sludge age selected for low food filamentous organisms and poor settling"
+     },
+     {
+      "id": "inf-d",
+      "label": "High influent TSS overloaded the clarifier solids flux"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "Food was removed and the load fell, which argues against solids overload. The bench feeding check isolates low food as the variable, and no aeration or nutrient change is stated."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Influent TSS trend for the month"
+     },
+     {
+      "id": "nc-b",
+      "label": "Aeration blower discharge pressure log"
+     },
+     {
+      "id": "nc-c",
+      "label": "F/M and SRT trend paired with weekly microscopy filament identification"
+     }
+    ],
+    "correctOptionId": "nc-c",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "Influent TSS fell with the diversion, so it does not explain worsening separation.",
+    "nc-b": "Blower pressure does not identify a filament type or a food shortage.",
+    "nc-c": "The trend shows F/M falling as SRT rose, with low food filaments increasing in step."
+   }
+  },
+  {
+   "id": "c2ww-evidence04",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Effluent TSS doubled in three days while SVI stayed normal at 105 mL/g and the mixed liquor settled fast in the cylinder.",
+   "topicId": "activated-sludge-bulking",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 wastewater plant case. Readings are from the stated period unless a bench or paired check is noted. Archived plant records are available for follow up.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "SV30 was only 18 percent and the settled sludge was compact, but the supernatant above it was turbid with fine particles."
+    },
+    {
+     "id": "ev2",
+     "label": "Microscopy showed dispersed single cells and tiny floc fragments, with almost no filaments and few stalked ciliates."
+    },
+    {
+     "id": "ev3",
+     "label": "A high strength cleaning chemical discharge was logged upstream two days earlier, and effluent turbidity spiked after it arrived."
+    },
+    {
+     "id": "ev4",
+     "label": "A bench sample exposed to the discharge stayed dispersed, while a paired sample of the same sludge in clean effluent remained well flocculated."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Filamentous bulking raised SVI and slowed settling"
+     },
+     {
+      "id": "inf-b",
+      "label": "Denitrification in the clarifier floated the sludge blanket"
+     },
+     {
+      "id": "inf-c",
+      "label": "Old sludge at high SRT broke into pin floc over months"
+     },
+     {
+      "id": "inf-d",
+      "label": "A deflocculating chemical discharge dispersed the floc and caused turbid supernatant despite normal SVI"
+     }
+    ],
+    "correctOptionId": "inf-d",
+    "explanation": "Settling is fast and SVI is normal, which contradicts filamentous bulking. No rising blanket or gas bubbles are stated, and the timing plus paired bench samples point to the discharge."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Upstream discharge log paired with a bench deflocculation check on a fresh sample"
+     },
+     {
+      "id": "nc-b",
+      "label": "Clarifier blanket gas bubble observation log"
+     },
+     {
+      "id": "nc-c",
+      "label": "SVI trend for the previous quarter"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "The fresh sample disperses on contact with the discharge sample and stays flocculated in the clean control.",
+    "nc-b": "No floating blanket was observed, and the cylinder settled fast and compact.",
+    "nc-c": "The long SVI trend was normal, which argues against a slow sludge age cause."
+   }
+  },
+  {
+   "id": "c2ww-evidence05",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A viscous, jelly like sludge would not settle or dewater, yet microscopy found almost no filaments.",
+   "topicId": "activated-sludge-bulking",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 wastewater plant case. Readings are from the stated period unless a bench or paired check is noted. Archived plant records are available for follow up.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "SVI was 175 mL/g with a thick, slow settling cylinder and a viscous supernatant layer."
+    },
+    {
+     "id": "ev2",
+     "label": "Microscopy showed abundant gelatinous matrix around the floc and very few filamentous organisms."
+    },
+    {
+     "id": "ev3",
+     "label": "Influent nitrogen and phosphorus were low relative to BOD, with soluble BOD high from a food processing discharge."
+    },
+    {
+     "id": "ev4",
+     "label": "Bench aliquots dosed with nitrogen and phosphorus settled markedly better after incubation, while the undosed paired aliquot stayed viscous."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Nutrient deficiency drove excess extracellular polymer production and viscous, non filamentous bulking"
+     },
+     {
+      "id": "inf-b",
+      "label": "Filamentous bulking from low DO caused the high SVI"
+     },
+     {
+      "id": "inf-c",
+      "label": "Excess polymer dosing at the clarifier caused the jelly like sludge"
+     },
+     {
+      "id": "inf-d",
+      "label": "High SRT alone produced the gelatinous matrix"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Microscopy rules out a filamentous cause and no polymer feed to the aeration basin is stated. The nutrient ratio and the dosed bench aliquot isolate nutrient deficiency."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "RAS chlorination dose log"
+     },
+     {
+      "id": "nc-b",
+      "label": "Bench nutrient addition test with influent BOD to nitrogen to phosphorus ratio record"
+     },
+     {
+      "id": "nc-c",
+      "label": "Dewatering polymer delivery records"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "No RAS chlorination change is stated, and chlorine does not create a gelatinous matrix.",
+    "nc-b": "The ratio confirms a nutrient shortfall and the dosed aliquot settles while the control stays viscous.",
+    "nc-c": "Dewatering polymer acts after settling and cannot explain basin viscosity."
+   }
+  },
+  {
+   "id": "c2ww-evidence06",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Settleability appeared to worsen within one shift after the RAS rate was cut sharply to raise the clarifier blanket for a test.",
+   "topicId": "activated-sludge-settleability",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 wastewater plant case. Readings are from the stated period unless a bench or paired check is noted. Archived plant records are available for follow up.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "SVI measured in the lab was unchanged at 110 mL/g before and after the RAS change."
+    },
+    {
+     "id": "ev2",
+     "label": "Clarifier blanket rose from 0.4 m to 1.3 m and effluent TSS rose with the blanket, not before it."
+    },
+    {
+     "id": "ev3",
+     "label": "Microscopy showed the same compact floc with few filaments on both shifts."
+    },
+    {
+     "id": "ev4",
+     "label": "Restoring the earlier RAS rate in a paired clarifier trial lowered the blanket within hours and effluent TSS fell, while the test clarifier stayed high."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Filamentous bulking developed in a single shift and raised effluent TSS"
+     },
+     {
+      "id": "inf-b",
+      "label": "The RAS cut raised the clarifier blanket and caused solids carryover, not a change in sludge settleability"
+     },
+     {
+      "id": "inf-c",
+      "label": "The sludge suddenly became old and produced pin floc"
+     },
+     {
+      "id": "inf-d",
+      "label": "Influent flow surged and hydraulically washed out the clarifier"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "SVI and microscopy were unchanged, so the sludge itself did not change. Flow is not stated to have surged, and the paired RAS restoration isolates blanket depth as the cause."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Microscopy filament count archive for the month"
+     },
+     {
+      "id": "nc-b",
+      "label": "Influent flow hydrograph for the week"
+     },
+     {
+      "id": "nc-c",
+      "label": "Blanket depth and RAS rate trend for both clarifiers during the test"
+     }
+    ],
+    "correctOptionId": "nc-c",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "Filament counts were unchanged, so they do not explain a one shift change.",
+    "nc-b": "Flow was steady during the test, so hydraulics do not explain the blanket rise.",
+    "nc-c": "The blanket and effluent TSS track the RAS cut and recovery in the test clarifier only."
+   }
+  },
+  {
+   "id": "c2ww-evidence07",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Two parallel aeration trains bulked at different times, and only the train fed from the older primary clarifier showed high SVI.",
+   "topicId": "activated-sludge-bulking",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 wastewater plant case. Readings are from the stated period unless a bench or paired check is noted. Archived plant records are available for follow up.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Primary clarifier A sludge was drawn once daily and its sludge smelled septic, while clarifier B was drawn every 4 hours and smelled fresh."
+    },
+    {
+     "id": "ev2",
+     "label": "Microscopy on the affected train showed Beggiatoa and Type 021N filaments, typical of septic feed."
+    },
+    {
+     "id": "ev3",
+     "label": "Sulfide entering the affected train measured 1.9 mg/L, versus 0.1 mg/L on the other train."
+    },
+    {
+     "id": "ev4",
+     "label": "Increasing the draw off frequency on clarifier A in a one week trial cut sulfide and SVI on its train, while the control train was unchanged."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The affected train received a higher BOD load than the other train"
+     },
+     {
+      "id": "inf-b",
+      "label": "A blower fault lowered DO across the whole plant"
+     },
+     {
+      "id": "inf-c",
+      "label": "Septic primary sludge and sulfide from infrequent draw off fed septic filaments to one train"
+     },
+     {
+      "id": "inf-d",
+      "label": "Wasting was stopped plant wide and sludge age rose everywhere"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "Both trains share blowers and wasting, yet only one bulked, which argues against plant wide causes. Sulfide, odour, filament type, and the draw off trial all point to septic primary sludge."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Primary sludge draw off log paired with sulfide readings at each train inlet"
+     },
+     {
+      "id": "nc-b",
+      "label": "Blower run hours for the month"
+     },
+     {
+      "id": "nc-c",
+      "label": "WAS flow totalizer summary"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "Sulfide falls as draw off frequency rises, and the septic filament count follows it down.",
+    "nc-b": "Blower hours were shared by both trains and cannot explain a one train effect.",
+    "nc-c": "Wasting was common to both trains, so it does not isolate the septic feed."
+   }
+  },
+  {
+   "id": "c2ww-evidence08",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Morning effluent TSS was high every day but cleared by midday, with SVI steady near 115 mL/g.",
+   "topicId": "activated-sludge-settleability",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 wastewater plant case. Readings are from the stated period unless a bench or paired check is noted. Archived plant records are available for follow up.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Overnight, influent flow fell to 30 percent of daytime flow while RAS continued at the daytime rate."
+    },
+    {
+     "id": "ev2",
+     "label": "Clarifier blanket was deepest at 6 am and thinnest at noon, and effluent TSS peaked with the morning blanket."
+    },
+    {
+     "id": "ev3",
+     "label": "Microscopy showed normal compact floc with active stalked ciliates at all hours."
+    },
+    {
+     "id": "ev4",
+     "label": "A trial that trimmed RAS overnight in proportion to flow flattened the morning blanket and the morning TSS peak disappeared."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "A daily filamentous bulking cycle developed and cleared each day"
+     },
+     {
+      "id": "inf-b",
+      "label": "Nitrifiers washed out every night and regrew by noon"
+     },
+     {
+      "id": "inf-c",
+      "label": "The primary clarifier released a solids slug each morning"
+     },
+     {
+      "id": "inf-d",
+      "label": "Constant RAS at low overnight flow over returned solids and deepened the morning blanket, causing the daily TSS peak"
+     }
+    ],
+    "correctOptionId": "inf-d",
+    "explanation": "Floc and SVI were normal at all hours, which contradicts bulking. Nitrifier washout would affect ammonia, not a blanket linked TSS peak, and the RAS trial isolates the return rate."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Effluent ammonia trend for the week"
+     },
+     {
+      "id": "nc-b",
+      "label": "Overnight RAS to influent flow ratio trend paired with blanket depth"
+     },
+     {
+      "id": "nc-c",
+      "label": "Primary clarifier sludge draw off log"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "Ammonia stayed in range and does not explain a solids peak tied to blanket depth.",
+    "nc-b": "The ratio spikes overnight, the blanket follows it, and both flatten under flow paced RAS.",
+    "nc-c": "Primary draw off timing did not match the daily TSS peak."
+   }
+  },
+  {
+   "id": "c2ww-evidence09",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "SVI rose to 200 mL/g after the plant switched to a new industrial park connection with high soluble COD and low solids.",
+   "topicId": "activated-sludge-bulking",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 wastewater plant case. Readings are from the stated period unless a bench or paired check is noted. Archived plant records are available for follow up.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Microscopy showed Type 0961 filaments and weak floc, a pattern linked to readily degradable soluble substrate."
+    },
+    {
+     "id": "ev2",
+     "label": "Soluble COD made up 85 percent of influent COD, while particulate COD was low."
+    },
+    {
+     "id": "ev3",
+     "label": "DO held at 2.0 mg/L and nutrients were adequate, ruling out the two common filament drivers on site."
+    },
+    {
+     "id": "ev4",
+     "label": "A bench selector test, contacting mixed liquor with influent at high load then returning it, reduced filament abundance over two weeks, while the unselected control stayed filamentous."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "A high soluble, readily degradable substrate load selected for soluble substrate filaments in the absence of a selector effect"
+     },
+     {
+      "id": "inf-b",
+      "label": "Low DO selected for the filaments despite the measured 2.0 mg/L"
+     },
+     {
+      "id": "inf-c",
+      "label": "Nutrient deficiency caused the filaments despite adequate nutrient readings"
+     },
+     {
+      "id": "inf-d",
+      "label": "Low SRT washed out floc formers and left only filaments"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "DO and nutrients were measured adequate, so those distractors are contradicted directly. The substrate split and the selector bench result support the soluble substrate explanation."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Aeration DO calibration record"
+     },
+     {
+      "id": "nc-b",
+      "label": "Influent nutrient analysis"
+     },
+     {
+      "id": "nc-c",
+      "label": "Influent soluble to total COD fractionation record paired with microscopy"
+     }
+    ],
+    "correctOptionId": "nc-c",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "DO calibration was current and readings held at target.",
+    "nc-b": "Nutrients were adequate, so deficiency does not fit the filament pattern.",
+    "nc-c": "Fractionation confirms most COD is soluble and filament abundance falls after selector contact."
+   }
+  },
+  {
+   "id": "c2ww-evidence10",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A sludge settled well in the morning cylinder test but the clarifier effluent was cloudy all day.",
+   "topicId": "activated-sludge-settleability",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 wastewater plant case. Readings are from the stated period unless a bench or paired check is noted. Archived plant records are available for follow up.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "SV30 was 28 percent with a clear supernatant in the lab cylinder at 9 am."
+    },
+    {
+     "id": "ev2",
+     "label": "Clarifier surface showed visible upflow boils above the feed well and short circuit streaks to the weir."
+    },
+    {
+     "id": "ev3",
+     "label": "A dye test reached the effluent weir in 22 minutes against a theoretical detention of 2.4 hours."
+    },
+    {
+     "id": "ev4",
+     "label": "Influent flow and SVI were both in their normal ranges, and RAS rate was at its set point."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The sludge lost settleability between the lab and the clarifier"
+     },
+     {
+      "id": "inf-b",
+      "label": "Clarifier hydraulic short circuiting, not poor sludge settleability, is carrying solids to the weir"
+     },
+     {
+      "id": "inf-c",
+      "label": "Filamentous bulking slowed settling in the clarifier only"
+     },
+     {
+      "id": "inf-d",
+      "label": "The lab cylinder test was run at the wrong temperature and hid bulking"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "The dye result proves a flow path fault, and normal SVI plus a clear cylinder supernatant contradict a sludge quality cause. No temperature error is stated."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Dye tracer timing record paired with clarifier flow distribution check"
+     },
+     {
+      "id": "nc-b",
+      "label": "Repeated SVI tests through the day"
+     },
+     {
+      "id": "nc-c",
+      "label": "Microscopy filament survey"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "Dye arrives far too early and upflow boils line up with the short circuit path.",
+    "nc-b": "Repeated SVI stayed normal, so settleability did not change through the day.",
+    "nc-c": "Filaments were few, which argues against bulking as the clarifier problem."
+   }
+  },
+  {
+   "id": "c2ww-evidence100",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Chlorine disinfection demand spiked every time the ferric feed pump cycled on, in a pattern operators first blamed on coincidence.",
+   "topicId": "chemical-feed",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 wastewater plant case. Readings are from the stated period unless a bench or paired check is noted. Archived plant records are available for follow up.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Effluent iron carried over at 1.8 mg/L in samples taken just after ferric pump cycles."
+    },
+    {
+     "id": "ev2",
+     "label": "Bench tests showed the iron bearing effluent exerting a chlorine demand several times the iron free sample."
+    },
+    {
+     "id": "ev3",
+     "label": "Ferric dose had been raised that month for phosphorus, and clarifier iron carryover rose with it."
+    },
+    {
+     "id": "ev4",
+     "label": "Dialing ferric back to the jar test optimum in a trial cut iron carryover and chlorine demand fell with it."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The chlorine analyzer drifts when the ferric pump runs electrically nearby"
+     },
+     {
+      "id": "inf-b",
+      "label": "Ferric cycles coincide with high ammonia hours that raise demand"
+     },
+     {
+      "id": "inf-c",
+      "label": "The chlorine stock is contaminated and weak on those days"
+     },
+     {
+      "id": "inf-d",
+      "label": "Excess ferric carrying over in the effluent exerts the extra chlorine demand that tracks the pump cycles"
+     }
+    ],
+    "correctOptionId": "inf-d",
+    "explanation": "Bench demand on iron bearing samples isolates iron, ammonia timing does not match pump cycles, and stock strength was steady. The dose trial confirms the link."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Bench chlorine demand test on iron bearing versus iron free effluent paired with the ferric dose trial"
+     },
+     {
+      "id": "nc-b",
+      "label": "Effluent ammonia trend versus pump cycle log"
+     },
+     {
+      "id": "nc-c",
+      "label": "Chlorine stock strength record"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "Chlorine demand falls as iron carryover falls, at the corrected ferric dose.",
+    "nc-b": "Ammonia peaks did not align with ferric cycles.",
+    "nc-c": "Stock strength tested steady all month."
+   }
+  },
+  {
+   "id": "c2ww-evidence11",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "After a week of heavy rain, SVI jumped to 195 mL/g and stayed high for three weeks after flows returned to normal.",
+   "topicId": "activated-sludge-bulking",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 wastewater plant case. Readings are from the stated period unless a bench or paired check is noted. Archived plant records are available for follow up.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Peak wet weather flow tripled for five days and MLSS fell from 2400 mg/L to 1300 mg/L during the event."
+    },
+    {
+     "id": "ev2",
+     "label": "Microscopy after the rain showed many filaments and sparse, small floc, with free swimming ciliates dominant."
+    },
+    {
+     "id": "ev3",
+     "label": "F/M during the washout week rose above 0.6 kg BOD per kg MLVSS per day because biomass was lost, not because load rose."
+    },
+    {
+     "id": "ev4",
+     "label": "Bench reseeding of a sample with healthy stored sludge restored floc structure, while the unseeded paired sample stayed filamentous."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Rain diluted the influent and starved the sludge of food for three weeks"
+     },
+     {
+      "id": "inf-b",
+      "label": "Cold rainwater shocked the nitrifiers and caused the high SVI"
+     },
+     {
+      "id": "inf-c",
+      "label": "Wet weather biomass washout raised F/M on the remaining sludge and let filaments outgrow the depleted floc formers"
+     },
+     {
+      "id": "inf-d",
+      "label": "Grit carried over in the storm mechanically broke the floc"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "Load did not rise, MLSS fell, and F/M rose on the remaining biomass, which contradicts starvation. Nitrifier shock affects ammonia, not SVI, and no grit carryover is stated."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Influent temperature log for the storm week"
+     },
+     {
+      "id": "nc-b",
+      "label": "MLSS and F/M trend across the storm and recovery period paired with microscopy"
+     },
+     {
+      "id": "nc-c",
+      "label": "Grit removal tonnage record"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "Temperature change was modest and does not explain a three week SVI rise.",
+    "nc-b": "F/M spikes as MLSS falls and filaments increase until biomass is rebuilt.",
+    "nc-c": "Grit tonnage was normal for a storm of this size."
+   }
+  },
+  {
+   "id": "c2ww-evidence12",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Pin floc appeared in the effluent while the sludge blanket stayed low and SVI was low at 70 mL/g.",
+   "topicId": "activated-sludge-settleability",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 wastewater plant case. Readings are from the stated period unless a bench or paired check is noted. Archived plant records are available for follow up.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Microscopy showed small, dense floc cores with almost no filaments and few rotifers, an old sludge picture."
+    },
+    {
+     "id": "ev2",
+     "label": "SRT was calculated at 32 days and wasting had been reduced for two months to build inventory."
+    },
+    {
+     "id": "ev3",
+     "label": "Effluent turbidity came from tiny floc particles passing the weir, while the cylinder supernatant held the same fine particles."
+    },
+    {
+     "id": "ev4",
+     "label": "A bench trial that wasted a portion of the sample daily produced larger, fresher floc in a week, while the unwasted control kept shedding pin floc."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Filamentous bulking raised the blanket and washed solids over the weir"
+     },
+     {
+      "id": "inf-b",
+      "label": "Low SRT washed out slow growing floc formers"
+     },
+     {
+      "id": "inf-c",
+      "label": "A clarifier scraper fault resuspended settled sludge"
+     },
+     {
+      "id": "inf-d",
+      "label": "Excessive sludge age from under wasting broke floc into pin floc that escapes the clarifier"
+     }
+    ],
+    "correctOptionId": "inf-d",
+    "explanation": "SVI and blanket were low, which contradicts bulking and resuspension. SRT was high, not low, and the wasting bench trial isolates sludge age."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Clarifier scraper torque log"
+     },
+     {
+      "id": "nc-b",
+      "label": "SVI and blanket trend"
+     },
+     {
+      "id": "nc-c",
+      "label": "SRT calculation record paired with a wasting trial log"
+     }
+    ],
+    "correctOptionId": "nc-c",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "Scraper torque was normal and the blanket stayed low.",
+    "nc-b": "Low SVI and low blanket argue against bulking or washout.",
+    "nc-c": "Pin floc declines as wasting restores a younger sludge age in the trial."
+   }
+  },
+  {
+   "id": "c2ww-evidence13",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Bulking appeared only in winter, with SVI reaching 180 mL/g at 9 C and returning to 110 mL/g each spring.",
+   "topicId": "activated-sludge-bulking",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 wastewater plant case. Readings are from the stated period unless a bench or paired check is noted. Archived plant records are available for follow up.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Microscopy each winter showed Microthrix parvicella, a filament favoured by low temperature and greasy substrate."
+    },
+    {
+     "id": "ev2",
+     "label": "Influent fats and long chain fatty material rose in winter from a seasonal food processor."
+    },
+    {
+     "id": "ev3",
+     "label": "DO, nutrients, and F/M stayed in their normal ranges in both seasons."
+    },
+    {
+     "id": "ev4",
+     "label": "A bench sample kept at 9 C stayed filamentous, while the paired sample warmed to 18 C lost filament abundance over two weeks."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Cold temperature plus greasy substrate selected for Microthrix parvicella and winter filamentous bulking"
+     },
+     {
+      "id": "inf-b",
+      "label": "Winter low DO caused the bulking even though DO stayed in range"
+     },
+     {
+      "id": "inf-c",
+      "label": "Spring wasting changes alone explain the seasonal pattern"
+     },
+     {
+      "id": "inf-d",
+      "label": "Ice in the clarifier mechanically lifted solids each winter"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "DO stayed in range, so that distractor is contradicted. No wasting or ice effect is stated, and the paired temperature bench test isolates cold plus substrate."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Seasonal microscopy record paired with influent fats trend and temperature"
+     },
+     {
+      "id": "nc-b",
+      "label": "Wasting log for the year"
+     },
+     {
+      "id": "nc-c",
+      "label": "Clarifier ice observation notes"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "Microthrix abundance tracks cold temperature and winter fats, and falls in the warmed bench sample.",
+    "nc-b": "Wasting was steady through the year, so it does not track the seasons.",
+    "nc-c": "No ice lifting of solids was observed in the clarifier notes."
+   }
+  },
+  {
+   "id": "c2ww-evidence14",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A clarifier passed its morning checks but lost solids every afternoon when a large bakery discharged.",
+   "topicId": "activated-sludge-settleability",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 wastewater plant case. Readings are from the stated period unless a bench or paired check is noted. Archived plant records are available for follow up.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Afternoon soluble BOD load doubled for three hours while flow rose only 10 percent."
+    },
+    {
+     "id": "ev2",
+     "label": "Oxygen uptake rate in the basin doubled during the discharge and DO sagged to 0.7 mg/L despite blowers at full output."
+    },
+    {
+     "id": "ev3",
+     "label": "Afternoon microscopy showed filaments beginning to extend, and SVI rose on high discharge days only."
+    },
+    {
+     "id": "ev4",
+     "label": "Equalizing the bakery discharge in a bench simulation held DO above 1.8 mg/L and SVI stayed normal, while the slug fed control bulked."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The clarifier is undersized for the afternoon flow"
+     },
+     {
+      "id": "inf-b",
+      "label": "A recurring soluble load slug caused afternoon DO sag and filament growth, producing the daily solids loss"
+     },
+     {
+      "id": "inf-c",
+      "label": "Afternoon heat caused thermal short circuiting in the clarifier"
+     },
+     {
+      "id": "inf-d",
+      "label": "The bakery discharge contained a biocide that killed the floc"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Flow rose only slightly, so hydraulic undersizing does not fit. No thermal pattern or cell death is stated, floc stayed active with a doubled uptake rate, and the equalization simulation isolates the load slug."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Clarifier dye test record"
+     },
+     {
+      "id": "nc-b",
+      "label": "Bakery discharge schedule paired with basin DO and uptake rate trend"
+     },
+     {
+      "id": "nc-c",
+      "label": "Effluent toxicity screening result"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "The dye test showed normal flow distribution.",
+    "nc-b": "DO sag and SVI rise follow the discharge window and disappear under equalized feeding.",
+    "nc-c": "Toxicity screening was negative and uptake rate doubled, showing live, hungry biomass."
+   }
+  },
+  {
+   "id": "c2ww-evidence15",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A thick, dark brown, greasy foam covered the aeration basin and the clarifier surface for six weeks.",
+   "topicId": "activated-sludge-foaming",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 wastewater plant case. Readings are from the stated period unless a bench or paired check is noted. Archived plant records are available for follow up.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Microscopy of the foam showed Nocardia type branching filaments concentrated in the foam, far more than in the mixed liquor."
+    },
+    {
+     "id": "ev2",
+     "label": "SRT was 18 days and the plant received greasy influent from a large food court complex."
+    },
+    {
+     "id": "ev3",
+     "label": "Foam trapped solids, and clarifier effluent TSS rose when wind blew foam over the weir."
+    },
+    {
+     "id": "ev4",
+     "label": "Skimming foam to waste in a trial bay reduced foam solids inventory week by week, while the unskimmed paired bay kept its foam layer."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Ordinary aeration foam from young sludge is covering the basin"
+     },
+     {
+      "id": "inf-b",
+      "label": "Denitrification gas is floating the foam layer in the basin"
+     },
+     {
+      "id": "inf-c",
+      "label": "Nocardia type foam formers, favoured by long SRT and greasy substrate, built a stable foam that must be wasted from the surface"
+     },
+     {
+      "id": "inf-d",
+      "label": "A detergent spill created a white surfactant foam"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "Young sludge foam is light and short lived, denitrification acts in clarifiers, and detergent foam is white and soapy. Branching filaments concentrated in dark greasy foam, long SRT, and the skimming trial identify Nocardia."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Influent detergent complaint log"
+     },
+     {
+      "id": "nc-b",
+      "label": "Clarifier gas bubble observations"
+     },
+     {
+      "id": "nc-c",
+      "label": "Foam microscopy record paired with an SRT and foam wasting trial log"
+     }
+    ],
+    "correctOptionId": "nc-c",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "No detergent spill was logged and the foam is dark and greasy, not white.",
+    "nc-b": "Basin foam is present before the clarifier, so clarifier gas cannot explain it.",
+    "nc-c": "Foam filament counts fall only in the bay where foam is skimmed to waste."
+   }
+  },
+  {
+   "id": "c2ww-evidence16",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "White, billowy foam piled on the basin the week after the plant reseeded following a shutdown.",
+   "topicId": "activated-sludge-foaming",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 wastewater plant case. Readings are from the stated period unless a bench or paired check is noted. Archived plant records are available for follow up.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "MLSS was only 700 mg/L and F/M was 0.9 kg BOD per kg MLVSS per day in the first week after reseeding."
+    },
+    {
+     "id": "ev2",
+     "label": "Microscopy showed small floc, many free bacteria, and no foam forming filaments in the foam itself."
+    },
+    {
+     "id": "ev3",
+     "label": "Foam was light, white, and collapsed quickly when sprayed with water in a bench tray test."
+    },
+    {
+     "id": "ev4",
+     "label": "As MLSS built past 1800 mg/L over two weeks, the foam faded without any foam control chemical."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Nocardia foam established itself in the first week"
+     },
+     {
+      "id": "inf-b",
+      "label": "Microthrix foam from cold greasy influent caused the white foam"
+     },
+     {
+      "id": "inf-c",
+      "label": "Excess antifoam chemical from storage caused the foam"
+     },
+     {
+      "id": "inf-d",
+      "label": "Young sludge at high F/M after reseeding produced temporary start up foam"
+     }
+    ],
+    "correctOptionId": "inf-d",
+    "explanation": "The foam held no filaments, collapsed with water spray, and faded as biomass built, which contradicts established filamentous foam. No antifoam addition is stated."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Foam microscopy and bench collapse test record from the reseeding week"
+     },
+     {
+      "id": "nc-b",
+      "label": "Influent grease trend for the month"
+     },
+     {
+      "id": "nc-c",
+      "label": "Antifoam chemical inventory log"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "Foam with no filaments that collapses in water and fades as MLSS rises confirms start up foam.",
+    "nc-b": "Grease was normal and the foam contained no Microthrix.",
+    "nc-c": "Antifoam inventory showed no use during the reseeding week."
+   }
+  },
+  {
+   "id": "c2ww-evidence17",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Foam returned within days every time wasting was increased to control it, and MLSS kept falling.",
+   "topicId": "activated-sludge-foaming",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 wastewater plant case. Readings are from the stated period unless a bench or paired check is noted. Archived plant records are available for follow up.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "The foam layer held an estimated 30 percent of the system solids inventory by a foam solids survey."
+    },
+    {
+     "id": "ev2",
+     "label": "Microscopy showed foam former filaments dominant in the foam and scarce in the mixed liquor below."
+    },
+    {
+     "id": "ev3",
+     "label": "Wasting from the mixed liquor lowered SRT for the bulk sludge but the foam layer itself was never removed."
+    },
+    {
+     "id": "ev4",
+     "label": "A trial wasting foam directly off the surface cut foam coverage in ten days, while mixed liquor wasting alone in the paired basin did not."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Wasting mixed liquor cannot control foam formers that live in the foam layer, so foam itself must be wasted"
+     },
+     {
+      "id": "inf-b",
+      "label": "The foam returns because wasting was too slow and more mixed liquor wasting is the answer"
+     },
+     {
+      "id": "inf-c",
+      "label": "Foam returns because RAS chlorination was stopped"
+     },
+     {
+      "id": "inf-d",
+      "label": "Foam returns because influent grease doubled in the same period"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "The paired trial directly contradicts the more wasting distractor, grease did not change in the record, and no chlorination change is stated. The solids survey shows where the inventory sits."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Influent grease analysis for the period"
+     },
+     {
+      "id": "nc-b",
+      "label": "Foam solids survey paired with the surface wasting trial log"
+     },
+     {
+      "id": "nc-c",
+      "label": "RAS chlorination dose log"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "Grease was steady during the trial period.",
+    "nc-b": "Foam coverage falls only where foam itself is removed to waste.",
+    "nc-c": "Chlorination dose was unchanged through the trial."
+   }
+  },
+  {
+   "id": "c2ww-evidence18",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A stable scum blanket formed on the secondary clarifier but the aeration basin surface stayed clear.",
+   "topicId": "activated-sludge-foaming",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 wastewater plant case. Readings are from the stated period unless a bench or paired check is noted. Archived plant records are available for follow up.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Clarifier scum contained gas bubbles and rose from the blanket, and it thickened when RAS was slowed for a weekend test."
+    },
+    {
+     "id": "ev2",
+     "label": "Nitrate in the clarifier feed was 14 mg/L and the blanket was warm at 21 C."
+    },
+    {
+     "id": "ev3",
+     "label": "Microscopy of the scum showed ordinary floc with no foam former filaments."
+    },
+    {
+     "id": "ev4",
+     "label": "Increasing RAS withdrawal during a trial weekend kept the blanket thin and the scum did not form, while nitrate stayed the same."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Nocardia foam migrated from the basin to the clarifier"
+     },
+     {
+      "id": "inf-b",
+      "label": "Denitrification in a deep, slow moving clarifier blanket floated solids as scum, not filamentous foaming"
+     },
+     {
+      "id": "inf-c",
+      "label": "Grease from the influent floated as a scum layer"
+     },
+     {
+      "id": "inf-d",
+      "label": "Algae grew on the clarifier surface and formed the blanket"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "The basin was clear and the scum held ordinary floc with bubbles, which contradicts foam formers and grease. The RAS trial isolates blanket residence time and denitrification gas."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Basin foam microscopy record"
+     },
+     {
+      "id": "nc-b",
+      "label": "Influent grease trend"
+     },
+     {
+      "id": "nc-c",
+      "label": "Clarifier blanket residence check paired with nitrate and RAS trial log"
+     }
+    ],
+    "correctOptionId": "nc-c",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "Basin microscopy showed no foam formers to migrate.",
+    "nc-b": "Grease was normal and the scum was floc with gas bubbles, not grease.",
+    "nc-c": "Scum forms only when the blanket sits, and disappears when the blanket is kept moving."
+   }
+  },
+  {
+   "id": "c2ww-evidence19",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Foaming worsened after operators raised MLSS to prepare for a winter load increase.",
+   "topicId": "activated-sludge-foaming",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 wastewater plant case. Readings are from the stated period unless a bench or paired check is noted. Archived plant records are available for follow up.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "SRT rose from 11 to 21 days as MLSS was built up, and foam coverage grew in step with SRT."
+    },
+    {
+     "id": "ev2",
+     "label": "Microscopy showed Microthrix and Nocardia type filaments, both favoured by long sludge age."
+    },
+    {
+     "id": "ev3",
+     "label": "Grease in the influent was unchanged from the previous season."
+    },
+    {
+     "id": "ev4",
+     "label": "A trial bay held at the lower SRT kept a thin foam layer, while the high SRT bay foamed heavily on the same influent."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The winter load increase itself foamed the basin"
+     },
+     {
+      "id": "inf-b",
+      "label": "Cold air from the blowers chilled the mixed liquor and caused foam"
+     },
+     {
+      "id": "inf-c",
+      "label": "Raising SRT to build MLSS also selected for long age foam formers and caused the foaming"
+     },
+     {
+      "id": "inf-d",
+      "label": "New diffusers installed that month whipped the surface into foam"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "Grease and load were steady, and the paired SRT trial isolates sludge age. No diffuser or chilling effect is stated, and foam formers are documented in the foam."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Paired bay SRT and foam coverage log with foam microscopy"
+     },
+     {
+      "id": "nc-b",
+      "label": "Blower intake temperature log"
+     },
+     {
+      "id": "nc-c",
+      "label": "Diffuser installation record"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "Foam tracks SRT between the paired bays on identical influent.",
+    "nc-b": "Blower air temperature does not select for foam forming filaments.",
+    "nc-c": "Diffusers were not changed in the high foam bay during the trial."
+   }
+  }
+ ],
+ "missions": [
+  {
+   "id": "c2ww-mission61",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 61: The Clarifier Performance Shift",
+   "tasks": [
+    {
+     "taskId": "c2ww-process40",
+     "revision": "r1",
+     "occurrenceId": "m61-t1"
+    },
+    {
+     "taskId": "c2ww-evidence01",
+     "revision": "r1",
+     "occurrenceId": "m61-t2"
+    }
+   ]
+  },
+  {
+   "id": "c2ww-mission62",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 62: The Activated Sludge Bulking Shift",
+   "tasks": [
+    {
+     "taskId": "c2ww-evidence02",
+     "revision": "r1",
+     "occurrenceId": "m62-t1"
+    },
+    {
+     "taskId": "c2ww-process41",
+     "revision": "r1",
+     "occurrenceId": "m62-t2"
+    },
+    {
+     "taskId": "c2ww-process42",
+     "revision": "r1",
+     "occurrenceId": "m62-t3"
+    }
+   ]
+  },
+  {
+   "id": "c2ww-mission63",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 63: The Digester Startup Shift",
+   "tasks": [
+    {
+     "taskId": "c2ww-process43",
+     "revision": "r1",
+     "occurrenceId": "m63-t1"
+    },
+    {
+     "taskId": "c2ww-evidence03",
+     "revision": "r1",
+     "occurrenceId": "m63-t2"
+    },
+    {
+     "taskId": "c2ww-process44",
+     "revision": "r1",
+     "occurrenceId": "m63-t3"
+    },
+    {
+     "taskId": "c2ww-process45",
+     "revision": "r1",
+     "occurrenceId": "m63-t4"
+    }
+   ]
+  },
+  {
+   "id": "c2ww-mission64",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 64: The Activated Sludge Bulking Shift",
+   "tasks": [
+    {
+     "taskId": "c2ww-evidence04",
+     "revision": "r1",
+     "occurrenceId": "m64-t1"
+    },
+    {
+     "taskId": "c2ww-process46",
+     "revision": "r1",
+     "occurrenceId": "m64-t2"
+    }
+   ]
+  },
+  {
+   "id": "c2ww-mission65",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 65: The Digester Troubleshooting Shift",
+   "tasks": [
+    {
+     "taskId": "c2ww-process47",
+     "revision": "r1",
+     "occurrenceId": "m65-t1"
+    },
+    {
+     "taskId": "c2ww-evidence05",
+     "revision": "r1",
+     "occurrenceId": "m65-t2"
+    },
+    {
+     "taskId": "c2ww-process48",
+     "revision": "r1",
+     "occurrenceId": "m65-t3"
+    }
+   ]
+  },
+  {
+   "id": "c2ww-mission66",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 66: The Activated Sludge Settleability Shift",
+   "tasks": [
+    {
+     "taskId": "c2ww-evidence06",
+     "revision": "r1",
+     "occurrenceId": "m66-t1"
+    },
+    {
+     "taskId": "c2ww-process49",
+     "revision": "r1",
+     "occurrenceId": "m66-t2"
+    },
+    {
+     "taskId": "c2ww-process50",
+     "revision": "r1",
+     "occurrenceId": "m66-t3"
+    },
+    {
+     "taskId": "c2ww-process51",
+     "revision": "r1",
+     "occurrenceId": "m66-t4"
+    }
+   ]
+  },
+  {
+   "id": "c2ww-mission67",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 67: The Digester Operations Shift",
+   "tasks": [
+    {
+     "taskId": "c2ww-process52",
+     "revision": "r1",
+     "occurrenceId": "m67-t1"
+    },
+    {
+     "taskId": "c2ww-evidence07",
+     "revision": "r1",
+     "occurrenceId": "m67-t2"
+    }
+   ]
+  },
+  {
+   "id": "c2ww-mission68",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 68: The Activated Sludge Settleability Shift",
+   "tasks": [
+    {
+     "taskId": "c2ww-evidence08",
+     "revision": "r1",
+     "occurrenceId": "m68-t1"
+    },
+    {
+     "taskId": "c2ww-process53",
+     "revision": "r1",
+     "occurrenceId": "m68-t2"
+    },
+    {
+     "taskId": "c2ww-process54",
+     "revision": "r1",
+     "occurrenceId": "m68-t3"
+    }
+   ]
+  },
+  {
+   "id": "c2ww-mission69",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 69: The Laboratory Testing Shift",
+   "tasks": [
+    {
+     "taskId": "c2ww-process55",
+     "revision": "r1",
+     "occurrenceId": "m69-t1"
+    },
+    {
+     "taskId": "c2ww-evidence09",
+     "revision": "r1",
+     "occurrenceId": "m69-t2"
+    },
+    {
+     "taskId": "c2ww-process56",
+     "revision": "r1",
+     "occurrenceId": "m69-t3"
+    },
+    {
+     "taskId": "c2ww-process57",
+     "revision": "r1",
+     "occurrenceId": "m69-t4"
+    }
+   ]
+  },
+  {
+   "id": "c2ww-mission70",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 70: The Activated Sludge Settleability Shift",
+   "tasks": [
+    {
+     "taskId": "c2ww-evidence10",
+     "revision": "r1",
+     "occurrenceId": "m70-t1"
+    },
+    {
+     "taskId": "c2ww-process58",
+     "revision": "r1",
+     "occurrenceId": "m70-t2"
+    }
+   ]
+  },
+  {
+   "id": "c2ww-mission71",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 71: The Laboratory Testing Shift",
+   "tasks": [
+    {
+     "taskId": "c2ww-process59",
+     "revision": "r1",
+     "occurrenceId": "m71-t1"
+    },
+    {
+     "taskId": "c2ww-evidence100",
+     "revision": "r1",
+     "occurrenceId": "m71-t2"
+    },
+    {
+     "taskId": "c2ww-process60",
+     "revision": "r1",
+     "occurrenceId": "m71-t3"
+    }
+   ]
+  },
+  {
+   "id": "c2ww-mission72",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 72: The Activated Sludge Bulking Shift",
+   "tasks": [
+    {
+     "taskId": "c2ww-evidence11",
+     "revision": "r1",
+     "occurrenceId": "m72-t1"
+    },
+    {
+     "taskId": "c2ww-process61",
+     "revision": "r1",
+     "occurrenceId": "m72-t2"
+    },
+    {
+     "taskId": "c2ww-process62",
+     "revision": "r1",
+     "occurrenceId": "m72-t3"
+    },
+    {
+     "taskId": "c2ww-process63",
+     "revision": "r1",
+     "occurrenceId": "m72-t4"
+    }
+   ]
+  },
+  {
+   "id": "c2ww-mission73",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 73: The Effluent Disinfection Shift",
+   "tasks": [
+    {
+     "taskId": "c2ww-process64",
+     "revision": "r1",
+     "occurrenceId": "m73-t1"
+    },
+    {
+     "taskId": "c2ww-evidence12",
+     "revision": "r1",
+     "occurrenceId": "m73-t2"
+    }
+   ]
+  },
+  {
+   "id": "c2ww-mission74",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 74: The Activated Sludge Bulking Shift",
+   "tasks": [
+    {
+     "taskId": "c2ww-evidence13",
+     "revision": "r1",
+     "occurrenceId": "m74-t1"
+    },
+    {
+     "taskId": "c2ww-process65",
+     "revision": "r1",
+     "occurrenceId": "m74-t2"
+    },
+    {
+     "taskId": "c2ww-process66",
+     "revision": "r1",
+     "occurrenceId": "m74-t3"
+    }
+   ]
+  },
+  {
+   "id": "c2ww-mission75",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 75: The Effluent Compliance Shift",
+   "tasks": [
+    {
+     "taskId": "c2ww-process67",
+     "revision": "r1",
+     "occurrenceId": "m75-t1"
+    },
+    {
+     "taskId": "c2ww-evidence14",
+     "revision": "r1",
+     "occurrenceId": "m75-t2"
+    },
+    {
+     "taskId": "c2ww-process68",
+     "revision": "r1",
+     "occurrenceId": "m75-t3"
+    },
+    {
+     "taskId": "c2ww-process69",
+     "revision": "r1",
+     "occurrenceId": "m75-t4"
+    }
+   ]
+  },
+  {
+   "id": "c2ww-mission76",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 76: The Activated Sludge Foaming Shift",
+   "tasks": [
+    {
+     "taskId": "c2ww-evidence15",
+     "revision": "r1",
+     "occurrenceId": "m76-t1"
+    },
+    {
+     "taskId": "c2ww-process70",
+     "revision": "r1",
+     "occurrenceId": "m76-t2"
+    }
+   ]
+  },
+  {
+   "id": "c2ww-mission77",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 77: The Instrumentation Verification Shift",
+   "tasks": [
+    {
+     "taskId": "c2ww-process71",
+     "revision": "r1",
+     "occurrenceId": "m77-t1"
+    },
+    {
+     "taskId": "c2ww-evidence16",
+     "revision": "r1",
+     "occurrenceId": "m77-t2"
+    },
+    {
+     "taskId": "c2ww-process72",
+     "revision": "r1",
+     "occurrenceId": "m77-t3"
+    }
+   ]
+  },
+  {
+   "id": "c2ww-mission78",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 78: The Activated Sludge Foaming Shift",
+   "tasks": [
+    {
+     "taskId": "c2ww-evidence17",
+     "revision": "r1",
+     "occurrenceId": "m78-t1"
+    },
+    {
+     "taskId": "c2ww-process73",
+     "revision": "r1",
+     "occurrenceId": "m78-t2"
+    },
+    {
+     "taskId": "c2ww-process74",
+     "revision": "r1",
+     "occurrenceId": "m78-t3"
+    },
+    {
+     "taskId": "c2ww-process75",
+     "revision": "r1",
+     "occurrenceId": "m78-t4"
+    }
+   ]
+  },
+  {
+   "id": "c2ww-mission79",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 79: The Instrumentation Trending Shift",
+   "tasks": [
+    {
+     "taskId": "c2ww-process76",
+     "revision": "r1",
+     "occurrenceId": "m79-t1"
+    },
+    {
+     "taskId": "c2ww-evidence18",
+     "revision": "r1",
+     "occurrenceId": "m79-t2"
+    }
+   ]
+  },
+  {
+   "id": "c2ww-mission80",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 80: The Activated Sludge Foaming Shift",
+   "tasks": [
+    {
+     "taskId": "c2ww-evidence19",
+     "revision": "r1",
+     "occurrenceId": "m80-t1"
+    },
+    {
+     "taskId": "c2ww-process77",
+     "revision": "r1",
+     "occurrenceId": "m80-t2"
+    },
+    {
+     "taskId": "c2ww-process78",
+     "revision": "r1",
+     "occurrenceId": "m80-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Wastewater process control chapters (activated sludge, nutrient removal, solids processing)"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "f4c49edabffeabce5e177d9156fcf8c444fdd380c59c82df6808914745240a28",
+  "taskReceipts": [
+   {
+    "taskId": "c2ww-process40",
+    "revision": "r1",
+    "sha256": "82b89168b5b702bcda4e55457ec97503280e334981e0cb835aca7de72c740e73",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process41",
+    "revision": "r1",
+    "sha256": "24e0226336f8250b8a393ecbb889d8c0c880057d6205d005e05a56daf96e736f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process42",
+    "revision": "r1",
+    "sha256": "d92004c6efc1d14caf46cb65f7d8c7ec217fe0c7af87e1973ffb87761cce162a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process43",
+    "revision": "r1",
+    "sha256": "f2c8d2cef80516b42fb18bf7aee6a30229a31fb040f7aec512e23de7ecd3b90b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process44",
+    "revision": "r1",
+    "sha256": "6c98d43ad77c1ef957f490993e7d38cbc1399390af5540cc790dc34305beefef",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process45",
+    "revision": "r1",
+    "sha256": "282b5a1fcc62fd08abf5fbf8be17cf4dda1d8eb26e543c15eee856fc0ab74ee3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process46",
+    "revision": "r1",
+    "sha256": "562600edea2adab3037d890036a75d0d1cc2c214a60b80b4317af5f417cf0999",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process47",
+    "revision": "r1",
+    "sha256": "1d870f59aba0880205e7b10d704a5ca1503ce9c81cf4ed9fd6e25a23a46f69e4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process48",
+    "revision": "r1",
+    "sha256": "22113801b080a78ca4186bf717c29201195f9c6300a8517be94408902d960381",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process49",
+    "revision": "r1",
+    "sha256": "595585ea841c6d19f29cb50114192d3ed9848f6404961c4fc88505215f6a58f3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process50",
+    "revision": "r1",
+    "sha256": "a4364baa7ac2694160ab1b59e1743d31d038c36c6dfffc1b59a8fc31fdf6c1c1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process51",
+    "revision": "r1",
+    "sha256": "bb213581d54a155869afb86033569862eaa73e3570658764555bc506bd924e3d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process52",
+    "revision": "r1",
+    "sha256": "a8427e0c8671989d3c33c7a9840c5260dc6887113821e2c574fa25ac74c5895a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process53",
+    "revision": "r1",
+    "sha256": "bcb098bab61b6647fa9059c84f32425e94bc7704af19610c06a094e76adf6171",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process54",
+    "revision": "r1",
+    "sha256": "1b40264249acd2aeed45323762b0d694cff11448af173f4263249d670f7432b6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process55",
+    "revision": "r1",
+    "sha256": "5ab52a3c28c500447464e5a3719e5a847656d9e4f8f25a98e1699b695ba4285f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process56",
+    "revision": "r1",
+    "sha256": "020df9cc0fdbdf4b7368f79b6e1086120c24abbfc9c21bce22fcb7af3cf17ce9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process57",
+    "revision": "r1",
+    "sha256": "d677e9d9eae3c458b1d9cb2aad15829f68e21ce4e197f58b8e90af306b768a28",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process58",
+    "revision": "r1",
+    "sha256": "5de266cd814d95ae59c1a51b94333fe846cd160b9f5f411e7e909ed1f3464f4e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process59",
+    "revision": "r1",
+    "sha256": "544fb5d6c629b87d863fd69aa1529787893a94354b2519eabddbfa26bf121651",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process60",
+    "revision": "r1",
+    "sha256": "c5b1466a32596463dc7424fc6ba588ef4b788d77c0f3623a357a60f3fd34c2e2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process61",
+    "revision": "r1",
+    "sha256": "7787cc559bdf73a58c51093ba2ac97171daab88246a2eea168417cc2f3df0215",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process62",
+    "revision": "r1",
+    "sha256": "beffedaab3b23f254889391bf23b7d5ffc63672e4c748c2f285b535d02e4f526",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process63",
+    "revision": "r1",
+    "sha256": "27b3b60732f10141b183eede2bf7f2ff12e0a6689304d9af5672df1e3caa978f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process64",
+    "revision": "r1",
+    "sha256": "2459fb1cf1e4a0aa0f8e37fd0d1877098fac88703acab33e43f56359d553a787",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process65",
+    "revision": "r1",
+    "sha256": "ce55ae5cbcb8326253e70ffe8b1cbb17610080435c3382ed78fa8ae355853c60",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process66",
+    "revision": "r1",
+    "sha256": "2ba3963211743fd085595576124ef0107e89c916578b3cbe33d7278e0aa6a44a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process67",
+    "revision": "r1",
+    "sha256": "550a62dd7e044df2fbcaf8cfa36b8c60b684afa101cd68458d1bb45b99e32e8b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process68",
+    "revision": "r1",
+    "sha256": "3b98c19ba3b17667c10c513f9194ed23e439dc7abdfdb338810649686834abb2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process69",
+    "revision": "r1",
+    "sha256": "5030b39db644bcb327732ee4f5171368ec8dbffac5e21c857924f7429f48a33b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process70",
+    "revision": "r1",
+    "sha256": "f2a4137c730226fe029bd294cdae923184c8f33b537a57410709090d2c74d5e3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process71",
+    "revision": "r1",
+    "sha256": "c23bb19726674d3bac2e6315c7bc6477d75691ce55cd4200ba2316e343b7132a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process72",
+    "revision": "r1",
+    "sha256": "e0a39be4d83e9a23ee585b6059e43f0a50f9cfc8cd6af42537093d99beb8af1a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process73",
+    "revision": "r1",
+    "sha256": "b74dbef9a3ad41762a1022a03741169ab1fb63dab8e15759d3578e72746b4d38",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process74",
+    "revision": "r1",
+    "sha256": "7d33e859f4fb536f63460fc9aaa743166b31841fc4e114a17097ceb56e9f5f58",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process75",
+    "revision": "r1",
+    "sha256": "be38c38448040a75bdf6cbf8852ed0417f8457f6e8249b108a31056ee5760294",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process76",
+    "revision": "r1",
+    "sha256": "abd79d892a98386ca802d47ff71e6d19c8daf5d6f642b160021832abc4ae0790",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process77",
+    "revision": "r1",
+    "sha256": "5145bdd833f5dd5d64cf99c3b6596495074feab374804d0b3dbc267b19a59029",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process78",
+    "revision": "r1",
+    "sha256": "7737e94254db1fb254acd6cfd0cb3687e1081c1c0ad77eefd565cf53613dc4a2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process79",
+    "revision": "r1",
+    "sha256": "af67e27a10793ae3ae8c5ca1c31f2431bfa8959e95f59935317cac55864bf6db",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process80",
+    "revision": "r1",
+    "sha256": "8e4d80c11df06b77ab39653d8cae05862c1ffae4ec70239940b8db10dff82203",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process81",
+    "revision": "r1",
+    "sha256": "9ca3371add6596fd62d0c405309060343c662841428f358d8fccdf5cd1acbebd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process82",
+    "revision": "r1",
+    "sha256": "7583fb776f2ddee1106990adadd959fa622f4b72eb643bcc690df047490a5ee5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process83",
+    "revision": "r1",
+    "sha256": "73c12da77cb08e8479ab9c2871ddc990a715ad20ef370c63757274a2322de696",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process84",
+    "revision": "r1",
+    "sha256": "21fca996bb5a9bbefbe35de10ddc56ca7f337c56e8dd5b3c220fdd8c7269a2bc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process85",
+    "revision": "r1",
+    "sha256": "49cdf0a4c76ba9decbfeba6d092255914abf41a46bcfee7145f7cd22c2f5936c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process86",
+    "revision": "r1",
+    "sha256": "90c80f190ab966a8190cfda51f5c062cf675a1c57c3110ee30b6928ff2a96eb2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process87",
+    "revision": "r1",
+    "sha256": "c2ca97c69703484347ad3a35b6494b36b5ad9197c54c9dea7efe6da780524cd7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process88",
+    "revision": "r1",
+    "sha256": "e442d1e55656ec8ae58b4079b724f2b0032c0385bb032ed1f41f93e84578fc76",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process89",
+    "revision": "r1",
+    "sha256": "515b9c5c08198cca5bc19f7e702c276031bc049515414ef83d2e3439c6e6dcca",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process90",
+    "revision": "r1",
+    "sha256": "d5197c3a014ec30bc9afeff871b8e10210d00ab331d3c6186bcd4a3604feec65",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process91",
+    "revision": "r1",
+    "sha256": "44a140666df1099a6ca28819e87d55632df23edd35b9b4692ccea713f978f048",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process92",
+    "revision": "r1",
+    "sha256": "6c1f6e44a01c25ae32656364c9455f994137a2db3bd6ee748bb9e95d85e5e8ce",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process93",
+    "revision": "r1",
+    "sha256": "95ae31f7e99abac9d972163f85aae897338778325ef97cde825adf90b153b9d5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process94",
+    "revision": "r1",
+    "sha256": "e5764aeccfc92776d3088987830ef3aacb185ffd0eab6876c09b797d4097ba4f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process95",
+    "revision": "r1",
+    "sha256": "71021c8a28afe9d4ec2b78e9316a26ada1be40496753d10000655d5b2cd89335",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process96",
+    "revision": "r1",
+    "sha256": "7f181f180e618159c61632e684cddf2efdf6b1956abf4f0d2ed372212477b502",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process97",
+    "revision": "r1",
+    "sha256": "d4ca6447db00d307423284e1697edec06480065e497549851c7d498a3b311bd5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process98",
+    "revision": "r1",
+    "sha256": "2521d8d5d24182c904debe98fdcc4242238d268116f91f9a36a14cfb584bbfa2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process99",
+    "revision": "r1",
+    "sha256": "63b98d302ef0f98013ea353e58530270b8ba7c14ebadaa808ffe04d9009a7c8e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-evidence01",
+    "revision": "r1",
+    "sha256": "d06584191ffde7942c7a6cb180c5783fe23894c5b7d360a92ddfefa80e341169",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-evidence02",
+    "revision": "r1",
+    "sha256": "4d452303e06312aca9777bb1b103df8601a72209cac863dea2041cc5bf3dfda5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-evidence03",
+    "revision": "r1",
+    "sha256": "747f18d08e2c26ff6cb18e665a95044b6e99b46d6e0493ca2ac60a76f8e7d410",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-evidence04",
+    "revision": "r1",
+    "sha256": "620b1af92800aca8aa837464874466eeb892e183e53877d1b61fb3db8c3728f7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-evidence05",
+    "revision": "r1",
+    "sha256": "3c7eac897c6322b8067c13f8ffaf14097ab7737fa85a3f8b8808becf2b89bf1d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-evidence06",
+    "revision": "r1",
+    "sha256": "50785c9cb8ac08774a0444cdd5302f570cee1c7fa4951107095f60b9cc261791",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-evidence07",
+    "revision": "r1",
+    "sha256": "6f596987c33038069f9650d8aa70b2463e41c6828379d617b9d61a56c87ad9e3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-evidence08",
+    "revision": "r1",
+    "sha256": "924fcbb58f0930689d0258852b14df8cc6ae939f8684c7edc8814a9556f3f6bd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-evidence09",
+    "revision": "r1",
+    "sha256": "448428b9b14529948a387af4d76f6a74978c1172833c830102ce7cce3e032d77",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-evidence10",
+    "revision": "r1",
+    "sha256": "07fa3aba3e2e24f3bb66efedef79bfcdb8f6c02fedd9ea70da5c46ddd8dce7cb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-evidence100",
+    "revision": "r1",
+    "sha256": "123baf5c0d632b1d6a21514db6955e133455e9ba0e11c206d48b65545aad3c63",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-evidence11",
+    "revision": "r1",
+    "sha256": "ab672d4c92563c55eb72c4390518c242d7feb3294d05328412ebc7d33f2e7579",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-evidence12",
+    "revision": "r1",
+    "sha256": "5a59a32b2cb6ae6dc63c308bb9a6d00df3812551a21526d27ebc39e5ad9fed59",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-evidence13",
+    "revision": "r1",
+    "sha256": "9894b675da0ddd61dc82278abf206c8e2e60219b411c006fa4bf9f41b8b8ac89",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-evidence14",
+    "revision": "r1",
+    "sha256": "e5c397616e1a90b0aa0e0b615b86332c6f0b634d5b54f30ac49d6623005104b7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-evidence15",
+    "revision": "r1",
+    "sha256": "884a148fab3ae3063fe4b78763b7ead29a080d8514bf0243ede0ee518d563e42",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-evidence16",
+    "revision": "r1",
+    "sha256": "cb045ddfe6025febd1707a9e20d41f12115373e316b64d56288114b655589e86",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-evidence17",
+    "revision": "r1",
+    "sha256": "75a3bf9b8eb57bb196b34d5645deb94a65cf81f19f1d2760bb833f561d24f090",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-evidence18",
+    "revision": "r1",
+    "sha256": "1cbc6e7ea5c08b319f06cdcf7ef491a82ff248af3496928d16410809bfbf0c7f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-evidence19",
+    "revision": "r1",
+    "sha256": "b5a0d9f8ca11a6607acec3f02952fdb95ef3ce0aaf9985f213b857c415419198",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "c2ww-mission61",
+    "revision": "r1",
+    "sha256": "ed1042ee1a661a233b0730fe335adb273341574ac163fa6e76b70518a21d3ca4"
+   },
+   {
+    "missionId": "c2ww-mission62",
+    "revision": "r1",
+    "sha256": "55eac4546a143395fd4b99e7125dbe71b33167624ab2335e30745d62f5736776"
+   },
+   {
+    "missionId": "c2ww-mission63",
+    "revision": "r1",
+    "sha256": "222198acabe540f864b695ed5844168a9499eda99de2276911f94d34096be4a0"
+   },
+   {
+    "missionId": "c2ww-mission64",
+    "revision": "r1",
+    "sha256": "62f983945d62c3ba263427e9372042771311cf2a38f6a99375590268c7c22e5f"
+   },
+   {
+    "missionId": "c2ww-mission65",
+    "revision": "r1",
+    "sha256": "5d59de10489f72d39ed26ba993345747890c964005765a08885778bcd5b8b519"
+   },
+   {
+    "missionId": "c2ww-mission66",
+    "revision": "r1",
+    "sha256": "48b140dfb2c966ba926432b9eb95bce350b3ff00cf29d315ad5c9bd3185b14a6"
+   },
+   {
+    "missionId": "c2ww-mission67",
+    "revision": "r1",
+    "sha256": "8f16fb26da2232eab860de2522d14479684f191ad95b2201a4f5661124158f27"
+   },
+   {
+    "missionId": "c2ww-mission68",
+    "revision": "r1",
+    "sha256": "1a0e73dd580652a69aba4ccdb5cf097545665f4a7c25b5e7b4c18ac7922c11d7"
+   },
+   {
+    "missionId": "c2ww-mission69",
+    "revision": "r1",
+    "sha256": "20385e7915fdc9297e1aeaca04a11a94674d650588efd464f7bfaedc598d81c1"
+   },
+   {
+    "missionId": "c2ww-mission70",
+    "revision": "r1",
+    "sha256": "eb4ad695c205d8099ebf8823e166ea3a78ab4e6a8dbd2cb947672f77c30e0fb0"
+   },
+   {
+    "missionId": "c2ww-mission71",
+    "revision": "r1",
+    "sha256": "709834adaac984571b7842d232f2656b881070c8604296923b0b45549a1e4d73"
+   },
+   {
+    "missionId": "c2ww-mission72",
+    "revision": "r1",
+    "sha256": "ffa0296a5c582c5ff27ea08a446912d9ba26faed693399506d9ec3d90543b7d4"
+   },
+   {
+    "missionId": "c2ww-mission73",
+    "revision": "r1",
+    "sha256": "dd61503a61d8842ea03f596e29ff491dd5acbd2f5c73c48b4a3889b6085a4212"
+   },
+   {
+    "missionId": "c2ww-mission74",
+    "revision": "r1",
+    "sha256": "f727edc52025b91592b016d487f012d3bec18d7d449eedac4a753c1901ee2f55"
+   },
+   {
+    "missionId": "c2ww-mission75",
+    "revision": "r1",
+    "sha256": "7302d88f37bd7a2e9552c7fe034e44887f582a2139f926bfd732ed9fea489969"
+   },
+   {
+    "missionId": "c2ww-mission76",
+    "revision": "r1",
+    "sha256": "81f38c8f75d43a3d69fb61833e9ebee6e0cc568d1b78342d60254371e360c104"
+   },
+   {
+    "missionId": "c2ww-mission77",
+    "revision": "r1",
+    "sha256": "f01fcc1a10cd2e9107745f95d6299dbad4f64ba0f0f9f1dc6008c12c53dd5c52"
+   },
+   {
+    "missionId": "c2ww-mission78",
+    "revision": "r1",
+    "sha256": "f583d93a55708a221248017887bbaedcb3ec5e9ef5e1383dea0edd98ddd935ba"
+   },
+   {
+    "missionId": "c2ww-mission79",
+    "revision": "r1",
+    "sha256": "8180f7baa5bf13635b797eca4681ea506358e0b303b96c166693b9db40c4e5bd"
+   },
+   {
+    "missionId": "c2ww-mission80",
+    "revision": "r1",
+    "sha256": "a6e3fefe892ab1fa15e63e06d189ccefe51933972405d2b53d96f80d3c407adf"
+   }
+  ]
+ }
+}

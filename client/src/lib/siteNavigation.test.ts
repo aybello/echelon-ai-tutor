@@ -100,7 +100,7 @@ describe("primary navigation hierarchy", () => {
   });
 
   it("keeps the approved public primary order before the account actions", () => {
-    expectLabelsInOrder(desktopLinks("/", "marketing"), PRIMARY_LABELS);
+    expectLabelsInOrder(desktopLinks("/about", "marketing"), PRIMARY_LABELS);
   });
 
   it("keeps the same public destinations available alongside My courses in learning mode", () => {
@@ -110,7 +110,7 @@ describe("primary navigation hierarchy", () => {
   });
 
   it("keeps Partnerships as a direct primary route and never hides it inside Resources", () => {
-    const links = desktopLinks("/", "marketing");
+    const links = desktopLinks("/about", "marketing");
     expect(links).toContain(
       '<a href="/partnerships" class="echelon-nav-link">Partnerships</a>'
     );

@@ -1,0 +1,5520 @@
+{
+ "courseKey": "wqa",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "wqa-process40",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the conductivity measurement steps for a drinking water sample.",
+   "topicId": "process-conductivity-measurement",
+   "level": "class1",
+   "assumptions": "Fictional laboratory measuring conductivity as a general chemistry parameter.",
+   "configuration": "Scope: preparing the conductivity cell through recording the result.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Verify the conductivity cell with the specified potassium chloride standard"
+    },
+    {
+     "id": "s2",
+     "label": "Rinse the cell three times with the sample to be measured"
+    },
+    {
+     "id": "s3",
+     "label": "Immerse the cell in the sample ensuring no air bubbles cling to the electrodes"
+    },
+    {
+     "id": "s4",
+     "label": "Allow the temperature compensated reading to stabilize"
+    },
+    {
+     "id": "s5",
+     "label": "Record the conductivity and the sample temperature"
+    },
+    {
+     "id": "s6",
+     "label": "Rinse the cell with purified water and store it as the manufacturer directs"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The cell is verified against a standard and rinsed with sample before immersion, and a bubble free, stabilized, temperature compensated reading is what gets recorded."
+  },
+  {
+   "id": "wqa-process41",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the ultraviolet absorbance at 254 nm measurement steps.",
+   "topicId": "process-uv254-measurement",
+   "level": "class1",
+   "assumptions": "Fictional laboratory measuring UV 254 as an organics indicator on treated water.",
+   "configuration": "Scope: preparing the spectrophotometer through recording the absorbance.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Warm up the spectrophotometer and set the wavelength to 254 nm"
+    },
+    {
+     "id": "s2",
+     "label": "Filter the sample through the specified filter to remove turbidity interference"
+    },
+    {
+     "id": "s3",
+     "label": "Rinse the quartz cell with filtered sample and fill it without bubbles"
+    },
+    {
+     "id": "s4",
+     "label": "Blank the instrument with purified water in a matched quartz cell"
+    },
+    {
+     "id": "s5",
+     "label": "Read the sample absorbance and record it with the cell path length"
+    },
+    {
+     "id": "s6",
+     "label": "Clean and store the quartz cells protected from scratching"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "UV 254 uses quartz cells and a filtered sample because ordinary glass absorbs ultraviolet light and turbidity scatters it, and the blank sets the zero before the sample is read."
+  },
+  {
+   "id": "wqa-process42",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the sample digestion steps before metals analysis.",
+   "topicId": "process-metals-sample-digestion",
+   "level": "class1",
+   "assumptions": "Fictional laboratory preparing drinking water samples for metals analysis by acid digestion.",
+   "configuration": "Scope: the logged samples through digested samples ready for the instrument.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Verify the sample preservation and acidification meet the method requirements"
+    },
+    {
+     "id": "s2",
+     "label": "Measure the specified sample volume into the digestion vessel"
+    },
+    {
+     "id": "s3",
+     "label": "Add the specified acids in the fume hood wearing the required protective equipment"
+    },
+    {
+     "id": "s4",
+     "label": "Heat the digestion by the method program until the digestion is complete"
+    },
+    {
+     "id": "s5",
+     "label": "Cool the vessels and bring each digest to the specified final volume"
+    },
+    {
+     "id": "s6",
+     "label": "Label the digests and transfer them to the instrument analyst with the batch record"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Digestion converts the sample into a clear acid solution of defined volume, done in order in the fume hood, so the instrument measures the total metal content of the original sample."
+  },
+  {
+   "id": "wqa-process43",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the instrument batch setup steps for metals analysis.",
+   "topicId": "process-icp-batch-setup",
+   "level": "class1",
+   "assumptions": "Fictional laboratory setting up an inductively coupled plasma batch for drinking water metals.",
+   "configuration": "Scope: preparing calibration standards through starting the sample run.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Prepare the calibration standards and the initial calibration verification standard"
+    },
+    {
+     "id": "s2",
+     "label": "Warm up and tune the instrument and confirm the tune criteria pass"
+    },
+    {
+     "id": "s3",
+     "label": "Run the calibration standards and confirm the calibration meets the method criteria"
+    },
+    {
+     "id": "s4",
+     "label": "Analyze the calibration verification and blank and confirm both are acceptable"
+    },
+    {
+     "id": "s5",
+     "label": "Load the samples with quality control samples placed through the sequence"
+    },
+    {
+     "id": "s6",
+     "label": "Start the run and record the batch identity in the instrument log"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The batch is built so calibration is proven by an independent verification standard and blank before any sample runs, with quality controls spaced through the sequence."
+  },
+  {
+   "id": "wqa-process44",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the jar test steps an analyst runs to support coagulant dose selection.",
+   "topicId": "process-jar-test-analyst",
+   "level": "class1",
+   "assumptions": "Fictional laboratory jar testing the current raw water for the treatment plant.",
+   "configuration": "Scope: collecting the raw water through recommending a dose to operations.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Collect a fresh raw water sample and measure turbidity, pH, alkalinity, and temperature"
+    },
+    {
+     "id": "s2",
+     "label": "Fill each jar with the same measured volume of raw water"
+    },
+    {
+     "id": "s3",
+     "label": "Add a different coagulant dose to each jar at the start of rapid mixing"
+    },
+    {
+     "id": "s4",
+     "label": "Rapid mix briefly, then slow mix to simulate flocculation"
+    },
+    {
+     "id": "s5",
+     "label": "Stop mixing and allow the specified settling period"
+    },
+    {
+     "id": "s6",
+     "label": "Measure settled water turbidity in each jar and report the best performing dose"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The jar test mirrors the plant sequence at bench scale, and the dose recommendation comes from settled turbidity compared across identical jars that differ only in dose."
+  },
+  {
+   "id": "wqa-process45",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the chlorine demand test steps for a raw water sample.",
+   "topicId": "process-chlorine-demand-test",
+   "level": "class1",
+   "assumptions": "Fictional laboratory determining the chlorine demand of a source water.",
+   "configuration": "Scope: preparing the dosed sample series through calculating the demand.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Prepare a series of sample portions and dose each with a different known chlorine dose"
+    },
+    {
+     "id": "s2",
+     "label": "Mix each portion and store them in the dark for the specified contact time"
+    },
+    {
+     "id": "s3",
+     "label": "Measure the free chlorine residual remaining in each portion after contact"
+    },
+    {
+     "id": "s4",
+     "label": "Select the portion whose residual matches the target residual for the plant"
+    },
+    {
+     "id": "s5",
+     "label": "Calculate demand as the dose applied minus the residual measured for that portion"
+    },
+    {
+     "id": "s6",
+     "label": "Report the demand and the dose needed to meet the target residual"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Demand is found by dosing a series, holding for the contact time, and measuring what chlorine remains, because demand is the difference between what was added and what survived."
+  },
+  {
+   "id": "wqa-process46",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to prepare a working calibration standard from a stock standard.",
+   "topicId": "process-standard-preparation",
+   "level": "class1",
+   "assumptions": "Fictional laboratory preparing a working standard by serial dilution.",
+   "configuration": "Scope: selecting the stock standard through labelling the working standard.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the stock standard identity, concentration, and expiry date"
+    },
+    {
+     "id": "s2",
+     "label": "Calculate the volumes needed to reach the target working concentration"
+    },
+    {
+     "id": "s3",
+     "label": "Pipette the calculated stock volume into a clean volumetric flask"
+    },
+    {
+     "id": "s4",
+     "label": "Dilute to the mark with the specified diluent and mix thoroughly"
+    },
+    {
+     "id": "s5",
+     "label": "Transfer the working standard to a clean labelled container"
+    },
+    {
+     "id": "s6",
+     "label": "Record the preparation with stock lot, volumes, date, and analyst in the standards log"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A working standard is only as good as its traceability: stock identity and expiry are confirmed first, volumes are calculated before pipetting, and the preparation is logged in full."
+  },
+  {
+   "id": "wqa-process47",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the DPD reagent verification steps when a new reagent lot is opened.",
+   "topicId": "process-reagent-preparation",
+   "level": "class1",
+   "assumptions": "Fictional laboratory opening a new lot of DPD reagent for chlorine analysis.",
+   "configuration": "Scope: opening the new lot through releasing it for routine use.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Record the new lot number, receipt date, and expiry in the reagent inventory"
+    },
+    {
+     "id": "s2",
+     "label": "Inspect the reagent for moisture damage, discolouration, or broken seals"
+    },
+    {
+     "id": "s3",
+     "label": "Analyze a known chlorine standard with the new lot reagent"
+    },
+    {
+     "id": "s4",
+     "label": "Analyze the same standard with the current lot reagent for comparison"
+    },
+    {
+     "id": "s5",
+     "label": "Confirm the two lots agree within the acceptance limit"
+    },
+    {
+     "id": "s6",
+     "label": "Release the new lot for use and file the verification record"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A new reagent lot is released by agreement with the proven lot on a known standard, so a defective lot is caught before it touches a compliance result."
+  },
+  {
+   "id": "wqa-process48",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the daily analytical balance verification steps.",
+   "topicId": "process-balance-verification",
+   "level": "class1",
+   "assumptions": "Fictional laboratory performing its morning balance check before weighing standards.",
+   "configuration": "Scope: approaching the balance through releasing it for the day work.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Inspect the balance pan and chamber and confirm the balance is level and clean"
+    },
+    {
+     "id": "s2",
+     "label": "Allow the balance to warm up and complete its internal adjustment"
+    },
+    {
+     "id": "s3",
+     "label": "Place the calibrated check weights on the pan one at a time and record each reading"
+    },
+    {
+     "id": "s4",
+     "label": "Compare each reading with the acceptance limits for that weight"
+    },
+    {
+     "id": "s5",
+     "label": "Record the verification and analyst initials on the daily check sheet"
+    },
+    {
+     "id": "s6",
+     "label": "Remove the balance from service and report it if any weight fails the limits"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Balance verification uses calibrated weights across the working range before any standard is weighed, and a failure takes the balance out of service rather than letting suspect weighings proceed."
+  },
+  {
+   "id": "wqa-process49",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to assemble a quality control batch for a chemistry analysis.",
+   "topicId": "process-qc-batch-assembly",
+   "level": "class1",
+   "assumptions": "Fictional laboratory building a batch of twenty samples with full quality controls.",
+   "configuration": "Scope: listing the samples through releasing the assembled batch to the analyst.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "List the samples in the batch and confirm each is within its holding time"
+    },
+    {
+     "id": "s2",
+     "label": "Insert a method blank at the start of the batch sequence"
+    },
+    {
+     "id": "s3",
+     "label": "Insert a laboratory control sample of known concentration in the batch"
+    },
+    {
+     "id": "s4",
+     "label": "Select samples for a duplicate and a matrix spike at the method frequency"
+    },
+    {
+     "id": "s5",
+     "label": "Arrange the sequence so quality controls bracket the field samples"
+    },
+    {
+     "id": "s6",
+     "label": "Record the batch composition on the bench worksheet and release it for analysis"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A quality batch is designed before analysis: blanks, known controls, duplicates, and spikes are placed deliberately through the sequence so the batch can prove its own accuracy and precision."
+  },
+  {
+   "id": "wqa-process50",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the calibration curve review steps before samples are quantified.",
+   "topicId": "process-calibration-curve-review",
+   "level": "class1",
+   "assumptions": "Fictional laboratory reviewing a multi point calibration for a chemistry method.",
+   "configuration": "Scope: the instrument finishing the standards through accepting the calibration.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm every calibration standard was analyzed in the correct sequence"
+    },
+    {
+     "id": "s2",
+     "label": "Check the calibration fit and the correlation criteria against the method limits"
+    },
+    {
+     "id": "s3",
+     "label": "Examine each standard back calculated concentration for bias"
+    },
+    {
+     "id": "s4",
+     "label": "Run and evaluate the independent calibration verification standard"
+    },
+    {
+     "id": "s5",
+     "label": "Confirm the calibration blank shows no significant response"
+    },
+    {
+     "id": "s6",
+     "label": "Accept the calibration and authorize sample quantification in the run record"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A curve is accepted on evidence: fit, back calculated bias, an independent verification standard, and a clean blank together prove the calibration before any sample value is trusted."
+  },
+  {
+   "id": "wqa-process51",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to update a quality control chart after a batch is accepted.",
+   "topicId": "process-control-chart-update",
+   "level": "class1",
+   "assumptions": "Fictional laboratory maintaining control charts for its laboratory control samples.",
+   "configuration": "Scope: the accepted batch control result through filing the updated chart.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Calculate the laboratory control sample recovery for the accepted batch"
+    },
+    {
+     "id": "s2",
+     "label": "Plot the recovery on the control chart for that method and analyte"
+    },
+    {
+     "id": "s3",
+     "label": "Compare the point with the warning and control limits on the chart"
+    },
+    {
+     "id": "s4",
+     "label": "Check for trends such as consecutive points rising or falling"
+    },
+    {
+     "id": "s5",
+     "label": "Initial and date the chart entry and note any trend or limit action taken"
+    },
+    {
+     "id": "s6",
+     "label": "File the updated chart and report any control limit exceedance for follow up"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Charting turns a single recovery into a trend record: the point is plotted, judged against limits and recent history, and exceedances are escalated rather than merely recorded."
+  },
+  {
+   "id": "wqa-process52",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the first steps when a method blank shows contamination.",
+   "topicId": "process-blank-investigation-start",
+   "level": "class1",
+   "assumptions": "Fictional chemistry batch where the method blank returned a detectable result.",
+   "configuration": "Scope: noticing the blank result through deciding the batch disposition path.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the blank result and check the calculation and instrument entry for error"
+    },
+    {
+     "id": "s2",
+     "label": "Quarantine the batch results so nothing is reported while the blank is investigated"
+    },
+    {
+     "id": "s3",
+     "label": "Inspect reagent water, reagents, and glassware used for the batch"
+    },
+    {
+     "id": "s4",
+     "label": "Prepare and analyze a fresh blank with new reagents and cleaned glassware"
+    },
+    {
+     "id": "s5",
+     "label": "Compare the fresh blank result with the original blank result"
+    },
+    {
+     "id": "s6",
+     "label": "Decide with the senior analyst whether the batch can be qualified or must be rerun"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The batch is quarantined before investigation so no result escapes, the likely contamination sources are checked with a fresh blank, and qualification or rerun is a documented senior decision."
+  },
+  {
+   "id": "wqa-process53",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the duplicate precision review steps for a completed batch.",
+   "topicId": "process-duplicate-rpd-review",
+   "level": "class1",
+   "assumptions": "Fictional laboratory reviewing duplicate results for a chemistry batch.",
+   "configuration": "Scope: the duplicate pair results through the precision disposition.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Identify the duplicate pair and confirm both were prepared from the same sample"
+    },
+    {
+     "id": "s2",
+     "label": "Calculate the relative percent difference between the two results"
+    },
+    {
+     "id": "s3",
+     "label": "Compare the relative percent difference with the method acceptance limit"
+    },
+    {
+     "id": "s4",
+     "label": "Review the sample matrix notes for reasons the sample may be non homogeneous"
+    },
+    {
+     "id": "s5",
+     "label": "Accept the precision or flag the batch for investigation if the limit is exceeded"
+    },
+    {
+     "id": "s6",
+     "label": "Record the calculation and disposition on the batch quality sheet"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Precision review starts by confirming the pair truly came from one sample, then judges the relative percent difference against the limit, with matrix notes considered before a batch is flagged."
+  },
+  {
+   "id": "wqa-process54",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the matrix spike recovery review steps for a completed batch.",
+   "topicId": "process-spike-recovery-review",
+   "level": "class1",
+   "assumptions": "Fictional laboratory reviewing a spiked sample in a chemistry batch.",
+   "configuration": "Scope: the spiked and unspiked results through the accuracy disposition.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the spike amount added and the unspiked sample result"
+    },
+    {
+     "id": "s2",
+     "label": "Calculate the spike recovery from the spiked result minus the native result"
+    },
+    {
+     "id": "s3",
+     "label": "Compare the recovery with the method acceptance range"
+    },
+    {
+     "id": "s4",
+     "label": "Review dilution and matrix notes that could explain a biased recovery"
+    },
+    {
+     "id": "s5",
+     "label": "Accept the accuracy or flag the affected results for qualification"
+    },
+    {
+     "id": "s6",
+     "label": "Record the recovery calculation and disposition on the batch quality sheet"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Spike recovery isolates accuracy in the real matrix: the native result is subtracted, recovery is judged against the range, and biased recoveries lead to qualification, not silent reporting."
+  },
+  {
+   "id": "wqa-process55",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the proficiency testing sample workflow from receipt to submission.",
+   "topicId": "process-proficiency-sample",
+   "level": "class1",
+   "assumptions": "Fictional laboratory participating in an external proficiency testing round.",
+   "configuration": "Scope: the proficiency samples arriving through submitting the results to the provider.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Log the proficiency samples on receipt and store them exactly as instructed"
+    },
+    {
+     "id": "s2",
+     "label": "Assign the samples to an analyst who runs the method routinely"
+    },
+    {
+     "id": "s3",
+     "label": "Analyze the samples by the routine method with no special treatment"
+    },
+    {
+     "id": "s4",
+     "label": "Review the results through the normal data review path only"
+    },
+    {
+     "id": "s5",
+     "label": "Submit the results to the provider by the round deadline"
+    },
+    {
+     "id": "s6",
+     "label": "File the provider evaluation when it arrives and record any required follow up"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Proficiency samples prove routine competence, so they are handled and analyzed exactly like client samples, reviewed normally, and submitted on time."
+  },
+  {
+   "id": "wqa-process56",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to schedule quality control samples across a week of batches.",
+   "topicId": "process-method-blank-frequency",
+   "level": "class1",
+   "assumptions": "Fictional laboratory planning quality control placement for a busy analysis week.",
+   "configuration": "Scope: reviewing the week sample load through issuing the quality control plan.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review the expected batches and sample counts for each method for the week"
+    },
+    {
+     "id": "s2",
+     "label": "Apply the method quality control frequencies to calculate the controls needed"
+    },
+    {
+     "id": "s3",
+     "label": "Confirm control materials, spikes, and standards are in stock for the plan"
+    },
+    {
+     "id": "s4",
+     "label": "Schedule the controls into each batch sequence on the planning board"
+    },
+    {
+     "id": "s5",
+     "label": "Brief the analysts on the quality control plan at the week start meeting"
+    },
+    {
+     "id": "s6",
+     "label": "Record the issued plan in the quality records"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Quality control is planned from batch volume and method frequency, stock is confirmed before the week begins, and analysts are briefed so controls are never skipped under time pressure."
+  },
+  {
+   "id": "wqa-process57",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps when an instrument calibration due date arrives.",
+   "topicId": "process-instrument-calibration-due",
+   "level": "class1",
+   "assumptions": "Fictional laboratory bench meter reaching its scheduled calibration date.",
+   "configuration": "Scope: the due date notice through returning the meter to service.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Remove the meter from routine use and tag it as due for calibration"
+    },
+    {
+     "id": "s2",
+     "label": "Clean and inspect the meter, probes, and cables before calibration"
+    },
+    {
+     "id": "s3",
+     "label": "Calibrate the meter with traceable standards across its working range"
+    },
+    {
+     "id": "s4",
+     "label": "Verify the calibration with an independent standard not used in calibration"
+    },
+    {
+     "id": "s5",
+     "label": "Record the calibration, standards used, and results in the equipment file"
+    },
+    {
+     "id": "s6",
+     "label": "Return the meter to service with a new calibration due label"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A due meter leaves service first, is calibrated with traceable standards, and is verified independently before its new due label returns it to routine work."
+  },
+  {
+   "id": "wqa-process58",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the receipt steps for a new certified reference standard.",
+   "topicId": "process-reference-standard-receipt",
+   "level": "class1",
+   "assumptions": "Fictional laboratory receiving a certified reference material for metals analysis.",
+   "configuration": "Scope: the standard arriving through its entry in the standards inventory.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Check the shipment against the order and inspect the container for damage"
+    },
+    {
+     "id": "s2",
+     "label": "Verify the certificate values, lot number, and expiry date on the certificate"
+    },
+    {
+     "id": "s3",
+     "label": "Record the standard in the inventory with its certified value and uncertainty"
+    },
+    {
+     "id": "s4",
+     "label": "Store the standard at the temperature and conditions on its certificate"
+    },
+    {
+     "id": "s5",
+     "label": "Assign the standard its laboratory identification code"
+    },
+    {
+     "id": "s6",
+     "label": "Brief analysts that the new lot is in service and retire the old lot record"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A certified standard is accepted on its certificate, stored exactly as certified, and given a traceable identity before analysts rely on its value."
+  },
+  {
+   "id": "wqa-process59",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the monthly quality control trend review steps.",
+   "topicId": "process-qc-trend-review-meeting",
+   "level": "class1",
+   "assumptions": "Fictional laboratory holding its monthly quality review.",
+   "configuration": "Scope: gathering the month charts through assigning the review actions.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Gather the control charts, proficiency results, and nonconformance records for the month"
+    },
+    {
+     "id": "s2",
+     "label": "Review each chart for limit exceedances, trends, and shifts"
+    },
+    {
+     "id": "s3",
+     "label": "Review open nonconformances and check that corrective actions are on schedule"
+    },
+    {
+     "id": "s4",
+     "label": "Agree any method, training, or equipment actions arising from the review"
+    },
+    {
+     "id": "s5",
+     "label": "Assign each action an owner and a completion date"
+    },
+    {
+     "id": "s6",
+     "label": "Record and file the review minutes in the quality records"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The monthly review connects charts, proficiency, and nonconformances into owned, dated actions, so quality signals become improvements instead of filed paperwork."
+  },
+  {
+   "id": "wqa-process60",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the second source verification steps for a calibration.",
+   "topicId": "process-second-source-verification",
+   "level": "class1",
+   "assumptions": "Fictional laboratory verifying a calibration with a standard from a different supplier lot.",
+   "configuration": "Scope: preparing the second source standard through accepting the calibration.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Prepare the second source standard at a mid range concentration from the independent lot"
+    },
+    {
+     "id": "s2",
+     "label": "Analyze the second source standard immediately after calibration"
+    },
+    {
+     "id": "s3",
+     "label": "Compare the measured value with its certified or prepared value"
+    },
+    {
+     "id": "s4",
+     "label": "Confirm the agreement is within the method acceptance limit"
+    },
+    {
+     "id": "s5",
+     "label": "Record the verification with both lot numbers in the run record"
+    },
+    {
+     "id": "s6",
+     "label": "Proceed to samples only after the verification passes"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A second source standard is independent of the calibration standards, so its agreement proves the calibration is accurate rather than merely repeatable."
+  },
+  {
+   "id": "wqa-process61",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the continuing calibration verification steps during a long instrument run.",
+   "topicId": "process-continuing-calibration-check",
+   "level": "class1",
+   "assumptions": "Fictional laboratory running a long metals sequence with periodic checks.",
+   "configuration": "Scope: reaching the check interval through deciding whether the run continues.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Analyze the continuing calibration verification standard at the method interval"
+    },
+    {
+     "id": "s2",
+     "label": "Compare the measured value with the true value and calculate the percent difference"
+    },
+    {
+     "id": "s3",
+     "label": "Confirm the difference is within the method acceptance limit"
+    },
+    {
+     "id": "s4",
+     "label": "Continue the run if the check passes and record the result in the sequence"
+    },
+    {
+     "id": "s5",
+     "label": "Stop the run and recalibrate if the check fails"
+    },
+    {
+     "id": "s6",
+     "label": "Reanalyze the samples since the last passing check after recalibration"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Continuing checks bracket the run: samples are only as valid as the last passing check, so a failure stops the run and the samples since that check are rerun after recalibration."
+  },
+  {
+   "id": "wqa-process62",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the laboratory control sample preparation steps.",
+   "topicId": "process-control-sample-prep",
+   "level": "class1",
+   "assumptions": "Fictional laboratory preparing a control sample from a certified material.",
+   "configuration": "Scope: selecting the certified material through storing the prepared control.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Select the certified material matching the method matrix and analyte range"
+    },
+    {
+     "id": "s2",
+     "label": "Calculate the preparation needed to reach the target control concentration"
+    },
+    {
+     "id": "s3",
+     "label": "Prepare the control exactly by the documented procedure"
+    },
+    {
+     "id": "s4",
+     "label": "Verify the prepared control by analyzing it against a current calibration"
+    },
+    {
+     "id": "s5",
+     "label": "Confirm the measured value agrees with the target within the preparation limits"
+    },
+    {
+     "id": "s6",
+     "label": "Label and store the control with its target value, date, and expiry"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A control sample is prepared to a known target and proven by measurement before use, because a control of uncertain value cannot judge a batch."
+  },
+  {
+   "id": "wqa-process63",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the first response steps when a batch quality control sample fails.",
+   "topicId": "process-qc-failure-first-response",
+   "level": "class1",
+   "assumptions": "Fictional chemistry batch where the laboratory control sample recovery is outside limits.",
+   "configuration": "Scope: seeing the failed recovery through placing the batch on hold.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the failure by rechecking the calculation and the raw instrument data"
+    },
+    {
+     "id": "s2",
+     "label": "Place the entire batch on hold so no results can be reported"
+    },
+    {
+     "id": "s3",
+     "label": "Notify the senior analyst or quality designate of the failure"
+    },
+    {
+     "id": "s4",
+     "label": "Record the failure in the nonconformance log with the batch identity"
+    },
+    {
+     "id": "s5",
+     "label": "Preserve the samples, extracts, and raw data for investigation"
+    },
+    {
+     "id": "s6",
+     "label": "Begin the documented investigation before any rerun is authorized"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A failed control stops reporting first: the failure is verified, the batch is held, supervision is notified, and evidence is preserved before investigation begins."
+  },
+  {
+   "id": "wqa-process64",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the rerun decision steps after a quality control investigation.",
+   "topicId": "process-rerun-decision",
+   "level": "class1",
+   "assumptions": "Fictional laboratory deciding the disposition of a held chemistry batch.",
+   "configuration": "Scope: the investigation findings through the documented disposition.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review the investigation findings and identify whether a cause was found"
+    },
+    {
+     "id": "s2",
+     "label": "Confirm whether the original samples remain within holding time and volume"
+    },
+    {
+     "id": "s3",
+     "label": "Decide whether a full rerun, a partial rerun, or qualification is appropriate"
+    },
+    {
+     "id": "s4",
+     "label": "Obtain senior analyst approval for the chosen disposition"
+    },
+    {
+     "id": "s5",
+     "label": "Carry out the rerun or apply the qualification to the held results"
+    },
+    {
+     "id": "s6",
+     "label": "Close the nonconformance with the disposition and its justification recorded"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The disposition follows the evidence: holding time and volume decide if a rerun is even possible, senior approval is required, and the justification is recorded when the case closes."
+  },
+  {
+   "id": "wqa-process65",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the response when a calibration verification standard fails.",
+   "topicId": "process-calibration-failure-response",
+   "level": "class1",
+   "assumptions": "Fictional laboratory where the verification standard reads outside its acceptance limit.",
+   "configuration": "Scope: the failed verification through returning the instrument to service.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Stop the analysis sequence and hold any samples already run"
+    },
+    {
+     "id": "s2",
+     "label": "Prepare a fresh verification standard and analyze it once"
+    },
+    {
+     "id": "s3",
+     "label": "Inspect the calibration standards and instrument for an obvious cause if it fails again"
+    },
+    {
+     "id": "s4",
+     "label": "Recalibrate the instrument with fresh standards"
+    },
+    {
+     "id": "s5",
+     "label": "Verify the new calibration with the independent verification standard"
+    },
+    {
+     "id": "s6",
+     "label": "Reanalyze any held samples under the verified calibration before reporting"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "One fresh standard distinguishes a preparation error from a calibration problem, and if recalibration is needed, held samples are rerun under the proven calibration."
+  },
+  {
+   "id": "wqa-process66",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the contamination source investigation steps for a contaminated blank.",
+   "topicId": "process-blank-contamination-source",
+   "level": "class1",
+   "assumptions": "Fictional laboratory tracing contamination found in a method blank.",
+   "configuration": "Scope: assigning the investigation through confirming the source found.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Analyze a blank of reagent water alone to test the water supply"
+    },
+    {
+     "id": "s2",
+     "label": "Analyze a blank carried through clean glassware only to test the glassware"
+    },
+    {
+     "id": "s3",
+     "label": "Analyze a blank with fresh reagent lots to test the reagents"
+    },
+    {
+     "id": "s4",
+     "label": "Compare the three results to isolate which component carries the contamination"
+    },
+    {
+     "id": "s5",
+     "label": "Correct the isolated source by replacement, cleaning, or repair"
+    },
+    {
+     "id": "s6",
+     "label": "Analyze a full method blank to confirm the contamination is cleared before batches resume"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The investigation changes one component at a time, water, glassware, then reagents, so the comparison isolates the source, and a clean full blank proves the fix."
+  },
+  {
+   "id": "wqa-process67",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the investigation when duplicate precision fails repeatedly.",
+   "topicId": "process-duplicate-failure-investigation",
+   "level": "class1",
+   "assumptions": "Fictional laboratory seeing repeated duplicate failures on one method.",
+   "configuration": "Scope: recognizing the pattern through implementing the corrective action.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review the recent duplicate results and confirm the failures share a method or matrix"
+    },
+    {
+     "id": "s2",
+     "label": "Check sample homogenization and subsampling steps in the procedure"
+    },
+    {
+     "id": "s3",
+     "label": "Observe the analyst technique for the preparation step in question"
+    },
+    {
+     "id": "s4",
+     "label": "Analyze a homogeneous control sample in duplicate to test the method itself"
+    },
+    {
+     "id": "s5",
+     "label": "Identify whether the cause is sample handling, technique, or the samples themselves"
+    },
+    {
+     "id": "s6",
+     "label": "Revise the procedure or retrain as the cause requires and document the action"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Repeated failures are investigated as a pattern: the method is tested on a homogeneous control to separate technique and handling causes from genuine sample variability."
+  },
+  {
+   "id": "wqa-process68",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to evaluate a matrix spike failure on a difficult sample.",
+   "topicId": "process-spike-failure-matrix",
+   "level": "class1",
+   "assumptions": "Fictional laboratory with a low spike recovery on a high colour sample.",
+   "configuration": "Scope: the failed recovery through the reported qualified result.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the spike calculation and the spike amount added"
+    },
+    {
+     "id": "s2",
+     "label": "Analyze the sample at a dilution and respike the diluted portion"
+    },
+    {
+     "id": "s3",
+     "label": "Compare the diluted spike recovery with the original recovery"
+    },
+    {
+     "id": "s4",
+     "label": "Conclude whether matrix interference explains the original failure"
+    },
+    {
+     "id": "s5",
+     "label": "Report the sample result with the matrix qualification and its explanation"
+    },
+    {
+     "id": "s6",
+     "label": "Record the investigation in the batch nonconformance notes"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Dilution reduces matrix interference, so a recovering diluted spike confirms the matrix as the cause and supports a qualified, explained result instead of a silent one."
+  },
+  {
+   "id": "wqa-process69",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the response when an instrument shows drift across a run.",
+   "topicId": "process-instrument-drift-response",
+   "level": "class1",
+   "assumptions": "Fictional laboratory noticing steadily rising check standard values during a run.",
+   "configuration": "Scope: noticing the drift trend through restoring a stable run.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the drift by analyzing the check standard again"
+    },
+    {
+     "id": "s2",
+     "label": "Stop the run at the last check that was within limits"
+    },
+    {
+     "id": "s3",
+     "label": "Inspect the instrument for the drift cause such as a failing lamp or dirty cell"
+    },
+    {
+     "id": "s4",
+     "label": "Correct the cause and recalibrate the instrument"
+    },
+    {
+     "id": "s5",
+     "label": "Verify stability with repeated check standards over a short series"
+    },
+    {
+     "id": "s6",
+     "label": "Restart the run and reanalyze samples back to the last acceptable check"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Drift invalidates results gradually, so the run is cut back to the last good check, the cause is fixed, stability is proven, and affected samples are rerun."
+  },
+  {
+   "id": "wqa-process70",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the response when an analyst discovers an expired standard was used.",
+   "topicId": "process-expired-standard-discovery",
+   "level": "class1",
+   "assumptions": "Fictional laboratory finding that a calibration used a standard past its expiry.",
+   "configuration": "Scope: discovering the expiry through the final disposition of affected results.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Identify every batch and result produced with the expired standard"
+    },
+    {
+     "id": "s2",
+     "label": "Place all affected results on hold and notify the senior analyst"
+    },
+    {
+     "id": "s3",
+     "label": "Assess the standard condition and any stability information available"
+    },
+    {
+     "id": "s4",
+     "label": "Recalibrate with an in date standard and reanalyze retained samples where possible"
+    },
+    {
+     "id": "s5",
+     "label": "Qualify or withdraw results that cannot be reanalyzed"
+    },
+    {
+     "id": "s6",
+     "label": "Complete a nonconformance record with the extent and corrective actions"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The response starts with the full extent of use, holds everything affected, and rebuilds results with valid standards, withdrawing what cannot be rebuilt."
+  },
+  {
+   "id": "wqa-process71",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to notify a client that reported results are being revised.",
+   "topicId": "process-qc-failure-client-notification",
+   "level": "class1",
+   "assumptions": "Fictional laboratory that must amend a report after a quality failure is confirmed.",
+   "configuration": "Scope: confirming the failure affects issued results through issuing the amended report.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm which issued reports contain results affected by the failure"
+    },
+    {
+     "id": "s2",
+     "label": "Notify the client contact that an amended report will be issued and why"
+    },
+    {
+     "id": "s3",
+     "label": "Correct or reanalyze the affected results under valid quality control"
+    },
+    {
+     "id": "s4",
+     "label": "Prepare the amended report clearly marked as amended with the changes identified"
+    },
+    {
+     "id": "s5",
+     "label": "Issue the amended report and confirm the client received it"
+    },
+    {
+     "id": "s6",
+     "label": "File the original report, the amendment, and the notification record together"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Amending a report requires prompt honest notification, a clearly marked amended report, and a filed trail linking the original, the correction, and the client notice."
+  },
+  {
+   "id": "wqa-process72",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the preventive action steps after a recurring quality control failure.",
+   "topicId": "process-preventive-action-qc",
+   "level": "class1",
+   "assumptions": "Fictional laboratory addressing the third similar failure in a quarter.",
+   "configuration": "Scope: recognizing the recurrence through verifying the preventive action worked.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review the related nonconformance records and define the recurring pattern"
+    },
+    {
+     "id": "s2",
+     "label": "Determine the root cause using the investigation evidence across the cases"
+    },
+    {
+     "id": "s3",
+     "label": "Select a preventive action that removes the root cause, not only the symptom"
+    },
+    {
+     "id": "s4",
+     "label": "Implement the action with an owner and a completion date"
+    },
+    {
+     "id": "s5",
+     "label": "Monitor the following batches for the defined effectiveness period"
+    },
+    {
+     "id": "s6",
+     "label": "Close the action only after the monitoring shows the failure has not recurred"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Preventive action is judged by results: the pattern and root cause are defined across cases, the fix is owned and dated, and closure waits for monitored proof."
+  },
+  {
+   "id": "wqa-process73",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the second person data review steps for a completed batch.",
+   "topicId": "process-data-review-second-check",
+   "level": "class1",
+   "assumptions": "Fictional laboratory applying independent review before results are reported.",
+   "configuration": "Scope: the analyst submitting the batch through the reviewer releasing it.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Analyst completes calculations and assembles raw data, charts, and quality results"
+    },
+    {
+     "id": "s2",
+     "label": "Reviewer checks sample identities and transcription from raw data to results"
+    },
+    {
+     "id": "s3",
+     "label": "Reviewer recalculates a selection of results independently"
+    },
+    {
+     "id": "s4",
+     "label": "Reviewer confirms all quality controls met the acceptance criteria"
+    },
+    {
+     "id": "s5",
+     "label": "Reviewer returns any errors to the analyst for correction and recheck"
+    },
+    {
+     "id": "s6",
+     "label": "Reviewer signs the release and routes the batch to reporting"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Independent review checks identity, transcription, calculation, and quality acceptance in that order, and only a signed release moves results to reporting."
+  },
+  {
+   "id": "wqa-process74",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the result finalization steps from instrument value to reported value.",
+   "topicId": "process-result-rounding-reporting",
+   "level": "class1",
+   "assumptions": "Fictional laboratory finalizing chemistry results for a client report.",
+   "configuration": "Scope: the raw calculated result through the value entered on the report.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the raw result and its units from the calculation record"
+    },
+    {
+     "id": "s2",
+     "label": "Apply any dilution factor from the preparation record"
+    },
+    {
+     "id": "s3",
+     "label": "Compare the result with the method reporting limit"
+    },
+    {
+     "id": "s4",
+     "label": "Apply the method rounding and significant figure rules"
+    },
+    {
+     "id": "s5",
+     "label": "Enter the final value and qualifier, if any, into the reporting system"
+    },
+    {
+     "id": "s6",
+     "label": "Verify the entered value against the calculation record before the report is issued"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Finalization applies dilution, reporting limit, and rounding rules in order, and the entered value is verified against the calculation before it can appear on a report."
+  },
+  {
+   "id": "wqa-process75",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the report assembly steps for a drinking water sample set.",
+   "topicId": "process-report-assembly",
+   "level": "class1",
+   "assumptions": "Fictional laboratory preparing a certificate of analysis for a municipal client.",
+   "configuration": "Scope: the released results through the signed report ready to send.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Gather the released results for every sample and parameter in the set"
+    },
+    {
+     "id": "s2",
+     "label": "Check the report header for the correct client, system, and sampling dates"
+    },
+    {
+     "id": "s3",
+     "label": "Confirm each result carries its units, method reference, and any qualifiers"
+    },
+    {
+     "id": "s4",
+     "label": "Confirm the report notes any holding time or quality qualifications"
+    },
+    {
+     "id": "s5",
+     "label": "Have the report reviewed and signed by the authorized signatory"
+    },
+    {
+     "id": "s6",
+     "label": "Issue the report to the client and file the issued copy"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A report is assembled from released results only, checked for identity, units, and qualifications, and signed by an authorized signatory before it is issued and filed."
+  },
+  {
+   "id": "wqa-process76",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the laboratory reporting steps when a result exceeds an Ontario standard.",
+   "topicId": "process-adverse-result-reporting-lab",
+   "level": "class1",
+   "assumptions": "Fictional laboratory with an E. coli positive drinking water result under Regulation 169/03.",
+   "configuration": "Scope: confirming the result through completing the laboratory notifications.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the result through the method confirmation steps"
+    },
+    {
+     "id": "s2",
+     "label": "Notify the client system contact by telephone immediately and note the time and person"
+    },
+    {
+     "id": "s3",
+     "label": "Notify the local health unit and the ministry as the regulation requires for laboratories"
+    },
+    {
+     "id": "s4",
+     "label": "Follow the telephone notices with the written adverse result notice"
+    },
+    {
+     "id": "s5",
+     "label": "Record every notification with date, time, and recipient in the adverse file"
+    },
+    {
+     "id": "s6",
+     "label": "Provide the client with the resampling requirements and laboratory availability"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "An adverse laboratory result triggers immediate telephone notification before paperwork, with health unit and ministry notice, written follow up, and a complete notification record."
+  },
+  {
+   "id": "wqa-process77",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to report a result below the method detection limit.",
+   "topicId": "process-below-detection-reporting",
+   "level": "class1",
+   "assumptions": "Fictional laboratory reporting a chemistry parameter not detected in a sample.",
+   "configuration": "Scope: the instrument showing no significant response through the reported value.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the instrument response is below the method detection limit criteria"
+    },
+    {
+     "id": "s2",
+     "label": "Confirm the batch blank and quality controls support a not detected conclusion"
+    },
+    {
+     "id": "s3",
+     "label": "Check the reporting limit that applies to this client and method"
+    },
+    {
+     "id": "s4",
+     "label": "Enter the result as not detected with the reporting limit value as specified"
+    },
+    {
+     "id": "s5",
+     "label": "Add the method reference so the client can interpret the result"
+    },
+    {
+     "id": "s6",
+     "label": "Verify the entry in the report review step"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A not detected report rests on the batch evidence, especially the blank and controls, and is reported with its limit and method so the client knows what the result means."
+  },
+  {
+   "id": "wqa-process78",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the data entry verification steps for hand entered bench results.",
+   "topicId": "process-data-entry-verification",
+   "level": "class1",
+   "assumptions": "Fictional laboratory entering titration results from paper bench sheets.",
+   "configuration": "Scope: the completed bench sheets through the verified system records.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Enter each result into the system directly from the bench sheet"
+    },
+    {
+     "id": "s2",
+     "label": "Print or display the entered results beside the bench sheet values"
+    },
+    {
+     "id": "s3",
+     "label": "Compare every entered value, unit, and qualifier with the bench sheet"
+    },
+    {
+     "id": "s4",
+     "label": "Correct any transcription error and note the correction"
+    },
+    {
+     "id": "s5",
+     "label": "Have a second person verify the entries for compliance samples"
+    },
+    {
+     "id": "s6",
+     "label": "File the bench sheets with the batch record after verification"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Hand entry is verified value by value against the bench sheet, with a second person check for compliance data, because transcription is a common and preventable error source."
+  },
+  {
+   "id": "wqa-process79",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to prepare a monthly sampling summary for a municipal client.",
+   "topicId": "process-monthly-summary-report",
+   "level": "class1",
+   "assumptions": "Fictional laboratory summarizing a month of results for a drinking water system.",
+   "configuration": "Scope: pulling the month results through issuing the summary.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Extract all results reported for the system during the month"
+    },
+    {
+     "id": "s2",
+     "label": "Check the extracted list against the sampling schedule for completeness"
+    },
+    {
+     "id": "s3",
+     "label": "Summarize the results by parameter with any exceedances highlighted"
+    },
+    {
+     "id": "s4",
+     "label": "Confirm every exceedance in the summary matches its adverse record"
+    },
+    {
+     "id": "s5",
+     "label": "Review and approve the summary through the normal signatory path"
+    },
+    {
+     "id": "s6",
+     "label": "Issue the summary to the client and file it with the month records"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The monthly summary is reconciled against the sampling schedule so missing samples are as visible as exceedances, and every highlighted exceedance is tied to its adverse record."
+  },
+  {
+   "id": "wqa-process80",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the verification steps before a new calculation spreadsheet is used for reporting.",
+   "topicId": "process-calculation-spreadsheet-check",
+   "level": "class1",
+   "assumptions": "Fictional laboratory introducing a spreadsheet for alkalinity calculations.",
+   "configuration": "Scope: the drafted spreadsheet through its approval for routine use.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Enter test data with hand calculated expected results into the spreadsheet"
+    },
+    {
+     "id": "s2",
+     "label": "Compare every spreadsheet output with the hand calculated values"
+    },
+    {
+     "id": "s3",
+     "label": "Test the spreadsheet with edge cases such as zero and maximum titration volumes"
+    },
+    {
+     "id": "s4",
+     "label": "Lock the formula cells and record the spreadsheet version"
+    },
+    {
+     "id": "s5",
+     "label": "Have the spreadsheet checked and approved by a second analyst"
+    },
+    {
+     "id": "s6",
+     "label": "Release the approved version and withdraw any draft copies"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A reporting spreadsheet is proven against hand calculations including edge cases, then locked and version controlled so analysts use only the verified tool."
+  },
+  {
+   "id": "wqa-process81",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the record filing steps at the completion of a sample set.",
+   "topicId": "process-record-retention-filing",
+   "level": "class1",
+   "assumptions": "Fictional laboratory closing out a completed drinking water sample file.",
+   "configuration": "Scope: the issued report through the file entering archive storage.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Collect the custody form, bench sheets, raw data, and quality records for the set"
+    },
+    {
+     "id": "s2",
+     "label": "Check the file against the record checklist for completeness"
+    },
+    {
+     "id": "s3",
+     "label": "Resolve any missing record before the file is closed"
+    },
+    {
+     "id": "s4",
+     "label": "Scan or file the records in the sample number order used by the archive"
+    },
+    {
+     "id": "s5",
+     "label": "Record the archive location and retention date in the index"
+    },
+    {
+     "id": "s6",
+     "label": "Move the closed file to the archive storage area"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A complete file is checked against the checklist before archiving, because records that cannot be retrieved cannot defend a result years later."
+  },
+  {
+   "id": "wqa-process82",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to answer a client query about a reported result.",
+   "topicId": "process-result-query-response",
+   "level": "class1",
+   "assumptions": "Fictional laboratory responding to a client question about a low chlorine result.",
+   "configuration": "Scope: receiving the query through closing the response record.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Log the query with the client, sample identity, and the result in question"
+    },
+    {
+     "id": "s2",
+     "label": "Retrieve the full batch record including raw data and quality controls"
+    },
+    {
+     "id": "s3",
+     "label": "Review the result, field chlorine record, and any qualifiers applied"
+    },
+    {
+     "id": "s4",
+     "label": "Prepare an explanation that answers the query from the record evidence"
+    },
+    {
+     "id": "s5",
+     "label": "Respond to the client and offer resampling if the query remains unresolved"
+    },
+    {
+     "id": "s6",
+     "label": "File the query, the evidence reviewed, and the response in the sample file"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A result query is answered from the retrieved record, not from memory, and the whole exchange is filed so the explanation remains traceable to its evidence."
+  },
+  {
+   "id": "wqa-process83",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the analyst support steps during an adverse water quality incident.",
+   "topicId": "process-adverse-notification-support",
+   "level": "class1",
+   "assumptions": "Fictional Ontario system responding to an adverse bacteriological result under Regulation 170/03.",
+   "configuration": "Scope: the analyst learning of the incident through the resample results being reported.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the adverse result details and the locations requiring resampling"
+    },
+    {
+     "id": "s2",
+     "label": "Prepare the sterile bottles and custody forms for the resampling run"
+    },
+    {
+     "id": "s3",
+     "label": "Brief the sampler on locations, residuals to record, and priority delivery"
+    },
+    {
+     "id": "s4",
+     "label": "Receive the resamples as priority and start analysis without queue delay"
+    },
+    {
+     "id": "s5",
+     "label": "Report the resample results to the system contact as soon as they are confirmed"
+    },
+    {
+     "id": "s6",
+     "label": "File all incident records, results, and notifications in the adverse file"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The analyst supports the incident end to end: resampling materials ready, priority analysis, immediate reporting of resample results, and a complete incident file."
+  },
+  {
+   "id": "wqa-process84",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the laboratory support steps after a boil water advisory is issued.",
+   "topicId": "process-boil-water-support",
+   "level": "class1",
+   "assumptions": "Fictional community under a boil water advisory following an adverse result.",
+   "configuration": "Scope: the advisory being issued through the laboratory role in lifting it.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Record the advisory details and the clearance criteria set by the health unit"
+    },
+    {
+     "id": "s2",
+     "label": "Schedule the clearance sampling locations and frequency with the system operator"
+    },
+    {
+     "id": "s3",
+     "label": "Analyze clearance samples as priority on each sampling day"
+    },
+    {
+     "id": "s4",
+     "label": "Report each clearance result to the operator and health unit contact promptly"
+    },
+    {
+     "id": "s5",
+     "label": "Confirm when the required consecutive satisfactory results are complete"
+    },
+    {
+     "id": "s6",
+     "label": "File the clearance record set with the original adverse file"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Laboratory support for an advisory is driven by the health unit clearance criteria, with priority analysis and prompt reporting until the required satisfactory results are complete."
+  },
+  {
+   "id": "wqa-process85",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the support steps when a chemical parameter exceeds the Ontario standard.",
+   "topicId": "process-chemical-exceedance-support",
+   "level": "class1",
+   "assumptions": "Fictional laboratory confirming a result above a Regulation 169/03 chemical standard.",
+   "configuration": "Scope: the first result above standard through the confirmation sampling outcome.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Verify the original result through data review and quality control records"
+    },
+    {
+     "id": "s2",
+     "label": "Analyze a retained portion or duplicate to confirm the result if the method allows"
+    },
+    {
+     "id": "s3",
+     "label": "Notify the client system contact with the confirmed exceedance details"
+    },
+    {
+     "id": "s4",
+     "label": "Arrange confirmation sampling at the location as the client directs"
+    },
+    {
+     "id": "s5",
+     "label": "Analyze the confirmation sample as priority and report it promptly"
+    },
+    {
+     "id": "s6",
+     "label": "File the exceedance, confirmation, and notification records together"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A chemical exceedance is verified and confirmed before notification where the method allows, then followed by priority confirmation sampling so decisions rest on solid data."
+  },
+  {
+   "id": "wqa-process86",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to activate the weekend adverse notification roster.",
+   "topicId": "process-adverse-weekend-roster",
+   "level": "class1",
+   "assumptions": "Fictional laboratory receiving an adverse result on a Saturday afternoon.",
+   "configuration": "Scope: the adverse result being confirmed Saturday through notifications completed.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the adverse result and identify the notifications required"
+    },
+    {
+     "id": "s2",
+     "label": "Contact the on call analyst or designate from the weekend roster"
+    },
+    {
+     "id": "s3",
+     "label": "Make the client and health unit telephone notifications from the roster contacts"
+    },
+    {
+     "id": "s4",
+     "label": "Record each notification time, recipient, and information given"
+    },
+    {
+     "id": "s5",
+     "label": "Send the written adverse notice by the method in the procedure"
+    },
+    {
+     "id": "s6",
+     "label": "Brief the Monday staff in writing on the incident status"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The weekend roster turns an out of hours adverse result into the same disciplined notifications, with a written Monday handover so the incident never depends on one person memory."
+  },
+  {
+   "id": "wqa-process87",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the stand down steps when resamples clear an adverse incident.",
+   "topicId": "process-resample-result-standdown",
+   "level": "class1",
+   "assumptions": "Fictional Ontario system whose resamples have all returned satisfactory.",
+   "configuration": "Scope: the final satisfactory resample result through closing the incident file.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm all required resample sets are complete and satisfactory"
+    },
+    {
+     "id": "s2",
+     "label": "Notify the system contact and the health unit of the complete results"
+    },
+    {
+     "id": "s3",
+     "label": "Confirm with the health unit whether any advisory can be lifted"
+    },
+    {
+     "id": "s4",
+     "label": "Provide the client with the full result set for their records"
+    },
+    {
+     "id": "s5",
+     "label": "Complete the incident summary with actions, results, and notifications"
+    },
+    {
+     "id": "s6",
+     "label": "Close and file the adverse incident record"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Stand down requires the complete satisfactory resample set, notification to the health unit, and a finished incident summary, so closure is documented rather than assumed."
+  },
+  {
+   "id": "wqa-process88",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to assemble the adverse incident record package.",
+   "topicId": "process-adverse-record-package",
+   "level": "class1",
+   "assumptions": "Fictional laboratory compiling the file for an adverse incident review.",
+   "configuration": "Scope: gathering the incident documents through the indexed package.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Collect the original result record and its quality control evidence"
+    },
+    {
+     "id": "s2",
+     "label": "Collect the notification records with dates, times, and recipients"
+    },
+    {
+     "id": "s3",
+     "label": "Collect the resampling custody forms and result records"
+    },
+    {
+     "id": "s4",
+     "label": "Collect the client and health unit correspondence for the incident"
+    },
+    {
+     "id": "s5",
+     "label": "Index the package in chronological order with a cover summary"
+    },
+    {
+     "id": "s6",
+     "label": "File the package and record its location for future reference"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The package is built chronologically from result, notifications, resampling, and correspondence, with a cover summary, so a reviewer can reconstruct the whole incident."
+  },
+  {
+   "id": "wqa-process89",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to update adverse notification contact lists.",
+   "topicId": "process-notification-contact-update",
+   "level": "class1",
+   "assumptions": "Fictional laboratory reviewing its notification contacts at the start of the year.",
+   "configuration": "Scope: starting the review through issuing the updated lists.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Collect the current contact lists for clients, health units, and ministry contacts"
+    },
+    {
+     "id": "s2",
+     "label": "Verify each telephone number and contact name with the organization"
+    },
+    {
+     "id": "s3",
+     "label": "Record personnel changes, new numbers, and after hours contacts"
+    },
+    {
+     "id": "s4",
+     "label": "Update the master notification list and the laboratory copy"
+    },
+    {
+     "id": "s5",
+     "label": "Distribute the updated lists to every location where notifications are made"
+    },
+    {
+     "id": "s6",
+     "label": "File the verification record and withdraw the superseded lists"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Notification lists are verified directly with each organization and old copies are withdrawn, because an adverse call to a wrong number is a failed notification."
+  },
+  {
+   "id": "wqa-process90",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to run an adverse notification practice drill.",
+   "topicId": "process-adverse-drill",
+   "level": "class1",
+   "assumptions": "Fictional laboratory testing its adverse response with a simulated result.",
+   "configuration": "Scope: planning the drill through filing the drill evaluation.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Prepare a simulated adverse result clearly marked as a drill scenario"
+    },
+    {
+     "id": "s2",
+     "label": "Deliver the scenario to the analyst on duty without prior notice of the timing"
+    },
+    {
+     "id": "s3",
+     "label": "Observe the analyst completing the notification steps using the drill contacts"
+    },
+    {
+     "id": "s4",
+     "label": "Record the time taken and any steps missed or delayed"
+    },
+    {
+     "id": "s5",
+     "label": "Review the performance with the analyst and identify improvements"
+    },
+    {
+     "id": "s6",
+     "label": "File the drill evaluation and assign any corrective actions"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A drill tests the real response path with a marked scenario and drill contacts, and its value is the timed evaluation and the improvements it assigns."
+  },
+  {
+   "id": "wqa-process91",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the laboratory chemical spill response steps for a small acid spill.",
+   "topicId": "process-chemical-spill-response-lab",
+   "level": "class1",
+   "assumptions": "Fictional laboratory with a small hydrochloric acid spill on a bench.",
+   "configuration": "Scope: the spill occurring through the area returning to use.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Alert nearby staff and keep people away from the spill area"
+    },
+    {
+     "id": "s2",
+     "label": "Put on the required protective equipment from the spill kit"
+    },
+    {
+     "id": "s3",
+     "label": "Contain the spill with absorbent pads working from the outside inward"
+    },
+    {
+     "id": "s4",
+     "label": "Neutralize and collect the contained residue as the spill procedure directs"
+    },
+    {
+     "id": "s5",
+     "label": "Place the collected waste in the labelled chemical waste container"
+    },
+    {
+     "id": "s6",
+     "label": "Report the spill, complete the incident record, and restock the spill kit"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Spill response protects people first, contains from the outside inward so the spill does not spread, and ends with reporting and a restocked kit."
+  },
+  {
+   "id": "wqa-process92",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the monthly fume hood performance check steps.",
+   "topicId": "process-fume-hood-check",
+   "level": "class1",
+   "assumptions": "Fictional laboratory checking the hood used for acid digestion.",
+   "configuration": "Scope: preparing for the check through recording the result.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Clear the hood work area and set the sash at the marked operating height"
+    },
+    {
+     "id": "s2",
+     "label": "Allow the hood ventilation to run until airflow is stable"
+    },
+    {
+     "id": "s3",
+     "label": "Measure the face velocity at the specified points across the sash opening"
+    },
+    {
+     "id": "s4",
+     "label": "Compare the average velocity with the laboratory acceptance range"
+    },
+    {
+     "id": "s5",
+     "label": "Record the measurements and the hood status on the check form"
+    },
+    {
+     "id": "s6",
+     "label": "Remove the hood from service and report it if the velocity fails the range"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The hood is checked at its real working sash height with the area set as used, and a failed velocity takes it out of service because containment cannot be assumed."
+  },
+  {
+   "id": "wqa-process93",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the chemical waste accumulation steps at the laboratory bench.",
+   "topicId": "process-chemical-waste-accumulation",
+   "level": "class1",
+   "assumptions": "Fictional laboratory filling a waste container with spent acid solutions.",
+   "configuration": "Scope: starting a new waste container through transferring a full one to storage.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Select the correct waste container and confirm it is compatible with the waste"
+    },
+    {
+     "id": "s2",
+     "label": "Label the container with the waste identity and the accumulation start date"
+    },
+    {
+     "id": "s3",
+     "label": "Add waste through a funnel, keeping the container closed between additions"
+    },
+    {
+     "id": "s4",
+     "label": "Stop filling at the marked maximum fill level"
+    },
+    {
+     "id": "s5",
+     "label": "Close the full container and move it to the designated waste storage area"
+    },
+    {
+     "id": "s6",
+     "label": "Record the container in the waste log and arrange pickup before its deadline"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Waste containers are labelled from the first addition, kept closed, and never overfilled, with the log ensuring pickup happens inside the accumulation deadline."
+  },
+  {
+   "id": "wqa-process94",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the end of day laboratory housekeeping steps.",
+   "topicId": "process-housekeeping-end-of-day",
+   "level": "class1",
+   "assumptions": "Fictional laboratory closing after a normal analysis day.",
+   "configuration": "Scope: the last analyses finishing through the laboratory secured for the night.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Return samples to their refrigerated storage locations and confirm temperatures"
+    },
+    {
+     "id": "s2",
+     "label": "Wipe down benches and place glassware in the washing area"
+    },
+    {
+     "id": "s3",
+     "label": "Check that gas, water, and equipment left running are set as required overnight"
+    },
+    {
+     "id": "s4",
+     "label": "Empty bench waste into the correct waste streams"
+    },
+    {
+     "id": "s5",
+     "label": "Record any issue for the morning staff in the handover note"
+    },
+    {
+     "id": "s6",
+     "label": "Turn off lights, lock the laboratory, and set the alarm as required"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Closing restores the laboratory to a known state: samples stored, benches clear, overnight equipment verified, and any issue handed over in writing."
+  },
+  {
+   "id": "wqa-process95",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the monthly personal protective equipment inspection steps.",
+   "topicId": "process-ppe-inspection",
+   "level": "class1",
+   "assumptions": "Fictional laboratory inspecting its shared protective equipment.",
+   "configuration": "Scope: gathering the equipment through returning it to service.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Gather gloves, eye protection, aprons, and respirator equipment for inspection"
+    },
+    {
+     "id": "s2",
+     "label": "Inspect each item for damage, contamination, or expiry"
+    },
+    {
+     "id": "s3",
+     "label": "Remove and tag any item that fails the inspection"
+    },
+    {
+     "id": "s4",
+     "label": "Replace the failed items from stock and record the replacements"
+    },
+    {
+     "id": "s5",
+     "label": "Clean and return the serviceable equipment to its storage locations"
+    },
+    {
+     "id": "s6",
+     "label": "File the inspection record with the items checked and actions taken"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Inspection removes failed equipment from service immediately and replaces it, so the record shows protection was verified, not assumed."
+  },
+  {
+   "id": "wqa-process96",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the training sequence for a newly hired laboratory analyst.",
+   "topicId": "process-new-analyst-training",
+   "level": "class1",
+   "assumptions": "Fictional laboratory training an analyst who will work toward the Water Quality Analyst certificate under Regulation 128/04.",
+   "configuration": "Scope: the analyst first day through supervised routine work.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Complete laboratory safety orientation and read the safety procedures"
+    },
+    {
+     "id": "s2",
+     "label": "Read the standard operating procedures for the assigned methods"
+    },
+    {
+     "id": "s3",
+     "label": "Observe a trained analyst performing each assigned method"
+    },
+    {
+     "id": "s4",
+     "label": "Perform the method under direct supervision with results checked"
+    },
+    {
+     "id": "s5",
+     "label": "Complete the initial demonstration of capability for each method"
+    },
+    {
+     "id": "s6",
+     "label": "Begin routine work with results reviewed until competency is signed off"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Competency is built in order: safety and procedures first, then observation, supervised practice, a formal capability demonstration, and reviewed routine work."
+  },
+  {
+   "id": "wqa-process97",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the initial demonstration of capability steps for a bench method.",
+   "topicId": "process-demonstration-of-capability",
+   "level": "class1",
+   "assumptions": "Fictional analyst qualifying on a chemistry method for the first time.",
+   "configuration": "Scope: preparing the capability samples through the qualification decision.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Prepare or obtain the capability samples of known concentration for the method"
+    },
+    {
+     "id": "s2",
+     "label": "Have the analyst analyze the samples without assistance on a normal batch"
+    },
+    {
+     "id": "s3",
+     "label": "Calculate the analyst results and compare them with the known values"
+    },
+    {
+     "id": "s4",
+     "label": "Confirm accuracy and precision meet the method qualification criteria"
+    },
+    {
+     "id": "s5",
+     "label": "Record the demonstration with samples, results, and reviewer signature"
+    },
+    {
+     "id": "s6",
+     "label": "Authorize the analyst for independent work on that method or assign more training"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The demonstration uses known samples analyzed unaided, judged against set criteria, and ends in a signed authorization or a clear decision for more training."
+  },
+  {
+   "id": "wqa-process98",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the annual competency review steps for a certified analyst.",
+   "topicId": "process-analyst-annual-competency",
+   "level": "class1",
+   "assumptions": "Fictional laboratory completing the yearly review for its analysts.",
+   "configuration": "Scope: gathering the analyst records through the signed review.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Gather the analyst proficiency results, quality records, and training file"
+    },
+    {
+     "id": "s2",
+     "label": "Review the analyst results on control charts and duplicate performance"
+    },
+    {
+     "id": "s3",
+     "label": "Check that required refresher training and procedure updates were completed"
+    },
+    {
+     "id": "s4",
+     "label": "Discuss performance and any development goals with the analyst"
+    },
+    {
+     "id": "s5",
+     "label": "Record the review outcome and any assigned training with dates"
+    },
+    {
+     "id": "s6",
+     "label": "File the signed review in the analyst training record"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The annual review is evidence based, drawing on proficiency and quality performance, and it produces dated training actions rather than a general impression."
+  },
+  {
+   "id": "wqa-process99",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the training steps when a revised procedure is issued.",
+   "topicId": "process-sop-training-update",
+   "level": "class1",
+   "assumptions": "Fictional laboratory issuing a revised titration procedure.",
+   "configuration": "Scope: the revision being approved through analysts working to the new version.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Issue the revised procedure with the changes summarized for staff"
+    },
+    {
+     "id": "s2",
+     "label": "Brief all analysts who use the procedure on the changes"
+    },
+    {
+     "id": "s3",
+     "label": "Have each analyst read the revision and sign the training acknowledgement"
+    },
+    {
+     "id": "s4",
+     "label": "Observe the first use of the revised steps where the change affects technique"
+    },
+    {
+     "id": "s5",
+     "label": "Withdraw and archive the superseded procedure copies"
+    },
+    {
+     "id": "s6",
+     "label": "Record the completed training in each analyst training file"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A revision only takes effect when affected analysts are briefed, acknowledge the new version, and old copies are withdrawn so no one works from superseded steps."
+  },
+  {
+   "id": "wqa-evidence01",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A method blank in a metals batch reads 0.08 mg/L for lead while all drinking water samples in the batch read below 0.01 mg/L.",
+   "topicId": "lab-quality-control",
+   "level": "class1",
+   "assumptions": "Fictional Ontario drinking water laboratory case under Regulation 169/03 and Regulation 170/03. All results are from the stated batch unless noted, and archived laboratory records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "The method blank was prepared with reagent water and a new bottle from lot B-214 and carried through the full digestion."
+    },
+    {
+     "id": "ev2",
+     "label": "A second blank prepared in an older bottle from lot B-198 reads below detection for lead."
+    },
+    {
+     "id": "ev3",
+     "label": "A blank prepared with reagent water in a lot B-214 bottle but without digestion also reads 0.07 mg/L for lead."
+    },
+    {
+     "id": "ev4",
+     "label": "The calibration check standard recovers at 99 percent and the instrument blank of plain acid reads below detection."
+    },
+    {
+     "id": "ev5",
+     "label": "Samples collected in lot B-198 bottles all read below 0.01 mg/L for lead."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Lead is leaching from the new bottle lot B-214 into blanks and would bias results high"
+     },
+     {
+      "id": "inf-b",
+      "label": "The samples truly contain no lead and the blank result is an instrument drift artifact"
+     },
+     {
+      "id": "inf-c",
+      "label": "The digestion acid is contaminated with lead"
+     },
+     {
+      "id": "inf-d",
+      "label": "The calibration standard was prepared too low, inflating the blank"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Only lot B-214 blanks are elevated, including one that skipped digestion, while lot B-198 blanks, the plain acid blank, and the check standard are clean. That isolates the bottle lot, not the acid, instrument, or calibration."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the bottle lot as the source?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Quarantine and lot acceptance records for bottle lot B-214, including a leach test on unused bottles"
+     },
+     {
+      "id": "nc-b",
+      "label": "Instrument maintenance log for the metals analyser"
+     },
+     {
+      "id": "nc-c",
+      "label": "Field sampling schedule for the week"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "A leach test on unused lot B-214 bottles directly tests whether the bottles themselves release lead."
+   },
+   "clueText": {
+    "nc-a": "Unused lot B-214 bottles leached 0.06 to 0.09 mg/L lead into reagent water, while lot B-198 bottles leached none, confirming the lot.",
+    "nc-b": "The analyser log shows routine service only, with no fault that would affect one bottle lot.",
+    "nc-c": "The schedule shows normal sampling times and says nothing about bottle materials."
+   }
+  },
+  {
+   "id": "wqa-evidence02",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Every field blank in a weekly microbiology run grows total coliform, while the matching distribution samples are all absent.",
+   "topicId": "microbiological-analysis",
+   "level": "class1",
+   "assumptions": "Fictional Ontario drinking water laboratory case under Regulation 169/03 and Regulation 170/03. All results are from the stated batch unless noted, and archived laboratory records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Field blanks were sterile water poured into sample bottles at each site and handled like samples."
+    },
+    {
+     "id": "ev2",
+     "label": "The laboratory method blank of sterile water opened only in the lab is absent for total coliform."
+    },
+    {
+     "id": "ev3",
+     "label": "All field blanks used bottles from sterile lot S-88; distribution samples used lot S-87 bottles."
+    },
+    {
+     "id": "ev4",
+     "label": "A field blank repeated in a lot S-87 bottle at the same site is absent for total coliform."
+    },
+    {
+     "id": "ev5",
+     "label": "Incubator temperature records and media sterility checks are within limits."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The lot S-88 sample bottles were not sterile and contaminated the field blanks"
+     },
+     {
+      "id": "inf-b",
+      "label": "The distribution system water is contaminated at every site"
+     },
+     {
+      "id": "inf-c",
+      "label": "The incubator temperature caused false growth in all bottles"
+     },
+     {
+      "id": "inf-d",
+      "label": "The analyst contaminated every bottle during plating"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Field blanks fail only in lot S-88 bottles, the lab blank is clean, and a repeat blank in a lot S-87 bottle is clean. Distribution samples in lot S-87 are absent, so system contamination, incubator fault, and analyst handling do not fit."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the bottle sterility failure?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Supplier sterility certificate and lab sterility check results for lot S-88"
+     },
+     {
+      "id": "nc-b",
+      "label": "Distribution pressure records for the sampling day"
+     },
+     {
+      "id": "nc-c",
+      "label": "Incubator calibration certificate"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "The sterility check on lot S-88 directly tests whether that lot was sterile on receipt."
+   },
+   "clueText": {
+    "nc-a": "The lab sterility check found growth in 3 of 10 unopened lot S-88 bottles, and the supplier certificate was for a different lot, confirming the failure.",
+    "nc-b": "Pressures were normal all day, which does not explain growth only in one bottle lot.",
+    "nc-c": "The incubator certificate is current, matching the in-limit temperature records."
+   }
+  },
+  {
+   "id": "wqa-evidence03",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A reagent blank for nitrate reads 1.4 mg/L as N in one batch, and low level samples in the same batch all read about 1 mg/L higher than their duplicates run the next day.",
+   "topicId": "lab-quality-control",
+   "level": "class1",
+   "assumptions": "Fictional Ontario drinking water laboratory case under Regulation 169/03 and Regulation 170/03. All results are from the stated batch unless noted, and archived laboratory records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "The suspect batch used a freshly opened bottle of colour reagent from lot R-41."
+    },
+    {
+     "id": "ev2",
+     "label": "The next day duplicates used colour reagent from lot R-40 and a fresh reagent blank that read below 0.1 mg/L."
+    },
+    {
+     "id": "ev3",
+     "label": "A reagent blank made with lot R-41 reagent in a clean tube still reads 1.3 mg/L as N."
+    },
+    {
+     "id": "ev4",
+     "label": "The spectrophotometer zero and calibration check with lot R-40 reagent are within limits."
+    },
+    {
+     "id": "ev5",
+     "label": "No samples in either batch were preserved or stored differently."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Colour reagent lot R-41 is contaminated with nitrate and biased the first batch high"
+     },
+     {
+      "id": "inf-b",
+      "label": "The samples degraded overnight and lost nitrate before the duplicate run"
+     },
+     {
+      "id": "inf-c",
+      "label": "The spectrophotometer drifted high for one day only"
+     },
+     {
+      "id": "inf-d",
+      "label": "The first analyst misread the sample volumes"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "The high blank follows lot R-41 even in a clean tube, while lot R-40 blanks and checks are clean and duplicates drop by the blank amount. Degradation would not raise a reagent blank, and drift is cleared by the passing checks."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the reagent lot problem?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Reagent lot acceptance log and blank results by reagent lot for the past month"
+     },
+     {
+      "id": "nc-b",
+      "label": "Sample refrigerator temperature log"
+     },
+     {
+      "id": "nc-c",
+      "label": "Analyst training file"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Blank results grouped by reagent lot show whether high blanks track lot R-41 only."
+   },
+   "clueText": {
+    "nc-a": "The log shows every lot R-41 blank above 1.2 mg/L and every lot R-40 blank below 0.1 mg/L over the month, confirming the lot.",
+    "nc-b": "Refrigerator temperatures were in range, which does not explain a reagent blank prepared fresh.",
+    "nc-c": "The training file shows current certification, which does not track reagent lots."
+   }
+  },
+  {
+   "id": "wqa-evidence04",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A trip blank for volatile organics detects chloroform at 12 ug/L, while all well samples in the cooler are below detection.",
+   "topicId": "sample-preservation",
+   "level": "class1",
+   "assumptions": "Fictional Ontario drinking water laboratory case under Regulation 169/03 and Regulation 170/03. All results are from the stated batch unless noted, and archived laboratory records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "The trip blank travelled unopened in the same cooler as the well samples."
+    },
+    {
+     "id": "ev2",
+     "label": "A laboratory storage blank kept in the lab refrigerator reads below detection for chloroform."
+    },
+    {
+     "id": "ev3",
+     "label": "The cooler also carried a leaking bottle of chloroform containing laboratory solvent in a separate unsealed bag."
+    },
+    {
+     "id": "ev4",
+     "label": "A second trip blank in a different cooler without the solvent bag reads below detection."
+    },
+    {
+     "id": "ev5",
+     "label": "All vials were sealed with no headspace and holding times were met."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Chloroform vapour from the leaking solvent bottle contaminated the trip blank in transit"
+     },
+     {
+      "id": "inf-b",
+      "label": "The wells are contaminated with chloroform that the samples failed to show"
+     },
+     {
+      "id": "inf-c",
+      "label": "The laboratory refrigerator contaminated all blanks"
+     },
+     {
+      "id": "inf-d",
+      "label": "The vials lost chloroform from the samples by volatilization"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Only the blank sharing a cooler with the leaking solvent is positive, while the lab blank and the blank in the clean cooler are negative and the well samples are negative. That points to transit vapour exposure, not the wells or the lab."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the transit contamination route?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Cooler packing and chain of custody notes plus the solvent bottle inspection record"
+     },
+     {
+      "id": "nc-b",
+      "label": "Well pumping records for the sampling day"
+     },
+     {
+      "id": "nc-c",
+      "label": "Laboratory refrigerator temperature log"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Packing notes and the bottle inspection show whether solvent and blanks shared an unsealed cooler space."
+   },
+   "clueText": {
+    "nc-a": "Notes confirm the solvent bottle cap was cracked and packed unsealed in the same cooler, and the bottle lost volume in transit.",
+    "nc-b": "Pumping records were normal and cannot explain a positive unopened blank.",
+    "nc-c": "Refrigerator temperatures were in range and the storage blank was clean."
+   }
+  },
+  {
+   "id": "wqa-evidence05",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Method blanks for fluoride read 0.4 mg/L on Monday only, and Monday samples near the 1.5 mg/L standard all need review.",
+   "topicId": "lab-quality-control",
+   "level": "class1",
+   "assumptions": "Fictional Ontario drinking water laboratory case under Regulation 169/03 and Regulation 170/03. All results are from the stated batch unless noted, and archived laboratory records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Monday blanks used deionized water from carboy C-2; Tuesday blanks from carboy C-1 read below 0.05 mg/L."
+    },
+    {
+     "id": "ev2",
+     "label": "A blank of bottled certified reagent water analysed Monday reads below 0.05 mg/L."
+    },
+    {
+     "id": "ev3",
+     "label": "Carboy C-2 was refilled Friday from a resin system whose service light was on."
+    },
+    {
+     "id": "ev4",
+     "label": "The fluoride electrode calibration slope and check standard were within limits on both days."
+    },
+    {
+     "id": "ev5",
+     "label": "Monday and Tuesday samples were analysed on the same electrode with the same buffers."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The deionized water in carboy C-2 was contaminated with fluoride and raised Monday blanks"
+     },
+     {
+      "id": "inf-b",
+      "label": "The electrode drifted on Monday and recovered on Tuesday"
+     },
+     {
+      "id": "inf-c",
+      "label": "The buffers were contaminated on Monday only"
+     },
+     {
+      "id": "inf-d",
+      "label": "Monday samples truly rose by 0.4 mg/L across the system"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Monday blanks are high only when made with carboy C-2 water, certified water blanks are clean, and electrode checks pass both days. The shared buffers and electrode clear drift and buffer causes, leaving the carboy water."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the carboy contamination?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Deionized water system service log and resistivity records for carboy C-2"
+     },
+     {
+      "id": "nc-b",
+      "label": "Electrode purchase invoice"
+     },
+     {
+      "id": "nc-c",
+      "label": "Sample login schedule"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Service and resistivity records show whether the resin system feeding carboy C-2 had failed."
+   },
+   "clueText": {
+    "nc-a": "Resistivity for C-2 fell well below specification after the Friday refill and the resin was past its service date, confirming poor water quality.",
+    "nc-b": "The invoice only dates the electrode purchase and says nothing about water quality.",
+    "nc-c": "The login schedule shows normal receipt times on both days."
+   }
+  },
+  {
+   "id": "wqa-evidence06",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Total coliform is detected in a laboratory blank that was opened beside a strongly positive raw water sample during setup.",
+   "topicId": "microbiological-analysis",
+   "level": "class1",
+   "assumptions": "Fictional Ontario drinking water laboratory case under Regulation 169/03 and Regulation 170/03. All results are from the stated batch unless noted, and archived laboratory records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "The blank was sterile water in a sealed bottle opened on the same bench at the same time as the raw water sample."
+    },
+    {
+     "id": "ev2",
+     "label": "A second blank opened later in a separate clean area is absent for total coliform."
+    },
+    {
+     "id": "ev3",
+     "label": "The raw water sample beside the blank reads too numerous to count for total coliform."
+    },
+    {
+     "id": "ev4",
+     "label": "Media sterility plates from the same lot show no growth."
+    },
+    {
+     "id": "ev5",
+     "label": "A blank carried through the full method without being opened beside the raw sample is absent."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Aerosol or splash carryover from the high count raw sample contaminated the open blank during setup"
+     },
+     {
+      "id": "inf-b",
+      "label": "The sterile water supply itself is contaminated"
+     },
+     {
+      "id": "inf-c",
+      "label": "The media lot is contaminated"
+     },
+     {
+      "id": "inf-d",
+      "label": "The incubator is contaminated and grows coliform on all plates"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Only the blank opened beside the very high count raw sample is positive, while sealed method blanks, the clean area blank, and media sterility plates are clean. That fits local carryover during setup, not the water, media, or incubator."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the setup carryover?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Bench setup log and repeat blank results after separating raw and blank handling"
+     },
+     {
+      "id": "nc-b",
+      "label": "Media supplier invoice"
+     },
+     {
+      "id": "nc-c",
+      "label": "Incubator door seal inspection"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Repeat blanks run after separating raw and blank handling test whether the practice change removes the positives."
+   },
+   "clueText": {
+    "nc-a": "After raw and blank handling were separated, 20 consecutive blanks were absent, confirming setup carryover as the cause.",
+    "nc-b": "The invoice confirms media delivery only and does not address bench practice.",
+    "nc-c": "The door seal was intact, matching the clean sterility plates."
+   }
+  },
+  {
+   "id": "wqa-evidence07",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A new lot of sample bottles gives low chlorine residuals in every sample preserved for bench chlorine checks compared with field readings.",
+   "topicId": "bench-chemistry",
+   "level": "class1",
+   "assumptions": "Fictional Ontario drinking water laboratory case under Regulation 169/03 and Regulation 170/03. All results are from the stated batch unless noted, and archived laboratory records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Field free chlorine at collection averages 0.80 mg/L; lab results on the new bottles average 0.30 mg/L for split samples."
+    },
+    {
+     "id": "ev2",
+     "label": "Splits collected in the previous bottle lot match field readings within 0.05 mg/L."
+    },
+    {
+     "id": "ev3",
+     "label": "The new bottles were not rinsed with sample and carry a visible white residue."
+    },
+    {
+     "id": "ev4",
+     "label": "A chlorine demand test shows the residue consumes 0.5 mg/L chlorine in reagent water."
+    },
+    {
+     "id": "ev5",
+     "label": "Holding time and temperature for both lots were the same and within limits."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Residue in the new bottle lot exerts chlorine demand and lowers residuals before analysis"
+     },
+     {
+      "id": "inf-b",
+      "label": "The field chlorine meter reads high"
+     },
+     {
+      "id": "inf-c",
+      "label": "Chlorine decayed naturally during a longer holding time for the new lot"
+     },
+     {
+      "id": "inf-d",
+      "label": "The laboratory DPD reagent has expired"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Splits in the old lot match the field meter, holding times are equal, and the residue alone consumes 0.5 mg/L in reagent water. That isolates bottle residue demand, not the meter, decay time, or reagent."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the bottle residue problem?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Bottle lot washing and acceptance test results for the new lot"
+     },
+     {
+      "id": "nc-b",
+      "label": "Field meter calibration log"
+     },
+     {
+      "id": "nc-c",
+      "label": "DPD reagent expiry list"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Acceptance testing of the new lot measures chlorine demand of unused bottles directly."
+   },
+   "clueText": {
+    "nc-a": "Unused new lot bottles consumed 0.45 to 0.55 mg/L chlorine in demand free water, while the old lot consumed under 0.05 mg/L.",
+    "nc-b": "The field meter log shows passing checks, matching the old lot split agreement.",
+    "nc-c": "The DPD reagent is in date, and old lot splits using it matched the field."
+   }
+  },
+  {
+   "id": "wqa-evidence08",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Blanks for total phosphorus read high only in batches digested in the older block digester, not in the new digester.",
+   "topicId": "lab-quality-control",
+   "level": "class1",
+   "assumptions": "Fictional Ontario drinking water laboratory case under Regulation 169/03 and Regulation 170/03. All results are from the stated batch unless noted, and archived laboratory records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Both digesters use the same reagents, tubes from one lot, and the same analyst on the same day."
+    },
+    {
+     "id": "ev2",
+     "label": "Blanks digested in the old block read 0.06 mg/L; blanks in the new block read below 0.01 mg/L."
+    },
+    {
+     "id": "ev3",
+     "label": "The old block wells show heavy scale and residue when inspected with a light."
+    },
+    {
+     "id": "ev4",
+     "label": "A blank digested in the old block in a brand new tube still reads 0.05 mg/L."
+    },
+    {
+     "id": "ev5",
+     "label": "Calibration and check standards that are not digested read correctly."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Residue in the old digester wells contaminates tubes during digestion"
+     },
+     {
+      "id": "inf-b",
+      "label": "The reagent lot is contaminated with phosphorus"
+     },
+     {
+      "id": "inf-c",
+      "label": "The tube lot is contaminated"
+     },
+     {
+      "id": "inf-d",
+      "label": "The colorimeter calibration has drifted"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "The same reagents and tubes give clean blanks in the new block and high blanks in the old block, and new tubes still pick up phosphorus in the old block. Shared reagents and tubes and passing undigested checks clear the other options."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms digester well contamination?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Digester cleaning log and blank results before and after a deep clean of the old block"
+     },
+     {
+      "id": "nc-b",
+      "label": "Reagent delivery record"
+     },
+     {
+      "id": "nc-c",
+      "label": "Colorimeter lamp replacement record"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Blanks before and after cleaning the old block test whether removing well residue removes the contamination."
+   },
+   "clueText": {
+    "nc-a": "After a deep clean, old block blanks fell below 0.01 mg/L for five batches, confirming well residue as the source.",
+    "nc-b": "The delivery record shows one reagent lot used in both blocks, so it cannot explain the difference.",
+    "nc-c": "The lamp record is routine and checks passed without digestion."
+   }
+  },
+  {
+   "id": "wqa-evidence09",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "E. coli is reported in a method blank, and the same batch has one distribution sample positive that cannot be confirmed on resampling.",
+   "topicId": "microbiological-analysis",
+   "level": "class1",
+   "assumptions": "Fictional Ontario drinking water laboratory case under Regulation 169/03 and Regulation 170/03. All results are from the stated batch unless noted, and archived laboratory records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "The blank and the positive sample were filtered on the same manifold positions in sequence."
+    },
+    {
+     "id": "ev2",
+     "label": "The manifold was disinfected between samples on other runs but the disinfection step was skipped in this run, per the bench sheet."
+    },
+    {
+     "id": "ev3",
+     "label": "A blank filtered first in a later run with disinfection between positions is absent."
+    },
+    {
+     "id": "ev4",
+     "label": "Source water and other distribution samples in the batch are absent for E. coli."
+    },
+    {
+     "id": "ev5",
+     "label": "Media lot sterility and incubator checks pass."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Cross contamination on the shared manifold from a prior positive sample caused the blank and sample positives"
+     },
+     {
+      "id": "inf-b",
+      "label": "The distribution system had a genuine E. coli event at one site only"
+     },
+     {
+      "id": "inf-c",
+      "label": "The media lot grows E. coli without any sample"
+     },
+     {
+      "id": "inf-d",
+      "label": "The incubator temperature created false E. coli colonies"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "The skipped disinfection step, positives following sequence on one manifold, and clean blanks when disinfection is done point to manifold carryover. Media and incubator checks pass, and a genuine single site event would not explain the blank."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms manifold carryover?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Manifold disinfection log and ordered filtration sequence for the batch"
+     },
+     {
+      "id": "nc-b",
+      "label": "Distribution main break records"
+     },
+     {
+      "id": "nc-c",
+      "label": "Media lot sterility certificate"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "The sequence and disinfection log show whether positives followed a positive sample without disinfection."
+   },
+   "clueText": {
+    "nc-a": "The log shows the blank and sample were filtered immediately after a known positive with no disinfection recorded, confirming the carryover path.",
+    "nc-b": "No main breaks were recorded that week, and a break would not contaminate a lab blank.",
+    "nc-c": "The sterility certificate is clean, matching the passing media checks."
+   }
+  },
+  {
+   "id": "wqa-evidence10",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A batch blank for turbidity reads 0.45 NTU while treated water samples read 0.06 to 0.10 NTU, reversing the usual pattern.",
+   "topicId": "turbidity-chlorine",
+   "level": "class1",
+   "assumptions": "Fictional Ontario drinking water laboratory case under Regulation 169/03 and Regulation 170/03. All results are from the stated batch unless noted, and archived laboratory records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "The blank was reagent water poured into a sample cell that had been used for a raw water sample and only rinsed once."
+    },
+    {
+     "id": "ev2",
+     "label": "The same reagent water in a dedicated clean cell reads 0.03 NTU."
+    },
+    {
+     "id": "ev3",
+     "label": "The turbidimeter zero with a sealed standard cell is within limits."
+    },
+    {
+     "id": "ev4",
+     "label": "Raw water that day read 18 NTU and left visible film on cells."
+    },
+    {
+     "id": "ev5",
+     "label": "A second blank in the clean cell after the batch also reads 0.04 NTU."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The sample cell carried over raw water film and raised the blank reading"
+     },
+     {
+      "id": "inf-b",
+      "label": "The reagent water supply became turbid"
+     },
+     {
+      "id": "inf-c",
+      "label": "The turbidimeter lamp drifted during the batch"
+     },
+     {
+      "id": "inf-d",
+      "label": "The treated water samples were diluted before reading"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "The same reagent water reads low in a clean cell and high in the once rinsed raw water cell, and the instrument zero passes. That is cell carryover, not the water supply, lamp, or sample dilution."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms cell carryover?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Cell cleaning log and blank readings by cell identifier for the batch"
+     },
+     {
+      "id": "nc-b",
+      "label": "Reagent water system log"
+     },
+     {
+      "id": "nc-c",
+      "label": "Lamp hour meter reading"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Blank readings grouped by cell show whether high blanks follow one cell only."
+   },
+   "clueText": {
+    "nc-a": "All blanks above 0.3 NTU used cell 4, the raw water cell, and all clean cell blanks were below 0.05 NTU, confirming carryover.",
+    "nc-b": "The water system log shows normal resistivity, matching the clean cell results.",
+    "nc-c": "Lamp hours are within life and the zero check passed."
+   }
+  },
+  {
+   "id": "wqa-evidence100",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A laboratory audit finds calibration records for a turbidimeter signed as complete for a week when the instrument was out of service awaiting a lamp.",
+   "topicId": "lab-quality-control",
+   "level": "class1",
+   "assumptions": "Fictional Ontario drinking water laboratory case under Regulation 169/03 and Regulation 170/03. All results are from the stated batch unless noted, and archived laboratory records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "The maintenance log shows the turbidimeter tagged out all week with no lamp installed."
+    },
+    {
+     "id": "ev2",
+     "label": "Calibration signatures for that week exist in the record book with passing values."
+    },
+    {
+     "id": "ev3",
+     "label": "No turbidity results were reported from that instrument that week; a backup meter was used and its records are genuine."
+    },
+    {
+     "id": "ev4",
+     "label": "The backup meter calibration records are separate and verifiable."
+    },
+    {
+     "id": "ev5",
+     "label": "The signer was on duty that week, per the roster."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Calibration records were signed for work that could not have been performed on the out of service instrument"
+     },
+     {
+      "id": "inf-b",
+      "label": "The maintenance log dates are wrong and the instrument was in service"
+     },
+     {
+      "id": "inf-c",
+      "label": "The backup meter records were mistaken for the main meter records"
+     },
+     {
+      "id": "inf-d",
+      "label": "Passing values prove the calibrations truly occurred"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "The instrument was physically incapable of calibration without a lamp, maintenance tagging is documented, and genuine backup records exist separately. Signed passing values cannot prove work on a tagged out instrument, and the records are not the backup's, which are separate."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the false records?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Maintenance tag out log and calibration record book for the turbidimeter"
+     },
+     {
+      "id": "nc-b",
+      "label": "Backup meter calibration file alone"
+     },
+     {
+      "id": "nc-c",
+      "label": "Lamp delivery invoice alone"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Tag out status against signed calibrations is the direct contradiction."
+   },
+   "clueText": {
+    "nc-a": "The log shows a continuous tag out with lamp removal, while the book shows daily passing calibrations, confirming records for work not performed.",
+    "nc-b": "Backup records are genuine and separate, so they do not explain the main meter book.",
+    "nc-c": "The invoice dates the lamp arrival after the signed week, supporting the tag out."
+   }
+  },
+  {
+   "id": "wqa-evidence11",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Preserved metals blanks from one sampler show copper at 0.20 mg/L while blanks from three other samplers are below detection.",
+   "topicId": "sample-preservation",
+   "level": "class1",
+   "assumptions": "Fictional Ontario drinking water laboratory case under Regulation 169/03 and Regulation 170/03. All results are from the stated batch unless noted, and archived laboratory records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "All blanks used the same acid lot, bottle lot, and reagent water."
+    },
+    {
+     "id": "ev2",
+     "label": "The one sampler used a brass fitting on the sampling tap manifold; the others used stainless fittings."
+    },
+    {
+     "id": "ev3",
+     "label": "A blank drawn through a stainless fitting at the same site reads below detection for copper."
+    },
+    {
+     "id": "ev4",
+     "label": "Laboratory blanks that never left the lab read below detection."
+    },
+    {
+     "id": "ev5",
+     "label": "The instrument calibration and check standards pass."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The brass fitting leached copper into that sampler's blanks during collection"
+     },
+     {
+      "id": "inf-b",
+      "label": "The acid preservative is contaminated with copper"
+     },
+     {
+      "id": "inf-c",
+      "label": "The laboratory instrument has a copper memory effect"
+     },
+     {
+      "id": "inf-d",
+      "label": "All sites sampled by that sampler have high copper in the water"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Only the brass fitting sampler is affected, shared acid, bottles, and water are clean in lab blanks, and a stainless fitting blank at the same site is clean. That isolates the brass fitting, not the acid, instrument, or sites."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the fitting as the source?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Sampling equipment log identifying fitting materials by sampler, with paired blank results"
+     },
+     {
+      "id": "nc-b",
+      "label": "Acid supplier certificate"
+     },
+     {
+      "id": "nc-c",
+      "label": "Instrument tune report"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Paired blanks by fitting material directly compare brass and stainless collection paths."
+   },
+   "clueText": {
+    "nc-a": "Paired results show brass path blanks at 0.18 to 0.22 mg/L copper and stainless path blanks below detection at the same sites.",
+    "nc-b": "The acid certificate is for the shared lot that gave clean lab blanks.",
+    "nc-c": "The tune report passed, matching the passing check standards."
+   }
+  },
+  {
+   "id": "wqa-evidence12",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A sterility blank for a new autoclave load of bottles fails, and all samples in those bottles are held for review.",
+   "topicId": "lab-safety",
+   "level": "class1",
+   "assumptions": "Fictional Ontario drinking water laboratory case under Regulation 169/03 and Regulation 170/03. All results are from the stated batch unless noted, and archived laboratory records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "The autoclave printout for the load shows the temperature reached only 110 C for 5 minutes instead of 121 C for 15 minutes."
+    },
+    {
+     "id": "ev2",
+     "label": "Bottles from the previous autoclave load pass their sterility blank."
+    },
+    {
+     "id": "ev3",
+     "label": "The chemical indicator tape on the failed load did not change to the full sterilized colour."
+    },
+    {
+     "id": "ev4",
+     "label": "Media and incubator checks for the batch pass."
+    },
+    {
+     "id": "ev5",
+     "label": "No samples had been opened before the sterility result was known."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The autoclave cycle failed to sterilize the bottle load"
+     },
+     {
+      "id": "inf-b",
+      "label": "The sterility blank water was contaminated before autoclaving"
+     },
+     {
+      "id": "inf-c",
+      "label": "The incubator contaminated the sterility blank"
+     },
+     {
+      "id": "inf-d",
+      "label": "The indicator tape lot is defective"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "The printout shows a short, low temperature cycle, the tape agrees it did not sterilize, and the previous load passed. Incubator and media checks pass, so the failure is the autoclave cycle itself."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the autoclave failure?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Autoclave cycle printouts and maintenance log for the sterilizer"
+     },
+     {
+      "id": "nc-b",
+      "label": "Incubator temperature chart"
+     },
+     {
+      "id": "nc-c",
+      "label": "Bottle supplier packing list"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Cycle printouts over time show whether the sterilizer repeatedly fails to reach temperature."
+   },
+   "clueText": {
+    "nc-a": "Printouts show three recent cycles peaking below 115 C and maintenance found a faulty steam trap, confirming sterilizer failure.",
+    "nc-b": "The incubator chart is in range, matching the passing batch checks.",
+    "nc-c": "The packing list only confirms bottle counts delivered."
+   }
+  },
+  {
+   "id": "wqa-evidence13",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Chlorine bench results drift low through the day, reading 0.10 mg/L below the field meter by afternoon while morning splits agreed.",
+   "topicId": "calibration-standards",
+   "level": "class1",
+   "assumptions": "Fictional Ontario drinking water laboratory case under Regulation 169/03 and Regulation 170/03. All results are from the stated batch unless noted, and archived laboratory records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Morning calibration with a fresh standard gives a passing slope and a check standard within 2 percent."
+    },
+    {
+     "id": "ev2",
+     "label": "The working chlorine standard bottle was left uncapped on the bench in bright light all day."
+    },
+    {
+     "id": "ev3",
+     "label": "A check standard made fresh at 3 pm reads correctly, while the bench bottle standard reads 12 percent low."
+    },
+    {
+     "id": "ev4",
+     "label": "The DPD reagent lot and sample cells are unchanged and a reagent blank is clean."
+    },
+    {
+     "id": "ev5",
+     "label": "Field meter checks with its own fresh standard pass in the afternoon."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The working standard degraded in light and air during the day, biasing afternoon calibration low"
+     },
+     {
+      "id": "inf-b",
+      "label": "The bench colorimeter lamp is failing"
+     },
+     {
+      "id": "inf-c",
+      "label": "The field meter drifted high in the afternoon"
+     },
+     {
+      "id": "inf-d",
+      "label": "Afternoon samples truly lost chlorine in the bottles"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Fresh standard reads correctly in the afternoon while the exposed bench bottle reads low, and the field meter passes its own checks. That is standard degradation, not lamp failure, field drift, or sample loss."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms standard degradation?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Standard preparation and storage log showing bench exposure time for the working standard"
+     },
+     {
+      "id": "nc-b",
+      "label": "Colorimeter lamp replacement history"
+     },
+     {
+      "id": "nc-c",
+      "label": "Field meter battery log"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "The preparation and storage log shows how long the working standard sat exposed before the low readings."
+   },
+   "clueText": {
+    "nc-a": "The log shows the bottle was prepared at 7 am and left uncapped in light for 8 hours, beyond the validated in use limit of 2 hours capped in the dark.",
+    "nc-b": "Lamp history is routine and fresh standard checks pass on the same lamp.",
+    "nc-c": "Battery records do not explain a low bench standard with a passing field meter."
+   }
+  },
+  {
+   "id": "wqa-evidence14",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Alkalinity titrations in one week all read about 10 percent high compared with the certified reference sample run each day.",
+   "topicId": "calibration-standards",
+   "level": "class1",
+   "assumptions": "Fictional Ontario drinking water laboratory case under Regulation 169/03 and Regulation 170/03. All results are from the stated batch unless noted, and archived laboratory records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "The certified reference sample has an assigned value of 100 mg/L as CaCO3 and reads 110 to 112 mg/L all week."
+    },
+    {
+     "id": "ev2",
+     "label": "The acid titrant was standardized at the start of the month and its factor on the bottle is 1.00."
+    },
+    {
+     "id": "ev3",
+     "label": "Restandardizing the titrant today gives a true factor of 0.91, meaning it is weaker than labelled."
+    },
+    {
+     "id": "ev4",
+     "label": "A second analyst using a freshly standardized titrant reads the reference at 101 mg/L."
+    },
+    {
+     "id": "ev5",
+     "label": "Burette readings, endpoint colour, and sample volumes were checked and are correct."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The titrant weakened after standardization, so using factor 1.00 overstates alkalinity by about 10 percent"
+     },
+     {
+      "id": "inf-b",
+      "label": "The certified reference sample has degraded and its value rose"
+     },
+     {
+      "id": "inf-c",
+      "label": "Both analysts overshoot the endpoint by the same amount"
+     },
+     {
+      "id": "inf-d",
+      "label": "The samples gained alkalinity during storage that week"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Restandardization shows the titrant factor is 0.91, a fresh titrant reads the reference correctly, and technique checks pass. A degraded reference would not be fixed by fresh titrant, and shared endpoint error is cleared by the checks."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the titrant strength change?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Titrant standardization log and acid storage record for the month"
+     },
+     {
+      "id": "nc-b",
+      "label": "Reference sample certificate"
+     },
+     {
+      "id": "nc-c",
+      "label": "Sample storage temperature log"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "The standardization history shows when the factor was last verified and how the acid was stored."
+   },
+   "clueText": {
+    "nc-a": "The log shows no restandardization for 34 days and the acid carboy stored beside a heat source, matching the weakened factor found today.",
+    "nc-b": "The certificate confirms the assigned value that the fresh titrant reproduced.",
+    "nc-c": "Storage temperatures were in range and would not raise a daily reference sample."
+   }
+  },
+  {
+   "id": "wqa-evidence15",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A pH meter passes its 7 buffer check but reads sample duplicates 0.4 units apart, and a 4 buffer check reads 4.5.",
+   "topicId": "calibration-standards",
+   "level": "class1",
+   "assumptions": "Fictional Ontario drinking water laboratory case under Regulation 169/03 and Regulation 170/03. All results are from the stated batch unless noted, and archived laboratory records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "The meter was calibrated with pH 7 and pH 4 buffers at the start of the shift."
+    },
+    {
+     "id": "ev2",
+     "label": "The displayed slope is 82 percent, below the acceptance range of 95 to 105 percent noted on the bench sheet."
+    },
+    {
+     "id": "ev3",
+     "label": "A second electrode on the same meter gives a slope of 99 percent and duplicate samples within 0.05 units."
+    },
+    {
+     "id": "ev4",
+     "label": "Buffers are in date, at room temperature, and a fresh 4 buffer reads the same on the first electrode."
+    },
+    {
+     "id": "ev5",
+     "label": "Samples are well mixed and measured at the same temperature."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The first pH electrode has a failing slope and cannot measure away from the calibration point reliably"
+     },
+     {
+      "id": "inf-b",
+      "label": "The pH 4 buffer is contaminated"
+     },
+     {
+      "id": "inf-c",
+      "label": "The meter electronics have failed"
+     },
+     {
+      "id": "inf-d",
+      "label": "The samples are inhomogeneous and change pH between duplicates"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Slope is 82 percent, fresh buffer does not fix it, and a second electrode on the same meter performs normally. That isolates the first electrode, not the buffer, meter, or samples."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms electrode failure?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Electrode slope history and maintenance log for the first electrode"
+     },
+     {
+      "id": "nc-b",
+      "label": "Buffer purchase records"
+     },
+     {
+      "id": "nc-c",
+      "label": "Meter warranty document"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Slope history shows whether the electrode has been declining toward failure."
+   },
+   "clueText": {
+    "nc-a": "Slope fell from 98 percent to 82 percent over six weeks with repeated junction cleaning noted, confirming progressive electrode failure.",
+    "nc-b": "Buffer purchases are current, matching the in date buffers that a good electrode reads correctly.",
+    "nc-c": "Warranty status does not explain a second electrode working on the same meter."
+   }
+  },
+  {
+   "id": "wqa-evidence16",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Hardness results for a control sample read 15 percent low for two days after a new EDTA titrant bottle was opened.",
+   "topicId": "calibration-standards",
+   "level": "class1",
+   "assumptions": "Fictional Ontario drinking water laboratory case under Regulation 169/03 and Regulation 170/03. All results are from the stated batch unless noted, and archived laboratory records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "The control sample assigned value is 200 mg/L as CaCO3; results are 168 to 172 mg/L."
+    },
+    {
+     "id": "ev2",
+     "label": "The new EDTA bottle label concentration was copied from the order sheet without a standardization titration."
+    },
+    {
+     "id": "ev3",
+     "label": "Standardizing the new EDTA today shows it is 15 percent stronger than its label value."
+    },
+    {
+     "id": "ev4",
+     "label": "The previous EDTA bottle, restandardized as a check, matches its label within 1 percent and reads the control at 199 mg/L."
+    },
+    {
+     "id": "ev5",
+     "label": "Indicator, buffer, and sample volumes are unchanged and verified."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The new EDTA is stronger than labelled, so less volume is used and calculated hardness reads low"
+     },
+     {
+      "id": "inf-b",
+      "label": "The control sample has softened during storage"
+     },
+     {
+      "id": "inf-c",
+      "label": "The indicator endpoint is being missed early by both analysts"
+     },
+     {
+      "id": "inf-d",
+      "label": "Hardness was removed from samples by the bottle caps"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Standardization proves the new titrant is 15 percent strong, the old titrant reads the control correctly, and technique is verified. Storage or endpoint errors would not track the titrant change and standardization result."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the labelling error?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Titrant receipt and standardization records for the new EDTA lot"
+     },
+     {
+      "id": "nc-b",
+      "label": "Control sample storage log"
+     },
+     {
+      "id": "nc-c",
+      "label": "Analyst endpoint training record"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Receipt and standardization records show whether the label value was ever verified for this lot."
+   },
+   "clueText": {
+    "nc-a": "Records show the lot was placed in service on its order sheet value with no standardization, and the first standardization found it 15 percent strong.",
+    "nc-b": "Storage was in range, and the old titrant read the same control correctly.",
+    "nc-c": "Training is current and the old titrant results clear endpoint technique."
+   }
+  },
+  {
+   "id": "wqa-evidence17",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Turbidity readings on a bench meter creep upward by 0.05 NTU per hour during a long batch, while sealed standard checks stay stable.",
+   "topicId": "turbidity-chlorine",
+   "level": "class1",
+   "assumptions": "Fictional Ontario drinking water laboratory case under Regulation 169/03 and Regulation 170/03. All results are from the stated batch unless noted, and archived laboratory records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Sealed 0.10 NTU and 10 NTU standards read correctly at the start and end of the batch."
+    },
+    {
+     "id": "ev2",
+     "label": "Sample cells develop visible condensation on the outside during the batch in the cool laboratory."
+    },
+    {
+     "id": "ev3",
+     "label": "Wiping and equilibrating a cell to room temperature drops its sample reading by 0.18 NTU."
+    },
+    {
+     "id": "ev4",
+     "label": "The same sample in a dry, equilibrated cell reads 0.07 NTU, matching a second meter."
+    },
+    {
+     "id": "ev5",
+     "label": "No reagent is used in the turbidity method and the lamp check passes."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Condensation on cold sample cells scatters light and raises turbidity readings as the batch proceeds"
+     },
+     {
+      "id": "inf-b",
+      "label": "The meter calibration is drifting upward"
+     },
+     {
+      "id": "inf-c",
+      "label": "The samples are gaining turbidity while waiting"
+     },
+     {
+      "id": "inf-d",
+      "label": "The sealed standards have degraded to hide the drift"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Sealed standards stay correct, so calibration is stable, while drying and equilibrating the cell removes the excess and a second meter agrees. That is cell condensation, not drift or sample change."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the condensation cause?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Laboratory temperature and sample storage log plus cell handling notes for the batch"
+     },
+     {
+      "id": "nc-b",
+      "label": "Meter calibration certificate"
+     },
+     {
+      "id": "nc-c",
+      "label": "Standard supplier certificate"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Temperature records show whether cold samples entered a warmer room and fogged the cells."
+   },
+   "clueText": {
+    "nc-a": "Samples were stored at 6 C and read in a 23 C room, and notes record fogged cells that cleared after equilibration, confirming condensation.",
+    "nc-b": "The calibration certificate is current, matching the stable sealed standard checks.",
+    "nc-c": "Standard certificates agree with the stable sealed readings."
+   }
+  },
+  {
+   "id": "wqa-evidence18",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A fluoride calibration curve passes, but sample results spiked with a known addition recover only 60 percent in high hardness water.",
+   "topicId": "bench-chemistry",
+   "level": "class1",
+   "assumptions": "Fictional Ontario drinking water laboratory case under Regulation 169/03 and Regulation 170/03. All results are from the stated batch unless noted, and archived laboratory records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "The spike adds 0.50 mg/L fluoride; measured increase is only 0.30 mg/L in the hard sample."
+    },
+    {
+     "id": "ev2",
+     "label": "The same spike in reagent water recovers 99 percent."
+    },
+    {
+     "id": "ev3",
+     "label": "The hard sample was analysed without the total ionic strength buffer that the method requires."
+    },
+    {
+     "id": "ev4",
+     "label": "Repeating the hard sample with buffer added gives 98 percent spike recovery."
+    },
+    {
+     "id": "ev5",
+     "label": "Electrode slope and calibration checks pass throughout."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Omitting the ionic strength buffer let hardness ions interfere and suppress the fluoride response"
+     },
+     {
+      "id": "inf-b",
+      "label": "The electrode is failing and reads all spikes low"
+     },
+     {
+      "id": "inf-c",
+      "label": "The spike standard is weaker than labelled"
+     },
+     {
+      "id": "inf-d",
+      "label": "The hard sample originally contained no fluoride to recover"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Recovery is full in reagent water and full in the same hard sample once buffer is added, while the electrode passes checks. That is matrix interference from the missing buffer, not the electrode or spike standard."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the buffer omission?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Bench sheet reagent checklist and buffer dispensing log for the batch"
+     },
+     {
+      "id": "nc-b",
+      "label": "Electrode slope log"
+     },
+     {
+      "id": "nc-c",
+      "label": "Spike standard certificate"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "The checklist and dispensing log show whether buffer was added to that batch at all."
+   },
+   "clueText": {
+    "nc-a": "The checklist buffer box is unchecked and the dispensing log shows no buffer drawn for the batch, confirming the omission.",
+    "nc-b": "The slope log passes, matching the full recovery in reagent water.",
+    "nc-c": "The spike certificate agrees with the 99 percent recovery in clean water."
+   }
+  },
+  {
+   "id": "wqa-evidence19",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Conductivity results for a standard read correctly at 1413 uS/cm but a diluted check at 147 uS/cm reads 20 percent high after a cell change.",
+   "topicId": "calibration-standards",
+   "level": "class1",
+   "assumptions": "Fictional Ontario drinking water laboratory case under Regulation 169/03 and Regulation 170/03. All results are from the stated batch unless noted, and archived laboratory records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "The meter was calibrated at one point, 1413 uS/cm, after the new cell was installed."
+    },
+    {
+     "id": "ev2",
+     "label": "The new cell constant entered in the meter is 1.0, while the cell certificate states 0.1 for low range work."
+    },
+    {
+     "id": "ev3",
+     "label": "Re-entering the certified constant and recalibrating gives 148 uS/cm for the low check."
+    },
+    {
+     "id": "ev4",
+     "label": "Temperature compensation is on and both standards are at 25 C."
+    },
+    {
+     "id": "ev5",
+     "label": "The standards are in date and read correctly on a second meter with its own cell."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The wrong cell constant was entered after the cell change, biasing low range results"
+     },
+     {
+      "id": "inf-b",
+      "label": "The low standard has concentrated by evaporation"
+     },
+     {
+      "id": "inf-c",
+      "label": "Temperature compensation has failed"
+     },
+     {
+      "id": "inf-d",
+      "label": "The second meter is the one reading incorrectly"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "The entered constant disagrees with the certificate, correcting it fixes the low check, and the standards read correctly elsewhere at controlled temperature. That isolates the cell constant entry, not the standard, compensation, or second meter."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the constant error?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Cell installation record and meter setup printout from the change date"
+     },
+     {
+      "id": "nc-b",
+      "label": "Standard evaporation study"
+     },
+     {
+      "id": "nc-c",
+      "label": "Temperature bath log"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "The setup printout preserves the constant value entered at installation."
+   },
+   "clueText": {
+    "nc-a": "The printout shows constant 1.0 entered on the change date against a certificate value of 0.1 in the installation record, confirming the entry error.",
+    "nc-b": "No evaporation is indicated, and the standard reads correctly on the second meter.",
+    "nc-c": "The bath log holds 25 C, matching the controlled checks."
+   }
+  }
+ ],
+ "missions": [
+  {
+   "id": "wqa-mission61",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 61: The Process Conductivity Measurement Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-process40",
+     "revision": "r1",
+     "occurrenceId": "m61-t1"
+    },
+    {
+     "taskId": "wqa-evidence01",
+     "revision": "r1",
+     "occurrenceId": "m61-t2"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission62",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 62: The Microbiological Analysis Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-evidence02",
+     "revision": "r1",
+     "occurrenceId": "m62-t1"
+    },
+    {
+     "taskId": "wqa-process41",
+     "revision": "r1",
+     "occurrenceId": "m62-t2"
+    },
+    {
+     "taskId": "wqa-process42",
+     "revision": "r1",
+     "occurrenceId": "m62-t3"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission63",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 63: The Process Icp Batch Setup Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-process43",
+     "revision": "r1",
+     "occurrenceId": "m63-t1"
+    },
+    {
+     "taskId": "wqa-evidence03",
+     "revision": "r1",
+     "occurrenceId": "m63-t2"
+    },
+    {
+     "taskId": "wqa-process44",
+     "revision": "r1",
+     "occurrenceId": "m63-t3"
+    },
+    {
+     "taskId": "wqa-process45",
+     "revision": "r1",
+     "occurrenceId": "m63-t4"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission64",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 64: The Sample Preservation Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-evidence04",
+     "revision": "r1",
+     "occurrenceId": "m64-t1"
+    },
+    {
+     "taskId": "wqa-process46",
+     "revision": "r1",
+     "occurrenceId": "m64-t2"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission65",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 65: The Process Reagent Preparation Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-process47",
+     "revision": "r1",
+     "occurrenceId": "m65-t1"
+    },
+    {
+     "taskId": "wqa-evidence05",
+     "revision": "r1",
+     "occurrenceId": "m65-t2"
+    },
+    {
+     "taskId": "wqa-process48",
+     "revision": "r1",
+     "occurrenceId": "m65-t3"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission66",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 66: The Microbiological Analysis Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-evidence06",
+     "revision": "r1",
+     "occurrenceId": "m66-t1"
+    },
+    {
+     "taskId": "wqa-process49",
+     "revision": "r1",
+     "occurrenceId": "m66-t2"
+    },
+    {
+     "taskId": "wqa-process50",
+     "revision": "r1",
+     "occurrenceId": "m66-t3"
+    },
+    {
+     "taskId": "wqa-process51",
+     "revision": "r1",
+     "occurrenceId": "m66-t4"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission67",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 67: The Process Blank Investigation Start Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-process52",
+     "revision": "r1",
+     "occurrenceId": "m67-t1"
+    },
+    {
+     "taskId": "wqa-evidence07",
+     "revision": "r1",
+     "occurrenceId": "m67-t2"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission68",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 68: The Lab Quality Control Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-evidence08",
+     "revision": "r1",
+     "occurrenceId": "m68-t1"
+    },
+    {
+     "taskId": "wqa-process53",
+     "revision": "r1",
+     "occurrenceId": "m68-t2"
+    },
+    {
+     "taskId": "wqa-process54",
+     "revision": "r1",
+     "occurrenceId": "m68-t3"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission69",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 69: The Process Proficiency Sample Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-process55",
+     "revision": "r1",
+     "occurrenceId": "m69-t1"
+    },
+    {
+     "taskId": "wqa-evidence09",
+     "revision": "r1",
+     "occurrenceId": "m69-t2"
+    },
+    {
+     "taskId": "wqa-process56",
+     "revision": "r1",
+     "occurrenceId": "m69-t3"
+    },
+    {
+     "taskId": "wqa-process57",
+     "revision": "r1",
+     "occurrenceId": "m69-t4"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission70",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 70: The Turbidity Chlorine Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-evidence10",
+     "revision": "r1",
+     "occurrenceId": "m70-t1"
+    },
+    {
+     "taskId": "wqa-process58",
+     "revision": "r1",
+     "occurrenceId": "m70-t2"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission71",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 71: The Process Qc Trend Review Meeting Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-process59",
+     "revision": "r1",
+     "occurrenceId": "m71-t1"
+    },
+    {
+     "taskId": "wqa-evidence100",
+     "revision": "r1",
+     "occurrenceId": "m71-t2"
+    },
+    {
+     "taskId": "wqa-process60",
+     "revision": "r1",
+     "occurrenceId": "m71-t3"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission72",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 72: The Sample Preservation Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-evidence11",
+     "revision": "r1",
+     "occurrenceId": "m72-t1"
+    },
+    {
+     "taskId": "wqa-process61",
+     "revision": "r1",
+     "occurrenceId": "m72-t2"
+    },
+    {
+     "taskId": "wqa-process62",
+     "revision": "r1",
+     "occurrenceId": "m72-t3"
+    },
+    {
+     "taskId": "wqa-process63",
+     "revision": "r1",
+     "occurrenceId": "m72-t4"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission73",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 73: The Process Rerun Decision Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-process64",
+     "revision": "r1",
+     "occurrenceId": "m73-t1"
+    },
+    {
+     "taskId": "wqa-evidence12",
+     "revision": "r1",
+     "occurrenceId": "m73-t2"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission74",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 74: The Calibration Standards Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-evidence13",
+     "revision": "r1",
+     "occurrenceId": "m74-t1"
+    },
+    {
+     "taskId": "wqa-process65",
+     "revision": "r1",
+     "occurrenceId": "m74-t2"
+    },
+    {
+     "taskId": "wqa-process66",
+     "revision": "r1",
+     "occurrenceId": "m74-t3"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission75",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 75: The Process Duplicate Failure Investigation Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-process67",
+     "revision": "r1",
+     "occurrenceId": "m75-t1"
+    },
+    {
+     "taskId": "wqa-evidence14",
+     "revision": "r1",
+     "occurrenceId": "m75-t2"
+    },
+    {
+     "taskId": "wqa-process68",
+     "revision": "r1",
+     "occurrenceId": "m75-t3"
+    },
+    {
+     "taskId": "wqa-process69",
+     "revision": "r1",
+     "occurrenceId": "m75-t4"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission76",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 76: The Calibration Standards Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-evidence15",
+     "revision": "r1",
+     "occurrenceId": "m76-t1"
+    },
+    {
+     "taskId": "wqa-process70",
+     "revision": "r1",
+     "occurrenceId": "m76-t2"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission77",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 77: The Process Qc Failure Client Notification Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-process71",
+     "revision": "r1",
+     "occurrenceId": "m77-t1"
+    },
+    {
+     "taskId": "wqa-evidence16",
+     "revision": "r1",
+     "occurrenceId": "m77-t2"
+    },
+    {
+     "taskId": "wqa-process72",
+     "revision": "r1",
+     "occurrenceId": "m77-t3"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission78",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 78: The Turbidity Chlorine Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-evidence17",
+     "revision": "r1",
+     "occurrenceId": "m78-t1"
+    },
+    {
+     "taskId": "wqa-process73",
+     "revision": "r1",
+     "occurrenceId": "m78-t2"
+    },
+    {
+     "taskId": "wqa-process74",
+     "revision": "r1",
+     "occurrenceId": "m78-t3"
+    },
+    {
+     "taskId": "wqa-process75",
+     "revision": "r1",
+     "occurrenceId": "m78-t4"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission79",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 79: The Process Adverse Result Reporting Lab Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-process76",
+     "revision": "r1",
+     "occurrenceId": "m79-t1"
+    },
+    {
+     "taskId": "wqa-evidence18",
+     "revision": "r1",
+     "occurrenceId": "m79-t2"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission80",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 80: The Calibration Standards Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-evidence19",
+     "revision": "r1",
+     "occurrenceId": "m80-t1"
+    },
+    {
+     "taskId": "wqa-process77",
+     "revision": "r1",
+     "occurrenceId": "m80-t2"
+    },
+    {
+     "taskId": "wqa-process78",
+     "revision": "r1",
+     "occurrenceId": "m80-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Laboratory analysis, sampling and water quality chapters"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "bd21d921ce76eed67259b193fbe65067ee04abc11c3144b8cc2e8b33c48b357b",
+  "taskReceipts": [
+   {
+    "taskId": "wqa-process40",
+    "revision": "r1",
+    "sha256": "fd4d10092d6b8b972c5346f5a561106214742981087db3789cf020a06c906fb0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process41",
+    "revision": "r1",
+    "sha256": "7c62cadc9be7cf327c9a3246f3085345b846393080d176434f4952655ba4648f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process42",
+    "revision": "r1",
+    "sha256": "6c3fcaf6a81deed5b93b9e24b950af2da316a4f393f22daf5547dce14c361ef1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process43",
+    "revision": "r1",
+    "sha256": "9e4b6bc43665135942b788c579e32644e2dcb57b214473df72a7de9d84e63d65",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process44",
+    "revision": "r1",
+    "sha256": "26a13de6b024ef98584740ddacd29633b3070528d437c9ccfbf0f80ec04d2b9e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process45",
+    "revision": "r1",
+    "sha256": "a572d506686253dd05167e0735ba85b3f742edea52c1b2e4463b7d2c6d4a4a41",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process46",
+    "revision": "r1",
+    "sha256": "6de9f08a09b696a5b42a5a60e3d9eee73b847d31aec3ea5589d50f575837ccf3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process47",
+    "revision": "r1",
+    "sha256": "b7bc71556a010bca8795b653a0d8937388520147124b222ec52184aa88a48a8d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process48",
+    "revision": "r1",
+    "sha256": "27763c6e967e05e6c329bb9ad04b9fba3bf1d019798f03a32e854377b2a4646f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process49",
+    "revision": "r1",
+    "sha256": "fa77bf2148e86aad71cca0b534aea6e135483ab15b31848548576321fc45586a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process50",
+    "revision": "r1",
+    "sha256": "72291d77cf54973d33315c653d69c8a494dcc593e8f2b7e1297bc6b1c2d7a74e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process51",
+    "revision": "r1",
+    "sha256": "e4eb04e7721564bffd9324b9ee2b17f0e4fbf6a8493a07846a378a3ad0396945",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process52",
+    "revision": "r1",
+    "sha256": "df52b10ab904bdee377afa8d4a0154eb11ad9552322951ead15d5acb50a97adf",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process53",
+    "revision": "r1",
+    "sha256": "e91735bf100b0089920955ec5d46d73fba322acb5292cd21330cf24c9171bc3c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process54",
+    "revision": "r1",
+    "sha256": "756fcf9d366f78a296e24b0c82afce1dad64acd4c8db9bd65761a4fe87dd4a4b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process55",
+    "revision": "r1",
+    "sha256": "a771662cc316dfe604b3fe0981320ccd4332e27b50626bb445793d53d1f61397",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process56",
+    "revision": "r1",
+    "sha256": "76a2783941eb8d8eeb5b3ee065d7732e09e29fc30ac33a61ae77513c516a7ae7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process57",
+    "revision": "r1",
+    "sha256": "a15b9e427f3b317cd8cd57eac75dfd46eced5e286b74ced1af9b3885e794bdb2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process58",
+    "revision": "r1",
+    "sha256": "177d6612fe0a8bf42411288a07aebdf9991c79776f4a66ffcd6bed2ff44340d6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process59",
+    "revision": "r1",
+    "sha256": "5590edbae6ea45b2db21849d6a373641e56b816ac90e124e43b1c0a5aac709cc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process60",
+    "revision": "r1",
+    "sha256": "5facee8572ffdcdc295a05cb7ffbe6fc14997216e7564847836a379e101d3522",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process61",
+    "revision": "r1",
+    "sha256": "18c5a0d13bd02904debb77af13a2417a4c2e4e6679abd2e833eb7bbaa006b0eb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process62",
+    "revision": "r1",
+    "sha256": "9ece178d4614e9e27593e52a9511dd7b5c23974f6d081b3078320956e70bf5c1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process63",
+    "revision": "r1",
+    "sha256": "04c378060cc70915076e13eec2d210a9f9a088371cce647109f55c189e1dd1c5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process64",
+    "revision": "r1",
+    "sha256": "e695e0c43f597872f17c0cf8d94af26dccbda1fedb57f7c29e36927e578ef75b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process65",
+    "revision": "r1",
+    "sha256": "65863447912cc074be935b3f2aeba1a24737d8ecdbc60a52b48d901caf4b74d9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process66",
+    "revision": "r1",
+    "sha256": "88e0bb3a806bb890b5148022b86a08972a5327f408daf112a72793bbcbc49df2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process67",
+    "revision": "r1",
+    "sha256": "e48b8a7bc9856fe1e82388fcb71901b0fde32781b3e4c724bfcf569b7e297a26",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process68",
+    "revision": "r1",
+    "sha256": "f12681fba638c07fd812abf035baf607b1612b918a906a30a657611339bedf84",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process69",
+    "revision": "r1",
+    "sha256": "af007f9fd8df9dd2bd7d5a4abaca81a46e0eefcdb97289cca30f284cbc15c6b8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process70",
+    "revision": "r1",
+    "sha256": "42d61dae75b61d098410b487363606129451f3e0b263d87dfcd227d7f12d155b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process71",
+    "revision": "r1",
+    "sha256": "840a8a924c25010ca28acfea10de1ac69a47679d5ad87f8dd663865191736f26",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process72",
+    "revision": "r1",
+    "sha256": "c30fa3adb532a55f85e769a105a92006ffd0070bc7aeff6eb2b82becd557931b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process73",
+    "revision": "r1",
+    "sha256": "22e94ea6c3c69f7777fa75a6b86e637c84b91dec2bcb6a1c299be6ecbc6f3e3e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process74",
+    "revision": "r1",
+    "sha256": "840de8c7c62ad29621c4a0e79f98e004e41488b40c480ad09c284882b8a5f572",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process75",
+    "revision": "r1",
+    "sha256": "a91bc94bf1cc5c75405b10b6b65a0651a2e461867361fd5e238cfcb91fe6359d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process76",
+    "revision": "r1",
+    "sha256": "7a7d7ecaf6b93d1b24a8d4687ef2cef62dec22a421dbd1fdf78c1bf36e51c8a0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process77",
+    "revision": "r1",
+    "sha256": "af967662d3d829577d5cd1d05c6b19d6a94d03c7f4fd7d7b490acdb8936c3659",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process78",
+    "revision": "r1",
+    "sha256": "9f10d20ac5b44c10f730eeb5e63d9d4e00d0577e48ae47f449d2aa7c17f6a82e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process79",
+    "revision": "r1",
+    "sha256": "b7bdc0981346909bfd5d2d81ddbb6336de71c382056eca902455839c26305590",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process80",
+    "revision": "r1",
+    "sha256": "c903b3e2924efd9c5def1fb5c44b088fcd861a5f375ed8eb972787f051d88306",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process81",
+    "revision": "r1",
+    "sha256": "c5c6106eb6fcdd96ece6630bd43ee4176b1ef875c4d8df10bb0d08c3ab70e82f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process82",
+    "revision": "r1",
+    "sha256": "3b95424cc126f674ad4b28d906842dbeddd9b4f47e62735de8d26b827029d9bc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process83",
+    "revision": "r1",
+    "sha256": "f38690efec373fed8ae43e3744c071c3ad035038dcbbb27acda98493074b1d2f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process84",
+    "revision": "r1",
+    "sha256": "c0540a8e5cb63af50a3b241ca9323ea9205da887fa6b2cc4c18a26f6dc5b63e2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process85",
+    "revision": "r1",
+    "sha256": "dea8c24986314ae74fd9704541faab4d3a58438316f52cb6cdccfa7bd5561d72",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process86",
+    "revision": "r1",
+    "sha256": "0415dfadc867c6a806cbb0a645e9711938add676800e231d7694f44593f3dffb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process87",
+    "revision": "r1",
+    "sha256": "d317f821ffa8b9abb5d72a426c69318fdcd31b5f538761b1868a46c5d0a77012",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process88",
+    "revision": "r1",
+    "sha256": "65200a658d2911fab2574190bf0a457a18141ad5fd9362f7ad71a3498bb1f806",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process89",
+    "revision": "r1",
+    "sha256": "aef9efbad0c5d417ba31ddb7c585bbf3a0f6b66dac2f347df4e52a1d21477e24",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process90",
+    "revision": "r1",
+    "sha256": "1cc997bacf839bf483a643c41eb77f66b98e78dd1ce5790cf037bc12c54c3e67",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process91",
+    "revision": "r1",
+    "sha256": "edcdbf7641e55423a968d09723647944170f3900f6d4ce7746e91e361dbbaf06",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process92",
+    "revision": "r1",
+    "sha256": "3df03599f22d9934f6703a8d1a4b0b053d8b7640731839cad03093121d6da47c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process93",
+    "revision": "r1",
+    "sha256": "221b4d029336f9be64452c6c0cee1f61c0b560fd70150b5043489c44096366c4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process94",
+    "revision": "r1",
+    "sha256": "48a07cbd826a7aa7701d75d081b293903aaf9f9ea931904eb1c81e39d39b61ce",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process95",
+    "revision": "r1",
+    "sha256": "9c42f8a5a2f447f6bc4a5d3f8e7e1775acb4e162ee915281ebaf2692821854a5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process96",
+    "revision": "r1",
+    "sha256": "8334201e90547d9e3e3279b574e015a089d6abf0319c8d09cf5d00cedd2beec0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process97",
+    "revision": "r1",
+    "sha256": "3795ef09f918b9604ae0fceda9b4bf3458f94ad0a39ca4c2233b92efc21577a3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process98",
+    "revision": "r1",
+    "sha256": "954614e9ff4189b9c3da7d4591b14996289a1850cbff1b80cfc7084167570eef",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process99",
+    "revision": "r1",
+    "sha256": "c1c3bad1052fad8a178de3806ca59925d8ec569f5c8f2895db4517aaabebfaba",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-evidence01",
+    "revision": "r1",
+    "sha256": "c97a3bc512c09ad07e569f9fd33d5dc6ed0cbd8ede19d5fdf6cbbd8087e803f3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-evidence02",
+    "revision": "r1",
+    "sha256": "e9b20fdab1c37809b4aa70e986b81c31be3d4660c60706c29c6aa20cfff0b4f4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-evidence03",
+    "revision": "r1",
+    "sha256": "d045b58480e1ec72c833f9047e979bf9d848f73f62862333d5c7e26fae6f5077",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-evidence04",
+    "revision": "r1",
+    "sha256": "c088996558e62156dd77e5b92fce2a44beb33f8be75233b698201f6fd7f05ec7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-evidence05",
+    "revision": "r1",
+    "sha256": "8936303614021589864bcf7d708be6455a9ca267ec763c2d579ac2262f1282de",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-evidence06",
+    "revision": "r1",
+    "sha256": "85994d423dcc46f93116f16c46c09edf6029062121e76d672a85ff80ae19b190",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-evidence07",
+    "revision": "r1",
+    "sha256": "c0b2b585fc0908a69773c23b90ef30b488d9cece25151242fd8ad2413fea82a5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-evidence08",
+    "revision": "r1",
+    "sha256": "56a11a344af4374c56eaba3b39eaaa8fee837a05189fecc94c566557de8c5c2e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-evidence09",
+    "revision": "r1",
+    "sha256": "a3b33b2ba93e643de36ff8c296ff0abdb4651cd19448569811ec2f415c318468",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-evidence10",
+    "revision": "r1",
+    "sha256": "196ac62468a6049cfa6c7df620f6ae8aa195b58c50ac2bfc5898ae3b82b2f1e4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-evidence100",
+    "revision": "r1",
+    "sha256": "c5f647fb10be745e5dd6c589e628df73441b85fd57c02231abbbf5b3d0958e1d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-evidence11",
+    "revision": "r1",
+    "sha256": "8e5df525f77cb2e3e1319b28fc616d0d8006e72f0cbc5a0eca48d2ccd8dd784b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-evidence12",
+    "revision": "r1",
+    "sha256": "1352528f244e668adc48b08bd0da11721d32fae9d76dfbc705f8581d206c65e9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-evidence13",
+    "revision": "r1",
+    "sha256": "1639782b06bfe03fbbc7b4b628177f28895e7ffe85334f3f1cd23107803c23a7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-evidence14",
+    "revision": "r1",
+    "sha256": "133cb89cca0ca3cd774af471a9fd1e741e3b7c7f12d438e271fa8ffc2fd68ab0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-evidence15",
+    "revision": "r1",
+    "sha256": "43f1f91872c020542d96809fa92a6a93eac753957ac1128062bb078f46cfca0a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-evidence16",
+    "revision": "r1",
+    "sha256": "14406d5c52058ada814b4ee4f4b59f23b58f672bd30831b2297aa4edb661d94f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-evidence17",
+    "revision": "r1",
+    "sha256": "dd480853bb457d0d2eec46a03b626c0a8469ab6b47a2d49e6af51a4452515ee2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-evidence18",
+    "revision": "r1",
+    "sha256": "f6c72ebd4f92ad3438e3a2b19a0163542f9d4c8e85f23db9f3687025e2b8dbf8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-evidence19",
+    "revision": "r1",
+    "sha256": "2ce1d04ef29d5f420fb21dfffb3bdfa8a49a77d916f226564dc4a24d860562a3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "wqa-mission61",
+    "revision": "r1",
+    "sha256": "9729d6b2303f292678c0320c278d6ea5bfc797e122c776e64ec100f847d60335"
+   },
+   {
+    "missionId": "wqa-mission62",
+    "revision": "r1",
+    "sha256": "c591e2928aca31b49d785bfe0e02b009571bd40f94e9335890323c7f5ad78d5a"
+   },
+   {
+    "missionId": "wqa-mission63",
+    "revision": "r1",
+    "sha256": "0a45c5acfe45501df17bdd64d45cf15d51b8b7471b87d3190c51c79aac864860"
+   },
+   {
+    "missionId": "wqa-mission64",
+    "revision": "r1",
+    "sha256": "0d5a36857fd4c67118f1ff31f4b06ef782c3453eaa618f8b1281af7b66aa1043"
+   },
+   {
+    "missionId": "wqa-mission65",
+    "revision": "r1",
+    "sha256": "34e94ac359e45858bed38fffa152a58ebdee9e49bd789bf5f49f1992fa86724f"
+   },
+   {
+    "missionId": "wqa-mission66",
+    "revision": "r1",
+    "sha256": "d0f5af354b1e1567150d0c54d292b3a4c9c0493b1dd1f59df6f7515162c2658a"
+   },
+   {
+    "missionId": "wqa-mission67",
+    "revision": "r1",
+    "sha256": "f94c15193f6c5918b51600c00ab2834aab58b9b555094c6f5ca795fe4c0e71ba"
+   },
+   {
+    "missionId": "wqa-mission68",
+    "revision": "r1",
+    "sha256": "bee6056f77226b8fd1aabf2ec51dafc13982c2d6fb84c80c3ef32b62ce46c699"
+   },
+   {
+    "missionId": "wqa-mission69",
+    "revision": "r1",
+    "sha256": "f667f37c201167252223d50e1f56a418cbdf27b64989df6a553be221f51c96b5"
+   },
+   {
+    "missionId": "wqa-mission70",
+    "revision": "r1",
+    "sha256": "88d551031aadeb0f2ea5d1bde7d0be2c3d9d40ca89f5b3f97427555619bdad1f"
+   },
+   {
+    "missionId": "wqa-mission71",
+    "revision": "r1",
+    "sha256": "d20cbd2bf52fc195c6b8c96b1b4206917890be4aff09a625c0f74d44b0b414ce"
+   },
+   {
+    "missionId": "wqa-mission72",
+    "revision": "r1",
+    "sha256": "0dcf5060e50b5d059cfe2a24fbb6a5ef6061648d218442ffdb7cea21b12ab9e9"
+   },
+   {
+    "missionId": "wqa-mission73",
+    "revision": "r1",
+    "sha256": "c20083a0c2c82dc9646a39a663d040a5bcbb2e5469c0e316dff8940db781c7da"
+   },
+   {
+    "missionId": "wqa-mission74",
+    "revision": "r1",
+    "sha256": "893090dea01f0ab49ddc6f35f1ecf78ba9d6214b7d1da1553c72a05ff30f64f6"
+   },
+   {
+    "missionId": "wqa-mission75",
+    "revision": "r1",
+    "sha256": "9a4d631a2c3e23d71c2b984723658249c9e5a97dcb532ad57ffb766618ea6174"
+   },
+   {
+    "missionId": "wqa-mission76",
+    "revision": "r1",
+    "sha256": "1845dc14e4689c55b2dcaeaf10026cecfcce86fbf9a89085de94ac1b2bf3c11b"
+   },
+   {
+    "missionId": "wqa-mission77",
+    "revision": "r1",
+    "sha256": "98facb8379fc2cb19e459ee5be49c8ada25c277629a996f05067aa65ab4d2c13"
+   },
+   {
+    "missionId": "wqa-mission78",
+    "revision": "r1",
+    "sha256": "3e6762ee545afa98d93fedaf6343a659dfb4beec36ee4e65a140ce75f658adb2"
+   },
+   {
+    "missionId": "wqa-mission79",
+    "revision": "r1",
+    "sha256": "6a030a66487fd7b4c57076e95f7bca21ed3140f96a2a940f172ae6186829dedf"
+   },
+   {
+    "missionId": "wqa-mission80",
+    "revision": "r1",
+    "sha256": "678be9f32cd67ecf1049df1a1a27311d5e44d9acb63ee2bb5f5eaf43205b6839"
+   }
+  ]
+ }
+}

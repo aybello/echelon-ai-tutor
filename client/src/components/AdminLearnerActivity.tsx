@@ -1,14 +1,38 @@
 import { useState } from "react";
+import { useIsFetching } from "@tanstack/react-query";
+import { getQueryKey } from "@trpc/react-query";
 import { trpc } from "@/lib/trpc";
 import { getCourseByKey } from "@shared/courseRegistry";
 import { LEARNER_ACTIVITY_COVERAGE, type LearnerOption } from "@shared/learnerActivity";
 import LearnerAssessmentDetails from "./LearnerAssessmentDetails";
+
+// Refetch mounted/enabled queries only, never old learners, windows or action
+// pages retained in the cache. Do not reset the selection or open detail cursor.
+export function refreshLearnerActivityQueries(admin: ReturnType<typeof trpc.useUtils>["admin"]) {
+  const filters = { type: "active" as const };
+  const options = { cancelRefetch: false };
+  return Promise.all([
+    admin.learnerSearch.refetch(undefined, filters, options),
+    admin.learnerActivity.refetch(undefined, filters, options),
+    admin.learnerAssessments.refetch(undefined, filters, options),
+    admin.learnerAssessmentDetails.refetch(undefined, filters, options),
+  ]);
+}
+export function useLearnerActivityRefresh() {
+  const utils = trpc.useUtils();
+  const searching = useIsFetching({ queryKey: getQueryKey(trpc.admin.learnerSearch) });
+  const timeline = useIsFetching({ queryKey: getQueryKey(trpc.admin.learnerActivity) });
+  const sessions = useIsFetching({ queryKey: getQueryKey(trpc.admin.learnerAssessments) });
+  const details = useIsFetching({ queryKey: getQueryKey(trpc.admin.learnerAssessmentDetails) });
+  return { refresh: () => refreshLearnerActivityQueries(utils.admin), isRefreshing: searching + timeline + sessions + details > 0 };
+}
 
 export default function AdminLearnerActivity() {
   const [draft, setDraft] = useState("");
   const [search, setSearch] = useState("");
   const [selected, setSelected] = useState<LearnerOption | null>(null);
   const [days, setDays] = useState<7 | 30>(7);
+  const { refresh, isRefreshing } = useLearnerActivityRefresh();
   const learners = trpc.admin.learnerSearch.useQuery({ query: search }, { enabled: search.length >= 3, retry: false });
   const activity = trpc.admin.learnerActivity.useQuery({ learner: selected?.selection ?? { userId: 1 }, days }, { enabled: selected !== null, retry: false });
   const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -16,7 +40,9 @@ export default function AdminLearnerActivity() {
   const button = "admin-text-action";
   return <section aria-labelledby="learner-activity-title" className="admin-panel" style={{ padding: 24 }}>
     <h2 id="learner-activity-title">Learners</h2>
-    <p>Find an account by name or email prefix, or use an exact verified email. Email-only records are searched within the last 30 days.</p>
+    <p>Find an account by name or email prefix, or use an exact verified email. Email-only records are searched within the last 30 days. Hash-only sign-ins and observed assessment sessions require an exact email, not a prefix.</p>
+    <p style={{ fontSize: 13 }}>Refresh re-reads the current search, timeline, observed assessment sessions and any open recorded-actions page. Only saved records are available; timestamps are not a live presence indicator.</p>
+    <button type="button" className={button} disabled={isRefreshing} onClick={() => void refresh()}>{isRefreshing ? "Refreshing…" : "Refresh learner activity"}</button>
     <form onSubmit={event => { event.preventDefault(); setSelected(null); setSearch(draft.trim()); }} style={{ display: "flex", gap: 12, flexWrap: "wrap", margin: "16px 0" }}>
       <label htmlFor="learner-search">Name or email <input id="learner-search" value={draft} onChange={event => setDraft(event.target.value)} minLength={3} maxLength={320} required placeholder="At least 3 characters" className="admin-input" /></label>
       <button type="submit" className={button} disabled={draft.trim().length < 3}>Search learners</button>
@@ -42,8 +68,9 @@ export default function AdminLearnerActivity() {
       {activity.isError && <p role="alert">Learner activity could not load. <button className={button} onClick={() => void activity.refetch()}>Retry activity</button></p>}
       {activity.data && <>
         {activity.data.partial && <p role="status">Partial history: at most 200 timeline observations are shown, with each source bounded to 200 records. Totals cover displayed observations only.</p>}
-        <dl style={{ display: "flex", gap: 32, flexWrap: "wrap" }}><div><dt>Last observed activity in window</dt><dd>{activity.data.lastObservedAt ? date(activity.data.lastObservedAt) : "Not available"}</dd></div><div><dt>Recorded active study time (displayed records)</dt><dd>{activity.data.recordedStudySeconds.toLocaleString()} seconds</dd></div></dl>
-        {!activity.data.items.length ? <p>No supported activity recorded in this window.</p> : <ol aria-label="Learner activity timeline" style={{ paddingLeft: 24 }}>
+        <dl style={{ display: "flex", gap: 32, flexWrap: "wrap" }}><div><dt>Last activity in the timeline below</dt><dd>{activity.data.lastObservedAt ? date(activity.data.lastObservedAt) : "Not available"}</dd></div><div><dt>Recorded active study time (displayed records)</dt><dd>{activity.data.recordedStudySeconds.toLocaleString()} seconds</dd></div></dl>
+        <p style={{ fontSize: 13 }}>Observed assessment sessions are listed separately and are not included in this timestamp.</p>
+        {!activity.data.items.length ? <p>No supported timeline activity recorded in this window. Check observed assessment sessions separately below.</p> : <ol aria-label="Learner activity timeline" style={{ paddingLeft: 24 }}>
           {activity.data.items.map(item => <li key={item.key} style={{ padding: "16px 0", borderBottom: "1px solid var(--border, #e2e8f0)" }}>
             <strong>{item.label}</strong> · <time dateTime={new Date(item.at).toISOString()}>{date(item.at)}</time>
             {item.course && <div>{getCourseByKey(item.course)?.displayName ?? item.course}</div>}
@@ -52,7 +79,6 @@ export default function AdminLearnerActivity() {
             {item.activeSeconds !== undefined && <div>{item.activeSeconds} recorded active study seconds</div>}
           </li>)}
         </ol>}
-        <button type="button" className={button} disabled={activity.isFetching} onClick={() => void activity.refetch()}>{activity.isFetching ? "Refreshing…" : "Refresh learner activity"}</button>
       </>}
       <LearnerAssessmentDetails key={`${selected.key}:${days}`} target={{ kind: "admin", learner: selected.selection }} days={days} />
     </div>}

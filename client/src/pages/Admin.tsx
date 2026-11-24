@@ -1,5 +1,6 @@
-import AdminLearnerActivity from "@/components/AdminLearnerActivity";
+import AdminLearnerActivity, { useLearnerActivityRefresh } from "@/components/AdminLearnerActivity";
 import AdminGamesActivity from "@/components/AdminGamesActivity";
+import AdminFeatureRequests from "@/components/AdminFeatureRequests";
 import PurchaseEmailDelivery from "@/components/PurchaseEmailDelivery";
 // ADMIN DASHBOARD — /admin
 // Gated to role === 'admin'. Shows trial emails, waitlist signups, and error reports.
@@ -215,8 +216,12 @@ export default function Admin() {
   const [leadFilter, setLeadFilter] = useState<LeadTriageFilter>("actionable");
   const [reviewFilter, setReviewFilter] = useState<ReviewStatus>("unreviewed");
   const [reviewBank, setReviewBank] = useState("");
+  const [feedbackView, setFeedbackView] = useState<"ratings" | "requests">("ratings");
   const [feedbackPage, setFeedbackPage] = useState(1);
   const [feedbackRating, setFeedbackRating] = useState<"all" | "low">("all");
+  const [recoveryPage, setRecoveryPage] = useState(1);
+  const [recoveryStatus, setRecoveryStatus] = useState<"all" | "staged" | "mapped" | "claim_verified" | "approved" | "rejected" | "imported">("all");
+  const [dismissErrorMessage, setDismissErrorMessage] = useState<string | null>(null);
   const [reviewPage, setReviewPage] = useState(1);
   const [reviewingQuestionId, setReviewingQuestionId] = useState<number | null>(null);
   const [reviewDraft, setReviewDraft] = useState({ sourceTitle: "", sourceReference: "", sourceUrl: "", blueprintObjective: "" });
@@ -247,7 +252,7 @@ export default function Admin() {
     { enabled: user?.role === "admin" && activeTab === "questions" },
   );
   const recoveryEvidenceQ = trpc.admin.getCustomerRecoveryEvidence.useQuery(
-    { limit: 100 },
+    { limit: 25, page: recoveryPage, reviewStatus: recoveryStatus === "all" ? undefined : recoveryStatus },
     { enabled: user?.role === "admin" && activeTab === "recovery" },
   );
   const explorerCatalogQ = trpc.admin.getDataExplorerCatalog.useQuery(
@@ -270,12 +275,18 @@ export default function Admin() {
   });
   const backfillContact = trpc.admin.backfillContactInfo.useMutation({
     onSuccess: (data) => {
-      purchasesQ.refetch();
-      if (data.updated > 0) {
-        alert(`Contact backfill complete. Updated ${data.updated} record(s): ${data.details.map((d: any) => `${d.email} (${d.type}): phone=${d.phone}, name=${d.name}`).join("\n")}`);
-      } else {
-        alert(`All records already have phone/name. No updates needed.${data.errors.length > 0 ? ` Errors: ${data.errors.join(", ")}` : ""}`);
-      }
+      void purchasesQ.refetch();
+      const subscriptionUpdates = data.details.filter((item: any) => item.type === "subscription");
+      const purchaseReviews = data.purchaseContactReviews ?? [];
+      const lines = [
+        `Subscription records updated: ${subscriptionUpdates.length}.`,
+        `Purchase records needing review: ${purchaseReviews.length}. No purchase records were written.`,
+        `Lookup errors: ${data.errors.length}.`,
+      ];
+      if (subscriptionUpdates.length) lines.push(`Updated subscriptions: ${subscriptionUpdates.map((d: any) => d.email).join(", ")}.`);
+      if (purchaseReviews.length) lines.push(`Purchase review candidates: ${purchaseReviews.map((d: any) => d.email).join(", ")}.`);
+      if (data.errors.length) lines.push(`Errors: ${data.errors.join("; ")}`);
+      alert(`Contact maintenance finished.\n\n${lines.join("\n")}`);
     },
     onError: (err) => alert(`Contact backfill failed: ${err.message}`),
   });
@@ -306,7 +317,7 @@ export default function Admin() {
     onError: (err) => alert(`Recovery classification could not be saved: ${err.message}`),
   });
 
-  const classifyRecovery = (row: NonNullable<typeof recoveryEvidenceQ.data>[number], subjectType: "individual" | "organization_manager") => {
+  const classifyRecovery = (row: NonNullable<typeof recoveryEvidenceQ.data>["items"][number], subjectType: "individual" | "organization_manager") => {
     let organizationName: string | null = null;
     let organizationGroup: "treatment" | "distribution" | "unspecified" | null = null;
     let seatCount: number | null = null;
@@ -374,7 +385,9 @@ export default function Admin() {
   };
 
   const dismissError = trpc.admin.dismissErrorReport.useMutation({
-    onSuccess: () => utils.admin.getErrorReports.invalidate(),
+    onMutate: () => setDismissErrorMessage(null),
+    onSuccess: () => { setDismissErrorMessage(null); void utils.admin.getErrorReports.invalidate(); },
+    onError: (error) => setDismissErrorMessage(`The report could not be dismissed: ${error.message}`),
   });
   const removeWaitlist = trpc.admin.removeWaitlistEntry.useMutation({
     onSuccess: () => { utils.admin.getWaitlist.invalidate(); utils.admin.stats.invalidate(); },
@@ -382,6 +395,7 @@ export default function Admin() {
   const dismissFeedback = trpc.admin.dismissFeedback.useMutation({
     onSuccess: () => { utils.admin.getFeedback.invalidate(); utils.admin.stats.invalidate(); },
   });
+  const learnerRefresh = useLearnerActivityRefresh();
 
   const selectSection = (section: Tab) => {
     setActiveTab(section);
@@ -389,6 +403,10 @@ export default function Admin() {
   };
 
   const refreshActiveSection = () => {
+    if (activeTab === "learners") {
+      void learnerRefresh.refresh();
+      return;
+    }
     stats.refetch();
     if (activeTab === "insights") {
       kpisQ.refetch();
@@ -404,7 +422,11 @@ export default function Admin() {
     if (activeTab === "revenue") { purchasesQ.refetch(); businessQ.refetch(); }
     if (activeTab === "subscriptions") subscriptionsQ.refetch();
     if (activeTab === "health") healthQ.refetch();
-    if (activeTab === "feedback") feedbackQ.refetch();
+    if (activeTab === "feedback") {
+      if (feedbackView === "requests") void utils.featureRequests.list.invalidate();
+      else void feedbackQ.refetch();
+    }
+    if (activeTab === "insights") void utils.admin.gameActivity.invalidate();
     if (activeTab === "orgs") orgsQ.refetch();
     if (activeTab === "questions") {
       governanceStatsQ.refetch();
@@ -468,18 +490,24 @@ export default function Admin() {
     };
   }, [isMobileNavigation, navigationOpen]);
 
-  const copyEmail = (email: string) => {
-    navigator.clipboard.writeText(email);
-    setCopiedEmail(email);
-    setTimeout(() => setCopiedEmail(null), 1500);
+  const copyEmail = async (email: string) => {
+    try {
+      await navigator.clipboard.writeText(email);
+      setCopiedEmail(email);
+      setTimeout(() => setCopiedEmail(null), 1500);
+    } catch {
+      alert("The email could not be copied. Check browser clipboard permissions and try again.");
+    }
   };
-
-  const copyAllEmails = (emails: string[]) => {
-    navigator.clipboard.writeText(emails.join("\n"));
-    setCopiedEmail("__all__");
-    setTimeout(() => setCopiedEmail(null), 1500);
+  const copyAllEmails = async (emails: string[]) => {
+    try {
+      await navigator.clipboard.writeText(emails.join("\n"));
+      setCopiedEmail("__all__");
+      setTimeout(() => setCopiedEmail(null), 1500);
+    } catch {
+      alert("The emails could not be copied. Check browser clipboard permissions and try again.");
+    }
   };
-
   const formatExplorerValue = (value: unknown) => {
     if (value === null || value === undefined || value === "") return "—";
     const text = String(value);
@@ -710,7 +738,7 @@ export default function Admin() {
               <h1 style={{ fontSize: "clamp(24px, 2vw, 28px)", fontWeight: 800, margin: "5px 0 6px" }}>{activeSection?.label}</h1>
               <p style={{ fontSize: 14, color: "#526779", margin: 0 }}>{activeDescription[activeTab]}</p>
             </div>
-            <button className="admin-btn admin-refresh-button" onClick={refreshActiveSection}>Refresh</button>
+            <button className="admin-btn admin-refresh-button" onClick={refreshActiveSection} disabled={activeTab === "learners" && learnerRefresh.isRefreshing}>{activeTab === "learners" && learnerRefresh.isRefreshing ? "Refreshing…" : "Refresh"}</button>
           </div>
         )}
 
@@ -1433,7 +1461,9 @@ export default function Admin() {
                 </button>
                 <button
                   className="admin-btn"
-                  onClick={() => backfillContact.mutate()}
+                  onClick={() => {
+                    if (confirm("Run subscription contact maintenance? This may update missing subscription contact fields. Purchase contact candidates will be shown for review only and will not be written.")) backfillContact.mutate();
+                  }}
                   disabled={backfillContact.isPending}
                   title="Look up phone & name from Stripe for any purchases or subscriptions that are missing them. Safe to run multiple times."
                   style={{ fontSize: 11, fontWeight: 700, padding: "6px 12px", borderRadius: 8, border: "1px solid rgba(251,191,36,0.4)", background: "rgba(251,191,36,0.12)", color: "#FCD34D", cursor: backfillContact.isPending ? "not-allowed" : "pointer", opacity: backfillContact.isPending ? 0.6 : 1, fontFamily: "inherit" }}
@@ -1444,7 +1474,7 @@ export default function Admin() {
             </div>
             {purchasesQ.isLoading && <div style={{ padding: 32, textAlign: "center", color: "#64748B", fontSize: 13 }}>Loading…</div>}
             {purchasesQ.data && purchasesQ.data.length === 0 && (
-              <div style={{ padding: 40, textAlign: "center", color: "#475569", fontSize: 13 }}>No purchases yet. Share the pricing page to get your first sale!</div>
+              <div style={{ padding: 40, textAlign: "center", color: "#475569", fontSize: 13 }}>No individual purchases are recorded yet. Team orders and subscriptions are reported separately above.</div>
             )}
             {purchasesQ.data && purchasesQ.data.length > 0 && (
               <div style={{ overflowX: "auto" }}>
@@ -1644,6 +1674,8 @@ export default function Admin() {
               </div>
             </div>
             {errorsQ.isLoading && <div style={{ padding: 32, textAlign: "center", color: "#64748B", fontSize: 13 }}>Loading…</div>}
+            {errorsQ.isError && <div role="alert" style={{ margin: 20, padding: 14, borderRadius: 10, background: "#FEF2F2", color: "#B91C1C", fontSize: 12 }}>Error reports could not be loaded: {errorsQ.error.message}. <button type="button" className="admin-text-action" onClick={() => void errorsQ.refetch()}>Try again</button></div>}
+            {dismissErrorMessage && <div role="alert" style={{ margin: "0 20px 12px", padding: 12, borderRadius: 8, background: "#FEF2F2", color: "#B91C1C", fontSize: 12 }}>{dismissErrorMessage}</div>}
             {errorsQ.data && errorsQ.data.length === 0 && (
               <div style={{ padding: 40, textAlign: "center", color: "#475569", fontSize: 13 }}>No error reports. 🎉</div>
             )}
@@ -1691,7 +1723,9 @@ export default function Admin() {
         )}
 
         {/* -- FEEDBACK TAB -- */}
-        {activeTab === "feedback" && (
+        {activeTab === "feedback" && (<>
+          <div role="group" aria-label="Feedback type" style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 16 }}><button type="button" className="admin-btn" aria-pressed={feedbackView === "ratings"} onClick={() => setFeedbackView("ratings")}>Ratings & reviews</button><button type="button" className="admin-btn" aria-pressed={feedbackView === "requests"} onClick={() => setFeedbackView("requests")}>Feature requests</button></div>
+          {feedbackView === "requests" ? <AdminFeatureRequests /> : (
           <div style={{ background: "#F8FAFC", borderRadius: 16, overflow: "hidden", border: "1px solid rgba(0,0,0,0.07)" }}>
             <div style={{ padding: "16px 20px", borderBottom: "1px solid rgba(0,0,0,0.07)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
               <div style={{ fontSize: 13, fontWeight: 700 }}>
@@ -1748,7 +1782,7 @@ export default function Admin() {
                               {EXAM_TYPE_LABELS[row.examType] ?? row.examType}
                             </span>
                             <span style={{ padding: "3px 10px", borderRadius: 100, background: row.feedbackType === "quiz_gate" ? "#FEF9C3" : "#DBEAFE", color: row.feedbackType === "quiz_gate" ? "#A16207" : "#1D4ED8", fontSize: 10, fontWeight: 700 }}>
-                              {row.feedbackType === "quiz_gate" ? "Trial Gate" : "Session End"}
+                              {{ quiz_gate: "Trial Gate", session_complete: "Session End", dashboard: "Dashboard", quick10: "Quick 10", mock_exam: "Mock Exam", first_high_score: "Practice Milestone" }[row.feedbackType] ?? row.feedbackType}
                             </span>
                             <span style={{ fontSize: 10, color: "#475569" }}>{formatDate(row.createdAt)}</span>
                           </div>
@@ -1781,7 +1815,8 @@ export default function Admin() {
               <button type="button" className="admin-btn" disabled={feedbackQ.isFetching || !!feedbackQ.error || feedbackQ.data?.length !== 200 || feedbackPage >= 1_000_000} onClick={() => setFeedbackPage(page => page + 1)}>Next</button>
             </nav>
           </div>
-        )}
+          )}
+        </>)}
 
         {/* -- QUESTION GOVERNANCE TAB -- */}
         {activeTab === "questions" && (
@@ -2063,7 +2098,7 @@ export default function Admin() {
                             {explorerPageQ.data!.columns.map(column => {
                               const value = row[column];
                               const fullValue = value === null || value === undefined ? "" : String(value);
-                              return <td key={column} title={fullValue} style={{ padding: "10px 14px", color: "#334155", maxWidth: 280, verticalAlign: "top", lineHeight: 1.45, overflowWrap: "anywhere" }}>{formatExplorerValue(value)}</td>;
+                              return <td key={column} style={{ padding: "10px 14px", color: "#334155", maxWidth: 280, verticalAlign: "top", lineHeight: 1.45, overflowWrap: "anywhere" }}>{formatExplorerValue(value)}{fullValue.length > 180 && <details style={{ marginTop: 5 }}><summary style={{ cursor: "pointer", color: "#1D4ED8", fontSize: 11 }}>View full value</summary><div style={{ marginTop: 4, whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}>{fullValue}</div></details>}</td>;
                             })}
                           </tr>
                         ))}
@@ -2094,9 +2129,14 @@ export default function Admin() {
               </div>
             </div>
             {recoveryEvidenceQ.isLoading && <div style={{ padding: 32, textAlign: "center", color: "#64748B", fontSize: 13 }}>Loading protected evidence…</div>}
-            {recoveryEvidenceQ.error && <div style={{ margin: 20, padding: 14, borderRadius: 10, background: "#FEF2F2", color: "#B91C1C", fontSize: 12 }}>Recovery evidence could not be loaded: {recoveryEvidenceQ.error.message}</div>}
-            {recoveryEvidenceQ.data?.length === 0 && <div style={{ padding: 40, textAlign: "center", color: "#64748B", fontSize: 13 }}>No staged recovery evidence.</div>}
-            {recoveryEvidenceQ.data && recoveryEvidenceQ.data.length > 0 && (
+            {recoveryEvidenceQ.error && <div role="alert" style={{ margin: 20, padding: 14, borderRadius: 10, background: "#FEF2F2", color: "#B91C1C", fontSize: 12 }}>Recovery evidence could not be loaded: {recoveryEvidenceQ.error.message}. <button type="button" className="admin-text-action" onClick={() => void recoveryEvidenceQ.refetch()}>Try again</button></div>}
+            <div style={{ padding: "12px 20px", display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
+              <label htmlFor="recovery-review-status" style={{ fontSize: 12, fontWeight: 700 }}>Review status</label>
+              <select id="recovery-review-status" value={recoveryStatus} onChange={event => { setRecoveryStatus(event.target.value as typeof recoveryStatus); setRecoveryPage(1); }} style={{ minHeight: 38, border: "1px solid #CBD5E1", borderRadius: 8, padding: "0 10px", background: "#fff" }}><option value="all">All statuses</option>{["staged", "mapped", "claim_verified", "approved", "rejected", "imported"].map(status => <option key={status} value={status}>{status.replace("_", " ")}</option>)}</select>
+              {recoveryEvidenceQ.data && <span style={{ fontSize: 11, color: "#64748B" }}>{recoveryEvidenceQ.data.total.toLocaleString()} matching records</span>}
+            </div>
+            {recoveryEvidenceQ.data?.items.length === 0 && <div style={{ padding: 40, textAlign: "center", color: "#64748B", fontSize: 13 }}>No recovery evidence matches this filter.</div>}
+            {recoveryEvidenceQ.data && recoveryEvidenceQ.data.items.length > 0 && (
               <div style={{ overflowX: "auto" }}>
                 <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 12 }}>
                   <thead>
@@ -2107,7 +2147,7 @@ export default function Admin() {
                     </tr>
                   </thead>
                   <tbody>
-                    {recoveryEvidenceQ.data.map((row) => (
+                    {recoveryEvidenceQ.data.items.map((row) => (
                       <tr key={row.id} className="admin-row" style={{ borderTop: "1px solid rgba(0,0,0,0.04)" }}>
                         <td style={{ padding: "12px 16px", color: "#64748B" }}>#{row.id}<br /><span style={{ fontSize: 10 }}>{row.sourceType.replace("_", " ")}</span></td>
                         <td style={{ padding: "12px 16px", color: "#334155", fontWeight: 600 }}>{row.customerEmail}</td>
@@ -2128,6 +2168,7 @@ export default function Admin() {
                 </table>
               </div>
             )}
+            {recoveryEvidenceQ.data && <div style={{ padding: "14px 20px", borderTop: "1px solid rgba(0,0,0,0.07)", display: "flex", justifyContent: "space-between", alignItems: "center" }}><span style={{ fontSize: 11, color: "#64748B" }}>Page {recoveryEvidenceQ.data.page} of {recoveryEvidenceQ.data.totalPages}</span><span style={{ display: "flex", gap: 8 }}><button className="admin-btn" type="button" onClick={() => setRecoveryPage(page => Math.max(1, page - 1))} disabled={recoveryPage <= 1 || recoveryEvidenceQ.isFetching}>Previous</button><button className="admin-btn" type="button" onClick={() => setRecoveryPage(page => Math.min(recoveryEvidenceQ.data!.totalPages, page + 1))} disabled={recoveryPage >= recoveryEvidenceQ.data.totalPages || recoveryEvidenceQ.isFetching}>Next</button></span></div>}
           </div>
         )}
           </div>
