@@ -1833,7 +1833,7 @@ export const certificateAlerts = mysqlTable("certificate_alerts", {
   expiresAt: datetime("expiresAt").notNull(), // the certificate expiry this alert was for
   recipientUserId: int("recipientUserId"),
   recipientEmail: varchar("recipientEmail", { length: 320 }).notNull(),
-  status: mysqlEnum("status", ["pending", "sent", "failed"]).notNull().default("pending"),
+  status: mysqlEnum("status", ["pending", "sent", "failed", "uncertain"]).notNull().default("pending"),
   claimToken: varchar("claimToken", { length: 64 }),
   leaseUntil: datetime("leaseUntil"),
   attemptCount: int("attemptCount").notNull().default(0),

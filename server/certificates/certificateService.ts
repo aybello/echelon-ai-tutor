@@ -676,30 +676,42 @@ export async function claimAlertSend(
         (!existing.leaseUntil ||
           existing.leaseUntil.getTime() <= now.getTime()));
     if (!reclaimable) return null;
-    const result = await db
+    const patch = {
+      status: "pending" as const,
+      claimToken: token,
+      leaseUntil,
+      attemptCount: (existing.attemptCount ?? 0) + 1,
+      lastError: null,
+    };
+    const failedResult = await db
       .update(certificateAlerts)
-      .set({
-        status: "pending",
-        claimToken: token,
-        leaseUntil,
-        attemptCount: (existing.attemptCount ?? 0) + 1,
-        lastError: null,
-      })
+      .set(patch)
       .where(
         and(
           eq(certificateAlerts.id, existing.id),
-          or(
-            eq(certificateAlerts.status, "failed"),
-            and(
-              eq(certificateAlerts.status, "pending"),
-              or(
-                isNull(certificateAlerts.leaseUntil),
-                lte(certificateAlerts.leaseUntil, now)
-              )
-            )
-          )
+          eq(certificateAlerts.status, "failed")
         )
       );
+    const failedAffected = Number(
+      (failedResult as any)?.affectedRows ??
+        (Array.isArray(failedResult) ? (failedResult as any)[0]?.affectedRows : 0)
+    );
+    const result =
+      failedAffected === 1
+        ? failedResult
+        : await db
+            .update(certificateAlerts)
+            .set(patch)
+            .where(
+              and(
+                eq(certificateAlerts.id, existing.id),
+                eq(certificateAlerts.status, "pending"),
+                or(
+                  isNull(certificateAlerts.leaseUntil),
+                  lte(certificateAlerts.leaseUntil, now)
+                )
+              )
+            );
     const affected = Number(
       (result as any)?.affectedRows ??
         (Array.isArray(result) ? (result as any)[0]?.affectedRows : 0)
@@ -747,4 +759,34 @@ export async function markAlertFailed(
         eq(certificateAlerts.status, "pending")
       )
     );
+}
+
+/**
+ * SMTP can accept a message and the process can then lose the database
+ * finalization race. Do not turn that state into an automatically retryable
+ * failure: a retry could deliver the same alert twice. It requires operator
+ * reconciliation instead.
+ */
+export async function markAlertUncertain(
+  db: Db,
+  id: number,
+  token: string,
+  error: string
+): Promise<boolean> {
+  const result = await db
+    .update(certificateAlerts)
+    .set({ status: "uncertain", lastError: error.slice(0, 500), leaseUntil: null })
+    .where(
+      and(
+        eq(certificateAlerts.id, id),
+        eq(certificateAlerts.claimToken, token),
+        eq(certificateAlerts.status, "pending")
+      )
+    );
+  return (
+    Number(
+      (result as any)?.affectedRows ??
+        (Array.isArray(result) ? (result as any)[0]?.affectedRows : 0)
+    ) === 1
+  );
 }

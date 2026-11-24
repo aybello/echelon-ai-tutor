@@ -23,6 +23,7 @@ import {
   claimAlertSend,
   markAlertFailed,
   markAlertSent,
+  markAlertUncertain,
 } from "../certificates/certificateService";
 import { getDb } from "../db";
 import { sendCertificateExpiryEmail } from "../email";
@@ -218,7 +219,21 @@ export async function runCertificateExpiryAlerts(
                 ? `${siteUrl}/account`
                 : `${siteUrl}/team`,
             });
-            if (await markAlertSent(db, claim.id, claim.token)) sent += 1;
+            if (await markAlertSent(db, claim.id, claim.token)) {
+              sent += 1;
+            } else {
+              const finalized = await markAlertUncertain(
+                db,
+                claim.id,
+                claim.token,
+                "SMTP accepted the message but alert ledger finalization was not confirmed; automatic retry disabled."
+              );
+              throw new Error(
+                finalized
+                  ? "Alert delivery is uncertain; automatic retry disabled."
+                  : "Alert delivery is uncertain and could not be fenced; manual reconciliation required."
+              );
+            }
           } catch (sendError) {
             await markAlertFailed(
               db,

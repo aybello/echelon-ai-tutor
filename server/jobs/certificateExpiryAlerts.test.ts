@@ -47,6 +47,10 @@ function seedDb(): InMemoryDb {
     ],
     certificateAlerts: [
       { id: 1, certificateId: 4, thresholdDays: 7, expiresAt: certDExpires, recipientUserId: null, recipientEmail: "amy@quintewest.ca", sentAt: now },
+      // C's manager alert previously failed after the exact threshold day.
+      // The job must retry the original threshold key, not wait for today to
+      // match the threshold again.
+      { id: 2, certificateId: 3, thresholdDays: 0, expiresAt: inDays(0), recipientUserId: null, recipientEmail: "amy@quintewest.ca", status: "failed", lastError: "temporary SMTP error", sentAt: null },
     ],
   });
   return currentDb;
@@ -78,8 +82,10 @@ describe("runCertificateExpiryAlerts", () => {
     expect(byCert.get("ON-1004")).toEqual([{ email: "ava@quintewest.ca", thresholdDays: 7 }]);
     expect(byCert.has("ON-1002")).toBe(false);
 
-    // 4 new alert rows logged on top of the 1 pre-seeded row.
+    // The failed C row is reclaimed in place. Three new rows are inserted,
+    // while D's pre-seeded sent row remains unchanged.
     expect(fake.rows.certificateAlerts).toHaveLength(5);
+    expect(fake.rows.certificateAlerts.find(row => row.id === 2)?.status).toBe("sent");
   });
 
   it("sends nothing on a re-run the same day (alert log prevents duplicates)", async () => {

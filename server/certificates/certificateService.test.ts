@@ -14,11 +14,13 @@ vi.mock("../db", () => ({
 // Imported after the mock so the service picks up the mocked getDb.
 import {
   createCertificate,
+  claimAlertSend,
   deleteCertificate,
   getCertificateSummaryForOrg,
   importCertificates,
   listCertificatesForOperator,
   listCertificatesForOrg,
+  markAlertUncertain,
   renewCertificate,
   updateCertificate,
 } from "./certificateService";
@@ -309,5 +311,36 @@ describe("listCertificatesForOperator", () => {
     });
     const rows = await listCertificatesForOperator(1, "ava@quintewest.ca", NOW);
     expect(rows.map(r => r.id)).toEqual([1]);
+  });
+
+  it("fences uncertain SMTP delivery from automatic retry", async () => {
+    const db = seedDb();
+    const expiresAt = daysFromNow(30);
+    const claim = await claimAlertSend(db.db as any, {
+      certificateId: 1,
+      thresholdDays: 30,
+      expiresAt,
+      recipientEmail: "amy@quintewest.ca",
+      recipientUserId: null,
+    });
+    expect(claim).not.toBeNull();
+    expect(
+      await markAlertUncertain(
+        db.db as any,
+        claim!.id,
+        claim!.token,
+        "SMTP accepted but ledger finalization was not confirmed"
+      )
+    ).toBe(true);
+    expect(db.rows.certificateAlerts.at(-1)?.status).toBe("uncertain");
+    expect(
+      await claimAlertSend(db.db as any, {
+        certificateId: 1,
+        thresholdDays: 30,
+        expiresAt,
+        recipientEmail: "amy@quintewest.ca",
+        recipientUserId: null,
+      })
+    ).toBeNull();
   });
 });

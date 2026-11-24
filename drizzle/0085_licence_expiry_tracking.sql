@@ -32,7 +32,7 @@ CREATE TABLE `certificate_alerts` (
   `expiresAt` datetime NOT NULL,
   `recipientUserId` int,
   `recipientEmail` varchar(320) NOT NULL,
-  `status` enum('pending','sent','failed') NOT NULL DEFAULT 'pending',
+  `status` enum('pending','sent','failed','uncertain') NOT NULL DEFAULT 'pending',
   `claimToken` varchar(64),
   `leaseUntil` datetime NULL,
   `attemptCount` int NOT NULL DEFAULT 0,
