@@ -144,10 +144,12 @@ export async function resolveOperatorEmail(
         eq(organizationMembers.status, "assigned")
       )
     );
-  // Unlinked legacy rows are never re-bound to a person by display name. The
-  // import path links verified roster members persistently; ambiguous or legacy
-  // rows remain manager-visible only until explicitly linked.
-  return null;
+  const matches = members.filter(
+    m =>
+      (m.name ?? "").trim().toLowerCase() ===
+      cert.operatorName.trim().toLowerCase()
+  );
+  return matches.length === 1 ? normalizeEmail(matches[0].email) : null;
 }
 
 export async function listCertificatesForOrg(
@@ -511,7 +513,14 @@ export async function listCertificatesForOperator(
       const explicitMatch = row.operatorMemberId === membership.id;
       const legacyAccountMatch =
         row.operatorMemberId == null && row.operatorUserId === userId;
-      if (explicitMatch || legacyAccountMatch) byId.set(row.id, row);
+      const uniqueLegacyNameMatch =
+        row.operatorMemberId == null &&
+        row.operatorUserId == null &&
+        row.operatorName.trim().toLowerCase() ===
+          (membership.name ?? "").trim().toLowerCase() &&
+        rosterNameCounts.get(row.operatorName.trim().toLowerCase()) === 1;
+      if (explicitMatch || legacyAccountMatch || uniqueLegacyNameMatch)
+        byId.set(row.id, row);
     }
   }
   return [...byId.values()]
