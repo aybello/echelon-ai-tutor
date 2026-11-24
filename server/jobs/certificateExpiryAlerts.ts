@@ -57,17 +57,21 @@ export async function runCertificateExpiryAlerts(
     );
 
   const siteUrl = process.env.FRONTEND_URL ?? "https://echeloninstitute.ca";
-  const retryLedgerRows = await db
-    .select({
-      certificateId: certificateAlerts.certificateId,
-      thresholdDays: certificateAlerts.thresholdDays,
-      expiresAt: certificateAlerts.expiresAt,
-      recipientEmail: certificateAlerts.recipientEmail,
-    })
-    .from(certificateAlerts)
-    .where(
-      or(
-        eq(certificateAlerts.status, "failed"),
+  const retryProjection = {
+    certificateId: certificateAlerts.certificateId,
+    thresholdDays: certificateAlerts.thresholdDays,
+    expiresAt: certificateAlerts.expiresAt,
+    recipientEmail: certificateAlerts.recipientEmail,
+  };
+  const [failedRetryRows, pendingRetryRows] = await Promise.all([
+    db
+      .select(retryProjection)
+      .from(certificateAlerts)
+      .where(eq(certificateAlerts.status, "failed")),
+    db
+      .select(retryProjection)
+      .from(certificateAlerts)
+      .where(
         and(
           eq(certificateAlerts.status, "pending"),
           or(
@@ -75,8 +79,9 @@ export async function runCertificateExpiryAlerts(
             lte(certificateAlerts.leaseUntil, now)
           )
         )
-      )
-    );
+      ),
+  ]);
+  const retryLedgerRows = [...failedRetryRows, ...pendingRetryRows];
   const retryThresholds = new Map<number, Set<number>>();
   const retryRecipients = new Map<string, Set<string>>();
   for (const alert of retryLedgerRows) {

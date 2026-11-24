@@ -83,15 +83,7 @@ function valuesEqual(a: unknown, b: unknown): boolean {
 }
 
 function matches(row: Row, filters: EqFilter[]): boolean {
-  const byColumn = new Map<string, EqFilter[]>();
-  for (const filter of filters) {
-    const columnFilters = byColumn.get(filter.column) ?? [];
-    columnFilters.push(filter);
-    byColumn.set(filter.column, columnFilters);
-  }
-  return [...byColumn.values()].every(columnFilters =>
-    columnFilters.some(filter => valuesEqual(row[filter.column], filter.value))
-  );
+  return filters.every(f => valuesEqual(row[f.column], f.value));
 }
 
 class SelectQuery implements PromiseLike<Row[]> {
