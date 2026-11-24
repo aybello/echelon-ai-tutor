@@ -56,6 +56,7 @@ import { funnelAnalyticsRouter } from "./routers/funnelAnalyticsRouter";
 import { electricianReviewRouter } from "./routers/electricianReviewRouter";
 import { ceuRouter } from "./routers/ceuRouter";
 import { trainingRouter } from "./routers/trainingRouter";
+import { certificatesRouter } from "./routers/certificatesRouter";
 import { interactiveRouter } from "./routers/interactiveRouter";
 import { deepGamesRouter } from "./routers/deepGamesRouter";
 import { assessmentActivityRouter } from "./routers/assessmentActivityRouter";
@@ -191,6 +192,7 @@ export const appRouter = router({
   electricianReview: electricianReviewRouter,
   training: trainingRouter,
   ceu: ceuRouter,
+  certificates: certificatesRouter,
   auth: router({
     me: publicProcedure.query(opts => opts.ctx.user),
     logout: publicProcedure.mutation(({ ctx }) => {

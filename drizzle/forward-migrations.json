@@ -565,6 +565,23 @@
       "verifierAllowMissingTables": [
         "feature_requests"
       ]
+    },
+    {
+      "version": 85,
+      "tag": "0085_licence_expiry_tracking",
+      "file": "drizzle/0085_licence_expiry_tracking.sql",
+      "sha256": "36cfd33cbe7413ac2aa879abb0755730f62265b3d2d784b560fb0a82355bf3b5",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "certificates",
+          "certificate_alerts"
+        ]
+      },
+      "verifierAllowMissingTables": [
+        "certificates",
+        "certificate_alerts"
+      ]
     }
   ]
 }

@@ -31,6 +31,10 @@ export const DATA_EXPLORER_EXCLUDED_TABLES = [
   "assessment_activity_sessions",
   "assessment_activity_events",
   "feature_requests",
+  // Operator certificates are exposed only through the organization-scoped
+  // manager dashboard; the alert log is an internal delivery ledger.
+  "certificates",
+  "certificate_alerts",
 ] as const;
 
 /**
