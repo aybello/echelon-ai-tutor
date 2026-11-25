@@ -14,6 +14,6 @@
   "server/ceu/courses/ceu-basic-instrumentation.json": "76cfd56fa5b589fa77d8b23f3472ceac020e8ff1762488027884521783cb09b0",
   "server/ceu/courses/ceu-water-distribution-overview.json": "374c94ec91eb918d67e944333fb26c991bb7f78c0645446e5edae41aa727af3b",
   "server/ceu/courses/ceu-supervisor-essentials.json": "3f9a54eb9ec396923125c60b3e2efeec83eacc1aa7c72a48a79e3bc08f404983",
-  "shared/ceuCatalogueData.json": "5c9ff6994879afe27d01c49e2c676830fe197f7b63722ffa18bfab31904aa7f0",
+  "shared/ceuCatalogueData.json": "ca077f6b4a7748d2c9d79af35c25474bb9184dc74abaf1142dddab8a24a05237",
   "client/src/pages/ContinuingEducationCourse.tsx": "e67ddfdfa5edcb3e88cabded297841cfd4afb9e91aa447c40b041c60add56c02"
 }

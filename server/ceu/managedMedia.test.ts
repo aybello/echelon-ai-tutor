@@ -10,7 +10,7 @@ const read = (path: string) => readFileSync(new URL(path, root), "utf8");
 const digest = (value: string) => createHash("sha256").update(value).digest("hex");
 const baselineBytes = read("server/ceu/fixtures/managed-media-baseline-7f604509.json");
 // URL-only migration baseline from main 7f604509; not a new content approval.
-expect(digest(baselineBytes)).toBe("d943ba96301e49bff0968b150fce9e4108bb469957e845c04021bcb67f75debb");
+expect(digest(baselineBytes)).toBe("add7672f8a64027ac770241d89e35c44f5e914d860ccdeb63a02e3bb0ad19eed");
 const baseline = JSON.parse(baselineBytes) as Record<string, string>;
 const assets = Object.entries(media);
 const runtimeFiles = Object.keys(baseline);

@@ -1035,6 +1035,10 @@
     "stream": "drinking_water",
     "group": "foundations",
     "regionLabel": "Operator foundations",
+    "cover": {
+      "src": "/manus-storage/ceu-water-treatment-concepts-cover_6b46c3b7.png",
+      "alt": "Water treatment concepts course cover"
+    },
     "approvalStatus": "not_submitted",
     "statusLabel": "Not submitted for approval",
     "statusDescription": "Educational foundation course. Not submitted for regulatory approval in any jurisdiction.",
@@ -1089,6 +1093,10 @@
     "stream": "drinking_water",
     "group": "applied",
     "regionLabel": "Ontario drinking water",
+    "cover": {
+      "src": "/manus-storage/ceu-wastewater-treatment-concepts-cover_abf712eb.png",
+      "alt": "Wastewater treatment concepts course cover"
+    },
     "approvalStatus": "director_approval_required",
     "statusLabel": "Director approval required",
     "statusDescription": "Pilot curriculum. Director approval is required before advertising approved drinking-water CEUs.",
