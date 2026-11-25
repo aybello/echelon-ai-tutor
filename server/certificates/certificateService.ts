@@ -286,7 +286,8 @@ export interface UpdateCertificateInput {
 export async function updateCertificate(
   orgId: number,
   certificateId: number,
-  patch: UpdateCertificateInput
+  patch: UpdateCertificateInput,
+  actorUserId: number | null = null
 ): Promise<CertificateView | null> {
   const db = await requireDb();
   const existing = await getCertificateForOrg(orgId, certificateId);
@@ -342,7 +343,7 @@ export async function updateCertificate(
     await db.insert(certificateAuditLog).values({
       organizationId: orgId,
       certificateId,
-      actorUserId: null,
+      actorUserId,
       action: "update",
       changes: JSON.stringify(changes),
     });
@@ -384,16 +385,20 @@ export async function listCertificateAudit(orgId: number, certificateId: number)
   return db.select().from(certificateAuditLog).where(and(eq(certificateAuditLog.organizationId, orgId), eq(certificateAuditLog.certificateId, certificateId))).orderBy(asc(certificateAuditLog.createdAt));
 }
 
-export async function setCertificateWorkflow(orgId: number, certificateId: number, actorUserId: number | null, input: { followUpOwner?: string | null; followUpStatus?: string; rosterReviewStatus?: string }) {
+export async function setCertificateWorkflow(orgId: number, certificateId: number, actorUserId: number | null, input: { followUpOwner?: string | null; followUpStatus?: string; rosterReviewStatus?: string; expectedVersion: number }) {
   const db = await requireDb();
   const existing = await getCertificateForOrg(orgId, certificateId);
   if (!existing) return null;
-  await db.update(certificates).set({
+  const result = await db.update(certificates).set({
     ...(input.followUpOwner !== undefined ? { followUpOwner: input.followUpOwner?.trim() || null } : {}),
     ...(input.followUpStatus !== undefined ? { followUpStatus: input.followUpStatus } : {}),
     ...(input.rosterReviewStatus !== undefined ? { rosterReviewStatus: input.rosterReviewStatus } : {}),
-  }).where(and(eq(certificates.id, certificateId), eq(certificates.organizationId, orgId)));
-  await db.insert(certificateAuditLog).values({ organizationId: orgId, certificateId, actorUserId, action: "workflow", changes: JSON.stringify(input) });
+    version: (existing.version ?? 1) + 1,
+  }).where(and(eq(certificates.id, certificateId), eq(certificates.organizationId, orgId), eq(certificates.version, input.expectedVersion)));
+  const affected = Number((result as any)?.affectedRows ?? (Array.isArray(result) ? (result as any)[0]?.affectedRows : 0));
+  if (affected !== 1) throw new Error("CERTIFICATE_VERSION_CONFLICT");
+  const { expectedVersion: _expectedVersion, ...applied } = input;
+  await db.insert(certificateAuditLog).values({ organizationId: orgId, certificateId, actorUserId, action: "workflow", changes: JSON.stringify({ ...applied, followUpOwner: applied.followUpOwner?.trim() || null }) });
   return getCertificateForOrg(orgId, certificateId);
 }
 
@@ -408,8 +413,13 @@ export async function listCertificateEvidence(orgId: number, certificateId: numb
 export async function addCertificateEvidence(orgId: number, certificateId: number, actorUserId: number | null, input: { fileName: string; contentType: string; dataBase64: string }) {
   const db = await requireDb();
   if (!EVIDENCE_TYPES.has(input.contentType)) throw new Error("Evidence must be a PDF, PNG, or JPEG.");
+  if (!/^[A-Za-z0-9+/]*={0,2}$/.test(input.dataBase64) || input.dataBase64.length % 4 === 1) throw new Error("Evidence encoding is invalid.");
   const data = Buffer.from(input.dataBase64, "base64");
   if (!data.length || data.length > MAX_EVIDENCE_BYTES) throw new Error("Evidence must be no larger than 5 MB.");
+  const isPdf = input.contentType === "application/pdf" && data.subarray(0, 5).toString("ascii") === "%PDF-";
+  const isPng = input.contentType === "image/png" && data.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]));
+  const isJpeg = input.contentType === "image/jpeg" && data.subarray(0, 3).equals(Buffer.from([255, 216, 255]));
+  if (!isPdf && !isPng && !isJpeg) throw new Error("Evidence bytes do not match the selected file type.");
   if (!(await getCertificateForOrg(orgId, certificateId))) return null;
   const safeName = input.fileName.replace(/[^a-zA-Z0-9._-]/g, "_").slice(-160) || "evidence";
   const key = `certificate-evidence/org-${orgId}/certificate-${certificateId}/${randomUUID()}-${safeName}`;
@@ -441,6 +451,7 @@ export async function reviewCertificateEvidence(orgId: number, evidenceId: numbe
   if (!row) return null;
   const reviewedAt = new Date();
   await db.update(certificateEvidence).set({ reviewedByUserId: actorUserId, reviewedAt }).where(and(eq(certificateEvidence.id, evidenceId), eq(certificateEvidence.organizationId, orgId)));
+  await db.insert(certificateAuditLog).values({ organizationId: orgId, certificateId: row.certificateId, actorUserId, action: "evidence_reviewed", changes: JSON.stringify({ evidenceId, reviewedAt }) });
   return { ...row, reviewedByUserId: actorUserId, reviewedAt };
 }
 

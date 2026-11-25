@@ -62,8 +62,9 @@ type CertificateRow = {
 };
 
 function csvCell(value: unknown): string {
-  const text = String(value ?? "");
-  return /[",\n]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
+  let text = String(value ?? "");
+  if (/^[\u0000-\u001f]*[=+\-@]/.test(text)) text = `'${text}`;
+  return /[",\r\n]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
 }
 
 function saveTextFile(text: string, filename: string, type = "text/csv;charset=utf-8") {
@@ -142,6 +143,8 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
   const [statusFilter, setStatusFilter] = useState<string>("all");
   const [search, setSearch] = useState("");
   const [followUpOwner, setFollowUpOwner] = useState("");
+  const [followUpStatus, setFollowUpStatus] = useState<"open" | "in_progress" | "resolved">("open");
+  const [rosterReviewStatus, setRosterReviewStatus] = useState<"needs_review" | "reviewed_unmatched">("needs_review");
   const [workflowRow, setWorkflowRow] = useState<CertificateRow | null>(null);
   const [mapping, setMapping] = useState<{
     operatorName: number;
@@ -228,6 +231,22 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
 
   const workflowMutation = trpc.certificates.setWorkflow.useMutation({
     onSuccess: () => { toast.success("Manager follow-up saved."); setWorkflowRow(null); invalidate(); },
+    onError: error => toast.error(error.message),
+  });
+  const auditQuery = trpc.certificates.audit.useQuery(
+    { orgId, id: workflowRow?.id ?? 0 },
+    { enabled: workflowRow !== null, retry: false }
+  );
+  const evidenceQuery = trpc.certificates.evidence.useQuery(
+    { orgId, id: workflowRow?.id ?? 0 },
+    { enabled: workflowRow !== null, retry: false }
+  );
+  const uploadEvidenceMutation = trpc.certificates.uploadEvidence.useMutation({
+    onSuccess: () => { toast.success("Evidence uploaded. It remains unverified until a manager reviews it."); void evidenceQuery.refetch(); void auditQuery.refetch(); },
+    onError: error => toast.error(error.message),
+  });
+  const reviewEvidenceMutation = trpc.certificates.reviewEvidence.useMutation({
+    onSuccess: () => { toast.success("Evidence marked manager-reviewed."); void evidenceQuery.refetch(); void auditQuery.refetch(); },
     onError: error => toast.error(error.message),
   });
 
@@ -319,7 +338,7 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
         certificateType: guessed.certificateType ?? 1,
         certificateNumber: guessed.certificateNumber ?? 2,
         expiresAt: guessed.expiresAt ?? 3,
-        ...(guessed.issuedAt != null ? { issuedAt: guessed.issuedAt } : {}),
+        ...(guessed.issuedAt != null && guessed.issuedAt >= 0 ? { issuedAt: guessed.issuedAt } : {}),
       }));
     } catch (error) {
       if (generation !== csvReadGeneration.current) return;
@@ -346,20 +365,43 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
 
   const refreshPreview = (nextMapping = mapping) => {
     if (!csvText) return;
-    try { setCsvPreview(validateCertificateCsv(csvText, { ...nextMapping, ...(nextMapping.issuedAt >= 0 ? { issuedAt: nextMapping.issuedAt } : {}) })); }
-    catch (error) { toast.error(error instanceof Error ? error.message : "Could not validate this CSV."); }
+    try {
+      const canonicalMapping = {
+        operatorName: nextMapping.operatorName,
+        certificateType: nextMapping.certificateType,
+        certificateNumber: nextMapping.certificateNumber,
+        expiresAt: nextMapping.expiresAt,
+        ...(nextMapping.issuedAt >= 0 ? { issuedAt: nextMapping.issuedAt } : {}),
+      };
+      setCsvPreview(validateCertificateCsv(csvText, canonicalMapping));
+    } catch (error) {
+      setCsvPreview(null);
+      toast.error(error instanceof Error ? error.message : "Could not validate this CSV.");
+    }
   };
 
   const downloadTemplate = () => saveTextFile("Operator name,Certificate type,Certificate number,Expiry date,Issue date (optional)\nAva Chen,Class 1 Water Treatment,ON-1001,2027-03-31,2022-04-01\n", "echelon-certificate-import-template.csv");
 
+  const uploadEvidence = async (file: File) => {
+    if (!workflowRow) return;
+    if (!(["application/pdf", "image/png", "image/jpeg"] as string[]).includes(file.type) || file.size > 5 * 1024 * 1024) {
+      toast.error("Evidence must be a PDF, PNG, or JPEG no larger than 5 MB.");
+      return;
+    }
+    const bytes = new Uint8Array(await file.arrayBuffer());
+    let binary = "";
+    for (const byte of bytes) binary += String.fromCharCode(byte);
+    uploadEvidenceMutation.mutate({ orgId, id: workflowRow.id, fileName: file.name, contentType: file.type as "application/pdf" | "image/png" | "image/jpeg", dataBase64: btoa(binary) });
+  };
+
   const rows = (listQuery.data ?? []) as CertificateRow[];
   const summary = summaryQuery.data;
   const visibleRows = rows.filter(row => {
-    const matchesStatus = statusFilter === "all" || (statusFilter === "action" ? row.statusBand !== "current" || !row.operatorMemberId || row.rosterReviewStatus === "needs_review" : statusFilter === "unmatched" ? !row.operatorMemberId : row.statusBand === statusFilter);
+    const matchesStatus = statusFilter === "all" || (statusFilter === "action" ? row.statusBand !== "current" || (!row.operatorMemberId && row.rosterReviewStatus !== "reviewed_unmatched") || row.rosterReviewStatus === "needs_review" : statusFilter === "unmatched" ? !row.operatorMemberId : statusFilter === "within90" ? row.statusBand === "within30" || row.statusBand === "within90" : row.statusBand === statusFilter);
     const haystack = `${row.operatorName} ${row.certificateLabel} ${row.certificateNumber}`.toLowerCase();
     return matchesStatus && haystack.includes(search.trim().toLowerCase());
   });
-  const errorCsv = csvPreview?.failures.length ? ["Row,Original values,Failure reason", ...csvPreview.failures.map(f => `${f.rowNumber},${csvCell(f.raw.join(" | "))},${csvCell(f.reason)}`)].join("\n") : "";
+  const errorCsv = csvPreview?.failures.length ? ["Row,Original values,Failure reason", ...csvPreview.failures.map(f => [f.rowNumber, f.raw.join(" | "), f.reason].map(csvCell).join(","))].join("\n") : "";
   const blankCsvRows = csvText ? parseCsv(csvText).slice(1).filter(row => row.every(cell => cell.trim() === "")).length : 0;
   const exportRows = ["Operator,Certificate,Number,Issue date,Expiry date,Status,Link state,Follow-up owner,Follow-up status", ...visibleRows.map(row => [row.operatorName, row.certificateLabel, row.certificateNumber, formatDate(row.issuedAt), formatDate(row.expiresAt), BAND_LABELS[row.statusBand], row.operatorMemberId ? "Exact roster match" : "Unmatched — review needed", row.followUpOwner ?? "", row.followUpStatus].map(csvCell).join(","))].join("\n");
 
@@ -602,7 +644,7 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
             <Input aria-label="Search certificate register" className="pl-8" placeholder="Search operator, certificate, or number" value={search} onChange={e => setSearch(e.target.value)} />
           </div>
           <select aria-label="Filter certificate register" className="rounded-md border px-3 py-2 text-sm" value={statusFilter} onChange={e => setStatusFilter(e.target.value)}>
-            <option value="all">All records</option><option value="action">Action needed</option><option value="unmatched">Unmatched roster</option><option value="expired">Expired</option><option value="within30">30 days or less</option><option value="within90">31–90 days</option><option value="current">Current</option>
+            <option value="all">All records</option><option value="action">Action needed</option><option value="unmatched">Unmatched roster</option><option value="expired">Expired</option><option value="within30">30 days or less</option><option value="within90">90 days or less</option><option value="current">Current</option>
           </select>
           <span className="text-xs text-slate-500">Alerts: {CERTIFICATE_ALERT_THRESHOLDS.join(", ")} days before expiry</span>
         </div>
@@ -620,8 +662,7 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
           </p>
         ) : visibleRows.length === 0 ? (
           <p className="text-sm text-slate-500">
-            No certificates tracked yet. Add them one at a time, or import the
-            spreadsheet your team already keeps.
+            {rows.length === 0 ? "No certificates tracked yet. Add them one at a time, or import the spreadsheet your team already keeps." : "No records match the current search or filter."}
           </p>
         ) : (
           <div className="overflow-x-auto">
@@ -696,7 +737,7 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
                         >
                           <Pencil className="h-3.5 w-3.5" />
                         </Button>
-                        <Button type="button" size="sm" variant="outline" onClick={() => { setWorkflowRow(row); setFollowUpOwner(row.followUpOwner ?? ""); }}>
+                        <Button type="button" size="sm" variant="outline" onClick={() => { setWorkflowRow(row); setFollowUpOwner(row.followUpOwner ?? ""); setFollowUpStatus((row.followUpStatus as typeof followUpStatus) || "open"); setRosterReviewStatus(row.rosterReviewStatus === "reviewed_unmatched" ? "reviewed_unmatched" : "needs_review"); }}>
                           Follow-up
                         </Button>
                         {confirmRemove?.id === row.id ? (
@@ -858,23 +899,33 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
             </div>
             <div>
               <label className="text-sm font-medium">Follow-up status</label>
-              <select id="certificate-follow-up-status" className="mt-1 w-full rounded-md border px-3 py-2 text-sm" defaultValue={workflowRow?.followUpStatus ?? "open"}>
+              <select id="certificate-follow-up-status" className="mt-1 w-full rounded-md border px-3 py-2 text-sm" value={followUpStatus} onChange={e => setFollowUpStatus(e.target.value as typeof followUpStatus)}>
                 <option value="open">Open</option><option value="in_progress">In progress</option><option value="resolved">Resolved</option>
               </select>
             </div>
             {!workflowRow?.operatorMemberId && <div>
               <label className="text-sm font-medium">Roster review</label>
-              <select id="certificate-roster-review" className="mt-1 w-full rounded-md border px-3 py-2 text-sm" defaultValue={workflowRow?.rosterReviewStatus === "reviewed_unmatched" ? "reviewed_unmatched" : "needs_review"}>
+              <select id="certificate-roster-review" className="mt-1 w-full rounded-md border px-3 py-2 text-sm" value={rosterReviewStatus} onChange={e => setRosterReviewStatus(e.target.value as typeof rosterReviewStatus)}>
                 <option value="needs_review">Needs review</option><option value="reviewed_unmatched">Reviewed — remains unmatched</option>
               </select>
             </div>}
+            <div className="rounded-md border bg-slate-50 p-3">
+              <div className="text-sm font-medium">Certificate evidence</div>
+              <p className="mt-1 text-xs text-slate-600">Store a PDF or image copy. Manager-reviewed means reviewed by your team, not authenticated by the issuer.</p>
+              <Input className="mt-2" type="file" accept="application/pdf,image/png,image/jpeg" disabled={uploadEvidenceMutation.isPending} onChange={e => { const file = e.target.files?.[0]; if (file) void uploadEvidence(file); e.currentTarget.value = ""; }} />
+              <div className="mt-2 space-y-1 text-xs">
+                {(evidenceQuery.data ?? []).map((e: any) => <div key={e.id} className="flex items-center justify-between gap-2"><span>{e.fileName} {e.reviewedAt ? "• manager-reviewed" : "• awaiting review"}</span>{!e.reviewedAt && <Button type="button" size="sm" variant="outline" onClick={() => reviewEvidenceMutation.mutate({ orgId, evidenceId: e.id })}>Mark reviewed</Button>}</div>)}
+              </div>
+            </div>
+            <div className="rounded-md border p-3">
+              <div className="text-sm font-medium">Change history</div>
+              <div className="mt-2 max-h-24 space-y-1 overflow-auto text-xs text-slate-600">{(auditQuery.data ?? []).map((entry: any) => <div key={entry.id}>{formatDate(entry.createdAt)} · {entry.action}</div>)}</div>
+            </div>
           </div>
           <DialogFooter>
             <Button type="button" disabled={workflowMutation.isPending} onClick={() => {
               if (!workflowRow) return;
-              const status = (document.getElementById("certificate-follow-up-status") as HTMLSelectElement | null)?.value as "open" | "in_progress" | "resolved" | undefined;
-              const roster = (document.getElementById("certificate-roster-review") as HTMLSelectElement | null)?.value as "needs_review" | "reviewed_unmatched" | undefined;
-              workflowMutation.mutate({ orgId, id: workflowRow.id, followUpOwner: followUpOwner || null, followUpStatus: status, ...(roster ? { rosterReviewStatus: roster } : {}) });
+              workflowMutation.mutate({ orgId, id: workflowRow.id, expectedVersion: workflowRow.version, followUpOwner: followUpOwner || null, followUpStatus, ...(!workflowRow.operatorMemberId ? { rosterReviewStatus } : {}) });
             }}>Save follow-up</Button>
           </DialogFooter>
         </DialogContent>

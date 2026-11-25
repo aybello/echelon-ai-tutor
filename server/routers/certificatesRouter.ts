@@ -115,7 +115,7 @@ export const certificatesRouter = router({
       const { orgId } = await resolveOrgManager(ctx);
       const { id, ...patch } = input;
       try {
-        const updated = await updateCertificate(orgId, id, patch);
+        const updated = await updateCertificate(orgId, id, patch, ctx.user?.id ?? null);
         if (!updated)
           throw new TRPCError({
             code: "NOT_FOUND",
@@ -234,15 +234,23 @@ export const certificatesRouter = router({
 
   setWorkflow: managerProcedure.input(z.object({
     id: z.number().int().positive(),
+    expectedVersion: expectedVersionInput,
     followUpOwner: z.string().max(200).nullable().optional(),
     followUpStatus: z.enum(["open", "in_progress", "resolved"]).optional(),
     rosterReviewStatus: z.enum(["not_needed", "needs_review", "reviewed_unmatched"]).optional(),
   })).mutation(async ({ ctx, input }) => {
     const { orgId } = await resolveOrgManager(ctx);
     const { id, ...workflow } = input;
-    const updated = await setCertificateWorkflow(orgId, id, ctx.user?.id ?? null, workflow);
-    if (!updated) throw new TRPCError({ code: "NOT_FOUND", message: "Certificate not found in your organization." });
-    return updated;
+    try {
+      const updated = await setCertificateWorkflow(orgId, id, ctx.user?.id ?? null, workflow);
+      if (!updated) throw new TRPCError({ code: "NOT_FOUND", message: "Certificate not found in your organization." });
+      return updated;
+    } catch (error) {
+      if (error instanceof Error && error.message === "CERTIFICATE_VERSION_CONFLICT") {
+        throw new TRPCError({ code: "CONFLICT", message: "Certificate changed by another manager. Refresh and try again." });
+      }
+      throw error;
+    }
   }),
 
   uploadEvidence: managerProcedure.input(z.object({
