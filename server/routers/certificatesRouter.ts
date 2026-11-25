@@ -186,7 +186,7 @@ export const certificatesRouter = router({
         expiresAt: input.expiresAt,
         ...(input.issuedAt !== undefined ? { issuedAt: input.issuedAt } : {}),
         expectedVersion: input.expectedVersion,
-      });
+      }, ctx.user?.id ?? null);
       if (!renewed)
         throw new TRPCError({
           code: "NOT_FOUND",

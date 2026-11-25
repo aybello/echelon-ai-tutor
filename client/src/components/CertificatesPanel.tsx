@@ -318,6 +318,7 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
     const generation = ++csvReadGeneration.current;
     setCsvText(null);
     setCsvHeaders([]);
+    setCsvPreview(null);
     try {
       const text = await file.text();
       if (generation !== csvReadGeneration.current) return;
@@ -648,9 +649,9 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
           </select>
           <span className="text-xs text-slate-500">Alerts: {CERTIFICATE_ALERT_THRESHOLDS.join(", ")} days before expiry</span>
         </div>
-        {visibleRows.some(row => row.statusBand !== "current" || !row.operatorMemberId || row.rosterReviewStatus === "needs_review") && (
+        {visibleRows.some(row => row.statusBand !== "current" || (!row.operatorMemberId && row.rosterReviewStatus !== "reviewed_unmatched") || row.rosterReviewStatus === "needs_review") && (
           <div className="mb-4 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm">
-            <strong>Manager action queue:</strong> {visibleRows.filter(row => row.statusBand !== "current" || !row.operatorMemberId || row.rosterReviewStatus === "needs_review").length} record(s) need attention. This is an operational queue, not a compliance determination.
+            <strong>Manager action queue:</strong> {visibleRows.filter(row => row.statusBand !== "current" || (!row.operatorMemberId && row.rosterReviewStatus !== "reviewed_unmatched") || row.rosterReviewStatus === "needs_review").length} record(s) need attention. This is an operational queue, not a compliance determination.
           </div>
         )}
 
@@ -701,7 +702,7 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
                       <Badge className={BAND_COLORS[row.statusBand]}>
                         {BAND_LABELS[row.statusBand]}
                       </Badge>
-                      <div className="mt-1 text-xs text-slate-500">{row.operatorMemberId ? "Exact roster match" : "Unmatched — review needed"}</div>
+                      <div className="mt-1 text-xs text-slate-500">{row.operatorMemberId ? "Exact roster match" : row.rosterReviewStatus === "reviewed_unmatched" ? "Unmatched — reviewed" : "Unmatched — review needed"}</div>
                     </td>
                     <td className="py-2 pr-3">
                       {row.coursePath ? (
@@ -894,17 +895,17 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
           </DialogHeader>
           <div className="space-y-3">
             <div>
-              <label className="text-sm font-medium">Follow-up owner (optional)</label>
-              <Input className="mt-1" value={followUpOwner} onChange={e => setFollowUpOwner(e.target.value)} placeholder="Manager or team name" />
+              <label htmlFor="certificate-follow-up-owner" className="text-sm font-medium">Follow-up owner (optional)</label>
+              <Input id="certificate-follow-up-owner" className="mt-1" value={followUpOwner} onChange={e => setFollowUpOwner(e.target.value)} placeholder="Manager or team name" />
             </div>
             <div>
-              <label className="text-sm font-medium">Follow-up status</label>
+              <label htmlFor="certificate-follow-up-status" className="text-sm font-medium">Follow-up status</label>
               <select id="certificate-follow-up-status" className="mt-1 w-full rounded-md border px-3 py-2 text-sm" value={followUpStatus} onChange={e => setFollowUpStatus(e.target.value as typeof followUpStatus)}>
                 <option value="open">Open</option><option value="in_progress">In progress</option><option value="resolved">Resolved</option>
               </select>
             </div>
             {!workflowRow?.operatorMemberId && <div>
-              <label className="text-sm font-medium">Roster review</label>
+              <label htmlFor="certificate-roster-review" className="text-sm font-medium">Roster review</label>
               <select id="certificate-roster-review" className="mt-1 w-full rounded-md border px-3 py-2 text-sm" value={rosterReviewStatus} onChange={e => setRosterReviewStatus(e.target.value as typeof rosterReviewStatus)}>
                 <option value="needs_review">Needs review</option><option value="reviewed_unmatched">Reviewed — remains unmatched</option>
               </select>
@@ -912,7 +913,8 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
             <div className="rounded-md border bg-slate-50 p-3">
               <div className="text-sm font-medium">Certificate evidence</div>
               <p className="mt-1 text-xs text-slate-600">Store a PDF or image copy. Manager-reviewed means reviewed by your team, not authenticated by the issuer.</p>
-              <Input className="mt-2" type="file" accept="application/pdf,image/png,image/jpeg" disabled={uploadEvidenceMutation.isPending} onChange={e => { const file = e.target.files?.[0]; if (file) void uploadEvidence(file); e.currentTarget.value = ""; }} />
+              <label htmlFor="certificate-evidence-file" className="mt-2 block text-xs font-medium">Evidence file</label>
+              <Input id="certificate-evidence-file" className="mt-1" type="file" accept="application/pdf,image/png,image/jpeg" disabled={uploadEvidenceMutation.isPending} onChange={e => { const file = e.target.files?.[0]; if (file) void uploadEvidence(file); e.currentTarget.value = ""; }} />
               <div className="mt-2 space-y-1 text-xs">
                 {(evidenceQuery.data ?? []).map((e: any) => <div key={e.id} className="flex items-center justify-between gap-2"><span>{e.fileName} {e.reviewedAt ? "• manager-reviewed" : "• awaiting review"}</span>{!e.reviewedAt && <Button type="button" size="sm" variant="outline" onClick={() => reviewEvidenceMutation.mutate({ orgId, evidenceId: e.id })}>Mark reviewed</Button>}</div>)}
               </div>

@@ -591,14 +591,23 @@
       "proposedOnly": true,
       "standaloneApply": {
         "tables": [
+          "certificates",
           "certificate_audit_log",
           "certificate_evidence"
         ]
       },
       "verifierAllowMissingTables": [
+        "certificates",
         "certificate_audit_log",
         "certificate_evidence"
-      ]
+      ],
+      "alteredTables": {
+        "certificates": [
+          "followUpOwner",
+          "followUpStatus",
+          "rosterReviewStatus"
+        ]
+      }
     }
   ]
 }

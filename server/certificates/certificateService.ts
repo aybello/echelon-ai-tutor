@@ -67,6 +67,11 @@ export interface CertificateView extends Certificate {
   coursePath: string | null;
 }
 
+export type OperatorCertificateView = Omit<
+  CertificateView,
+  "followUpOwner" | "followUpStatus" | "rosterReviewStatus"
+>;
+
 export function toCertificateView(
   cert: Certificate,
   now: Date
@@ -450,7 +455,9 @@ export async function reviewCertificateEvidence(orgId: number, evidenceId: numbe
   const [row] = await db.select().from(certificateEvidence).where(and(eq(certificateEvidence.id, evidenceId), eq(certificateEvidence.organizationId, orgId))).limit(1);
   if (!row) return null;
   const reviewedAt = new Date();
-  await db.update(certificateEvidence).set({ reviewedByUserId: actorUserId, reviewedAt }).where(and(eq(certificateEvidence.id, evidenceId), eq(certificateEvidence.organizationId, orgId)));
+  const result = await db.update(certificateEvidence).set({ reviewedByUserId: actorUserId, reviewedAt }).where(and(eq(certificateEvidence.id, evidenceId), eq(certificateEvidence.organizationId, orgId), isNull(certificateEvidence.reviewedAt)));
+  const affected = Number((result as any)?.affectedRows ?? (Array.isArray(result) ? (result as any)[0]?.affectedRows : 0));
+  if (affected !== 1) throw new Error("EVIDENCE_ALREADY_REVIEWED_OR_DELETED");
   await db.insert(certificateAuditLog).values({ organizationId: orgId, certificateId: row.certificateId, actorUserId, action: "evidence_reviewed", changes: JSON.stringify({ evidenceId, reviewedAt }) });
   return { ...row, reviewedByUserId: actorUserId, reviewedAt };
 }
@@ -463,7 +470,8 @@ export async function reviewCertificateEvidence(orgId: number, evidenceId: numbe
 export async function renewCertificate(
   orgId: number,
   certificateId: number,
-  input: { expiresAt: Date; issuedAt?: Date | null; expectedVersion: number }
+  input: { expiresAt: Date; issuedAt?: Date | null; expectedVersion: number },
+  actorUserId: number | null = null
 ): Promise<CertificateView | null> {
   const existing = await getCertificateForOrg(orgId, certificateId);
   if (!existing) return null;
@@ -474,7 +482,7 @@ export async function renewCertificate(
     expiresAt,
     ...(input.issuedAt !== undefined ? { issuedAt: input.issuedAt } : {}),
     expectedVersion: input.expectedVersion,
-  });
+  }, actorUserId);
 }
 
 export interface ImportCertificatesResult {
@@ -598,7 +606,7 @@ export async function listCertificatesForOperator(
   userId: number,
   email: string,
   now = new Date()
-): Promise<CertificateView[]> {
+): Promise<OperatorCertificateView[]> {
   const db = await requireDb();
   const memberships = await db
     .select()
@@ -625,7 +633,11 @@ export async function listCertificatesForOperator(
   }
   return [...byId.values()]
     .sort((a, b) => a.expiresAt.getTime() - b.expiresAt.getTime())
-    .map(row => toCertificateView(row, now));
+    .map(row => {
+      const view = toCertificateView(row, now);
+      const { followUpOwner: _owner, followUpStatus: _status, rosterReviewStatus: _review, ...operatorView } = view;
+      return operatorView;
+    });
 }
 
 // ── Alert job support ────────────────────────────────────────────────────────
