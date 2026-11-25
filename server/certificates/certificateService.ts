@@ -10,6 +10,8 @@ import { and, asc, eq, isNull, lte, or } from "drizzle-orm";
 import { randomUUID } from "node:crypto";
 import {
   certificateAlerts,
+  certificateAuditLog,
+  certificateEvidence,
   certificates,
   organizationMembers,
   organizations,
@@ -31,6 +33,7 @@ import {
 import { getCourseByKey } from "../../shared/courseRegistry";
 import { normalizeEmail } from "../_core/access";
 import { getDb } from "../db";
+import { storageGet, storagePut } from "../storage";
 
 type Db = NonNullable<Awaited<ReturnType<typeof getDb>>>;
 
@@ -332,6 +335,18 @@ export async function updateCertificate(
       (Array.isArray(result) ? (result as any)[0]?.affectedRows : 0)
   );
   if (affected !== 1) throw new Error("CERTIFICATE_VERSION_CONFLICT");
+  const changes = Object.fromEntries(
+    Object.entries(patch).filter(([key]) => key !== "expectedVersion")
+  );
+  if (Object.keys(changes).length > 0) {
+    await db.insert(certificateAuditLog).values({
+      organizationId: orgId,
+      certificateId,
+      actorUserId: null,
+      action: "update",
+      changes: JSON.stringify(changes),
+    });
+  }
   const updated = await getCertificateForOrg(orgId, certificateId);
   return updated ? toCertificateView(updated, new Date()) : null;
 }
@@ -362,6 +377,71 @@ export async function deleteCertificate(
   if (expectedVersion != null && affected !== 1)
     throw new Error("CERTIFICATE_VERSION_CONFLICT");
   return affected === 1;
+}
+
+export async function listCertificateAudit(orgId: number, certificateId: number) {
+  const db = await requireDb();
+  return db.select().from(certificateAuditLog).where(and(eq(certificateAuditLog.organizationId, orgId), eq(certificateAuditLog.certificateId, certificateId))).orderBy(asc(certificateAuditLog.createdAt));
+}
+
+export async function setCertificateWorkflow(orgId: number, certificateId: number, actorUserId: number | null, input: { followUpOwner?: string | null; followUpStatus?: string; rosterReviewStatus?: string }) {
+  const db = await requireDb();
+  const existing = await getCertificateForOrg(orgId, certificateId);
+  if (!existing) return null;
+  await db.update(certificates).set({
+    ...(input.followUpOwner !== undefined ? { followUpOwner: input.followUpOwner?.trim() || null } : {}),
+    ...(input.followUpStatus !== undefined ? { followUpStatus: input.followUpStatus } : {}),
+    ...(input.rosterReviewStatus !== undefined ? { rosterReviewStatus: input.rosterReviewStatus } : {}),
+  }).where(and(eq(certificates.id, certificateId), eq(certificates.organizationId, orgId)));
+  await db.insert(certificateAuditLog).values({ organizationId: orgId, certificateId, actorUserId, action: "workflow", changes: JSON.stringify(input) });
+  return getCertificateForOrg(orgId, certificateId);
+}
+
+const EVIDENCE_TYPES = new Set(["application/pdf", "image/jpeg", "image/png"]);
+const MAX_EVIDENCE_BYTES = 5 * 1024 * 1024;
+
+export async function listCertificateEvidence(orgId: number, certificateId: number) {
+  const db = await requireDb();
+  return db.select().from(certificateEvidence).where(and(eq(certificateEvidence.organizationId, orgId), eq(certificateEvidence.certificateId, certificateId))).orderBy(asc(certificateEvidence.createdAt));
+}
+
+export async function addCertificateEvidence(orgId: number, certificateId: number, actorUserId: number | null, input: { fileName: string; contentType: string; dataBase64: string }) {
+  const db = await requireDb();
+  if (!EVIDENCE_TYPES.has(input.contentType)) throw new Error("Evidence must be a PDF, PNG, or JPEG.");
+  const data = Buffer.from(input.dataBase64, "base64");
+  if (!data.length || data.length > MAX_EVIDENCE_BYTES) throw new Error("Evidence must be no larger than 5 MB.");
+  if (!(await getCertificateForOrg(orgId, certificateId))) return null;
+  const safeName = input.fileName.replace(/[^a-zA-Z0-9._-]/g, "_").slice(-160) || "evidence";
+  const key = `certificate-evidence/org-${orgId}/certificate-${certificateId}/${randomUUID()}-${safeName}`;
+  const stored = await storagePut(key, data, input.contentType);
+  const [created] = await db.insert(certificateEvidence).values({ organizationId: orgId, certificateId, objectKey: stored.key, fileName: safeName, contentType: input.contentType, byteSize: data.length }).$returningId();
+  await db.insert(certificateAuditLog).values({ organizationId: orgId, certificateId, actorUserId, action: "evidence_added", changes: JSON.stringify({ fileName: safeName, byteSize: data.length }) });
+  return { id: created.id, fileName: safeName, contentType: input.contentType, byteSize: data.length, reviewed: false };
+}
+
+export async function getCertificateEvidenceUrl(orgId: number, evidenceId: number) {
+  const db = await requireDb();
+  const [row] = await db.select().from(certificateEvidence).where(and(eq(certificateEvidence.id, evidenceId), eq(certificateEvidence.organizationId, orgId))).limit(1);
+  if (!row) return null;
+  return { ...(await storageGet(row.objectKey)), fileName: row.fileName, contentType: row.contentType };
+}
+
+export async function deleteCertificateEvidence(orgId: number, evidenceId: number, actorUserId: number | null) {
+  const db = await requireDb();
+  const [row] = await db.select().from(certificateEvidence).where(and(eq(certificateEvidence.id, evidenceId), eq(certificateEvidence.organizationId, orgId))).limit(1);
+  if (!row) return false;
+  await db.delete(certificateEvidence).where(and(eq(certificateEvidence.id, evidenceId), eq(certificateEvidence.organizationId, orgId)));
+  await db.insert(certificateAuditLog).values({ organizationId: orgId, certificateId: row.certificateId, actorUserId, action: "evidence_deleted", changes: JSON.stringify({ fileName: row.fileName }) });
+  return true;
+}
+
+export async function reviewCertificateEvidence(orgId: number, evidenceId: number, actorUserId: number | null) {
+  const db = await requireDb();
+  const [row] = await db.select().from(certificateEvidence).where(and(eq(certificateEvidence.id, evidenceId), eq(certificateEvidence.organizationId, orgId))).limit(1);
+  if (!row) return null;
+  const reviewedAt = new Date();
+  await db.update(certificateEvidence).set({ reviewedByUserId: actorUserId, reviewedAt }).where(and(eq(certificateEvidence.id, evidenceId), eq(certificateEvidence.organizationId, orgId)));
+  return { ...row, reviewedByUserId: actorUserId, reviewedAt };
 }
 
 /**

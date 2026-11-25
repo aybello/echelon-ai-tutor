@@ -1809,6 +1809,9 @@ export const certificates = mysqlTable("certificates", {
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
   version: int("version").notNull().default(1),
+  followUpOwner: varchar("followUpOwner", { length: 200 }),
+  followUpStatus: varchar("followUpStatus", { length: 24 }).notNull().default("open"),
+  rosterReviewStatus: varchar("rosterReviewStatus", { length: 24 }).notNull().default("not_needed"),
 }, (t) => [
   index("certificates_org_expiry_idx").on(t.organizationId, t.expiresAt),
   uniqueIndex("certificates_org_type_number_idx").on(t.organizationId, t.certificateType, t.certificateNumber),
@@ -1817,6 +1820,37 @@ export const certificates = mysqlTable("certificates", {
 ]);
 export type Certificate = typeof certificates.$inferSelect;
 export type InsertCertificate = typeof certificates.$inferInsert;
+
+/** Append-only manager change history for certificate register edits. */
+export const certificateAuditLog = mysqlTable("certificate_audit_log", {
+  id: int("id").autoincrement().primaryKey(),
+  organizationId: int("organizationId").notNull(),
+  certificateId: int("certificateId").notNull(),
+  actorUserId: int("actorUserId"),
+  action: varchar("action", { length: 32 }).notNull(),
+  changes: text("changes").notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+}, table => [
+  index("certificate_audit_org_cert_idx").on(table.organizationId, table.certificateId, table.createdAt),
+]);
+export type CertificateAuditLog = typeof certificateAuditLog.$inferSelect;
+
+/** S3 metadata only; evidence remains private and manager-reviewed, not issuer-authenticated. */
+export const certificateEvidence = mysqlTable("certificate_evidence", {
+  id: int("id").autoincrement().primaryKey(),
+  organizationId: int("organizationId").notNull(),
+  certificateId: int("certificateId").notNull(),
+  objectKey: varchar("objectKey", { length: 512 }).notNull(),
+  fileName: varchar("fileName", { length: 200 }).notNull(),
+  contentType: varchar("contentType", { length: 100 }).notNull(),
+  byteSize: int("byteSize").notNull(),
+  reviewedByUserId: int("reviewedByUserId"),
+  reviewedAt: timestamp("reviewedAt"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+}, table => [
+  index("certificate_evidence_org_cert_idx").on(table.organizationId, table.certificateId),
+]);
+export type CertificateEvidence = typeof certificateEvidence.$inferSelect;
 
 /**
  * One row per expiry alert email actually sent. The unique key binds the

@@ -1,6 +1,6 @@
 import { useMemo, useRef, useState } from "react";
 import { Link } from "wouter";
-import { Pencil, Plus, RotateCw, Trash2, Upload } from "lucide-react";
+import { Download, FileText, Pencil, Plus, RotateCw, Search, Trash2, Upload } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -18,6 +18,9 @@ import {
   CERTIFICATE_TYPES,
   guessCertificateCsvMapping,
   parseCsv,
+  validateCertificateCsv,
+  CERTIFICATE_ALERT_THRESHOLDS,
+  CERTIFICATE_STATUS_LABELS,
   type CertificateStatusBand,
 } from "@shared/certificates";
 import { toast } from "sonner";
@@ -52,7 +55,25 @@ type CertificateRow = {
   statusBand: CertificateStatusBand;
   courseKey: string | null;
   coursePath: string | null;
+  operatorMemberId: number | null;
+  rosterReviewStatus: string;
+  followUpOwner: string | null;
+  followUpStatus: string;
 };
+
+function csvCell(value: unknown): string {
+  const text = String(value ?? "");
+  return /[",\n]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
+}
+
+function saveTextFile(text: string, filename: string, type = "text/csv;charset=utf-8") {
+  const url = URL.createObjectURL(new Blob([text], { type }));
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = filename;
+  link.click();
+  URL.revokeObjectURL(url);
+}
 
 function formatDate(value: Date | string | null): string {
   if (!value) return "—";
@@ -117,6 +138,11 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
 
   const [csvText, setCsvText] = useState<string | null>(null);
   const [csvHeaders, setCsvHeaders] = useState<string[]>([]);
+  const [csvPreview, setCsvPreview] = useState<ReturnType<typeof validateCertificateCsv> | null>(null);
+  const [statusFilter, setStatusFilter] = useState<string>("all");
+  const [search, setSearch] = useState("");
+  const [followUpOwner, setFollowUpOwner] = useState("");
+  const [workflowRow, setWorkflowRow] = useState<CertificateRow | null>(null);
   const [mapping, setMapping] = useState<{
     operatorName: number;
     certificateType: number;
@@ -194,8 +220,14 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
         );
       }
       setCsvText(null);
+      setCsvPreview(null);
       invalidate();
     },
+    onError: error => toast.error(error.message),
+  });
+
+  const workflowMutation = trpc.certificates.setWorkflow.useMutation({
+    onSuccess: () => { toast.success("Manager follow-up saved."); setWorkflowRow(null); invalidate(); },
     onError: error => toast.error(error.message),
   });
 
@@ -282,6 +314,13 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
         issuedAt: guessed.issuedAt ?? -1,
       });
       setCsvText(text);
+      setCsvPreview(validateCertificateCsv(text, {
+        operatorName: guessed.operatorName ?? 0,
+        certificateType: guessed.certificateType ?? 1,
+        certificateNumber: guessed.certificateNumber ?? 2,
+        expiresAt: guessed.expiresAt ?? 3,
+        ...(guessed.issuedAt != null ? { issuedAt: guessed.issuedAt } : {}),
+      }));
     } catch (error) {
       if (generation !== csvReadGeneration.current) return;
       toast.error(
@@ -305,8 +344,24 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
     });
   };
 
+  const refreshPreview = (nextMapping = mapping) => {
+    if (!csvText) return;
+    try { setCsvPreview(validateCertificateCsv(csvText, { ...nextMapping, ...(nextMapping.issuedAt >= 0 ? { issuedAt: nextMapping.issuedAt } : {}) })); }
+    catch (error) { toast.error(error instanceof Error ? error.message : "Could not validate this CSV."); }
+  };
+
+  const downloadTemplate = () => saveTextFile("Operator name,Certificate type,Certificate number,Expiry date,Issue date (optional)\nAva Chen,Class 1 Water Treatment,ON-1001,2027-03-31,2022-04-01\n", "echelon-certificate-import-template.csv");
+
   const rows = (listQuery.data ?? []) as CertificateRow[];
   const summary = summaryQuery.data;
+  const visibleRows = rows.filter(row => {
+    const matchesStatus = statusFilter === "all" || (statusFilter === "action" ? row.statusBand !== "current" || !row.operatorMemberId || row.rosterReviewStatus === "needs_review" : statusFilter === "unmatched" ? !row.operatorMemberId : row.statusBand === statusFilter);
+    const haystack = `${row.operatorName} ${row.certificateLabel} ${row.certificateNumber}`.toLowerCase();
+    return matchesStatus && haystack.includes(search.trim().toLowerCase());
+  });
+  const errorCsv = csvPreview?.failures.length ? ["Row,Original values,Failure reason", ...csvPreview.failures.map(f => `${f.rowNumber},${csvCell(f.raw.join(" | "))},${csvCell(f.reason)}`)].join("\n") : "";
+  const blankCsvRows = csvText ? parseCsv(csvText).slice(1).filter(row => row.every(cell => cell.trim() === "")).length : 0;
+  const exportRows = ["Operator,Certificate,Number,Issue date,Expiry date,Status,Link state,Follow-up owner,Follow-up status", ...visibleRows.map(row => [row.operatorName, row.certificateLabel, row.certificateNumber, formatDate(row.issuedAt), formatDate(row.expiresAt), BAND_LABELS[row.statusBand], row.operatorMemberId ? "Exact roster match" : "Unmatched — review needed", row.followUpOwner ?? "", row.followUpStatus].map(csvCell).join(","))].join("\n");
 
   const formFields = (
     <div className="space-y-3">
@@ -406,6 +461,15 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
             </p>
           </div>
           <div className="flex gap-2">
+            <Button type="button" variant="ghost" onClick={downloadTemplate}>
+              <Download className="mr-2 h-4 w-4" /> CSV template
+            </Button>
+            <Button type="button" variant="outline" onClick={() => { saveTextFile(exportRows, `certificate-register-${new Date().toISOString().slice(0, 10)}.csv`); }}>
+              <Download className="mr-2 h-4 w-4" /> Export register
+            </Button>
+            <Button type="button" variant="outline" onClick={() => window.print()}>
+              <FileText className="mr-2 h-4 w-4" /> Print / PDF
+            </Button>
             <Button
               type="button"
               variant="outline"
@@ -432,18 +496,20 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
         {summary && (
           <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
             {[
-              { label: "Operators tracked", value: summary.operatorsTracked },
-              { label: "Expiring in 90 days", value: summary.expiringWithin90 },
-              { label: "Expiring in 30 days", value: summary.expiringWithin30 },
-              { label: "Expired", value: summary.expired },
+              { label: "Operators tracked", value: summary.operatorsTracked, filter: "all" },
+              { label: "Expiring in 90 days", value: summary.expiringWithin90, filter: "within90" },
+              { label: "Expiring in 30 days", value: summary.expiringWithin30, filter: "within30" },
+              { label: "Expired", value: summary.expired, filter: "expired" },
             ].map(stat => (
-              <div
+              <button
                 key={stat.label}
+                type="button"
+                onClick={() => setStatusFilter(stat.filter)}
                 className="rounded-lg border bg-slate-50 px-4 py-3"
               >
                 <div className="text-2xl font-bold">{stat.value}</div>
                 <div className="text-xs text-slate-600">{stat.label}</div>
-              </div>
+              </button>
             ))}
           </div>
         )}
@@ -471,12 +537,11 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
                   <select
                     className="mt-1 w-full rounded-md border px-2 py-1.5 text-sm"
                     value={mapping[field]}
-                    onChange={e =>
-                      setMapping(m => ({
-                        ...m,
-                        [field]: Number(e.target.value),
-                      }))
-                    }
+                    onChange={e => {
+                      const nextMapping = { ...mapping, [field]: Number(e.target.value) };
+                      setMapping(nextMapping);
+                      refreshPreview(nextMapping);
+                    }}
                   >
                     {field === "issuedAt" && (
                       <option value={-1}>Not in my sheet</option>
@@ -514,6 +579,36 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
               Rows that cannot be imported are reported back with the reason —
               nothing is silently dropped.
             </p>
+            {csvPreview && (
+              <div className="mt-3 rounded border bg-white p-3 text-xs">
+                <div className="flex flex-wrap gap-4 font-medium">
+                  <span>{csvPreview.validRows.length + csvPreview.failures.length + blankCsvRows} parsed rows</span>
+                  <span>{blankCsvRows} blank rows</span>
+                  <span>{csvPreview.validRows.length} likely valid</span>
+                  <span>{csvPreview.failures.length} validation failures</span>
+                </div>
+                {csvPreview.failures.length > 0 && <div className="mt-2 max-h-32 overflow-auto text-red-700">
+                  {csvPreview.failures.map(f => <div key={f.rowNumber}>Row {f.rowNumber}: {f.reason}</div>)}
+                  <Button className="mt-2" type="button" size="sm" variant="outline" onClick={() => saveTextFile(errorCsv, `certificate-import-errors-${new Date().toISOString().slice(0, 10)}.csv`)}>Download error CSV</Button>
+                </div>}
+              </div>
+            )}
+          </div>
+        )}
+
+        <div className="mb-4 flex flex-wrap items-center gap-2 border-b pb-4">
+          <div className="relative min-w-[220px] flex-1">
+            <Search className="absolute left-2 top-2.5 h-4 w-4 text-slate-400" />
+            <Input aria-label="Search certificate register" className="pl-8" placeholder="Search operator, certificate, or number" value={search} onChange={e => setSearch(e.target.value)} />
+          </div>
+          <select aria-label="Filter certificate register" className="rounded-md border px-3 py-2 text-sm" value={statusFilter} onChange={e => setStatusFilter(e.target.value)}>
+            <option value="all">All records</option><option value="action">Action needed</option><option value="unmatched">Unmatched roster</option><option value="expired">Expired</option><option value="within30">30 days or less</option><option value="within90">31–90 days</option><option value="current">Current</option>
+          </select>
+          <span className="text-xs text-slate-500">Alerts: {CERTIFICATE_ALERT_THRESHOLDS.join(", ")} days before expiry</span>
+        </div>
+        {visibleRows.some(row => row.statusBand !== "current" || !row.operatorMemberId || row.rosterReviewStatus === "needs_review") && (
+          <div className="mb-4 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm">
+            <strong>Manager action queue:</strong> {visibleRows.filter(row => row.statusBand !== "current" || !row.operatorMemberId || row.rosterReviewStatus === "needs_review").length} record(s) need attention. This is an operational queue, not a compliance determination.
           </div>
         )}
 
@@ -523,7 +618,7 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
           <p className="text-sm text-red-600">
             Could not load the certificate register.
           </p>
-        ) : rows.length === 0 ? (
+        ) : visibleRows.length === 0 ? (
           <p className="text-sm text-slate-500">
             No certificates tracked yet. Add them one at a time, or import the
             spreadsheet your team already keeps.
@@ -543,7 +638,7 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
                 </tr>
               </thead>
               <tbody>
-                {rows.map(row => (
+                {visibleRows.map(row => (
                   <tr key={row.id} className="border-b last:border-0">
                     <td className="py-2 pr-3 font-medium">
                       {row.operatorName}
@@ -565,6 +660,7 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
                       <Badge className={BAND_COLORS[row.statusBand]}>
                         {BAND_LABELS[row.statusBand]}
                       </Badge>
+                      <div className="mt-1 text-xs text-slate-500">{row.operatorMemberId ? "Exact roster match" : "Unmatched — review needed"}</div>
                     </td>
                     <td className="py-2 pr-3">
                       {row.coursePath ? (
@@ -599,6 +695,9 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
                           onClick={() => openEdit(row)}
                         >
                           <Pencil className="h-3.5 w-3.5" />
+                        </Button>
+                        <Button type="button" size="sm" variant="outline" onClick={() => { setWorkflowRow(row); setFollowUpOwner(row.followUpOwner ?? ""); }}>
+                          Follow-up
                         </Button>
                         {confirmRemove?.id === row.id ? (
                           <Button
@@ -740,6 +839,43 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
             >
               Save renewal
             </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={workflowRow !== null} onOpenChange={open => { if (!open) setWorkflowRow(null); }}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Manager follow-up</DialogTitle>
+            <DialogDescription>
+              {workflowRow ? `${workflowRow.operatorName} — ${workflowRow.certificateLabel}` : ""}. Roster links are exact-match only; reviewing an unmatched name does not create an operator account link.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-3">
+            <div>
+              <label className="text-sm font-medium">Follow-up owner (optional)</label>
+              <Input className="mt-1" value={followUpOwner} onChange={e => setFollowUpOwner(e.target.value)} placeholder="Manager or team name" />
+            </div>
+            <div>
+              <label className="text-sm font-medium">Follow-up status</label>
+              <select id="certificate-follow-up-status" className="mt-1 w-full rounded-md border px-3 py-2 text-sm" defaultValue={workflowRow?.followUpStatus ?? "open"}>
+                <option value="open">Open</option><option value="in_progress">In progress</option><option value="resolved">Resolved</option>
+              </select>
+            </div>
+            {!workflowRow?.operatorMemberId && <div>
+              <label className="text-sm font-medium">Roster review</label>
+              <select id="certificate-roster-review" className="mt-1 w-full rounded-md border px-3 py-2 text-sm" defaultValue={workflowRow?.rosterReviewStatus === "reviewed_unmatched" ? "reviewed_unmatched" : "needs_review"}>
+                <option value="needs_review">Needs review</option><option value="reviewed_unmatched">Reviewed — remains unmatched</option>
+              </select>
+            </div>}
+          </div>
+          <DialogFooter>
+            <Button type="button" disabled={workflowMutation.isPending} onClick={() => {
+              if (!workflowRow) return;
+              const status = (document.getElementById("certificate-follow-up-status") as HTMLSelectElement | null)?.value as "open" | "in_progress" | "resolved" | undefined;
+              const roster = (document.getElementById("certificate-roster-review") as HTMLSelectElement | null)?.value as "needs_review" | "reviewed_unmatched" | undefined;
+              workflowMutation.mutate({ orgId, id: workflowRow.id, followUpOwner: followUpOwner || null, followUpStatus: status, ...(roster ? { rosterReviewStatus: roster } : {}) });
+            }}>Save follow-up</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>

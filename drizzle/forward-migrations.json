@@ -582,6 +582,23 @@
         "certificates",
         "certificate_alerts"
       ]
+    },
+    {
+      "version": 86,
+      "tag": "0086_certificate_manager_slice",
+      "file": "drizzle/0086_certificate_manager_slice.sql",
+      "sha256": "b532bcf62f6416d5e3cc9429b1c41a7a68e5ea2e2cc12ca8f2f09299e9aff338",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "certificate_audit_log",
+          "certificate_evidence"
+        ]
+      },
+      "verifierAllowMissingTables": [
+        "certificate_audit_log",
+        "certificate_evidence"
+      ]
     }
   ]
 }
