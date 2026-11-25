@@ -79,6 +79,12 @@ describe("resolveCertificateType", () => {
     expect(resolveCertificateType("class3-water-dist")).toBe(
       "class-3-water-distribution"
     );
+    expect(resolveCertificateType("class1-wastewater")).toBe(
+      "class-1-wastewater-treatment"
+    );
+    expect(resolveCertificateType("class4-wastewater")).toBe(
+      "class-4-wastewater-treatment"
+    );
     expect(resolveCertificateType("OIT")).toBe("oit");
     expect(resolveCertificateType("Operator-in-Training (OIT)")).toBe("oit");
     expect(resolveCertificateType("WQA")).toBe("water-quality-analyst");
@@ -96,8 +102,17 @@ describe("resolveCertificateType", () => {
     expect(courseKeyForCertificateType("class-2-water-distribution")).toBe(
       "class2-water-dist"
     );
+    expect(courseKeyForCertificateType("class-1-wastewater-treatment")).toBe(
+      "class1-ww"
+    );
+    expect(courseKeyForCertificateType("class-2-wastewater-treatment")).toBe(
+      "class2-ww"
+    );
     expect(courseKeyForCertificateType("class-3-wastewater-treatment")).toBe(
-      "class3-wastewater"
+      "class3-ww"
+    );
+    expect(courseKeyForCertificateType("class-4-wastewater-treatment")).toBe(
+      "class4-ww"
     );
     expect(courseKeyForCertificateType("class-4-wastewater-collection")).toBe(
       "class4-wastewater-coll"

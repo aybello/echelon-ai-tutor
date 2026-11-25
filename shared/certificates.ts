@@ -43,7 +43,7 @@ export const CERTIFICATE_TYPES: CertificateTypeDefinition[] = [
   ...classTypes(
     "wastewater-treatment",
     "Wastewater Treatment",
-    n => `class${n}-wastewater`
+    n => `class${n}-ww`
   ),
   ...classTypes(
     "wastewater-collection",
@@ -58,6 +58,13 @@ export const CERTIFICATE_TYPES: CertificateTypeDefinition[] = [
 ];
 
 const TYPE_BY_KEY = new Map(CERTIFICATE_TYPES.map(t => [t.key, t]));
+
+const LEGACY_TYPE_ALIASES = new Map(
+  CLASS_LEVELS.map(level => [
+    `class${level}-wastewater`,
+    `class-${level}-wastewater-treatment`,
+  ])
+);
 
 export function certificateTypeByKey(
   key: string
@@ -95,6 +102,8 @@ export function resolveCertificateType(raw: string): string | null {
   const normalized = normalizeTypeText(raw.trim());
   if (!normalized) return null;
   if (TYPE_BY_KEY.has(normalized)) return normalized;
+  const legacyAlias = LEGACY_TYPE_ALIASES.get(normalized);
+  if (legacyAlias) return legacyAlias;
   for (const type of CERTIFICATE_TYPES) {
     if (normalizeTypeText(type.label) === normalized) return type.key;
     if (normalizeTypeText(type.courseKey) === normalized) return type.key;
