@@ -352,6 +352,10 @@ export async function deleteCertificate(
   const existing = await getCertificateForOrg(orgId, certificateId);
   if (!existing) return false;
   return db.transaction(async tx => {
+    const [lockedParent] = await tx.select({ id: certificates.id }).from(certificates).where(and(eq(certificates.id, certificateId), eq(certificates.organizationId, orgId))).for("update").limit(1);
+    if (!lockedParent) return false;
+    const [evidence] = await tx.select({ id: certificateEvidence.id }).from(certificateEvidence).where(and(eq(certificateEvidence.organizationId, orgId), eq(certificateEvidence.certificateId, certificateId))).limit(1);
+    if (evidence) throw new Error("CERTIFICATE_HAS_EVIDENCE");
     const result = await tx.delete(certificates).where(
       and(
         eq(certificates.id, certificateId),
@@ -418,6 +422,8 @@ export async function addCertificateEvidence(orgId: number, certificateId: numbe
   const key = `certificate-evidence/org-${orgId}/certificate-${certificateId}/${randomUUID()}-${safeName}`;
   const stored = await storagePut(key, data, input.contentType);
   const created = await db.transaction(async tx => {
+    const [lockedParent] = await tx.select({ id: certificates.id }).from(certificates).where(and(eq(certificates.id, certificateId), eq(certificates.organizationId, orgId))).for("update").limit(1);
+    if (!lockedParent) throw new Error("CERTIFICATE_NOT_FOUND");
     const [inserted] = await tx.insert(certificateEvidence).values({ organizationId: orgId, certificateId, objectKey: stored.key, fileName: safeName, contentType: input.contentType, byteSize: data.length }).$returningId();
     await tx.insert(certificateAuditLog).values({ organizationId: orgId, certificateId, actorUserId, action: "evidence_added", changes: JSON.stringify({ fileName: safeName, byteSize: data.length }) });
     return inserted;

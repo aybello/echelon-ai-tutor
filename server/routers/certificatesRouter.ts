@@ -271,7 +271,7 @@ export const certificatesRouter = router({
     }
   }),
 
-  openEvidence: managerProcedure.input(z.object({ evidenceId: z.number().int().positive() })).query(async ({ ctx, input }) => {
+  openEvidence: managerProcedure.input(z.object({ orgId: z.number().int().positive(), evidenceId: z.number().int().positive() })).query(async ({ ctx, input }) => {
     const { orgId } = await resolveOrgManager(ctx);
     const result = await getCertificateEvidenceUrl(orgId, input.evidenceId);
     if (!result) throw new TRPCError({ code: "NOT_FOUND", message: "Evidence not found in your organization." });

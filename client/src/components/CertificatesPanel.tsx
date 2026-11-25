@@ -247,7 +247,7 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
     { enabled: workflowRow !== null, retry: false }
   );
   const openEvidenceQuery = trpc.certificates.openEvidence.useQuery(
-    { evidenceId: openingEvidenceId ?? 0 },
+    { orgId, evidenceId: openingEvidenceId ?? 0 },
     { enabled: openingEvidenceId !== null, retry: false }
   );
   const uploadEvidenceMutation = trpc.certificates.uploadEvidence.useMutation({
@@ -602,6 +602,7 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
                   <select
                     className="mt-1 w-full rounded-md border px-2 py-1.5 text-sm"
                     value={mapping[field]}
+                    disabled={importMutation.isPending}
                     onChange={e => {
                       const nextMapping = { ...mapping, [field]: Number(e.target.value) };
                       setMapping(nextMapping);
