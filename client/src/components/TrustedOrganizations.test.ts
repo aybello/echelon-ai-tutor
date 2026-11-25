@@ -14,9 +14,9 @@ const source = readFileSync(new URL("./TrustedOrganizations.tsx", import.meta.ur
 const customerLists = (html: string) => [...html.matchAll(/<ul\b[^>]*>([\s\S]*?)<\/ul>/g)];
 
 describe("homepage trusted organizations", () => {
-  it("lists exactly the four requested customer organizations in the original list", () => {
+  it("lists exactly the three requested customer organizations in the original list", () => {
     expect(customers.map(item => item.name)).toEqual([
-      "Utilities Kingston", "City of Winnipeg", "City of Quinte West", "City of Peterborough",
+      "Utilities Kingston", "City of Winnipeg", "City of Quinte West",
     ]);
     const html = render();
     const customerGroup = html.split('class="trusted-organizations-customers"')[1].split('class="trusted-organizations-supporter"')[0];
@@ -25,7 +25,7 @@ describe("homepage trusted organizations", () => {
     expect(customerGroup).toContain("Used by operators and teams at");
     const [original] = customerLists(customerGroup);
     expect(original[0]).not.toContain("aria-hidden");
-    expect(original[1].match(/<li>/g)).toHaveLength(4);
+    expect(original[1].match(/<li>/g)).toHaveLength(3);
     for (const customer of customers) expect(original[1]).toContain(`<figcaption>${customer.name}</figcaption>`);
     expect(customerGroup).not.toContain("Black Entrepreneurship Alliance");
   });
@@ -36,7 +36,7 @@ describe("homepage trusted organizations", () => {
     const [original, clone] = lists;
     expect(clone[0]).toContain('aria-hidden="true" role="presentation"');
     expect(clone[1]).toBe(original[1]);
-    expect(clone[1].match(/<li>/g)).toHaveLength(4);
+    expect(clone[1].match(/<li>/g)).toHaveLength(3);
     expect(clone[1]).not.toMatch(/<(?:a|button|input|select|textarea)\b|tabindex|\bid=/i);
   });
 
@@ -50,7 +50,7 @@ describe("homepage trusted organizations", () => {
 
   it("uses managed official assets with meaningful alt text, dimensions and persistent labels", () => {
     const html = render();
-    expect(html.match(/<img /g)).toHaveLength(8);
+    expect(html.match(/<img /g)).toHaveLength(6);
     for (const organization of customers) {
       expect(organization.runtimeUrl).toMatch(/^\/manus-storage\/[\w.-]+$/);
       expect(organization.sourcePage).toMatch(/^https:\/\//);
@@ -67,13 +67,13 @@ describe("homepage trusted organizations", () => {
       expect(html).toContain(`width="${organization.width}" height="${organization.height}"`);
       expect(html).toContain(`<figcaption>${organization.name}</figcaption>`);
     }
-    expect(html.match(/loading="eager" decoding="async"/g)).toHaveLength(8);
+    expect(html.match(/loading="eager" decoding="async"/g)).toHaveLength(6);
     expect(html).not.toContain("<a ");
     expect(source).not.toMatch(/onError|useEffect|IntersectionObserver|ResizeObserver|setTimeout|setInterval|requestAnimationFrame|carousel|scrollIntoView/);
   });
 
   it.each(
-    ["city-of-winnipeg", "city-of-peterborough"].flatMap(slug =>
+    ["city-of-winnipeg"].flatMap(slug =>
       [false, undefined, "true"].map(flag => ({ slug, flag })),
     ),
   )("withholds original and cloned marks unless the display flag is strict true ($slug, $flag)", ({ slug, flag }) => {
@@ -82,7 +82,7 @@ describe("homepage trusted organizations", () => {
     try {
       Object.assign(organization, { logoDisplayAllowed: flag });
       const html = render();
-      expect(html.match(/<img /g)).toHaveLength(6);
+      expect(html.match(/<img /g)).toHaveLength(4);
       expect(html).not.toContain(`src="${organization.runtimeUrl}"`);
       for (const list of customerLists(html)) expect(list[1]).toContain(`<figcaption>${organization.name}</figcaption>`);
       expect(html).not.toMatch(/permission|pending|written|legal/i);

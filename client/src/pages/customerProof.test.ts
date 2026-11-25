@@ -12,10 +12,10 @@ describe("customer proof on public pages", () => {
       expect(source).not.toContain("Black Entrepreneurship Alliance");
     }
   );
-  it("uses the four real approved marks with a bounded relationship label", () => {
+  it("uses the three remaining approved marks with a bounded relationship label", () => {
     const strip = read("client/src/components/TrustedOrganizations.tsx");
     expect(strip).toContain("Used by operators and teams at");
-    expect(customers.map(item => item.name)).toEqual(["Utilities Kingston", "City of Winnipeg", "City of Quinte West", "City of Peterborough"]);
+    expect(customers.map(item => item.name)).toEqual(["Utilities Kingston", "City of Winnipeg", "City of Quinte West"]);
     expect(strip).not.toMatch(/paying customers|endorsed by/i);
   });
   it("places proof once after the interactive hero and course discovery before tools", () => {

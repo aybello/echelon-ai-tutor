@@ -1,6 +1,6 @@
 import { ArrowUpRight, Star } from "lucide-react";
 
-/** Sources: owner-supplied November 18 transcript, Codie's five-star rating confirmed by owner November 23, and public Google listing checked November 20, 2026. */
+/** Source: public Google listing checked November 20, 2026. */
 export default function LearnerReviews() {
   return <section id="reviews" className="homepage-section homepage-reviews" aria-labelledby="homepage-reviews-title">
     <div className="homepage-section-heading homepage-section-heading-left">
@@ -8,19 +8,6 @@ export default function LearnerReviews() {
       <h2 id="homepage-reviews-title">Learning that fits around the job.</h2>
       <p>Real experiences from learners using Echelon to prepare.</p>
     </div>
-    <figure className="homepage-review-card">
-      <div className="flex gap-1 text-amber-500" role="img" aria-label="5 out of 5 stars">
-        {Array.from({ length: 5 }, (_, index) => <Star key={index} size={20} fill="currentColor" aria-hidden="true" />)}
-      </div>
-      <blockquote>
-        <p>“I am having great success with it. I do enjoy it.”</p>
-        <p>“It's nice to have this digital program where you don't have to be on a computer. You can jump on your phone, you don't have to lug around a study textbook.”</p>
-      </blockquote>
-      <figcaption>
-        <strong>Codie Bachner</strong>
-        <span>Environmental Officer I · City of Peterborough</span>
-      </figcaption>
-    </figure>
     <figure className="homepage-review-card">
       <div className="flex gap-1 text-amber-500" role="img" aria-label="5 out of 5 stars">
         {Array.from({ length: 5 }, (_, index) => <Star key={index} size={20} fill="currentColor" aria-hidden="true" />)}

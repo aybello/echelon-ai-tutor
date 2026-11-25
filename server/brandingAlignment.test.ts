@@ -93,9 +93,8 @@ describe("bounded company positioning alignment", () => {
     expect(landing).toContain('href="/guides"');
   });
 
-  it("uses the canonical four-organization list without inventing a paid-customer claim", () => {
-    expect(customers).toHaveLength(4);
-    expect(customers.map(organization => organization.name)).toContain("City of Peterborough");
+  it("uses the canonical three-organization list without inventing a paid-customer claim", () => {
+    expect(customers).toHaveLength(3);
     const strip = readFileSync("client/src/components/TrustedOrganizations.tsx", "utf8");
     expect(landing.match(/<TrustedOrganizations \/>/g)).toHaveLength(1);
     expect(strip).toContain("Used by operators and teams at");

@@ -13,7 +13,7 @@ describe("Teams page privacy", () => {
     expect(teams).toContain("<TrustedOrganizations />");
     expect(teams).not.toContain("teams-customer-proof-names");
     expect(customers.map(customer => customer.name)).toEqual([
-      "Utilities Kingston", "City of Winnipeg", "City of Quinte West", "City of Peterborough",
+      "Utilities Kingston", "City of Winnipeg", "City of Quinte West",
     ]);
     expect(customers.every(customer => customer.logoDisplayAllowed === true)).toBe(true);
     expect(customers.some(customer => /BEA|Black Entrepreneurship Alliance/i.test(customer.name))).toBe(false);
