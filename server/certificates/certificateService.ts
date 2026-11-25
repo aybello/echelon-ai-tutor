@@ -311,48 +311,33 @@ export async function updateCertificate(
       : canonicalUtcDay(existing.expiresAt);
   if (nextIssuedAt && nextIssuedAt.getTime() > nextExpiresAt.getTime())
     throw new Error("Issue date must be on or before expiry date.");
-  const result = await db
-    .update(certificates)
-    .set({
-      ...(patch.operatorName !== undefined
-        ? { operatorName: patch.operatorName.trim() }
-        : {}),
-      ...(patch.certificateType !== undefined
-        ? { certificateType: patch.certificateType }
-        : {}),
-      ...(patch.certificateNumber !== undefined
-        ? { certificateNumber: patch.certificateNumber.trim() }
-        : {}),
-      ...(patch.issuedAt !== undefined ? { issuedAt: nextIssuedAt } : {}),
-      ...(patch.expiresAt !== undefined ? { expiresAt: nextExpiresAt } : {}),
-      version: (existing.version ?? 1) + 1,
-    })
-    .where(
-      and(
-        eq(certificates.id, certificateId),
-        eq(certificates.organizationId, orgId),
-        ...(patch.expectedVersion != null
-          ? [eq(certificates.version, patch.expectedVersion)]
-          : [])
-      )
-    );
-  const affected = Number(
-    (result as any)?.affectedRows ??
-      (Array.isArray(result) ? (result as any)[0]?.affectedRows : 0)
-  );
-  if (affected !== 1) throw new Error("CERTIFICATE_VERSION_CONFLICT");
   const changes = Object.fromEntries(
     Object.entries(patch).filter(([key]) => key !== "expectedVersion")
   );
-  if (Object.keys(changes).length > 0) {
-    await db.insert(certificateAuditLog).values({
-      organizationId: orgId,
-      certificateId,
-      actorUserId,
-      action: "update",
-      changes: JSON.stringify(changes),
-    });
-  }
+  await db.transaction(async tx => {
+    const result = await tx
+      .update(certificates)
+      .set({
+        ...(patch.operatorName !== undefined ? { operatorName: patch.operatorName.trim() } : {}),
+        ...(patch.certificateType !== undefined ? { certificateType: patch.certificateType } : {}),
+        ...(patch.certificateNumber !== undefined ? { certificateNumber: patch.certificateNumber.trim() } : {}),
+        ...(patch.issuedAt !== undefined ? { issuedAt: nextIssuedAt } : {}),
+        ...(patch.expiresAt !== undefined ? { expiresAt: nextExpiresAt } : {}),
+        version: (existing.version ?? 1) + 1,
+      })
+      .where(and(eq(certificates.id, certificateId), eq(certificates.organizationId, orgId), eq(certificates.version, patch.expectedVersion)));
+    const affected = Number((result as any)?.affectedRows ?? (Array.isArray(result) ? (result as any)[0]?.affectedRows : 0));
+    if (affected !== 1) throw new Error("CERTIFICATE_VERSION_CONFLICT");
+    if (Object.keys(changes).length > 0) {
+      await tx.insert(certificateAuditLog).values({
+        organizationId: orgId,
+        certificateId,
+        actorUserId,
+        action: "update",
+        changes: JSON.stringify(changes),
+      });
+    }
+  });
   const updated = await getCertificateForOrg(orgId, certificateId);
   return updated ? toCertificateView(updated, new Date()) : null;
 }
@@ -360,29 +345,28 @@ export async function updateCertificate(
 export async function deleteCertificate(
   orgId: number,
   certificateId: number,
-  expectedVersion: number
+  expectedVersion: number,
+  actorUserId: number | null = null
 ): Promise<boolean> {
   const db = await requireDb();
   const existing = await getCertificateForOrg(orgId, certificateId);
   if (!existing) return false;
-  const result = await db
-    .delete(certificates)
-    .where(
+  return db.transaction(async tx => {
+    const result = await tx.delete(certificates).where(
       and(
         eq(certificates.id, certificateId),
         eq(certificates.organizationId, orgId),
-        ...(expectedVersion != null
-          ? [eq(certificates.version, expectedVersion)]
-          : [])
+        eq(certificates.version, expectedVersion)
       )
     );
-  const affected = Number(
-    (result as any)?.affectedRows ??
-      (Array.isArray(result) ? (result as any)[0]?.affectedRows : 0)
-  );
-  if (expectedVersion != null && affected !== 1)
-    throw new Error("CERTIFICATE_VERSION_CONFLICT");
-  return affected === 1;
+    const affected = Number(
+      (result as any)?.affectedRows ??
+        (Array.isArray(result) ? (result as any)[0]?.affectedRows : 0)
+    );
+    if (affected !== 1) throw new Error("CERTIFICATE_VERSION_CONFLICT");
+    await tx.insert(certificateAuditLog).values({ organizationId: orgId, certificateId, actorUserId, action: "delete", changes: JSON.stringify({ certificateNumber: existing.certificateNumber }) });
+    return true;
+  });
 }
 
 export async function listCertificateAudit(orgId: number, certificateId: number) {
@@ -394,16 +378,20 @@ export async function setCertificateWorkflow(orgId: number, certificateId: numbe
   const db = await requireDb();
   const existing = await getCertificateForOrg(orgId, certificateId);
   if (!existing) return null;
-  const result = await db.update(certificates).set({
-    ...(input.followUpOwner !== undefined ? { followUpOwner: input.followUpOwner?.trim() || null } : {}),
-    ...(input.followUpStatus !== undefined ? { followUpStatus: input.followUpStatus } : {}),
-    ...(input.rosterReviewStatus !== undefined ? { rosterReviewStatus: input.rosterReviewStatus } : {}),
-    version: (existing.version ?? 1) + 1,
-  }).where(and(eq(certificates.id, certificateId), eq(certificates.organizationId, orgId), eq(certificates.version, input.expectedVersion)));
-  const affected = Number((result as any)?.affectedRows ?? (Array.isArray(result) ? (result as any)[0]?.affectedRows : 0));
-  if (affected !== 1) throw new Error("CERTIFICATE_VERSION_CONFLICT");
-  const { expectedVersion: _expectedVersion, ...applied } = input;
-  await db.insert(certificateAuditLog).values({ organizationId: orgId, certificateId, actorUserId, action: "workflow", changes: JSON.stringify({ ...applied, followUpOwner: applied.followUpOwner?.trim() || null }) });
+  const followUpOwner = input.followUpOwner !== undefined ? input.followUpOwner?.trim() || null : existing.followUpOwner;
+  const followUpStatus = input.followUpStatus ?? existing.followUpStatus;
+  const rosterReviewStatus = input.rosterReviewStatus ?? existing.rosterReviewStatus;
+  await db.transaction(async tx => {
+    const result = await tx.update(certificates).set({
+      followUpOwner,
+      followUpStatus,
+      rosterReviewStatus,
+      version: (existing.version ?? 1) + 1,
+    }).where(and(eq(certificates.id, certificateId), eq(certificates.organizationId, orgId), eq(certificates.version, input.expectedVersion)));
+    const affected = Number((result as any)?.affectedRows ?? (Array.isArray(result) ? (result as any)[0]?.affectedRows : 0));
+    if (affected !== 1) throw new Error("CERTIFICATE_VERSION_CONFLICT");
+    await tx.insert(certificateAuditLog).values({ organizationId: orgId, certificateId, actorUserId, action: "workflow", changes: JSON.stringify({ followUpOwner, followUpStatus, rosterReviewStatus }) });
+  });
   return getCertificateForOrg(orgId, certificateId);
 }
 
@@ -429,8 +417,11 @@ export async function addCertificateEvidence(orgId: number, certificateId: numbe
   const safeName = input.fileName.replace(/[^a-zA-Z0-9._-]/g, "_").slice(-160) || "evidence";
   const key = `certificate-evidence/org-${orgId}/certificate-${certificateId}/${randomUUID()}-${safeName}`;
   const stored = await storagePut(key, data, input.contentType);
-  const [created] = await db.insert(certificateEvidence).values({ organizationId: orgId, certificateId, objectKey: stored.key, fileName: safeName, contentType: input.contentType, byteSize: data.length }).$returningId();
-  await db.insert(certificateAuditLog).values({ organizationId: orgId, certificateId, actorUserId, action: "evidence_added", changes: JSON.stringify({ fileName: safeName, byteSize: data.length }) });
+  const created = await db.transaction(async tx => {
+    const [inserted] = await tx.insert(certificateEvidence).values({ organizationId: orgId, certificateId, objectKey: stored.key, fileName: safeName, contentType: input.contentType, byteSize: data.length }).$returningId();
+    await tx.insert(certificateAuditLog).values({ organizationId: orgId, certificateId, actorUserId, action: "evidence_added", changes: JSON.stringify({ fileName: safeName, byteSize: data.length }) });
+    return inserted;
+  });
   return { id: created.id, fileName: safeName, contentType: input.contentType, byteSize: data.length, reviewed: false };
 }
 
@@ -445,8 +436,12 @@ export async function deleteCertificateEvidence(orgId: number, evidenceId: numbe
   const db = await requireDb();
   const [row] = await db.select().from(certificateEvidence).where(and(eq(certificateEvidence.id, evidenceId), eq(certificateEvidence.organizationId, orgId))).limit(1);
   if (!row) return false;
-  await db.delete(certificateEvidence).where(and(eq(certificateEvidence.id, evidenceId), eq(certificateEvidence.organizationId, orgId)));
-  await db.insert(certificateAuditLog).values({ organizationId: orgId, certificateId: row.certificateId, actorUserId, action: "evidence_deleted", changes: JSON.stringify({ fileName: row.fileName }) });
+  await db.transaction(async tx => {
+    const result = await tx.delete(certificateEvidence).where(and(eq(certificateEvidence.id, evidenceId), eq(certificateEvidence.organizationId, orgId)));
+    const affected = Number((result as any)?.affectedRows ?? (Array.isArray(result) ? (result as any)[0]?.affectedRows : 0));
+    if (affected !== 1) throw new Error("EVIDENCE_ALREADY_DELETED");
+    await tx.insert(certificateAuditLog).values({ organizationId: orgId, certificateId: row.certificateId, actorUserId, action: "evidence_deleted", changes: JSON.stringify({ fileName: row.fileName }) });
+  });
   return true;
 }
 
@@ -455,10 +450,12 @@ export async function reviewCertificateEvidence(orgId: number, evidenceId: numbe
   const [row] = await db.select().from(certificateEvidence).where(and(eq(certificateEvidence.id, evidenceId), eq(certificateEvidence.organizationId, orgId))).limit(1);
   if (!row) return null;
   const reviewedAt = new Date();
-  const result = await db.update(certificateEvidence).set({ reviewedByUserId: actorUserId, reviewedAt }).where(and(eq(certificateEvidence.id, evidenceId), eq(certificateEvidence.organizationId, orgId), isNull(certificateEvidence.reviewedAt)));
-  const affected = Number((result as any)?.affectedRows ?? (Array.isArray(result) ? (result as any)[0]?.affectedRows : 0));
-  if (affected !== 1) throw new Error("EVIDENCE_ALREADY_REVIEWED_OR_DELETED");
-  await db.insert(certificateAuditLog).values({ organizationId: orgId, certificateId: row.certificateId, actorUserId, action: "evidence_reviewed", changes: JSON.stringify({ evidenceId, reviewedAt }) });
+  await db.transaction(async tx => {
+    const result = await tx.update(certificateEvidence).set({ reviewedByUserId: actorUserId, reviewedAt }).where(and(eq(certificateEvidence.id, evidenceId), eq(certificateEvidence.organizationId, orgId), isNull(certificateEvidence.reviewedAt)));
+    const affected = Number((result as any)?.affectedRows ?? (Array.isArray(result) ? (result as any)[0]?.affectedRows : 0));
+    if (affected !== 1) throw new Error("EVIDENCE_ALREADY_REVIEWED_OR_DELETED");
+    await tx.insert(certificateAuditLog).values({ organizationId: orgId, certificateId: row.certificateId, actorUserId, action: "evidence_reviewed", changes: JSON.stringify({ evidenceId, reviewedAt }) });
+  });
   return { ...row, reviewedByUserId: actorUserId, reviewedAt };
 }
 

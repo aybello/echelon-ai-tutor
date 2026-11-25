@@ -153,7 +153,8 @@ export const certificatesRouter = router({
       const removed = await deleteCertificate(
         orgId,
         input.id,
-        input.expectedVersion
+        input.expectedVersion,
+        ctx.user?.id ?? null
       );
       if (!removed)
         throw new TRPCError({

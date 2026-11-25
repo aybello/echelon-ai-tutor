@@ -146,6 +146,7 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
   const [followUpStatus, setFollowUpStatus] = useState<"open" | "in_progress" | "resolved">("open");
   const [rosterReviewStatus, setRosterReviewStatus] = useState<"needs_review" | "reviewed_unmatched">("needs_review");
   const [workflowRow, setWorkflowRow] = useState<CertificateRow | null>(null);
+  const [openingEvidenceId, setOpeningEvidenceId] = useState<number | null>(null);
   const [mapping, setMapping] = useState<{
     operatorName: number;
     certificateType: number;
@@ -161,6 +162,7 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
   });
   const fileRef = useRef<HTMLInputElement>(null);
   const csvReadGeneration = useRef(0);
+  const csvSubmittedGeneration = useRef<number | null>(null);
 
   const invalidate = () => {
     void utils.certificates.list.invalidate({ orgId });
@@ -222,8 +224,11 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
               .join(" ")
         );
       }
-      setCsvText(null);
-      setCsvPreview(null);
+      if (csvSubmittedGeneration.current === null || csvSubmittedGeneration.current === csvReadGeneration.current) {
+        setCsvText(null);
+        setCsvPreview(null);
+        csvSubmittedGeneration.current = null;
+      }
       invalidate();
     },
     onError: error => toast.error(error.message),
@@ -241,12 +246,20 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
     { orgId, id: workflowRow?.id ?? 0 },
     { enabled: workflowRow !== null, retry: false }
   );
+  const openEvidenceQuery = trpc.certificates.openEvidence.useQuery(
+    { evidenceId: openingEvidenceId ?? 0 },
+    { enabled: openingEvidenceId !== null, retry: false }
+  );
   const uploadEvidenceMutation = trpc.certificates.uploadEvidence.useMutation({
     onSuccess: () => { toast.success("Evidence uploaded. It remains unverified until a manager reviews it."); void evidenceQuery.refetch(); void auditQuery.refetch(); },
     onError: error => toast.error(error.message),
   });
   const reviewEvidenceMutation = trpc.certificates.reviewEvidence.useMutation({
     onSuccess: () => { toast.success("Evidence marked manager-reviewed."); void evidenceQuery.refetch(); void auditQuery.refetch(); },
+    onError: error => toast.error(error.message),
+  });
+  const deleteEvidenceMutation = trpc.certificates.deleteEvidence.useMutation({
+    onSuccess: () => { toast.success("Evidence deleted."); setOpeningEvidenceId(null); void evidenceQuery.refetch(); void auditQuery.refetch(); },
     onError: error => toast.error(error.message),
   });
 
@@ -351,6 +364,8 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
 
   const submitImport = () => {
     if (!csvText) return;
+    const generation = csvReadGeneration.current;
+    csvSubmittedGeneration.current = generation;
     importMutation.mutate({
       orgId,
       csvText,
@@ -361,7 +376,13 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
         expiresAt: mapping.expiresAt,
         ...(mapping.issuedAt >= 0 ? { issuedAt: mapping.issuedAt } : {}),
       },
-    });
+    }, { onSuccess: () => {
+      if (generation === csvReadGeneration.current) {
+        setCsvText(null);
+        setCsvPreview(null);
+      }
+      if (csvSubmittedGeneration.current === generation) csvSubmittedGeneration.current = null;
+    }, onError: () => { csvSubmittedGeneration.current = null; } });
   };
 
   const refreshPreview = (nextMapping = mapping) => {
@@ -404,7 +425,8 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
   });
   const errorCsv = csvPreview?.failures.length ? ["Row,Original values,Failure reason", ...csvPreview.failures.map(f => [f.rowNumber, f.raw.join(" | "), f.reason].map(csvCell).join(","))].join("\n") : "";
   const blankCsvRows = csvText ? parseCsv(csvText).slice(1).filter(row => row.every(cell => cell.trim() === "")).length : 0;
-  const exportRows = ["Operator,Certificate,Number,Issue date,Expiry date,Status,Link state,Follow-up owner,Follow-up status", ...visibleRows.map(row => [row.operatorName, row.certificateLabel, row.certificateNumber, formatDate(row.issuedAt), formatDate(row.expiresAt), BAND_LABELS[row.statusBand], row.operatorMemberId ? "Exact roster match" : "Unmatched — review needed", row.followUpOwner ?? "", row.followUpStatus].map(csvCell).join(","))].join("\n");
+  const linkState = (row: CertificateRow) => row.operatorMemberId ? "Exact roster match" : row.rosterReviewStatus === "reviewed_unmatched" ? "Unmatched — reviewed" : "Unmatched — review needed";
+  const exportRows = ["Operator,Certificate,Number,Issue date,Expiry date,Status,Link state,Follow-up owner,Follow-up status", ...visibleRows.map(row => [row.operatorName, row.certificateLabel, row.certificateNumber, formatDate(row.issuedAt), formatDate(row.expiresAt), BAND_LABELS[row.statusBand], linkState(row), row.followUpOwner ?? "", row.followUpStatus].map(csvCell).join(","))].join("\n");
 
   const formFields = (
     <div className="space-y-3">
@@ -702,7 +724,7 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
                       <Badge className={BAND_COLORS[row.statusBand]}>
                         {BAND_LABELS[row.statusBand]}
                       </Badge>
-                      <div className="mt-1 text-xs text-slate-500">{row.operatorMemberId ? "Exact roster match" : row.rosterReviewStatus === "reviewed_unmatched" ? "Unmatched — reviewed" : "Unmatched — review needed"}</div>
+                      <div className="mt-1 text-xs text-slate-500">{linkState(row)}</div>
                     </td>
                     <td className="py-2 pr-3">
                       {row.coursePath ? (
@@ -916,7 +938,7 @@ export function CertificatesPanel({ orgId }: CertificatesPanelProps) {
               <label htmlFor="certificate-evidence-file" className="mt-2 block text-xs font-medium">Evidence file</label>
               <Input id="certificate-evidence-file" className="mt-1" type="file" accept="application/pdf,image/png,image/jpeg" disabled={uploadEvidenceMutation.isPending} onChange={e => { const file = e.target.files?.[0]; if (file) void uploadEvidence(file); e.currentTarget.value = ""; }} />
               <div className="mt-2 space-y-1 text-xs">
-                {(evidenceQuery.data ?? []).map((e: any) => <div key={e.id} className="flex items-center justify-between gap-2"><span>{e.fileName} {e.reviewedAt ? "• manager-reviewed" : "• awaiting review"}</span>{!e.reviewedAt && <Button type="button" size="sm" variant="outline" onClick={() => reviewEvidenceMutation.mutate({ orgId, evidenceId: e.id })}>Mark reviewed</Button>}</div>)}
+                {(evidenceQuery.data ?? []).map((e: any) => <div key={e.id} className="flex items-center justify-between gap-2"><span>{e.fileName} {e.reviewedAt ? "• manager-reviewed" : "• awaiting review"}</span><span className="flex gap-1">{openingEvidenceId === e.id && openEvidenceQuery.data ? <a className="text-blue-700 underline" href={openEvidenceQuery.data.url} target="_blank" rel="noreferrer">Open evidence</a> : <Button type="button" size="sm" variant="outline" onClick={() => setOpeningEvidenceId(e.id)}>Prepare link</Button>}{!e.reviewedAt && <Button type="button" size="sm" variant="outline" onClick={() => reviewEvidenceMutation.mutate({ orgId, evidenceId: e.id })}>Mark reviewed</Button>}<Button type="button" size="sm" variant="ghost" onClick={() => deleteEvidenceMutation.mutate({ orgId, evidenceId: e.id })}>Delete</Button></span></div>)}
               </div>
             </div>
             <div className="rounded-md border p-3">
