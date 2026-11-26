@@ -31,6 +31,16 @@ describe("Assembled PRV cylindrical cross-bores", () => {
     expect(hitsPort(-1, -0.6, 0)).toBe(true);
     expect(hitsPort(1, -0.7, 0)).toBe(true);
   });
+  it("seals the inlet chamber floor outside the rectangular support footprint", () => {
+    const geometry = createPRVBodyGeometry();
+    const material = new MeshBasicMaterial({ side: DoubleSide });
+    const mesh = new Mesh(geometry, material);
+    mesh.updateMatrixWorld(true);
+    const hits = new Raycaster(new Vector3(0, -1.4, 0.65), new Vector3(0, 1, 0), 0, 0.3).intersectObject(mesh);
+    expect(hits.length).toBeGreaterThan(0);
+    expect(hits[0].point.y).toBeCloseTo(PRV_BODY.bottom, 6);
+    geometry.dispose(); material.dispose();
+  });
   it("keeps all generated vertex coordinates finite in assembled and teaching-cutaway views", () => {
     for (const cut of [false, true]) {
       const geometry = createPRVBodyGeometry(cut);

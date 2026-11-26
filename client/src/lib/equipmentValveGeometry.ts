@@ -13,7 +13,7 @@ export const PRV_BODY = {
 /**
  * Closed-thickness cylindrical wall, with actual circular X-axis cross-bores.
  * Each horizontal row trims the inner and outer surfaces to the exact bore Z
- * span, then joins them with the bore wall. No transparent-material shortcut.
+ * span, then joins them with the bore wall. The inlet chamber has a solid floor.
  */
 export function createPRVBodyGeometry(cut = false): BufferGeometry {
   const c = PRV_BODY;
@@ -53,6 +53,9 @@ export function createPRVBodyGeometry(cut = false): BufferGeometry {
       quad(vertex(y, c.radius, side, i / segments), vertex(y, c.radius, side, (i + 1) / segments),
         vertex(y, c.innerRadius, side, (i + 1) / segments), vertex(y, c.innerRadius, side, i / segments));
     }
+    // A full bottom disk, not merely an annular wall cap. The cutaway omits its matching sector.
+    for (let i = 0; i < segments; i++) triangle(new Vector3(0, c.bottom, 0),
+      vertex(c.bottom, c.innerRadius, side, (i + 1) / segments), vertex(c.bottom, c.innerRadius, side, i / segments));
   }
   const geometry = new BufferGeometry();
   geometry.setAttribute("position", new Float32BufferAttribute(positions, 3));

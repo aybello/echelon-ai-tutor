@@ -237,7 +237,8 @@ function Pump(scene: SceneProps) {
     <Part id="impeller" scene={scene} offset={[-0.85, 0, 0]}>
       <group position={[-0.79, -0.1, 0]}><Rotor scene={scene}>
         <Cylinder radius={0.69} length={0.09} rotation={X_AXIS} color={DARK} />
-        <Cylinder at={[-0.13, 0, 0]} radius={0.23} length={0.28} rotation={X_AXIS} color={LIGHT} />
+        {/* Narrow recessed hub leaves the suction bore open around the impeller eye. */}
+        <Cylinder at={[-0.1, 0, 0]} radius={0.11} length={0.18} rotation={X_AXIS} color={LIGHT} />
         {Array.from({ length: 7 }, (_, i) => <group key={i} rotation={[i * Math.PI * 2 / 7, 0, 0]}>
           <Tube points={[[-0.1, 0.22, 0], [-0.1, 0.4, 0.1], [-0.1, 0.58, 0.24]]} radius={0.064} color={LIGHT} />
         </group>)}
